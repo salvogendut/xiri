@@ -33,6 +33,18 @@ MAME contains an Indy/Indigo2 implementation with IRIX boot instructions. Its Oc
 
 SGUG RSE already provides a package environment and development tools for IRIX. Its work is relevant to toolchain bootstrapping and application ports, though it does not supply a replacement kernel. [SGUG RSE](https://github.com/sgidevnet/sgug-rse).
 
+### IRIS emulator
+
+[techomancer/iris](https://github.com/techomancer/iris) is an additional hardware and testing reference. Its README reports IRIX 5.3 and 6.5 operation, an Indy IP24 desktop, and Indigo2 IP22/IP28 emulation, including an R10000/IP28 desktop. These are upstream results; Xiri has not yet reproduced them. Reference revision: [21c0ecb024b3](https://github.com/techomancer/iris/tree/21c0ecb024b3a7dc9e11514fa1b5302363071bf6), inspected on 2026-10-14. [IRIS README at that revision](https://github.com/techomancer/iris/blob/21c0ecb024b3a7dc9e11514fa1b5302363071bf6/README.md).
+
+Useful starting points for Xiri:
+
+- [REX3 graphics notes](https://github.com/techomancer/iris/blob/21c0ecb024b3a7dc9e11514fa1b5302363071bf6/docs/rex3.md): register and drawing behavior to compare with drivers and physical hardware.
+- [Testing guide](https://github.com/techomancer/iris/blob/21c0ecb024b3a7dc9e11514fa1b5302363071bf6/TESTING.md) and [CPU test suite](https://github.com/techomancer/iris/tree/21c0ecb024b3a7dc9e11514fa1b5302363071bf6/cpu-tests): candidate methods for repeatable execution and hardware comparison.
+- [Hardware documentation index](https://github.com/techomancer/iris/blob/21c0ecb024b3a7dc9e11514fa1b5302363071bf6/README.md#documentation): machine profiles, interrupts, SCSI, and audio references.
+
+Evaluate IRIS as a repeatable environment for original-IRIX desktop and ABI probes. Its README notes that NetBSD guests are not regularly tested, so a NetBSD regression environment needs separate qualification. Hardware behavior inferred from emulation should be checked on the available SGI machines.
+
 ## Platform choice
 
 NetBSD was selected as the underlying OS on 2026-10-14. The following implementation order is based on the available hardware and published support, pending actual boot tests.

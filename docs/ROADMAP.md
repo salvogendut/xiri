@@ -33,6 +33,7 @@ The NetBSD boot and desktop experiments can be performed independently; both det
 - [ ] Exercise storage and networking sufficiently to expose basic DMA or cache failures.
 - [ ] Establish a usable host X display on the actual graphics board, or record the precise driver gap.
 - [ ] Run selected original desktop clients on IRIX against a dedicated modern X server.
+- [ ] Evaluate [IRIS](FEASIBILITY.md#iris-emulator) for repeatable IRIX desktop and ABI reference runs; compare results with physical machines and qualify NetBSD guest boot separately.
 - [ ] Record required visuals, X extensions, fonts, libraries, and helper processes; distinguish confirmed requirements from suspected ones.
 - [ ] Compare historical `COMPAT_IRIX` code with current kernel interfaces and document the smallest execution experiment.
 
