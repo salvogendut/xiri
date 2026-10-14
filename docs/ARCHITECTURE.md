@@ -1,0 +1,92 @@
+# Xiri proposed architecture
+
+Status: architectural target agreed on 2026-10-14; implementation and compatibility remain unvalidated. The [execution roadmap](ROADMAP.md) defines the experiments needed to establish feasibility.
+
+Xiri will use NetBSD as its underlying OS, execute selected IRIX binaries on the workstation's MIPS CPU through an IRIX personality, and preserve the existing IRIX desktop. Applications built natively for NetBSD should share that desktop with the compatible programs.
+
+## Execution paths
+
+```mermaid
+flowchart TB
+    D[Original IRIX desktop programs] --> U[IRIX libraries and runtime]
+    A[Selected IRIX applications] --> U
+    U --> C[IRIX ABI compatibility]
+    C --> K[NetBSD kernel]
+    N[Native modern applications] --> K
+    D --> X[Host X server and required extensions]
+    A --> X
+    N --> X
+    X --> K
+    K --> H[SGI CPU and device drivers]
+```
+
+The diagram describes logical interfaces, not completed components. The IRIX libraries and desktop would initially come from the user's installation. Ordinary MIPS code can run directly when the selected CPU supports its instruction set. Running those binaries on x86 or ARM would additionally require CPU translation and is a later objective.
+
+## Host kernel and drivers
+
+Use the host's scheduler, virtual memory, networking, filesystems, and device framework. Keep machine support and IRIX application compatibility separable so that driver improvements can benefit the upstream OS.
+
+Bring up serial console, memory, interrupts, storage, Ethernet, input, and display independently. Validate DMA and cache behavior under sustained I/O before describing a board as supported. Treat SMP as a separate capability from successful single-CPU boot.
+
+Use a host-native filesystem for the first installation and an explicit import path for IRIX files. Booting from, or writing to, existing IRIX filesystems is a separate requirement rather than a prerequisite for binary compatibility.
+
+## IRIX binary compatibility
+
+The compatibility layer must implement the selected application's ABI: its executable format, calling conventions, system-call behavior, and data layouts. Matching MIPS instruction sets or POSIX APIs alone is insufficient.
+
+Audit the historical NetBSD implementation before deciding which parts to reuse. Its [ELF loader](https://github.com/NetBSD/src/blob/netbsd-5/sys/compat/irix/irix_exec_elf32.c) contains o32 and n32 paths; their presence does not establish working end-to-end compatibility.
+
+| Area | Initial requirement |
+| --- | --- |
+| Executable loading | Correct ELF recognition, stack, auxiliary data, interpreter handling, and address layout |
+| ABI coverage | Start with a small o32 probe; inventory desktop binaries immediately to determine required n32 coverage; scope n64 from actual applications |
+| System calls | Translate arguments, structures, flags, return values, and error numbers |
+| Processes and signals | Correct fork, exec, wait, signal delivery, restart behavior, and context restoration |
+| Memory and synchronization | Investigate mmap semantics, shared memory, IRIX process-sharing primitives, and synchronization used by the selected runtime |
+| Files and devices | Implement required paths, metadata layouts, directory entries, and terminal or device ioctls |
+| Libraries | Use a versioned IRIX runtime tree initially, with an explicit lookup policy |
+
+An initial static probe can avoid dynamic-loader dependencies, but real desktop programs cannot. Establish a dynamically linked test early. A successful command-line executable is evidence for that executable only.
+
+Kernel integration through NetBSD's executable and emulation facilities is the leading approach for native execution. A userspace tracer may help observe behavior, but is not assumed to implement all signal, threading, and VM semantics.
+
+## Original desktop preservation
+
+The preservation strategy is to retain original desktop executables where feasible and provide the services needed to run them on the host OS. SGI's [desktop documentation](https://tech-pubs.net/SGI_EndUser/books/Desktop_UG/sgi_html/ch13.html) provides the behavior reference; the chosen IRIX installation supplies the version-specific baseline.
+
+Inventory `4Dwm`, Toolchest, the file manager, desktop/session components, their shared libraries, fonts, resources, and invoked helpers. Measure which components need ordinary X11, particular visuals, SGI extensions, or graphics APIs. Do not assume every desktop component uses only standard Motif and X11.
+
+Two experiments isolate different failure modes:
+
+1. Run selected original desktop clients on IRIX against a separate modern X server. This probes display compatibility while retaining the original kernel and libraries. Use a dedicated test display so a window-manager experiment does not replace an existing session.
+2. Run the same clients through Xiri compatibility against that display. Differences then help identify missing ABI or host-service behavior.
+
+These experiments are development tools. The intended result is local execution and display on the SGI workstation.
+
+Desktop acceptance includes reliable window management, menus, file navigation, application launch, preferences, and session restart. Validate file changes made by native applications appearing in the desktop, and the ability to launch a host-native program from it.
+
+Provide explicit adapters for system integration. An IRIX control panel that changes networking, accounts, storage, or power state cannot be assumed to control the new host correctly. Implement and test the relevant operation against host services before enabling it.
+
+## Shared files and application launch
+
+Keep the IRIX runtime in a distinct tree while making selected user files available consistently to native and compatible processes. The path policy must cover absolute library paths, executable lookup, temporary files, user identities, and desktop configuration.
+
+A compatibility launcher should select the appropriate runtime for IRIX programs and dispatch host-native programs without routing them through IRIX libraries. Define environment and argument handling explicitly. This is needed for a native editor or network client to become a useful part of the preserved desktop.
+
+Keep original system binaries, libraries, and desktop assets outside the source repository. Store dependency manifests, import tooling, source references, and tests. Determine packaging terms for any third-party files before distributing a bundled runtime.
+
+## Graphics boundaries
+
+The host X server and host graphics driver own the physical display. Original IRIX X client libraries may be reusable once their ABI dependencies work; original X server and kernel graphics components are separate compatibility problems.
+
+Start with 2D functionality on one supported graphics configuration. Test legacy OpenGL through a defined library or protocol boundary and a known renderer before attempting acceleration. Record required extensions and visuals per application. IRIS GL requires its own investigation; OpenGL support does not imply IRIS GL compatibility.
+
+Supporting IMPACT or VPro acceleration would involve command submission, memory and synchronization behavior, and the host rendering stack. [OpenBSD's Impact](https://man.openbsd.org/OpenBSD-6.9/sgi/impact.4) and [VPro](https://man.openbsd.org/OpenBSD-6.9/sgi/odyssey.4) console drivers are starting references, not substitutes for that work.
+
+## Validation and maintenance
+
+Develop small behavioral probes that run on original IRIX and the proposed host. Compare results for loading, memory, signals, files, process behavior, and desktop protocols. Preserve the input program, expected behavior, and exact environment with each result.
+
+Use emulation for repeatable tests where it supports the selected machine and OS. Physical machines remain necessary for driver, cache, DMA, timing, and graphics qualification.
+
+Publish support by machine configuration, desktop component, and application version. Keep the kernel changes small enough to rebase regularly, and pursue upstreamable driver fixes to reduce the project's maintenance burden.
