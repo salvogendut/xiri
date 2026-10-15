@@ -26,6 +26,7 @@ Keep large images and original runtimes outside Git; save configurations, manife
 - NetBSD is the underlying OS; the IRIX personality supplies selected binary compatibility.
 - Indy, Indigo2, and Octane are available for testing.
 - Preserve the IRIX desktop as well as selected legacy applications.
+- Use reverse engineering to establish missing graphics-driver behavior and other proprietary interfaces, corroborating binary analysis with observed behavior.
 - Support maintained software alongside the preserved environment.
 - Keep planning, decisions, and reproducible execution records in this repository.
 
@@ -60,6 +61,7 @@ The NetBSD boot and desktop experiments can be performed independently as their 
 - [ ] Run selected original desktop clients on IRIX against a dedicated modern X server.
 - [ ] Record required visuals, X extensions, fonts, libraries, and helper processes; distinguish confirmed requirements from suspected ones.
 - [ ] Compare historical `COMPAT_IRIX` code with current kernel interfaces and document the smallest execution experiment.
+- [ ] Evaluate [REA](FEASIBILITY.md#rea-reverse-engineering-tools) as optional analysis tooling on representative big-endian MIPS/IRIX artifacts; record provider capabilities and gaps before relying on its output.
 
 Acceptance: a repeatable installer-to-modified-kernel loop, an automated probe, and a desktop compatibility report. Record emulator failures separately from guest failures. Identify required kernel and display changes and the first desktop component to execute. A failed desktop probe should produce an actionable dependency finding.
 
@@ -109,6 +111,7 @@ Acceptance: another tester can install the system on the named physical Indy con
 - [ ] Add the available Octane's display and input support, keeping graphics acceleration separately scoped.
 - [ ] Qualify each added configuration through boot, I/O, X display, desktop, and applications.
 - [ ] Investigate one graphics family for acceleration only after basic desktop operation is stable.
+- [ ] Apply the [reverse-engineering workflow](ARCHITECTURE.md#reverse-engineering-workflow) to missing graphics initialization, command submission and synchronization behavior; retain probes and physical observations for each implemented interface.
 
 Acceptance: per-configuration support records and repeatable desktop results. Fuel remains outside the execution queue until hardware access and a port assessment exist.
 

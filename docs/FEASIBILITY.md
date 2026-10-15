@@ -47,6 +47,14 @@ Initial implementation and testing will use Indy emulation. IRIS is the preferre
 
 The [emulation assessment](EMULATION.md) compares both tools, pins inspected sources, records the missing images and host prerequisites, and defines the initial acceptance tests. It also identifies two important IRIS configuration constraints: packaged `lightning` builds disable debugging, and explicit `--headless` disables Newport graphics. No emulator boot has been demonstrated by Xiri.
 
+### REA reverse-engineering tools
+
+[morluto/rea](https://github.com/morluto/rea) provides MCP and CLI workflows for binary analysis through providers such as Ghidra, Hopper and IDA. Its README describes access to disassembly, pseudocode, symbols, strings and cross-references. Reference revision: [7d1e4d0e2bfb](https://github.com/morluto/rea/tree/7d1e4d0e2bfb77bd47203b4f962e4f034678dc75), inspected on 2026-10-15. [README at that revision](https://github.com/morluto/rea/blob/7d1e4d0e2bfb77bd47203b4f962e4f034678dc75/README.md).
+
+Potential uses for Xiri include investigating original graphics drivers, firmware and other proprietary interfaces: locating register accesses, command construction, initialization sequences and synchronization paths. Desktop library dependencies and IRIX ABI behavior are additional candidates. These are proposed uses, not demonstrated REA results on SGI software.
+
+REA is an optional analysis tool, not a prerequisite for the first NetBSD boot. It requires a supported Node.js/npm environment and a configured native-analysis provider. Before adoption, verify the provider's handling of representative big-endian MIPS/IRIX binaries and relevant o32/n32 layouts. Xiri has not installed or validated it. Treat recovered pseudocode as a hypothesis; corroborate findings with instruction-level evidence, emulator traces and physical-machine observations. See the [reverse-engineering workflow](ARCHITECTURE.md#reverse-engineering-workflow).
+
 ## Platform choice
 
 NetBSD was selected as the underlying OS on 2026-10-14. Development starts on an emulated Indy, followed by physical qualification. The following hardware order is based on the available machines and published support, pending actual boot tests.
