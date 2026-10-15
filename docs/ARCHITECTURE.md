@@ -1,6 +1,6 @@
 # Xiri proposed architecture
 
-Status: architectural target agreed on 2026-10-14; implementation and compatibility remain unvalidated. The [execution roadmap](ROADMAP.md) defines the experiments needed to establish feasibility.
+Status: architectural target agreed on 2026-10-14; emulator-first development added on 2026-10-15. Implementation and compatibility remain unvalidated. The [execution roadmap](ROADMAP.md) defines the experiments needed to establish feasibility.
 
 Xiri will use NetBSD as its underlying OS, execute selected IRIX binaries on the workstation's MIPS CPU through an IRIX personality, and preserve the existing IRIX desktop. Applications built natively for NetBSD should share that desktop with the compatible programs.
 
@@ -20,7 +20,9 @@ flowchart TB
     K --> H[SGI CPU and device drivers]
 ```
 
-The diagram describes logical interfaces, not completed components. The IRIX libraries and desktop would initially come from the user's installation. Ordinary MIPS code can run directly when the selected CPU supports its instruction set. Running those binaries on x86 or ARM would additionally require CPU translation and is a later objective.
+The diagram describes logical interfaces, not completed components. The IRIX libraries and desktop would initially come from the user's installation. On physical SGI hardware, ordinary MIPS code can run directly when the selected CPU supports its instruction set.
+
+Initial development runs the complete NetBSD/sgimips system inside an Indy emulator on a modern host. The emulator supplies the MIPS CPU and SGI devices; Xiri still implements the IRIX OS interfaces inside NetBSD. This is the same guest architecture intended for the physical Indy. A separate user-mode IRIX runner on a native x86 or ARM OS would require additional CPU translation and integration, and remains a later objective. See the [emulation plan](EMULATION.md).
 
 ## Host kernel and drivers
 
@@ -61,7 +63,7 @@ Two experiments isolate different failure modes:
 1. Run selected original desktop clients on IRIX against a separate modern X server. This probes display compatibility while retaining the original kernel and libraries. Use a dedicated test display so a window-manager experiment does not replace an existing session.
 2. Run the same clients through Xiri compatibility against that display. Differences then help identify missing ABI or host-service behavior.
 
-These experiments are development tools. The intended result is local execution and display on the SGI workstation.
+Perform the first reference and compatibility experiments in the emulated Indy environment. These experiments are development tools. The intended result is local execution and display on the SGI workstation, with physical validation before a hardware release.
 
 Desktop acceptance includes reliable window management, menus, file navigation, application launch, preferences, and session restart. Validate file changes made by native applications appearing in the desktop, and the ability to launch a host-native program from it.
 
@@ -87,6 +89,8 @@ Supporting IMPACT or VPro acceleration would involve command submission, memory 
 
 Develop small behavioral probes that run on original IRIX and the proposed host. Compare results for loading, memory, signals, files, process behavior, and desktop protocols. Preserve the input program, expected behavior, and exact environment with each result.
 
-Use emulation for repeatable tests where it supports the selected machine and OS. Physical machines remain necessary for driver, cache, DMA, timing, and graphics qualification.
+Use Indy emulation as the default implementation and regression environment. Qualify current NetBSD boot and I/O before depending on an emulator; IRIS is the preferred harness and MAME the independent comparison/fallback. Cross-build kernels and probes on the modern host. Cold-boot changed kernels and reserve snapshots for tests of an unchanged guest build. The [emulation plan](EMULATION.md) records debugger, automation, and fidelity constraints.
+
+Repeat key milestones on the physical Indy before claiming hardware support. Physical machines remain necessary for driver, cache, DMA, timing, and graphics qualification; emulator success does not establish Indigo2 or Octane support.
 
 Publish support by machine configuration, desktop component, and application version. Keep the kernel changes small enough to rebase regularly, and pursue upstreamable driver fixes to reduce the project's maintenance burden.

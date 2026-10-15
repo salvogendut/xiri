@@ -1,6 +1,6 @@
 # Xiri feasibility and platform choice
 
-Research date: 2026-10-14.
+Research dates: 2026-10-14; emulator development assessment updated 2026-10-15.
 
 The agreed Xiri target is NetBSD plus an IRIX personality and the existing IRIX desktop, running on real SGI machines. Recreating the whole IRIX kernel would add substantial work without removing the need for hardware drivers, application ports, or graphics compatibility.
 
@@ -11,7 +11,7 @@ Preserving the original desktop makes this a systems compatibility project as we
 | Approach | Main benefit | Main limitation for Xiri | Proposed role |
 | --- | --- | --- | --- |
 | Extend original IRIX with new packages | Retains the original desktop, applications, and graphics drivers | Leaves the kernel and platform interfaces unchanged; software ports still need maintenance | Reference environment and possible interim use |
-| Emulate a complete SGI workstation | Preserves original IRIX on replacement hardware | Does not modernize IRIX or improve the real workstation | Reference testing and a separate preservation effort |
+| Emulate a complete SGI workstation | Runs original IRIX for reference and NetBSD/Xiri for development on a modern host | Emulating original IRIX alone does not modernize it; hardware still needs qualification | Initial implementation and regression environment, plus reference testing |
 | Reimplement IRIX as a complete OS | Potential control over every interface | Requires kernel, drivers, userland, desktop, and continuing maintenance | Outside the initial scope |
 | Maintained kernel with IRIX compatibility | Reuses networking, VM, storage, and native software infrastructure | Requires SGI drivers and precise compatibility for chosen programs | Preferred direction |
 
@@ -43,11 +43,13 @@ Useful starting points for Xiri:
 - [Testing guide](https://github.com/techomancer/iris/blob/21c0ecb024b3a7dc9e11514fa1b5302363071bf6/TESTING.md) and [CPU test suite](https://github.com/techomancer/iris/tree/21c0ecb024b3a7dc9e11514fa1b5302363071bf6/cpu-tests): candidate methods for repeatable execution and hardware comparison.
 - [Hardware documentation index](https://github.com/techomancer/iris/blob/21c0ecb024b3a7dc9e11514fa1b5302363071bf6/README.md#documentation): machine profiles, interrupts, SCSI, and audio references.
 
-Evaluate IRIS as a repeatable environment for original-IRIX desktop and ABI probes. Its README notes that NetBSD guests are not regularly tested, so a NetBSD regression environment needs separate qualification. Hardware behavior inferred from emulation should be checked on the available SGI machines.
+Initial implementation and testing will use Indy emulation. IRIS is the preferred development harness because its documented control socket, serial capture, network services, overlays and snapshots fit repeated kernel and ABI experiments. MAME supplies an independent implementation and fallback. This is a workflow recommendation, not a measured speed or correctness result. IRIS's README notes that NetBSD guests are not regularly tested, so current NetBSD boot and I/O must be qualified first. Hardware behavior inferred from emulation must later be checked on the available SGI machines.
+
+The [emulation assessment](EMULATION.md) compares both tools, pins inspected sources, records the missing images and host prerequisites, and defines the initial acceptance tests. It also identifies two important IRIS configuration constraints: packaged `lightning` builds disable debugging, and explicit `--headless` disables Newport graphics. No emulator boot has been demonstrated by Xiri.
 
 ## Platform choice
 
-NetBSD was selected as the underlying OS on 2026-10-14. The following implementation order is based on the available hardware and published support, pending actual boot tests.
+NetBSD was selected as the underlying OS on 2026-10-14. Development starts on an emulated Indy, followed by physical qualification. The following hardware order is based on the available machines and published support, pending actual boot tests.
 
 | Machine | Proposed investigation | Decision condition |
 | --- | --- | --- |
@@ -80,4 +82,4 @@ Native maintained command-line tools and modest graphical applications are sensi
 
 A prototype on one machine with selected binaries is a bounded feasibility project. A reliable desktop across three machine families, with broad legacy compatibility and acceleration, is a much larger continuing effort. Calendar estimates should follow the first boot, desktop dependency, and ABI experiments.
 
-The first decision is whether the original desktop can be separated from enough IRIX-specific kernel and display behavior to coexist with a maintained host. Answer that before investing in a full Octane or Fuel port.
+First establish the emulated NetBSD development loop, then determine whether the original desktop can be separated from enough IRIX-specific kernel and display behavior to coexist with a maintained host. The desktop experiment needs an original IRIX installation, which is not yet available locally. Answer that feasibility question before investing in a full Octane or Fuel port; physical Indy inventory can proceed alongside the emulated work.

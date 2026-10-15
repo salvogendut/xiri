@@ -1,43 +1,52 @@
 # Xiri execution roadmap
 
-Status: proposed work, 2026-10-14. All implementation milestones below are pending.
+Status: proposed work, updated 2026-10-15. All implementation milestones below are pending.
 
-The agreed target is NetBSD with an IRIX personality and the existing IRIX desktop. The first deliverable is a measured feasibility result on one SGI workstation. Expand to additional machines and applications after that result.
+The agreed target is NetBSD with an IRIX personality and the existing IRIX desktop. Initial implementation and testing use an emulated Indy. The first deliverable is a reproducible NetBSD development loop, followed by desktop feasibility and physical Indy qualification. Expand to additional machines and applications after those results.
 
 ## Requirements established
 
 - Real hardware is the primary execution target.
+- Indy emulation is the initial development and test environment; IRIS is preferred pending qualification, with MAME for comparison and fallback.
 - NetBSD is the underlying OS; the IRIX personality supplies selected binary compatibility.
 - Indy, Indigo2, and Octane are available for testing.
 - Preserve the IRIX desktop as well as selected legacy applications.
 - Support maintained software alongside the preserved environment.
 - Keep planning, decisions, and reproducible execution records in this repository.
 
-## Milestone 0 Hardware and software baseline
+## Milestone 0 Emulator and software baseline
 
-- [ ] Record each machine's CPU, memory, graphics option, firmware, storage, Ethernet, and installed IRIX release.
+- [ ] Provision build tools and sufficient host storage as described in the [emulation plan](EMULATION.md).
+- [ ] Pin an IRIS source revision, exact Rust toolchain, dependency resolution and debug-capable build options.
+- [ ] Record the emulated Indy CPU, RAM, Newport configuration, PROM, NVRAM and disk layout.
+- [ ] Obtain the NetBSD sgimips installer, sets, checksums and matching source baseline.
+- [ ] Obtain appropriate Indy firmware for MAME comparison; record IRIS's embedded fallback separately if used.
 - [ ] Select a reference IRIX installation and record its desktop package versions.
 - [ ] Identify two or three additional legacy applications and representative tasks for each.
 - [ ] Inventory the desktop executables' ABIs, interpreters, libraries, resources, and supporting services.
-- [ ] Establish serial capture and a recoverable alternate boot or storage setup for the first machine.
-- [ ] Record exact upstream revisions for the host OS, historical compatibility code, emulator, and relevant drivers.
+- [ ] Record exact upstream revisions for NetBSD, historical compatibility code, MAME, and relevant drivers.
 
-Acceptance: a configuration inventory, a named test machine, a desktop dependency manifest, and a reproducible original-IRIX reference session. Preserve the existing installation as the comparison environment.
+Acceptance for starting NetBSD work: a pinned emulator build, guest configuration and NetBSD input manifest. The user has no local PROM or IRIX image yet; IRIS's documented embedded PROM fallback permits the first boot attempt without an external PROM file. Original-IRIX reference acceptance additionally requires a desktop dependency manifest and a reproducible reference session. These inputs need not block the NetBSD bootstrap.
+
+Parallel hardware preparation: inventory each physical machine's CPU, memory, graphics, firmware, storage, Ethernet and installed IRIX release. Establish serial capture and an alternate boot/storage setup for the Indy before physical testing; preserve its existing installation.
 
 ## Milestone 1 Host boot and desktop feasibility
 
-The NetBSD boot and desktop experiments can be performed independently; both determine the implementation work needed on the first platform.
+The NetBSD boot and desktop experiments can be performed independently as their inputs become available. Both determine the implementation work needed on the first platform. Use the [emulator qualification gate](EMULATION.md#qualification-gate) to record each result.
 
-- [ ] Cross-build or obtain an appropriate maintained NetBSD image for the chosen Indy configuration.
-- [ ] Capture a boot log and demonstrate serial console, storage, networking, and input.
-- [ ] Exercise storage and networking sufficiently to expose basic DMA or cache failures.
-- [ ] Establish a usable host X display on the actual graphics board, or record the precise driver gap.
+- [ ] Boot the NetBSD installation kernel in IRIS, install to a disposable disk, and cold-boot to multiuser.
+- [ ] Capture serial logs and verify persistent storage, network transfer and reboot integrity.
+- [ ] Cross-build a modified kernel on the modern host and verify its build identifier in a fresh guest boot.
+- [ ] Demonstrate debugger attachment, a breakpoint, and continued execution.
+- [ ] Automate a probe with output, exit status, timeout and clean-state repetition; compare ordinary and CI execution.
+- [ ] Qualify snapshots separately, keeping changed-kernel tests on cold boots.
+- [ ] Repeat key boot and probe results in MAME when firmware is available; use it as primary if it passes a stage IRIS fails.
+- [ ] Establish a usable NetBSD X display and input on emulated Newport, or record the precise driver gap.
 - [ ] Run selected original desktop clients on IRIX against a dedicated modern X server.
-- [ ] Evaluate [IRIS](FEASIBILITY.md#iris-emulator) for repeatable IRIX desktop and ABI reference runs; compare results with physical machines and qualify NetBSD guest boot separately.
 - [ ] Record required visuals, X extensions, fonts, libraries, and helper processes; distinguish confirmed requirements from suspected ones.
 - [ ] Compare historical `COMPAT_IRIX` code with current kernel interfaces and document the smallest execution experiment.
 
-Acceptance: a NetBSD boot and I/O record plus a desktop compatibility report. Identify required kernel and display changes and the first desktop component to execute. A failed desktop probe should produce an actionable dependency finding.
+Acceptance: a repeatable installer-to-modified-kernel loop, an automated probe, and a desktop compatibility report. Record emulator failures separately from guest failures. Identify required kernel and display changes and the first desktop component to execute. A failed desktop probe should produce an actionable dependency finding.
 
 Decision gate: if the display or desktop exposes a major feasibility obstacle, document it and revise the implementation plan before expanding the compatibility layer. Changing the NetBSD foundation or replacing original desktop components would require an explicit revision of the agreed target.
 
@@ -49,7 +58,7 @@ Decision gate: if the display or desktop exposes a major feasibility obstacle, d
 - [ ] Add the ABI coverage required by the desktop manifest; do not defer n32 if selected desktop components require it.
 - [ ] Record unsupported calls and operations explicitly rather than masking them as successful.
 
-Acceptance: repeatable static and dynamic execution, meaningful behavioral probes, and at least one useful IRIX command-line program on the maintained host. Run these on the real first target.
+Acceptance: repeatable static and dynamic execution, meaningful behavioral probes, and at least one useful IRIX command-line program on NetBSD in the emulated Indy. Retain the same probes for physical qualification.
 
 ## Milestone 3 Original desktop proof
 
@@ -61,10 +70,12 @@ Acceptance: repeatable static and dynamic execution, meaningful behavioral probe
 - [ ] Repeat logout and login, checking process cleanup and restoration of expected state.
 - [ ] Compare behavior with the reference installation and list component-level differences.
 
-Acceptance: a locally running original desktop session on the SGI, with working native and compatible application launch and a reproducible demonstration. A screenshot or themed substitute alone does not satisfy this milestone.
+Acceptance: an original desktop session executing inside the emulated Indy on NetBSD, with working native and compatible application launch and a reproducible demonstration. A screenshot or themed substitute alone does not satisfy this milestone. The physical desktop remains required for the first hardware release.
 
 ## Milestone 4 Usable first release
 
+- [ ] Boot the qualified build on the physical Indy and repeat ABI and desktop acceptance there.
+- [ ] Validate real storage, networking, cache/DMA behavior, input and local display; record differences from emulation.
 - [ ] Package a reproducible installation for the first supported configuration.
 - [ ] Provide an import workflow for the selected original runtime and desktop files.
 - [ ] Build a small maintained native software set, starting with networking and development tools.
@@ -73,7 +84,7 @@ Acceptance: a locally running original desktop session on the SGI, with working 
 - [ ] Evaluate native browser feasibility separately; document any remote browser option as remote execution.
 - [ ] Demonstrate a host update followed by the compatibility and desktop checks.
 
-Acceptance: another tester can install the system, reproduce the desktop demonstration, run the named applications, and repeat the checks after an update.
+Acceptance: another tester can install the system on the named physical Indy configuration, reproduce the local desktop demonstration, run the named applications, and repeat the checks after an update. An emulator-only result does not satisfy hardware-release acceptance.
 
 ## Milestone 5 Indigo2 and Octane expansion
 
@@ -92,9 +103,9 @@ Each completed experiment should record the following in this repository, with l
 
 | Field | Required information |
 | --- | --- |
-| Environment | Machine, CPU, graphics, memory, firmware, OS and runtime versions |
+| Environment | Emulator/version/build features or physical machine; CPU, graphics, memory, firmware, OS and runtime versions |
 | Build | Source revisions, toolchain, configuration, patch set, artifact checksums |
-| Procedure | Commands, inputs, expected outcome, recovery steps where applicable |
+| Procedure | Commands, inputs, expected outcome, cold boot or snapshot origin, recovery steps where applicable |
 | Result | Logs, observed behavior, failures, and relevant timing or resource measurements |
 | Interpretation | Which capability passed, which remains unresolved, and the next decision |
 
@@ -104,12 +115,12 @@ Use small reproducible programs for ABI differences. Use original IRIX as the be
 
 | Question | When to resolve |
 | --- | --- |
-| Exact CPU and graphics configurations | Milestone 0 |
-| Reference IRIX version and desktop package set | Milestone 0 |
+| Exact physical CPU and graphics configurations | Inventory alongside Milestone 0; required before hardware qualification |
+| Reference IRIX version and desktop package set | Milestone 0 reference work, once media is available |
 | Priority applications beyond the desktop | Milestone 0 |
 | Required 3D performance and graphics APIs | Before committing to an acceleration effort |
-| NetBSD branch, kernel configuration, and patch baseline | Milestone 1 |
+| Qualified emulator and NetBSD build baseline | Milestones 0–1; proposed versions in the emulation plan |
 | Required original components versus acceptable replacements | For any component that fails preservation feasibility |
 | Native browser target and acceptable performance | Milestone 4 feasibility investigation |
 
-Begin with the inventory and the two Milestone 1 experiments. Their results will support credible effort estimates and a concrete implementation backlog.
+Begin with host capacity, the pinned emulator build and the NetBSD boot loop. Inventory hardware and acquire reference media in parallel. These results will support credible effort estimates and a concrete implementation backlog.
