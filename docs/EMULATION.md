@@ -41,9 +41,11 @@ The NetBSD release establishes an unmodified baseline. Pin matching source befor
 
 ## Prerequisites and current gaps
 
+Provisioning and testing are pending. Inventory the selected build host before choosing build settings or installing dependencies. The [development setup checklist](ROADMAP.md#development-setup-checklist) records the next actions.
+
 | Item | Why it is needed | Current status |
 | --- | --- | --- |
-| Host build environment and storage | Emulator, cross-toolchain, source/object trees, guest disks | Host inspected below; additional setup and storage required |
+| Host build environment and storage | Emulator, cross-toolchain, source/object trees, guest disks | Selected build host to inventory and provision; earlier session measurements below |
 | IRIS source and Rust toolchain | Debug-capable emulator build | Not installed; select an exact nightly and retain resolved dependencies |
 | NetBSD sgimips installer, sets, checksums and matching source | Boot baseline and modified-kernel loop | To obtain from the official release distribution |
 | Indy PROM | Firmware baseline and MAME ROM verification | User has no local image yet; IRIS documents an embedded fallback |
@@ -55,13 +57,13 @@ The IRIS fallback supplies firmware behavior; it does not supply an installed IR
 
 For MAME's R5000 Indy, the inspected driver names `ip24prom.070-9101-011.bin` (512 KiB; SHA-1 `ac663a4db68528e400487e98cbf901f620fb30ce`). Verify the installed build's requirements with `mame indy_5015 -listroms` and `-verifyroms`; use its media/slot listings to derive attachment options. Obtain the appropriate firmware from an available machine or another authorized source rather than assuming any Indy dump matches. [MAME ROM declarations][mame-indy].
 
-### This development host
+### Inspected session environment
 
-Read-only inspection on 2026-10-15 found Debian 12 on x86_64, glibc 2.36, four logical CPUs, about 6.4 GiB RAM, and about **4 GiB free workspace storage**. GCC, CMake, Make, Python and GitHub CLI are available; Rust/Cargo and either emulator were not found in the checked locations.
+Read-only inspection of the session environment on 2026-10-15 found Debian 12 on x86_64, glibc 2.36, four logical CPUs, about 6.4 GiB RAM, and about **4 GiB free workspace storage**. GCC, CMake, Make, Python and GitHub CLI were available; Rust/Cargo and either emulator were not found in the checked locations. These measurements describe that session environment; recheck the selected build host before provisioning.
 
-IRIS's inspected release workflow builds Linux x64 on Ubuntu 24.04 and documents glibc 2.39 for its Linux packages. It also builds the distributed executables with `lightning`, which removes interactive debugging. Plan a source build on this host or a suitable build environment; do not assume the downloaded executable will work on Debian 12. [IRIS release workflow][iris-release].
+IRIS's inspected release workflow builds Linux x64 on Ubuntu 24.04 and documents glibc 2.39 for its Linux packages. It also builds the distributed executables with `lightning`, which removes interactive debugging. Plan a source build on the selected build host; check its dependencies and library compatibility. The packaged executable is not assumed to work in the inspected Debian 12 session. [IRIS release workflow][iris-release].
 
-Reserve roughly **30–50 GiB of free storage** for source, toolchains, object files, two guest environments and snapshots. This is a planning allowance, not a measured minimum. The current 4 GiB is insufficient for that complete lab. Start builds with two jobs given the available RAM and adjust from observed usage.
+Reserve roughly **30–50 GiB of free storage** for source, toolchains, object files, two guest environments and snapshots. This is a planning allowance, not a measured minimum. The inspected session's 4 GiB is insufficient for that complete lab. Select build parallelism from the build host's measured RAM and CPU capacity; two jobs was the conservative starting point for the inspected session.
 
 ## IRIS build and execution profiles
 

@@ -4,6 +4,21 @@ Status: proposed work, updated 2026-10-15. All implementation milestones below a
 
 The agreed target is NetBSD with an IRIX personality and the existing IRIX desktop. Initial implementation and testing use an emulated Indy. The first deliverable is a reproducible NetBSD development loop, followed by desktop feasibility and physical Indy qualification. Expand to additional machines and applications after those results.
 
+## Development setup checklist
+
+Setup, resource acquisition, builds and emulator testing are pending. The requirements and emulator recommendation below remain the agreed starting point.
+
+Before starting implementation:
+
+1. Sync this repository and inventory the selected build host's OS, CPU architecture, RAM, free storage and installed tools. Recheck capacity rather than relying on the earlier session measurements in the [emulation plan](EMULATION.md#inspected-session-environment).
+2. Arrange storage for source, toolchains, object files, guest disks and snapshots. Retain the 30–50 GiB planning allowance and adjust it from actual usage.
+3. Provision a debug-capable IRIS source build with a recorded Rust toolchain and native dependencies, plus NetBSD cross-build tools. Check the selected host's library compatibility before choosing any packaged emulator.
+4. Obtain the NetBSD installer, sets, checksums and matching source. Locate or acquire the Indy PROM and an IRIX reference installation for the later MAME and desktop experiments; neither image is currently available locally. IRIS's documented PROM fallback allows the first NetBSD attempt before those images are ready.
+5. Run the emulated Indy qualification sequence: installer, installed guest, changed host-built kernel, debugger and automated probe. All these tests remain pending.
+6. Inventory the physical Indy, Indigo2 and Octane, and arrange Indy serial capture for later hardware qualification.
+
+Keep large images and original runtimes outside Git; save configurations, manifests, commands and small result logs in the repository. This checklist prepares Milestones 0–1.
+
 ## Requirements established
 
 - Real hardware is the primary execution target.
@@ -123,4 +138,4 @@ Use small reproducible programs for ABI differences. Use original IRIX as the be
 | Required original components versus acceptable replacements | For any component that fails preservation feasibility |
 | Native browser target and acceptable performance | Milestone 4 feasibility investigation |
 
-Begin with host capacity, the pinned emulator build and the NetBSD boot loop. Inventory hardware and acquire reference media in parallel. These results will support credible effort estimates and a concrete implementation backlog.
+Begin with the development setup checklist, the pinned emulator build and the NetBSD boot loop. Inventory hardware and acquire reference media in parallel. These results will support credible effort estimates and a concrete implementation backlog.

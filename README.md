@@ -8,6 +8,8 @@ The agreed target is NetBSD underneath, an IRIX binary compatibility layer, and 
 
 Planning and feasibility research, started 2026-10-14 and updated 2026-10-15. No kernel, compatibility layer, desktop port, emulator boot validation, or hardware validation has been implemented in this repository.
 
+Environment setup and testing are pending resource provisioning. Use the [development setup checklist](docs/ROADMAP.md#development-setup-checklist) to prepare the build host and required inputs.
+
 Confirmed project requirements:
 
 - Run on real SGI hardware.
