@@ -1,6 +1,6 @@
 # Xiri feasibility and platform choice
 
-Research dates: 2026-10-14; emulator development assessment updated 2026-10-15.
+Research dates: 2026-10-14; emulator development assessment updated 2026-10-15; SGIEmu reference added 2026-10-16.
 
 The agreed Xiri target is NetBSD plus an IRIX personality and the existing IRIX desktop, running on real SGI machines. Recreating the whole IRIX kernel would add substantial work without removing the need for hardware drivers, application ports, or graphics compatibility.
 
@@ -46,6 +46,18 @@ Useful starting points for Xiri:
 Initial implementation and testing will use Indy emulation. IRIS is the preferred development harness because its documented control socket, serial capture, network services, overlays and snapshots fit repeated kernel and ABI experiments. MAME supplies an independent implementation and fallback. This is a workflow recommendation, not a measured speed or correctness result. IRIS's README notes that NetBSD guests are not regularly tested, so current NetBSD boot and I/O must be qualified first. Hardware behavior inferred from emulation must later be checked on the available SGI machines.
 
 The [emulation assessment](EMULATION.md) compares both tools, pins inspected sources, records the missing images and host prerequisites, and defines the initial acceptance tests. It also identifies two important IRIS configuration constraints: packaged `lightning` builds disable debugging, and explicit `--headless` disables Newport graphics. No emulator boot has been demonstrated by Xiri.
+
+### SGIEmu emulator
+
+[RenatoTarabella/SGIEmu](https://github.com/RenatoTarabella/SGIEmu) is another hardware and graphics research reference. Its README reports Indy IP24/R4400 emulation with Newport XL graphics, IRIX 5.3/6.5 desktops and GL demos, using an x86-64 JIT with an interpreter fallback. Reference revision: [5870980dc1f3](https://github.com/RenatoTarabella/SGIEmu/tree/5870980dc1f38b40bcdcabd7cfacb0b410d96ac8), inspected on 2026-10-16. These are upstream claims; Xiri has not built or tested it. [Pinned README](https://github.com/RenatoTarabella/SGIEmu/blob/5870980dc1f38b40bcdcabd7cfacb0b410d96ac8/README.md).
+
+Useful starting points:
+
+- [Newport implementation](https://github.com/RenatoTarabella/SGIEmu/blob/5870980dc1f38b40bcdcabd7cfacb0b410d96ac8/src/indy/newport.c) and [device tests](https://github.com/RenatoTarabella/SGIEmu/blob/5870980dc1f38b40bcdcabd7cfacb0b410d96ac8/tests/test_devices.c): additional material for investigating register behavior and drawing operations.
+- [Headless runner](https://github.com/RenatoTarabella/SGIEmu/blob/5870980dc1f38b40bcdcabd7cfacb0b410d96ac8/tools/indy_boot.c): documented serial output, scripted input, screenshots, tracing and an in-memory disk-write mode. Its `--snapshot` option should not be assumed to provide full machine-state restoration.
+- [Preliminary Octane implementation](https://github.com/RenatoTarabella/SGIEmu/blob/5870980dc1f38b40bcdcabd7cfacb0b410d96ac8/src/octane/octane.c): HEART, XBOW, BRIDGE and IOC3 work to examine during later board-support research; its presence does not establish a working Octane guest.
+
+The inspected README documents Windows-only operation, no Ethernet or audio emulation, graphics limitations, and a requirement for external PROM and IRIX images. NetBSD operation remains unqualified. Use this as an additional implementation to investigate and compare with traces and physical hardware; the initial IRIS/MAME development plan remains in place.
 
 ### REA reverse-engineering tools
 

@@ -10,6 +10,8 @@ IRIS offers the more convenient documented development loop: a control socket, s
 
 IRIS explicitly says that NetBSD guests are not regularly tested. Its reported IRIX desktops do not prove that a current NetBSD kernel works. MAME's IRIX boot instructions do not establish that either. If IRIS fails a qualification stage that MAME passes, use MAME for that stage and retain a minimal IRIS reproducer. If both fail, investigate the boot image, firmware, and guest support before starting compatibility-layer work. [IRIS README][iris-readme], [MAME Indy source][mame-indy].
 
+Additional reference recorded on 2026-10-16: [SGIEmu](FEASIBILITY.md#sgiemu-emulator), particularly its Newport implementation, device tests and tracing runner. Its inspected documentation lists Windows-only operation and missing Ethernet emulation. NetBSD has not been qualified by Xiri, so this addition does not change the initial harness choice.
+
 ## Comparison for Xiri
 
 | Need | IRIS | MAME | Consequence |
