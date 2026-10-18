@@ -12,6 +12,8 @@ IRIS explicitly says that NetBSD guests are not regularly tested. Its reported I
 
 Additional reference recorded on 2026-10-16: [SGIEmu](FEASIBILITY.md#sgiemu-emulator), particularly its Newport implementation, device tests and tracing runner. Its inspected documentation lists Windows-only operation and missing Ethernet emulation. NetBSD has not been qualified by Xiri, so this addition does not change the initial harness choice.
 
+Additional reference recorded on 2026-10-19: [irix-emu](FEASIBILITY.md#irix-emu-emulator), an R5000/Newport implementation with graphics tracing and device tests. Ethernet is documented as unimplemented and NetBSD remains unqualified. Its glpass library uses emulator hypercalls and a macOS host GPU; evaluate that separately from hardware-driver correctness and original-IRIX reference runs. The initial IRIS/MAME choice remains in place.
+
 ## Comparison for Xiri
 
 | Need | IRIS | MAME | Consequence |

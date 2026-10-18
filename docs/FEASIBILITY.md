@@ -1,6 +1,6 @@
 # Xiri feasibility and platform choice
 
-Research dates: 2026-10-14; emulator development assessment updated 2026-10-15; SGIEmu reference added 2026-10-16; irix-work reference added 2026-10-19.
+Research dates: 2026-10-14; emulator development assessment updated 2026-10-15; SGIEmu reference added 2026-10-16; irix-work and irix-emu references added 2026-10-19.
 
 The agreed Xiri target is NetBSD plus an IRIX personality and the existing IRIX desktop, running on real SGI machines. Recreating the whole IRIX kernel would add substantial work without removing the need for hardware drivers, application ports, or graphics compatibility.
 
@@ -58,6 +58,17 @@ Useful starting points:
 - [Preliminary Octane implementation](https://github.com/RenatoTarabella/SGIEmu/blob/5870980dc1f38b40bcdcabd7cfacb0b410d96ac8/src/octane/octane.c): HEART, XBOW, BRIDGE and IOC3 work to examine during later board-support research; its presence does not establish a working Octane guest.
 
 The inspected README documents Windows-only operation, no Ethernet or audio emulation, graphics limitations, and a requirement for external PROM and IRIX images. NetBSD operation remains unqualified. Use this as an additional implementation to investigate and compare with traces and physical hardware; the initial IRIS/MAME development plan remains in place.
+
+### irix-emu emulator
+
+[geoffroyvergne/irix-emu](https://github.com/geoffroyvergne/irix-emu) implements an Indy IP24/R5000 with Newport XL8 graphics in C++23 with an SDL3 frontend. Its README reports IRIX 6.5 installation and desktop operation. Reference revision: [5914d75bdadc](https://github.com/geoffroyvergne/irix-emu/tree/5914d75bdadc402b1367026d8b3158fb49581c9e), inspected on 2026-10-19. Xiri has not built or boot-tested it. [Pinned README](https://github.com/geoffroyvergne/irix-emu/blob/5914d75bdadc402b1367026d8b3158fb49581c9e/README.md).
+
+Useful starting points:
+
+- [Newport implementation](https://github.com/geoffroyvergne/irix-emu/blob/5914d75bdadc402b1367026d8b3158fb49581c9e/src/graphics/Newport.cpp) and [core tests](https://github.com/geoffroyvergne/irix-emu/blob/5914d75bdadc402b1367026d8b3158fb49581c9e/tests/CoreTests.cpp): register behavior, DCB, rasterization, cursor and device interactions. The README documents graphics/DMA tracing, scripted input and screenshots for investigations.
+- [glpass documentation](https://github.com/geoffroyvergne/irix-emu/blob/5914d75bdadc402b1367026d8b3158fb49581c9e/glpass/README.md): a replacement IRIX `libGL.so` sends calls through emulator hypercalls to a macOS OpenGL backend. Its GLX, colour-index, window-tracking and threading work may inform graphics compatibility research. Applying those ideas on real SGI hardware would require a suitable renderer and integration in Xiri; the host-GPU results do not establish an accelerated SGI driver.
+
+The inspected README lists Ethernet and audio as unimplemented and CPU caches as unmodeled. Its fault policy also allows skipping unimplemented instructions and returning zero for unemulated registers, which must be considered when interpreting successful tests. NetBSD operation remains unqualified. Keep glpass separate from original-IRIX behavioral baselines because it replaces the graphics library and uses emulator-specific services. Treat this project as an additional research implementation while retaining the initial IRIS/MAME harness plan.
 
 ### REA reverse-engineering tools
 
