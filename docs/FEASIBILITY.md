@@ -1,6 +1,6 @@
 # Xiri feasibility and platform choice
 
-Research dates: 2026-10-14; emulator development assessment updated 2026-10-15; SGIEmu reference added 2026-10-16.
+Research dates: 2026-10-14; emulator development assessment updated 2026-10-15; SGIEmu reference added 2026-10-16; irix-work reference added 2026-10-19.
 
 The agreed Xiri target is NetBSD plus an IRIX personality and the existing IRIX desktop, running on real SGI machines. Recreating the whole IRIX kernel would add substantial work without removing the need for hardware drivers, application ports, or graphics compatibility.
 
@@ -66,6 +66,20 @@ The inspected README documents Windows-only operation, no Ethernet or audio emul
 Potential uses for Xiri include investigating original graphics drivers, firmware and other proprietary interfaces: locating register accesses, command construction, initialization sequences and synchronization paths. Desktop library dependencies and IRIX ABI behavior are additional candidates. These are proposed uses, not demonstrated REA results on SGI software.
 
 REA is an optional analysis tool, not a prerequisite for the first NetBSD boot. It requires a supported Node.js/npm environment and a configured native-analysis provider. Before adoption, verify the provider's handling of representative big-endian MIPS/IRIX binaries and relevant o32/n32 layouts. Xiri has not installed or validated it. Treat recovered pseudocode as a hypothesis; corroborate findings with instruction-level evidence, emulator traces and physical-machine observations. See the [reverse-engineering workflow](ARCHITECTURE.md#reverse-engineering-workflow).
+
+### irix-work desktop reverse engineering
+
+[gazecube/irix-work](https://github.com/gazecube/irix-work) targets reverse engineering of the IRIX desktop stack for x86-64 Linux. Its `irix-re` branch and [desktop handoff dated 2026-10-11](https://github.com/gazecube/irix-work/blob/irix-re/IRIX-HANDOFF-2026-10-11.md) were reviewed on 2026-10-19. The handoff describes recompiled native runners and host bridges, with component-specific progress and unresolved failures. Xiri has not built or run this work.
+
+Particularly relevant research leads:
+
+- X11 resource handling and window-manager behavior: observations about `4Dwm`, X resource parsing, drawing synchronization and extension handling.
+- Desktop integration: session launch/logout, file monitoring through FAM, Icon Catalog data generated from installation metadata, and host application launch experiments.
+- Compatibility details: executable initialization, null-page behavior, pseudo-terminal handling and runtime memory corruption investigations involving desktop libraries.
+
+The [desktop integration tree](https://github.com/gazecube/irix-work/tree/irix-re/desktop-integration) and handoff provide starting points for the desktop dependency manifest and focused behavioral probes. The inspected notes also report incomplete Icon Catalog behavior, file-manager instability and terminal shell-launch problems; they do not establish a fully working desktop.
+
+Use these findings to inform Xiri's NetBSD personality and service adapters. The Linux/x86-64 execution approach has different CPU, ABI and host-service boundaries, so validate each proposed behavior against original IRIX before adopting it for native MIPS execution. The agreed NetBSD foundation and original-desktop preservation target remain in place.
 
 ## Platform choice
 
