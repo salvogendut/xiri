@@ -1,6 +1,6 @@
 # Xiri feasibility and platform choice
 
-Research dates: 2026-10-14; emulator development assessment updated 2026-10-15; SGIEmu reference added 2026-10-16; irix-work and irix-emu references added 2026-10-19.
+Research dates: 2026-10-14; emulator development assessment updated 2026-10-15; SGIEmu reference added 2026-10-16; irix-work, irix-emu and IRIXKernel references added 2026-10-19.
 
 The agreed Xiri target is NetBSD plus an IRIX personality and the existing IRIX desktop, running on real SGI machines. Recreating the whole IRIX kernel would add substantial work without removing the need for hardware drivers, application ports, or graphics compatibility.
 
@@ -91,6 +91,14 @@ Particularly relevant research leads:
 The [desktop integration tree](https://github.com/gazecube/irix-work/tree/irix-re/desktop-integration) and handoff provide starting points for the desktop dependency manifest and focused behavioral probes. The inspected notes also report incomplete Icon Catalog behavior, file-manager instability and terminal shell-launch problems; they do not establish a fully working desktop.
 
 Use these findings to inform Xiri's NetBSD personality and service adapters. The Linux/x86-64 execution approach has different CPU, ABI and host-service boundaries, so validate each proposed behavior against original IRIX before adopting it for native MIPS execution. The agreed NetBSD foundation and original-desktop preservation target remain in place.
+
+### IRIXKernel build research
+
+[shawlucas/IRIXKernel](https://github.com/shawlucas/IRIXKernel) describes itself as an incomplete attempt to compile the IRIX kernel on modern Linux. Reference revision: [3e9c861567ce](https://github.com/shawlucas/IRIXKernel/tree/3e9c861567cef1243127e4aaa1cf44e61f3b2e4c), inspected on 2026-10-19; that commit is dated 2020-06-21. [Pinned README](https://github.com/shawlucas/IRIXKernel/blob/3e9c861567cef1243127e4aaa1cf44e61f3b2e4c/README.md).
+
+The inspected tree includes [libc math material](https://github.com/shawlucas/IRIXKernel/tree/3e9c861567cef1243127e4aaa1cf44e61f3b2e4c/lib/libc/src/math), [SGI-related headers](https://github.com/shawlucas/IRIXKernel/tree/3e9c861567cef1243127e4aaa1cf44e61f3b2e4c/include) and [assembler work](https://github.com/shawlucas/IRIXKernel/tree/3e9c861567cef1243127e4aaa1cf44e61f3b2e4c/as). These are possible leads for runtime conventions, floating-point behavior and historical build/toolchain investigations. Compare any relevant findings with original-IRIX probes before relying on them.
+
+Xiri has reviewed the README and repository layout only. Kernel buildability, graphics-driver coverage and applicability to NetBSD remain unverified; no code has been imported into Xiri or built. Keep this as an exploratory source alongside the other compatibility and reverse-engineering references.
 
 ## Platform choice
 
