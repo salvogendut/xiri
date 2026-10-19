@@ -1,6 +1,6 @@
 # Xiri feasibility and platform choice
 
-Research dates: 2026-10-14; emulator development assessment updated 2026-10-15; SGIEmu reference added 2026-10-16; irix-work, irix-emu and IRIXKernel references added 2026-10-19.
+Research dates: 2026-10-14; emulator development assessment updated 2026-10-15; SGIEmu reference added 2026-10-16; irix-work, irix-emu, IRIXKernel and IRIX-Simulator references added 2026-10-19.
 
 The agreed Xiri target is NetBSD plus an IRIX personality and the existing IRIX desktop, running on real SGI machines. Recreating the whole IRIX kernel would add substantial work without removing the need for hardware drivers, application ports, or graphics compatibility.
 
@@ -99,6 +99,17 @@ Use these findings to inform Xiri's NetBSD personality and service adapters. The
 The inspected tree includes [libc math material](https://github.com/shawlucas/IRIXKernel/tree/3e9c861567cef1243127e4aaa1cf44e61f3b2e4c/lib/libc/src/math), [SGI-related headers](https://github.com/shawlucas/IRIXKernel/tree/3e9c861567cef1243127e4aaa1cf44e61f3b2e4c/include) and [assembler work](https://github.com/shawlucas/IRIXKernel/tree/3e9c861567cef1243127e4aaa1cf44e61f3b2e4c/as). These are possible leads for runtime conventions, floating-point behavior and historical build/toolchain investigations. Compare any relevant findings with original-IRIX probes before relying on them.
 
 Xiri has reviewed the README and repository layout only. Kernel buildability, graphics-driver coverage and applicability to NetBSD remain unverified; no code has been imported into Xiri or built. Keep this as an exploratory source alongside the other compatibility and reverse-engineering references.
+
+### IRIX-Simulator desktop appearance and interaction
+
+[Sergutsu/IRIX-Simulator](https://github.com/Sergutsu/IRIX-Simulator) is a web-based recreation of the IRIX desktop. Its README describes 4Dwm-style windows, SGI Motif widgets, Toolchest, desktop icons, workspace switching and session persistence. Reference revision: [6eb3406f7c79](https://github.com/Sergutsu/IRIX-Simulator/tree/6eb3406f7c7991e3a67e55945c933066a355b379), inspected on 2026-10-19. [Pinned README](https://github.com/Sergutsu/IRIX-Simulator/blob/6eb3406f7c7991e3a67e55945c933066a355b379/README.md).
+
+Its role in Xiri is limited to **desktop look and feel and interaction mechanics**, as requested. Useful starting points include:
+
+- [Desktop components](https://github.com/Sergutsu/IRIX-Simulator/tree/6eb3406f7c7991e3a67e55945c933066a355b379/src/components) and [styles](https://github.com/Sergutsu/IRIX-Simulator/blob/6eb3406f7c7991e3a67e55945c933066a355b379/src/styles/irix.css): window decoration, focus, minimized tiles, menus, icon interaction and Desks Overview.
+- [Screenshot reference catalog](https://github.com/Sergutsu/IRIX-Simulator/blob/6eb3406f7c7991e3a67e55945c933066a355b379/src/reference/irixScreenshots.ts) and [desktop specifications](https://github.com/Sergutsu/IRIX-Simulator/blob/6eb3406f7c7991e3a67e55945c933066a355b379/docs/IRIX_6.5_SPECIFICATIONS.md): leads for visual comparison and interaction checklists.
+
+Treat the simulator's choices as secondary references and verify them against SGI documentation and the selected original-IRIX installation. This reference supplies no evidence of IRIX binary compatibility, kernel or hardware behavior, or completion of Xiri's original-desktop preservation goal. Xiri has reviewed its README and repository layout only; the simulator has not been run or its fidelity validated here.
 
 ## Platform choice
 
