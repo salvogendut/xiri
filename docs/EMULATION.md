@@ -1,6 +1,6 @@
 # Indy emulation development environment
 
-Decision and research date: 2026-10-15. This is a proposed setup based on upstream documentation and source inspection. Neither emulator has been built or boot-tested by Xiri; no speed comparison has been measured.
+Initial decision and research date: 2026-10-15; implementation strategy reviewed on 2026-10-19. This is a proposed setup based on upstream documentation and source inspection. No emulator has been built or boot-tested by Xiri; no speed comparison has been measured.
 
 ## Decision
 
@@ -15,6 +15,39 @@ Additional reference recorded on 2026-10-16: [SGIEmu](FEASIBILITY.md#sgiemu-emul
 Additional reference recorded on 2026-10-19: [irix-emu](FEASIBILITY.md#irix-emu-emulator), an R5000/Newport implementation with graphics tracing and device tests. Ethernet is documented as unimplemented and NetBSD remains unqualified. Its glpass library uses emulator hypercalls and a macOS host GPU; evaluate that separately from hardware-driver correctness and original-IRIX reference runs. The initial IRIS/MAME choice remains in place.
 
 Additional reference recorded on 2026-10-19: [qemu-sgi-ip22](FEASIBILITY.md#qemu-sgi-ip22-emulator), a QEMU Indy/R4400 model with device-trace comparison notes, reported IRIX/Linux boot and preliminary Newport support. Its documented ARCS firmware boot path, TAP networking and incomplete graphics need separate qualification; Xiri has not tested NetBSD on it. Use it as another source for device behavior and test methods while retaining the initial IRIS/MAME choice.
+
+## Recommended implementation strategy
+
+Use an existing full-system Indy emulator and develop Xiri inside NetBSD/sgimips. Keep the emulator changes limited to defects and instrumentation exposed by the workload, with small patches suitable for upstream submission. The project's deliverable remains NetBSD plus IRIX compatibility on physical SGI hardware; developing a new emulator would add a separate CPU and device implementation to maintain.
+
+### Roles for the available implementations
+
+| Implementation | Recommended role | Condition for expanding that role |
+| --- | --- | --- |
+| IRIS | First candidate for everyday NetBSD development and original-IRIX reference sessions | Pass the boot, I/O, debugger and repeatability gates below |
+| MAME | Independent reproduction of key failures and fallback development environment | Demonstrate the relevant NetBSD stage with a recorded configuration |
+| qemu-sgi-ip22 | Additional kernel/device investigation candidate and source of differential-tracing methods | Qualify NetBSD, its firmware path and required devices; partial graphics must be assessed before desktop use |
+| SGIEmu and irix-emu | Focused device and graphics research references | Demonstrate the required guest behavior before depending on either as a harness |
+
+This division follows the [source assessments](FEASIBILITY.md#existing-work). QEMU's broader infrastructure makes its SGI fork interesting for future automation, but the inspected fork's reported IRIX/Linux boots do not establish NetBSD or desktop readiness. Do not require every emulator to be operational before beginning Xiri work. Select a fallback because it passes a needed test, and retain the failing case for the other implementation.
+
+### One machine configuration, two guest installations
+
+Begin with the proposed Indy IP24/R5000/Newport configuration below. Once the physical Indy is inventoried, align the CPU instruction set, RAM and graphics variant where supported, and record any differences. Keep an original-IRIX reference disk and a separate NetBSD/Xiri development disk, each with its own writable state. They can run sequentially when host resources are limited.
+
+Cross-build NetBSD kernels and test programs on the modern host. Run the same behavioral probes on original IRIX and Xiri, comparing outputs, errors, signals and desktop operations. Preserve the original IRIX libraries and rendering path for reference runs. Emulator-specific host-call or host-GPU bridges belong to separate experiments; they add interfaces unavailable on the physical machine.
+
+Keep the test procedure independent of any one emulator: launch, capture serial output, wait for an explicit guest marker, transfer a probe, collect its result and reset the guest. Implement only the first required backend adapter, then add others when a comparison is useful. Retain guest tests and expected behavior across backends, while recording differences in CPU, firmware and device configuration.
+
+### Order of work
+
+1. Boot an unmodified NetBSD installation kernel in IRIS, install it and reach multiuser over serial. Establish this baseline before changing the compatibility layer.
+2. Verify disk persistence, networking and a changed host-built kernel. Demonstrate a debugger breakpoint and an automated probe with a timeout. Use the debug-capable interpreter profile first; assess optimized profiles against that baseline later.
+3. Reproduce a failure in MAME or another suitable implementation before attributing it to NetBSD. If a broad emulator blocker prevents progress, qualify an alternative instead of making Xiri depend on an emulator-specific workaround.
+4. Add ABI and desktop tests incrementally. Use a dedicated external X display to isolate client/ABI problems when useful, and qualify the NetBSD X server on emulated Newport separately for the local desktop.
+5. Run a physical Indy boot and I/O smoke test as soon as hardware access permits, then repeat ABI and desktop milestones there. Full hardware-release acceptance still follows the [roadmap](ROADMAP.md). Early physical checks reduce the risk of depending on inaccurate cache, DMA or interrupt behavior.
+
+For graphics research, start with one operation and compare the original driver's accesses with emulator traces, then verify the proposed behavior on hardware. A successful host-GPU demo or agreement between two emulators is supporting evidence, not a physical-driver acceptance result. Extend to Indigo2 and Octane after the Indy execution path is established.
 
 ## Comparison for Xiri
 

@@ -57,6 +57,7 @@ The NetBSD boot and desktop experiments can be performed independently as their 
 - [ ] Automate a probe with output, exit status, timeout and clean-state repetition; compare ordinary and CI execution.
 - [ ] Qualify snapshots separately, keeping changed-kernel tests on cold boots.
 - [ ] Repeat key boot and probe results in MAME when firmware is available; use it as primary if it passes a stage IRIS fails.
+- [ ] When hardware access permits, run an early physical Indy boot and I/O smoke test to expose differences from emulation; retain full ABI and desktop hardware acceptance for Milestone 4.
 - [ ] Establish a usable NetBSD X display and input on emulated Newport, or record the precise driver gap.
 - [ ] Run selected original desktop clients on IRIX against a dedicated modern X server.
 - [ ] Record required visuals, X extensions, fonts, libraries, and helper processes; distinguish confirmed requirements from suspected ones.
