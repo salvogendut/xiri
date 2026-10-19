@@ -14,6 +14,8 @@ Additional reference recorded on 2026-10-16: [SGIEmu](FEASIBILITY.md#sgiemu-emul
 
 Additional reference recorded on 2026-10-19: [irix-emu](FEASIBILITY.md#irix-emu-emulator), an R5000/Newport implementation with graphics tracing and device tests. Ethernet is documented as unimplemented and NetBSD remains unqualified. Its glpass library uses emulator hypercalls and a macOS host GPU; evaluate that separately from hardware-driver correctness and original-IRIX reference runs. The initial IRIS/MAME choice remains in place.
 
+Additional reference recorded on 2026-10-19: [qemu-sgi-ip22](FEASIBILITY.md#qemu-sgi-ip22-emulator), a QEMU Indy/R4400 model with device-trace comparison notes, reported IRIX/Linux boot and preliminary Newport support. Its documented ARCS firmware boot path, TAP networking and incomplete graphics need separate qualification; Xiri has not tested NetBSD on it. Use it as another source for device behavior and test methods while retaining the initial IRIS/MAME choice.
+
 ## Comparison for Xiri
 
 | Need | IRIS | MAME | Consequence |

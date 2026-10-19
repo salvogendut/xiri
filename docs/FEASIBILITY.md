@@ -1,6 +1,6 @@
 # Xiri feasibility and platform choice
 
-Research dates: 2026-10-14; emulator development assessment updated 2026-10-15; SGIEmu reference added 2026-10-16; irix-work, irix-emu, IRIXKernel and IRIX-Simulator references added 2026-10-19.
+Research started on 2026-10-14. The emulator development assessment was updated on 2026-10-15; additional references were added through 2026-10-19. Individual entries record their inspection dates and source revisions where available.
 
 The agreed Xiri target is NetBSD plus an IRIX personality and the existing IRIX desktop, running on real SGI machines. Recreating the whole IRIX kernel would add substantial work without removing the need for hardware drivers, application ports, or graphics compatibility.
 
@@ -69,6 +69,18 @@ Useful starting points:
 - [glpass documentation](https://github.com/geoffroyvergne/irix-emu/blob/5914d75bdadc402b1367026d8b3158fb49581c9e/glpass/README.md): a replacement IRIX `libGL.so` sends calls through emulator hypercalls to a macOS OpenGL backend. Its GLX, colour-index, window-tracking and threading work may inform graphics compatibility research. Applying those ideas on real SGI hardware would require a suitable renderer and integration in Xiri; the host-GPU results do not establish an accelerated SGI driver.
 
 The inspected README lists Ethernet and audio as unimplemented and CPU caches as unmodeled. Its fault policy also allows skipping unimplemented instructions and returning zero for unemulated registers, which must be considered when interpreting successful tests. NetBSD operation remains unqualified. Keep glpass separate from original-IRIX behavioral baselines because it replaces the graphics library and uses emulator-specific services. Treat this project as an additional research implementation while retaining the initial IRIS/MAME harness plan.
+
+### qemu-sgi-ip22 emulator
+
+[dsheffie/qemu-sgi-ip22](https://github.com/dsheffie/qemu-sgi-ip22) adds a full-system Indy machine model (`-M indy`) with an R4400 CPU to QEMU. Its [SGI guide](https://github.com/dsheffie/qemu-sgi-ip22/blob/e24b3c7fe0b969eebdcc7e538ce490adefa73ddd/docs/index.md) reports IRIX 6.5 reaching an interactive root shell and IP22 Linux reaching userspace. Reference revision: [e24b3c7fe0b96](https://github.com/dsheffie/qemu-sgi-ip22/tree/e24b3c7fe0b969eebdcc7e538ce490adefa73ddd), inspected on 2026-10-19. Xiri has not built or boot-tested it; NetBSD remains unqualified.
+
+Useful starting points:
+
+- [Device-trace comparison notes](https://github.com/dsheffie/qemu-sgi-ip22/blob/e24b3c7fe0b969eebdcc7e538ce490adefa73ddd/QEMU_IP22_HANDOFF.md): comparisons against `interp_mips` that exposed byte-lane, SCSI DMA, interrupt, serial and RTC problems. These are useful methods for our reverse-engineering probes; confirm inferred hardware behavior on physical machines.
+- [Newport implementation](https://github.com/dsheffie/qemu-sgi-ip22/blob/e24b3c7fe0b969eebdcc7e538ce490adefa73ddd/hw/display/sgi_newport.c) and [latest commit notes](https://github.com/dsheffie/qemu-sgi-ip22/commit/e24b3c7fe0b969eebdcc7e538ce490adefa73ddd): optional `-M indy,newport=on` graphics and an 8042 keyboard/mouse controller. The commit reports graphical console and X11 startup, with missing overlay/popup/display-ID planes, retrace timing and drawing features. The guide and handoff still describe graphics/input as absent, so use the commit and source to resolve that documentation gap; a complete desktop is not established.
+- [Board and device models](https://github.com/dsheffie/qemu-sgi-ip22/tree/e24b3c7fe0b969eebdcc7e538ce490adefa73ddd/hw/mips): follow `ip22.c` into the MC, HPC3, IOC2, WD33C93 and Seeq implementations for additional hardware comparisons.
+
+The documented boot path uses supplied ARCS/FSBL firmware, an extracted IRIX kernel and an installed disk image. This boot path needs separate qualification from real SGI PROM boot. The guide reports working IRIX networking over TAP and unresolved user-mode/slirp networking. Record firmware and network backend with any future run. Retain this as an additional emulation and device-research source while qualifying the initial IRIS/MAME setup.
 
 ### REA reverse-engineering tools
 
