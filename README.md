@@ -6,9 +6,9 @@ The agreed target is NetBSD underneath, an IRIX binary compatibility layer, and 
 
 ## Project status
 
-Planning and feasibility research started 2026-10-14. Milestone 0 setup began 2026-10-29 with a [pinned IRIS CLI build](lab/iris/README.md). No kernel, compatibility layer, desktop port, emulator boot validation, or hardware validation has been implemented in this repository.
+Planning and feasibility research started 2026-10-14. Milestone 0 setup began 2026-10-29 with a [pinned IRIS CLI build](lab/iris/README.md). NetBSD 11.0 now installs and boots to multiuser on an emulated R4400 Indy. Kernel changes, the compatibility layer, desktop port, and hardware validation remain pending.
 
-The candidate build host has been [inventoried](docs/results/2026-10-29-host-inventory.md), and [NetBSD 11.0 sgimips inputs](lab/netbsd-11.0/README.md) have been downloaded and verified. Guest setup and testing remain pending. Use the [development setup checklist](docs/ROADMAP.md#development-setup-checklist) for the remaining work.
+The candidate build host has been [inventoried](docs/results/2026-10-29-host-inventory.md), and [NetBSD 11.0 sgimips inputs](lab/netbsd-11.0/README.md) have been downloaded and verified. The [guest lab](lab/indy-netbsd/README.md) and [installation record](docs/results/2026-10-29-indy-netbsd-install.md) retain the configuration, disk layout, boot evidence, and unresolved emulator issues. Use the [development setup checklist](docs/ROADMAP.md#development-setup-checklist) for the remaining work.
 
 Confirmed project requirements:
 
@@ -30,7 +30,7 @@ Hardware available for testing: Indy, Indigo2, and Octane. Exact CPU, graphics, 
 
 ## First milestone
 
-Establish a reproducible NetBSD development loop on an emulated Indy: installer, installed guest, host-built kernel, and automated probe. IRIS is the preferred initial harness, subject to NetBSD qualification; MAME provides an independent comparison and fallback. Neither has been boot-tested by this project.
+Establish a reproducible NetBSD development loop on an emulated Indy: installer, installed guest, host-built kernel, and automated probe. The installer and installed guest now boot in IRIS with the R4400 profile. Host cross-builds, debugger checks, automated probes, and ordinary-versus-CI comparison remain pending. MAME provides an independent comparison and fallback and has not yet been tested by this project.
 
 Characterize the original IRIX desktop's dependencies once reference media is available. The user has no local PROM or IRIX image yet. IRIS documents an embedded PROM fallback, allowing the first NetBSD experiment to proceed without a separate PROM file; the IRIX reference and desktop experiments still require an IRIX installation. See the [prerequisites](docs/EMULATION.md#prerequisites-and-current-gaps).
 

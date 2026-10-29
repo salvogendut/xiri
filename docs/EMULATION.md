@@ -1,6 +1,6 @@
 # Indy emulation development environment
 
-Initial decision and research date: 2026-10-15; implementation strategy reviewed on 2026-10-19. This is a proposed setup based on upstream documentation and source inspection. No emulator has been built or boot-tested by Xiri; no speed comparison has been measured.
+Initial decision and research date: 2026-10-15; implementation strategy reviewed on 2026-10-19. Execution started on 2026-10-29: the pinned IRIS build installs and boots NetBSD 11.0 on the R4400 profile. See the [installation record](results/2026-10-29-indy-netbsd-install.md). Broader qualification and speed comparisons remain pending.
 
 ## Decision
 
@@ -68,9 +68,9 @@ Sources: [IRIS options and build features][iris-features], [storage and automati
 
 The inspected IRIS revision is `21c0ecb024b3a7dc9e11514fa1b5302363071bf6`. MAME source was inspected at release tag `mame0289`. These are research baselines, not qualified Xiri releases. Pin the actual source revision and build options when creating the lab; record any changes from these baselines.
 
-Proposed guest configuration:
+Guest configuration:
 
-- Indy IP24 with an R5000 and Newport graphics: IRIS `indy_ip24`/`r5000`/`newport`, MAME `indy_5015`. This is an emulated reference configuration, pending inventory of the user's physical Indy.
+- The working IRIS baseline uses `indy_ip24`/`r4400`/`newport`. The originally proposed R5000 profile panicked in the NetBSD 11.0 installer with `r5k picache line size 16`. The proposed MAME `indy_5015` comparison remains untested; select and record its CPU configuration before comparing results. Physical Indy inventory is still pending.
 - Use a RAM size supported by both configurations, recording the actual amount each reports. Start with IRIS's default 256 MiB and inspect MAME's configuration before claiming equivalence.
 - NetBSD 11.0/sgimips, big-endian MIPS, initially the 32-bit `INSTALL32_IP2x` and `GENERIC32_IP2x` kernels. A 64-bit-capable CPU does not require starting with a 64-bit kernel. [NetBSD installation notes][netbsd-install].
 - Separate NetBSD and original-IRIX disks; separate working copies, NVRAM, sockets, ports, and logs for each emulator instance. Record MAC addresses and PROM settings.
@@ -80,19 +80,19 @@ The NetBSD release establishes an unmodified baseline. Pin matching source befor
 
 ## Prerequisites and current gaps
 
-Milestone 0 provisioning began on 2026-10-29. A [candidate build host was inventoried](results/2026-10-29-host-inventory.md), a [pinned IRIS CLI build completed](results/2026-10-29-iris-build.md), and [NetBSD inputs were verified](results/2026-10-29-netbsd-inputs.md). Guest testing is pending. The [development setup checklist](ROADMAP.md#development-setup-checklist) records the remaining actions.
+Milestone 0 provisioning began on 2026-10-29. A [candidate build host was inventoried](results/2026-10-29-host-inventory.md), a [pinned IRIS CLI build completed](results/2026-10-29-iris-build.md), and [NetBSD inputs were verified](results/2026-10-29-netbsd-inputs.md). The [installed R4400 guest](results/2026-10-29-indy-netbsd-install.md) boots to multiuser. The [development setup checklist](ROADMAP.md#development-setup-checklist) records the remaining actions.
 
 | Item | Why it is needed | Current status |
 | --- | --- | --- |
-| Host build environment and storage | Emulator, cross-toolchain, source/object trees, guest disks | Candidate Fedora 44 host inventoried; IRIS build environment provisioned; NetBSD cross-tools and guest disks pending |
-| IRIS source and Rust toolchain | Debug-capable emulator build | Built at the pinned revision and nightly in the [build record](results/2026-10-29-iris-build.md); guest behavior unqualified |
-| NetBSD sgimips installer, sets, checksums and matching source | Boot baseline and modified-kernel loop | Downloaded and verified in the [input record](results/2026-10-29-netbsd-inputs.md); guest boot and source extraction pending |
-| Indy PROM | Firmware baseline and MAME ROM verification | User has no local image yet; IRIS documents an embedded fallback |
+| Host build environment and storage | Emulator, cross-toolchain, source/object trees, guest disks | Fedora 44 host and IRIS build environment provisioned; installed guest disk retained; NetBSD cross-tools pending |
+| IRIS source and Rust toolchain | Debug-capable emulator build | Built at the pinned revision and nightly in the [build record](results/2026-10-29-iris-build.md); R4400 install and disk boot passed with CI enabled |
+| NetBSD sgimips installer, sets, checksums and matching source | Boot baseline and modified-kernel loop | Inputs verified; guest installed; `syssrc` extracted for cache investigation; complete host build tree and cross-tools pending |
+| Indy PROM | Firmware baseline and MAME ROM verification | IRIS embedded fallback exercised; external firmware for MAME remains unavailable |
 | IRIX installation media or an image from the user's machine | Original behavior, libraries, desktop and application inventory | User has no local image yet; required for the IRIX reference experiments |
 | MAME executable and matching ROM configuration | Independent reproduction of failures | Not installed |
 | Physical Indy configuration and serial access | Later hardware qualification | Machine available; CPU, graphics and connection details pending |
 
-The IRIS fallback supplies firmware behavior; it does not supply an installed IRIX filesystem. We can attempt the NetBSD bootstrap before obtaining IRIX media. Keep original firmware, OS images, and imported desktop binaries outside Git; retain manifests, hashes, acquisition notes, configurations, and test logs here.
+The IRIS fallback supplied firmware for the NetBSD bootstrap. Original-IRIX reference work still needs an installed IRIX filesystem. Keep original firmware, OS images, and imported desktop binaries outside Git; retain manifests, hashes, acquisition notes, configurations, and test logs here.
 
 For MAME's R5000 Indy, the inspected driver names `ip24prom.070-9101-011.bin` (512 KiB; SHA-1 `ac663a4db68528e400487e98cbf901f620fb30ce`). Verify the installed build's requirements with `mame indy_5015 -listroms` and `-verifyroms`; use its media/slot listings to derive attachment options. Obtain the appropriate firmware from an available machine or another authorized source rather than assuming any Indy dump matches. [MAME ROM declarations][mame-indy].
 
@@ -140,7 +140,7 @@ MAME automation should use Lua, console capture and an external wall-clock timeo
 
 ## Qualification gate
 
-Every row is pending. Store small run records under `docs/results/` when execution starts; include full commands, versions, configuration, input hashes, logs and outcomes. Store large images separately.
+Firmware, installation, and persistent-guest checks have execution evidence in the [2026-10-29 run record](results/2026-10-29-indy-netbsd-install.md), limited to the R4400 profile with CI enabled. Disk marker persistence passed, while large HTTP transfers stalled and the NFS install attempt failed. The remaining gates are pending. Store small run records under `docs/results/`, including commands, versions, configuration, input hashes, logs and outcomes; keep large images separately.
 
 | Stage | Required evidence |
 | --- | --- |

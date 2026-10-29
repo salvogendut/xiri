@@ -16,6 +16,9 @@ build. X11 sets and `xsrc` can be fetched when display testing starts.
 
 Downloads and derived files live under `.work/netbsd-11.0/`, outside Git. The
 script writes uncompressed ELF and ECOFF install kernels into
-`.work/netbsd-11.0/tftp/` for the next boot experiment. No disk image or
-guest configuration has been prepared yet. See the
-[input record](../../docs/results/2026-10-29-netbsd-inputs.md) for this run.
+`.work/netbsd-11.0/tftp/` for boot experiments. The
+[Indy guest lab](../indy-netbsd/README.md) uses these files for the installed
+R4400 baseline. See the [input record](../../docs/results/2026-10-29-netbsd-inputs.md)
+for verification details and the
+[installation record](../../docs/results/2026-10-29-indy-netbsd-install.md)
+for boot results.

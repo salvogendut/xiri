@@ -1,0 +1,34 @@
+# Run IRIS from the Xiri repository root. Paths are relative to that directory.
+nvram = ".work/indy-netbsd/nvram.bin"
+banks = [128, 128, 0, 0]
+headless = false
+no_audio = true
+scsi_deferred_int = true
+nat_subnet = "192.168.231.0/24"
+monitor_port = 8898
+serial_port_a = 8890
+serial_port_b = 8891
+ci = true
+ci_socket = ".work/indy-netbsd/iris.sock"
+serial_log = ".work/indy-netbsd/serial.log"
+
+[machine]
+profile = "indy_ip24"
+cpu = "r4400"
+
+[graphics]
+board = "newport"
+
+[scsi.1]
+path = ".work/indy-netbsd/disk.raw"
+cdrom = false
+overlay = false
+
+[scsi.4]
+path = ".work/indy-netbsd/sets.iso"
+cdrom = true
+
+[network]
+mode = "nat"
+mac = "08:00:69:12:34:57"
+tftp_dir = ".work/netbsd-11.0/tftp"
