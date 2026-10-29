@@ -80,12 +80,12 @@ The NetBSD release establishes an unmodified baseline. Pin matching source befor
 
 ## Prerequisites and current gaps
 
-Provisioning and testing are pending. Inventory the selected build host before choosing build settings or installing dependencies. The [development setup checklist](ROADMAP.md#development-setup-checklist) records the next actions.
+Milestone 0 provisioning began on 2026-10-29. A [candidate build host was inventoried](results/2026-10-29-host-inventory.md) and a [pinned IRIS CLI build completed](results/2026-10-29-iris-build.md). Guest testing is pending. The [development setup checklist](ROADMAP.md#development-setup-checklist) records the remaining actions.
 
 | Item | Why it is needed | Current status |
 | --- | --- | --- |
-| Host build environment and storage | Emulator, cross-toolchain, source/object trees, guest disks | Selected build host to inventory and provision; earlier session measurements below |
-| IRIS source and Rust toolchain | Debug-capable emulator build | Not installed; select an exact nightly and retain resolved dependencies |
+| Host build environment and storage | Emulator, cross-toolchain, source/object trees, guest disks | Candidate Fedora 44 host inventoried; IRIS build environment provisioned; NetBSD cross-tools and guest disks pending |
+| IRIS source and Rust toolchain | Debug-capable emulator build | Built at the pinned revision and nightly in the [build record](results/2026-10-29-iris-build.md); guest behavior unqualified |
 | NetBSD sgimips installer, sets, checksums and matching source | Boot baseline and modified-kernel loop | To obtain from the official release distribution |
 | Indy PROM | Firmware baseline and MAME ROM verification | User has no local image yet; IRIS documents an embedded fallback |
 | IRIX installation media or an image from the user's machine | Original behavior, libraries, desktop and application inventory | User has no local image yet; required for the IRIX reference experiments |
@@ -112,7 +112,7 @@ Build the CLI and automation client first. The intended starting command, from t
 cargo build --release --bin iris --bin iris-ci
 ```
 
-This command has not been executed here. The source selects a rolling `nightly` toolchain; record an exact working nightly date, `rustc -Vv`, the resolved lockfile, native dependency versions and build features. Linux dependencies include native audio/video/windowing libraries and C/Clang tooling; resolve the CLI's requirements from its manifest and upstream build instructions. The full GUI packaging dependency list is broader than this first build. [Cargo manifest][iris-cargo], [toolchain selection][iris-toolchain], [release build dependencies][iris-release].
+This command was executed on 2026-10-29 with an exact nightly and locked dependencies; see the [build record](results/2026-10-29-iris-build.md). The source selects a rolling `nightly` toolchain by default, so retain the recorded toolchain, lockfile, native dependency versions and build features when reproducing it. The full GUI packaging dependency list is broader than this CLI build. [Cargo manifest][iris-cargo], [toolchain selection][iris-toolchain], [release build dependencies][iris-release].
 
 Use these rules for the initial profile:
 

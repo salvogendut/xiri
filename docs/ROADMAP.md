@@ -1,12 +1,12 @@
 # Xiri execution roadmap
 
-Status: proposed work, updated 2026-10-15. All implementation milestones below are pending.
+Status: proposed work, updated 2026-10-29. Milestone 0 host inventory and the pinned IRIS CLI build are complete; guest and implementation milestones remain pending.
 
 The agreed target is NetBSD with an IRIX personality and the existing IRIX desktop. Initial implementation and testing use an emulated Indy. The first deliverable is a reproducible NetBSD development loop, followed by desktop feasibility and physical Indy qualification. Expand to additional machines and applications after those results.
 
 ## Development setup checklist
 
-Setup, resource acquisition, builds and emulator testing are pending. The requirements and emulator recommendation below remain the agreed starting point.
+The candidate host inventory and pinned IRIS CLI build are complete. NetBSD inputs, guest setup and emulator testing remain pending. The requirements and emulator recommendation below remain the agreed starting point.
 
 Before starting implementation:
 
@@ -33,7 +33,7 @@ Keep large images and original runtimes outside Git; save configurations, manife
 ## Milestone 0 Emulator and software baseline
 
 - [ ] Provision build tools and sufficient host storage as described in the [emulation plan](EMULATION.md).
-- [ ] Pin an IRIS source revision, exact Rust toolchain, dependency resolution and debug-capable build options.
+- [x] Pin an IRIS source revision, exact Rust toolchain, dependency resolution and debug-capable build options. See the [build record](results/2026-10-29-iris-build.md).
 - [ ] Record the emulated Indy CPU, RAM, Newport configuration, PROM, NVRAM and disk layout.
 - [ ] Obtain the NetBSD sgimips installer, sets, checksums and matching source baseline.
 - [ ] Obtain appropriate Indy firmware for MAME comparison; record IRIS's embedded fallback separately if used.

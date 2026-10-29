@@ -6,9 +6,9 @@ The agreed target is NetBSD underneath, an IRIX binary compatibility layer, and 
 
 ## Project status
 
-Planning and feasibility research, started 2026-10-14 and updated 2026-10-15. No kernel, compatibility layer, desktop port, emulator boot validation, or hardware validation has been implemented in this repository.
+Planning and feasibility research started 2026-10-14. Milestone 0 setup began 2026-10-29 with a [pinned IRIS CLI build](lab/iris/README.md). No kernel, compatibility layer, desktop port, emulator boot validation, or hardware validation has been implemented in this repository.
 
-Environment setup and testing are pending resource provisioning. Use the [development setup checklist](docs/ROADMAP.md#development-setup-checklist) to prepare the build host and required inputs.
+The candidate build host has been [inventoried](docs/results/2026-10-29-host-inventory.md). Guest setup and testing remain pending. Use the [development setup checklist](docs/ROADMAP.md#development-setup-checklist) to prepare the remaining inputs.
 
 Confirmed project requirements:
 
