@@ -80,13 +80,13 @@ The NetBSD release establishes an unmodified baseline. Pin matching source befor
 
 ## Prerequisites and current gaps
 
-Milestone 0 provisioning began on 2026-10-29. A [candidate build host was inventoried](results/2026-10-29-host-inventory.md) and a [pinned IRIS CLI build completed](results/2026-10-29-iris-build.md). Guest testing is pending. The [development setup checklist](ROADMAP.md#development-setup-checklist) records the remaining actions.
+Milestone 0 provisioning began on 2026-10-29. A [candidate build host was inventoried](results/2026-10-29-host-inventory.md), a [pinned IRIS CLI build completed](results/2026-10-29-iris-build.md), and [NetBSD inputs were verified](results/2026-10-29-netbsd-inputs.md). Guest testing is pending. The [development setup checklist](ROADMAP.md#development-setup-checklist) records the remaining actions.
 
 | Item | Why it is needed | Current status |
 | --- | --- | --- |
 | Host build environment and storage | Emulator, cross-toolchain, source/object trees, guest disks | Candidate Fedora 44 host inventoried; IRIS build environment provisioned; NetBSD cross-tools and guest disks pending |
 | IRIS source and Rust toolchain | Debug-capable emulator build | Built at the pinned revision and nightly in the [build record](results/2026-10-29-iris-build.md); guest behavior unqualified |
-| NetBSD sgimips installer, sets, checksums and matching source | Boot baseline and modified-kernel loop | To obtain from the official release distribution |
+| NetBSD sgimips installer, sets, checksums and matching source | Boot baseline and modified-kernel loop | Downloaded and verified in the [input record](results/2026-10-29-netbsd-inputs.md); guest boot and source extraction pending |
 | Indy PROM | Firmware baseline and MAME ROM verification | User has no local image yet; IRIS documents an embedded fallback |
 | IRIX installation media or an image from the user's machine | Original behavior, libraries, desktop and application inventory | User has no local image yet; required for the IRIX reference experiments |
 | MAME executable and matching ROM configuration | Independent reproduction of failures | Not installed |
