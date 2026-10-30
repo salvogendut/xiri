@@ -1,0 +1,2119 @@
+{
+  "schema": 1,
+  "description": "Measured original IRIX o32/n32 dispatcher and vendor output expectations; explicit differences retained",
+  "files": {
+    "o32-direct-pagesize-bad-stack": "4c071c76b7717ada757242d2bc43358231fbed8b95f3d3f8471955a8890b1fa6",
+    "o32-direct-sysmp-unknown": "94886ff4421416cbc6b154cd6d7170200d4ce347843aa0d65af52ad05a2c8f79",
+    "o32-indirect-pagesize-bad-stack": "37e269a0e24e119ad99104b4357fad2d9ebb3196cee9283a5b250b395e4c3da2",
+    "o32-indirect-sysmp-unknown": "1780d43af6298c7a98b919d7fd75f620ec4dcc4f1327ae8af58bbb0f94c1d5e3",
+    "o32-uid": "83ac2c70228bca2fe9c7ab2c9334539cee38a57ffd92b80277751db1853f9266",
+    "o32-gid": "06ae7e9fcb6a7b2dd7fb32c7b13c1d887c4fa5bf5087d02bc9e09cb9146f2b0f",
+    "o32-close-bad": "0a94e65186c83874cd1c390dee2e41619a707d13a29d84261360e3e04020987c",
+    "o32-write-bad-fd": "094e80ba00fba4881a58f30bf6ee18cdbc17612ab167d76db6f67cf4c423c362",
+    "o32-write-bad-pointer": "6de9359efeb43a3ce64d9d30d257203f81c11d3d5d48c0c9682bc3b2facf5e73",
+    "o32-write-zero": "6bd0dae67d93ba3539f07256cfd30e018d22cc466988ece7d243ba30949a4091",
+    "o32-open-read-close": "de39a16ee71a846ef4a3522b18ff0834d23fde0aac4d98a7cc9323f20889a728",
+    "o32-four-args": "fed4d649ce0e2d21b08f6d1eee3bb6cd230ef215ce8b50cb987ed9ff9603951b",
+    "o32-four-args-bad-stack": "b9bd0d2beabed19101f33af18f640a18e77fdfc7eadaeec69dfa883e0d3b7e6f",
+    "o32-delay-success": "a3033bfd13e3d03b59e2c277e4f5d3aee103961965fb6da5c84f15b7c7b49ee1",
+    "o32-delay-error": "e4e45fa4ff77eca69fdbee38e935504ab8c521e736d6e099e9d1aff78d2d4dc2",
+    "o32-exit": "0c54ad160d6d2380e15838075d69e57071be41194faee34cbe48cc56bf29d045",
+    "o32-stack-null": "a84d015675f66de030b4f03431115b7f2e57088aa6cfd303d821c300e5a65488",
+    "o32-stack-home-wrap": "fafe5873bfbbd0984e8c1275d49fb7529cbb7ba298f7a2e397ce8c392e2bd053",
+    "o32-stack-span-wrap": "d52032f8a5a3addfd72474ad90401cd90956b45d87e3d298f09a404293cb5515",
+    "o32-stack-guard": "977ac9debe3052afb053ef2581ad2e08e6793a60c95b535bfcd4b9765704f223",
+    "o32-unknown-0": "c03218a2ef66ad9839ef2fba56855adc2a485f795a91383544192ac5efb15721",
+    "o32-unknown-1": "a299e7319cfedaf68079cb81c25b413235265d413a0a973aedc9879014228ea9",
+    "o32-unknown-999": "3e0c7de2d180684c6cd35f7ad279cdb21903a3f712ac873a347a083f3758d29a",
+    "o32-unknown-1000": "28f956fe8cdb3dbfee8e6b8688118f43c2e13c7ee20891a0962d3b6ed18f94ec",
+    "o32-unknown-1255": "6c29d5d74aafd217672a2070aa6e01dea997bece616ae2be2425b668ece5f792",
+    "o32-unknown-1256": "7cf392ba04428159c6169c2c46e10560bf2f44497fadaadd9cb6682335aa02f9",
+    "o32-unknown-2147483647": "566edf6aec54bf73a74dd4a7ce17d196337af1582688f7af59f21b28c6ee4ebe",
+    "o32-unknown-4294967295": "a118f394d3abaec20c37bbbb4af74be71875e5b5e4dd660215bfd63894b68020",
+    "o32-direct-hint-zero": "b42d6b0e1d2773d2d5b8155542aca6df569d52fde5e6a32275f7547ad09b3fed",
+    "o32-direct-hint-free": "c3939bf47f5ac24c351d3ce30ff4fc7860e3ecac779cc29fc755cfede052a3fa",
+    "o32-direct-hint-occupied": "8f89eecc0e976e3dd56f97ae64498a1be36bf90d38019d53d45f0529bfc7c8bb",
+    "o32-direct-hint-text": "189978572efb2f266013e6ff83cb2b4f37305f084e53edf1172ccd70d2e2c23b",
+    "o32-direct-hint-unaligned": "8b19f8f48519a35d253352a0ce0b4048ed4dde705672df49e28ae54ad33971bf",
+    "o32-direct-hint-high": "35dcd9180d7114458121646f378685760690fa4119f306f4a77e44877d543350",
+    "o32-direct-file-offset-private": "f2af7dceff26cfd2b5ce68cfa77660bf5f04b228b25fd9662a4eb00845e0e3f3",
+    "o32-indirect-hint-zero": "2dcc85e0f9614a79aeb9e0c8323f5b86b08918f488c48ee84d7190451bfca6df",
+    "o32-indirect-hint-free": "dfadb7106f2bf7aea19cfcb0ca679a1410ed21688ede73c68c4022857559cd66",
+    "o32-indirect-hint-occupied": "0723d1bfa39e37b8d4f04ea1deb56bf7901076be4ae32a539cce9e541257412f",
+    "o32-indirect-hint-text": "ad941b297517295b053272688286970cd5289767dd8653de333693fb4ac6b863",
+    "o32-indirect-hint-unaligned": "fdd475cfc9fd61f927c2224fccd9f709de73fa25ffb302d76e4b18567445799e",
+    "o32-indirect-hint-high": "0dbf5c9ce73e8852e478ba303caafd138e764606cbb7b615759c64516e494886",
+    "o32-indirect-file-offset-private": "eae2e8fa2294735707a22342a533e2332a3f73877c687357e81d9972b9c3be4f",
+    "o32-direct-pagesize-valid-stack": "6279adaea7dd3170c5e4f77722fe038bea0c61174e1afa26d0c2569c5a5a1ae9",
+    "o32-indirect-pagesize-valid-stack": "04634fbbaedf97cdf5b6c0bedba57e4ece6f1f2abd00b6594164014c90492e66",
+    "n32-direct-pagesize-bad-stack": "af204f7a29709eed4be2c77845f6dad52e8febc705af013894a58a2a61723519",
+    "n32-direct-sysmp-unknown": "7916af30447e57fe9bc8bacffe6ba2c35602b36839beeab6aa51cf43d2069007",
+    "n32-indirect-pagesize-bad-stack": "614e5cfe6c655639bf322ac9af1857be8152b77d8d7383ce13fd9287376308e0",
+    "n32-indirect-sysmp-unknown": "62b516fa1346ace04f48e0c9c5da9016c0c9fdc65f28a926530736ea87c4f829",
+    "n32-uid": "47c7403169e112b56838610cbb8f7989f59d98a5e9935f0e72f494247ab20318",
+    "n32-gid": "decd52888155852dc482d7338c61bcca4ba9c5e4a52e11f05d336a2398545e30",
+    "n32-close-bad": "bf60578417228fff0460072437574ebac85e363389c3b6e9ff54efa29e785359",
+    "n32-write-bad-fd": "2389269aa4764e22f3d5657ebda6722ff4fdcaeaeef5df012999701f1d215086",
+    "n32-write-bad-pointer": "da009ec389b4ceb9a2e116a9d6b5698f4034f31db68fde9e4ad7b9c1406f7a58",
+    "n32-write-zero": "1c531b2479a54f4795a7578fae9c5e9b0266b6feba318d2a724056551fa9a8f7",
+    "n32-open-read-close": "c01c9722eef4f088198f45b45a00a335036ad59c56b91d2b657c4cdcd2d5b055",
+    "n32-four-args": "324363b2e3c96a02b192952c0a356ea5dd74e01d8f8fcec902b2a9eac0cc5ba8",
+    "n32-four-args-bad-stack": "2df1d754af08e5fa7426a900193c29303b03dc93f660abb1e3f580715c083295",
+    "n32-delay-success": "93578493ac3394a99c0edc2b39825461c40dbfb1a6531c83f0277e5975549c63",
+    "n32-delay-error": "a1beed253cd4022c932e65ae30c2e0a0c5e15fcdd350e1eab72d179f484a4f7a",
+    "n32-exit": "d7382b5d42acd2246c802bd10830e9b4fbe202ba9501d97776e3f49c8ee8f693",
+    "n32-stack-null": "43dc8073a89e6db5d86598401f6f2e2ad0764ca7fcf2ae055b576dca829f5dce",
+    "n32-stack-home-wrap": "5d8ee8a6febacf9d1f5c7b4d20d5fa1abd14bed6b5b294ee136f6d230b09a271",
+    "n32-stack-span-wrap": "78c7062c4eae8c196a1f852aa2f003a60efd72719430440236a191b496f9f5d4",
+    "n32-unknown-0": "7d2f2e32dff2b3334e3f514c2f880ec286e15bfd5f1799f8d1a79a49d8d149ca",
+    "n32-unknown-1": "083c490e3ea1af6655f71a76b7070ed199864eef3413a5c4ed2228924c15bb00",
+    "n32-unknown-999": "1f32df8e22d7f14ed7de84980eeae404155dad712424c5e38e783208069caeae",
+    "n32-unknown-1000": "95cff35b661ecdb634035d88b1722b2b40d49b05afd2798adfa878f4b0ee2512",
+    "n32-unknown-1255": "dac962acdf1188a686355dc7750af3f88068415722c3d564721bae456b9fbefd",
+    "n32-unknown-1256": "861284c8642349a5b014bdcb58fad72ab21abf92ff906e781d80312bb99daab2",
+    "n32-unknown-2147483647": "9bf8bdebe6c7643236403c8060f66aa61d1d344d682fb5f69d02142de246b58c",
+    "n32-unknown-4294967295": "b24171f12160bb7265d53c5387eb35d9221987d3a406db6dff5bc96c337e489d",
+    "n32-direct-hint-zero": "dae9a91de381da522610b4cc94ea5a144dab275f584fc7153e0902156bb7be68",
+    "n32-direct-hint-free": "05a7640e2a91dd542e610eff1f160e01fdea9e69455e82ef139ce8199010d14f",
+    "n32-direct-hint-occupied": "9b6a2c4e2976faeb512ee0e1ba6e330f0b7d94b77a2ca466a653a51657a981c1",
+    "n32-direct-hint-text": "22b1729ddca50779bd3dfb269a47557ef7c1287ea3b70c188559bc4d7a42cbf9",
+    "n32-direct-hint-unaligned": "67fffec3cf04557850118549b76eb45aec98dd75aa1e74865e6d9293ad0da486",
+    "n32-direct-hint-high": "61e916dc5e385bd777e945cf2052e51c5761339485e489861b66debd54ce92aa",
+    "n32-direct-file-offset-private": "006ed14c58daf9cd2c80496643b34f74e616f800a5b4a75d370be3719703d191",
+    "n32-indirect-hint-zero": "d31f00bf3828c67b9070315c2d7cf7c699c0e00e6ae9263ca3ade68bc5d64c9c",
+    "n32-indirect-hint-free": "9ef6fe79903473d66e5ae6c73110eac4f91a8199d00dd8f6607179d997fc22fb",
+    "n32-indirect-hint-occupied": "383e574bf667926ef4c78daf15be97592d77b84286cf4aa51f6198825c00b4d2",
+    "n32-indirect-hint-text": "8c508cabd5abf55eaf988ccf71429475738077d60fd2f31fd97b313f4076af2b",
+    "n32-indirect-hint-unaligned": "4419922888586ecd9581c614306bf9106ac92007d75b71b69c161a4e6c9449fd",
+    "n32-indirect-hint-high": "88e85358a4fb13262ac888be4cbaa6973761684e654c9d8a5e1eabd66cb5ac8a",
+    "n32-indirect-file-offset-private": "aff3299b6c73ad199ccce298b64259dbedbb6a02ad9760bea010bd88688f3357",
+    "n32-direct-pagesize-valid-stack": "5d0d2a67ded391349f66c915173d8dc9301674c42f084daad09625a4f45a708d",
+    "n32-indirect-pagesize-valid-stack": "389775b3e996ce998cedda286390b7c236889cf359fc81bd3357d5eec4550b65",
+    "dispatch-input": "75669ac4f3fd99bf2bd58eb804c1422211a7746e86e97b3fcd4e937365a3b567",
+    "asa-input-lines": "68c3fb4ad7f9e4e0ab48e934ccffb862bb6a3a93f9a07465dadad87974518438",
+    "asa-input-double": "8832318365eba52cfa18111c8f627107f275cdc558471d13f93f704e86f0bb79",
+    "asa-input-page": "8a503d93729c9b3a85ad445685a5cea9def231098aca8c121d1ad66550a1b534",
+    "asa-input-overprint": "3547d4005c2e01e60c596296656f0159dcf2101a96181fc92170a742f3d25261",
+    "asa-input-unterminated": "d9b92a4c1cfb3dee15a47dd6858c8061210a56daec3e0b4a514a9cdd80751f6e",
+    "asa-input-empty": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "o32-heap-direct-cycle": "795193ea25286a5aff056bba16724a1bcb3d3b5c1f76c377b90b8ea28934d341",
+    "o32-heap-direct-shrink-fault": "b76020a3aa1c59bf47673e8e49984ef52c79380ace750824357b40ab8ed61e7f",
+    "o32-heap-direct-null": "ca05e4ac89ce85c9af68189c2baef5a5963a42e42625a63e695b0bc179899399",
+    "o32-heap-direct-below-data": "99657059ea47533bcc76847b7131ab286f0c9489e33c2bfa543b6cfc288ddba2",
+    "o32-heap-direct-high": "c73ccdca8ba4928d0d0ba41cdb28109f261d7cdaf8ab2a11901157b7d807b2e3",
+    "o32-heap-direct-wrap": "2ece0f13b367e8d75a1adcae609e4fa7f629e6829b00fc7fe928080fe415c489",
+    "o32-heap-direct-limit": "424b98dab506d73e0545ad0cd1770ace2d6493b56363f47514ef0af6bd7b2b7d",
+    "o32-heap-direct-collision": "6d47f8cf44275e4df6bff8a433f3a11199675c011a2195584c8e3b06e294700d",
+    "o32-heap-indirect-cycle": "1ab3435b1a8850ea978c64806650e07f601ef4e80c591f75c0f0cd8abf02a36d",
+    "o32-heap-indirect-shrink-fault": "52eaecaccf6226ee34b4b89ecab2555b627a1f77bbded1312c794c5bfb360ea6",
+    "o32-heap-indirect-null": "8f09a0d7b054e9fa43d187ababcc00cb1cbfde6fd28da5e13966de061b95ac4a",
+    "o32-heap-indirect-below-data": "e3d1579571034dd454a1ed130327a7743ebd0cc40db6d68181f8fa1556d3d7c6",
+    "o32-heap-indirect-high": "88863684a9f4796999ef02efdb6194284c77132f8d790610f3eb4a8ae5d05659",
+    "o32-heap-indirect-wrap": "1c9ae78de38677cf404970f3ec0e9523929db42bf2c796123414c1e6f7dfddfc",
+    "o32-heap-indirect-limit": "73d5936b45c21b673a8de8f4ea1b23d45598005e0e9bca986c1697dc40fad4e6",
+    "o32-heap-indirect-collision": "30b59a832406bbb17a1830fb4c6b8f28725c7c9f66ee455375af99975a926352",
+    "n32-heap-direct-cycle": "bd1413ff945075b6174bb43b9ae007b1a040b6d083b6d8701c9ae50175227b2b",
+    "n32-heap-direct-shrink-fault": "8476b745fd5aa6057326d564e75d1406b3ffb78164e0fec9ffd9a4b12586bb6a",
+    "n32-heap-direct-null": "4b35a2cfa7e222a2c7ae58fb4e08bab46ccf03fc84d13a727e3dd35602f33329",
+    "n32-heap-direct-below-data": "4d2e75213ea251505014c5ef01c56365a0259e4e4071685a1c9f53e0c31da848",
+    "n32-heap-direct-high": "573697c3337e4a178668324880a56767b8351c065b5dfe63956796251b21d869",
+    "n32-heap-direct-wrap": "43b1c2d9ccac7f600903711bc73d270c4a3b933c7cb478e919fae80e847a2e2f",
+    "n32-heap-direct-limit": "8e82d6bf1e093f9334207d8ff1722eabfe18972d83fe882312b31287da15371a",
+    "n32-heap-direct-collision": "b181635f61aa40910a9da50d8888a92d5520b5c28f32827c9e25c12f4fae772f",
+    "n32-heap-indirect-cycle": "49d10a340e0705c8bb41ec404a9d45e62d16e2745fe3cfbe10a6a5be529f1d0d",
+    "n32-heap-indirect-shrink-fault": "e847bd9228d6da2f36eb5b133b307f9060441eb6d17a716fd476663f0c70685c",
+    "n32-heap-indirect-null": "a6c7200a8d3ac7a492ef692b240277500e647d7f9a6f6cb4f4189780e54eaa42",
+    "n32-heap-indirect-below-data": "203b46f6624e690e37c93fe7c7bb2f6244ffbfe9ac78bb268dd0cad6348f95f9",
+    "n32-heap-indirect-high": "e041f24bd6b142249ad4987d923cdd93acc42185a599e0a568ecf73784ff529d",
+    "n32-heap-indirect-wrap": "f3f0802eeb0569819f1d998cefc84df02b0cb833b59a250816dcb23dcba8bb43",
+    "n32-heap-indirect-limit": "4a09ee09fdef02edd0567d9d0059f5fbd99c9e47be03f485bf5d3d8bcc361e18",
+    "n32-heap-indirect-collision": "f74381ddd1f8318cbbe4d47ae7940768c37e365b8098768f475a69ccd8f77181",
+    "n32-fp": "fa693e67656d566f9c982a8d7ee3ccde26ad88428d1d3e1cbe2519c15e264783"
+  },
+  "observed_result": ".work/irix-reference/lp64-runs/ci-6jx4jq6p/result.json",
+  "observations": [
+    {
+      "name": "o32-direct-pagesize-bad-stack",
+      "exit_status": 0,
+      "stdout_hex": "58494431000000010000000efeedface00000001000000000000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 1,
+        "v0": 14,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "o32-direct-sysmp-unknown",
+      "exit_status": 0,
+      "stdout_hex": "584944310000000200000016feedface00000001000000000000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 2,
+        "v0": 22,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "o32-indirect-pagesize-bad-stack",
+      "exit_status": 0,
+      "stdout_hex": "58494431000000030000000efeedface00000001000000000000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 3,
+        "v0": 14,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "o32-indirect-sysmp-unknown",
+      "exit_status": 0,
+      "stdout_hex": "584944310000000400000016feedface00000001000000000000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 4,
+        "v0": 22,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "o32-uid",
+      "exit_status": 0,
+      "stdout_hex": "5849443100000005000000000000000000000000000000000000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 5,
+        "v0": 0,
+        "v1": 0,
+        "a3": 0,
+        "checks": 0,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "o32-gid",
+      "exit_status": 0,
+      "stdout_hex": "5849443100000006000000000000000000000000000000000000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 6,
+        "v0": 0,
+        "v1": 0,
+        "a3": 0,
+        "checks": 0,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "o32-close-bad",
+      "exit_status": 0,
+      "stdout_hex": "584944310000000700000009feedface00000001000000000000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 7,
+        "v0": 9,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "o32-write-bad-fd",
+      "exit_status": 0,
+      "stdout_hex": "584944310000000800000009feedface00000001000000000000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 8,
+        "v0": 9,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "o32-write-bad-pointer",
+      "exit_status": 0,
+      "stdout_hex": "58494431000000090000000efeedface00000001000000000000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 9,
+        "v0": 14,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "o32-write-zero",
+      "exit_status": 0,
+      "stdout_hex": "584944310000000a00000000feedface00000000000000000000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 10,
+        "v0": 0,
+        "v1": 4277009102,
+        "a3": 0,
+        "checks": 0,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "o32-open-read-close",
+      "exit_status": 0,
+      "stdout_hex": "584944310000000b00000003feedface00000000000000010000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 11,
+        "v0": 3,
+        "v1": 4277009102,
+        "a3": 0,
+        "checks": 1,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "o32-four-args",
+      "exit_status": 0,
+      "stdout_hex": "584944310000000c00000016feedface00000001000000000000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 12,
+        "v0": 22,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "o32-four-args-bad-stack",
+      "exit_status": 0,
+      "stdout_hex": "584944310000000d0000000efeedface00000001000000000000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 13,
+        "v0": 14,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "o32-delay-success",
+      "exit_status": 140,
+      "stdout_hex": "",
+      "stderr": "",
+      "record": null,
+      "passed": true
+    },
+    {
+      "name": "o32-delay-error",
+      "exit_status": 140,
+      "stdout_hex": "",
+      "stderr": "",
+      "record": null,
+      "passed": true
+    },
+    {
+      "name": "o32-exit",
+      "exit_status": 37,
+      "stdout_hex": "",
+      "stderr": "",
+      "record": null,
+      "passed": true
+    },
+    {
+      "name": "o32-stack-null",
+      "exit_status": 0,
+      "stdout_hex": "58494431000000110000000efeedface00000001000000000000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 17,
+        "v0": 14,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "o32-stack-home-wrap",
+      "exit_status": 0,
+      "stdout_hex": "58494431000000120000000efeedface00000001000000000000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 18,
+        "v0": 14,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "o32-stack-span-wrap",
+      "exit_status": 0,
+      "stdout_hex": "58494431000000130000000efeedface00000001000000000000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 19,
+        "v0": 14,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "o32-stack-guard",
+      "exit_status": 0,
+      "stdout_hex": "58494431000000140000000efeedface00000001000000000000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 20,
+        "v0": 14,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "o32-unknown-0",
+      "exit_status": 0,
+      "stdout_hex": "584944310000001500000016feedface00000001000000000000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 21,
+        "v0": 22,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "o32-unknown-1",
+      "exit_status": 0,
+      "stdout_hex": "584944310000001600000016feedface00000001000000000000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 22,
+        "v0": 22,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "o32-unknown-999",
+      "exit_status": 0,
+      "stdout_hex": "584944310000001700000016feedface00000001000000000000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 23,
+        "v0": 22,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "o32-unknown-1000",
+      "exit_status": 140,
+      "stdout_hex": "",
+      "stderr": "",
+      "record": null,
+      "passed": true
+    },
+    {
+      "name": "o32-unknown-1255",
+      "exit_status": 0,
+      "stdout_hex": "584944310000001900000016feedface00000001000000000000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 25,
+        "v0": 22,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "o32-unknown-1256",
+      "exit_status": 0,
+      "stdout_hex": "584944310000001a00000016feedface00000001000000000000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 26,
+        "v0": 22,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "o32-unknown-2147483647",
+      "exit_status": 0,
+      "stdout_hex": "584944310000001b00000016feedface00000001000000000000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 27,
+        "v0": 22,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "o32-unknown-4294967295",
+      "exit_status": 0,
+      "stdout_hex": "584944310000001c00000016feedface00000001000000000000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 28,
+        "v0": 22,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "o32-direct-hint-zero",
+      "exit_status": 0,
+      "stdout_hex": "584944310000001d5dc00000feedface00000000000000010000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 29,
+        "v0": 1572864000,
+        "v1": 4277009102,
+        "a3": 0,
+        "checks": 1,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "mapping": true,
+      "passed": true
+    },
+    {
+      "name": "o32-direct-hint-free",
+      "exit_status": 0,
+      "stdout_hex": "584944310000001e10000000feedface00000000000000010000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 30,
+        "v0": 268435456,
+        "v1": 4277009102,
+        "a3": 0,
+        "checks": 1,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "mapping": true,
+      "passed": true
+    },
+    {
+      "name": "o32-direct-hint-occupied",
+      "exit_status": 0,
+      "stdout_hex": "584944310000001f5dc00000feedface00000000000000031000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 31,
+        "v0": 1572864000,
+        "v1": 4277009102,
+        "a3": 0,
+        "checks": 3,
+        "preserved": 268435456,
+        "reserved": 0
+      },
+      "mapping": true,
+      "occupied": true,
+      "passed": true
+    },
+    {
+      "name": "o32-direct-hint-text",
+      "exit_status": 0,
+      "stdout_hex": "58494431000000205dc00000feedface000000000000000327bdff0000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 32,
+        "v0": 1572864000,
+        "v1": 4277009102,
+        "a3": 0,
+        "checks": 3,
+        "preserved": 666763008,
+        "reserved": 0
+      },
+      "mapping": true,
+      "passed": true
+    },
+    {
+      "name": "o32-direct-hint-unaligned",
+      "exit_status": 0,
+      "stdout_hex": "584944310000002110001000feedface00000000000000010000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 33,
+        "v0": 268439552,
+        "v1": 4277009102,
+        "a3": 0,
+        "checks": 1,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "mapping": true,
+      "passed": true
+    },
+    {
+      "name": "o32-direct-hint-high",
+      "exit_status": 0,
+      "stdout_hex": "584944310000002200000016feedface00000001000000000000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 34,
+        "v0": 22,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "o32-direct-file-offset-private",
+      "exit_status": 0,
+      "stdout_hex": "584944310000002310000000feedface00000000000000050000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 35,
+        "v0": 268435456,
+        "v1": 4277009102,
+        "a3": 0,
+        "checks": 5,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "mapping": true,
+      "passed": true
+    },
+    {
+      "name": "o32-indirect-hint-zero",
+      "exit_status": 0,
+      "stdout_hex": "58494431000000245dc00000feedface00000000000000010000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 36,
+        "v0": 1572864000,
+        "v1": 4277009102,
+        "a3": 0,
+        "checks": 1,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "mapping": true,
+      "passed": true
+    },
+    {
+      "name": "o32-indirect-hint-free",
+      "exit_status": 0,
+      "stdout_hex": "584944310000002510000000feedface00000000000000010000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 37,
+        "v0": 268435456,
+        "v1": 4277009102,
+        "a3": 0,
+        "checks": 1,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "mapping": true,
+      "passed": true
+    },
+    {
+      "name": "o32-indirect-hint-occupied",
+      "exit_status": 0,
+      "stdout_hex": "58494431000000265dc00000feedface00000000000000031000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 38,
+        "v0": 1572864000,
+        "v1": 4277009102,
+        "a3": 0,
+        "checks": 3,
+        "preserved": 268435456,
+        "reserved": 0
+      },
+      "mapping": true,
+      "occupied": true,
+      "passed": true
+    },
+    {
+      "name": "o32-indirect-hint-text",
+      "exit_status": 0,
+      "stdout_hex": "58494431000000275dc00000feedface000000000000000327bdff0000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 39,
+        "v0": 1572864000,
+        "v1": 4277009102,
+        "a3": 0,
+        "checks": 3,
+        "preserved": 666763008,
+        "reserved": 0
+      },
+      "mapping": true,
+      "passed": true
+    },
+    {
+      "name": "o32-indirect-hint-unaligned",
+      "exit_status": 0,
+      "stdout_hex": "584944310000002810001000feedface00000000000000010000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 40,
+        "v0": 268439552,
+        "v1": 4277009102,
+        "a3": 0,
+        "checks": 1,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "mapping": true,
+      "passed": true
+    },
+    {
+      "name": "o32-indirect-hint-high",
+      "exit_status": 0,
+      "stdout_hex": "584944310000002900000016feedface00000001000000000000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 41,
+        "v0": 22,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "o32-indirect-file-offset-private",
+      "exit_status": 0,
+      "stdout_hex": "584944310000002a10000000feedface00000000000000050000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 42,
+        "v0": 268435456,
+        "v1": 4277009102,
+        "a3": 0,
+        "checks": 5,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "mapping": true,
+      "passed": true
+    },
+    {
+      "name": "o32-direct-pagesize-valid-stack",
+      "exit_status": 0,
+      "stdout_hex": "584944310000002b00001000feedface00000000000000000000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 43,
+        "v0": 4096,
+        "v1": 4277009102,
+        "a3": 0,
+        "checks": 0,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "o32-indirect-pagesize-valid-stack",
+      "exit_status": 0,
+      "stdout_hex": "584944310000002c00001000feedface00000000000000000000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 44,
+        "v0": 4096,
+        "v1": 4277009102,
+        "a3": 0,
+        "checks": 0,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "n32-direct-pagesize-bad-stack",
+      "exit_status": 0,
+      "stdout_hex": "584944310000002d00001000feedface00000000000000000000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 45,
+        "v0": 4096,
+        "v1": 4277009102,
+        "a3": 0,
+        "checks": 0,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "n32-direct-sysmp-unknown",
+      "exit_status": 0,
+      "stdout_hex": "584944310000002e00000016feedface00000001000000000000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 46,
+        "v0": 22,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "n32-indirect-pagesize-bad-stack",
+      "exit_status": 0,
+      "stdout_hex": "584944310000002f00001000feedface00000000000000000000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 47,
+        "v0": 4096,
+        "v1": 4277009102,
+        "a3": 0,
+        "checks": 0,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "n32-indirect-sysmp-unknown",
+      "exit_status": 0,
+      "stdout_hex": "584944310000003000000016feedface00000001000000000000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 48,
+        "v0": 22,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "n32-uid",
+      "exit_status": 0,
+      "stdout_hex": "5849443100000031000000000000000000000000000000000000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 49,
+        "v0": 0,
+        "v1": 0,
+        "a3": 0,
+        "checks": 0,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "n32-gid",
+      "exit_status": 0,
+      "stdout_hex": "5849443100000032000000000000000000000000000000000000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 50,
+        "v0": 0,
+        "v1": 0,
+        "a3": 0,
+        "checks": 0,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "n32-close-bad",
+      "exit_status": 0,
+      "stdout_hex": "584944310000003300000009feedface00000001000000000000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 51,
+        "v0": 9,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "n32-write-bad-fd",
+      "exit_status": 0,
+      "stdout_hex": "584944310000003400000009feedface00000001000000000000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 52,
+        "v0": 9,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "n32-write-bad-pointer",
+      "exit_status": 0,
+      "stdout_hex": "58494431000000350000000efeedface00000001000000000000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 53,
+        "v0": 14,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "n32-write-zero",
+      "exit_status": 0,
+      "stdout_hex": "584944310000003600000000feedface00000000000000000000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 54,
+        "v0": 0,
+        "v1": 4277009102,
+        "a3": 0,
+        "checks": 0,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "n32-open-read-close",
+      "exit_status": 0,
+      "stdout_hex": "584944310000003700000003feedface00000000000000010000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 55,
+        "v0": 3,
+        "v1": 4277009102,
+        "a3": 0,
+        "checks": 1,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "n32-four-args",
+      "exit_status": 0,
+      "stdout_hex": "584944310000003800000016feedface00000001000000000000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 56,
+        "v0": 22,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "n32-four-args-bad-stack",
+      "exit_status": 0,
+      "stdout_hex": "584944310000003900000016feedface00000001000000000000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 57,
+        "v0": 22,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "n32-delay-success",
+      "exit_status": 140,
+      "stdout_hex": "",
+      "stderr": "",
+      "record": null,
+      "passed": true
+    },
+    {
+      "name": "n32-delay-error",
+      "exit_status": 140,
+      "stdout_hex": "",
+      "stderr": "",
+      "record": null,
+      "passed": true
+    },
+    {
+      "name": "n32-exit",
+      "exit_status": 37,
+      "stdout_hex": "",
+      "stderr": "",
+      "record": null,
+      "passed": true
+    },
+    {
+      "name": "n32-stack-null",
+      "exit_status": 0,
+      "stdout_hex": "584944310000003d00000009feedface00000001000000000000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 61,
+        "v0": 9,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "n32-stack-home-wrap",
+      "exit_status": 0,
+      "stdout_hex": "584944310000003e00000009feedface00000001000000000000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 62,
+        "v0": 9,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "n32-stack-span-wrap",
+      "exit_status": 0,
+      "stdout_hex": "584944310000003f00000009feedface00000001000000000000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 63,
+        "v0": 9,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "n32-unknown-0",
+      "exit_status": 0,
+      "stdout_hex": "584944310000004000000016feedface00000001000000000000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 64,
+        "v0": 22,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "n32-unknown-1",
+      "exit_status": 0,
+      "stdout_hex": "584944310000004100000016feedface00000001000000000000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 65,
+        "v0": 22,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "n32-unknown-999",
+      "exit_status": 0,
+      "stdout_hex": "584944310000004200000016feedface00000001000000000000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 66,
+        "v0": 22,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "n32-unknown-1000",
+      "exit_status": 140,
+      "stdout_hex": "",
+      "stderr": "",
+      "record": null,
+      "passed": true
+    },
+    {
+      "name": "n32-unknown-1255",
+      "exit_status": 0,
+      "stdout_hex": "584944310000004400000016feedface00000001000000000000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 68,
+        "v0": 22,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "n32-unknown-1256",
+      "exit_status": 0,
+      "stdout_hex": "584944310000004500000016feedface00000001000000000000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 69,
+        "v0": 22,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "n32-unknown-2147483647",
+      "exit_status": 0,
+      "stdout_hex": "584944310000004600000016feedface00000001000000000000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 70,
+        "v0": 22,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "n32-unknown-4294967295",
+      "exit_status": 0,
+      "stdout_hex": "584944310000004700000016feedface00000001000000000000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 71,
+        "v0": 22,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "n32-direct-hint-zero",
+      "exit_status": 0,
+      "stdout_hex": "58494431000000485dc00000feedface00000000000000010000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 72,
+        "v0": 1572864000,
+        "v1": 4277009102,
+        "a3": 0,
+        "checks": 1,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "mapping": true,
+      "passed": true
+    },
+    {
+      "name": "n32-direct-hint-free",
+      "exit_status": 0,
+      "stdout_hex": "584944310000004910000000feedface00000000000000010000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 73,
+        "v0": 268435456,
+        "v1": 4277009102,
+        "a3": 0,
+        "checks": 1,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "mapping": true,
+      "passed": true
+    },
+    {
+      "name": "n32-direct-hint-occupied",
+      "exit_status": 0,
+      "stdout_hex": "584944310000004a5dc00000feedface00000000000000031000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 74,
+        "v0": 1572864000,
+        "v1": 4277009102,
+        "a3": 0,
+        "checks": 3,
+        "preserved": 268435456,
+        "reserved": 0
+      },
+      "mapping": true,
+      "occupied": true,
+      "passed": true
+    },
+    {
+      "name": "n32-direct-hint-text",
+      "exit_status": 0,
+      "stdout_hex": "584944310000004b5dc00000feedface000000000000000327bdff0000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 75,
+        "v0": 1572864000,
+        "v1": 4277009102,
+        "a3": 0,
+        "checks": 3,
+        "preserved": 666763008,
+        "reserved": 0
+      },
+      "mapping": true,
+      "passed": true
+    },
+    {
+      "name": "n32-direct-hint-unaligned",
+      "exit_status": 0,
+      "stdout_hex": "584944310000004c10001000feedface00000000000000010000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 76,
+        "v0": 268439552,
+        "v1": 4277009102,
+        "a3": 0,
+        "checks": 1,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "mapping": true,
+      "passed": true
+    },
+    {
+      "name": "n32-direct-hint-high",
+      "exit_status": 0,
+      "stdout_hex": "584944310000004d00000016feedface00000001000000000000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 77,
+        "v0": 22,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "n32-direct-file-offset-private",
+      "exit_status": 0,
+      "stdout_hex": "584944310000004e10000000feedface00000000000000050000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 78,
+        "v0": 268435456,
+        "v1": 4277009102,
+        "a3": 0,
+        "checks": 5,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "mapping": true,
+      "passed": true
+    },
+    {
+      "name": "n32-indirect-hint-zero",
+      "exit_status": 0,
+      "stdout_hex": "584944310000004f5dc00000feedface00000000000000010000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 79,
+        "v0": 1572864000,
+        "v1": 4277009102,
+        "a3": 0,
+        "checks": 1,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "mapping": true,
+      "passed": true
+    },
+    {
+      "name": "n32-indirect-hint-free",
+      "exit_status": 0,
+      "stdout_hex": "584944310000005010000000feedface00000000000000010000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 80,
+        "v0": 268435456,
+        "v1": 4277009102,
+        "a3": 0,
+        "checks": 1,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "mapping": true,
+      "passed": true
+    },
+    {
+      "name": "n32-indirect-hint-occupied",
+      "exit_status": 0,
+      "stdout_hex": "58494431000000515dc00000feedface00000000000000031000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 81,
+        "v0": 1572864000,
+        "v1": 4277009102,
+        "a3": 0,
+        "checks": 3,
+        "preserved": 268435456,
+        "reserved": 0
+      },
+      "mapping": true,
+      "occupied": true,
+      "passed": true
+    },
+    {
+      "name": "n32-indirect-hint-text",
+      "exit_status": 0,
+      "stdout_hex": "58494431000000525dc00000feedface000000000000000327bdff0000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 82,
+        "v0": 1572864000,
+        "v1": 4277009102,
+        "a3": 0,
+        "checks": 3,
+        "preserved": 666763008,
+        "reserved": 0
+      },
+      "mapping": true,
+      "passed": true
+    },
+    {
+      "name": "n32-indirect-hint-unaligned",
+      "exit_status": 0,
+      "stdout_hex": "584944310000005310001000feedface00000000000000010000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 83,
+        "v0": 268439552,
+        "v1": 4277009102,
+        "a3": 0,
+        "checks": 1,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "mapping": true,
+      "passed": true
+    },
+    {
+      "name": "n32-indirect-hint-high",
+      "exit_status": 0,
+      "stdout_hex": "584944310000005400000016feedface00000001000000000000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 84,
+        "v0": 22,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "n32-indirect-file-offset-private",
+      "exit_status": 0,
+      "stdout_hex": "584944310000005510000000feedface00000000000000050000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 85,
+        "v0": 268435456,
+        "v1": 4277009102,
+        "a3": 0,
+        "checks": 5,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "mapping": true,
+      "passed": true
+    },
+    {
+      "name": "n32-direct-pagesize-valid-stack",
+      "exit_status": 0,
+      "stdout_hex": "584944310000005600001000feedface00000000000000000000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 86,
+        "v0": 4096,
+        "v1": 4277009102,
+        "a3": 0,
+        "checks": 0,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "n32-indirect-pagesize-valid-stack",
+      "exit_status": 0,
+      "stdout_hex": "584944310000005700001000feedface00000000000000000000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 87,
+        "v0": 4096,
+        "v1": 4277009102,
+        "a3": 0,
+        "checks": 0,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "o32-heap-direct-cycle",
+      "exit_status": 0,
+      "stdout_hex": "58494431000000c800000000feedface00000000000000010000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 200,
+        "v0": 0,
+        "v1": 4277009102,
+        "a3": 0,
+        "checks": 1,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "o32-heap-direct-shrink-fault",
+      "exit_status": 139,
+      "stdout_hex": "",
+      "stderr": "",
+      "record": null,
+      "passed": true
+    },
+    {
+      "name": "o32-heap-direct-null",
+      "exit_status": 139,
+      "stdout_hex": "",
+      "stderr": "",
+      "record": null,
+      "passed": true
+    },
+    {
+      "name": "o32-heap-direct-below-data",
+      "exit_status": 139,
+      "stdout_hex": "",
+      "stderr": "",
+      "record": null,
+      "passed": true
+    },
+    {
+      "name": "o32-heap-direct-high",
+      "exit_status": 0,
+      "stdout_hex": "58494431000000cc0000000cfeedface00000001000000000000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 204,
+        "v0": 12,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "o32-heap-direct-wrap",
+      "exit_status": 0,
+      "stdout_hex": "58494431000000cd0000000cfeedface00000001000000000000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 205,
+        "v0": 12,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "o32-heap-direct-limit",
+      "exit_status": 0,
+      "stdout_hex": "58494431000000ce0000000cfeedface00000001000000000000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 206,
+        "v0": 12,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "o32-heap-direct-collision",
+      "exit_status": 0,
+      "stdout_hex": "58494431000000cf0000000cfeedface00000001000000010000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 207,
+        "v0": 12,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 1,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "o32-heap-indirect-cycle",
+      "exit_status": 0,
+      "stdout_hex": "58494431000000d000000000feedface00000000000000010000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 208,
+        "v0": 0,
+        "v1": 4277009102,
+        "a3": 0,
+        "checks": 1,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "o32-heap-indirect-shrink-fault",
+      "exit_status": 139,
+      "stdout_hex": "",
+      "stderr": "",
+      "record": null,
+      "passed": true
+    },
+    {
+      "name": "o32-heap-indirect-null",
+      "exit_status": 139,
+      "stdout_hex": "",
+      "stderr": "",
+      "record": null,
+      "passed": true
+    },
+    {
+      "name": "o32-heap-indirect-below-data",
+      "exit_status": 139,
+      "stdout_hex": "",
+      "stderr": "",
+      "record": null,
+      "passed": true
+    },
+    {
+      "name": "o32-heap-indirect-high",
+      "exit_status": 0,
+      "stdout_hex": "58494431000000d40000000cfeedface00000001000000000000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 212,
+        "v0": 12,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "o32-heap-indirect-wrap",
+      "exit_status": 0,
+      "stdout_hex": "58494431000000d50000000cfeedface00000001000000000000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 213,
+        "v0": 12,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "o32-heap-indirect-limit",
+      "exit_status": 0,
+      "stdout_hex": "58494431000000d60000000cfeedface00000001000000000000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 214,
+        "v0": 12,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "o32-heap-indirect-collision",
+      "exit_status": 0,
+      "stdout_hex": "58494431000000d70000000cfeedface00000001000000010000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 215,
+        "v0": 12,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 1,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "n32-heap-direct-cycle",
+      "exit_status": 0,
+      "stdout_hex": "58494431000000d800000000feedface00000000000000010000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 216,
+        "v0": 0,
+        "v1": 4277009102,
+        "a3": 0,
+        "checks": 1,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "n32-heap-direct-shrink-fault",
+      "exit_status": 139,
+      "stdout_hex": "",
+      "stderr": "",
+      "record": null,
+      "passed": true
+    },
+    {
+      "name": "n32-heap-direct-null",
+      "exit_status": 139,
+      "stdout_hex": "",
+      "stderr": "",
+      "record": null,
+      "passed": true
+    },
+    {
+      "name": "n32-heap-direct-below-data",
+      "exit_status": 139,
+      "stdout_hex": "",
+      "stderr": "",
+      "record": null,
+      "passed": true
+    },
+    {
+      "name": "n32-heap-direct-high",
+      "exit_status": 0,
+      "stdout_hex": "58494431000000dc0000000cfeedface00000001000000000000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 220,
+        "v0": 12,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "n32-heap-direct-wrap",
+      "exit_status": 0,
+      "stdout_hex": "58494431000000dd0000000cfeedface00000001000000000000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 221,
+        "v0": 12,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "n32-heap-direct-limit",
+      "exit_status": 0,
+      "stdout_hex": "58494431000000de0000000cfeedface00000001000000000000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 222,
+        "v0": 12,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "n32-heap-direct-collision",
+      "exit_status": 0,
+      "stdout_hex": "58494431000000df0000000cfeedface00000001000000010000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 223,
+        "v0": 12,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 1,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "n32-heap-indirect-cycle",
+      "exit_status": 0,
+      "stdout_hex": "58494431000000e000000000feedface00000000000000010000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 224,
+        "v0": 0,
+        "v1": 4277009102,
+        "a3": 0,
+        "checks": 1,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "n32-heap-indirect-shrink-fault",
+      "exit_status": 139,
+      "stdout_hex": "",
+      "stderr": "",
+      "record": null,
+      "passed": true
+    },
+    {
+      "name": "n32-heap-indirect-null",
+      "exit_status": 139,
+      "stdout_hex": "",
+      "stderr": "",
+      "record": null,
+      "passed": true
+    },
+    {
+      "name": "n32-heap-indirect-below-data",
+      "exit_status": 139,
+      "stdout_hex": "",
+      "stderr": "",
+      "record": null,
+      "passed": true
+    },
+    {
+      "name": "n32-heap-indirect-high",
+      "exit_status": 0,
+      "stdout_hex": "58494431000000e40000000cfeedface00000001000000000000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 228,
+        "v0": 12,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "n32-heap-indirect-wrap",
+      "exit_status": 0,
+      "stdout_hex": "58494431000000e50000000cfeedface00000001000000000000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 229,
+        "v0": 12,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "n32-heap-indirect-limit",
+      "exit_status": 0,
+      "stdout_hex": "58494431000000e60000000cfeedface00000001000000000000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 230,
+        "v0": 12,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "n32-heap-indirect-collision",
+      "exit_status": 0,
+      "stdout_hex": "58494431000000e70000000cfeedface00000001000000010000000000000000",
+      "stderr": "",
+      "record": {
+        "magic": 1481196593,
+        "case": 231,
+        "v0": 12,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 1,
+        "preserved": 0,
+        "reserved": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "asa",
+      "exit_status": 0,
+      "stdout_hex": "584952495f56454e444f525f4f33320a",
+      "stderr": "",
+      "record": null,
+      "passed": true
+    },
+    {
+      "name": "asa-lines",
+      "exit_status": 0,
+      "stdout_hex": "416c7068610a426574610a",
+      "stderr": "",
+      "record": null,
+      "passed": true
+    },
+    {
+      "name": "asa-double",
+      "exit_status": 0,
+      "stdout_hex": "416c7068610a0a426574610a",
+      "stderr": "",
+      "record": null,
+      "passed": true
+    },
+    {
+      "name": "asa-page",
+      "exit_status": 0,
+      "stdout_hex": "416c7068610a0c426574610a",
+      "stderr": "",
+      "record": null,
+      "passed": true
+    },
+    {
+      "name": "asa-overprint",
+      "exit_status": 0,
+      "stdout_hex": "416c7068610d426574610a",
+      "stderr": "",
+      "record": null,
+      "passed": true
+    },
+    {
+      "name": "asa-unterminated",
+      "exit_status": 0,
+      "stdout_hex": "5461696c0a",
+      "stderr": "",
+      "record": null,
+      "passed": true
+    },
+    {
+      "name": "asa-empty",
+      "exit_status": 0,
+      "stdout_hex": "",
+      "stderr": "",
+      "record": null,
+      "passed": true
+    },
+    {
+      "name": "n32-fp",
+      "exit_status": 37,
+      "stdout_hex": "584952495f4e33325f46505f4f4b0a",
+      "stderr": "",
+      "record": null,
+      "passed": true
+    },
+    {
+      "name": "echo-0",
+      "exit_status": 0,
+      "stdout_hex": "0a",
+      "stderr": "",
+      "record": null,
+      "passed": true
+    },
+    {
+      "name": "echo-1",
+      "exit_status": 0,
+      "stdout_hex": "584952495f56454e444f525f4e33320a",
+      "stderr": "",
+      "record": null,
+      "passed": true
+    },
+    {
+      "name": "echo-2",
+      "exit_status": 0,
+      "stdout_hex": "6f6e652074776f0a",
+      "stderr": "",
+      "record": null,
+      "passed": true
+    },
+    {
+      "name": "echo-3",
+      "exit_status": 0,
+      "stdout_hex": "74776f20776f7264730a",
+      "stderr": "",
+      "record": null,
+      "passed": true
+    },
+    {
+      "name": "echo-4",
+      "exit_status": 0,
+      "stdout_hex": "0a",
+      "stderr": "",
+      "record": null,
+      "passed": true
+    },
+    {
+      "name": "echo-5",
+      "exit_status": 0,
+      "stdout_hex": "6f6e65202074687265650a",
+      "stderr": "",
+      "record": null,
+      "passed": true
+    }
+  ]
+}

@@ -108,13 +108,17 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--mode', choices=['ci', 'ordinary'], default='ci')
     parser.add_argument('--suite', choices=['runtime', 'queries', 'elfmap', 'dispatch'], default='runtime')
+    parser.add_argument('--pin', type=Path, help='explicit input/expectation pin for a regression kernel')
+    parser.add_argument('--kernel-directory', type=Path, help='TFTP directory for that pinned kernel')
     args = parser.parse_args()
+    if bool(args.pin) != bool(args.kernel_directory):
+        parser.error('--pin and --kernel-directory must be supplied together')
     args.debugger, args.boot_timeout = False, 300
     fixtures = ROOT / '.work/irix-o32-runtime'
     synthetic = json.loads((fixtures / 'manifest.json').read_text())
-    pin = json.loads((ROOT / f'lab/irix-o32/{args.suite}.json').read_text())
+    pin = json.loads((args.pin or ROOT / f'lab/irix-o32/{args.suite}.json').read_text())
     vendor = json.loads((ROOT / 'lab/irix-reference/manifest.json').read_text())
-    kernel_dir = ROOT / f'.work/netbsd-irix-build/{args.suite}-tftp'
+    kernel_dir = args.kernel_directory.resolve() if args.kernel_directory else ROOT / f'.work/netbsd-irix-build/{args.suite}-tftp'
     kernel = kernel_dir / 'netbsd-XIRI_INDY'
     inputs = [(name, fixtures / name, info['sha256']) for name, info in synthetic['files'].items()]
     queries = None
