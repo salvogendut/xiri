@@ -295,9 +295,74 @@ after initialized data), writes to private BSS, and transfer to the main entry.
 The main fixture prints the 15-byte marker and exits 37. It is original assembly
 with a minimal dynamic header, not a test of vendor relocation logic.
 
-For asa, passing currently means successful exec followed by exactly 44 stderr
-bytes, exit 239, and the pinned three-call trace: unsupported syscall 1040
+For asa in this pinned runtime baseline, passing means successful exec followed
+by exactly 44 stderr bytes, exit 239, and the pinned three-call trace: unsupported syscall 1040
 `syssgi(SGI_SYSCONF, _SC_CAP)`, write, exit. The return value is IRIX `ENOSYS=89`
 by the dispatch implementation. The trace records the call entry; it does not
 independently measure the return registers. `rld` has not run. n32 echo, 4Dwm,
 and Toolchest still return `ENOEXEC`.
+
+## Runtime capability and identity queries
+
+The `xiri/irix-o32-queries` fork branch, commit
+`dc08d65a8e7b3e6cdbd7ca978a200b6f50a42ad5`, extends the runtime baseline with
+bounded `syssgi` queries and real/effective UID/GID returns. The
+[query record](../../docs/results/2026-10-30-irix-o32-queries.md) documents the
+original-IRIX comparison and intentional capability-mode/unsupported-call
+differences. Unmodified asa's libc now opens and reads `/lib/rld`, then fails
+at unsupported `SGI_ELFMAP`. Neither rld nor asa's filter has executed.
+
+Keep the prepared runtime/segment fixtures and imported vendor files above.
+From the isolated NetBSD worktree and toolchain:
+
+```sh
+export XIRI_NETBSD_SOURCE_DIR="$PWD/.work/netbsd-irix-src"
+export XIRI_NETBSD_BUILD_DIR="$PWD/.work/netbsd-irix-build"
+git -C "$XIRI_NETBSD_SOURCE_DIR" switch --detach dc08d65a8e7b3e6cdbd7ca978a200b6f50a42ad5
+export XIRI_NETBSD_TFTP_DIR="$XIRI_NETBSD_BUILD_DIR/queries-tftp"
+export XIRI_NETBSD_CONFIG="$PWD/lab/irix-o32/XIRI_IRIX_QUERIES"
+./scripts/build-netbsd-kernel.sh kernel
+./scripts/build-irix-queries.py
+for mode in ci ordinary; do
+    ./scripts/probe-irix-runtime.py --suite queries --mode "$mode"
+    ./scripts/probe-irix-experiment.py --suite segments --mode "$mode" --expect compat \
+        --kernel-directory "$XIRI_NETBSD_TFTP_DIR" --ident XIRI_IRIX_QUERIES_20261030
+done
+```
+
+[`queries.json`](queries.json) pins the committed kernel, unchanged vendor
+runtime, 37-byte mapping diagnostic, exit 239, and eleven-call startup trace.
+The query suite has 42 cases: the 37 runtime scenarios with the new vendor
+boundary, asa under ordinary credentials, and four query executions with
+16 records each. The native parent sets real/effective UID/GID and clears
+supplementary groups before foreign exec. Profiles are root, user
+(UID 1234/GID 5678), effective root with ordinary real IDs, and the reverse.
+Only root asa is traced. The 89 static regressions run separately in each mode.
+Results and serial logs stay under `.work/irix-queries-runs/` and
+`.work/irix-experiment-runs/`. The default `--suite runtime` retains its earlier
+kernel and expected capability-query failure.
+
+[`queries.S`](queries.S) is original assembly without libc. Each of its sixteen
+64-byte records captures v0, v1, a3, a 24-byte capability buffer, and surrounding
+guards. The decoder checks exact byte count, magic, case order, returns,
+preservation of v1 outside UID/GID calls, and unchanged guard/poison words.
+It covers configuration, identity, unknown requests/attributes, null and bad
+pointers, a read-only destination, and the 79/80-character name boundary.
+
+After preparing and bootstrapping the [IRIX reference lab](../irix-reference/README.md),
+run the identical binary on a fresh private reference disk/NVRAM clone:
+
+```sh
+./scripts/probe-irix-reference-queries.py
+```
+
+The harness verifies firmware and probe hashes, checks native asa/libc/rld
+checksums against the extracted files, uploads through the scratch device,
+and measures root and UID/GID 60001. An extra argument selects the probe's
+reference-only setgid/setuid setup; the Xiri runner supplies exactly one argv
+entry and uses native credential setup instead. The harness also repeats the
+native asa filter control and requires clean shutdown, allowing up to five
+minutes for installed third-party services. Its results remain under
+`.work/irix-reference/query-runs/`. It checks raw-disk size and relies on the
+intake SHA-256 record; it does not rehash the 94 GiB logical image on each run.
+No reference overlay is committed, and the existing XFS alerts remain open.

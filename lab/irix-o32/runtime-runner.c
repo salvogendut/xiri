@@ -3,6 +3,7 @@
 #include <sys/wait.h>
 #include <errno.h>
 #include <fcntl.h>
+#include <grp.h>
 #include <poll.h>
 #include <signal.h>
 #include <stdio.h>
@@ -25,7 +26,16 @@ main(int argc, char **argv)
     int pipes[3][2], status = 0, finished = 0, killed = 0;
     unsigned char data[3][4096];
     size_t used[3] = {0}, total[3] = {0};
-    if (argc != 2) return 2;
+    unsigned long ids[4] = {0};
+    if (argc != 2 && argc != 6) return 2;
+    if (argc == 6) {
+        for (int i = 0; i < 4; i++) {
+            char *end;
+            errno = 0;
+            ids[i] = strtoul(argv[i + 2], &end, 10);
+            if (errno || *end || !*argv[i + 2] || ids[i] > 65534) return 2;
+        }
+    }
     for (int i = 0; i < 3; i++) {
         if (pipe(pipes[i]) || fcntl(pipes[i][0], F_SETFL, O_NONBLOCK) < 0) return 2;
     }
@@ -41,6 +51,11 @@ main(int argc, char **argv)
         for (int i = 0; i < 3; i++) close(pipes[i][0]);
         if (dup2(pipes[0][1], 1) < 0 || dup2(pipes[1][1], 2) < 0) _exit(125);
         close(pipes[0][1]); close(pipes[1][1]);
+        /* Native setup lets the foreign identity calls report independently
+         * chosen real/effective IDs, without adding foreign credential setters. */
+        if (argc == 6 && (setgroups(0, NULL) ||
+            setregid((gid_t)ids[2], (gid_t)ids[3]) ||
+            setreuid((uid_t)ids[0], (uid_t)ids[1]))) _exit(125);
         execve(argv[1], av, ev);
         int e = errno;
         if (write(pipes[2][1], &e, sizeof(e)) != sizeof(e)) _exit(124);

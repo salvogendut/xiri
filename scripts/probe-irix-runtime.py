@@ -6,6 +6,7 @@ import json
 from pathlib import Path
 import re
 import shlex
+import struct
 import tempfile
 import time
 
@@ -31,18 +32,47 @@ def observation(output):
     return result
 
 
+def query_records(output, ids, *, cap_mode=0, unknown_syssgi=89):
+    match = re.search(r'^STDOUT bytes=(\d+) hex=([0-9a-f]*)$', output, re.M)
+    data = bytes.fromhex(match[2]) if match else b''
+    if len(data) != 16 * 64 or int(match[1]) != len(data):
+        raise RuntimeError('missing or truncated query records')
+    # v0 and a3 for each case. Other syssgi requests retain the personality's
+    # explicit ENOSYS policy, distinct from the reference's EINVAL.
+    expected = [(cap_mode, 0), (4096, 0), (22, 1), (0, 0), (1009, 1), (22, 1), (22, 1),
+                (ids[0], 0), (ids[2], 0), (unknown_syssgi, 1), (14, 1), (14, 1), (14, 1),
+                (78, 1), (1009, 1), (78, 1)]
+    result = []
+    for i, words in enumerate(struct.iter_unpack('>16I', data)):
+        want_v1 = ids[1] if i == 7 else ids[3] if i == 8 else 0xfeedface
+        want_caps = [0] * 6 if i == 3 else [0xa5a5a5a5] * 6
+        passed = words[:2] == (0x58495131, i + 1) and (words[2], words[4]) == expected[i] and \
+            words[3] == want_v1 and list(words[6:12]) == want_caps and \
+            all(words[j] == 0xa5a5a5a5 for j in [5, 12, 13, 14, 15])
+        result.append({'case': i + 1, 'v0': words[2], 'v1': words[3], 'a3': words[4],
+                       'cap_words': list(words[6:12]), 'guards': [words[j] for j in [5, 12, 13, 14, 15]],
+                       'passed': passed})
+    return result
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--mode', choices=['ci', 'ordinary'], default='ci')
+    parser.add_argument('--suite', choices=['runtime', 'queries'], default='runtime')
     args = parser.parse_args()
     args.debugger, args.boot_timeout = False, 300
     fixtures = ROOT / '.work/irix-o32-runtime'
     synthetic = json.loads((fixtures / 'manifest.json').read_text())
-    pin = json.loads((ROOT / 'lab/irix-o32/runtime.json').read_text())
+    pin = json.loads((ROOT / f'lab/irix-o32/{args.suite}.json').read_text())
     vendor = json.loads((ROOT / 'lab/irix-reference/manifest.json').read_text())
-    kernel_dir = ROOT / '.work/netbsd-irix-build/runtime-tftp'
+    kernel_dir = ROOT / f'.work/netbsd-irix-build/{args.suite}-tftp'
     kernel = kernel_dir / 'netbsd-XIRI_INDY'
     inputs = [(name, fixtures / name, info['sha256']) for name, info in synthetic['files'].items()]
+    queries = None
+    if args.suite == 'queries':
+        query_dir = ROOT / '.work/irix-o32-queries'
+        queries = json.loads((query_dir / 'manifest.json').read_text())
+        inputs += [(name, query_dir / name, info['sha256']) for name, info in queries['files'].items()]
     inputs += [('native-o32', ROOT / '.work/irix-o32-segments/native-o32', pin['native_control_sha256'])]
     inputs += [(c['fixture_name'], ROOT / '.work/irix-reference/vendor' / c['path'].lstrip('/'), c['sha256'])
                for c in vendor['candidates']]
@@ -51,14 +81,14 @@ def main():
     for name, path, sha in [*inputs, ('kernel', kernel, pin['kernel']['sha256'])]:
         if not path.is_file() or probe.sha256(path) != sha:
             parser.error(f'{name}: missing or different pinned input: {path}')
-    output_root = ROOT / '.work/irix-runtime-runs'
+    output_root = ROOT / f'.work/irix-{args.suite}-runs'
     output_root.mkdir(exist_ok=True)
     directory = Path(tempfile.mkdtemp(prefix=args.mode + '-', dir=output_root))
     config = (ROOT / 'lab/indy-netbsd/iris.toml').read_text()
     config = re.sub(r'^tftp_dir = .*$', 'tftp_dir = ' + json.dumps(str(kernel_dir)), config, flags=re.M)
     lab = probe.Lab(args, directory, config_text=config)
     result = {'status': 'error', 'mode': args.mode, 'clean_shutdown': False, 'pin': pin,
-              'synthetic_manifest': synthetic, 'observations': [],
+              'synthetic_manifest': synthetic, 'query_manifest': queries, 'observations': [],
               'started_utc': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())}
     started = time.monotonic()
     print(f'Results: {directory.relative_to(ROOT)}', flush=True)
@@ -72,6 +102,14 @@ def main():
     cases += [{'name': c['fixture_name'], 'program': c['fixture_name'], 'interpreter': 'vendor-runtime-0',
                'expect': pin['asa_expected'] if c['fixture_name'] == 'vendor-asa' else rejected}
               for c in vendor['candidates']]
+    if queries:
+        cases.append({'name': 'vendor-asa-user', 'program': 'vendor-asa', 'interpreter': 'vendor-runtime-0',
+                      'ids': [1234, 1234, 5678, 5678], 'expect': pin['asa_expected']})
+        for name, ids in [('root', [0, 0, 0, 0]), ('user', [1234, 1234, 5678, 5678]),
+                          ('effective-root', [1234, 0, 5678, 0]), ('real-root', [0, 1234, 0, 5678])]:
+            cases.append({'name': 'queries-' + name, 'program': 'queries', 'interpreter': 'interpreter',
+                          'ids': ids, 'query': True,
+                          'expect': {**success, 'exit': 0, 'stdout': '16 query records'}})
     cases += [{'name': 'native-after', 'program': 'native-o32', 'interpreter': 'interpreter', 'expect': success}]
     try:
         checkpoint = ROOT / '.work/indy-netbsd-kernel'
@@ -109,6 +147,8 @@ def main():
                           'chmod 755 /emul/irix/usr/lib/libc.new',
                           'mv /emul/irix/usr/lib/libc.new /emul/irix/usr/lib/libc.so.1']
             command = './runner ./' + case['program']
+            if 'ids' in case:
+                command += ' ' + ' '.join(map(str, case['ids']))
             if case['name'] == 'vendor-asa':
                 command = 'ktrace -i -t u -f runtime.ktrace ' + command
             lines += [command, f'echo ENDCASE {case["name"]}']
@@ -120,7 +160,7 @@ def main():
         if lab.command('mkdir -p /cdrom /root/irix-runtime /emul/irix/usr/lib /emul/irix/lib && '
                        'mount -t cd9660 -o ro /dev/cd0a /cdrom && cp /cdrom/* /root/irix-runtime/ && '
                        'cp /cdrom/netbsd /netbsd && cd /root/irix-runtime && sha256 -c SHA256 && '
-                       'chmod 755 dynamic native-o32 vendor-* bad-* && '
+                       'chmod 755 dynamic native-o32 vendor-* bad-* ' + ('queries ' if queries else '') + '&& '
                        'cp vendor-runtime-1 /emul/irix/lib/rld && chmod 755 /emul/irix/lib/rld && '
                        'cc -O2 -Wall -Wextra -Werror runner.c -o runner', 180):
             raise RuntimeError('runtime import or native runner build failed')
@@ -137,8 +177,15 @@ def main():
             if not match:
                 raise RuntimeError('missing case ' + case['name'])
             actual = observation(match[1])
-            passed = actual == case['expect']
+            records = query_records(match[1], case['ids']) if case.get('query') else None
+            if records is not None:
+                actual['stdout'] = '16 query records'
+            passed = actual == case['expect'] and (records is None or all(r['passed'] for r in records))
             result['observations'].append({'name': case['name'], 'passed': passed, 'actual': actual, 'expected': case['expect']})
+            if 'ids' in case:
+                result['observations'][-1]['ids'] = case['ids']
+            if records is not None:
+                result['observations'][-1]['query_records'] = records
             if not passed:
                 failures.append(case['name'])
                 print(f'{case["name"]}: {actual}', flush=True)

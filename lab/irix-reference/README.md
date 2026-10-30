@@ -150,7 +150,15 @@ from exit status, and requires native execution and clean shutdown. Passing
 means rejection was measured correctly; it does not mean vendor applications
 ran on Xiri. Results remain under `.work/irix-vendor-runs/`.
 
-The next implementation work must use the actual loader contracts: o32 `asa`
+Further implementation uses the actual loader contracts: o32 `asa`
 requests `/usr/lib/libc.so.1`, while n32 `echo` requests `/lib32/libc.so.1`.
 Both desktop candidates are n32 and request `/usr/lib32/libc.so.1`. Resolve the
 n32 kernel/dispatch path early; it is a confirmed desktop requirement.
+
+The later [o32 query experiment](../../docs/results/2026-10-30-irix-o32-queries.md)
+gets asa's original libc through configuration/capability checks and as far as
+opening and reading `/lib/rld`. Mapping still fails at `SGI_ELFMAP`; the earlier
+rejection baseline above remains pinned. The
+[query lab](../irix-o32/README.md#runtime-capability-and-identity-queries) includes
+a reference harness that runs the same original direct-trap probe on IRIX,
+compares root/user query results, repeats native asa, and waits for a clean halt.
