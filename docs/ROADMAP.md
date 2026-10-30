@@ -1,6 +1,6 @@
 # Xiri execution roadmap
 
-Status: execution started, updated 2026-10-30. Host inventory, the pinned IRIS build, verified NetBSD inputs, the installed R4400 guest, and a host-built custom kernel boot are complete. Debugger breakpoints and an automated smoke probe now pass, including comparison of CI and ordinary execution. Bounded disk and network integrity tests also pass in both modes. Snapshot restore, CI rollback, and post-restore cold boots now pass with the fork's RAM-map fix. Graphics and later implementation milestones remain pending; fragmented NFS corruption and the earlier installer HTTP stall remain open.
+Status: execution started, updated 2026-10-30. Host inventory, the pinned IRIS build, verified NetBSD inputs, the installed R4400 guest, and a host-built custom kernel boot are complete. Debugger breakpoints and an automated smoke probe now pass, including comparison of CI and ordinary execution. Bounded disk and network integrity tests also pass in both modes. Snapshot restore, CI rollback, and post-restore cold boots now pass with the fork's RAM-map fix. NetBSD X/Newport display and input now pass in both modes with software rendering and a keyboard-controller fix. XAA acceleration, full display geometry, fragmented NFS corruption, and the earlier installer HTTP stall remain open; original desktop and later implementation milestones are pending.
 
 The agreed target is NetBSD with an IRIX personality and the existing IRIX desktop. Initial implementation and testing use an emulated Indy. The first deliverable is a reproducible NetBSD development loop, followed by desktop feasibility and physical Indy qualification. Expand to additional machines and applications after those results.
 
@@ -14,7 +14,7 @@ Before starting implementation:
 2. Arrange storage for source, toolchains, object files, guest disks and snapshots. Retain the 30–50 GiB planning allowance and adjust it from actual usage.
 3. Provision a debug-capable IRIS source build with a recorded Rust toolchain and native dependencies, plus NetBSD cross-build tools. Check the selected host's library compatibility before choosing any packaged emulator.
 4. Use the [verified NetBSD 11.0 input baseline](../lab/netbsd-11.0/README.md) for the installer, sets, checksums and matching source. Locate or acquire the Indy PROM and an IRIX reference installation for the later MAME and desktop experiments; neither image is currently available locally. IRIS's documented PROM fallback allows the first NetBSD attempt before those images are ready.
-5. Continue the emulated Indy qualification sequence after the successful installer, changed-kernel, debugger, smoke, I/O, and snapshot tests: qualify NetBSD X/Newport display and input. Expand the ordinary-versus-CI comparison with each new workload.
+5. Use the qualified NetBSD development loop and software-rendered Newport X display for the historical `COMPAT_IRIX` audit and minimal execution experiment plan. Keep the [X11 limits](results/2026-10-30-netbsd-x11.md) explicit and expand the ordinary-versus-CI comparison with each new workload. Original desktop dependency tests require IRIX reference media.
 6. Inventory the physical Indy, Indigo2 and Octane, and arrange Indy serial capture for later hardware qualification.
 
 Keep large images and original runtimes outside Git; save configurations, manifests, commands and small result logs in the repository. This checklist prepares Milestones 0–1.
@@ -58,7 +58,7 @@ The NetBSD boot and desktop experiments can be performed independently as their 
 - [x] Qualify snapshots separately, keeping changed-kernel tests on cold boots. Repeated restores, CI rollback, fresh-process restore, timers, and final cold-boot integrity pass in both execution modes with the RAM-map fix. The [snapshot record](results/2026-10-30-netbsd-snapshots.md) limits the NFS profile to 1024-byte requests and retains the fragmented-transfer failure.
 - [ ] Repeat key boot and probe results in MAME when firmware is available; use it as primary if it passes a stage IRIS fails.
 - [ ] When hardware access permits, run an early physical Indy boot and I/O smoke test to expose differences from emulation; retain full ABI and desktop hardware acceptance for Milestone 4.
-- [ ] Establish a usable NetBSD X display and input on emulated Newport, or record the precise driver gap.
+- [x] Establish a usable NetBSD X display and input on emulated Newport, or record the precise driver gap. [Software-rendered Xorg at 1024×768, depth 24](results/2026-10-30-netbsd-x11.md) passes pixel, keyboard/mouse, twm/xterm, and clean-shutdown checks in both modes after an IRIS keyboard-controller fix. XAA colors and full framebuffer geometry remain open.
 - [ ] Run selected original desktop clients on IRIX against a dedicated modern X server.
 - [ ] Record required visuals, X extensions, fonts, libraries, and helper processes; distinguish confirmed requirements from suspected ones.
 - [ ] Compare historical `COMPAT_IRIX` code with current kernel interfaces and document the smallest execution experiment.

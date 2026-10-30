@@ -236,3 +236,48 @@ content identity; compare the recorded SHA-256 hashes before reusing a bundle.
 External NFS writes are outside the snapshot, and these tests open new network
 connections after restore. They do not qualify live-connection rewind, active
 I/O capture, cross-build migration, guest X, or power-loss recovery.
+
+## Newport X11 qualification
+
+Fetch the matching X11 sets, rebuild the pinned emulator, then run both modes:
+
+```sh
+./scripts/fetch-netbsd-11.sh
+./scripts/build-iris.sh
+./scripts/qualify-netbsd-x11.py --mode ordinary
+./scripts/qualify-netbsd-x11.py --mode ci
+```
+
+The [X11 harness](../../scripts/qualify-netbsd-x11.py) starts from a fresh copy
+of the stopped custom-kernel disk, verifies the five X sets against the pinned
+SHA-512 manifest, installs them from a virtual CD, and compiles the
+[Xlib probe](x11/probe.c) inside NetBSD. Each mode takes about five minutes on
+the recorded host, including installation. Newport stays enabled in both
+modes; ordinary mode uses a host Xvfb window.
+
+The [Xorg configuration](x11/xorg.conf) uses the `newport`, `kbd`, and `mouse`
+drivers, a 24-bit screen, and `NoAccel`. Allocate wsdisplay screen 0 with
+`wsconscfg -f /dev/ttyEcfg 0` before starting Xorg from the serial console.
+The server runs with `-nolisten tcp -noreset`; clients use local display `:0`.
+
+Checks cover solid fills, copies, two XOR operations, an uploaded image,
+XGetImage readback, and twelve independent pixels in the composed Newport
+display. Monitor `key` and `ptr` commands inject PS/2 events. The guest must
+receive exact text, key releases, mouse motion, and all three buttons. Finally,
+twm manages an xterm and a command typed through the graphical keyboard must
+create the expected file. Clients and server exit before the clean guest halt.
+
+Each run retains `result.json`, serial/emulator/monitor logs, `Xorg.0.log`,
+`xdpyinfo.txt`, the input-event log, and drawing/desktop screenshots under
+`.work/netbsd-x/`. Both modes use direct writes to independent disposable
+disk copies (`overlay = false`); each stopped `disk.raw` includes the installed
+X sets. If the lab configuration is later changed to enable COW, the harness
+also retains a CI overlay and its dirty-sector sidecar when present.
+
+The qualified X screen is 1024×768. The composed framebuffer reports
+1282×1024 with an unused black region; full geometry remains unresolved.
+`--accelerated` selects the XAA path for investigating its known incorrect
+fill colors. This is not the accepted configuration. The
+[results](../../docs/results/2026-10-30-netbsd-x11.md) record that failure and
+the keyboard-controller fix. These tests do not qualify GLX/3D, 8-bit X
+screens, active-X snapshots, physical graphics, or the original IRIX desktop.

@@ -11,8 +11,10 @@ the pinned [`SHA512SUMS`](SHA512SUMS) file in this repository.
 The selected files are the Indy IP2x install and generic kernels, the
 mandatory `base`, `etc`, and `kern-GENERIC32_IP2x` installation sets,
 `modules`, `comp`, and `rescue` for the first guest, and the matching
-`src`, `gnusrc`, `sharesrc`, and `syssrc` source sets for the later kernel
-build. X11 sets and `xsrc` can be fetched when display testing starts.
+`src`, `gnusrc`, `sharesrc`, and `syssrc` source sets for the kernel build.
+The manifest also includes `xbase`, `xcomp`, `xetc`, `xfont`, and `xserver`
+for Newport qualification. X11 source (`xsrc`) is separate and is not yet
+part of the downloaded source baseline.
 
 Downloads and derived files live under `.work/netbsd-11.0/`, outside Git. The
 script writes uncompressed ELF and ECOFF install kernels into
@@ -92,3 +94,18 @@ The script restores the executable bit on `gdb/make-init-c`, which the
 NetBSD 11.0 source set ships as mode 0644.
 
 See the [debugger and probe instructions](../indy-netbsd/README.md#automated-probes).
+
+## Development fork
+
+Guest source changes belong in the sibling
+[`NetBSD-nixbench` fork](https://github.com/salvogendut/NetBSD-nixbench), at
+`../NetBSD-nixbench`, on a task branch. The inspected clean `trunk` was
+`a852b4a0380` (2026-10-30); it is newer than the verified 11.0 source sets.
+Do not substitute it silently for the release tree or reuse release object
+files for a trunk build. Select and record the branch baseline and use separate
+build outputs when a source change is needed. The existing build script still
+uses the verified release tree described above.
+
+Xorg's Newport driver lives in NetBSD's separate `xsrc` repository. Kernel and
+base-system changes can go into `NetBSD-nixbench`; an Xorg driver change needs
+a matching X source checkout as well.
