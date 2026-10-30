@@ -1,0 +1,871 @@
+{
+  "schema": 1,
+  "description": "Measured original IRIX ELF-map behavior, including layouts outside Xiri scope. Mapping success alone does not validate untested layouts. Relocation addresses may vary; the probe checks executable code, data and old mappings.",
+  "source_run": ".work/irix-reference/elfmap-runs/ci-_ndyiivz",
+  "files": {
+    "elfmap": "8c9fa30d68e5bf8a896f750908e836861964d4b5f8b1efefc0603faa661a405b",
+    "elfmap-partial": "bbb9a5c0f70d4b6dde8f93015b69bcd075888470c415522f7f405d5fb9f0cd11",
+    "elfmap-pure-bss": "1aa4075a49bd308aad692bcc12cda676d8d2b771e5b0e246acc02bb436c17f2b",
+    "elfmap-full-and-tail": "07591320fc754b3b5ea3023b83a3a57e2c6b499dfc944fde79f456bd4e7acacd",
+    "elfmap-repeat": "d616424d8ec8998eef86977f5cccdf223398607223379f9d62e315c736fce756",
+    "elfmap-rollback": "a37cb03f9ed64b67fe93a534a5f649e1389d2c555879a277a8fc6fdec414aa02",
+    "elfmap-rollback-tail": "21d66c80f3ef4232958c5ca10197cff2b3c99ac64ce7f193df44e6f2205a9261",
+    "elfmap-text-fault": "575fe1ef04662f35c15f2eab0369b81f8c30a61d6e19cd4cc096f2ba752d318a",
+    "elfmap-gap-fault": "941e8ffd86ea94352a25127febbd4dab0c291bb7b048612079337a1da4073960",
+    "elfmap-count-zero": "0183d457c81c93bc0699cbe7bc69b3642cfefdddf3af16f1fa72d227da8274f5",
+    "elfmap-count-one": "a7209d7b56f50cd96008a75fcac1c4d75bd3847900c3726692043e9044c18932",
+    "elfmap-count-three": "d621f7d06f817f8c50e249d4b1eb72a4fe6b4900ffed8e68d91d462c76e71460",
+    "elfmap-count-negative": "8d37975a0e1c9ebe0c1b7b72ffb80be11a2af0175b38f3abef13f15e0abdbbab",
+    "elfmap-count-large": "3182092f417e4723ac838a6b0336bf709cfc6a17dfb5268e4940ef656f617748",
+    "elfmap-bad-headers": "d2b50c8b2effb1aae8ec20d19bce00f1964de702714833db3391dbb94e4678a4",
+    "elfmap-null-headers": "daded4ad27e84b35312170a11e37d6f82cd0035b24ff3605adb2185012bbc5b0",
+    "elfmap-fd-bad": "833fcdedb76368ce57826d3747be2d6f1625e4a66a24c2457f8f98e17b2c8aa7",
+    "elfmap-fd-closed": "df8e0905e9df4ac6c7265129ad6222559a379e2bb465a56d403ae99967ae81e1",
+    "elfmap-fd-write-only": "e9a487903cf94a10bd25d3a0a64d8546c6f9f061ee1de10cca55da90ef6a686c",
+    "elfmap-fd-directory": "ad0e903787d964c32a70ffdb072dfa928cd7d13cab0b3d78be135d7c99f69706",
+    "elfmap-fd-device": "ca6e91cb636b6210f6950e304b4cb82ec4a62e77c42fe71fa5dee69d60d8a860",
+    "elfmap-fd-read-write": "19573db0dd3a58d61fbe7ee55b0637b42d96abc233b02815f2f3222c7a2ece9b",
+    "elfmap-no-execute": "5638e2f1d35153067dedfe646dddb3f781a6920d973d0df975517e48f6ad2d5f",
+    "elfmap-nonload": "d600c51649d5a240ab6ccfdd25b4440e2582e87fa9410f44e0b2f25e790e01c7",
+    "elfmap-text-write": "6b506abe81956a29306eaebceff4c2e4b399c7e14c02456e408af3070d486679",
+    "elfmap-data-exec": "992899e558774b90a76be7f7b79d1c09103320eef8b6f899d1f6aa75a87939f2",
+    "elfmap-text-bss": "c5e2ea4a7b8b8a42ce21d55dbe2c61f3ebaa85db9f7575e84fee01f488f225c4",
+    "elfmap-zero-memory": "b72a0ba94066ce33fc0e3876fa6a567212228231b88d92cedb8b8a8ec7ff19a9",
+    "elfmap-file-over-memory": "8ca4a9a65b241d7f4e900a1657ec37e050e7c425a7200ad7fa0a3d7e342be086",
+    "elfmap-unaligned-address": "903fd121f6ab73b573deec918058e01c1f12219227a66d889b1a89dc6dd22e7c",
+    "elfmap-unaligned-offset": "9b413815720d1e1534b224980b163e0bb51f443920d7ec96e9a664b6dfc7bc7f",
+    "elfmap-nonpower-align": "758ebacfaf3a24b84dddef009a72a85b55ad96deeae00202c1aacc8f16eb28e8",
+    "elfmap-small-align": "bbed700303eda445251e38d6cb2ece6f39da5480630d4b2c4f38081272e1efd1",
+    "elfmap-large-align": "4a25625cc7a5ea308ce9484921bb83e8172cccc0247c7ec0810623251571e985",
+    "elfmap-incongruent": "4a99c1c1013f010bed4979c6ddacb6dc434c871cf060970c6c7865d2abac101b",
+    "elfmap-overlap": "db8a8589c4a51edfbccb404d9207b06e040a0b4796e29a3b0648a02af22b2207",
+    "elfmap-reversed": "f4ba38c69b55099d33f1fea48adbbfc51075b72aed30ae859623bfb7dc55ee63",
+    "elfmap-file-overlap": "c09bdb335f7a0ae3034dafc62a7dbc308986608dc41da05014753daa134f72bc",
+    "elfmap-offset-wrap": "6cb2b7416e241d16260fcffd04bc1b86cfe45ed85877db73ef1716e12f6242b4",
+    "elfmap-address-wrap": "584b018d5462f97680b522b21be7f13e7dc477ebf3f26c0151df4ee376b2b727",
+    "elfmap-oversized": "d708e1279775261110711ac16356686da80eb25d67eb775fd4a5837c7b4f44c3",
+    "elfmap-large-span": "1cda40c999ed3ac33a9b08ce550907071dbfb387020cb23ed739f0f6737dce92",
+    "elfmap-short-file": "3776fc89cdd7060a24250ee6d798ce3a034407182d430111805c978a77426c4b"
+  },
+  "observations": [
+    {
+      "name": "elfmap-partial",
+      "exit_status": 0,
+      "stderr": "",
+      "record": {
+        "magic": 1481196849,
+        "case": 1,
+        "v0": 234881024,
+        "v1": 4277009102,
+        "a3": 0,
+        "checks": 1,
+        "second_v0": 0,
+        "second_a3": 0,
+        "third_v0": 0,
+        "third_a3": 0,
+        "preserved_word": 0,
+        "reserved": 0
+      }
+    },
+    {
+      "name": "elfmap-pure-bss",
+      "exit_status": 0,
+      "stderr": "",
+      "record": {
+        "magic": 1481196849,
+        "case": 2,
+        "v0": 234881024,
+        "v1": 4277009102,
+        "a3": 0,
+        "checks": 1,
+        "second_v0": 0,
+        "second_a3": 0,
+        "third_v0": 0,
+        "third_a3": 0,
+        "preserved_word": 0,
+        "reserved": 0
+      }
+    },
+    {
+      "name": "elfmap-full-and-tail",
+      "exit_status": 0,
+      "stderr": "",
+      "record": {
+        "magic": 1481196849,
+        "case": 3,
+        "v0": 234881024,
+        "v1": 4277009102,
+        "a3": 0,
+        "checks": 1,
+        "second_v0": 0,
+        "second_a3": 0,
+        "third_v0": 0,
+        "third_a3": 0,
+        "preserved_word": 0,
+        "reserved": 0
+      }
+    },
+    {
+      "name": "elfmap-repeat",
+      "exit_status": 0,
+      "stderr": "",
+      "record": {
+        "magic": 1481196849,
+        "case": 4,
+        "v0": 234881024,
+        "v1": 4277009102,
+        "a3": 0,
+        "checks": 3,
+        "second_v0": 234881024,
+        "second_a3": 0,
+        "third_v0": 0,
+        "third_a3": 0,
+        "preserved_word": 0,
+        "reserved": 0
+      }
+    },
+    {
+      "name": "elfmap-rollback",
+      "exit_status": 0,
+      "stderr": "",
+      "record": {
+        "magic": 1481196849,
+        "case": 5,
+        "v0": 234881024,
+        "v1": 4277009102,
+        "a3": 0,
+        "checks": 3,
+        "second_v0": 1572864000,
+        "second_a3": 0,
+        "third_v0": 0,
+        "third_a3": 0,
+        "preserved_word": 305419896,
+        "reserved": 0
+      },
+      "relocated_second": true
+    },
+    {
+      "name": "elfmap-rollback-tail",
+      "exit_status": 0,
+      "stderr": "",
+      "record": {
+        "magic": 1481196849,
+        "case": 6,
+        "v0": 234881024,
+        "v1": 4277009102,
+        "a3": 0,
+        "checks": 3,
+        "second_v0": 1572864000,
+        "second_a3": 0,
+        "third_v0": 0,
+        "third_a3": 0,
+        "preserved_word": 305419896,
+        "reserved": 0
+      },
+      "relocated_second": true
+    },
+    {
+      "name": "elfmap-text-fault",
+      "exit_status": 139,
+      "stderr": "",
+      "record": {
+        "magic": 1481196849,
+        "case": 7,
+        "v0": 234881024,
+        "v1": 4277009102,
+        "a3": 0,
+        "checks": 1,
+        "second_v0": 0,
+        "second_a3": 0,
+        "third_v0": 0,
+        "third_a3": 0,
+        "preserved_word": 0,
+        "reserved": 0
+      }
+    },
+    {
+      "name": "elfmap-gap-fault",
+      "exit_status": 139,
+      "stderr": "",
+      "record": {
+        "magic": 1481196849,
+        "case": 8,
+        "v0": 234881024,
+        "v1": 4277009102,
+        "a3": 0,
+        "checks": 1,
+        "second_v0": 0,
+        "second_a3": 0,
+        "third_v0": 0,
+        "third_a3": 0,
+        "preserved_word": 0,
+        "reserved": 0
+      }
+    },
+    {
+      "name": "elfmap-count-zero",
+      "exit_status": 0,
+      "stderr": "",
+      "record": {
+        "magic": 1481196849,
+        "case": 9,
+        "v0": 22,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "second_v0": 0,
+        "second_a3": 0,
+        "third_v0": 0,
+        "third_a3": 0,
+        "preserved_word": 0,
+        "reserved": 0
+      }
+    },
+    {
+      "name": "elfmap-count-one",
+      "exit_status": 0,
+      "stderr": "",
+      "record": {
+        "magic": 1481196849,
+        "case": 10,
+        "v0": 234881024,
+        "v1": 4277009102,
+        "a3": 0,
+        "checks": 0,
+        "second_v0": 0,
+        "second_a3": 0,
+        "third_v0": 0,
+        "third_a3": 0,
+        "preserved_word": 0,
+        "reserved": 0
+      }
+    },
+    {
+      "name": "elfmap-count-three",
+      "exit_status": 0,
+      "stderr": "",
+      "record": {
+        "magic": 1481196849,
+        "case": 11,
+        "v0": 8,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "second_v0": 0,
+        "second_a3": 0,
+        "third_v0": 0,
+        "third_a3": 0,
+        "preserved_word": 0,
+        "reserved": 0
+      }
+    },
+    {
+      "name": "elfmap-count-negative",
+      "exit_status": 0,
+      "stderr": "",
+      "record": {
+        "magic": 1481196849,
+        "case": 12,
+        "v0": 22,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "second_v0": 0,
+        "second_a3": 0,
+        "third_v0": 0,
+        "third_a3": 0,
+        "preserved_word": 0,
+        "reserved": 0
+      }
+    },
+    {
+      "name": "elfmap-count-large",
+      "exit_status": 0,
+      "stderr": "",
+      "record": {
+        "magic": 1481196849,
+        "case": 13,
+        "v0": 22,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "second_v0": 0,
+        "second_a3": 0,
+        "third_v0": 0,
+        "third_a3": 0,
+        "preserved_word": 0,
+        "reserved": 0
+      }
+    },
+    {
+      "name": "elfmap-bad-headers",
+      "exit_status": 0,
+      "stderr": "",
+      "record": {
+        "magic": 1481196849,
+        "case": 14,
+        "v0": 14,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "second_v0": 0,
+        "second_a3": 0,
+        "third_v0": 0,
+        "third_a3": 0,
+        "preserved_word": 0,
+        "reserved": 0
+      }
+    },
+    {
+      "name": "elfmap-null-headers",
+      "exit_status": 0,
+      "stderr": "",
+      "record": {
+        "magic": 1481196849,
+        "case": 15,
+        "v0": 14,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "second_v0": 0,
+        "second_a3": 0,
+        "third_v0": 0,
+        "third_a3": 0,
+        "preserved_word": 0,
+        "reserved": 0
+      }
+    },
+    {
+      "name": "elfmap-fd-bad",
+      "exit_status": 0,
+      "stderr": "",
+      "record": {
+        "magic": 1481196849,
+        "case": 16,
+        "v0": 9,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "second_v0": 0,
+        "second_a3": 0,
+        "third_v0": 0,
+        "third_a3": 0,
+        "preserved_word": 0,
+        "reserved": 0
+      }
+    },
+    {
+      "name": "elfmap-fd-closed",
+      "exit_status": 0,
+      "stderr": "",
+      "record": {
+        "magic": 1481196849,
+        "case": 17,
+        "v0": 9,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "second_v0": 0,
+        "second_a3": 0,
+        "third_v0": 0,
+        "third_a3": 0,
+        "preserved_word": 0,
+        "reserved": 0
+      }
+    },
+    {
+      "name": "elfmap-fd-write-only",
+      "exit_status": 0,
+      "stderr": "",
+      "record": {
+        "magic": 1481196849,
+        "case": 18,
+        "v0": 9,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "second_v0": 0,
+        "second_a3": 0,
+        "third_v0": 0,
+        "third_a3": 0,
+        "preserved_word": 0,
+        "reserved": 0
+      }
+    },
+    {
+      "name": "elfmap-fd-directory",
+      "exit_status": 0,
+      "stderr": "",
+      "record": {
+        "magic": 1481196849,
+        "case": 19,
+        "v0": 19,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "second_v0": 0,
+        "second_a3": 0,
+        "third_v0": 0,
+        "third_a3": 0,
+        "preserved_word": 0,
+        "reserved": 0
+      }
+    },
+    {
+      "name": "elfmap-fd-device",
+      "exit_status": 0,
+      "stderr": "",
+      "record": {
+        "magic": 1481196849,
+        "case": 20,
+        "v0": 234881024,
+        "v1": 4277009102,
+        "a3": 0,
+        "checks": 0,
+        "second_v0": 0,
+        "second_a3": 0,
+        "third_v0": 0,
+        "third_a3": 0,
+        "preserved_word": 0,
+        "reserved": 0
+      }
+    },
+    {
+      "name": "elfmap-fd-read-write",
+      "exit_status": 0,
+      "stderr": "",
+      "record": {
+        "magic": 1481196849,
+        "case": 21,
+        "v0": 234881024,
+        "v1": 4277009102,
+        "a3": 0,
+        "checks": 0,
+        "second_v0": 0,
+        "second_a3": 0,
+        "third_v0": 0,
+        "third_a3": 0,
+        "preserved_word": 0,
+        "reserved": 0
+      }
+    },
+    {
+      "name": "elfmap-no-execute",
+      "exit_status": 0,
+      "stderr": "",
+      "record": {
+        "magic": 1481196849,
+        "case": 22,
+        "v0": 234881024,
+        "v1": 4277009102,
+        "a3": 0,
+        "checks": 0,
+        "second_v0": 0,
+        "second_a3": 0,
+        "third_v0": 0,
+        "third_a3": 0,
+        "preserved_word": 0,
+        "reserved": 0
+      }
+    },
+    {
+      "name": "elfmap-nonload",
+      "exit_status": 0,
+      "stderr": "",
+      "record": {
+        "magic": 1481196849,
+        "case": 23,
+        "v0": 8,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "second_v0": 0,
+        "second_a3": 0,
+        "third_v0": 0,
+        "third_a3": 0,
+        "preserved_word": 0,
+        "reserved": 0
+      }
+    },
+    {
+      "name": "elfmap-text-write",
+      "exit_status": 0,
+      "stderr": "",
+      "record": {
+        "magic": 1481196849,
+        "case": 24,
+        "v0": 234881024,
+        "v1": 4277009102,
+        "a3": 0,
+        "checks": 0,
+        "second_v0": 0,
+        "second_a3": 0,
+        "third_v0": 0,
+        "third_a3": 0,
+        "preserved_word": 0,
+        "reserved": 0
+      }
+    },
+    {
+      "name": "elfmap-data-exec",
+      "exit_status": 0,
+      "stderr": "",
+      "record": {
+        "magic": 1481196849,
+        "case": 25,
+        "v0": 234881024,
+        "v1": 4277009102,
+        "a3": 0,
+        "checks": 0,
+        "second_v0": 0,
+        "second_a3": 0,
+        "third_v0": 0,
+        "third_a3": 0,
+        "preserved_word": 0,
+        "reserved": 0
+      }
+    },
+    {
+      "name": "elfmap-text-bss",
+      "exit_status": 0,
+      "stderr": "",
+      "record": {
+        "magic": 1481196849,
+        "case": 26,
+        "v0": 234881024,
+        "v1": 4277009102,
+        "a3": 0,
+        "checks": 0,
+        "second_v0": 0,
+        "second_a3": 0,
+        "third_v0": 0,
+        "third_a3": 0,
+        "preserved_word": 0,
+        "reserved": 0
+      }
+    },
+    {
+      "name": "elfmap-zero-memory",
+      "exit_status": 0,
+      "stderr": "",
+      "record": {
+        "magic": 1481196849,
+        "case": 27,
+        "v0": 11,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "second_v0": 0,
+        "second_a3": 0,
+        "third_v0": 0,
+        "third_a3": 0,
+        "preserved_word": 0,
+        "reserved": 0
+      }
+    },
+    {
+      "name": "elfmap-file-over-memory",
+      "exit_status": 0,
+      "stderr": "",
+      "record": {
+        "magic": 1481196849,
+        "case": 28,
+        "v0": 234881024,
+        "v1": 4277009102,
+        "a3": 0,
+        "checks": 0,
+        "second_v0": 0,
+        "second_a3": 0,
+        "third_v0": 0,
+        "third_a3": 0,
+        "preserved_word": 0,
+        "reserved": 0
+      }
+    },
+    {
+      "name": "elfmap-unaligned-address",
+      "exit_status": 0,
+      "stderr": "",
+      "record": {
+        "magic": 1481196849,
+        "case": 29,
+        "v0": 234881024,
+        "v1": 4277009102,
+        "a3": 0,
+        "checks": 0,
+        "second_v0": 0,
+        "second_a3": 0,
+        "third_v0": 0,
+        "third_a3": 0,
+        "preserved_word": 0,
+        "reserved": 0
+      }
+    },
+    {
+      "name": "elfmap-unaligned-offset",
+      "exit_status": 0,
+      "stderr": "",
+      "record": {
+        "magic": 1481196849,
+        "case": 30,
+        "v0": 234881024,
+        "v1": 4277009102,
+        "a3": 0,
+        "checks": 0,
+        "second_v0": 0,
+        "second_a3": 0,
+        "third_v0": 0,
+        "third_a3": 0,
+        "preserved_word": 0,
+        "reserved": 0
+      }
+    },
+    {
+      "name": "elfmap-nonpower-align",
+      "exit_status": 0,
+      "stderr": "",
+      "record": {
+        "magic": 1481196849,
+        "case": 31,
+        "v0": 234881024,
+        "v1": 4277009102,
+        "a3": 0,
+        "checks": 0,
+        "second_v0": 0,
+        "second_a3": 0,
+        "third_v0": 0,
+        "third_a3": 0,
+        "preserved_word": 0,
+        "reserved": 0
+      }
+    },
+    {
+      "name": "elfmap-small-align",
+      "exit_status": 0,
+      "stderr": "",
+      "record": {
+        "magic": 1481196849,
+        "case": 32,
+        "v0": 234881024,
+        "v1": 4277009102,
+        "a3": 0,
+        "checks": 0,
+        "second_v0": 0,
+        "second_a3": 0,
+        "third_v0": 0,
+        "third_a3": 0,
+        "preserved_word": 0,
+        "reserved": 0
+      }
+    },
+    {
+      "name": "elfmap-large-align",
+      "exit_status": 0,
+      "stderr": "",
+      "record": {
+        "magic": 1481196849,
+        "case": 33,
+        "v0": 234881024,
+        "v1": 4277009102,
+        "a3": 0,
+        "checks": 0,
+        "second_v0": 0,
+        "second_a3": 0,
+        "third_v0": 0,
+        "third_a3": 0,
+        "preserved_word": 0,
+        "reserved": 0
+      }
+    },
+    {
+      "name": "elfmap-incongruent",
+      "exit_status": 0,
+      "stderr": "",
+      "record": {
+        "magic": 1481196849,
+        "case": 34,
+        "v0": 234881024,
+        "v1": 4277009102,
+        "a3": 0,
+        "checks": 0,
+        "second_v0": 0,
+        "second_a3": 0,
+        "third_v0": 0,
+        "third_a3": 0,
+        "preserved_word": 0,
+        "reserved": 0
+      }
+    },
+    {
+      "name": "elfmap-overlap",
+      "exit_status": 0,
+      "stderr": "",
+      "record": {
+        "magic": 1481196849,
+        "case": 35,
+        "v0": 12,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "second_v0": 0,
+        "second_a3": 0,
+        "third_v0": 0,
+        "third_a3": 0,
+        "preserved_word": 0,
+        "reserved": 0
+      }
+    },
+    {
+      "name": "elfmap-reversed",
+      "exit_status": 0,
+      "stderr": "",
+      "record": {
+        "magic": 1481196849,
+        "case": 36,
+        "v0": 234881024,
+        "v1": 4277009102,
+        "a3": 0,
+        "checks": 0,
+        "second_v0": 0,
+        "second_a3": 0,
+        "third_v0": 0,
+        "third_a3": 0,
+        "preserved_word": 0,
+        "reserved": 0
+      }
+    },
+    {
+      "name": "elfmap-file-overlap",
+      "exit_status": 0,
+      "stderr": "",
+      "record": {
+        "magic": 1481196849,
+        "case": 37,
+        "v0": 234881024,
+        "v1": 4277009102,
+        "a3": 0,
+        "checks": 0,
+        "second_v0": 0,
+        "second_a3": 0,
+        "third_v0": 0,
+        "third_a3": 0,
+        "preserved_word": 0,
+        "reserved": 0
+      }
+    },
+    {
+      "name": "elfmap-offset-wrap",
+      "exit_status": 0,
+      "stderr": "",
+      "record": {
+        "magic": 1481196849,
+        "case": 38,
+        "v0": 14,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "second_v0": 0,
+        "second_a3": 0,
+        "third_v0": 0,
+        "third_a3": 0,
+        "preserved_word": 0,
+        "reserved": 0
+      }
+    },
+    {
+      "name": "elfmap-address-wrap",
+      "exit_status": 0,
+      "stderr": "",
+      "record": {
+        "magic": 1481196849,
+        "case": 39,
+        "v0": 12,
+        "v1": 4277009102,
+        "a3": 1,
+        "checks": 0,
+        "second_v0": 0,
+        "second_a3": 0,
+        "third_v0": 0,
+        "third_a3": 0,
+        "preserved_word": 0,
+        "reserved": 0
+      }
+    },
+    {
+      "name": "elfmap-oversized",
+      "exit_status": 0,
+      "stderr": "",
+      "record": {
+        "magic": 1481196849,
+        "case": 40,
+        "v0": 234881024,
+        "v1": 4277009102,
+        "a3": 0,
+        "checks": 0,
+        "second_v0": 0,
+        "second_a3": 0,
+        "third_v0": 0,
+        "third_a3": 0,
+        "preserved_word": 0,
+        "reserved": 0
+      }
+    },
+    {
+      "name": "elfmap-large-span",
+      "exit_status": 0,
+      "stderr": "",
+      "record": {
+        "magic": 1481196849,
+        "case": 41,
+        "v0": 234881024,
+        "v1": 4277009102,
+        "a3": 0,
+        "checks": 0,
+        "second_v0": 0,
+        "second_a3": 0,
+        "third_v0": 0,
+        "third_a3": 0,
+        "preserved_word": 0,
+        "reserved": 0
+      }
+    },
+    {
+      "name": "elfmap-short-file",
+      "exit_status": 0,
+      "stderr": "",
+      "record": {
+        "magic": 1481196849,
+        "case": 42,
+        "v0": 234881024,
+        "v1": 4277009102,
+        "a3": 0,
+        "checks": 0,
+        "second_v0": 0,
+        "second_a3": 0,
+        "third_v0": 0,
+        "third_a3": 0,
+        "preserved_word": 0,
+        "reserved": 0
+      }
+    },
+    {
+      "name": "elfmap-user",
+      "exit_status": 0,
+      "stderr": "",
+      "record": {
+        "magic": 1481196849,
+        "case": 1,
+        "v0": 234881024,
+        "v1": 4277009102,
+        "a3": 0,
+        "checks": 1,
+        "second_v0": 0,
+        "second_a3": 0,
+        "third_v0": 0,
+        "third_a3": 0,
+        "preserved_word": 0,
+        "reserved": 0
+      }
+    }
+  ]
+}

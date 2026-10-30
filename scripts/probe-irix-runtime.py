@@ -55,10 +55,31 @@ def query_records(output, ids, *, cap_mode=0, unknown_syssgi=89):
     return result
 
 
+def elfmap_record(data):
+    if len(data) != 48:
+        raise RuntimeError('missing or truncated ELF-map record')
+    fields = ['magic', 'case', 'v0', 'v1', 'a3', 'checks', 'second_v0', 'second_a3',
+              'third_v0', 'third_a3', 'preserved_word', 'reserved']
+    return dict(zip(fields, struct.unpack('>12I', data)))
+
+
+def elfmap_passed(record, case):
+    expected = {'magic': 0x58494531, 'case': case['number'], 'v1': 0xfeedface,
+                'second_v0': 0, 'second_a3': 0, 'third_v0': 0, 'third_a3': 0,
+                'preserved_word': 0, 'reserved': 0}
+    expected.update({k: case['netbsd'][k] for k in ['v0', 'a3', 'checks']})
+    if case['action'] == 2:
+        expected['second_v0'] = 0x0e000000
+    if case['action'] in [5, 6]:
+        expected.update(second_v0=12, second_a3=1, third_v0=0x0e010000,
+                        preserved_word=0x12345678)
+    return record == expected
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--mode', choices=['ci', 'ordinary'], default='ci')
-    parser.add_argument('--suite', choices=['runtime', 'queries'], default='runtime')
+    parser.add_argument('--suite', choices=['runtime', 'queries', 'elfmap'], default='runtime')
     args = parser.parse_args()
     args.debugger, args.boot_timeout = False, 300
     fixtures = ROOT / '.work/irix-o32-runtime'
@@ -69,10 +90,15 @@ def main():
     kernel = kernel_dir / 'netbsd-XIRI_INDY'
     inputs = [(name, fixtures / name, info['sha256']) for name, info in synthetic['files'].items()]
     queries = None
-    if args.suite == 'queries':
+    if args.suite in ['queries', 'elfmap']:
         query_dir = ROOT / '.work/irix-o32-queries'
         queries = json.loads((query_dir / 'manifest.json').read_text())
         inputs += [(name, query_dir / name, info['sha256']) for name, info in queries['files'].items()]
+    elfmap = None
+    if args.suite == 'elfmap':
+        elfmap_dir = ROOT / '.work/irix-o32-elfmap'
+        elfmap = json.loads((elfmap_dir / 'manifest.json').read_text())
+        inputs += [(name, elfmap_dir / name, info['sha256']) for name, info in elfmap['files'].items()]
     inputs += [('native-o32', ROOT / '.work/irix-o32-segments/native-o32', pin['native_control_sha256'])]
     inputs += [(c['fixture_name'], ROOT / '.work/irix-reference/vendor' / c['path'].lstrip('/'), c['sha256'])
                for c in vendor['candidates']]
@@ -88,7 +114,8 @@ def main():
     config = re.sub(r'^tftp_dir = .*$', 'tftp_dir = ' + json.dumps(str(kernel_dir)), config, flags=re.M)
     lab = probe.Lab(args, directory, config_text=config)
     result = {'status': 'error', 'mode': args.mode, 'clean_shutdown': False, 'pin': pin,
-              'synthetic_manifest': synthetic, 'query_manifest': queries, 'observations': [],
+              'synthetic_manifest': synthetic, 'query_manifest': queries,
+              'elfmap_manifest': elfmap, 'observations': [],
               'started_utc': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())}
     started = time.monotonic()
     print(f'Results: {directory.relative_to(ROOT)}', flush=True)
@@ -110,6 +137,19 @@ def main():
             cases.append({'name': 'queries-' + name, 'program': 'queries', 'interpreter': 'interpreter',
                           'ids': ids, 'query': True,
                           'expect': {**success, 'exit': 0, 'stdout': '16 query records'}})
+    if elfmap:
+        for case in elfmap['cases']:
+            signal = case['netbsd']['signal']
+            cases.append({'name': case['name'], 'program': 'elfmap', 'interpreter': 'interpreter',
+                          'elfmap': case, 'expect': {**success, 'exit': -1 if signal else 0,
+                                                   'signal': signal, 'stdout': 'ELF-map record'}})
+        cases.append({'name': 'elfmap-user', 'program': 'elfmap', 'interpreter': 'interpreter',
+                      'elfmap': elfmap['cases'][0], 'ids': [1234, 1234, 5678, 5678],
+                      'expect': {**success, 'exit': 0, 'stdout': 'ELF-map record'}})
+        cases.append({'name': 'elfmap-noexec-mount', 'program': 'elfmap', 'interpreter': 'interpreter',
+                      'elfmap': {**elfmap['cases'][0], 'noexec_mount': True,
+                                 'netbsd': {'v0': 13, 'a3': 1, 'checks': 0, 'signal': 0}},
+                      'expect': {**success, 'exit': 0, 'stdout': 'ELF-map record'}})
     cases += [{'name': 'native-after', 'program': 'native-o32', 'interpreter': 'interpreter', 'expect': success}]
     try:
         checkpoint = ROOT / '.work/indy-netbsd-kernel'
@@ -140,6 +180,17 @@ def main():
                 if name is not None and not re.fullmatch(r'[A-Za-z0-9-]+', name):
                     raise RuntimeError('unsafe case name')
             lines += [f'echo STARTCASE {case["name"]}']
+            if 'elfmap' in case:
+                e = case['elfmap']
+                if not re.fullmatch(r'[A-Za-z0-9-]+', e['input']):
+                    raise RuntimeError('unsafe ELF-map input')
+                if e.get('noexec_mount'):
+                    lines += ['mount -u -o noexec /cdrom', 'rm -f elfmap-input',
+                              f'ln -s /cdrom/{e["input"]} elfmap-input']
+                else:
+                    lines += [f'cp {e["input"]} elfmap-input.new',
+                              f'chmod {e["mode"]:o} elfmap-input.new',
+                              'mv elfmap-input.new elfmap-input']
             if case['interpreter'] is None:
                 lines += ['rm /emul/irix/usr/lib/libc.so.1']
             else:
@@ -152,6 +203,8 @@ def main():
             if case['name'] == 'vendor-asa':
                 command = 'ktrace -i -t u -f runtime.ktrace ' + command
             lines += [command, f'echo ENDCASE {case["name"]}']
+            if case.get('elfmap', {}).get('noexec_mount'):
+                lines += ['mount -u -o exec /cdrom']
         lines += ['echo STARTTRACE', 'kdump -f runtime.ktrace -t u', 'echo ENDTRACE',
                   'sha256 -c SHA256', 'echo RUNTIME_DONE']
         (media / 'run.sh').write_text('\n'.join(lines) + '\n')
@@ -160,7 +213,8 @@ def main():
         if lab.command('mkdir -p /cdrom /root/irix-runtime /emul/irix/usr/lib /emul/irix/lib && '
                        'mount -t cd9660 -o ro /dev/cd0a /cdrom && cp /cdrom/* /root/irix-runtime/ && '
                        'cp /cdrom/netbsd /netbsd && cd /root/irix-runtime && sha256 -c SHA256 && '
-                       'chmod 755 dynamic native-o32 vendor-* bad-* ' + ('queries ' if queries else '') + '&& '
+                       'chmod 755 dynamic native-o32 vendor-* bad-* ' + ('queries ' if queries else '') +
+                       ('elfmap ' if elfmap else '') + '&& '
                        'cp vendor-runtime-1 /emul/irix/lib/rld && chmod 755 /emul/irix/lib/rld && '
                        'cc -O2 -Wall -Wextra -Werror runner.c -o runner', 180):
             raise RuntimeError('runtime import or native runner build failed')
@@ -180,12 +234,20 @@ def main():
             records = query_records(match[1], case['ids']) if case.get('query') else None
             if records is not None:
                 actual['stdout'] = '16 query records'
-            passed = actual == case['expect'] and (records is None or all(r['passed'] for r in records))
+            mapping = None
+            if 'elfmap' in case:
+                encoded = re.search(r'^STDOUT bytes=48 hex=([0-9a-f]+)$', match[1], re.M)
+                mapping = elfmap_record(bytes.fromhex(encoded[1])) if encoded else None
+                actual['stdout'] = 'ELF-map record'
+            passed = actual == case['expect'] and (records is None or all(r['passed'] for r in records)) and \
+                ('elfmap' not in case or mapping is not None and elfmap_passed(mapping, case['elfmap']))
             result['observations'].append({'name': case['name'], 'passed': passed, 'actual': actual, 'expected': case['expect']})
             if 'ids' in case:
                 result['observations'][-1]['ids'] = case['ids']
             if records is not None:
                 result['observations'][-1]['query_records'] = records
+            if 'elfmap' in case:
+                result['observations'][-1]['elfmap_record'] = mapping
             if not passed:
                 failures.append(case['name'])
                 print(f'{case["name"]}: {actual}', flush=True)

@@ -366,3 +366,68 @@ minutes for installed third-party services. Its results remain under
 `.work/irix-reference/query-runs/`. It checks raw-disk size and relies on the
 intake SHA-256 record; it does not rehash the 94 GiB logical image on each run.
 No reference overlay is committed, and the existing XFS alerts remain open.
+
+## Bounded rld mapping
+
+Branch `xiri/irix-o32-elfmap`, commit
+`755afd768ae96bfde4a52705f1afe0fe1889d068`, adds `SGI_ELFMAP` for two bounded,
+linked RX/RW segments. The original rld now executes through asa's libc.
+It stops later in allocation after an unsupported indirect `sysmp(MP_PGSIZE)`
+query; asa's filter has not run. The [mapping record](../../docs/results/2026-10-30-irix-o32-elfmap.md)
+documents the contract, original-IRIX differences, and exact next boundary.
+
+Keep the earlier segment, runtime, and query fixtures and extracted vendor
+files. Build the committed source in the isolated worktree:
+
+```sh
+export XIRI_NETBSD_SOURCE_DIR="$PWD/.work/netbsd-irix-src"
+export XIRI_NETBSD_BUILD_DIR="$PWD/.work/netbsd-irix-build"
+git -C "$XIRI_NETBSD_SOURCE_DIR" switch --detach 755afd768ae96bfde4a52705f1afe0fe1889d068
+export XIRI_NETBSD_TFTP_DIR="$XIRI_NETBSD_BUILD_DIR/elfmap-tftp"
+export XIRI_NETBSD_CONFIG="$PWD/lab/irix-o32/XIRI_IRIX_ELFMAP"
+./scripts/build-netbsd-kernel.sh kernel
+./scripts/build-irix-elfmap.py
+for mode in ci ordinary; do
+    ./scripts/probe-irix-runtime.py --suite elfmap --mode "$mode"
+    ./scripts/probe-irix-experiment.py --suite segments --mode "$mode" --expect compat \
+        --kernel-directory "$XIRI_NETBSD_TFTP_DIR" --ident XIRI_IRIX_ELFMAP_20261030
+done
+./scripts/probe-irix-reference-elfmap.py
+```
+
+The last command requires the prepared [original IRIX reference](../irix-reference/README.md).
+It freezes input copies before boot, checks native checksums, transfers an
+archive through the scratch device, and runs the same probe and payloads.
+[`elfmap-reference.json`](elfmap-reference.json) pins all 43 original observations
+and input hashes. Collision relocation addresses may vary: executable bytes,
+data/BSS, and preservation of the old mapping are checked by the probe, and
+the host requires a distinct aligned user address. Other record fields and
+exit statuses must match. Ordinary user setup uses the reference-only
+setgid/setuid path, as in the query probe. Shutdown must reach the power-off
+marker; no reference overlay is committed. Without a reference pin, the tool
+labels its output `observed`, never `passed`.
+
+[`elfmap.S`](elfmap.S) produces one 48-byte record per execution, with v0/v1/a3,
+assertion flags, retry results, and an old-data sentinel. Payloads contain a
+small executable function, initialized bytes, and nonzero poison immediately
+after p_filesz. Positive cases verify code execution and every declared data/BSS
+byte. Other cases exercise pure BSS, a full data page plus a partial tail,
+private writes and fresh contents after remapping, text/gap faults, two rollback
+stages, invalid descriptors/pointers/counts, and malformed layouts. Malformed
+reference cases record the syscall result without accessing unvalidated ranges.
+
+The NetBSD suite has 86 top-level cases: the prior 42 runtime/query scenarios
+with the new vendor boundary, 42 ELF-map fixtures, an ordinary-user mapping,
+and a noexec-mount check. The last check temporarily marks the disposable
+guest's virtual CD noexec, opens its unchanged payload through a symlink,
+requires EACCES, and restores the mount flags. Native execution, file/swap
+controls, unchanged fixture hashes, and clean shutdown remain mandatory.
+The 89 static regressions run separately on the same kernel in both modes.
+
+[`elfmap.json`](elfmap.json) pins the kernel, imported runtime, 68-byte rld
+diagnostic, exit 1, and sixteen-call vendor trace. Root asa is traced; the
+ordinary-user run is not. Passing records this bounded startup result, not
+completion of asa's filter. The `runtime` and `queries` suites retain their
+earlier kernels and expected failure points. Full logs remain under
+`.work/irix-elfmap-runs/`, `.work/irix-experiment-runs/`, and
+`.work/irix-reference/elfmap-runs/`.

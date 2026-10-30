@@ -162,3 +162,14 @@ rejection baseline above remains pinned. The
 [query lab](../irix-o32/README.md#runtime-capability-and-identity-queries) includes
 a reference harness that runs the same original direct-trap probe on IRIX,
 compares root/user query results, repeats native asa, and waits for a clean halt.
+
+The [ELF-map experiment](../../docs/results/2026-10-30-irix-o32-elfmap.md) now
+enters the original rld on Xiri. Its paired
+[reference harness](../../scripts/probe-irix-reference-elfmap.py) runs 42 mapping
+cases plus an ordinary-user control using original assembly and payloads.
+It checks execution, initialized data/BSS, protection faults, repeat mappings,
+and preservation of old mappings during relocation. Broader and malformed
+cases record syscall outcomes; successful mapping alone does not validate
+those layouts. The pinned comparison records IRIX's wider acceptance alongside
+Xiri's bounded, stricter contract. Reproduction is in the
+[o32 mapping lab](../irix-o32/README.md#bounded-rld-mapping).
