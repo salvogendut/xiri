@@ -80,7 +80,7 @@ checkpoint, not an emulator RAM snapshot.
 The R5000 profile reached the NetBSD 11.0 install kernel but panicked with
 `r5k picache line size 16`. The R4400 profile installed and booted to multiuser.
 The ISO is the recorded working set source; the NFS attempt and a larger HTTP
-transfer did not complete. See the
+transfer did not complete during installation. The later [I/O qualification](../../docs/results/2026-10-30-netbsd-io.md) passes bounded transfers on the installed guest with the NFS fix; the installer stall remains open. See the
 [run record](../../docs/results/2026-10-29-indy-netbsd-install.md) for observed
 results and remaining qualification work.
 
@@ -146,3 +146,39 @@ toolbox run -c xiri-iris sudo dnf install -y \
 This sets `ci = false`, uses the TCP serial console and monitor, and runs
 the host window under Xvfb. It does not disable Newport. This comparison
 does not test a guest X server or establish graphics correctness.
+
+## Disk and network qualification
+
+Build the pinned [IRIS fork](../iris/README.md), then run:
+
+```sh
+./scripts/qualify-netbsd-io.py
+./scripts/qualify-netbsd-io.py --mode ordinary
+```
+
+Each run clones the stopped custom-kernel checkpoint into a unique directory
+under `.work/netbsd-io/`. It generates two distinct 16 MiB payloads and an ISO,
+writes and checksums both files for three rounds, cleanly halts the guest, then
+starts a fresh emulator process on the same disk and checks the persisted files.
+The second boot must report a clean root filesystem. This exercises 96 MiB of
+disk writes and reads back 32 MiB after a cold start.
+
+Network checks copy a payload through the built-in NFS server in both
+directions, repeat HTTP downloads, and send a TCP upload to a host receiver.
+SHA-256 comparisons check the destination bytes. The HTTP and TCP services bind
+to host loopback; the guest reaches them through NAT at `192.168.231.1`. NFS
+exports only that run's generated files. NetBSD needs UDP for both MOUNT and
+NFS (`mount_nfs -3 -u -U`), plus the fork's AUTH_SYS negotiation fix.
+
+Use `--case disk` or `--case network` to isolate a workload, `--size-mib` and
+`--rounds` to change its size, and `--io-timeout` to change the per-operation
+host deadline (default 300 seconds; multiplied by rounds for the disk script).
+The test NFS mount is soft with bounded retries so unavailable exports can
+fail and permit cleanup; this is a test setting, not a production mount recipe.
+
+Each directory retains `result.json`, input hashes, full serial/emulator logs,
+and network/device counters. A run succeeds only when every check passes and
+the guest halts cleanly. Failures retain diagnostic counters when reachable
+and attempt the same bounded cleanup as the smoke harness. Disk contents and
+logs remain available for inspection. These tests do not qualify power-loss
+recovery, guest X, snapshots, or physical hardware.

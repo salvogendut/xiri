@@ -48,9 +48,10 @@ def free_ports(count):
 
 
 class Lab:
-    def __init__(self, args, directory):
+    def __init__(self, args, directory, *, extra_iris_args=()):
         self.args = args
         self.directory = directory
+        self.extra_iris_args = list(extra_iris_args)
         self.serial_log = directory / 'serial.log'
         self.socket_path = directory / 'iris.sock'
         self.process = None
@@ -177,6 +178,7 @@ class Lab:
                     '--serial-log', str(self.serial_log)]
         if self.args.debugger:
             command += ['--gdb-port', str(gdb_port)]
+        command += self.extra_iris_args
         self.process = self.launch(command, 'emulator')
         deadline = time.monotonic() + 30
         while time.monotonic() < deadline:
