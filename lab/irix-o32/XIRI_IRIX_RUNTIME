@@ -1,0 +1,7 @@
+# Bounded o32 vendor interpreter and dynamic auxiliary-vector experiment.
+include "arch/sgimips/conf/GENERIC32_IP2x"
+ident "XIRI_IRIX_RUNTIME_20261030"
+makeoptions DEBUG="-g"
+options COMPAT_IRIX_O32
+no config netbsd
+config netbsd root on sd0a type ffs

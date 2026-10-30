@@ -1,5 +1,9 @@
 # IRIX 6.5.22m reference and vendor probes
 
+Follow-up: the [bounded runtime experiment](../../docs/results/2026-10-30-irix-o32-runtime.md)
+now enters the original o32 libc for asa and records its first unsupported
+query. The rejection tests below remain pinned to the earlier static kernel.
+
 The user supplied an installed IRIX disk and a MAME Indy firmware bundle on
 2026-10-30. Native `uname -R` reports `6.5 6.5.22m`. `desktop_base`, `eoe`, and
 `x_eoe` report 6.5.22. See the [result record](../../docs/results/2026-10-30-irix-vendor-baseline.md)

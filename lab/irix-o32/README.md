@@ -234,3 +234,70 @@ signed offset limits, wrapping ranges, permissions, and entry-in-text are
 checked before the native ELF mapper runs. This bounded image window is a
 synthetic test convention; interpreter loading and general IRIX ELF layouts
 remain separate work.
+
+## Vendor interpreter bring-up
+
+The separate `xiri/irix-o32-runtime` fork branch, commit
+`64915ea0900cd81e3bc2577504c709fb33051854`, accepts a bounded o32 executable
+and its libc interpreter. The [runtime record](../../docs/results/2026-10-30-irix-o32-runtime.md)
+describes the accepted layouts, the actual vendor startup boundary, and the n32
+kernel route. This does not yet make asa's filter work.
+
+Prepare the supplied media and four vendor candidates using the
+[reference lab](../irix-reference/README.md). In addition to `/lib/rld`, extract
+the exact interpreter requested by asa; it matches the previously extracted
+`/lib/libc.so.1` in this image:
+
+```sh
+mkdir -p .work/irix-reference/vendor/usr/lib
+LIBGUESTFS_BACKEND=direct \
+LIBGUESTFS_CACHEDIR="$PWD/.work/irix-reference/guestfs-cache" \
+LIBGUESTFS_TMPDIR="$PWD/.work/irix-reference/tmp" \
+guestfish --ro -a "$PWD/.work/irix-reference/media/irix65.raw" \
+    -m /dev/sda1:/:ro,norecovery:xfs \
+    download /usr/lib/libc.so.1 "$PWD/.work/irix-reference/vendor/usr/lib/libc.so.1"
+```
+
+Build from the isolated worktree/toolchain above, preserving the prior kernels:
+
+```sh
+git -C "$XIRI_NETBSD_SOURCE_DIR" switch --detach 64915ea0900cd81e3bc2577504c709fb33051854
+export XIRI_NETBSD_TFTP_DIR="$XIRI_NETBSD_BUILD_DIR/runtime-tftp"
+export XIRI_NETBSD_CONFIG="$PWD/lab/irix-o32/XIRI_IRIX_RUNTIME"
+./scripts/build-netbsd-kernel.sh kernel
+./scripts/build-irix-experiment.py --segments
+python3 scripts/build-irix-runtime.py
+for mode in ci ordinary; do
+    python3 scripts/probe-irix-runtime.py --mode "$mode"
+    ./scripts/probe-irix-experiment.py --suite segments --mode "$mode" --expect compat \
+        --kernel-directory "$XIRI_NETBSD_TFTP_DIR" --ident XIRI_IRIX_RUNTIME_20261030
+done
+```
+
+The runtime harness verifies the kernel and vendor hashes pinned in
+[`runtime.json`](runtime.json), and the original vendor candidate manifest.
+Each mode uses a disposable disk/NVRAM clone, a native runner compiled with
+`-Wall -Wextra -Werror`, bounded direct exec, and separate stdout/stderr/exec-error
+pipes. It installs the runtime under `/emul/irix`; NetBSD's emulation-root lookup
+has normal native-path fallback and is not a chroot. Originals never leave the
+ignored workspace except as copies inside these disposable guests.
+
+The 37 runtime cases cover a synthetic interpreter and repeated execution,
+28 malformed executable/interpreter variants, missing interpreter (`ENOENT`),
+four unchanged vendor executables, and two native controls. The original
+89-case static suite runs separately against the same kernel. Full results and
+logs remain under `.work/irix-runtime-runs/` and `.work/irix-experiment-runs/`.
+The previous vendor-rejection harness remains pinned to its original kernel.
+
+The synthetic interpreter verifies all seven auxv entries, argument-string
+alignment, initial data and zero-fill in both images (with nonzero file poison
+after initialized data), writes to private BSS, and transfer to the main entry.
+The main fixture prints the 15-byte marker and exits 37. It is original assembly
+with a minimal dynamic header, not a test of vendor relocation logic.
+
+For asa, passing currently means successful exec followed by exactly 44 stderr
+bytes, exit 239, and the pinned three-call trace: unsupported syscall 1040
+`syssgi(SGI_SYSCONF, _SC_CAP)`, write, exit. The return value is IRIX `ENOSYS=89`
+by the dispatch implementation. The trace records the call entry; it does not
+independently measure the return registers. `rld` has not run. n32 echo, 4Dwm,
+and Toolchest still return `ENOEXEC`.
