@@ -50,7 +50,7 @@ Store interface notes, trace interpretations, probes and implementation decision
 
 The compatibility layer must implement the selected application's ABI: its executable format, calling conventions, system-call behavior, and data layouts. Matching MIPS instruction sets or POSIX APIs alone is insufficient.
 
-Audit the historical NetBSD implementation before deciding which parts to reuse. Its [ELF loader](https://github.com/NetBSD/src/blob/netbsd-5/sys/compat/irix/irix_exec_elf32.c) contains o32 and n32 paths; their presence does not establish working end-to-end compatibility.
+The [historical source audit](results/2026-10-30-irix-compat-audit.md) identifies ELF recognition bugs, removed SVR4 dependencies, and current kernel interface gaps. Reuse verified ABI definitions selectively. The first experiment is an explicitly marked synthetic static o32 program using `write` and `exit`; its native control and foreign-ELF rejection baseline pass in both emulator modes. The test marker is not an IRIX branding standard. n32 needs separate kernel/dispatch qualification and remains a requirement if the desktop inventory demands it.
 
 | Area | Initial requirement |
 | --- | --- |

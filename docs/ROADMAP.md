@@ -1,6 +1,6 @@
 # Xiri execution roadmap
 
-Status: execution started, updated 2026-10-30. Host inventory, the pinned IRIS build, verified NetBSD inputs, the installed R4400 guest, and a host-built custom kernel boot are complete. Debugger breakpoints and an automated smoke probe now pass, including comparison of CI and ordinary execution. Bounded disk and network integrity tests also pass in both modes. Snapshot restore, CI rollback, and post-restore cold boots now pass with the fork's RAM-map fix. NetBSD X/Newport display and input now pass in both modes with software rendering and a keyboard-controller fix. XAA acceleration, full display geometry, fragmented NFS corruption, and the earlier installer HTTP stall remain open; original desktop and later implementation milestones are pending.
+Status: execution started, updated 2026-10-30. Host inventory, the pinned IRIS build, verified NetBSD inputs, the installed R4400 guest, and a host-built custom kernel boot are complete. Debugger breakpoints and an automated smoke probe now pass, including comparison of CI and ordinary execution. Bounded disk and network integrity tests also pass in both modes. Snapshot restore, CI rollback, and post-restore cold boots now pass with the fork's RAM-map fix. NetBSD X/Newport display and input now pass in both modes with software rendering and a keyboard-controller fix. The historical IRIX source audit and synthetic native/foreign rejection baseline are complete; IRIX execution is next. XAA acceleration, full display geometry, fragmented NFS corruption, and the earlier installer HTTP stall remain open; original desktop and later implementation milestones are pending.
 
 The agreed target is NetBSD with an IRIX personality and the existing IRIX desktop. Initial implementation and testing use an emulated Indy. The first deliverable is a reproducible NetBSD development loop, followed by desktop feasibility and physical Indy qualification. Expand to additional machines and applications after those results.
 
@@ -14,7 +14,7 @@ Before starting implementation:
 2. Arrange storage for source, toolchains, object files, guest disks and snapshots. Retain the 30–50 GiB planning allowance and adjust it from actual usage.
 3. Provision a debug-capable IRIS source build with a recorded Rust toolchain and native dependencies, plus NetBSD cross-build tools. Check the selected host's library compatibility before choosing any packaged emulator.
 4. Use the [verified NetBSD 11.0 input baseline](../lab/netbsd-11.0/README.md) for the installer, sets, checksums and matching source. Locate or acquire the Indy PROM and an IRIX reference installation for the later MAME and desktop experiments; neither image is currently available locally. IRIS's documented PROM fallback allows the first NetBSD attempt before those images are ready.
-5. Use the qualified NetBSD development loop and software-rendered Newport X display for the historical `COMPAT_IRIX` audit and minimal execution experiment plan. Keep the [X11 limits](results/2026-10-30-netbsd-x11.md) explicit and expand the ordinary-versus-CI comparison with each new workload. Original desktop dependency tests require IRIX reference media.
+5. Implement the [audited static o32 experiment](results/2026-10-30-irix-compat-audit.md#next-implementation-and-acceptance-gate) on a task branch in `../NetBSD-nixbench`, first qualifying its kernel baseline with separate build outputs. The [fixture lab](../lab/irix-o32/README.md) already establishes native execution and foreign rejection on NetBSD 11.0. Keep the [X11 limits](results/2026-10-30-netbsd-x11.md) explicit and expand the ordinary-versus-CI comparison with each new workload. Original desktop dependency tests require IRIX reference media.
 6. Inventory the physical Indy, Indigo2 and Octane, and arrange Indy serial capture for later hardware qualification.
 
 Keep large images and original runtimes outside Git; save configurations, manifests, commands and small result logs in the repository. This checklist prepares Milestones 0–1.
@@ -40,7 +40,7 @@ Keep large images and original runtimes outside Git; save configurations, manife
 - [ ] Select a reference IRIX installation and record its desktop package versions.
 - [ ] Identify two or three additional legacy applications and representative tasks for each.
 - [ ] Inventory the desktop executables' ABIs, interpreters, libraries, resources, and supporting services.
-- [ ] Record exact upstream revisions for NetBSD, historical compatibility code, MAME, and relevant drivers.
+- [ ] Record exact upstream revisions for NetBSD, historical compatibility code, MAME, and relevant drivers. NetBSD release/fork and historical IRIX/SVR4 removal revisions are now pinned in the [source audit](results/2026-10-30-irix-compat-audit.md); MAME and later driver baselines remain pending.
 
 Acceptance for starting NetBSD work: a pinned emulator build, guest configuration and NetBSD input manifest. The user has no local PROM or IRIX image yet; IRIS's documented embedded PROM fallback permits the first boot attempt without an external PROM file. Original-IRIX reference acceptance additionally requires a desktop dependency manifest and a reproducible reference session. These inputs need not block the NetBSD bootstrap.
 
@@ -61,7 +61,7 @@ The NetBSD boot and desktop experiments can be performed independently as their 
 - [x] Establish a usable NetBSD X display and input on emulated Newport, or record the precise driver gap. [Software-rendered Xorg at 1024×768, depth 24](results/2026-10-30-netbsd-x11.md) passes pixel, keyboard/mouse, twm/xterm, and clean-shutdown checks in both modes after an IRIS keyboard-controller fix. XAA colors and full framebuffer geometry remain open.
 - [ ] Run selected original desktop clients on IRIX against a dedicated modern X server.
 - [ ] Record required visuals, X extensions, fonts, libraries, and helper processes; distinguish confirmed requirements from suspected ones.
-- [ ] Compare historical `COMPAT_IRIX` code with current kernel interfaces and document the smallest execution experiment.
+- [x] Compare historical `COMPAT_IRIX` code with current kernel interfaces and document the smallest execution experiment. The [audit](results/2026-10-30-irix-compat-audit.md) records recognition bugs, removed dependencies, o32/n32 boundaries, and an implementation acceptance matrix. The synthetic native control and two `ENOEXEC` checks pass in both modes.
 - [ ] Evaluate [REA](FEASIBILITY.md#rea-reverse-engineering-tools) as optional analysis tooling on representative big-endian MIPS/IRIX artifacts; record provider capabilities and gaps before relying on its output.
 
 Acceptance: a repeatable installer-to-modified-kernel loop, an automated probe, and a desktop compatibility report. Record emulator failures separately from guest failures. Identify required kernel and display changes and the first desktop component to execute. A failed desktop probe should produce an actionable dependency finding.
@@ -70,7 +70,7 @@ Decision gate: if the display or desktop exposes a major feasibility obstacle, d
 
 ## Milestone 2 Native IRIX execution
 
-- [ ] Execute a minimal static IRIX-format program with verified output and exit status.
+- [ ] Execute a minimal static IRIX-format program with verified output and exit status. The [synthetic o32 fixture](../lab/irix-o32/README.md) and its current-kernel rejection baseline are ready. First implement the explicitly marked `write`/`exit` path and negative cases from the audit; successful foreign execution has not yet occurred.
 - [ ] Implement the loader and runtime path behavior needed by a dynamically linked probe.
 - [ ] Validate files, allocation, fork and exec, signals, and synchronization against original IRIX.
 - [ ] Add the ABI coverage required by the desktop manifest; do not defer n32 if selected desktop components require it.

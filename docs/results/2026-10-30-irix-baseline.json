@@ -1,0 +1,90 @@
+{
+  "description": "NetBSD 11.0 negative baseline, not IRIX execution",
+  "fixture_manifest": {
+    "description": "Synthetic fixtures, not vendor IRIX binaries",
+    "source_sha256": {
+      "probe.S": "b452fc2b1eb8b7692b1566677a4b12d8dacd24835c98cc90ae8e0aefe3866a85",
+      "probe.ld": "143975a456305a78e074105165dd5218e8a41e5b461191c9e93e6f01081e2431"
+    },
+    "tools": {
+      "as": "GNU assembler (NetBSD Binutils nb1) 2.42",
+      "ld": "GNU ld (NetBSD Binutils nb1) 2.42"
+    },
+    "fixtures": {
+      "native-o32": {
+        "sha256": "c294fbb1f2110445be31c096481ea54ab561c7e59ca5b9fc7171310098d755d4",
+        "bytes": 880,
+        "entry": "0x400090",
+        "flags": "0x20001101",
+        "osabi": 2,
+        "notes": [
+          {
+            "name": "NetBSD",
+            "type": 1,
+            "descriptor_hex": "4190ab00"
+          }
+        ]
+      },
+      "irix-o32-marked": {
+        "sha256": "80c121e2733d7b66c15acfd280be57d1ffb8fc8cf1284de5fd337ee330243b63",
+        "bytes": 884,
+        "entry": "0x400090",
+        "flags": "0x20000101",
+        "osabi": 0,
+        "notes": [
+          {
+            "name": "Xiri",
+            "type": 1230129496,
+            "descriptor_hex": "00000001"
+          }
+        ]
+      },
+      "irix-o32-unbranded": {
+        "sha256": "012e2a85f5dfdb121a8da9e6c430673e77a43f9b3fc154a3a87c54e1ca40888c",
+        "bytes": 748,
+        "entry": "0x400060",
+        "flags": "0x20000101",
+        "osabi": 0,
+        "notes": []
+      }
+    }
+  },
+  "base_disk_sha256": "269038c7b77660c83d3835208fc0b2702c93110c14b3c55a42416f51672cee2a",
+  "nvram_sha256": "ee883474d52f09278287b2044f7aeca61d2e7bc39c0bb8fd85c983ab64063d15",
+  "kernel_sha256": "2428f60fbf6f830dcddd031b8540d0d52cbb458ee6a0166b257b0bae9941ed6c",
+  "emulator_sha256": "cc6561d0bdfec6ce30d656caf4a6eaee6ffbf622e5348c3b77b73810d5293f56",
+  "harness_sha256": "153c3a75e60abe361f96aae2038f09e215193f2be26cd51f744456b4a707f979",
+  "runner_sha256": "54bed11bd951cf41a936eab8d10ef2875dd6af2857f500308dca43f3af479198",
+  "runs": [
+    {
+      "directory": "ci-wkvfj17g",
+      "mode": "ci",
+      "status": "passed",
+      "clean_shutdown": true,
+      "started_utc": "2026-10-30T11:03:25Z",
+      "guest_exit_status": 0,
+      "seconds": 118.47,
+      "observations": [
+        "EXEC ./native-o32 errno_bytes=0 errno=0 output_bytes=15 exit=37 signal=0",
+        "EXEC ./irix-o32-marked errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0",
+        "EXEC ./irix-o32-unbranded errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0",
+        "BASELINE_PASS native=works irix=ENOEXEC"
+      ]
+    },
+    {
+      "directory": "ordinary-ugv930m5",
+      "mode": "ordinary",
+      "status": "passed",
+      "clean_shutdown": true,
+      "started_utc": "2026-10-30T11:03:28Z",
+      "guest_exit_status": 0,
+      "seconds": 119.556,
+      "observations": [
+        "EXEC ./native-o32 errno_bytes=0 errno=0 output_bytes=15 exit=37 signal=0",
+        "EXEC ./irix-o32-marked errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0",
+        "EXEC ./irix-o32-unbranded errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0",
+        "BASELINE_PASS native=works irix=ENOEXEC"
+      ]
+    }
+  ]
+}
