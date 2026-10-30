@@ -20,7 +20,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--mode', choices=['ci', 'ordinary'], default='ci')
     parser.add_argument('--expect', choices=['baseline', 'compat'], required=True)
-    parser.add_argument('--suite', choices=['minimal', 'basics'], default='minimal')
+    parser.add_argument('--suite', choices=['minimal', 'basics', 'segments'], default='minimal')
     parser.add_argument('--kernel-directory', type=Path, required=True)
     parser.add_argument('--ident', required=True)
     args = parser.parse_args()
@@ -29,9 +29,9 @@ def main():
     kernel = kernel_dir / 'netbsd-XIRI_INDY'
     if not kernel.is_file() or not re.fullmatch(r'[A-Z0-9_]+', args.ident):
         parser.error('kernel directory must contain netbsd-XIRI_INDY; ident must be uppercase alphanumeric/underscore')
-    fixtures = ROOT / ('.work/irix-o32-basics' if args.suite == 'basics' else '.work/irix-o32-experiment')
+    fixtures = ROOT / '.work' / ('irix-o32-experiment' if args.suite == 'minimal' else f'irix-o32-{args.suite}')
     manifest = json.loads((fixtures / 'manifest.json').read_text())
-    version, count = (2, 34) if args.suite == 'basics' else (1, 23)
+    version, count = {'minimal': (1, 23), 'basics': (2, 34), 'segments': (3, 70)}[args.suite]
     if manifest.get('experiment_version') != version or len(manifest['fixtures']) != count:
         parser.error(f'rebuild the complete version {version} experiment ({count} fixtures)')
     output_root = ROOT / '.work/irix-experiment-runs'
@@ -70,6 +70,11 @@ def main():
         for _ in range(5):
             cases.extend([f'./irix-o32-marked {"output" if args.expect == "compat" else "reject"}',
                           './native-o32 output'])
+        if args.suite == 'segments':
+            for _ in range(3):
+                expected = 'output' if args.expect == 'compat' else 'reject'
+                cases.extend([f'./irix-segments {expected}', f'./irix-segments-bss {expected}',
+                              './native-o32 output'])
         (media / 'cases.txt').write_text('\n'.join(cases) + '\n')
         (media / 'SHA256').write_text('\n'.join(sums) + '\n')
         result['case_count'] = len(cases)
@@ -79,7 +84,7 @@ def main():
         result['runner_sha256'] = probe.sha256(media / 'runner.c')
         (media / 'payload.bin').write_bytes(bytes(range(256)) * 512)
         payload_sha = probe.sha256(media / 'payload.bin')
-        if args.suite == 'basics':
+        if args.suite != 'minimal':
             (media / 'map-input.bin').write_bytes(bytes([0x11]) * 4096 + bytes([0x22]) * 4096)
             result['map_input_sha256'] = probe.sha256(media / 'map-input.bin')
         probe.run(['genisoimage', '-quiet', '-R', '-J', '-V', 'XIRI_O32',
@@ -110,9 +115,11 @@ def main():
         if lab.command('test "$(sysctl -n kern.configname)" = ' + shlex.quote(args.ident) +
                        ' && test "$(cksum /root/xiri-probe)" = "3540535338 33 /root/xiri-probe"', 15):
             raise RuntimeError('post-experiment native check failed')
-        if args.suite == 'basics' and lab.command(
+        if args.suite != 'minimal' and lab.command(
                 'test "$(sha256 -q /root/irix-experiment/map-input.bin)" = ' + result['map_input_sha256'], 15):
             raise RuntimeError('private file mapping changed the backing file')
+        if args.suite == 'segments' and lab.command('cd /root/irix-experiment && sha256 -c SHA256', 30):
+            raise RuntimeError('segment writes changed fixture files')
         result['status'] = 'passed'
     except Exception as error:
         result['error'] = f'{type(error).__name__}: {error}'

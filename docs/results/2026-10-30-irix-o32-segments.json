@@ -1,0 +1,1132 @@
+{
+  "description": "Static IRIX o32 writable data and BSS; synthetic marked ELF fixtures only",
+  "netbsd_baseline": "a852b4a03800c32a127640b784fcc9fc94159d12",
+  "netbsd_parent_implementation": "c9ab9ccc062650870e17006571c93e665e2133d9",
+  "netbsd_implementation": "6a162a938061d16a60842fd9bb31d69e546d66dc",
+  "netbsd_branch": "xiri/irix-o32-segments",
+  "iris_revision": "484452d963d2da4e2a7559e88bcc33da0f2a0c01",
+  "clean_committed_rebuild_matches_tested_kernel": true,
+  "kernel_debug_sha256": "d4f1ff5bcf427d69cacc022313897187130f818b55ef37f4caee11e953ca686e",
+  "version_2_fixtures_unchanged": true,
+  "source_sha256": {
+    "lab/irix-o32/XIRI_IRIX_SEGMENTS": "99bd603e5e49ce32e90a5f13d7cd79215c011ce11439b58afb0ac19e3fe04e0c",
+    "lab/irix-o32/segments.S": "4b5c6c760640a3ebf4051f960592c3eee22f9647b224ce276744b3ff1ce7f9c0",
+    "lab/irix-o32/segments.ld": "a18ea6f91c5c9637a84d550c121ecb1f97e1afdc82eeea8749a68badec6d7128",
+    "lab/irix-o32/experiment-runner.c": "820432a097010ad674ba0605ba519eafd12633deb1c81c8cba86e4118c117876",
+    "scripts/build-irix-experiment.py": "59f83e04cea1689448d1dbfd02c4ca18dbfd52383e52440c00e8f260a3f4aa4a",
+    "scripts/probe-irix-experiment.py": "25eae2dc562749421121fdb48f8cd5995d003cb342f5b795ae01abca1e090729",
+    "scripts/build-netbsd-kernel.sh": "90aa9e9eaa451a4a8956cc705720f1db8500ec0c479b2d99bb58b3242bb4c093",
+    "scripts/build-irix-probe.py": "a7f280f2b4b87f40412c05adc30ffaea45d2a83323b9e969b7941ff2c450c139",
+    "scripts/probe-netbsd.py": "456b3a3a81d278704d0f70c458116d26a02604253f38a3daeda4030051935f85",
+    "lab/indy-netbsd/probe.sh": "0a2be1a81af97b029254b162f85a574bd80f62f28ab8f83d4c8559197069a550"
+  },
+  "netbsd_source_sha256": {
+    "sys/compat/irix_o32/irix_o32.c": "9aafc7e824078a28835bf1561367a1c0b5bf68469a8fbb1b4ae06ef68ab426e6",
+    "sys/compat/irix_o32/README.md": "d719533fb92406579eda41a96115ef775d42dbecaaeba9588b9357e7c5dab6d4"
+  },
+  "fixture_manifest": {
+    "description": "Synthetic fixtures, not vendor IRIX binaries",
+    "source_sha256": {
+      "probe.S": "b452fc2b1eb8b7692b1566677a4b12d8dacd24835c98cc90ae8e0aefe3866a85",
+      "probe.ld": "143975a456305a78e074105165dd5218e8a41e5b461191c9e93e6f01081e2431",
+      "checks.S": "00e7aced1d7728e377ae768e74b7fae3de8c62c525747d7d08891aeecf5b8fac",
+      "basics.S": "84b487fda95ae1f4a6287bb1337302e1eb21bc23dac1e62184cb94ebe5a0f830",
+      "segments.S": "4b5c6c760640a3ebf4051f960592c3eee22f9647b224ce276744b3ff1ce7f9c0",
+      "segments.ld": "a18ea6f91c5c9637a84d550c121ecb1f97e1afdc82eeea8749a68badec6d7128"
+    },
+    "tools": {
+      "as": "GNU assembler (NetBSD Binutils nb1) 2.42",
+      "ld": "GNU ld (NetBSD Binutils nb1) 2.42"
+    },
+    "fixtures": {
+      "native-o32": {
+        "sha256": "c294fbb1f2110445be31c096481ea54ab561c7e59ca5b9fc7171310098d755d4",
+        "bytes": 880,
+        "entry": "0x400090",
+        "flags": "0x20001101",
+        "osabi": 2,
+        "notes": [
+          {
+            "name": "NetBSD",
+            "type": 1,
+            "descriptor_hex": "4190ab00"
+          }
+        ],
+        "expect": "output"
+      },
+      "irix-o32-marked": {
+        "sha256": "80c121e2733d7b66c15acfd280be57d1ffb8fc8cf1284de5fd337ee330243b63",
+        "bytes": 884,
+        "entry": "0x400090",
+        "flags": "0x20000101",
+        "osabi": 0,
+        "notes": [
+          {
+            "name": "Xiri",
+            "type": 1230129496,
+            "descriptor_hex": "00000001"
+          }
+        ],
+        "expect": "output"
+      },
+      "irix-o32-unbranded": {
+        "sha256": "012e2a85f5dfdb121a8da9e6c430673e77a43f9b3fc154a3a87c54e1ca40888c",
+        "bytes": 748,
+        "entry": "0x400060",
+        "flags": "0x20000101",
+        "osabi": 0,
+        "notes": [],
+        "expect": "reject"
+      },
+      "irix-errors": {
+        "sha256": "41274591a1b53026f2d13cf0331904472f3d205da18775b511360d0235317bbe",
+        "bytes": 892,
+        "entry": "0x400090",
+        "flags": "0x20000101",
+        "osabi": 0,
+        "notes": [
+          {
+            "name": "Xiri",
+            "type": 1230129496,
+            "descriptor_hex": "00000001"
+          }
+        ],
+        "expect": "quiet"
+      },
+      "irix-numbers": {
+        "sha256": "97e8051c71bdf3ec2d72d966901201763d81c20d63d17458a172d2aa55566cc2",
+        "bytes": 1104,
+        "entry": "0x400090",
+        "flags": "0x20000101",
+        "osabi": 0,
+        "notes": [
+          {
+            "name": "Xiri",
+            "type": 1230129496,
+            "descriptor_hex": "00000001"
+          }
+        ],
+        "expect": "quiet"
+      },
+      "irix-delay": {
+        "sha256": "44d1d305b22da322600df2ff52e5f4e2eeefc6eced658c501ab0078daa07f8ec",
+        "bytes": 856,
+        "entry": "0x400090",
+        "flags": "0x20000101",
+        "osabi": 0,
+        "notes": [
+          {
+            "name": "Xiri",
+            "type": 1230129496,
+            "descriptor_hex": "00000001"
+          }
+        ],
+        "expect": "output"
+      },
+      "irix-loop": {
+        "sha256": "bcaf0c8293a18b0e02565adbbfe83b2211421e4eadd9e286e4b5e28ad4822ef7",
+        "bytes": 776,
+        "entry": "0x400090",
+        "flags": "0x20000101",
+        "osabi": 0,
+        "notes": [
+          {
+            "name": "Xiri",
+            "type": 1230129496,
+            "descriptor_hex": "00000001"
+          }
+        ],
+        "expect": "timeout"
+      },
+      "irix-fault": {
+        "sha256": "ac99381e474000666b0d899cb1fc73df379842e2e7949c77f7ca0d5fab8b95c7",
+        "bytes": 780,
+        "entry": "0x400090",
+        "flags": "0x20000101",
+        "osabi": 0,
+        "notes": [
+          {
+            "name": "Xiri",
+            "type": 1230129496,
+            "descriptor_hex": "00000001"
+          }
+        ],
+        "expect": "signal"
+      },
+      "irix-args": {
+        "sha256": "881c6690c908c28977c2eb8ad629724a4b8866840726cde2ed4d3df650e199f2",
+        "bytes": 1640,
+        "entry": "0x400090",
+        "flags": "0x20000101",
+        "osabi": 0,
+        "notes": [
+          {
+            "name": "Xiri",
+            "type": 1230129496,
+            "descriptor_hex": "00000001"
+          }
+        ],
+        "expect": "quiet"
+      },
+      "irix-args-empty": {
+        "sha256": "a253cd33ef77878abf752f99971aa0def160e252d270b56a4d84658545fc2e3e",
+        "bytes": 1412,
+        "entry": "0x400090",
+        "flags": "0x20000101",
+        "osabi": 0,
+        "notes": [
+          {
+            "name": "Xiri",
+            "type": 1230129496,
+            "descriptor_hex": "00000001"
+          }
+        ],
+        "expect": "quiet"
+      },
+      "irix-files": {
+        "sha256": "e3dc7eb0f8c5c1b7a44da0321d0a778d5d9659250de7139112a7f35dc29d7d2a",
+        "bytes": 1948,
+        "entry": "0x400090",
+        "flags": "0x20000101",
+        "osabi": 0,
+        "notes": [
+          {
+            "name": "Xiri",
+            "type": 1230129496,
+            "descriptor_hex": "00000001"
+          }
+        ],
+        "expect": "quiet"
+      },
+      "irix-file-errors": {
+        "sha256": "69aef32e3a6fbfb09c291564b45733b88ff13400b15b5d5463aa3f24b960928a",
+        "bytes": 1816,
+        "entry": "0x400090",
+        "flags": "0x20000101",
+        "osabi": 0,
+        "notes": [
+          {
+            "name": "Xiri",
+            "type": 1230129496,
+            "descriptor_hex": "00000001"
+          }
+        ],
+        "expect": "quiet"
+      },
+      "irix-partial": {
+        "sha256": "a731d820e01dacac52271ec636c9e7a7c1bf9d13c3cfdf1655b27f0e4e276850",
+        "bytes": 1776,
+        "entry": "0x400090",
+        "flags": "0x20000101",
+        "osabi": 0,
+        "notes": [
+          {
+            "name": "Xiri",
+            "type": 1230129496,
+            "descriptor_hex": "00000001"
+          }
+        ],
+        "expect": "quiet"
+      },
+      "irix-memory": {
+        "sha256": "030641c12386791eafc5c80774a95509d2e1c9360512a2ae42619a4191944001",
+        "bytes": 1740,
+        "entry": "0x400090",
+        "flags": "0x20000101",
+        "osabi": 0,
+        "notes": [
+          {
+            "name": "Xiri",
+            "type": 1230129496,
+            "descriptor_hex": "00000001"
+          }
+        ],
+        "expect": "quiet"
+      },
+      "irix-file-map": {
+        "sha256": "a9f23247e9b41f066e88f41d901816afc8b9d7a82d2226dc0f81b5ca0c69f821",
+        "bytes": 1616,
+        "entry": "0x400090",
+        "flags": "0x20000101",
+        "osabi": 0,
+        "notes": [
+          {
+            "name": "Xiri",
+            "type": 1230129496,
+            "descriptor_hex": "00000001"
+          }
+        ],
+        "expect": "quiet"
+      },
+      "irix-mem-errors": {
+        "sha256": "36427d8c2bf61b5e3d36f1f5f433cb447afebe2d13db88eb629014ef7c0da827",
+        "bytes": 2004,
+        "entry": "0x400090",
+        "flags": "0x20000101",
+        "osabi": 0,
+        "notes": [
+          {
+            "name": "Xiri",
+            "type": 1230129496,
+            "descriptor_hex": "00000001"
+          }
+        ],
+        "expect": "quiet"
+      },
+      "irix-stack-args": {
+        "sha256": "dcee786896ae19a4b860e960473e1305e59fdc6be1309305dca16707752fc65b",
+        "bytes": 1476,
+        "entry": "0x400090",
+        "flags": "0x20000101",
+        "osabi": 0,
+        "notes": [
+          {
+            "name": "Xiri",
+            "type": 1230129496,
+            "descriptor_hex": "00000001"
+          }
+        ],
+        "expect": "quiet"
+      },
+      "irix-readonly": {
+        "sha256": "edb8f87e9725825d6f77b02e965031e60c0932e7f189811726589d562a99619e",
+        "bytes": 1504,
+        "entry": "0x400090",
+        "flags": "0x20000101",
+        "osabi": 0,
+        "notes": [
+          {
+            "name": "Xiri",
+            "type": 1230129496,
+            "descriptor_hex": "00000001"
+          }
+        ],
+        "expect": "signal"
+      },
+      "irix-unmapped": {
+        "sha256": "79b9db96bb8c6e4c63733da3bb425e4d2d860bef2a2ad0c1847e3cfc2b6e490c",
+        "bytes": 1520,
+        "entry": "0x400090",
+        "flags": "0x20000101",
+        "osabi": 0,
+        "notes": [
+          {
+            "name": "Xiri",
+            "type": 1230129496,
+            "descriptor_hex": "00000001"
+          }
+        ],
+        "expect": "signal"
+      },
+      "bad-note-name": {
+        "sha256": "778f7c225b4b8a71f946b2b4037482d20bd047d480528c1bff28b645e11a7c80",
+        "bytes": 884,
+        "expect": "reject"
+      },
+      "bad-note-version": {
+        "sha256": "e865113bb5ca30f30029384ac6d9fdd16bc4f668949ecc6a85db6a0c4aadd62d",
+        "bytes": 884,
+        "expect": "reject"
+      },
+      "bad-note-size": {
+        "sha256": "8e4797bcac0d9c8b7b7567f5ed67afb1b54b92bc2df62c41b556dc3c953c01f5",
+        "bytes": 884,
+        "expect": "reject"
+      },
+      "bad-note-offset": {
+        "sha256": "247b28f709cd559441e4c9b78de5454c7734badc54d429b287b211506b335b17",
+        "bytes": 884,
+        "expect": "reject"
+      },
+      "bad-osabi": {
+        "sha256": "dd7e884480851db23bde41d2a2172a6b4df0bc470a7951a8ec779908d78f4294",
+        "bytes": 884,
+        "expect": "reject"
+      },
+      "bad-n32": {
+        "sha256": "4e9c47b81f5912b1a29ca7fded1e78633708f6b9eaf30a099fb780a9f185e282",
+        "bytes": 884,
+        "expect": "reject"
+      },
+      "bad-n64": {
+        "sha256": "3871dcc8f4905436d1aaca473ff2a45f25e654dc3e9cd6ead9279f29a8b3755b",
+        "bytes": 884,
+        "expect": "reject"
+      },
+      "bad-endian": {
+        "sha256": "7cc2cc62584caac4f8920886811a3d42918bfa668318c838ab260a261abf2b21",
+        "bytes": 884,
+        "expect": "reject"
+      },
+      "bad-pie": {
+        "sha256": "8430bef5c74c83c0c094fc50b42b58a371c39e2a846f93908ae8221e0575d1cb",
+        "bytes": 884,
+        "expect": "reject"
+      },
+      "bad-interp": {
+        "sha256": "249209fb8c9aaceb9437032793b0cf89e63be80db77ac1a0a5dba4d0532e5027",
+        "bytes": 884,
+        "expect": "reject"
+      },
+      "bad-dynamic": {
+        "sha256": "d22f6cbf1686a1195f00dba6675a70e7a90847940170eb81f740dba311a414ed",
+        "bytes": 884,
+        "expect": "reject"
+      },
+      "bad-entry": {
+        "sha256": "cee20b661c8d195d6be0fd4a9a2a430a796e468343f91d680dfdba18f3282649",
+        "bytes": 884,
+        "expect": "reject"
+      },
+      "bad-load-size": {
+        "sha256": "e7c813d0f473bb24aff09ebc882919408d9bb1527ed1c45818233a5cf3bdf1e1",
+        "bytes": 884,
+        "expect": "reject"
+      },
+      "bad-phnum": {
+        "sha256": "5c8ea530cbc70f35da9dc3a6a245d33fd8bc788d8d108af82104918096895370",
+        "bytes": 884,
+        "expect": "reject"
+      },
+      "bad-truncated": {
+        "sha256": "561c2a33fb8bbd5dfc96095027e7cabe5b3378cf3281ccd0333754cecaa25b69",
+        "bytes": 131,
+        "expect": "reject"
+      },
+      "irix-segments": {
+        "sha256": "46076148832b6519fa1a3165e97bcbf38de9fad7b08a2cf5083b33fb304a83cf",
+        "bytes": 13276,
+        "entry": "0x4000b0",
+        "flags": "0x20000101",
+        "osabi": 0,
+        "notes": [
+          {
+            "name": "Xiri",
+            "type": 1230129496,
+            "descriptor_hex": "00000001"
+          }
+        ],
+        "segments": [
+          [
+            1,
+            0,
+            4194304,
+            4194304,
+            649,
+            649,
+            5,
+            4096
+          ],
+          [
+            1,
+            4096,
+            6291456,
+            6291456,
+            4112,
+            12320,
+            6,
+            4096
+          ],
+          [
+            4,
+            148,
+            4194452,
+            4194452,
+            24,
+            24,
+            4,
+            4
+          ]
+        ],
+        "expect": "output"
+      },
+      "irix-segments-short": {
+        "sha256": "114c0ae46163213773c2952994b5d5898f44a215bef0d751f441abe853d69830",
+        "bytes": 9228,
+        "entry": "0x4000b0",
+        "flags": "0x20000101",
+        "osabi": 0,
+        "notes": [
+          {
+            "name": "Xiri",
+            "type": 1230129496,
+            "descriptor_hex": "00000001"
+          }
+        ],
+        "segments": [
+          [
+            1,
+            0,
+            4194304,
+            4194304,
+            649,
+            649,
+            5,
+            4096
+          ],
+          [
+            1,
+            4096,
+            6291456,
+            6291456,
+            32,
+            96,
+            6,
+            4096
+          ],
+          [
+            4,
+            148,
+            4194452,
+            4194452,
+            24,
+            24,
+            4,
+            4
+          ]
+        ],
+        "expect": "output"
+      },
+      "irix-segments-aligned": {
+        "sha256": "caed893f8e074775fa5c4724feaddc0cee41bf86f2f245e04a8a368baaa94217",
+        "bytes": 13296,
+        "entry": "0x4000b0",
+        "flags": "0x20000101",
+        "osabi": 0,
+        "notes": [
+          {
+            "name": "Xiri",
+            "type": 1230129496,
+            "descriptor_hex": "00000001"
+          }
+        ],
+        "segments": [
+          [
+            1,
+            0,
+            4194304,
+            4194304,
+            649,
+            649,
+            5,
+            4096
+          ],
+          [
+            1,
+            4096,
+            6291456,
+            6291456,
+            4096,
+            12304,
+            6,
+            4096
+          ],
+          [
+            4,
+            148,
+            4194452,
+            4194452,
+            24,
+            24,
+            4,
+            4
+          ]
+        ],
+        "expect": "output"
+      },
+      "irix-segments-bss": {
+        "sha256": "637c5b2f895688ce08a26fdf55bf2c3f94763abd77b3fe86076d67d18f9cf751",
+        "bytes": 5476,
+        "entry": "0x4000b0",
+        "flags": "0x20000101",
+        "osabi": 0,
+        "notes": [
+          {
+            "name": "Xiri",
+            "type": 1230129496,
+            "descriptor_hex": "00000001"
+          }
+        ],
+        "segments": [
+          [
+            1,
+            0,
+            4194304,
+            4194304,
+            553,
+            553,
+            5,
+            4096
+          ],
+          [
+            1,
+            0,
+            6291456,
+            6291456,
+            0,
+            8208,
+            6,
+            4096
+          ],
+          [
+            4,
+            148,
+            4194452,
+            4194452,
+            24,
+            24,
+            4,
+            4
+          ]
+        ],
+        "expect": "output"
+      },
+      "irix-segments-adjacent": {
+        "sha256": "80a8f1753bae274ec9ad35fd478eb2fa7256bfd31b27cf693e1b27281297b600",
+        "bytes": 13308,
+        "entry": "0x4000b0",
+        "flags": "0x20000101",
+        "osabi": 0,
+        "notes": [
+          {
+            "name": "Xiri",
+            "type": 1230129496,
+            "descriptor_hex": "00000001"
+          }
+        ],
+        "segments": [
+          [
+            1,
+            0,
+            4194304,
+            4194304,
+            649,
+            649,
+            5,
+            4096
+          ],
+          [
+            1,
+            4096,
+            4198400,
+            4198400,
+            4112,
+            12320,
+            6,
+            4096
+          ],
+          [
+            4,
+            148,
+            4194452,
+            4194452,
+            24,
+            24,
+            4,
+            4
+          ]
+        ],
+        "expect": "output"
+      },
+      "irix-text-write": {
+        "sha256": "c4385a3de6382bf4f148e57aaec4a3c62cfbee7d129d98395084798f3c7bde2b",
+        "bytes": 13304,
+        "entry": "0x4000b0",
+        "flags": "0x20000101",
+        "osabi": 0,
+        "notes": [
+          {
+            "name": "Xiri",
+            "type": 1230129496,
+            "descriptor_hex": "00000001"
+          }
+        ],
+        "segments": [
+          [
+            1,
+            0,
+            4194304,
+            4194304,
+            713,
+            713,
+            5,
+            4096
+          ],
+          [
+            1,
+            4096,
+            6291456,
+            6291456,
+            4112,
+            12320,
+            6,
+            4096
+          ],
+          [
+            4,
+            148,
+            4194452,
+            4194452,
+            24,
+            24,
+            4,
+            4
+          ]
+        ],
+        "expect": "fault-output"
+      },
+      "irix-segment-gap": {
+        "sha256": "5176934497c7833db497335259bff7b1ca47b63510654951a598b0d3cedc846e",
+        "bytes": 13304,
+        "entry": "0x4000b0",
+        "flags": "0x20000101",
+        "osabi": 0,
+        "notes": [
+          {
+            "name": "Xiri",
+            "type": 1230129496,
+            "descriptor_hex": "00000001"
+          }
+        ],
+        "segments": [
+          [
+            1,
+            0,
+            4194304,
+            4194304,
+            713,
+            713,
+            5,
+            4096
+          ],
+          [
+            1,
+            4096,
+            6291456,
+            6291456,
+            4112,
+            12320,
+            6,
+            4096
+          ],
+          [
+            4,
+            148,
+            4194452,
+            4194452,
+            24,
+            24,
+            4,
+            4
+          ]
+        ],
+        "expect": "fault-output"
+      },
+      "irix-segment-end": {
+        "sha256": "0c6bcc1539feb117560772753faaaa58d0687c1eaef97af36c79215526ffc96f",
+        "bytes": 13304,
+        "entry": "0x4000b0",
+        "flags": "0x20000101",
+        "osabi": 0,
+        "notes": [
+          {
+            "name": "Xiri",
+            "type": 1230129496,
+            "descriptor_hex": "00000001"
+          }
+        ],
+        "segments": [
+          [
+            1,
+            0,
+            4194304,
+            4194304,
+            729,
+            729,
+            5,
+            4096
+          ],
+          [
+            1,
+            4096,
+            6291456,
+            6291456,
+            4112,
+            12320,
+            6,
+            4096
+          ],
+          [
+            4,
+            148,
+            4194452,
+            4194452,
+            24,
+            24,
+            4,
+            4
+          ]
+        ],
+        "expect": "fault-output"
+      },
+      "bad-data-filesz": {
+        "sha256": "73110b60a95837bfd5fe83caf1cdabab28830a14ce33d48d05874e2dd19c0dc7",
+        "bytes": 13276,
+        "expect": "reject"
+      },
+      "bad-data-empty": {
+        "sha256": "3b93a3109fbacbcdf0ed62f4a0c3d7deb4193060333210fa8453f6dd8f5f0292",
+        "bytes": 13276,
+        "expect": "reject"
+      },
+      "bad-data-large": {
+        "sha256": "576ce5dd4421d7b6232b39ac15ae50fbd49def6fc324a946ca0e2a591335708e",
+        "bytes": 13276,
+        "expect": "reject"
+      },
+      "bad-data-wrap": {
+        "sha256": "ac460220b297e6a3ef78a66f81c96c1edc4e7acd624becb581c9f9b0e40e9578",
+        "bytes": 13276,
+        "expect": "reject"
+      },
+      "bad-data-kernel": {
+        "sha256": "ed09705847a392e020682eba8eb21f3e826df25c1c809e0ca3504e75bdb057a3",
+        "bytes": 13276,
+        "expect": "reject"
+      },
+      "bad-data-window": {
+        "sha256": "2ca2767cae77d83ec30c4c4dd43abea4f4baec1ccf2ab110791ceb8e2244a76f",
+        "bytes": 13276,
+        "expect": "reject"
+      },
+      "bad-data-overlap": {
+        "sha256": "6be275a6271f34928c11fde0ed1c3abbaa3ab48a9625ac45429e911f4c92f495",
+        "bytes": 13276,
+        "expect": "reject"
+      },
+      "bad-data-unaligned": {
+        "sha256": "8fd121107737a28b98b84f1070347a383e68b0494e32f3994e2e849f883f8346",
+        "bytes": 13276,
+        "expect": "reject"
+      },
+      "bad-data-offset-align": {
+        "sha256": "9d9bdb6b68767079b7e61aac6cc4dbbb2bc84077293388dd27027ce77b90191f",
+        "bytes": 13276,
+        "expect": "reject"
+      },
+      "bad-data-align-small": {
+        "sha256": "b49b4bfc59029ec091b59c7a8029ac780f5aff46328b4b0a920bb138189f6c8a",
+        "bytes": 13276,
+        "expect": "reject"
+      },
+      "bad-data-align-power": {
+        "sha256": "542c7ba4fdbd96972f4ead95d16ac7997638140a9164dec5ea07b0188bb5bf69",
+        "bytes": 13276,
+        "expect": "reject"
+      },
+      "bad-data-align-large": {
+        "sha256": "137e3aad79b5ff8274e73992d6bc6df2b0d54a3f777da7a2a6fd8ebb4fd9fd04",
+        "bytes": 13276,
+        "expect": "reject"
+      },
+      "bad-data-congruence": {
+        "sha256": "1ef2f3eaff0068bfc92169b003d5b231401d85e5e1ebd3e7a06329c9afa23719",
+        "bytes": 13276,
+        "expect": "reject"
+      },
+      "bad-data-file-overlap": {
+        "sha256": "3fcd603d2335265094ef202aac62d7cef167d3d36755ca8dbfbc453206840a2c",
+        "bytes": 13276,
+        "expect": "reject"
+      },
+      "bad-data-eof": {
+        "sha256": "bf534738dd908df2b31447634d943a67235c8e7e096f21ae72fc94c5397c032c",
+        "bytes": 13276,
+        "expect": "reject"
+      },
+      "bad-data-offset-wrap": {
+        "sha256": "a5ccc07c609b5a1b096476acc0be0bb2426dfeccbc3a2e440aa557154e0b7339",
+        "bytes": 13276,
+        "expect": "reject"
+      },
+      "bad-data-wx": {
+        "sha256": "3156e83bee498b92bdadee976b186223f3ecb2b613566f6f63d8eacbcaa551d6",
+        "bytes": 13276,
+        "expect": "reject"
+      },
+      "bad-data-readonly": {
+        "sha256": "c4d2c9237378ea8c26673fd7c7a87a5caea7679b86d4bb8818a2820f064830d3",
+        "bytes": 13276,
+        "expect": "reject"
+      },
+      "bad-data-executable": {
+        "sha256": "ba5de51f8b3db07a41a19e5e488f5895d0de4bd91f833a0156c1dd3d276e0f4e",
+        "bytes": 13276,
+        "expect": "reject"
+      },
+      "bad-data-flags": {
+        "sha256": "390ebff1715b94cb8397fbe0d552d1612abe14fd221cf08b6be9b6c8eb904827",
+        "bytes": 13276,
+        "expect": "reject"
+      },
+      "bad-data-type": {
+        "sha256": "5b74a33c1afd9f28c594ebfc344d5fb0d8634595650df4e794277569fe0a289a",
+        "bytes": 13276,
+        "expect": "reject"
+      },
+      "bad-data-duplicate-note": {
+        "sha256": "085c78a5b2e7b2241ba45835bb75c05ce36e00ace2afeb2197488307f5129b1c",
+        "bytes": 13276,
+        "expect": "reject"
+      },
+      "bad-entry-data": {
+        "sha256": "95315b22e4131332ae6b444d92d2baf129c9cc94312d6b03ac9faa1048b41913",
+        "bytes": 13276,
+        "expect": "reject"
+      },
+      "bad-entry-bss": {
+        "sha256": "570661e0c112de46012209c2374402a545ce51f087160de395ea08bff9db24a2",
+        "bytes": 13276,
+        "expect": "reject"
+      },
+      "bad-entry-gap": {
+        "sha256": "8d1dc1df6460ad8246c86cbc512717bc03e85c39981683011f04603901eeb73e",
+        "bytes": 13276,
+        "expect": "reject"
+      },
+      "bad-text-writable": {
+        "sha256": "fc8547ff36a93d383c0737805bf9ec4edd4ab29df059a93957b551cd50e53d1c",
+        "bytes": 13276,
+        "expect": "reject"
+      },
+      "bad-text-bss": {
+        "sha256": "847a6bc358ef4a4971e0fe7d2dbef00361202387257df3260841f2fc49bccb61",
+        "bytes": 13276,
+        "expect": "reject"
+      },
+      "bad-data-truncated": {
+        "sha256": "ec39667e5502b0b4b0120e3117618644613cf939dcb985d89eafe09406ff62c0",
+        "bytes": 8207,
+        "expect": "reject"
+      }
+    },
+    "experiment_version": 3
+  },
+  "base_disk_sha256": "269038c7b77660c83d3835208fc0b2702c93110c14b3c55a42416f51672cee2a",
+  "nvram_sha256": "ee883474d52f09278287b2044f7aeca61d2e7bc39c0bb8fd85c983ab64063d15",
+  "kernel_sha256": "8d91316b80352d4f271bb97ac993947f309275433709a7f32df73e40fc005366",
+  "emulator_sha256": "cc6561d0bdfec6ce30d656caf4a6eaee6ffbf622e5348c3b77b73810d5293f56",
+  "harness_sha256": "25eae2dc562749421121fdb48f8cd5995d003cb342f5b795ae01abca1e090729",
+  "runner_sha256": "820432a097010ad674ba0605ba519eafd12633deb1c81c8cba86e4118c117876",
+  "map_input_sha256": "c6c73de4941389feb10c463868a449a52c5fc0cf50b7f8faa20ef37b71a3d643",
+  "runs": [
+    {
+      "directory": "segments-compat-ci-brgvfjv0",
+      "mode": "ci",
+      "expect": "compat",
+      "suite": "segments",
+      "ident": "XIRI_IRIX_SEGMENTS_20261030",
+      "status": "passed",
+      "clean_shutdown": true,
+      "started_utc": "2026-10-30T12:53:31Z",
+      "case_count": 89,
+      "guest_exit_status": 0,
+      "observations": [
+        "CASE ./native-o32 expect=output errno_bytes=0 errno=0 output_bytes=15 exit=37 signal=0 killed=0 PASS",
+        "CASE ./irix-o32-marked expect=output errno_bytes=0 errno=0 output_bytes=15 exit=37 signal=0 killed=0 PASS",
+        "CASE ./irix-o32-unbranded expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./irix-errors expect=quiet errno_bytes=0 errno=0 output_bytes=0 exit=37 signal=0 killed=0 PASS",
+        "CASE ./irix-numbers expect=quiet errno_bytes=0 errno=0 output_bytes=0 exit=37 signal=0 killed=0 PASS",
+        "CASE ./irix-delay expect=output errno_bytes=0 errno=0 output_bytes=15 exit=37 signal=0 killed=0 PASS",
+        "CASE ./irix-loop expect=timeout errno_bytes=0 errno=0 output_bytes=0 exit=-1 signal=9 killed=1 PASS",
+        "CASE ./irix-fault expect=signal errno_bytes=0 errno=0 output_bytes=0 exit=-1 signal=11 killed=0 PASS",
+        "CASE ./irix-args expect=quiet errno_bytes=0 errno=0 output_bytes=0 exit=37 signal=0 killed=0 PASS",
+        "CASE ./irix-args-empty expect=quiet errno_bytes=0 errno=0 output_bytes=0 exit=37 signal=0 killed=0 PASS",
+        "CASE ./irix-files expect=quiet errno_bytes=0 errno=0 output_bytes=0 exit=37 signal=0 killed=0 PASS",
+        "CASE ./irix-file-errors expect=quiet errno_bytes=0 errno=0 output_bytes=0 exit=37 signal=0 killed=0 PASS",
+        "CASE ./irix-partial expect=quiet errno_bytes=0 errno=0 output_bytes=0 exit=37 signal=0 killed=0 PASS",
+        "CASE ./irix-memory expect=quiet errno_bytes=0 errno=0 output_bytes=0 exit=37 signal=0 killed=0 PASS",
+        "CASE ./irix-file-map expect=quiet errno_bytes=0 errno=0 output_bytes=0 exit=37 signal=0 killed=0 PASS",
+        "CASE ./irix-mem-errors expect=quiet errno_bytes=0 errno=0 output_bytes=0 exit=37 signal=0 killed=0 PASS",
+        "CASE ./irix-stack-args expect=quiet errno_bytes=0 errno=0 output_bytes=0 exit=37 signal=0 killed=0 PASS",
+        "CASE ./irix-readonly expect=signal errno_bytes=0 errno=0 output_bytes=0 exit=-1 signal=11 killed=0 PASS",
+        "CASE ./irix-unmapped expect=signal errno_bytes=0 errno=0 output_bytes=0 exit=-1 signal=11 killed=0 PASS",
+        "CASE ./bad-note-name expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-note-version expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-note-size expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-note-offset expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-osabi expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-n32 expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-n64 expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-endian expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-pie expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-interp expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-dynamic expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-entry expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-load-size expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-phnum expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-truncated expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./irix-segments expect=output errno_bytes=0 errno=0 output_bytes=15 exit=37 signal=0 killed=0 PASS",
+        "CASE ./irix-segments-short expect=output errno_bytes=0 errno=0 output_bytes=15 exit=37 signal=0 killed=0 PASS",
+        "CASE ./irix-segments-aligned expect=output errno_bytes=0 errno=0 output_bytes=15 exit=37 signal=0 killed=0 PASS",
+        "CASE ./irix-segments-bss expect=output errno_bytes=0 errno=0 output_bytes=15 exit=37 signal=0 killed=0 PASS",
+        "CASE ./irix-segments-adjacent expect=output errno_bytes=0 errno=0 output_bytes=15 exit=37 signal=0 killed=0 PASS",
+        "CASE ./irix-text-write expect=fault-output errno_bytes=0 errno=0 output_bytes=15 exit=-1 signal=11 killed=0 PASS",
+        "CASE ./irix-segment-gap expect=fault-output errno_bytes=0 errno=0 output_bytes=15 exit=-1 signal=11 killed=0 PASS",
+        "CASE ./irix-segment-end expect=fault-output errno_bytes=0 errno=0 output_bytes=15 exit=-1 signal=11 killed=0 PASS",
+        "CASE ./bad-data-filesz expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-data-empty expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-data-large expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-data-wrap expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-data-kernel expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-data-window expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-data-overlap expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-data-unaligned expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-data-offset-align expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-data-align-small expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-data-align-power expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-data-align-large expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-data-congruence expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-data-file-overlap expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-data-eof expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-data-offset-wrap expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-data-wx expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-data-readonly expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-data-executable expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-data-flags expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-data-type expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-data-duplicate-note expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-entry-data expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-entry-bss expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-entry-gap expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-text-writable expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-text-bss expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-data-truncated expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./irix-o32-marked expect=output errno_bytes=0 errno=0 output_bytes=15 exit=37 signal=0 killed=0 PASS",
+        "CASE ./native-o32 expect=output errno_bytes=0 errno=0 output_bytes=15 exit=37 signal=0 killed=0 PASS",
+        "CASE ./irix-o32-marked expect=output errno_bytes=0 errno=0 output_bytes=15 exit=37 signal=0 killed=0 PASS",
+        "CASE ./native-o32 expect=output errno_bytes=0 errno=0 output_bytes=15 exit=37 signal=0 killed=0 PASS",
+        "CASE ./irix-o32-marked expect=output errno_bytes=0 errno=0 output_bytes=15 exit=37 signal=0 killed=0 PASS",
+        "CASE ./native-o32 expect=output errno_bytes=0 errno=0 output_bytes=15 exit=37 signal=0 killed=0 PASS",
+        "CASE ./irix-o32-marked expect=output errno_bytes=0 errno=0 output_bytes=15 exit=37 signal=0 killed=0 PASS",
+        "CASE ./native-o32 expect=output errno_bytes=0 errno=0 output_bytes=15 exit=37 signal=0 killed=0 PASS",
+        "CASE ./irix-o32-marked expect=output errno_bytes=0 errno=0 output_bytes=15 exit=37 signal=0 killed=0 PASS",
+        "CASE ./native-o32 expect=output errno_bytes=0 errno=0 output_bytes=15 exit=37 signal=0 killed=0 PASS",
+        "CASE ./irix-segments expect=output errno_bytes=0 errno=0 output_bytes=15 exit=37 signal=0 killed=0 PASS",
+        "CASE ./irix-segments-bss expect=output errno_bytes=0 errno=0 output_bytes=15 exit=37 signal=0 killed=0 PASS",
+        "CASE ./native-o32 expect=output errno_bytes=0 errno=0 output_bytes=15 exit=37 signal=0 killed=0 PASS",
+        "CASE ./irix-segments expect=output errno_bytes=0 errno=0 output_bytes=15 exit=37 signal=0 killed=0 PASS",
+        "CASE ./irix-segments-bss expect=output errno_bytes=0 errno=0 output_bytes=15 exit=37 signal=0 killed=0 PASS",
+        "CASE ./native-o32 expect=output errno_bytes=0 errno=0 output_bytes=15 exit=37 signal=0 killed=0 PASS",
+        "CASE ./irix-segments expect=output errno_bytes=0 errno=0 output_bytes=15 exit=37 signal=0 killed=0 PASS",
+        "CASE ./irix-segments-bss expect=output errno_bytes=0 errno=0 output_bytes=15 exit=37 signal=0 killed=0 PASS",
+        "CASE ./native-o32 expect=output errno_bytes=0 errno=0 output_bytes=15 exit=37 signal=0 killed=0 PASS"
+      ],
+      "seconds": 159.419
+    },
+    {
+      "directory": "segments-compat-ordinary-fldahga5",
+      "mode": "ordinary",
+      "expect": "compat",
+      "suite": "segments",
+      "ident": "XIRI_IRIX_SEGMENTS_20261030",
+      "status": "passed",
+      "clean_shutdown": true,
+      "started_utc": "2026-10-30T12:53:32Z",
+      "case_count": 89,
+      "guest_exit_status": 0,
+      "observations": [
+        "CASE ./native-o32 expect=output errno_bytes=0 errno=0 output_bytes=15 exit=37 signal=0 killed=0 PASS",
+        "CASE ./irix-o32-marked expect=output errno_bytes=0 errno=0 output_bytes=15 exit=37 signal=0 killed=0 PASS",
+        "CASE ./irix-o32-unbranded expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./irix-errors expect=quiet errno_bytes=0 errno=0 output_bytes=0 exit=37 signal=0 killed=0 PASS",
+        "CASE ./irix-numbers expect=quiet errno_bytes=0 errno=0 output_bytes=0 exit=37 signal=0 killed=0 PASS",
+        "CASE ./irix-delay expect=output errno_bytes=0 errno=0 output_bytes=15 exit=37 signal=0 killed=0 PASS",
+        "CASE ./irix-loop expect=timeout errno_bytes=0 errno=0 output_bytes=0 exit=-1 signal=9 killed=1 PASS",
+        "CASE ./irix-fault expect=signal errno_bytes=0 errno=0 output_bytes=0 exit=-1 signal=11 killed=0 PASS",
+        "CASE ./irix-args expect=quiet errno_bytes=0 errno=0 output_bytes=0 exit=37 signal=0 killed=0 PASS",
+        "CASE ./irix-args-empty expect=quiet errno_bytes=0 errno=0 output_bytes=0 exit=37 signal=0 killed=0 PASS",
+        "CASE ./irix-files expect=quiet errno_bytes=0 errno=0 output_bytes=0 exit=37 signal=0 killed=0 PASS",
+        "CASE ./irix-file-errors expect=quiet errno_bytes=0 errno=0 output_bytes=0 exit=37 signal=0 killed=0 PASS",
+        "CASE ./irix-partial expect=quiet errno_bytes=0 errno=0 output_bytes=0 exit=37 signal=0 killed=0 PASS",
+        "CASE ./irix-memory expect=quiet errno_bytes=0 errno=0 output_bytes=0 exit=37 signal=0 killed=0 PASS",
+        "CASE ./irix-file-map expect=quiet errno_bytes=0 errno=0 output_bytes=0 exit=37 signal=0 killed=0 PASS",
+        "CASE ./irix-mem-errors expect=quiet errno_bytes=0 errno=0 output_bytes=0 exit=37 signal=0 killed=0 PASS",
+        "CASE ./irix-stack-args expect=quiet errno_bytes=0 errno=0 output_bytes=0 exit=37 signal=0 killed=0 PASS",
+        "CASE ./irix-readonly expect=signal errno_bytes=0 errno=0 output_bytes=0 exit=-1 signal=11 killed=0 PASS",
+        "CASE ./irix-unmapped expect=signal errno_bytes=0 errno=0 output_bytes=0 exit=-1 signal=11 killed=0 PASS",
+        "CASE ./bad-note-name expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-note-version expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-note-size expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-note-offset expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-osabi expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-n32 expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-n64 expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-endian expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-pie expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-interp expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-dynamic expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-entry expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-load-size expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-phnum expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-truncated expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./irix-segments expect=output errno_bytes=0 errno=0 output_bytes=15 exit=37 signal=0 killed=0 PASS",
+        "CASE ./irix-segments-short expect=output errno_bytes=0 errno=0 output_bytes=15 exit=37 signal=0 killed=0 PASS",
+        "CASE ./irix-segments-aligned expect=output errno_bytes=0 errno=0 output_bytes=15 exit=37 signal=0 killed=0 PASS",
+        "CASE ./irix-segments-bss expect=output errno_bytes=0 errno=0 output_bytes=15 exit=37 signal=0 killed=0 PASS",
+        "CASE ./irix-segments-adjacent expect=output errno_bytes=0 errno=0 output_bytes=15 exit=37 signal=0 killed=0 PASS",
+        "CASE ./irix-text-write expect=fault-output errno_bytes=0 errno=0 output_bytes=15 exit=-1 signal=11 killed=0 PASS",
+        "CASE ./irix-segment-gap expect=fault-output errno_bytes=0 errno=0 output_bytes=15 exit=-1 signal=11 killed=0 PASS",
+        "CASE ./irix-segment-end expect=fault-output errno_bytes=0 errno=0 output_bytes=15 exit=-1 signal=11 killed=0 PASS",
+        "CASE ./bad-data-filesz expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-data-empty expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-data-large expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-data-wrap expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-data-kernel expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-data-window expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-data-overlap expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-data-unaligned expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-data-offset-align expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-data-align-small expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-data-align-power expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-data-align-large expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-data-congruence expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-data-file-overlap expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-data-eof expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-data-offset-wrap expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-data-wx expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-data-readonly expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-data-executable expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-data-flags expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-data-type expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-data-duplicate-note expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-entry-data expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-entry-bss expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-entry-gap expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-text-writable expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-text-bss expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./bad-data-truncated expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./irix-o32-marked expect=output errno_bytes=0 errno=0 output_bytes=15 exit=37 signal=0 killed=0 PASS",
+        "CASE ./native-o32 expect=output errno_bytes=0 errno=0 output_bytes=15 exit=37 signal=0 killed=0 PASS",
+        "CASE ./irix-o32-marked expect=output errno_bytes=0 errno=0 output_bytes=15 exit=37 signal=0 killed=0 PASS",
+        "CASE ./native-o32 expect=output errno_bytes=0 errno=0 output_bytes=15 exit=37 signal=0 killed=0 PASS",
+        "CASE ./irix-o32-marked expect=output errno_bytes=0 errno=0 output_bytes=15 exit=37 signal=0 killed=0 PASS",
+        "CASE ./native-o32 expect=output errno_bytes=0 errno=0 output_bytes=15 exit=37 signal=0 killed=0 PASS",
+        "CASE ./irix-o32-marked expect=output errno_bytes=0 errno=0 output_bytes=15 exit=37 signal=0 killed=0 PASS",
+        "CASE ./native-o32 expect=output errno_bytes=0 errno=0 output_bytes=15 exit=37 signal=0 killed=0 PASS",
+        "CASE ./irix-o32-marked expect=output errno_bytes=0 errno=0 output_bytes=15 exit=37 signal=0 killed=0 PASS",
+        "CASE ./native-o32 expect=output errno_bytes=0 errno=0 output_bytes=15 exit=37 signal=0 killed=0 PASS",
+        "CASE ./irix-segments expect=output errno_bytes=0 errno=0 output_bytes=15 exit=37 signal=0 killed=0 PASS",
+        "CASE ./irix-segments-bss expect=output errno_bytes=0 errno=0 output_bytes=15 exit=37 signal=0 killed=0 PASS",
+        "CASE ./native-o32 expect=output errno_bytes=0 errno=0 output_bytes=15 exit=37 signal=0 killed=0 PASS",
+        "CASE ./irix-segments expect=output errno_bytes=0 errno=0 output_bytes=15 exit=37 signal=0 killed=0 PASS",
+        "CASE ./irix-segments-bss expect=output errno_bytes=0 errno=0 output_bytes=15 exit=37 signal=0 killed=0 PASS",
+        "CASE ./native-o32 expect=output errno_bytes=0 errno=0 output_bytes=15 exit=37 signal=0 killed=0 PASS",
+        "CASE ./irix-segments expect=output errno_bytes=0 errno=0 output_bytes=15 exit=37 signal=0 killed=0 PASS",
+        "CASE ./irix-segments-bss expect=output errno_bytes=0 errno=0 output_bytes=15 exit=37 signal=0 killed=0 PASS",
+        "CASE ./native-o32 expect=output errno_bytes=0 errno=0 output_bytes=15 exit=37 signal=0 killed=0 PASS"
+      ],
+      "seconds": 163.573
+    }
+  ]
+}

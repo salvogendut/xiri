@@ -2,13 +2,15 @@
 
 This lab supplies original, synthetic MIPS ELF fixtures for IRIX system-call
 experiments. The opt-in NetBSD fork kernel executes marked static o32 fixtures
-covering arguments, file I/O, and private memory mappings. It contains no vendor
+covering arguments, file I/O, private memory mappings, and writable data/BSS.
+It contains no vendor
 binaries or runtime and does not establish general IRIX application support.
 The separate release test retains the original native/rejection baseline.
 
 See the [source audit and implementation plan](../../docs/results/2026-10-30-irix-compat-audit.md)
 for the historical references, the [first execution result](../../docs/results/2026-10-30-irix-o32-execution.md),
-and the [static interface result](../../docs/results/2026-10-30-irix-o32-basics.md)
+the [static interface result](../../docs/results/2026-10-30-irix-o32-basics.md),
+and the [data/BSS result](../../docs/results/2026-10-30-irix-o32-segments.md)
 for the implemented boundary and its limits.
 
 ## Release rejection baseline
@@ -172,9 +174,63 @@ Open flags are translated individually, paths use the native guest namespace,
 and mmap accepts only a null hint, MAP_PRIVATE, and a nonnegative aligned
 32-bit file offset. `/dev/zero` provides zero-filled mappings. Unsupported
 flag combinations fail explicitly. The [result record](../../docs/results/2026-10-30-irix-o32-basics.md)
-lists the exact supported subset and remaining limits. The loader still has
-no writable data/BSS segment or interpreter support.
+lists the exact supported subset and remaining limits. At that revision the
+loader has no writable data/BSS segment or interpreter support; the next
+extension below adds data/BSS.
 
 The builder and probe default to the original version 1/minimal suite when
 `--basics` and `--suite basics` are omitted. Its earlier kernel and results
 remain independently reproducible.
+
+## Writable ELF data and BSS
+
+The `xiri/irix-o32-segments` branch in the NetBSD fork, commit
+`6a162a938061d16a60842fd9bb31d69e546d66dc`, extends the static loader
+to accept a second, page-separated read/write load segment. The
+[segment result record](../../docs/results/2026-10-30-irix-o32-segments.md) pins
+the tested commit. Use that revision with the isolated worktree/toolchain
+above, then build and probe it as follows:
+
+```sh
+git -C "$XIRI_NETBSD_SOURCE_DIR" switch --detach 6a162a938061d16a60842fd9bb31d69e546d66dc
+export XIRI_NETBSD_TFTP_DIR="$XIRI_NETBSD_BUILD_DIR/segments-tftp"
+export XIRI_NETBSD_CONFIG="$PWD/lab/irix-o32/XIRI_IRIX_SEGMENTS"
+./scripts/build-netbsd-kernel.sh kernel
+./scripts/build-irix-experiment.py --segments
+for mode in ci ordinary; do
+    ./scripts/probe-irix-experiment.py --suite segments --mode "$mode" --expect compat \
+        --kernel-directory "$XIRI_NETBSD_TFTP_DIR" --ident XIRI_IRIX_SEGMENTS_20261030
+done
+```
+
+The version 3 manifest in `.work/irix-o32-segments/` includes the unchanged
+34 basics fixtures, eight segment programs, and 28 additional rejection inputs.
+Five original marked/native pairs and three data/BSS/native triples bring the
+matrix to 89 cases. `EXPERIMENT_PASS cases=89`, post-run hashes, and clean
+shutdown are required in both modes.
+
+[`segments.S`](segments.S) and [`segments.ld`](segments.ld) cover initialized
+data, partial-page BSS, whole BSS pages, pure BSS, page-aligned file data, and
+adjacent text/data mappings. Every declared data/BSS byte is checked and then
+written; successful programs use BSS as a read/write syscall buffer. A nonzero
+file sentinel immediately after initialized data exposes incorrect zero-fill.
+Repeated executions check fresh contents, and post-run fixture hashes check
+that private writes leave executable files unchanged.
+
+Text-write, gap-read, and end-of-mapping fault fixtures first emit the exact
+15-byte marker, then must receive `SIGSEGV`. The `fault-output` expectation
+prevents a setup crash from satisfying these checks. The segment end test
+accesses the first page after the rounded BSS end, not padding inside its last
+page. These tests establish write protection and unmapped-page faults, without
+claiming hardware-enforced non-executable data.
+
+The accepted layout is exactly RX text, optional RW data/BSS, then the Xiri
+note. Text still starts at `0x00400000` and has equal file/memory size. Data
+has nonzero memory size at most 1 MiB, file size no larger than memory size,
+page-aligned address/offset, and congruent power-of-two ELF alignment between
+one page and 1 MiB. It starts after rounded text and ends at or below
+`0x01000000`. File-backed data cannot overlap the text file extent. File bounds,
+signed offset limits, wrapping ranges, permissions, and entry-in-text are
+checked before the native ELF mapper runs. This bounded image window is a
+synthetic test convention; interpreter loading and general IRIX ELF layouts
+remain separate work.

@@ -1,5 +1,9 @@
 # Static o32 arguments, files, and memory — 2026-10-30
 
+Follow-up: the [data/BSS extension](2026-10-30-irix-o32-segments.md) adds a
+separate writable ELF segment and passes 89 cases in each mode. This record
+preserves the earlier 44-case static interface milestone.
+
 The experimental NetBSD personality now passes static argument, file, and
 memory probes using synthetic IRIX o32 calls. All 44 cases pass in both CI and
 ordinary IRIS execution, including the earlier execution/rejection matrix,

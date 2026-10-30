@@ -102,8 +102,10 @@ run(const char *path, const char *expect)
             WIFEXITED(status) && WEXITSTATUS(status) == 126;
     else if (strcmp(expect, "timeout") == 0)
         pass = killed && ne == 0 && no == 0 && WIFSIGNALED(status) && WTERMSIG(status) == SIGKILL;
-    else if (strcmp(expect, "signal") == 0)
-        pass = !killed && ne == 0 && no == 0 && WIFSIGNALED(status) && WTERMSIG(status) == SIGSEGV;
+    else if (strcmp(expect, "signal") == 0 || strcmp(expect, "fault-output") == 0)
+        pass = !killed && ne == 0 && WIFSIGNALED(status) && WTERMSIG(status) == SIGSEGV &&
+            (strcmp(expect, "signal") == 0 ? no == 0 :
+             no == (ssize_t)sizeof(expected)-1 && memcmp(output, expected, sizeof(expected)-1) == 0);
     else if (strcmp(expect, "quiet") == 0 || strcmp(expect, "output") == 0)
         pass = !killed && ne == 0 && WIFEXITED(status) && WEXITSTATUS(status) == 37 &&
             (strcmp(expect, "quiet") == 0 ? no == 0 :

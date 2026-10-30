@@ -1,6 +1,6 @@
 # Xiri proposed architecture
 
-Status: architectural target agreed on 2026-10-14; emulator-first development added on 2026-10-15. Marked static o32 arguments, file I/O, and private memory mappings are validated as a bounded subset in emulation; general compatibility and the desktop remain unvalidated. The [execution roadmap](ROADMAP.md) defines the remaining experiments.
+Status: architectural target agreed on 2026-10-14; emulator-first development added on 2026-10-15. Marked static o32 writable data/BSS, arguments, file I/O, and private memory mappings are validated as a bounded subset in emulation; general compatibility and the desktop remain unvalidated. The [execution roadmap](ROADMAP.md) defines the remaining experiments.
 
 Xiri will use NetBSD as its underlying OS, execute selected IRIX binaries on the workstation's MIPS CPU through an IRIX personality, and preserve the existing IRIX desktop. Applications built natively for NetBSD should share that desktop with the compatible programs.
 
@@ -52,7 +52,7 @@ The compatibility layer must implement the selected application's ABI: its execu
 
 The [historical source audit](results/2026-10-30-irix-compat-audit.md) identifies ELF recognition bugs, removed SVR4 dependencies, and current kernel interface gaps. Reuse verified ABI definitions selectively. The [first implementation](results/2026-10-30-irix-o32-execution.md) now executes an explicitly marked synthetic static o32 program using `write` and `exit`, with native and rejection checks in both emulator modes. The test marker is not an IRIX branding standard, and the accepted image layout is deliberately narrow. n32 needs separate kernel/dispatch qualification and remains a requirement if the desktop inventory demands it.
 
-The [static interface extension](results/2026-10-30-irix-o32-basics.md) adds argc/argv/envp with static `AT_NULL`, translated open flags, read/close, and private mmap/munmap/mprotect. All 44 cases pass in both modes, including partial transfers, file effects, copy-on-write, and protection faults. Paths currently use the native guest namespace; mapping placement uses native VM policy. Writable ELF data/BSS and interpreter loading remain the next loader work, followed by runtime paths and dynamic auxiliary data.
+The [static interface extension](results/2026-10-30-irix-o32-basics.md) adds argc/argv/envp with static `AT_NULL`, translated open flags, read/close, and private mmap/munmap/mprotect. All 44 cases pass in both modes, including partial transfers, file effects, copy-on-write, and protection faults. Paths currently use the native guest namespace; mapping placement uses native VM policy. The [data/BSS extension](results/2026-10-30-irix-o32-segments.md) now admits a separate RW segment after RX text, with 89 cases passing in both modes. It validates file/virtual ranges and permissions before using native ELF VM commands for private data and zero-fill. Interpreter loading, runtime paths, and dynamic auxiliary data are next.
 
 | Area | Initial requirement |
 | --- | --- |
