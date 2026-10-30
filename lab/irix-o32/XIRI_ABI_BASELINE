@@ -1,0 +1,6 @@
+# Unmodified fork kernel baseline, retaining the qualified R4400 device profile.
+include "arch/sgimips/conf/GENERIC32_IP2x"
+ident "XIRI_ABI_BASELINE_20261030"
+makeoptions DEBUG="-g"
+no config netbsd
+config netbsd root on sd0a type ffs

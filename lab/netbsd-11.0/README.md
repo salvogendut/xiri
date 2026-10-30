@@ -103,8 +103,12 @@ Guest source changes belong in the sibling
 `a852b4a0380` (2026-10-30); it is newer than the verified 11.0 source sets.
 Do not substitute it silently for the release tree or reuse release object
 files for a trunk build. Select and record the branch baseline and use separate
-build outputs when a source change is needed. The existing build script still
-uses the verified release tree described above.
+build outputs when a source change is needed. The build script defaults to the
+verified release tree. Fork builds now accept `XIRI_NETBSD_SOURCE_DIR`,
+`XIRI_NETBSD_BUILD_DIR`, `XIRI_NETBSD_TFTP_DIR`, and `XIRI_NETBSD_CONFIG`; explicit
+source overrides require separate build/TFTP directories. The first qualified
+fork kernel and opt-in static compatibility configuration are documented in the
+[o32 experiment lab](../irix-o32/README.md#fork-kernel-and-execution-matrix).
 
 Xorg's Newport driver lives in NetBSD's separate `xsrc` repository. Kernel and
 base-system changes can go into `NetBSD-nixbench`; an Xorg driver change needs

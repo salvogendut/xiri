@@ -1,6 +1,6 @@
 # Xiri proposed architecture
 
-Status: architectural target agreed on 2026-10-14; emulator-first development added on 2026-10-15. Implementation and compatibility remain unvalidated. The [execution roadmap](ROADMAP.md) defines the experiments needed to establish feasibility.
+Status: architectural target agreed on 2026-10-14; emulator-first development added on 2026-10-15. A marked static o32 `write`/`exit` prototype is validated in emulation; general compatibility and the desktop remain unvalidated. The [execution roadmap](ROADMAP.md) defines the remaining experiments.
 
 Xiri will use NetBSD as its underlying OS, execute selected IRIX binaries on the workstation's MIPS CPU through an IRIX personality, and preserve the existing IRIX desktop. Applications built natively for NetBSD should share that desktop with the compatible programs.
 
@@ -50,7 +50,7 @@ Store interface notes, trace interpretations, probes and implementation decision
 
 The compatibility layer must implement the selected application's ABI: its executable format, calling conventions, system-call behavior, and data layouts. Matching MIPS instruction sets or POSIX APIs alone is insufficient.
 
-The [historical source audit](results/2026-10-30-irix-compat-audit.md) identifies ELF recognition bugs, removed SVR4 dependencies, and current kernel interface gaps. Reuse verified ABI definitions selectively. The first experiment is an explicitly marked synthetic static o32 program using `write` and `exit`; its native control and foreign-ELF rejection baseline pass in both emulator modes. The test marker is not an IRIX branding standard. n32 needs separate kernel/dispatch qualification and remains a requirement if the desktop inventory demands it.
+The [historical source audit](results/2026-10-30-irix-compat-audit.md) identifies ELF recognition bugs, removed SVR4 dependencies, and current kernel interface gaps. Reuse verified ABI definitions selectively. The [first implementation](results/2026-10-30-irix-o32-execution.md) now executes an explicitly marked synthetic static o32 program using `write` and `exit`, with native and rejection checks in both emulator modes. The test marker is not an IRIX branding standard, and the accepted image layout is deliberately narrow. n32 needs separate kernel/dispatch qualification and remains a requirement if the desktop inventory demands it.
 
 | Area | Initial requirement |
 | --- | --- |

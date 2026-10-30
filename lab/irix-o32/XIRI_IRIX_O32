@@ -1,0 +1,7 @@
+# Opt-in synthetic IRIX o32 experiment; not a general IRIX personality.
+include "arch/sgimips/conf/GENERIC32_IP2x"
+ident "XIRI_IRIX_O32_20261030"
+makeoptions DEBUG="-g"
+options COMPAT_IRIX_O32
+no config netbsd
+config netbsd root on sd0a type ffs

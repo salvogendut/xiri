@@ -1,5 +1,9 @@
 # Historical IRIX compatibility audit — 2026-10-30
 
+Follow-up: the [static o32 execution experiment](2026-10-30-irix-o32-execution.md)
+now implements the bounded first step. This audit records the starting state
+and original implementation plan.
+
 The historical implementation is useful as an ABI reference, but restoring its
 directory is not a viable first patch. Its ELF probes accept ABI mismatches,
 its build depends on the subsequently removed SVR4 implementation, and its
