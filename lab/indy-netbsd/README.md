@@ -88,3 +88,61 @@ For kernel development, use the [host kernel build](../netbsd-11.0/README.md#hos
 and the [custom-kernel boot procedure](../../docs/results/2026-10-30-netbsd-kernel.md).
 That experiment uses separate disk/NVRAM copies under
 `.work/indy-netbsd-kernel/`, leaving the release checkpoint in `base/` intact.
+
+## Automated probes
+
+After the [custom-kernel setup](../../docs/results/2026-10-30-netbsd-kernel.md),
+keep `.work/indy-netbsd-kernel/disk.raw` and `nvram.bin` stopped and clean.
+The disk must contain the matching `/netbsd`, and NVRAM must have
+`AutoLoad No`. Each invocation copies them into a new directory under
+`.work/netbsd-probes/`, uses separate ports, and cold-boots over TFTP:
+
+```sh
+./scripts/probe-netbsd.py
+./scripts/probe-netbsd.py --debugger
+```
+
+The second command requires the [cross-debugger](../netbsd-11.0/README.md#cross-debugger).
+It attaches at the PROM, loads `netbsd.gdb`, checks breakpoints at `main` and
+`cpu_rootconf`, then detaches and explicitly resumes the CPU. The retained
+[GDB settings](debugger.gdb) match IRIS's 64-bit remote registers; the guest
+kernel remains 32-bit. These checks validate breakpoints, registers,
+disassembly, and reading `kernel_ident`, not general C ABI inspection or
+stack unwinding.
+
+The [guest probe](probe.sh) verifies the kernel identifier and hash, the
+baseline file checksum, active swap, and a 128 KiB file copied from the
+virtual CD to the root disk. Success requires exit status zero, the expected
+output marker, and a clean shutdown. Full serial and emulator logs, the
+launch command/configuration, and `result.json` stay in each run directory;
+debugger runs also retain `gdb.log`.
+
+The default boot and probe deadlines are 300 and 30 host seconds; override
+them with `--boot-timeout` and `--probe-timeout`. Startup, debugger setup,
+control commands, and shutdown have bounded waits too. On a timeout the
+harness interrupts the command and attempts a clean halt; if that fails,
+only the disposable run is terminated and `clean_shutdown` is false.
+
+Exercise the two intentional failure cases:
+
+```sh
+./scripts/probe-netbsd.py --case exit
+./scripts/probe-netbsd.py --case timeout --probe-timeout 3
+```
+
+These must exit with host status 23 and 124 respectively. A guest exit is
+recorded separately from a timeout, where no completed guest status exists.
+Other harness failures exit nonzero and retain their error in `result.json`.
+
+To compare ordinary execution with Newport enabled on a host virtual display:
+
+```sh
+toolbox run -c xiri-iris sudo dnf install -y \
+  xorg-x11-server-Xvfb xorg-x11-xauth libXcursor libXi libXrandr \
+  libXinerama libxkbcommon-x11
+./scripts/probe-netbsd.py --mode ordinary
+```
+
+This sets `ci = false`, uses the TCP serial console and monitor, and runs
+the host window under Xvfb. It does not disable Newport. This comparison
+does not test a guest X server or establish graphics correctness.

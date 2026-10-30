@@ -73,3 +73,22 @@ the next boot, retaining the release kernel as `/netbsd.release`. Otherwise
 utilities such as `savecore` can read incorrect addresses from the old symbol
 table. The [build and boot record](../../docs/results/2026-10-30-netbsd-kernel.md)
 contains the exact procedure, validation, and measured build times.
+
+## Cross-debugger
+
+Build GDB from the same verified source sets:
+
+```sh
+toolbox run -c xiri-iris sudo dnf install -y expat-devel texinfo
+./scripts/build-netbsd-kernel.sh gdb
+```
+
+This adds `MKCROSSGDB=yes` to the incremental tools build and produces
+`.work/netbsd-build/tools/bin/mipseb--netbsd-gdb`. Fedora's packaged GDB
+does not include MIPS in the tested version. Expat provides remote target
+XML support; the host Texinfo is needed because the bundled older version
+cannot build GDB's documentation. Install both before the first GDB build.
+The script restores the executable bit on `gdb/make-init-c`, which the
+NetBSD 11.0 source set ships as mode 0644.
+
+See the [debugger and probe instructions](../indy-netbsd/README.md#automated-probes).

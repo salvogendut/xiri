@@ -10,15 +10,15 @@ kernel_config="$repo_root/lab/netbsd-11.0/XIRI_INDY"
 build_jobs=${XIRI_BUILD_JOBS:-8}
 operation=${1:-all}
 
-if (( $# > 1 )) || [[ ! $operation =~ ^(all|tools|kernel)$ ]]; then
-    printf 'Usage: %s [all|tools|kernel]\n' "$0" >&2
+if (( $# > 1 )) || [[ ! $operation =~ ^(all|tools|kernel|gdb)$ ]]; then
+    printf 'Usage: %s [all|tools|kernel|gdb]\n' "$0" >&2
     exit 2
 fi
 if [[ ! $build_jobs =~ ^[1-9][0-9]*$ ]]; then
     printf 'XIRI_BUILD_JOBS must be a positive integer\n' >&2
     exit 2
 fi
-if [[ $operation != tools ]] && ! command -v genisoimage >/dev/null; then
+if [[ $operation == all || $operation == kernel ]] && ! command -v genisoimage >/dev/null; then
     printf 'genisoimage is required to package the matching guest kernel file.\n' >&2
     exit 1
 fi
@@ -61,7 +61,13 @@ run_build() {
         2>&1 | tee "$log"
 }
 
-if [[ $operation == all || $operation == tools ]]; then
+if [[ $operation == gdb ]]; then
+    # Install expat-devel and texinfo in the Toolbox before the first build.
+    # The release source set ships this directly invoked shell script as 0644.
+    chmod u+x "$source_dir/external/gpl3/gdb/dist/gdb/make-init-c"
+    build_args+=(-V MKCROSSGDB=yes)
+    run_build tools "$build_dir/tools-gdb.log"
+elif [[ $operation == all || $operation == tools ]]; then
     run_build tools "$build_dir/tools.log"
 fi
 if [[ $operation == all || $operation == kernel ]]; then

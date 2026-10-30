@@ -8,7 +8,7 @@ The agreed target is NetBSD underneath, an IRIX binary compatibility layer, and 
 
 Planning and feasibility research started 2026-10-14. Milestone 0 setup began 2026-10-29 with a [pinned IRIS CLI build](lab/iris/README.md). NetBSD 11.0 now installs and boots to multiuser on an emulated R4400 Indy, including a [host-built kernel with a distinct identifier](docs/results/2026-10-30-netbsd-kernel.md). The compatibility layer, desktop port, and hardware validation remain pending.
 
-The candidate build host has been [inventoried](docs/results/2026-10-29-host-inventory.md), and [NetBSD 11.0 sgimips inputs](lab/netbsd-11.0/README.md) have been downloaded and verified. The [guest lab](lab/indy-netbsd/README.md) and [installation record](docs/results/2026-10-29-indy-netbsd-install.md) retain the configuration, disk layout, boot evidence, and unresolved emulator issues. Use the [development setup checklist](docs/ROADMAP.md#development-setup-checklist) for the remaining work.
+The candidate build host has been [inventoried](docs/results/2026-10-29-host-inventory.md), and [NetBSD 11.0 sgimips inputs](lab/netbsd-11.0/README.md) have been downloaded and verified. The [guest lab](lab/indy-netbsd/README.md), [installation record](docs/results/2026-10-29-indy-netbsd-install.md), and [debugger/probe results](docs/results/2026-10-30-netbsd-debugger-probe.md) retain the configuration, commands, evidence, and unresolved emulator issues. Use the [development setup checklist](docs/ROADMAP.md#development-setup-checklist) for the remaining work.
 
 Confirmed project requirements:
 
@@ -30,7 +30,7 @@ Hardware available for testing: Indy, Indigo2, and Octane. Exact CPU, graphics, 
 
 ## First milestone
 
-Establish a reproducible NetBSD development loop on an emulated Indy: installer, installed guest, host-built kernel, and automated probe. The installer, installed guest, and custom kernel now boot in IRIS with the R4400 profile. The [kernel build script](scripts/build-netbsd-kernel.sh) retains debug symbols for the next debugger checks. Automated probes and ordinary-versus-CI comparison remain pending. MAME provides an independent comparison and fallback and has not yet been tested by this project.
+The NetBSD development loop now reaches an automated probe: installer, installed guest, host-built kernel, debugger breakpoints, and a bounded smoke test. The [kernel build script](scripts/build-netbsd-kernel.sh) retains debug symbols; the [probe harness](scripts/probe-netbsd.py) uses fresh disk copies and passes in CI and ordinary IRIS execution with the R4400 profile. Sustained I/O, network transfers, snapshots, and graphics still need qualification. MAME provides an independent comparison and fallback and has not yet been tested by this project.
 
 Characterize the original IRIX desktop's dependencies once reference media is available. The user has no local PROM or IRIX image yet. IRIS documents an embedded PROM fallback, allowing the first NetBSD experiment to proceed without a separate PROM file; the IRIX reference and desktop experiments still require an IRIX installation. See the [prerequisites](docs/EMULATION.md#prerequisites-and-current-gaps).
 
