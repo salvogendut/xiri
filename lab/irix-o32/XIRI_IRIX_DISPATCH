@@ -1,0 +1,7 @@
+# Checked indirect calls and non-fixed mapping hints for original rld.
+include "arch/sgimips/conf/GENERIC32_IP2x"
+ident "XIRI_IRIX_DISPATCH_20261030"
+makeoptions DEBUG="-g"
+options COMPAT_IRIX_O32
+no config netbsd
+config netbsd root on sd0a type ffs

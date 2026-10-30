@@ -25,18 +25,19 @@ probe = module('netbsd_probe', 'probe-netbsd.py')
 runtime = module('runtime_probe', 'probe-irix-runtime.py')
 
 
-def main():
+def main(suite='elfmap'):
+    if suite not in ['elfmap', 'dispatch']:
+        raise ValueError('unsupported reference suite')
     reference = ROOT / '.work/irix-reference'
     raw = reference / 'media/irix65.raw'
     firmware = reference / 'media/ip24prom.070-9101-011.bin'
     manifest = json.loads((ROOT / 'lab/irix-reference/manifest.json').read_text())
-    query_manifest = json.loads((ROOT / '.work/irix-o32-elfmap/manifest.json').read_text())
-    query = ROOT / '.work/irix-o32-elfmap/elfmap'
+    fixture_dir = ROOT / f'.work/irix-o32-{suite}'
+    query_manifest = json.loads((fixture_dir / 'manifest.json').read_text())
     if raw.stat().st_size != manifest['logical_disk_bytes'] or \
-            probe.sha256(firmware) != manifest['firmware']['sha256'] or \
-            probe.sha256(query) != query_manifest['files']['elfmap']['sha256']:
+            probe.sha256(firmware) != manifest['firmware']['sha256']:
         raise RuntimeError('prepare the pinned reference media and query probe first')
-    output_root = reference / 'elfmap-runs'
+    output_root = reference / f'{suite}-runs'
     output_root.mkdir(exist_ok=True)
     directory = Path(tempfile.mkdtemp(prefix='ci-', dir=output_root))
     print(f'Results: {directory.relative_to(ROOT)}', flush=True)
@@ -79,7 +80,7 @@ def main():
         for name, info in query_manifest['files'].items():
             if not re.fullmatch(r'[A-Za-z0-9-]+', name):
                 raise RuntimeError('unsafe fixture name')
-            source = ROOT / '.work/irix-o32-elfmap' / name
+            source = fixture_dir / name
             shutil.copy2(source, fixtures / name)
             if probe.sha256(fixtures / name) != info['sha256']:
                 raise RuntimeError('fixture changed: ' + name)
@@ -133,12 +134,24 @@ def main():
             name = case['name']
             if not re.fullmatch(r'[A-Za-z0-9-]+', name):
                 raise RuntimeError('unsafe case name')
-            lines += [f'cp {case["input"]} elfmap-input.new',
-                      f'chmod {case["mode"]:o} elfmap-input.new',
-                      'mv elfmap-input.new elfmap-input',
-                      f'./elfmap >{name}.out 2>{name}.err; rc=$?; echo CASE {name} "$rc"']
-        lines += ['cp elfmap-partial elfmap-input.new; chmod 755 elfmap-input.new; mv elfmap-input.new elfmap-input',
-                  './elfmap unprivileged >elfmap-user.out 2>elfmap-user.err; rc=$?; echo CASE elfmap-user "$rc"']
+            if suite == 'elfmap':
+                lines += [f'cp {case["input"]} elfmap-input.new',
+                          f'chmod {case["mode"]:o} elfmap-input.new',
+                          'mv elfmap-input.new elfmap-input']
+            program = 'elfmap' if suite == 'elfmap' else name
+            lines += [f'./{program} >{name}.out 2>{name}.err; rc=$?; echo CASE {name} "$rc"']
+        if suite == 'elfmap':
+            lines += ['cp elfmap-partial elfmap-input.new; chmod 755 elfmap-input.new; mv elfmap-input.new elfmap-input',
+                      './elfmap unprivileged >elfmap-user.out 2>elfmap-user.err; rc=$?; echo CASE elfmap-user "$rc"']
+        else:
+            lines += ["printf ' XIRI_VENDOR_O32\\n' | /usr/bin/asa >asa.out 2>asa.err; "
+                      'rc=$?; echo CASE asa "$rc"']
+            for case in query_manifest['asa_cases']:
+                name, source = case['name'], case['input']
+                if not all(re.fullmatch(r'[A-Za-z0-9-]+', n) for n in [name, source]):
+                    raise RuntimeError('unsafe asa case')
+                lines += [f'/usr/bin/asa <{source} >{name}.out 2>{name}.err; '
+                          f'rc=$?; echo CASE {name} "$rc"']
         script = directory / 'run.sh'
         script.write_text('\n'.join(lines) + '\n')
         bundle = directory / 'probes.tar'
@@ -149,13 +162,15 @@ def main():
                 tar.add(fixtures / name, arcname=name)
             tar.add(script, arcname='run.sh')
         ci('put', bundle, '--to', '/tmp/xiri-elfmap.tar', '--timeout', '60')
-        ci('run', 'mkdir -p /tmp/xiri-elfmap; cd /tmp/xiri-elfmap; tar xf /tmp/xiri-elfmap.tar; chmod 755 elfmap; cksum elfmap',
+        ci('run', 'mkdir -p /tmp/xiri-elfmap; cd /tmp/xiri-elfmap; tar xf /tmp/xiri-elfmap.tar; chmod 755 ' +
+           ('elfmap' if suite == 'elfmap' else 'dispatch-*'),
            '--shell', 'sh', '--timeout', '30')
-        result['probe_checksums'] = ci('run', 'cd /tmp/xiri-elfmap; cksum elfmap elfmap-*', '--shell', 'sh', '--timeout', '30')
+        result['probe_checksums'] = ci('run', 'cd /tmp/xiri-elfmap; cksum ' + ' '.join(query_manifest['files']),
+                                       '--shell', 'sh', '--timeout', '30')
         checked = set()
         for line in result['probe_checksums'].splitlines():
-            match = re.fullmatch(r'(\d+) (\d+) (elfmap(?:-[A-Za-z0-9-]+)?)', line)
-            if match:
+            match = re.fullmatch(r'(\d+) (\d+) ([A-Za-z0-9-]+)', line)
+            if match and match[3] in query_manifest['files']:
                 local = subprocess.check_output(['cksum', str(fixtures / match[3])], text=True).split()[:2]
                 if local != [match[1], match[2]]:
                     raise RuntimeError('uploaded fixture differs: ' + match[3])
@@ -170,16 +185,19 @@ def main():
         with tarfile.open(archive) as tar:
             status = tar.extractfile('status.txt').read().decode()
             statuses = dict((name, int(code)) for name, code in re.findall(r'^CASE ([A-Za-z0-9-]+) (\d+)$', status, re.M))
-            names = [case['name'] for case in cases] + ['elfmap-user']
+            names = [case['name'] for case in cases] + (['elfmap-user'] if suite == 'elfmap' else ['asa'])
+            if suite == 'dispatch':
+                names += [case['name'] for case in query_manifest['asa_cases']]
             if set(statuses) != set(names):
                 raise RuntimeError('incomplete reference execution')
             for name in names:
                 data = tar.extractfile(name + '.out').read()
                 stderr = tar.extractfile(name + '.err').read().decode(errors='backslashreplace')
-                record = runtime.elfmap_record(data) if len(data) == 48 else None
+                record = (runtime.elfmap_record(data) if len(data) == 48 else None) if suite == 'elfmap' else \
+                    (runtime.dispatch_record(data) if len(data) == 32 else None)
                 result['observations'].append({'name': name, 'exit_status': statuses[name],
                                                'stdout_hex': data.hex(), 'stderr': stderr, 'record': record})
-        pin_path = ROOT / 'lab/irix-o32/elfmap-reference.json'
+        pin_path = ROOT / f'lab/irix-o32/{suite}-reference.json'
         if pin_path.exists():
             pin = json.loads(pin_path.read_text())
             if pin['files'] != {name: info['sha256'] for name, info in query_manifest['files'].items()}:
@@ -194,6 +212,17 @@ def main():
                     passed = passed and 0x00400000 <= got['second_v0'] < 0x80000000 and \
                         got['second_v0'] != 0x0e010000 and got['second_v0'] % 4096 == 0
                     got = {**got, 'second_v0': want['second_v0']}
+                if suite == 'dispatch' and expected.get('mapping') and got is not None:
+                    passed = passed and 4096 <= got['v0'] < 0x80000000 and got['v0'] % 4096 == 0
+                    if expected.get('occupied'):
+                        passed = passed and 4096 <= got['preserved'] < 0x80000000 and \
+                            got['preserved'] % 4096 == 0 and got['preserved'] != got['v0']
+                        got = {**got, 'preserved': want['preserved']}
+                    got = {**got, 'v0': want['v0']}
+                if suite == 'dispatch' and actual['name'].startswith('asa'):
+                    passed = passed and actual['stdout_hex'] == expected['stdout_hex']
+                if got is None:
+                    passed = passed and actual['stdout_hex'] == expected['stdout_hex']
                 passed = passed and got == want
                 actual['passed'] = passed
                 if not passed:

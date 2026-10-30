@@ -76,10 +76,38 @@ def elfmap_passed(record, case):
     return record == expected
 
 
+def dispatch_record(data):
+    if len(data) != 32:
+        raise RuntimeError('missing or truncated dispatch record')
+    return dict(zip(['magic', 'case', 'v0', 'v1', 'a3', 'checks', 'preserved', 'reserved'],
+                    struct.unpack('>8I', data)))
+
+
+def dispatch_passed(record, case):
+    if case['netbsd']['exit'] == 37:
+        return record is None
+    if record is None:
+        return False
+    expected = {k: case['netbsd'][k] for k in ['v0', 'v1', 'a3', 'checks']}
+    expected.update(magic=0x58494431, case=case['number'], preserved=0, reserved=0)
+    if case['mapping']:
+        if not 4096 <= record['v0'] < 0x80000000 or record['v0'] % 4096:
+            return False
+        expected['v0'] = record['v0']
+    if 'OCCUPIED' in case['symbols']:
+        if not 4096 <= record['preserved'] < 0x80000000 or record['preserved'] % 4096 or \
+                record['preserved'] == record['v0']:
+            return False
+        expected['preserved'] = record['preserved']
+    if 'TEXT_HINT' in case['symbols']:
+        expected['preserved'] = 0x27bdff00
+    return record == expected
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--mode', choices=['ci', 'ordinary'], default='ci')
-    parser.add_argument('--suite', choices=['runtime', 'queries', 'elfmap'], default='runtime')
+    parser.add_argument('--suite', choices=['runtime', 'queries', 'elfmap', 'dispatch'], default='runtime')
     args = parser.parse_args()
     args.debugger, args.boot_timeout = False, 300
     fixtures = ROOT / '.work/irix-o32-runtime'
@@ -90,15 +118,20 @@ def main():
     kernel = kernel_dir / 'netbsd-XIRI_INDY'
     inputs = [(name, fixtures / name, info['sha256']) for name, info in synthetic['files'].items()]
     queries = None
-    if args.suite in ['queries', 'elfmap']:
+    if args.suite in ['queries', 'elfmap', 'dispatch']:
         query_dir = ROOT / '.work/irix-o32-queries'
         queries = json.loads((query_dir / 'manifest.json').read_text())
         inputs += [(name, query_dir / name, info['sha256']) for name, info in queries['files'].items()]
     elfmap = None
-    if args.suite == 'elfmap':
+    if args.suite in ['elfmap', 'dispatch']:
         elfmap_dir = ROOT / '.work/irix-o32-elfmap'
         elfmap = json.loads((elfmap_dir / 'manifest.json').read_text())
         inputs += [(name, elfmap_dir / name, info['sha256']) for name, info in elfmap['files'].items()]
+    dispatch = None
+    if args.suite == 'dispatch':
+        dispatch_dir = ROOT / '.work/irix-o32-dispatch'
+        dispatch = json.loads((dispatch_dir / 'manifest.json').read_text())
+        inputs += [(name, dispatch_dir / name, info['sha256']) for name, info in dispatch['files'].items()]
     inputs += [('native-o32', ROOT / '.work/irix-o32-segments/native-o32', pin['native_control_sha256'])]
     inputs += [(c['fixture_name'], ROOT / '.work/irix-reference/vendor' / c['path'].lstrip('/'), c['sha256'])
                for c in vendor['candidates']]
@@ -115,7 +148,7 @@ def main():
     lab = probe.Lab(args, directory, config_text=config)
     result = {'status': 'error', 'mode': args.mode, 'clean_shutdown': False, 'pin': pin,
               'synthetic_manifest': synthetic, 'query_manifest': queries,
-              'elfmap_manifest': elfmap, 'observations': [],
+              'elfmap_manifest': elfmap, 'dispatch_manifest': dispatch, 'observations': [],
               'started_utc': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())}
     started = time.monotonic()
     print(f'Results: {directory.relative_to(ROOT)}', flush=True)
@@ -150,6 +183,25 @@ def main():
                       'elfmap': {**elfmap['cases'][0], 'noexec_mount': True,
                                  'netbsd': {'v0': 13, 'a3': 1, 'checks': 0, 'signal': 0}},
                       'expect': {**success, 'exit': 0, 'stdout': 'ELF-map record'}})
+    if dispatch:
+        for case in dispatch['cases']:
+            cases.append({'name': case['name'], 'program': case['name'], 'interpreter': 'interpreter',
+                          'dispatch': case, 'expect': {**success, 'exit': case['netbsd']['exit'],
+                                                       'stdout': 'dispatch record'}})
+        for ids_name, ids in [('user', [1234, 1234, 5678, 5678]),
+                              ('effective-root', [1234, 0, 5678, 0]),
+                              ('real-root', [0, 1234, 0, 5678])]:
+            for kind, start in [('uid', 0), ('gid', 2)]:
+                case = next(c for c in dispatch['cases'] if c['name'] == 'dispatch-' + kind)
+                expected = {**case, 'netbsd': {**case['netbsd'], 'v0': ids[start], 'v1': ids[start + 1]}}
+                cases.append({'name': case['name'] + '-' + ids_name, 'program': case['name'],
+                              'interpreter': 'interpreter', 'ids': ids, 'dispatch': expected,
+                              'expect': {**success, 'exit': 0, 'stdout': 'dispatch record'}})
+        for case in dispatch['asa_cases']:
+            for suffix, ids in [('', [0, 0, 0, 0]), ('-user', [1234, 1234, 5678, 5678])]:
+                cases.append({'name': case['name'] + suffix, 'program': 'vendor-asa',
+                              'interpreter': 'vendor-runtime-0', 'asa_input': case['input'], 'ids': ids,
+                              'expect': {**success, 'exit': 0, 'stdout': case['stdout']}})
     cases += [{'name': 'native-after', 'program': 'native-o32', 'interpreter': 'interpreter', 'expect': success}]
     try:
         checkpoint = ROOT / '.work/indy-netbsd-kernel'
@@ -180,6 +232,10 @@ def main():
                 if name is not None and not re.fullmatch(r'[A-Za-z0-9-]+', name):
                     raise RuntimeError('unsafe case name')
             lines += [f'echo STARTCASE {case["name"]}']
+            if 'asa_input' in case:
+                if not re.fullmatch(r'[A-Za-z0-9-]+', case['asa_input']):
+                    raise RuntimeError('unsafe asa input name')
+                lines += [f'cp {case["asa_input"]} input.txt']
             if 'elfmap' in case:
                 e = case['elfmap']
                 if not re.fullmatch(r'[A-Za-z0-9-]+', e['input']):
@@ -214,7 +270,7 @@ def main():
                        'mount -t cd9660 -o ro /dev/cd0a /cdrom && cp /cdrom/* /root/irix-runtime/ && '
                        'cp /cdrom/netbsd /netbsd && cd /root/irix-runtime && sha256 -c SHA256 && '
                        'chmod 755 dynamic native-o32 vendor-* bad-* ' + ('queries ' if queries else '') +
-                       ('elfmap ' if elfmap else '') + '&& '
+                       ('elfmap ' if elfmap else '') + ('dispatch-* ' if dispatch else '') + '&& '
                        'cp vendor-runtime-1 /emul/irix/lib/rld && chmod 755 /emul/irix/lib/rld && '
                        'cc -O2 -Wall -Wextra -Werror runner.c -o runner', 180):
             raise RuntimeError('runtime import or native runner build failed')
@@ -239,8 +295,16 @@ def main():
                 encoded = re.search(r'^STDOUT bytes=48 hex=([0-9a-f]+)$', match[1], re.M)
                 mapping = elfmap_record(bytes.fromhex(encoded[1])) if encoded else None
                 actual['stdout'] = 'ELF-map record'
+            dispatch_data = None
+            if 'dispatch' in case:
+                encoded = re.search(r'^STDOUT bytes=32 hex=([0-9a-f]+)$', match[1], re.M)
+                dispatch_data = dispatch_record(bytes.fromhex(encoded[1])) if encoded else None
+                # Only indirect exit may produce no record, and it must be empty.
+                if encoded or actual['stdout'] == '' and case['dispatch']['netbsd']['exit'] == 37:
+                    actual['stdout'] = 'dispatch record'
             passed = actual == case['expect'] and (records is None or all(r['passed'] for r in records)) and \
-                ('elfmap' not in case or mapping is not None and elfmap_passed(mapping, case['elfmap']))
+                ('elfmap' not in case or mapping is not None and elfmap_passed(mapping, case['elfmap'])) and \
+                ('dispatch' not in case or dispatch_passed(dispatch_data, case['dispatch']))
             result['observations'].append({'name': case['name'], 'passed': passed, 'actual': actual, 'expected': case['expect']})
             if 'ids' in case:
                 result['observations'][-1]['ids'] = case['ids']
@@ -248,6 +312,8 @@ def main():
                 result['observations'][-1]['query_records'] = records
             if 'elfmap' in case:
                 result['observations'][-1]['elfmap_record'] = mapping
+            if 'dispatch' in case:
+                result['observations'][-1]['dispatch_record'] = dispatch_data
             if not passed:
                 failures.append(case['name'])
                 print(f'{case["name"]}: {actual}', flush=True)

@@ -345,7 +345,11 @@ memory_again:
     li $a2, 3
     li $a3, 2
     li $a0, 0x10000000
+    .ifdef DISPATCH
+    error 1134, 9 /* hint accepted, invalid fd still rejected */
+    .else
     error 1134, 22
+    .endif
     move $a0, $zero
     li $a1, -1
     li $a3, 2

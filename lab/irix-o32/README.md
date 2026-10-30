@@ -431,3 +431,68 @@ completion of asa's filter. The `runtime` and `queries` suites retain their
 earlier kernels and expected failure points. Full logs remain under
 `.work/irix-elfmap-runs/`, `.work/irix-experiment-runs/`, and
 `.work/irix-reference/elfmap-runs/`.
+
+## Vendor asa execution
+
+Branch `xiri/irix-o32-dispatch`, commit
+`6abdd05eca298e29af07d6176ea453e696de90a3`, adds checked one-level indirect
+syscalls, the real `sysmp(MP_PGSIZE)` query, and non-fixed mmap hints.
+**Unmodified asa now completes its filter using the original libc and rld.**
+The [result record](../../docs/results/2026-10-30-irix-o32-dispatch.md) describes
+the exact contract, original-IRIX differences, output cases, and remaining
+scope. The earlier pinned kernels retain their historical failure boundaries.
+
+Keep the existing runtime/query/ELF-map fixtures, vendor files, installed
+NetBSD checkpoint, and prepared original-IRIX reference. Reproduce with:
+
+```sh
+export XIRI_NETBSD_SOURCE_DIR="$PWD/.work/netbsd-irix-src"
+export XIRI_NETBSD_BUILD_DIR="$PWD/.work/netbsd-irix-build"
+git -C "$XIRI_NETBSD_SOURCE_DIR" switch --detach 6abdd05eca298e29af07d6176ea453e696de90a3
+export XIRI_NETBSD_TFTP_DIR="$XIRI_NETBSD_BUILD_DIR/dispatch-tftp"
+export XIRI_NETBSD_CONFIG="$PWD/lab/irix-o32/XIRI_IRIX_DISPATCH"
+./scripts/build-netbsd-kernel.sh kernel
+python3 scripts/build-irix-dispatch.py
+python3 scripts/build-irix-experiment.py --dispatch
+for mode in ci ordinary; do
+    python3 scripts/probe-irix-runtime.py --suite dispatch --mode "$mode"
+    python3 scripts/probe-irix-experiment.py --suite dispatch-regressions --mode "$mode" \
+        --expect compat --kernel-directory "$XIRI_NETBSD_TFTP_DIR" \
+        --ident XIRI_IRIX_DISPATCH_20261030
+done
+python3 scripts/probe-irix-reference-dispatch.py
+```
+
+[`dispatch.json`](dispatch.json) pins the kernel, unchanged runtime files,
+successful asa result, and 24-call trace. The runtime suite has 148 scenarios:
+the prior 86 with the new vendor outcome, 44 dispatcher probes, six indirect
+UID/GID credential variants, and six additional asa inputs as root and as an
+ordinary user. Every output/error/status is checked; binary records have exact
+length and field checks. The 89 static/native executions run separately.
+Their version 4 fixture directory is `.work/irix-o32-dispatch-regressions`,
+preserving earlier manifests. Conditional assembly changes only the obsolete
+indirect-call and nonzero-hint rejection assumptions.
+
+[`dispatch.S`](dispatch.S) uses no libc or vendor code. It exercises argument
+shifts through six words, stack faults/overflow, a spill crossing an unmapped
+page, delay slots, invalid selectors, identity results, and indirect exit.
+Mapping cases check private contents and occupied text/data preservation.
+Both direct and indirect sysmp fetch the five-word ABI, including stack
+arguments; only MP_PGSIZE is implemented. Hints remain advisory and never
+replace mappings. Kernel-space hints are rejected.
+
+The reference harness shares the existing disposable-IRIX boot/transfer/halt
+workflow, freezes its input copies before boot, and checks all uploaded
+checksums and the installed asa/libc/rld identities. It runs the same 44
+executables and seven asa inputs. [`dispatch-reference.json`](dispatch-reference.json)
+pins the observations, including intentional ENOSYS/EINVAL and delay-slot
+differences. Successful mapping addresses may vary within checked bounds;
+content assertions and all other fields must match. Without a pin, results
+are labelled `observed`. A clean power-off marker is mandatory for either
+observation or qualification.
+
+Results remain under `.work/irix-dispatch-runs/`,
+`.work/irix-experiment-runs/`, and `.work/irix-reference/dispatch-runs/`.
+This suite qualifies the non-terminal asa filter path, not the other optional
+runtime operations that it tolerates as unsupported. n32 and the desktop
+remain separate work.

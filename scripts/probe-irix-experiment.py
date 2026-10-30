@@ -20,7 +20,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--mode', choices=['ci', 'ordinary'], default='ci')
     parser.add_argument('--expect', choices=['baseline', 'compat'], required=True)
-    parser.add_argument('--suite', choices=['minimal', 'basics', 'segments'], default='minimal')
+    parser.add_argument('--suite', choices=['minimal', 'basics', 'segments', 'dispatch-regressions'], default='minimal')
     parser.add_argument('--kernel-directory', type=Path, required=True)
     parser.add_argument('--ident', required=True)
     args = parser.parse_args()
@@ -31,7 +31,8 @@ def main():
         parser.error('kernel directory must contain netbsd-XIRI_INDY; ident must be uppercase alphanumeric/underscore')
     fixtures = ROOT / '.work' / ('irix-o32-experiment' if args.suite == 'minimal' else f'irix-o32-{args.suite}')
     manifest = json.loads((fixtures / 'manifest.json').read_text())
-    version, count = {'minimal': (1, 23), 'basics': (2, 34), 'segments': (3, 70)}[args.suite]
+    version, count = {'minimal': (1, 23), 'basics': (2, 34), 'segments': (3, 70),
+                      'dispatch-regressions': (4, 70)}[args.suite]
     if manifest.get('experiment_version') != version or len(manifest['fixtures']) != count:
         parser.error(f'rebuild the complete version {version} experiment ({count} fixtures)')
     output_root = ROOT / '.work/irix-experiment-runs'
@@ -70,7 +71,7 @@ def main():
         for _ in range(5):
             cases.extend([f'./irix-o32-marked {"output" if args.expect == "compat" else "reject"}',
                           './native-o32 output'])
-        if args.suite == 'segments':
+        if args.suite in ['segments', 'dispatch-regressions']:
             for _ in range(3):
                 expected = 'output' if args.expect == 'compat' else 'reject'
                 cases.extend([f'./irix-segments {expected}', f'./irix-segments-bss {expected}',
@@ -118,7 +119,7 @@ def main():
         if args.suite != 'minimal' and lab.command(
                 'test "$(sha256 -q /root/irix-experiment/map-input.bin)" = ' + result['map_input_sha256'], 15):
             raise RuntimeError('private file mapping changed the backing file')
-        if args.suite == 'segments' and lab.command('cd /root/irix-experiment && sha256 -c SHA256', 30):
+        if args.suite in ['segments', 'dispatch-regressions'] and lab.command('cd /root/irix-experiment && sha256 -c SHA256', 30):
             raise RuntimeError('segment writes changed fixture files')
         result['status'] = 'passed'
     except Exception as error:

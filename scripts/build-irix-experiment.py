@@ -109,16 +109,21 @@ def main():
     suites = parser.add_mutually_exclusive_group()
     suites.add_argument('--basics', action='store_true', help='add static argument, file, and memory checks')
     suites.add_argument('--segments', action='store_true', help='include basics and static data/BSS segment checks')
+    suites.add_argument('--dispatch', action='store_true', help='segment suite with accepted indirect calls and hints')
     args = parser.parse_args()
+    dispatch = args.dispatch
+    args.segments = args.segments or dispatch
     basics = args.basics or args.segments
     directory = 'irix-o32-segments' if args.segments else 'irix-o32-basics' if basics else 'irix-o32-experiment'
+    if dispatch:
+        directory = 'irix-o32-dispatch-regressions'
     base.OUTPUT = ROOT / '.work' / directory
     base.main()
     output = base.OUTPUT
     manifest = json.loads((output / 'manifest.json').read_text())
     # A failed extended build must not leave a usable three-fixture manifest.
     (output / 'manifest.json').unlink()
-    manifest['experiment_version'] = 3 if args.segments else 2 if basics else 1
+    manifest['experiment_version'] = 4 if dispatch else 3 if args.segments else 2 if basics else 1
     manifest['source_sha256']['checks.S'] = base.digest(base.SOURCE / 'checks.S')
     manifest['fixtures']['native-o32']['expect'] = 'output'
     manifest['fixtures']['irix-o32-marked']['expect'] = 'output'
@@ -140,6 +145,7 @@ def main():
     for name, symbol, expected, source in checks:
         obj, elf = output / f'{name}.o', output / name
         base.run('as', '-EB', '-mabi=32', '-mips3', '-G', '0',
+                 *(['--defsym', 'DISPATCH=1'] if dispatch else []),
                  '--defsym', f'{symbol}=1', '-o', obj, base.SOURCE / source)
         base.run('ld', '-EB', '-m', 'elf32btsmip', '--build-id=none',
                  '-T', base.SOURCE / 'probe.ld', '-o', elf, obj)

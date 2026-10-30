@@ -54,8 +54,13 @@ _start:
     nop
     .endif
     .ifdef NUMBERS
-    /* A0 deliberately names exit for indirect forms: never dispatch it. */
+    /* The historical kernels reject syscall(); the dispatch revision
+     * accepts it, so exercise a nested unsupported selector there. */
+    .ifdef DISPATCH
+    li $a0, 1000
+    .else
     li $a0, 1001
+    .endif
     expect_error 0, 89
     expect_error 1, 89
     expect_error 999, 89

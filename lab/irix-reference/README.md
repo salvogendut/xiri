@@ -1,8 +1,8 @@
 # IRIX 6.5.22m reference and vendor probes
 
-Follow-up: the [bounded runtime experiment](../../docs/results/2026-10-30-irix-o32-runtime.md)
-now enters the original o32 libc for asa and records its first unsupported
-query. The rejection tests below remain pinned to the earlier static kernel.
+Follow-up: [unmodified asa now runs on Xiri](../../docs/results/2026-10-30-irix-o32-dispatch.md)
+with its original libc and rld. The rejection tests below remain pinned to
+the earlier static kernel.
 
 The user supplied an installed IRIX disk and a MAME Indy firmware bundle on
 2026-10-30. Native `uname -R` reports `6.5 6.5.22m`. `desktop_base`, `eoe`, and
@@ -173,3 +173,15 @@ cases record syscall outcomes; successful mapping alone does not validate
 those layouts. The pinned comparison records IRIX's wider acceptance alongside
 Xiri's bounded, stricter contract. Reproduction is in the
 [o32 mapping lab](../irix-o32/README.md#bounded-rld-mapping).
+
+The [dispatch reference harness](../../scripts/probe-irix-reference-dispatch.py)
+now compares 44 original direct/indirect-call and mapping-hint probes plus
+seven asa stdin cases. It uses the same disposable reference workflow, checks
+all uploaded inputs and installed runtime checksums, and requires a clean
+halt. Exact records are pinned in
+[`dispatch-reference.json`](../irix-o32/dispatch-reference.json), with bounded
+address variation for non-fixed mappings. The comparison preserves original
+IRIX's different unknown-call errors and branch-delay SIGSYS behavior instead
+of hiding them. See the [asa execution lab](../irix-o32/README.md#vendor-asa-execution)
+for build/run commands and the distinction between this tested filter path
+and general vendor compatibility.
