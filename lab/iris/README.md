@@ -16,11 +16,14 @@ toolbox run -c xiri-iris env RUSTUP_HOME="$PWD/.work/rustup" CARGO_HOME="$PWD/.w
 ./scripts/build-iris.sh
 ```
 
-Emulator changes live in the [IRIS fork](https://github.com/salvogendut/iris/tree/xiri/netbsd-io),
-on branch `xiri/netbsd-io`. It starts at the previously tested upstream revision
+Emulator changes live in the [IRIS fork](https://github.com/salvogendut/iris/tree/xiri/netbsd-snapshots),
+on branch `xiri/netbsd-snapshots`. It starts at the previously tested upstream revision
 `b188bb9a82842948ddf2534f07d718df8473942c`; commit
 `d6420795a00f139cd0f638a623c55a071b46e9e9` adds NFS MOUNT authentication
-negotiation for NetBSD. Keep emulator implementation and regression tests in
+negotiation for NetBSD. Commit
+`b6d6f5c295aaccdb0bb614ee140447625a476498` additionally republishes the saved
+RAM bank map during snapshot restore; see the [snapshot record](../../docs/results/2026-10-30-netbsd-snapshots.md).
+Keep emulator implementation and regression tests in
 that repository, and guest configurations and qualification evidence here.
 Upgrading the branch to newer upstream changes requires another qualification run.
 

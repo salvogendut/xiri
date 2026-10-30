@@ -4,7 +4,7 @@ set -euo pipefail
 repo_root=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)
 source_dir=${IRIS_SOURCE_DIR:-"$repo_root/.work/iris"}
 repository=https://github.com/salvogendut/iris.git
-revision=d6420795a00f139cd0f638a623c55a071b46e9e9
+revision=b6d6f5c295aaccdb0bb614ee140447625a476498
 toolchain=nightly-2026-10-28
 
 if [[ -n ${IRIS_SOURCE_DIR:-} ]]; then
@@ -15,7 +15,7 @@ if [[ -n ${IRIS_SOURCE_DIR:-} ]]; then
     fi
 else
     if [[ ! -d "$source_dir/.git" ]]; then
-        git clone --depth 1 --branch xiri/netbsd-io "$repository" "$source_dir"
+        git clone --depth 1 --branch xiri/netbsd-snapshots "$repository" "$source_dir"
     fi
     if [[ $(git -C "$source_dir" rev-parse HEAD) != "$revision" ]]; then
         git -C "$source_dir" fetch "$repository" "$revision"

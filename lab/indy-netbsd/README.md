@@ -149,6 +149,11 @@ does not test a guest X server or establish graphics correctness.
 
 ## Disk and network qualification
 
+The later [snapshot investigation](../../docs/results/2026-10-30-netbsd-snapshots.md#nfs-integrity-finding)
+found an intermittent integrity failure with the default fragmented NFS
+requests used here. Retain these commands as regression workloads; use HTTP
+or the snapshot harness's 1024-byte NFS profile for current transfer work.
+
 Build the pinned [IRIS fork](../iris/README.md), then run:
 
 ```sh
@@ -182,3 +187,52 @@ the guest halts cleanly. Failures retain diagnostic counters when reachable
 and attempt the same bounded cleanup as the smoke harness. Disk contents and
 logs remain available for inspection. These tests do not qualify power-loss
 recovery, guest X, snapshots, or physical hardware.
+
+## Snapshot qualification
+
+With the same stopped custom-kernel checkpoint and pinned emulator:
+
+```sh
+./scripts/qualify-netbsd-snapshot.py
+./scripts/qualify-netbsd-snapshot.py --mode ordinary
+```
+
+The [snapshot harness](../../scripts/qualify-netbsd-snapshot.py) enables SCSI
+copy-on-write protection on disposable base copies. Each run uses its own
+working directory under `.work/netbsd-snapshots/`, including `saves/checkpoint/`
+and the shared RAM/framebuffer chunks in `saves/.cas/`. Preserve both snapshot
+directories together with the exact base disk, ISO, configuration, emulator
+build, and NVRAM; a snapshot directory alone is not a complete guest.
+
+At an idle shell with completed transfers, the harness captures a shell
+variable, its PID, files, and a sleeping process. It changes memory, overwrites
+a 4 MiB file, deletes a saved file, and creates a new file, then verifies that
+restore reverses those mutations. The sleeping process must complete again,
+the guest clock must advance, and new HTTP and bidirectional NFS transfers
+must pass SHA-256 checks. NFS uses `-r 1024 -w 1024` to stay within one
+Ethernet frame. An earlier run with 8192-byte requests corrupted an upload;
+`--nfs-size 8192` retains that investigation workload. Its cause remains open.
+The default is two full restores, plus two in-memory
+rollbacks in CI mode; `--rounds` changes this count. Ordinary mode uses monitor
+`save`/`load`; CI uses `iris-ci save`/`restore`/`rollback`.
+
+The harness then exits the emulator, starts a fresh process, and loads the
+saved state without booting NetBSD again. After the same checks, it writes a
+final marker and cleanly halts. Only then does it commit that process's overlay
+to `fresh/disk.raw`, a separate disposable base copy, and cold-boot it to check
+filesystem cleanliness and persisted content. The original snapshot base
+`disk.raw` stays unchanged so the saved bundle remains available for inspection
+and further restores. The final cold-boot disk is a different artifact.
+
+`result.json` records input hashes, snapshot metadata, operation durations,
+guest statuses, and shutdown results. Each phase retains its serial, emulator,
+and monitor logs. After a CI process exits, its `/tmp` overlay and any dirty-sector
+sidecar are moved into that phase's evidence directory. In ordinary mode those
+files already live beside the phase's disk path.
+
+Use snapshots only with the recorded guest kernel and matching disk base.
+Cold-boot changed kernels. IRIS checks disk sizes but does not establish base
+content identity; compare the recorded SHA-256 hashes before reusing a bundle.
+External NFS writes are outside the snapshot, and these tests open new network
+connections after restore. They do not qualify live-connection rewind, active
+I/O capture, cross-build migration, guest X, or power-loss recovery.

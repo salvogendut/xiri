@@ -1,6 +1,6 @@
 # Xiri execution roadmap
 
-Status: execution started, updated 2026-10-30. Host inventory, the pinned IRIS build, verified NetBSD inputs, the installed R4400 guest, and a host-built custom kernel boot are complete. Debugger breakpoints and an automated smoke probe now pass, including comparison of CI and ordinary execution. Bounded disk and network integrity tests also pass in both modes. Snapshots, graphics, and later implementation milestones remain pending; the earlier installer HTTP stall remains open.
+Status: execution started, updated 2026-10-30. Host inventory, the pinned IRIS build, verified NetBSD inputs, the installed R4400 guest, and a host-built custom kernel boot are complete. Debugger breakpoints and an automated smoke probe now pass, including comparison of CI and ordinary execution. Bounded disk and network integrity tests also pass in both modes. Snapshot restore, CI rollback, and post-restore cold boots now pass with the fork's RAM-map fix. Graphics and later implementation milestones remain pending; fragmented NFS corruption and the earlier installer HTTP stall remain open.
 
 The agreed target is NetBSD with an IRIX personality and the existing IRIX desktop. Initial implementation and testing use an emulated Indy. The first deliverable is a reproducible NetBSD development loop, followed by desktop feasibility and physical Indy qualification. Expand to additional machines and applications after those results.
 
@@ -14,7 +14,7 @@ Before starting implementation:
 2. Arrange storage for source, toolchains, object files, guest disks and snapshots. Retain the 30–50 GiB planning allowance and adjust it from actual usage.
 3. Provision a debug-capable IRIS source build with a recorded Rust toolchain and native dependencies, plus NetBSD cross-build tools. Check the selected host's library compatibility before choosing any packaged emulator.
 4. Use the [verified NetBSD 11.0 input baseline](../lab/netbsd-11.0/README.md) for the installer, sets, checksums and matching source. Locate or acquire the Indy PROM and an IRIX reference installation for the later MAME and desktop experiments; neither image is currently available locally. IRIS's documented PROM fallback allows the first NetBSD attempt before those images are ready.
-5. Continue the emulated Indy qualification sequence after the successful installer, changed-kernel, debugger, smoke, and bounded I/O tests: qualify snapshots, then graphics. Expand the ordinary-versus-CI comparison with each new workload.
+5. Continue the emulated Indy qualification sequence after the successful installer, changed-kernel, debugger, smoke, I/O, and snapshot tests: qualify NetBSD X/Newport display and input. Expand the ordinary-versus-CI comparison with each new workload.
 6. Inventory the physical Indy, Indigo2 and Octane, and arrange Indy serial capture for later hardware qualification.
 
 Keep large images and original runtimes outside Git; save configurations, manifests, commands and small result logs in the repository. This checklist prepares Milestones 0–1.
@@ -51,11 +51,11 @@ Parallel hardware preparation: inventory each physical machine's CPU, memory, gr
 The NetBSD boot and desktop experiments can be performed independently as their inputs become available. Both determine the implementation work needed on the first platform. Use the [emulator qualification gate](EMULATION.md#qualification-gate) to record each result.
 
 - [x] Boot the NetBSD installation kernel in IRIS, install to a disposable disk, and cold-boot to multiuser. Passed with R4400 and CI enabled; R5000 panicked during cache initialization.
-- [x] Capture serial logs and verify persistent storage, network transfer and reboot integrity. Repeated 96 MiB disk writes, 32 MiB cold-read verification, and 96 MiB of NFS/HTTP/TCP transfers passed in CI and ordinary execution. The [I/O record](results/2026-10-30-netbsd-io.md) documents the fork's NFS fix, retransmissions, and the separate unresolved installer HTTP stall.
+- [x] Capture serial logs and verify persistent storage, network transfer and reboot integrity. Repeated 96 MiB disk writes, 32 MiB cold-read verification, and 96 MiB of NFS/HTTP/TCP transfers passed in CI and ordinary execution. The [I/O record](results/2026-10-30-netbsd-io.md) documents those runs. Later snapshot stress found intermittent corruption with fragmented NFS; current work uses HTTP or 1024-byte NFS requests. The installer HTTP stall is also unresolved.
 - [x] Cross-build a modified kernel on the modern host and verify its build identifier in a fresh guest boot. `XIRI_INDY_20261030` reached multiuser over TFTP with SCSI root; see the [build and boot record](results/2026-10-30-netbsd-kernel.md).
 - [x] Demonstrate debugger attachment, a breakpoint, and continued execution. Cross-GDB stopped at `main` and `cpu_rootconf`; the guest resumed to multiuser. See the [debugger record](results/2026-10-30-netbsd-debugger-probe.md).
 - [x] Automate a probe with output, exit status, timeout and clean-state repetition; compare ordinary and CI execution. The [harness](../scripts/probe-netbsd.py) passed the file/swap/kernel smoke test in both modes and verified deliberate exit and timeout failures. This is a workload-specific comparison.
-- [ ] Qualify snapshots separately, keeping changed-kernel tests on cold boots.
+- [x] Qualify snapshots separately, keeping changed-kernel tests on cold boots. Repeated restores, CI rollback, fresh-process restore, timers, and final cold-boot integrity pass in both execution modes with the RAM-map fix. The [snapshot record](results/2026-10-30-netbsd-snapshots.md) limits the NFS profile to 1024-byte requests and retains the fragmented-transfer failure.
 - [ ] Repeat key boot and probe results in MAME when firmware is available; use it as primary if it passes a stage IRIS fails.
 - [ ] When hardware access permits, run an early physical Indy boot and I/O smoke test to expose differences from emulation; retain full ABI and desktop hardware acceptance for Milestone 4.
 - [ ] Establish a usable NetBSD X display and input on emulated Newport, or record the precise driver gap.

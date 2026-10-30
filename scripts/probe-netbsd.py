@@ -48,10 +48,13 @@ def free_ports(count):
 
 
 class Lab:
-    def __init__(self, args, directory, *, extra_iris_args=()):
+    def __init__(self, args, directory, *, extra_iris_args=(), config_text=None,
+                 working_directory=ROOT):
         self.args = args
         self.directory = directory
         self.extra_iris_args = list(extra_iris_args)
+        self.config_text = config_text
+        self.working_directory = working_directory
         self.serial_log = directory / 'serial.log'
         self.socket_path = directory / 'iris.sock'
         self.process = None
@@ -79,7 +82,7 @@ class Lab:
         command = TOOLBOX + wrapper + command
         (self.directory / f'{name}-command.json').write_text(json.dumps(command, indent=2) + '\n')
         with (self.directory / f'{name}.log').open('wb') as log:
-            return subprocess.Popen(command, cwd=ROOT, stdin=subprocess.DEVNULL,
+            return subprocess.Popen(command, cwd=self.working_directory, stdin=subprocess.DEVNULL,
                                     stdout=log, stderr=subprocess.STDOUT,
                                     start_new_session=True)
 
@@ -156,9 +159,11 @@ class Lab:
         self.wait(r'xiri-indy# ', 10)
         return int(match.group(1))
 
-    def start(self):
+    def start(self, *, boot=True):
         monitor_port, serial_a, serial_b, gdb_port = free_ports(4)
-        config = (ROOT / 'lab/indy-netbsd/iris.toml').read_text()
+        config = self.config_text
+        if config is None:
+            config = (ROOT / 'lab/indy-netbsd/iris.toml').read_text()
         config = re.sub(r'^ci = true$', f'ci = {str(self.args.mode == "ci").lower()}',
                         config, flags=re.M)
         config = config.replace('".work/indy-netbsd/sets.iso"',
@@ -199,6 +204,8 @@ class Lab:
         else:
             self.serial = socket.create_connection(('127.0.0.1', serial_b), 10)
             self.serial.setblocking(False)
+        if not boot:
+            return
         self.wait(r'Option\?', 30)
         self.send('5')
         self.wait(r'>> ', 10)
