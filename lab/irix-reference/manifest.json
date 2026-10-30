@@ -1,0 +1,158 @@
+{
+  "schema": 1,
+  "description": "User-provided IRIX reference media; no vendor files included",
+  "reference_release": "6.5.22m",
+  "uname_a": "IRIX IRIX 6.5 10070055 IP22",
+  "archives": [
+    {
+      "name": "irix65_chd.rar",
+      "bytes": 1986921102,
+      "sha256": "01a8055f6a2eb8f9577ab97e14f62a670d7eb0514edcc659c0c28e775a54b40d",
+      "supplied_md5": "2fdb6e7a0654ff5e875935285ebc8177",
+      "md5_matches": true
+    },
+    {
+      "name": "irix-sgi-freeware-cdroms-chd.rar",
+      "bytes": 3880311978,
+      "sha256": "300295ef1a5d161a2071f7e91cbcfde49d08cd1dd38a48d719591d063dd8eca9",
+      "supplied_md5": "0a69fbb5f4f3ed4502bb92627fa21c09",
+      "md5_matches": true
+    }
+  ],
+  "chd": {
+    "name": "irix65.chd",
+    "bytes": 5664440320,
+    "sha256": "f0615ce71308026c1366c289be8de8a640a0ca83ca7b808139acb71f3482a659"
+  },
+  "logical_disk_bytes": 100663296000,
+  "root_partition": {
+    "sgi_index": 0,
+    "linux_device": "/dev/sda1",
+    "start_sector": 266240,
+    "sectors": 196341760,
+    "sector_bytes": 512,
+    "filesystem": "XFS",
+    "block_bytes": 4096,
+    "version": "0x30b4"
+  },
+  "firmware": {
+    "archive": "indy_4610.zip",
+    "archive_md5": "704ace3d1d8439d142279592d0dda85d",
+    "name": "ip24prom.070-9101-011.bin",
+    "bytes": 524288,
+    "sha1": "ac663a4db68528e400487e98cbf901f620fb30ce",
+    "sha256": "333a0b2e39bb828a28a758b6f633ae7290030129dc747297a1be68dc317b86ae"
+  },
+  "command_inventory": {
+    "directories": [
+      "/sbin",
+      "/usr/bsd",
+      "/usr/bin"
+    ],
+    "elf_files": 417,
+    "o32": 12,
+    "n32": 405,
+    "scope": "Regular ELF files in these directories, including /usr/bin subdirectories; symlinks are not counted"
+  },
+  "candidates": [
+    {
+      "path": "/usr/bin/asa",
+      "bytes": 21412,
+      "sha256": "c87a69be927e9f1a7649a8d01ae79b890395fb279e44daa6945392bb5a4731de",
+      "class": 32,
+      "endian": "big",
+      "abi": "o32",
+      "type": 2,
+      "machine": 8,
+      "flags": "0x10000005",
+      "entry": "0x400e60",
+      "interpreter": [
+        "/usr/lib/libc.so.1"
+      ],
+      "needed": [
+        "libc.so.1"
+      ],
+      "fixture_name": "vendor-asa"
+    },
+    {
+      "path": "/sbin/echo",
+      "bytes": 21868,
+      "sha256": "e4d57059f8218401cadca044720e7e4cdcdd0d556b089e620efa3e67fdb02d7d",
+      "class": 32,
+      "endian": "big",
+      "abi": "n32",
+      "type": 2,
+      "machine": 8,
+      "flags": "0x20000024",
+      "entry": "0x10000ff0",
+      "interpreter": [
+        "/lib32/libc.so.1"
+      ],
+      "needed": [
+        "libc.so.1"
+      ],
+      "fixture_name": "vendor-echo"
+    },
+    {
+      "path": "/usr/bin/X11/4Dwm",
+      "bytes": 735240,
+      "sha256": "9b6db8756f24bb8f789ea8b23d26857e8020c8817a845b5096ccc4da8dcac7df",
+      "class": 32,
+      "endian": "big",
+      "abi": "n32",
+      "type": 2,
+      "machine": 8,
+      "flags": "0x20000024",
+      "entry": "0x10059bac",
+      "interpreter": [
+        "/usr/lib32/libc.so.1"
+      ],
+      "needed": [
+        "libimdXutil.so",
+        "libimdUtil.so",
+        "libimdFtrIcon.so",
+        "libXm.so.1",
+        "libXmu.so",
+        "libXext.so",
+        "libXt.so",
+        "libX11.so.1",
+        "libm.so",
+        "libC.so.2",
+        "libCsup.so",
+        "libc.so.1"
+      ],
+      "fixture_name": "vendor-4Dwm"
+    },
+    {
+      "path": "/usr/bin/X11/toolchest",
+      "bytes": 120400,
+      "sha256": "20efa5c36c1e0dba1176fdd98000057e574b21c787ca364e1811100f9f2ba860",
+      "class": 32,
+      "endian": "big",
+      "abi": "n32",
+      "type": 2,
+      "machine": 8,
+      "flags": "0x20000024",
+      "entry": "0x1000df18",
+      "interpreter": [
+        "/usr/lib32/libc.so.1"
+      ],
+      "needed": [
+        "libXm.so.1",
+        "libXt.so",
+        "libX11.so.1",
+        "libgen.so",
+        "libCsup.so",
+        "libC.so.2",
+        "libc.so.1"
+      ],
+      "fixture_name": "vendor-toolchest"
+    }
+  ],
+  "netbsd_probe_kernel": {
+    "revision": "6a162a938061d16a60842fd9bb31d69e546d66dc",
+    "ident": "XIRI_IRIX_SEGMENTS_20261030",
+    "sha256": "8d91316b80352d4f271bb97ac993947f309275433709a7f32df73e40fc005366"
+  },
+  "native_control_sha256": "c294fbb1f2110445be31c096481ea54ab561c7e59ca5b9fc7171310098d755d4"
+}

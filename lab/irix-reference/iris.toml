@@ -1,0 +1,39 @@
+# Reference configuration; run from the Xiri repository root.
+# Copy the raw disk and seed private serial NVRAM as described in README.md.
+# The recorded PROM setup changes eaddr to 08:00:69:12:34:58 before boot.
+prom = ".work/irix-reference/media/ip24prom.070-9101-011.bin"
+nvram = ".work/irix-reference/boot-ci/nvram.bin"
+banks = [128, 128, 0, 0]
+headless = false
+no_audio = true
+scsi_deferred_int = true
+ci = true
+ci_socket = ".work/irix-reference/boot-ci/iris.sock"
+serial_log = ".work/irix-reference/boot-ci/serial.log"
+monitor_port = 18898
+serial_port_a = 18890
+serial_port_b = 18891
+nat_subnet = "192.168.232.0/24"
+
+[machine]
+profile = "indy_ip24"
+cpu = "r4400"
+
+[graphics]
+board = "newport"
+
+[scsi.1]
+path = ".work/irix-reference/boot-ci/disk.raw"
+cdrom = false
+overlay = true
+
+[scsi.2]
+path = ".work/irix-reference/boot-ci/scratch.raw"
+cdrom = false
+overlay = false
+scratch = true
+size_mb = 64
+
+[network]
+mode = "nat"
+mac = "08:00:69:12:34:57"

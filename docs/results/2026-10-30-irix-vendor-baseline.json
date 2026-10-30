@@ -1,0 +1,265 @@
+{
+  "description": "IRIX 6.5.22m media intake, native reference commands, and Xiri vendor rejection baseline",
+  "media_manifest": {
+    "schema": 1,
+    "description": "User-provided IRIX reference media; no vendor files included",
+    "reference_release": "6.5.22m",
+    "uname_a": "IRIX IRIX 6.5 10070055 IP22",
+    "archives": [
+      {
+        "name": "irix65_chd.rar",
+        "bytes": 1986921102,
+        "sha256": "01a8055f6a2eb8f9577ab97e14f62a670d7eb0514edcc659c0c28e775a54b40d",
+        "supplied_md5": "2fdb6e7a0654ff5e875935285ebc8177",
+        "md5_matches": true
+      },
+      {
+        "name": "irix-sgi-freeware-cdroms-chd.rar",
+        "bytes": 3880311978,
+        "sha256": "300295ef1a5d161a2071f7e91cbcfde49d08cd1dd38a48d719591d063dd8eca9",
+        "supplied_md5": "0a69fbb5f4f3ed4502bb92627fa21c09",
+        "md5_matches": true
+      }
+    ],
+    "chd": {
+      "name": "irix65.chd",
+      "bytes": 5664440320,
+      "sha256": "f0615ce71308026c1366c289be8de8a640a0ca83ca7b808139acb71f3482a659"
+    },
+    "logical_disk_bytes": 100663296000,
+    "root_partition": {
+      "sgi_index": 0,
+      "linux_device": "/dev/sda1",
+      "start_sector": 266240,
+      "sectors": 196341760,
+      "sector_bytes": 512,
+      "filesystem": "XFS",
+      "block_bytes": 4096,
+      "version": "0x30b4"
+    },
+    "firmware": {
+      "archive": "indy_4610.zip",
+      "archive_md5": "704ace3d1d8439d142279592d0dda85d",
+      "name": "ip24prom.070-9101-011.bin",
+      "bytes": 524288,
+      "sha1": "ac663a4db68528e400487e98cbf901f620fb30ce",
+      "sha256": "333a0b2e39bb828a28a758b6f633ae7290030129dc747297a1be68dc317b86ae"
+    },
+    "command_inventory": {
+      "directories": [
+        "/sbin",
+        "/usr/bsd",
+        "/usr/bin"
+      ],
+      "elf_files": 417,
+      "o32": 12,
+      "n32": 405,
+      "scope": "Regular ELF files in these directories, including /usr/bin subdirectories; symlinks are not counted"
+    },
+    "candidates": [
+      {
+        "path": "/usr/bin/asa",
+        "bytes": 21412,
+        "sha256": "c87a69be927e9f1a7649a8d01ae79b890395fb279e44daa6945392bb5a4731de",
+        "class": 32,
+        "endian": "big",
+        "abi": "o32",
+        "type": 2,
+        "machine": 8,
+        "flags": "0x10000005",
+        "entry": "0x400e60",
+        "interpreter": [
+          "/usr/lib/libc.so.1"
+        ],
+        "needed": [
+          "libc.so.1"
+        ],
+        "fixture_name": "vendor-asa"
+      },
+      {
+        "path": "/sbin/echo",
+        "bytes": 21868,
+        "sha256": "e4d57059f8218401cadca044720e7e4cdcdd0d556b089e620efa3e67fdb02d7d",
+        "class": 32,
+        "endian": "big",
+        "abi": "n32",
+        "type": 2,
+        "machine": 8,
+        "flags": "0x20000024",
+        "entry": "0x10000ff0",
+        "interpreter": [
+          "/lib32/libc.so.1"
+        ],
+        "needed": [
+          "libc.so.1"
+        ],
+        "fixture_name": "vendor-echo"
+      },
+      {
+        "path": "/usr/bin/X11/4Dwm",
+        "bytes": 735240,
+        "sha256": "9b6db8756f24bb8f789ea8b23d26857e8020c8817a845b5096ccc4da8dcac7df",
+        "class": 32,
+        "endian": "big",
+        "abi": "n32",
+        "type": 2,
+        "machine": 8,
+        "flags": "0x20000024",
+        "entry": "0x10059bac",
+        "interpreter": [
+          "/usr/lib32/libc.so.1"
+        ],
+        "needed": [
+          "libimdXutil.so",
+          "libimdUtil.so",
+          "libimdFtrIcon.so",
+          "libXm.so.1",
+          "libXmu.so",
+          "libXext.so",
+          "libXt.so",
+          "libX11.so.1",
+          "libm.so",
+          "libC.so.2",
+          "libCsup.so",
+          "libc.so.1"
+        ],
+        "fixture_name": "vendor-4Dwm"
+      },
+      {
+        "path": "/usr/bin/X11/toolchest",
+        "bytes": 120400,
+        "sha256": "20efa5c36c1e0dba1176fdd98000057e574b21c787ca364e1811100f9f2ba860",
+        "class": 32,
+        "endian": "big",
+        "abi": "n32",
+        "type": 2,
+        "machine": 8,
+        "flags": "0x20000024",
+        "entry": "0x1000df18",
+        "interpreter": [
+          "/usr/lib32/libc.so.1"
+        ],
+        "needed": [
+          "libXm.so.1",
+          "libXt.so",
+          "libX11.so.1",
+          "libgen.so",
+          "libCsup.so",
+          "libC.so.2",
+          "libc.so.1"
+        ],
+        "fixture_name": "vendor-toolchest"
+      }
+    ],
+    "netbsd_probe_kernel": {
+      "revision": "6a162a938061d16a60842fd9bb31d69e546d66dc",
+      "ident": "XIRI_IRIX_SEGMENTS_20261030",
+      "sha256": "8d91316b80352d4f271bb97ac993947f309275433709a7f32df73e40fc005366"
+    },
+    "native_control_sha256": "c294fbb1f2110445be31c096481ea54ab561c7e59ca5b9fc7171310098d755d4"
+  },
+  "raw_disk_sha256": "4979bd813d1a17638694a9fdbb5901264c6c816f036fbe54ae5899f296b544a4",
+  "iris_revision": "484452d963d2da4e2a7559e88bcc33da0f2a0c01",
+  "iris_sha256": "cc6561d0bdfec6ce30d656caf4a6eaee6ffbf622e5348c3b77b73810d5293f56",
+  "chd_extract_sha256": "fd006b5e75d7a7c5698fc23fe17a904093364debd8ce682ffc433dbd137c86a2",
+  "inventory_sha256": "da0dad06571c6f3c0cf25f55c046502b595ee0168be53b75634fd5e5492273c4",
+  "reference": {
+    "mode": "ci",
+    "cpu": "R4400",
+    "ram_mib": 256,
+    "graphics": "Indy 24-bit Newport",
+    "firmware": "333a0b2e39bb828a28a758b6f633ae7290030129dc747297a1be68dc317b86ae",
+    "disk_overlay": true,
+    "nvram_seed_sha256": "ee883474d52f09278287b2044f7aeca61d2e7bc39c0bb8fd85c983ab64063d15",
+    "config_sha256": "6522fe3732cc3a3259bc2a6e957eacf8e70b4a34f73376d0aff1cf846306c5c2",
+    "clean_shutdown": true,
+    "shutdown_marker": "Okay to power off the system now.",
+    "native_command_output": [
+      "IRIX IRIX 6.5 10070055 IP22",
+      "6.5 6.5.22m",
+      "XIRI_VENDOR_REFERENCE",
+      "XIRI_VENDOR_O32",
+      "XIRI_ASA_RC=0"
+    ],
+    "selected_file_checksums": [
+      "3560791386 21412 /usr/bin/asa",
+      "2473768342 21868 /sbin/echo",
+      "3310220744 735240 /usr/bin/X11/4Dwm",
+      "3417242495 120400 /usr/bin/X11/toolchest"
+    ],
+    "desktop_packages": [
+      "I  desktop_base         10/22/1993  IRIX Interactive Desktop Base Software, 6.5.22",
+      "I  eoe                  10/22/1993  IRIX Execution Environment, 6.5.22",
+      "I  x_eoe                10/22/1993  X11 Execution Environment, 6.5.22, based on X11R6.6"
+    ],
+    "limitations": [
+      "Direct CHD overlay attachment returned InvalidFile; raw copy used.",
+      "XFS xfs_itobp alerts appeared during boot; cause unresolved.",
+      "Optional freeware disk not attached; scratch device caused /disk2 mount failure.",
+      "Third-party service startup/shutdown warnings; no desktop or full-filesystem qualification."
+    ]
+  },
+  "source_sha256": {
+    "scripts/probe-irix-vendor.py": "924a298d1cb5ba84c6faf6775a49026b72bb3ea2a489d4bfb78bf4bbdf659546",
+    "lab/irix-reference/manifest.json": "79b464ad3856eca2d034f418445860b3d262437f0347ccadedc67e60c8330521",
+    "lab/irix-o32/experiment-runner.c": "820432a097010ad674ba0605ba519eafd12633deb1c81c8cba86e4118c117876",
+    "scripts/extract-irix-rar.py": "bc77ef3a8d51bd4e5c711bb889acfdaa2a4a9b8a12038e2f2b0441ba6e66a4e1"
+  },
+  "runs": [
+    {
+      "directory": "ci-wjhy6aib",
+      "mode": "ci",
+      "status": "passed",
+      "clean_shutdown": true,
+      "purpose": "rejection baseline; does not expect vendor execution",
+      "started_utc": "2026-10-30T14:07:40Z",
+      "base_disk_sha256": "269038c7b77660c83d3835208fc0b2702c93110c14b3c55a42416f51672cee2a",
+      "nvram_sha256": "ee883474d52f09278287b2044f7aeca61d2e7bc39c0bb8fd85c983ab64063d15",
+      "kernel_sha256": "8d91316b80352d4f271bb97ac993947f309275433709a7f32df73e40fc005366",
+      "emulator_sha256": "cc6561d0bdfec6ce30d656caf4a6eaee6ffbf622e5348c3b77b73810d5293f56",
+      "harness_sha256": "924a298d1cb5ba84c6faf6775a49026b72bb3ea2a489d4bfb78bf4bbdf659546",
+      "case_count": 6,
+      "runner_sha256": "820432a097010ad674ba0605ba519eafd12633deb1c81c8cba86e4118c117876",
+      "guest_exit_status": 0,
+      "observations": [
+        "CASE ./native-o32 expect=output errno_bytes=0 errno=0 output_bytes=15 exit=37 signal=0 killed=0 PASS",
+        "CASE ./vendor-asa expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./vendor-echo expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./vendor-4Dwm expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./vendor-toolchest expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./native-o32 expect=output errno_bytes=0 errno=0 output_bytes=15 exit=37 signal=0 killed=0 PASS"
+      ],
+      "seconds": 147.683
+    },
+    {
+      "directory": "ordinary-k9b49hjv",
+      "mode": "ordinary",
+      "status": "passed",
+      "clean_shutdown": true,
+      "purpose": "rejection baseline; does not expect vendor execution",
+      "started_utc": "2026-10-30T14:07:38Z",
+      "base_disk_sha256": "269038c7b77660c83d3835208fc0b2702c93110c14b3c55a42416f51672cee2a",
+      "nvram_sha256": "ee883474d52f09278287b2044f7aeca61d2e7bc39c0bb8fd85c983ab64063d15",
+      "kernel_sha256": "8d91316b80352d4f271bb97ac993947f309275433709a7f32df73e40fc005366",
+      "emulator_sha256": "cc6561d0bdfec6ce30d656caf4a6eaee6ffbf622e5348c3b77b73810d5293f56",
+      "harness_sha256": "924a298d1cb5ba84c6faf6775a49026b72bb3ea2a489d4bfb78bf4bbdf659546",
+      "case_count": 6,
+      "runner_sha256": "820432a097010ad674ba0605ba519eafd12633deb1c81c8cba86e4118c117876",
+      "guest_exit_status": 0,
+      "observations": [
+        "CASE ./native-o32 expect=output errno_bytes=0 errno=0 output_bytes=15 exit=37 signal=0 killed=0 PASS",
+        "CASE ./vendor-asa expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./vendor-echo expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./vendor-4Dwm expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./vendor-toolchest expect=reject errno_bytes=4 errno=8 output_bytes=0 exit=126 signal=0 killed=0 PASS",
+        "CASE ./native-o32 expect=output errno_bytes=0 errno=0 output_bytes=15 exit=37 signal=0 killed=0 PASS"
+      ],
+      "seconds": 152.451
+    }
+  ],
+  "extraction_tools": {
+    "libarchive": "libarchive 3.8.7",
+    "guestfish": "1.60.1fedora=44,release=2.fc44,libvirt",
+    "extractor_verified_against_pinned_chd": true
+  }
+}

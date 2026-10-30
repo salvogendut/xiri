@@ -74,7 +74,7 @@ Guest configuration:
 - Use a RAM size supported by both configurations, recording the actual amount each reports. Start with IRIS's default 256 MiB and inspect MAME's configuration before claiming equivalence.
 - NetBSD 11.0/sgimips, big-endian MIPS, initially the 32-bit `INSTALL32_IP2x` and `GENERIC32_IP2x` kernels. A 64-bit-capable CPU does not require starting with a 64-bit kernel. [NetBSD installation notes][netbsd-install].
 - Separate NetBSD and original-IRIX disks; separate working copies, NVRAM, sockets, ports, and logs for each emulator instance. Record MAC addresses and PROM settings.
-- A minimal NetBSD installation first, adding X sets for display tests. Select the IRIX reference release after media and desktop package inventory become available.
+- A minimal NetBSD installation first, adding X sets for display tests. The supplied reference is now IRIX 6.5.22m with 6.5.22 desktop packages; its limited native session and unresolved XFS alerts are recorded in the [vendor baseline](results/2026-10-30-irix-vendor-baseline.md).
 
 The NetBSD release establishes an unmodified baseline. Pin matching source before cross-building; upgrading the guest or emulator becomes an explicit regression test.
 
@@ -87,12 +87,12 @@ Milestone 0 provisioning began on 2026-10-29. A [candidate build host was invent
 | Host build environment and storage | Emulator, cross-toolchain, source/object trees, guest disks | Fedora 44 host, IRIS build environment, and NetBSD cross-tools provisioned; installed guest checkpoint and kernel test disk retained |
 | IRIS source and Rust toolchain | Debug-capable emulator build | Initial [build record](results/2026-10-29-iris-build.md) retained; current [fork revision](../lab/iris/README.md) adds the NFS fix. R4400 install, kernel debugging, smoke, and bounded I/O tests passed; smoke and I/O comparisons include ordinary execution |
 | NetBSD sgimips installer, sets, checksums and matching source | Boot baseline and modified-kernel loop | Inputs verified; guest installed; all four source sets extracted; host-built `XIRI_INDY` kernel and cross-GDB support the tested build/debug/probe loop |
-| Indy PROM | Firmware baseline and MAME ROM verification | IRIS embedded fallback exercised; external firmware for MAME remains unavailable |
-| IRIX installation media or an image from the user's machine | Original behavior, libraries, desktop and application inventory | User has no local image yet; required for the IRIX reference experiments |
+| Indy PROM | Firmware baseline and MAME ROM verification | Supplied Indy PROM matches the recorded SHA-1 and boots IRIS; MAME verification remains pending |
+| IRIX installation media or an image from the user's machine | Original behavior, libraries, desktop and application inventory | IRIX 6.5.22m image extracted read-only; native commands and vendor ABI inventory recorded |
 | MAME executable and matching ROM configuration | Independent reproduction of failures | Not installed |
 | Physical Indy configuration and serial access | Later hardware qualification | Machine available; CPU, graphics and connection details pending |
 
-The IRIS fallback supplied firmware for the NetBSD bootstrap. Original-IRIX reference work still needs an installed IRIX filesystem. Keep original firmware, OS images, and imported desktop binaries outside Git; retain manifests, hashes, acquisition notes, configurations, and test logs here.
+The IRIS fallback supplied firmware for the NetBSD bootstrap. The user has now supplied an installed IRIX 6.5.22m image and matching Indy PROM; see the [reference lab](../lab/irix-reference/README.md). A clean filesystem/desktop reference qualification is still pending. Keep original firmware, OS images, and imported desktop binaries outside Git; retain manifests, hashes, acquisition notes, configurations, and test logs here.
 
 For MAME's R5000 Indy, the inspected driver names `ip24prom.070-9101-011.bin` (512 KiB; SHA-1 `ac663a4db68528e400487e98cbf901f620fb30ce`). Verify the installed build's requirements with `mame indy_5015 -listroms` and `-verifyroms`; use its media/slot listings to derive attachment options. Obtain the appropriate firmware from an available machine or another authorized source rather than assuming any Indy dump matches. [MAME ROM declarations][mame-indy].
 
@@ -155,7 +155,7 @@ Firmware, installation, and persistent-guest checks have execution evidence in t
 
 Measure cold-boot time, incremental build-to-result time, probe runtime, memory and reset time under recorded configurations. Those measurements will decide whether optimized builds or more emulator work are useful. Emulator results cannot establish real cache, DMA, interrupt timing or graphics performance.
 
-The first deliverable is a reproducible **NetBSD installer → installed guest → changed kernel → automated probe** sequence. Original-IRIX reference sessions follow when media becomes available. This separates the immediate lab work from the larger desktop preservation experiment without changing the project target.
+The first deliverable is a reproducible **NetBSD installer → installed guest → changed kernel → automated probe** sequence. A first original-IRIX shell session now runs the asa/echo reference checks; XFS alerts and graphical reference behavior remain to be qualified. This separates the immediate lab work from the larger desktop preservation experiment without changing the project target.
 
 [iris-readme]: https://github.com/techomancer/iris/blob/21c0ecb024b3a7dc9e11514fa1b5302363071bf6/README.md
 [iris-features]: https://github.com/techomancer/iris/blob/21c0ecb024b3a7dc9e11514fa1b5302363071bf6/FEATURES.md
