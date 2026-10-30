@@ -121,3 +121,7 @@ unset XIRI_IRIS_BIN_DIR
 These retain the established 148 runtime/dispatch and 89 static/native cases
 per mode. Earlier branches and pins remain separately reproducible. The
 32-bit kernel continues to reject foreign n32 images.
+
+The subsequent [TCP checkpoint](../irix-tcp/README.md) adds the initial client
+transport and reruns this workload with an explicit alternate pin/build directory.
+The default commands above retain the earlier LP64 kernel checkpoint.

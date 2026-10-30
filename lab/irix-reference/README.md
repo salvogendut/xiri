@@ -201,3 +201,8 @@ unused port. This isolates library/client startup from the still-unqualified
 graphical reference session. The paired NetBSD probe records earlier mapping
 and socket blockers rather than treating identical display errors as proof
 of equivalent behavior.
+
+The [TCP lab](../irix-tcp/README.md) adds 168 original o32/n32 interface
+comparisons, including an original assembly loopback peer, option/error
+behavior, retry timing and the runtime clock query. Vendor content and raw
+reference traces remain private.

@@ -12,6 +12,10 @@
 #include <time.h>
 #include <unistd.h>
 
+#ifndef RUNNER_TIMEOUT_MS
+#define RUNNER_TIMEOUT_MS 5000
+#endif
+
 static long long
 milliseconds(void)
 {
@@ -72,7 +76,8 @@ main(int argc, char **argv)
         close(pipes[i][1]);
         pfd[i] = (struct pollfd){pipes[i][0], POLLIN, 0};
     }
-    long long deadline = milliseconds() + 5000;
+    long long started = milliseconds();
+    long long deadline = started + RUNNER_TIMEOUT_MS;
     while (!finished) {
         if (poll(pfd, 3, 20) < 0 && errno != EINTR) return 2;
         for (int i = 0; i < 3; i++) {
@@ -118,6 +123,9 @@ main(int argc, char **argv)
         for (size_t j = 0; j < used[i]; j++) printf("%02x", data[i][j]);
         putchar('\n');
     }
+#ifdef RUNNER_TIMING
+    printf("ELAPSED_MS %lld\n", milliseconds() - started);
+#endif
     return total[0] > sizeof(data[0]) || total[1] > sizeof(data[1]) ||
         (total[2] != 0 && total[2] != sizeof(exec_error)) ? 2 : 0;
 }

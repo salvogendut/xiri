@@ -119,3 +119,7 @@ strategy for overlapping library addresses. Preserve rejection and collision
 regressions while expanding that contract. Native X/Newport, additional
 runtime modules, session services, real desktop interaction and physical
 hardware remain separate qualification gates.
+
+The subsequent [TCP checkpoint](../irix-tcp/README.md) implements the initial
+transport and reaches successful native X connect followed by unsupported
+getsockname. This lab retains the original pre-implementation boundary pins.

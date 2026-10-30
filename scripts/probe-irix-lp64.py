@@ -26,9 +26,11 @@ runtime = module('runtime', 'probe-irix-runtime.py')
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--mode', choices=['ci', 'ordinary'], default='ci')
+    parser.add_argument('--pin', type=Path, default=ROOT/'lab/irix-lp64/baseline.json')
+    parser.add_argument('--build-directory', type=Path, default=ROOT/'.work/netbsd-irix64-build')
     args = parser.parse_args()
     args.debugger, args.boot_timeout = False, 300
-    pin = json.loads((ROOT / 'lab/irix-lp64/baseline.json').read_text())
+    pin = json.loads(args.pin.read_text())
     probe.IRIS = ROOT / '.work/target-netbsd64/release/iris'
     probe.CI = ROOT / '.work/target-netbsd64/release/iris-ci'
     for name, path in [('emulator', probe.IRIS), ('ci_client', probe.CI)]:
@@ -41,8 +43,8 @@ def main():
             for name, sha in manifest['sources'].items()):
         parser.error('native fixtures are stale; rebuild them first')
     vendor = json.loads((ROOT / 'lab/irix-reference/manifest.json').read_text())
-    kernel_dir = ROOT / '.work/netbsd-irix64-build/tftp'
-    native_kernel = ROOT / '.work/netbsd-irix64-build/kernel-media/netbsd'
+    kernel_dir = args.build_directory.resolve() / 'tftp'
+    native_kernel = args.build_directory.resolve() / 'kernel-media/netbsd'
     boot_kernel = kernel_dir / 'netbsd-XIRI_INDY'
     inputs = [('native-' + n if n != 'map-input.bin' else n, fixtures / n, i['sha256']) for n, i in manifest['files'].items()]
     inputs += [('native-o32', ROOT / '.work/irix-o32-segments/native-o32', pin['native_o32_sha256'])]
@@ -58,7 +60,7 @@ def main():
     for name, path, sha in [*inputs,
                              ('base disk', checkpoint / 'disk.raw', pin['base_disk_sha256']),
                              ('NVRAM', checkpoint / 'nvram.bin', pin['nvram_sha256']),
-                             ('kernel config', ROOT / 'lab/irix-lp64/XIRI_IRIX_LP64', pin['config_sha256']), ('boot kernel', boot_kernel, pin['boot_kernel_sha256']),
+                             ('kernel config', ROOT / pin.get('config_path', 'lab/irix-lp64/XIRI_IRIX_LP64'), pin['config_sha256']), ('boot kernel', boot_kernel, pin['boot_kernel_sha256']),
                              ('native kernel', native_kernel, pin['native_kernel_sha256'])]:
         if not path.is_file() or probe.sha256(path) != sha:
             parser.error('missing or different pinned input: ' + name)
