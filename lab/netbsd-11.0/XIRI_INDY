@@ -1,0 +1,10 @@
+# First Xiri host-built kernel. Keep the release device configuration.
+include "arch/sgimips/conf/GENERIC32_IP2x"
+
+# Prove that the guest booted this build rather than the release kernel.
+ident "XIRI_INDY_20261030"
+makeoptions DEBUG="-g"
+
+# Load the kernel over TFTP while keeping the installed SCSI root filesystem.
+no config netbsd
+config netbsd root on sd0a type ffs

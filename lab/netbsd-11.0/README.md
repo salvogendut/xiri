@@ -22,3 +22,54 @@ R4400 baseline. See the [input record](../../docs/results/2026-10-29-netbsd-inpu
 for verification details and the
 [installation record](../../docs/results/2026-10-29-indy-netbsd-install.md)
 for boot results.
+
+## Host kernel build
+
+The [XIRI_INDY configuration](XIRI_INDY) inherits `GENERIC32_IP2x`, adds the
+identifier `XIRI_INDY_20261030` and debug symbols, and fixes root to `sd0a`
+so a kernel loaded over TFTP uses the installed SCSI filesystem.
+
+With the existing `xiri-iris` Toolbox, install the additional native headers
+and run the build from the repository root:
+
+```sh
+toolbox run -c xiri-iris sudo dnf install -y zlib-devel ncurses-devel
+./scripts/build-netbsd-kernel.sh
+```
+
+The host also needs `genisoimage`, used to supply a matching kernel file to
+the guest. The script verifies all four source archives against the pinned
+manifest, extracts them on first use, and builds cross-tools and a kernel
+with eight jobs. Override that count with `XIRI_BUILD_JOBS`.
+
+Sources live under `.work/netbsd-11.0/source-tree/`; tools, objects, logs,
+and kernel media live under `.work/netbsd-build/`. A source stamp records
+the imported archive hashes. An existing unmarked source tree must be moved
+aside before automatic preparation; subsequent runs retain local source
+edits. The stamp does not certify that an edited tree is unchanged.
+
+For later iterations:
+
+```sh
+./scripts/build-netbsd-kernel.sh kernel
+```
+
+Use `tools` instead to rebuild only the cross-tools. All modes use NetBSD's
+`-u` incremental option. GNU C17 is selected for host C tools because GCC
+16's default C23 mode breaks bundled Texinfo and GMP sources; target compiler
+flags are separate.
+
+The kernel stage produces:
+
+- `.work/netbsd-11.0/tftp/netbsd-XIRI_INDY`: ELF kernel for PROM/TFTP boot.
+- `.work/netbsd-build/obj/sys/arch/sgimips/compile/XIRI_INDY/netbsd.gdb`:
+  kernel with full debug information.
+- `.work/netbsd-build/kernel.iso`: virtual CD containing the same kernel
+  as `/netbsd`, for guest utilities that read kernel symbols from disk.
+- `.work/netbsd-build/kernel.sha256`: hashes of these artifacts.
+
+Install the matching kernel as `/netbsd` on the disposable test disk before
+the next boot, retaining the release kernel as `/netbsd.release`. Otherwise
+utilities such as `savecore` can read incorrect addresses from the old symbol
+table. The [build and boot record](../../docs/results/2026-10-30-netbsd-kernel.md)
+contains the exact procedure, validation, and measured build times.

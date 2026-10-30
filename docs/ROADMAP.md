@@ -1,12 +1,12 @@
 # Xiri execution roadmap
 
-Status: execution started, updated 2026-10-29. Host inventory, the pinned IRIS build, verified NetBSD inputs, and the first installed R4400 guest are complete. The modified-kernel loop and later implementation milestones remain pending.
+Status: execution started, updated 2026-10-30. Host inventory, the pinned IRIS build, verified NetBSD inputs, the installed R4400 guest, and a host-built custom kernel boot are complete. Debugger checks, automated probes, and later implementation milestones remain pending.
 
 The agreed target is NetBSD with an IRIX personality and the existing IRIX desktop. Initial implementation and testing use an emulated Indy. The first deliverable is a reproducible NetBSD development loop, followed by desktop feasibility and physical Indy qualification. Expand to additional machines and applications after those results.
 
 ## Development setup checklist
 
-The candidate host inventory, pinned IRIS CLI build, verified NetBSD inputs, and guest installation are complete. The R4400 guest reaches multiuser after a cold boot; full I/O and development-loop qualification remain pending. See the [installation record](results/2026-10-29-indy-netbsd-install.md).
+The candidate host inventory, pinned IRIS CLI build, verified NetBSD inputs, guest installation, and host kernel build are complete. The R4400 guest reaches multiuser after a cold boot with the custom kernel; full I/O and development-loop qualification remain pending. See the [installation record](results/2026-10-29-indy-netbsd-install.md) and [kernel build and boot record](results/2026-10-30-netbsd-kernel.md).
 
 Before starting implementation:
 
@@ -14,7 +14,7 @@ Before starting implementation:
 2. Arrange storage for source, toolchains, object files, guest disks and snapshots. Retain the 30–50 GiB planning allowance and adjust it from actual usage.
 3. Provision a debug-capable IRIS source build with a recorded Rust toolchain and native dependencies, plus NetBSD cross-build tools. Check the selected host's library compatibility before choosing any packaged emulator.
 4. Use the [verified NetBSD 11.0 input baseline](../lab/netbsd-11.0/README.md) for the installer, sets, checksums and matching source. Locate or acquire the Indy PROM and an IRIX reference installation for the later MAME and desktop experiments; neither image is currently available locally. IRIS's documented PROM fallback allows the first NetBSD attempt before those images are ready.
-5. Continue the emulated Indy qualification sequence after the successful installer and installed-guest boots: qualify I/O, boot a changed host-built kernel, exercise the debugger, and automate a probe. Compare ordinary and CI execution.
+5. Continue the emulated Indy qualification sequence after the successful installer, installed-guest, and changed-kernel boots: qualify I/O, exercise the debugger, and automate a probe. Compare ordinary and CI execution.
 6. Inventory the physical Indy, Indigo2 and Octane, and arrange Indy serial capture for later hardware qualification.
 
 Keep large images and original runtimes outside Git; save configurations, manifests, commands and small result logs in the repository. This checklist prepares Milestones 0–1.
@@ -32,7 +32,7 @@ Keep large images and original runtimes outside Git; save configurations, manife
 
 ## Milestone 0 Emulator and software baseline
 
-- [ ] Provision build tools and sufficient host storage as described in the [emulation plan](EMULATION.md).
+- [x] Provision build tools and sufficient host storage as described in the [emulation plan](EMULATION.md). See the [host inventory](results/2026-10-29-host-inventory.md) and [cross-build record](results/2026-10-30-netbsd-kernel.md).
 - [x] Pin an IRIS source revision, exact Rust toolchain, dependency resolution and debug-capable build options. See the [build record](results/2026-10-29-iris-build.md).
 - [x] Record the emulated Indy CPU, RAM, Newport configuration, PROM, NVRAM and disk layout. See the [guest lab](../lab/indy-netbsd/README.md) and [run record](results/2026-10-29-indy-netbsd-install.md).
 - [x] Obtain the NetBSD sgimips installer, sets, checksums and matching source baseline. See the [input record](results/2026-10-29-netbsd-inputs.md).
@@ -52,7 +52,7 @@ The NetBSD boot and desktop experiments can be performed independently as their 
 
 - [x] Boot the NetBSD installation kernel in IRIS, install to a disposable disk, and cold-boot to multiuser. Passed with R4400 and CI enabled; R5000 panicked during cache initialization.
 - [ ] Capture serial logs and verify persistent storage, network transfer and reboot integrity. Serial capture, a persisted file checksum, and disk boots passed; sustained network transfer remains unresolved.
-- [ ] Cross-build a modified kernel on the modern host and verify its build identifier in a fresh guest boot.
+- [x] Cross-build a modified kernel on the modern host and verify its build identifier in a fresh guest boot. `XIRI_INDY_20261030` reached multiuser over TFTP with SCSI root; see the [build and boot record](results/2026-10-30-netbsd-kernel.md).
 - [ ] Demonstrate debugger attachment, a breakpoint, and continued execution.
 - [ ] Automate a probe with output, exit status, timeout and clean-state repetition; compare ordinary and CI execution.
 - [ ] Qualify snapshots separately, keeping changed-kernel tests on cold boots.

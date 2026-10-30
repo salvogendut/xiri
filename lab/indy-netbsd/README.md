@@ -83,3 +83,8 @@ The ISO is the recorded working set source; the NFS attempt and a larger HTTP
 transfer did not complete. See the
 [run record](../../docs/results/2026-10-29-indy-netbsd-install.md) for observed
 results and remaining qualification work.
+
+For kernel development, use the [host kernel build](../netbsd-11.0/README.md#host-kernel-build)
+and the [custom-kernel boot procedure](../../docs/results/2026-10-30-netbsd-kernel.md).
+That experiment uses separate disk/NVRAM copies under
+`.work/indy-netbsd-kernel/`, leaving the release checkpoint in `base/` intact.

@@ -1,6 +1,6 @@
 # Indy emulation development environment
 
-Initial decision and research date: 2026-10-15; implementation strategy reviewed on 2026-10-19. Execution started on 2026-10-29: the pinned IRIS build installs and boots NetBSD 11.0 on the R4400 profile. See the [installation record](results/2026-10-29-indy-netbsd-install.md). Broader qualification and speed comparisons remain pending.
+Initial decision and research date: 2026-10-15; implementation strategy reviewed on 2026-10-19. Execution started on 2026-10-29: the pinned IRIS build installs and boots NetBSD 11.0 on the R4400 profile. A [host-built custom kernel](results/2026-10-30-netbsd-kernel.md) also cold-booted to multiuser on 2026-10-30. See the [installation record](results/2026-10-29-indy-netbsd-install.md). Broader qualification and speed comparisons remain pending.
 
 ## Decision
 
@@ -80,13 +80,13 @@ The NetBSD release establishes an unmodified baseline. Pin matching source befor
 
 ## Prerequisites and current gaps
 
-Milestone 0 provisioning began on 2026-10-29. A [candidate build host was inventoried](results/2026-10-29-host-inventory.md), a [pinned IRIS CLI build completed](results/2026-10-29-iris-build.md), and [NetBSD inputs were verified](results/2026-10-29-netbsd-inputs.md). The [installed R4400 guest](results/2026-10-29-indy-netbsd-install.md) boots to multiuser. The [development setup checklist](ROADMAP.md#development-setup-checklist) records the remaining actions.
+Milestone 0 provisioning began on 2026-10-29. A [candidate build host was inventoried](results/2026-10-29-host-inventory.md), a [pinned IRIS CLI build completed](results/2026-10-29-iris-build.md), and [NetBSD inputs were verified](results/2026-10-29-netbsd-inputs.md). The [installed R4400 guest](results/2026-10-29-indy-netbsd-install.md) boots to multiuser, including with the [custom kernel built on the host](results/2026-10-30-netbsd-kernel.md). The [development setup checklist](ROADMAP.md#development-setup-checklist) records the remaining actions.
 
 | Item | Why it is needed | Current status |
 | --- | --- | --- |
-| Host build environment and storage | Emulator, cross-toolchain, source/object trees, guest disks | Fedora 44 host and IRIS build environment provisioned; installed guest disk retained; NetBSD cross-tools pending |
+| Host build environment and storage | Emulator, cross-toolchain, source/object trees, guest disks | Fedora 44 host, IRIS build environment, and NetBSD cross-tools provisioned; installed guest checkpoint and kernel test disk retained |
 | IRIS source and Rust toolchain | Debug-capable emulator build | Built at the pinned revision and nightly in the [build record](results/2026-10-29-iris-build.md); R4400 install and disk boot passed with CI enabled |
-| NetBSD sgimips installer, sets, checksums and matching source | Boot baseline and modified-kernel loop | Inputs verified; guest installed; `syssrc` extracted for cache investigation; complete host build tree and cross-tools pending |
+| NetBSD sgimips installer, sets, checksums and matching source | Boot baseline and modified-kernel loop | Inputs verified; guest installed; all four source sets extracted; host-built `XIRI_INDY` kernel boots with SCSI root and retains full debug symbols |
 | Indy PROM | Firmware baseline and MAME ROM verification | IRIS embedded fallback exercised; external firmware for MAME remains unavailable |
 | IRIX installation media or an image from the user's machine | Original behavior, libraries, desktop and application inventory | User has no local image yet; required for the IRIX reference experiments |
 | MAME executable and matching ROM configuration | Independent reproduction of failures | Not installed |
@@ -140,7 +140,7 @@ MAME automation should use Lua, console capture and an external wall-clock timeo
 
 ## Qualification gate
 
-Firmware, installation, and persistent-guest checks have execution evidence in the [2026-10-29 run record](results/2026-10-29-indy-netbsd-install.md), limited to the R4400 profile with CI enabled. Disk marker persistence passed, while large HTTP transfers stalled and the NFS install attempt failed. The remaining gates are pending. Store small run records under `docs/results/`, including commands, versions, configuration, input hashes, logs and outcomes; keep large images separately.
+Firmware, installation, and persistent-guest checks have execution evidence in the [2026-10-29 run record](results/2026-10-29-indy-netbsd-install.md), limited to the R4400 profile with CI enabled. The [2026-10-30 kernel record](results/2026-10-30-netbsd-kernel.md) adds a host cross-build and verified changed-kernel boot under the same profile; debugger checks remain pending. Disk marker persistence passed, while large HTTP transfers stalled and the NFS install attempt failed. The remaining gates are pending. Store small run records under `docs/results/`, including commands, versions, configuration, input hashes, logs and outcomes; keep large images separately.
 
 | Stage | Required evidence |
 | --- | --- |
