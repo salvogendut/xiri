@@ -1,0 +1,5170 @@
+{
+  "schema": 1,
+  "date": "2026-10-30",
+  "status": "passed",
+  "meaning": "Expected startup boundaries reproduced; no working graphical desktop is claimed",
+  "kernel_pin": {
+    "schema": 1,
+    "description": "Bounded o32/n32 personality on the LP64 Indy kernel",
+    "ident": "XIRI_IRIX_LP64_20261030",
+    "source_revision": "0859ba7eb2a784b7f34dd0a52d9e19d32d978898",
+    "source_branch": "xiri/irix-lp64",
+    "build_arch": "mips64eb",
+    "page_bytes": 8192,
+    "boot_kernel_sha256": "662bfa5e484986bac2ddd8eddd250bc0e1249785dd08542da56de5543fac513d",
+    "native_kernel_sha256": "b818ada383112baadf3cbcde9611ee1b53684832bf7c1b3d2f4a5e8910fc0055",
+    "debug_kernel_sha256": "bb87be5bf60da9b7659c977d86077fe2c57fc1aba85f365727e386ebfa7d7dba",
+    "native_o32_sha256": "c294fbb1f2110445be31c096481ea54ab561c7e59ca5b9fc7171310098d755d4",
+    "source_dirty": false,
+    "emulator_revision": "9df1df14334838a989253efefe26f0547e6da592",
+    "emulator_branch": "xiri/netbsd64-tlb",
+    "emulator_sha256": "1b3f7702ba7f43b5c4fca8ba8884243559f46371d8d67a36ce5e6fee1e595eba",
+    "ci_client_sha256": "8711321aa6eaae440da3c7920b00ae4cf1c7f2abbdb15a9919f58485500ffb6c",
+    "base_disk_sha256": "269038c7b77660c83d3835208fc0b2702c93110c14b3c55a42416f51672cee2a",
+    "nvram_sha256": "ee883474d52f09278287b2044f7aeca61d2e7bc39c0bb8fd85c983ab64063d15",
+    "config_sha256": "420d36f1d0cea49aeb9a7a62b90126f933790fd623cff9876c2e8a8a5eebe6e4",
+    "runtimes": [
+      {
+        "name": "vendor-o32-libc",
+        "path": "/usr/lib/libc.so.1",
+        "sha256": "ea766492103a193e9d404942705e4e28987545e37f699ede232b6c0f8c97c954"
+      },
+      {
+        "name": "vendor-o32-rld",
+        "path": "/lib/rld",
+        "sha256": "30228b54c1e5585b365514eb7c9895b03cc0f61cb898e05e3ddafece87863439"
+      },
+      {
+        "name": "vendor-n32-libc",
+        "path": "/lib32/libc.so.1",
+        "sha256": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e"
+      },
+      {
+        "name": "vendor-n32-rld",
+        "path": "/lib32/rld",
+        "sha256": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b"
+      }
+    ]
+  },
+  "manifest_sha256": "570be25c601692dcb96516cdc4ef5cd3ef416bab5f1a6046ce116dddcb23944b",
+  "source_sha256": {
+    "lab/irix-desktop/manifest.json": "570be25c601692dcb96516cdc4ef5cd3ef416bab5f1a6046ce116dddcb23944b",
+    "lab/irix-desktop/session.json": "73e8ce0bd9b278f4f73f8ac15f7f837c9a2cc02e88826c7916e34a31e4f6c9d6",
+    "lab/irix-desktop/expectations.json": "52b90518d8c34caca2ca8a71820a114c0e93f1ad037b1245b60c6ee7377fcdfb",
+    "lab/irix-desktop/reference.json": "353990df2a3c8193365884f23826c34301b1c1bdf2278dcae76a4e0f00311c7d",
+    "lab/irix-desktop/README.md": "eec8f53a2975f852efad2821e034a1024d3787eec35ed5bfc5f4d7c28963af75",
+    "scripts/inventory-irix-desktop.py": "aadf43001a1ef36cb4c923d8514291739dff76febf72e93d34bb0f64cfed809e",
+    "scripts/probe-irix-desktop.py": "1d88442b6b63238f24557b553467b9f0770c5ef4a7400e8e01e057d186cb0fc4",
+    "scripts/probe-irix-desktop-reference.py": "97dc58384eaa96f5cf198fe34fc2b1d68c27db8707b151bad314fc9081ffb78a",
+    "scripts/probe-netbsd.py": "adfa9547fa98af28fd55e4e155e7667b2b0a8c7cea8aee8d58079da946b72a1d",
+    "scripts/probe-irix-runtime.py": "89b946e035ecf0525b3c08cdc80ca0b77d8db6aa90fd60cf410ddc7eb3a4d553",
+    "lab/irix-lp64/runner.c": "29afa4f7e563d6d2f3a2715890f4712e696e169fc63a5f34ee25b652ac8c68b5"
+  },
+  "inventory": {
+    "elf_paths": 29,
+    "distinct_elf_contents": 28,
+    "dependency_edges": 124,
+    "unresolved": [],
+    "resource_candidates": 101,
+    "static_analysis": {
+      "/usr/bin/X11/4Dwm": {
+        "needed_closure": [
+          "/usr/lib32/internal/libimdFtrDB.so",
+          "/usr/lib32/internal/libimdFtrIcon.so",
+          "/usr/lib32/internal/libimdUtil.so",
+          "/usr/lib32/internal/libimdXutil.so",
+          "/usr/lib32/libC.so.2",
+          "/usr/lib32/libCsup.so",
+          "/usr/lib32/libGL.so",
+          "/usr/lib32/libGLU.so",
+          "/usr/lib32/libGLcore.so",
+          "/usr/lib32/libSgm.so.1",
+          "/usr/lib32/libX11.so.1",
+          "/usr/lib32/libXext.so",
+          "/usr/lib32/libXi.so",
+          "/usr/lib32/libXm.so.1",
+          "/usr/lib32/libXmu.so",
+          "/usr/lib32/libXpm.so.1",
+          "/usr/lib32/libXsgivc.so",
+          "/usr/lib32/libXt.so",
+          "/usr/lib32/libc.so.1",
+          "/usr/lib32/libgen.so",
+          "/usr/lib32/libgl.so",
+          "/usr/lib32/libifl.so",
+          "/usr/lib32/libil.so",
+          "/usr/lib32/libm.so",
+          "/usr/lib32/libvk.so.1"
+        ],
+        "not_8k_aligned": [
+          "/usr/lib32/internal/libimdUtil.so",
+          "/usr/lib32/libXpm.so.1"
+        ],
+        "linked_address_collisions": [
+          {
+            "left": "/usr/lib32/internal/libimdFtrIcon.so",
+            "right": "/usr/lib32/internal/libimdXutil.so",
+            "overlaps": [
+              {
+                "start": 223346688,
+                "end": 223465472
+              },
+              {
+                "start": 223477760,
+                "end": 223490048
+              }
+            ]
+          },
+          {
+            "left": "/usr/lib32/internal/libimdFtrIcon.so",
+            "right": "/usr/lib32/libvk.so.1",
+            "overlaps": [
+              {
+                "start": 223346688,
+                "end": 223465472
+              },
+              {
+                "start": 223477760,
+                "end": 223490048
+              }
+            ]
+          },
+          {
+            "left": "/usr/lib32/internal/libimdXutil.so",
+            "right": "/usr/lib32/libvk.so.1",
+            "overlaps": [
+              {
+                "start": 223346688,
+                "end": 223670272
+              },
+              {
+                "start": 223674368,
+                "end": 223712152
+              }
+            ]
+          },
+          {
+            "left": "/usr/lib32/libX11.so.1",
+            "right": "/usr/lib32/libXext.so",
+            "overlaps": [
+              {
+                "start": 258998272,
+                "end": 259006464
+              },
+              {
+                "start": 259014656,
+                "end": 259126432
+              }
+            ]
+          },
+          {
+            "left": "/usr/lib32/libXi.so",
+            "right": "/usr/lib32/libXmu.so",
+            "overlaps": [
+              {
+                "start": 255852544,
+                "end": 255893504
+              },
+              {
+                "start": 255901696,
+                "end": 255905792
+              }
+            ]
+          },
+          {
+            "left": "/usr/lib32/libXi.so",
+            "right": "/usr/lib32/libXsgivc.so",
+            "overlaps": [
+              {
+                "start": 255852544,
+                "end": 255893504
+              },
+              {
+                "start": 255901696,
+                "end": 255905792
+              }
+            ]
+          },
+          {
+            "left": "/usr/lib32/libXi.so",
+            "right": "/usr/lib32/libXt.so",
+            "overlaps": [
+              {
+                "start": 255852544,
+                "end": 255893504
+              },
+              {
+                "start": 255901696,
+                "end": 255905792
+              }
+            ]
+          },
+          {
+            "left": "/usr/lib32/libXmu.so",
+            "right": "/usr/lib32/libXsgivc.so",
+            "overlaps": [
+              {
+                "start": 255852544,
+                "end": 255893504
+              },
+              {
+                "start": 255901696,
+                "end": 255905792
+              }
+            ]
+          },
+          {
+            "left": "/usr/lib32/libXmu.so",
+            "right": "/usr/lib32/libXt.so",
+            "overlaps": [
+              {
+                "start": 255852544,
+                "end": 255946752
+              },
+              {
+                "start": 255950848,
+                "end": 255954944
+              }
+            ]
+          },
+          {
+            "left": "/usr/lib32/libXsgivc.so",
+            "right": "/usr/lib32/libXt.so",
+            "overlaps": [
+              {
+                "start": 255852544,
+                "end": 255893504
+              },
+              {
+                "start": 255901696,
+                "end": 255905792
+              }
+            ]
+          },
+          {
+            "left": "/usr/lib32/libifl.so",
+            "right": "/usr/lib32/libil.so",
+            "overlaps": [
+              {
+                "start": 230686720,
+                "end": 230834176
+              },
+              {
+                "start": 230834176,
+                "end": 230850560
+              }
+            ]
+          }
+        ],
+        "interpretation": "Static ELF ranges, not observed runtime placement; rld may relocate libraries"
+      },
+      "/usr/bin/X11/toolchest": {
+        "needed_closure": [
+          "/usr/lib32/libC.so.2",
+          "/usr/lib32/libCsup.so",
+          "/usr/lib32/libX11.so.1",
+          "/usr/lib32/libXm.so.1",
+          "/usr/lib32/libXt.so",
+          "/usr/lib32/libc.so.1",
+          "/usr/lib32/libgen.so",
+          "/usr/lib32/libm.so"
+        ],
+        "not_8k_aligned": [],
+        "linked_address_collisions": [],
+        "interpretation": "Static ELF ranges, not observed runtime placement; rld may relocate libraries"
+      }
+    }
+  },
+  "metadata_validation": {
+    "readelf": "GNU readelf version 2.46.1-1.fc44",
+    "checked": "All 29 ELF DT_NEEDED/interpreter/flags agree with GNU readelf; MIPS liblist names agree with DT_NEEDED; all 130 local file hashes match inventory"
+  },
+  "netbsd_runs": [
+    {
+      "path": ".work/irix-desktop-runs/ci-m5maf4kz/result.json",
+      "result_sha256": "386318fded0ed4bc33cf19077988f1bae1713e4adbcaa32af1833d1097669f81",
+      "status": "passed",
+      "mode": "ci",
+      "clean_shutdown": true,
+      "pin": {
+        "schema": 1,
+        "description": "Bounded o32/n32 personality on the LP64 Indy kernel",
+        "ident": "XIRI_IRIX_LP64_20261030",
+        "source_revision": "0859ba7eb2a784b7f34dd0a52d9e19d32d978898",
+        "source_branch": "xiri/irix-lp64",
+        "build_arch": "mips64eb",
+        "page_bytes": 8192,
+        "boot_kernel_sha256": "662bfa5e484986bac2ddd8eddd250bc0e1249785dd08542da56de5543fac513d",
+        "native_kernel_sha256": "b818ada383112baadf3cbcde9611ee1b53684832bf7c1b3d2f4a5e8910fc0055",
+        "debug_kernel_sha256": "bb87be5bf60da9b7659c977d86077fe2c57fc1aba85f365727e386ebfa7d7dba",
+        "native_o32_sha256": "c294fbb1f2110445be31c096481ea54ab561c7e59ca5b9fc7171310098d755d4",
+        "source_dirty": false,
+        "emulator_revision": "9df1df14334838a989253efefe26f0547e6da592",
+        "emulator_branch": "xiri/netbsd64-tlb",
+        "emulator_sha256": "1b3f7702ba7f43b5c4fca8ba8884243559f46371d8d67a36ce5e6fee1e595eba",
+        "ci_client_sha256": "8711321aa6eaae440da3c7920b00ae4cf1c7f2abbdb15a9919f58485500ffb6c",
+        "base_disk_sha256": "269038c7b77660c83d3835208fc0b2702c93110c14b3c55a42416f51672cee2a",
+        "nvram_sha256": "ee883474d52f09278287b2044f7aeca61d2e7bc39c0bb8fd85c983ab64063d15",
+        "config_sha256": "420d36f1d0cea49aeb9a7a62b90126f933790fd623cff9876c2e8a8a5eebe6e4",
+        "runtimes": [
+          {
+            "name": "vendor-o32-libc",
+            "path": "/usr/lib/libc.so.1",
+            "sha256": "ea766492103a193e9d404942705e4e28987545e37f699ede232b6c0f8c97c954"
+          },
+          {
+            "name": "vendor-o32-rld",
+            "path": "/lib/rld",
+            "sha256": "30228b54c1e5585b365514eb7c9895b03cc0f61cb898e05e3ddafece87863439"
+          },
+          {
+            "name": "vendor-n32-libc",
+            "path": "/lib32/libc.so.1",
+            "sha256": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e"
+          },
+          {
+            "name": "vendor-n32-rld",
+            "path": "/lib32/rld",
+            "sha256": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b"
+          }
+        ]
+      },
+      "inventory_sha256": "570be25c601692dcb96516cdc4ef5cd3ef416bab5f1a6046ce116dddcb23944b",
+      "harness_sha256": "1d88442b6b63238f24557b553467b9f0770c5ef4a7400e8e01e057d186cb0fc4",
+      "runner_sha256": "29afa4f7e563d6d2f3a2715890f4712e696e169fc63a5f34ee25b652ac8c68b5",
+      "observations": [
+        {
+          "name": "native-before",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          },
+          "console": "",
+          "passed": true
+        },
+        {
+          "name": "asa-root",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_O32\n",
+            "stderr": ""
+          },
+          "console": "",
+          "passed": true
+        },
+        {
+          "name": "echo-root",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_N32\n",
+            "stderr": ""
+          },
+          "console": "",
+          "passed": true
+        },
+        {
+          "name": "asa-user",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_O32\n",
+            "stderr": ""
+          },
+          "console": "",
+          "passed": true
+        },
+        {
+          "name": "echo-user",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_N32\n",
+            "stderr": ""
+          },
+          "console": "",
+          "passed": true
+        },
+        {
+          "name": "runtime-4Dwm-root",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "console": "-   1:./vendor-4Dwm: rld: Fatal Error: Cannot Successfully map soname 'libimdXutil.so' under any of the filenames /usr/lib32/libimdXutil.so:/usr/lib32/internal/libimdXutil.so:/lib32/libimdXutil.so:/opt/lib32/libimdXutil.so:/usr/lib32/libimdXutil.so.1:/usr/lib32/internal/libimdXutil.so.1:/lib32/libimdXutil.so.1:/opt/lib32/libimdXutil.so.1: ",
+          "passed": true
+        },
+        {
+          "name": "runtime-toolchest-root",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "console": "-   1:./vendor-toolchest: rld: Fatal Error: Cannot Successfully map soname 'libXm.so.1' under any of the filenames /usr/lib32/libXm.so.1:/usr/lib32/internal/libXm.so.1:/lib32/libXm.so.1:/opt/lib32/libXm.so.1:/usr/lib32/libXm.so.1.1:/usr/lib32/internal/libXm.so.1.1:/lib32/libXm.so.1.1:/opt/lib32/libXm.so.1.1: ",
+          "passed": true
+        },
+        {
+          "name": "runtime-4Dwm-user",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "console": "-   1:./vendor-4Dwm: rld: Fatal Error: Cannot Successfully map soname 'libimdXutil.so' under any of the filenames /usr/lib32/libimdXutil.so:/usr/lib32/internal/libimdXutil.so:/lib32/libimdXutil.so:/opt/lib32/libimdXutil.so:/usr/lib32/libimdXutil.so.1:/usr/lib32/internal/libimdXutil.so.1:/lib32/libimdXutil.so.1:/opt/lib32/libimdXutil.so.1: ",
+          "passed": true
+        },
+        {
+          "name": "runtime-toolchest-user",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "console": "-   1:./vendor-toolchest: rld: Fatal Error: Cannot Successfully map soname 'libXm.so.1' under any of the filenames /usr/lib32/libXm.so.1:/usr/lib32/internal/libXm.so.1:/lib32/libXm.so.1:/opt/lib32/libXm.so.1:/usr/lib32/libXm.so.1.1:/usr/lib32/internal/libXm.so.1.1:/lib32/libXm.so.1.1:/opt/lib32/libXm.so.1.1: ",
+          "passed": true
+        },
+        {
+          "name": "closure-4Dwm-root",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "console": "-   1:./vendor-4Dwm: rld: Error: elfmap: couldn't map /usr/lib32/internal/libimdUtil.so: (null)\n-   1:./vendor-4Dwm: rld: Fatal Error: Cannot Successfully map soname 'libimdUtil.so' under any of the filenames /usr/lib32/libimdUtil.so:/usr/lib32/internal/libimdUtil.so:/lib32/libimdUtil.so:/opt/lib32/libimdUtil.so:/usr/lib32/libimdUtil.so.1:/usr/lib32/internal/libimdUtil.so.1:/lib32/libimdUtil.so.1:/opt/lib32/libimdUtil.so.1: ",
+          "passed": true
+        },
+        {
+          "name": "closure-toolchest-root",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "Error: Can't open display: 127.0.0.1:99\n"
+          },
+          "console": "",
+          "passed": true
+        },
+        {
+          "name": "closure-4Dwm-user",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "console": "-   1:./vendor-4Dwm: rld: Error: elfmap: couldn't map /usr/lib32/internal/libimdUtil.so: (null)\n-   1:./vendor-4Dwm: rld: Fatal Error: Cannot Successfully map soname 'libimdUtil.so' under any of the filenames /usr/lib32/libimdUtil.so:/usr/lib32/internal/libimdUtil.so:/lib32/libimdUtil.so:/opt/lib32/libimdUtil.so:/usr/lib32/libimdUtil.so.1:/usr/lib32/internal/libimdUtil.so.1:/lib32/libimdUtil.so.1:/opt/lib32/libimdUtil.so.1: ",
+          "passed": true
+        },
+        {
+          "name": "closure-toolchest-user",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "Error: Can't open display: 127.0.0.1:99\n"
+          },
+          "console": "",
+          "passed": true
+        },
+        {
+          "name": "asa-after",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_O32\n",
+            "stderr": ""
+          },
+          "console": "",
+          "passed": true
+        },
+        {
+          "name": "echo-after",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_N32\n",
+            "stderr": ""
+          },
+          "console": "",
+          "passed": true
+        },
+        {
+          "name": "native-after",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          },
+          "console": "",
+          "passed": true
+        }
+      ],
+      "started_utc": "2026-10-30T20:18:41Z",
+      "traces": {
+        "runtime-4Dwm-root": {
+          "calls": [
+            "syscall=1040 pc=0xfa4f9b8 a0=0x16 a1=0x1d a2=0x7fff7f74 a3=0x7fff7f78",
+            "syscall=1040 pc=0xfa4f9b8 a0=0x55 a1=0xfb45940 a2=0x7fff7ee0 a3=0",
+            "syscall=1024 pc=0xfa5f5e8 a0=0x55 a1=0xfb45940 a2=0xffffffff a3=0",
+            "syscall=1005 pc=0xfa4fbf0 a0=0xfb459c8 a1=0 a2=0x4 a3=0",
+            "syscall=1003 pc=0xfa51844 a0=0x3 a1=0x7fff7d00 a2=0x200 a3=0",
+            "syscall=1040 pc=0xfa4f9b8 a0=0x44 a1=0x3 a2=0x7fff7d74 a3=0x2",
+            "syscall=1006 pc=0xfa4fa7c a0=0x3 a1=0x3 a2=0x7fff7d74 a3=0",
+            "syscall=1000 pc=0xfb81e0c a0=0x420 a1=0xe a2=0x7fff7f64 a3=0x7fff7f74",
+            "syscall=1005 pc=0xfb8361c a0=0xfbddc18 a1=0 a2=0x1000 a3=0x2000",
+            "syscall=1134 pc=0xfb83f0c a0=0xfbe0000 a1=0x8000 a2=0x3 a3=0x2",
+            "syscall=1006 pc=0xfb839e8 a0=0x3 a1=0x8000 a2=0x3 a3=0",
+            "syscall=1040 pc=0xfb7d28c a0=0x5c a1=0 a2=0xfbe1ff0 a3=0",
+            "syscall=1024 pc=0xfb60250 a0=0x7fff7ef8 a1=0x7fff7ef0 a2=0xffffffff a3=0x1",
+            "syscall=1047 pc=0xfb60280 a0=0x7fff7ef4 a1=0x7fff7efc a2=0xffffffff a3=0",
+            "syscall=1156 pc=0xfb74904 a0=0x6d a1=0x7fff7dc0 a2=0x101 a3=0",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1020 pc=0xfb82f8c a0=0 a1=0x1000 a2=0xfbe1030 a3=0xfbdb190",
+            "syscall=1005 pc=0xfb8361c a0=0xfbdd688 a1=0x9 a2=0x1ff a3=0x7fff6468",
+            "syscall=1004 pc=0xfb748dc a0=0x3 a1=0xfbe1030 a2=0x156 a3=0x7fff6388",
+            "syscall=1006 pc=0xfb839e8 a0=0x3 a1=0xfbe1030 a2=0x156 a3=0",
+            "syscall=1130 pc=0xfb835f4 a0=0xe a1=0xfbe1030 a2=0x156 a3=0",
+            "syscall=1001 pc=0xfb83aa4 a0=0x1 a1=0xfbe1030 a2=0x156 a3=0x1"
+          ],
+          "paths": [
+            "/root/irix-desktop/./runner",
+            "/usr/libexec/ld.elf_so-o32",
+            "/usr/libexec/ld.elf_so-mipseb",
+            "/emul/netbsd32",
+            "/usr/libexec/ld.elf_so",
+            "/emul/netbsd32",
+            "/etc/ld.so.conf",
+            "/usr/lib/libc.so.12",
+            "/etc/malloc.conf",
+            "input.txt",
+            "/root/irix-desktop/./vendor-4Dwm",
+            "/emul/irix",
+            "/emul/irix/usr/lib32/libc.so.1",
+            "/emul/irix/lib32/rld",
+            "/emul/irix/dev/zero",
+            "/dev/zero",
+            "/emul/irix/usr/lib32/libimdXutil.so",
+            "/usr/lib32/libimdXutil.so",
+            "/emul/irix/usr/lib32/internal/libimdXutil.so",
+            "/usr/lib32/internal/libimdXutil.so",
+            "/emul/irix/lib32/libimdXutil.so",
+            "/lib32/libimdXutil.so",
+            "/emul/irix/opt/lib32/libimdXutil.so",
+            "/opt/lib32/libimdXutil.so",
+            "/emul/irix/usr/lib32/libimdXutil.so.1",
+            "/usr/lib32/libimdXutil.so.1",
+            "/emul/irix/usr/lib32/internal/libimdXutil.so.1",
+            "/usr/lib32/internal/libimdXutil.so.1",
+            "/emul/irix/lib32/libimdXutil.so.1",
+            "/lib32/libimdXutil.so.1",
+            "/emul/irix/opt/lib32/libimdXutil.so.1",
+            "/opt/lib32/libimdXutil.so.1",
+            "/emul/irix/dev/tty",
+            "/dev/tty"
+          ],
+          "signature": {
+            "calls": [
+              {
+                "syscall": 1040,
+                "a0": 22
+              },
+              {
+                "syscall": 1040,
+                "a0": 85
+              },
+              {
+                "syscall": 1024
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1003
+              },
+              {
+                "syscall": 1040,
+                "a0": 68
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1000,
+                "a0": 1056
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1134
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1040,
+                "a0": 92
+              },
+              {
+                "syscall": 1024
+              },
+              {
+                "syscall": 1047
+              },
+              {
+                "syscall": 1156
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1020
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1004
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1130
+              },
+              {
+                "syscall": 1001
+              }
+            ],
+            "paths": [
+              "/emul/irix/usr/lib32/libc.so.1",
+              "/emul/irix/lib32/rld",
+              "/emul/irix/dev/zero",
+              "/dev/zero",
+              "/emul/irix/usr/lib32/libimdXutil.so",
+              "/usr/lib32/libimdXutil.so",
+              "/emul/irix/usr/lib32/internal/libimdXutil.so",
+              "/usr/lib32/internal/libimdXutil.so",
+              "/emul/irix/lib32/libimdXutil.so",
+              "/lib32/libimdXutil.so",
+              "/emul/irix/opt/lib32/libimdXutil.so",
+              "/emul/irix/usr/lib32/libimdXutil.so.1",
+              "/usr/lib32/libimdXutil.so.1",
+              "/emul/irix/usr/lib32/internal/libimdXutil.so.1",
+              "/usr/lib32/internal/libimdXutil.so.1",
+              "/emul/irix/lib32/libimdXutil.so.1",
+              "/lib32/libimdXutil.so.1",
+              "/emul/irix/opt/lib32/libimdXutil.so.1",
+              "/emul/irix/dev/tty",
+              "/dev/tty"
+            ]
+          }
+        },
+        "runtime-toolchest-root": {
+          "calls": [
+            "syscall=1040 pc=0xfa4f9b8 a0=0x16 a1=0x1d a2=0x7fff7f74 a3=0x7fff7f78",
+            "syscall=1040 pc=0xfa4f9b8 a0=0x55 a1=0xfb45940 a2=0x7fff7ee0 a3=0",
+            "syscall=1024 pc=0xfa5f5e8 a0=0x55 a1=0xfb45940 a2=0xffffffff a3=0",
+            "syscall=1005 pc=0xfa4fbf0 a0=0xfb459c8 a1=0 a2=0x4 a3=0",
+            "syscall=1003 pc=0xfa51844 a0=0x3 a1=0x7fff7d00 a2=0x200 a3=0",
+            "syscall=1040 pc=0xfa4f9b8 a0=0x44 a1=0x3 a2=0x7fff7d74 a3=0x2",
+            "syscall=1006 pc=0xfa4fa7c a0=0x3 a1=0x3 a2=0x7fff7d74 a3=0",
+            "syscall=1000 pc=0xfb81e0c a0=0x420 a1=0xe a2=0x7fff7f64 a3=0x7fff7f74",
+            "syscall=1005 pc=0xfb8361c a0=0xfbddc18 a1=0 a2=0x1000 a3=0x2000",
+            "syscall=1134 pc=0xfb83f0c a0=0xfbe0000 a1=0x8000 a2=0x3 a3=0x2",
+            "syscall=1006 pc=0xfb839e8 a0=0x3 a1=0x8000 a2=0x3 a3=0",
+            "syscall=1040 pc=0xfb7d28c a0=0x5c a1=0 a2=0xfbe1ff0 a3=0",
+            "syscall=1024 pc=0xfb60250 a0=0x7fff7ef8 a1=0x7fff7ef0 a2=0xffffffff a3=0x1",
+            "syscall=1047 pc=0xfb60280 a0=0x7fff7ef4 a1=0x7fff7efc a2=0xffffffff a3=0",
+            "syscall=1156 pc=0xfb74904 a0=0x6d a1=0x7fff7dc0 a2=0x101 a3=0",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1020 pc=0xfb82f8c a0=0 a1=0x1000 a2=0xfbe1030 a3=0xfbdb190",
+            "syscall=1005 pc=0xfb8361c a0=0xfbdd688 a1=0x9 a2=0x1ff a3=0x7fff6468",
+            "syscall=1004 pc=0xfb748dc a0=0x3 a1=0xfbe1030 a2=0x137 a3=0x7fff6388",
+            "syscall=1006 pc=0xfb839e8 a0=0x3 a1=0xfbe1030 a2=0x137 a3=0",
+            "syscall=1130 pc=0xfb835f4 a0=0xe a1=0xfbe1030 a2=0x137 a3=0",
+            "syscall=1001 pc=0xfb83aa4 a0=0x1 a1=0xfbe1030 a2=0x137 a3=0x1"
+          ],
+          "paths": [
+            "/root/irix-desktop/./runner",
+            "/usr/libexec/ld.elf_so-o32",
+            "/usr/libexec/ld.elf_so-mipseb",
+            "/emul/netbsd32",
+            "/usr/libexec/ld.elf_so",
+            "/emul/netbsd32",
+            "/etc/ld.so.conf",
+            "/usr/lib/libc.so.12",
+            "/etc/malloc.conf",
+            "input.txt",
+            "/root/irix-desktop/./vendor-toolchest",
+            "/emul/irix",
+            "/emul/irix/usr/lib32/libc.so.1",
+            "/emul/irix/lib32/rld",
+            "/emul/irix/dev/zero",
+            "/dev/zero",
+            "/emul/irix/usr/lib32/libXm.so.1",
+            "/usr/lib32/libXm.so.1",
+            "/emul/irix/usr/lib32/internal/libXm.so.1",
+            "/usr/lib32/internal/libXm.so.1",
+            "/emul/irix/lib32/libXm.so.1",
+            "/lib32/libXm.so.1",
+            "/emul/irix/opt/lib32/libXm.so.1",
+            "/opt/lib32/libXm.so.1",
+            "/emul/irix/usr/lib32/libXm.so.1.1",
+            "/usr/lib32/libXm.so.1.1",
+            "/emul/irix/usr/lib32/internal/libXm.so.1.1",
+            "/usr/lib32/internal/libXm.so.1.1",
+            "/emul/irix/lib32/libXm.so.1.1",
+            "/lib32/libXm.so.1.1",
+            "/emul/irix/opt/lib32/libXm.so.1.1",
+            "/opt/lib32/libXm.so.1.1",
+            "/emul/irix/dev/tty",
+            "/dev/tty"
+          ],
+          "signature": {
+            "calls": [
+              {
+                "syscall": 1040,
+                "a0": 22
+              },
+              {
+                "syscall": 1040,
+                "a0": 85
+              },
+              {
+                "syscall": 1024
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1003
+              },
+              {
+                "syscall": 1040,
+                "a0": 68
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1000,
+                "a0": 1056
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1134
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1040,
+                "a0": 92
+              },
+              {
+                "syscall": 1024
+              },
+              {
+                "syscall": 1047
+              },
+              {
+                "syscall": 1156
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1020
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1004
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1130
+              },
+              {
+                "syscall": 1001
+              }
+            ],
+            "paths": [
+              "/emul/irix/usr/lib32/libc.so.1",
+              "/emul/irix/lib32/rld",
+              "/emul/irix/dev/zero",
+              "/dev/zero",
+              "/emul/irix/usr/lib32/libXm.so.1",
+              "/usr/lib32/libXm.so.1",
+              "/emul/irix/usr/lib32/internal/libXm.so.1",
+              "/usr/lib32/internal/libXm.so.1",
+              "/emul/irix/lib32/libXm.so.1",
+              "/lib32/libXm.so.1",
+              "/emul/irix/opt/lib32/libXm.so.1",
+              "/emul/irix/usr/lib32/libXm.so.1.1",
+              "/usr/lib32/libXm.so.1.1",
+              "/emul/irix/usr/lib32/internal/libXm.so.1.1",
+              "/usr/lib32/internal/libXm.so.1.1",
+              "/emul/irix/lib32/libXm.so.1.1",
+              "/lib32/libXm.so.1.1",
+              "/emul/irix/opt/lib32/libXm.so.1.1",
+              "/emul/irix/dev/tty",
+              "/dev/tty"
+            ]
+          }
+        },
+        "runtime-4Dwm-user": {
+          "calls": [
+            "syscall=1040 pc=0xfa4f9b8 a0=0x16 a1=0x1d a2=0x7fff7f74 a3=0x7fff7f78",
+            "syscall=1040 pc=0xfa4f9b8 a0=0x55 a1=0xfb45940 a2=0x7fff7ee0 a3=0",
+            "syscall=1024 pc=0xfa5f5e8 a0=0x55 a1=0xfb45940 a2=0xffffffff a3=0",
+            "syscall=1024 pc=0xfa5c490 a0=0x2 a1=0xfb45940 a2=0xffffffff a3=0",
+            "syscall=1047 pc=0xfa59598 a0=0x2 a1=0xfb45940 a2=0xffffffff a3=0",
+            "syscall=1047 pc=0xfa5e068 a0=0x2 a1=0xfb45940 a2=0xffffffff a3=0",
+            "syscall=1005 pc=0xfa4fbf0 a0=0xfb459c8 a1=0 a2=0x4 a3=0",
+            "syscall=1003 pc=0xfa51844 a0=0x3 a1=0x7fff7d00 a2=0x200 a3=0",
+            "syscall=1040 pc=0xfa4f9b8 a0=0x44 a1=0x3 a2=0x7fff7d74 a3=0x2",
+            "syscall=1006 pc=0xfa4fa7c a0=0x3 a1=0x3 a2=0x7fff7d74 a3=0",
+            "syscall=1000 pc=0xfb81e0c a0=0x420 a1=0xe a2=0x7fff7f64 a3=0x7fff7f74",
+            "syscall=1005 pc=0xfb8361c a0=0xfbddc18 a1=0 a2=0x1000 a3=0x2000",
+            "syscall=1134 pc=0xfb83f0c a0=0xfbe0000 a1=0x8000 a2=0x3 a3=0x2",
+            "syscall=1006 pc=0xfb839e8 a0=0x3 a1=0x8000 a2=0x3 a3=0",
+            "syscall=1040 pc=0xfb7d28c a0=0x5c a1=0 a2=0xfbe1ff0 a3=0",
+            "syscall=1024 pc=0xfb60250 a0=0x7fff7ef8 a1=0x7fff7ef0 a2=0xffffffff a3=0x1",
+            "syscall=1047 pc=0xfb60280 a0=0x7fff7ef4 a1=0x7fff7efc a2=0xffffffff a3=0",
+            "syscall=1156 pc=0xfb74904 a0=0x6d a1=0x7fff7dc0 a2=0x101 a3=0",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1020 pc=0xfb82f8c a0=0 a1=0x1000 a2=0xfbe1030 a3=0xfbdb190",
+            "syscall=1005 pc=0xfb8361c a0=0xfbdd688 a1=0x9 a2=0x1ff a3=0x7fff6468",
+            "syscall=1004 pc=0xfb748dc a0=0x3 a1=0xfbe1030 a2=0x156 a3=0x7fff6388",
+            "syscall=1006 pc=0xfb839e8 a0=0x3 a1=0xfbe1030 a2=0x156 a3=0",
+            "syscall=1130 pc=0xfb835f4 a0=0xe a1=0xfbe1030 a2=0x156 a3=0",
+            "syscall=1001 pc=0xfb83aa4 a0=0x1 a1=0xfbe1030 a2=0x156 a3=0x1"
+          ],
+          "paths": [
+            "/root/irix-desktop/./runner",
+            "/usr/libexec/ld.elf_so-o32",
+            "/usr/libexec/ld.elf_so-mipseb",
+            "/emul/netbsd32",
+            "/usr/libexec/ld.elf_so",
+            "/emul/netbsd32",
+            "/etc/ld.so.conf",
+            "/usr/lib/libc.so.12",
+            "/etc/malloc.conf",
+            "input.txt",
+            "/root/irix-desktop/./vendor-4Dwm",
+            "/emul/irix",
+            "/emul/irix/usr/lib32/libc.so.1",
+            "/emul/irix/lib32/rld",
+            "/emul/irix/dev/zero",
+            "/dev/zero",
+            "/emul/irix/usr/lib32/libimdXutil.so",
+            "/usr/lib32/libimdXutil.so",
+            "/emul/irix/usr/lib32/internal/libimdXutil.so",
+            "/usr/lib32/internal/libimdXutil.so",
+            "/emul/irix/lib32/libimdXutil.so",
+            "/lib32/libimdXutil.so",
+            "/emul/irix/opt/lib32/libimdXutil.so",
+            "/opt/lib32/libimdXutil.so",
+            "/emul/irix/usr/lib32/libimdXutil.so.1",
+            "/usr/lib32/libimdXutil.so.1",
+            "/emul/irix/usr/lib32/internal/libimdXutil.so.1",
+            "/usr/lib32/internal/libimdXutil.so.1",
+            "/emul/irix/lib32/libimdXutil.so.1",
+            "/lib32/libimdXutil.so.1",
+            "/emul/irix/opt/lib32/libimdXutil.so.1",
+            "/opt/lib32/libimdXutil.so.1",
+            "/emul/irix/dev/tty",
+            "/dev/tty"
+          ],
+          "signature": {
+            "calls": [
+              {
+                "syscall": 1040,
+                "a0": 22
+              },
+              {
+                "syscall": 1040,
+                "a0": 85
+              },
+              {
+                "syscall": 1024
+              },
+              {
+                "syscall": 1024
+              },
+              {
+                "syscall": 1047
+              },
+              {
+                "syscall": 1047
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1003
+              },
+              {
+                "syscall": 1040,
+                "a0": 68
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1000,
+                "a0": 1056
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1134
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1040,
+                "a0": 92
+              },
+              {
+                "syscall": 1024
+              },
+              {
+                "syscall": 1047
+              },
+              {
+                "syscall": 1156
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1020
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1004
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1130
+              },
+              {
+                "syscall": 1001
+              }
+            ],
+            "paths": [
+              "/emul/irix/usr/lib32/libc.so.1",
+              "/emul/irix/lib32/rld",
+              "/emul/irix/dev/zero",
+              "/dev/zero",
+              "/emul/irix/usr/lib32/libimdXutil.so",
+              "/usr/lib32/libimdXutil.so",
+              "/emul/irix/usr/lib32/internal/libimdXutil.so",
+              "/usr/lib32/internal/libimdXutil.so",
+              "/emul/irix/lib32/libimdXutil.so",
+              "/lib32/libimdXutil.so",
+              "/emul/irix/opt/lib32/libimdXutil.so",
+              "/emul/irix/usr/lib32/libimdXutil.so.1",
+              "/usr/lib32/libimdXutil.so.1",
+              "/emul/irix/usr/lib32/internal/libimdXutil.so.1",
+              "/usr/lib32/internal/libimdXutil.so.1",
+              "/emul/irix/lib32/libimdXutil.so.1",
+              "/lib32/libimdXutil.so.1",
+              "/emul/irix/opt/lib32/libimdXutil.so.1",
+              "/emul/irix/dev/tty",
+              "/dev/tty"
+            ]
+          }
+        },
+        "runtime-toolchest-user": {
+          "calls": [
+            "syscall=1040 pc=0xfa4f9b8 a0=0x16 a1=0x1d a2=0x7fff7f74 a3=0x7fff7f78",
+            "syscall=1040 pc=0xfa4f9b8 a0=0x55 a1=0xfb45940 a2=0x7fff7ee0 a3=0",
+            "syscall=1024 pc=0xfa5f5e8 a0=0x55 a1=0xfb45940 a2=0xffffffff a3=0",
+            "syscall=1024 pc=0xfa5c490 a0=0x2 a1=0xfb45940 a2=0xffffffff a3=0",
+            "syscall=1047 pc=0xfa59598 a0=0x2 a1=0xfb45940 a2=0xffffffff a3=0",
+            "syscall=1047 pc=0xfa5e068 a0=0x2 a1=0xfb45940 a2=0xffffffff a3=0",
+            "syscall=1005 pc=0xfa4fbf0 a0=0xfb459c8 a1=0 a2=0x4 a3=0",
+            "syscall=1003 pc=0xfa51844 a0=0x3 a1=0x7fff7d00 a2=0x200 a3=0",
+            "syscall=1040 pc=0xfa4f9b8 a0=0x44 a1=0x3 a2=0x7fff7d74 a3=0x2",
+            "syscall=1006 pc=0xfa4fa7c a0=0x3 a1=0x3 a2=0x7fff7d74 a3=0",
+            "syscall=1000 pc=0xfb81e0c a0=0x420 a1=0xe a2=0x7fff7f64 a3=0x7fff7f74",
+            "syscall=1005 pc=0xfb8361c a0=0xfbddc18 a1=0 a2=0x1000 a3=0x2000",
+            "syscall=1134 pc=0xfb83f0c a0=0xfbe0000 a1=0x8000 a2=0x3 a3=0x2",
+            "syscall=1006 pc=0xfb839e8 a0=0x3 a1=0x8000 a2=0x3 a3=0",
+            "syscall=1040 pc=0xfb7d28c a0=0x5c a1=0 a2=0xfbe1ff0 a3=0",
+            "syscall=1024 pc=0xfb60250 a0=0x7fff7ef8 a1=0x7fff7ef0 a2=0xffffffff a3=0x1",
+            "syscall=1047 pc=0xfb60280 a0=0x7fff7ef4 a1=0x7fff7efc a2=0xffffffff a3=0",
+            "syscall=1156 pc=0xfb74904 a0=0x6d a1=0x7fff7dc0 a2=0x101 a3=0",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1020 pc=0xfb82f8c a0=0 a1=0x1000 a2=0xfbe1030 a3=0xfbdb190",
+            "syscall=1005 pc=0xfb8361c a0=0xfbdd688 a1=0x9 a2=0x1ff a3=0x7fff6468",
+            "syscall=1004 pc=0xfb748dc a0=0x3 a1=0xfbe1030 a2=0x137 a3=0x7fff6388",
+            "syscall=1006 pc=0xfb839e8 a0=0x3 a1=0xfbe1030 a2=0x137 a3=0",
+            "syscall=1130 pc=0xfb835f4 a0=0xe a1=0xfbe1030 a2=0x137 a3=0",
+            "syscall=1001 pc=0xfb83aa4 a0=0x1 a1=0xfbe1030 a2=0x137 a3=0x1"
+          ],
+          "paths": [
+            "/root/irix-desktop/./runner",
+            "/usr/libexec/ld.elf_so-o32",
+            "/usr/libexec/ld.elf_so-mipseb",
+            "/emul/netbsd32",
+            "/usr/libexec/ld.elf_so",
+            "/emul/netbsd32",
+            "/etc/ld.so.conf",
+            "/usr/lib/libc.so.12",
+            "/etc/malloc.conf",
+            "input.txt",
+            "/root/irix-desktop/./vendor-toolchest",
+            "/emul/irix",
+            "/emul/irix/usr/lib32/libc.so.1",
+            "/emul/irix/lib32/rld",
+            "/emul/irix/dev/zero",
+            "/dev/zero",
+            "/emul/irix/usr/lib32/libXm.so.1",
+            "/usr/lib32/libXm.so.1",
+            "/emul/irix/usr/lib32/internal/libXm.so.1",
+            "/usr/lib32/internal/libXm.so.1",
+            "/emul/irix/lib32/libXm.so.1",
+            "/lib32/libXm.so.1",
+            "/emul/irix/opt/lib32/libXm.so.1",
+            "/opt/lib32/libXm.so.1",
+            "/emul/irix/usr/lib32/libXm.so.1.1",
+            "/usr/lib32/libXm.so.1.1",
+            "/emul/irix/usr/lib32/internal/libXm.so.1.1",
+            "/usr/lib32/internal/libXm.so.1.1",
+            "/emul/irix/lib32/libXm.so.1.1",
+            "/lib32/libXm.so.1.1",
+            "/emul/irix/opt/lib32/libXm.so.1.1",
+            "/opt/lib32/libXm.so.1.1",
+            "/emul/irix/dev/tty",
+            "/dev/tty"
+          ],
+          "signature": {
+            "calls": [
+              {
+                "syscall": 1040,
+                "a0": 22
+              },
+              {
+                "syscall": 1040,
+                "a0": 85
+              },
+              {
+                "syscall": 1024
+              },
+              {
+                "syscall": 1024
+              },
+              {
+                "syscall": 1047
+              },
+              {
+                "syscall": 1047
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1003
+              },
+              {
+                "syscall": 1040,
+                "a0": 68
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1000,
+                "a0": 1056
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1134
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1040,
+                "a0": 92
+              },
+              {
+                "syscall": 1024
+              },
+              {
+                "syscall": 1047
+              },
+              {
+                "syscall": 1156
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1020
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1004
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1130
+              },
+              {
+                "syscall": 1001
+              }
+            ],
+            "paths": [
+              "/emul/irix/usr/lib32/libc.so.1",
+              "/emul/irix/lib32/rld",
+              "/emul/irix/dev/zero",
+              "/dev/zero",
+              "/emul/irix/usr/lib32/libXm.so.1",
+              "/usr/lib32/libXm.so.1",
+              "/emul/irix/usr/lib32/internal/libXm.so.1",
+              "/usr/lib32/internal/libXm.so.1",
+              "/emul/irix/lib32/libXm.so.1",
+              "/lib32/libXm.so.1",
+              "/emul/irix/opt/lib32/libXm.so.1",
+              "/emul/irix/usr/lib32/libXm.so.1.1",
+              "/usr/lib32/libXm.so.1.1",
+              "/emul/irix/usr/lib32/internal/libXm.so.1.1",
+              "/usr/lib32/internal/libXm.so.1.1",
+              "/emul/irix/lib32/libXm.so.1.1",
+              "/lib32/libXm.so.1.1",
+              "/emul/irix/opt/lib32/libXm.so.1.1",
+              "/emul/irix/dev/tty",
+              "/dev/tty"
+            ]
+          }
+        },
+        "closure-4Dwm-root": {
+          "calls": [
+            "syscall=1040 pc=0xfa4f9b8 a0=0x16 a1=0x1d a2=0x7fff7f74 a3=0x7fff7f78",
+            "syscall=1040 pc=0xfa4f9b8 a0=0x55 a1=0xfb45940 a2=0x7fff7ee0 a3=0",
+            "syscall=1024 pc=0xfa5f5e8 a0=0x55 a1=0xfb45940 a2=0xffffffff a3=0",
+            "syscall=1005 pc=0xfa4fbf0 a0=0xfb459c8 a1=0 a2=0x4 a3=0",
+            "syscall=1003 pc=0xfa51844 a0=0x3 a1=0x7fff7d00 a2=0x200 a3=0",
+            "syscall=1040 pc=0xfa4f9b8 a0=0x44 a1=0x3 a2=0x7fff7d74 a3=0x2",
+            "syscall=1006 pc=0xfa4fa7c a0=0x3 a1=0x3 a2=0x7fff7d74 a3=0",
+            "syscall=1000 pc=0xfb81e0c a0=0x420 a1=0xe a2=0x7fff7f64 a3=0x7fff7f74",
+            "syscall=1005 pc=0xfb8361c a0=0xfbddc18 a1=0 a2=0x1000 a3=0x2000",
+            "syscall=1134 pc=0xfb83f0c a0=0xfbe0000 a1=0x8000 a2=0x3 a3=0x2",
+            "syscall=1006 pc=0xfb839e8 a0=0x3 a1=0x8000 a2=0x3 a3=0",
+            "syscall=1040 pc=0xfb7d28c a0=0x5c a1=0 a2=0xfbe1ff0 a3=0",
+            "syscall=1024 pc=0xfb60250 a0=0x7fff7ef8 a1=0x7fff7ef0 a2=0xffffffff a3=0x1",
+            "syscall=1047 pc=0xfb60280 a0=0x7fff7ef4 a1=0x7fff7efc a2=0xffffffff a3=0",
+            "syscall=1156 pc=0xfb74904 a0=0x6d a1=0x7fff7dc0 a2=0x101 a3=0",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1003 pc=0xfb83ebc a0=0x3 a1=0x7fff60a0 a2=0x200 a3=0",
+            "syscall=1040 pc=0xfb7d28c a0=0x44 a1=0x3 a2=0x7fff6000 a3=0x2",
+            "syscall=1006 pc=0xfb839e8 a0=0x3 a1=0x7fff60a0 a2=0x7fff60d4 a3=0x7fff6490",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe1030",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe1030",
+            "syscall=1003 pc=0xfb83ebc a0=0x3 a1=0x7fff60a0 a2=0x200 a3=0",
+            "syscall=1040 pc=0xfb7d28c a0=0x44 a1=0x3 a2=0x7fff6000 a3=0x2",
+            "syscall=1020 pc=0xfb82f8c a0=0 a1=0x1000 a2=0xfbe1438 a3=0xfbdb190",
+            "syscall=1005 pc=0xfb8361c a0=0xfbdd688 a1=0x9 a2=0x1ff a3=0x7fff5fd8",
+            "syscall=1004 pc=0xfb748dc a0=0x4 a1=0xfbe1438 a2=0x60 a3=0x7fff5ef8",
+            "syscall=1006 pc=0xfb839e8 a0=0x4 a1=0xfbe1438 a2=0x60 a3=0",
+            "syscall=1006 pc=0xfb839e8 a0=0x3 a1=0x7fff60a0 a2=0x7fff60d4 a3=0x7fff6490",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe1030",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe1030",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe1030",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe1030",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe1030",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe1030",
+            "syscall=1020 pc=0xfb82f8c a0=0 a1=0x1000 a2=0xfbe1c48 a3=0xfbdb190",
+            "syscall=1005 pc=0xfb8361c a0=0xfbdd688 a1=0x9 a2=0x1ff a3=0x7fff6468",
+            "syscall=1004 pc=0xfb748dc a0=0x3 a1=0xfbe1438 a2=0x14d a3=0x7fff6388",
+            "syscall=1006 pc=0xfb839e8 a0=0x3 a1=0xfbe1438 a2=0x14d a3=0",
+            "syscall=1130 pc=0xfb835f4 a0=0xe a1=0xfbe1438 a2=0x14d a3=0",
+            "syscall=1001 pc=0xfb83aa4 a0=0x1 a1=0xfbe1438 a2=0x14d a3=0x1"
+          ],
+          "paths": [
+            "/root/irix-desktop/./runner",
+            "/usr/libexec/ld.elf_so-o32",
+            "/usr/libexec/ld.elf_so-mipseb",
+            "/emul/netbsd32",
+            "/usr/libexec/ld.elf_so",
+            "/emul/netbsd32",
+            "/etc/ld.so.conf",
+            "/usr/lib/libc.so.12",
+            "/etc/malloc.conf",
+            "input.txt",
+            "/root/irix-desktop/./vendor-4Dwm",
+            "/emul/irix",
+            "/emul/irix/usr/lib32/libc.so.1",
+            "/emul/irix/lib32/rld",
+            "/emul/irix/dev/zero",
+            "/dev/zero",
+            "/emul/irix/usr/lib32/libimdXutil.so",
+            "/usr/lib32/libimdXutil.so",
+            "/emul/irix/usr/lib32/internal/libimdXutil.so",
+            "/emul/irix/usr/lib32/libimdUtil.so",
+            "/usr/lib32/libimdUtil.so",
+            "/emul/irix/usr/lib32/internal/libimdUtil.so",
+            "/emul/irix/dev/tty",
+            "/dev/tty",
+            "/emul/irix/lib32/libimdUtil.so",
+            "/lib32/libimdUtil.so",
+            "/emul/irix/opt/lib32/libimdUtil.so",
+            "/opt/lib32/libimdUtil.so",
+            "/emul/irix/usr/lib32/libimdUtil.so.1",
+            "/usr/lib32/libimdUtil.so.1",
+            "/emul/irix/usr/lib32/internal/libimdUtil.so.1",
+            "/usr/lib32/internal/libimdUtil.so.1",
+            "/emul/irix/lib32/libimdUtil.so.1",
+            "/lib32/libimdUtil.so.1",
+            "/emul/irix/opt/lib32/libimdUtil.so.1",
+            "/opt/lib32/libimdUtil.so.1",
+            "/emul/irix/dev/tty",
+            "/dev/tty"
+          ],
+          "signature": {
+            "calls": [
+              {
+                "syscall": 1040,
+                "a0": 22
+              },
+              {
+                "syscall": 1040,
+                "a0": 85
+              },
+              {
+                "syscall": 1024
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1003
+              },
+              {
+                "syscall": 1040,
+                "a0": 68
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1000,
+                "a0": 1056
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1134
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1040,
+                "a0": 92
+              },
+              {
+                "syscall": 1024
+              },
+              {
+                "syscall": 1047
+              },
+              {
+                "syscall": 1156
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1003
+              },
+              {
+                "syscall": 1040,
+                "a0": 68
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1003
+              },
+              {
+                "syscall": 1040,
+                "a0": 68
+              },
+              {
+                "syscall": 1020
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1004
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1020
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1004
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1130
+              },
+              {
+                "syscall": 1001
+              }
+            ],
+            "paths": [
+              "/emul/irix/usr/lib32/libc.so.1",
+              "/emul/irix/lib32/rld",
+              "/emul/irix/dev/zero",
+              "/dev/zero",
+              "/emul/irix/usr/lib32/libimdXutil.so",
+              "/usr/lib32/libimdXutil.so",
+              "/emul/irix/usr/lib32/internal/libimdXutil.so",
+              "/emul/irix/usr/lib32/libimdUtil.so",
+              "/usr/lib32/libimdUtil.so",
+              "/emul/irix/usr/lib32/internal/libimdUtil.so",
+              "/emul/irix/dev/tty",
+              "/dev/tty",
+              "/emul/irix/lib32/libimdUtil.so",
+              "/lib32/libimdUtil.so",
+              "/emul/irix/opt/lib32/libimdUtil.so",
+              "/emul/irix/usr/lib32/libimdUtil.so.1",
+              "/usr/lib32/libimdUtil.so.1",
+              "/emul/irix/usr/lib32/internal/libimdUtil.so.1",
+              "/usr/lib32/internal/libimdUtil.so.1",
+              "/emul/irix/lib32/libimdUtil.so.1",
+              "/lib32/libimdUtil.so.1",
+              "/emul/irix/opt/lib32/libimdUtil.so.1",
+              "/emul/irix/dev/tty",
+              "/dev/tty"
+            ]
+          }
+        },
+        "closure-toolchest-root": {
+          "calls": [
+            "syscall=1040 pc=0xfa4f9b8 a0=0x16 a1=0x1d a2=0x7fff7f74 a3=0x7fff7f78",
+            "syscall=1040 pc=0xfa4f9b8 a0=0x55 a1=0xfb45940 a2=0x7fff7ee0 a3=0",
+            "syscall=1024 pc=0xfa5f5e8 a0=0x55 a1=0xfb45940 a2=0xffffffff a3=0",
+            "syscall=1005 pc=0xfa4fbf0 a0=0xfb459c8 a1=0 a2=0x4 a3=0",
+            "syscall=1003 pc=0xfa51844 a0=0x3 a1=0x7fff7d00 a2=0x200 a3=0",
+            "syscall=1040 pc=0xfa4f9b8 a0=0x44 a1=0x3 a2=0x7fff7d74 a3=0x2",
+            "syscall=1006 pc=0xfa4fa7c a0=0x3 a1=0x3 a2=0x7fff7d74 a3=0",
+            "syscall=1000 pc=0xfb81e0c a0=0x420 a1=0xe a2=0x7fff7f64 a3=0x7fff7f74",
+            "syscall=1005 pc=0xfb8361c a0=0xfbddc18 a1=0 a2=0x1000 a3=0x2000",
+            "syscall=1134 pc=0xfb83f0c a0=0xfbe0000 a1=0x8000 a2=0x3 a3=0x2",
+            "syscall=1006 pc=0xfb839e8 a0=0x3 a1=0x8000 a2=0x3 a3=0",
+            "syscall=1040 pc=0xfb7d28c a0=0x5c a1=0 a2=0xfbe1ff0 a3=0",
+            "syscall=1024 pc=0xfb60250 a0=0x7fff7ef8 a1=0x7fff7ef0 a2=0xffffffff a3=0x1",
+            "syscall=1047 pc=0xfb60280 a0=0x7fff7ef4 a1=0x7fff7efc a2=0xffffffff a3=0",
+            "syscall=1156 pc=0xfb74904 a0=0x6d a1=0x7fff7dc0 a2=0x101 a3=0",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1003 pc=0xfb83ebc a0=0x3 a1=0x7fff60a0 a2=0x200 a3=0",
+            "syscall=1040 pc=0xfb7d28c a0=0x44 a1=0x3 a2=0x7fff6000 a3=0x2",
+            "syscall=1006 pc=0xfb839e8 a0=0x3 a1=0x7fff60a0 a2=0x7fff60d4 a3=0x7fff6490",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe1030",
+            "syscall=1003 pc=0xfb83ebc a0=0x3 a1=0x7fff60a0 a2=0x200 a3=0",
+            "syscall=1040 pc=0xfb7d28c a0=0x44 a1=0x3 a2=0x7fff6000 a3=0x2",
+            "syscall=1006 pc=0xfb839e8 a0=0x3 a1=0x7fff60a0 a2=0x7fff60d4 a3=0x7fff6490",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe1438",
+            "syscall=1003 pc=0xfb83ebc a0=0x3 a1=0x7fff60a0 a2=0x200 a3=0",
+            "syscall=1040 pc=0xfb7d28c a0=0x44 a1=0x3 a2=0x7fff6000 a3=0x2",
+            "syscall=1006 pc=0xfb839e8 a0=0x3 a1=0x7fff60a0 a2=0x7fff60d4 a3=0x7fff6490",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe1840",
+            "syscall=1003 pc=0xfb83ebc a0=0x3 a1=0x7fff60a0 a2=0x200 a3=0",
+            "syscall=1040 pc=0xfb7d28c a0=0x44 a1=0x3 a2=0x7fff6000 a3=0x2",
+            "syscall=1006 pc=0xfb839e8 a0=0x3 a1=0x7fff60a0 a2=0x7fff60d4 a3=0x7fff6490",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe1c48",
+            "syscall=1003 pc=0xfb83ebc a0=0x3 a1=0x7fff60a0 a2=0x200 a3=0",
+            "syscall=1040 pc=0xfb7d28c a0=0x44 a1=0x3 a2=0x7fff6000 a3=0x2",
+            "syscall=1006 pc=0xfb839e8 a0=0x3 a1=0x7fff60a0 a2=0x7fff60d4 a3=0x7fff6490",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe2458",
+            "syscall=1003 pc=0xfb83ebc a0=0x3 a1=0x7fff60a0 a2=0x200 a3=0",
+            "syscall=1040 pc=0xfb7d28c a0=0x44 a1=0x3 a2=0x7fff6000 a3=0x2",
+            "syscall=1006 pc=0xfb839e8 a0=0x3 a1=0x7fff60a0 a2=0x7fff60d4 a3=0x7fff6490",
+            "syscall=1000 pc=0xfa51bcc a0=0x420 a1=0xe a2=0xadf4958 a3=0xadf7750",
+            "syscall=1017 pc=0xfa4ff30 a0=0x1001e000 a1=0xe a2=0xadf4958 a3=0x1318",
+            "syscall=1062 pc=0xfa57270 a0=0 a1=0x3 a2=0 a3=0x3",
+            "syscall=1062 pc=0xfa57270 a0=0x1 a1=0x3 a2=0 a3=0x3",
+            "syscall=1062 pc=0xfa57270 a0=0x2 a1=0x3 a2=0 a3=0x3",
+            "syscall=1062 pc=0xfa57270 a0=0x2 a1=0x3 a2=0 a3=0x3",
+            "syscall=1040 pc=0xfb7d28c a0=0x6c a1=0xfbe2458 a2=0xfbe0c28 a3=0xfbdb190",
+            "syscall=1162 pc=0xfa5c57c a0=0x12 a1=0x7fff7a10 a2=0 a3=0xfafd878",
+            "syscall=1040 pc=0xfa4f9b8 a0=0x81 a1=0 a2=0x181 a3=0xffffffff",
+            "syscall=1040 pc=0xfa4f9b8 a0=0x16 a1=0x1c a2=0 a3=0x7fff7fbf",
+            "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0xfb59ac4 a2=0x7fff7290 a3=0x1",
+            "syscall=1017 pc=0xfa4ff30 a0=0x10020000 a1=0x1ff1 a2=0x1001dff0 a3=0x1001e000",
+            "syscall=1017 pc=0xfa4ff30 a0=0x10022000 a1=0x1001fe20 a2=0x1001fb90 a3=0x10020000",
+            "syscall=1005 pc=0xfa4fbf0 a0=0x7fff6830 a1=0 a2=0x1b6 a3=0",
+            "syscall=1005 pc=0xfa4fbf0 a0=0x7fff6770 a1=0 a2=0x1b6 a3=0",
+            "syscall=1005 pc=0xfa4fbf0 a0=0x7fff6800 a1=0 a2=0x1b6 a3=0",
+            "syscall=1005 pc=0xfa4fbf0 a0=0x7fff6740 a1=0 a2=0x1b6 a3=0",
+            "syscall=1005 pc=0xfa4fbf0 a0=0x7fff6830 a1=0 a2=0x1b6 a3=0",
+            "syscall=1005 pc=0xfa4fbf0 a0=0x7fff6770 a1=0 a2=0x1b6 a3=0",
+            "syscall=1005 pc=0xfa4fbf0 a0=0x7fff6820 a1=0 a2=0x1b6 a3=0",
+            "syscall=1005 pc=0xfa4fbf0 a0=0x7fff6760 a1=0 a2=0x1b6 a3=0",
+            "syscall=1005 pc=0xfa4fbf0 a0=0x7fff6820 a1=0 a2=0x1b6 a3=0",
+            "syscall=1005 pc=0xfa4fbf0 a0=0x7fff6760 a1=0 a2=0x1b6 a3=0",
+            "syscall=1107 pc=0xfa51ad0 a0=0x2 a1=0x2 a2=0 a3=0x33",
+            "syscall=1005 pc=0xfa4fbf0 a0=0xf4a60c8 a1=0 a2=0xf4a6050 a3=0xf4a6c30",
+            "syscall=1024 pc=0xfa5f5e8 a0=0x7fff7310 a1=0xf4a6070 a2=0 a3=0xf4a6073",
+            "syscall=1024 pc=0xfa5c490 a0=0x7fff7310 a1=0xf4a6070 a2=0 a3=0",
+            "syscall=1024 pc=0xfa5f5e8 a0=0x7fff7310 a1=0xf4a6070 a2=0 a3=0",
+            "syscall=1004 pc=0xfa61048 a0=0x2 a1=0xfb5d778 a2=0x7 a3=0x4",
+            "syscall=1004 pc=0xfa61048 a0=0x2 a1=0x7fff7300 a2=0x14 a3=0",
+            "syscall=1004 pc=0xfa61048 a0=0x2 a1=0x1001e940 a2=0xc a3=0",
+            "syscall=1004 pc=0xfa61048 a0=0x2 a1=0xfb5d778 a2=0x1 a3=0x4",
+            "syscall=1130 pc=0xfa57964 a0=0x16 a1=0 a2=0xfb5d500 a3=0x10867c",
+            "syscall=1130 pc=0xfa57964 a0=0xe a1=0x1 a2=0xfb5d500 a3=0x1",
+            "syscall=1001 pc=0xfa577d0 a0=0x1 a1=0xa a2=0x2 a3=0"
+          ],
+          "paths": [
+            "/root/irix-desktop/./runner",
+            "/usr/libexec/ld.elf_so-o32",
+            "/usr/libexec/ld.elf_so-mipseb",
+            "/emul/netbsd32",
+            "/usr/libexec/ld.elf_so",
+            "/emul/netbsd32",
+            "/etc/ld.so.conf",
+            "/usr/lib/libc.so.12",
+            "/etc/malloc.conf",
+            "input.txt",
+            "/root/irix-desktop/./vendor-toolchest",
+            "/emul/irix",
+            "/emul/irix/usr/lib32/libc.so.1",
+            "/emul/irix/lib32/rld",
+            "/emul/irix/dev/zero",
+            "/dev/zero",
+            "/emul/irix/usr/lib32/libXm.so.1",
+            "/emul/irix/usr/lib32/libXt.so",
+            "/emul/irix/usr/lib32/libX11.so.1",
+            "/emul/irix/usr/lib32/libCsup.so",
+            "/emul/irix/usr/lib32/libC.so.2",
+            "/emul/irix/usr/lib32/libm.so",
+            "/emul/irix/usr/lib/X11/locale/locale.alias",
+            "/usr/lib/X11/locale/locale.alias",
+            "/emul/irix/usr/lib/X11/locale/locale.dir",
+            "/usr/lib/X11/locale/locale.dir",
+            "/emul/irix/usr/lib/X11/locale/locale.alias",
+            "/usr/lib/X11/locale/locale.alias",
+            "/emul/irix/usr/lib/X11/locale/locale.dir",
+            "/usr/lib/X11/locale/locale.dir",
+            "/emul/irix/usr/lib/X11/locale/locale.alias",
+            "/usr/lib/X11/locale/locale.alias",
+            "/emul/irix/usr/lib/X11/locale/locale.dir",
+            "/usr/lib/X11/locale/locale.dir",
+            "/emul/irix/usr/lib/X11/locale/locale.alias",
+            "/usr/lib/X11/locale/locale.alias",
+            "/emul/irix/usr/lib/X11/locale/locale.dir",
+            "/usr/lib/X11/locale/locale.dir",
+            "/emul/irix/usr/lib/X11/locale/locale.alias",
+            "/usr/lib/X11/locale/locale.alias",
+            "/emul/irix/usr/lib/X11/locale/locale.dir",
+            "/usr/lib/X11/locale/locale.dir",
+            "/emul/irix/usr/lib/X11/XtErrorDB",
+            "/usr/lib/X11/XtErrorDB"
+          ],
+          "signature": {
+            "calls": [
+              {
+                "syscall": 1040,
+                "a0": 22
+              },
+              {
+                "syscall": 1040,
+                "a0": 85
+              },
+              {
+                "syscall": 1024
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1003
+              },
+              {
+                "syscall": 1040,
+                "a0": 68
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1000,
+                "a0": 1056
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1134
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1040,
+                "a0": 92
+              },
+              {
+                "syscall": 1024
+              },
+              {
+                "syscall": 1047
+              },
+              {
+                "syscall": 1156
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1003
+              },
+              {
+                "syscall": 1040,
+                "a0": 68
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1003
+              },
+              {
+                "syscall": 1040,
+                "a0": 68
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1003
+              },
+              {
+                "syscall": 1040,
+                "a0": 68
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1003
+              },
+              {
+                "syscall": 1040,
+                "a0": 68
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1003
+              },
+              {
+                "syscall": 1040,
+                "a0": 68
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1003
+              },
+              {
+                "syscall": 1040,
+                "a0": 68
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1000,
+                "a0": 1056
+              },
+              {
+                "syscall": 1017
+              },
+              {
+                "syscall": 1062
+              },
+              {
+                "syscall": 1062
+              },
+              {
+                "syscall": 1062
+              },
+              {
+                "syscall": 1062
+              },
+              {
+                "syscall": 1040,
+                "a0": 108
+              },
+              {
+                "syscall": 1162
+              },
+              {
+                "syscall": 1040,
+                "a0": 129
+              },
+              {
+                "syscall": 1040,
+                "a0": 22
+              },
+              {
+                "syscall": 1158
+              },
+              {
+                "syscall": 1017
+              },
+              {
+                "syscall": 1017
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1107,
+                "a0": 2,
+                "a1": 2,
+                "a2": 0
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1024
+              },
+              {
+                "syscall": 1024
+              },
+              {
+                "syscall": 1024
+              },
+              {
+                "syscall": 1004
+              },
+              {
+                "syscall": 1004
+              },
+              {
+                "syscall": 1004
+              },
+              {
+                "syscall": 1004
+              },
+              {
+                "syscall": 1130
+              },
+              {
+                "syscall": 1130
+              },
+              {
+                "syscall": 1001
+              }
+            ],
+            "paths": [
+              "/emul/irix/usr/lib32/libc.so.1",
+              "/emul/irix/lib32/rld",
+              "/emul/irix/dev/zero",
+              "/dev/zero",
+              "/emul/irix/usr/lib32/libXm.so.1",
+              "/emul/irix/usr/lib32/libXt.so",
+              "/emul/irix/usr/lib32/libX11.so.1",
+              "/emul/irix/usr/lib32/libCsup.so",
+              "/emul/irix/usr/lib32/libC.so.2",
+              "/emul/irix/usr/lib32/libm.so",
+              "/emul/irix/usr/lib/X11/locale/locale.alias",
+              "/emul/irix/usr/lib/X11/locale/locale.dir",
+              "/emul/irix/usr/lib/X11/locale/locale.alias",
+              "/emul/irix/usr/lib/X11/locale/locale.dir",
+              "/emul/irix/usr/lib/X11/locale/locale.alias",
+              "/emul/irix/usr/lib/X11/locale/locale.dir",
+              "/emul/irix/usr/lib/X11/locale/locale.alias",
+              "/emul/irix/usr/lib/X11/locale/locale.dir",
+              "/emul/irix/usr/lib/X11/locale/locale.alias",
+              "/emul/irix/usr/lib/X11/locale/locale.dir",
+              "/emul/irix/usr/lib/X11/XtErrorDB"
+            ]
+          }
+        },
+        "closure-4Dwm-user": {
+          "calls": [
+            "syscall=1040 pc=0xfa4f9b8 a0=0x16 a1=0x1d a2=0x7fff7f74 a3=0x7fff7f78",
+            "syscall=1040 pc=0xfa4f9b8 a0=0x55 a1=0xfb45940 a2=0x7fff7ee0 a3=0",
+            "syscall=1024 pc=0xfa5f5e8 a0=0x55 a1=0xfb45940 a2=0xffffffff a3=0",
+            "syscall=1024 pc=0xfa5c490 a0=0x2 a1=0xfb45940 a2=0xffffffff a3=0",
+            "syscall=1047 pc=0xfa59598 a0=0x2 a1=0xfb45940 a2=0xffffffff a3=0",
+            "syscall=1047 pc=0xfa5e068 a0=0x2 a1=0xfb45940 a2=0xffffffff a3=0",
+            "syscall=1005 pc=0xfa4fbf0 a0=0xfb459c8 a1=0 a2=0x4 a3=0",
+            "syscall=1003 pc=0xfa51844 a0=0x3 a1=0x7fff7d00 a2=0x200 a3=0",
+            "syscall=1040 pc=0xfa4f9b8 a0=0x44 a1=0x3 a2=0x7fff7d74 a3=0x2",
+            "syscall=1006 pc=0xfa4fa7c a0=0x3 a1=0x3 a2=0x7fff7d74 a3=0",
+            "syscall=1000 pc=0xfb81e0c a0=0x420 a1=0xe a2=0x7fff7f64 a3=0x7fff7f74",
+            "syscall=1005 pc=0xfb8361c a0=0xfbddc18 a1=0 a2=0x1000 a3=0x2000",
+            "syscall=1134 pc=0xfb83f0c a0=0xfbe0000 a1=0x8000 a2=0x3 a3=0x2",
+            "syscall=1006 pc=0xfb839e8 a0=0x3 a1=0x8000 a2=0x3 a3=0",
+            "syscall=1040 pc=0xfb7d28c a0=0x5c a1=0 a2=0xfbe1ff0 a3=0",
+            "syscall=1024 pc=0xfb60250 a0=0x7fff7ef8 a1=0x7fff7ef0 a2=0xffffffff a3=0x1",
+            "syscall=1047 pc=0xfb60280 a0=0x7fff7ef4 a1=0x7fff7efc a2=0xffffffff a3=0",
+            "syscall=1156 pc=0xfb74904 a0=0x6d a1=0x7fff7dc0 a2=0x101 a3=0",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1003 pc=0xfb83ebc a0=0x3 a1=0x7fff60a0 a2=0x200 a3=0",
+            "syscall=1040 pc=0xfb7d28c a0=0x44 a1=0x3 a2=0x7fff6000 a3=0x2",
+            "syscall=1006 pc=0xfb839e8 a0=0x3 a1=0x7fff60a0 a2=0x7fff60d4 a3=0x7fff6490",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe1030",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe1030",
+            "syscall=1003 pc=0xfb83ebc a0=0x3 a1=0x7fff60a0 a2=0x200 a3=0",
+            "syscall=1040 pc=0xfb7d28c a0=0x44 a1=0x3 a2=0x7fff6000 a3=0x2",
+            "syscall=1020 pc=0xfb82f8c a0=0 a1=0x1000 a2=0xfbe1438 a3=0xfbdb190",
+            "syscall=1005 pc=0xfb8361c a0=0xfbdd688 a1=0x9 a2=0x1ff a3=0x7fff5fd8",
+            "syscall=1004 pc=0xfb748dc a0=0x4 a1=0xfbe1438 a2=0x60 a3=0x7fff5ef8",
+            "syscall=1006 pc=0xfb839e8 a0=0x4 a1=0xfbe1438 a2=0x60 a3=0",
+            "syscall=1006 pc=0xfb839e8 a0=0x3 a1=0x7fff60a0 a2=0x7fff60d4 a3=0x7fff6490",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe1030",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe1030",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe1030",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe1030",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe1030",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe1030",
+            "syscall=1020 pc=0xfb82f8c a0=0 a1=0x1000 a2=0xfbe1c48 a3=0xfbdb190",
+            "syscall=1005 pc=0xfb8361c a0=0xfbdd688 a1=0x9 a2=0x1ff a3=0x7fff6468",
+            "syscall=1004 pc=0xfb748dc a0=0x3 a1=0xfbe1438 a2=0x14d a3=0x7fff6388",
+            "syscall=1006 pc=0xfb839e8 a0=0x3 a1=0xfbe1438 a2=0x14d a3=0",
+            "syscall=1130 pc=0xfb835f4 a0=0xe a1=0xfbe1438 a2=0x14d a3=0",
+            "syscall=1001 pc=0xfb83aa4 a0=0x1 a1=0xfbe1438 a2=0x14d a3=0x1"
+          ],
+          "paths": [
+            "/root/irix-desktop/./runner",
+            "/usr/libexec/ld.elf_so-o32",
+            "/usr/libexec/ld.elf_so-mipseb",
+            "/emul/netbsd32",
+            "/usr/libexec/ld.elf_so",
+            "/emul/netbsd32",
+            "/etc/ld.so.conf",
+            "/usr/lib/libc.so.12",
+            "/etc/malloc.conf",
+            "input.txt",
+            "/root/irix-desktop/./vendor-4Dwm",
+            "/emul/irix",
+            "/emul/irix/usr/lib32/libc.so.1",
+            "/emul/irix/lib32/rld",
+            "/emul/irix/dev/zero",
+            "/dev/zero",
+            "/emul/irix/usr/lib32/libimdXutil.so",
+            "/usr/lib32/libimdXutil.so",
+            "/emul/irix/usr/lib32/internal/libimdXutil.so",
+            "/emul/irix/usr/lib32/libimdUtil.so",
+            "/usr/lib32/libimdUtil.so",
+            "/emul/irix/usr/lib32/internal/libimdUtil.so",
+            "/emul/irix/dev/tty",
+            "/dev/tty",
+            "/emul/irix/lib32/libimdUtil.so",
+            "/lib32/libimdUtil.so",
+            "/emul/irix/opt/lib32/libimdUtil.so",
+            "/opt/lib32/libimdUtil.so",
+            "/emul/irix/usr/lib32/libimdUtil.so.1",
+            "/usr/lib32/libimdUtil.so.1",
+            "/emul/irix/usr/lib32/internal/libimdUtil.so.1",
+            "/usr/lib32/internal/libimdUtil.so.1",
+            "/emul/irix/lib32/libimdUtil.so.1",
+            "/lib32/libimdUtil.so.1",
+            "/emul/irix/opt/lib32/libimdUtil.so.1",
+            "/opt/lib32/libimdUtil.so.1",
+            "/emul/irix/dev/tty",
+            "/dev/tty"
+          ],
+          "signature": {
+            "calls": [
+              {
+                "syscall": 1040,
+                "a0": 22
+              },
+              {
+                "syscall": 1040,
+                "a0": 85
+              },
+              {
+                "syscall": 1024
+              },
+              {
+                "syscall": 1024
+              },
+              {
+                "syscall": 1047
+              },
+              {
+                "syscall": 1047
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1003
+              },
+              {
+                "syscall": 1040,
+                "a0": 68
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1000,
+                "a0": 1056
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1134
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1040,
+                "a0": 92
+              },
+              {
+                "syscall": 1024
+              },
+              {
+                "syscall": 1047
+              },
+              {
+                "syscall": 1156
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1003
+              },
+              {
+                "syscall": 1040,
+                "a0": 68
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1003
+              },
+              {
+                "syscall": 1040,
+                "a0": 68
+              },
+              {
+                "syscall": 1020
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1004
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1020
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1004
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1130
+              },
+              {
+                "syscall": 1001
+              }
+            ],
+            "paths": [
+              "/emul/irix/usr/lib32/libc.so.1",
+              "/emul/irix/lib32/rld",
+              "/emul/irix/dev/zero",
+              "/dev/zero",
+              "/emul/irix/usr/lib32/libimdXutil.so",
+              "/usr/lib32/libimdXutil.so",
+              "/emul/irix/usr/lib32/internal/libimdXutil.so",
+              "/emul/irix/usr/lib32/libimdUtil.so",
+              "/usr/lib32/libimdUtil.so",
+              "/emul/irix/usr/lib32/internal/libimdUtil.so",
+              "/emul/irix/dev/tty",
+              "/dev/tty",
+              "/emul/irix/lib32/libimdUtil.so",
+              "/lib32/libimdUtil.so",
+              "/emul/irix/opt/lib32/libimdUtil.so",
+              "/emul/irix/usr/lib32/libimdUtil.so.1",
+              "/usr/lib32/libimdUtil.so.1",
+              "/emul/irix/usr/lib32/internal/libimdUtil.so.1",
+              "/usr/lib32/internal/libimdUtil.so.1",
+              "/emul/irix/lib32/libimdUtil.so.1",
+              "/lib32/libimdUtil.so.1",
+              "/emul/irix/opt/lib32/libimdUtil.so.1",
+              "/emul/irix/dev/tty",
+              "/dev/tty"
+            ]
+          }
+        },
+        "closure-toolchest-user": {
+          "calls": [
+            "syscall=1040 pc=0xfa4f9b8 a0=0x16 a1=0x1d a2=0x7fff7f74 a3=0x7fff7f78",
+            "syscall=1040 pc=0xfa4f9b8 a0=0x55 a1=0xfb45940 a2=0x7fff7ee0 a3=0",
+            "syscall=1024 pc=0xfa5f5e8 a0=0x55 a1=0xfb45940 a2=0xffffffff a3=0",
+            "syscall=1024 pc=0xfa5c490 a0=0x2 a1=0xfb45940 a2=0xffffffff a3=0",
+            "syscall=1047 pc=0xfa59598 a0=0x2 a1=0xfb45940 a2=0xffffffff a3=0",
+            "syscall=1047 pc=0xfa5e068 a0=0x2 a1=0xfb45940 a2=0xffffffff a3=0",
+            "syscall=1005 pc=0xfa4fbf0 a0=0xfb459c8 a1=0 a2=0x4 a3=0",
+            "syscall=1003 pc=0xfa51844 a0=0x3 a1=0x7fff7d00 a2=0x200 a3=0",
+            "syscall=1040 pc=0xfa4f9b8 a0=0x44 a1=0x3 a2=0x7fff7d74 a3=0x2",
+            "syscall=1006 pc=0xfa4fa7c a0=0x3 a1=0x3 a2=0x7fff7d74 a3=0",
+            "syscall=1000 pc=0xfb81e0c a0=0x420 a1=0xe a2=0x7fff7f64 a3=0x7fff7f74",
+            "syscall=1005 pc=0xfb8361c a0=0xfbddc18 a1=0 a2=0x1000 a3=0x2000",
+            "syscall=1134 pc=0xfb83f0c a0=0xfbe0000 a1=0x8000 a2=0x3 a3=0x2",
+            "syscall=1006 pc=0xfb839e8 a0=0x3 a1=0x8000 a2=0x3 a3=0",
+            "syscall=1040 pc=0xfb7d28c a0=0x5c a1=0 a2=0xfbe1ff0 a3=0",
+            "syscall=1024 pc=0xfb60250 a0=0x7fff7ef8 a1=0x7fff7ef0 a2=0xffffffff a3=0x1",
+            "syscall=1047 pc=0xfb60280 a0=0x7fff7ef4 a1=0x7fff7efc a2=0xffffffff a3=0",
+            "syscall=1156 pc=0xfb74904 a0=0x6d a1=0x7fff7dc0 a2=0x101 a3=0",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1003 pc=0xfb83ebc a0=0x3 a1=0x7fff60a0 a2=0x200 a3=0",
+            "syscall=1040 pc=0xfb7d28c a0=0x44 a1=0x3 a2=0x7fff6000 a3=0x2",
+            "syscall=1006 pc=0xfb839e8 a0=0x3 a1=0x7fff60a0 a2=0x7fff60d4 a3=0x7fff6490",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe1030",
+            "syscall=1003 pc=0xfb83ebc a0=0x3 a1=0x7fff60a0 a2=0x200 a3=0",
+            "syscall=1040 pc=0xfb7d28c a0=0x44 a1=0x3 a2=0x7fff6000 a3=0x2",
+            "syscall=1006 pc=0xfb839e8 a0=0x3 a1=0x7fff60a0 a2=0x7fff60d4 a3=0x7fff6490",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe1438",
+            "syscall=1003 pc=0xfb83ebc a0=0x3 a1=0x7fff60a0 a2=0x200 a3=0",
+            "syscall=1040 pc=0xfb7d28c a0=0x44 a1=0x3 a2=0x7fff6000 a3=0x2",
+            "syscall=1006 pc=0xfb839e8 a0=0x3 a1=0x7fff60a0 a2=0x7fff60d4 a3=0x7fff6490",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe1840",
+            "syscall=1003 pc=0xfb83ebc a0=0x3 a1=0x7fff60a0 a2=0x200 a3=0",
+            "syscall=1040 pc=0xfb7d28c a0=0x44 a1=0x3 a2=0x7fff6000 a3=0x2",
+            "syscall=1006 pc=0xfb839e8 a0=0x3 a1=0x7fff60a0 a2=0x7fff60d4 a3=0x7fff6490",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe1c48",
+            "syscall=1003 pc=0xfb83ebc a0=0x3 a1=0x7fff60a0 a2=0x200 a3=0",
+            "syscall=1040 pc=0xfb7d28c a0=0x44 a1=0x3 a2=0x7fff6000 a3=0x2",
+            "syscall=1006 pc=0xfb839e8 a0=0x3 a1=0x7fff60a0 a2=0x7fff60d4 a3=0x7fff6490",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe2458",
+            "syscall=1003 pc=0xfb83ebc a0=0x3 a1=0x7fff60a0 a2=0x200 a3=0",
+            "syscall=1040 pc=0xfb7d28c a0=0x44 a1=0x3 a2=0x7fff6000 a3=0x2",
+            "syscall=1006 pc=0xfb839e8 a0=0x3 a1=0x7fff60a0 a2=0x7fff60d4 a3=0x7fff6490",
+            "syscall=1000 pc=0xfa51bcc a0=0x420 a1=0xe a2=0xadf4958 a3=0xadf7750",
+            "syscall=1017 pc=0xfa4ff30 a0=0x1001e000 a1=0xe a2=0xadf4958 a3=0x1318",
+            "syscall=1062 pc=0xfa57270 a0=0 a1=0x3 a2=0 a3=0x3",
+            "syscall=1062 pc=0xfa57270 a0=0x1 a1=0x3 a2=0 a3=0x3",
+            "syscall=1062 pc=0xfa57270 a0=0x2 a1=0x3 a2=0 a3=0x3",
+            "syscall=1062 pc=0xfa57270 a0=0x2 a1=0x3 a2=0 a3=0x3",
+            "syscall=1040 pc=0xfb7d28c a0=0x6c a1=0xfbe2458 a2=0xfbe0c28 a3=0xfbdb190",
+            "syscall=1162 pc=0xfa5c57c a0=0x12 a1=0x7fff7a10 a2=0 a3=0xfafd878",
+            "syscall=1040 pc=0xfa4f9b8 a0=0x81 a1=0 a2=0x181 a3=0xffffffff",
+            "syscall=1040 pc=0xfa4f9b8 a0=0x16 a1=0x1c a2=0 a3=0x7fff7fbf",
+            "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0xfb59ac4 a2=0x7fff7290 a3=0x1",
+            "syscall=1017 pc=0xfa4ff30 a0=0x10020000 a1=0x1ff1 a2=0x1001dff0 a3=0x1001e000",
+            "syscall=1017 pc=0xfa4ff30 a0=0x10022000 a1=0x1001fe20 a2=0x1001fb90 a3=0x10020000",
+            "syscall=1005 pc=0xfa4fbf0 a0=0x7fff6830 a1=0 a2=0x1b6 a3=0",
+            "syscall=1005 pc=0xfa4fbf0 a0=0x7fff6770 a1=0 a2=0x1b6 a3=0",
+            "syscall=1005 pc=0xfa4fbf0 a0=0x7fff6800 a1=0 a2=0x1b6 a3=0",
+            "syscall=1005 pc=0xfa4fbf0 a0=0x7fff6740 a1=0 a2=0x1b6 a3=0",
+            "syscall=1005 pc=0xfa4fbf0 a0=0x7fff6830 a1=0 a2=0x1b6 a3=0",
+            "syscall=1005 pc=0xfa4fbf0 a0=0x7fff6770 a1=0 a2=0x1b6 a3=0",
+            "syscall=1005 pc=0xfa4fbf0 a0=0x7fff6820 a1=0 a2=0x1b6 a3=0",
+            "syscall=1005 pc=0xfa4fbf0 a0=0x7fff6760 a1=0 a2=0x1b6 a3=0",
+            "syscall=1005 pc=0xfa4fbf0 a0=0x7fff6820 a1=0 a2=0x1b6 a3=0",
+            "syscall=1005 pc=0xfa4fbf0 a0=0x7fff6760 a1=0 a2=0x1b6 a3=0",
+            "syscall=1107 pc=0xfa51ad0 a0=0x2 a1=0x2 a2=0 a3=0x33",
+            "syscall=1005 pc=0xfa4fbf0 a0=0xf4a60c8 a1=0 a2=0xf4a6050 a3=0xf4a6c30",
+            "syscall=1024 pc=0xfa5f5e8 a0=0x7fff7310 a1=0xf4a6070 a2=0 a3=0xf4a6073",
+            "syscall=1024 pc=0xfa5c490 a0=0x7fff7310 a1=0xf4a6070 a2=0 a3=0",
+            "syscall=1024 pc=0xfa5f5e8 a0=0x7fff7310 a1=0xf4a6070 a2=0 a3=0",
+            "syscall=1004 pc=0xfa61048 a0=0x2 a1=0xfb5d778 a2=0x8 a3=0x4",
+            "syscall=1004 pc=0xfa61048 a0=0x2 a1=0x10020e39 a2=0x1f a3=0",
+            "syscall=1004 pc=0xfa61048 a0=0x2 a1=0xfb5d778 a2=0x1 a3=0x4",
+            "syscall=1130 pc=0xfa57964 a0=0x16 a1=0 a2=0xfb5d500 a3=0x10867c",
+            "syscall=1130 pc=0xfa57964 a0=0xe a1=0x1 a2=0xfb5d500 a3=0x1",
+            "syscall=1001 pc=0xfa577d0 a0=0x1 a1=0xa a2=0x2 a3=0"
+          ],
+          "paths": [
+            "/root/irix-desktop/./runner",
+            "/usr/libexec/ld.elf_so-o32",
+            "/usr/libexec/ld.elf_so-mipseb",
+            "/emul/netbsd32",
+            "/usr/libexec/ld.elf_so",
+            "/emul/netbsd32",
+            "/etc/ld.so.conf",
+            "/usr/lib/libc.so.12",
+            "/etc/malloc.conf",
+            "input.txt",
+            "/root/irix-desktop/./vendor-toolchest",
+            "/emul/irix",
+            "/emul/irix/usr/lib32/libc.so.1",
+            "/emul/irix/lib32/rld",
+            "/emul/irix/dev/zero",
+            "/dev/zero",
+            "/emul/irix/usr/lib32/libXm.so.1",
+            "/emul/irix/usr/lib32/libXt.so",
+            "/emul/irix/usr/lib32/libX11.so.1",
+            "/emul/irix/usr/lib32/libCsup.so",
+            "/emul/irix/usr/lib32/libC.so.2",
+            "/emul/irix/usr/lib32/libm.so",
+            "/emul/irix/usr/lib/X11/locale/locale.alias",
+            "/usr/lib/X11/locale/locale.alias",
+            "/emul/irix/usr/lib/X11/locale/locale.dir",
+            "/usr/lib/X11/locale/locale.dir",
+            "/emul/irix/usr/lib/X11/locale/locale.alias",
+            "/usr/lib/X11/locale/locale.alias",
+            "/emul/irix/usr/lib/X11/locale/locale.dir",
+            "/usr/lib/X11/locale/locale.dir",
+            "/emul/irix/usr/lib/X11/locale/locale.alias",
+            "/usr/lib/X11/locale/locale.alias",
+            "/emul/irix/usr/lib/X11/locale/locale.dir",
+            "/usr/lib/X11/locale/locale.dir",
+            "/emul/irix/usr/lib/X11/locale/locale.alias",
+            "/usr/lib/X11/locale/locale.alias",
+            "/emul/irix/usr/lib/X11/locale/locale.dir",
+            "/usr/lib/X11/locale/locale.dir",
+            "/emul/irix/usr/lib/X11/locale/locale.alias",
+            "/usr/lib/X11/locale/locale.alias",
+            "/emul/irix/usr/lib/X11/locale/locale.dir",
+            "/usr/lib/X11/locale/locale.dir",
+            "/emul/irix/usr/lib/X11/XtErrorDB",
+            "/usr/lib/X11/XtErrorDB"
+          ],
+          "signature": {
+            "calls": [
+              {
+                "syscall": 1040,
+                "a0": 22
+              },
+              {
+                "syscall": 1040,
+                "a0": 85
+              },
+              {
+                "syscall": 1024
+              },
+              {
+                "syscall": 1024
+              },
+              {
+                "syscall": 1047
+              },
+              {
+                "syscall": 1047
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1003
+              },
+              {
+                "syscall": 1040,
+                "a0": 68
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1000,
+                "a0": 1056
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1134
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1040,
+                "a0": 92
+              },
+              {
+                "syscall": 1024
+              },
+              {
+                "syscall": 1047
+              },
+              {
+                "syscall": 1156
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1003
+              },
+              {
+                "syscall": 1040,
+                "a0": 68
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1003
+              },
+              {
+                "syscall": 1040,
+                "a0": 68
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1003
+              },
+              {
+                "syscall": 1040,
+                "a0": 68
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1003
+              },
+              {
+                "syscall": 1040,
+                "a0": 68
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1003
+              },
+              {
+                "syscall": 1040,
+                "a0": 68
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1003
+              },
+              {
+                "syscall": 1040,
+                "a0": 68
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1000,
+                "a0": 1056
+              },
+              {
+                "syscall": 1017
+              },
+              {
+                "syscall": 1062
+              },
+              {
+                "syscall": 1062
+              },
+              {
+                "syscall": 1062
+              },
+              {
+                "syscall": 1062
+              },
+              {
+                "syscall": 1040,
+                "a0": 108
+              },
+              {
+                "syscall": 1162
+              },
+              {
+                "syscall": 1040,
+                "a0": 129
+              },
+              {
+                "syscall": 1040,
+                "a0": 22
+              },
+              {
+                "syscall": 1158
+              },
+              {
+                "syscall": 1017
+              },
+              {
+                "syscall": 1017
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1107,
+                "a0": 2,
+                "a1": 2,
+                "a2": 0
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1024
+              },
+              {
+                "syscall": 1024
+              },
+              {
+                "syscall": 1024
+              },
+              {
+                "syscall": 1004
+              },
+              {
+                "syscall": 1004
+              },
+              {
+                "syscall": 1004
+              },
+              {
+                "syscall": 1130
+              },
+              {
+                "syscall": 1130
+              },
+              {
+                "syscall": 1001
+              }
+            ],
+            "paths": [
+              "/emul/irix/usr/lib32/libc.so.1",
+              "/emul/irix/lib32/rld",
+              "/emul/irix/dev/zero",
+              "/dev/zero",
+              "/emul/irix/usr/lib32/libXm.so.1",
+              "/emul/irix/usr/lib32/libXt.so",
+              "/emul/irix/usr/lib32/libX11.so.1",
+              "/emul/irix/usr/lib32/libCsup.so",
+              "/emul/irix/usr/lib32/libC.so.2",
+              "/emul/irix/usr/lib32/libm.so",
+              "/emul/irix/usr/lib/X11/locale/locale.alias",
+              "/emul/irix/usr/lib/X11/locale/locale.dir",
+              "/emul/irix/usr/lib/X11/locale/locale.alias",
+              "/emul/irix/usr/lib/X11/locale/locale.dir",
+              "/emul/irix/usr/lib/X11/locale/locale.alias",
+              "/emul/irix/usr/lib/X11/locale/locale.dir",
+              "/emul/irix/usr/lib/X11/locale/locale.alias",
+              "/emul/irix/usr/lib/X11/locale/locale.dir",
+              "/emul/irix/usr/lib/X11/locale/locale.alias",
+              "/emul/irix/usr/lib/X11/locale/locale.dir",
+              "/emul/irix/usr/lib/X11/XtErrorDB"
+            ]
+          }
+        }
+      },
+      "expectations_sha256": "52b90518d8c34caca2ca8a71820a114c0e93f1ad037b1245b60c6ee7377fcdfb",
+      "seconds": 256.448
+    },
+    {
+      "path": ".work/irix-desktop-runs/ordinary-x_n_j6f9/result.json",
+      "result_sha256": "5c8b801ffd3f953ae1f1b2287d18477d6186dc4b224a8ecc04ab8244c631883c",
+      "status": "passed",
+      "mode": "ordinary",
+      "clean_shutdown": true,
+      "pin": {
+        "schema": 1,
+        "description": "Bounded o32/n32 personality on the LP64 Indy kernel",
+        "ident": "XIRI_IRIX_LP64_20261030",
+        "source_revision": "0859ba7eb2a784b7f34dd0a52d9e19d32d978898",
+        "source_branch": "xiri/irix-lp64",
+        "build_arch": "mips64eb",
+        "page_bytes": 8192,
+        "boot_kernel_sha256": "662bfa5e484986bac2ddd8eddd250bc0e1249785dd08542da56de5543fac513d",
+        "native_kernel_sha256": "b818ada383112baadf3cbcde9611ee1b53684832bf7c1b3d2f4a5e8910fc0055",
+        "debug_kernel_sha256": "bb87be5bf60da9b7659c977d86077fe2c57fc1aba85f365727e386ebfa7d7dba",
+        "native_o32_sha256": "c294fbb1f2110445be31c096481ea54ab561c7e59ca5b9fc7171310098d755d4",
+        "source_dirty": false,
+        "emulator_revision": "9df1df14334838a989253efefe26f0547e6da592",
+        "emulator_branch": "xiri/netbsd64-tlb",
+        "emulator_sha256": "1b3f7702ba7f43b5c4fca8ba8884243559f46371d8d67a36ce5e6fee1e595eba",
+        "ci_client_sha256": "8711321aa6eaae440da3c7920b00ae4cf1c7f2abbdb15a9919f58485500ffb6c",
+        "base_disk_sha256": "269038c7b77660c83d3835208fc0b2702c93110c14b3c55a42416f51672cee2a",
+        "nvram_sha256": "ee883474d52f09278287b2044f7aeca61d2e7bc39c0bb8fd85c983ab64063d15",
+        "config_sha256": "420d36f1d0cea49aeb9a7a62b90126f933790fd623cff9876c2e8a8a5eebe6e4",
+        "runtimes": [
+          {
+            "name": "vendor-o32-libc",
+            "path": "/usr/lib/libc.so.1",
+            "sha256": "ea766492103a193e9d404942705e4e28987545e37f699ede232b6c0f8c97c954"
+          },
+          {
+            "name": "vendor-o32-rld",
+            "path": "/lib/rld",
+            "sha256": "30228b54c1e5585b365514eb7c9895b03cc0f61cb898e05e3ddafece87863439"
+          },
+          {
+            "name": "vendor-n32-libc",
+            "path": "/lib32/libc.so.1",
+            "sha256": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e"
+          },
+          {
+            "name": "vendor-n32-rld",
+            "path": "/lib32/rld",
+            "sha256": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b"
+          }
+        ]
+      },
+      "inventory_sha256": "570be25c601692dcb96516cdc4ef5cd3ef416bab5f1a6046ce116dddcb23944b",
+      "harness_sha256": "1d88442b6b63238f24557b553467b9f0770c5ef4a7400e8e01e057d186cb0fc4",
+      "runner_sha256": "29afa4f7e563d6d2f3a2715890f4712e696e169fc63a5f34ee25b652ac8c68b5",
+      "observations": [
+        {
+          "name": "native-before",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          },
+          "console": "",
+          "passed": true
+        },
+        {
+          "name": "asa-root",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_O32\n",
+            "stderr": ""
+          },
+          "console": "",
+          "passed": true
+        },
+        {
+          "name": "echo-root",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_N32\n",
+            "stderr": ""
+          },
+          "console": "",
+          "passed": true
+        },
+        {
+          "name": "asa-user",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_O32\n",
+            "stderr": ""
+          },
+          "console": "",
+          "passed": true
+        },
+        {
+          "name": "echo-user",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_N32\n",
+            "stderr": ""
+          },
+          "console": "",
+          "passed": true
+        },
+        {
+          "name": "runtime-4Dwm-root",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "console": "-   1:./vendor-4Dwm: rld: Fatal Error: Cannot Successfully map soname 'libimdXutil.so' under any of the filenames /usr/lib32/libimdXutil.so:/usr/lib32/internal/libimdXutil.so:/lib32/libimdXutil.so:/opt/lib32/libimdXutil.so:/usr/lib32/libimdXutil.so.1:/usr/lib32/internal/libimdXutil.so.1:/lib32/libimdXutil.so.1:/opt/lib32/libimdXutil.so.1: ",
+          "passed": true
+        },
+        {
+          "name": "runtime-toolchest-root",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "console": "-   1:./vendor-toolchest: rld: Fatal Error: Cannot Successfully map soname 'libXm.so.1' under any of the filenames /usr/lib32/libXm.so.1:/usr/lib32/internal/libXm.so.1:/lib32/libXm.so.1:/opt/lib32/libXm.so.1:/usr/lib32/libXm.so.1.1:/usr/lib32/internal/libXm.so.1.1:/lib32/libXm.so.1.1:/opt/lib32/libXm.so.1.1: ",
+          "passed": true
+        },
+        {
+          "name": "runtime-4Dwm-user",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "console": "-   1:./vendor-4Dwm: rld: Fatal Error: Cannot Successfully map soname 'libimdXutil.so' under any of the filenames /usr/lib32/libimdXutil.so:/usr/lib32/internal/libimdXutil.so:/lib32/libimdXutil.so:/opt/lib32/libimdXutil.so:/usr/lib32/libimdXutil.so.1:/usr/lib32/internal/libimdXutil.so.1:/lib32/libimdXutil.so.1:/opt/lib32/libimdXutil.so.1: ",
+          "passed": true
+        },
+        {
+          "name": "runtime-toolchest-user",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "console": "-   1:./vendor-toolchest: rld: Fatal Error: Cannot Successfully map soname 'libXm.so.1' under any of the filenames /usr/lib32/libXm.so.1:/usr/lib32/internal/libXm.so.1:/lib32/libXm.so.1:/opt/lib32/libXm.so.1:/usr/lib32/libXm.so.1.1:/usr/lib32/internal/libXm.so.1.1:/lib32/libXm.so.1.1:/opt/lib32/libXm.so.1.1: ",
+          "passed": true
+        },
+        {
+          "name": "closure-4Dwm-root",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "console": "-   1:./vendor-4Dwm: rld: Error: elfmap: couldn't map /usr/lib32/internal/libimdUtil.so: (null)\n-   1:./vendor-4Dwm: rld: Fatal Error: Cannot Successfully map soname 'libimdUtil.so' under any of the filenames /usr/lib32/libimdUtil.so:/usr/lib32/internal/libimdUtil.so:/lib32/libimdUtil.so:/opt/lib32/libimdUtil.so:/usr/lib32/libimdUtil.so.1:/usr/lib32/internal/libimdUtil.so.1:/lib32/libimdUtil.so.1:/opt/lib32/libimdUtil.so.1: ",
+          "passed": true
+        },
+        {
+          "name": "closure-toolchest-root",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "Error: Can't open display: 127.0.0.1:99\n"
+          },
+          "console": "",
+          "passed": true
+        },
+        {
+          "name": "closure-4Dwm-user",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "console": "-   1:./vendor-4Dwm: rld: Error: elfmap: couldn't map /usr/lib32/internal/libimdUtil.so: (null)\n-   1:./vendor-4Dwm: rld: Fatal Error: Cannot Successfully map soname 'libimdUtil.so' under any of the filenames /usr/lib32/libimdUtil.so:/usr/lib32/internal/libimdUtil.so:/lib32/libimdUtil.so:/opt/lib32/libimdUtil.so:/usr/lib32/libimdUtil.so.1:/usr/lib32/internal/libimdUtil.so.1:/lib32/libimdUtil.so.1:/opt/lib32/libimdUtil.so.1: ",
+          "passed": true
+        },
+        {
+          "name": "closure-toolchest-user",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "Error: Can't open display: 127.0.0.1:99\n"
+          },
+          "console": "",
+          "passed": true
+        },
+        {
+          "name": "asa-after",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_O32\n",
+            "stderr": ""
+          },
+          "console": "",
+          "passed": true
+        },
+        {
+          "name": "echo-after",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_N32\n",
+            "stderr": ""
+          },
+          "console": "",
+          "passed": true
+        },
+        {
+          "name": "native-after",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          },
+          "console": "",
+          "passed": true
+        }
+      ],
+      "started_utc": "2026-10-30T20:23:02Z",
+      "traces": {
+        "runtime-4Dwm-root": {
+          "calls": [
+            "syscall=1040 pc=0xfa4f9b8 a0=0x16 a1=0x1d a2=0x7fff7f74 a3=0x7fff7f78",
+            "syscall=1040 pc=0xfa4f9b8 a0=0x55 a1=0xfb45940 a2=0x7fff7ee0 a3=0",
+            "syscall=1024 pc=0xfa5f5e8 a0=0x55 a1=0xfb45940 a2=0xffffffff a3=0",
+            "syscall=1005 pc=0xfa4fbf0 a0=0xfb459c8 a1=0 a2=0x4 a3=0",
+            "syscall=1003 pc=0xfa51844 a0=0x3 a1=0x7fff7d00 a2=0x200 a3=0",
+            "syscall=1040 pc=0xfa4f9b8 a0=0x44 a1=0x3 a2=0x7fff7d74 a3=0x2",
+            "syscall=1006 pc=0xfa4fa7c a0=0x3 a1=0x3 a2=0x7fff7d74 a3=0",
+            "syscall=1000 pc=0xfb81e0c a0=0x420 a1=0xe a2=0x7fff7f64 a3=0x7fff7f74",
+            "syscall=1005 pc=0xfb8361c a0=0xfbddc18 a1=0 a2=0x1000 a3=0x2000",
+            "syscall=1134 pc=0xfb83f0c a0=0xfbe0000 a1=0x8000 a2=0x3 a3=0x2",
+            "syscall=1006 pc=0xfb839e8 a0=0x3 a1=0x8000 a2=0x3 a3=0",
+            "syscall=1040 pc=0xfb7d28c a0=0x5c a1=0 a2=0xfbe1ff0 a3=0",
+            "syscall=1024 pc=0xfb60250 a0=0x7fff7ef8 a1=0x7fff7ef0 a2=0xffffffff a3=0x1",
+            "syscall=1047 pc=0xfb60280 a0=0x7fff7ef4 a1=0x7fff7efc a2=0xffffffff a3=0",
+            "syscall=1156 pc=0xfb74904 a0=0x6d a1=0x7fff7dc0 a2=0x101 a3=0",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1020 pc=0xfb82f8c a0=0 a1=0x1000 a2=0xfbe1030 a3=0xfbdb190",
+            "syscall=1005 pc=0xfb8361c a0=0xfbdd688 a1=0x9 a2=0x1ff a3=0x7fff6468",
+            "syscall=1004 pc=0xfb748dc a0=0x3 a1=0xfbe1030 a2=0x156 a3=0x7fff6388",
+            "syscall=1006 pc=0xfb839e8 a0=0x3 a1=0xfbe1030 a2=0x156 a3=0",
+            "syscall=1130 pc=0xfb835f4 a0=0xe a1=0xfbe1030 a2=0x156 a3=0",
+            "syscall=1001 pc=0xfb83aa4 a0=0x1 a1=0xfbe1030 a2=0x156 a3=0x1"
+          ],
+          "paths": [
+            "/root/irix-desktop/./runner",
+            "/usr/libexec/ld.elf_so-o32",
+            "/usr/libexec/ld.elf_so-mipseb",
+            "/emul/netbsd32",
+            "/usr/libexec/ld.elf_so",
+            "/emul/netbsd32",
+            "/etc/ld.so.conf",
+            "/usr/lib/libc.so.12",
+            "/etc/malloc.conf",
+            "input.txt",
+            "/root/irix-desktop/./vendor-4Dwm",
+            "/emul/irix",
+            "/emul/irix/usr/lib32/libc.so.1",
+            "/emul/irix/lib32/rld",
+            "/emul/irix/dev/zero",
+            "/dev/zero",
+            "/emul/irix/usr/lib32/libimdXutil.so",
+            "/usr/lib32/libimdXutil.so",
+            "/emul/irix/usr/lib32/internal/libimdXutil.so",
+            "/usr/lib32/internal/libimdXutil.so",
+            "/emul/irix/lib32/libimdXutil.so",
+            "/lib32/libimdXutil.so",
+            "/emul/irix/opt/lib32/libimdXutil.so",
+            "/opt/lib32/libimdXutil.so",
+            "/emul/irix/usr/lib32/libimdXutil.so.1",
+            "/usr/lib32/libimdXutil.so.1",
+            "/emul/irix/usr/lib32/internal/libimdXutil.so.1",
+            "/usr/lib32/internal/libimdXutil.so.1",
+            "/emul/irix/lib32/libimdXutil.so.1",
+            "/lib32/libimdXutil.so.1",
+            "/emul/irix/opt/lib32/libimdXutil.so.1",
+            "/opt/lib32/libimdXutil.so.1",
+            "/emul/irix/dev/tty",
+            "/dev/tty"
+          ],
+          "signature": {
+            "calls": [
+              {
+                "syscall": 1040,
+                "a0": 22
+              },
+              {
+                "syscall": 1040,
+                "a0": 85
+              },
+              {
+                "syscall": 1024
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1003
+              },
+              {
+                "syscall": 1040,
+                "a0": 68
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1000,
+                "a0": 1056
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1134
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1040,
+                "a0": 92
+              },
+              {
+                "syscall": 1024
+              },
+              {
+                "syscall": 1047
+              },
+              {
+                "syscall": 1156
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1020
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1004
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1130
+              },
+              {
+                "syscall": 1001
+              }
+            ],
+            "paths": [
+              "/emul/irix/usr/lib32/libc.so.1",
+              "/emul/irix/lib32/rld",
+              "/emul/irix/dev/zero",
+              "/dev/zero",
+              "/emul/irix/usr/lib32/libimdXutil.so",
+              "/usr/lib32/libimdXutil.so",
+              "/emul/irix/usr/lib32/internal/libimdXutil.so",
+              "/usr/lib32/internal/libimdXutil.so",
+              "/emul/irix/lib32/libimdXutil.so",
+              "/lib32/libimdXutil.so",
+              "/emul/irix/opt/lib32/libimdXutil.so",
+              "/emul/irix/usr/lib32/libimdXutil.so.1",
+              "/usr/lib32/libimdXutil.so.1",
+              "/emul/irix/usr/lib32/internal/libimdXutil.so.1",
+              "/usr/lib32/internal/libimdXutil.so.1",
+              "/emul/irix/lib32/libimdXutil.so.1",
+              "/lib32/libimdXutil.so.1",
+              "/emul/irix/opt/lib32/libimdXutil.so.1",
+              "/emul/irix/dev/tty",
+              "/dev/tty"
+            ]
+          }
+        },
+        "runtime-toolchest-root": {
+          "calls": [
+            "syscall=1040 pc=0xfa4f9b8 a0=0x16 a1=0x1d a2=0x7fff7f74 a3=0x7fff7f78",
+            "syscall=1040 pc=0xfa4f9b8 a0=0x55 a1=0xfb45940 a2=0x7fff7ee0 a3=0",
+            "syscall=1024 pc=0xfa5f5e8 a0=0x55 a1=0xfb45940 a2=0xffffffff a3=0",
+            "syscall=1005 pc=0xfa4fbf0 a0=0xfb459c8 a1=0 a2=0x4 a3=0",
+            "syscall=1003 pc=0xfa51844 a0=0x3 a1=0x7fff7d00 a2=0x200 a3=0",
+            "syscall=1040 pc=0xfa4f9b8 a0=0x44 a1=0x3 a2=0x7fff7d74 a3=0x2",
+            "syscall=1006 pc=0xfa4fa7c a0=0x3 a1=0x3 a2=0x7fff7d74 a3=0",
+            "syscall=1000 pc=0xfb81e0c a0=0x420 a1=0xe a2=0x7fff7f64 a3=0x7fff7f74",
+            "syscall=1005 pc=0xfb8361c a0=0xfbddc18 a1=0 a2=0x1000 a3=0x2000",
+            "syscall=1134 pc=0xfb83f0c a0=0xfbe0000 a1=0x8000 a2=0x3 a3=0x2",
+            "syscall=1006 pc=0xfb839e8 a0=0x3 a1=0x8000 a2=0x3 a3=0",
+            "syscall=1040 pc=0xfb7d28c a0=0x5c a1=0 a2=0xfbe1ff0 a3=0",
+            "syscall=1024 pc=0xfb60250 a0=0x7fff7ef8 a1=0x7fff7ef0 a2=0xffffffff a3=0x1",
+            "syscall=1047 pc=0xfb60280 a0=0x7fff7ef4 a1=0x7fff7efc a2=0xffffffff a3=0",
+            "syscall=1156 pc=0xfb74904 a0=0x6d a1=0x7fff7dc0 a2=0x101 a3=0",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1020 pc=0xfb82f8c a0=0 a1=0x1000 a2=0xfbe1030 a3=0xfbdb190",
+            "syscall=1005 pc=0xfb8361c a0=0xfbdd688 a1=0x9 a2=0x1ff a3=0x7fff6468",
+            "syscall=1004 pc=0xfb748dc a0=0x3 a1=0xfbe1030 a2=0x137 a3=0x7fff6388",
+            "syscall=1006 pc=0xfb839e8 a0=0x3 a1=0xfbe1030 a2=0x137 a3=0",
+            "syscall=1130 pc=0xfb835f4 a0=0xe a1=0xfbe1030 a2=0x137 a3=0",
+            "syscall=1001 pc=0xfb83aa4 a0=0x1 a1=0xfbe1030 a2=0x137 a3=0x1"
+          ],
+          "paths": [
+            "/root/irix-desktop/./runner",
+            "/usr/libexec/ld.elf_so-o32",
+            "/usr/libexec/ld.elf_so-mipseb",
+            "/emul/netbsd32",
+            "/usr/libexec/ld.elf_so",
+            "/emul/netbsd32",
+            "/etc/ld.so.conf",
+            "/usr/lib/libc.so.12",
+            "/etc/malloc.conf",
+            "input.txt",
+            "/root/irix-desktop/./vendor-toolchest",
+            "/emul/irix",
+            "/emul/irix/usr/lib32/libc.so.1",
+            "/emul/irix/lib32/rld",
+            "/emul/irix/dev/zero",
+            "/dev/zero",
+            "/emul/irix/usr/lib32/libXm.so.1",
+            "/usr/lib32/libXm.so.1",
+            "/emul/irix/usr/lib32/internal/libXm.so.1",
+            "/usr/lib32/internal/libXm.so.1",
+            "/emul/irix/lib32/libXm.so.1",
+            "/lib32/libXm.so.1",
+            "/emul/irix/opt/lib32/libXm.so.1",
+            "/opt/lib32/libXm.so.1",
+            "/emul/irix/usr/lib32/libXm.so.1.1",
+            "/usr/lib32/libXm.so.1.1",
+            "/emul/irix/usr/lib32/internal/libXm.so.1.1",
+            "/usr/lib32/internal/libXm.so.1.1",
+            "/emul/irix/lib32/libXm.so.1.1",
+            "/lib32/libXm.so.1.1",
+            "/emul/irix/opt/lib32/libXm.so.1.1",
+            "/opt/lib32/libXm.so.1.1",
+            "/emul/irix/dev/tty",
+            "/dev/tty"
+          ],
+          "signature": {
+            "calls": [
+              {
+                "syscall": 1040,
+                "a0": 22
+              },
+              {
+                "syscall": 1040,
+                "a0": 85
+              },
+              {
+                "syscall": 1024
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1003
+              },
+              {
+                "syscall": 1040,
+                "a0": 68
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1000,
+                "a0": 1056
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1134
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1040,
+                "a0": 92
+              },
+              {
+                "syscall": 1024
+              },
+              {
+                "syscall": 1047
+              },
+              {
+                "syscall": 1156
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1020
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1004
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1130
+              },
+              {
+                "syscall": 1001
+              }
+            ],
+            "paths": [
+              "/emul/irix/usr/lib32/libc.so.1",
+              "/emul/irix/lib32/rld",
+              "/emul/irix/dev/zero",
+              "/dev/zero",
+              "/emul/irix/usr/lib32/libXm.so.1",
+              "/usr/lib32/libXm.so.1",
+              "/emul/irix/usr/lib32/internal/libXm.so.1",
+              "/usr/lib32/internal/libXm.so.1",
+              "/emul/irix/lib32/libXm.so.1",
+              "/lib32/libXm.so.1",
+              "/emul/irix/opt/lib32/libXm.so.1",
+              "/emul/irix/usr/lib32/libXm.so.1.1",
+              "/usr/lib32/libXm.so.1.1",
+              "/emul/irix/usr/lib32/internal/libXm.so.1.1",
+              "/usr/lib32/internal/libXm.so.1.1",
+              "/emul/irix/lib32/libXm.so.1.1",
+              "/lib32/libXm.so.1.1",
+              "/emul/irix/opt/lib32/libXm.so.1.1",
+              "/emul/irix/dev/tty",
+              "/dev/tty"
+            ]
+          }
+        },
+        "runtime-4Dwm-user": {
+          "calls": [
+            "syscall=1040 pc=0xfa4f9b8 a0=0x16 a1=0x1d a2=0x7fff7f74 a3=0x7fff7f78",
+            "syscall=1040 pc=0xfa4f9b8 a0=0x55 a1=0xfb45940 a2=0x7fff7ee0 a3=0",
+            "syscall=1024 pc=0xfa5f5e8 a0=0x55 a1=0xfb45940 a2=0xffffffff a3=0",
+            "syscall=1024 pc=0xfa5c490 a0=0x2 a1=0xfb45940 a2=0xffffffff a3=0",
+            "syscall=1047 pc=0xfa59598 a0=0x2 a1=0xfb45940 a2=0xffffffff a3=0",
+            "syscall=1047 pc=0xfa5e068 a0=0x2 a1=0xfb45940 a2=0xffffffff a3=0",
+            "syscall=1005 pc=0xfa4fbf0 a0=0xfb459c8 a1=0 a2=0x4 a3=0",
+            "syscall=1003 pc=0xfa51844 a0=0x3 a1=0x7fff7d00 a2=0x200 a3=0",
+            "syscall=1040 pc=0xfa4f9b8 a0=0x44 a1=0x3 a2=0x7fff7d74 a3=0x2",
+            "syscall=1006 pc=0xfa4fa7c a0=0x3 a1=0x3 a2=0x7fff7d74 a3=0",
+            "syscall=1000 pc=0xfb81e0c a0=0x420 a1=0xe a2=0x7fff7f64 a3=0x7fff7f74",
+            "syscall=1005 pc=0xfb8361c a0=0xfbddc18 a1=0 a2=0x1000 a3=0x2000",
+            "syscall=1134 pc=0xfb83f0c a0=0xfbe0000 a1=0x8000 a2=0x3 a3=0x2",
+            "syscall=1006 pc=0xfb839e8 a0=0x3 a1=0x8000 a2=0x3 a3=0",
+            "syscall=1040 pc=0xfb7d28c a0=0x5c a1=0 a2=0xfbe1ff0 a3=0",
+            "syscall=1024 pc=0xfb60250 a0=0x7fff7ef8 a1=0x7fff7ef0 a2=0xffffffff a3=0x1",
+            "syscall=1047 pc=0xfb60280 a0=0x7fff7ef4 a1=0x7fff7efc a2=0xffffffff a3=0",
+            "syscall=1156 pc=0xfb74904 a0=0x6d a1=0x7fff7dc0 a2=0x101 a3=0",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1020 pc=0xfb82f8c a0=0 a1=0x1000 a2=0xfbe1030 a3=0xfbdb190",
+            "syscall=1005 pc=0xfb8361c a0=0xfbdd688 a1=0x9 a2=0x1ff a3=0x7fff6468",
+            "syscall=1004 pc=0xfb748dc a0=0x3 a1=0xfbe1030 a2=0x156 a3=0x7fff6388",
+            "syscall=1006 pc=0xfb839e8 a0=0x3 a1=0xfbe1030 a2=0x156 a3=0",
+            "syscall=1130 pc=0xfb835f4 a0=0xe a1=0xfbe1030 a2=0x156 a3=0",
+            "syscall=1001 pc=0xfb83aa4 a0=0x1 a1=0xfbe1030 a2=0x156 a3=0x1"
+          ],
+          "paths": [
+            "/root/irix-desktop/./runner",
+            "/usr/libexec/ld.elf_so-o32",
+            "/usr/libexec/ld.elf_so-mipseb",
+            "/emul/netbsd32",
+            "/usr/libexec/ld.elf_so",
+            "/emul/netbsd32",
+            "/etc/ld.so.conf",
+            "/usr/lib/libc.so.12",
+            "/etc/malloc.conf",
+            "input.txt",
+            "/root/irix-desktop/./vendor-4Dwm",
+            "/emul/irix",
+            "/emul/irix/usr/lib32/libc.so.1",
+            "/emul/irix/lib32/rld",
+            "/emul/irix/dev/zero",
+            "/dev/zero",
+            "/emul/irix/usr/lib32/libimdXutil.so",
+            "/usr/lib32/libimdXutil.so",
+            "/emul/irix/usr/lib32/internal/libimdXutil.so",
+            "/usr/lib32/internal/libimdXutil.so",
+            "/emul/irix/lib32/libimdXutil.so",
+            "/lib32/libimdXutil.so",
+            "/emul/irix/opt/lib32/libimdXutil.so",
+            "/opt/lib32/libimdXutil.so",
+            "/emul/irix/usr/lib32/libimdXutil.so.1",
+            "/usr/lib32/libimdXutil.so.1",
+            "/emul/irix/usr/lib32/internal/libimdXutil.so.1",
+            "/usr/lib32/internal/libimdXutil.so.1",
+            "/emul/irix/lib32/libimdXutil.so.1",
+            "/lib32/libimdXutil.so.1",
+            "/emul/irix/opt/lib32/libimdXutil.so.1",
+            "/opt/lib32/libimdXutil.so.1",
+            "/emul/irix/dev/tty",
+            "/dev/tty"
+          ],
+          "signature": {
+            "calls": [
+              {
+                "syscall": 1040,
+                "a0": 22
+              },
+              {
+                "syscall": 1040,
+                "a0": 85
+              },
+              {
+                "syscall": 1024
+              },
+              {
+                "syscall": 1024
+              },
+              {
+                "syscall": 1047
+              },
+              {
+                "syscall": 1047
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1003
+              },
+              {
+                "syscall": 1040,
+                "a0": 68
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1000,
+                "a0": 1056
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1134
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1040,
+                "a0": 92
+              },
+              {
+                "syscall": 1024
+              },
+              {
+                "syscall": 1047
+              },
+              {
+                "syscall": 1156
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1020
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1004
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1130
+              },
+              {
+                "syscall": 1001
+              }
+            ],
+            "paths": [
+              "/emul/irix/usr/lib32/libc.so.1",
+              "/emul/irix/lib32/rld",
+              "/emul/irix/dev/zero",
+              "/dev/zero",
+              "/emul/irix/usr/lib32/libimdXutil.so",
+              "/usr/lib32/libimdXutil.so",
+              "/emul/irix/usr/lib32/internal/libimdXutil.so",
+              "/usr/lib32/internal/libimdXutil.so",
+              "/emul/irix/lib32/libimdXutil.so",
+              "/lib32/libimdXutil.so",
+              "/emul/irix/opt/lib32/libimdXutil.so",
+              "/emul/irix/usr/lib32/libimdXutil.so.1",
+              "/usr/lib32/libimdXutil.so.1",
+              "/emul/irix/usr/lib32/internal/libimdXutil.so.1",
+              "/usr/lib32/internal/libimdXutil.so.1",
+              "/emul/irix/lib32/libimdXutil.so.1",
+              "/lib32/libimdXutil.so.1",
+              "/emul/irix/opt/lib32/libimdXutil.so.1",
+              "/emul/irix/dev/tty",
+              "/dev/tty"
+            ]
+          }
+        },
+        "runtime-toolchest-user": {
+          "calls": [
+            "syscall=1040 pc=0xfa4f9b8 a0=0x16 a1=0x1d a2=0x7fff7f74 a3=0x7fff7f78",
+            "syscall=1040 pc=0xfa4f9b8 a0=0x55 a1=0xfb45940 a2=0x7fff7ee0 a3=0",
+            "syscall=1024 pc=0xfa5f5e8 a0=0x55 a1=0xfb45940 a2=0xffffffff a3=0",
+            "syscall=1024 pc=0xfa5c490 a0=0x2 a1=0xfb45940 a2=0xffffffff a3=0",
+            "syscall=1047 pc=0xfa59598 a0=0x2 a1=0xfb45940 a2=0xffffffff a3=0",
+            "syscall=1047 pc=0xfa5e068 a0=0x2 a1=0xfb45940 a2=0xffffffff a3=0",
+            "syscall=1005 pc=0xfa4fbf0 a0=0xfb459c8 a1=0 a2=0x4 a3=0",
+            "syscall=1003 pc=0xfa51844 a0=0x3 a1=0x7fff7d00 a2=0x200 a3=0",
+            "syscall=1040 pc=0xfa4f9b8 a0=0x44 a1=0x3 a2=0x7fff7d74 a3=0x2",
+            "syscall=1006 pc=0xfa4fa7c a0=0x3 a1=0x3 a2=0x7fff7d74 a3=0",
+            "syscall=1000 pc=0xfb81e0c a0=0x420 a1=0xe a2=0x7fff7f64 a3=0x7fff7f74",
+            "syscall=1005 pc=0xfb8361c a0=0xfbddc18 a1=0 a2=0x1000 a3=0x2000",
+            "syscall=1134 pc=0xfb83f0c a0=0xfbe0000 a1=0x8000 a2=0x3 a3=0x2",
+            "syscall=1006 pc=0xfb839e8 a0=0x3 a1=0x8000 a2=0x3 a3=0",
+            "syscall=1040 pc=0xfb7d28c a0=0x5c a1=0 a2=0xfbe1ff0 a3=0",
+            "syscall=1024 pc=0xfb60250 a0=0x7fff7ef8 a1=0x7fff7ef0 a2=0xffffffff a3=0x1",
+            "syscall=1047 pc=0xfb60280 a0=0x7fff7ef4 a1=0x7fff7efc a2=0xffffffff a3=0",
+            "syscall=1156 pc=0xfb74904 a0=0x6d a1=0x7fff7dc0 a2=0x101 a3=0",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1020 pc=0xfb82f8c a0=0 a1=0x1000 a2=0xfbe1030 a3=0xfbdb190",
+            "syscall=1005 pc=0xfb8361c a0=0xfbdd688 a1=0x9 a2=0x1ff a3=0x7fff6468",
+            "syscall=1004 pc=0xfb748dc a0=0x3 a1=0xfbe1030 a2=0x137 a3=0x7fff6388",
+            "syscall=1006 pc=0xfb839e8 a0=0x3 a1=0xfbe1030 a2=0x137 a3=0",
+            "syscall=1130 pc=0xfb835f4 a0=0xe a1=0xfbe1030 a2=0x137 a3=0",
+            "syscall=1001 pc=0xfb83aa4 a0=0x1 a1=0xfbe1030 a2=0x137 a3=0x1"
+          ],
+          "paths": [
+            "/root/irix-desktop/./runner",
+            "/usr/libexec/ld.elf_so-o32",
+            "/usr/libexec/ld.elf_so-mipseb",
+            "/emul/netbsd32",
+            "/usr/libexec/ld.elf_so",
+            "/emul/netbsd32",
+            "/etc/ld.so.conf",
+            "/usr/lib/libc.so.12",
+            "/etc/malloc.conf",
+            "input.txt",
+            "/root/irix-desktop/./vendor-toolchest",
+            "/emul/irix",
+            "/emul/irix/usr/lib32/libc.so.1",
+            "/emul/irix/lib32/rld",
+            "/emul/irix/dev/zero",
+            "/dev/zero",
+            "/emul/irix/usr/lib32/libXm.so.1",
+            "/usr/lib32/libXm.so.1",
+            "/emul/irix/usr/lib32/internal/libXm.so.1",
+            "/usr/lib32/internal/libXm.so.1",
+            "/emul/irix/lib32/libXm.so.1",
+            "/lib32/libXm.so.1",
+            "/emul/irix/opt/lib32/libXm.so.1",
+            "/opt/lib32/libXm.so.1",
+            "/emul/irix/usr/lib32/libXm.so.1.1",
+            "/usr/lib32/libXm.so.1.1",
+            "/emul/irix/usr/lib32/internal/libXm.so.1.1",
+            "/usr/lib32/internal/libXm.so.1.1",
+            "/emul/irix/lib32/libXm.so.1.1",
+            "/lib32/libXm.so.1.1",
+            "/emul/irix/opt/lib32/libXm.so.1.1",
+            "/opt/lib32/libXm.so.1.1",
+            "/emul/irix/dev/tty",
+            "/dev/tty"
+          ],
+          "signature": {
+            "calls": [
+              {
+                "syscall": 1040,
+                "a0": 22
+              },
+              {
+                "syscall": 1040,
+                "a0": 85
+              },
+              {
+                "syscall": 1024
+              },
+              {
+                "syscall": 1024
+              },
+              {
+                "syscall": 1047
+              },
+              {
+                "syscall": 1047
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1003
+              },
+              {
+                "syscall": 1040,
+                "a0": 68
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1000,
+                "a0": 1056
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1134
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1040,
+                "a0": 92
+              },
+              {
+                "syscall": 1024
+              },
+              {
+                "syscall": 1047
+              },
+              {
+                "syscall": 1156
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1020
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1004
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1130
+              },
+              {
+                "syscall": 1001
+              }
+            ],
+            "paths": [
+              "/emul/irix/usr/lib32/libc.so.1",
+              "/emul/irix/lib32/rld",
+              "/emul/irix/dev/zero",
+              "/dev/zero",
+              "/emul/irix/usr/lib32/libXm.so.1",
+              "/usr/lib32/libXm.so.1",
+              "/emul/irix/usr/lib32/internal/libXm.so.1",
+              "/usr/lib32/internal/libXm.so.1",
+              "/emul/irix/lib32/libXm.so.1",
+              "/lib32/libXm.so.1",
+              "/emul/irix/opt/lib32/libXm.so.1",
+              "/emul/irix/usr/lib32/libXm.so.1.1",
+              "/usr/lib32/libXm.so.1.1",
+              "/emul/irix/usr/lib32/internal/libXm.so.1.1",
+              "/usr/lib32/internal/libXm.so.1.1",
+              "/emul/irix/lib32/libXm.so.1.1",
+              "/lib32/libXm.so.1.1",
+              "/emul/irix/opt/lib32/libXm.so.1.1",
+              "/emul/irix/dev/tty",
+              "/dev/tty"
+            ]
+          }
+        },
+        "closure-4Dwm-root": {
+          "calls": [
+            "syscall=1040 pc=0xfa4f9b8 a0=0x16 a1=0x1d a2=0x7fff7f74 a3=0x7fff7f78",
+            "syscall=1040 pc=0xfa4f9b8 a0=0x55 a1=0xfb45940 a2=0x7fff7ee0 a3=0",
+            "syscall=1024 pc=0xfa5f5e8 a0=0x55 a1=0xfb45940 a2=0xffffffff a3=0",
+            "syscall=1005 pc=0xfa4fbf0 a0=0xfb459c8 a1=0 a2=0x4 a3=0",
+            "syscall=1003 pc=0xfa51844 a0=0x3 a1=0x7fff7d00 a2=0x200 a3=0",
+            "syscall=1040 pc=0xfa4f9b8 a0=0x44 a1=0x3 a2=0x7fff7d74 a3=0x2",
+            "syscall=1006 pc=0xfa4fa7c a0=0x3 a1=0x3 a2=0x7fff7d74 a3=0",
+            "syscall=1000 pc=0xfb81e0c a0=0x420 a1=0xe a2=0x7fff7f64 a3=0x7fff7f74",
+            "syscall=1005 pc=0xfb8361c a0=0xfbddc18 a1=0 a2=0x1000 a3=0x2000",
+            "syscall=1134 pc=0xfb83f0c a0=0xfbe0000 a1=0x8000 a2=0x3 a3=0x2",
+            "syscall=1006 pc=0xfb839e8 a0=0x3 a1=0x8000 a2=0x3 a3=0",
+            "syscall=1040 pc=0xfb7d28c a0=0x5c a1=0 a2=0xfbe1ff0 a3=0",
+            "syscall=1024 pc=0xfb60250 a0=0x7fff7ef8 a1=0x7fff7ef0 a2=0xffffffff a3=0x1",
+            "syscall=1047 pc=0xfb60280 a0=0x7fff7ef4 a1=0x7fff7efc a2=0xffffffff a3=0",
+            "syscall=1156 pc=0xfb74904 a0=0x6d a1=0x7fff7dc0 a2=0x101 a3=0",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1003 pc=0xfb83ebc a0=0x3 a1=0x7fff60a0 a2=0x200 a3=0",
+            "syscall=1040 pc=0xfb7d28c a0=0x44 a1=0x3 a2=0x7fff6000 a3=0x2",
+            "syscall=1006 pc=0xfb839e8 a0=0x3 a1=0x7fff60a0 a2=0x7fff60d4 a3=0x7fff6490",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe1030",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe1030",
+            "syscall=1003 pc=0xfb83ebc a0=0x3 a1=0x7fff60a0 a2=0x200 a3=0",
+            "syscall=1040 pc=0xfb7d28c a0=0x44 a1=0x3 a2=0x7fff6000 a3=0x2",
+            "syscall=1020 pc=0xfb82f8c a0=0 a1=0x1000 a2=0xfbe1438 a3=0xfbdb190",
+            "syscall=1005 pc=0xfb8361c a0=0xfbdd688 a1=0x9 a2=0x1ff a3=0x7fff5fd8",
+            "syscall=1004 pc=0xfb748dc a0=0x4 a1=0xfbe1438 a2=0x60 a3=0x7fff5ef8",
+            "syscall=1006 pc=0xfb839e8 a0=0x4 a1=0xfbe1438 a2=0x60 a3=0",
+            "syscall=1006 pc=0xfb839e8 a0=0x3 a1=0x7fff60a0 a2=0x7fff60d4 a3=0x7fff6490",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe1030",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe1030",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe1030",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe1030",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe1030",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe1030",
+            "syscall=1020 pc=0xfb82f8c a0=0 a1=0x1000 a2=0xfbe1c48 a3=0xfbdb190",
+            "syscall=1005 pc=0xfb8361c a0=0xfbdd688 a1=0x9 a2=0x1ff a3=0x7fff6468",
+            "syscall=1004 pc=0xfb748dc a0=0x3 a1=0xfbe1438 a2=0x14d a3=0x7fff6388",
+            "syscall=1006 pc=0xfb839e8 a0=0x3 a1=0xfbe1438 a2=0x14d a3=0",
+            "syscall=1130 pc=0xfb835f4 a0=0xe a1=0xfbe1438 a2=0x14d a3=0",
+            "syscall=1001 pc=0xfb83aa4 a0=0x1 a1=0xfbe1438 a2=0x14d a3=0x1"
+          ],
+          "paths": [
+            "/root/irix-desktop/./runner",
+            "/usr/libexec/ld.elf_so-o32",
+            "/usr/libexec/ld.elf_so-mipseb",
+            "/emul/netbsd32",
+            "/usr/libexec/ld.elf_so",
+            "/emul/netbsd32",
+            "/etc/ld.so.conf",
+            "/usr/lib/libc.so.12",
+            "/etc/malloc.conf",
+            "input.txt",
+            "/root/irix-desktop/./vendor-4Dwm",
+            "/emul/irix",
+            "/emul/irix/usr/lib32/libc.so.1",
+            "/emul/irix/lib32/rld",
+            "/emul/irix/dev/zero",
+            "/dev/zero",
+            "/emul/irix/usr/lib32/libimdXutil.so",
+            "/usr/lib32/libimdXutil.so",
+            "/emul/irix/usr/lib32/internal/libimdXutil.so",
+            "/emul/irix/usr/lib32/libimdUtil.so",
+            "/usr/lib32/libimdUtil.so",
+            "/emul/irix/usr/lib32/internal/libimdUtil.so",
+            "/emul/irix/dev/tty",
+            "/dev/tty",
+            "/emul/irix/lib32/libimdUtil.so",
+            "/lib32/libimdUtil.so",
+            "/emul/irix/opt/lib32/libimdUtil.so",
+            "/opt/lib32/libimdUtil.so",
+            "/emul/irix/usr/lib32/libimdUtil.so.1",
+            "/usr/lib32/libimdUtil.so.1",
+            "/emul/irix/usr/lib32/internal/libimdUtil.so.1",
+            "/usr/lib32/internal/libimdUtil.so.1",
+            "/emul/irix/lib32/libimdUtil.so.1",
+            "/lib32/libimdUtil.so.1",
+            "/emul/irix/opt/lib32/libimdUtil.so.1",
+            "/opt/lib32/libimdUtil.so.1",
+            "/emul/irix/dev/tty",
+            "/dev/tty"
+          ],
+          "signature": {
+            "calls": [
+              {
+                "syscall": 1040,
+                "a0": 22
+              },
+              {
+                "syscall": 1040,
+                "a0": 85
+              },
+              {
+                "syscall": 1024
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1003
+              },
+              {
+                "syscall": 1040,
+                "a0": 68
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1000,
+                "a0": 1056
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1134
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1040,
+                "a0": 92
+              },
+              {
+                "syscall": 1024
+              },
+              {
+                "syscall": 1047
+              },
+              {
+                "syscall": 1156
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1003
+              },
+              {
+                "syscall": 1040,
+                "a0": 68
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1003
+              },
+              {
+                "syscall": 1040,
+                "a0": 68
+              },
+              {
+                "syscall": 1020
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1004
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1020
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1004
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1130
+              },
+              {
+                "syscall": 1001
+              }
+            ],
+            "paths": [
+              "/emul/irix/usr/lib32/libc.so.1",
+              "/emul/irix/lib32/rld",
+              "/emul/irix/dev/zero",
+              "/dev/zero",
+              "/emul/irix/usr/lib32/libimdXutil.so",
+              "/usr/lib32/libimdXutil.so",
+              "/emul/irix/usr/lib32/internal/libimdXutil.so",
+              "/emul/irix/usr/lib32/libimdUtil.so",
+              "/usr/lib32/libimdUtil.so",
+              "/emul/irix/usr/lib32/internal/libimdUtil.so",
+              "/emul/irix/dev/tty",
+              "/dev/tty",
+              "/emul/irix/lib32/libimdUtil.so",
+              "/lib32/libimdUtil.so",
+              "/emul/irix/opt/lib32/libimdUtil.so",
+              "/emul/irix/usr/lib32/libimdUtil.so.1",
+              "/usr/lib32/libimdUtil.so.1",
+              "/emul/irix/usr/lib32/internal/libimdUtil.so.1",
+              "/usr/lib32/internal/libimdUtil.so.1",
+              "/emul/irix/lib32/libimdUtil.so.1",
+              "/lib32/libimdUtil.so.1",
+              "/emul/irix/opt/lib32/libimdUtil.so.1",
+              "/emul/irix/dev/tty",
+              "/dev/tty"
+            ]
+          }
+        },
+        "closure-toolchest-root": {
+          "calls": [
+            "syscall=1040 pc=0xfa4f9b8 a0=0x16 a1=0x1d a2=0x7fff7f74 a3=0x7fff7f78",
+            "syscall=1040 pc=0xfa4f9b8 a0=0x55 a1=0xfb45940 a2=0x7fff7ee0 a3=0",
+            "syscall=1024 pc=0xfa5f5e8 a0=0x55 a1=0xfb45940 a2=0xffffffff a3=0",
+            "syscall=1005 pc=0xfa4fbf0 a0=0xfb459c8 a1=0 a2=0x4 a3=0",
+            "syscall=1003 pc=0xfa51844 a0=0x3 a1=0x7fff7d00 a2=0x200 a3=0",
+            "syscall=1040 pc=0xfa4f9b8 a0=0x44 a1=0x3 a2=0x7fff7d74 a3=0x2",
+            "syscall=1006 pc=0xfa4fa7c a0=0x3 a1=0x3 a2=0x7fff7d74 a3=0",
+            "syscall=1000 pc=0xfb81e0c a0=0x420 a1=0xe a2=0x7fff7f64 a3=0x7fff7f74",
+            "syscall=1005 pc=0xfb8361c a0=0xfbddc18 a1=0 a2=0x1000 a3=0x2000",
+            "syscall=1134 pc=0xfb83f0c a0=0xfbe0000 a1=0x8000 a2=0x3 a3=0x2",
+            "syscall=1006 pc=0xfb839e8 a0=0x3 a1=0x8000 a2=0x3 a3=0",
+            "syscall=1040 pc=0xfb7d28c a0=0x5c a1=0 a2=0xfbe1ff0 a3=0",
+            "syscall=1024 pc=0xfb60250 a0=0x7fff7ef8 a1=0x7fff7ef0 a2=0xffffffff a3=0x1",
+            "syscall=1047 pc=0xfb60280 a0=0x7fff7ef4 a1=0x7fff7efc a2=0xffffffff a3=0",
+            "syscall=1156 pc=0xfb74904 a0=0x6d a1=0x7fff7dc0 a2=0x101 a3=0",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1003 pc=0xfb83ebc a0=0x3 a1=0x7fff60a0 a2=0x200 a3=0",
+            "syscall=1040 pc=0xfb7d28c a0=0x44 a1=0x3 a2=0x7fff6000 a3=0x2",
+            "syscall=1006 pc=0xfb839e8 a0=0x3 a1=0x7fff60a0 a2=0x7fff60d4 a3=0x7fff6490",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe1030",
+            "syscall=1003 pc=0xfb83ebc a0=0x3 a1=0x7fff60a0 a2=0x200 a3=0",
+            "syscall=1040 pc=0xfb7d28c a0=0x44 a1=0x3 a2=0x7fff6000 a3=0x2",
+            "syscall=1006 pc=0xfb839e8 a0=0x3 a1=0x7fff60a0 a2=0x7fff60d4 a3=0x7fff6490",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe1438",
+            "syscall=1003 pc=0xfb83ebc a0=0x3 a1=0x7fff60a0 a2=0x200 a3=0",
+            "syscall=1040 pc=0xfb7d28c a0=0x44 a1=0x3 a2=0x7fff6000 a3=0x2",
+            "syscall=1006 pc=0xfb839e8 a0=0x3 a1=0x7fff60a0 a2=0x7fff60d4 a3=0x7fff6490",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe1840",
+            "syscall=1003 pc=0xfb83ebc a0=0x3 a1=0x7fff60a0 a2=0x200 a3=0",
+            "syscall=1040 pc=0xfb7d28c a0=0x44 a1=0x3 a2=0x7fff6000 a3=0x2",
+            "syscall=1006 pc=0xfb839e8 a0=0x3 a1=0x7fff60a0 a2=0x7fff60d4 a3=0x7fff6490",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe1c48",
+            "syscall=1003 pc=0xfb83ebc a0=0x3 a1=0x7fff60a0 a2=0x200 a3=0",
+            "syscall=1040 pc=0xfb7d28c a0=0x44 a1=0x3 a2=0x7fff6000 a3=0x2",
+            "syscall=1006 pc=0xfb839e8 a0=0x3 a1=0x7fff60a0 a2=0x7fff60d4 a3=0x7fff6490",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe2458",
+            "syscall=1003 pc=0xfb83ebc a0=0x3 a1=0x7fff60a0 a2=0x200 a3=0",
+            "syscall=1040 pc=0xfb7d28c a0=0x44 a1=0x3 a2=0x7fff6000 a3=0x2",
+            "syscall=1006 pc=0xfb839e8 a0=0x3 a1=0x7fff60a0 a2=0x7fff60d4 a3=0x7fff6490",
+            "syscall=1000 pc=0xfa51bcc a0=0x420 a1=0xe a2=0xadf4958 a3=0xadf7750",
+            "syscall=1017 pc=0xfa4ff30 a0=0x1001e000 a1=0xe a2=0xadf4958 a3=0x1318",
+            "syscall=1062 pc=0xfa57270 a0=0 a1=0x3 a2=0 a3=0x3",
+            "syscall=1062 pc=0xfa57270 a0=0x1 a1=0x3 a2=0 a3=0x3",
+            "syscall=1062 pc=0xfa57270 a0=0x2 a1=0x3 a2=0 a3=0x3",
+            "syscall=1062 pc=0xfa57270 a0=0x2 a1=0x3 a2=0 a3=0x3",
+            "syscall=1040 pc=0xfb7d28c a0=0x6c a1=0xfbe2458 a2=0xfbe0c28 a3=0xfbdb190",
+            "syscall=1162 pc=0xfa5c57c a0=0x12 a1=0x7fff7a10 a2=0 a3=0xfafd878",
+            "syscall=1040 pc=0xfa4f9b8 a0=0x81 a1=0 a2=0x181 a3=0xffffffff",
+            "syscall=1040 pc=0xfa4f9b8 a0=0x16 a1=0x1c a2=0 a3=0x7fff7fbf",
+            "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0xfb59ac4 a2=0x7fff7290 a3=0x1",
+            "syscall=1017 pc=0xfa4ff30 a0=0x10020000 a1=0x1ff1 a2=0x1001dff0 a3=0x1001e000",
+            "syscall=1017 pc=0xfa4ff30 a0=0x10022000 a1=0x1001fe20 a2=0x1001fb90 a3=0x10020000",
+            "syscall=1005 pc=0xfa4fbf0 a0=0x7fff6830 a1=0 a2=0x1b6 a3=0",
+            "syscall=1005 pc=0xfa4fbf0 a0=0x7fff6770 a1=0 a2=0x1b6 a3=0",
+            "syscall=1005 pc=0xfa4fbf0 a0=0x7fff6800 a1=0 a2=0x1b6 a3=0",
+            "syscall=1005 pc=0xfa4fbf0 a0=0x7fff6740 a1=0 a2=0x1b6 a3=0",
+            "syscall=1005 pc=0xfa4fbf0 a0=0x7fff6830 a1=0 a2=0x1b6 a3=0",
+            "syscall=1005 pc=0xfa4fbf0 a0=0x7fff6770 a1=0 a2=0x1b6 a3=0",
+            "syscall=1005 pc=0xfa4fbf0 a0=0x7fff6820 a1=0 a2=0x1b6 a3=0",
+            "syscall=1005 pc=0xfa4fbf0 a0=0x7fff6760 a1=0 a2=0x1b6 a3=0",
+            "syscall=1005 pc=0xfa4fbf0 a0=0x7fff6820 a1=0 a2=0x1b6 a3=0",
+            "syscall=1005 pc=0xfa4fbf0 a0=0x7fff6760 a1=0 a2=0x1b6 a3=0",
+            "syscall=1107 pc=0xfa51ad0 a0=0x2 a1=0x2 a2=0 a3=0x33",
+            "syscall=1005 pc=0xfa4fbf0 a0=0xf4a60c8 a1=0 a2=0xf4a6050 a3=0xf4a6c30",
+            "syscall=1024 pc=0xfa5f5e8 a0=0x7fff7310 a1=0xf4a6070 a2=0 a3=0xf4a6073",
+            "syscall=1024 pc=0xfa5c490 a0=0x7fff7310 a1=0xf4a6070 a2=0 a3=0",
+            "syscall=1024 pc=0xfa5f5e8 a0=0x7fff7310 a1=0xf4a6070 a2=0 a3=0",
+            "syscall=1004 pc=0xfa61048 a0=0x2 a1=0xfb5d778 a2=0x7 a3=0x4",
+            "syscall=1004 pc=0xfa61048 a0=0x2 a1=0x7fff7300 a2=0x14 a3=0",
+            "syscall=1004 pc=0xfa61048 a0=0x2 a1=0x1001e940 a2=0xc a3=0",
+            "syscall=1004 pc=0xfa61048 a0=0x2 a1=0xfb5d778 a2=0x1 a3=0x4",
+            "syscall=1130 pc=0xfa57964 a0=0x16 a1=0 a2=0xfb5d500 a3=0x10867c",
+            "syscall=1130 pc=0xfa57964 a0=0xe a1=0x1 a2=0xfb5d500 a3=0x1",
+            "syscall=1001 pc=0xfa577d0 a0=0x1 a1=0xa a2=0x2 a3=0"
+          ],
+          "paths": [
+            "/root/irix-desktop/./runner",
+            "/usr/libexec/ld.elf_so-o32",
+            "/usr/libexec/ld.elf_so-mipseb",
+            "/emul/netbsd32",
+            "/usr/libexec/ld.elf_so",
+            "/emul/netbsd32",
+            "/etc/ld.so.conf",
+            "/usr/lib/libc.so.12",
+            "/etc/malloc.conf",
+            "input.txt",
+            "/root/irix-desktop/./vendor-toolchest",
+            "/emul/irix",
+            "/emul/irix/usr/lib32/libc.so.1",
+            "/emul/irix/lib32/rld",
+            "/emul/irix/dev/zero",
+            "/dev/zero",
+            "/emul/irix/usr/lib32/libXm.so.1",
+            "/emul/irix/usr/lib32/libXt.so",
+            "/emul/irix/usr/lib32/libX11.so.1",
+            "/emul/irix/usr/lib32/libCsup.so",
+            "/emul/irix/usr/lib32/libC.so.2",
+            "/emul/irix/usr/lib32/libm.so",
+            "/emul/irix/usr/lib/X11/locale/locale.alias",
+            "/usr/lib/X11/locale/locale.alias",
+            "/emul/irix/usr/lib/X11/locale/locale.dir",
+            "/usr/lib/X11/locale/locale.dir",
+            "/emul/irix/usr/lib/X11/locale/locale.alias",
+            "/usr/lib/X11/locale/locale.alias",
+            "/emul/irix/usr/lib/X11/locale/locale.dir",
+            "/usr/lib/X11/locale/locale.dir",
+            "/emul/irix/usr/lib/X11/locale/locale.alias",
+            "/usr/lib/X11/locale/locale.alias",
+            "/emul/irix/usr/lib/X11/locale/locale.dir",
+            "/usr/lib/X11/locale/locale.dir",
+            "/emul/irix/usr/lib/X11/locale/locale.alias",
+            "/usr/lib/X11/locale/locale.alias",
+            "/emul/irix/usr/lib/X11/locale/locale.dir",
+            "/usr/lib/X11/locale/locale.dir",
+            "/emul/irix/usr/lib/X11/locale/locale.alias",
+            "/usr/lib/X11/locale/locale.alias",
+            "/emul/irix/usr/lib/X11/locale/locale.dir",
+            "/usr/lib/X11/locale/locale.dir",
+            "/emul/irix/usr/lib/X11/XtErrorDB",
+            "/usr/lib/X11/XtErrorDB"
+          ],
+          "signature": {
+            "calls": [
+              {
+                "syscall": 1040,
+                "a0": 22
+              },
+              {
+                "syscall": 1040,
+                "a0": 85
+              },
+              {
+                "syscall": 1024
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1003
+              },
+              {
+                "syscall": 1040,
+                "a0": 68
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1000,
+                "a0": 1056
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1134
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1040,
+                "a0": 92
+              },
+              {
+                "syscall": 1024
+              },
+              {
+                "syscall": 1047
+              },
+              {
+                "syscall": 1156
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1003
+              },
+              {
+                "syscall": 1040,
+                "a0": 68
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1003
+              },
+              {
+                "syscall": 1040,
+                "a0": 68
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1003
+              },
+              {
+                "syscall": 1040,
+                "a0": 68
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1003
+              },
+              {
+                "syscall": 1040,
+                "a0": 68
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1003
+              },
+              {
+                "syscall": 1040,
+                "a0": 68
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1003
+              },
+              {
+                "syscall": 1040,
+                "a0": 68
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1000,
+                "a0": 1056
+              },
+              {
+                "syscall": 1017
+              },
+              {
+                "syscall": 1062
+              },
+              {
+                "syscall": 1062
+              },
+              {
+                "syscall": 1062
+              },
+              {
+                "syscall": 1062
+              },
+              {
+                "syscall": 1040,
+                "a0": 108
+              },
+              {
+                "syscall": 1162
+              },
+              {
+                "syscall": 1040,
+                "a0": 129
+              },
+              {
+                "syscall": 1040,
+                "a0": 22
+              },
+              {
+                "syscall": 1158
+              },
+              {
+                "syscall": 1017
+              },
+              {
+                "syscall": 1017
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1107,
+                "a0": 2,
+                "a1": 2,
+                "a2": 0
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1024
+              },
+              {
+                "syscall": 1024
+              },
+              {
+                "syscall": 1024
+              },
+              {
+                "syscall": 1004
+              },
+              {
+                "syscall": 1004
+              },
+              {
+                "syscall": 1004
+              },
+              {
+                "syscall": 1004
+              },
+              {
+                "syscall": 1130
+              },
+              {
+                "syscall": 1130
+              },
+              {
+                "syscall": 1001
+              }
+            ],
+            "paths": [
+              "/emul/irix/usr/lib32/libc.so.1",
+              "/emul/irix/lib32/rld",
+              "/emul/irix/dev/zero",
+              "/dev/zero",
+              "/emul/irix/usr/lib32/libXm.so.1",
+              "/emul/irix/usr/lib32/libXt.so",
+              "/emul/irix/usr/lib32/libX11.so.1",
+              "/emul/irix/usr/lib32/libCsup.so",
+              "/emul/irix/usr/lib32/libC.so.2",
+              "/emul/irix/usr/lib32/libm.so",
+              "/emul/irix/usr/lib/X11/locale/locale.alias",
+              "/emul/irix/usr/lib/X11/locale/locale.dir",
+              "/emul/irix/usr/lib/X11/locale/locale.alias",
+              "/emul/irix/usr/lib/X11/locale/locale.dir",
+              "/emul/irix/usr/lib/X11/locale/locale.alias",
+              "/emul/irix/usr/lib/X11/locale/locale.dir",
+              "/emul/irix/usr/lib/X11/locale/locale.alias",
+              "/emul/irix/usr/lib/X11/locale/locale.dir",
+              "/emul/irix/usr/lib/X11/locale/locale.alias",
+              "/emul/irix/usr/lib/X11/locale/locale.dir",
+              "/emul/irix/usr/lib/X11/XtErrorDB"
+            ]
+          }
+        },
+        "closure-4Dwm-user": {
+          "calls": [
+            "syscall=1040 pc=0xfa4f9b8 a0=0x16 a1=0x1d a2=0x7fff7f74 a3=0x7fff7f78",
+            "syscall=1040 pc=0xfa4f9b8 a0=0x55 a1=0xfb45940 a2=0x7fff7ee0 a3=0",
+            "syscall=1024 pc=0xfa5f5e8 a0=0x55 a1=0xfb45940 a2=0xffffffff a3=0",
+            "syscall=1024 pc=0xfa5c490 a0=0x2 a1=0xfb45940 a2=0xffffffff a3=0",
+            "syscall=1047 pc=0xfa59598 a0=0x2 a1=0xfb45940 a2=0xffffffff a3=0",
+            "syscall=1047 pc=0xfa5e068 a0=0x2 a1=0xfb45940 a2=0xffffffff a3=0",
+            "syscall=1005 pc=0xfa4fbf0 a0=0xfb459c8 a1=0 a2=0x4 a3=0",
+            "syscall=1003 pc=0xfa51844 a0=0x3 a1=0x7fff7d00 a2=0x200 a3=0",
+            "syscall=1040 pc=0xfa4f9b8 a0=0x44 a1=0x3 a2=0x7fff7d74 a3=0x2",
+            "syscall=1006 pc=0xfa4fa7c a0=0x3 a1=0x3 a2=0x7fff7d74 a3=0",
+            "syscall=1000 pc=0xfb81e0c a0=0x420 a1=0xe a2=0x7fff7f64 a3=0x7fff7f74",
+            "syscall=1005 pc=0xfb8361c a0=0xfbddc18 a1=0 a2=0x1000 a3=0x2000",
+            "syscall=1134 pc=0xfb83f0c a0=0xfbe0000 a1=0x8000 a2=0x3 a3=0x2",
+            "syscall=1006 pc=0xfb839e8 a0=0x3 a1=0x8000 a2=0x3 a3=0",
+            "syscall=1040 pc=0xfb7d28c a0=0x5c a1=0 a2=0xfbe1ff0 a3=0",
+            "syscall=1024 pc=0xfb60250 a0=0x7fff7ef8 a1=0x7fff7ef0 a2=0xffffffff a3=0x1",
+            "syscall=1047 pc=0xfb60280 a0=0x7fff7ef4 a1=0x7fff7efc a2=0xffffffff a3=0",
+            "syscall=1156 pc=0xfb74904 a0=0x6d a1=0x7fff7dc0 a2=0x101 a3=0",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1003 pc=0xfb83ebc a0=0x3 a1=0x7fff60a0 a2=0x200 a3=0",
+            "syscall=1040 pc=0xfb7d28c a0=0x44 a1=0x3 a2=0x7fff6000 a3=0x2",
+            "syscall=1006 pc=0xfb839e8 a0=0x3 a1=0x7fff60a0 a2=0x7fff60d4 a3=0x7fff6490",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe1030",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe1030",
+            "syscall=1003 pc=0xfb83ebc a0=0x3 a1=0x7fff60a0 a2=0x200 a3=0",
+            "syscall=1040 pc=0xfb7d28c a0=0x44 a1=0x3 a2=0x7fff6000 a3=0x2",
+            "syscall=1020 pc=0xfb82f8c a0=0 a1=0x1000 a2=0xfbe1438 a3=0xfbdb190",
+            "syscall=1005 pc=0xfb8361c a0=0xfbdd688 a1=0x9 a2=0x1ff a3=0x7fff5fd8",
+            "syscall=1004 pc=0xfb748dc a0=0x4 a1=0xfbe1438 a2=0x60 a3=0x7fff5ef8",
+            "syscall=1006 pc=0xfb839e8 a0=0x4 a1=0xfbe1438 a2=0x60 a3=0",
+            "syscall=1006 pc=0xfb839e8 a0=0x3 a1=0x7fff60a0 a2=0x7fff60d4 a3=0x7fff6490",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe1030",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe1030",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe1030",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe1030",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe1030",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe1030",
+            "syscall=1020 pc=0xfb82f8c a0=0 a1=0x1000 a2=0xfbe1c48 a3=0xfbdb190",
+            "syscall=1005 pc=0xfb8361c a0=0xfbdd688 a1=0x9 a2=0x1ff a3=0x7fff6468",
+            "syscall=1004 pc=0xfb748dc a0=0x3 a1=0xfbe1438 a2=0x14d a3=0x7fff6388",
+            "syscall=1006 pc=0xfb839e8 a0=0x3 a1=0xfbe1438 a2=0x14d a3=0",
+            "syscall=1130 pc=0xfb835f4 a0=0xe a1=0xfbe1438 a2=0x14d a3=0",
+            "syscall=1001 pc=0xfb83aa4 a0=0x1 a1=0xfbe1438 a2=0x14d a3=0x1"
+          ],
+          "paths": [
+            "/root/irix-desktop/./runner",
+            "/usr/libexec/ld.elf_so-o32",
+            "/usr/libexec/ld.elf_so-mipseb",
+            "/emul/netbsd32",
+            "/usr/libexec/ld.elf_so",
+            "/emul/netbsd32",
+            "/etc/ld.so.conf",
+            "/usr/lib/libc.so.12",
+            "/etc/malloc.conf",
+            "input.txt",
+            "/root/irix-desktop/./vendor-4Dwm",
+            "/emul/irix",
+            "/emul/irix/usr/lib32/libc.so.1",
+            "/emul/irix/lib32/rld",
+            "/emul/irix/dev/zero",
+            "/dev/zero",
+            "/emul/irix/usr/lib32/libimdXutil.so",
+            "/usr/lib32/libimdXutil.so",
+            "/emul/irix/usr/lib32/internal/libimdXutil.so",
+            "/emul/irix/usr/lib32/libimdUtil.so",
+            "/usr/lib32/libimdUtil.so",
+            "/emul/irix/usr/lib32/internal/libimdUtil.so",
+            "/emul/irix/dev/tty",
+            "/dev/tty",
+            "/emul/irix/lib32/libimdUtil.so",
+            "/lib32/libimdUtil.so",
+            "/emul/irix/opt/lib32/libimdUtil.so",
+            "/opt/lib32/libimdUtil.so",
+            "/emul/irix/usr/lib32/libimdUtil.so.1",
+            "/usr/lib32/libimdUtil.so.1",
+            "/emul/irix/usr/lib32/internal/libimdUtil.so.1",
+            "/usr/lib32/internal/libimdUtil.so.1",
+            "/emul/irix/lib32/libimdUtil.so.1",
+            "/lib32/libimdUtil.so.1",
+            "/emul/irix/opt/lib32/libimdUtil.so.1",
+            "/opt/lib32/libimdUtil.so.1",
+            "/emul/irix/dev/tty",
+            "/dev/tty"
+          ],
+          "signature": {
+            "calls": [
+              {
+                "syscall": 1040,
+                "a0": 22
+              },
+              {
+                "syscall": 1040,
+                "a0": 85
+              },
+              {
+                "syscall": 1024
+              },
+              {
+                "syscall": 1024
+              },
+              {
+                "syscall": 1047
+              },
+              {
+                "syscall": 1047
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1003
+              },
+              {
+                "syscall": 1040,
+                "a0": 68
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1000,
+                "a0": 1056
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1134
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1040,
+                "a0": 92
+              },
+              {
+                "syscall": 1024
+              },
+              {
+                "syscall": 1047
+              },
+              {
+                "syscall": 1156
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1003
+              },
+              {
+                "syscall": 1040,
+                "a0": 68
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1003
+              },
+              {
+                "syscall": 1040,
+                "a0": 68
+              },
+              {
+                "syscall": 1020
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1004
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1020
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1004
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1130
+              },
+              {
+                "syscall": 1001
+              }
+            ],
+            "paths": [
+              "/emul/irix/usr/lib32/libc.so.1",
+              "/emul/irix/lib32/rld",
+              "/emul/irix/dev/zero",
+              "/dev/zero",
+              "/emul/irix/usr/lib32/libimdXutil.so",
+              "/usr/lib32/libimdXutil.so",
+              "/emul/irix/usr/lib32/internal/libimdXutil.so",
+              "/emul/irix/usr/lib32/libimdUtil.so",
+              "/usr/lib32/libimdUtil.so",
+              "/emul/irix/usr/lib32/internal/libimdUtil.so",
+              "/emul/irix/dev/tty",
+              "/dev/tty",
+              "/emul/irix/lib32/libimdUtil.so",
+              "/lib32/libimdUtil.so",
+              "/emul/irix/opt/lib32/libimdUtil.so",
+              "/emul/irix/usr/lib32/libimdUtil.so.1",
+              "/usr/lib32/libimdUtil.so.1",
+              "/emul/irix/usr/lib32/internal/libimdUtil.so.1",
+              "/usr/lib32/internal/libimdUtil.so.1",
+              "/emul/irix/lib32/libimdUtil.so.1",
+              "/lib32/libimdUtil.so.1",
+              "/emul/irix/opt/lib32/libimdUtil.so.1",
+              "/emul/irix/dev/tty",
+              "/dev/tty"
+            ]
+          }
+        },
+        "closure-toolchest-user": {
+          "calls": [
+            "syscall=1040 pc=0xfa4f9b8 a0=0x16 a1=0x1d a2=0x7fff7f74 a3=0x7fff7f78",
+            "syscall=1040 pc=0xfa4f9b8 a0=0x55 a1=0xfb45940 a2=0x7fff7ee0 a3=0",
+            "syscall=1024 pc=0xfa5f5e8 a0=0x55 a1=0xfb45940 a2=0xffffffff a3=0",
+            "syscall=1024 pc=0xfa5c490 a0=0x2 a1=0xfb45940 a2=0xffffffff a3=0",
+            "syscall=1047 pc=0xfa59598 a0=0x2 a1=0xfb45940 a2=0xffffffff a3=0",
+            "syscall=1047 pc=0xfa5e068 a0=0x2 a1=0xfb45940 a2=0xffffffff a3=0",
+            "syscall=1005 pc=0xfa4fbf0 a0=0xfb459c8 a1=0 a2=0x4 a3=0",
+            "syscall=1003 pc=0xfa51844 a0=0x3 a1=0x7fff7d00 a2=0x200 a3=0",
+            "syscall=1040 pc=0xfa4f9b8 a0=0x44 a1=0x3 a2=0x7fff7d74 a3=0x2",
+            "syscall=1006 pc=0xfa4fa7c a0=0x3 a1=0x3 a2=0x7fff7d74 a3=0",
+            "syscall=1000 pc=0xfb81e0c a0=0x420 a1=0xe a2=0x7fff7f64 a3=0x7fff7f74",
+            "syscall=1005 pc=0xfb8361c a0=0xfbddc18 a1=0 a2=0x1000 a3=0x2000",
+            "syscall=1134 pc=0xfb83f0c a0=0xfbe0000 a1=0x8000 a2=0x3 a3=0x2",
+            "syscall=1006 pc=0xfb839e8 a0=0x3 a1=0x8000 a2=0x3 a3=0",
+            "syscall=1040 pc=0xfb7d28c a0=0x5c a1=0 a2=0xfbe1ff0 a3=0",
+            "syscall=1024 pc=0xfb60250 a0=0x7fff7ef8 a1=0x7fff7ef0 a2=0xffffffff a3=0x1",
+            "syscall=1047 pc=0xfb60280 a0=0x7fff7ef4 a1=0x7fff7efc a2=0xffffffff a3=0",
+            "syscall=1156 pc=0xfb74904 a0=0x6d a1=0x7fff7dc0 a2=0x101 a3=0",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe0820",
+            "syscall=1003 pc=0xfb83ebc a0=0x3 a1=0x7fff60a0 a2=0x200 a3=0",
+            "syscall=1040 pc=0xfb7d28c a0=0x44 a1=0x3 a2=0x7fff6000 a3=0x2",
+            "syscall=1006 pc=0xfb839e8 a0=0x3 a1=0x7fff60a0 a2=0x7fff60d4 a3=0x7fff6490",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe1030",
+            "syscall=1003 pc=0xfb83ebc a0=0x3 a1=0x7fff60a0 a2=0x200 a3=0",
+            "syscall=1040 pc=0xfb7d28c a0=0x44 a1=0x3 a2=0x7fff6000 a3=0x2",
+            "syscall=1006 pc=0xfb839e8 a0=0x3 a1=0x7fff60a0 a2=0x7fff60d4 a3=0x7fff6490",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe1438",
+            "syscall=1003 pc=0xfb83ebc a0=0x3 a1=0x7fff60a0 a2=0x200 a3=0",
+            "syscall=1040 pc=0xfb7d28c a0=0x44 a1=0x3 a2=0x7fff6000 a3=0x2",
+            "syscall=1006 pc=0xfb839e8 a0=0x3 a1=0x7fff60a0 a2=0x7fff60d4 a3=0x7fff6490",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe1840",
+            "syscall=1003 pc=0xfb83ebc a0=0x3 a1=0x7fff60a0 a2=0x200 a3=0",
+            "syscall=1040 pc=0xfb7d28c a0=0x44 a1=0x3 a2=0x7fff6000 a3=0x2",
+            "syscall=1006 pc=0xfb839e8 a0=0x3 a1=0x7fff60a0 a2=0x7fff60d4 a3=0x7fff6490",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe1c48",
+            "syscall=1003 pc=0xfb83ebc a0=0x3 a1=0x7fff60a0 a2=0x200 a3=0",
+            "syscall=1040 pc=0xfb7d28c a0=0x44 a1=0x3 a2=0x7fff6000 a3=0x2",
+            "syscall=1006 pc=0xfb839e8 a0=0x3 a1=0x7fff60a0 a2=0x7fff60d4 a3=0x7fff6490",
+            "syscall=1005 pc=0xfb8361c a0=0x7fff6490 a1=0 a2=0x5 a3=0xfbe2458",
+            "syscall=1003 pc=0xfb83ebc a0=0x3 a1=0x7fff60a0 a2=0x200 a3=0",
+            "syscall=1040 pc=0xfb7d28c a0=0x44 a1=0x3 a2=0x7fff6000 a3=0x2",
+            "syscall=1006 pc=0xfb839e8 a0=0x3 a1=0x7fff60a0 a2=0x7fff60d4 a3=0x7fff6490",
+            "syscall=1000 pc=0xfa51bcc a0=0x420 a1=0xe a2=0xadf4958 a3=0xadf7750",
+            "syscall=1017 pc=0xfa4ff30 a0=0x1001e000 a1=0xe a2=0xadf4958 a3=0x1318",
+            "syscall=1062 pc=0xfa57270 a0=0 a1=0x3 a2=0 a3=0x3",
+            "syscall=1062 pc=0xfa57270 a0=0x1 a1=0x3 a2=0 a3=0x3",
+            "syscall=1062 pc=0xfa57270 a0=0x2 a1=0x3 a2=0 a3=0x3",
+            "syscall=1062 pc=0xfa57270 a0=0x2 a1=0x3 a2=0 a3=0x3",
+            "syscall=1040 pc=0xfb7d28c a0=0x6c a1=0xfbe2458 a2=0xfbe0c28 a3=0xfbdb190",
+            "syscall=1162 pc=0xfa5c57c a0=0x12 a1=0x7fff7a10 a2=0 a3=0xfafd878",
+            "syscall=1040 pc=0xfa4f9b8 a0=0x81 a1=0 a2=0x181 a3=0xffffffff",
+            "syscall=1040 pc=0xfa4f9b8 a0=0x16 a1=0x1c a2=0 a3=0x7fff7fbf",
+            "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0xfb59ac4 a2=0x7fff7290 a3=0x1",
+            "syscall=1017 pc=0xfa4ff30 a0=0x10020000 a1=0x1ff1 a2=0x1001dff0 a3=0x1001e000",
+            "syscall=1017 pc=0xfa4ff30 a0=0x10022000 a1=0x1001fe20 a2=0x1001fb90 a3=0x10020000",
+            "syscall=1005 pc=0xfa4fbf0 a0=0x7fff6830 a1=0 a2=0x1b6 a3=0",
+            "syscall=1005 pc=0xfa4fbf0 a0=0x7fff6770 a1=0 a2=0x1b6 a3=0",
+            "syscall=1005 pc=0xfa4fbf0 a0=0x7fff6800 a1=0 a2=0x1b6 a3=0",
+            "syscall=1005 pc=0xfa4fbf0 a0=0x7fff6740 a1=0 a2=0x1b6 a3=0",
+            "syscall=1005 pc=0xfa4fbf0 a0=0x7fff6830 a1=0 a2=0x1b6 a3=0",
+            "syscall=1005 pc=0xfa4fbf0 a0=0x7fff6770 a1=0 a2=0x1b6 a3=0",
+            "syscall=1005 pc=0xfa4fbf0 a0=0x7fff6820 a1=0 a2=0x1b6 a3=0",
+            "syscall=1005 pc=0xfa4fbf0 a0=0x7fff6760 a1=0 a2=0x1b6 a3=0",
+            "syscall=1005 pc=0xfa4fbf0 a0=0x7fff6820 a1=0 a2=0x1b6 a3=0",
+            "syscall=1005 pc=0xfa4fbf0 a0=0x7fff6760 a1=0 a2=0x1b6 a3=0",
+            "syscall=1107 pc=0xfa51ad0 a0=0x2 a1=0x2 a2=0 a3=0x33",
+            "syscall=1005 pc=0xfa4fbf0 a0=0xf4a60c8 a1=0 a2=0xf4a6050 a3=0xf4a6c30",
+            "syscall=1024 pc=0xfa5f5e8 a0=0x7fff7310 a1=0xf4a6070 a2=0 a3=0xf4a6073",
+            "syscall=1024 pc=0xfa5c490 a0=0x7fff7310 a1=0xf4a6070 a2=0 a3=0",
+            "syscall=1024 pc=0xfa5f5e8 a0=0x7fff7310 a1=0xf4a6070 a2=0 a3=0",
+            "syscall=1004 pc=0xfa61048 a0=0x2 a1=0xfb5d778 a2=0x8 a3=0x4",
+            "syscall=1004 pc=0xfa61048 a0=0x2 a1=0x10020e39 a2=0x1f a3=0",
+            "syscall=1004 pc=0xfa61048 a0=0x2 a1=0xfb5d778 a2=0x1 a3=0x4",
+            "syscall=1130 pc=0xfa57964 a0=0x16 a1=0 a2=0xfb5d500 a3=0x10867c",
+            "syscall=1130 pc=0xfa57964 a0=0xe a1=0x1 a2=0xfb5d500 a3=0x1",
+            "syscall=1001 pc=0xfa577d0 a0=0x1 a1=0xa a2=0x2 a3=0"
+          ],
+          "paths": [
+            "/root/irix-desktop/./runner",
+            "/usr/libexec/ld.elf_so-o32",
+            "/usr/libexec/ld.elf_so-mipseb",
+            "/emul/netbsd32",
+            "/usr/libexec/ld.elf_so",
+            "/emul/netbsd32",
+            "/etc/ld.so.conf",
+            "/usr/lib/libc.so.12",
+            "/etc/malloc.conf",
+            "input.txt",
+            "/root/irix-desktop/./vendor-toolchest",
+            "/emul/irix",
+            "/emul/irix/usr/lib32/libc.so.1",
+            "/emul/irix/lib32/rld",
+            "/emul/irix/dev/zero",
+            "/dev/zero",
+            "/emul/irix/usr/lib32/libXm.so.1",
+            "/emul/irix/usr/lib32/libXt.so",
+            "/emul/irix/usr/lib32/libX11.so.1",
+            "/emul/irix/usr/lib32/libCsup.so",
+            "/emul/irix/usr/lib32/libC.so.2",
+            "/emul/irix/usr/lib32/libm.so",
+            "/emul/irix/usr/lib/X11/locale/locale.alias",
+            "/usr/lib/X11/locale/locale.alias",
+            "/emul/irix/usr/lib/X11/locale/locale.dir",
+            "/usr/lib/X11/locale/locale.dir",
+            "/emul/irix/usr/lib/X11/locale/locale.alias",
+            "/usr/lib/X11/locale/locale.alias",
+            "/emul/irix/usr/lib/X11/locale/locale.dir",
+            "/usr/lib/X11/locale/locale.dir",
+            "/emul/irix/usr/lib/X11/locale/locale.alias",
+            "/usr/lib/X11/locale/locale.alias",
+            "/emul/irix/usr/lib/X11/locale/locale.dir",
+            "/usr/lib/X11/locale/locale.dir",
+            "/emul/irix/usr/lib/X11/locale/locale.alias",
+            "/usr/lib/X11/locale/locale.alias",
+            "/emul/irix/usr/lib/X11/locale/locale.dir",
+            "/usr/lib/X11/locale/locale.dir",
+            "/emul/irix/usr/lib/X11/locale/locale.alias",
+            "/usr/lib/X11/locale/locale.alias",
+            "/emul/irix/usr/lib/X11/locale/locale.dir",
+            "/usr/lib/X11/locale/locale.dir",
+            "/emul/irix/usr/lib/X11/XtErrorDB",
+            "/usr/lib/X11/XtErrorDB"
+          ],
+          "signature": {
+            "calls": [
+              {
+                "syscall": 1040,
+                "a0": 22
+              },
+              {
+                "syscall": 1040,
+                "a0": 85
+              },
+              {
+                "syscall": 1024
+              },
+              {
+                "syscall": 1024
+              },
+              {
+                "syscall": 1047
+              },
+              {
+                "syscall": 1047
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1003
+              },
+              {
+                "syscall": 1040,
+                "a0": 68
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1000,
+                "a0": 1056
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1134
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1040,
+                "a0": 92
+              },
+              {
+                "syscall": 1024
+              },
+              {
+                "syscall": 1047
+              },
+              {
+                "syscall": 1156
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1003
+              },
+              {
+                "syscall": 1040,
+                "a0": 68
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1003
+              },
+              {
+                "syscall": 1040,
+                "a0": 68
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1003
+              },
+              {
+                "syscall": 1040,
+                "a0": 68
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1003
+              },
+              {
+                "syscall": 1040,
+                "a0": 68
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1003
+              },
+              {
+                "syscall": 1040,
+                "a0": 68
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1003
+              },
+              {
+                "syscall": 1040,
+                "a0": 68
+              },
+              {
+                "syscall": 1006
+              },
+              {
+                "syscall": 1000,
+                "a0": 1056
+              },
+              {
+                "syscall": 1017
+              },
+              {
+                "syscall": 1062
+              },
+              {
+                "syscall": 1062
+              },
+              {
+                "syscall": 1062
+              },
+              {
+                "syscall": 1062
+              },
+              {
+                "syscall": 1040,
+                "a0": 108
+              },
+              {
+                "syscall": 1162
+              },
+              {
+                "syscall": 1040,
+                "a0": 129
+              },
+              {
+                "syscall": 1040,
+                "a0": 22
+              },
+              {
+                "syscall": 1158
+              },
+              {
+                "syscall": 1017
+              },
+              {
+                "syscall": 1017
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1107,
+                "a0": 2,
+                "a1": 2,
+                "a2": 0
+              },
+              {
+                "syscall": 1005
+              },
+              {
+                "syscall": 1024
+              },
+              {
+                "syscall": 1024
+              },
+              {
+                "syscall": 1024
+              },
+              {
+                "syscall": 1004
+              },
+              {
+                "syscall": 1004
+              },
+              {
+                "syscall": 1004
+              },
+              {
+                "syscall": 1130
+              },
+              {
+                "syscall": 1130
+              },
+              {
+                "syscall": 1001
+              }
+            ],
+            "paths": [
+              "/emul/irix/usr/lib32/libc.so.1",
+              "/emul/irix/lib32/rld",
+              "/emul/irix/dev/zero",
+              "/dev/zero",
+              "/emul/irix/usr/lib32/libXm.so.1",
+              "/emul/irix/usr/lib32/libXt.so",
+              "/emul/irix/usr/lib32/libX11.so.1",
+              "/emul/irix/usr/lib32/libCsup.so",
+              "/emul/irix/usr/lib32/libC.so.2",
+              "/emul/irix/usr/lib32/libm.so",
+              "/emul/irix/usr/lib/X11/locale/locale.alias",
+              "/emul/irix/usr/lib/X11/locale/locale.dir",
+              "/emul/irix/usr/lib/X11/locale/locale.alias",
+              "/emul/irix/usr/lib/X11/locale/locale.dir",
+              "/emul/irix/usr/lib/X11/locale/locale.alias",
+              "/emul/irix/usr/lib/X11/locale/locale.dir",
+              "/emul/irix/usr/lib/X11/locale/locale.alias",
+              "/emul/irix/usr/lib/X11/locale/locale.dir",
+              "/emul/irix/usr/lib/X11/locale/locale.alias",
+              "/emul/irix/usr/lib/X11/locale/locale.dir",
+              "/emul/irix/usr/lib/X11/XtErrorDB"
+            ]
+          }
+        }
+      },
+      "expectations_sha256": "52b90518d8c34caca2ca8a71820a114c0e93f1ad037b1245b60c6ee7377fcdfb",
+      "seconds": 261.462
+    }
+  ],
+  "reference": {
+    "path": ".work/irix-reference/desktop-runs/ci-yg7of42z/result.json",
+    "result_sha256": "5958909b3089e5e1b3fd6b58d764aa58e10b125f081f49436c689a9f977ae61e",
+    "status": "passed",
+    "clean_shutdown": true,
+    "mode": "ci",
+    "observations": [
+      {
+        "name": "4Dwm",
+        "exit_status": 1,
+        "stdout": "",
+        "stderr": "4Dwm: Could not open display.\n"
+      },
+      {
+        "name": "4Dwm-par",
+        "exit_status": 0,
+        "stdout": "",
+        "stderr": "4Dwm: Could not open display.\n"
+      },
+      {
+        "name": "toolchest",
+        "exit_status": 1,
+        "stdout": "",
+        "stderr": "Error: Can't open display: 127.0.0.1:99\n"
+      },
+      {
+        "name": "toolchest-par",
+        "exit_status": 0,
+        "stdout": "",
+        "stderr": "Error: Can't open display: 127.0.0.1:99\n"
+      },
+      {
+        "name": "echo",
+        "exit_status": 0,
+        "stdout": "XIRI_REFERENCE_AFTER\n",
+        "stderr": ""
+      }
+    ],
+    "started_utc": "2026-10-30T20:18:36Z",
+    "harness_sha256": "97dc58384eaa96f5cf198fe34fc2b1d68c27db8707b151bad314fc9081ffb78a",
+    "decoder_sha256": "89b946e035ecf0525b3c08cdc80ca0b77d8db6aa90fd60cf410ddc7eb3a4d553",
+    "emulator_sha256": "cc6561d0bdfec6ce30d656caf4a6eaee6ffbf622e5348c3b77b73810d5293f56",
+    "raw_disk_size": 100663296000,
+    "raw_disk_validation": "Size checked here; SHA-256 established during media intake, not recomputed",
+    "firmware_sha256": "333a0b2e39bb828a28a758b6f633ae7290030129dc747297a1be68dc317b86ae",
+    "seed_nvram_sha256": "bcd1c819174de95387d0bb61be7446dd95c9e1ac80a05677e8c8e07e48000c5f",
+    "identity": "6.5 6.5.22m\nuid=0(root) gid=0(sys)\n1\n",
+    "checked_files": [
+      "/lib32/libc.so.1",
+      "/lib32/rld",
+      "/usr/bin/X11/4Dwm",
+      "/usr/bin/X11/toolchest",
+      "/usr/lib32/internal/libimdFtrDB.so",
+      "/usr/lib32/internal/libimdFtrIcon.so",
+      "/usr/lib32/internal/libimdUtil.so",
+      "/usr/lib32/internal/libimdXutil.so",
+      "/usr/lib32/libC.so.2",
+      "/usr/lib32/libCsup.so",
+      "/usr/lib32/libGL.so",
+      "/usr/lib32/libGLU.so",
+      "/usr/lib32/libGLcore.so",
+      "/usr/lib32/libSgm.so.1",
+      "/usr/lib32/libX11.so.1",
+      "/usr/lib32/libXext.so",
+      "/usr/lib32/libXi.so",
+      "/usr/lib32/libXm.so.1",
+      "/usr/lib32/libXmu.so",
+      "/usr/lib32/libXpm.so.1",
+      "/usr/lib32/libXsgivc.so",
+      "/usr/lib32/libXt.so",
+      "/usr/lib32/libc.so.1",
+      "/usr/lib32/libgen.so",
+      "/usr/lib32/libgl.so",
+      "/usr/lib32/libifl.so",
+      "/usr/lib32/libil.so",
+      "/usr/lib32/libm.so",
+      "/usr/lib32/libvk.so.1"
+    ],
+    "ldd": {
+      "4Dwm": "        libimdXutil.so  =>       /usr/lib32/internal/libimdXutil.so     \n        libimdUtil.so  =>        /usr/lib32/internal/libimdUtil.so      \n        libimdFtrIcon.so  =>     /usr/lib32/internal/libimdFtrIcon.so   \n        libXm.so.1  =>   /usr/lib32/libXm.so.1  \n        libXmu.so  =>    /usr/lib32/libXmu.so   \n        libXext.so  =>   /usr/lib32/libXext.so  \n        libXt.so  =>     /usr/lib32/libXt.so    \n        libX11.so.1  =>  /usr/lib32/libX11.so.1 \n        libm.so  =>      /usr/lib32/libm.so     \n        libC.so.2  =>    /usr/lib32/libC.so.2   \n        libCsup.so  =>   /usr/lib32/libCsup.so  \n        libc.so.1  =>    /usr/lib32/libc.so.1   \n        libvk.so.1  =>   /usr/lib32/libvk.so.1  \n        libXpm.so.1  =>  /usr/lib32/libXpm.so.1 \n        libgen.so  =>    /usr/lib32/libgen.so   \n        libimdFtrDB.so  =>       /usr/lib32/internal/libimdFtrDB.so     \n        libil.so  =>     /usr/lib32/libil.so    \n        libifl.so  =>    /usr/lib32/libifl.so   \n        libGL.so  =>     /usr/lib32/libGL.so    \n        libGLU.so  =>    /usr/lib32/libGLU.so   \n        libSgm.so.1  =>  /usr/lib32/libSgm.so.1 \n        libGLcore.so  =>         /usr/lib32/libGLcore.so        \n        libXsgivc.so  =>         /usr/lib32/libXsgivc.so        \n        libgl.so  =>     /usr/lib32/libgl.so    delay-load\n        libXi.so  =>     /usr/lib32/libXi.so    \nLDD_RC=0\n",
+      "toolchest": "        libXm.so.1  =>   /usr/lib32/libXm.so.1  \n        libXt.so  =>     /usr/lib32/libXt.so    \n        libX11.so.1  =>  /usr/lib32/libX11.so.1 \n        libgen.so  =>    /usr/lib32/libgen.so   delay-load\n        libCsup.so  =>   /usr/lib32/libCsup.so  \n        libC.so.2  =>    /usr/lib32/libC.so.2   \n        libc.so.1  =>    /usr/lib32/libc.so.1   \n        libm.so  =>      /usr/lib32/libm.so     \nLDD_RC=0\n"
+    },
+    "ldd_resolution": {
+      "4Dwm": {
+        "libimdXutil.so": "/usr/lib32/internal/libimdXutil.so",
+        "libimdUtil.so": "/usr/lib32/internal/libimdUtil.so",
+        "libimdFtrIcon.so": "/usr/lib32/internal/libimdFtrIcon.so",
+        "libXm.so.1": "/usr/lib32/libXm.so.1",
+        "libXmu.so": "/usr/lib32/libXmu.so",
+        "libXext.so": "/usr/lib32/libXext.so",
+        "libXt.so": "/usr/lib32/libXt.so",
+        "libX11.so.1": "/usr/lib32/libX11.so.1",
+        "libm.so": "/usr/lib32/libm.so",
+        "libC.so.2": "/usr/lib32/libC.so.2",
+        "libCsup.so": "/usr/lib32/libCsup.so",
+        "libc.so.1": "/usr/lib32/libc.so.1",
+        "libvk.so.1": "/usr/lib32/libvk.so.1",
+        "libXpm.so.1": "/usr/lib32/libXpm.so.1",
+        "libgen.so": "/usr/lib32/libgen.so",
+        "libimdFtrDB.so": "/usr/lib32/internal/libimdFtrDB.so",
+        "libil.so": "/usr/lib32/libil.so",
+        "libifl.so": "/usr/lib32/libifl.so",
+        "libGL.so": "/usr/lib32/libGL.so",
+        "libGLU.so": "/usr/lib32/libGLU.so",
+        "libSgm.so.1": "/usr/lib32/libSgm.so.1",
+        "libGLcore.so": "/usr/lib32/libGLcore.so",
+        "libXsgivc.so": "/usr/lib32/libXsgivc.so",
+        "libgl.so": "/usr/lib32/libgl.so",
+        "libXi.so": "/usr/lib32/libXi.so"
+      },
+      "toolchest": {
+        "libXm.so.1": "/usr/lib32/libXm.so.1",
+        "libXt.so": "/usr/lib32/libXt.so",
+        "libX11.so.1": "/usr/lib32/libX11.so.1",
+        "libgen.so": "/usr/lib32/libgen.so",
+        "libCsup.so": "/usr/lib32/libCsup.so",
+        "libC.so.2": "/usr/lib32/libC.so.2",
+        "libc.so.1": "/usr/lib32/libc.so.1",
+        "libm.so": "/usr/lib32/libm.so"
+      }
+    },
+    "reference_pin_sha256": "353990df2a3c8193365884f23826c34301b1c1bdf2278dcae76a4e0f00311c7d",
+    "seconds": 317.905,
+    "trace_summary": {
+      "4Dwm-par": {
+        "sha256": "3c17b6bb47811afeb60676dbeba77abc9b3906a3f921d0b359ed5a6a91d68d2d",
+        "bytes": 19741,
+        "socket_calls": 6,
+        "connection_refusals": 6,
+        "child_exit_1": true,
+        "evidence": [
+          "1220mS                 : socket(PF_INET, SOCK_STREAM, 0) = 5",
+          "1220mS                 : connect(5, {sin_family=AF_INET, sin_port=6099, sin_addr=127.0.0.1}, 16) errno = 146 (Connection refused)",
+          "2729mS                 : socket(PF_INET, SOCK_STREAM, 0) = 5",
+          "2730mS                 : connect(5, {sin_family=AF_INET, sin_port=6099, sin_addr=127.0.0.1}, 16) errno = 146 (Connection refused)",
+          "4244mS                 : socket(PF_INET, SOCK_STREAM, 0) = 5",
+          "4244mS                 : connect(5, {sin_family=AF_INET, sin_port=6099, sin_addr=127.0.0.1}, 16) errno = 146 (Connection refused)",
+          "5759mS                 : socket(PF_INET, SOCK_STREAM, 0) = 5",
+          "5759mS                 : connect(5, {sin_family=AF_INET, sin_port=6099, sin_addr=127.0.0.1}, 16) errno = 146 (Connection refused)",
+          "7274mS                 : socket(PF_INET, SOCK_STREAM, 0) = 5",
+          "7274mS                 : connect(5, {sin_family=AF_INET, sin_port=6099, sin_addr=127.0.0.1}, 16) errno = 146 (Connection refused)",
+          "8834mS                 : socket(PF_INET, SOCK_STREAM, 0) = 5",
+          "8834mS                 : connect(5, {sin_family=AF_INET, sin_port=6099, sin_addr=127.0.0.1}, 16)",
+          "8837mS                 : END-connect() errno = 146 (Connection refused)",
+          "10359mS                 : exit(1)"
+        ]
+      },
+      "toolchest-par": {
+        "sha256": "5737afe648c17eeb5379e98ca0508f525f4e8c05746606c571474f984ad42982",
+        "bytes": 11888,
+        "socket_calls": 6,
+        "connection_refusals": 6,
+        "child_exit_1": true,
+        "evidence": [
+          "151mS                 : socket(PF_INET, SOCK_STREAM, 0) = 4",
+          "152mS                 : connect(4, {sin_family=AF_INET, sin_port=6099, sin_addr=127.0.0.1}, 16) errno = 146 (Connection refused)",
+          "1705mS                 : socket(PF_INET, SOCK_STREAM, 0) = 4",
+          "1706mS                 : connect(4, {sin_family=AF_INET, sin_port=6099, sin_addr=127.0.0.1}, 16) errno = 146 (Connection refused)",
+          "3209mS                 : socket(PF_INET, SOCK_STREAM, 0) = 4",
+          "3210mS                 : connect(4, {sin_family=AF_INET, sin_port=6099, sin_addr=127.0.0.1}, 16) errno = 146 (Connection refused)",
+          "4743mS                 : socket(PF_INET, SOCK_STREAM, 0) = 4",
+          "4744mS                 : connect(4, {sin_family=AF_INET, sin_port=6099, sin_addr=127.0.0.1}, 16) errno = 146 (Connection refused)",
+          "6282mS                 : socket(PF_INET, SOCK_STREAM, 0) = 4",
+          "6283mS                 : connect(4, {sin_family=AF_INET, sin_port=6099, sin_addr=127.0.0.1}, 16) errno = 146 (Connection refused)",
+          "7829mS                 : socket(PF_INET, SOCK_STREAM, 0) = 4",
+          "7830mS                 : connect(4, {sin_family=AF_INET, sin_port=6099, sin_addr=127.0.0.1}, 16)",
+          "7866mS                 : END-connect() errno = 146 (Connection refused)",
+          "9393mS                 : exit(1)"
+        ]
+      }
+    }
+  },
+  "totals": {
+    "netbsd_scenarios": 32,
+    "reference_scenarios": 5,
+    "clean_runs": 3,
+    "total_scenarios": 37
+  },
+  "boundaries": {
+    "Toolchest": "After library closure, TCP socket trap 1107 (2,2,0) is unsupported; no connect reached",
+    "4Dwm": "SGI_ELFMAP rejects unaligned libimdUtil.so data segment; static closure also includes libXpm alignment and 11 overlapping library pairs",
+    "reference": "Both native commands create TCP sockets and reach ECONNREFUSED at 127.0.0.1:6099, then exit 1"
+  },
+  "limits": [
+    "No graphical desktop or live X connection qualified",
+    "No kernel/emulator source changed",
+    "DT_NEEDED closure does not cover every delayed/dlopen graphics backend or service",
+    "Resources/services inventoried statically; full resource tree and original inode/symlink metadata not installed",
+    "Native reference still emits existing filesystem/service warnings",
+    "Local-display diagnostic and interrupted initial reference runs excluded from final qualification"
+  ]
+}

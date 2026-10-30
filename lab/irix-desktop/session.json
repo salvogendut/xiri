@@ -1,0 +1,82 @@
+{
+  "schema": 1,
+  "scope": "Static interpretation of supplied configuration and scripts; these services were not run on NetBSD",
+  "roles": [
+    {
+      "role": "display manager and X server",
+      "evidence": [
+        "/etc/config/xdm",
+        "/etc/init.d/xdm",
+        "/usr/lib/X11/xdm/Xservers"
+      ],
+      "finding": "xdm is enabled; Xservers selects display :0 with /usr/bin/X11/X. Its Xsgi implementation is a reference component, not the proposed NetBSD display server.",
+      "evidence_sha256": {
+        "/etc/config/xdm": "b6ac5bc39377e44ee783dff946f6703a994f5eb31a438e69dc0735b40060d2e8",
+        "/etc/init.d/xdm": "d2f78af5f785e7f6325314b0e703b6a4f3bc4c5aa8fd4c1c65aba4ee7ba44387",
+        "/usr/lib/X11/xdm/Xservers": "ce1a69767042855a3378d4899b2e9313f45cea05da6162515d0f725f280e4d93"
+      }
+    },
+    {
+      "role": "desktop session selection",
+      "evidence": [
+        "/etc/config/desktop",
+        "/usr/lib/X11/xdm/Xsession"
+      ],
+      "finding": "desktop is enabled; Xsession delegates to Xsession.dt when available.",
+      "evidence_sha256": {
+        "/etc/config/desktop": "b6ac5bc39377e44ee783dff946f6703a994f5eb31a438e69dc0735b40060d2e8",
+        "/usr/lib/X11/xdm/Xsession": "28eedf499a048073ede0f9c03fd3bdd95a9f0d9c6627c39ba6da605f7c883cee"
+      }
+    },
+    {
+      "role": "window manager, menu and cleanup",
+      "evidence": [
+        "/usr/lib/X11/xdm/Xsession.dt"
+      ],
+      "finding": "The session starts 4Dwm with saved-session restoration, waits for the window manager, starts Toolchest per screen, and ends in reaper. wait4wm, tellwm, per-user session files and logout cleanup remain part of desktop qualification.",
+      "evidence_sha256": {
+        "/usr/lib/X11/xdm/Xsession.dt": "15d59c41f47748636925378b47d759cd2246794710bb2b868753ab49b7ada7dd"
+      }
+    },
+    {
+      "role": "file manager and desktop icons",
+      "evidence": [
+        "/usr/lib/X11/xdm/Xsession.dt",
+        "/usr/lib/desktop/startdesktop"
+      ],
+      "finding": "Xsession.dt conditionally launches fm in background mode and uses iconcatalog, bgicons, device/icon lists and per-user Desktop state. startdesktop separately launches fm for the home directory.",
+      "evidence_sha256": {
+        "/usr/lib/X11/xdm/Xsession.dt": "15d59c41f47748636925378b47d759cd2246794710bb2b868753ab49b7ada7dd",
+        "/usr/lib/desktop/startdesktop": "57e4194ce754b9036f54a7677834b4e89a8055e1c5dc8dd8ce4cb1d3850c0707"
+      }
+    },
+    {
+      "role": "resources and environment",
+      "evidence": [
+        "/usr/lib/X11/app-defaults/4DWm",
+        "/usr/lib/X11/app-defaults/Toolchest",
+        "/usr/lib/X11/system.4Dwmrc",
+        "/usr/lib/X11/system.chestrc",
+        "/usr/lib/X11/xdm/Xsession.dt"
+      ],
+      "finding": "Keep application defaults, system menu/window-manager configuration, per-host .desktop state, .Sgiresources, .chestrc, locale/userenv and XUSERFILESEARCHPATH distinct from executable/library compatibility.",
+      "evidence_sha256": {
+        "/usr/lib/X11/app-defaults/4DWm": "44fe41ae91b87ca4e306d99741673501202b6fe776225a4690171475a19c0153",
+        "/usr/lib/X11/app-defaults/Toolchest": "164ebd51ac751ceda84d028072d00fa6605ac877a4a96d0cc996242219c6f07a",
+        "/usr/lib/X11/system.4Dwmrc": "ac1fcf2df3eb19c8f50358bca0c97bd816686e8e63cd87a9f6da93f6168b48ac",
+        "/usr/lib/X11/system.chestrc": "3a2001177e8871583461fe9d2588751a61a47f4b04632fdc137cd533e0c66f4c",
+        "/usr/lib/X11/xdm/Xsession.dt": "15d59c41f47748636925378b47d759cd2246794710bb2b868753ab49b7ada7dd"
+      }
+    },
+    {
+      "role": "additional session helpers",
+      "evidence": [
+        "/usr/lib/X11/xdm/Xsession.dt"
+      ],
+      "finding": "Icon visuals and colormap setup precede the manager; soundscheme, audio state, powersaver, sysmon integration, user .sgisession and first-login programs are conditional dependencies to qualify separately.",
+      "evidence_sha256": {
+        "/usr/lib/X11/xdm/Xsession.dt": "15d59c41f47748636925378b47d759cd2246794710bb2b868753ab49b7ada7dd"
+      }
+    }
+  ]
+}

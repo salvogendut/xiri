@@ -1,7 +1,8 @@
 # IRIX 6.5.22m reference and vendor probes
 
-Follow-up: [unmodified asa now runs on Xiri](../../docs/results/2026-10-30-irix-o32-dispatch.md)
-with its original libc and rld. The rejection tests below remain pinned to
+Follow-up: [unmodified asa and echo now run on Xiri](../../docs/results/2026-10-30-irix-lp64.md)
+with their original libc and rld. The [desktop lab](../irix-desktop/README.md)
+adds library/resource inventory and native 4Dwm/Toolchest startup comparisons. The rejection tests below remain pinned to
 the earlier static kernel.
 
 The user supplied an installed IRIX disk and a MAME Indy firmware bundle on
@@ -185,3 +186,18 @@ IRIX's different unknown-call errors and branch-delay SIGSYS behavior instead
 of hiding them. See the [asa execution lab](../irix-o32/README.md#vendor-asa-execution)
 for build/run commands and the distinction between this tested filter path
 and general vendor compatibility.
+
+
+## Desktop startup reference
+
+The [desktop inventory and startup lab](../irix-desktop/README.md) records the
+transitive n32 closures, selected resource/service files and session-script
+roles. Native ldd verifies the static choices, including the internal library
+directory. The reference harness checks all extracted ELF files, runs each
+desktop program directly and under par with an empty environment and TCP
+display `127.0.0.1:99`, and requires complete exits plus clean shutdown.
+Both native clients create sockets and encounter connection refusal at the
+unused port. This isolates library/client startup from the still-unqualified
+graphical reference session. The paired NetBSD probe records earlier mapping
+and socket blockers rather than treating identical display errors as proof
+of equivalent behavior.

@@ -1,0 +1,83 @@
+{
+  "schema": 1,
+  "description": "Original IRIX controlled TCP display refusal, native library resolution and trace markers",
+  "display": "127.0.0.1:99",
+  "observed_result": ".work/irix-reference/desktop-runs/ci-nuat3wrm/result.json",
+  "observations": [
+    {
+      "name": "4Dwm",
+      "exit_status": 1,
+      "stdout": "",
+      "stderr": "4Dwm: Could not open display.\n"
+    },
+    {
+      "name": "4Dwm-par",
+      "exit_status": 0,
+      "stdout": "",
+      "stderr": "4Dwm: Could not open display.\n"
+    },
+    {
+      "name": "toolchest",
+      "exit_status": 1,
+      "stdout": "",
+      "stderr": "Error: Can't open display: 127.0.0.1:99\n"
+    },
+    {
+      "name": "toolchest-par",
+      "exit_status": 0,
+      "stdout": "",
+      "stderr": "Error: Can't open display: 127.0.0.1:99\n"
+    },
+    {
+      "name": "echo",
+      "exit_status": 0,
+      "stdout": "XIRI_REFERENCE_AFTER\n",
+      "stderr": ""
+    }
+  ],
+  "ldd_resolution": {
+    "4Dwm": {
+      "libimdXutil.so": "/usr/lib32/internal/libimdXutil.so",
+      "libimdUtil.so": "/usr/lib32/internal/libimdUtil.so",
+      "libimdFtrIcon.so": "/usr/lib32/internal/libimdFtrIcon.so",
+      "libXm.so.1": "/usr/lib32/libXm.so.1",
+      "libXmu.so": "/usr/lib32/libXmu.so",
+      "libXext.so": "/usr/lib32/libXext.so",
+      "libXt.so": "/usr/lib32/libXt.so",
+      "libX11.so.1": "/usr/lib32/libX11.so.1",
+      "libm.so": "/usr/lib32/libm.so",
+      "libC.so.2": "/usr/lib32/libC.so.2",
+      "libCsup.so": "/usr/lib32/libCsup.so",
+      "libc.so.1": "/usr/lib32/libc.so.1",
+      "libvk.so.1": "/usr/lib32/libvk.so.1",
+      "libXpm.so.1": "/usr/lib32/libXpm.so.1",
+      "libgen.so": "/usr/lib32/libgen.so",
+      "libimdFtrDB.so": "/usr/lib32/internal/libimdFtrDB.so",
+      "libil.so": "/usr/lib32/libil.so",
+      "libifl.so": "/usr/lib32/libifl.so",
+      "libGL.so": "/usr/lib32/libGL.so",
+      "libGLU.so": "/usr/lib32/libGLU.so",
+      "libSgm.so.1": "/usr/lib32/libSgm.so.1",
+      "libGLcore.so": "/usr/lib32/libGLcore.so",
+      "libXsgivc.so": "/usr/lib32/libXsgivc.so",
+      "libgl.so": "/usr/lib32/libgl.so",
+      "libXi.so": "/usr/lib32/libXi.so"
+    },
+    "toolchest": {
+      "libXm.so.1": "/usr/lib32/libXm.so.1",
+      "libXt.so": "/usr/lib32/libXt.so",
+      "libX11.so.1": "/usr/lib32/libX11.so.1",
+      "libgen.so": "/usr/lib32/libgen.so",
+      "libCsup.so": "/usr/lib32/libCsup.so",
+      "libC.so.2": "/usr/lib32/libC.so.2",
+      "libc.so.1": "/usr/lib32/libc.so.1",
+      "libm.so": "/usr/lib32/libm.so"
+    }
+  },
+  "trace_markers": [
+    "socket(PF_INET, SOCK_STREAM, 0)",
+    "sin_port=6099, sin_addr=127.0.0.1",
+    "errno = 146 (Connection refused)",
+    "exit(1)"
+  ]
+}
