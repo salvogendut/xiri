@@ -1,13 +1,14 @@
 # Static o32 compatibility experiment
 
-This lab supplies original, synthetic MIPS ELF fixtures for the first IRIX
-system-call experiment. The opt-in NetBSD fork kernel now executes the marked
-static o32 fixture using IRIX `write`/`exit` trap numbers. It contains no vendor
+This lab supplies original, synthetic MIPS ELF fixtures for IRIX system-call
+experiments. The opt-in NetBSD fork kernel executes marked static o32 fixtures
+covering arguments, file I/O, and private memory mappings. It contains no vendor
 binaries or runtime and does not establish general IRIX application support.
 The separate release test retains the original native/rejection baseline.
 
 See the [source audit and implementation plan](../../docs/results/2026-10-30-irix-compat-audit.md)
-for the historical references, and the [execution result](../../docs/results/2026-10-30-irix-o32-execution.md)
+for the historical references, the [first execution result](../../docs/results/2026-10-30-irix-o32-execution.md),
+and the [static interface result](../../docs/results/2026-10-30-irix-o32-basics.md)
 for the implemented boundary and its limits.
 
 ## Release rejection baseline
@@ -137,3 +138,43 @@ logs, configuration, ISO, and disposable disks remain under
 `.work/irix-experiment-runs/`. `EXPERIMENT_PASS cases=33` is meaningful together
 with the recorded `expect` mode: baseline rejects every foreign fixture,
 whereas compat runs the marked fixtures and checks their behavior.
+
+## Static arguments, files, and memory
+
+The follow-up NetBSD branch `xiri/irix-o32-basics`, commit
+`c9ab9ccc062650870e17006571c93e665e2133d9`, adds argument setup, read/open/close,
+and a bounded private mmap/munmap/mprotect subset. Continue from the isolated
+worktree and toolchain setup above, after fetching this branch into the fork:
+
+```sh
+git -C "$XIRI_NETBSD_SOURCE_DIR" switch --detach c9ab9ccc062650870e17006571c93e665e2133d9
+export XIRI_NETBSD_TFTP_DIR="$XIRI_NETBSD_BUILD_DIR/basics-tftp"
+export XIRI_NETBSD_CONFIG="$PWD/lab/irix-o32/XIRI_IRIX_BASIC"
+./scripts/build-netbsd-kernel.sh kernel
+./scripts/build-irix-experiment.py --basics
+for mode in ci ordinary; do
+    ./scripts/probe-irix-experiment.py --suite basics --mode "$mode" --expect compat \
+        --kernel-directory "$XIRI_NETBSD_TFTP_DIR" --ident XIRI_IRIX_BASIC_20261030
+done
+```
+
+The builder writes a version 2 manifest and 34 fixtures to `.work/irix-o32-basics/`.
+The original 23 fixtures are unchanged; eleven additional programs in
+[`basics.S`](basics.S) exercise arguments/environment/static auxv, file effects,
+partial/nonblocking transfers, zero-filled and file-backed private mappings,
+protection changes, malformed arguments, and access faults. Five marked/native
+pairs bring the total to 44 cases. The native parent checks the created file's
+contents and permissions; the guest hash check verifies that private mapping
+writes leave the backing file unchanged. Both modes must report
+`EXPERIMENT_PASS cases=44` and halt cleanly.
+
+Open flags are translated individually, paths use the native guest namespace,
+and mmap accepts only a null hint, MAP_PRIVATE, and a nonnegative aligned
+32-bit file offset. `/dev/zero` provides zero-filled mappings. Unsupported
+flag combinations fail explicitly. The [result record](../../docs/results/2026-10-30-irix-o32-basics.md)
+lists the exact supported subset and remaining limits. The loader still has
+no writable data/BSS segment or interpreter support.
+
+The builder and probe default to the original version 1/minimal suite when
+`--basics` and `--suite basics` are omitted. Its earlier kernel and results
+remain independently reproducible.

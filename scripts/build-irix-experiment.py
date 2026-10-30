@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Build the o32 execution/error fixtures and deliberately rejected ELF variants."""
 
+import argparse
 import importlib.util
 import json
 from pathlib import Path
@@ -13,25 +14,38 @@ spec.loader.exec_module(base)
 
 
 def main():
-    base.OUTPUT = ROOT / '.work/irix-o32-experiment'
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--basics', action='store_true', help='add static argument, file, and memory checks')
+    args = parser.parse_args()
+    base.OUTPUT = ROOT / ('.work/irix-o32-basics' if args.basics else '.work/irix-o32-experiment')
     base.main()
     output = base.OUTPUT
     manifest = json.loads((output / 'manifest.json').read_text())
     # A failed extended build must not leave a usable three-fixture manifest.
     (output / 'manifest.json').unlink()
-    manifest['experiment_version'] = 1
+    manifest['experiment_version'] = 2 if args.basics else 1
     manifest['source_sha256']['checks.S'] = base.digest(base.SOURCE / 'checks.S')
     manifest['fixtures']['native-o32']['expect'] = 'output'
     manifest['fixtures']['irix-o32-marked']['expect'] = 'output'
     manifest['fixtures']['irix-o32-unbranded']['expect'] = 'reject'
-    for name, symbol, expected in [('irix-errors', 'ERRORS', 'quiet'),
-                                    ('irix-numbers', 'NUMBERS', 'quiet'),
-                                    ('irix-delay', 'DELAY', 'output'),
-                                    ('irix-loop', 'LOOP', 'timeout'),
-                                    ('irix-fault', 'FAULT', 'signal')]:
+    checks = [('irix-errors', 'ERRORS', 'quiet', 'checks.S'),
+              ('irix-numbers', 'NUMBERS', 'quiet', 'checks.S'),
+              ('irix-delay', 'DELAY', 'output', 'checks.S'),
+              ('irix-loop', 'LOOP', 'timeout', 'checks.S'),
+              ('irix-fault', 'FAULT', 'signal', 'checks.S')]
+    if args.basics:
+        manifest['source_sha256']['basics.S'] = base.digest(base.SOURCE / 'basics.S')
+        checks += [(name, symbol, expected, 'basics.S') for name, symbol, expected in [
+            ('irix-args', 'ARGS', 'quiet'), ('irix-args-empty', 'ARGS_EMPTY', 'quiet'),
+            ('irix-files', 'FILES', 'quiet'), ('irix-file-errors', 'FILE_ERRORS', 'quiet'),
+            ('irix-partial', 'PARTIAL', 'quiet'), ('irix-memory', 'MEMORY', 'quiet'),
+            ('irix-file-map', 'FILE_MAP', 'quiet'), ('irix-mem-errors', 'MEM_ERRORS', 'quiet'),
+            ('irix-stack-args', 'STACK_ARGS', 'quiet'), ('irix-readonly', 'READONLY', 'signal'),
+            ('irix-unmapped', 'UNMAPPED', 'signal')]]
+    for name, symbol, expected, source in checks:
         obj, elf = output / f'{name}.o', output / name
         base.run('as', '-EB', '-mabi=32', '-mips3', '-G', '0',
-                 '--defsym', f'{symbol}=1', '-o', obj, base.SOURCE / 'checks.S')
+                 '--defsym', f'{symbol}=1', '-o', obj, base.SOURCE / source)
         base.run('ld', '-EB', '-m', 'elf32btsmip', '--build-id=none',
                  '-T', base.SOURCE / 'probe.ld', '-o', elf, obj)
         data = bytearray(elf.read_bytes())

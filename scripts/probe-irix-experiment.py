@@ -20,6 +20,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--mode', choices=['ci', 'ordinary'], default='ci')
     parser.add_argument('--expect', choices=['baseline', 'compat'], required=True)
+    parser.add_argument('--suite', choices=['minimal', 'basics'], default='minimal')
     parser.add_argument('--kernel-directory', type=Path, required=True)
     parser.add_argument('--ident', required=True)
     args = parser.parse_args()
@@ -28,17 +29,18 @@ def main():
     kernel = kernel_dir / 'netbsd-XIRI_INDY'
     if not kernel.is_file() or not re.fullmatch(r'[A-Z0-9_]+', args.ident):
         parser.error('kernel directory must contain netbsd-XIRI_INDY; ident must be uppercase alphanumeric/underscore')
-    fixtures = ROOT / '.work/irix-o32-experiment'
+    fixtures = ROOT / ('.work/irix-o32-basics' if args.suite == 'basics' else '.work/irix-o32-experiment')
     manifest = json.loads((fixtures / 'manifest.json').read_text())
-    if manifest.get('experiment_version') != 1 or len(manifest['fixtures']) != 23:
-        parser.error('rebuild the complete version 1 experiment (23 fixtures)')
+    version, count = (2, 34) if args.suite == 'basics' else (1, 23)
+    if manifest.get('experiment_version') != version or len(manifest['fixtures']) != count:
+        parser.error(f'rebuild the complete version {version} experiment ({count} fixtures)')
     output_root = ROOT / '.work/irix-experiment-runs'
     output_root.mkdir(exist_ok=True)
-    directory = Path(tempfile.mkdtemp(prefix=f'{args.expect}-{args.mode}-', dir=output_root))
+    directory = Path(tempfile.mkdtemp(prefix=f'{args.suite}-{args.expect}-{args.mode}-', dir=output_root))
     config = (ROOT / 'lab/indy-netbsd/iris.toml').read_text()
     config = re.sub(r'^tftp_dir = .*$', 'tftp_dir = ' + json.dumps(str(kernel_dir)), config, flags=re.M)
     lab = probe.Lab(args, directory, config_text=config)
-    result = {'mode': args.mode, 'expect': args.expect, 'ident': args.ident,
+    result = {'mode': args.mode, 'expect': args.expect, 'suite': args.suite, 'ident': args.ident,
               'status': 'error', 'clean_shutdown': False,
               'started_utc': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()),
               'fixture_manifest': manifest}
@@ -77,6 +79,9 @@ def main():
         result['runner_sha256'] = probe.sha256(media / 'runner.c')
         (media / 'payload.bin').write_bytes(bytes(range(256)) * 512)
         payload_sha = probe.sha256(media / 'payload.bin')
+        if args.suite == 'basics':
+            (media / 'map-input.bin').write_bytes(bytes([0x11]) * 4096 + bytes([0x22]) * 4096)
+            result['map_input_sha256'] = probe.sha256(media / 'map-input.bin')
         probe.run(['genisoimage', '-quiet', '-R', '-J', '-V', 'XIRI_O32',
                    '-o', directory / 'probe.iso', media])
         lab.start()
@@ -105,6 +110,9 @@ def main():
         if lab.command('test "$(sysctl -n kern.configname)" = ' + shlex.quote(args.ident) +
                        ' && test "$(cksum /root/xiri-probe)" = "3540535338 33 /root/xiri-probe"', 15):
             raise RuntimeError('post-experiment native check failed')
+        if args.suite == 'basics' and lab.command(
+                'test "$(sha256 -q /root/irix-experiment/map-input.bin)" = ' + result['map_input_sha256'], 15):
+            raise RuntimeError('private file mapping changed the backing file')
         result['status'] = 'passed'
     except Exception as error:
         result['error'] = f'{type(error).__name__}: {error}'

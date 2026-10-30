@@ -1,5 +1,9 @@
 # Static IRIX o32 execution experiment — 2026-10-30
 
+Follow-up: the [static interface extension](2026-10-30-irix-o32-basics.md)
+qualifies a bounded argument, file, and memory subset with 44 cases in each
+mode. This record preserves the original 33-case execution milestone.
+
 The NetBSD fork now executes an explicitly marked, synthetic static o32
 program using IRIX trap numbers 1004 (`write`) and 1001 (`exit`). It prints
 exactly `XIRI_ABI_PROBE\n` (15 bytes), verifies the write result, and exits 37.
