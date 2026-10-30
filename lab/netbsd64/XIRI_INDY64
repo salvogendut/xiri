@@ -1,0 +1,8 @@
+# Native 64-bit Indy baseline; keep the o32 IRIX personality separate.
+include "arch/sgimips/conf/GENERIC64_IP2x"
+ident "XIRI_INDY64_20261030"
+makeoptions DEBUG="-g"
+# IP20 Hollywood audio requires 4 KiB VM pages; this baseline targets IP24.
+no haud* at hpc0
+no config netbsd
+config netbsd root on sd0a type ffs

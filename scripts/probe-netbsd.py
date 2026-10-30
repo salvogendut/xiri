@@ -17,8 +17,10 @@ import uuid
 
 
 ROOT = Path(__file__).resolve().parent.parent
-IRIS = ROOT / '.work/target/release/iris'
-CI = ROOT / '.work/target/release/iris-ci'
+# Allow regression runs against an isolated build without replacing the baseline.
+IRIS_BIN_DIR = Path(os.environ.get('XIRI_IRIS_BIN_DIR', ROOT / '.work/target/release')).resolve()
+IRIS = IRIS_BIN_DIR / 'iris'
+CI = IRIS_BIN_DIR / 'iris-ci'
 GDB = ROOT / '.work/netbsd-build/tools/bin/mipseb--netbsd-gdb'
 SYMBOLS = ROOT / '.work/netbsd-build/obj/sys/arch/sgimips/compile/XIRI_INDY/netbsd.gdb'
 TOOLBOX = ['toolbox', 'run', '-c', 'xiri-iris']

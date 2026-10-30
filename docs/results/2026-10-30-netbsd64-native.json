@@ -1,0 +1,1857 @@
+{
+  "schema": 1,
+  "date": "2026-10-30",
+  "status": "passed",
+  "description": "Native LP64 Indy kernel with installed o32 userland and native n32/n64 probes; IRIX personality disabled",
+  "pin": {
+    "schema": 1,
+    "description": "Native LP64 Indy kernel with COMPAT_NETBSD32; no IRIX personality enabled",
+    "ident": "XIRI_INDY64_20261030",
+    "source_revision": "40d3a490765b8babc8c9cd2aa03a80fa26567320",
+    "source_branch": "xiri/irix-n32-baseline",
+    "build_arch": "mips64eb",
+    "page_bytes": 8192,
+    "boot_kernel_sha256": "5892bba9bcd6c81dd77a33cd8d0797606af4bb6ce58ecec48808a18de321c299",
+    "native_kernel_sha256": "092c6121033d63f2e998293ba3e25aa227a8f84b2b37a678469e47726eea2547",
+    "debug_kernel_sha256": "5e2d9509f64f981ee1847099c672c035a070a962a8ecfca5b6679ef791891397",
+    "native_o32_sha256": "c294fbb1f2110445be31c096481ea54ab561c7e59ca5b9fc7171310098d755d4",
+    "source_dirty": false,
+    "emulator_revision": "9df1df14334838a989253efefe26f0547e6da592",
+    "emulator_branch": "xiri/netbsd64-tlb",
+    "emulator_sha256": "1b3f7702ba7f43b5c4fca8ba8884243559f46371d8d67a36ce5e6fee1e595eba",
+    "ci_client_sha256": "8711321aa6eaae440da3c7920b00ae4cf1c7f2abbdb15a9919f58485500ffb6c",
+    "base_disk_sha256": "269038c7b77660c83d3835208fc0b2702c93110c14b3c55a42416f51672cee2a",
+    "nvram_sha256": "ee883474d52f09278287b2044f7aeca61d2e7bc39c0bb8fd85c983ab64063d15",
+    "config_sha256": "2af00713b6bec36d5b2b77502eb8a4ba694f168bbc637e9d9e542cc31fc9e1d4"
+  },
+  "sources_sha256": {
+    "scripts/build-netbsd-kernel.sh": "3a068b867a337cb544b9b7a763bc83f0de7b3d67ee73f7d20547ee22271feac6",
+    "scripts/build-netbsd64-iris.sh": "e645ff9dca53df7dcd1f1e1e63dcebb6717dbff57c314aa8572143a1a97fea7c",
+    "scripts/build-netbsd64-probes.py": "0d4bc1df999a7ce290730159c333a7156653406119926f8f697d97ff4ae246c3",
+    "scripts/probe-netbsd64.py": "bfb9ef85ed6ce75947f0be44310df83857e14b648acbcab99a051cd907032c3c",
+    "scripts/probe-netbsd.py": "adfa9547fa98af28fd55e4e155e7667b2b0a8c7cea8aee8d58079da946b72a1d",
+    "lab/netbsd64/native.S": "3bbb59ab83e25ee7fe0771f46a7156e7cd6a064bebf4cb2735674496ac28c02f",
+    "lab/netbsd64/native.ld": "143975a456305a78e074105165dd5218e8a41e5b461191c9e93e6f01081e2431",
+    "lab/netbsd64/native-o32.c": "c3721479b9553fc8a2c18f4f7da7f65a62f25f93bcdc9f2d12e31b2d9302f25f",
+    "lab/netbsd64/XIRI_INDY64": "2af00713b6bec36d5b2b77502eb8a4ba694f168bbc637e9d9e542cc31fc9e1d4",
+    "lab/iris/Cargo.lock": "869a1499143fb349390f388c7cacf7039e9034e782f5ed4199c3402181a3e54a",
+    "lab/indy-netbsd/iris.toml": "a45c865fb7f13ef47a51faf2ae9cc04338df712aaeaefb05a1f4a656aa9d7f7a",
+    "lab/indy-netbsd/probe.sh": "0a2be1a81af97b029254b162f85a574bd80f62f28ab8f83d4c8559197069a550",
+    "lab/irix-o32/runtime-runner.c": "4fe2f92ccb802b9293e4e9308f58354b964e52c1a374cdcc6159d0aa21da8b0a"
+  },
+  "fixture_manifest": {
+    "schema": 1,
+    "builder_sha256": "0d4bc1df999a7ce290730159c333a7156653406119926f8f697d97ff4ae246c3",
+    "sources": {
+      "native.S": "3bbb59ab83e25ee7fe0771f46a7156e7cd6a064bebf4cb2735674496ac28c02f",
+      "native.ld": "143975a456305a78e074105165dd5218e8a41e5b461191c9e93e6f01081e2431"
+    },
+    "tools": {
+      "as": "GNU assembler (NetBSD Binutils nb1) 2.46.0.20260210",
+      "ld": "GNU ld (NetBSD Binutils nb1) 2.46.0.20260210"
+    },
+    "files": {
+      "n32-registers": {
+        "sha256": "56bc311020d7959b7e0349f59f3145c49d5b9e1b3625cde4f9289373f0e9bcee",
+        "bytes": 1092,
+        "abi": "n32",
+        "elf_class": 1,
+        "flags": "0x20000021"
+      },
+      "n32-fp": {
+        "sha256": "42a67af8923829d0994c592c7d3f18e862a9c8e3891044c8bab59560e5e111e1",
+        "bytes": 996,
+        "abi": "n32",
+        "elf_class": 1,
+        "flags": "0x20000021"
+      },
+      "n32-seek64": {
+        "sha256": "fb3449395f245939b0444119f2c1915843a638a972b6ad3050ef577f9779302f",
+        "bytes": 1184,
+        "abi": "n32",
+        "elf_class": 1,
+        "flags": "0x20000021"
+      },
+      "n32-mmap": {
+        "sha256": "a4880031f8f355309312632564c9a7892b269dadbab75b585f1f21dc75f69cd0",
+        "bytes": 1180,
+        "abi": "n32",
+        "elf_class": 1,
+        "flags": "0x20000021"
+      },
+      "n32-indirect-mmap": {
+        "sha256": "0d1e68ccf1db8feee9e57bd7c7c866d173c31bd7ce250a507b2f2301376fc5a2",
+        "bytes": 1280,
+        "abi": "n32",
+        "elf_class": 1,
+        "flags": "0x20000021"
+      },
+      "n32-errors": {
+        "sha256": "55a6ef2069772e8b6e556839ca8809a80dccde9d776609e783d61e3eb148c335",
+        "bytes": 972,
+        "abi": "n32",
+        "elf_class": 1,
+        "flags": "0x20000021"
+      },
+      "n32-delay": {
+        "sha256": "903471c9628c0ccfe8bbd05823919108c7288cd2169c670af64899bfb5656a51",
+        "bytes": 952,
+        "abi": "n32",
+        "elf_class": 1,
+        "flags": "0x20000021"
+      },
+      "n32-text-fault": {
+        "sha256": "9ad60995acc7640e5e5da41519c2861445847b8a6ec732fa38ac40eb852aece3",
+        "bytes": 916,
+        "abi": "n32",
+        "elf_class": 1,
+        "flags": "0x20000021"
+      },
+      "n64-registers": {
+        "sha256": "71e383d709df4011f5fae3b90d7b2460b938be733ce86159f74ee1c4d843e957",
+        "bytes": 1568,
+        "abi": "n64",
+        "elf_class": 2,
+        "flags": "0x20000001"
+      },
+      "n64-fp": {
+        "sha256": "862bb5d200a4a28136eafbf0d91b70a991ac666c27e5b6418a6a295115ae0384",
+        "bytes": 1480,
+        "abi": "n64",
+        "elf_class": 2,
+        "flags": "0x20000001"
+      },
+      "n64-seek64": {
+        "sha256": "850f2bc0cf91614acf9b24f2d524c1ec50fdb7872bf1f029fb2b69dc95b2a13d",
+        "bytes": 1672,
+        "abi": "n64",
+        "elf_class": 2,
+        "flags": "0x20000001"
+      },
+      "n64-mmap": {
+        "sha256": "3b93849cff98e3375bac77c9186eb77ea7714aa9845f8d31832b9688baac2df6",
+        "bytes": 1672,
+        "abi": "n64",
+        "elf_class": 2,
+        "flags": "0x20000001"
+      },
+      "n64-indirect-mmap": {
+        "sha256": "dc8fa42aeac4e66cd3ab726a72673b1a59567a17574822bc00499c074d8fd10b",
+        "bytes": 1776,
+        "abi": "n64",
+        "elf_class": 2,
+        "flags": "0x20000001"
+      },
+      "n64-errors": {
+        "sha256": "63473533e41fdc5bad2d58a7d89c4b33b3b2082476da29470cfb71e1378f2bfb",
+        "bytes": 1456,
+        "abi": "n64",
+        "elf_class": 2,
+        "flags": "0x20000001"
+      },
+      "n64-delay": {
+        "sha256": "68b899c52597d2b6c12b54693060d337e3b988db5e496f99f45ed9ee0b8aeeb1",
+        "bytes": 1440,
+        "abi": "n64",
+        "elf_class": 2,
+        "flags": "0x20000001"
+      },
+      "n64-text-fault": {
+        "sha256": "38a95c9472e11ee24153b882feaf424d6d34a5a2542f159bf8dddd21e97b3299",
+        "bytes": 1400,
+        "abi": "n64",
+        "elf_class": 2,
+        "flags": "0x20000001"
+      },
+      "map-input.bin": {
+        "sha256": "75669ac4f3fd99bf2bd58eb804c1422211a7746e86e97b3fcd4e937365a3b567",
+        "bytes": 16384
+      }
+    },
+    "cases": [
+      {
+        "name": "n32-registers",
+        "signal": 0
+      },
+      {
+        "name": "n32-fp",
+        "signal": 0
+      },
+      {
+        "name": "n32-seek64",
+        "signal": 0
+      },
+      {
+        "name": "n32-mmap",
+        "signal": 0
+      },
+      {
+        "name": "n32-indirect-mmap",
+        "signal": 0
+      },
+      {
+        "name": "n32-errors",
+        "signal": 0
+      },
+      {
+        "name": "n32-delay",
+        "signal": 0
+      },
+      {
+        "name": "n32-text-fault",
+        "signal": 11
+      },
+      {
+        "name": "n64-registers",
+        "signal": 0
+      },
+      {
+        "name": "n64-fp",
+        "signal": 0
+      },
+      {
+        "name": "n64-seek64",
+        "signal": 0
+      },
+      {
+        "name": "n64-mmap",
+        "signal": 0
+      },
+      {
+        "name": "n64-indirect-mmap",
+        "signal": 0
+      },
+      {
+        "name": "n64-errors",
+        "signal": 0
+      },
+      {
+        "name": "n64-delay",
+        "signal": 0
+      },
+      {
+        "name": "n64-text-fault",
+        "signal": 11
+      }
+    ],
+    "page_bytes": 8192
+  },
+  "native_runs": [
+    {
+      "artifact": ".work/netbsd64-runs/ci-z05_ffss/result.json",
+      "result_sha256": "ac7cc23d126a451df68ea9fc009de39eafeb25716b68167f62bafecff7674b0e",
+      "mode": "ci",
+      "status": "passed",
+      "clean_shutdown": true,
+      "started_utc": "2026-10-30T18:38:43Z",
+      "seconds": 166.788,
+      "guest_exit_status": 0,
+      "identity": "uname -a && sysctl kern.configname hw.machine hw.machine_arch && getc \bonf PAGESIZE; xiri_rc=$?; printf '\\nXIRI_5a20863c57b84ebdbff97a2ffe129d4e_RC=%s\\ \bn' \"$xiri_rc\"\nNetBSD xiri-indy 11.99.9 NetBSD 11.99.9 (XIRI_INDY64_20261030) #3: Fri Oct 30 18:24:54 UTC 2026  salvogendut@toolbx:/var/home/salvogendut/Dev/xiri/.work/netbsd64-build/obj/sys/arch/sgimips/compile/XIRI_INDY64 sgimips\nkern.configname = XIRI_INDY64_20261030\nhw.machine = sgimips\nhw.machine_arch = mipseb\n8192\n\nXIRI_5a20863c57b84ebdbff97a2ffe129d4e_RC=0\nxiri-indy# ",
+      "harness_sha256": "bfb9ef85ed6ce75947f0be44310df83857e14b648acbcab99a051cd907032c3c",
+      "runner_sha256": "4fe2f92ccb802b9293e4e9308f58354b964e52c1a374cdcc6159d0aa21da8b0a",
+      "native_c_source_sha256": "c3721479b9553fc8a2c18f4f7da7f65a62f25f93bcdc9f2d12e31b2d9302f25f",
+      "observations": [
+        {
+          "name": "native-before",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          },
+          "expected": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          },
+          "passed": true
+        },
+        {
+          "name": "n32-registers",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "expected": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "passed": true
+        },
+        {
+          "name": "n32-fp",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "expected": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "passed": true
+        },
+        {
+          "name": "n32-seek64",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "expected": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "passed": true
+        },
+        {
+          "name": "n32-mmap",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "expected": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "passed": true
+        },
+        {
+          "name": "n32-indirect-mmap",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "expected": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "passed": true
+        },
+        {
+          "name": "n32-errors",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "expected": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "passed": true
+        },
+        {
+          "name": "n32-delay",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "expected": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "passed": true
+        },
+        {
+          "name": "n32-text-fault",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": -1,
+            "signal": 11,
+            "killed": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "expected": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": -1,
+            "signal": 11,
+            "killed": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "passed": true
+        },
+        {
+          "name": "n64-registers",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "expected": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "passed": true
+        },
+        {
+          "name": "n64-fp",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "expected": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "passed": true
+        },
+        {
+          "name": "n64-seek64",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "expected": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "passed": true
+        },
+        {
+          "name": "n64-mmap",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "expected": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "passed": true
+        },
+        {
+          "name": "n64-indirect-mmap",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "expected": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "passed": true
+        },
+        {
+          "name": "n64-errors",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "expected": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "passed": true
+        },
+        {
+          "name": "n64-delay",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "expected": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "passed": true
+        },
+        {
+          "name": "n64-text-fault",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": -1,
+            "signal": 11,
+            "killed": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "expected": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": -1,
+            "signal": 11,
+            "killed": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "passed": true
+        },
+        {
+          "name": "o32-compat-root",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_O32_COMPAT_OK\n",
+            "stderr": ""
+          },
+          "expected": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_O32_COMPAT_OK\n",
+            "stderr": ""
+          },
+          "passed": true,
+          "ids": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "o32-compat-user",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_O32_COMPAT_OK\n",
+            "stderr": ""
+          },
+          "expected": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_O32_COMPAT_OK\n",
+            "stderr": ""
+          },
+          "passed": true,
+          "ids": [
+            1234,
+            1234,
+            5678,
+            5678
+          ]
+        },
+        {
+          "name": "vendor-asa",
+          "actual": {
+            "errno_bytes": 4,
+            "errno": 8,
+            "exit": 126,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "expected": {
+            "errno_bytes": 4,
+            "errno": 8,
+            "exit": 126,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "passed": true
+        },
+        {
+          "name": "vendor-echo",
+          "actual": {
+            "errno_bytes": 4,
+            "errno": 8,
+            "exit": 126,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "expected": {
+            "errno_bytes": 4,
+            "errno": 8,
+            "exit": 126,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "passed": true
+        },
+        {
+          "name": "vendor-4Dwm",
+          "actual": {
+            "errno_bytes": 4,
+            "errno": 8,
+            "exit": 126,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "expected": {
+            "errno_bytes": 4,
+            "errno": 8,
+            "exit": 126,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "passed": true
+        },
+        {
+          "name": "vendor-toolchest",
+          "actual": {
+            "errno_bytes": 4,
+            "errno": 8,
+            "exit": 126,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "expected": {
+            "errno_bytes": 4,
+            "errno": 8,
+            "exit": 126,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "passed": true
+        },
+        {
+          "name": "n32-registers-repeat-0",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "expected": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "passed": true
+        },
+        {
+          "name": "n64-registers-repeat-0",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "expected": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "passed": true
+        },
+        {
+          "name": "native-o32-repeat-0",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          },
+          "expected": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          },
+          "passed": true
+        },
+        {
+          "name": "n32-registers-repeat-1",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "expected": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "passed": true
+        },
+        {
+          "name": "n64-registers-repeat-1",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "expected": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "passed": true
+        },
+        {
+          "name": "native-o32-repeat-1",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          },
+          "expected": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          },
+          "passed": true
+        },
+        {
+          "name": "n32-registers-repeat-2",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "expected": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "passed": true
+        },
+        {
+          "name": "n64-registers-repeat-2",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "expected": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "passed": true
+        },
+        {
+          "name": "native-o32-repeat-2",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          },
+          "expected": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          },
+          "passed": true
+        },
+        {
+          "name": "native-after",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          },
+          "expected": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          },
+          "passed": true
+        }
+      ]
+    },
+    {
+      "artifact": ".work/netbsd64-runs/ordinary-c4g3mxf8/result.json",
+      "result_sha256": "cb6093f3d747ca7ee1e64c62a41c6d294f21fabd4f6dedec79b21a601af9a1db",
+      "mode": "ordinary",
+      "status": "passed",
+      "clean_shutdown": true,
+      "started_utc": "2026-10-30T18:38:20Z",
+      "seconds": 167.803,
+      "guest_exit_status": 0,
+      "identity": "uname -a && sysctl kern.configname hw.machine hw.machine_arch && getc \bonf PAGESIZE; xiri_rc=$?; printf '\\nXIRI_bfd9e8cddac8427a820c8bb46370395f_RC=%s\\ \bn' \"$xiri_rc\"\nNetBSD xiri-indy 11.99.9 NetBSD 11.99.9 (XIRI_INDY64_20261030) #3: Fri Oct 30 18:24:54 UTC 2026  salvogendut@toolbx:/var/home/salvogendut/Dev/xiri/.work/netbsd64-build/obj/sys/arch/sgimips/compile/XIRI_INDY64 sgimips\nkern.configname = XIRI_INDY64_20261030\nhw.machine = sgimips\nhw.machine_arch = mipseb\n8192\n\nXIRI_bfd9e8cddac8427a820c8bb46370395f_RC=0\nxiri-indy# ",
+      "harness_sha256": "bfb9ef85ed6ce75947f0be44310df83857e14b648acbcab99a051cd907032c3c",
+      "runner_sha256": "4fe2f92ccb802b9293e4e9308f58354b964e52c1a374cdcc6159d0aa21da8b0a",
+      "native_c_source_sha256": "c3721479b9553fc8a2c18f4f7da7f65a62f25f93bcdc9f2d12e31b2d9302f25f",
+      "observations": [
+        {
+          "name": "native-before",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          },
+          "expected": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          },
+          "passed": true
+        },
+        {
+          "name": "n32-registers",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "expected": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "passed": true
+        },
+        {
+          "name": "n32-fp",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "expected": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "passed": true
+        },
+        {
+          "name": "n32-seek64",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "expected": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "passed": true
+        },
+        {
+          "name": "n32-mmap",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "expected": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "passed": true
+        },
+        {
+          "name": "n32-indirect-mmap",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "expected": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "passed": true
+        },
+        {
+          "name": "n32-errors",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "expected": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "passed": true
+        },
+        {
+          "name": "n32-delay",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "expected": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "passed": true
+        },
+        {
+          "name": "n32-text-fault",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": -1,
+            "signal": 11,
+            "killed": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "expected": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": -1,
+            "signal": 11,
+            "killed": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "passed": true
+        },
+        {
+          "name": "n64-registers",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "expected": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "passed": true
+        },
+        {
+          "name": "n64-fp",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "expected": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "passed": true
+        },
+        {
+          "name": "n64-seek64",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "expected": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "passed": true
+        },
+        {
+          "name": "n64-mmap",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "expected": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "passed": true
+        },
+        {
+          "name": "n64-indirect-mmap",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "expected": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "passed": true
+        },
+        {
+          "name": "n64-errors",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "expected": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "passed": true
+        },
+        {
+          "name": "n64-delay",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "expected": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "passed": true
+        },
+        {
+          "name": "n64-text-fault",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": -1,
+            "signal": 11,
+            "killed": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "expected": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": -1,
+            "signal": 11,
+            "killed": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "passed": true
+        },
+        {
+          "name": "o32-compat-root",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_O32_COMPAT_OK\n",
+            "stderr": ""
+          },
+          "expected": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_O32_COMPAT_OK\n",
+            "stderr": ""
+          },
+          "passed": true,
+          "ids": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "o32-compat-user",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_O32_COMPAT_OK\n",
+            "stderr": ""
+          },
+          "expected": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_O32_COMPAT_OK\n",
+            "stderr": ""
+          },
+          "passed": true,
+          "ids": [
+            1234,
+            1234,
+            5678,
+            5678
+          ]
+        },
+        {
+          "name": "vendor-asa",
+          "actual": {
+            "errno_bytes": 4,
+            "errno": 8,
+            "exit": 126,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "expected": {
+            "errno_bytes": 4,
+            "errno": 8,
+            "exit": 126,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "passed": true
+        },
+        {
+          "name": "vendor-echo",
+          "actual": {
+            "errno_bytes": 4,
+            "errno": 8,
+            "exit": 126,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "expected": {
+            "errno_bytes": 4,
+            "errno": 8,
+            "exit": 126,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "passed": true
+        },
+        {
+          "name": "vendor-4Dwm",
+          "actual": {
+            "errno_bytes": 4,
+            "errno": 8,
+            "exit": 126,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "expected": {
+            "errno_bytes": 4,
+            "errno": 8,
+            "exit": 126,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "passed": true
+        },
+        {
+          "name": "vendor-toolchest",
+          "actual": {
+            "errno_bytes": 4,
+            "errno": 8,
+            "exit": 126,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "expected": {
+            "errno_bytes": 4,
+            "errno": 8,
+            "exit": 126,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "passed": true
+        },
+        {
+          "name": "n32-registers-repeat-0",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "expected": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "passed": true
+        },
+        {
+          "name": "n64-registers-repeat-0",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "expected": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "passed": true
+        },
+        {
+          "name": "native-o32-repeat-0",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          },
+          "expected": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          },
+          "passed": true
+        },
+        {
+          "name": "n32-registers-repeat-1",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "expected": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "passed": true
+        },
+        {
+          "name": "n64-registers-repeat-1",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "expected": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "passed": true
+        },
+        {
+          "name": "native-o32-repeat-1",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          },
+          "expected": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          },
+          "passed": true
+        },
+        {
+          "name": "n32-registers-repeat-2",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "expected": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "passed": true
+        },
+        {
+          "name": "n64-registers-repeat-2",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "expected": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_NATIVE64_OK\n",
+            "stderr": ""
+          },
+          "passed": true
+        },
+        {
+          "name": "native-o32-repeat-2",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          },
+          "expected": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          },
+          "passed": true
+        },
+        {
+          "name": "native-after",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          },
+          "expected": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          },
+          "passed": true
+        }
+      ]
+    }
+  ],
+  "emulator_regressions": [
+    {
+      "suite": "o32-runtime-dispatch",
+      "artifact": ".work/irix-dispatch-runs/ci-rw5oh2on/result.json",
+      "result_sha256": "a6a8d56e3bf617b4d08dd794455a6bc54fb7ccff9b4ce2839f38ab3dd894d736",
+      "case_count": 148,
+      "mode": "ci",
+      "status": "passed",
+      "clean_shutdown": true,
+      "started_utc": "2026-10-30T18:34:09Z",
+      "seconds": 207.107,
+      "harness_sha256": "a0b9d86dfa63ab3598db98b3fdccb41293bffe44558fb7028222a522d84dd0dc",
+      "kernel_sha256": "be05f4da8539da2be40addd3fdb7bd734a2e203bbc89f0f04fb5450229ded55e",
+      "emulator_sha256": "1b3f7702ba7f43b5c4fca8ba8884243559f46371d8d67a36ce5e6fee1e595eba",
+      "trace_passed": true,
+      "base_disk_sha256": "269038c7b77660c83d3835208fc0b2702c93110c14b3c55a42416f51672cee2a",
+      "nvram_sha256": "ee883474d52f09278287b2044f7aeca61d2e7bc39c0bb8fd85c983ab64063d15"
+    },
+    {
+      "suite": "o32-runtime-dispatch",
+      "artifact": ".work/irix-dispatch-runs/ordinary-zu0lx_sh/result.json",
+      "result_sha256": "4c42d2a7950b2dcb3f71aa1aff63cce06414aab56b88b24ff672fe5528f830ec",
+      "case_count": 148,
+      "mode": "ordinary",
+      "status": "passed",
+      "clean_shutdown": true,
+      "started_utc": "2026-10-30T18:38:18Z",
+      "seconds": 229.812,
+      "harness_sha256": "a0b9d86dfa63ab3598db98b3fdccb41293bffe44558fb7028222a522d84dd0dc",
+      "kernel_sha256": "be05f4da8539da2be40addd3fdb7bd734a2e203bbc89f0f04fb5450229ded55e",
+      "emulator_sha256": "1b3f7702ba7f43b5c4fca8ba8884243559f46371d8d67a36ce5e6fee1e595eba",
+      "trace_passed": true,
+      "base_disk_sha256": "269038c7b77660c83d3835208fc0b2702c93110c14b3c55a42416f51672cee2a",
+      "nvram_sha256": "ee883474d52f09278287b2044f7aeca61d2e7bc39c0bb8fd85c983ab64063d15"
+    },
+    {
+      "suite": "o32-static-native",
+      "artifact": ".work/irix-experiment-runs/dispatch-regressions-compat-ci-4kcsh659/result.json",
+      "result_sha256": "16bf5aa23b2a82af22b0976ba6677bd1b39d47716a1778aca7ae577e586a75da",
+      "case_count": 89,
+      "mode": "ci",
+      "status": "passed",
+      "clean_shutdown": true,
+      "started_utc": "2026-10-30T18:39:37Z",
+      "seconds": 169.351,
+      "harness_sha256": "2b81089521b8e2a309d3e31b75a4c92b126f3c40d10da25a4497b80827dc04c3",
+      "kernel_sha256": "be05f4da8539da2be40addd3fdb7bd734a2e203bbc89f0f04fb5450229ded55e",
+      "emulator_sha256": "1b3f7702ba7f43b5c4fca8ba8884243559f46371d8d67a36ce5e6fee1e595eba",
+      "base_disk_sha256": "269038c7b77660c83d3835208fc0b2702c93110c14b3c55a42416f51672cee2a",
+      "nvram_sha256": "ee883474d52f09278287b2044f7aeca61d2e7bc39c0bb8fd85c983ab64063d15"
+    },
+    {
+      "suite": "o32-static-native",
+      "artifact": ".work/irix-experiment-runs/dispatch-regressions-compat-ordinary-awpccpcs/result.json",
+      "result_sha256": "89488d4eb74688f75c42e94edb068cfcde1710101eefd658de464e6af01835ec",
+      "case_count": 89,
+      "mode": "ordinary",
+      "status": "passed",
+      "clean_shutdown": true,
+      "started_utc": "2026-10-30T18:41:24Z",
+      "seconds": 163.586,
+      "harness_sha256": "2b81089521b8e2a309d3e31b75a4c92b126f3c40d10da25a4497b80827dc04c3",
+      "kernel_sha256": "be05f4da8539da2be40addd3fdb7bd734a2e203bbc89f0f04fb5450229ded55e",
+      "emulator_sha256": "1b3f7702ba7f43b5c4fca8ba8884243559f46371d8d67a36ce5e6fee1e595eba",
+      "base_disk_sha256": "269038c7b77660c83d3835208fc0b2702c93110c14b3c55a42416f51672cee2a",
+      "nvram_sha256": "ee883474d52f09278287b2044f7aeca61d2e7bc39c0bb8fd85c983ab64063d15"
+    },
+    {
+      "suite": "original-irix-dispatch",
+      "artifact": ".work/irix-reference/dispatch-runs/ci-m6w1g4c5/result.json",
+      "result_sha256": "55f0311444919ef0e234fb06808a6bd5ca8469e7469f802e46ee38553d0351c4",
+      "case_count": 51,
+      "mode": "ci",
+      "status": "passed",
+      "clean_shutdown": true,
+      "started_utc": "2026-10-30T18:34:12Z",
+      "seconds": 303.36,
+      "harness_sha256": "97e60ac50fcf39a7420d570e55acdf07f69a728c89b2bebfbea1edfc53211cb5",
+      "emulator_sha256": "1b3f7702ba7f43b5c4fca8ba8884243559f46371d8d67a36ce5e6fee1e595eba",
+      "firmware_sha256": "333a0b2e39bb828a28a758b6f633ae7290030129dc747297a1be68dc317b86ae",
+      "reference_pin_sha256": "b2aa59ea3541a9b2c301f2a01583a915c78012b77e2e6c39558684dc3aebbb83",
+      "raw_disk_validation": "Size checked here; SHA-256 established during media intake, not recomputed"
+    }
+  ],
+  "cpu_tests": {
+    "passed": 258,
+    "tlb_subset": 14,
+    "regression_failed_before_fix": true,
+    "logs_sha256": {
+      "tlb-before": "f2a8e6b8c06f24b0cdb512e94b9bc38e475ff881e788a159f583b4e29435afd3",
+      "tlb-after": "c141b9ab458bca69a12d40659b1090b45ed31f57e1ddef744dd00b5862c12307",
+      "cpu-after": "a45d3f26da4a82ede2d782974349c1963ad0ef09c88dd7832fad1aad6777236f"
+    }
+  },
+  "totals": {
+    "native_scenarios": 66,
+    "netbsd_o32_regressions": 474,
+    "original_irix_scenarios": 51,
+    "cpu_unit_tests": 258
+  },
+  "limits": [
+    "Emulated 256 MiB R4400 IP24/Newport only; physical hardware, other CPU/board/RAM profiles unqualified",
+    "Native kernel uses 8 KiB pages; temporary 4 KiB kernel was not qualified",
+    "No IRIX personality in LP64 kernel; vendor candidates rejected with ENOEXEC",
+    "n32/n64 probes are static and use low user addresses; complete n64 userland and high-address application maps unqualified",
+    "o32 alternate-stack signal delivery/return tested; full FPR signal-context preservation unqualified",
+    "Original IRIX raw-disk size checked per run; content SHA established at intake, not recomputed per run"
+  ]
+}

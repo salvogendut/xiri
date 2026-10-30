@@ -9,6 +9,7 @@ build_dir=${XIRI_NETBSD_BUILD_DIR:-"$repo_root/.work/netbsd-build"}
 kernel_config=${XIRI_NETBSD_CONFIG:-"$repo_root/lab/netbsd-11.0/XIRI_INDY"}
 tftp_dir=${XIRI_NETBSD_TFTP_DIR:-"$inputs_dir/tftp"}
 build_jobs=${XIRI_BUILD_JOBS:-8}
+build_arch=${XIRI_NETBSD_ARCH:-mipseb}
 operation=${1:-all}
 
 if (( $# > 1 )) || [[ ! $operation =~ ^(all|tools|kernel|gdb)$ ]]; then
@@ -17,6 +18,14 @@ if (( $# > 1 )) || [[ ! $operation =~ ^(all|tools|kernel|gdb)$ ]]; then
 fi
 if [[ ! $build_jobs =~ ^[1-9][0-9]*$ ]]; then
     printf 'XIRI_BUILD_JOBS must be a positive integer\n' >&2
+    exit 2
+fi
+if [[ ! $build_arch =~ ^(mipseb|mips64eb)$ ]]; then
+    printf 'XIRI_NETBSD_ARCH must be mipseb or mips64eb\n' >&2
+    exit 2
+fi
+if [[ $build_arch != mipseb && -z ${XIRI_NETBSD_SOURCE_DIR:-} ]]; then
+    printf 'The 64-bit experiment requires an isolated fork build.\n' >&2
     exit 2
 fi
 build_dir=$(realpath -m "$build_dir")
@@ -69,6 +78,16 @@ if [[ -f $build_dir/source-path && $(cat "$build_dir/source-path") != "$source_d
     printf 'Build directory belongs to a different source tree.\n' >&2
     exit 2
 fi
+if [[ -f $build_dir/build-arch ]]; then
+    if [[ $(cat "$build_dir/build-arch") != "$build_arch" ]]; then
+        printf 'Build directory belongs to a different target architecture.\n' >&2
+        exit 2
+    fi
+elif [[ $build_arch != mipseb && -e $build_dir/tools/bin/nbmake-sgimips ]]; then
+    printf 'Use a fresh build directory for the 64-bit toolchain.\n' >&2
+    exit 2
+fi
+printf '%s\n' "$build_arch" > "$build_dir/build-arch"
 printf '%s\n' "$source_dir" > "$build_dir/source-path"
 if [[ -n ${XIRI_NETBSD_SOURCE_DIR:-} ]]; then
     git -C "$source_dir" rev-parse HEAD > "$build_dir/source-revision"
@@ -76,7 +95,7 @@ if [[ -n ${XIRI_NETBSD_SOURCE_DIR:-} ]]; then
     git -C "$source_dir" status --short > "$build_dir/source-status"
 fi
 build_args=(
-    -m sgimips -a mipseb -U -u -j "$build_jobs"
+    -m sgimips -a "$build_arch" -U -u -j "$build_jobs"
     -O "$build_dir/obj" -T "$build_dir/tools" -D "$build_dir/dest"
     -V MKX11=no
     # GCC 16 defaults to C23. Bundled tools need the older C function rules.
@@ -104,13 +123,18 @@ if [[ $operation == all || $operation == kernel ]]; then
     run_build "kernel.gdb=$kernel_config" "$build_dir/kernel.log"
     kernel_dir="$build_dir/obj/sys/arch/sgimips/compile/$(basename "$kernel_config")"
     mkdir -p "$tftp_dir" "$build_dir/kernel-media"
-    install -m 0644 "$kernel_dir/netbsd" "$tftp_dir/netbsd-XIRI_INDY"
+    boot_image=netbsd
+    if [[ $build_arch == mips64eb ]]; then
+        # The Indy PROM needs ELF32 headers around the 64-bit kernel payload.
+        boot_image=netbsd.elf32
+    fi
+    install -m 0644 "$kernel_dir/$boot_image" "$tftp_dir/netbsd-XIRI_INDY"
     # /netbsd must match the running kernel for tools such as savecore.
     # A virtual CD supplies this file without relying on guest TCP transfers.
     install -m 0644 "$kernel_dir/netbsd" "$build_dir/kernel-media/netbsd"
     genisoimage -quiet -R -J -V XIRI_KERNEL -o "$build_dir/kernel.iso" \
         "$build_dir/kernel-media"
-    sha256sum "$tftp_dir/netbsd-XIRI_INDY" "$kernel_dir/netbsd.gdb" \
+    sha256sum "$tftp_dir/netbsd-XIRI_INDY" "$kernel_dir/netbsd" "$kernel_dir/netbsd.gdb" \
         "$build_dir/kernel.iso" \
         | tee "$build_dir/kernel.sha256"
 fi
