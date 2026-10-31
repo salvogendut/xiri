@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Measure original o32/n32 TCP fixtures on a disposable IRIX reference."""
+import argparse
 import importlib.util
 import json
 from pathlib import Path
@@ -24,12 +25,47 @@ def module(name, filename):
 probe = module('netbsd_probe', 'probe-netbsd.py')
 
 
+def archive_observations(archive, cases, checkpoint):
+    """Decode saved evidence, including each peer's own durable exit status."""
+    result = {'observations': []}
+    with tarfile.open(archive) as tar:
+        # Archive the directory to stay below IRIX's small ARG_MAX.
+        for member in tar.getmembers():
+            if member.name.startswith('./'): member.name = member.name[2:]
+        statuses=dict((n,int(v)) for n,v in re.findall(r'^CASE (\S+) (\d+)$',tar.extractfile('status.txt').read().decode(),re.M))
+        if set(statuses) != {c['name'] for c in cases}: raise RuntimeError('incomplete cases')
+        for c in cases:
+            name=c['name']
+            data=tar.extractfile(name+'.out').read()
+            observation={'name':name,'exit':statuses[name], 'stdout_hex':data.hex(),
+                         'stderr':tar.extractfile(name+'.err').read().decode(errors='backslashreplace')}
+            result['observations'].append(observation)
+            # The supplied IRIX traps delay-slot syscalls with SIGSYS (12).
+            # Keep this observed difference explicit rather than calling it success.
+            delayed = 'DELAY' in c['symbols']
+            if (statuses[name] != (140 if delayed else 0) or
+                    len(data) != (0 if delayed else c.get('record_bytes',32))):
+                raise RuntimeError('incomplete fixture: '+name)
+        result['server']={'exit':int(tar.extractfile('server.status').read()),'stdout':tar.extractfile('server.out').read().decode(),
+                          'stderr':tar.extractfile('server.err').read().decode()}
+        if result['server'] != {'exit':0,'stdout':'RDY\n','stderr':''}: raise RuntimeError('reference peer failed')
+        if checkpoint == 'sockname':
+            result['peer']={'exit':int(tar.extractfile('peer.status').read()), 'stdout':tar.extractfile('peer.out').read().decode(),
+                            'stderr':tar.extractfile('peer.err').read().decode()}
+            if result['peer'] != {'exit':0,'stdout':'RDY\n','stderr':''}: raise RuntimeError('reference address peer failed')
+    return result
+
+
 def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--checkpoint', choices=['tcp','sockname'], default='tcp')
+    args = parser.parse_args()
+    checkpoint = args.checkpoint
     reference = ROOT / '.work/irix-reference'
     raw = reference / 'media/irix65.raw'
     firmware = reference / 'media/ip24prom.070-9101-011.bin'
     manifest = json.loads((ROOT / 'lab/irix-reference/manifest.json').read_text())
-    fixtures = ROOT/'.work/irix-tcp/probes'
+    fixtures = ROOT/f'.work/irix-{checkpoint}/probes'
     desktop = json.loads((fixtures/'manifest.json').read_text())
     for name, info in desktop['files'].items():
         if probe.sha256(fixtures/name) != info['sha256']:
@@ -39,7 +75,7 @@ def main():
     if raw.stat().st_size != manifest['logical_disk_bytes'] or \
             probe.sha256(firmware) != manifest['firmware']['sha256']:
         raise RuntimeError('prepare the pinned reference media and query probe first')
-    output_root = reference / 'tcp-runs'
+    output_root = reference / (checkpoint+'-runs')
     output_root.mkdir(exist_ok=True)
     directory = Path(tempfile.mkdtemp(prefix='ci-', dir=output_root))
     print(f'Results: {directory.relative_to(ROOT)}', flush=True)
@@ -139,37 +175,33 @@ def main():
         if checked != set(desktop['files']): raise RuntimeError('missing upload checksums')
         result['checked_files'] = sorted(checked)
         lines = ['#!/bin/sh','set -u','ulimit -c 0','cd /tmp/xiri-tcp',
-                 './reference-server >server.out 2>server.err & server=$!',
+                 '(./reference-server >server.out 2>server.err; peer_rc=$?; '
+                 'echo "$peer_rc" >server.status.tmp; mv server.status.tmp server.status) & server=$!',
                  'sleep 1', 'grep RDY server.out || exit 2']
-        for c in cases:
+        if checkpoint == 'sockname':
+            lines += ['(./reference-peer >peer.out 2>peer.err; peer_rc=$?; '
+                      'echo "$peer_rc" >peer.status.tmp; mv peer.status.tmp peer.status) & peer=$!',
+                      'sleep 1', 'grep RDY peer.out || exit 2']
+        last_echo = max(i for i,c in enumerate(cases) if c['symbols']['KIND']==4)
+        for i,c in enumerate(cases):
             name=c['name']
             lines += ['./'+name+' >'+name+'.out 2>'+name+'.err; echo CASE '+name+' "$?"']
-        lines += ['wait "$server"; echo CASE server "$?"']
+            # IRIX sh can discard an old background status after many children.
+            # Each peer's own wrapper preserves its actual exit code atomically.
+            if i == last_echo:
+                lines += ['while test ! -f server.status; do sleep 1; done',
+                          'wait "$server" 2>/dev/null || :']
+        if checkpoint == 'sockname':
+            lines += ['while test ! -f peer.status; do sleep 1; done',
+                      'wait "$peer" 2>/dev/null || :']
         script=directory/'run.sh';script.write_text('\n'.join(lines)+'\n')
         ci('put',script,'--to','/tmp/xiri-tcp/run.sh','--timeout','30')
         ci('run','sh /tmp/xiri-tcp/run.sh >/tmp/xiri-tcp/status.txt; cd /tmp/xiri-tcp; '
-           'tar cf /tmp/xiri-tcp-results.tar status.txt *.out *.err', '--shell','sh','--timeout','180')
+           'tar cf /tmp/xiri-tcp-results.tar .', '--shell','sh','--timeout','180')
         archive=directory/'outputs.tar'
         ci('get','/tmp/xiri-tcp-results.tar','--to',archive,'--timeout','60')
-        with tarfile.open(archive) as tar:
-            statuses=dict((n,int(v)) for n,v in re.findall(r'^CASE (\S+) (\d+)$',tar.extractfile('status.txt').read().decode(),re.M))
-            if set(statuses) != {c['name'] for c in cases}|{'server'}: raise RuntimeError('incomplete cases')
-            for c in cases:
-                name=c['name']
-                data=tar.extractfile(name+'.out').read()
-                observation={'name':name,'exit':statuses[name], 'stdout_hex':data.hex(),
-                             'stderr':tar.extractfile(name+'.err').read().decode(errors='backslashreplace')}
-                result['observations'].append(observation)
-                # The supplied IRIX traps delay-slot syscalls with SIGSYS (12).
-                # Keep this observed difference explicit rather than calling it success.
-                delayed = 'DELAY' in c['symbols']
-                if (statuses[name] != (140 if delayed else 0) or
-                        len(data) != (0 if delayed else 32)):
-                    raise RuntimeError('incomplete fixture: '+name)
-            result['server']={'exit':statuses['server'],'stdout':tar.extractfile('server.out').read().decode(),
-                              'stderr':tar.extractfile('server.err').read().decode()}
-            if result['server'] != {'exit':0,'stdout':'RDY\n','stderr':''}: raise RuntimeError('reference peer failed')
-        pin_path=ROOT/'lab/irix-tcp/reference.json'
+        result.update(archive_observations(archive, cases, checkpoint))
+        pin_path=ROOT/f'lab/irix-{checkpoint}/reference.json'
         if pin_path.exists():
             pin=json.loads(pin_path.read_text())
             if pin['files'] != desktop['files'] or pin['observations'] != result['observations']:

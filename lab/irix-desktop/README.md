@@ -123,3 +123,8 @@ hardware remain separate qualification gates.
 The subsequent [TCP checkpoint](../irix-tcp/README.md) implements the initial
 transport and reaches successful native X connect followed by unsupported
 getsockname. This lab retains the original pre-implementation boundary pins.
+
+The subsequent [getsockname lab](../irix-sockname/README.md) qualifies local-address
+output translation against original IRIX. Toolchest now passes that query
+after its native X connection and stops at unsupported getpeername (1093).
+The earlier boundary pins in this lab remain historical evidence.

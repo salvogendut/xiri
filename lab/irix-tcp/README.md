@@ -128,3 +128,10 @@ These are the existing loader, dispatch, heap, native and vendor regressions,
 with their expectations preserved. The old harness defaults still select
 their previous checkpoints. Build products, firmware, original binaries,
 libraries, disk overlays and raw traces stay outside Git.
+
+## Subsequent checkpoint
+
+The [getsockname lab](../irix-sockname/README.md) extends this exact fixture
+set and retains separate kernel outputs. Shared probe scripts select it with
+`--checkpoint sockname`; the default still reproduces this TCP checkpoint.
+Toolchest's later boundary is getpeername (1093).
