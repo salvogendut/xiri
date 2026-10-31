@@ -1,5 +1,7 @@
 # IRIX X-client startup interfaces
 
+The subsequent [recvmsg checkpoint](../irix-recvmsg/README.md) measures received bytes, fault consumption, peeking and legacy header output, then repeats Toolchest on native X. The commands below reproduce this earlier startup checkpoint.
+
 This checkpoint extends the qualified socket-address queries with gethostname,
 fcntl, sendmsg and shutdown. It retains the earlier fixture bytes and uses
 original probes to compare the next interfaces with the supplied IRIX image.

@@ -1,0 +1,101 @@
+{
+  "schema": 1,
+  "header_inputs": {
+    "sys/fcntl.h": {
+      "sha256": "5295c20d96c92bcce3f5d98e512d0e8c4f259b1aace8ccd7879045280796eeee",
+      "bytes": 11525
+    },
+    "sys/param.h": {
+      "sha256": "fbd3c80c80debf695daf86feb0a7376d9f00c3ac045f57207b6778ad7cc0f0d1",
+      "bytes": 12096
+    },
+    "sys/socket.h": {
+      "sha256": "5a1d91046670f8aef0eec91b60380d9341e3cdd9b56bd6b18d34e02c001fb7e2",
+      "bytes": 34378
+    },
+    "sys/syscall.h": {
+      "sha256": "cf71eba0cffd925e8888ccd630496db1e820a5942c0e7d77c12f6e02a29504ae",
+      "bytes": 7444
+    },
+    "sys/uio.h": {
+      "sha256": "f974b7ec96ddca72f2579d84eca6164c973e7556723563be977d1af03fde307f",
+      "bytes": 2932
+    }
+  },
+  "byte_order": "big",
+  "abis": [
+    "o32",
+    "n32"
+  ],
+  "pointer_bytes": 4,
+  "size_t_bytes": 4,
+  "legacy_msghdr": {
+    "bytes": 24,
+    "fields": {
+      "name": 0,
+      "namelen": 4,
+      "iov": 8,
+      "iovlen": 12,
+      "accrights": 16,
+      "accrightslen": 20
+    }
+  },
+  "iovec": {
+    "bytes": 8,
+    "fields": {
+      "base": 0,
+      "length": 4
+    }
+  },
+  "description": "Legacy recvmsg layout checked against the same private IRIX headers and original probes",
+  "trap": 1099,
+  "flags": {
+    "peek": 2
+  },
+  "record_bytes": 192,
+  "record_layout": {
+    "return_words": {
+      "offset": 0,
+      "bytes": 32
+    },
+    "payload_guards": {
+      "offset": 32,
+      "bytes": 64
+    },
+    "name_guards": {
+      "offset": 96,
+      "bytes": 32
+    },
+    "header_snapshot": {
+      "offset": 128,
+      "bytes": 24
+    },
+    "padding": {
+      "offset": 152,
+      "bytes": 8
+    },
+    "drain": {
+      "offset": 160,
+      "bytes": 32
+    }
+  },
+  "measured_contract": {
+    "socket": "AF_INET/SOCK_STREAM/IPPROTO_TCP",
+    "vectors": {
+      "minimum": 1,
+      "maximum": 16,
+      "maximum_total": 2147483647
+    },
+    "validation_order": [
+      "header copyin",
+      "vector count",
+      "vector copyin",
+      "descriptor",
+      "vector lengths"
+    ],
+    "consuming_fault": "Queued test data is consumed; a copied prefix is returned as success.",
+    "peek_fault": "Queued data is retained; a copied prefix is returned as success.",
+    "output_lengths": "On success, zero each length whose pointer is non-null; ignore length copyout errors.",
+    "excluded": "Ancillary data, datagrams, extended flags, large/multi-mbuf or concurrent transfers"
+  }
+}

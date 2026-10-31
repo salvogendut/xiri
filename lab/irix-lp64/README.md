@@ -125,3 +125,8 @@ per mode. Earlier branches and pins remain separately reproducible. The
 The subsequent [TCP checkpoint](../irix-tcp/README.md) adds the initial client
 transport and reruns this workload with an explicit alternate pin/build directory.
 The default commands above retain the earlier LP64 kernel checkpoint.
+
+Latest follow-up: the [legacy recvmsg checkpoint](../irix-recvmsg/README.md)
+retains this coverage and adds received-data, fault-consumption and header-output
+comparisons. Its [results](../../docs/results/2026-10-31-irix-recvmsg.md) record
+the current Toolchest boundary; this lab keeps its historical kernel and expectations.

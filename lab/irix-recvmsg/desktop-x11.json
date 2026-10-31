@@ -1,0 +1,3175 @@
+{
+  "schema": 1,
+  "review": {
+    "raw_result_path": ".work/irix-recvmsg/runs/lp64-ci-nw5d95pw/result.json",
+    "raw_result_sha256": "06ede64a124f104ec1394fcff184d89fcdf051340fc62dcae87cd53d63c2cea9",
+    "raw_serial_sha256": "688df1ebac28d623bf6cdcd89a1469caf894b5b934015518bf14696bfe4c3f95",
+    "review_harness_sha256": "05f4b482684045a34a40538af6242567e51c2d874c7ecf9bc3a1d010c0b593ff",
+    "review_script_sha256": "9b2efeba1c2f259b29f512a94b245057a48262487b5269b03feb6aedfbe61cad",
+    "note": "All 1272 fixture executions, native/vendor controls and five peers passed; native X succeeded before and after. The four closed-display closure boundaries exactly reproduce the prior checkpoint. Both X-connected Toolchest profiles receive successfully then terminate with SIGSEGV after the recorded ENOENT opening /var/config/desktop. Cause unproven; no window/event loop is qualified. Raw observed result preserved; a fresh ordinary run must reproduce these reviewed signatures."
+  },
+  "cases": {
+    "closure-4Dwm-root": {
+      "actual": {
+        "errno_bytes": 0,
+        "errno": 0,
+        "exit": 1,
+        "signal": 0,
+        "killed": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "console": "-   1:./vendor-4Dwm: rld: Error: elfmap: couldn't map /usr/lib32/internal/libimdUtil.so: (null)\n-   1:./vendor-4Dwm: rld: Fatal Error: Cannot Successfully map soname 'libimdUtil.so' under any of the filenames /usr/lib32/libimdUtil.so:/usr/lib32/internal/libimdUtil.so:/lib32/libimdUtil.so:/opt/lib32/libimdUtil.so:/usr/lib32/libimdUtil.so.1:/usr/lib32/internal/libimdUtil.so.1:/lib32/libimdUtil.so.1:/opt/lib32/libimdUtil.so.1: ",
+      "trace_signature": {
+        "calls": [
+          {
+            "syscall": 1040,
+            "a0": 22
+          },
+          {
+            "syscall": 1040,
+            "a0": 85
+          },
+          {
+            "syscall": 1024
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1040,
+            "a0": 68
+          },
+          {
+            "syscall": 1006
+          },
+          {
+            "syscall": 1000,
+            "a0": 1056
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1134
+          },
+          {
+            "syscall": 1006
+          },
+          {
+            "syscall": 1040,
+            "a0": 92
+          },
+          {
+            "syscall": 1024
+          },
+          {
+            "syscall": 1047
+          },
+          {
+            "syscall": 1156
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1040,
+            "a0": 68
+          },
+          {
+            "syscall": 1006
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1040,
+            "a0": 68
+          },
+          {
+            "syscall": 1020
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1006
+          },
+          {
+            "syscall": 1006
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1020
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1006
+          },
+          {
+            "syscall": 1130
+          },
+          {
+            "syscall": 1001
+          }
+        ],
+        "returns": [],
+        "paths": [
+          "/emul/irix/usr/lib32/libc.so.1",
+          "/emul/irix/lib32/rld",
+          "/emul/irix/dev/zero",
+          "/dev/zero",
+          "/emul/irix/usr/lib32/libimdXutil.so",
+          "/usr/lib32/libimdXutil.so",
+          "/emul/irix/usr/lib32/internal/libimdXutil.so",
+          "/emul/irix/usr/lib32/libimdUtil.so",
+          "/usr/lib32/libimdUtil.so",
+          "/emul/irix/usr/lib32/internal/libimdUtil.so",
+          "/emul/irix/dev/tty",
+          "/dev/tty",
+          "/emul/irix/lib32/libimdUtil.so",
+          "/lib32/libimdUtil.so",
+          "/emul/irix/opt/lib32/libimdUtil.so",
+          "/emul/irix/usr/lib32/libimdUtil.so.1",
+          "/usr/lib32/libimdUtil.so.1",
+          "/emul/irix/usr/lib32/internal/libimdUtil.so.1",
+          "/usr/lib32/internal/libimdUtil.so.1",
+          "/emul/irix/lib32/libimdUtil.so.1",
+          "/lib32/libimdUtil.so.1",
+          "/emul/irix/opt/lib32/libimdUtil.so.1",
+          "/emul/irix/dev/tty",
+          "/dev/tty"
+        ]
+      }
+    },
+    "closure-toolchest-root": {
+      "actual": {
+        "errno_bytes": 0,
+        "errno": 0,
+        "exit": 1,
+        "signal": 0,
+        "killed": 0,
+        "stdout": "",
+        "stderr": "Error: Can't open display: 127.0.0.1:99\n"
+      },
+      "console": "",
+      "trace_signature": {
+        "calls": [
+          {
+            "syscall": 1040,
+            "a0": 22
+          },
+          {
+            "syscall": 1040,
+            "a0": 85
+          },
+          {
+            "syscall": 1024
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1040,
+            "a0": 68
+          },
+          {
+            "syscall": 1006
+          },
+          {
+            "syscall": 1000,
+            "a0": 1056
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1134
+          },
+          {
+            "syscall": 1006
+          },
+          {
+            "syscall": 1040,
+            "a0": 92
+          },
+          {
+            "syscall": 1024
+          },
+          {
+            "syscall": 1047
+          },
+          {
+            "syscall": 1156
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1040,
+            "a0": 68
+          },
+          {
+            "syscall": 1006
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1040,
+            "a0": 68
+          },
+          {
+            "syscall": 1006
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1040,
+            "a0": 68
+          },
+          {
+            "syscall": 1006
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1040,
+            "a0": 68
+          },
+          {
+            "syscall": 1006
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1040,
+            "a0": 68
+          },
+          {
+            "syscall": 1006
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1040,
+            "a0": 68
+          },
+          {
+            "syscall": 1006
+          },
+          {
+            "syscall": 1000,
+            "a0": 1056
+          },
+          {
+            "syscall": 1017
+          },
+          {
+            "syscall": 1062,
+            "a0": 0,
+            "a1": 3
+          },
+          {
+            "syscall": 1062,
+            "a0": 1,
+            "a1": 3
+          },
+          {
+            "syscall": 1062,
+            "a0": 2,
+            "a1": 3
+          },
+          {
+            "syscall": 1062,
+            "a0": 2,
+            "a1": 3
+          },
+          {
+            "syscall": 1040,
+            "a0": 108
+          },
+          {
+            "syscall": 1162
+          },
+          {
+            "syscall": 1040,
+            "a0": 129
+          },
+          {
+            "syscall": 1040,
+            "a0": 22
+          },
+          {
+            "syscall": 1158
+          },
+          {
+            "syscall": 1017
+          },
+          {
+            "syscall": 1017
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1107,
+            "a0": 2,
+            "a1": 2,
+            "a2": 0
+          },
+          {
+            "syscall": 1105
+          },
+          {
+            "syscall": 1105
+          },
+          {
+            "syscall": 1091
+          },
+          {
+            "syscall": 1006
+          },
+          {
+            "syscall": 1040,
+            "a0": 22
+          },
+          {
+            "syscall": 1082,
+            "a0": 101
+          },
+          {
+            "syscall": 1107,
+            "a0": 2,
+            "a1": 2,
+            "a2": 0
+          },
+          {
+            "syscall": 1105
+          },
+          {
+            "syscall": 1105
+          },
+          {
+            "syscall": 1091
+          },
+          {
+            "syscall": 1006
+          },
+          {
+            "syscall": 1082,
+            "a0": 101
+          },
+          {
+            "syscall": 1107,
+            "a0": 2,
+            "a1": 2,
+            "a2": 0
+          },
+          {
+            "syscall": 1105
+          },
+          {
+            "syscall": 1105
+          },
+          {
+            "syscall": 1091
+          },
+          {
+            "syscall": 1006
+          },
+          {
+            "syscall": 1082,
+            "a0": 101
+          },
+          {
+            "syscall": 1107,
+            "a0": 2,
+            "a1": 2,
+            "a2": 0
+          },
+          {
+            "syscall": 1105
+          },
+          {
+            "syscall": 1105
+          },
+          {
+            "syscall": 1091
+          },
+          {
+            "syscall": 1006
+          },
+          {
+            "syscall": 1082,
+            "a0": 101
+          },
+          {
+            "syscall": 1107,
+            "a0": 2,
+            "a1": 2,
+            "a2": 0
+          },
+          {
+            "syscall": 1105
+          },
+          {
+            "syscall": 1105
+          },
+          {
+            "syscall": 1091
+          },
+          {
+            "syscall": 1006
+          },
+          {
+            "syscall": 1082,
+            "a0": 101
+          },
+          {
+            "syscall": 1107,
+            "a0": 2,
+            "a1": 2,
+            "a2": 0
+          },
+          {
+            "syscall": 1105
+          },
+          {
+            "syscall": 1105
+          },
+          {
+            "syscall": 1091
+          },
+          {
+            "syscall": 1006
+          },
+          {
+            "syscall": 1082,
+            "a0": 101
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1024
+          },
+          {
+            "syscall": 1024
+          },
+          {
+            "syscall": 1024
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1130
+          },
+          {
+            "syscall": 1130
+          },
+          {
+            "syscall": 1001
+          }
+        ],
+        "returns": [
+          "syscall=1062 v0=0 a3=0",
+          "syscall=1062 v0=0x1 a3=0",
+          "syscall=1062 v0=0x1 a3=0",
+          "syscall=1062 v0=0x1 a3=0",
+          "syscall=1107 v0=0x3 a3=0",
+          "syscall=1105 v0=0 a3=0",
+          "syscall=1105 v0=0 a3=0",
+          "syscall=1091 v0=0x92 a3=1",
+          "syscall=1082 v0=0 a3=0",
+          "syscall=1107 v0=0x3 a3=0",
+          "syscall=1105 v0=0 a3=0",
+          "syscall=1105 v0=0 a3=0",
+          "syscall=1091 v0=0x92 a3=1",
+          "syscall=1082 v0=0 a3=0",
+          "syscall=1107 v0=0x3 a3=0",
+          "syscall=1105 v0=0 a3=0",
+          "syscall=1105 v0=0 a3=0",
+          "syscall=1091 v0=0x92 a3=1",
+          "syscall=1082 v0=0 a3=0",
+          "syscall=1107 v0=0x3 a3=0",
+          "syscall=1105 v0=0 a3=0",
+          "syscall=1105 v0=0 a3=0",
+          "syscall=1091 v0=0x92 a3=1",
+          "syscall=1082 v0=0 a3=0",
+          "syscall=1107 v0=0x3 a3=0",
+          "syscall=1105 v0=0 a3=0",
+          "syscall=1105 v0=0 a3=0",
+          "syscall=1091 v0=0x92 a3=1",
+          "syscall=1082 v0=0 a3=0",
+          "syscall=1107 v0=0x3 a3=0",
+          "syscall=1105 v0=0 a3=0",
+          "syscall=1105 v0=0 a3=0",
+          "syscall=1091 v0=0x92 a3=1",
+          "syscall=1082 v0=0 a3=0"
+        ],
+        "paths": [
+          "/emul/irix/usr/lib32/libc.so.1",
+          "/emul/irix/lib32/rld",
+          "/emul/irix/dev/zero",
+          "/dev/zero",
+          "/emul/irix/usr/lib32/libXm.so.1",
+          "/emul/irix/usr/lib32/libXt.so",
+          "/emul/irix/usr/lib32/libX11.so.1",
+          "/emul/irix/usr/lib32/libCsup.so",
+          "/emul/irix/usr/lib32/libC.so.2",
+          "/emul/irix/usr/lib32/libm.so",
+          "/emul/irix/usr/lib/X11/locale/locale.alias",
+          "/emul/irix/usr/lib/X11/locale/locale.dir",
+          "/emul/irix/usr/lib/X11/locale/locale.alias",
+          "/emul/irix/usr/lib/X11/locale/locale.dir",
+          "/emul/irix/usr/lib/X11/locale/locale.alias",
+          "/emul/irix/usr/lib/X11/locale/locale.dir",
+          "/emul/irix/usr/lib/X11/locale/locale.alias",
+          "/emul/irix/usr/lib/X11/locale/locale.dir",
+          "/emul/irix/usr/lib/X11/locale/locale.alias",
+          "/emul/irix/usr/lib/X11/locale/locale.dir",
+          "/emul/irix/usr/lib/X11/XtErrorDB"
+        ]
+      }
+    },
+    "closure-4Dwm-user": {
+      "actual": {
+        "errno_bytes": 0,
+        "errno": 0,
+        "exit": 1,
+        "signal": 0,
+        "killed": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "console": "-   1:./vendor-4Dwm: rld: Error: elfmap: couldn't map /usr/lib32/internal/libimdUtil.so: (null)\n-   1:./vendor-4Dwm: rld: Fatal Error: Cannot Successfully map soname 'libimdUtil.so' under any of the filenames /usr/lib32/libimdUtil.so:/usr/lib32/internal/libimdUtil.so:/lib32/libimdUtil.so:/opt/lib32/libimdUtil.so:/usr/lib32/libimdUtil.so.1:/usr/lib32/internal/libimdUtil.so.1:/lib32/libimdUtil.so.1:/opt/lib32/libimdUtil.so.1: ",
+      "trace_signature": {
+        "calls": [
+          {
+            "syscall": 1040,
+            "a0": 22
+          },
+          {
+            "syscall": 1040,
+            "a0": 85
+          },
+          {
+            "syscall": 1024
+          },
+          {
+            "syscall": 1024
+          },
+          {
+            "syscall": 1047
+          },
+          {
+            "syscall": 1047
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1040,
+            "a0": 68
+          },
+          {
+            "syscall": 1006
+          },
+          {
+            "syscall": 1000,
+            "a0": 1056
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1134
+          },
+          {
+            "syscall": 1006
+          },
+          {
+            "syscall": 1040,
+            "a0": 92
+          },
+          {
+            "syscall": 1024
+          },
+          {
+            "syscall": 1047
+          },
+          {
+            "syscall": 1156
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1040,
+            "a0": 68
+          },
+          {
+            "syscall": 1006
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1040,
+            "a0": 68
+          },
+          {
+            "syscall": 1020
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1006
+          },
+          {
+            "syscall": 1006
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1020
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1006
+          },
+          {
+            "syscall": 1130
+          },
+          {
+            "syscall": 1001
+          }
+        ],
+        "returns": [],
+        "paths": [
+          "/emul/irix/usr/lib32/libc.so.1",
+          "/emul/irix/lib32/rld",
+          "/emul/irix/dev/zero",
+          "/dev/zero",
+          "/emul/irix/usr/lib32/libimdXutil.so",
+          "/usr/lib32/libimdXutil.so",
+          "/emul/irix/usr/lib32/internal/libimdXutil.so",
+          "/emul/irix/usr/lib32/libimdUtil.so",
+          "/usr/lib32/libimdUtil.so",
+          "/emul/irix/usr/lib32/internal/libimdUtil.so",
+          "/emul/irix/dev/tty",
+          "/dev/tty",
+          "/emul/irix/lib32/libimdUtil.so",
+          "/lib32/libimdUtil.so",
+          "/emul/irix/opt/lib32/libimdUtil.so",
+          "/emul/irix/usr/lib32/libimdUtil.so.1",
+          "/usr/lib32/libimdUtil.so.1",
+          "/emul/irix/usr/lib32/internal/libimdUtil.so.1",
+          "/usr/lib32/internal/libimdUtil.so.1",
+          "/emul/irix/lib32/libimdUtil.so.1",
+          "/lib32/libimdUtil.so.1",
+          "/emul/irix/opt/lib32/libimdUtil.so.1",
+          "/emul/irix/dev/tty",
+          "/dev/tty"
+        ]
+      }
+    },
+    "closure-toolchest-user": {
+      "actual": {
+        "errno_bytes": 0,
+        "errno": 0,
+        "exit": 1,
+        "signal": 0,
+        "killed": 0,
+        "stdout": "",
+        "stderr": "Error: Can't open display: 127.0.0.1:99\n"
+      },
+      "console": "",
+      "trace_signature": {
+        "calls": [
+          {
+            "syscall": 1040,
+            "a0": 22
+          },
+          {
+            "syscall": 1040,
+            "a0": 85
+          },
+          {
+            "syscall": 1024
+          },
+          {
+            "syscall": 1024
+          },
+          {
+            "syscall": 1047
+          },
+          {
+            "syscall": 1047
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1040,
+            "a0": 68
+          },
+          {
+            "syscall": 1006
+          },
+          {
+            "syscall": 1000,
+            "a0": 1056
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1134
+          },
+          {
+            "syscall": 1006
+          },
+          {
+            "syscall": 1040,
+            "a0": 92
+          },
+          {
+            "syscall": 1024
+          },
+          {
+            "syscall": 1047
+          },
+          {
+            "syscall": 1156
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1040,
+            "a0": 68
+          },
+          {
+            "syscall": 1006
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1040,
+            "a0": 68
+          },
+          {
+            "syscall": 1006
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1040,
+            "a0": 68
+          },
+          {
+            "syscall": 1006
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1040,
+            "a0": 68
+          },
+          {
+            "syscall": 1006
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1040,
+            "a0": 68
+          },
+          {
+            "syscall": 1006
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1040,
+            "a0": 68
+          },
+          {
+            "syscall": 1006
+          },
+          {
+            "syscall": 1000,
+            "a0": 1056
+          },
+          {
+            "syscall": 1017
+          },
+          {
+            "syscall": 1062,
+            "a0": 0,
+            "a1": 3
+          },
+          {
+            "syscall": 1062,
+            "a0": 1,
+            "a1": 3
+          },
+          {
+            "syscall": 1062,
+            "a0": 2,
+            "a1": 3
+          },
+          {
+            "syscall": 1062,
+            "a0": 2,
+            "a1": 3
+          },
+          {
+            "syscall": 1040,
+            "a0": 108
+          },
+          {
+            "syscall": 1162
+          },
+          {
+            "syscall": 1040,
+            "a0": 129
+          },
+          {
+            "syscall": 1040,
+            "a0": 22
+          },
+          {
+            "syscall": 1158
+          },
+          {
+            "syscall": 1017
+          },
+          {
+            "syscall": 1017
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1107,
+            "a0": 2,
+            "a1": 2,
+            "a2": 0
+          },
+          {
+            "syscall": 1105
+          },
+          {
+            "syscall": 1105
+          },
+          {
+            "syscall": 1091
+          },
+          {
+            "syscall": 1006
+          },
+          {
+            "syscall": 1040,
+            "a0": 22
+          },
+          {
+            "syscall": 1082,
+            "a0": 101
+          },
+          {
+            "syscall": 1107,
+            "a0": 2,
+            "a1": 2,
+            "a2": 0
+          },
+          {
+            "syscall": 1105
+          },
+          {
+            "syscall": 1105
+          },
+          {
+            "syscall": 1091
+          },
+          {
+            "syscall": 1006
+          },
+          {
+            "syscall": 1082,
+            "a0": 101
+          },
+          {
+            "syscall": 1107,
+            "a0": 2,
+            "a1": 2,
+            "a2": 0
+          },
+          {
+            "syscall": 1105
+          },
+          {
+            "syscall": 1105
+          },
+          {
+            "syscall": 1091
+          },
+          {
+            "syscall": 1006
+          },
+          {
+            "syscall": 1082,
+            "a0": 101
+          },
+          {
+            "syscall": 1107,
+            "a0": 2,
+            "a1": 2,
+            "a2": 0
+          },
+          {
+            "syscall": 1105
+          },
+          {
+            "syscall": 1105
+          },
+          {
+            "syscall": 1091
+          },
+          {
+            "syscall": 1006
+          },
+          {
+            "syscall": 1082,
+            "a0": 101
+          },
+          {
+            "syscall": 1107,
+            "a0": 2,
+            "a1": 2,
+            "a2": 0
+          },
+          {
+            "syscall": 1105
+          },
+          {
+            "syscall": 1105
+          },
+          {
+            "syscall": 1091
+          },
+          {
+            "syscall": 1006
+          },
+          {
+            "syscall": 1082,
+            "a0": 101
+          },
+          {
+            "syscall": 1107,
+            "a0": 2,
+            "a1": 2,
+            "a2": 0
+          },
+          {
+            "syscall": 1105
+          },
+          {
+            "syscall": 1105
+          },
+          {
+            "syscall": 1091
+          },
+          {
+            "syscall": 1006
+          },
+          {
+            "syscall": 1082,
+            "a0": 101
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1024
+          },
+          {
+            "syscall": 1024
+          },
+          {
+            "syscall": 1024
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1130
+          },
+          {
+            "syscall": 1130
+          },
+          {
+            "syscall": 1001
+          }
+        ],
+        "returns": [
+          "syscall=1062 v0=0 a3=0",
+          "syscall=1062 v0=0x1 a3=0",
+          "syscall=1062 v0=0x1 a3=0",
+          "syscall=1062 v0=0x1 a3=0",
+          "syscall=1107 v0=0x3 a3=0",
+          "syscall=1105 v0=0 a3=0",
+          "syscall=1105 v0=0 a3=0",
+          "syscall=1091 v0=0x92 a3=1",
+          "syscall=1082 v0=0 a3=0",
+          "syscall=1107 v0=0x3 a3=0",
+          "syscall=1105 v0=0 a3=0",
+          "syscall=1105 v0=0 a3=0",
+          "syscall=1091 v0=0x92 a3=1",
+          "syscall=1082 v0=0 a3=0",
+          "syscall=1107 v0=0x3 a3=0",
+          "syscall=1105 v0=0 a3=0",
+          "syscall=1105 v0=0 a3=0",
+          "syscall=1091 v0=0x92 a3=1",
+          "syscall=1082 v0=0 a3=0",
+          "syscall=1107 v0=0x3 a3=0",
+          "syscall=1105 v0=0 a3=0",
+          "syscall=1105 v0=0 a3=0",
+          "syscall=1091 v0=0x92 a3=1",
+          "syscall=1082 v0=0 a3=0",
+          "syscall=1107 v0=0x3 a3=0",
+          "syscall=1105 v0=0 a3=0",
+          "syscall=1105 v0=0 a3=0",
+          "syscall=1091 v0=0x92 a3=1",
+          "syscall=1082 v0=0 a3=0",
+          "syscall=1107 v0=0x3 a3=0",
+          "syscall=1105 v0=0 a3=0",
+          "syscall=1105 v0=0 a3=0",
+          "syscall=1091 v0=0x92 a3=1",
+          "syscall=1082 v0=0 a3=0"
+        ],
+        "paths": [
+          "/emul/irix/usr/lib32/libc.so.1",
+          "/emul/irix/lib32/rld",
+          "/emul/irix/dev/zero",
+          "/dev/zero",
+          "/emul/irix/usr/lib32/libXm.so.1",
+          "/emul/irix/usr/lib32/libXt.so",
+          "/emul/irix/usr/lib32/libX11.so.1",
+          "/emul/irix/usr/lib32/libCsup.so",
+          "/emul/irix/usr/lib32/libC.so.2",
+          "/emul/irix/usr/lib32/libm.so",
+          "/emul/irix/usr/lib/X11/locale/locale.alias",
+          "/emul/irix/usr/lib/X11/locale/locale.dir",
+          "/emul/irix/usr/lib/X11/locale/locale.alias",
+          "/emul/irix/usr/lib/X11/locale/locale.dir",
+          "/emul/irix/usr/lib/X11/locale/locale.alias",
+          "/emul/irix/usr/lib/X11/locale/locale.dir",
+          "/emul/irix/usr/lib/X11/locale/locale.alias",
+          "/emul/irix/usr/lib/X11/locale/locale.dir",
+          "/emul/irix/usr/lib/X11/locale/locale.alias",
+          "/emul/irix/usr/lib/X11/locale/locale.dir",
+          "/emul/irix/usr/lib/X11/XtErrorDB"
+        ]
+      }
+    },
+    "x11-toolchest-root": {
+      "actual": {
+        "errno_bytes": 0,
+        "errno": 0,
+        "exit": -1,
+        "signal": 11,
+        "killed": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "console": "",
+      "trace_signature": {
+        "calls": [
+          {
+            "syscall": 1040,
+            "a0": 22
+          },
+          {
+            "syscall": 1040,
+            "a0": 85
+          },
+          {
+            "syscall": 1024
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1040,
+            "a0": 68
+          },
+          {
+            "syscall": 1006
+          },
+          {
+            "syscall": 1000,
+            "a0": 1056
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1134
+          },
+          {
+            "syscall": 1006
+          },
+          {
+            "syscall": 1040,
+            "a0": 92
+          },
+          {
+            "syscall": 1024
+          },
+          {
+            "syscall": 1047
+          },
+          {
+            "syscall": 1156
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1040,
+            "a0": 68
+          },
+          {
+            "syscall": 1006
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1040,
+            "a0": 68
+          },
+          {
+            "syscall": 1006
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1040,
+            "a0": 68
+          },
+          {
+            "syscall": 1006
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1040,
+            "a0": 68
+          },
+          {
+            "syscall": 1006
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1040,
+            "a0": 68
+          },
+          {
+            "syscall": 1006
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1040,
+            "a0": 68
+          },
+          {
+            "syscall": 1006
+          },
+          {
+            "syscall": 1000,
+            "a0": 1056
+          },
+          {
+            "syscall": 1017
+          },
+          {
+            "syscall": 1062,
+            "a0": 0,
+            "a1": 3
+          },
+          {
+            "syscall": 1062,
+            "a0": 1,
+            "a1": 3
+          },
+          {
+            "syscall": 1062,
+            "a0": 2,
+            "a1": 3
+          },
+          {
+            "syscall": 1062,
+            "a0": 2,
+            "a1": 3
+          },
+          {
+            "syscall": 1040,
+            "a0": 108
+          },
+          {
+            "syscall": 1162
+          },
+          {
+            "syscall": 1040,
+            "a0": 129
+          },
+          {
+            "syscall": 1040,
+            "a0": 22
+          },
+          {
+            "syscall": 1158
+          },
+          {
+            "syscall": 1017
+          },
+          {
+            "syscall": 1017
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1107,
+            "a0": 2,
+            "a1": 2,
+            "a2": 0
+          },
+          {
+            "syscall": 1105
+          },
+          {
+            "syscall": 1105
+          },
+          {
+            "syscall": 1091
+          },
+          {
+            "syscall": 1094
+          },
+          {
+            "syscall": 1093
+          },
+          {
+            "syscall": 1108,
+            "a1": 256
+          },
+          {
+            "syscall": 1062,
+            "a0": 3,
+            "a1": 2,
+            "a2": 1
+          },
+          {
+            "syscall": 1102,
+            "a0": 3,
+            "a2": 0
+          },
+          {
+            "syscall": 1062,
+            "a0": 3,
+            "a1": 3
+          },
+          {
+            "syscall": 1062,
+            "a0": 3,
+            "a1": 4,
+            "a2": 642
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1017
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1017
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1102,
+            "a0": 3,
+            "a2": 0
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1024
+          },
+          {
+            "syscall": 1158
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1203
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1024
+          },
+          {
+            "syscall": 1158
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1203
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1024
+          },
+          {
+            "syscall": 1158
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1203
+          },
+          {
+            "syscall": 1108,
+            "a1": 1012
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1024
+          },
+          {
+            "syscall": 1158
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1203
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1024
+          },
+          {
+            "syscall": 1158
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1203
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1024
+          },
+          {
+            "syscall": 1158
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1203
+          },
+          {
+            "syscall": 1158
+          },
+          {
+            "syscall": 1158
+          },
+          {
+            "syscall": 1158
+          },
+          {
+            "syscall": 1158
+          },
+          {
+            "syscall": 1158
+          },
+          {
+            "syscall": 1017
+          },
+          {
+            "syscall": 1017
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1024
+          },
+          {
+            "syscall": 1158
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1203
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1017
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1099,
+            "a0": 3,
+            "a2": 0
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1017
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1108,
+            "a1": 256
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1005
+          }
+        ],
+        "returns": [
+          "syscall=1062 v0=0 a3=0",
+          "syscall=1062 v0=0x1 a3=0",
+          "syscall=1062 v0=0x1 a3=0",
+          "syscall=1062 v0=0x1 a3=0",
+          "syscall=1107 v0=0x3 a3=0",
+          "syscall=1105 v0=0 a3=0",
+          "syscall=1105 v0=0 a3=0",
+          "syscall=1091 v0=0 a3=0",
+          "syscall=1094 v0=0 a3=0",
+          "syscall=1093 v0=0 a3=0",
+          "syscall=1108 v0=0 a3=0",
+          "syscall=1062 v0=0 a3=0",
+          "syscall=1102 v0=0xc a3=0",
+          "syscall=1062 v0=0x202 a3=0",
+          "syscall=1062 v0=0 a3=0",
+          "syscall=1102 v0=0x14 a3=0",
+          "syscall=1108 v0=0 a3=0",
+          "syscall=1099 v0=0x20 a3=0",
+          "syscall=1108 v0=0 a3=0"
+        ],
+        "paths": [
+          "/emul/irix/usr/lib32/libc.so.1",
+          "/emul/irix/lib32/rld",
+          "/emul/irix/dev/zero",
+          "/dev/zero",
+          "/emul/irix/usr/lib32/libXm.so.1",
+          "/emul/irix/usr/lib32/libXt.so",
+          "/emul/irix/usr/lib32/libX11.so.1",
+          "/emul/irix/usr/lib32/libCsup.so",
+          "/emul/irix/usr/lib32/libC.so.2",
+          "/emul/irix/usr/lib32/libm.so",
+          "/emul/irix/usr/lib/X11/locale/locale.alias",
+          "/emul/irix/usr/lib/X11/locale/locale.dir",
+          "/emul/irix/usr/lib/X11/locale/locale.alias",
+          "/emul/irix/usr/lib/X11/locale/locale.dir",
+          "/emul/irix/usr/lib/X11/locale/locale.alias",
+          "/emul/irix/usr/lib/X11/locale/locale.dir",
+          "/emul/irix/usr/lib/X11/locale/locale.alias",
+          "/emul/irix/usr/lib/X11/locale/locale.dir",
+          "/emul/irix/usr/lib/X11/locale/locale.alias",
+          "/emul/irix/usr/lib/X11/locale/locale.dir",
+          "/emul/irix/var/ns/cache/passwd.byuid",
+          "/emul/irix/ns/.local/passwd.byuid/0",
+          "/emul/irix/.Xdefaults",
+          "/emul/irix/var/ns/cache/passwd.byuid",
+          "/emul/irix/ns/.local/passwd.byuid/0",
+          "/emul/irix/.Sgiresources",
+          "/emul/irix/usr/lib/X11/locale/locale.alias",
+          "/emul/irix/usr/lib/X11/locale/locale.dir",
+          "/emul/irix/usr/lib/X11/locale/locale.alias",
+          "/emul/irix/usr/lib/X11/locale/locale.dir",
+          "/emul/irix/usr/lib/X11/locale/locale.alias",
+          "/emul/irix/usr/lib/X11/locale/locale.dir",
+          "/emul/irix/usr/lib/X11/locale/locale.alias",
+          "/emul/irix/usr/lib/X11/locale/locale.dir",
+          "/emul/irix/usr/lib/X11/locale/locale.alias",
+          "/emul/irix/usr/lib/X11/locale/locale.dir",
+          "/emul/irix/var/ns/cache/passwd.byuid",
+          "/emul/irix/ns/.local/passwd.byuid/0",
+          "/emul/irix/.Xdefaults-IRIX",
+          "/emul/irix/var/ns/cache/passwd.byuid",
+          "/emul/irix/ns/.local/passwd.byuid/0",
+          "/emul/irix/.Xdefaults",
+          "/emul/irix/var/ns/cache/passwd.byuid",
+          "/emul/irix/ns/.local/passwd.byuid/0",
+          "/emul/irix/.Sgiresources",
+          "/emul/irix/var/ns/cache/passwd.byuid",
+          "/emul/irix/ns/.local/passwd.byuid/0",
+          "/emul/irix/var/ns/cache/passwd.byuid",
+          "/emul/irix/ns/.local/passwd.byuid/0",
+          "/emul/irix/.motifbind",
+          "/emul/irix/xmbind.alias",
+          "/emul/irix/usr/lib/Xm/bindings/xmbind.alias",
+          "/emul/irix/usr/lib/X11/locale/locale.alias",
+          "/emul/irix/usr/lib/X11/locale/locale.dir",
+          "/emul/irix/usr/lib/X11/locale/locale.alias",
+          "/emul/irix/usr/lib/X11/locale/locale.dir",
+          "/emul/irix/usr/lib/X11/locale/locale.alias",
+          "/emul/irix/usr/lib/X11/locale/locale.dir",
+          "/emul/irix/usr/lib/X11/locale/locale.alias",
+          "/emul/irix/usr/lib/X11/locale/locale.dir",
+          "/emul/irix/usr/lib/X11/locale/locale.alias",
+          "/emul/irix/usr/lib/X11/locale/locale.dir",
+          "/emul/irix/usr/lib/X11/locale/locale.alias",
+          "/emul/irix/usr/lib/X11/locale/locale.dir",
+          "/emul/irix/usr/lib/X11/locale/locale.alias",
+          "/emul/irix/usr/lib/X11/locale/locale.dir",
+          "/emul/irix/usr/lib/X11/locale/locale.alias",
+          "/emul/irix/usr/lib/X11/locale/locale.dir",
+          "/emul/irix/usr/lib/X11/locale/locale.alias",
+          "/emul/irix/usr/lib/X11/locale/locale.dir",
+          "/emul/irix/usr/lib/X11/locale/locale.alias",
+          "/emul/irix/usr/lib/X11/locale/locale.dir",
+          "/emul/irix/var/config/desktop"
+        ]
+      }
+    },
+    "x11-toolchest-user": {
+      "actual": {
+        "errno_bytes": 0,
+        "errno": 0,
+        "exit": -1,
+        "signal": 11,
+        "killed": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "console": "",
+      "trace_signature": {
+        "calls": [
+          {
+            "syscall": 1040,
+            "a0": 22
+          },
+          {
+            "syscall": 1040,
+            "a0": 85
+          },
+          {
+            "syscall": 1024
+          },
+          {
+            "syscall": 1024
+          },
+          {
+            "syscall": 1047
+          },
+          {
+            "syscall": 1047
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1040,
+            "a0": 68
+          },
+          {
+            "syscall": 1006
+          },
+          {
+            "syscall": 1000,
+            "a0": 1056
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1134
+          },
+          {
+            "syscall": 1006
+          },
+          {
+            "syscall": 1040,
+            "a0": 92
+          },
+          {
+            "syscall": 1024
+          },
+          {
+            "syscall": 1047
+          },
+          {
+            "syscall": 1156
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1040,
+            "a0": 68
+          },
+          {
+            "syscall": 1006
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1040,
+            "a0": 68
+          },
+          {
+            "syscall": 1006
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1040,
+            "a0": 68
+          },
+          {
+            "syscall": 1006
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1040,
+            "a0": 68
+          },
+          {
+            "syscall": 1006
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1040,
+            "a0": 68
+          },
+          {
+            "syscall": 1006
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1040,
+            "a0": 68
+          },
+          {
+            "syscall": 1006
+          },
+          {
+            "syscall": 1000,
+            "a0": 1056
+          },
+          {
+            "syscall": 1017
+          },
+          {
+            "syscall": 1062,
+            "a0": 0,
+            "a1": 3
+          },
+          {
+            "syscall": 1062,
+            "a0": 1,
+            "a1": 3
+          },
+          {
+            "syscall": 1062,
+            "a0": 2,
+            "a1": 3
+          },
+          {
+            "syscall": 1062,
+            "a0": 2,
+            "a1": 3
+          },
+          {
+            "syscall": 1040,
+            "a0": 108
+          },
+          {
+            "syscall": 1162
+          },
+          {
+            "syscall": 1040,
+            "a0": 129
+          },
+          {
+            "syscall": 1040,
+            "a0": 22
+          },
+          {
+            "syscall": 1158
+          },
+          {
+            "syscall": 1017
+          },
+          {
+            "syscall": 1017
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1107,
+            "a0": 2,
+            "a1": 2,
+            "a2": 0
+          },
+          {
+            "syscall": 1105
+          },
+          {
+            "syscall": 1105
+          },
+          {
+            "syscall": 1091
+          },
+          {
+            "syscall": 1094
+          },
+          {
+            "syscall": 1093
+          },
+          {
+            "syscall": 1108,
+            "a1": 256
+          },
+          {
+            "syscall": 1062,
+            "a0": 3,
+            "a1": 2,
+            "a2": 1
+          },
+          {
+            "syscall": 1102,
+            "a0": 3,
+            "a2": 0
+          },
+          {
+            "syscall": 1062,
+            "a0": 3,
+            "a1": 3
+          },
+          {
+            "syscall": 1062,
+            "a0": 3,
+            "a1": 4,
+            "a2": 642
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1017
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1017
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1102,
+            "a0": 3,
+            "a2": 0
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1024
+          },
+          {
+            "syscall": 1158
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1203
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1024
+          },
+          {
+            "syscall": 1158
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1203
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1024
+          },
+          {
+            "syscall": 1158
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1203
+          },
+          {
+            "syscall": 1108,
+            "a1": 1012
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1024
+          },
+          {
+            "syscall": 1158
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1203
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1024
+          },
+          {
+            "syscall": 1158
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1203
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1024
+          },
+          {
+            "syscall": 1158
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1203
+          },
+          {
+            "syscall": 1158
+          },
+          {
+            "syscall": 1158
+          },
+          {
+            "syscall": 1158
+          },
+          {
+            "syscall": 1158
+          },
+          {
+            "syscall": 1158
+          },
+          {
+            "syscall": 1017
+          },
+          {
+            "syscall": 1017
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1099,
+            "a0": 3,
+            "a2": 0
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1017
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1099,
+            "a0": 3,
+            "a2": 0
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1005
+          },
+          {
+            "syscall": 1108,
+            "a1": 256
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1017
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1004
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1003
+          },
+          {
+            "syscall": 1005
+          }
+        ],
+        "returns": [
+          "syscall=1062 v0=0 a3=0",
+          "syscall=1062 v0=0x1 a3=0",
+          "syscall=1062 v0=0x1 a3=0",
+          "syscall=1062 v0=0x1 a3=0",
+          "syscall=1107 v0=0x3 a3=0",
+          "syscall=1105 v0=0 a3=0",
+          "syscall=1105 v0=0 a3=0",
+          "syscall=1091 v0=0 a3=0",
+          "syscall=1094 v0=0 a3=0",
+          "syscall=1093 v0=0 a3=0",
+          "syscall=1108 v0=0 a3=0",
+          "syscall=1062 v0=0 a3=0",
+          "syscall=1102 v0=0xc a3=0",
+          "syscall=1062 v0=0x202 a3=0",
+          "syscall=1062 v0=0 a3=0",
+          "syscall=1102 v0=0x14 a3=0",
+          "syscall=1108 v0=0 a3=0",
+          "syscall=1099 v0=0x1a4 a3=0",
+          "syscall=1099 v0=0x20 a3=0",
+          "syscall=1108 v0=0 a3=0"
+        ],
+        "paths": [
+          "/emul/irix/usr/lib32/libc.so.1",
+          "/emul/irix/lib32/rld",
+          "/emul/irix/dev/zero",
+          "/dev/zero",
+          "/emul/irix/usr/lib32/libXm.so.1",
+          "/emul/irix/usr/lib32/libXt.so",
+          "/emul/irix/usr/lib32/libX11.so.1",
+          "/emul/irix/usr/lib32/libCsup.so",
+          "/emul/irix/usr/lib32/libC.so.2",
+          "/emul/irix/usr/lib32/libm.so",
+          "/emul/irix/usr/lib/X11/locale/locale.alias",
+          "/emul/irix/usr/lib/X11/locale/locale.dir",
+          "/emul/irix/usr/lib/X11/locale/locale.alias",
+          "/emul/irix/usr/lib/X11/locale/locale.dir",
+          "/emul/irix/usr/lib/X11/locale/locale.alias",
+          "/emul/irix/usr/lib/X11/locale/locale.dir",
+          "/emul/irix/usr/lib/X11/locale/locale.alias",
+          "/emul/irix/usr/lib/X11/locale/locale.dir",
+          "/emul/irix/usr/lib/X11/locale/locale.alias",
+          "/emul/irix/usr/lib/X11/locale/locale.dir",
+          "/emul/irix/var/ns/cache/passwd.byuid",
+          "/emul/irix/ns/.local/passwd.byuid/1234",
+          "/emul/irix/.Xdefaults",
+          "/emul/irix/var/ns/cache/passwd.byuid",
+          "/emul/irix/ns/.local/passwd.byuid/1234",
+          "/emul/irix/.Sgiresources",
+          "/emul/irix/usr/lib/X11/locale/locale.alias",
+          "/emul/irix/usr/lib/X11/locale/locale.dir",
+          "/emul/irix/usr/lib/X11/locale/locale.alias",
+          "/emul/irix/usr/lib/X11/locale/locale.dir",
+          "/emul/irix/usr/lib/X11/locale/locale.alias",
+          "/emul/irix/usr/lib/X11/locale/locale.dir",
+          "/emul/irix/usr/lib/X11/locale/locale.alias",
+          "/emul/irix/usr/lib/X11/locale/locale.dir",
+          "/emul/irix/usr/lib/X11/locale/locale.alias",
+          "/emul/irix/usr/lib/X11/locale/locale.dir",
+          "/emul/irix/var/ns/cache/passwd.byuid",
+          "/emul/irix/ns/.local/passwd.byuid/1234",
+          "/emul/irix/.Xdefaults-IRIX",
+          "/emul/irix/var/ns/cache/passwd.byuid",
+          "/emul/irix/ns/.local/passwd.byuid/1234",
+          "/emul/irix/.Xdefaults",
+          "/emul/irix/var/ns/cache/passwd.byuid",
+          "/emul/irix/ns/.local/passwd.byuid/1234",
+          "/emul/irix/.Sgiresources",
+          "/emul/irix/var/ns/cache/passwd.byuid",
+          "/emul/irix/ns/.local/passwd.byuid/1234",
+          "/emul/irix/usr/lib/X11/locale/locale.alias",
+          "/emul/irix/usr/lib/X11/locale/locale.dir",
+          "/emul/irix/usr/lib/X11/locale/locale.alias",
+          "/emul/irix/usr/lib/X11/locale/locale.dir",
+          "/emul/irix/usr/lib/X11/locale/locale.alias",
+          "/emul/irix/usr/lib/X11/locale/locale.dir",
+          "/emul/irix/usr/lib/X11/locale/locale.alias",
+          "/emul/irix/usr/lib/X11/locale/locale.dir",
+          "/emul/irix/usr/lib/X11/locale/locale.alias",
+          "/emul/irix/usr/lib/X11/locale/locale.dir",
+          "/emul/irix/usr/lib/X11/locale/locale.alias",
+          "/emul/irix/usr/lib/X11/locale/locale.dir",
+          "/emul/irix/usr/lib/X11/locale/locale.alias",
+          "/emul/irix/usr/lib/X11/locale/locale.dir",
+          "/emul/irix/usr/lib/X11/locale/locale.alias",
+          "/emul/irix/usr/lib/X11/locale/locale.dir",
+          "/emul/irix/usr/lib/X11/locale/locale.alias",
+          "/emul/irix/usr/lib/X11/locale/locale.dir",
+          "/emul/irix/usr/lib/X11/locale/locale.alias",
+          "/emul/irix/usr/lib/X11/locale/locale.dir",
+          "/emul/irix/var/config/desktop"
+        ]
+      }
+    }
+  }
+}

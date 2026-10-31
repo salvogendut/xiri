@@ -1,5 +1,7 @@
 # Desktop dependency and startup boundary lab
 
+For the latest compatibility implementation and Toolchest boundary, see the [recvmsg lab](../irix-recvmsg/README.md) and [results](../../docs/results/2026-10-31-irix-recvmsg.md). The inventory and original startup experiment below remain the historical baseline.
+
 This checkpoint inventories the supplied n32 4Dwm and Toolchest and measures
 their first startup blockers on the unchanged
 [qualified LP64 kernel](../irix-lp64/README.md). It does **not** qualify a

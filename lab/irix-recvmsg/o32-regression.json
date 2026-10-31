@@ -1,0 +1,165 @@
+{
+  "schema": 1,
+  "description": "Original o32 regression expectations for the shared LP64-capable personality",
+  "kernel": {
+    "ident": "XIRI_IRIX_RECVMSG_O32_20261031",
+    "sha256": "c12a18c1064286c8e0d07ae7fded0f39d0360462b0426e2ffbf1e53e31a73734",
+    "revision": "4a033ead228acb1d810151c6956b1399a09e3a69",
+    "branch": "xiri/irix-recvmsg"
+  },
+  "runtimes": [
+    {
+      "path": "/usr/lib/libc.so.1",
+      "sha256": "ea766492103a193e9d404942705e4e28987545e37f699ede232b6c0f8c97c954"
+    },
+    {
+      "path": "/lib/rld",
+      "sha256": "30228b54c1e5585b365514eb7c9895b03cc0f61cb898e05e3ddafece87863439"
+    }
+  ],
+  "native_control_sha256": "c294fbb1f2110445be31c096481ea54ab561c7e59ca5b9fc7171310098d755d4",
+  "asa_expected": {
+    "errno_bytes": 0,
+    "errno": 0,
+    "exit": 0,
+    "signal": 0,
+    "killed": 0,
+    "stdout": "XIRI_VENDOR_O32\n",
+    "stderr": ""
+  },
+  "asa_trace_expected": [
+    {
+      "syscall": 1040,
+      "pc": 262365892,
+      "a0": 22,
+      "a1": 29
+    },
+    {
+      "syscall": 1040,
+      "pc": 262365892,
+      "a0": 85
+    },
+    {
+      "syscall": 1024,
+      "pc": 262484196
+    },
+    {
+      "syscall": 1005,
+      "pc": 262366500,
+      "a0": 263433324,
+      "a1": 0,
+      "a2": 4
+    },
+    {
+      "syscall": 1003,
+      "pc": 262377364,
+      "a0": 3,
+      "a2": 512
+    },
+    {
+      "syscall": 1040,
+      "pc": 262365892,
+      "a0": 68,
+      "a1": 3,
+      "a3": 2
+    },
+    {
+      "syscall": 1006,
+      "pc": 262366116,
+      "a0": 3
+    },
+    {
+      "syscall": 1000,
+      "pc": 263767572,
+      "a0": 1056,
+      "a1": 14
+    },
+    {
+      "syscall": 1005,
+      "pc": 263728804,
+      "a0": 263790336,
+      "a1": 0
+    },
+    {
+      "syscall": 1134,
+      "pc": 263728660,
+      "a0": 264085504,
+      "a1": 24576,
+      "a2": 3,
+      "a3": 2
+    },
+    {
+      "syscall": 1006,
+      "pc": 263728468,
+      "a0": 3
+    },
+    {
+      "syscall": 1040,
+      "pc": 263729060,
+      "a0": 92
+    },
+    {
+      "syscall": 1024,
+      "pc": 263586356
+    },
+    {
+      "syscall": 1047,
+      "pc": 263586404
+    },
+    {
+      "syscall": 1040,
+      "pc": 263729060,
+      "a0": 129
+    },
+    {
+      "syscall": 1040,
+      "pc": 263729060,
+      "a0": 108
+    },
+    {
+      "syscall": 1054,
+      "pc": 262371300,
+      "a0": 1,
+      "a1": 21505
+    },
+    {
+      "syscall": 1054,
+      "pc": 262371300,
+      "a0": 0,
+      "a1": 21505
+    },
+    {
+      "syscall": 1003,
+      "pc": 262377364,
+      "a0": 0,
+      "a2": 4096
+    },
+    {
+      "syscall": 1003,
+      "pc": 262377364,
+      "a0": 0,
+      "a2": 4096
+    },
+    {
+      "syscall": 1130,
+      "pc": 262411508,
+      "a0": 22
+    },
+    {
+      "syscall": 1130,
+      "pc": 262411508,
+      "a0": 14
+    },
+    {
+      "syscall": 1004,
+      "pc": 262498020,
+      "a0": 1,
+      "a2": 16
+    },
+    {
+      "syscall": 1001,
+      "pc": 262410464,
+      "a0": 0
+    }
+  ]
+}

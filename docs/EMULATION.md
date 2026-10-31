@@ -1,6 +1,6 @@
 # Indy emulation development environment
 
-Initial decision and research date: 2026-10-15; implementation strategy reviewed on 2026-10-19. Execution started on 2026-10-29: the pinned IRIS build installs and boots NetBSD 11.0 on the R4400 profile. A [host-built custom kernel](results/2026-10-30-netbsd-kernel.md) also cold-booted to multiuser on 2026-10-30, followed by [debugger and automated probe checks](results/2026-10-30-netbsd-debugger-probe.md). Broader qualification and speed comparisons remain pending.
+Initial decision and research date: 2026-10-15; implementation strategy reviewed on 2026-10-19. Execution started on 2026-10-29: the pinned IRIS build installs and boots NetBSD 11.0 on the R4400 profile. A [host-built custom kernel](results/2026-10-30-netbsd-kernel.md) also cold-booted to multiuser on 2026-10-30, followed by [debugger and automated probe checks](results/2026-10-30-netbsd-debugger-probe.md). Later [I/O](results/2026-10-30-netbsd-io.md), [snapshot](results/2026-10-30-netbsd-snapshots.md), [X display/input](results/2026-10-30-netbsd-x11.md) and [LP64 native](results/2026-10-30-netbsd64-native.md) checkpoints extend that baseline. The latest compatibility workload is the [legacy recvmsg lab](../lab/irix-recvmsg/README.md), with original-IRIX comparisons, sequential CI/ordinary execution and native X controls. Broader hardware qualification and emulator speed comparisons remain pending.
 
 ## Decision
 
@@ -121,6 +121,7 @@ Use these rules for the initial profile:
 - Retain the documented default `scsi_deferred_int = true` for BSD compatibility.
 - Test ordinary execution first. `--ci` enables automation but also documented fidelity shortcuts; compare ordinary and CI runs before accepting CI results as representative.
 - For unattended graphics tests, use `--ci` with Newport still enabled. **Explicit `--headless` disables Newport graphics**; it is unsuitable for desktop acceptance. `--ci-display` exposes the window during harness development.
+- Run emulator qualification suites sequentially, shut down each guest, and verify that no `iris` or `iris-ci` processes remain after the batch. Limit kernel builds to two jobs on this host.
 - Capture serial output and assign each instance its own CI socket and ports. Confirm the NetBSD console channel; documentation names such as `/dev/ttyd1` refer to IRIX.
 
 These distinctions come from [IRIS build/runtime options][iris-features] and the [automation guide][iris-storage]. The `iris-ci boot`, `login`, `run`, `put` and `get` examples target IRIX prompts and device paths. Qualify or adapt them for NetBSD rather than treating them as an existing NetBSD harness.

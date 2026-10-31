@@ -135,3 +135,8 @@ The [getsockname lab](../irix-sockname/README.md) extends this exact fixture
 set and retains separate kernel outputs. Shared probe scripts select it with
 `--checkpoint sockname`; the default still reproduces this TCP checkpoint.
 Toolchest's later boundary is getpeername (1093).
+
+Latest follow-up: the [legacy recvmsg checkpoint](../irix-recvmsg/README.md)
+retains this coverage and adds received-data, fault-consumption and header-output
+comparisons. Its [results](../../docs/results/2026-10-31-irix-recvmsg.md) record
+the current Toolchest boundary; this lab keeps its historical kernel and expectations.

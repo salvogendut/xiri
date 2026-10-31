@@ -49,16 +49,16 @@ def archive_observations(archive, cases, checkpoint):
         result['server']={'exit':int(tar.extractfile('server.status').read()),'stdout':tar.extractfile('server.out').read().decode(),
                           'stderr':tar.extractfile('server.err').read().decode()}
         if result['server'] != {'exit':0,'stdout':'RDY\n','stderr':''}: raise RuntimeError('reference peer failed')
-        if checkpoint in ['sockname','peername','xconnect']:
+        if checkpoint in ['sockname','peername','xconnect','recvmsg']:
             result['peer']={'exit':int(tar.extractfile('peer.status').read()), 'stdout':tar.extractfile('peer.out').read().decode(),
                             'stderr':tar.extractfile('peer.err').read().decode()}
             if result['peer'] != {'exit':0,'stdout':'RDY\n','stderr':''}: raise RuntimeError('reference address peer failed')
-        if checkpoint in ['peername','xconnect']:
+        if checkpoint in ['peername','xconnect','recvmsg']:
             result['remote']={'exit':int(tar.extractfile('remote.status').read()),
                               'stdout':tar.extractfile('remote.out').read().decode(),
                               'stderr':tar.extractfile('remote.err').read().decode()}
             if result['remote'] != {'exit':0,'stdout':'RDY\n','stderr':''}: raise RuntimeError('reference server-address peer failed')
-        if checkpoint == 'xconnect':
+        if checkpoint in ['xconnect','recvmsg']:
             result['message']={'exit':int(tar.extractfile('message.status').read()),
                                'stdout_hex':tar.extractfile('message.out').read().hex(),
                                'stderr':tar.extractfile('message.err').read().decode()}
@@ -67,12 +67,21 @@ def archive_observations(archive, cases, checkpoint):
             result['message_records'] = model.message_records(bytes.fromhex(result['message']['stdout_hex']))
             expected = [model.expected_message(c, True) for c in cases if 'MESSAGE_CONNECTED' in c['symbols']]
             if result['message_records'] != expected:raise RuntimeError('reference peer received unexpected bytes')
+        if checkpoint == 'recvmsg':
+            result['receive']={'exit':int(tar.extractfile('receive.status').read()),
+                               'stdout_hex':tar.extractfile('receive.out').read().hex(),
+                               'stderr':tar.extractfile('receive.err').read().decode()}
+            if result['receive']['exit'] or result['receive']['stderr']:raise RuntimeError('reference receive peer failed')
+            model = module('recvmsg', 'irix-recvmsg-records.py')
+            result['receive_records']=model.receive_records(bytes.fromhex(result['receive']['stdout_hex']))
+            expected=[model.expected_receive(c) for c in cases if 'RECEIVE_CONNECTED' in c['symbols']]
+            if result['receive_records']!=expected:raise RuntimeError('reference source peer sent unexpected bytes')
     return result
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--checkpoint', choices=['tcp','sockname','peername','xconnect'], default='tcp')
+    parser.add_argument('--checkpoint', choices=['tcp','sockname','peername','xconnect','recvmsg'], default='tcp')
     args = parser.parse_args()
     checkpoint = args.checkpoint
     reference = ROOT / '.work/irix-reference'
@@ -100,8 +109,10 @@ def main():
               'emulator_sha256': probe.sha256(probe.IRIS), 'raw_disk_size': raw.stat().st_size,
               'raw_disk_validation': 'Size checked here; SHA-256 established during media intake, not recomputed',
               'firmware_sha256': probe.sha256(firmware)}
-    if checkpoint == 'xconnect':
+    if checkpoint in ['xconnect','recvmsg']:
         result['xconnect_decoder_sha256'] = probe.sha256(ROOT/'scripts/irix-xconnect-records.py')
+    if checkpoint == 'recvmsg':
+        result['recvmsg_decoder_sha256'] = probe.sha256(ROOT/'scripts/irix-recvmsg-records.py')
     args = SimpleNamespace(mode='ci', debugger=False)
     lab = probe.Lab(args, directory)
     started = time.monotonic()
@@ -177,12 +188,12 @@ def main():
         with tarfile.open(upload, 'w') as tar:
             for name in desktop['files']:
                 tar.add(fixtures/name, arcname=name)
-        ci('put', upload, '--to','/tmp/xiri-tcp-inputs.tar','--timeout','60')
+        ci('put', upload, '--to','/tmp/xiri-tcp-inputs.tar','--timeout','180' if checkpoint=='recvmsg' else '60')
         ci('run','mkdir -p /tmp/xiri-tcp; cd /tmp/xiri-tcp; tar xf /tmp/xiri-tcp-inputs.tar',
-           '--shell','sh','--timeout','30')
+           '--shell','sh','--timeout','120' if checkpoint=='recvmsg' else '30')
         checksums = ci('run','cd /tmp/xiri-tcp; cksum o32-direct-*; cksum o32-indirect-*; '
                        'cksum n32-direct-*; cksum n32-indirect-*; cksum reference-*',
-                       '--shell','sh','--timeout','60')
+                       '--shell','sh','--timeout','180' if checkpoint=='recvmsg' else '60')
         checked = set()
         for line in checksums.splitlines():
             m = re.fullmatch(r'(\d+) (\d+) (\S+)', line)
@@ -196,18 +207,22 @@ def main():
                  '(./reference-server >server.out 2>server.err; peer_rc=$?; '
                  'echo "$peer_rc" >server.status.tmp; mv server.status.tmp server.status) & server=$!',
                  'sleep 1', 'grep RDY server.out || exit 2']
-        if checkpoint in ['sockname','peername','xconnect']:
+        if checkpoint in ['sockname','peername','xconnect','recvmsg']:
             lines += ['(./reference-peer >peer.out 2>peer.err; peer_rc=$?; '
                       'echo "$peer_rc" >peer.status.tmp; mv peer.status.tmp peer.status) & peer=$!',
                       'sleep 1', 'grep RDY peer.out || exit 2']
-        if checkpoint in ['peername','xconnect']:
+        if checkpoint in ['peername','xconnect','recvmsg']:
             lines += ['(./reference-remote >remote.out 2>remote.err; peer_rc=$?; '
                       'echo "$peer_rc" >remote.status.tmp; mv remote.status.tmp remote.status) & remote=$!',
                       'sleep 1','grep RDY remote.out || exit 2']
-        if checkpoint == 'xconnect':
+        if checkpoint in ['xconnect','recvmsg']:
             lines += ['(./reference-message >message.out 2>message.err; peer_rc=$?; '
                       'echo "$peer_rc" >message.status.tmp; mv message.status.tmp message.status) & message=$!',
                       'sleep 1','grep RDY message.out || exit 2']
+        if checkpoint == 'recvmsg':
+            lines += ['(./reference-receive >receive.out 2>receive.err; peer_rc=$?; '
+                      'echo "$peer_rc" >receive.status.tmp; mv receive.status.tmp receive.status) & receive=$!',
+                      'sleep 1','grep RDY receive.out || exit 2']
         last_echo = max(i for i,c in enumerate(cases) if c['symbols']['KIND']==4)
         for i,c in enumerate(cases):
             name=c['name']
@@ -217,27 +232,31 @@ def main():
             if i == last_echo:
                 lines += ['while test ! -f server.status; do sleep 1; done',
                           'wait "$server" 2>/dev/null || :']
-        if checkpoint in ['sockname','peername','xconnect']:
+        if checkpoint in ['sockname','peername','xconnect','recvmsg']:
             lines += ['while test ! -f peer.status; do sleep 1; done',
                       'wait "$peer" 2>/dev/null || :']
-        if checkpoint in ['peername','xconnect']:
+        if checkpoint in ['peername','xconnect','recvmsg']:
             lines += ['while test ! -f remote.status; do sleep 1; done',
                       'wait "$remote" 2>/dev/null || :']
-        if checkpoint == 'xconnect':
+        if checkpoint in ['xconnect','recvmsg']:
             lines += ['while test ! -f message.status; do sleep 1; done',
                       'wait "$message" 2>/dev/null || :']
+        if checkpoint == 'recvmsg':
+            lines += ['while test ! -f receive.status; do sleep 1; done',
+                      'wait "$receive" 2>/dev/null || :']
         script=directory/'run.sh';script.write_text('\n'.join(lines)+'\n')
         ci('put',script,'--to','/tmp/xiri-tcp/run.sh','--timeout','30')
         ci('run','sh /tmp/xiri-tcp/run.sh >/tmp/xiri-tcp/status.txt; cd /tmp/xiri-tcp; '
-           'tar cf /tmp/xiri-tcp-results.tar .', '--shell','sh','--timeout','360' if checkpoint=='xconnect' else '180')
+           'tar cf /tmp/xiri-tcp-results.tar .', '--shell','sh','--timeout','480' if checkpoint=='recvmsg' else '360' if checkpoint=='xconnect' else '180')
         archive=directory/'outputs.tar'
-        ci('get','/tmp/xiri-tcp-results.tar','--to',archive,'--timeout','60')
+        ci('get','/tmp/xiri-tcp-results.tar','--to',archive,'--timeout','180' if checkpoint=='recvmsg' else '60')
         result.update(archive_observations(archive, cases, checkpoint))
         pin_path=ROOT/f'lab/irix-{checkpoint}/reference.json'
         if pin_path.exists():
             pin=json.loads(pin_path.read_text())
             if (pin['files'] != desktop['files'] or pin['observations'] != result['observations'] or
-                    (checkpoint == 'xconnect' and pin['message'] != result['message'])):
+                    (checkpoint in ['xconnect','recvmsg'] and pin['message'] != result['message']) or
+                    (checkpoint == 'recvmsg' and pin['receive'] != result['receive'])):
                 raise RuntimeError('reference differs from pin')
             result['status']='passed'
             result['reference_pin_sha256']=probe.sha256(pin_path)
@@ -246,6 +265,14 @@ def main():
     except Exception as error:
         result['error'] = f'{type(error).__name__}: {error}'
         print(result['error'], flush=True)
+        if logged_in:
+            # A timed-out transfer or script can still own the console.
+            # Interrupt it before queuing shutdown behind that command.
+            try:
+                ci('serial-send', '\x03', '--no-cr')
+                result['interrupted_foreground_for_cleanup'] = True
+            except Exception as cleanup_error:
+                result['cleanup_interrupt_error'] = str(cleanup_error)
     finally:
         if lab.process:
             if logged_in:

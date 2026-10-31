@@ -25,6 +25,7 @@ runtime = module('runtime', 'probe-irix-runtime.py')
 sockname = module('sockname', 'irix-sockname-records.py')
 peername = module('peername', 'irix-peername-records.py')
 xconnect = module('xconnect', 'irix-xconnect-records.py')
+recvmsg = module('recvmsg', 'irix-recvmsg-records.py')
 
 
 def trace_records(text, label, raw=False):
@@ -64,7 +65,7 @@ def trace_signature(trace, checkpoint='tcp'):
             item['a0'] = fields['a0']
         if number == 1107:
             item.update(a1=fields['a1'], a2=fields['a2'])
-        if checkpoint == 'xconnect':
+        if checkpoint in ['xconnect','recvmsg']:
             if number == 1062:
                 item.update(a0=fields['a0'], a1=fields['a1'])
                 if fields['a1'] in [2,4]:
@@ -77,15 +78,17 @@ def trace_signature(trace, checkpoint='tcp'):
                 item['a1'] = fields['a1']
         calls.append(item)
     returns = [1082,1091,1093,1094,1105,1107]
-    if checkpoint in ['peername','xconnect']:
+    if checkpoint in ['peername','xconnect','recvmsg']:
         returns += [1062,1102,1106,1108]
-    if checkpoint == 'xconnect':
+    if checkpoint in ['xconnect','recvmsg']:
         returns += [1099]
     return {'calls': calls, 'returns': [v for v in trace.get('returns',[]) if int(re.search(r'syscall=(\d+)',v)[1]) in returns], 'paths': [p for p in trace['paths'] if p.startswith(('/emul/irix/', '/usr/lib32/', '/lib32/', '/dev/'))]}
 
 
 def expected_record(case):
     """Fixed client subset contract; broader original behavior is pinned separately."""
+    if case['symbols']['KIND'] == 12:
+        return recvmsg.expected_record(case)
     if case['symbols']['KIND'] >= 8:
         return xconnect.expected_record(case)
     if case['symbols']['KIND'] == 7:
@@ -135,7 +138,7 @@ def expected_record(case):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--checkpoint', choices=['tcp','sockname','peername','xconnect'], default='tcp')
+    parser.add_argument('--checkpoint', choices=['tcp','sockname','peername','xconnect','recvmsg'], default='tcp')
     parser.add_argument('--mode', choices=['ci', 'ordinary'], default='ci')
     parser.add_argument('--x11', action='store_true', help='Also observe Toolchest against a controlled native Xvfb server')
     parser.add_argument('--kernel-abi',choices=['lp64','o32'],default='lp64')
@@ -167,6 +170,11 @@ def main():
     if any(probe.sha256(ROOT/p) != h for p,h in manifest['sources'].items()):
         parser.error('stale TCP fixtures')
     inputs += [(n,fixtures/n,i['sha256']) for n,i in manifest['files'].items() if not n.startswith('reference-')]
+    reference_path=lab_dir/'reference.json'
+    if checkpoint == 'recvmsg':
+        reference=json.loads(reference_path.read_text())
+        if reference['files'] != manifest['files']:
+            parser.error('recvmsg reference oracle uses different fixture bytes')
     library_inputs = {}
     for i, (path, info) in enumerate(inventory['files'].items()):
         if path.startswith('/usr/bin/'):
@@ -199,15 +207,19 @@ def main():
               'helper_sources': {n:probe.sha256(ROOT/'lab/irix-tcp'/n) for n in ['server.c','optioncheck.c']},
               'x11': args.x11, 'kernel_abi':args.kernel_abi,
               'manifest': manifest, 'observations': [], 'started_utc': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())}
-    if checkpoint in ['sockname','peername','xconnect']:
+    if checkpoint in ['sockname','peername','xconnect','recvmsg']:
         result['helper_sources']['peer.c'] = probe.sha256(ROOT/'lab/irix-sockname/peer.c')
         result['sockname_decoder_sha256'] = probe.sha256(ROOT/'scripts/irix-sockname-records.py')
-    if checkpoint in ['peername','xconnect']:
+    if checkpoint in ['peername','xconnect','recvmsg']:
         result['helper_sources']['remote.c'] = probe.sha256(ROOT/'lab/irix-peername/remote.c')
         result['peername_decoder_sha256'] = probe.sha256(ROOT/'scripts/irix-peername-records.py')
-    if checkpoint == 'xconnect':
+    if checkpoint in ['xconnect','recvmsg']:
         result['xconnect_decoder_sha256'] = probe.sha256(ROOT/'scripts/irix-xconnect-records.py')
-        result['helper_sources'].update({n:probe.sha256(lab_dir/n) for n in ['message.c','fcntlcheck.c']})
+        result['helper_sources'].update({n:probe.sha256(ROOT/'lab/irix-xconnect'/n) for n in ['message.c','fcntlcheck.c']})
+    if checkpoint == 'recvmsg':
+        result['reference_pin_sha256']=probe.sha256(reference_path)
+        result['recvmsg_decoder_sha256']=probe.sha256(ROOT/'scripts/irix-recvmsg-records.py')
+        result['helper_sources']['receive.c']=probe.sha256(lab_dir/'receive.c')
     started = time.monotonic()
     print(f'Results: {directory.relative_to(ROOT)}', flush=True)
     normal = {'errno_bytes': 0, 'errno': 0, 'exit': 0, 'signal': 0, 'killed': 0, 'stdout': '', 'stderr': ''}
@@ -244,7 +256,7 @@ def main():
         for label,ids in [('root',[0,0,0,0]),('user',[1234,1234,5678,5678])]:
             cases.append({'name':'x11-toolchest-'+label,'program':'vendor-toolchest','ids':ids,
                           'argv':['-display','127.0.0.1:98'],'trace':True,'stage':'x11'})
-    if checkpoint == 'xconnect':
+    if checkpoint in ['xconnect','recvmsg']:
         # Finish the old peers within their original alarm deadlines before
         # running the added startup probes. Preserve each peer's case order.
         startup = [c for c in cases if c.get('fixture',{}).get('symbols',{}).get('KIND',-1) >= 8]
@@ -266,10 +278,11 @@ def main():
             probe.run(['cp', source, media/name])
         for n in ['server.c','optioncheck.c']:
             probe.run(['cp',ROOT/'lab/irix-tcp'/n,media/n])
-        if checkpoint in ['sockname','peername','xconnect']: probe.run(['cp',ROOT/'lab/irix-sockname/peer.c',media/'peer.c'])
-        if checkpoint in ['peername','xconnect']: probe.run(['cp',ROOT/'lab/irix-peername/remote.c',media/'remote.c'])
-        if checkpoint == 'xconnect':
-            for n in ['message.c','fcntlcheck.c']:probe.run(['cp',lab_dir/n,media/n])
+        if checkpoint in ['sockname','peername','xconnect','recvmsg']: probe.run(['cp',ROOT/'lab/irix-sockname/peer.c',media/'peer.c'])
+        if checkpoint in ['peername','xconnect','recvmsg']: probe.run(['cp',ROOT/'lab/irix-peername/remote.c',media/'remote.c'])
+        if checkpoint in ['xconnect','recvmsg']:
+            for n in ['message.c','fcntlcheck.c']:probe.run(['cp',ROOT/'lab/irix-xconnect'/n,media/n])
+        if checkpoint == 'recvmsg':probe.run(['cp',lab_dir/'receive.c',media/'receive.c'])
         if args.x11:
             sets=['xbase','xetc','xfont','xserver']
             selected=[line for line in (ROOT/'lab/netbsd-11.0/SHA512SUMS').read_text().splitlines()
@@ -283,17 +296,20 @@ def main():
         (media/'payload.bin').write_bytes(bytes(range(256))*512)
         lines = ['#!/bin/sh', 'set -eu', 'cd /root/irix-desktop', 'ulimit -c 0',
                  './server '+('4' if args.kernel_abi=='o32' else '8')+' >server.log 2>&1 & server=$!', 'sleep 1', 'grep RDY server.log']
-        if checkpoint in ['sockname','peername','xconnect']:
+        if checkpoint in ['sockname','peername','xconnect','recvmsg']:
             peer_count = sum(c.get('fixture',{}).get('symbols',{}).get('KIND')==6 and
                              'CONNECTED' in c['fixture']['symbols'] for c in cases)
             lines += [f'./peer {peer_count} >peer.log 2>&1 & peer=$!', 'sleep 1', 'grep RDY peer.log']
-        if checkpoint in ['peername','xconnect']:
+        if checkpoint in ['peername','xconnect','recvmsg']:
             remote_count = sum(c.get('fixture',{}).get('symbols',{}).get('KIND')==7 and
                                'CONNECTED' in c['fixture']['symbols'] for c in cases)
             lines += [f'./remote {remote_count} >remote.log 2>&1 & remote=$!', 'sleep 1', 'grep RDY remote.log']
-        if checkpoint == 'xconnect':
+        if checkpoint in ['xconnect','recvmsg']:
             message_count=sum('MESSAGE_CONNECTED' in c.get('fixture',{}).get('symbols',{}) for c in cases)
             lines += [f'./message {message_count} >message.log 2>message.err & message=$!', 'sleep 1', 'grep RDY message.log']
+        if checkpoint == 'recvmsg':
+            receive_count=sum('RECEIVE_CONNECTED' in c.get('fixture',{}).get('symbols',{}) for c in cases)
+            lines += [f'./receive {receive_count} >receive.log 2>receive.err & receive=$!', 'sleep 1', 'grep RDY receive.log']
         for path,name in library_inputs.items():
             target='/emul/irix'+path
             lines += ['mkdir -p '+shlex.quote(str(Path(target).parent)),
@@ -311,14 +327,17 @@ def main():
             if case.get('trace'):
                 # The guest kdump is o32; raw bytes avoid interpreting native
                 # LP64 msghdr records with the decoder's own structure layout.
-                raw_option = ' -x' if checkpoint == 'xconnect' else ''
+                raw_option = ' -x' if checkpoint in ['xconnect','recvmsg'] else ''
                 lines += ['echo STARTTRACE '+case['name'], 'kdump'+raw_option+' -f '+case['name']+'.ktrace -t un',
                           'echo ENDTRACE '+case['name']]
-        if checkpoint in ['sockname','peername','xconnect']: lines += ['wait "$peer"', 'echo PEER_OK']
-        if checkpoint in ['peername','xconnect']: lines += ['wait "$remote"', 'echo REMOTE_OK']
-        if checkpoint == 'xconnect':
+        if checkpoint in ['sockname','peername','xconnect','recvmsg']: lines += ['wait "$peer"', 'echo PEER_OK']
+        if checkpoint in ['peername','xconnect','recvmsg']: lines += ['wait "$remote"', 'echo REMOTE_OK']
+        if checkpoint in ['xconnect','recvmsg']:
             lines += ['wait "$message"','test ! -s message.err','echo MESSAGE_OK',
                       'echo STARTMESSAGE','od -An -v -tx1 message.log','echo ENDMESSAGE']
+        if checkpoint == 'recvmsg':
+            lines += ['wait "$receive"','test ! -s receive.err','echo RECEIVE_OK',
+                      'echo STARTRECEIVE','od -An -v -tx1 receive.log','echo ENDRECEIVE']
         lines += ['wait "$server"', 'echo SERVER_OK', 'sha256 -c SHA256', 'echo DESKTOP_DONE']
         (media/'run.sh').write_text('\n'.join(lines)+'\n')
         probe.run(['genisoimage', '-quiet', '-R', '-J', '-follow-links', '-V', 'XIRI_TCP', '-o', directory/'probe.iso', media])
@@ -333,15 +352,17 @@ def main():
                        'cp vendor-n32-rld /emul/irix/lib32/rld && chmod 755 /emul/irix/*/rld /emul/irix/*/libc.so.1 /emul/irix/usr/*/libc.so.1 && '
                        'cc -O2 -Wall -Wextra -Werror -DRUNNER_TIMEOUT_MS=30000 -DRUNNER_TIMING runner.c -o runner && '
                        'cc -O2 -Wall -Wextra -Werror server.c -o server && '
-                       'cc -O2 -Wall -Wextra -Werror optioncheck.c -o optioncheck', 450 if checkpoint=='xconnect' else 300 if checkpoint=='peername' else 180):
+                       'cc -O2 -Wall -Wextra -Werror optioncheck.c -o optioncheck', 600 if checkpoint=='recvmsg' else 450 if checkpoint=='xconnect' else 300 if checkpoint=='peername' else 180):
             raise RuntimeError('desktop inputs or native runner failed')
-        if checkpoint in ['sockname','peername','xconnect'] and lab.command('cc -O2 -Wall -Wextra -Werror peer.c -o peer',60):
+        if checkpoint in ['sockname','peername','xconnect','recvmsg'] and lab.command('cc -O2 -Wall -Wextra -Werror peer.c -o peer',60):
             raise RuntimeError('native address peer failed to compile')
-        if checkpoint in ['peername','xconnect'] and lab.command('cc -O2 -Wall -Wextra -Werror remote.c -o remote',60):
+        if checkpoint in ['peername','xconnect','recvmsg'] and lab.command('cc -O2 -Wall -Wextra -Werror remote.c -o remote',60):
             raise RuntimeError('native server-address peer failed to compile')
-        if checkpoint == 'xconnect' and lab.command('hostname IRIX && cc -O2 -Wall -Wextra -Werror message.c -o message && '
+        if checkpoint in ['xconnect','recvmsg'] and lab.command('hostname IRIX && cc -O2 -Wall -Wextra -Werror message.c -o message && '
                             'cc -O2 -Wall -Wextra -Werror fcntlcheck.c -o fcntlcheck',60):
             raise RuntimeError('startup controls failed to prepare')
+        if checkpoint == 'recvmsg' and lab.command('cc -O2 -Wall -Wextra -Werror receive.c -o receive',60):
+            raise RuntimeError('native source peer failed to compile')
         if lab.command(shlex.join(['sh', '/cdrom/probe.sh', pin['ident'], pin['native_kernel_sha256'],
                                   probe.sha256(media/'payload.bin')]), 60):
             raise RuntimeError('native kernel/file/swap controls failed')
@@ -357,7 +378,7 @@ def main():
                 raise RuntimeError('native TCP X connection failed')
             result['native_x11_before']=True
         before = len(lab.serial_text())
-        rc = lab.command('sh /root/irix-desktop/run.sh', 600 if checkpoint=='xconnect' else 450 if checkpoint=='peername' else 300)
+        rc = lab.command('sh /root/irix-desktop/run.sh', 900 if checkpoint=='recvmsg' else 600 if checkpoint=='xconnect' else 450 if checkpoint=='peername' else 300)
         output = lab.serial_text()[before:]
         (directory/'desktop-serial.txt').write_text(output)
         result['traces'] = {}
@@ -377,7 +398,7 @@ def main():
                     raise RuntimeError('missing TCP record: '+name)
                 data=bytes.fromhex(record_match[1])
                 record=runtime.dispatch_record(data[:32])
-                if record_bytes == 96: record['memory_hex'] = data[32:].hex()
+                if record_bytes > 32: record['memory_hex'] = data[32:].hex()
                 expected={**normal,'stdout':actual['stdout']}
             if expectations and case.get('stage'):
                 expected = expectations['cases'][name]['actual']
@@ -397,8 +418,8 @@ def main():
                 if not trace:
                     raise RuntimeError('missing trace '+name)
                 result['traces'][name] = {
-                    'calls': trace_records(trace[1], 'irix_o32', checkpoint == 'xconnect'),
-                    'returns': trace_records(trace[1], 'irix_ret', checkpoint == 'xconnect'),
+                    'calls': trace_records(trace[1], 'irix_o32', checkpoint in ['xconnect','recvmsg']),
+                    'returns': trace_records(trace[1], 'irix_ret', checkpoint in ['xconnect','recvmsg']),
                     'paths': re.findall(r'NAMI\s+"([^"]+)"', trace[1])}
                 signature = trace_signature(result['traces'][name], checkpoint)
                 result['traces'][name]['signature'] = signature
@@ -414,15 +435,21 @@ def main():
             if lab.command('/usr/X11R7/bin/xdpyinfo -display 127.0.0.1:98 >/dev/null && kill "$xpid"',30):
                 raise RuntimeError('native X server control failed after foreign clients')
             result['native_x11_after']=True
-        if checkpoint in ['sockname','peername','xconnect'] and '\nPEER_OK\n' not in output: raise RuntimeError('native address peer failed')
-        if checkpoint in ['peername','xconnect'] and '\nREMOTE_OK\n' not in output: raise RuntimeError('native server-address peer failed')
+        if checkpoint in ['sockname','peername','xconnect','recvmsg'] and '\nPEER_OK\n' not in output: raise RuntimeError('native address peer failed')
+        if checkpoint in ['peername','xconnect','recvmsg'] and '\nREMOTE_OK\n' not in output: raise RuntimeError('native server-address peer failed')
         if '\nSERVER_OK\n' not in output: raise RuntimeError('native echo peer failed')
-        if checkpoint == 'xconnect':
+        if checkpoint in ['xconnect','recvmsg']:
             receipt=re.search(r'^STARTMESSAGE\n(.*?)^ENDMESSAGE$',output,re.M|re.S)
             if '\nMESSAGE_OK\n' not in output or not receipt:raise RuntimeError('native message peer failed')
             result['message_records']=xconnect.message_records(bytes.fromhex(receipt[1]))
             expected_messages=[xconnect.expected_message(c['fixture']) for c in cases if 'MESSAGE_CONNECTED' in c.get('fixture',{}).get('symbols',{})]
             if result['message_records'] != expected_messages:raise RuntimeError('native peer received unexpected bytes')
+        if checkpoint == 'recvmsg':
+            receipt=re.search(r'^STARTRECEIVE\n(.*?)^ENDRECEIVE$',output,re.M|re.S)
+            if '\nRECEIVE_OK\n' not in output or not receipt:raise RuntimeError('native source peer failed')
+            result['receive_records']=recvmsg.receive_records(bytes.fromhex(receipt[1]))
+            expected_receives=[recvmsg.expected_receive(c['fixture']) for c in cases if 'RECEIVE_CONNECTED' in c.get('fixture',{}).get('symbols',{})]
+            if result['receive_records']!=expected_receives:raise RuntimeError('native source peer sent unexpected bytes')
         if rc or '\nDESKTOP_DONE\n' not in output or failures:
             raise RuntimeError('TCP qualification failed: '+', '.join(failures))
         if lab.command('test "$(cksum /root/xiri-probe)" = "3540535338 33 /root/xiri-probe"', 30):
