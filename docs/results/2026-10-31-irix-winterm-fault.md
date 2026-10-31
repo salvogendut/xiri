@@ -1,5 +1,7 @@
 # Original xwsh: null font object and blocked resource lookups
 
+Follow-up: [access support](2026-10-31-irix-winterm-access.md) now permits locale/default reads and clears the xwsh null-font failure. The next boundary is PTY setup.
+
 The original xwsh startup fault is in `tuFont::getWidth`: it receives a null
 font object and loads a field at offset 16. The attempted call target is
 `XmbTextEscapement`, but the fault occurs before that Xlib function is entered.

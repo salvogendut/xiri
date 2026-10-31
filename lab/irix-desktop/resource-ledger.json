@@ -77,13 +77,14 @@
       ],
       "evidence": [
         "lab/irix-x11-fonts/manifest.json",
-        "docs/results/2026-10-31-irix-winterm-resources.json"
+        "docs/results/2026-10-31-irix-winterm-resources.json",
+        "docs/results/2026-10-31-irix-winterm-access.json"
       ],
-      "note": "22 original Screen fonts indexed; the requested 15-pixel medium face renders in native xterm under both identities and modes."
+      "note": "22 original Screen fonts indexed; the requested 15-pixel medium face renders in native xterm under both identities and modes. The access follow-up pins both native xterm regular and bold slots to the verified normal face after an unconstrained control hit X_OpenFont BadAlloc; this does not qualify other faces."
     },
     {
       "id": "xlib_locale",
-      "status": "staged_initialization_blocked",
+      "status": "startup_read_observed",
       "image_paths": [
         "/usr/lib/X11/locale/locale.alias",
         "/usr/lib/X11/locale/locale.dir",
@@ -93,13 +94,14 @@
       "evidence": [
         "lab/irix-x11-fonts/manifest.json",
         "docs/results/2026-10-31-irix-winterm-resources.json",
-        "docs/results/2026-10-31-irix-winterm-fault.json"
+        "docs/results/2026-10-31-irix-winterm-fault.json",
+        "docs/results/2026-10-31-irix-winterm-access.json"
       ],
-      "note": "C/ISO8859-1 resources staged readably. A checked xwsh breakpoint trace observes access of /usr/lib/X11/locale/C/XLC_LOCALE returning ENOSYS; copying the file alone cannot pass this check. Native seek support is also missing. External modules remain unqualified."
+      "note": "The access adapter permits reading C/XLC_LOCALE. Original xwsh passes the earlier locale/font failure and reaches terminal setup. lseek is still unsupported but no longer the immediate observed startup boundary. Other locales and delayed modules remain unqualified."
     },
     {
       "id": "terminal_defaults",
-      "status": "extracted_unqualified",
+      "status": "xwsh_startup_read_observed",
       "image_paths": [
         "/usr/lib/X11/app-defaults/XWsh",
         "/usr/lib/X11/app-defaults/IWsh",
@@ -107,9 +109,10 @@
       ],
       "evidence": [
         "lab/irix-winterm/manifest.json",
-        "docs/results/2026-10-31-irix-winterm-fault.json"
+        "docs/results/2026-10-31-irix-winterm-fault.json",
+        "docs/results/2026-10-31-irix-winterm-access.json"
       ],
-      "note": "Original xwsh faults in tuFont::getWidth with a null font object before XmbTextEscapement. access of XWsh app-defaults returns ENOSYS; consumption remains blocked. Launcher gettxt exec is separate."
+      "note": "Original xwsh now checks and reads XWsh app-defaults and passes the previous null-font crash. IWsh consumption is unqualified; the unchanged winterm launcher still has a separate gettxt exec limitation."
     },
     {
       "id": "window_manager_defaults",
@@ -123,7 +126,7 @@
       "evidence": [
         "lab/irix-desktop/manifest.json"
       ],
-      "note": "4Dwm loader support and referenced artwork remain open."
+      "note": "Evaluate the original 4Dwm after a usable winterm. Collision relocation exists; 4 KiB load boundaries and referenced artwork remain open."
     },
     {
       "id": "session_defaults",
@@ -177,7 +180,7 @@
     },
     {
       "id": "schemes",
-      "status": "lookup_paths_observed_needs_inventory",
+      "status": "lookup_paths_missing_in_guest",
       "image_paths": [
         "/usr/lib/X11/schemes/Base/BaseColorPalette",
         "/usr/lib/X11/schemes/Myers/BaseColorPalette",
@@ -185,9 +188,10 @@
         "/usr/lib/X11/C/schemes/Myers/BaseColorPalette"
       ],
       "evidence": [
-        "docs/results/2026-10-31-irix-winterm-fault.json"
+        "docs/results/2026-10-31-irix-winterm-fault.json",
+        "docs/results/2026-10-31-irix-winterm-access.json"
       ],
-      "note": "Actual xwsh access pathnames include these system candidates and HOME/.desktop-xiri-indy/schemes/{Base,Myers}/BaseColorPalette. Calls return ENOSYS; file presence, requiredness and successful consumption are not yet established."
+      "note": "Original xwsh now gets ENOENT for these system and HOME/.desktop-xiri-indy/schemes/{Base,Myers}/BaseColorPalette candidates and continues to terminal setup. Inventory and appearance qualification remain open."
     },
     {
       "id": "additional_fonts",
@@ -198,10 +202,16 @@
     },
     {
       "id": "catalogs_and_locales",
-      "status": "needs_inventory",
-      "image_paths": [],
-      "evidence": [],
-      "note": "Locate message/help/application catalogs and needed locale/input-method modules."
+      "status": "diagnostic_lookup_candidates",
+      "image_paths": [
+        "/usr/lib/locale/C/LC_MESSAGES/uxsyserr",
+        "/usr/lib/locale/C/Xopen/LC_MESSAGES/uxsyserr",
+        "/usr/lib/locale/C/LC_MESSAGES/uxsyserr.cat"
+      ],
+      "evidence": [
+        "docs/results/2026-10-31-irix-winterm-access.json"
+      ],
+      "note": "Original xwsh probes uxsyserr catalog paths while reporting its terminal-setup EINVAL. They are absent in the test guest; the fallback English diagnostic works. Image presence, localization and other catalogs remain unqualified."
     },
     {
       "id": "desktop_services",
@@ -217,6 +227,7 @@
     "shell selection",
     "X credentials and display",
     "PATH and XUSERFILESEARCHPATH",
-    "generated or deliberately migrated per-user desktop state"
+    "generated or deliberately migrated per-user desktop state",
+    "Native PTY allocation, ownership, controlling terminal and termios translation for the selected shell"
   ]
 }

@@ -1,0 +1,1406 @@
+{
+  "schema": 1,
+  "status": "locale-font-boundary-cleared-pty-setup-blocked",
+  "kernel_pin": {
+    "schema": 1,
+    "description": "IRIX access with native real-credential checks on lp64",
+    "ident": "XIRI_IRIX_ACCESS_20261031",
+    "source_revision": "0d031580e42d0cd2f1e1851254326366569dc178",
+    "source_branch": "xiri/irix-access",
+    "build_arch": "mips64eb",
+    "page_bytes": 8192,
+    "boot_kernel_sha256": "5d2da4f062e7b7393da396fdb202e00f3d03e3d9f341a2f31377b91edcfa7cfa",
+    "native_kernel_sha256": "47604aa4cb69a109edae03ca8b701b7f73b8d6e0cf38795399f59864a2637406",
+    "debug_kernel_sha256": "c18e5370aa98c9846dd2622a612751ea04357793af6fe58c2d48f941066c91f1",
+    "native_o32_sha256": "c294fbb1f2110445be31c096481ea54ab561c7e59ca5b9fc7171310098d755d4",
+    "source_dirty": false,
+    "emulator_revision": "9df1df14334838a989253efefe26f0547e6da592",
+    "emulator_branch": "xiri/netbsd64-tlb",
+    "emulator_sha256": "1b3f7702ba7f43b5c4fca8ba8884243559f46371d8d67a36ce5e6fee1e595eba",
+    "ci_client_sha256": "8711321aa6eaae440da3c7920b00ae4cf1c7f2abbdb15a9919f58485500ffb6c",
+    "base_disk_sha256": "269038c7b77660c83d3835208fc0b2702c93110c14b3c55a42416f51672cee2a",
+    "nvram_sha256": "ee883474d52f09278287b2044f7aeca61d2e7bc39c0bb8fd85c983ab64063d15",
+    "config_sha256": "66628dfbee4f856807ffb8b8fd12b7efb3adfbc7f4e96dd5f0128687ca9df0b3",
+    "runtimes": [
+      {
+        "name": "vendor-o32-libc",
+        "path": "/usr/lib/libc.so.1",
+        "sha256": "ea766492103a193e9d404942705e4e28987545e37f699ede232b6c0f8c97c954"
+      },
+      {
+        "name": "vendor-o32-rld",
+        "path": "/lib/rld",
+        "sha256": "30228b54c1e5585b365514eb7c9895b03cc0f61cb898e05e3ddafece87863439"
+      },
+      {
+        "name": "vendor-n32-libc",
+        "path": "/lib32/libc.so.1",
+        "sha256": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e"
+      },
+      {
+        "name": "vendor-n32-rld",
+        "path": "/lib32/rld",
+        "sha256": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b"
+      }
+    ],
+    "config_path": "lab/irix-access/XIRI_IRIX_ACCESS"
+  },
+  "runs": [
+    {
+      "directory": ".work/irix-winterm-access/runs/ci-ogysv6ji",
+      "mode": "ci",
+      "clean_shutdown": true,
+      "result_sha256": "c99616bc3cbcfb9f443547990512fc9fde920ef43f55445d2a5e3a72a5c10801",
+      "controls": [
+        {
+          "phase": "before",
+          "entry_exit": 37,
+          "fault_pc": "0x40079c",
+          "guards_intact": true,
+          "window": "\nxwininfo: Window id: 0x20000c \"FaultControl\"\n\n  Absolute upper-left X:  0\n  Absolute upper-left Y:  0\n  Relative upper-left X:  0\n  Relative upper-left Y:  0\n  Width: 644\n  Height: 364\n  Depth: 24\n  Visual: 0x21\n  Visual Class: TrueColor\n  Border width: 1\n  Class: InputOutput\n  Colormap: 0x20 (installed)\n  Bit Gravity State: NorthWestGravity\n  Window Gravity State: NorthWestGravity\n  Backing Store State: NotUseful\n  Save Under State: no\n  Map State: IsViewable\n  Override Redirect State: no\n  Corners:  +0+0  --6+0  --6-114  +0-114\n  -geometry 80x24+0+0\n\n",
+          "stderr": ""
+        },
+        {
+          "phase": "after",
+          "entry_exit": 37,
+          "fault_pc": "0x40079c",
+          "guards_intact": true,
+          "window": "\nxwininfo: Window id: 0x20000c \"FaultControl\"\n\n  Absolute upper-left X:  0\n  Absolute upper-left Y:  0\n  Relative upper-left X:  0\n  Relative upper-left Y:  0\n  Width: 644\n  Height: 364\n  Depth: 24\n  Visual: 0x21\n  Visual Class: TrueColor\n  Border width: 1\n  Class: InputOutput\n  Colormap: 0x20 (installed)\n  Bit Gravity State: NorthWestGravity\n  Window Gravity State: NorthWestGravity\n  Backing Store State: NotUseful\n  Save Under State: no\n  Map State: IsViewable\n  Override Redirect State: no\n  Corners:  +0+0  --6+0  --6-114  +0-114\n  -geometry 80x24+0+0\n\n",
+          "stderr": ""
+        }
+      ],
+      "native_font_controls": [
+        {
+          "phase": "before",
+          "window": "\nxwininfo: Window id: 0x20000c \"FaultControl\"\n\n  Absolute upper-left X:  0\n  Absolute upper-left Y:  0\n  Relative upper-left X:  0\n  Relative upper-left Y:  0\n  Width: 644\n  Height: 364\n  Depth: 24\n  Visual: 0x21\n  Visual Class: TrueColor\n  Border width: 1\n  Class: InputOutput\n  Colormap: 0x20 (installed)\n  Bit Gravity State: NorthWestGravity\n  Window Gravity State: NorthWestGravity\n  Backing Store State: NotUseful\n  Save Under State: no\n  Map State: IsViewable\n  Override Redirect State: no\n  Corners:  +0+0  --6+0  --6-114  +0-114\n  -geometry 80x24+0+0\n\n",
+          "stderr": ""
+        },
+        {
+          "phase": "after",
+          "window": "\nxwininfo: Window id: 0x20000c \"FaultControl\"\n\n  Absolute upper-left X:  0\n  Absolute upper-left Y:  0\n  Relative upper-left X:  0\n  Relative upper-left Y:  0\n  Width: 644\n  Height: 364\n  Depth: 24\n  Visual: 0x21\n  Visual Class: TrueColor\n  Border width: 1\n  Class: InputOutput\n  Colormap: 0x20 (installed)\n  Bit Gravity State: NorthWestGravity\n  Window Gravity State: NorthWestGravity\n  Backing Store State: NotUseful\n  Save Under State: no\n  Map State: IsViewable\n  Override Redirect State: no\n  Corners:  +0+0  --6+0  --6-114  +0-114\n  -geometry 80x24+0+0\n\n",
+          "stderr": ""
+        }
+      ],
+      "cases": [
+        {
+          "name": "0-default",
+          "uid": 0,
+          "font": null,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 255,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "/emul/irix/usr/sbin/xwsh: Invalid argument: can't start command\n"
+          },
+          "window_children": 0,
+          "access": [
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/locale/C/XLC_LOCALE"
+              ],
+              "mode": 4,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "paths": [
+                "/emul/irix/tmp/xiri-home/.Xauthority",
+                "/tmp/xiri-home/.Xauthority"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/C/app-defaults/XWsh",
+                "/usr/lib/X11/C/app-defaults/XWsh"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/C/app-defaults/XWsh",
+                "/usr/lib/X11/C/app-defaults/XWsh"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/app-defaults/XWsh"
+              ],
+              "mode": 4,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "paths": [
+                "/emul/irix/tmp/xiri-home/.desktop-xiri-indy/schemes/Myers/BaseColorPalette",
+                "/tmp/xiri-home/.desktop-xiri-indy/schemes/Myers/BaseColorPalette"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/C/schemes/Myers/BaseColorPalette",
+                "/usr/lib/X11/C/schemes/Myers/BaseColorPalette"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/C/schemes/Myers/BaseColorPalette",
+                "/usr/lib/X11/C/schemes/Myers/BaseColorPalette"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/schemes/Myers/BaseColorPalette",
+                "/usr/lib/X11/schemes/Myers/BaseColorPalette"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/tmp/xiri-home/.desktop-xiri-indy/schemes/Base/BaseColorPalette",
+                "/tmp/xiri-home/.desktop-xiri-indy/schemes/Base/BaseColorPalette"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/C/schemes/Base/BaseColorPalette",
+                "/usr/lib/X11/C/schemes/Base/BaseColorPalette"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/C/schemes/Base/BaseColorPalette",
+                "/usr/lib/X11/C/schemes/Base/BaseColorPalette"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/schemes/Base/BaseColorPalette",
+                "/usr/lib/X11/schemes/Base/BaseColorPalette"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            }
+          ],
+          "resource_read_bytes": {
+            "/emul/irix/lib32/rld": 512,
+            "/emul/irix/usr/lib32/libX11.so.1": 512,
+            "/emul/irix/usr/lib32/libC.so.2": 512,
+            "/emul/irix/usr/lib32/libm.so": 512,
+            "/emul/irix/usr/lib32/libCsup.so": 512,
+            "/emul/irix/etc/passwd": 89,
+            "/emul/irix/usr/lib/X11/locale/locale.alias": 9024,
+            "/emul/irix/usr/lib/X11/locale/locale.dir": 4096,
+            "/emul/irix/usr/lib/X11/locale/C/XLC_LOCALE": 763,
+            "/emul/irix/usr/lib/X11/app-defaults/XWsh": 12699
+          },
+          "unsupported_syscalls": {
+            "1040": 5,
+            "1156": 1,
+            "1203": 2,
+            "1054": 4,
+            "1019": 2,
+            "1124": 2,
+            "1123": 2,
+            "1162": 6,
+            "1130": 2
+          },
+          "trace_sha256": "99ddee578eb70f93d37d8c4853082320e40f3406773626055ea6a594c02c6c1b",
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b"
+        },
+        {
+          "name": "0-fixed",
+          "uid": 0,
+          "font": "fixed",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 255,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "/emul/irix/usr/sbin/xwsh: Invalid argument: can't start command\n"
+          },
+          "window_children": 0,
+          "access": [
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/locale/C/XLC_LOCALE"
+              ],
+              "mode": 4,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "paths": [
+                "/emul/irix/tmp/xiri-home/.Xauthority",
+                "/tmp/xiri-home/.Xauthority"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/C/app-defaults/XWsh",
+                "/usr/lib/X11/C/app-defaults/XWsh"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/C/app-defaults/XWsh",
+                "/usr/lib/X11/C/app-defaults/XWsh"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/app-defaults/XWsh"
+              ],
+              "mode": 4,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "paths": [
+                "/emul/irix/tmp/xiri-home/.desktop-xiri-indy/schemes/Myers/BaseColorPalette",
+                "/tmp/xiri-home/.desktop-xiri-indy/schemes/Myers/BaseColorPalette"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/C/schemes/Myers/BaseColorPalette",
+                "/usr/lib/X11/C/schemes/Myers/BaseColorPalette"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/C/schemes/Myers/BaseColorPalette",
+                "/usr/lib/X11/C/schemes/Myers/BaseColorPalette"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/schemes/Myers/BaseColorPalette",
+                "/usr/lib/X11/schemes/Myers/BaseColorPalette"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/tmp/xiri-home/.desktop-xiri-indy/schemes/Base/BaseColorPalette",
+                "/tmp/xiri-home/.desktop-xiri-indy/schemes/Base/BaseColorPalette"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/C/schemes/Base/BaseColorPalette",
+                "/usr/lib/X11/C/schemes/Base/BaseColorPalette"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/C/schemes/Base/BaseColorPalette",
+                "/usr/lib/X11/C/schemes/Base/BaseColorPalette"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/schemes/Base/BaseColorPalette",
+                "/usr/lib/X11/schemes/Base/BaseColorPalette"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            }
+          ],
+          "resource_read_bytes": {
+            "/emul/irix/lib32/rld": 512,
+            "/emul/irix/usr/lib32/libX11.so.1": 512,
+            "/emul/irix/usr/lib32/libC.so.2": 512,
+            "/emul/irix/usr/lib32/libm.so": 512,
+            "/emul/irix/usr/lib32/libCsup.so": 512,
+            "/emul/irix/etc/passwd": 89,
+            "/emul/irix/usr/lib/X11/locale/locale.alias": 9024,
+            "/emul/irix/usr/lib/X11/locale/locale.dir": 4096,
+            "/emul/irix/usr/lib/X11/locale/C/XLC_LOCALE": 763,
+            "/emul/irix/usr/lib/X11/app-defaults/XWsh": 12699
+          },
+          "unsupported_syscalls": {
+            "1040": 5,
+            "1156": 1,
+            "1203": 2,
+            "1054": 4,
+            "1019": 2,
+            "1124": 2,
+            "1123": 2,
+            "1162": 6,
+            "1130": 2
+          },
+          "trace_sha256": "cd61592ffdfa1011b955a2d6beeb4e75b2413464bd6da86ff6fc0fe6c5d5bb68",
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b"
+        },
+        {
+          "name": "1234-default",
+          "uid": 1234,
+          "font": null,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 255,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "/emul/irix/usr/sbin/xwsh: Invalid argument: can't start command\n"
+          },
+          "window_children": 0,
+          "access": [
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/locale/C/XLC_LOCALE"
+              ],
+              "mode": 4,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "paths": [
+                "/emul/irix/tmp/xiri-home/.Xauthority",
+                "/tmp/xiri-home/.Xauthority"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/C/app-defaults/XWsh",
+                "/usr/lib/X11/C/app-defaults/XWsh"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/C/app-defaults/XWsh",
+                "/usr/lib/X11/C/app-defaults/XWsh"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/app-defaults/XWsh"
+              ],
+              "mode": 4,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "paths": [
+                "/emul/irix/tmp/xiri-home/.desktop-xiri-indy/schemes/Myers/BaseColorPalette",
+                "/tmp/xiri-home/.desktop-xiri-indy/schemes/Myers/BaseColorPalette"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/C/schemes/Myers/BaseColorPalette",
+                "/usr/lib/X11/C/schemes/Myers/BaseColorPalette"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/C/schemes/Myers/BaseColorPalette",
+                "/usr/lib/X11/C/schemes/Myers/BaseColorPalette"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/schemes/Myers/BaseColorPalette",
+                "/usr/lib/X11/schemes/Myers/BaseColorPalette"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/tmp/xiri-home/.desktop-xiri-indy/schemes/Base/BaseColorPalette",
+                "/tmp/xiri-home/.desktop-xiri-indy/schemes/Base/BaseColorPalette"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/C/schemes/Base/BaseColorPalette",
+                "/usr/lib/X11/C/schemes/Base/BaseColorPalette"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/C/schemes/Base/BaseColorPalette",
+                "/usr/lib/X11/C/schemes/Base/BaseColorPalette"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/schemes/Base/BaseColorPalette",
+                "/usr/lib/X11/schemes/Base/BaseColorPalette"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            }
+          ],
+          "resource_read_bytes": {
+            "/emul/irix/lib32/rld": 512,
+            "/emul/irix/usr/lib32/libX11.so.1": 512,
+            "/emul/irix/usr/lib32/libC.so.2": 512,
+            "/emul/irix/usr/lib32/libm.so": 512,
+            "/emul/irix/usr/lib32/libCsup.so": 512,
+            "/emul/irix/etc/passwd": 89,
+            "/emul/irix/usr/lib/X11/locale/locale.alias": 9024,
+            "/emul/irix/usr/lib/X11/locale/locale.dir": 4096,
+            "/emul/irix/usr/lib/X11/locale/C/XLC_LOCALE": 763,
+            "/emul/irix/usr/lib/X11/app-defaults/XWsh": 12699
+          },
+          "unsupported_syscalls": {
+            "1040": 5,
+            "1156": 1,
+            "1203": 2,
+            "1054": 4,
+            "1124": 2,
+            "1123": 2,
+            "1019": 1,
+            "1162": 6,
+            "1130": 2
+          },
+          "trace_sha256": "28c8640359f4428e4ce5c1fa4d99e4a1a744eade82922c0347bd054da4e837b0",
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b"
+        },
+        {
+          "name": "1234-fixed",
+          "uid": 1234,
+          "font": "fixed",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 255,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "/emul/irix/usr/sbin/xwsh: Invalid argument: can't start command\n"
+          },
+          "window_children": 0,
+          "access": [
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/locale/C/XLC_LOCALE"
+              ],
+              "mode": 4,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "paths": [
+                "/emul/irix/tmp/xiri-home/.Xauthority",
+                "/tmp/xiri-home/.Xauthority"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/C/app-defaults/XWsh",
+                "/usr/lib/X11/C/app-defaults/XWsh"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/C/app-defaults/XWsh",
+                "/usr/lib/X11/C/app-defaults/XWsh"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/app-defaults/XWsh"
+              ],
+              "mode": 4,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "paths": [
+                "/emul/irix/tmp/xiri-home/.desktop-xiri-indy/schemes/Myers/BaseColorPalette",
+                "/tmp/xiri-home/.desktop-xiri-indy/schemes/Myers/BaseColorPalette"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/C/schemes/Myers/BaseColorPalette",
+                "/usr/lib/X11/C/schemes/Myers/BaseColorPalette"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/C/schemes/Myers/BaseColorPalette",
+                "/usr/lib/X11/C/schemes/Myers/BaseColorPalette"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/schemes/Myers/BaseColorPalette",
+                "/usr/lib/X11/schemes/Myers/BaseColorPalette"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/tmp/xiri-home/.desktop-xiri-indy/schemes/Base/BaseColorPalette",
+                "/tmp/xiri-home/.desktop-xiri-indy/schemes/Base/BaseColorPalette"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/C/schemes/Base/BaseColorPalette",
+                "/usr/lib/X11/C/schemes/Base/BaseColorPalette"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/C/schemes/Base/BaseColorPalette",
+                "/usr/lib/X11/C/schemes/Base/BaseColorPalette"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/schemes/Base/BaseColorPalette",
+                "/usr/lib/X11/schemes/Base/BaseColorPalette"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            }
+          ],
+          "resource_read_bytes": {
+            "/emul/irix/lib32/rld": 512,
+            "/emul/irix/usr/lib32/libX11.so.1": 512,
+            "/emul/irix/usr/lib32/libC.so.2": 512,
+            "/emul/irix/usr/lib32/libm.so": 512,
+            "/emul/irix/usr/lib32/libCsup.so": 512,
+            "/emul/irix/etc/passwd": 89,
+            "/emul/irix/usr/lib/X11/locale/locale.alias": 9024,
+            "/emul/irix/usr/lib/X11/locale/locale.dir": 4096,
+            "/emul/irix/usr/lib/X11/locale/C/XLC_LOCALE": 763,
+            "/emul/irix/usr/lib/X11/app-defaults/XWsh": 12699
+          },
+          "unsupported_syscalls": {
+            "1040": 5,
+            "1156": 1,
+            "1203": 2,
+            "1054": 4,
+            "1124": 2,
+            "1123": 2,
+            "1019": 1,
+            "1162": 6,
+            "1130": 2
+          },
+          "trace_sha256": "167b0f62c235368fa88b628c6132bbe74a02b67a8818081483f0fe359325fa2a",
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b"
+        }
+      ],
+      "sources": {
+        "lab/irix-winterm/trace.c": "c17869ba507613506d2f9546809a5a6e0d718be27093aa93a32434cc9652658e",
+        "lab/irix-toolchest/fault.c": "de9b9b272675f5b0cf52e5d6ab03ba4241614e7c6bf4b1a123f48135084c80af",
+        "lab/irix-lp64/runner.c": "005bdf3fffce5fb8ca79073e92cc41431aa953550c41014183d5de986a104463",
+        "lab/irix-toolchest/session.c": "e183b4aefdfb428e01dc609230e87a7546a0b31e9d4b5e236503e0a8bb3b09f5",
+        "scripts/probe-irix-winterm-access.py": "84e02f3ecf8c3049e9fca19560889b894c0c932aa2bd96d9ff6891c575f387b8"
+      }
+    },
+    {
+      "directory": ".work/irix-winterm-access/runs/ordinary-zo1q35q9",
+      "mode": "ordinary",
+      "clean_shutdown": true,
+      "result_sha256": "c93c88fbbcd880d91b1d49a8c2372f57ea64e3444fe2d1bd1b0ee66fdd7c9fe7",
+      "controls": [
+        {
+          "phase": "before",
+          "entry_exit": 37,
+          "fault_pc": "0x40079c",
+          "guards_intact": true,
+          "window": "\nxwininfo: Window id: 0x20000c \"FaultControl\"\n\n  Absolute upper-left X:  0\n  Absolute upper-left Y:  0\n  Relative upper-left X:  0\n  Relative upper-left Y:  0\n  Width: 644\n  Height: 364\n  Depth: 24\n  Visual: 0x21\n  Visual Class: TrueColor\n  Border width: 1\n  Class: InputOutput\n  Colormap: 0x20 (installed)\n  Bit Gravity State: NorthWestGravity\n  Window Gravity State: NorthWestGravity\n  Backing Store State: NotUseful\n  Save Under State: no\n  Map State: IsViewable\n  Override Redirect State: no\n  Corners:  +0+0  --6+0  --6-114  +0-114\n  -geometry 80x24+0+0\n\n",
+          "stderr": ""
+        },
+        {
+          "phase": "after",
+          "entry_exit": 37,
+          "fault_pc": "0x40079c",
+          "guards_intact": true,
+          "window": "\nxwininfo: Window id: 0x20000c \"FaultControl\"\n\n  Absolute upper-left X:  0\n  Absolute upper-left Y:  0\n  Relative upper-left X:  0\n  Relative upper-left Y:  0\n  Width: 644\n  Height: 364\n  Depth: 24\n  Visual: 0x21\n  Visual Class: TrueColor\n  Border width: 1\n  Class: InputOutput\n  Colormap: 0x20 (installed)\n  Bit Gravity State: NorthWestGravity\n  Window Gravity State: NorthWestGravity\n  Backing Store State: NotUseful\n  Save Under State: no\n  Map State: IsViewable\n  Override Redirect State: no\n  Corners:  +0+0  --6+0  --6-114  +0-114\n  -geometry 80x24+0+0\n\n",
+          "stderr": ""
+        }
+      ],
+      "native_font_controls": [
+        {
+          "phase": "before",
+          "window": "\nxwininfo: Window id: 0x20000c \"FaultControl\"\n\n  Absolute upper-left X:  0\n  Absolute upper-left Y:  0\n  Relative upper-left X:  0\n  Relative upper-left Y:  0\n  Width: 644\n  Height: 364\n  Depth: 24\n  Visual: 0x21\n  Visual Class: TrueColor\n  Border width: 1\n  Class: InputOutput\n  Colormap: 0x20 (installed)\n  Bit Gravity State: NorthWestGravity\n  Window Gravity State: NorthWestGravity\n  Backing Store State: NotUseful\n  Save Under State: no\n  Map State: IsViewable\n  Override Redirect State: no\n  Corners:  +0+0  --6+0  --6-114  +0-114\n  -geometry 80x24+0+0\n\n",
+          "stderr": ""
+        },
+        {
+          "phase": "after",
+          "window": "\nxwininfo: Window id: 0x20000c \"FaultControl\"\n\n  Absolute upper-left X:  0\n  Absolute upper-left Y:  0\n  Relative upper-left X:  0\n  Relative upper-left Y:  0\n  Width: 644\n  Height: 364\n  Depth: 24\n  Visual: 0x21\n  Visual Class: TrueColor\n  Border width: 1\n  Class: InputOutput\n  Colormap: 0x20 (installed)\n  Bit Gravity State: NorthWestGravity\n  Window Gravity State: NorthWestGravity\n  Backing Store State: NotUseful\n  Save Under State: no\n  Map State: IsViewable\n  Override Redirect State: no\n  Corners:  +0+0  --6+0  --6-114  +0-114\n  -geometry 80x24+0+0\n\n",
+          "stderr": ""
+        }
+      ],
+      "cases": [
+        {
+          "name": "0-default",
+          "uid": 0,
+          "font": null,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 255,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "/emul/irix/usr/sbin/xwsh: Invalid argument: can't start command\n"
+          },
+          "window_children": 0,
+          "access": [
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/locale/C/XLC_LOCALE"
+              ],
+              "mode": 4,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "paths": [
+                "/emul/irix/tmp/xiri-home/.Xauthority",
+                "/tmp/xiri-home/.Xauthority"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/C/app-defaults/XWsh",
+                "/usr/lib/X11/C/app-defaults/XWsh"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/C/app-defaults/XWsh",
+                "/usr/lib/X11/C/app-defaults/XWsh"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/app-defaults/XWsh"
+              ],
+              "mode": 4,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "paths": [
+                "/emul/irix/tmp/xiri-home/.desktop-xiri-indy/schemes/Myers/BaseColorPalette",
+                "/tmp/xiri-home/.desktop-xiri-indy/schemes/Myers/BaseColorPalette"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/C/schemes/Myers/BaseColorPalette",
+                "/usr/lib/X11/C/schemes/Myers/BaseColorPalette"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/C/schemes/Myers/BaseColorPalette",
+                "/usr/lib/X11/C/schemes/Myers/BaseColorPalette"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/schemes/Myers/BaseColorPalette",
+                "/usr/lib/X11/schemes/Myers/BaseColorPalette"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/tmp/xiri-home/.desktop-xiri-indy/schemes/Base/BaseColorPalette",
+                "/tmp/xiri-home/.desktop-xiri-indy/schemes/Base/BaseColorPalette"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/C/schemes/Base/BaseColorPalette",
+                "/usr/lib/X11/C/schemes/Base/BaseColorPalette"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/C/schemes/Base/BaseColorPalette",
+                "/usr/lib/X11/C/schemes/Base/BaseColorPalette"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/schemes/Base/BaseColorPalette",
+                "/usr/lib/X11/schemes/Base/BaseColorPalette"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            }
+          ],
+          "resource_read_bytes": {
+            "/emul/irix/lib32/rld": 512,
+            "/emul/irix/usr/lib32/libX11.so.1": 512,
+            "/emul/irix/usr/lib32/libC.so.2": 512,
+            "/emul/irix/usr/lib32/libm.so": 512,
+            "/emul/irix/usr/lib32/libCsup.so": 512,
+            "/emul/irix/etc/passwd": 89,
+            "/emul/irix/usr/lib/X11/locale/locale.alias": 9024,
+            "/emul/irix/usr/lib/X11/locale/locale.dir": 4096,
+            "/emul/irix/usr/lib/X11/locale/C/XLC_LOCALE": 763,
+            "/emul/irix/usr/lib/X11/app-defaults/XWsh": 12699
+          },
+          "unsupported_syscalls": {
+            "1040": 5,
+            "1156": 1,
+            "1203": 2,
+            "1054": 4,
+            "1019": 2,
+            "1124": 2,
+            "1123": 2,
+            "1162": 6,
+            "1130": 2
+          },
+          "trace_sha256": "3a90b8ac6d0dc48ed92a875b258c505fd857134907e1a5e354cf98757d296081",
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b"
+        },
+        {
+          "name": "0-fixed",
+          "uid": 0,
+          "font": "fixed",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 255,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "/emul/irix/usr/sbin/xwsh: Invalid argument: can't start command\n"
+          },
+          "window_children": 0,
+          "access": [
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/locale/C/XLC_LOCALE"
+              ],
+              "mode": 4,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "paths": [
+                "/emul/irix/tmp/xiri-home/.Xauthority",
+                "/tmp/xiri-home/.Xauthority"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/C/app-defaults/XWsh",
+                "/usr/lib/X11/C/app-defaults/XWsh"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/C/app-defaults/XWsh",
+                "/usr/lib/X11/C/app-defaults/XWsh"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/app-defaults/XWsh"
+              ],
+              "mode": 4,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "paths": [
+                "/emul/irix/tmp/xiri-home/.desktop-xiri-indy/schemes/Myers/BaseColorPalette",
+                "/tmp/xiri-home/.desktop-xiri-indy/schemes/Myers/BaseColorPalette"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/C/schemes/Myers/BaseColorPalette",
+                "/usr/lib/X11/C/schemes/Myers/BaseColorPalette"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/C/schemes/Myers/BaseColorPalette",
+                "/usr/lib/X11/C/schemes/Myers/BaseColorPalette"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/schemes/Myers/BaseColorPalette",
+                "/usr/lib/X11/schemes/Myers/BaseColorPalette"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/tmp/xiri-home/.desktop-xiri-indy/schemes/Base/BaseColorPalette",
+                "/tmp/xiri-home/.desktop-xiri-indy/schemes/Base/BaseColorPalette"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/C/schemes/Base/BaseColorPalette",
+                "/usr/lib/X11/C/schemes/Base/BaseColorPalette"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/C/schemes/Base/BaseColorPalette",
+                "/usr/lib/X11/C/schemes/Base/BaseColorPalette"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/schemes/Base/BaseColorPalette",
+                "/usr/lib/X11/schemes/Base/BaseColorPalette"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            }
+          ],
+          "resource_read_bytes": {
+            "/emul/irix/lib32/rld": 512,
+            "/emul/irix/usr/lib32/libX11.so.1": 512,
+            "/emul/irix/usr/lib32/libC.so.2": 512,
+            "/emul/irix/usr/lib32/libm.so": 512,
+            "/emul/irix/usr/lib32/libCsup.so": 512,
+            "/emul/irix/etc/passwd": 89,
+            "/emul/irix/usr/lib/X11/locale/locale.alias": 9024,
+            "/emul/irix/usr/lib/X11/locale/locale.dir": 4096,
+            "/emul/irix/usr/lib/X11/locale/C/XLC_LOCALE": 763,
+            "/emul/irix/usr/lib/X11/app-defaults/XWsh": 12699
+          },
+          "unsupported_syscalls": {
+            "1040": 5,
+            "1156": 1,
+            "1203": 2,
+            "1054": 4,
+            "1019": 2,
+            "1124": 2,
+            "1123": 2,
+            "1162": 6,
+            "1130": 2
+          },
+          "trace_sha256": "0fd0e0d138011d2b56df7d26483ed24c8bed065c264661f861d01f59e22d66f7",
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b"
+        },
+        {
+          "name": "1234-default",
+          "uid": 1234,
+          "font": null,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 255,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "/emul/irix/usr/sbin/xwsh: Invalid argument: can't start command\n"
+          },
+          "window_children": 0,
+          "access": [
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/locale/C/XLC_LOCALE"
+              ],
+              "mode": 4,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "paths": [
+                "/emul/irix/tmp/xiri-home/.Xauthority",
+                "/tmp/xiri-home/.Xauthority"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/C/app-defaults/XWsh",
+                "/usr/lib/X11/C/app-defaults/XWsh"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/C/app-defaults/XWsh",
+                "/usr/lib/X11/C/app-defaults/XWsh"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/app-defaults/XWsh"
+              ],
+              "mode": 4,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "paths": [
+                "/emul/irix/tmp/xiri-home/.desktop-xiri-indy/schemes/Myers/BaseColorPalette",
+                "/tmp/xiri-home/.desktop-xiri-indy/schemes/Myers/BaseColorPalette"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/C/schemes/Myers/BaseColorPalette",
+                "/usr/lib/X11/C/schemes/Myers/BaseColorPalette"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/C/schemes/Myers/BaseColorPalette",
+                "/usr/lib/X11/C/schemes/Myers/BaseColorPalette"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/schemes/Myers/BaseColorPalette",
+                "/usr/lib/X11/schemes/Myers/BaseColorPalette"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/tmp/xiri-home/.desktop-xiri-indy/schemes/Base/BaseColorPalette",
+                "/tmp/xiri-home/.desktop-xiri-indy/schemes/Base/BaseColorPalette"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/C/schemes/Base/BaseColorPalette",
+                "/usr/lib/X11/C/schemes/Base/BaseColorPalette"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/C/schemes/Base/BaseColorPalette",
+                "/usr/lib/X11/C/schemes/Base/BaseColorPalette"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/schemes/Base/BaseColorPalette",
+                "/usr/lib/X11/schemes/Base/BaseColorPalette"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            }
+          ],
+          "resource_read_bytes": {
+            "/emul/irix/lib32/rld": 512,
+            "/emul/irix/usr/lib32/libX11.so.1": 512,
+            "/emul/irix/usr/lib32/libC.so.2": 512,
+            "/emul/irix/usr/lib32/libm.so": 512,
+            "/emul/irix/usr/lib32/libCsup.so": 512,
+            "/emul/irix/etc/passwd": 89,
+            "/emul/irix/usr/lib/X11/locale/locale.alias": 9024,
+            "/emul/irix/usr/lib/X11/locale/locale.dir": 4096,
+            "/emul/irix/usr/lib/X11/locale/C/XLC_LOCALE": 763,
+            "/emul/irix/usr/lib/X11/app-defaults/XWsh": 12699
+          },
+          "unsupported_syscalls": {
+            "1040": 5,
+            "1156": 1,
+            "1203": 2,
+            "1054": 4,
+            "1124": 2,
+            "1123": 2,
+            "1019": 1,
+            "1162": 6,
+            "1130": 2
+          },
+          "trace_sha256": "42499aa55c1a3b83b23428f2235912eaeb1b82247054c53e7c4b2e9723eea890",
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b"
+        },
+        {
+          "name": "1234-fixed",
+          "uid": 1234,
+          "font": "fixed",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 255,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "/emul/irix/usr/sbin/xwsh: Invalid argument: can't start command\n"
+          },
+          "window_children": 0,
+          "access": [
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/locale/C/XLC_LOCALE"
+              ],
+              "mode": 4,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "paths": [
+                "/emul/irix/tmp/xiri-home/.Xauthority",
+                "/tmp/xiri-home/.Xauthority"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/C/app-defaults/XWsh",
+                "/usr/lib/X11/C/app-defaults/XWsh"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/C/app-defaults/XWsh",
+                "/usr/lib/X11/C/app-defaults/XWsh"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/app-defaults/XWsh"
+              ],
+              "mode": 4,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "paths": [
+                "/emul/irix/tmp/xiri-home/.desktop-xiri-indy/schemes/Myers/BaseColorPalette",
+                "/tmp/xiri-home/.desktop-xiri-indy/schemes/Myers/BaseColorPalette"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/C/schemes/Myers/BaseColorPalette",
+                "/usr/lib/X11/C/schemes/Myers/BaseColorPalette"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/C/schemes/Myers/BaseColorPalette",
+                "/usr/lib/X11/C/schemes/Myers/BaseColorPalette"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/schemes/Myers/BaseColorPalette",
+                "/usr/lib/X11/schemes/Myers/BaseColorPalette"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/tmp/xiri-home/.desktop-xiri-indy/schemes/Base/BaseColorPalette",
+                "/tmp/xiri-home/.desktop-xiri-indy/schemes/Base/BaseColorPalette"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/C/schemes/Base/BaseColorPalette",
+                "/usr/lib/X11/C/schemes/Base/BaseColorPalette"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/C/schemes/Base/BaseColorPalette",
+                "/usr/lib/X11/C/schemes/Base/BaseColorPalette"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            },
+            {
+              "paths": [
+                "/emul/irix/usr/lib/X11/schemes/Base/BaseColorPalette",
+                "/usr/lib/X11/schemes/Base/BaseColorPalette"
+              ],
+              "mode": 4,
+              "v0": 2,
+              "a3": 1
+            }
+          ],
+          "resource_read_bytes": {
+            "/emul/irix/lib32/rld": 512,
+            "/emul/irix/usr/lib32/libX11.so.1": 512,
+            "/emul/irix/usr/lib32/libC.so.2": 512,
+            "/emul/irix/usr/lib32/libm.so": 512,
+            "/emul/irix/usr/lib32/libCsup.so": 512,
+            "/emul/irix/etc/passwd": 89,
+            "/emul/irix/usr/lib/X11/locale/locale.alias": 9024,
+            "/emul/irix/usr/lib/X11/locale/locale.dir": 4096,
+            "/emul/irix/usr/lib/X11/locale/C/XLC_LOCALE": 763,
+            "/emul/irix/usr/lib/X11/app-defaults/XWsh": 12699
+          },
+          "unsupported_syscalls": {
+            "1040": 5,
+            "1156": 1,
+            "1203": 2,
+            "1054": 4,
+            "1124": 2,
+            "1123": 2,
+            "1019": 1,
+            "1162": 6,
+            "1130": 2
+          },
+          "trace_sha256": "351d44cac44d93774dd2c2ce555fd03d9e6d4146b6883573b3e5cb59c3e3087c",
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b"
+        }
+      ],
+      "sources": {
+        "lab/irix-winterm/trace.c": "c17869ba507613506d2f9546809a5a6e0d718be27093aa93a32434cc9652658e",
+        "lab/irix-toolchest/fault.c": "de9b9b272675f5b0cf52e5d6ab03ba4241614e7c6bf4b1a123f48135084c80af",
+        "lab/irix-lp64/runner.c": "005bdf3fffce5fb8ca79073e92cc41431aa953550c41014183d5de986a104463",
+        "lab/irix-toolchest/session.c": "e183b4aefdfb428e01dc609230e87a7546a0b31e9d4b5e236503e0a8bb3b09f5",
+        "scripts/probe-irix-winterm-access.py": "84e02f3ecf8c3049e9fca19560889b894c0c932aa2bd96d9ff6891c575f387b8"
+      }
+    }
+  ],
+  "terminal_window_qualified": false,
+  "pty_open": {
+    "path": "/dev/ptc",
+    "path_evidence": "constant in the pinned original libc PT_LOAD, referenced by traced open argument",
+    "address": "0xfb488a8",
+    "flags": 6,
+    "irix_errno": 22
+  },
+  "next_priority": "Measure PTY allocation and terminal control; qualify native shell/input before 4Dwm evaluation",
+  "qualifier_sha256": "e05936ca2d39bd103ebcaef23bfe4c0e01a61064c5c8fd974cb4f6c375abae09"
+}

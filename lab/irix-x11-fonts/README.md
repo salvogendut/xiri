@@ -1,8 +1,10 @@
 # Original IRIX fonts and locale data
 
-Follow-up: the null-font fault and unsupported resource-access calls are now captured. Imported font availability alone does not resolve this client initialization path. See the [new result](../../docs/results/2026-10-31-irix-winterm-fault.md).
+Follow-up: [access support](../../docs/results/2026-10-31-irix-winterm-access.md) now permits locale/default reads and clears the xwsh null-font failure. The next boundary is PTY setup.
 
-Results: 22 original Screen fonts are indexed; the requested 15-pixel face renders in four native terminal controls. All 16 original xwsh attempts still receive SIGSEGV, even after locale data and synthetic account records are staged. See the [run record](../../docs/results/2026-10-31-irix-winterm-resources.md).
+Earlier diagnosis: the null-font fault and unsupported resource-access calls were captured. Imported font availability alone did not resolve this client initialization path. See the [fault capture](../../docs/results/2026-10-31-irix-winterm-fault.md).
+
+Initial results: 22 original Screen fonts were indexed; the requested 15-pixel face rendered in four native terminal controls. All 16 original xwsh attempts received SIGSEGV, even after locale data and synthetic account records were staged. See the [run record](../../docs/results/2026-10-31-irix-winterm-resources.md).
 
 This lab evaluates importing the original fonts requested by xwsh into the
 native X.org server. It follows the [winterm opening attempts](../irix-winterm/README.md),

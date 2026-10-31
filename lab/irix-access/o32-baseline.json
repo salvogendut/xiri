@@ -1,0 +1,44 @@
+{
+  "schema": 1,
+  "description": "IRIX access with native real-credential checks on o32",
+  "ident": "XIRI_IRIX_ACCESS_O32_20261031",
+  "source_revision": "0d031580e42d0cd2f1e1851254326366569dc178",
+  "source_branch": "xiri/irix-access",
+  "build_arch": "mipseb",
+  "page_bytes": 4096,
+  "boot_kernel_sha256": "1b562fe70de5a73cf076bee66664c2c9f0c33af85825b3a288c27e1411a92b07",
+  "native_kernel_sha256": "1b562fe70de5a73cf076bee66664c2c9f0c33af85825b3a288c27e1411a92b07",
+  "debug_kernel_sha256": "7cda786990e5b18ebb7ef01c7d5210968a30b64aa63cdcc8d1d3460d7183694a",
+  "native_o32_sha256": "c294fbb1f2110445be31c096481ea54ab561c7e59ca5b9fc7171310098d755d4",
+  "source_dirty": false,
+  "emulator_revision": "9df1df14334838a989253efefe26f0547e6da592",
+  "emulator_branch": "xiri/netbsd64-tlb",
+  "emulator_sha256": "1b3f7702ba7f43b5c4fca8ba8884243559f46371d8d67a36ce5e6fee1e595eba",
+  "ci_client_sha256": "8711321aa6eaae440da3c7920b00ae4cf1c7f2abbdb15a9919f58485500ffb6c",
+  "base_disk_sha256": "269038c7b77660c83d3835208fc0b2702c93110c14b3c55a42416f51672cee2a",
+  "nvram_sha256": "ee883474d52f09278287b2044f7aeca61d2e7bc39c0bb8fd85c983ab64063d15",
+  "config_sha256": "218f205ba3ddfd394c7e3b6087920fd46697102e4eb468a6cb0360caa120cf07",
+  "runtimes": [
+    {
+      "name": "vendor-o32-libc",
+      "path": "/usr/lib/libc.so.1",
+      "sha256": "ea766492103a193e9d404942705e4e28987545e37f699ede232b6c0f8c97c954"
+    },
+    {
+      "name": "vendor-o32-rld",
+      "path": "/lib/rld",
+      "sha256": "30228b54c1e5585b365514eb7c9895b03cc0f61cb898e05e3ddafece87863439"
+    },
+    {
+      "name": "vendor-n32-libc",
+      "path": "/lib32/libc.so.1",
+      "sha256": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e"
+    },
+    {
+      "name": "vendor-n32-rld",
+      "path": "/lib32/rld",
+      "sha256": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b"
+    }
+  ],
+  "config_path": "lab/irix-access/XIRI_IRIX_ACCESS_O32"
+}

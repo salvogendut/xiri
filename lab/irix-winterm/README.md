@@ -1,8 +1,10 @@
 # Original IRIX winterm / xwsh
 
-Follow-up: the startup fault is a null font object in tuFont::getWidth. Actual access calls for staged locale/defaults return ENOSYS. See the [new result](../../docs/results/2026-10-31-irix-winterm-fault.md).
+Latest: the [access follow-up](../../docs/results/2026-10-31-irix-winterm-access.md) clears the locale/font crash in eight starts. Original xwsh now reads its staged resources and reaches `/dev/ptc` opening. PTY allocation and native shell/input are next, followed by 4Dwm evaluation.
 
-Results: the 16 opening attempts are recorded; root xwsh reaches X then crashes, while the initial numerical uid lacks an account entry. Four native terminal controls pass. See the [run record](../../docs/results/2026-10-31-irix-winterm.md).
+Earlier diagnosis: the startup fault was a null font object in tuFont::getWidth, alongside unsupported access calls for staged locale/defaults. See the [fault capture](../../docs/results/2026-10-31-irix-winterm-fault.md).
+
+Initial results: 16 opening attempts were recorded; root xwsh reached X then crashed, while the initial numerical uid lacked an account entry. Four native terminal controls passed. See the [run record](../../docs/results/2026-10-31-irix-winterm.md).
 
 The supplied installation's `/usr/sbin/winterm` is a shell launcher, with
 `#!/bin/sh`; its default terminal command is `xwsh -name winterm`.
@@ -86,3 +88,9 @@ stopped font/locale seed, stages the imported fonts afresh, and captures the
 null-font crash with checked native ptrace controls. With `--lookups`, it also
 records actual access pathnames and seek arguments. See the
 [diagnosis and paired qualification](../../docs/results/2026-10-31-irix-winterm-fault.md).
+
+The new [observer](../../scripts/probe-irix-winterm-access.py) and
+[qualifier](../../scripts/qualify-irix-winterm-access.py) use the access kernel
+and the stopped CI font/locale seed. They preserve the historical fault runs,
+record normal exit as well as faults, and pin both native xterm font slots to
+the verified normal Screen face. See the new result for excluded controls.
