@@ -89,7 +89,8 @@ Vendor binaries, headers, media and raw traces remain private ignored inputs.
 
 The subsequent [getpeername lab](../irix-peername/README.md) qualifies the peer-address query and its connection-state/error ordering. Toolchest passes both address queries and next encounters hostname, descriptor-control and message-transfer requirements. This lab retains its historical boundary pins.
 
-Latest follow-up: the [legacy recvmsg checkpoint](../irix-recvmsg/README.md)
-retains this coverage and adds received-data, fault-consumption and header-output
-comparisons. Its [results](../../docs/results/2026-10-31-irix-recvmsg.md) record
-the current Toolchest boundary; this lab keeps its historical kernel and expectations.
+The [legacy recvmsg checkpoint](../irix-recvmsg/README.md) retains this coverage
+and adds received-data, fault-consumption and header-output comparisons. The
+latest [Toolchest session diagnosis](../irix-toolchest/README.md) identifies its
+later empty-environment crash and the remaining select/xstat boundaries, using
+that unchanged kernel. This lab keeps its historical kernel and expectations.

@@ -1,5 +1,7 @@
 # IRIX legacy recvmsg — 2026-10-31
 
+Follow-up: the [Toolchest session diagnosis](2026-10-31-irix-toolchest-session.md) identifies the later SIGSEGV as an empty-environment `HOME` null dereference. Supplying `HOME` exposes unsupported `select` and configuration `xstat` calls. The historical observations below are preserved.
+
 Legacy `recvmsg` now works for the measured short TCP subset. Unmodified
 Toolchest receives a 32-byte X reply instead of terminating at ENOSYS, then
 advances through later X reads and resource lookups before SIGSEGV. Its last

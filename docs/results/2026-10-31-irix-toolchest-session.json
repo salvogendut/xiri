@@ -1,0 +1,1449 @@
+{
+  "schema": 1,
+  "description": "Toolchest HOME fault diagnosis and staged session/resource observations",
+  "status": "diagnosed",
+  "kernel_changed": false,
+  "emulator_changed": false,
+  "window_or_event_loop_qualified": false,
+  "baseline": {
+    "path": "lab/irix-recvmsg/baseline.json",
+    "sha256": "0a56999425edc6f3f554116acd0f15a5e2e607cdcb46efd002209a9ad33fb6a9"
+  },
+  "environment": {
+    "HOME": "/tmp/xiri-home"
+  },
+  "input_metadata_hashes": {
+    "lab/indy-netbsd/iris.toml": "a45c865fb7f13ef47a51faf2ae9cc04338df712aaeaefb05a1f4a656aa9d7f7a",
+    "lab/irix-desktop/manifest.json": "570be25c601692dcb96516cdc4ef5cd3ef416bab5f1a6046ce116dddcb23944b",
+    "lab/irix-reference/manifest.json": "79b464ad3856eca2d034f418445860b3d262437f0347ccadedc67e60c8330521"
+  },
+  "diagnosis": {
+    "signal": 11,
+    "si_code": 1,
+    "fault_address": "0x00000000",
+    "pc": "0x0fa4fe64",
+    "symbol": "strcpy+4",
+    "a0": "0x7fff7570",
+    "a1": "0x00000000",
+    "ra": "0x1000fd88",
+    "gp": "0x10022050",
+    "caller": "ProcessConfigFile",
+    "home_helper_pc": "0x10010220",
+    "home_string": "0x1001a6d7",
+    "getenv_got": "0x1001a290",
+    "getenv_entry": "0x0fa50034",
+    "strcpy_got": "0x1001a26c",
+    "strcpy_entry": "0x0fa4fe60",
+    "configuration_path_address": "0x10019348",
+    "configuration_path": "/usr/lib/X11/system.chestrc",
+    "cause": "The empty launcher environment makes getenv(HOME) return NULL, passed unchecked to strcpy.",
+    "initial_control": "Same traced executable/libraries/kernel/priority with only HOME=/root exits 1 with configuration error instead of fault."
+  },
+  "boundaries": [
+    {
+      "syscall": 1100,
+      "name": "select",
+      "error": 89,
+      "effect": "Timing-dependent XIO before later startup"
+    },
+    {
+      "syscall": 1158,
+      "name": "xstat",
+      "version": 2,
+      "error": 89,
+      "effect": "Configuration check fails even with supplied resources"
+    }
+  ],
+  "private_diagnostic_evidence": {
+    ".work/irix-toolchest-fault/explore-3xskfemn/serial.log": "29a5a9f264e4da259ee8bf3671a87788c36cfd0b378625ada21d60c3661109b3",
+    ".work/irix-toolchest-fault/explore-b16t8_0z/serial.log": "d375d71ae5d7ed895aa9e67bdc6ef052d6fd9d4d1d06ba8203bc6a4cdf581d90",
+    ".work/irix-toolchest-fault/caller-disassembly.txt": "0bc93302f6d5135a5811be4d6472c8a74af02c041b86870c25e3c75c318be155",
+    ".work/irix-toolchest-fault/home-disassembly.txt": "6c5e54b2ac8b2eabaefa899b348a7ba3f0c8b27c7150c660acc67f7b3bf9af9a"
+  },
+  "runs": [
+    {
+      "mode": "ci",
+      "seed": ".work/irix-recvmsg/runs/lp64-ci-nw5d95pw",
+      "seed_result_sha256": "33fc123d19affb386800ebc9dfea3943f5f070d484f81343ec0d387aa13639f8",
+      "seed_disk_sha256": "576aad923d64e4a3be7b5c66bdc5507ac1f6f3925d9b67d973b777560e34c12a",
+      "resources": {
+        "/usr/lib/X11/system.chestrc": "3a2001177e8871583461fe9d2588751a61a47f4b04632fdc137cd533e0c66f4c",
+        "/usr/lib/X11/app-defaults/Toolchest": "164ebd51ac751ceda84d028072d00fa6605ac877a4a96d0cc996242219c6f07a",
+        "/usr/lib/X11/locale/locale.alias": "831f9af12a06910a42b10e9dfea57f95045d347c59c19cc638bd0d6ae8cac447",
+        "/usr/lib/X11/locale/locale.dir": "cbfca8202f48161a261f9f46a9a81db3206274ee41eb7c0aa2b3cf41931b4a14"
+      },
+      "sources": {
+        "lab/irix-toolchest/trace.c": "3e48930b2092fa927eecf8cb7e00e595feb4677e5cef45676cc7207d94c40bd5",
+        "lab/irix-toolchest/fault.c": "de9b9b272675f5b0cf52e5d6ab03ba4241614e7c6bf4b1a123f48135084c80af",
+        "lab/irix-toolchest/session.c": "e183b4aefdfb428e01dc609230e87a7546a0b31e9d4b5e236503e0a8bb3b09f5",
+        "lab/irix-lp64/runner.c": "005bdf3fffce5fb8ca79073e92cc41431aa953550c41014183d5de986a104463",
+        "scripts/probe-irix-toolchest.py": "fe28771cf8614ab259cab4cb71f4e3bfb701ae6003562cd19f18fb4f48ad1d2b",
+        "scripts/probe-netbsd.py": "adfa9547fa98af28fd55e4e155e7667b2b0a8c7cea8aee8d58079da946b72a1d",
+        "scripts/probe-irix-runtime.py": "89b946e035ecf0525b3c08cdc80ca0b77d8db6aa90fd60cf410ddc7eb3a4d553",
+        "scripts/probe-irix-tcp.py": "05f4b482684045a34a40538af6242567e51c2d874c7ecf9bc3a1d010c0b593ff"
+      },
+      "native_trace_controls": {
+        "entry_pc": "0x00400090",
+        "fault_pc": "0x40079c",
+        "guard_intact": true
+      },
+      "native_x11_before": true,
+      "native_x11_after": true,
+      "clean_shutdown": true,
+      "config_sha256": "22ccd3333e84b1be286e458ff2340340efe606fe2ba2d5b20a5eb23b7c4bb911",
+      "iso_sha256": "9bf96ebdb46965e420200d052186a9f0785b4f2ee556370813764e5a00c0d261",
+      "ptrace_capture_sha256": "411bb9024de4b798e28fe8e46f2a90df51fe44f232b9707728b1dbefbaba3027",
+      "result_path": ".work/irix-toolchest/runs/ci-4x_jufat/result.json",
+      "result_sha256": "d49291d90697e047b1d8bb656754a2e0a66a6efe3699f238d68a99f09e1ffca0",
+      "serial_sha256": "cffa8fcba030a90cfc1b0a2af8a7e9a0442b06576b21895b8202d2152908103f",
+      "cases": [
+        {
+          "name": "before-native-o32-0",
+          "uid": 0,
+          "nice": 0,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          },
+          "boundary": "control-passed"
+        },
+        {
+          "name": "before-vendor-asa-0",
+          "uid": 0,
+          "nice": 0,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_O32\n",
+            "stderr": ""
+          },
+          "boundary": "control-passed"
+        },
+        {
+          "name": "before-vendor-echo-0",
+          "uid": 0,
+          "nice": 0,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_N32\n",
+            "stderr": ""
+          },
+          "boundary": "control-passed"
+        },
+        {
+          "name": "before-native-o32-1234",
+          "uid": 1234,
+          "nice": 0,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          },
+          "boundary": "control-passed"
+        },
+        {
+          "name": "before-vendor-asa-1234",
+          "uid": 1234,
+          "nice": 0,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_O32\n",
+            "stderr": ""
+          },
+          "boundary": "control-passed"
+        },
+        {
+          "name": "before-vendor-echo-1234",
+          "uid": 1234,
+          "nice": 0,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_N32\n",
+            "stderr": ""
+          },
+          "boundary": "control-passed"
+        },
+        {
+          "name": "environment",
+          "uid": 0,
+          "nice": 0,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "HOME=/tmp/xiri-home\n",
+            "stderr": ""
+          },
+          "boundary": "control-passed"
+        },
+        {
+          "name": "library-only-empty.env-0",
+          "uid": 0,
+          "nice": 20,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "XIO:  fatal IO error 89 (Function not implemented) on X server \"127.0.0.1:98.0\"\r\n      after 21 requests (20 known processed) with 0 events remaining.\r\n"
+          },
+          "boundary": "select XIO",
+          "selected_trace": {
+            "calls": [
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0xfb59ac4 a2=0x7fff7290 a3=0x1",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0xfb48b98 a2=0x7fff6870 a3=0x800",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0xfb48b98 a2=0x7fff6870 a3=0x800",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0xfb48b98 a2=0x7fff6860 a3=0x800",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0xfb48b98 a2=0x7fff6440 a3=0x800",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0xfb48b98 a2=0x7fff6440 a3=0x800",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0xfb48b98 a2=0x7fff63b0 a3=0x800",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10022928 a2=0x7fff66e0 a3=0x18",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10022d30 a2=0x7fff66e0 a3=0x18",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10022928 a2=0x7fff66e0 a3=0x20",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10022d30 a2=0x7fff66e0 a3=0x28",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10022d30 a2=0x7fff6be0 a3=0x10",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0xfb48b98 a2=0x7fff64f0 a3=0x1000",
+              "syscall=1100 pc=0xfa519b4 a0=0x4 a1=0x7fff5a28 a2=0 a3=0",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x7fff54c0 a2=0x7fff58c0 a3=0x63",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x7fff54c0 a2=0x7fff58c0 a3=0x63",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x7fff54c0 a2=0x7fff58c0 a3=0x63"
+            ],
+            "returns": [
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1100 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1"
+            ]
+          }
+        },
+        {
+          "name": "library-only-empty.env-1",
+          "uid": 0,
+          "nice": 20,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": -1,
+            "signal": 11,
+            "killed": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "boundary": "null-HOME SIGSEGV",
+          "selected_trace": {
+            "calls": [
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0xfb59ac4 a2=0x7fff7290 a3=0x1",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0xfb48b98 a2=0x7fff6870 a3=0x800",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0xfb48b98 a2=0x7fff6870 a3=0x800",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0xfb48b98 a2=0x7fff6860 a3=0x800",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0xfb48b98 a2=0x7fff6440 a3=0x800",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0xfb48b98 a2=0x7fff6440 a3=0x800",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0xfb48b98 a2=0x7fff63b0 a3=0x800",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10022928 a2=0x7fff66e0 a3=0x18",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10022d30 a2=0x7fff66e0 a3=0x18",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10022928 a2=0x7fff66e0 a3=0x20",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10022d30 a2=0x7fff66e0 a3=0x28",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10022d30 a2=0x7fff6be0 a3=0x10"
+            ],
+            "returns": [
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1"
+            ]
+          }
+        },
+        {
+          "name": "library-only-empty.env-2",
+          "uid": 0,
+          "nice": 20,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": -1,
+            "signal": 11,
+            "killed": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "boundary": "null-HOME SIGSEGV",
+          "selected_trace": {
+            "calls": [
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0xfb59ac4 a2=0x7fff7290 a3=0x1",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0xfb48b98 a2=0x7fff6870 a3=0x800",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0xfb48b98 a2=0x7fff6870 a3=0x800",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0xfb48b98 a2=0x7fff6860 a3=0x800",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0xfb48b98 a2=0x7fff6440 a3=0x800",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0xfb48b98 a2=0x7fff6440 a3=0x800",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0xfb48b98 a2=0x7fff63b0 a3=0x800",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10022e30 a2=0x7fff66e0 a3=0x18",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10025168 a2=0x7fff66e0 a3=0x18",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10022e30 a2=0x7fff66e0 a3=0x20",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10025168 a2=0x7fff66e0 a3=0x28",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10025168 a2=0x7fff6be0 a3=0x10"
+            ],
+            "returns": [
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1"
+            ]
+          }
+        },
+        {
+          "name": "library-only-home.env-0",
+          "uid": 0,
+          "nice": 20,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "./vendor-toolchest: Cannot open configuration file /usr/lib/X11/system.chestrc\n"
+          },
+          "boundary": "xstat configuration check",
+          "selected_trace": {
+            "calls": [
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0xfb59ac4 a2=0x7fff7270 a3=0x1",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10022e30 a2=0x7fff6670 a3=0x18",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10025168 a2=0x7fff6bc0 a3=0x10",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x7fff7550 a2=0x7fff7490 a3=0x7fff755f",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x7fff7550 a2=0x7fff7490 a3=0x7fff755b",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x7fff7550 a2=0x7fff7490 a3=0x7fff755b",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10019348 a2=0x7fff7490 a3=0x1"
+            ],
+            "returns": [
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1"
+            ]
+          }
+        },
+        {
+          "name": "library-only-home.env-1",
+          "uid": 0,
+          "nice": 20,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "./vendor-toolchest: Cannot open configuration file /usr/lib/X11/system.chestrc\n"
+          },
+          "boundary": "xstat configuration check",
+          "selected_trace": {
+            "calls": [
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0xfb59ac4 a2=0x7fff7270 a3=0x1",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10022e30 a2=0x7fff6670 a3=0x18",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10025168 a2=0x7fff6bc0 a3=0x10",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x7fff7550 a2=0x7fff7490 a3=0x7fff755f",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x7fff7550 a2=0x7fff7490 a3=0x7fff755b",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x7fff7550 a2=0x7fff7490 a3=0x7fff755b",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10019348 a2=0x7fff7490 a3=0x1"
+            ],
+            "returns": [
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1"
+            ]
+          }
+        },
+        {
+          "name": "library-only-home.env-2",
+          "uid": 0,
+          "nice": 20,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "./vendor-toolchest: Cannot open configuration file /usr/lib/X11/system.chestrc\n"
+          },
+          "boundary": "xstat configuration check",
+          "selected_trace": {
+            "calls": [
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0xfb59ac4 a2=0x7fff7270 a3=0x1",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10022e30 a2=0x7fff6670 a3=0x18",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10025168 a2=0x7fff6bc0 a3=0x10",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x7fff7550 a2=0x7fff7490 a3=0x7fff755f",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x7fff7550 a2=0x7fff7490 a3=0x7fff755b",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x7fff7550 a2=0x7fff7490 a3=0x7fff755b",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10019348 a2=0x7fff7490 a3=0x1"
+            ],
+            "returns": [
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1"
+            ]
+          }
+        },
+        {
+          "name": "menu-0",
+          "uid": 0,
+          "nice": 20,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "./vendor-toolchest: Cannot open configuration file /usr/lib/X11/system.chestrc\n"
+          },
+          "boundary": "xstat configuration check",
+          "selected_trace": {
+            "calls": [
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0xfb59ac4 a2=0x7fff7270 a3=0x1",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10022e30 a2=0x7fff6670 a3=0x18",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10025168 a2=0x7fff6bc0 a3=0x10",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x7fff7550 a2=0x7fff7490 a3=0x7fff755f",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x7fff7550 a2=0x7fff7490 a3=0x7fff755b",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x7fff7550 a2=0x7fff7490 a3=0x7fff755b",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10019348 a2=0x7fff7490 a3=0x1"
+            ],
+            "returns": [
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1"
+            ]
+          }
+        },
+        {
+          "name": "menu-1234",
+          "uid": 1234,
+          "nice": 20,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "./vendor-toolchest: Cannot open configuration file /usr/lib/X11/system.chestrc\n"
+          },
+          "boundary": "xstat configuration check",
+          "selected_trace": {
+            "calls": [
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0xfb59ac4 a2=0x7fff7270 a3=0x1",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10022e30 a2=0x7fff6670 a3=0x18",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10025168 a2=0x7fff6bc0 a3=0x10",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x7fff7550 a2=0x7fff7490 a3=0x7fff755f",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x7fff7550 a2=0x7fff7490 a3=0x7fff755b",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x7fff7550 a2=0x7fff7490 a3=0x7fff755b",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10019348 a2=0x7fff7490 a3=0x1"
+            ],
+            "returns": [
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1"
+            ]
+          }
+        },
+        {
+          "name": "resources-0",
+          "uid": 0,
+          "nice": 20,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "./vendor-toolchest: Cannot open configuration file /usr/lib/X11/system.chestrc\n"
+          },
+          "boundary": "xstat configuration check",
+          "selected_trace": {
+            "calls": [
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0xfb59ac4 a2=0x7fff7270 a3=0x1",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10022e30 a2=0x7fff6670 a3=0x18",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10025168 a2=0x7fff6bc0 a3=0x10",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x7fff7550 a2=0x7fff7490 a3=0x7fff755f",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x7fff7550 a2=0x7fff7490 a3=0x7fff755b",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x7fff7550 a2=0x7fff7490 a3=0x7fff755b",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10019348 a2=0x7fff7490 a3=0x1"
+            ],
+            "returns": [
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1"
+            ]
+          }
+        },
+        {
+          "name": "resources-1234",
+          "uid": 1234,
+          "nice": 20,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "./vendor-toolchest: Cannot open configuration file /usr/lib/X11/system.chestrc\n"
+          },
+          "boundary": "xstat configuration check",
+          "selected_trace": {
+            "calls": [
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0xfb59ac4 a2=0x7fff7270 a3=0x1",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10022e30 a2=0x7fff6670 a3=0x18",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10025168 a2=0x7fff6bc0 a3=0x10",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x7fff7550 a2=0x7fff7490 a3=0x7fff755f",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x7fff7550 a2=0x7fff7490 a3=0x7fff755b",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x7fff7550 a2=0x7fff7490 a3=0x7fff755b",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10019348 a2=0x7fff7490 a3=0x1"
+            ],
+            "returns": [
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1"
+            ]
+          }
+        },
+        {
+          "name": "resources-normal-priority",
+          "uid": 0,
+          "nice": 0,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "./vendor-toolchest: Cannot open configuration file /usr/lib/X11/system.chestrc\n"
+          },
+          "boundary": "xstat configuration check",
+          "selected_trace": {
+            "calls": [
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0xfb59ac4 a2=0x7fff7270 a3=0x1",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10022e30 a2=0x7fff6670 a3=0x18",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10025168 a2=0x7fff6bc0 a3=0x10",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x7fff7550 a2=0x7fff7490 a3=0x7fff755f",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x7fff7550 a2=0x7fff7490 a3=0x7fff755b",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x7fff7550 a2=0x7fff7490 a3=0x7fff755b",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10019348 a2=0x7fff7490 a3=0x1"
+            ],
+            "returns": [
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1"
+            ]
+          }
+        },
+        {
+          "name": "after-native-o32-0",
+          "uid": 0,
+          "nice": 0,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          },
+          "boundary": "control-passed"
+        },
+        {
+          "name": "after-vendor-asa-0",
+          "uid": 0,
+          "nice": 0,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_O32\n",
+            "stderr": ""
+          },
+          "boundary": "control-passed"
+        },
+        {
+          "name": "after-vendor-echo-0",
+          "uid": 0,
+          "nice": 0,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_N32\n",
+            "stderr": ""
+          },
+          "boundary": "control-passed"
+        },
+        {
+          "name": "after-native-o32-1234",
+          "uid": 1234,
+          "nice": 0,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          },
+          "boundary": "control-passed"
+        },
+        {
+          "name": "after-vendor-asa-1234",
+          "uid": 1234,
+          "nice": 0,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_O32\n",
+            "stderr": ""
+          },
+          "boundary": "control-passed"
+        },
+        {
+          "name": "after-vendor-echo-1234",
+          "uid": 1234,
+          "nice": 0,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_N32\n",
+            "stderr": ""
+          },
+          "boundary": "control-passed"
+        }
+      ],
+      "ptrace_stops": [
+        "STOP phase=exec signal=5 code=3 address=00000000 pc=000000000faf15f8",
+        "STOP phase=fault signal=11 code=1 address=00000000 pc=000000000fa4fe64"
+      ],
+      "fault_registers": {
+        "a0": "0x7fff7570",
+        "a1": "0x0",
+        "gp": "0x10022050",
+        "sp": "0x7fff7570",
+        "ra": "0x1000fd88",
+        "pc": "0xfa4fe64"
+      },
+      "counts": {
+        "control-passed": 13,
+        "null-HOME SIGSEGV": 2,
+        "select XIO": 1,
+        "xstat configuration check": 8
+      }
+    },
+    {
+      "mode": "ordinary",
+      "seed": ".work/irix-recvmsg/runs/lp64-ci-nw5d95pw",
+      "seed_result_sha256": "33fc123d19affb386800ebc9dfea3943f5f070d484f81343ec0d387aa13639f8",
+      "seed_disk_sha256": "576aad923d64e4a3be7b5c66bdc5507ac1f6f3925d9b67d973b777560e34c12a",
+      "resources": {
+        "/usr/lib/X11/system.chestrc": "3a2001177e8871583461fe9d2588751a61a47f4b04632fdc137cd533e0c66f4c",
+        "/usr/lib/X11/app-defaults/Toolchest": "164ebd51ac751ceda84d028072d00fa6605ac877a4a96d0cc996242219c6f07a",
+        "/usr/lib/X11/locale/locale.alias": "831f9af12a06910a42b10e9dfea57f95045d347c59c19cc638bd0d6ae8cac447",
+        "/usr/lib/X11/locale/locale.dir": "cbfca8202f48161a261f9f46a9a81db3206274ee41eb7c0aa2b3cf41931b4a14"
+      },
+      "sources": {
+        "lab/irix-toolchest/trace.c": "3e48930b2092fa927eecf8cb7e00e595feb4677e5cef45676cc7207d94c40bd5",
+        "lab/irix-toolchest/fault.c": "de9b9b272675f5b0cf52e5d6ab03ba4241614e7c6bf4b1a123f48135084c80af",
+        "lab/irix-toolchest/session.c": "e183b4aefdfb428e01dc609230e87a7546a0b31e9d4b5e236503e0a8bb3b09f5",
+        "lab/irix-lp64/runner.c": "005bdf3fffce5fb8ca79073e92cc41431aa953550c41014183d5de986a104463",
+        "scripts/probe-irix-toolchest.py": "fe28771cf8614ab259cab4cb71f4e3bfb701ae6003562cd19f18fb4f48ad1d2b",
+        "scripts/probe-netbsd.py": "adfa9547fa98af28fd55e4e155e7667b2b0a8c7cea8aee8d58079da946b72a1d",
+        "scripts/probe-irix-runtime.py": "89b946e035ecf0525b3c08cdc80ca0b77d8db6aa90fd60cf410ddc7eb3a4d553",
+        "scripts/probe-irix-tcp.py": "05f4b482684045a34a40538af6242567e51c2d874c7ecf9bc3a1d010c0b593ff"
+      },
+      "native_trace_controls": {
+        "entry_pc": "0x00400090",
+        "fault_pc": "0x40079c",
+        "guard_intact": true
+      },
+      "native_x11_before": true,
+      "native_x11_after": true,
+      "clean_shutdown": true,
+      "config_sha256": "af47bc6117898cc49b5da687c68427fb6bf2d9b3bfc1feed98b2440887789a37",
+      "iso_sha256": "1945e8147da5755ae4ba80183facce4c03233930f5dfb361c0ef0f9b3154483f",
+      "ptrace_capture_sha256": "f7b53ecff0f2750ee223f7a5fb6b17787efaf42ce3c567bffcb060cadfd2cbd0",
+      "result_path": ".work/irix-toolchest/runs/ordinary-rrbcxy97/result.json",
+      "result_sha256": "8cf9829a8f95d0852c323903624443e43ab75aa0565bb12358e53cfd92b146d3",
+      "serial_sha256": "14cab2c4c54cef82a95f7f0a471397db8f4d5a17c93c5cdafa65c89fc2c1efb7",
+      "cases": [
+        {
+          "name": "before-native-o32-0",
+          "uid": 0,
+          "nice": 0,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          },
+          "boundary": "control-passed"
+        },
+        {
+          "name": "before-vendor-asa-0",
+          "uid": 0,
+          "nice": 0,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_O32\n",
+            "stderr": ""
+          },
+          "boundary": "control-passed"
+        },
+        {
+          "name": "before-vendor-echo-0",
+          "uid": 0,
+          "nice": 0,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_N32\n",
+            "stderr": ""
+          },
+          "boundary": "control-passed"
+        },
+        {
+          "name": "before-native-o32-1234",
+          "uid": 1234,
+          "nice": 0,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          },
+          "boundary": "control-passed"
+        },
+        {
+          "name": "before-vendor-asa-1234",
+          "uid": 1234,
+          "nice": 0,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_O32\n",
+            "stderr": ""
+          },
+          "boundary": "control-passed"
+        },
+        {
+          "name": "before-vendor-echo-1234",
+          "uid": 1234,
+          "nice": 0,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_N32\n",
+            "stderr": ""
+          },
+          "boundary": "control-passed"
+        },
+        {
+          "name": "environment",
+          "uid": 0,
+          "nice": 0,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "HOME=/tmp/xiri-home\n",
+            "stderr": ""
+          },
+          "boundary": "control-passed"
+        },
+        {
+          "name": "library-only-empty.env-0",
+          "uid": 0,
+          "nice": 20,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "XIO:  fatal IO error 89 (Function not implemented) on X server \"127.0.0.1:98.0\"\r\n      after 21 requests (20 known processed) with 0 events remaining.\r\n"
+          },
+          "boundary": "select XIO",
+          "selected_trace": {
+            "calls": [
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0xfb59ac4 a2=0x7fff7290 a3=0x1",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0xfb48b98 a2=0x7fff6870 a3=0x800",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0xfb48b98 a2=0x7fff6870 a3=0x800",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0xfb48b98 a2=0x7fff6860 a3=0x800",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0xfb48b98 a2=0x7fff6440 a3=0x800",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0xfb48b98 a2=0x7fff6440 a3=0x800",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0xfb48b98 a2=0x7fff63b0 a3=0x800",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10022928 a2=0x7fff66e0 a3=0x18",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10022d30 a2=0x7fff66e0 a3=0x18",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10022928 a2=0x7fff66e0 a3=0x20",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10022d30 a2=0x7fff66e0 a3=0x28",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10022d30 a2=0x7fff6be0 a3=0x10",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0xfb48b98 a2=0x7fff64f0 a3=0x1000",
+              "syscall=1100 pc=0xfa519b4 a0=0x4 a1=0x7fff5a28 a2=0 a3=0",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x7fff54c0 a2=0x7fff58c0 a3=0x63",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x7fff54c0 a2=0x7fff58c0 a3=0x63",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x7fff54c0 a2=0x7fff58c0 a3=0x63"
+            ],
+            "returns": [
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1100 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1"
+            ]
+          }
+        },
+        {
+          "name": "library-only-empty.env-1",
+          "uid": 0,
+          "nice": 20,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": -1,
+            "signal": 11,
+            "killed": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "boundary": "null-HOME SIGSEGV",
+          "selected_trace": {
+            "calls": [
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0xfb59ac4 a2=0x7fff7290 a3=0x1",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0xfb48b98 a2=0x7fff6870 a3=0x800",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0xfb48b98 a2=0x7fff6870 a3=0x800",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0xfb48b98 a2=0x7fff6860 a3=0x800",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0xfb48b98 a2=0x7fff6440 a3=0x800",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0xfb48b98 a2=0x7fff6440 a3=0x800",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0xfb48b98 a2=0x7fff63b0 a3=0x800",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10022928 a2=0x7fff66e0 a3=0x18",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10022d30 a2=0x7fff66e0 a3=0x18",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10022928 a2=0x7fff66e0 a3=0x20",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10022d30 a2=0x7fff66e0 a3=0x28",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10022d30 a2=0x7fff6be0 a3=0x10"
+            ],
+            "returns": [
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1"
+            ]
+          }
+        },
+        {
+          "name": "library-only-empty.env-2",
+          "uid": 0,
+          "nice": 20,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": -1,
+            "signal": 11,
+            "killed": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "boundary": "null-HOME SIGSEGV",
+          "selected_trace": {
+            "calls": [
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0xfb59ac4 a2=0x7fff7290 a3=0x1",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0xfb48b98 a2=0x7fff6870 a3=0x800",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0xfb48b98 a2=0x7fff6870 a3=0x800",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0xfb48b98 a2=0x7fff6860 a3=0x800",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0xfb48b98 a2=0x7fff6440 a3=0x800",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0xfb48b98 a2=0x7fff6440 a3=0x800",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0xfb48b98 a2=0x7fff63b0 a3=0x800",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10022e30 a2=0x7fff66e0 a3=0x18",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10025168 a2=0x7fff66e0 a3=0x18",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10022e30 a2=0x7fff66e0 a3=0x20",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10025168 a2=0x7fff66e0 a3=0x28",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10025168 a2=0x7fff6be0 a3=0x10"
+            ],
+            "returns": [
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1"
+            ]
+          }
+        },
+        {
+          "name": "library-only-home.env-0",
+          "uid": 0,
+          "nice": 20,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "./vendor-toolchest: Cannot open configuration file /usr/lib/X11/system.chestrc\n"
+          },
+          "boundary": "xstat configuration check",
+          "selected_trace": {
+            "calls": [
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0xfb59ac4 a2=0x7fff7270 a3=0x1",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10022e30 a2=0x7fff6670 a3=0x18",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10025168 a2=0x7fff6bc0 a3=0x10",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x7fff7550 a2=0x7fff7490 a3=0x7fff755f",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x7fff7550 a2=0x7fff7490 a3=0x7fff755b",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x7fff7550 a2=0x7fff7490 a3=0x7fff755b",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10019348 a2=0x7fff7490 a3=0x1"
+            ],
+            "returns": [
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1"
+            ]
+          }
+        },
+        {
+          "name": "library-only-home.env-1",
+          "uid": 0,
+          "nice": 20,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "./vendor-toolchest: Cannot open configuration file /usr/lib/X11/system.chestrc\n"
+          },
+          "boundary": "xstat configuration check",
+          "selected_trace": {
+            "calls": [
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0xfb59ac4 a2=0x7fff7270 a3=0x1",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10022e30 a2=0x7fff6670 a3=0x18",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10025168 a2=0x7fff6bc0 a3=0x10",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x7fff7550 a2=0x7fff7490 a3=0x7fff755f",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x7fff7550 a2=0x7fff7490 a3=0x7fff755b",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x7fff7550 a2=0x7fff7490 a3=0x7fff755b",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10019348 a2=0x7fff7490 a3=0x1"
+            ],
+            "returns": [
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1"
+            ]
+          }
+        },
+        {
+          "name": "library-only-home.env-2",
+          "uid": 0,
+          "nice": 20,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "./vendor-toolchest: Cannot open configuration file /usr/lib/X11/system.chestrc\n"
+          },
+          "boundary": "xstat configuration check",
+          "selected_trace": {
+            "calls": [
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0xfb59ac4 a2=0x7fff7270 a3=0x1",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10022e30 a2=0x7fff6670 a3=0x18",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10025168 a2=0x7fff6bc0 a3=0x10",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x7fff7550 a2=0x7fff7490 a3=0x7fff755f",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x7fff7550 a2=0x7fff7490 a3=0x7fff755b",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x7fff7550 a2=0x7fff7490 a3=0x7fff755b",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10019348 a2=0x7fff7490 a3=0x1"
+            ],
+            "returns": [
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1"
+            ]
+          }
+        },
+        {
+          "name": "menu-0",
+          "uid": 0,
+          "nice": 20,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "./vendor-toolchest: Cannot open configuration file /usr/lib/X11/system.chestrc\n"
+          },
+          "boundary": "xstat configuration check",
+          "selected_trace": {
+            "calls": [
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0xfb59ac4 a2=0x7fff7270 a3=0x1",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10022e30 a2=0x7fff6670 a3=0x18",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10025168 a2=0x7fff6bc0 a3=0x10",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x7fff7550 a2=0x7fff7490 a3=0x7fff755f",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x7fff7550 a2=0x7fff7490 a3=0x7fff755b",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x7fff7550 a2=0x7fff7490 a3=0x7fff755b",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10019348 a2=0x7fff7490 a3=0x1"
+            ],
+            "returns": [
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1"
+            ]
+          }
+        },
+        {
+          "name": "menu-1234",
+          "uid": 1234,
+          "nice": 20,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "./vendor-toolchest: Cannot open configuration file /usr/lib/X11/system.chestrc\n"
+          },
+          "boundary": "xstat configuration check",
+          "selected_trace": {
+            "calls": [
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0xfb59ac4 a2=0x7fff7270 a3=0x1",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10022e30 a2=0x7fff6670 a3=0x18",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10025168 a2=0x7fff6bc0 a3=0x10",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x7fff7550 a2=0x7fff7490 a3=0x7fff755f",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x7fff7550 a2=0x7fff7490 a3=0x7fff755b",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x7fff7550 a2=0x7fff7490 a3=0x7fff755b",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10019348 a2=0x7fff7490 a3=0x1"
+            ],
+            "returns": [
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1"
+            ]
+          }
+        },
+        {
+          "name": "resources-0",
+          "uid": 0,
+          "nice": 20,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "./vendor-toolchest: Cannot open configuration file /usr/lib/X11/system.chestrc\n"
+          },
+          "boundary": "xstat configuration check",
+          "selected_trace": {
+            "calls": [
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0xfb59ac4 a2=0x7fff7270 a3=0x1",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10022e30 a2=0x7fff6670 a3=0x18",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10025168 a2=0x7fff6bc0 a3=0x10",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x7fff7550 a2=0x7fff7490 a3=0x7fff755f",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x7fff7550 a2=0x7fff7490 a3=0x7fff755b",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x7fff7550 a2=0x7fff7490 a3=0x7fff755b",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10019348 a2=0x7fff7490 a3=0x1"
+            ],
+            "returns": [
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1"
+            ]
+          }
+        },
+        {
+          "name": "resources-1234",
+          "uid": 1234,
+          "nice": 20,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "./vendor-toolchest: Cannot open configuration file /usr/lib/X11/system.chestrc\n"
+          },
+          "boundary": "xstat configuration check",
+          "selected_trace": {
+            "calls": [
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0xfb59ac4 a2=0x7fff7270 a3=0x1",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10022e30 a2=0x7fff6670 a3=0x18",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10025168 a2=0x7fff6bc0 a3=0x10",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x7fff7550 a2=0x7fff7490 a3=0x7fff755f",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x7fff7550 a2=0x7fff7490 a3=0x7fff755b",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x7fff7550 a2=0x7fff7490 a3=0x7fff755b",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10019348 a2=0x7fff7490 a3=0x1"
+            ],
+            "returns": [
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1"
+            ]
+          }
+        },
+        {
+          "name": "resources-normal-priority",
+          "uid": 0,
+          "nice": 0,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "./vendor-toolchest: Cannot open configuration file /usr/lib/X11/system.chestrc\n"
+          },
+          "boundary": "xstat configuration check",
+          "selected_trace": {
+            "calls": [
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0xfb59ac4 a2=0x7fff7270 a3=0x1",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10022e30 a2=0x7fff6670 a3=0x18",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10025168 a2=0x7fff6bc0 a3=0x10",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x7fff7550 a2=0x7fff7490 a3=0x7fff755f",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x7fff7550 a2=0x7fff7490 a3=0x7fff755b",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x7fff7550 a2=0x7fff7490 a3=0x7fff755b",
+              "syscall=1158 pc=0xfa4fa38 a0=0x2 a1=0x10019348 a2=0x7fff7490 a3=0x1"
+            ],
+            "returns": [
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1",
+              "syscall=1158 v0=0x59 a3=1"
+            ]
+          }
+        },
+        {
+          "name": "after-native-o32-0",
+          "uid": 0,
+          "nice": 0,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          },
+          "boundary": "control-passed"
+        },
+        {
+          "name": "after-vendor-asa-0",
+          "uid": 0,
+          "nice": 0,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_O32\n",
+            "stderr": ""
+          },
+          "boundary": "control-passed"
+        },
+        {
+          "name": "after-vendor-echo-0",
+          "uid": 0,
+          "nice": 0,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_N32\n",
+            "stderr": ""
+          },
+          "boundary": "control-passed"
+        },
+        {
+          "name": "after-native-o32-1234",
+          "uid": 1234,
+          "nice": 0,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          },
+          "boundary": "control-passed"
+        },
+        {
+          "name": "after-vendor-asa-1234",
+          "uid": 1234,
+          "nice": 0,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_O32\n",
+            "stderr": ""
+          },
+          "boundary": "control-passed"
+        },
+        {
+          "name": "after-vendor-echo-1234",
+          "uid": 1234,
+          "nice": 0,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_N32\n",
+            "stderr": ""
+          },
+          "boundary": "control-passed"
+        }
+      ],
+      "ptrace_stops": [
+        "STOP phase=exec signal=5 code=3 address=00000000 pc=000000000faf15f8",
+        "STOP phase=fault signal=11 code=1 address=00000000 pc=000000000fa4fe64"
+      ],
+      "fault_registers": {
+        "a0": "0x7fff7570",
+        "a1": "0x0",
+        "gp": "0x10022050",
+        "sp": "0x7fff7570",
+        "ra": "0x1000fd88",
+        "pc": "0xfa4fe64"
+      },
+      "counts": {
+        "control-passed": 13,
+        "null-HOME SIGSEGV": 2,
+        "select XIO": 1,
+        "xstat configuration check": 8
+      }
+    }
+  ],
+  "vendor_inputs": {
+    "/usr/bin/X11/toolchest": "20efa5c36c1e0dba1176fdd98000057e574b21c787ca364e1811100f9f2ba860",
+    "/usr/lib32/libc.so.1": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e"
+  },
+  "source_hashes": {
+    "lab/irix-toolchest/trace.c": "3e48930b2092fa927eecf8cb7e00e595feb4677e5cef45676cc7207d94c40bd5",
+    "lab/irix-toolchest/fault.c": "de9b9b272675f5b0cf52e5d6ab03ba4241614e7c6bf4b1a123f48135084c80af",
+    "lab/irix-toolchest/session.c": "e183b4aefdfb428e01dc609230e87a7546a0b31e9d4b5e236503e0a8bb3b09f5",
+    "lab/irix-lp64/runner.c": "005bdf3fffce5fb8ca79073e92cc41431aa953550c41014183d5de986a104463",
+    "scripts/probe-irix-toolchest.py": "fe28771cf8614ab259cab4cb71f4e3bfb701ae6003562cd19f18fb4f48ad1d2b",
+    "scripts/probe-netbsd.py": "adfa9547fa98af28fd55e4e155e7667b2b0a8c7cea8aee8d58079da946b72a1d",
+    "scripts/probe-irix-runtime.py": "89b946e035ecf0525b3c08cdc80ca0b77d8db6aa90fd60cf410ddc7eb3a4d553",
+    "scripts/probe-irix-tcp.py": "05f4b482684045a34a40538af6242567e51c2d874c7ecf9bc3a1d010c0b593ff"
+  },
+  "limits": [
+    "No new original-IRIX syscall oracle or kernel ABI qualification",
+    "No usable Toolchest window, event loop or full desktop qualified",
+    "nice increment 20 is a diagnostic timing choice, not a select fix",
+    "4Dwm mapping/relocation and remaining resources/services still pending"
+  ],
+  "validation_summary": {
+    "runner_cases": 48,
+    "runner_controls_passed": 26,
+    "toolchest_observations": 22,
+    "toolchest_with_HOME_without_SIGSEGV": 16,
+    "native_ptrace_controls_passed": 4,
+    "toolchest_fault_captures": 2,
+    "runner_observations_equal_across_modes": true,
+    "native_X_before_after_passed_both_modes": true,
+    "clean_shutdown_both_modes": true,
+    "remaining_host_iris_or_iris_ci_processes": 0
+  }
+}
