@@ -1,5 +1,7 @@
 # Toolchest session and fault diagnosis
 
+Current menu/resource evidence is in the [input lab](../irix-toolchest-input/README.md). The [central resource checklist](../../docs/IRIX-RESOURCES.md) records original assets and native session prerequisites.
+
 Follow-up: the [select checkpoint](../../docs/results/2026-10-31-irix-select.md) implements the measured readiness/timeout subset. The [xstat follow-up](../../docs/results/2026-10-31-irix-xstat.md) now enables app-defaults loading and reaches an allocator fault before the menu stage. The [fxstat follow-up](../../docs/results/2026-10-31-irix-fxstat.md) supplies descriptor metadata, removes that observed allocator fault and reaches an unsupported `SIOCNREAD` ioctl after the full menu read. The [SIOCNREAD follow-up](../../docs/results/2026-10-31-irix-siocnread.md) removes that XIO exit and produces a rendered, live Toolchest client in bounded tests. The diagnosis below records the earlier recvmsg kernel.
 
 This follows the [recvmsg checkpoint](../irix-recvmsg/README.md), without changing

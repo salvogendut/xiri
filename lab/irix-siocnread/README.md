@@ -1,5 +1,7 @@
 # IRIX SIOCNREAD lab
 
+Follow-up: the [resource/input checkpoint](../../docs/results/2026-10-31-irix-toolchest-input.md) supplies original keysyms and numeric SGI colors for bounded menu navigation on this unchanged kernel. [Winterm and imported fonts](../../docs/results/2026-10-31-irix-winterm-resources.md) expose a separate client startup boundary.
+
 This checkpoint measures syscall 1054, selector `0x4004730a`, which original
 Toolchest calls while polling its X connection. The preceding
 [diagnosis](../../docs/results/2026-10-31-irix-toolchest-siocnread.md) identifies

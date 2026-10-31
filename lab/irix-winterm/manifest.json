@@ -1,0 +1,585 @@
+{
+  "schema": 1,
+  "description": "Supplied winterm/xwsh launchers, static ELF closure and resource candidates",
+  "source": "IRIX 6.5.22m; read-only ro,norecovery; raw size checked against intake pin",
+  "programs": [
+    "/usr/sbin/xwsh",
+    "/usr/bin/gettxt"
+  ],
+  "launchers": {
+    "/usr/sbin/winterm": {
+      "path": "/usr/sbin/winterm",
+      "canonical_path": "/usr/sbin/winterm",
+      "bytes": 11292,
+      "sha256": "b858a0a82e2a3bedcaf1ba9f888cce9451f8179be570046a2595619dcad3b33f"
+    }
+  },
+  "files": {
+    "/usr/sbin/xwsh": {
+      "path": "/usr/sbin/xwsh",
+      "canonical_path": "/usr/sbin/xwsh",
+      "bytes": 641920,
+      "sha256": "52aa26d001fa1439fabb8ed4697cb93fa69125a466404ea5eccde9486bd545a7",
+      "class": 32,
+      "endian": "big",
+      "machine": 8,
+      "abi": "n32",
+      "type": 2,
+      "flags": "0x20000024",
+      "entry": "0x100367b8",
+      "interpreter": [
+        "/usr/lib32/libc.so.1"
+      ],
+      "needed": [
+        "libX11.so.1",
+        "libC.so.2",
+        "libm.so",
+        "libCsup.so",
+        "libc.so.1"
+      ],
+      "rpath": [],
+      "soname": [],
+      "loads": [
+        {
+          "offset": 0,
+          "address": 268435456,
+          "file_bytes": 491520,
+          "memory_bytes": 491520,
+          "flags": 5,
+          "alignment": 16384
+        },
+        {
+          "offset": 491520,
+          "address": 272629760,
+          "file_bytes": 77824,
+          "memory_bytes": 77824,
+          "flags": 6,
+          "alignment": 16384
+        }
+      ],
+      "load_boundaries_8k": true,
+      "liblist": [
+        "libX11.so.1",
+        "libC.so.2",
+        "libm.so",
+        "libCsup.so",
+        "libc.so.1"
+      ],
+      "mips_rld_version": 1,
+      "mips_flags": "0x7c11"
+    },
+    "/usr/bin/gettxt": {
+      "path": "/usr/bin/gettxt",
+      "canonical_path": "/usr/bin/gettxt",
+      "bytes": 9572,
+      "sha256": "5b8a23f80ecad56f4e27c0cdfddcf18af481260232fc04cbeffaae8cb3089d9d",
+      "class": 32,
+      "endian": "big",
+      "machine": 8,
+      "abi": "n32",
+      "type": 2,
+      "flags": "0x20000024",
+      "entry": "0x10000c88",
+      "interpreter": [
+        "/usr/lib32/libc.so.1"
+      ],
+      "needed": [
+        "libgen.so",
+        "libc.so.1"
+      ],
+      "rpath": [],
+      "soname": [],
+      "loads": [
+        {
+          "offset": 0,
+          "address": 268435456,
+          "file_bytes": 4096,
+          "memory_bytes": 4096,
+          "flags": 5,
+          "alignment": 8192
+        },
+        {
+          "offset": 4096,
+          "address": 268505088,
+          "file_bytes": 4096,
+          "memory_bytes": 4096,
+          "flags": 6,
+          "alignment": 4096
+        }
+      ],
+      "load_boundaries_8k": false,
+      "liblist": [
+        "libgen.so",
+        "libc.so.1"
+      ],
+      "mips_rld_version": 1,
+      "mips_flags": "0x6c11"
+    },
+    "/usr/lib32/libc.so.1": {
+      "path": "/usr/lib32/libc.so.1",
+      "canonical_path": "/lib32/libc.so.1",
+      "bytes": 3255120,
+      "sha256": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e",
+      "class": 32,
+      "endian": "big",
+      "machine": 8,
+      "abi": "n32",
+      "type": 3,
+      "flags": "0x20000022",
+      "entry": "0xfaf15f8",
+      "interpreter": [],
+      "needed": [],
+      "rpath": [],
+      "soname": [
+        "libc.so.1"
+      ],
+      "loads": [
+        {
+          "offset": 0,
+          "address": 262078464,
+          "file_bytes": 1413120,
+          "memory_bytes": 1413120,
+          "flags": 5,
+          "alignment": 16384
+        },
+        {
+          "offset": 1425408,
+          "address": 263503872,
+          "file_bytes": 65536,
+          "memory_bytes": 80544,
+          "flags": 6,
+          "alignment": 16384
+        }
+      ],
+      "load_boundaries_8k": true,
+      "liblist": [],
+      "mips_rld_version": 1,
+      "mips_flags": "0x4411"
+    },
+    "/lib32/rld": {
+      "path": "/lib32/rld",
+      "canonical_path": "/lib32/rld",
+      "bytes": 523908,
+      "sha256": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b",
+      "class": 32,
+      "endian": "big",
+      "machine": 8,
+      "abi": "n32",
+      "type": 2,
+      "flags": "0x20000020",
+      "entry": "0xfb60150",
+      "interpreter": [],
+      "needed": [],
+      "rpath": [],
+      "soname": [],
+      "loads": [
+        {
+          "offset": 0,
+          "address": 263585792,
+          "file_bytes": 151552,
+          "memory_bytes": 151552,
+          "flags": 5,
+          "alignment": 16384
+        },
+        {
+          "offset": 163840,
+          "address": 264077312,
+          "file_bytes": 28672,
+          "memory_bytes": 28672,
+          "flags": 6,
+          "alignment": 16384
+        }
+      ],
+      "load_boundaries_8k": true,
+      "liblist": [],
+      "mips_rld_version": null,
+      "mips_flags": "0x0"
+    },
+    "/usr/lib32/libX11.so.1": {
+      "path": "/usr/lib32/libX11.so.1",
+      "canonical_path": "/usr/lib32/libX11.so.1",
+      "bytes": 2680312,
+      "sha256": "2e3287c4842eb4149c9f839229093a28c180edf43dcf1f28b68102cdcf989642",
+      "class": 32,
+      "endian": "big",
+      "machine": 8,
+      "abi": "n32",
+      "type": 3,
+      "flags": "0x20000022",
+      "entry": "0xf602818",
+      "interpreter": [],
+      "needed": [
+        "libc.so.1"
+      ],
+      "rpath": [],
+      "soname": [
+        "libX11.so.1"
+      ],
+      "loads": [
+        {
+          "offset": 0,
+          "address": 257687552,
+          "file_bytes": 1318912,
+          "memory_bytes": 1318912,
+          "flags": 5,
+          "alignment": 16384
+        },
+        {
+          "offset": 1327104,
+          "address": 259014656,
+          "file_bytes": 110592,
+          "memory_bytes": 111776,
+          "flags": 6,
+          "alignment": 16384
+        }
+      ],
+      "load_boundaries_8k": true,
+      "liblist": [
+        "libc.so.1"
+      ],
+      "mips_rld_version": 1,
+      "mips_flags": "0x6c11"
+    },
+    "/usr/lib32/libC.so.2": {
+      "path": "/usr/lib32/libC.so.2",
+      "canonical_path": "/usr/lib32/libC.so.2",
+      "bytes": 809548,
+      "sha256": "e81c01921778d03148c45b66bdf7e935f49f7025a52f1f2ece5889e0c6eaf884",
+      "class": 32,
+      "endian": "big",
+      "machine": 8,
+      "abi": "n32",
+      "type": 3,
+      "flags": "0x20000022",
+      "entry": "0xadb1470",
+      "interpreter": [],
+      "needed": [
+        "libc.so.1",
+        "libm.so"
+      ],
+      "rpath": [],
+      "soname": [
+        "libC.so.2"
+      ],
+      "loads": [
+        {
+          "offset": 0,
+          "address": 182059008,
+          "file_bytes": 326168,
+          "memory_bytes": 326168,
+          "flags": 5,
+          "alignment": 65536
+        },
+        {
+          "offset": 327680,
+          "address": 182386688,
+          "file_bytes": 30288,
+          "memory_bytes": 34504,
+          "flags": 6,
+          "alignment": 16384
+        }
+      ],
+      "load_boundaries_8k": true,
+      "liblist": [
+        "libc.so.1",
+        "libm.so"
+      ],
+      "mips_rld_version": 1,
+      "mips_flags": "0x4c11"
+    },
+    "/usr/lib32/libm.so": {
+      "path": "/usr/lib32/libm.so",
+      "canonical_path": "/usr/lib32/mips3/libm.so",
+      "bytes": 839216,
+      "sha256": "8ab1b4e569cfb55ddb181ccf31b0a4a28a699894a55b6d8e778b8c15508ab4d0",
+      "class": 32,
+      "endian": "big",
+      "machine": 8,
+      "abi": "n32",
+      "type": 3,
+      "flags": "0x20000022",
+      "entry": "0x2228900",
+      "interpreter": [],
+      "needed": [
+        "libc.so.1"
+      ],
+      "rpath": [],
+      "soname": [
+        "libm.so"
+      ],
+      "loads": [
+        {
+          "offset": 0,
+          "address": 35782656,
+          "file_bytes": 385500,
+          "memory_bytes": 385500,
+          "flags": 5,
+          "alignment": 65536
+        },
+        {
+          "offset": 393216,
+          "address": 36175872,
+          "file_bytes": 112856,
+          "memory_bytes": 114980,
+          "flags": 6,
+          "alignment": 16384
+        }
+      ],
+      "load_boundaries_8k": true,
+      "liblist": [
+        "libc.so.1"
+      ],
+      "mips_rld_version": 1,
+      "mips_flags": "0x6c11"
+    },
+    "/usr/lib32/libCsup.so": {
+      "path": "/usr/lib32/libCsup.so",
+      "canonical_path": "/usr/lib32/libCsup.so",
+      "bytes": 18596,
+      "sha256": "f3120e7dccf58919e45f7cff503e0686059fdb7f7facfee1ad32327f081c3fb0",
+      "class": 32,
+      "endian": "big",
+      "machine": 8,
+      "abi": "n32",
+      "type": 3,
+      "flags": "0x20000022",
+      "entry": "0xac005c0",
+      "interpreter": [],
+      "needed": [],
+      "rpath": [],
+      "soname": [
+        "libCsup.so"
+      ],
+      "loads": [
+        {
+          "offset": 0,
+          "address": 180355072,
+          "file_bytes": 1480,
+          "memory_bytes": 1480,
+          "flags": 5,
+          "alignment": 65536
+        },
+        {
+          "offset": 16384,
+          "address": 180371456,
+          "file_bytes": 116,
+          "memory_bytes": 116,
+          "flags": 6,
+          "alignment": 16384
+        }
+      ],
+      "load_boundaries_8k": true,
+      "liblist": [],
+      "mips_rld_version": 1,
+      "mips_flags": "0x6411"
+    },
+    "/usr/lib32/libgen.so": {
+      "path": "/usr/lib32/libgen.so",
+      "canonical_path": "/usr/lib32/libgen.so",
+      "bytes": 93772,
+      "sha256": "a3102584a1929b91e4db3428b8e022fff3cff690ec646dd9edbf094e7ad28d7d",
+      "class": 32,
+      "endian": "big",
+      "machine": 8,
+      "abi": "n32",
+      "type": 3,
+      "flags": "0x20000022",
+      "entry": "0xf912990",
+      "interpreter": [],
+      "needed": [
+        "libc.so.1"
+      ],
+      "rpath": [],
+      "soname": [
+        "libgen.so"
+      ],
+      "loads": [
+        {
+          "offset": 0,
+          "address": 261160960,
+          "file_bytes": 40960,
+          "memory_bytes": 40960,
+          "flags": 5,
+          "alignment": 16384
+        },
+        {
+          "offset": 49152,
+          "address": 261210112,
+          "file_bytes": 4096,
+          "memory_bytes": 5620,
+          "flags": 6,
+          "alignment": 16384
+        }
+      ],
+      "load_boundaries_8k": true,
+      "liblist": [
+        "libc.so.1"
+      ],
+      "mips_rld_version": 1,
+      "mips_flags": "0x6411"
+    }
+  },
+  "dependencies": [
+    {
+      "source": "/usr/sbin/xwsh",
+      "needed": "libX11.so.1",
+      "selected": "/usr/lib32/libX11.so.1",
+      "searched": [
+        "/usr/lib32/libX11.so.1",
+        "/usr/lib32/internal/libX11.so.1",
+        "/lib32/libX11.so.1",
+        "/opt/lib32/libX11.so.1"
+      ]
+    },
+    {
+      "source": "/usr/sbin/xwsh",
+      "needed": "libC.so.2",
+      "selected": "/usr/lib32/libC.so.2",
+      "searched": [
+        "/usr/lib32/libC.so.2",
+        "/usr/lib32/internal/libC.so.2",
+        "/lib32/libC.so.2",
+        "/opt/lib32/libC.so.2"
+      ]
+    },
+    {
+      "source": "/usr/sbin/xwsh",
+      "needed": "libm.so",
+      "selected": "/usr/lib32/libm.so",
+      "searched": [
+        "/usr/lib32/libm.so",
+        "/usr/lib32/internal/libm.so",
+        "/lib32/libm.so",
+        "/opt/lib32/libm.so"
+      ]
+    },
+    {
+      "source": "/usr/sbin/xwsh",
+      "needed": "libCsup.so",
+      "selected": "/usr/lib32/libCsup.so",
+      "searched": [
+        "/usr/lib32/libCsup.so",
+        "/usr/lib32/internal/libCsup.so",
+        "/lib32/libCsup.so",
+        "/opt/lib32/libCsup.so"
+      ]
+    },
+    {
+      "source": "/usr/sbin/xwsh",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1",
+      "searched": [
+        "/usr/lib32/libc.so.1",
+        "/usr/lib32/internal/libc.so.1",
+        "/lib32/libc.so.1",
+        "/opt/lib32/libc.so.1"
+      ]
+    },
+    {
+      "source": "/usr/bin/gettxt",
+      "needed": "libgen.so",
+      "selected": "/usr/lib32/libgen.so",
+      "searched": [
+        "/usr/lib32/libgen.so",
+        "/usr/lib32/internal/libgen.so",
+        "/lib32/libgen.so",
+        "/opt/lib32/libgen.so"
+      ]
+    },
+    {
+      "source": "/usr/bin/gettxt",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1",
+      "searched": [
+        "/usr/lib32/libc.so.1",
+        "/usr/lib32/internal/libc.so.1",
+        "/lib32/libc.so.1",
+        "/opt/lib32/libc.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libX11.so.1",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1",
+      "searched": [
+        "/usr/lib32/libc.so.1",
+        "/usr/lib32/internal/libc.so.1",
+        "/lib32/libc.so.1",
+        "/opt/lib32/libc.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libC.so.2",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1",
+      "searched": [
+        "/usr/lib32/libc.so.1",
+        "/usr/lib32/internal/libc.so.1",
+        "/lib32/libc.so.1",
+        "/opt/lib32/libc.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libC.so.2",
+      "needed": "libm.so",
+      "selected": "/usr/lib32/libm.so",
+      "searched": [
+        "/usr/lib32/libm.so",
+        "/usr/lib32/internal/libm.so",
+        "/lib32/libm.so",
+        "/opt/lib32/libm.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libm.so",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1",
+      "searched": [
+        "/usr/lib32/libc.so.1",
+        "/usr/lib32/internal/libc.so.1",
+        "/lib32/libc.so.1",
+        "/opt/lib32/libc.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libgen.so",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1",
+      "searched": [
+        "/usr/lib32/libc.so.1",
+        "/usr/lib32/internal/libc.so.1",
+        "/lib32/libc.so.1",
+        "/opt/lib32/libc.so.1"
+      ]
+    }
+  ],
+  "unresolved": [],
+  "resources": {
+    "/usr/lib/X11/app-defaults/IWsh": {
+      "path": "/usr/lib/X11/app-defaults/IWsh",
+      "canonical_path": "/usr/lib/X11/app-defaults/IWsh",
+      "bytes": 12236,
+      "sha256": "76376d40a43d9257aa552abdf2599d45835cc6361b29008959ed1ec21ad1375a"
+    },
+    "/usr/lib/X11/app-defaults/XWsh": {
+      "path": "/usr/lib/X11/app-defaults/XWsh",
+      "canonical_path": "/usr/lib/X11/app-defaults/XWsh",
+      "bytes": 12699,
+      "sha256": "86844a935674579918f415411787ad326084615da6e4a4b2ddd0db5e08b98f75"
+    },
+    "/usr/share/catman/u_man/cat1/winterm.z": {
+      "path": "/usr/share/catman/u_man/cat1/winterm.z",
+      "canonical_path": "/usr/share/catman/u_man/cat1/winterm.z",
+      "bytes": 3686,
+      "sha256": "0aec1cd1b513a00ef7b5bd4a4aadf603a22c453597c3dab4dbc3b23fe8eb5bca"
+    },
+    "/usr/share/catman/u_man/cat1/xwsh.z": {
+      "path": "/usr/share/catman/u_man/cat1/xwsh.z",
+      "canonical_path": "/usr/share/catman/u_man/cat1/xwsh.z",
+      "bytes": 53532,
+      "sha256": "064b91cd5ec5c190f99d1118294e4e556205f6182ceda0b59c73176524213b84"
+    }
+  },
+  "resolution_scope": "Static absolute RPATH followed by ABI-specific default directories; native ldd and runtime loading not qualified",
+  "script_sha256": "5f0d7c9951fc1c85874481e70efe82c410087d3e6815558545c36fdc7221baaa"
+}

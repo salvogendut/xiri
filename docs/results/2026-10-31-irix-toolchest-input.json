@@ -1,0 +1,969 @@
+{
+  "schema": 1,
+  "status": "observed",
+  "kernel_pin": {
+    "schema": 1,
+    "description": "Measured IRIX SIOCNREAD on lp64",
+    "ident": "XIRI_IRIX_SIOCNREAD_20261031",
+    "source_revision": "355e0ca310039839b426e66d00744edab5cd5608",
+    "source_branch": "xiri/irix-siocnread",
+    "build_arch": "mips64eb",
+    "page_bytes": 8192,
+    "boot_kernel_sha256": "bceb49e31030e01be6a0a41e42a35bd4e52616fc179e545b01ab563d9bee8285",
+    "native_kernel_sha256": "f135ad2507f747c2262158c5c30e952aec25fafc4f5f7529d3863ea026fca42e",
+    "debug_kernel_sha256": "574ec9de56e877bbbc272c59ec9156bf748b65ace55499ad0d641de341648a82",
+    "native_o32_sha256": "c294fbb1f2110445be31c096481ea54ab561c7e59ca5b9fc7171310098d755d4",
+    "source_dirty": false,
+    "emulator_revision": "9df1df14334838a989253efefe26f0547e6da592",
+    "emulator_branch": "xiri/netbsd64-tlb",
+    "emulator_sha256": "1b3f7702ba7f43b5c4fca8ba8884243559f46371d8d67a36ce5e6fee1e595eba",
+    "ci_client_sha256": "8711321aa6eaae440da3c7920b00ae4cf1c7f2abbdb15a9919f58485500ffb6c",
+    "base_disk_sha256": "269038c7b77660c83d3835208fc0b2702c93110c14b3c55a42416f51672cee2a",
+    "nvram_sha256": "ee883474d52f09278287b2044f7aeca61d2e7bc39c0bb8fd85c983ab64063d15",
+    "config_sha256": "28ae1d28dd1f8317f0eb9b8f046b7c9c4b13444392d7e6469ba77b1660b5377c",
+    "runtimes": [
+      {
+        "name": "vendor-o32-libc",
+        "path": "/usr/lib/libc.so.1",
+        "sha256": "ea766492103a193e9d404942705e4e28987545e37f699ede232b6c0f8c97c954"
+      },
+      {
+        "name": "vendor-o32-rld",
+        "path": "/lib/rld",
+        "sha256": "30228b54c1e5585b365514eb7c9895b03cc0f61cb898e05e3ddafece87863439"
+      },
+      {
+        "name": "vendor-n32-libc",
+        "path": "/lib32/libc.so.1",
+        "sha256": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e"
+      },
+      {
+        "name": "vendor-n32-rld",
+        "path": "/lib32/rld",
+        "sha256": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b"
+      }
+    ],
+    "config_path": "lab/irix-siocnread/XIRI_IRIX_SIOCNREAD"
+  },
+  "resources": {
+    "schema": 1,
+    "source": "User-supplied IRIX 6.5.22m image, mounted ro,norecovery",
+    "files": {
+      "/usr/lib/X11/XKeysymDB": {
+        "realpath": "/usr/lib/X11/XKeysymDB",
+        "bytes": 4721,
+        "sha256": "d70ad52e47dcdb5d7be4c517738f666da18450b502f3abcb53c1e88733eb4ad9"
+      },
+      "/usr/lib/X11/rgb.txt": {
+        "realpath": "/usr/lib/X11/rgb.txt",
+        "bytes": 21455,
+        "sha256": "233c6af69e8242286fe6ef11cd8c729916e1209aa689a01d2aa3b6138e7e494f"
+      }
+    },
+    "numeric_colors": {
+      "SGIGray76": "#c1c1c1",
+      "SGIDarkGray": "#555555"
+    }
+  },
+  "qualifier_sha256": "8321997b41861fc62cf05d931fe31b1339c9405be49476a4170e7b2bfec7daee",
+  "runs": [
+    {
+      "mode": "ci",
+      "directory": ".work/irix-toolchest-input/runs/ci-se8hqxqq",
+      "result_sha256": "564775f299db2ba16a1bad3a3969ad3b754a5726ac048c402b466c6a3ba240a9",
+      "serial_sha256": "a6fd03ae0641022f0b8d133780800532e29a28abbedb853a285020a030f423b6",
+      "clean_shutdown": true,
+      "native_controls": [
+        {
+          "phase": "before",
+          "input": "XTEST 2.2\nBUTTON type=4 button=1 send_event=0 x=40 y=30\nBUTTON type=5 button=1 send_event=0 x=40 y=30\nKEY type=2 keysym=0x61 send_event=0\nKEY type=3 keysym=0x61 send_event=0\nKEY type=2 keysym=0xff1b send_event=0\nKEY type=3 keysym=0xff1b send_event=0\n",
+          "redraw": "WINDOW id=0x349 depth=0 map=2 class=1 override=0 x=0 y=0 width=640 height=480 name=\nWINDOW id=0x200001 depth=1 map=2 class=1 override=0 x=20 y=20 width=240 height=80 name=Xiri_native_expose_control\nVISIBLE 1\nREDRAW visible=1 before=46a9a16d cleared=ef15acc5 after=46a9a16d\n"
+        },
+        {
+          "phase": "after",
+          "input": "XTEST 2.2\nBUTTON type=4 button=1 send_event=0 x=40 y=30\nBUTTON type=5 button=1 send_event=0 x=40 y=30\nKEY type=2 keysym=0x61 send_event=0\nKEY type=3 keysym=0x61 send_event=0\nKEY type=2 keysym=0xff1b send_event=0\nKEY type=3 keysym=0xff1b send_event=0\n",
+          "redraw": "WINDOW id=0x349 depth=0 map=2 class=1 override=0 x=0 y=0 width=640 height=480 name=\nWINDOW id=0x400001 depth=1 map=0 class=2 override=1 x=-2 y=-2 width=1 height=1 name=\nWINDOW id=0x200001 depth=1 map=2 class=1 override=0 x=20 y=20 width=240 height=80 name=Xiri_native_expose_control\nVISIBLE 1\nREDRAW visible=1 before=46a9a16d cleared=ef15acc5 after=46a9a16d\n"
+        }
+      ],
+      "server_colors": "COLOR SGIGray76 ok=0 rgb=0,0,0\nCOLOR SGIDarkGray ok=0 rgb=0,0,0\nCOLOR #c1c1c1 ok=1 rgb=49408,49408,49408\nCOLOR #555555 ok=1 rgb=21760,21760,21760\n",
+      "cases": [
+        {
+          "stage": "baseline",
+          "uid": 1234,
+          "elapsed_ms": 90026,
+          "intentional_sigkill": true,
+          "stderr_bytes": 1435,
+          "warnings": {
+            "keysym": 6,
+            "gray76": 1,
+            "darkgray": 1,
+            "default_background": 1
+          },
+          "frames": {
+            "rest": {
+              "visible": 8,
+              "frame_sha256": "a248dc5b5986c4afb5d4101c3bc3ba01f8e88ed46dde47e78e8cef40f68497da",
+              "pixels": {
+                "sha256": "caf034646c56053964bd2b9e842ef4b3ad8877ded3dbd6d9378ecf52b3fc04c3",
+                "sgi_gray76_pixels": 0,
+                "sgi_dark_gray_pixels": 0
+              }
+            },
+            "posted": {
+              "visible": 13,
+              "frame_sha256": "6c6c0be43752f108765183704a23a5cec856b018746de0d3176117b90da2d736",
+              "pixels": {
+                "sha256": "385bf2ba5d6686ba96c762cb6674508f86731946bae5c71342d80fcbd6a2d78d",
+                "sgi_gray76_pixels": 0,
+                "sgi_dark_gray_pixels": 0
+              }
+            },
+            "down": {
+              "visible": 13,
+              "frame_sha256": "6c6c0be43752f108765183704a23a5cec856b018746de0d3176117b90da2d736",
+              "pixels": {
+                "sha256": "385bf2ba5d6686ba96c762cb6674508f86731946bae5c71342d80fcbd6a2d78d",
+                "sgi_gray76_pixels": 0,
+                "sgi_dark_gray_pixels": 0
+              }
+            },
+            "right": {
+              "visible": 13,
+              "frame_sha256": "6c6c0be43752f108765183704a23a5cec856b018746de0d3176117b90da2d736",
+              "pixels": {
+                "sha256": "385bf2ba5d6686ba96c762cb6674508f86731946bae5c71342d80fcbd6a2d78d",
+                "sgi_gray76_pixels": 0,
+                "sgi_dark_gray_pixels": 0
+              }
+            },
+            "escape": {
+              "visible": 13,
+              "frame_sha256": "6c6c0be43752f108765183704a23a5cec856b018746de0d3176117b90da2d736",
+              "pixels": {
+                "sha256": "385bf2ba5d6686ba96c762cb6674508f86731946bae5c71342d80fcbd6a2d78d",
+                "sgi_gray76_pixels": 0,
+                "sgi_dark_gray_pixels": 0
+              }
+            },
+            "dismissed": {
+              "visible": 13,
+              "frame_sha256": "6c6c0be43752f108765183704a23a5cec856b018746de0d3176117b90da2d736",
+              "pixels": {
+                "sha256": "385bf2ba5d6686ba96c762cb6674508f86731946bae5c71342d80fcbd6a2d78d",
+                "sgi_gray76_pixels": 0,
+                "sgi_dark_gray_pixels": 0
+              }
+            },
+            "final": {
+              "visible": 8,
+              "frame_sha256": "a248dc5b5986c4afb5d4101c3bc3ba01f8e88ed46dde47e78e8cef40f68497da",
+              "pixels": {
+                "sha256": "caf034646c56053964bd2b9e842ef4b3ad8877ded3dbd6d9378ecf52b3fc04c3",
+                "sgi_gray76_pixels": 0,
+                "sgi_dark_gray_pixels": 0
+              }
+            }
+          },
+          "redraw": {
+            "visible": 8,
+            "before": "7d0188af",
+            "cleared": "f39d93b5",
+            "after": "7d0188af"
+          },
+          "keyboard_traversal_and_escape": false,
+          "gettimeofday_enosys": 22,
+          "trace_sha256": "eed1e11fc3e156aefc373863c894db8c67d161cd531fb8ef581d18237641aef9",
+          "parent_sha256": "c126f7a808151e6cf0d42c817abe79c95b86078e790baf6acfce82b9045a240c"
+        },
+        {
+          "stage": "keysyms",
+          "uid": 1234,
+          "elapsed_ms": 90019,
+          "intentional_sigkill": true,
+          "stderr_bytes": 154,
+          "warnings": {
+            "keysym": 0,
+            "gray76": 1,
+            "darkgray": 1,
+            "default_background": 1
+          },
+          "frames": {
+            "rest": {
+              "visible": 8,
+              "frame_sha256": "a248dc5b5986c4afb5d4101c3bc3ba01f8e88ed46dde47e78e8cef40f68497da",
+              "pixels": {
+                "sha256": "caf034646c56053964bd2b9e842ef4b3ad8877ded3dbd6d9378ecf52b3fc04c3",
+                "sgi_gray76_pixels": 0,
+                "sgi_dark_gray_pixels": 0
+              }
+            },
+            "posted": {
+              "visible": 13,
+              "frame_sha256": "6c6c0be43752f108765183704a23a5cec856b018746de0d3176117b90da2d736",
+              "pixels": {
+                "sha256": "385bf2ba5d6686ba96c762cb6674508f86731946bae5c71342d80fcbd6a2d78d",
+                "sgi_gray76_pixels": 0,
+                "sgi_dark_gray_pixels": 0
+              }
+            },
+            "down": {
+              "visible": 13,
+              "frame_sha256": "792291b8054103787599f08ad92a2979a2b08d2e3fea5c733a34a3511915b9f2",
+              "pixels": {
+                "sha256": "142c3c758f39a44a5013cf29d6e1de916509e6c091d8e44553024fb89001935a",
+                "sgi_gray76_pixels": 0,
+                "sgi_dark_gray_pixels": 0
+              }
+            },
+            "right": {
+              "visible": 15,
+              "frame_sha256": "4241ab132d87c56c38b57f438c8027912ebdb96b6747774ed7740d86553767d0",
+              "pixels": {
+                "sha256": "1041a55f6be4c1fc7dc92cd14f9fa7bfb52413fb6adbf3c6384b27752625870d",
+                "sgi_gray76_pixels": 0,
+                "sgi_dark_gray_pixels": 0
+              }
+            },
+            "escape": {
+              "visible": 13,
+              "frame_sha256": "792291b8054103787599f08ad92a2979a2b08d2e3fea5c733a34a3511915b9f2",
+              "pixels": {
+                "sha256": "142c3c758f39a44a5013cf29d6e1de916509e6c091d8e44553024fb89001935a",
+                "sgi_gray76_pixels": 0,
+                "sgi_dark_gray_pixels": 0
+              }
+            },
+            "dismissed": {
+              "visible": 8,
+              "frame_sha256": "a248dc5b5986c4afb5d4101c3bc3ba01f8e88ed46dde47e78e8cef40f68497da",
+              "pixels": {
+                "sha256": "caf034646c56053964bd2b9e842ef4b3ad8877ded3dbd6d9378ecf52b3fc04c3",
+                "sgi_gray76_pixels": 0,
+                "sgi_dark_gray_pixels": 0
+              }
+            },
+            "final": {
+              "visible": 8,
+              "frame_sha256": "a248dc5b5986c4afb5d4101c3bc3ba01f8e88ed46dde47e78e8cef40f68497da",
+              "pixels": {
+                "sha256": "caf034646c56053964bd2b9e842ef4b3ad8877ded3dbd6d9378ecf52b3fc04c3",
+                "sgi_gray76_pixels": 0,
+                "sgi_dark_gray_pixels": 0
+              }
+            }
+          },
+          "redraw": {
+            "visible": 8,
+            "before": "7d0188af",
+            "cleared": "f39d93b5",
+            "after": "7d0188af"
+          },
+          "keyboard_traversal_and_escape": true,
+          "gettimeofday_enosys": 23,
+          "trace_sha256": "b10f7b34861d0559a6ae7dd30219100f948feb764104c8e6d438861dbe122111",
+          "parent_sha256": "6f466a8a5dcecb514a38a0088a903d8810aea92706d637cc80c851eac7d19b98"
+        },
+        {
+          "stage": "colors",
+          "uid": 1234,
+          "elapsed_ms": 90033,
+          "intentional_sigkill": true,
+          "stderr_bytes": 1281,
+          "warnings": {
+            "keysym": 6,
+            "gray76": 0,
+            "darkgray": 0,
+            "default_background": 0
+          },
+          "frames": {
+            "rest": {
+              "visible": 8,
+              "frame_sha256": "80f3906817598e94d73dfade65a6bf17e9b01883f80c3aaa0840bc20b3e3b76c",
+              "pixels": {
+                "sha256": "9acb9739c8db2ed700187b918797d98b9d084a6c37aa65753105d5f386fd8b58",
+                "sgi_gray76_pixels": 12510,
+                "sgi_dark_gray_pixels": 564
+              }
+            },
+            "posted": {
+              "visible": 13,
+              "frame_sha256": "c1313fc45d5d1f2287aca7484d47c8cb918afc61cbc5e9cd6378339e36d60eaf",
+              "pixels": {
+                "sha256": "5f2f54370d2a39aef897fe86e480b27dba8cffb1f1734a4047eb8926abec4716",
+                "sgi_gray76_pixels": 45121,
+                "sgi_dark_gray_pixels": 564
+              }
+            },
+            "down": {
+              "visible": 13,
+              "frame_sha256": "c1313fc45d5d1f2287aca7484d47c8cb918afc61cbc5e9cd6378339e36d60eaf",
+              "pixels": {
+                "sha256": "5f2f54370d2a39aef897fe86e480b27dba8cffb1f1734a4047eb8926abec4716",
+                "sgi_gray76_pixels": 45121,
+                "sgi_dark_gray_pixels": 564
+              }
+            },
+            "right": {
+              "visible": 13,
+              "frame_sha256": "c1313fc45d5d1f2287aca7484d47c8cb918afc61cbc5e9cd6378339e36d60eaf",
+              "pixels": {
+                "sha256": "5f2f54370d2a39aef897fe86e480b27dba8cffb1f1734a4047eb8926abec4716",
+                "sgi_gray76_pixels": 45121,
+                "sgi_dark_gray_pixels": 564
+              }
+            },
+            "escape": {
+              "visible": 13,
+              "frame_sha256": "c1313fc45d5d1f2287aca7484d47c8cb918afc61cbc5e9cd6378339e36d60eaf",
+              "pixels": {
+                "sha256": "5f2f54370d2a39aef897fe86e480b27dba8cffb1f1734a4047eb8926abec4716",
+                "sgi_gray76_pixels": 45121,
+                "sgi_dark_gray_pixels": 564
+              }
+            },
+            "dismissed": {
+              "visible": 13,
+              "frame_sha256": "c1313fc45d5d1f2287aca7484d47c8cb918afc61cbc5e9cd6378339e36d60eaf",
+              "pixels": {
+                "sha256": "5f2f54370d2a39aef897fe86e480b27dba8cffb1f1734a4047eb8926abec4716",
+                "sgi_gray76_pixels": 45121,
+                "sgi_dark_gray_pixels": 564
+              }
+            },
+            "final": {
+              "visible": 8,
+              "frame_sha256": "80f3906817598e94d73dfade65a6bf17e9b01883f80c3aaa0840bc20b3e3b76c",
+              "pixels": {
+                "sha256": "9acb9739c8db2ed700187b918797d98b9d084a6c37aa65753105d5f386fd8b58",
+                "sgi_gray76_pixels": 12510,
+                "sgi_dark_gray_pixels": 564
+              }
+            }
+          },
+          "redraw": {
+            "visible": 8,
+            "before": "b1e810bf",
+            "cleared": "8ada7545",
+            "after": "b1e810bf"
+          },
+          "keyboard_traversal_and_escape": false,
+          "gettimeofday_enosys": 22,
+          "trace_sha256": "4829261a35156bed4b3da699a7b313e6154e58b0738bf25345555064db9dcbd8",
+          "parent_sha256": "5d8775065f15e61b27480c340a367dda262ebec70d8ad37d534f31a7853265f0"
+        },
+        {
+          "stage": "combined",
+          "uid": 0,
+          "elapsed_ms": 90017,
+          "intentional_sigkill": true,
+          "stderr_bytes": 0,
+          "warnings": {
+            "keysym": 0,
+            "gray76": 0,
+            "darkgray": 0,
+            "default_background": 0
+          },
+          "frames": {
+            "rest": {
+              "visible": 8,
+              "frame_sha256": "80f3906817598e94d73dfade65a6bf17e9b01883f80c3aaa0840bc20b3e3b76c",
+              "pixels": {
+                "sha256": "9acb9739c8db2ed700187b918797d98b9d084a6c37aa65753105d5f386fd8b58",
+                "sgi_gray76_pixels": 12510,
+                "sgi_dark_gray_pixels": 564
+              }
+            },
+            "posted": {
+              "visible": 13,
+              "frame_sha256": "c1313fc45d5d1f2287aca7484d47c8cb918afc61cbc5e9cd6378339e36d60eaf",
+              "pixels": {
+                "sha256": "5f2f54370d2a39aef897fe86e480b27dba8cffb1f1734a4047eb8926abec4716",
+                "sgi_gray76_pixels": 45121,
+                "sgi_dark_gray_pixels": 564
+              }
+            },
+            "down": {
+              "visible": 13,
+              "frame_sha256": "7595068f6d43e355305ee9c6ea5dbb735e5c6525589f59eb63297372ee280f7d",
+              "pixels": {
+                "sha256": "341cc222dc72c4c73a7f41bfa4d5e735edce20d5a92fec8eb8ca632a434b436a",
+                "sgi_gray76_pixels": 45121,
+                "sgi_dark_gray_pixels": 564
+              }
+            },
+            "right": {
+              "visible": 15,
+              "frame_sha256": "ccac67619c794897b3ed8c705e4d540a7d1cc2af0ac5f7d293bec85b9335ef81",
+              "pixels": {
+                "sha256": "186dc6782276b739ac9cc448b173ca305bd535b432809b0c6aeafdddbec913bf",
+                "sgi_gray76_pixels": 53127,
+                "sgi_dark_gray_pixels": 564
+              }
+            },
+            "escape": {
+              "visible": 13,
+              "frame_sha256": "7595068f6d43e355305ee9c6ea5dbb735e5c6525589f59eb63297372ee280f7d",
+              "pixels": {
+                "sha256": "341cc222dc72c4c73a7f41bfa4d5e735edce20d5a92fec8eb8ca632a434b436a",
+                "sgi_gray76_pixels": 45121,
+                "sgi_dark_gray_pixels": 564
+              }
+            },
+            "dismissed": {
+              "visible": 8,
+              "frame_sha256": "80f3906817598e94d73dfade65a6bf17e9b01883f80c3aaa0840bc20b3e3b76c",
+              "pixels": {
+                "sha256": "9acb9739c8db2ed700187b918797d98b9d084a6c37aa65753105d5f386fd8b58",
+                "sgi_gray76_pixels": 12510,
+                "sgi_dark_gray_pixels": 564
+              }
+            },
+            "mouse-dismissed": {
+              "visible": 8,
+              "frame_sha256": "80f3906817598e94d73dfade65a6bf17e9b01883f80c3aaa0840bc20b3e3b76c",
+              "pixels": {
+                "sha256": "9acb9739c8db2ed700187b918797d98b9d084a6c37aa65753105d5f386fd8b58",
+                "sgi_gray76_pixels": 12510,
+                "sgi_dark_gray_pixels": 564
+              }
+            },
+            "keyboard-focus": {
+              "visible": 8,
+              "frame_sha256": "80f3906817598e94d73dfade65a6bf17e9b01883f80c3aaa0840bc20b3e3b76c",
+              "pixels": {
+                "sha256": "9acb9739c8db2ed700187b918797d98b9d084a6c37aa65753105d5f386fd8b58",
+                "sgi_gray76_pixels": 12510,
+                "sgi_dark_gray_pixels": 564
+              }
+            },
+            "keyboard-f10": {
+              "visible": 8,
+              "frame_sha256": "14f8646fa0b5ac7c01d5a6cd5a2a913079532c2878ae62e3999e4c00632c642e",
+              "pixels": {
+                "sha256": "ad37040ad49cbaaf4fa6ce827e38589b0b016961a8e75ed425b9ae4f72e3f835",
+                "sgi_gray76_pixels": 12034,
+                "sgi_dark_gray_pixels": 564
+              }
+            },
+            "keyboard-down": {
+              "visible": 13,
+              "frame_sha256": "c1313fc45d5d1f2287aca7484d47c8cb918afc61cbc5e9cd6378339e36d60eaf",
+              "pixels": {
+                "sha256": "5f2f54370d2a39aef897fe86e480b27dba8cffb1f1734a4047eb8926abec4716",
+                "sgi_gray76_pixels": 45121,
+                "sgi_dark_gray_pixels": 564
+              }
+            },
+            "keyboard-right": {
+              "visible": 15,
+              "frame_sha256": "99db23e795e533aea70fa8a9d3dad596a5f414ae8ce3be207e415f9805007748",
+              "pixels": {
+                "sha256": "6a6b743587f8aad3b8bdc2300dbab2d9b581870f9e7b1f2167b44e7a22414f87",
+                "sgi_gray76_pixels": 61349,
+                "sgi_dark_gray_pixels": 564
+              }
+            },
+            "keyboard-escape": {
+              "visible": 13,
+              "frame_sha256": "c1313fc45d5d1f2287aca7484d47c8cb918afc61cbc5e9cd6378339e36d60eaf",
+              "pixels": {
+                "sha256": "5f2f54370d2a39aef897fe86e480b27dba8cffb1f1734a4047eb8926abec4716",
+                "sgi_gray76_pixels": 45121,
+                "sgi_dark_gray_pixels": 564
+              }
+            },
+            "final": {
+              "visible": 8,
+              "frame_sha256": "80f3906817598e94d73dfade65a6bf17e9b01883f80c3aaa0840bc20b3e3b76c",
+              "pixels": {
+                "sha256": "9acb9739c8db2ed700187b918797d98b9d084a6c37aa65753105d5f386fd8b58",
+                "sgi_gray76_pixels": 12510,
+                "sgi_dark_gray_pixels": 564
+              }
+            }
+          },
+          "redraw": {
+            "visible": 8,
+            "before": "b1e810bf",
+            "cleared": "8ada7545",
+            "after": "b1e810bf"
+          },
+          "keyboard_traversal_and_escape": true,
+          "gettimeofday_enosys": 34,
+          "trace_sha256": "224baf4d0560df713a717adec14cc792bc6e7112372267e697be216309d40071",
+          "parent_sha256": "2e3080ca3967dd54bba7866e620205259780bdda0403a2d38b523e5509b92550"
+        },
+        {
+          "stage": "combined",
+          "uid": 1234,
+          "elapsed_ms": 90013,
+          "intentional_sigkill": true,
+          "stderr_bytes": 0,
+          "warnings": {
+            "keysym": 0,
+            "gray76": 0,
+            "darkgray": 0,
+            "default_background": 0
+          },
+          "frames": {
+            "rest": {
+              "visible": 8,
+              "frame_sha256": "80f3906817598e94d73dfade65a6bf17e9b01883f80c3aaa0840bc20b3e3b76c",
+              "pixels": {
+                "sha256": "9acb9739c8db2ed700187b918797d98b9d084a6c37aa65753105d5f386fd8b58",
+                "sgi_gray76_pixels": 12510,
+                "sgi_dark_gray_pixels": 564
+              }
+            },
+            "posted": {
+              "visible": 13,
+              "frame_sha256": "c1313fc45d5d1f2287aca7484d47c8cb918afc61cbc5e9cd6378339e36d60eaf",
+              "pixels": {
+                "sha256": "5f2f54370d2a39aef897fe86e480b27dba8cffb1f1734a4047eb8926abec4716",
+                "sgi_gray76_pixels": 45121,
+                "sgi_dark_gray_pixels": 564
+              }
+            },
+            "down": {
+              "visible": 13,
+              "frame_sha256": "7595068f6d43e355305ee9c6ea5dbb735e5c6525589f59eb63297372ee280f7d",
+              "pixels": {
+                "sha256": "341cc222dc72c4c73a7f41bfa4d5e735edce20d5a92fec8eb8ca632a434b436a",
+                "sgi_gray76_pixels": 45121,
+                "sgi_dark_gray_pixels": 564
+              }
+            },
+            "right": {
+              "visible": 15,
+              "frame_sha256": "ccac67619c794897b3ed8c705e4d540a7d1cc2af0ac5f7d293bec85b9335ef81",
+              "pixels": {
+                "sha256": "186dc6782276b739ac9cc448b173ca305bd535b432809b0c6aeafdddbec913bf",
+                "sgi_gray76_pixels": 53127,
+                "sgi_dark_gray_pixels": 564
+              }
+            },
+            "escape": {
+              "visible": 13,
+              "frame_sha256": "7595068f6d43e355305ee9c6ea5dbb735e5c6525589f59eb63297372ee280f7d",
+              "pixels": {
+                "sha256": "341cc222dc72c4c73a7f41bfa4d5e735edce20d5a92fec8eb8ca632a434b436a",
+                "sgi_gray76_pixels": 45121,
+                "sgi_dark_gray_pixels": 564
+              }
+            },
+            "dismissed": {
+              "visible": 8,
+              "frame_sha256": "80f3906817598e94d73dfade65a6bf17e9b01883f80c3aaa0840bc20b3e3b76c",
+              "pixels": {
+                "sha256": "9acb9739c8db2ed700187b918797d98b9d084a6c37aa65753105d5f386fd8b58",
+                "sgi_gray76_pixels": 12510,
+                "sgi_dark_gray_pixels": 564
+              }
+            },
+            "mouse-dismissed": {
+              "visible": 8,
+              "frame_sha256": "80f3906817598e94d73dfade65a6bf17e9b01883f80c3aaa0840bc20b3e3b76c",
+              "pixels": {
+                "sha256": "9acb9739c8db2ed700187b918797d98b9d084a6c37aa65753105d5f386fd8b58",
+                "sgi_gray76_pixels": 12510,
+                "sgi_dark_gray_pixels": 564
+              }
+            },
+            "keyboard-focus": {
+              "visible": 8,
+              "frame_sha256": "80f3906817598e94d73dfade65a6bf17e9b01883f80c3aaa0840bc20b3e3b76c",
+              "pixels": {
+                "sha256": "9acb9739c8db2ed700187b918797d98b9d084a6c37aa65753105d5f386fd8b58",
+                "sgi_gray76_pixels": 12510,
+                "sgi_dark_gray_pixels": 564
+              }
+            },
+            "keyboard-f10": {
+              "visible": 8,
+              "frame_sha256": "14f8646fa0b5ac7c01d5a6cd5a2a913079532c2878ae62e3999e4c00632c642e",
+              "pixels": {
+                "sha256": "ad37040ad49cbaaf4fa6ce827e38589b0b016961a8e75ed425b9ae4f72e3f835",
+                "sgi_gray76_pixels": 12034,
+                "sgi_dark_gray_pixels": 564
+              }
+            },
+            "keyboard-down": {
+              "visible": 13,
+              "frame_sha256": "c1313fc45d5d1f2287aca7484d47c8cb918afc61cbc5e9cd6378339e36d60eaf",
+              "pixels": {
+                "sha256": "5f2f54370d2a39aef897fe86e480b27dba8cffb1f1734a4047eb8926abec4716",
+                "sgi_gray76_pixels": 45121,
+                "sgi_dark_gray_pixels": 564
+              }
+            },
+            "keyboard-right": {
+              "visible": 15,
+              "frame_sha256": "99db23e795e533aea70fa8a9d3dad596a5f414ae8ce3be207e415f9805007748",
+              "pixels": {
+                "sha256": "6a6b743587f8aad3b8bdc2300dbab2d9b581870f9e7b1f2167b44e7a22414f87",
+                "sgi_gray76_pixels": 61349,
+                "sgi_dark_gray_pixels": 564
+              }
+            },
+            "keyboard-escape": {
+              "visible": 13,
+              "frame_sha256": "c1313fc45d5d1f2287aca7484d47c8cb918afc61cbc5e9cd6378339e36d60eaf",
+              "pixels": {
+                "sha256": "5f2f54370d2a39aef897fe86e480b27dba8cffb1f1734a4047eb8926abec4716",
+                "sgi_gray76_pixels": 45121,
+                "sgi_dark_gray_pixels": 564
+              }
+            },
+            "final": {
+              "visible": 8,
+              "frame_sha256": "80f3906817598e94d73dfade65a6bf17e9b01883f80c3aaa0840bc20b3e3b76c",
+              "pixels": {
+                "sha256": "9acb9739c8db2ed700187b918797d98b9d084a6c37aa65753105d5f386fd8b58",
+                "sgi_gray76_pixels": 12510,
+                "sgi_dark_gray_pixels": 564
+              }
+            }
+          },
+          "redraw": {
+            "visible": 8,
+            "before": "b1e810bf",
+            "cleared": "8ada7545",
+            "after": "b1e810bf"
+          },
+          "keyboard_traversal_and_escape": true,
+          "gettimeofday_enosys": 34,
+          "trace_sha256": "7a64a48a9986600abc0cd77389939fd9ccf8dfb02c6f233420a391fa732f92b7",
+          "parent_sha256": "7b022bfbb685a966d78a5c0b5206422f68593f6365269d688184cdaa95353bbd"
+        }
+      ],
+      "execution_sources": {
+        "lab/irix-toolchest-input/inputcheck.c": "446a41e88f390c16f09a247cf9b15ed69552b86f20a4a00253c154e8da8b48ad",
+        "lab/irix-siocnread/windowcheck.c": "3a43f2b6b9c93c2694d1cdb245f625f6267062f9a0d7a4b78279058fa7fb9f74",
+        "lab/irix-lp64/runner.c": "005bdf3fffce5fb8ca79073e92cc41431aa953550c41014183d5de986a104463",
+        "lab/irix-toolchest/session.c": "e183b4aefdfb428e01dc609230e87a7546a0b31e9d4b5e236503e0a8bb3b09f5",
+        "scripts/probe-irix-toolchest-input.py": "17beb0ee2b7a52061add92d35a48d9c5f4120fbad93205e3c53c53deb46c7d1e",
+        "scripts/probe-netbsd.py": "adfa9547fa98af28fd55e4e155e7667b2b0a8c7cea8aee8d58079da946b72a1d",
+        "scripts/probe-irix-runtime.py": "89b946e035ecf0525b3c08cdc80ca0b77d8db6aa90fd60cf410ddc7eb3a4d553",
+        "scripts/probe-irix-tcp.py": "df111c15ab1dd8988de1c76c8bf4c24262413049ed3f48632598b2c514191ede",
+        "lab/irix-toolchest-input/resources.json": "cb5af4ee0c2d11713cb0b43f65863b9b7d1129c29e75d8fa94c3ed91621d1ec0"
+      }
+    },
+    {
+      "mode": "ordinary",
+      "directory": ".work/irix-toolchest-input/runs/ordinary-tivoyei2",
+      "result_sha256": "1a570d6f8fc25a2c66358c13831e836ec1418b916bb0b6e0d03dc268b4db766e",
+      "serial_sha256": "4ec7d1b2f1ab28d7fcd6b65acc70dad056bd59894fb35ca2094b9a115e92727d",
+      "clean_shutdown": true,
+      "native_controls": [
+        {
+          "phase": "before",
+          "input": "XTEST 2.2\nBUTTON type=4 button=1 send_event=0 x=40 y=30\nBUTTON type=5 button=1 send_event=0 x=40 y=30\nKEY type=2 keysym=0x61 send_event=0\nKEY type=3 keysym=0x61 send_event=0\nKEY type=2 keysym=0xff1b send_event=0\nKEY type=3 keysym=0xff1b send_event=0\n",
+          "redraw": "WINDOW id=0x349 depth=0 map=2 class=1 override=0 x=0 y=0 width=640 height=480 name=\nWINDOW id=0x200001 depth=1 map=2 class=1 override=0 x=20 y=20 width=240 height=80 name=Xiri_native_expose_control\nVISIBLE 1\nREDRAW visible=1 before=46a9a16d cleared=ef15acc5 after=46a9a16d\n"
+        },
+        {
+          "phase": "after",
+          "input": "XTEST 2.2\nBUTTON type=4 button=1 send_event=0 x=40 y=30\nBUTTON type=5 button=1 send_event=0 x=40 y=30\nKEY type=2 keysym=0x61 send_event=0\nKEY type=3 keysym=0x61 send_event=0\nKEY type=2 keysym=0xff1b send_event=0\nKEY type=3 keysym=0xff1b send_event=0\n",
+          "redraw": "WINDOW id=0x349 depth=0 map=2 class=1 override=0 x=0 y=0 width=640 height=480 name=\nWINDOW id=0x400001 depth=1 map=0 class=2 override=1 x=-2 y=-2 width=1 height=1 name=\nWINDOW id=0x200001 depth=1 map=2 class=1 override=0 x=20 y=20 width=240 height=80 name=Xiri_native_expose_control\nVISIBLE 1\nREDRAW visible=1 before=46a9a16d cleared=ef15acc5 after=46a9a16d\n"
+        }
+      ],
+      "server_colors": "COLOR SGIGray76 ok=0 rgb=0,0,0\nCOLOR SGIDarkGray ok=0 rgb=0,0,0\nCOLOR #c1c1c1 ok=1 rgb=49408,49408,49408\nCOLOR #555555 ok=1 rgb=21760,21760,21760\n",
+      "cases": [
+        {
+          "stage": "combined",
+          "uid": 0,
+          "elapsed_ms": 90021,
+          "intentional_sigkill": true,
+          "stderr_bytes": 0,
+          "warnings": {
+            "keysym": 0,
+            "gray76": 0,
+            "darkgray": 0,
+            "default_background": 0
+          },
+          "frames": {
+            "rest": {
+              "visible": 8,
+              "frame_sha256": "80f3906817598e94d73dfade65a6bf17e9b01883f80c3aaa0840bc20b3e3b76c",
+              "pixels": {
+                "sha256": "9acb9739c8db2ed700187b918797d98b9d084a6c37aa65753105d5f386fd8b58",
+                "sgi_gray76_pixels": 12510,
+                "sgi_dark_gray_pixels": 564
+              }
+            },
+            "posted": {
+              "visible": 13,
+              "frame_sha256": "c1313fc45d5d1f2287aca7484d47c8cb918afc61cbc5e9cd6378339e36d60eaf",
+              "pixels": {
+                "sha256": "5f2f54370d2a39aef897fe86e480b27dba8cffb1f1734a4047eb8926abec4716",
+                "sgi_gray76_pixels": 45121,
+                "sgi_dark_gray_pixels": 564
+              }
+            },
+            "down": {
+              "visible": 13,
+              "frame_sha256": "7595068f6d43e355305ee9c6ea5dbb735e5c6525589f59eb63297372ee280f7d",
+              "pixels": {
+                "sha256": "341cc222dc72c4c73a7f41bfa4d5e735edce20d5a92fec8eb8ca632a434b436a",
+                "sgi_gray76_pixels": 45121,
+                "sgi_dark_gray_pixels": 564
+              }
+            },
+            "right": {
+              "visible": 15,
+              "frame_sha256": "ccac67619c794897b3ed8c705e4d540a7d1cc2af0ac5f7d293bec85b9335ef81",
+              "pixels": {
+                "sha256": "186dc6782276b739ac9cc448b173ca305bd535b432809b0c6aeafdddbec913bf",
+                "sgi_gray76_pixels": 53127,
+                "sgi_dark_gray_pixels": 564
+              }
+            },
+            "escape": {
+              "visible": 13,
+              "frame_sha256": "7595068f6d43e355305ee9c6ea5dbb735e5c6525589f59eb63297372ee280f7d",
+              "pixels": {
+                "sha256": "341cc222dc72c4c73a7f41bfa4d5e735edce20d5a92fec8eb8ca632a434b436a",
+                "sgi_gray76_pixels": 45121,
+                "sgi_dark_gray_pixels": 564
+              }
+            },
+            "dismissed": {
+              "visible": 8,
+              "frame_sha256": "80f3906817598e94d73dfade65a6bf17e9b01883f80c3aaa0840bc20b3e3b76c",
+              "pixels": {
+                "sha256": "9acb9739c8db2ed700187b918797d98b9d084a6c37aa65753105d5f386fd8b58",
+                "sgi_gray76_pixels": 12510,
+                "sgi_dark_gray_pixels": 564
+              }
+            },
+            "mouse-dismissed": {
+              "visible": 8,
+              "frame_sha256": "80f3906817598e94d73dfade65a6bf17e9b01883f80c3aaa0840bc20b3e3b76c",
+              "pixels": {
+                "sha256": "9acb9739c8db2ed700187b918797d98b9d084a6c37aa65753105d5f386fd8b58",
+                "sgi_gray76_pixels": 12510,
+                "sgi_dark_gray_pixels": 564
+              }
+            },
+            "keyboard-focus": {
+              "visible": 8,
+              "frame_sha256": "80f3906817598e94d73dfade65a6bf17e9b01883f80c3aaa0840bc20b3e3b76c",
+              "pixels": {
+                "sha256": "9acb9739c8db2ed700187b918797d98b9d084a6c37aa65753105d5f386fd8b58",
+                "sgi_gray76_pixels": 12510,
+                "sgi_dark_gray_pixels": 564
+              }
+            },
+            "keyboard-f10": {
+              "visible": 8,
+              "frame_sha256": "14f8646fa0b5ac7c01d5a6cd5a2a913079532c2878ae62e3999e4c00632c642e",
+              "pixels": {
+                "sha256": "ad37040ad49cbaaf4fa6ce827e38589b0b016961a8e75ed425b9ae4f72e3f835",
+                "sgi_gray76_pixels": 12034,
+                "sgi_dark_gray_pixels": 564
+              }
+            },
+            "keyboard-down": {
+              "visible": 13,
+              "frame_sha256": "c1313fc45d5d1f2287aca7484d47c8cb918afc61cbc5e9cd6378339e36d60eaf",
+              "pixels": {
+                "sha256": "5f2f54370d2a39aef897fe86e480b27dba8cffb1f1734a4047eb8926abec4716",
+                "sgi_gray76_pixels": 45121,
+                "sgi_dark_gray_pixels": 564
+              }
+            },
+            "keyboard-right": {
+              "visible": 15,
+              "frame_sha256": "99db23e795e533aea70fa8a9d3dad596a5f414ae8ce3be207e415f9805007748",
+              "pixels": {
+                "sha256": "6a6b743587f8aad3b8bdc2300dbab2d9b581870f9e7b1f2167b44e7a22414f87",
+                "sgi_gray76_pixels": 61349,
+                "sgi_dark_gray_pixels": 564
+              }
+            },
+            "keyboard-escape": {
+              "visible": 13,
+              "frame_sha256": "c1313fc45d5d1f2287aca7484d47c8cb918afc61cbc5e9cd6378339e36d60eaf",
+              "pixels": {
+                "sha256": "5f2f54370d2a39aef897fe86e480b27dba8cffb1f1734a4047eb8926abec4716",
+                "sgi_gray76_pixels": 45121,
+                "sgi_dark_gray_pixels": 564
+              }
+            },
+            "final": {
+              "visible": 8,
+              "frame_sha256": "80f3906817598e94d73dfade65a6bf17e9b01883f80c3aaa0840bc20b3e3b76c",
+              "pixels": {
+                "sha256": "9acb9739c8db2ed700187b918797d98b9d084a6c37aa65753105d5f386fd8b58",
+                "sgi_gray76_pixels": 12510,
+                "sgi_dark_gray_pixels": 564
+              }
+            }
+          },
+          "redraw": {
+            "visible": 8,
+            "before": "b1e810bf",
+            "cleared": "8ada7545",
+            "after": "b1e810bf"
+          },
+          "keyboard_traversal_and_escape": true,
+          "gettimeofday_enosys": 34,
+          "trace_sha256": "e416bb622330d3b8cc40ebf2fee7f3060fd2c79a1d176a881b4fda9fd0d0e2d5",
+          "parent_sha256": "78f7128f9ee1ac3d8f28f83c1dceeeef9d816a769b2721ec0b462569b70d25f1"
+        },
+        {
+          "stage": "combined",
+          "uid": 1234,
+          "elapsed_ms": 90017,
+          "intentional_sigkill": true,
+          "stderr_bytes": 0,
+          "warnings": {
+            "keysym": 0,
+            "gray76": 0,
+            "darkgray": 0,
+            "default_background": 0
+          },
+          "frames": {
+            "rest": {
+              "visible": 8,
+              "frame_sha256": "80f3906817598e94d73dfade65a6bf17e9b01883f80c3aaa0840bc20b3e3b76c",
+              "pixels": {
+                "sha256": "9acb9739c8db2ed700187b918797d98b9d084a6c37aa65753105d5f386fd8b58",
+                "sgi_gray76_pixels": 12510,
+                "sgi_dark_gray_pixels": 564
+              }
+            },
+            "posted": {
+              "visible": 13,
+              "frame_sha256": "c1313fc45d5d1f2287aca7484d47c8cb918afc61cbc5e9cd6378339e36d60eaf",
+              "pixels": {
+                "sha256": "5f2f54370d2a39aef897fe86e480b27dba8cffb1f1734a4047eb8926abec4716",
+                "sgi_gray76_pixels": 45121,
+                "sgi_dark_gray_pixels": 564
+              }
+            },
+            "down": {
+              "visible": 13,
+              "frame_sha256": "7595068f6d43e355305ee9c6ea5dbb735e5c6525589f59eb63297372ee280f7d",
+              "pixels": {
+                "sha256": "341cc222dc72c4c73a7f41bfa4d5e735edce20d5a92fec8eb8ca632a434b436a",
+                "sgi_gray76_pixels": 45121,
+                "sgi_dark_gray_pixels": 564
+              }
+            },
+            "right": {
+              "visible": 15,
+              "frame_sha256": "ccac67619c794897b3ed8c705e4d540a7d1cc2af0ac5f7d293bec85b9335ef81",
+              "pixels": {
+                "sha256": "186dc6782276b739ac9cc448b173ca305bd535b432809b0c6aeafdddbec913bf",
+                "sgi_gray76_pixels": 53127,
+                "sgi_dark_gray_pixels": 564
+              }
+            },
+            "escape": {
+              "visible": 13,
+              "frame_sha256": "7595068f6d43e355305ee9c6ea5dbb735e5c6525589f59eb63297372ee280f7d",
+              "pixels": {
+                "sha256": "341cc222dc72c4c73a7f41bfa4d5e735edce20d5a92fec8eb8ca632a434b436a",
+                "sgi_gray76_pixels": 45121,
+                "sgi_dark_gray_pixels": 564
+              }
+            },
+            "dismissed": {
+              "visible": 8,
+              "frame_sha256": "80f3906817598e94d73dfade65a6bf17e9b01883f80c3aaa0840bc20b3e3b76c",
+              "pixels": {
+                "sha256": "9acb9739c8db2ed700187b918797d98b9d084a6c37aa65753105d5f386fd8b58",
+                "sgi_gray76_pixels": 12510,
+                "sgi_dark_gray_pixels": 564
+              }
+            },
+            "mouse-dismissed": {
+              "visible": 8,
+              "frame_sha256": "80f3906817598e94d73dfade65a6bf17e9b01883f80c3aaa0840bc20b3e3b76c",
+              "pixels": {
+                "sha256": "9acb9739c8db2ed700187b918797d98b9d084a6c37aa65753105d5f386fd8b58",
+                "sgi_gray76_pixels": 12510,
+                "sgi_dark_gray_pixels": 564
+              }
+            },
+            "keyboard-focus": {
+              "visible": 8,
+              "frame_sha256": "80f3906817598e94d73dfade65a6bf17e9b01883f80c3aaa0840bc20b3e3b76c",
+              "pixels": {
+                "sha256": "9acb9739c8db2ed700187b918797d98b9d084a6c37aa65753105d5f386fd8b58",
+                "sgi_gray76_pixels": 12510,
+                "sgi_dark_gray_pixels": 564
+              }
+            },
+            "keyboard-f10": {
+              "visible": 8,
+              "frame_sha256": "14f8646fa0b5ac7c01d5a6cd5a2a913079532c2878ae62e3999e4c00632c642e",
+              "pixels": {
+                "sha256": "ad37040ad49cbaaf4fa6ce827e38589b0b016961a8e75ed425b9ae4f72e3f835",
+                "sgi_gray76_pixels": 12034,
+                "sgi_dark_gray_pixels": 564
+              }
+            },
+            "keyboard-down": {
+              "visible": 13,
+              "frame_sha256": "c1313fc45d5d1f2287aca7484d47c8cb918afc61cbc5e9cd6378339e36d60eaf",
+              "pixels": {
+                "sha256": "5f2f54370d2a39aef897fe86e480b27dba8cffb1f1734a4047eb8926abec4716",
+                "sgi_gray76_pixels": 45121,
+                "sgi_dark_gray_pixels": 564
+              }
+            },
+            "keyboard-right": {
+              "visible": 15,
+              "frame_sha256": "99db23e795e533aea70fa8a9d3dad596a5f414ae8ce3be207e415f9805007748",
+              "pixels": {
+                "sha256": "6a6b743587f8aad3b8bdc2300dbab2d9b581870f9e7b1f2167b44e7a22414f87",
+                "sgi_gray76_pixels": 61349,
+                "sgi_dark_gray_pixels": 564
+              }
+            },
+            "keyboard-escape": {
+              "visible": 13,
+              "frame_sha256": "c1313fc45d5d1f2287aca7484d47c8cb918afc61cbc5e9cd6378339e36d60eaf",
+              "pixels": {
+                "sha256": "5f2f54370d2a39aef897fe86e480b27dba8cffb1f1734a4047eb8926abec4716",
+                "sgi_gray76_pixels": 45121,
+                "sgi_dark_gray_pixels": 564
+              }
+            },
+            "final": {
+              "visible": 8,
+              "frame_sha256": "80f3906817598e94d73dfade65a6bf17e9b01883f80c3aaa0840bc20b3e3b76c",
+              "pixels": {
+                "sha256": "9acb9739c8db2ed700187b918797d98b9d084a6c37aa65753105d5f386fd8b58",
+                "sgi_gray76_pixels": 12510,
+                "sgi_dark_gray_pixels": 564
+              }
+            }
+          },
+          "redraw": {
+            "visible": 8,
+            "before": "b1e810bf",
+            "cleared": "8ada7545",
+            "after": "b1e810bf"
+          },
+          "keyboard_traversal_and_escape": true,
+          "gettimeofday_enosys": 34,
+          "trace_sha256": "57d33c86517a367f6659d8fe3ce76ba6c84f1a868ac14e749a8823b74951c0c8",
+          "parent_sha256": "2e3080ca3967dd54bba7866e620205259780bdda0403a2d38b523e5509b92550"
+        }
+      ],
+      "execution_sources": {
+        "lab/irix-toolchest-input/inputcheck.c": "446a41e88f390c16f09a247cf9b15ed69552b86f20a4a00253c154e8da8b48ad",
+        "lab/irix-siocnread/windowcheck.c": "3a43f2b6b9c93c2694d1cdb245f625f6267062f9a0d7a4b78279058fa7fb9f74",
+        "lab/irix-lp64/runner.c": "005bdf3fffce5fb8ca79073e92cc41431aa953550c41014183d5de986a104463",
+        "lab/irix-toolchest/session.c": "e183b4aefdfb428e01dc609230e87a7546a0b31e9d4b5e236503e0a8bb3b09f5",
+        "scripts/probe-irix-toolchest-input.py": "17beb0ee2b7a52061add92d35a48d9c5f4120fbad93205e3c53c53deb46c7d1e",
+        "scripts/probe-netbsd.py": "adfa9547fa98af28fd55e4e155e7667b2b0a8c7cea8aee8d58079da946b72a1d",
+        "scripts/probe-irix-runtime.py": "89b946e035ecf0525b3c08cdc80ca0b77d8db6aa90fd60cf410ddc7eb3a4d553",
+        "scripts/probe-irix-tcp.py": "df111c15ab1dd8988de1c76c8bf4c24262413049ed3f48632598b2c514191ede",
+        "lab/irix-toolchest-input/resources.json": "cb5af4ee0c2d11713cb0b43f65863b9b7d1129c29e75d8fa94c3ed91621d1ec0"
+      }
+    }
+  ]
+}

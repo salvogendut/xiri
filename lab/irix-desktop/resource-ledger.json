@@ -1,0 +1,201 @@
+{
+  "schema": 1,
+  "updated": "2026-10-31",
+  "scope": "Running image-resource checklist; presence does not establish necessity or compatibility",
+  "vendor_bytes": "Ignored .work only; read-only extraction; manifests own checksums",
+  "entries": [
+    {
+      "id": "applications",
+      "status": "extracted_subset",
+      "image_paths": [
+        "/usr/bin/X11/toolchest",
+        "/usr/bin/X11/4Dwm",
+        "/usr/sbin/winterm",
+        "/usr/sbin/xwsh"
+      ],
+      "evidence": [
+        "lab/irix-desktop/manifest.json",
+        "lab/irix-winterm/manifest.json",
+        "lab/irix-xclock/manifest.json"
+      ],
+      "note": "ABI-specific runtime and static library closures are pinned; delayed loading remains open."
+    },
+    {
+      "id": "toolchest_menu",
+      "status": "qualified_menu_subset",
+      "image_paths": [
+        "/usr/lib/X11/system.chestrc",
+        "/usr/lib/X11/app-defaults/Toolchest"
+      ],
+      "evidence": [
+        "lab/irix-desktop/manifest.json",
+        "docs/results/2026-10-31-irix-toolchest-input.json"
+      ],
+      "note": "Menu loading and rendering observed; keep original files unchanged."
+    },
+    {
+      "id": "motif_keysyms",
+      "status": "qualified_menu_subset",
+      "image_paths": [
+        "/usr/lib/X11/XKeysymDB"
+      ],
+      "evidence": [
+        "lab/irix-toolchest-input/resources.json",
+        "docs/results/2026-10-31-irix-toolchest-input.json"
+      ],
+      "note": "Readable original key-name database enables measured menu keyboard behavior."
+    },
+    {
+      "id": "sgi_colors",
+      "status": "translation_reference",
+      "image_paths": [
+        "/usr/lib/X11/rgb.txt"
+      ],
+      "evidence": [
+        "lab/irix-toolchest-input/resources.json"
+      ],
+      "note": "Current session uses two extracted numeric Xt color values; general named-color support is not qualified."
+    },
+    {
+      "id": "screen_fonts",
+      "status": "native_import_subset_observed",
+      "image_paths": [
+        "/usr/lib/X11/fonts/misc/Scr*.pcf",
+        "/usr/lib/X11/fonts/misc/Scr*.pcf.Z"
+      ],
+      "evidence": [
+        "lab/irix-x11-fonts/manifest.json",
+        "docs/results/2026-10-31-irix-winterm-resources.json"
+      ],
+      "note": "22 original Screen fonts indexed; the requested 15-pixel medium face renders in native xterm under both identities and modes."
+    },
+    {
+      "id": "xlib_locale",
+      "status": "staged_initialization_blocked",
+      "image_paths": [
+        "/usr/lib/X11/locale/locale.alias",
+        "/usr/lib/X11/locale/locale.dir",
+        "/usr/lib/X11/locale/C",
+        "/usr/lib/X11/locale/iso8859-1"
+      ],
+      "evidence": [
+        "lab/irix-x11-fonts/manifest.json",
+        "docs/results/2026-10-31-irix-winterm-resources.json"
+      ],
+      "note": "C/ISO8859-1 resources staged readably; original xwsh still reports unsupported X locale and receives SIGSEGV. External modules and file-access/seek dependencies remain unqualified."
+    },
+    {
+      "id": "terminal_defaults",
+      "status": "extracted_unqualified",
+      "image_paths": [
+        "/usr/lib/X11/app-defaults/XWsh",
+        "/usr/lib/X11/app-defaults/IWsh",
+        "/usr/bin/gettxt"
+      ],
+      "evidence": [
+        "lab/irix-winterm/manifest.json"
+      ],
+      "note": "Original xwsh reaches X as root but has a startup fault; helper exec and account lookup are separate boundaries."
+    },
+    {
+      "id": "window_manager_defaults",
+      "status": "extracted_unqualified",
+      "image_paths": [
+        "/usr/lib/X11/app-defaults/4DWm",
+        "/usr/lib/X11/system.4Dwmrc",
+        "/usr/lib/X11/system.4Dwmdesks",
+        "/usr/lib/X11/system.backgrounds"
+      ],
+      "evidence": [
+        "lab/irix-desktop/manifest.json"
+      ],
+      "note": "4Dwm loader support and referenced artwork remain open."
+    },
+    {
+      "id": "session_defaults",
+      "status": "inventoried_unqualified",
+      "image_paths": [
+        "/usr/lib/X11/xdm/Xsession",
+        "/usr/lib/X11/xdm/Xsession.dt",
+        "/usr/lib/X11/xdm/DefaultDeviceList",
+        "/usr/lib/X11/xdm/DefaultIconList",
+        "/usr/lib/X11/xdm/Xresources"
+      ],
+      "evidence": [
+        "lab/irix-desktop/manifest.json",
+        "lab/irix-desktop/session.json"
+      ],
+      "note": "Reference for selected native-session integration, not a wholesale Xsgi/xdm transplant."
+    },
+    {
+      "id": "desktop_helpers",
+      "status": "inventory_incomplete",
+      "image_paths": [
+        "/usr/lib/desktop/*",
+        "/usr/sbin/fm",
+        "/usr/sbin/bgicons",
+        "/usr/sbin/iconcatalog",
+        "/usr/sbin/genDeviceIcons",
+        "/usr/sbin/FLtoPopDB",
+        "/usr/bin/X11/wait4wm",
+        "/usr/bin/X11/tellwm",
+        "/usr/bin/X11/reaper"
+      ],
+      "evidence": [
+        "lab/irix-desktop/manifest.json",
+        "lab/irix-desktop/session.json"
+      ],
+      "note": "Initial files selected; closures, protocols, delayed modules and data remain to qualify."
+    },
+    {
+      "id": "artwork",
+      "status": "needs_inventory",
+      "image_paths": [],
+      "evidence": [],
+      "note": "Resolve referenced icons, bitmaps, cursors and backgrounds from actual component/session paths."
+    },
+    {
+      "id": "filetype_rules",
+      "status": "needs_inventory",
+      "image_paths": [],
+      "evidence": [],
+      "note": "Locate FTR rules, referenced artwork and action handlers."
+    },
+    {
+      "id": "schemes",
+      "status": "needs_inventory",
+      "image_paths": [],
+      "evidence": [],
+      "note": "Locate schemes/palettes and distinguish system defaults from per-user state."
+    },
+    {
+      "id": "additional_fonts",
+      "status": "needs_inventory",
+      "image_paths": [],
+      "evidence": [],
+      "note": "Follow client requests; preserve XLFDs, aliases and encoding files."
+    },
+    {
+      "id": "catalogs_and_locales",
+      "status": "needs_inventory",
+      "image_paths": [],
+      "evidence": [],
+      "note": "Locate message/help/application catalogs and needed locale/input-method modules."
+    },
+    {
+      "id": "desktop_services",
+      "status": "needs_inventory",
+      "image_paths": [],
+      "evidence": [],
+      "note": "Qualify file monitoring, caches, device discovery and optional audio/powersaver/sysmon helpers."
+    }
+  ],
+  "native_session_inputs": [
+    "HOME and writable home",
+    "NetBSD user/group data or explicit test fixtures",
+    "shell selection",
+    "X credentials and display",
+    "PATH and XUSERFILESEARCHPATH",
+    "generated or deliberately migrated per-user desktop state"
+  ]
+}

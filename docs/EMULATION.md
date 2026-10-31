@@ -171,3 +171,17 @@ The first deliverable is a reproducible **NetBSD installer â†’ installed guest â
 [mame-cli]: https://docs.mamedev.org/commandline/commandline-all.html
 [netbsd-install]: https://cdn.netbsd.org/pub/NetBSD/NetBSD-11.0/sgimips/INSTALL.html
 [netbsd-build]: https://www.netbsd.org/docs/guide/en/chap-build.html
+
+
+## Original image resource staging
+
+Use the [resource checklist](IRIX-RESOURCES.md) and linked manifests when a
+client requests another IRIX asset. Read-only guestfish extraction keeps vendor
+bytes under ignored `.work`; public files retain metadata and findings. Install
+explicit readable resource/environment modes and executable program/library
+modes in disposable guests, since the guest umask can otherwise make a root-only
+test look successful. Capture frames during interaction and transfer them after
+the bounded client exits. Server fonts belong in X.org's font path; client
+locale files belong in the foreign namespace. The [font-import experiment](results/2026-10-31-irix-winterm-resources.md)
+checks those paths separately. Keep the global four-IRIS limit and verify all
+owned guests have stopped after testing.

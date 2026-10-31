@@ -1,5 +1,7 @@
 # IRIX SIOCNREAD checkpoint
 
+Follow-up: the [resource/input checkpoint](2026-10-31-irix-toolchest-input.md) removes the color/keysym warnings and adds bounded menu navigation on this unchanged kernel. The observations below retain the earlier display/redraw checkpoint.
+
 The NetBSD fork implements the measured `ioctl(1054)` selector `0x4004730a`
 used by original Toolchest's X transport. Source commit
 `355e0ca310039839b426e66d00744edab5cd5608` is on `xiri/irix-siocnread`.

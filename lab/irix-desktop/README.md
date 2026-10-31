@@ -1,6 +1,8 @@
 # Desktop dependency and startup boundary lab
 
-For the first rendered Toolchest menu and bounded liveness, see the [SIOCNREAD lab](../irix-siocnread/README.md) and [results](../../docs/results/2026-10-31-irix-siocnread.md). Missing SGI resources, menu interaction and full session behavior remain open. The [session lab](../irix-toolchest/README.md) retains the empty-HOME diagnosis. The [live xclock loader capture](../../docs/results/2026-10-31-irix-xclock-elfmap.md) independently confirms a libXmu/libXaw mapping collision. The inventory and startup experiment below remain the historical baseline.
+The [central resource checklist](../../docs/IRIX-RESOURCES.md) and [resource ledger](resource-ledger.json) track resources from the supplied image, their manifests, current runtime evidence and gaps. Keep them updated when a client reveals a new resource dependency.
+
+For the first rendered Toolchest menu and bounded liveness, see the [SIOCNREAD lab](../irix-siocnread/README.md) and [results](../../docs/results/2026-10-31-irix-siocnread.md). The [resource/input follow-up](../../docs/results/2026-10-31-irix-toolchest-input.md) adds original keysyms, numeric colors and bounded menu navigation. Application launching, remaining resources and full session behavior stay open. The [session lab](../irix-toolchest/README.md) retains the empty-HOME diagnosis. The [live xclock loader capture](../../docs/results/2026-10-31-irix-xclock-elfmap.md) independently confirms a libXmu/libXaw mapping collision. The inventory and startup experiment below remain the historical baseline.
 
 This checkpoint inventories the supplied n32 4Dwm and Toolchest and measures
 their first startup blockers on the unchanged

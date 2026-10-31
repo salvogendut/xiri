@@ -1,0 +1,710 @@
+{
+  "schema": 1,
+  "status": "opening-attempts-observed",
+  "kernel_pin": {
+    "schema": 1,
+    "description": "Measured IRIX SIOCNREAD on lp64",
+    "ident": "XIRI_IRIX_SIOCNREAD_20261031",
+    "source_revision": "355e0ca310039839b426e66d00744edab5cd5608",
+    "source_branch": "xiri/irix-siocnread",
+    "build_arch": "mips64eb",
+    "page_bytes": 8192,
+    "boot_kernel_sha256": "bceb49e31030e01be6a0a41e42a35bd4e52616fc179e545b01ab563d9bee8285",
+    "native_kernel_sha256": "f135ad2507f747c2262158c5c30e952aec25fafc4f5f7529d3863ea026fca42e",
+    "debug_kernel_sha256": "574ec9de56e877bbbc272c59ec9156bf748b65ace55499ad0d641de341648a82",
+    "native_o32_sha256": "c294fbb1f2110445be31c096481ea54ab561c7e59ca5b9fc7171310098d755d4",
+    "source_dirty": false,
+    "emulator_revision": "9df1df14334838a989253efefe26f0547e6da592",
+    "emulator_branch": "xiri/netbsd64-tlb",
+    "emulator_sha256": "1b3f7702ba7f43b5c4fca8ba8884243559f46371d8d67a36ce5e6fee1e595eba",
+    "ci_client_sha256": "8711321aa6eaae440da3c7920b00ae4cf1c7f2abbdb15a9919f58485500ffb6c",
+    "base_disk_sha256": "269038c7b77660c83d3835208fc0b2702c93110c14b3c55a42416f51672cee2a",
+    "nvram_sha256": "ee883474d52f09278287b2044f7aeca61d2e7bc39c0bb8fd85c983ab64063d15",
+    "config_sha256": "28ae1d28dd1f8317f0eb9b8f046b7c9c4b13444392d7e6469ba77b1660b5377c",
+    "runtimes": [
+      {
+        "name": "vendor-o32-libc",
+        "path": "/usr/lib/libc.so.1",
+        "sha256": "ea766492103a193e9d404942705e4e28987545e37f699ede232b6c0f8c97c954"
+      },
+      {
+        "name": "vendor-o32-rld",
+        "path": "/lib/rld",
+        "sha256": "30228b54c1e5585b365514eb7c9895b03cc0f61cb898e05e3ddafece87863439"
+      },
+      {
+        "name": "vendor-n32-libc",
+        "path": "/lib32/libc.so.1",
+        "sha256": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e"
+      },
+      {
+        "name": "vendor-n32-rld",
+        "path": "/lib32/rld",
+        "sha256": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b"
+      }
+    ],
+    "config_path": "lab/irix-siocnread/XIRI_IRIX_SIOCNREAD"
+  },
+  "manifest_sha256": "db8edcd851c30693abb8bf7379d528dff71114d35df09be11a01ab96fd790db2",
+  "qualifier_sha256": "bdfa8e4ff1415ebd350916b67c181c4270aa315f2666a75f3498ff3f2c2e88f4",
+  "original_irix_shell_tested": false,
+  "runs": [
+    {
+      "mode": "ci",
+      "directory": ".work/irix-winterm/runs/ci-x0hiy_qk",
+      "clean_shutdown": true,
+      "native_terminal_controls": [
+        {
+          "phase": "before",
+          "uid": 0,
+          "window": "\nxwininfo: Window id: 0x20000c \"XiriNativeTerminal\"\n\n  Absolute upper-left X:  150\n  Absolute upper-left Y:  60\n  Relative upper-left X:  150\n  Relative upper-left Y:  60\n  Width: 244\n  Height: 108\n  Depth: 24\n  Visual: 0x21\n  Visual Class: TrueColor\n  Border width: 1\n  Class: InputOutput\n  Colormap: 0x20 (installed)\n  Bit Gravity State: NorthWestGravity\n  Window Gravity State: NorthWestGravity\n  Backing Store State: NotUseful\n  Save Under State: no\n  Map State: IsViewable\n  Override Redirect State: no\n  Corners:  +150+60  -244+60  -244-310  +150-310\n  -geometry 40x8+150+60\n\n",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": -1,
+            "signal": 9,
+            "killed": 1,
+            "stdout": "",
+            "stderr": ""
+          },
+          "tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     1 child:\n     0x20000c \"XiriNativeTerminal\": (\"XiriNativeTerminal\" \"XTerm\")  244x108+150+60  +150+60\n        1 child:\n        0x200011 (has no name): ()  244x108+0+0  +151+61\n\n",
+          "frame_sha256": "f4770458d1c7777fac2dc5ca6c01b2e805910dea627e805d7f5f420a29944131"
+        },
+        {
+          "phase": "after",
+          "uid": 1234,
+          "window": "\nxwininfo: Window id: 0x20000c \"XiriNativeTerminal\"\n\n  Absolute upper-left X:  150\n  Absolute upper-left Y:  60\n  Relative upper-left X:  150\n  Relative upper-left Y:  60\n  Width: 244\n  Height: 108\n  Depth: 24\n  Visual: 0x21\n  Visual Class: TrueColor\n  Border width: 1\n  Class: InputOutput\n  Colormap: 0x20 (installed)\n  Bit Gravity State: NorthWestGravity\n  Window Gravity State: NorthWestGravity\n  Backing Store State: NotUseful\n  Save Under State: no\n  Map State: IsViewable\n  Override Redirect State: no\n  Corners:  +150+60  -244+60  -244-310  +150-310\n  -geometry 40x8+150+60\n\n",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": -1,
+            "signal": 9,
+            "killed": 1,
+            "stdout": "",
+            "stderr": ""
+          },
+          "tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     1 child:\n     0x20000c \"XiriNativeTerminal\": (\"XiriNativeTerminal\" \"XTerm\")  244x108+150+60  +150+60\n        1 child:\n        0x200011 (has no name): ()  244x108+0+0  +151+61\n\n",
+          "frame_sha256": "f38a2862c333f02ed9c8102a35cc410623940a06d86bf772a194a3c39bfbe623"
+        }
+      ],
+      "available_shells": [
+        "/bin/sh",
+        "/bin/ksh",
+        "/bin/csh"
+      ],
+      "root_shell": "/bin/sh",
+      "cases": [
+        {
+          "kind": "xwsh",
+          "uid": 0,
+          "font": null,
+          "parent": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": -1,
+            "signal": 11,
+            "killed": 0
+          },
+          "elapsed_ms": 626,
+          "locale_warning": true,
+          "font_warning": true,
+          "helper_exec_error": false,
+          "account_lookup_failure": false,
+          "empty_window_tree": true,
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b",
+          "socket_calls": 1,
+          "connect_calls": 1,
+          "error_returns": {
+            "syscall=1040 v0=0x59 a3=1": 4,
+            "syscall=1156 v0=0x59 a3=1": 1,
+            "syscall=1005 v0=0x2 a3=1": 8,
+            "syscall=1203 v0=0x59 a3=1": 2,
+            "syscall=1054 v0=0x59 a3=1": 51,
+            "syscall=1019 v0=0x59 a3=1": 26,
+            "syscall=1158 v0=0x2 a3=1": 1,
+            "syscall=1040 v0=0x16 a3=1": 1,
+            "syscall=1124 v0=0x59 a3=1": 2,
+            "syscall=1123 v0=0x59 a3=1": 2,
+            "syscall=1033 v0=0x59 a3=1": 37
+          },
+          "trace_sha256": "8195e1217927a1ae67c4d659d094ebde448570d6dcede52de686b94e70e92172",
+          "parent_sha256": "00875dcb047708d535cc97814ad360f8c5e97f76d15748dfac289b6bea23b75d"
+        },
+        {
+          "kind": "winterm",
+          "uid": 0,
+          "font": null,
+          "parent": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0
+          },
+          "elapsed_ms": 947,
+          "locale_warning": false,
+          "font_warning": false,
+          "helper_exec_error": true,
+          "account_lookup_failure": false,
+          "empty_window_tree": true,
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b",
+          "socket_calls": 1,
+          "connect_calls": 1,
+          "error_returns": {
+            "syscall=1040 v0=0x59 a3=1": 4,
+            "syscall=1156 v0=0x59 a3=1": 1,
+            "syscall=1005 v0=0x2 a3=1": 4,
+            "syscall=1203 v0=0x59 a3=1": 2,
+            "syscall=1054 v0=0x59 a3=1": 21,
+            "syscall=1019 v0=0x59 a3=1": 11,
+            "syscall=1158 v0=0x2 a3=1": 1,
+            "syscall=1040 v0=0x16 a3=1": 1,
+            "syscall=1124 v0=0x59 a3=1": 1,
+            "syscall=1123 v0=0x59 a3=1": 1,
+            "syscall=1033 v0=0x59 a3=1": 11,
+            "syscall=1004 v0=0x20 a3=1": 1
+          },
+          "trace_sha256": "d95e37ee8380295b9744377d9589c23f2e9949ffbf6eefe1eda448126264b651",
+          "parent_sha256": "0c3f2317a9cad8a6a269319afb869e4e32a2e5f03536c31b4dff2d4ec3fb46b0"
+        },
+        {
+          "kind": "xwsh",
+          "uid": 0,
+          "font": "fixed",
+          "parent": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": -1,
+            "signal": 11,
+            "killed": 0
+          },
+          "elapsed_ms": 503,
+          "locale_warning": true,
+          "font_warning": true,
+          "helper_exec_error": false,
+          "account_lookup_failure": false,
+          "empty_window_tree": true,
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b",
+          "socket_calls": 1,
+          "connect_calls": 1,
+          "error_returns": {
+            "syscall=1040 v0=0x59 a3=1": 4,
+            "syscall=1156 v0=0x59 a3=1": 1,
+            "syscall=1005 v0=0x2 a3=1": 8,
+            "syscall=1203 v0=0x59 a3=1": 2,
+            "syscall=1054 v0=0x59 a3=1": 51,
+            "syscall=1019 v0=0x59 a3=1": 26,
+            "syscall=1158 v0=0x2 a3=1": 1,
+            "syscall=1040 v0=0x16 a3=1": 1,
+            "syscall=1124 v0=0x59 a3=1": 2,
+            "syscall=1123 v0=0x59 a3=1": 2,
+            "syscall=1033 v0=0x59 a3=1": 37,
+            "syscall=1003 v0=0xb a3=1": 5
+          },
+          "trace_sha256": "b3f66186adfe9a1d43d239c5936c720b40ce8f6cdb7d8bbdef7b347015229034",
+          "parent_sha256": "d6b1bd6685e95ab65099196dc7c2593810665739bcc822d365283f9dc657586e"
+        },
+        {
+          "kind": "winterm",
+          "uid": 0,
+          "font": "fixed",
+          "parent": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0
+          },
+          "elapsed_ms": 1293,
+          "locale_warning": false,
+          "font_warning": false,
+          "helper_exec_error": true,
+          "account_lookup_failure": false,
+          "empty_window_tree": true,
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b",
+          "socket_calls": 1,
+          "connect_calls": 1,
+          "error_returns": {
+            "syscall=1040 v0=0x59 a3=1": 4,
+            "syscall=1156 v0=0x59 a3=1": 1,
+            "syscall=1005 v0=0x2 a3=1": 4,
+            "syscall=1203 v0=0x59 a3=1": 2,
+            "syscall=1054 v0=0x59 a3=1": 21,
+            "syscall=1019 v0=0x59 a3=1": 11,
+            "syscall=1158 v0=0x2 a3=1": 1,
+            "syscall=1040 v0=0x16 a3=1": 1,
+            "syscall=1124 v0=0x59 a3=1": 1,
+            "syscall=1123 v0=0x59 a3=1": 1,
+            "syscall=1033 v0=0x59 a3=1": 11,
+            "syscall=1004 v0=0x20 a3=1": 1
+          },
+          "trace_sha256": "3dbde3a3a1b98b5af5d72b6a0560f7f38b6a975c9a37116eff3c8ddaf795e950",
+          "parent_sha256": "179c982d910ea6e861a01ad8fa7141c960308dcf5db142c98e03de8388115fe1"
+        },
+        {
+          "kind": "xwsh",
+          "uid": 1234,
+          "font": null,
+          "parent": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 255,
+            "signal": 0,
+            "killed": 0
+          },
+          "elapsed_ms": 350,
+          "locale_warning": false,
+          "font_warning": false,
+          "helper_exec_error": false,
+          "account_lookup_failure": true,
+          "empty_window_tree": true,
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b",
+          "socket_calls": 0,
+          "connect_calls": 0,
+          "error_returns": {
+            "syscall=1040 v0=0x59 a3=1": 3,
+            "syscall=1156 v0=0x59 a3=1": 1,
+            "syscall=1005 v0=0x2 a3=1": 2,
+            "syscall=1203 v0=0x59 a3=1": 1,
+            "syscall=1054 v0=0x59 a3=1": 1,
+            "syscall=1130 v0=0x59 a3=1": 2
+          },
+          "trace_sha256": "b5abcd1f3eb01d70a79e111a966ff64c2eed08b4a45a12a8827b881c906d940c",
+          "parent_sha256": "6a6486fa13a5a76157e1e17d160616729593a3639eb47f095f3079674cc85075"
+        },
+        {
+          "kind": "winterm",
+          "uid": 1234,
+          "font": null,
+          "parent": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0
+          },
+          "elapsed_ms": 1297,
+          "locale_warning": false,
+          "font_warning": false,
+          "helper_exec_error": true,
+          "account_lookup_failure": true,
+          "empty_window_tree": true,
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b",
+          "socket_calls": 0,
+          "connect_calls": 0,
+          "error_returns": {
+            "syscall=1040 v0=0x59 a3=1": 3,
+            "syscall=1156 v0=0x59 a3=1": 1,
+            "syscall=1005 v0=0x2 a3=1": 2,
+            "syscall=1203 v0=0x59 a3=1": 1,
+            "syscall=1054 v0=0x59 a3=1": 1,
+            "syscall=1130 v0=0x59 a3=1": 2
+          },
+          "trace_sha256": "e7a08ccf5dbd6be4c44c55ebea51f7723b3289992a694c990994a81cc8cc15c4",
+          "parent_sha256": "9bef96792fa9065a79a06b9e75f7f9cde29631b4dd55891f96e5f35e767a8989"
+        },
+        {
+          "kind": "xwsh",
+          "uid": 1234,
+          "font": "fixed",
+          "parent": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 255,
+            "signal": 0,
+            "killed": 0
+          },
+          "elapsed_ms": 276,
+          "locale_warning": false,
+          "font_warning": false,
+          "helper_exec_error": false,
+          "account_lookup_failure": true,
+          "empty_window_tree": true,
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b",
+          "socket_calls": 0,
+          "connect_calls": 0,
+          "error_returns": {
+            "syscall=1040 v0=0x59 a3=1": 3,
+            "syscall=1156 v0=0x59 a3=1": 1,
+            "syscall=1005 v0=0x2 a3=1": 2,
+            "syscall=1203 v0=0x59 a3=1": 1,
+            "syscall=1054 v0=0x59 a3=1": 1,
+            "syscall=1130 v0=0x59 a3=1": 2
+          },
+          "trace_sha256": "6581b222f3b41d93c6b0641d668d3c49088497a47b72d6284792828ae03a77c6",
+          "parent_sha256": "cb7b97c99abab095669415d0cc2f09582fed000eaede20f7f0ee539f02a3fc78"
+        },
+        {
+          "kind": "winterm",
+          "uid": 1234,
+          "font": "fixed",
+          "parent": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0
+          },
+          "elapsed_ms": 1085,
+          "locale_warning": false,
+          "font_warning": false,
+          "helper_exec_error": true,
+          "account_lookup_failure": true,
+          "empty_window_tree": true,
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b",
+          "socket_calls": 0,
+          "connect_calls": 0,
+          "error_returns": {
+            "syscall=1040 v0=0x59 a3=1": 3,
+            "syscall=1156 v0=0x59 a3=1": 1,
+            "syscall=1005 v0=0x2 a3=1": 2,
+            "syscall=1203 v0=0x59 a3=1": 1,
+            "syscall=1054 v0=0x59 a3=1": 1,
+            "syscall=1130 v0=0x59 a3=1": 2
+          },
+          "trace_sha256": "3c32043c56f825b0d3430c29d904eddd599a17f72e573b70854dafcbb6fac437",
+          "parent_sha256": "a9d30bfed1947afaf3e3c3d567ced6535b516661f1d0810810f375a79a91f44c"
+        }
+      ],
+      "execution_sources": {
+        "lab/irix-lp64/runner.c": "005bdf3fffce5fb8ca79073e92cc41431aa953550c41014183d5de986a104463",
+        "lab/irix-toolchest/session.c": "e183b4aefdfb428e01dc609230e87a7546a0b31e9d4b5e236503e0a8bb3b09f5",
+        "scripts/probe-irix-winterm.py": "82346c16d79c0c20b4a864f81e367b55e89ce8477bd8d17d6342b6eff87d418d",
+        "scripts/probe-netbsd.py": "adfa9547fa98af28fd55e4e155e7667b2b0a8c7cea8aee8d58079da946b72a1d",
+        "scripts/probe-irix-runtime.py": "89b946e035ecf0525b3c08cdc80ca0b77d8db6aa90fd60cf410ddc7eb3a4d553",
+        "scripts/probe-irix-tcp.py": "df111c15ab1dd8988de1c76c8bf4c24262413049ed3f48632598b2c514191ede",
+        "lab/irix-winterm/manifest.json": "db8edcd851c30693abb8bf7379d528dff71114d35df09be11a01ab96fd790db2"
+      },
+      "result_sha256": "9f1615c72bfdc2b997a9a06b8171646b7de3b741cb14a968ddbc5b7591361aee",
+      "serial_sha256": "63c99edf9d3937ccba5c5984467e0c1bbf8f4efc990c4beacbb0a75135a827b4"
+    },
+    {
+      "mode": "ordinary",
+      "directory": ".work/irix-winterm/runs/ordinary-6099szjn",
+      "clean_shutdown": true,
+      "native_terminal_controls": [
+        {
+          "phase": "before",
+          "uid": 0,
+          "window": "\nxwininfo: Window id: 0x20000c \"XiriNativeTerminal\"\n\n  Absolute upper-left X:  150\n  Absolute upper-left Y:  60\n  Relative upper-left X:  150\n  Relative upper-left Y:  60\n  Width: 244\n  Height: 108\n  Depth: 24\n  Visual: 0x21\n  Visual Class: TrueColor\n  Border width: 1\n  Class: InputOutput\n  Colormap: 0x20 (installed)\n  Bit Gravity State: NorthWestGravity\n  Window Gravity State: NorthWestGravity\n  Backing Store State: NotUseful\n  Save Under State: no\n  Map State: IsViewable\n  Override Redirect State: no\n  Corners:  +150+60  -244+60  -244-310  +150-310\n  -geometry 40x8+150+60\n\n",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": -1,
+            "signal": 9,
+            "killed": 1,
+            "stdout": "",
+            "stderr": ""
+          },
+          "tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     1 child:\n     0x20000c \"XiriNativeTerminal\": (\"XiriNativeTerminal\" \"XTerm\")  244x108+150+60  +150+60\n        1 child:\n        0x200011 (has no name): ()  244x108+0+0  +151+61\n\n",
+          "frame_sha256": "f4770458d1c7777fac2dc5ca6c01b2e805910dea627e805d7f5f420a29944131"
+        },
+        {
+          "phase": "after",
+          "uid": 1234,
+          "window": "\nxwininfo: Window id: 0x20000c \"XiriNativeTerminal\"\n\n  Absolute upper-left X:  150\n  Absolute upper-left Y:  60\n  Relative upper-left X:  150\n  Relative upper-left Y:  60\n  Width: 244\n  Height: 108\n  Depth: 24\n  Visual: 0x21\n  Visual Class: TrueColor\n  Border width: 1\n  Class: InputOutput\n  Colormap: 0x20 (installed)\n  Bit Gravity State: NorthWestGravity\n  Window Gravity State: NorthWestGravity\n  Backing Store State: NotUseful\n  Save Under State: no\n  Map State: IsViewable\n  Override Redirect State: no\n  Corners:  +150+60  -244+60  -244-310  +150-310\n  -geometry 40x8+150+60\n\n",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": -1,
+            "signal": 9,
+            "killed": 1,
+            "stdout": "",
+            "stderr": ""
+          },
+          "tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     1 child:\n     0x20000c \"XiriNativeTerminal\": (\"XiriNativeTerminal\" \"XTerm\")  244x108+150+60  +150+60\n        1 child:\n        0x200011 (has no name): ()  244x108+0+0  +151+61\n\n",
+          "frame_sha256": "f38a2862c333f02ed9c8102a35cc410623940a06d86bf772a194a3c39bfbe623"
+        }
+      ],
+      "available_shells": [
+        "/bin/sh",
+        "/bin/ksh",
+        "/bin/csh"
+      ],
+      "root_shell": "/bin/sh",
+      "cases": [
+        {
+          "kind": "xwsh",
+          "uid": 0,
+          "font": null,
+          "parent": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": -1,
+            "signal": 11,
+            "killed": 0
+          },
+          "elapsed_ms": 683,
+          "locale_warning": true,
+          "font_warning": true,
+          "helper_exec_error": false,
+          "account_lookup_failure": false,
+          "empty_window_tree": true,
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b",
+          "socket_calls": 1,
+          "connect_calls": 1,
+          "error_returns": {
+            "syscall=1040 v0=0x59 a3=1": 4,
+            "syscall=1156 v0=0x59 a3=1": 1,
+            "syscall=1005 v0=0x2 a3=1": 8,
+            "syscall=1203 v0=0x59 a3=1": 2,
+            "syscall=1054 v0=0x59 a3=1": 51,
+            "syscall=1019 v0=0x59 a3=1": 26,
+            "syscall=1158 v0=0x2 a3=1": 1,
+            "syscall=1040 v0=0x16 a3=1": 1,
+            "syscall=1124 v0=0x59 a3=1": 2,
+            "syscall=1123 v0=0x59 a3=1": 2,
+            "syscall=1033 v0=0x59 a3=1": 37,
+            "syscall=1003 v0=0xb a3=1": 5
+          },
+          "trace_sha256": "1b1ab826db75f2b91b5ceafbd29066a435589472adb062e5b2d21fdf7d4592f5",
+          "parent_sha256": "3e4b6587b2572defc49518f5880117b8fa51921b098d21a00163bdef77c6dcc9"
+        },
+        {
+          "kind": "winterm",
+          "uid": 0,
+          "font": null,
+          "parent": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0
+          },
+          "elapsed_ms": 1103,
+          "locale_warning": true,
+          "font_warning": true,
+          "helper_exec_error": true,
+          "account_lookup_failure": false,
+          "empty_window_tree": true,
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b",
+          "socket_calls": 1,
+          "connect_calls": 1,
+          "error_returns": {
+            "syscall=1040 v0=0x59 a3=1": 4,
+            "syscall=1156 v0=0x59 a3=1": 1,
+            "syscall=1005 v0=0x2 a3=1": 8,
+            "syscall=1203 v0=0x59 a3=1": 2,
+            "syscall=1054 v0=0x59 a3=1": 51,
+            "syscall=1019 v0=0x59 a3=1": 26,
+            "syscall=1158 v0=0x2 a3=1": 1,
+            "syscall=1040 v0=0x16 a3=1": 1,
+            "syscall=1124 v0=0x59 a3=1": 2,
+            "syscall=1123 v0=0x59 a3=1": 2,
+            "syscall=1033 v0=0x59 a3=1": 37
+          },
+          "trace_sha256": "2886e8da12049b4f4847ca617ac2379ec54f77f9f6256e9de17563b6532955aa",
+          "parent_sha256": "bacae02d71cbe7da0e0433bcbbc4660e15066e670dec030f28b1fd5fe6d78ed3"
+        },
+        {
+          "kind": "xwsh",
+          "uid": 0,
+          "font": "fixed",
+          "parent": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": -1,
+            "signal": 11,
+            "killed": 0
+          },
+          "elapsed_ms": 845,
+          "locale_warning": true,
+          "font_warning": true,
+          "helper_exec_error": false,
+          "account_lookup_failure": false,
+          "empty_window_tree": true,
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b",
+          "socket_calls": 1,
+          "connect_calls": 1,
+          "error_returns": {
+            "syscall=1040 v0=0x59 a3=1": 4,
+            "syscall=1156 v0=0x59 a3=1": 1,
+            "syscall=1005 v0=0x2 a3=1": 8,
+            "syscall=1203 v0=0x59 a3=1": 2,
+            "syscall=1054 v0=0x59 a3=1": 51,
+            "syscall=1019 v0=0x59 a3=1": 26,
+            "syscall=1158 v0=0x2 a3=1": 1,
+            "syscall=1040 v0=0x16 a3=1": 1,
+            "syscall=1124 v0=0x59 a3=1": 2,
+            "syscall=1123 v0=0x59 a3=1": 2,
+            "syscall=1033 v0=0x59 a3=1": 37
+          },
+          "trace_sha256": "a05583a44bb66cb6fc99e78a911744b336a549d70e40bd888ceccf893592c2cc",
+          "parent_sha256": "64f56db3ff789190ec54f5c707fd885e7af9f9d0af1d9e2280d76bdd03679712"
+        },
+        {
+          "kind": "winterm",
+          "uid": 0,
+          "font": "fixed",
+          "parent": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0
+          },
+          "elapsed_ms": 1240,
+          "locale_warning": false,
+          "font_warning": false,
+          "helper_exec_error": true,
+          "account_lookup_failure": false,
+          "empty_window_tree": true,
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b",
+          "socket_calls": 1,
+          "connect_calls": 1,
+          "error_returns": {
+            "syscall=1040 v0=0x59 a3=1": 4,
+            "syscall=1156 v0=0x59 a3=1": 1,
+            "syscall=1005 v0=0x2 a3=1": 4,
+            "syscall=1203 v0=0x59 a3=1": 2,
+            "syscall=1054 v0=0x59 a3=1": 21,
+            "syscall=1019 v0=0x59 a3=1": 11,
+            "syscall=1158 v0=0x2 a3=1": 1,
+            "syscall=1040 v0=0x16 a3=1": 1,
+            "syscall=1124 v0=0x59 a3=1": 1,
+            "syscall=1123 v0=0x59 a3=1": 1,
+            "syscall=1033 v0=0x59 a3=1": 11,
+            "syscall=1004 v0=0x20 a3=1": 1
+          },
+          "trace_sha256": "96ce00cd4229b4a1a15543146a633385d6b327f4c86f80371e1a0c8ed07a9a75",
+          "parent_sha256": "5a43a0839b05165621666cb696b2c9ddd496232f3f789f0ec4d734886f39f577"
+        },
+        {
+          "kind": "xwsh",
+          "uid": 1234,
+          "font": null,
+          "parent": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 255,
+            "signal": 0,
+            "killed": 0
+          },
+          "elapsed_ms": 364,
+          "locale_warning": false,
+          "font_warning": false,
+          "helper_exec_error": false,
+          "account_lookup_failure": true,
+          "empty_window_tree": true,
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b",
+          "socket_calls": 0,
+          "connect_calls": 0,
+          "error_returns": {
+            "syscall=1040 v0=0x59 a3=1": 3,
+            "syscall=1156 v0=0x59 a3=1": 1,
+            "syscall=1005 v0=0x2 a3=1": 2,
+            "syscall=1203 v0=0x59 a3=1": 1,
+            "syscall=1054 v0=0x59 a3=1": 1,
+            "syscall=1130 v0=0x59 a3=1": 2
+          },
+          "trace_sha256": "45358d1de2c102030530928373ef38ee0717b2e5b56be113a6447ce12fdb2842",
+          "parent_sha256": "57747e5c2f3e992dc48c3f23b36bb6ebe4836b14aa49029d6de5adfbbfaaa6a0"
+        },
+        {
+          "kind": "winterm",
+          "uid": 1234,
+          "font": null,
+          "parent": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0
+          },
+          "elapsed_ms": 1040,
+          "locale_warning": false,
+          "font_warning": false,
+          "helper_exec_error": true,
+          "account_lookup_failure": false,
+          "empty_window_tree": true,
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b",
+          "socket_calls": 0,
+          "connect_calls": 0,
+          "error_returns": {
+            "syscall=1040 v0=0x59 a3=1": 3,
+            "syscall=1156 v0=0x59 a3=1": 1,
+            "syscall=1005 v0=0x2 a3=1": 2,
+            "syscall=1203 v0=0x59 a3=1": 1,
+            "syscall=1054 v0=0x59 a3=1": 1,
+            "syscall=1004 v0=0x20 a3=1": 1
+          },
+          "trace_sha256": "507690b977a731251115838157ec9436318eaf832e9a3d4139306a3b741b4c5a",
+          "parent_sha256": "a2d2ff6efc59bbd85371f396538a3751782c1c7762f464b179bdb5de985b9d34"
+        },
+        {
+          "kind": "xwsh",
+          "uid": 1234,
+          "font": "fixed",
+          "parent": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 255,
+            "signal": 0,
+            "killed": 0
+          },
+          "elapsed_ms": 226,
+          "locale_warning": false,
+          "font_warning": false,
+          "helper_exec_error": false,
+          "account_lookup_failure": true,
+          "empty_window_tree": true,
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b",
+          "socket_calls": 0,
+          "connect_calls": 0,
+          "error_returns": {
+            "syscall=1040 v0=0x59 a3=1": 3,
+            "syscall=1156 v0=0x59 a3=1": 1,
+            "syscall=1005 v0=0x2 a3=1": 2,
+            "syscall=1203 v0=0x59 a3=1": 1,
+            "syscall=1054 v0=0x59 a3=1": 1,
+            "syscall=1130 v0=0x59 a3=1": 2
+          },
+          "trace_sha256": "ad5eee47ee68dfa1965b05a38a46540b411d0c0c95346634ba51f85747725d9e",
+          "parent_sha256": "2a90ac2067232f549e35e751d9c9e53608c610047e8a5241d6e4b6d9c94b9b27"
+        },
+        {
+          "kind": "winterm",
+          "uid": 1234,
+          "font": "fixed",
+          "parent": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0
+          },
+          "elapsed_ms": 1041,
+          "locale_warning": false,
+          "font_warning": false,
+          "helper_exec_error": true,
+          "account_lookup_failure": false,
+          "empty_window_tree": true,
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b",
+          "socket_calls": 0,
+          "connect_calls": 0,
+          "error_returns": {
+            "syscall=1040 v0=0x59 a3=1": 3,
+            "syscall=1156 v0=0x59 a3=1": 1,
+            "syscall=1005 v0=0x2 a3=1": 2,
+            "syscall=1203 v0=0x59 a3=1": 1,
+            "syscall=1054 v0=0x59 a3=1": 1,
+            "syscall=1004 v0=0x20 a3=1": 1
+          },
+          "trace_sha256": "34f7a21c74d04f9487d8c516d74ff5249cb0a65fe3f6e4379bbd7509bc50b598",
+          "parent_sha256": "3d412a48ecce855bf2e8066b61c05fc19248dc66aa1ce0f39a294e04685b38e1"
+        }
+      ],
+      "execution_sources": {
+        "lab/irix-lp64/runner.c": "005bdf3fffce5fb8ca79073e92cc41431aa953550c41014183d5de986a104463",
+        "lab/irix-toolchest/session.c": "e183b4aefdfb428e01dc609230e87a7546a0b31e9d4b5e236503e0a8bb3b09f5",
+        "scripts/probe-irix-winterm.py": "82346c16d79c0c20b4a864f81e367b55e89ce8477bd8d17d6342b6eff87d418d",
+        "scripts/probe-netbsd.py": "adfa9547fa98af28fd55e4e155e7667b2b0a8c7cea8aee8d58079da946b72a1d",
+        "scripts/probe-irix-runtime.py": "89b946e035ecf0525b3c08cdc80ca0b77d8db6aa90fd60cf410ddc7eb3a4d553",
+        "scripts/probe-irix-tcp.py": "df111c15ab1dd8988de1c76c8bf4c24262413049ed3f48632598b2c514191ede",
+        "lab/irix-winterm/manifest.json": "db8edcd851c30693abb8bf7379d528dff71114d35df09be11a01ab96fd790db2"
+      },
+      "result_sha256": "57fc0f539f42cd394452dc36abbf73e5a828a199c70dbfd061b6edcd849fe4e3",
+      "serial_sha256": "2badf90c87360cd0e3cdc99e4c25a9f83c3b7d3026f02e022251f9d39a189ad8"
+    }
+  ]
+}
