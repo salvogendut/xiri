@@ -1,6 +1,6 @@
 # IRIX select lab
 
-Follow-up: the [xstat checkpoint](../../docs/results/2026-10-31-irix-xstat.md) implements the next pathname-stat contract. This lab retains the historical select-kernel results. Use `--kernel-checkpoint xstat --fixtures-only` to check its guarded select matrix on the newer kernel.
+Follow-up: the [xstat checkpoint](../../docs/results/2026-10-31-irix-xstat.md) implements the next pathname-stat contract. This lab retains the historical select-kernel results. Use `--kernel-checkpoint xstat --fixtures-only` or `--kernel-checkpoint fxstat --fixtures-only` to check its guarded select matrix on the corresponding newer kernel. The [fxstat follow-up](../irix-fxstat/README.md) supplies descriptor metadata and advances Toolchest past the observed allocator fault.
 
 This follows the [Toolchest session diagnosis](../irix-toolchest/README.md).
 The new adapter implements trap 1100 for both o32 and n32, with explicit 32-bit

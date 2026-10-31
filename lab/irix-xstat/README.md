@@ -3,7 +3,9 @@
 This checkpoint measures syscall 1158 on the user's IRIX 6.5.22m installation,
 then implements its bounded o32/n32 pathname-stat contract in the NetBSD fork.
 The [result](../../docs/results/2026-10-31-irix-xstat.md) records qualification
-and the next Toolchest boundary. No proprietary source is used.
+and its historical Toolchest boundary. The [fxstat follow-up](../irix-fxstat/README.md)
+shares the serializer, regresses this matrix on its newer kernel, and advances
+Toolchest past the allocator fault. No proprietary source is used.
 
 [abi.json](abi.json) specifies offsets and measured semantics. Version 2 writes
 136 bytes for o32 and 152 bytes for n32; version 3 writes 152 bytes for either.
@@ -94,7 +96,7 @@ python3 scripts/probe-irix-select.py --kernel-checkpoint xstat --fixtures-only \
 ```
 
 Run harnesses from the host: they use the host `genisoimage` and launch IRIS in
-the existing `xiri-iris` toolbox. Up to three independent IRIS guests may run at
+the existing `xiri-iris` toolbox. Up to four independent IRIS guests may run at
 once under the user's current limit. Track each run and finish its clean guest
 shutdown and host process cleanup before considering it complete.
 

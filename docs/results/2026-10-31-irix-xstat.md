@@ -141,6 +141,9 @@ descriptor-policy differences. These three regression guests halt cleanly.
 The [xclock experiment](2026-10-31-irix-xclock.md) completes the root fault
 capture in a fully controlled run and tests a simpler original X client.
 Its independent loader failure does not change the xstat qualification.
-The next pathname-resource step is paired fxstat measurement and implementation,
-followed by confirming whether the allocator corruption disappears. The
-xclock/libXmu mapping case remains a separate loader investigation.
+The [fxstat follow-up](2026-10-31-irix-fxstat.md) now supplies descriptor
+metadata: Toolchest requests exactly the app-defaults size, reads the complete
+menu, and reaches an X I/O error at unsupported SIOCNREAD without the observed
+allocator fault. The [libXmu capture](2026-10-31-irix-xclock-elfmap.md) separately
+confirms a collision with mapped libXaw text. The results above remain pinned
+to the earlier xstat kernel.

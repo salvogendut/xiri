@@ -17,7 +17,7 @@ def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--mode',choices=['ci','ordinary'],default='ci')
     p.add_argument('--kernel-abi',choices=['lp64','o32'],default='lp64')
-    p.add_argument('--kernel-checkpoint',choices=['select','xstat'],default='select')
+    p.add_argument('--kernel-checkpoint',choices=['select','xstat','fxstat'],default='select')
     p.add_argument('--fixtures-only',action='store_true',help='Skip historical Toolchest expectations when checking a newer kernel')
     p.add_argument('--seed-directory',type=Path,required=True)
     args=p.parse_args();seed=args.seed_directory.resolve()

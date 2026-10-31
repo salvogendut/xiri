@@ -1,0 +1,2003 @@
+{
+  "schema": 1,
+  "description": "Measured IRIX fxstat subset and staged Toolchest observations",
+  "status": "qualified-subset",
+  "source_revision": "ef34f8afe16d5cf80a743b208dccc3a4f355efe2",
+  "source_branch": "xiri/irix-fxstat",
+  "reference_cases": 520,
+  "window_or_event_loop_qualified": false,
+  "focused_runs": [
+    {
+      "kind": "fxstat",
+      "kernel_abi": "lp64",
+      "mode": "ci",
+      "status": "passed",
+      "cases": 520,
+      "controls": 12,
+      "clean_shutdown": true,
+      "directory": ".work/irix-fxstat/runs/lp64-ci-_2immwwa",
+      "result_sha256": "33637d4b96f1537952ffbdec6b813454f30bba59f85a0b99d8068f4f126ebd7e",
+      "execution_sources": {
+        "lab/irix-lp64/runner.c": "005bdf3fffce5fb8ca79073e92cc41431aa953550c41014183d5de986a104463",
+        "lab/irix-toolchest/session.c": "e183b4aefdfb428e01dc609230e87a7546a0b31e9d4b5e236503e0a8bb3b09f5",
+        "lab/irix-fxstat/native-stat.c": "bb23dfe73955b1bb5dccf509a8effa1f0455950e81dd23f90003b98040e3dc92",
+        "scripts/probe-irix-fxstat.py": "064c41221129a8d2cfdcaaca71c7b9fbe28497dbc64a249d8efc6fd4bee6791c",
+        "scripts/probe-netbsd.py": "adfa9547fa98af28fd55e4e155e7667b2b0a8c7cea8aee8d58079da946b72a1d",
+        "scripts/probe-irix-runtime.py": "89b946e035ecf0525b3c08cdc80ca0b77d8db6aa90fd60cf410ddc7eb3a4d553",
+        "scripts/probe-irix-tcp.py": "78663a86615334b984c8b883584ebf38171fc2bd98d0f9d5bc98b7f5a1005a36",
+        "scripts/irix-fxstat-records.py": "543b064681cdf2cf979c07a4ad5bfba658910088b725890cc47eaf47e8236fcc",
+        "scripts/irix-xstat-records.py": "80f8ae2048a7413c910ec3a6d514106b46f6aa1cc60c803b0dd65e2ec54de8b5",
+        "lab/irix-fxstat/setup.sh": "aff6b9a0037fec24cf47eb240e8275833f279e183e50766a6d27d18ed41ae095"
+      },
+      "toolchest": [
+        {
+          "boundary_ioctls": [],
+          "x11_counters": null,
+          "resource_reads": {},
+          "name": "library-0-0",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "./vendor-toolchest: Cannot open configuration file /usr/lib/X11/system.chestrc\n"
+          },
+          "successful_calls": {
+            "1040": 9,
+            "1024": 2,
+            "1005": 9,
+            "1003": 80,
+            "1006": 9,
+            "1056": 2,
+            "1134": 1,
+            "1047": 1,
+            "1017": 9,
+            "1062": 8,
+            "1158": 1,
+            "1160": 2,
+            "1107": 1,
+            "1105": 2,
+            "1091": 1,
+            "1094": 1,
+            "1093": 1,
+            "1108": 3,
+            "1102": 2,
+            "1004": 37,
+            "1099": 1,
+            "1100": 15
+          },
+          "errors": {
+            "1040:0x59": 3,
+            "1156:0x59": 1,
+            "1162:0x59": 1,
+            "1040:0x16": 1,
+            "1020:0x59": 1,
+            "1191:0x59": 1,
+            "1207:0x59": 1,
+            "1005:0x2": 49,
+            "1033:0x59": 1,
+            "1158:0x2": 6,
+            "1003:0xb": 15,
+            "1130:0x59": 2
+          },
+          "window_tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     1 child:\n     0x200001 \"vendor-toolchest\": (\"vendor-toolchest\" \"Toolchest\")  1x1+0+0  +0+0\n\n",
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b"
+        },
+        {
+          "boundary_ioctls": [],
+          "x11_counters": null,
+          "resource_reads": {},
+          "name": "library-0-1",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "./vendor-toolchest: Cannot open configuration file /usr/lib/X11/system.chestrc\n"
+          },
+          "successful_calls": {
+            "1040": 9,
+            "1024": 2,
+            "1005": 9,
+            "1003": 80,
+            "1006": 9,
+            "1056": 2,
+            "1134": 1,
+            "1047": 1,
+            "1017": 9,
+            "1062": 8,
+            "1158": 1,
+            "1160": 2,
+            "1107": 1,
+            "1105": 2,
+            "1091": 1,
+            "1094": 1,
+            "1093": 1,
+            "1108": 3,
+            "1102": 2,
+            "1004": 38,
+            "1099": 2
+          },
+          "errors": {
+            "1040:0x59": 3,
+            "1156:0x59": 1,
+            "1162:0x59": 1,
+            "1040:0x16": 1,
+            "1020:0x59": 1,
+            "1191:0x59": 1,
+            "1207:0x59": 1,
+            "1005:0x2": 46,
+            "1033:0x59": 1,
+            "1158:0x2": 6,
+            "1130:0x59": 2
+          },
+          "window_tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     0 children.\n\n",
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b"
+        },
+        {
+          "boundary_ioctls": [],
+          "x11_counters": null,
+          "resource_reads": {},
+          "name": "library-0-2",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "./vendor-toolchest: Cannot open configuration file /usr/lib/X11/system.chestrc\n"
+          },
+          "successful_calls": {
+            "1040": 9,
+            "1024": 2,
+            "1005": 9,
+            "1003": 80,
+            "1006": 9,
+            "1056": 2,
+            "1134": 1,
+            "1047": 1,
+            "1017": 9,
+            "1062": 8,
+            "1158": 1,
+            "1160": 2,
+            "1107": 1,
+            "1105": 2,
+            "1091": 1,
+            "1094": 1,
+            "1093": 1,
+            "1108": 3,
+            "1102": 2,
+            "1004": 38,
+            "1099": 2
+          },
+          "errors": {
+            "1040:0x59": 3,
+            "1156:0x59": 1,
+            "1162:0x59": 1,
+            "1040:0x16": 1,
+            "1020:0x59": 1,
+            "1191:0x59": 1,
+            "1207:0x59": 1,
+            "1005:0x2": 46,
+            "1033:0x59": 1,
+            "1158:0x2": 6,
+            "1130:0x59": 2
+          },
+          "window_tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     0 children.\n\n",
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b"
+        },
+        {
+          "boundary_ioctls": [],
+          "x11_counters": null,
+          "resource_reads": {},
+          "name": "library-1234-0",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "./vendor-toolchest: Cannot open configuration file /usr/lib/X11/system.chestrc\n"
+          },
+          "successful_calls": {
+            "1040": 9,
+            "1024": 3,
+            "1047": 3,
+            "1005": 9,
+            "1003": 80,
+            "1006": 9,
+            "1056": 2,
+            "1134": 1,
+            "1017": 9,
+            "1062": 8,
+            "1158": 1,
+            "1160": 2,
+            "1107": 1,
+            "1105": 2,
+            "1091": 1,
+            "1094": 1,
+            "1093": 1,
+            "1108": 3,
+            "1102": 2,
+            "1100": 9,
+            "1004": 38,
+            "1099": 2
+          },
+          "errors": {
+            "1040:0x59": 3,
+            "1156:0x59": 1,
+            "1162:0x59": 1,
+            "1040:0x16": 1,
+            "1020:0x59": 1,
+            "1191:0x59": 1,
+            "1207:0x59": 1,
+            "1005:0x2": 46,
+            "1033:0x59": 1,
+            "1003:0xb": 9,
+            "1158:0x2": 6,
+            "1130:0x59": 2
+          },
+          "window_tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     0 children.\n\n",
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b"
+        },
+        {
+          "boundary_ioctls": [],
+          "x11_counters": null,
+          "resource_reads": {},
+          "name": "library-1234-1",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "./vendor-toolchest: Cannot open configuration file /usr/lib/X11/system.chestrc\n"
+          },
+          "successful_calls": {
+            "1040": 9,
+            "1024": 3,
+            "1047": 3,
+            "1005": 9,
+            "1003": 80,
+            "1006": 9,
+            "1056": 2,
+            "1134": 1,
+            "1017": 9,
+            "1062": 8,
+            "1158": 1,
+            "1160": 2,
+            "1107": 1,
+            "1105": 2,
+            "1091": 1,
+            "1094": 1,
+            "1093": 1,
+            "1108": 3,
+            "1102": 2,
+            "1100": 9,
+            "1004": 38,
+            "1099": 2
+          },
+          "errors": {
+            "1040:0x59": 3,
+            "1156:0x59": 1,
+            "1162:0x59": 1,
+            "1040:0x16": 1,
+            "1020:0x59": 1,
+            "1191:0x59": 1,
+            "1207:0x59": 1,
+            "1005:0x2": 46,
+            "1033:0x59": 1,
+            "1003:0xb": 9,
+            "1158:0x2": 6,
+            "1130:0x59": 2
+          },
+          "window_tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     0 children.\n\n",
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b"
+        },
+        {
+          "boundary_ioctls": [],
+          "x11_counters": null,
+          "resource_reads": {},
+          "name": "library-1234-2",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "./vendor-toolchest: Cannot open configuration file /usr/lib/X11/system.chestrc\n"
+          },
+          "successful_calls": {
+            "1040": 9,
+            "1024": 3,
+            "1047": 3,
+            "1005": 9,
+            "1003": 80,
+            "1006": 9,
+            "1056": 2,
+            "1134": 1,
+            "1017": 9,
+            "1062": 8,
+            "1158": 1,
+            "1160": 2,
+            "1107": 1,
+            "1105": 2,
+            "1091": 1,
+            "1094": 1,
+            "1093": 1,
+            "1108": 3,
+            "1102": 2,
+            "1100": 9,
+            "1004": 38,
+            "1099": 2
+          },
+          "errors": {
+            "1040:0x59": 3,
+            "1156:0x59": 1,
+            "1162:0x59": 1,
+            "1040:0x16": 1,
+            "1020:0x59": 1,
+            "1191:0x59": 1,
+            "1207:0x59": 1,
+            "1005:0x2": 46,
+            "1033:0x59": 1,
+            "1003:0xb": 9,
+            "1158:0x2": 6,
+            "1130:0x59": 2
+          },
+          "window_tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     0 children.\n\n",
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b"
+        },
+        {
+          "boundary_ioctls": [
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446896,
+              "v0": 89,
+              "a3": 1
+            }
+          ],
+          "x11_counters": {
+            "requests": 264,
+            "processed": 260,
+            "events": 0
+          },
+          "resource_reads": {
+            "/emul/irix/usr/lib/X11/app-defaults/Toolchest": [
+              {
+                "requested": 4281,
+                "returned": 4281,
+                "error": 0
+              }
+            ],
+            "/emul/irix/usr/lib/X11/system.chestrc": [
+              {
+                "requested": 4096,
+                "returned": 4096,
+                "error": 0
+              },
+              {
+                "requested": 4096,
+                "returned": 2364,
+                "error": 0
+              },
+              {
+                "requested": 4096,
+                "returned": 0,
+                "error": 0
+              }
+            ]
+          },
+          "name": "resources-0-0",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "Warning: Color name \"SGIGray76\" is not defined\nWarning: Color name \"SGIDarkGray\" is not defined\nWarning: translation table syntax error: Unknown keysym name:  osfActivate\nWarning: ... found while parsing ':<Key>osfActivate:ManagerParentActivate()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfBeginLine\nWarning: ... found while parsing ':<Key>osfBeginLine:ManagerGadgetTraverseHome()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfSelect\nWarning: ... found while parsing ':<Key>osfSelect:ManagerGadgetSelect()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfSelect\nWarning: ... found while parsing ':<Key>osfSelect:MenuBarGadgetSelect()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfActivate\nWarning: ... found while parsing ':<Key>osfActivate:ManagerParentActivate()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfHelp\nWarning: ... found while parsing ':<Key>osfHelp:MenuHelp()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: \n    Cannot parse default background color spec\n\nXIO:  fatal IO error 89 (Function not implemented) on X server \"127.0.0.1:98.0\"\r\n      after 264 requests (260 known processed) with 0 events remaining.\r\n"
+          },
+          "successful_calls": {
+            "1040": 9,
+            "1024": 80,
+            "1005": 61,
+            "1003": 312,
+            "1006": 62,
+            "1056": 2,
+            "1134": 1,
+            "1047": 1,
+            "1017": 15,
+            "1062": 11,
+            "1158": 3,
+            "1160": 54,
+            "1107": 2,
+            "1105": 4,
+            "1091": 2,
+            "1094": 2,
+            "1093": 2,
+            "1108": 8,
+            "1102": 6,
+            "1004": 184,
+            "1099": 2,
+            "1100": 2,
+            "1106": 1
+          },
+          "errors": {
+            "1040:0x59": 4,
+            "1156:0x59": 1,
+            "1162:0x59": 7,
+            "1040:0x16": 1,
+            "1020:0x59": 1,
+            "1191:0x59": 1,
+            "1207:0x59": 1,
+            "1054:0x59": 52,
+            "1019:0x59": 25,
+            "1033:0x59": 85,
+            "1005:0x2": 10,
+            "1158:0x2": 17,
+            "1164:0x59": 2,
+            "1002:0x59": 1,
+            "1003:0xb": 2,
+            "1130:0x59": 2
+          },
+          "window_tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     1 child:\n     0x200001 \"vendor-toolchest\": (\"vendor-toolchest\" \"Toolchest\")  1x1+10+35  +10+35\n\n",
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b"
+        },
+        {
+          "boundary_ioctls": [
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446896,
+              "v0": 89,
+              "a3": 1
+            }
+          ],
+          "x11_counters": {
+            "requests": 263,
+            "processed": 259,
+            "events": 0
+          },
+          "resource_reads": {
+            "/emul/irix/usr/lib/X11/app-defaults/Toolchest": [
+              {
+                "requested": 4281,
+                "returned": 4281,
+                "error": 0
+              }
+            ],
+            "/emul/irix/usr/lib/X11/system.chestrc": [
+              {
+                "requested": 4096,
+                "returned": 4096,
+                "error": 0
+              },
+              {
+                "requested": 4096,
+                "returned": 2364,
+                "error": 0
+              },
+              {
+                "requested": 4096,
+                "returned": 0,
+                "error": 0
+              }
+            ]
+          },
+          "name": "resources-0-1",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "Warning: Color name \"SGIGray76\" is not defined\nWarning: Color name \"SGIDarkGray\" is not defined\nWarning: translation table syntax error: Unknown keysym name:  osfActivate\nWarning: ... found while parsing ':<Key>osfActivate:ManagerParentActivate()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfBeginLine\nWarning: ... found while parsing ':<Key>osfBeginLine:ManagerGadgetTraverseHome()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfSelect\nWarning: ... found while parsing ':<Key>osfSelect:ManagerGadgetSelect()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfSelect\nWarning: ... found while parsing ':<Key>osfSelect:MenuBarGadgetSelect()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfActivate\nWarning: ... found while parsing ':<Key>osfActivate:ManagerParentActivate()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfHelp\nWarning: ... found while parsing ':<Key>osfHelp:MenuHelp()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: \n    Cannot parse default background color spec\n\nXIO:  fatal IO error 89 (Function not implemented) on X server \"127.0.0.1:98.0\"\r\n      after 263 requests (259 known processed) with 0 events remaining.\r\n"
+          },
+          "successful_calls": {
+            "1040": 9,
+            "1024": 80,
+            "1005": 61,
+            "1003": 305,
+            "1006": 61,
+            "1056": 2,
+            "1134": 1,
+            "1047": 1,
+            "1017": 15,
+            "1062": 8,
+            "1158": 3,
+            "1160": 54,
+            "1107": 1,
+            "1105": 2,
+            "1091": 1,
+            "1094": 1,
+            "1093": 1,
+            "1108": 7,
+            "1102": 4,
+            "1004": 179,
+            "1099": 3
+          },
+          "errors": {
+            "1040:0x59": 4,
+            "1156:0x59": 1,
+            "1162:0x59": 7,
+            "1040:0x16": 1,
+            "1020:0x59": 1,
+            "1191:0x59": 1,
+            "1207:0x59": 1,
+            "1054:0x59": 52,
+            "1019:0x59": 25,
+            "1033:0x59": 84,
+            "1005:0x2": 10,
+            "1158:0x2": 17,
+            "1164:0x59": 2,
+            "1002:0x59": 1,
+            "1130:0x59": 2
+          },
+          "window_tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     4 children:\n     0x200017 (has no name): ()  188x102+10+35  +10+35\n        3 children:\n        0x20001c (has no name): ()  144x344+0+0  +10+35\n        0x20001a (has no name): ()  187x52+0+0  +10+35\n        0x200018 (has no name): ()  188x102+0+0  +10+35\n     0x200012 (has no name): ()  5x5+10+35  +10+35\n        2 children:\n        0x20001e (has no name): ()  16x16+0+0  +10+35\n        0x200013 (has no name): ()  158x248+0+0  +10+35\n           3 children:\n           0x20001d (has no name): ()  154x24+2+50  +12+85\n           0x20001b (has no name): ()  154x24+2+26  +12+61\n           0x200019 (has no name): ()  154x24+2+2  +12+37\n     0x200001 \"vendor-toolchest\": (\"vendor-toolchest\" \"Toolchest\")  1x1+10+35  +10+35\n     0x600001 (has no name): ()  1x1+-2+-2  +-2+-2\n\n",
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b"
+        },
+        {
+          "boundary_ioctls": [
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446896,
+              "v0": 89,
+              "a3": 1
+            }
+          ],
+          "x11_counters": {
+            "requests": 263,
+            "processed": 259,
+            "events": 0
+          },
+          "resource_reads": {
+            "/emul/irix/usr/lib/X11/app-defaults/Toolchest": [
+              {
+                "requested": 4281,
+                "returned": 4281,
+                "error": 0
+              }
+            ],
+            "/emul/irix/usr/lib/X11/system.chestrc": [
+              {
+                "requested": 4096,
+                "returned": 4096,
+                "error": 0
+              },
+              {
+                "requested": 4096,
+                "returned": 2364,
+                "error": 0
+              },
+              {
+                "requested": 4096,
+                "returned": 0,
+                "error": 0
+              }
+            ]
+          },
+          "name": "resources-0-2",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "Warning: Color name \"SGIGray76\" is not defined\nWarning: Color name \"SGIDarkGray\" is not defined\nWarning: translation table syntax error: Unknown keysym name:  osfActivate\nWarning: ... found while parsing ':<Key>osfActivate:ManagerParentActivate()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfBeginLine\nWarning: ... found while parsing ':<Key>osfBeginLine:ManagerGadgetTraverseHome()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfSelect\nWarning: ... found while parsing ':<Key>osfSelect:ManagerGadgetSelect()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfSelect\nWarning: ... found while parsing ':<Key>osfSelect:MenuBarGadgetSelect()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfActivate\nWarning: ... found while parsing ':<Key>osfActivate:ManagerParentActivate()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfHelp\nWarning: ... found while parsing ':<Key>osfHelp:MenuHelp()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: \n    Cannot parse default background color spec\n\nXIO:  fatal IO error 89 (Function not implemented) on X server \"127.0.0.1:98.0\"\r\n      after 263 requests (259 known processed) with 0 events remaining.\r\n"
+          },
+          "successful_calls": {
+            "1040": 9,
+            "1024": 80,
+            "1005": 61,
+            "1003": 305,
+            "1006": 61,
+            "1056": 2,
+            "1134": 1,
+            "1047": 1,
+            "1017": 15,
+            "1062": 8,
+            "1158": 3,
+            "1160": 54,
+            "1107": 1,
+            "1105": 2,
+            "1091": 1,
+            "1094": 1,
+            "1093": 1,
+            "1108": 7,
+            "1102": 4,
+            "1100": 8,
+            "1004": 179,
+            "1099": 3
+          },
+          "errors": {
+            "1040:0x59": 4,
+            "1156:0x59": 1,
+            "1162:0x59": 7,
+            "1040:0x16": 1,
+            "1020:0x59": 1,
+            "1191:0x59": 1,
+            "1207:0x59": 1,
+            "1054:0x59": 52,
+            "1019:0x59": 25,
+            "1033:0x59": 84,
+            "1003:0xb": 8,
+            "1005:0x2": 10,
+            "1158:0x2": 17,
+            "1164:0x59": 2,
+            "1002:0x59": 1,
+            "1130:0x59": 2
+          },
+          "window_tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     4 children:\n     0x200017 (has no name): ()  188x102+10+35  +10+35\n        3 children:\n        0x20001c (has no name): ()  144x344+0+0  +10+35\n        0x20001a (has no name): ()  187x52+0+0  +10+35\n        0x200018 (has no name): ()  188x102+0+0  +10+35\n     0x200012 (has no name): ()  5x5+10+35  +10+35\n        2 children:\n        0x20001e (has no name): ()  16x16+0+0  +10+35\n        0x200013 (has no name): ()  158x248+0+0  +10+35\n           3 children:\n           0x20001d (has no name): ()  154x24+2+50  +12+85\n           0x20001b (has no name): ()  154x24+2+26  +12+61\n           0x200019 (has no name): ()  154x24+2+2  +12+37\n     0x200001 \"vendor-toolchest\": (\"vendor-toolchest\" \"Toolchest\")  1x1+10+35  +10+35\n     0x600001 (has no name): ()  1x1+-2+-2  +-2+-2\n\n",
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b"
+        },
+        {
+          "boundary_ioctls": [
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446896,
+              "v0": 89,
+              "a3": 1
+            }
+          ],
+          "x11_counters": {
+            "requests": 263,
+            "processed": 259,
+            "events": 0
+          },
+          "resource_reads": {
+            "/emul/irix/usr/lib/X11/app-defaults/Toolchest": [
+              {
+                "requested": 4281,
+                "returned": 4281,
+                "error": 0
+              }
+            ],
+            "/emul/irix/usr/lib/X11/system.chestrc": [
+              {
+                "requested": 4096,
+                "returned": 4096,
+                "error": 0
+              },
+              {
+                "requested": 4096,
+                "returned": 2364,
+                "error": 0
+              },
+              {
+                "requested": 4096,
+                "returned": 0,
+                "error": 0
+              }
+            ]
+          },
+          "name": "resources-1234-0",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "Warning: Color name \"SGIGray76\" is not defined\nWarning: Color name \"SGIDarkGray\" is not defined\nWarning: translation table syntax error: Unknown keysym name:  osfActivate\nWarning: ... found while parsing ':<Key>osfActivate:ManagerParentActivate()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfBeginLine\nWarning: ... found while parsing ':<Key>osfBeginLine:ManagerGadgetTraverseHome()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfSelect\nWarning: ... found while parsing ':<Key>osfSelect:ManagerGadgetSelect()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfSelect\nWarning: ... found while parsing ':<Key>osfSelect:MenuBarGadgetSelect()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfActivate\nWarning: ... found while parsing ':<Key>osfActivate:ManagerParentActivate()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfHelp\nWarning: ... found while parsing ':<Key>osfHelp:MenuHelp()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: \n    Cannot parse default background color spec\n\nXIO:  fatal IO error 89 (Function not implemented) on X server \"127.0.0.1:98.0\"\r\n      after 263 requests (259 known processed) with 0 events remaining.\r\n"
+          },
+          "successful_calls": {
+            "1040": 9,
+            "1024": 81,
+            "1047": 3,
+            "1005": 61,
+            "1003": 305,
+            "1006": 61,
+            "1056": 2,
+            "1134": 1,
+            "1017": 15,
+            "1062": 8,
+            "1158": 3,
+            "1160": 54,
+            "1107": 1,
+            "1105": 2,
+            "1091": 1,
+            "1094": 1,
+            "1093": 1,
+            "1108": 7,
+            "1102": 4,
+            "1004": 146,
+            "1099": 3,
+            "1100": 3
+          },
+          "errors": {
+            "1040:0x59": 4,
+            "1156:0x59": 1,
+            "1162:0x59": 7,
+            "1040:0x16": 1,
+            "1020:0x59": 1,
+            "1191:0x59": 1,
+            "1207:0x59": 1,
+            "1054:0x59": 52,
+            "1019:0x59": 25,
+            "1033:0x59": 84,
+            "1005:0x2": 10,
+            "1158:0x2": 17,
+            "1164:0x59": 2,
+            "1002:0x59": 1,
+            "1003:0xb": 3,
+            "1130:0x59": 2
+          },
+          "window_tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     4 children:\n     0x200017 (has no name): ()  188x102+10+35  +10+35\n        4 children:\n        0x200022 (has no name): ()  16x16+0+0  +10+35\n        0x20001c (has no name): ()  144x344+0+0  +10+35\n        0x20001a (has no name): ()  187x52+0+0  +10+35\n        0x200018 (has no name): ()  188x102+0+0  +10+35\n     0x200012 (has no name): ()  5x5+10+35  +10+35\n        5 children:\n        0x200021 (has no name): ()  16x16+0+0  +10+35\n        0x200020 (has no name): ()  123x128+0+0  +10+35\n        0x20001f (has no name): ()  177x128+0+0  +10+35\n        0x20001e (has no name): ()  16x16+0+0  +10+35\n        0x200013 (has no name): ()  158x248+0+0  +10+35\n           3 children:\n           0x20001d (has no name): ()  154x24+2+50  +12+85\n           0x20001b (has no name): ()  154x24+2+26  +12+61\n           0x200019 (has no name): ()  154x24+2+2  +12+37\n     0x200001 \"vendor-toolchest\": (\"vendor-toolchest\" \"Toolchest\")  1x1+10+35  +10+35\n     0x600001 (has no name): ()  1x1+-2+-2  +-2+-2\n\n",
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b"
+        },
+        {
+          "boundary_ioctls": [
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446896,
+              "v0": 89,
+              "a3": 1
+            }
+          ],
+          "x11_counters": {
+            "requests": 263,
+            "processed": 259,
+            "events": 0
+          },
+          "resource_reads": {
+            "/emul/irix/usr/lib/X11/app-defaults/Toolchest": [
+              {
+                "requested": 4281,
+                "returned": 4281,
+                "error": 0
+              }
+            ],
+            "/emul/irix/usr/lib/X11/system.chestrc": [
+              {
+                "requested": 4096,
+                "returned": 4096,
+                "error": 0
+              },
+              {
+                "requested": 4096,
+                "returned": 2364,
+                "error": 0
+              },
+              {
+                "requested": 4096,
+                "returned": 0,
+                "error": 0
+              }
+            ]
+          },
+          "name": "resources-1234-1",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "Warning: Color name \"SGIGray76\" is not defined\nWarning: Color name \"SGIDarkGray\" is not defined\nWarning: translation table syntax error: Unknown keysym name:  osfActivate\nWarning: ... found while parsing ':<Key>osfActivate:ManagerParentActivate()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfBeginLine\nWarning: ... found while parsing ':<Key>osfBeginLine:ManagerGadgetTraverseHome()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfSelect\nWarning: ... found while parsing ':<Key>osfSelect:ManagerGadgetSelect()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfSelect\nWarning: ... found while parsing ':<Key>osfSelect:MenuBarGadgetSelect()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfActivate\nWarning: ... found while parsing ':<Key>osfActivate:ManagerParentActivate()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfHelp\nWarning: ... found while parsing ':<Key>osfHelp:MenuHelp()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: \n    Cannot parse default background color spec\n\nXIO:  fatal IO error 89 (Function not implemented) on X server \"127.0.0.1:98.0\"\r\n      after 263 requests (259 known processed) with 0 events remaining.\r\n"
+          },
+          "successful_calls": {
+            "1040": 9,
+            "1024": 81,
+            "1047": 3,
+            "1005": 61,
+            "1003": 305,
+            "1006": 61,
+            "1056": 2,
+            "1134": 1,
+            "1017": 15,
+            "1062": 8,
+            "1158": 3,
+            "1160": 54,
+            "1107": 1,
+            "1105": 2,
+            "1091": 1,
+            "1094": 1,
+            "1093": 1,
+            "1108": 7,
+            "1102": 4,
+            "1100": 7,
+            "1004": 146,
+            "1099": 3
+          },
+          "errors": {
+            "1040:0x59": 4,
+            "1156:0x59": 1,
+            "1162:0x59": 7,
+            "1040:0x16": 1,
+            "1020:0x59": 1,
+            "1191:0x59": 1,
+            "1207:0x59": 1,
+            "1054:0x59": 52,
+            "1019:0x59": 25,
+            "1033:0x59": 84,
+            "1003:0xb": 7,
+            "1005:0x2": 10,
+            "1158:0x2": 17,
+            "1164:0x59": 2,
+            "1002:0x59": 1,
+            "1130:0x59": 2
+          },
+          "window_tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     4 children:\n     0x200017 (has no name): ()  188x102+10+35  +10+35\n        3 children:\n        0x20001c (has no name): ()  16x16+0+0  +10+35\n        0x20001a (has no name): ()  16x16+0+0  +10+35\n        0x200018 (has no name): ()  188x102+0+0  +10+35\n     0x200012 (has no name): ()  5x5+10+35  +10+35\n        1 child:\n        0x200013 (has no name): ()  157x52+0+0  +10+35\n           2 children:\n           0x20001b (has no name): ()  153x24+2+26  +12+61\n           0x200019 (has no name): ()  153x24+2+2  +12+37\n     0x200001 \"vendor-toolchest\": (\"vendor-toolchest\" \"Toolchest\")  1x1+10+35  +10+35\n     0x600001 (has no name): ()  1x1+-2+-2  +-2+-2\n\n",
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b"
+        },
+        {
+          "boundary_ioctls": [
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446896,
+              "v0": 89,
+              "a3": 1
+            }
+          ],
+          "x11_counters": {
+            "requests": 263,
+            "processed": 259,
+            "events": 0
+          },
+          "resource_reads": {
+            "/emul/irix/usr/lib/X11/app-defaults/Toolchest": [
+              {
+                "requested": 4281,
+                "returned": 4281,
+                "error": 0
+              }
+            ],
+            "/emul/irix/usr/lib/X11/system.chestrc": [
+              {
+                "requested": 4096,
+                "returned": 4096,
+                "error": 0
+              },
+              {
+                "requested": 4096,
+                "returned": 2364,
+                "error": 0
+              },
+              {
+                "requested": 4096,
+                "returned": 0,
+                "error": 0
+              }
+            ]
+          },
+          "name": "resources-1234-2",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "Warning: Color name \"SGIGray76\" is not defined\nWarning: Color name \"SGIDarkGray\" is not defined\nWarning: translation table syntax error: Unknown keysym name:  osfActivate\nWarning: ... found while parsing ':<Key>osfActivate:ManagerParentActivate()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfBeginLine\nWarning: ... found while parsing ':<Key>osfBeginLine:ManagerGadgetTraverseHome()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfSelect\nWarning: ... found while parsing ':<Key>osfSelect:ManagerGadgetSelect()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfSelect\nWarning: ... found while parsing ':<Key>osfSelect:MenuBarGadgetSelect()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfActivate\nWarning: ... found while parsing ':<Key>osfActivate:ManagerParentActivate()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfHelp\nWarning: ... found while parsing ':<Key>osfHelp:MenuHelp()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: \n    Cannot parse default background color spec\n\nXIO:  fatal IO error 89 (Function not implemented) on X server \"127.0.0.1:98.0\"\r\n      after 263 requests (259 known processed) with 0 events remaining.\r\n"
+          },
+          "successful_calls": {
+            "1040": 9,
+            "1024": 81,
+            "1047": 3,
+            "1005": 61,
+            "1003": 305,
+            "1006": 61,
+            "1056": 2,
+            "1134": 1,
+            "1017": 15,
+            "1062": 8,
+            "1158": 3,
+            "1160": 54,
+            "1107": 1,
+            "1105": 2,
+            "1091": 1,
+            "1094": 1,
+            "1093": 1,
+            "1108": 7,
+            "1102": 4,
+            "1004": 146,
+            "1099": 3
+          },
+          "errors": {
+            "1040:0x59": 4,
+            "1156:0x59": 1,
+            "1162:0x59": 7,
+            "1040:0x16": 1,
+            "1020:0x59": 1,
+            "1191:0x59": 1,
+            "1207:0x59": 1,
+            "1054:0x59": 52,
+            "1019:0x59": 25,
+            "1033:0x59": 84,
+            "1005:0x2": 10,
+            "1158:0x2": 17,
+            "1164:0x59": 2,
+            "1002:0x59": 1,
+            "1130:0x59": 2
+          },
+          "window_tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     4 children:\n     0x200017 (has no name): ()  188x102+10+35  +10+35\n        4 children:\n        0x200022 (has no name): ()  16x16+0+0  +10+35\n        0x20001c (has no name): ()  144x344+0+0  +10+35\n        0x20001a (has no name): ()  187x52+0+0  +10+35\n        0x200018 (has no name): ()  188x102+0+0  +10+35\n     0x200012 (has no name): ()  5x5+10+35  +10+35\n        5 children:\n        0x200021 (has no name): ()  16x16+0+0  +10+35\n        0x200020 (has no name): ()  123x128+0+0  +10+35\n        0x20001f (has no name): ()  177x128+0+0  +10+35\n        0x20001e (has no name): ()  16x16+0+0  +10+35\n        0x200013 (has no name): ()  158x248+0+0  +10+35\n           3 children:\n           0x20001d (has no name): ()  154x24+2+50  +12+85\n           0x20001b (has no name): ()  154x24+2+26  +12+61\n           0x200019 (has no name): ()  154x24+2+2  +12+37\n     0x200001 \"vendor-toolchest\": (\"vendor-toolchest\" \"Toolchest\")  1x1+10+35  +10+35\n     0x600001 (has no name): ()  1x1+-2+-2  +-2+-2\n\n",
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b"
+        }
+      ]
+    },
+    {
+      "kind": "fxstat",
+      "kernel_abi": "lp64",
+      "mode": "ordinary",
+      "status": "passed",
+      "cases": 520,
+      "controls": 12,
+      "clean_shutdown": true,
+      "directory": ".work/irix-fxstat/runs/lp64-ordinary-5e2nd9e4",
+      "result_sha256": "5303d8dbdccfbd3216fc6580b92579684d635412f54be88413b725577b7812ba",
+      "execution_sources": {
+        "lab/irix-lp64/runner.c": "005bdf3fffce5fb8ca79073e92cc41431aa953550c41014183d5de986a104463",
+        "lab/irix-toolchest/session.c": "e183b4aefdfb428e01dc609230e87a7546a0b31e9d4b5e236503e0a8bb3b09f5",
+        "lab/irix-fxstat/native-stat.c": "bb23dfe73955b1bb5dccf509a8effa1f0455950e81dd23f90003b98040e3dc92",
+        "scripts/probe-irix-fxstat.py": "064c41221129a8d2cfdcaaca71c7b9fbe28497dbc64a249d8efc6fd4bee6791c",
+        "scripts/probe-netbsd.py": "adfa9547fa98af28fd55e4e155e7667b2b0a8c7cea8aee8d58079da946b72a1d",
+        "scripts/probe-irix-runtime.py": "89b946e035ecf0525b3c08cdc80ca0b77d8db6aa90fd60cf410ddc7eb3a4d553",
+        "scripts/probe-irix-tcp.py": "78663a86615334b984c8b883584ebf38171fc2bd98d0f9d5bc98b7f5a1005a36",
+        "scripts/irix-fxstat-records.py": "543b064681cdf2cf979c07a4ad5bfba658910088b725890cc47eaf47e8236fcc",
+        "scripts/irix-xstat-records.py": "80f8ae2048a7413c910ec3a6d514106b46f6aa1cc60c803b0dd65e2ec54de8b5",
+        "lab/irix-fxstat/setup.sh": "aff6b9a0037fec24cf47eb240e8275833f279e183e50766a6d27d18ed41ae095"
+      },
+      "toolchest": [
+        {
+          "boundary_ioctls": [],
+          "x11_counters": null,
+          "resource_reads": {},
+          "name": "library-0-0",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "./vendor-toolchest: Cannot open configuration file /usr/lib/X11/system.chestrc\n"
+          },
+          "successful_calls": {
+            "1040": 9,
+            "1024": 2,
+            "1005": 9,
+            "1003": 80,
+            "1006": 9,
+            "1056": 2,
+            "1134": 1,
+            "1047": 1,
+            "1017": 9,
+            "1062": 8,
+            "1158": 1,
+            "1160": 2,
+            "1107": 1,
+            "1105": 2,
+            "1091": 1,
+            "1094": 1,
+            "1093": 1,
+            "1108": 3,
+            "1102": 2,
+            "1004": 37,
+            "1099": 1,
+            "1100": 15
+          },
+          "errors": {
+            "1040:0x59": 3,
+            "1156:0x59": 1,
+            "1162:0x59": 1,
+            "1040:0x16": 1,
+            "1020:0x59": 1,
+            "1191:0x59": 1,
+            "1207:0x59": 1,
+            "1005:0x2": 49,
+            "1033:0x59": 1,
+            "1158:0x2": 6,
+            "1003:0xb": 15,
+            "1130:0x59": 2
+          },
+          "window_tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     1 child:\n     0x200001 \"vendor-toolchest\": (\"vendor-toolchest\" \"Toolchest\")  1x1+0+0  +0+0\n\n",
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b"
+        },
+        {
+          "boundary_ioctls": [],
+          "x11_counters": null,
+          "resource_reads": {},
+          "name": "library-0-1",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "./vendor-toolchest: Cannot open configuration file /usr/lib/X11/system.chestrc\n"
+          },
+          "successful_calls": {
+            "1040": 9,
+            "1024": 2,
+            "1005": 9,
+            "1003": 80,
+            "1006": 9,
+            "1056": 2,
+            "1134": 1,
+            "1047": 1,
+            "1017": 9,
+            "1062": 8,
+            "1158": 1,
+            "1160": 2,
+            "1107": 1,
+            "1105": 2,
+            "1091": 1,
+            "1094": 1,
+            "1093": 1,
+            "1108": 3,
+            "1102": 2,
+            "1004": 38,
+            "1099": 2
+          },
+          "errors": {
+            "1040:0x59": 3,
+            "1156:0x59": 1,
+            "1162:0x59": 1,
+            "1040:0x16": 1,
+            "1020:0x59": 1,
+            "1191:0x59": 1,
+            "1207:0x59": 1,
+            "1005:0x2": 46,
+            "1033:0x59": 1,
+            "1158:0x2": 6,
+            "1130:0x59": 2
+          },
+          "window_tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     0 children.\n\n",
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b"
+        },
+        {
+          "boundary_ioctls": [],
+          "x11_counters": null,
+          "resource_reads": {},
+          "name": "library-0-2",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "./vendor-toolchest: Cannot open configuration file /usr/lib/X11/system.chestrc\n"
+          },
+          "successful_calls": {
+            "1040": 9,
+            "1024": 2,
+            "1005": 9,
+            "1003": 80,
+            "1006": 9,
+            "1056": 2,
+            "1134": 1,
+            "1047": 1,
+            "1017": 9,
+            "1062": 8,
+            "1158": 1,
+            "1160": 2,
+            "1107": 1,
+            "1105": 2,
+            "1091": 1,
+            "1094": 1,
+            "1093": 1,
+            "1108": 3,
+            "1102": 2,
+            "1004": 38,
+            "1099": 2
+          },
+          "errors": {
+            "1040:0x59": 3,
+            "1156:0x59": 1,
+            "1162:0x59": 1,
+            "1040:0x16": 1,
+            "1020:0x59": 1,
+            "1191:0x59": 1,
+            "1207:0x59": 1,
+            "1005:0x2": 46,
+            "1033:0x59": 1,
+            "1158:0x2": 6,
+            "1130:0x59": 2
+          },
+          "window_tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     0 children.\n\n",
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b"
+        },
+        {
+          "boundary_ioctls": [],
+          "x11_counters": null,
+          "resource_reads": {},
+          "name": "library-1234-0",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "./vendor-toolchest: Cannot open configuration file /usr/lib/X11/system.chestrc\n"
+          },
+          "successful_calls": {
+            "1040": 9,
+            "1024": 3,
+            "1047": 3,
+            "1005": 9,
+            "1003": 80,
+            "1006": 9,
+            "1056": 2,
+            "1134": 1,
+            "1017": 9,
+            "1062": 8,
+            "1158": 1,
+            "1160": 2,
+            "1107": 1,
+            "1105": 2,
+            "1091": 1,
+            "1094": 1,
+            "1093": 1,
+            "1108": 3,
+            "1102": 2,
+            "1004": 38,
+            "1099": 2
+          },
+          "errors": {
+            "1040:0x59": 3,
+            "1156:0x59": 1,
+            "1162:0x59": 1,
+            "1040:0x16": 1,
+            "1020:0x59": 1,
+            "1191:0x59": 1,
+            "1207:0x59": 1,
+            "1005:0x2": 46,
+            "1033:0x59": 1,
+            "1158:0x2": 6,
+            "1130:0x59": 2
+          },
+          "window_tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     0 children.\n\n",
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b"
+        },
+        {
+          "boundary_ioctls": [],
+          "x11_counters": null,
+          "resource_reads": {},
+          "name": "library-1234-1",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "./vendor-toolchest: Cannot open configuration file /usr/lib/X11/system.chestrc\n"
+          },
+          "successful_calls": {
+            "1040": 9,
+            "1024": 3,
+            "1047": 3,
+            "1005": 9,
+            "1003": 80,
+            "1006": 9,
+            "1056": 2,
+            "1134": 1,
+            "1017": 9,
+            "1062": 8,
+            "1158": 1,
+            "1160": 2,
+            "1107": 1,
+            "1105": 2,
+            "1091": 1,
+            "1094": 1,
+            "1093": 1,
+            "1108": 3,
+            "1102": 2,
+            "1004": 38,
+            "1099": 2
+          },
+          "errors": {
+            "1040:0x59": 3,
+            "1156:0x59": 1,
+            "1162:0x59": 1,
+            "1040:0x16": 1,
+            "1020:0x59": 1,
+            "1191:0x59": 1,
+            "1207:0x59": 1,
+            "1005:0x2": 46,
+            "1033:0x59": 1,
+            "1158:0x2": 6,
+            "1130:0x59": 2
+          },
+          "window_tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     0 children.\n\n",
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b"
+        },
+        {
+          "boundary_ioctls": [],
+          "x11_counters": null,
+          "resource_reads": {},
+          "name": "library-1234-2",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "./vendor-toolchest: Cannot open configuration file /usr/lib/X11/system.chestrc\n"
+          },
+          "successful_calls": {
+            "1040": 9,
+            "1024": 3,
+            "1047": 3,
+            "1005": 9,
+            "1003": 80,
+            "1006": 9,
+            "1056": 2,
+            "1134": 1,
+            "1017": 9,
+            "1062": 8,
+            "1158": 1,
+            "1160": 2,
+            "1107": 1,
+            "1105": 2,
+            "1091": 1,
+            "1094": 1,
+            "1093": 1,
+            "1108": 3,
+            "1102": 2,
+            "1100": 9,
+            "1004": 38,
+            "1099": 2
+          },
+          "errors": {
+            "1040:0x59": 3,
+            "1156:0x59": 1,
+            "1162:0x59": 1,
+            "1040:0x16": 1,
+            "1020:0x59": 1,
+            "1191:0x59": 1,
+            "1207:0x59": 1,
+            "1005:0x2": 46,
+            "1033:0x59": 1,
+            "1003:0xb": 9,
+            "1158:0x2": 6,
+            "1130:0x59": 2
+          },
+          "window_tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     0 children.\n\n",
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b"
+        },
+        {
+          "boundary_ioctls": [
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446896,
+              "v0": 89,
+              "a3": 1
+            }
+          ],
+          "x11_counters": {
+            "requests": 264,
+            "processed": 260,
+            "events": 0
+          },
+          "resource_reads": {
+            "/emul/irix/usr/lib/X11/app-defaults/Toolchest": [
+              {
+                "requested": 4281,
+                "returned": 4281,
+                "error": 0
+              }
+            ],
+            "/emul/irix/usr/lib/X11/system.chestrc": [
+              {
+                "requested": 4096,
+                "returned": 4096,
+                "error": 0
+              },
+              {
+                "requested": 4096,
+                "returned": 2364,
+                "error": 0
+              },
+              {
+                "requested": 4096,
+                "returned": 0,
+                "error": 0
+              }
+            ]
+          },
+          "name": "resources-0-0",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "Warning: Color name \"SGIGray76\" is not defined\nWarning: Color name \"SGIDarkGray\" is not defined\nWarning: translation table syntax error: Unknown keysym name:  osfActivate\nWarning: ... found while parsing ':<Key>osfActivate:ManagerParentActivate()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfBeginLine\nWarning: ... found while parsing ':<Key>osfBeginLine:ManagerGadgetTraverseHome()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfSelect\nWarning: ... found while parsing ':<Key>osfSelect:ManagerGadgetSelect()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfSelect\nWarning: ... found while parsing ':<Key>osfSelect:MenuBarGadgetSelect()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfActivate\nWarning: ... found while parsing ':<Key>osfActivate:ManagerParentActivate()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfHelp\nWarning: ... found while parsing ':<Key>osfHelp:MenuHelp()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: \n    Cannot parse default background color spec\n\nXIO:  fatal IO error 89 (Function not implemented) on X server \"127.0.0.1:98.0\"\r\n      after 264 requests (260 known processed) with 0 events remaining.\r\n"
+          },
+          "successful_calls": {
+            "1040": 9,
+            "1024": 80,
+            "1005": 61,
+            "1003": 312,
+            "1006": 62,
+            "1056": 2,
+            "1134": 1,
+            "1047": 1,
+            "1017": 15,
+            "1062": 11,
+            "1158": 3,
+            "1160": 54,
+            "1107": 2,
+            "1105": 4,
+            "1091": 2,
+            "1094": 2,
+            "1093": 2,
+            "1108": 8,
+            "1102": 6,
+            "1004": 184,
+            "1099": 2,
+            "1100": 4,
+            "1106": 1
+          },
+          "errors": {
+            "1040:0x59": 4,
+            "1156:0x59": 1,
+            "1162:0x59": 7,
+            "1040:0x16": 1,
+            "1020:0x59": 1,
+            "1191:0x59": 1,
+            "1207:0x59": 1,
+            "1054:0x59": 52,
+            "1019:0x59": 25,
+            "1033:0x59": 85,
+            "1005:0x2": 10,
+            "1158:0x2": 17,
+            "1164:0x59": 2,
+            "1002:0x59": 1,
+            "1003:0xb": 4,
+            "1130:0x59": 2
+          },
+          "window_tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     4 children:\n     0x400001 (has no name): ()  1x1+-2+-2  +-2+-2\n     0x200017 (has no name): ()  188x102+10+35  +10+35\n        3 children:\n        0x20001c (has no name): ()  144x344+0+0  +10+35\n        0x20001a (has no name): ()  187x52+0+0  +10+35\n        0x200018 (has no name): ()  188x102+0+0  +10+35\n     0x200012 (has no name): ()  5x5+10+35  +10+35\n        4 children:\n        0x200020 (has no name): ()  16x16+0+0  +10+35\n        0x20001f (has no name): ()  177x128+0+0  +10+35\n        0x20001e (has no name): ()  16x16+0+0  +10+35\n        0x200013 (has no name): ()  158x248+0+0  +10+35\n           3 children:\n           0x20001d (has no name): ()  154x24+2+50  +12+85\n           0x20001b (has no name): ()  154x24+2+26  +12+61\n           0x200019 (has no name): ()  154x24+2+2  +12+37\n     0x200001 \"vendor-toolchest\": (\"vendor-toolchest\" \"Toolchest\")  1x1+10+35  +10+35\n\n",
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b"
+        },
+        {
+          "boundary_ioctls": [
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446896,
+              "v0": 89,
+              "a3": 1
+            }
+          ],
+          "x11_counters": {
+            "requests": 263,
+            "processed": 259,
+            "events": 0
+          },
+          "resource_reads": {
+            "/emul/irix/usr/lib/X11/app-defaults/Toolchest": [
+              {
+                "requested": 4281,
+                "returned": 4281,
+                "error": 0
+              }
+            ],
+            "/emul/irix/usr/lib/X11/system.chestrc": [
+              {
+                "requested": 4096,
+                "returned": 4096,
+                "error": 0
+              },
+              {
+                "requested": 4096,
+                "returned": 2364,
+                "error": 0
+              },
+              {
+                "requested": 4096,
+                "returned": 0,
+                "error": 0
+              }
+            ]
+          },
+          "name": "resources-0-1",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "Warning: Color name \"SGIGray76\" is not defined\nWarning: Color name \"SGIDarkGray\" is not defined\nWarning: translation table syntax error: Unknown keysym name:  osfActivate\nWarning: ... found while parsing ':<Key>osfActivate:ManagerParentActivate()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfBeginLine\nWarning: ... found while parsing ':<Key>osfBeginLine:ManagerGadgetTraverseHome()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfSelect\nWarning: ... found while parsing ':<Key>osfSelect:ManagerGadgetSelect()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfSelect\nWarning: ... found while parsing ':<Key>osfSelect:MenuBarGadgetSelect()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfActivate\nWarning: ... found while parsing ':<Key>osfActivate:ManagerParentActivate()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfHelp\nWarning: ... found while parsing ':<Key>osfHelp:MenuHelp()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: \n    Cannot parse default background color spec\n\nXIO:  fatal IO error 89 (Function not implemented) on X server \"127.0.0.1:98.0\"\r\n      after 263 requests (259 known processed) with 0 events remaining.\r\n"
+          },
+          "successful_calls": {
+            "1040": 9,
+            "1024": 80,
+            "1005": 61,
+            "1003": 305,
+            "1006": 61,
+            "1056": 2,
+            "1134": 1,
+            "1047": 1,
+            "1017": 15,
+            "1062": 8,
+            "1158": 3,
+            "1160": 54,
+            "1107": 1,
+            "1105": 2,
+            "1091": 1,
+            "1094": 1,
+            "1093": 1,
+            "1108": 7,
+            "1102": 4,
+            "1004": 179,
+            "1099": 3
+          },
+          "errors": {
+            "1040:0x59": 4,
+            "1156:0x59": 1,
+            "1162:0x59": 7,
+            "1040:0x16": 1,
+            "1020:0x59": 1,
+            "1191:0x59": 1,
+            "1207:0x59": 1,
+            "1054:0x59": 52,
+            "1019:0x59": 25,
+            "1033:0x59": 84,
+            "1005:0x2": 10,
+            "1158:0x2": 17,
+            "1164:0x59": 2,
+            "1002:0x59": 1,
+            "1130:0x59": 2
+          },
+          "window_tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     4 children:\n     0x200017 (has no name): ()  188x102+10+35  +10+35\n        3 children:\n        0x20001c (has no name): ()  144x344+0+0  +10+35\n        0x20001a (has no name): ()  187x52+0+0  +10+35\n        0x200018 (has no name): ()  188x102+0+0  +10+35\n     0x200012 (has no name): ()  5x5+10+35  +10+35\n        2 children:\n        0x20001e (has no name): ()  16x16+0+0  +10+35\n        0x200013 (has no name): ()  158x248+0+0  +10+35\n           3 children:\n           0x20001d (has no name): ()  154x24+2+50  +12+85\n           0x20001b (has no name): ()  154x24+2+26  +12+61\n           0x200019 (has no name): ()  154x24+2+2  +12+37\n     0x200001 \"vendor-toolchest\": (\"vendor-toolchest\" \"Toolchest\")  1x1+10+35  +10+35\n     0x400001 (has no name): ()  1x1+-2+-2  +-2+-2\n\n",
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b"
+        },
+        {
+          "boundary_ioctls": [
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446896,
+              "v0": 89,
+              "a3": 1
+            }
+          ],
+          "x11_counters": {
+            "requests": 263,
+            "processed": 259,
+            "events": 0
+          },
+          "resource_reads": {
+            "/emul/irix/usr/lib/X11/app-defaults/Toolchest": [
+              {
+                "requested": 4281,
+                "returned": 4281,
+                "error": 0
+              }
+            ],
+            "/emul/irix/usr/lib/X11/system.chestrc": [
+              {
+                "requested": 4096,
+                "returned": 4096,
+                "error": 0
+              },
+              {
+                "requested": 4096,
+                "returned": 2364,
+                "error": 0
+              },
+              {
+                "requested": 4096,
+                "returned": 0,
+                "error": 0
+              }
+            ]
+          },
+          "name": "resources-0-2",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "Warning: Color name \"SGIGray76\" is not defined\nWarning: Color name \"SGIDarkGray\" is not defined\nWarning: translation table syntax error: Unknown keysym name:  osfActivate\nWarning: ... found while parsing ':<Key>osfActivate:ManagerParentActivate()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfBeginLine\nWarning: ... found while parsing ':<Key>osfBeginLine:ManagerGadgetTraverseHome()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfSelect\nWarning: ... found while parsing ':<Key>osfSelect:ManagerGadgetSelect()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfSelect\nWarning: ... found while parsing ':<Key>osfSelect:MenuBarGadgetSelect()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfActivate\nWarning: ... found while parsing ':<Key>osfActivate:ManagerParentActivate()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfHelp\nWarning: ... found while parsing ':<Key>osfHelp:MenuHelp()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: \n    Cannot parse default background color spec\n\nXIO:  fatal IO error 89 (Function not implemented) on X server \"127.0.0.1:98.0\"\r\n      after 263 requests (259 known processed) with 0 events remaining.\r\n"
+          },
+          "successful_calls": {
+            "1040": 9,
+            "1024": 80,
+            "1005": 61,
+            "1003": 305,
+            "1006": 61,
+            "1056": 2,
+            "1134": 1,
+            "1047": 1,
+            "1017": 15,
+            "1062": 8,
+            "1158": 3,
+            "1160": 54,
+            "1107": 1,
+            "1105": 2,
+            "1091": 1,
+            "1094": 1,
+            "1093": 1,
+            "1108": 7,
+            "1102": 4,
+            "1004": 179,
+            "1099": 3
+          },
+          "errors": {
+            "1040:0x59": 4,
+            "1156:0x59": 1,
+            "1162:0x59": 7,
+            "1040:0x16": 1,
+            "1020:0x59": 1,
+            "1191:0x59": 1,
+            "1207:0x59": 1,
+            "1054:0x59": 52,
+            "1019:0x59": 25,
+            "1033:0x59": 84,
+            "1005:0x2": 10,
+            "1158:0x2": 17,
+            "1164:0x59": 2,
+            "1002:0x59": 1,
+            "1130:0x59": 2
+          },
+          "window_tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     1 child:\n     0x400001 (has no name): ()  1x1+-2+-2  +-2+-2\n\n",
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b"
+        },
+        {
+          "boundary_ioctls": [
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446896,
+              "v0": 89,
+              "a3": 1
+            }
+          ],
+          "x11_counters": {
+            "requests": 263,
+            "processed": 259,
+            "events": 0
+          },
+          "resource_reads": {
+            "/emul/irix/usr/lib/X11/app-defaults/Toolchest": [
+              {
+                "requested": 4281,
+                "returned": 4281,
+                "error": 0
+              }
+            ],
+            "/emul/irix/usr/lib/X11/system.chestrc": [
+              {
+                "requested": 4096,
+                "returned": 4096,
+                "error": 0
+              },
+              {
+                "requested": 4096,
+                "returned": 2364,
+                "error": 0
+              },
+              {
+                "requested": 4096,
+                "returned": 0,
+                "error": 0
+              }
+            ]
+          },
+          "name": "resources-1234-0",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "Warning: Color name \"SGIGray76\" is not defined\nWarning: Color name \"SGIDarkGray\" is not defined\nWarning: translation table syntax error: Unknown keysym name:  osfActivate\nWarning: ... found while parsing ':<Key>osfActivate:ManagerParentActivate()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfBeginLine\nWarning: ... found while parsing ':<Key>osfBeginLine:ManagerGadgetTraverseHome()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfSelect\nWarning: ... found while parsing ':<Key>osfSelect:ManagerGadgetSelect()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfSelect\nWarning: ... found while parsing ':<Key>osfSelect:MenuBarGadgetSelect()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfActivate\nWarning: ... found while parsing ':<Key>osfActivate:ManagerParentActivate()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfHelp\nWarning: ... found while parsing ':<Key>osfHelp:MenuHelp()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: \n    Cannot parse default background color spec\n\nXIO:  fatal IO error 89 (Function not implemented) on X server \"127.0.0.1:98.0\"\r\n      after 263 requests (259 known processed) with 0 events remaining.\r\n"
+          },
+          "successful_calls": {
+            "1040": 9,
+            "1024": 81,
+            "1047": 3,
+            "1005": 61,
+            "1003": 305,
+            "1006": 61,
+            "1056": 2,
+            "1134": 1,
+            "1017": 15,
+            "1062": 8,
+            "1158": 3,
+            "1160": 54,
+            "1107": 1,
+            "1105": 2,
+            "1091": 1,
+            "1094": 1,
+            "1093": 1,
+            "1108": 7,
+            "1102": 4,
+            "1100": 7,
+            "1004": 146,
+            "1099": 3
+          },
+          "errors": {
+            "1040:0x59": 4,
+            "1156:0x59": 1,
+            "1162:0x59": 7,
+            "1040:0x16": 1,
+            "1020:0x59": 1,
+            "1191:0x59": 1,
+            "1207:0x59": 1,
+            "1054:0x59": 52,
+            "1019:0x59": 25,
+            "1033:0x59": 84,
+            "1003:0xb": 7,
+            "1005:0x2": 10,
+            "1158:0x2": 17,
+            "1164:0x59": 2,
+            "1002:0x59": 1,
+            "1130:0x59": 2
+          },
+          "window_tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     1 child:\n     0x400001 (has no name): ()  1x1+-2+-2  +-2+-2\n\n",
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b"
+        },
+        {
+          "boundary_ioctls": [
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446896,
+              "v0": 89,
+              "a3": 1
+            }
+          ],
+          "x11_counters": {
+            "requests": 263,
+            "processed": 259,
+            "events": 0
+          },
+          "resource_reads": {
+            "/emul/irix/usr/lib/X11/app-defaults/Toolchest": [
+              {
+                "requested": 4281,
+                "returned": 4281,
+                "error": 0
+              }
+            ],
+            "/emul/irix/usr/lib/X11/system.chestrc": [
+              {
+                "requested": 4096,
+                "returned": 4096,
+                "error": 0
+              },
+              {
+                "requested": 4096,
+                "returned": 2364,
+                "error": 0
+              },
+              {
+                "requested": 4096,
+                "returned": 0,
+                "error": 0
+              }
+            ]
+          },
+          "name": "resources-1234-1",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "Warning: Color name \"SGIGray76\" is not defined\nWarning: Color name \"SGIDarkGray\" is not defined\nWarning: translation table syntax error: Unknown keysym name:  osfActivate\nWarning: ... found while parsing ':<Key>osfActivate:ManagerParentActivate()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfBeginLine\nWarning: ... found while parsing ':<Key>osfBeginLine:ManagerGadgetTraverseHome()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfSelect\nWarning: ... found while parsing ':<Key>osfSelect:ManagerGadgetSelect()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfSelect\nWarning: ... found while parsing ':<Key>osfSelect:MenuBarGadgetSelect()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfActivate\nWarning: ... found while parsing ':<Key>osfActivate:ManagerParentActivate()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfHelp\nWarning: ... found while parsing ':<Key>osfHelp:MenuHelp()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: \n    Cannot parse default background color spec\n\nXIO:  fatal IO error 89 (Function not implemented) on X server \"127.0.0.1:98.0\"\r\n      after 263 requests (259 known processed) with 0 events remaining.\r\n"
+          },
+          "successful_calls": {
+            "1040": 9,
+            "1024": 81,
+            "1047": 3,
+            "1005": 61,
+            "1003": 305,
+            "1006": 61,
+            "1056": 2,
+            "1134": 1,
+            "1017": 15,
+            "1062": 8,
+            "1158": 3,
+            "1160": 54,
+            "1107": 1,
+            "1105": 2,
+            "1091": 1,
+            "1094": 1,
+            "1093": 1,
+            "1108": 7,
+            "1102": 4,
+            "1100": 7,
+            "1004": 146,
+            "1099": 3
+          },
+          "errors": {
+            "1040:0x59": 4,
+            "1156:0x59": 1,
+            "1162:0x59": 7,
+            "1040:0x16": 1,
+            "1020:0x59": 1,
+            "1191:0x59": 1,
+            "1207:0x59": 1,
+            "1054:0x59": 52,
+            "1019:0x59": 25,
+            "1033:0x59": 84,
+            "1003:0xb": 7,
+            "1005:0x2": 10,
+            "1158:0x2": 17,
+            "1164:0x59": 2,
+            "1002:0x59": 1,
+            "1130:0x59": 2
+          },
+          "window_tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     4 children:\n     0x200017 (has no name): ()  188x102+10+35  +10+35\n        3 children:\n        0x20001c (has no name): ()  144x344+0+0  +10+35\n        0x20001a (has no name): ()  187x52+0+0  +10+35\n        0x200018 (has no name): ()  188x102+0+0  +10+35\n     0x200012 (has no name): ()  5x5+10+35  +10+35\n        3 children:\n        0x20001f (has no name): ()  16x16+0+0  +10+35\n        0x20001e (has no name): ()  16x16+0+0  +10+35\n        0x200013 (has no name): ()  158x248+0+0  +10+35\n           3 children:\n           0x20001d (has no name): ()  154x24+2+50  +12+85\n           0x20001b (has no name): ()  154x24+2+26  +12+61\n           0x200019 (has no name): ()  154x24+2+2  +12+37\n     0x200001 \"vendor-toolchest\": (\"vendor-toolchest\" \"Toolchest\")  1x1+10+35  +10+35\n     0x400001 (has no name): ()  1x1+-2+-2  +-2+-2\n\n",
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b"
+        },
+        {
+          "boundary_ioctls": [
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446896,
+              "v0": 89,
+              "a3": 1
+            }
+          ],
+          "x11_counters": {
+            "requests": 263,
+            "processed": 259,
+            "events": 0
+          },
+          "resource_reads": {
+            "/emul/irix/usr/lib/X11/app-defaults/Toolchest": [
+              {
+                "requested": 4281,
+                "returned": 4281,
+                "error": 0
+              }
+            ],
+            "/emul/irix/usr/lib/X11/system.chestrc": [
+              {
+                "requested": 4096,
+                "returned": 4096,
+                "error": 0
+              },
+              {
+                "requested": 4096,
+                "returned": 2364,
+                "error": 0
+              },
+              {
+                "requested": 4096,
+                "returned": 0,
+                "error": 0
+              }
+            ]
+          },
+          "name": "resources-1234-2",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "Warning: Color name \"SGIGray76\" is not defined\nWarning: Color name \"SGIDarkGray\" is not defined\nWarning: translation table syntax error: Unknown keysym name:  osfActivate\nWarning: ... found while parsing ':<Key>osfActivate:ManagerParentActivate()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfBeginLine\nWarning: ... found while parsing ':<Key>osfBeginLine:ManagerGadgetTraverseHome()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfSelect\nWarning: ... found while parsing ':<Key>osfSelect:ManagerGadgetSelect()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfSelect\nWarning: ... found while parsing ':<Key>osfSelect:MenuBarGadgetSelect()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfActivate\nWarning: ... found while parsing ':<Key>osfActivate:ManagerParentActivate()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfHelp\nWarning: ... found while parsing ':<Key>osfHelp:MenuHelp()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: \n    Cannot parse default background color spec\n\nXIO:  fatal IO error 89 (Function not implemented) on X server \"127.0.0.1:98.0\"\r\n      after 263 requests (259 known processed) with 0 events remaining.\r\n"
+          },
+          "successful_calls": {
+            "1040": 9,
+            "1024": 81,
+            "1047": 3,
+            "1005": 61,
+            "1003": 305,
+            "1006": 61,
+            "1056": 2,
+            "1134": 1,
+            "1017": 15,
+            "1062": 8,
+            "1158": 3,
+            "1160": 54,
+            "1107": 1,
+            "1105": 2,
+            "1091": 1,
+            "1094": 1,
+            "1093": 1,
+            "1108": 7,
+            "1102": 4,
+            "1100": 13,
+            "1004": 146,
+            "1099": 3
+          },
+          "errors": {
+            "1040:0x59": 4,
+            "1156:0x59": 1,
+            "1162:0x59": 7,
+            "1040:0x16": 1,
+            "1020:0x59": 1,
+            "1191:0x59": 1,
+            "1207:0x59": 1,
+            "1054:0x59": 52,
+            "1019:0x59": 25,
+            "1033:0x59": 84,
+            "1003:0xb": 13,
+            "1005:0x2": 10,
+            "1158:0x2": 17,
+            "1164:0x59": 2,
+            "1002:0x59": 1,
+            "1130:0x59": 2
+          },
+          "window_tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     4 children:\n     0x200017 (has no name): ()  188x102+10+35  +10+35\n        3 children:\n        0x20001c (has no name): ()  144x344+0+0  +10+35\n        0x20001a (has no name): ()  187x52+0+0  +10+35\n        0x200018 (has no name): ()  188x102+0+0  +10+35\n     0x200012 (has no name): ()  5x5+10+35  +10+35\n        2 children:\n        0x20001e (has no name): ()  16x16+0+0  +10+35\n        0x200013 (has no name): ()  158x248+0+0  +10+35\n           3 children:\n           0x20001d (has no name): ()  154x24+2+50  +12+85\n           0x20001b (has no name): ()  154x24+2+26  +12+61\n           0x200019 (has no name): ()  154x24+2+2  +12+37\n     0x200001 \"vendor-toolchest\": (\"vendor-toolchest\" \"Toolchest\")  1x1+10+35  +10+35\n     0x400001 (has no name): ()  1x1+-2+-2  +-2+-2\n\n",
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b"
+        }
+      ]
+    },
+    {
+      "kind": "fxstat",
+      "kernel_abi": "o32",
+      "mode": "ci",
+      "status": "passed",
+      "cases": 260,
+      "controls": 8,
+      "clean_shutdown": true,
+      "directory": ".work/irix-fxstat/runs/o32-ci-0lpju16o",
+      "result_sha256": "983a8a6e739eed7118afb6682fc7ead8a30f53abfc866174d9b898a2b77c735c",
+      "execution_sources": {
+        "lab/irix-lp64/runner.c": "005bdf3fffce5fb8ca79073e92cc41431aa953550c41014183d5de986a104463",
+        "lab/irix-toolchest/session.c": "e183b4aefdfb428e01dc609230e87a7546a0b31e9d4b5e236503e0a8bb3b09f5",
+        "lab/irix-fxstat/native-stat.c": "bb23dfe73955b1bb5dccf509a8effa1f0455950e81dd23f90003b98040e3dc92",
+        "scripts/probe-irix-fxstat.py": "064c41221129a8d2cfdcaaca71c7b9fbe28497dbc64a249d8efc6fd4bee6791c",
+        "scripts/probe-netbsd.py": "adfa9547fa98af28fd55e4e155e7667b2b0a8c7cea8aee8d58079da946b72a1d",
+        "scripts/probe-irix-runtime.py": "89b946e035ecf0525b3c08cdc80ca0b77d8db6aa90fd60cf410ddc7eb3a4d553",
+        "scripts/probe-irix-tcp.py": "78663a86615334b984c8b883584ebf38171fc2bd98d0f9d5bc98b7f5a1005a36",
+        "scripts/irix-fxstat-records.py": "543b064681cdf2cf979c07a4ad5bfba658910088b725890cc47eaf47e8236fcc",
+        "scripts/irix-xstat-records.py": "80f8ae2048a7413c910ec3a6d514106b46f6aa1cc60c803b0dd65e2ec54de8b5",
+        "lab/irix-fxstat/setup.sh": "aff6b9a0037fec24cf47eb240e8275833f279e183e50766a6d27d18ed41ae095"
+      },
+      "toolchest": []
+    }
+  ],
+  "regression_runs": [
+    {
+      "kind": "xstat",
+      "kernel_abi": "lp64",
+      "mode": "ci",
+      "status": "passed",
+      "cases": 648,
+      "controls": 12,
+      "clean_shutdown": true,
+      "directory": ".work/irix-xstat/runs/lp64-ci-p45jxrx7",
+      "result_sha256": "2eea966a58363bf3472f22573606fe8d59d377a784aa888ee085e2a9d5dd11a1",
+      "execution_sources": {
+        "lab/irix-lp64/runner.c": "005bdf3fffce5fb8ca79073e92cc41431aa953550c41014183d5de986a104463",
+        "lab/irix-toolchest/session.c": "e183b4aefdfb428e01dc609230e87a7546a0b31e9d4b5e236503e0a8bb3b09f5",
+        "lab/irix-xstat/native-stat.c": "cc0270668e117036f0c2f13d9c08bd51e48052278dbd12e6033f2fd651f4db3f",
+        "scripts/probe-irix-xstat.py": "bb6350cbe160659c0b7b6122825260f13d2027fe94ef0767ea646a523227744f",
+        "scripts/probe-netbsd.py": "adfa9547fa98af28fd55e4e155e7667b2b0a8c7cea8aee8d58079da946b72a1d",
+        "scripts/probe-irix-runtime.py": "89b946e035ecf0525b3c08cdc80ca0b77d8db6aa90fd60cf410ddc7eb3a4d553",
+        "scripts/probe-irix-tcp.py": "78663a86615334b984c8b883584ebf38171fc2bd98d0f9d5bc98b7f5a1005a36",
+        "scripts/irix-xstat-records.py": "80f8ae2048a7413c910ec3a6d514106b46f6aa1cc60c803b0dd65e2ec54de8b5",
+        "lab/irix-xstat/setup.sh": "8fe24f8e38be71a8f7004729ca6c0506f4fee8b30feabc90456e11b850e0581e"
+      }
+    },
+    {
+      "kind": "xstat",
+      "kernel_abi": "lp64",
+      "mode": "ordinary",
+      "status": "passed",
+      "cases": 648,
+      "controls": 12,
+      "clean_shutdown": true,
+      "directory": ".work/irix-xstat/runs/lp64-ordinary-md5u4ja_",
+      "result_sha256": "5fb4ac1fda7b0079b096af071ba9703e348b642c268a620a7a36a2cc75108398",
+      "execution_sources": {
+        "lab/irix-lp64/runner.c": "005bdf3fffce5fb8ca79073e92cc41431aa953550c41014183d5de986a104463",
+        "lab/irix-toolchest/session.c": "e183b4aefdfb428e01dc609230e87a7546a0b31e9d4b5e236503e0a8bb3b09f5",
+        "lab/irix-xstat/native-stat.c": "cc0270668e117036f0c2f13d9c08bd51e48052278dbd12e6033f2fd651f4db3f",
+        "scripts/probe-irix-xstat.py": "bb6350cbe160659c0b7b6122825260f13d2027fe94ef0767ea646a523227744f",
+        "scripts/probe-netbsd.py": "adfa9547fa98af28fd55e4e155e7667b2b0a8c7cea8aee8d58079da946b72a1d",
+        "scripts/probe-irix-runtime.py": "89b946e035ecf0525b3c08cdc80ca0b77d8db6aa90fd60cf410ddc7eb3a4d553",
+        "scripts/probe-irix-tcp.py": "78663a86615334b984c8b883584ebf38171fc2bd98d0f9d5bc98b7f5a1005a36",
+        "scripts/irix-xstat-records.py": "80f8ae2048a7413c910ec3a6d514106b46f6aa1cc60c803b0dd65e2ec54de8b5",
+        "lab/irix-xstat/setup.sh": "8fe24f8e38be71a8f7004729ca6c0506f4fee8b30feabc90456e11b850e0581e"
+      }
+    },
+    {
+      "kind": "xstat",
+      "kernel_abi": "o32",
+      "mode": "ci",
+      "status": "passed",
+      "cases": 324,
+      "controls": 8,
+      "clean_shutdown": true,
+      "directory": ".work/irix-xstat/runs/o32-ci-sb4v_fky",
+      "result_sha256": "2f4aeea516e4f61113c1c2a40935af258385da754cbde833f5fdee5ed97fbadf",
+      "execution_sources": {
+        "lab/irix-lp64/runner.c": "005bdf3fffce5fb8ca79073e92cc41431aa953550c41014183d5de986a104463",
+        "lab/irix-toolchest/session.c": "e183b4aefdfb428e01dc609230e87a7546a0b31e9d4b5e236503e0a8bb3b09f5",
+        "lab/irix-xstat/native-stat.c": "cc0270668e117036f0c2f13d9c08bd51e48052278dbd12e6033f2fd651f4db3f",
+        "scripts/probe-irix-xstat.py": "bb6350cbe160659c0b7b6122825260f13d2027fe94ef0767ea646a523227744f",
+        "scripts/probe-netbsd.py": "adfa9547fa98af28fd55e4e155e7667b2b0a8c7cea8aee8d58079da946b72a1d",
+        "scripts/probe-irix-runtime.py": "89b946e035ecf0525b3c08cdc80ca0b77d8db6aa90fd60cf410ddc7eb3a4d553",
+        "scripts/probe-irix-tcp.py": "78663a86615334b984c8b883584ebf38171fc2bd98d0f9d5bc98b7f5a1005a36",
+        "scripts/irix-xstat-records.py": "80f8ae2048a7413c910ec3a6d514106b46f6aa1cc60c803b0dd65e2ec54de8b5",
+        "lab/irix-xstat/setup.sh": "8fe24f8e38be71a8f7004729ca6c0506f4fee8b30feabc90456e11b850e0581e"
+      }
+    },
+    {
+      "kind": "select",
+      "kernel_abi": "lp64",
+      "mode": "ci",
+      "status": "passed",
+      "cases": 552,
+      "clean_shutdown": true,
+      "directory": ".work/irix-select/runs/lp64-ci-nlpp_srp",
+      "result_sha256": "ff95163513c17d3a6c3503f3c37f7f0a70bcbc2e5454ef494ebcc78a01f637fd"
+    },
+    {
+      "kind": "transport",
+      "kernel_abi": "lp64",
+      "mode": "ci",
+      "status": "passed",
+      "cases": 1284,
+      "clean_shutdown": true,
+      "directory": ".work/irix-recvmsg/runs/lp64-ci-ksolu7cu",
+      "result_sha256": "03fc037ca5b762b7c1b8f238afdd6868e16f8d1f3a89573b9eb1e6039af31c10"
+    },
+    {
+      "kind": "transport",
+      "kernel_abi": "o32",
+      "mode": "ci",
+      "status": "passed",
+      "cases": 641,
+      "clean_shutdown": true,
+      "directory": ".work/irix-recvmsg/runs/o32-ci-rzxdcyom",
+      "result_sha256": "5387a05d367668f98e40cccbf48583d0da64fcbeb1eb80277e1d0db9a52acd49"
+    }
+  ],
+  "limits": [
+    "Sockets, anonymous pipes and other descriptor types beyond regular files, directory, FIFO and /dev/null",
+    "Concurrent close/reuse of descriptors and foreign signal interruption",
+    "Other historical version selectors beyond the tested rejected values",
+    "Inode, block-count, timestamp or device values beyond encoded widths",
+    "IRIX project accounting and XFS attributes",
+    "Legacy fstat, lstat and lxstat",
+    "General IRIX application or desktop compatibility"
+  ],
+  "native_differences": [
+    "Device/inode identity, directory size, timestamps and allocation reflect the native filesystem, checked using an independent native fstat observer.",
+    "Filesystem name is unknown; project ID is zero because project accounting is not implemented."
+  ],
+  "fixture_limits": [
+    "The reference changes primary uid/gid without clearing supplementary groups; the native runner clears them. Final fixtures avoid supplementary-group-dependent access checks. The initial mode-0751 directory setup diverged before fxstat; final directory mode is 0755 on both."
+  ],
+  "input_metadata_hashes": {
+    "lab/irix-fxstat/baseline.json": "c854fc088b6d6b560a1a9a0eae44f2430db8d2ebdd2e657393babd389e4b9f48",
+    "lab/irix-fxstat/o32-baseline.json": "4fd12b526bddc98f273b342e9b6e5fc633083de92efaf26cfe9cc5cc5b50d7fb",
+    "lab/irix-fxstat/reference.json": "68b9925338d7f270bbc2cdf0b5fa18036fc53436778100d2d5211d960def716c",
+    "lab/irix-fxstat/abi.json": "7b717d37a378c4be4b2cc5a7f428bd8e6dd0c429cad99f77717abeeadb2632f4",
+    "lab/irix-fxstat/toolchest.json": "620db5967dd78c7f2b1610ed7eb1e6fca695fa0104f74c7d7950fa4d9ca48db8",
+    "lab/irix-fxstat/desktop.json": "1235dc1ae25d5e959a0ff1f806f81d343626ef422a3b075f4d104e92b079298a"
+  },
+  "qualifier_sha256": "56a315cd44965d637416b168b54e4c389ea1322ae593ebe46dc402e485dbf258",
+  "focused_cases": 1300
+}

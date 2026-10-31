@@ -1,0 +1,41 @@
+{
+  "library": {
+    "actual": {
+      "errno_bytes": 0,
+      "errno": 0,
+      "exit": 1,
+      "signal": 0,
+      "killed": 0,
+      "stdout": "",
+      "stderr": "./vendor-toolchest: Cannot open configuration file /usr/lib/X11/system.chestrc\n"
+    },
+    "required_successes": [
+      1158,
+      1160
+    ]
+  },
+  "resources": {
+    "actual": {
+      "errno_bytes": 0,
+      "errno": 0,
+      "exit": 1,
+      "signal": 0,
+      "killed": 0,
+      "stdout": "",
+      "stderr": "Warning: Color name \"SGIGray76\" is not defined\nWarning: Color name \"SGIDarkGray\" is not defined\nWarning: translation table syntax error: Unknown keysym name:  osfActivate\nWarning: ... found while parsing ':<Key>osfActivate:ManagerParentActivate()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfBeginLine\nWarning: ... found while parsing ':<Key>osfBeginLine:ManagerGadgetTraverseHome()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfSelect\nWarning: ... found while parsing ':<Key>osfSelect:ManagerGadgetSelect()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfSelect\nWarning: ... found while parsing ':<Key>osfSelect:MenuBarGadgetSelect()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfActivate\nWarning: ... found while parsing ':<Key>osfActivate:ManagerParentActivate()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfHelp\nWarning: ... found while parsing ':<Key>osfHelp:MenuHelp()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: \n    Cannot parse default background color spec\n\nXIO:  fatal IO error 89 (Function not implemented) on X server \"127.0.0.1:98.0\"\r\n      after REQUESTS requests (PROCESSED known processed) with EVENTS events remaining.\r\n"
+    },
+    "required_successes": [
+      1158,
+      1160,
+      1003
+    ],
+    "required_trace_fragments": [
+      "/emul/irix/usr/lib/X11/app-defaults/Toolchest",
+      "/emul/irix/usr/lib/X11/system.chestrc"
+    ],
+    "stderr_counter_pattern": "after (\\d+) requests \\((\\d+) known processed\\) with (\\d+) events remaining\\.",
+    "stderr_counter_replacement": "after REQUESTS requests (PROCESSED known processed) with EVENTS events remaining.",
+    "required_ioctl_command": 1074033418,
+    "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b"
+  }
+}

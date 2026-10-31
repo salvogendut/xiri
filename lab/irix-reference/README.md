@@ -1,6 +1,6 @@
 # IRIX 6.5.22m reference and vendor probes
 
-Paired transport measurements are retained in the [recvmsg lab](../irix-recvmsg/README.md). The [select lab](../irix-select/README.md) adds guarded readiness and timeout measurements. The [xstat lab](../irix-xstat/README.md) now records both metadata layouts, version and validation order, permissions, large files and page-boundary copies in 648 original-IRIX executions. Descriptor-based `fxstat` is the next proposed reference contract. The [Toolchest session diagnosis](../irix-toolchest/README.md) retains the earlier empty-HOME investigation.
+Paired transport measurements are retained in the [recvmsg lab](../irix-recvmsg/README.md). The [select lab](../irix-select/README.md) adds guarded readiness and timeout measurements. The [xstat lab](../irix-xstat/README.md) now records both metadata layouts, version and validation order, permissions, large files and page-boundary copies in 648 original-IRIX executions. The [fxstat lab](../irix-fxstat/README.md) adds 520 original-IRIX executions covering descriptor lookup order, open modes, inherited unreadable files, close/reuse, sizes, guards and copyout faults. The [Toolchest session diagnosis](../irix-toolchest/README.md) retains the earlier empty-HOME investigation.
 
 Follow-up: [unmodified asa and echo now run on Xiri](../../docs/results/2026-10-30-irix-lp64.md)
 with their original libc and rld. The [desktop lab](../irix-desktop/README.md)

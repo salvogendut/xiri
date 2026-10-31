@@ -44,7 +44,7 @@ child's stdout/stderr are empty. Later runs also retain each case's console
 slice separately.
 
 Every run uses a private disk and ports, halts the guest, and stops its emulator.
-Count this guest within the user's limit of three simultaneous IRIS instances.
+Count this guest within the user's current limit of four simultaneous IRIS instances.
 
 After both modes finish, recheck their saved records with:
 
@@ -56,3 +56,26 @@ python3 scripts/qualify-irix-xclock.py <ci-run> <ordinary-run> \
 The qualifier checks native clock visibility, all four attempts per mode, raw
 trace decoding, absence of a foreign X connection/window, matching frame
 hashes, the loader diagnostic, repeated root fault PCs and clean shutdowns.
+
+The follow-up [actual ELF-map capture](../../docs/results/2026-10-31-irix-xclock-elfmap.md)
+proves that libXmu requests addresses already occupied by libXaw text. Its
+separate original native helper uses verified libc/rld syscall breakpoints
+and native breakpoint/restoration controls, without a kernel change. Run
+from the host, where `genisoimage` is available; the harness launches IRIS in
+the toolbox. Use a stopped completed xclock run as the seed:
+
+```sh
+PYTHONDONTWRITEBYTECODE=1 python3 scripts/probe-irix-xclock-elfmap.py \
+  --seed-directory .work/irix-xclock/runs/ci-lerevng9
+PYTHONDONTWRITEBYTECODE=1 python3 scripts/qualify-irix-xclock-elfmap.py \
+  .work/irix-xclock-loader/runs/ci-nqn5qcww \
+  --output docs/results/2026-10-31-irix-xclock-elfmap.json
+```
+
+The second command uses the completed run recorded in this repository;
+substitute the new run directory to qualify a new capture. Raw memory remains
+private under `.work/irix-xclock-loader`. The public report contains only
+metadata and hashes. The native helper must pass its entry-PC breakpoint
+control before observing vendor code. Both vendor children must exit naturally,
+and the guest must halt cleanly. Count the diagnostic guest within the user's
+current limit of four total simultaneous IRIS instances and stop it afterward.

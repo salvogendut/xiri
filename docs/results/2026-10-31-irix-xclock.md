@@ -45,3 +45,12 @@ retains the same loader diagnostic in its complete serial log. The qualifier
 re-decodes both modes' traces, verifies frame and raw-capture hashes, checks the
 native window and all expected boundaries, and pins each run's actual harness
 sources. No kernel or emulator change was made for xclock.
+
+## Loader follow-up
+
+The [live ELF-map capture](2026-10-31-irix-xclock-elfmap.md) now confirms that
+rld submits libXmu’s linked headers unchanged and both requested load starts
+already contain libXaw text. The fixed-address mapper returns ENOMEM. Native
+breakpoint controls pass before and after analog/digital captures; the guest
+halts cleanly. This establishes the collision cause and a bounded relocation
+work item, without claiming a working clock or a new mapper.

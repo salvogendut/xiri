@@ -1,0 +1,360 @@
+{
+  "schema": 1,
+  "description": "Actual original n32 xclock SGI_ELFMAP collision with libXaw",
+  "run": ".work/irix-xclock-loader/runs/ci-nqn5qcww",
+  "result_sha256": "5c24269785931b83a3a46b3b717df89daae6fbc04cee6ad653d8f509d89ea4bb",
+  "mode": "ci",
+  "clean_shutdown": true,
+  "pin": {
+    "schema": 1,
+    "description": "Measured IRIX xstat on lp64",
+    "ident": "XIRI_IRIX_XSTAT_20261031",
+    "source_revision": "3f309d17fc5e6ea9ccc3b774e8cc1ca8ef277979",
+    "source_branch": "xiri/irix-xstat",
+    "build_arch": "mips64eb",
+    "page_bytes": 8192,
+    "boot_kernel_sha256": "654a695aadd1f3b89a5eccf54b097022248f8d295f854095ef687255adf3785d",
+    "native_kernel_sha256": "e2be3083216c497b6761c0bc63fc33394e34ce7b6929d258a27717939795f4f9",
+    "debug_kernel_sha256": "1308a58505c59d544e7a6bfffc4dff06157e4881220aac8fbd2678acdfa20793",
+    "native_o32_sha256": "c294fbb1f2110445be31c096481ea54ab561c7e59ca5b9fc7171310098d755d4",
+    "source_dirty": false,
+    "emulator_revision": "9df1df14334838a989253efefe26f0547e6da592",
+    "emulator_branch": "xiri/netbsd64-tlb",
+    "emulator_sha256": "1b3f7702ba7f43b5c4fca8ba8884243559f46371d8d67a36ce5e6fee1e595eba",
+    "ci_client_sha256": "8711321aa6eaae440da3c7920b00ae4cf1c7f2abbdb15a9919f58485500ffb6c",
+    "base_disk_sha256": "269038c7b77660c83d3835208fc0b2702c93110c14b3c55a42416f51672cee2a",
+    "nvram_sha256": "ee883474d52f09278287b2044f7aeca61d2e7bc39c0bb8fd85c983ab64063d15",
+    "config_sha256": "63c1031b4ad5fef5826b6c5156176f62eb9da676b545880c31adcaacbc257776",
+    "runtimes": [
+      {
+        "name": "vendor-o32-libc",
+        "path": "/usr/lib/libc.so.1",
+        "sha256": "ea766492103a193e9d404942705e4e28987545e37f699ede232b6c0f8c97c954"
+      },
+      {
+        "name": "vendor-o32-rld",
+        "path": "/lib/rld",
+        "sha256": "30228b54c1e5585b365514eb7c9895b03cc0f61cb898e05e3ddafece87863439"
+      },
+      {
+        "name": "vendor-n32-libc",
+        "path": "/lib32/libc.so.1",
+        "sha256": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e"
+      },
+      {
+        "name": "vendor-n32-rld",
+        "path": "/lib32/rld",
+        "sha256": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b"
+      }
+    ],
+    "config_path": "lab/irix-xstat/XIRI_IRIX_XSTAT"
+  },
+  "sources": {
+    "lab/irix-xclock/elfmap-trace.c": "33689331ec8da87061d1af03866839140b2e581fb3ba22d71fdd15e2d8990479",
+    "scripts/probe-irix-xclock-elfmap.py": "5c28528f3ba77314047c0bf092a06a49c7f68c33b9141c3403e58cbe5212767f",
+    "scripts/probe-netbsd.py": "adfa9547fa98af28fd55e4e155e7667b2b0a8c7cea8aee8d58079da946b72a1d"
+  },
+  "qualifier_sha256": "505f4334e0b33cfbc1e32495d08b0aaec871fd82d84b6dcbadf67b8970d0d36e",
+  "manifest_sha256": "332e20aa6919636474f191affda4aa5d55dda14cc97f71a00a7003756c223d79",
+  "captures": [
+    {
+      "name": "native-before",
+      "raw_sha256": "27cdcc5000f520a509fd5941d6ee997e0882a80aa1801cc6460d6f9b57d63034",
+      "records": [
+        "EXEC pc=0000000000400090 guard=intact",
+        "NATIVE breakpoint=00400090 restored=yes guard=intact",
+        "END exit=37 signal=0"
+      ]
+    },
+    {
+      "name": "vendor-analog",
+      "raw_sha256": "5ebc83524ed3ceb6f206134b7e87103240607568d218fe086c08d30bd4a51d21",
+      "maps": [
+        {
+          "library": "/lib32/rld",
+          "requested_headers": [
+            {
+              "type": 1,
+              "offset": 0,
+              "vaddr": 263585792,
+              "paddr": 263585792,
+              "filesz": 151552,
+              "memsz": 151552,
+              "flags": 5,
+              "align": 16384
+            },
+            {
+              "type": 1,
+              "offset": 163840,
+              "vaddr": 264077312,
+              "paddr": 264077312,
+              "filesz": 28672,
+              "memsz": 28672,
+              "flags": 6,
+              "align": 16384
+            }
+          ],
+          "headers_unchanged": true,
+          "returned": {
+            "v0": 263585792,
+            "a3": 0
+          },
+          "memory_before": [
+            {
+              "address": 263585792,
+              "error": 22,
+              "size": 0
+            },
+            {
+              "address": 264077312,
+              "error": 22,
+              "size": 0
+            }
+          ]
+        },
+        {
+          "library": "/usr/lib32/libXaw.so.2",
+          "requested_headers": [
+            {
+              "type": 1,
+              "offset": 0,
+              "vaddr": 255852544,
+              "paddr": 255852544,
+              "filesz": 270336,
+              "memsz": 270336,
+              "flags": 5,
+              "align": 16384
+            },
+            {
+              "type": 1,
+              "offset": 278528,
+              "vaddr": 256131072,
+              "paddr": 256131072,
+              "filesz": 24576,
+              "memsz": 24576,
+              "flags": 6,
+              "align": 16384
+            }
+          ],
+          "headers_unchanged": true,
+          "returned": {
+            "v0": 255852544,
+            "a3": 0
+          },
+          "memory_before": [
+            {
+              "address": 255852544,
+              "error": 22,
+              "size": 0
+            },
+            {
+              "address": 256131072,
+              "error": 22,
+              "size": 0
+            }
+          ]
+        },
+        {
+          "library": "/usr/lib32/libXmu.so",
+          "requested_headers": [
+            {
+              "type": 1,
+              "offset": 0,
+              "vaddr": 255852544,
+              "paddr": 255852544,
+              "filesz": 94208,
+              "memsz": 94208,
+              "flags": 5,
+              "align": 16384
+            },
+            {
+              "type": 1,
+              "offset": 98304,
+              "vaddr": 255950848,
+              "paddr": 255950848,
+              "filesz": 4096,
+              "memsz": 4096,
+              "flags": 6,
+              "align": 16384
+            }
+          ],
+          "headers_unchanged": true,
+          "returned": {
+            "v0": 12,
+            "a3": 1
+          },
+          "memory_before": [
+            {
+              "address": 255852544,
+              "error": 0,
+              "size": 128,
+              "matches": "/usr/lib32/libXaw.so.2",
+              "file_offset": 0,
+              "sha256": "1c02b41210689ed53fe0e0915c0986aa04dd9b510ead0c307dfec6537d5785a0"
+            },
+            {
+              "address": 255950848,
+              "error": 0,
+              "size": 128,
+              "matches": "/usr/lib32/libXaw.so.2",
+              "file_offset": 98304,
+              "sha256": "d2c2bcf8024ab265d04adc0206c3f0f774ff52a38f904a8f685a0d204a71f88d"
+            }
+          ]
+        }
+      ],
+      "exit": 1,
+      "signal": 0
+    },
+    {
+      "name": "vendor-digital",
+      "raw_sha256": "fcb941924e2b3992ea228bc23df579a951bf5294c7a86971965c37cb6334f5db",
+      "maps": [
+        {
+          "library": "/lib32/rld",
+          "requested_headers": [
+            {
+              "type": 1,
+              "offset": 0,
+              "vaddr": 263585792,
+              "paddr": 263585792,
+              "filesz": 151552,
+              "memsz": 151552,
+              "flags": 5,
+              "align": 16384
+            },
+            {
+              "type": 1,
+              "offset": 163840,
+              "vaddr": 264077312,
+              "paddr": 264077312,
+              "filesz": 28672,
+              "memsz": 28672,
+              "flags": 6,
+              "align": 16384
+            }
+          ],
+          "headers_unchanged": true,
+          "returned": {
+            "v0": 263585792,
+            "a3": 0
+          },
+          "memory_before": [
+            {
+              "address": 263585792,
+              "error": 22,
+              "size": 0
+            },
+            {
+              "address": 264077312,
+              "error": 22,
+              "size": 0
+            }
+          ]
+        },
+        {
+          "library": "/usr/lib32/libXaw.so.2",
+          "requested_headers": [
+            {
+              "type": 1,
+              "offset": 0,
+              "vaddr": 255852544,
+              "paddr": 255852544,
+              "filesz": 270336,
+              "memsz": 270336,
+              "flags": 5,
+              "align": 16384
+            },
+            {
+              "type": 1,
+              "offset": 278528,
+              "vaddr": 256131072,
+              "paddr": 256131072,
+              "filesz": 24576,
+              "memsz": 24576,
+              "flags": 6,
+              "align": 16384
+            }
+          ],
+          "headers_unchanged": true,
+          "returned": {
+            "v0": 255852544,
+            "a3": 0
+          },
+          "memory_before": [
+            {
+              "address": 255852544,
+              "error": 22,
+              "size": 0
+            },
+            {
+              "address": 256131072,
+              "error": 22,
+              "size": 0
+            }
+          ]
+        },
+        {
+          "library": "/usr/lib32/libXmu.so",
+          "requested_headers": [
+            {
+              "type": 1,
+              "offset": 0,
+              "vaddr": 255852544,
+              "paddr": 255852544,
+              "filesz": 94208,
+              "memsz": 94208,
+              "flags": 5,
+              "align": 16384
+            },
+            {
+              "type": 1,
+              "offset": 98304,
+              "vaddr": 255950848,
+              "paddr": 255950848,
+              "filesz": 4096,
+              "memsz": 4096,
+              "flags": 6,
+              "align": 16384
+            }
+          ],
+          "headers_unchanged": true,
+          "returned": {
+            "v0": 12,
+            "a3": 1
+          },
+          "memory_before": [
+            {
+              "address": 255852544,
+              "error": 0,
+              "size": 128,
+              "matches": "/usr/lib32/libXaw.so.2",
+              "file_offset": 0,
+              "sha256": "1c02b41210689ed53fe0e0915c0986aa04dd9b510ead0c307dfec6537d5785a0"
+            },
+            {
+              "address": 255950848,
+              "error": 0,
+              "size": 128,
+              "matches": "/usr/lib32/libXaw.so.2",
+              "file_offset": 98304,
+              "sha256": "d2c2bcf8024ab265d04adc0206c3f0f774ff52a38f904a8f685a0d204a71f88d"
+            }
+          ]
+        }
+      ],
+      "exit": 1,
+      "signal": 0
+    },
+    {
+      "name": "native-after",
+      "raw_sha256": "07e3023000eb01d7675dfa33ba11d58b33ddd870c23f0ee9ff6b422950b6ee21",
+      "records": [
+        "EXEC pc=0000000000400090 guard=intact",
+        "NATIVE breakpoint=00400090 restored=yes guard=intact",
+        "END exit=37 signal=0"
+      ]
+    }
+  ],
+  "scope": "Root CI breakpoint observations on the pinned xstat kernel; no relocation implementation or GUI qualification"
+}

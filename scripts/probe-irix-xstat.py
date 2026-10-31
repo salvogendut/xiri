@@ -18,13 +18,16 @@ def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--mode',choices=['ci','ordinary'],default='ci')
     p.add_argument('--kernel-abi',choices=['lp64','o32'],default='lp64')
+    p.add_argument('--kernel-checkpoint',choices=['xstat','fxstat'],default='xstat')
+    p.add_argument('--fixtures-only',action='store_true',help='Skip historical Toolchest observations on a newer kernel')
     p.add_argument('--seed-directory',type=Path,required=True)
     args=p.parse_args();seed=args.seed_directory.resolve()
     parent=json.loads((ROOT/'lab/irix-recvmsg/baseline.json').read_text())
     sr=json.loads((seed/'qualified-result.json').read_text())
     if not (sr['status']=='passed' and sr['clean_shutdown'] and sr['x11'] and sr['pin']==parent):p.error('need a clean qualified recvmsg LP64 X11 seed')
-    pin=json.loads((ROOT/'lab/irix-xstat'/('o32-baseline.json' if args.kernel_abi=='o32' else 'baseline.json')).read_text())
-    build=ROOT/('.work/netbsd-irix-xstat'+('-o32' if args.kernel_abi=='o32' else '')+'-build')
+    if args.kernel_checkpoint!='xstat' and not args.fixtures_only:p.error('newer kernel requires --fixtures-only')
+    pin=json.loads((ROOT/('lab/irix-'+args.kernel_checkpoint)/('o32-baseline.json' if args.kernel_abi=='o32' else 'baseline.json')).read_text())
+    build=ROOT/('.work/netbsd-irix-'+args.kernel_checkpoint+('-o32' if args.kernel_abi=='o32' else '')+'-build')
     probe.IRIS=ROOT/'.work/target-netbsd64/release/iris';probe.CI=ROOT/'.work/target-netbsd64/release/iris-ci'
     for path,key in [(probe.IRIS,'emulator_sha256'),(probe.CI,'ci_client_sha256'),(build/'tftp/netbsd-XIRI_INDY','boot_kernel_sha256'),(build/'kernel-media/netbsd','native_kernel_sha256')]:
         if probe.sha256(path)!=pin[key]:p.error('changed input: '+str(path))
@@ -81,7 +84,7 @@ def main():
     probe.run(['genisoimage','-quiet','-R','-J','-o',directory/'probe.iso',media])
     config=(ROOT/'lab/indy-netbsd/iris.toml').read_text();config=re.sub(r'^tftp_dir = .*$', 'tftp_dir = '+json.dumps(str(build/'tftp')),config,flags=re.M)
     lab=probe.Lab(SimpleNamespace(mode=args.mode,debugger=False,boot_timeout=600),directory,config_text=config)
-    result={'status':'error','mode':args.mode,'kernel_abi':args.kernel_abi,'clean_shutdown':False,'pin':pin,'manifest':manifest,'reference_sha256':probe.sha256(ROOT/'lab/irix-xstat/reference.json'),'seed':str(seed.relative_to(ROOT)),'seed_result_sha256':probe.sha256(seed/'qualified-result.json'),'sources':{n:probe.sha256(ROOT/n) for n in sources+['scripts/probe-irix-xstat.py','scripts/probe-netbsd.py','scripts/probe-irix-runtime.py','scripts/probe-irix-tcp.py','scripts/irix-xstat-records.py','lab/irix-xstat/setup.sh']},'observations':[],'toolchest':[],'started_utc':time.strftime('%Y-%m-%dT%H:%M:%SZ',time.gmtime())}
+    result={'status':'error','mode':args.mode,'kernel_checkpoint':args.kernel_checkpoint,'fixtures_only':args.fixtures_only,'kernel_abi':args.kernel_abi,'clean_shutdown':False,'pin':pin,'manifest':manifest,'reference_sha256':probe.sha256(ROOT/'lab/irix-xstat/reference.json'),'seed':str(seed.relative_to(ROOT)),'seed_result_sha256':probe.sha256(seed/'qualified-result.json'),'sources':{n:probe.sha256(ROOT/n) for n in sources+['scripts/probe-irix-xstat.py','scripts/probe-netbsd.py','scripts/probe-irix-runtime.py','scripts/probe-irix-tcp.py','scripts/irix-xstat-records.py','lab/irix-xstat/setup.sh']},'observations':[],'toolchest':[],'started_utc':time.strftime('%Y-%m-%dT%H:%M:%SZ',time.gmtime())}
     def command(cmd,timeout=90):
         before=len(lab.serial_text());rc=lab.command(cmd,timeout);s=lab.serial_text()[before:]
         if rc:raise RuntimeError('guest command failed: '+cmd)
@@ -131,7 +134,7 @@ def main():
                 if not passed:failures.append(n)
         result['native_metadata']={'paths':paths,'observations':native};result['failures']=failures
         print(str(len(result['observations']))+' xstat cases; differences: '+str(failures),flush=True)
-        if args.kernel_abi=='lp64':
+        if args.kernel_abi=='lp64' and not args.fixtures_only:
             command('test ! -e /emul/irix/usr/lib/X11/system.chestrc')
             command('export PATH=/usr/X11R7/bin:$PATH; '
                     '{ Xvfb :98 -screen 0 640x480x24 -ac -noreset >xstat-xvfb.log 2>&1 & xpid=$!; }; '

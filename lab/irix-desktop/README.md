@@ -1,6 +1,6 @@
 # Desktop dependency and startup boundary lab
 
-For the latest Toolchest diagnosis and session/resource boundary, see the [session lab](../irix-toolchest/README.md) and [results](../../docs/results/2026-10-31-irix-toolchest-session.md). Its kernel remains the qualified [recvmsg implementation](../irix-recvmsg/README.md). The inventory and original startup experiment below remain the historical baseline.
+For the current Toolchest resource boundary, see the [fxstat lab](../irix-fxstat/README.md) and [results](../../docs/results/2026-10-31-irix-fxstat.md). The [session lab](../irix-toolchest/README.md) retains the empty-HOME diagnosis. The [live xclock loader capture](../../docs/results/2026-10-31-irix-xclock-elfmap.md) independently confirms a libXmu/libXaw mapping collision. The inventory and startup experiment below remain the historical baseline.
 
 This checkpoint inventories the supplied n32 4Dwm and Toolchest and measures
 their first startup blockers on the unchanged

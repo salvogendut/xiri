@@ -1,0 +1,197 @@
+{
+  "schema": 1,
+  "syscall": 1160,
+  "arguments": [
+    "int32 version",
+    "int32 file descriptor",
+    "uint32 output pointer"
+  ],
+  "versions": {
+    "2": {
+      "o32_bytes": 136,
+      "n32_bytes": 152
+    },
+    "3": {
+      "o32_bytes": 152,
+      "n32_bytes": 152
+    }
+  },
+  "layouts": {
+    "small": {
+      "dev": {
+        "offset": 0,
+        "bytes": 4
+      },
+      "ino": {
+        "offset": 16,
+        "bytes": 4
+      },
+      "mode": {
+        "offset": 20,
+        "bytes": 4
+      },
+      "nlink": {
+        "offset": 24,
+        "bytes": 4
+      },
+      "uid": {
+        "offset": 28,
+        "bytes": 4
+      },
+      "gid": {
+        "offset": 32,
+        "bytes": 4
+      },
+      "rdev": {
+        "offset": 36,
+        "bytes": 4
+      },
+      "size": {
+        "offset": 48,
+        "bytes": 4
+      },
+      "atime": {
+        "offset": 56,
+        "bytes": 4
+      },
+      "atime_nsec": {
+        "offset": 60,
+        "bytes": 4
+      },
+      "mtime": {
+        "offset": 64,
+        "bytes": 4
+      },
+      "mtime_nsec": {
+        "offset": 68,
+        "bytes": 4
+      },
+      "ctime": {
+        "offset": 72,
+        "bytes": 4
+      },
+      "ctime_nsec": {
+        "offset": 76,
+        "bytes": 4
+      },
+      "blksize": {
+        "offset": 80,
+        "bytes": 4
+      },
+      "blocks": {
+        "offset": 84,
+        "bytes": 4
+      },
+      "fstype": {
+        "offset": 88,
+        "bytes": 16
+      },
+      "projid": {
+        "offset": 104,
+        "bytes": 4
+      }
+    },
+    "wide": {
+      "dev": {
+        "offset": 0,
+        "bytes": 4
+      },
+      "ino": {
+        "offset": 16,
+        "bytes": 8
+      },
+      "mode": {
+        "offset": 24,
+        "bytes": 4
+      },
+      "nlink": {
+        "offset": 28,
+        "bytes": 4
+      },
+      "uid": {
+        "offset": 32,
+        "bytes": 4
+      },
+      "gid": {
+        "offset": 36,
+        "bytes": 4
+      },
+      "rdev": {
+        "offset": 40,
+        "bytes": 4
+      },
+      "size": {
+        "offset": 56,
+        "bytes": 8
+      },
+      "atime": {
+        "offset": 68,
+        "bytes": 4
+      },
+      "atime_nsec": {
+        "offset": 72,
+        "bytes": 4
+      },
+      "mtime": {
+        "offset": 76,
+        "bytes": 4
+      },
+      "mtime_nsec": {
+        "offset": 80,
+        "bytes": 4
+      },
+      "ctime": {
+        "offset": 84,
+        "bytes": 4
+      },
+      "ctime_nsec": {
+        "offset": 88,
+        "bytes": 4
+      },
+      "blksize": {
+        "offset": 92,
+        "bytes": 4
+      },
+      "blocks": {
+        "offset": 96,
+        "bytes": 8
+      },
+      "fstype": {
+        "offset": 104,
+        "bytes": 16
+      },
+      "projid": {
+        "offset": 120,
+        "bytes": 4
+      }
+    }
+  },
+  "measured_rules": [
+    "Descriptor lookup precedes version and output validation; invalid and closed descriptors return EBADF 9.",
+    "Versions 0, 1, 4 and -1 return EINVAL 22 after successful descriptor lookup.",
+    "Read-only, write-only and read-write descriptors support metadata lookup.",
+    "An inherited descriptor remains usable after dropping to uid/gid 1234, even when the file has no access permission bits.",
+    "Closing and reopening the same descriptor observes the newly opened file.",
+    "Output need not be aligned.",
+    "A copy crossing an inaccessible page writes the accessible prefix then returns EFAULT.",
+    "All reserved fields and structure padding are zero.",
+    "The o32 version-2 size field saturates at INT32_MAX; n32 version 2 and both version-3 interfaces preserve the tested 64-bit size.",
+    "The v1 sentinel and tested n32 saved register survive direct and indirect calls."
+  ],
+  "native_differences": [
+    "Device/inode identity, directory size, timestamps and allocation reflect the native filesystem, checked using an independent native fstat observer.",
+    "Filesystem name is unknown; project ID is zero because project accounting is not implemented."
+  ],
+  "unqualified": [
+    "Sockets, anonymous pipes and other descriptor types beyond regular files, directory, FIFO and /dev/null",
+    "Concurrent close/reuse of descriptors and foreign signal interruption",
+    "Other historical version selectors beyond the tested rejected values",
+    "Inode, block-count, timestamp or device values beyond encoded widths",
+    "IRIX project accounting and XFS attributes",
+    "Legacy fstat, lstat and lxstat",
+    "General IRIX application or desktop compatibility"
+  ],
+  "fixture_limits": [
+    "The reference changes primary uid/gid without clearing supplementary groups; the native runner clears them. Final fixtures avoid supplementary-group-dependent access checks. The initial mode-0751 directory setup diverged before fxstat; final directory mode is 0755 on both."
+  ]
+}
