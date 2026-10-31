@@ -1,5 +1,7 @@
 # Original IRIX xclock experiment
 
+Follow-up: collision relocation now lets original analog/digital xclock draw in both execution modes and identities. Timekeeping remains unqualified. See the [new result](../../docs/results/2026-10-31-irix-elfmap-relocation.md).
+
 The user requested a simpler X application alongside Toolchest. This lab uses
 the unmodified n32 `/usr/bin/X11/xclock` from the supplied IRIX 6.5.22m disk,
 with its original libraries and XClock application defaults. It runs on the

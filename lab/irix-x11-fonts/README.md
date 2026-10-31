@@ -1,5 +1,7 @@
 # Original IRIX fonts and locale data
 
+Follow-up: the null-font fault and unsupported resource-access calls are now captured. Imported font availability alone does not resolve this client initialization path. See the [new result](../../docs/results/2026-10-31-irix-winterm-fault.md).
+
 Results: 22 original Screen fonts are indexed; the requested 15-pixel face renders in four native terminal controls. All 16 original xwsh attempts still receive SIGSEGV, even after locale data and synthetic account records are staged. See the [run record](../../docs/results/2026-10-31-irix-winterm-resources.md).
 
 This lab evaluates importing the original fonts requested by xwsh into the

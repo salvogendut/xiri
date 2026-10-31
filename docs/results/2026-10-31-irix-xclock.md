@@ -1,5 +1,7 @@
 # Original IRIX xclock on NetBSD
 
+Follow-up: see the [next checkpoint](2026-10-31-irix-elfmap-relocation.md). This report preserves the earlier observed boundary.
+
 The original n32 xclock is a smaller test than Toolchest, but currently stops
 earlier: rld cannot map `/usr/lib32/libXmu.so`. SGI_ELFMAP returns ENOMEM and the
 program exits 1 before any socket/connect call. Native NetBSD xclock displays

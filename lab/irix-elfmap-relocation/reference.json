@@ -1,0 +1,2486 @@
+{
+  "schema": 1,
+  "release": "IRIX 6.5.22m",
+  "manifest": {
+    "schema": 1,
+    "description": "Original relocation probes; no vendor code",
+    "sources": {
+      "scripts/build-irix-elfmap-relocation.py": "54e94ace9fdc59809630c8b12cb90fd067cece6f77d7bff0ccf6b2da3c0c8c23",
+      "lab/irix-elfmap-relocation/probe.S": "77dbcbb4da00d939b1ba11afee918cabf4ae3254ce3a13e8b3017dc741b1b99e",
+      "lab/irix-elfmap-relocation/probe.ld": "143975a456305a78e074105165dd5218e8a41e5b461191c9e93e6f01081e2431"
+    },
+    "files": {
+      "elfmap-o32": {
+        "sha256": "d2c34d2cea78363d544370d2046e4a61587bdf00ebe408ee43dc97aeb5839c5c",
+        "bytes": 3308
+      },
+      "elfmap-n32": {
+        "sha256": "76d09f3bb64344970f902b074d89b72862733db555d35be00e11b964fdcefdd6",
+        "bytes": 3324
+      },
+      "elfmap-partial": {
+        "sha256": "616377e848a09dd45297569cefc3aae6e091fafc47a08bae85d052d400b453f2",
+        "bytes": 16644
+      },
+      "elfmap-pure-bss": {
+        "sha256": "94eb99947c14e87a6d95b28a81a0aee4da5966a06131dc3f1a1c3db113e338d8",
+        "bytes": 16644
+      },
+      "elfmap-full-and-tail": {
+        "sha256": "f646f33e7a966bfcad69ca78d902b47bd9029b946c1dcc566862a70e05051769",
+        "bytes": 20740
+      },
+      "elfmap-repeat": {
+        "sha256": "630ba400ff44e7d0efe76dddd407271999faafa20240588265c40f47a83e1694",
+        "bytes": 16644
+      },
+      "elfmap-rollback": {
+        "sha256": "78e4e4782323300145beea937c0c0720e20a823ce3af171e48435bef956e9c13",
+        "bytes": 16644
+      },
+      "elfmap-rollback-tail": {
+        "sha256": "8cd7fc08a7efa57e6a4ad4b16a95ebb0c1b0c7c00e2915462b68382d313adbd9",
+        "bytes": 20740
+      },
+      "elfmap-text-fault": {
+        "sha256": "24326ac77e2d2481e7c0671a2fbcf6371fdbd9b4673c4a3dc1e02fafc044d5af",
+        "bytes": 16644
+      },
+      "elfmap-gap-fault": {
+        "sha256": "c33e5aa2e97c8651f61fdcaac45c3f50ac4ee6df08018ea147d4b84709f42b15",
+        "bytes": 16644
+      },
+      "elfmap-count-zero": {
+        "sha256": "c13364d6c4c07ccdcfc8a6bd8f2c6d12ab8682d28e83b9c370f57f2029048c4a",
+        "bytes": 16644
+      },
+      "elfmap-count-one": {
+        "sha256": "1ca757835119f59030903177ed71d6cde054872007607da8a9906918fae770c8",
+        "bytes": 16644
+      },
+      "elfmap-count-three": {
+        "sha256": "00d8ff9b85f683d09944c599178136a128659f34242b18b6088f736192dada15",
+        "bytes": 16644
+      },
+      "elfmap-count-negative": {
+        "sha256": "36296c9e9823e4ac3ab4af9c00e081ba20e587d1cbd98fb8753af8ec12fc5a0e",
+        "bytes": 16644
+      },
+      "elfmap-count-large": {
+        "sha256": "787368724edd479e9483b4b4436fddcbb9d5da98085f86f03a92cd8f2255dd85",
+        "bytes": 16644
+      },
+      "elfmap-bad-headers": {
+        "sha256": "fc22ad531dac14d10a09e4c469b42c346aaf67049425864203cb5fcd121fffb4",
+        "bytes": 16644
+      },
+      "elfmap-null-headers": {
+        "sha256": "5d5b1adb87095e1233c74a1a5bccd72590e27b174317098ddad7daf73f27346f",
+        "bytes": 16644
+      },
+      "elfmap-fd-bad": {
+        "sha256": "57673b30296f39204d4592bdd26343207476ab91dfa454897c32e566ce746a2a",
+        "bytes": 16644
+      },
+      "elfmap-fd-closed": {
+        "sha256": "031a69f443b4dac7d74325ecfba7c6dc82a955d81106b10ccf739a1bf1474c9f",
+        "bytes": 16644
+      },
+      "elfmap-fd-write-only": {
+        "sha256": "c3cc7bb4819019aea5c05f11b3f7881174dc6fbe46f401d90b428b5e7e7937b4",
+        "bytes": 16644
+      },
+      "elfmap-fd-directory": {
+        "sha256": "d7e87f0ae51f5a9ca463fe313aaf57a8a982b8dca88351a43a303548f7da8bad",
+        "bytes": 16644
+      },
+      "elfmap-fd-device": {
+        "sha256": "73591943faada738a942187496f8bcf5a714ae1e90624b3557451cb03e5480ab",
+        "bytes": 16644
+      },
+      "elfmap-fd-read-write": {
+        "sha256": "ea0d039eb89acf36383b337b36bcc3600af89140a4a832e7f216a88530b76bf2",
+        "bytes": 16644
+      },
+      "elfmap-no-execute": {
+        "sha256": "3a0f18a69bc587eeecfbd5678552167f41c4f59480374b75f849e57b9bf3ba70",
+        "bytes": 16644
+      },
+      "elfmap-nonload": {
+        "sha256": "e2017aeb68fca1c01079a0ca8573edad1015c9e475f58d4fe8754a16a86f1ce2",
+        "bytes": 16644
+      },
+      "elfmap-text-write": {
+        "sha256": "b290de326d119b5c8fd1269a0eed45507684bd4ca79e3ef98936b114154b869f",
+        "bytes": 16644
+      },
+      "elfmap-data-exec": {
+        "sha256": "a857a77ac587ed4d41368355dcd5add9cda66e90582829c1df3042345d340d01",
+        "bytes": 16644
+      },
+      "elfmap-text-bss": {
+        "sha256": "d53157c742c0d039a3c21c3905cec78195debadfd9f064bef5c01fbcd595b186",
+        "bytes": 16644
+      },
+      "elfmap-zero-memory": {
+        "sha256": "f5e3d61705c868fcad6277b6d13f490e6e5e0611b8d832009acd888cf27fefdb",
+        "bytes": 16644
+      },
+      "elfmap-file-over-memory": {
+        "sha256": "b98cbe48d1dc174f9315523711a408dec2e032ded1c989fd3b7e6c1b69a07d1a",
+        "bytes": 16644
+      },
+      "elfmap-unaligned-address": {
+        "sha256": "7b7c80bec8795aed438a6f3b8cd39e222b84f1319b2ddb132e6a469f3130240a",
+        "bytes": 16644
+      },
+      "elfmap-unaligned-offset": {
+        "sha256": "0d6e289e5baa57547f63fc12c289c03d51e0e1e09b1f27a8bddccd23e06646c0",
+        "bytes": 16644
+      },
+      "elfmap-nonpower-align": {
+        "sha256": "14bdbed9d2a47eb6594d582c527286a35a4fd71f1a507a7a4e00fe1c04d5ecc6",
+        "bytes": 16644
+      },
+      "elfmap-small-align": {
+        "sha256": "9513c780447872b4719c7d4dc01982d94727c1f34c27889d8ed34ce99fff9109",
+        "bytes": 16644
+      },
+      "elfmap-large-align": {
+        "sha256": "30f7633feb688c9c1faeee03fe0d98c194ed40d0d06dd79d7c0931b5af630d16",
+        "bytes": 16644
+      },
+      "elfmap-incongruent": {
+        "sha256": "7ae0ac26be8fdf88a49262f2610fdcf013587f46a7debeee28b867eac0cba197",
+        "bytes": 16644
+      },
+      "elfmap-overlap": {
+        "sha256": "3ddba1d321e3fba9b48d8557c9f591997e48925715e362e80691cb303f82310c",
+        "bytes": 16644
+      },
+      "elfmap-reversed": {
+        "sha256": "adafde9880a3bd1160ad35b27b2d0eedb2ba449f7ef82365e6da2761c0fd4995",
+        "bytes": 16644
+      },
+      "elfmap-file-overlap": {
+        "sha256": "d0c33224d9db0b31217c2a7b8627d04e9414196a3698dbb31214524f0315025b",
+        "bytes": 16644
+      },
+      "elfmap-offset-wrap": {
+        "sha256": "5d4991cd34b72942083bd10dae24117f15b47bf9042fd3526baffa32fb0492d4",
+        "bytes": 16644
+      },
+      "elfmap-address-wrap": {
+        "sha256": "bebb4090c46ad26d58771473ae4064e0e92bf9c49f4bbded070b8e0dc20b0cb0",
+        "bytes": 16644
+      },
+      "elfmap-oversized": {
+        "sha256": "f840ca083f1db0601794daaec8177e2919957eed89be35c5dc3d354cc9b96747",
+        "bytes": 16644
+      },
+      "elfmap-large-span": {
+        "sha256": "80f72c0e9a19b5794ca7a2f3523ce0baed3f9c9b6f13a38a152cbf101fa433b0",
+        "bytes": 16644
+      },
+      "elfmap-short-file": {
+        "sha256": "0516090430127dc5144b1719365e54ba58bac6124754c6cc436abcf35878c0bd",
+        "bytes": 16387
+      },
+      "elfmap-occupied-rx": {
+        "sha256": "813fc2a7cb91a0fc0939e7830e88c017a8b358dd802c69a8f13206e8350c9be0",
+        "bytes": 16644
+      },
+      "elfmap-occupied-rw": {
+        "sha256": "d0426ef09059531fad73da5a79f43966b2b48d6770a527c7e8c8bc0fff1508c7",
+        "bytes": 16644
+      },
+      "elfmap-occupied-bss": {
+        "sha256": "4fafeaab291f49736580f04ad4b07edc4de3e192a5bb0277a4b34bfc0f7dd781",
+        "bytes": 16644
+      },
+      "elfmap-occupied-gap": {
+        "sha256": "3b2749ce0e7288a5f4f1fdd00ac0c57c4ba23cd6995ca74e8816a7e3f61d5d1c",
+        "bytes": 16644
+      },
+      "elfmap-repeated-collision": {
+        "sha256": "203a1a2f234ac1a24e4c19a362c59f08f4f4b33713582d32208e2f83aabd3569",
+        "bytes": 16644
+      },
+      "elfmap-occupied-fallback": {
+        "sha256": "991e83046f3bf05a572f54bfff650522fd4c6bbd05d29ba3fdc731c8a19a966c",
+        "bytes": 16644
+      },
+      "elfmap-mixed-align": {
+        "sha256": "c4292f22ce41e2c147598505a92f7f49f7ce6503750a2d98196be1e3ef28eb07",
+        "bytes": 16644
+      },
+      "elfmap-mixed-align-zero-residue": {
+        "sha256": "a16b80693b99f120557f3f0747421757b3bbce1712ec646c7f13057957e2b17c",
+        "bytes": 16644
+      },
+      "elfmap-occupied-pure-bss": {
+        "sha256": "f4b82112f7fbd97b4759b709514c90dca40f1b2c88d4ebf30ced881736497345",
+        "bytes": 16644
+      },
+      "elfmap-occupied-full-tail": {
+        "sha256": "f600f4ffdf5095a44fc36f05716dcdac61e7bf8842c3af7dc749dd8a13424b62",
+        "bytes": 20740
+      },
+      "elfmap-upper-edge": {
+        "sha256": "ce39e1fe109bc674665b7896349f17f89bb3af635121ec4d64a1cb1dd2b1028a",
+        "bytes": 16644
+      },
+      "elfmap-no-bounded-space": {
+        "sha256": "5b8dbcb6697168fded511a31a47225f12d70e5ac93ff20f895624f47e3a67394",
+        "bytes": 16644
+      },
+      "elfmap-as-limit-payload": {
+        "sha256": "af25a13911103be196f255f17bbe06e791ddd2f6c6e28a8768e9deb9363c3426",
+        "bytes": 16644
+      },
+      "elfmap-relocated-text-fault": {
+        "sha256": "dca74236fb6e8543b73204206b9e737d0f45b5745460ffd54d514d79613e6c7d",
+        "bytes": 16644
+      },
+      "elfmap-relocated-gap-fault": {
+        "sha256": "31784ffa20efc31a88a8234bab69b45aa91b771634418e17c708ca91bca884a8",
+        "bytes": 16644
+      }
+    },
+    "cases": [
+      {
+        "name": "elfmap-partial",
+        "number": 1,
+        "input": "elfmap-partial",
+        "mode": 493,
+        "action": 1,
+        "block": 0,
+        "fallback": 0,
+        "netbsd": {
+          "v0": 234881024,
+          "a3": 0,
+          "checks": 1,
+          "signal": 0
+        }
+      },
+      {
+        "name": "elfmap-pure-bss",
+        "number": 2,
+        "input": "elfmap-pure-bss",
+        "mode": 493,
+        "action": 1,
+        "block": 0,
+        "fallback": 0,
+        "netbsd": {
+          "v0": 234881024,
+          "a3": 0,
+          "checks": 1,
+          "signal": 0
+        }
+      },
+      {
+        "name": "elfmap-full-and-tail",
+        "number": 3,
+        "input": "elfmap-full-and-tail",
+        "mode": 493,
+        "action": 1,
+        "block": 0,
+        "fallback": 0,
+        "netbsd": {
+          "v0": 234881024,
+          "a3": 0,
+          "checks": 1,
+          "signal": 0
+        }
+      },
+      {
+        "name": "elfmap-repeat",
+        "number": 4,
+        "input": "elfmap-repeat",
+        "mode": 493,
+        "action": 2,
+        "block": 0,
+        "fallback": 0,
+        "netbsd": {
+          "v0": 234881024,
+          "a3": 0,
+          "checks": 3,
+          "signal": 0
+        }
+      },
+      {
+        "name": "elfmap-rollback",
+        "number": 5,
+        "input": "elfmap-rollback",
+        "mode": 493,
+        "action": 5,
+        "block": 0,
+        "fallback": 0,
+        "netbsd": {
+          "v0": 234881024,
+          "a3": 0,
+          "checks": 7,
+          "signal": 0
+        }
+      },
+      {
+        "name": "elfmap-rollback-tail",
+        "number": 6,
+        "input": "elfmap-rollback-tail",
+        "mode": 493,
+        "action": 6,
+        "block": 0,
+        "fallback": 0,
+        "netbsd": {
+          "v0": 234881024,
+          "a3": 0,
+          "checks": 7,
+          "signal": 0
+        }
+      },
+      {
+        "name": "elfmap-text-fault",
+        "number": 7,
+        "input": "elfmap-text-fault",
+        "mode": 493,
+        "action": 3,
+        "block": 0,
+        "fallback": 0,
+        "netbsd": {
+          "v0": 234881024,
+          "a3": 0,
+          "checks": 1,
+          "signal": 11
+        }
+      },
+      {
+        "name": "elfmap-gap-fault",
+        "number": 8,
+        "input": "elfmap-gap-fault",
+        "mode": 493,
+        "action": 4,
+        "block": 0,
+        "fallback": 0,
+        "netbsd": {
+          "v0": 234881024,
+          "a3": 0,
+          "checks": 1,
+          "signal": 11
+        }
+      },
+      {
+        "name": "elfmap-count-zero",
+        "number": 9,
+        "input": "elfmap-count-zero",
+        "mode": 493,
+        "action": 0,
+        "block": 0,
+        "fallback": 0,
+        "netbsd": {
+          "v0": 22,
+          "a3": 1,
+          "checks": 0,
+          "signal": 0
+        }
+      },
+      {
+        "name": "elfmap-count-one",
+        "number": 10,
+        "input": "elfmap-count-one",
+        "mode": 493,
+        "action": 0,
+        "block": 0,
+        "fallback": 0,
+        "netbsd": {
+          "v0": 22,
+          "a3": 1,
+          "checks": 0,
+          "signal": 0
+        }
+      },
+      {
+        "name": "elfmap-count-three",
+        "number": 11,
+        "input": "elfmap-count-three",
+        "mode": 493,
+        "action": 0,
+        "block": 0,
+        "fallback": 0,
+        "netbsd": {
+          "v0": 22,
+          "a3": 1,
+          "checks": 0,
+          "signal": 0
+        }
+      },
+      {
+        "name": "elfmap-count-negative",
+        "number": 12,
+        "input": "elfmap-count-negative",
+        "mode": 493,
+        "action": 0,
+        "block": 0,
+        "fallback": 0,
+        "netbsd": {
+          "v0": 22,
+          "a3": 1,
+          "checks": 0,
+          "signal": 0
+        }
+      },
+      {
+        "name": "elfmap-count-large",
+        "number": 13,
+        "input": "elfmap-count-large",
+        "mode": 493,
+        "action": 0,
+        "block": 0,
+        "fallback": 0,
+        "netbsd": {
+          "v0": 22,
+          "a3": 1,
+          "checks": 0,
+          "signal": 0
+        }
+      },
+      {
+        "name": "elfmap-bad-headers",
+        "number": 14,
+        "input": "elfmap-bad-headers",
+        "mode": 493,
+        "action": 0,
+        "block": 0,
+        "fallback": 0,
+        "netbsd": {
+          "v0": 14,
+          "a3": 1,
+          "checks": 0,
+          "signal": 0
+        }
+      },
+      {
+        "name": "elfmap-null-headers",
+        "number": 15,
+        "input": "elfmap-null-headers",
+        "mode": 493,
+        "action": 0,
+        "block": 0,
+        "fallback": 0,
+        "netbsd": {
+          "v0": 14,
+          "a3": 1,
+          "checks": 0,
+          "signal": 0
+        }
+      },
+      {
+        "name": "elfmap-fd-bad",
+        "number": 16,
+        "input": "elfmap-fd-bad",
+        "mode": 493,
+        "action": 0,
+        "block": 0,
+        "fallback": 0,
+        "netbsd": {
+          "v0": 9,
+          "a3": 1,
+          "checks": 0,
+          "signal": 0
+        }
+      },
+      {
+        "name": "elfmap-fd-closed",
+        "number": 17,
+        "input": "elfmap-fd-closed",
+        "mode": 493,
+        "action": 0,
+        "block": 0,
+        "fallback": 0,
+        "netbsd": {
+          "v0": 9,
+          "a3": 1,
+          "checks": 0,
+          "signal": 0
+        }
+      },
+      {
+        "name": "elfmap-fd-write-only",
+        "number": 18,
+        "input": "elfmap-fd-write-only",
+        "mode": 493,
+        "action": 0,
+        "block": 0,
+        "fallback": 0,
+        "netbsd": {
+          "v0": 9,
+          "a3": 1,
+          "checks": 0,
+          "signal": 0
+        }
+      },
+      {
+        "name": "elfmap-fd-directory",
+        "number": 19,
+        "input": "elfmap-fd-directory",
+        "mode": 493,
+        "action": 0,
+        "block": 0,
+        "fallback": 0,
+        "netbsd": {
+          "v0": 22,
+          "a3": 1,
+          "checks": 0,
+          "signal": 0
+        }
+      },
+      {
+        "name": "elfmap-fd-device",
+        "number": 20,
+        "input": "elfmap-fd-device",
+        "mode": 493,
+        "action": 0,
+        "block": 0,
+        "fallback": 0,
+        "netbsd": {
+          "v0": 22,
+          "a3": 1,
+          "checks": 0,
+          "signal": 0
+        }
+      },
+      {
+        "name": "elfmap-fd-read-write",
+        "number": 21,
+        "input": "elfmap-fd-read-write",
+        "mode": 493,
+        "action": 0,
+        "block": 0,
+        "fallback": 0,
+        "netbsd": {
+          "v0": 26,
+          "a3": 1,
+          "checks": 0,
+          "signal": 0
+        }
+      },
+      {
+        "name": "elfmap-no-execute",
+        "number": 22,
+        "input": "elfmap-no-execute",
+        "mode": 420,
+        "action": 0,
+        "block": 0,
+        "fallback": 0,
+        "netbsd": {
+          "v0": 13,
+          "a3": 1,
+          "checks": 0,
+          "signal": 0
+        }
+      },
+      {
+        "name": "elfmap-nonload",
+        "number": 23,
+        "input": "elfmap-nonload",
+        "mode": 493,
+        "action": 0,
+        "block": 0,
+        "fallback": 0,
+        "netbsd": {
+          "v0": 8,
+          "a3": 1,
+          "checks": 0,
+          "signal": 0
+        }
+      },
+      {
+        "name": "elfmap-text-write",
+        "number": 24,
+        "input": "elfmap-text-write",
+        "mode": 493,
+        "action": 0,
+        "block": 0,
+        "fallback": 0,
+        "netbsd": {
+          "v0": 8,
+          "a3": 1,
+          "checks": 0,
+          "signal": 0
+        }
+      },
+      {
+        "name": "elfmap-data-exec",
+        "number": 25,
+        "input": "elfmap-data-exec",
+        "mode": 493,
+        "action": 0,
+        "block": 0,
+        "fallback": 0,
+        "netbsd": {
+          "v0": 8,
+          "a3": 1,
+          "checks": 0,
+          "signal": 0
+        }
+      },
+      {
+        "name": "elfmap-text-bss",
+        "number": 26,
+        "input": "elfmap-text-bss",
+        "mode": 493,
+        "action": 0,
+        "block": 0,
+        "fallback": 0,
+        "netbsd": {
+          "v0": 8,
+          "a3": 1,
+          "checks": 0,
+          "signal": 0
+        }
+      },
+      {
+        "name": "elfmap-zero-memory",
+        "number": 27,
+        "input": "elfmap-zero-memory",
+        "mode": 493,
+        "action": 0,
+        "block": 0,
+        "fallback": 0,
+        "netbsd": {
+          "v0": 8,
+          "a3": 1,
+          "checks": 0,
+          "signal": 0
+        }
+      },
+      {
+        "name": "elfmap-file-over-memory",
+        "number": 28,
+        "input": "elfmap-file-over-memory",
+        "mode": 493,
+        "action": 0,
+        "block": 0,
+        "fallback": 0,
+        "netbsd": {
+          "v0": 8,
+          "a3": 1,
+          "checks": 0,
+          "signal": 0
+        }
+      },
+      {
+        "name": "elfmap-unaligned-address",
+        "number": 29,
+        "input": "elfmap-unaligned-address",
+        "mode": 493,
+        "action": 0,
+        "block": 0,
+        "fallback": 0,
+        "netbsd": {
+          "v0": 8,
+          "a3": 1,
+          "checks": 0,
+          "signal": 0
+        }
+      },
+      {
+        "name": "elfmap-unaligned-offset",
+        "number": 30,
+        "input": "elfmap-unaligned-offset",
+        "mode": 493,
+        "action": 0,
+        "block": 0,
+        "fallback": 0,
+        "netbsd": {
+          "v0": 8,
+          "a3": 1,
+          "checks": 0,
+          "signal": 0
+        }
+      },
+      {
+        "name": "elfmap-nonpower-align",
+        "number": 31,
+        "input": "elfmap-nonpower-align",
+        "mode": 493,
+        "action": 0,
+        "block": 0,
+        "fallback": 0,
+        "netbsd": {
+          "v0": 8,
+          "a3": 1,
+          "checks": 0,
+          "signal": 0
+        }
+      },
+      {
+        "name": "elfmap-small-align",
+        "number": 32,
+        "input": "elfmap-small-align",
+        "mode": 493,
+        "action": 0,
+        "block": 0,
+        "fallback": 0,
+        "netbsd": {
+          "v0": 8,
+          "a3": 1,
+          "checks": 0,
+          "signal": 0
+        }
+      },
+      {
+        "name": "elfmap-large-align",
+        "number": 33,
+        "input": "elfmap-large-align",
+        "mode": 493,
+        "action": 0,
+        "block": 0,
+        "fallback": 0,
+        "netbsd": {
+          "v0": 8,
+          "a3": 1,
+          "checks": 0,
+          "signal": 0
+        }
+      },
+      {
+        "name": "elfmap-incongruent",
+        "number": 34,
+        "input": "elfmap-incongruent",
+        "mode": 493,
+        "action": 0,
+        "block": 0,
+        "fallback": 0,
+        "netbsd": {
+          "v0": 8,
+          "a3": 1,
+          "checks": 0,
+          "signal": 0
+        }
+      },
+      {
+        "name": "elfmap-overlap",
+        "number": 35,
+        "input": "elfmap-overlap",
+        "mode": 493,
+        "action": 0,
+        "block": 0,
+        "fallback": 0,
+        "netbsd": {
+          "v0": 8,
+          "a3": 1,
+          "checks": 0,
+          "signal": 0
+        }
+      },
+      {
+        "name": "elfmap-reversed",
+        "number": 36,
+        "input": "elfmap-reversed",
+        "mode": 493,
+        "action": 0,
+        "block": 0,
+        "fallback": 0,
+        "netbsd": {
+          "v0": 8,
+          "a3": 1,
+          "checks": 0,
+          "signal": 0
+        }
+      },
+      {
+        "name": "elfmap-file-overlap",
+        "number": 37,
+        "input": "elfmap-file-overlap",
+        "mode": 493,
+        "action": 0,
+        "block": 0,
+        "fallback": 0,
+        "netbsd": {
+          "v0": 8,
+          "a3": 1,
+          "checks": 0,
+          "signal": 0
+        }
+      },
+      {
+        "name": "elfmap-offset-wrap",
+        "number": 38,
+        "input": "elfmap-offset-wrap",
+        "mode": 493,
+        "action": 0,
+        "block": 0,
+        "fallback": 0,
+        "netbsd": {
+          "v0": 8,
+          "a3": 1,
+          "checks": 0,
+          "signal": 0
+        }
+      },
+      {
+        "name": "elfmap-address-wrap",
+        "number": 39,
+        "input": "elfmap-address-wrap",
+        "mode": 493,
+        "action": 0,
+        "block": 0,
+        "fallback": 0,
+        "netbsd": {
+          "v0": 8,
+          "a3": 1,
+          "checks": 0,
+          "signal": 0
+        }
+      },
+      {
+        "name": "elfmap-oversized",
+        "number": 40,
+        "input": "elfmap-oversized",
+        "mode": 493,
+        "action": 0,
+        "block": 0,
+        "fallback": 0,
+        "netbsd": {
+          "v0": 8,
+          "a3": 1,
+          "checks": 0,
+          "signal": 0
+        }
+      },
+      {
+        "name": "elfmap-large-span",
+        "number": 41,
+        "input": "elfmap-large-span",
+        "mode": 493,
+        "action": 0,
+        "block": 0,
+        "fallback": 0,
+        "netbsd": {
+          "v0": 8,
+          "a3": 1,
+          "checks": 0,
+          "signal": 0
+        }
+      },
+      {
+        "name": "elfmap-short-file",
+        "number": 42,
+        "input": "elfmap-short-file",
+        "mode": 493,
+        "action": 0,
+        "block": 0,
+        "fallback": 0,
+        "netbsd": {
+          "v0": 8,
+          "a3": 1,
+          "checks": 0,
+          "signal": 0
+        }
+      },
+      {
+        "name": "elfmap-occupied-rx",
+        "number": 43,
+        "input": "elfmap-occupied-rx",
+        "mode": 493,
+        "action": 1,
+        "block": 234881024,
+        "fallback": 0,
+        "netbsd": {
+          "v0": 234881024,
+          "a3": 0,
+          "checks": 1,
+          "signal": 0
+        }
+      },
+      {
+        "name": "elfmap-occupied-rw",
+        "number": 44,
+        "input": "elfmap-occupied-rw",
+        "mode": 493,
+        "action": 1,
+        "block": 235012096,
+        "fallback": 0,
+        "netbsd": {
+          "v0": 234881024,
+          "a3": 0,
+          "checks": 1,
+          "signal": 0
+        }
+      },
+      {
+        "name": "elfmap-occupied-bss",
+        "number": 45,
+        "input": "elfmap-occupied-bss",
+        "mode": 493,
+        "action": 1,
+        "block": 235020288,
+        "fallback": 0,
+        "netbsd": {
+          "v0": 234881024,
+          "a3": 0,
+          "checks": 1,
+          "signal": 0
+        }
+      },
+      {
+        "name": "elfmap-occupied-gap",
+        "number": 46,
+        "input": "elfmap-occupied-gap",
+        "mode": 493,
+        "action": 1,
+        "block": 234946560,
+        "fallback": 0,
+        "netbsd": {
+          "v0": 234881024,
+          "a3": 0,
+          "checks": 1,
+          "signal": 0
+        }
+      },
+      {
+        "name": "elfmap-repeated-collision",
+        "number": 47,
+        "input": "elfmap-repeated-collision",
+        "mode": 493,
+        "action": 7,
+        "block": 234881024,
+        "fallback": 0,
+        "netbsd": {
+          "v0": 234881024,
+          "a3": 0,
+          "checks": 3,
+          "signal": 0
+        }
+      },
+      {
+        "name": "elfmap-occupied-fallback",
+        "number": 48,
+        "input": "elfmap-occupied-fallback",
+        "mode": 493,
+        "action": 7,
+        "block": 234881024,
+        "fallback": 67108864,
+        "netbsd": {
+          "v0": 234881024,
+          "a3": 0,
+          "checks": 3,
+          "signal": 0
+        }
+      },
+      {
+        "name": "elfmap-mixed-align",
+        "number": 49,
+        "input": "elfmap-mixed-align",
+        "mode": 493,
+        "action": 1,
+        "block": 234897408,
+        "fallback": 0,
+        "netbsd": {
+          "v0": 234881024,
+          "a3": 0,
+          "checks": 1,
+          "signal": 0
+        }
+      },
+      {
+        "name": "elfmap-mixed-align-zero-residue",
+        "number": 50,
+        "input": "elfmap-mixed-align-zero-residue",
+        "mode": 493,
+        "action": 1,
+        "block": 234881024,
+        "fallback": 0,
+        "netbsd": {
+          "v0": 234881024,
+          "a3": 0,
+          "checks": 1,
+          "signal": 0
+        }
+      },
+      {
+        "name": "elfmap-occupied-pure-bss",
+        "number": 51,
+        "input": "elfmap-occupied-pure-bss",
+        "mode": 493,
+        "action": 1,
+        "block": 235012096,
+        "fallback": 0,
+        "netbsd": {
+          "v0": 234881024,
+          "a3": 0,
+          "checks": 1,
+          "signal": 0
+        }
+      },
+      {
+        "name": "elfmap-occupied-full-tail",
+        "number": 52,
+        "input": "elfmap-occupied-full-tail",
+        "mode": 493,
+        "action": 1,
+        "block": 235020288,
+        "fallback": 0,
+        "netbsd": {
+          "v0": 234881024,
+          "a3": 0,
+          "checks": 1,
+          "signal": 0
+        }
+      },
+      {
+        "name": "elfmap-upper-edge",
+        "number": 53,
+        "input": "elfmap-upper-edge",
+        "mode": 493,
+        "action": 1,
+        "block": 1073545216,
+        "fallback": 0,
+        "netbsd": {
+          "v0": 234881024,
+          "a3": 0,
+          "checks": 1,
+          "signal": 0
+        }
+      },
+      {
+        "name": "elfmap-no-bounded-space",
+        "number": 54,
+        "input": "elfmap-no-bounded-space",
+        "mode": 493,
+        "action": 1,
+        "block": 67108864,
+        "fallback": 0,
+        "netbsd": {
+          "v0": 12,
+          "a3": 1,
+          "checks": 0,
+          "signal": 0
+        }
+      },
+      {
+        "name": "elfmap-as-limit-payload",
+        "number": 55,
+        "input": "elfmap-as-limit-payload",
+        "mode": 493,
+        "action": 0,
+        "block": 234881024,
+        "fallback": 0,
+        "netbsd": {
+          "v0": 234881024,
+          "a3": 0,
+          "checks": 0,
+          "signal": 0
+        }
+      },
+      {
+        "name": "elfmap-relocated-text-fault",
+        "number": 56,
+        "input": "elfmap-relocated-text-fault",
+        "mode": 493,
+        "action": 3,
+        "block": 234881024,
+        "fallback": 0,
+        "netbsd": {
+          "v0": 234881024,
+          "a3": 0,
+          "checks": 1,
+          "signal": 11
+        }
+      },
+      {
+        "name": "elfmap-relocated-gap-fault",
+        "number": 57,
+        "input": "elfmap-relocated-gap-fault",
+        "mode": 493,
+        "action": 4,
+        "block": 234881024,
+        "fallback": 0,
+        "netbsd": {
+          "v0": 234881024,
+          "a3": 0,
+          "checks": 1,
+          "signal": 11
+        }
+      }
+    ]
+  },
+  "observations": [
+    {
+      "name": "n32-elfmap-address-wrap-0",
+      "exit": 0,
+      "stdout_hex": "58494531000000270000000cfeedface0000000100000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-address-wrap-1234",
+      "exit": 0,
+      "stdout_hex": "58494531000000270000000cfeedface0000000100000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-as-limit-payload-0",
+      "exit": 0,
+      "stdout_hex": "58494531000000375dc00000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-as-limit-payload-1234",
+      "exit": 0,
+      "stdout_hex": "58494531000000375dc00000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-bad-headers-0",
+      "exit": 0,
+      "stdout_hex": "584945310000000e0000000efeedface0000000100000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-bad-headers-1234",
+      "exit": 0,
+      "stdout_hex": "584945310000000e0000000efeedface0000000100000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-count-large-0",
+      "exit": 0,
+      "stdout_hex": "584945310000000d00000016feedface0000000100000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-count-large-1234",
+      "exit": 0,
+      "stdout_hex": "584945310000000d00000016feedface0000000100000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-count-negative-0",
+      "exit": 0,
+      "stdout_hex": "584945310000000c00000016feedface0000000100000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-count-negative-1234",
+      "exit": 0,
+      "stdout_hex": "584945310000000c00000016feedface0000000100000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-count-one-0",
+      "exit": 0,
+      "stdout_hex": "584945310000000a0e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-count-one-1234",
+      "exit": 0,
+      "stdout_hex": "584945310000000a0e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-count-three-0",
+      "exit": 0,
+      "stdout_hex": "584945310000000b00000008feedface0000000100000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-count-three-1234",
+      "exit": 0,
+      "stdout_hex": "584945310000000b00000008feedface0000000100000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-count-zero-0",
+      "exit": 0,
+      "stdout_hex": "584945310000000900000016feedface0000000100000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-count-zero-1234",
+      "exit": 0,
+      "stdout_hex": "584945310000000900000016feedface0000000100000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-data-exec-0",
+      "exit": 0,
+      "stdout_hex": "58494531000000190e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-data-exec-1234",
+      "exit": 0,
+      "stdout_hex": "58494531000000190e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-fd-bad-0",
+      "exit": 0,
+      "stdout_hex": "584945310000001000000009feedface0000000100000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-fd-bad-1234",
+      "exit": 0,
+      "stdout_hex": "584945310000001000000009feedface0000000100000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-fd-closed-0",
+      "exit": 0,
+      "stdout_hex": "58494531000000110e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-fd-closed-1234",
+      "exit": 0,
+      "stdout_hex": "58494531000000110e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-fd-device-0",
+      "exit": 0,
+      "stdout_hex": "58494531000000140e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-fd-device-1234",
+      "exit": 0,
+      "stdout_hex": "58494531000000140e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-fd-directory-0",
+      "exit": 0,
+      "stdout_hex": "58494531000000130e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-fd-directory-1234",
+      "exit": 0,
+      "stdout_hex": "58494531000000130e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-fd-read-write-0",
+      "exit": 0,
+      "stdout_hex": "58494531000000150e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-fd-read-write-1234",
+      "exit": 0,
+      "stdout_hex": "58494531000000150e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-fd-write-only-0",
+      "exit": 0,
+      "stdout_hex": "58494531000000120e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-fd-write-only-1234",
+      "exit": 0,
+      "stdout_hex": "58494531000000120e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-file-over-memory-0",
+      "exit": 0,
+      "stdout_hex": "584945310000001c0e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-file-over-memory-1234",
+      "exit": 0,
+      "stdout_hex": "584945310000001c0e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-file-overlap-0",
+      "exit": 0,
+      "stdout_hex": "58494531000000250e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-file-overlap-1234",
+      "exit": 0,
+      "stdout_hex": "58494531000000250e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-full-and-tail-0",
+      "exit": 0,
+      "stdout_hex": "58494531000000030e000000feedface0000000000000001000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-full-and-tail-1234",
+      "exit": 0,
+      "stdout_hex": "58494531000000030e000000feedface0000000000000001000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-gap-fault-0",
+      "exit": 139,
+      "stdout_hex": "58494531000000080e000000feedface0000000000000001000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-gap-fault-1234",
+      "exit": 139,
+      "stdout_hex": "58494531000000080e000000feedface0000000000000001000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-incongruent-0",
+      "exit": 0,
+      "stdout_hex": "58494531000000220e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-incongruent-1234",
+      "exit": 0,
+      "stdout_hex": "58494531000000220e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-large-align-0",
+      "exit": 0,
+      "stdout_hex": "58494531000000210e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-large-align-1234",
+      "exit": 0,
+      "stdout_hex": "58494531000000210e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-large-span-0",
+      "exit": 0,
+      "stdout_hex": "58494531000000290e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-large-span-1234",
+      "exit": 0,
+      "stdout_hex": "58494531000000290e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-mixed-align-0",
+      "exit": 0,
+      "stdout_hex": "58494531000000315dc00000feedface000000000000000100000000000000000000000000000000000000000000c000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-mixed-align-1234",
+      "exit": 0,
+      "stdout_hex": "58494531000000315dc00000feedface000000000000000100000000000000000000000000000000000000000000c000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-mixed-align-zero-residue-0",
+      "exit": 0,
+      "stdout_hex": "58494531000000325dc00000feedface0000000000000001000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-mixed-align-zero-residue-1234",
+      "exit": 0,
+      "stdout_hex": "58494531000000325dc00000feedface0000000000000001000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-no-bounded-space-0",
+      "exit": 99,
+      "stdout_hex": "584945310000003600000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-no-bounded-space-1234",
+      "exit": 99,
+      "stdout_hex": "584945310000003600000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-no-execute-0",
+      "exit": 0,
+      "stdout_hex": "58494531000000160e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-no-execute-1234",
+      "exit": 0,
+      "stdout_hex": "58494531000000160e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-nonload-0",
+      "exit": 0,
+      "stdout_hex": "584945310000001700000008feedface0000000100000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-nonload-1234",
+      "exit": 0,
+      "stdout_hex": "584945310000001700000008feedface0000000100000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-nonpower-align-0",
+      "exit": 0,
+      "stdout_hex": "584945310000001f0e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-nonpower-align-1234",
+      "exit": 0,
+      "stdout_hex": "584945310000001f0e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-null-headers-0",
+      "exit": 0,
+      "stdout_hex": "584945310000000f0000000efeedface0000000100000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-null-headers-1234",
+      "exit": 0,
+      "stdout_hex": "584945310000000f0000000efeedface0000000100000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-occupied-bss-0",
+      "exit": 0,
+      "stdout_hex": "584945310000002d5dc00000feedface0000000000000001000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-occupied-bss-1234",
+      "exit": 0,
+      "stdout_hex": "584945310000002d5dc00000feedface0000000000000001000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-occupied-fallback-0",
+      "exit": 0,
+      "stdout_hex": "58494531000000305dc00000feedface00000000000000035dc28000000000005dc50000000000001234567800000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-occupied-fallback-1234",
+      "exit": 0,
+      "stdout_hex": "58494531000000305dc00000feedface00000000000000035dc28000000000005dc50000000000001234567800000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-occupied-full-tail-0",
+      "exit": 0,
+      "stdout_hex": "58494531000000345dc00000feedface0000000000000001000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-occupied-full-tail-1234",
+      "exit": 0,
+      "stdout_hex": "58494531000000345dc00000feedface0000000000000001000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-occupied-gap-0",
+      "exit": 0,
+      "stdout_hex": "584945310000002e0e000000feedface0000000000000001000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-occupied-gap-1234",
+      "exit": 0,
+      "stdout_hex": "584945310000002e0e000000feedface0000000000000001000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-occupied-pure-bss-0",
+      "exit": 0,
+      "stdout_hex": "58494531000000335dc00000feedface0000000000000001000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-occupied-pure-bss-1234",
+      "exit": 0,
+      "stdout_hex": "58494531000000335dc00000feedface0000000000000001000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-occupied-rw-0",
+      "exit": 0,
+      "stdout_hex": "584945310000002c5dc00000feedface0000000000000001000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-occupied-rw-1234",
+      "exit": 0,
+      "stdout_hex": "584945310000002c5dc00000feedface0000000000000001000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-occupied-rx-0",
+      "exit": 0,
+      "stdout_hex": "584945310000002b5dc00000feedface0000000000000001000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-occupied-rx-1234",
+      "exit": 0,
+      "stdout_hex": "584945310000002b5dc00000feedface0000000000000001000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-offset-wrap-0",
+      "exit": 0,
+      "stdout_hex": "58494531000000260000000efeedface0000000100000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-offset-wrap-1234",
+      "exit": 0,
+      "stdout_hex": "58494531000000260000000efeedface0000000100000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-overlap-0",
+      "exit": 0,
+      "stdout_hex": "58494531000000230000000cfeedface0000000100000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-overlap-1234",
+      "exit": 0,
+      "stdout_hex": "58494531000000230000000cfeedface0000000100000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-oversized-0",
+      "exit": 0,
+      "stdout_hex": "58494531000000280e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-oversized-1234",
+      "exit": 0,
+      "stdout_hex": "58494531000000280e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-partial-0",
+      "exit": 0,
+      "stdout_hex": "58494531000000010e000000feedface0000000000000001000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-partial-1234",
+      "exit": 0,
+      "stdout_hex": "58494531000000010e000000feedface0000000000000001000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-pure-bss-0",
+      "exit": 0,
+      "stdout_hex": "58494531000000020e000000feedface0000000000000001000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-pure-bss-1234",
+      "exit": 0,
+      "stdout_hex": "58494531000000020e000000feedface0000000000000001000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-relocated-gap-fault-0",
+      "exit": 139,
+      "stdout_hex": "58494531000000395dc00000feedface0000000000000001000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-relocated-gap-fault-1234",
+      "exit": 139,
+      "stdout_hex": "58494531000000395dc00000feedface0000000000000001000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-relocated-text-fault-0",
+      "exit": 139,
+      "stdout_hex": "58494531000000385dc00000feedface0000000000000001000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-relocated-text-fault-1234",
+      "exit": 139,
+      "stdout_hex": "58494531000000385dc00000feedface0000000000000001000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-repeat-0",
+      "exit": 0,
+      "stdout_hex": "58494531000000040e000000feedface00000000000000030e0000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-repeat-1234",
+      "exit": 0,
+      "stdout_hex": "58494531000000040e000000feedface00000000000000030e0000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-repeated-collision-0",
+      "exit": 0,
+      "stdout_hex": "584945310000002f5dc00000feedface00000000000000035dc28000000000005dc50000000000001234567800000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-repeated-collision-1234",
+      "exit": 0,
+      "stdout_hex": "584945310000002f5dc00000feedface00000000000000035dc28000000000005dc50000000000001234567800000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-reversed-0",
+      "exit": 0,
+      "stdout_hex": "58494531000000240e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-reversed-1234",
+      "exit": 0,
+      "stdout_hex": "58494531000000240e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-rollback-0",
+      "exit": 0,
+      "stdout_hex": "58494531000000050e000000feedface00000000000000035dc000000000000000000000000000001234567800000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-rollback-1234",
+      "exit": 0,
+      "stdout_hex": "58494531000000050e000000feedface00000000000000035dc000000000000000000000000000001234567800000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-rollback-tail-0",
+      "exit": 0,
+      "stdout_hex": "58494531000000060e000000feedface00000000000000035dc000000000000000000000000000001234567800000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-rollback-tail-1234",
+      "exit": 0,
+      "stdout_hex": "58494531000000060e000000feedface00000000000000035dc000000000000000000000000000001234567800000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-short-file-0",
+      "exit": 0,
+      "stdout_hex": "584945310000002a0e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-short-file-1234",
+      "exit": 0,
+      "stdout_hex": "584945310000002a0e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-small-align-0",
+      "exit": 0,
+      "stdout_hex": "58494531000000200e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-small-align-1234",
+      "exit": 0,
+      "stdout_hex": "58494531000000200e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-text-bss-0",
+      "exit": 0,
+      "stdout_hex": "584945310000001a0e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-text-bss-1234",
+      "exit": 0,
+      "stdout_hex": "584945310000001a0e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-text-fault-0",
+      "exit": 139,
+      "stdout_hex": "58494531000000070e000000feedface0000000000000001000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-text-fault-1234",
+      "exit": 139,
+      "stdout_hex": "58494531000000070e000000feedface0000000000000001000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-text-write-0",
+      "exit": 0,
+      "stdout_hex": "58494531000000180e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-text-write-1234",
+      "exit": 0,
+      "stdout_hex": "58494531000000180e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-unaligned-address-0",
+      "exit": 0,
+      "stdout_hex": "584945310000001d0e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-unaligned-address-1234",
+      "exit": 0,
+      "stdout_hex": "584945310000001d0e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-unaligned-offset-0",
+      "exit": 0,
+      "stdout_hex": "584945310000001e0e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-unaligned-offset-1234",
+      "exit": 0,
+      "stdout_hex": "584945310000001e0e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-upper-edge-0",
+      "exit": 0,
+      "stdout_hex": "58494531000000355dc00000feedface0000000000000001000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-upper-edge-1234",
+      "exit": 0,
+      "stdout_hex": "58494531000000355dc00000feedface0000000000000001000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-zero-memory-0",
+      "exit": 0,
+      "stdout_hex": "584945310000001b0000000bfeedface0000000100000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "n32-elfmap-zero-memory-1234",
+      "exit": 0,
+      "stdout_hex": "584945310000001b0000000bfeedface0000000100000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-address-wrap-0",
+      "exit": 0,
+      "stdout_hex": "58494531000000270000000cfeedface0000000100000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-address-wrap-1234",
+      "exit": 0,
+      "stdout_hex": "58494531000000270000000cfeedface0000000100000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-as-limit-payload-0",
+      "exit": 0,
+      "stdout_hex": "58494531000000375dc00000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-as-limit-payload-1234",
+      "exit": 0,
+      "stdout_hex": "58494531000000375dc00000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-bad-headers-0",
+      "exit": 0,
+      "stdout_hex": "584945310000000e0000000efeedface0000000100000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-bad-headers-1234",
+      "exit": 0,
+      "stdout_hex": "584945310000000e0000000efeedface0000000100000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-count-large-0",
+      "exit": 0,
+      "stdout_hex": "584945310000000d00000016feedface0000000100000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-count-large-1234",
+      "exit": 0,
+      "stdout_hex": "584945310000000d00000016feedface0000000100000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-count-negative-0",
+      "exit": 0,
+      "stdout_hex": "584945310000000c00000016feedface0000000100000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-count-negative-1234",
+      "exit": 0,
+      "stdout_hex": "584945310000000c00000016feedface0000000100000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-count-one-0",
+      "exit": 0,
+      "stdout_hex": "584945310000000a0e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-count-one-1234",
+      "exit": 0,
+      "stdout_hex": "584945310000000a0e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-count-three-0",
+      "exit": 0,
+      "stdout_hex": "584945310000000b00000008feedface0000000100000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-count-three-1234",
+      "exit": 0,
+      "stdout_hex": "584945310000000b00000008feedface0000000100000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-count-zero-0",
+      "exit": 0,
+      "stdout_hex": "584945310000000900000016feedface0000000100000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-count-zero-1234",
+      "exit": 0,
+      "stdout_hex": "584945310000000900000016feedface0000000100000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-data-exec-0",
+      "exit": 0,
+      "stdout_hex": "58494531000000190e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-data-exec-1234",
+      "exit": 0,
+      "stdout_hex": "58494531000000190e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-fd-bad-0",
+      "exit": 0,
+      "stdout_hex": "584945310000001000000009feedface0000000100000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-fd-bad-1234",
+      "exit": 0,
+      "stdout_hex": "584945310000001000000009feedface0000000100000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-fd-closed-0",
+      "exit": 0,
+      "stdout_hex": "584945310000001100000009feedface0000000100000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-fd-closed-1234",
+      "exit": 0,
+      "stdout_hex": "584945310000001100000009feedface0000000100000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-fd-device-0",
+      "exit": 0,
+      "stdout_hex": "58494531000000140e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-fd-device-1234",
+      "exit": 0,
+      "stdout_hex": "58494531000000140e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-fd-directory-0",
+      "exit": 0,
+      "stdout_hex": "584945310000001300000013feedface0000000100000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-fd-directory-1234",
+      "exit": 0,
+      "stdout_hex": "584945310000001300000013feedface0000000100000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-fd-read-write-0",
+      "exit": 0,
+      "stdout_hex": "58494531000000150e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-fd-read-write-1234",
+      "exit": 0,
+      "stdout_hex": "58494531000000150e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-fd-write-only-0",
+      "exit": 0,
+      "stdout_hex": "584945310000001200000009feedface0000000100000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-fd-write-only-1234",
+      "exit": 0,
+      "stdout_hex": "584945310000001200000009feedface0000000100000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-file-over-memory-0",
+      "exit": 0,
+      "stdout_hex": "584945310000001c0e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-file-over-memory-1234",
+      "exit": 0,
+      "stdout_hex": "584945310000001c0e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-file-overlap-0",
+      "exit": 0,
+      "stdout_hex": "58494531000000250e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-file-overlap-1234",
+      "exit": 0,
+      "stdout_hex": "58494531000000250e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-full-and-tail-0",
+      "exit": 0,
+      "stdout_hex": "58494531000000030e000000feedface0000000000000001000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-full-and-tail-1234",
+      "exit": 0,
+      "stdout_hex": "58494531000000030e000000feedface0000000000000001000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-gap-fault-0",
+      "exit": 139,
+      "stdout_hex": "58494531000000080e000000feedface0000000000000001000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-gap-fault-1234",
+      "exit": 139,
+      "stdout_hex": "58494531000000080e000000feedface0000000000000001000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-incongruent-0",
+      "exit": 0,
+      "stdout_hex": "58494531000000220e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-incongruent-1234",
+      "exit": 0,
+      "stdout_hex": "58494531000000220e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-large-align-0",
+      "exit": 0,
+      "stdout_hex": "58494531000000210e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-large-align-1234",
+      "exit": 0,
+      "stdout_hex": "58494531000000210e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-large-span-0",
+      "exit": 0,
+      "stdout_hex": "58494531000000290e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-large-span-1234",
+      "exit": 0,
+      "stdout_hex": "58494531000000290e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-mixed-align-0",
+      "exit": 0,
+      "stdout_hex": "58494531000000315dc00000feedface000000000000000100000000000000000000000000000000000000000000c000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-mixed-align-1234",
+      "exit": 0,
+      "stdout_hex": "58494531000000315dc00000feedface000000000000000100000000000000000000000000000000000000000000c000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-mixed-align-zero-residue-0",
+      "exit": 0,
+      "stdout_hex": "58494531000000325dc00000feedface0000000000000001000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-mixed-align-zero-residue-1234",
+      "exit": 0,
+      "stdout_hex": "58494531000000325dc00000feedface0000000000000001000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-no-bounded-space-0",
+      "exit": 99,
+      "stdout_hex": "584945310000003600000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-no-bounded-space-1234",
+      "exit": 99,
+      "stdout_hex": "584945310000003600000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-no-execute-0",
+      "exit": 0,
+      "stdout_hex": "58494531000000160e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-no-execute-1234",
+      "exit": 0,
+      "stdout_hex": "58494531000000160e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-nonload-0",
+      "exit": 0,
+      "stdout_hex": "584945310000001700000008feedface0000000100000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-nonload-1234",
+      "exit": 0,
+      "stdout_hex": "584945310000001700000008feedface0000000100000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-nonpower-align-0",
+      "exit": 0,
+      "stdout_hex": "584945310000001f0e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-nonpower-align-1234",
+      "exit": 0,
+      "stdout_hex": "584945310000001f0e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-null-headers-0",
+      "exit": 0,
+      "stdout_hex": "584945310000000f0000000efeedface0000000100000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-null-headers-1234",
+      "exit": 0,
+      "stdout_hex": "584945310000000f0000000efeedface0000000100000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-occupied-bss-0",
+      "exit": 0,
+      "stdout_hex": "584945310000002d5dc00000feedface0000000000000001000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-occupied-bss-1234",
+      "exit": 0,
+      "stdout_hex": "584945310000002d5dc00000feedface0000000000000001000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-occupied-fallback-0",
+      "exit": 0,
+      "stdout_hex": "58494531000000305dc00000feedface00000000000000035dc28000000000005dc50000000000001234567800000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-occupied-fallback-1234",
+      "exit": 0,
+      "stdout_hex": "58494531000000305dc00000feedface00000000000000035dc28000000000005dc50000000000001234567800000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-occupied-full-tail-0",
+      "exit": 0,
+      "stdout_hex": "58494531000000345dc00000feedface0000000000000001000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-occupied-full-tail-1234",
+      "exit": 0,
+      "stdout_hex": "58494531000000345dc00000feedface0000000000000001000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-occupied-gap-0",
+      "exit": 0,
+      "stdout_hex": "584945310000002e0e000000feedface0000000000000001000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-occupied-gap-1234",
+      "exit": 0,
+      "stdout_hex": "584945310000002e0e000000feedface0000000000000001000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-occupied-pure-bss-0",
+      "exit": 0,
+      "stdout_hex": "58494531000000335dc00000feedface0000000000000001000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-occupied-pure-bss-1234",
+      "exit": 0,
+      "stdout_hex": "58494531000000335dc00000feedface0000000000000001000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-occupied-rw-0",
+      "exit": 0,
+      "stdout_hex": "584945310000002c5dc00000feedface0000000000000001000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-occupied-rw-1234",
+      "exit": 0,
+      "stdout_hex": "584945310000002c5dc00000feedface0000000000000001000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-occupied-rx-0",
+      "exit": 0,
+      "stdout_hex": "584945310000002b5dc00000feedface0000000000000001000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-occupied-rx-1234",
+      "exit": 0,
+      "stdout_hex": "584945310000002b5dc00000feedface0000000000000001000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-offset-wrap-0",
+      "exit": 0,
+      "stdout_hex": "58494531000000260000000efeedface0000000100000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-offset-wrap-1234",
+      "exit": 0,
+      "stdout_hex": "58494531000000260000000efeedface0000000100000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-overlap-0",
+      "exit": 0,
+      "stdout_hex": "58494531000000230000000cfeedface0000000100000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-overlap-1234",
+      "exit": 0,
+      "stdout_hex": "58494531000000230000000cfeedface0000000100000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-oversized-0",
+      "exit": 0,
+      "stdout_hex": "58494531000000280e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-oversized-1234",
+      "exit": 0,
+      "stdout_hex": "58494531000000280e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-partial-0",
+      "exit": 0,
+      "stdout_hex": "58494531000000010e000000feedface0000000000000001000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-partial-1234",
+      "exit": 0,
+      "stdout_hex": "58494531000000010e000000feedface0000000000000001000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-pure-bss-0",
+      "exit": 0,
+      "stdout_hex": "58494531000000020e000000feedface0000000000000001000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-pure-bss-1234",
+      "exit": 0,
+      "stdout_hex": "58494531000000020e000000feedface0000000000000001000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-relocated-gap-fault-0",
+      "exit": 139,
+      "stdout_hex": "58494531000000395dc00000feedface0000000000000001000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-relocated-gap-fault-1234",
+      "exit": 139,
+      "stdout_hex": "58494531000000395dc00000feedface0000000000000001000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-relocated-text-fault-0",
+      "exit": 139,
+      "stdout_hex": "58494531000000385dc00000feedface0000000000000001000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-relocated-text-fault-1234",
+      "exit": 139,
+      "stdout_hex": "58494531000000385dc00000feedface0000000000000001000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-repeat-0",
+      "exit": 0,
+      "stdout_hex": "58494531000000040e000000feedface00000000000000030e0000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-repeat-1234",
+      "exit": 0,
+      "stdout_hex": "58494531000000040e000000feedface00000000000000030e0000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-repeated-collision-0",
+      "exit": 0,
+      "stdout_hex": "584945310000002f5dc00000feedface00000000000000035dc28000000000005dc50000000000001234567800000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-repeated-collision-1234",
+      "exit": 0,
+      "stdout_hex": "584945310000002f5dc00000feedface00000000000000035dc28000000000005dc50000000000001234567800000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-reversed-0",
+      "exit": 0,
+      "stdout_hex": "58494531000000240e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-reversed-1234",
+      "exit": 0,
+      "stdout_hex": "58494531000000240e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-rollback-0",
+      "exit": 0,
+      "stdout_hex": "58494531000000050e000000feedface00000000000000035dc000000000000000000000000000001234567800000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-rollback-1234",
+      "exit": 0,
+      "stdout_hex": "58494531000000050e000000feedface00000000000000035dc000000000000000000000000000001234567800000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-rollback-tail-0",
+      "exit": 0,
+      "stdout_hex": "58494531000000060e000000feedface00000000000000035dc000000000000000000000000000001234567800000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-rollback-tail-1234",
+      "exit": 0,
+      "stdout_hex": "58494531000000060e000000feedface00000000000000035dc000000000000000000000000000001234567800000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-short-file-0",
+      "exit": 0,
+      "stdout_hex": "584945310000002a0e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-short-file-1234",
+      "exit": 0,
+      "stdout_hex": "584945310000002a0e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-small-align-0",
+      "exit": 0,
+      "stdout_hex": "58494531000000200e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-small-align-1234",
+      "exit": 0,
+      "stdout_hex": "58494531000000200e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-text-bss-0",
+      "exit": 0,
+      "stdout_hex": "584945310000001a0e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-text-bss-1234",
+      "exit": 0,
+      "stdout_hex": "584945310000001a0e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-text-fault-0",
+      "exit": 139,
+      "stdout_hex": "58494531000000070e000000feedface0000000000000001000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-text-fault-1234",
+      "exit": 139,
+      "stdout_hex": "58494531000000070e000000feedface0000000000000001000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-text-write-0",
+      "exit": 0,
+      "stdout_hex": "58494531000000180e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-text-write-1234",
+      "exit": 0,
+      "stdout_hex": "58494531000000180e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-unaligned-address-0",
+      "exit": 0,
+      "stdout_hex": "584945310000001d0e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-unaligned-address-1234",
+      "exit": 0,
+      "stdout_hex": "584945310000001d0e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-unaligned-offset-0",
+      "exit": 0,
+      "stdout_hex": "584945310000001e0e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-unaligned-offset-1234",
+      "exit": 0,
+      "stdout_hex": "584945310000001e0e000000feedface0000000000000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-upper-edge-0",
+      "exit": 0,
+      "stdout_hex": "58494531000000355dc00000feedface0000000000000001000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-upper-edge-1234",
+      "exit": 0,
+      "stdout_hex": "58494531000000355dc00000feedface0000000000000001000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-zero-memory-0",
+      "exit": 0,
+      "stdout_hex": "584945310000001b0000000bfeedface0000000100000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    },
+    {
+      "name": "o32-elfmap-zero-memory-1234",
+      "exit": 0,
+      "stdout_hex": "584945310000001b0000000bfeedface0000000100000000000000000000000000000000000000000000000000000000",
+      "stderr": ""
+    }
+  ],
+  "source_directory": ".work/irix-reference/elfmap-relocation-runs/ci-w5_75wqj",
+  "source_result_sha256": "97460b5a9944a7f02daa85d08b5a7f468e4d9dcd8edf89285a71d82944b07348",
+  "harness_sha256": "189a10570407b84560e961e02252354bc45c2e25ac31643a13916d8f021971d2",
+  "clean_shutdown": true,
+  "notes": [
+    "Mixed alignment with nonzero first-base residue is mapped successfully, but IRIX returns a displacement incongruent with the larger p_align; Xiri deliberately preserves both alignments.",
+    "Four no-bounded-space attempts exit 99 in mmap setup before SGI_ELFMAP; no original-IRIX mapper inference is made for these cases."
+  ]
+}

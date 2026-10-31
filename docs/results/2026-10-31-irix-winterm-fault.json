@@ -1,0 +1,514 @@
+{
+  "schema": 1,
+  "status": "fault-and-resource-boundary-observed",
+  "kernel_pin": {
+    "schema": 1,
+    "description": "Measured IRIX SIOCNREAD on lp64",
+    "ident": "XIRI_IRIX_SIOCNREAD_20261031",
+    "source_revision": "355e0ca310039839b426e66d00744edab5cd5608",
+    "source_branch": "xiri/irix-siocnread",
+    "build_arch": "mips64eb",
+    "page_bytes": 8192,
+    "boot_kernel_sha256": "bceb49e31030e01be6a0a41e42a35bd4e52616fc179e545b01ab563d9bee8285",
+    "native_kernel_sha256": "f135ad2507f747c2262158c5c30e952aec25fafc4f5f7529d3863ea026fca42e",
+    "debug_kernel_sha256": "574ec9de56e877bbbc272c59ec9156bf748b65ace55499ad0d641de341648a82",
+    "native_o32_sha256": "c294fbb1f2110445be31c096481ea54ab561c7e59ca5b9fc7171310098d755d4",
+    "source_dirty": false,
+    "emulator_revision": "9df1df14334838a989253efefe26f0547e6da592",
+    "emulator_branch": "xiri/netbsd64-tlb",
+    "emulator_sha256": "1b3f7702ba7f43b5c4fca8ba8884243559f46371d8d67a36ce5e6fee1e595eba",
+    "ci_client_sha256": "8711321aa6eaae440da3c7920b00ae4cf1c7f2abbdb15a9919f58485500ffb6c",
+    "base_disk_sha256": "269038c7b77660c83d3835208fc0b2702c93110c14b3c55a42416f51672cee2a",
+    "nvram_sha256": "ee883474d52f09278287b2044f7aeca61d2e7bc39c0bb8fd85c983ab64063d15",
+    "config_sha256": "28ae1d28dd1f8317f0eb9b8f046b7c9c4b13444392d7e6469ba77b1660b5377c",
+    "runtimes": [
+      {
+        "name": "vendor-o32-libc",
+        "path": "/usr/lib/libc.so.1",
+        "sha256": "ea766492103a193e9d404942705e4e28987545e37f699ede232b6c0f8c97c954"
+      },
+      {
+        "name": "vendor-o32-rld",
+        "path": "/lib/rld",
+        "sha256": "30228b54c1e5585b365514eb7c9895b03cc0f61cb898e05e3ddafece87863439"
+      },
+      {
+        "name": "vendor-n32-libc",
+        "path": "/lib32/libc.so.1",
+        "sha256": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e"
+      },
+      {
+        "name": "vendor-n32-rld",
+        "path": "/lib32/rld",
+        "sha256": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b"
+      }
+    ],
+    "config_path": "lab/irix-siocnread/XIRI_IRIX_SIOCNREAD"
+  },
+  "runs": [
+    {
+      "directory": ".work/irix-winterm-fault/runs/ci-hn9jf6ae",
+      "mode": "ci",
+      "clean_shutdown": true,
+      "result_sha256": "1430fd48ab974ab1ef2f7fc24219f788abd7977b95983b3e9892ac497353ac9f",
+      "controls": [
+        {
+          "phase": "before",
+          "entry_exit": 37,
+          "fault_pc": "0x40079c",
+          "guards_intact": true,
+          "window": "\nxwininfo: Window id: 0x20000c \"FaultControl\"\n\n  Absolute upper-left X:  0\n  Absolute upper-left Y:  0\n  Relative upper-left X:  0\n  Relative upper-left Y:  0\n  Width: 644\n  Height: 364\n  Depth: 24\n  Visual: 0x21\n  Visual Class: TrueColor\n  Border width: 1\n  Class: InputOutput\n  Colormap: 0x20 (installed)\n  Bit Gravity State: NorthWestGravity\n  Window Gravity State: NorthWestGravity\n  Backing Store State: NotUseful\n  Save Under State: no\n  Map State: IsViewable\n  Override Redirect State: no\n  Corners:  +0+0  --6+0  --6-114  +0-114\n  -geometry 80x24+0+0\n\n",
+          "stderr": ""
+        },
+        {
+          "phase": "after",
+          "entry_exit": 37,
+          "fault_pc": "0x40079c",
+          "guards_intact": true,
+          "window": "\nxwininfo: Window id: 0x20000c \"FaultControl\"\n\n  Absolute upper-left X:  0\n  Absolute upper-left Y:  0\n  Relative upper-left X:  0\n  Relative upper-left Y:  0\n  Width: 644\n  Height: 364\n  Depth: 24\n  Visual: 0x21\n  Visual Class: TrueColor\n  Border width: 1\n  Class: InputOutput\n  Colormap: 0x20 (installed)\n  Bit Gravity State: NorthWestGravity\n  Window Gravity State: NorthWestGravity\n  Backing Store State: NotUseful\n  Save Under State: no\n  Map State: IsViewable\n  Override Redirect State: no\n  Corners:  +0+0  --6+0  --6-114  +0-114\n  -geometry 80x24+0+0\n\n",
+          "stderr": ""
+        }
+      ],
+      "cases": [
+        {
+          "name": "0-default",
+          "uid": 0,
+          "font": null,
+          "signal": 11,
+          "code": 1,
+          "address": "0x10",
+          "pc": "0x10024394",
+          "stderr": "X doesn't support locale\nCan't open font -*-screen-medium-r-normal--*-150-*-*-m-*-iso8859-1; using default\n",
+          "faulting_instruction": "lw a0,16(a5) in the delay slot at 0x10024398",
+          "null_object_register": "a5 (register 9)",
+          "call_target": "XmbTextEscapement (0x0f60c370), not reached",
+          "access_paths": [
+            "/tmp/xiri-home/.Xauthority",
+            "/tmp/xiri-home/.desktop-xiri-indy/schemes/Base/BaseColorPalette",
+            "/tmp/xiri-home/.desktop-xiri-indy/schemes/Myers/BaseColorPalette",
+            "/usr/lib/X11/C/app-defaults/XWsh",
+            "/usr/lib/X11/C/schemes/Base/BaseColorPalette",
+            "/usr/lib/X11/C/schemes/Myers/BaseColorPalette",
+            "/usr/lib/X11/app-defaults/XWsh",
+            "/usr/lib/X11/locale/C/XLC_LOCALE",
+            "/usr/lib/X11/schemes/Base/BaseColorPalette",
+            "/usr/lib/X11/schemes/Myers/BaseColorPalette"
+          ],
+          "call_counts": {
+            "lseek": 26,
+            "access": 37
+          },
+          "all_lookup_errno": 89,
+          "lseek_caller": "fflush + 0x274 (return address 0x0fa57690)",
+          "seeks": [
+            {
+              "fd": 3,
+              "offset": -3872,
+              "whence": 1,
+              "count": 5
+            },
+            {
+              "fd": 3,
+              "offset": -59,
+              "whence": 1,
+              "count": 1
+            },
+            {
+              "fd": 4,
+              "offset": -3872,
+              "whence": 1,
+              "count": 20
+            }
+          ],
+          "trace_sha256": "3b98262d33369b98e8801a4f5384d36efdd2f1980ededf2c3152ecbafae1a4d3",
+          "kdump_sha256": "03a739f07c5770f318d4a7ec44863bdb912e03d7b7c5005c2e8519b7d73cf025"
+        },
+        {
+          "name": "0-fixed",
+          "uid": 0,
+          "font": "fixed",
+          "signal": 11,
+          "code": 1,
+          "address": "0x10",
+          "pc": "0x10024394",
+          "stderr": "X doesn't support locale\nCan't open font fixed; using default\n",
+          "faulting_instruction": "lw a0,16(a5) in the delay slot at 0x10024398",
+          "null_object_register": "a5 (register 9)",
+          "call_target": "XmbTextEscapement (0x0f60c370), not reached",
+          "access_paths": [
+            "/tmp/xiri-home/.Xauthority",
+            "/tmp/xiri-home/.desktop-xiri-indy/schemes/Base/BaseColorPalette",
+            "/tmp/xiri-home/.desktop-xiri-indy/schemes/Myers/BaseColorPalette",
+            "/usr/lib/X11/C/app-defaults/XWsh",
+            "/usr/lib/X11/C/schemes/Base/BaseColorPalette",
+            "/usr/lib/X11/C/schemes/Myers/BaseColorPalette",
+            "/usr/lib/X11/app-defaults/XWsh",
+            "/usr/lib/X11/locale/C/XLC_LOCALE",
+            "/usr/lib/X11/schemes/Base/BaseColorPalette",
+            "/usr/lib/X11/schemes/Myers/BaseColorPalette"
+          ],
+          "call_counts": {
+            "lseek": 26,
+            "access": 37
+          },
+          "all_lookup_errno": 89,
+          "lseek_caller": "fflush + 0x274 (return address 0x0fa57690)",
+          "seeks": [
+            {
+              "fd": 3,
+              "offset": -3872,
+              "whence": 1,
+              "count": 5
+            },
+            {
+              "fd": 3,
+              "offset": -59,
+              "whence": 1,
+              "count": 1
+            },
+            {
+              "fd": 4,
+              "offset": -3872,
+              "whence": 1,
+              "count": 20
+            }
+          ],
+          "trace_sha256": "f3efd52c1d3818d1f5031a83b286d18d87cf974621ca2aa8984f8d68bc2dd56a",
+          "kdump_sha256": "a15c30aa42eda97721d3b466d11cc1ef51e93895e70b9009c3860db6b9b0705f"
+        },
+        {
+          "name": "1234-default",
+          "uid": 1234,
+          "font": null,
+          "signal": 11,
+          "code": 1,
+          "address": "0x10",
+          "pc": "0x10024394",
+          "stderr": "X doesn't support locale\nCan't open font -*-screen-medium-r-normal--*-150-*-*-m-*-iso8859-1; using default\n",
+          "faulting_instruction": "lw a0,16(a5) in the delay slot at 0x10024398",
+          "null_object_register": "a5 (register 9)",
+          "call_target": "XmbTextEscapement (0x0f60c370), not reached",
+          "access_paths": [
+            "/tmp/xiri-home/.Xauthority",
+            "/tmp/xiri-home/.desktop-xiri-indy/schemes/Base/BaseColorPalette",
+            "/tmp/xiri-home/.desktop-xiri-indy/schemes/Myers/BaseColorPalette",
+            "/usr/lib/X11/C/app-defaults/XWsh",
+            "/usr/lib/X11/C/schemes/Base/BaseColorPalette",
+            "/usr/lib/X11/C/schemes/Myers/BaseColorPalette",
+            "/usr/lib/X11/app-defaults/XWsh",
+            "/usr/lib/X11/locale/C/XLC_LOCALE",
+            "/usr/lib/X11/schemes/Base/BaseColorPalette",
+            "/usr/lib/X11/schemes/Myers/BaseColorPalette"
+          ],
+          "call_counts": {
+            "lseek": 25,
+            "access": 37
+          },
+          "all_lookup_errno": 89,
+          "lseek_caller": "fflush + 0x274 (return address 0x0fa57690)",
+          "seeks": [
+            {
+              "fd": 3,
+              "offset": -3872,
+              "whence": 1,
+              "count": 5
+            },
+            {
+              "fd": 4,
+              "offset": -3872,
+              "whence": 1,
+              "count": 20
+            }
+          ],
+          "trace_sha256": "8c1e046f8f3f67fab5eba82e76460394a82830e3c9c7bd8ad3cf0a5319e3241e",
+          "kdump_sha256": "1a908c830af4e68947effb80b20d2cd1b5d6f127489cc6a9ccc68a650e7acde7"
+        },
+        {
+          "name": "1234-fixed",
+          "uid": 1234,
+          "font": "fixed",
+          "signal": 11,
+          "code": 1,
+          "address": "0x10",
+          "pc": "0x10024394",
+          "stderr": "X doesn't support locale\nCan't open font fixed; using default\n",
+          "faulting_instruction": "lw a0,16(a5) in the delay slot at 0x10024398",
+          "null_object_register": "a5 (register 9)",
+          "call_target": "XmbTextEscapement (0x0f60c370), not reached",
+          "access_paths": [
+            "/tmp/xiri-home/.Xauthority",
+            "/tmp/xiri-home/.desktop-xiri-indy/schemes/Base/BaseColorPalette",
+            "/tmp/xiri-home/.desktop-xiri-indy/schemes/Myers/BaseColorPalette",
+            "/usr/lib/X11/C/app-defaults/XWsh",
+            "/usr/lib/X11/C/schemes/Base/BaseColorPalette",
+            "/usr/lib/X11/C/schemes/Myers/BaseColorPalette",
+            "/usr/lib/X11/app-defaults/XWsh",
+            "/usr/lib/X11/locale/C/XLC_LOCALE",
+            "/usr/lib/X11/schemes/Base/BaseColorPalette",
+            "/usr/lib/X11/schemes/Myers/BaseColorPalette"
+          ],
+          "call_counts": {
+            "lseek": 25,
+            "access": 37
+          },
+          "all_lookup_errno": 89,
+          "lseek_caller": "fflush + 0x274 (return address 0x0fa57690)",
+          "seeks": [
+            {
+              "fd": 3,
+              "offset": -3872,
+              "whence": 1,
+              "count": 5
+            },
+            {
+              "fd": 4,
+              "offset": -3872,
+              "whence": 1,
+              "count": 20
+            }
+          ],
+          "trace_sha256": "6b4de1b66b7da0cc23c5f3d74ac8c3a03c092e336b7b3542c93935300a7ec901",
+          "kdump_sha256": "8fe3268f11e5bd08eec88d9714fb5b34867c16f5a66794bf95b15115441e4b1e"
+        }
+      ],
+      "execution_sources": {
+        "lab/irix-winterm/trace.c": "c17869ba507613506d2f9546809a5a6e0d718be27093aa93a32434cc9652658e",
+        "lab/irix-toolchest/fault.c": "de9b9b272675f5b0cf52e5d6ab03ba4241614e7c6bf4b1a123f48135084c80af",
+        "scripts/probe-irix-winterm-fault.py": "eb8309e066165b4f102715affc9c8cd8a17d6074473ecbf1765aa737f766becb"
+      }
+    },
+    {
+      "directory": ".work/irix-winterm-fault/runs/ordinary-q66ktby1",
+      "mode": "ordinary",
+      "clean_shutdown": true,
+      "result_sha256": "8f4853d33b529b887a2e28d898c64000443fbcd6f9b5036c2ba2d29a3159d6cc",
+      "controls": [
+        {
+          "phase": "before",
+          "entry_exit": 37,
+          "fault_pc": "0x40079c",
+          "guards_intact": true,
+          "window": "\nxwininfo: Window id: 0x20000c \"FaultControl\"\n\n  Absolute upper-left X:  0\n  Absolute upper-left Y:  0\n  Relative upper-left X:  0\n  Relative upper-left Y:  0\n  Width: 644\n  Height: 364\n  Depth: 24\n  Visual: 0x21\n  Visual Class: TrueColor\n  Border width: 1\n  Class: InputOutput\n  Colormap: 0x20 (installed)\n  Bit Gravity State: NorthWestGravity\n  Window Gravity State: NorthWestGravity\n  Backing Store State: NotUseful\n  Save Under State: no\n  Map State: IsViewable\n  Override Redirect State: no\n  Corners:  +0+0  --6+0  --6-114  +0-114\n  -geometry 80x24+0+0\n\n",
+          "stderr": ""
+        },
+        {
+          "phase": "after",
+          "entry_exit": 37,
+          "fault_pc": "0x40079c",
+          "guards_intact": true,
+          "window": "\nxwininfo: Window id: 0x20000c \"FaultControl\"\n\n  Absolute upper-left X:  0\n  Absolute upper-left Y:  0\n  Relative upper-left X:  0\n  Relative upper-left Y:  0\n  Width: 644\n  Height: 364\n  Depth: 24\n  Visual: 0x21\n  Visual Class: TrueColor\n  Border width: 1\n  Class: InputOutput\n  Colormap: 0x20 (installed)\n  Bit Gravity State: NorthWestGravity\n  Window Gravity State: NorthWestGravity\n  Backing Store State: NotUseful\n  Save Under State: no\n  Map State: IsViewable\n  Override Redirect State: no\n  Corners:  +0+0  --6+0  --6-114  +0-114\n  -geometry 80x24+0+0\n\n",
+          "stderr": ""
+        }
+      ],
+      "cases": [
+        {
+          "name": "0-default",
+          "uid": 0,
+          "font": null,
+          "signal": 11,
+          "code": 1,
+          "address": "0x10",
+          "pc": "0x10024394",
+          "stderr": "X doesn't support locale\nCan't open font -*-screen-medium-r-normal--*-150-*-*-m-*-iso8859-1; using default\n",
+          "faulting_instruction": "lw a0,16(a5) in the delay slot at 0x10024398",
+          "null_object_register": "a5 (register 9)",
+          "call_target": "XmbTextEscapement (0x0f60c370), not reached",
+          "access_paths": [
+            "/tmp/xiri-home/.Xauthority",
+            "/tmp/xiri-home/.desktop-xiri-indy/schemes/Base/BaseColorPalette",
+            "/tmp/xiri-home/.desktop-xiri-indy/schemes/Myers/BaseColorPalette",
+            "/usr/lib/X11/C/app-defaults/XWsh",
+            "/usr/lib/X11/C/schemes/Base/BaseColorPalette",
+            "/usr/lib/X11/C/schemes/Myers/BaseColorPalette",
+            "/usr/lib/X11/app-defaults/XWsh",
+            "/usr/lib/X11/locale/C/XLC_LOCALE",
+            "/usr/lib/X11/schemes/Base/BaseColorPalette",
+            "/usr/lib/X11/schemes/Myers/BaseColorPalette"
+          ],
+          "call_counts": {
+            "lseek": 26,
+            "access": 37
+          },
+          "all_lookup_errno": 89,
+          "lseek_caller": "fflush + 0x274 (return address 0x0fa57690)",
+          "seeks": [
+            {
+              "fd": 3,
+              "offset": -3872,
+              "whence": 1,
+              "count": 5
+            },
+            {
+              "fd": 3,
+              "offset": -59,
+              "whence": 1,
+              "count": 1
+            },
+            {
+              "fd": 4,
+              "offset": -3872,
+              "whence": 1,
+              "count": 20
+            }
+          ],
+          "trace_sha256": "3b98262d33369b98e8801a4f5384d36efdd2f1980ededf2c3152ecbafae1a4d3",
+          "kdump_sha256": "2eb1e3347dc9c024001badf3a56e53a32424808dd3ab3bce8a9349eda0ea5b86"
+        },
+        {
+          "name": "0-fixed",
+          "uid": 0,
+          "font": "fixed",
+          "signal": 11,
+          "code": 1,
+          "address": "0x10",
+          "pc": "0x10024394",
+          "stderr": "X doesn't support locale\nCan't open font fixed; using default\n",
+          "faulting_instruction": "lw a0,16(a5) in the delay slot at 0x10024398",
+          "null_object_register": "a5 (register 9)",
+          "call_target": "XmbTextEscapement (0x0f60c370), not reached",
+          "access_paths": [
+            "/tmp/xiri-home/.Xauthority",
+            "/tmp/xiri-home/.desktop-xiri-indy/schemes/Base/BaseColorPalette",
+            "/tmp/xiri-home/.desktop-xiri-indy/schemes/Myers/BaseColorPalette",
+            "/usr/lib/X11/C/app-defaults/XWsh",
+            "/usr/lib/X11/C/schemes/Base/BaseColorPalette",
+            "/usr/lib/X11/C/schemes/Myers/BaseColorPalette",
+            "/usr/lib/X11/app-defaults/XWsh",
+            "/usr/lib/X11/locale/C/XLC_LOCALE",
+            "/usr/lib/X11/schemes/Base/BaseColorPalette",
+            "/usr/lib/X11/schemes/Myers/BaseColorPalette"
+          ],
+          "call_counts": {
+            "lseek": 26,
+            "access": 37
+          },
+          "all_lookup_errno": 89,
+          "lseek_caller": "fflush + 0x274 (return address 0x0fa57690)",
+          "seeks": [
+            {
+              "fd": 3,
+              "offset": -3872,
+              "whence": 1,
+              "count": 5
+            },
+            {
+              "fd": 3,
+              "offset": -59,
+              "whence": 1,
+              "count": 1
+            },
+            {
+              "fd": 4,
+              "offset": -3872,
+              "whence": 1,
+              "count": 20
+            }
+          ],
+          "trace_sha256": "f3efd52c1d3818d1f5031a83b286d18d87cf974621ca2aa8984f8d68bc2dd56a",
+          "kdump_sha256": "05fb6f79a6f03ea68709e5d5cfaa0568bd62ce454b102c8bcf505bead1f8be15"
+        },
+        {
+          "name": "1234-default",
+          "uid": 1234,
+          "font": null,
+          "signal": 11,
+          "code": 1,
+          "address": "0x10",
+          "pc": "0x10024394",
+          "stderr": "X doesn't support locale\nCan't open font -*-screen-medium-r-normal--*-150-*-*-m-*-iso8859-1; using default\n",
+          "faulting_instruction": "lw a0,16(a5) in the delay slot at 0x10024398",
+          "null_object_register": "a5 (register 9)",
+          "call_target": "XmbTextEscapement (0x0f60c370), not reached",
+          "access_paths": [
+            "/tmp/xiri-home/.Xauthority",
+            "/tmp/xiri-home/.desktop-xiri-indy/schemes/Base/BaseColorPalette",
+            "/tmp/xiri-home/.desktop-xiri-indy/schemes/Myers/BaseColorPalette",
+            "/usr/lib/X11/C/app-defaults/XWsh",
+            "/usr/lib/X11/C/schemes/Base/BaseColorPalette",
+            "/usr/lib/X11/C/schemes/Myers/BaseColorPalette",
+            "/usr/lib/X11/app-defaults/XWsh",
+            "/usr/lib/X11/locale/C/XLC_LOCALE",
+            "/usr/lib/X11/schemes/Base/BaseColorPalette",
+            "/usr/lib/X11/schemes/Myers/BaseColorPalette"
+          ],
+          "call_counts": {
+            "lseek": 25,
+            "access": 37
+          },
+          "all_lookup_errno": 89,
+          "lseek_caller": "fflush + 0x274 (return address 0x0fa57690)",
+          "seeks": [
+            {
+              "fd": 3,
+              "offset": -3872,
+              "whence": 1,
+              "count": 5
+            },
+            {
+              "fd": 4,
+              "offset": -3872,
+              "whence": 1,
+              "count": 20
+            }
+          ],
+          "trace_sha256": "8c1e046f8f3f67fab5eba82e76460394a82830e3c9c7bd8ad3cf0a5319e3241e",
+          "kdump_sha256": "256c1d7834eacd4560ec1597851f470b9571a21dc2e06e8c1ae5c783da696a34"
+        },
+        {
+          "name": "1234-fixed",
+          "uid": 1234,
+          "font": "fixed",
+          "signal": 11,
+          "code": 1,
+          "address": "0x10",
+          "pc": "0x10024394",
+          "stderr": "X doesn't support locale\nCan't open font fixed; using default\n",
+          "faulting_instruction": "lw a0,16(a5) in the delay slot at 0x10024398",
+          "null_object_register": "a5 (register 9)",
+          "call_target": "XmbTextEscapement (0x0f60c370), not reached",
+          "access_paths": [
+            "/tmp/xiri-home/.Xauthority",
+            "/tmp/xiri-home/.desktop-xiri-indy/schemes/Base/BaseColorPalette",
+            "/tmp/xiri-home/.desktop-xiri-indy/schemes/Myers/BaseColorPalette",
+            "/usr/lib/X11/C/app-defaults/XWsh",
+            "/usr/lib/X11/C/schemes/Base/BaseColorPalette",
+            "/usr/lib/X11/C/schemes/Myers/BaseColorPalette",
+            "/usr/lib/X11/app-defaults/XWsh",
+            "/usr/lib/X11/locale/C/XLC_LOCALE",
+            "/usr/lib/X11/schemes/Base/BaseColorPalette",
+            "/usr/lib/X11/schemes/Myers/BaseColorPalette"
+          ],
+          "call_counts": {
+            "lseek": 25,
+            "access": 37
+          },
+          "all_lookup_errno": 89,
+          "lseek_caller": "fflush + 0x274 (return address 0x0fa57690)",
+          "seeks": [
+            {
+              "fd": 3,
+              "offset": -3872,
+              "whence": 1,
+              "count": 5
+            },
+            {
+              "fd": 4,
+              "offset": -3872,
+              "whence": 1,
+              "count": 20
+            }
+          ],
+          "trace_sha256": "6b4de1b66b7da0cc23c5f3d74ac8c3a03c092e336b7b3542c93935300a7ec901",
+          "kdump_sha256": "9fddc7d2b22b2903256e2585d71444555e5ae9ef507b80cc514fc4b743af6df6"
+        }
+      ],
+      "execution_sources": {
+        "lab/irix-winterm/trace.c": "c17869ba507613506d2f9546809a5a6e0d718be27093aa93a32434cc9652658e",
+        "lab/irix-toolchest/fault.c": "de9b9b272675f5b0cf52e5d6ab03ba4241614e7c6bf4b1a123f48135084c80af",
+        "scripts/probe-irix-winterm-fault.py": "49691e715528198748f4dc40e8eb1d7299dc7dc9ec80e0bcc0e58a51eabc1597"
+      }
+    }
+  ],
+  "terminal_window_qualified": false,
+  "qualifier_sha256": "be0be02d51734d7737a20c930f472cdef1818c1f9a11ed7440b72bedbb6e49ff"
+}

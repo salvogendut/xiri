@@ -1,5 +1,7 @@
 # Original IRIX winterm / xwsh
 
+Follow-up: the startup fault is a null font object in tuFont::getWidth. Actual access calls for staged locale/defaults return ENOSYS. See the [new result](../../docs/results/2026-10-31-irix-winterm-fault.md).
+
 Results: the 16 opening attempts are recorded; root xwsh reaches X then crashes, while the initial numerical uid lacks an account entry. Four native terminal controls pass. See the [run record](../../docs/results/2026-10-31-irix-winterm.md).
 
 The supplied installation's `/usr/sbin/winterm` is a shell launcher, with
@@ -78,3 +80,9 @@ PYTHONDONTWRITEBYTECODE=1 python3 scripts/qualify-irix-winterm.py \
 The [font/resource follow-up](../../docs/results/2026-10-31-irix-winterm-resources.md)
 adds original Screen fonts, C/ISO8859-1 data and synthetic foreign account
 records. Native font controls pass; the original terminal startup fault remains.
+
+The [fault/lookup harness](../../scripts/probe-irix-winterm-fault.py) reuses a
+stopped font/locale seed, stages the imported fonts afresh, and captures the
+null-font crash with checked native ptrace controls. With `--lookups`, it also
+records actual access pathnames and seek arguments. See the
+[diagnosis and paired qualification](../../docs/results/2026-10-31-irix-winterm-fault.md).

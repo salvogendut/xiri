@@ -54,7 +54,19 @@
       "evidence": [
         "lab/irix-toolchest-input/resources.json"
       ],
-      "note": "Current session uses two extracted numeric Xt color values; general named-color support is not qualified."
+      "note": "Current session uses two extracted numeric Xt color values; general named-color support is not qualified. Original xclock also requests the two recorded colors; current captures retain warnings and default colors.",
+      "observed_xclock_colors": {
+        "SGILightGray": [
+          170,
+          170,
+          170
+        ],
+        "SGISlateBlue": [
+          113,
+          113,
+          198
+        ]
+      }
     },
     {
       "id": "screen_fonts",
@@ -80,9 +92,10 @@
       ],
       "evidence": [
         "lab/irix-x11-fonts/manifest.json",
-        "docs/results/2026-10-31-irix-winterm-resources.json"
+        "docs/results/2026-10-31-irix-winterm-resources.json",
+        "docs/results/2026-10-31-irix-winterm-fault.json"
       ],
-      "note": "C/ISO8859-1 resources staged readably; original xwsh still reports unsupported X locale and receives SIGSEGV. External modules and file-access/seek dependencies remain unqualified."
+      "note": "C/ISO8859-1 resources staged readably. A checked xwsh breakpoint trace observes access of /usr/lib/X11/locale/C/XLC_LOCALE returning ENOSYS; copying the file alone cannot pass this check. Native seek support is also missing. External modules remain unqualified."
     },
     {
       "id": "terminal_defaults",
@@ -93,9 +106,10 @@
         "/usr/bin/gettxt"
       ],
       "evidence": [
-        "lab/irix-winterm/manifest.json"
+        "lab/irix-winterm/manifest.json",
+        "docs/results/2026-10-31-irix-winterm-fault.json"
       ],
-      "note": "Original xwsh reaches X as root but has a startup fault; helper exec and account lookup are separate boundaries."
+      "note": "Original xwsh faults in tuFont::getWidth with a null font object before XmbTextEscapement. access of XWsh app-defaults returns ENOSYS; consumption remains blocked. Launcher gettxt exec is separate."
     },
     {
       "id": "window_manager_defaults",
@@ -163,10 +177,17 @@
     },
     {
       "id": "schemes",
-      "status": "needs_inventory",
-      "image_paths": [],
-      "evidence": [],
-      "note": "Locate schemes/palettes and distinguish system defaults from per-user state."
+      "status": "lookup_paths_observed_needs_inventory",
+      "image_paths": [
+        "/usr/lib/X11/schemes/Base/BaseColorPalette",
+        "/usr/lib/X11/schemes/Myers/BaseColorPalette",
+        "/usr/lib/X11/C/schemes/Base/BaseColorPalette",
+        "/usr/lib/X11/C/schemes/Myers/BaseColorPalette"
+      ],
+      "evidence": [
+        "docs/results/2026-10-31-irix-winterm-fault.json"
+      ],
+      "note": "Actual xwsh access pathnames include these system candidates and HOME/.desktop-xiri-indy/schemes/{Base,Myers}/BaseColorPalette. Calls return ENOSYS; file presence, requiredness and successful consumption are not yet established."
     },
     {
       "id": "additional_fonts",

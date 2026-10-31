@@ -1,5 +1,7 @@
 # Importing original IRIX fonts and locale resources
 
+Follow-up: see the [next checkpoint](2026-10-31-irix-winterm-fault.md). This report preserves the earlier observed boundary.
+
 Native NetBSD X.org accepts the selected original SGI Screen PCF fonts.
 `mkfontdir` indexes all 22 files, and native xterm renders the exact 15-pixel
 medium Screen font as root and uid 1234 in both IRIS execution modes.

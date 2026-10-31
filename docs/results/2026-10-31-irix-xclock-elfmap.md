@@ -1,5 +1,7 @@
 # Original xclock: measured libXmu mapping collision
 
+Follow-up: see the [next checkpoint](2026-10-31-irix-elfmap-relocation.md). This report preserves the earlier observed boundary.
+
 The original n32 runtime requests both `libXmu.so` segments inside the already
 mapped text of `libXaw.so.2`. The current bounded `SGI_ELFMAP` implementation
 maps only at the requested addresses and returns `ENOMEM` for that collision.
