@@ -1,5 +1,7 @@
 # Winterm passes locale/font initialization and reaches PTY setup
 
+Follow-up: the [PTY allocator checkpoint](2026-10-31-irix-pty.md) advances original xwsh to unsupported fork. The measurements below retain their original access-kernel scope.
+
 Original n32 `xwsh` now checks and reads the staged C locale database and XWsh
 app-defaults in eight starts: both execution modes, both identities, and
 default/`fixed` font requests. Each reads 763 locale bytes and 12,699

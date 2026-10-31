@@ -34,7 +34,7 @@ experiment that establishes whether the resource is actually used.
 | File-type rules and actions (FTR) | Locate the selected installation's rules, referenced icons and command handlers. Separate file identification from executing an action. |
 | Color schemes, palettes and saved preferences | xwsh actually probes `/usr/lib/X11/{,C/}schemes/{Base,Myers}/BaseColorPalette` and `$HOME/.desktop-xiri-indy/schemes/{Base,Myers}/BaseColorPalette`. The implemented checks return `ENOENT` for these candidates in the guest, and xwsh continues to terminal setup. Inventory the image files and qualify appearance separately. Two numeric Toolchest colors do not establish full SGI appearance. |
 | Additional fonts, aliases and encodings | Record actual requests from each original client. The private inventory has broader Fixed-font metadata; only the selected Screen family is in the import experiment. Preserve XLFD names and alias relationships. |
-| Locale/input-method modules and catalogs | Resolve any actual module loads named by XI18N_OBJS; inventory message catalogs used by gettxt and desktop helpers. The xwsh error path now probes `/usr/lib/locale/C/LC_MESSAGES/uxsyserr`, `C/Xopen/LC_MESSAGES/uxsyserr` and `C/LC_MESSAGES/uxsyserr.cat`; their absence does not prevent the fallback English diagnostic. Multilingual locales and input methods are separate from the current C-locale checks. |
+| Locale/input-method modules and catalogs | Resolve any actual module loads named by XI18N_OBJS; inventory message catalogs used by gettxt and desktop helpers. The xwsh error path now probes `/usr/lib/locale/C/LC_MESSAGES/uxsyserr`, `C/Xopen/LC_MESSAGES/uxsyserr` and `C/LC_MESSAGES/uxsyserr.cat`; the later fork failure also probes the corresponding `uxsgierr` paths. Their absence does not prevent the fallback English diagnostic. Multilingual locales and input methods are separate from the current C-locale checks. |
 | File monitoring and desktop services | Trace fm/fam-related behavior, cache helpers, device icon discovery and interprocess messages. Pin required binaries, data and protocol behavior before selecting an original or native service. |
 | Help and application catalogs | Inventory the selected SGIHelp/InSight, Icon Catalog and application registration data when their launch paths are reached. Installed manuals are also useful private behavior references. |
 | Conditional session helpers | Qualify soundscheme/audio settings, powersaver, sysmon integration, first-login tasks and user `.sgisession` hooks separately; they are not all prerequisites for the first desktop display. |
@@ -52,9 +52,12 @@ Per-user `.desktop` state, `.chestrc`, `.Sgiresources`, `.Xdefaults` and saved
 sessions must be tracked as generated or deliberately migrated state, distinct
 from system defaults. XUSERFILESEARCHPATH, locale and helper PATH choices also
 belong in the launch record. NetBSD's shell and native X.org server remain the
-foundation; PTY allocation, ownership and terminal controls require native
-compatibility support. Original xwsh now reaches its `/dev/ptc` open after
-locale/font initialization. The image's Xsgi, kernel, device nodes and boot
+foundation. The [PTY checkpoint](results/2026-10-31-irix-pty.md) uses native
+ptm/ptyfs allocation and ownership, a group-0/mode-0600 disposable ptyfs mount,
+and a nullfs view under `/emul/irix/dev/pts` with the first 400 IRIX q/r aliases.
+These are generated native session resources, not files to import from IRIX.
+Original xwsh now completes allocation and reaches unsupported fork. Native
+shell/input, signal handling and terminal attributes remain unqualified. The image's Xsgi, kernel, device nodes and boot
 scripts remain reference inputs for the native NetBSD integration.
 
 The [desktop acceptance plan](ROADMAP.md#milestone-3-original-desktop-proof)

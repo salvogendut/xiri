@@ -1,5 +1,7 @@
 # IRIX access permission checks
 
+Follow-up: the [PTY allocator checkpoint](../../docs/results/2026-10-31-irix-pty.md) advances original xwsh to unsupported fork. The measurements below retain their original access-kernel scope.
+
 This lab measures trap 1033 (`access`) on the supplied original IRIX 6.5.22m
 installation and compares the results with the NetBSD personality. The
 [qualified checkpoint](../../docs/results/2026-10-31-irix-access.md) passes

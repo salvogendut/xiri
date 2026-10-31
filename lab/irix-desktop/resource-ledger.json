@@ -78,7 +78,8 @@
       "evidence": [
         "lab/irix-x11-fonts/manifest.json",
         "docs/results/2026-10-31-irix-winterm-resources.json",
-        "docs/results/2026-10-31-irix-winterm-access.json"
+        "docs/results/2026-10-31-irix-winterm-access.json",
+        "docs/results/2026-10-31-irix-winterm-pty.json"
       ],
       "note": "22 original Screen fonts indexed; the requested 15-pixel medium face renders in native xterm under both identities and modes. The access follow-up pins both native xterm regular and bold slots to the verified normal face after an unconstrained control hit X_OpenFont BadAlloc; this does not qualify other faces."
     },
@@ -219,6 +220,16 @@
       "image_paths": [],
       "evidence": [],
       "note": "Qualify file monitoring, caches, device discovery and optional audio/powersaver/sysmon helpers."
+    },
+    {
+      "id": "native_pty_namespace",
+      "status": "bounded_allocator_observed",
+      "image_paths": [],
+      "evidence": [
+        "lab/irix-pty/setup.sh",
+        "docs/results/2026-10-31-irix-pty.md"
+      ],
+      "note": "Generated native ptm clone, ptyfs group 0/mode 0600, nullfs slave view under /emul/irix/dev/pts and first 400 q/r aliases. Do not import original device nodes. Libc allocates/opens the slave; xwsh reaches unsupported fork. Production namespace, concurrent use, terminal modes and shell/input remain open."
     }
   ],
   "native_session_inputs": [

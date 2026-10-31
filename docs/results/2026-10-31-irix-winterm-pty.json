@@ -1,0 +1,3276 @@
+{
+  "schema": 1,
+  "status": "pty-allocation-qualified-fork-blocked",
+  "kernel_pin": {
+    "schema": 1,
+    "description": "Bounded IRIX PTY allocation interfaces on lp64",
+    "ident": "XIRI_IRIX_PTY_20261031",
+    "source_revision": "171703da4b0f25fd8827146d3351b31fcce1649c",
+    "source_branch": "xiri/irix-pty",
+    "build_arch": "mips64eb",
+    "page_bytes": 8192,
+    "boot_kernel_sha256": "93c6fd6e4404331b7cf0ba0143f85fdae43ff49f455338ada4ca38981e6ae185",
+    "native_kernel_sha256": "21ba285d3ae3977b51893e1b821e05f7ee4cdf57399e15422b3fae1f2954bcd6",
+    "debug_kernel_sha256": "17a303d9e23db74147b0365791b1fe67d5def0b4a168f6b2e29be8fe6ee9a338",
+    "native_o32_sha256": "c294fbb1f2110445be31c096481ea54ab561c7e59ca5b9fc7171310098d755d4",
+    "source_dirty": false,
+    "emulator_revision": "9df1df14334838a989253efefe26f0547e6da592",
+    "emulator_branch": "xiri/netbsd64-tlb",
+    "emulator_sha256": "1b3f7702ba7f43b5c4fca8ba8884243559f46371d8d67a36ce5e6fee1e595eba",
+    "ci_client_sha256": "8711321aa6eaae440da3c7920b00ae4cf1c7f2abbdb15a9919f58485500ffb6c",
+    "base_disk_sha256": "269038c7b77660c83d3835208fc0b2702c93110c14b3c55a42416f51672cee2a",
+    "nvram_sha256": "ee883474d52f09278287b2044f7aeca61d2e7bc39c0bb8fd85c983ab64063d15",
+    "config_sha256": "b4c5ffb826d4e95013d64b06927366946b7c2594ef5ff99217c767ce899ed9ef",
+    "runtimes": [
+      {
+        "name": "vendor-o32-libc",
+        "path": "/usr/lib/libc.so.1",
+        "sha256": "ea766492103a193e9d404942705e4e28987545e37f699ede232b6c0f8c97c954"
+      },
+      {
+        "name": "vendor-o32-rld",
+        "path": "/lib/rld",
+        "sha256": "30228b54c1e5585b365514eb7c9895b03cc0f61cb898e05e3ddafece87863439"
+      },
+      {
+        "name": "vendor-n32-libc",
+        "path": "/lib32/libc.so.1",
+        "sha256": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e"
+      },
+      {
+        "name": "vendor-n32-rld",
+        "path": "/lib32/rld",
+        "sha256": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b"
+      }
+    ],
+    "config_path": "lab/irix-pty/XIRI_IRIX_PTY"
+  },
+  "terminal_window_qualified": false,
+  "libc_fixture": {
+    "schema": 1,
+    "description": "Original n32 PTY API fixture built with the supplied IRIX GCC 3.3 and libc",
+    "reference_directory": ".work/irix-reference/pty-runs/ci-fn3uasmx",
+    "reference_result_sha256": "1f02861fc6b5b46468e5867496274046367292fdd383e6624108b2e879eabc45",
+    "source_sha256": "8e834a852c6c74cde4bcc8147ab0174531a256d73cf8492d373b16b6a7703ba4",
+    "abi": "n32",
+    "fixture_sha256": "17c6b5dff8e4baac06906f53e1c1ce820f1aa85037d1d1910c5788738869f53c",
+    "fixture_bytes": 56388,
+    "compile_command": "/usr/freeware/bin/gcc -mabi=n32 -mips3 -O2 -Wall fixture.c -o probe-n32",
+    "reference_cases": 20,
+    "o32_compiler_qualified": false
+  },
+  "original_libc_cases": [
+    {
+      "name": "n32-getpty-2",
+      "exit": 0,
+      "flags": [
+        "0x2"
+      ],
+      "stdout_sha256": "dbb8d2c7e5bacbea60cfa7330e58f2b5e800ee23cf127a8da778252dce9f4908"
+    },
+    {
+      "name": "n32-getpty-6",
+      "exit": 0,
+      "flags": [
+        "0x6"
+      ],
+      "stdout_sha256": "5c755429e52da5ba87968caabcb7dab75e5816868b52206f087518560686d1c6"
+    },
+    {
+      "name": "n32-getpty-130",
+      "exit": 0,
+      "flags": [
+        "0x82"
+      ],
+      "stdout_sha256": "a630e612ca38dd3808c4f1846a4f20d07a377416c9a2f5b245927d2a87e2d1eb"
+    },
+    {
+      "name": "n32-getpty-134",
+      "exit": 0,
+      "flags": [
+        "0x82"
+      ],
+      "stdout_sha256": "a630e612ca38dd3808c4f1846a4f20d07a377416c9a2f5b245927d2a87e2d1eb"
+    },
+    {
+      "name": "n32-_dev_ptc-2",
+      "exit": 0,
+      "flags": [
+        "0x2",
+        "0x6",
+        "0x82",
+        "0x82",
+        "0x2"
+      ],
+      "stdout_sha256": "223dce0772a74dd73d26e09d8a24bee6e41b4939d00aa32256d18ec12c74a3bc"
+    },
+    {
+      "name": "n32-_dev_ptc-6",
+      "exit": 0,
+      "flags": [
+        "0x6",
+        "0x6",
+        "0x82",
+        "0x82",
+        "0x2"
+      ],
+      "stdout_sha256": "320c0301011d08f50c61bdedb28e1bc0ffb34a318252ad291f6ebed7c1bcbcdb"
+    },
+    {
+      "name": "n32-_dev_ptc-130",
+      "exit": 0,
+      "flags": [
+        "0x82",
+        "0x6",
+        "0x82",
+        "0x82",
+        "0x2"
+      ],
+      "stdout_sha256": "c4a53990b17a150a9d8c7637a654e5c85072ca1860a44bf648bd60539820e76d"
+    },
+    {
+      "name": "n32-_dev_ptc-134",
+      "exit": 0,
+      "flags": [
+        "0x82",
+        "0x6",
+        "0x82",
+        "0x82",
+        "0x2"
+      ],
+      "stdout_sha256": "c4a53990b17a150a9d8c7637a654e5c85072ca1860a44bf648bd60539820e76d"
+    },
+    {
+      "name": "n32-regular-2",
+      "exit": 0,
+      "flags": [
+        "0x2",
+        "0x6",
+        "0x82",
+        "0x82",
+        "0x2"
+      ],
+      "stdout_sha256": "c92913ef8ca49b9a1f1162d9a2ba70d4ad53d00de5ae7f46f708057c5fb25572"
+    },
+    {
+      "name": "n32-regular-6",
+      "exit": 0,
+      "flags": [
+        "0x6",
+        "0x6",
+        "0x82",
+        "0x82",
+        "0x2"
+      ],
+      "stdout_sha256": "e09e297abcb43b3ebfee6e5babe58a46997d21ebd36e6cb67541329387bd3e99"
+    },
+    {
+      "name": "n32-regular-130",
+      "exit": 0,
+      "flags": [
+        "0x82",
+        "0x6",
+        "0x82",
+        "0x82",
+        "0x2"
+      ],
+      "stdout_sha256": "5c86f4ae500e5331153feacc5a71ef27c4fb03e7dd61db17c7370fc947d2e34f"
+    },
+    {
+      "name": "n32-regular-134",
+      "exit": 0,
+      "flags": [
+        "0x82",
+        "0x6",
+        "0x82",
+        "0x82",
+        "0x2"
+      ],
+      "stdout_sha256": "5c86f4ae500e5331153feacc5a71ef27c4fb03e7dd61db17c7370fc947d2e34f"
+    },
+    {
+      "name": "n32-_dev_null-2",
+      "exit": 0,
+      "flags": [
+        "0x2",
+        "0x6",
+        "0x82",
+        "0x82",
+        "0x2"
+      ],
+      "stdout_sha256": "960eec4e417b0d3e57e0729df10a7b6235009e0c0c35d2616dce4902645f3678"
+    },
+    {
+      "name": "n32-_dev_null-6",
+      "exit": 0,
+      "flags": [
+        "0x6",
+        "0x6",
+        "0x82",
+        "0x82",
+        "0x2"
+      ],
+      "stdout_sha256": "0a3473f369add4e6c0c263a182e3431082e236bc78388dfefbae6990840af8e9"
+    },
+    {
+      "name": "n32-_dev_null-130",
+      "exit": 0,
+      "flags": [
+        "0x82",
+        "0x6",
+        "0x82",
+        "0x82",
+        "0x2"
+      ],
+      "stdout_sha256": "23e4a964790adbe12d6f772f259b7b9879ea324d2aad8114837df94dab8f1fa3"
+    },
+    {
+      "name": "n32-_dev_null-134",
+      "exit": 0,
+      "flags": [
+        "0x82",
+        "0x6",
+        "0x82",
+        "0x82",
+        "0x2"
+      ],
+      "stdout_sha256": "23e4a964790adbe12d6f772f259b7b9879ea324d2aad8114837df94dab8f1fa3"
+    },
+    {
+      "name": "n32-fifo-2",
+      "exit": 0,
+      "flags": [
+        "0x2",
+        "0x6",
+        "0x82",
+        "0x82",
+        "0x2"
+      ],
+      "stdout_sha256": "3b585da767e5bcb7716043d192fab13d47119334b3427d4f1e21bdd9fa38a63e"
+    },
+    {
+      "name": "n32-fifo-6",
+      "exit": 0,
+      "flags": [
+        "0x6",
+        "0x6",
+        "0x82",
+        "0x82",
+        "0x2"
+      ],
+      "stdout_sha256": "9f546f7abcb43052d8f1ce88f4f5d793c58c9fe7ad4be1f1f9818cff13d860b9"
+    },
+    {
+      "name": "n32-fifo-130",
+      "exit": 0,
+      "flags": [
+        "0x82",
+        "0x6",
+        "0x82",
+        "0x82",
+        "0x2"
+      ],
+      "stdout_sha256": "00ac113ef5fc3b8043ad74088124018060c63b9982449e0159ad54dad7fbe86c"
+    },
+    {
+      "name": "n32-fifo-134",
+      "exit": 0,
+      "flags": [
+        "0x82",
+        "0x6",
+        "0x82",
+        "0x82",
+        "0x2"
+      ],
+      "stdout_sha256": "00ac113ef5fc3b8043ad74088124018060c63b9982449e0159ad54dad7fbe86c"
+    }
+  ],
+  "libc_runs": [
+    {
+      "directory": ".work/irix-pty/libc-runs/ci-14t8ey9u",
+      "mode": "ci",
+      "clean_shutdown": true,
+      "result_sha256": "102d72ddff2ffb42a2cb75b6a55fb157af155d79a04c8ca123a97898df4b84e3",
+      "native_pty_controls": 4,
+      "native_pty_cycles": 12,
+      "cases": [
+        {
+          "name": "0-getpty-2",
+          "uid": 0,
+          "item": "getpty",
+          "flags": 2,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 12,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=0 euid=0 gid=0 egid=0 abi=2\nGETPTY success=1 errno=89 path=/dev/ttyq0\nSTAT master rc=0 errno=0 mode=020666 uid=0 gid=0 rdev=0x380000\nFLAGS value=0x2 errno=0\nSLAVE_OPEN success=1 errno=0\nSTAT slave rc=0 errno=0 mode=020600 uid=0 gid=0 rdev=0x3c0000\nTERM rc=-1 errno=89 size=48 hex=a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5\n",
+            "stderr": ""
+          },
+          "trace_sha256": "061aca3142e795950a57fe942fec139c5567c35e5f3fd98c4c25d200577aecc3"
+        },
+        {
+          "name": "0-getpty-6",
+          "uid": 0,
+          "item": "getpty",
+          "flags": 6,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 12,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=0 euid=0 gid=0 egid=0 abi=2\nGETPTY success=1 errno=89 path=/dev/ttyq0\nSTAT master rc=0 errno=0 mode=020666 uid=0 gid=0 rdev=0x380000\nFLAGS value=0x82 errno=0\nSLAVE_OPEN success=1 errno=0\nSTAT slave rc=0 errno=0 mode=020600 uid=0 gid=0 rdev=0x3c0000\nTERM rc=-1 errno=89 size=48 hex=a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5\n",
+            "stderr": ""
+          },
+          "trace_sha256": "de22184b5d60efe75f545890e6b0a91a7bad68a84b4ad7fca4289466f7b680a0"
+        },
+        {
+          "name": "0-getpty-130",
+          "uid": 0,
+          "item": "getpty",
+          "flags": 130,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 12,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=0 euid=0 gid=0 egid=0 abi=2\nGETPTY success=1 errno=89 path=/dev/ttyq0\nSTAT master rc=0 errno=0 mode=020666 uid=0 gid=0 rdev=0x380000\nFLAGS value=0x82 errno=0\nSLAVE_OPEN success=1 errno=0\nSTAT slave rc=0 errno=0 mode=020600 uid=0 gid=0 rdev=0x3c0000\nTERM rc=-1 errno=89 size=48 hex=a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5\n",
+            "stderr": ""
+          },
+          "trace_sha256": "ab95a1e2822245e201f85ba37f6680f05e89d2ff9a5c764926d977db2eb1f7cf"
+        },
+        {
+          "name": "0-getpty-134",
+          "uid": 0,
+          "item": "getpty",
+          "flags": 134,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 12,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=0 euid=0 gid=0 egid=0 abi=2\nGETPTY success=1 errno=89 path=/dev/ttyq0\nSTAT master rc=0 errno=0 mode=020666 uid=0 gid=0 rdev=0x380000\nFLAGS value=0x82 errno=0\nSLAVE_OPEN success=1 errno=0\nSTAT slave rc=0 errno=0 mode=020600 uid=0 gid=0 rdev=0x3c0000\nTERM rc=-1 errno=89 size=48 hex=a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5\n",
+            "stderr": ""
+          },
+          "trace_sha256": "0db08d930454e08ca07be6aaf4d0dd50c0ae70ef8f689258dd0ae3723470a8d5"
+        },
+        {
+          "name": "0-_dev_ptc-2",
+          "uid": 0,
+          "item": "/dev/ptc",
+          "flags": 2,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=0 euid=0 gid=0 egid=0 abi=2\nOPEN success=1 errno=0\nSTAT open rc=0 errno=0 mode=020666 uid=0 gid=0 rdev=0x380000\nFLAGS value=0x2 errno=0\nSETFL arg=0x4 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x80 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x84 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0 rc=0 errno=0\nFLAGS value=0x2 errno=0\n",
+            "stderr": ""
+          },
+          "trace_sha256": "41b983a5171e59665a7bce6c0fd1d0570bcdd906723e49b10e2ab26cfc7cc7a6"
+        },
+        {
+          "name": "0-_dev_ptc-6",
+          "uid": 0,
+          "item": "/dev/ptc",
+          "flags": 6,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=0 euid=0 gid=0 egid=0 abi=2\nOPEN success=1 errno=0\nSTAT open rc=0 errno=0 mode=020666 uid=0 gid=0 rdev=0x380000\nFLAGS value=0x82 errno=0\nSETFL arg=0x4 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x80 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x84 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0 rc=0 errno=0\nFLAGS value=0x2 errno=0\n",
+            "stderr": ""
+          },
+          "trace_sha256": "3584c4936db2f6a0c3bef67f77f70f0dfd154ec556a4645f5c4e23ba96c30509"
+        },
+        {
+          "name": "0-_dev_ptc-130",
+          "uid": 0,
+          "item": "/dev/ptc",
+          "flags": 130,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=0 euid=0 gid=0 egid=0 abi=2\nOPEN success=1 errno=0\nSTAT open rc=0 errno=0 mode=020666 uid=0 gid=0 rdev=0x380000\nFLAGS value=0x82 errno=0\nSETFL arg=0x4 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x80 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x84 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0 rc=0 errno=0\nFLAGS value=0x2 errno=0\n",
+            "stderr": ""
+          },
+          "trace_sha256": "79a7358f9eca8821ae991bf9a27b7a826cdb2596ee5dd9dc38d59438ab734620"
+        },
+        {
+          "name": "0-_dev_ptc-134",
+          "uid": 0,
+          "item": "/dev/ptc",
+          "flags": 134,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=0 euid=0 gid=0 egid=0 abi=2\nOPEN success=1 errno=0\nSTAT open rc=0 errno=0 mode=020666 uid=0 gid=0 rdev=0x380000\nFLAGS value=0x82 errno=0\nSETFL arg=0x4 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x80 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x84 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0 rc=0 errno=0\nFLAGS value=0x2 errno=0\n",
+            "stderr": ""
+          },
+          "trace_sha256": "eb184f479f2c0e5d852f64a9637febc1787acc08685cc21082799a8fc077fdcb"
+        },
+        {
+          "name": "0-regular-2",
+          "uid": 0,
+          "item": "regular",
+          "flags": 2,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=0 euid=0 gid=0 egid=0 abi=2\nOPEN success=1 errno=0\nSTAT open rc=0 errno=0 mode=0100666 uid=0 gid=0 rdev=0\nFLAGS value=0x2 errno=0\nSETFL arg=0x4 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x80 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x84 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0 rc=0 errno=0\nFLAGS value=0x2 errno=0\n",
+            "stderr": ""
+          },
+          "trace_sha256": "0960b3115b2fb4136a112b97bdebe079886cf466460f7000932ce362608745a4"
+        },
+        {
+          "name": "0-regular-6",
+          "uid": 0,
+          "item": "regular",
+          "flags": 6,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=0 euid=0 gid=0 egid=0 abi=2\nOPEN success=1 errno=0\nSTAT open rc=0 errno=0 mode=0100666 uid=0 gid=0 rdev=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x4 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x80 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x84 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0 rc=0 errno=0\nFLAGS value=0x2 errno=0\n",
+            "stderr": ""
+          },
+          "trace_sha256": "0e935074109684b55392850a382d49b42e89f1506a6f1e2cd85fe0c0b077dc05"
+        },
+        {
+          "name": "0-regular-130",
+          "uid": 0,
+          "item": "regular",
+          "flags": 130,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=0 euid=0 gid=0 egid=0 abi=2\nOPEN success=1 errno=0\nSTAT open rc=0 errno=0 mode=0100666 uid=0 gid=0 rdev=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x4 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x80 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x84 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0 rc=0 errno=0\nFLAGS value=0x2 errno=0\n",
+            "stderr": ""
+          },
+          "trace_sha256": "f158190731d10723951f8cfe038612ed8d3dea6e303259ea4e4086c9c66033a2"
+        },
+        {
+          "name": "0-regular-134",
+          "uid": 0,
+          "item": "regular",
+          "flags": 134,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=0 euid=0 gid=0 egid=0 abi=2\nOPEN success=1 errno=0\nSTAT open rc=0 errno=0 mode=0100666 uid=0 gid=0 rdev=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x4 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x80 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x84 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0 rc=0 errno=0\nFLAGS value=0x2 errno=0\n",
+            "stderr": ""
+          },
+          "trace_sha256": "efa9a4eee1051f75a158bc4ffb543f5be252a5f21e1ff7477719e7430a5d7589"
+        },
+        {
+          "name": "0-_dev_null-2",
+          "uid": 0,
+          "item": "/dev/null",
+          "flags": 2,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=0 euid=0 gid=0 egid=0 abi=2\nOPEN success=1 errno=0\nSTAT open rc=0 errno=0 mode=020666 uid=0 gid=0 rdev=0x500002\nFLAGS value=0x2 errno=0\nSETFL arg=0x4 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x80 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x84 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0 rc=0 errno=0\nFLAGS value=0x2 errno=0\n",
+            "stderr": ""
+          },
+          "trace_sha256": "8aa231b33b33340e699808338fbaea53fe0a669c28dd8350ef543cfdf1140201"
+        },
+        {
+          "name": "0-_dev_null-6",
+          "uid": 0,
+          "item": "/dev/null",
+          "flags": 6,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=0 euid=0 gid=0 egid=0 abi=2\nOPEN success=1 errno=0\nSTAT open rc=0 errno=0 mode=020666 uid=0 gid=0 rdev=0x500002\nFLAGS value=0x82 errno=0\nSETFL arg=0x4 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x80 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x84 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0 rc=0 errno=0\nFLAGS value=0x2 errno=0\n",
+            "stderr": ""
+          },
+          "trace_sha256": "467cdf81f267918a666a966912819007584725f028b4306fb28a2bb88975d68f"
+        },
+        {
+          "name": "0-_dev_null-130",
+          "uid": 0,
+          "item": "/dev/null",
+          "flags": 130,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=0 euid=0 gid=0 egid=0 abi=2\nOPEN success=1 errno=0\nSTAT open rc=0 errno=0 mode=020666 uid=0 gid=0 rdev=0x500002\nFLAGS value=0x82 errno=0\nSETFL arg=0x4 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x80 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x84 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0 rc=0 errno=0\nFLAGS value=0x2 errno=0\n",
+            "stderr": ""
+          },
+          "trace_sha256": "f6897d9479a0047534f966bc90b6750d4e37250d5914b616da2d8d4a415181d8"
+        },
+        {
+          "name": "0-_dev_null-134",
+          "uid": 0,
+          "item": "/dev/null",
+          "flags": 134,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=0 euid=0 gid=0 egid=0 abi=2\nOPEN success=1 errno=0\nSTAT open rc=0 errno=0 mode=020666 uid=0 gid=0 rdev=0x500002\nFLAGS value=0x82 errno=0\nSETFL arg=0x4 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x80 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x84 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0 rc=0 errno=0\nFLAGS value=0x2 errno=0\n",
+            "stderr": ""
+          },
+          "trace_sha256": "521822b6db24dc4fd98692273ca3c5f32128c42398c20dc35e2ce18e8ea0f532"
+        },
+        {
+          "name": "0-fifo-2",
+          "uid": 0,
+          "item": "fifo",
+          "flags": 2,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=0 euid=0 gid=0 egid=0 abi=2\nOPEN success=1 errno=0\nSTAT open rc=0 errno=0 mode=010666 uid=0 gid=0 rdev=0\nFLAGS value=0x2 errno=0\nSETFL arg=0x4 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x80 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x84 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0 rc=0 errno=0\nFLAGS value=0x2 errno=0\n",
+            "stderr": ""
+          },
+          "trace_sha256": "c09f24f21fddba32843750cf8fcbf9692c06e1ff905c9aff642c197c6b94c27a"
+        },
+        {
+          "name": "0-fifo-6",
+          "uid": 0,
+          "item": "fifo",
+          "flags": 6,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=0 euid=0 gid=0 egid=0 abi=2\nOPEN success=1 errno=0\nSTAT open rc=0 errno=0 mode=010666 uid=0 gid=0 rdev=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x4 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x80 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x84 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0 rc=0 errno=0\nFLAGS value=0x2 errno=0\n",
+            "stderr": ""
+          },
+          "trace_sha256": "4584add7d0d07fda2e53a7fea819768f7785ebf52d65a3a0de3aee234594d55d"
+        },
+        {
+          "name": "0-fifo-130",
+          "uid": 0,
+          "item": "fifo",
+          "flags": 130,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=0 euid=0 gid=0 egid=0 abi=2\nOPEN success=1 errno=0\nSTAT open rc=0 errno=0 mode=010666 uid=0 gid=0 rdev=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x4 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x80 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x84 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0 rc=0 errno=0\nFLAGS value=0x2 errno=0\n",
+            "stderr": ""
+          },
+          "trace_sha256": "956f628874092023e833888b0c6894124456a4e057dc37342504bd1e5d342f3e"
+        },
+        {
+          "name": "0-fifo-134",
+          "uid": 0,
+          "item": "fifo",
+          "flags": 134,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=0 euid=0 gid=0 egid=0 abi=2\nOPEN success=1 errno=0\nSTAT open rc=0 errno=0 mode=010666 uid=0 gid=0 rdev=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x4 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x80 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x84 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0 rc=0 errno=0\nFLAGS value=0x2 errno=0\n",
+            "stderr": ""
+          },
+          "trace_sha256": "71881883c9aa3e3ca92a8d27ba289050d9d2373f40435ad06ceb8682b4c491a0"
+        },
+        {
+          "name": "1234-getpty-2",
+          "uid": 1234,
+          "item": "getpty",
+          "flags": 2,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 12,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=1234 euid=1234 gid=1234 egid=1234 abi=2\nGETPTY success=1 errno=89 path=/dev/ttyq0\nSTAT master rc=0 errno=0 mode=020666 uid=0 gid=0 rdev=0x380000\nFLAGS value=0x2 errno=0\nSLAVE_OPEN success=1 errno=0\nSTAT slave rc=0 errno=0 mode=020600 uid=1234 gid=0 rdev=0x3c0000\nTERM rc=-1 errno=89 size=48 hex=a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5\n",
+            "stderr": ""
+          },
+          "trace_sha256": "f65d8374bab7b30b50f061884c0c90de8b46d65f9780b715598430520d3975aa"
+        },
+        {
+          "name": "1234-getpty-6",
+          "uid": 1234,
+          "item": "getpty",
+          "flags": 6,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 12,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=1234 euid=1234 gid=1234 egid=1234 abi=2\nGETPTY success=1 errno=89 path=/dev/ttyq0\nSTAT master rc=0 errno=0 mode=020666 uid=0 gid=0 rdev=0x380000\nFLAGS value=0x82 errno=0\nSLAVE_OPEN success=1 errno=0\nSTAT slave rc=0 errno=0 mode=020600 uid=1234 gid=0 rdev=0x3c0000\nTERM rc=-1 errno=89 size=48 hex=a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5\n",
+            "stderr": ""
+          },
+          "trace_sha256": "b6a24f5d324cc4288043841fbdc64e5fc8ce44132687975a48597c5c6f4d4ea1"
+        },
+        {
+          "name": "1234-getpty-130",
+          "uid": 1234,
+          "item": "getpty",
+          "flags": 130,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 12,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=1234 euid=1234 gid=1234 egid=1234 abi=2\nGETPTY success=1 errno=89 path=/dev/ttyq0\nSTAT master rc=0 errno=0 mode=020666 uid=0 gid=0 rdev=0x380000\nFLAGS value=0x82 errno=0\nSLAVE_OPEN success=1 errno=0\nSTAT slave rc=0 errno=0 mode=020600 uid=1234 gid=0 rdev=0x3c0000\nTERM rc=-1 errno=89 size=48 hex=a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5\n",
+            "stderr": ""
+          },
+          "trace_sha256": "c05dcfda1f082492b1dea23b4d48a6a31ce52d8f11bb5bb672fdf50b871442e3"
+        },
+        {
+          "name": "1234-getpty-134",
+          "uid": 1234,
+          "item": "getpty",
+          "flags": 134,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 12,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=1234 euid=1234 gid=1234 egid=1234 abi=2\nGETPTY success=1 errno=89 path=/dev/ttyq0\nSTAT master rc=0 errno=0 mode=020666 uid=0 gid=0 rdev=0x380000\nFLAGS value=0x82 errno=0\nSLAVE_OPEN success=1 errno=0\nSTAT slave rc=0 errno=0 mode=020600 uid=1234 gid=0 rdev=0x3c0000\nTERM rc=-1 errno=89 size=48 hex=a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5\n",
+            "stderr": ""
+          },
+          "trace_sha256": "1a78fa247cdef70e016ad8ddf7204bfff12c0091d6bdc4365abf206cb3a8fb9d"
+        },
+        {
+          "name": "1234-_dev_ptc-2",
+          "uid": 1234,
+          "item": "/dev/ptc",
+          "flags": 2,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=1234 euid=1234 gid=1234 egid=1234 abi=2\nOPEN success=1 errno=0\nSTAT open rc=0 errno=0 mode=020666 uid=0 gid=0 rdev=0x380000\nFLAGS value=0x2 errno=0\nSETFL arg=0x4 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x80 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x84 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0 rc=0 errno=0\nFLAGS value=0x2 errno=0\n",
+            "stderr": ""
+          },
+          "trace_sha256": "81add0623cebaf98e4f8177207f7a2ba4e99434b14e4b131b28d55ffddee38f3"
+        },
+        {
+          "name": "1234-_dev_ptc-6",
+          "uid": 1234,
+          "item": "/dev/ptc",
+          "flags": 6,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=1234 euid=1234 gid=1234 egid=1234 abi=2\nOPEN success=1 errno=0\nSTAT open rc=0 errno=0 mode=020666 uid=0 gid=0 rdev=0x380000\nFLAGS value=0x82 errno=0\nSETFL arg=0x4 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x80 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x84 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0 rc=0 errno=0\nFLAGS value=0x2 errno=0\n",
+            "stderr": ""
+          },
+          "trace_sha256": "2e7709a081ae7be58279e25542cd8444784f692f3cce50c46877600751b2a5a0"
+        },
+        {
+          "name": "1234-_dev_ptc-130",
+          "uid": 1234,
+          "item": "/dev/ptc",
+          "flags": 130,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=1234 euid=1234 gid=1234 egid=1234 abi=2\nOPEN success=1 errno=0\nSTAT open rc=0 errno=0 mode=020666 uid=0 gid=0 rdev=0x380000\nFLAGS value=0x82 errno=0\nSETFL arg=0x4 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x80 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x84 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0 rc=0 errno=0\nFLAGS value=0x2 errno=0\n",
+            "stderr": ""
+          },
+          "trace_sha256": "5d915d9550513bf26b53afbebf315159622f65663b4cae2b4c4584c01185d153"
+        },
+        {
+          "name": "1234-_dev_ptc-134",
+          "uid": 1234,
+          "item": "/dev/ptc",
+          "flags": 134,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=1234 euid=1234 gid=1234 egid=1234 abi=2\nOPEN success=1 errno=0\nSTAT open rc=0 errno=0 mode=020666 uid=0 gid=0 rdev=0x380000\nFLAGS value=0x82 errno=0\nSETFL arg=0x4 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x80 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x84 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0 rc=0 errno=0\nFLAGS value=0x2 errno=0\n",
+            "stderr": ""
+          },
+          "trace_sha256": "fb2abc6dd747f704a29cc7a0b6f9d9e857a04630ff6a5e739406e23e55c4d125"
+        },
+        {
+          "name": "1234-regular-2",
+          "uid": 1234,
+          "item": "regular",
+          "flags": 2,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=1234 euid=1234 gid=1234 egid=1234 abi=2\nOPEN success=1 errno=0\nSTAT open rc=0 errno=0 mode=0100666 uid=0 gid=0 rdev=0\nFLAGS value=0x2 errno=0\nSETFL arg=0x4 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x80 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x84 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0 rc=0 errno=0\nFLAGS value=0x2 errno=0\n",
+            "stderr": ""
+          },
+          "trace_sha256": "41ff29c12b64d1ab8bdd34284d99f9e625129736ebdf5575080652dc73f0970e"
+        },
+        {
+          "name": "1234-regular-6",
+          "uid": 1234,
+          "item": "regular",
+          "flags": 6,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=1234 euid=1234 gid=1234 egid=1234 abi=2\nOPEN success=1 errno=0\nSTAT open rc=0 errno=0 mode=0100666 uid=0 gid=0 rdev=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x4 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x80 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x84 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0 rc=0 errno=0\nFLAGS value=0x2 errno=0\n",
+            "stderr": ""
+          },
+          "trace_sha256": "8be57a46d55dd4d4b273932452c126fbd7c748ddfded454ac2305ac8450c5326"
+        },
+        {
+          "name": "1234-regular-130",
+          "uid": 1234,
+          "item": "regular",
+          "flags": 130,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=1234 euid=1234 gid=1234 egid=1234 abi=2\nOPEN success=1 errno=0\nSTAT open rc=0 errno=0 mode=0100666 uid=0 gid=0 rdev=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x4 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x80 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x84 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0 rc=0 errno=0\nFLAGS value=0x2 errno=0\n",
+            "stderr": ""
+          },
+          "trace_sha256": "9a46b3e5de2d9b6173084c338b2faf67ec81faec9a1df3748bb592f4fa86fd0f"
+        },
+        {
+          "name": "1234-regular-134",
+          "uid": 1234,
+          "item": "regular",
+          "flags": 134,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=1234 euid=1234 gid=1234 egid=1234 abi=2\nOPEN success=1 errno=0\nSTAT open rc=0 errno=0 mode=0100666 uid=0 gid=0 rdev=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x4 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x80 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x84 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0 rc=0 errno=0\nFLAGS value=0x2 errno=0\n",
+            "stderr": ""
+          },
+          "trace_sha256": "92da21caf376286ca80fe0636b5b8be9e86e87e6bdc4326e31a4f506c2cff203"
+        },
+        {
+          "name": "1234-_dev_null-2",
+          "uid": 1234,
+          "item": "/dev/null",
+          "flags": 2,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=1234 euid=1234 gid=1234 egid=1234 abi=2\nOPEN success=1 errno=0\nSTAT open rc=0 errno=0 mode=020666 uid=0 gid=0 rdev=0x500002\nFLAGS value=0x2 errno=0\nSETFL arg=0x4 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x80 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x84 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0 rc=0 errno=0\nFLAGS value=0x2 errno=0\n",
+            "stderr": ""
+          },
+          "trace_sha256": "bc83fe2551962681fc9265a3631d47eff31c20a6709d98eac2c9860600c9843f"
+        },
+        {
+          "name": "1234-_dev_null-6",
+          "uid": 1234,
+          "item": "/dev/null",
+          "flags": 6,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=1234 euid=1234 gid=1234 egid=1234 abi=2\nOPEN success=1 errno=0\nSTAT open rc=0 errno=0 mode=020666 uid=0 gid=0 rdev=0x500002\nFLAGS value=0x82 errno=0\nSETFL arg=0x4 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x80 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x84 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0 rc=0 errno=0\nFLAGS value=0x2 errno=0\n",
+            "stderr": ""
+          },
+          "trace_sha256": "686d7396e092e0b77a8c928664ca66c597e82b40efebbb822a4ac543dc7d342b"
+        },
+        {
+          "name": "1234-_dev_null-130",
+          "uid": 1234,
+          "item": "/dev/null",
+          "flags": 130,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=1234 euid=1234 gid=1234 egid=1234 abi=2\nOPEN success=1 errno=0\nSTAT open rc=0 errno=0 mode=020666 uid=0 gid=0 rdev=0x500002\nFLAGS value=0x82 errno=0\nSETFL arg=0x4 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x80 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x84 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0 rc=0 errno=0\nFLAGS value=0x2 errno=0\n",
+            "stderr": ""
+          },
+          "trace_sha256": "2d44c72077609987ebf7b5193529840207c2705220e6d03869d6fa802db1a86c"
+        },
+        {
+          "name": "1234-_dev_null-134",
+          "uid": 1234,
+          "item": "/dev/null",
+          "flags": 134,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=1234 euid=1234 gid=1234 egid=1234 abi=2\nOPEN success=1 errno=0\nSTAT open rc=0 errno=0 mode=020666 uid=0 gid=0 rdev=0x500002\nFLAGS value=0x82 errno=0\nSETFL arg=0x4 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x80 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x84 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0 rc=0 errno=0\nFLAGS value=0x2 errno=0\n",
+            "stderr": ""
+          },
+          "trace_sha256": "0e8ae982499cc9ee89181048647d93ea7ae722de86ec12d023690786ac57ee38"
+        },
+        {
+          "name": "1234-fifo-2",
+          "uid": 1234,
+          "item": "fifo",
+          "flags": 2,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=1234 euid=1234 gid=1234 egid=1234 abi=2\nOPEN success=1 errno=0\nSTAT open rc=0 errno=0 mode=010666 uid=0 gid=0 rdev=0\nFLAGS value=0x2 errno=0\nSETFL arg=0x4 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x80 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x84 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0 rc=0 errno=0\nFLAGS value=0x2 errno=0\n",
+            "stderr": ""
+          },
+          "trace_sha256": "0e25749a656c19694be2f9fed633748827d21ead94956a4ba6f72f743aefa41e"
+        },
+        {
+          "name": "1234-fifo-6",
+          "uid": 1234,
+          "item": "fifo",
+          "flags": 6,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=1234 euid=1234 gid=1234 egid=1234 abi=2\nOPEN success=1 errno=0\nSTAT open rc=0 errno=0 mode=010666 uid=0 gid=0 rdev=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x4 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x80 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x84 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0 rc=0 errno=0\nFLAGS value=0x2 errno=0\n",
+            "stderr": ""
+          },
+          "trace_sha256": "d50852efac972fefb3cf96ba600ba7eb72655b48d7796de7543854bc5ba6a886"
+        },
+        {
+          "name": "1234-fifo-130",
+          "uid": 1234,
+          "item": "fifo",
+          "flags": 130,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=1234 euid=1234 gid=1234 egid=1234 abi=2\nOPEN success=1 errno=0\nSTAT open rc=0 errno=0 mode=010666 uid=0 gid=0 rdev=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x4 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x80 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x84 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0 rc=0 errno=0\nFLAGS value=0x2 errno=0\n",
+            "stderr": ""
+          },
+          "trace_sha256": "8b501d5242bcc788d28034836bf7ec9aeae4bca41e2b32bf1677226fb0cfacce"
+        },
+        {
+          "name": "1234-fifo-134",
+          "uid": 1234,
+          "item": "fifo",
+          "flags": 134,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=1234 euid=1234 gid=1234 egid=1234 abi=2\nOPEN success=1 errno=0\nSTAT open rc=0 errno=0 mode=010666 uid=0 gid=0 rdev=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x4 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x80 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x84 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0 rc=0 errno=0\nFLAGS value=0x2 errno=0\n",
+            "stderr": ""
+          },
+          "trace_sha256": "5614b5bb345c28852cfad3c0cf6bed93d1c59fe495dd598056ebbe957ddccf39"
+        }
+      ],
+      "sources": {
+        "lab/irix-pty/native.c": "a36cf2a58faeee1a5c9b5b7e99ce6247edf46285cea0b636796688d45de88a5c",
+        "lab/irix-lp64/runner.c": "005bdf3fffce5fb8ca79073e92cc41431aa953550c41014183d5de986a104463",
+        "scripts/probe-irix-pty-libc.py": "c6a92628929d73f6ac2f0a996d504034689123a25714e13a18c7d6129e0a8460",
+        "lab/irix-pty/setup.sh": "5fb1b9fdac2018886ec22220bd1f29f145df75406c5bf618cdae2ac4a3d8089d"
+      }
+    },
+    {
+      "directory": ".work/irix-pty/libc-runs/ordinary-mnw9lr8z",
+      "mode": "ordinary",
+      "clean_shutdown": true,
+      "result_sha256": "2d75bcf56a26aedd3d863abaebc78a5635cb253d36587fad7cc0b3610e16df14",
+      "native_pty_controls": 4,
+      "native_pty_cycles": 12,
+      "cases": [
+        {
+          "name": "0-getpty-2",
+          "uid": 0,
+          "item": "getpty",
+          "flags": 2,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 12,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=0 euid=0 gid=0 egid=0 abi=2\nGETPTY success=1 errno=89 path=/dev/ttyq0\nSTAT master rc=0 errno=0 mode=020666 uid=0 gid=0 rdev=0x380000\nFLAGS value=0x2 errno=0\nSLAVE_OPEN success=1 errno=0\nSTAT slave rc=0 errno=0 mode=020600 uid=0 gid=0 rdev=0x3c0000\nTERM rc=-1 errno=89 size=48 hex=a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5\n",
+            "stderr": ""
+          },
+          "trace_sha256": "4d49fc228e8249e92c7e7c16729cf043c504f4286c9e317331192dc6cce54927"
+        },
+        {
+          "name": "0-getpty-6",
+          "uid": 0,
+          "item": "getpty",
+          "flags": 6,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 12,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=0 euid=0 gid=0 egid=0 abi=2\nGETPTY success=1 errno=89 path=/dev/ttyq0\nSTAT master rc=0 errno=0 mode=020666 uid=0 gid=0 rdev=0x380000\nFLAGS value=0x82 errno=0\nSLAVE_OPEN success=1 errno=0\nSTAT slave rc=0 errno=0 mode=020600 uid=0 gid=0 rdev=0x3c0000\nTERM rc=-1 errno=89 size=48 hex=a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5\n",
+            "stderr": ""
+          },
+          "trace_sha256": "758b709c3b7ba593bcd95a5a98448edd3ddcf4fb8dd9a23306a15701d00b2c7d"
+        },
+        {
+          "name": "0-getpty-130",
+          "uid": 0,
+          "item": "getpty",
+          "flags": 130,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 12,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=0 euid=0 gid=0 egid=0 abi=2\nGETPTY success=1 errno=89 path=/dev/ttyq0\nSTAT master rc=0 errno=0 mode=020666 uid=0 gid=0 rdev=0x380000\nFLAGS value=0x82 errno=0\nSLAVE_OPEN success=1 errno=0\nSTAT slave rc=0 errno=0 mode=020600 uid=0 gid=0 rdev=0x3c0000\nTERM rc=-1 errno=89 size=48 hex=a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5\n",
+            "stderr": ""
+          },
+          "trace_sha256": "887b550fc80aadbb801ad8a4abf9b86d88b2ff65f61ddb37cab7d84e20fc91e1"
+        },
+        {
+          "name": "0-getpty-134",
+          "uid": 0,
+          "item": "getpty",
+          "flags": 134,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 12,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=0 euid=0 gid=0 egid=0 abi=2\nGETPTY success=1 errno=89 path=/dev/ttyq0\nSTAT master rc=0 errno=0 mode=020666 uid=0 gid=0 rdev=0x380000\nFLAGS value=0x82 errno=0\nSLAVE_OPEN success=1 errno=0\nSTAT slave rc=0 errno=0 mode=020600 uid=0 gid=0 rdev=0x3c0000\nTERM rc=-1 errno=89 size=48 hex=a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5\n",
+            "stderr": ""
+          },
+          "trace_sha256": "5a6b51bec16cb9343703a64821176e39aa6443a4c1842b83ab1e4683fdd2aeed"
+        },
+        {
+          "name": "0-_dev_ptc-2",
+          "uid": 0,
+          "item": "/dev/ptc",
+          "flags": 2,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=0 euid=0 gid=0 egid=0 abi=2\nOPEN success=1 errno=0\nSTAT open rc=0 errno=0 mode=020666 uid=0 gid=0 rdev=0x380000\nFLAGS value=0x2 errno=0\nSETFL arg=0x4 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x80 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x84 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0 rc=0 errno=0\nFLAGS value=0x2 errno=0\n",
+            "stderr": ""
+          },
+          "trace_sha256": "4d438fb2beed379b4b827a2ab112b985b8e20e373a48937ed2516a56422d1fed"
+        },
+        {
+          "name": "0-_dev_ptc-6",
+          "uid": 0,
+          "item": "/dev/ptc",
+          "flags": 6,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=0 euid=0 gid=0 egid=0 abi=2\nOPEN success=1 errno=0\nSTAT open rc=0 errno=0 mode=020666 uid=0 gid=0 rdev=0x380000\nFLAGS value=0x82 errno=0\nSETFL arg=0x4 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x80 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x84 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0 rc=0 errno=0\nFLAGS value=0x2 errno=0\n",
+            "stderr": ""
+          },
+          "trace_sha256": "329920817cba3cef55ff22029ff0ff1c13dbfefbc82f7773c7a13af42518600e"
+        },
+        {
+          "name": "0-_dev_ptc-130",
+          "uid": 0,
+          "item": "/dev/ptc",
+          "flags": 130,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=0 euid=0 gid=0 egid=0 abi=2\nOPEN success=1 errno=0\nSTAT open rc=0 errno=0 mode=020666 uid=0 gid=0 rdev=0x380000\nFLAGS value=0x82 errno=0\nSETFL arg=0x4 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x80 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x84 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0 rc=0 errno=0\nFLAGS value=0x2 errno=0\n",
+            "stderr": ""
+          },
+          "trace_sha256": "db9feca2fe2d5acde0ef43f4ccf263decb71b0d66e9c7c4fac48364bc71d2a32"
+        },
+        {
+          "name": "0-_dev_ptc-134",
+          "uid": 0,
+          "item": "/dev/ptc",
+          "flags": 134,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=0 euid=0 gid=0 egid=0 abi=2\nOPEN success=1 errno=0\nSTAT open rc=0 errno=0 mode=020666 uid=0 gid=0 rdev=0x380000\nFLAGS value=0x82 errno=0\nSETFL arg=0x4 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x80 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x84 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0 rc=0 errno=0\nFLAGS value=0x2 errno=0\n",
+            "stderr": ""
+          },
+          "trace_sha256": "4ab68da62cd5ceba5d8b13dab554b3ed4ad3e8268001d9b218358c53a15c4214"
+        },
+        {
+          "name": "0-regular-2",
+          "uid": 0,
+          "item": "regular",
+          "flags": 2,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=0 euid=0 gid=0 egid=0 abi=2\nOPEN success=1 errno=0\nSTAT open rc=0 errno=0 mode=0100666 uid=0 gid=0 rdev=0\nFLAGS value=0x2 errno=0\nSETFL arg=0x4 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x80 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x84 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0 rc=0 errno=0\nFLAGS value=0x2 errno=0\n",
+            "stderr": ""
+          },
+          "trace_sha256": "5f7151d499e9c53536f3c56e5f1b27281c4c0a1f8537e451ff923da3a24bbe0f"
+        },
+        {
+          "name": "0-regular-6",
+          "uid": 0,
+          "item": "regular",
+          "flags": 6,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=0 euid=0 gid=0 egid=0 abi=2\nOPEN success=1 errno=0\nSTAT open rc=0 errno=0 mode=0100666 uid=0 gid=0 rdev=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x4 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x80 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x84 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0 rc=0 errno=0\nFLAGS value=0x2 errno=0\n",
+            "stderr": ""
+          },
+          "trace_sha256": "f80bef44a6b724a7bdc8b3200ac0c20d81d50a92540a9dba6bf7bb489222dd3a"
+        },
+        {
+          "name": "0-regular-130",
+          "uid": 0,
+          "item": "regular",
+          "flags": 130,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=0 euid=0 gid=0 egid=0 abi=2\nOPEN success=1 errno=0\nSTAT open rc=0 errno=0 mode=0100666 uid=0 gid=0 rdev=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x4 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x80 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x84 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0 rc=0 errno=0\nFLAGS value=0x2 errno=0\n",
+            "stderr": ""
+          },
+          "trace_sha256": "a27d1e8b70503164d73bb11f4ecc8fd157ae95149d80c6f2ae9e5c68d37a5434"
+        },
+        {
+          "name": "0-regular-134",
+          "uid": 0,
+          "item": "regular",
+          "flags": 134,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=0 euid=0 gid=0 egid=0 abi=2\nOPEN success=1 errno=0\nSTAT open rc=0 errno=0 mode=0100666 uid=0 gid=0 rdev=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x4 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x80 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x84 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0 rc=0 errno=0\nFLAGS value=0x2 errno=0\n",
+            "stderr": ""
+          },
+          "trace_sha256": "64a38978ed0e22c86c9e8106fc49c281398c30d681659a7743ce4379692ed29d"
+        },
+        {
+          "name": "0-_dev_null-2",
+          "uid": 0,
+          "item": "/dev/null",
+          "flags": 2,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=0 euid=0 gid=0 egid=0 abi=2\nOPEN success=1 errno=0\nSTAT open rc=0 errno=0 mode=020666 uid=0 gid=0 rdev=0x500002\nFLAGS value=0x2 errno=0\nSETFL arg=0x4 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x80 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x84 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0 rc=0 errno=0\nFLAGS value=0x2 errno=0\n",
+            "stderr": ""
+          },
+          "trace_sha256": "b490cc1b9880b2273daadf67278d1d4e3db28df344036e69552dcc3d6e5ec388"
+        },
+        {
+          "name": "0-_dev_null-6",
+          "uid": 0,
+          "item": "/dev/null",
+          "flags": 6,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=0 euid=0 gid=0 egid=0 abi=2\nOPEN success=1 errno=0\nSTAT open rc=0 errno=0 mode=020666 uid=0 gid=0 rdev=0x500002\nFLAGS value=0x82 errno=0\nSETFL arg=0x4 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x80 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x84 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0 rc=0 errno=0\nFLAGS value=0x2 errno=0\n",
+            "stderr": ""
+          },
+          "trace_sha256": "0572c5e23ecbe75ccd2c8224e670b9953fe5367cceea492322d88269ca105a9c"
+        },
+        {
+          "name": "0-_dev_null-130",
+          "uid": 0,
+          "item": "/dev/null",
+          "flags": 130,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=0 euid=0 gid=0 egid=0 abi=2\nOPEN success=1 errno=0\nSTAT open rc=0 errno=0 mode=020666 uid=0 gid=0 rdev=0x500002\nFLAGS value=0x82 errno=0\nSETFL arg=0x4 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x80 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x84 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0 rc=0 errno=0\nFLAGS value=0x2 errno=0\n",
+            "stderr": ""
+          },
+          "trace_sha256": "6ec627e6f0a3f245e332bdd04ebd987bba006737fc69c676fa4e118f139ca461"
+        },
+        {
+          "name": "0-_dev_null-134",
+          "uid": 0,
+          "item": "/dev/null",
+          "flags": 134,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=0 euid=0 gid=0 egid=0 abi=2\nOPEN success=1 errno=0\nSTAT open rc=0 errno=0 mode=020666 uid=0 gid=0 rdev=0x500002\nFLAGS value=0x82 errno=0\nSETFL arg=0x4 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x80 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x84 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0 rc=0 errno=0\nFLAGS value=0x2 errno=0\n",
+            "stderr": ""
+          },
+          "trace_sha256": "f1408fd13183605ae38d9c1930df84dfb7823376bfc870d726e0bb7a04c3d22c"
+        },
+        {
+          "name": "0-fifo-2",
+          "uid": 0,
+          "item": "fifo",
+          "flags": 2,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=0 euid=0 gid=0 egid=0 abi=2\nOPEN success=1 errno=0\nSTAT open rc=0 errno=0 mode=010666 uid=0 gid=0 rdev=0\nFLAGS value=0x2 errno=0\nSETFL arg=0x4 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x80 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x84 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0 rc=0 errno=0\nFLAGS value=0x2 errno=0\n",
+            "stderr": ""
+          },
+          "trace_sha256": "0ecda2c274b649519c228d7c564689826f8a397c79b181073b57013d0cad174f"
+        },
+        {
+          "name": "0-fifo-6",
+          "uid": 0,
+          "item": "fifo",
+          "flags": 6,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=0 euid=0 gid=0 egid=0 abi=2\nOPEN success=1 errno=0\nSTAT open rc=0 errno=0 mode=010666 uid=0 gid=0 rdev=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x4 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x80 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x84 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0 rc=0 errno=0\nFLAGS value=0x2 errno=0\n",
+            "stderr": ""
+          },
+          "trace_sha256": "937df81e80245f42cb1f60ed20dc29c25ad3cb0273ba0f4a71406a1a6244b486"
+        },
+        {
+          "name": "0-fifo-130",
+          "uid": 0,
+          "item": "fifo",
+          "flags": 130,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=0 euid=0 gid=0 egid=0 abi=2\nOPEN success=1 errno=0\nSTAT open rc=0 errno=0 mode=010666 uid=0 gid=0 rdev=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x4 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x80 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x84 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0 rc=0 errno=0\nFLAGS value=0x2 errno=0\n",
+            "stderr": ""
+          },
+          "trace_sha256": "ce7802f528b1e7289420a81106c1fe0c9b85ef6cb5042e81c0c1df699bb8b332"
+        },
+        {
+          "name": "0-fifo-134",
+          "uid": 0,
+          "item": "fifo",
+          "flags": 134,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=0 euid=0 gid=0 egid=0 abi=2\nOPEN success=1 errno=0\nSTAT open rc=0 errno=0 mode=010666 uid=0 gid=0 rdev=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x4 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x80 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x84 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0 rc=0 errno=0\nFLAGS value=0x2 errno=0\n",
+            "stderr": ""
+          },
+          "trace_sha256": "09dde18c432b1057f662ec08751f3db4cfa152723e4dedc7c81956d5e06efb87"
+        },
+        {
+          "name": "1234-getpty-2",
+          "uid": 1234,
+          "item": "getpty",
+          "flags": 2,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 12,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=1234 euid=1234 gid=1234 egid=1234 abi=2\nGETPTY success=1 errno=89 path=/dev/ttyq0\nSTAT master rc=0 errno=0 mode=020666 uid=0 gid=0 rdev=0x380000\nFLAGS value=0x2 errno=0\nSLAVE_OPEN success=1 errno=0\nSTAT slave rc=0 errno=0 mode=020600 uid=1234 gid=0 rdev=0x3c0000\nTERM rc=-1 errno=89 size=48 hex=a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5\n",
+            "stderr": ""
+          },
+          "trace_sha256": "b1d5f46749209a47f3cfb3cefcb25d1eaacdd88ee8bed189b55a6e1d8fd972bf"
+        },
+        {
+          "name": "1234-getpty-6",
+          "uid": 1234,
+          "item": "getpty",
+          "flags": 6,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 12,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=1234 euid=1234 gid=1234 egid=1234 abi=2\nGETPTY success=1 errno=89 path=/dev/ttyq0\nSTAT master rc=0 errno=0 mode=020666 uid=0 gid=0 rdev=0x380000\nFLAGS value=0x82 errno=0\nSLAVE_OPEN success=1 errno=0\nSTAT slave rc=0 errno=0 mode=020600 uid=1234 gid=0 rdev=0x3c0000\nTERM rc=-1 errno=89 size=48 hex=a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5\n",
+            "stderr": ""
+          },
+          "trace_sha256": "48f47a12b675189ef869d6597f1d0ba48be8a41941fd1b60ed534cb54f9edb72"
+        },
+        {
+          "name": "1234-getpty-130",
+          "uid": 1234,
+          "item": "getpty",
+          "flags": 130,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 12,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=1234 euid=1234 gid=1234 egid=1234 abi=2\nGETPTY success=1 errno=89 path=/dev/ttyq0\nSTAT master rc=0 errno=0 mode=020666 uid=0 gid=0 rdev=0x380000\nFLAGS value=0x82 errno=0\nSLAVE_OPEN success=1 errno=0\nSTAT slave rc=0 errno=0 mode=020600 uid=1234 gid=0 rdev=0x3c0000\nTERM rc=-1 errno=89 size=48 hex=a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5\n",
+            "stderr": ""
+          },
+          "trace_sha256": "020844d46d3560d66dfc2df3c8a730b673d6f0dfada70f89f4730092bb54e4b1"
+        },
+        {
+          "name": "1234-getpty-134",
+          "uid": 1234,
+          "item": "getpty",
+          "flags": 134,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 12,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=1234 euid=1234 gid=1234 egid=1234 abi=2\nGETPTY success=1 errno=89 path=/dev/ttyq0\nSTAT master rc=0 errno=0 mode=020666 uid=0 gid=0 rdev=0x380000\nFLAGS value=0x82 errno=0\nSLAVE_OPEN success=1 errno=0\nSTAT slave rc=0 errno=0 mode=020600 uid=1234 gid=0 rdev=0x3c0000\nTERM rc=-1 errno=89 size=48 hex=a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5\n",
+            "stderr": ""
+          },
+          "trace_sha256": "0d1f748be8d4c982e4fcb76b6b0a8d2a0edd467600093628cd8d8b20ae39f47a"
+        },
+        {
+          "name": "1234-_dev_ptc-2",
+          "uid": 1234,
+          "item": "/dev/ptc",
+          "flags": 2,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=1234 euid=1234 gid=1234 egid=1234 abi=2\nOPEN success=1 errno=0\nSTAT open rc=0 errno=0 mode=020666 uid=0 gid=0 rdev=0x380000\nFLAGS value=0x2 errno=0\nSETFL arg=0x4 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x80 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x84 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0 rc=0 errno=0\nFLAGS value=0x2 errno=0\n",
+            "stderr": ""
+          },
+          "trace_sha256": "ff75959adb0c988c62e28386c869abdd4665b520e0221f3262cc2a6ff8003788"
+        },
+        {
+          "name": "1234-_dev_ptc-6",
+          "uid": 1234,
+          "item": "/dev/ptc",
+          "flags": 6,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=1234 euid=1234 gid=1234 egid=1234 abi=2\nOPEN success=1 errno=0\nSTAT open rc=0 errno=0 mode=020666 uid=0 gid=0 rdev=0x380000\nFLAGS value=0x82 errno=0\nSETFL arg=0x4 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x80 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x84 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0 rc=0 errno=0\nFLAGS value=0x2 errno=0\n",
+            "stderr": ""
+          },
+          "trace_sha256": "0e479667e4c21411dc8053047a722ccc4ae957685d24eeefdee97d201b146b75"
+        },
+        {
+          "name": "1234-_dev_ptc-130",
+          "uid": 1234,
+          "item": "/dev/ptc",
+          "flags": 130,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=1234 euid=1234 gid=1234 egid=1234 abi=2\nOPEN success=1 errno=0\nSTAT open rc=0 errno=0 mode=020666 uid=0 gid=0 rdev=0x380000\nFLAGS value=0x82 errno=0\nSETFL arg=0x4 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x80 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x84 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0 rc=0 errno=0\nFLAGS value=0x2 errno=0\n",
+            "stderr": ""
+          },
+          "trace_sha256": "e801106390a00980bcf35352abf62515fd7c5de18a4b89241f42692e5d325ce4"
+        },
+        {
+          "name": "1234-_dev_ptc-134",
+          "uid": 1234,
+          "item": "/dev/ptc",
+          "flags": 134,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=1234 euid=1234 gid=1234 egid=1234 abi=2\nOPEN success=1 errno=0\nSTAT open rc=0 errno=0 mode=020666 uid=0 gid=0 rdev=0x380000\nFLAGS value=0x82 errno=0\nSETFL arg=0x4 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x80 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x84 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0 rc=0 errno=0\nFLAGS value=0x2 errno=0\n",
+            "stderr": ""
+          },
+          "trace_sha256": "7efdcf479a35d7096caf624676db2fff4398dd55c5e6ead7855cae8d204d3cae"
+        },
+        {
+          "name": "1234-regular-2",
+          "uid": 1234,
+          "item": "regular",
+          "flags": 2,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=1234 euid=1234 gid=1234 egid=1234 abi=2\nOPEN success=1 errno=0\nSTAT open rc=0 errno=0 mode=0100666 uid=0 gid=0 rdev=0\nFLAGS value=0x2 errno=0\nSETFL arg=0x4 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x80 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x84 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0 rc=0 errno=0\nFLAGS value=0x2 errno=0\n",
+            "stderr": ""
+          },
+          "trace_sha256": "24503758a62f543b88849846669ec4dda9caf73da05ed12fc7ad65a4073a16e3"
+        },
+        {
+          "name": "1234-regular-6",
+          "uid": 1234,
+          "item": "regular",
+          "flags": 6,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=1234 euid=1234 gid=1234 egid=1234 abi=2\nOPEN success=1 errno=0\nSTAT open rc=0 errno=0 mode=0100666 uid=0 gid=0 rdev=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x4 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x80 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x84 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0 rc=0 errno=0\nFLAGS value=0x2 errno=0\n",
+            "stderr": ""
+          },
+          "trace_sha256": "7f84fdcd05b0be7f39fb310ba4dab5e29753c16b6a2f19fa34a02818f05e1b14"
+        },
+        {
+          "name": "1234-regular-130",
+          "uid": 1234,
+          "item": "regular",
+          "flags": 130,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=1234 euid=1234 gid=1234 egid=1234 abi=2\nOPEN success=1 errno=0\nSTAT open rc=0 errno=0 mode=0100666 uid=0 gid=0 rdev=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x4 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x80 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x84 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0 rc=0 errno=0\nFLAGS value=0x2 errno=0\n",
+            "stderr": ""
+          },
+          "trace_sha256": "a2288b984dd35a3f1560b1e2cb30761cef6bbd53e21b1426d07b1d43819cc443"
+        },
+        {
+          "name": "1234-regular-134",
+          "uid": 1234,
+          "item": "regular",
+          "flags": 134,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=1234 euid=1234 gid=1234 egid=1234 abi=2\nOPEN success=1 errno=0\nSTAT open rc=0 errno=0 mode=0100666 uid=0 gid=0 rdev=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x4 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x80 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x84 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0 rc=0 errno=0\nFLAGS value=0x2 errno=0\n",
+            "stderr": ""
+          },
+          "trace_sha256": "e50558073bb5fc4ea04defb4a22614d6d1ba484784603ba42381768763098b01"
+        },
+        {
+          "name": "1234-_dev_null-2",
+          "uid": 1234,
+          "item": "/dev/null",
+          "flags": 2,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=1234 euid=1234 gid=1234 egid=1234 abi=2\nOPEN success=1 errno=0\nSTAT open rc=0 errno=0 mode=020666 uid=0 gid=0 rdev=0x500002\nFLAGS value=0x2 errno=0\nSETFL arg=0x4 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x80 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x84 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0 rc=0 errno=0\nFLAGS value=0x2 errno=0\n",
+            "stderr": ""
+          },
+          "trace_sha256": "74d19ba3ddf11f8b36ce34a9dd974c399d72b279da73cc9e9fccf9190fe8b21d"
+        },
+        {
+          "name": "1234-_dev_null-6",
+          "uid": 1234,
+          "item": "/dev/null",
+          "flags": 6,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=1234 euid=1234 gid=1234 egid=1234 abi=2\nOPEN success=1 errno=0\nSTAT open rc=0 errno=0 mode=020666 uid=0 gid=0 rdev=0x500002\nFLAGS value=0x82 errno=0\nSETFL arg=0x4 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x80 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x84 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0 rc=0 errno=0\nFLAGS value=0x2 errno=0\n",
+            "stderr": ""
+          },
+          "trace_sha256": "bf09ccf403b1d507a5d93baab23b2dd433934d35a864586476b71156cb9c62e7"
+        },
+        {
+          "name": "1234-_dev_null-130",
+          "uid": 1234,
+          "item": "/dev/null",
+          "flags": 130,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=1234 euid=1234 gid=1234 egid=1234 abi=2\nOPEN success=1 errno=0\nSTAT open rc=0 errno=0 mode=020666 uid=0 gid=0 rdev=0x500002\nFLAGS value=0x82 errno=0\nSETFL arg=0x4 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x80 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x84 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0 rc=0 errno=0\nFLAGS value=0x2 errno=0\n",
+            "stderr": ""
+          },
+          "trace_sha256": "99a6c0b56c1572b5e95454a712d7d3acc50b479c25daf658f21075adf1131e20"
+        },
+        {
+          "name": "1234-_dev_null-134",
+          "uid": 1234,
+          "item": "/dev/null",
+          "flags": 134,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=1234 euid=1234 gid=1234 egid=1234 abi=2\nOPEN success=1 errno=0\nSTAT open rc=0 errno=0 mode=020666 uid=0 gid=0 rdev=0x500002\nFLAGS value=0x82 errno=0\nSETFL arg=0x4 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x80 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x84 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0 rc=0 errno=0\nFLAGS value=0x2 errno=0\n",
+            "stderr": ""
+          },
+          "trace_sha256": "2ef657176916b6ff94b63cba48f97fe02e8bb44463e4d90cd1aca94657cc0d6b"
+        },
+        {
+          "name": "1234-fifo-2",
+          "uid": 1234,
+          "item": "fifo",
+          "flags": 2,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=1234 euid=1234 gid=1234 egid=1234 abi=2\nOPEN success=1 errno=0\nSTAT open rc=0 errno=0 mode=010666 uid=0 gid=0 rdev=0\nFLAGS value=0x2 errno=0\nSETFL arg=0x4 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x80 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x84 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0 rc=0 errno=0\nFLAGS value=0x2 errno=0\n",
+            "stderr": ""
+          },
+          "trace_sha256": "27806963baf8ef0223fcce6c99e7686b85c0a64e75d45ddf58cdaf2ea387872c"
+        },
+        {
+          "name": "1234-fifo-6",
+          "uid": 1234,
+          "item": "fifo",
+          "flags": 6,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=1234 euid=1234 gid=1234 egid=1234 abi=2\nOPEN success=1 errno=0\nSTAT open rc=0 errno=0 mode=010666 uid=0 gid=0 rdev=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x4 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x80 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x84 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0 rc=0 errno=0\nFLAGS value=0x2 errno=0\n",
+            "stderr": ""
+          },
+          "trace_sha256": "3b29d419b910faceb452ab9a862fe21c6438edd5a9b2e8058139894ce8e602d8"
+        },
+        {
+          "name": "1234-fifo-130",
+          "uid": 1234,
+          "item": "fifo",
+          "flags": 130,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=1234 euid=1234 gid=1234 egid=1234 abi=2\nOPEN success=1 errno=0\nSTAT open rc=0 errno=0 mode=010666 uid=0 gid=0 rdev=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x4 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x80 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x84 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0 rc=0 errno=0\nFLAGS value=0x2 errno=0\n",
+            "stderr": ""
+          },
+          "trace_sha256": "809a5ccd450d7afaf1425464f74de37e185b0325f63ac5216aca2c235ec666bd"
+        },
+        {
+          "name": "1234-fifo-134",
+          "uid": 1234,
+          "item": "fifo",
+          "flags": 134,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "IDENTITY uid=1234 euid=1234 gid=1234 egid=1234 abi=2\nOPEN success=1 errno=0\nSTAT open rc=0 errno=0 mode=010666 uid=0 gid=0 rdev=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x4 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x80 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0x84 rc=0 errno=0\nFLAGS value=0x82 errno=0\nSETFL arg=0 rc=0 errno=0\nFLAGS value=0x2 errno=0\n",
+            "stderr": ""
+          },
+          "trace_sha256": "a0c487db063381b969d44cf223b485783efc7f38b5f6bf9115e0ecfd39f3aa10"
+        }
+      ],
+      "sources": {
+        "lab/irix-pty/native.c": "a36cf2a58faeee1a5c9b5b7e99ce6247edf46285cea0b636796688d45de88a5c",
+        "lab/irix-lp64/runner.c": "005bdf3fffce5fb8ca79073e92cc41431aa953550c41014183d5de986a104463",
+        "scripts/probe-irix-pty-libc.py": "c6a92628929d73f6ac2f0a996d504034689123a25714e13a18c7d6129e0a8460",
+        "lab/irix-pty/setup.sh": "5fb1b9fdac2018886ec22220bd1f29f145df75406c5bf618cdae2ac4a3d8089d"
+      }
+    }
+  ],
+  "winterm_runs": [
+    {
+      "directory": ".work/irix-winterm-pty/runs/ci-u9k60dcf",
+      "mode": "ci",
+      "clean_shutdown": true,
+      "result_sha256": "953328123863d11900db3712d5dbe7c9c16b772d6655786ecebc7be230a17289",
+      "native_pty_controls": 4,
+      "native_pty_cycles": 12,
+      "cases": [
+        {
+          "name": "0-default",
+          "uid": 0,
+          "font": null,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 255,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "/emul/irix/usr/sbin/xwsh: Function not implemented: can't start command\n"
+          },
+          "pty_events": [
+            {
+              "call": {
+                "syscall": 1005,
+                "pc": 262470640,
+                "a0": 263489704,
+                "a1": 6,
+                "a2": 402,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1005,
+                "v0": 4,
+                "a3": 0
+              },
+              "paths": [
+                "/emul/irix/dev/ptc"
+              ]
+            },
+            {
+              "call": {
+                "syscall": 1024,
+                "pc": 262534632,
+                "a0": 4,
+                "a1": 402,
+                "a2": 0,
+                "a3": 4
+              },
+              "ret": {
+                "syscall": 1024,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "call": {
+                "syscall": 1040,
+                "pc": 262470072,
+                "a0": 22,
+                "a1": 28,
+                "a2": 0,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1040,
+                "v0": 22,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "call": {
+                "syscall": 1160,
+                "pc": 262479328,
+                "a0": 2,
+                "a1": 4,
+                "a2": 2147447760,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1160,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "call": {
+                "syscall": 1158,
+                "pc": 262470200,
+                "a0": 2,
+                "a1": 263549224,
+                "a2": 2147447912,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1158,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": [
+                "/emul/irix/dev/ttyq0"
+              ]
+            },
+            {
+              "call": {
+                "syscall": 1015,
+                "pc": 262541752,
+                "a0": 263549224,
+                "a1": 402,
+                "a2": 0,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1015,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": [
+                "/emul/irix/dev/ttyq0"
+              ]
+            },
+            {
+              "call": {
+                "syscall": 1158,
+                "pc": 262470200,
+                "a0": 2,
+                "a1": 263549248,
+                "a2": 2147448064,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1158,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": [
+                "/emul/irix/dev/pts/0"
+              ]
+            },
+            {
+              "call": {
+                "syscall": 1015,
+                "pc": 262541752,
+                "a0": 263549248,
+                "a1": 402,
+                "a2": 0,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1015,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": [
+                "/emul/irix/dev/pts/0"
+              ]
+            },
+            {
+              "call": {
+                "syscall": 1054,
+                "pc": 262475332,
+                "a0": 4,
+                "a1": 21256,
+                "a2": 2147448336,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1054,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "call": {
+                "syscall": 1164,
+                "pc": 262558880,
+                "a0": 1,
+                "a1": 2147448432,
+                "a2": 0,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1164,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "call": {
+                "syscall": 1002,
+                "pc": 262530836,
+                "a0": 2147448351,
+                "a1": 1,
+                "a2": 0,
+                "a3": 1054308
+              },
+              "ret": {
+                "syscall": 1002,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            }
+          ],
+          "trace_sha256": "1a18efdf8cb89a54780f5c0b28862b46a17a911614b7b66a77059c0c6f58660c",
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b"
+        },
+        {
+          "name": "0-fixed",
+          "uid": 0,
+          "font": "fixed",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 255,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "/emul/irix/usr/sbin/xwsh: Function not implemented: can't start command\n"
+          },
+          "pty_events": [
+            {
+              "call": {
+                "syscall": 1005,
+                "pc": 262470640,
+                "a0": 263489704,
+                "a1": 6,
+                "a2": 402,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1005,
+                "v0": 4,
+                "a3": 0
+              },
+              "paths": [
+                "/emul/irix/dev/ptc"
+              ]
+            },
+            {
+              "call": {
+                "syscall": 1024,
+                "pc": 262534632,
+                "a0": 4,
+                "a1": 402,
+                "a2": 0,
+                "a3": 4
+              },
+              "ret": {
+                "syscall": 1024,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "call": {
+                "syscall": 1040,
+                "pc": 262470072,
+                "a0": 22,
+                "a1": 28,
+                "a2": 0,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1040,
+                "v0": 22,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "call": {
+                "syscall": 1160,
+                "pc": 262479328,
+                "a0": 2,
+                "a1": 4,
+                "a2": 2147447744,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1160,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "call": {
+                "syscall": 1158,
+                "pc": 262470200,
+                "a0": 2,
+                "a1": 263549224,
+                "a2": 2147447896,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1158,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": [
+                "/emul/irix/dev/ttyq0"
+              ]
+            },
+            {
+              "call": {
+                "syscall": 1015,
+                "pc": 262541752,
+                "a0": 263549224,
+                "a1": 402,
+                "a2": 0,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1015,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": [
+                "/emul/irix/dev/ttyq0"
+              ]
+            },
+            {
+              "call": {
+                "syscall": 1158,
+                "pc": 262470200,
+                "a0": 2,
+                "a1": 263549248,
+                "a2": 2147448048,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1158,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": [
+                "/emul/irix/dev/pts/0"
+              ]
+            },
+            {
+              "call": {
+                "syscall": 1015,
+                "pc": 262541752,
+                "a0": 263549248,
+                "a1": 402,
+                "a2": 0,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1015,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": [
+                "/emul/irix/dev/pts/0"
+              ]
+            },
+            {
+              "call": {
+                "syscall": 1054,
+                "pc": 262475332,
+                "a0": 4,
+                "a1": 21256,
+                "a2": 2147448320,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1054,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "call": {
+                "syscall": 1164,
+                "pc": 262558880,
+                "a0": 1,
+                "a1": 2147448416,
+                "a2": 0,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1164,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "call": {
+                "syscall": 1002,
+                "pc": 262530836,
+                "a0": 2147448335,
+                "a1": 1,
+                "a2": 0,
+                "a3": 1054308
+              },
+              "ret": {
+                "syscall": 1002,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            }
+          ],
+          "trace_sha256": "ebc4ec44142f54e681cc7e87643b205672ee2e4fe26f8fefc6455eda9e385f99",
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b"
+        },
+        {
+          "name": "1234-default",
+          "uid": 1234,
+          "font": null,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 255,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "/emul/irix/usr/sbin/xwsh: Function not implemented: can't start command\n"
+          },
+          "pty_events": [
+            {
+              "call": {
+                "syscall": 1005,
+                "pc": 262470640,
+                "a0": 263489704,
+                "a1": 6,
+                "a2": 402,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1005,
+                "v0": 4,
+                "a3": 0
+              },
+              "paths": [
+                "/emul/irix/dev/ptc"
+              ]
+            },
+            {
+              "call": {
+                "syscall": 1024,
+                "pc": 262534632,
+                "a0": 4,
+                "a1": 402,
+                "a2": 0,
+                "a3": 4
+              },
+              "ret": {
+                "syscall": 1024,
+                "v0": 1234,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "call": {
+                "syscall": 1040,
+                "pc": 262470072,
+                "a0": 22,
+                "a1": 28,
+                "a2": 0,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1040,
+                "v0": 22,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "call": {
+                "syscall": 1160,
+                "pc": 262479328,
+                "a0": 2,
+                "a1": 4,
+                "a2": 2147447760,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1160,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "call": {
+                "syscall": 1158,
+                "pc": 262470200,
+                "a0": 2,
+                "a1": 263549224,
+                "a2": 2147447912,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1158,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": [
+                "/emul/irix/dev/ttyq0"
+              ]
+            },
+            {
+              "call": {
+                "syscall": 1015,
+                "pc": 262541752,
+                "a0": 263549224,
+                "a1": 402,
+                "a2": 0,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1015,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": [
+                "/emul/irix/dev/ttyq0"
+              ]
+            },
+            {
+              "call": {
+                "syscall": 1158,
+                "pc": 262470200,
+                "a0": 2,
+                "a1": 263549248,
+                "a2": 2147448064,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1158,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": [
+                "/emul/irix/dev/pts/0"
+              ]
+            },
+            {
+              "call": {
+                "syscall": 1015,
+                "pc": 262541752,
+                "a0": 263549248,
+                "a1": 402,
+                "a2": 0,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1015,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": [
+                "/emul/irix/dev/pts/0"
+              ]
+            },
+            {
+              "call": {
+                "syscall": 1054,
+                "pc": 262475332,
+                "a0": 4,
+                "a1": 21256,
+                "a2": 2147448336,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1054,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "call": {
+                "syscall": 1164,
+                "pc": 262558880,
+                "a0": 1,
+                "a1": 2147448432,
+                "a2": 0,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1164,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "call": {
+                "syscall": 1002,
+                "pc": 262530836,
+                "a0": 2147448351,
+                "a1": 1,
+                "a2": 0,
+                "a3": 1054308
+              },
+              "ret": {
+                "syscall": 1002,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            }
+          ],
+          "trace_sha256": "b9ca46618a33713a6628c3dbea338b1b56f42c8451b1ef1941b599bd73ad0f30",
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b"
+        },
+        {
+          "name": "1234-fixed",
+          "uid": 1234,
+          "font": "fixed",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 255,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "/emul/irix/usr/sbin/xwsh: Function not implemented: can't start command\n"
+          },
+          "pty_events": [
+            {
+              "call": {
+                "syscall": 1005,
+                "pc": 262470640,
+                "a0": 263489704,
+                "a1": 6,
+                "a2": 402,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1005,
+                "v0": 4,
+                "a3": 0
+              },
+              "paths": [
+                "/emul/irix/dev/ptc"
+              ]
+            },
+            {
+              "call": {
+                "syscall": 1024,
+                "pc": 262534632,
+                "a0": 4,
+                "a1": 402,
+                "a2": 0,
+                "a3": 4
+              },
+              "ret": {
+                "syscall": 1024,
+                "v0": 1234,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "call": {
+                "syscall": 1040,
+                "pc": 262470072,
+                "a0": 22,
+                "a1": 28,
+                "a2": 0,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1040,
+                "v0": 22,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "call": {
+                "syscall": 1160,
+                "pc": 262479328,
+                "a0": 2,
+                "a1": 4,
+                "a2": 2147447744,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1160,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "call": {
+                "syscall": 1158,
+                "pc": 262470200,
+                "a0": 2,
+                "a1": 263549224,
+                "a2": 2147447896,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1158,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": [
+                "/emul/irix/dev/ttyq0"
+              ]
+            },
+            {
+              "call": {
+                "syscall": 1015,
+                "pc": 262541752,
+                "a0": 263549224,
+                "a1": 402,
+                "a2": 0,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1015,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": [
+                "/emul/irix/dev/ttyq0"
+              ]
+            },
+            {
+              "call": {
+                "syscall": 1158,
+                "pc": 262470200,
+                "a0": 2,
+                "a1": 263549248,
+                "a2": 2147448048,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1158,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": [
+                "/emul/irix/dev/pts/0"
+              ]
+            },
+            {
+              "call": {
+                "syscall": 1015,
+                "pc": 262541752,
+                "a0": 263549248,
+                "a1": 402,
+                "a2": 0,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1015,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": [
+                "/emul/irix/dev/pts/0"
+              ]
+            },
+            {
+              "call": {
+                "syscall": 1054,
+                "pc": 262475332,
+                "a0": 4,
+                "a1": 21256,
+                "a2": 2147448320,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1054,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "call": {
+                "syscall": 1164,
+                "pc": 262558880,
+                "a0": 1,
+                "a1": 2147448416,
+                "a2": 0,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1164,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "call": {
+                "syscall": 1002,
+                "pc": 262530836,
+                "a0": 2147448335,
+                "a1": 1,
+                "a2": 0,
+                "a3": 1054308
+              },
+              "ret": {
+                "syscall": 1002,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            }
+          ],
+          "trace_sha256": "3b691c6996909a9ee6f153f3b0a628f6c37a802ab3072ec79b07bc27a5913cb2",
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b"
+        }
+      ],
+      "sources": {
+        "lab/irix-winterm/trace.c": "c17869ba507613506d2f9546809a5a6e0d718be27093aa93a32434cc9652658e",
+        "lab/irix-toolchest/fault.c": "de9b9b272675f5b0cf52e5d6ab03ba4241614e7c6bf4b1a123f48135084c80af",
+        "lab/irix-lp64/runner.c": "005bdf3fffce5fb8ca79073e92cc41431aa953550c41014183d5de986a104463",
+        "lab/irix-toolchest/session.c": "e183b4aefdfb428e01dc609230e87a7546a0b31e9d4b5e236503e0a8bb3b09f5",
+        "scripts/probe-irix-winterm-pty.py": "5e76debacacf5dd7580964a582f0ff490aeed66eac1e17700efc1fb1b34101a5",
+        "lab/irix-pty/setup.sh": "5fb1b9fdac2018886ec22220bd1f29f145df75406c5bf618cdae2ac4a3d8089d",
+        "lab/irix-pty/native.c": "a36cf2a58faeee1a5c9b5b7e99ce6247edf46285cea0b636796688d45de88a5c"
+      }
+    },
+    {
+      "directory": ".work/irix-winterm-pty/runs/ordinary-77ip9kbg",
+      "mode": "ordinary",
+      "clean_shutdown": true,
+      "result_sha256": "712a926f163c623f3b55d47c1932c65c4a8159e84ae0b70d55504162974fa85e",
+      "native_pty_controls": 4,
+      "native_pty_cycles": 12,
+      "cases": [
+        {
+          "name": "0-default",
+          "uid": 0,
+          "font": null,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 255,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "/emul/irix/usr/sbin/xwsh: Function not implemented: can't start command\n"
+          },
+          "pty_events": [
+            {
+              "call": {
+                "syscall": 1005,
+                "pc": 262470640,
+                "a0": 263489704,
+                "a1": 6,
+                "a2": 402,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1005,
+                "v0": 4,
+                "a3": 0
+              },
+              "paths": [
+                "/emul/irix/dev/ptc"
+              ]
+            },
+            {
+              "call": {
+                "syscall": 1024,
+                "pc": 262534632,
+                "a0": 4,
+                "a1": 402,
+                "a2": 0,
+                "a3": 4
+              },
+              "ret": {
+                "syscall": 1024,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "call": {
+                "syscall": 1040,
+                "pc": 262470072,
+                "a0": 22,
+                "a1": 28,
+                "a2": 0,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1040,
+                "v0": 22,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "call": {
+                "syscall": 1160,
+                "pc": 262479328,
+                "a0": 2,
+                "a1": 4,
+                "a2": 2147447760,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1160,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "call": {
+                "syscall": 1158,
+                "pc": 262470200,
+                "a0": 2,
+                "a1": 263549224,
+                "a2": 2147447912,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1158,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": [
+                "/emul/irix/dev/ttyq0"
+              ]
+            },
+            {
+              "call": {
+                "syscall": 1015,
+                "pc": 262541752,
+                "a0": 263549224,
+                "a1": 402,
+                "a2": 0,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1015,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": [
+                "/emul/irix/dev/ttyq0"
+              ]
+            },
+            {
+              "call": {
+                "syscall": 1158,
+                "pc": 262470200,
+                "a0": 2,
+                "a1": 263549248,
+                "a2": 2147448064,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1158,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": [
+                "/emul/irix/dev/pts/0"
+              ]
+            },
+            {
+              "call": {
+                "syscall": 1015,
+                "pc": 262541752,
+                "a0": 263549248,
+                "a1": 402,
+                "a2": 0,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1015,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": [
+                "/emul/irix/dev/pts/0"
+              ]
+            },
+            {
+              "call": {
+                "syscall": 1054,
+                "pc": 262475332,
+                "a0": 4,
+                "a1": 21256,
+                "a2": 2147448336,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1054,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "call": {
+                "syscall": 1164,
+                "pc": 262558880,
+                "a0": 1,
+                "a1": 2147448432,
+                "a2": 0,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1164,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "call": {
+                "syscall": 1002,
+                "pc": 262530836,
+                "a0": 2147448351,
+                "a1": 1,
+                "a2": 0,
+                "a3": 1054308
+              },
+              "ret": {
+                "syscall": 1002,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            }
+          ],
+          "trace_sha256": "95eafee5d708ca9e0485bb497903672e12619602367cab915240586285043a1e",
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b"
+        },
+        {
+          "name": "0-fixed",
+          "uid": 0,
+          "font": "fixed",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 255,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "/emul/irix/usr/sbin/xwsh: Function not implemented: can't start command\n"
+          },
+          "pty_events": [
+            {
+              "call": {
+                "syscall": 1005,
+                "pc": 262470640,
+                "a0": 263489704,
+                "a1": 6,
+                "a2": 402,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1005,
+                "v0": 4,
+                "a3": 0
+              },
+              "paths": [
+                "/emul/irix/dev/ptc"
+              ]
+            },
+            {
+              "call": {
+                "syscall": 1024,
+                "pc": 262534632,
+                "a0": 4,
+                "a1": 402,
+                "a2": 0,
+                "a3": 4
+              },
+              "ret": {
+                "syscall": 1024,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "call": {
+                "syscall": 1040,
+                "pc": 262470072,
+                "a0": 22,
+                "a1": 28,
+                "a2": 0,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1040,
+                "v0": 22,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "call": {
+                "syscall": 1160,
+                "pc": 262479328,
+                "a0": 2,
+                "a1": 4,
+                "a2": 2147447744,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1160,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "call": {
+                "syscall": 1158,
+                "pc": 262470200,
+                "a0": 2,
+                "a1": 263549224,
+                "a2": 2147447896,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1158,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": [
+                "/emul/irix/dev/ttyq0"
+              ]
+            },
+            {
+              "call": {
+                "syscall": 1015,
+                "pc": 262541752,
+                "a0": 263549224,
+                "a1": 402,
+                "a2": 0,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1015,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": [
+                "/emul/irix/dev/ttyq0"
+              ]
+            },
+            {
+              "call": {
+                "syscall": 1158,
+                "pc": 262470200,
+                "a0": 2,
+                "a1": 263549248,
+                "a2": 2147448048,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1158,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": [
+                "/emul/irix/dev/pts/0"
+              ]
+            },
+            {
+              "call": {
+                "syscall": 1015,
+                "pc": 262541752,
+                "a0": 263549248,
+                "a1": 402,
+                "a2": 0,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1015,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": [
+                "/emul/irix/dev/pts/0"
+              ]
+            },
+            {
+              "call": {
+                "syscall": 1054,
+                "pc": 262475332,
+                "a0": 4,
+                "a1": 21256,
+                "a2": 2147448320,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1054,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "call": {
+                "syscall": 1164,
+                "pc": 262558880,
+                "a0": 1,
+                "a1": 2147448416,
+                "a2": 0,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1164,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "call": {
+                "syscall": 1002,
+                "pc": 262530836,
+                "a0": 2147448335,
+                "a1": 1,
+                "a2": 0,
+                "a3": 1054308
+              },
+              "ret": {
+                "syscall": 1002,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            }
+          ],
+          "trace_sha256": "b4d0ed2c754719a03c53b4d51264bfe0ea4cf6231c6cc6f0262ad976a4a9c6d7",
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b"
+        },
+        {
+          "name": "1234-default",
+          "uid": 1234,
+          "font": null,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 255,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "/emul/irix/usr/sbin/xwsh: Function not implemented: can't start command\n"
+          },
+          "pty_events": [
+            {
+              "call": {
+                "syscall": 1005,
+                "pc": 262470640,
+                "a0": 263489704,
+                "a1": 6,
+                "a2": 402,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1005,
+                "v0": 4,
+                "a3": 0
+              },
+              "paths": [
+                "/emul/irix/dev/ptc"
+              ]
+            },
+            {
+              "call": {
+                "syscall": 1024,
+                "pc": 262534632,
+                "a0": 4,
+                "a1": 402,
+                "a2": 0,
+                "a3": 4
+              },
+              "ret": {
+                "syscall": 1024,
+                "v0": 1234,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "call": {
+                "syscall": 1040,
+                "pc": 262470072,
+                "a0": 22,
+                "a1": 28,
+                "a2": 0,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1040,
+                "v0": 22,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "call": {
+                "syscall": 1160,
+                "pc": 262479328,
+                "a0": 2,
+                "a1": 4,
+                "a2": 2147447760,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1160,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "call": {
+                "syscall": 1158,
+                "pc": 262470200,
+                "a0": 2,
+                "a1": 263549224,
+                "a2": 2147447912,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1158,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": [
+                "/emul/irix/dev/ttyq0"
+              ]
+            },
+            {
+              "call": {
+                "syscall": 1015,
+                "pc": 262541752,
+                "a0": 263549224,
+                "a1": 402,
+                "a2": 0,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1015,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": [
+                "/emul/irix/dev/ttyq0"
+              ]
+            },
+            {
+              "call": {
+                "syscall": 1158,
+                "pc": 262470200,
+                "a0": 2,
+                "a1": 263549248,
+                "a2": 2147448064,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1158,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": [
+                "/emul/irix/dev/pts/0"
+              ]
+            },
+            {
+              "call": {
+                "syscall": 1015,
+                "pc": 262541752,
+                "a0": 263549248,
+                "a1": 402,
+                "a2": 0,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1015,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": [
+                "/emul/irix/dev/pts/0"
+              ]
+            },
+            {
+              "call": {
+                "syscall": 1054,
+                "pc": 262475332,
+                "a0": 4,
+                "a1": 21256,
+                "a2": 2147448336,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1054,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "call": {
+                "syscall": 1164,
+                "pc": 262558880,
+                "a0": 1,
+                "a1": 2147448432,
+                "a2": 0,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1164,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "call": {
+                "syscall": 1002,
+                "pc": 262530836,
+                "a0": 2147448351,
+                "a1": 1,
+                "a2": 0,
+                "a3": 1054308
+              },
+              "ret": {
+                "syscall": 1002,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            }
+          ],
+          "trace_sha256": "4f116bab9d72ecf0eca26fa09df0fad8eef1218d40b17a9471456a23afcee549",
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b"
+        },
+        {
+          "name": "1234-fixed",
+          "uid": 1234,
+          "font": "fixed",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 255,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "/emul/irix/usr/sbin/xwsh: Function not implemented: can't start command\n"
+          },
+          "pty_events": [
+            {
+              "call": {
+                "syscall": 1005,
+                "pc": 262470640,
+                "a0": 263489704,
+                "a1": 6,
+                "a2": 402,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1005,
+                "v0": 4,
+                "a3": 0
+              },
+              "paths": [
+                "/emul/irix/dev/ptc"
+              ]
+            },
+            {
+              "call": {
+                "syscall": 1024,
+                "pc": 262534632,
+                "a0": 4,
+                "a1": 402,
+                "a2": 0,
+                "a3": 4
+              },
+              "ret": {
+                "syscall": 1024,
+                "v0": 1234,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "call": {
+                "syscall": 1040,
+                "pc": 262470072,
+                "a0": 22,
+                "a1": 28,
+                "a2": 0,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1040,
+                "v0": 22,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "call": {
+                "syscall": 1160,
+                "pc": 262479328,
+                "a0": 2,
+                "a1": 4,
+                "a2": 2147447744,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1160,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "call": {
+                "syscall": 1158,
+                "pc": 262470200,
+                "a0": 2,
+                "a1": 263549224,
+                "a2": 2147447896,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1158,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": [
+                "/emul/irix/dev/ttyq0"
+              ]
+            },
+            {
+              "call": {
+                "syscall": 1015,
+                "pc": 262541752,
+                "a0": 263549224,
+                "a1": 402,
+                "a2": 0,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1015,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": [
+                "/emul/irix/dev/ttyq0"
+              ]
+            },
+            {
+              "call": {
+                "syscall": 1158,
+                "pc": 262470200,
+                "a0": 2,
+                "a1": 263549248,
+                "a2": 2147448048,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1158,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": [
+                "/emul/irix/dev/pts/0"
+              ]
+            },
+            {
+              "call": {
+                "syscall": 1015,
+                "pc": 262541752,
+                "a0": 263549248,
+                "a1": 402,
+                "a2": 0,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1015,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": [
+                "/emul/irix/dev/pts/0"
+              ]
+            },
+            {
+              "call": {
+                "syscall": 1054,
+                "pc": 262475332,
+                "a0": 4,
+                "a1": 21256,
+                "a2": 2147448320,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1054,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "call": {
+                "syscall": 1164,
+                "pc": 262558880,
+                "a0": 1,
+                "a1": 2147448416,
+                "a2": 0,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1164,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "call": {
+                "syscall": 1002,
+                "pc": 262530836,
+                "a0": 2147448335,
+                "a1": 1,
+                "a2": 0,
+                "a3": 1054308
+              },
+              "ret": {
+                "syscall": 1002,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            }
+          ],
+          "trace_sha256": "4a4792263c62c6a7eca947a925b36caac8371ef6834cc5b1fc2639ef45281ac5",
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b"
+        }
+      ],
+      "sources": {
+        "lab/irix-winterm/trace.c": "c17869ba507613506d2f9546809a5a6e0d718be27093aa93a32434cc9652658e",
+        "lab/irix-toolchest/fault.c": "de9b9b272675f5b0cf52e5d6ab03ba4241614e7c6bf4b1a123f48135084c80af",
+        "lab/irix-lp64/runner.c": "005bdf3fffce5fb8ca79073e92cc41431aa953550c41014183d5de986a104463",
+        "lab/irix-toolchest/session.c": "e183b4aefdfb428e01dc609230e87a7546a0b31e9d4b5e236503e0a8bb3b09f5",
+        "scripts/probe-irix-winterm-pty.py": "5e76debacacf5dd7580964a582f0ff490aeed66eac1e17700efc1fb1b34101a5",
+        "lab/irix-pty/setup.sh": "5fb1b9fdac2018886ec22220bd1f29f145df75406c5bf618cdae2ac4a3d8089d",
+        "lab/irix-pty/native.c": "a36cf2a58faeee1a5c9b5b7e99ce6247edf46285cea0b636796688d45de88a5c"
+      }
+    }
+  ],
+  "qualifier_sha256": "bde7cd8ca08bb38dd0eb8b0e820cd0a8d410bb6caad06f6a682bb921967e7254",
+  "next_priority": "Measure fork, signal masks and native exec/session behavior; then terminal modes and interactive shell/input; evaluate 4Dwm afterward"
+}

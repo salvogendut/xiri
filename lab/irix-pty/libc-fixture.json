@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "description": "Original n32 PTY API fixture built with the supplied IRIX GCC 3.3 and libc",
+  "reference_directory": ".work/irix-reference/pty-runs/ci-fn3uasmx",
+  "reference_result_sha256": "1f02861fc6b5b46468e5867496274046367292fdd383e6624108b2e879eabc45",
+  "source_sha256": "8e834a852c6c74cde4bcc8147ab0174531a256d73cf8492d373b16b6a7703ba4",
+  "abi": "n32",
+  "fixture_sha256": "17c6b5dff8e4baac06906f53e1c1ce820f1aa85037d1d1910c5788738869f53c",
+  "fixture_bytes": 56388,
+  "compile_command": "/usr/freeware/bin/gcc -mabi=n32 -mips3 -O2 -Wall fixture.c -o probe-n32",
+  "reference_cases": 20,
+  "o32_compiler_qualified": false
+}

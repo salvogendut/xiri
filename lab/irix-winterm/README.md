@@ -1,6 +1,6 @@
 # Original IRIX winterm / xwsh
 
-Latest: the [access follow-up](../../docs/results/2026-10-31-irix-winterm-access.md) clears the locale/font crash in eight starts. Original xwsh now reads its staged resources and reaches `/dev/ptc` opening. PTY allocation and native shell/input are next, followed by 4Dwm evaluation.
+Latest: the [PTY checkpoint](../../docs/results/2026-10-31-irix-pty.md) advances original xwsh through native PTY allocation and slave permission setup to unsupported fork. The original libc helper also opens the slave and reaches unsupported terminal attributes. Fork/signal masks, native shell/input and cleanup come next, followed by 4Dwm evaluation. The earlier [access follow-up](../../docs/results/2026-10-31-irix-winterm-access.md) cleared the locale/font crash.
 
 Earlier diagnosis: the startup fault was a null font object in tuFont::getWidth, alongside unsupported access calls for staged locale/defaults. See the [fault capture](../../docs/results/2026-10-31-irix-winterm-fault.md).
 
