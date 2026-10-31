@@ -140,15 +140,17 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--checkpoint', choices=['tcp','sockname','peername','xconnect','recvmsg'], default='tcp')
     parser.add_argument('--mode', choices=['ci', 'ordinary'], default='ci')
+    parser.add_argument('--kernel-checkpoint', choices=['select'], help='Run unchanged fixture/desktop expectations on a newer pinned kernel')
     parser.add_argument('--x11', action='store_true', help='Also observe Toolchest against a controlled native Xvfb server')
     parser.add_argument('--kernel-abi',choices=['lp64','o32'],default='lp64')
     args = parser.parse_args()
     checkpoint = args.checkpoint
+    kernel_checkpoint = args.kernel_checkpoint or checkpoint
     lab_dir = ROOT/f'lab/irix-{checkpoint}'
     work_dir = ROOT/f'.work/irix-{checkpoint}'
     if args.x11 and args.kernel_abi=='o32': parser.error('X11 is qualified on the LP64 route')
     args.debugger, args.boot_timeout = False, 300
-    pin = json.loads((lab_dir / ('o32-baseline.json' if args.kernel_abi=='o32' else 'baseline.json')).read_text())
+    pin = json.loads((ROOT/f'lab/irix-{kernel_checkpoint}' / ('o32-baseline.json' if args.kernel_abi=='o32' else 'baseline.json')).read_text())
     inventory = json.loads((ROOT / 'lab/irix-desktop/manifest.json').read_text())
     expectations_path = lab_dir / ('desktop-x11.json' if args.x11 else 'desktop.json')
     expectations = json.loads(expectations_path.read_text()) if expectations_path.exists() else None
@@ -156,7 +158,7 @@ def main():
     probe.IRIS = ROOT / '.work/target-netbsd64/release/iris'
     probe.CI = ROOT / '.work/target-netbsd64/release/iris-ci'
     seed = ROOT / '.work/indy-netbsd-kernel'
-    build=ROOT/(f'.work/netbsd-irix-{checkpoint}'+('-o32' if args.kernel_abi=='o32' else '')+'-build')
+    build=ROOT/(f'.work/netbsd-irix-{kernel_checkpoint}'+('-o32' if args.kernel_abi=='o32' else '')+'-build')
     kernel_dir=build/'tftp'
     native_kernel=build/'kernel-media/netbsd'
     inputs = [('native-o32', ROOT / '.work/irix-o32-segments/native-o32', pin['native_o32_sha256'])]
@@ -205,7 +207,7 @@ def main():
               'decoder_sha256': probe.sha256(ROOT/'scripts/probe-irix-runtime.py'),
               'lab_harness_sha256': probe.sha256(ROOT/'scripts/probe-netbsd.py'),
               'helper_sources': {n:probe.sha256(ROOT/'lab/irix-tcp'/n) for n in ['server.c','optioncheck.c']},
-              'x11': args.x11, 'kernel_abi':args.kernel_abi,
+              'x11': args.x11, 'kernel_abi':args.kernel_abi, 'kernel_checkpoint':kernel_checkpoint,
               'manifest': manifest, 'observations': [], 'started_utc': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())}
     if checkpoint in ['sockname','peername','xconnect','recvmsg']:
         result['helper_sources']['peer.c'] = probe.sha256(ROOT/'lab/irix-sockname/peer.c')

@@ -1,0 +1,50 @@
+{
+  "schema": 1,
+  "description": "LP64 big-endian NetBSD version-2 ktrace header, verified with GDB ptype /o on the pinned kernel",
+  "source_revision": "c8c61a40d34f494ef794a2b14fa252cdb1ccf1f0",
+  "debug_kernel_sha256": "8822eedb2ffe4beeb2c244571cc943da8e32c453c4df1031c06d2d8f33161f1b",
+  "source_path": "sys/sys/ktrace.h",
+  "header_bytes": 56,
+  "byte_order": "big",
+  "version": 2,
+  "fields": {
+    "payload_bytes": {
+      "offset": 0,
+      "bytes": 4,
+      "signed": true
+    },
+    "version": {
+      "offset": 4,
+      "bytes": 2
+    },
+    "type": {
+      "offset": 6,
+      "bytes": 2
+    },
+    "pid": {
+      "offset": 8,
+      "bytes": 4
+    },
+    "comm": {
+      "offset": 12,
+      "bytes": 17
+    },
+    "seconds": {
+      "offset": 32,
+      "bytes": 8,
+      "signed": true
+    },
+    "nanoseconds": {
+      "offset": 40,
+      "bytes": 8,
+      "signed": true
+    },
+    "lwp": {
+      "offset": 48,
+      "bytes": 4
+    }
+  },
+  "user_record_type": 8,
+  "user_record_label_bytes": 20,
+  "decoder_caveat": "The installed o32 kdump reads only the high 32-bit half of the LP64 big-endian nanoseconds field, displaying zero fractions. Timing uses explicit binary decoding instead."
+}

@@ -1,0 +1,779 @@
+{
+  "schema": 1,
+  "description": "Measured IRIX select subset, guarded ABI comparisons and repeated HOME Toolchest startup",
+  "status": "qualified-subset",
+  "source_revision": "c8c61a40d34f494ef794a2b14fa252cdb1ccf1f0",
+  "source_branch": "xiri/irix-select",
+  "emulator_revision": "9df1df14334838a989253efefe26f0547e6da592",
+  "window_or_event_loop_qualified": false,
+  "input_metadata_hashes": {
+    "lab/irix-select/baseline.json": "63f53ccec711763615e122f84bd91286de4ac712fe2bf3d883c8faf2aa38c701",
+    "lab/irix-select/o32-baseline.json": "0129d5f231ef1113e5a3f2aaf0aae9797e1a506e494028cdf2e450cc54e2c0e8",
+    "lab/irix-select/reference.json": "098a261ec1a5e15f1a94d7e9c0ece3cd0a903c1d4e8f2c1696aa59aad127114a",
+    "lab/irix-select/abi.json": "aef66d769d373c2b9949dfbe026805e7b32936ab1d3d13ae0d0977366d715e08",
+    "lab/irix-select/trace-layout.json": "5b251b00fb1384e37c0969e1ff9849971516794dfefadde23c4d8bcb3606dbdd",
+    "lab/irix-desktop/manifest.json": "570be25c601692dcb96516cdc4ef5cd3ef416bab5f1a6046ce116dddcb23944b",
+    "lab/irix-reference/manifest.json": "79b464ad3856eca2d034f418445860b3d262437f0347ccadedc67e60c8330521"
+  },
+  "subset_differences": [
+    {
+      "fixture_suffix": "limit-policy",
+      "rule": "nfds > 1024 is rejected before mask-size arithmetic",
+      "netbsd_irix_errno": 22,
+      "original_observation": "nfds 1025 with empty examined sets returns zero"
+    },
+    {
+      "fixture_suffix": "bad-bit31",
+      "rule": "Every selected invalid fd inside the requested range produces EBADF",
+      "netbsd_irix_errno": 9,
+      "original_observation": "With only low descriptors opened, IRIX ignores selected unopened fd 31 and preserves its bit"
+    }
+  ],
+  "unqualified": [
+    "IRIX internal descriptor-table capacity/growth rules",
+    "signal delivery and interruption",
+    "concurrent descriptor/set mutation",
+    "nfds greater than 1024",
+    "general IRIX X application compatibility",
+    "general exceptional/OOB readiness"
+  ],
+  "reference_cases": 276,
+  "focused_runs": [
+    {
+      "kernel_abi": "lp64",
+      "mode": "ci",
+      "status": "passed",
+      "cases": 552,
+      "exact_reference_matches": 536,
+      "explicit_policy_differences": 16,
+      "socket_cases": 48,
+      "minimum_delayed_case_elapsed_ms": 400,
+      "minimum_timeout_case_elapsed_ms": 190,
+      "native_vendor_controls": 12,
+      "toolchest": [
+        {
+          "name": "library-0-0",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "./vendor-toolchest: Cannot open configuration file /usr/lib/X11/system.chestrc\n"
+          },
+          "successful_select_calls": 16,
+          "xstat_enosys_calls": 7
+        },
+        {
+          "name": "library-0-1",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "./vendor-toolchest: Cannot open configuration file /usr/lib/X11/system.chestrc\n"
+          },
+          "successful_select_calls": 1,
+          "xstat_enosys_calls": 7
+        },
+        {
+          "name": "library-0-2",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "./vendor-toolchest: Cannot open configuration file /usr/lib/X11/system.chestrc\n"
+          },
+          "successful_select_calls": 1,
+          "xstat_enosys_calls": 7
+        },
+        {
+          "name": "library-1234-0",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "./vendor-toolchest: Cannot open configuration file /usr/lib/X11/system.chestrc\n"
+          },
+          "successful_select_calls": 0,
+          "xstat_enosys_calls": 7
+        },
+        {
+          "name": "library-1234-1",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "./vendor-toolchest: Cannot open configuration file /usr/lib/X11/system.chestrc\n"
+          },
+          "successful_select_calls": 0,
+          "xstat_enosys_calls": 7
+        },
+        {
+          "name": "library-1234-2",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "./vendor-toolchest: Cannot open configuration file /usr/lib/X11/system.chestrc\n"
+          },
+          "successful_select_calls": 0,
+          "xstat_enosys_calls": 7
+        },
+        {
+          "name": "resources-0-0",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "./vendor-toolchest: Cannot open configuration file /usr/lib/X11/system.chestrc\n"
+          },
+          "successful_select_calls": 0,
+          "xstat_enosys_calls": 7
+        },
+        {
+          "name": "resources-0-1",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "./vendor-toolchest: Cannot open configuration file /usr/lib/X11/system.chestrc\n"
+          },
+          "successful_select_calls": 0,
+          "xstat_enosys_calls": 7
+        },
+        {
+          "name": "resources-0-2",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "./vendor-toolchest: Cannot open configuration file /usr/lib/X11/system.chestrc\n"
+          },
+          "successful_select_calls": 0,
+          "xstat_enosys_calls": 7
+        },
+        {
+          "name": "resources-1234-0",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "./vendor-toolchest: Cannot open configuration file /usr/lib/X11/system.chestrc\n"
+          },
+          "successful_select_calls": 0,
+          "xstat_enosys_calls": 7
+        },
+        {
+          "name": "resources-1234-1",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "./vendor-toolchest: Cannot open configuration file /usr/lib/X11/system.chestrc\n"
+          },
+          "successful_select_calls": 0,
+          "xstat_enosys_calls": 7
+        },
+        {
+          "name": "resources-1234-2",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "./vendor-toolchest: Cannot open configuration file /usr/lib/X11/system.chestrc\n"
+          },
+          "successful_select_calls": 9,
+          "xstat_enosys_calls": 7
+        }
+      ],
+      "native_x11_before": true,
+      "native_x11_after": true,
+      "clean_shutdown": true,
+      "result_path": ".work/irix-select/runs/lp64-ci-ae_u635z/result.json",
+      "result_sha256": "e870b35804889c805c3577242e0ad354895186375bca30a04f7196ae61cbc232",
+      "fixtures_sha256": "21d0e792d873521f5042d182f5455296e2907791401dabfa454bd2b196d3ea63",
+      "serial_sha256": "3d5aae35a11e4b2fca30d633c491f795f50fa8e44447762f3423fd2b7fb5a4f3",
+      "config_sha256": "c4ede36522bce719f37aaf25bbaf68a04b19874c7a96ef5e568d0e83f13e43e5",
+      "iso_sha256": "bb05cbb744223ac93696fe68eeb3a201f966e0fb0a7e5e7ccd117d7fa691705d",
+      "trace_hashes": {
+        "library-0-0.kdump": "b075aeb549c3413ff490e43d2fd55dcee677680632636daa66acc0ee00a18be9",
+        "library-0-1.kdump": "285b2c3a0b3bf44510cc762cf2252495369bf13d1e19762b658bf5269d3c6156",
+        "library-0-2.kdump": "b9f6a395fb682c064f0dbcdcd28fb04e0815712c45c2fec6ef4ab361329046bb",
+        "library-1234-0.kdump": "ea242472696c6821401dccf6bffdc9ecca118c9f619a24a1f8c39387ee8f7c97",
+        "library-1234-1.kdump": "64d48f218bd5d17e115e6c22f6bb2e890a907e42392eb64af1c86cf9901aeb6f",
+        "library-1234-2.kdump": "fa91c81530e894c344fdf7809e88fd49601add793fabfc40a041195c21b7332a",
+        "resources-0-0.kdump": "099a0369e5161aec4596623c67e5f6d9fabd0f7ae119f555a3e01424d6f92af5",
+        "resources-0-1.kdump": "0d1ca23ee15619a8d653e6e7cfb64ed9f5789b9b051b56b79d150e916fd8d7bc",
+        "resources-0-2.kdump": "197d661dd55fc67882d3b54a7de785be37a978c3f497597e1379b94e324b7b5d",
+        "resources-1234-0.kdump": "b709cc54eb09108863ac5b524ac2feacaca1f3c0ab86b2b2238160e05fb7d824",
+        "resources-1234-1.kdump": "e69e62f28dfd25a2a7b4bfbedf5ce970a1737faeca117f23db3a0dd4a4b5641b",
+        "resources-1234-2.kdump": "5748b7d4d2f1b7a403065f6c3fcb2f609987f23557298fa8092229867a10dfc1"
+      },
+      "sources": {
+        "lab/irix-lp64/runner.c": "005bdf3fffce5fb8ca79073e92cc41431aa953550c41014183d5de986a104463",
+        "lab/irix-toolchest/session.c": "e183b4aefdfb428e01dc609230e87a7546a0b31e9d4b5e236503e0a8bb3b09f5",
+        "lab/irix-select/peer.c": "9e14a658d3c8ce5f5eecc44739287e1f77b61f922e4260140892304bd5b0df51",
+        "scripts/probe-irix-select.py": "4be23018cbc1f767a4b7b687fdeacdbce99415246c99118b691005ffa43d36af",
+        "scripts/probe-netbsd.py": "adfa9547fa98af28fd55e4e155e7667b2b0a8c7cea8aee8d58079da946b72a1d",
+        "scripts/probe-irix-runtime.py": "89b946e035ecf0525b3c08cdc80ca0b77d8db6aa90fd60cf410ddc7eb3a4d553",
+        "scripts/probe-irix-tcp.py": "8b9496befe2a3e3c2c1dc0d3e766dd8a070ad1994a08030df720402799dc5b35"
+      },
+      "seed": ".work/irix-recvmsg/runs/lp64-ci-nw5d95pw",
+      "seed_result_sha256": "33fc123d19affb386800ebc9dfea3943f5f070d484f81343ec0d387aa13639f8",
+      "peer_stdout_hex": "5244590a000000400000000000000041000000010000004200000000000000430000000200000044000000020000004500000002000000850000000000000086000000010000008700000000000000880000000200000089000000020000008a00000002000000ca00000000000000cb00000001000000cc00000000000000cd00000002000000ce00000002000000cf000000020000010f0000000000000110000000010000011100000000000001120000000200000113000000020000011400000002000000400000000000000041000000010000004200000000000000430000000200000044000000020000004500000002000000850000000000000086000000010000008700000000000000880000000200000089000000020000008a00000002000000ca00000000000000cb00000001000000cc00000000000000cd00000002000000ce00000002000000cf000000020000010f0000000000000110000000010000011100000000000001120000000200000113000000020000011400000002"
+    },
+    {
+      "kernel_abi": "lp64",
+      "mode": "ordinary",
+      "status": "passed",
+      "cases": 552,
+      "exact_reference_matches": 536,
+      "explicit_policy_differences": 16,
+      "socket_cases": 48,
+      "minimum_delayed_case_elapsed_ms": 368,
+      "minimum_timeout_case_elapsed_ms": 124,
+      "native_vendor_controls": 12,
+      "toolchest": [
+        {
+          "name": "library-0-0",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "./vendor-toolchest: Cannot open configuration file /usr/lib/X11/system.chestrc\n"
+          },
+          "successful_select_calls": 16,
+          "xstat_enosys_calls": 7
+        },
+        {
+          "name": "library-0-1",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "./vendor-toolchest: Cannot open configuration file /usr/lib/X11/system.chestrc\n"
+          },
+          "successful_select_calls": 0,
+          "xstat_enosys_calls": 7
+        },
+        {
+          "name": "library-0-2",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "./vendor-toolchest: Cannot open configuration file /usr/lib/X11/system.chestrc\n"
+          },
+          "successful_select_calls": 1,
+          "xstat_enosys_calls": 7
+        },
+        {
+          "name": "library-1234-0",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "./vendor-toolchest: Cannot open configuration file /usr/lib/X11/system.chestrc\n"
+          },
+          "successful_select_calls": 0,
+          "xstat_enosys_calls": 7
+        },
+        {
+          "name": "library-1234-1",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "./vendor-toolchest: Cannot open configuration file /usr/lib/X11/system.chestrc\n"
+          },
+          "successful_select_calls": 0,
+          "xstat_enosys_calls": 7
+        },
+        {
+          "name": "library-1234-2",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "./vendor-toolchest: Cannot open configuration file /usr/lib/X11/system.chestrc\n"
+          },
+          "successful_select_calls": 0,
+          "xstat_enosys_calls": 7
+        },
+        {
+          "name": "resources-0-0",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "./vendor-toolchest: Cannot open configuration file /usr/lib/X11/system.chestrc\n"
+          },
+          "successful_select_calls": 0,
+          "xstat_enosys_calls": 7
+        },
+        {
+          "name": "resources-0-1",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "./vendor-toolchest: Cannot open configuration file /usr/lib/X11/system.chestrc\n"
+          },
+          "successful_select_calls": 0,
+          "xstat_enosys_calls": 7
+        },
+        {
+          "name": "resources-0-2",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "./vendor-toolchest: Cannot open configuration file /usr/lib/X11/system.chestrc\n"
+          },
+          "successful_select_calls": 0,
+          "xstat_enosys_calls": 7
+        },
+        {
+          "name": "resources-1234-0",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "./vendor-toolchest: Cannot open configuration file /usr/lib/X11/system.chestrc\n"
+          },
+          "successful_select_calls": 9,
+          "xstat_enosys_calls": 7
+        },
+        {
+          "name": "resources-1234-1",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "./vendor-toolchest: Cannot open configuration file /usr/lib/X11/system.chestrc\n"
+          },
+          "successful_select_calls": 0,
+          "xstat_enosys_calls": 7
+        },
+        {
+          "name": "resources-1234-2",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "./vendor-toolchest: Cannot open configuration file /usr/lib/X11/system.chestrc\n"
+          },
+          "successful_select_calls": 0,
+          "xstat_enosys_calls": 7
+        }
+      ],
+      "native_x11_before": true,
+      "native_x11_after": true,
+      "clean_shutdown": true,
+      "result_path": ".work/irix-select/runs/lp64-ordinary-dma2lt3r/result.json",
+      "result_sha256": "d9d45054aeafd5ff05314a63990d05a3bcad809bfc5481adb7d43aba125d35b7",
+      "fixtures_sha256": "4c5f048231dd279d71cc3f7dd30d7193d39d53899fe0ec44c94bcc283a5a49d3",
+      "serial_sha256": "9d8155ce1e385f614673d6702c8728a1b23f1b0c3dd5b7579c86d8b712d0e79c",
+      "config_sha256": "a01f141e6a5f8259b5af187ffaeef77c9257971f08be2e1caeb83c9935b6178e",
+      "iso_sha256": "0247a82d9ea5219b2f1d34c03557c75c072fc06113be2ae94f33ba88201b4855",
+      "trace_hashes": {
+        "library-0-0.kdump": "5c06267eccb940bf8e41ec041b92a615cfb5389bc010713680ca4633b73c99ff",
+        "library-0-1.kdump": "ffa5349b92dea0e1e78153350e324cf308a4f84c31f045d94d0ecaf3d1f3b1c6",
+        "library-0-2.kdump": "8c5a0fbafe57319529e900c7cee7f90f68aebb4801854bb129b212dc10047661",
+        "library-1234-0.kdump": "8fbb232b93c7af8837284c65f0cc3469cb097090ac7530583bc0224b889ae14c",
+        "library-1234-1.kdump": "1d22a0b21b7250010c1625134b81c8b33409420b60ed491cb982aaead4e9e867",
+        "library-1234-2.kdump": "fe77d5eb87baffa1bb7a699daad765fee8ea592286abc2ca0f251d44dfadf6f7",
+        "resources-0-0.kdump": "74c0eaac7762b5d9160129ebb23dc482a0dfd8f7e6d5e31fb2f5957dacf6df0e",
+        "resources-0-1.kdump": "baf3d6d2ba7321a8a73413388e508adbef79e5139ab40b5d0ebfd19022952f08",
+        "resources-0-2.kdump": "35f7764356b176a996043ba70f45cb4de3604657e61bae7794a59c677462efd4",
+        "resources-1234-0.kdump": "0be1596cd3dbe400fc04cacdf478b6c40e029ea56191e7209c00fb54e5ad512d",
+        "resources-1234-1.kdump": "6547b89a136f039b37c0cf5a41c4695059954137201bd09e42dcb427db78a886",
+        "resources-1234-2.kdump": "865080cf9ef137c99d83cd9d64a53d5bba6066477f6214c279c405ae73d31b5b"
+      },
+      "sources": {
+        "lab/irix-lp64/runner.c": "005bdf3fffce5fb8ca79073e92cc41431aa953550c41014183d5de986a104463",
+        "lab/irix-toolchest/session.c": "e183b4aefdfb428e01dc609230e87a7546a0b31e9d4b5e236503e0a8bb3b09f5",
+        "lab/irix-select/peer.c": "9e14a658d3c8ce5f5eecc44739287e1f77b61f922e4260140892304bd5b0df51",
+        "scripts/probe-irix-select.py": "4be23018cbc1f767a4b7b687fdeacdbce99415246c99118b691005ffa43d36af",
+        "scripts/probe-netbsd.py": "adfa9547fa98af28fd55e4e155e7667b2b0a8c7cea8aee8d58079da946b72a1d",
+        "scripts/probe-irix-runtime.py": "89b946e035ecf0525b3c08cdc80ca0b77d8db6aa90fd60cf410ddc7eb3a4d553",
+        "scripts/probe-irix-tcp.py": "8b9496befe2a3e3c2c1dc0d3e766dd8a070ad1994a08030df720402799dc5b35"
+      },
+      "seed": ".work/irix-recvmsg/runs/lp64-ci-nw5d95pw",
+      "seed_result_sha256": "33fc123d19affb386800ebc9dfea3943f5f070d484f81343ec0d387aa13639f8",
+      "peer_stdout_hex": "5244590a000000400000000000000041000000010000004200000000000000430000000200000044000000020000004500000002000000850000000000000086000000010000008700000000000000880000000200000089000000020000008a00000002000000ca00000000000000cb00000001000000cc00000000000000cd00000002000000ce00000002000000cf000000020000010f0000000000000110000000010000011100000000000001120000000200000113000000020000011400000002000000400000000000000041000000010000004200000000000000430000000200000044000000020000004500000002000000850000000000000086000000010000008700000000000000880000000200000089000000020000008a00000002000000ca00000000000000cb00000001000000cc00000000000000cd00000002000000ce00000002000000cf000000020000010f0000000000000110000000010000011100000000000001120000000200000113000000020000011400000002"
+    },
+    {
+      "kernel_abi": "o32",
+      "mode": "ci",
+      "status": "passed",
+      "cases": 276,
+      "exact_reference_matches": 268,
+      "explicit_policy_differences": 8,
+      "socket_cases": 24,
+      "minimum_delayed_case_elapsed_ms": 370,
+      "minimum_timeout_case_elapsed_ms": 172,
+      "native_vendor_controls": 8,
+      "toolchest": [],
+      "native_x11_before": null,
+      "native_x11_after": null,
+      "clean_shutdown": true,
+      "result_path": ".work/irix-select/runs/o32-ci-h68kspyf/result.json",
+      "result_sha256": "9400b93db96da10e1465cbc332ea612909ede74ff3bc747d9125fc051cd4c2b1",
+      "fixtures_sha256": "2e560880bbd86557822c616d66c2b03379de3de2e06d2a93d575c1b2f83657c4",
+      "serial_sha256": "0fa9e5318fa18a64de6d95cc7cda6499a8ab087e0094a5d835f9961b0a2e8d93",
+      "config_sha256": "fb8364c10a274b0f55e2b90312eb9957e84bac95775480b17ca655cfc6c1ae7c",
+      "iso_sha256": "266063c6158afac8081de34158877273921ada5944c0838d0e7a53b20eecbd7a",
+      "trace_hashes": {},
+      "sources": {
+        "lab/irix-lp64/runner.c": "005bdf3fffce5fb8ca79073e92cc41431aa953550c41014183d5de986a104463",
+        "lab/irix-toolchest/session.c": "e183b4aefdfb428e01dc609230e87a7546a0b31e9d4b5e236503e0a8bb3b09f5",
+        "lab/irix-select/peer.c": "9e14a658d3c8ce5f5eecc44739287e1f77b61f922e4260140892304bd5b0df51",
+        "scripts/probe-irix-select.py": "4be23018cbc1f767a4b7b687fdeacdbce99415246c99118b691005ffa43d36af",
+        "scripts/probe-netbsd.py": "adfa9547fa98af28fd55e4e155e7667b2b0a8c7cea8aee8d58079da946b72a1d",
+        "scripts/probe-irix-runtime.py": "89b946e035ecf0525b3c08cdc80ca0b77d8db6aa90fd60cf410ddc7eb3a4d553",
+        "scripts/probe-irix-tcp.py": "8b9496befe2a3e3c2c1dc0d3e766dd8a070ad1994a08030df720402799dc5b35"
+      },
+      "seed": ".work/irix-recvmsg/runs/lp64-ci-nw5d95pw",
+      "seed_result_sha256": "33fc123d19affb386800ebc9dfea3943f5f070d484f81343ec0d387aa13639f8",
+      "peer_stdout_hex": "5244590a000000400000000000000041000000010000004200000000000000430000000200000044000000020000004500000002000000850000000000000086000000010000008700000000000000880000000200000089000000020000008a00000002000000400000000000000041000000010000004200000000000000430000000200000044000000020000004500000002000000850000000000000086000000010000008700000000000000880000000200000089000000020000008a00000002"
+    }
+  ],
+  "transport_regressions": [
+    {
+      "kernel_abi": "lp64",
+      "mode": "ci",
+      "status": "passed",
+      "cases": 1284,
+      "clean_shutdown": true,
+      "result_path": ".work/irix-recvmsg/runs/lp64-ci-v4xcbcmn/result.json",
+      "result_sha256": "911ec8d07ad7d4b9477408035d0012b087b7394b1b0a9fdb004ee1211cf9a826",
+      "serial_sha256": "3e5e0ac3e3ce59cdc87077965e22279cb6e93c05bc2e81bb3da8c893fbe82240",
+      "harness_sha256": "8b9496befe2a3e3c2c1dc0d3e766dd8a070ad1994a08030df720402799dc5b35"
+    },
+    {
+      "kernel_abi": "o32",
+      "mode": "ci",
+      "status": "passed",
+      "cases": 641,
+      "clean_shutdown": true,
+      "result_path": ".work/irix-recvmsg/runs/o32-ci-doqnwk4e/result.json",
+      "result_sha256": "47448102920b5e54e900c9c987b356ad72360389cab1caf51d8bd965ccc885f7",
+      "serial_sha256": "69facc82873cbf5ac57a0819e5a53841865cd0e43fd4b24fa3d6b8117056095c",
+      "harness_sha256": "8b9496befe2a3e3c2c1dc0d3e766dd8a070ad1994a08030df720402799dc5b35"
+    }
+  ],
+  "timing_run": {
+    "status": "passed",
+    "kernel_abi": "lp64",
+    "mode": "ci",
+    "cases": 28,
+    "native_controls": 2,
+    "clean_shutdown": true,
+    "measure": "Kernel trace timestamp difference from foreign select entry to return; excludes launch and post-select drain.",
+    "observations": [
+      {
+        "name": "o32-direct-nfds-0",
+        "select_duration_ns": 64091,
+        "minimum_ns": 0,
+        "passed": true
+      },
+      {
+        "name": "o32-direct-read",
+        "select_duration_ns": 60272,
+        "minimum_ns": 0,
+        "passed": true
+      },
+      {
+        "name": "o32-direct-timeout",
+        "select_duration_ns": 109155303,
+        "minimum_ns": 90000000,
+        "passed": true
+      },
+      {
+        "name": "o32-direct-socket-delayed-data",
+        "select_duration_ns": 307620818,
+        "minimum_ns": 150000000,
+        "passed": true
+      },
+      {
+        "name": "o32-direct-socket-delayed-eof",
+        "select_duration_ns": 307856636,
+        "minimum_ns": 150000000,
+        "passed": true
+      },
+      {
+        "name": "o32-direct-socket-null-time",
+        "select_duration_ns": 307734940,
+        "minimum_ns": 150000000,
+        "passed": true
+      },
+      {
+        "name": "o32-direct-socket-timeout",
+        "select_duration_ns": 107697879,
+        "minimum_ns": 90000000,
+        "passed": true
+      },
+      {
+        "name": "o32-indirect-nfds-0",
+        "select_duration_ns": 43091,
+        "minimum_ns": 0,
+        "passed": true
+      },
+      {
+        "name": "o32-indirect-read",
+        "select_duration_ns": 62879,
+        "minimum_ns": 0,
+        "passed": true
+      },
+      {
+        "name": "o32-indirect-timeout",
+        "select_duration_ns": 109095848,
+        "minimum_ns": 90000000,
+        "passed": true
+      },
+      {
+        "name": "o32-indirect-socket-delayed-data",
+        "select_duration_ns": 305329727,
+        "minimum_ns": 150000000,
+        "passed": true
+      },
+      {
+        "name": "o32-indirect-socket-delayed-eof",
+        "select_duration_ns": 307816091,
+        "minimum_ns": 150000000,
+        "passed": true
+      },
+      {
+        "name": "o32-indirect-socket-null-time",
+        "select_duration_ns": 307736818,
+        "minimum_ns": 150000000,
+        "passed": true
+      },
+      {
+        "name": "o32-indirect-socket-timeout",
+        "select_duration_ns": 109478606,
+        "minimum_ns": 90000000,
+        "passed": true
+      },
+      {
+        "name": "n32-direct-nfds-0",
+        "select_duration_ns": 46061,
+        "minimum_ns": 0,
+        "passed": true
+      },
+      {
+        "name": "n32-direct-read",
+        "select_duration_ns": 59757,
+        "minimum_ns": 0,
+        "passed": true
+      },
+      {
+        "name": "n32-direct-timeout",
+        "select_duration_ns": 108959333,
+        "minimum_ns": 90000000,
+        "passed": true
+      },
+      {
+        "name": "n32-direct-socket-delayed-data",
+        "select_duration_ns": 307953545,
+        "minimum_ns": 150000000,
+        "passed": true
+      },
+      {
+        "name": "n32-direct-socket-delayed-eof",
+        "select_duration_ns": 307859637,
+        "minimum_ns": 150000000,
+        "passed": true
+      },
+      {
+        "name": "n32-direct-socket-null-time",
+        "select_duration_ns": 309519455,
+        "minimum_ns": 150000000,
+        "passed": true
+      },
+      {
+        "name": "n32-direct-socket-timeout",
+        "select_duration_ns": 107453545,
+        "minimum_ns": 90000000,
+        "passed": true
+      },
+      {
+        "name": "n32-indirect-nfds-0",
+        "select_duration_ns": 39545,
+        "minimum_ns": 0,
+        "passed": true
+      },
+      {
+        "name": "n32-indirect-read",
+        "select_duration_ns": 57394,
+        "minimum_ns": 0,
+        "passed": true
+      },
+      {
+        "name": "n32-indirect-timeout",
+        "select_duration_ns": 108988727,
+        "minimum_ns": 90000000,
+        "passed": true
+      },
+      {
+        "name": "n32-indirect-socket-delayed-data",
+        "select_duration_ns": 307911031,
+        "minimum_ns": 150000000,
+        "passed": true
+      },
+      {
+        "name": "n32-indirect-socket-delayed-eof",
+        "select_duration_ns": 307869606,
+        "minimum_ns": 150000000,
+        "passed": true
+      },
+      {
+        "name": "n32-indirect-socket-null-time",
+        "select_duration_ns": 309617273,
+        "minimum_ns": 150000000,
+        "passed": true
+      },
+      {
+        "name": "n32-indirect-socket-timeout",
+        "select_duration_ns": 107513758,
+        "minimum_ns": 90000000,
+        "passed": true
+      }
+    ],
+    "seed": ".work/irix-recvmsg/runs/lp64-ci-v4xcbcmn",
+    "seed_result_sha256": "911ec8d07ad7d4b9477408035d0012b087b7394b1b0a9fdb004ee1211cf9a826",
+    "sources": {
+      "scripts/probe-irix-select-timing.py": "6376897de5ac16b521e3f66b8d9cecd8828cbf58f9eab58a320c4150a0bbb265",
+      "scripts/probe-netbsd.py": "adfa9547fa98af28fd55e4e155e7667b2b0a8c7cea8aee8d58079da946b72a1d",
+      "scripts/probe-irix-runtime.py": "89b946e035ecf0525b3c08cdc80ca0b77d8db6aa90fd60cf410ddc7eb3a4d553",
+      "lab/irix-lp64/runner.c": "005bdf3fffce5fb8ca79073e92cc41431aa953550c41014183d5de986a104463",
+      "lab/irix-select/peer.c": "9e14a658d3c8ce5f5eecc44739287e1f77b61f922e4260140892304bd5b0df51"
+    },
+    "result_path": ".work/irix-select/timing-runs/lp64-ci-fg6za_a0/result.json",
+    "result_sha256": "4c2ef7ef22c112f0d966ac23dfcfaf2714b36265a0ffba3f00a61db120273d12",
+    "serial_sha256": "ed11ded440860f1c2301a82e5064a8e05069793c2e47f936c5409ff7a286683c",
+    "config_sha256": "274ba76a06e39115db741d11cb866de645aa586bb59578624e48de1fdb572fa5",
+    "iso_sha256": "d26013332e6ae8052c2c6f01e438246cb4f9d62afa557a99995f43bf848b5b1e",
+    "trace_hashes": {
+      "n32-direct-nfds-0.ktrace": "07e21da73ee690262cd1f888df1989247ed86924fce6bae720af0ee3e2b3008b",
+      "n32-direct-read.ktrace": "eebe8e8d2e9f7503ff88963248a0ea8c3135b88d544a7a7592dd9b003dcb79cd",
+      "n32-direct-socket-delayed-data.ktrace": "0ae97c0860fcacf9d05fe1cc6af573fe247ccc323b99e9d164f2d158a6bb0470",
+      "n32-direct-socket-delayed-eof.ktrace": "31a29e1d36681af831881678d266d07a64ebe7d4a8f40bdd2610192d9f7be738",
+      "n32-direct-socket-null-time.ktrace": "e0f9827e54676d190f1fe770ce1bb13d5fafe283ce24fe73c913606036bbf2ed",
+      "n32-direct-socket-timeout.ktrace": "15fa3558edbb894394f06d31eca6d5d13f3d6112f6eef1542f52445a8b70041f",
+      "n32-direct-timeout.ktrace": "3e10b4129625cde237d7bfd88ca19a5037972d9a2f48b666e2a6b71808710d73",
+      "n32-indirect-nfds-0.ktrace": "504d08af78495d3bc694e0452e145c4efdad4811e35f834630d723adf5a5eb6d",
+      "n32-indirect-read.ktrace": "6cd6227a27f0abf912a4e6a08031119501df1aaad900c2a37a9136e86aa5af72",
+      "n32-indirect-socket-delayed-data.ktrace": "810e83650b267903069635e95c4c3c9e9939900fbf9a21da16829e9bb7d80597",
+      "n32-indirect-socket-delayed-eof.ktrace": "a2902e3ce2d060baed731b95714803a3105e13fc19a85f6c1759d68d3cc68565",
+      "n32-indirect-socket-null-time.ktrace": "1174f28d90d8f8bee063c033da6ba7f17ad48510873b6c58b6768cad3e22f663",
+      "n32-indirect-socket-timeout.ktrace": "54d13f7c8c27b61e1a9bee576235b3d95811098f74223140767452640c36f4c6",
+      "n32-indirect-timeout.ktrace": "77cece104e4902fe166f8887b504d61ab6f4484e61663ae5bbf5abd9ae7ed446",
+      "o32-direct-nfds-0.ktrace": "25adaecae1b5edfff9eb8504729ef88169f99e5f1d705c0652d67508d1c6fdd4",
+      "o32-direct-read.ktrace": "64e511f6f99a5aa8d7d0e788b3538d7551fd89fdc61daa0ec3dfb4a46584c2c8",
+      "o32-direct-socket-delayed-data.ktrace": "dd447290a938f798cdfb2a5122c7cab8aa3900d7aada0a16c34b9834493f4fa8",
+      "o32-direct-socket-delayed-eof.ktrace": "2cd29a3b8b72976066f3df8a57618993bae16e65567240a2534450fd4f214a36",
+      "o32-direct-socket-null-time.ktrace": "3ee06058acb759693a85618f9eaa0138e54ca2b09571f4af71920261f88b77f7",
+      "o32-direct-socket-timeout.ktrace": "daf22a62d17020f39521857f11975bb0dff6312c96126c0f8b8b669ec9eb1122",
+      "o32-direct-timeout.ktrace": "c79bb4ffaa822501096d90906b20da03be6299a27abe4c2a01c74afaf3364467",
+      "o32-indirect-nfds-0.ktrace": "c62ac466ad095e1fbe6882d6f96bd9cf4ec81e4e5c190cfdcf17322cf259510c",
+      "o32-indirect-read.ktrace": "16994c7e41b0c5dec78b85a21f0564e0876658bb60336877b1004320f86171c4",
+      "o32-indirect-socket-delayed-data.ktrace": "4efa0ffc355e7daa22a8700d595490a80ae8ab7c8d0480047e9def601669e7d7",
+      "o32-indirect-socket-delayed-eof.ktrace": "a160cc7de32d03e8d0020f7985f5ea99d6ca562d87cac54f5101e912b4eeb6dc",
+      "o32-indirect-socket-null-time.ktrace": "c3c02ad24228d966a301cd6e49bdc12fedb8220d00ab82a5edce1a5f17d6938c",
+      "o32-indirect-socket-timeout.ktrace": "043cf4c537b79ebf0eaac84123cd75b751720dc0135fe4b29bb125d91b651000",
+      "o32-indirect-timeout.ktrace": "330474a37506c38d1bf2442134dd289e90ecc61443d3b4fc2044e28378c78a23"
+    }
+  },
+  "preliminary_run": {
+    "path": ".work/irix-select/runs/lp64-ci-jc_q298l/result.json",
+    "sha256": "9d2a5a8c71ada5d98cef9239efecba5ffc0fec3f0524a9dab0611d58a779f005",
+    "status": "different",
+    "qualification_included": false,
+    "finding": "252 non-root regular-file probes exited 99 before select because inherited input.txt had mode 000; focused harness now sets mode 644. No kernel or fixture-byte change."
+  },
+  "preliminary_timing_run": {
+    "path": ".work/irix-select/timing-runs/lp64-ci-n8gz5exo/result.json",
+    "sha256": "2d19db999976aa14e8af0dc3dd543ecd42d93a46ddf40129807fc7f21514652c",
+    "qualification_included": false,
+    "finding": "o32 kdump read the zero high half of the LP64 nanoseconds word; replaced text timing with explicit version-2 binary decoding verified against kernel DWARF."
+  },
+  "next_interface": {
+    "syscall": 1158,
+    "name": "xstat",
+    "version": 2,
+    "error": 89
+  },
+  "provenance": "Original probes, measured supplied IRIX binaries and licensed NetBSD sources; no leaked IRIX source used."
+}

@@ -1,6 +1,6 @@
 # IRIX legacy recvmsg lab
 
-Follow-up: the [Toolchest session diagnosis](../../docs/results/2026-10-31-irix-toolchest-session.md) identifies the later SIGSEGV as an empty-environment `HOME` null dereference. Supplying `HOME` exposes unsupported `select` and configuration `xstat` calls. The historical observations below are preserved.
+Follow-up: the [Toolchest session diagnosis](../../docs/results/2026-10-31-irix-toolchest-session.md) identifies the later SIGSEGV as an empty-environment `HOME` null dereference. Supplying `HOME` exposed unsupported `select` and configuration `xstat` calls. The later [select adapter](../../docs/results/2026-10-31-irix-select.md) implements the measured readiness/timeout subset; `xstat` remains next. The historical observations below are preserved.
 
 This checkpoint measures trap 1099 after the [X-client startup checkpoint](../irix-xconnect/README.md)
 let Toolchest complete X setup. It retains all 844 earlier fixture programs

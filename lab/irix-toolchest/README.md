@@ -1,5 +1,7 @@
 # Toolchest session and fault diagnosis
 
+Follow-up: the [select checkpoint](../../docs/results/2026-10-31-irix-select.md) implements the measured readiness/timeout subset. Version-2 `xstat` remains the next configuration boundary. The diagnosis below records the earlier recvmsg kernel.
+
 This follows the [recvmsg checkpoint](../irix-recvmsg/README.md), without changing
 its kernel or emulator. The [findings](../../docs/results/2026-10-31-irix-toolchest-session.md)
 distinguish an empty-environment crash from unsupported `select` and `xstat`.

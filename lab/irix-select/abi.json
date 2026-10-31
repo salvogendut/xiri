@@ -1,0 +1,58 @@
+{
+  "schema": 1,
+  "syscall": 1100,
+  "abis": [
+    "o32",
+    "n32"
+  ],
+  "arguments": [
+    "signed 32-bit nfds",
+    "32-bit read-set pointer",
+    "32-bit write-set pointer",
+    "32-bit exception-set pointer",
+    "32-bit timeval pointer"
+  ],
+  "fd_mask_bits": 32,
+  "timeval": {
+    "bytes": 8,
+    "seconds_offset": 0,
+    "microseconds_offset": 4,
+    "fields": "signed 32-bit",
+    "unaligned_input": "accepted",
+    "written_back": false
+  },
+  "measured_rules": [
+    "Timeval copyin and validation precede fd-set access.",
+    "Negative nfds examines no descriptors.",
+    "Nonempty fd-set accesses require four-byte alignment; otherwise EFAULT.",
+    "All input sets are read before descriptor validation.",
+    "A ready descriptor present in multiple result sets counts once.",
+    "Bits outside the examined range are preserved.",
+    "Result sets are copied in read, write, exception order; a failed copyout does not stop later copyouts.",
+    "Aliased result sets retain the independently calculated distinct-descriptor count.",
+    "Negative timeval fields and microseconds >= 1000000 yield EINVAL.",
+    "Timeouts preserve the timeval; delayed data and EOF wake read selection."
+  ],
+  "subset_differences": [
+    {
+      "fixture_suffix": "limit-policy",
+      "rule": "nfds > 1024 is rejected before mask-size arithmetic",
+      "netbsd_irix_errno": 22,
+      "original_observation": "nfds 1025 with empty examined sets returns zero"
+    },
+    {
+      "fixture_suffix": "bad-bit31",
+      "rule": "Every selected invalid fd inside the requested range produces EBADF",
+      "netbsd_irix_errno": 9,
+      "original_observation": "With only low descriptors opened, IRIX ignores selected unopened fd 31 and preserves its bit"
+    }
+  ],
+  "unqualified": [
+    "IRIX internal descriptor-table capacity/growth rules",
+    "signal delivery and interruption",
+    "concurrent descriptor/set mutation",
+    "nfds greater than 1024",
+    "general IRIX X application compatibility",
+    "general exceptional/OOB readiness"
+  ]
+}
