@@ -86,3 +86,5 @@ disabled only on this disposable guest's Xvfb display.
 
 Only original test source, interface observations and hashes are committed.
 Vendor binaries, headers, media and raw traces remain private ignored inputs.
+
+The subsequent [getpeername lab](../irix-peername/README.md) qualifies the peer-address query and its connection-state/error ordering. Toolchest passes both address queries and next encounters hostname, descriptor-control and message-transfer requirements. This lab retains its historical boundary pins.

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Qualify the bounded o32/n32 TCP client path and Toolchest connection refusal."""
+"""Qualify the bounded o32/n32 socket path and Toolchest startup boundaries."""
 import argparse
 import importlib.util
 import json
@@ -23,9 +23,10 @@ def module(name, filename):
 probe = module('probe', 'probe-netbsd.py')
 runtime = module('runtime', 'probe-irix-runtime.py')
 sockname = module('sockname', 'irix-sockname-records.py')
+peername = module('peername', 'irix-peername-records.py')
 
 
-def trace_signature(trace):
+def trace_signature(trace, checkpoint='tcp'):
     calls = []
     for line in trace['calls']:
         fields = {k: int(v, 0) for k, v in re.findall(r'(\w+)=(0x[0-9a-f]+|\d+)', line)}
@@ -36,11 +37,16 @@ def trace_signature(trace):
         if number == 1107:
             item.update(a1=fields['a1'], a2=fields['a2'])
         calls.append(item)
-    return {'calls': calls, 'returns': [v for v in trace.get('returns',[]) if int(re.search(r'syscall=(\d+)',v)[1]) in [1082,1091,1093,1094,1105,1107]], 'paths': [p for p in trace['paths'] if p.startswith(('/emul/irix/', '/usr/lib32/', '/lib32/', '/dev/'))]}
+    returns = [1082,1091,1093,1094,1105,1107]
+    if checkpoint == 'peername':
+        returns += [1062,1102,1106,1108]
+    return {'calls': calls, 'returns': [v for v in trace.get('returns',[]) if int(re.search(r'syscall=(\d+)',v)[1]) in returns], 'paths': [p for p in trace['paths'] if p.startswith(('/emul/irix/', '/usr/lib32/', '/lib32/', '/dev/'))]}
 
 
 def expected_record(case):
     """Fixed client subset contract; broader original behavior is pinned separately."""
+    if case['symbols']['KIND'] == 7:
+        return peername.expected_record(case)
     if case['symbols']['KIND'] == 6:
         return sockname.expected_record(case)
     s = case['symbols']
@@ -86,7 +92,7 @@ def expected_record(case):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--checkpoint', choices=['tcp','sockname'], default='tcp')
+    parser.add_argument('--checkpoint', choices=['tcp','sockname','peername'], default='tcp')
     parser.add_argument('--mode', choices=['ci', 'ordinary'], default='ci')
     parser.add_argument('--x11', action='store_true', help='Also observe Toolchest against a controlled native Xvfb server')
     parser.add_argument('--kernel-abi',choices=['lp64','o32'],default='lp64')
@@ -150,9 +156,12 @@ def main():
               'helper_sources': {n:probe.sha256(ROOT/'lab/irix-tcp'/n) for n in ['server.c','optioncheck.c']},
               'x11': args.x11, 'kernel_abi':args.kernel_abi,
               'manifest': manifest, 'observations': [], 'started_utc': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())}
-    if checkpoint == 'sockname':
-        result['helper_sources']['peer.c'] = probe.sha256(lab_dir/'peer.c')
+    if checkpoint in ['sockname','peername']:
+        result['helper_sources']['peer.c'] = probe.sha256(ROOT/'lab/irix-sockname/peer.c')
         result['sockname_decoder_sha256'] = probe.sha256(ROOT/'scripts/irix-sockname-records.py')
+    if checkpoint == 'peername':
+        result['helper_sources']['remote.c'] = probe.sha256(lab_dir/'remote.c')
+        result['peername_decoder_sha256'] = probe.sha256(ROOT/'scripts/irix-peername-records.py')
     started = time.monotonic()
     print(f'Results: {directory.relative_to(ROOT)}', flush=True)
     normal = {'errno_bytes': 0, 'errno': 0, 'exit': 0, 'signal': 0, 'killed': 0, 'stdout': '', 'stderr': ''}
@@ -201,7 +210,8 @@ def main():
             probe.run(['cp', source, media/name])
         for n in ['server.c','optioncheck.c']:
             probe.run(['cp',ROOT/'lab/irix-tcp'/n,media/n])
-        if checkpoint == 'sockname': probe.run(['cp',lab_dir/'peer.c',media/'peer.c'])
+        if checkpoint in ['sockname','peername']: probe.run(['cp',ROOT/'lab/irix-sockname/peer.c',media/'peer.c'])
+        if checkpoint == 'peername': probe.run(['cp',lab_dir/'remote.c',media/'remote.c'])
         if args.x11:
             sets=['xbase','xetc','xfont','xserver']
             selected=[line for line in (ROOT/'lab/netbsd-11.0/SHA512SUMS').read_text().splitlines()
@@ -215,9 +225,14 @@ def main():
         (media/'payload.bin').write_bytes(bytes(range(256))*512)
         lines = ['#!/bin/sh', 'set -eu', 'cd /root/irix-desktop', 'ulimit -c 0',
                  './server '+('4' if args.kernel_abi=='o32' else '8')+' >server.log 2>&1 & server=$!', 'sleep 1', 'grep RDY server.log']
-        if checkpoint == 'sockname':
-            peer_count = sum('CONNECTED' in c.get('fixture',{}).get('symbols',{}) for c in cases)
+        if checkpoint in ['sockname','peername']:
+            peer_count = sum(c.get('fixture',{}).get('symbols',{}).get('KIND')==6 and
+                             'CONNECTED' in c['fixture']['symbols'] for c in cases)
             lines += [f'./peer {peer_count} >peer.log 2>&1 & peer=$!', 'sleep 1', 'grep RDY peer.log']
+        if checkpoint == 'peername':
+            remote_count = sum(c.get('fixture',{}).get('symbols',{}).get('KIND')==7 and
+                               'CONNECTED' in c['fixture']['symbols'] for c in cases)
+            lines += [f'./remote {remote_count} >remote.log 2>&1 & remote=$!', 'sleep 1', 'grep RDY remote.log']
         for path,name in library_inputs.items():
             target='/emul/irix'+path
             lines += ['mkdir -p '+shlex.quote(str(Path(target).parent)),
@@ -235,7 +250,8 @@ def main():
             if case.get('trace'):
                 lines += ['echo STARTTRACE '+case['name'], 'kdump -f '+case['name']+'.ktrace -t un',
                           'echo ENDTRACE '+case['name']]
-        if checkpoint == 'sockname': lines += ['wait "$peer"', 'echo PEER_OK']
+        if checkpoint in ['sockname','peername']: lines += ['wait "$peer"', 'echo PEER_OK']
+        if checkpoint == 'peername': lines += ['wait "$remote"', 'echo REMOTE_OK']
         lines += ['wait "$server"', 'echo SERVER_OK', 'sha256 -c SHA256', 'echo DESKTOP_DONE']
         (media/'run.sh').write_text('\n'.join(lines)+'\n')
         probe.run(['genisoimage', '-quiet', '-R', '-J', '-follow-links', '-V', 'XIRI_TCP', '-o', directory/'probe.iso', media])
@@ -250,10 +266,12 @@ def main():
                        'cp vendor-n32-rld /emul/irix/lib32/rld && chmod 755 /emul/irix/*/rld /emul/irix/*/libc.so.1 /emul/irix/usr/*/libc.so.1 && '
                        'cc -O2 -Wall -Wextra -Werror -DRUNNER_TIMEOUT_MS=30000 -DRUNNER_TIMING runner.c -o runner && '
                        'cc -O2 -Wall -Wextra -Werror server.c -o server && '
-                       'cc -O2 -Wall -Wextra -Werror optioncheck.c -o optioncheck', 180):
+                       'cc -O2 -Wall -Wextra -Werror optioncheck.c -o optioncheck', 300 if checkpoint=='peername' else 180):
             raise RuntimeError('desktop inputs or native runner failed')
-        if checkpoint == 'sockname' and lab.command('cc -O2 -Wall -Wextra -Werror peer.c -o peer',60):
+        if checkpoint in ['sockname','peername'] and lab.command('cc -O2 -Wall -Wextra -Werror peer.c -o peer',60):
             raise RuntimeError('native address peer failed to compile')
+        if checkpoint == 'peername' and lab.command('cc -O2 -Wall -Wextra -Werror remote.c -o remote',60):
+            raise RuntimeError('native server-address peer failed to compile')
         if lab.command(shlex.join(['sh', '/cdrom/probe.sh', pin['ident'], pin['native_kernel_sha256'],
                                   probe.sha256(media/'payload.bin')]), 60):
             raise RuntimeError('native kernel/file/swap controls failed')
@@ -269,7 +287,7 @@ def main():
                 raise RuntimeError('native TCP X connection failed')
             result['native_x11_before']=True
         before = len(lab.serial_text())
-        rc = lab.command('sh /root/irix-desktop/run.sh', 300)
+        rc = lab.command('sh /root/irix-desktop/run.sh', 450 if checkpoint=='peername' else 300)
         output = lab.serial_text()[before:]
         (directory/'desktop-serial.txt').write_text(output)
         result['traces'] = {}
@@ -312,7 +330,7 @@ def main():
                     'calls': [bytes.fromhex(x).decode() for x in re.findall(r'irix_o32: \d+, ([0-9a-f]+)', trace[1])],
                     'returns': [bytes.fromhex(x).decode() for x in re.findall(r'irix_ret: \d+, ([0-9a-f]+)',trace[1])],
                     'paths': re.findall(r'NAMI\s+"([^"]+)"', trace[1])}
-                signature = trace_signature(result['traces'][name])
+                signature = trace_signature(result['traces'][name], checkpoint)
                 result['traces'][name]['signature'] = signature
                 if expectations:
                     trace_ok = signature == expectations['cases'][name]['trace_signature']
@@ -326,7 +344,8 @@ def main():
             if lab.command('/usr/X11R7/bin/xdpyinfo -display 127.0.0.1:98 >/dev/null && kill "$xpid"',30):
                 raise RuntimeError('native X server control failed after foreign clients')
             result['native_x11_after']=True
-        if checkpoint == 'sockname' and '\nPEER_OK\n' not in output: raise RuntimeError('native address peer failed')
+        if checkpoint in ['sockname','peername'] and '\nPEER_OK\n' not in output: raise RuntimeError('native address peer failed')
+        if checkpoint == 'peername' and '\nREMOTE_OK\n' not in output: raise RuntimeError('native server-address peer failed')
         if '\nSERVER_OK\n' not in output: raise RuntimeError('native echo peer failed')
         if rc or '\nDESKTOP_DONE\n' not in output or failures:
             raise RuntimeError('TCP qualification failed: '+', '.join(failures))

@@ -128,3 +128,5 @@ The subsequent [getsockname lab](../irix-sockname/README.md) qualifies local-add
 output translation against original IRIX. Toolchest now passes that query
 after its native X connection and stops at unsupported getpeername (1093).
 The earlier boundary pins in this lab remain historical evidence.
+
+The subsequent [getpeername lab](../irix-peername/README.md) now reaches both endpoint queries, followed by unsupported gethostname, fcntl and sendmsg, plus shutdown on cleanup. Use the [desktop acceptance plan](../../docs/ROADMAP.md#milestone-3-original-desktop-proof) and the user-supplied SGI interface guidelines once X applications run.
