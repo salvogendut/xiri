@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updated": "2026-10-31",
+  "updated": "2026-11-01",
   "scope": "Running image-resource checklist; presence does not establish necessity or compatibility",
   "vendor_bytes": "Ignored .work only; read-only extraction; manifests own checksums",
   "entries": [
@@ -79,7 +79,8 @@
         "lab/irix-x11-fonts/manifest.json",
         "docs/results/2026-10-31-irix-winterm-resources.json",
         "docs/results/2026-10-31-irix-winterm-access.json",
-        "docs/results/2026-10-31-irix-winterm-pty.json"
+        "docs/results/2026-10-31-irix-winterm-pty.json",
+        "docs/results/2026-11-01-irix-winterm-process.json"
       ],
       "note": "22 original Screen fonts indexed; the requested 15-pixel medium face renders in native xterm under both identities and modes. The access follow-up pins both native xterm regular and bold slots to the verified normal face after an unconstrained control hit X_OpenFont BadAlloc; this does not qualify other faces."
     },
@@ -223,13 +224,14 @@
     },
     {
       "id": "native_pty_namespace",
-      "status": "bounded_allocator_observed",
+      "status": "allocator_and_child_slave_open_observed",
       "image_paths": [],
       "evidence": [
         "lab/irix-pty/setup.sh",
-        "docs/results/2026-10-31-irix-pty.md"
+        "docs/results/2026-10-31-irix-pty.md",
+        "docs/results/2026-11-01-irix-process.md"
       ],
-      "note": "Generated native ptm clone, ptyfs group 0/mode 0600, nullfs slave view under /emul/irix/dev/pts and first 400 q/r aliases. Do not import original device nodes. Libc allocates/opens the slave; xwsh reaches unsupported fork. Production namespace, concurrent use, terminal modes and shell/input remain open."
+      "note": "Generated native ptm clone, ptyfs group 0/mode 0600, nullfs slave view under /emul/irix/dev/pts and first 400 q/r aliases. Do not import original device nodes. Original xwsh now forks and opens the slave in its child, then reaches unsupported execve. Native exec/session/descriptor setup, signal handlers, terminal modes and shell/input remain open."
     }
   ],
   "native_session_inputs": [
@@ -239,6 +241,7 @@
     "X credentials and display",
     "PATH and XUSERFILESEARCHPATH",
     "generated or deliberately migrated per-user desktop state",
-    "Native PTY allocation, ownership, controlling terminal and termios translation for the selected shell"
+    "Native PTY allocation, ownership, controlling terminal and termios translation for the selected shell",
+    "Native fork/exec ABI transition, child descriptors, session/process group and signal disposition setup; no additional image assets needed for the process checkpoint"
   ]
 }

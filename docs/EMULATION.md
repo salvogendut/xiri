@@ -190,3 +190,16 @@ Original-IRIX reference runs use an in-memory disk overlay. Transfer records
 before quitting; the stopped raw image does not contain those guest writes.
 The access harness keeps archive argument lists small for IRIX and runs
 packaging inside a script so a failure cannot log out the interactive shell.
+
+
+## Process checkpoint
+
+The [process lab](../lab/irix-process/README.md) adds paired original-IRIX
+fork/mask/wait measurements, full LP64 CI/ordinary and o32 matrices, independent
+native KERN_PROC2 mask/identity snapshots, and process-group cleanup controls.
+Original xwsh forks and opens the slave in its child, then reaches unsupported
+execve. The observer retains all child trace events and signals plus the first
+2,000 parent events, avoiding repeated serial transfer of the parent's loop
+after command failure. The full-trace hash/count and capture scope are recorded.
+Native shell/session/descriptor handling, signal delivery and terminal modes
+remain prerequisites for the winterm goal and subsequent 4Dwm evaluation.

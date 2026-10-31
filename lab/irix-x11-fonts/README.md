@@ -1,6 +1,6 @@
 # Original IRIX fonts and locale data
 
-Follow-up: [access support](../../docs/results/2026-10-31-irix-winterm-access.md) now permits locale/default reads and clears the xwsh null-font failure. The later [PTY checkpoint](../../docs/results/2026-10-31-irix-pty.md) advances allocation to the fork boundary; native shell/input and terminal attributes remain open.
+Follow-up: [access support](../../docs/results/2026-10-31-irix-winterm-access.md) now permits locale/default reads and clears the xwsh null-font failure. The later [PTY checkpoint](../../docs/results/2026-10-31-irix-pty.md) supplies allocation, and the [process checkpoint](../../docs/results/2026-11-01-irix-process.md) advances xwsh through fork and child slave opening to unsupported execve. Native session setup, shell/input and terminal attributes remain open.
 
 Earlier diagnosis: the null-font fault and unsupported resource-access calls were captured. Imported font availability alone did not resolve this client initialization path. See the [fault capture](../../docs/results/2026-10-31-irix-winterm-fault.md).
 

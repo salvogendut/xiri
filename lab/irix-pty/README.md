@@ -1,5 +1,7 @@
 # IRIX PTY allocation
 
+Follow-up: the [process checkpoint](../../docs/results/2026-11-01-irix-process.md) advances xwsh through fork and child slave opening to unsupported execve. The historical observations below remain the PTY-only baseline.
+
 This lab measures the interfaces used by original libc `_getpty`, then checks
 winterm/xwsh on the candidate NetBSD kernel. The checkpoint separates allocator
 success from a working terminal: `fork`, signal masks, terminal attributes,

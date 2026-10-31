@@ -1,0 +1,2139 @@
+{
+  "schema": 1,
+  "status": "qualified-subset",
+  "reference_directory": ".work/irix-reference/process-records-runs/ci-mznyh53j",
+  "reference_result_sha256": "7a451ddabc6d304e35a01a6d4f518be8c7db916834deba58e971e7a44f1e01cd",
+  "reference_checks": 944,
+  "checks": 2360,
+  "records": 3120,
+  "controls": 32,
+  "native_process_controls": 24,
+  "runs": [
+    {
+      "directory": ".work/irix-process/runs/lp64-ci-t3sfz_kh",
+      "kernel_abi": "lp64",
+      "mode": "ci",
+      "checks": 944,
+      "records": 1248,
+      "canonical_oracle_equal": 632,
+      "canonical_oracle_different": 312,
+      "policy_counts": {
+        "traditional-signals-only": 296,
+        "zero-owned-siginfo-padding": 48,
+        "positive-pid-no-rusage": 16
+      },
+      "controls": 12,
+      "native_process_controls": 8,
+      "clean_shutdown": true,
+      "result_sha256": "6db609754c18c4a255a80afea71e808d5e953372f1d6ddae2618c4bac3180509",
+      "sources": {
+        "lab/irix-process/inspect.c": "9e4306a70e7c4de58e2cb45ac44a664cf7c57a3d07f3a9cab1ad95cc952cc7e6",
+        "lab/irix-process/native.c": "3ceaf63013f255da9dc0842a6e2c058fcca787dbd75c5ed004e30539eae31bb9",
+        "lab/irix-lp64/runner.c": "005bdf3fffce5fb8ca79073e92cc41431aa953550c41014183d5de986a104463",
+        "lab/irix-toolchest/session.c": "e183b4aefdfb428e01dc609230e87a7546a0b31e9d4b5e236503e0a8bb3b09f5",
+        "scripts/probe-irix-process.py": "deb754789e38c5798ffd2637f0221a6ca3fd0fc438c0fbf7ae3d3400d7a18cda"
+      },
+      "pin": {
+        "schema": 1,
+        "description": "Bounded IRIX process interfaces on lp64",
+        "ident": "XIRI_IRIX_PROCESS_20261101",
+        "source_revision": "fd219672645f2d744aabf59f0479acccb6a23d41",
+        "source_branch": "xiri/irix-process",
+        "build_arch": "mips64eb",
+        "page_bytes": 8192,
+        "boot_kernel_sha256": "7e925fe0fc68926fb13be1636b02e355e355393a6fe1bcf5922e7c308bf2c8c9",
+        "native_kernel_sha256": "62336ece1099714ba744afb30e388c7fbb12ce755766c4e66f4841351775bb77",
+        "debug_kernel_sha256": "bd8ed71be0693383d177002624d23fa93f3d48cd0c1242f8e75ce51d0153c131",
+        "native_o32_sha256": "c294fbb1f2110445be31c096481ea54ab561c7e59ca5b9fc7171310098d755d4",
+        "source_dirty": false,
+        "emulator_revision": "9df1df14334838a989253efefe26f0547e6da592",
+        "emulator_branch": "xiri/netbsd64-tlb",
+        "emulator_sha256": "1b3f7702ba7f43b5c4fca8ba8884243559f46371d8d67a36ce5e6fee1e595eba",
+        "ci_client_sha256": "8711321aa6eaae440da3c7920b00ae4cf1c7f2abbdb15a9919f58485500ffb6c",
+        "base_disk_sha256": "269038c7b77660c83d3835208fc0b2702c93110c14b3c55a42416f51672cee2a",
+        "nvram_sha256": "ee883474d52f09278287b2044f7aeca61d2e7bc39c0bb8fd85c983ab64063d15",
+        "config_sha256": "6b1a2f59470f396289038206d5980165104ddcb590d090c5199b3d2c62a5dbc6",
+        "runtimes": [
+          {
+            "name": "vendor-o32-libc",
+            "path": "/usr/lib/libc.so.1",
+            "sha256": "ea766492103a193e9d404942705e4e28987545e37f699ede232b6c0f8c97c954"
+          },
+          {
+            "name": "vendor-o32-rld",
+            "path": "/lib/rld",
+            "sha256": "30228b54c1e5585b365514eb7c9895b03cc0f61cb898e05e3ddafece87863439"
+          },
+          {
+            "name": "vendor-n32-libc",
+            "path": "/lib32/libc.so.1",
+            "sha256": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e"
+          },
+          {
+            "name": "vendor-n32-rld",
+            "path": "/lib32/rld",
+            "sha256": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b"
+          }
+        ],
+        "config_path": "lab/irix-process/XIRI_IRIX_PROCESS"
+      }
+    },
+    {
+      "directory": ".work/irix-process/runs/lp64-ordinary-s2u9_yj_",
+      "kernel_abi": "lp64",
+      "mode": "ordinary",
+      "checks": 944,
+      "records": 1248,
+      "canonical_oracle_equal": 632,
+      "canonical_oracle_different": 312,
+      "policy_counts": {
+        "traditional-signals-only": 296,
+        "zero-owned-siginfo-padding": 48,
+        "positive-pid-no-rusage": 16
+      },
+      "controls": 12,
+      "native_process_controls": 8,
+      "clean_shutdown": true,
+      "result_sha256": "19c54592d583c6f99c07f48246ce1d142f33e16621774a67c70cd658b130effe",
+      "sources": {
+        "lab/irix-process/inspect.c": "9e4306a70e7c4de58e2cb45ac44a664cf7c57a3d07f3a9cab1ad95cc952cc7e6",
+        "lab/irix-process/native.c": "3ceaf63013f255da9dc0842a6e2c058fcca787dbd75c5ed004e30539eae31bb9",
+        "lab/irix-lp64/runner.c": "005bdf3fffce5fb8ca79073e92cc41431aa953550c41014183d5de986a104463",
+        "lab/irix-toolchest/session.c": "e183b4aefdfb428e01dc609230e87a7546a0b31e9d4b5e236503e0a8bb3b09f5",
+        "scripts/probe-irix-process.py": "deb754789e38c5798ffd2637f0221a6ca3fd0fc438c0fbf7ae3d3400d7a18cda"
+      },
+      "pin": {
+        "schema": 1,
+        "description": "Bounded IRIX process interfaces on lp64",
+        "ident": "XIRI_IRIX_PROCESS_20261101",
+        "source_revision": "fd219672645f2d744aabf59f0479acccb6a23d41",
+        "source_branch": "xiri/irix-process",
+        "build_arch": "mips64eb",
+        "page_bytes": 8192,
+        "boot_kernel_sha256": "7e925fe0fc68926fb13be1636b02e355e355393a6fe1bcf5922e7c308bf2c8c9",
+        "native_kernel_sha256": "62336ece1099714ba744afb30e388c7fbb12ce755766c4e66f4841351775bb77",
+        "debug_kernel_sha256": "bd8ed71be0693383d177002624d23fa93f3d48cd0c1242f8e75ce51d0153c131",
+        "native_o32_sha256": "c294fbb1f2110445be31c096481ea54ab561c7e59ca5b9fc7171310098d755d4",
+        "source_dirty": false,
+        "emulator_revision": "9df1df14334838a989253efefe26f0547e6da592",
+        "emulator_branch": "xiri/netbsd64-tlb",
+        "emulator_sha256": "1b3f7702ba7f43b5c4fca8ba8884243559f46371d8d67a36ce5e6fee1e595eba",
+        "ci_client_sha256": "8711321aa6eaae440da3c7920b00ae4cf1c7f2abbdb15a9919f58485500ffb6c",
+        "base_disk_sha256": "269038c7b77660c83d3835208fc0b2702c93110c14b3c55a42416f51672cee2a",
+        "nvram_sha256": "ee883474d52f09278287b2044f7aeca61d2e7bc39c0bb8fd85c983ab64063d15",
+        "config_sha256": "6b1a2f59470f396289038206d5980165104ddcb590d090c5199b3d2c62a5dbc6",
+        "runtimes": [
+          {
+            "name": "vendor-o32-libc",
+            "path": "/usr/lib/libc.so.1",
+            "sha256": "ea766492103a193e9d404942705e4e28987545e37f699ede232b6c0f8c97c954"
+          },
+          {
+            "name": "vendor-o32-rld",
+            "path": "/lib/rld",
+            "sha256": "30228b54c1e5585b365514eb7c9895b03cc0f61cb898e05e3ddafece87863439"
+          },
+          {
+            "name": "vendor-n32-libc",
+            "path": "/lib32/libc.so.1",
+            "sha256": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e"
+          },
+          {
+            "name": "vendor-n32-rld",
+            "path": "/lib32/rld",
+            "sha256": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b"
+          }
+        ],
+        "config_path": "lab/irix-process/XIRI_IRIX_PROCESS"
+      }
+    },
+    {
+      "directory": ".work/irix-process/runs/o32-ci-rpl8u4t_",
+      "kernel_abi": "o32",
+      "mode": "ci",
+      "checks": 472,
+      "records": 624,
+      "canonical_oracle_equal": 316,
+      "canonical_oracle_different": 156,
+      "policy_counts": {
+        "traditional-signals-only": 148,
+        "zero-owned-siginfo-padding": 24,
+        "positive-pid-no-rusage": 8
+      },
+      "controls": 8,
+      "native_process_controls": 8,
+      "clean_shutdown": true,
+      "result_sha256": "41edba83d080c4604450b41e361c4fc94b6bfcc7814f292f2cefe2c9d5de5918",
+      "sources": {
+        "lab/irix-process/inspect.c": "9e4306a70e7c4de58e2cb45ac44a664cf7c57a3d07f3a9cab1ad95cc952cc7e6",
+        "lab/irix-process/native.c": "3ceaf63013f255da9dc0842a6e2c058fcca787dbd75c5ed004e30539eae31bb9",
+        "lab/irix-lp64/runner.c": "005bdf3fffce5fb8ca79073e92cc41431aa953550c41014183d5de986a104463",
+        "lab/irix-toolchest/session.c": "e183b4aefdfb428e01dc609230e87a7546a0b31e9d4b5e236503e0a8bb3b09f5",
+        "scripts/probe-irix-process.py": "deb754789e38c5798ffd2637f0221a6ca3fd0fc438c0fbf7ae3d3400d7a18cda"
+      },
+      "pin": {
+        "schema": 1,
+        "description": "Bounded IRIX process interfaces on o32",
+        "ident": "XIRI_IRIX_PROCESS_O32_20261101",
+        "source_revision": "fd219672645f2d744aabf59f0479acccb6a23d41",
+        "source_branch": "xiri/irix-process",
+        "build_arch": "mipseb",
+        "page_bytes": 4096,
+        "boot_kernel_sha256": "cef760cbdcd9488f4781f9a6f833b6553713e836d3b3bd038f85bc360d229ad1",
+        "native_kernel_sha256": "cef760cbdcd9488f4781f9a6f833b6553713e836d3b3bd038f85bc360d229ad1",
+        "debug_kernel_sha256": "afec7c0ed54056d73de8fdd53dab5906b4be0a4a6e3cc85a71c50fdc46f59a52",
+        "native_o32_sha256": "c294fbb1f2110445be31c096481ea54ab561c7e59ca5b9fc7171310098d755d4",
+        "source_dirty": false,
+        "emulator_revision": "9df1df14334838a989253efefe26f0547e6da592",
+        "emulator_branch": "xiri/netbsd64-tlb",
+        "emulator_sha256": "1b3f7702ba7f43b5c4fca8ba8884243559f46371d8d67a36ce5e6fee1e595eba",
+        "ci_client_sha256": "8711321aa6eaae440da3c7920b00ae4cf1c7f2abbdb15a9919f58485500ffb6c",
+        "base_disk_sha256": "269038c7b77660c83d3835208fc0b2702c93110c14b3c55a42416f51672cee2a",
+        "nvram_sha256": "ee883474d52f09278287b2044f7aeca61d2e7bc39c0bb8fd85c983ab64063d15",
+        "config_sha256": "dbd89a5174533c774f39a603c4624927da6ed863d5b807f069f0fe404d4233f3",
+        "runtimes": [
+          {
+            "name": "vendor-o32-libc",
+            "path": "/usr/lib/libc.so.1",
+            "sha256": "ea766492103a193e9d404942705e4e28987545e37f699ede232b6c0f8c97c954"
+          },
+          {
+            "name": "vendor-o32-rld",
+            "path": "/lib/rld",
+            "sha256": "30228b54c1e5585b365514eb7c9895b03cc0f61cb898e05e3ddafece87863439"
+          },
+          {
+            "name": "vendor-n32-libc",
+            "path": "/lib32/libc.so.1",
+            "sha256": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e"
+          },
+          {
+            "name": "vendor-n32-rld",
+            "path": "/lib32/rld",
+            "sha256": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b"
+          }
+        ],
+        "config_path": "lab/irix-process/XIRI_IRIX_PROCESS_O32"
+      }
+    }
+  ],
+  "sources": {
+    "scripts/build-irix-process.py": "b68b2abf4ad961c98fdbe6b871d9f594edfcdedbd51f5fb08caa8b9a668b091a",
+    "lab/irix-process/probe.c": "415cb33a1b71883691941b6dab796833e871773ad4a9a5336c8b435459ccb66e",
+    "lab/irix-process/start.S": "00aa6b1e26feba4817798e32876c2286fe60547ae8ceeacb56b3d6904e40310d",
+    "lab/irix-process/call.S": "677d247b98c292a3a5f0c8cfae4614ab9c6995ddde00501b700db0e857986a4f",
+    "lab/irix-process/probe.ld": "08cff42138f41bc5ef5c02a903ed16fab4db0d6a8d208f90dafd2157b30573dc",
+    "lab/irix-process/setup.sh": "45538e510922cbafa389fb31d07b21b5e949b7e243cc917e9f37d9710011e1bf"
+  },
+  "fixture_files": {
+    "o32-direct-mask-bit-1": {
+      "sha256": "de59b686e9688e7d0a33c4f47abde58c4f849fcc9990cea07073cf17323e8054",
+      "bytes": 9356
+    },
+    "o32-direct-mask-bit-2": {
+      "sha256": "cdb0db6fc6ca487d20ce2dcf306abebf7aa6dccf182e715a12d096a0bc2fe84b",
+      "bytes": 9356
+    },
+    "o32-direct-mask-bit-3": {
+      "sha256": "96ef6594cb9e14b4f62ce60c712e0960270f97c4420d47874d5ce49ce459430f",
+      "bytes": 9356
+    },
+    "o32-direct-mask-bit-4": {
+      "sha256": "fab79b582151d3702fa4c5a787068ac6c26f8a2b4df61a3390b6f470dd0e29df",
+      "bytes": 9356
+    },
+    "o32-direct-mask-bit-5": {
+      "sha256": "163490ae3880762c46704a765221bdb5ca09797b947f49ca1b6df73d736310b8",
+      "bytes": 9356
+    },
+    "o32-direct-mask-bit-6": {
+      "sha256": "e4b4d5f4f29287bb114723b5f0bcc399bd0225f5e3f41e4981832612ac057847",
+      "bytes": 9356
+    },
+    "o32-direct-mask-bit-7": {
+      "sha256": "767aa4e32902f665ffde462df6f46f15aef7439b0dd34c68ec8f666dc63b5e74",
+      "bytes": 9356
+    },
+    "o32-direct-mask-bit-8": {
+      "sha256": "918e8792903a8cc9ba173652a1482bfbc6d944b203396d58f0d7ed849984b30c",
+      "bytes": 9356
+    },
+    "o32-direct-mask-bit-9": {
+      "sha256": "0a3298ab2c0911f4b46983c91f39a434512d7e4f8946a3d36e7cff6d6c78b99e",
+      "bytes": 9356
+    },
+    "o32-direct-mask-bit-10": {
+      "sha256": "14fdd160805acba64b5a080e57e7e8989d1f2f71309b4c2ede324783023697d9",
+      "bytes": 9356
+    },
+    "o32-direct-mask-bit-11": {
+      "sha256": "1320dd3ce631b4e91a08f9b4dff9baa528d84fd5093e1c8417ded3798fd05637",
+      "bytes": 9356
+    },
+    "o32-direct-mask-bit-12": {
+      "sha256": "ca00b38b4626673dc848681522627f20057570da5fab5ce3a8a33fe4710e3382",
+      "bytes": 9356
+    },
+    "o32-direct-mask-bit-13": {
+      "sha256": "ff718419fe25b266c01a57cd9e433b34a768e9835a059e1c71dc4627f10f8922",
+      "bytes": 9356
+    },
+    "o32-direct-mask-bit-14": {
+      "sha256": "16746dd97ec426bbef3de5eedcb4e20a0afba1c125044a623bd0b31e6d4777c6",
+      "bytes": 9356
+    },
+    "o32-direct-mask-bit-15": {
+      "sha256": "eba597ff6e3af31f5cfc33936646aafd0d89d05823fbae6ff72190a60e347c78",
+      "bytes": 9356
+    },
+    "o32-direct-mask-bit-16": {
+      "sha256": "6ab4c96a00f689a495aabf76cb6e11f212cdd2abd336841850d40f52c537d19b",
+      "bytes": 9356
+    },
+    "o32-direct-mask-bit-17": {
+      "sha256": "89aa4e6bd0780cc3cfb8efcb2b5b5de39e476538bbd48c9364977ee4a76181d3",
+      "bytes": 9356
+    },
+    "o32-direct-mask-bit-18": {
+      "sha256": "830171e975d16c73a9aaf4ec884275f64a941bc21788467f7211c075c0649567",
+      "bytes": 9356
+    },
+    "o32-direct-mask-bit-19": {
+      "sha256": "2060627b410ab7f941ff610c5c412dc7cf0631ce0b68bcea73a086b46368d236",
+      "bytes": 9356
+    },
+    "o32-direct-mask-bit-20": {
+      "sha256": "b216bbba58d46680fbd1ad4273a1eae7d3a43b9cfabc710562cc959b6121a215",
+      "bytes": 9356
+    },
+    "o32-direct-mask-bit-21": {
+      "sha256": "66de8fad7b26b81eede630ea71c25fc8241f351476a5847a3a5bdddfae081530",
+      "bytes": 9356
+    },
+    "o32-direct-mask-bit-22": {
+      "sha256": "ce4982a16e0ab63f704b1d0429770a922fde78f3baee03fbb1247fbe21cc1510",
+      "bytes": 9356
+    },
+    "o32-direct-mask-bit-23": {
+      "sha256": "d6ed94b43e9e0fbfbf6017eac15c8030aa21004d5876193eba19aed945075245",
+      "bytes": 9356
+    },
+    "o32-direct-mask-bit-24": {
+      "sha256": "83c1a27e3345dc65c592d36702fd83f6ec7744fb36d36b3c0f86f7f9999cf46b",
+      "bytes": 9356
+    },
+    "o32-direct-mask-bit-25": {
+      "sha256": "4027e441f6fc4265328c57aacaf8836130d31af1dad7a391ee0e3bf5c38cdf34",
+      "bytes": 9356
+    },
+    "o32-direct-mask-bit-26": {
+      "sha256": "d97108babb83ce568cd581eff7a9294e0a27a27b1e6d4f90d8e2d1db37566ef8",
+      "bytes": 9356
+    },
+    "o32-direct-mask-bit-27": {
+      "sha256": "1d37e587ac68cdec3660e887f290e0d402b68c530512bd245d9075c6780108b3",
+      "bytes": 9356
+    },
+    "o32-direct-mask-bit-28": {
+      "sha256": "90b0ffc360ca9e93e4b804b1089163e88fb0ab701101265091f3e0897f3d4bff",
+      "bytes": 9356
+    },
+    "o32-direct-mask-bit-29": {
+      "sha256": "874406d6b669049bcdeec03850b29d775179f290f7166a1c5535136161d59b63",
+      "bytes": 9356
+    },
+    "o32-direct-mask-bit-30": {
+      "sha256": "40466f536a7bd6c4a6da3c5db2fe3ad051905617cd62aa8a3605763ba7da2350",
+      "bytes": 9356
+    },
+    "o32-direct-mask-bit-31": {
+      "sha256": "b921ebb32fb57a1782dcfb25b975d08b664f986966bedf13ac72a3a62eabfc72",
+      "bytes": 9356
+    },
+    "o32-direct-mask-bit-32": {
+      "sha256": "370f3f16a1cdca6ca64a1fb4b273934987282243f27b7745daf9592c839232aa",
+      "bytes": 9356
+    },
+    "o32-direct-mask-bit-33": {
+      "sha256": "6e5b54079ad132a5f69c3bcc6b50682920398373f8522c52c6ffcc0882dc5adb",
+      "bytes": 9356
+    },
+    "o32-direct-mask-bit-34": {
+      "sha256": "110d4f144ed4929a0f77d47912efb2743cc84143b4b3677c1f9e21970c66fc89",
+      "bytes": 9356
+    },
+    "o32-direct-mask-bit-35": {
+      "sha256": "56d4d9053e550f85c2b979198c9d4ed326d8d34625aee9dfd7e81734fa81355d",
+      "bytes": 9356
+    },
+    "o32-direct-mask-bit-36": {
+      "sha256": "a0eef1121cc94e95cc86c68f4824e3dce3ea36f0bd1cada97288afd69d9a0885",
+      "bytes": 9356
+    },
+    "o32-direct-mask-bit-37": {
+      "sha256": "37376ded9ffb81957b4d0afb1e465385580eafe4fee878b47e9c5fcd88cd824d",
+      "bytes": 9356
+    },
+    "o32-direct-mask-bit-38": {
+      "sha256": "26f280203b6ffb6403536fa92346642b483ff8006ddd91cca1452bd7a686da7d",
+      "bytes": 9356
+    },
+    "o32-direct-mask-bit-39": {
+      "sha256": "b05d5acf6cbf0dfee6e1f1adac7410bf4126ea2152f280dab0cab3f8704038a1",
+      "bytes": 9356
+    },
+    "o32-direct-mask-bit-40": {
+      "sha256": "1efb0be405fdb2d2641a3692eb2b21cf7a676c1d78eb7eba83eb85972603ac49",
+      "bytes": 9356
+    },
+    "o32-direct-mask-bit-41": {
+      "sha256": "c831f24ffcc267d0ed8a70d5d04c0e36e8c2099c61f7b0d485f3b1bd228d78bb",
+      "bytes": 9356
+    },
+    "o32-direct-mask-bit-42": {
+      "sha256": "6c5c9b308a66a6b1b7a9edf9c22b00778fed0e354a52b711e46d11d4230a5324",
+      "bytes": 9356
+    },
+    "o32-direct-mask-bit-43": {
+      "sha256": "d63549921fbef7fbb10079bc792e413d135bd434b7a45320a9899ed66823e6f9",
+      "bytes": 9356
+    },
+    "o32-direct-mask-bit-44": {
+      "sha256": "a670d8ede35d4023f152107c2d8c7f21ac1a5d602b9502f7ed8f4dec22af2323",
+      "bytes": 9356
+    },
+    "o32-direct-mask-bit-45": {
+      "sha256": "000fe457a7a53a85b086e4b1ce1d5e4ca456513970c53fdbf66b93b5659756dc",
+      "bytes": 9356
+    },
+    "o32-direct-mask-bit-46": {
+      "sha256": "24ff92257d9d425c5e05b64cd106c0f806e2005ae200b5d0bb06363e5feb5fca",
+      "bytes": 9356
+    },
+    "o32-direct-mask-bit-47": {
+      "sha256": "0e624911f9a9ed1433a030947936e33e588a0268606d8a0a7858254c5a5f3656",
+      "bytes": 9356
+    },
+    "o32-direct-mask-bit-48": {
+      "sha256": "ccedf693cdbf3c1be438c98afc8d73c035bba2dba62d2e2cfe6208d765595aa0",
+      "bytes": 9356
+    },
+    "o32-direct-mask-bit-49": {
+      "sha256": "c03ef9a0cebfd746d2eec51c3ff32d83aaa3dc4387aedaaa06d287aaebe08139",
+      "bytes": 9356
+    },
+    "o32-direct-mask-bit-50": {
+      "sha256": "feb3d0f4cfe022221e32d7bae87eebe4ba86cb43b733c58e68358655bdc1dc0d",
+      "bytes": 9356
+    },
+    "o32-direct-mask-bit-51": {
+      "sha256": "54bdd8a89b4d1f0a308b2c885e39906320858225b85813b05dd9204448824f72",
+      "bytes": 9356
+    },
+    "o32-direct-mask-bit-52": {
+      "sha256": "5923fbe97a869e61505f1b5c3e2c14d7759fde0e7d6e483520c14e758b1f8bdb",
+      "bytes": 9356
+    },
+    "o32-direct-mask-bit-53": {
+      "sha256": "8ce2f2e8fc93b9d9f51ecc95c87631589f2edafc8b89fe65d761ea20d026f800",
+      "bytes": 9356
+    },
+    "o32-direct-mask-bit-54": {
+      "sha256": "d758c1857856f90c3056524c6c1603e6af41194286a962c9991d40ecebdfb9f9",
+      "bytes": 9356
+    },
+    "o32-direct-mask-bit-55": {
+      "sha256": "a58925031b2370d2209bb54f0fc611b17e0d7ab768ba7dcad5919c7c53861360",
+      "bytes": 9356
+    },
+    "o32-direct-mask-bit-56": {
+      "sha256": "0adf094a0bfb0291e3344534839ba9f2bc5aec79abfaa71347dd05ce83851bdd",
+      "bytes": 9356
+    },
+    "o32-direct-mask-bit-57": {
+      "sha256": "d3d55f13f0d9e07a6f1a7895f1dca2f066153efd018c4c7b9f048c7249ddb344",
+      "bytes": 9356
+    },
+    "o32-direct-mask-bit-58": {
+      "sha256": "bcb9236342f670ae17beeb173a2254312bc65f0606e84e7232f57ca5f4202d12",
+      "bytes": 9356
+    },
+    "o32-direct-mask-bit-59": {
+      "sha256": "b6eacbaf93d59c6ad0817868a27e5575580e6eeb5a714d1027ce43a69bef4efc",
+      "bytes": 9356
+    },
+    "o32-direct-mask-bit-60": {
+      "sha256": "f346697dbaa807c1299927d6d524478d1980072d2dfec3695dfe5ba70e1f43a4",
+      "bytes": 9356
+    },
+    "o32-direct-mask-bit-61": {
+      "sha256": "db35bab0de71cedfb508729b6f8058099a4b939cf7e294669050eb8ba3ad0706",
+      "bytes": 9356
+    },
+    "o32-direct-mask-bit-62": {
+      "sha256": "3b94b6715c4fd1d667cfb799dd19d222ea04f4f3aa6ffbac0032342533af6595",
+      "bytes": 9356
+    },
+    "o32-direct-mask-bit-63": {
+      "sha256": "6e294692f852e46658fa9c17460c0d3ed164471ed475f62d0596af97593626d1",
+      "bytes": 9356
+    },
+    "o32-direct-mask-bit-64": {
+      "sha256": "3b9bc4cacf2ee315395e2e84f89b8a5300c8546ff7bfa1b74b0a249d2d58da07",
+      "bytes": 9356
+    },
+    "o32-direct-mask-high-96": {
+      "sha256": "45bca3861b5d1a422260801afff1a9a7c3e47db603b7d0f0deabbae1990a0ec8",
+      "bytes": 9356
+    },
+    "o32-direct-mask-high-128": {
+      "sha256": "e85e086fb96b21a8736bf1d2190a6ef5ea2dd5c07228f04e34fcfce2ccfad0a1",
+      "bytes": 9356
+    },
+    "o32-direct-mask-all": {
+      "sha256": "5b929f503f8c149259ccfb0092f137db17e34db6b4fd782dbcfb876028ba09a8",
+      "bytes": 9356
+    },
+    "o32-direct-mask-empty": {
+      "sha256": "c11589da049cb643e3be3bfb1204498a8e5410aafd841eb4dda7ace01b97e51a",
+      "bytes": 9356
+    },
+    "o32-direct-how-1": {
+      "sha256": "a2b621930de12444b669184bad3e07478ad5f428bbdf89bf8895c363a1501fea",
+      "bytes": 9356
+    },
+    "o32-direct-query-how-1": {
+      "sha256": "4e6a7706807a8f99b01d8438b8e9f76b5ebb72f2c8e64acb31fd16b3af0be36e",
+      "bytes": 9356
+    },
+    "o32-direct-how-2": {
+      "sha256": "ec49d0f17b865accb5c6e4e3b889b34b15b89a4f192e404c2a9ec530a01a8c91",
+      "bytes": 9356
+    },
+    "o32-direct-query-how-2": {
+      "sha256": "5bb2ca122bbc596c0c3ca17eaf26f9b8a15c3249cab3bbf7fa78a5d39f8ac468",
+      "bytes": 9356
+    },
+    "o32-direct-how-3": {
+      "sha256": "7223403963ea62668b1b106f66e296f2d3469be3a85dab4a9c23fb76e565fa93",
+      "bytes": 9356
+    },
+    "o32-direct-query-how-3": {
+      "sha256": "55bf170589cdeb6741c937418565487021505f62e4cb5c11a111e05b3fa72c04",
+      "bytes": 9356
+    },
+    "o32-direct-how-0": {
+      "sha256": "2d6bae2ce5dd6076d6f21fe9beed5c04afe865501cdbd99c644d8397512650f9",
+      "bytes": 9356
+    },
+    "o32-direct-query-how-0": {
+      "sha256": "350d69d3adb5d0e6915fd8920b1d230cd225727492d03524125422376f8605ad",
+      "bytes": 9356
+    },
+    "o32-direct-how-4": {
+      "sha256": "7382b5ac913ac7d44d321838cb8ae7ef9977534dad3f1933773660833f872488",
+      "bytes": 9356
+    },
+    "o32-direct-query-how-4": {
+      "sha256": "eec4199f5c7618e6f02d7f46a3e1b8be9984e2c73b1bc65e59402641f078f0ca",
+      "bytes": 9356
+    },
+    "o32-direct-how-256": {
+      "sha256": "2c49478a0a324ab092638e2c53f8f059bb87d9d769f13a72f423ddb1af3cfa92",
+      "bytes": 9356
+    },
+    "o32-direct-query-how-256": {
+      "sha256": "914460f09360008c16127ee1fd3085f1931345e3657a98bcd3925ef303623a68",
+      "bytes": 9356
+    },
+    "o32-direct-how-4294967295": {
+      "sha256": "223dd9b901a0da80d6363ef3b75268a34029e2de79ebbf85c956c214c129011c",
+      "bytes": 9356
+    },
+    "o32-direct-query-how-4294967295": {
+      "sha256": "6d8497f2d767f46e6a6942a7ae6d42ee93e26527c197e59b6deedea17830fb75",
+      "bytes": 9356
+    },
+    "o32-direct-set-pointer-1": {
+      "sha256": "1bb8ea54b8576375e6f9236b95e6faae0984b24171e9f7e7a4be7da0802af22b",
+      "bytes": 9356
+    },
+    "o32-direct-set-pointer-2": {
+      "sha256": "df9f1ec6dd8ef7200676c6ec27d5367862228533765528bd49cf2d16d3cc0cc1",
+      "bytes": 9356
+    },
+    "o32-direct-set-pointer-3": {
+      "sha256": "5b5d3eea5b9247472d244ad8bb57dc21082f5e1cc31371ed403dd791d150f54a",
+      "bytes": 9356
+    },
+    "o32-direct-set-pointer-4": {
+      "sha256": "8be0e222ed1717fc70e52f414b67c89ed604eb4e56fa1d631d839b9b9faba401",
+      "bytes": 9356
+    },
+    "o32-direct-set-pointer-5": {
+      "sha256": "680d005c1885885e4b19ee5c50a886a4fa71d5ad4000625186fff61e3565ef18",
+      "bytes": 9356
+    },
+    "o32-direct-set-pointer-6": {
+      "sha256": "a5e46bcaed1150c7f55b8233be14e371acf5208c80ea121fa3c1db46f8679d3c",
+      "bytes": 9444
+    },
+    "o32-direct-set-pointer-7": {
+      "sha256": "eeb1a3d6054932ad10b33992c445a12fea0dcc613d5dae65b4d732adff6899d0",
+      "bytes": 9356
+    },
+    "o32-direct-old-pointer-1": {
+      "sha256": "76dbb593dca8d530bd8f698227a021bfbeeeb4438a7ce3cd331d711cfcea011f",
+      "bytes": 9356
+    },
+    "o32-direct-old-pointer-2": {
+      "sha256": "1244dd18cb507a42dbbefebba8b841e25a97682543e8699ed8ed5d8df59c025d",
+      "bytes": 9356
+    },
+    "o32-direct-old-pointer-3": {
+      "sha256": "f56781d31ab951c0ce0d491a2df207784993c1df34c2273e74e8b99b37d48807",
+      "bytes": 9356
+    },
+    "o32-direct-old-pointer-4": {
+      "sha256": "e62aa7649448bde1c60e64de8cdaceff7a1237a8bdb37545cf04e8eb623545bf",
+      "bytes": 9356
+    },
+    "o32-direct-old-pointer-5": {
+      "sha256": "2e0aba30dd4e10a45a69e22480fdd7136e89252b85669c7fc9ec365aec7f69fa",
+      "bytes": 9356
+    },
+    "o32-direct-old-pointer-6": {
+      "sha256": "9a12daf7fffbc245595c191c4f87c7f721633ed2b2549aaeb300ea71c73137d9",
+      "bytes": 9444
+    },
+    "o32-direct-old-pointer-7": {
+      "sha256": "475d0ed1ac424d04c653ad0f849863ba104853e5b44dd9755942a4541207cdc1",
+      "bytes": 9356
+    },
+    "o32-direct-bad-how-bad-set": {
+      "sha256": "f5d498c9407ae4da09bb7ac0eb38372111afba6397293df37ec2ffdb51c239f9",
+      "bytes": 9356
+    },
+    "o32-direct-bad-set-bad-old": {
+      "sha256": "b6f886284bf1b38d9d55f533bc56510ea17f1c5cd563b3f84bbf5cec420816d4",
+      "bytes": 9356
+    },
+    "o32-direct-query-bad-old": {
+      "sha256": "e546fa73eb6527e2f3a60d50578e402cf227f02d74882368a87de95e46bdacbf",
+      "bytes": 9356
+    },
+    "o32-direct-fork-exit-0": {
+      "sha256": "54dd65c5c44815dea3dbe63cc58626d2541c9cf8bd906aa265c28c3e70c2507b",
+      "bytes": 9472
+    },
+    "o32-direct-fork-exit-37": {
+      "sha256": "3228c9a0652d6e50ecf618b128613ec3434acb987aef23561342ed063905b086",
+      "bytes": 9472
+    },
+    "o32-direct-fork-exit-255": {
+      "sha256": "e6f07920e74d61390f29d32417df3322ac085b7a6212ff812d6759c2ead93e7b",
+      "bytes": 9472
+    },
+    "o32-direct-fork-nohang": {
+      "sha256": "39ce4b69beba42f9c850889f9355cd515e57f4e9f19e1a4beb0b0b73636cc958",
+      "bytes": 9472
+    },
+    "o32-direct-fork-nowait": {
+      "sha256": "dd1fecb15847f49f978807d89316c32e5da343cd9e29a255d5de8cf0d6b40fc0",
+      "bytes": 9472
+    },
+    "o32-direct-fork-options-0": {
+      "sha256": "c3e8cf40697a843da3e5dcddcbcb0724958aff121967b91510c1c70043d95833",
+      "bytes": 9472
+    },
+    "o32-direct-fork-options-16": {
+      "sha256": "658465e9e6825c89ccd92b6af0baa86a913c51041342f444fd468b9d1c1fe3d0",
+      "bytes": 9472
+    },
+    "o32-direct-fork-options-255": {
+      "sha256": "0c03a2477eb7cd203469627ac4b55aceb9861139dce954a5217ef663a4af33ab",
+      "bytes": 9472
+    },
+    "o32-direct-fork-options-256": {
+      "sha256": "f81196194b2aa6e6b552a32ba522787667c35de3d8485c552306f023176808c8",
+      "bytes": 9472
+    },
+    "o32-direct-fork-type-1": {
+      "sha256": "66ad31d05c6748e9273b4ecc3af432454aa0a896e54f67b766c3bd738ce656c6",
+      "bytes": 9472
+    },
+    "o32-direct-fork-type-7": {
+      "sha256": "4f7e0f35306520aaf390987c25edc32fafd1b34737f70c1aed7350a539293df0",
+      "bytes": 9472
+    },
+    "o32-direct-fork-type-4294967295": {
+      "sha256": "a057b717df9c6d3ece15bf11da1f2d460e80c1438869ab44bdcb851d4fbac9f4",
+      "bytes": 9472
+    },
+    "o32-direct-fork-info-1": {
+      "sha256": "aebdf306efccbd38fd59ed406118eb535916cd85ee87845d26e770253d09c690",
+      "bytes": 9472
+    },
+    "o32-direct-fork-info-2": {
+      "sha256": "c3ad55f549b1e8fa18f3b20a890bbb1efb4d93d57e5fff1154c6c0c2d78964f5",
+      "bytes": 9472
+    },
+    "o32-direct-fork-info-3": {
+      "sha256": "861a7f1d50b7134fa5bccf2796e93505b925c5b8ae8ea70bcb55d6b68cd7765c",
+      "bytes": 9472
+    },
+    "o32-direct-fork-info-4": {
+      "sha256": "74784c727be3f21faf62b715ff7a57eb90dac12d19815b14380fbebb1eb133f1",
+      "bytes": 9472
+    },
+    "o32-direct-fork-info-5": {
+      "sha256": "5b0c0dcd907d8a3b350a65d4452f6e65a518db747eb65bc932f50efe904e4c38",
+      "bytes": 9472
+    },
+    "o32-direct-fork-info-6": {
+      "sha256": "8af6c91aa4e1753c5e9bd3482cad1eb153102ecdd7e9579a89a5fe2c3d89d611",
+      "bytes": 9496
+    },
+    "o32-direct-fork-rusage": {
+      "sha256": "13e71a0554b64119307a9032e28a40381f35b484d78f9638cb1ce2a5ba30b691",
+      "bytes": 9472
+    },
+    "o32-indirect-mask-bit-1": {
+      "sha256": "9a18b19b4df38a1a051b369734f720519858c01498c796db414d33c055b4514d",
+      "bytes": 9356
+    },
+    "o32-indirect-mask-bit-2": {
+      "sha256": "463c47eff14e6d77e2080f35a07434bfb1f3ca38ccedde9a9995c5adaa65b6b7",
+      "bytes": 9356
+    },
+    "o32-indirect-mask-bit-3": {
+      "sha256": "8b8eeff37ca76269b88c7684e77721a759ddd8058c1df891dfeb6690adf089fb",
+      "bytes": 9356
+    },
+    "o32-indirect-mask-bit-4": {
+      "sha256": "24a109c458ffc3ef756f0e661a23b1f0d1da9fb10d659fb8753bc307b38925d9",
+      "bytes": 9356
+    },
+    "o32-indirect-mask-bit-5": {
+      "sha256": "18f6b3b6f63b980193d029d6bc6270b378911c7e0726f9df42919f52588ade10",
+      "bytes": 9356
+    },
+    "o32-indirect-mask-bit-6": {
+      "sha256": "394523f5ae702fe24928225dee360f5e87a36ecda31a62970fd115a17b4f9464",
+      "bytes": 9356
+    },
+    "o32-indirect-mask-bit-7": {
+      "sha256": "6b8457389d14627f64fe4362ecba92df5cfa7e29d5e12a6d32f82beaba038854",
+      "bytes": 9356
+    },
+    "o32-indirect-mask-bit-8": {
+      "sha256": "d4cefc0c3f832917bcc144f63e59d67cbd24e27aa835672b968e002eedfd7e7c",
+      "bytes": 9356
+    },
+    "o32-indirect-mask-bit-9": {
+      "sha256": "036658b7319350331ee41704b7181d733438c99eb73bb57809c1822c7f1638a1",
+      "bytes": 9356
+    },
+    "o32-indirect-mask-bit-10": {
+      "sha256": "3d8752b1b91559371088991f3cf952af072aea0e85104bec5103e5831cc8733b",
+      "bytes": 9356
+    },
+    "o32-indirect-mask-bit-11": {
+      "sha256": "008ea9c150d33f672451c9796cff7628fba8bf6315f32c93b9415055308acde6",
+      "bytes": 9356
+    },
+    "o32-indirect-mask-bit-12": {
+      "sha256": "c9b0cfb984a86e0e9f3355560c573b80e364142e09e446607c6a1e55a9458faa",
+      "bytes": 9356
+    },
+    "o32-indirect-mask-bit-13": {
+      "sha256": "d6e8ec8cb98089b364947b3908eee4240db77bdb866eef5f3fd5321e7983c0c5",
+      "bytes": 9356
+    },
+    "o32-indirect-mask-bit-14": {
+      "sha256": "a7e7ca0aed144ee4676cd4c8e2ec67cd3bfce8d1ed1b2d89104301d17aa76015",
+      "bytes": 9356
+    },
+    "o32-indirect-mask-bit-15": {
+      "sha256": "2ed82852c545d2874107a8f492c180e28fde12151973eb3db9886e1bd3631b16",
+      "bytes": 9356
+    },
+    "o32-indirect-mask-bit-16": {
+      "sha256": "105e9f5814d70c064365230095f3261c6b832fb43a99a13370d65ac9544519cd",
+      "bytes": 9356
+    },
+    "o32-indirect-mask-bit-17": {
+      "sha256": "39acd88b8e37367f3faf23120a3253d5cfc286588a6965eeb3d69cbcc59fe3bf",
+      "bytes": 9356
+    },
+    "o32-indirect-mask-bit-18": {
+      "sha256": "38e7488dd47025ae896d34e91ac5eff5a2bc131b70285473539dbeb21b4e07cb",
+      "bytes": 9356
+    },
+    "o32-indirect-mask-bit-19": {
+      "sha256": "2384d3f7f6b7cf2fe9442e73668d95404b00518ce74716b5ceceb6b063b919e8",
+      "bytes": 9356
+    },
+    "o32-indirect-mask-bit-20": {
+      "sha256": "672e023594bc0cdfe17943bf7e10ba2ad2d107816882844828d2c007d288b706",
+      "bytes": 9356
+    },
+    "o32-indirect-mask-bit-21": {
+      "sha256": "098c2ca272508dc3b4cd590421c84f99ac9eea26a8774fc922f0e415f41e7f33",
+      "bytes": 9356
+    },
+    "o32-indirect-mask-bit-22": {
+      "sha256": "eb748518e0c2cf31160df1527d9553ba70fa4b9b66a8c662612f601964d0704e",
+      "bytes": 9356
+    },
+    "o32-indirect-mask-bit-23": {
+      "sha256": "71cf5938ec9a638d37e1e37abc2bc180732644886061ee7d644f921d0a232284",
+      "bytes": 9356
+    },
+    "o32-indirect-mask-bit-24": {
+      "sha256": "231696e50ed275ed2644e8fa6dfaefb15f5b9d5038292c53e162bf09f2869c0f",
+      "bytes": 9356
+    },
+    "o32-indirect-mask-bit-25": {
+      "sha256": "96350a96fc0aae6e10142b6014199b5698dabf76091a54a45cc08a3a5f5cbffc",
+      "bytes": 9356
+    },
+    "o32-indirect-mask-bit-26": {
+      "sha256": "7628dc37e1af5836198774c61765e67c597f1bbd22f7b5eca411ec1ea35ad408",
+      "bytes": 9356
+    },
+    "o32-indirect-mask-bit-27": {
+      "sha256": "ea3c2a3e645f62503cd25de1d6036c204fb88a16b00c2a31b31e535b6146c6db",
+      "bytes": 9356
+    },
+    "o32-indirect-mask-bit-28": {
+      "sha256": "7793e143507c107c426270520643ae03c6b488c431199f1a0d4e15d7d83655f1",
+      "bytes": 9356
+    },
+    "o32-indirect-mask-bit-29": {
+      "sha256": "836fab9965822d2a1e7a22346f3b5a956788bae753dd1ec99973c1bdb278cc5e",
+      "bytes": 9356
+    },
+    "o32-indirect-mask-bit-30": {
+      "sha256": "8dda8980b3aaca98e9c307a7c8b15df95a2c609c180cee382ae9ffc31c2b3164",
+      "bytes": 9356
+    },
+    "o32-indirect-mask-bit-31": {
+      "sha256": "c496d71600e8f3d16673e6fbee8d84277fc27e1485fd060d5bbfc52a52e1dada",
+      "bytes": 9356
+    },
+    "o32-indirect-mask-bit-32": {
+      "sha256": "e84f72ec9e682ea944ef6804cf41741a15c975b96a3adf1e7d3ae9b1254a78a9",
+      "bytes": 9356
+    },
+    "o32-indirect-mask-bit-33": {
+      "sha256": "c63e8476de8e0d9cd54666243a74a6e20dd571183701526262b0ad1553b2f047",
+      "bytes": 9356
+    },
+    "o32-indirect-mask-bit-34": {
+      "sha256": "6cc99ba56d1d07352afdb60969340bb799328b0054e647880b5823f5b0a6de9a",
+      "bytes": 9356
+    },
+    "o32-indirect-mask-bit-35": {
+      "sha256": "74fb7be65de16c56891f3ffb6f06e15181c620e2f501b682ffc2dabc3fcc14a4",
+      "bytes": 9356
+    },
+    "o32-indirect-mask-bit-36": {
+      "sha256": "2fd9219e07b5de83233141fed6359fdaad3b6af43404076a787639418dd8dae2",
+      "bytes": 9356
+    },
+    "o32-indirect-mask-bit-37": {
+      "sha256": "65600e82830eeac5a1ba50bb1107643593a9045891106a94e47b253f204192f6",
+      "bytes": 9356
+    },
+    "o32-indirect-mask-bit-38": {
+      "sha256": "b59f1ef3e5cf1971717b9f1caf47d1f487bf772c0f41e66e785cc1e37d5d4c88",
+      "bytes": 9356
+    },
+    "o32-indirect-mask-bit-39": {
+      "sha256": "8c247b61a044f64408728c782fd16ce768ac4c8943fff5e9859b8a6c11f370ba",
+      "bytes": 9356
+    },
+    "o32-indirect-mask-bit-40": {
+      "sha256": "6e9b65b74d00088ec86014d7e1beb52aa99d8e04ec754003375d8888a18c7606",
+      "bytes": 9356
+    },
+    "o32-indirect-mask-bit-41": {
+      "sha256": "786f8cdd2015f1d85d3d2b0aeb7269b5d02d016b7d56355c52432c1255495bed",
+      "bytes": 9356
+    },
+    "o32-indirect-mask-bit-42": {
+      "sha256": "a3fe3eec3cfc16ca444d1678e500303cbdf29b5853b9f8d7189aeb535c380e9e",
+      "bytes": 9356
+    },
+    "o32-indirect-mask-bit-43": {
+      "sha256": "e3ee562b89701bb7f69c94fa0281bb50b8f87b75512aa2799c5b8d7d3f744f8c",
+      "bytes": 9356
+    },
+    "o32-indirect-mask-bit-44": {
+      "sha256": "fd63b07d544b5f27d5c2deb10572e12e13cb6639f9aaebb28bd6b153d3a3915d",
+      "bytes": 9356
+    },
+    "o32-indirect-mask-bit-45": {
+      "sha256": "b30794e37f2ab7ff3df6f17ba604ba3d5fd24f2b60f14b18a2b1816edffc3e7b",
+      "bytes": 9356
+    },
+    "o32-indirect-mask-bit-46": {
+      "sha256": "edeb22bb37721c420415c50e5d724b84da25db6a2a6d588465f98801ebd68970",
+      "bytes": 9356
+    },
+    "o32-indirect-mask-bit-47": {
+      "sha256": "0f67c737b005608fcb81cb9a20ed7721194f57ecdf3d0737d53d6bba4a335150",
+      "bytes": 9356
+    },
+    "o32-indirect-mask-bit-48": {
+      "sha256": "305072e4488dad4d086ff74f54a85072160d18925e491d6736f39911fff4b5c8",
+      "bytes": 9356
+    },
+    "o32-indirect-mask-bit-49": {
+      "sha256": "8430e9ca6db5016e35692c79d9f0b9d95513bf289c299ede9dce6881fb13d235",
+      "bytes": 9356
+    },
+    "o32-indirect-mask-bit-50": {
+      "sha256": "3b4900c2c2417ab54e6c6250380f1f2024b7d271156e477855b856b8b6f1d0ca",
+      "bytes": 9356
+    },
+    "o32-indirect-mask-bit-51": {
+      "sha256": "37ee333724ed173c6ab58f2bdb4c37c802772416e98ec136fc383e9f57afab04",
+      "bytes": 9356
+    },
+    "o32-indirect-mask-bit-52": {
+      "sha256": "64a989f08158765ecae9044d0ead7a8901bfb4625f04c6d9d33a00957732d885",
+      "bytes": 9356
+    },
+    "o32-indirect-mask-bit-53": {
+      "sha256": "955eba64f3a8fc85d9be77a9eb358cf4829b18e179fefff70b2046b6c13f560a",
+      "bytes": 9356
+    },
+    "o32-indirect-mask-bit-54": {
+      "sha256": "72d288135e77ea5819266b71f6f091add7f1ed44ee163f55e729bbaca07f315f",
+      "bytes": 9356
+    },
+    "o32-indirect-mask-bit-55": {
+      "sha256": "a1224a1a8959ab8caa64e8213d862896df2eea2a8ca0f051ecdcdf55770b8593",
+      "bytes": 9356
+    },
+    "o32-indirect-mask-bit-56": {
+      "sha256": "66214185c6eea6ef6ca374cc42f3e2d457b2e557a1751b5a5af8bac9d2a9c2de",
+      "bytes": 9356
+    },
+    "o32-indirect-mask-bit-57": {
+      "sha256": "866f8cc6df731cc4f5c2c651b46cd1f90107747615617c77e8ecb7ed72b34462",
+      "bytes": 9356
+    },
+    "o32-indirect-mask-bit-58": {
+      "sha256": "f597b3a41e1d0ac2eee748b1791f7c2c47c8c64fcb099e2173155ebc9a1296c1",
+      "bytes": 9356
+    },
+    "o32-indirect-mask-bit-59": {
+      "sha256": "4f5fa0d7387139d6801226f41dae502b9642a2d13110ae809c940d8a81af111f",
+      "bytes": 9356
+    },
+    "o32-indirect-mask-bit-60": {
+      "sha256": "311a46ee4fd150886bb5be2ffab3c679a83bece8356789da090d584637af2430",
+      "bytes": 9356
+    },
+    "o32-indirect-mask-bit-61": {
+      "sha256": "66a45c17f7d5ed3abe7def47db39c9a5e61903b94eec725d1ac25ac1e2183167",
+      "bytes": 9356
+    },
+    "o32-indirect-mask-bit-62": {
+      "sha256": "8a7ab9f50e32ebfdad45962aa9bd4cfda3345849843960ed7117afb1b5d42565",
+      "bytes": 9356
+    },
+    "o32-indirect-mask-bit-63": {
+      "sha256": "8cf3bb4f0955931d935539e5ff7a5415aa8b85f9962e614c2faf5eb276627555",
+      "bytes": 9356
+    },
+    "o32-indirect-mask-bit-64": {
+      "sha256": "f394da109cbec226d7db6152ce634d51db2c88be8f6b7ab09763574d7a6cc963",
+      "bytes": 9356
+    },
+    "o32-indirect-mask-high-96": {
+      "sha256": "5a8c12751dd3698c12c31fd50adbe59817556764bac41fa4c73e5046d6140dd7",
+      "bytes": 9356
+    },
+    "o32-indirect-mask-high-128": {
+      "sha256": "33ca919a9e6e2e43fcc52416de09d510a320a68cc4e0719ec12552d55d2fe8c2",
+      "bytes": 9356
+    },
+    "o32-indirect-mask-all": {
+      "sha256": "96bf4b67fdcf35a18e2d9c747586c7c12da58cabdbbe4bd24085399ca1b04459",
+      "bytes": 9356
+    },
+    "o32-indirect-mask-empty": {
+      "sha256": "34d44cc1c493073e85a33b3c1d9357ed1c21583cca4064696dbdc0470e96cf3c",
+      "bytes": 9356
+    },
+    "o32-indirect-how-1": {
+      "sha256": "ed30c3571a7851b9f76a4ec0637adc0bcfd7fa2c9caa765c4fea58e967f1f959",
+      "bytes": 9356
+    },
+    "o32-indirect-query-how-1": {
+      "sha256": "817bd732bbb607a65293b14adb0401ee29feb06abd2e2a3227300db9872c759d",
+      "bytes": 9356
+    },
+    "o32-indirect-how-2": {
+      "sha256": "1f551d27ff0ebe4c68ca90bf71edf7faf87bf0bec56872f765e27fd2f36ae7ec",
+      "bytes": 9356
+    },
+    "o32-indirect-query-how-2": {
+      "sha256": "f670236884ae12664ce1fe1ae7d7cc4a7f11d45322d7e4426622b78574244f71",
+      "bytes": 9356
+    },
+    "o32-indirect-how-3": {
+      "sha256": "6c9e0a2bd27f2e9496e769395aab100f9c76b2df3a7d95eefd162e13e68c3261",
+      "bytes": 9356
+    },
+    "o32-indirect-query-how-3": {
+      "sha256": "83a4ad46d64fa63b147f7c621485746f4b8b96127f0fe16515fdcbcfc7ebf27d",
+      "bytes": 9356
+    },
+    "o32-indirect-how-0": {
+      "sha256": "7e30862ddd154c9e6ddff767b859844cf64a8b0fca08a138f26fbf0c9b4cb861",
+      "bytes": 9356
+    },
+    "o32-indirect-query-how-0": {
+      "sha256": "65875ef2fb0014a5f2008281ec49c21bb32100051933b5c0f2cfc5403892eb9c",
+      "bytes": 9356
+    },
+    "o32-indirect-how-4": {
+      "sha256": "c459f3f6dca100e21cf8df4553780f41e79ca0f957487ae83624c40972742526",
+      "bytes": 9356
+    },
+    "o32-indirect-query-how-4": {
+      "sha256": "5b66da668769a5a8c9af6db29a6562eeb4717e76c66721c3be6a7ccc2de11870",
+      "bytes": 9356
+    },
+    "o32-indirect-how-256": {
+      "sha256": "20bc596ab3326d7cde868f079ef1563da5f357700c226c45d2154d7d957d8568",
+      "bytes": 9356
+    },
+    "o32-indirect-query-how-256": {
+      "sha256": "7a415d5f0f8dd4db50c5fe65f8929b2ff3246021d4836331dacf87806eabde01",
+      "bytes": 9356
+    },
+    "o32-indirect-how-4294967295": {
+      "sha256": "55cde12144534389b1cb55a74ff07d149fc146ded76c798af99fbf9ad659f23b",
+      "bytes": 9356
+    },
+    "o32-indirect-query-how-4294967295": {
+      "sha256": "f5758ca4c736dc8db8ef7a8593c7375f8e95e71c9907e4c2df676b5a0aab6d01",
+      "bytes": 9356
+    },
+    "o32-indirect-set-pointer-1": {
+      "sha256": "be947830ca9be4a0658415779dbeb0d9b90071e964e90f29532a37c154af6d94",
+      "bytes": 9356
+    },
+    "o32-indirect-set-pointer-2": {
+      "sha256": "ef60b1523b754a97806f10c646500d03280c3c50e136b9e5a22f105bcf46ea18",
+      "bytes": 9356
+    },
+    "o32-indirect-set-pointer-3": {
+      "sha256": "7312c033961fe91edd4c71438cde85a36eb0b0877e2511e89e2d72d742812d38",
+      "bytes": 9356
+    },
+    "o32-indirect-set-pointer-4": {
+      "sha256": "51a6dd7004a6ac39e419707eeeec2c0f1f0e4dd88f675ba2a50c68765f72d67c",
+      "bytes": 9356
+    },
+    "o32-indirect-set-pointer-5": {
+      "sha256": "0ee870456fca8102f767d279281ddd0a8c086ba1526f18f3bb4a53ceebe9679a",
+      "bytes": 9356
+    },
+    "o32-indirect-set-pointer-6": {
+      "sha256": "0600f3063ad55fb60a0d12e77e4050d4e84be46d0936dd269d4363b5484ae435",
+      "bytes": 9444
+    },
+    "o32-indirect-set-pointer-7": {
+      "sha256": "3472ac9b601db5835dd7991f1b79cde3fbc0484d1b8d7d30e66a567842a02b2d",
+      "bytes": 9356
+    },
+    "o32-indirect-old-pointer-1": {
+      "sha256": "af86518438f3598c0dc2e4b3ba806e1c6d11e8077a4cdac08c56fabdc12feb06",
+      "bytes": 9356
+    },
+    "o32-indirect-old-pointer-2": {
+      "sha256": "d9d0b94a54549b77ffc738a08f671e082e61bbef81001f6b2f0b8a53b76ec6e8",
+      "bytes": 9356
+    },
+    "o32-indirect-old-pointer-3": {
+      "sha256": "8e8b0cb4c0fe40352530994396f91bb879d6b7568bcc0c0bd16ee643f0d2feb5",
+      "bytes": 9356
+    },
+    "o32-indirect-old-pointer-4": {
+      "sha256": "d5d38b7444c75c2f4a2be61cafb68bb010eef9d517e65e1faf0bf735d4120fec",
+      "bytes": 9356
+    },
+    "o32-indirect-old-pointer-5": {
+      "sha256": "fabd9e3518fb5e1ebc8077245695476c7e628db4177ed07631be62e4722951e1",
+      "bytes": 9356
+    },
+    "o32-indirect-old-pointer-6": {
+      "sha256": "fc654d6621a2c69e74b3973f6fefaec4d6352fe934b09b943edc9901f0467e88",
+      "bytes": 9444
+    },
+    "o32-indirect-old-pointer-7": {
+      "sha256": "d9b3cb53d03ee4b9386aaee773fd920c9f4583cfbfdca5cf54aaeb9ff867cc73",
+      "bytes": 9356
+    },
+    "o32-indirect-bad-how-bad-set": {
+      "sha256": "1f1dee00412a3c046310df072a03ccb7aa4e1ecb3cb6a8987f0a8b32b3025c9c",
+      "bytes": 9356
+    },
+    "o32-indirect-bad-set-bad-old": {
+      "sha256": "1b275c13e16e1027e72425cceb7afe5c57b1575b022a7cf3ae07bd56b5ad9eba",
+      "bytes": 9356
+    },
+    "o32-indirect-query-bad-old": {
+      "sha256": "c2ca52ae76e1891e894e72dca5efbf85d88b4b6063e128ab05ccd0c1713f5a3e",
+      "bytes": 9356
+    },
+    "o32-indirect-fork-exit-0": {
+      "sha256": "d1c8a79f69b907404c009fd2a2940ab2f966db17fc0bcda5f83fd69b2beb97f7",
+      "bytes": 9472
+    },
+    "o32-indirect-fork-exit-37": {
+      "sha256": "6128ce7281f6cb65ac1bd79891a96b4ed1352bc43b1e320453a11aa0aacec8a5",
+      "bytes": 9472
+    },
+    "o32-indirect-fork-exit-255": {
+      "sha256": "c5546caeda4c2d47ae5cbf597e7d6487ca6e29f2dea4c63e85db0d1703b22ab1",
+      "bytes": 9472
+    },
+    "o32-indirect-fork-nohang": {
+      "sha256": "76087bfcc4174490e0e5c2ed29cf995318aafcc537b924255a68e05c0085db9d",
+      "bytes": 9472
+    },
+    "o32-indirect-fork-nowait": {
+      "sha256": "93a321da99a78f7d087f2e48fbce2c3445bda88c1b53e7bf18262f649799f89b",
+      "bytes": 9472
+    },
+    "o32-indirect-fork-options-0": {
+      "sha256": "2176d5770ef448b7d494034d7ae522db4932c2248e4b9cc80999c2e55b28ba0b",
+      "bytes": 9472
+    },
+    "o32-indirect-fork-options-16": {
+      "sha256": "14642dc07ad233381a14a1d9da07a0815e1bf00088a76aae08c8713603f39013",
+      "bytes": 9472
+    },
+    "o32-indirect-fork-options-255": {
+      "sha256": "93a3bb155aa7495e1237da85d1e81ae56b9ac6e7c5f2c2dd7cf708d9e466626c",
+      "bytes": 9472
+    },
+    "o32-indirect-fork-options-256": {
+      "sha256": "4c7a3b6ebe7db4d1289e282154d801be70b68ae846b2c0a107a769707f87957d",
+      "bytes": 9472
+    },
+    "o32-indirect-fork-type-1": {
+      "sha256": "1cdbfa570a5f49143c87960165f412d9f73b63049a6ead35a5c0c9b690cf64ec",
+      "bytes": 9472
+    },
+    "o32-indirect-fork-type-7": {
+      "sha256": "2f877f45c9085e59597387d89cd54f0866c8c4ab072a9318a3cf0498075cb3ba",
+      "bytes": 9472
+    },
+    "o32-indirect-fork-type-4294967295": {
+      "sha256": "bf7656e50422be6119523fa369aaf5fd6f3a7188ad9494a70e117376f0338f3e",
+      "bytes": 9472
+    },
+    "o32-indirect-fork-info-1": {
+      "sha256": "42f1237f037e7fdcf3ac2cfc532e90754720990031a63ffec3f210316e42b929",
+      "bytes": 9472
+    },
+    "o32-indirect-fork-info-2": {
+      "sha256": "56b553adddf27acde6bd5610cc961c689ea15fba59befdc8340b93d022b0c259",
+      "bytes": 9472
+    },
+    "o32-indirect-fork-info-3": {
+      "sha256": "efdc1c89c0db191ace416978a4ee4755a6e01bbe79a9d0cbc3ee2a1f8a5bebc4",
+      "bytes": 9472
+    },
+    "o32-indirect-fork-info-4": {
+      "sha256": "ca5eed8a0db03b7a366b22d5174fcb2705a04e8586e953e9182660afb8e74659",
+      "bytes": 9472
+    },
+    "o32-indirect-fork-info-5": {
+      "sha256": "f1c24c04583b38d4f90df94a32f45667b17e4538c8ca8f1f8abd805bcac267de",
+      "bytes": 9472
+    },
+    "o32-indirect-fork-info-6": {
+      "sha256": "b0c2e2da6e05e797b63e3c5af0db7b3c7353f13f857b717efc4c7cd74d39fa6a",
+      "bytes": 9496
+    },
+    "o32-indirect-fork-rusage": {
+      "sha256": "2a4243992f84fc6779d72d66e05d88de9a9de6c10298c9dcf25e2a651c928bf8",
+      "bytes": 9472
+    },
+    "n32-direct-mask-bit-1": {
+      "sha256": "9b92fd8b8fb3727fa1526bab163f192cb33857364971dc48d8f6b59e3272a87a",
+      "bytes": 9356
+    },
+    "n32-direct-mask-bit-2": {
+      "sha256": "5a819154423f53612416bd2caff58b61cec377b57b8caf4ca48e77ee2cab3b95",
+      "bytes": 9356
+    },
+    "n32-direct-mask-bit-3": {
+      "sha256": "60462d61abc046f6c2cafdabfc688dd8fcbc015e258fe559111b01c07dd1e618",
+      "bytes": 9356
+    },
+    "n32-direct-mask-bit-4": {
+      "sha256": "96b33260c360f1f833c933443770291b0818a3f76417d2666062b3051fd9a780",
+      "bytes": 9356
+    },
+    "n32-direct-mask-bit-5": {
+      "sha256": "613d5dbd103d1aa269df315bd28dac2e274264f61f0d0a1d1d097ed9daef27a3",
+      "bytes": 9356
+    },
+    "n32-direct-mask-bit-6": {
+      "sha256": "a60c207a4d1922ae75d3931325943766221e83918fb9f483588df39fe23ecc0f",
+      "bytes": 9356
+    },
+    "n32-direct-mask-bit-7": {
+      "sha256": "65b53cd6d1a33b7047b2e28aa1f1f4e731a95bd3c8d0078863155ee2cc5a1ce4",
+      "bytes": 9356
+    },
+    "n32-direct-mask-bit-8": {
+      "sha256": "a50a7cc9183e8f6c20acf1978ed33ffbeef90d9091408e13849d3cd0f6647125",
+      "bytes": 9356
+    },
+    "n32-direct-mask-bit-9": {
+      "sha256": "dd67c09bf73dd34fb8b0dc348fd3280042d5efcd13cf8a0d85841279f0aa677f",
+      "bytes": 9356
+    },
+    "n32-direct-mask-bit-10": {
+      "sha256": "dffe443bfb28fceafa84131a17a5bbed2e5c4cd4436dfb8cedb65b7f2c4261fb",
+      "bytes": 9356
+    },
+    "n32-direct-mask-bit-11": {
+      "sha256": "51a0417027e829221236c3a18d5978bf3396fb3ea1844c959b7d33663a8abb24",
+      "bytes": 9356
+    },
+    "n32-direct-mask-bit-12": {
+      "sha256": "83cafe413235bf4c03f287bd5e3213687650d855a47894dc28cbd2112cbaf22d",
+      "bytes": 9356
+    },
+    "n32-direct-mask-bit-13": {
+      "sha256": "d146af6fb940c409a9b15759ea9d61291e273637d6fe4467f77848aa658ee2d4",
+      "bytes": 9356
+    },
+    "n32-direct-mask-bit-14": {
+      "sha256": "65d0f4b4b423403b1e4caa51d96eba8b285bca4e356294552653b6069dbc426f",
+      "bytes": 9356
+    },
+    "n32-direct-mask-bit-15": {
+      "sha256": "8ae8742870ae4af3616cf046b8d1be4ec363110617d35ba97565e1f3392f94fa",
+      "bytes": 9356
+    },
+    "n32-direct-mask-bit-16": {
+      "sha256": "3cc083f897d75ebbfd87a428f75ce86c79939229934dd77e4ed8afcee018bff2",
+      "bytes": 9356
+    },
+    "n32-direct-mask-bit-17": {
+      "sha256": "9bc0633737eadfa08dd5897b274a7f21d0bf7845a5d174d5de0d138260db140f",
+      "bytes": 9356
+    },
+    "n32-direct-mask-bit-18": {
+      "sha256": "2f365a30656c80339cd141638dea7cd2ad94f75d49179a3d30300fc5a1f13d76",
+      "bytes": 9356
+    },
+    "n32-direct-mask-bit-19": {
+      "sha256": "f092342b6d810e6c9dcd6cc8a540b68de90225be571bfe79bcdefab2c37679c9",
+      "bytes": 9356
+    },
+    "n32-direct-mask-bit-20": {
+      "sha256": "506cd2b676ae5f48decd5145ec9e4bd10a443fb9a211f8a4ac840af1b201fe50",
+      "bytes": 9356
+    },
+    "n32-direct-mask-bit-21": {
+      "sha256": "b6a7f72369f385830ab142c39444dff13931556f37d43553278ccc8d5c77d70b",
+      "bytes": 9356
+    },
+    "n32-direct-mask-bit-22": {
+      "sha256": "d7a472a36dec8c8ffa44d7ab0a85efadac2835fb91c1d636e97daa2c23c2bddb",
+      "bytes": 9356
+    },
+    "n32-direct-mask-bit-23": {
+      "sha256": "d95af075a434964cdd8f788bc75585d83fc63059c2383dde814609cb27bbe2e4",
+      "bytes": 9356
+    },
+    "n32-direct-mask-bit-24": {
+      "sha256": "d312ef9b527a6f85b2de4c86c0a6c490291d53b8c833c9551bbc583174b4553f",
+      "bytes": 9356
+    },
+    "n32-direct-mask-bit-25": {
+      "sha256": "43084a6c3c863df1af4ee5b4838b2739814e5ed4268f0042da0cb7e6bab69ea3",
+      "bytes": 9356
+    },
+    "n32-direct-mask-bit-26": {
+      "sha256": "091d438a485a82a4b24e210a4ce1d7dd0fa9ca7698bc04da0c94fff2dc00c9f2",
+      "bytes": 9356
+    },
+    "n32-direct-mask-bit-27": {
+      "sha256": "5ba9de1ac96431a0d595e6eb0f4160ab127fc49f61b62d075b362c7fa60e4468",
+      "bytes": 9356
+    },
+    "n32-direct-mask-bit-28": {
+      "sha256": "6da6616b7dc6a000caf2bf9265d1c613d0c0b251bf1d895ec72bf16f9e214df2",
+      "bytes": 9356
+    },
+    "n32-direct-mask-bit-29": {
+      "sha256": "7d8ba264fe2b448ffbb38fd147d81d885142182d4f7c273d23b2229729c0dac7",
+      "bytes": 9356
+    },
+    "n32-direct-mask-bit-30": {
+      "sha256": "470f00a22851b8831cfba3c647d04f5d33e7964de2ac7444ad773ca4cabcd1d4",
+      "bytes": 9356
+    },
+    "n32-direct-mask-bit-31": {
+      "sha256": "1fc1d979140d37cdacc93a50f4c0135f6050d2012acf2696522d96403e4cdb8e",
+      "bytes": 9356
+    },
+    "n32-direct-mask-bit-32": {
+      "sha256": "450a61740a066039c3f79bb3f6780987cb9290459a95a7b520dc88c22fa4c8af",
+      "bytes": 9356
+    },
+    "n32-direct-mask-bit-33": {
+      "sha256": "82e521cca5432cf02c590b4d55abc3800a0210314d171c578036dd9f72d6d4be",
+      "bytes": 9356
+    },
+    "n32-direct-mask-bit-34": {
+      "sha256": "f14a216571c8b62d714d75b2e764ad623a0ee5c847462adb99bbeecf319b3eb7",
+      "bytes": 9356
+    },
+    "n32-direct-mask-bit-35": {
+      "sha256": "9a1d563b48343f95e59ead64c2b35b4e1307d61a5f9aa07943641edfafca81f7",
+      "bytes": 9356
+    },
+    "n32-direct-mask-bit-36": {
+      "sha256": "ec5ea61a7de2e9eabffc9d12991bfb78f08f9614a4508f8be8f7393b15a604c9",
+      "bytes": 9356
+    },
+    "n32-direct-mask-bit-37": {
+      "sha256": "96ecdb69aab5ea6fecae70748df2a2b0adf7375189c62906b65ef9e8f7089a1e",
+      "bytes": 9356
+    },
+    "n32-direct-mask-bit-38": {
+      "sha256": "2f28d6df30b30f33bde0129b576e9813b1936c427fb5d1457952dbcfe5dc4fc9",
+      "bytes": 9356
+    },
+    "n32-direct-mask-bit-39": {
+      "sha256": "6072784657ca4c3f691dec30cf37f3b20e429c0934955435dcf5c9642d731e50",
+      "bytes": 9356
+    },
+    "n32-direct-mask-bit-40": {
+      "sha256": "228f50160321f1008c42e8daffe83a4d494d51af7f0263f3bfb431320c38cfb5",
+      "bytes": 9356
+    },
+    "n32-direct-mask-bit-41": {
+      "sha256": "fd9ba530f701d01f3d8abe5a9f4547796ffa4dd572af7b8fb202c563d8aedced",
+      "bytes": 9356
+    },
+    "n32-direct-mask-bit-42": {
+      "sha256": "7f7e0f302bd83b367804da74cdb786c2bc5f0d31efb8879176578f60fe07e89f",
+      "bytes": 9356
+    },
+    "n32-direct-mask-bit-43": {
+      "sha256": "c465af8a857c9c69827b864f6090672e063045bd8f6c204b67d6231f81a77434",
+      "bytes": 9356
+    },
+    "n32-direct-mask-bit-44": {
+      "sha256": "f39f848c611e2f677eeb81e098a69a2215babe4799ec6d0eaa81e8fd13d5967f",
+      "bytes": 9356
+    },
+    "n32-direct-mask-bit-45": {
+      "sha256": "aea46a721ab3b76b73c01f90ddbd41f97a65eed3fe4dbda174c47144ab2228a0",
+      "bytes": 9356
+    },
+    "n32-direct-mask-bit-46": {
+      "sha256": "af56fb8eb6c1aa4a7f8b971715fc61afef2f383b1645b5a7eb647ab66786ba91",
+      "bytes": 9356
+    },
+    "n32-direct-mask-bit-47": {
+      "sha256": "8566e81b545b85e3e7efd5c0557f2d706a66ecec2bdc3a38883a2b5bd1f32845",
+      "bytes": 9356
+    },
+    "n32-direct-mask-bit-48": {
+      "sha256": "9b4b68690902859d39ba3cb1300cfa66847c08e745a4487252c9f20f07f23340",
+      "bytes": 9356
+    },
+    "n32-direct-mask-bit-49": {
+      "sha256": "8cb00c72fede9e724a372d3c227b6e0f9d158fd2821684f583d5fa96a3b8887c",
+      "bytes": 9356
+    },
+    "n32-direct-mask-bit-50": {
+      "sha256": "e089d2aabbf8dbdc5277c49e5386fca95a262adf52e12177d8bb31d214a94769",
+      "bytes": 9356
+    },
+    "n32-direct-mask-bit-51": {
+      "sha256": "e61197dc8fc60a78c286e92e27c193be70db83a04ee5d6c0a994b43ba3f6c6bc",
+      "bytes": 9356
+    },
+    "n32-direct-mask-bit-52": {
+      "sha256": "d305fd7602b9dedcff2497de036a793220df95b7a9c69b4113d17b68d3a4d426",
+      "bytes": 9356
+    },
+    "n32-direct-mask-bit-53": {
+      "sha256": "0ec4358093457975eba2bd02587fdad34bde5c6650d77c8c171c35e56d06767b",
+      "bytes": 9356
+    },
+    "n32-direct-mask-bit-54": {
+      "sha256": "f643773e2a15eb8bbd013d2702f95f31e6427a14b00d91d0f2de6da05e0958f0",
+      "bytes": 9356
+    },
+    "n32-direct-mask-bit-55": {
+      "sha256": "eb9d5e83b8a124f95a240d3cc3cd4bbb15b850216dae448bb75d8951242eacf3",
+      "bytes": 9356
+    },
+    "n32-direct-mask-bit-56": {
+      "sha256": "d228fa8af95266d303479c19807c88cae5afb0d5d6fcd10ff49cfd9540fa6775",
+      "bytes": 9356
+    },
+    "n32-direct-mask-bit-57": {
+      "sha256": "35b73095009bcc9406f9472bff1758a251e0250f89b4db9f47466efec1754705",
+      "bytes": 9356
+    },
+    "n32-direct-mask-bit-58": {
+      "sha256": "ba6d9d0b268282f708cdd5c86fb5f6ee4b5752e113d020c22e79f6100fc1d02c",
+      "bytes": 9356
+    },
+    "n32-direct-mask-bit-59": {
+      "sha256": "61c235256fad7507f1b7dcd187aff13f054fa2d746fd3b6316fbbb8914817b14",
+      "bytes": 9356
+    },
+    "n32-direct-mask-bit-60": {
+      "sha256": "406dedcf38e382f7d46ff131d0140360e35f28e8bee8376e8063bd8be4d788e0",
+      "bytes": 9356
+    },
+    "n32-direct-mask-bit-61": {
+      "sha256": "a4eb4e92014d29eae4af914e48aa08dbc4d7ac63d9d1a81cd64234442fc06e59",
+      "bytes": 9356
+    },
+    "n32-direct-mask-bit-62": {
+      "sha256": "6ced498a76bb660c65e1bb16566a877f429ca2c01edc67adbe052796c79de130",
+      "bytes": 9356
+    },
+    "n32-direct-mask-bit-63": {
+      "sha256": "33b0e7297bb3f65b4f660e6f436261689b91de71069319dbb4418ae96874572f",
+      "bytes": 9356
+    },
+    "n32-direct-mask-bit-64": {
+      "sha256": "38d507971b19a5f828c2f8fc867b685092230eb5de79fc75dbdef9a73f5743e0",
+      "bytes": 9356
+    },
+    "n32-direct-mask-high-96": {
+      "sha256": "32b40e44118ab5e7c7d648b15ad8e97532661a9bc73ef1df7dd619a750b28ac9",
+      "bytes": 9356
+    },
+    "n32-direct-mask-high-128": {
+      "sha256": "0e6daec4f79c53438089073c995436555ed09114c8f227237f12140fe244933c",
+      "bytes": 9356
+    },
+    "n32-direct-mask-all": {
+      "sha256": "619d3912cdcd0c64fccd2fc983064d612803439a915cbf8caf651b156cf05234",
+      "bytes": 9356
+    },
+    "n32-direct-mask-empty": {
+      "sha256": "adc28fca5fecd41d2242fbc272ddfa3f8b800871fc73c153b31c1ae50716db41",
+      "bytes": 9356
+    },
+    "n32-direct-how-1": {
+      "sha256": "997fb0e836b422ddbbd939ddaa4b4421f94bd3bc2f238e42943d3eb944304127",
+      "bytes": 9356
+    },
+    "n32-direct-query-how-1": {
+      "sha256": "f06574aff680a942a3a44ab0ef03446b960ac759417174260082e056974fe655",
+      "bytes": 9356
+    },
+    "n32-direct-how-2": {
+      "sha256": "790b04a343c59662705b999c713f50eb6a0c73939ea5d0ede2891be6a8d71acb",
+      "bytes": 9356
+    },
+    "n32-direct-query-how-2": {
+      "sha256": "aee155667df335713ee252723deadcbe8971dd8b30df2ca701901d4c1f573620",
+      "bytes": 9356
+    },
+    "n32-direct-how-3": {
+      "sha256": "c0f2be5b98f4797f76769e3b0ed6777f5fbbb76958b9f6b818a7a3fce16931c6",
+      "bytes": 9356
+    },
+    "n32-direct-query-how-3": {
+      "sha256": "6940d48435986a806528c96dd4cbaf20de099e7012d5b2bb5f00056b9ea37041",
+      "bytes": 9356
+    },
+    "n32-direct-how-0": {
+      "sha256": "e6bf944ab69c4b107a75c5007f78d3e800e6d9475feae4146e844a6f701e2a26",
+      "bytes": 9356
+    },
+    "n32-direct-query-how-0": {
+      "sha256": "f39f34f9fa7a70f2039d7d5772f293a5394e89311860bec9e5aa77df33b9a478",
+      "bytes": 9356
+    },
+    "n32-direct-how-4": {
+      "sha256": "2aea45a70655ed7347d80822ceb27c7ddc28d60a2820ce5206cfe0923a5f9ce1",
+      "bytes": 9356
+    },
+    "n32-direct-query-how-4": {
+      "sha256": "5893be3e32205df1d636e6d1641df918f5672724f2f502d0f203ce5096783ab7",
+      "bytes": 9356
+    },
+    "n32-direct-how-256": {
+      "sha256": "9efccea3e960adf912c8ff531db4dcef971d696dd1f3a74df32b5ba5b27fb093",
+      "bytes": 9356
+    },
+    "n32-direct-query-how-256": {
+      "sha256": "d46520a27ae8fbe9e0a3c68bdd21d50cab5f896a39dfeac329e74da305bc206f",
+      "bytes": 9356
+    },
+    "n32-direct-how-4294967295": {
+      "sha256": "2d3fd1679f7d09b80dca6283e4d1d26e7cdfff657c24a7cfcacc2280598b2ed8",
+      "bytes": 9356
+    },
+    "n32-direct-query-how-4294967295": {
+      "sha256": "34d1348f08997640b72c8194953fc52a2fa15eddf6bb4542098e6c3b5b0bbeba",
+      "bytes": 9356
+    },
+    "n32-direct-set-pointer-1": {
+      "sha256": "bd6d6e1e49ad5003a6b890fa6a870f4f3d61df9d3652d71591b6a824064b1247",
+      "bytes": 9356
+    },
+    "n32-direct-set-pointer-2": {
+      "sha256": "d59065c4ea76933ee852787bc8b024935575fa61d42a6edf60f8ea55041d9013",
+      "bytes": 9356
+    },
+    "n32-direct-set-pointer-3": {
+      "sha256": "799a73688981bc88cc2c9ec87291d423390cdf3eac8318f89452eb5fbad38cbc",
+      "bytes": 9356
+    },
+    "n32-direct-set-pointer-4": {
+      "sha256": "7f74318d49fb84c515b52cfb736751f1999817df560368f2da9a84ba8eaf7e69",
+      "bytes": 9356
+    },
+    "n32-direct-set-pointer-5": {
+      "sha256": "e75608a568afc910287357ef1a0eecd94ea059c1384d6edf20ebfe29e47af0d9",
+      "bytes": 9356
+    },
+    "n32-direct-set-pointer-6": {
+      "sha256": "140bfd5632c2287b335021cf3afa32c93df5ac4009b4231635dbb4e915d8f709",
+      "bytes": 9444
+    },
+    "n32-direct-set-pointer-7": {
+      "sha256": "ce8342a33f38e00001221795fa362e0ca5c111edfb8af8c8c1452a80fd3c1e90",
+      "bytes": 9356
+    },
+    "n32-direct-old-pointer-1": {
+      "sha256": "4b19f9fa606215a5fe98e1c9580e139ef820c9a73eaea6b2f468c91045341a18",
+      "bytes": 9356
+    },
+    "n32-direct-old-pointer-2": {
+      "sha256": "447f666e1f936e92a0e11b3362ef7e2eb06dc13683e7bb3dfb2688f579191b8e",
+      "bytes": 9356
+    },
+    "n32-direct-old-pointer-3": {
+      "sha256": "be66e831e8c652511f889eb02ed75f8300007f0e8ff89807a6becccbbe180b30",
+      "bytes": 9356
+    },
+    "n32-direct-old-pointer-4": {
+      "sha256": "5a1b7170261b18e7ef5da431ca2d3512735f84e42d7b36d329293a5e3741f6a0",
+      "bytes": 9356
+    },
+    "n32-direct-old-pointer-5": {
+      "sha256": "9ee851ecb4c0116e6faf8076bcf6527f0cf97f0832f7a0cf23962dc5f2b408e3",
+      "bytes": 9356
+    },
+    "n32-direct-old-pointer-6": {
+      "sha256": "7bf1a55f80ee726d4cb7bed755f53bb0bb1a13ca50ae8c51c922c81c210a3362",
+      "bytes": 9444
+    },
+    "n32-direct-old-pointer-7": {
+      "sha256": "710b0dedff1219ba089e483798124a0a1ee82e75d29992215a30c64e32c7735d",
+      "bytes": 9356
+    },
+    "n32-direct-bad-how-bad-set": {
+      "sha256": "9ce2ff2a3386331bc282f93d90387e5517ae9a0ade10780e821ddbc3623b4434",
+      "bytes": 9356
+    },
+    "n32-direct-bad-set-bad-old": {
+      "sha256": "b7b529d68ee950d1d468bcac45424dafbc7f8caa07bfdbf4e6efdedce8ff553e",
+      "bytes": 9356
+    },
+    "n32-direct-query-bad-old": {
+      "sha256": "a8afdb606876afbb9f2dcf77d4e90bc758bc7817704d1d7069be206e5acf85bd",
+      "bytes": 9356
+    },
+    "n32-direct-fork-exit-0": {
+      "sha256": "535630d38f96f1b6afa1013df0b967aad92b1d4acb4f7f86950c3800f272fae3",
+      "bytes": 9472
+    },
+    "n32-direct-fork-exit-37": {
+      "sha256": "f0fa3d6e6519919e90fab1ce94b7a70c92f02d95b69c7d170ab06bb8b342080d",
+      "bytes": 9472
+    },
+    "n32-direct-fork-exit-255": {
+      "sha256": "83605c3d9f5d420dca475bc86ef875dff2056b0efda1f26659931f9482ebe349",
+      "bytes": 9472
+    },
+    "n32-direct-fork-nohang": {
+      "sha256": "e275a7b723b0fe5779bfe3665268d9bfe0fc8f4eeddd2874479be40520584a8f",
+      "bytes": 9472
+    },
+    "n32-direct-fork-nowait": {
+      "sha256": "5217610ddd5e84cbcaa2bf39fb4f0088fd7f4212bad2c7d1f217066a4469836b",
+      "bytes": 9472
+    },
+    "n32-direct-fork-options-0": {
+      "sha256": "02ca0917fe4f30617c150875325ca42d755cc71d6f157242d08f871289a383ac",
+      "bytes": 9472
+    },
+    "n32-direct-fork-options-16": {
+      "sha256": "16be640c7c2b548d06769444f0aa4a4c01b724e6df7e7ca90746d1fafdfb1aff",
+      "bytes": 9472
+    },
+    "n32-direct-fork-options-255": {
+      "sha256": "91e302739807efe828822f57679ff2a864dc203c0c3439f60c7fc99928c81d06",
+      "bytes": 9472
+    },
+    "n32-direct-fork-options-256": {
+      "sha256": "f5b6723fdb892c149dd88c59d0f8327b7e83762b80bcd639e637dca6114a87ab",
+      "bytes": 9472
+    },
+    "n32-direct-fork-type-1": {
+      "sha256": "51e5b4d0c2345161966528e5d3f3efa148807bd135bc24676f03bf05d8a48e58",
+      "bytes": 9472
+    },
+    "n32-direct-fork-type-7": {
+      "sha256": "dad53681823da4fc443ef4b65ae9ef8cd361ff46222947f217006d6d6a59ce49",
+      "bytes": 9472
+    },
+    "n32-direct-fork-type-4294967295": {
+      "sha256": "93c10581ab67c28aa93505cc8798f0976cb812802cb709a27b12a0e6fc304153",
+      "bytes": 9472
+    },
+    "n32-direct-fork-info-1": {
+      "sha256": "081d432f65682b74e0043baba770419019f7b500d1073c404777ab738ab2becd",
+      "bytes": 9472
+    },
+    "n32-direct-fork-info-2": {
+      "sha256": "8237ce23b938763609da9c1b4068c3f27703abc33c13f2184fb6a5e1e3c49650",
+      "bytes": 9472
+    },
+    "n32-direct-fork-info-3": {
+      "sha256": "09500997562f4e4aeecf31cea19a0e2676efe608d7dabb0d388f2f1527bff97e",
+      "bytes": 9472
+    },
+    "n32-direct-fork-info-4": {
+      "sha256": "3423f4ad2e7063accda72e010f297a4133724e49a76b82127f9769834f9ee81e",
+      "bytes": 9472
+    },
+    "n32-direct-fork-info-5": {
+      "sha256": "c53bd58cf223f7788b53ebe846be24dca19417da9daa3d8b13fc3bafe72797a5",
+      "bytes": 9472
+    },
+    "n32-direct-fork-info-6": {
+      "sha256": "62426c0d96d614e47a6ee717865831d022e89a89975a3126145c4390d9272109",
+      "bytes": 9496
+    },
+    "n32-direct-fork-rusage": {
+      "sha256": "31aac6426b60b2e1c51c525d058eea03e23490b07f7a3ef4921d5ed8a88a3349",
+      "bytes": 9472
+    },
+    "n32-indirect-mask-bit-1": {
+      "sha256": "817572252bdf9f8ff0b8b01356135705546cbbbd1faf06386d6cf9db9aea3d3d",
+      "bytes": 9356
+    },
+    "n32-indirect-mask-bit-2": {
+      "sha256": "bf8d449b1d4f0b77c5712af20918c2bd499edabde68e364eaf2e0d34fb349e00",
+      "bytes": 9356
+    },
+    "n32-indirect-mask-bit-3": {
+      "sha256": "594d664a569f665fff7b8403f0c80331e1fd6df2cf9d980df6c90487d6f39f64",
+      "bytes": 9356
+    },
+    "n32-indirect-mask-bit-4": {
+      "sha256": "77077f5647d20f00dd1d61251e636a82c7aa34df85ded5128b01f88b00aa0c58",
+      "bytes": 9356
+    },
+    "n32-indirect-mask-bit-5": {
+      "sha256": "1c6b73754ce9cf24d7e8bf3faacb4ec92cbe70ce8d9c1ac5b238438f0ad7df1e",
+      "bytes": 9356
+    },
+    "n32-indirect-mask-bit-6": {
+      "sha256": "826d2cfb7f313c0849e1c9c308cabca8016b04524158ebd3d2ce77de2a5ad9a8",
+      "bytes": 9356
+    },
+    "n32-indirect-mask-bit-7": {
+      "sha256": "c2321cdd4f6257b2042eb7494d0fd1ecf6264df6cc41757574d7d278b8261df8",
+      "bytes": 9356
+    },
+    "n32-indirect-mask-bit-8": {
+      "sha256": "b35a59aaaabc0a263a79ed57cb36fd816864c1f86fc2e2a931e0d6a6b944e58c",
+      "bytes": 9356
+    },
+    "n32-indirect-mask-bit-9": {
+      "sha256": "a6270d1cd5c277702d0df436c099d1e39667f21eea2da9cc222435d2929e1a9c",
+      "bytes": 9356
+    },
+    "n32-indirect-mask-bit-10": {
+      "sha256": "cba91c098b5bf483c736c88e3ee3aba3268f03feee4e9d677a5e74924853a177",
+      "bytes": 9356
+    },
+    "n32-indirect-mask-bit-11": {
+      "sha256": "76e709917ff11eea37fd23311d70bcf147f8d6b33b7389a2b92ac39ebeccafc4",
+      "bytes": 9356
+    },
+    "n32-indirect-mask-bit-12": {
+      "sha256": "ffe888977f19939ad37f67cfc86b0e2b3083e04937c4c95e4b53ff6460e1111b",
+      "bytes": 9356
+    },
+    "n32-indirect-mask-bit-13": {
+      "sha256": "69785e2532e453c865883e8d903cbb22967bf94689e8572814f7a69bb386e033",
+      "bytes": 9356
+    },
+    "n32-indirect-mask-bit-14": {
+      "sha256": "4ee3e8092c4182d9676a36ec4f76310ee421bcaa99243146ecebea998e9c7e33",
+      "bytes": 9356
+    },
+    "n32-indirect-mask-bit-15": {
+      "sha256": "90c1665dc46f7a0038d497bf30c30f51a91faa79fa55fc7ec55a362b16fdb725",
+      "bytes": 9356
+    },
+    "n32-indirect-mask-bit-16": {
+      "sha256": "c753a25c197424ebd78d6ff19a26e1c70596104538b7264c8c94fbb5484e804a",
+      "bytes": 9356
+    },
+    "n32-indirect-mask-bit-17": {
+      "sha256": "a85826f9495527bd98d317004d9eedc9ce06f935bcdea9a8e2a641ffca865b0e",
+      "bytes": 9356
+    },
+    "n32-indirect-mask-bit-18": {
+      "sha256": "b3b0926790fd95b34b55932c6e1e08ddb84cb565ba192f197b3c754e020afb6e",
+      "bytes": 9356
+    },
+    "n32-indirect-mask-bit-19": {
+      "sha256": "8a5df45624c17b715346b38c8094e32f3431b9c050229259b045d14de1766821",
+      "bytes": 9356
+    },
+    "n32-indirect-mask-bit-20": {
+      "sha256": "2a54b0d3593f9c813d268afc30cf2ffdc98ea0f94dd9521628688440b5a923b6",
+      "bytes": 9356
+    },
+    "n32-indirect-mask-bit-21": {
+      "sha256": "59df2d63948b94d1eaa2c1adf63a8cbc8042872980c3cec6df12eac1ad429ff5",
+      "bytes": 9356
+    },
+    "n32-indirect-mask-bit-22": {
+      "sha256": "4b7a6db80893065c59bbdf8a8c09874934717defaa826aa419821ea28fca99e6",
+      "bytes": 9356
+    },
+    "n32-indirect-mask-bit-23": {
+      "sha256": "413eae37f40e3f6bc808a6da385d530efe571dc0f62b1dcfbd3808698b29c4b7",
+      "bytes": 9356
+    },
+    "n32-indirect-mask-bit-24": {
+      "sha256": "3ecf53f61295326a6fc5415b8688f5f13e152ba5a5f857bc52806f27dc2ca399",
+      "bytes": 9356
+    },
+    "n32-indirect-mask-bit-25": {
+      "sha256": "9fed977368bd9093a88dd3ce01b9d251a0d9bca6c17bdb5a7de05a2a031fc5c7",
+      "bytes": 9356
+    },
+    "n32-indirect-mask-bit-26": {
+      "sha256": "05ab5b623958a27d3aca0780a380e0b7821c8cff1cb63f9d6f78526eafc097b3",
+      "bytes": 9356
+    },
+    "n32-indirect-mask-bit-27": {
+      "sha256": "17f2fb56af7f85d1325a8c0ad283140b8ceb1af5d293f09e788d85cc22103197",
+      "bytes": 9356
+    },
+    "n32-indirect-mask-bit-28": {
+      "sha256": "88918bb0801462b8e851e3fdd750b9f56b77ef189de80a46ca3dc41fdfee10a6",
+      "bytes": 9356
+    },
+    "n32-indirect-mask-bit-29": {
+      "sha256": "82e651167bc47407867cf4dfcbb1534f95556d8f24df7d8f1f9e28183fd2fe0d",
+      "bytes": 9356
+    },
+    "n32-indirect-mask-bit-30": {
+      "sha256": "81bf506f0642f6d7cb692ec8358fdcb7cf90e886850d70b8772ba6f962c4caa2",
+      "bytes": 9356
+    },
+    "n32-indirect-mask-bit-31": {
+      "sha256": "04ed5f9f7cf5855be4ae86352ebf7d4dc0d86e1ca5fc7504fa691f6fc6f97bbe",
+      "bytes": 9356
+    },
+    "n32-indirect-mask-bit-32": {
+      "sha256": "beee9fd80aaf400a9769859a58f66d89e7e628dfe9946d3fc1beddad124805bd",
+      "bytes": 9356
+    },
+    "n32-indirect-mask-bit-33": {
+      "sha256": "da3e36f3b2454e015b9d694e9b16452a95571cd60a84bf1bbe561018f9ad5a84",
+      "bytes": 9356
+    },
+    "n32-indirect-mask-bit-34": {
+      "sha256": "5c018825be6d38cb4f81d9d18cc43ce582973ec3cd87c99c320a52348a4fff68",
+      "bytes": 9356
+    },
+    "n32-indirect-mask-bit-35": {
+      "sha256": "387d8c3daacc5694131fa0e215a12115f6cbe704af74615c348a19066cc7aac3",
+      "bytes": 9356
+    },
+    "n32-indirect-mask-bit-36": {
+      "sha256": "2ce197ca272229c521a43d9d45c3791d0375ff7cc725bfeda9c8b95dbbc58096",
+      "bytes": 9356
+    },
+    "n32-indirect-mask-bit-37": {
+      "sha256": "3f8ee572717a32cc059b30fe4485ae2e82d0a1c1e5a08200f6574c158930c98d",
+      "bytes": 9356
+    },
+    "n32-indirect-mask-bit-38": {
+      "sha256": "a857766cbaaba89ba631bd2deee2c4672cb73b0864e9eb9731df209efdbece13",
+      "bytes": 9356
+    },
+    "n32-indirect-mask-bit-39": {
+      "sha256": "a0fcc4e4b4e971f92f50b83253ec67efed3491ebcd7f7fedf1a5e005675b97d5",
+      "bytes": 9356
+    },
+    "n32-indirect-mask-bit-40": {
+      "sha256": "80f1f65355a78c7387709291659473a8ef5447b9cf8c31b6f7dbdaa4f1038c96",
+      "bytes": 9356
+    },
+    "n32-indirect-mask-bit-41": {
+      "sha256": "aebb6f5b395db8da7d8c40ae87feb9f50a46036d96461d5022087f743673bc1b",
+      "bytes": 9356
+    },
+    "n32-indirect-mask-bit-42": {
+      "sha256": "ec8c154444a67f383d1acccf47d184b7318f9469831d51d2392f48c56143e560",
+      "bytes": 9356
+    },
+    "n32-indirect-mask-bit-43": {
+      "sha256": "546e53441e91b5d7134f15cb0ea2f95827dac936daa53d76e089881feed93ca1",
+      "bytes": 9356
+    },
+    "n32-indirect-mask-bit-44": {
+      "sha256": "b7e8a334aaa4db24f6b93879c750a0443f042c2291d5064cc4fb0fdf669dbc75",
+      "bytes": 9356
+    },
+    "n32-indirect-mask-bit-45": {
+      "sha256": "28e9a606d92b20afd371128782006443b60fb42060432f603d2c5d14512bf423",
+      "bytes": 9356
+    },
+    "n32-indirect-mask-bit-46": {
+      "sha256": "9b9b2ee9364514592335939264ae8dc130e3be072f378976f9408ff52a6e0923",
+      "bytes": 9356
+    },
+    "n32-indirect-mask-bit-47": {
+      "sha256": "5f9de0d45b91b7f5f999ceac1c937e33a3eb677d5caf628715c9906a937ea0cd",
+      "bytes": 9356
+    },
+    "n32-indirect-mask-bit-48": {
+      "sha256": "e1ec00909e2e2d8383ad20c6848a839607aa219c7b6b8681d29f48939b316363",
+      "bytes": 9356
+    },
+    "n32-indirect-mask-bit-49": {
+      "sha256": "3271cb20cd54c68bf8faeacede932eaa9b8bb142607aeca6e0b1a2d15a5b4c58",
+      "bytes": 9356
+    },
+    "n32-indirect-mask-bit-50": {
+      "sha256": "9d5d6c1aa7f937edaa301845448af04a41151e10adf8c79926645f18920fcd39",
+      "bytes": 9356
+    },
+    "n32-indirect-mask-bit-51": {
+      "sha256": "6b2ddb77ecb7e97cc1bfd25cabab07b3c5cfbf5f90bddf42ce74f02ecbef44c4",
+      "bytes": 9356
+    },
+    "n32-indirect-mask-bit-52": {
+      "sha256": "80e8efc4541988badc91af549bd05570213aef62243cc14a556af5a5856721af",
+      "bytes": 9356
+    },
+    "n32-indirect-mask-bit-53": {
+      "sha256": "e47892e041f5f572120c82862f63888c716267fb160d194ce4f536723c21a583",
+      "bytes": 9356
+    },
+    "n32-indirect-mask-bit-54": {
+      "sha256": "6c11161ddc0197487f0347429033d0e9d9f13d01f9888d04891b618d4206e45b",
+      "bytes": 9356
+    },
+    "n32-indirect-mask-bit-55": {
+      "sha256": "cb58f98bec97863cc5150a88eabd81144e43f0a40a0da300de5e1d1e7c1936ab",
+      "bytes": 9356
+    },
+    "n32-indirect-mask-bit-56": {
+      "sha256": "fd89ee7dfd810cd0684b72a37f90152ffd41752e0d56ab889df7f5b1d7e32e78",
+      "bytes": 9356
+    },
+    "n32-indirect-mask-bit-57": {
+      "sha256": "94994e9c99dc885c4fbe0a0df6ed493b05c9f729b1f114e1fb97c91941e1b8a9",
+      "bytes": 9356
+    },
+    "n32-indirect-mask-bit-58": {
+      "sha256": "d349f77b660e03761b1db6d8ae4c588019611d30eade76829115f769b331ada1",
+      "bytes": 9356
+    },
+    "n32-indirect-mask-bit-59": {
+      "sha256": "7ded9c7a01f487f4951306f2a90dfa025c2af723ee137eba53db43ebe68b8eeb",
+      "bytes": 9356
+    },
+    "n32-indirect-mask-bit-60": {
+      "sha256": "5d5b17c4ab699a51ff8f8a2923e9ba6d8fba72694cd03bc1591dc16078d7c3e8",
+      "bytes": 9356
+    },
+    "n32-indirect-mask-bit-61": {
+      "sha256": "e5e5948e70838e5f5c88a86cfaa016cac0d14b9b15d9091c20c1dbeca333b550",
+      "bytes": 9356
+    },
+    "n32-indirect-mask-bit-62": {
+      "sha256": "27beef5799fbe725fec5a7c0b4c964a15f2fb36620a325558a195572382817ee",
+      "bytes": 9356
+    },
+    "n32-indirect-mask-bit-63": {
+      "sha256": "0af0f3137e1c82af56fdff567016d5df0f9865cb66606edc365e759722c86028",
+      "bytes": 9356
+    },
+    "n32-indirect-mask-bit-64": {
+      "sha256": "4cde0686ad68dbe40ef6ef1d633d82893add80423f0e8e13ee8f2542739a2d26",
+      "bytes": 9356
+    },
+    "n32-indirect-mask-high-96": {
+      "sha256": "077df411a3c117850c2c81f74e66390169f01b0fc490a7d1ed964c75fa4b0cca",
+      "bytes": 9356
+    },
+    "n32-indirect-mask-high-128": {
+      "sha256": "aaed6df3ac7b76a67202ae046d2aab42adcdc56d196196c4a18312b2d10f79e2",
+      "bytes": 9356
+    },
+    "n32-indirect-mask-all": {
+      "sha256": "47e25095a80411787c3c460f35750d02b87535af82f80caa7e8ba11bca34e626",
+      "bytes": 9356
+    },
+    "n32-indirect-mask-empty": {
+      "sha256": "8fe4fc3fdb1c853cceed169105c17bb5299dc1f44ea6427686a0e628ec815309",
+      "bytes": 9356
+    },
+    "n32-indirect-how-1": {
+      "sha256": "82a3ffb6073c09c50d55a2c6ff320fb44cb093ade2a0f32492280b97d6b52bba",
+      "bytes": 9356
+    },
+    "n32-indirect-query-how-1": {
+      "sha256": "d4c6baefe61343a3f2991227ad962d276b9ff2c5163be23f3bd5c266c8382110",
+      "bytes": 9356
+    },
+    "n32-indirect-how-2": {
+      "sha256": "034733e63e6dd9c8d9901251efe4a5bf0ac7a3cbc9984ad86e05ef221a13376d",
+      "bytes": 9356
+    },
+    "n32-indirect-query-how-2": {
+      "sha256": "c36cfeb0a911e68f2f0faa4133385ab3ac1db00ac02f08e36f288f61cd304336",
+      "bytes": 9356
+    },
+    "n32-indirect-how-3": {
+      "sha256": "2fff05687beebe7be58f593104c75889c1aeeda0cec928fe80e1b1f83dc66672",
+      "bytes": 9356
+    },
+    "n32-indirect-query-how-3": {
+      "sha256": "229ec5e422972dde36b130fad39b0a9c0f8f9a9d4c5c043ac1ba8387b4f5363f",
+      "bytes": 9356
+    },
+    "n32-indirect-how-0": {
+      "sha256": "d383896a9736b1dbe5f83ea01dc7ac0b3633b1541bcd787ea1affa113cc70af6",
+      "bytes": 9356
+    },
+    "n32-indirect-query-how-0": {
+      "sha256": "4a2550c40c31f8daa46e853d65606ed380e29e3370550884481fc02f9bcf5b8e",
+      "bytes": 9356
+    },
+    "n32-indirect-how-4": {
+      "sha256": "1cc998178320f86f78fa940c4de87250b461991e80b23d74fc7cf2a8f8701479",
+      "bytes": 9356
+    },
+    "n32-indirect-query-how-4": {
+      "sha256": "8e9c31373fbda519e12e010a50221f2a027278a3603e0cffeff053ce9810b125",
+      "bytes": 9356
+    },
+    "n32-indirect-how-256": {
+      "sha256": "5144abc9bb2ca5302ceb70b30fbdc38f33845a6fa85b4c2eea60c844750117af",
+      "bytes": 9356
+    },
+    "n32-indirect-query-how-256": {
+      "sha256": "8386892281618bb11f80a1c7c78739f60c9718d002cce2fc5ca0f36e5e25b2c1",
+      "bytes": 9356
+    },
+    "n32-indirect-how-4294967295": {
+      "sha256": "b6f664168685cdbae63dbe429c590375f6ad1e818d655a4a036978c62bec4cb7",
+      "bytes": 9356
+    },
+    "n32-indirect-query-how-4294967295": {
+      "sha256": "19db01273fc77814f8d5ae4ba1246874846e1884c26d262f0e2d92302ae29172",
+      "bytes": 9356
+    },
+    "n32-indirect-set-pointer-1": {
+      "sha256": "62f55eed82965adc21cfcac46b672cf905612482ec46c137cc9d7c5a7dfd529f",
+      "bytes": 9356
+    },
+    "n32-indirect-set-pointer-2": {
+      "sha256": "5151b74a4fc2726ff61de74c714514fb04ea2676b22a5b826e9130921cff5398",
+      "bytes": 9356
+    },
+    "n32-indirect-set-pointer-3": {
+      "sha256": "b6930af72c5ef41da554e461037f6f4b36dd12427d10b82201ec70d007f79ca5",
+      "bytes": 9356
+    },
+    "n32-indirect-set-pointer-4": {
+      "sha256": "aabbb9b8d65284fdc01d0b491c8298def8308b71c7cad650ce3d5ca8e654b640",
+      "bytes": 9356
+    },
+    "n32-indirect-set-pointer-5": {
+      "sha256": "af66e6c8188357c14ecbd225d13f7fc9b4edb71fdeb3d6097a02014eb503e1e3",
+      "bytes": 9356
+    },
+    "n32-indirect-set-pointer-6": {
+      "sha256": "31c5544bd43403175945f6ca0101a8767de126a9f23ee71460ad0f1e0d8f7e45",
+      "bytes": 9444
+    },
+    "n32-indirect-set-pointer-7": {
+      "sha256": "aea8232f4801bcffac51fa53b2fee4e75b37d597fb18730af1edbb5facf32069",
+      "bytes": 9356
+    },
+    "n32-indirect-old-pointer-1": {
+      "sha256": "0e6474bb46dd4a3c13ed91bb93ebbbb157c2ad11157898a0fff9e0b3cffe44d2",
+      "bytes": 9356
+    },
+    "n32-indirect-old-pointer-2": {
+      "sha256": "d0c84f8a252af8a76ed49316b0ff2339c22812dd86fe4e6b225508a267989c10",
+      "bytes": 9356
+    },
+    "n32-indirect-old-pointer-3": {
+      "sha256": "4d74bc477431cce883406844c1994a0676639c73dce5c3efd5c081a25407c125",
+      "bytes": 9356
+    },
+    "n32-indirect-old-pointer-4": {
+      "sha256": "75333d75bf88c9861b5c7fa61d41081482887799921c9504f5ce3b6a78d1c117",
+      "bytes": 9356
+    },
+    "n32-indirect-old-pointer-5": {
+      "sha256": "16a26f8ee38c45aea5540d4bdc562e6d7911b37077b08f2ed0ead01d99772168",
+      "bytes": 9356
+    },
+    "n32-indirect-old-pointer-6": {
+      "sha256": "fc9d3dcd96897fcf3a22903cbd8d252decf9cb458932cb80e086bab6a3da6aad",
+      "bytes": 9444
+    },
+    "n32-indirect-old-pointer-7": {
+      "sha256": "f90116a85ce5494f2e0f3695127a8579d0279fa052825f0a3b864ea0c698f3f2",
+      "bytes": 9356
+    },
+    "n32-indirect-bad-how-bad-set": {
+      "sha256": "337113341ae610b3e72cabfaa68e79d00a3fe45b42b2af543d81e9f86d188999",
+      "bytes": 9356
+    },
+    "n32-indirect-bad-set-bad-old": {
+      "sha256": "3f3d99af0bc3887e3c41478ad34cce788e60629cffafbe3b23550f138d72460a",
+      "bytes": 9356
+    },
+    "n32-indirect-query-bad-old": {
+      "sha256": "615f6b4b2a34562b81f488668da2608a638b646d24d4706a6273308c39b785c0",
+      "bytes": 9356
+    },
+    "n32-indirect-fork-exit-0": {
+      "sha256": "59a89b5fc6e4cfbf1bede29e4368c01ae26d93e5a1a924a113b7ba488e5844c6",
+      "bytes": 9472
+    },
+    "n32-indirect-fork-exit-37": {
+      "sha256": "45d61e55f8222e904a2b95e049dc96ad7bae0523aa7699b9acfe7d4e020fa453",
+      "bytes": 9472
+    },
+    "n32-indirect-fork-exit-255": {
+      "sha256": "c924681214fb4f71ee8010efa35e87b27e7093dbd5b3d85f49d9b8914c0e915d",
+      "bytes": 9472
+    },
+    "n32-indirect-fork-nohang": {
+      "sha256": "a23f6b971d0cccdd58b9bc8af2001af5e0abbed6c85dce8d511138236aba33e9",
+      "bytes": 9472
+    },
+    "n32-indirect-fork-nowait": {
+      "sha256": "a1e89e6eb2dc2fb853f1f8baca96e4afe82486bffcf9bc4c2e72b32bf525b085",
+      "bytes": 9472
+    },
+    "n32-indirect-fork-options-0": {
+      "sha256": "b6fa62e9db6ccd09ee13c10a9c8566e8de2953a6fe8b2995aa1c2fac0ecbbeac",
+      "bytes": 9472
+    },
+    "n32-indirect-fork-options-16": {
+      "sha256": "14eaaaf14c231c2dce380d4c1f8ed81a6f5f05e8f14d8aaccf7f9dd584382165",
+      "bytes": 9472
+    },
+    "n32-indirect-fork-options-255": {
+      "sha256": "188136e348081381da75ccde86195d98c8ff00424120eb6bc727878e158bbc49",
+      "bytes": 9472
+    },
+    "n32-indirect-fork-options-256": {
+      "sha256": "0abdf893a1932b5ab0499b33fd3864604988b94a3ae65a643aed7215891d7855",
+      "bytes": 9472
+    },
+    "n32-indirect-fork-type-1": {
+      "sha256": "5bb599c9df615607f44646b526d9cda844c521a0a26b127a8ca0d8eaa4b65cae",
+      "bytes": 9472
+    },
+    "n32-indirect-fork-type-7": {
+      "sha256": "ccdbeff2c886367ca6fbbf5811519bee882671c6cf799eaf0d7add7f362a91ca",
+      "bytes": 9472
+    },
+    "n32-indirect-fork-type-4294967295": {
+      "sha256": "6725634a87dae32598b4d0ec226297c01dcf24a39d2719584af5f86b24877017",
+      "bytes": 9472
+    },
+    "n32-indirect-fork-info-1": {
+      "sha256": "7c87ad89a9b27ae61d70932090d5562837c271719a046a86c82349848b643976",
+      "bytes": 9472
+    },
+    "n32-indirect-fork-info-2": {
+      "sha256": "37e3ea125db8d5b54b0ec1930f30d61c6b02c241cde77d7c47fa878b52d360fd",
+      "bytes": 9472
+    },
+    "n32-indirect-fork-info-3": {
+      "sha256": "e780ebc1bc36a52c05b55aa051c4104d04f79b730fb5530293f531a1a8c12beb",
+      "bytes": 9472
+    },
+    "n32-indirect-fork-info-4": {
+      "sha256": "186ef1275aec92a8de9e6732b143be472af709116b7a43e6709a93d8abfe2e69",
+      "bytes": 9472
+    },
+    "n32-indirect-fork-info-5": {
+      "sha256": "32958e1eb84c8567834c79621640bbb6a0f44cae4474c27f93c0435b23261605",
+      "bytes": 9472
+    },
+    "n32-indirect-fork-info-6": {
+      "sha256": "0a007c85c205f461e7eef48afaf44285c7d5f57158db08c9021500bb5ec3995a",
+      "bytes": 9496
+    },
+    "n32-indirect-fork-rusage": {
+      "sha256": "53118b66a762a533e68c83ad8c6f796c900552d95a04400c4a905543beb0d186",
+      "bytes": 9472
+    },
+    "setup.sh": {
+      "sha256": "45538e510922cbafa389fb31d07b21b5e949b7e243cc917e9f37d9710011e1bf",
+      "bytes": 107
+    }
+  },
+  "identities": [
+    [
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      1234,
+      1234,
+      1234,
+      1234
+    ]
+  ],
+  "contract_sha256": "3416ce961e21f6227883e1eb71601f5f9a1174c35f5afd965097314b3ea5c48b",
+  "qualifier_sha256": "fa487f3195e5497da5b9541865c7c9cb6440c24c2f097ec8ef00d6cc607fbd5e",
+  "exported_reference_sha256": "b26ce35ce2edd0ce6acef3b95f9f53e537c300aea31201c9642fe1fa91c9007c"
+}

@@ -56,8 +56,11 @@ foundation. The [PTY checkpoint](results/2026-10-31-irix-pty.md) uses native
 ptm/ptyfs allocation and ownership, a group-0/mode-0600 disposable ptyfs mount,
 and a nullfs view under `/emul/irix/dev/pts` with the first 400 IRIX q/r aliases.
 These are generated native session resources, not files to import from IRIX.
-Original xwsh now completes allocation and reaches unsupported fork. Native
-shell/input, signal handling and terminal attributes remain unqualified. The image's Xsgi, kernel, device nodes and boot
+The [process checkpoint](results/2026-11-01-irix-process.md) now advances xwsh
+through fork and child slave opening to unsupported execve. No additional
+original resources were needed. Native shell selection, session/process-group
+setup, descriptor duplication, signal handlers and terminal attributes remain
+unqualified; importing an IRIX shell would not supply these missing interfaces. The image's Xsgi, kernel, device nodes and boot
 scripts remain reference inputs for the native NetBSD integration.
 
 The [desktop acceptance plan](ROADMAP.md#milestone-3-original-desktop-proof)

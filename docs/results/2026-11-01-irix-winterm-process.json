@@ -1,0 +1,5268 @@
+{
+  "schema": 1,
+  "status": "window-rendered-child-exec-blocked",
+  "pin": {
+    "schema": 1,
+    "description": "Bounded IRIX process interfaces on lp64",
+    "ident": "XIRI_IRIX_PROCESS_20261101",
+    "source_revision": "fd219672645f2d744aabf59f0479acccb6a23d41",
+    "source_branch": "xiri/irix-process",
+    "build_arch": "mips64eb",
+    "page_bytes": 8192,
+    "boot_kernel_sha256": "7e925fe0fc68926fb13be1636b02e355e355393a6fe1bcf5922e7c308bf2c8c9",
+    "native_kernel_sha256": "62336ece1099714ba744afb30e388c7fbb12ce755766c4e66f4841351775bb77",
+    "debug_kernel_sha256": "bd8ed71be0693383d177002624d23fa93f3d48cd0c1242f8e75ce51d0153c131",
+    "native_o32_sha256": "c294fbb1f2110445be31c096481ea54ab561c7e59ca5b9fc7171310098d755d4",
+    "source_dirty": false,
+    "emulator_revision": "9df1df14334838a989253efefe26f0547e6da592",
+    "emulator_branch": "xiri/netbsd64-tlb",
+    "emulator_sha256": "1b3f7702ba7f43b5c4fca8ba8884243559f46371d8d67a36ce5e6fee1e595eba",
+    "ci_client_sha256": "8711321aa6eaae440da3c7920b00ae4cf1c7f2abbdb15a9919f58485500ffb6c",
+    "base_disk_sha256": "269038c7b77660c83d3835208fc0b2702c93110c14b3c55a42416f51672cee2a",
+    "nvram_sha256": "ee883474d52f09278287b2044f7aeca61d2e7bc39c0bb8fd85c983ab64063d15",
+    "config_sha256": "6b1a2f59470f396289038206d5980165104ddcb590d090c5199b3d2c62a5dbc6",
+    "runtimes": [
+      {
+        "name": "vendor-o32-libc",
+        "path": "/usr/lib/libc.so.1",
+        "sha256": "ea766492103a193e9d404942705e4e28987545e37f699ede232b6c0f8c97c954"
+      },
+      {
+        "name": "vendor-o32-rld",
+        "path": "/lib/rld",
+        "sha256": "30228b54c1e5585b365514eb7c9895b03cc0f61cb898e05e3ddafece87863439"
+      },
+      {
+        "name": "vendor-n32-libc",
+        "path": "/lib32/libc.so.1",
+        "sha256": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e"
+      },
+      {
+        "name": "vendor-n32-rld",
+        "path": "/lib32/rld",
+        "sha256": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b"
+      }
+    ],
+    "config_path": "lab/irix-process/XIRI_IRIX_PROCESS"
+  },
+  "runs": [
+    {
+      "directory": ".work/irix-winterm-process/runs/ci-vzqks6v0",
+      "mode": "ci",
+      "clean_shutdown": true,
+      "result_sha256": "0dedfcce7f1b6d2637d2a5da2f970c7095dd98a4e56060074aa664d7452e1e13",
+      "sources": {
+        "lab/irix-winterm/trace.c": "c17869ba507613506d2f9546809a5a6e0d718be27093aa93a32434cc9652658e",
+        "lab/irix-toolchest/fault.c": "de9b9b272675f5b0cf52e5d6ab03ba4241614e7c6bf4b1a123f48135084c80af",
+        "lab/irix-process/runner.c": "51c8045805878f0566a62a66c157b32035d98144bc3bb06e51c78b2fa5f8a141",
+        "lab/irix-toolchest/session.c": "e183b4aefdfb428e01dc609230e87a7546a0b31e9d4b5e236503e0a8bb3b09f5",
+        "scripts/probe-irix-winterm-process.py": "8daa5a63b2acd789fdf2c38104220ac704679595f394fcb60539e6d0390a954e",
+        "lab/irix-pty/setup.sh": "5fb1b9fdac2018886ec22220bd1f29f145df75406c5bf618cdae2ac4a3d8089d",
+        "lab/irix-pty/native.c": "a36cf2a58faeee1a5c9b5b7e99ce6247edf46285cea0b636796688d45de88a5c",
+        "lab/irix-process/group-control.c": "bf7d4779ded47114f5464e30fa0bed71b2115713716d1ac446643d8ac7e914d5",
+        "lab/irix-process/trace-window.awk": "c549fbf4acb89df00e227d3728768ff06e274c0d3cbde0a6bc218705bc9ecb7d"
+      },
+      "cases": [
+        {
+          "name": "0-default",
+          "uid": 0,
+          "font": null,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": -1,
+            "signal": 9,
+            "killed": 1,
+            "stdout": "",
+            "stderr": "/emul/irix/usr/sbin/xwsh: Function not implemented: can't start command\n"
+          },
+          "group_absent": true,
+          "parent_pid": 3549,
+          "child_pid": 3817,
+          "fork": {
+            "pid": 3549,
+            "call": {
+              "syscall": 1002,
+              "pc": 262530836,
+              "a0": 2147448351,
+              "a1": 1,
+              "a2": 0,
+              "a3": 1054308
+            },
+            "ret": {
+              "syscall": 1002,
+              "v0": 3817,
+              "a3": 0
+            },
+            "paths": []
+          },
+          "slave_open": {
+            "pid": 3817,
+            "call": {
+              "syscall": 1005,
+              "pc": 262470640,
+              "a0": 272843624,
+              "a1": 2,
+              "a2": 4294967295,
+              "a3": 1
+            },
+            "ret": {
+              "syscall": 1005,
+              "v0": 5,
+              "a3": 0
+            },
+            "paths": [
+              "/emul/irix/dev/ttyq0"
+            ]
+          },
+          "child_exec": {
+            "pid": 3817,
+            "call": {
+              "syscall": 1059,
+              "pc": 262750508,
+              "a0": 2147446256,
+              "a1": 2147449960,
+              "a2": 272909576,
+              "a3": 104
+            },
+            "ret": {
+              "syscall": 1059,
+              "v0": 89,
+              "a3": 1
+            },
+            "paths": []
+          },
+          "child_exit": {
+            "pid": 3817,
+            "call": {
+              "syscall": 1001,
+              "pc": 262502352,
+              "a0": 4294967295,
+              "a1": 4,
+              "a2": 2,
+              "a3": 0
+            },
+            "ret": null,
+            "paths": []
+          },
+          "child_unsupported": {
+            "1040": 4,
+            "1063": 1,
+            "1041": 2,
+            "1054": 1,
+            "1034": 2,
+            "1046": 1,
+            "1023": 1,
+            "1162": 2,
+            "1059": 1,
+            "1130": 2
+          },
+          "child_events": [
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1164,
+                "pc": 262558880,
+                "a0": 2,
+                "a1": 2147448432,
+                "a2": 0,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1164,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1040,
+                "pc": 262470072,
+                "a0": 109,
+                "a1": 2147450716,
+                "a2": 2147449960,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1040,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1063,
+                "pc": 263230480,
+                "a0": 4,
+                "a1": 0,
+                "a2": 4294967295,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1063,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1040,
+                "pc": 262470072,
+                "a0": 20,
+                "a1": 0,
+                "a2": 4294967295,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1040,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1005,
+                "pc": 262470640,
+                "a0": 272843624,
+                "a1": 2,
+                "a2": 4294967295,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1005,
+                "v0": 5,
+                "a3": 0
+              },
+              "paths": [
+                "/emul/irix/dev/ttyq0"
+              ]
+            },
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1041,
+                "pc": 262591448,
+                "a0": 0,
+                "a1": 2,
+                "a2": 4294967295,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1041,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1041,
+                "pc": 262591448,
+                "a0": 0,
+                "a1": 2,
+                "a2": 4294967295,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1041,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1054,
+                "pc": 262475332,
+                "a0": 0,
+                "a1": 2148037735,
+                "a2": 2147449968,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1054,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1034,
+                "pc": 262992104,
+                "a0": 4294967256,
+                "a1": 263550352,
+                "a2": 1,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1034,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1034,
+                "pc": 262992104,
+                "a0": 20,
+                "a1": 1,
+                "a2": 263550440,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1034,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1024,
+                "pc": 262534632,
+                "a0": 89,
+                "a1": 263550352,
+                "a2": 1,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1024,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1047,
+                "pc": 262529128,
+                "a0": 89,
+                "a1": 263550352,
+                "a2": 1,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1047,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1016,
+                "pc": 262542272,
+                "a0": 272843624,
+                "a1": 0,
+                "a2": 0,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1016,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": [
+                "/emul/irix/dev/ttyq0"
+              ]
+            },
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1015,
+                "pc": 262541752,
+                "a0": 272843624,
+                "a1": 402,
+                "a2": 0,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1015,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": [
+                "/emul/irix/dev/ttyq0"
+              ]
+            },
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1047,
+                "pc": 262529128,
+                "a0": 0,
+                "a1": 1,
+                "a2": 263550440,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1047,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1046,
+                "pc": 262622912,
+                "a0": 0,
+                "a1": 1,
+                "a2": 263550440,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1046,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1024,
+                "pc": 262534632,
+                "a0": 0,
+                "a1": 1,
+                "a2": 263550440,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1024,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1023,
+                "pc": 262564280,
+                "a0": 0,
+                "a1": 1,
+                "a2": 263550440,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1023,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1162,
+                "pc": 262522236,
+                "a0": 2,
+                "a1": 2147448272,
+                "a2": 2147448304,
+                "a3": 263182456
+              },
+              "ret": {
+                "syscall": 1162,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1162,
+                "pc": 262522236,
+                "a0": 3,
+                "a1": 2147448272,
+                "a2": 2147448304,
+                "a3": 263182456
+              },
+              "ret": {
+                "syscall": 1162,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1040,
+                "pc": 262470072,
+                "a0": 85,
+                "a1": 263468880,
+                "a2": 272763008,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1040,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1040,
+                "pc": 262470072,
+                "a0": 86,
+                "a1": 263468880,
+                "a2": 272763008,
+                "a3": 24
+              },
+              "ret": {
+                "syscall": 1040,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1059,
+                "pc": 262750508,
+                "a0": 2147446256,
+                "a1": 2147449960,
+                "a2": 272909576,
+                "a3": 104
+              },
+              "ret": {
+                "syscall": 1059,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1040,
+                "pc": 262470072,
+                "a0": 92,
+                "a1": 1,
+                "a2": 0,
+                "a3": 47
+              },
+              "ret": {
+                "syscall": 1040,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1158,
+                "pc": 262470200,
+                "a0": 2,
+                "a1": 2147447312,
+                "a2": 2147448336,
+                "a3": 99
+              },
+              "ret": {
+                "syscall": 1158,
+                "v0": 2,
+                "a3": 1
+              },
+              "paths": [
+                "/emul/irix/usr/lib/locale/C/LC_MESSAGES/uxsgierr",
+                "/usr/lib/locale/C/LC_MESSAGES/uxsgierr"
+              ]
+            },
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1158,
+                "pc": 262470200,
+                "a0": 2,
+                "a1": 2147447312,
+                "a2": 2147448336,
+                "a3": 99
+              },
+              "ret": {
+                "syscall": 1158,
+                "v0": 2,
+                "a3": 1
+              },
+              "paths": [
+                "/emul/irix/usr/lib/locale/C/Xopen/LC_MESSAGES/uxsgierr",
+                "/usr/lib/locale/C/Xopen/LC_MESSAGES/uxsgierr"
+              ]
+            },
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1158,
+                "pc": 262470200,
+                "a0": 2,
+                "a1": 2147447312,
+                "a2": 2147448336,
+                "a3": 99
+              },
+              "ret": {
+                "syscall": 1158,
+                "v0": 2,
+                "a3": 1
+              },
+              "paths": [
+                "/emul/irix/usr/lib/locale/C/LC_MESSAGES/uxsgierr.cat",
+                "/usr/lib/locale/C/LC_MESSAGES/uxsgierr.cat"
+              ]
+            },
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1004,
+                "pc": 262541384,
+                "a0": 2,
+                "a1": 272708440,
+                "a2": 24,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1004,
+                "v0": 24,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1004,
+                "pc": 262541384,
+                "a0": 2,
+                "a1": 263575416,
+                "a2": 8,
+                "a3": 4
+              },
+              "ret": {
+                "syscall": 1004,
+                "v0": 8,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1004,
+                "pc": 262541384,
+                "a0": 2,
+                "a1": 263454726,
+                "a2": 18,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1004,
+                "v0": 18,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1004,
+                "pc": 262541384,
+                "a0": 2,
+                "a1": 272630566,
+                "a2": 22,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1004,
+                "v0": 22,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1130,
+                "pc": 262502756,
+                "a0": 22,
+                "a1": 0,
+                "a2": 263574784,
+                "a3": 1083004
+              },
+              "ret": {
+                "syscall": 1130,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1130,
+                "pc": 262502756,
+                "a0": 14,
+                "a1": 1,
+                "a2": 263574784,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1130,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1001,
+                "pc": 262502352,
+                "a0": 4294967295,
+                "a1": 4,
+                "a2": 2,
+                "a3": 0
+              },
+              "ret": null,
+              "paths": []
+            }
+          ],
+          "tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     4 children:\n     0x200011 (has no name): ()  1x1+0+0  +0+0\n     0x200010 (has no name): ()  1x1+0+0  +0+0\n     0x20000b (has no name): ()  1x1+0+0  +0+0\n     0x200005 \"winterm\": (\"winterm\" \"XWsh\")  983x840+0+0  +0+0\n        2 children:\n        0x200012 (has no name): ()  965x840+18+0  +18+0\n           2 children:\n           0x200013 (has no name): ()  965x840+0+0  +18+0\n           0x20001b (has no name): ()  965x840+0+0  +18+0\n        0x200006 (has no name): ()  18x840+0+0  +0+0\n           1 child:\n           0x20001c (has no name): ()  16x30+1+18  +1+18\n\n",
+          "trace_scope": "first 2000 parent events, all other processes and all signals",
+          "trace_info": "SHA256 (winterm.ktrace) = adb157e576b16004c666439e53a015cb41ee5f0eb02012426ee6f3b2873ccbc8\nSHA256 (winterm.dump) = 6d4714a64a0425e285cdba18830b65c5564392ad721828c2db0ab58efc03316d\n  105664 winterm.dump\n    8566 winterm.capture\n  114230 total\n",
+          "full_trace_hashes": {
+            "winterm.ktrace": "adb157e576b16004c666439e53a015cb41ee5f0eb02012426ee6f3b2873ccbc8",
+            "winterm.dump": "6d4714a64a0425e285cdba18830b65c5564392ad721828c2db0ab58efc03316d"
+          },
+          "trace_line_counts": {
+            "winterm.dump": 105664,
+            "winterm.capture": 8566
+          },
+          "trace_sha256": "e868786d0e8f442dcc5f3d56de6135d5bd28b3f54158a305da198fdec8212764",
+          "frame_sha256": "c762d6b20bee2bf45ea7e2b7de3ac1004f6b2ae0fd23f861287fd2a5d45bae30"
+        },
+        {
+          "name": "0-fixed",
+          "uid": 0,
+          "font": "fixed",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": -1,
+            "signal": 9,
+            "killed": 1,
+            "stdout": "",
+            "stderr": "/emul/irix/usr/sbin/xwsh: Function not implemented: can't start command\n"
+          },
+          "group_absent": true,
+          "parent_pid": 2971,
+          "child_pid": 4093,
+          "fork": {
+            "pid": 2971,
+            "call": {
+              "syscall": 1002,
+              "pc": 262530836,
+              "a0": 2147448335,
+              "a1": 1,
+              "a2": 0,
+              "a3": 1054308
+            },
+            "ret": {
+              "syscall": 1002,
+              "v0": 4093,
+              "a3": 0
+            },
+            "paths": []
+          },
+          "slave_open": {
+            "pid": 4093,
+            "call": {
+              "syscall": 1005,
+              "pc": 262470640,
+              "a0": 272843376,
+              "a1": 2,
+              "a2": 4294967295,
+              "a3": 1
+            },
+            "ret": {
+              "syscall": 1005,
+              "v0": 5,
+              "a3": 0
+            },
+            "paths": [
+              "/emul/irix/dev/ttyq0"
+            ]
+          },
+          "child_exec": {
+            "pid": 4093,
+            "call": {
+              "syscall": 1059,
+              "pc": 262750508,
+              "a0": 2147446240,
+              "a1": 2147449944,
+              "a2": 272909376,
+              "a3": 104
+            },
+            "ret": {
+              "syscall": 1059,
+              "v0": 89,
+              "a3": 1
+            },
+            "paths": []
+          },
+          "child_exit": {
+            "pid": 4093,
+            "call": {
+              "syscall": 1001,
+              "pc": 262502352,
+              "a0": 4294967295,
+              "a1": 4,
+              "a2": 2,
+              "a3": 0
+            },
+            "ret": null,
+            "paths": []
+          },
+          "child_unsupported": {
+            "1040": 4,
+            "1063": 1,
+            "1041": 2,
+            "1054": 1,
+            "1034": 2,
+            "1046": 1,
+            "1023": 1,
+            "1162": 2,
+            "1059": 1,
+            "1130": 2
+          },
+          "child_events": [
+            {
+              "pid": 4093,
+              "call": {
+                "syscall": 1164,
+                "pc": 262558880,
+                "a0": 2,
+                "a1": 2147448416,
+                "a2": 0,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1164,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "pid": 4093,
+              "call": {
+                "syscall": 1040,
+                "pc": 262470072,
+                "a0": 109,
+                "a1": 2147450726,
+                "a2": 2147449944,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1040,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 4093,
+              "call": {
+                "syscall": 1063,
+                "pc": 263230480,
+                "a0": 4,
+                "a1": 0,
+                "a2": 4294967295,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1063,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 4093,
+              "call": {
+                "syscall": 1040,
+                "pc": 262470072,
+                "a0": 20,
+                "a1": 0,
+                "a2": 4294967295,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1040,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 4093,
+              "call": {
+                "syscall": 1005,
+                "pc": 262470640,
+                "a0": 272843376,
+                "a1": 2,
+                "a2": 4294967295,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1005,
+                "v0": 5,
+                "a3": 0
+              },
+              "paths": [
+                "/emul/irix/dev/ttyq0"
+              ]
+            },
+            {
+              "pid": 4093,
+              "call": {
+                "syscall": 1041,
+                "pc": 262591448,
+                "a0": 0,
+                "a1": 2,
+                "a2": 4294967295,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1041,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 4093,
+              "call": {
+                "syscall": 1041,
+                "pc": 262591448,
+                "a0": 0,
+                "a1": 2,
+                "a2": 4294967295,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1041,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 4093,
+              "call": {
+                "syscall": 1054,
+                "pc": 262475332,
+                "a0": 0,
+                "a1": 2148037735,
+                "a2": 2147449952,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1054,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 4093,
+              "call": {
+                "syscall": 1034,
+                "pc": 262992104,
+                "a0": 4294967256,
+                "a1": 263550352,
+                "a2": 1,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1034,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 4093,
+              "call": {
+                "syscall": 1034,
+                "pc": 262992104,
+                "a0": 20,
+                "a1": 1,
+                "a2": 263550440,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1034,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 4093,
+              "call": {
+                "syscall": 1024,
+                "pc": 262534632,
+                "a0": 89,
+                "a1": 263550352,
+                "a2": 1,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1024,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "pid": 4093,
+              "call": {
+                "syscall": 1047,
+                "pc": 262529128,
+                "a0": 89,
+                "a1": 263550352,
+                "a2": 1,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1047,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "pid": 4093,
+              "call": {
+                "syscall": 1016,
+                "pc": 262542272,
+                "a0": 272843376,
+                "a1": 0,
+                "a2": 0,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1016,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": [
+                "/emul/irix/dev/ttyq0"
+              ]
+            },
+            {
+              "pid": 4093,
+              "call": {
+                "syscall": 1015,
+                "pc": 262541752,
+                "a0": 272843376,
+                "a1": 402,
+                "a2": 0,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1015,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": [
+                "/emul/irix/dev/ttyq0"
+              ]
+            },
+            {
+              "pid": 4093,
+              "call": {
+                "syscall": 1047,
+                "pc": 262529128,
+                "a0": 0,
+                "a1": 1,
+                "a2": 263550440,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1047,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "pid": 4093,
+              "call": {
+                "syscall": 1046,
+                "pc": 262622912,
+                "a0": 0,
+                "a1": 1,
+                "a2": 263550440,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1046,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 4093,
+              "call": {
+                "syscall": 1024,
+                "pc": 262534632,
+                "a0": 0,
+                "a1": 1,
+                "a2": 263550440,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1024,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "pid": 4093,
+              "call": {
+                "syscall": 1023,
+                "pc": 262564280,
+                "a0": 0,
+                "a1": 1,
+                "a2": 263550440,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1023,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 4093,
+              "call": {
+                "syscall": 1162,
+                "pc": 262522236,
+                "a0": 2,
+                "a1": 2147448256,
+                "a2": 2147448288,
+                "a3": 263182456
+              },
+              "ret": {
+                "syscall": 1162,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 4093,
+              "call": {
+                "syscall": 1162,
+                "pc": 262522236,
+                "a0": 3,
+                "a1": 2147448256,
+                "a2": 2147448288,
+                "a3": 263182456
+              },
+              "ret": {
+                "syscall": 1162,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 4093,
+              "call": {
+                "syscall": 1040,
+                "pc": 262470072,
+                "a0": 85,
+                "a1": 263468880,
+                "a2": 272762944,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1040,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "pid": 4093,
+              "call": {
+                "syscall": 1040,
+                "pc": 262470072,
+                "a0": 86,
+                "a1": 263468880,
+                "a2": 272762944,
+                "a3": 24
+              },
+              "ret": {
+                "syscall": 1040,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 4093,
+              "call": {
+                "syscall": 1059,
+                "pc": 262750508,
+                "a0": 2147446240,
+                "a1": 2147449944,
+                "a2": 272909376,
+                "a3": 104
+              },
+              "ret": {
+                "syscall": 1059,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 4093,
+              "call": {
+                "syscall": 1040,
+                "pc": 262470072,
+                "a0": 92,
+                "a1": 1,
+                "a2": 0,
+                "a3": 47
+              },
+              "ret": {
+                "syscall": 1040,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 4093,
+              "call": {
+                "syscall": 1158,
+                "pc": 262470200,
+                "a0": 2,
+                "a1": 2147447296,
+                "a2": 2147448320,
+                "a3": 99
+              },
+              "ret": {
+                "syscall": 1158,
+                "v0": 2,
+                "a3": 1
+              },
+              "paths": [
+                "/emul/irix/usr/lib/locale/C/LC_MESSAGES/uxsgierr",
+                "/usr/lib/locale/C/LC_MESSAGES/uxsgierr"
+              ]
+            },
+            {
+              "pid": 4093,
+              "call": {
+                "syscall": 1158,
+                "pc": 262470200,
+                "a0": 2,
+                "a1": 2147447296,
+                "a2": 2147448320,
+                "a3": 99
+              },
+              "ret": {
+                "syscall": 1158,
+                "v0": 2,
+                "a3": 1
+              },
+              "paths": [
+                "/emul/irix/usr/lib/locale/C/Xopen/LC_MESSAGES/uxsgierr",
+                "/usr/lib/locale/C/Xopen/LC_MESSAGES/uxsgierr"
+              ]
+            },
+            {
+              "pid": 4093,
+              "call": {
+                "syscall": 1158,
+                "pc": 262470200,
+                "a0": 2,
+                "a1": 2147447296,
+                "a2": 2147448320,
+                "a3": 99
+              },
+              "ret": {
+                "syscall": 1158,
+                "v0": 2,
+                "a3": 1
+              },
+              "paths": [
+                "/emul/irix/usr/lib/locale/C/LC_MESSAGES/uxsgierr.cat",
+                "/usr/lib/locale/C/LC_MESSAGES/uxsgierr.cat"
+              ]
+            },
+            {
+              "pid": 4093,
+              "call": {
+                "syscall": 1004,
+                "pc": 262541384,
+                "a0": 2,
+                "a1": 272708440,
+                "a2": 24,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1004,
+                "v0": 24,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "pid": 4093,
+              "call": {
+                "syscall": 1004,
+                "pc": 262541384,
+                "a0": 2,
+                "a1": 263575416,
+                "a2": 8,
+                "a3": 4
+              },
+              "ret": {
+                "syscall": 1004,
+                "v0": 8,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "pid": 4093,
+              "call": {
+                "syscall": 1004,
+                "pc": 262541384,
+                "a0": 2,
+                "a1": 263454726,
+                "a2": 18,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1004,
+                "v0": 18,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "pid": 4093,
+              "call": {
+                "syscall": 1004,
+                "pc": 262541384,
+                "a0": 2,
+                "a1": 272630566,
+                "a2": 22,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1004,
+                "v0": 22,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "pid": 4093,
+              "call": {
+                "syscall": 1130,
+                "pc": 262502756,
+                "a0": 22,
+                "a1": 0,
+                "a2": 263574784,
+                "a3": 1083004
+              },
+              "ret": {
+                "syscall": 1130,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 4093,
+              "call": {
+                "syscall": 1130,
+                "pc": 262502756,
+                "a0": 14,
+                "a1": 1,
+                "a2": 263574784,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1130,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 4093,
+              "call": {
+                "syscall": 1001,
+                "pc": 262502352,
+                "a0": 4294967295,
+                "a1": 4,
+                "a2": 2,
+                "a3": 0
+              },
+              "ret": null,
+              "paths": []
+            }
+          ],
+          "tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     4 children:\n     0x200011 (has no name): ()  1x1+0+0  +0+0\n     0x200010 (has no name): ()  1x1+0+0  +0+0\n     0x20000b (has no name): ()  1x1+0+0  +0+0\n     0x200005 \"winterm\": (\"winterm\" \"XWsh\")  503x520+0+0  +0+0\n        2 children:\n        0x200012 (has no name): ()  485x520+18+0  +18+0\n           2 children:\n           0x200013 (has no name): ()  485x520+0+0  +18+0\n           0x20001b (has no name): ()  485x520+0+0  +18+0\n        0x200006 (has no name): ()  18x520+0+0  +0+0\n           1 child:\n           0x20001c (has no name): ()  16x30+1+18  +1+18\n\n",
+          "trace_scope": "first 2000 parent events, all other processes and all signals",
+          "trace_info": "SHA256 (winterm.ktrace) = 024c971add499ef06ff793cb2a87412e2a6024ff271a3fea99e6c411ae99a794\nSHA256 (winterm.dump) = 590f51a9c81aeebf2fa563416d883b6427723201b26553bfddc9491e4a7e39e1\n  135490 winterm.dump\n    8570 winterm.capture\n  144060 total\n",
+          "full_trace_hashes": {
+            "winterm.ktrace": "024c971add499ef06ff793cb2a87412e2a6024ff271a3fea99e6c411ae99a794",
+            "winterm.dump": "590f51a9c81aeebf2fa563416d883b6427723201b26553bfddc9491e4a7e39e1"
+          },
+          "trace_line_counts": {
+            "winterm.dump": 135490,
+            "winterm.capture": 8570
+          },
+          "trace_sha256": "9e32f2b238e5a445645f5fc7e9b1bb7991e7e55070de3126676787f3fddb1538",
+          "frame_sha256": "10a85e5bf6e75fbf3e7fe3f654a499b27079978868aac18cc3e742ba4b103a86"
+        },
+        {
+          "name": "1234-default",
+          "uid": 1234,
+          "font": null,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": -1,
+            "signal": 9,
+            "killed": 1,
+            "stdout": "",
+            "stderr": "/emul/irix/usr/sbin/xwsh: Function not implemented: can't start command\n"
+          },
+          "group_absent": true,
+          "parent_pid": 4221,
+          "child_pid": 3099,
+          "fork": {
+            "pid": 4221,
+            "call": {
+              "syscall": 1002,
+              "pc": 262530836,
+              "a0": 2147448351,
+              "a1": 1,
+              "a2": 0,
+              "a3": 1054308
+            },
+            "ret": {
+              "syscall": 1002,
+              "v0": 3099,
+              "a3": 0
+            },
+            "paths": []
+          },
+          "slave_open": {
+            "pid": 3099,
+            "call": {
+              "syscall": 1005,
+              "pc": 262470640,
+              "a0": 272843624,
+              "a1": 2,
+              "a2": 4294967295,
+              "a3": 1
+            },
+            "ret": {
+              "syscall": 1005,
+              "v0": 5,
+              "a3": 0
+            },
+            "paths": [
+              "/emul/irix/dev/ttyq0"
+            ]
+          },
+          "child_exec": {
+            "pid": 3099,
+            "call": {
+              "syscall": 1059,
+              "pc": 262750508,
+              "a0": 2147446256,
+              "a1": 2147449960,
+              "a2": 272909576,
+              "a3": 104
+            },
+            "ret": {
+              "syscall": 1059,
+              "v0": 89,
+              "a3": 1
+            },
+            "paths": []
+          },
+          "child_exit": {
+            "pid": 3099,
+            "call": {
+              "syscall": 1001,
+              "pc": 262502352,
+              "a0": 4294967295,
+              "a1": 4,
+              "a2": 2,
+              "a3": 0
+            },
+            "ret": null,
+            "paths": []
+          },
+          "child_unsupported": {
+            "1040": 4,
+            "1063": 1,
+            "1041": 2,
+            "1054": 1,
+            "1162": 2,
+            "1059": 1,
+            "1130": 2
+          },
+          "child_events": [
+            {
+              "pid": 3099,
+              "call": {
+                "syscall": 1164,
+                "pc": 262558880,
+                "a0": 2,
+                "a1": 2147448432,
+                "a2": 0,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1164,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "pid": 3099,
+              "call": {
+                "syscall": 1040,
+                "pc": 262470072,
+                "a0": 109,
+                "a1": 2147450716,
+                "a2": 2147449960,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1040,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3099,
+              "call": {
+                "syscall": 1063,
+                "pc": 263230480,
+                "a0": 4,
+                "a1": 0,
+                "a2": 4294967295,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1063,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3099,
+              "call": {
+                "syscall": 1040,
+                "pc": 262470072,
+                "a0": 20,
+                "a1": 0,
+                "a2": 4294967295,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1040,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3099,
+              "call": {
+                "syscall": 1005,
+                "pc": 262470640,
+                "a0": 272843624,
+                "a1": 2,
+                "a2": 4294967295,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1005,
+                "v0": 5,
+                "a3": 0
+              },
+              "paths": [
+                "/emul/irix/dev/ttyq0"
+              ]
+            },
+            {
+              "pid": 3099,
+              "call": {
+                "syscall": 1041,
+                "pc": 262591448,
+                "a0": 0,
+                "a1": 2,
+                "a2": 4294967295,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1041,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3099,
+              "call": {
+                "syscall": 1041,
+                "pc": 262591448,
+                "a0": 0,
+                "a1": 2,
+                "a2": 4294967295,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1041,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3099,
+              "call": {
+                "syscall": 1054,
+                "pc": 262475332,
+                "a0": 0,
+                "a1": 2148037735,
+                "a2": 2147449968,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1054,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3099,
+              "call": {
+                "syscall": 1162,
+                "pc": 262522236,
+                "a0": 2,
+                "a1": 2147448272,
+                "a2": 2147448304,
+                "a3": 263182456
+              },
+              "ret": {
+                "syscall": 1162,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3099,
+              "call": {
+                "syscall": 1162,
+                "pc": 262522236,
+                "a0": 3,
+                "a1": 2147448272,
+                "a2": 2147448304,
+                "a3": 263182456
+              },
+              "ret": {
+                "syscall": 1162,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3099,
+              "call": {
+                "syscall": 1040,
+                "pc": 262470072,
+                "a0": 85,
+                "a1": 263468880,
+                "a2": 272763008,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1040,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "pid": 3099,
+              "call": {
+                "syscall": 1040,
+                "pc": 262470072,
+                "a0": 86,
+                "a1": 263468880,
+                "a2": 272763008,
+                "a3": 24
+              },
+              "ret": {
+                "syscall": 1040,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3099,
+              "call": {
+                "syscall": 1059,
+                "pc": 262750508,
+                "a0": 2147446256,
+                "a1": 2147449960,
+                "a2": 272909576,
+                "a3": 104
+              },
+              "ret": {
+                "syscall": 1059,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3099,
+              "call": {
+                "syscall": 1040,
+                "pc": 262470072,
+                "a0": 92,
+                "a1": 1,
+                "a2": 0,
+                "a3": 47
+              },
+              "ret": {
+                "syscall": 1040,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3099,
+              "call": {
+                "syscall": 1158,
+                "pc": 262470200,
+                "a0": 2,
+                "a1": 2147447312,
+                "a2": 2147448336,
+                "a3": 99
+              },
+              "ret": {
+                "syscall": 1158,
+                "v0": 2,
+                "a3": 1
+              },
+              "paths": [
+                "/emul/irix/usr/lib/locale/C/LC_MESSAGES/uxsgierr",
+                "/usr/lib/locale/C/LC_MESSAGES/uxsgierr"
+              ]
+            },
+            {
+              "pid": 3099,
+              "call": {
+                "syscall": 1158,
+                "pc": 262470200,
+                "a0": 2,
+                "a1": 2147447312,
+                "a2": 2147448336,
+                "a3": 99
+              },
+              "ret": {
+                "syscall": 1158,
+                "v0": 2,
+                "a3": 1
+              },
+              "paths": [
+                "/emul/irix/usr/lib/locale/C/Xopen/LC_MESSAGES/uxsgierr",
+                "/usr/lib/locale/C/Xopen/LC_MESSAGES/uxsgierr"
+              ]
+            },
+            {
+              "pid": 3099,
+              "call": {
+                "syscall": 1158,
+                "pc": 262470200,
+                "a0": 2,
+                "a1": 2147447312,
+                "a2": 2147448336,
+                "a3": 99
+              },
+              "ret": {
+                "syscall": 1158,
+                "v0": 2,
+                "a3": 1
+              },
+              "paths": [
+                "/emul/irix/usr/lib/locale/C/LC_MESSAGES/uxsgierr.cat",
+                "/usr/lib/locale/C/LC_MESSAGES/uxsgierr.cat"
+              ]
+            },
+            {
+              "pid": 3099,
+              "call": {
+                "syscall": 1004,
+                "pc": 262541384,
+                "a0": 2,
+                "a1": 272708440,
+                "a2": 24,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1004,
+                "v0": 24,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "pid": 3099,
+              "call": {
+                "syscall": 1004,
+                "pc": 262541384,
+                "a0": 2,
+                "a1": 263575416,
+                "a2": 8,
+                "a3": 4
+              },
+              "ret": {
+                "syscall": 1004,
+                "v0": 8,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "pid": 3099,
+              "call": {
+                "syscall": 1004,
+                "pc": 262541384,
+                "a0": 2,
+                "a1": 263454726,
+                "a2": 18,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1004,
+                "v0": 18,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "pid": 3099,
+              "call": {
+                "syscall": 1004,
+                "pc": 262541384,
+                "a0": 2,
+                "a1": 272630566,
+                "a2": 22,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1004,
+                "v0": 22,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "pid": 3099,
+              "call": {
+                "syscall": 1130,
+                "pc": 262502756,
+                "a0": 22,
+                "a1": 0,
+                "a2": 263574784,
+                "a3": 1083004
+              },
+              "ret": {
+                "syscall": 1130,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3099,
+              "call": {
+                "syscall": 1130,
+                "pc": 262502756,
+                "a0": 14,
+                "a1": 1,
+                "a2": 263574784,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1130,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3099,
+              "call": {
+                "syscall": 1001,
+                "pc": 262502352,
+                "a0": 4294967295,
+                "a1": 4,
+                "a2": 2,
+                "a3": 0
+              },
+              "ret": null,
+              "paths": []
+            }
+          ],
+          "tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     4 children:\n     0x200011 (has no name): ()  1x1+0+0  +0+0\n     0x200010 (has no name): ()  1x1+0+0  +0+0\n     0x20000b (has no name): ()  1x1+0+0  +0+0\n     0x200005 \"winterm\": (\"winterm\" \"XWsh\")  983x840+0+0  +0+0\n        2 children:\n        0x200012 (has no name): ()  965x840+18+0  +18+0\n           2 children:\n           0x200013 (has no name): ()  965x840+0+0  +18+0\n           0x20001b (has no name): ()  965x840+0+0  +18+0\n        0x200006 (has no name): ()  18x840+0+0  +0+0\n           1 child:\n           0x20001c (has no name): ()  16x30+1+18  +1+18\n\n",
+          "trace_scope": "first 2000 parent events, all other processes and all signals",
+          "trace_info": "SHA256 (winterm.ktrace) = f933f323dcc36ee66824e57cb547f562bf5ff328282f2b9e65246b29155517b8\nSHA256 (winterm.dump) = a7362177a903bb91b1f21bfd5c64da426fe524f079e54c810ea89d9463c3cbb9\n  103067 winterm.dump\n    8504 winterm.capture\n  111571 total\n",
+          "full_trace_hashes": {
+            "winterm.ktrace": "f933f323dcc36ee66824e57cb547f562bf5ff328282f2b9e65246b29155517b8",
+            "winterm.dump": "a7362177a903bb91b1f21bfd5c64da426fe524f079e54c810ea89d9463c3cbb9"
+          },
+          "trace_line_counts": {
+            "winterm.dump": 103067,
+            "winterm.capture": 8504
+          },
+          "trace_sha256": "ebfdbf1e452e1d5256021935041983f47c4c6a060fe9f929c5d8eeed4818a210",
+          "frame_sha256": "c762d6b20bee2bf45ea7e2b7de3ac1004f6b2ae0fd23f861287fd2a5d45bae30"
+        },
+        {
+          "name": "1234-fixed",
+          "uid": 1234,
+          "font": "fixed",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": -1,
+            "signal": 9,
+            "killed": 1,
+            "stdout": "",
+            "stderr": "/emul/irix/usr/sbin/xwsh: Function not implemented: can't start command\n"
+          },
+          "group_absent": true,
+          "parent_pid": 2534,
+          "child_pid": 4081,
+          "fork": {
+            "pid": 2534,
+            "call": {
+              "syscall": 1002,
+              "pc": 262530836,
+              "a0": 2147448335,
+              "a1": 1,
+              "a2": 0,
+              "a3": 1054308
+            },
+            "ret": {
+              "syscall": 1002,
+              "v0": 4081,
+              "a3": 0
+            },
+            "paths": []
+          },
+          "slave_open": {
+            "pid": 4081,
+            "call": {
+              "syscall": 1005,
+              "pc": 262470640,
+              "a0": 272843376,
+              "a1": 2,
+              "a2": 4294967295,
+              "a3": 1
+            },
+            "ret": {
+              "syscall": 1005,
+              "v0": 5,
+              "a3": 0
+            },
+            "paths": [
+              "/emul/irix/dev/ttyq0"
+            ]
+          },
+          "child_exec": {
+            "pid": 4081,
+            "call": {
+              "syscall": 1059,
+              "pc": 262750508,
+              "a0": 2147446240,
+              "a1": 2147449944,
+              "a2": 272909376,
+              "a3": 104
+            },
+            "ret": {
+              "syscall": 1059,
+              "v0": 89,
+              "a3": 1
+            },
+            "paths": []
+          },
+          "child_exit": {
+            "pid": 4081,
+            "call": {
+              "syscall": 1001,
+              "pc": 262502352,
+              "a0": 4294967295,
+              "a1": 4,
+              "a2": 2,
+              "a3": 0
+            },
+            "ret": null,
+            "paths": []
+          },
+          "child_unsupported": {
+            "1040": 4,
+            "1063": 1,
+            "1041": 2,
+            "1054": 1,
+            "1162": 2,
+            "1059": 1,
+            "1130": 2
+          },
+          "child_events": [
+            {
+              "pid": 4081,
+              "call": {
+                "syscall": 1164,
+                "pc": 262558880,
+                "a0": 2,
+                "a1": 2147448416,
+                "a2": 0,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1164,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "pid": 4081,
+              "call": {
+                "syscall": 1040,
+                "pc": 262470072,
+                "a0": 109,
+                "a1": 2147450726,
+                "a2": 2147449944,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1040,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 4081,
+              "call": {
+                "syscall": 1063,
+                "pc": 263230480,
+                "a0": 4,
+                "a1": 0,
+                "a2": 4294967295,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1063,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 4081,
+              "call": {
+                "syscall": 1040,
+                "pc": 262470072,
+                "a0": 20,
+                "a1": 0,
+                "a2": 4294967295,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1040,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 4081,
+              "call": {
+                "syscall": 1005,
+                "pc": 262470640,
+                "a0": 272843376,
+                "a1": 2,
+                "a2": 4294967295,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1005,
+                "v0": 5,
+                "a3": 0
+              },
+              "paths": [
+                "/emul/irix/dev/ttyq0"
+              ]
+            },
+            {
+              "pid": 4081,
+              "call": {
+                "syscall": 1041,
+                "pc": 262591448,
+                "a0": 0,
+                "a1": 2,
+                "a2": 4294967295,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1041,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 4081,
+              "call": {
+                "syscall": 1041,
+                "pc": 262591448,
+                "a0": 0,
+                "a1": 2,
+                "a2": 4294967295,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1041,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 4081,
+              "call": {
+                "syscall": 1054,
+                "pc": 262475332,
+                "a0": 0,
+                "a1": 2148037735,
+                "a2": 2147449952,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1054,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 4081,
+              "call": {
+                "syscall": 1162,
+                "pc": 262522236,
+                "a0": 2,
+                "a1": 2147448256,
+                "a2": 2147448288,
+                "a3": 263182456
+              },
+              "ret": {
+                "syscall": 1162,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 4081,
+              "call": {
+                "syscall": 1162,
+                "pc": 262522236,
+                "a0": 3,
+                "a1": 2147448256,
+                "a2": 2147448288,
+                "a3": 263182456
+              },
+              "ret": {
+                "syscall": 1162,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 4081,
+              "call": {
+                "syscall": 1040,
+                "pc": 262470072,
+                "a0": 85,
+                "a1": 263468880,
+                "a2": 272762944,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1040,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "pid": 4081,
+              "call": {
+                "syscall": 1040,
+                "pc": 262470072,
+                "a0": 86,
+                "a1": 263468880,
+                "a2": 272762944,
+                "a3": 24
+              },
+              "ret": {
+                "syscall": 1040,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 4081,
+              "call": {
+                "syscall": 1059,
+                "pc": 262750508,
+                "a0": 2147446240,
+                "a1": 2147449944,
+                "a2": 272909376,
+                "a3": 104
+              },
+              "ret": {
+                "syscall": 1059,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 4081,
+              "call": {
+                "syscall": 1040,
+                "pc": 262470072,
+                "a0": 92,
+                "a1": 1,
+                "a2": 0,
+                "a3": 47
+              },
+              "ret": {
+                "syscall": 1040,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 4081,
+              "call": {
+                "syscall": 1158,
+                "pc": 262470200,
+                "a0": 2,
+                "a1": 2147447296,
+                "a2": 2147448320,
+                "a3": 99
+              },
+              "ret": {
+                "syscall": 1158,
+                "v0": 2,
+                "a3": 1
+              },
+              "paths": [
+                "/emul/irix/usr/lib/locale/C/LC_MESSAGES/uxsgierr",
+                "/usr/lib/locale/C/LC_MESSAGES/uxsgierr"
+              ]
+            },
+            {
+              "pid": 4081,
+              "call": {
+                "syscall": 1158,
+                "pc": 262470200,
+                "a0": 2,
+                "a1": 2147447296,
+                "a2": 2147448320,
+                "a3": 99
+              },
+              "ret": {
+                "syscall": 1158,
+                "v0": 2,
+                "a3": 1
+              },
+              "paths": [
+                "/emul/irix/usr/lib/locale/C/Xopen/LC_MESSAGES/uxsgierr",
+                "/usr/lib/locale/C/Xopen/LC_MESSAGES/uxsgierr"
+              ]
+            },
+            {
+              "pid": 4081,
+              "call": {
+                "syscall": 1158,
+                "pc": 262470200,
+                "a0": 2,
+                "a1": 2147447296,
+                "a2": 2147448320,
+                "a3": 99
+              },
+              "ret": {
+                "syscall": 1158,
+                "v0": 2,
+                "a3": 1
+              },
+              "paths": [
+                "/emul/irix/usr/lib/locale/C/LC_MESSAGES/uxsgierr.cat",
+                "/usr/lib/locale/C/LC_MESSAGES/uxsgierr.cat"
+              ]
+            },
+            {
+              "pid": 4081,
+              "call": {
+                "syscall": 1004,
+                "pc": 262541384,
+                "a0": 2,
+                "a1": 272708440,
+                "a2": 24,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1004,
+                "v0": 24,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "pid": 4081,
+              "call": {
+                "syscall": 1004,
+                "pc": 262541384,
+                "a0": 2,
+                "a1": 263575416,
+                "a2": 8,
+                "a3": 4
+              },
+              "ret": {
+                "syscall": 1004,
+                "v0": 8,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "pid": 4081,
+              "call": {
+                "syscall": 1004,
+                "pc": 262541384,
+                "a0": 2,
+                "a1": 263454726,
+                "a2": 18,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1004,
+                "v0": 18,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "pid": 4081,
+              "call": {
+                "syscall": 1004,
+                "pc": 262541384,
+                "a0": 2,
+                "a1": 272630566,
+                "a2": 22,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1004,
+                "v0": 22,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "pid": 4081,
+              "call": {
+                "syscall": 1130,
+                "pc": 262502756,
+                "a0": 22,
+                "a1": 0,
+                "a2": 263574784,
+                "a3": 1083004
+              },
+              "ret": {
+                "syscall": 1130,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 4081,
+              "call": {
+                "syscall": 1130,
+                "pc": 262502756,
+                "a0": 14,
+                "a1": 1,
+                "a2": 263574784,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1130,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 4081,
+              "call": {
+                "syscall": 1001,
+                "pc": 262502352,
+                "a0": 4294967295,
+                "a1": 4,
+                "a2": 2,
+                "a3": 0
+              },
+              "ret": null,
+              "paths": []
+            }
+          ],
+          "tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     4 children:\n     0x200011 (has no name): ()  1x1+0+0  +0+0\n     0x200010 (has no name): ()  1x1+0+0  +0+0\n     0x20000b (has no name): ()  1x1+0+0  +0+0\n     0x200005 \"winterm\": (\"winterm\" \"XWsh\")  503x520+0+0  +0+0\n        2 children:\n        0x200012 (has no name): ()  485x520+18+0  +18+0\n           2 children:\n           0x200013 (has no name): ()  485x520+0+0  +18+0\n           0x20001b (has no name): ()  485x520+0+0  +18+0\n        0x200006 (has no name): ()  18x520+0+0  +0+0\n           1 child:\n           0x20001c (has no name): ()  16x30+1+18  +1+18\n\n",
+          "trace_scope": "first 2000 parent events, all other processes and all signals",
+          "trace_info": "SHA256 (winterm.ktrace) = 2e55aa67a5528e2c1ed4e96d80f1ef3e9b5718a41ddb0bd9c87d843246c81257\nSHA256 (winterm.dump) = a52610b11b3215cb9362f44587fb0c3a8c2a2f3967896fc7167fda2d17a0d1a0\n  118841 winterm.dump\n    8492 winterm.capture\n  127333 total\n",
+          "full_trace_hashes": {
+            "winterm.ktrace": "2e55aa67a5528e2c1ed4e96d80f1ef3e9b5718a41ddb0bd9c87d843246c81257",
+            "winterm.dump": "a52610b11b3215cb9362f44587fb0c3a8c2a2f3967896fc7167fda2d17a0d1a0"
+          },
+          "trace_line_counts": {
+            "winterm.dump": 118841,
+            "winterm.capture": 8492
+          },
+          "trace_sha256": "0a476b1b0ae53caa47066c9fee6939e00ee2d6f0e843c88d195e85572e7bf9be",
+          "frame_sha256": "10a85e5bf6e75fbf3e7fe3f654a499b27079978868aac18cc3e742ba4b103a86"
+        }
+      ],
+      "controls": [
+        {
+          "phase": "before",
+          "entry_exit": 37,
+          "fault_pc": "0x40079c",
+          "guards_intact": true,
+          "window": "\nxwininfo: Window id: 0x20000c \"FaultControl\"\n\n  Absolute upper-left X:  0\n  Absolute upper-left Y:  0\n  Relative upper-left X:  0\n  Relative upper-left Y:  0\n  Width: 644\n  Height: 364\n  Depth: 24\n  Visual: 0x21\n  Visual Class: TrueColor\n  Border width: 1\n  Class: InputOutput\n  Colormap: 0x20 (installed)\n  Bit Gravity State: NorthWestGravity\n  Window Gravity State: NorthWestGravity\n  Backing Store State: NotUseful\n  Save Under State: no\n  Map State: IsViewable\n  Override Redirect State: no\n  Corners:  +0+0  --6+0  --6-114  +0-114\n  -geometry 80x24+0+0\n\n",
+          "stderr": ""
+        },
+        {
+          "phase": "after",
+          "entry_exit": 37,
+          "fault_pc": "0x40079c",
+          "guards_intact": true,
+          "window": "\nxwininfo: Window id: 0x20000c \"FaultControl\"\n\n  Absolute upper-left X:  0\n  Absolute upper-left Y:  0\n  Relative upper-left X:  0\n  Relative upper-left Y:  0\n  Width: 644\n  Height: 364\n  Depth: 24\n  Visual: 0x21\n  Visual Class: TrueColor\n  Border width: 1\n  Class: InputOutput\n  Colormap: 0x20 (installed)\n  Bit Gravity State: NorthWestGravity\n  Window Gravity State: NorthWestGravity\n  Backing Store State: NotUseful\n  Save Under State: no\n  Map State: IsViewable\n  Override Redirect State: no\n  Corners:  +0+0  --6+0  --6-114  +0-114\n  -geometry 80x24+0+0\n\n",
+          "stderr": ""
+        }
+      ],
+      "native_font_controls": [
+        {
+          "phase": "before",
+          "window": "\nxwininfo: Window id: 0x20000c \"FaultControl\"\n\n  Absolute upper-left X:  0\n  Absolute upper-left Y:  0\n  Relative upper-left X:  0\n  Relative upper-left Y:  0\n  Width: 644\n  Height: 364\n  Depth: 24\n  Visual: 0x21\n  Visual Class: TrueColor\n  Border width: 1\n  Class: InputOutput\n  Colormap: 0x20 (installed)\n  Bit Gravity State: NorthWestGravity\n  Window Gravity State: NorthWestGravity\n  Backing Store State: NotUseful\n  Save Under State: no\n  Map State: IsViewable\n  Override Redirect State: no\n  Corners:  +0+0  --6+0  --6-114  +0-114\n  -geometry 80x24+0+0\n\n",
+          "stderr": ""
+        },
+        {
+          "phase": "after",
+          "window": "\nxwininfo: Window id: 0x20000c \"FaultControl\"\n\n  Absolute upper-left X:  0\n  Absolute upper-left Y:  0\n  Relative upper-left X:  0\n  Relative upper-left Y:  0\n  Width: 644\n  Height: 364\n  Depth: 24\n  Visual: 0x21\n  Visual Class: TrueColor\n  Border width: 1\n  Class: InputOutput\n  Colormap: 0x20 (installed)\n  Bit Gravity State: NorthWestGravity\n  Window Gravity State: NorthWestGravity\n  Backing Store State: NotUseful\n  Save Under State: no\n  Map State: IsViewable\n  Override Redirect State: no\n  Corners:  +0+0  --6+0  --6-114  +0-114\n  -geometry 80x24+0+0\n\n",
+          "stderr": ""
+        }
+      ],
+      "native_pty_controls": [
+        {
+          "phase": "before",
+          "uid": 0,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "ROUND 0 uid=0 gid=0\nMASTER fd=3 mode=020666 uid=0 gid=0 major=23 minor=0 flags=0x6\nSLAVE_PATH /dev/pts/0\nSLAVE fd=4 mode=020600 uid=0 gid=0 major=22 minor=0 flags=0x6\nTRANSFER XIRI_MASTER_TO_SLAVE\nTRANSFER XIRI_SLAVE_TO_MASTER\nEMPTY n=-1 errno=35\nROUND 1 uid=0 gid=0\nMASTER fd=3 mode=020666 uid=0 gid=0 major=23 minor=0 flags=0x6\nSLAVE_PATH /dev/pts/0\nSLAVE fd=4 mode=020600 uid=0 gid=0 major=22 minor=0 flags=0x6\nTRANSFER XIRI_MASTER_TO_SLAVE\nTRANSFER XIRI_SLAVE_TO_MASTER\nEMPTY n=-1 errno=35\nROUND 2 uid=0 gid=0\nMASTER fd=3 mode=020666 uid=0 gid=0 major=23 minor=0 flags=0x6\nSLAVE_PATH /dev/pts/0\nSLAVE fd=4 mode=020600 uid=0 gid=0 major=22 minor=0 flags=0x6\nTRANSFER XIRI_MASTER_TO_SLAVE\nTRANSFER XIRI_SLAVE_TO_MASTER\nEMPTY n=-1 errno=35\nNATIVE_PTY_PASS\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "before",
+          "uid": 1234,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "ROUND 0 uid=1234 gid=1234\nMASTER fd=3 mode=020666 uid=0 gid=0 major=23 minor=0 flags=0x6\nSLAVE_PATH /dev/pts/0\nSLAVE fd=4 mode=020600 uid=1234 gid=0 major=22 minor=0 flags=0x6\nTRANSFER XIRI_MASTER_TO_SLAVE\nTRANSFER XIRI_SLAVE_TO_MASTER\nEMPTY n=-1 errno=35\nROUND 1 uid=1234 gid=1234\nMASTER fd=3 mode=020666 uid=0 gid=0 major=23 minor=0 flags=0x6\nSLAVE_PATH /dev/pts/0\nSLAVE fd=4 mode=020600 uid=1234 gid=0 major=22 minor=0 flags=0x6\nTRANSFER XIRI_MASTER_TO_SLAVE\nTRANSFER XIRI_SLAVE_TO_MASTER\nEMPTY n=-1 errno=35\nROUND 2 uid=1234 gid=1234\nMASTER fd=3 mode=020666 uid=0 gid=0 major=23 minor=0 flags=0x6\nSLAVE_PATH /dev/pts/0\nSLAVE fd=4 mode=020600 uid=1234 gid=0 major=22 minor=0 flags=0x6\nTRANSFER XIRI_MASTER_TO_SLAVE\nTRANSFER XIRI_SLAVE_TO_MASTER\nEMPTY n=-1 errno=35\nNATIVE_PTY_PASS\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "after",
+          "uid": 0,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "ROUND 0 uid=0 gid=0\nMASTER fd=3 mode=020666 uid=0 gid=0 major=23 minor=0 flags=0x6\nSLAVE_PATH /dev/pts/0\nSLAVE fd=4 mode=020600 uid=0 gid=0 major=22 minor=0 flags=0x6\nTRANSFER XIRI_MASTER_TO_SLAVE\nTRANSFER XIRI_SLAVE_TO_MASTER\nEMPTY n=-1 errno=35\nROUND 1 uid=0 gid=0\nMASTER fd=3 mode=020666 uid=0 gid=0 major=23 minor=0 flags=0x6\nSLAVE_PATH /dev/pts/0\nSLAVE fd=4 mode=020600 uid=0 gid=0 major=22 minor=0 flags=0x6\nTRANSFER XIRI_MASTER_TO_SLAVE\nTRANSFER XIRI_SLAVE_TO_MASTER\nEMPTY n=-1 errno=35\nROUND 2 uid=0 gid=0\nMASTER fd=3 mode=020666 uid=0 gid=0 major=23 minor=0 flags=0x6\nSLAVE_PATH /dev/pts/0\nSLAVE fd=4 mode=020600 uid=0 gid=0 major=22 minor=0 flags=0x6\nTRANSFER XIRI_MASTER_TO_SLAVE\nTRANSFER XIRI_SLAVE_TO_MASTER\nEMPTY n=-1 errno=35\nNATIVE_PTY_PASS\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "after",
+          "uid": 1234,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "ROUND 0 uid=1234 gid=1234\nMASTER fd=3 mode=020666 uid=0 gid=0 major=23 minor=0 flags=0x6\nSLAVE_PATH /dev/pts/0\nSLAVE fd=4 mode=020600 uid=1234 gid=0 major=22 minor=0 flags=0x6\nTRANSFER XIRI_MASTER_TO_SLAVE\nTRANSFER XIRI_SLAVE_TO_MASTER\nEMPTY n=-1 errno=35\nROUND 1 uid=1234 gid=1234\nMASTER fd=3 mode=020666 uid=0 gid=0 major=23 minor=0 flags=0x6\nSLAVE_PATH /dev/pts/0\nSLAVE fd=4 mode=020600 uid=1234 gid=0 major=22 minor=0 flags=0x6\nTRANSFER XIRI_MASTER_TO_SLAVE\nTRANSFER XIRI_SLAVE_TO_MASTER\nEMPTY n=-1 errno=35\nROUND 2 uid=1234 gid=1234\nMASTER fd=3 mode=020666 uid=0 gid=0 major=23 minor=0 flags=0x6\nSLAVE_PATH /dev/pts/0\nSLAVE fd=4 mode=020600 uid=1234 gid=0 major=22 minor=0 flags=0x6\nTRANSFER XIRI_MASTER_TO_SLAVE\nTRANSFER XIRI_SLAVE_TO_MASTER\nEMPTY n=-1 errno=35\nNATIVE_PTY_PASS\n",
+            "stderr": ""
+          }
+        }
+      ],
+      "group_controls": [
+        {
+          "phase": "before",
+          "uid": 0,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_GROUP_CONTROL\n",
+            "stderr": ""
+          },
+          "group_absent": true
+        },
+        {
+          "phase": "before",
+          "uid": 1234,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_GROUP_CONTROL\n",
+            "stderr": ""
+          },
+          "group_absent": true
+        },
+        {
+          "phase": "after",
+          "uid": 0,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_GROUP_CONTROL\n",
+            "stderr": ""
+          },
+          "group_absent": true
+        },
+        {
+          "phase": "after",
+          "uid": 1234,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_GROUP_CONTROL\n",
+            "stderr": ""
+          },
+          "group_absent": true
+        }
+      ]
+    },
+    {
+      "directory": ".work/irix-winterm-process/runs/ordinary-ocbz0htw",
+      "mode": "ordinary",
+      "clean_shutdown": true,
+      "result_sha256": "c3de398a086b17f0520807805c492bf64cbcc319c07ff65aaae619183fb2f896",
+      "sources": {
+        "lab/irix-winterm/trace.c": "c17869ba507613506d2f9546809a5a6e0d718be27093aa93a32434cc9652658e",
+        "lab/irix-toolchest/fault.c": "de9b9b272675f5b0cf52e5d6ab03ba4241614e7c6bf4b1a123f48135084c80af",
+        "lab/irix-process/runner.c": "51c8045805878f0566a62a66c157b32035d98144bc3bb06e51c78b2fa5f8a141",
+        "lab/irix-toolchest/session.c": "e183b4aefdfb428e01dc609230e87a7546a0b31e9d4b5e236503e0a8bb3b09f5",
+        "scripts/probe-irix-winterm-process.py": "8daa5a63b2acd789fdf2c38104220ac704679595f394fcb60539e6d0390a954e",
+        "lab/irix-pty/setup.sh": "5fb1b9fdac2018886ec22220bd1f29f145df75406c5bf618cdae2ac4a3d8089d",
+        "lab/irix-pty/native.c": "a36cf2a58faeee1a5c9b5b7e99ce6247edf46285cea0b636796688d45de88a5c",
+        "lab/irix-process/group-control.c": "bf7d4779ded47114f5464e30fa0bed71b2115713716d1ac446643d8ac7e914d5",
+        "lab/irix-process/trace-window.awk": "c549fbf4acb89df00e227d3728768ff06e274c0d3cbde0a6bc218705bc9ecb7d"
+      },
+      "cases": [
+        {
+          "name": "0-default",
+          "uid": 0,
+          "font": null,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": -1,
+            "signal": 9,
+            "killed": 1,
+            "stdout": "",
+            "stderr": "/emul/irix/usr/sbin/xwsh: Function not implemented: can't start command\n"
+          },
+          "group_absent": true,
+          "parent_pid": 3697,
+          "child_pid": 3162,
+          "fork": {
+            "pid": 3697,
+            "call": {
+              "syscall": 1002,
+              "pc": 262530836,
+              "a0": 2147448351,
+              "a1": 1,
+              "a2": 0,
+              "a3": 1054308
+            },
+            "ret": {
+              "syscall": 1002,
+              "v0": 3162,
+              "a3": 0
+            },
+            "paths": []
+          },
+          "slave_open": {
+            "pid": 3162,
+            "call": {
+              "syscall": 1005,
+              "pc": 262470640,
+              "a0": 272843624,
+              "a1": 2,
+              "a2": 4294967295,
+              "a3": 1
+            },
+            "ret": {
+              "syscall": 1005,
+              "v0": 5,
+              "a3": 0
+            },
+            "paths": [
+              "/emul/irix/dev/ttyq0"
+            ]
+          },
+          "child_exec": {
+            "pid": 3162,
+            "call": {
+              "syscall": 1059,
+              "pc": 262750508,
+              "a0": 2147446256,
+              "a1": 2147449960,
+              "a2": 272909576,
+              "a3": 104
+            },
+            "ret": {
+              "syscall": 1059,
+              "v0": 89,
+              "a3": 1
+            },
+            "paths": []
+          },
+          "child_exit": {
+            "pid": 3162,
+            "call": {
+              "syscall": 1001,
+              "pc": 262502352,
+              "a0": 4294967295,
+              "a1": 4,
+              "a2": 2,
+              "a3": 0
+            },
+            "ret": null,
+            "paths": []
+          },
+          "child_unsupported": {
+            "1040": 4,
+            "1063": 1,
+            "1041": 2,
+            "1054": 1,
+            "1034": 2,
+            "1046": 1,
+            "1023": 1,
+            "1162": 2,
+            "1059": 1,
+            "1130": 2
+          },
+          "child_events": [
+            {
+              "pid": 3162,
+              "call": {
+                "syscall": 1164,
+                "pc": 262558880,
+                "a0": 2,
+                "a1": 2147448432,
+                "a2": 0,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1164,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "pid": 3162,
+              "call": {
+                "syscall": 1040,
+                "pc": 262470072,
+                "a0": 109,
+                "a1": 2147450716,
+                "a2": 2147449960,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1040,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3162,
+              "call": {
+                "syscall": 1063,
+                "pc": 263230480,
+                "a0": 4,
+                "a1": 0,
+                "a2": 4294967295,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1063,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3162,
+              "call": {
+                "syscall": 1040,
+                "pc": 262470072,
+                "a0": 20,
+                "a1": 0,
+                "a2": 4294967295,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1040,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3162,
+              "call": {
+                "syscall": 1005,
+                "pc": 262470640,
+                "a0": 272843624,
+                "a1": 2,
+                "a2": 4294967295,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1005,
+                "v0": 5,
+                "a3": 0
+              },
+              "paths": [
+                "/emul/irix/dev/ttyq0"
+              ]
+            },
+            {
+              "pid": 3162,
+              "call": {
+                "syscall": 1041,
+                "pc": 262591448,
+                "a0": 0,
+                "a1": 2,
+                "a2": 4294967295,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1041,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3162,
+              "call": {
+                "syscall": 1041,
+                "pc": 262591448,
+                "a0": 0,
+                "a1": 2,
+                "a2": 4294967295,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1041,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3162,
+              "call": {
+                "syscall": 1054,
+                "pc": 262475332,
+                "a0": 0,
+                "a1": 2148037735,
+                "a2": 2147449968,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1054,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3162,
+              "call": {
+                "syscall": 1034,
+                "pc": 262992104,
+                "a0": 4294967256,
+                "a1": 263550352,
+                "a2": 1,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1034,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3162,
+              "call": {
+                "syscall": 1034,
+                "pc": 262992104,
+                "a0": 20,
+                "a1": 1,
+                "a2": 263550440,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1034,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3162,
+              "call": {
+                "syscall": 1024,
+                "pc": 262534632,
+                "a0": 89,
+                "a1": 263550352,
+                "a2": 1,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1024,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "pid": 3162,
+              "call": {
+                "syscall": 1047,
+                "pc": 262529128,
+                "a0": 89,
+                "a1": 263550352,
+                "a2": 1,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1047,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "pid": 3162,
+              "call": {
+                "syscall": 1016,
+                "pc": 262542272,
+                "a0": 272843624,
+                "a1": 0,
+                "a2": 0,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1016,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": [
+                "/emul/irix/dev/ttyq0"
+              ]
+            },
+            {
+              "pid": 3162,
+              "call": {
+                "syscall": 1015,
+                "pc": 262541752,
+                "a0": 272843624,
+                "a1": 402,
+                "a2": 0,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1015,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": [
+                "/emul/irix/dev/ttyq0"
+              ]
+            },
+            {
+              "pid": 3162,
+              "call": {
+                "syscall": 1047,
+                "pc": 262529128,
+                "a0": 0,
+                "a1": 1,
+                "a2": 263550440,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1047,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "pid": 3162,
+              "call": {
+                "syscall": 1046,
+                "pc": 262622912,
+                "a0": 0,
+                "a1": 1,
+                "a2": 263550440,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1046,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3162,
+              "call": {
+                "syscall": 1024,
+                "pc": 262534632,
+                "a0": 0,
+                "a1": 1,
+                "a2": 263550440,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1024,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "pid": 3162,
+              "call": {
+                "syscall": 1023,
+                "pc": 262564280,
+                "a0": 0,
+                "a1": 1,
+                "a2": 263550440,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1023,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3162,
+              "call": {
+                "syscall": 1162,
+                "pc": 262522236,
+                "a0": 2,
+                "a1": 2147448272,
+                "a2": 2147448304,
+                "a3": 263182456
+              },
+              "ret": {
+                "syscall": 1162,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3162,
+              "call": {
+                "syscall": 1162,
+                "pc": 262522236,
+                "a0": 3,
+                "a1": 2147448272,
+                "a2": 2147448304,
+                "a3": 263182456
+              },
+              "ret": {
+                "syscall": 1162,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3162,
+              "call": {
+                "syscall": 1040,
+                "pc": 262470072,
+                "a0": 85,
+                "a1": 263468880,
+                "a2": 272763008,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1040,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "pid": 3162,
+              "call": {
+                "syscall": 1040,
+                "pc": 262470072,
+                "a0": 86,
+                "a1": 263468880,
+                "a2": 272763008,
+                "a3": 24
+              },
+              "ret": {
+                "syscall": 1040,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3162,
+              "call": {
+                "syscall": 1059,
+                "pc": 262750508,
+                "a0": 2147446256,
+                "a1": 2147449960,
+                "a2": 272909576,
+                "a3": 104
+              },
+              "ret": {
+                "syscall": 1059,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3162,
+              "call": {
+                "syscall": 1040,
+                "pc": 262470072,
+                "a0": 92,
+                "a1": 1,
+                "a2": 0,
+                "a3": 47
+              },
+              "ret": {
+                "syscall": 1040,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3162,
+              "call": {
+                "syscall": 1158,
+                "pc": 262470200,
+                "a0": 2,
+                "a1": 2147447312,
+                "a2": 2147448336,
+                "a3": 99
+              },
+              "ret": {
+                "syscall": 1158,
+                "v0": 2,
+                "a3": 1
+              },
+              "paths": [
+                "/emul/irix/usr/lib/locale/C/LC_MESSAGES/uxsgierr",
+                "/usr/lib/locale/C/LC_MESSAGES/uxsgierr"
+              ]
+            },
+            {
+              "pid": 3162,
+              "call": {
+                "syscall": 1158,
+                "pc": 262470200,
+                "a0": 2,
+                "a1": 2147447312,
+                "a2": 2147448336,
+                "a3": 99
+              },
+              "ret": {
+                "syscall": 1158,
+                "v0": 2,
+                "a3": 1
+              },
+              "paths": [
+                "/emul/irix/usr/lib/locale/C/Xopen/LC_MESSAGES/uxsgierr",
+                "/usr/lib/locale/C/Xopen/LC_MESSAGES/uxsgierr"
+              ]
+            },
+            {
+              "pid": 3162,
+              "call": {
+                "syscall": 1158,
+                "pc": 262470200,
+                "a0": 2,
+                "a1": 2147447312,
+                "a2": 2147448336,
+                "a3": 99
+              },
+              "ret": {
+                "syscall": 1158,
+                "v0": 2,
+                "a3": 1
+              },
+              "paths": [
+                "/emul/irix/usr/lib/locale/C/LC_MESSAGES/uxsgierr.cat",
+                "/usr/lib/locale/C/LC_MESSAGES/uxsgierr.cat"
+              ]
+            },
+            {
+              "pid": 3162,
+              "call": {
+                "syscall": 1004,
+                "pc": 262541384,
+                "a0": 2,
+                "a1": 272708440,
+                "a2": 24,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1004,
+                "v0": 24,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "pid": 3162,
+              "call": {
+                "syscall": 1004,
+                "pc": 262541384,
+                "a0": 2,
+                "a1": 263575416,
+                "a2": 8,
+                "a3": 4
+              },
+              "ret": {
+                "syscall": 1004,
+                "v0": 8,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "pid": 3162,
+              "call": {
+                "syscall": 1004,
+                "pc": 262541384,
+                "a0": 2,
+                "a1": 263454726,
+                "a2": 18,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1004,
+                "v0": 18,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "pid": 3162,
+              "call": {
+                "syscall": 1004,
+                "pc": 262541384,
+                "a0": 2,
+                "a1": 272630566,
+                "a2": 22,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1004,
+                "v0": 22,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "pid": 3162,
+              "call": {
+                "syscall": 1130,
+                "pc": 262502756,
+                "a0": 22,
+                "a1": 0,
+                "a2": 263574784,
+                "a3": 1083004
+              },
+              "ret": {
+                "syscall": 1130,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3162,
+              "call": {
+                "syscall": 1130,
+                "pc": 262502756,
+                "a0": 14,
+                "a1": 1,
+                "a2": 263574784,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1130,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3162,
+              "call": {
+                "syscall": 1001,
+                "pc": 262502352,
+                "a0": 4294967295,
+                "a1": 4,
+                "a2": 2,
+                "a3": 0
+              },
+              "ret": null,
+              "paths": []
+            }
+          ],
+          "tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     4 children:\n     0x200011 (has no name): ()  1x1+0+0  +0+0\n     0x200010 (has no name): ()  1x1+0+0  +0+0\n     0x20000b (has no name): ()  1x1+0+0  +0+0\n     0x200005 \"winterm\": (\"winterm\" \"XWsh\")  983x840+0+0  +0+0\n        2 children:\n        0x200012 (has no name): ()  965x840+18+0  +18+0\n           2 children:\n           0x200013 (has no name): ()  965x840+0+0  +18+0\n           0x20001b (has no name): ()  965x840+0+0  +18+0\n        0x200006 (has no name): ()  18x840+0+0  +0+0\n           1 child:\n           0x20001c (has no name): ()  16x30+1+18  +1+18\n\n",
+          "trace_scope": "first 2000 parent events, all other processes and all signals",
+          "trace_info": "SHA256 (winterm.ktrace) = 471592327b30e9bbb3eee0b3bc23933eb71ab0dadadfac2bb98155387699ea38\nSHA256 (winterm.dump) = a42953a8cc5d8b7a9d5f591356289a77b00559d597ebdead93564c71e668818a\n  112691 winterm.dump\n    8566 winterm.capture\n  121257 total\n",
+          "full_trace_hashes": {
+            "winterm.ktrace": "471592327b30e9bbb3eee0b3bc23933eb71ab0dadadfac2bb98155387699ea38",
+            "winterm.dump": "a42953a8cc5d8b7a9d5f591356289a77b00559d597ebdead93564c71e668818a"
+          },
+          "trace_line_counts": {
+            "winterm.dump": 112691,
+            "winterm.capture": 8566
+          },
+          "trace_sha256": "e1576ffcc25260f517a3716174fa0a6f2958b3853e62943fb54abf4b930a1edf",
+          "frame_sha256": "c762d6b20bee2bf45ea7e2b7de3ac1004f6b2ae0fd23f861287fd2a5d45bae30"
+        },
+        {
+          "name": "0-fixed",
+          "uid": 0,
+          "font": "fixed",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": -1,
+            "signal": 9,
+            "killed": 1,
+            "stdout": "",
+            "stderr": "/emul/irix/usr/sbin/xwsh: Function not implemented: can't start command\n"
+          },
+          "group_absent": true,
+          "parent_pid": 3304,
+          "child_pid": 3817,
+          "fork": {
+            "pid": 3304,
+            "call": {
+              "syscall": 1002,
+              "pc": 262530836,
+              "a0": 2147448335,
+              "a1": 1,
+              "a2": 0,
+              "a3": 1054308
+            },
+            "ret": {
+              "syscall": 1002,
+              "v0": 3817,
+              "a3": 0
+            },
+            "paths": []
+          },
+          "slave_open": {
+            "pid": 3817,
+            "call": {
+              "syscall": 1005,
+              "pc": 262470640,
+              "a0": 272843376,
+              "a1": 2,
+              "a2": 4294967295,
+              "a3": 1
+            },
+            "ret": {
+              "syscall": 1005,
+              "v0": 5,
+              "a3": 0
+            },
+            "paths": [
+              "/emul/irix/dev/ttyq0"
+            ]
+          },
+          "child_exec": {
+            "pid": 3817,
+            "call": {
+              "syscall": 1059,
+              "pc": 262750508,
+              "a0": 2147446240,
+              "a1": 2147449944,
+              "a2": 272909376,
+              "a3": 104
+            },
+            "ret": {
+              "syscall": 1059,
+              "v0": 89,
+              "a3": 1
+            },
+            "paths": []
+          },
+          "child_exit": {
+            "pid": 3817,
+            "call": {
+              "syscall": 1001,
+              "pc": 262502352,
+              "a0": 4294967295,
+              "a1": 4,
+              "a2": 2,
+              "a3": 0
+            },
+            "ret": null,
+            "paths": []
+          },
+          "child_unsupported": {
+            "1040": 4,
+            "1063": 1,
+            "1041": 2,
+            "1054": 1,
+            "1034": 2,
+            "1046": 1,
+            "1023": 1,
+            "1162": 2,
+            "1059": 1,
+            "1130": 2
+          },
+          "child_events": [
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1164,
+                "pc": 262558880,
+                "a0": 2,
+                "a1": 2147448416,
+                "a2": 0,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1164,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1040,
+                "pc": 262470072,
+                "a0": 109,
+                "a1": 2147450726,
+                "a2": 2147449944,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1040,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1063,
+                "pc": 263230480,
+                "a0": 4,
+                "a1": 0,
+                "a2": 4294967295,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1063,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1040,
+                "pc": 262470072,
+                "a0": 20,
+                "a1": 0,
+                "a2": 4294967295,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1040,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1005,
+                "pc": 262470640,
+                "a0": 272843376,
+                "a1": 2,
+                "a2": 4294967295,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1005,
+                "v0": 5,
+                "a3": 0
+              },
+              "paths": [
+                "/emul/irix/dev/ttyq0"
+              ]
+            },
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1041,
+                "pc": 262591448,
+                "a0": 0,
+                "a1": 2,
+                "a2": 4294967295,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1041,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1041,
+                "pc": 262591448,
+                "a0": 0,
+                "a1": 2,
+                "a2": 4294967295,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1041,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1054,
+                "pc": 262475332,
+                "a0": 0,
+                "a1": 2148037735,
+                "a2": 2147449952,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1054,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1034,
+                "pc": 262992104,
+                "a0": 4294967256,
+                "a1": 263550352,
+                "a2": 1,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1034,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1034,
+                "pc": 262992104,
+                "a0": 20,
+                "a1": 1,
+                "a2": 263550440,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1034,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1024,
+                "pc": 262534632,
+                "a0": 89,
+                "a1": 263550352,
+                "a2": 1,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1024,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1047,
+                "pc": 262529128,
+                "a0": 89,
+                "a1": 263550352,
+                "a2": 1,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1047,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1016,
+                "pc": 262542272,
+                "a0": 272843376,
+                "a1": 0,
+                "a2": 0,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1016,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": [
+                "/emul/irix/dev/ttyq0"
+              ]
+            },
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1015,
+                "pc": 262541752,
+                "a0": 272843376,
+                "a1": 402,
+                "a2": 0,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1015,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": [
+                "/emul/irix/dev/ttyq0"
+              ]
+            },
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1047,
+                "pc": 262529128,
+                "a0": 0,
+                "a1": 1,
+                "a2": 263550440,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1047,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1046,
+                "pc": 262622912,
+                "a0": 0,
+                "a1": 1,
+                "a2": 263550440,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1046,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1024,
+                "pc": 262534632,
+                "a0": 0,
+                "a1": 1,
+                "a2": 263550440,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1024,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1023,
+                "pc": 262564280,
+                "a0": 0,
+                "a1": 1,
+                "a2": 263550440,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1023,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1162,
+                "pc": 262522236,
+                "a0": 2,
+                "a1": 2147448256,
+                "a2": 2147448288,
+                "a3": 263182456
+              },
+              "ret": {
+                "syscall": 1162,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1162,
+                "pc": 262522236,
+                "a0": 3,
+                "a1": 2147448256,
+                "a2": 2147448288,
+                "a3": 263182456
+              },
+              "ret": {
+                "syscall": 1162,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1040,
+                "pc": 262470072,
+                "a0": 85,
+                "a1": 263468880,
+                "a2": 272762944,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1040,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1040,
+                "pc": 262470072,
+                "a0": 86,
+                "a1": 263468880,
+                "a2": 272762944,
+                "a3": 24
+              },
+              "ret": {
+                "syscall": 1040,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1059,
+                "pc": 262750508,
+                "a0": 2147446240,
+                "a1": 2147449944,
+                "a2": 272909376,
+                "a3": 104
+              },
+              "ret": {
+                "syscall": 1059,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1040,
+                "pc": 262470072,
+                "a0": 92,
+                "a1": 1,
+                "a2": 0,
+                "a3": 47
+              },
+              "ret": {
+                "syscall": 1040,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1158,
+                "pc": 262470200,
+                "a0": 2,
+                "a1": 2147447296,
+                "a2": 2147448320,
+                "a3": 99
+              },
+              "ret": {
+                "syscall": 1158,
+                "v0": 2,
+                "a3": 1
+              },
+              "paths": [
+                "/emul/irix/usr/lib/locale/C/LC_MESSAGES/uxsgierr",
+                "/usr/lib/locale/C/LC_MESSAGES/uxsgierr"
+              ]
+            },
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1158,
+                "pc": 262470200,
+                "a0": 2,
+                "a1": 2147447296,
+                "a2": 2147448320,
+                "a3": 99
+              },
+              "ret": {
+                "syscall": 1158,
+                "v0": 2,
+                "a3": 1
+              },
+              "paths": [
+                "/emul/irix/usr/lib/locale/C/Xopen/LC_MESSAGES/uxsgierr",
+                "/usr/lib/locale/C/Xopen/LC_MESSAGES/uxsgierr"
+              ]
+            },
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1158,
+                "pc": 262470200,
+                "a0": 2,
+                "a1": 2147447296,
+                "a2": 2147448320,
+                "a3": 99
+              },
+              "ret": {
+                "syscall": 1158,
+                "v0": 2,
+                "a3": 1
+              },
+              "paths": [
+                "/emul/irix/usr/lib/locale/C/LC_MESSAGES/uxsgierr.cat",
+                "/usr/lib/locale/C/LC_MESSAGES/uxsgierr.cat"
+              ]
+            },
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1004,
+                "pc": 262541384,
+                "a0": 2,
+                "a1": 272708440,
+                "a2": 24,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1004,
+                "v0": 24,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1004,
+                "pc": 262541384,
+                "a0": 2,
+                "a1": 263575416,
+                "a2": 8,
+                "a3": 4
+              },
+              "ret": {
+                "syscall": 1004,
+                "v0": 8,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1004,
+                "pc": 262541384,
+                "a0": 2,
+                "a1": 263454726,
+                "a2": 18,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1004,
+                "v0": 18,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1004,
+                "pc": 262541384,
+                "a0": 2,
+                "a1": 272630566,
+                "a2": 22,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1004,
+                "v0": 22,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1130,
+                "pc": 262502756,
+                "a0": 22,
+                "a1": 0,
+                "a2": 263574784,
+                "a3": 1083004
+              },
+              "ret": {
+                "syscall": 1130,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1130,
+                "pc": 262502756,
+                "a0": 14,
+                "a1": 1,
+                "a2": 263574784,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1130,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3817,
+              "call": {
+                "syscall": 1001,
+                "pc": 262502352,
+                "a0": 4294967295,
+                "a1": 4,
+                "a2": 2,
+                "a3": 0
+              },
+              "ret": null,
+              "paths": []
+            }
+          ],
+          "tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     4 children:\n     0x200011 (has no name): ()  1x1+0+0  +0+0\n     0x200010 (has no name): ()  1x1+0+0  +0+0\n     0x20000b (has no name): ()  1x1+0+0  +0+0\n     0x200005 \"winterm\": (\"winterm\" \"XWsh\")  503x520+0+0  +0+0\n        2 children:\n        0x200012 (has no name): ()  485x520+18+0  +18+0\n           2 children:\n           0x200013 (has no name): ()  485x520+0+0  +18+0\n           0x20001b (has no name): ()  485x520+0+0  +18+0\n        0x200006 (has no name): ()  18x520+0+0  +0+0\n           1 child:\n           0x20001c (has no name): ()  16x30+1+18  +1+18\n\n",
+          "trace_scope": "first 2000 parent events, all other processes and all signals",
+          "trace_info": "SHA256 (winterm.ktrace) = fb3255e90fb6e07ab94783c6b5a0b48510404a7623b043413f92e58b5744e5aa\nSHA256 (winterm.dump) = 41422bbb421b2ba9bc26ff74d1e218a4a41e8e2088858951925f273abc18c300\n  123649 winterm.dump\n    8570 winterm.capture\n  132219 total\n",
+          "full_trace_hashes": {
+            "winterm.ktrace": "fb3255e90fb6e07ab94783c6b5a0b48510404a7623b043413f92e58b5744e5aa",
+            "winterm.dump": "41422bbb421b2ba9bc26ff74d1e218a4a41e8e2088858951925f273abc18c300"
+          },
+          "trace_line_counts": {
+            "winterm.dump": 123649,
+            "winterm.capture": 8570
+          },
+          "trace_sha256": "8ef7aa199c30372734ec338ee7c9caaf6c44e767e50a3c0c95020f150c7af9d0",
+          "frame_sha256": "10a85e5bf6e75fbf3e7fe3f654a499b27079978868aac18cc3e742ba4b103a86"
+        },
+        {
+          "name": "1234-default",
+          "uid": 1234,
+          "font": null,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": -1,
+            "signal": 9,
+            "killed": 1,
+            "stdout": "",
+            "stderr": "/emul/irix/usr/sbin/xwsh: Function not implemented: can't start command\n"
+          },
+          "group_absent": true,
+          "parent_pid": 3945,
+          "child_pid": 3432,
+          "fork": {
+            "pid": 3945,
+            "call": {
+              "syscall": 1002,
+              "pc": 262530836,
+              "a0": 2147448351,
+              "a1": 1,
+              "a2": 0,
+              "a3": 1054308
+            },
+            "ret": {
+              "syscall": 1002,
+              "v0": 3432,
+              "a3": 0
+            },
+            "paths": []
+          },
+          "slave_open": {
+            "pid": 3432,
+            "call": {
+              "syscall": 1005,
+              "pc": 262470640,
+              "a0": 272843624,
+              "a1": 2,
+              "a2": 4294967295,
+              "a3": 1
+            },
+            "ret": {
+              "syscall": 1005,
+              "v0": 5,
+              "a3": 0
+            },
+            "paths": [
+              "/emul/irix/dev/ttyq0"
+            ]
+          },
+          "child_exec": {
+            "pid": 3432,
+            "call": {
+              "syscall": 1059,
+              "pc": 262750508,
+              "a0": 2147446256,
+              "a1": 2147449960,
+              "a2": 272909576,
+              "a3": 104
+            },
+            "ret": {
+              "syscall": 1059,
+              "v0": 89,
+              "a3": 1
+            },
+            "paths": []
+          },
+          "child_exit": {
+            "pid": 3432,
+            "call": {
+              "syscall": 1001,
+              "pc": 262502352,
+              "a0": 4294967295,
+              "a1": 4,
+              "a2": 2,
+              "a3": 0
+            },
+            "ret": null,
+            "paths": []
+          },
+          "child_unsupported": {
+            "1040": 4,
+            "1063": 1,
+            "1041": 2,
+            "1054": 1,
+            "1162": 2,
+            "1059": 1,
+            "1130": 2
+          },
+          "child_events": [
+            {
+              "pid": 3432,
+              "call": {
+                "syscall": 1164,
+                "pc": 262558880,
+                "a0": 2,
+                "a1": 2147448432,
+                "a2": 0,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1164,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "pid": 3432,
+              "call": {
+                "syscall": 1040,
+                "pc": 262470072,
+                "a0": 109,
+                "a1": 2147450716,
+                "a2": 2147449960,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1040,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3432,
+              "call": {
+                "syscall": 1063,
+                "pc": 263230480,
+                "a0": 4,
+                "a1": 0,
+                "a2": 4294967295,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1063,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3432,
+              "call": {
+                "syscall": 1040,
+                "pc": 262470072,
+                "a0": 20,
+                "a1": 0,
+                "a2": 4294967295,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1040,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3432,
+              "call": {
+                "syscall": 1005,
+                "pc": 262470640,
+                "a0": 272843624,
+                "a1": 2,
+                "a2": 4294967295,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1005,
+                "v0": 5,
+                "a3": 0
+              },
+              "paths": [
+                "/emul/irix/dev/ttyq0"
+              ]
+            },
+            {
+              "pid": 3432,
+              "call": {
+                "syscall": 1041,
+                "pc": 262591448,
+                "a0": 0,
+                "a1": 2,
+                "a2": 4294967295,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1041,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3432,
+              "call": {
+                "syscall": 1041,
+                "pc": 262591448,
+                "a0": 0,
+                "a1": 2,
+                "a2": 4294967295,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1041,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3432,
+              "call": {
+                "syscall": 1054,
+                "pc": 262475332,
+                "a0": 0,
+                "a1": 2148037735,
+                "a2": 2147449968,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1054,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3432,
+              "call": {
+                "syscall": 1162,
+                "pc": 262522236,
+                "a0": 2,
+                "a1": 2147448272,
+                "a2": 2147448304,
+                "a3": 263182456
+              },
+              "ret": {
+                "syscall": 1162,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3432,
+              "call": {
+                "syscall": 1162,
+                "pc": 262522236,
+                "a0": 3,
+                "a1": 2147448272,
+                "a2": 2147448304,
+                "a3": 263182456
+              },
+              "ret": {
+                "syscall": 1162,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3432,
+              "call": {
+                "syscall": 1040,
+                "pc": 262470072,
+                "a0": 85,
+                "a1": 263468880,
+                "a2": 272763008,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1040,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "pid": 3432,
+              "call": {
+                "syscall": 1040,
+                "pc": 262470072,
+                "a0": 86,
+                "a1": 263468880,
+                "a2": 272763008,
+                "a3": 24
+              },
+              "ret": {
+                "syscall": 1040,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3432,
+              "call": {
+                "syscall": 1059,
+                "pc": 262750508,
+                "a0": 2147446256,
+                "a1": 2147449960,
+                "a2": 272909576,
+                "a3": 104
+              },
+              "ret": {
+                "syscall": 1059,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3432,
+              "call": {
+                "syscall": 1040,
+                "pc": 262470072,
+                "a0": 92,
+                "a1": 1,
+                "a2": 0,
+                "a3": 47
+              },
+              "ret": {
+                "syscall": 1040,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3432,
+              "call": {
+                "syscall": 1158,
+                "pc": 262470200,
+                "a0": 2,
+                "a1": 2147447312,
+                "a2": 2147448336,
+                "a3": 99
+              },
+              "ret": {
+                "syscall": 1158,
+                "v0": 2,
+                "a3": 1
+              },
+              "paths": [
+                "/emul/irix/usr/lib/locale/C/LC_MESSAGES/uxsgierr",
+                "/usr/lib/locale/C/LC_MESSAGES/uxsgierr"
+              ]
+            },
+            {
+              "pid": 3432,
+              "call": {
+                "syscall": 1158,
+                "pc": 262470200,
+                "a0": 2,
+                "a1": 2147447312,
+                "a2": 2147448336,
+                "a3": 99
+              },
+              "ret": {
+                "syscall": 1158,
+                "v0": 2,
+                "a3": 1
+              },
+              "paths": [
+                "/emul/irix/usr/lib/locale/C/Xopen/LC_MESSAGES/uxsgierr",
+                "/usr/lib/locale/C/Xopen/LC_MESSAGES/uxsgierr"
+              ]
+            },
+            {
+              "pid": 3432,
+              "call": {
+                "syscall": 1158,
+                "pc": 262470200,
+                "a0": 2,
+                "a1": 2147447312,
+                "a2": 2147448336,
+                "a3": 99
+              },
+              "ret": {
+                "syscall": 1158,
+                "v0": 2,
+                "a3": 1
+              },
+              "paths": [
+                "/emul/irix/usr/lib/locale/C/LC_MESSAGES/uxsgierr.cat",
+                "/usr/lib/locale/C/LC_MESSAGES/uxsgierr.cat"
+              ]
+            },
+            {
+              "pid": 3432,
+              "call": {
+                "syscall": 1004,
+                "pc": 262541384,
+                "a0": 2,
+                "a1": 272708440,
+                "a2": 24,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1004,
+                "v0": 24,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "pid": 3432,
+              "call": {
+                "syscall": 1004,
+                "pc": 262541384,
+                "a0": 2,
+                "a1": 263575416,
+                "a2": 8,
+                "a3": 4
+              },
+              "ret": {
+                "syscall": 1004,
+                "v0": 8,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "pid": 3432,
+              "call": {
+                "syscall": 1004,
+                "pc": 262541384,
+                "a0": 2,
+                "a1": 263454726,
+                "a2": 18,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1004,
+                "v0": 18,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "pid": 3432,
+              "call": {
+                "syscall": 1004,
+                "pc": 262541384,
+                "a0": 2,
+                "a1": 272630566,
+                "a2": 22,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1004,
+                "v0": 22,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "pid": 3432,
+              "call": {
+                "syscall": 1130,
+                "pc": 262502756,
+                "a0": 22,
+                "a1": 0,
+                "a2": 263574784,
+                "a3": 1083004
+              },
+              "ret": {
+                "syscall": 1130,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3432,
+              "call": {
+                "syscall": 1130,
+                "pc": 262502756,
+                "a0": 14,
+                "a1": 1,
+                "a2": 263574784,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1130,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3432,
+              "call": {
+                "syscall": 1001,
+                "pc": 262502352,
+                "a0": 4294967295,
+                "a1": 4,
+                "a2": 2,
+                "a3": 0
+              },
+              "ret": null,
+              "paths": []
+            }
+          ],
+          "tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     4 children:\n     0x200011 (has no name): ()  1x1+0+0  +0+0\n     0x200010 (has no name): ()  1x1+0+0  +0+0\n     0x20000b (has no name): ()  1x1+0+0  +0+0\n     0x200005 \"winterm\": (\"winterm\" \"XWsh\")  983x840+0+0  +0+0\n        2 children:\n        0x200012 (has no name): ()  965x840+18+0  +18+0\n           2 children:\n           0x200013 (has no name): ()  965x840+0+0  +18+0\n           0x20001b (has no name): ()  965x840+0+0  +18+0\n        0x200006 (has no name): ()  18x840+0+0  +0+0\n           1 child:\n           0x20001c (has no name): ()  16x30+1+18  +1+18\n\n",
+          "trace_scope": "first 2000 parent events, all other processes and all signals",
+          "trace_info": "SHA256 (winterm.ktrace) = 749d513ab3cf7a62993da1cbfc6179c477a1f3bcc4194554e0ae9640631d01b2\nSHA256 (winterm.dump) = 414673fc3efddff3c06acbbd1be116baefe9642516d2976425c9f45eee3aa19b\n  138565 winterm.dump\n    8478 winterm.capture\n  147043 total\n",
+          "full_trace_hashes": {
+            "winterm.ktrace": "749d513ab3cf7a62993da1cbfc6179c477a1f3bcc4194554e0ae9640631d01b2",
+            "winterm.dump": "414673fc3efddff3c06acbbd1be116baefe9642516d2976425c9f45eee3aa19b"
+          },
+          "trace_line_counts": {
+            "winterm.dump": 138565,
+            "winterm.capture": 8478
+          },
+          "trace_sha256": "a46d2e1ca1996330015bfcf065825cd1f44f1d7b31714d4f24a7b8a79c65955a",
+          "frame_sha256": "c762d6b20bee2bf45ea7e2b7de3ac1004f6b2ae0fd23f861287fd2a5d45bae30"
+        },
+        {
+          "name": "1234-fixed",
+          "uid": 1234,
+          "font": "fixed",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": -1,
+            "signal": 9,
+            "killed": 1,
+            "stdout": "",
+            "stderr": "/emul/irix/usr/sbin/xwsh: Function not implemented: can't start command\n"
+          },
+          "group_absent": true,
+          "parent_pid": 2534,
+          "child_pid": 3888,
+          "fork": {
+            "pid": 2534,
+            "call": {
+              "syscall": 1002,
+              "pc": 262530836,
+              "a0": 2147448335,
+              "a1": 1,
+              "a2": 0,
+              "a3": 1054308
+            },
+            "ret": {
+              "syscall": 1002,
+              "v0": 3888,
+              "a3": 0
+            },
+            "paths": []
+          },
+          "slave_open": {
+            "pid": 3888,
+            "call": {
+              "syscall": 1005,
+              "pc": 262470640,
+              "a0": 272843376,
+              "a1": 2,
+              "a2": 4294967295,
+              "a3": 1
+            },
+            "ret": {
+              "syscall": 1005,
+              "v0": 5,
+              "a3": 0
+            },
+            "paths": [
+              "/emul/irix/dev/ttyq0"
+            ]
+          },
+          "child_exec": {
+            "pid": 3888,
+            "call": {
+              "syscall": 1059,
+              "pc": 262750508,
+              "a0": 2147446240,
+              "a1": 2147449944,
+              "a2": 272909376,
+              "a3": 104
+            },
+            "ret": {
+              "syscall": 1059,
+              "v0": 89,
+              "a3": 1
+            },
+            "paths": []
+          },
+          "child_exit": {
+            "pid": 3888,
+            "call": {
+              "syscall": 1001,
+              "pc": 262502352,
+              "a0": 4294967295,
+              "a1": 4,
+              "a2": 2,
+              "a3": 0
+            },
+            "ret": null,
+            "paths": []
+          },
+          "child_unsupported": {
+            "1040": 4,
+            "1063": 1,
+            "1041": 2,
+            "1054": 1,
+            "1162": 2,
+            "1059": 1,
+            "1130": 2
+          },
+          "child_events": [
+            {
+              "pid": 3888,
+              "call": {
+                "syscall": 1164,
+                "pc": 262558880,
+                "a0": 2,
+                "a1": 2147448416,
+                "a2": 0,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1164,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "pid": 3888,
+              "call": {
+                "syscall": 1040,
+                "pc": 262470072,
+                "a0": 109,
+                "a1": 2147450726,
+                "a2": 2147449944,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1040,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3888,
+              "call": {
+                "syscall": 1063,
+                "pc": 263230480,
+                "a0": 4,
+                "a1": 0,
+                "a2": 4294967295,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1063,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3888,
+              "call": {
+                "syscall": 1040,
+                "pc": 262470072,
+                "a0": 20,
+                "a1": 0,
+                "a2": 4294967295,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1040,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3888,
+              "call": {
+                "syscall": 1005,
+                "pc": 262470640,
+                "a0": 272843376,
+                "a1": 2,
+                "a2": 4294967295,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1005,
+                "v0": 5,
+                "a3": 0
+              },
+              "paths": [
+                "/emul/irix/dev/ttyq0"
+              ]
+            },
+            {
+              "pid": 3888,
+              "call": {
+                "syscall": 1041,
+                "pc": 262591448,
+                "a0": 0,
+                "a1": 2,
+                "a2": 4294967295,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1041,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3888,
+              "call": {
+                "syscall": 1041,
+                "pc": 262591448,
+                "a0": 0,
+                "a1": 2,
+                "a2": 4294967295,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1041,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3888,
+              "call": {
+                "syscall": 1054,
+                "pc": 262475332,
+                "a0": 0,
+                "a1": 2148037735,
+                "a2": 2147449952,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1054,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3888,
+              "call": {
+                "syscall": 1162,
+                "pc": 262522236,
+                "a0": 2,
+                "a1": 2147448256,
+                "a2": 2147448288,
+                "a3": 263182456
+              },
+              "ret": {
+                "syscall": 1162,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3888,
+              "call": {
+                "syscall": 1162,
+                "pc": 262522236,
+                "a0": 3,
+                "a1": 2147448256,
+                "a2": 2147448288,
+                "a3": 263182456
+              },
+              "ret": {
+                "syscall": 1162,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3888,
+              "call": {
+                "syscall": 1040,
+                "pc": 262470072,
+                "a0": 85,
+                "a1": 263468880,
+                "a2": 272762944,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1040,
+                "v0": 0,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "pid": 3888,
+              "call": {
+                "syscall": 1040,
+                "pc": 262470072,
+                "a0": 86,
+                "a1": 263468880,
+                "a2": 272762944,
+                "a3": 24
+              },
+              "ret": {
+                "syscall": 1040,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3888,
+              "call": {
+                "syscall": 1059,
+                "pc": 262750508,
+                "a0": 2147446240,
+                "a1": 2147449944,
+                "a2": 272909376,
+                "a3": 104
+              },
+              "ret": {
+                "syscall": 1059,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3888,
+              "call": {
+                "syscall": 1040,
+                "pc": 262470072,
+                "a0": 92,
+                "a1": 1,
+                "a2": 0,
+                "a3": 47
+              },
+              "ret": {
+                "syscall": 1040,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3888,
+              "call": {
+                "syscall": 1158,
+                "pc": 262470200,
+                "a0": 2,
+                "a1": 2147447296,
+                "a2": 2147448320,
+                "a3": 99
+              },
+              "ret": {
+                "syscall": 1158,
+                "v0": 2,
+                "a3": 1
+              },
+              "paths": [
+                "/emul/irix/usr/lib/locale/C/LC_MESSAGES/uxsgierr",
+                "/usr/lib/locale/C/LC_MESSAGES/uxsgierr"
+              ]
+            },
+            {
+              "pid": 3888,
+              "call": {
+                "syscall": 1158,
+                "pc": 262470200,
+                "a0": 2,
+                "a1": 2147447296,
+                "a2": 2147448320,
+                "a3": 99
+              },
+              "ret": {
+                "syscall": 1158,
+                "v0": 2,
+                "a3": 1
+              },
+              "paths": [
+                "/emul/irix/usr/lib/locale/C/Xopen/LC_MESSAGES/uxsgierr",
+                "/usr/lib/locale/C/Xopen/LC_MESSAGES/uxsgierr"
+              ]
+            },
+            {
+              "pid": 3888,
+              "call": {
+                "syscall": 1158,
+                "pc": 262470200,
+                "a0": 2,
+                "a1": 2147447296,
+                "a2": 2147448320,
+                "a3": 99
+              },
+              "ret": {
+                "syscall": 1158,
+                "v0": 2,
+                "a3": 1
+              },
+              "paths": [
+                "/emul/irix/usr/lib/locale/C/LC_MESSAGES/uxsgierr.cat",
+                "/usr/lib/locale/C/LC_MESSAGES/uxsgierr.cat"
+              ]
+            },
+            {
+              "pid": 3888,
+              "call": {
+                "syscall": 1004,
+                "pc": 262541384,
+                "a0": 2,
+                "a1": 272708440,
+                "a2": 24,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1004,
+                "v0": 24,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "pid": 3888,
+              "call": {
+                "syscall": 1004,
+                "pc": 262541384,
+                "a0": 2,
+                "a1": 263575416,
+                "a2": 8,
+                "a3": 4
+              },
+              "ret": {
+                "syscall": 1004,
+                "v0": 8,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "pid": 3888,
+              "call": {
+                "syscall": 1004,
+                "pc": 262541384,
+                "a0": 2,
+                "a1": 263454726,
+                "a2": 18,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1004,
+                "v0": 18,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "pid": 3888,
+              "call": {
+                "syscall": 1004,
+                "pc": 262541384,
+                "a0": 2,
+                "a1": 272630566,
+                "a2": 22,
+                "a3": 0
+              },
+              "ret": {
+                "syscall": 1004,
+                "v0": 22,
+                "a3": 0
+              },
+              "paths": []
+            },
+            {
+              "pid": 3888,
+              "call": {
+                "syscall": 1130,
+                "pc": 262502756,
+                "a0": 22,
+                "a1": 0,
+                "a2": 263574784,
+                "a3": 1083004
+              },
+              "ret": {
+                "syscall": 1130,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3888,
+              "call": {
+                "syscall": 1130,
+                "pc": 262502756,
+                "a0": 14,
+                "a1": 1,
+                "a2": 263574784,
+                "a3": 1
+              },
+              "ret": {
+                "syscall": 1130,
+                "v0": 89,
+                "a3": 1
+              },
+              "paths": []
+            },
+            {
+              "pid": 3888,
+              "call": {
+                "syscall": 1001,
+                "pc": 262502352,
+                "a0": 4294967295,
+                "a1": 4,
+                "a2": 2,
+                "a3": 0
+              },
+              "ret": null,
+              "paths": []
+            }
+          ],
+          "tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     4 children:\n     0x200011 (has no name): ()  1x1+0+0  +0+0\n     0x200010 (has no name): ()  1x1+0+0  +0+0\n     0x20000b (has no name): ()  1x1+0+0  +0+0\n     0x200005 \"winterm\": (\"winterm\" \"XWsh\")  503x520+0+0  +0+0\n        2 children:\n        0x200012 (has no name): ()  485x520+18+0  +18+0\n           2 children:\n           0x200013 (has no name): ()  485x520+0+0  +18+0\n           0x20001b (has no name): ()  485x520+0+0  +18+0\n        0x200006 (has no name): ()  18x520+0+0  +0+0\n           1 child:\n           0x20001c (has no name): ()  16x30+1+18  +1+18\n\n",
+          "trace_scope": "first 2000 parent events, all other processes and all signals",
+          "trace_info": "SHA256 (winterm.ktrace) = 70bfbdbe9c7e6c07ae2507342ba335cca32f8e9e2d6b8b22041ea177db4e1c2b\nSHA256 (winterm.dump) = 0e6b9e2ba0c65ea570bfaf78be0d34c355b3417920faa780e52625d4de2b2a03\n  138129 winterm.dump\n    8492 winterm.capture\n  146621 total\n",
+          "full_trace_hashes": {
+            "winterm.ktrace": "70bfbdbe9c7e6c07ae2507342ba335cca32f8e9e2d6b8b22041ea177db4e1c2b",
+            "winterm.dump": "0e6b9e2ba0c65ea570bfaf78be0d34c355b3417920faa780e52625d4de2b2a03"
+          },
+          "trace_line_counts": {
+            "winterm.dump": 138129,
+            "winterm.capture": 8492
+          },
+          "trace_sha256": "6066b07c0302bcb733c58e3a42e012ece3d2b2a6710d6c331be41bf290e3db02",
+          "frame_sha256": "10a85e5bf6e75fbf3e7fe3f654a499b27079978868aac18cc3e742ba4b103a86"
+        }
+      ],
+      "controls": [
+        {
+          "phase": "before",
+          "entry_exit": 37,
+          "fault_pc": "0x40079c",
+          "guards_intact": true,
+          "window": "\nxwininfo: Window id: 0x20000c \"FaultControl\"\n\n  Absolute upper-left X:  0\n  Absolute upper-left Y:  0\n  Relative upper-left X:  0\n  Relative upper-left Y:  0\n  Width: 644\n  Height: 364\n  Depth: 24\n  Visual: 0x21\n  Visual Class: TrueColor\n  Border width: 1\n  Class: InputOutput\n  Colormap: 0x20 (installed)\n  Bit Gravity State: NorthWestGravity\n  Window Gravity State: NorthWestGravity\n  Backing Store State: NotUseful\n  Save Under State: no\n  Map State: IsViewable\n  Override Redirect State: no\n  Corners:  +0+0  --6+0  --6-114  +0-114\n  -geometry 80x24+0+0\n\n",
+          "stderr": ""
+        },
+        {
+          "phase": "after",
+          "entry_exit": 37,
+          "fault_pc": "0x40079c",
+          "guards_intact": true,
+          "window": "\nxwininfo: Window id: 0x20000c \"FaultControl\"\n\n  Absolute upper-left X:  0\n  Absolute upper-left Y:  0\n  Relative upper-left X:  0\n  Relative upper-left Y:  0\n  Width: 644\n  Height: 364\n  Depth: 24\n  Visual: 0x21\n  Visual Class: TrueColor\n  Border width: 1\n  Class: InputOutput\n  Colormap: 0x20 (installed)\n  Bit Gravity State: NorthWestGravity\n  Window Gravity State: NorthWestGravity\n  Backing Store State: NotUseful\n  Save Under State: no\n  Map State: IsViewable\n  Override Redirect State: no\n  Corners:  +0+0  --6+0  --6-114  +0-114\n  -geometry 80x24+0+0\n\n",
+          "stderr": ""
+        }
+      ],
+      "native_font_controls": [
+        {
+          "phase": "before",
+          "window": "\nxwininfo: Window id: 0x20000c \"FaultControl\"\n\n  Absolute upper-left X:  0\n  Absolute upper-left Y:  0\n  Relative upper-left X:  0\n  Relative upper-left Y:  0\n  Width: 644\n  Height: 364\n  Depth: 24\n  Visual: 0x21\n  Visual Class: TrueColor\n  Border width: 1\n  Class: InputOutput\n  Colormap: 0x20 (installed)\n  Bit Gravity State: NorthWestGravity\n  Window Gravity State: NorthWestGravity\n  Backing Store State: NotUseful\n  Save Under State: no\n  Map State: IsViewable\n  Override Redirect State: no\n  Corners:  +0+0  --6+0  --6-114  +0-114\n  -geometry 80x24+0+0\n\n",
+          "stderr": ""
+        },
+        {
+          "phase": "after",
+          "window": "\nxwininfo: Window id: 0x20000c \"FaultControl\"\n\n  Absolute upper-left X:  0\n  Absolute upper-left Y:  0\n  Relative upper-left X:  0\n  Relative upper-left Y:  0\n  Width: 644\n  Height: 364\n  Depth: 24\n  Visual: 0x21\n  Visual Class: TrueColor\n  Border width: 1\n  Class: InputOutput\n  Colormap: 0x20 (installed)\n  Bit Gravity State: NorthWestGravity\n  Window Gravity State: NorthWestGravity\n  Backing Store State: NotUseful\n  Save Under State: no\n  Map State: IsViewable\n  Override Redirect State: no\n  Corners:  +0+0  --6+0  --6-114  +0-114\n  -geometry 80x24+0+0\n\n",
+          "stderr": ""
+        }
+      ],
+      "native_pty_controls": [
+        {
+          "phase": "before",
+          "uid": 0,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "ROUND 0 uid=0 gid=0\nMASTER fd=3 mode=020666 uid=0 gid=0 major=23 minor=0 flags=0x6\nSLAVE_PATH /dev/pts/0\nSLAVE fd=4 mode=020600 uid=0 gid=0 major=22 minor=0 flags=0x6\nTRANSFER XIRI_MASTER_TO_SLAVE\nTRANSFER XIRI_SLAVE_TO_MASTER\nEMPTY n=-1 errno=35\nROUND 1 uid=0 gid=0\nMASTER fd=3 mode=020666 uid=0 gid=0 major=23 minor=0 flags=0x6\nSLAVE_PATH /dev/pts/0\nSLAVE fd=4 mode=020600 uid=0 gid=0 major=22 minor=0 flags=0x6\nTRANSFER XIRI_MASTER_TO_SLAVE\nTRANSFER XIRI_SLAVE_TO_MASTER\nEMPTY n=-1 errno=35\nROUND 2 uid=0 gid=0\nMASTER fd=3 mode=020666 uid=0 gid=0 major=23 minor=0 flags=0x6\nSLAVE_PATH /dev/pts/0\nSLAVE fd=4 mode=020600 uid=0 gid=0 major=22 minor=0 flags=0x6\nTRANSFER XIRI_MASTER_TO_SLAVE\nTRANSFER XIRI_SLAVE_TO_MASTER\nEMPTY n=-1 errno=35\nNATIVE_PTY_PASS\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "before",
+          "uid": 1234,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "ROUND 0 uid=1234 gid=1234\nMASTER fd=3 mode=020666 uid=0 gid=0 major=23 minor=0 flags=0x6\nSLAVE_PATH /dev/pts/0\nSLAVE fd=4 mode=020600 uid=1234 gid=0 major=22 minor=0 flags=0x6\nTRANSFER XIRI_MASTER_TO_SLAVE\nTRANSFER XIRI_SLAVE_TO_MASTER\nEMPTY n=-1 errno=35\nROUND 1 uid=1234 gid=1234\nMASTER fd=3 mode=020666 uid=0 gid=0 major=23 minor=0 flags=0x6\nSLAVE_PATH /dev/pts/0\nSLAVE fd=4 mode=020600 uid=1234 gid=0 major=22 minor=0 flags=0x6\nTRANSFER XIRI_MASTER_TO_SLAVE\nTRANSFER XIRI_SLAVE_TO_MASTER\nEMPTY n=-1 errno=35\nROUND 2 uid=1234 gid=1234\nMASTER fd=3 mode=020666 uid=0 gid=0 major=23 minor=0 flags=0x6\nSLAVE_PATH /dev/pts/0\nSLAVE fd=4 mode=020600 uid=1234 gid=0 major=22 minor=0 flags=0x6\nTRANSFER XIRI_MASTER_TO_SLAVE\nTRANSFER XIRI_SLAVE_TO_MASTER\nEMPTY n=-1 errno=35\nNATIVE_PTY_PASS\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "after",
+          "uid": 0,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "ROUND 0 uid=0 gid=0\nMASTER fd=3 mode=020666 uid=0 gid=0 major=23 minor=0 flags=0x6\nSLAVE_PATH /dev/pts/0\nSLAVE fd=4 mode=020600 uid=0 gid=0 major=22 minor=0 flags=0x6\nTRANSFER XIRI_MASTER_TO_SLAVE\nTRANSFER XIRI_SLAVE_TO_MASTER\nEMPTY n=-1 errno=35\nROUND 1 uid=0 gid=0\nMASTER fd=3 mode=020666 uid=0 gid=0 major=23 minor=0 flags=0x6\nSLAVE_PATH /dev/pts/0\nSLAVE fd=4 mode=020600 uid=0 gid=0 major=22 minor=0 flags=0x6\nTRANSFER XIRI_MASTER_TO_SLAVE\nTRANSFER XIRI_SLAVE_TO_MASTER\nEMPTY n=-1 errno=35\nROUND 2 uid=0 gid=0\nMASTER fd=3 mode=020666 uid=0 gid=0 major=23 minor=0 flags=0x6\nSLAVE_PATH /dev/pts/0\nSLAVE fd=4 mode=020600 uid=0 gid=0 major=22 minor=0 flags=0x6\nTRANSFER XIRI_MASTER_TO_SLAVE\nTRANSFER XIRI_SLAVE_TO_MASTER\nEMPTY n=-1 errno=35\nNATIVE_PTY_PASS\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "after",
+          "uid": 1234,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "ROUND 0 uid=1234 gid=1234\nMASTER fd=3 mode=020666 uid=0 gid=0 major=23 minor=0 flags=0x6\nSLAVE_PATH /dev/pts/0\nSLAVE fd=4 mode=020600 uid=1234 gid=0 major=22 minor=0 flags=0x6\nTRANSFER XIRI_MASTER_TO_SLAVE\nTRANSFER XIRI_SLAVE_TO_MASTER\nEMPTY n=-1 errno=35\nROUND 1 uid=1234 gid=1234\nMASTER fd=3 mode=020666 uid=0 gid=0 major=23 minor=0 flags=0x6\nSLAVE_PATH /dev/pts/0\nSLAVE fd=4 mode=020600 uid=1234 gid=0 major=22 minor=0 flags=0x6\nTRANSFER XIRI_MASTER_TO_SLAVE\nTRANSFER XIRI_SLAVE_TO_MASTER\nEMPTY n=-1 errno=35\nROUND 2 uid=1234 gid=1234\nMASTER fd=3 mode=020666 uid=0 gid=0 major=23 minor=0 flags=0x6\nSLAVE_PATH /dev/pts/0\nSLAVE fd=4 mode=020600 uid=1234 gid=0 major=22 minor=0 flags=0x6\nTRANSFER XIRI_MASTER_TO_SLAVE\nTRANSFER XIRI_SLAVE_TO_MASTER\nEMPTY n=-1 errno=35\nNATIVE_PTY_PASS\n",
+            "stderr": ""
+          }
+        }
+      ],
+      "group_controls": [
+        {
+          "phase": "before",
+          "uid": 0,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_GROUP_CONTROL\n",
+            "stderr": ""
+          },
+          "group_absent": true
+        },
+        {
+          "phase": "before",
+          "uid": 1234,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_GROUP_CONTROL\n",
+            "stderr": ""
+          },
+          "group_absent": true
+        },
+        {
+          "phase": "after",
+          "uid": 0,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_GROUP_CONTROL\n",
+            "stderr": ""
+          },
+          "group_absent": true
+        },
+        {
+          "phase": "after",
+          "uid": 1234,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_GROUP_CONTROL\n",
+            "stderr": ""
+          },
+          "group_absent": true
+        }
+      ]
+    }
+  ],
+  "window_rendering_observed": true,
+  "native_shell_input_qualified": false,
+  "signal_trace_limitation": "Installed o32 kdump cannot decode LP64 PSIG payloads; only record boundaries are recovered. Signal delivery is unqualified.",
+  "next_priority": "Native exec/session/descriptor setup, signal handlers and terminal attributes before 4Dwm",
+  "screenshot": {
+    "path": "docs/results/images/2026-11-01-irix-winterm-window.png",
+    "sha256": "8a4f589e8e6f01c28dfc0e971159225840123370d8bcb6414c969b2988b81386",
+    "source_frame": ".work/irix-winterm-process/runs/ci-vzqks6v0/0-default.xwd",
+    "source_frame_sha256": "c762d6b20bee2bf45ea7e2b7de3ac1004f6b2ae0fd23f861287fd2a5d45bae30",
+    "description": "Three-second default xwsh window, clipped by the 640x480 viewport; no shell prompt"
+  },
+  "qualifier_sha256": "6b2541107b4aa0ebf2cb097ba4b870ac140e1c2d0f318fc3492b65f92888749e"
+}
