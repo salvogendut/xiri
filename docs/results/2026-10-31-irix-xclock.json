@@ -1,0 +1,255 @@
+{
+  "schema": 1,
+  "status": "loader-boundary-observed",
+  "source_revision": "3f309d17fc5e6ea9ccc3b774e8cc1ca8ef277979",
+  "manifest_sha256": "332e20aa6919636474f191affda4aa5d55dda14cc97f71a00a7003756c223d79",
+  "irix_window_or_event_loop_qualified": false,
+  "blocker": "SGI_ELFMAP returns ENOMEM while rld tries to load libXmu.so; no X socket/connect call follows",
+  "runs": [
+    {
+      "mode": "ci",
+      "clean_shutdown": true,
+      "native_clock_viewable": true,
+      "native_controls": 13,
+      "native_trace_controls": {
+        "entry_pc": "0x00400090",
+        "fault_pc": "0x40079c",
+        "guard_intact": true
+      },
+      "faults": [
+        {
+          "name": "fault-0-0",
+          "signal": 11,
+          "code": 1,
+          "address": "0x740a0a5c",
+          "pc": "0x000000000fa56b6c",
+          "a0": "0x0000000000000008",
+          "a1": "0x0000000010027ff0",
+          "a2": "0x0000000010027ff0",
+          "sp": "0x000000007fff6400",
+          "ra": "0x000000000fa511b8",
+          "raw_sha256": "5c1daaf2bf734ba833be3013c8f6f75af00baae26cf144c90b6cd77c1beb2245"
+        },
+        {
+          "name": "fault-0-1",
+          "signal": 11,
+          "code": 1,
+          "address": "0x740a0a5c",
+          "pc": "0x000000000fa56b6c",
+          "a0": "0x0000000000000008",
+          "a1": "0x0000000010027ff0",
+          "a2": "0x0000000010027ff0",
+          "sp": "0x000000007fff6400",
+          "ra": "0x000000000fa511b8",
+          "raw_sha256": "60865e2453c1871c74976b06eab18d969fe6998e1802cb9520e0e4581de5749e"
+        }
+      ],
+      "cases": [
+        {
+          "name": "clock-analog-0",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "window_observed": false,
+          "frames_identical": true,
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b",
+          "socket_or_connect_calls": 0,
+          "elfmap_errno": 12
+        },
+        {
+          "name": "clock-digital-0",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "window_observed": false,
+          "frames_identical": true,
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b",
+          "socket_or_connect_calls": 0,
+          "elfmap_errno": 12
+        },
+        {
+          "name": "clock-analog-1234",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "window_observed": false,
+          "frames_identical": true,
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b",
+          "socket_or_connect_calls": 0,
+          "elfmap_errno": 12
+        },
+        {
+          "name": "clock-digital-1234",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "window_observed": false,
+          "frames_identical": true,
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b",
+          "socket_or_connect_calls": 0,
+          "elfmap_errno": 12
+        }
+      ],
+      "result_sha256": "baaa27512c1fa8459210cf72966703e5f0d8898d0175ab1319468c86d8a52bc0",
+      "serial_sha256": "3592875d0a842f6ea155a330b2390b57862029e57767c3db25e75173e6a24cbb",
+      "directory": ".work/irix-xclock/runs/ci-lerevng9",
+      "execution_sources": {
+        "lab/irix-toolchest/trace.c": "3e48930b2092fa927eecf8cb7e00e595feb4677e5cef45676cc7207d94c40bd5",
+        "lab/irix-toolchest/fault.c": "de9b9b272675f5b0cf52e5d6ab03ba4241614e7c6bf4b1a123f48135084c80af",
+        "lab/irix-toolchest/session.c": "e183b4aefdfb428e01dc609230e87a7546a0b31e9d4b5e236503e0a8bb3b09f5",
+        "lab/irix-lp64/runner.c": "005bdf3fffce5fb8ca79073e92cc41431aa953550c41014183d5de986a104463",
+        "scripts/probe-irix-xclock.py": "afb1cbe04cd1cfc25941f5c3da454f02881e7a84ee5073488173c4ab36f881db",
+        "scripts/probe-netbsd.py": "adfa9547fa98af28fd55e4e155e7667b2b0a8c7cea8aee8d58079da946b72a1d",
+        "scripts/probe-irix-runtime.py": "89b946e035ecf0525b3c08cdc80ca0b77d8db6aa90fd60cf410ddc7eb3a4d553",
+        "scripts/probe-irix-tcp.py": "2ee3ee295756278126ace4433a7114bbab9127c63f8344c97e6a5c10ac50a6ba"
+      }
+    },
+    {
+      "mode": "ordinary",
+      "clean_shutdown": true,
+      "native_clock_viewable": true,
+      "native_controls": 13,
+      "native_trace_controls": {
+        "entry_pc": "0x00400090",
+        "fault_pc": "0x40079c",
+        "guard_intact": true
+      },
+      "faults": [
+        {
+          "name": "fault-0-0",
+          "signal": 11,
+          "code": 1,
+          "address": "0x740a0a5c",
+          "pc": "0x000000000fa56b6c",
+          "a0": "0x0000000000000008",
+          "a1": "0x0000000010027ff0",
+          "a2": "0x0000000010027ff0",
+          "sp": "0x000000007fff6400",
+          "ra": "0x000000000fa511b8",
+          "raw_sha256": "539df02c44a8cb4cb600a47376ec296b078cfbabf48ba4d4adb09b9b7f3f14ee"
+        },
+        {
+          "name": "fault-0-1",
+          "signal": 11,
+          "code": 1,
+          "address": "0x740a0a5c",
+          "pc": "0x000000000fa56b6c",
+          "a0": "0x0000000000000008",
+          "a1": "0x0000000010027ff0",
+          "a2": "0x0000000010027ff0",
+          "sp": "0x000000007fff6400",
+          "ra": "0x000000000fa511b8",
+          "raw_sha256": "0258656a7bac8db44b124d31947a93f5cbbe1ce73c9d0d22dbe8f54b6890d48b"
+        }
+      ],
+      "cases": [
+        {
+          "name": "clock-analog-0",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "window_observed": false,
+          "frames_identical": true,
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b",
+          "socket_or_connect_calls": 0,
+          "elfmap_errno": 12
+        },
+        {
+          "name": "clock-digital-0",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "window_observed": false,
+          "frames_identical": true,
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b",
+          "socket_or_connect_calls": 0,
+          "elfmap_errno": 12
+        },
+        {
+          "name": "clock-analog-1234",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "window_observed": false,
+          "frames_identical": true,
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b",
+          "socket_or_connect_calls": 0,
+          "elfmap_errno": 12
+        },
+        {
+          "name": "clock-digital-1234",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "window_observed": false,
+          "frames_identical": true,
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b",
+          "socket_or_connect_calls": 0,
+          "elfmap_errno": 12
+        }
+      ],
+      "result_sha256": "4b142857c661be4b2a0bc5407fa29d9294e492fc25fa7974b0774119faa2814b",
+      "serial_sha256": "82d0ffe7446b869165d76b2fce555a751059214ed52c88209cfeabf901e5a93e",
+      "directory": ".work/irix-xclock/runs/ordinary-ijuhvm4n",
+      "execution_sources": {
+        "lab/irix-toolchest/trace.c": "3e48930b2092fa927eecf8cb7e00e595feb4677e5cef45676cc7207d94c40bd5",
+        "lab/irix-toolchest/fault.c": "de9b9b272675f5b0cf52e5d6ab03ba4241614e7c6bf4b1a123f48135084c80af",
+        "lab/irix-toolchest/session.c": "e183b4aefdfb428e01dc609230e87a7546a0b31e9d4b5e236503e0a8bb3b09f5",
+        "lab/irix-lp64/runner.c": "005bdf3fffce5fb8ca79073e92cc41431aa953550c41014183d5de986a104463",
+        "scripts/probe-irix-xclock.py": "18c0a112c88d72c1f8832a20276fc03edba3aab3a59099c310d97c07994f4715",
+        "scripts/probe-netbsd.py": "adfa9547fa98af28fd55e4e155e7667b2b0a8c7cea8aee8d58079da946b72a1d",
+        "scripts/probe-irix-runtime.py": "89b946e035ecf0525b3c08cdc80ca0b77d8db6aa90fd60cf410ddc7eb3a4d553",
+        "scripts/probe-irix-tcp.py": "2ee3ee295756278126ace4433a7114bbab9127c63f8344c97e6a5c10ac50a6ba"
+      }
+    }
+  ],
+  "qualifier_sha256": "fb2b178c40ff5069229bc84ff76321af4d6ef996083b208b0a5f7313742edece"
+}

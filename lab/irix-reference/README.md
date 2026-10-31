@@ -1,6 +1,6 @@
 # IRIX 6.5.22m reference and vendor probes
 
-The latest paired transport measurements are in the [recvmsg lab](../irix-recvmsg/README.md), including guarded output records, queue-consumption checks and original-IRIX error ordering. The later [Toolchest session diagnosis](../irix-toolchest/README.md) uses that unchanged kernel; paired select and xstat measurements are the next reference work.
+Paired transport measurements are retained in the [recvmsg lab](../irix-recvmsg/README.md). The [select lab](../irix-select/README.md) adds guarded readiness and timeout measurements. The [xstat lab](../irix-xstat/README.md) now records both metadata layouts, version and validation order, permissions, large files and page-boundary copies in 648 original-IRIX executions. Descriptor-based `fxstat` is the next proposed reference contract. The [Toolchest session diagnosis](../irix-toolchest/README.md) retains the earlier empty-HOME investigation.
 
 Follow-up: [unmodified asa and echo now run on Xiri](../../docs/results/2026-10-30-irix-lp64.md)
 with their original libc and rld. The [desktop lab](../irix-desktop/README.md)

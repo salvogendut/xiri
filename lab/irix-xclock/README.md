@@ -1,0 +1,58 @@
+# Original IRIX xclock experiment
+
+The user requested a simpler X application alongside Toolchest. This lab uses
+the unmodified n32 `/usr/bin/X11/xclock` from the supplied IRIX 6.5.22m disk,
+with its original libraries and XClock application defaults. It runs on the
+[xstat kernel](../irix-xstat/README.md) against native NetBSD Xvfb.
+
+[manifest.json](manifest.json) records hashes, ELF headers, dependencies and
+static address overlaps. Only metadata is public; binaries, resources, raw
+vendor traces and framebuffer captures stay under `.work/irix-xclock`.
+The new inputs are xclock, `libXaw.so.2` and `app-defaults/XClock`. Remaining
+libraries are checked against the established desktop inventory.
+
+The executable and libraries have suitable 8 KiB load boundaries. That does
+not establish relocation support: libXaw, libXmu and libXt have overlapping
+linked ranges. The observed loader result and limits are in the
+[result record](../../docs/results/2026-10-31-irix-xclock.md).
+
+Prepare the files using the existing read-only libguestfs procedure in the
+[reference lab](../irix-reference/README.md), preserving the manifest hashes.
+Use a stopped, complete LP64 xstat run containing the staged Toolchest resources:
+
+```sh
+python3 scripts/probe-irix-xclock.py \
+  --seed-directory .work/irix-xstat/runs/lp64-ci-8wjwgrbd
+python3 scripts/probe-irix-xclock.py --mode ordinary \
+  --seed-directory .work/irix-xstat/runs/lp64-ci-8wjwgrbd
+```
+
+The harness checks inherited binaries/libraries and new inputs, compiles
+original native helpers, and brackets the workload with native/asa/echo
+controls. It validates the native ptrace exec/fault PC and captures the later
+Toolchest allocator stop twice as root. This also completes that diagnostic
+without relying on the rejected non-root tracing attempt.
+
+A native NetBSD xclock must display a viewable window on the same server.
+Vendor analog and digital launches then run under root and uid 1234, with an
+explicit HOME and a five-second child limit. The harness records parent exit
+status, foreign syscall traces, window trees, map state and two root-frame
+captures separated by two seconds. A timeout alone is not application success;
+a usable window and event handling need independent evidence. Loader messages
+written through `/dev/console` are retained in the serial log even when the
+child's stdout/stderr are empty. Later runs also retain each case's console
+slice separately.
+
+Every run uses a private disk and ports, halts the guest, and stops its emulator.
+Count this guest within the user's limit of three simultaneous IRIS instances.
+
+After both modes finish, recheck their saved records with:
+
+```sh
+python3 scripts/qualify-irix-xclock.py <ci-run> <ordinary-run> \
+  --output docs/results/2026-10-31-irix-xclock.json
+```
+
+The qualifier checks native clock visibility, all four attempts per mode, raw
+trace decoding, absence of a foreign X connection/window, matching frame
+hashes, the loader diagnostic, repeated root fault PCs and clean shutdowns.

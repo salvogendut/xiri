@@ -140,7 +140,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--checkpoint', choices=['tcp','sockname','peername','xconnect','recvmsg'], default='tcp')
     parser.add_argument('--mode', choices=['ci', 'ordinary'], default='ci')
-    parser.add_argument('--kernel-checkpoint', choices=['select'], help='Run unchanged fixture/desktop expectations on a newer pinned kernel')
+    parser.add_argument('--kernel-checkpoint', choices=['select','xstat'], help='Run unchanged fixture/desktop expectations on a newer pinned kernel')
+    parser.add_argument('--desktop-expectations',type=Path,help='Explicit reviewed desktop boundary expectations for a newer kernel')
     parser.add_argument('--x11', action='store_true', help='Also observe Toolchest against a controlled native Xvfb server')
     parser.add_argument('--kernel-abi',choices=['lp64','o32'],default='lp64')
     args = parser.parse_args()
@@ -152,7 +153,7 @@ def main():
     args.debugger, args.boot_timeout = False, 300
     pin = json.loads((ROOT/f'lab/irix-{kernel_checkpoint}' / ('o32-baseline.json' if args.kernel_abi=='o32' else 'baseline.json')).read_text())
     inventory = json.loads((ROOT / 'lab/irix-desktop/manifest.json').read_text())
-    expectations_path = lab_dir / ('desktop-x11.json' if args.x11 else 'desktop.json')
+    expectations_path = args.desktop_expectations or lab_dir / ('desktop-x11.json' if args.x11 else 'desktop.json')
     expectations = json.loads(expectations_path.read_text()) if expectations_path.exists() else None
     if args.kernel_abi=='o32': expectations={'cases':{}}
     probe.IRIS = ROOT / '.work/target-netbsd64/release/iris'

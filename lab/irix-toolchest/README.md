@@ -1,6 +1,6 @@
 # Toolchest session and fault diagnosis
 
-Follow-up: the [select checkpoint](../../docs/results/2026-10-31-irix-select.md) implements the measured readiness/timeout subset. Version-2 `xstat` remains the next configuration boundary. The diagnosis below records the earlier recvmsg kernel.
+Follow-up: the [select checkpoint](../../docs/results/2026-10-31-irix-select.md) implements the measured readiness/timeout subset. The [xstat follow-up](../../docs/results/2026-10-31-irix-xstat.md) now enables app-defaults loading and reaches an allocator fault before the menu stage. Descriptor-based `fxstat` remains unsupported. The diagnosis below records the earlier recvmsg kernel.
 
 This follows the [recvmsg checkpoint](../irix-recvmsg/README.md), without changing
 its kernel or emulator. The [findings](../../docs/results/2026-10-31-irix-toolchest-session.md)

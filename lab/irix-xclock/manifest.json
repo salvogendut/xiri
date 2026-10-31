@@ -1,0 +1,627 @@
+{
+  "schema": 1,
+  "description": "Original IRIX n32 xclock and bounded static dependency closure",
+  "files": {
+    "/usr/bin/X11/xclock": {
+      "path": "/usr/bin/X11/xclock",
+      "sha256": "3bfb3d612edf0ffcafbcd6607a5ca7f8ea217a3221cb16d6d1c1334baf08bed4",
+      "bytes": 39380,
+      "class": 32,
+      "endian": "big",
+      "machine": 8,
+      "abi": "n32",
+      "type": 2,
+      "flags": "0x20000024",
+      "entry": "0x10002110",
+      "interpreter": [
+        "/usr/lib32/libc.so.1"
+      ],
+      "needed": [
+        "libXaw.so.2",
+        "libXmu.so",
+        "libXt.so",
+        "libXext.so",
+        "libX11.so.1",
+        "libc.so.1"
+      ],
+      "rpath": [],
+      "soname": [],
+      "loads": [
+        {
+          "offset": 0,
+          "address": 268435456,
+          "file_bytes": 20480,
+          "memory_bytes": 20480,
+          "flags": 5,
+          "alignment": 16384
+        },
+        {
+          "offset": 32768,
+          "address": 268468224,
+          "file_bytes": 4096,
+          "memory_bytes": 4096,
+          "flags": 6,
+          "alignment": 16384
+        }
+      ],
+      "load_boundaries_8k": true,
+      "liblist": [
+        "libXaw.so.2",
+        "libXmu.so",
+        "libXt.so",
+        "libXext.so",
+        "libX11.so.1",
+        "libc.so.1"
+      ],
+      "mips_rld_version": 1,
+      "mips_flags": "0x6411"
+    },
+    "/lib32/rld": {
+      "path": "/lib32/rld",
+      "sha256": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b",
+      "bytes": 523908,
+      "class": 32,
+      "endian": "big",
+      "machine": 8,
+      "abi": "n32",
+      "type": 2,
+      "flags": "0x20000020",
+      "entry": "0xfb60150",
+      "interpreter": [],
+      "needed": [],
+      "rpath": [],
+      "soname": [],
+      "loads": [
+        {
+          "offset": 0,
+          "address": 263585792,
+          "file_bytes": 151552,
+          "memory_bytes": 151552,
+          "flags": 5,
+          "alignment": 16384
+        },
+        {
+          "offset": 163840,
+          "address": 264077312,
+          "file_bytes": 28672,
+          "memory_bytes": 28672,
+          "flags": 6,
+          "alignment": 16384
+        }
+      ],
+      "load_boundaries_8k": true,
+      "liblist": [],
+      "mips_rld_version": null,
+      "mips_flags": "0x0"
+    },
+    "/usr/lib32/libc.so.1": {
+      "path": "/usr/lib32/libc.so.1",
+      "sha256": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e",
+      "bytes": 3255120,
+      "class": 32,
+      "endian": "big",
+      "machine": 8,
+      "abi": "n32",
+      "type": 3,
+      "flags": "0x20000022",
+      "entry": "0xfaf15f8",
+      "interpreter": [],
+      "needed": [],
+      "rpath": [],
+      "soname": [
+        "libc.so.1"
+      ],
+      "loads": [
+        {
+          "offset": 0,
+          "address": 262078464,
+          "file_bytes": 1413120,
+          "memory_bytes": 1413120,
+          "flags": 5,
+          "alignment": 16384
+        },
+        {
+          "offset": 1425408,
+          "address": 263503872,
+          "file_bytes": 65536,
+          "memory_bytes": 80544,
+          "flags": 6,
+          "alignment": 16384
+        }
+      ],
+      "load_boundaries_8k": true,
+      "liblist": [],
+      "mips_rld_version": 1,
+      "mips_flags": "0x4411"
+    },
+    "/usr/lib32/libXaw.so.2": {
+      "path": "/usr/lib32/libXaw.so.2",
+      "sha256": "85fe1a641f733d8d8122222b18f2af40d85d9ad1654587bbd261ef2f051fa8c9",
+      "bytes": 569852,
+      "class": 32,
+      "endian": "big",
+      "machine": 8,
+      "abi": "n32",
+      "type": 3,
+      "flags": "0x20000022",
+      "entry": "0xf40f0a4",
+      "interpreter": [],
+      "needed": [
+        "libXmu.so",
+        "libXt.so",
+        "libXext.so",
+        "libX11.so.1",
+        "libc.so.1",
+        "libgen.so"
+      ],
+      "rpath": [],
+      "soname": [
+        "libXaw.so.2"
+      ],
+      "loads": [
+        {
+          "offset": 0,
+          "address": 255852544,
+          "file_bytes": 270336,
+          "memory_bytes": 270336,
+          "flags": 5,
+          "alignment": 16384
+        },
+        {
+          "offset": 278528,
+          "address": 256131072,
+          "file_bytes": 24576,
+          "memory_bytes": 24576,
+          "flags": 6,
+          "alignment": 16384
+        }
+      ],
+      "load_boundaries_8k": true,
+      "liblist": [
+        "libXmu.so",
+        "libXt.so",
+        "libXext.so",
+        "libX11.so.1",
+        "libc.so.1",
+        "libgen.so"
+      ],
+      "mips_rld_version": 1,
+      "mips_flags": "0x6411"
+    },
+    "/usr/lib32/libXmu.so": {
+      "path": "/usr/lib32/libXmu.so",
+      "sha256": "42cc93453cd776caadfb5e7f7740ea26a87d8b931fb6e0febb7f716063eb28c7",
+      "bytes": 222600,
+      "class": 32,
+      "endian": "big",
+      "machine": 8,
+      "abi": "n32",
+      "type": 3,
+      "flags": "0x20000022",
+      "entry": "0xf406348",
+      "interpreter": [],
+      "needed": [
+        "libXt.so",
+        "libXext.so",
+        "libX11.so.1",
+        "libc.so.1",
+        "libgen.so"
+      ],
+      "rpath": [],
+      "soname": [
+        "libXmu.so"
+      ],
+      "loads": [
+        {
+          "offset": 0,
+          "address": 255852544,
+          "file_bytes": 94208,
+          "memory_bytes": 94208,
+          "flags": 5,
+          "alignment": 16384
+        },
+        {
+          "offset": 98304,
+          "address": 255950848,
+          "file_bytes": 4096,
+          "memory_bytes": 4096,
+          "flags": 6,
+          "alignment": 16384
+        }
+      ],
+      "load_boundaries_8k": true,
+      "liblist": [
+        "libXt.so",
+        "libXext.so",
+        "libX11.so.1",
+        "libc.so.1",
+        "libgen.so"
+      ],
+      "mips_rld_version": 1,
+      "mips_flags": "0x6411"
+    },
+    "/usr/lib32/libXt.so": {
+      "path": "/usr/lib32/libXt.so",
+      "sha256": "452b4a3ae72728825c382896e45ca214ea750721d9586d1db263189063b5fb30",
+      "bytes": 1311516,
+      "class": 32,
+      "endian": "big",
+      "machine": 8,
+      "abi": "n32",
+      "type": 3,
+      "flags": "0x20000022",
+      "entry": "0xf4234d8",
+      "interpreter": [],
+      "needed": [
+        "libgen.so",
+        "libX11.so.1",
+        "libc.so.1"
+      ],
+      "rpath": [],
+      "soname": [
+        "libXt.so"
+      ],
+      "loads": [
+        {
+          "offset": 0,
+          "address": 255852544,
+          "file_bytes": 667648,
+          "memory_bytes": 667648,
+          "flags": 5,
+          "alignment": 16384
+        },
+        {
+          "offset": 671744,
+          "address": 256524288,
+          "file_bytes": 49152,
+          "memory_bytes": 53896,
+          "flags": 6,
+          "alignment": 16384
+        }
+      ],
+      "load_boundaries_8k": true,
+      "liblist": [
+        "libgen.so",
+        "libX11.so.1",
+        "libc.so.1"
+      ],
+      "mips_rld_version": 1,
+      "mips_flags": "0x6c11"
+    },
+    "/usr/lib32/libXext.so": {
+      "path": "/usr/lib32/libXext.so",
+      "sha256": "1d6a94a6602428a459b044e8564203c436815a9a8b3804ee3027503131defc4a",
+      "bytes": 330768,
+      "class": 32,
+      "endian": "big",
+      "machine": 8,
+      "abi": "n32",
+      "type": 3,
+      "flags": "0x20000022",
+      "entry": "0xf70988c",
+      "interpreter": [],
+      "needed": [
+        "libX11.so.1",
+        "libc.so.1"
+      ],
+      "rpath": [],
+      "soname": [
+        "libXext.so"
+      ],
+      "loads": [
+        {
+          "offset": 0,
+          "address": 258998272,
+          "file_bytes": 163840,
+          "memory_bytes": 163840,
+          "flags": 5,
+          "alignment": 16384
+        },
+        {
+          "offset": 163840,
+          "address": 259162112,
+          "file_bytes": 4096,
+          "memory_bytes": 4096,
+          "flags": 6,
+          "alignment": 16384
+        }
+      ],
+      "load_boundaries_8k": true,
+      "liblist": [
+        "libX11.so.1",
+        "libc.so.1"
+      ],
+      "mips_rld_version": 1,
+      "mips_flags": "0x6c11"
+    },
+    "/usr/lib32/libX11.so.1": {
+      "path": "/usr/lib32/libX11.so.1",
+      "sha256": "2e3287c4842eb4149c9f839229093a28c180edf43dcf1f28b68102cdcf989642",
+      "bytes": 2680312,
+      "class": 32,
+      "endian": "big",
+      "machine": 8,
+      "abi": "n32",
+      "type": 3,
+      "flags": "0x20000022",
+      "entry": "0xf602818",
+      "interpreter": [],
+      "needed": [
+        "libc.so.1"
+      ],
+      "rpath": [],
+      "soname": [
+        "libX11.so.1"
+      ],
+      "loads": [
+        {
+          "offset": 0,
+          "address": 257687552,
+          "file_bytes": 1318912,
+          "memory_bytes": 1318912,
+          "flags": 5,
+          "alignment": 16384
+        },
+        {
+          "offset": 1327104,
+          "address": 259014656,
+          "file_bytes": 110592,
+          "memory_bytes": 111776,
+          "flags": 6,
+          "alignment": 16384
+        }
+      ],
+      "load_boundaries_8k": true,
+      "liblist": [
+        "libc.so.1"
+      ],
+      "mips_rld_version": 1,
+      "mips_flags": "0x6c11"
+    },
+    "/usr/lib32/libgen.so": {
+      "path": "/usr/lib32/libgen.so",
+      "sha256": "a3102584a1929b91e4db3428b8e022fff3cff690ec646dd9edbf094e7ad28d7d",
+      "bytes": 93772,
+      "class": 32,
+      "endian": "big",
+      "machine": 8,
+      "abi": "n32",
+      "type": 3,
+      "flags": "0x20000022",
+      "entry": "0xf912990",
+      "interpreter": [],
+      "needed": [
+        "libc.so.1"
+      ],
+      "rpath": [],
+      "soname": [
+        "libgen.so"
+      ],
+      "loads": [
+        {
+          "offset": 0,
+          "address": 261160960,
+          "file_bytes": 40960,
+          "memory_bytes": 40960,
+          "flags": 5,
+          "alignment": 16384
+        },
+        {
+          "offset": 49152,
+          "address": 261210112,
+          "file_bytes": 4096,
+          "memory_bytes": 5620,
+          "flags": 6,
+          "alignment": 16384
+        }
+      ],
+      "load_boundaries_8k": true,
+      "liblist": [
+        "libc.so.1"
+      ],
+      "mips_rld_version": 1,
+      "mips_flags": "0x6411"
+    }
+  },
+  "edges": [
+    {
+      "from": "/usr/bin/X11/xclock",
+      "needed": "libXaw.so.2",
+      "selected": "/usr/lib32/libXaw.so.2"
+    },
+    {
+      "from": "/usr/bin/X11/xclock",
+      "needed": "libXmu.so",
+      "selected": "/usr/lib32/libXmu.so"
+    },
+    {
+      "from": "/usr/bin/X11/xclock",
+      "needed": "libXt.so",
+      "selected": "/usr/lib32/libXt.so"
+    },
+    {
+      "from": "/usr/bin/X11/xclock",
+      "needed": "libXext.so",
+      "selected": "/usr/lib32/libXext.so"
+    },
+    {
+      "from": "/usr/bin/X11/xclock",
+      "needed": "libX11.so.1",
+      "selected": "/usr/lib32/libX11.so.1"
+    },
+    {
+      "from": "/usr/bin/X11/xclock",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1"
+    },
+    {
+      "from": "/usr/lib32/libXaw.so.2",
+      "needed": "libXmu.so",
+      "selected": "/usr/lib32/libXmu.so"
+    },
+    {
+      "from": "/usr/lib32/libXaw.so.2",
+      "needed": "libXt.so",
+      "selected": "/usr/lib32/libXt.so"
+    },
+    {
+      "from": "/usr/lib32/libXaw.so.2",
+      "needed": "libXext.so",
+      "selected": "/usr/lib32/libXext.so"
+    },
+    {
+      "from": "/usr/lib32/libXaw.so.2",
+      "needed": "libX11.so.1",
+      "selected": "/usr/lib32/libX11.so.1"
+    },
+    {
+      "from": "/usr/lib32/libXaw.so.2",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1"
+    },
+    {
+      "from": "/usr/lib32/libXaw.so.2",
+      "needed": "libgen.so",
+      "selected": "/usr/lib32/libgen.so"
+    },
+    {
+      "from": "/usr/lib32/libXmu.so",
+      "needed": "libXt.so",
+      "selected": "/usr/lib32/libXt.so"
+    },
+    {
+      "from": "/usr/lib32/libXmu.so",
+      "needed": "libXext.so",
+      "selected": "/usr/lib32/libXext.so"
+    },
+    {
+      "from": "/usr/lib32/libXmu.so",
+      "needed": "libX11.so.1",
+      "selected": "/usr/lib32/libX11.so.1"
+    },
+    {
+      "from": "/usr/lib32/libXmu.so",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1"
+    },
+    {
+      "from": "/usr/lib32/libXmu.so",
+      "needed": "libgen.so",
+      "selected": "/usr/lib32/libgen.so"
+    },
+    {
+      "from": "/usr/lib32/libXt.so",
+      "needed": "libgen.so",
+      "selected": "/usr/lib32/libgen.so"
+    },
+    {
+      "from": "/usr/lib32/libXt.so",
+      "needed": "libX11.so.1",
+      "selected": "/usr/lib32/libX11.so.1"
+    },
+    {
+      "from": "/usr/lib32/libXt.so",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1"
+    },
+    {
+      "from": "/usr/lib32/libXext.so",
+      "needed": "libX11.so.1",
+      "selected": "/usr/lib32/libX11.so.1"
+    },
+    {
+      "from": "/usr/lib32/libXext.so",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1"
+    },
+    {
+      "from": "/usr/lib32/libX11.so.1",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1"
+    },
+    {
+      "from": "/usr/lib32/libgen.so",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1"
+    }
+  ],
+  "resources": {
+    "/usr/lib/X11/app-defaults/XClock": {
+      "bytes": 141,
+      "sha256": "ca8c22f7a7d86fe079ab1cecd10c1e167da61d29d754f626c340b9b5db2b62fc"
+    }
+  },
+  "analysis": {
+    "/usr/bin/X11/xclock": {
+      "needed_closure": [
+        "/usr/lib32/libX11.so.1",
+        "/usr/lib32/libXaw.so.2",
+        "/usr/lib32/libXext.so",
+        "/usr/lib32/libXmu.so",
+        "/usr/lib32/libXt.so",
+        "/usr/lib32/libc.so.1",
+        "/usr/lib32/libgen.so"
+      ],
+      "not_8k_aligned": [],
+      "linked_address_collisions": [
+        {
+          "left": "/usr/lib32/libX11.so.1",
+          "right": "/usr/lib32/libXext.so",
+          "overlaps": [
+            {
+              "start": 258998272,
+              "end": 259006464
+            },
+            {
+              "start": 259014656,
+              "end": 259126432
+            }
+          ]
+        },
+        {
+          "left": "/usr/lib32/libXaw.so.2",
+          "right": "/usr/lib32/libXmu.so",
+          "overlaps": [
+            {
+              "start": 255852544,
+              "end": 255946752
+            },
+            {
+              "start": 255950848,
+              "end": 255954944
+            }
+          ]
+        },
+        {
+          "left": "/usr/lib32/libXaw.so.2",
+          "right": "/usr/lib32/libXt.so",
+          "overlaps": [
+            {
+              "start": 255852544,
+              "end": 256122880
+            },
+            {
+              "start": 256131072,
+              "end": 256155648
+            }
+          ]
+        },
+        {
+          "left": "/usr/lib32/libXmu.so",
+          "right": "/usr/lib32/libXt.so",
+          "overlaps": [
+            {
+              "start": 255852544,
+              "end": 255946752
+            },
+            {
+              "start": 255950848,
+              "end": 255954944
+            }
+          ]
+        }
+      ],
+      "interpretation": "Static ELF ranges, not observed runtime placement; rld may relocate libraries"
+    }
+  }
+}

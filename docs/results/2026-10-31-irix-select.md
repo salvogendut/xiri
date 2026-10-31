@@ -1,5 +1,7 @@
 # IRIX select: measured readiness and timeout behavior
 
+Follow-up: the [xstat checkpoint](2026-10-31-irix-xstat.md) now implements the pathname-stat contract and advances the resource-installed Toolchest case. The results below describe the select kernel at its original checkpoint.
+
 Date: 2026-10-31. This follows the [Toolchest session diagnosis](2026-10-31-irix-toolchest-session.md).
 The [select lab](../../lab/irix-select/README.md) supplies original probe sources,
 reproduction commands and the [ABI contract](../../lab/irix-select/abi.json).
