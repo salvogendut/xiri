@@ -1,5 +1,7 @@
 # IRIX fxstat lab
 
+Follow-up: the [SIOCNREAD checkpoint](../../docs/results/2026-10-31-irix-siocnread.md) removes the later XIO exit. Toolchest now renders its menu and remains alive through bounded tests; desktop interaction and resources remain separate qualification work.
+
 This checkpoint measures descriptor-based syscall 1160 on the user's IRIX
 6.5.22m installation and implements its bounded o32/n32 contract in the NetBSD
 fork. The [result](../../docs/results/2026-10-31-irix-fxstat.md) and

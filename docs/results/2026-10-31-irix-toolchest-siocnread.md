@@ -1,5 +1,7 @@
 # Toolchest's next boundary: SIOCNREAD
 
+Follow-up: the [SIOCNREAD checkpoint](2026-10-31-irix-siocnread.md) removes the later XIO exit. Toolchest now renders its menu and remains alive through bounded tests; desktop interaction and resources remain separate qualification work.
+
 After the fxstat change, the supplied-resource Toolchest attempt examined here
 exits 1 with XIO error 89 instead of the earlier allocator SIGSEGV. Its next
 specific compatibility candidate is `ioctl(fd, 0x4004730a, int *)`, named

@@ -79,3 +79,21 @@ metadata and hashes. The native helper must pass its entry-PC breakpoint
 control before observing vendor code. Both vendor children must exit naturally,
 and the guest must halt cleanly. Count the diagnostic guest within the user's
 current limit of four total simultaneous IRIS instances and stop it afterward.
+
+
+The harness also accepts `--kernel-checkpoint siocnread` with a stopped, clean
+LP64 SIOCNREAD run as its seed. This repeats analog/digital xclock under both
+identities, retains native ABI/ptrace/X controls, and skips the historical
+Toolchest allocator-fault expectation that fxstat already fixed. It does not
+change the loader or assume that Toolchest's ioctl fix resolves libXmu mapping.
+
+```sh
+python3 scripts/probe-irix-xclock.py --kernel-checkpoint siocnread \
+  --seed-directory .work/irix-siocnread/runs/lp64-ci-d2asxkow
+```
+
+The [same-kernel recheck](../../docs/results/2026-10-31-irix-siocnread.md)
+confirms the libXmu ENOMEM boundary in all four CI attempts, before any X socket
+or connect call. Native xclock displays and the before/after native/vendor
+controls pass. This is a recheck of the existing blocker; no loader fix is
+claimed by the SIOCNREAD checkpoint.

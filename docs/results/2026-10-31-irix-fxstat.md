@@ -1,5 +1,7 @@
 # IRIX fxstat and Toolchest resource loading
 
+Follow-up: the [SIOCNREAD checkpoint](2026-10-31-irix-siocnread.md) removes the later XIO exit. Toolchest now renders its menu and remains alive through bounded tests; desktop interaction and resources remain separate qualification work.
+
 Descriptor metadata lets Toolchest read its app-defaults and complete menu
 without the observed allocator SIGSEGV. It now reaches unsupported SIOCNREAD
 during X I/O. A usable window and event loop remain unqualified.

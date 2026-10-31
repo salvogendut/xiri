@@ -1,0 +1,1833 @@
+{
+  "schema": 1,
+  "status": "qualified-subset",
+  "source_revision": "355e0ca310039839b426e66d00744edab5cd5608",
+  "source_branch": "xiri/irix-siocnread",
+  "reference_cases": 336,
+  "focused_runs": [
+    {
+      "kernel_abi": "lp64",
+      "mode": "ci",
+      "cases": 336,
+      "controls": 12,
+      "clean_shutdown": true,
+      "toolchest": [
+        {
+          "name": "library-0-0",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "./vendor-toolchest: Cannot open configuration file /usr/lib/X11/system.chestrc\n"
+          },
+          "siocnread": [],
+          "resource_reads": {},
+          "window_tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     1 child:\n     0x200001 \"vendor-toolchest\": (\"vendor-toolchest\" \"Toolchest\")  1x1+0+0  +0+0\n\n",
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b"
+        },
+        {
+          "name": "library-0-1",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "./vendor-toolchest: Cannot open configuration file /usr/lib/X11/system.chestrc\n"
+          },
+          "siocnread": [],
+          "resource_reads": {},
+          "window_tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     0 children.\n\n",
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b"
+        },
+        {
+          "name": "library-0-2",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "./vendor-toolchest: Cannot open configuration file /usr/lib/X11/system.chestrc\n"
+          },
+          "siocnread": [],
+          "resource_reads": {},
+          "window_tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     0 children.\n\n",
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b"
+        },
+        {
+          "name": "library-1234-0",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "./vendor-toolchest: Cannot open configuration file /usr/lib/X11/system.chestrc\n"
+          },
+          "siocnread": [],
+          "resource_reads": {},
+          "window_tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     0 children.\n\n",
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b"
+        },
+        {
+          "name": "library-1234-1",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "./vendor-toolchest: Cannot open configuration file /usr/lib/X11/system.chestrc\n"
+          },
+          "siocnread": [],
+          "resource_reads": {},
+          "window_tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     0 children.\n\n",
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b"
+        },
+        {
+          "name": "library-1234-2",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "./vendor-toolchest: Cannot open configuration file /usr/lib/X11/system.chestrc\n"
+          },
+          "siocnread": [],
+          "resource_reads": {},
+          "window_tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     0 children.\n\n",
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b"
+        },
+        {
+          "name": "resources-0-0",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": -1,
+            "signal": 9,
+            "killed": 1,
+            "stdout": "",
+            "stderr": "Warning: Color name \"SGIGray76\" is not defined\nWarning: Color name \"SGIDarkGray\" is not defined\nWarning: translation table syntax error: Unknown keysym name:  osfActivate\nWarning: ... found while parsing ':<Key>osfActivate:ManagerParentActivate()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfBeginLine\nWarning: ... found while parsing ':<Key>osfBeginLine:ManagerGadgetTraverseHome()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfSelect\nWarning: ... found while parsing ':<Key>osfSelect:ManagerGadgetSelect()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfSelect\nWarning: ... found while parsing ':<Key>osfSelect:MenuBarGadgetSelect()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfActivate\nWarning: ... found while parsing ':<Key>osfActivate:ManagerParentActivate()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfHelp\nWarning: ... found while parsing ':<Key>osfHelp:MenuHelp()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: \n    Cannot parse default background color spec\n\n"
+          },
+          "siocnread": [
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446896,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446896,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446896,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446896,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446896,
+              "v0": 0,
+              "a3": 0
+            }
+          ],
+          "resource_reads": {
+            "/emul/irix/usr/lib/X11/app-defaults/Toolchest": [
+              {
+                "requested": 4281,
+                "returned": 4281,
+                "error": 0
+              }
+            ],
+            "/emul/irix/usr/lib/X11/system.chestrc": [
+              {
+                "requested": 4096,
+                "returned": 4096,
+                "error": 0
+              },
+              {
+                "requested": 4096,
+                "returned": 2364,
+                "error": 0
+              },
+              {
+                "requested": 4096,
+                "returned": 0,
+                "error": 0
+              }
+            ]
+          },
+          "window_tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     1 child:\n     0x200001 \"vendor-toolchest\": (\"vendor-toolchest\" \"Toolchest\")  1x1+10+35  +10+35\n\n",
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b"
+        },
+        {
+          "name": "resources-0-1",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": -1,
+            "signal": 9,
+            "killed": 1,
+            "stdout": "",
+            "stderr": "Warning: Color name \"SGIGray76\" is not defined\nWarning: Color name \"SGIDarkGray\" is not defined\nWarning: translation table syntax error: Unknown keysym name:  osfActivate\nWarning: ... found while parsing ':<Key>osfActivate:ManagerParentActivate()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfBeginLine\nWarning: ... found while parsing ':<Key>osfBeginLine:ManagerGadgetTraverseHome()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfSelect\nWarning: ... found while parsing ':<Key>osfSelect:ManagerGadgetSelect()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfSelect\nWarning: ... found while parsing ':<Key>osfSelect:MenuBarGadgetSelect()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfActivate\nWarning: ... found while parsing ':<Key>osfActivate:ManagerParentActivate()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfHelp\nWarning: ... found while parsing ':<Key>osfHelp:MenuHelp()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: \n    Cannot parse default background color spec\n\n"
+          },
+          "siocnread": [
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446896,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446896,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446896,
+              "v0": 0,
+              "a3": 0
+            }
+          ],
+          "resource_reads": {
+            "/emul/irix/usr/lib/X11/app-defaults/Toolchest": [
+              {
+                "requested": 4281,
+                "returned": 4281,
+                "error": 0
+              }
+            ],
+            "/emul/irix/usr/lib/X11/system.chestrc": [
+              {
+                "requested": 4096,
+                "returned": 4096,
+                "error": 0
+              },
+              {
+                "requested": 4096,
+                "returned": 2364,
+                "error": 0
+              },
+              {
+                "requested": 4096,
+                "returned": 0,
+                "error": 0
+              }
+            ]
+          },
+          "window_tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     4 children:\n     0x200017 (has no name): ()  188x102+10+35  +10+35\n        3 children:\n        0x20001c (has no name): ()  144x344+0+0  +10+35\n        0x20001a (has no name): ()  187x52+0+0  +10+35\n        0x200018 (has no name): ()  188x102+0+0  +10+35\n     0x200012 (has no name): ()  5x5+10+35  +10+35\n        2 children:\n        0x20001e (has no name): ()  16x16+0+0  +10+35\n        0x200013 (has no name): ()  158x248+0+0  +10+35\n           3 children:\n           0x20001d (has no name): ()  154x24+2+50  +12+85\n           0x20001b (has no name): ()  154x24+2+26  +12+61\n           0x200019 (has no name): ()  154x24+2+2  +12+37\n     0x200001 \"vendor-toolchest\": (\"vendor-toolchest\" \"Toolchest\")  1x1+10+35  +10+35\n     0x600001 (has no name): ()  1x1+-2+-2  +-2+-2\n\n",
+          "frame_sha256": "a248dc5b5986c4afb5d4101c3bc3ba01f8e88ed46dde47e78e8cef40f68497da"
+        },
+        {
+          "name": "resources-0-2",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": -1,
+            "signal": 9,
+            "killed": 1,
+            "stdout": "",
+            "stderr": "Warning: Color name \"SGIGray76\" is not defined\nWarning: Color name \"SGIDarkGray\" is not defined\nWarning: translation table syntax error: Unknown keysym name:  osfActivate\nWarning: ... found while parsing ':<Key>osfActivate:ManagerParentActivate()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfBeginLine\nWarning: ... found while parsing ':<Key>osfBeginLine:ManagerGadgetTraverseHome()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfSelect\nWarning: ... found while parsing ':<Key>osfSelect:ManagerGadgetSelect()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfSelect\nWarning: ... found while parsing ':<Key>osfSelect:MenuBarGadgetSelect()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfActivate\nWarning: ... found while parsing ':<Key>osfActivate:ManagerParentActivate()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfHelp\nWarning: ... found while parsing ':<Key>osfHelp:MenuHelp()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: \n    Cannot parse default background color spec\n\n"
+          },
+          "siocnread": [
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446896,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446896,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446896,
+              "v0": 0,
+              "a3": 0
+            }
+          ],
+          "resource_reads": {
+            "/emul/irix/usr/lib/X11/app-defaults/Toolchest": [
+              {
+                "requested": 4281,
+                "returned": 4281,
+                "error": 0
+              }
+            ],
+            "/emul/irix/usr/lib/X11/system.chestrc": [
+              {
+                "requested": 4096,
+                "returned": 4096,
+                "error": 0
+              },
+              {
+                "requested": 4096,
+                "returned": 2364,
+                "error": 0
+              },
+              {
+                "requested": 4096,
+                "returned": 0,
+                "error": 0
+              }
+            ]
+          },
+          "window_tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     4 children:\n     0x200017 (has no name): ()  188x102+10+35  +10+35\n        4 children:\n        0x200022 (has no name): ()  187x102+0+0  +10+35\n        0x20001c (has no name): ()  144x344+0+0  +10+35\n        0x20001a (has no name): ()  187x52+0+0  +10+35\n        0x200018 (has no name): ()  188x102+0+0  +10+35\n     0x200012 (has no name): ()  5x5+10+35  +10+35\n        6 children:\n        0x200024 (has no name): ()  135x178+0+0  +10+35\n        0x200021 (has no name): ()  168x272+0+0  +10+35\n           1 child:\n           0x200023 (has no name): ()  164x24+2+196  +12+231\n        0x200020 (has no name): ()  123x128+0+0  +10+35\n        0x20001f (has no name): ()  177x128+0+0  +10+35\n        0x20001e (has no name): ()  16x16+0+0  +10+35\n        0x200013 (has no name): ()  158x248+0+0  +10+35\n           3 children:\n           0x20001d (has no name): ()  154x24+2+50  +12+85\n           0x20001b (has no name): ()  154x24+2+26  +12+61\n           0x200019 (has no name): ()  154x24+2+2  +12+37\n     0x200001 \"vendor-toolchest\": (\"vendor-toolchest\" \"Toolchest\")  1x1+10+35  +10+35\n     0x600001 (has no name): ()  1x1+-2+-2  +-2+-2\n\n",
+          "frame_sha256": "a248dc5b5986c4afb5d4101c3bc3ba01f8e88ed46dde47e78e8cef40f68497da"
+        },
+        {
+          "name": "resources-1234-0",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": -1,
+            "signal": 9,
+            "killed": 1,
+            "stdout": "",
+            "stderr": "Warning: Color name \"SGIGray76\" is not defined\nWarning: Color name \"SGIDarkGray\" is not defined\nWarning: translation table syntax error: Unknown keysym name:  osfActivate\nWarning: ... found while parsing ':<Key>osfActivate:ManagerParentActivate()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfBeginLine\nWarning: ... found while parsing ':<Key>osfBeginLine:ManagerGadgetTraverseHome()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfSelect\nWarning: ... found while parsing ':<Key>osfSelect:ManagerGadgetSelect()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfSelect\nWarning: ... found while parsing ':<Key>osfSelect:MenuBarGadgetSelect()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfActivate\nWarning: ... found while parsing ':<Key>osfActivate:ManagerParentActivate()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfHelp\nWarning: ... found while parsing ':<Key>osfHelp:MenuHelp()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: \n    Cannot parse default background color spec\n\n"
+          },
+          "siocnread": [
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446896,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446896,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446896,
+              "v0": 0,
+              "a3": 0
+            }
+          ],
+          "resource_reads": {
+            "/emul/irix/usr/lib/X11/app-defaults/Toolchest": [
+              {
+                "requested": 4281,
+                "returned": 4281,
+                "error": 0
+              }
+            ],
+            "/emul/irix/usr/lib/X11/system.chestrc": [
+              {
+                "requested": 4096,
+                "returned": 4096,
+                "error": 0
+              },
+              {
+                "requested": 4096,
+                "returned": 2364,
+                "error": 0
+              },
+              {
+                "requested": 4096,
+                "returned": 0,
+                "error": 0
+              }
+            ]
+          },
+          "window_tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     1 child:\n     0x600001 (has no name): ()  1x1+-2+-2  +-2+-2\n\n",
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b"
+        },
+        {
+          "name": "resources-1234-1",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": -1,
+            "signal": 9,
+            "killed": 1,
+            "stdout": "",
+            "stderr": "Warning: Color name \"SGIGray76\" is not defined\nWarning: Color name \"SGIDarkGray\" is not defined\nWarning: translation table syntax error: Unknown keysym name:  osfActivate\nWarning: ... found while parsing ':<Key>osfActivate:ManagerParentActivate()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfBeginLine\nWarning: ... found while parsing ':<Key>osfBeginLine:ManagerGadgetTraverseHome()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfSelect\nWarning: ... found while parsing ':<Key>osfSelect:ManagerGadgetSelect()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfSelect\nWarning: ... found while parsing ':<Key>osfSelect:MenuBarGadgetSelect()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfActivate\nWarning: ... found while parsing ':<Key>osfActivate:ManagerParentActivate()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfHelp\nWarning: ... found while parsing ':<Key>osfHelp:MenuHelp()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: \n    Cannot parse default background color spec\n\n"
+          },
+          "siocnread": [
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446896,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446896,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446896,
+              "v0": 0,
+              "a3": 0
+            }
+          ],
+          "resource_reads": {
+            "/emul/irix/usr/lib/X11/app-defaults/Toolchest": [
+              {
+                "requested": 4281,
+                "returned": 4281,
+                "error": 0
+              }
+            ],
+            "/emul/irix/usr/lib/X11/system.chestrc": [
+              {
+                "requested": 4096,
+                "returned": 4096,
+                "error": 0
+              },
+              {
+                "requested": 4096,
+                "returned": 2364,
+                "error": 0
+              },
+              {
+                "requested": 4096,
+                "returned": 0,
+                "error": 0
+              }
+            ]
+          },
+          "window_tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     4 children:\n     0x200017 (has no name): ()  188x102+10+35  +10+35\n        3 children:\n        0x20001c (has no name): ()  144x344+0+0  +10+35\n        0x20001a (has no name): ()  187x52+0+0  +10+35\n        0x200018 (has no name): ()  188x102+0+0  +10+35\n     0x200012 (has no name): ()  5x5+10+35  +10+35\n        2 children:\n        0x20001e (has no name): ()  16x16+0+0  +10+35\n        0x200013 (has no name): ()  158x248+0+0  +10+35\n           3 children:\n           0x20001d (has no name): ()  154x24+2+50  +12+85\n           0x20001b (has no name): ()  154x24+2+26  +12+61\n           0x200019 (has no name): ()  154x24+2+2  +12+37\n     0x200001 \"vendor-toolchest\": (\"vendor-toolchest\" \"Toolchest\")  1x1+10+35  +10+35\n     0x600001 (has no name): ()  1x1+-2+-2  +-2+-2\n\n",
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b"
+        },
+        {
+          "name": "resources-1234-2",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": -1,
+            "signal": 9,
+            "killed": 1,
+            "stdout": "",
+            "stderr": "Warning: Color name \"SGIGray76\" is not defined\nWarning: Color name \"SGIDarkGray\" is not defined\nWarning: translation table syntax error: Unknown keysym name:  osfActivate\nWarning: ... found while parsing ':<Key>osfActivate:ManagerParentActivate()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfBeginLine\nWarning: ... found while parsing ':<Key>osfBeginLine:ManagerGadgetTraverseHome()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfSelect\nWarning: ... found while parsing ':<Key>osfSelect:ManagerGadgetSelect()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfSelect\nWarning: ... found while parsing ':<Key>osfSelect:MenuBarGadgetSelect()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfActivate\nWarning: ... found while parsing ':<Key>osfActivate:ManagerParentActivate()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfHelp\nWarning: ... found while parsing ':<Key>osfHelp:MenuHelp()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: \n    Cannot parse default background color spec\n\n"
+          },
+          "siocnread": [
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446896,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446896,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446896,
+              "v0": 0,
+              "a3": 0
+            }
+          ],
+          "resource_reads": {
+            "/emul/irix/usr/lib/X11/app-defaults/Toolchest": [
+              {
+                "requested": 4281,
+                "returned": 4281,
+                "error": 0
+              }
+            ],
+            "/emul/irix/usr/lib/X11/system.chestrc": [
+              {
+                "requested": 4096,
+                "returned": 4096,
+                "error": 0
+              },
+              {
+                "requested": 4096,
+                "returned": 2364,
+                "error": 0
+              },
+              {
+                "requested": 4096,
+                "returned": 0,
+                "error": 0
+              }
+            ]
+          },
+          "window_tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     2 children:\n     0x200001 \"vendor-toolchest\": (\"vendor-toolchest\" \"Toolchest\")  1x1+10+35  +10+35\n     0x600001 (has no name): ()  1x1+-2+-2  +-2+-2\n\n",
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b"
+        }
+      ],
+      "directory": ".work/irix-siocnread/runs/lp64-ci-d2asxkow",
+      "result_sha256": "665cf8e52ebc47c522d806969c547f624a43dafcaaf4e65b6caacf1bfdb324a2",
+      "execution_sources": {
+        "lab/irix-lp64/runner.c": "005bdf3fffce5fb8ca79073e92cc41431aa953550c41014183d5de986a104463",
+        "lab/irix-toolchest/session.c": "e183b4aefdfb428e01dc609230e87a7546a0b31e9d4b5e236503e0a8bb3b09f5",
+        "lab/irix-siocnread/peer.c": "b5c9642554f38906da8836d29f0f946a532d1d0c282247f2b171bd0585c767dc",
+        "scripts/probe-irix-siocnread.py": "0b28857702afd913f510d4f7ed332e56e2eff0b9a2a11fe6d0eedc0e716283a7",
+        "scripts/probe-netbsd.py": "adfa9547fa98af28fd55e4e155e7667b2b0a8c7cea8aee8d58079da946b72a1d",
+        "scripts/probe-irix-runtime.py": "89b946e035ecf0525b3c08cdc80ca0b77d8db6aa90fd60cf410ddc7eb3a4d553",
+        "scripts/probe-irix-tcp.py": "df111c15ab1dd8988de1c76c8bf4c24262413049ed3f48632598b2c514191ede",
+        "scripts/irix-siocnread-records.py": "395aeffbe06896ce086794bf38e0f8a5696323d4a5506f5d2b57e73301422e9f",
+        "lab/irix-siocnread/abi.json": "85bf7ef9025a5112e812c641d88b5df306d0788940062dc01b7c1bd8df72e898"
+      }
+    },
+    {
+      "kernel_abi": "lp64",
+      "mode": "ordinary",
+      "cases": 336,
+      "controls": 12,
+      "clean_shutdown": true,
+      "toolchest": [
+        {
+          "name": "library-0-0",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "./vendor-toolchest: Cannot open configuration file /usr/lib/X11/system.chestrc\n"
+          },
+          "siocnread": [],
+          "resource_reads": {},
+          "window_tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     1 child:\n     0x200001 \"vendor-toolchest\": (\"vendor-toolchest\" \"Toolchest\")  1x1+0+0  +0+0\n\n",
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b"
+        },
+        {
+          "name": "library-0-1",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "./vendor-toolchest: Cannot open configuration file /usr/lib/X11/system.chestrc\n"
+          },
+          "siocnread": [],
+          "resource_reads": {},
+          "window_tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     0 children.\n\n",
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b"
+        },
+        {
+          "name": "library-0-2",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "./vendor-toolchest: Cannot open configuration file /usr/lib/X11/system.chestrc\n"
+          },
+          "siocnread": [],
+          "resource_reads": {},
+          "window_tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     0 children.\n\n",
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b"
+        },
+        {
+          "name": "library-1234-0",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "./vendor-toolchest: Cannot open configuration file /usr/lib/X11/system.chestrc\n"
+          },
+          "siocnread": [],
+          "resource_reads": {},
+          "window_tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     0 children.\n\n",
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b"
+        },
+        {
+          "name": "library-1234-1",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "./vendor-toolchest: Cannot open configuration file /usr/lib/X11/system.chestrc\n"
+          },
+          "siocnread": [],
+          "resource_reads": {},
+          "window_tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     0 children.\n\n",
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b"
+        },
+        {
+          "name": "library-1234-2",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 1,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "",
+            "stderr": "./vendor-toolchest: Cannot open configuration file /usr/lib/X11/system.chestrc\n"
+          },
+          "siocnread": [],
+          "resource_reads": {},
+          "window_tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     0 children.\n\n",
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b"
+        },
+        {
+          "name": "resources-0-0",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": -1,
+            "signal": 9,
+            "killed": 1,
+            "stdout": "",
+            "stderr": "Warning: Color name \"SGIGray76\" is not defined\nWarning: Color name \"SGIDarkGray\" is not defined\nWarning: translation table syntax error: Unknown keysym name:  osfActivate\nWarning: ... found while parsing ':<Key>osfActivate:ManagerParentActivate()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfBeginLine\nWarning: ... found while parsing ':<Key>osfBeginLine:ManagerGadgetTraverseHome()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfSelect\nWarning: ... found while parsing ':<Key>osfSelect:ManagerGadgetSelect()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfSelect\nWarning: ... found while parsing ':<Key>osfSelect:MenuBarGadgetSelect()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfActivate\nWarning: ... found while parsing ':<Key>osfActivate:ManagerParentActivate()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfHelp\nWarning: ... found while parsing ':<Key>osfHelp:MenuHelp()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: \n    Cannot parse default background color spec\n\n"
+          },
+          "siocnread": [
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446896,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446896,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446896,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446896,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446896,
+              "v0": 0,
+              "a3": 0
+            }
+          ],
+          "resource_reads": {
+            "/emul/irix/usr/lib/X11/app-defaults/Toolchest": [
+              {
+                "requested": 4281,
+                "returned": 4281,
+                "error": 0
+              }
+            ],
+            "/emul/irix/usr/lib/X11/system.chestrc": [
+              {
+                "requested": 4096,
+                "returned": 4096,
+                "error": 0
+              },
+              {
+                "requested": 4096,
+                "returned": 2364,
+                "error": 0
+              },
+              {
+                "requested": 4096,
+                "returned": 0,
+                "error": 0
+              }
+            ]
+          },
+          "window_tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     3 children:\n     0x200017 (has no name): ()  188x102+10+35  +10+35\n        3 children:\n        0x20001c (has no name): ()  144x344+0+0  +10+35\n        0x20001a (has no name): ()  187x52+0+0  +10+35\n        0x200018 (has no name): ()  188x102+0+0  +10+35\n     0x200012 (has no name): ()  5x5+10+35  +10+35\n        2 children:\n        0x20001e (has no name): ()  16x16+0+0  +10+35\n        0x200013 (has no name): ()  158x248+0+0  +10+35\n           3 children:\n           0x20001d (has no name): ()  154x24+2+50  +12+85\n           0x20001b (has no name): ()  154x24+2+26  +12+61\n           0x200019 (has no name): ()  154x24+2+2  +12+37\n     0x200001 \"vendor-toolchest\": (\"vendor-toolchest\" \"Toolchest\")  1x1+10+35  +10+35\n\n",
+          "frame_sha256": "a248dc5b5986c4afb5d4101c3bc3ba01f8e88ed46dde47e78e8cef40f68497da"
+        },
+        {
+          "name": "resources-0-1",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": -1,
+            "signal": 9,
+            "killed": 1,
+            "stdout": "",
+            "stderr": "Warning: Color name \"SGIGray76\" is not defined\nWarning: Color name \"SGIDarkGray\" is not defined\nWarning: translation table syntax error: Unknown keysym name:  osfActivate\nWarning: ... found while parsing ':<Key>osfActivate:ManagerParentActivate()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfBeginLine\nWarning: ... found while parsing ':<Key>osfBeginLine:ManagerGadgetTraverseHome()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfSelect\nWarning: ... found while parsing ':<Key>osfSelect:ManagerGadgetSelect()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfSelect\nWarning: ... found while parsing ':<Key>osfSelect:MenuBarGadgetSelect()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfActivate\nWarning: ... found while parsing ':<Key>osfActivate:ManagerParentActivate()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfHelp\nWarning: ... found while parsing ':<Key>osfHelp:MenuHelp()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: \n    Cannot parse default background color spec\n\n"
+          },
+          "siocnread": [
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446896,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446896,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446896,
+              "v0": 0,
+              "a3": 0
+            }
+          ],
+          "resource_reads": {
+            "/emul/irix/usr/lib/X11/app-defaults/Toolchest": [
+              {
+                "requested": 4281,
+                "returned": 4281,
+                "error": 0
+              }
+            ],
+            "/emul/irix/usr/lib/X11/system.chestrc": [
+              {
+                "requested": 4096,
+                "returned": 4096,
+                "error": 0
+              },
+              {
+                "requested": 4096,
+                "returned": 2364,
+                "error": 0
+              },
+              {
+                "requested": 4096,
+                "returned": 0,
+                "error": 0
+              }
+            ]
+          },
+          "window_tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     2 children:\n     0x200001 \"vendor-toolchest\": (\"vendor-toolchest\" \"Toolchest\")  1x1+10+35  +10+35\n     0x600001 (has no name): ()  1x1+-2+-2  +-2+-2\n\n",
+          "frame_sha256": "a248dc5b5986c4afb5d4101c3bc3ba01f8e88ed46dde47e78e8cef40f68497da"
+        },
+        {
+          "name": "resources-0-2",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": -1,
+            "signal": 9,
+            "killed": 1,
+            "stdout": "",
+            "stderr": "Warning: Color name \"SGIGray76\" is not defined\nWarning: Color name \"SGIDarkGray\" is not defined\nWarning: translation table syntax error: Unknown keysym name:  osfActivate\nWarning: ... found while parsing ':<Key>osfActivate:ManagerParentActivate()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfBeginLine\nWarning: ... found while parsing ':<Key>osfBeginLine:ManagerGadgetTraverseHome()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfSelect\nWarning: ... found while parsing ':<Key>osfSelect:ManagerGadgetSelect()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfSelect\nWarning: ... found while parsing ':<Key>osfSelect:MenuBarGadgetSelect()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfActivate\nWarning: ... found while parsing ':<Key>osfActivate:ManagerParentActivate()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfHelp\nWarning: ... found while parsing ':<Key>osfHelp:MenuHelp()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: \n    Cannot parse default background color spec\n\n"
+          },
+          "siocnread": [
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446896,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446896,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446896,
+              "v0": 0,
+              "a3": 0
+            }
+          ],
+          "resource_reads": {
+            "/emul/irix/usr/lib/X11/app-defaults/Toolchest": [
+              {
+                "requested": 4281,
+                "returned": 4281,
+                "error": 0
+              }
+            ],
+            "/emul/irix/usr/lib/X11/system.chestrc": [
+              {
+                "requested": 4096,
+                "returned": 4096,
+                "error": 0
+              },
+              {
+                "requested": 4096,
+                "returned": 2364,
+                "error": 0
+              },
+              {
+                "requested": 4096,
+                "returned": 0,
+                "error": 0
+              }
+            ]
+          },
+          "window_tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     5 children:\n     0x200025 \"Toolchest\": (\"vendor-toolchest\" \"Toolchest\")  103x158+10+35  +10+35\n        1 child:\n        0x200026 (has no name): ()  103x158+0+0  +11+36\n           6 children:\n           0x20002c (has no name): ()  99x24+2+2  +13+38\n           0x20002b (has no name): ()  99x24+2+28  +13+64\n           0x20002a (has no name): ()  99x24+2+54  +13+90\n           0x200029 (has no name): ()  99x24+2+80  +13+116\n           0x200028 (has no name): ()  99x24+2+106  +13+142\n           0x200027 (has no name): ()  99x24+2+132  +13+168\n     0x200017 (has no name): ()  188x102+10+35  +10+35\n        4 children:\n        0x200022 (has no name): ()  187x102+0+0  +10+35\n        0x20001c (has no name): ()  144x344+0+0  +10+35\n        0x20001a (has no name): ()  187x52+0+0  +10+35\n        0x200018 (has no name): ()  188x102+0+0  +10+35\n     0x200012 (has no name): ()  5x5+10+35  +10+35\n        6 children:\n        0x200024 (has no name): ()  135x178+0+0  +10+35\n        0x200021 (has no name): ()  168x272+0+0  +10+35\n           1 child:\n           0x200023 (has no name): ()  164x24+2+196  +12+231\n        0x200020 (has no name): ()  123x128+0+0  +10+35\n        0x20001f (has no name): ()  177x128+0+0  +10+35\n        0x20001e (has no name): ()  16x16+0+0  +10+35\n        0x200013 (has no name): ()  158x248+0+0  +10+35\n           3 children:\n           0x20001d (has no name): ()  154x24+2+50  +12+85\n           0x20001b (has no name): ()  154x24+2+26  +12+61\n           0x200019 (has no name): ()  154x24+2+2  +12+37\n     0x200001 \"vendor-toolchest\": (\"vendor-toolchest\" \"Toolchest\")  1x1+10+35  +10+35\n     0x600001 (has no name): ()  1x1+-2+-2  +-2+-2\n\n",
+          "frame_sha256": "a248dc5b5986c4afb5d4101c3bc3ba01f8e88ed46dde47e78e8cef40f68497da"
+        },
+        {
+          "name": "resources-1234-0",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": -1,
+            "signal": 9,
+            "killed": 1,
+            "stdout": "",
+            "stderr": "Warning: Color name \"SGIGray76\" is not defined\nWarning: Color name \"SGIDarkGray\" is not defined\nWarning: translation table syntax error: Unknown keysym name:  osfActivate\nWarning: ... found while parsing ':<Key>osfActivate:ManagerParentActivate()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfBeginLine\nWarning: ... found while parsing ':<Key>osfBeginLine:ManagerGadgetTraverseHome()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfSelect\nWarning: ... found while parsing ':<Key>osfSelect:ManagerGadgetSelect()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfSelect\nWarning: ... found while parsing ':<Key>osfSelect:MenuBarGadgetSelect()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfActivate\nWarning: ... found while parsing ':<Key>osfActivate:ManagerParentActivate()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfHelp\nWarning: ... found while parsing ':<Key>osfHelp:MenuHelp()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: \n    Cannot parse default background color spec\n\n"
+          },
+          "siocnread": [
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446896,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446896,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446896,
+              "v0": 0,
+              "a3": 0
+            }
+          ],
+          "resource_reads": {
+            "/emul/irix/usr/lib/X11/app-defaults/Toolchest": [
+              {
+                "requested": 4281,
+                "returned": 4281,
+                "error": 0
+              }
+            ],
+            "/emul/irix/usr/lib/X11/system.chestrc": [
+              {
+                "requested": 4096,
+                "returned": 4096,
+                "error": 0
+              },
+              {
+                "requested": 4096,
+                "returned": 2364,
+                "error": 0
+              },
+              {
+                "requested": 4096,
+                "returned": 0,
+                "error": 0
+              }
+            ]
+          },
+          "window_tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     4 children:\n     0x200017 (has no name): ()  188x102+10+35  +10+35\n        3 children:\n        0x20001c (has no name): ()  144x344+0+0  +10+35\n        0x20001a (has no name): ()  187x52+0+0  +10+35\n        0x200018 (has no name): ()  188x102+0+0  +10+35\n     0x200012 (has no name): ()  5x5+10+35  +10+35\n        2 children:\n        0x20001e (has no name): ()  16x16+0+0  +10+35\n        0x200013 (has no name): ()  158x248+0+0  +10+35\n           3 children:\n           0x20001d (has no name): ()  154x24+2+50  +12+85\n           0x20001b (has no name): ()  154x24+2+26  +12+61\n           0x200019 (has no name): ()  154x24+2+2  +12+37\n     0x200001 \"vendor-toolchest\": (\"vendor-toolchest\" \"Toolchest\")  1x1+10+35  +10+35\n     0x600001 (has no name): ()  1x1+-2+-2  +-2+-2\n\n",
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b"
+        },
+        {
+          "name": "resources-1234-1",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": -1,
+            "signal": 9,
+            "killed": 1,
+            "stdout": "",
+            "stderr": "Warning: Color name \"SGIGray76\" is not defined\nWarning: Color name \"SGIDarkGray\" is not defined\nWarning: translation table syntax error: Unknown keysym name:  osfActivate\nWarning: ... found while parsing ':<Key>osfActivate:ManagerParentActivate()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfBeginLine\nWarning: ... found while parsing ':<Key>osfBeginLine:ManagerGadgetTraverseHome()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfSelect\nWarning: ... found while parsing ':<Key>osfSelect:ManagerGadgetSelect()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfSelect\nWarning: ... found while parsing ':<Key>osfSelect:MenuBarGadgetSelect()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfActivate\nWarning: ... found while parsing ':<Key>osfActivate:ManagerParentActivate()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfHelp\nWarning: ... found while parsing ':<Key>osfHelp:MenuHelp()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: \n    Cannot parse default background color spec\n\n"
+          },
+          "siocnread": [
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446896,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446896,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446896,
+              "v0": 0,
+              "a3": 0
+            }
+          ],
+          "resource_reads": {
+            "/emul/irix/usr/lib/X11/app-defaults/Toolchest": [
+              {
+                "requested": 4281,
+                "returned": 4281,
+                "error": 0
+              }
+            ],
+            "/emul/irix/usr/lib/X11/system.chestrc": [
+              {
+                "requested": 4096,
+                "returned": 4096,
+                "error": 0
+              },
+              {
+                "requested": 4096,
+                "returned": 2364,
+                "error": 0
+              },
+              {
+                "requested": 4096,
+                "returned": 0,
+                "error": 0
+              }
+            ]
+          },
+          "window_tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     2 children:\n     0x200001 \"vendor-toolchest\": (\"vendor-toolchest\" \"Toolchest\")  1x1+10+35  +10+35\n     0x600001 (has no name): ()  1x1+-2+-2  +-2+-2\n\n",
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b"
+        },
+        {
+          "name": "resources-1234-2",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": -1,
+            "signal": 9,
+            "killed": 1,
+            "stdout": "",
+            "stderr": "Warning: Color name \"SGIGray76\" is not defined\nWarning: Color name \"SGIDarkGray\" is not defined\nWarning: translation table syntax error: Unknown keysym name:  osfActivate\nWarning: ... found while parsing ':<Key>osfActivate:ManagerParentActivate()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfBeginLine\nWarning: ... found while parsing ':<Key>osfBeginLine:ManagerGadgetTraverseHome()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfSelect\nWarning: ... found while parsing ':<Key>osfSelect:ManagerGadgetSelect()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfSelect\nWarning: ... found while parsing ':<Key>osfSelect:MenuBarGadgetSelect()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfActivate\nWarning: ... found while parsing ':<Key>osfActivate:ManagerParentActivate()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfHelp\nWarning: ... found while parsing ':<Key>osfHelp:MenuHelp()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: \n    Cannot parse default background color spec\n\n"
+          },
+          "siocnread": [
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446896,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446352,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446896,
+              "v0": 0,
+              "a3": 0
+            },
+            {
+              "fd": 3,
+              "command": 1074033418,
+              "output": 2147446896,
+              "v0": 0,
+              "a3": 0
+            }
+          ],
+          "resource_reads": {
+            "/emul/irix/usr/lib/X11/app-defaults/Toolchest": [
+              {
+                "requested": 4281,
+                "returned": 4281,
+                "error": 0
+              }
+            ],
+            "/emul/irix/usr/lib/X11/system.chestrc": [
+              {
+                "requested": 4096,
+                "returned": 4096,
+                "error": 0
+              },
+              {
+                "requested": 4096,
+                "returned": 2364,
+                "error": 0
+              },
+              {
+                "requested": 4096,
+                "returned": 0,
+                "error": 0
+              }
+            ]
+          },
+          "window_tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     4 children:\n     0x200017 (has no name): ()  188x102+10+35  +10+35\n        3 children:\n        0x20001c (has no name): ()  144x344+0+0  +10+35\n        0x20001a (has no name): ()  187x52+0+0  +10+35\n        0x200018 (has no name): ()  188x102+0+0  +10+35\n     0x200012 (has no name): ()  5x5+10+35  +10+35\n        2 children:\n        0x20001e (has no name): ()  16x16+0+0  +10+35\n        0x200013 (has no name): ()  158x248+0+0  +10+35\n           3 children:\n           0x20001d (has no name): ()  154x24+2+50  +12+85\n           0x20001b (has no name): ()  154x24+2+26  +12+61\n           0x200019 (has no name): ()  154x24+2+2  +12+37\n     0x200001 \"vendor-toolchest\": (\"vendor-toolchest\" \"Toolchest\")  1x1+10+35  +10+35\n     0x600001 (has no name): ()  1x1+-2+-2  +-2+-2\n\n",
+          "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b"
+        }
+      ],
+      "directory": ".work/irix-siocnread/runs/lp64-ordinary-c8pl3x_q",
+      "result_sha256": "1d097b31df890ed3ffd08bf65da67dca0b88e745cb5c8537216e9a00a1e594b5",
+      "execution_sources": {
+        "lab/irix-lp64/runner.c": "005bdf3fffce5fb8ca79073e92cc41431aa953550c41014183d5de986a104463",
+        "lab/irix-toolchest/session.c": "e183b4aefdfb428e01dc609230e87a7546a0b31e9d4b5e236503e0a8bb3b09f5",
+        "lab/irix-siocnread/peer.c": "b5c9642554f38906da8836d29f0f946a532d1d0c282247f2b171bd0585c767dc",
+        "scripts/probe-irix-siocnread.py": "0b28857702afd913f510d4f7ed332e56e2eff0b9a2a11fe6d0eedc0e716283a7",
+        "scripts/probe-netbsd.py": "adfa9547fa98af28fd55e4e155e7667b2b0a8c7cea8aee8d58079da946b72a1d",
+        "scripts/probe-irix-runtime.py": "89b946e035ecf0525b3c08cdc80ca0b77d8db6aa90fd60cf410ddc7eb3a4d553",
+        "scripts/probe-irix-tcp.py": "df111c15ab1dd8988de1c76c8bf4c24262413049ed3f48632598b2c514191ede",
+        "scripts/irix-siocnread-records.py": "395aeffbe06896ce086794bf38e0f8a5696323d4a5506f5d2b57e73301422e9f",
+        "lab/irix-siocnread/abi.json": "85bf7ef9025a5112e812c641d88b5df306d0788940062dc01b7c1bd8df72e898"
+      }
+    },
+    {
+      "kernel_abi": "o32",
+      "mode": "ci",
+      "cases": 168,
+      "controls": 8,
+      "clean_shutdown": true,
+      "toolchest": [],
+      "directory": ".work/irix-siocnread/runs/o32-ci-9hyzkead",
+      "result_sha256": "d75f860c2cbe644e5136f73dd6192cab4c272d7e4d5967086012c471d45f1e87",
+      "execution_sources": {
+        "lab/irix-lp64/runner.c": "005bdf3fffce5fb8ca79073e92cc41431aa953550c41014183d5de986a104463",
+        "lab/irix-toolchest/session.c": "e183b4aefdfb428e01dc609230e87a7546a0b31e9d4b5e236503e0a8bb3b09f5",
+        "lab/irix-siocnread/peer.c": "b5c9642554f38906da8836d29f0f946a532d1d0c282247f2b171bd0585c767dc",
+        "scripts/probe-irix-siocnread.py": "0b28857702afd913f510d4f7ed332e56e2eff0b9a2a11fe6d0eedc0e716283a7",
+        "scripts/probe-netbsd.py": "adfa9547fa98af28fd55e4e155e7667b2b0a8c7cea8aee8d58079da946b72a1d",
+        "scripts/probe-irix-runtime.py": "89b946e035ecf0525b3c08cdc80ca0b77d8db6aa90fd60cf410ddc7eb3a4d553",
+        "scripts/probe-irix-tcp.py": "df111c15ab1dd8988de1c76c8bf4c24262413049ed3f48632598b2c514191ede",
+        "scripts/irix-siocnread-records.py": "395aeffbe06896ce086794bf38e0f8a5696323d4a5506f5d2b57e73301422e9f",
+        "lab/irix-siocnread/abi.json": "85bf7ef9025a5112e812c641d88b5df306d0788940062dc01b7c1bd8df72e898"
+      }
+    }
+  ],
+  "regression_runs": [
+    {
+      "kind": "select",
+      "kernel_abi": "lp64",
+      "mode": "ci",
+      "cases": 552,
+      "clean_shutdown": true,
+      "directory": ".work/irix-select/runs/lp64-ci-e7q40lth",
+      "result_sha256": "dd1c5279e1fe4d84fb7c15dbd2e556c3379b2a74b9490e03d38ecbb67de29027"
+    },
+    {
+      "kind": "transport",
+      "kernel_abi": "lp64",
+      "mode": "ci",
+      "cases": 1284,
+      "clean_shutdown": true,
+      "directory": ".work/irix-recvmsg/runs/lp64-ci-6vc2okkn",
+      "result_sha256": "cb960de1799b5f8f08f22235e10a093454ff7c43b71915c9672044442f4119c3"
+    },
+    {
+      "kind": "transport",
+      "kernel_abi": "o32",
+      "mode": "ci",
+      "cases": 641,
+      "clean_shutdown": true,
+      "directory": ".work/irix-recvmsg/runs/o32-ci-r699v4j_",
+      "result_sha256": "707b4afa69d55c11d109de194415e94f1db40a60ce7ea154ddccb4905db3f41e"
+    }
+  ],
+  "native_differences": [
+    "Every command other than 0x4004730a retains ENOSYS, including invalid-fd unknown commands.",
+    "The alternate original IRIX FIONREAD encoding 0x4004667f is measured but remains unsupported."
+  ],
+  "limits": [
+    "AF_UNIX and datagrams",
+    "Listening sockets",
+    "Urgent data, TCP resets, local shutdown and pending socket errors",
+    "Concurrent reads, closes and arrivals",
+    "Large queue counts",
+    "Inherited unsupported descriptor types",
+    "General ioctl and terminal commands"
+  ],
+  "fixture_limits": [
+    "Reference setuid/setgid does not clear supplementary groups; world-readable/writable synthetic files remove group-dependent setup.",
+    "Initial diagnostic run used mode 0644 and could not open write modes as uid 1234; excluded from qualification."
+  ],
+  "sustained_window_check": {
+    "clean_shutdown": true,
+    "seconds_per_client": 60,
+    "native_expose_controls": 2,
+    "all_redraws_restored": true,
+    "observations": [
+      {
+        "uid": 0,
+        "actual": {
+          "errno_bytes": 0,
+          "errno": 0,
+          "exit": -1,
+          "signal": 9,
+          "killed": 1,
+          "stdout": "",
+          "stderr": "Warning: Color name \"SGIGray76\" is not defined\nWarning: Color name \"SGIDarkGray\" is not defined\nWarning: translation table syntax error: Unknown keysym name:  osfActivate\nWarning: ... found while parsing ':<Key>osfActivate:ManagerParentActivate()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfBeginLine\nWarning: ... found while parsing ':<Key>osfBeginLine:ManagerGadgetTraverseHome()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfSelect\nWarning: ... found while parsing ':<Key>osfSelect:ManagerGadgetSelect()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfSelect\nWarning: ... found while parsing ':<Key>osfSelect:MenuBarGadgetSelect()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfActivate\nWarning: ... found while parsing ':<Key>osfActivate:ManagerParentActivate()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfHelp\nWarning: ... found while parsing ':<Key>osfHelp:MenuHelp()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: \n    Cannot parse default background color spec\n\n"
+        },
+        "window_tree": "WINDOW id=0x349 depth=0 map=2 class=1 override=0 x=0 y=0 width=640 height=480 name=\nWINDOW id=0x200001 depth=1 map=0 class=1 override=0 x=10 y=35 width=1 height=1 name=vendor-toolchest\nWM_HINTS id=0x200001 flags=0x3 initial_state=1\nWINDOW id=0x200012 depth=1 map=0 class=1 override=1 x=10 y=35 width=5 height=5 name=\nWINDOW id=0x200013 depth=2 map=1 class=1 override=0 x=0 y=0 width=158 height=248 name=\nWINDOW id=0x200019 depth=3 map=1 class=1 override=0 x=2 y=2 width=154 height=24 name=\nWINDOW id=0x20001b depth=3 map=1 class=1 override=0 x=2 y=26 width=154 height=24 name=\nWINDOW id=0x20001d depth=3 map=1 class=1 override=0 x=2 y=50 width=154 height=24 name=\nWINDOW id=0x20001e depth=2 map=0 class=1 override=0 x=0 y=0 width=16 height=16 name=\nWINDOW id=0x20001f depth=2 map=0 class=1 override=0 x=0 y=0 width=177 height=128 name=\nWINDOW id=0x200020 depth=2 map=0 class=1 override=0 x=0 y=0 width=123 height=128 name=\nWINDOW id=0x200021 depth=2 map=0 class=1 override=0 x=0 y=0 width=168 height=272 name=\nWINDOW id=0x200023 depth=3 map=1 class=1 override=0 x=2 y=196 width=164 height=24 name=\nWINDOW id=0x200024 depth=2 map=0 class=1 override=0 x=0 y=0 width=135 height=178 name=\nWINDOW id=0x200017 depth=1 map=0 class=1 override=1 x=10 y=35 width=188 height=102 name=\nWINDOW id=0x200018 depth=2 map=1 class=1 override=0 x=0 y=0 width=188 height=102 name=\nWINDOW id=0x20001a depth=2 map=0 class=1 override=0 x=0 y=0 width=187 height=52 name=\nWINDOW id=0x20001c depth=2 map=0 class=1 override=0 x=0 y=0 width=144 height=344 name=\nWINDOW id=0x200022 depth=2 map=0 class=1 override=0 x=0 y=0 width=187 height=102 name=\nWINDOW id=0x400001 depth=1 map=0 class=2 override=1 x=-2 y=-2 width=1 height=1 name=\nWINDOW id=0x200025 depth=1 map=2 class=1 override=0 x=10 y=35 width=103 height=158 name=Toolchest\nWM_HINTS id=0x200025 flags=0x3 initial_state=1\nWINDOW id=0x200026 depth=2 map=2 class=1 override=0 x=0 y=0 width=103 height=158 name=\nWINDOW id=0x200027 depth=3 map=2 class=1 override=0 x=2 y=132 width=99 height=24 name=\nWINDOW id=0x200028 depth=3 map=2 class=1 override=0 x=2 y=106 width=99 height=24 name=\nWINDOW id=0x200029 depth=3 map=2 class=1 override=0 x=2 y=80 width=99 height=24 name=\nWINDOW id=0x20002a depth=3 map=2 class=1 override=0 x=2 y=54 width=99 height=24 name=\nWINDOW id=0x20002b depth=3 map=2 class=1 override=0 x=2 y=28 width=99 height=24 name=\nWINDOW id=0x20002c depth=3 map=2 class=1 override=0 x=2 y=2 width=99 height=24 name=\nVISIBLE 8\n",
+        "redraw": {
+          "visible_windows": 8,
+          "before": "7d0188af",
+          "cleared": "f39d93b5",
+          "after": "7d0188af",
+          "restored": true
+        },
+        "frame_sha256": "a248dc5b5986c4afb5d4101c3bc3ba01f8e88ed46dde47e78e8cef40f68497da"
+      },
+      {
+        "uid": 1234,
+        "actual": {
+          "errno_bytes": 0,
+          "errno": 0,
+          "exit": -1,
+          "signal": 9,
+          "killed": 1,
+          "stdout": "",
+          "stderr": "Warning: Color name \"SGIGray76\" is not defined\nWarning: Color name \"SGIDarkGray\" is not defined\nWarning: translation table syntax error: Unknown keysym name:  osfActivate\nWarning: ... found while parsing ':<Key>osfActivate:ManagerParentActivate()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfBeginLine\nWarning: ... found while parsing ':<Key>osfBeginLine:ManagerGadgetTraverseHome()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfSelect\nWarning: ... found while parsing ':<Key>osfSelect:ManagerGadgetSelect()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfSelect\nWarning: ... found while parsing ':<Key>osfSelect:MenuBarGadgetSelect()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfActivate\nWarning: ... found while parsing ':<Key>osfActivate:ManagerParentActivate()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfHelp\nWarning: ... found while parsing ':<Key>osfHelp:MenuHelp()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: \n    Cannot parse default background color spec\n\n"
+        },
+        "window_tree": "WINDOW id=0x349 depth=0 map=2 class=1 override=0 x=0 y=0 width=640 height=480 name=\nWINDOW id=0x400001 depth=1 map=0 class=2 override=1 x=-2 y=-2 width=1 height=1 name=\nWINDOW id=0x200001 depth=1 map=0 class=1 override=0 x=10 y=35 width=1 height=1 name=vendor-toolchest\nWM_HINTS id=0x200001 flags=0x3 initial_state=1\nWINDOW id=0x200012 depth=1 map=0 class=1 override=1 x=10 y=35 width=5 height=5 name=\nWINDOW id=0x200013 depth=2 map=1 class=1 override=0 x=0 y=0 width=158 height=248 name=\nWINDOW id=0x200019 depth=3 map=1 class=1 override=0 x=2 y=2 width=154 height=24 name=\nWINDOW id=0x20001b depth=3 map=1 class=1 override=0 x=2 y=26 width=154 height=24 name=\nWINDOW id=0x20001d depth=3 map=1 class=1 override=0 x=2 y=50 width=154 height=24 name=\nWINDOW id=0x20001e depth=2 map=0 class=1 override=0 x=0 y=0 width=16 height=16 name=\nWINDOW id=0x20001f depth=2 map=0 class=1 override=0 x=0 y=0 width=177 height=128 name=\nWINDOW id=0x200020 depth=2 map=0 class=1 override=0 x=0 y=0 width=123 height=128 name=\nWINDOW id=0x200021 depth=2 map=0 class=1 override=0 x=0 y=0 width=168 height=272 name=\nWINDOW id=0x200023 depth=3 map=1 class=1 override=0 x=2 y=196 width=164 height=24 name=\nWINDOW id=0x200024 depth=2 map=0 class=1 override=0 x=0 y=0 width=135 height=178 name=\nWINDOW id=0x200017 depth=1 map=0 class=1 override=1 x=10 y=35 width=188 height=102 name=\nWINDOW id=0x200018 depth=2 map=1 class=1 override=0 x=0 y=0 width=188 height=102 name=\nWINDOW id=0x20001a depth=2 map=0 class=1 override=0 x=0 y=0 width=187 height=52 name=\nWINDOW id=0x20001c depth=2 map=0 class=1 override=0 x=0 y=0 width=144 height=344 name=\nWINDOW id=0x200022 depth=2 map=0 class=1 override=0 x=0 y=0 width=187 height=102 name=\nWINDOW id=0x200025 depth=1 map=2 class=1 override=0 x=10 y=35 width=103 height=158 name=Toolchest\nWM_HINTS id=0x200025 flags=0x3 initial_state=1\nWINDOW id=0x200026 depth=2 map=2 class=1 override=0 x=0 y=0 width=103 height=158 name=\nWINDOW id=0x200027 depth=3 map=2 class=1 override=0 x=2 y=132 width=99 height=24 name=\nWINDOW id=0x200028 depth=3 map=2 class=1 override=0 x=2 y=106 width=99 height=24 name=\nWINDOW id=0x200029 depth=3 map=2 class=1 override=0 x=2 y=80 width=99 height=24 name=\nWINDOW id=0x20002a depth=3 map=2 class=1 override=0 x=2 y=54 width=99 height=24 name=\nWINDOW id=0x20002b depth=3 map=2 class=1 override=0 x=2 y=28 width=99 height=24 name=\nWINDOW id=0x20002c depth=3 map=2 class=1 override=0 x=2 y=2 width=99 height=24 name=\nVISIBLE 8\n",
+        "redraw": {
+          "visible_windows": 8,
+          "before": "7d0188af",
+          "cleared": "f39d93b5",
+          "after": "7d0188af",
+          "restored": true
+        },
+        "frame_sha256": "a248dc5b5986c4afb5d4101c3bc3ba01f8e88ed46dde47e78e8cef40f68497da"
+      }
+    ],
+    "directory": ".work/irix-siocnread/window-runs/ci-8rh92g63",
+    "result_sha256": "d1e23d250b798859beb37dc9d04501759d648c6d7247090d617d270e46878099",
+    "execution_sources": {
+      "lab/irix-siocnread/windowcheck.c": "3a43f2b6b9c93c2694d1cdb245f625f6267062f9a0d7a4b78279058fa7fb9f74",
+      "lab/irix-lp64/runner.c": "005bdf3fffce5fb8ca79073e92cc41431aa953550c41014183d5de986a104463",
+      "scripts/probe-irix-toolchest-window.py": "7703940d863f3fb8400b8f774c64f8825c5db677c46ab1faae7be9f74c06acd3",
+      "scripts/probe-netbsd.py": "adfa9547fa98af28fd55e4e155e7667b2b0a8c7cea8aee8d58079da946b72a1d",
+      "scripts/probe-irix-runtime.py": "89b946e035ecf0525b3c08cdc80ca0b77d8db6aa90fd60cf410ddc7eb3a4d553",
+      "scripts/probe-irix-tcp.py": "df111c15ab1dd8988de1c76c8bf4c24262413049ed3f48632598b2c514191ede",
+      "lab/irix-toolchest/session.c": "e183b4aefdfb428e01dc609230e87a7546a0b31e9d4b5e236503e0a8bb3b09f5"
+    }
+  },
+  "xclock_recheck": {
+    "status": "loader-boundary-observed",
+    "native_clock_viewable": true,
+    "clean_shutdown": true,
+    "native_controls": 13,
+    "cases": [
+      {
+        "name": "clock-analog-0",
+        "actual": {
+          "errno_bytes": 0,
+          "errno": 0,
+          "exit": 1,
+          "signal": 0,
+          "killed": 0,
+          "stdout": "",
+          "stderr": ""
+        },
+        "elfmap_errno": 12,
+        "socket_or_connect_calls": 0,
+        "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b"
+      },
+      {
+        "name": "clock-digital-0",
+        "actual": {
+          "errno_bytes": 0,
+          "errno": 0,
+          "exit": 1,
+          "signal": 0,
+          "killed": 0,
+          "stdout": "",
+          "stderr": ""
+        },
+        "elfmap_errno": 12,
+        "socket_or_connect_calls": 0,
+        "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b"
+      },
+      {
+        "name": "clock-analog-1234",
+        "actual": {
+          "errno_bytes": 0,
+          "errno": 0,
+          "exit": 1,
+          "signal": 0,
+          "killed": 0,
+          "stdout": "",
+          "stderr": ""
+        },
+        "elfmap_errno": 12,
+        "socket_or_connect_calls": 0,
+        "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b"
+      },
+      {
+        "name": "clock-digital-1234",
+        "actual": {
+          "errno_bytes": 0,
+          "errno": 0,
+          "exit": 1,
+          "signal": 0,
+          "killed": 0,
+          "stdout": "",
+          "stderr": ""
+        },
+        "elfmap_errno": 12,
+        "socket_or_connect_calls": 0,
+        "frame_sha256": "7d6c819d66a7d48c67d94a281e4910478db108630bac8d8da98a88653a4a7f6b"
+      }
+    ],
+    "directory": ".work/irix-xclock/runs/ci-0xaicapn",
+    "result_sha256": "f6c497d34c38dc421d3b51d711a576fa9e95f763998d6ba4fe899c5ad7e96e10",
+    "execution_sources": {
+      "lab/irix-toolchest/trace.c": "3e48930b2092fa927eecf8cb7e00e595feb4677e5cef45676cc7207d94c40bd5",
+      "lab/irix-toolchest/fault.c": "de9b9b272675f5b0cf52e5d6ab03ba4241614e7c6bf4b1a123f48135084c80af",
+      "lab/irix-toolchest/session.c": "e183b4aefdfb428e01dc609230e87a7546a0b31e9d4b5e236503e0a8bb3b09f5",
+      "lab/irix-lp64/runner.c": "005bdf3fffce5fb8ca79073e92cc41431aa953550c41014183d5de986a104463",
+      "scripts/probe-irix-xclock.py": "0c26166d71fe25a01c874ee1907a4a8383e1fee760921c703a63a92ab8182ad6",
+      "scripts/probe-netbsd.py": "adfa9547fa98af28fd55e4e155e7667b2b0a8c7cea8aee8d58079da946b72a1d",
+      "scripts/probe-irix-runtime.py": "89b946e035ecf0525b3c08cdc80ca0b77d8db6aa90fd60cf410ddc7eb3a4d553",
+      "scripts/probe-irix-tcp.py": "df111c15ab1dd8988de1c76c8bf4c24262413049ed3f48632598b2c514191ede"
+    }
+  },
+  "input_metadata_hashes": {
+    "lab/irix-siocnread/baseline.json": "666af5f0adaaa65a5727793477fdb7aefba2db9fa5e7850c1bd558d4a60fb1d5",
+    "lab/irix-siocnread/o32-baseline.json": "429591ef76fbe1530162cbd01317a21a44811923dfaf3d85ca87c26a891c2e9e",
+    "lab/irix-siocnread/reference.json": "afc2b6ce1643a792e21fc5f03f4077055b98eeb50a4a71c899d49a9162af333b",
+    "lab/irix-siocnread/abi.json": "85bf7ef9025a5112e812c641d88b5df306d0788940062dc01b7c1bd8df72e898",
+    "lab/irix-siocnread/toolchest.json": "0fb69f8936a9230ef371c83f65dae6669dfb5a74fed1899465fe223db27b885a"
+  },
+  "qualifier_sha256": "3b851393ce4ac2ef2cc18cb1dae7822aa4d19611c72af3d196b7d0a6f8602174"
+}

@@ -1,0 +1,210 @@
+{
+  "schema": 1,
+  "syscall": 1054,
+  "command": 1074033418,
+  "output_bytes": 4,
+  "record_bytes": 160,
+  "description": "Measured TCP bytes-readable subset; original IRIX 6.5.22m, o32 and n32",
+  "cases": {
+    "unconnected": {
+      "errno": 0,
+      "copied": 4,
+      "count": 0
+    },
+    "empty": {
+      "errno": 0,
+      "copied": 4,
+      "count": 0
+    },
+    "queued": {
+      "errno": 0,
+      "copied": 4,
+      "count": 17
+    },
+    "partial": {
+      "errno": 0,
+      "copied": 4,
+      "count": 12
+    },
+    "eof": {
+      "errno": 131,
+      "copied": 0
+    },
+    "repeat": {
+      "errno": 0,
+      "copied": 4,
+      "count": 17
+    },
+    "nonblocking": {
+      "errno": 0,
+      "copied": 4,
+      "count": 17
+    },
+    "unaligned": {
+      "errno": 0,
+      "copied": 4,
+      "count": 17
+    },
+    "null": {
+      "errno": 14,
+      "copied": 0
+    },
+    "high": {
+      "errno": 14,
+      "copied": 0
+    },
+    "wrap": {
+      "errno": 14,
+      "copied": 0
+    },
+    "readonly": {
+      "errno": 14,
+      "copied": 0
+    },
+    "tail1": {
+      "errno": 14,
+      "copied": 1,
+      "count": 17
+    },
+    "tail2": {
+      "errno": 14,
+      "copied": 2,
+      "count": 17
+    },
+    "tail3": {
+      "errno": 14,
+      "copied": 3,
+      "count": 17
+    },
+    "tail4": {
+      "errno": 0,
+      "copied": 4,
+      "count": 17
+    },
+    "bad-stack": {
+      "errno": 0,
+      "copied": 4,
+      "count": 17
+    },
+    "wrap-stack": {
+      "errno": 0,
+      "copied": 4,
+      "count": 17
+    },
+    "unknown": {
+      "errno": 122,
+      "copied": 0
+    },
+    "wrong-size": {
+      "errno": 122,
+      "copied": 0
+    },
+    "native-selector": {
+      "errno": 0,
+      "copied": 4,
+      "count": 17
+    },
+    "tcgeta": {
+      "errno": 122,
+      "copied": 0
+    },
+    "empty-nonblocking": {
+      "errno": 0,
+      "copied": 4,
+      "count": 0
+    },
+    "eof-null": {
+      "errno": 131,
+      "copied": 0
+    },
+    "eof-nonblocking": {
+      "errno": 131,
+      "copied": 0
+    },
+    "empty-null": {
+      "errno": 14,
+      "copied": 0
+    },
+    "regular": {
+      "errno": 25,
+      "copied": 0
+    },
+    "regular-partial": {
+      "errno": 25,
+      "copied": 0
+    },
+    "write-only": {
+      "errno": 25,
+      "copied": 0
+    },
+    "read-write": {
+      "errno": 25,
+      "copied": 0
+    },
+    "regular-null": {
+      "errno": 25,
+      "copied": 0
+    },
+    "regular-unknown": {
+      "errno": 25,
+      "copied": 0
+    },
+    "closed": {
+      "errno": 9,
+      "copied": 0
+    },
+    "closed-null": {
+      "errno": 9,
+      "copied": 0
+    },
+    "devnull": {
+      "errno": 22,
+      "copied": 0
+    },
+    "directory": {
+      "errno": 25,
+      "copied": 0
+    },
+    "fifo": {
+      "errno": 22,
+      "copied": 0
+    },
+    "negative": {
+      "errno": 9,
+      "copied": 0
+    },
+    "negative-null": {
+      "errno": 9,
+      "copied": 0
+    },
+    "large": {
+      "errno": 9,
+      "copied": 0
+    },
+    "large-null": {
+      "errno": 9,
+      "copied": 0
+    },
+    "bad-fd-unknown": {
+      "errno": 9,
+      "copied": 0
+    }
+  },
+  "native_differences": [
+    "Every command other than 0x4004730a retains ENOSYS, including invalid-fd unknown commands.",
+    "The alternate original IRIX FIONREAD encoding 0x4004667f is measured but remains unsupported."
+  ],
+  "unqualified": [
+    "AF_UNIX and datagrams",
+    "Listening sockets",
+    "Urgent data, TCP resets, local shutdown and pending socket errors",
+    "Concurrent reads, closes and arrivals",
+    "Large queue counts",
+    "Inherited unsupported descriptor types",
+    "General ioctl and terminal commands"
+  ],
+  "fixture_limits": [
+    "Reference setuid/setgid does not clear supplementary groups; world-readable/writable synthetic files remove group-dependent setup.",
+    "Initial diagnostic run used mode 0644 and could not open write modes as uid 1234; excluded from qualification."
+  ]
+}

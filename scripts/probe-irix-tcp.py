@@ -140,7 +140,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--checkpoint', choices=['tcp','sockname','peername','xconnect','recvmsg'], default='tcp')
     parser.add_argument('--mode', choices=['ci', 'ordinary'], default='ci')
-    parser.add_argument('--kernel-checkpoint', choices=['select','xstat','fxstat'], help='Run unchanged fixture/desktop expectations on a newer pinned kernel')
+    parser.add_argument('--kernel-checkpoint', choices=['select','xstat','fxstat','siocnread'], help='Run unchanged fixture/desktop expectations on a newer pinned kernel')
     parser.add_argument('--desktop-expectations',type=Path,help='Explicit reviewed desktop boundary expectations for a newer kernel')
     parser.add_argument('--x11', action='store_true', help='Also observe Toolchest against a controlled native Xvfb server')
     parser.add_argument('--kernel-abi',choices=['lp64','o32'],default='lp64')

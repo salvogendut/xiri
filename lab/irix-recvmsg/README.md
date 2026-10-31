@@ -77,3 +77,10 @@ Check for leftover `iris`/`iris-ci` processes after the batch. Original media,
 headers, vendor binaries and raw traces stay in ignored `.work`; Git contains
 original probes, interface metadata and evidence summaries. The full desktop
 acceptance plan remains in the [roadmap](../../docs/ROADMAP.md#milestone-3-original-desktop-proof).
+
+
+The [SIOCNREAD checkpoint](../irix-siocnread/README.md) regresses this transport
+suite using `--kernel-checkpoint siocnread` on LP64 and o32. For LP64, pass
+`--desktop-expectations lab/irix-fxstat/desktop.json` to retain the already
+reviewed metadata-related trace changes on the unused display. This is separate
+from the active-X Toolchest rendering checks in the SIOCNREAD lab.

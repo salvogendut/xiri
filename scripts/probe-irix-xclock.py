@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Try original IRIX xclock on the xstat kernel, with native X and fault controls."""
+"""Try original IRIX xclock on a pinned kernel, with native X and fault controls."""
 import gzip
 import argparse
 import importlib.util
@@ -33,17 +33,18 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--seed-directory', type=Path, required=True)
     parser.add_argument('--mode', choices=['ci', 'ordinary'], default='ci')
+    parser.add_argument('--kernel-checkpoint', choices=['xstat','siocnread'], default='xstat')
     args = parser.parse_args()
     seed = args.seed_directory.resolve()
     seed_result = json.loads((seed / 'result.json').read_text())
-    pin = json.loads((ROOT / 'lab/irix-xstat/baseline.json').read_text())
+    pin = json.loads((ROOT / ('lab/irix-'+args.kernel_checkpoint+'/baseline.json')).read_text())
     if not (seed_result['status'] == 'observed' and seed_result['clean_shutdown']
             and seed_result['native_x11_after'] and seed_result['kernel_abi'] == 'lp64'
             and seed_result['pin'] == pin):
-        parser.error('seed must be a clean LP64 xstat run with staged resources')
+        parser.error('seed must be a clean LP64 run of the selected checkpoint with staged resources')
     probe.IRIS = ROOT / '.work/target-netbsd64/release/iris'
     probe.CI = ROOT / '.work/target-netbsd64/release/iris-ci'
-    build = ROOT / '.work/netbsd-irix-xstat-build'
+    build = ROOT / ('.work/netbsd-irix-'+args.kernel_checkpoint+'-build')
     for path, key in [(probe.IRIS, 'emulator_sha256'), (probe.CI, 'ci_client_sha256'),
                       (build / 'tftp/netbsd-XIRI_INDY', 'boot_kernel_sha256')]:
         if probe.sha256(path) != pin[key]:
@@ -96,7 +97,7 @@ def main():
     config = (ROOT / 'lab/indy-netbsd/iris.toml').read_text()
     config = re.sub(r'^tftp_dir = .*$', 'tftp_dir = ' + json.dumps(str(build / 'tftp')), config, flags=re.M)
     lab = probe.Lab(SimpleNamespace(mode=args.mode, debugger=False, boot_timeout=600), directory, config_text=config)
-    result = {'status': 'error', 'mode': args.mode, 'clean_shutdown': False, 'pin': pin,
+    result = {'status': 'error', 'mode': args.mode, 'kernel_checkpoint':args.kernel_checkpoint, 'clean_shutdown': False, 'pin': pin,
               'started_utc': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()),
               'seed': str(seed.relative_to(ROOT)),
               'seed_result_sha256': probe.sha256(seed / 'result.json'),
@@ -181,7 +182,9 @@ def main():
                 'xwait=0; until xdpyinfo -display 127.0.0.1:98 >/dev/null 2>&1; do '
                 'xwait=$((xwait+1)); test "$xwait" -lt 30 || exit 1; sleep 1; done')
         result['native_x11_before'] = True
-        for uid in [0]:
+        # The historical Toolchest fault is fixed after fxstat. Keep the native
+        # ptrace controls, but do not require a vendor crash on newer kernels.
+        for uid in ([0] if args.kernel_checkpoint=='xstat' else []):
             for attempt in range(2):
                 name=f'fault-{uid}-{attempt}'
                 raw=command(shlex.join(['./tracer',str(uid),str(uid),'home.env','./vendor-toolchest','-display','127.0.0.1:98']),90)
