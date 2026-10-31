@@ -49,21 +49,30 @@ def archive_observations(archive, cases, checkpoint):
         result['server']={'exit':int(tar.extractfile('server.status').read()),'stdout':tar.extractfile('server.out').read().decode(),
                           'stderr':tar.extractfile('server.err').read().decode()}
         if result['server'] != {'exit':0,'stdout':'RDY\n','stderr':''}: raise RuntimeError('reference peer failed')
-        if checkpoint in ['sockname','peername']:
+        if checkpoint in ['sockname','peername','xconnect']:
             result['peer']={'exit':int(tar.extractfile('peer.status').read()), 'stdout':tar.extractfile('peer.out').read().decode(),
                             'stderr':tar.extractfile('peer.err').read().decode()}
             if result['peer'] != {'exit':0,'stdout':'RDY\n','stderr':''}: raise RuntimeError('reference address peer failed')
-        if checkpoint == 'peername':
+        if checkpoint in ['peername','xconnect']:
             result['remote']={'exit':int(tar.extractfile('remote.status').read()),
                               'stdout':tar.extractfile('remote.out').read().decode(),
                               'stderr':tar.extractfile('remote.err').read().decode()}
             if result['remote'] != {'exit':0,'stdout':'RDY\n','stderr':''}: raise RuntimeError('reference server-address peer failed')
+        if checkpoint == 'xconnect':
+            result['message']={'exit':int(tar.extractfile('message.status').read()),
+                               'stdout_hex':tar.extractfile('message.out').read().hex(),
+                               'stderr':tar.extractfile('message.err').read().decode()}
+            if result['message']['exit'] or result['message']['stderr']:raise RuntimeError('reference message peer failed')
+            model = module('xconnect', 'irix-xconnect-records.py')
+            result['message_records'] = model.message_records(bytes.fromhex(result['message']['stdout_hex']))
+            expected = [model.expected_message(c, True) for c in cases if 'MESSAGE_CONNECTED' in c['symbols']]
+            if result['message_records'] != expected:raise RuntimeError('reference peer received unexpected bytes')
     return result
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--checkpoint', choices=['tcp','sockname','peername'], default='tcp')
+    parser.add_argument('--checkpoint', choices=['tcp','sockname','peername','xconnect'], default='tcp')
     args = parser.parse_args()
     checkpoint = args.checkpoint
     reference = ROOT / '.work/irix-reference'
@@ -91,6 +100,8 @@ def main():
               'emulator_sha256': probe.sha256(probe.IRIS), 'raw_disk_size': raw.stat().st_size,
               'raw_disk_validation': 'Size checked here; SHA-256 established during media intake, not recomputed',
               'firmware_sha256': probe.sha256(firmware)}
+    if checkpoint == 'xconnect':
+        result['xconnect_decoder_sha256'] = probe.sha256(ROOT/'scripts/irix-xconnect-records.py')
     args = SimpleNamespace(mode='ci', debugger=False)
     lab = probe.Lab(args, directory)
     started = time.monotonic()
@@ -185,14 +196,18 @@ def main():
                  '(./reference-server >server.out 2>server.err; peer_rc=$?; '
                  'echo "$peer_rc" >server.status.tmp; mv server.status.tmp server.status) & server=$!',
                  'sleep 1', 'grep RDY server.out || exit 2']
-        if checkpoint in ['sockname','peername']:
+        if checkpoint in ['sockname','peername','xconnect']:
             lines += ['(./reference-peer >peer.out 2>peer.err; peer_rc=$?; '
                       'echo "$peer_rc" >peer.status.tmp; mv peer.status.tmp peer.status) & peer=$!',
                       'sleep 1', 'grep RDY peer.out || exit 2']
-        if checkpoint == 'peername':
+        if checkpoint in ['peername','xconnect']:
             lines += ['(./reference-remote >remote.out 2>remote.err; peer_rc=$?; '
                       'echo "$peer_rc" >remote.status.tmp; mv remote.status.tmp remote.status) & remote=$!',
                       'sleep 1','grep RDY remote.out || exit 2']
+        if checkpoint == 'xconnect':
+            lines += ['(./reference-message >message.out 2>message.err; peer_rc=$?; '
+                      'echo "$peer_rc" >message.status.tmp; mv message.status.tmp message.status) & message=$!',
+                      'sleep 1','grep RDY message.out || exit 2']
         last_echo = max(i for i,c in enumerate(cases) if c['symbols']['KIND']==4)
         for i,c in enumerate(cases):
             name=c['name']
@@ -202,23 +217,27 @@ def main():
             if i == last_echo:
                 lines += ['while test ! -f server.status; do sleep 1; done',
                           'wait "$server" 2>/dev/null || :']
-        if checkpoint in ['sockname','peername']:
+        if checkpoint in ['sockname','peername','xconnect']:
             lines += ['while test ! -f peer.status; do sleep 1; done',
                       'wait "$peer" 2>/dev/null || :']
-        if checkpoint == 'peername':
+        if checkpoint in ['peername','xconnect']:
             lines += ['while test ! -f remote.status; do sleep 1; done',
                       'wait "$remote" 2>/dev/null || :']
+        if checkpoint == 'xconnect':
+            lines += ['while test ! -f message.status; do sleep 1; done',
+                      'wait "$message" 2>/dev/null || :']
         script=directory/'run.sh';script.write_text('\n'.join(lines)+'\n')
         ci('put',script,'--to','/tmp/xiri-tcp/run.sh','--timeout','30')
         ci('run','sh /tmp/xiri-tcp/run.sh >/tmp/xiri-tcp/status.txt; cd /tmp/xiri-tcp; '
-           'tar cf /tmp/xiri-tcp-results.tar .', '--shell','sh','--timeout','180')
+           'tar cf /tmp/xiri-tcp-results.tar .', '--shell','sh','--timeout','360' if checkpoint=='xconnect' else '180')
         archive=directory/'outputs.tar'
         ci('get','/tmp/xiri-tcp-results.tar','--to',archive,'--timeout','60')
         result.update(archive_observations(archive, cases, checkpoint))
         pin_path=ROOT/f'lab/irix-{checkpoint}/reference.json'
         if pin_path.exists():
             pin=json.loads(pin_path.read_text())
-            if pin['files'] != desktop['files'] or pin['observations'] != result['observations']:
+            if (pin['files'] != desktop['files'] or pin['observations'] != result['observations'] or
+                    (checkpoint == 'xconnect' and pin['message'] != result['message'])):
                 raise RuntimeError('reference differs from pin')
             result['status']='passed'
             result['reference_pin_sha256']=probe.sha256(pin_path)

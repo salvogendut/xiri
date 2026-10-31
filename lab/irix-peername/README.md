@@ -4,6 +4,10 @@ This checkpoint adds trap 1093 to the shared o32/n32 personality and reuses
 the qualified IPv4 output conversion from getsockname. The [results](../../docs/results/2026-10-31-irix-peername.md)
 record the measured interface and the next unchanged Toolchest boundary.
 
+The subsequent [X-client startup checkpoint](../irix-xconnect/README.md)
+adds measured hostname, descriptor-control, message-transfer and shutdown
+interfaces while retaining this checkpoint's fixture programs unchanged.
+
 ## Build
 
 NetBSD source is on `xiri/irix-peername` in the user's fork. The local

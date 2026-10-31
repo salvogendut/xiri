@@ -1,0 +1,69 @@
+{
+  "schema": 1,
+  "description": "Interface facts checked against private IRIX headers and original o32/n32 probes; no vendor source included",
+  "header_inputs": {
+    "sys/fcntl.h": {
+      "sha256": "5295c20d96c92bcce3f5d98e512d0e8c4f259b1aace8ccd7879045280796eeee",
+      "bytes": 11525
+    },
+    "sys/param.h": {
+      "sha256": "fbd3c80c80debf695daf86feb0a7376d9f00c3ac045f57207b6778ad7cc0f0d1",
+      "bytes": 12096
+    },
+    "sys/socket.h": {
+      "sha256": "5a1d91046670f8aef0eec91b60380d9341e3cdd9b56bd6b18d34e02c001fb7e2",
+      "bytes": 34378
+    },
+    "sys/syscall.h": {
+      "sha256": "cf71eba0cffd925e8888ccd630496db1e820a5942c0e7d77c12f6e02a29504ae",
+      "bytes": 7444
+    },
+    "sys/uio.h": {
+      "sha256": "f974b7ec96ddca72f2579d84eca6164c973e7556723563be977d1af03fde307f",
+      "bytes": 2932
+    }
+  },
+  "byte_order": "big",
+  "abis": [
+    "o32",
+    "n32"
+  ],
+  "pointer_bytes": 4,
+  "size_t_bytes": 4,
+  "legacy_msghdr": {
+    "bytes": 24,
+    "fields": {
+      "name": 0,
+      "namelen": 4,
+      "iov": 8,
+      "iovlen": 12,
+      "accrights": 16,
+      "accrightslen": 20
+    }
+  },
+  "iovec": {
+    "bytes": 8,
+    "fields": {
+      "base": 0,
+      "length": 4
+    }
+  },
+  "traps": {
+    "gethostname": 1108,
+    "fcntl": 1062,
+    "sendmsg": 1102,
+    "shutdown": 1106
+  },
+  "fcntl": {
+    "getfd": 1,
+    "setfd": 2,
+    "getfl": 3,
+    "setfl": 4,
+    "cloexec": 1,
+    "append": 8,
+    "posix_nonblock": 128,
+    "observed_socket_getfl_bit": 512,
+    "policy": "Only close-on-exec descriptor flags; append and POSIX nonblocking status updates. No locking, duplication, legacy NDELAY or private descriptor state."
+  },
+  "sendmsg_scope": "Connected IPv4 TCP, legacy 24-byte header, 1\u201316 vectors, signed 32-bit total, flags zero, no destination or ancillary rights."
+}
