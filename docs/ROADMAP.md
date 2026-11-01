@@ -4,6 +4,9 @@ Status: execution started, updated 2026-11-01. Host inventory, the pinned IRIS b
 
 The agreed target is the full original IRIX desktop on NetBSD and X.org, supported by an IRIX personality. The current application order is winterm (including PTY, keyboard input and a native shell), then the original 4Dwm window manager and desktop session. Clock timekeeping is deferred behind those priorities. Initial implementation and testing use an emulated Indy. The development loop now supports [unmodified vendor asa/echo and bounded o32/n32 probes](results/2026-10-30-irix-lp64.md) on the NetBSD fork. Broader ABI coverage, desktop feasibility, and physical Indy qualification follow before expanding to additional machines and applications.
 
+Active fork work is consolidated on [`xiri` in IRIS and NetBSD](FORKS.md).
+Historical lab revisions remain pinned in detached worktrees.
+
 ## Development setup checklist
 
 The candidate host inventory, pinned IRIS CLI build, verified NetBSD inputs, guest installation, and host kernel build are complete. The R4400 guest reaches multiuser after a cold boot with the custom kernel, supports debugger breakpoints, and passes an automated probe. Repeated disk writes, cold-read integrity, and bidirectional network transfers pass in both execution modes; see the [I/O results](results/2026-10-30-netbsd-io.md). See the [installation record](results/2026-10-29-indy-netbsd-install.md), [kernel build record](results/2026-10-30-netbsd-kernel.md), and [debugger/probe results](results/2026-10-30-netbsd-debugger-probe.md).

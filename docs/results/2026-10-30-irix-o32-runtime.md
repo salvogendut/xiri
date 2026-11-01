@@ -11,7 +11,7 @@ has been reached. n32 echo, 4Dwm, and Toolchest still return `ENOEXEC`.
 ## Sources and inputs
 
 The NetBSD fork branch
-[`xiri/irix-o32-runtime`](https://github.com/salvogendut/NetBSD-nixbench/tree/xiri/irix-o32-runtime)
+[`xiri/irix-o32-runtime`](https://github.com/salvogendut/NetBSD-xiri/tree/64915ea0900cd81e3bc2577504c709fb33051854)
 contains commit `64915ea0900cd81e3bc2577504c709fb33051854`, based on the
 segment implementation `6a162a938061d16a60842fd9bb31d69e546d66dc`.
 Changes are confined to `sys/compat/irix_o32/irix_o32.c` and its scope README.

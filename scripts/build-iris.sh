@@ -15,7 +15,7 @@ if [[ -n ${IRIS_SOURCE_DIR:-} ]]; then
     fi
 else
     if [[ ! -d "$source_dir/.git" ]]; then
-        git clone --depth 1 --branch xiri/netbsd-newport "$repository" "$source_dir"
+        git clone --depth 1 --branch xiri "$repository" "$source_dir"
     fi
     if [[ $(git -C "$source_dir" rev-parse HEAD) != "$revision" ]]; then
         git -C "$source_dir" fetch "$repository" "$revision"

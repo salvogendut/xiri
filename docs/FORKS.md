@@ -1,0 +1,60 @@
+# Fork development
+
+Use `xiri` as the integration branch in each fork:
+
+| Project | Remote | Local development checkout | Default branch |
+| --- | --- | --- | --- |
+| IRIS | [salvogendut/iris, xiri](https://github.com/salvogendut/iris/tree/xiri) | `../iris` | `main` |
+| NetBSD | [salvogendut/NetBSD-xiri, xiri](https://github.com/salvogendut/NetBSD-xiri/tree/xiri) | `../NetBSD-nixbench` | `trunk` |
+
+The local NetBSD directory retains its older name; its origin points to
+NetBSD-xiri. There is currently no separate `../NetBSD-xiri` checkout.
+The [consolidation record](results/2026-11-01-xiri-branches.md) records the
+merged histories, removed branch names and verification. Work includes both
+the IRIX compatibility chain and XFS in NetBSD, and all NetBSD/frontend/TLB
+changes in IRIS. The default branches remain available for upstream tracking.
+
+## Continue development
+
+```sh
+git -C ../iris switch xiri
+git -C ../iris pull --ff-only origin xiri
+git -C ../NetBSD-nixbench switch xiri
+git -C ../NetBSD-nixbench pull --ff-only origin xiri
+```
+
+Make routine changes on `xiri`. When a topic branch is needed, create it from
+that project's `xiri`, merge it back into `xiri` at the end of the work cycle,
+and remove the completed topic branch after the merge is pushed. Use a prefix
+such as `topic/`: Git cannot keep `xiri` and `xiri/<name>` branches together.
+The default branches are not development targets for Xiri changes.
+
+Use separate build output paths for a new source tree or architecture, and
+keep kernel builds sequential with at most two jobs. Branch consolidation does
+not repin qualified kernels, emulator binaries, runtime resources or guest disks.
+
+## Reproduce an earlier checkpoint
+
+Historical topic branch names in result JSON and old prose describe where the
+work was developed. Those branch names have been retired; their commits remain
+reachable through the consolidated history. Fetch `xiri`, then create or use a
+detached worktree at the exact `source_revision`/`emulator_revision` from the
+chosen lab's pin. Existing pinned worktrees keep their original commits and
+files. Their detached state is intentional.
+
+```sh
+git -C ../NetBSD-nixbench fetch origin xiri
+git -C ../iris fetch origin xiri
+```
+
+The established worktrees are `.work/netbsd-irix-src`,
+`.work/netbsd-irix64-src`, `.work/netbsd64-src` and `.work/iris-netbsd64`.
+Inspect `git worktree list` before creating another. Keep the matching build
+and TFTP directories with their lab. Do not replace a pinned checkout with the
+latest branch and reuse its old qualification record.
+
+`scripts/build-iris.sh` now clones `xiri`, then fetches and checks out its
+unchanged qualified revision. Existing historical build commands likewise
+fetch the consolidated branch and retain their explicit detached commit.
+A new combined runtime qualification is required before adopting the integrated
+fork tips as new lab baselines; host regression tests alone do not replace it.

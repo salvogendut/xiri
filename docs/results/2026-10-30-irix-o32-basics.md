@@ -19,7 +19,7 @@ was tested.
 ## Sources and build
 
 The implementation is committed on the NetBSD fork's
-[`xiri/irix-o32-basics`](https://github.com/salvogendut/NetBSD-nixbench/tree/xiri/irix-o32-basics)
+[`xiri/irix-o32-basics`](https://github.com/salvogendut/NetBSD-xiri/tree/c9ab9ccc062650870e17006571c93e665e2133d9)
 branch at `c9ab9ccc062650870e17006571c93e665e2133d9`, following the initial
 personality commit `6b6a7967685baff3fa1d1fb7e1e50113470fb2a6`. The trunk base
 remains `a852b4a03800c32a127640b784fcc9fc94159d12`; the sibling primary checkout

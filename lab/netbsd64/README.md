@@ -20,10 +20,10 @@ user's forks once; if these paths already exist, inspect them instead of
 recreating them:
 
 ```sh
-git -C ../NetBSD-nixbench fetch origin xiri/irix-n32-baseline
+git -C ../NetBSD-nixbench fetch origin xiri
 git -C ../NetBSD-nixbench worktree add --detach "$PWD/.work/netbsd64-src" \
   40d3a490765b8babc8c9cd2aa03a80fa26567320
-git -C ../iris fetch origin xiri/netbsd64-tlb
+git -C ../iris fetch origin xiri
 git -C ../iris worktree add --detach "$PWD/.work/iris-netbsd64" \
   9df1df14334838a989253efefe26f0547e6da592
 
@@ -113,3 +113,7 @@ These require the existing dispatch/reference fixtures. The original IRIX
 reference also uses private media copies and its established overlay setup.
 No proprietary binaries, firmware, disks, headers or disassembly belong in
 Git.
+
+Active development now uses the consolidated [`xiri` branches](../../docs/FORKS.md).
+The former topic names in this lab are historical labels; fetch `xiri` and
+check out the exact pinned commit to reproduce this checkpoint.

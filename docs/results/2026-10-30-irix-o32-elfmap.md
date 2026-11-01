@@ -15,7 +15,7 @@ observations, the sixteen-call vendor trace, and the original-IRIX comparison.
 ## Sources and input identity
 
 NetBSD fork branch
-[`xiri/irix-o32-elfmap`](https://github.com/salvogendut/NetBSD-nixbench/tree/xiri/irix-o32-elfmap)
+[`xiri/irix-o32-elfmap`](https://github.com/salvogendut/NetBSD-xiri/tree/755afd768ae96bfde4a52705f1afe0fe1889d068)
 contains commit `755afd768ae96bfde4a52705f1afe0fe1889d068`, based on query commit
 `dc08d65a8e7b3e6cdbd7ca978a200b6f50a42ad5`. Changes are confined to
 `sys/compat/irix_o32/irix_o32.c` and its README in the isolated worktree.

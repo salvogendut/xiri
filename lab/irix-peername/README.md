@@ -10,7 +10,7 @@ interfaces while retaining this checkpoint's fixture programs unchanged.
 
 ## Build
 
-NetBSD source is on `xiri/irix-peername` in the user's fork. The local
+This checkpoint was developed on NetBSD topic branch `xiri/irix-peername`. The local
 `.work/netbsd-irix64-src` worktree uses that branch. Earlier TCP and
 getsockname branches and kernel outputs remain separate. The [LP64 pin](baseline.json)
 and [o32 pin](o32-baseline.json) identify the exact source and inputs.
@@ -18,7 +18,7 @@ and [o32 pin](o32-baseline.json) identify the exact source and inputs.
 After preparing the [getsockname lab](../irix-sockname/README.md):
 
 ```sh
-git -C ../NetBSD-nixbench fetch origin xiri/irix-peername
+git -C ../NetBSD-nixbench fetch origin xiri
 # Inspect the worktree and use a clean checkout of the pinned source.
 git -C .work/netbsd-irix64-src status --short
 git -C .work/netbsd-irix64-src switch --detach \
@@ -112,3 +112,7 @@ and adds received-data, fault-consumption and header-output comparisons. The
 latest [Toolchest session diagnosis](../irix-toolchest/README.md) identifies its
 later empty-environment crash and the remaining select/xstat boundaries, using
 that unchanged kernel. This lab keeps its historical kernel and expectations.
+
+Active development now uses the consolidated [`xiri` branches](../../docs/FORKS.md).
+The former topic names in this lab are historical labels; fetch `xiri` and
+check out the exact pinned commit to reproduce this checkpoint.

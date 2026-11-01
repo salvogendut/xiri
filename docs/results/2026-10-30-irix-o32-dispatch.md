@@ -14,7 +14,7 @@ source hashes, observations, paired records, and 24-call vendor trace.
 ## Source and build
 
 NetBSD branch
-[`xiri/irix-o32-dispatch`](https://github.com/salvogendut/NetBSD-nixbench/tree/xiri/irix-o32-dispatch)
+[`xiri/irix-o32-dispatch`](https://github.com/salvogendut/NetBSD-xiri/tree/6abdd05eca298e29af07d6176ea453e696de90a3)
 contains commit `6abdd05eca298e29af07d6176ea453e696de90a3`, based on
 `755afd768ae96bfde4a52705f1afe0fe1889d068`. Changes are confined to the
 personality's C file and README in the isolated worktree. The sibling checkout

@@ -18,7 +18,7 @@ machine was tested.
 ## Sources and isolated kernel builds
 
 The implementation lives in the user's NetBSD fork on
-[`xiri/irix-o32`](https://github.com/salvogendut/NetBSD-nixbench/tree/xiri/irix-o32),
+[`xiri/irix-o32`](https://github.com/salvogendut/NetBSD-xiri/tree/6b6a7967685baff3fa1d1fb7e1e50113470fb2a6),
 commit `6b6a7967685baff3fa1d1fb7e1e50113470fb2a6`. Its worktree is
 `.work/netbsd-irix-src`; the sibling checkout remains on clean `trunk`.
 The branch starts at the audited revision

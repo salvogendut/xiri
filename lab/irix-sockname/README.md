@@ -10,7 +10,7 @@ measured contract and the subsequent Toolchest startup boundary.
 
 ## Build
 
-NetBSD source is on `xiri/irix-sockname` in the user's fork. The local
+This checkpoint was developed on NetBSD topic branch `xiri/irix-sockname`. The local
 `.work/netbsd-irix64-src` worktree uses this branch; previous TCP and LP64
 branches and their separate kernel outputs remain available. The
 [LP64 pin](baseline.json) and [o32 pin](o32-baseline.json) identify the exact
@@ -19,7 +19,7 @@ source, kernel configuration, emulator, seed and vendor runtime inputs.
 After preparing the existing TCP lab's tools and inputs:
 
 ```sh
-git -C ../NetBSD-nixbench fetch origin xiri/irix-sockname
+git -C ../NetBSD-nixbench fetch origin xiri
 # Inspect the existing worktree and use a clean checkout of the pinned source.
 git -C .work/netbsd-irix64-src status --short
 git -C .work/netbsd-irix64-src switch --detach \
@@ -94,3 +94,7 @@ and adds received-data, fault-consumption and header-output comparisons. The
 latest [Toolchest session diagnosis](../irix-toolchest/README.md) identifies its
 later empty-environment crash and the remaining select/xstat boundaries, using
 that unchanged kernel. This lab keeps its historical kernel and expectations.
+
+Active development now uses the consolidated [`xiri` branches](../../docs/FORKS.md).
+The former topic names in this lab are historical labels; fetch `xiri` and
+check out the exact pinned commit to reproduce this checkpoint.

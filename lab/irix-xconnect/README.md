@@ -10,7 +10,7 @@ contract, its limits and the subsequent Toolchest behavior.
 
 ## Build
 
-Use the user's NetBSD fork branch `xiri/irix-xconnect`. The local worktree is
+Fetch `xiri` from the NetBSD fork and use the pinned revision below. The local worktree is
 `.work/netbsd-irix64-src`; the exact source and inputs are recorded in
 [baseline.json](baseline.json) and [o32-baseline.json](o32-baseline.json).
 Earlier checkpoint branches and build outputs remain available.
@@ -19,7 +19,7 @@ After preparing the [peername lab](../irix-peername/README.md):
 
 ```sh
 export PYTHONDONTWRITEBYTECODE=1
-git -C ../NetBSD-nixbench fetch origin xiri/irix-xconnect
+git -C ../NetBSD-nixbench fetch origin xiri
 # Inspect the worktree and use a clean checkout of the pinned source.
 git -C .work/netbsd-irix64-src status --short
 git -C .work/netbsd-irix64-src switch --detach \
@@ -81,3 +81,7 @@ Vendor media, headers, libraries, applications and raw traces stay under
 ignored `.work`. The eventual full desktop on NetBSD/X.org follows the
 [desktop acceptance plan](../../docs/ROADMAP.md#milestone-3-original-desktop-proof)
 and the supplied SGI interface guidelines after IRIX X applications work.
+
+Active development now uses the consolidated [`xiri` branches](../../docs/FORKS.md).
+The former topic names in this lab are historical labels; fetch `xiri` and
+check out the exact pinned commit to reproduce this checkpoint.

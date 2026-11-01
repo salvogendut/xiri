@@ -21,7 +21,7 @@ The emulator is unchanged from that baseline. Prepare the separate source
 worktree once; inspect existing paths before creating anything:
 
 ```sh
-git -C ../NetBSD-nixbench fetch origin xiri/irix-lp64
+git -C ../NetBSD-nixbench fetch origin xiri
 git -C ../NetBSD-nixbench worktree add --detach "$PWD/.work/netbsd-irix64-src" \
   "$(python3 -c 'import json; print(json.load(open("lab/irix-lp64/baseline.json"))["source_revision"])')"
 
@@ -132,3 +132,7 @@ Latest follow-up: the [legacy recvmsg checkpoint](../irix-recvmsg/README.md)
 retains this coverage and adds received-data, fault-consumption and header-output
 comparisons. Its [results](../../docs/results/2026-10-31-irix-recvmsg.md) record
 the current Toolchest boundary; this lab keeps its historical kernel and expectations.
+
+Active development now uses the consolidated [`xiri` branches](../../docs/FORKS.md).
+The former topic names in this lab are historical labels; fetch `xiri` and
+check out the exact pinned commit to reproduce this checkpoint.

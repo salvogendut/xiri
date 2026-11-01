@@ -8,14 +8,14 @@ qualified behavior and remaining desktop boundary.
 
 ## Build
 
-NetBSD source lives on `xiri/irix-tcp` in the user's fork. The existing
+This checkpoint was developed on NetBSD topic branch `xiri/irix-tcp`. The existing
 `.work/netbsd-irix64-src` worktree now uses this branch; the earlier
 `xiri/irix-lp64` revision and kernel artifacts remain available. The
 [LP64 pin](baseline.json) and [o32 pin](o32-baseline.json) identify the source,
 configurations, kernels, original runtime files and unchanged IRIS build.
 
 ```sh
-git -C ../NetBSD-nixbench fetch origin xiri/irix-tcp
+git -C ../NetBSD-nixbench fetch origin xiri
 # Inspect existing worktrees before adding another checkout.
 git -C ../NetBSD-nixbench worktree add --detach "$PWD/.work/netbsd-irix64-src" \
   "$(python3 -c 'import json; print(json.load(open("lab/irix-tcp/baseline.json"))["source_revision"])')"
@@ -141,3 +141,7 @@ and adds received-data, fault-consumption and header-output comparisons. The
 latest [Toolchest session diagnosis](../irix-toolchest/README.md) identifies its
 later empty-environment crash and the remaining select/xstat boundaries, using
 that unchanged kernel. This lab keeps its historical kernel and expectations.
+
+Active development now uses the consolidated [`xiri` branches](../../docs/FORKS.md).
+The former topic names in this lab are historical labels; fetch `xiri` and
+check out the exact pinned commit to reproduce this checkpoint.

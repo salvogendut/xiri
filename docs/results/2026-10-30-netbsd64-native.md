@@ -15,14 +15,14 @@ retains the final observations and regression summaries.
 ## Source and build
 
 NetBSD branch
-[`xiri/irix-n32-baseline`](https://github.com/salvogendut/NetBSD-nixbench/tree/xiri/irix-n32-baseline)
+[`xiri/irix-n32-baseline`](https://github.com/salvogendut/NetBSD-xiri/tree/40d3a490765b8babc8c9cd2aa03a80fa26567320)
 adds commit `40d3a490765b8babc8c9cd2aa03a80fa26567320` to the previous
 o32 personality revision. Its only source change is the LP64 SGI ARCS
 firmware-call bridge in `sys/dev/arcbios/arcbios_calls.S`. The sibling fork
 checkout and earlier o32 worktree stay unchanged.
 
 IRIS branch
-[`xiri/netbsd64-tlb`](https://github.com/salvogendut/iris/tree/xiri/netbsd64-tlb)
+[`xiri/netbsd64-tlb`](https://github.com/salvogendut/iris/tree/9df1df14334838a989253efefe26f0547e6da592)
 adds commit `9df1df14334838a989253efefe26f0547e6da592` to the qualified
 Newport revision. It corrects TLB tag comparisons and adds a focused
 regression. Its build lives in `.work/target-netbsd64`, using the existing

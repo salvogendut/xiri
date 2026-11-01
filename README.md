@@ -26,6 +26,7 @@ Hardware available for testing: Indy, Indigo2, and Octane. Exact CPU, graphics, 
 - [Feasibility and platform choice](docs/FEASIBILITY.md): comparison of approaches, existing work, hardware support, and sources.
 - [Proposed architecture](docs/ARCHITECTURE.md): compatibility boundaries, original desktop preservation, graphics, and application integration.
 - [Execution roadmap](docs/ROADMAP.md): experiments, dependencies, acceptance criteria, and unresolved choices.
+- [Fork development](docs/FORKS.md): the consolidated IRIS and NetBSD `xiri` branches, pinned worktrees and reproduction rules.
 - [IRIX resource checklist](docs/IRIX-RESOURCES.md): extracted image assets, runtime evidence, remaining resources and native session state.
 - [Indy emulation environment](docs/EMULATION.md): IRIS versus MAME, build and image prerequisites, development loop, and qualification gates.
 

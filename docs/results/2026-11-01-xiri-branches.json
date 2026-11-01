@@ -1,0 +1,383 @@
+{
+  "schema": 1,
+  "date": "2026-11-01",
+  "status": "consolidated-and-published",
+  "scope": "Branch history consolidation and host regression checks; integrated guest runtime not requalified",
+  "repositories": {
+    "iris": {
+      "origin": "git@github.com:salvogendut/iris.git",
+      "local_path": "../iris",
+      "branch": "xiri",
+      "revision": "43fdfaaf39457223aa7dc2df5cbd565bf3e42cbd",
+      "published": true,
+      "clean": true,
+      "recorded_refs_checked": 11,
+      "all_recorded_refs_are_ancestors": true,
+      "merge_commits": [
+        {
+          "revision": "bf4f30078f44bbd69d3fa71e83f8be169ded0411",
+          "parents": [
+            "4aff0d90abfb5c60d7e05011ffa9691f5c012cea",
+            "9df1df14334838a989253efefe26f0547e6da592"
+          ]
+        }
+      ],
+      "retained_default": {
+        "branch": "main",
+        "local_revision": "4915ca833bee480f3a4b1009b7b691af3bd2541a",
+        "remote_revision": "ad897736c9de56beddeba953d800d69b54fcdfab"
+      },
+      "local_branches_removed": 4,
+      "remote_branches_removed": 4,
+      "retired_branches": [
+        {
+          "branch": "xiri/netbsd-io",
+          "revision": "d6420795a00f139cd0f638a623c55a071b46e9e9",
+          "local_removed": true,
+          "remote_removed": true,
+          "ancestor_of_xiri": true
+        },
+        {
+          "branch": "xiri/netbsd-newport",
+          "revision": "4aff0d90abfb5c60d7e05011ffa9691f5c012cea",
+          "local_removed": true,
+          "remote_removed": true,
+          "ancestor_of_xiri": true
+        },
+        {
+          "branch": "xiri/netbsd-snapshots",
+          "revision": "b6d6f5c295aaccdb0bb614ee140447625a476498",
+          "local_removed": true,
+          "remote_removed": true,
+          "ancestor_of_xiri": true
+        },
+        {
+          "branch": "xiri/netbsd64-tlb",
+          "revision": "9df1df14334838a989253efefe26f0547e6da592",
+          "local_removed": true,
+          "remote_removed": true,
+          "ancestor_of_xiri": true
+        }
+      ],
+      "pinned_worktrees": [
+        {
+          "path": ".work/iris-netbsd64",
+          "revision": "9df1df14334838a989253efefe26f0547e6da592",
+          "detached": true,
+          "clean": true
+        }
+      ]
+    },
+    "netbsd": {
+      "origin": "git@github.com:salvogendut/NetBSD-xiri.git",
+      "local_path": "../NetBSD-nixbench",
+      "branch": "xiri",
+      "revision": "ee0d7614caa69e25d872ecaf260c603541c4c990",
+      "published": true,
+      "clean": true,
+      "recorded_refs_checked": 58,
+      "all_recorded_refs_are_ancestors": true,
+      "merge_commits": [
+        {
+          "revision": "3d69fc2298b0f63ffa38d7c61c4128fa6cbe8801",
+          "parents": [
+            "6761f8e288701cec1a5760e3d3606ff6bbe67a90",
+            "7261c6ae9885e71084807ef28e39c02be9c11aab"
+          ]
+        },
+        {
+          "revision": "ee0d7614caa69e25d872ecaf260c603541c4c990",
+          "parents": [
+            "3d69fc2298b0f63ffa38d7c61c4128fa6cbe8801",
+            "b6720166b89087e7fbf2dcafc79cb17cdba6d603"
+          ]
+        }
+      ],
+      "retained_default": {
+        "branch": "trunk",
+        "local_revision": "b6720166b89087e7fbf2dcafc79cb17cdba6d603",
+        "remote_revision": "b6720166b89087e7fbf2dcafc79cb17cdba6d603"
+      },
+      "local_branches_removed": 28,
+      "remote_branches_removed": 27,
+      "retired_branches": [
+        {
+          "branch": "backup/trunk-before-upstream-2026-10-30",
+          "revision": "22476f00f1f89230847b6b6e2f4bdeb7eb20c2e1",
+          "local_removed": true,
+          "remote_removed": false,
+          "ancestor_of_xiri": true
+        },
+        {
+          "branch": "feature/xfs-port",
+          "revision": "7261c6ae9885e71084807ef28e39c02be9c11aab",
+          "local_removed": true,
+          "remote_removed": true,
+          "ancestor_of_xiri": true
+        },
+        {
+          "branch": "xiri/irix-access",
+          "revision": "0d031580e42d0cd2f1e1851254326366569dc178",
+          "local_removed": true,
+          "remote_removed": true,
+          "ancestor_of_xiri": true
+        },
+        {
+          "branch": "xiri/irix-elfmap-relocation",
+          "revision": "d9433df7ea08f7a1e30dca2273910d4f566988ae",
+          "local_removed": true,
+          "remote_removed": true,
+          "ancestor_of_xiri": true
+        },
+        {
+          "branch": "xiri/irix-elfmap-subpage",
+          "revision": "a738dc8169c74aeeb7c82ae695f9ee35a7fd6d52",
+          "local_removed": true,
+          "remote_removed": true,
+          "ancestor_of_xiri": true
+        },
+        {
+          "branch": "xiri/irix-fxstat",
+          "revision": "ef34f8afe16d5cf80a743b208dccc3a4f355efe2",
+          "local_removed": true,
+          "remote_removed": true,
+          "ancestor_of_xiri": true
+        },
+        {
+          "branch": "xiri/irix-lp64",
+          "revision": "0859ba7eb2a784b7f34dd0a52d9e19d32d978898",
+          "local_removed": true,
+          "remote_removed": true,
+          "ancestor_of_xiri": true
+        },
+        {
+          "branch": "xiri/irix-mmap-local",
+          "revision": "33198deb89449ffda6cb811ef561d70cd74d7355",
+          "local_removed": true,
+          "remote_removed": true,
+          "ancestor_of_xiri": true
+        },
+        {
+          "branch": "xiri/irix-n32-baseline",
+          "revision": "40d3a490765b8babc8c9cd2aa03a80fa26567320",
+          "local_removed": true,
+          "remote_removed": true,
+          "ancestor_of_xiri": true
+        },
+        {
+          "branch": "xiri/irix-o32",
+          "revision": "6b6a7967685baff3fa1d1fb7e1e50113470fb2a6",
+          "local_removed": true,
+          "remote_removed": true,
+          "ancestor_of_xiri": true
+        },
+        {
+          "branch": "xiri/irix-o32-basics",
+          "revision": "c9ab9ccc062650870e17006571c93e665e2133d9",
+          "local_removed": true,
+          "remote_removed": true,
+          "ancestor_of_xiri": true
+        },
+        {
+          "branch": "xiri/irix-o32-dispatch",
+          "revision": "6abdd05eca298e29af07d6176ea453e696de90a3",
+          "local_removed": true,
+          "remote_removed": true,
+          "ancestor_of_xiri": true
+        },
+        {
+          "branch": "xiri/irix-o32-elfmap",
+          "revision": "755afd768ae96bfde4a52705f1afe0fe1889d068",
+          "local_removed": true,
+          "remote_removed": true,
+          "ancestor_of_xiri": true
+        },
+        {
+          "branch": "xiri/irix-o32-queries",
+          "revision": "dc08d65a8e7b3e6cdbd7ca978a200b6f50a42ad5",
+          "local_removed": true,
+          "remote_removed": true,
+          "ancestor_of_xiri": true
+        },
+        {
+          "branch": "xiri/irix-o32-runtime",
+          "revision": "64915ea0900cd81e3bc2577504c709fb33051854",
+          "local_removed": true,
+          "remote_removed": true,
+          "ancestor_of_xiri": true
+        },
+        {
+          "branch": "xiri/irix-o32-segments",
+          "revision": "6a162a938061d16a60842fd9bb31d69e546d66dc",
+          "local_removed": true,
+          "remote_removed": true,
+          "ancestor_of_xiri": true
+        },
+        {
+          "branch": "xiri/irix-peername",
+          "revision": "3757758901bdc140bc89ba103eaba6d8faef55a8",
+          "local_removed": true,
+          "remote_removed": true,
+          "ancestor_of_xiri": true
+        },
+        {
+          "branch": "xiri/irix-prda",
+          "revision": "6761f8e288701cec1a5760e3d3606ff6bbe67a90",
+          "local_removed": true,
+          "remote_removed": true,
+          "ancestor_of_xiri": true
+        },
+        {
+          "branch": "xiri/irix-process",
+          "revision": "fd219672645f2d744aabf59f0479acccb6a23d41",
+          "local_removed": true,
+          "remote_removed": true,
+          "ancestor_of_xiri": true
+        },
+        {
+          "branch": "xiri/irix-pty",
+          "revision": "93ce1725173b33103d6cb47214cf2537c953a361",
+          "local_removed": true,
+          "remote_removed": true,
+          "ancestor_of_xiri": true
+        },
+        {
+          "branch": "xiri/irix-recvmsg",
+          "revision": "4a033ead228acb1d810151c6956b1399a09e3a69",
+          "local_removed": true,
+          "remote_removed": true,
+          "ancestor_of_xiri": true
+        },
+        {
+          "branch": "xiri/irix-select",
+          "revision": "c8c61a40d34f494ef794a2b14fa252cdb1ccf1f0",
+          "local_removed": true,
+          "remote_removed": true,
+          "ancestor_of_xiri": true
+        },
+        {
+          "branch": "xiri/irix-shell",
+          "revision": "6fb8355eb8765be59ba5999238d588e4ff0a3352",
+          "local_removed": true,
+          "remote_removed": true,
+          "ancestor_of_xiri": true
+        },
+        {
+          "branch": "xiri/irix-siocnread",
+          "revision": "355e0ca310039839b426e66d00744edab5cd5608",
+          "local_removed": true,
+          "remote_removed": true,
+          "ancestor_of_xiri": true
+        },
+        {
+          "branch": "xiri/irix-sockname",
+          "revision": "058b87a92a43e7989bccfd4efdd2fe3a0ad93aab",
+          "local_removed": true,
+          "remote_removed": true,
+          "ancestor_of_xiri": true
+        },
+        {
+          "branch": "xiri/irix-tcp",
+          "revision": "512fe461da7bc5798fdf11d5ede91fcddf75dd9e",
+          "local_removed": true,
+          "remote_removed": true,
+          "ancestor_of_xiri": true
+        },
+        {
+          "branch": "xiri/irix-xconnect",
+          "revision": "2bb38d1b030a8a9a5766d2fac3eb6d2273d5b0f8",
+          "local_removed": true,
+          "remote_removed": true,
+          "ancestor_of_xiri": true
+        },
+        {
+          "branch": "xiri/irix-xstat",
+          "revision": "3f309d17fc5e6ea9ccc3b774e8cc1ca8ef277979",
+          "local_removed": true,
+          "remote_removed": true,
+          "ancestor_of_xiri": true
+        }
+      ],
+      "pinned_worktrees": [
+        {
+          "path": ".work/netbsd-irix-src",
+          "revision": "6abdd05eca298e29af07d6176ea453e696de90a3",
+          "detached": true,
+          "clean": true
+        },
+        {
+          "path": ".work/netbsd-irix64-src",
+          "revision": "6761f8e288701cec1a5760e3d3606ff6bbe67a90",
+          "detached": true,
+          "clean": true
+        },
+        {
+          "path": ".work/netbsd64-src",
+          "revision": "40d3a490765b8babc8c9cd2aa03a80fa26567320",
+          "detached": true,
+          "clean": true
+        }
+      ]
+    }
+  },
+  "source_checks": [
+    {
+      "description": "IRIS TLB implementation unchanged from TLB branch",
+      "comparison_revision": "9df1df14334838a989253efefe26f0547e6da592",
+      "paths": [
+        "src/cpu/mips_tlb.rs"
+      ],
+      "passed": true
+    },
+    {
+      "description": "NetBSD IRIX and MIPS source subtrees unchanged from PRDA branch",
+      "comparison_revision": "6761f8e288701cec1a5760e3d3606ff6bbe67a90",
+      "paths": [
+        "sys/compat/irix_o32",
+        "sys/arch/mips",
+        "sys/arch/sgimips"
+      ],
+      "passed": true
+    },
+    {
+      "description": "NetBSD XFS source subtrees unchanged from XFS branch",
+      "comparison_revision": "7261c6ae9885e71084807ef28e39c02be9c11aab",
+      "paths": [
+        "external/gpl2/xfs",
+        "lib/libpuffs"
+      ],
+      "passed": true
+    }
+  ],
+  "validation": {
+    "iris": {
+      "command": "cargo +nightly-2026-10-28 test --locked --offline --lib tlb -- --test-threads=2",
+      "build_jobs": 2,
+      "passed": 26,
+      "failed": 0,
+      "initial_attempt": "Test-thread stack overflow in test_o32_cannot_alias_extended_tlb_entries; resolved with an explicit 8 MiB thread stack in 43fdfaaf39457223aa7dc2df5cbd565bf3e42cbd; unchanged assertions",
+      "logs": [
+        {
+          "path": ".work/branch-consolidation/iris-tlb-tests.log",
+          "sha256": "dd657964b301aac32d04234ba2744835ff88ff8c639854c829b0164cbefeec32"
+        },
+        {
+          "path": ".work/branch-consolidation/iris-tlb-retest.log",
+          "sha256": "d89b7e13c6371b81e2ff478aebee49b9dcd7a4b7929b4d040ad7cd2749cde732"
+        }
+      ]
+    },
+    "xfs": {
+      "command": "env PYTHONDONTWRITEBYTECODE=1 sh external/gpl2/xfs/tests/run.sh",
+      "suites_passed": 8,
+      "logs": [
+        {
+          "path": ".work/branch-consolidation/netbsd-xfs-tests.log",
+          "sha256": "e246f824dc3d81338e6f2fd489a159c5f946bb3a7a794423658338975efd1303"
+        }
+      ]
+    },
+    "guest_runtime_requalified": false,
+    "lab_pins_changed": false
+  }
+}

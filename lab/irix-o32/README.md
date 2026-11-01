@@ -76,7 +76,7 @@ from the release baseline.
 
 ## Fork kernel and execution matrix
 
-Source lives on the NetBSD fork's `xiri/irix-o32` branch, initially committed at
+This checkpoint began on the historical NetBSD topic branch `xiri/irix-o32`, initially committed at
 `6b6a7967685`, with the working tree under `.work/netbsd-irix-src`. The sibling
 fork's primary checkout stays on `trunk`. The unmodified baseline revision is
 `a852b4a03800c32a127640b784fcc9fc94159d12`; it reports NetBSD 11.99.9 and uses
@@ -496,3 +496,7 @@ Results remain under `.work/irix-dispatch-runs/`,
 This suite qualifies the non-terminal asa filter path, not the other optional
 runtime operations that it tolerates as unsupported. n32 and the desktop
 remain separate work.
+
+Active development now uses the consolidated [`xiri` branches](../../docs/FORKS.md).
+The former topic names in this lab are historical labels; fetch `xiri` and
+check out the exact pinned commit to reproduce this checkpoint.

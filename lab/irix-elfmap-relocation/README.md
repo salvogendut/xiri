@@ -6,7 +6,7 @@ addresses when free; otherwise it finds one free span for the two segments and
 applies a common displacement. It leaves caller headers and existing mappings
 unchanged. The runtime performs ELF symbol relocations itself.
 
-The NetBSD fork branch is `xiri/irix-elfmap-relocation`, based on the SIOCNREAD
+The historical NetBSD topic branch was `xiri/irix-elfmap-relocation`, based on the SIOCNREAD
 checkpoint. Existing file, permission, segment, address-range, resource-limit
 and single-thread restrictions remain. The search starts at `0x04000000` and
 ends at `0x40000000`; gaps remain unmapped. Occupation of only the original
@@ -64,3 +64,7 @@ The checked runs include both NetBSD kernel ABIs, eight original clock windows,
 and six separately repeated resource-limit cases. Timekeeping remains open.
 
 The later [subpage mapper](../irix-elfmap-subpage/README.md) retains these fixtures and qualifies the additional 4 KiB data boundaries encountered by original 4Dwm.
+
+Active development now uses the consolidated [`xiri` branches](../../docs/FORKS.md).
+The former topic names in this lab are historical labels; fetch `xiri` and
+check out the exact pinned commit to reproduce this checkpoint.

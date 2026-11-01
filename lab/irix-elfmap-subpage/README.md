@@ -36,7 +36,7 @@ Build the two configs sequentially using `scripts/build-netbsd-kernel.sh`,
 `.work/netbsd-irix-elfmap-subpage{,-o32}-build` directories. Use `mips64eb` for
 `XIRI_IRIX_ELFMAP_SUBPAGE`, `mipseb` for `XIRI_IRIX_ELFMAP_SUBPAGE_O32`, and each
 build's own `tftp` subdirectory. The baseline JSON files pin exact inputs.
-The implementation is on NetBSD branch `xiri/irix-elfmap-subpage`.
+The implementation was developed on NetBSD topic branch `xiri/irix-elfmap-subpage`.
 
 All runs use private disk/NVRAM copies and halt on completion. Keep at most four
 IRIS instances. Raw reference files, application bytes, dumps and disks remain
@@ -57,3 +57,7 @@ The implementation pin is the clean code revision `c819dd1c090`. Later
 README changes do not alter those tested binaries. The optional `--xclock`
 probe mode is inherited from the relocation harness; this matrix does not
 invoke or claim its graphical checks.
+
+Active development now uses the consolidated [`xiri` branches](../../docs/FORKS.md).
+The former topic names in this lab are historical labels; fetch `xiri` and
+check out the exact pinned commit to reproduce this checkpoint.

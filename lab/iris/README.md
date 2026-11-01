@@ -16,8 +16,8 @@ toolbox run -c xiri-iris env RUSTUP_HOME="$PWD/.work/rustup" CARGO_HOME="$PWD/.w
 ./scripts/build-iris.sh
 ```
 
-Emulator changes live in the [IRIS fork](https://github.com/salvogendut/iris/tree/xiri/netbsd-newport),
-on branch `xiri/netbsd-newport`. It starts at the previously tested upstream revision
+Emulator changes live in the [IRIS fork](https://github.com/salvogendut/iris/tree/xiri),
+on the consolidated branch `xiri`. The historical Newport lab starts at upstream revision
 `b188bb9a82842948ddf2534f07d718df8473942c`; commit
 `d6420795a00f139cd0f638a623c55a071b46e9e9` adds NFS MOUNT authentication
 negotiation for NetBSD. Commit
@@ -50,3 +50,7 @@ updating the pinned revision.
 The first build's observed versions and output hashes are in the
 [2026-10-29 build record](../../docs/results/2026-10-29-iris-build.md). A
 successful CLI build does not qualify NetBSD boot or emulator device behavior.
+
+See [fork development](../../docs/FORKS.md) for the consolidation record and
+pinned worktrees. The build script fetches `xiri` but still checks out the exact
+qualified revision above; it does not automatically adopt the consolidated tip.

@@ -10,7 +10,7 @@ qualified subset, differences from original IRIX and the next desktop boundary.
 
 ## Build
 
-Use the user's NetBSD fork branch `xiri/irix-recvmsg`, with the exact revision
+Fetch `xiri` from the NetBSD fork and use the exact historical revision
 and kernel hashes recorded in [baseline.json](baseline.json) and
 [o32-baseline.json](o32-baseline.json). The local source worktree is
 `.work/netbsd-irix64-src`; older branches and build outputs remain separate.
@@ -19,7 +19,7 @@ After preparing the preceding lab:
 
 ```sh
 export PYTHONDONTWRITEBYTECODE=1
-git -C ../NetBSD-nixbench fetch origin xiri/irix-recvmsg
+git -C ../NetBSD-nixbench fetch origin xiri
 git -C .work/netbsd-irix64-src status --short
 # Use a clean checkout of the pinned revision.
 git -C .work/netbsd-irix64-src switch --detach \
@@ -84,3 +84,7 @@ suite using `--kernel-checkpoint siocnread` on LP64 and o32. For LP64, pass
 `--desktop-expectations lab/irix-fxstat/desktop.json` to retain the already
 reviewed metadata-related trace changes on the unused display. This is separate
 from the active-X Toolchest rendering checks in the SIOCNREAD lab.
+
+Active development now uses the consolidated [`xiri` branches](../../docs/FORKS.md).
+The former topic names in this lab are historical labels; fetch `xiri` and
+check out the exact pinned commit to reproduce this checkpoint.

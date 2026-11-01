@@ -15,7 +15,7 @@ returns, all guest observations, vendor traces, and reference measurements.
 ## Implementation and inputs
 
 The NetBSD fork branch
-[`xiri/irix-o32-queries`](https://github.com/salvogendut/NetBSD-nixbench/tree/xiri/irix-o32-queries)
+[`xiri/irix-o32-queries`](https://github.com/salvogendut/NetBSD-xiri/tree/dc08d65a8e7b3e6cdbd7ca978a200b6f50a42ad5)
 contains commit `dc08d65a8e7b3e6cdbd7ca978a200b6f50a42ad5`, based on runtime
 commit `64915ea0900cd81e3bc2577504c709fb33051854`. Changes are confined to
 `sys/compat/irix_o32/irix_o32.c` and its README. The sibling fork checkout stays

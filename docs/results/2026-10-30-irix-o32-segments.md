@@ -14,7 +14,7 @@ IRIX program, runtime, dynamic loader, desktop, or physical machine was tested.
 ## Source and kernel
 
 The NetBSD fork branch
-[`xiri/irix-o32-segments`](https://github.com/salvogendut/NetBSD-nixbench/tree/xiri/irix-o32-segments)
+[`xiri/irix-o32-segments`](https://github.com/salvogendut/NetBSD-xiri/tree/6a162a938061d16a60842fd9bb31d69e546d66dc)
 contains commit `6a162a938061d16a60842fd9bb31d69e546d66dc`, based on the
 previous implementation `c9ab9ccc062650870e17006571c93e665e2133d9`. The original
 trunk base remains `a852b4a03800c32a127640b784fcc9fc94159d12`. Only the

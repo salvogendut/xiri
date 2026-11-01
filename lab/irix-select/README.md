@@ -43,7 +43,7 @@ unsupported version-2 xstat; no window or event loop is qualified.
 
 ## Reproduce
 
-The user's NetBSD fork branch is `xiri/irix-select`. [baseline.json](baseline.json)
+The historical NetBSD topic branch was `xiri/irix-select`. [baseline.json](baseline.json)
 and [o32-baseline.json](o32-baseline.json) pin its source, kernels and emulator.
 Use separate output directories and at most two build jobs. Reusing the matching
 cross-tools requires preserving their `build-arch` marker in the new directory.
@@ -112,3 +112,7 @@ fixtures and expectations against the new kernel. Its default still reproduces
 the historical kernel. Results include source/fixture hashes and clean-shutdown
 status. Review all observations before promoting a run to qualified, and check
 that no `iris` or `iris-ci` processes remain.
+
+Active development now uses the consolidated [`xiri` branches](../../docs/FORKS.md).
+The former topic names in this lab are historical labels; fetch `xiri` and
+check out the exact pinned commit to reproduce this checkpoint.
