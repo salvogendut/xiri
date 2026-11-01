@@ -288,3 +288,20 @@ groups are absent after cleanup, including 24 deliberate watchdog cases.
 No IRIS instance remains running. The reference and NetBSD guest binaries
 stay pinned while the separate [upstream integration](results/2026-11-01-iris-upstream-sproc.md)
 passes workspace and JIT/idle host checks.
+
+
+The [native sproc cycle](results/2026-11-01-irix-sproc.md) uses at most four
+owned guests and sequential two-job kernel builds. Its final lifecycle
+matrices pass 340 executions / 600 records with all groups absent, including
+40 specifically expected blocked-case watchdogs. A resource-ceiling fixture
+was corrected from 128 to 192 MiB to accommodate LP64's 120 MiB reserved main
+stack; earlier runs are retained as diagnostics. The
+[installer retry](results/2026-11-01-irix-installer-sproc.md) also retains an
+earlier serial-marker setup failure, then captures successful child/shell
+handoff and the later descriptor/time boundary with whole-group cleanup.
+The qualified emulator and previous guest artifacts remain unchanged.
+
+The final shared-mapping regressions on the sproc kernel pass 1,180 records,
+1,180 backing files and 44 controls across the same three kernel/mode pairs.
+All accepted and diagnostic guests halt cleanly; the final host check finds
+no IRIS processes. The four-instance ceiling was respected throughout.

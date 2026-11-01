@@ -150,10 +150,14 @@ and parent-blocking flags. The [original sproc measurements](results/2026-11-01-
 now establish private PRDA/LOCAL pages alongside shared data and newly created
 mappings. Parent release depends on an explicit unblock or an armed
 PR_UNBLKONEXEC followed by successful exec or exit; failed exec retains the
-block. Implementation must track share-group ownership explicitly: a fork
-alias or an entirely shared native vmspace cannot supply these semantics.
-Current vmspace-reference guards will also need to recognize that ownership.
-No new core hook is introduced by this reference-only cycle.
+block. The subsequent bounded adapter tracks two-member share groups and
+LOCAL intervals in personality-owned state. Separate vmspaces share their
+non-LOCAL backing; group-aware guards reject unimplemented map changes.
+Exec/exit hooks detach members and release owned stacks, with retained vmspace
+references protecting peers during exec. It uses existing fork/UVM interfaces
+and adds no core hook. General sharing, pthread creation and foreign signal
+handlers remain separate; deployment is still a built-in personality pending
+the planned compat_linux-style module.
 The [desktop retry](results/2026-11-01-irix-desktop-mkdir.md)
 reaches Icon Catalog's empty fallback window; wider waits and remaining client behavior
 are still separate compatibility work.

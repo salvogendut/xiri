@@ -1,0 +1,66 @@
+{
+  "schema": 1,
+  "status": "passed",
+  "scope": "bounded two-member sproc lifecycle; zero entry uses explicit native EFAULT policy",
+  "runs": [
+    {
+      "run": ".work/irix-sproc/runs/lp64-ci-63o41wkh",
+      "mode": "ci",
+      "kernel_abi": "lp64",
+      "source_revision": "f32cbf59a52b951f9792b2af74125ad2bbedae44",
+      "executions": 136,
+      "records": 240,
+      "checked_words": 15360,
+      "watchdog_groups": 16,
+      "groups_absent": 136,
+      "controls": 16,
+      "clean_shutdown": true,
+      "hashes": {
+        ".work/irix-sproc/runs/lp64-ci-63o41wkh/result.json": "9d391cdf102fa524a28294086a00f60bb22c3bb243a204c33193713215c31df3",
+        ".work/irix-sproc/runs/lp64-ci-63o41wkh/fixtures.log": "410ca1ac2f4bc09a7d0cda98d4f0c87d9aa2b1630082145037f8c916a1da9169"
+      }
+    },
+    {
+      "run": ".work/irix-sproc/runs/lp64-ordinary-95q4kaac",
+      "mode": "ordinary",
+      "kernel_abi": "lp64",
+      "source_revision": "f32cbf59a52b951f9792b2af74125ad2bbedae44",
+      "executions": 136,
+      "records": 240,
+      "checked_words": 15360,
+      "watchdog_groups": 16,
+      "groups_absent": 136,
+      "controls": 16,
+      "clean_shutdown": true,
+      "hashes": {
+        ".work/irix-sproc/runs/lp64-ordinary-95q4kaac/result.json": "7a083ec917b57132b1c44713e7c85d5a3e45614d515dcfabf7f016a59a13669e",
+        ".work/irix-sproc/runs/lp64-ordinary-95q4kaac/fixtures.log": "db2cc8502c3171f91eb573e2501b41736ff1644777284b02ddab7b7815fb2338"
+      }
+    },
+    {
+      "run": ".work/irix-sproc/runs/o32-ci-uq11sdec",
+      "mode": "ci",
+      "kernel_abi": "o32",
+      "source_revision": "f32cbf59a52b951f9792b2af74125ad2bbedae44",
+      "executions": 68,
+      "records": 120,
+      "checked_words": 7680,
+      "watchdog_groups": 8,
+      "groups_absent": 68,
+      "controls": 12,
+      "clean_shutdown": true,
+      "hashes": {
+        ".work/irix-sproc/runs/o32-ci-uq11sdec/result.json": "5e9b7c36ae3f4ddce95839c03e0ba7f05389b51c110d8a0b7a67cdbc03a73e56",
+        ".work/irix-sproc/runs/o32-ci-uq11sdec/fixtures.log": "7ba5a790abf7521a1be6cf6c43cdee9dce57656300a19e5aa857a2622675b3e8"
+      }
+    }
+  ],
+  "qualifier_sha256": "bc946fd2d0386e6d63328539d827c09fe6749dfaca2f3b973da1b46c74e2c27a",
+  "reference_sha256": "e8fa3335c044f5c3ba9fdda8d33783a37ae24b4818641e8b90cb5f9d3112ea5c",
+  "executions": 340,
+  "records": 600,
+  "checked_words": 38400,
+  "watchdog_groups": 40,
+  "groups_absent": 340,
+  "controls": 44
+}

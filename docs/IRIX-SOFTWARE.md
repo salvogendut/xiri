@@ -8,20 +8,27 @@ IRIX ABI; the desired kernel deployment remains a module modeled on
 `compat_linux`.
 
 The [shared-mapping checkpoint](results/2026-11-01-irix-mmap-shared.md) clears
-the installer's initial crash. The [new retry](results/2026-11-01-irix-installer-shared.md)
-prints an incomplete hardware report, then the distribution dry run stops at
-`sproc` child creation while preparing target directories. Its exit status is
-zero despite a fatal message; distribution reading and installation are not
-established. Native/IRIX shared-home access and cold-boot home persistence
-remain qualified by the [earlier probe](results/2026-11-01-irix-installer.md).
-Graphical desktop persistence is still open.
+the initial installer crash. The [bounded sproc adapter](results/2026-11-01-irix-sproc.md)
+now supplies the measured child lifecycle, with 340 executions / 600 records
+and 44 controls passing. The [new retry](results/2026-11-01-irix-installer-sproc.md)
+creates the subcommand child, arms parent release and executes native `/bin/sh`.
+Its next concrete failure is F_DUPFD returning EINVAL for both pipe writers,
+leaving the helper's stdout/stderr disconnected. The parent later repeats
+unsupported gettimeofday calls and reaches its watchdog. No distribution
+reading or installation is established.
 
-The [sproc reference](results/2026-11-01-irix-sproc-reference.md) now measures
-112 original-IRIX executions. In particular, PR_UNBLKONEXEC releases the parent
-on successful exec or exit, while failed exec leaves it blocked; unarmed exit
-does not release it. Shared mapping updates must coexist with private PRDA
-and LOCAL pages. NetBSD implementation and the next installer retry remain
-pending; no new resource import resolves this process boundary.
+The helper shell searches IRIX-style directories for `ls` and `mkdir`, omitting
+NetBSD's `/bin`. After fixing descriptor setup, capture its output and qualify
+an explicit helper/bootstrap arrangement or stage the required original
+utilities. This is a runtime path decision, not permission to fabricate an
+installer result or import unrelated package history. Timekeeping and other
+observed unsupported calls remain separate work.
+
+Native/IRIX shared-home access passes again. Cold-boot home persistence remains
+qualified by the [earlier probe](results/2026-11-01-irix-installer.md); graphical
+login persistence remains open. The [original sproc reference](results/2026-11-01-irix-sproc-reference.md)
+continues to define the measured exec/exit/unblock distinction. General share
+groups and pthread creation are outside the new bounded adapter.
 
 ## First application: xmahjongg
 

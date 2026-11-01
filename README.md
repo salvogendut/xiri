@@ -94,10 +94,11 @@ also defines persistent `/usr/people` homes shared by native and IRIX programs.
 The [installer/home probe](docs/results/2026-11-01-irix-installer.md) now verifies
 native and IRIX access to one `/usr/people` home, including cold-boot
 persistence. The [shared-mapping checkpoint](docs/results/2026-11-01-irix-mmap-shared.md)
-now clears the installer's failed-map crash. The [retry](docs/results/2026-11-01-irix-installer-shared.md)
-prints an incomplete hardware report and reaches target-directory preparation,
-where its `sproc` child launch is unsupported. The [original sproc reference](docs/results/2026-11-01-irix-sproc-reference.md)
-now checks 112 executions covering sharing, PRDA and parent release; its
-NetBSD implementation remains next. Distribution reading,
-installation, the Freeware catalog action and graphical login persistence
-remain open.
+clears the installer's failed-map crash. The [bounded sproc checkpoint](docs/results/2026-11-01-irix-sproc.md)
+now passes 340 executions, 600 records and 44 controls across both kernels.
+The [installer retry](docs/results/2026-11-01-irix-installer-sproc.md) creates
+its subcommand and executes native `/bin/sh`; the next concrete failure is
+`fcntl(F_DUPFD)` returning EINVAL during pipe setup. Repeated unsupported
+gettimeofday calls and IRIX-style helper paths also remain. Distribution
+reading, installation, the Freeware catalog action and graphical login
+persistence remain open.

@@ -70,3 +70,17 @@ qualifies 112 original-IRIX executions / 200 records for the next process
 requirement. It establishes the armed exec/exit release distinction, private
 PRDA/LOCAL pages and shared mapping updates. NetBSD sproc implementation and
 a subsequent original-inst retry remain pending.
+
+
+## Sproc follow-up
+
+The [bounded sproc checkpoint](../../docs/results/2026-11-01-irix-sproc.md)
+now lets original inst create its child and execute native `/bin/sh`. Run
+`scripts/probe-irix-installer-sproc.py` and check the resulting directory with
+`scripts/qualify-irix-installer-sproc.py --output FILE`. Inputs, commands and
+home setup are unchanged. The [accepted trace](../../docs/results/2026-11-01-irix-installer-sproc.md)
+identifies F_DUPFD EINVAL during pipe setup, followed by repeated gettimeofday
+ENOSYS and a bounded timeout. Native helper searches also omit `/bin` for
+ls/mkdir. No package has yet been installed. Pair calls by PID/LWP now that
+the trace includes a child; successful exec register contents are not an
+ordinary syscall errno return.

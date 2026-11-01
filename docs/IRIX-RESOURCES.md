@@ -134,16 +134,27 @@ references. Native user accounts use `/usr/people/<username>` and generate
 fresh desktop state there. Original root sessions use `/` as HOME. See the
 [software/home design](IRIX-SOFTWARE.md).
 
-The [shared-mapping retry](results/2026-11-01-irix-installer-shared.md) now reads
+The earlier [shared-mapping retry](results/2026-11-01-irix-installer-shared.md) reads
 and maps the staged 5025-byte `/var/inst/machfile`, but CPU identification is
-still incomplete. No new resource import is justified by the next failure:
-the target-directory helper needs unsupported `sproc` process semantics.
+still incomplete. That cycle identified a process-compatibility requirement:
+the target-directory helper needed `sproc`, subsequently implemented below.
 Keep hardware-query support distinct from resource staging. Package payloads,
 original hooks and icon/type assets remain required later; no catalog entry
 has yet been installed.
 
 The [original sproc reference](results/2026-11-01-irix-sproc-reference.md)
-confirms that the next work is process/VM compatibility: private PRDA/LOCAL
+establishes the process/VM contract: private PRDA/LOCAL
 state, shared mapping updates and the unblock/exec/exit lifecycle. Its probes
 need no additional vendor resource imports. Keep package payloads, hooks and
 catalog assets pending until the original installer actually consumes them.
+
+
+The [sproc installer retry](results/2026-11-01-irix-installer-sproc.md) now
+executes native `/bin/sh`. F_DUPFD failure prevents pipe redirection; fix that
+ABI requirement before interpreting missing helper output. The trace also
+identifies searches for `ls` and `mkdir` through IRIX-style directories that
+omit `/bin`. Inventory original `/usr/bin/ls` and `/usr/bin/mkdir` plus their
+runtime closure if staging original helpers is chosen; otherwise qualify an
+explicit native bootstrap search arrangement. No additional utility has been
+imported by this cycle. Keep this new helper requirement distinct from the
+still-pending xmahjongg payload, original hooks and catalog/type assets.

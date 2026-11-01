@@ -1,5 +1,10 @@
 # Original IRIX sproc reference
 
+Follow-up: the [bounded NetBSD adapter](2026-11-01-irix-sproc.md) now passes
+its native matrices, and [original inst](2026-11-01-irix-installer-sproc.md)
+reaches child shell exec. The report below records the preceding reference-only
+cycle and its implementation requirements.
+
 The installer’s next process requirement now has a measured reference:
 **112 executions, 200 records and 12,800 independently checked words** on the
 supplied IRIX 6.5.22m installation. The [evidence check](2026-11-01-irix-sproc-reference.json)

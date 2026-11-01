@@ -126,3 +126,19 @@ The 2026-11-01 sproc cycle found 19 new upstream commits through
 `perf/sgiemu-port` work remains untouched. The [integration record](results/2026-11-01-iris-upstream-sproc.md)
 reports 2,161 workspace and 2,504 JIT/idle library tests passing. Existing
 qualified guest binaries and detached worktrees remain pinned.
+
+At the start of the subsequent native sproc implementation cycle, a fresh
+fetch still reported upstream `4ad1b1d435dc115697433f091b10dfa8c48aa7ed`, already
+contained in IRIS `xiri` at `045d69245609d186907a20e0b002e2b60be9a1ac`.
+No further merge or emulator build was needed. The new kernel work is on
+NetBSD `xiri`; separate `.work/netbsd-irix-sproc-build` and
+`.work/netbsd-irix-sproc-o32-build` directories preserve the earlier mapping
+checkpoint. The pinned guest emulator and detached reproductions are unchanged.
+
+Native sproc kernel code is pinned at NetBSD `xiri`
+`f32cbf59a52b951f9792b2af74125ad2bbedae44`. The
+[qualification record](results/2026-11-01-irix-sproc.md) covers both kernel
+builds, LP64 CI/ordinary and o32 CI, plus mapping regressions; the
+[installer follow-up](results/2026-11-01-irix-installer-sproc.md) records the
+new descriptor boundary. Later documentation-only commits do not change
+these qualified binaries or their recorded source revision.
