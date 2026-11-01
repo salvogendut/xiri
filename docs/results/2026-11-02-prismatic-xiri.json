@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "status": "boot-verified-desktop-observed",
+  "run": ".work/prismatic-xiri/run-20261102-003053",
+  "existing_binary_sha256": "5a8db08d46a8f6ca4a37578deab7fc4a5b6ab7036369e07eb32dc5ce2221e835",
+  "binary_rebuilt": false,
+  "source_checkouts_at_test": {
+    "prismatic": "7b9f8e563ab865022b6de93543232d5dd512a331",
+    "iris": "66f5a59be8b455eaaaa5299947a97ab59d17919f"
+  },
+  "chd_sha256": "ddbbc6360afd5aa3712bd34258f0daaad4573292fae63d915157d3db0027f7b3",
+  "model": "Indy IP24",
+  "cpu": "R4400",
+  "ram_mib": 256,
+  "graphics": "Newport",
+  "scsi_id": 1,
+  "inputs": {
+    "configuration_sha256": "9967a5a9f6c8d16d99dd986e09276f64abbd62f6473236b8ea045c70e57b1733",
+    "probe_sha256": "5513a785a697eb1432d5d35d8f8c35f61d2a429a6eb5ac9b6c8110203ac117b0",
+    "nvram_source_sha256": "adbf111089ddc7e043b4032dc88290c7037fea194c1f4ac0bedeb57a0491f649"
+  },
+  "evidence": {
+    "result_sha256": "a8ae0ed1cb6d8c2414ef620a3408e5c144fac20ce2cf2cf99ac8ce5243ba4ef0",
+    "serial_sha256": "4b577fae6881f326c8a837a764674042075a61dfcd95f3c70650031c707a4fa6",
+    "frontend_log_sha256": "55119bd434d179523d7b9a68bbeb5b0a6e6ab8332cb92b86619664e98b02502b"
+  },
+  "multiuser": true,
+  "native_o32_control_passed": true,
+  "desktop_windows": [
+    "winterm",
+    "xmahjongg",
+    "Icon Catalog"
+  ],
+  "reserved_uid_cleanup_passed": true,
+  "clean_guest_halt_verified_from_transcript": true,
+  "frontend_exit": 0,
+  "base_chd_unchanged": true,
+  "probe_shutdown_marker_issue": "The probe waited for halted; this guest emits halting... and returns to the PROM. The transcript independently verifies sync and unmount completion before the PROM menu.",
+  "screenshot": {
+    "path": "docs/results/images/2026-11-02-prismatic-xiri.png",
+    "sha256": "e6c5aa3aa8b2a7b692b73bfadbd5259130e5a61ec64bd9cc3f310a9b5161b693",
+    "source_sha256": "8ce2cb2d1acdc66f9262be07ca546fbe11702346815230dee62101329ab0d038",
+    "pixels_match": true
+  },
+  "observations": [
+    "Native shell prompt visible in winterm.",
+    "Icon Catalog reports that customization panels cannot communicate with it.",
+    "The frontend capture includes unused black borders and incomplete/overlapping repaint; display correctness is not qualified."
+  ],
+  "limitations": [
+    "Boot and bounded desktop observation only; no general Prismatic performance or desktop acceptance claim.",
+    "User-owned Prismatic instance was left running; only the isolated test was stopped."
+  ]
+}

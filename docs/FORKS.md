@@ -207,3 +207,10 @@ emulator rebuild was required. NetBSD `xiri` is pushed through documentation
 commit `d267235cc0d`; the image retains qualified signal kernel source
 `4680cd61b625a5eaa393a0deaea73f4b9f7ed7bc`. Both integration worktrees remain
 clean, and detached reproductions retain their original pins.
+
+The 2026-11-02 Prismatic boot cycle fetched IRIS upstream again: revision
+`4ad1b1d435dc115697433f091b10dfa8c48aa7ed` remains contained in `xiri`
+`045d69245609d186907a20e0b002e2b60be9a1ac`; no merge or rebuild was needed.
+The [Prismatic test](results/2026-11-02-prismatic-xiri.md) exercised its
+existing release binary and preserved its separate performance checkout.
+This was frontend validation, with no development changes on that branch.

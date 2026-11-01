@@ -58,11 +58,50 @@ base CHD, configuration and NVRAM. Retain an existing overlay if it contains
 work you want to keep; a new directory provides a clean session without
 altering it.
 
+## Start it in Prismatic
+
+The [Prismatic boot check](results/2026-11-02-prismatic-xiri.md) reaches
+multiuser and observes the installed desktop using the existing release
+binary. Catalog communication and display repaint issues remain follow-ups.
+
+Prismatic embeds IRIS but uses its own configuration format. Use the
+included `prismatic.cfg`, not `iris.toml`. The bundle also includes an
+independent `prismatic-state/nvram.bin` seeded with the NetBSD boot settings.
+From the bundle directory:
+
+```sh
+~/Dev/prismatic/target/release/prismatic --config prismatic.cfg --state-dir prismatic-state
+```
+
+Press Ctrl+P to start if the frontend is paused. Use the serial console at
+`127.0.0.1:8891` for NetBSD login with the provided serial-console NVRAM.
+Do not attach the same writable CHD/overlay to another running emulator;
+make a separate copy when testing simultaneously. Ports 8890, 8891 and
+8898 can be changed in `[advanced.expert]` if occupied.
+
+When configuring through **F9**, use Indy IP24, R4400, 256 MiB, Newport and
+the CHD at SCSI ID 1. Enable **Tinker** to expose Advanced and retain SCSI
+interrupt deferral. An existing Prismatic machine keeps its own NVRAM, so
+attaching the CHD does not import the bundle's boot variables. The PROM
+commands below fix an existing machine still looking for `sash`.
+
 ## PROM settings and fallback
 
 The verified boot path uses the disk's existing NetBSD volume-header
 loader and `/netbsd.boot`, the ELF32 PROM wrapper. `/netbsd` contains the
-native ELF64 kernel for kernel metadata/tools. If using fresh NVRAM, set:
+native ELF64 kernel for kernel metadata/tools. If the PROM reports a missing
+`sash`, it is still selecting the IRIX loader. With the existing partition
+settings already pointing at SCSI ID 1, the user confirmed this shorter
+sequence boots the image in Prismatic:
+
+```text
+setenv osloader boot
+setenv osloadfilename netbsd.boot
+setenv osloadoptions auto
+boot
+```
+
+For fresh NVRAM or different disk/partition settings, use the full sequence:
 
 ```text
 setenv systempartition scsi(0)disk(1)rdisk(0)partition(8)
@@ -77,6 +116,37 @@ Save NVRAM in IRIS after setting these variables (`rtc save` in the IRIS
 monitor). The bundle also retains `tftp/netbsd-XIRI_INDY` for the lab's
 fallback boot route. Normal disk boot does not require TFTP or a source
 IRIX image.
+
+## Return to IRIX
+
+Halt NetBSD with `shutdown -h now`, then stop the emulated machine. In the
+frontend's media settings, attach the original **IRIX disk at SCSI ID 1**.
+Boot to the PROM menu and choose **5) Enter Command Monitor**, then enter:
+
+```text
+setenv osloader sash
+setenv osloadfilename /unix
+setenv osloadoptions auto
+boot
+```
+
+The supplied installed `irix65.chd` has a volume-header entry named `sash`
+and a `/unix` boot-file field, confirmed directly in its ingested raw disk.
+Use that loader name for this image. Other IRIX disks may use a different
+name, such as `sashARCS`; inspect their volume header or original settings.
+If the partition variables were changed, restore them before `boot`:
+
+```text
+setenv systempartition scsi(0)disk(1)rdisk(0)partition(8)
+setenv osloadpartition scsi(0)disk(1)rdisk(0)partition(0)
+```
+
+Both systems use these partition settings with the supplied disks at ID 1;
+the loader and kernel filename differ. PROM variables belong to the
+machine's NVRAM, not the CHD. Keep separate NetBSD and IRIX machine
+configurations/state directories to avoid changing these variables each
+time. Prismatic saves NVRAM when its machine stops/quits normally; standalone
+IRIS also supports `rtc save` in its monitor.
 
 ## Reuse in automated work
 

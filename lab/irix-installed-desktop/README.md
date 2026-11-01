@@ -93,3 +93,8 @@ manual IRIS use. Fresh inventory/staging commands above are bootstrap work.
 The [copy ledger](copy-ledger.json) records 1,990 source/destination entries;
 [IRIX-IMPORT.md](../../docs/IRIX-IMPORT.md) explains placement and generated
 state, plus the verified SGI documentation for catalog registration.
+
+[prismatic.cfg](prismatic.cfg) is a template to copy beside the CHD. It uses
+Prismatic's own schema; its machine state/NVRAM must also select the NetBSD
+loader. See the [Prismatic boot result](../../docs/results/2026-11-02-prismatic-xiri.md)
+and [switching instructions](../../docs/XIRI-IMAGE.md#return-to-irix).
