@@ -96,9 +96,10 @@ native and IRIX access to one `/usr/people` home, including cold-boot
 persistence. The [shared-mapping checkpoint](docs/results/2026-11-01-irix-mmap-shared.md)
 clears the installer's failed-map crash. The [bounded sproc checkpoint](docs/results/2026-11-01-irix-sproc.md)
 now passes 340 executions, 600 records and 44 controls across both kernels.
-The [installer retry](docs/results/2026-11-01-irix-installer-sproc.md) creates
-its subcommand and executes native `/bin/sh`; the next concrete failure is
-`fcntl(F_DUPFD)` returning EINVAL during pipe setup. Repeated unsupported
-gettimeofday calls and IRIX-style helper paths also remain. Distribution
-reading, installation, the Freeware catalog action and graphical login
-persistence remain open.
+The [F_DUPFD checkpoint](docs/results/2026-11-01-irix-dupfd.md) adds the
+installer's missing descriptor allocation, with 420 exact records and 220 pipe
+regressions passing. The [installer retry](docs/results/2026-11-01-irix-installer-dupfd.md)
+now connects its helper's stdout/stderr, but still times out amid unsupported
+gettimeofday calls. Time/gettimeofday support for the installer and xclock is
+next; helper command paths also need attention. Distribution reading,
+installation, the Freeware catalog action and graphical login persistence remain open.

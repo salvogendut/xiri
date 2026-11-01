@@ -84,3 +84,10 @@ ENOSYS and a bounded timeout. Native helper searches also omit `/bin` for
 ls/mkdir. No package has yet been installed. Pair calls by PID/LWP now that
 the trace includes a child; successful exec register contents are not an
 ordinary syscall errno return.
+
+
+The [F_DUPFD follow-up](../../docs/results/2026-11-01-irix-installer-dupfd.md)
+uses `probe-irix-installer-dupfd.py` and `qualify-irix-installer-dupfd.py`.
+Both pipe duplications now succeed. The remaining capture shows a bounded
+gettimeofday/select loop and unchanged helper search paths. Time support for
+this loop and original xclock is the next step; no package is installed yet.

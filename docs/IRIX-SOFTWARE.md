@@ -12,13 +12,14 @@ the initial installer crash. The [bounded sproc adapter](results/2026-11-01-irix
 now supplies the measured child lifecycle, with 340 executions / 600 records
 and 44 controls passing. The [new retry](results/2026-11-01-irix-installer-sproc.md)
 creates the subcommand child, arms parent release and executes native `/bin/sh`.
-Its next concrete failure is F_DUPFD returning EINVAL for both pipe writers,
-leaving the helper's stdout/stderr disconnected. The parent later repeats
-unsupported gettimeofday calls and reaches its watchdog. No distribution
-reading or installation is established.
+The [F_DUPFD follow-up](results/2026-11-01-irix-dupfd.md) now fixes the two
+pipe-writer duplications. The [new retry](results/2026-11-01-irix-installer-dupfd.md)
+still reaches its watchdog amid repeated gettimeofday ENOSYS calls. Time
+support for the installer and xclock is next. Distribution reading and
+installation remain unqualified.
 
 The helper shell searches IRIX-style directories for `ls` and `mkdir`, omitting
-NetBSD's `/bin`. After fixing descriptor setup, capture its output and qualify
+NetBSD's `/bin`. With descriptor setup fixed, resolve the clock loop, then capture helper output and qualify
 an explicit helper/bootstrap arrangement or stage the required original
 utilities. This is a runtime path decision, not permission to fabricate an
 installer result or import unrelated package history. Timekeeping and other

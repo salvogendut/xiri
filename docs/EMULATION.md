@@ -305,3 +305,12 @@ The final shared-mapping regressions on the sproc kernel pass 1,180 records,
 1,180 backing files and 44 controls across the same three kernel/mode pairs.
 All accepted and diagnostic guests halt cleanly; the final host check finds
 no IRIS processes. The four-instance ceiling was respected throughout.
+
+
+The [F_DUPFD cycle](results/2026-11-01-irix-dupfd.md) uses at most four owned
+guests with sequential two-job builds. The original reference passes 168
+records; native matrices pass 420 records and 44 controls, and pipe
+regressions pass another 220 records and 44 controls. The original guest,
+all six native matrix/regression guests and installer retry halt cleanly.
+The installer attempt retains its bounded timeout and whole-group cleanup.
+No guest artifact from an earlier checkpoint was changed.

@@ -158,3 +158,10 @@ runtime closure if staging original helpers is chosen; otherwise qualify an
 explicit native bootstrap search arrangement. No additional utility has been
 imported by this cycle. Keep this new helper requirement distinct from the
 still-pending xmahjongg payload, original hooks and catalog/type assets.
+
+
+The [F_DUPFD retry](results/2026-11-01-irix-installer-dupfd.md) now supplies
+both helper pipe descriptors. No additional resource was imported; the
+gettimeofday loop and IRIX-style ls/mkdir search paths remain. The requested
+xclock time check will reuse its existing pinned executable, libraries,
+app-defaults and fonts, with no new clock resource requirement identified.

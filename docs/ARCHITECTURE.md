@@ -157,7 +157,10 @@ Exec/exit hooks detach members and release owned stacks, with retained vmspace
 references protecting peers during exec. It uses existing fork/UVM interfaces
 and adds no core hook. General sharing, pthread creation and foreign signal
 handlers remain separate; deployment is still a built-in personality pending
-the planned compat_linux-style module.
+the planned compat_linux-style module. The [F_DUPFD adapter](results/2026-11-01-irix-dupfd.md)
+now adds the installer's descriptor allocation through native sys_fcntl, with
+explicit signed-minimum translation and the allocated descriptor preserved.
+Native allocation owns limits and references; no additional core hook is needed.
 The [desktop retry](results/2026-11-01-irix-desktop-mkdir.md)
 reaches Icon Catalog's empty fallback window; wider waits and remaining client behavior
 are still separate compatibility work.

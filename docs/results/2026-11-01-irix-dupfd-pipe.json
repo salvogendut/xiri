@@ -1,0 +1,854 @@
+{
+  "schema": 1,
+  "status": "passed",
+  "qualifier_sha256": "aee7fc369cbcef77a06b597a575f062f9b3001d81a8e96ee7c23b74c5e20b6a0",
+  "reference_directory": ".work/irix-reference/pipe-records-runs/ci-3q2rck05",
+  "reference_result_sha256": "278d555a4ab5880545dad193b9dcc840db9d4099b87e573f514c73a72e106c98",
+  "reference_records_sha256": "ece56bac5ff3a9142091b450221278deb8bccee889e5a74e3cd01cd6def9c1b2",
+  "records": 220,
+  "controls": 44,
+  "runs": [
+    {
+      "directory": ".work/irix-dupfd-pipe/runs/lp64-ci-ke3fjrjf",
+      "result_sha256": "44a0bf753f07e4d3eef842a8e8c6f90f1e95c4fd4fe2cfa0128933482feefeaf",
+      "serial_sha256": "ed3dada82ff53279186b6a62f0d85ff8832a001638daa0e0d6f8a1bb794d7eb0",
+      "fixtures_log_sha256": "efb7a724adfb07a978004c98723adaeac3e6a58c65a5d3878f83373c2b7f9510",
+      "pin": {
+        "schema": 1,
+        "description": "Measured IRIX F_DUPFD descriptor allocation",
+        "ident": "XIRI_IRIX_DUPFD_20261101",
+        "source_revision": "572dcb832cb3a42f7c728115db241cae88fc5d8c",
+        "source_branch": "xiri",
+        "build_arch": "mips64eb",
+        "page_bytes": 8192,
+        "boot_kernel_sha256": "a98a710a63f9180049c456d350ffc40928b70f3abd9f3b26e3d5fde138fabf4e",
+        "native_kernel_sha256": "e73574c83748d960c38e4c9f44e3537bf5dc1e2f8321370818518a8d548af31c",
+        "debug_kernel_sha256": "b47d47b75a4a698b1fef81d58c11626e4bb782a3f848549e4642369fb2835c47",
+        "native_o32_sha256": "c294fbb1f2110445be31c096481ea54ab561c7e59ca5b9fc7171310098d755d4",
+        "source_dirty": false,
+        "emulator_revision": "9df1df14334838a989253efefe26f0547e6da592",
+        "emulator_branch": "xiri/netbsd64-tlb",
+        "emulator_sha256": "1b3f7702ba7f43b5c4fca8ba8884243559f46371d8d67a36ce5e6fee1e595eba",
+        "ci_client_sha256": "8711321aa6eaae440da3c7920b00ae4cf1c7f2abbdb15a9919f58485500ffb6c",
+        "base_disk_sha256": "269038c7b77660c83d3835208fc0b2702c93110c14b3c55a42416f51672cee2a",
+        "nvram_sha256": "ee883474d52f09278287b2044f7aeca61d2e7bc39c0bb8fd85c983ab64063d15",
+        "config_sha256": "721d9651bd05352efe77335e20d528f2e8d6eeef93cedc6ab51aa487f3b16036",
+        "runtimes": [
+          {
+            "name": "vendor-o32-libc",
+            "path": "/usr/lib/libc.so.1",
+            "sha256": "ea766492103a193e9d404942705e4e28987545e37f699ede232b6c0f8c97c954"
+          },
+          {
+            "name": "vendor-o32-rld",
+            "path": "/lib/rld",
+            "sha256": "30228b54c1e5585b365514eb7c9895b03cc0f61cb898e05e3ddafece87863439"
+          },
+          {
+            "name": "vendor-n32-libc",
+            "path": "/lib32/libc.so.1",
+            "sha256": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e"
+          },
+          {
+            "name": "vendor-n32-rld",
+            "path": "/lib32/rld",
+            "sha256": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b"
+          }
+        ],
+        "config_path": "lab/irix-dupfd/XIRI_IRIX_DUPFD"
+      },
+      "sources": {
+        "lab/irix-process/runner.c": "51c8045805878f0566a62a66c157b32035d98144bc3bb06e51c78b2fa5f8a141",
+        "lab/irix-toolchest/session.c": "e183b4aefdfb428e01dc609230e87a7546a0b31e9d4b5e236503e0a8bb3b09f5",
+        "scripts/probe-irix-dupfd-pipe.py": "01127b25e9ad3d359f29f95f833e795d702de9611ef91a8cf4492bda5c0c0b0f",
+        "lab/irix-pipe/native-control.c": "d13ee1d58b0718f31e7e6e324343be65cae660d3112aedbd9a38477b97a90e8f"
+      },
+      "kernel_abi": "lp64",
+      "mode": "ci",
+      "records": 88,
+      "controls": [
+        {
+          "phase": "before",
+          "uid": 0,
+          "name": "native-o32",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "before",
+          "uid": 0,
+          "name": "vendor-asa",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_O32\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "before",
+          "uid": 0,
+          "name": "vendor-echo",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_N32\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "before",
+          "uid": 1234,
+          "name": "native-o32",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "before",
+          "uid": 1234,
+          "name": "vendor-asa",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_O32\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "before",
+          "uid": 1234,
+          "name": "vendor-echo",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_N32\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "before",
+          "uid": 0,
+          "name": "native-pipe",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "NATIVE_PIPE uid=0 io=1 fork=1 eof=1 nonblock=1 rollback=1\n",
+            "stderr": ""
+          },
+          "group_absent": true
+        },
+        {
+          "phase": "before",
+          "uid": 1234,
+          "name": "native-pipe",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "NATIVE_PIPE uid=1234 io=1 fork=1 eof=1 nonblock=1 rollback=1\n",
+            "stderr": ""
+          },
+          "group_absent": true
+        },
+        {
+          "phase": "after",
+          "uid": 0,
+          "name": "native-o32",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "after",
+          "uid": 0,
+          "name": "vendor-asa",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_O32\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "after",
+          "uid": 0,
+          "name": "vendor-echo",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_N32\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "after",
+          "uid": 1234,
+          "name": "native-o32",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "after",
+          "uid": 1234,
+          "name": "vendor-asa",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_O32\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "after",
+          "uid": 1234,
+          "name": "vendor-echo",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_N32\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "after",
+          "uid": 0,
+          "name": "native-pipe",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "NATIVE_PIPE uid=0 io=1 fork=1 eof=1 nonblock=1 rollback=1\n",
+            "stderr": ""
+          },
+          "group_absent": true
+        },
+        {
+          "phase": "after",
+          "uid": 1234,
+          "name": "native-pipe",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "NATIVE_PIPE uid=1234 io=1 fork=1 eof=1 nonblock=1 rollback=1\n",
+            "stderr": ""
+          },
+          "group_absent": true
+        }
+      ],
+      "group_cleanup_passed": true,
+      "clean_shutdown": true
+    },
+    {
+      "directory": ".work/irix-dupfd-pipe/runs/lp64-ordinary-jb8g4p2x",
+      "result_sha256": "42020dfc61036a9276d1883d3deaa2fa3bf52076326084bbd381e369bd81d9cd",
+      "serial_sha256": "be2f07b7d9df149a62ed8c01835d99fd6ae4a5c69e72014ea391346b50f03121",
+      "fixtures_log_sha256": "efb7a724adfb07a978004c98723adaeac3e6a58c65a5d3878f83373c2b7f9510",
+      "pin": {
+        "schema": 1,
+        "description": "Measured IRIX F_DUPFD descriptor allocation",
+        "ident": "XIRI_IRIX_DUPFD_20261101",
+        "source_revision": "572dcb832cb3a42f7c728115db241cae88fc5d8c",
+        "source_branch": "xiri",
+        "build_arch": "mips64eb",
+        "page_bytes": 8192,
+        "boot_kernel_sha256": "a98a710a63f9180049c456d350ffc40928b70f3abd9f3b26e3d5fde138fabf4e",
+        "native_kernel_sha256": "e73574c83748d960c38e4c9f44e3537bf5dc1e2f8321370818518a8d548af31c",
+        "debug_kernel_sha256": "b47d47b75a4a698b1fef81d58c11626e4bb782a3f848549e4642369fb2835c47",
+        "native_o32_sha256": "c294fbb1f2110445be31c096481ea54ab561c7e59ca5b9fc7171310098d755d4",
+        "source_dirty": false,
+        "emulator_revision": "9df1df14334838a989253efefe26f0547e6da592",
+        "emulator_branch": "xiri/netbsd64-tlb",
+        "emulator_sha256": "1b3f7702ba7f43b5c4fca8ba8884243559f46371d8d67a36ce5e6fee1e595eba",
+        "ci_client_sha256": "8711321aa6eaae440da3c7920b00ae4cf1c7f2abbdb15a9919f58485500ffb6c",
+        "base_disk_sha256": "269038c7b77660c83d3835208fc0b2702c93110c14b3c55a42416f51672cee2a",
+        "nvram_sha256": "ee883474d52f09278287b2044f7aeca61d2e7bc39c0bb8fd85c983ab64063d15",
+        "config_sha256": "721d9651bd05352efe77335e20d528f2e8d6eeef93cedc6ab51aa487f3b16036",
+        "runtimes": [
+          {
+            "name": "vendor-o32-libc",
+            "path": "/usr/lib/libc.so.1",
+            "sha256": "ea766492103a193e9d404942705e4e28987545e37f699ede232b6c0f8c97c954"
+          },
+          {
+            "name": "vendor-o32-rld",
+            "path": "/lib/rld",
+            "sha256": "30228b54c1e5585b365514eb7c9895b03cc0f61cb898e05e3ddafece87863439"
+          },
+          {
+            "name": "vendor-n32-libc",
+            "path": "/lib32/libc.so.1",
+            "sha256": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e"
+          },
+          {
+            "name": "vendor-n32-rld",
+            "path": "/lib32/rld",
+            "sha256": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b"
+          }
+        ],
+        "config_path": "lab/irix-dupfd/XIRI_IRIX_DUPFD"
+      },
+      "sources": {
+        "lab/irix-process/runner.c": "51c8045805878f0566a62a66c157b32035d98144bc3bb06e51c78b2fa5f8a141",
+        "lab/irix-toolchest/session.c": "e183b4aefdfb428e01dc609230e87a7546a0b31e9d4b5e236503e0a8bb3b09f5",
+        "scripts/probe-irix-dupfd-pipe.py": "01127b25e9ad3d359f29f95f833e795d702de9611ef91a8cf4492bda5c0c0b0f",
+        "lab/irix-pipe/native-control.c": "d13ee1d58b0718f31e7e6e324343be65cae660d3112aedbd9a38477b97a90e8f"
+      },
+      "kernel_abi": "lp64",
+      "mode": "ordinary",
+      "records": 88,
+      "controls": [
+        {
+          "phase": "before",
+          "uid": 0,
+          "name": "native-o32",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "before",
+          "uid": 0,
+          "name": "vendor-asa",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_O32\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "before",
+          "uid": 0,
+          "name": "vendor-echo",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_N32\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "before",
+          "uid": 1234,
+          "name": "native-o32",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "before",
+          "uid": 1234,
+          "name": "vendor-asa",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_O32\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "before",
+          "uid": 1234,
+          "name": "vendor-echo",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_N32\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "before",
+          "uid": 0,
+          "name": "native-pipe",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "NATIVE_PIPE uid=0 io=1 fork=1 eof=1 nonblock=1 rollback=1\n",
+            "stderr": ""
+          },
+          "group_absent": true
+        },
+        {
+          "phase": "before",
+          "uid": 1234,
+          "name": "native-pipe",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "NATIVE_PIPE uid=1234 io=1 fork=1 eof=1 nonblock=1 rollback=1\n",
+            "stderr": ""
+          },
+          "group_absent": true
+        },
+        {
+          "phase": "after",
+          "uid": 0,
+          "name": "native-o32",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "after",
+          "uid": 0,
+          "name": "vendor-asa",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_O32\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "after",
+          "uid": 0,
+          "name": "vendor-echo",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_N32\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "after",
+          "uid": 1234,
+          "name": "native-o32",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "after",
+          "uid": 1234,
+          "name": "vendor-asa",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_O32\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "after",
+          "uid": 1234,
+          "name": "vendor-echo",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_N32\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "after",
+          "uid": 0,
+          "name": "native-pipe",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "NATIVE_PIPE uid=0 io=1 fork=1 eof=1 nonblock=1 rollback=1\n",
+            "stderr": ""
+          },
+          "group_absent": true
+        },
+        {
+          "phase": "after",
+          "uid": 1234,
+          "name": "native-pipe",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "NATIVE_PIPE uid=1234 io=1 fork=1 eof=1 nonblock=1 rollback=1\n",
+            "stderr": ""
+          },
+          "group_absent": true
+        }
+      ],
+      "group_cleanup_passed": true,
+      "clean_shutdown": true
+    },
+    {
+      "directory": ".work/irix-dupfd-pipe/runs/o32-ci-pfirzvq4",
+      "result_sha256": "82fcdfc376208d82a76ac4e8352c29c4423ce9cc115ac20c9017addcf5e8eb6d",
+      "serial_sha256": "2ad75a9e7e92c324de7b893385967fdb612ddecacdb0d70da2ee869991305358",
+      "fixtures_log_sha256": "5bf8dfbbe9cabb04354a621a90cbfadbc72709a924e3afee2b27a3b7ba3bfa9f",
+      "pin": {
+        "schema": 1,
+        "description": "Measured IRIX F_DUPFD descriptor allocation",
+        "ident": "XIRI_IRIX_DUPFD_O32_20261101",
+        "source_revision": "572dcb832cb3a42f7c728115db241cae88fc5d8c",
+        "source_branch": "xiri",
+        "build_arch": "mipseb",
+        "page_bytes": 4096,
+        "boot_kernel_sha256": "2ba1d2dd46d7f516aef3543a014c68b3702e0fac20d754cfcd258ac8d1a07315",
+        "native_kernel_sha256": "2ba1d2dd46d7f516aef3543a014c68b3702e0fac20d754cfcd258ac8d1a07315",
+        "debug_kernel_sha256": "84f567b2dd002795e2f2e2085a667f0eedafc804dfae801a8e7af624c1f38121",
+        "native_o32_sha256": "c294fbb1f2110445be31c096481ea54ab561c7e59ca5b9fc7171310098d755d4",
+        "source_dirty": false,
+        "emulator_revision": "9df1df14334838a989253efefe26f0547e6da592",
+        "emulator_branch": "xiri/netbsd64-tlb",
+        "emulator_sha256": "1b3f7702ba7f43b5c4fca8ba8884243559f46371d8d67a36ce5e6fee1e595eba",
+        "ci_client_sha256": "8711321aa6eaae440da3c7920b00ae4cf1c7f2abbdb15a9919f58485500ffb6c",
+        "base_disk_sha256": "269038c7b77660c83d3835208fc0b2702c93110c14b3c55a42416f51672cee2a",
+        "nvram_sha256": "ee883474d52f09278287b2044f7aeca61d2e7bc39c0bb8fd85c983ab64063d15",
+        "config_sha256": "8d088702a3838587c1f0969452828b9cf1db757aec959b3d39644c6a21c0088d",
+        "runtimes": [
+          {
+            "name": "vendor-o32-libc",
+            "path": "/usr/lib/libc.so.1",
+            "sha256": "ea766492103a193e9d404942705e4e28987545e37f699ede232b6c0f8c97c954"
+          },
+          {
+            "name": "vendor-o32-rld",
+            "path": "/lib/rld",
+            "sha256": "30228b54c1e5585b365514eb7c9895b03cc0f61cb898e05e3ddafece87863439"
+          },
+          {
+            "name": "vendor-n32-libc",
+            "path": "/lib32/libc.so.1",
+            "sha256": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e"
+          },
+          {
+            "name": "vendor-n32-rld",
+            "path": "/lib32/rld",
+            "sha256": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b"
+          }
+        ],
+        "config_path": "lab/irix-dupfd/XIRI_IRIX_DUPFD_O32"
+      },
+      "sources": {
+        "lab/irix-process/runner.c": "51c8045805878f0566a62a66c157b32035d98144bc3bb06e51c78b2fa5f8a141",
+        "lab/irix-toolchest/session.c": "e183b4aefdfb428e01dc609230e87a7546a0b31e9d4b5e236503e0a8bb3b09f5",
+        "scripts/probe-irix-dupfd-pipe.py": "01127b25e9ad3d359f29f95f833e795d702de9611ef91a8cf4492bda5c0c0b0f",
+        "lab/irix-pipe/native-control.c": "d13ee1d58b0718f31e7e6e324343be65cae660d3112aedbd9a38477b97a90e8f"
+      },
+      "kernel_abi": "o32",
+      "mode": "ci",
+      "records": 44,
+      "controls": [
+        {
+          "phase": "before",
+          "uid": 0,
+          "name": "native-o32",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "before",
+          "uid": 0,
+          "name": "vendor-asa",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_O32\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "before",
+          "uid": 1234,
+          "name": "native-o32",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "before",
+          "uid": 1234,
+          "name": "vendor-asa",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_O32\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "before",
+          "uid": 0,
+          "name": "native-pipe",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "NATIVE_PIPE uid=0 io=1 fork=1 eof=1 nonblock=1 rollback=1\n",
+            "stderr": ""
+          },
+          "group_absent": true
+        },
+        {
+          "phase": "before",
+          "uid": 1234,
+          "name": "native-pipe",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "NATIVE_PIPE uid=1234 io=1 fork=1 eof=1 nonblock=1 rollback=1\n",
+            "stderr": ""
+          },
+          "group_absent": true
+        },
+        {
+          "phase": "after",
+          "uid": 0,
+          "name": "native-o32",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "after",
+          "uid": 0,
+          "name": "vendor-asa",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_O32\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "after",
+          "uid": 1234,
+          "name": "native-o32",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "after",
+          "uid": 1234,
+          "name": "vendor-asa",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_O32\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "after",
+          "uid": 0,
+          "name": "native-pipe",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "NATIVE_PIPE uid=0 io=1 fork=1 eof=1 nonblock=1 rollback=1\n",
+            "stderr": ""
+          },
+          "group_absent": true
+        },
+        {
+          "phase": "after",
+          "uid": 1234,
+          "name": "native-pipe",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "NATIVE_PIPE uid=1234 io=1 fork=1 eof=1 nonblock=1 rollback=1\n",
+            "stderr": ""
+          },
+          "group_absent": true
+        }
+      ],
+      "group_cleanup_passed": true,
+      "clean_shutdown": true
+    }
+  ],
+  "source_evidence": [
+    {
+      "repository": "NetBSD-xiri",
+      "revision": "572dcb832cb3a42f7c728115db241cae88fc5d8c",
+      "path": "sys/compat/irix_o32/irix_o32.c",
+      "sha256": "216d859d9080040becfa2612861f96318f13a6528d8616d7235b38086a16fdf2"
+    },
+    {
+      "repository": "NetBSD-xiri",
+      "revision": "572dcb832cb3a42f7c728115db241cae88fc5d8c",
+      "path": "sys/kern/sys_descrip.c",
+      "sha256": "68dd1a1a87b2fb8bf08ad447da39482103ee09e6cbdcec4d6b52a391b9a7fd6c"
+    },
+    {
+      "repository": "NetBSD-xiri",
+      "revision": "572dcb832cb3a42f7c728115db241cae88fc5d8c",
+      "path": "sys/kern/sys_pipe.c",
+      "sha256": "e624a8fa12bdbe1290e17162c634d3be8643a5ecff9464e728ac78b1a4fcca1c"
+    }
+  ],
+  "limits": [
+    "Pipe ABI/lifecycle subset only; no STREAMS interfaces, poll adapter, asynchronous I/O, capacity/atomicity stress, signal-handler delivery or physical-hardware qualification.",
+    "All 64 words match the reference exactly; no descriptor/error normalization.",
+    "Blocked SIGPIPE yields EPIPE; this does not qualify foreign handlers or context restoration."
+  ]
+}

@@ -1,5 +1,8 @@
 # Original inst after bounded sproc support
 
+Follow-up: [F_DUPFD now succeeds](2026-11-01-irix-installer-dupfd.md). The
+report below retains the preceding descriptor-failure checkpoint.
+
 Original `inst` now creates its subcommand child, arms parent release and
 executes native NetBSD `/bin/sh`. The [checked trace](2026-11-01-irix-installer-sproc.json)
 shows the former `sproc` ENOSYS boundary is cleared on the

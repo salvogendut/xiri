@@ -142,3 +142,15 @@ builds, LP64 CI/ordinary and o32 CI, plus mapping regressions; the
 [installer follow-up](results/2026-11-01-irix-installer-sproc.md) records the
 new descriptor boundary. Later documentation-only commits do not change
 these qualified binaries or their recorded source revision.
+
+
+The 2026-11-01 F_DUPFD cycle fetched IRIS upstream again at
+`4ad1b1d435dc115697433f091b10dfa8c48aa7ed`, already integrated in IRIS `xiri`
+`045d69245609d186907a20e0b002e2b60be9a1ac`. No merge or emulator rebuild was
+needed. NetBSD kernel code is on `xiri` at
+`572dcb832cb3a42f7c728115db241cae88fc5d8c`, with separate
+`.work/netbsd-irix-dupfd-build` and `.work/netbsd-irix-dupfd-o32-build` outputs.
+The [F_DUPFD qualification](results/2026-11-01-irix-dupfd.md) records both builds,
+the original/native matrices and regressions. Later documentation commits do
+not change those artifacts; detached reproductions and unrelated IRIS
+performance work remain untouched.
