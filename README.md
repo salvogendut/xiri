@@ -46,6 +46,12 @@ The [winterm fault capture](docs/results/2026-10-31-irix-winterm-fault.md) ident
 
 The [resource checklist](docs/IRIX-RESOURCES.md) tracks required image assets and remaining gaps. With Toolchest rendering observed, the [desktop acceptance plan](docs/ROADMAP.md#milestone-3-original-desktop-proof) uses the supplied SGI interface guidelines to qualify the complete environment.
 
+The [expanded desktop attempt](docs/results/2026-11-01-irix-desktop-components.md)
+now adds original fm, bgicons and Icon Catalog to the test session. Their startup
+is blocked by an unsupported pthread resource-limit query and an executable
+alignment restriction. The new static closure and resource locations are
+inventoried; a full desktop is still pending.
+
 The user-provided [IRIX 6.5.22m reference](lab/irix-reference/README.md) now boots to a shell and runs native asa/echo probes. Its 4Dwm and Toolchest are n32; native ldd confirms the inventoried library paths, and both programs reach a controlled TCP connection refusal on IRIX. Reference XFS alerts, a clean graphical session, later runtime modules and session services still need investigation. See the [prerequisites](docs/EMULATION.md#prerequisites-and-current-gaps).
 
 NetBSD is the chosen foundation. The experiments will determine the required compatibility work and supported configurations. Octane requires a NetBSD porting effort, using existing open-source implementations as hardware references. See the [platform decision](docs/FEASIBILITY.md#platform-choice).

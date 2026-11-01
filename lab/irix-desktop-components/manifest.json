@@ -1,0 +1,4725 @@
+{
+  "schema": 1,
+  "description": "Static next-component closure; runtime behavior is separately observed",
+  "reference_release": "6.5.22m",
+  "programs": [
+    "/usr/sbin/fm",
+    "/usr/sbin/bgicons",
+    "/usr/sbin/iconcatalog",
+    "/usr/lib/desktop/fmserv"
+  ],
+  "files": {
+    "/usr/sbin/fm": {
+      "path": "/usr/sbin/fm",
+      "canonical_path": "/usr/sbin/fm",
+      "bytes": 312468,
+      "sha256": "a72db11a899cafff5e9d04b87ebe29b7ec96fefff431793e860079a3d05dc649",
+      "class": 32,
+      "endian": "big",
+      "machine": 8,
+      "abi": "n32",
+      "type": 2,
+      "flags": "0x20000024",
+      "entry": "0x1002bfcc",
+      "interpreter": [
+        "/usr/lib32/libc.so.1"
+      ],
+      "needed": [
+        "libimdModel.so",
+        "libimdUtil.so",
+        "libC.so.2",
+        "libimdApp.so",
+        "libimdFtrDB.so",
+        "libimdFtrIcon.so",
+        "libimdXutil.so",
+        "libimdIconPanel.so",
+        "libMediaViewer.so",
+        "libSgm.so.1",
+        "libgen.so",
+        "libXext.so",
+        "libmediaclient.so",
+        "libvk.so.1",
+        "libXt.so",
+        "libXm.so.1",
+        "libX11.so.1",
+        "libCsup.so",
+        "libc.so.1"
+      ],
+      "rpath": [],
+      "soname": [],
+      "loads": [
+        {
+          "offset": 0,
+          "address": 268435456,
+          "file_bytes": 253952,
+          "memory_bytes": 253952,
+          "flags": 5,
+          "alignment": 16384
+        },
+        {
+          "offset": 262144,
+          "address": 268697600,
+          "file_bytes": 32768,
+          "memory_bytes": 33124,
+          "flags": 6,
+          "alignment": 16384
+        }
+      ],
+      "load_boundaries_8k": true,
+      "liblist": [
+        "libimdModel.so",
+        "libimdUtil.so",
+        "libC.so.2",
+        "libimdApp.so",
+        "libimdFtrDB.so",
+        "libimdFtrIcon.so",
+        "libimdXutil.so",
+        "libimdIconPanel.so",
+        "libMediaViewer.so",
+        "libSgm.so.1",
+        "libgen.so",
+        "libXext.so",
+        "libmediaclient.so",
+        "libvk.so.1",
+        "libXt.so",
+        "libXm.so.1",
+        "libX11.so.1",
+        "libCsup.so",
+        "libc.so.1"
+      ],
+      "mips_rld_version": 1,
+      "mips_flags": "0x4410"
+    },
+    "/usr/sbin/bgicons": {
+      "path": "/usr/sbin/bgicons",
+      "canonical_path": "/usr/sbin/bgicons",
+      "bytes": 31608,
+      "sha256": "73e0a5fc645bc3ea224ebdb7996963f972960a1ef487ebd815a2652a80b28d3b",
+      "class": 32,
+      "endian": "big",
+      "machine": 8,
+      "abi": "n32",
+      "type": 2,
+      "flags": "0x20000024",
+      "entry": "0x10002b74",
+      "interpreter": [
+        "/usr/lib32/libc.so.1"
+      ],
+      "needed": [
+        "libimdModel.so",
+        "libimdUtil.so",
+        "libgen.so",
+        "libCsup.so",
+        "libC.so.2",
+        "libc.so.1"
+      ],
+      "rpath": [],
+      "soname": [],
+      "loads": [
+        {
+          "offset": 0,
+          "address": 268435456,
+          "file_bytes": 24576,
+          "memory_bytes": 24576,
+          "flags": 5,
+          "alignment": 8192
+        },
+        {
+          "offset": 24576,
+          "address": 268525568,
+          "file_bytes": 4096,
+          "memory_bytes": 4096,
+          "flags": 6,
+          "alignment": 4096
+        }
+      ],
+      "load_boundaries_8k": false,
+      "liblist": [
+        "libimdModel.so",
+        "libimdUtil.so",
+        "libgen.so",
+        "libCsup.so",
+        "libC.so.2",
+        "libc.so.1"
+      ],
+      "mips_rld_version": 1,
+      "mips_flags": "0x4410"
+    },
+    "/usr/sbin/iconcatalog": {
+      "path": "/usr/sbin/iconcatalog",
+      "canonical_path": "/usr/sbin/iconcatalog",
+      "bytes": 157512,
+      "sha256": "c1f30adad8c75305a3848c7694e3c45e62176debd4657f5240f14fc5c4d5189e",
+      "class": 32,
+      "endian": "big",
+      "machine": 8,
+      "abi": "n32",
+      "type": 2,
+      "flags": "0x20000024",
+      "entry": "0x100174cc",
+      "interpreter": [
+        "/usr/lib32/libc.so.1"
+      ],
+      "needed": [
+        "libimdUtil.so",
+        "libimdXutil.so",
+        "libimdApp.so",
+        "libimdModel.so",
+        "libimdIconPanel.so",
+        "libimdFtrDB.so",
+        "libimdFtrIcon.so",
+        "libvk.so.1",
+        "libgen.so",
+        "libXm.so.1",
+        "libXext.so",
+        "libSgm.so.1",
+        "libXt.so",
+        "libX11.so.1",
+        "libCsup.so",
+        "libC.so.2",
+        "libc.so.1"
+      ],
+      "rpath": [],
+      "soname": [],
+      "loads": [
+        {
+          "offset": 0,
+          "address": 268435456,
+          "file_bytes": 118784,
+          "memory_bytes": 118784,
+          "flags": 5,
+          "alignment": 16384
+        },
+        {
+          "offset": 131072,
+          "address": 268566528,
+          "file_bytes": 16384,
+          "memory_bytes": 16384,
+          "flags": 6,
+          "alignment": 16384
+        }
+      ],
+      "load_boundaries_8k": true,
+      "liblist": [
+        "libimdUtil.so",
+        "libimdXutil.so",
+        "libimdApp.so",
+        "libimdModel.so",
+        "libimdIconPanel.so",
+        "libimdFtrDB.so",
+        "libimdFtrIcon.so",
+        "libvk.so.1",
+        "libgen.so",
+        "libXm.so.1",
+        "libXext.so",
+        "libSgm.so.1",
+        "libXt.so",
+        "libX11.so.1",
+        "libCsup.so",
+        "libC.so.2",
+        "libc.so.1"
+      ],
+      "mips_rld_version": 1,
+      "mips_flags": "0x6410"
+    },
+    "/usr/lib/desktop/fmserv": {
+      "path": "/usr/lib/desktop/fmserv",
+      "canonical_path": "/usr/lib/desktop/fmserv",
+      "bytes": 80588,
+      "sha256": "edf17f7275722439cdaaca07836ecc8682425f49a1fb0c2310a7b04cb9ff9029",
+      "class": 32,
+      "endian": "big",
+      "machine": 8,
+      "abi": "n32",
+      "type": 2,
+      "flags": "0x20000024",
+      "entry": "0x100055f0",
+      "interpreter": [
+        "/usr/lib32/libc.so.1"
+      ],
+      "needed": [
+        "libimdUtil.so",
+        "libCsup.so",
+        "libC.so.2",
+        "libc.so.1"
+      ],
+      "rpath": [],
+      "soname": [],
+      "loads": [
+        {
+          "offset": 0,
+          "address": 268435456,
+          "file_bytes": 61440,
+          "memory_bytes": 61440,
+          "flags": 5,
+          "alignment": 16384
+        },
+        {
+          "offset": 65536,
+          "address": 268500992,
+          "file_bytes": 8192,
+          "memory_bytes": 8192,
+          "flags": 6,
+          "alignment": 16384
+        }
+      ],
+      "load_boundaries_8k": true,
+      "liblist": [
+        "libimdUtil.so",
+        "libCsup.so",
+        "libC.so.2",
+        "libc.so.1"
+      ],
+      "mips_rld_version": 1,
+      "mips_flags": "0x6c11"
+    },
+    "/lib32/rld": {
+      "path": "/lib32/rld",
+      "canonical_path": "/lib32/rld",
+      "bytes": 523908,
+      "sha256": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b",
+      "class": 32,
+      "endian": "big",
+      "machine": 8,
+      "abi": "n32",
+      "type": 2,
+      "flags": "0x20000020",
+      "entry": "0xfb60150",
+      "interpreter": [],
+      "needed": [],
+      "rpath": [],
+      "soname": [],
+      "loads": [
+        {
+          "offset": 0,
+          "address": 263585792,
+          "file_bytes": 151552,
+          "memory_bytes": 151552,
+          "flags": 5,
+          "alignment": 16384
+        },
+        {
+          "offset": 163840,
+          "address": 264077312,
+          "file_bytes": 28672,
+          "memory_bytes": 28672,
+          "flags": 6,
+          "alignment": 16384
+        }
+      ],
+      "load_boundaries_8k": true,
+      "liblist": [],
+      "mips_rld_version": null,
+      "mips_flags": "0x0"
+    },
+    "/lib32/libc.so.1": {
+      "path": "/lib32/libc.so.1",
+      "canonical_path": "/lib32/libc.so.1",
+      "bytes": 3255120,
+      "sha256": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e",
+      "class": 32,
+      "endian": "big",
+      "machine": 8,
+      "abi": "n32",
+      "type": 3,
+      "flags": "0x20000022",
+      "entry": "0xfaf15f8",
+      "interpreter": [],
+      "needed": [],
+      "rpath": [],
+      "soname": [
+        "libc.so.1"
+      ],
+      "loads": [
+        {
+          "offset": 0,
+          "address": 262078464,
+          "file_bytes": 1413120,
+          "memory_bytes": 1413120,
+          "flags": 5,
+          "alignment": 16384
+        },
+        {
+          "offset": 1425408,
+          "address": 263503872,
+          "file_bytes": 65536,
+          "memory_bytes": 80544,
+          "flags": 6,
+          "alignment": 16384
+        }
+      ],
+      "load_boundaries_8k": true,
+      "liblist": [],
+      "mips_rld_version": 1,
+      "mips_flags": "0x4411"
+    },
+    "/usr/lib32/libc.so.1": {
+      "path": "/usr/lib32/libc.so.1",
+      "canonical_path": "/lib32/libc.so.1",
+      "bytes": 3255120,
+      "sha256": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e",
+      "class": 32,
+      "endian": "big",
+      "machine": 8,
+      "abi": "n32",
+      "type": 3,
+      "flags": "0x20000022",
+      "entry": "0xfaf15f8",
+      "interpreter": [],
+      "needed": [],
+      "rpath": [],
+      "soname": [
+        "libc.so.1"
+      ],
+      "loads": [
+        {
+          "offset": 0,
+          "address": 262078464,
+          "file_bytes": 1413120,
+          "memory_bytes": 1413120,
+          "flags": 5,
+          "alignment": 16384
+        },
+        {
+          "offset": 1425408,
+          "address": 263503872,
+          "file_bytes": 65536,
+          "memory_bytes": 80544,
+          "flags": 6,
+          "alignment": 16384
+        }
+      ],
+      "load_boundaries_8k": true,
+      "liblist": [],
+      "mips_rld_version": 1,
+      "mips_flags": "0x4411"
+    },
+    "/usr/lib32/internal/libimdModel.so": {
+      "path": "/usr/lib32/internal/libimdModel.so",
+      "canonical_path": "/usr/lib32/internal/libimdModel.so",
+      "bytes": 602172,
+      "sha256": "5c3fdce9960eeaad9e2868addbe7e5844480bfac8c0aa30a0832ea66c091c181",
+      "class": 32,
+      "endian": "big",
+      "machine": 8,
+      "abi": "n32",
+      "type": 3,
+      "flags": "0x20000022",
+      "entry": "0xd47aa70",
+      "interpreter": [],
+      "needed": [
+        "libimdUtil.so",
+        "libgen.so",
+        "libpthread.so",
+        "libimdFtrDB.so",
+        "librpcsvc.so",
+        "libXt.so",
+        "libX11.so.1",
+        "libCsup.so",
+        "libC.so.2",
+        "libc.so.1"
+      ],
+      "rpath": [],
+      "soname": [
+        "libimdModel.so"
+      ],
+      "loads": [
+        {
+          "offset": 0,
+          "address": 222691328,
+          "file_bytes": 278528,
+          "memory_bytes": 278528,
+          "flags": 5,
+          "alignment": 16384
+        },
+        {
+          "offset": 278528,
+          "address": 222969856,
+          "file_bytes": 45056,
+          "memory_bytes": 46248,
+          "flags": 6,
+          "alignment": 16384
+        }
+      ],
+      "load_boundaries_8k": true,
+      "liblist": [
+        "libimdUtil.so",
+        "libgen.so",
+        "libpthread.so",
+        "libimdFtrDB.so",
+        "librpcsvc.so",
+        "libXt.so",
+        "libX11.so.1",
+        "libCsup.so",
+        "libC.so.2",
+        "libc.so.1"
+      ],
+      "mips_rld_version": 1,
+      "mips_flags": "0x6c11"
+    },
+    "/usr/lib32/internal/libimdUtil.so": {
+      "path": "/usr/lib32/internal/libimdUtil.so",
+      "canonical_path": "/usr/lib32/internal/libimdUtil.so",
+      "bytes": 163152,
+      "sha256": "d170951e98b868cefda1906329e210db04f43672522cab686c13f2cbd80c949f",
+      "class": 32,
+      "endian": "big",
+      "machine": 8,
+      "abi": "n32",
+      "type": 3,
+      "flags": "0x20000022",
+      "entry": "0x9837264",
+      "interpreter": [],
+      "needed": [
+        "libgen.so",
+        "libm.so",
+        "libCsup.so",
+        "libC.so.2",
+        "libc.so.1"
+      ],
+      "rpath": [],
+      "soname": [
+        "libimdUtil.so"
+      ],
+      "loads": [
+        {
+          "offset": 0,
+          "address": 159580160,
+          "file_bytes": 69632,
+          "memory_bytes": 69632,
+          "flags": 5,
+          "alignment": 8192
+        },
+        {
+          "offset": 69632,
+          "address": 159715328,
+          "file_bytes": 8192,
+          "memory_bytes": 8192,
+          "flags": 6,
+          "alignment": 4096
+        }
+      ],
+      "load_boundaries_8k": false,
+      "liblist": [
+        "libgen.so",
+        "libm.so",
+        "libCsup.so",
+        "libC.so.2",
+        "libc.so.1"
+      ],
+      "mips_rld_version": 1,
+      "mips_flags": "0x5410"
+    },
+    "/usr/lib32/libC.so.2": {
+      "path": "/usr/lib32/libC.so.2",
+      "canonical_path": "/usr/lib32/libC.so.2",
+      "bytes": 809548,
+      "sha256": "e81c01921778d03148c45b66bdf7e935f49f7025a52f1f2ece5889e0c6eaf884",
+      "class": 32,
+      "endian": "big",
+      "machine": 8,
+      "abi": "n32",
+      "type": 3,
+      "flags": "0x20000022",
+      "entry": "0xadb1470",
+      "interpreter": [],
+      "needed": [
+        "libc.so.1",
+        "libm.so"
+      ],
+      "rpath": [],
+      "soname": [
+        "libC.so.2"
+      ],
+      "loads": [
+        {
+          "offset": 0,
+          "address": 182059008,
+          "file_bytes": 326168,
+          "memory_bytes": 326168,
+          "flags": 5,
+          "alignment": 65536
+        },
+        {
+          "offset": 327680,
+          "address": 182386688,
+          "file_bytes": 30288,
+          "memory_bytes": 34504,
+          "flags": 6,
+          "alignment": 16384
+        }
+      ],
+      "load_boundaries_8k": true,
+      "liblist": [
+        "libc.so.1",
+        "libm.so"
+      ],
+      "mips_rld_version": 1,
+      "mips_flags": "0x4c11"
+    },
+    "/usr/lib32/internal/libimdApp.so": {
+      "path": "/usr/lib32/internal/libimdApp.so",
+      "canonical_path": "/usr/lib32/internal/libimdApp.so",
+      "bytes": 268428,
+      "sha256": "8b6efc1714c72d4b2735e242012a94edc3cbc9361ab830ca3bc14736dd5a32ca",
+      "class": 32,
+      "endian": "big",
+      "machine": 8,
+      "abi": "n32",
+      "type": 3,
+      "flags": "0x20000022",
+      "entry": "0xd50fed0",
+      "interpreter": [],
+      "needed": [
+        "libimdIconPanel.so",
+        "libimdModel.so",
+        "libimdUtil.so",
+        "libimdXutil.so",
+        "libimdFtrDB.so",
+        "libimdFtrIcon.so",
+        "libgen.so",
+        "libvk.so.1",
+        "libSgm.so.1",
+        "libXm.so.1",
+        "libXt.so",
+        "libX11.so.1",
+        "libCsup.so",
+        "libC.so.2",
+        "libc.so.1"
+      ],
+      "rpath": [],
+      "soname": [
+        "libimdApp.so"
+      ],
+      "loads": [
+        {
+          "offset": 0,
+          "address": 223346688,
+          "file_bytes": 122880,
+          "memory_bytes": 122880,
+          "flags": 5,
+          "alignment": 16384
+        },
+        {
+          "offset": 131072,
+          "address": 223477760,
+          "file_bytes": 20480,
+          "memory_bytes": 20480,
+          "flags": 6,
+          "alignment": 16384
+        }
+      ],
+      "load_boundaries_8k": true,
+      "liblist": [
+        "libimdIconPanel.so",
+        "libimdModel.so",
+        "libimdUtil.so",
+        "libimdXutil.so",
+        "libimdFtrDB.so",
+        "libimdFtrIcon.so",
+        "libgen.so",
+        "libvk.so.1",
+        "libSgm.so.1",
+        "libXm.so.1",
+        "libXt.so",
+        "libX11.so.1",
+        "libCsup.so",
+        "libC.so.2",
+        "libc.so.1"
+      ],
+      "mips_rld_version": 1,
+      "mips_flags": "0x6410"
+    },
+    "/usr/lib32/internal/libimdFtrDB.so": {
+      "path": "/usr/lib32/internal/libimdFtrDB.so",
+      "canonical_path": "/usr/lib32/internal/libimdFtrDB.so",
+      "bytes": 248396,
+      "sha256": "ea57f287b178655dac04b6c06de953482ed23f95e30df816c16bf8cca8defb9f",
+      "class": 32,
+      "endian": "big",
+      "machine": 8,
+      "abi": "n32",
+      "type": 3,
+      "flags": "0x20000022",
+      "entry": "0xd409f80",
+      "interpreter": [],
+      "needed": [
+        "libC.so.2",
+        "libc.so.1"
+      ],
+      "rpath": [],
+      "soname": [
+        "libimdFtrDB.so"
+      ],
+      "loads": [
+        {
+          "offset": 0,
+          "address": 222298112,
+          "file_bytes": 131072,
+          "memory_bytes": 131072,
+          "flags": 5,
+          "alignment": 16384
+        },
+        {
+          "offset": 131072,
+          "address": 222429184,
+          "file_bytes": 8192,
+          "memory_bytes": 8192,
+          "flags": 6,
+          "alignment": 16384
+        }
+      ],
+      "load_boundaries_8k": true,
+      "liblist": [
+        "libC.so.2",
+        "libc.so.1"
+      ],
+      "mips_rld_version": 1,
+      "mips_flags": "0x6c11"
+    },
+    "/usr/lib32/internal/libimdFtrIcon.so": {
+      "path": "/usr/lib32/internal/libimdFtrIcon.so",
+      "canonical_path": "/usr/lib32/internal/libimdFtrIcon.so",
+      "bytes": 260308,
+      "sha256": "99c57009020d614ccb691075ebf6b8c4b0f08e31467e6eba34b978abaf293441",
+      "class": 32,
+      "endian": "big",
+      "machine": 8,
+      "abi": "n32",
+      "type": 3,
+      "flags": "0x20000022",
+      "entry": "0xd50dba4",
+      "interpreter": [],
+      "needed": [
+        "libimdFtrDB.so",
+        "libimdUtil.so",
+        "libXt.so",
+        "libXext.so",
+        "libGL.so",
+        "libGLU.so",
+        "libX11.so.1",
+        "libCsup.so",
+        "libC.so.2",
+        "libc.so.1"
+      ],
+      "rpath": [],
+      "soname": [
+        "libimdFtrIcon.so"
+      ],
+      "loads": [
+        {
+          "offset": 0,
+          "address": 223346688,
+          "file_bytes": 118784,
+          "memory_bytes": 118784,
+          "flags": 5,
+          "alignment": 16384
+        },
+        {
+          "offset": 131072,
+          "address": 223477760,
+          "file_bytes": 12288,
+          "memory_bytes": 12288,
+          "flags": 6,
+          "alignment": 16384
+        }
+      ],
+      "load_boundaries_8k": true,
+      "liblist": [
+        "libimdFtrDB.so",
+        "libimdUtil.so",
+        "libXt.so",
+        "libXext.so",
+        "libGL.so",
+        "libGLU.so",
+        "libX11.so.1",
+        "libCsup.so",
+        "libC.so.2",
+        "libc.so.1"
+      ],
+      "mips_rld_version": 1,
+      "mips_flags": "0x6410"
+    },
+    "/usr/lib32/internal/libimdXutil.so": {
+      "path": "/usr/lib32/internal/libimdXutil.so",
+      "canonical_path": "/usr/lib32/internal/libimdXutil.so",
+      "bytes": 750940,
+      "sha256": "70cde99e88b21c950df9e04a0313bc9931465177d888f59eb45181c74d58647f",
+      "class": 32,
+      "endian": "big",
+      "machine": 8,
+      "abi": "n32",
+      "type": 3,
+      "flags": "0x20000022",
+      "entry": "0xd51db8c",
+      "interpreter": [],
+      "needed": [
+        "libvk.so.1",
+        "libXm.so.1",
+        "libXt.so",
+        "libXext.so",
+        "libXpm.so.1",
+        "libXmu.so",
+        "libX11.so.1",
+        "libimdUtil.so",
+        "libgen.so",
+        "libimdFtrDB.so",
+        "libil.so",
+        "libifl.so",
+        "libCsup.so",
+        "libC.so.2",
+        "libc.so.1"
+      ],
+      "rpath": [],
+      "soname": [
+        "libimdXutil.so"
+      ],
+      "loads": [
+        {
+          "offset": 0,
+          "address": 223346688,
+          "file_bytes": 323584,
+          "memory_bytes": 323584,
+          "flags": 5,
+          "alignment": 16384
+        },
+        {
+          "offset": 327680,
+          "address": 223674368,
+          "file_bytes": 36864,
+          "memory_bytes": 37784,
+          "flags": 6,
+          "alignment": 16384
+        }
+      ],
+      "load_boundaries_8k": true,
+      "liblist": [
+        "libvk.so.1",
+        "libXm.so.1",
+        "libXt.so",
+        "libXext.so",
+        "libXpm.so.1",
+        "libXmu.so",
+        "libX11.so.1",
+        "libimdUtil.so",
+        "libgen.so",
+        "libimdFtrDB.so",
+        "libil.so",
+        "libifl.so",
+        "libCsup.so",
+        "libC.so.2",
+        "libc.so.1"
+      ],
+      "mips_rld_version": 1,
+      "mips_flags": "0x6410"
+    },
+    "/usr/lib32/internal/libimdIconPanel.so": {
+      "path": "/usr/lib32/internal/libimdIconPanel.so",
+      "canonical_path": "/usr/lib32/internal/libimdIconPanel.so",
+      "bytes": 899952,
+      "sha256": "e3ddf13741d2e8586b942cc47d69907d179eafaa9b7b1a8138e6218a8b2d032e",
+      "class": 32,
+      "endian": "big",
+      "machine": 8,
+      "abi": "n32",
+      "type": 3,
+      "flags": "0x20000022",
+      "entry": "0xd527a34",
+      "interpreter": [],
+      "needed": [
+        "libimdModel.so",
+        "libimdUtil.so",
+        "libimdFtrDB.so",
+        "libimdFtrIcon.so",
+        "libimdXutil.so",
+        "libvk.so.1",
+        "libSgm.so.1",
+        "libXm.so.1",
+        "libXt.so",
+        "libGLU.so",
+        "libGL.so",
+        "libXext.so",
+        "libX11.so.1",
+        "libCsup.so",
+        "libC.so.2",
+        "libc.so.1"
+      ],
+      "rpath": [],
+      "soname": [
+        "libimdIconPanel.so"
+      ],
+      "loads": [
+        {
+          "offset": 0,
+          "address": 223346688,
+          "file_bytes": 409600,
+          "memory_bytes": 409600,
+          "flags": 5,
+          "alignment": 16384
+        },
+        {
+          "offset": 409600,
+          "address": 223756288,
+          "file_bytes": 57344,
+          "memory_bytes": 57344,
+          "flags": 6,
+          "alignment": 16384
+        }
+      ],
+      "load_boundaries_8k": true,
+      "liblist": [
+        "libimdModel.so",
+        "libimdUtil.so",
+        "libimdFtrDB.so",
+        "libimdFtrIcon.so",
+        "libimdXutil.so",
+        "libvk.so.1",
+        "libSgm.so.1",
+        "libXm.so.1",
+        "libXt.so",
+        "libGLU.so",
+        "libGL.so",
+        "libXext.so",
+        "libX11.so.1",
+        "libCsup.so",
+        "libC.so.2",
+        "libc.so.1"
+      ],
+      "mips_rld_version": 1,
+      "mips_flags": "0x6410"
+    },
+    "/usr/lib32/internal/libMediaViewer.so": {
+      "path": "/usr/lib32/internal/libMediaViewer.so",
+      "canonical_path": "/usr/lib32/internal/libMediaViewer.so",
+      "bytes": 95260,
+      "sha256": "eba4dc52d3286cb1d55e0cd4e0f344f3d1022b1dcc721cd5cfeecadb70133d73",
+      "class": 32,
+      "endian": "big",
+      "machine": 8,
+      "abi": "n32",
+      "type": 3,
+      "flags": "0x20000022",
+      "entry": "0x20049a4",
+      "interpreter": [],
+      "needed": [
+        "libimdFtrDB.so",
+        "libvk.so.1",
+        "libXm.so.1",
+        "libXt.so",
+        "libX11.so.1",
+        "libCsup.so",
+        "libC.so.2",
+        "libc.so.1"
+      ],
+      "rpath": [],
+      "soname": [
+        "libMediaViewer.so"
+      ],
+      "loads": [
+        {
+          "offset": 0,
+          "address": 33554432,
+          "file_bytes": 40960,
+          "memory_bytes": 40960,
+          "flags": 5,
+          "alignment": 16384
+        },
+        {
+          "offset": 49152,
+          "address": 33603584,
+          "file_bytes": 8192,
+          "memory_bytes": 8192,
+          "flags": 6,
+          "alignment": 16384
+        }
+      ],
+      "load_boundaries_8k": true,
+      "liblist": [
+        "libimdFtrDB.so",
+        "libvk.so.1",
+        "libXm.so.1",
+        "libXt.so",
+        "libX11.so.1",
+        "libCsup.so",
+        "libC.so.2",
+        "libc.so.1"
+      ],
+      "mips_rld_version": 1,
+      "mips_flags": "0x6410"
+    },
+    "/usr/lib32/libSgm.so.1": {
+      "path": "/usr/lib32/libSgm.so.1",
+      "canonical_path": "/usr/lib32/libSgm.so.1",
+      "bytes": 1092828,
+      "sha256": "fc0cc9605fe443e0348cbac0205e607f1ac984771e1e65192d4e5674e9f893c4",
+      "class": 32,
+      "endian": "big",
+      "machine": 8,
+      "abi": "n32",
+      "type": 3,
+      "flags": "0x20000022",
+      "entry": "0xb01e7e0",
+      "interpreter": [],
+      "needed": [
+        "libXm.so.1",
+        "libXt.so",
+        "libX11.so.1",
+        "libGLU.so",
+        "libGL.so",
+        "libgl.so",
+        "libC.so.2",
+        "libc.so.1",
+        "libm.so"
+      ],
+      "rpath": [],
+      "soname": [
+        "libSgm.so.1"
+      ],
+      "loads": [
+        {
+          "offset": 0,
+          "address": 184549376,
+          "file_bytes": 577536,
+          "memory_bytes": 577536,
+          "flags": 5,
+          "alignment": 16384
+        },
+        {
+          "offset": 589824,
+          "address": 185139200,
+          "file_bytes": 49152,
+          "memory_bytes": 56069,
+          "flags": 6,
+          "alignment": 16384
+        }
+      ],
+      "load_boundaries_8k": true,
+      "liblist": [
+        "libXm.so.1",
+        "libXt.so",
+        "libX11.so.1",
+        "libGLU.so",
+        "libGL.so",
+        "libgl.so",
+        "libC.so.2",
+        "libc.so.1",
+        "libm.so"
+      ],
+      "mips_rld_version": 1,
+      "mips_flags": "0x4410"
+    },
+    "/usr/lib32/libgen.so": {
+      "path": "/usr/lib32/libgen.so",
+      "canonical_path": "/usr/lib32/libgen.so",
+      "bytes": 93772,
+      "sha256": "a3102584a1929b91e4db3428b8e022fff3cff690ec646dd9edbf094e7ad28d7d",
+      "class": 32,
+      "endian": "big",
+      "machine": 8,
+      "abi": "n32",
+      "type": 3,
+      "flags": "0x20000022",
+      "entry": "0xf912990",
+      "interpreter": [],
+      "needed": [
+        "libc.so.1"
+      ],
+      "rpath": [],
+      "soname": [
+        "libgen.so"
+      ],
+      "loads": [
+        {
+          "offset": 0,
+          "address": 261160960,
+          "file_bytes": 40960,
+          "memory_bytes": 40960,
+          "flags": 5,
+          "alignment": 16384
+        },
+        {
+          "offset": 49152,
+          "address": 261210112,
+          "file_bytes": 4096,
+          "memory_bytes": 5620,
+          "flags": 6,
+          "alignment": 16384
+        }
+      ],
+      "load_boundaries_8k": true,
+      "liblist": [
+        "libc.so.1"
+      ],
+      "mips_rld_version": 1,
+      "mips_flags": "0x6411"
+    },
+    "/usr/lib32/libXext.so": {
+      "path": "/usr/lib32/libXext.so",
+      "canonical_path": "/usr/lib32/libXext.so",
+      "bytes": 330768,
+      "sha256": "1d6a94a6602428a459b044e8564203c436815a9a8b3804ee3027503131defc4a",
+      "class": 32,
+      "endian": "big",
+      "machine": 8,
+      "abi": "n32",
+      "type": 3,
+      "flags": "0x20000022",
+      "entry": "0xf70988c",
+      "interpreter": [],
+      "needed": [
+        "libX11.so.1",
+        "libc.so.1"
+      ],
+      "rpath": [],
+      "soname": [
+        "libXext.so"
+      ],
+      "loads": [
+        {
+          "offset": 0,
+          "address": 258998272,
+          "file_bytes": 163840,
+          "memory_bytes": 163840,
+          "flags": 5,
+          "alignment": 16384
+        },
+        {
+          "offset": 163840,
+          "address": 259162112,
+          "file_bytes": 4096,
+          "memory_bytes": 4096,
+          "flags": 6,
+          "alignment": 16384
+        }
+      ],
+      "load_boundaries_8k": true,
+      "liblist": [
+        "libX11.so.1",
+        "libc.so.1"
+      ],
+      "mips_rld_version": 1,
+      "mips_flags": "0x6c11"
+    },
+    "/usr/lib32/libmediaclient.so": {
+      "path": "/usr/lib32/libmediaclient.so",
+      "canonical_path": "/usr/lib32/libmediaclient.so",
+      "bytes": 30672,
+      "sha256": "7c7e993e060f61c1aad26182fd498af35467ea35fcafbed59a880f6faeef4256",
+      "class": 32,
+      "endian": "big",
+      "machine": 8,
+      "abi": "n32",
+      "type": 3,
+      "flags": "0x20000022",
+      "entry": "0xd0b0f6c",
+      "interpreter": [],
+      "needed": [
+        "libc.so.1"
+      ],
+      "rpath": [],
+      "soname": [
+        "libmediaclient.so"
+      ],
+      "loads": [
+        {
+          "offset": 0,
+          "address": 218824704,
+          "file_bytes": 12288,
+          "memory_bytes": 12288,
+          "flags": 5,
+          "alignment": 16384
+        },
+        {
+          "offset": 16384,
+          "address": 218841088,
+          "file_bytes": 4096,
+          "memory_bytes": 4096,
+          "flags": 6,
+          "alignment": 16384
+        }
+      ],
+      "load_boundaries_8k": true,
+      "liblist": [
+        "libc.so.1"
+      ],
+      "mips_rld_version": 1,
+      "mips_flags": "0x6c11"
+    },
+    "/usr/lib32/libvk.so.1": {
+      "path": "/usr/lib32/libvk.so.1",
+      "canonical_path": "/usr/lib32/libvk.so.1",
+      "bytes": 1660224,
+      "sha256": "92818537abf4d09f5501d15f24ce024f1c4ad3ebbea2f18683547f71d0f56991",
+      "class": 32,
+      "endian": "big",
+      "machine": 8,
+      "abi": "n32",
+      "type": 3,
+      "flags": "0x20000022",
+      "entry": "0xd53b188",
+      "interpreter": [],
+      "needed": [
+        "libSgm.so.1",
+        "libXpm.so.1",
+        "libXmu.so",
+        "libXm.so.1",
+        "libXt.so",
+        "libX11.so.1",
+        "libm.so",
+        "libCsup.so",
+        "libC.so.2",
+        "libc.so.1"
+      ],
+      "rpath": [],
+      "soname": [
+        "libvk.so.1"
+      ],
+      "loads": [
+        {
+          "offset": 0,
+          "address": 223346688,
+          "file_bytes": 724992,
+          "memory_bytes": 724992,
+          "flags": 5,
+          "alignment": 16384
+        },
+        {
+          "offset": 737280,
+          "address": 224083968,
+          "file_bytes": 102400,
+          "memory_bytes": 110622,
+          "flags": 6,
+          "alignment": 16384
+        }
+      ],
+      "load_boundaries_8k": true,
+      "liblist": [
+        "libSgm.so.1",
+        "libXpm.so.1",
+        "libXmu.so",
+        "libXm.so.1",
+        "libXt.so",
+        "libX11.so.1",
+        "libm.so",
+        "libCsup.so",
+        "libC.so.2",
+        "libc.so.1"
+      ],
+      "mips_rld_version": 1,
+      "mips_flags": "0x6410"
+    },
+    "/usr/lib32/libXt.so": {
+      "path": "/usr/lib32/libXt.so",
+      "canonical_path": "/usr/lib32/libXt.so",
+      "bytes": 1311516,
+      "sha256": "452b4a3ae72728825c382896e45ca214ea750721d9586d1db263189063b5fb30",
+      "class": 32,
+      "endian": "big",
+      "machine": 8,
+      "abi": "n32",
+      "type": 3,
+      "flags": "0x20000022",
+      "entry": "0xf4234d8",
+      "interpreter": [],
+      "needed": [
+        "libgen.so",
+        "libX11.so.1",
+        "libc.so.1"
+      ],
+      "rpath": [],
+      "soname": [
+        "libXt.so"
+      ],
+      "loads": [
+        {
+          "offset": 0,
+          "address": 255852544,
+          "file_bytes": 667648,
+          "memory_bytes": 667648,
+          "flags": 5,
+          "alignment": 16384
+        },
+        {
+          "offset": 671744,
+          "address": 256524288,
+          "file_bytes": 49152,
+          "memory_bytes": 53896,
+          "flags": 6,
+          "alignment": 16384
+        }
+      ],
+      "load_boundaries_8k": true,
+      "liblist": [
+        "libgen.so",
+        "libX11.so.1",
+        "libc.so.1"
+      ],
+      "mips_rld_version": 1,
+      "mips_flags": "0x6c11"
+    },
+    "/usr/lib32/libXm.so.1": {
+      "path": "/usr/lib32/libXm.so.1",
+      "canonical_path": "/usr/lib32/libXm.so.1",
+      "bytes": 3126652,
+      "sha256": "3c95e7c7fa9d26bde299a4313ce4cd03e749a90c7edf0bc42a3af3697491030c",
+      "class": 32,
+      "endian": "big",
+      "machine": 8,
+      "abi": "n32",
+      "type": 3,
+      "flags": "0x20000022",
+      "entry": "0xb281dd0",
+      "interpreter": [],
+      "needed": [
+        "libXt.so",
+        "libX11.so.1",
+        "libc.so.1",
+        "libgen.so"
+      ],
+      "rpath": [],
+      "soname": [
+        "libXm.so.1"
+      ],
+      "loads": [
+        {
+          "offset": 0,
+          "address": 186843136,
+          "file_bytes": 1613824,
+          "memory_bytes": 1613824,
+          "flags": 5,
+          "alignment": 16384
+        },
+        {
+          "offset": 1622016,
+          "address": 188465152,
+          "file_bytes": 151552,
+          "memory_bytes": 153944,
+          "flags": 6,
+          "alignment": 16384
+        }
+      ],
+      "load_boundaries_8k": true,
+      "liblist": [
+        "libXt.so",
+        "libX11.so.1",
+        "libc.so.1",
+        "libgen.so"
+      ],
+      "mips_rld_version": 1,
+      "mips_flags": "0x6c11"
+    },
+    "/usr/lib32/libX11.so.1": {
+      "path": "/usr/lib32/libX11.so.1",
+      "canonical_path": "/usr/lib32/libX11.so.1",
+      "bytes": 2680312,
+      "sha256": "2e3287c4842eb4149c9f839229093a28c180edf43dcf1f28b68102cdcf989642",
+      "class": 32,
+      "endian": "big",
+      "machine": 8,
+      "abi": "n32",
+      "type": 3,
+      "flags": "0x20000022",
+      "entry": "0xf602818",
+      "interpreter": [],
+      "needed": [
+        "libc.so.1"
+      ],
+      "rpath": [],
+      "soname": [
+        "libX11.so.1"
+      ],
+      "loads": [
+        {
+          "offset": 0,
+          "address": 257687552,
+          "file_bytes": 1318912,
+          "memory_bytes": 1318912,
+          "flags": 5,
+          "alignment": 16384
+        },
+        {
+          "offset": 1327104,
+          "address": 259014656,
+          "file_bytes": 110592,
+          "memory_bytes": 111776,
+          "flags": 6,
+          "alignment": 16384
+        }
+      ],
+      "load_boundaries_8k": true,
+      "liblist": [
+        "libc.so.1"
+      ],
+      "mips_rld_version": 1,
+      "mips_flags": "0x6c11"
+    },
+    "/usr/lib32/libCsup.so": {
+      "path": "/usr/lib32/libCsup.so",
+      "canonical_path": "/usr/lib32/libCsup.so",
+      "bytes": 18596,
+      "sha256": "f3120e7dccf58919e45f7cff503e0686059fdb7f7facfee1ad32327f081c3fb0",
+      "class": 32,
+      "endian": "big",
+      "machine": 8,
+      "abi": "n32",
+      "type": 3,
+      "flags": "0x20000022",
+      "entry": "0xac005c0",
+      "interpreter": [],
+      "needed": [],
+      "rpath": [],
+      "soname": [
+        "libCsup.so"
+      ],
+      "loads": [
+        {
+          "offset": 0,
+          "address": 180355072,
+          "file_bytes": 1480,
+          "memory_bytes": 1480,
+          "flags": 5,
+          "alignment": 65536
+        },
+        {
+          "offset": 16384,
+          "address": 180371456,
+          "file_bytes": 116,
+          "memory_bytes": 116,
+          "flags": 6,
+          "alignment": 16384
+        }
+      ],
+      "load_boundaries_8k": true,
+      "liblist": [],
+      "mips_rld_version": 1,
+      "mips_flags": "0x6411"
+    },
+    "/usr/lib32/libpthread.so": {
+      "path": "/usr/lib32/libpthread.so",
+      "canonical_path": "/usr/lib32/libpthread.so",
+      "bytes": 192576,
+      "sha256": "03039d6e509aab1495046ab940174a36cbd27d6a2b0e0e2f4826f633ae8c9a70",
+      "class": 32,
+      "endian": "big",
+      "machine": 8,
+      "abi": "n32",
+      "type": 3,
+      "flags": "0x20000022",
+      "entry": "0xc0445e4",
+      "interpreter": [],
+      "needed": [
+        "libc.so.1"
+      ],
+      "rpath": [],
+      "soname": [
+        "libpthread.so"
+      ],
+      "loads": [
+        {
+          "offset": 0,
+          "address": 201588736,
+          "file_bytes": 86016,
+          "memory_bytes": 86016,
+          "flags": 5,
+          "alignment": 16384
+        },
+        {
+          "offset": 98304,
+          "address": 201687040,
+          "file_bytes": 4096,
+          "memory_bytes": 4560,
+          "flags": 6,
+          "alignment": 16384
+        }
+      ],
+      "load_boundaries_8k": true,
+      "liblist": [
+        "libc.so.1"
+      ],
+      "mips_rld_version": 1,
+      "mips_flags": "0x4c11"
+    },
+    "/usr/lib32/librpcsvc.so": {
+      "path": "/usr/lib32/librpcsvc.so",
+      "canonical_path": "/usr/lib32/librpcsvc.so",
+      "bytes": 71416,
+      "sha256": "4cd8b9b4e1ca56875b0986a73dc7819c7dbdc0792d756ee4a38369ad41d60272",
+      "class": 32,
+      "endian": "big",
+      "machine": 8,
+      "abi": "n32",
+      "type": 3,
+      "flags": "0x20000022",
+      "entry": "0xf8d2194",
+      "interpreter": [],
+      "needed": [
+        "libc.so.1"
+      ],
+      "rpath": [],
+      "soname": [
+        "librpcsvc.so"
+      ],
+      "loads": [
+        {
+          "offset": 0,
+          "address": 260898816,
+          "file_bytes": 28672,
+          "memory_bytes": 28672,
+          "flags": 5,
+          "alignment": 16384
+        },
+        {
+          "offset": 32768,
+          "address": 260931584,
+          "file_bytes": 4096,
+          "memory_bytes": 4096,
+          "flags": 6,
+          "alignment": 16384
+        }
+      ],
+      "load_boundaries_8k": true,
+      "liblist": [
+        "libc.so.1"
+      ],
+      "mips_rld_version": 1,
+      "mips_flags": "0x6411"
+    },
+    "/usr/lib32/libm.so": {
+      "path": "/usr/lib32/libm.so",
+      "canonical_path": "/usr/lib32/mips3/libm.so",
+      "bytes": 839216,
+      "sha256": "8ab1b4e569cfb55ddb181ccf31b0a4a28a699894a55b6d8e778b8c15508ab4d0",
+      "class": 32,
+      "endian": "big",
+      "machine": 8,
+      "abi": "n32",
+      "type": 3,
+      "flags": "0x20000022",
+      "entry": "0x2228900",
+      "interpreter": [],
+      "needed": [
+        "libc.so.1"
+      ],
+      "rpath": [],
+      "soname": [
+        "libm.so"
+      ],
+      "loads": [
+        {
+          "offset": 0,
+          "address": 35782656,
+          "file_bytes": 385500,
+          "memory_bytes": 385500,
+          "flags": 5,
+          "alignment": 65536
+        },
+        {
+          "offset": 393216,
+          "address": 36175872,
+          "file_bytes": 112856,
+          "memory_bytes": 114980,
+          "flags": 6,
+          "alignment": 16384
+        }
+      ],
+      "load_boundaries_8k": true,
+      "liblist": [
+        "libc.so.1"
+      ],
+      "mips_rld_version": 1,
+      "mips_flags": "0x6c11"
+    },
+    "/usr/lib32/libGL.so": {
+      "path": "/usr/lib32/libGL.so",
+      "canonical_path": "/usr/gfx/arch/IP22NG132/libGL.so",
+      "bytes": 516344,
+      "sha256": "4ce211808b0baa3a2ac9d596c63be2e769acc8554fc82177019fd62d48445597",
+      "class": 32,
+      "endian": "big",
+      "machine": 8,
+      "abi": "n32",
+      "type": 3,
+      "flags": "0x20000022",
+      "entry": "0xd80d884",
+      "interpreter": [],
+      "needed": [
+        "libGLcore.so",
+        "libXsgivc.so",
+        "libXext.so",
+        "libX11.so.1",
+        "libc.so.1"
+      ],
+      "rpath": [],
+      "soname": [
+        "libGL.so"
+      ],
+      "loads": [
+        {
+          "offset": 0,
+          "address": 226492416,
+          "file_bytes": 274432,
+          "memory_bytes": 274432,
+          "flags": 5,
+          "alignment": 16384
+        },
+        {
+          "offset": 278528,
+          "address": 226770944,
+          "file_bytes": 12288,
+          "memory_bytes": 12340,
+          "flags": 6,
+          "alignment": 16384
+        }
+      ],
+      "load_boundaries_8k": true,
+      "liblist": [
+        "libGLcore.so",
+        "libXsgivc.so",
+        "libXext.so",
+        "libX11.so.1",
+        "libc.so.1"
+      ],
+      "mips_rld_version": 1,
+      "mips_flags": "0x7c11"
+    },
+    "/usr/lib32/libGLU.so": {
+      "path": "/usr/lib32/libGLU.so",
+      "canonical_path": "/usr/lib32/libGLU.so",
+      "bytes": 971536,
+      "sha256": "287842d59919ae332be7305e46e223b3599e9f38c3c9b5118906d7ff3ab87294",
+      "class": 32,
+      "endian": "big",
+      "machine": 8,
+      "abi": "n32",
+      "type": 3,
+      "flags": "0x20000022",
+      "entry": "0xa814fb4",
+      "interpreter": [],
+      "needed": [
+        "libGL.so",
+        "libm.so",
+        "libc.so.1",
+        "libC.so.2"
+      ],
+      "rpath": [],
+      "soname": [
+        "libGLU.so"
+      ],
+      "loads": [
+        {
+          "offset": 0,
+          "address": 176160768,
+          "file_bytes": 507904,
+          "memory_bytes": 507904,
+          "flags": 5,
+          "alignment": 16384
+        },
+        {
+          "offset": 507904,
+          "address": 176668672,
+          "file_bytes": 45056,
+          "memory_bytes": 45056,
+          "flags": 6,
+          "alignment": 16384
+        }
+      ],
+      "load_boundaries_8k": true,
+      "liblist": [
+        "libGL.so",
+        "libm.so",
+        "libc.so.1",
+        "libC.so.2"
+      ],
+      "mips_rld_version": 1,
+      "mips_flags": "0x6410"
+    },
+    "/usr/lib32/libXpm.so.1": {
+      "path": "/usr/lib32/libXpm.so.1",
+      "canonical_path": "/usr/lib32/libXpm.so.1",
+      "bytes": 125444,
+      "sha256": "a7ea5a37f84b6c5520404cfa810d98c4c14b618acecaf0b17608fa28c5e53896",
+      "class": 32,
+      "endian": "big",
+      "machine": 8,
+      "abi": "n32",
+      "type": 3,
+      "flags": "0x20000022",
+      "entry": "0xf731dd0",
+      "interpreter": [],
+      "needed": [
+        "libX11.so.1",
+        "libc.so.1"
+      ],
+      "rpath": [],
+      "soname": [
+        "libXpm.so.1"
+      ],
+      "loads": [
+        {
+          "offset": 0,
+          "address": 259194880,
+          "file_bytes": 61440,
+          "memory_bytes": 61440,
+          "flags": 5,
+          "alignment": 8192
+        },
+        {
+          "offset": 61440,
+          "address": 259321856,
+          "file_bytes": 4096,
+          "memory_bytes": 4096,
+          "flags": 6,
+          "alignment": 4096
+        }
+      ],
+      "load_boundaries_8k": false,
+      "liblist": [
+        "libX11.so.1",
+        "libc.so.1"
+      ],
+      "mips_rld_version": 1,
+      "mips_flags": "0x6c11"
+    },
+    "/usr/lib32/libXmu.so": {
+      "path": "/usr/lib32/libXmu.so",
+      "canonical_path": "/usr/lib32/libXmu.so",
+      "bytes": 222600,
+      "sha256": "42cc93453cd776caadfb5e7f7740ea26a87d8b931fb6e0febb7f716063eb28c7",
+      "class": 32,
+      "endian": "big",
+      "machine": 8,
+      "abi": "n32",
+      "type": 3,
+      "flags": "0x20000022",
+      "entry": "0xf406348",
+      "interpreter": [],
+      "needed": [
+        "libXt.so",
+        "libXext.so",
+        "libX11.so.1",
+        "libc.so.1",
+        "libgen.so"
+      ],
+      "rpath": [],
+      "soname": [
+        "libXmu.so"
+      ],
+      "loads": [
+        {
+          "offset": 0,
+          "address": 255852544,
+          "file_bytes": 94208,
+          "memory_bytes": 94208,
+          "flags": 5,
+          "alignment": 16384
+        },
+        {
+          "offset": 98304,
+          "address": 255950848,
+          "file_bytes": 4096,
+          "memory_bytes": 4096,
+          "flags": 6,
+          "alignment": 16384
+        }
+      ],
+      "load_boundaries_8k": true,
+      "liblist": [
+        "libXt.so",
+        "libXext.so",
+        "libX11.so.1",
+        "libc.so.1",
+        "libgen.so"
+      ],
+      "mips_rld_version": 1,
+      "mips_flags": "0x6411"
+    },
+    "/usr/lib32/libil.so": {
+      "path": "/usr/lib32/libil.so",
+      "canonical_path": "/usr/lib32/libil.so",
+      "bytes": 4767736,
+      "sha256": "a09cb4aea1be804fc9d550a6b1f59b2e8ffac3a52520a10006d44cab2d32c1e2",
+      "class": 32,
+      "endian": "big",
+      "machine": 8,
+      "abi": "n32",
+      "type": 3,
+      "flags": "0x20000022",
+      "entry": "0xdc69de4",
+      "interpreter": [],
+      "needed": [
+        "libifl.so",
+        "libm.so",
+        "libGL.so",
+        "libXext.so",
+        "libX11.so.1",
+        "libCsup.so",
+        "libC.so.2",
+        "libc.so.1"
+      ],
+      "rpath": [],
+      "soname": [
+        "libil.so"
+      ],
+      "loads": [
+        {
+          "offset": 0,
+          "address": 230686720,
+          "file_bytes": 2310144,
+          "memory_bytes": 2310144,
+          "flags": 5,
+          "alignment": 16384
+        },
+        {
+          "offset": 2310144,
+          "address": 232996864,
+          "file_bytes": 237568,
+          "memory_bytes": 239358,
+          "flags": 6,
+          "alignment": 16384
+        }
+      ],
+      "load_boundaries_8k": true,
+      "liblist": [
+        "libifl.so",
+        "libm.so",
+        "libGL.so",
+        "libXext.so",
+        "libX11.so.1",
+        "libCsup.so",
+        "libC.so.2",
+        "libc.so.1"
+      ],
+      "mips_rld_version": 1,
+      "mips_flags": "0x6410"
+    },
+    "/usr/lib32/libifl.so": {
+      "path": "/usr/lib32/libifl.so",
+      "canonical_path": "/usr/lib32/libifl.so",
+      "bytes": 293456,
+      "sha256": "1e2840da9add9994ef4a28a60b96ce5adbc3162b7543abc063dd9cbbef3139fd",
+      "class": 32,
+      "endian": "big",
+      "machine": 8,
+      "abi": "n32",
+      "type": 3,
+      "flags": "0x20000022",
+      "entry": "0xdc06d44",
+      "interpreter": [],
+      "needed": [
+        "libm.so",
+        "libCsup.so",
+        "libC.so.2",
+        "libc.so.1"
+      ],
+      "rpath": [],
+      "soname": [
+        "libifl.so"
+      ],
+      "loads": [
+        {
+          "offset": 0,
+          "address": 230686720,
+          "file_bytes": 147456,
+          "memory_bytes": 147456,
+          "flags": 5,
+          "alignment": 16384
+        },
+        {
+          "offset": 147456,
+          "address": 230834176,
+          "file_bytes": 16384,
+          "memory_bytes": 16384,
+          "flags": 6,
+          "alignment": 16384
+        }
+      ],
+      "load_boundaries_8k": true,
+      "liblist": [
+        "libm.so",
+        "libCsup.so",
+        "libC.so.2",
+        "libc.so.1"
+      ],
+      "mips_rld_version": 1,
+      "mips_flags": "0x6410"
+    },
+    "/usr/lib32/libgl.so": {
+      "path": "/usr/lib32/libgl.so",
+      "canonical_path": "/usr/gfx/arch/IP22NG132/libgl.so",
+      "bytes": 2019824,
+      "sha256": "96349d52e132fb19fd2f016b66f50a1a0765d788673375181df0f3c130e298ea",
+      "class": 32,
+      "endian": "big",
+      "machine": 8,
+      "abi": "n32",
+      "type": 3,
+      "flags": "0x20000022",
+      "entry": "0xec2f114",
+      "interpreter": [],
+      "needed": [
+        "libX11.so.1",
+        "libXi.so",
+        "libXext.so",
+        "libc.so.1"
+      ],
+      "rpath": [],
+      "soname": [
+        "libgl.so"
+      ],
+      "loads": [
+        {
+          "offset": 0,
+          "address": 247463936,
+          "file_bytes": 917504,
+          "memory_bytes": 917504,
+          "flags": 5,
+          "alignment": 16384
+        },
+        {
+          "offset": 917504,
+          "address": 248381440,
+          "file_bytes": 53248,
+          "memory_bytes": 158136,
+          "flags": 6,
+          "alignment": 16384
+        }
+      ],
+      "load_boundaries_8k": true,
+      "liblist": [
+        "libX11.so.1",
+        "libXi.so",
+        "libXext.so",
+        "libc.so.1"
+      ],
+      "mips_rld_version": 1,
+      "mips_flags": "0x4c11"
+    },
+    "/usr/lib32/libGLcore.so": {
+      "path": "/usr/lib32/libGLcore.so",
+      "canonical_path": "/usr/gfx/arch/IP22NG132/libGLcore.so",
+      "bytes": 2296464,
+      "sha256": "14d736eeb97e9f117f969336b98055912591e7d427f7bfea57ecae6e918752a4",
+      "class": 32,
+      "endian": "big",
+      "machine": 8,
+      "abi": "n32",
+      "type": 3,
+      "flags": "0x20000022",
+      "entry": "0xd92eee4",
+      "interpreter": [],
+      "needed": [
+        "libm.so",
+        "libc.so.1"
+      ],
+      "rpath": [],
+      "soname": [
+        "libGLcore.so"
+      ],
+      "loads": [
+        {
+          "offset": 0,
+          "address": 227540992,
+          "file_bytes": 1183744,
+          "memory_bytes": 1183744,
+          "flags": 5,
+          "alignment": 16384
+        },
+        {
+          "offset": 1196032,
+          "address": 228737024,
+          "file_bytes": 28672,
+          "memory_bytes": 113096,
+          "flags": 6,
+          "alignment": 16384
+        }
+      ],
+      "load_boundaries_8k": true,
+      "liblist": [
+        "libm.so",
+        "libc.so.1"
+      ],
+      "mips_rld_version": 1,
+      "mips_flags": "0x4c11"
+    },
+    "/usr/lib32/libXsgivc.so": {
+      "path": "/usr/lib32/libXsgivc.so",
+      "canonical_path": "/usr/lib32/libXsgivc.so",
+      "bytes": 79804,
+      "sha256": "2704330d4c16b56ab650456ae0f3a5c1cfc9213eaaf014817e4e6dc68b075606",
+      "class": 32,
+      "endian": "big",
+      "machine": 8,
+      "abi": "n32",
+      "type": 3,
+      "flags": "0x20000022",
+      "entry": "0xf4029c8",
+      "interpreter": [],
+      "needed": [
+        "libXext.so",
+        "libX11.so.1",
+        "libc.so.1"
+      ],
+      "rpath": [],
+      "soname": [
+        "libXsgivc.so"
+      ],
+      "loads": [
+        {
+          "offset": 0,
+          "address": 255852544,
+          "file_bytes": 40960,
+          "memory_bytes": 40960,
+          "flags": 5,
+          "alignment": 16384
+        },
+        {
+          "offset": 49152,
+          "address": 255901696,
+          "file_bytes": 4096,
+          "memory_bytes": 4096,
+          "flags": 6,
+          "alignment": 16384
+        }
+      ],
+      "load_boundaries_8k": true,
+      "liblist": [
+        "libXext.so",
+        "libX11.so.1",
+        "libc.so.1"
+      ],
+      "mips_rld_version": 1,
+      "mips_flags": "0x6c11"
+    },
+    "/usr/lib32/libXi.so": {
+      "path": "/usr/lib32/libXi.so",
+      "canonical_path": "/usr/lib32/libXi.so",
+      "bytes": 140228,
+      "sha256": "c8535479fccd8d5791fc79a8539fcc5b1448d73fe3748e4bde0a2e71ab65a18a",
+      "class": 32,
+      "endian": "big",
+      "machine": 8,
+      "abi": "n32",
+      "type": 3,
+      "flags": "0x20000022",
+      "entry": "0xf402494",
+      "interpreter": [],
+      "needed": [
+        "libXext.so",
+        "libX11.so.1",
+        "libc.so.1"
+      ],
+      "rpath": [],
+      "soname": [
+        "libXi.so"
+      ],
+      "loads": [
+        {
+          "offset": 0,
+          "address": 255852544,
+          "file_bytes": 40960,
+          "memory_bytes": 40960,
+          "flags": 5,
+          "alignment": 16384
+        },
+        {
+          "offset": 49152,
+          "address": 255901696,
+          "file_bytes": 4096,
+          "memory_bytes": 4096,
+          "flags": 6,
+          "alignment": 16384
+        }
+      ],
+      "load_boundaries_8k": true,
+      "liblist": [
+        "libXext.so",
+        "libX11.so.1",
+        "libc.so.1"
+      ],
+      "mips_rld_version": 1,
+      "mips_flags": "0x6c11"
+    }
+  },
+  "dependencies": [
+    {
+      "source": "/usr/sbin/fm",
+      "needed": "libimdModel.so",
+      "selected": "/usr/lib32/internal/libimdModel.so",
+      "searched": [
+        "/usr/lib32/libimdModel.so",
+        "/usr/lib32/internal/libimdModel.so",
+        "/lib32/libimdModel.so",
+        "/opt/lib32/libimdModel.so"
+      ]
+    },
+    {
+      "source": "/usr/sbin/fm",
+      "needed": "libimdUtil.so",
+      "selected": "/usr/lib32/internal/libimdUtil.so",
+      "searched": [
+        "/usr/lib32/libimdUtil.so",
+        "/usr/lib32/internal/libimdUtil.so",
+        "/lib32/libimdUtil.so",
+        "/opt/lib32/libimdUtil.so"
+      ]
+    },
+    {
+      "source": "/usr/sbin/fm",
+      "needed": "libC.so.2",
+      "selected": "/usr/lib32/libC.so.2",
+      "searched": [
+        "/usr/lib32/libC.so.2",
+        "/usr/lib32/internal/libC.so.2",
+        "/lib32/libC.so.2",
+        "/opt/lib32/libC.so.2"
+      ]
+    },
+    {
+      "source": "/usr/sbin/fm",
+      "needed": "libimdApp.so",
+      "selected": "/usr/lib32/internal/libimdApp.so",
+      "searched": [
+        "/usr/lib32/libimdApp.so",
+        "/usr/lib32/internal/libimdApp.so",
+        "/lib32/libimdApp.so",
+        "/opt/lib32/libimdApp.so"
+      ]
+    },
+    {
+      "source": "/usr/sbin/fm",
+      "needed": "libimdFtrDB.so",
+      "selected": "/usr/lib32/internal/libimdFtrDB.so",
+      "searched": [
+        "/usr/lib32/libimdFtrDB.so",
+        "/usr/lib32/internal/libimdFtrDB.so",
+        "/lib32/libimdFtrDB.so",
+        "/opt/lib32/libimdFtrDB.so"
+      ]
+    },
+    {
+      "source": "/usr/sbin/fm",
+      "needed": "libimdFtrIcon.so",
+      "selected": "/usr/lib32/internal/libimdFtrIcon.so",
+      "searched": [
+        "/usr/lib32/libimdFtrIcon.so",
+        "/usr/lib32/internal/libimdFtrIcon.so",
+        "/lib32/libimdFtrIcon.so",
+        "/opt/lib32/libimdFtrIcon.so"
+      ]
+    },
+    {
+      "source": "/usr/sbin/fm",
+      "needed": "libimdXutil.so",
+      "selected": "/usr/lib32/internal/libimdXutil.so",
+      "searched": [
+        "/usr/lib32/libimdXutil.so",
+        "/usr/lib32/internal/libimdXutil.so",
+        "/lib32/libimdXutil.so",
+        "/opt/lib32/libimdXutil.so"
+      ]
+    },
+    {
+      "source": "/usr/sbin/fm",
+      "needed": "libimdIconPanel.so",
+      "selected": "/usr/lib32/internal/libimdIconPanel.so",
+      "searched": [
+        "/usr/lib32/libimdIconPanel.so",
+        "/usr/lib32/internal/libimdIconPanel.so",
+        "/lib32/libimdIconPanel.so",
+        "/opt/lib32/libimdIconPanel.so"
+      ]
+    },
+    {
+      "source": "/usr/sbin/fm",
+      "needed": "libMediaViewer.so",
+      "selected": "/usr/lib32/internal/libMediaViewer.so",
+      "searched": [
+        "/usr/lib32/libMediaViewer.so",
+        "/usr/lib32/internal/libMediaViewer.so",
+        "/lib32/libMediaViewer.so",
+        "/opt/lib32/libMediaViewer.so"
+      ]
+    },
+    {
+      "source": "/usr/sbin/fm",
+      "needed": "libSgm.so.1",
+      "selected": "/usr/lib32/libSgm.so.1",
+      "searched": [
+        "/usr/lib32/libSgm.so.1",
+        "/usr/lib32/internal/libSgm.so.1",
+        "/lib32/libSgm.so.1",
+        "/opt/lib32/libSgm.so.1"
+      ]
+    },
+    {
+      "source": "/usr/sbin/fm",
+      "needed": "libgen.so",
+      "selected": "/usr/lib32/libgen.so",
+      "searched": [
+        "/usr/lib32/libgen.so",
+        "/usr/lib32/internal/libgen.so",
+        "/lib32/libgen.so",
+        "/opt/lib32/libgen.so"
+      ]
+    },
+    {
+      "source": "/usr/sbin/fm",
+      "needed": "libXext.so",
+      "selected": "/usr/lib32/libXext.so",
+      "searched": [
+        "/usr/lib32/libXext.so",
+        "/usr/lib32/internal/libXext.so",
+        "/lib32/libXext.so",
+        "/opt/lib32/libXext.so"
+      ]
+    },
+    {
+      "source": "/usr/sbin/fm",
+      "needed": "libmediaclient.so",
+      "selected": "/usr/lib32/libmediaclient.so",
+      "searched": [
+        "/usr/lib32/libmediaclient.so",
+        "/usr/lib32/internal/libmediaclient.so",
+        "/lib32/libmediaclient.so",
+        "/opt/lib32/libmediaclient.so"
+      ]
+    },
+    {
+      "source": "/usr/sbin/fm",
+      "needed": "libvk.so.1",
+      "selected": "/usr/lib32/libvk.so.1",
+      "searched": [
+        "/usr/lib32/libvk.so.1",
+        "/usr/lib32/internal/libvk.so.1",
+        "/lib32/libvk.so.1",
+        "/opt/lib32/libvk.so.1"
+      ]
+    },
+    {
+      "source": "/usr/sbin/fm",
+      "needed": "libXt.so",
+      "selected": "/usr/lib32/libXt.so",
+      "searched": [
+        "/usr/lib32/libXt.so",
+        "/usr/lib32/internal/libXt.so",
+        "/lib32/libXt.so",
+        "/opt/lib32/libXt.so"
+      ]
+    },
+    {
+      "source": "/usr/sbin/fm",
+      "needed": "libXm.so.1",
+      "selected": "/usr/lib32/libXm.so.1",
+      "searched": [
+        "/usr/lib32/libXm.so.1",
+        "/usr/lib32/internal/libXm.so.1",
+        "/lib32/libXm.so.1",
+        "/opt/lib32/libXm.so.1"
+      ]
+    },
+    {
+      "source": "/usr/sbin/fm",
+      "needed": "libX11.so.1",
+      "selected": "/usr/lib32/libX11.so.1",
+      "searched": [
+        "/usr/lib32/libX11.so.1",
+        "/usr/lib32/internal/libX11.so.1",
+        "/lib32/libX11.so.1",
+        "/opt/lib32/libX11.so.1"
+      ]
+    },
+    {
+      "source": "/usr/sbin/fm",
+      "needed": "libCsup.so",
+      "selected": "/usr/lib32/libCsup.so",
+      "searched": [
+        "/usr/lib32/libCsup.so",
+        "/usr/lib32/internal/libCsup.so",
+        "/lib32/libCsup.so",
+        "/opt/lib32/libCsup.so"
+      ]
+    },
+    {
+      "source": "/usr/sbin/fm",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1",
+      "searched": [
+        "/usr/lib32/libc.so.1",
+        "/usr/lib32/internal/libc.so.1",
+        "/lib32/libc.so.1",
+        "/opt/lib32/libc.so.1"
+      ]
+    },
+    {
+      "source": "/usr/sbin/bgicons",
+      "needed": "libimdModel.so",
+      "selected": "/usr/lib32/internal/libimdModel.so",
+      "searched": [
+        "/usr/lib32/libimdModel.so",
+        "/usr/lib32/internal/libimdModel.so",
+        "/lib32/libimdModel.so",
+        "/opt/lib32/libimdModel.so"
+      ]
+    },
+    {
+      "source": "/usr/sbin/bgicons",
+      "needed": "libimdUtil.so",
+      "selected": "/usr/lib32/internal/libimdUtil.so",
+      "searched": [
+        "/usr/lib32/libimdUtil.so",
+        "/usr/lib32/internal/libimdUtil.so",
+        "/lib32/libimdUtil.so",
+        "/opt/lib32/libimdUtil.so"
+      ]
+    },
+    {
+      "source": "/usr/sbin/bgicons",
+      "needed": "libgen.so",
+      "selected": "/usr/lib32/libgen.so",
+      "searched": [
+        "/usr/lib32/libgen.so",
+        "/usr/lib32/internal/libgen.so",
+        "/lib32/libgen.so",
+        "/opt/lib32/libgen.so"
+      ]
+    },
+    {
+      "source": "/usr/sbin/bgicons",
+      "needed": "libCsup.so",
+      "selected": "/usr/lib32/libCsup.so",
+      "searched": [
+        "/usr/lib32/libCsup.so",
+        "/usr/lib32/internal/libCsup.so",
+        "/lib32/libCsup.so",
+        "/opt/lib32/libCsup.so"
+      ]
+    },
+    {
+      "source": "/usr/sbin/bgicons",
+      "needed": "libC.so.2",
+      "selected": "/usr/lib32/libC.so.2",
+      "searched": [
+        "/usr/lib32/libC.so.2",
+        "/usr/lib32/internal/libC.so.2",
+        "/lib32/libC.so.2",
+        "/opt/lib32/libC.so.2"
+      ]
+    },
+    {
+      "source": "/usr/sbin/bgicons",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1",
+      "searched": [
+        "/usr/lib32/libc.so.1",
+        "/usr/lib32/internal/libc.so.1",
+        "/lib32/libc.so.1",
+        "/opt/lib32/libc.so.1"
+      ]
+    },
+    {
+      "source": "/usr/sbin/iconcatalog",
+      "needed": "libimdUtil.so",
+      "selected": "/usr/lib32/internal/libimdUtil.so",
+      "searched": [
+        "/usr/lib32/libimdUtil.so",
+        "/usr/lib32/internal/libimdUtil.so",
+        "/lib32/libimdUtil.so",
+        "/opt/lib32/libimdUtil.so"
+      ]
+    },
+    {
+      "source": "/usr/sbin/iconcatalog",
+      "needed": "libimdXutil.so",
+      "selected": "/usr/lib32/internal/libimdXutil.so",
+      "searched": [
+        "/usr/lib32/libimdXutil.so",
+        "/usr/lib32/internal/libimdXutil.so",
+        "/lib32/libimdXutil.so",
+        "/opt/lib32/libimdXutil.so"
+      ]
+    },
+    {
+      "source": "/usr/sbin/iconcatalog",
+      "needed": "libimdApp.so",
+      "selected": "/usr/lib32/internal/libimdApp.so",
+      "searched": [
+        "/usr/lib32/libimdApp.so",
+        "/usr/lib32/internal/libimdApp.so",
+        "/lib32/libimdApp.so",
+        "/opt/lib32/libimdApp.so"
+      ]
+    },
+    {
+      "source": "/usr/sbin/iconcatalog",
+      "needed": "libimdModel.so",
+      "selected": "/usr/lib32/internal/libimdModel.so",
+      "searched": [
+        "/usr/lib32/libimdModel.so",
+        "/usr/lib32/internal/libimdModel.so",
+        "/lib32/libimdModel.so",
+        "/opt/lib32/libimdModel.so"
+      ]
+    },
+    {
+      "source": "/usr/sbin/iconcatalog",
+      "needed": "libimdIconPanel.so",
+      "selected": "/usr/lib32/internal/libimdIconPanel.so",
+      "searched": [
+        "/usr/lib32/libimdIconPanel.so",
+        "/usr/lib32/internal/libimdIconPanel.so",
+        "/lib32/libimdIconPanel.so",
+        "/opt/lib32/libimdIconPanel.so"
+      ]
+    },
+    {
+      "source": "/usr/sbin/iconcatalog",
+      "needed": "libimdFtrDB.so",
+      "selected": "/usr/lib32/internal/libimdFtrDB.so",
+      "searched": [
+        "/usr/lib32/libimdFtrDB.so",
+        "/usr/lib32/internal/libimdFtrDB.so",
+        "/lib32/libimdFtrDB.so",
+        "/opt/lib32/libimdFtrDB.so"
+      ]
+    },
+    {
+      "source": "/usr/sbin/iconcatalog",
+      "needed": "libimdFtrIcon.so",
+      "selected": "/usr/lib32/internal/libimdFtrIcon.so",
+      "searched": [
+        "/usr/lib32/libimdFtrIcon.so",
+        "/usr/lib32/internal/libimdFtrIcon.so",
+        "/lib32/libimdFtrIcon.so",
+        "/opt/lib32/libimdFtrIcon.so"
+      ]
+    },
+    {
+      "source": "/usr/sbin/iconcatalog",
+      "needed": "libvk.so.1",
+      "selected": "/usr/lib32/libvk.so.1",
+      "searched": [
+        "/usr/lib32/libvk.so.1",
+        "/usr/lib32/internal/libvk.so.1",
+        "/lib32/libvk.so.1",
+        "/opt/lib32/libvk.so.1"
+      ]
+    },
+    {
+      "source": "/usr/sbin/iconcatalog",
+      "needed": "libgen.so",
+      "selected": "/usr/lib32/libgen.so",
+      "searched": [
+        "/usr/lib32/libgen.so",
+        "/usr/lib32/internal/libgen.so",
+        "/lib32/libgen.so",
+        "/opt/lib32/libgen.so"
+      ]
+    },
+    {
+      "source": "/usr/sbin/iconcatalog",
+      "needed": "libXm.so.1",
+      "selected": "/usr/lib32/libXm.so.1",
+      "searched": [
+        "/usr/lib32/libXm.so.1",
+        "/usr/lib32/internal/libXm.so.1",
+        "/lib32/libXm.so.1",
+        "/opt/lib32/libXm.so.1"
+      ]
+    },
+    {
+      "source": "/usr/sbin/iconcatalog",
+      "needed": "libXext.so",
+      "selected": "/usr/lib32/libXext.so",
+      "searched": [
+        "/usr/lib32/libXext.so",
+        "/usr/lib32/internal/libXext.so",
+        "/lib32/libXext.so",
+        "/opt/lib32/libXext.so"
+      ]
+    },
+    {
+      "source": "/usr/sbin/iconcatalog",
+      "needed": "libSgm.so.1",
+      "selected": "/usr/lib32/libSgm.so.1",
+      "searched": [
+        "/usr/lib32/libSgm.so.1",
+        "/usr/lib32/internal/libSgm.so.1",
+        "/lib32/libSgm.so.1",
+        "/opt/lib32/libSgm.so.1"
+      ]
+    },
+    {
+      "source": "/usr/sbin/iconcatalog",
+      "needed": "libXt.so",
+      "selected": "/usr/lib32/libXt.so",
+      "searched": [
+        "/usr/lib32/libXt.so",
+        "/usr/lib32/internal/libXt.so",
+        "/lib32/libXt.so",
+        "/opt/lib32/libXt.so"
+      ]
+    },
+    {
+      "source": "/usr/sbin/iconcatalog",
+      "needed": "libX11.so.1",
+      "selected": "/usr/lib32/libX11.so.1",
+      "searched": [
+        "/usr/lib32/libX11.so.1",
+        "/usr/lib32/internal/libX11.so.1",
+        "/lib32/libX11.so.1",
+        "/opt/lib32/libX11.so.1"
+      ]
+    },
+    {
+      "source": "/usr/sbin/iconcatalog",
+      "needed": "libCsup.so",
+      "selected": "/usr/lib32/libCsup.so",
+      "searched": [
+        "/usr/lib32/libCsup.so",
+        "/usr/lib32/internal/libCsup.so",
+        "/lib32/libCsup.so",
+        "/opt/lib32/libCsup.so"
+      ]
+    },
+    {
+      "source": "/usr/sbin/iconcatalog",
+      "needed": "libC.so.2",
+      "selected": "/usr/lib32/libC.so.2",
+      "searched": [
+        "/usr/lib32/libC.so.2",
+        "/usr/lib32/internal/libC.so.2",
+        "/lib32/libC.so.2",
+        "/opt/lib32/libC.so.2"
+      ]
+    },
+    {
+      "source": "/usr/sbin/iconcatalog",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1",
+      "searched": [
+        "/usr/lib32/libc.so.1",
+        "/usr/lib32/internal/libc.so.1",
+        "/lib32/libc.so.1",
+        "/opt/lib32/libc.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib/desktop/fmserv",
+      "needed": "libimdUtil.so",
+      "selected": "/usr/lib32/internal/libimdUtil.so",
+      "searched": [
+        "/usr/lib32/libimdUtil.so",
+        "/usr/lib32/internal/libimdUtil.so",
+        "/lib32/libimdUtil.so",
+        "/opt/lib32/libimdUtil.so"
+      ]
+    },
+    {
+      "source": "/usr/lib/desktop/fmserv",
+      "needed": "libCsup.so",
+      "selected": "/usr/lib32/libCsup.so",
+      "searched": [
+        "/usr/lib32/libCsup.so",
+        "/usr/lib32/internal/libCsup.so",
+        "/lib32/libCsup.so",
+        "/opt/lib32/libCsup.so"
+      ]
+    },
+    {
+      "source": "/usr/lib/desktop/fmserv",
+      "needed": "libC.so.2",
+      "selected": "/usr/lib32/libC.so.2",
+      "searched": [
+        "/usr/lib32/libC.so.2",
+        "/usr/lib32/internal/libC.so.2",
+        "/lib32/libC.so.2",
+        "/opt/lib32/libC.so.2"
+      ]
+    },
+    {
+      "source": "/usr/lib/desktop/fmserv",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1",
+      "searched": [
+        "/usr/lib32/libc.so.1",
+        "/usr/lib32/internal/libc.so.1",
+        "/lib32/libc.so.1",
+        "/opt/lib32/libc.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdModel.so",
+      "needed": "libimdUtil.so",
+      "selected": "/usr/lib32/internal/libimdUtil.so",
+      "searched": [
+        "/usr/lib32/libimdUtil.so",
+        "/usr/lib32/internal/libimdUtil.so",
+        "/lib32/libimdUtil.so",
+        "/opt/lib32/libimdUtil.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdModel.so",
+      "needed": "libgen.so",
+      "selected": "/usr/lib32/libgen.so",
+      "searched": [
+        "/usr/lib32/libgen.so",
+        "/usr/lib32/internal/libgen.so",
+        "/lib32/libgen.so",
+        "/opt/lib32/libgen.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdModel.so",
+      "needed": "libpthread.so",
+      "selected": "/usr/lib32/libpthread.so",
+      "searched": [
+        "/usr/lib32/libpthread.so",
+        "/usr/lib32/internal/libpthread.so",
+        "/lib32/libpthread.so",
+        "/opt/lib32/libpthread.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdModel.so",
+      "needed": "libimdFtrDB.so",
+      "selected": "/usr/lib32/internal/libimdFtrDB.so",
+      "searched": [
+        "/usr/lib32/libimdFtrDB.so",
+        "/usr/lib32/internal/libimdFtrDB.so",
+        "/lib32/libimdFtrDB.so",
+        "/opt/lib32/libimdFtrDB.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdModel.so",
+      "needed": "librpcsvc.so",
+      "selected": "/usr/lib32/librpcsvc.so",
+      "searched": [
+        "/usr/lib32/librpcsvc.so",
+        "/usr/lib32/internal/librpcsvc.so",
+        "/lib32/librpcsvc.so",
+        "/opt/lib32/librpcsvc.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdModel.so",
+      "needed": "libXt.so",
+      "selected": "/usr/lib32/libXt.so",
+      "searched": [
+        "/usr/lib32/libXt.so",
+        "/usr/lib32/internal/libXt.so",
+        "/lib32/libXt.so",
+        "/opt/lib32/libXt.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdModel.so",
+      "needed": "libX11.so.1",
+      "selected": "/usr/lib32/libX11.so.1",
+      "searched": [
+        "/usr/lib32/libX11.so.1",
+        "/usr/lib32/internal/libX11.so.1",
+        "/lib32/libX11.so.1",
+        "/opt/lib32/libX11.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdModel.so",
+      "needed": "libCsup.so",
+      "selected": "/usr/lib32/libCsup.so",
+      "searched": [
+        "/usr/lib32/libCsup.so",
+        "/usr/lib32/internal/libCsup.so",
+        "/lib32/libCsup.so",
+        "/opt/lib32/libCsup.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdModel.so",
+      "needed": "libC.so.2",
+      "selected": "/usr/lib32/libC.so.2",
+      "searched": [
+        "/usr/lib32/libC.so.2",
+        "/usr/lib32/internal/libC.so.2",
+        "/lib32/libC.so.2",
+        "/opt/lib32/libC.so.2"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdModel.so",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1",
+      "searched": [
+        "/usr/lib32/libc.so.1",
+        "/usr/lib32/internal/libc.so.1",
+        "/lib32/libc.so.1",
+        "/opt/lib32/libc.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdUtil.so",
+      "needed": "libgen.so",
+      "selected": "/usr/lib32/libgen.so",
+      "searched": [
+        "/usr/lib32/libgen.so",
+        "/usr/lib32/internal/libgen.so",
+        "/lib32/libgen.so",
+        "/opt/lib32/libgen.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdUtil.so",
+      "needed": "libm.so",
+      "selected": "/usr/lib32/libm.so",
+      "searched": [
+        "/usr/lib32/libm.so",
+        "/usr/lib32/internal/libm.so",
+        "/lib32/libm.so",
+        "/opt/lib32/libm.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdUtil.so",
+      "needed": "libCsup.so",
+      "selected": "/usr/lib32/libCsup.so",
+      "searched": [
+        "/usr/lib32/libCsup.so",
+        "/usr/lib32/internal/libCsup.so",
+        "/lib32/libCsup.so",
+        "/opt/lib32/libCsup.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdUtil.so",
+      "needed": "libC.so.2",
+      "selected": "/usr/lib32/libC.so.2",
+      "searched": [
+        "/usr/lib32/libC.so.2",
+        "/usr/lib32/internal/libC.so.2",
+        "/lib32/libC.so.2",
+        "/opt/lib32/libC.so.2"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdUtil.so",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1",
+      "searched": [
+        "/usr/lib32/libc.so.1",
+        "/usr/lib32/internal/libc.so.1",
+        "/lib32/libc.so.1",
+        "/opt/lib32/libc.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libC.so.2",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1",
+      "searched": [
+        "/usr/lib32/libc.so.1",
+        "/usr/lib32/internal/libc.so.1",
+        "/lib32/libc.so.1",
+        "/opt/lib32/libc.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libC.so.2",
+      "needed": "libm.so",
+      "selected": "/usr/lib32/libm.so",
+      "searched": [
+        "/usr/lib32/libm.so",
+        "/usr/lib32/internal/libm.so",
+        "/lib32/libm.so",
+        "/opt/lib32/libm.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdApp.so",
+      "needed": "libimdIconPanel.so",
+      "selected": "/usr/lib32/internal/libimdIconPanel.so",
+      "searched": [
+        "/usr/lib32/libimdIconPanel.so",
+        "/usr/lib32/internal/libimdIconPanel.so",
+        "/lib32/libimdIconPanel.so",
+        "/opt/lib32/libimdIconPanel.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdApp.so",
+      "needed": "libimdModel.so",
+      "selected": "/usr/lib32/internal/libimdModel.so",
+      "searched": [
+        "/usr/lib32/libimdModel.so",
+        "/usr/lib32/internal/libimdModel.so",
+        "/lib32/libimdModel.so",
+        "/opt/lib32/libimdModel.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdApp.so",
+      "needed": "libimdUtil.so",
+      "selected": "/usr/lib32/internal/libimdUtil.so",
+      "searched": [
+        "/usr/lib32/libimdUtil.so",
+        "/usr/lib32/internal/libimdUtil.so",
+        "/lib32/libimdUtil.so",
+        "/opt/lib32/libimdUtil.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdApp.so",
+      "needed": "libimdXutil.so",
+      "selected": "/usr/lib32/internal/libimdXutil.so",
+      "searched": [
+        "/usr/lib32/libimdXutil.so",
+        "/usr/lib32/internal/libimdXutil.so",
+        "/lib32/libimdXutil.so",
+        "/opt/lib32/libimdXutil.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdApp.so",
+      "needed": "libimdFtrDB.so",
+      "selected": "/usr/lib32/internal/libimdFtrDB.so",
+      "searched": [
+        "/usr/lib32/libimdFtrDB.so",
+        "/usr/lib32/internal/libimdFtrDB.so",
+        "/lib32/libimdFtrDB.so",
+        "/opt/lib32/libimdFtrDB.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdApp.so",
+      "needed": "libimdFtrIcon.so",
+      "selected": "/usr/lib32/internal/libimdFtrIcon.so",
+      "searched": [
+        "/usr/lib32/libimdFtrIcon.so",
+        "/usr/lib32/internal/libimdFtrIcon.so",
+        "/lib32/libimdFtrIcon.so",
+        "/opt/lib32/libimdFtrIcon.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdApp.so",
+      "needed": "libgen.so",
+      "selected": "/usr/lib32/libgen.so",
+      "searched": [
+        "/usr/lib32/libgen.so",
+        "/usr/lib32/internal/libgen.so",
+        "/lib32/libgen.so",
+        "/opt/lib32/libgen.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdApp.so",
+      "needed": "libvk.so.1",
+      "selected": "/usr/lib32/libvk.so.1",
+      "searched": [
+        "/usr/lib32/libvk.so.1",
+        "/usr/lib32/internal/libvk.so.1",
+        "/lib32/libvk.so.1",
+        "/opt/lib32/libvk.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdApp.so",
+      "needed": "libSgm.so.1",
+      "selected": "/usr/lib32/libSgm.so.1",
+      "searched": [
+        "/usr/lib32/libSgm.so.1",
+        "/usr/lib32/internal/libSgm.so.1",
+        "/lib32/libSgm.so.1",
+        "/opt/lib32/libSgm.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdApp.so",
+      "needed": "libXm.so.1",
+      "selected": "/usr/lib32/libXm.so.1",
+      "searched": [
+        "/usr/lib32/libXm.so.1",
+        "/usr/lib32/internal/libXm.so.1",
+        "/lib32/libXm.so.1",
+        "/opt/lib32/libXm.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdApp.so",
+      "needed": "libXt.so",
+      "selected": "/usr/lib32/libXt.so",
+      "searched": [
+        "/usr/lib32/libXt.so",
+        "/usr/lib32/internal/libXt.so",
+        "/lib32/libXt.so",
+        "/opt/lib32/libXt.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdApp.so",
+      "needed": "libX11.so.1",
+      "selected": "/usr/lib32/libX11.so.1",
+      "searched": [
+        "/usr/lib32/libX11.so.1",
+        "/usr/lib32/internal/libX11.so.1",
+        "/lib32/libX11.so.1",
+        "/opt/lib32/libX11.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdApp.so",
+      "needed": "libCsup.so",
+      "selected": "/usr/lib32/libCsup.so",
+      "searched": [
+        "/usr/lib32/libCsup.so",
+        "/usr/lib32/internal/libCsup.so",
+        "/lib32/libCsup.so",
+        "/opt/lib32/libCsup.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdApp.so",
+      "needed": "libC.so.2",
+      "selected": "/usr/lib32/libC.so.2",
+      "searched": [
+        "/usr/lib32/libC.so.2",
+        "/usr/lib32/internal/libC.so.2",
+        "/lib32/libC.so.2",
+        "/opt/lib32/libC.so.2"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdApp.so",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1",
+      "searched": [
+        "/usr/lib32/libc.so.1",
+        "/usr/lib32/internal/libc.so.1",
+        "/lib32/libc.so.1",
+        "/opt/lib32/libc.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdFtrDB.so",
+      "needed": "libC.so.2",
+      "selected": "/usr/lib32/libC.so.2",
+      "searched": [
+        "/usr/lib32/libC.so.2",
+        "/usr/lib32/internal/libC.so.2",
+        "/lib32/libC.so.2",
+        "/opt/lib32/libC.so.2"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdFtrDB.so",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1",
+      "searched": [
+        "/usr/lib32/libc.so.1",
+        "/usr/lib32/internal/libc.so.1",
+        "/lib32/libc.so.1",
+        "/opt/lib32/libc.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdFtrIcon.so",
+      "needed": "libimdFtrDB.so",
+      "selected": "/usr/lib32/internal/libimdFtrDB.so",
+      "searched": [
+        "/usr/lib32/libimdFtrDB.so",
+        "/usr/lib32/internal/libimdFtrDB.so",
+        "/lib32/libimdFtrDB.so",
+        "/opt/lib32/libimdFtrDB.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdFtrIcon.so",
+      "needed": "libimdUtil.so",
+      "selected": "/usr/lib32/internal/libimdUtil.so",
+      "searched": [
+        "/usr/lib32/libimdUtil.so",
+        "/usr/lib32/internal/libimdUtil.so",
+        "/lib32/libimdUtil.so",
+        "/opt/lib32/libimdUtil.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdFtrIcon.so",
+      "needed": "libXt.so",
+      "selected": "/usr/lib32/libXt.so",
+      "searched": [
+        "/usr/lib32/libXt.so",
+        "/usr/lib32/internal/libXt.so",
+        "/lib32/libXt.so",
+        "/opt/lib32/libXt.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdFtrIcon.so",
+      "needed": "libXext.so",
+      "selected": "/usr/lib32/libXext.so",
+      "searched": [
+        "/usr/lib32/libXext.so",
+        "/usr/lib32/internal/libXext.so",
+        "/lib32/libXext.so",
+        "/opt/lib32/libXext.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdFtrIcon.so",
+      "needed": "libGL.so",
+      "selected": "/usr/lib32/libGL.so",
+      "searched": [
+        "/usr/lib32/libGL.so",
+        "/usr/lib32/internal/libGL.so",
+        "/lib32/libGL.so",
+        "/opt/lib32/libGL.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdFtrIcon.so",
+      "needed": "libGLU.so",
+      "selected": "/usr/lib32/libGLU.so",
+      "searched": [
+        "/usr/lib32/libGLU.so",
+        "/usr/lib32/internal/libGLU.so",
+        "/lib32/libGLU.so",
+        "/opt/lib32/libGLU.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdFtrIcon.so",
+      "needed": "libX11.so.1",
+      "selected": "/usr/lib32/libX11.so.1",
+      "searched": [
+        "/usr/lib32/libX11.so.1",
+        "/usr/lib32/internal/libX11.so.1",
+        "/lib32/libX11.so.1",
+        "/opt/lib32/libX11.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdFtrIcon.so",
+      "needed": "libCsup.so",
+      "selected": "/usr/lib32/libCsup.so",
+      "searched": [
+        "/usr/lib32/libCsup.so",
+        "/usr/lib32/internal/libCsup.so",
+        "/lib32/libCsup.so",
+        "/opt/lib32/libCsup.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdFtrIcon.so",
+      "needed": "libC.so.2",
+      "selected": "/usr/lib32/libC.so.2",
+      "searched": [
+        "/usr/lib32/libC.so.2",
+        "/usr/lib32/internal/libC.so.2",
+        "/lib32/libC.so.2",
+        "/opt/lib32/libC.so.2"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdFtrIcon.so",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1",
+      "searched": [
+        "/usr/lib32/libc.so.1",
+        "/usr/lib32/internal/libc.so.1",
+        "/lib32/libc.so.1",
+        "/opt/lib32/libc.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdXutil.so",
+      "needed": "libvk.so.1",
+      "selected": "/usr/lib32/libvk.so.1",
+      "searched": [
+        "/usr/lib32/libvk.so.1",
+        "/usr/lib32/internal/libvk.so.1",
+        "/lib32/libvk.so.1",
+        "/opt/lib32/libvk.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdXutil.so",
+      "needed": "libXm.so.1",
+      "selected": "/usr/lib32/libXm.so.1",
+      "searched": [
+        "/usr/lib32/libXm.so.1",
+        "/usr/lib32/internal/libXm.so.1",
+        "/lib32/libXm.so.1",
+        "/opt/lib32/libXm.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdXutil.so",
+      "needed": "libXt.so",
+      "selected": "/usr/lib32/libXt.so",
+      "searched": [
+        "/usr/lib32/libXt.so",
+        "/usr/lib32/internal/libXt.so",
+        "/lib32/libXt.so",
+        "/opt/lib32/libXt.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdXutil.so",
+      "needed": "libXext.so",
+      "selected": "/usr/lib32/libXext.so",
+      "searched": [
+        "/usr/lib32/libXext.so",
+        "/usr/lib32/internal/libXext.so",
+        "/lib32/libXext.so",
+        "/opt/lib32/libXext.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdXutil.so",
+      "needed": "libXpm.so.1",
+      "selected": "/usr/lib32/libXpm.so.1",
+      "searched": [
+        "/usr/lib32/libXpm.so.1",
+        "/usr/lib32/internal/libXpm.so.1",
+        "/lib32/libXpm.so.1",
+        "/opt/lib32/libXpm.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdXutil.so",
+      "needed": "libXmu.so",
+      "selected": "/usr/lib32/libXmu.so",
+      "searched": [
+        "/usr/lib32/libXmu.so",
+        "/usr/lib32/internal/libXmu.so",
+        "/lib32/libXmu.so",
+        "/opt/lib32/libXmu.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdXutil.so",
+      "needed": "libX11.so.1",
+      "selected": "/usr/lib32/libX11.so.1",
+      "searched": [
+        "/usr/lib32/libX11.so.1",
+        "/usr/lib32/internal/libX11.so.1",
+        "/lib32/libX11.so.1",
+        "/opt/lib32/libX11.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdXutil.so",
+      "needed": "libimdUtil.so",
+      "selected": "/usr/lib32/internal/libimdUtil.so",
+      "searched": [
+        "/usr/lib32/libimdUtil.so",
+        "/usr/lib32/internal/libimdUtil.so",
+        "/lib32/libimdUtil.so",
+        "/opt/lib32/libimdUtil.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdXutil.so",
+      "needed": "libgen.so",
+      "selected": "/usr/lib32/libgen.so",
+      "searched": [
+        "/usr/lib32/libgen.so",
+        "/usr/lib32/internal/libgen.so",
+        "/lib32/libgen.so",
+        "/opt/lib32/libgen.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdXutil.so",
+      "needed": "libimdFtrDB.so",
+      "selected": "/usr/lib32/internal/libimdFtrDB.so",
+      "searched": [
+        "/usr/lib32/libimdFtrDB.so",
+        "/usr/lib32/internal/libimdFtrDB.so",
+        "/lib32/libimdFtrDB.so",
+        "/opt/lib32/libimdFtrDB.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdXutil.so",
+      "needed": "libil.so",
+      "selected": "/usr/lib32/libil.so",
+      "searched": [
+        "/usr/lib32/libil.so",
+        "/usr/lib32/internal/libil.so",
+        "/lib32/libil.so",
+        "/opt/lib32/libil.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdXutil.so",
+      "needed": "libifl.so",
+      "selected": "/usr/lib32/libifl.so",
+      "searched": [
+        "/usr/lib32/libifl.so",
+        "/usr/lib32/internal/libifl.so",
+        "/lib32/libifl.so",
+        "/opt/lib32/libifl.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdXutil.so",
+      "needed": "libCsup.so",
+      "selected": "/usr/lib32/libCsup.so",
+      "searched": [
+        "/usr/lib32/libCsup.so",
+        "/usr/lib32/internal/libCsup.so",
+        "/lib32/libCsup.so",
+        "/opt/lib32/libCsup.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdXutil.so",
+      "needed": "libC.so.2",
+      "selected": "/usr/lib32/libC.so.2",
+      "searched": [
+        "/usr/lib32/libC.so.2",
+        "/usr/lib32/internal/libC.so.2",
+        "/lib32/libC.so.2",
+        "/opt/lib32/libC.so.2"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdXutil.so",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1",
+      "searched": [
+        "/usr/lib32/libc.so.1",
+        "/usr/lib32/internal/libc.so.1",
+        "/lib32/libc.so.1",
+        "/opt/lib32/libc.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdIconPanel.so",
+      "needed": "libimdModel.so",
+      "selected": "/usr/lib32/internal/libimdModel.so",
+      "searched": [
+        "/usr/lib32/libimdModel.so",
+        "/usr/lib32/internal/libimdModel.so",
+        "/lib32/libimdModel.so",
+        "/opt/lib32/libimdModel.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdIconPanel.so",
+      "needed": "libimdUtil.so",
+      "selected": "/usr/lib32/internal/libimdUtil.so",
+      "searched": [
+        "/usr/lib32/libimdUtil.so",
+        "/usr/lib32/internal/libimdUtil.so",
+        "/lib32/libimdUtil.so",
+        "/opt/lib32/libimdUtil.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdIconPanel.so",
+      "needed": "libimdFtrDB.so",
+      "selected": "/usr/lib32/internal/libimdFtrDB.so",
+      "searched": [
+        "/usr/lib32/libimdFtrDB.so",
+        "/usr/lib32/internal/libimdFtrDB.so",
+        "/lib32/libimdFtrDB.so",
+        "/opt/lib32/libimdFtrDB.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdIconPanel.so",
+      "needed": "libimdFtrIcon.so",
+      "selected": "/usr/lib32/internal/libimdFtrIcon.so",
+      "searched": [
+        "/usr/lib32/libimdFtrIcon.so",
+        "/usr/lib32/internal/libimdFtrIcon.so",
+        "/lib32/libimdFtrIcon.so",
+        "/opt/lib32/libimdFtrIcon.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdIconPanel.so",
+      "needed": "libimdXutil.so",
+      "selected": "/usr/lib32/internal/libimdXutil.so",
+      "searched": [
+        "/usr/lib32/libimdXutil.so",
+        "/usr/lib32/internal/libimdXutil.so",
+        "/lib32/libimdXutil.so",
+        "/opt/lib32/libimdXutil.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdIconPanel.so",
+      "needed": "libvk.so.1",
+      "selected": "/usr/lib32/libvk.so.1",
+      "searched": [
+        "/usr/lib32/libvk.so.1",
+        "/usr/lib32/internal/libvk.so.1",
+        "/lib32/libvk.so.1",
+        "/opt/lib32/libvk.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdIconPanel.so",
+      "needed": "libSgm.so.1",
+      "selected": "/usr/lib32/libSgm.so.1",
+      "searched": [
+        "/usr/lib32/libSgm.so.1",
+        "/usr/lib32/internal/libSgm.so.1",
+        "/lib32/libSgm.so.1",
+        "/opt/lib32/libSgm.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdIconPanel.so",
+      "needed": "libXm.so.1",
+      "selected": "/usr/lib32/libXm.so.1",
+      "searched": [
+        "/usr/lib32/libXm.so.1",
+        "/usr/lib32/internal/libXm.so.1",
+        "/lib32/libXm.so.1",
+        "/opt/lib32/libXm.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdIconPanel.so",
+      "needed": "libXt.so",
+      "selected": "/usr/lib32/libXt.so",
+      "searched": [
+        "/usr/lib32/libXt.so",
+        "/usr/lib32/internal/libXt.so",
+        "/lib32/libXt.so",
+        "/opt/lib32/libXt.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdIconPanel.so",
+      "needed": "libGLU.so",
+      "selected": "/usr/lib32/libGLU.so",
+      "searched": [
+        "/usr/lib32/libGLU.so",
+        "/usr/lib32/internal/libGLU.so",
+        "/lib32/libGLU.so",
+        "/opt/lib32/libGLU.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdIconPanel.so",
+      "needed": "libGL.so",
+      "selected": "/usr/lib32/libGL.so",
+      "searched": [
+        "/usr/lib32/libGL.so",
+        "/usr/lib32/internal/libGL.so",
+        "/lib32/libGL.so",
+        "/opt/lib32/libGL.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdIconPanel.so",
+      "needed": "libXext.so",
+      "selected": "/usr/lib32/libXext.so",
+      "searched": [
+        "/usr/lib32/libXext.so",
+        "/usr/lib32/internal/libXext.so",
+        "/lib32/libXext.so",
+        "/opt/lib32/libXext.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdIconPanel.so",
+      "needed": "libX11.so.1",
+      "selected": "/usr/lib32/libX11.so.1",
+      "searched": [
+        "/usr/lib32/libX11.so.1",
+        "/usr/lib32/internal/libX11.so.1",
+        "/lib32/libX11.so.1",
+        "/opt/lib32/libX11.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdIconPanel.so",
+      "needed": "libCsup.so",
+      "selected": "/usr/lib32/libCsup.so",
+      "searched": [
+        "/usr/lib32/libCsup.so",
+        "/usr/lib32/internal/libCsup.so",
+        "/lib32/libCsup.so",
+        "/opt/lib32/libCsup.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdIconPanel.so",
+      "needed": "libC.so.2",
+      "selected": "/usr/lib32/libC.so.2",
+      "searched": [
+        "/usr/lib32/libC.so.2",
+        "/usr/lib32/internal/libC.so.2",
+        "/lib32/libC.so.2",
+        "/opt/lib32/libC.so.2"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libimdIconPanel.so",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1",
+      "searched": [
+        "/usr/lib32/libc.so.1",
+        "/usr/lib32/internal/libc.so.1",
+        "/lib32/libc.so.1",
+        "/opt/lib32/libc.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libMediaViewer.so",
+      "needed": "libimdFtrDB.so",
+      "selected": "/usr/lib32/internal/libimdFtrDB.so",
+      "searched": [
+        "/usr/lib32/libimdFtrDB.so",
+        "/usr/lib32/internal/libimdFtrDB.so",
+        "/lib32/libimdFtrDB.so",
+        "/opt/lib32/libimdFtrDB.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libMediaViewer.so",
+      "needed": "libvk.so.1",
+      "selected": "/usr/lib32/libvk.so.1",
+      "searched": [
+        "/usr/lib32/libvk.so.1",
+        "/usr/lib32/internal/libvk.so.1",
+        "/lib32/libvk.so.1",
+        "/opt/lib32/libvk.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libMediaViewer.so",
+      "needed": "libXm.so.1",
+      "selected": "/usr/lib32/libXm.so.1",
+      "searched": [
+        "/usr/lib32/libXm.so.1",
+        "/usr/lib32/internal/libXm.so.1",
+        "/lib32/libXm.so.1",
+        "/opt/lib32/libXm.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libMediaViewer.so",
+      "needed": "libXt.so",
+      "selected": "/usr/lib32/libXt.so",
+      "searched": [
+        "/usr/lib32/libXt.so",
+        "/usr/lib32/internal/libXt.so",
+        "/lib32/libXt.so",
+        "/opt/lib32/libXt.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libMediaViewer.so",
+      "needed": "libX11.so.1",
+      "selected": "/usr/lib32/libX11.so.1",
+      "searched": [
+        "/usr/lib32/libX11.so.1",
+        "/usr/lib32/internal/libX11.so.1",
+        "/lib32/libX11.so.1",
+        "/opt/lib32/libX11.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libMediaViewer.so",
+      "needed": "libCsup.so",
+      "selected": "/usr/lib32/libCsup.so",
+      "searched": [
+        "/usr/lib32/libCsup.so",
+        "/usr/lib32/internal/libCsup.so",
+        "/lib32/libCsup.so",
+        "/opt/lib32/libCsup.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libMediaViewer.so",
+      "needed": "libC.so.2",
+      "selected": "/usr/lib32/libC.so.2",
+      "searched": [
+        "/usr/lib32/libC.so.2",
+        "/usr/lib32/internal/libC.so.2",
+        "/lib32/libC.so.2",
+        "/opt/lib32/libC.so.2"
+      ]
+    },
+    {
+      "source": "/usr/lib32/internal/libMediaViewer.so",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1",
+      "searched": [
+        "/usr/lib32/libc.so.1",
+        "/usr/lib32/internal/libc.so.1",
+        "/lib32/libc.so.1",
+        "/opt/lib32/libc.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libSgm.so.1",
+      "needed": "libXm.so.1",
+      "selected": "/usr/lib32/libXm.so.1",
+      "searched": [
+        "/usr/lib32/libXm.so.1",
+        "/usr/lib32/internal/libXm.so.1",
+        "/lib32/libXm.so.1",
+        "/opt/lib32/libXm.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libSgm.so.1",
+      "needed": "libXt.so",
+      "selected": "/usr/lib32/libXt.so",
+      "searched": [
+        "/usr/lib32/libXt.so",
+        "/usr/lib32/internal/libXt.so",
+        "/lib32/libXt.so",
+        "/opt/lib32/libXt.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libSgm.so.1",
+      "needed": "libX11.so.1",
+      "selected": "/usr/lib32/libX11.so.1",
+      "searched": [
+        "/usr/lib32/libX11.so.1",
+        "/usr/lib32/internal/libX11.so.1",
+        "/lib32/libX11.so.1",
+        "/opt/lib32/libX11.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libSgm.so.1",
+      "needed": "libGLU.so",
+      "selected": "/usr/lib32/libGLU.so",
+      "searched": [
+        "/usr/lib32/libGLU.so",
+        "/usr/lib32/internal/libGLU.so",
+        "/lib32/libGLU.so",
+        "/opt/lib32/libGLU.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libSgm.so.1",
+      "needed": "libGL.so",
+      "selected": "/usr/lib32/libGL.so",
+      "searched": [
+        "/usr/lib32/libGL.so",
+        "/usr/lib32/internal/libGL.so",
+        "/lib32/libGL.so",
+        "/opt/lib32/libGL.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libSgm.so.1",
+      "needed": "libgl.so",
+      "selected": "/usr/lib32/libgl.so",
+      "searched": [
+        "/usr/lib32/libgl.so",
+        "/usr/lib32/internal/libgl.so",
+        "/lib32/libgl.so",
+        "/opt/lib32/libgl.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libSgm.so.1",
+      "needed": "libC.so.2",
+      "selected": "/usr/lib32/libC.so.2",
+      "searched": [
+        "/usr/lib32/libC.so.2",
+        "/usr/lib32/internal/libC.so.2",
+        "/lib32/libC.so.2",
+        "/opt/lib32/libC.so.2"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libSgm.so.1",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1",
+      "searched": [
+        "/usr/lib32/libc.so.1",
+        "/usr/lib32/internal/libc.so.1",
+        "/lib32/libc.so.1",
+        "/opt/lib32/libc.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libSgm.so.1",
+      "needed": "libm.so",
+      "selected": "/usr/lib32/libm.so",
+      "searched": [
+        "/usr/lib32/libm.so",
+        "/usr/lib32/internal/libm.so",
+        "/lib32/libm.so",
+        "/opt/lib32/libm.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libgen.so",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1",
+      "searched": [
+        "/usr/lib32/libc.so.1",
+        "/usr/lib32/internal/libc.so.1",
+        "/lib32/libc.so.1",
+        "/opt/lib32/libc.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libXext.so",
+      "needed": "libX11.so.1",
+      "selected": "/usr/lib32/libX11.so.1",
+      "searched": [
+        "/usr/lib32/libX11.so.1",
+        "/usr/lib32/internal/libX11.so.1",
+        "/lib32/libX11.so.1",
+        "/opt/lib32/libX11.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libXext.so",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1",
+      "searched": [
+        "/usr/lib32/libc.so.1",
+        "/usr/lib32/internal/libc.so.1",
+        "/lib32/libc.so.1",
+        "/opt/lib32/libc.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libmediaclient.so",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1",
+      "searched": [
+        "/usr/lib32/libc.so.1",
+        "/usr/lib32/internal/libc.so.1",
+        "/lib32/libc.so.1",
+        "/opt/lib32/libc.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libvk.so.1",
+      "needed": "libSgm.so.1",
+      "selected": "/usr/lib32/libSgm.so.1",
+      "searched": [
+        "/usr/lib32/libSgm.so.1",
+        "/usr/lib32/internal/libSgm.so.1",
+        "/lib32/libSgm.so.1",
+        "/opt/lib32/libSgm.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libvk.so.1",
+      "needed": "libXpm.so.1",
+      "selected": "/usr/lib32/libXpm.so.1",
+      "searched": [
+        "/usr/lib32/libXpm.so.1",
+        "/usr/lib32/internal/libXpm.so.1",
+        "/lib32/libXpm.so.1",
+        "/opt/lib32/libXpm.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libvk.so.1",
+      "needed": "libXmu.so",
+      "selected": "/usr/lib32/libXmu.so",
+      "searched": [
+        "/usr/lib32/libXmu.so",
+        "/usr/lib32/internal/libXmu.so",
+        "/lib32/libXmu.so",
+        "/opt/lib32/libXmu.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libvk.so.1",
+      "needed": "libXm.so.1",
+      "selected": "/usr/lib32/libXm.so.1",
+      "searched": [
+        "/usr/lib32/libXm.so.1",
+        "/usr/lib32/internal/libXm.so.1",
+        "/lib32/libXm.so.1",
+        "/opt/lib32/libXm.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libvk.so.1",
+      "needed": "libXt.so",
+      "selected": "/usr/lib32/libXt.so",
+      "searched": [
+        "/usr/lib32/libXt.so",
+        "/usr/lib32/internal/libXt.so",
+        "/lib32/libXt.so",
+        "/opt/lib32/libXt.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libvk.so.1",
+      "needed": "libX11.so.1",
+      "selected": "/usr/lib32/libX11.so.1",
+      "searched": [
+        "/usr/lib32/libX11.so.1",
+        "/usr/lib32/internal/libX11.so.1",
+        "/lib32/libX11.so.1",
+        "/opt/lib32/libX11.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libvk.so.1",
+      "needed": "libm.so",
+      "selected": "/usr/lib32/libm.so",
+      "searched": [
+        "/usr/lib32/libm.so",
+        "/usr/lib32/internal/libm.so",
+        "/lib32/libm.so",
+        "/opt/lib32/libm.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libvk.so.1",
+      "needed": "libCsup.so",
+      "selected": "/usr/lib32/libCsup.so",
+      "searched": [
+        "/usr/lib32/libCsup.so",
+        "/usr/lib32/internal/libCsup.so",
+        "/lib32/libCsup.so",
+        "/opt/lib32/libCsup.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libvk.so.1",
+      "needed": "libC.so.2",
+      "selected": "/usr/lib32/libC.so.2",
+      "searched": [
+        "/usr/lib32/libC.so.2",
+        "/usr/lib32/internal/libC.so.2",
+        "/lib32/libC.so.2",
+        "/opt/lib32/libC.so.2"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libvk.so.1",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1",
+      "searched": [
+        "/usr/lib32/libc.so.1",
+        "/usr/lib32/internal/libc.so.1",
+        "/lib32/libc.so.1",
+        "/opt/lib32/libc.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libXt.so",
+      "needed": "libgen.so",
+      "selected": "/usr/lib32/libgen.so",
+      "searched": [
+        "/usr/lib32/libgen.so",
+        "/usr/lib32/internal/libgen.so",
+        "/lib32/libgen.so",
+        "/opt/lib32/libgen.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libXt.so",
+      "needed": "libX11.so.1",
+      "selected": "/usr/lib32/libX11.so.1",
+      "searched": [
+        "/usr/lib32/libX11.so.1",
+        "/usr/lib32/internal/libX11.so.1",
+        "/lib32/libX11.so.1",
+        "/opt/lib32/libX11.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libXt.so",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1",
+      "searched": [
+        "/usr/lib32/libc.so.1",
+        "/usr/lib32/internal/libc.so.1",
+        "/lib32/libc.so.1",
+        "/opt/lib32/libc.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libXm.so.1",
+      "needed": "libXt.so",
+      "selected": "/usr/lib32/libXt.so",
+      "searched": [
+        "/usr/lib32/libXt.so",
+        "/usr/lib32/internal/libXt.so",
+        "/lib32/libXt.so",
+        "/opt/lib32/libXt.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libXm.so.1",
+      "needed": "libX11.so.1",
+      "selected": "/usr/lib32/libX11.so.1",
+      "searched": [
+        "/usr/lib32/libX11.so.1",
+        "/usr/lib32/internal/libX11.so.1",
+        "/lib32/libX11.so.1",
+        "/opt/lib32/libX11.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libXm.so.1",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1",
+      "searched": [
+        "/usr/lib32/libc.so.1",
+        "/usr/lib32/internal/libc.so.1",
+        "/lib32/libc.so.1",
+        "/opt/lib32/libc.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libXm.so.1",
+      "needed": "libgen.so",
+      "selected": "/usr/lib32/libgen.so",
+      "searched": [
+        "/usr/lib32/libgen.so",
+        "/usr/lib32/internal/libgen.so",
+        "/lib32/libgen.so",
+        "/opt/lib32/libgen.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libX11.so.1",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1",
+      "searched": [
+        "/usr/lib32/libc.so.1",
+        "/usr/lib32/internal/libc.so.1",
+        "/lib32/libc.so.1",
+        "/opt/lib32/libc.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libpthread.so",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1",
+      "searched": [
+        "/usr/lib32/libc.so.1",
+        "/usr/lib32/internal/libc.so.1",
+        "/lib32/libc.so.1",
+        "/opt/lib32/libc.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib32/librpcsvc.so",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1",
+      "searched": [
+        "/usr/lib32/libc.so.1",
+        "/usr/lib32/internal/libc.so.1",
+        "/lib32/libc.so.1",
+        "/opt/lib32/libc.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libm.so",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1",
+      "searched": [
+        "/usr/lib32/libc.so.1",
+        "/usr/lib32/internal/libc.so.1",
+        "/lib32/libc.so.1",
+        "/opt/lib32/libc.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libGL.so",
+      "needed": "libGLcore.so",
+      "selected": "/usr/lib32/libGLcore.so",
+      "searched": [
+        "/usr/lib32/libGLcore.so",
+        "/usr/lib32/internal/libGLcore.so",
+        "/lib32/libGLcore.so",
+        "/opt/lib32/libGLcore.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libGL.so",
+      "needed": "libXsgivc.so",
+      "selected": "/usr/lib32/libXsgivc.so",
+      "searched": [
+        "/usr/lib32/libXsgivc.so",
+        "/usr/lib32/internal/libXsgivc.so",
+        "/lib32/libXsgivc.so",
+        "/opt/lib32/libXsgivc.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libGL.so",
+      "needed": "libXext.so",
+      "selected": "/usr/lib32/libXext.so",
+      "searched": [
+        "/usr/lib32/libXext.so",
+        "/usr/lib32/internal/libXext.so",
+        "/lib32/libXext.so",
+        "/opt/lib32/libXext.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libGL.so",
+      "needed": "libX11.so.1",
+      "selected": "/usr/lib32/libX11.so.1",
+      "searched": [
+        "/usr/lib32/libX11.so.1",
+        "/usr/lib32/internal/libX11.so.1",
+        "/lib32/libX11.so.1",
+        "/opt/lib32/libX11.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libGL.so",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1",
+      "searched": [
+        "/usr/lib32/libc.so.1",
+        "/usr/lib32/internal/libc.so.1",
+        "/lib32/libc.so.1",
+        "/opt/lib32/libc.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libGLU.so",
+      "needed": "libGL.so",
+      "selected": "/usr/lib32/libGL.so",
+      "searched": [
+        "/usr/lib32/libGL.so",
+        "/usr/lib32/internal/libGL.so",
+        "/lib32/libGL.so",
+        "/opt/lib32/libGL.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libGLU.so",
+      "needed": "libm.so",
+      "selected": "/usr/lib32/libm.so",
+      "searched": [
+        "/usr/lib32/libm.so",
+        "/usr/lib32/internal/libm.so",
+        "/lib32/libm.so",
+        "/opt/lib32/libm.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libGLU.so",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1",
+      "searched": [
+        "/usr/lib32/libc.so.1",
+        "/usr/lib32/internal/libc.so.1",
+        "/lib32/libc.so.1",
+        "/opt/lib32/libc.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libGLU.so",
+      "needed": "libC.so.2",
+      "selected": "/usr/lib32/libC.so.2",
+      "searched": [
+        "/usr/lib32/libC.so.2",
+        "/usr/lib32/internal/libC.so.2",
+        "/lib32/libC.so.2",
+        "/opt/lib32/libC.so.2"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libXpm.so.1",
+      "needed": "libX11.so.1",
+      "selected": "/usr/lib32/libX11.so.1",
+      "searched": [
+        "/usr/lib32/libX11.so.1",
+        "/usr/lib32/internal/libX11.so.1",
+        "/lib32/libX11.so.1",
+        "/opt/lib32/libX11.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libXpm.so.1",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1",
+      "searched": [
+        "/usr/lib32/libc.so.1",
+        "/usr/lib32/internal/libc.so.1",
+        "/lib32/libc.so.1",
+        "/opt/lib32/libc.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libXmu.so",
+      "needed": "libXt.so",
+      "selected": "/usr/lib32/libXt.so",
+      "searched": [
+        "/usr/lib32/libXt.so",
+        "/usr/lib32/internal/libXt.so",
+        "/lib32/libXt.so",
+        "/opt/lib32/libXt.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libXmu.so",
+      "needed": "libXext.so",
+      "selected": "/usr/lib32/libXext.so",
+      "searched": [
+        "/usr/lib32/libXext.so",
+        "/usr/lib32/internal/libXext.so",
+        "/lib32/libXext.so",
+        "/opt/lib32/libXext.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libXmu.so",
+      "needed": "libX11.so.1",
+      "selected": "/usr/lib32/libX11.so.1",
+      "searched": [
+        "/usr/lib32/libX11.so.1",
+        "/usr/lib32/internal/libX11.so.1",
+        "/lib32/libX11.so.1",
+        "/opt/lib32/libX11.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libXmu.so",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1",
+      "searched": [
+        "/usr/lib32/libc.so.1",
+        "/usr/lib32/internal/libc.so.1",
+        "/lib32/libc.so.1",
+        "/opt/lib32/libc.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libXmu.so",
+      "needed": "libgen.so",
+      "selected": "/usr/lib32/libgen.so",
+      "searched": [
+        "/usr/lib32/libgen.so",
+        "/usr/lib32/internal/libgen.so",
+        "/lib32/libgen.so",
+        "/opt/lib32/libgen.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libil.so",
+      "needed": "libifl.so",
+      "selected": "/usr/lib32/libifl.so",
+      "searched": [
+        "/usr/lib32/libifl.so",
+        "/usr/lib32/internal/libifl.so",
+        "/lib32/libifl.so",
+        "/opt/lib32/libifl.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libil.so",
+      "needed": "libm.so",
+      "selected": "/usr/lib32/libm.so",
+      "searched": [
+        "/usr/lib32/libm.so",
+        "/usr/lib32/internal/libm.so",
+        "/lib32/libm.so",
+        "/opt/lib32/libm.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libil.so",
+      "needed": "libGL.so",
+      "selected": "/usr/lib32/libGL.so",
+      "searched": [
+        "/usr/lib32/libGL.so",
+        "/usr/lib32/internal/libGL.so",
+        "/lib32/libGL.so",
+        "/opt/lib32/libGL.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libil.so",
+      "needed": "libXext.so",
+      "selected": "/usr/lib32/libXext.so",
+      "searched": [
+        "/usr/lib32/libXext.so",
+        "/usr/lib32/internal/libXext.so",
+        "/lib32/libXext.so",
+        "/opt/lib32/libXext.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libil.so",
+      "needed": "libX11.so.1",
+      "selected": "/usr/lib32/libX11.so.1",
+      "searched": [
+        "/usr/lib32/libX11.so.1",
+        "/usr/lib32/internal/libX11.so.1",
+        "/lib32/libX11.so.1",
+        "/opt/lib32/libX11.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libil.so",
+      "needed": "libCsup.so",
+      "selected": "/usr/lib32/libCsup.so",
+      "searched": [
+        "/usr/lib32/libCsup.so",
+        "/usr/lib32/internal/libCsup.so",
+        "/lib32/libCsup.so",
+        "/opt/lib32/libCsup.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libil.so",
+      "needed": "libC.so.2",
+      "selected": "/usr/lib32/libC.so.2",
+      "searched": [
+        "/usr/lib32/libC.so.2",
+        "/usr/lib32/internal/libC.so.2",
+        "/lib32/libC.so.2",
+        "/opt/lib32/libC.so.2"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libil.so",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1",
+      "searched": [
+        "/usr/lib32/libc.so.1",
+        "/usr/lib32/internal/libc.so.1",
+        "/lib32/libc.so.1",
+        "/opt/lib32/libc.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libifl.so",
+      "needed": "libm.so",
+      "selected": "/usr/lib32/libm.so",
+      "searched": [
+        "/usr/lib32/libm.so",
+        "/usr/lib32/internal/libm.so",
+        "/lib32/libm.so",
+        "/opt/lib32/libm.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libifl.so",
+      "needed": "libCsup.so",
+      "selected": "/usr/lib32/libCsup.so",
+      "searched": [
+        "/usr/lib32/libCsup.so",
+        "/usr/lib32/internal/libCsup.so",
+        "/lib32/libCsup.so",
+        "/opt/lib32/libCsup.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libifl.so",
+      "needed": "libC.so.2",
+      "selected": "/usr/lib32/libC.so.2",
+      "searched": [
+        "/usr/lib32/libC.so.2",
+        "/usr/lib32/internal/libC.so.2",
+        "/lib32/libC.so.2",
+        "/opt/lib32/libC.so.2"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libifl.so",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1",
+      "searched": [
+        "/usr/lib32/libc.so.1",
+        "/usr/lib32/internal/libc.so.1",
+        "/lib32/libc.so.1",
+        "/opt/lib32/libc.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libgl.so",
+      "needed": "libX11.so.1",
+      "selected": "/usr/lib32/libX11.so.1",
+      "searched": [
+        "/usr/lib32/libX11.so.1",
+        "/usr/lib32/internal/libX11.so.1",
+        "/lib32/libX11.so.1",
+        "/opt/lib32/libX11.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libgl.so",
+      "needed": "libXi.so",
+      "selected": "/usr/lib32/libXi.so",
+      "searched": [
+        "/usr/lib32/libXi.so",
+        "/usr/lib32/internal/libXi.so",
+        "/lib32/libXi.so",
+        "/opt/lib32/libXi.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libgl.so",
+      "needed": "libXext.so",
+      "selected": "/usr/lib32/libXext.so",
+      "searched": [
+        "/usr/lib32/libXext.so",
+        "/usr/lib32/internal/libXext.so",
+        "/lib32/libXext.so",
+        "/opt/lib32/libXext.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libgl.so",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1",
+      "searched": [
+        "/usr/lib32/libc.so.1",
+        "/usr/lib32/internal/libc.so.1",
+        "/lib32/libc.so.1",
+        "/opt/lib32/libc.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libGLcore.so",
+      "needed": "libm.so",
+      "selected": "/usr/lib32/libm.so",
+      "searched": [
+        "/usr/lib32/libm.so",
+        "/usr/lib32/internal/libm.so",
+        "/lib32/libm.so",
+        "/opt/lib32/libm.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libGLcore.so",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1",
+      "searched": [
+        "/usr/lib32/libc.so.1",
+        "/usr/lib32/internal/libc.so.1",
+        "/lib32/libc.so.1",
+        "/opt/lib32/libc.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libXsgivc.so",
+      "needed": "libXext.so",
+      "selected": "/usr/lib32/libXext.so",
+      "searched": [
+        "/usr/lib32/libXext.so",
+        "/usr/lib32/internal/libXext.so",
+        "/lib32/libXext.so",
+        "/opt/lib32/libXext.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libXsgivc.so",
+      "needed": "libX11.so.1",
+      "selected": "/usr/lib32/libX11.so.1",
+      "searched": [
+        "/usr/lib32/libX11.so.1",
+        "/usr/lib32/internal/libX11.so.1",
+        "/lib32/libX11.so.1",
+        "/opt/lib32/libX11.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libXsgivc.so",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1",
+      "searched": [
+        "/usr/lib32/libc.so.1",
+        "/usr/lib32/internal/libc.so.1",
+        "/lib32/libc.so.1",
+        "/opt/lib32/libc.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libXi.so",
+      "needed": "libXext.so",
+      "selected": "/usr/lib32/libXext.so",
+      "searched": [
+        "/usr/lib32/libXext.so",
+        "/usr/lib32/internal/libXext.so",
+        "/lib32/libXext.so",
+        "/opt/lib32/libXext.so"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libXi.so",
+      "needed": "libX11.so.1",
+      "selected": "/usr/lib32/libX11.so.1",
+      "searched": [
+        "/usr/lib32/libX11.so.1",
+        "/usr/lib32/internal/libX11.so.1",
+        "/lib32/libX11.so.1",
+        "/opt/lib32/libX11.so.1"
+      ]
+    },
+    {
+      "source": "/usr/lib32/libXi.so",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1",
+      "searched": [
+        "/usr/lib32/libc.so.1",
+        "/usr/lib32/internal/libc.so.1",
+        "/lib32/libc.so.1",
+        "/opt/lib32/libc.so.1"
+      ]
+    }
+  ],
+  "unresolved": [],
+  "resources": {
+    "/usr/lib/X11/app-defaults/Fmprefs": {
+      "path": "/usr/lib/X11/app-defaults/Fmprefs",
+      "canonical_path": "/usr/lib/X11/app-defaults/Fmprefs",
+      "bytes": 9935,
+      "sha256": "7bb7eebff9ea6ef058727b2c36c3dea946f828565899ab117b7a581a525bff79"
+    },
+    "/usr/lib/X11/app-defaults/FileManager": {
+      "path": "/usr/lib/X11/app-defaults/FileManager",
+      "canonical_path": "/usr/lib/X11/app-defaults/FileManager",
+      "bytes": 22793,
+      "sha256": "c921d8f4e1d521e2225fd1d0e54b3ebdc69f6dfc8acbb264cc5d10e928579f48"
+    },
+    "/usr/lib/X11/app-defaults/FileSelection": {
+      "path": "/usr/lib/X11/app-defaults/FileSelection",
+      "canonical_path": "/usr/lib/X11/app-defaults/FileSelection",
+      "bytes": 216,
+      "sha256": "3a4bbf06d9caec8729c695cf6d4fe6628beb0dc817b063ce968e390ed8511a28"
+    },
+    "/usr/lib/X11/app-defaults/SaAddLocalFileSwapGuide": {
+      "path": "/usr/lib/X11/app-defaults/SaAddLocalFileSwapGuide",
+      "canonical_path": "/usr/lib/X11/app-defaults/SaAddLocalFileSwapGuide",
+      "bytes": 3445,
+      "sha256": "3539ccc8521be4027a48c38913e4e4284e341281900f798fa0b468282d600aac"
+    },
+    "/usr/lib/X11/app-defaults/SaAddLocalFileSwapTask": {
+      "path": "/usr/lib/X11/app-defaults/SaAddLocalFileSwapTask",
+      "canonical_path": "/usr/lib/X11/app-defaults/SaAddLocalFileSwapTask",
+      "bytes": 1407,
+      "sha256": "c70cb5c001ef16d0f67ba20804838697bf045543728ce027d30f9fffd5a7e2b3"
+    },
+    "/usr/lib/X11/app-defaults/SaFilesPage": {
+      "path": "/usr/lib/X11/app-defaults/SaFilesPage",
+      "canonical_path": "/usr/lib/X11/app-defaults/SaFilesPage",
+      "bytes": 3585,
+      "sha256": "4bab560a07368aa159a64e1c7f134a82942884b1b361a32d5e3f9b0f53bc163e"
+    },
+    "/usr/lib/X11/app-defaults/SaFilesystemCatalog": {
+      "path": "/usr/lib/X11/app-defaults/SaFilesystemCatalog",
+      "canonical_path": "/usr/lib/X11/app-defaults/SaFilesystemCatalog",
+      "bytes": 4128,
+      "sha256": "faeb7941ee36c07f34dc2bc6ab038ff4826f8f979e8ec95459b714910a8f3765"
+    },
+    "/usr/lib/X11/app-defaults/SaFilesystemPanel": {
+      "path": "/usr/lib/X11/app-defaults/SaFilesystemPanel",
+      "canonical_path": "/usr/lib/X11/app-defaults/SaFilesystemPanel",
+      "bytes": 4032,
+      "sha256": "7ca610dbd6da51eac965d680fc0af4d09dda1a20eac9604089238cc3fd55fc2c"
+    },
+    "/usr/lib/X11/app-defaults/SaRestoreFilesGuide": {
+      "path": "/usr/lib/X11/app-defaults/SaRestoreFilesGuide",
+      "canonical_path": "/usr/lib/X11/app-defaults/SaRestoreFilesGuide",
+      "bytes": 11951,
+      "sha256": "d058d8f83bd847a443e3c221f3892b533e1d71e04efb5b8faf4fa119543b27f6"
+    },
+    "/usr/lib/X11/app-defaults/SaRestoreFilesTask": {
+      "path": "/usr/lib/X11/app-defaults/SaRestoreFilesTask",
+      "canonical_path": "/usr/lib/X11/app-defaults/SaRestoreFilesTask",
+      "bytes": 3987,
+      "sha256": "5630a0e5ccd62e075373305b224e3087fb277be72fa05e2dd42bb904be4e8fbe"
+    },
+    "/usr/lib/X11/app-defaults/IconCatalog": {
+      "path": "/usr/lib/X11/app-defaults/IconCatalog",
+      "canonical_path": "/usr/lib/X11/app-defaults/IconCatalog",
+      "bytes": 8944,
+      "sha256": "e5f20eb0f7e069556876dccbd5c38237dd0a23bf925bdda5503df1b382cfd2a2"
+    },
+    "/usr/lib/X11/app-defaults/Desktop": {
+      "path": "/usr/lib/X11/app-defaults/Desktop",
+      "canonical_path": "/usr/lib/X11/app-defaults/Desktop",
+      "bytes": 10425,
+      "sha256": "4b428175e6e45b088b68a5a25a88ee0fac5b0494fe994c058128ea58a28ada6d"
+    },
+    "/usr/lib/X11/app-defaults/Desktophelp": {
+      "path": "/usr/lib/X11/app-defaults/Desktophelp",
+      "canonical_path": "/usr/lib/X11/app-defaults/Desktophelp",
+      "bytes": 586,
+      "sha256": "d7d246753145218819ac021963a2fce7cad89c724079860486ba9c63266fc928"
+    },
+    "/usr/lib/X11/app-defaults/MakeDotDesktop": {
+      "path": "/usr/lib/X11/app-defaults/MakeDotDesktop",
+      "canonical_path": "/usr/lib/X11/app-defaults/MakeDotDesktop",
+      "bytes": 1545,
+      "sha256": "994d1a3e7985576acc821aa8abe858ab0529d38539ddf91705d735348d611914"
+    },
+    "/usr/lib/X11/xdm/DefaultIconList": {
+      "path": "/usr/lib/X11/xdm/DefaultIconList",
+      "canonical_path": "/var/X11/xdm/DefaultIconList",
+      "bytes": 136,
+      "sha256": "3fe0149ab648d8ac5e0d4f61cc24d9408324a0cb8eab9b55f37c937354ef2f5a"
+    },
+    "/usr/lib/X11/xdm/DefaultDeviceList": {
+      "path": "/usr/lib/X11/xdm/DefaultDeviceList",
+      "canonical_path": "/var/X11/xdm/DefaultDeviceList",
+      "bytes": 1450,
+      "sha256": "fe06a659a6cf01b25bc13d7fe505d2d7d5afed522a2c6eeafaa520efb91e6e73"
+    }
+  },
+  "resource_patterns": [
+    "/usr/lib/X11/app-defaults/*[Ff][Mm]*",
+    "/usr/lib/X11/app-defaults/*[Ff]ile*",
+    "/usr/lib/X11/app-defaults/*[Ii]con*",
+    "/usr/lib/X11/app-defaults/*[Bb]g*",
+    "/usr/lib/X11/app-defaults/*[Dd]esk*",
+    "/usr/lib/X11/xdm/DefaultIconList",
+    "/usr/lib/X11/xdm/DefaultDeviceList"
+  ],
+  "resource_roots": {
+    "/usr/lib/filetype": [
+      "Makefile",
+      "Makefile.personal",
+      "arrow.otr",
+      "cdrom.otr",
+      "confidence.otr",
+      "cports.otr",
+      "default",
+      "desktop.otr",
+      "devices",
+      "devices.otr",
+      "disks.otr",
+      "floppy.otr",
+      "hosts.otr",
+      "iconlib",
+      "install",
+      "local",
+      "printers.otr",
+      "sampleFtrs",
+      "serial_ports.otr",
+      "system",
+      "tape.otr",
+      "users.otr",
+      "vadmin"
+    ],
+    "/usr/lib/desktop": [
+      "askRestartFm",
+      "cleanCache",
+      "disableXhost",
+      "flushCache",
+      "fmserv",
+      "forceout",
+      "fserv",
+      "gtk_theme_setup",
+      "iconbooktocatalog",
+      "iconcatalog",
+      "launchbookviewer",
+      "launcheffect",
+      "makeDotDesktop",
+      "makeIconVisuals",
+      "newer",
+      "openHintsShortcuts",
+      "openhomepg",
+      "outputd",
+      "preallocColors",
+      "rcpDevice",
+      "readlink",
+      "realpath",
+      "removeOldLangCatalog",
+      "runInfosearch",
+      "runout",
+      "searchbook",
+      "setPowerSaver",
+      "startdesktop",
+      "telldesktop",
+      "togglexhost",
+      "typeCache",
+      "waitmap"
+    ],
+    "/usr/lib/desktop/iconcatalog": [
+      "pages"
+    ],
+    "/usr/lib/X11/schemes": [
+      "Arizona",
+      "Base",
+      "Bayou",
+      "BlackAndWhite",
+      "Buckingham",
+      "Gainsborough",
+      "Gotham",
+      "GrayScale",
+      "IndigoMagic",
+      "Inverness",
+      "KeyWest",
+      "Lascaux",
+      "Leonardo",
+      "Mendocino",
+      "Metropolis",
+      "Milan",
+      "Monet",
+      "Pacific",
+      "Potrero",
+      "Print",
+      "RedGreenSafe",
+      "Rembrandt",
+      "Rio",
+      "RoseGarden",
+      "Sargent",
+      "Titian",
+      "Turner",
+      "VanGogh",
+      "Vancouver",
+      "Whistler",
+      "Willis"
+    ],
+    "/usr/lib/images": [
+      "3Dgizmo.icon",
+      "Abiword.icon",
+      "AccessX.icon",
+      "ArrayViz.icon",
+      "Aview.icon",
+      "Background.icon",
+      "Backup.icon",
+      "Balsa.icon",
+      "CallStack.icon",
+      "CdPlayer.icon",
+      "Confidence.icon",
+      "Cvbuild.icon",
+      "Cvcord.icon",
+      "Cvhelp.icon",
+      "Cview.icon",
+      "Cvmain.icon",
+      "Cvmake.icon",
+      "CvpathRemap.icon",
+      "Cvpav.icon",
+      "Cvperf.icon",
+      "Cvproj.icon",
+      "Cvsession.icon",
+      "Cvsource.icon",
+      "Cvstatic.icon",
+      "Cvxcov.icon",
+      "DatPlayer.icon",
+      "Desktop.icon",
+      "Dia.icon",
+      "DisView.icon",
+      "DtSounds.icon",
+      "DtUtilities.icon",
+      "Eclipse.icon",
+      "Emacs.icon",
+      "EventCallstack.icon",
+      "ExceptionView.icon",
+      "ExecutionView.icon",
+      "ExpressionView.icon",
+      "Fetch.icon",
+      "FileBrowser.icon",
+      "FileManager.icon",
+      "Fluid.icon",
+      "Fm.icon",
+      "Fmprefs.icon",
+      "FramePanel.icon",
+      "FunctionList.icon",
+      "Fxbuilder.icon",
+      "Gcombust.icon",
+      "Gedit.icon",
+      "Gimp.icon",
+      "Glade.icon",
+      "Glp.icon",
+      "Gmodel.icon",
+      "Gnumeric.icon",
+      "GraphicsUsage.icon",
+      "Grok.icon",
+      "HeapView.icon",
+      "Help.icon",
+      "IEditor.icon",
+      "IconCatalog.icon",
+      "IconSmith.icon",
+      "Imginfo.icon",
+      "Imgview.icon",
+      "Imgworks.icon",
+      "InfoSearch.icon",
+      "Insight.icon",
+      "Ipanel.icon",
+      "Jet.icon",
+      "Keyboard.icon",
+      "LicenseManager.icon",
+      "MFView.icon",
+      "MPView.icon",
+      "Macromedia.icon",
+      "MainView.icon",
+      "MakeDotDesktop.icon",
+      "Maya.icon",
+      "MediaConvert.icon",
+      "MediaPlayer.icon",
+      "Mediarecorder.icon",
+      "MemoryView.icon",
+      "Mouse.icon",
+      "MovieMaker.icon",
+      "Networking.icon",
+      "Outbox.icon",
+      "Overview.icon",
+      "PerfPanel.icon",
+      "Permissions.icon",
+      "Plan.icon",
+      "Printers.icon",
+      "Privmgr.icon",
+      "ProcMeter.icon",
+      "ProcView.icon",
+      "ProcessUsage.icon",
+      "RegisterView.icon",
+      "Restore.icon",
+      "SGIHelp.icon",
+      "SGImeeting.icon",
+      "SGImeetingMsg.icon",
+      "SGImeetingWb-ms.icon",
+      "SGImeetingWb-t126.icon",
+      "SGImeetingWb.icon",
+      "SaDiskCatalog.icon",
+      "SaDiskPanel.icon",
+      "SaFilesystemCatalog.icon",
+      "SaFilesystemPanel.icon",
+      "SaHostCatalog.icon",
+      "SaIsdnCatalog.icon",
+      "SaIsdnPanel.icon",
+      "SaModemPanel.icon",
+      "SaNetIfCatalog.icon",
+      "SaNetIfPanel.icon",
+      "SaPppCatalog.icon",
+      "SaPppPanel.icon",
+      "SaProcessCatalog.icon",
+      "SaProcessPanel.icon",
+      "SaRemovableMediaCatalog.icon",
+      "SaRemovableMediaPanel.icon",
+      "SaSchedBackupCatalog.icon",
+      "SaSchedBackupPanel.icon",
+      "SaSerialDeviceCatalog.icon",
+      "SaSerialDevicePanel.icon",
+      "SaSwapCatalog.icon",
+      "SaSwapPanel.icon",
+      "SaUserAccountCatalog.icon",
+      "SaUserAccountPanel.icon",
+      "Scheme.icon",
+      "ScreenSaver.icon",
+      "Sharefinder.icon",
+      "Sharemgr.icon",
+      "SignalPanel.icon",
+      "SiteMgr.icon",
+      "SoundTrack.icon",
+      "StructureBrowser.icon",
+      "Swmgr.icon",
+      "Swpkg.icon",
+      "SyscallPanel.icon",
+      "Syserrpanel.icon",
+      "Sysmgr.icon",
+      "Sysmon.icon",
+      "SystemUsage.icon",
+      "TaskView.icon",
+      "TfxConfig.icon",
+      "Transfer.icon",
+      "TrapMgr.icon",
+      "Turn.icon",
+      "VarBrowser.icon",
+      "Viewlog.icon",
+      "Webcontrol.icon",
+      "Webjumper.icon",
+      "Windows.icon",
+      "WorkSpace.icon",
+      "XChat.icon",
+      "XMahjongg.icon",
+      "XMcd.icon",
+      "XTerm.icon",
+      "XWsh.icon",
+      "Xinet.icon",
+      "Xmame.icon",
+      "Xmess.icon",
+      "aligngizmo.icon",
+      "apanel.icon",
+      "application.icon",
+      "audiogizmo.icon",
+      "browse.icon",
+      "cal.icon",
+      "callGraphDoc.icon",
+      "cdman.icon",
+      "cedit.icon",
+      "clock.icon",
+      "colorgizmo.icon",
+      "compview.icon",
+      "cube.icon",
+      "datman.icon",
+      "default.icon",
+      "demo.icon",
+      "desktop.icon",
+      "development.icon",
+      "dirview.icon",
+      "edge.icon",
+      "filesdata.icon",
+      "fpolog.icon",
+      "gFTP.icon",
+      "gdiff.icon",
+      "getinfo.icon",
+      "gmemusage.icon",
+      "gr_osview.icon",
+      "hardware.icon",
+      "hotf.icon",
+      "imagegizmo.icon",
+      "imged.icon",
+      "imgtools.icon",
+      "interp.icon",
+      "ipaste.icon",
+      "jot.icon",
+      "kfs.icon",
+      "ktalk.icon",
+      "launch.icon",
+      "light.icon",
+      "lightingGizmo.icon",
+      "liquid.icon",
+      "mag.icon",
+      "manager.icon",
+      "mastergizmo.icon",
+      "monpanel.icon",
+      "musicplayer.icon",
+      "nedit.icon",
+      "network.icon",
+      "patterngizmo.icon",
+      "prefgizmo.icon",
+      "print.icon",
+      "printgizmo.icon",
+      "scriptgizmo.icon",
+      "sdisp.icon",
+      "searchbook.icon",
+      "security.icon",
+      "shadowGizmo.icon",
+      "showcase.icon",
+      "showmap.icon",
+      "soundeditor.icon",
+      "soundplayer.icon",
+      "spellgizmo.icon",
+      "spool.icon",
+      "textgizmo.icon",
+      "textureGizmo.icon",
+      "videogizmo.icon",
+      "vol.icon",
+      "wave.icon",
+      "xcalc.icon",
+      "xcam.icon",
+      "xcolor.icon",
+      "xconfirm.icon",
+      "xkas.icon",
+      "xlatefile3dgizmo.icon",
+      "xmms.icon",
+      "xsane.icon",
+      "xscanimage.icon"
+    ]
+  },
+  "raw_disk_bytes": 100663296000,
+  "raw_validation": "Read-only ro,norecovery mount; size and existing selected file pins checked",
+  "resolver": "Absolute embedded RPATH, then /usr/lib32, /usr/lib32/internal, /lib32, /opt/lib32; static selection, not a native ldd observation",
+  "script_sha256": "4e47a4264c66508e6de087e7c2a41d600261682097b00797a6700046be158e95",
+  "elf_parser_sha256": "aadf43001a1ef36cb4c923d8514291739dff76febf72e93d34bb0f64cfed809e"
+}

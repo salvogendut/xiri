@@ -216,6 +216,13 @@ keyboard input. Foreign signal handlers, resize and normal app exit remain open;
 
 The [4Dwm loader checkpoint](results/2026-11-01-irix-elfmap-subpage.md) now handles the two 4 KiB data boundaries and passes 750 mapping/limit checks. The [fixed/local mmap checkpoint](results/2026-11-01-irix-mmap-local.md) now also clears GL initialization, with 660 mapping cases and native page-zero controls. The [measured PRDA checkpoint](results/2026-11-01-irix-prda.md) now clears that libc fault, with 80 executions / 180 records plus fork and native-exec controls. The [4Dwm session](results/2026-11-01-irix-4dwm.md) now passes reparenting, pointer focus, key delivery and dragging alongside Toolchest and a working winterm shell. Session saving is explicitly disabled; desks, restoration and complete desktop services remain open.
 
+The [expanded desktop attempt](results/2026-11-01-irix-desktop-components.md)
+uses those unchanged pins to investigate fm, bgicons and Icon Catalog. It finds
+a fatal unsupported pthread resource-limit query and a separate executable
+alignment rejection. Its observation record preserves baseline-check failures
+and component failures; it does not replace the accepted 4Dwm interaction matrix
+or qualify the recently merged IRIS upstream build for these guests.
+
 Active emulator and kernel development now uses the consolidated
 [`xiri` branches](FORKS.md). Existing guest qualification remains tied to its
 recorded commits and binaries; consolidation does not silently update those
