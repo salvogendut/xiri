@@ -28,12 +28,16 @@ experiment that establishes whether the resource is actually used.
 
 ## Still to locate or qualify
 
-The [AUTORESRV follow-up](results/2026-11-01-irix-desktop-autoresrv.md) clears
-the pthread-table allocation failure. All four launches now fail at
-`prctl(PR_INIT_THREADS)`, after successful resource queries and mappings.
-This establishes a kernel thread-initialization requirement; it adds no font,
-artwork or other image resource. File-type rules, icon artwork and catalog
-contents remain candidates to follow once the clients pass initialization.
+The [pthread initialization follow-up](results/2026-11-01-irix-desktop-init-threads.md)
+clears the kernel initialization failure without adding image assets. Clients
+now try `$HOME/.desktop-xiri-indy`; `mkdir` is unsupported, and Icon Catalog
+reports that it cannot access the Desktop session directory. This is generated
+per-user state to create under native ownership, not an old account directory
+to copy from the image. The file manager also encounters an unsupported
+`waitsys` option combination. Catalog pages, filetype rules and artwork still
+need runtime qualification after this boundary is cleared. Missing
+`uxsgiimd`/`uxsgierr` message catalogs are observed diagnostic candidates;
+the current capture does not establish them as startup prerequisites.
 
 | Candidate | What to record next |
 | --- | --- |

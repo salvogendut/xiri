@@ -93,3 +93,6 @@ The [qualified result](../../docs/results/2026-11-01-irix-mmap-autoresrv.md)
 records 464 original-IRIX observations, 1,160 native mapping cases, 30 controls
 and 32 native page-zero controls. The [desktop follow-up](../../docs/results/2026-11-01-irix-desktop-autoresrv.md)
 records successful table/fixed mappings and the next PR_INIT_THREADS boundary.
+
+The [initial pthread state lab](../irix-init-threads/README.md) qualifies the
+following initialization operation and retries the original desktop clients.

@@ -98,6 +98,8 @@ Keep the [fork workflow](../../docs/FORKS.md) for any emulator or kernel changes
 this lab uses the qualified older binaries until replacement qualification.
 
 The [AUTORESRV result](../../docs/results/2026-11-01-irix-mmap-autoresrv.md)
-now clears table allocation. The [next application boundary](../../docs/results/2026-11-01-irix-desktop-autoresrv.md)
-is `prctl(PR_INIT_THREADS)`, after both private allocations succeed. No further
-image assets are required by this observed failure.
+clears table allocation. [Measured pthread initialization](../../docs/results/2026-11-01-irix-init-threads.md)
+now clears the next operation. The [latest desktop follow-up](../../docs/results/2026-11-01-irix-desktop-init-threads.md)
+reaches generated session-directory creation (`mkdir` ENOSYS), an Icon Catalog
+fatal dialog and fm `waitsys(options=3)` EINVAL. No additional image assets
+were staged. Startup repeatability and usable file/icon clients remain open.

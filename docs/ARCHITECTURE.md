@@ -1,6 +1,6 @@
 # Xiri proposed architecture
 
-Status: architectural target agreed on 2026-10-14; implementation status updated 2026-11-01. The kernel personality runs selected original o32/n32 applications. Original 4Dwm and Toolchest run alongside winterm with a native shell in bounded sessions. File/icon clients now pass resource-limit queries and AUTORESRV allocation, then stop at PR_INIT_THREADS. General compatibility and the complete desktop remain unqualified. The [execution roadmap](ROADMAP.md) defines the remaining experiments.
+Status: architectural target agreed on 2026-10-14; implementation status updated 2026-11-01. The kernel personality runs selected original o32/n32 applications. Original 4Dwm and Toolchest run alongside winterm with a native shell in bounded sessions. File/icon clients now pass resource-limit queries, AUTORESRV allocation and measured pthread initialization, then reach session-directory creation failures. General compatibility and the complete desktop remain unqualified. The [execution roadmap](ROADMAP.md) defines the remaining experiments.
 
 Xiri will use NetBSD as its underlying OS, execute selected IRIX binaries on the workstation's MIPS CPU through an IRIX personality, and preserve the existing IRIX desktop. Applications built natively for NetBSD should share that desktop with the compatible programs.
 
@@ -57,6 +57,11 @@ build recipe yet. A concrete core-kernel dependency is our added
 the inspected upstream tree does not provide it. Module packaging therefore
 needs a dependency/export audit and resolution of this helper, in addition to
 load/unload and application tests.
+
+The pthread-initialization work adds another core dependency: an optional
+`emul.e_sigmask` callback in `lwp_userret` to refresh a user-managed signal hold
+before pending-signal delivery. This hook also needs upstream integration or
+an equivalent supported interface for deployment on a standard kernel.
 
 NetBSD's [current module framework](https://man.netbsd.org/module.7) supports
 execution interpreters and uses [modload](https://man.netbsd.org/modload.8).
@@ -131,8 +136,10 @@ implemented as the bounded `COMPAT_IRIX_O32` personality. A userspace tracer
 may help observe behavior, but is not assumed to implement all signal,
 threading and VM semantics. The [AUTORESRV result](results/2026-11-01-irix-mmap-autoresrv.md)
 illustrates the boundary: the kernel performs native demand mappings for an
-IRIX request, while the unchanged libpthread subsequently asks for the still
-unsupported [PR_INIT_THREADS operation](results/2026-11-01-irix-desktop-autoresrv.md).
+IRIX request. The subsequent [PR_INIT_THREADS adapter](results/2026-11-01-irix-init-threads.md)
+maintains measured PRDA holds and synchronizes native signal masks; it does
+not establish thread creation. The [desktop retry](results/2026-11-01-irix-desktop-init-threads.md)
+now reaches missing directory creation and an unsupported wait option combination.
 
 ## Original desktop preservation
 

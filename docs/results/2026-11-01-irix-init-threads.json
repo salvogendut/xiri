@@ -1,0 +1,771 @@
+{
+  "status": "passed",
+  "reference": ".work/irix-reference/init-threads-records-runs/ci-8hf99523",
+  "reference_result_sha256": "71cffde9e3a4e3fc98bc54f54046ae08afd3eec4549058a6780cfd75ba864328",
+  "reference_records_sha256": "0f8e570a2126a4a6cb037023982b34455107596293e78a19c87e99b45c344fc5",
+  "qualifier_sha256": "331293c6f0fc63a9a99ffab296bf92346d43d07301545790809dec5229f88b1c",
+  "executions": 260,
+  "records": 860,
+  "prda_protection_policy_cases": 40,
+  "controls": 30,
+  "signal_controls": 32,
+  "native_zero_controls": 32,
+  "native_prda_controls": 32,
+  "fork_policy_cases": 20,
+  "runs": [
+    {
+      "directory": ".work/irix-init-threads/runs/lp64-ci-2qm8gxav",
+      "result_sha256": "f9d517fac3cf5bcd7c12582b5ab2c303ee6054577008058d67c7a4f919271f69",
+      "pin": {
+        "schema": 1,
+        "description": "Measured initial IRIX pthread state and lifecycle",
+        "ident": "XIRI_IRIX_INIT_THREADS_20261101",
+        "source_revision": "a9e715bb082a755881799234dfdb54abca5a04c1",
+        "source_branch": "xiri",
+        "build_arch": "mips64eb",
+        "page_bytes": 8192,
+        "boot_kernel_sha256": "9b71fa1fc685b8a837382518f187871123185a478c7e35bbfa99fc76b3ff7363",
+        "native_kernel_sha256": "9236b5be410a3ffac454b5556a93a80423da7829ac0311e1f847d2073fd866eb",
+        "debug_kernel_sha256": "cee59625cea58635df8ceae1f92e501537632f5d046ce6f826d0973da3ded337",
+        "native_o32_sha256": "c294fbb1f2110445be31c096481ea54ab561c7e59ca5b9fc7171310098d755d4",
+        "source_dirty": false,
+        "emulator_revision": "9df1df14334838a989253efefe26f0547e6da592",
+        "emulator_branch": "xiri/netbsd64-tlb",
+        "emulator_sha256": "1b3f7702ba7f43b5c4fca8ba8884243559f46371d8d67a36ce5e6fee1e595eba",
+        "ci_client_sha256": "8711321aa6eaae440da3c7920b00ae4cf1c7f2abbdb15a9919f58485500ffb6c",
+        "base_disk_sha256": "269038c7b77660c83d3835208fc0b2702c93110c14b3c55a42416f51672cee2a",
+        "nvram_sha256": "ee883474d52f09278287b2044f7aeca61d2e7bc39c0bb8fd85c983ab64063d15",
+        "config_sha256": "08b91fa0950a3ee74b479e7b1bb8e40ddb5cad6d59414025e6c2222541a381ef",
+        "runtimes": [
+          {
+            "name": "vendor-o32-libc",
+            "path": "/usr/lib/libc.so.1",
+            "sha256": "ea766492103a193e9d404942705e4e28987545e37f699ede232b6c0f8c97c954"
+          },
+          {
+            "name": "vendor-o32-rld",
+            "path": "/lib/rld",
+            "sha256": "30228b54c1e5585b365514eb7c9895b03cc0f61cb898e05e3ddafece87863439"
+          },
+          {
+            "name": "vendor-n32-libc",
+            "path": "/lib32/libc.so.1",
+            "sha256": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e"
+          },
+          {
+            "name": "vendor-n32-rld",
+            "path": "/lib32/rld",
+            "sha256": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b"
+          }
+        ],
+        "config_path": "lab/irix-init-threads/XIRI_IRIX_INIT_THREADS"
+      },
+      "kernel_abi": "lp64",
+      "mode": "ci",
+      "executions": 104,
+      "records": 344,
+      "sources": {
+        "scripts/probe-irix-init-threads.py": {
+          "checked": ".work/irix-init-threads/runs/lp64-ci-2qm8gxav/sources/scripts/probe-irix-init-threads.py",
+          "sha256": "6ecd5ae9b89dde8a33b63802014bfd0b164b321f29dc3a86df9678d9c75da59b"
+        },
+        "lab/irix-shell/guard.c": {
+          "checked": "/var/home/salvogendut/Dev/xiri/lab/irix-shell/guard.c",
+          "sha256": "1bb3a7cc79f83bbc7de56c50c2ba5d0565dcc92eb7ff2d5b58d6f1e2257c11e3"
+        },
+        "lab/irix-shell/escape-control.c": {
+          "checked": "/var/home/salvogendut/Dev/xiri/lab/irix-shell/escape-control.c",
+          "sha256": "b1bacd5bdfc5df1437010aeaf03f66d0a96aa96b82725756b78f092ba4358100"
+        },
+        "lab/irix-lp64/runner.c": {
+          "checked": "/var/home/salvogendut/Dev/xiri/lab/irix-lp64/runner.c",
+          "sha256": "005bdf3fffce5fb8ca79073e92cc41431aa953550c41014183d5de986a104463"
+        },
+        "lab/irix-mmap-local/zero-control.c": {
+          "checked": "/var/home/salvogendut/Dev/xiri/lab/irix-mmap-local/zero-control.c",
+          "sha256": "a481470184d02e314e34538561852849688746e55798e7607553638ff5f22f3c"
+        },
+        "lab/irix-prda/prda-control.c": {
+          "checked": "/var/home/salvogendut/Dev/xiri/lab/irix-prda/prda-control.c",
+          "sha256": "82ab3acb47b6f88dffde9adb66f5a68d60a8ab9a444387af62a0ad5e33cf6461"
+        },
+        "lab/irix-init-threads/signal-inspect.c": {
+          "checked": "/var/home/salvogendut/Dev/xiri/lab/irix-init-threads/signal-inspect.c",
+          "sha256": "dbbaff4de7345f28778509231824827c6a92ad4d05cf55b3c305be58941456e5"
+        },
+        "lab/irix-init-threads/signal-native.c": {
+          "checked": "/var/home/salvogendut/Dev/xiri/lab/irix-init-threads/signal-native.c",
+          "sha256": "b426347f5a3882afebe6129d03197ffd7720776f2f9030c19395cd943092cc29"
+        }
+      },
+      "signal_controls": [
+        {
+          "abi": "native",
+          "mode": 0,
+          "uid": 0,
+          "output": "./signal-inspect 0 0 ./native-signal-0; xiri_rc=$?; printf '\\nXIRI_f6 \b41b50700b54fe69bf7d3d2b9e0f9d1_RC=%s\\n' \"$xiri_rc\"\nSIGNAL uid=0 mode=0 observed=1 tries=1 mask=10004000,00000001,00000000,00000000 pending=00004000,00000000,00000000,00000000 exit=-1 signal=9 absent=1 valid=1\n\nXIRI_f641b50700b54fe69bf7d3d2b9e0f9d1_RC=0\nxiri-indy# "
+        },
+        {
+          "abi": "native",
+          "mode": 0,
+          "uid": 1234,
+          "output": "./signal-inspect 1234 0 ./native-signal-0; xiri_rc=$?; printf '\\nXIRI \b_fe11f90dd399487c90064a46c23f5c8e_RC=%s\\n' \"$xiri_rc\"\nSIGNAL uid=1234 mode=0 observed=1 tries=1 mask=10004000,00000001,00000000,00000000 pending=00004000,00000000,00000000,00000000 exit=-1 signal=9 absent=1 valid=1\n\nXIRI_fe11f90dd399487c90064a46c23f5c8e_RC=0\nxiri-indy# "
+        },
+        {
+          "abi": "native",
+          "mode": 1,
+          "uid": 0,
+          "output": "./signal-inspect 0 1 ./native-signal-1; xiri_rc=$?; printf '\\nXIRI_07 \b44cd4e9afa4049a47a09adc72d6795_RC=%s\\n' \"$xiri_rc\"\nSIGNAL uid=0 mode=1 observed=1 tries=1 mask=10000000,00000001,00000000,00000000 pending=00000000,00000000,00000000,00000000 exit=-1 signal=15 absent=1 valid=1\n\nXIRI_0744cd4e9afa4049a47a09adc72d6795_RC=0\nxiri-indy# "
+        },
+        {
+          "abi": "native",
+          "mode": 1,
+          "uid": 1234,
+          "output": "./signal-inspect 1234 1 ./native-signal-1; xiri_rc=$?; printf '\\nXIRI \b_955dfb53d668469684a0abfc67f2e543_RC=%s\\n' \"$xiri_rc\"\nSIGNAL uid=1234 mode=1 observed=1 tries=1 mask=10000000,00000001,00000000,00000000 pending=00000000,00000000,00000000,00000000 exit=-1 signal=15 absent=1 valid=1\n\nXIRI_955dfb53d668469684a0abfc67f2e543_RC=0\nxiri-indy# "
+        },
+        {
+          "abi": "o32",
+          "mode": 0,
+          "uid": 0,
+          "output": "./signal-inspect 0 0 ./o32-signal-spin-0; xiri_rc=$?; printf '\\nXIRI_ \b59dd1bcf083441e3b5be16415c99b5de_RC=%s\\n' \"$xiri_rc\"\nSIGNAL uid=0 mode=0 observed=1 tries=1 mask=10004000,00000001,00000000,00000000 pending=00004000,00000000,00000000,00000000 exit=-1 signal=9 absent=1 valid=1\n\nXIRI_59dd1bcf083441e3b5be16415c99b5de_RC=0\nxiri-indy# "
+        },
+        {
+          "abi": "o32",
+          "mode": 0,
+          "uid": 1234,
+          "output": "./signal-inspect 1234 0 ./o32-signal-spin-0; xiri_rc=$?; printf '\\nXI \bRI_076770b023cc45caa5bbd5e415974c14_RC=%s\\n' \"$xiri_rc\"\nSIGNAL uid=1234 mode=0 observed=1 tries=1 mask=10004000,00000001,00000000,00000000 pending=00004000,00000000,00000000,00000000 exit=-1 signal=9 absent=1 valid=1\n\nXIRI_076770b023cc45caa5bbd5e415974c14_RC=0\nxiri-indy# "
+        },
+        {
+          "abi": "o32",
+          "mode": 1,
+          "uid": 0,
+          "output": "./signal-inspect 0 1 ./o32-signal-spin-1; xiri_rc=$?; printf '\\nXIRI_ \b2445052b01134a2186b5eeaddfe25f3b_RC=%s\\n' \"$xiri_rc\"\nSIGNAL uid=0 mode=1 observed=1 tries=1 mask=10000000,00000001,00000000,00000000 pending=00000000,00000000,00000000,00000000 exit=-1 signal=15 absent=1 valid=1\n\nXIRI_2445052b01134a2186b5eeaddfe25f3b_RC=0\nxiri-indy# "
+        },
+        {
+          "abi": "o32",
+          "mode": 1,
+          "uid": 1234,
+          "output": "./signal-inspect 1234 1 ./o32-signal-spin-1; xiri_rc=$?; printf '\\nXI \bRI_0245fa6f17e048ccae7833468847c67a_RC=%s\\n' \"$xiri_rc\"\nSIGNAL uid=1234 mode=1 observed=1 tries=1 mask=10000000,00000001,00000000,00000000 pending=00000000,00000000,00000000,00000000 exit=-1 signal=15 absent=1 valid=1\n\nXIRI_0245fa6f17e048ccae7833468847c67a_RC=0\nxiri-indy# "
+        },
+        {
+          "abi": "n32",
+          "mode": 0,
+          "uid": 0,
+          "output": "./signal-inspect 0 0 ./n32-signal-spin-0; xiri_rc=$?; printf '\\nXIRI_ \bc8f73894d6614c3ebf1ca3182c658902_RC=%s\\n' \"$xiri_rc\"\nSIGNAL uid=0 mode=0 observed=1 tries=1 mask=10004000,00000001,00000000,00000000 pending=00004000,00000000,00000000,00000000 exit=-1 signal=9 absent=1 valid=1\n\nXIRI_c8f73894d6614c3ebf1ca3182c658902_RC=0\nxiri-indy# "
+        },
+        {
+          "abi": "n32",
+          "mode": 0,
+          "uid": 1234,
+          "output": "./signal-inspect 1234 0 ./n32-signal-spin-0; xiri_rc=$?; printf '\\nXI \bRI_b32e0f3e60fd4f8ba32418ff77017fdb_RC=%s\\n' \"$xiri_rc\"\nSIGNAL uid=1234 mode=0 observed=1 tries=1 mask=10004000,00000001,00000000,00000000 pending=00004000,00000000,00000000,00000000 exit=-1 signal=9 absent=1 valid=1\n\nXIRI_b32e0f3e60fd4f8ba32418ff77017fdb_RC=0\nxiri-indy# "
+        },
+        {
+          "abi": "n32",
+          "mode": 1,
+          "uid": 0,
+          "output": "./signal-inspect 0 1 ./n32-signal-spin-1; xiri_rc=$?; printf '\\nXIRI_ \b5d4add5d484e446fad891125b37b4837_RC=%s\\n' \"$xiri_rc\"\nSIGNAL uid=0 mode=1 observed=1 tries=1 mask=10000000,00000001,00000000,00000000 pending=00000000,00000000,00000000,00000000 exit=-1 signal=15 absent=1 valid=1\n\nXIRI_5d4add5d484e446fad891125b37b4837_RC=0\nxiri-indy# "
+        },
+        {
+          "abi": "n32",
+          "mode": 1,
+          "uid": 1234,
+          "output": "./signal-inspect 1234 1 ./n32-signal-spin-1; xiri_rc=$?; printf '\\nXI \bRI_11cba76d19804a0fb4545855184cf89f_RC=%s\\n' \"$xiri_rc\"\nSIGNAL uid=1234 mode=1 observed=1 tries=1 mask=10000000,00000001,00000000,00000000 pending=00000000,00000000,00000000,00000000 exit=-1 signal=15 absent=1 valid=1\n\nXIRI_11cba76d19804a0fb4545855184cf89f_RC=0\nxiri-indy# "
+        }
+      ],
+      "clean_shutdown": true
+    },
+    {
+      "directory": ".work/irix-init-threads/runs/lp64-ordinary-yo342ve0",
+      "result_sha256": "93bda46fdc741a0cc8efdee06057a2bf9630306deac0db3ef1fe2c96ef21c503",
+      "pin": {
+        "schema": 1,
+        "description": "Measured initial IRIX pthread state and lifecycle",
+        "ident": "XIRI_IRIX_INIT_THREADS_20261101",
+        "source_revision": "a9e715bb082a755881799234dfdb54abca5a04c1",
+        "source_branch": "xiri",
+        "build_arch": "mips64eb",
+        "page_bytes": 8192,
+        "boot_kernel_sha256": "9b71fa1fc685b8a837382518f187871123185a478c7e35bbfa99fc76b3ff7363",
+        "native_kernel_sha256": "9236b5be410a3ffac454b5556a93a80423da7829ac0311e1f847d2073fd866eb",
+        "debug_kernel_sha256": "cee59625cea58635df8ceae1f92e501537632f5d046ce6f826d0973da3ded337",
+        "native_o32_sha256": "c294fbb1f2110445be31c096481ea54ab561c7e59ca5b9fc7171310098d755d4",
+        "source_dirty": false,
+        "emulator_revision": "9df1df14334838a989253efefe26f0547e6da592",
+        "emulator_branch": "xiri/netbsd64-tlb",
+        "emulator_sha256": "1b3f7702ba7f43b5c4fca8ba8884243559f46371d8d67a36ce5e6fee1e595eba",
+        "ci_client_sha256": "8711321aa6eaae440da3c7920b00ae4cf1c7f2abbdb15a9919f58485500ffb6c",
+        "base_disk_sha256": "269038c7b77660c83d3835208fc0b2702c93110c14b3c55a42416f51672cee2a",
+        "nvram_sha256": "ee883474d52f09278287b2044f7aeca61d2e7bc39c0bb8fd85c983ab64063d15",
+        "config_sha256": "08b91fa0950a3ee74b479e7b1bb8e40ddb5cad6d59414025e6c2222541a381ef",
+        "runtimes": [
+          {
+            "name": "vendor-o32-libc",
+            "path": "/usr/lib/libc.so.1",
+            "sha256": "ea766492103a193e9d404942705e4e28987545e37f699ede232b6c0f8c97c954"
+          },
+          {
+            "name": "vendor-o32-rld",
+            "path": "/lib/rld",
+            "sha256": "30228b54c1e5585b365514eb7c9895b03cc0f61cb898e05e3ddafece87863439"
+          },
+          {
+            "name": "vendor-n32-libc",
+            "path": "/lib32/libc.so.1",
+            "sha256": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e"
+          },
+          {
+            "name": "vendor-n32-rld",
+            "path": "/lib32/rld",
+            "sha256": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b"
+          }
+        ],
+        "config_path": "lab/irix-init-threads/XIRI_IRIX_INIT_THREADS"
+      },
+      "kernel_abi": "lp64",
+      "mode": "ordinary",
+      "executions": 104,
+      "records": 344,
+      "sources": {
+        "scripts/probe-irix-init-threads.py": {
+          "checked": ".work/irix-init-threads/runs/lp64-ordinary-yo342ve0/sources/scripts/probe-irix-init-threads.py",
+          "sha256": "6ecd5ae9b89dde8a33b63802014bfd0b164b321f29dc3a86df9678d9c75da59b"
+        },
+        "lab/irix-shell/guard.c": {
+          "checked": "/var/home/salvogendut/Dev/xiri/lab/irix-shell/guard.c",
+          "sha256": "1bb3a7cc79f83bbc7de56c50c2ba5d0565dcc92eb7ff2d5b58d6f1e2257c11e3"
+        },
+        "lab/irix-shell/escape-control.c": {
+          "checked": "/var/home/salvogendut/Dev/xiri/lab/irix-shell/escape-control.c",
+          "sha256": "b1bacd5bdfc5df1437010aeaf03f66d0a96aa96b82725756b78f092ba4358100"
+        },
+        "lab/irix-lp64/runner.c": {
+          "checked": "/var/home/salvogendut/Dev/xiri/lab/irix-lp64/runner.c",
+          "sha256": "005bdf3fffce5fb8ca79073e92cc41431aa953550c41014183d5de986a104463"
+        },
+        "lab/irix-mmap-local/zero-control.c": {
+          "checked": "/var/home/salvogendut/Dev/xiri/lab/irix-mmap-local/zero-control.c",
+          "sha256": "a481470184d02e314e34538561852849688746e55798e7607553638ff5f22f3c"
+        },
+        "lab/irix-prda/prda-control.c": {
+          "checked": "/var/home/salvogendut/Dev/xiri/lab/irix-prda/prda-control.c",
+          "sha256": "82ab3acb47b6f88dffde9adb66f5a68d60a8ab9a444387af62a0ad5e33cf6461"
+        },
+        "lab/irix-init-threads/signal-inspect.c": {
+          "checked": "/var/home/salvogendut/Dev/xiri/lab/irix-init-threads/signal-inspect.c",
+          "sha256": "dbbaff4de7345f28778509231824827c6a92ad4d05cf55b3c305be58941456e5"
+        },
+        "lab/irix-init-threads/signal-native.c": {
+          "checked": "/var/home/salvogendut/Dev/xiri/lab/irix-init-threads/signal-native.c",
+          "sha256": "b426347f5a3882afebe6129d03197ffd7720776f2f9030c19395cd943092cc29"
+        }
+      },
+      "signal_controls": [
+        {
+          "abi": "native",
+          "mode": 0,
+          "uid": 0,
+          "output": "./signal-inspect 0 0 ./native-signal-0; xiri_rc=$?; printf '\\nXIRI_2e \b83cdeb00894d748d5150affd312922_RC=%s\\n' \"$xiri_rc\"\nSIGNAL uid=0 mode=0 observed=1 tries=1 mask=10004000,00000001,00000000,00000000 pending=00004000,00000000,00000000,00000000 exit=-1 signal=9 absent=1 valid=1\n\nXIRI_2e83cdeb00894d748d5150affd312922_RC=0\nxiri-indy# "
+        },
+        {
+          "abi": "native",
+          "mode": 0,
+          "uid": 1234,
+          "output": "./signal-inspect 1234 0 ./native-signal-0; xiri_rc=$?; printf '\\nXIRI \b_dc403d5566ff44c99952fc6cf7c1e563_RC=%s\\n' \"$xiri_rc\"\nSIGNAL uid=1234 mode=0 observed=1 tries=1 mask=10004000,00000001,00000000,00000000 pending=00004000,00000000,00000000,00000000 exit=-1 signal=9 absent=1 valid=1\n\nXIRI_dc403d5566ff44c99952fc6cf7c1e563_RC=0\nxiri-indy# "
+        },
+        {
+          "abi": "native",
+          "mode": 1,
+          "uid": 0,
+          "output": "./signal-inspect 0 1 ./native-signal-1; xiri_rc=$?; printf '\\nXIRI_37 \ba532f577a4448caaa8c3190283b749_RC=%s\\n' \"$xiri_rc\"\nSIGNAL uid=0 mode=1 observed=1 tries=1 mask=10000000,00000001,00000000,00000000 pending=00000000,00000000,00000000,00000000 exit=-1 signal=15 absent=1 valid=1\n\nXIRI_37a532f577a4448caaa8c3190283b749_RC=0\nxiri-indy# "
+        },
+        {
+          "abi": "native",
+          "mode": 1,
+          "uid": 1234,
+          "output": "./signal-inspect 1234 1 ./native-signal-1; xiri_rc=$?; printf '\\nXIRI \b_c4844f49405f4ca5956911d55a037892_RC=%s\\n' \"$xiri_rc\"\nSIGNAL uid=1234 mode=1 observed=1 tries=1 mask=10000000,00000001,00000000,00000000 pending=00000000,00000000,00000000,00000000 exit=-1 signal=15 absent=1 valid=1\n\nXIRI_c4844f49405f4ca5956911d55a037892_RC=0\nxiri-indy# "
+        },
+        {
+          "abi": "o32",
+          "mode": 0,
+          "uid": 0,
+          "output": "./signal-inspect 0 0 ./o32-signal-spin-0; xiri_rc=$?; printf '\\nXIRI_ \b6cb118a7a1a647d7a269ab8f782fa3aa_RC=%s\\n' \"$xiri_rc\"\nSIGNAL uid=0 mode=0 observed=1 tries=1 mask=10004000,00000001,00000000,00000000 pending=00004000,00000000,00000000,00000000 exit=-1 signal=9 absent=1 valid=1\n\nXIRI_6cb118a7a1a647d7a269ab8f782fa3aa_RC=0\nxiri-indy# "
+        },
+        {
+          "abi": "o32",
+          "mode": 0,
+          "uid": 1234,
+          "output": "./signal-inspect 1234 0 ./o32-signal-spin-0; xiri_rc=$?; printf '\\nXI \bRI_dd7ed0c4031b4b81900dcbfac4d153d2_RC=%s\\n' \"$xiri_rc\"\nSIGNAL uid=1234 mode=0 observed=1 tries=1 mask=10004000,00000001,00000000,00000000 pending=00004000,00000000,00000000,00000000 exit=-1 signal=9 absent=1 valid=1\n\nXIRI_dd7ed0c4031b4b81900dcbfac4d153d2_RC=0\nxiri-indy# "
+        },
+        {
+          "abi": "o32",
+          "mode": 1,
+          "uid": 0,
+          "output": "./signal-inspect 0 1 ./o32-signal-spin-1; xiri_rc=$?; printf '\\nXIRI_ \bf8952becb87e45bb8656ec9be51f05be_RC=%s\\n' \"$xiri_rc\"\nSIGNAL uid=0 mode=1 observed=1 tries=1 mask=10000000,00000001,00000000,00000000 pending=00000000,00000000,00000000,00000000 exit=-1 signal=15 absent=1 valid=1\n\nXIRI_f8952becb87e45bb8656ec9be51f05be_RC=0\nxiri-indy# "
+        },
+        {
+          "abi": "o32",
+          "mode": 1,
+          "uid": 1234,
+          "output": "./signal-inspect 1234 1 ./o32-signal-spin-1; xiri_rc=$?; printf '\\nXI \bRI_62c06afc26cc4457b70081ecfd3e4379_RC=%s\\n' \"$xiri_rc\"\nSIGNAL uid=1234 mode=1 observed=1 tries=1 mask=10000000,00000001,00000000,00000000 pending=00000000,00000000,00000000,00000000 exit=-1 signal=15 absent=1 valid=1\n\nXIRI_62c06afc26cc4457b70081ecfd3e4379_RC=0\nxiri-indy# "
+        },
+        {
+          "abi": "n32",
+          "mode": 0,
+          "uid": 0,
+          "output": "./signal-inspect 0 0 ./n32-signal-spin-0; xiri_rc=$?; printf '\\nXIRI_ \b3995785dd092445e921a2b6873e33b5f_RC=%s\\n' \"$xiri_rc\"\nSIGNAL uid=0 mode=0 observed=1 tries=1 mask=10004000,00000001,00000000,00000000 pending=00004000,00000000,00000000,00000000 exit=-1 signal=9 absent=1 valid=1\n\nXIRI_3995785dd092445e921a2b6873e33b5f_RC=0\nxiri-indy# "
+        },
+        {
+          "abi": "n32",
+          "mode": 0,
+          "uid": 1234,
+          "output": "./signal-inspect 1234 0 ./n32-signal-spin-0; xiri_rc=$?; printf '\\nXI \bRI_a97ab59ed8ff4ded9dcf8a56839b4dcc_RC=%s\\n' \"$xiri_rc\"\nSIGNAL uid=1234 mode=0 observed=1 tries=1 mask=10004000,00000001,00000000,00000000 pending=00004000,00000000,00000000,00000000 exit=-1 signal=9 absent=1 valid=1\n\nXIRI_a97ab59ed8ff4ded9dcf8a56839b4dcc_RC=0\nxiri-indy# "
+        },
+        {
+          "abi": "n32",
+          "mode": 1,
+          "uid": 0,
+          "output": "./signal-inspect 0 1 ./n32-signal-spin-1; xiri_rc=$?; printf '\\nXIRI_ \b6dfc48090c4e4ed6bf0e505b297a977d_RC=%s\\n' \"$xiri_rc\"\nSIGNAL uid=0 mode=1 observed=1 tries=1 mask=10000000,00000001,00000000,00000000 pending=00000000,00000000,00000000,00000000 exit=-1 signal=15 absent=1 valid=1\n\nXIRI_6dfc48090c4e4ed6bf0e505b297a977d_RC=0\nxiri-indy# "
+        },
+        {
+          "abi": "n32",
+          "mode": 1,
+          "uid": 1234,
+          "output": "./signal-inspect 1234 1 ./n32-signal-spin-1; xiri_rc=$?; printf '\\nXI \bRI_5b7a4b685c6b4ab69a2ae9a652a8b47f_RC=%s\\n' \"$xiri_rc\"\nSIGNAL uid=1234 mode=1 observed=1 tries=1 mask=10000000,00000001,00000000,00000000 pending=00000000,00000000,00000000,00000000 exit=-1 signal=15 absent=1 valid=1\n\nXIRI_5b7a4b685c6b4ab69a2ae9a652a8b47f_RC=0\nxiri-indy# "
+        }
+      ],
+      "clean_shutdown": true
+    },
+    {
+      "directory": ".work/irix-init-threads/runs/o32-ci-5uxmp1o9",
+      "result_sha256": "049492c5ef18256d92bd44f45467048be40082805a2f07eaad026ca947d98ba4",
+      "pin": {
+        "schema": 1,
+        "description": "Measured initial IRIX pthread state and lifecycle",
+        "ident": "XIRI_IRIX_INIT_THREADS_O32_20261101",
+        "source_revision": "a9e715bb082a755881799234dfdb54abca5a04c1",
+        "source_branch": "xiri",
+        "build_arch": "mipseb",
+        "page_bytes": 4096,
+        "boot_kernel_sha256": "a8711cc2a1eeb7db0fa34c802603e6b0efbe3d6f261270bbdbe1217e21084317",
+        "native_kernel_sha256": "a8711cc2a1eeb7db0fa34c802603e6b0efbe3d6f261270bbdbe1217e21084317",
+        "debug_kernel_sha256": "d1a70c024629a28ddf97e37ee52671609acd752caf5a7bdded61c43df05e1f79",
+        "native_o32_sha256": "c294fbb1f2110445be31c096481ea54ab561c7e59ca5b9fc7171310098d755d4",
+        "source_dirty": false,
+        "emulator_revision": "9df1df14334838a989253efefe26f0547e6da592",
+        "emulator_branch": "xiri/netbsd64-tlb",
+        "emulator_sha256": "1b3f7702ba7f43b5c4fca8ba8884243559f46371d8d67a36ce5e6fee1e595eba",
+        "ci_client_sha256": "8711321aa6eaae440da3c7920b00ae4cf1c7f2abbdb15a9919f58485500ffb6c",
+        "base_disk_sha256": "269038c7b77660c83d3835208fc0b2702c93110c14b3c55a42416f51672cee2a",
+        "nvram_sha256": "ee883474d52f09278287b2044f7aeca61d2e7bc39c0bb8fd85c983ab64063d15",
+        "config_sha256": "acb569fbc24cf93bbae4971053c60c20adca1558852d85b5577eb9b779b26d48",
+        "runtimes": [
+          {
+            "name": "vendor-o32-libc",
+            "path": "/usr/lib/libc.so.1",
+            "sha256": "ea766492103a193e9d404942705e4e28987545e37f699ede232b6c0f8c97c954"
+          },
+          {
+            "name": "vendor-o32-rld",
+            "path": "/lib/rld",
+            "sha256": "30228b54c1e5585b365514eb7c9895b03cc0f61cb898e05e3ddafece87863439"
+          },
+          {
+            "name": "vendor-n32-libc",
+            "path": "/lib32/libc.so.1",
+            "sha256": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e"
+          },
+          {
+            "name": "vendor-n32-rld",
+            "path": "/lib32/rld",
+            "sha256": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b"
+          }
+        ],
+        "config_path": "lab/irix-init-threads/XIRI_IRIX_INIT_THREADS_O32"
+      },
+      "kernel_abi": "o32",
+      "mode": "ci",
+      "executions": 52,
+      "records": 172,
+      "sources": {
+        "scripts/probe-irix-init-threads.py": {
+          "checked": ".work/irix-init-threads/runs/o32-ci-5uxmp1o9/sources/scripts/probe-irix-init-threads.py",
+          "sha256": "6ecd5ae9b89dde8a33b63802014bfd0b164b321f29dc3a86df9678d9c75da59b"
+        },
+        "lab/irix-shell/guard.c": {
+          "checked": "/var/home/salvogendut/Dev/xiri/lab/irix-shell/guard.c",
+          "sha256": "1bb3a7cc79f83bbc7de56c50c2ba5d0565dcc92eb7ff2d5b58d6f1e2257c11e3"
+        },
+        "lab/irix-shell/escape-control.c": {
+          "checked": "/var/home/salvogendut/Dev/xiri/lab/irix-shell/escape-control.c",
+          "sha256": "b1bacd5bdfc5df1437010aeaf03f66d0a96aa96b82725756b78f092ba4358100"
+        },
+        "lab/irix-lp64/runner.c": {
+          "checked": "/var/home/salvogendut/Dev/xiri/lab/irix-lp64/runner.c",
+          "sha256": "005bdf3fffce5fb8ca79073e92cc41431aa953550c41014183d5de986a104463"
+        },
+        "lab/irix-mmap-local/zero-control.c": {
+          "checked": "/var/home/salvogendut/Dev/xiri/lab/irix-mmap-local/zero-control.c",
+          "sha256": "a481470184d02e314e34538561852849688746e55798e7607553638ff5f22f3c"
+        },
+        "lab/irix-prda/prda-control.c": {
+          "checked": "/var/home/salvogendut/Dev/xiri/lab/irix-prda/prda-control.c",
+          "sha256": "82ab3acb47b6f88dffde9adb66f5a68d60a8ab9a444387af62a0ad5e33cf6461"
+        },
+        "lab/irix-init-threads/signal-inspect.c": {
+          "checked": "/var/home/salvogendut/Dev/xiri/lab/irix-init-threads/signal-inspect.c",
+          "sha256": "dbbaff4de7345f28778509231824827c6a92ad4d05cf55b3c305be58941456e5"
+        },
+        "lab/irix-init-threads/signal-native.c": {
+          "checked": "/var/home/salvogendut/Dev/xiri/lab/irix-init-threads/signal-native.c",
+          "sha256": "b426347f5a3882afebe6129d03197ffd7720776f2f9030c19395cd943092cc29"
+        }
+      },
+      "signal_controls": [
+        {
+          "abi": "native",
+          "mode": 0,
+          "uid": 0,
+          "output": "./signal-inspect 0 0 ./native-signal-0; xiri_rc=$?; printf '\\nXIRI_2d \bb2d97ad06d4a21bf288545c16a214a_RC=%s\\n' \"$xiri_rc\"\nSIGNAL uid=0 mode=0 observed=1 tries=1 mask=10004000,00000001,00000000,00000000 pending=00004000,00000000,00000000,00000000 exit=-1 signal=9 absent=1 valid=1\n\nXIRI_2db2d97ad06d4a21bf288545c16a214a_RC=0\nxiri-indy# "
+        },
+        {
+          "abi": "native",
+          "mode": 0,
+          "uid": 1234,
+          "output": "./signal-inspect 1234 0 ./native-signal-0; xiri_rc=$?; printf '\\nXIRI \b_10e57bb390b547639eb4d5edce218bc7_RC=%s\\n' \"$xiri_rc\"\nSIGNAL uid=1234 mode=0 observed=1 tries=1 mask=10004000,00000001,00000000,00000000 pending=00004000,00000000,00000000,00000000 exit=-1 signal=9 absent=1 valid=1\n\nXIRI_10e57bb390b547639eb4d5edce218bc7_RC=0\nxiri-indy# "
+        },
+        {
+          "abi": "native",
+          "mode": 1,
+          "uid": 0,
+          "output": "./signal-inspect 0 1 ./native-signal-1; xiri_rc=$?; printf '\\nXIRI_5a \bcd086f872a444f887c93a0b2d32505_RC=%s\\n' \"$xiri_rc\"\nSIGNAL uid=0 mode=1 observed=1 tries=1 mask=10000000,00000001,00000000,00000000 pending=00000000,00000000,00000000,00000000 exit=-1 signal=15 absent=1 valid=1\n\nXIRI_5acd086f872a444f887c93a0b2d32505_RC=0\nxiri-indy# "
+        },
+        {
+          "abi": "native",
+          "mode": 1,
+          "uid": 1234,
+          "output": "./signal-inspect 1234 1 ./native-signal-1; xiri_rc=$?; printf '\\nXIRI \b_b02e6dc6c1194891b71dfe7058962972_RC=%s\\n' \"$xiri_rc\"\nSIGNAL uid=1234 mode=1 observed=1 tries=1 mask=10000000,00000001,00000000,00000000 pending=00000000,00000000,00000000,00000000 exit=-1 signal=15 absent=1 valid=1\n\nXIRI_b02e6dc6c1194891b71dfe7058962972_RC=0\nxiri-indy# "
+        },
+        {
+          "abi": "o32",
+          "mode": 0,
+          "uid": 0,
+          "output": "./signal-inspect 0 0 ./o32-signal-spin-0; xiri_rc=$?; printf '\\nXIRI_ \bbfe15020a7184ad3841a1fffcdc6b66c_RC=%s\\n' \"$xiri_rc\"\nSIGNAL uid=0 mode=0 observed=1 tries=1 mask=10004000,00000001,00000000,00000000 pending=00004000,00000000,00000000,00000000 exit=-1 signal=9 absent=1 valid=1\n\nXIRI_bfe15020a7184ad3841a1fffcdc6b66c_RC=0\nxiri-indy# "
+        },
+        {
+          "abi": "o32",
+          "mode": 0,
+          "uid": 1234,
+          "output": "./signal-inspect 1234 0 ./o32-signal-spin-0; xiri_rc=$?; printf '\\nXI \bRI_5dd161071a2a450a82a8a93089b6b834_RC=%s\\n' \"$xiri_rc\"\nSIGNAL uid=1234 mode=0 observed=1 tries=1 mask=10004000,00000001,00000000,00000000 pending=00004000,00000000,00000000,00000000 exit=-1 signal=9 absent=1 valid=1\n\nXIRI_5dd161071a2a450a82a8a93089b6b834_RC=0\nxiri-indy# "
+        },
+        {
+          "abi": "o32",
+          "mode": 1,
+          "uid": 0,
+          "output": "./signal-inspect 0 1 ./o32-signal-spin-1; xiri_rc=$?; printf '\\nXIRI_ \b57f044524833436b95fa8ef79a7b3c10_RC=%s\\n' \"$xiri_rc\"\nSIGNAL uid=0 mode=1 observed=1 tries=1 mask=10000000,00000001,00000000,00000000 pending=00000000,00000000,00000000,00000000 exit=-1 signal=15 absent=1 valid=1\n\nXIRI_57f044524833436b95fa8ef79a7b3c10_RC=0\nxiri-indy# "
+        },
+        {
+          "abi": "o32",
+          "mode": 1,
+          "uid": 1234,
+          "output": "./signal-inspect 1234 1 ./o32-signal-spin-1; xiri_rc=$?; printf '\\nXI \bRI_dcab3a4d596346c5ad3c5f5cc40c1e9c_RC=%s\\n' \"$xiri_rc\"\nSIGNAL uid=1234 mode=1 observed=1 tries=1 mask=10000000,00000001,00000000,00000000 pending=00000000,00000000,00000000,00000000 exit=-1 signal=15 absent=1 valid=1\n\nXIRI_dcab3a4d596346c5ad3c5f5cc40c1e9c_RC=0\nxiri-indy# "
+        }
+      ],
+      "clean_shutdown": true
+    }
+  ],
+  "initialized_native_exec_controls": 12,
+  "initialized_native_exec_runs": [
+    {
+      "directory": ".work/irix-init-threads/exec-runs/lp64-3t_740d4",
+      "result_sha256": "b483b8911448a21e499701e5186593a34552a3a6bc19985ad1fd9cc21a9493c8",
+      "serial_sha256": "0e20cc6f68b65ecfabbf0ce6de6e84bd166d1b7f0cb93b54c5a920562e081c70",
+      "sources": {
+        "scripts/probe-irix-init-threads-exec.py": "887cca22ddcc609a2a3746d56c040139adae52e74ef9732821cd47d01f36fda9",
+        "lab/irix-init-threads/exec-launch.c": "f7b0f6205e31ce22eeca3b7f08138e649e0472823408f33b6d2449de6fe3c494",
+        "lab/irix-init-threads/after-init.c": "8b57f7066c23d12e6d66172f331264f2d6ef3fcf463ce56ee432b76db2d46575",
+        "lab/irix-lp64/runner.c": "005bdf3fffce5fb8ca79073e92cc41431aa953550c41014183d5de986a104463"
+      },
+      "pin": {
+        "schema": 1,
+        "description": "Measured initial IRIX pthread state and lifecycle",
+        "ident": "XIRI_IRIX_INIT_THREADS_20261101",
+        "source_revision": "a9e715bb082a755881799234dfdb54abca5a04c1",
+        "source_branch": "xiri",
+        "build_arch": "mips64eb",
+        "page_bytes": 8192,
+        "boot_kernel_sha256": "9b71fa1fc685b8a837382518f187871123185a478c7e35bbfa99fc76b3ff7363",
+        "native_kernel_sha256": "9236b5be410a3ffac454b5556a93a80423da7829ac0311e1f847d2073fd866eb",
+        "debug_kernel_sha256": "cee59625cea58635df8ceae1f92e501537632f5d046ce6f826d0973da3ded337",
+        "native_o32_sha256": "c294fbb1f2110445be31c096481ea54ab561c7e59ca5b9fc7171310098d755d4",
+        "source_dirty": false,
+        "emulator_revision": "9df1df14334838a989253efefe26f0547e6da592",
+        "emulator_branch": "xiri/netbsd64-tlb",
+        "emulator_sha256": "1b3f7702ba7f43b5c4fca8ba8884243559f46371d8d67a36ce5e6fee1e595eba",
+        "ci_client_sha256": "8711321aa6eaae440da3c7920b00ae4cf1c7f2abbdb15a9919f58485500ffb6c",
+        "base_disk_sha256": "269038c7b77660c83d3835208fc0b2702c93110c14b3c55a42416f51672cee2a",
+        "nvram_sha256": "ee883474d52f09278287b2044f7aeca61d2e7bc39c0bb8fd85c983ab64063d15",
+        "config_sha256": "08b91fa0950a3ee74b479e7b1bb8e40ddb5cad6d59414025e6c2222541a381ef",
+        "runtimes": [
+          {
+            "name": "vendor-o32-libc",
+            "path": "/usr/lib/libc.so.1",
+            "sha256": "ea766492103a193e9d404942705e4e28987545e37f699ede232b6c0f8c97c954"
+          },
+          {
+            "name": "vendor-o32-rld",
+            "path": "/lib/rld",
+            "sha256": "30228b54c1e5585b365514eb7c9895b03cc0f61cb898e05e3ddafece87863439"
+          },
+          {
+            "name": "vendor-n32-libc",
+            "path": "/lib32/libc.so.1",
+            "sha256": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e"
+          },
+          {
+            "name": "vendor-n32-rld",
+            "path": "/lib32/rld",
+            "sha256": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b"
+          }
+        ],
+        "config_path": "lab/irix-init-threads/XIRI_IRIX_INIT_THREADS"
+      },
+      "cases": [
+        {
+          "name": "o32-direct-exec",
+          "uid": 0,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stderr": "",
+            "stdout_hex": "585054490000000400000000000000a6000004a90000000000000000000000000000000000000000000000000000000000000000000000000000000000000000feedface000000000000800000000000000000000000000000000000000000000000000000000059feedface0000000100000059feedface0000000100000000000000a6000000000000000000000000000004400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000585054490000000400000001000000a6000004a90000000000000000000000000000000000000000feedface0000000000000000000000000000000000000000feedface000000000000800000000000000000000000000000000000000000000000000000000059feedface0000000100000059feedface0000000100000000000000a60000000000000000000000000000044000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000000000008000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004e41544956455f41465445525f494e4954207569643d30206d61736b3d33303030303030302c30303030303030312c30303030303030302c303030303030303020707264615f616273656e743d3120666f726b3d33370a"
+          },
+          "native": "NATIVE_AFTER_INIT uid=0 mask=30000000,00000001,00000000,00000000 prda_absent=1 fork=37\n"
+        },
+        {
+          "name": "o32-direct-exec",
+          "uid": 1234,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stderr": "",
+            "stdout_hex": "585054490000000400000000000006300000073e000004d2000004d2000004d2000004d200000000000000000000000000000000000000000000000000000000feedface000000000000800000000000000000000000000000000000000000000000000000000059feedface0000000100000059feedface000000010000000000000630000000000000000000000000000004400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000585054490000000400000001000006300000073e000004d2000004d2000004d2000004d200000000feedface0000000000000000000000000000000000000000feedface000000000000800000000000000000000000000000000000000000000000000000000059feedface0000000100000059feedface0000000100000000000006300000000000000000000000000000044000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000000000008000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004e41544956455f41465445525f494e4954207569643d31323334206d61736b3d33303030303030302c30303030303030312c30303030303030302c303030303030303020707264615f616273656e743d3120666f726b3d33370a"
+          },
+          "native": "NATIVE_AFTER_INIT uid=1234 mask=30000000,00000001,00000000,00000000 prda_absent=1 fork=37\n"
+        },
+        {
+          "name": "o32-indirect-exec",
+          "uid": 0,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stderr": "",
+            "stdout_hex": "585054490000000400000000000005d3000000ef0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000feedface000000000000800000000000000000000000000000000000000000000000000000000059feedface0000000100000059feedface0000000100000000000005d3000000000000000000000000000004400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000585054490000000400000001000005d3000000ef0000000000000000000000000000000000000000feedface0000000000000000000000000000000000000000feedface000000000000800000000000000000000000000000000000000000000000000000000059feedface0000000100000059feedface0000000100000000000005d30000000000000000000000000000044000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000000000008000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004e41544956455f41465445525f494e4954207569643d30206d61736b3d33303030303030302c30303030303030312c30303030303030302c303030303030303020707264615f616273656e743d3120666f726b3d33370a"
+          },
+          "native": "NATIVE_AFTER_INIT uid=0 mask=30000000,00000001,00000000,00000000 prda_absent=1 fork=37\n"
+        },
+        {
+          "name": "o32-indirect-exec",
+          "uid": 1234,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stderr": "",
+            "stdout_hex": "5850544900000004000000000000063d00000527000004d2000004d2000004d2000004d200000000000000000000000000000000000000000000000000000000feedface000000000000800000000000000000000000000000000000000000000000000000000059feedface0000000100000059feedface00000001000000000000063d0000000000000000000000000000044000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000005850544900000004000000010000063d00000527000004d2000004d2000004d2000004d200000000feedface0000000000000000000000000000000000000000feedface000000000000800000000000000000000000000000000000000000000000000000000059feedface0000000100000059feedface00000001000000000000063d0000000000000000000000000000044000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000000000008000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004e41544956455f41465445525f494e4954207569643d31323334206d61736b3d33303030303030302c30303030303030312c30303030303030302c303030303030303020707264615f616273656e743d3120666f726b3d33370a"
+          },
+          "native": "NATIVE_AFTER_INIT uid=1234 mask=30000000,00000001,00000000,00000000 prda_absent=1 fork=37\n"
+        },
+        {
+          "name": "n32-direct-exec",
+          "uid": 0,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stderr": "",
+            "stdout_hex": "5850544900000004000000000000012b000007ed0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000feedface000000000000800000000000000000000000000000000000000000000000000000000059feedface0000000100000059feedface00000001000000000000012b0000000000000000000000040000044000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000005850544900000004000000010000012b000007ed0000000000000000000000000000000000000000feedface0000000000000000000000000000000000000000feedface000000000000800000000000000000000000000000000000000000000000000000000059feedface0000000100000059feedface00000001000000000000012b0000000000000000000000040000044000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000000000008000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004e41544956455f41465445525f494e4954207569643d30206d61736b3d33303030303030302c30303030303030312c30303030303030302c303030303030303020707264615f616273656e743d3120666f726b3d33370a"
+          },
+          "native": "NATIVE_AFTER_INIT uid=0 mask=30000000,00000001,00000000,00000000 prda_absent=1 fork=37\n"
+        },
+        {
+          "name": "n32-direct-exec",
+          "uid": 1234,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stderr": "",
+            "stdout_hex": "585054490000000400000000000007ac0000012a000004d2000004d2000004d2000004d200000000000000000000000000000000000000000000000000000000feedface000000000000800000000000000000000000000000000000000000000000000000000059feedface0000000100000059feedface0000000100000000000007ac000000000000000000000004000004400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000585054490000000400000001000007ac0000012a000004d2000004d2000004d2000004d200000000feedface0000000000000000000000000000000000000000feedface000000000000800000000000000000000000000000000000000000000000000000000059feedface0000000100000059feedface0000000100000000000007ac0000000000000000000000040000044000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000000000008000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004e41544956455f41465445525f494e4954207569643d31323334206d61736b3d33303030303030302c30303030303030312c30303030303030302c303030303030303020707264615f616273656e743d3120666f726b3d33370a"
+          },
+          "native": "NATIVE_AFTER_INIT uid=1234 mask=30000000,00000001,00000000,00000000 prda_absent=1 fork=37\n"
+        },
+        {
+          "name": "n32-indirect-exec",
+          "uid": 0,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stderr": "",
+            "stdout_hex": "58505449000000040000000000000768000004e90000000000000000000000000000000000000000000000000000000000000000000000000000000000000000feedface000000000000800000000000000000000000000000000000000000000000000000000059feedface0000000100000059feedface00000001000000000000076800000000000000000000000400000440000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000058505449000000040000000100000768000004e90000000000000000000000000000000000000000feedface0000000000000000000000000000000000000000feedface000000000000800000000000000000000000000000000000000000000000000000000059feedface0000000100000059feedface0000000100000000000007680000000000000000000000040000044000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000000000008000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004e41544956455f41465445525f494e4954207569643d30206d61736b3d33303030303030302c30303030303030312c30303030303030302c303030303030303020707264615f616273656e743d3120666f726b3d33370a"
+          },
+          "native": "NATIVE_AFTER_INIT uid=0 mask=30000000,00000001,00000000,00000000 prda_absent=1 fork=37\n"
+        },
+        {
+          "name": "n32-indirect-exec",
+          "uid": 1234,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stderr": "",
+            "stdout_hex": "5850544900000004000000000000075a0000077e000004d2000004d2000004d2000004d200000000000000000000000000000000000000000000000000000000feedface000000000000800000000000000000000000000000000000000000000000000000000059feedface0000000100000059feedface00000001000000000000075a0000000000000000000000040000044000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000005850544900000004000000010000075a0000077e000004d2000004d2000004d2000004d200000000feedface0000000000000000000000000000000000000000feedface000000000000800000000000000000000000000000000000000000000000000000000059feedface0000000100000059feedface00000001000000000000075a0000000000000000000000040000044000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000000000008000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004e41544956455f41465445525f494e4954207569643d31323334206d61736b3d33303030303030302c30303030303030312c30303030303030302c303030303030303020707264615f616273656e743d3120666f726b3d33370a"
+          },
+          "native": "NATIVE_AFTER_INIT uid=1234 mask=30000000,00000001,00000000,00000000 prda_absent=1 fork=37\n"
+        }
+      ],
+      "clean_shutdown": true
+    },
+    {
+      "directory": ".work/irix-init-threads/exec-runs/o32-40is4oxx",
+      "result_sha256": "1cead55238acba9c91b207288fe78c6cc43229efe861bdb1b059a0353d137b52",
+      "serial_sha256": "8cbb4894d34d038b10700189a47bf95bde8e78dd1daf8f5f4c263fbff9826b6d",
+      "sources": {
+        "scripts/probe-irix-init-threads-exec.py": "887cca22ddcc609a2a3746d56c040139adae52e74ef9732821cd47d01f36fda9",
+        "lab/irix-init-threads/exec-launch.c": "f7b0f6205e31ce22eeca3b7f08138e649e0472823408f33b6d2449de6fe3c494",
+        "lab/irix-init-threads/after-init.c": "8b57f7066c23d12e6d66172f331264f2d6ef3fcf463ce56ee432b76db2d46575",
+        "lab/irix-lp64/runner.c": "005bdf3fffce5fb8ca79073e92cc41431aa953550c41014183d5de986a104463"
+      },
+      "pin": {
+        "schema": 1,
+        "description": "Measured initial IRIX pthread state and lifecycle",
+        "ident": "XIRI_IRIX_INIT_THREADS_O32_20261101",
+        "source_revision": "a9e715bb082a755881799234dfdb54abca5a04c1",
+        "source_branch": "xiri",
+        "build_arch": "mipseb",
+        "page_bytes": 4096,
+        "boot_kernel_sha256": "a8711cc2a1eeb7db0fa34c802603e6b0efbe3d6f261270bbdbe1217e21084317",
+        "native_kernel_sha256": "a8711cc2a1eeb7db0fa34c802603e6b0efbe3d6f261270bbdbe1217e21084317",
+        "debug_kernel_sha256": "d1a70c024629a28ddf97e37ee52671609acd752caf5a7bdded61c43df05e1f79",
+        "native_o32_sha256": "c294fbb1f2110445be31c096481ea54ab561c7e59ca5b9fc7171310098d755d4",
+        "source_dirty": false,
+        "emulator_revision": "9df1df14334838a989253efefe26f0547e6da592",
+        "emulator_branch": "xiri/netbsd64-tlb",
+        "emulator_sha256": "1b3f7702ba7f43b5c4fca8ba8884243559f46371d8d67a36ce5e6fee1e595eba",
+        "ci_client_sha256": "8711321aa6eaae440da3c7920b00ae4cf1c7f2abbdb15a9919f58485500ffb6c",
+        "base_disk_sha256": "269038c7b77660c83d3835208fc0b2702c93110c14b3c55a42416f51672cee2a",
+        "nvram_sha256": "ee883474d52f09278287b2044f7aeca61d2e7bc39c0bb8fd85c983ab64063d15",
+        "config_sha256": "acb569fbc24cf93bbae4971053c60c20adca1558852d85b5577eb9b779b26d48",
+        "runtimes": [
+          {
+            "name": "vendor-o32-libc",
+            "path": "/usr/lib/libc.so.1",
+            "sha256": "ea766492103a193e9d404942705e4e28987545e37f699ede232b6c0f8c97c954"
+          },
+          {
+            "name": "vendor-o32-rld",
+            "path": "/lib/rld",
+            "sha256": "30228b54c1e5585b365514eb7c9895b03cc0f61cb898e05e3ddafece87863439"
+          },
+          {
+            "name": "vendor-n32-libc",
+            "path": "/lib32/libc.so.1",
+            "sha256": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e"
+          },
+          {
+            "name": "vendor-n32-rld",
+            "path": "/lib32/rld",
+            "sha256": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b"
+          }
+        ],
+        "config_path": "lab/irix-init-threads/XIRI_IRIX_INIT_THREADS_O32"
+      },
+      "cases": [
+        {
+          "name": "o32-direct-exec",
+          "uid": 0,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stderr": "",
+            "stdout_hex": "585054490000000400000000000000a6000003dc0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000feedface000000000000800000000000000000000000000000000000000000000000000000000059feedface0000000100000059feedface0000000100000000000000a6000000000000000000000000000004400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000585054490000000400000001000000a6000003dc0000000000000000000000000000000000000000feedface0000000000000000000000000000000000000000feedface000000000000800000000000000000000000000000000000000000000000000000000059feedface0000000100000059feedface0000000100000000000000a60000000000000000000000000000044000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000000000008000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004e41544956455f41465445525f494e4954207569643d30206d61736b3d33303030303030302c30303030303030312c30303030303030302c303030303030303020707264615f616273656e743d3120666f726b3d33370a"
+          },
+          "native": "NATIVE_AFTER_INIT uid=0 mask=30000000,00000001,00000000,00000000 prda_absent=1 fork=37\n"
+        },
+        {
+          "name": "o32-direct-exec",
+          "uid": 1234,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stderr": "",
+            "stdout_hex": "585054490000000400000000000004f1000000ef000004d2000004d2000004d2000004d200000000000000000000000000000000000000000000000000000000feedface000000000000800000000000000000000000000000000000000000000000000000000059feedface0000000100000059feedface0000000100000000000004f1000000000000000000000000000004400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000585054490000000400000001000004f1000000ef000004d2000004d2000004d2000004d200000000feedface0000000000000000000000000000000000000000feedface000000000000800000000000000000000000000000000000000000000000000000000059feedface0000000100000059feedface0000000100000000000004f10000000000000000000000000000044000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000000000008000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004e41544956455f41465445525f494e4954207569643d31323334206d61736b3d33303030303030302c30303030303030312c30303030303030302c303030303030303020707264615f616273656e743d3120666f726b3d33370a"
+          },
+          "native": "NATIVE_AFTER_INIT uid=1234 mask=30000000,00000001,00000000,00000000 prda_absent=1 fork=37\n"
+        },
+        {
+          "name": "o32-indirect-exec",
+          "uid": 0,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stderr": "",
+            "stdout_hex": "585054490000000400000000000005ae000007680000000000000000000000000000000000000000000000000000000000000000000000000000000000000000feedface000000000000800000000000000000000000000000000000000000000000000000000059feedface0000000100000059feedface0000000100000000000005ae000000000000000000000000000004400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000585054490000000400000001000005ae000007680000000000000000000000000000000000000000feedface0000000000000000000000000000000000000000feedface000000000000800000000000000000000000000000000000000000000000000000000059feedface0000000100000059feedface0000000100000000000005ae0000000000000000000000000000044000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000000000008000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004e41544956455f41465445525f494e4954207569643d30206d61736b3d33303030303030302c30303030303030312c30303030303030302c303030303030303020707264615f616273656e743d3120666f726b3d33370a"
+          },
+          "native": "NATIVE_AFTER_INIT uid=0 mask=30000000,00000001,00000000,00000000 prda_absent=1 fork=37\n"
+        },
+        {
+          "name": "o32-indirect-exec",
+          "uid": 1234,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stderr": "",
+            "stdout_hex": "585054490000000400000000000005bf0000069b000004d2000004d2000004d2000004d200000000000000000000000000000000000000000000000000000000feedface000000000000800000000000000000000000000000000000000000000000000000000059feedface0000000100000059feedface0000000100000000000005bf000000000000000000000000000004400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000585054490000000400000001000005bf0000069b000004d2000004d2000004d2000004d200000000feedface0000000000000000000000000000000000000000feedface000000000000800000000000000000000000000000000000000000000000000000000059feedface0000000100000059feedface0000000100000000000005bf0000000000000000000000000000044000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000000000008000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004e41544956455f41465445525f494e4954207569643d31323334206d61736b3d33303030303030302c30303030303030312c30303030303030302c303030303030303020707264615f616273656e743d3120666f726b3d33370a"
+          },
+          "native": "NATIVE_AFTER_INIT uid=1234 mask=30000000,00000001,00000000,00000000 prda_absent=1 fork=37\n"
+        }
+      ],
+      "clean_shutdown": true
+    }
+  ],
+  "limits": [
+    "Single native LWP initialization only; thread creation, scheduling, foreign signal handlers and realtime signals remain unsupported.",
+    "Only traditional IRIX signals 1..31 are translated; native-only mask bits are preserved.",
+    "PR_GETNSHARE and PR_GETSHMASK remain ENOSYS and are excluded from parity; their measured reference returns are retained.",
+    "PRDA protections remain authoritative: initial read-only/inaccessible holds return EFAULT instead of the reference success.",
+    "After initialization an unreadable PRDA hold terminates the process with SIGSEGV; reserved PRDA remapping is not implemented.",
+    "The new e_sigmask hook is a core-kernel dependency to resolve for stock-kernel module deployment."
+  ]
+}

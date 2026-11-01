@@ -159,7 +159,8 @@ dependency candidates; a visible window alone does not complete these checks.
 - [x] Attempt the original file manager, background icons and Icon Catalog in the [expanded session](results/2026-11-01-irix-desktop-components.md); retain startup failures and inventory the next resources.
 - [x] Clear the initial `getrlimit(RLIMIT_PTHREAD)` and bgicons executable-alignment blockers with [measured limit/loader support](results/2026-11-01-irix-rlimit.md): 4,760 NetBSD limit records and 280 loader executions pass.
 - [x] Clear the observed `mmap(MAP_AUTORESRV)` boundary with [private demand mappings](results/2026-11-01-irix-mmap-autoresrv.md), preserving fixed/local and native controls.
-- [ ] Measure `prctl(PR_INIT_THREADS)` and the required pthread state/lifecycle, then qualify the file/icon components. The [application follow-up](results/2026-11-01-irix-desktop-autoresrv.md) records successful allocations followed by ENOSYS at that operation. Session saving remains disabled.
+- [x] Measure and implement initial `prctl(PR_INIT_THREADS)` state and native signal holds: [260 executions / 860 records and 32 asynchronous-signal checks](results/2026-11-01-irix-init-threads.md) pass. Thread creation remains separate.
+- [ ] Clear the [next file/icon startup failures](results/2026-11-01-irix-desktop-init-threads.md): `mkdir` returns ENOSYS for generated desktop-session state; fm also encounters `waitsys(options=3)` EINVAL. Icon Catalog draws a fatal session-directory dialog. Preserve and investigate intermittent terminal geometry/startup failures; qualify usable clients before file operations/services. Session saving remains disabled.
 - [ ] Implement required service adapters, including the measured file-notification and launch behavior.
 - [x] Exercise native X test windows under original 4Dwm in the same native Xvfb session used by Toolchest and winterm.
 - [ ] Show a maintained host-native graphical application and an IRIX application in the same local session; qualify physical display output separately.
@@ -172,7 +173,7 @@ Acceptance: an original desktop session executing inside the emulated Indy on Ne
 ## Milestone 4 Usable first release
 
 - [ ] Package the IRIX personality as a loadable kernel module modeled after `compat_linux`, with a reproducible build/install path and explicit kernel-version/architecture dependencies.
-- [ ] Audit core dependencies, including the current `selcommon_kern` helper; upstream or remove them to enable deployment on a compatible standard NetBSD kernel.
+- [ ] Audit core dependencies, including `selcommon_kern` and the pthread-initialization `emul.e_sigmask` hook; upstream or remove them to enable deployment on a compatible standard NetBSD kernel.
 - [ ] Qualify module load, dependency resolution, refusal to unload while in use, unload/reload after exit, and the application regressions on a kernel without the built-in IRIX personality.
 - [ ] Boot the qualified build on the physical Indy and repeat ABI and desktop acceptance there.
 - [ ] Validate real storage, networking, cache/DMA behavior, input and local display; record differences from emulation.

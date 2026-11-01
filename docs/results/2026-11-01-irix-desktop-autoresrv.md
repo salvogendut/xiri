@@ -93,3 +93,7 @@ file-type rules, catalog pages and services for later actual lookups. `fmserv`
 remains staged but untested. File navigation, icon actions, file monitoring,
 saved sessions, normal exit, terminal resize/signals and physical-display
 qualification remain open.
+
+The subsequent [pthread initialization checkpoint](2026-11-01-irix-init-threads.md)
+clears this operation. The [new desktop retry](2026-11-01-irix-desktop-init-threads.md)
+reaches session-directory creation and preserves additional interaction failures.

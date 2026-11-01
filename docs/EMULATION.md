@@ -237,6 +237,15 @@ inheritance and the existing mapping/page-zero controls. These runs retain
 the previously qualified IRIS binaries. The latest upstream
 revision was already integrated into fork `xiri`; no emulator change was needed.
 
+The [pthread initialization checkpoint](results/2026-11-01-irix-init-threads.md)
+now passes the LP64 CI/ordinary and o32 CI matrices, including asynchronous
+signal holds. The [desktop retry](results/2026-11-01-irix-desktop-init-threads.md)
+advances to session-directory creation; Icon Catalog renders its fatal dialog.
+The ordinary run also exposed a 72-pixel-high terminal and failed its keyboard
+geometry gate; an unchanged ordinary repeat passes. Retain the failure
+separately from those successful interactions; startup repeatability remains
+unqualified.
+
 Active emulator and kernel development now uses the consolidated
 [`xiri` branches](FORKS.md). Existing guest qualification remains tied to its
 recorded commits and binaries; consolidation does not silently update those

@@ -1,0 +1,3550 @@
+{
+  "schema": 1,
+  "status": "initialization-cleared-session-directory-boundary",
+  "desktop_success": false,
+  "qualifier_sha256": "cb5eba70a453f4ea14d7f6495c3fc0415413f38a3346a52c9ecf0c608ab21acc",
+  "trace_decoder_sha256": "df111c15ab1dd8988de1c76c8bf4c24262413049ed3f48632598b2c514191ede",
+  "manifest_sha256": "4a01c00e279638d21d226d1cdb2f4ee16c4d861bcda2adcca5512ddca5675f63",
+  "pin": {
+    "schema": 1,
+    "description": "Measured initial IRIX pthread state and lifecycle",
+    "ident": "XIRI_IRIX_INIT_THREADS_20261101",
+    "source_revision": "a9e715bb082a755881799234dfdb54abca5a04c1",
+    "source_branch": "xiri",
+    "build_arch": "mips64eb",
+    "page_bytes": 8192,
+    "boot_kernel_sha256": "9b71fa1fc685b8a837382518f187871123185a478c7e35bbfa99fc76b3ff7363",
+    "native_kernel_sha256": "9236b5be410a3ffac454b5556a93a80423da7829ac0311e1f847d2073fd866eb",
+    "debug_kernel_sha256": "cee59625cea58635df8ceae1f92e501537632f5d046ce6f826d0973da3ded337",
+    "native_o32_sha256": "c294fbb1f2110445be31c096481ea54ab561c7e59ca5b9fc7171310098d755d4",
+    "source_dirty": false,
+    "emulator_revision": "9df1df14334838a989253efefe26f0547e6da592",
+    "emulator_branch": "xiri/netbsd64-tlb",
+    "emulator_sha256": "1b3f7702ba7f43b5c4fca8ba8884243559f46371d8d67a36ce5e6fee1e595eba",
+    "ci_client_sha256": "8711321aa6eaae440da3c7920b00ae4cf1c7f2abbdb15a9919f58485500ffb6c",
+    "base_disk_sha256": "269038c7b77660c83d3835208fc0b2702c93110c14b3c55a42416f51672cee2a",
+    "nvram_sha256": "ee883474d52f09278287b2044f7aeca61d2e7bc39c0bb8fd85c983ab64063d15",
+    "config_sha256": "08b91fa0950a3ee74b479e7b1bb8e40ddb5cad6d59414025e6c2222541a381ef",
+    "runtimes": [
+      {
+        "name": "vendor-o32-libc",
+        "path": "/usr/lib/libc.so.1",
+        "sha256": "ea766492103a193e9d404942705e4e28987545e37f699ede232b6c0f8c97c954"
+      },
+      {
+        "name": "vendor-o32-rld",
+        "path": "/lib/rld",
+        "sha256": "30228b54c1e5585b365514eb7c9895b03cc0f61cb898e05e3ddafece87863439"
+      },
+      {
+        "name": "vendor-n32-libc",
+        "path": "/lib32/libc.so.1",
+        "sha256": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e"
+      },
+      {
+        "name": "vendor-n32-rld",
+        "path": "/lib32/rld",
+        "sha256": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b"
+      }
+    ],
+    "config_path": "lab/irix-init-threads/XIRI_IRIX_INIT_THREADS"
+  },
+  "runs": [
+    {
+      "directory": ".work/irix-desktop-init-threads/runs/ci-4ydcb5h0",
+      "mode": "ci",
+      "pin": {
+        "schema": 1,
+        "description": "Measured initial IRIX pthread state and lifecycle",
+        "ident": "XIRI_IRIX_INIT_THREADS_20261101",
+        "source_revision": "a9e715bb082a755881799234dfdb54abca5a04c1",
+        "source_branch": "xiri",
+        "build_arch": "mips64eb",
+        "page_bytes": 8192,
+        "boot_kernel_sha256": "9b71fa1fc685b8a837382518f187871123185a478c7e35bbfa99fc76b3ff7363",
+        "native_kernel_sha256": "9236b5be410a3ffac454b5556a93a80423da7829ac0311e1f847d2073fd866eb",
+        "debug_kernel_sha256": "cee59625cea58635df8ceae1f92e501537632f5d046ce6f826d0973da3ded337",
+        "native_o32_sha256": "c294fbb1f2110445be31c096481ea54ab561c7e59ca5b9fc7171310098d755d4",
+        "source_dirty": false,
+        "emulator_revision": "9df1df14334838a989253efefe26f0547e6da592",
+        "emulator_branch": "xiri/netbsd64-tlb",
+        "emulator_sha256": "1b3f7702ba7f43b5c4fca8ba8884243559f46371d8d67a36ce5e6fee1e595eba",
+        "ci_client_sha256": "8711321aa6eaae440da3c7920b00ae4cf1c7f2abbdb15a9919f58485500ffb6c",
+        "base_disk_sha256": "269038c7b77660c83d3835208fc0b2702c93110c14b3c55a42416f51672cee2a",
+        "nvram_sha256": "ee883474d52f09278287b2044f7aeca61d2e7bc39c0bb8fd85c983ab64063d15",
+        "config_sha256": "08b91fa0950a3ee74b479e7b1bb8e40ddb5cad6d59414025e6c2222541a381ef",
+        "runtimes": [
+          {
+            "name": "vendor-o32-libc",
+            "path": "/usr/lib/libc.so.1",
+            "sha256": "ea766492103a193e9d404942705e4e28987545e37f699ede232b6c0f8c97c954"
+          },
+          {
+            "name": "vendor-o32-rld",
+            "path": "/lib/rld",
+            "sha256": "30228b54c1e5585b365514eb7c9895b03cc0f61cb898e05e3ddafece87863439"
+          },
+          {
+            "name": "vendor-n32-libc",
+            "path": "/lib32/libc.so.1",
+            "sha256": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e"
+          },
+          {
+            "name": "vendor-n32-rld",
+            "path": "/lib32/rld",
+            "sha256": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b"
+          }
+        ],
+        "config_path": "lab/irix-init-threads/XIRI_IRIX_INIT_THREADS"
+      },
+      "result_sha256": "089ee7bbff215b099caebd81240db59235334d1c3e7032ef0d4b83b1faa438f1",
+      "serial_sha256": "c1baa0a829a47e9bbeab075147a11f414de432d44f4d6ea161d7b2e36bb74b0b",
+      "config_sha256": "222f3f2cfdfff75d731bbca113a53c8d11f49fc2f7cee89799e8aef6b57ae801",
+      "emulator_command_sha256": "fb532a7d38c426a53cfdaaa3fac65b71ca3eba473ba23687b7e1161b0af53080",
+      "sources": {
+        "scripts/probe-irix-desktop-init-threads.py": "f93f3a975af9381b2d65799f92f270034a2ba482fd7f945fb6b1f46e7ce5508f",
+        "lab/irix-shell/guard.c": "1bb3a7cc79f83bbc7de56c50c2ba5d0565dcc92eb7ff2d5b58d6f1e2257c11e3",
+        "lab/irix-toolchest/session.c": "e183b4aefdfb428e01dc609230e87a7546a0b31e9d4b5e236503e0a8bb3b09f5",
+        "lab/irix-lp64/runner.c": "005bdf3fffce5fb8ca79073e92cc41431aa953550c41014183d5de986a104463",
+        "lab/irix-desktop-components/wmcheck-settled.c": "1821310dda1fa61e3621768a38a46901ff3dd0b43c79825920f0a1ffaf9cb990",
+        "lab/irix-4dwm/type-ready.c": "61ce22cbda6c66ccaf53cbcffab5f3080be95004bcd3e5c6893dc54a8a9db838",
+        "lab/irix-shell/handoff.c": "24e89b5a57543448defb35a8d836d5ee525ec9a402f807ffdc92b8ac8227f325",
+        "lab/irix-shell/ctty-control.c": "6d4583baf6fbae054930519d465634712a1cef4339305bb58e146c1aa5b2f824",
+        "lab/irix-desktop-components/session.sh": "3fe19bda3f9f7b5710148f80c85ef5124e8928ed96052287a6c2885f5aa2f5d5",
+        "lab/irix-4dwm/setup-pty.sh": "8ff9bb102309ac544ec3d31edfe72f67968da20040980936659539128c26bbf0"
+      },
+      "staged": {
+        "/emul/irix/usr/bin/X11/4Dwm": "9b6db8756f24bb8f789ea8b23d26857e8020c8817a845b5096ccc4da8dcac7df",
+        "/emul/irix/usr/bin/X11/toolchest": "20efa5c36c1e0dba1176fdd98000057e574b21c787ca364e1811100f9f2ba860",
+        "/emul/irix/lib32/rld": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b",
+        "/emul/irix/lib32/libc.so.1": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e",
+        "/emul/irix/usr/lib32/libc.so.1": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e",
+        "/emul/irix/usr/lib32/internal/libimdXutil.so": "70cde99e88b21c950df9e04a0313bc9931465177d888f59eb45181c74d58647f",
+        "/emul/irix/usr/lib32/internal/libimdUtil.so": "d170951e98b868cefda1906329e210db04f43672522cab686c13f2cbd80c949f",
+        "/emul/irix/usr/lib32/internal/libimdFtrIcon.so": "99c57009020d614ccb691075ebf6b8c4b0f08e31467e6eba34b978abaf293441",
+        "/emul/irix/usr/lib32/libXm.so.1": "3c95e7c7fa9d26bde299a4313ce4cd03e749a90c7edf0bc42a3af3697491030c",
+        "/emul/irix/usr/lib32/libXmu.so": "42cc93453cd776caadfb5e7f7740ea26a87d8b931fb6e0febb7f716063eb28c7",
+        "/emul/irix/usr/lib32/libXext.so": "1d6a94a6602428a459b044e8564203c436815a9a8b3804ee3027503131defc4a",
+        "/emul/irix/usr/lib32/libXt.so": "452b4a3ae72728825c382896e45ca214ea750721d9586d1db263189063b5fb30",
+        "/emul/irix/usr/lib32/libX11.so.1": "2e3287c4842eb4149c9f839229093a28c180edf43dcf1f28b68102cdcf989642",
+        "/emul/irix/usr/lib32/libm.so": "8ab1b4e569cfb55ddb181ccf31b0a4a28a699894a55b6d8e778b8c15508ab4d0",
+        "/emul/irix/usr/lib32/libC.so.2": "e81c01921778d03148c45b66bdf7e935f49f7025a52f1f2ece5889e0c6eaf884",
+        "/emul/irix/usr/lib32/libCsup.so": "f3120e7dccf58919e45f7cff503e0686059fdb7f7facfee1ad32327f081c3fb0",
+        "/emul/irix/usr/lib32/libgen.so": "a3102584a1929b91e4db3428b8e022fff3cff690ec646dd9edbf094e7ad28d7d",
+        "/emul/irix/usr/lib32/libvk.so.1": "92818537abf4d09f5501d15f24ce024f1c4ad3ebbea2f18683547f71d0f56991",
+        "/emul/irix/usr/lib32/libXpm.so.1": "a7ea5a37f84b6c5520404cfa810d98c4c14b618acecaf0b17608fa28c5e53896",
+        "/emul/irix/usr/lib32/internal/libimdFtrDB.so": "ea57f287b178655dac04b6c06de953482ed23f95e30df816c16bf8cca8defb9f",
+        "/emul/irix/usr/lib32/libil.so": "a09cb4aea1be804fc9d550a6b1f59b2e8ffac3a52520a10006d44cab2d32c1e2",
+        "/emul/irix/usr/lib32/libifl.so": "1e2840da9add9994ef4a28a60b96ce5adbc3162b7543abc063dd9cbbef3139fd",
+        "/emul/irix/usr/lib32/libGL.so": "4ce211808b0baa3a2ac9d596c63be2e769acc8554fc82177019fd62d48445597",
+        "/emul/irix/usr/lib32/libGLU.so": "287842d59919ae332be7305e46e223b3599e9f38c3c9b5118906d7ff3ab87294",
+        "/emul/irix/usr/lib32/libSgm.so.1": "fc0cc9605fe443e0348cbac0205e607f1ac984771e1e65192d4e5674e9f893c4",
+        "/emul/irix/usr/lib32/libGLcore.so": "14d736eeb97e9f117f969336b98055912591e7d427f7bfea57ecae6e918752a4",
+        "/emul/irix/usr/lib32/libXsgivc.so": "2704330d4c16b56ab650456ae0f3a5c1cfc9213eaaf014817e4e6dc68b075606",
+        "/emul/irix/usr/lib32/libgl.so": "96349d52e132fb19fd2f016b66f50a1a0765d788673375181df0f3c130e298ea",
+        "/emul/irix/usr/lib32/libXi.so": "c8535479fccd8d5791fc79a8539fcc5b1448d73fe3748e4bde0a2e71ab65a18a",
+        "/emul/irix/usr/lib/X11/app-defaults/4DWm": "44fe41ae91b87ca4e306d99741673501202b6fe776225a4690171475a19c0153",
+        "/emul/irix/usr/lib/X11/system.4Dwmrc": "ac1fcf2df3eb19c8f50358bca0c97bd816686e8e63cd87a9f6da93f6168b48ac",
+        "/emul/irix/usr/lib/X11/system.4Dwmdesks": "a893e56342cfb1bf25d9e8c68c9b1c41ebff2dd871e5b66e10eb2c608b176ccb",
+        "/emul/irix/usr/lib/X11/system.backgrounds": "fd7030a155ee789453f24599c58252253f996f00f9c39526828736d1a57aef1d",
+        "/emul/irix/usr/sbin/fm": "a72db11a899cafff5e9d04b87ebe29b7ec96fefff431793e860079a3d05dc649",
+        "/emul/irix/usr/sbin/bgicons": "73e0a5fc645bc3ea224ebdb7996963f972960a1ef487ebd815a2652a80b28d3b",
+        "/emul/irix/usr/sbin/iconcatalog": "c1f30adad8c75305a3848c7694e3c45e62176debd4657f5240f14fc5c4d5189e",
+        "/emul/irix/usr/lib/desktop/fmserv": "edf17f7275722439cdaaca07836ecc8682425f49a1fb0c2310a7b04cb9ff9029",
+        "/emul/irix/usr/lib32/internal/libimdModel.so": "5c3fdce9960eeaad9e2868addbe7e5844480bfac8c0aa30a0832ea66c091c181",
+        "/emul/irix/usr/lib32/internal/libimdApp.so": "8b6efc1714c72d4b2735e242012a94edc3cbc9361ab830ca3bc14736dd5a32ca",
+        "/emul/irix/usr/lib32/internal/libimdIconPanel.so": "e3ddf13741d2e8586b942cc47d69907d179eafaa9b7b1a8138e6218a8b2d032e",
+        "/emul/irix/usr/lib32/internal/libMediaViewer.so": "eba4dc52d3286cb1d55e0cd4e0f344f3d1022b1dcc721cd5cfeecadb70133d73",
+        "/emul/irix/usr/lib32/libmediaclient.so": "7c7e993e060f61c1aad26182fd498af35467ea35fcafbed59a880f6faeef4256",
+        "/emul/irix/usr/lib32/libpthread.so": "03039d6e509aab1495046ab940174a36cbd27d6a2b0e0e2f4826f633ae8c9a70",
+        "/emul/irix/usr/lib32/librpcsvc.so": "4cd8b9b4e1ca56875b0986a73dc7819c7dbdc0792d756ee4a38369ad41d60272",
+        "/emul/irix/usr/lib/X11/app-defaults/Fmprefs": "7bb7eebff9ea6ef058727b2c36c3dea946f828565899ab117b7a581a525bff79",
+        "/emul/irix/usr/lib/X11/app-defaults/FileManager": "c921d8f4e1d521e2225fd1d0e54b3ebdc69f6dfc8acbb264cc5d10e928579f48",
+        "/emul/irix/usr/lib/X11/app-defaults/FileSelection": "3a4bbf06d9caec8729c695cf6d4fe6628beb0dc817b063ce968e390ed8511a28",
+        "/emul/irix/usr/lib/X11/app-defaults/SaAddLocalFileSwapGuide": "3539ccc8521be4027a48c38913e4e4284e341281900f798fa0b468282d600aac",
+        "/emul/irix/usr/lib/X11/app-defaults/SaAddLocalFileSwapTask": "c70cb5c001ef16d0f67ba20804838697bf045543728ce027d30f9fffd5a7e2b3",
+        "/emul/irix/usr/lib/X11/app-defaults/SaFilesPage": "4bab560a07368aa159a64e1c7f134a82942884b1b361a32d5e3f9b0f53bc163e",
+        "/emul/irix/usr/lib/X11/app-defaults/SaFilesystemCatalog": "faeb7941ee36c07f34dc2bc6ab038ff4826f8f979e8ec95459b714910a8f3765",
+        "/emul/irix/usr/lib/X11/app-defaults/SaFilesystemPanel": "7ca610dbd6da51eac965d680fc0af4d09dda1a20eac9604089238cc3fd55fc2c",
+        "/emul/irix/usr/lib/X11/app-defaults/SaRestoreFilesGuide": "d058d8f83bd847a443e3c221f3892b533e1d71e04efb5b8faf4fa119543b27f6",
+        "/emul/irix/usr/lib/X11/app-defaults/SaRestoreFilesTask": "5630a0e5ccd62e075373305b224e3087fb277be72fa05e2dd42bb904be4e8fbe",
+        "/emul/irix/usr/lib/X11/app-defaults/IconCatalog": "e5f20eb0f7e069556876dccbd5c38237dd0a23bf925bdda5503df1b382cfd2a2",
+        "/emul/irix/usr/lib/X11/app-defaults/Desktop": "4b428175e6e45b088b68a5a25a88ee0fac5b0494fe994c058128ea58a28ada6d",
+        "/emul/irix/usr/lib/X11/app-defaults/Desktophelp": "d7d246753145218819ac021963a2fce7cad89c724079860486ba9c63266fc928",
+        "/emul/irix/usr/lib/X11/app-defaults/MakeDotDesktop": "994d1a3e7985576acc821aa8abe858ab0529d38539ddf91705d735348d611914",
+        "/emul/irix/usr/lib/X11/xdm/DefaultIconList": "3fe0149ab648d8ac5e0d4f61cc24d9408324a0cb8eab9b55f37c937354ef2f5a",
+        "/emul/irix/usr/lib/X11/xdm/DefaultDeviceList": "fe06a659a6cf01b25bc13d7fe505d2d7d5afed522a2c6eeafaa520efb91e6e73"
+      },
+      "seed": ".work/irix-4dwm/runs/session-ci-xb3cj1si",
+      "seed_result_sha256": "a85522bb321dfa24cd614d4da620e91d94e2a241aeff5d92c64aa3298471b6e3",
+      "components": [
+        {
+          "name": "bgicons",
+          "pid": 193,
+          "exit_status": "1",
+          "stdout": "",
+          "stderr": "Function not implemented\n",
+          "trace_sha256": "688abb4cedaaa60720e14ff57233f305775008e7779c757974bdf382c4342367",
+          "initialization_passed": true,
+          "initializations": [
+            {
+              "call": {
+                "syscall": 1130,
+                "pc": 262502756,
+                "a0": 20,
+                "a1": 720896,
+                "a2": 3,
+                "a3": 0
+              },
+              "result": {
+                "syscall": 1130,
+                "v0": 0,
+                "a3": 0
+              }
+            },
+            {
+              "call": {
+                "syscall": 1130,
+                "pc": 262502756,
+                "a0": 20,
+                "a1": 720896,
+                "a2": 3,
+                "a3": 0
+              },
+              "result": {
+                "syscall": 1130,
+                "v0": 0,
+                "a3": 0
+              }
+            }
+          ],
+          "mkdir": [
+            {
+              "call": {
+                "syscall": 1080,
+                "pc": 262962608,
+                "a0": 268556592,
+                "a1": 493,
+                "a2": 0,
+                "a3": 268556625
+              },
+              "result": {
+                "syscall": 1080,
+                "v0": 89,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1080,
+                "pc": 262962608,
+                "a0": 268554184,
+                "a1": 493,
+                "a2": 0,
+                "a3": 268554184
+              },
+              "result": {
+                "syscall": 1080,
+                "v0": 89,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1080,
+                "pc": 262962608,
+                "a0": 268556592,
+                "a1": 493,
+                "a2": 0,
+                "a3": 268556625
+              },
+              "result": {
+                "syscall": 1080,
+                "v0": 89,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1080,
+                "pc": 262962608,
+                "a0": 268554184,
+                "a1": 493,
+                "a2": 0,
+                "a3": 268554184
+              },
+              "result": {
+                "syscall": 1080,
+                "v0": 89,
+                "a3": 1
+              }
+            }
+          ],
+          "waits": [],
+          "truncated_record_lines": [],
+          "last_complete_pairs": [
+            {
+              "call": {
+                "syscall": 1080,
+                "pc": 262962608,
+                "a0": 268554184,
+                "a1": 493,
+                "a2": 0,
+                "a3": 268554184
+              },
+              "result": {
+                "syscall": 1080,
+                "v0": 89,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1040,
+                "pc": 262470072,
+                "a0": 92,
+                "a1": 1,
+                "a2": 0,
+                "a3": 47
+              },
+              "result": {
+                "syscall": 1040,
+                "v0": 89,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1158,
+                "pc": 262470200,
+                "a0": 2,
+                "a1": 2147448688,
+                "a2": 2147449712,
+                "a3": 99
+              },
+              "result": {
+                "syscall": 1158,
+                "v0": 2,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1158,
+                "pc": 262470200,
+                "a0": 2,
+                "a1": 2147448688,
+                "a2": 2147449712,
+                "a3": 99
+              },
+              "result": {
+                "syscall": 1158,
+                "v0": 2,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1158,
+                "pc": 262470200,
+                "a0": 2,
+                "a1": 2147448688,
+                "a2": 2147449712,
+                "a3": 99
+              },
+              "result": {
+                "syscall": 1158,
+                "v0": 2,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1004,
+                "pc": 262541384,
+                "a0": 2,
+                "a1": 263454720,
+                "a2": 24,
+                "a3": 402653184
+              },
+              "result": {
+                "syscall": 1004,
+                "v0": 24,
+                "a3": 0
+              }
+            },
+            {
+              "call": {
+                "syscall": 1004,
+                "pc": 262541384,
+                "a0": 2,
+                "a1": 263559028,
+                "a2": 1,
+                "a3": 402653184
+              },
+              "result": {
+                "syscall": 1004,
+                "v0": 1,
+                "a3": 0
+              }
+            }
+          ],
+          "boundary": "mkdir ENOSYS; Icon Catalog session-directory error; fm waitsys(options=3) EINVAL"
+        },
+        {
+          "name": "fm-background",
+          "pid": 194,
+          "exit_status": "255",
+          "stdout": "",
+          "stderr": "",
+          "trace_sha256": "28936824fc16b9612fdb26eb547710d983896d7694ae3fe295533798490f8a75",
+          "initialization_passed": true,
+          "initializations": [
+            {
+              "call": {
+                "syscall": 1130,
+                "pc": 262502756,
+                "a0": 20,
+                "a1": 720896,
+                "a2": 3,
+                "a3": 0
+              },
+              "result": {
+                "syscall": 1130,
+                "v0": 0,
+                "a3": 0
+              }
+            },
+            {
+              "call": {
+                "syscall": 1130,
+                "pc": 262502756,
+                "a0": 20,
+                "a1": 720896,
+                "a2": 3,
+                "a3": 0
+              },
+              "result": {
+                "syscall": 1130,
+                "v0": 0,
+                "a3": 0
+              }
+            }
+          ],
+          "mkdir": [
+            {
+              "call": {
+                "syscall": 1080,
+                "pc": 262962608,
+                "a0": 268845536,
+                "a1": 493,
+                "a2": 0,
+                "a3": 268845569
+              },
+              "result": {
+                "syscall": 1080,
+                "v0": 89,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1080,
+                "pc": 262962608,
+                "a0": 268877136,
+                "a1": 493,
+                "a2": 0,
+                "a3": 268877169
+              },
+              "result": {
+                "syscall": 1080,
+                "v0": 89,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1080,
+                "pc": 262962608,
+                "a0": 268845536,
+                "a1": 493,
+                "a2": 0,
+                "a3": 268845569
+              },
+              "result": {
+                "syscall": 1080,
+                "v0": 89,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1080,
+                "pc": 262962608,
+                "a0": 268877136,
+                "a1": 493,
+                "a2": 0,
+                "a3": 268877169
+              },
+              "result": {
+                "syscall": 1080,
+                "v0": 89,
+                "a3": 1
+              }
+            }
+          ],
+          "waits": [
+            {
+              "call": {
+                "syscall": 1170,
+                "pc": 262541888,
+                "a0": 0,
+                "a1": 198,
+                "a2": 2147446128,
+                "a3": 3
+              },
+              "result": {
+                "syscall": 1170,
+                "v0": 22,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1170,
+                "pc": 262541888,
+                "a0": 0,
+                "a1": 198,
+                "a2": 2147446128,
+                "a3": 3
+              },
+              "result": {
+                "syscall": 1170,
+                "v0": 22,
+                "a3": 1
+              }
+            }
+          ],
+          "truncated_record_lines": [],
+          "last_complete_pairs": [
+            {
+              "call": {
+                "syscall": 1108,
+                "pc": 262479580,
+                "a0": 2147446016,
+                "a1": 256,
+                "a2": 2097152,
+                "a3": 2147450629
+              },
+              "result": {
+                "syscall": 1108,
+                "v0": 0,
+                "a3": 0
+              }
+            },
+            {
+              "call": {
+                "syscall": 1040,
+                "pc": 262470072,
+                "a0": 92,
+                "a1": 1,
+                "a2": 0,
+                "a3": 47
+              },
+              "result": {
+                "syscall": 1040,
+                "v0": 89,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1158,
+                "pc": 262470200,
+                "a0": 2,
+                "a1": 2147444912,
+                "a2": 2147445936,
+                "a3": 99
+              },
+              "result": {
+                "syscall": 1158,
+                "v0": 2,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1158,
+                "pc": 262470200,
+                "a0": 2,
+                "a1": 2147444912,
+                "a2": 2147445936,
+                "a3": 99
+              },
+              "result": {
+                "syscall": 1158,
+                "v0": 2,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1158,
+                "pc": 262470200,
+                "a0": 2,
+                "a1": 2147444912,
+                "a2": 2147445936,
+                "a3": 99
+              },
+              "result": {
+                "syscall": 1158,
+                "v0": 2,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1002,
+                "pc": 262530836,
+                "a0": 2147445583,
+                "a1": 1,
+                "a2": 2097152,
+                "a3": 0
+              },
+              "result": {
+                "syscall": 1002,
+                "v0": 198,
+                "a3": 0
+              }
+            },
+            {
+              "call": {
+                "syscall": 1170,
+                "pc": 262541888,
+                "a0": 0,
+                "a1": 198,
+                "a2": 2147446128,
+                "a3": 3
+              },
+              "result": {
+                "syscall": 1170,
+                "v0": 22,
+                "a3": 1
+              }
+            }
+          ],
+          "boundary": "mkdir ENOSYS; Icon Catalog session-directory error; fm waitsys(options=3) EINVAL"
+        },
+        {
+          "name": "iconcatalog",
+          "pid": 196,
+          "exit_status": "",
+          "stdout": "",
+          "stderr": "",
+          "trace_sha256": "4f591e3e5dfba526a7e3dd5583f88c55fcaa8f297722b6929534f9f672c3781d",
+          "initialization_passed": true,
+          "initializations": [
+            {
+              "call": {
+                "syscall": 1130,
+                "pc": 262502756,
+                "a0": 20,
+                "a1": 720896,
+                "a2": 3,
+                "a3": 0
+              },
+              "result": {
+                "syscall": 1130,
+                "v0": 0,
+                "a3": 0
+              }
+            },
+            {
+              "call": {
+                "syscall": 1130,
+                "pc": 262502756,
+                "a0": 20,
+                "a1": 720896,
+                "a2": 3,
+                "a3": 0
+              },
+              "result": {
+                "syscall": 1130,
+                "v0": 0,
+                "a3": 0
+              }
+            }
+          ],
+          "mkdir": [
+            {
+              "call": {
+                "syscall": 1080,
+                "pc": 262962608,
+                "a0": 268710328,
+                "a1": 493,
+                "a2": 0,
+                "a3": 268710361
+              },
+              "result": {
+                "syscall": 1080,
+                "v0": 89,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1080,
+                "pc": 262962608,
+                "a0": 268721480,
+                "a1": 493,
+                "a2": 0,
+                "a3": 268721513
+              },
+              "result": {
+                "syscall": 1080,
+                "v0": 89,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1080,
+                "pc": 262962608,
+                "a0": 268741272,
+                "a1": 493,
+                "a2": 0,
+                "a3": 268741305
+              },
+              "result": {
+                "syscall": 1080,
+                "v0": 89,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1080,
+                "pc": 262962608,
+                "a0": 268710328,
+                "a1": 493,
+                "a2": 0,
+                "a3": 268710361
+              },
+              "result": {
+                "syscall": 1080,
+                "v0": 89,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1080,
+                "pc": 262962608,
+                "a0": 268721480,
+                "a1": 493,
+                "a2": 0,
+                "a3": 268721513
+              },
+              "result": {
+                "syscall": 1080,
+                "v0": 89,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1080,
+                "pc": 262962608,
+                "a0": 268741272,
+                "a1": 493,
+                "a2": 0,
+                "a3": 268741305
+              },
+              "result": {
+                "syscall": 1080,
+                "v0": 89,
+                "a3": 1
+              }
+            }
+          ],
+          "waits": [],
+          "truncated_record_lines": [
+            4000
+          ],
+          "last_complete_pairs": [
+            {
+              "call": {
+                "syscall": 1054,
+                "pc": 262475332,
+                "a0": 3,
+                "a1": 1074033418,
+                "a2": 2147443840,
+                "a3": 402653184
+              },
+              "result": {
+                "syscall": 1054,
+                "v0": 0,
+                "a3": 0
+              }
+            },
+            {
+              "call": {
+                "syscall": 1004,
+                "pc": 262541384,
+                "a0": 3,
+                "a1": 268637288,
+                "a2": 204,
+                "a3": 402653184
+              },
+              "result": {
+                "syscall": 1004,
+                "v0": 204,
+                "a3": 0
+              }
+            },
+            {
+              "call": {
+                "syscall": 1054,
+                "pc": 262475332,
+                "a0": 3,
+                "a1": 1074033418,
+                "a2": 2147444160,
+                "a3": 402653184
+              },
+              "result": {
+                "syscall": 1054,
+                "v0": 0,
+                "a3": 0
+              }
+            },
+            {
+              "call": {
+                "syscall": 1004,
+                "pc": 262541384,
+                "a0": 3,
+                "a1": 268637288,
+                "a2": 16,
+                "a3": 402653184
+              },
+              "result": {
+                "syscall": 1004,
+                "v0": 16,
+                "a3": 0
+              }
+            },
+            {
+              "call": {
+                "syscall": 1054,
+                "pc": 262475332,
+                "a0": 3,
+                "a1": 1074033418,
+                "a2": 2147444160,
+                "a3": 402653184
+              },
+              "result": {
+                "syscall": 1054,
+                "v0": 0,
+                "a3": 0
+              }
+            },
+            {
+              "call": {
+                "syscall": 1128,
+                "pc": 262545600,
+                "a0": 2147445544,
+                "a1": 0,
+                "a2": 0,
+                "a3": 0
+              },
+              "result": {
+                "syscall": 1128,
+                "v0": 89,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1100,
+                "pc": 262478260,
+                "a0": 4,
+                "a1": 2147445600,
+                "a2": 2147445728,
+                "a3": 2147445856
+              },
+              "result": {
+                "syscall": 1100,
+                "v0": 4,
+                "a3": 1
+              }
+            }
+          ],
+          "boundary": "mkdir ENOSYS; Icon Catalog session-directory error; fm waitsys(options=3) EINVAL"
+        },
+        {
+          "name": "fm-home",
+          "pid": 195,
+          "exit_status": "255",
+          "stdout": "",
+          "stderr": "",
+          "trace_sha256": "118c4fd5752ecf1b109c1ae298063a1f36656fc6ea881b6431486d7c78929054",
+          "initialization_passed": true,
+          "initializations": [
+            {
+              "call": {
+                "syscall": 1130,
+                "pc": 262502756,
+                "a0": 20,
+                "a1": 720896,
+                "a2": 3,
+                "a3": 0
+              },
+              "result": {
+                "syscall": 1130,
+                "v0": 0,
+                "a3": 0
+              }
+            },
+            {
+              "call": {
+                "syscall": 1130,
+                "pc": 262502756,
+                "a0": 20,
+                "a1": 720896,
+                "a2": 3,
+                "a3": 0
+              },
+              "result": {
+                "syscall": 1130,
+                "v0": 0,
+                "a3": 0
+              }
+            }
+          ],
+          "mkdir": [
+            {
+              "call": {
+                "syscall": 1080,
+                "pc": 262962608,
+                "a0": 268845536,
+                "a1": 493,
+                "a2": 0,
+                "a3": 268845569
+              },
+              "result": {
+                "syscall": 1080,
+                "v0": 89,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1080,
+                "pc": 262962608,
+                "a0": 268877136,
+                "a1": 493,
+                "a2": 0,
+                "a3": 268877169
+              },
+              "result": {
+                "syscall": 1080,
+                "v0": 89,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1080,
+                "pc": 262962608,
+                "a0": 268845536,
+                "a1": 493,
+                "a2": 0,
+                "a3": 268845569
+              },
+              "result": {
+                "syscall": 1080,
+                "v0": 89,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1080,
+                "pc": 262962608,
+                "a0": 268877136,
+                "a1": 493,
+                "a2": 0,
+                "a3": 268877169
+              },
+              "result": {
+                "syscall": 1080,
+                "v0": 89,
+                "a3": 1
+              }
+            }
+          ],
+          "waits": [
+            {
+              "call": {
+                "syscall": 1170,
+                "pc": 262541888,
+                "a0": 0,
+                "a1": 199,
+                "a2": 2147446128,
+                "a3": 3
+              },
+              "result": {
+                "syscall": 1170,
+                "v0": 22,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1170,
+                "pc": 262541888,
+                "a0": 0,
+                "a1": 199,
+                "a2": 2147446128,
+                "a3": 3
+              },
+              "result": {
+                "syscall": 1170,
+                "v0": 22,
+                "a3": 1
+              }
+            }
+          ],
+          "truncated_record_lines": [],
+          "last_complete_pairs": [
+            {
+              "call": {
+                "syscall": 1108,
+                "pc": 262479580,
+                "a0": 2147446016,
+                "a1": 256,
+                "a2": 2097152,
+                "a3": 2147450641
+              },
+              "result": {
+                "syscall": 1108,
+                "v0": 0,
+                "a3": 0
+              }
+            },
+            {
+              "call": {
+                "syscall": 1040,
+                "pc": 262470072,
+                "a0": 92,
+                "a1": 1,
+                "a2": 0,
+                "a3": 47
+              },
+              "result": {
+                "syscall": 1040,
+                "v0": 89,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1158,
+                "pc": 262470200,
+                "a0": 2,
+                "a1": 2147444912,
+                "a2": 2147445936,
+                "a3": 99
+              },
+              "result": {
+                "syscall": 1158,
+                "v0": 2,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1158,
+                "pc": 262470200,
+                "a0": 2,
+                "a1": 2147444912,
+                "a2": 2147445936,
+                "a3": 99
+              },
+              "result": {
+                "syscall": 1158,
+                "v0": 2,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1158,
+                "pc": 262470200,
+                "a0": 2,
+                "a1": 2147444912,
+                "a2": 2147445936,
+                "a3": 99
+              },
+              "result": {
+                "syscall": 1158,
+                "v0": 2,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1002,
+                "pc": 262530836,
+                "a0": 2147445583,
+                "a1": 1,
+                "a2": 2097152,
+                "a3": 0
+              },
+              "result": {
+                "syscall": 1002,
+                "v0": 199,
+                "a3": 0
+              }
+            },
+            {
+              "call": {
+                "syscall": 1170,
+                "pc": 262541888,
+                "a0": 0,
+                "a1": 199,
+                "a2": 2147446128,
+                "a3": 3
+              },
+              "result": {
+                "syscall": 1170,
+                "v0": 22,
+                "a3": 1
+              }
+            }
+          ],
+          "boundary": "mkdir ENOSYS; Icon Catalog session-directory error; fm waitsys(options=3) EINVAL"
+        }
+      ],
+      "window_check": "WMCHECK_STATUS=0\nWM_VIEWABLE clients=2\nWM_REPARENT client=6291457 frame=2097260 x=150 y=160 frame_x=142 frame_y=96\nWM_FOCUS_ATTEMPT n=0 target_x=270 target_y=230 actual_x=270 actual_y=230 leaf=6291457 focus=6291457 matched=1\nWM_FOCUS_POLICY pointer_root=0 pointer_leaf=6291457\nWM_FOCUS client=6291457 focus=6291457 matched=1\nWM_KEY delivered=1\nWM_DRAG dx=50 dy=30\nWM_CHECK passed\n",
+      "window_check_passed": true,
+      "focus_attempts": [
+        {
+          "n": 0,
+          "target_x": 270,
+          "target_y": 230,
+          "actual_x": 270,
+          "actual_y": 230,
+          "leaf": 6291457,
+          "focus": 6291457,
+          "matched": 1
+        }
+      ],
+      "marker_owner": "1234",
+      "type_output": "TYPE_WINDOW width=983 height=504 viewable=1\n",
+      "shell_handoff": "NATIVE_HANDOFF pid=4066 sid=4066 pgid=4066 tpgid=4066 uid=1234 euid=1234 gid=1234 egid=1234 groups=0 tty=/dev/pts/0 rows=24 cols=80\n",
+      "shell_marker": "XIRI_DESKTOP_COMPONENTS_SHELL_OK\n",
+      "shell_check_passed": true,
+      "controls": [
+        {
+          "phase": "before",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "after",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          }
+        }
+      ],
+      "guard": {
+        "pid": 3182,
+        "exit": -1,
+        "signal": 9,
+        "killed": 1,
+        "absent": 1,
+        "valid": 1,
+        "elapsed_ms": 120234,
+        "stdout": "",
+        "stderr": ""
+      },
+      "native_x11_after": true,
+      "clean_shutdown": true,
+      "frame_sha256": "3f39fc2908c0dffd0c9cd1fca403b1a39a39afba5e992f176d4c8054ab53c1b8",
+      "guest_trace_info": "SHA256 (desktop.ktrace) = 84f9ae58ccf945d918766d7b356dea768023f8e001512daaff0cef5b321ddf09\n"
+    },
+    {
+      "directory": ".work/irix-desktop-init-threads/runs/ordinary-7prxld2f",
+      "mode": "ordinary",
+      "pin": {
+        "schema": 1,
+        "description": "Measured initial IRIX pthread state and lifecycle",
+        "ident": "XIRI_IRIX_INIT_THREADS_20261101",
+        "source_revision": "a9e715bb082a755881799234dfdb54abca5a04c1",
+        "source_branch": "xiri",
+        "build_arch": "mips64eb",
+        "page_bytes": 8192,
+        "boot_kernel_sha256": "9b71fa1fc685b8a837382518f187871123185a478c7e35bbfa99fc76b3ff7363",
+        "native_kernel_sha256": "9236b5be410a3ffac454b5556a93a80423da7829ac0311e1f847d2073fd866eb",
+        "debug_kernel_sha256": "cee59625cea58635df8ceae1f92e501537632f5d046ce6f826d0973da3ded337",
+        "native_o32_sha256": "c294fbb1f2110445be31c096481ea54ab561c7e59ca5b9fc7171310098d755d4",
+        "source_dirty": false,
+        "emulator_revision": "9df1df14334838a989253efefe26f0547e6da592",
+        "emulator_branch": "xiri/netbsd64-tlb",
+        "emulator_sha256": "1b3f7702ba7f43b5c4fca8ba8884243559f46371d8d67a36ce5e6fee1e595eba",
+        "ci_client_sha256": "8711321aa6eaae440da3c7920b00ae4cf1c7f2abbdb15a9919f58485500ffb6c",
+        "base_disk_sha256": "269038c7b77660c83d3835208fc0b2702c93110c14b3c55a42416f51672cee2a",
+        "nvram_sha256": "ee883474d52f09278287b2044f7aeca61d2e7bc39c0bb8fd85c983ab64063d15",
+        "config_sha256": "08b91fa0950a3ee74b479e7b1bb8e40ddb5cad6d59414025e6c2222541a381ef",
+        "runtimes": [
+          {
+            "name": "vendor-o32-libc",
+            "path": "/usr/lib/libc.so.1",
+            "sha256": "ea766492103a193e9d404942705e4e28987545e37f699ede232b6c0f8c97c954"
+          },
+          {
+            "name": "vendor-o32-rld",
+            "path": "/lib/rld",
+            "sha256": "30228b54c1e5585b365514eb7c9895b03cc0f61cb898e05e3ddafece87863439"
+          },
+          {
+            "name": "vendor-n32-libc",
+            "path": "/lib32/libc.so.1",
+            "sha256": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e"
+          },
+          {
+            "name": "vendor-n32-rld",
+            "path": "/lib32/rld",
+            "sha256": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b"
+          }
+        ],
+        "config_path": "lab/irix-init-threads/XIRI_IRIX_INIT_THREADS"
+      },
+      "result_sha256": "07aa8935151735173c8780d07ab5bce796a5a13780abb9cad8885fa5a483f6ee",
+      "serial_sha256": "709cbffc5c9109e36319c2db4ce83870b6d3b30b0882eeda552c538dfda94922",
+      "config_sha256": "66bf067158193516ae3da2a2632b886e09e22a016f1ba903cbe6bce4754cc8cd",
+      "emulator_command_sha256": "a8751d695cd16903c6c2d0922d50dbcc41a8cd20da4d5057c4c6587445eed42f",
+      "sources": {
+        "scripts/probe-irix-desktop-init-threads.py": "f93f3a975af9381b2d65799f92f270034a2ba482fd7f945fb6b1f46e7ce5508f",
+        "lab/irix-shell/guard.c": "1bb3a7cc79f83bbc7de56c50c2ba5d0565dcc92eb7ff2d5b58d6f1e2257c11e3",
+        "lab/irix-toolchest/session.c": "e183b4aefdfb428e01dc609230e87a7546a0b31e9d4b5e236503e0a8bb3b09f5",
+        "lab/irix-lp64/runner.c": "005bdf3fffce5fb8ca79073e92cc41431aa953550c41014183d5de986a104463",
+        "lab/irix-desktop-components/wmcheck-settled.c": "1821310dda1fa61e3621768a38a46901ff3dd0b43c79825920f0a1ffaf9cb990",
+        "lab/irix-4dwm/type-ready.c": "61ce22cbda6c66ccaf53cbcffab5f3080be95004bcd3e5c6893dc54a8a9db838",
+        "lab/irix-shell/handoff.c": "24e89b5a57543448defb35a8d836d5ee525ec9a402f807ffdc92b8ac8227f325",
+        "lab/irix-shell/ctty-control.c": "6d4583baf6fbae054930519d465634712a1cef4339305bb58e146c1aa5b2f824",
+        "lab/irix-desktop-components/session.sh": "3fe19bda3f9f7b5710148f80c85ef5124e8928ed96052287a6c2885f5aa2f5d5",
+        "lab/irix-4dwm/setup-pty.sh": "8ff9bb102309ac544ec3d31edfe72f67968da20040980936659539128c26bbf0"
+      },
+      "staged": {
+        "/emul/irix/usr/bin/X11/4Dwm": "9b6db8756f24bb8f789ea8b23d26857e8020c8817a845b5096ccc4da8dcac7df",
+        "/emul/irix/usr/bin/X11/toolchest": "20efa5c36c1e0dba1176fdd98000057e574b21c787ca364e1811100f9f2ba860",
+        "/emul/irix/lib32/rld": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b",
+        "/emul/irix/lib32/libc.so.1": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e",
+        "/emul/irix/usr/lib32/libc.so.1": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e",
+        "/emul/irix/usr/lib32/internal/libimdXutil.so": "70cde99e88b21c950df9e04a0313bc9931465177d888f59eb45181c74d58647f",
+        "/emul/irix/usr/lib32/internal/libimdUtil.so": "d170951e98b868cefda1906329e210db04f43672522cab686c13f2cbd80c949f",
+        "/emul/irix/usr/lib32/internal/libimdFtrIcon.so": "99c57009020d614ccb691075ebf6b8c4b0f08e31467e6eba34b978abaf293441",
+        "/emul/irix/usr/lib32/libXm.so.1": "3c95e7c7fa9d26bde299a4313ce4cd03e749a90c7edf0bc42a3af3697491030c",
+        "/emul/irix/usr/lib32/libXmu.so": "42cc93453cd776caadfb5e7f7740ea26a87d8b931fb6e0febb7f716063eb28c7",
+        "/emul/irix/usr/lib32/libXext.so": "1d6a94a6602428a459b044e8564203c436815a9a8b3804ee3027503131defc4a",
+        "/emul/irix/usr/lib32/libXt.so": "452b4a3ae72728825c382896e45ca214ea750721d9586d1db263189063b5fb30",
+        "/emul/irix/usr/lib32/libX11.so.1": "2e3287c4842eb4149c9f839229093a28c180edf43dcf1f28b68102cdcf989642",
+        "/emul/irix/usr/lib32/libm.so": "8ab1b4e569cfb55ddb181ccf31b0a4a28a699894a55b6d8e778b8c15508ab4d0",
+        "/emul/irix/usr/lib32/libC.so.2": "e81c01921778d03148c45b66bdf7e935f49f7025a52f1f2ece5889e0c6eaf884",
+        "/emul/irix/usr/lib32/libCsup.so": "f3120e7dccf58919e45f7cff503e0686059fdb7f7facfee1ad32327f081c3fb0",
+        "/emul/irix/usr/lib32/libgen.so": "a3102584a1929b91e4db3428b8e022fff3cff690ec646dd9edbf094e7ad28d7d",
+        "/emul/irix/usr/lib32/libvk.so.1": "92818537abf4d09f5501d15f24ce024f1c4ad3ebbea2f18683547f71d0f56991",
+        "/emul/irix/usr/lib32/libXpm.so.1": "a7ea5a37f84b6c5520404cfa810d98c4c14b618acecaf0b17608fa28c5e53896",
+        "/emul/irix/usr/lib32/internal/libimdFtrDB.so": "ea57f287b178655dac04b6c06de953482ed23f95e30df816c16bf8cca8defb9f",
+        "/emul/irix/usr/lib32/libil.so": "a09cb4aea1be804fc9d550a6b1f59b2e8ffac3a52520a10006d44cab2d32c1e2",
+        "/emul/irix/usr/lib32/libifl.so": "1e2840da9add9994ef4a28a60b96ce5adbc3162b7543abc063dd9cbbef3139fd",
+        "/emul/irix/usr/lib32/libGL.so": "4ce211808b0baa3a2ac9d596c63be2e769acc8554fc82177019fd62d48445597",
+        "/emul/irix/usr/lib32/libGLU.so": "287842d59919ae332be7305e46e223b3599e9f38c3c9b5118906d7ff3ab87294",
+        "/emul/irix/usr/lib32/libSgm.so.1": "fc0cc9605fe443e0348cbac0205e607f1ac984771e1e65192d4e5674e9f893c4",
+        "/emul/irix/usr/lib32/libGLcore.so": "14d736eeb97e9f117f969336b98055912591e7d427f7bfea57ecae6e918752a4",
+        "/emul/irix/usr/lib32/libXsgivc.so": "2704330d4c16b56ab650456ae0f3a5c1cfc9213eaaf014817e4e6dc68b075606",
+        "/emul/irix/usr/lib32/libgl.so": "96349d52e132fb19fd2f016b66f50a1a0765d788673375181df0f3c130e298ea",
+        "/emul/irix/usr/lib32/libXi.so": "c8535479fccd8d5791fc79a8539fcc5b1448d73fe3748e4bde0a2e71ab65a18a",
+        "/emul/irix/usr/lib/X11/app-defaults/4DWm": "44fe41ae91b87ca4e306d99741673501202b6fe776225a4690171475a19c0153",
+        "/emul/irix/usr/lib/X11/system.4Dwmrc": "ac1fcf2df3eb19c8f50358bca0c97bd816686e8e63cd87a9f6da93f6168b48ac",
+        "/emul/irix/usr/lib/X11/system.4Dwmdesks": "a893e56342cfb1bf25d9e8c68c9b1c41ebff2dd871e5b66e10eb2c608b176ccb",
+        "/emul/irix/usr/lib/X11/system.backgrounds": "fd7030a155ee789453f24599c58252253f996f00f9c39526828736d1a57aef1d",
+        "/emul/irix/usr/sbin/fm": "a72db11a899cafff5e9d04b87ebe29b7ec96fefff431793e860079a3d05dc649",
+        "/emul/irix/usr/sbin/bgicons": "73e0a5fc645bc3ea224ebdb7996963f972960a1ef487ebd815a2652a80b28d3b",
+        "/emul/irix/usr/sbin/iconcatalog": "c1f30adad8c75305a3848c7694e3c45e62176debd4657f5240f14fc5c4d5189e",
+        "/emul/irix/usr/lib/desktop/fmserv": "edf17f7275722439cdaaca07836ecc8682425f49a1fb0c2310a7b04cb9ff9029",
+        "/emul/irix/usr/lib32/internal/libimdModel.so": "5c3fdce9960eeaad9e2868addbe7e5844480bfac8c0aa30a0832ea66c091c181",
+        "/emul/irix/usr/lib32/internal/libimdApp.so": "8b6efc1714c72d4b2735e242012a94edc3cbc9361ab830ca3bc14736dd5a32ca",
+        "/emul/irix/usr/lib32/internal/libimdIconPanel.so": "e3ddf13741d2e8586b942cc47d69907d179eafaa9b7b1a8138e6218a8b2d032e",
+        "/emul/irix/usr/lib32/internal/libMediaViewer.so": "eba4dc52d3286cb1d55e0cd4e0f344f3d1022b1dcc721cd5cfeecadb70133d73",
+        "/emul/irix/usr/lib32/libmediaclient.so": "7c7e993e060f61c1aad26182fd498af35467ea35fcafbed59a880f6faeef4256",
+        "/emul/irix/usr/lib32/libpthread.so": "03039d6e509aab1495046ab940174a36cbd27d6a2b0e0e2f4826f633ae8c9a70",
+        "/emul/irix/usr/lib32/librpcsvc.so": "4cd8b9b4e1ca56875b0986a73dc7819c7dbdc0792d756ee4a38369ad41d60272",
+        "/emul/irix/usr/lib/X11/app-defaults/Fmprefs": "7bb7eebff9ea6ef058727b2c36c3dea946f828565899ab117b7a581a525bff79",
+        "/emul/irix/usr/lib/X11/app-defaults/FileManager": "c921d8f4e1d521e2225fd1d0e54b3ebdc69f6dfc8acbb264cc5d10e928579f48",
+        "/emul/irix/usr/lib/X11/app-defaults/FileSelection": "3a4bbf06d9caec8729c695cf6d4fe6628beb0dc817b063ce968e390ed8511a28",
+        "/emul/irix/usr/lib/X11/app-defaults/SaAddLocalFileSwapGuide": "3539ccc8521be4027a48c38913e4e4284e341281900f798fa0b468282d600aac",
+        "/emul/irix/usr/lib/X11/app-defaults/SaAddLocalFileSwapTask": "c70cb5c001ef16d0f67ba20804838697bf045543728ce027d30f9fffd5a7e2b3",
+        "/emul/irix/usr/lib/X11/app-defaults/SaFilesPage": "4bab560a07368aa159a64e1c7f134a82942884b1b361a32d5e3f9b0f53bc163e",
+        "/emul/irix/usr/lib/X11/app-defaults/SaFilesystemCatalog": "faeb7941ee36c07f34dc2bc6ab038ff4826f8f979e8ec95459b714910a8f3765",
+        "/emul/irix/usr/lib/X11/app-defaults/SaFilesystemPanel": "7ca610dbd6da51eac965d680fc0af4d09dda1a20eac9604089238cc3fd55fc2c",
+        "/emul/irix/usr/lib/X11/app-defaults/SaRestoreFilesGuide": "d058d8f83bd847a443e3c221f3892b533e1d71e04efb5b8faf4fa119543b27f6",
+        "/emul/irix/usr/lib/X11/app-defaults/SaRestoreFilesTask": "5630a0e5ccd62e075373305b224e3087fb277be72fa05e2dd42bb904be4e8fbe",
+        "/emul/irix/usr/lib/X11/app-defaults/IconCatalog": "e5f20eb0f7e069556876dccbd5c38237dd0a23bf925bdda5503df1b382cfd2a2",
+        "/emul/irix/usr/lib/X11/app-defaults/Desktop": "4b428175e6e45b088b68a5a25a88ee0fac5b0494fe994c058128ea58a28ada6d",
+        "/emul/irix/usr/lib/X11/app-defaults/Desktophelp": "d7d246753145218819ac021963a2fce7cad89c724079860486ba9c63266fc928",
+        "/emul/irix/usr/lib/X11/app-defaults/MakeDotDesktop": "994d1a3e7985576acc821aa8abe858ab0529d38539ddf91705d735348d611914",
+        "/emul/irix/usr/lib/X11/xdm/DefaultIconList": "3fe0149ab648d8ac5e0d4f61cc24d9408324a0cb8eab9b55f37c937354ef2f5a",
+        "/emul/irix/usr/lib/X11/xdm/DefaultDeviceList": "fe06a659a6cf01b25bc13d7fe505d2d7d5afed522a2c6eeafaa520efb91e6e73"
+      },
+      "seed": ".work/irix-4dwm/runs/session-ci-xb3cj1si",
+      "seed_result_sha256": "a85522bb321dfa24cd614d4da620e91d94e2a241aeff5d92c64aa3298471b6e3",
+      "components": [
+        {
+          "name": "bgicons",
+          "pid": 193,
+          "exit_status": "1",
+          "stdout": "",
+          "stderr": "Function not implemented\n",
+          "trace_sha256": "688abb4cedaaa60720e14ff57233f305775008e7779c757974bdf382c4342367",
+          "initialization_passed": true,
+          "initializations": [
+            {
+              "call": {
+                "syscall": 1130,
+                "pc": 262502756,
+                "a0": 20,
+                "a1": 720896,
+                "a2": 3,
+                "a3": 0
+              },
+              "result": {
+                "syscall": 1130,
+                "v0": 0,
+                "a3": 0
+              }
+            },
+            {
+              "call": {
+                "syscall": 1130,
+                "pc": 262502756,
+                "a0": 20,
+                "a1": 720896,
+                "a2": 3,
+                "a3": 0
+              },
+              "result": {
+                "syscall": 1130,
+                "v0": 0,
+                "a3": 0
+              }
+            }
+          ],
+          "mkdir": [
+            {
+              "call": {
+                "syscall": 1080,
+                "pc": 262962608,
+                "a0": 268556592,
+                "a1": 493,
+                "a2": 0,
+                "a3": 268556625
+              },
+              "result": {
+                "syscall": 1080,
+                "v0": 89,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1080,
+                "pc": 262962608,
+                "a0": 268554184,
+                "a1": 493,
+                "a2": 0,
+                "a3": 268554184
+              },
+              "result": {
+                "syscall": 1080,
+                "v0": 89,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1080,
+                "pc": 262962608,
+                "a0": 268556592,
+                "a1": 493,
+                "a2": 0,
+                "a3": 268556625
+              },
+              "result": {
+                "syscall": 1080,
+                "v0": 89,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1080,
+                "pc": 262962608,
+                "a0": 268554184,
+                "a1": 493,
+                "a2": 0,
+                "a3": 268554184
+              },
+              "result": {
+                "syscall": 1080,
+                "v0": 89,
+                "a3": 1
+              }
+            }
+          ],
+          "waits": [],
+          "truncated_record_lines": [],
+          "last_complete_pairs": [
+            {
+              "call": {
+                "syscall": 1080,
+                "pc": 262962608,
+                "a0": 268554184,
+                "a1": 493,
+                "a2": 0,
+                "a3": 268554184
+              },
+              "result": {
+                "syscall": 1080,
+                "v0": 89,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1040,
+                "pc": 262470072,
+                "a0": 92,
+                "a1": 1,
+                "a2": 0,
+                "a3": 47
+              },
+              "result": {
+                "syscall": 1040,
+                "v0": 89,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1158,
+                "pc": 262470200,
+                "a0": 2,
+                "a1": 2147448688,
+                "a2": 2147449712,
+                "a3": 99
+              },
+              "result": {
+                "syscall": 1158,
+                "v0": 2,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1158,
+                "pc": 262470200,
+                "a0": 2,
+                "a1": 2147448688,
+                "a2": 2147449712,
+                "a3": 99
+              },
+              "result": {
+                "syscall": 1158,
+                "v0": 2,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1158,
+                "pc": 262470200,
+                "a0": 2,
+                "a1": 2147448688,
+                "a2": 2147449712,
+                "a3": 99
+              },
+              "result": {
+                "syscall": 1158,
+                "v0": 2,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1004,
+                "pc": 262541384,
+                "a0": 2,
+                "a1": 263454720,
+                "a2": 24,
+                "a3": 402653184
+              },
+              "result": {
+                "syscall": 1004,
+                "v0": 24,
+                "a3": 0
+              }
+            },
+            {
+              "call": {
+                "syscall": 1004,
+                "pc": 262541384,
+                "a0": 2,
+                "a1": 263559028,
+                "a2": 1,
+                "a3": 402653184
+              },
+              "result": {
+                "syscall": 1004,
+                "v0": 1,
+                "a3": 0
+              }
+            }
+          ],
+          "boundary": "mkdir ENOSYS; Icon Catalog session-directory error; fm waitsys(options=3) EINVAL"
+        },
+        {
+          "name": "fm-background",
+          "pid": 196,
+          "exit_status": "255",
+          "stdout": "",
+          "stderr": "",
+          "trace_sha256": "cc9bad107f0df386700df1d6e884ccaa0d492f271d000c9ffc8f91fdd0bd143e",
+          "initialization_passed": true,
+          "initializations": [
+            {
+              "call": {
+                "syscall": 1130,
+                "pc": 262502756,
+                "a0": 20,
+                "a1": 720896,
+                "a2": 3,
+                "a3": 0
+              },
+              "result": {
+                "syscall": 1130,
+                "v0": 0,
+                "a3": 0
+              }
+            },
+            {
+              "call": {
+                "syscall": 1130,
+                "pc": 262502756,
+                "a0": 20,
+                "a1": 720896,
+                "a2": 3,
+                "a3": 0
+              },
+              "result": {
+                "syscall": 1130,
+                "v0": 0,
+                "a3": 0
+              }
+            }
+          ],
+          "mkdir": [
+            {
+              "call": {
+                "syscall": 1080,
+                "pc": 262962608,
+                "a0": 268845536,
+                "a1": 493,
+                "a2": 0,
+                "a3": 268845569
+              },
+              "result": {
+                "syscall": 1080,
+                "v0": 89,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1080,
+                "pc": 262962608,
+                "a0": 268877136,
+                "a1": 493,
+                "a2": 0,
+                "a3": 268877169
+              },
+              "result": {
+                "syscall": 1080,
+                "v0": 89,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1080,
+                "pc": 262962608,
+                "a0": 268845536,
+                "a1": 493,
+                "a2": 0,
+                "a3": 268845569
+              },
+              "result": {
+                "syscall": 1080,
+                "v0": 89,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1080,
+                "pc": 262962608,
+                "a0": 268877136,
+                "a1": 493,
+                "a2": 0,
+                "a3": 268877169
+              },
+              "result": {
+                "syscall": 1080,
+                "v0": 89,
+                "a3": 1
+              }
+            }
+          ],
+          "waits": [
+            {
+              "call": {
+                "syscall": 1170,
+                "pc": 262541888,
+                "a0": 0,
+                "a1": 198,
+                "a2": 2147446128,
+                "a3": 3
+              },
+              "result": {
+                "syscall": 1170,
+                "v0": 22,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1170,
+                "pc": 262541888,
+                "a0": 0,
+                "a1": 198,
+                "a2": 2147446128,
+                "a3": 3
+              },
+              "result": {
+                "syscall": 1170,
+                "v0": 22,
+                "a3": 1
+              }
+            }
+          ],
+          "truncated_record_lines": [],
+          "last_complete_pairs": [
+            {
+              "call": {
+                "syscall": 1108,
+                "pc": 262479580,
+                "a0": 2147446016,
+                "a1": 256,
+                "a2": 2097152,
+                "a3": 2147450629
+              },
+              "result": {
+                "syscall": 1108,
+                "v0": 0,
+                "a3": 0
+              }
+            },
+            {
+              "call": {
+                "syscall": 1040,
+                "pc": 262470072,
+                "a0": 92,
+                "a1": 1,
+                "a2": 0,
+                "a3": 47
+              },
+              "result": {
+                "syscall": 1040,
+                "v0": 89,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1158,
+                "pc": 262470200,
+                "a0": 2,
+                "a1": 2147444912,
+                "a2": 2147445936,
+                "a3": 99
+              },
+              "result": {
+                "syscall": 1158,
+                "v0": 2,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1158,
+                "pc": 262470200,
+                "a0": 2,
+                "a1": 2147444912,
+                "a2": 2147445936,
+                "a3": 99
+              },
+              "result": {
+                "syscall": 1158,
+                "v0": 2,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1158,
+                "pc": 262470200,
+                "a0": 2,
+                "a1": 2147444912,
+                "a2": 2147445936,
+                "a3": 99
+              },
+              "result": {
+                "syscall": 1158,
+                "v0": 2,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1002,
+                "pc": 262530836,
+                "a0": 2147445583,
+                "a1": 1,
+                "a2": 2097152,
+                "a3": 0
+              },
+              "result": {
+                "syscall": 1002,
+                "v0": 198,
+                "a3": 0
+              }
+            },
+            {
+              "call": {
+                "syscall": 1170,
+                "pc": 262541888,
+                "a0": 0,
+                "a1": 198,
+                "a2": 2147446128,
+                "a3": 3
+              },
+              "result": {
+                "syscall": 1170,
+                "v0": 22,
+                "a3": 1
+              }
+            }
+          ],
+          "boundary": "mkdir ENOSYS; Icon Catalog session-directory error; fm waitsys(options=3) EINVAL"
+        },
+        {
+          "name": "iconcatalog",
+          "pid": 195,
+          "exit_status": "",
+          "stdout": "",
+          "stderr": "",
+          "trace_sha256": "30524c2cf7317e79af8a58e7c6fff0a0e1114b63001a609c4ac3a02ec35b4630",
+          "initialization_passed": true,
+          "initializations": [
+            {
+              "call": {
+                "syscall": 1130,
+                "pc": 262502756,
+                "a0": 20,
+                "a1": 720896,
+                "a2": 3,
+                "a3": 0
+              },
+              "result": {
+                "syscall": 1130,
+                "v0": 0,
+                "a3": 0
+              }
+            },
+            {
+              "call": {
+                "syscall": 1130,
+                "pc": 262502756,
+                "a0": 20,
+                "a1": 720896,
+                "a2": 3,
+                "a3": 0
+              },
+              "result": {
+                "syscall": 1130,
+                "v0": 0,
+                "a3": 0
+              }
+            }
+          ],
+          "mkdir": [
+            {
+              "call": {
+                "syscall": 1080,
+                "pc": 262962608,
+                "a0": 268710328,
+                "a1": 493,
+                "a2": 0,
+                "a3": 268710361
+              },
+              "result": {
+                "syscall": 1080,
+                "v0": 89,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1080,
+                "pc": 262962608,
+                "a0": 268721480,
+                "a1": 493,
+                "a2": 0,
+                "a3": 268721513
+              },
+              "result": {
+                "syscall": 1080,
+                "v0": 89,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1080,
+                "pc": 262962608,
+                "a0": 268741272,
+                "a1": 493,
+                "a2": 0,
+                "a3": 268741305
+              },
+              "result": {
+                "syscall": 1080,
+                "v0": 89,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1080,
+                "pc": 262962608,
+                "a0": 268710328,
+                "a1": 493,
+                "a2": 0,
+                "a3": 268710361
+              },
+              "result": {
+                "syscall": 1080,
+                "v0": 89,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1080,
+                "pc": 262962608,
+                "a0": 268721480,
+                "a1": 493,
+                "a2": 0,
+                "a3": 268721513
+              },
+              "result": {
+                "syscall": 1080,
+                "v0": 89,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1080,
+                "pc": 262962608,
+                "a0": 268741272,
+                "a1": 493,
+                "a2": 0,
+                "a3": 268741305
+              },
+              "result": {
+                "syscall": 1080,
+                "v0": 89,
+                "a3": 1
+              }
+            }
+          ],
+          "waits": [],
+          "truncated_record_lines": [
+            4000
+          ],
+          "last_complete_pairs": [
+            {
+              "call": {
+                "syscall": 1054,
+                "pc": 262475332,
+                "a0": 3,
+                "a1": 1074033418,
+                "a2": 2147443840,
+                "a3": 402653184
+              },
+              "result": {
+                "syscall": 1054,
+                "v0": 0,
+                "a3": 0
+              }
+            },
+            {
+              "call": {
+                "syscall": 1004,
+                "pc": 262541384,
+                "a0": 3,
+                "a1": 268637288,
+                "a2": 204,
+                "a3": 402653184
+              },
+              "result": {
+                "syscall": 1004,
+                "v0": 204,
+                "a3": 0
+              }
+            },
+            {
+              "call": {
+                "syscall": 1054,
+                "pc": 262475332,
+                "a0": 3,
+                "a1": 1074033418,
+                "a2": 2147444160,
+                "a3": 402653184
+              },
+              "result": {
+                "syscall": 1054,
+                "v0": 0,
+                "a3": 0
+              }
+            },
+            {
+              "call": {
+                "syscall": 1004,
+                "pc": 262541384,
+                "a0": 3,
+                "a1": 268637288,
+                "a2": 16,
+                "a3": 402653184
+              },
+              "result": {
+                "syscall": 1004,
+                "v0": 16,
+                "a3": 0
+              }
+            },
+            {
+              "call": {
+                "syscall": 1054,
+                "pc": 262475332,
+                "a0": 3,
+                "a1": 1074033418,
+                "a2": 2147444160,
+                "a3": 402653184
+              },
+              "result": {
+                "syscall": 1054,
+                "v0": 0,
+                "a3": 0
+              }
+            },
+            {
+              "call": {
+                "syscall": 1128,
+                "pc": 262545600,
+                "a0": 2147445544,
+                "a1": 0,
+                "a2": 0,
+                "a3": 0
+              },
+              "result": {
+                "syscall": 1128,
+                "v0": 89,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1100,
+                "pc": 262478260,
+                "a0": 4,
+                "a1": 2147445600,
+                "a2": 2147445728,
+                "a3": 2147445856
+              },
+              "result": {
+                "syscall": 1100,
+                "v0": 4,
+                "a3": 1
+              }
+            }
+          ],
+          "boundary": "mkdir ENOSYS; Icon Catalog session-directory error; fm waitsys(options=3) EINVAL"
+        },
+        {
+          "name": "fm-home",
+          "pid": 194,
+          "exit_status": "255",
+          "stdout": "",
+          "stderr": "",
+          "trace_sha256": "285ddb74aab6af41c9bb155e5df249962cca63abaf1856b76cfc8d964a98a269",
+          "initialization_passed": true,
+          "initializations": [
+            {
+              "call": {
+                "syscall": 1130,
+                "pc": 262502756,
+                "a0": 20,
+                "a1": 720896,
+                "a2": 3,
+                "a3": 0
+              },
+              "result": {
+                "syscall": 1130,
+                "v0": 0,
+                "a3": 0
+              }
+            },
+            {
+              "call": {
+                "syscall": 1130,
+                "pc": 262502756,
+                "a0": 20,
+                "a1": 720896,
+                "a2": 3,
+                "a3": 0
+              },
+              "result": {
+                "syscall": 1130,
+                "v0": 0,
+                "a3": 0
+              }
+            }
+          ],
+          "mkdir": [
+            {
+              "call": {
+                "syscall": 1080,
+                "pc": 262962608,
+                "a0": 268845536,
+                "a1": 493,
+                "a2": 0,
+                "a3": 268845569
+              },
+              "result": {
+                "syscall": 1080,
+                "v0": 89,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1080,
+                "pc": 262962608,
+                "a0": 268877136,
+                "a1": 493,
+                "a2": 0,
+                "a3": 268877169
+              },
+              "result": {
+                "syscall": 1080,
+                "v0": 89,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1080,
+                "pc": 262962608,
+                "a0": 268845536,
+                "a1": 493,
+                "a2": 0,
+                "a3": 268845569
+              },
+              "result": {
+                "syscall": 1080,
+                "v0": 89,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1080,
+                "pc": 262962608,
+                "a0": 268877136,
+                "a1": 493,
+                "a2": 0,
+                "a3": 268877169
+              },
+              "result": {
+                "syscall": 1080,
+                "v0": 89,
+                "a3": 1
+              }
+            }
+          ],
+          "waits": [
+            {
+              "call": {
+                "syscall": 1170,
+                "pc": 262541888,
+                "a0": 0,
+                "a1": 197,
+                "a2": 2147446128,
+                "a3": 3
+              },
+              "result": {
+                "syscall": 1170,
+                "v0": 22,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1170,
+                "pc": 262541888,
+                "a0": 0,
+                "a1": 197,
+                "a2": 2147446128,
+                "a3": 3
+              },
+              "result": {
+                "syscall": 1170,
+                "v0": 22,
+                "a3": 1
+              }
+            }
+          ],
+          "truncated_record_lines": [],
+          "last_complete_pairs": [
+            {
+              "call": {
+                "syscall": 1108,
+                "pc": 262479580,
+                "a0": 2147446016,
+                "a1": 256,
+                "a2": 2097152,
+                "a3": 2147450641
+              },
+              "result": {
+                "syscall": 1108,
+                "v0": 0,
+                "a3": 0
+              }
+            },
+            {
+              "call": {
+                "syscall": 1040,
+                "pc": 262470072,
+                "a0": 92,
+                "a1": 1,
+                "a2": 0,
+                "a3": 47
+              },
+              "result": {
+                "syscall": 1040,
+                "v0": 89,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1158,
+                "pc": 262470200,
+                "a0": 2,
+                "a1": 2147444912,
+                "a2": 2147445936,
+                "a3": 99
+              },
+              "result": {
+                "syscall": 1158,
+                "v0": 2,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1158,
+                "pc": 262470200,
+                "a0": 2,
+                "a1": 2147444912,
+                "a2": 2147445936,
+                "a3": 99
+              },
+              "result": {
+                "syscall": 1158,
+                "v0": 2,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1158,
+                "pc": 262470200,
+                "a0": 2,
+                "a1": 2147444912,
+                "a2": 2147445936,
+                "a3": 99
+              },
+              "result": {
+                "syscall": 1158,
+                "v0": 2,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1002,
+                "pc": 262530836,
+                "a0": 2147445583,
+                "a1": 1,
+                "a2": 2097152,
+                "a3": 0
+              },
+              "result": {
+                "syscall": 1002,
+                "v0": 197,
+                "a3": 0
+              }
+            },
+            {
+              "call": {
+                "syscall": 1170,
+                "pc": 262541888,
+                "a0": 0,
+                "a1": 197,
+                "a2": 2147446128,
+                "a3": 3
+              },
+              "result": {
+                "syscall": 1170,
+                "v0": 22,
+                "a3": 1
+              }
+            }
+          ],
+          "boundary": "mkdir ENOSYS; Icon Catalog session-directory error; fm waitsys(options=3) EINVAL"
+        }
+      ],
+      "window_check": "WMCHECK_STATUS=0\nWM_VIEWABLE clients=2\nWM_REPARENT client=6291457 frame=2097260 x=150 y=160 frame_x=142 frame_y=96\nWM_FOCUS_ATTEMPT n=0 target_x=270 target_y=230 actual_x=270 actual_y=230 leaf=6291457 focus=6291457 matched=1\nWM_FOCUS_POLICY pointer_root=0 pointer_leaf=6291457\nWM_FOCUS client=6291457 focus=6291457 matched=1\nWM_KEY delivered=1\nWM_DRAG dx=50 dy=30\nWM_CHECK passed\n",
+      "window_check_passed": true,
+      "focus_attempts": [
+        {
+          "n": 0,
+          "target_x": 270,
+          "target_y": 230,
+          "actual_x": 270,
+          "actual_y": 230,
+          "leaf": 6291457,
+          "focus": 6291457,
+          "matched": 1
+        }
+      ],
+      "marker_owner": "",
+      "type_output": "terminal not viewable at usable geometry\n",
+      "shell_handoff": "NATIVE_HANDOFF pid=2607 sid=2607 pgid=2607 tpgid=2607 uid=1234 euid=1234 gid=1234 egid=1234 groups=0 tty=/dev/pts/0 rows=24 cols=80\n",
+      "shell_marker": "",
+      "shell_check_passed": false,
+      "controls": [
+        {
+          "phase": "before",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "after",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          }
+        }
+      ],
+      "guard": {
+        "pid": 3611,
+        "exit": -1,
+        "signal": 9,
+        "killed": 1,
+        "absent": 1,
+        "valid": 1,
+        "elapsed_ms": 120167,
+        "stdout": "",
+        "stderr": ""
+      },
+      "native_x11_after": true,
+      "clean_shutdown": true,
+      "frame_sha256": "cdf3fd58217c61257ad5387ed060d273f1b37ad2665875bef35850fe4c00c5f7",
+      "guest_trace_info": "SHA256 (desktop.ktrace) = 703658ac34c3d6f4bcabe9fc6173b5c07c6852cd26eed5bb3e3aa54631177852\n"
+    },
+    {
+      "directory": ".work/irix-desktop-init-threads/runs/ordinary-fnvguh2o",
+      "mode": "ordinary",
+      "pin": {
+        "schema": 1,
+        "description": "Measured initial IRIX pthread state and lifecycle",
+        "ident": "XIRI_IRIX_INIT_THREADS_20261101",
+        "source_revision": "a9e715bb082a755881799234dfdb54abca5a04c1",
+        "source_branch": "xiri",
+        "build_arch": "mips64eb",
+        "page_bytes": 8192,
+        "boot_kernel_sha256": "9b71fa1fc685b8a837382518f187871123185a478c7e35bbfa99fc76b3ff7363",
+        "native_kernel_sha256": "9236b5be410a3ffac454b5556a93a80423da7829ac0311e1f847d2073fd866eb",
+        "debug_kernel_sha256": "cee59625cea58635df8ceae1f92e501537632f5d046ce6f826d0973da3ded337",
+        "native_o32_sha256": "c294fbb1f2110445be31c096481ea54ab561c7e59ca5b9fc7171310098d755d4",
+        "source_dirty": false,
+        "emulator_revision": "9df1df14334838a989253efefe26f0547e6da592",
+        "emulator_branch": "xiri/netbsd64-tlb",
+        "emulator_sha256": "1b3f7702ba7f43b5c4fca8ba8884243559f46371d8d67a36ce5e6fee1e595eba",
+        "ci_client_sha256": "8711321aa6eaae440da3c7920b00ae4cf1c7f2abbdb15a9919f58485500ffb6c",
+        "base_disk_sha256": "269038c7b77660c83d3835208fc0b2702c93110c14b3c55a42416f51672cee2a",
+        "nvram_sha256": "ee883474d52f09278287b2044f7aeca61d2e7bc39c0bb8fd85c983ab64063d15",
+        "config_sha256": "08b91fa0950a3ee74b479e7b1bb8e40ddb5cad6d59414025e6c2222541a381ef",
+        "runtimes": [
+          {
+            "name": "vendor-o32-libc",
+            "path": "/usr/lib/libc.so.1",
+            "sha256": "ea766492103a193e9d404942705e4e28987545e37f699ede232b6c0f8c97c954"
+          },
+          {
+            "name": "vendor-o32-rld",
+            "path": "/lib/rld",
+            "sha256": "30228b54c1e5585b365514eb7c9895b03cc0f61cb898e05e3ddafece87863439"
+          },
+          {
+            "name": "vendor-n32-libc",
+            "path": "/lib32/libc.so.1",
+            "sha256": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e"
+          },
+          {
+            "name": "vendor-n32-rld",
+            "path": "/lib32/rld",
+            "sha256": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b"
+          }
+        ],
+        "config_path": "lab/irix-init-threads/XIRI_IRIX_INIT_THREADS"
+      },
+      "result_sha256": "12558524171fe02564908f9a75ea670f750b6fe064f4c4fca8a2c0aea4d02ba5",
+      "serial_sha256": "fcb34ae88b3481cc5ff72d37faf68ece551ae5247dd8e43dfe623f9fdbc20450",
+      "config_sha256": "b71a1430199fb835dc6bb8dc15164cf413773f541cdbd90dfb87b85033e06340",
+      "emulator_command_sha256": "dd1c3cd50a357c90148b6656c124a6d2f4cb0c225329bbdfb737b762f9c7958a",
+      "sources": {
+        "scripts/probe-irix-desktop-init-threads.py": "f93f3a975af9381b2d65799f92f270034a2ba482fd7f945fb6b1f46e7ce5508f",
+        "lab/irix-shell/guard.c": "1bb3a7cc79f83bbc7de56c50c2ba5d0565dcc92eb7ff2d5b58d6f1e2257c11e3",
+        "lab/irix-toolchest/session.c": "e183b4aefdfb428e01dc609230e87a7546a0b31e9d4b5e236503e0a8bb3b09f5",
+        "lab/irix-lp64/runner.c": "005bdf3fffce5fb8ca79073e92cc41431aa953550c41014183d5de986a104463",
+        "lab/irix-desktop-components/wmcheck-settled.c": "1821310dda1fa61e3621768a38a46901ff3dd0b43c79825920f0a1ffaf9cb990",
+        "lab/irix-4dwm/type-ready.c": "61ce22cbda6c66ccaf53cbcffab5f3080be95004bcd3e5c6893dc54a8a9db838",
+        "lab/irix-shell/handoff.c": "24e89b5a57543448defb35a8d836d5ee525ec9a402f807ffdc92b8ac8227f325",
+        "lab/irix-shell/ctty-control.c": "6d4583baf6fbae054930519d465634712a1cef4339305bb58e146c1aa5b2f824",
+        "lab/irix-desktop-components/session.sh": "3fe19bda3f9f7b5710148f80c85ef5124e8928ed96052287a6c2885f5aa2f5d5",
+        "lab/irix-4dwm/setup-pty.sh": "8ff9bb102309ac544ec3d31edfe72f67968da20040980936659539128c26bbf0"
+      },
+      "staged": {
+        "/emul/irix/usr/bin/X11/4Dwm": "9b6db8756f24bb8f789ea8b23d26857e8020c8817a845b5096ccc4da8dcac7df",
+        "/emul/irix/usr/bin/X11/toolchest": "20efa5c36c1e0dba1176fdd98000057e574b21c787ca364e1811100f9f2ba860",
+        "/emul/irix/lib32/rld": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b",
+        "/emul/irix/lib32/libc.so.1": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e",
+        "/emul/irix/usr/lib32/libc.so.1": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e",
+        "/emul/irix/usr/lib32/internal/libimdXutil.so": "70cde99e88b21c950df9e04a0313bc9931465177d888f59eb45181c74d58647f",
+        "/emul/irix/usr/lib32/internal/libimdUtil.so": "d170951e98b868cefda1906329e210db04f43672522cab686c13f2cbd80c949f",
+        "/emul/irix/usr/lib32/internal/libimdFtrIcon.so": "99c57009020d614ccb691075ebf6b8c4b0f08e31467e6eba34b978abaf293441",
+        "/emul/irix/usr/lib32/libXm.so.1": "3c95e7c7fa9d26bde299a4313ce4cd03e749a90c7edf0bc42a3af3697491030c",
+        "/emul/irix/usr/lib32/libXmu.so": "42cc93453cd776caadfb5e7f7740ea26a87d8b931fb6e0febb7f716063eb28c7",
+        "/emul/irix/usr/lib32/libXext.so": "1d6a94a6602428a459b044e8564203c436815a9a8b3804ee3027503131defc4a",
+        "/emul/irix/usr/lib32/libXt.so": "452b4a3ae72728825c382896e45ca214ea750721d9586d1db263189063b5fb30",
+        "/emul/irix/usr/lib32/libX11.so.1": "2e3287c4842eb4149c9f839229093a28c180edf43dcf1f28b68102cdcf989642",
+        "/emul/irix/usr/lib32/libm.so": "8ab1b4e569cfb55ddb181ccf31b0a4a28a699894a55b6d8e778b8c15508ab4d0",
+        "/emul/irix/usr/lib32/libC.so.2": "e81c01921778d03148c45b66bdf7e935f49f7025a52f1f2ece5889e0c6eaf884",
+        "/emul/irix/usr/lib32/libCsup.so": "f3120e7dccf58919e45f7cff503e0686059fdb7f7facfee1ad32327f081c3fb0",
+        "/emul/irix/usr/lib32/libgen.so": "a3102584a1929b91e4db3428b8e022fff3cff690ec646dd9edbf094e7ad28d7d",
+        "/emul/irix/usr/lib32/libvk.so.1": "92818537abf4d09f5501d15f24ce024f1c4ad3ebbea2f18683547f71d0f56991",
+        "/emul/irix/usr/lib32/libXpm.so.1": "a7ea5a37f84b6c5520404cfa810d98c4c14b618acecaf0b17608fa28c5e53896",
+        "/emul/irix/usr/lib32/internal/libimdFtrDB.so": "ea57f287b178655dac04b6c06de953482ed23f95e30df816c16bf8cca8defb9f",
+        "/emul/irix/usr/lib32/libil.so": "a09cb4aea1be804fc9d550a6b1f59b2e8ffac3a52520a10006d44cab2d32c1e2",
+        "/emul/irix/usr/lib32/libifl.so": "1e2840da9add9994ef4a28a60b96ce5adbc3162b7543abc063dd9cbbef3139fd",
+        "/emul/irix/usr/lib32/libGL.so": "4ce211808b0baa3a2ac9d596c63be2e769acc8554fc82177019fd62d48445597",
+        "/emul/irix/usr/lib32/libGLU.so": "287842d59919ae332be7305e46e223b3599e9f38c3c9b5118906d7ff3ab87294",
+        "/emul/irix/usr/lib32/libSgm.so.1": "fc0cc9605fe443e0348cbac0205e607f1ac984771e1e65192d4e5674e9f893c4",
+        "/emul/irix/usr/lib32/libGLcore.so": "14d736eeb97e9f117f969336b98055912591e7d427f7bfea57ecae6e918752a4",
+        "/emul/irix/usr/lib32/libXsgivc.so": "2704330d4c16b56ab650456ae0f3a5c1cfc9213eaaf014817e4e6dc68b075606",
+        "/emul/irix/usr/lib32/libgl.so": "96349d52e132fb19fd2f016b66f50a1a0765d788673375181df0f3c130e298ea",
+        "/emul/irix/usr/lib32/libXi.so": "c8535479fccd8d5791fc79a8539fcc5b1448d73fe3748e4bde0a2e71ab65a18a",
+        "/emul/irix/usr/lib/X11/app-defaults/4DWm": "44fe41ae91b87ca4e306d99741673501202b6fe776225a4690171475a19c0153",
+        "/emul/irix/usr/lib/X11/system.4Dwmrc": "ac1fcf2df3eb19c8f50358bca0c97bd816686e8e63cd87a9f6da93f6168b48ac",
+        "/emul/irix/usr/lib/X11/system.4Dwmdesks": "a893e56342cfb1bf25d9e8c68c9b1c41ebff2dd871e5b66e10eb2c608b176ccb",
+        "/emul/irix/usr/lib/X11/system.backgrounds": "fd7030a155ee789453f24599c58252253f996f00f9c39526828736d1a57aef1d",
+        "/emul/irix/usr/sbin/fm": "a72db11a899cafff5e9d04b87ebe29b7ec96fefff431793e860079a3d05dc649",
+        "/emul/irix/usr/sbin/bgicons": "73e0a5fc645bc3ea224ebdb7996963f972960a1ef487ebd815a2652a80b28d3b",
+        "/emul/irix/usr/sbin/iconcatalog": "c1f30adad8c75305a3848c7694e3c45e62176debd4657f5240f14fc5c4d5189e",
+        "/emul/irix/usr/lib/desktop/fmserv": "edf17f7275722439cdaaca07836ecc8682425f49a1fb0c2310a7b04cb9ff9029",
+        "/emul/irix/usr/lib32/internal/libimdModel.so": "5c3fdce9960eeaad9e2868addbe7e5844480bfac8c0aa30a0832ea66c091c181",
+        "/emul/irix/usr/lib32/internal/libimdApp.so": "8b6efc1714c72d4b2735e242012a94edc3cbc9361ab830ca3bc14736dd5a32ca",
+        "/emul/irix/usr/lib32/internal/libimdIconPanel.so": "e3ddf13741d2e8586b942cc47d69907d179eafaa9b7b1a8138e6218a8b2d032e",
+        "/emul/irix/usr/lib32/internal/libMediaViewer.so": "eba4dc52d3286cb1d55e0cd4e0f344f3d1022b1dcc721cd5cfeecadb70133d73",
+        "/emul/irix/usr/lib32/libmediaclient.so": "7c7e993e060f61c1aad26182fd498af35467ea35fcafbed59a880f6faeef4256",
+        "/emul/irix/usr/lib32/libpthread.so": "03039d6e509aab1495046ab940174a36cbd27d6a2b0e0e2f4826f633ae8c9a70",
+        "/emul/irix/usr/lib32/librpcsvc.so": "4cd8b9b4e1ca56875b0986a73dc7819c7dbdc0792d756ee4a38369ad41d60272",
+        "/emul/irix/usr/lib/X11/app-defaults/Fmprefs": "7bb7eebff9ea6ef058727b2c36c3dea946f828565899ab117b7a581a525bff79",
+        "/emul/irix/usr/lib/X11/app-defaults/FileManager": "c921d8f4e1d521e2225fd1d0e54b3ebdc69f6dfc8acbb264cc5d10e928579f48",
+        "/emul/irix/usr/lib/X11/app-defaults/FileSelection": "3a4bbf06d9caec8729c695cf6d4fe6628beb0dc817b063ce968e390ed8511a28",
+        "/emul/irix/usr/lib/X11/app-defaults/SaAddLocalFileSwapGuide": "3539ccc8521be4027a48c38913e4e4284e341281900f798fa0b468282d600aac",
+        "/emul/irix/usr/lib/X11/app-defaults/SaAddLocalFileSwapTask": "c70cb5c001ef16d0f67ba20804838697bf045543728ce027d30f9fffd5a7e2b3",
+        "/emul/irix/usr/lib/X11/app-defaults/SaFilesPage": "4bab560a07368aa159a64e1c7f134a82942884b1b361a32d5e3f9b0f53bc163e",
+        "/emul/irix/usr/lib/X11/app-defaults/SaFilesystemCatalog": "faeb7941ee36c07f34dc2bc6ab038ff4826f8f979e8ec95459b714910a8f3765",
+        "/emul/irix/usr/lib/X11/app-defaults/SaFilesystemPanel": "7ca610dbd6da51eac965d680fc0af4d09dda1a20eac9604089238cc3fd55fc2c",
+        "/emul/irix/usr/lib/X11/app-defaults/SaRestoreFilesGuide": "d058d8f83bd847a443e3c221f3892b533e1d71e04efb5b8faf4fa119543b27f6",
+        "/emul/irix/usr/lib/X11/app-defaults/SaRestoreFilesTask": "5630a0e5ccd62e075373305b224e3087fb277be72fa05e2dd42bb904be4e8fbe",
+        "/emul/irix/usr/lib/X11/app-defaults/IconCatalog": "e5f20eb0f7e069556876dccbd5c38237dd0a23bf925bdda5503df1b382cfd2a2",
+        "/emul/irix/usr/lib/X11/app-defaults/Desktop": "4b428175e6e45b088b68a5a25a88ee0fac5b0494fe994c058128ea58a28ada6d",
+        "/emul/irix/usr/lib/X11/app-defaults/Desktophelp": "d7d246753145218819ac021963a2fce7cad89c724079860486ba9c63266fc928",
+        "/emul/irix/usr/lib/X11/app-defaults/MakeDotDesktop": "994d1a3e7985576acc821aa8abe858ab0529d38539ddf91705d735348d611914",
+        "/emul/irix/usr/lib/X11/xdm/DefaultIconList": "3fe0149ab648d8ac5e0d4f61cc24d9408324a0cb8eab9b55f37c937354ef2f5a",
+        "/emul/irix/usr/lib/X11/xdm/DefaultDeviceList": "fe06a659a6cf01b25bc13d7fe505d2d7d5afed522a2c6eeafaa520efb91e6e73"
+      },
+      "seed": ".work/irix-4dwm/runs/session-ci-xb3cj1si",
+      "seed_result_sha256": "a85522bb321dfa24cd614d4da620e91d94e2a241aeff5d92c64aa3298471b6e3",
+      "components": [
+        {
+          "name": "bgicons",
+          "pid": 2922,
+          "exit_status": "1",
+          "stdout": "",
+          "stderr": "Function not implemented\n",
+          "trace_sha256": "fb42d454a864619f9a78c6668c7ac29faf8e0158a75211907cbcd04d4fa0409f",
+          "initialization_passed": true,
+          "initializations": [
+            {
+              "call": {
+                "syscall": 1130,
+                "pc": 262502756,
+                "a0": 20,
+                "a1": 720896,
+                "a2": 3,
+                "a3": 0
+              },
+              "result": {
+                "syscall": 1130,
+                "v0": 0,
+                "a3": 0
+              }
+            },
+            {
+              "call": {
+                "syscall": 1130,
+                "pc": 262502756,
+                "a0": 20,
+                "a1": 720896,
+                "a2": 3,
+                "a3": 0
+              },
+              "result": {
+                "syscall": 1130,
+                "v0": 0,
+                "a3": 0
+              }
+            }
+          ],
+          "mkdir": [
+            {
+              "call": {
+                "syscall": 1080,
+                "pc": 262962608,
+                "a0": 268556592,
+                "a1": 493,
+                "a2": 0,
+                "a3": 268556625
+              },
+              "result": {
+                "syscall": 1080,
+                "v0": 89,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1080,
+                "pc": 262962608,
+                "a0": 268554184,
+                "a1": 493,
+                "a2": 0,
+                "a3": 268554184
+              },
+              "result": {
+                "syscall": 1080,
+                "v0": 89,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1080,
+                "pc": 262962608,
+                "a0": 268556592,
+                "a1": 493,
+                "a2": 0,
+                "a3": 268556625
+              },
+              "result": {
+                "syscall": 1080,
+                "v0": 89,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1080,
+                "pc": 262962608,
+                "a0": 268554184,
+                "a1": 493,
+                "a2": 0,
+                "a3": 268554184
+              },
+              "result": {
+                "syscall": 1080,
+                "v0": 89,
+                "a3": 1
+              }
+            }
+          ],
+          "waits": [],
+          "truncated_record_lines": [],
+          "last_complete_pairs": [
+            {
+              "call": {
+                "syscall": 1080,
+                "pc": 262962608,
+                "a0": 268554184,
+                "a1": 493,
+                "a2": 0,
+                "a3": 268554184
+              },
+              "result": {
+                "syscall": 1080,
+                "v0": 89,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1040,
+                "pc": 262470072,
+                "a0": 92,
+                "a1": 1,
+                "a2": 0,
+                "a3": 47
+              },
+              "result": {
+                "syscall": 1040,
+                "v0": 89,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1158,
+                "pc": 262470200,
+                "a0": 2,
+                "a1": 2147448688,
+                "a2": 2147449712,
+                "a3": 99
+              },
+              "result": {
+                "syscall": 1158,
+                "v0": 2,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1158,
+                "pc": 262470200,
+                "a0": 2,
+                "a1": 2147448688,
+                "a2": 2147449712,
+                "a3": 99
+              },
+              "result": {
+                "syscall": 1158,
+                "v0": 2,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1158,
+                "pc": 262470200,
+                "a0": 2,
+                "a1": 2147448688,
+                "a2": 2147449712,
+                "a3": 99
+              },
+              "result": {
+                "syscall": 1158,
+                "v0": 2,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1004,
+                "pc": 262541384,
+                "a0": 2,
+                "a1": 263454720,
+                "a2": 24,
+                "a3": 402653184
+              },
+              "result": {
+                "syscall": 1004,
+                "v0": 24,
+                "a3": 0
+              }
+            },
+            {
+              "call": {
+                "syscall": 1004,
+                "pc": 262541384,
+                "a0": 2,
+                "a1": 263559028,
+                "a2": 1,
+                "a3": 402653184
+              },
+              "result": {
+                "syscall": 1004,
+                "v0": 1,
+                "a3": 0
+              }
+            }
+          ],
+          "boundary": "mkdir ENOSYS; Icon Catalog session-directory error; fm waitsys(options=3) EINVAL"
+        },
+        {
+          "name": "fm-background",
+          "pid": 192,
+          "exit_status": "255",
+          "stdout": "",
+          "stderr": "",
+          "trace_sha256": "6acddb3c7cc518f5af32a6699a15bd8c071a36bc2aa06ceec16f6a67b4b572ae",
+          "initialization_passed": true,
+          "initializations": [
+            {
+              "call": {
+                "syscall": 1130,
+                "pc": 262502756,
+                "a0": 20,
+                "a1": 720896,
+                "a2": 3,
+                "a3": 0
+              },
+              "result": {
+                "syscall": 1130,
+                "v0": 0,
+                "a3": 0
+              }
+            },
+            {
+              "call": {
+                "syscall": 1130,
+                "pc": 262502756,
+                "a0": 20,
+                "a1": 720896,
+                "a2": 3,
+                "a3": 0
+              },
+              "result": {
+                "syscall": 1130,
+                "v0": 0,
+                "a3": 0
+              }
+            }
+          ],
+          "mkdir": [
+            {
+              "call": {
+                "syscall": 1080,
+                "pc": 262962608,
+                "a0": 268845536,
+                "a1": 493,
+                "a2": 0,
+                "a3": 268845569
+              },
+              "result": {
+                "syscall": 1080,
+                "v0": 89,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1080,
+                "pc": 262962608,
+                "a0": 268877136,
+                "a1": 493,
+                "a2": 0,
+                "a3": 268877169
+              },
+              "result": {
+                "syscall": 1080,
+                "v0": 89,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1080,
+                "pc": 262962608,
+                "a0": 268845536,
+                "a1": 493,
+                "a2": 0,
+                "a3": 268845569
+              },
+              "result": {
+                "syscall": 1080,
+                "v0": 89,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1080,
+                "pc": 262962608,
+                "a0": 268877136,
+                "a1": 493,
+                "a2": 0,
+                "a3": 268877169
+              },
+              "result": {
+                "syscall": 1080,
+                "v0": 89,
+                "a3": 1
+              }
+            }
+          ],
+          "waits": [
+            {
+              "call": {
+                "syscall": 1170,
+                "pc": 262541888,
+                "a0": 0,
+                "a1": 198,
+                "a2": 2147446128,
+                "a3": 3
+              },
+              "result": {
+                "syscall": 1170,
+                "v0": 22,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1170,
+                "pc": 262541888,
+                "a0": 0,
+                "a1": 198,
+                "a2": 2147446128,
+                "a3": 3
+              },
+              "result": {
+                "syscall": 1170,
+                "v0": 22,
+                "a3": 1
+              }
+            }
+          ],
+          "truncated_record_lines": [],
+          "last_complete_pairs": [
+            {
+              "call": {
+                "syscall": 1108,
+                "pc": 262479580,
+                "a0": 2147446016,
+                "a1": 256,
+                "a2": 2097152,
+                "a3": 2147450629
+              },
+              "result": {
+                "syscall": 1108,
+                "v0": 0,
+                "a3": 0
+              }
+            },
+            {
+              "call": {
+                "syscall": 1040,
+                "pc": 262470072,
+                "a0": 92,
+                "a1": 1,
+                "a2": 0,
+                "a3": 47
+              },
+              "result": {
+                "syscall": 1040,
+                "v0": 89,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1158,
+                "pc": 262470200,
+                "a0": 2,
+                "a1": 2147444912,
+                "a2": 2147445936,
+                "a3": 99
+              },
+              "result": {
+                "syscall": 1158,
+                "v0": 2,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1158,
+                "pc": 262470200,
+                "a0": 2,
+                "a1": 2147444912,
+                "a2": 2147445936,
+                "a3": 99
+              },
+              "result": {
+                "syscall": 1158,
+                "v0": 2,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1158,
+                "pc": 262470200,
+                "a0": 2,
+                "a1": 2147444912,
+                "a2": 2147445936,
+                "a3": 99
+              },
+              "result": {
+                "syscall": 1158,
+                "v0": 2,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1002,
+                "pc": 262530836,
+                "a0": 2147445583,
+                "a1": 1,
+                "a2": 2097152,
+                "a3": 0
+              },
+              "result": {
+                "syscall": 1002,
+                "v0": 198,
+                "a3": 0
+              }
+            },
+            {
+              "call": {
+                "syscall": 1170,
+                "pc": 262541888,
+                "a0": 0,
+                "a1": 198,
+                "a2": 2147446128,
+                "a3": 3
+              },
+              "result": {
+                "syscall": 1170,
+                "v0": 22,
+                "a3": 1
+              }
+            }
+          ],
+          "boundary": "mkdir ENOSYS; Icon Catalog session-directory error; fm waitsys(options=3) EINVAL"
+        },
+        {
+          "name": "iconcatalog",
+          "pid": 194,
+          "exit_status": "",
+          "stdout": "",
+          "stderr": "",
+          "trace_sha256": "ebcc95994c6b748615dc4e9b5005712c0491a97ff06c4b8757252f7681bb609c",
+          "initialization_passed": true,
+          "initializations": [
+            {
+              "call": {
+                "syscall": 1130,
+                "pc": 262502756,
+                "a0": 20,
+                "a1": 720896,
+                "a2": 3,
+                "a3": 0
+              },
+              "result": {
+                "syscall": 1130,
+                "v0": 0,
+                "a3": 0
+              }
+            },
+            {
+              "call": {
+                "syscall": 1130,
+                "pc": 262502756,
+                "a0": 20,
+                "a1": 720896,
+                "a2": 3,
+                "a3": 0
+              },
+              "result": {
+                "syscall": 1130,
+                "v0": 0,
+                "a3": 0
+              }
+            }
+          ],
+          "mkdir": [
+            {
+              "call": {
+                "syscall": 1080,
+                "pc": 262962608,
+                "a0": 268710328,
+                "a1": 493,
+                "a2": 0,
+                "a3": 268710361
+              },
+              "result": {
+                "syscall": 1080,
+                "v0": 89,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1080,
+                "pc": 262962608,
+                "a0": 268721480,
+                "a1": 493,
+                "a2": 0,
+                "a3": 268721513
+              },
+              "result": {
+                "syscall": 1080,
+                "v0": 89,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1080,
+                "pc": 262962608,
+                "a0": 268741272,
+                "a1": 493,
+                "a2": 0,
+                "a3": 268741305
+              },
+              "result": {
+                "syscall": 1080,
+                "v0": 89,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1080,
+                "pc": 262962608,
+                "a0": 268710328,
+                "a1": 493,
+                "a2": 0,
+                "a3": 268710361
+              },
+              "result": {
+                "syscall": 1080,
+                "v0": 89,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1080,
+                "pc": 262962608,
+                "a0": 268721480,
+                "a1": 493,
+                "a2": 0,
+                "a3": 268721513
+              },
+              "result": {
+                "syscall": 1080,
+                "v0": 89,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1080,
+                "pc": 262962608,
+                "a0": 268741272,
+                "a1": 493,
+                "a2": 0,
+                "a3": 268741305
+              },
+              "result": {
+                "syscall": 1080,
+                "v0": 89,
+                "a3": 1
+              }
+            }
+          ],
+          "waits": [],
+          "truncated_record_lines": [
+            4000
+          ],
+          "last_complete_pairs": [
+            {
+              "call": {
+                "syscall": 1054,
+                "pc": 262475332,
+                "a0": 3,
+                "a1": 1074033418,
+                "a2": 2147443840,
+                "a3": 402653184
+              },
+              "result": {
+                "syscall": 1054,
+                "v0": 0,
+                "a3": 0
+              }
+            },
+            {
+              "call": {
+                "syscall": 1004,
+                "pc": 262541384,
+                "a0": 3,
+                "a1": 268637288,
+                "a2": 204,
+                "a3": 402653184
+              },
+              "result": {
+                "syscall": 1004,
+                "v0": 204,
+                "a3": 0
+              }
+            },
+            {
+              "call": {
+                "syscall": 1054,
+                "pc": 262475332,
+                "a0": 3,
+                "a1": 1074033418,
+                "a2": 2147444160,
+                "a3": 402653184
+              },
+              "result": {
+                "syscall": 1054,
+                "v0": 0,
+                "a3": 0
+              }
+            },
+            {
+              "call": {
+                "syscall": 1004,
+                "pc": 262541384,
+                "a0": 3,
+                "a1": 268637288,
+                "a2": 16,
+                "a3": 402653184
+              },
+              "result": {
+                "syscall": 1004,
+                "v0": 16,
+                "a3": 0
+              }
+            },
+            {
+              "call": {
+                "syscall": 1054,
+                "pc": 262475332,
+                "a0": 3,
+                "a1": 1074033418,
+                "a2": 2147444160,
+                "a3": 402653184
+              },
+              "result": {
+                "syscall": 1054,
+                "v0": 0,
+                "a3": 0
+              }
+            },
+            {
+              "call": {
+                "syscall": 1128,
+                "pc": 262545600,
+                "a0": 2147445544,
+                "a1": 0,
+                "a2": 0,
+                "a3": 0
+              },
+              "result": {
+                "syscall": 1128,
+                "v0": 89,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1100,
+                "pc": 262478260,
+                "a0": 4,
+                "a1": 2147445600,
+                "a2": 2147445728,
+                "a3": 2147445856
+              },
+              "result": {
+                "syscall": 1100,
+                "v0": 4,
+                "a3": 1
+              }
+            }
+          ],
+          "boundary": "mkdir ENOSYS; Icon Catalog session-directory error; fm waitsys(options=3) EINVAL"
+        },
+        {
+          "name": "fm-home",
+          "pid": 196,
+          "exit_status": "255",
+          "stdout": "",
+          "stderr": "",
+          "trace_sha256": "56b5eccdbd5a9c541028513ee526cf6e27f3447f4e1c8aa1937cd5196ca794fd",
+          "initialization_passed": true,
+          "initializations": [
+            {
+              "call": {
+                "syscall": 1130,
+                "pc": 262502756,
+                "a0": 20,
+                "a1": 720896,
+                "a2": 3,
+                "a3": 0
+              },
+              "result": {
+                "syscall": 1130,
+                "v0": 0,
+                "a3": 0
+              }
+            },
+            {
+              "call": {
+                "syscall": 1130,
+                "pc": 262502756,
+                "a0": 20,
+                "a1": 720896,
+                "a2": 3,
+                "a3": 0
+              },
+              "result": {
+                "syscall": 1130,
+                "v0": 0,
+                "a3": 0
+              }
+            }
+          ],
+          "mkdir": [
+            {
+              "call": {
+                "syscall": 1080,
+                "pc": 262962608,
+                "a0": 268845536,
+                "a1": 493,
+                "a2": 0,
+                "a3": 268845569
+              },
+              "result": {
+                "syscall": 1080,
+                "v0": 89,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1080,
+                "pc": 262962608,
+                "a0": 268877136,
+                "a1": 493,
+                "a2": 0,
+                "a3": 268877169
+              },
+              "result": {
+                "syscall": 1080,
+                "v0": 89,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1080,
+                "pc": 262962608,
+                "a0": 268845536,
+                "a1": 493,
+                "a2": 0,
+                "a3": 268845569
+              },
+              "result": {
+                "syscall": 1080,
+                "v0": 89,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1080,
+                "pc": 262962608,
+                "a0": 268877136,
+                "a1": 493,
+                "a2": 0,
+                "a3": 268877169
+              },
+              "result": {
+                "syscall": 1080,
+                "v0": 89,
+                "a3": 1
+              }
+            }
+          ],
+          "waits": [
+            {
+              "call": {
+                "syscall": 1170,
+                "pc": 262541888,
+                "a0": 0,
+                "a1": 197,
+                "a2": 2147446128,
+                "a3": 3
+              },
+              "result": {
+                "syscall": 1170,
+                "v0": 22,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1170,
+                "pc": 262541888,
+                "a0": 0,
+                "a1": 197,
+                "a2": 2147446128,
+                "a3": 3
+              },
+              "result": {
+                "syscall": 1170,
+                "v0": 22,
+                "a3": 1
+              }
+            }
+          ],
+          "truncated_record_lines": [],
+          "last_complete_pairs": [
+            {
+              "call": {
+                "syscall": 1108,
+                "pc": 262479580,
+                "a0": 2147446016,
+                "a1": 256,
+                "a2": 2097152,
+                "a3": 2147450641
+              },
+              "result": {
+                "syscall": 1108,
+                "v0": 0,
+                "a3": 0
+              }
+            },
+            {
+              "call": {
+                "syscall": 1040,
+                "pc": 262470072,
+                "a0": 92,
+                "a1": 1,
+                "a2": 0,
+                "a3": 47
+              },
+              "result": {
+                "syscall": 1040,
+                "v0": 89,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1158,
+                "pc": 262470200,
+                "a0": 2,
+                "a1": 2147444912,
+                "a2": 2147445936,
+                "a3": 99
+              },
+              "result": {
+                "syscall": 1158,
+                "v0": 2,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1158,
+                "pc": 262470200,
+                "a0": 2,
+                "a1": 2147444912,
+                "a2": 2147445936,
+                "a3": 99
+              },
+              "result": {
+                "syscall": 1158,
+                "v0": 2,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1158,
+                "pc": 262470200,
+                "a0": 2,
+                "a1": 2147444912,
+                "a2": 2147445936,
+                "a3": 99
+              },
+              "result": {
+                "syscall": 1158,
+                "v0": 2,
+                "a3": 1
+              }
+            },
+            {
+              "call": {
+                "syscall": 1002,
+                "pc": 262530836,
+                "a0": 2147445583,
+                "a1": 1,
+                "a2": 2097152,
+                "a3": 0
+              },
+              "result": {
+                "syscall": 1002,
+                "v0": 197,
+                "a3": 0
+              }
+            },
+            {
+              "call": {
+                "syscall": 1170,
+                "pc": 262541888,
+                "a0": 0,
+                "a1": 197,
+                "a2": 2147446128,
+                "a3": 3
+              },
+              "result": {
+                "syscall": 1170,
+                "v0": 22,
+                "a3": 1
+              }
+            }
+          ],
+          "boundary": "mkdir ENOSYS; Icon Catalog session-directory error; fm waitsys(options=3) EINVAL"
+        }
+      ],
+      "window_check": "WMCHECK_STATUS=0\nWM_VIEWABLE clients=2\nWM_REPARENT client=6291457 frame=2097260 x=150 y=160 frame_x=142 frame_y=96\nWM_FOCUS_ATTEMPT n=0 target_x=270 target_y=230 actual_x=0 actual_y=230 leaf=841 focus=1 matched=0\nWM_FOCUS_ATTEMPT n=1 target_x=270 target_y=230 actual_x=270 actual_y=230 leaf=6291457 focus=6291457 matched=1\nWM_FOCUS_POLICY pointer_root=0 pointer_leaf=6291457\nWM_FOCUS client=6291457 focus=6291457 matched=1\nWM_KEY delivered=1\nWM_DRAG dx=50 dy=30\nWM_CHECK passed\n",
+      "window_check_passed": true,
+      "focus_attempts": [
+        {
+          "n": 0,
+          "target_x": 270,
+          "target_y": 230,
+          "actual_x": 0,
+          "actual_y": 230,
+          "leaf": 841,
+          "focus": 1,
+          "matched": 0
+        },
+        {
+          "n": 1,
+          "target_x": 270,
+          "target_y": 230,
+          "actual_x": 270,
+          "actual_y": 230,
+          "leaf": 6291457,
+          "focus": 6291457,
+          "matched": 1
+        }
+      ],
+      "marker_owner": "1234",
+      "type_output": "TYPE_WINDOW width=983 height=504 viewable=1\n",
+      "shell_handoff": "NATIVE_HANDOFF pid=3559 sid=3559 pgid=3559 tpgid=3559 uid=1234 euid=1234 gid=1234 egid=1234 groups=0 tty=/dev/pts/0 rows=24 cols=80\n",
+      "shell_marker": "XIRI_DESKTOP_COMPONENTS_SHELL_OK\n",
+      "shell_check_passed": true,
+      "controls": [
+        {
+          "phase": "before",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "after",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          }
+        }
+      ],
+      "guard": {
+        "pid": 2342,
+        "exit": -1,
+        "signal": 9,
+        "killed": 1,
+        "absent": 1,
+        "valid": 1,
+        "elapsed_ms": 120184,
+        "stdout": "",
+        "stderr": ""
+      },
+      "native_x11_after": true,
+      "clean_shutdown": true,
+      "frame_sha256": "3f39fc2908c0dffd0c9cd1fca403b1a39a39afba5e992f176d4c8054ab53c1b8",
+      "guest_trace_info": "SHA256 (desktop.ktrace) = 3385daa4df297624133738e845c493d1937df19d77d23dedc88c3e6c1d400a4a\n"
+    }
+  ],
+  "source_evidence": [
+    {
+      "repository": "NetBSD-xiri",
+      "revision": "a9e715bb082a755881799234dfdb54abca5a04c1",
+      "path": "sys/compat/irix_o32/irix_o32.c",
+      "sha256": "ed6d06cd447f4b1812b6ce8ccedf0718386793cb162c6769ce74f2482195002e"
+    },
+    {
+      "repository": "NetBSD-xiri",
+      "revision": "a9e715bb082a755881799234dfdb54abca5a04c1",
+      "path": "sys/compat/irix_o32/irix_errno.h",
+      "sha256": "36c93897342fe90413b9252209cf300c4d63657e175a2e8e7d547826b9b9be1a"
+    },
+    {
+      "repository": "NetBSD-xiri",
+      "revision": "a9e715bb082a755881799234dfdb54abca5a04c1",
+      "path": "sys/sys/proc.h",
+      "sha256": "11ee2ae7d63c93f7ec094d1f3b424ccd4cedbe16127e3d6afa84f4cf26e022ee"
+    },
+    {
+      "repository": "NetBSD-xiri",
+      "revision": "a9e715bb082a755881799234dfdb54abca5a04c1",
+      "path": "sys/kern/kern_lwp.c",
+      "sha256": "dcf9c71f79e2bfcd0e07be1c78abbca975a7de3620b8529d7e9bdbc99ed912f8"
+    },
+    {
+      "repository": "NetBSD-xiri",
+      "revision": "a9e715bb082a755881799234dfdb54abca5a04c1",
+      "path": "sys/kern/kern_sig.c",
+      "sha256": "d69fdd3aaa3e33bdb691489b271b338031869b97203a082745f223e61f7c07c0"
+    },
+    {
+      "repository": "NetBSD-xiri",
+      "revision": "5aca2679d78276864d2980a08314887b2058fb2c",
+      "path": "sys/compat/irix/irix_resource.h",
+      "sha256": "facf3d5e2c62366426c6c01ded7b69a4f816a3c7165bfd8cdc954d95c1ce590f"
+    },
+    {
+      "repository": "NetBSD-xiri",
+      "revision": "5aca2679d78276864d2980a08314887b2058fb2c",
+      "path": "sys/compat/irix/irix_resource.c",
+      "sha256": "7e9d15091b4f3a8fe177a5e2f9f63ff79cf98d40bf0ad4bf045e20b71ec6e586"
+    },
+    {
+      "repository": "NetBSD-xiri",
+      "revision": "5aca2679d78276864d2980a08314887b2058fb2c",
+      "path": "sys/compat/irix/irix_syscall.h",
+      "sha256": "0c915192b9b87bf5ddc3226006e8cf9ad709e23f7e4385628c413bb559dc9767"
+    },
+    {
+      "repository": "NetBSD-xiri",
+      "revision": "5aca2679d78276864d2980a08314887b2058fb2c",
+      "path": "sys/compat/irix/irix_mman.h",
+      "sha256": "b92365c7579bf62d12d9bc7ce4d511e1b791a7d94dfcd8a9e495c2223589191c"
+    },
+    {
+      "repository": "NetBSD-xiri",
+      "revision": "5aca2679d78276864d2980a08314887b2058fb2c",
+      "path": "sys/compat/irix/irix_prctl.h",
+      "sha256": "6065e531cb962c87fbcefe37a021dbb3994d8c6eb510433fc1716f96da517c2a"
+    }
+  ],
+  "screenshot": {
+    "path": "docs/results/images/2026-11-01-irix-iconcatalog-diagnostic.png",
+    "sha256": "c4caf0655d7dcc9e9cb462a48bce4816c1df33e96f7ededa43f3597e219fdfd9",
+    "source": ".work/irix-desktop-init-threads/runs/ci-4ydcb5h0/desktop.xwd",
+    "pixels_match_xwd": true,
+    "kind": "diagnostic: Icon Catalog session-directory fatal dialog"
+  },
+  "limits": [
+    "No new desktop component is usable; a rendered fatal dialog is not desktop success.",
+    "Failed shell geometry checks remain failures; successful retries do not qualify startup repeatability.",
+    "Per-PID captures contain first/last 4000 lines, overlap, and may truncate records; lists are observations, not event counts.",
+    "mkdir failure is observed; child traces and the complete dependency chain after fixing it remain open.",
+    "fm waitsys(options=3) returns EINVAL; no claim that this is the sole reason its parent exits.",
+    "fmserv, artwork, filetype rules, catalog pages and delayed services remain unqualified.",
+    "Session saving is disabled; no general pthread, normal-exit, Newport or physical-hardware claims."
+  ]
+}
