@@ -28,12 +28,12 @@ experiment that establishes whether the resource is actually used.
 
 ## Still to locate or qualify
 
-The [expanded session](results/2026-11-01-irix-desktop-components.md) now reaches
-the staged libpthread during fm/Icon Catalog startup, then fails an unsupported
-`getrlimit(RLIMIT_PTHREAD)` query. bgicons is rejected by executable alignment
-validation. No new font or artwork requirement is established by these failures;
-file-type rules, icon artwork and catalog contents remain candidates to follow
-once the clients pass initialization.
+The [startup follow-up](results/2026-11-01-irix-desktop-startup-fixes.md) clears
+the pthread limit query and bgicons executable-alignment failures. All four
+launches now reach pthread table allocation, where `mmap` with `MAP_AUTORESRV`
+returns EINVAL. No additional font or artwork requirement is established by
+this failure. File-type rules, icon artwork and catalog contents remain
+candidates to follow once the clients pass initialization.
 
 | Candidate | What to record next |
 | --- | --- |

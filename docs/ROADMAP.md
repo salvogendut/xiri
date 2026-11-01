@@ -146,7 +146,8 @@ dependency candidates; a visible window alone does not complete these checks.
 - [x] Launch original 4Dwm against native Xvfb and demonstrate reparenting, focus, key delivery and dragging in the [combined shell session](results/2026-11-01-irix-4dwm.md); Newport/physical display qualification remains separate.
 - [x] Add original Toolchest and a working winterm shell to the same 4Dwm session.
 - [x] Attempt the original file manager, background icons and Icon Catalog in the [expanded session](results/2026-11-01-irix-desktop-components.md); retain startup failures and inventory the next resources.
-- [ ] Clear the observed `getrlimit(RLIMIT_PTHREAD)` startup failure and bgicons executable-alignment rejection, then qualify the file/icon components. Session saving is currently disabled.
+- [x] Clear the initial `getrlimit(RLIMIT_PTHREAD)` and bgicons executable-alignment blockers with [measured limit/loader support](results/2026-11-01-irix-rlimit.md): 4,760 NetBSD limit records and 280 loader executions pass.
+- [ ] Measure and implement the newly observed `mmap(MAP_AUTORESRV)` boundary, then follow actual pthread initialization and qualify the file/icon components. The [follow-up](results/2026-11-01-irix-desktop-startup-fixes.md) retains startup and focus observations separately. Session saving remains disabled.
 - [ ] Implement required service adapters, including the measured file-notification and launch behavior.
 - [x] Exercise native X test windows under original 4Dwm in the same native Xvfb session used by Toolchest and winterm.
 - [ ] Show a maintained host-native graphical application and an IRIX application in the same local session; qualify physical display output separately.

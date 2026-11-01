@@ -126,3 +126,8 @@ IRIS upstream was checked at cycle start: `upstream/main` was
 `f17b4d3bc1663efd02f93a5e0e4811eebba510c8`, already contained in `origin/xiri`
 `182efc8171f915be2152426819da8d05507c06c9`. No new integration was necessary.
 This observation continues to use the older qualified emulator pin.
+
+The subsequent [resource-limit/loader checkpoint](2026-11-01-irix-rlimit.md)
+implements and tests the first two items. Its [application follow-up](2026-11-01-irix-desktop-startup-fixes.md)
+clears both original startup blockers and records the later pthread-table
+mapping failure. This earlier observation and its failures remain unchanged.

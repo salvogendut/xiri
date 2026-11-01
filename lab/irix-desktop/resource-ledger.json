@@ -175,7 +175,7 @@
     },
     {
       "id": "desktop_helpers",
-      "status": "startup_blockers_observed",
+      "status": "initial_blockers_cleared_mmap_boundary_observed",
       "image_paths": [
         "/usr/lib/desktop/*",
         "/usr/sbin/fm",
@@ -192,9 +192,11 @@
         "lab/irix-desktop/session.json",
         "lab/irix-desktop-components/manifest.json",
         "docs/results/2026-11-01-irix-desktop-components.md",
-        "docs/results/2026-11-01-irix-desktop-components.json"
+        "docs/results/2026-11-01-irix-desktop-components.json",
+        "docs/results/2026-11-01-irix-rlimit.json",
+        "docs/results/2026-11-01-irix-desktop-startup-fixes.json"
       ],
-      "note": "The fm/bgicons/iconcatalog/fmserv static n32 closure now contains 38 ELF paths with no unresolved static dependencies, plus 16 selected resource files. Delayed modules, remaining helpers and runtime services still need qualification. The expanded session reaches a libpthread lookup, then fm/iconcatalog abort after getrlimit(RLIMIT_PTHREAD) returns ENOSYS. bgicons is rejected at exec; its data p_align is below the current executable validator minimum. No new component is qualified as usable; fmserv is staged but not directly launched."
+      "note": "The fm/bgicons/iconcatalog/fmserv static n32 closure contains 38 ELF paths with no unresolved static dependencies, plus 16 selected resources. Measured getrlimit and executable-alignment support clears the first failures. All four direct launches now successfully query PTHREAD, then abort at mmap MAP_PRIVATE|MAP_AUTORESRV with EINVAL while allocating the pthread table. No new image resource is required by this failure. Delayed modules, helpers and services remain unqualified; fmserv is staged but not directly launched."
     },
     {
       "id": "artwork",
@@ -302,6 +304,6 @@
     "IRIX PRDA process data at 0x200000 is now measured and implemented: PID at +0xe00, initial ABI FP flags and native CPU identity, fork COW/PID refresh, exec reset. Kernel ABI state, not an image resource; share groups and general threads remain unsupported.",
     "4Dwm currently needs explicit SG_manageSession=false and SG_autoSave=false; session-saving file operations/services remain open. A Trusted Path Manager panel and SGI-AccessControl requests remain under feature-query investigation.",
     "Observed 4Dwm saved-state paths: HOME/.xroomsrc, HOME/.xroomsrc.tmp and HOME/.desktop-127.0.0.1 for the controlled display. The enabled path hits unimplemented mkdir/unlink/fsync/rename and a later (null).tmp name. Generated native user state, not image resources to import.",
-    "Expanded desktop startup needs a measured getrlimit/RLIMIT_PTHREAD contract and a bounded executable-loader extension for bgicons. These are kernel compatibility work, not missing image artwork/fonts. General pthread behavior is not established by a successful limit query."
+    "Expanded desktop startup now passes measured getrlimit/RLIMIT_PTHREAD queries and the bounded executable-loader extension for bgicons. The next observed failure is MAP_AUTORESRV rejection during pthread table allocation. These are kernel compatibility requirements; no new artwork/font dependency is established. Query success does not establish equivalent thread accounting or working pthreads."
   ]
 }

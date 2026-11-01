@@ -82,6 +82,12 @@ The qualifier's success means both modes reproduce the recorded blockers and
 pass their specified native controls/cleanup. It explicitly records
 `desktop_success:false`; it is not a desktop acceptance gate.
 
+The [resource-limit lab](../irix-rlimit/README.md) now clears both initial
+blockers with new isolated kernels. Use `probe-irix-desktop-startup-fixes.py`
+and its qualifier for the [follow-up](../../docs/results/2026-11-01-irix-desktop-startup-fixes.md).
+The original probe and observation remain frozen for reproduction. The next
+startup boundary is pthread-table allocation with `MAP_AUTORESRV`.
+
 Qualify directory navigation, icon actions, file updates and service behavior
 after startup works. Then address saved-session filesystem calls, desks,
 restoration and logout, retaining the working terminal controls. Desktop

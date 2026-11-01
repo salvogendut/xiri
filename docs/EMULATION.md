@@ -223,6 +223,16 @@ alignment rejection. Its observation record preserves baseline-check failures
 and component failures; it does not replace the accepted 4Dwm interaction matrix
 or qualify the recently merged IRIS upstream build for these guests.
 
+The [resource-limit checkpoint](results/2026-11-01-irix-rlimit.md) uses isolated
+LP64/o32 kernel outputs and original-IRIX measurements. Both LP64 emulator
+modes and the o32 regression pass query/loader qualification. The
+[desktop follow-up](results/2026-11-01-irix-desktop-startup-fixes.md) clears the
+initial exec/query failures and records `MAP_AUTORESRV` rejection during pthread
+table allocation. A bounded native focus diagnostic logs actual pointer
+coordinates without assigning focus; terminal input remains a separate check.
+All new runs retain the previously qualified IRIS binaries. The latest upstream
+revision was already integrated into fork `xiri`; no emulator change was needed.
+
 Active emulator and kernel development now uses the consolidated
 [`xiri` branches](FORKS.md). Existing guest qualification remains tied to its
 recorded commits and binaries; consolidation does not silently update those

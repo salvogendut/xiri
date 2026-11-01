@@ -146,3 +146,10 @@ system resource files after copying. UID1234 reads them with mode 0444;
 the [combined session](../../docs/results/2026-11-01-irix-4dwm.md) now passes
 focus, key delivery, dragging and shell execution with session saving disabled.
 Complete desktop services remain open.
+
+The expanded file/icon session now has [measured limit queries and executable
+data alignment](../../docs/results/2026-11-01-irix-rlimit.md). Original bgicons
+executes, and all four launches pass the PTHREAD query before failing at
+`mmap(MAP_AUTORESRV)`. See the [follow-up](../../docs/results/2026-11-01-irix-desktop-startup-fixes.md)
+for the application and interaction evidence; image artwork remains a separate
+inventory requirement.
