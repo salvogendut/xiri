@@ -41,15 +41,44 @@ installing a background service on an unmodified NetBSD system is insufficient.
 Supporting daemons could be packaged as ordinary NetBSD services, while the
 desktop itself could be offered as an X login session. Those are user-space
 deployment choices; they do not replace the kernel's executable and system-call
-handling. A loadable compatibility module could be investigated later, but it
-would still execute in the kernel. The current personality is built in, and
-running it as a standalone module on a stock kernel has not been established.
+handling. A loadable module still executes in the kernel. **A loadable module
+modeled after `compat_linux` is the desired final delivery target**, agreed on
+2026-11-01 and tracked in the
+[release roadmap](ROADMAP.md#milestone-4-usable-first-release). The current
+qualification uses the personality built into the kernel; standalone module
+loading on a stock kernel has not been established.
 
-The long-term packaging could therefore combine a compatible NetBSD kernel,
-an importer/runtime tree, and session/service packages. Upstream integration
-could eventually make a custom kernel unnecessary; that is a future outcome,
-not the present installation model. On x86 or ARM, CPU translation would also
-be necessary because the original applications contain MIPS instructions.
+The code already has [module registration and initialization/finalization
+hooks](https://github.com/salvogendut/NetBSD-xiri/blob/c11c9f16fad11837a169a3cd566582bebea2c029/sys/compat/irix_o32/irix_o32.c#L131):
+`MODULE_CLASS_EXEC`, `exec_add` and `exec_remove`. Dependencies are `exec_elf32`
+and, on LP64, `compat_netbsd32`. There is no separate `sys/modules/compat_irix_o32`
+build recipe yet. A concrete core-kernel dependency is our added
+`selcommon_kern` helper in `sys/kern/sys_select.c`, used by foreign select;
+the inspected upstream tree does not provide it. Module packaging therefore
+needs a dependency/export audit and resolution of this helper, in addition to
+load/unload and application tests.
+
+NetBSD's [current module framework](https://man.netbsd.org/module.7) supports
+execution interpreters and uses [modload](https://man.netbsd.org/modload.8).
+An eventual installed module could be loaded at boot through
+[modules.conf](https://man.netbsd.org/modules.conf.5). These are deployment
+targets, not commands qualified for the current Xiri artifacts.
+
+[NetBSD's Linux compatibility](https://man.netbsd.org/compat_linux.8) is the
+chosen architectural model: `compat_linux` is available as a kernel module, while
+the foreign runtime and libraries live under `/emul/linux` (or `/emul/linux32`
+for the corresponding ABI). Follow its module structure, registration,
+dependency handling and load/unload lifecycle, with the IRIX runtime under
+`/emul/irix` and desktop/session services packaged separately. IRIX ABI behavior
+still comes from IRIX reference measurements; the Linux module supplies the
+integration model. Xiri's current dependencies and MIPS module build still
+need qualification.
+
+The intended packaging combines the loadable personality, an importer/runtime
+tree, and session/service packages. Upstreaming or removing required core
+changes could make a custom kernel unnecessary on a compatible NetBSD/MIPS
+installation. On x86 or ARM, CPU translation would also be necessary because
+the original applications contain MIPS instructions.
 
 Repository ownership follows this division: `NetBSD-xiri` contains kernel and
 machine changes; `iris` supplies the emulated Indy used for development; this

@@ -7,6 +7,17 @@ The agreed target is the full original IRIX desktop on NetBSD and X.org, support
 Active fork work is consolidated on [`xiri` in IRIS and NetBSD](FORKS.md).
 Historical lab revisions remain pinned in detached worktrees.
 
+The desired final delivery target, agreed on 2026-11-01, is a **loadable NetBSD
+kernel module for the IRIX personality, modeled after `compat_linux`**. Use
+NetBSD's Linux compatibility module as the reference for module structure,
+registration, dependency handling, load/unload lifecycle and separation from
+the foreign runtime. Xiri's runtime importer and desktop/session packages
+remain separate user-space components. Built-in custom kernels remain the
+current development and qualification method. Aim to work with an otherwise standard,
+compatible NetBSD/MIPS kernel by upstreaming or removing required core changes;
+that stock-kernel deployment is not yet demonstrated. See the
+[module deployment boundary](ARCHITECTURE.md#components-and-deployment).
+
 ## Development setup checklist
 
 The candidate host inventory, pinned IRIS CLI build, verified NetBSD inputs, guest installation, and host kernel build are complete. The R4400 guest reaches multiuser after a cold boot with the custom kernel, supports debugger breakpoints, and passes an automated probe. Repeated disk writes, cold-read integrity, and bidirectional network transfers pass in both execution modes; see the [I/O results](results/2026-10-30-netbsd-io.md). See the [installation record](results/2026-10-29-indy-netbsd-install.md), [kernel build record](results/2026-10-30-netbsd-kernel.md), and [debugger/probe results](results/2026-10-30-netbsd-debugger-probe.md).
@@ -160,6 +171,9 @@ Acceptance: an original desktop session executing inside the emulated Indy on Ne
 
 ## Milestone 4 Usable first release
 
+- [ ] Package the IRIX personality as a loadable kernel module modeled after `compat_linux`, with a reproducible build/install path and explicit kernel-version/architecture dependencies.
+- [ ] Audit core dependencies, including the current `selcommon_kern` helper; upstream or remove them to enable deployment on a compatible standard NetBSD kernel.
+- [ ] Qualify module load, dependency resolution, refusal to unload while in use, unload/reload after exit, and the application regressions on a kernel without the built-in IRIX personality.
 - [ ] Boot the qualified build on the physical Indy and repeat ABI and desktop acceptance there.
 - [ ] Validate real storage, networking, cache/DMA behavior, input and local display; record differences from emulation.
 - [ ] Package a reproducible installation for the first supported configuration.
