@@ -147,7 +147,8 @@ dependency candidates; a visible window alone does not complete these checks.
 - [x] Add original Toolchest and a working winterm shell to the same 4Dwm session.
 - [x] Attempt the original file manager, background icons and Icon Catalog in the [expanded session](results/2026-11-01-irix-desktop-components.md); retain startup failures and inventory the next resources.
 - [x] Clear the initial `getrlimit(RLIMIT_PTHREAD)` and bgicons executable-alignment blockers with [measured limit/loader support](results/2026-11-01-irix-rlimit.md): 4,760 NetBSD limit records and 280 loader executions pass.
-- [ ] Measure and implement the newly observed `mmap(MAP_AUTORESRV)` boundary, then follow actual pthread initialization and qualify the file/icon components. The [follow-up](results/2026-11-01-irix-desktop-startup-fixes.md) retains startup and focus observations separately. Session saving remains disabled.
+- [x] Clear the observed `mmap(MAP_AUTORESRV)` boundary with [private demand mappings](results/2026-11-01-irix-mmap-autoresrv.md), preserving fixed/local and native controls.
+- [ ] Measure `prctl(PR_INIT_THREADS)` and the required pthread state/lifecycle, then qualify the file/icon components. The [application follow-up](results/2026-11-01-irix-desktop-autoresrv.md) records successful allocations followed by ENOSYS at that operation. Session saving remains disabled.
 - [ ] Implement required service adapters, including the measured file-notification and launch behavior.
 - [x] Exercise native X test windows under original 4Dwm in the same native Xvfb session used by Toolchest and winterm.
 - [ ] Show a maintained host-native graphical application and an IRIX application in the same local session; qualify physical display output separately.

@@ -119,3 +119,8 @@ resource lookups before importing artwork, file-type rules or catalog pages;
 this mapping failure establishes no new image resource requirement. File
 navigation, icon actions, FAM/service behavior, saved sessions, normal exit,
 terminal resize/signals and physical-display qualification remain open.
+
+The subsequent [AUTORESRV checkpoint](2026-11-01-irix-mmap-autoresrv.md)
+clears this mapping boundary. Its [application follow-up](2026-11-01-irix-desktop-autoresrv.md)
+records successful table/fixed mappings followed by unsupported
+`prctl(PR_INIT_THREADS)`. This earlier result remains tied to its original pins.

@@ -76,3 +76,7 @@ The [accepted report](../../docs/results/2026-11-01-irix-mmap-local.md) records
 `probe-irix-mmap-shell.py` / `qualify-irix-mmap-shell.py` pair reruns the original
 three-application shell acceptance checks on this kernel without changing the
 previous checkpoint's harness or pins.
+
+The later [AUTORESRV checkpoint](../irix-mmap-autoresrv/README.md) extends this
+subset to private AUTORESRV mappings and repeats these cases. This lab's older
+pins and recorded AUTORESRV rejection remain unchanged for reproduction.

@@ -50,8 +50,10 @@ The [expanded desktop attempt](docs/results/2026-11-01-irix-desktop-components.m
 adds original fm, bgicons and Icon Catalog to the session. The
 [limit-query and executable-alignment fixes](docs/results/2026-11-01-irix-rlimit.md)
 now clear their initial startup blockers, with 4,760 NetBSD limit records and
-280 loader executions passing. The [application follow-up](docs/results/2026-11-01-irix-desktop-startup-fixes.md)
-reaches a later pthread-table allocation failure at `mmap(MAP_AUTORESRV)`.
+280 loader executions passing. The [AUTORESRV follow-up](docs/results/2026-11-01-irix-mmap-autoresrv.md)
+now clears pthread-table allocation through native demand mappings. The
+[application traces](docs/results/2026-11-01-irix-desktop-autoresrv.md) reach
+`prctl(PR_INIT_THREADS)`, the next unsupported initialization operation.
 The static closure and resource locations are inventoried; full desktop
 startup, file operations and services remain pending.
 

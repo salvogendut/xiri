@@ -230,7 +230,11 @@ modes and the o32 regression pass query/loader qualification. The
 initial exec/query failures and records `MAP_AUTORESRV` rejection during pthread
 table allocation. A bounded native focus diagnostic logs actual pointer
 coordinates without assigning focus; terminal input remains a separate check.
-All new runs retain the previously qualified IRIS binaries. The latest upstream
+The subsequent [AUTORESRV checkpoint](results/2026-11-01-irix-mmap-autoresrv.md)
+clears that mapping rejection and reaches `prctl(PR_INIT_THREADS)`. The new
+fixtures cover the actual allocation size, protection changes, private fork
+inheritance and the existing mapping/page-zero controls. These runs retain
+the previously qualified IRIS binaries. The latest upstream
 revision was already integrated into fork `xiri`; no emulator change was needed.
 
 Active emulator and kernel development now uses the consolidated

@@ -85,8 +85,9 @@ pass their specified native controls/cleanup. It explicitly records
 The [resource-limit lab](../irix-rlimit/README.md) now clears both initial
 blockers with new isolated kernels. Use `probe-irix-desktop-startup-fixes.py`
 and its qualifier for the [follow-up](../../docs/results/2026-11-01-irix-desktop-startup-fixes.md).
-The original probe and observation remain frozen for reproduction. The next
-startup boundary is pthread-table allocation with `MAP_AUTORESRV`.
+The original probe and observation remain frozen for reproduction. That
+checkpoint reached pthread-table allocation with `MAP_AUTORESRV`; the later
+result below clears it.
 
 Qualify directory navigation, icon actions, file updates and service behavior
 after startup works. Then address saved-session filesystem calls, desks,
@@ -95,3 +96,8 @@ artwork, catalog pages, file-type rules and additional helpers belong in the
 [resource checklist](../../docs/IRIX-RESOURCES.md) as their use is established.
 Keep the [fork workflow](../../docs/FORKS.md) for any emulator or kernel changes;
 this lab uses the qualified older binaries until replacement qualification.
+
+The [AUTORESRV result](../../docs/results/2026-11-01-irix-mmap-autoresrv.md)
+now clears table allocation. The [next application boundary](../../docs/results/2026-11-01-irix-desktop-autoresrv.md)
+is `prctl(PR_INIT_THREADS)`, after both private allocations succeed. No further
+image assets are required by this observed failure.

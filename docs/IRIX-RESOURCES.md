@@ -28,12 +28,12 @@ experiment that establishes whether the resource is actually used.
 
 ## Still to locate or qualify
 
-The [startup follow-up](results/2026-11-01-irix-desktop-startup-fixes.md) clears
-the pthread limit query and bgicons executable-alignment failures. All four
-launches now reach pthread table allocation, where `mmap` with `MAP_AUTORESRV`
-returns EINVAL. No additional font or artwork requirement is established by
-this failure. File-type rules, icon artwork and catalog contents remain
-candidates to follow once the clients pass initialization.
+The [AUTORESRV follow-up](results/2026-11-01-irix-desktop-autoresrv.md) clears
+the pthread-table allocation failure. All four launches now fail at
+`prctl(PR_INIT_THREADS)`, after successful resource queries and mappings.
+This establishes a kernel thread-initialization requirement; it adds no font,
+artwork or other image resource. File-type rules, icon artwork and catalog
+contents remain candidates to follow once the clients pass initialization.
 
 | Candidate | What to record next |
 | --- | --- |

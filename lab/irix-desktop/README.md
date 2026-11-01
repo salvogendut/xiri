@@ -153,3 +153,8 @@ executes, and all four launches pass the PTHREAD query before failing at
 `mmap(MAP_AUTORESRV)`. See the [follow-up](../../docs/results/2026-11-01-irix-desktop-startup-fixes.md)
 for the application and interaction evidence; image artwork remains a separate
 inventory requirement.
+
+The [AUTORESRV result](../../docs/results/2026-11-01-irix-mmap-autoresrv.md)
+now clears table allocation. The [next application boundary](../../docs/results/2026-11-01-irix-desktop-autoresrv.md)
+is `prctl(PR_INIT_THREADS)`, after both private allocations succeed. No further
+image assets are required by this observed failure.

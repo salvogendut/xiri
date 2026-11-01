@@ -104,3 +104,7 @@ The [qualified result](../../docs/results/2026-11-01-irix-rlimit.md) records
 1,168 original-IRIX records, 4,760 NetBSD records, 280 loader executions and
 24 native/vendor controls. The [desktop follow-up](../../docs/results/2026-11-01-irix-desktop-startup-fixes.md)
 records cleared startup blockers and the next `MAP_AUTORESRV` boundary.
+
+The subsequent [AUTORESRV checkpoint](../irix-mmap-autoresrv/README.md) now
+clears the mapping boundary and reaches `prctl(PR_INIT_THREADS)`. The limit
+query result itself does not establish working thread initialization.

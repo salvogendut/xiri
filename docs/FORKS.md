@@ -32,7 +32,9 @@ Make routine changes on `xiri`. When a topic branch is needed, create it from
 that project's `xiri`, merge it back into `xiri` at the end of the work cycle,
 and remove the completed topic branch after the merge is pushed. Use a prefix
 such as `topic/`: Git cannot keep `xiri` and `xiri/<name>` branches together.
-The default branches are not development targets for Xiri changes.
+Within these two forks, the default branches are not development targets for
+Xiri changes. The separate `salvogendut/xiri` lab/documentation repository
+continues on `main`; it is not one of the two forks in this table.
 
 Use separate build output paths for a new source tree or architecture, and
 keep kernel builds sequential with at most two jobs. Branch consolidation does
