@@ -63,7 +63,7 @@ def main():
     assert '"xmahjongg"' in r['tree']
     assert sha(a.run/'game.xwd') == r['game_frame_sha256']
     a.png.parent.mkdir(parents=True, exist_ok=True)
-    subprocess.run(['magick', str(a.run/'game.xwd'), str(a.png)], check=True)
+    subprocess.run(['magick', str(a.run/'game.xwd'), '-strip', str(a.png)], check=True)
     raw = pixels(a.run/'game.xwd')
     assert len(raw) == 1024*768*4 and pixels(a.png) == raw
     report = dict(schema=1, status='disk-boot-and-desktop-observation-verified',
