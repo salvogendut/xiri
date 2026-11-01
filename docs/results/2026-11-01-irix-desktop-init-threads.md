@@ -81,3 +81,7 @@ PYTHONDONTWRITEBYTECODE=1 python3 scripts/qualify-irix-desktop-init-threads.py \
 The qualifier validates the recorded progress and failures; its status is
 `initialization-cleared-session-directory-boundary`, with
 `desktop_success:false`. It is not a full desktop acceptance gate.
+
+The following [mkdir checkpoint](2026-11-01-irix-mkdir.md) clears directory
+creation. Its [desktop retry](2026-11-01-irix-desktop-mkdir.md) reaches Icon
+Catalog's main window; this report preserves the earlier fatal-dialog boundary.

@@ -246,6 +246,12 @@ geometry gate; an unchanged ordinary repeat passes. Retain the failure
 separately from those successful interactions; startup repeatability remains
 unqualified.
 
+The [mkdir checkpoint](results/2026-11-01-irix-mkdir.md) passes the same native
+kernel/mode matrix and verifies actual filesystem effects independently of
+foreign xstat. Its [desktop follow-up](results/2026-11-01-irix-desktop-mkdir.md)
+opens Icon Catalog with a blank page. Original assets remain unchanged;
+content enumeration and application interaction require separate checks.
+
 Active emulator and kernel development now uses the consolidated
 [`xiri` branches](FORKS.md). Existing guest qualification remains tied to its
 recorded commits and binaries; consolidation does not silently update those

@@ -60,10 +60,13 @@ now clear their initial startup blockers, with 4,760 NetBSD limit records and
 now clears pthread-table allocation through native demand mappings.
 [Measured pthread initialization](docs/results/2026-11-01-irix-init-threads.md)
 also passes, including native signal-mask synchronization and fork/exec state.
-The [desktop follow-up](docs/results/2026-11-01-irix-desktop-init-threads.md)
-reaches missing session-directory creation (`mkdir`); Icon Catalog now draws
-its corresponding fatal dialog. File-manager waits and intermittent terminal
-geometry are additional open findings.
+[Measured directory creation](docs/results/2026-11-01-irix-mkdir.md) now clears
+the following session-directory blocker, with 3,200 records and 1,540 native
+filesystem effects verified. The [desktop retry](docs/results/2026-11-01-irix-desktop-mkdir.md)
+opens Icon Catalog's empty fallback page; system page data is not staged, so
+emptiness alone is not a compatibility failure. `bgicons` exits zero. Both
+file-manager launches now crash after unsupported pipe/sgikopt calls; terminal
+startup reliability and catalog actions remain open.
 The static closure and resource locations are inventoried; full desktop
 startup, file operations and services remain pending.
 

@@ -156,7 +156,8 @@ inventory requirement.
 
 The [AUTORESRV result](../../docs/results/2026-11-01-irix-mmap-autoresrv.md)
 clears table allocation. [Measured pthread initialization](../../docs/results/2026-11-01-irix-init-threads.md)
-now clears the next operation. The [latest desktop follow-up](../../docs/results/2026-11-01-irix-desktop-init-threads.md)
-reaches generated session-directory creation (`mkdir` ENOSYS), an Icon Catalog
-fatal dialog and fm `waitsys(options=3)` EINVAL. No additional image assets
-were staged. Startup repeatability and usable file/icon clients remain open.
+now clears the next operation. [Measured directory creation](../../docs/results/2026-11-01-irix-mkdir.md)
+also passes. The [latest desktop follow-up](../../docs/results/2026-11-01-irix-desktop-mkdir.md)
+opens Icon Catalog with a blank main page and advances background-icon setup.
+No additional image assets were staged. Catalog contents/actions, file-manager
+startup and session repeatability remain open.

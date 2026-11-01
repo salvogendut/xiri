@@ -1,0 +1,91 @@
+{
+  "status": "development-diagnostics",
+  "runs": [
+    {
+      "directory": ".work/irix-mkdir/runs/lp64-ci-7h06ktlg",
+      "status": "error",
+      "clean_shutdown": true,
+      "result_sha256": "7ae1e5f294ca5687fea42d5a4ab6bd0e12038b7c6d08062c60ce5935dd488689",
+      "observations": 0,
+      "sources": {
+        "lab/irix-lp64/runner.c": {
+          "sha256": "005bdf3fffce5fb8ca79073e92cc41431aa953550c41014183d5de986a104463",
+          "checked": "lab/irix-lp64/runner.c"
+        },
+        "lab/irix-toolchest/session.c": {
+          "sha256": "e183b4aefdfb428e01dc609230e87a7546a0b31e9d4b5e236503e0a8bb3b09f5",
+          "checked": "lab/irix-toolchest/session.c"
+        },
+        "scripts/probe-irix-mkdir.py": {
+          "sha256": "ef23f33cf4ab45e9d24c07a1fd720dd1c182ed9eef081266d6d9a87e468c2166",
+          "checked": ".work/irix-mkdir/runs/lp64-ci-7h06ktlg/sources/scripts/probe-irix-mkdir.py"
+        },
+        "lab/irix-mkdir/native-control.c": {
+          "sha256": "ee3579156aefb548b01fa2f07f1d2619c4e15a8493b9140aa6811d039f8d0b7d",
+          "checked": ".work/irix-mkdir/runs/lp64-ci-7h06ktlg/sources/lab/irix-mkdir/native-control.c"
+        }
+      },
+      "error": "{'errno_bytes': 0, 'errno': 0, 'exit': 5, 'signal': 0, 'killed': 0, 'stdout': '', 'stderr': ''}"
+    },
+    {
+      "directory": ".work/irix-mkdir/runs/lp64-ordinary-bricox6y",
+      "status": "error",
+      "clean_shutdown": true,
+      "result_sha256": "5964dfa16fac745356e92d7ae18dcdc6c352c2762e3e4d985ff212d6edf6038e",
+      "observations": 0,
+      "sources": {
+        "lab/irix-lp64/runner.c": {
+          "sha256": "005bdf3fffce5fb8ca79073e92cc41431aa953550c41014183d5de986a104463",
+          "checked": "lab/irix-lp64/runner.c"
+        },
+        "lab/irix-toolchest/session.c": {
+          "sha256": "e183b4aefdfb428e01dc609230e87a7546a0b31e9d4b5e236503e0a8bb3b09f5",
+          "checked": "lab/irix-toolchest/session.c"
+        },
+        "scripts/probe-irix-mkdir.py": {
+          "sha256": "ef23f33cf4ab45e9d24c07a1fd720dd1c182ed9eef081266d6d9a87e468c2166",
+          "checked": ".work/irix-mkdir/runs/lp64-ordinary-bricox6y/sources/scripts/probe-irix-mkdir.py"
+        },
+        "lab/irix-mkdir/native-control.c": {
+          "sha256": "ee3579156aefb548b01fa2f07f1d2619c4e15a8493b9140aa6811d039f8d0b7d",
+          "checked": ".work/irix-mkdir/runs/lp64-ordinary-bricox6y/sources/lab/irix-mkdir/native-control.c"
+        }
+      },
+      "error": "{'errno_bytes': 0, 'errno': 0, 'exit': 5, 'signal': 0, 'killed': 0, 'stdout': '', 'stderr': ''}"
+    },
+    {
+      "directory": ".work/irix-mkdir/runs/o32-ci-t0p9kge8",
+      "status": "observed-uncompared",
+      "clean_shutdown": true,
+      "result_sha256": "8f4bf11701f05da1825398d2383d48c69394f4e1863de59a6d0c83d2407d2cf9",
+      "observations": 20,
+      "sources": {
+        "lab/irix-lp64/runner.c": {
+          "sha256": "005bdf3fffce5fb8ca79073e92cc41431aa953550c41014183d5de986a104463",
+          "checked": "lab/irix-lp64/runner.c"
+        },
+        "lab/irix-toolchest/session.c": {
+          "sha256": "e183b4aefdfb428e01dc609230e87a7546a0b31e9d4b5e236503e0a8bb3b09f5",
+          "checked": "lab/irix-toolchest/session.c"
+        },
+        "scripts/probe-irix-mkdir.py": {
+          "sha256": "ef23f33cf4ab45e9d24c07a1fd720dd1c182ed9eef081266d6d9a87e468c2166",
+          "checked": ".work/irix-mkdir/runs/o32-ci-t0p9kge8/sources/scripts/probe-irix-mkdir.py"
+        },
+        "lab/irix-mkdir/native-control.c": {
+          "sha256": "ee3579156aefb548b01fa2f07f1d2619c4e15a8493b9140aa6811d039f8d0b7d",
+          "checked": ".work/irix-mkdir/runs/o32-ci-t0p9kge8/sources/lab/irix-mkdir/native-control.c"
+        }
+      },
+      "error": null
+    },
+    {
+      "directory": ".work/irix-desktop-mkdir/runs/ci-ezpv_vla",
+      "status": "error",
+      "clean_shutdown": true,
+      "result_sha256": "216367b529237600ecab7779b6fad47d71c44c791bb06bb5fc7c21668285d59b",
+      "harness_sha256": "fc5d39ef1eac1dff84b79c29ac55694f344ed3ae03019550270842ed9cee7629",
+      "reason": "Obsolete kernel with missing dispatch entry; interrupted through harness during capture"
+    }
+  ]
+}

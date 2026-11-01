@@ -175,7 +175,7 @@
     },
     {
       "id": "desktop_helpers",
-      "status": "autoresrv_cleared_thread_init_boundary_observed",
+      "status": "mkdir_cleared_catalog_rendering_fm_crash_observed",
       "image_paths": [
         "/usr/lib/desktop/*",
         "/usr/sbin/fm",
@@ -198,9 +198,11 @@
         "docs/results/2026-11-01-irix-mmap-autoresrv.json",
         "docs/results/2026-11-01-irix-desktop-autoresrv.json",
         "docs/results/2026-11-01-irix-init-threads.json",
-        "docs/results/2026-11-01-irix-desktop-init-threads.json"
+        "docs/results/2026-11-01-irix-desktop-init-threads.json",
+        "docs/results/2026-11-01-irix-mkdir.json",
+        "docs/results/2026-11-01-irix-desktop-mkdir.json"
       ],
-      "note": "The 38-path static ELF closure and 16 selected resources remain unchanged. All four file/icon launches now pass PR_INIT_THREADS. They reach mkdir ENOSYS while preparing HOME/.desktop-xiri-indy; Icon Catalog renders a fatal session-directory dialog, and fm also encounters waitsys(options=3) EINVAL. No additional image assets are established or staged. Delayed modules, artwork, catalog pages and services remain unqualified; fmserv is not directly launched."
+      "note": "The 38-path static ELF closure and 16 selected resources remain unchanged. bgicons exits zero after creating per-user session directories. Icon Catalog renders its empty Blank fallback page; no page data is staged. Both fm launches crash after pipe/sgikopt ENOSYS; causality needs isolation. Delayed modules, artwork, catalog actions and services remain unqualified; fmserv is not directly launched."
     },
     {
       "id": "artwork",
@@ -286,14 +288,35 @@
     },
     {
       "id": "icon_catalog_pages",
-      "status": "root_located_unqualified",
+      "status": "empty_fallback_rendered_system_pages_unstaged",
       "image_paths": [
         "/usr/lib/desktop/iconcatalog/pages"
       ],
       "evidence": [
-        "lab/irix-desktop-components/manifest.json"
+        "lab/irix-desktop-components/manifest.json",
+        "docs/results/2026-11-01-irix-desktop-mkdir.json"
       ],
-      "note": "Catalog data root located alongside the extracted IconCatalog defaults and binary closure; page contents are not yet staged or runtime-qualified."
+      "note": "Original defaults name the dummy page Blank; this empty main window now renders. System page data remains unstaged. Emptiness alone does not establish a compatibility failure. Qualify one pinned page and action for a known installed application; system-page discovery is not proven."
+    },
+    {
+      "id": "generated_desktop_directories",
+      "status": "creation_observed",
+      "image_paths": [],
+      "generated_paths": [
+        "$HOME/.desktop-xiri-indy",
+        "$HOME/.desktophost/xiri-indy/Icons"
+      ],
+      "observed_lookup_candidates": [
+        "$HOME/.desktop-xiri-indy/desktopenv",
+        "$HOME/.desktop-xiri-indy/iconcatalog/pages/Blank",
+        "$HOME/.desktop-xiri-indy/iconcatalog/layouts/Blank",
+        "$HOME/.desktop-xiri-indy/layouts/Default"
+      ],
+      "evidence": [
+        "docs/results/2026-11-01-irix-mkdir.json",
+        "docs/results/2026-11-01-irix-desktop-mkdir.json"
+      ],
+      "note": "Create as native per-user state; do not copy old account directories from IRIX. Lookup candidates are not all observed creations. Native authorization, umask and filesystem ownership policy apply."
     }
   ],
   "native_session_inputs": [

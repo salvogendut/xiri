@@ -1,6 +1,6 @@
 # Xiri proposed architecture
 
-Status: architectural target agreed on 2026-10-14; implementation status updated 2026-11-01. The kernel personality runs selected original o32/n32 applications. Original 4Dwm and Toolchest run alongside winterm with a native shell in bounded sessions. File/icon clients now pass resource-limit queries, AUTORESRV allocation and measured pthread initialization, then reach session-directory creation failures. General compatibility and the complete desktop remain unqualified. The [execution roadmap](ROADMAP.md) defines the remaining experiments.
+Status: architectural target agreed on 2026-10-14; implementation status updated 2026-11-01. The kernel personality runs selected original o32/n32 applications. Original 4Dwm and Toolchest run alongside winterm with a native shell in bounded sessions. File/icon clients now pass resource-limit queries, AUTORESRV allocation, measured pthread initialization and directory creation. Icon Catalog now reaches a blank main window; file-manager startup and complete desktop behavior remain open. General compatibility and the complete desktop remain unqualified. The [execution roadmap](ROADMAP.md) defines the remaining experiments.
 
 Xiri will use NetBSD as its underlying OS, execute selected IRIX binaries on the workstation's MIPS CPU through an IRIX personality, and preserve the existing IRIX desktop. Applications built natively for NetBSD should share that desktop with the compatible programs.
 
@@ -138,8 +138,11 @@ threading and VM semantics. The [AUTORESRV result](results/2026-11-01-irix-mmap-
 illustrates the boundary: the kernel performs native demand mappings for an
 IRIX request. The subsequent [PR_INIT_THREADS adapter](results/2026-11-01-irix-init-threads.md)
 maintains measured PRDA holds and synchronizes native signal masks; it does
-not establish thread creation. The [desktop retry](results/2026-11-01-irix-desktop-init-threads.md)
-now reaches missing directory creation and an unsupported wait option combination.
+not establish thread creation. The [mkdir adapter](results/2026-11-01-irix-mkdir.md)
+now uses native VFS creation with measured pathname translation and explicit
+native group-ownership policy. It adds no new core hook. The [desktop retry](results/2026-11-01-irix-desktop-mkdir.md)
+reaches Icon Catalog's empty fallback window; pipe, wider waits and remaining client behavior
+are still separate compatibility work.
 
 ## Original desktop preservation
 

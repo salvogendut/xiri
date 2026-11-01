@@ -104,3 +104,6 @@ For the desktop evidence, use
 `qualify-irix-desktop-init-threads.py RUN... --png PNG --output REPORT`.
 It retains shell/window failures and distinguishes a rendered fatal dialog
 from desktop success. See the [desktop report](../../docs/results/2026-11-01-irix-desktop-init-threads.md).
+
+The following [directory-creation lab](../irix-mkdir/README.md) clears mkdir
+and advances the original desktop clients beyond their session-directory error.

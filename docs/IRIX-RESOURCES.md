@@ -28,16 +28,19 @@ experiment that establishes whether the resource is actually used.
 
 ## Still to locate or qualify
 
-The [pthread initialization follow-up](results/2026-11-01-irix-desktop-init-threads.md)
-clears the kernel initialization failure without adding image assets. Clients
-now try `$HOME/.desktop-xiri-indy`; `mkdir` is unsupported, and Icon Catalog
-reports that it cannot access the Desktop session directory. This is generated
-per-user state to create under native ownership, not an old account directory
-to copy from the image. The file manager also encounters an unsupported
-`waitsys` option combination. Catalog pages, filetype rules and artwork still
-need runtime qualification after this boundary is cleared. Missing
-`uxsgiimd`/`uxsgierr` message catalogs are observed diagnostic candidates;
-the current capture does not establish them as startup prerequisites.
+The [mkdir follow-up](results/2026-11-01-irix-desktop-mkdir.md) clears
+session-directory creation without adding image assets. `bgicons` exits zero
+and creates generated state under `$HOME/.desktop-xiri-indy` and
+`$HOME/.desktophost/xiri-indy/Icons`. Icon Catalog opens an empty main window;
+its original defaults name the dummy page `Blank`, and system catalog pages
+are not staged. Emptiness alone is not a compatibility failure. Populated pages
+and actions need a separate test with a known installed application.
+
+Both file-manager launches now crash after unsupported `pipe` and `sgikopt`
+calls. Earlier waitsys limitations remain unqualified. Filetype rules, artwork
+and delayed services still need runtime checks. Missing `uxsgiimd`/`uxsgierr`
+message catalogs remain diagnostic candidates; current evidence does not
+establish them as startup prerequisites.
 
 | Candidate | What to record next |
 | --- | --- |
@@ -47,7 +50,7 @@ the current capture does not establish them as startup prerequisites.
 | Additional fonts, aliases and encodings | Record actual requests from each original client. The private inventory has broader Fixed-font metadata; only the selected Screen family is in the import experiment. Preserve XLFD names and alias relationships. |
 | Locale/input-method modules and catalogs | Resolve any actual module loads named by XI18N_OBJS; inventory message catalogs used by gettxt and desktop helpers. The xwsh error path now probes `/usr/lib/locale/C/LC_MESSAGES/uxsyserr`, `C/Xopen/LC_MESSAGES/uxsyserr` and `C/LC_MESSAGES/uxsyserr.cat`; the later fork failure also probes the corresponding `uxsgierr` paths. Their absence does not prevent the fallback English diagnostic. Multilingual locales and input methods are separate from the current C-locale checks. |
 | File monitoring and desktop services | Trace fm/fam-related behavior, cache helpers, device icon discovery and interprocess messages. Pin required binaries, data and protocol behavior before selecting an original or native service. |
-| Help and application catalogs | Icon Catalog data is located at `/usr/lib/desktop/iconcatalog/pages`; the binary closure and original IconCatalog defaults are extracted. Page contents, SGIHelp/InSight and application registration data remain to qualify. Installed manuals are also useful private behavior references. |
+| Help and application catalogs | Icon Catalog data is located at `/usr/lib/desktop/iconcatalog/pages`; the binary closure and original IconCatalog defaults are extracted. The original defaults name the empty fallback page Blank, now visibly rendered. System page contents are not staged; test one pinned page/action with an installed application before importing the complete catalog. SGIHelp/InSight and application registration remain unqualified. Installed manuals are also useful private behavior references. |
 | Conditional session helpers | Qualify soundscheme/audio settings, powersaver, sysmon integration, first-login tasks and user `.sgisession` hooks separately; they are not all prerequisites for the first desktop display. |
 
 ## State supplied by xiri
@@ -59,7 +62,7 @@ use an explicit environment; an absent HOME caused an earlier Toolchest crash,
 and xwsh rejects a numerical uid without an account record. The font experiment
 uses synthetic foreign passwd/group fixtures to investigate that lookup.
 
-Per-user `.desktop` state, `.chestrc`, `.Sgiresources`, `.Xdefaults` and saved
+Per-user `.desktop`/`.desktophost` state, `.chestrc`, `.Sgiresources`, `.Xdefaults` and saved
 sessions must be tracked as generated or deliberately migrated state, distinct
 from system defaults. XUSERFILESEARCHPATH, locale and helper PATH choices also
 belong in the launch record. NetBSD's shell and native X.org server remain the
@@ -92,7 +95,8 @@ panel/SGI-AccessControl behavior needs feature-query investigation; no new
 font import was required for this window-manager step.
 
 With session saving enabled, 4Dwm probes HOME/.xroomsrc, its .tmp peer and
-HOME/.desktop-127.0.0.1 for the controlled display. The captured path hits
-unimplemented mkdir/unlink/fsync/rename and later `(null).tmp`. These are
+HOME/.desktop-127.0.0.1 for the controlled display. That earlier capture hits
+unimplemented mkdir/unlink/fsync/rename and later `(null).tmp`. mkdir is now
+qualified, but saved-session behavior has not been retried. These are
 generated user-state dependencies to implement and qualify, not missing
 original artwork or configuration files to extract.
