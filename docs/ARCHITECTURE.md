@@ -22,6 +22,14 @@ flowchart TB
 
 The diagram describes logical interfaces, not completed components. The IRIX libraries and desktop would initially come from the user's installation. On physical SGI hardware, ordinary MIPS code can run directly when the selected CPU supports its instruction set.
 
+The first application-import path now copies the installed image's binaries
+and resources together with its existing Icon Catalog links and filetype
+registration. The [import inventory](results/2026-11-01-irix-installed-desktop.md)
+keeps system assets distinct from native account/session state. Original
+`inst`/Software Manager support remains a later package-management path;
+importing files does not establish an installation database or working
+application behavior.
+
 Initial development runs the complete NetBSD/sgimips system inside an Indy emulator on a modern host. The emulator supplies the MIPS CPU and SGI devices; Xiri still implements the IRIX OS interfaces inside NetBSD. This is the same guest architecture intended for the physical Indy. A separate user-mode IRIX runner on a native x86 or ARM OS would require additional CPU translation and integration, and remains a later objective. See the [emulation plan](EMULATION.md).
 
 ## Components and deployment
@@ -62,6 +70,12 @@ The pthread-initialization work adds another core dependency: an optional
 `emul.e_sigmask` callback in `lwp_userret` to refresh a user-managed signal hold
 before pending-signal delivery. This hook also needs upstream integration or
 an equivalent supported interface for deployment on a standard kernel.
+
+The [traditional-signal adapter](results/2026-11-01-irix-signal.md) adds
+explicit foreign frame conversion around native signal, machine-context and
+PCU interfaces, without another core-kernel hook. Its measured o32/n32
+delivery/return and wait-any subset passes; nested signals, alternate stacks,
+restart and general multi-LWP behavior remain separate qualification work.
 
 NetBSD's [current module framework](https://man.netbsd.org/module.7) supports
 execution interpreters and uses [modload](https://man.netbsd.org/modload.8).
@@ -206,18 +220,16 @@ Provide explicit adapters for system integration. An IRIX control panel that cha
 The [installer helper trace](results/2026-11-01-irix-installer-helpers.md)
 separates native utility lookup from foreign child completion. Its embedded
 script runs through native `/bin/sh`; four explicit native aliases let it
-exit zero, but the IRIX parent leaves it a zombie. The parent receives ENOSYS
-from SIGCHLD sigaction. The [original signal reference](results/2026-11-01-irix-signal-reference.md)
-now measures registration, both frame forms, sigreturn and the callback's
-predicted waitsys selector7/options0x43. That wait succeeds in reference
-handlers, beyond the current NetBSD positive-child-only implementation.
-Signal delivery needs explicit ABI serializers: o32 and n32 ucontexts both
-start GPRs at byte 40 but use different widths and FPU layouts. Native
-signal/wait machinery should own process state, with foreign trampoline
-inheritance and exec cleanup handled by the personality. Return must preserve
-native machine-state checks and convert FPU halves correctly. These kernel
-interfaces remain unimplemented; native `stat -qd` compatibility remains a
-separate userland requirement. The final module/service split is unchanged.
+exit zero, but the IRIX parent left it a zombie at that checkpoint, with
+SIGCHLD sigaction returning ENOSYS. The [signal implementation](results/2026-11-01-irix-signal.md)
+now qualifies registration, both frame forms, sigreturn and the measured
+waitsys selector7/options0x43 callback. The explicit ABI serializers retain
+different GPR widths and FPU layouts: o32 and n32 ucontexts both start GPRs
+at byte 40. Native signal/wait machinery owns process state; the personality
+handles foreign trampoline inheritance, exec cleanup and frame conversion.
+The tested invalid-context policy preserves native machine-state checks.
+Actual installer callbacks and native `stat -qd` compatibility remain to
+qualify when installer work resumes. The module/service split is unchanged.
 
 Keep the IRIX runtime in a distinct tree while making selected user files available consistently to native and compatible processes. The path policy must cover absolute library paths, executable lookup, temporary files, user identities, and desktop configuration.
 
@@ -255,3 +267,9 @@ Repeat key milestones on the physical Indy before claiming hardware support. Phy
 Publish support by machine configuration, desktop component, and application version. Keep the kernel changes small enough to rebase regularly, and pursue upstreamable driver fixes to reduce the project's maintenance burden.
 
 The [4Dwm loader checkpoint](results/2026-11-01-irix-elfmap-subpage.md) now handles the two 4 KiB data boundaries and passes 750 mapping/limit checks. The [fixed/local mmap checkpoint](results/2026-11-01-irix-mmap-local.md) now also clears GL initialization, with 660 mapping cases and native page-zero controls. The [measured PRDA checkpoint](results/2026-11-01-irix-prda.md) now clears that libc fault, with 80 executions / 180 records plus fork and native-exec controls. The [4Dwm session](results/2026-11-01-irix-4dwm.md) now passes reparenting, pointer focus, key delivery and dragging alongside Toolchest and a working winterm shell. Session saving is explicitly disabled; desks, restoration and complete desktop services remain open.
+
+The current development runtime is also packaged as a [reusable NetBSD CHD](XIRI-IMAGE.md).
+It persists the compatibility tree, native font directory and session helpers.
+Routine tests clone that image or its verified raw seed; payload extraction
+is reserved for explicit updates. The [copy ledger](IRIX-IMPORT.md) separates
+original resources from native generated state.

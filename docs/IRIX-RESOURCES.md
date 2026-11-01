@@ -1,5 +1,20 @@
 # IRIX resource checklist
 
+The current reusable baseline and manual IRIS procedure are in
+[XIRI-IMAGE.md](XIRI-IMAGE.md). [IRIX-IMPORT.md](IRIX-IMPORT.md) records exact
+source/destination mappings, permission adjustments and the SGI catalog
+reference check. Historical installer observations below retain their
+original scope; the installed-image payload is now a separate working path.
+
+The immediate application path now imports already installed software from
+the supplied disk image. The [installed-desktop inventory](results/2026-11-01-irix-installed-desktop.md)
+locates 166 catalog links in 17 tabs, all installed filetype rules/compiled
+tables/icons, application defaults and schemes. The xmahjongg executable,
+static dependencies, 33 game-data files and existing Freeware registration
+are collected together. Importing these resources does not yet qualify
+catalog actions or every listed application; original unresolved links and
+remaining runtime-data dependencies are recorded separately.
+
 This is the running record of what xiri needs from the supplied IRIX image.
 It separates demonstrated runtime inputs, extracted candidates and assets
 still to locate. A file's presence in the image does not prove it is required.
@@ -37,8 +52,8 @@ The [mkdir follow-up](results/2026-11-01-irix-desktop-mkdir.md) clears
 session-directory creation without adding image assets. `bgicons` exits zero
 and creates generated state under `$HOME/.desktop-xiri-indy` and
 `$HOME/.desktophost/xiri-indy/Icons`. Icon Catalog opens an empty main window;
-its original defaults name the dummy page `Blank`, and system catalog pages
-are not staged. Emptiness alone is not a compatibility failure. Populated pages
+its original defaults name the dummy page `Blank`, and that earlier test
+did not stage system catalog pages. Emptiness alone is not a compatibility failure. Populated pages
 and actions need a separate test with a known installed application.
 
 The [pipe retry](results/2026-11-01-irix-desktop-pipe.md) now renders a
@@ -58,7 +73,7 @@ establish them as startup prerequisites.
 | Additional fonts, aliases and encodings | Record actual requests from each original client. The private inventory has broader Fixed-font metadata; only the selected Screen family is in the import experiment. Preserve XLFD names and alias relationships. |
 | Locale/input-method modules and catalogs | Resolve any actual module loads named by XI18N_OBJS; inventory message catalogs used by gettxt and desktop helpers. The xwsh error path now probes `/usr/lib/locale/C/LC_MESSAGES/uxsyserr`, `C/Xopen/LC_MESSAGES/uxsyserr` and `C/LC_MESSAGES/uxsyserr.cat`; the later fork failure also probes the corresponding `uxsgierr` paths. Their absence does not prevent the fallback English diagnostic. Multilingual locales and input methods are separate from the current C-locale checks. |
 | File monitoring and desktop services | Trace fm/fam-related behavior, cache helpers, device icon discovery and interprocess messages. Pin required binaries, data and protocol behavior before selecting an original or native service. |
-| Help and application catalogs | Icon Catalog data is located at `/usr/lib/desktop/iconcatalog/pages`; the binary closure and original IconCatalog defaults are extracted. The original defaults name the empty fallback page Blank, now visibly rendered. System page contents are not staged; test one pinned page/action with an installed application before importing the complete catalog. SGIHelp/InSight and application registration remain unqualified. Installed manuals are also useful private behavior references. |
+| Help and application catalogs | Icon Catalog data is located at `/usr/lib/desktop/iconcatalog/pages`; the binary closure and original IconCatalog defaults are extracted. The original defaults name the empty fallback page Blank, now visibly rendered. The installed-image import now stages all 166 original page links and their available launch targets; catalog rendering and actions still need runtime qualification. SGIHelp/InSight and application registration remain unqualified. Installed manuals are also useful private behavior references. |
 | Conditional session helpers | Qualify soundscheme/audio settings, powersaver, sysmon integration, first-login tasks and user `.sgisession` hooks separately; they are not all prerequisites for the first desktop display. |
 
 ## State supplied by xiri
@@ -185,3 +200,19 @@ runtime resource imports. Its independent fixtures measure kernel interfaces;
 private inspection of the already staged n32 libc confirms the trampoline
 convention. Signal support must accommodate that original runtime. It does
 not supply missing utilities, package payloads or catalog assets.
+
+
+The [traditional-signal checkpoint](results/2026-11-01-irix-signal.md) needs
+no additional vendor runtime resources. It qualifies frame/mask/FPU handling
+and the measured wait-any callback with independent fixtures. Original
+installer retries are deferred while the installed-image payload is tested;
+package hooks, package history and application behavior remain distinct from
+copying existing Icon Catalog registration.
+
+
+The 2026-11-02 [customization reference check](IRIX-IMPORT.md#icon-catalog-reference-check-2026-11-02)
+records the user's local wiki copy and its hash. System Toolchest/background
+files are already imported. Personal menu/background overrides, optional
+image-renderer dependencies and visual-login face/logo assets are explicit
+later candidates. Native NetBSD Xorg and session startup remain authoritative;
+IRIX Xsgi and chkconfig configuration recipes are not applied to the host.

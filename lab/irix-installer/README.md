@@ -97,8 +97,17 @@ now succeed, while the bounded dry run still times out. The
 output, exit and process state. Four native utility aliases let the embedded
 bootstrap exit zero, but the foreign parent leaves it unreaped. The
 [signal lab](../irix-signal/README.md) now measures registration/delivery,
-return and the callback's wait-any mode on original IRIX. NetBSD
-implementation and installer qualification are next; native
+return and the callback's wait-any mode on original IRIX, with the measured
+NetBSD subset qualified in the follow-up below. Installer qualification and native
 `stat -qd` also remains incompatible. This is not distribution-read or
 installation success.
 No package is installed yet.
+
+
+The [traditional-signal checkpoint](../../docs/results/2026-11-01-irix-signal.md)
+now qualifies the measured handler and wait-any subset on NetBSD. The
+installer is not retried in that cycle: the user chose to prioritize
+[importing installed applications and their existing catalog registration](../irix-installed-desktop/README.md).
+Retain this lab for later distribution reading, native utility semantics,
+package history and original registration hooks. Copying installed files
+does not qualify the installer or its lifecycle.

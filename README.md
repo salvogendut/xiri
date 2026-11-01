@@ -12,14 +12,19 @@ tracked in the [roadmap](docs/ROADMAP.md#milestone-4-usable-first-release).
 
 ## Project status
 
-Planning and feasibility research started 2026-10-14. Milestone 0 setup began 2026-10-29 with a [pinned IRIS CLI build](lab/iris/README.md). NetBSD 11.0 now installs and boots to multiuser on an emulated R4400 Indy, including a [host-built kernel with a distinct identifier](docs/results/2026-10-30-netbsd-kernel.md). The fork now runs [unmodified vendor o32 asa and n32 echo](docs/results/2026-10-30-irix-lp64.md) through their original runtimes on an LP64 kernel, with bounded ELF loading, syscall dispatch, mappings and heap growth. The [Toolchest session diagnosis](docs/results/2026-10-31-irix-toolchest-session.md) identifies its subsequent SIGSEGV as a missing `HOME` environment variable. An explicit session wrapper avoids that crash. The [qualified select subset](docs/results/2026-10-31-irix-select.md) supplies measured readiness and timeout behavior on both kernels. The [xstat checkpoint](docs/results/2026-10-31-irix-xstat.md) adds measured o32/n32 metadata layouts and pathname behavior. The [fxstat checkpoint](docs/results/2026-10-31-irix-fxstat.md) supplies descriptor metadata and removes the observed app-defaults allocator crash. The [SIOCNREAD checkpoint](docs/results/2026-10-31-irix-siocnread.md) removes the following XIO failure: Toolchest now renders its menu and passes 60-second visibility/Expose-redraw checks as root and uid 1234. Original [xclock now draws analog and digital windows](docs/results/2026-10-31-irix-elfmap-relocation.md) after bounded library relocation, with [timekeeping now qualified](docs/results/2026-11-01-irix-time.md) in bounded UTC runs. The [access follow-up](docs/results/2026-10-31-irix-winterm-access.md) clears the earlier xwsh locale/font crash: it now reads the staged resources and reaches PTY setup, and the [PTY allocator checkpoint](docs/results/2026-10-31-irix-pty.md) advances it through native master allocation and slave permissions. The [process checkpoint](docs/results/2026-11-01-irix-process.md) adds bounded fork, signal masks and child-exit waits; xwsh now draws its terminal window and opens the slave in its child. The [shell checkpoint](docs/results/2026-11-01-irix-shell.md) adds descriptor/session queries and native exec: the original winterm launcher now opens xwsh with NetBSD’s interactive shell and accepts typed commands. A native helper supplies controlling-terminal setup and avoids the observed layered-tty teardown panic. Foreign signal handlers, resize and normal application exit remain open. General IRIX application compatibility, the original desktop, and hardware validation remain pending.
+Planning and feasibility research started 2026-10-14. Milestone 0 setup began 2026-10-29 with a [pinned IRIS CLI build](lab/iris/README.md). NetBSD 11.0 now installs and boots to multiuser on an emulated R4400 Indy, including a [host-built kernel with a distinct identifier](docs/results/2026-10-30-netbsd-kernel.md). The fork now runs [unmodified vendor o32 asa and n32 echo](docs/results/2026-10-30-irix-lp64.md) through their original runtimes on an LP64 kernel, with bounded ELF loading, syscall dispatch, mappings and heap growth. The [Toolchest session diagnosis](docs/results/2026-10-31-irix-toolchest-session.md) identifies its subsequent SIGSEGV as a missing `HOME` environment variable. An explicit session wrapper avoids that crash. The [qualified select subset](docs/results/2026-10-31-irix-select.md) supplies measured readiness and timeout behavior on both kernels. The [xstat checkpoint](docs/results/2026-10-31-irix-xstat.md) adds measured o32/n32 metadata layouts and pathname behavior. The [fxstat checkpoint](docs/results/2026-10-31-irix-fxstat.md) supplies descriptor metadata and removes the observed app-defaults allocator crash. The [SIOCNREAD checkpoint](docs/results/2026-10-31-irix-siocnread.md) removes the following XIO failure: Toolchest now renders its menu and passes 60-second visibility/Expose-redraw checks as root and uid 1234. Original [xclock now draws analog and digital windows](docs/results/2026-10-31-irix-elfmap-relocation.md) after bounded library relocation, with [timekeeping now qualified](docs/results/2026-11-01-irix-time.md) in bounded UTC runs. The [access follow-up](docs/results/2026-10-31-irix-winterm-access.md) clears the earlier xwsh locale/font crash: it now reads the staged resources and reaches PTY setup, and the [PTY allocator checkpoint](docs/results/2026-10-31-irix-pty.md) advances it through native master allocation and slave permissions. The [process checkpoint](docs/results/2026-11-01-irix-process.md) adds bounded fork, signal masks and child-exit waits; xwsh now draws its terminal window and opens the slave in its child. The [shell checkpoint](docs/results/2026-11-01-irix-shell.md) adds descriptor/session queries and native exec: the original winterm launcher now opens xwsh with NetBSD’s interactive shell and accepts typed commands. A native helper supplies controlling-terminal setup and avoids the observed layered-tty teardown panic. Signal handlers, resize and normal application exit in xwsh remain to qualify. General IRIX application compatibility, the original desktop, and hardware validation remain pending.
 
-The original installer's bootstrap now exits successfully, but its parent
-cannot yet handle SIGCHLD and reap it. The [signal reference](docs/results/2026-11-01-irix-signal-reference.md)
-passes 480 original-IRIX executions covering registration, o32/n32 frames,
-signal return, FPU restoration and wait-any child reaping. Implementing these
-interfaces on NetBSD is next; xmahjongg installation and its Freeware catalog
-entry remain pending.
+The [signal implementation](docs/results/2026-11-01-irix-signal.md) now passes
+1,216 native records and 76 controls, covering measured traditional-signal
+registration, o32/n32 delivery/return, FPU restoration and wait-any reaping.
+The [installed-image import](docs/results/2026-11-01-irix-installed-desktop.md)
+now includes 166 catalog entries across 17 tabs, with xmahjongg rendering
+under 4Dwm. Icon Catalog still shows Blank despite the installed pages.
+The [reusable CHD guide](docs/XIRI-IMAGE.md) covers manual IRIS testing and
+automated reuse; the [copy ledger](docs/IRIX-IMPORT.md) records every source
+and destination, including persistent fonts and executable library modes.
+Original-installer retries are deferred; copying files does not qualify
+installation or every application's runtime behavior.
 
 The candidate build host has been [inventoried](docs/results/2026-10-29-host-inventory.md), and [NetBSD 11.0 sgimips inputs](lab/netbsd-11.0/README.md) have been downloaded and verified. The [guest lab](lab/indy-netbsd/README.md), [installation record](docs/results/2026-10-29-indy-netbsd-install.md), and [debugger/probe results](docs/results/2026-10-30-netbsd-debugger-probe.md) retain the configuration, commands, evidence, and unresolved emulator issues. Use the [development setup checklist](docs/ROADMAP.md#development-setup-checklist) for the remaining work.
 
@@ -31,6 +36,7 @@ Confirmed project requirements:
 - Preserve the IRIX desktop.
 - Support selected legacy IRIX applications alongside maintained software.
 - Use the original IRIX installers and package hooks to add applications to Icon Catalog.
+- Bootstrap the desktop by importing already installed applications and their existing Icon Catalog registration from the user's IRIX image; qualify installer support afterward.
 - Give ordinary users native homes under `/usr/people/<username>`; IRIX root sessions use `/`.
 - Keep planning and execution documents in this repository.
 
@@ -73,7 +79,7 @@ also passes, including native signal-mask synchronization and fork/exec state.
 [Measured directory creation](docs/results/2026-11-01-irix-mkdir.md) now clears
 the following session-directory blocker, with 3,200 records and 1,540 native
 filesystem effects verified. The [desktop retry](docs/results/2026-11-01-irix-desktop-mkdir.md)
-opens Icon Catalog's empty fallback page; system page data is not staged, so
+opens Icon Catalog's empty fallback page; system pages were not staged in that test, so
 emptiness alone is not a compatibility failure. `bgicons` exits zero. The subsequent [pipe adapter](docs/results/2026-11-01-irix-pipe.md) passes
 220 exact reference comparisons and 44 native/vendor controls. The
 [desktop retry](docs/results/2026-11-01-irix-desktop-pipe.md) now renders a
@@ -94,8 +100,10 @@ initial session: saving/restoration and startup repeatability remain open.
 
 The supplied [May 2004 Freeware media](docs/results/2026-11-01-irix-freeware.md)
 contains four CD sets and 489 distinct package names. The selected first
-installation target is xmahjongg 3.6.1, using original `inst` and its own
-`iconcatalogedit` hooks for the **Freeware** page. The [software plan](docs/IRIX-SOFTWARE.md)
+application is xmahjongg 3.6.1. The [installed-image path](docs/results/2026-11-01-irix-installed-desktop.md)
+now takes priority: import its existing executable, game data and **Freeware**
+registration. Original `inst` and its `iconcatalogedit` hooks remain later
+installation work. The [software plan](docs/IRIX-SOFTWARE.md)
 also defines persistent `/usr/people` homes shared by native and IRIX programs.
 
 The [installer/home probe](docs/results/2026-11-01-irix-installer.md) now verifies
@@ -111,8 +119,9 @@ now passes 480 ABI records and advances original xclock. The [installer time ret
 receives successful time calls but still times out. The
 [helper trace](docs/results/2026-11-01-irix-installer-helpers.md) identifies its
 embedded bootstrap and qualifies four native utility aliases in the lab.
-The bootstrap then exits zero, while the parent leaves it unreaped. Foreign
-SIGCHLD registration/delivery and the callback's wait-for-any-child mode are
-the next interfaces to measure. Native `stat -qd` remains incompatible.
+The bootstrap then exits zero, while the parent leaves it unreaped at that
+checkpoint. The [signal follow-up](docs/results/2026-11-01-irix-signal.md)
+now qualifies the measured handler and wait-any subset, but the installer
+has not been retried. Native `stat -qd` remains incompatible.
 Distribution reading,
 installation, the Freeware catalog action and graphical login persistence remain open.

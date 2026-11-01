@@ -1,11 +1,26 @@
-# Original IRIX software installation
+# IRIX application import and installation
 
-The target is to use original IRIX `inst` and Software Manager (`swmgr`) on
-NetBSD, preserving their dependency handling, installation history and package
-hooks. Applications should appear in Icon Catalog through their own
-registration mechanism. This is a userland capability supported by Xiri's
-IRIX ABI; the desired kernel deployment remains a module modeled on
-`compat_linux`.
+The current reusable baseline and manual IRIS procedure are in
+[XIRI-IMAGE.md](XIRI-IMAGE.md). [IRIX-IMPORT.md](IRIX-IMPORT.md) records exact
+source/destination mappings, permission adjustments and the SGI catalog
+reference check. Historical installer observations below retain their
+original scope; the installed-image payload is now a separate working path.
+
+The immediate path is to copy already installed applications, their resources
+and existing Icon Catalog registration from the user's IRIX image. The
+[installed-image inventory](results/2026-11-01-irix-installed-desktop.md) finds
+166 entries in 17 tabs, including xmahjongg in Freeware. Import the catalog
+links, filetype rules/icons, application defaults and required libraries
+together with each application. Qualify direct execution, catalog launch,
+interaction and persistence before calling an application supported.
+
+Original IRIX `inst` and Software Manager (`swmgr`) remain the later target
+for adding, upgrading and removing software with correct dependency handling,
+installation history and package hooks. This work is deferred while we
+establish the imported desktop. Copying installed files does not qualify a
+package installation or justify copying the old installation database.
+Both paths use Xiri's IRIX ABI; the desired kernel deployment remains a
+module modeled on `compat_linux`.
 
 The [shared-mapping checkpoint](results/2026-11-01-irix-mmap-shared.md) clears
 the initial installer crash. The [bounded sproc adapter](results/2026-11-01-irix-sproc.md)
@@ -29,13 +44,16 @@ mode. The [signal reference](results/2026-11-01-irix-signal-reference.md) now
 executes that call successfully inside independent original-IRIX handlers,
 including confirmation that the child is reaped. Its 480 executions also
 measure registration, o32/n32 frames, signal return and FPU restoration.
-The installer itself has not yet executed this callback on NetBSD.
+The [native signal checkpoint](results/2026-11-01-irix-signal.md) now passes
+1,216 records and 76 controls, including the measured handler/reap path,
+FPU restoration, fork inheritance and invalid-context checks. The installer
+itself has not yet executed this callback on NetBSD.
 
 The aliases are a disposable lab arrangement, not general IRIX command
 compatibility. Native `stat -qd` fails and the original script falls back to
-zero, so filesystem-device comparison remains unqualified. Implement the
-measured signal and wait-any subset, qualify it on NetBSD and retry the
-installer, then resolve the utility mismatch before claiming installer support. Hardware
+zero, so filesystem-device comparison remains unqualified. The measured
+signal and wait-any subset is now qualified. When installer work resumes,
+retry it and resolve the utility mismatch before claiming support. Hardware
 information, umask and creat also remain gaps. No package history or catalog
 entry has been created.
 
@@ -55,7 +73,10 @@ original Makefile. The [media inventory](results/2026-11-01-irix-freeware.md)
 records the exact inputs; no software has been installed merely by reading
 the inventories.
 
-Acceptance is one complete lifecycle:
+The first import acceptance is to launch the installed executable with its
+original game data, show its existing Freeware entry, launch it through Icon
+Catalog and verify interaction and a later login. The complete installer
+lifecycle remains a separate acceptance sequence:
 
 1. Original `inst` reads the selected distribution and resolves its actual
    prerequisites, including `fw_common` where required.

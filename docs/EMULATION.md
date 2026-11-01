@@ -345,3 +345,26 @@ archive is retained. Both guests halt cleanly, at most two overlap, and the
 final host check finds no IRIS processes. Sequential fixture builds and the
 existing pinned emulator/seed remain unchanged. NetBSD and ordinary-mode
 qualification belong to the subsequent implementation cycle.
+
+
+The [native signal cycle](results/2026-11-01-irix-signal.md) qualifies 1,216
+records and 76 controls across LP64 CI/ordinary and o32 CI, plus a corrected
+480-execution original reference. Builds are sequential with two jobs; no
+more than four owned guests overlap. Every fixture completes normally and
+all guests halt. Earlier regression kernels keep their own exact pins.
+The [installed-image probe](../lab/irix-installed-desktop/README.md) clones
+the stopped desktop-pipe guest, uses the final signal kernel, imports a
+hash-checked payload and creates fresh `/usr/people` state. Its reserved-UID
+supervisor contains GUI descendants and its screenshots remain observations
+until catalog launch and interaction are checked.
+
+## Reusable desktop image
+
+Use the [prepared CHD](XIRI-IMAGE.md) for current manual IRIS testing and
+routine desktop experiments. It contains the qualified signal kernel,
+installed IRIX application/catalog payload, persistent native fonts and
+session helpers. The [image qualification](results/2026-11-02-xiri-image.md)
+records archive verification, a complete 8 GiB raw round trip, direct SCSI
+disk boot and native Xorg/Newport observations. Older lab baselines remain
+pinned for reproducing earlier interfaces. Create fresh CHD overlays or raw
+clones for new runs; rebuild/import only when changing the payload.

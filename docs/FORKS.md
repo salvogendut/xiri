@@ -185,3 +185,25 @@ to rebuild. The [480-execution reference](results/2026-11-01-irix-signal-referen
 uses the pinned original-IRIX emulator; NetBSD runtime source remains
 `76de548ab644cb471f4c5b97ec89671c1d385c5b`. Both fork integration worktrees
 remain clean and detached reproductions remain pinned.
+
+
+The signal implementation/import cycle again fetched IRIS upstream at
+`4ad1b1d435dc115697433f091b10dfa8c48aa7ed`, already an ancestor of IRIS `xiri`
+`045d69245609d186907a20e0b002e2b60be9a1ac`. No new commits, merge or emulator
+rebuild was needed. The integration worktree remains `.work/iris-upstream-sproc`;
+the unrelated main-checkout performance branch and detached labs are untouched.
+NetBSD `xiri` signal code is pinned at
+`4680cd61b625a5eaa393a0deaea73f4b9f7ed7bc` in the separate signal build
+folders. The [qualification](results/2026-11-01-irix-signal.md) records
+1,216 final native records, 76 controls and exact earlier regression pins.
+Documentation-only commits do not change the qualified binaries. Installed
+application import is Xiri lab work and does not modify the source image.
+
+At the 2026-11-02 Europe/Rome day boundary, the image cycle fetched IRIS
+`upstream/main` again from `https://github.com/techomancer/iris.git`. It remains
+`4ad1b1d435dc115697433f091b10dfa8c48aa7ed`, already an ancestor of integration
+`xiri` at `045d69245609d186907a20e0b002e2b60be9a1ac`. No merge or affected
+emulator rebuild was required. NetBSD `xiri` is pushed through documentation
+commit `d267235cc0d`; the image retains qualified signal kernel source
+`4680cd61b625a5eaa393a0deaea73f4b9f7ed7bc`. Both integration worktrees remain
+clean, and detached reproductions retain their original pins.

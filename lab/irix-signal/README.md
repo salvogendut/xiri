@@ -1,9 +1,11 @@
-# IRIX signal reference lab
+# IRIX signal reference and NetBSD lab
 
 Measure raw sigaction (1162), trampoline delivery, sigreturn (1088) and
 SIGCHLD wait-any (1170) on the supplied IRIX 6.5.22m installation. The
 [result](../../docs/results/2026-11-01-irix-signal-reference.md) separates
-observed behavior from the pending NetBSD implementation.
+observed behavior from the subsequent NetBSD implementation. The original
+reference files below remain unchanged for reproduction; use the v2 path
+for new native comparisons.
 
 `probe.c`, `start.S`, `trampoline.S` and `fpu.S` are independent, libc-free
 fixtures. They share only the existing six-argument syscall bridge and link
@@ -83,3 +85,61 @@ child reaping. Reserved action bytes and unrelated frame contents are not
 promoted to an interface contract. The normalized public JSON pins sources,
 fixtures, tool versions, emulator, firmware, seed and raw archive hashes.
 Vendor binaries, full contexts and the diagnostic smoke archive remain local.
+
+## Native implementation and corrected capture fixture
+
+`trampoline-v2.S` reserves stack space for AT, then uses AT as its capture
+base. The original fixture used kernel-reserved k0 across interrupts, which
+is unreliable on NetBSD. The v2 trampoline reconstructs original AT/SP and
+excludes k0/k1. Its actual MIPS III SD/LD opcodes are independently checked.
+All 480 original-IRIX executions pass again with these same corrected ELFs;
+the earlier reference archive and source remain intact.
+
+Build v2 fixtures with `scripts/build-irix-signal-v2.py`; observe and qualify
+them with `probe-irix-reference-signal-v2.py` and
+`qualify-irix-signal-reference-v2.py`. Output lives in
+`.work/irix-signal-v2/probes` and `.work/irix-reference/signal-v2-records-runs`.
+
+The native adapter uses traditional signals 1..31, explicit o32/n32 context
+serialization and native signal/machine-context facilities. It includes
+waitsys P_ALL/id=0 for the measured child callback. Alternate-stack setup,+nested delivery, syscall restart, realtime signals and general multi-LWP
+behavior remain outside this qualification.
+
+The final build pins are `baseline.json` and `o32-baseline.json`; isolated
+build directories are `.work/netbsd-irix-signal-build` and
+`.work/netbsd-irix-signal-o32-build`. Build sequentially with two jobs using
+`XIRI_IRIX_SIGNAL` / `XIRI_IRIX_SIGNAL_O32`, then run `pin-irix-signal.py` with
+the matching `--kernel-abi`. Do not overwrite the earlier qualified kernels.
+
+```sh
+PYTHONDONTWRITEBYTECODE=1 python3 scripts/build-irix-signal-native.py
+PYTHONDONTWRITEBYTECODE=1 python3 scripts/probe-irix-signal.py \
+  --seed-directory .work/irix-x11-fonts/runs/ci-_6m3l41w
+# Repeat with --mode ordinary, then --kernel-abi o32.
+PYTHONDONTWRITEBYTECODE=1 python3 scripts/probe-irix-signal-extra.py \
+  --seed-directory .work/irix-x11-fonts/runs/ci-_6m3l41w
+PYTHONDONTWRITEBYTECODE=1 python3 scripts/qualify-irix-signal.py \
+  .work/irix-signal/runs/lp64-ci-8y2ykg1k \
+  .work/irix-signal/runs/lp64-ordinary-8kc8zy6t \
+  .work/irix-signal/runs/o32-ci-ghg6j4hs \
+  --extra .work/irix-signal/extra-runs/lp64-ci-3yo8pyda \
+  --output docs/results/2026-11-01-irix-signal.json
+```
+
+The full native matrix is 1,200 records. Sixteen extra records check inherited
+child handlers and seven rejected contexts (flags, high/unaligned PC, high
+SP, unmapped mask bits, stack flags and cross-page input). They verify the
+mask stays unchanged after rejection and that n32 user status-register bits
+are ignored. Native signal/time/process controls run before and after.
+
+`regression/baseline.json` deliberately retains source `1e29ed231349`, on
+which process, sproc and time regressions ran. The only subsequent kernel
+change is the sigaction bytewise partial-copyout correction; final matrices
+cover that correction on both kernels. `probe-irix-signal-regressions.py`
+reuses the old harnesses; `qualify-irix-signal-regressions.py` reuses their
+oracles against the exact earlier pin, never relabeling those runs as the
+final kernel. See the [implementation report](../../docs/results/2026-11-01-irix-signal.md)
+for evidence and explicit scope.
+
+New regression observations made with the final build can be qualified with
+`--kernel-checkpoint final`; omit that option for the recorded earlier runs.
