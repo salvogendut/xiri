@@ -1,0 +1,280 @@
+{
+  "schema": 1,
+  "status": "passed",
+  "upstream_url": "https://github.com/techomancer/iris.git",
+  "previous_upstream": "f17b4d3bc1663efd02f93a5e0e4811eebba510c8",
+  "previous_xiri": "087d250ab25884baaf03cc998377f75711fe5aa4",
+  "upstream": "4ad1b1d435dc115697433f091b10dfa8c48aa7ed",
+  "merge": "045d69245609d186907a20e0b002e2b60be9a1ac",
+  "upstream_commits": [
+    "1fc990b4f7b55b3c190f1d576d013b97fb2ae0e9",
+    "ace3aebe78dd79c5b34458125cca6bd5c7014469",
+    "7cb301b4d81c9766bf3e54b8dad6fa114f0f7a0b",
+    "b7552bca7df42a2cd6cd24f7889a3e9d19e00db6",
+    "195b449b7ea6a5363e32709596af48fa86206eb6",
+    "afbbbf068fab1d28d4f4379e1e0e4b24149faeb7",
+    "e54c5ab1d05292a6d05c2f3f0e08290a139d68db",
+    "889cf883612b6b0b7a428ea69f68353bd6096ef7",
+    "96fb110b76800152b155ca4ac37666b37a55d4fe",
+    "cf4052bab739e7574408602fa096851f7475e4da",
+    "b7137c68056ea3a8ebee060e823494d277ebdf18",
+    "4cf5216524c93c87f7d7b1fae4b0ed4b812b5eb3",
+    "5a2385feef2cd2b5246252b29ab6972ce0df72b4",
+    "2b3a40916501b7ed269fc90bf121c56debc22019",
+    "91f363c19c6718c32217bd601e90a2b721e432cf",
+    "8eeb0386faa422a5523cf1582c8e65d3d279d315",
+    "7aa6b5df9aae5e2ce2960eefa5f3b7dbde77afeb",
+    "f6af363e4ee300d6df38691cd59b7530efc58791",
+    "4ad1b1d435dc115697433f091b10dfa8c48aa7ed"
+  ],
+  "conflicts": [],
+  "fork_only_files_unchanged": [
+    "HACKING.md",
+    "README.md",
+    "clanker/cpu/tlb-tags-survive-address-mode-changes.md",
+    "clanker/cpu/xtlb-vector-follows-mode-not-address.md",
+    "clanker/devices/embedded-flash-prom-selection.md",
+    "clanker/devices/frontend-pcm-output.md",
+    "clanker/devices/ip28-prom-bank-layouts.md",
+    "clanker/devices/ps2-controller-translation-for-netbsd.md",
+    "clanker/gui/embedded-guest-poweroff-state.md",
+    "clanker/gui/owned-expert-services.md",
+    "clanker/gui/prismatic-paused-reset.md",
+    "clanker/net/netbsd-fragmented-nfs-upload-corruption.md",
+    "clanker/net/nfs-mount-advertise-auth-sys.md",
+    "clanker/net/release-forward-listeners-before-rebind.md",
+    "clanker/rex3/netbsd-xaa-fastclear-colors.md",
+    "clanker/scsi/hashless-chd-cow.md",
+    "clanker/snapshot/mc-restore-must-republish-bank-map.md",
+    "clanker/video/embedded-device-lifetime.md",
+    "debug.md",
+    "docs/Indy/hal2.md",
+    "docs/Indy/rex3.md",
+    "docs/o2-ip32.md",
+    "docs/octane-ip30.md",
+    "iris-gui-README.md",
+    "iris.toml",
+    "octane.toml.example",
+    "src/block_node/chd_cow.rs",
+    "src/cpu/jitv2/pcache.rs",
+    "src/cpu/mips_tlb.rs",
+    "src/cpu/mips_tlb_test.rs",
+    "src/dev/camera_v4l.rs",
+    "src/dev/hal2.rs",
+    "src/dev/ng1/bt445.rs",
+    "src/dev/ng1/rex3.rs",
+    "src/dev/ng1/rex3_profile.rs",
+    "src/dev/prom.rs",
+    "src/dev/ps2.rs",
+    "src/dev/ultra64.rs",
+    "src/dev/vino.rs",
+    "src/diagnostics.rs",
+    "src/firmware.rs",
+    "src/gdb_stub.rs",
+    "src/host_audio.rs",
+    "src/host_audio/external.rs",
+    "src/ip22_bus.rs",
+    "src/ip30_machine.rs",
+    "src/ip32_machine.rs",
+    "src/lib.rs",
+    "src/machine_state.rs",
+    "src/monitor.rs",
+    "src/net/fwd.rs",
+    "src/net/link.rs",
+    "src/net/nfsudp.rs",
+    "src/perfetto/mod.rs",
+    "src/prombinip30.rs",
+    "src/prombinip32.rs",
+    "src/thread_affinity.rs",
+    "src/vnc/mod.rs",
+    "tools/embed-prom.py"
+  ],
+  "overlapping_files": [
+    "CHANGELOG.md",
+    "FEATURES.md",
+    "HELP.md",
+    "STORAGE.md",
+    "clanker/INDEX.md",
+    "src/block_node.rs",
+    "src/config.rs",
+    "src/cpu/mips_exec.rs",
+    "src/cpu/mips_exec_test.rs",
+    "src/dev/mc.rs",
+    "src/dev/seeq8003.rs",
+    "src/disp.rs",
+    "src/exit_persistence_tests.rs",
+    "src/machine.rs",
+    "src/net/mod.rs",
+    "src/net/testnet.rs",
+    "src/workstation.rs"
+  ],
+  "tests": {
+    "workspace-locked": {
+      "log": ".work/iris-upstream-sproc-results/workspace-locked.log",
+      "sha256": "ec98c29d5173ce49ca4d7539d3db2daa26c733f6b187df9a4f080cd2c35e3f40",
+      "results": [
+        {
+          "status": "ok",
+          "passed": 1,
+          "failed": 0,
+          "ignored": 0,
+          "filtered": 2087,
+          "seconds": 0.0
+        },
+        {
+          "status": "ok",
+          "passed": 2062,
+          "failed": 0,
+          "ignored": 26,
+          "filtered": 0,
+          "seconds": 138.76
+        },
+        {
+          "status": "ok",
+          "passed": 0,
+          "failed": 0,
+          "ignored": 0,
+          "filtered": 0,
+          "seconds": 0.0
+        },
+        {
+          "status": "ok",
+          "passed": 0,
+          "failed": 0,
+          "ignored": 0,
+          "filtered": 0,
+          "seconds": 0.0
+        },
+        {
+          "status": "ok",
+          "passed": 0,
+          "failed": 0,
+          "ignored": 0,
+          "filtered": 0,
+          "seconds": 0.0
+        },
+        {
+          "status": "ok",
+          "passed": 1,
+          "failed": 0,
+          "ignored": 0,
+          "filtered": 0,
+          "seconds": 0.0
+        },
+        {
+          "status": "ok",
+          "passed": 0,
+          "failed": 0,
+          "ignored": 0,
+          "filtered": 0,
+          "seconds": 0.0
+        },
+        {
+          "status": "ok",
+          "passed": 0,
+          "failed": 0,
+          "ignored": 0,
+          "filtered": 0,
+          "seconds": 0.0
+        },
+        {
+          "status": "ok",
+          "passed": 1,
+          "failed": 0,
+          "ignored": 0,
+          "filtered": 0,
+          "seconds": 2.21
+        },
+        {
+          "status": "ok",
+          "passed": 92,
+          "failed": 0,
+          "ignored": 0,
+          "filtered": 0,
+          "seconds": 0.53
+        },
+        {
+          "status": "ok",
+          "passed": 3,
+          "failed": 0,
+          "ignored": 0,
+          "filtered": 0,
+          "seconds": 8.92
+        },
+        {
+          "status": "ok",
+          "passed": 2,
+          "failed": 0,
+          "ignored": 3,
+          "filtered": 0,
+          "seconds": 0.55
+        },
+        {
+          "status": "ok",
+          "passed": 0,
+          "failed": 0,
+          "ignored": 0,
+          "filtered": 0,
+          "seconds": 0.0
+        }
+      ],
+      "passed": 2161,
+      "ignored": 29
+    },
+    "jit-idle": {
+      "log": ".work/iris-upstream-sproc-results/jit-idle.log",
+      "sha256": "861ab70e69d534cf85a7e7d95c7f7399e71c7d996a9994c6829d3455f3645177",
+      "results": [
+        {
+          "status": "ok",
+          "passed": 1,
+          "failed": 0,
+          "ignored": 0,
+          "filtered": 2531,
+          "seconds": 0.33
+        },
+        {
+          "status": "ok",
+          "passed": 1,
+          "failed": 0,
+          "ignored": 0,
+          "filtered": 2531,
+          "seconds": 0.0
+        },
+        {
+          "status": "ok",
+          "passed": 2504,
+          "failed": 0,
+          "ignored": 28,
+          "filtered": 0,
+          "seconds": 102.44
+        }
+      ],
+      "passed": 2504,
+      "ignored": 28
+    }
+  },
+  "lock_sha256": "869a1499143fb349390f388c7cacf7039e9034e782f5ed4199c3402181a3e54a",
+  "worktree": ".work/iris-upstream-sproc",
+  "guest_pins_changed": false,
+  "commands": [
+    "toolbox run -c xiri-iris env RUSTUP_HOME=$PWD/.work/rustup CARGO_HOME=$PWD/.work/cargo CARGO_TARGET_DIR=$PWD/.work/target CARGO_BUILD_JOBS=2 LIBGL_ALWAYS_SOFTWARE=1 xvfb-run -a $PWD/.work/cargo/bin/cargo +nightly-2026-10-28 test --manifest-path $PWD/.work/iris-upstream-sproc/Cargo.toml --locked --offline --workspace -- --test-threads=2",
+    "toolbox run -c xiri-iris env RUSTUP_HOME=$PWD/.work/rustup CARGO_HOME=$PWD/.work/cargo CARGO_TARGET_DIR=$PWD/.work/target CARGO_BUILD_JOBS=2 LIBGL_ALWAYS_SOFTWARE=1 xvfb-run -a $PWD/.work/cargo/bin/cargo +nightly-2026-10-28 test --manifest-path $PWD/.work/iris-upstream-sproc/Cargo.toml --locked --offline --lib --features jitv2,idle-pause -- --test-threads=2"
+  ],
+  "setup_attempts": {
+    "workspace.log": {
+      "sha256": "0ee25af75c3b84da554a32ba248aca797ce120c2f170c8d81f7c664371a25b81"
+    },
+    "workspace-retry.log": {
+      "sha256": "7afe0b55dfde73bcd0a36cc91cff89ddaf09cb71f8a50c0af17d6553e4365b9c"
+    },
+    "workspace-qualified.log": {
+      "sha256": "223e36090134cf632e5f0fcea50d6b8b60e06b23eb5a8a3d74afff6503fadb8a"
+    }
+  },
+  "setup_notes": "Initial launch attempts failed before tests: missing Cargo path, then missing ignored Cargo.lock in the new worktree. Used the established .work/cargo/bin/cargo with RUSTUP_HOME/CARGO_HOME and copied the existing checkout lockfile. No source workaround.",
+  "release_binaries": {
+    ".work/target/release/iris": "cc6561d0bdfec6ce30d656caf4a6eaee6ffbf622e5348c3b77b73810d5293f56",
+    ".work/target-netbsd64/release/iris": "1b3f7702ba7f43b5c4fca8ba8884243559f46371d8d67a36ce5e6fee1e595eba"
+  }
+}

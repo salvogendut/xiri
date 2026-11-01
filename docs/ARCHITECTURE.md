@@ -146,8 +146,15 @@ return convention and no extra core hook. The [shared mmap adapter](results/2026
 also uses existing native facilities: UVM supplies shared anonymous mappings,
 and AUTOGROW is bounded to the actual zero device. Regular-file fault-time
 growth remains unsupported. Original inst now reaches `sproc` with shared VM
-and parent-blocking flags; its lifecycle needs separate measurement, including
-PRDA and exec behavior. The [desktop retry](results/2026-11-01-irix-desktop-mkdir.md)
+and parent-blocking flags. The [original sproc measurements](results/2026-11-01-irix-sproc-reference.md)
+now establish private PRDA/LOCAL pages alongside shared data and newly created
+mappings. Parent release depends on an explicit unblock or an armed
+PR_UNBLKONEXEC followed by successful exec or exit; failed exec retains the
+block. Implementation must track share-group ownership explicitly: a fork
+alias or an entirely shared native vmspace cannot supply these semantics.
+Current vmspace-reference guards will also need to recognize that ownership.
+No new core hook is introduced by this reference-only cycle.
+The [desktop retry](results/2026-11-01-irix-desktop-mkdir.md)
 reaches Icon Catalog's empty fallback window; wider waits and remaining client behavior
 are still separate compatibility work.
 

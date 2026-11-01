@@ -280,3 +280,11 @@ non-seed diagnostic; three initial native captures halted cleanly but lacked
 backing-file evidence due to a harness working-directory error. Corrected
 captures use compressed reference export and explicit native archive paths.
 The unchanged reference image's XFS alerts remain outside this qualification.
+
+The [sproc reference cycle](results/2026-11-01-irix-sproc-reference.md) uses
+two disposable original-IRIX guests, with at most two briefly overlapping
+during shutdown/startup. Both halt cleanly and all 112 full-matrix process
+groups are absent after cleanup, including 24 deliberate watchdog cases.
+No IRIS instance remains running. The reference and NetBSD guest binaries
+stay pinned while the separate [upstream integration](results/2026-11-01-iris-upstream-sproc.md)
+passes workspace and JIT/idle host checks.

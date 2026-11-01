@@ -118,3 +118,11 @@ qualify it. No emulator change was needed, and the unrelated shared-checkout
 performance work and detached reproductions were preserved. The
 [installer retry](results/2026-11-01-irix-installer-shared.md) records the
 next `sproc` boundary independently of kernel mapping qualification.
+
+The 2026-11-01 sproc cycle found 19 new upstream commits through
+`4ad1b1d435dc115697433f091b10dfa8c48aa7ed` and published merge
+`045d69245609d186907a20e0b002e2b60be9a1ac` to IRIS `xiri`. The isolated
+`.work/iris-upstream-sproc` worktree owns that branch; the shared checkout's
+`perf/sgiemu-port` work remains untouched. The [integration record](results/2026-11-01-iris-upstream-sproc.md)
+reports 2,161 workspace and 2,504 JIT/idle library tests passing. Existing
+qualified guest binaries and detached worktrees remain pinned.

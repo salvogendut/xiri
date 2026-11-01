@@ -141,3 +141,9 @@ the target-directory helper needs unsupported `sproc` process semantics.
 Keep hardware-query support distinct from resource staging. Package payloads,
 original hooks and icon/type assets remain required later; no catalog entry
 has yet been installed.
+
+The [original sproc reference](results/2026-11-01-irix-sproc-reference.md)
+confirms that the next work is process/VM compatibility: private PRDA/LOCAL
+state, shared mapping updates and the unblock/exec/exit lifecycle. Its probes
+need no additional vendor resource imports. Keep package payloads, hooks and
+catalog assets pending until the original installer actually consumes them.

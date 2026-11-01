@@ -64,3 +64,9 @@ Signal-handler registration and hardware queries also remain incomplete.
 `qualify-irix-installer-shared.py` checks the original trap instruction,
 ordered trace, native/home controls and clean shutdown. The earlier observer,
 tracer and their qualified source hashes remain unchanged.
+
+The [sproc reference](../../docs/results/2026-11-01-irix-sproc-reference.md) now
+qualifies 112 original-IRIX executions / 200 records for the next process
+requirement. It establishes the armed exec/exit release distinction, private
+PRDA/LOCAL pages and shared mapping updates. NetBSD sproc implementation and
+a subsequent original-inst retry remain pending.

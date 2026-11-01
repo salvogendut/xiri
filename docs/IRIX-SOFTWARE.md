@@ -16,6 +16,13 @@ established. Native/IRIX shared-home access and cold-boot home persistence
 remain qualified by the [earlier probe](results/2026-11-01-irix-installer.md).
 Graphical desktop persistence is still open.
 
+The [sproc reference](results/2026-11-01-irix-sproc-reference.md) now measures
+112 original-IRIX executions. In particular, PR_UNBLKONEXEC releases the parent
+on successful exec or exit, while failed exec leaves it blocked; unarmed exit
+does not release it. Shared mapping updates must coexist with private PRDA
+and LOCAL pages. NetBSD implementation and the next installer retry remain
+pending; no new resource import resolves this process boundary.
+
 ## First application: xmahjongg
 
 The user selected **xmahjongg 3.6.1** from the supplied May 2004 freeware set.

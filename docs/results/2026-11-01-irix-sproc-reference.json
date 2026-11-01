@@ -1,0 +1,999 @@
+{
+  "schema": 1,
+  "status": "passed",
+  "scope": "original IRIX reference only; no NetBSD sproc implementation",
+  "run": ".work/irix-reference/sproc-records-runs/ci-65umxtm_",
+  "executions": 112,
+  "records": 200,
+  "checked_words": 12800,
+  "watchdog_groups": 24,
+  "groups_absent": 112,
+  "clean_shutdown": true,
+  "emulator_sha256": "cc6561d0bdfec6ce30d656caf4a6eaee6ffbf622e5348c3b77b73810d5293f56",
+  "firmware_sha256": "333a0b2e39bb828a28a758b6f633ae7290030129dc747297a1be68dc317b86ae",
+  "hashes": {
+    ".work/irix-reference/sproc-records-runs/ci-65umxtm_/result.json": "51ccb3573bbcde560dae58b4c48576fb5d24ccc0f9008d65ab103724302cc42e",
+    ".work/irix-reference/sproc-records-runs/ci-65umxtm_/outputs.tgz": "65992e3465a956716835ff53f441ecbc751f4c8f947a36b9661ac0dc403fa57f",
+    "scripts/qualify-irix-sproc.py": "28a3a3b7411002bde3fc5f759c30a24e46a955d05a1af4faeaf25655adbe9dad",
+    "scripts/probe-irix-reference-sproc.py": "51004356274faeff3d55b740e768f21cc2be5c35586f8ce96ecd1ddb552fe302"
+  },
+  "observations": [
+    {
+      "name": "o32-direct-unblock-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "o32-direct-unblock-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "o32-direct-exit-0",
+      "exit": 137,
+      "watchdog": true,
+      "roles": [
+        1
+      ]
+    },
+    {
+      "name": "o32-direct-exit-1",
+      "exit": 137,
+      "watchdog": true,
+      "roles": [
+        1
+      ]
+    },
+    {
+      "name": "o32-direct-exec-release-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        2,
+        0
+      ]
+    },
+    {
+      "name": "o32-direct-exec-release-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        2,
+        0
+      ]
+    },
+    {
+      "name": "o32-direct-exec-fail-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "o32-direct-exec-fail-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "o32-direct-exit-release-armed-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "o32-direct-exit-release-armed-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "o32-direct-exec-no-release-0",
+      "exit": 137,
+      "watchdog": true,
+      "roles": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "o32-direct-exec-no-release-1",
+      "exit": 137,
+      "watchdog": true,
+      "roles": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "o32-direct-no-block-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "o32-direct-no-block-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "o32-direct-no-share-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "o32-direct-no-share-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "o32-direct-share-fds-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "o32-direct-share-fds-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "o32-direct-local-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "o32-direct-local-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "o32-direct-new-mapping-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "o32-direct-new-mapping-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "o32-direct-explicit-stack-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "o32-direct-explicit-stack-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "o32-direct-short-stack-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        0
+      ]
+    },
+    {
+      "name": "o32-direct-short-stack-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        0
+      ]
+    },
+    {
+      "name": "o32-direct-bad-entry-0",
+      "exit": 137,
+      "watchdog": true,
+      "roles": []
+    },
+    {
+      "name": "o32-direct-bad-entry-1",
+      "exit": 137,
+      "watchdog": true,
+      "roles": []
+    },
+    {
+      "name": "o32-indirect-unblock-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "o32-indirect-unblock-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "o32-indirect-exit-0",
+      "exit": 137,
+      "watchdog": true,
+      "roles": [
+        1
+      ]
+    },
+    {
+      "name": "o32-indirect-exit-1",
+      "exit": 137,
+      "watchdog": true,
+      "roles": [
+        1
+      ]
+    },
+    {
+      "name": "o32-indirect-exec-release-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        2,
+        0
+      ]
+    },
+    {
+      "name": "o32-indirect-exec-release-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        2,
+        0
+      ]
+    },
+    {
+      "name": "o32-indirect-exec-fail-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "o32-indirect-exec-fail-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "o32-indirect-exit-release-armed-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "o32-indirect-exit-release-armed-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "o32-indirect-exec-no-release-0",
+      "exit": 137,
+      "watchdog": true,
+      "roles": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "o32-indirect-exec-no-release-1",
+      "exit": 137,
+      "watchdog": true,
+      "roles": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "o32-indirect-no-block-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "o32-indirect-no-block-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "o32-indirect-no-share-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "o32-indirect-no-share-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "o32-indirect-share-fds-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "o32-indirect-share-fds-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "o32-indirect-local-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "o32-indirect-local-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "o32-indirect-new-mapping-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "o32-indirect-new-mapping-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "o32-indirect-explicit-stack-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "o32-indirect-explicit-stack-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "o32-indirect-short-stack-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        0
+      ]
+    },
+    {
+      "name": "o32-indirect-short-stack-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        0
+      ]
+    },
+    {
+      "name": "o32-indirect-bad-entry-0",
+      "exit": 137,
+      "watchdog": true,
+      "roles": []
+    },
+    {
+      "name": "o32-indirect-bad-entry-1",
+      "exit": 137,
+      "watchdog": true,
+      "roles": []
+    },
+    {
+      "name": "n32-direct-unblock-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "n32-direct-unblock-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "n32-direct-exit-0",
+      "exit": 137,
+      "watchdog": true,
+      "roles": [
+        1
+      ]
+    },
+    {
+      "name": "n32-direct-exit-1",
+      "exit": 137,
+      "watchdog": true,
+      "roles": [
+        1
+      ]
+    },
+    {
+      "name": "n32-direct-exec-release-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        2,
+        0
+      ]
+    },
+    {
+      "name": "n32-direct-exec-release-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        2,
+        0
+      ]
+    },
+    {
+      "name": "n32-direct-exec-fail-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "n32-direct-exec-fail-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "n32-direct-exit-release-armed-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "n32-direct-exit-release-armed-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "n32-direct-exec-no-release-0",
+      "exit": 137,
+      "watchdog": true,
+      "roles": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "n32-direct-exec-no-release-1",
+      "exit": 137,
+      "watchdog": true,
+      "roles": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "n32-direct-no-block-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "n32-direct-no-block-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "n32-direct-no-share-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "n32-direct-no-share-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "n32-direct-share-fds-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "n32-direct-share-fds-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "n32-direct-local-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "n32-direct-local-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "n32-direct-new-mapping-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "n32-direct-new-mapping-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "n32-direct-explicit-stack-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "n32-direct-explicit-stack-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "n32-direct-short-stack-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        0
+      ]
+    },
+    {
+      "name": "n32-direct-short-stack-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        0
+      ]
+    },
+    {
+      "name": "n32-direct-bad-entry-0",
+      "exit": 137,
+      "watchdog": true,
+      "roles": []
+    },
+    {
+      "name": "n32-direct-bad-entry-1",
+      "exit": 137,
+      "watchdog": true,
+      "roles": []
+    },
+    {
+      "name": "n32-indirect-unblock-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "n32-indirect-unblock-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "n32-indirect-exit-0",
+      "exit": 137,
+      "watchdog": true,
+      "roles": [
+        1
+      ]
+    },
+    {
+      "name": "n32-indirect-exit-1",
+      "exit": 137,
+      "watchdog": true,
+      "roles": [
+        1
+      ]
+    },
+    {
+      "name": "n32-indirect-exec-release-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        2,
+        0
+      ]
+    },
+    {
+      "name": "n32-indirect-exec-release-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        2,
+        0
+      ]
+    },
+    {
+      "name": "n32-indirect-exec-fail-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "n32-indirect-exec-fail-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "n32-indirect-exit-release-armed-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "n32-indirect-exit-release-armed-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "n32-indirect-exec-no-release-0",
+      "exit": 137,
+      "watchdog": true,
+      "roles": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "n32-indirect-exec-no-release-1",
+      "exit": 137,
+      "watchdog": true,
+      "roles": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "n32-indirect-no-block-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "n32-indirect-no-block-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "n32-indirect-no-share-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "n32-indirect-no-share-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "n32-indirect-share-fds-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "n32-indirect-share-fds-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "n32-indirect-local-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "n32-indirect-local-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "n32-indirect-new-mapping-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "n32-indirect-new-mapping-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "n32-indirect-explicit-stack-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "n32-indirect-explicit-stack-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "n32-indirect-short-stack-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        0
+      ]
+    },
+    {
+      "name": "n32-indirect-short-stack-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        0
+      ]
+    },
+    {
+      "name": "n32-indirect-bad-entry-0",
+      "exit": 137,
+      "watchdog": true,
+      "roles": []
+    },
+    {
+      "name": "n32-indirect-bad-entry-1",
+      "exit": 137,
+      "watchdog": true,
+      "roles": []
+    }
+  ],
+  "reference_sha256": "e8fa3335c044f5c3ba9fdda8d33783a37ae24b4818641e8b90cb5f9d3112ea5c"
+}

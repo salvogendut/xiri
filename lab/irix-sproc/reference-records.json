@@ -1,0 +1,2303 @@
+{
+  "schema": 1,
+  "manifest": {
+    "schema": 1,
+    "identities": [
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        1234,
+        1234,
+        1234,
+        1234
+      ]
+    ],
+    "sources": {
+      "scripts/build-irix-sproc.py": "924c31c30fdb6b0f02ed85ca476655366a11fd7e372a48f424e61cd6f976eb69",
+      "lab/irix-sproc/probe.c": "f08eaa52f597df75080f8f82fe989e6bc3fc09c4ed4dcd958c3a20944e45204c",
+      "lab/irix-sproc/entry.S": "70d310c36d69ea4921bdf6e7e2e4fd034fcd0a9ae40fe33270a5c0a663b06c8f",
+      "lab/irix-sproc/spawn.S": "d37a02012a2b6a8afa385e52c6255e8552f889d4414b88a7d76db90064a0f4d8",
+      "lab/irix-mmap-local/start.S": "00aa6b1e26feba4817798e32876c2286fe60547ae8ceeacb56b3d6904e40310d",
+      "lab/irix-mmap-local/call.S": "677d247b98c292a3a5f0c8cfae4614ab9c6995ddde00501b700db0e857986a4f",
+      "lab/irix-mmap-local/probe.ld": "08cff42138f41bc5ef5c02a903ed16fab4db0d6a8d208f90dafd2157b30573dc"
+    },
+    "tools": {
+      "gcc": "mips64--netbsd-gcc (NetBSD nb4 20260926) 14.4.0",
+      "ld": "GNU ld (NetBSD Binutils nb1) 2.46.0.20260210"
+    },
+    "files": {
+      "o32-direct-unblock": {
+        "sha256": "ad58685e29053252953a0b258c03a112e9a91085a241ea398a2eb16073b0187d",
+        "bytes": 9264
+      },
+      "o32-direct-exit": {
+        "sha256": "1575a0a1fe5f6132af2e98a99d36ae76a0f8b59df1f1528ce774be1070715a72",
+        "bytes": 9264
+      },
+      "o32-direct-exec-release": {
+        "sha256": "29a1c0e97e44f0a32a8c09b1e341d83d8e89ee6321ce1e7f6135108c07189f81",
+        "bytes": 9264
+      },
+      "o32-direct-exec-fail": {
+        "sha256": "c8a76c6d55ed35fe0bd1b71ebd1516457d04643d850da24a16eb48e42d572b05",
+        "bytes": 9264
+      },
+      "o32-direct-exit-release-armed": {
+        "sha256": "1ad3980c70cad5f45056b42db5c4bd4811d92e58e8740bf6363a0dc5d71a2ba9",
+        "bytes": 9264
+      },
+      "o32-direct-exec-no-release": {
+        "sha256": "1359d4bc0858f3b86297946a5147a876c2b81230504b4d410ebba424675874dd",
+        "bytes": 9264
+      },
+      "o32-direct-no-block": {
+        "sha256": "19f5b715fa8a15db31210355aa5ddfa877e95df59e403814624ff51a40a234a6",
+        "bytes": 9264
+      },
+      "o32-direct-no-share": {
+        "sha256": "00009f23d64d304061ad0471b8dff1f6badb9e7f421245b9fcf539889254f429",
+        "bytes": 9264
+      },
+      "o32-direct-share-fds": {
+        "sha256": "7f8f574668f21a2ffc31ccc938b386e1150ad2ea2608d6b6b6fcb681e1ad49e6",
+        "bytes": 9264
+      },
+      "o32-direct-local": {
+        "sha256": "ee2e651bbd578286aea56ea6a4505ac7580ae47972704aa415ed8ec7c10d966f",
+        "bytes": 9264
+      },
+      "o32-direct-new-mapping": {
+        "sha256": "13f1ec6b01160ecd67164355376c6644fa2ff44bb2e097160d0922a72a99ecdd",
+        "bytes": 9264
+      },
+      "o32-direct-explicit-stack": {
+        "sha256": "8d77d8857d49f0927a0f9be1df7c90f7e2c60e20b7dd31f7debba64c8bcad03f",
+        "bytes": 9264
+      },
+      "o32-direct-short-stack": {
+        "sha256": "be98d61635fb21f245b3d3ffa81d9a614daaa73af085779766e7ac1bf1592db6",
+        "bytes": 9264
+      },
+      "o32-direct-bad-entry": {
+        "sha256": "cc0febef9d458865ed9c1cf5df00bfb56ec3125fb485090193704fb5ae457855",
+        "bytes": 9264
+      },
+      "o32-indirect-unblock": {
+        "sha256": "1da2884451456767513d1e8c74705258eb48eddad1cad0c1838b773ab9767db8",
+        "bytes": 9264
+      },
+      "o32-indirect-exit": {
+        "sha256": "0f4d724247e0c409581c3e8510ad45494e3d2f377862cdbc97ebca4677abd7e4",
+        "bytes": 9264
+      },
+      "o32-indirect-exec-release": {
+        "sha256": "c8b2066f65cd45b550cecf404811ad0b1196ce5377d465f7b8f6b9bcd3a1d05b",
+        "bytes": 9264
+      },
+      "o32-indirect-exec-fail": {
+        "sha256": "1b78365520d4322e8bea43322f8d54dd32897ba294e421facad20d5698cb45e0",
+        "bytes": 9264
+      },
+      "o32-indirect-exit-release-armed": {
+        "sha256": "9e43c4ed5b44e00f6ae5fa69a39083c2bfcf80190b6c509a700ada94ba85292d",
+        "bytes": 9264
+      },
+      "o32-indirect-exec-no-release": {
+        "sha256": "fd82d3eec377d8b414ebb6f37e1bc3842a38d5a470e5430a5752081faccf8443",
+        "bytes": 9264
+      },
+      "o32-indirect-no-block": {
+        "sha256": "e08035ea59799bea14a53324d0da86f913c8b387b989af740e01c786e6dff40e",
+        "bytes": 9264
+      },
+      "o32-indirect-no-share": {
+        "sha256": "8d6ede3e34d9d976a0a79e7d8ec3d140b65ad89dea83833473ddff5666f4efb2",
+        "bytes": 9264
+      },
+      "o32-indirect-share-fds": {
+        "sha256": "6a5da5c201c8ed34dd4a17bd45e5e49d902c0ce3e62492ebecf352fa2941cb01",
+        "bytes": 9264
+      },
+      "o32-indirect-local": {
+        "sha256": "ce7bf065ac069a1059cc6cf130a1ff397071135bd4331a99b263f4fab6909774",
+        "bytes": 9264
+      },
+      "o32-indirect-new-mapping": {
+        "sha256": "df987c5666b1a5608768871a8c82d5f99a3eb9accb5a93dcb457b40ba2b3f5a3",
+        "bytes": 9264
+      },
+      "o32-indirect-explicit-stack": {
+        "sha256": "2cb5c4cf919a59717cbcdfbcf00587cc4ada237a3e7e57118367104c4ae5053a",
+        "bytes": 9264
+      },
+      "o32-indirect-short-stack": {
+        "sha256": "c8f4ee85d4cef073f68e3bcf1ba09152eaaca9c19f385b961324ebbaf1403d1b",
+        "bytes": 9264
+      },
+      "o32-indirect-bad-entry": {
+        "sha256": "97dba7b56d2147b88a6198268d40ba89151808b828ea2096283c3f69b3e3d597",
+        "bytes": 9264
+      },
+      "n32-direct-unblock": {
+        "sha256": "a5c7e9224b2fd75ebb6e241e197195be36507b6602d0a1e7e9a1bfeae2a4beee",
+        "bytes": 9264
+      },
+      "n32-direct-exit": {
+        "sha256": "5e62815c45c023c5a33e4c19ef1917f2a07910a8df1aa3faa1301651b3a66bfb",
+        "bytes": 9264
+      },
+      "n32-direct-exec-release": {
+        "sha256": "0ccc8fafb2705e2cf894d3e1d9da6d0e5ad7827a01ec8499c450400e8e52e9a1",
+        "bytes": 9264
+      },
+      "n32-direct-exec-fail": {
+        "sha256": "a40815bd6ba93bc0f2a6547b644f466e0f922a4a24f208502b4b027fb5a0dce7",
+        "bytes": 9264
+      },
+      "n32-direct-exit-release-armed": {
+        "sha256": "b89c09ead6ef0cc1bf06f8aebe28c827d24828e493d672a57973ef0d68fe4265",
+        "bytes": 9264
+      },
+      "n32-direct-exec-no-release": {
+        "sha256": "edd47d8d829a7287148ddd64c7f89d8128f2591d75ab83d745f69676c0c84736",
+        "bytes": 9264
+      },
+      "n32-direct-no-block": {
+        "sha256": "bb9af8de8c7371e5d7ed6df72e5aba29fc2cb332fc6bdb4f79f610af1fc53f14",
+        "bytes": 9264
+      },
+      "n32-direct-no-share": {
+        "sha256": "7aecbc5cf676319a04c1a4712a2dbe05fa87eb52693a59f2c870526b5ec74013",
+        "bytes": 9264
+      },
+      "n32-direct-share-fds": {
+        "sha256": "b63768aa66041bc46ad56b2cb41a96aa26d5cc706f775fe22fc631ee770e096d",
+        "bytes": 9264
+      },
+      "n32-direct-local": {
+        "sha256": "7959242fbfac393f8c3acc4b6065945d813f0118145f635fa188a25114c659ec",
+        "bytes": 9264
+      },
+      "n32-direct-new-mapping": {
+        "sha256": "ca5dedac08cdbb7891df08332361618c1ce9a6fb957d01bdf3c12d2635747dc5",
+        "bytes": 9264
+      },
+      "n32-direct-explicit-stack": {
+        "sha256": "a0881c271bb0c2bf1a83c775e24014fe9cc7fa4d1e2f4538468c4be7e76f1136",
+        "bytes": 9264
+      },
+      "n32-direct-short-stack": {
+        "sha256": "1d74a672c232f9117ea1308707a18c50d69c34a0b7ec04c98fe84da1a4e44ffa",
+        "bytes": 9264
+      },
+      "n32-direct-bad-entry": {
+        "sha256": "23f4903a8f9439b782b54d11b8a2b31753d25ae8a9cd016ee7a035241d84a1bd",
+        "bytes": 9264
+      },
+      "n32-indirect-unblock": {
+        "sha256": "24dcedec0d6e2f7e9305258c96040bb6dcde731de7b6efd0298ca421f722c21f",
+        "bytes": 9264
+      },
+      "n32-indirect-exit": {
+        "sha256": "34d94db0bd50ae3ce0346488d66063240c41b3f9ffa968727a76ce23ffa28b87",
+        "bytes": 9264
+      },
+      "n32-indirect-exec-release": {
+        "sha256": "f0c4275f368ae040c06e0066b91f3ec406a2d9db7d5af4acccd2c51c953deb10",
+        "bytes": 9264
+      },
+      "n32-indirect-exec-fail": {
+        "sha256": "6cc4ccdac114dfd3928ba4b41f26dd69f6a5999da67095fd74a2451813383ff7",
+        "bytes": 9264
+      },
+      "n32-indirect-exit-release-armed": {
+        "sha256": "21b84ff94bb1ae86ebf499d2c075c1684ad8269b9735e4a572eb23c24acdc6b5",
+        "bytes": 9264
+      },
+      "n32-indirect-exec-no-release": {
+        "sha256": "aa838831df21cda56e5cd55b868c819e5cdff9e9c385564d7b59958a13a05651",
+        "bytes": 9264
+      },
+      "n32-indirect-no-block": {
+        "sha256": "9ae652e761f5b620088c8d8405858b615fe4208e1234c5ead589126a77cae4ca",
+        "bytes": 9264
+      },
+      "n32-indirect-no-share": {
+        "sha256": "5f7bbbcfdcc78254ac51a7305f9c76a60f65fba8ead2474014c450d184a7757a",
+        "bytes": 9264
+      },
+      "n32-indirect-share-fds": {
+        "sha256": "94912a63ee1aa3f8a7e26b95a40b5ae5d20027ef41d776cda3159fffbf18ed99",
+        "bytes": 9264
+      },
+      "n32-indirect-local": {
+        "sha256": "a46715986c8085a6addd703de1dfe213062d053b2840e271ab217a9d0f9609db",
+        "bytes": 9264
+      },
+      "n32-indirect-new-mapping": {
+        "sha256": "04c6c3c737fc72f1197cfa48a4e48b643a70b474ef742ebd71629ad5ebbf20a0",
+        "bytes": 9264
+      },
+      "n32-indirect-explicit-stack": {
+        "sha256": "d37cc7e3665b2eff209a16e3c4d446c100b5006ce07d5126c4a2f6a31c78423e",
+        "bytes": 9264
+      },
+      "n32-indirect-short-stack": {
+        "sha256": "b274ececfdf204f297e82b5d467b6b4cf82b37e029fa975fd8e6c42d4a897481",
+        "bytes": 9264
+      },
+      "n32-indirect-bad-entry": {
+        "sha256": "4af033432242b0fb0180ffc4f3963102c08f45f8e230fbdb4c13ac295ef0ddbb",
+        "bytes": 9264
+      }
+    },
+    "cases": [
+      {
+        "name": "o32-direct-unblock",
+        "abi": "o32",
+        "symbols": {
+          "CASE": 1,
+          "FLAGS": 50331712,
+          "ACTION": 0,
+          "TRAP": 1129,
+          "STACK_LEN": 0,
+          "LOCAL": 0,
+          "BAD_ENTRY": 0
+        },
+        "identities": [
+          0,
+          1
+        ]
+      },
+      {
+        "name": "o32-direct-exit",
+        "abi": "o32",
+        "symbols": {
+          "CASE": 2,
+          "FLAGS": 50331712,
+          "ACTION": 1,
+          "TRAP": 1129,
+          "STACK_LEN": 0,
+          "LOCAL": 0,
+          "BAD_ENTRY": 0
+        },
+        "identities": [
+          0,
+          1
+        ]
+      },
+      {
+        "name": "o32-direct-exec-release",
+        "abi": "o32",
+        "symbols": {
+          "CASE": 3,
+          "FLAGS": 50331712,
+          "ACTION": 2,
+          "TRAP": 1129,
+          "STACK_LEN": 0,
+          "LOCAL": 0,
+          "BAD_ENTRY": 0
+        },
+        "identities": [
+          0,
+          1
+        ]
+      },
+      {
+        "name": "o32-direct-exec-fail",
+        "abi": "o32",
+        "symbols": {
+          "CASE": 4,
+          "FLAGS": 50331712,
+          "ACTION": 3,
+          "TRAP": 1129,
+          "STACK_LEN": 0,
+          "LOCAL": 0,
+          "BAD_ENTRY": 0
+        },
+        "identities": [
+          0,
+          1
+        ]
+      },
+      {
+        "name": "o32-direct-exit-release-armed",
+        "abi": "o32",
+        "symbols": {
+          "CASE": 5,
+          "FLAGS": 50331712,
+          "ACTION": 4,
+          "TRAP": 1129,
+          "STACK_LEN": 0,
+          "LOCAL": 0,
+          "BAD_ENTRY": 0
+        },
+        "identities": [
+          0,
+          1
+        ]
+      },
+      {
+        "name": "o32-direct-exec-no-release",
+        "abi": "o32",
+        "symbols": {
+          "CASE": 6,
+          "FLAGS": 50331712,
+          "ACTION": 5,
+          "TRAP": 1129,
+          "STACK_LEN": 0,
+          "LOCAL": 0,
+          "BAD_ENTRY": 0
+        },
+        "identities": [
+          0,
+          1
+        ]
+      },
+      {
+        "name": "o32-direct-no-block",
+        "abi": "o32",
+        "symbols": {
+          "CASE": 7,
+          "FLAGS": 33554496,
+          "ACTION": 1,
+          "TRAP": 1129,
+          "STACK_LEN": 0,
+          "LOCAL": 0,
+          "BAD_ENTRY": 0
+        },
+        "identities": [
+          0,
+          1
+        ]
+      },
+      {
+        "name": "o32-direct-no-share",
+        "abi": "o32",
+        "symbols": {
+          "CASE": 8,
+          "FLAGS": 50331648,
+          "ACTION": 0,
+          "TRAP": 1129,
+          "STACK_LEN": 0,
+          "LOCAL": 0,
+          "BAD_ENTRY": 0
+        },
+        "identities": [
+          0,
+          1
+        ]
+      },
+      {
+        "name": "o32-direct-share-fds",
+        "abi": "o32",
+        "symbols": {
+          "CASE": 9,
+          "FLAGS": 50331714,
+          "ACTION": 0,
+          "TRAP": 1129,
+          "STACK_LEN": 0,
+          "LOCAL": 0,
+          "BAD_ENTRY": 0
+        },
+        "identities": [
+          0,
+          1
+        ]
+      },
+      {
+        "name": "o32-direct-local",
+        "abi": "o32",
+        "symbols": {
+          "CASE": 10,
+          "FLAGS": 50331712,
+          "ACTION": 0,
+          "TRAP": 1129,
+          "STACK_LEN": 0,
+          "LOCAL": 1,
+          "BAD_ENTRY": 0
+        },
+        "identities": [
+          0,
+          1
+        ]
+      },
+      {
+        "name": "o32-direct-new-mapping",
+        "abi": "o32",
+        "symbols": {
+          "CASE": 11,
+          "FLAGS": 50331712,
+          "ACTION": 6,
+          "TRAP": 1129,
+          "STACK_LEN": 0,
+          "LOCAL": 0,
+          "BAD_ENTRY": 0
+        },
+        "identities": [
+          0,
+          1
+        ]
+      },
+      {
+        "name": "o32-direct-explicit-stack",
+        "abi": "o32",
+        "symbols": {
+          "CASE": 12,
+          "FLAGS": 50331712,
+          "ACTION": 0,
+          "TRAP": 1132,
+          "STACK_LEN": 16384,
+          "LOCAL": 0,
+          "BAD_ENTRY": 0
+        },
+        "identities": [
+          0,
+          1
+        ]
+      },
+      {
+        "name": "o32-direct-short-stack",
+        "abi": "o32",
+        "symbols": {
+          "CASE": 13,
+          "FLAGS": 50331712,
+          "ACTION": 0,
+          "TRAP": 1132,
+          "STACK_LEN": 4096,
+          "LOCAL": 0,
+          "BAD_ENTRY": 0
+        },
+        "identities": [
+          0,
+          1
+        ]
+      },
+      {
+        "name": "o32-direct-bad-entry",
+        "abi": "o32",
+        "symbols": {
+          "CASE": 14,
+          "FLAGS": 50331712,
+          "ACTION": 0,
+          "TRAP": 1129,
+          "STACK_LEN": 0,
+          "LOCAL": 0,
+          "BAD_ENTRY": 1
+        },
+        "identities": [
+          0,
+          1
+        ]
+      },
+      {
+        "name": "o32-indirect-unblock",
+        "abi": "o32",
+        "symbols": {
+          "CASE": 15,
+          "FLAGS": 50331712,
+          "ACTION": 0,
+          "TRAP": 1129,
+          "STACK_LEN": 0,
+          "LOCAL": 0,
+          "BAD_ENTRY": 0
+        },
+        "identities": [
+          0,
+          1
+        ]
+      },
+      {
+        "name": "o32-indirect-exit",
+        "abi": "o32",
+        "symbols": {
+          "CASE": 16,
+          "FLAGS": 50331712,
+          "ACTION": 1,
+          "TRAP": 1129,
+          "STACK_LEN": 0,
+          "LOCAL": 0,
+          "BAD_ENTRY": 0
+        },
+        "identities": [
+          0,
+          1
+        ]
+      },
+      {
+        "name": "o32-indirect-exec-release",
+        "abi": "o32",
+        "symbols": {
+          "CASE": 17,
+          "FLAGS": 50331712,
+          "ACTION": 2,
+          "TRAP": 1129,
+          "STACK_LEN": 0,
+          "LOCAL": 0,
+          "BAD_ENTRY": 0
+        },
+        "identities": [
+          0,
+          1
+        ]
+      },
+      {
+        "name": "o32-indirect-exec-fail",
+        "abi": "o32",
+        "symbols": {
+          "CASE": 18,
+          "FLAGS": 50331712,
+          "ACTION": 3,
+          "TRAP": 1129,
+          "STACK_LEN": 0,
+          "LOCAL": 0,
+          "BAD_ENTRY": 0
+        },
+        "identities": [
+          0,
+          1
+        ]
+      },
+      {
+        "name": "o32-indirect-exit-release-armed",
+        "abi": "o32",
+        "symbols": {
+          "CASE": 19,
+          "FLAGS": 50331712,
+          "ACTION": 4,
+          "TRAP": 1129,
+          "STACK_LEN": 0,
+          "LOCAL": 0,
+          "BAD_ENTRY": 0
+        },
+        "identities": [
+          0,
+          1
+        ]
+      },
+      {
+        "name": "o32-indirect-exec-no-release",
+        "abi": "o32",
+        "symbols": {
+          "CASE": 20,
+          "FLAGS": 50331712,
+          "ACTION": 5,
+          "TRAP": 1129,
+          "STACK_LEN": 0,
+          "LOCAL": 0,
+          "BAD_ENTRY": 0
+        },
+        "identities": [
+          0,
+          1
+        ]
+      },
+      {
+        "name": "o32-indirect-no-block",
+        "abi": "o32",
+        "symbols": {
+          "CASE": 21,
+          "FLAGS": 33554496,
+          "ACTION": 1,
+          "TRAP": 1129,
+          "STACK_LEN": 0,
+          "LOCAL": 0,
+          "BAD_ENTRY": 0
+        },
+        "identities": [
+          0,
+          1
+        ]
+      },
+      {
+        "name": "o32-indirect-no-share",
+        "abi": "o32",
+        "symbols": {
+          "CASE": 22,
+          "FLAGS": 50331648,
+          "ACTION": 0,
+          "TRAP": 1129,
+          "STACK_LEN": 0,
+          "LOCAL": 0,
+          "BAD_ENTRY": 0
+        },
+        "identities": [
+          0,
+          1
+        ]
+      },
+      {
+        "name": "o32-indirect-share-fds",
+        "abi": "o32",
+        "symbols": {
+          "CASE": 23,
+          "FLAGS": 50331714,
+          "ACTION": 0,
+          "TRAP": 1129,
+          "STACK_LEN": 0,
+          "LOCAL": 0,
+          "BAD_ENTRY": 0
+        },
+        "identities": [
+          0,
+          1
+        ]
+      },
+      {
+        "name": "o32-indirect-local",
+        "abi": "o32",
+        "symbols": {
+          "CASE": 24,
+          "FLAGS": 50331712,
+          "ACTION": 0,
+          "TRAP": 1129,
+          "STACK_LEN": 0,
+          "LOCAL": 1,
+          "BAD_ENTRY": 0
+        },
+        "identities": [
+          0,
+          1
+        ]
+      },
+      {
+        "name": "o32-indirect-new-mapping",
+        "abi": "o32",
+        "symbols": {
+          "CASE": 25,
+          "FLAGS": 50331712,
+          "ACTION": 6,
+          "TRAP": 1129,
+          "STACK_LEN": 0,
+          "LOCAL": 0,
+          "BAD_ENTRY": 0
+        },
+        "identities": [
+          0,
+          1
+        ]
+      },
+      {
+        "name": "o32-indirect-explicit-stack",
+        "abi": "o32",
+        "symbols": {
+          "CASE": 26,
+          "FLAGS": 50331712,
+          "ACTION": 0,
+          "TRAP": 1132,
+          "STACK_LEN": 16384,
+          "LOCAL": 0,
+          "BAD_ENTRY": 0
+        },
+        "identities": [
+          0,
+          1
+        ]
+      },
+      {
+        "name": "o32-indirect-short-stack",
+        "abi": "o32",
+        "symbols": {
+          "CASE": 27,
+          "FLAGS": 50331712,
+          "ACTION": 0,
+          "TRAP": 1132,
+          "STACK_LEN": 4096,
+          "LOCAL": 0,
+          "BAD_ENTRY": 0
+        },
+        "identities": [
+          0,
+          1
+        ]
+      },
+      {
+        "name": "o32-indirect-bad-entry",
+        "abi": "o32",
+        "symbols": {
+          "CASE": 28,
+          "FLAGS": 50331712,
+          "ACTION": 0,
+          "TRAP": 1129,
+          "STACK_LEN": 0,
+          "LOCAL": 0,
+          "BAD_ENTRY": 1
+        },
+        "identities": [
+          0,
+          1
+        ]
+      },
+      {
+        "name": "n32-direct-unblock",
+        "abi": "n32",
+        "symbols": {
+          "CASE": 29,
+          "FLAGS": 50331712,
+          "ACTION": 0,
+          "TRAP": 1129,
+          "STACK_LEN": 0,
+          "LOCAL": 0,
+          "BAD_ENTRY": 0
+        },
+        "identities": [
+          0,
+          1
+        ]
+      },
+      {
+        "name": "n32-direct-exit",
+        "abi": "n32",
+        "symbols": {
+          "CASE": 30,
+          "FLAGS": 50331712,
+          "ACTION": 1,
+          "TRAP": 1129,
+          "STACK_LEN": 0,
+          "LOCAL": 0,
+          "BAD_ENTRY": 0
+        },
+        "identities": [
+          0,
+          1
+        ]
+      },
+      {
+        "name": "n32-direct-exec-release",
+        "abi": "n32",
+        "symbols": {
+          "CASE": 31,
+          "FLAGS": 50331712,
+          "ACTION": 2,
+          "TRAP": 1129,
+          "STACK_LEN": 0,
+          "LOCAL": 0,
+          "BAD_ENTRY": 0
+        },
+        "identities": [
+          0,
+          1
+        ]
+      },
+      {
+        "name": "n32-direct-exec-fail",
+        "abi": "n32",
+        "symbols": {
+          "CASE": 32,
+          "FLAGS": 50331712,
+          "ACTION": 3,
+          "TRAP": 1129,
+          "STACK_LEN": 0,
+          "LOCAL": 0,
+          "BAD_ENTRY": 0
+        },
+        "identities": [
+          0,
+          1
+        ]
+      },
+      {
+        "name": "n32-direct-exit-release-armed",
+        "abi": "n32",
+        "symbols": {
+          "CASE": 33,
+          "FLAGS": 50331712,
+          "ACTION": 4,
+          "TRAP": 1129,
+          "STACK_LEN": 0,
+          "LOCAL": 0,
+          "BAD_ENTRY": 0
+        },
+        "identities": [
+          0,
+          1
+        ]
+      },
+      {
+        "name": "n32-direct-exec-no-release",
+        "abi": "n32",
+        "symbols": {
+          "CASE": 34,
+          "FLAGS": 50331712,
+          "ACTION": 5,
+          "TRAP": 1129,
+          "STACK_LEN": 0,
+          "LOCAL": 0,
+          "BAD_ENTRY": 0
+        },
+        "identities": [
+          0,
+          1
+        ]
+      },
+      {
+        "name": "n32-direct-no-block",
+        "abi": "n32",
+        "symbols": {
+          "CASE": 35,
+          "FLAGS": 33554496,
+          "ACTION": 1,
+          "TRAP": 1129,
+          "STACK_LEN": 0,
+          "LOCAL": 0,
+          "BAD_ENTRY": 0
+        },
+        "identities": [
+          0,
+          1
+        ]
+      },
+      {
+        "name": "n32-direct-no-share",
+        "abi": "n32",
+        "symbols": {
+          "CASE": 36,
+          "FLAGS": 50331648,
+          "ACTION": 0,
+          "TRAP": 1129,
+          "STACK_LEN": 0,
+          "LOCAL": 0,
+          "BAD_ENTRY": 0
+        },
+        "identities": [
+          0,
+          1
+        ]
+      },
+      {
+        "name": "n32-direct-share-fds",
+        "abi": "n32",
+        "symbols": {
+          "CASE": 37,
+          "FLAGS": 50331714,
+          "ACTION": 0,
+          "TRAP": 1129,
+          "STACK_LEN": 0,
+          "LOCAL": 0,
+          "BAD_ENTRY": 0
+        },
+        "identities": [
+          0,
+          1
+        ]
+      },
+      {
+        "name": "n32-direct-local",
+        "abi": "n32",
+        "symbols": {
+          "CASE": 38,
+          "FLAGS": 50331712,
+          "ACTION": 0,
+          "TRAP": 1129,
+          "STACK_LEN": 0,
+          "LOCAL": 1,
+          "BAD_ENTRY": 0
+        },
+        "identities": [
+          0,
+          1
+        ]
+      },
+      {
+        "name": "n32-direct-new-mapping",
+        "abi": "n32",
+        "symbols": {
+          "CASE": 39,
+          "FLAGS": 50331712,
+          "ACTION": 6,
+          "TRAP": 1129,
+          "STACK_LEN": 0,
+          "LOCAL": 0,
+          "BAD_ENTRY": 0
+        },
+        "identities": [
+          0,
+          1
+        ]
+      },
+      {
+        "name": "n32-direct-explicit-stack",
+        "abi": "n32",
+        "symbols": {
+          "CASE": 40,
+          "FLAGS": 50331712,
+          "ACTION": 0,
+          "TRAP": 1132,
+          "STACK_LEN": 16384,
+          "LOCAL": 0,
+          "BAD_ENTRY": 0
+        },
+        "identities": [
+          0,
+          1
+        ]
+      },
+      {
+        "name": "n32-direct-short-stack",
+        "abi": "n32",
+        "symbols": {
+          "CASE": 41,
+          "FLAGS": 50331712,
+          "ACTION": 0,
+          "TRAP": 1132,
+          "STACK_LEN": 4096,
+          "LOCAL": 0,
+          "BAD_ENTRY": 0
+        },
+        "identities": [
+          0,
+          1
+        ]
+      },
+      {
+        "name": "n32-direct-bad-entry",
+        "abi": "n32",
+        "symbols": {
+          "CASE": 42,
+          "FLAGS": 50331712,
+          "ACTION": 0,
+          "TRAP": 1129,
+          "STACK_LEN": 0,
+          "LOCAL": 0,
+          "BAD_ENTRY": 1
+        },
+        "identities": [
+          0,
+          1
+        ]
+      },
+      {
+        "name": "n32-indirect-unblock",
+        "abi": "n32",
+        "symbols": {
+          "CASE": 43,
+          "FLAGS": 50331712,
+          "ACTION": 0,
+          "TRAP": 1129,
+          "STACK_LEN": 0,
+          "LOCAL": 0,
+          "BAD_ENTRY": 0
+        },
+        "identities": [
+          0,
+          1
+        ]
+      },
+      {
+        "name": "n32-indirect-exit",
+        "abi": "n32",
+        "symbols": {
+          "CASE": 44,
+          "FLAGS": 50331712,
+          "ACTION": 1,
+          "TRAP": 1129,
+          "STACK_LEN": 0,
+          "LOCAL": 0,
+          "BAD_ENTRY": 0
+        },
+        "identities": [
+          0,
+          1
+        ]
+      },
+      {
+        "name": "n32-indirect-exec-release",
+        "abi": "n32",
+        "symbols": {
+          "CASE": 45,
+          "FLAGS": 50331712,
+          "ACTION": 2,
+          "TRAP": 1129,
+          "STACK_LEN": 0,
+          "LOCAL": 0,
+          "BAD_ENTRY": 0
+        },
+        "identities": [
+          0,
+          1
+        ]
+      },
+      {
+        "name": "n32-indirect-exec-fail",
+        "abi": "n32",
+        "symbols": {
+          "CASE": 46,
+          "FLAGS": 50331712,
+          "ACTION": 3,
+          "TRAP": 1129,
+          "STACK_LEN": 0,
+          "LOCAL": 0,
+          "BAD_ENTRY": 0
+        },
+        "identities": [
+          0,
+          1
+        ]
+      },
+      {
+        "name": "n32-indirect-exit-release-armed",
+        "abi": "n32",
+        "symbols": {
+          "CASE": 47,
+          "FLAGS": 50331712,
+          "ACTION": 4,
+          "TRAP": 1129,
+          "STACK_LEN": 0,
+          "LOCAL": 0,
+          "BAD_ENTRY": 0
+        },
+        "identities": [
+          0,
+          1
+        ]
+      },
+      {
+        "name": "n32-indirect-exec-no-release",
+        "abi": "n32",
+        "symbols": {
+          "CASE": 48,
+          "FLAGS": 50331712,
+          "ACTION": 5,
+          "TRAP": 1129,
+          "STACK_LEN": 0,
+          "LOCAL": 0,
+          "BAD_ENTRY": 0
+        },
+        "identities": [
+          0,
+          1
+        ]
+      },
+      {
+        "name": "n32-indirect-no-block",
+        "abi": "n32",
+        "symbols": {
+          "CASE": 49,
+          "FLAGS": 33554496,
+          "ACTION": 1,
+          "TRAP": 1129,
+          "STACK_LEN": 0,
+          "LOCAL": 0,
+          "BAD_ENTRY": 0
+        },
+        "identities": [
+          0,
+          1
+        ]
+      },
+      {
+        "name": "n32-indirect-no-share",
+        "abi": "n32",
+        "symbols": {
+          "CASE": 50,
+          "FLAGS": 50331648,
+          "ACTION": 0,
+          "TRAP": 1129,
+          "STACK_LEN": 0,
+          "LOCAL": 0,
+          "BAD_ENTRY": 0
+        },
+        "identities": [
+          0,
+          1
+        ]
+      },
+      {
+        "name": "n32-indirect-share-fds",
+        "abi": "n32",
+        "symbols": {
+          "CASE": 51,
+          "FLAGS": 50331714,
+          "ACTION": 0,
+          "TRAP": 1129,
+          "STACK_LEN": 0,
+          "LOCAL": 0,
+          "BAD_ENTRY": 0
+        },
+        "identities": [
+          0,
+          1
+        ]
+      },
+      {
+        "name": "n32-indirect-local",
+        "abi": "n32",
+        "symbols": {
+          "CASE": 52,
+          "FLAGS": 50331712,
+          "ACTION": 0,
+          "TRAP": 1129,
+          "STACK_LEN": 0,
+          "LOCAL": 1,
+          "BAD_ENTRY": 0
+        },
+        "identities": [
+          0,
+          1
+        ]
+      },
+      {
+        "name": "n32-indirect-new-mapping",
+        "abi": "n32",
+        "symbols": {
+          "CASE": 53,
+          "FLAGS": 50331712,
+          "ACTION": 6,
+          "TRAP": 1129,
+          "STACK_LEN": 0,
+          "LOCAL": 0,
+          "BAD_ENTRY": 0
+        },
+        "identities": [
+          0,
+          1
+        ]
+      },
+      {
+        "name": "n32-indirect-explicit-stack",
+        "abi": "n32",
+        "symbols": {
+          "CASE": 54,
+          "FLAGS": 50331712,
+          "ACTION": 0,
+          "TRAP": 1132,
+          "STACK_LEN": 16384,
+          "LOCAL": 0,
+          "BAD_ENTRY": 0
+        },
+        "identities": [
+          0,
+          1
+        ]
+      },
+      {
+        "name": "n32-indirect-short-stack",
+        "abi": "n32",
+        "symbols": {
+          "CASE": 55,
+          "FLAGS": 50331712,
+          "ACTION": 0,
+          "TRAP": 1132,
+          "STACK_LEN": 4096,
+          "LOCAL": 0,
+          "BAD_ENTRY": 0
+        },
+        "identities": [
+          0,
+          1
+        ]
+      },
+      {
+        "name": "n32-indirect-bad-entry",
+        "abi": "n32",
+        "symbols": {
+          "CASE": 56,
+          "FLAGS": 50331712,
+          "ACTION": 0,
+          "TRAP": 1129,
+          "STACK_LEN": 0,
+          "LOCAL": 0,
+          "BAD_ENTRY": 1
+        },
+        "identities": [
+          0,
+          1
+        ]
+      }
+    ]
+  },
+  "observations": [
+    {
+      "name": "o32-direct-unblock-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "585350520000000100000001030000400000000000000469000006c0000006bf7fff2ee000000000000000000000000000000000000000017bff7fc00000000011220001112200021122000311220004000006c0babababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000585350520000000100000000030000400000000000000469000006bf00000000000006c00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000006bfbabababa55667788abcdef010000000000002500000000000000000100000025000006c000000000feedface0000000000000001feedface00000000000000000000000000000000000000000000000000000001feedface000000000000000000000000000000007fff2ee000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "o32-direct-unblock-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "58535052000000010000000103000040000000000000046900000677000006c87fff2ee000000000000000000000000000000000000000017bff7fc0000000001122000111220002112200031122000400000677babababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000585350520000000100000000030000400000000000000469000006c800000000000006770000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000006c8babababa55667788abcdef0100000000000025000000000000000001000000250000067700000000feedface0000000000000001feedface00000000000000000000000000000000000000000000000000000001feedface000000000000000000000000000000007fff2ee00000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000"
+    },
+    {
+      "name": "o32-direct-exit-0",
+      "exit": 137,
+      "watchdog": true,
+      "roles": [
+        1
+      ],
+      "stdout_hex": "585350520000000200000001030000400000000100000469000006cf000006d07fff2ee000000000000000000000000000000000000000017bff7fc00000000011220001112200021122000311220004000006cfbabababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "o32-direct-exit-1",
+      "exit": 137,
+      "watchdog": true,
+      "roles": [
+        1
+      ],
+      "stdout_hex": "585350520000000200000001030000400000000100000469000006da000006dc7fff2ee000000000000000000000000000000000000000017bff7fc00000000011220001112200021122000311220004000006dababababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000"
+    },
+    {
+      "name": "o32-direct-exec-release-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        2,
+        0
+      ],
+      "stdout_hex": "585350520000000300000001030000400000000200000469000006ee000006ed7fff2ee000000000000000000000000000000000000000017bff7fc00000000011220001112200021122000311220004000006eebabababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface00000000000000000000000000000000feedface000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000585350520000000000000002000000000000000000000000000006ee00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000006ee00000000000000000000000000000000000000000000000000000000feedface0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000585350520000000300000000030000400000000200000469000006ed00000000000006ee0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000006edbabababa55667788abcdef010000000000002500000000000000000100000025000006ee00000000feedface0000000000000001feedface00000000000000000000000000000000000000000000000000000001feedface000000000000000000000000000000007fff2ee000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "o32-direct-exec-release-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        2,
+        0
+      ],
+      "stdout_hex": "585350520000000300000001030000400000000200000469000006f8000006f57fff2ee000000000000000000000000000000000000000017bff7fc00000000011220001112200021122000311220004000006f8babababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface00000000000000000000000000000000feedface00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000585350520000000000000002000000000000000000000000000006f800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000006f800000000000000000000000000000000000000000000000000000000feedface000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000585350520000000300000000030000400000000200000469000006f500000000000006f80000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000006f5babababa55667788abcdef010000000000002500000000000000000100000025000006f800000000feedface0000000000000001feedface00000000000000000000000000000000000000000000000000000001feedface000000000000000000000000000000007fff2ee00000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000"
+    },
+    {
+      "name": "o32-direct-exec-fail-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "585350520000000400000001030000400000000300000469000006e0000006e67fff2ee000000000000000000000000000000000000000017bff7fc00000000011220001112200021122000311220004000006e0babababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface00000000000000000000000000000000feedface0000000000000002feedface0000000100000001feedface000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000585350520000000400000000030000400000000300000469000006e600000000000006e00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000006e6babababa55667788abcdef010000000000002500000000000000000100000025000006e000000000feedface0000000000000001feedface00000000000000000000000000000000000000000000000000000001feedface000000000000000000000000000000007fff2ee000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "o32-direct-exec-fail-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "58535052000000040000000103000040000000030000046900000703000007007fff2ee000000000000000000000000000000000000000017bff7fc0000000001122000111220002112200031122000400000703babababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface00000000000000000000000000000000feedface0000000000000002feedface0000000100000001feedface00000000000000000000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000585350520000000400000000030000400000000300000469000007000000000000000703000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000700babababa55667788abcdef0100000000000025000000000000000001000000250000070300000000feedface0000000000000001feedface00000000000000000000000000000000000000000000000000000001feedface000000000000000000000000000000007fff2ee00000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000"
+    },
+    {
+      "name": "o32-direct-exit-release-armed-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "5853505200000005000000010300004000000004000004690000070c0000070a7fff2ee000000000000000000000000000000000000000017bff7fc000000000112200011122000211220003112200040000070cbabababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface00000000000000000000000000000000feedface0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000005853505200000005000000000300004000000004000004690000070a000000000000070c00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000070ababababa55667788abcdef0100000000000025000000000000000001000000250000070c00000000feedface0000000000000001feedface00000000000000000000000000000000000000000000000000000001feedface000000000000000000000000000000007fff2ee000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "o32-direct-exit-release-armed-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "58535052000000050000000103000040000000040000046900000713000007127fff2ee000000000000000000000000000000000000000017bff7fc0000000001122000111220002112200031122000400000713babababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface00000000000000000000000000000000feedface00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000585350520000000500000000030000400000000400000469000007120000000000000713000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000712babababa55667788abcdef0100000000000025000000000000000001000000250000071300000000feedface0000000000000001feedface00000000000000000000000000000000000000000000000000000001feedface000000000000000000000000000000007fff2ee00000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000"
+    },
+    {
+      "name": "o32-direct-exec-no-release-0",
+      "exit": 137,
+      "watchdog": true,
+      "roles": [
+        1,
+        2
+      ],
+      "stdout_hex": "5853505200000006000000010300004000000005000004690000071f0000071b7fff2ee000000000000000000000000000000000000000017bff7fc000000000112200011122000211220003112200040000071fbabababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000005853505200000000000000020000000000000000000000000000071f000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000071f00000000000000000000000000000000000000000000000000000000feedface0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "o32-direct-exec-no-release-1",
+      "exit": 137,
+      "watchdog": true,
+      "roles": [
+        1,
+        2
+      ],
+      "stdout_hex": "5853505200000006000000010300004000000005000004690000072a000007297fff2ee000000000000000000000000000000000000000017bff7fc000000000112200011122000211220003112200040000072ababababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d2000000000000000000000000000000005853505200000000000000020000000000000000000000000000072a000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000072a00000000000000000000000000000000000000000000000000000000feedface000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000"
+    },
+    {
+      "name": "o32-direct-no-block-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "58535052000000070000000102000040000000010000046900000734000007207fff2ee000000000000000000000000000000000000000017bff7fc0000000001122000111220002112200031122000400000734babababa112233449876543200000000feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000585350520000000700000000020000400000000100000469000007200000000000000734000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000720babababa55667788abcdef0100000000000025000000000000000001000000250000073400000000feedface0000000000000001feedface00000000000000000000000000000000000000000000000000000001feedface000000000000000000000000000000007fff2ee000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "o32-direct-no-block-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "5853505200000007000000010200004000000001000004690000073f0000073e7fff2ee000000000000000000000000000000000000000017bff7fc000000000112200011122000211220003112200040000073fbabababa112233449876543200000000feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d2000000000000000000000000000000005853505200000007000000000200004000000001000004690000073e000000000000073f00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000073ebabababa55667788abcdef0100000000000025000000000000000001000000250000073f00000000feedface0000000000000001feedface00000000000000000000000000000000000000000000000000000001feedface000000000000000000000000000000007fff2ee00000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000"
+    },
+    {
+      "name": "o32-direct-no-share-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "58535052000000080000000103000000000000000000046900000746000007457fff2ee000000000000000000000000000000000000000017bff7fc0000000001122000111220002112200031122000400000746babababa112233449876543200000001feedface0000000000000002feedface0000000000000001feedface0000000000000000feedface0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000585350520000000800000000030000000000000000000469000007450000000000000746000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000745babababa112233449876543200000000000025000000000000000001000000250000074600000000feedface0000000000000001feedface00000000000000000000000000000000000000000000000000000001feedface000000000000000000000000000000007fff2ee000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "o32-direct-no-share-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "585350520000000800000001030000000000000000000469000007520000074e7fff2ee000000000000000000000000000000000000000017bff7fc0000000001122000111220002112200031122000400000752babababa112233449876543200000001feedface0000000000000002feedface0000000000000001feedface0000000000000000feedface000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d2000000000000000000000000000000005853505200000008000000000300000000000000000004690000074e000000000000075200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000074ebabababa112233449876543200000000000025000000000000000001000000250000075200000000feedface0000000000000001feedface00000000000000000000000000000000000000000000000000000001feedface000000000000000000000000000000007fff2ee00000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000"
+    },
+    {
+      "name": "o32-direct-share-fds-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "5853505200000009000000010300004200000000000004690000075d0000075c7fff2ee000000000000000000000000000000000000000017bff7fc000000000112200011122000211220003112200040000075dbabababa112233449876543200000001feedface0000000000000002feedface0000000000000043feedface0000000000000000feedface00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000005853505200000009000000000300004200000000000004690000075c000000000000075d00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000075cbabababa55667788abcdef0100000000000025000000000000000001000000250000075d00000000feedface0000000000000009feedface00000001000000000000000000000000000000000000000000000001feedface000000000000000000000000000000007fff2ee000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "o32-direct-share-fds-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "58535052000000090000000103000042000000000000046900000766000007657fff2ee000000000000000000000000000000000000000017bff7fc0000000001122000111220002112200031122000400000766babababa112233449876543200000001feedface0000000000000002feedface0000000000000043feedface0000000000000000feedface000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000585350520000000900000000030000420000000000000469000007650000000000000766000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000765babababa55667788abcdef0100000000000025000000000000000001000000250000076600000000feedface0000000000000009feedface00000001000000000000000000000000000000000000000000000001feedface000000000000000000000000000000007fff2ee00000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000"
+    },
+    {
+      "name": "o32-direct-local-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "585350520000000a0000000103000040000000000000046900000769000007687fff2ed000000000000000000000000000000000000000017bff7fc0000000001122000111220002112200031122000400000769babababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface0000000012345678000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000585350520000000a00000000030000400000000000000469000007680000000000000769000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000768babababa55667788abcdef0100000000000025000000000000000001000000250000076900000000feedface0000000000000001feedface0000000012345678000000005c000000feedface0000000000000001feedface000000000000000000000000000000007fff2ed000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "o32-direct-local-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "585350520000000a000000010300004000000000000004690000076f000007767fff2ed000000000000000000000000000000000000000017bff7fc000000000112200011122000211220003112200040000076fbabababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface000000001234567800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000585350520000000a0000000003000040000000000000046900000776000000000000076f000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000776babababa55667788abcdef0100000000000025000000000000000001000000250000076f00000000feedface0000000000000001feedface0000000012345678000000005c000000feedface0000000000000001feedface000000000000000000000000000000007fff2ed00000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000"
+    },
+    {
+      "name": "o32-direct-new-mapping-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "585350520000000b0000000103000040000000060000046900000784000007827fff2ee000000000000000000000000000000000000000017bff7fc0000000001122000111220002112200031122000400000784babababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000005c000000feedface0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000585350520000000b00000000030000400000000600000469000007820000000000000784000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000782babababa55667788abcdef0100000000000025000000000000000001000000250000078400000000feedface0000000000000001feedface00000000000000000000000000000000000000000000000000000001feedface000000000000000000000000000000007fff2ee05c000000decaf1230000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "o32-direct-new-mapping-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "585350520000000b00000001030000400000000600000469000007580000078d7fff2ee000000000000000000000000000000000000000017bff7fc0000000001122000111220002112200031122000400000758babababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000005c000000feedface000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000585350520000000b000000000300004000000006000004690000078d000000000000075800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000078dbabababa55667788abcdef0100000000000025000000000000000001000000250000075800000000feedface0000000000000001feedface00000000000000000000000000000000000000000000000000000001feedface000000000000000000000000000000007fff2ee05c000000decaf123000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000"
+    },
+    {
+      "name": "o32-direct-explicit-stack-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "585350520000000c0000000103000040000000000000046c00000797000007887fff2ed000000000000000000000000000000000000000015c003fc0000000001122000111220002112200031122000400000797babababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface00000000000000005c0040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000585350520000000c0000000003000040000000000000046c000007880000000000000797000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000788babababa55667788abcdef0100000000000025000000000000000001000000250000079700000000feedface0000000000000001feedface00000000000000005c00400000000000000000000000000000000001feedface000000000000000000000000000000007fff2ed000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "o32-direct-explicit-stack-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "585350520000000c0000000103000040000000000000046c000007a0000007987fff2ed000000000000000000000000000000000000000015c003fc00000000011220001112200021122000311220004000007a0babababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface00000000000000005c004000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000585350520000000c0000000003000040000000000000046c0000079800000000000007a0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000798babababa55667788abcdef010000000000002500000000000000000100000025000007a000000000feedface0000000000000001feedface00000000000000005c00400000000000000000000000000000000001feedface000000000000000000000000000000007fff2ed00000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000"
+    },
+    {
+      "name": "o32-direct-short-stack-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        0
+      ],
+      "stdout_hex": "585350520000000d0000000003000040000000000000046c000007a70000000000000016feedface00000001000000000000000000000000000000000000000000000000000000000000000000000000000007a7babababa112233449876543200000000000000000000000000000000000000000000000000000000feedface0000000000000001feedface00000000000000000000000000000000000000000000000000000000feedface000000000000000000000000000000007fff2ee000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "o32-direct-short-stack-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        0
+      ],
+      "stdout_hex": "585350520000000d0000000003000040000000000000046c000007af0000000000000016feedface00000001000000000000000000000000000000000000000000000000000000000000000000000000000007afbabababa112233449876543200000000000000000000000000000000000000000000000000000000feedface0000000000000001feedface00000000000000000000000000000000000000000000000000000000feedface000000000000000000000000000000007fff2ee00000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000"
+    },
+    {
+      "name": "o32-direct-bad-entry-0",
+      "exit": 137,
+      "watchdog": true,
+      "roles": [],
+      "stdout_hex": ""
+    },
+    {
+      "name": "o32-direct-bad-entry-1",
+      "exit": 137,
+      "watchdog": true,
+      "roles": [],
+      "stdout_hex": ""
+    },
+    {
+      "name": "o32-indirect-unblock-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "585350520000000f00000001030000400000000000000469000007d5000007d47fff2ee000000000000000000000000000000000000000017bff7fc00000000011220001112200021122000311220004000007d5babababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000585350520000000f00000000030000400000000000000469000007d400000000000007d50000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000007d4babababa55667788abcdef010000000000002500000000000000000100000025000007d500000000feedface0000000000000001feedface00000000000000000000000000000000000000000000000000000001feedface000000000000000000000000000000007fff2ee000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "o32-indirect-unblock-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "585350520000000f00000001030000400000000000000469000007df000007de7fff2ee000000000000000000000000000000000000000017bff7fc00000000011220001112200021122000311220004000007dfbabababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000585350520000000f00000000030000400000000000000469000007de00000000000007df0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000007debabababa55667788abcdef010000000000002500000000000000000100000025000007df00000000feedface0000000000000001feedface00000000000000000000000000000000000000000000000000000001feedface000000000000000000000000000000007fff2ee00000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000"
+    },
+    {
+      "name": "o32-indirect-exit-0",
+      "exit": 137,
+      "watchdog": true,
+      "roles": [
+        1
+      ],
+      "stdout_hex": "585350520000001000000001030000400000000100000469000007e9000007e77fff2ee000000000000000000000000000000000000000017bff7fc00000000011220001112200021122000311220004000007e9babababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "o32-indirect-exit-1",
+      "exit": 137,
+      "watchdog": true,
+      "roles": [
+        1
+      ],
+      "stdout_hex": "585350520000001000000001030000400000000100000469000007f4000007f37fff2ee000000000000000000000000000000000000000017bff7fc00000000011220001112200021122000311220004000007f4babababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000"
+    },
+    {
+      "name": "o32-indirect-exec-release-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        2,
+        0
+      ],
+      "stdout_hex": "585350520000001100000001030000400000000200000469000008180000081a7fff2ee000000000000000000000000000000000000000017bff7fc0000000001122000111220002112200031122000400000818babababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface00000000000000000000000000000000feedface00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000058535052000000000000000200000000000000000000000000000818000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000081800000000000000000000000000000000000000000000000000000000feedface00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000005853505200000011000000000300004000000002000004690000081a000000000000081800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000081ababababa55667788abcdef0100000000000025000000000000000001000000250000081800000000feedface0000000000000001feedface00000000000000000000000000000000000000000000000000000001feedface000000000000000000000000000000007fff2ee000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "o32-indirect-exec-release-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        2,
+        0
+      ],
+      "stdout_hex": "58535052000000110000000103000040000000020000046900000827000008217fff2ee000000000000000000000000000000000000000017bff7fc0000000001122000111220002112200031122000400000827babababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface00000000000000000000000000000000feedface00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d20000000000000000000000000000000058535052000000000000000200000000000000000000000000000827000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000082700000000000000000000000000000000000000000000000000000000feedface000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000585350520000001100000000030000400000000200000469000008210000000000000827000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000821babababa55667788abcdef0100000000000025000000000000000001000000250000082700000000feedface0000000000000001feedface00000000000000000000000000000000000000000000000000000001feedface000000000000000000000000000000007fff2ee00000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000"
+    },
+    {
+      "name": "o32-indirect-exec-fail-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "58535052000000120000000103000040000000030000046900000831000008307fff2ee000000000000000000000000000000000000000017bff7fc0000000001122000111220002112200031122000400000831babababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface00000000000000000000000000000000feedface0000000000000002feedface0000000100000001feedface000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000585350520000001200000000030000400000000300000469000008300000000000000831000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000830babababa55667788abcdef0100000000000025000000000000000001000000250000083100000000feedface0000000000000001feedface00000000000000000000000000000000000000000000000000000001feedface000000000000000000000000000000007fff2ee000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "o32-indirect-exec-fail-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "5853505200000012000000010300004000000003000004690000083f0000083e7fff2ee000000000000000000000000000000000000000017bff7fc000000000112200011122000211220003112200040000083fbabababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface00000000000000000000000000000000feedface0000000000000002feedface0000000100000001feedface00000000000000000000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d2000000000000000000000000000000005853505200000012000000000300004000000003000004690000083e000000000000083f00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000083ebabababa55667788abcdef0100000000000025000000000000000001000000250000083f00000000feedface0000000000000001feedface00000000000000000000000000000000000000000000000000000001feedface000000000000000000000000000000007fff2ee00000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000"
+    },
+    {
+      "name": "o32-indirect-exit-release-armed-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "5853505200000013000000010300004000000004000004690000084f0000084e7fff2ee000000000000000000000000000000000000000017bff7fc000000000112200011122000211220003112200040000084fbabababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface00000000000000000000000000000000feedface0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000005853505200000013000000000300004000000004000004690000084e000000000000084f00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000084ebabababa55667788abcdef0100000000000025000000000000000001000000250000084f00000000feedface0000000000000001feedface00000000000000000000000000000000000000000000000000000001feedface000000000000000000000000000000007fff2ee000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "o32-indirect-exit-release-armed-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "58535052000000130000000103000040000000040000046900000858000008557fff2ee000000000000000000000000000000000000000017bff7fc0000000001122000111220002112200031122000400000858babababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface00000000000000000000000000000000feedface00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000585350520000001300000000030000400000000400000469000008550000000000000858000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000855babababa55667788abcdef0100000000000025000000000000000001000000250000085800000000feedface0000000000000001feedface00000000000000000000000000000000000000000000000000000001feedface000000000000000000000000000000007fff2ee00000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000"
+    },
+    {
+      "name": "o32-indirect-exec-no-release-0",
+      "exit": 137,
+      "watchdog": true,
+      "roles": [
+        1,
+        2
+      ],
+      "stdout_hex": "58535052000000140000000103000040000000050000046900000865000008647fff2ee000000000000000000000000000000000000000017bff7fc0000000001122000111220002112200031122000400000865babababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000058535052000000000000000200000000000000000000000000000865000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000086500000000000000000000000000000000000000000000000000000000feedface0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "o32-indirect-exec-no-release-1",
+      "exit": 137,
+      "watchdog": true,
+      "roles": [
+        1,
+        2
+      ],
+      "stdout_hex": "5853505200000014000000010300004000000005000004690000084a000008667fff2ee000000000000000000000000000000000000000017bff7fc000000000112200011122000211220003112200040000084ababababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d2000000000000000000000000000000005853505200000000000000020000000000000000000000000000084a000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000084a00000000000000000000000000000000000000000000000000000000feedface000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000"
+    },
+    {
+      "name": "o32-indirect-no-block-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "585350520000001500000001020000400000000100000469000008390000083a7fff2ee000000000000000000000000000000000000000017bff7fc0000000001122000111220002112200031122000400000839babababa112233449876543200000000feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000005853505200000015000000000200004000000001000004690000083a000000000000083900000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000083ababababa55667788abcdef0100000000000025000000000000000001000000250000083900000000feedface0000000000000001feedface00000000000000000000000000000000000000000000000000000001feedface000000000000000000000000000000007fff2ee000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "o32-indirect-no-block-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "5853505200000015000000010200004000000001000004690000087e0000087f7fff2ee000000000000000000000000000000000000000017bff7fc000000000112200011122000211220003112200040000087ebabababa112233449876543200000000feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d2000000000000000000000000000000005853505200000015000000000200004000000001000004690000087f000000000000087e00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000087fbabababa55667788abcdef0100000000000025000000000000000001000000250000087e00000000feedface0000000000000001feedface00000000000000000000000000000000000000000000000000000001feedface000000000000000000000000000000007fff2ee00000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000"
+    },
+    {
+      "name": "o32-indirect-no-share-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "5853505200000016000000010300000000000000000004690000086e000008817fff2ee000000000000000000000000000000000000000017bff7fc000000000112200011122000211220003112200040000086ebabababa112233449876543200000001feedface0000000000000002feedface0000000000000001feedface0000000000000000feedface000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000058535052000000160000000003000000000000000000046900000881000000000000086e000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000881babababa112233449876543200000000000025000000000000000001000000250000086e00000000feedface0000000000000001feedface00000000000000000000000000000000000000000000000000000001feedface000000000000000000000000000000007fff2ee000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "o32-indirect-no-share-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "5853505200000016000000010300000000000000000004690000088e0000088c7fff2ee000000000000000000000000000000000000000017bff7fc000000000112200011122000211220003112200040000088ebabababa112233449876543200000001feedface0000000000000002feedface0000000000000001feedface0000000000000000feedface000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d2000000000000000000000000000000005853505200000016000000000300000000000000000004690000088c000000000000088e00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000088cbabababa112233449876543200000000000025000000000000000001000000250000088e00000000feedface0000000000000001feedface00000000000000000000000000000000000000000000000000000001feedface000000000000000000000000000000007fff2ee00000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000"
+    },
+    {
+      "name": "o32-indirect-share-fds-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "5853505200000017000000010300004200000000000004690000088f000008997fff2ee000000000000000000000000000000000000000017bff7fc000000000112200011122000211220003112200040000088fbabababa112233449876543200000001feedface0000000000000002feedface0000000000000043feedface0000000000000000feedface000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000058535052000000170000000003000042000000000000046900000899000000000000088f000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000899babababa55667788abcdef0100000000000025000000000000000001000000250000088f00000000feedface0000000000000009feedface00000001000000000000000000000000000000000000000000000001feedface000000000000000000000000000000007fff2ee000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "o32-indirect-share-fds-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "5853505200000017000000010300004200000000000004690000089b0000089e7fff2ee000000000000000000000000000000000000000017bff7fc000000000112200011122000211220003112200040000089bbabababa112233449876543200000001feedface0000000000000002feedface0000000000000043feedface0000000000000000feedface000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d2000000000000000000000000000000005853505200000017000000000300004200000000000004690000089e000000000000089b00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000089ebabababa55667788abcdef0100000000000025000000000000000001000000250000089b00000000feedface0000000000000009feedface00000001000000000000000000000000000000000000000000000001feedface000000000000000000000000000000007fff2ee00000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000"
+    },
+    {
+      "name": "o32-indirect-local-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "585350520000001800000001030000400000000000000469000008a7000008a67fff2ed000000000000000000000000000000000000000017bff7fc00000000011220001112200021122000311220004000008a7babababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface0000000012345678000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000585350520000001800000000030000400000000000000469000008a600000000000008a70000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008a6babababa55667788abcdef010000000000002500000000000000000100000025000008a700000000feedface0000000000000001feedface0000000012345678000000005c000000feedface0000000000000001feedface000000000000000000000000000000007fff2ed000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "o32-indirect-local-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "585350520000001800000001030000400000000000000469000008b1000008af7fff2ed000000000000000000000000000000000000000017bff7fc00000000011220001112200021122000311220004000008b1babababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface000000001234567800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000585350520000001800000000030000400000000000000469000008af00000000000008b10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008afbabababa55667788abcdef010000000000002500000000000000000100000025000008b100000000feedface0000000000000001feedface0000000012345678000000005c000000feedface0000000000000001feedface000000000000000000000000000000007fff2ed00000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000"
+    },
+    {
+      "name": "o32-indirect-new-mapping-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "585350520000001900000001030000400000000600000469000008b8000008b77fff2ee000000000000000000000000000000000000000017bff7fc00000000011220001112200021122000311220004000008b8babababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000005c000000feedface0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000585350520000001900000000030000400000000600000469000008b700000000000008b80000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008b7babababa55667788abcdef010000000000002500000000000000000100000025000008b800000000feedface0000000000000001feedface00000000000000000000000000000000000000000000000000000001feedface000000000000000000000000000000007fff2ee05c000000decaf1230000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "o32-indirect-new-mapping-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "585350520000001900000001030000400000000600000469000008c0000008c27fff2ee000000000000000000000000000000000000000017bff7fc00000000011220001112200021122000311220004000008c0babababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000005c000000feedface000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000585350520000001900000000030000400000000600000469000008c200000000000008c00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008c2babababa55667788abcdef010000000000002500000000000000000100000025000008c000000000feedface0000000000000001feedface00000000000000000000000000000000000000000000000000000001feedface000000000000000000000000000000007fff2ee05c000000decaf123000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000"
+    },
+    {
+      "name": "o32-indirect-explicit-stack-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "585350520000001a0000000103000040000000000000046c000008cd000008cc7fff2ed000000000000000000000000000000000000000015c003fc00000000011220001112200021122000311220004000008cdbabababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface00000000000000005c0040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000585350520000001a0000000003000040000000000000046c000008cc00000000000008cd0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008ccbabababa55667788abcdef010000000000002500000000000000000100000025000008cd00000000feedface0000000000000001feedface00000000000000005c00400000000000000000000000000000000001feedface000000000000000000000000000000007fff2ed000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "o32-indirect-explicit-stack-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "585350520000001a0000000103000040000000000000046c000008d6000008ca7fff2ed000000000000000000000000000000000000000015c003fc00000000011220001112200021122000311220004000008d6babababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface00000000000000005c004000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000585350520000001a0000000003000040000000000000046c000008ca00000000000008d60000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008cababababa55667788abcdef010000000000002500000000000000000100000025000008d600000000feedface0000000000000001feedface00000000000000005c00400000000000000000000000000000000001feedface000000000000000000000000000000007fff2ed00000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000"
+    },
+    {
+      "name": "o32-indirect-short-stack-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        0
+      ],
+      "stdout_hex": "585350520000001b0000000003000040000000000000046c000008e40000000000000016feedface00000001000000000000000000000000000000000000000000000000000000000000000000000000000008e4babababa112233449876543200000000000000000000000000000000000000000000000000000000feedface0000000000000001feedface00000000000000000000000000000000000000000000000000000000feedface000000000000000000000000000000007fff2ee000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "o32-indirect-short-stack-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        0
+      ],
+      "stdout_hex": "585350520000001b0000000003000040000000000000046c000008ea0000000000000016feedface00000001000000000000000000000000000000000000000000000000000000000000000000000000000008eababababa112233449876543200000000000000000000000000000000000000000000000000000000feedface0000000000000001feedface00000000000000000000000000000000000000000000000000000000feedface000000000000000000000000000000007fff2ee00000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000"
+    },
+    {
+      "name": "o32-indirect-bad-entry-0",
+      "exit": 137,
+      "watchdog": true,
+      "roles": [],
+      "stdout_hex": ""
+    },
+    {
+      "name": "o32-indirect-bad-entry-1",
+      "exit": 137,
+      "watchdog": true,
+      "roles": [],
+      "stdout_hex": ""
+    },
+    {
+      "name": "n32-direct-unblock-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "585350520000001d000000010300004000000000000004690000090b0000090a7fff2ea800000000000000000000000000000000000000017bff7fc000000000112200011122000211220003112200040000090bbabababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000585350520000001d000000000300004000000000000004690000090a000000000000090b00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000090ababababa55667788abcdef0100000000000025000000000000000001000000250000090b00000000feedface0000000000000001feedface00000000000000000000000000000000000000000000000000000001feedface000000000000000000000000000000007fff2ea800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "n32-direct-unblock-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "585350520000001d0000000103000040000000000000046900000914000009127fff2ea800000000000000000000000000000000000000017bff7fc0000000001122000111220002112200031122000400000914babababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000585350520000001d00000000030000400000000000000469000009120000000000000914000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000912babababa55667788abcdef0100000000000025000000000000000001000000250000091400000000feedface0000000000000001feedface00000000000000000000000000000000000000000000000000000001feedface000000000000000000000000000000007fff2ea80000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000"
+    },
+    {
+      "name": "n32-direct-exit-0",
+      "exit": 137,
+      "watchdog": true,
+      "roles": [
+        1
+      ],
+      "stdout_hex": "585350520000001e000000010300004000000001000004690000091c0000091d7fff2ea800000000000000000000000000000000000000017bff7fc000000000112200011122000211220003112200040000091cbabababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "n32-direct-exit-1",
+      "exit": 137,
+      "watchdog": true,
+      "roles": [
+        1
+      ],
+      "stdout_hex": "585350520000001e000000010300004000000001000004690000092d000009297fff2ea800000000000000000000000000000000000000017bff7fc000000000112200011122000211220003112200040000092dbabababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000"
+    },
+    {
+      "name": "n32-direct-exec-release-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        2,
+        0
+      ],
+      "stdout_hex": "585350520000001f0000000103000040000000020000046900000936000009357fff2ea800000000000000000000000000000000000000017bff7fc0000000001122000111220002112200031122000400000936babababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface00000000000000000000000000000000feedface00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000058535052000000000000000200000000000000000000000000000936000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000093600000000000000000000000000000000000000000000000000000000feedface0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000585350520000001f00000000030000400000000200000469000009350000000000000936000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000935babababa55667788abcdef0100000000000025000000000000000001000000250000093600000000feedface0000000000000001feedface00000000000000000000000000000000000000000000000000000001feedface000000000000000000000000000000007fff2ea800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "n32-direct-exec-release-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        2,
+        0
+      ],
+      "stdout_hex": "585350520000001f000000010300004000000002000004690000093e000009387fff2ea800000000000000000000000000000000000000017bff7fc000000000112200011122000211220003112200040000093ebabababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface00000000000000000000000000000000feedface00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d2000000000000000000000000000000005853505200000000000000020000000000000000000000000000093e000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000093e00000000000000000000000000000000000000000000000000000000feedface000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000585350520000001f0000000003000040000000020000046900000938000000000000093e000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000938babababa55667788abcdef0100000000000025000000000000000001000000250000093e00000000feedface0000000000000001feedface00000000000000000000000000000000000000000000000000000001feedface000000000000000000000000000000007fff2ea80000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000"
+    },
+    {
+      "name": "n32-direct-exec-fail-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "58535052000000200000000103000040000000030000046900000949000009487fff2ea800000000000000000000000000000000000000017bff7fc0000000001122000111220002112200031122000400000949babababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface00000000000000000000000000000000feedface0000000000000002feedface0000000100000001feedface000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000585350520000002000000000030000400000000300000469000009480000000000000949000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000948babababa55667788abcdef0100000000000025000000000000000001000000250000094900000000feedface0000000000000001feedface00000000000000000000000000000000000000000000000000000001feedface000000000000000000000000000000007fff2ea800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "n32-direct-exec-fail-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "58535052000000200000000103000040000000030000046900000954000009527fff2ea800000000000000000000000000000000000000017bff7fc0000000001122000111220002112200031122000400000954babababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface00000000000000000000000000000000feedface0000000000000002feedface0000000100000001feedface00000000000000000000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000585350520000002000000000030000400000000300000469000009520000000000000954000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000952babababa55667788abcdef0100000000000025000000000000000001000000250000095400000000feedface0000000000000001feedface00000000000000000000000000000000000000000000000000000001feedface000000000000000000000000000000007fff2ea80000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000"
+    },
+    {
+      "name": "n32-direct-exit-release-armed-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "585350520000002100000001030000400000000400000469000009590000095a7fff2ea800000000000000000000000000000000000000017bff7fc0000000001122000111220002112200031122000400000959babababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface00000000000000000000000000000000feedface0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000005853505200000021000000000300004000000004000004690000095a000000000000095900000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000095ababababa55667788abcdef0100000000000025000000000000000001000000250000095900000000feedface0000000000000001feedface00000000000000000000000000000000000000000000000000000001feedface000000000000000000000000000000007fff2ea800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "n32-direct-exit-release-armed-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "58535052000000210000000103000040000000040000046900000968000009647fff2ea800000000000000000000000000000000000000017bff7fc0000000001122000111220002112200031122000400000968babababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface00000000000000000000000000000000feedface00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000585350520000002100000000030000400000000400000469000009640000000000000968000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000964babababa55667788abcdef0100000000000025000000000000000001000000250000096800000000feedface0000000000000001feedface00000000000000000000000000000000000000000000000000000001feedface000000000000000000000000000000007fff2ea80000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000"
+    },
+    {
+      "name": "n32-direct-exec-no-release-0",
+      "exit": 137,
+      "watchdog": true,
+      "roles": [
+        1,
+        2
+      ],
+      "stdout_hex": "5853505200000022000000010300004000000005000004690000096e0000096f7fff2ea800000000000000000000000000000000000000017bff7fc000000000112200011122000211220003112200040000096ebabababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000005853505200000000000000020000000000000000000000000000096e000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000096e00000000000000000000000000000000000000000000000000000000feedface0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "n32-direct-exec-no-release-1",
+      "exit": 137,
+      "watchdog": true,
+      "roles": [
+        1,
+        2
+      ],
+      "stdout_hex": "58535052000000220000000103000040000000050000046900000985000009847fff2ea800000000000000000000000000000000000000017bff7fc0000000001122000111220002112200031122000400000985babababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d20000000000000000000000000000000058535052000000000000000200000000000000000000000000000985000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000098500000000000000000000000000000000000000000000000000000000feedface000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000"
+    },
+    {
+      "name": "n32-direct-no-block-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "5853505200000023000000010200004000000001000004690000098b000009907fff2ea800000000000000000000000000000000000000017bff7fc000000000112200011122000211220003112200040000098bbabababa112233449876543200000000feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000058535052000000230000000002000040000000010000046900000990000000000000098b000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000990babababa55667788abcdef0100000000000025000000000000000001000000250000098b00000000feedface0000000000000001feedface00000000000000000000000000000000000000000000000000000001feedface000000000000000000000000000000007fff2ea800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "n32-direct-no-block-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "58535052000000230000000102000040000000010000046900000995000009997fff2ea800000000000000000000000000000000000000017bff7fc0000000001122000111220002112200031122000400000995babababa112233449876543200000000feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000585350520000002300000000020000400000000100000469000009990000000000000995000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000999babababa55667788abcdef0100000000000025000000000000000001000000250000099500000000feedface0000000000000001feedface00000000000000000000000000000000000000000000000000000001feedface000000000000000000000000000000007fff2ea80000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000"
+    },
+    {
+      "name": "n32-direct-no-share-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "585350520000002400000001030000000000000000000469000009a6000009a27fff2ea800000000000000000000000000000000000000017bff7fc00000000011220001112200021122000311220004000009a6babababa112233449876543200000001feedface0000000000000002feedface0000000000000001feedface0000000000000000feedface0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000585350520000002400000000030000000000000000000469000009a200000000000009a60000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009a2babababa11223344987654320000000000002500000000000000000100000025000009a600000000feedface0000000000000001feedface00000000000000000000000000000000000000000000000000000001feedface000000000000000000000000000000007fff2ea800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "n32-direct-no-share-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "585350520000002400000001030000000000000000000469000009ac000009ab7fff2ea800000000000000000000000000000000000000017bff7fc00000000011220001112200021122000311220004000009acbabababa112233449876543200000001feedface0000000000000002feedface0000000000000001feedface0000000000000000feedface000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000585350520000002400000000030000000000000000000469000009ab00000000000009ac0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009abbabababa11223344987654320000000000002500000000000000000100000025000009ac00000000feedface0000000000000001feedface00000000000000000000000000000000000000000000000000000001feedface000000000000000000000000000000007fff2ea80000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000"
+    },
+    {
+      "name": "n32-direct-share-fds-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "585350520000002500000001030000420000000000000469000009ba000009b17fff2ea800000000000000000000000000000000000000017bff7fc00000000011220001112200021122000311220004000009bababababa112233449876543200000001feedface0000000000000002feedface0000000000000043feedface0000000000000000feedface0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000585350520000002500000000030000420000000000000469000009b100000000000009ba0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009b1babababa55667788abcdef010000000000002500000000000000000100000025000009ba00000000feedface0000000000000009feedface00000001000000000000000000000000000000000000000000000001feedface000000000000000000000000000000007fff2ea800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "n32-direct-share-fds-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "585350520000002500000001030000420000000000000469000009c2000009bf7fff2ea800000000000000000000000000000000000000017bff7fc00000000011220001112200021122000311220004000009c2babababa112233449876543200000001feedface0000000000000002feedface0000000000000043feedface0000000000000000feedface000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000585350520000002500000000030000420000000000000469000009bf00000000000009c20000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009bfbabababa55667788abcdef010000000000002500000000000000000100000025000009c200000000feedface0000000000000009feedface00000001000000000000000000000000000000000000000000000001feedface000000000000000000000000000000007fff2ea80000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000"
+    },
+    {
+      "name": "n32-direct-local-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "585350520000002600000001030000400000000000000469000009c9000009cb7fff2ea800000000000000000000000000000000000000017bff7fc00000000011220001112200021122000311220004000009c9babababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface0000000012345678000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000585350520000002600000000030000400000000000000469000009cb00000000000009c90000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009cbbabababa55667788abcdef010000000000002500000000000000000100000025000009c900000000feedface0000000000000001feedface0000000012345678000000005c000000feedface0000000000000001feedface000000000000000000000000000000007fff2ea800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "n32-direct-local-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "585350520000002600000001030000400000000000000469000009cf000009d37fff2ea800000000000000000000000000000000000000017bff7fc00000000011220001112200021122000311220004000009cfbabababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface000000001234567800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000585350520000002600000000030000400000000000000469000009d300000000000009cf0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009d3babababa55667788abcdef010000000000002500000000000000000100000025000009cf00000000feedface0000000000000001feedface0000000012345678000000005c000000feedface0000000000000001feedface000000000000000000000000000000007fff2ea80000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000"
+    },
+    {
+      "name": "n32-direct-new-mapping-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "585350520000002700000001030000400000000600000469000009da000009d47fff2ea800000000000000000000000000000000000000017bff7fc00000000011220001112200021122000311220004000009dababababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000005c000000feedface0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000585350520000002700000000030000400000000600000469000009d400000000000009da0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009d4babababa55667788abcdef010000000000002500000000000000000100000025000009da00000000feedface0000000000000001feedface00000000000000000000000000000000000000000000000000000001feedface000000000000000000000000000000007fff2ea85c000000decaf1230000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "n32-direct-new-mapping-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "585350520000002700000001030000400000000600000469000009e5000009e27fff2ea800000000000000000000000000000000000000017bff7fc00000000011220001112200021122000311220004000009e5babababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000005c000000feedface000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000585350520000002700000000030000400000000600000469000009e200000000000009e50000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009e2babababa55667788abcdef010000000000002500000000000000000100000025000009e500000000feedface0000000000000001feedface00000000000000000000000000000000000000000000000000000001feedface000000000000000000000000000000007fff2ea85c000000decaf123000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000"
+    },
+    {
+      "name": "n32-direct-explicit-stack-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "58535052000000280000000103000040000000000000046c000009ee000009ef7fff2ea800000000000000000000000000000000000000015c003fc00000000011220001112200021122000311220004000009eebabababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface00000000000000005c004000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000058535052000000280000000003000040000000000000046c000009ef00000000000009ee0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009efbabababa55667788abcdef010000000000002500000000000000000100000025000009ee00000000feedface0000000000000001feedface00000000000000005c00400000000000000000000000000000000001feedface000000000000000000000000000000007fff2ea800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "n32-direct-explicit-stack-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "58535052000000280000000103000040000000000000046c000009f2000009f47fff2ea800000000000000000000000000000000000000015c003fc00000000011220001112200021122000311220004000009f2babababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface00000000000000005c004000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d20000000000000000000000000000000058535052000000280000000003000040000000000000046c000009f400000000000009f20000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009f4babababa55667788abcdef010000000000002500000000000000000100000025000009f200000000feedface0000000000000001feedface00000000000000005c00400000000000000000000000000000000001feedface000000000000000000000000000000007fff2ea80000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000"
+    },
+    {
+      "name": "n32-direct-short-stack-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        0
+      ],
+      "stdout_hex": "58535052000000290000000003000040000000000000046c000009ff0000000000000016feedface00000001000000000000000000000000000000000000000000000000000000000000000000000000000009ffbabababa112233449876543200000000000000000000000000000000000000000000000000000000feedface0000000000000001feedface00000000000000000000000000000000000000000000000000000000feedface000000000000000000000000000000007fff2ea800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "n32-direct-short-stack-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        0
+      ],
+      "stdout_hex": "58535052000000290000000003000040000000000000046c00000a060000000000000016feedface0000000100000000000000000000000000000000000000000000000000000000000000000000000000000a06babababa112233449876543200000000000000000000000000000000000000000000000000000000feedface0000000000000001feedface00000000000000000000000000000000000000000000000000000000feedface000000000000000000000000000000007fff2ea80000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000"
+    },
+    {
+      "name": "n32-direct-bad-entry-0",
+      "exit": 137,
+      "watchdog": true,
+      "roles": [],
+      "stdout_hex": ""
+    },
+    {
+      "name": "n32-direct-bad-entry-1",
+      "exit": 137,
+      "watchdog": true,
+      "roles": [],
+      "stdout_hex": ""
+    },
+    {
+      "name": "n32-indirect-unblock-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "585350520000002b0000000103000040000000000000046900000a2400000a257fff2ea800000000000000000000000000000000000000017bff7fc0000000001122000111220002112200031122000400000a24babababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000585350520000002b0000000003000040000000000000046900000a250000000000000a24000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000a25babababa55667788abcdef01000000000000250000000000000000010000002500000a2400000000feedface0000000000000001feedface00000000000000000000000000000000000000000000000000000001feedface000000000000000000000000000000007fff2ea800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "n32-indirect-unblock-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "585350520000002b0000000103000040000000000000046900000a2f00000a287fff2ea800000000000000000000000000000000000000017bff7fc0000000001122000111220002112200031122000400000a2fbabababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000585350520000002b0000000003000040000000000000046900000a280000000000000a2f000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000a28babababa55667788abcdef01000000000000250000000000000000010000002500000a2f00000000feedface0000000000000001feedface00000000000000000000000000000000000000000000000000000001feedface000000000000000000000000000000007fff2ea80000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000"
+    },
+    {
+      "name": "n32-indirect-exit-0",
+      "exit": 137,
+      "watchdog": true,
+      "roles": [
+        1
+      ],
+      "stdout_hex": "585350520000002c0000000103000040000000010000046900000a3d00000a387fff2ea800000000000000000000000000000000000000017bff7fc0000000001122000111220002112200031122000400000a3dbabababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "n32-indirect-exit-1",
+      "exit": 137,
+      "watchdog": true,
+      "roles": [
+        1
+      ],
+      "stdout_hex": "585350520000002c0000000103000040000000010000046900000a4000000a467fff2ea800000000000000000000000000000000000000017bff7fc0000000001122000111220002112200031122000400000a40babababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000"
+    },
+    {
+      "name": "n32-indirect-exec-release-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        2,
+        0
+      ],
+      "stdout_hex": "585350520000002d0000000103000040000000020000046900000a4e00000a507fff2ea800000000000000000000000000000000000000017bff7fc0000000001122000111220002112200031122000400000a4ebabababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface00000000000000000000000000000000feedface00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000058535052000000000000000200000000000000000000000000000a4e0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000a4e00000000000000000000000000000000000000000000000000000000feedface0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000585350520000002d0000000003000040000000020000046900000a500000000000000a4e000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000a50babababa55667788abcdef01000000000000250000000000000000010000002500000a4e00000000feedface0000000000000001feedface00000000000000000000000000000000000000000000000000000001feedface000000000000000000000000000000007fff2ea800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "n32-indirect-exec-release-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        2,
+        0
+      ],
+      "stdout_hex": "585350520000002d0000000103000040000000020000046900000a5900000a577fff2ea800000000000000000000000000000000000000017bff7fc0000000001122000111220002112200031122000400000a59babababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface00000000000000000000000000000000feedface00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d20000000000000000000000000000000058535052000000000000000200000000000000000000000000000a590000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000a5900000000000000000000000000000000000000000000000000000000feedface000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000585350520000002d0000000003000040000000020000046900000a570000000000000a59000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000a57babababa55667788abcdef01000000000000250000000000000000010000002500000a5900000000feedface0000000000000001feedface00000000000000000000000000000000000000000000000000000001feedface000000000000000000000000000000007fff2ea80000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000"
+    },
+    {
+      "name": "n32-indirect-exec-fail-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "585350520000002e00000001030000400000000300000469000009fc00000a617fff2ea800000000000000000000000000000000000000017bff7fc00000000011220001112200021122000311220004000009fcbabababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface00000000000000000000000000000000feedface0000000000000002feedface0000000100000001feedface000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000585350520000002e0000000003000040000000030000046900000a6100000000000009fc000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000a61babababa55667788abcdef010000000000002500000000000000000100000025000009fc00000000feedface0000000000000001feedface00000000000000000000000000000000000000000000000000000001feedface000000000000000000000000000000007fff2ea800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "n32-indirect-exec-fail-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "585350520000002e0000000103000040000000030000046900000a6e00000a697fff2ea800000000000000000000000000000000000000017bff7fc0000000001122000111220002112200031122000400000a6ebabababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface00000000000000000000000000000000feedface0000000000000002feedface0000000100000001feedface00000000000000000000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000585350520000002e0000000003000040000000030000046900000a690000000000000a6e000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000a69babababa55667788abcdef01000000000000250000000000000000010000002500000a6e00000000feedface0000000000000001feedface00000000000000000000000000000000000000000000000000000001feedface000000000000000000000000000000007fff2ea80000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000"
+    },
+    {
+      "name": "n32-indirect-exit-release-armed-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "585350520000002f0000000103000040000000040000046900000a7c00000a6d7fff2ea800000000000000000000000000000000000000017bff7fc0000000001122000111220002112200031122000400000a7cbabababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface00000000000000000000000000000000feedface000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000585350520000002f0000000003000040000000040000046900000a6d0000000000000a7c000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000a6dbabababa55667788abcdef01000000000000250000000000000000010000002500000a7c00000000feedface0000000000000001feedface00000000000000000000000000000000000000000000000000000001feedface000000000000000000000000000000007fff2ea800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "n32-indirect-exit-release-armed-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "585350520000002f0000000103000040000000040000046900000a8800000a867fff2ea800000000000000000000000000000000000000017bff7fc0000000001122000111220002112200031122000400000a88babababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface00000000000000000000000000000000feedface00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000585350520000002f0000000003000040000000040000046900000a860000000000000a88000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000a86babababa55667788abcdef01000000000000250000000000000000010000002500000a8800000000feedface0000000000000001feedface00000000000000000000000000000000000000000000000000000001feedface000000000000000000000000000000007fff2ea80000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000"
+    },
+    {
+      "name": "n32-indirect-exec-no-release-0",
+      "exit": 137,
+      "watchdog": true,
+      "roles": [
+        1,
+        2
+      ],
+      "stdout_hex": "58535052000000300000000103000040000000050000046900000a9000000a8b7fff2ea800000000000000000000000000000000000000017bff7fc0000000001122000111220002112200031122000400000a90babababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000058535052000000000000000200000000000000000000000000000a900000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000a9000000000000000000000000000000000000000000000000000000000feedface0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "n32-indirect-exec-no-release-1",
+      "exit": 137,
+      "watchdog": true,
+      "roles": [
+        1,
+        2
+      ],
+      "stdout_hex": "58535052000000300000000103000040000000050000046900000a9b00000a967fff2ea800000000000000000000000000000000000000017bff7fc0000000001122000111220002112200031122000400000a9bbabababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d20000000000000000000000000000000058535052000000000000000200000000000000000000000000000a9b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000a9b00000000000000000000000000000000000000000000000000000000feedface000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000"
+    },
+    {
+      "name": "n32-indirect-no-block-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "58535052000000310000000102000040000000010000046900000aa100000aa97fff2ea800000000000000000000000000000000000000017bff7fc0000000001122000111220002112200031122000400000aa1babababa112233449876543200000000feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000058535052000000310000000002000040000000010000046900000aa90000000000000aa1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000aa9babababa55667788abcdef01000000000000250000000000000000010000002500000aa100000000feedface0000000000000001feedface00000000000000000000000000000000000000000000000000000001feedface000000000000000000000000000000007fff2ea800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "n32-indirect-no-block-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "58535052000000310000000102000040000000010000046900000aae00000aad7fff2ea800000000000000000000000000000000000000017bff7fc0000000001122000111220002112200031122000400000aaebabababa112233449876543200000000feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d20000000000000000000000000000000058535052000000310000000002000040000000010000046900000aad0000000000000aae000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000aadbabababa55667788abcdef01000000000000250000000000000000010000002500000aae00000000feedface0000000000000001feedface00000000000000000000000000000000000000000000000000000001feedface000000000000000000000000000000007fff2ea80000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000"
+    },
+    {
+      "name": "n32-indirect-no-share-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "58535052000000320000000103000000000000000000046900000abb00000ab67fff2ea800000000000000000000000000000000000000017bff7fc0000000001122000111220002112200031122000400000abbbabababa112233449876543200000001feedface0000000000000002feedface0000000000000001feedface0000000000000000feedface000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000058535052000000320000000003000000000000000000046900000ab60000000000000abb000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ab6babababa1122334498765432000000000000250000000000000000010000002500000abb00000000feedface0000000000000001feedface00000000000000000000000000000000000000000000000000000001feedface000000000000000000000000000000007fff2ea800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "n32-indirect-no-share-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "58535052000000320000000103000000000000000000046900000ac300000ac47fff2ea800000000000000000000000000000000000000017bff7fc0000000001122000111220002112200031122000400000ac3babababa112233449876543200000001feedface0000000000000002feedface0000000000000001feedface0000000000000000feedface000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d20000000000000000000000000000000058535052000000320000000003000000000000000000046900000ac40000000000000ac3000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ac4babababa1122334498765432000000000000250000000000000000010000002500000ac300000000feedface0000000000000001feedface00000000000000000000000000000000000000000000000000000001feedface000000000000000000000000000000007fff2ea80000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000"
+    },
+    {
+      "name": "n32-indirect-share-fds-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "5853505200000033000000010300004200000000000004690000075600000acd7fff2ea800000000000000000000000000000000000000017bff7fc0000000001122000111220002112200031122000400000756babababa112233449876543200000001feedface0000000000000002feedface0000000000000043feedface0000000000000000feedface000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000058535052000000330000000003000042000000000000046900000acd0000000000000756000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000acdbabababa55667788abcdef0100000000000025000000000000000001000000250000075600000000feedface0000000000000009feedface00000001000000000000000000000000000000000000000000000001feedface000000000000000000000000000000007fff2ea800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "n32-indirect-share-fds-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "58535052000000330000000103000042000000000000046900000acb00000ad37fff2ea800000000000000000000000000000000000000017bff7fc0000000001122000111220002112200031122000400000acbbabababa112233449876543200000001feedface0000000000000002feedface0000000000000043feedface0000000000000000feedface000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d20000000000000000000000000000000058535052000000330000000003000042000000000000046900000ad30000000000000acb000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ad3babababa55667788abcdef01000000000000250000000000000000010000002500000acb00000000feedface0000000000000009feedface00000001000000000000000000000000000000000000000000000001feedface000000000000000000000000000000007fff2ea80000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000"
+    },
+    {
+      "name": "n32-indirect-local-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "58535052000000340000000103000040000000000000046900000ad400000adc7fff2ea800000000000000000000000000000000000000017bff7fc0000000001122000111220002112200031122000400000ad4babababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface000000001234567800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000058535052000000340000000003000040000000000000046900000adc0000000000000ad4000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000adcbabababa55667788abcdef01000000000000250000000000000000010000002500000ad400000000feedface0000000000000001feedface0000000012345678000000005c000000feedface0000000000000001feedface000000000000000000000000000000007fff2ea800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "n32-indirect-local-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "58535052000000340000000103000040000000000000046900000ae700000ae87fff2ea800000000000000000000000000000000000000017bff7fc0000000001122000111220002112200031122000400000ae7babababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface000000001234567800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d20000000000000000000000000000000058535052000000340000000003000040000000000000046900000ae80000000000000ae7000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ae8babababa55667788abcdef01000000000000250000000000000000010000002500000ae700000000feedface0000000000000001feedface0000000012345678000000005c000000feedface0000000000000001feedface000000000000000000000000000000007fff2ea80000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000"
+    },
+    {
+      "name": "n32-indirect-new-mapping-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "58535052000000350000000103000040000000060000046900000aee00000a9f7fff2ea800000000000000000000000000000000000000017bff7fc0000000001122000111220002112200031122000400000aeebabababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000005c000000feedface000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000058535052000000350000000003000040000000060000046900000a9f0000000000000aee000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000a9fbabababa55667788abcdef01000000000000250000000000000000010000002500000aee00000000feedface0000000000000001feedface00000000000000000000000000000000000000000000000000000001feedface000000000000000000000000000000007fff2ea85c000000decaf1230000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "n32-indirect-new-mapping-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "58535052000000350000000103000040000000060000046900000af400000aec7fff2ea800000000000000000000000000000000000000017bff7fc0000000001122000111220002112200031122000400000af4babababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000005c000000feedface000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d20000000000000000000000000000000058535052000000350000000003000040000000060000046900000aec0000000000000af4000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000aecbabababa55667788abcdef01000000000000250000000000000000010000002500000af400000000feedface0000000000000001feedface00000000000000000000000000000000000000000000000000000001feedface000000000000000000000000000000007fff2ea85c000000decaf123000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000"
+    },
+    {
+      "name": "n32-indirect-explicit-stack-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "58535052000000360000000103000040000000000000046c00000b0000000b017fff2ea800000000000000000000000000000000000000015c003fc0000000001122000111220002112200031122000400000b00babababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface00000000000000005c004000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000058535052000000360000000003000040000000000000046c00000b010000000000000b00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000b01babababa55667788abcdef01000000000000250000000000000000010000002500000b0000000000feedface0000000000000001feedface00000000000000005c00400000000000000000000000000000000001feedface000000000000000000000000000000007fff2ea800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "n32-indirect-explicit-stack-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        1,
+        0
+      ],
+      "stdout_hex": "58535052000000360000000103000040000000000000046c00000b1200000b117fff2ea800000000000000000000000000000000000000015c003fc0000000001122000111220002112200031122000400000b12babababa112233449876543200000001feedface0000000000000002feedface0000000000000041feedface0000000000000000feedface00000000000000005c004000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d20000000000000000000000000000000058535052000000360000000003000040000000000000046c00000b110000000000000b12000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000b11babababa55667788abcdef01000000000000250000000000000000010000002500000b1200000000feedface0000000000000001feedface00000000000000005c00400000000000000000000000000000000001feedface000000000000000000000000000000007fff2ea80000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000"
+    },
+    {
+      "name": "n32-indirect-short-stack-0",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        0
+      ],
+      "stdout_hex": "58535052000000370000000003000040000000000000046c00000b180000000000000016feedface0000000100000000000000000000000000000000000000000000000000000000000000000000000000000b18babababa112233449876543200000000000000000000000000000000000000000000000000000000feedface0000000000000001feedface00000000000000000000000000000000000000000000000000000000feedface000000000000000000000000000000007fff2ea800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "n32-indirect-short-stack-1",
+      "exit": 0,
+      "watchdog": false,
+      "roles": [
+        0
+      ],
+      "stdout_hex": "58535052000000370000000003000040000000000000046c00000b1e0000000000000016feedface0000000100000000000000000000000000000000000000000000000000000000000000000000000000000b1ebabababa112233449876543200000000000000000000000000000000000000000000000000000000feedface0000000000000001feedface00000000000000000000000000000000000000000000000000000000feedface000000000000000000000000000000007fff2ea80000000000000000000000000000000000000000000000000000000000000000000004d2000004d2000004d2000004d200000000000000000000000000000000"
+    },
+    {
+      "name": "n32-indirect-bad-entry-0",
+      "exit": 137,
+      "watchdog": true,
+      "roles": [],
+      "stdout_hex": ""
+    },
+    {
+      "name": "n32-indirect-bad-entry-1",
+      "exit": 137,
+      "watchdog": true,
+      "roles": [],
+      "stdout_hex": ""
+    }
+  ]
+}
