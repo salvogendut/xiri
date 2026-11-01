@@ -7,10 +7,14 @@ registration mechanism. This is a userland capability supported by Xiri's
 IRIX ABI; the desired kernel deployment remains a module modeled on
 `compat_linux`.
 
-The [first native probe](results/2026-11-01-irix-installer.md) now identifies
-a shared/autogrow mmap requirement in installer startup. It also qualifies
-native/IRIX shared-home access and home-file persistence across a cold boot.
-Installation and graphical desktop persistence remain open.
+The [shared-mapping checkpoint](results/2026-11-01-irix-mmap-shared.md) clears
+the installer's initial crash. The [new retry](results/2026-11-01-irix-installer-shared.md)
+prints an incomplete hardware report, then the distribution dry run stops at
+`sproc` child creation while preparing target directories. Its exit status is
+zero despite a fatal message; distribution reading and installation are not
+established. Native/IRIX shared-home access and cold-boot home persistence
+remain qualified by the [earlier probe](results/2026-11-01-irix-installer.md).
+Graphical desktop persistence is still open.
 
 ## First application: xmahjongg
 

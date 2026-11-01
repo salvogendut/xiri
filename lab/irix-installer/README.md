@@ -52,3 +52,15 @@ PYTHONDONTWRITEBYTECODE=1 python3 scripts/qualify-irix-installer.py \
   .work/irix-installer/runs/mmap-ci-pq57kpty \
   --output docs/results/2026-11-01-irix-installer.json
 ```
+
+## Shared-mapping follow-up
+
+[The new checkpoint](../../docs/results/2026-11-01-irix-installer-shared.md)
+uses `probe-irix-installer-shared.py` with a separate kernel pin and fresh copy
+of the same clean desktop seed. It passes the previous mmap crash. `inst -H`
+prints an incomplete hardware report; the distribution dry run emits a fatal
+`sproc` child-launch error before reading packages, despite exiting zero.
+Signal-handler registration and hardware queries also remain incomplete.
+`qualify-irix-installer-shared.py` checks the original trap instruction,
+ordered trace, native/home controls and clean shutdown. The earlier observer,
+tracer and their qualified source hashes remain unchanged.

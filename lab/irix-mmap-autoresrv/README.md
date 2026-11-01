@@ -96,3 +96,8 @@ records successful table/fixed mappings and the next PR_INIT_THREADS boundary.
 
 The [initial pthread state lab](../irix-init-threads/README.md) qualifies the
 following initialization operation and retries the original desktop clients.
+
+The later [shared-mapping checkpoint](../irix-mmap-shared/README.md) extends
+the adapter with native SHARED mappings and zero-device AUTOGROW, retaining
+this historical fixture set and its pinned results. Regular-file AUTOGROW
+remains explicitly unsupported in that newer checkpoint.

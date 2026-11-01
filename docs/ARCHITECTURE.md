@@ -142,7 +142,12 @@ not establish thread creation. The [mkdir adapter](results/2026-11-01-irix-mkdir
 now uses native VFS creation with measured pathname translation and explicit
 native group-ownership policy. It adds no new core hook. The [pipe adapter](results/2026-11-01-irix-pipe.md)
 similarly dispatches to native descriptor allocation with the measured V0/V1
-return convention and no extra core hook. The [desktop retry](results/2026-11-01-irix-desktop-mkdir.md)
+return convention and no extra core hook. The [shared mmap adapter](results/2026-11-01-irix-mmap-shared.md)
+also uses existing native facilities: UVM supplies shared anonymous mappings,
+and AUTOGROW is bounded to the actual zero device. Regular-file fault-time
+growth remains unsupported. Original inst now reaches `sproc` with shared VM
+and parent-blocking flags; its lifecycle needs separate measurement, including
+PRDA and exec behavior. The [desktop retry](results/2026-11-01-irix-desktop-mkdir.md)
 reaches Icon Catalog's empty fallback window; wider waits and remaining client behavior
 are still separate compatibility work.
 

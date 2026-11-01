@@ -1,0 +1,78 @@
+{
+  "schema": 1,
+  "qualified": false,
+  "runs": [
+    {
+      "directory": ".work/irix-reference/mmap-shared-records-runs/ci-n8vn1_u1",
+      "status": "error",
+      "clean_shutdown": false,
+      "error": "RuntimeError: iris-ci get: iris-ci: iris error: wait-serial: wait-serial: timeout after 180000ms waiting for \"\\nIRIS-CI-RC=\"",
+      "sources": null,
+      "harness_sha256": "62d33b753de06030fafdd3512924d37faf97a5e5e95c33b9819096eff183d0d3",
+      "artifact_sha256": {
+        "result.json": "9b2b23bfdb2748a742ec6f384866aff0fe0884023d2a8dafc5c0613e247bee89",
+        "serial.log": "45ed46cae86d81d873ac9671172bffcf3c4ab96b426386cd3f38681a987fba06",
+        "commands.log": "535d9acba0561337494fd6ce6e8c86acf8e6111d4dbc3dcfed3306a3718a764c",
+        "run.sh": "d9df459fe1e178877ee2b8a61d261d3bef0a756ae2712e4556430038d6d3022a",
+        "archive.sh": "77e1cf0500a2e9915a60c3d03fe8d57e1f3e0ff1a4125a50588247a44c3cb706"
+      }
+    },
+    {
+      "directory": ".work/irix-mmap-shared/runs/lp64-ci-mat34neh",
+      "status": "error",
+      "clean_shutdown": true,
+      "error": "'o32-direct-installer-0.data'",
+      "sources": {
+        "lab/irix-process/runner.c": "51c8045805878f0566a62a66c157b32035d98144bc3bb06e51c78b2fa5f8a141",
+        "lab/irix-toolchest/session.c": "e183b4aefdfb428e01dc609230e87a7546a0b31e9d4b5e236503e0a8bb3b09f5",
+        "scripts/probe-irix-mmap-shared.py": "19aca6ac8c4312fac3aa80ea21a48e542fbb2037b7963c142acb9d7dca5d2db0",
+        "lab/irix-mmap-shared/native-control.c": "00ef0308e48acb9d2f15e42212212ca5c3daa2f5cc914e56453ca2e7963affa7"
+      },
+      "harness_sha256": null,
+      "artifact_sha256": {
+        "result.json": "3354a604ec4c6b9353a921ee9ffd6ed28a624af966ee6b2b82865b4d4a44aaf2",
+        "serial.log": "574074291567914803ddb665764469ff857badb34b68d35ca2751fe1f173b8c3",
+        "fixtures.log": "63905aab04912ef321dbbafcecd35119fe23f7e9674698d62958819728c650ac",
+        "backings.tar": "84ff92691f909a05b224e1c56abb4864f01b4f8e3c854e4bb4c7baf1d3f6d652"
+      }
+    },
+    {
+      "directory": ".work/irix-mmap-shared/runs/o32-ci-vo_0tdvo",
+      "status": "error",
+      "clean_shutdown": true,
+      "error": "'o32-direct-installer-0.data'",
+      "sources": {
+        "lab/irix-process/runner.c": "51c8045805878f0566a62a66c157b32035d98144bc3bb06e51c78b2fa5f8a141",
+        "lab/irix-toolchest/session.c": "e183b4aefdfb428e01dc609230e87a7546a0b31e9d4b5e236503e0a8bb3b09f5",
+        "scripts/probe-irix-mmap-shared.py": "19aca6ac8c4312fac3aa80ea21a48e542fbb2037b7963c142acb9d7dca5d2db0",
+        "lab/irix-mmap-shared/native-control.c": "00ef0308e48acb9d2f15e42212212ca5c3daa2f5cc914e56453ca2e7963affa7"
+      },
+      "harness_sha256": null,
+      "artifact_sha256": {
+        "result.json": "eee6cdf8eb12512aef1f8fbeee9c139b167e0d1c6b3a5cab062731652b546f04",
+        "serial.log": "d4dda3d4b20639b8417599c3d37d7ee2469f1e5c3e77fa528b781957eb44b8c6",
+        "fixtures.log": "09e0e53c35e560878befd08e6861bf632b6956b8daa8cbc3f9c8ed8045e81b57",
+        "backings.tar": "84ff92691f909a05b224e1c56abb4864f01b4f8e3c854e4bb4c7baf1d3f6d652"
+      }
+    },
+    {
+      "directory": ".work/irix-mmap-shared/runs/lp64-ordinary-2qev7e02",
+      "status": "error",
+      "clean_shutdown": true,
+      "error": "'o32-direct-installer-0.data'",
+      "sources": {
+        "lab/irix-process/runner.c": "51c8045805878f0566a62a66c157b32035d98144bc3bb06e51c78b2fa5f8a141",
+        "lab/irix-toolchest/session.c": "e183b4aefdfb428e01dc609230e87a7546a0b31e9d4b5e236503e0a8bb3b09f5",
+        "scripts/probe-irix-mmap-shared.py": "19aca6ac8c4312fac3aa80ea21a48e542fbb2037b7963c142acb9d7dca5d2db0",
+        "lab/irix-mmap-shared/native-control.c": "00ef0308e48acb9d2f15e42212212ca5c3daa2f5cc914e56453ca2e7963affa7"
+      },
+      "harness_sha256": null,
+      "artifact_sha256": {
+        "result.json": "2d223df476b4700d999f71dadf00b7812e1e21c5abdf1a19c27602bc13f6ae6c",
+        "serial.log": "e5d7ea8eb80d025b67ff2547c88e1a8f607a7efc9ac39aeead995ccbe1c63772",
+        "fixtures.log": "63905aab04912ef321dbbafcecd35119fe23f7e9674698d62958819728c650ac",
+        "backings.tar": "84ff92691f909a05b224e1c56abb4864f01b4f8e3c854e4bb4c7baf1d3f6d652"
+      }
+    }
+  ]
+}

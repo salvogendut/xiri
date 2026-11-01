@@ -93,6 +93,9 @@ also defines persistent `/usr/people` homes shared by native and IRIX programs.
 
 The [installer/home probe](docs/results/2026-11-01-irix-installer.md) now verifies
 native and IRIX access to one `/usr/people` home, including cold-boot
-persistence. Original `inst` reaches an unsupported shared/autogrow mmap;
-`libinst` then writes through the failed-map pointer. Installation, the
-Freeware catalog action and graphical login persistence remain open.
+persistence. The [shared-mapping checkpoint](docs/results/2026-11-01-irix-mmap-shared.md)
+now clears the installer's failed-map crash. The [retry](docs/results/2026-11-01-irix-installer-shared.md)
+prints an incomplete hardware report and reaches target-directory preparation,
+where its `sproc` child launch is unsupported. Distribution reading,
+installation, the Freeware catalog action and graphical login persistence
+remain open.

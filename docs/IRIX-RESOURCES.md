@@ -133,3 +133,11 @@ must not claim software absent from the Xiri runtime. Installed manuals and
 references. Native user accounts use `/usr/people/<username>` and generate
 fresh desktop state there. Original root sessions use `/` as HOME. See the
 [software/home design](IRIX-SOFTWARE.md).
+
+The [shared-mapping retry](results/2026-11-01-irix-installer-shared.md) now reads
+and maps the staged 5025-byte `/var/inst/machfile`, but CPU identification is
+still incomplete. No new resource import is justified by the next failure:
+the target-directory helper needs unsupported `sproc` process semantics.
+Keep hardware-query support distinct from resource staging. Package payloads,
+original hooks and icon/type assets remain required later; no catalog entry
+has yet been installed.

@@ -271,3 +271,12 @@ shared-home file checks survive a cold boot. Original inst startup is blocked
 by the captured shared/autogrow mmap request; both native controls and the
 known-fault tracer controls pass. The separate full-desktop CI capture timeout
 remains unresolved; this smaller passing harness does not clear it.
+
+The [shared-mapping cycle](results/2026-11-01-irix-mmap-shared.md) uses at most
+four concurrent IRIS guests, with sequential two-job kernel builds. Its final
+reference, three native matrices and installer retry all halt cleanly. The
+first uncompressed reference export failed and is retained as an unclean
+non-seed diagnostic; three initial native captures halted cleanly but lacked
+backing-file evidence due to a harness working-directory error. Corrected
+captures use compressed reference export and explicit native archive paths.
+The unchanged reference image's XFS alerts remain outside this qualification.

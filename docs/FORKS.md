@@ -109,3 +109,12 @@ build was needed. The pinned guest emulator remains `9df1df14334838a989253efefe2
 [pipe qualification](results/2026-11-01-irix-pipe.md) records the affected
 kernel builds and guest checks. Unrelated shared-checkout performance work
 was left untouched.
+
+The subsequent 2026-11-01 shared-mapping/installer cycle fetched the same
+upstream revision and found no new commits to integrate. NetBSD code is on
+`xiri` at `7af1404388b9f2db84f97a114c9f003b7c50b094`; the isolated LP64/o32
+builds and [paired mapping matrices](results/2026-11-01-irix-mmap-shared.md)
+qualify it. No emulator change was needed, and the unrelated shared-checkout
+performance work and detached reproductions were preserved. The
+[installer retry](results/2026-11-01-irix-installer-shared.md) records the
+next `sproc` boundary independently of kernel mapping qualification.
