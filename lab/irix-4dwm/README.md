@@ -50,3 +50,12 @@ input.txt fixture. They halted cleanly and never reached 4Dwm; they are excluded
 from application evidence. The corrected harness creates that fixture.
 
 The next two attempts exposed EACCES before application execution because executable destination modes were not explicitly restored. The corrected harness sets every staged ELF to mode 0555. Those staging failures are also excluded.
+
+The [fixed/local mmap checkpoint](../../docs/results/2026-11-01-irix-mmap-local.md)
+now removes the GL mapping warning and fault at 0x1050. The native page-zero
+guard remains in force for native programs, including after foreign exec.
+`probe-irix-4dwm-local.py` checks reparenting, focus, keyboard delivery and
+pointer dragging using the original `wmcheck.c` native client; the current
+4Dwm faults in libc `_usinit` at the absent PRDA PID field (`0x200e00`) before reparenting, so this is a negative
+management check. `probe-irix-4dwm-local-fault.py` captures that subsequent
+fault with native tracer controls. Raw frames and disassembly remain private.

@@ -121,7 +121,7 @@
     },
     {
       "id": "window_manager_defaults",
-      "status": "staged_startup_before_gl_mmap_fault",
+      "status": "staged_startup_after_gl_mapping",
       "image_paths": [
         "/usr/lib/X11/app-defaults/4DWm",
         "/usr/lib/X11/system.4Dwmrc",
@@ -130,9 +130,11 @@
       ],
       "evidence": [
         "lab/irix-desktop/manifest.json",
-        "docs/results/2026-11-01-irix-4dwm-loader.json"
+        "docs/results/2026-11-01-irix-4dwm-loader.json",
+        "docs/results/2026-11-01-irix-mmap-local.json",
+        "docs/results/2026-11-01-irix-4dwm-mmap.json"
       ],
-      "note": "4DWm defaults and system window-manager resources are staged with the unchanged library closure. The 4 KiB loader boundary is resolved; GL initialization now encounters a fixed/local private mmap request. Resource consumption, artwork and window-management behavior remain unqualified."
+      "note": "The original defaults and 25-library closure are staged. The 4 KiB library boundary and fixed/local GL mapping now pass. The next fault is libc _usinit reading the absent PRDA PID field at 0x200e00; resource consumption, artwork and desktop interaction remain unqualified."
     },
     {
       "id": "session_defaults",
@@ -247,6 +249,7 @@
     "PATH and XUSERFILESEARCHPATH",
     "generated or deliberately migrated per-user desktop state",
     "Native PTY allocation, ownership, controlling terminal and termios translation for the selected shell",
-    "Native fork/exec ABI transition, child descriptors and session/process group; verified native PTY reopen and controlling-terminal setup through /usr/libexec/xiri-shell. No additional vendor image assets needed for the shell checkpoint."
+    "Native fork/exec ABI transition, child descriptors and session/process group; verified native PTY reopen and controlling-terminal setup through /usr/libexec/xiri-shell. No additional vendor image assets needed for the shell checkpoint.",
+    "IRIX PRDA process data at 0x200000: original libc _usinit reads its PID at offset 0xe00. Kernel ABI state, not an image resource; original initialization/fork/exec behavior is being measured."
   ]
 }

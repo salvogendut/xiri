@@ -214,4 +214,4 @@ launcher exit. Native controls cover detached descendants, tty hangup and X
 keyboard input. Foreign signal handlers, resize and normal app exit remain open;
 4Dwm evaluation follows this working shell baseline.
 
-The [4Dwm loader checkpoint](results/2026-11-01-irix-elfmap-subpage.md) now handles the two 4 KiB data boundaries and passes 750 mapping/limit checks. Original 4Dwm loads past that boundary and next fails in GL initialization after an unsupported fixed/local private mapping request. Window management and desktop interaction remain unqualified.
+The [4Dwm loader checkpoint](results/2026-11-01-irix-elfmap-subpage.md) now handles the two 4 KiB data boundaries and passes 750 mapping/limit checks. The [fixed/local mmap checkpoint](results/2026-11-01-irix-mmap-local.md) now also clears GL initialization, with 660 mapping cases and native page-zero controls. Original 4Dwm next faults in libc `_usinit` while reading the missing PRDA PID field at `0x200e00`; desktop interaction remains unqualified.

@@ -104,7 +104,8 @@ Decision gate: if the display or desktop exposes a major feasibility obstacle, d
 - [x] Run a native interactive shell through [original winterm/xwsh](results/2026-11-01-irix-shell.md), with paired descriptor/session/exec probes, real keyboard input, a PNG and bounded descendant cleanup.
 - [ ] Qualify foreign signal handlers, resize, normal terminal exit and broader shell behavior; general layered-tty revoke remains open.
 - [x] Qualify the [4 KiB data mapping extension](results/2026-11-01-irix-elfmap-subpage.md): 750 mapping/limit checks; original 4Dwm passes its previous library boundary.
-- [ ] Resolve 4Dwm’s fixed/local private mmap request in GL initialization, then qualify window management and the desktop session while preserving winterm.
+- [x] Resolve [4Dwm’s fixed/local GL mapping](results/2026-11-01-irix-mmap-local.md): 660 cases, 30 controls and 32 native page-zero checks.
+- [ ] Provide the measured PRDA process data needed by libc `_usinit`, then qualify window management and the desktop session while preserving winterm.
 - [x] Capture the [actual libXmu mapping failure](results/2026-10-31-irix-xclock-elfmap.md): unchanged libXmu headers request two addresses already occupied by libXaw text, and the mapper returns ENOMEM. Native breakpoint controls and clean shutdown pass.
 - [x] Add [bounded collision relocation](results/2026-10-31-irix-elfmap-relocation.md): 576 mapper/limit checks, both ABIs, unchanged headers, alignment/gap/sentinel checks, and eight original analog/digital xclock windows. The later subpage checkpoint separately qualifies 4Dwm's 4 KiB data boundaries.
 - [ ] After the winterm/4Dwm priorities, measure and implement the time calls used by xclock; qualify clock advancement, redraw and sustained behavior beyond the current epoch-time display.
