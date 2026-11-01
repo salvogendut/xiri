@@ -16,6 +16,11 @@ changes in IRIS. The default branches remain available for upstream tracking.
 
 ## Continue development
 
+Inspect `git worktree list` before switching branches. If another active
+worktree owns `xiri`, leave it unchanged and create a topic from the latest
+`origin/xiri` for independent work. Publish the validated integration with a
+normal fast-forward push; the owning task can advance its checkout when ready.
+
 ```sh
 git -C ../iris switch xiri
 git -C ../iris pull --ff-only origin xiri
@@ -32,6 +37,42 @@ The default branches are not development targets for Xiri changes.
 Use separate build output paths for a new source tree or architecture, and
 keep kernel builds sequential with at most two jobs. Branch consolidation does
 not repin qualified kernels, emulator binaries, runtime resources or guest disks.
+
+## IRIS upstream updates
+
+Check [techomancer/iris](https://github.com/techomancer/iris) at the start of each
+development cycle and once per active day during longer cycles. This is part
+of active repository work; no unattended scheduler is installed.
+
+```sh
+git -C ../iris fetch --no-tags upstream main
+git -C ../iris log --oneline xiri..upstream/main
+git -C ../iris diff --stat xiri...upstream/main
+```
+
+Review and merge new upstream commits into `xiri`, using a temporary
+`topic/upstream-<date>` branch when needed. Resolve conflicts while preserving
+the fork's NetBSD and frontend changes. Run the affected build and regression
+checks, record the exact upstream revision and results, then finish the usual
+merge/push/topic-cleanup cycle. Diagnose failed checks before publishing;
+record any unresolved blocker instead of presenting an untested merge as ready.
+Existing guest pins remain unchanged until a separate runtime qualification
+accepts a replacement.
+
+The [2026-11-01 upstream integration record](results/2026-11-01-iris-upstream.md)
+tracks the first check under this workflow.
+
+The updated offscreen GL path needs an EGL runtime, which was absent from the
+original Fedora build Toolbox. Install it there before the workspace tests:
+
+```sh
+toolbox run -c xiri-iris sudo dnf install -y mesa-libEGL libglvnd-egl
+```
+
+An isolated `xvfb-run -a` display with `LIBGL_ALWAYS_SOFTWARE=1` can exercise
+the GL context test without depending on the host desktop's graphics setup.
+Keep the test enabled so a missing runtime is not mistaken for a successful
+GL check.
 
 ## Reproduce an earlier checkpoint
 

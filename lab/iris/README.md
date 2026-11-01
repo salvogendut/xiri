@@ -11,7 +11,7 @@ prepare the same Toolbox environment:
 
 ```sh
 toolbox -y create --release 44 xiri-iris
-toolbox run -c xiri-iris sudo dnf install -y rustup pkgconf-pkg-config alsa-lib-devel gcc gcc-c++ make clang
+toolbox run -c xiri-iris sudo dnf install -y rustup pkgconf-pkg-config alsa-lib-devel gcc gcc-c++ make clang mesa-libEGL libglvnd-egl
 toolbox run -c xiri-iris env RUSTUP_HOME="$PWD/.work/rustup" CARGO_HOME="$PWD/.work/cargo" rustup-init -y --no-modify-path --profile minimal --default-toolchain nightly-2026-10-28
 ./scripts/build-iris.sh
 ```

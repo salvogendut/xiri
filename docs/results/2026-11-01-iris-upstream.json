@@ -1,0 +1,560 @@
+{
+  "schema": 1,
+  "date": "2026-11-01",
+  "status": "integrated-and-published",
+  "upstream_repository": "https://github.com/techomancer/iris.git",
+  "upstream_branch": "main",
+  "previous_integrated_upstream_revision": "4915ca833bee480f3a4b1009b7b691af3bd2541a",
+  "upstream_revision": "f17b4d3bc1663efd02f93a5e0e4811eebba510c8",
+  "upstream_commits": [
+    {
+      "revision": "45f3635a89dfe22baf8aa8ebdb79e0c8e8ee41ab",
+      "subject": "ps2: send mouse moves as packets of at most 127 counts an axis"
+    },
+    {
+      "revision": "fb0bd6a97396a31fd5279c5b69f6d2bcd2b01ffd",
+      "subject": "jitv2: let IRIS_JIT_VERIFY turn the Cranelift IR verifier back on"
+    },
+    {
+      "revision": "bd075dff84c8585fed5f7a8a5fc33cf1d8d19a48",
+      "subject": "jitv2: compare verifier-on and verifier-off code for five page shapes"
+    },
+    {
+      "revision": "ca052808121fc09bc32155868adb575ec55b6709",
+      "subject": "changelog: quote the verifier timings from the pull request"
+    },
+    {
+      "revision": "b60021a5745c5110b40c12111b95b34e3d1b4009",
+      "subject": "gitignore: ignore the runtime files iris writes in its working directory"
+    },
+    {
+      "revision": "af2bbd1ace47dd74b10774102636eba55060b342",
+      "subject": "isp1040: move the test clock under the state lock"
+    },
+    {
+      "revision": "040612d5d870694e60a5425882ee91eec9aff7a2",
+      "subject": "ioc3_eth: wait for the device to be freed after the last drop in the stop test"
+    },
+    {
+      "revision": "9b551945fbd897205647dcdf64910098f206ca8d",
+      "subject": "ioc3: read the pending timer only between callbacks in the stop test"
+    },
+    {
+      "revision": "c0e49c66f5f2dc2cb0afb8fa8baff060e8c47795",
+      "subject": "iris-gui: cut the host cost of the frame path, and run the O2"
+    },
+    {
+      "revision": "9101277b9251659954388bf1561516d87fedc261",
+      "subject": "iris-gui: convert the bank array the dialog's per-bank pickers take"
+    },
+    {
+      "revision": "adf48641b14b534549a46f2c3369cd02cb0b2272",
+      "subject": "iris-gui: pin the frame-sink invariants with tests"
+    },
+    {
+      "revision": "2fa030e9a982a59fd4506bce669edec3601ab916",
+      "subject": "serial_host: wire a serial line through one helper"
+    },
+    {
+      "revision": "4093c8f43528fcf9861ba734beade582653054f3",
+      "subject": "ioc: wire the Indy and Indigo2 serial channels through serial_line"
+    },
+    {
+      "revision": "7085c1815fd26a8f461fc8ed5f3e9fdbe53ce945",
+      "subject": "serial: serve a console on a Unix socket as well as its TCP port"
+    },
+    {
+      "revision": "65879ed679dbdee9ad240655d579833413017188",
+      "subject": "hpc3: write Ethernet descriptors back before the channel stops"
+    },
+    {
+      "revision": "9049e0724eb1f245a516fa55d3092741182dde73",
+      "subject": "net: send gateway replies without holding them a pass"
+    },
+    {
+      "revision": "e4cf94d180d5c033caa3ed4138fb377e9b2b2747",
+      "subject": "rad1: pace the analog output from the generator 0x58 selects"
+    },
+    {
+      "revision": "e2cee5ba1cbb8097899c1e8f26ff65c2256c5ae2",
+      "subject": "rad1: play end-of-descriptor transfers once and link descriptors"
+    },
+    {
+      "revision": "4a4d42e05de9f70e09870e114380c01a38ba3f57",
+      "subject": "rad1: track the output relay and DAC mute words"
+    },
+    {
+      "revision": "f03087b4847249b71232cdfe730d5f8a484d2775",
+      "subject": "rad1: hold the card's clock through a timer hold-up"
+    },
+    {
+      "revision": "cd38d1f06243b05fe16386fbf780a28e4fecb111",
+      "subject": "host_audio: drop a stereo pair whole when the ring is full"
+    },
+    {
+      "revision": "ef215b2d71d5d4b923ab29278f2161f34d4a7b37",
+      "subject": "rad1: open the host stream at machine start and retry a failed open"
+    },
+    {
+      "revision": "6961ee57da0b3c3bca963a3e860b55921abc9fd0",
+      "subject": "iris-gui: make IRIS_GUI_GL work by not asking winit for an event loop"
+    },
+    {
+      "revision": "5869b744406494478410585d5cefc98c40844e55",
+      "subject": "idle-park: leave parked time out of the status bars' MIPS"
+    },
+    {
+      "revision": "c7c7559617a3da030a1d3f8f2f6f3bac8ffbe624",
+      "subject": "iris-gui: show the kernel Hz in the footer"
+    },
+    {
+      "revision": "cd8c5c7576f74f879d6e476afe83fdcd6895b778",
+      "subject": "iris-gui: report MIPS across every CPU"
+    },
+    {
+      "revision": "f17b4d3bc1663efd02f93a5e0e4811eebba510c8",
+      "subject": "disp: give every graphics board the machine's status-bar source"
+    }
+  ],
+  "fork_base_revision": "43fdfaaf39457223aa7dc2df5cbd565bf3e42cbd",
+  "merge_revision": "182efc8171f915be2152426819da8d05507c06c9",
+  "merge_parents": [
+    "43fdfaaf39457223aa7dc2df5cbd565bf3e42cbd",
+    "f17b4d3bc1663efd02f93a5e0e4811eebba510c8"
+  ],
+  "merge_tree": "427eacefb7525ae37c3930fb6883271d26a201c2",
+  "published_branch": "origin/xiri",
+  "published_revision_verified": true,
+  "temporary_topic_removed": true,
+  "resolved_conflicts": {
+    "CHANGELOG.md": "Retain both fork and upstream entries.",
+    "src/host_audio.rs": "Retain frontend PCM factory, upstream detached test output, and complete-pair overflow behavior."
+  },
+  "preserved_fork_only_files": [
+    "STORAGE.md",
+    "clanker/cpu/tlb-tags-survive-address-mode-changes.md",
+    "clanker/cpu/xtlb-vector-follows-mode-not-address.md",
+    "clanker/devices/embedded-flash-prom-selection.md",
+    "clanker/devices/frontend-pcm-output.md",
+    "clanker/devices/ip28-prom-bank-layouts.md",
+    "clanker/devices/ps2-controller-translation-for-netbsd.md",
+    "clanker/gui/embedded-guest-poweroff-state.md",
+    "clanker/gui/prismatic-paused-reset.md",
+    "clanker/net/netbsd-fragmented-nfs-upload-corruption.md",
+    "clanker/net/nfs-mount-advertise-auth-sys.md",
+    "clanker/rex3/netbsd-xaa-fastclear-colors.md",
+    "clanker/scsi/hashless-chd-cow.md",
+    "clanker/snapshot/mc-restore-must-republish-bank-map.md",
+    "debug.md",
+    "docs/Indy/hal2.md",
+    "docs/Indy/rex3.md",
+    "docs/octane-ip30.md",
+    "iris.toml",
+    "octane.toml.example",
+    "src/block_node.rs",
+    "src/block_node/chd_cow.rs",
+    "src/cpu/mips_exec_test.rs",
+    "src/cpu/mips_tlb.rs",
+    "src/cpu/mips_tlb_test.rs",
+    "src/dev/mc.rs",
+    "src/dev/ng1/bt445.rs",
+    "src/dev/ng1/rex3_profile.rs",
+    "src/dev/prom.rs",
+    "src/diagnostics.rs",
+    "src/exit_persistence_tests.rs",
+    "src/firmware.rs",
+    "src/host_audio/external.rs",
+    "src/lib.rs",
+    "src/machine_state.rs",
+    "src/monitor.rs",
+    "src/net/nfsudp.rs",
+    "src/prombinip30.rs",
+    "src/prombinip32.rs",
+    "tools/embed-prom.py"
+  ],
+  "initial_failed_attempts": [
+    {
+      "log_path": ".work/iris-upstream-2026-11-01/workspace-tests.log",
+      "log_sha256": "56f74a6dc17bc6ac484865a533b042c25c6303516e181980c1d9c8e99f8e47c9",
+      "exit_code": 101,
+      "test_summaries": [
+        {
+          "status": "FAILED",
+          "passed": 2017,
+          "failed": 1,
+          "ignored": 26,
+          "measured": 0,
+          "filtered_out": 0,
+          "elapsed_seconds": 141.2
+        }
+      ],
+      "cause": "EGL loader and Mesa EGL runtime absent in Toolbox; unchanged GL test passed after installing them."
+    },
+    {
+      "log_path": ".work/iris-upstream-2026-11-01/gl-xvfb-test.log",
+      "log_sha256": "4f59373e70816cbd335dfaf25f377f117f6d7f7fafe0e67b1469794c10b0962d",
+      "exit_code": 101,
+      "test_summaries": [
+        {
+          "status": "FAILED",
+          "passed": 0,
+          "failed": 1,
+          "ignored": 0,
+          "measured": 0,
+          "filtered_out": 2043,
+          "elapsed_seconds": 0.0
+        }
+      ],
+      "cause": "EGL loader and Mesa EGL runtime absent in Toolbox; unchanged GL test passed after installing them."
+    }
+  ],
+  "validation": [
+    {
+      "name": "gl-xvfb-retest",
+      "command": [
+        "toolbox",
+        "run",
+        "-c",
+        "xiri-iris",
+        "env",
+        "LIBGL_ALWAYS_SOFTWARE=1",
+        "RUSTUP_HOME=<xiri-checkout>/.work/rustup",
+        "CARGO_HOME=<xiri-checkout>/.work/cargo",
+        "CARGO_TARGET_DIR=<xiri-checkout>/.work/target",
+        "CARGO_BUILD_JOBS=2",
+        "xvfb-run",
+        "-a",
+        "<xiri-checkout>/.work/cargo/bin/cargo",
+        "+nightly-2026-10-28",
+        "test",
+        "--locked",
+        "--offline",
+        "-p",
+        "iris",
+        "--lib",
+        "--features",
+        "gpujit",
+        "headless_gl::tests::builds_a_context_without_an_event_loop",
+        "--",
+        "--exact",
+        "--nocapture",
+        "--test-threads=1"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 3.47,
+      "log_path": ".work/iris-upstream-2026-11-01/gl-xvfb-retest.log",
+      "log_sha256": "c53282d35d5f44333f9b972d9208578b98521e0f653841a23d25ad98d91badc4",
+      "test_summaries": [
+        {
+          "status": "ok",
+          "passed": 1,
+          "failed": 0,
+          "ignored": 0,
+          "measured": 0,
+          "filtered_out": 2043,
+          "elapsed_seconds": 0.08
+        }
+      ]
+    },
+    {
+      "name": "workspace-retest",
+      "command": [
+        "toolbox",
+        "run",
+        "-c",
+        "xiri-iris",
+        "env",
+        "LIBGL_ALWAYS_SOFTWARE=1",
+        "RUSTUP_HOME=<xiri-checkout>/.work/rustup",
+        "CARGO_HOME=<xiri-checkout>/.work/cargo",
+        "CARGO_TARGET_DIR=<xiri-checkout>/.work/target",
+        "CARGO_BUILD_JOBS=2",
+        "xvfb-run",
+        "-a",
+        "<xiri-checkout>/.work/cargo/bin/cargo",
+        "+nightly-2026-10-28",
+        "test",
+        "--locked",
+        "--offline",
+        "--workspace",
+        "--",
+        "--test-threads=2"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 161.47,
+      "log_path": ".work/iris-upstream-2026-11-01/workspace-retest.log",
+      "log_sha256": "731eda61d54b3c50b39ea4ff1edc85276162a27afc0867a3b032903ee087431e",
+      "test_summaries": [
+        {
+          "status": "ok",
+          "passed": 2018,
+          "failed": 0,
+          "ignored": 26,
+          "measured": 0,
+          "filtered_out": 0,
+          "elapsed_seconds": 142.91
+        },
+        {
+          "status": "ok",
+          "passed": 0,
+          "failed": 0,
+          "ignored": 0,
+          "measured": 0,
+          "filtered_out": 0,
+          "elapsed_seconds": 0.0
+        },
+        {
+          "status": "ok",
+          "passed": 0,
+          "failed": 0,
+          "ignored": 0,
+          "measured": 0,
+          "filtered_out": 0,
+          "elapsed_seconds": 0.0
+        },
+        {
+          "status": "ok",
+          "passed": 0,
+          "failed": 0,
+          "ignored": 0,
+          "measured": 0,
+          "filtered_out": 0,
+          "elapsed_seconds": 0.0
+        },
+        {
+          "status": "ok",
+          "passed": 1,
+          "failed": 0,
+          "ignored": 0,
+          "measured": 0,
+          "filtered_out": 0,
+          "elapsed_seconds": 0.0
+        },
+        {
+          "status": "ok",
+          "passed": 0,
+          "failed": 0,
+          "ignored": 0,
+          "measured": 0,
+          "filtered_out": 0,
+          "elapsed_seconds": 0.0
+        },
+        {
+          "status": "ok",
+          "passed": 0,
+          "failed": 0,
+          "ignored": 0,
+          "measured": 0,
+          "filtered_out": 0,
+          "elapsed_seconds": 0.0
+        },
+        {
+          "status": "ok",
+          "passed": 1,
+          "failed": 0,
+          "ignored": 0,
+          "measured": 0,
+          "filtered_out": 0,
+          "elapsed_seconds": 2.22
+        },
+        {
+          "status": "ok",
+          "passed": 91,
+          "failed": 0,
+          "ignored": 0,
+          "measured": 0,
+          "filtered_out": 0,
+          "elapsed_seconds": 0.53
+        },
+        {
+          "status": "ok",
+          "passed": 3,
+          "failed": 0,
+          "ignored": 0,
+          "measured": 0,
+          "filtered_out": 0,
+          "elapsed_seconds": 9.3
+        },
+        {
+          "status": "ok",
+          "passed": 2,
+          "failed": 0,
+          "ignored": 3,
+          "measured": 0,
+          "filtered_out": 0,
+          "elapsed_seconds": 0.56
+        },
+        {
+          "status": "ok",
+          "passed": 0,
+          "failed": 0,
+          "ignored": 0,
+          "measured": 0,
+          "filtered_out": 0,
+          "elapsed_seconds": 0.0
+        }
+      ]
+    },
+    {
+      "name": "jit-verifier",
+      "command": [
+        "toolbox",
+        "run",
+        "-c",
+        "xiri-iris",
+        "env",
+        "LIBGL_ALWAYS_SOFTWARE=1",
+        "RUSTUP_HOME=<xiri-checkout>/.work/rustup",
+        "CARGO_HOME=<xiri-checkout>/.work/cargo",
+        "CARGO_TARGET_DIR=<xiri-checkout>/.work/target",
+        "CARGO_BUILD_JOBS=2",
+        "xvfb-run",
+        "-a",
+        "<xiri-checkout>/.work/cargo/bin/cargo",
+        "+nightly-2026-10-28",
+        "test",
+        "--locked",
+        "--offline",
+        "-p",
+        "iris",
+        "--lib",
+        "--features",
+        "jitv2,idle-pause,gpujit",
+        "verifier_off_emits_the_same_code",
+        "--",
+        "--test-threads=2"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 58.91,
+      "log_path": ".work/iris-upstream-2026-11-01/jit-verifier.log",
+      "log_sha256": "a2c157b6da895f7523fea591c1b4f5ade5026a9de3e8da2549835bb0318caf85",
+      "test_summaries": [
+        {
+          "status": "ok",
+          "passed": 1,
+          "failed": 0,
+          "ignored": 0,
+          "measured": 0,
+          "filtered_out": 2561,
+          "elapsed_seconds": 0.07
+        }
+      ]
+    },
+    {
+      "name": "idle-park",
+      "command": [
+        "toolbox",
+        "run",
+        "-c",
+        "xiri-iris",
+        "env",
+        "LIBGL_ALWAYS_SOFTWARE=1",
+        "RUSTUP_HOME=<xiri-checkout>/.work/rustup",
+        "CARGO_HOME=<xiri-checkout>/.work/cargo",
+        "CARGO_TARGET_DIR=<xiri-checkout>/.work/target",
+        "CARGO_BUILD_JOBS=2",
+        "xvfb-run",
+        "-a",
+        "<xiri-checkout>/.work/cargo/bin/cargo",
+        "+nightly-2026-10-28",
+        "test",
+        "--locked",
+        "--offline",
+        "-p",
+        "iris",
+        "--lib",
+        "--features",
+        "jitv2,idle-pause,gpujit",
+        "cpu::idle_park::tests",
+        "--",
+        "--test-threads=2"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 3.36,
+      "log_path": ".work/iris-upstream-2026-11-01/idle-park.log",
+      "log_sha256": "655d733133257532797688c67c6d2bfb34f14cc8e3371e73261314c3351a0774",
+      "test_summaries": [
+        {
+          "status": "ok",
+          "passed": 15,
+          "failed": 0,
+          "ignored": 0,
+          "measured": 0,
+          "filtered_out": 2547,
+          "elapsed_seconds": 0.01
+        }
+      ]
+    },
+    {
+      "name": "idle-park-all",
+      "command": [
+        "toolbox",
+        "run",
+        "-c",
+        "xiri-iris",
+        "env",
+        "LIBGL_ALWAYS_SOFTWARE=1",
+        "RUSTUP_HOME=<xiri-checkout>/.work/rustup",
+        "CARGO_HOME=<xiri-checkout>/.work/cargo",
+        "CARGO_TARGET_DIR=<xiri-checkout>/.work/target",
+        "CARGO_BUILD_JOBS=2",
+        "xvfb-run",
+        "-a",
+        "<xiri-checkout>/.work/cargo/bin/cargo",
+        "+nightly-2026-10-28",
+        "test",
+        "--locked",
+        "--offline",
+        "-p",
+        "iris",
+        "--lib",
+        "--features",
+        "jitv2,idle-pause,gpujit",
+        "cpu::idle_park::",
+        "--",
+        "--test-threads=2"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 3.41,
+      "log_path": ".work/iris-upstream-2026-11-01/idle-park-all.log",
+      "log_sha256": "e71667942705dd3fc807b01fa4895048898200c0b8be5be4e2cccbacf434e8a4",
+      "test_summaries": [
+        {
+          "status": "ok",
+          "passed": 22,
+          "failed": 0,
+          "ignored": 0,
+          "measured": 0,
+          "filtered_out": 2540,
+          "elapsed_seconds": 0.03
+        }
+      ]
+    }
+  ],
+  "environment_fix": {
+    "container": "xiri-iris",
+    "distribution": "Fedora 44",
+    "installed_packages": [
+      "libglvnd-egl-1.7.0-9.fc44.x86_64",
+      "mesa-libEGL-26.2.5-1.fc44.x86_64"
+    ],
+    "gl_version": "4.6 (Core Profile) Mesa 26.2.5",
+    "gl_renderer": "llvmpipe (LLVM 22.1.8, 256 bits)"
+  },
+  "local_checkout": {
+    "path": "../iris",
+    "revision": "182efc8171f915be2152426819da8d05507c06c9",
+    "detached": true,
+    "clean": true
+  },
+  "concurrent_worktree": {
+    "path": "/tmp/prismatic-step1/iris",
+    "observed_branch": "xiri",
+    "observed_revision": "43fdfaaf39457223aa7dc2df5cbd565bf3e42cbd",
+    "modified_by_this_task": false,
+    "reason": "Another task checked out the local integration branch during validation; publish the tested merge without changing that worktree."
+  },
+  "guest_runtime_requalified": false,
+  "lab_pins_changed": false,
+  "future_check_cadence": "Start of each development cycle and once per active day during longer cycles; no unattended scheduler."
+}
