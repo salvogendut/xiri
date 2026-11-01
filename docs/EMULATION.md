@@ -324,3 +324,14 @@ xclock uses an intentional 18-second watchdog with group cleanup. Original
 and native guests halt cleanly. XWD captures are converted losslessly to PNG;
 clock/date semantics are checked independently of pixel changes. Existing
 qualified emulators, worktrees and kernels remain pinned.
+
+The [installer helper cycle](results/2026-11-01-irix-installer-helpers.md)
+reuses the time kernel and stopped desktop seed. A baseline and native-path
+comparison retain complete raw traces; CI and ordinary execution qualify the
+same bootstrap exit and remaining unreaped-child boundary. The focused host
+decoder reads the LP64 version-2 layout directly because the guest's o32
+kdump splits native argument slots and cannot identify foreign syscall names.
+All direct foreign entry/return pairs are cross-checked with the text decoder.
+The supervisor's group-absence check is supplemented by absence of every
+traced PID, since the native helper creates its own session. All guests halt
+after transfer; this cycle changes no kernel or emulator artifact.

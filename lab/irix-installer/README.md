@@ -92,6 +92,11 @@ Both pipe duplications now succeed. The remaining capture shows a bounded
 gettimeofday/select loop and unchanged helper search paths at that checkpoint.
 The [time follow-up](../../docs/results/2026-11-01-irix-installer-time.md) uses
 `probe-irix-installer-time.py` and `qualify-irix-installer-time.py`: time calls
-now succeed, while the bounded dry run still times out. Capture helper
-arguments/output and qualify their runtime paths and completion handling next.
+now succeed, while the bounded dry run still times out. The
+[helper follow-up](../irix-installer-helpers/README.md) captures full argv,
+output, exit and process state. Four native utility aliases let the embedded
+bootstrap exit zero, but the foreign parent leaves it unreaped. Signal
+registration/delivery and the callback's wait-any mode are next; native
+`stat -qd` also remains incompatible. This is not distribution-read or
+installation success.
 No package is installed yet.

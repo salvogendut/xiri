@@ -203,6 +203,17 @@ Provide explicit adapters for system integration. An IRIX control panel that cha
 
 ## Shared files and application launch
 
+The [installer helper trace](results/2026-11-01-irix-installer-helpers.md)
+separates native utility lookup from foreign child completion. Its embedded
+script runs through native `/bin/sh`; four explicit native aliases let it
+exit zero, but the IRIX parent leaves it a zombie. The parent receives ENOSYS
+from SIGCHLD sigaction. Its library callback predicts waitsys selector7 with
+options0x43, beyond the current positive-child-only implementation. Support
+requires measured foreign signal frames/trampolines and sigreturn plus the
+appropriate wait selector/options; successful native exec alone cannot
+provide those interfaces. Native `stat -qd` compatibility remains a separate
+userland requirement. The final module/service split is unchanged.
+
 Keep the IRIX runtime in a distinct tree while making selected user files available consistently to native and compatible processes. The path policy must cover absolute library paths, executable lookup, temporary files, user identities, and desktop configuration.
 
 A compatibility launcher should select the appropriate runtime for IRIX programs and dispatch host-native programs without routing them through IRIX libraries. Define environment and argument handling explicitly. This is needed for a native editor or network client to become a useful part of the preserved desktop.

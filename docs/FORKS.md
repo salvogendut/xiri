@@ -165,3 +165,13 @@ builds, original/native ABI matrices and xclock updates. The
 [installer retry](results/2026-11-01-irix-installer-time.md) retains its remaining
 helper boundary. Later documentation commits do not change the pinned source
 or binaries; no IRIS source change or upstream merge was needed.
+
+At the start of the installer-helper cycle, all three repositories were
+verified clean and pushed (Xiri `640a039`, NetBSD `xiri` `1532f82a003`, IRIS
+`xiri` `045d692`). A fresh fetch again found upstream
+`4ad1b1d435dc115697433f091b10dfa8c48aa7ed` already contained in IRIS `xiri`.
+No integration or affected emulator rebuild was needed. The
+[helper qualification](results/2026-11-01-irix-installer-helpers.md) uses the
+existing time kernel and qualified emulator in fresh disposable guests;
+detached reproductions and the unrelated IRIS performance branch remain
+untouched. Only Xiri lab tooling and documentation change in this cycle.

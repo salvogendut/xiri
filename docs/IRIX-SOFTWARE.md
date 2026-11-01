@@ -18,13 +18,22 @@ now confirms successful time/gettimeofday calls, while the unchanged dry run
 still reaches its watchdog. Distribution reading and installation remain
 unqualified.
 
-The helper shell searches IRIX-style directories for `ls` and `mkdir`, omitting
-NetBSD's `/bin`. Next capture helper arguments/output and qualify an explicit
-native bootstrap arrangement or the required original utilities, then follow
-the parent's output/child-completion handling. The missing paths do not prove
-the timeout's sole cause. Signal registration, system/hardware information,
-umask and creat remain observed gaps. No package history or catalog entry is
-created merely by resolving these ABI requirements.
+The [helper follow-up](results/2026-11-01-irix-installer-helpers.md) captures
+the compiled-in target-directory bootstrap. It replaces PATH with IRIX-style
+directories that omit `/bin`. Four explicit native utility aliases
+(`ls`, `mkdir`, `mv`, `ln`) let this bootstrap exit zero in CI and ordinary
+guests, while the unchanged installer still waits and leaves the child a
+zombie. SIGCHLD registration returns ENOSYS; the supplied library's completion
+callback would use `waitsys(P_ALL, 0, ..., 0x43, 0)`, another unimplemented
+mode. That call is a static prediction, not a runtime observation.
+
+The aliases are a disposable lab arrangement, not general IRIX command
+compatibility. Native `stat -qd` fails and the original script falls back to
+zero, so filesystem-device comparison remains unqualified. Measure signal
+registration, trampoline/frame/return and wait-any behavior next, then
+resolve the utility mismatch before claiming installer support. Hardware
+information, umask and creat also remain gaps. No package history or catalog
+entry has been created.
 
 Native/IRIX shared-home access passes again. Cold-boot home persistence remains
 qualified by the [earlier probe](results/2026-11-01-irix-installer.md); graphical

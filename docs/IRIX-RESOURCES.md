@@ -167,3 +167,15 @@ returns while the helper/output/completion boundary remains. The successful
 [xclock time checks](results/2026-11-01-irix-time.md) reuse its pinned executable,
 libraries and app-defaults, native fonts and standard X colors, with `TZ=UTC0`.
 No additional clock resource was imported; timezone/DST data remains unqualified.
+
+The [helper trace](results/2026-11-01-irix-installer-helpers.md) now identifies
+the installer's embedded target-directory bootstrap. Its native execution
+needs `ls`, `mkdir`, `mv` and `ln` reachable through a PATH that omits `/bin`.
+Explicit `/usr/bin` aliases qualify this narrow path in disposable guests;
+no original utility was imported. The script also requests IRIX `stat -qd`,
+which NetBSD rejects. Inventory the original `/usr/bin/stat` and its runtime
+closure, or measure and implement an explicit native argument adapter. The
+script's fallback device value zero does not qualify filesystem identity or
+cross-filesystem installation. Signal handling and child reaping are kernel
+requirements, separate from these utility resources. Existing xmahjongg,
+package-hook and Freeware catalog requirements remain open.

@@ -101,6 +101,11 @@ installer's missing descriptor allocation, with 420 exact records and 220 pipe
 regressions passing. The [installer retry](docs/results/2026-11-01-irix-installer-dupfd.md)
 connects its helper's stdout/stderr. The [time checkpoint](docs/results/2026-11-01-irix-time.md)
 now passes 480 ABI records and advances original xclock. The [installer time retry](docs/results/2026-11-01-irix-installer-time.md)
-receives successful time calls but still times out; helper paths, output and
-completion handling are next. Distribution reading,
+receives successful time calls but still times out. The
+[helper trace](docs/results/2026-11-01-irix-installer-helpers.md) identifies its
+embedded bootstrap and qualifies four native utility aliases in the lab.
+The bootstrap then exits zero, while the parent leaves it unreaped. Foreign
+SIGCHLD registration/delivery and the callback's wait-for-any-child mode are
+the next interfaces to measure. Native `stat -qd` remains incompatible.
+Distribution reading,
 installation, the Freeware catalog action and graphical login persistence remain open.

@@ -1,0 +1,534 @@
+{
+  "schema": 1,
+  "status": "helper-path-progress-unreaped-child-boundary",
+  "installation_success": false,
+  "distribution_read": false,
+  "pin": {
+    "schema": 1,
+    "description": "Measured IRIX time and gettimeofday",
+    "ident": "XIRI_IRIX_TIME_20261101",
+    "source_revision": "76de548ab644cb471f4c5b97ec89671c1d385c5b",
+    "source_branch": "xiri",
+    "build_arch": "mips64eb",
+    "page_bytes": 8192,
+    "boot_kernel_sha256": "3fbdfa95f13c1e69432a73a71168080526480f7e3130979d05f3091a531b2afd",
+    "native_kernel_sha256": "956bcd16d46d0c0d1625cea6cb10c3c7086e9be3e95a98f32e18efddecc97ed0",
+    "debug_kernel_sha256": "6693987451d272a820fd90d9e6da45d3b152876a5f0512f311a1a5b996558ddf",
+    "native_o32_sha256": "c294fbb1f2110445be31c096481ea54ab561c7e59ca5b9fc7171310098d755d4",
+    "source_dirty": false,
+    "emulator_revision": "9df1df14334838a989253efefe26f0547e6da592",
+    "emulator_branch": "xiri/netbsd64-tlb",
+    "emulator_sha256": "1b3f7702ba7f43b5c4fca8ba8884243559f46371d8d67a36ce5e6fee1e595eba",
+    "ci_client_sha256": "8711321aa6eaae440da3c7920b00ae4cf1c7f2abbdb15a9919f58485500ffb6c",
+    "base_disk_sha256": "269038c7b77660c83d3835208fc0b2702c93110c14b3c55a42416f51672cee2a",
+    "nvram_sha256": "ee883474d52f09278287b2044f7aeca61d2e7bc39c0bb8fd85c983ab64063d15",
+    "config_sha256": "bc7d26912d4ae7ff607b667ca663ea82013d8018ea33d302cd8e1236bf5e113c",
+    "runtimes": [
+      {
+        "name": "vendor-o32-libc",
+        "path": "/usr/lib/libc.so.1",
+        "sha256": "ea766492103a193e9d404942705e4e28987545e37f699ede232b6c0f8c97c954"
+      },
+      {
+        "name": "vendor-o32-rld",
+        "path": "/lib/rld",
+        "sha256": "30228b54c1e5585b365514eb7c9895b03cc0f61cb898e05e3ddafece87863439"
+      },
+      {
+        "name": "vendor-n32-libc",
+        "path": "/lib32/libc.so.1",
+        "sha256": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e"
+      },
+      {
+        "name": "vendor-n32-rld",
+        "path": "/lib32/rld",
+        "sha256": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b"
+      }
+    ],
+    "config_path": "lab/irix-time/XIRI_IRIX_TIME"
+  },
+  "runs": [
+    {
+      "directory": ".work/irix-installer-helpers/runs/ci-baseline-2u_ono9g",
+      "mode": "ci",
+      "native_paths": false,
+      "result_sha256": "8f1732f59ecb2f4ebbbe32f918540de47a0947f7b803d8432a61575f6e218ce5",
+      "serial_sha256": "f558f42b23cdccc988add62c1e798094178c0695918dca8c5298fc87622cae90",
+      "sources": {
+        "scripts/probe-irix-installer-helpers.py": "33b71e52801050ae1ce802faa4849c35dcee3fb6130e1f31cd23ee34ba852a20",
+        "scripts/setup-xiri-user.sh": "c74c3d13be95823e41a081f6a0439dbf062ba7be3b4e75c03e8d2e3be0a4eeb6",
+        "lab/irix-process/runner.c": "51c8045805878f0566a62a66c157b32035d98144bc3bb06e51c78b2fa5f8a141",
+        "lab/irix-toolchest/session.c": "e183b4aefdfb428e01dc609230e87a7546a0b31e9d4b5e236503e0a8bb3b09f5",
+        "lab/irix-installer-helpers/setup-native-paths.sh": "5c465dddd36d88393af15e71c99880cb3b69df145ef134f41cc649f7e0287977"
+      },
+      "artifacts": {
+        "log_sha256": "e9d90de2a1b589629f5c873f4933665f7dd7fc2f9f1a3f7f25df73c7938a40f2",
+        "trace_sha256": "65f5581047a4f9e3b79b09508d06bb89bff68a7d6f192936b12483bcb8969663",
+        "raw_trace_sha256": "1b0c6ddbfd4217f38a83c49e45a418be2428aded61c6b96864a5c8d30cef0d89",
+        "process_snapshot_sha256": "e2098cfad49e6424529647cb365afeaf8ca4d900c7912bfabfb6492a676efb1c"
+      },
+      "trace_records": 1821,
+      "record_types": {
+        "7": 9,
+        "1": 590,
+        "3": 110,
+        "10": 13,
+        "11": 27,
+        "15": 9,
+        "2": 590,
+        "8": 450,
+        "4": 22,
+        "5": 1
+      },
+      "parent_pid": 1641,
+      "helper_pid": 490,
+      "helper_exit": 1,
+      "helper_argv": [
+        "/bin/sh",
+        "-c",
+        "<private script>",
+        "/bin/sh"
+      ],
+      "helper_script_sha256": "595108595a6b71e81a30182ef3df6f62ca6c5c4898e5d6ec4ee5d0a04d8068ec",
+      "helper_path": "/sbin:/usr/bin:/usr/bsd:/usr/sbin:/etc:/usr/etc:",
+      "native_utility_arguments": [],
+      "native_stat_failures": 0,
+      "native_utility_hashes": {
+        "/bin/sh": "943c7be2c8b534a84b628cd77d841f638af8884b5a587beb02b1932b70a0ac98",
+        "/bin/ls": "ad96cee2007aee226f3c1d7afea8d7d5fd0c4388f6a64d24de1e5409a0e2197f",
+        "/bin/mkdir": "824d6f45fe7823ef2bccf185cd206e1a0e397070626556560bb41ecc14c84d1f",
+        "/bin/mv": "3b77ffba3e8160544681f7fc96ba81fffa9c9f8ca6e1c8389b1cbc2e59aa3374",
+        "/bin/ln": "1854904366daa373f3a74809119349c404c0b8f35ad0bd4a35764e4f65854d8b",
+        "/usr/bin/stat": "6c9c6a5585b6dc5a56b77296a56b9b2775a2b1b0b51719837e410da1e473edcd"
+      },
+      "parent_helper_stderr": "sh: mkdir: not found\nCannot install under \"/emul/irix\": No such file or directory\n",
+      "zombie_snapshot": "490 1641  490 820d00 Z    (sh)",
+      "sigchld_registration": {
+        "pid": 1641,
+        "lwp": 1641,
+        "call": {
+          "syscall": 1162,
+          "pc": 262522236,
+          "a0": 18,
+          "a1": 2147447856,
+          "a2": 2147447888,
+          "a3": 263182456
+        },
+        "result": {
+          "syscall": 1162,
+          "v0": 89,
+          "a3": 1
+        }
+      },
+      "waitsys_calls": 0,
+      "select_without_fds_after_child_exit": 15,
+      "gettimeofday_successes": 54,
+      "native_controls": 4,
+      "shared_home_verified": true,
+      "traced_pids_absent": true,
+      "clean_shutdown": true,
+      "installer": {
+        "errno_bytes": 0,
+        "errno": 0,
+        "exit": -1,
+        "signal": 9,
+        "killed": 1,
+        "stdout": "",
+        "stderr": "Internal program error: SIGBUS not handled for mmap.\nInternal program error: SIGSEGV not handled for mmap.\n"
+      }
+    },
+    {
+      "directory": ".work/irix-installer-helpers/runs/ci-native-6aojd6p5",
+      "mode": "ci",
+      "native_paths": true,
+      "result_sha256": "96d6faf2f31afa6145c83013beaba0bbbda11ad7be83babe45ef5e04a9e48e51",
+      "serial_sha256": "24549ccba6f86a4ed93e19fff6b94ca780c6307951fd8bde716c88ad6bbe18fe",
+      "sources": {
+        "scripts/probe-irix-installer-helpers.py": "33b71e52801050ae1ce802faa4849c35dcee3fb6130e1f31cd23ee34ba852a20",
+        "scripts/setup-xiri-user.sh": "c74c3d13be95823e41a081f6a0439dbf062ba7be3b4e75c03e8d2e3be0a4eeb6",
+        "lab/irix-process/runner.c": "51c8045805878f0566a62a66c157b32035d98144bc3bb06e51c78b2fa5f8a141",
+        "lab/irix-toolchest/session.c": "e183b4aefdfb428e01dc609230e87a7546a0b31e9d4b5e236503e0a8bb3b09f5",
+        "lab/irix-installer-helpers/setup-native-paths.sh": "5c465dddd36d88393af15e71c99880cb3b69df145ef134f41cc649f7e0287977"
+      },
+      "artifacts": {
+        "log_sha256": "e9d90de2a1b589629f5c873f4933665f7dd7fc2f9f1a3f7f25df73c7938a40f2",
+        "trace_sha256": "af4e7e32f6dbad02e3d3a61ff1b6e4b19155c4a194a26d24819f29591f71232a",
+        "raw_trace_sha256": "b5010f55b98b99e21a402c6aa6461e1fa683d2cea0ce20db4d2ffc960f12d3a7",
+        "process_snapshot_sha256": "f9d385092c5c2d37c351d07770f152b75eef1cc0f753bf92255cfad4352df8cc"
+      },
+      "trace_records": 5497,
+      "record_types": {
+        "7": 34,
+        "1": 2213,
+        "3": 316,
+        "10": 51,
+        "11": 157,
+        "15": 44,
+        "2": 2213,
+        "8": 403,
+        "4": 65,
+        "5": 1
+      },
+      "parent_pid": 2216,
+      "helper_pid": 2153,
+      "helper_exit": 0,
+      "helper_argv": [
+        "/bin/sh",
+        "-c",
+        "<private script>",
+        "/bin/sh"
+      ],
+      "helper_script_sha256": "595108595a6b71e81a30182ef3df6f62ca6c5c4898e5d6ec4ee5d0a04d8068ec",
+      "helper_path": "/sbin:/usr/bin:/usr/bsd:/usr/sbin:/etc:/usr/etc:",
+      "native_utility_arguments": [
+        [
+          "ls",
+          "-ld",
+          "/emul/irix"
+        ],
+        [
+          "stat",
+          "-qd",
+          "/emul/irix"
+        ],
+        [
+          "stat",
+          "-qd",
+          "/emul/irix/usr"
+        ],
+        [
+          "ls",
+          "-ld",
+          "/emul/irix/usr"
+        ],
+        [
+          "ls",
+          "-ld",
+          "/emul/irix/tmp.sav"
+        ],
+        [
+          "mv",
+          "/emul/irix/tmp",
+          "/emul/irix/tmp.sav"
+        ],
+        [
+          "mkdir",
+          "/emul/irix/tmp"
+        ],
+        [
+          "ls",
+          "-ld",
+          "/emul/irix/var/tmp.sav"
+        ],
+        [
+          "mv",
+          "/emul/irix/var/tmp",
+          "/emul/irix/var/tmp.sav"
+        ],
+        [
+          "mkdir",
+          "/emul/irix/var/tmp"
+        ],
+        [
+          "ls",
+          "-ld",
+          "/emul/irix/usr/tmp.sav"
+        ],
+        [
+          "mv",
+          "/emul/irix/usr/tmp",
+          "/emul/irix/usr/tmp.sav"
+        ],
+        [
+          "ln",
+          "-s",
+          "../var/tmp",
+          "/emul/irix/usr/tmp"
+        ]
+      ],
+      "native_stat_failures": 2,
+      "native_utility_hashes": {
+        "/bin/sh": "943c7be2c8b534a84b628cd77d841f638af8884b5a587beb02b1932b70a0ac98",
+        "/bin/ls": "ad96cee2007aee226f3c1d7afea8d7d5fd0c4388f6a64d24de1e5409a0e2197f",
+        "/bin/mkdir": "824d6f45fe7823ef2bccf185cd206e1a0e397070626556560bb41ecc14c84d1f",
+        "/bin/mv": "3b77ffba3e8160544681f7fc96ba81fffa9c9f8ca6e1c8389b1cbc2e59aa3374",
+        "/bin/ln": "1854904366daa373f3a74809119349c404c0b8f35ad0bd4a35764e4f65854d8b",
+        "/usr/bin/stat": "6c9c6a5585b6dc5a56b77296a56b9b2775a2b1b0b51719837e410da1e473edcd"
+      },
+      "parent_helper_stderr": "",
+      "zombie_snapshot": "2153 2216 2153 c4cc80 Z    (sh)",
+      "sigchld_registration": {
+        "pid": 2216,
+        "lwp": 2216,
+        "call": {
+          "syscall": 1162,
+          "pc": 262522236,
+          "a0": 18,
+          "a1": 2147447856,
+          "a2": 2147447888,
+          "a3": 263182456
+        },
+        "result": {
+          "syscall": 1162,
+          "v0": 89,
+          "a3": 1
+        }
+      },
+      "waitsys_calls": 0,
+      "select_without_fds_after_child_exit": 14,
+      "gettimeofday_successes": 43,
+      "native_controls": 4,
+      "shared_home_verified": true,
+      "traced_pids_absent": true,
+      "clean_shutdown": true,
+      "installer": {
+        "errno_bytes": 0,
+        "errno": 0,
+        "exit": -1,
+        "signal": 9,
+        "killed": 1,
+        "stdout": "",
+        "stderr": "Internal program error: SIGBUS not handled for mmap.\nInternal program error: SIGSEGV not handled for mmap.\n"
+      }
+    },
+    {
+      "directory": ".work/irix-installer-helpers/runs/ordinary-native-be2zjp_7",
+      "mode": "ordinary",
+      "native_paths": true,
+      "result_sha256": "cc22aeaf93fec2d6c81dea2139cc7e55251dc6696230c5bca0a13ba147b797e6",
+      "serial_sha256": "d83da1d2581b8e791e171170fff9c97a6caa1fad87346cac9c9a55ed62cb1a5a",
+      "sources": {
+        "scripts/probe-irix-installer-helpers.py": "33b71e52801050ae1ce802faa4849c35dcee3fb6130e1f31cd23ee34ba852a20",
+        "scripts/setup-xiri-user.sh": "c74c3d13be95823e41a081f6a0439dbf062ba7be3b4e75c03e8d2e3be0a4eeb6",
+        "lab/irix-process/runner.c": "51c8045805878f0566a62a66c157b32035d98144bc3bb06e51c78b2fa5f8a141",
+        "lab/irix-toolchest/session.c": "e183b4aefdfb428e01dc609230e87a7546a0b31e9d4b5e236503e0a8bb3b09f5",
+        "lab/irix-installer-helpers/setup-native-paths.sh": "5c465dddd36d88393af15e71c99880cb3b69df145ef134f41cc649f7e0287977"
+      },
+      "artifacts": {
+        "log_sha256": "e9d90de2a1b589629f5c873f4933665f7dd7fc2f9f1a3f7f25df73c7938a40f2",
+        "trace_sha256": "b0f39635ce19a4bd999dd14472a13e5edcdaa61413e097856eef4853094836dc",
+        "raw_trace_sha256": "32ae961eb4f78645e0acc38adfd99af5e22928dad65a3a70525d0ece9ad3f091",
+        "process_snapshot_sha256": "c0ed48262e4940732b568f5f8f0898b9e42101b1b71caed0df4776b7922c354f"
+      },
+      "trace_records": 5513,
+      "record_types": {
+        "7": 34,
+        "1": 2217,
+        "3": 316,
+        "10": 51,
+        "11": 157,
+        "15": 44,
+        "2": 2217,
+        "8": 411,
+        "4": 65,
+        "5": 1
+      },
+      "parent_pid": 2138,
+      "helper_pid": 2262,
+      "helper_exit": 0,
+      "helper_argv": [
+        "/bin/sh",
+        "-c",
+        "<private script>",
+        "/bin/sh"
+      ],
+      "helper_script_sha256": "595108595a6b71e81a30182ef3df6f62ca6c5c4898e5d6ec4ee5d0a04d8068ec",
+      "helper_path": "/sbin:/usr/bin:/usr/bsd:/usr/sbin:/etc:/usr/etc:",
+      "native_utility_arguments": [
+        [
+          "ls",
+          "-ld",
+          "/emul/irix"
+        ],
+        [
+          "stat",
+          "-qd",
+          "/emul/irix"
+        ],
+        [
+          "stat",
+          "-qd",
+          "/emul/irix/usr"
+        ],
+        [
+          "ls",
+          "-ld",
+          "/emul/irix/usr"
+        ],
+        [
+          "ls",
+          "-ld",
+          "/emul/irix/tmp.sav"
+        ],
+        [
+          "mv",
+          "/emul/irix/tmp",
+          "/emul/irix/tmp.sav"
+        ],
+        [
+          "mkdir",
+          "/emul/irix/tmp"
+        ],
+        [
+          "ls",
+          "-ld",
+          "/emul/irix/var/tmp.sav"
+        ],
+        [
+          "mv",
+          "/emul/irix/var/tmp",
+          "/emul/irix/var/tmp.sav"
+        ],
+        [
+          "mkdir",
+          "/emul/irix/var/tmp"
+        ],
+        [
+          "ls",
+          "-ld",
+          "/emul/irix/usr/tmp.sav"
+        ],
+        [
+          "mv",
+          "/emul/irix/usr/tmp",
+          "/emul/irix/usr/tmp.sav"
+        ],
+        [
+          "ln",
+          "-s",
+          "../var/tmp",
+          "/emul/irix/usr/tmp"
+        ]
+      ],
+      "native_stat_failures": 2,
+      "native_utility_hashes": {
+        "/bin/sh": "943c7be2c8b534a84b628cd77d841f638af8884b5a587beb02b1932b70a0ac98",
+        "/bin/ls": "ad96cee2007aee226f3c1d7afea8d7d5fd0c4388f6a64d24de1e5409a0e2197f",
+        "/bin/mkdir": "824d6f45fe7823ef2bccf185cd206e1a0e397070626556560bb41ecc14c84d1f",
+        "/bin/mv": "3b77ffba3e8160544681f7fc96ba81fffa9c9f8ca6e1c8389b1cbc2e59aa3374",
+        "/bin/ln": "1854904366daa373f3a74809119349c404c0b8f35ad0bd4a35764e4f65854d8b",
+        "/usr/bin/stat": "6c9c6a5585b6dc5a56b77296a56b9b2775a2b1b0b51719837e410da1e473edcd"
+      },
+      "parent_helper_stderr": "",
+      "zombie_snapshot": "2262 2138 2262 8258c0 Z    (sh)",
+      "sigchld_registration": {
+        "pid": 2138,
+        "lwp": 2138,
+        "call": {
+          "syscall": 1162,
+          "pc": 262522236,
+          "a0": 18,
+          "a1": 2147447856,
+          "a2": 2147447888,
+          "a3": 263182456
+        },
+        "result": {
+          "syscall": 1162,
+          "v0": 89,
+          "a3": 1
+        }
+      },
+      "waitsys_calls": 0,
+      "select_without_fds_after_child_exit": 14,
+      "gettimeofday_successes": 46,
+      "native_controls": 4,
+      "shared_home_verified": true,
+      "traced_pids_absent": true,
+      "clean_shutdown": true,
+      "installer": {
+        "errno_bytes": 0,
+        "errno": 0,
+        "exit": -1,
+        "signal": 9,
+        "killed": 1,
+        "stdout": "",
+        "stderr": "Internal program error: SIGBUS not handled for mmap.\nInternal program error: SIGSEGV not handled for mmap.\n"
+      }
+    }
+  ],
+  "native_controls": 12,
+  "binary_evidence": {
+    "kind": "static prediction; callback not reached in these runs",
+    "files": {
+      "/usr/lib32/internal/libinst.so": "fa2b7d56eed3eb8408cfeafa5ae8a9de5614fd9eb080901794548108ec70d039",
+      "/usr/lib32/libc.so.1": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e"
+    },
+    "checked_virtual_addresses": {
+      "/usr/lib32/internal/libinst.so": [
+        "0x4566578",
+        "0x456657c",
+        "0x45665a8",
+        "0x45665b4",
+        "0x456660c",
+        "0x4566618",
+        "0x43de384",
+        "0x43de450",
+        "0x43de454",
+        "0x43de458",
+        "0x43de45c",
+        "0x43de460",
+        "0x45ca6ec",
+        "0x45ca710",
+        "0x45cdd94"
+      ],
+      "/usr/lib32/libc.so.1": [
+        "0xfa621cc",
+        "0xfa621e0",
+        "0xfa621e4",
+        "0xfa621ec",
+        "0xfa621f0",
+        "0xfa621f4",
+        "0xfa622fc",
+        "0xfa62318"
+      ]
+    },
+    "dispatcher_gp": "0x045d2360",
+    "sigaction_flags": 8,
+    "signal": 18,
+    "handler": "static_handler__Gi",
+    "callback": "signal_callback__15iIrixDispatcherGi",
+    "waitpid": {
+      "pid": -1,
+      "options": 64
+    },
+    "predicted_waitsys": {
+      "number": 1170,
+      "selector": 7,
+      "id": 0,
+      "options": 67,
+      "rusage": 0
+    }
+  },
+  "kernel_evidence": {
+    "revision": "76de548ab644cb471f4c5b97ec89671c1d385c5b",
+    "path": "sys/compat/irix_o32/irix_o32.c",
+    "sha256": "b7b2e0adba355d580b571ec79d5e835df0a35546f26f217bed06ab18178fef59"
+  },
+  "historical_source_evidence": [
+    {
+      "revision": "5aca2679d78276864d2980a08314887b2058fb2c",
+      "path": "sys/compat/svr4/svr4_signal.h",
+      "sha256": "a8ad72b0236025fd4610a88837e6112dc1234a39ca7c940e1d1b3ce536a0c896"
+    },
+    {
+      "revision": "5aca2679d78276864d2980a08314887b2058fb2c",
+      "path": "sys/compat/svr4/svr4_wait.h",
+      "sha256": "3bf05c901a3db066605aa5420cc3ece79d46ef2d8279fbb30ca86db50e5eb717"
+    },
+    {
+      "revision": "5aca2679d78276864d2980a08314887b2058fb2c",
+      "path": "sys/compat/irix/irix_signal.c",
+      "sha256": "8dde9eea4ddd07d0a166e3500ad03f8d940403f09144aec1d2bbc349d4f0a64c"
+    }
+  ],
+  "qualifier_sha256": "77dca000343b68f2201ecbaf0b56dae9939ac6e4470bee903b4f32b8089bbae0",
+  "decoder_sha256": "a2b767291a261f8bd389e1a56b2a4a3d5442463db837929f34cf2e9696e0a245",
+  "limitations": [
+    "Four utility aliases qualify only this disposable bootstrap path; not general IRIX command compatibility.",
+    "Native stat rejects -qd; the original script falls back to zero. Real device comparison is not qualified.",
+    "The child exits zero with aliases but remains a zombie; the parent still requires its 30-second watchdog.",
+    "SIGCHLD registration returns ENOSYS. Signal-frame delivery and return remain unimplemented.",
+    "waitsys selector 7/options 0x43 is a static prediction, not a runtime observation.",
+    "No distribution reading, installation, Freeware catalog entry or graphical login is claimed."
+  ]
+}
