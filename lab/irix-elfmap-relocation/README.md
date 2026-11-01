@@ -61,7 +61,9 @@ synthetic fixtures, plus the licensed historical NetBSD mapper and current UVM.
 
 Qualification: [576 checks and original xclock windows](../../docs/results/2026-10-31-irix-elfmap-relocation.md).
 The checked runs include both NetBSD kernel ABIs, eight original clock windows,
-and six separately repeated resource-limit cases. Timekeeping remains open.
+and six separately repeated resource-limit cases. Timekeeping was open at
+this checkpoint; the later [time lab](../irix-time/README.md) now qualifies
+current UTC time, advancement and redraw with the original xclock.
 
 The later [subpage mapper](../irix-elfmap-subpage/README.md) retains these fixtures and qualifies the additional 4 KiB data boundaries encountered by original 4Dwm.
 

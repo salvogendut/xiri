@@ -89,5 +89,9 @@ ordinary syscall errno return.
 The [F_DUPFD follow-up](../../docs/results/2026-11-01-irix-installer-dupfd.md)
 uses `probe-irix-installer-dupfd.py` and `qualify-irix-installer-dupfd.py`.
 Both pipe duplications now succeed. The remaining capture shows a bounded
-gettimeofday/select loop and unchanged helper search paths. Time support for
-this loop and original xclock is the next step; no package is installed yet.
+gettimeofday/select loop and unchanged helper search paths at that checkpoint.
+The [time follow-up](../../docs/results/2026-11-01-irix-installer-time.md) uses
+`probe-irix-installer-time.py` and `qualify-irix-installer-time.py`: time calls
+now succeed, while the bounded dry run still times out. Capture helper
+arguments/output and qualify their runtime paths and completion handling next.
+No package is installed yet.

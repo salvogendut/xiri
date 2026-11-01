@@ -1,0 +1,7 @@
+include "arch/sgimips/conf/GENERIC32_IP2x"
+ident "XIRI_IRIX_TIME_O32_20261101"
+makeoptions DEBUG="-g"
+no haud* at hpc0
+options COMPAT_IRIX_O32
+no config netbsd
+config netbsd root on sd0a type ffs

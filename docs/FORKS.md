@@ -154,3 +154,14 @@ The [F_DUPFD qualification](results/2026-11-01-irix-dupfd.md) records both build
 the original/native matrices and regressions. Later documentation commits do
 not change those artifacts; detached reproductions and unrelated IRIS
 performance work remain untouched.
+
+
+The time/gettimeofday continuation retains the same checked upstream revision
+and IRIS integration state. NetBSD `xiri` source
+`76de548ab644cb471f4c5b97ec89671c1d385c5b` builds in separate
+`.work/netbsd-irix-time-build` and `.work/netbsd-irix-time-o32-build` directories.
+The [time qualification](results/2026-11-01-irix-time.md) records both clean
+builds, original/native ABI matrices and xclock updates. The
+[installer retry](results/2026-11-01-irix-installer-time.md) retains its remaining
+helper boundary. Later documentation commits do not change the pinned source
+or binaries; no IRIS source change or upstream merge was needed.

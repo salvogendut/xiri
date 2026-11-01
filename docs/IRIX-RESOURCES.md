@@ -150,8 +150,8 @@ catalog assets pending until the original installer actually consumes them.
 
 
 The [sproc installer retry](results/2026-11-01-irix-installer-sproc.md) now
-executes native `/bin/sh`. F_DUPFD failure prevents pipe redirection; fix that
-ABI requirement before interpreting missing helper output. The trace also
+executes native `/bin/sh`. F_DUPFD failed at that checkpoint; the later
+adapter now supplies both pipe redirections. The trace also
 identifies searches for `ls` and `mkdir` through IRIX-style directories that
 omit `/bin`. Inventory original `/usr/bin/ls` and `/usr/bin/mkdir` plus their
 runtime closure if staging original helpers is chosen; otherwise qualify an
@@ -162,6 +162,8 @@ still-pending xmahjongg payload, original hooks and catalog/type assets.
 
 The [F_DUPFD retry](results/2026-11-01-irix-installer-dupfd.md) now supplies
 both helper pipe descriptors. No additional resource was imported; the
-gettimeofday loop and IRIX-style ls/mkdir search paths remain. The requested
-xclock time check will reuse its existing pinned executable, libraries,
-app-defaults and fonts, with no new clock resource requirement identified.
+later [time retry](results/2026-11-01-irix-installer-time.md) fixes the time
+returns while the helper/output/completion boundary remains. The successful
+[xclock time checks](results/2026-11-01-irix-time.md) reuse its pinned executable,
+libraries and app-defaults, native fonts and standard X colors, with `TZ=UTC0`.
+No additional clock resource was imported; timezone/DST data remains unqualified.

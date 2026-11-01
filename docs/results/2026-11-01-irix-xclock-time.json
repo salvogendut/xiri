@@ -1,0 +1,314 @@
+{
+  "schema": 1,
+  "status": "passed",
+  "pin": {
+    "schema": 1,
+    "description": "Measured IRIX time and gettimeofday",
+    "ident": "XIRI_IRIX_TIME_20261101",
+    "source_revision": "76de548ab644cb471f4c5b97ec89671c1d385c5b",
+    "source_branch": "xiri",
+    "build_arch": "mips64eb",
+    "page_bytes": 8192,
+    "boot_kernel_sha256": "3fbdfa95f13c1e69432a73a71168080526480f7e3130979d05f3091a531b2afd",
+    "native_kernel_sha256": "956bcd16d46d0c0d1625cea6cb10c3c7086e9be3e95a98f32e18efddecc97ed0",
+    "debug_kernel_sha256": "6693987451d272a820fd90d9e6da45d3b152876a5f0512f311a1a5b996558ddf",
+    "native_o32_sha256": "c294fbb1f2110445be31c096481ea54ab561c7e59ca5b9fc7171310098d755d4",
+    "source_dirty": false,
+    "emulator_revision": "9df1df14334838a989253efefe26f0547e6da592",
+    "emulator_branch": "xiri/netbsd64-tlb",
+    "emulator_sha256": "1b3f7702ba7f43b5c4fca8ba8884243559f46371d8d67a36ce5e6fee1e595eba",
+    "ci_client_sha256": "8711321aa6eaae440da3c7920b00ae4cf1c7f2abbdb15a9919f58485500ffb6c",
+    "base_disk_sha256": "269038c7b77660c83d3835208fc0b2702c93110c14b3c55a42416f51672cee2a",
+    "nvram_sha256": "ee883474d52f09278287b2044f7aeca61d2e7bc39c0bb8fd85c983ab64063d15",
+    "config_sha256": "bc7d26912d4ae7ff607b667ca663ea82013d8018ea33d302cd8e1236bf5e113c",
+    "runtimes": [
+      {
+        "name": "vendor-o32-libc",
+        "path": "/usr/lib/libc.so.1",
+        "sha256": "ea766492103a193e9d404942705e4e28987545e37f699ede232b6c0f8c97c954"
+      },
+      {
+        "name": "vendor-o32-rld",
+        "path": "/lib/rld",
+        "sha256": "30228b54c1e5585b365514eb7c9895b03cc0f61cb898e05e3ddafece87863439"
+      },
+      {
+        "name": "vendor-n32-libc",
+        "path": "/lib32/libc.so.1",
+        "sha256": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e"
+      },
+      {
+        "name": "vendor-n32-rld",
+        "path": "/lib32/rld",
+        "sha256": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b"
+      }
+    ],
+    "config_path": "lab/irix-time/XIRI_IRIX_TIME"
+  },
+  "pin_label_note": "Initial captures retain a copied F_TIME descriptor-allocation description. Only this human-readable label is accepted as an alias; all source, configuration and binary fields must match the corrected pin exactly. Raw results are preserved.",
+  "qualifier_sha256": "00f5b78b20588d3371f081223e2598bae66d0ca392272ccccd9d4b4853750b11",
+  "runs": [
+    {
+      "directory": ".work/irix-xclock-time/runs/ci-h9j93z0m",
+      "result_sha256": "217fde67bcf01da9ab84cec98251767194ff776acc2a31333af74946c9c5a4b7",
+      "serial_sha256": "4cd46ee245e3bd0055c4fa90eb391185a1d081e01c3e106cb93517083dada5b6",
+      "mode": "ci",
+      "native_controls": 12,
+      "native_x11_before": true,
+      "native_x11_after": true,
+      "clean_shutdown": true,
+      "clocks": [
+        {
+          "name": "clock-analog-0",
+          "uid": 0,
+          "style": "analog",
+          "guest_utc_bounds": [
+            1793560900,
+            1793560919
+          ],
+          "time_calls": 19,
+          "seconds_advanced": 17,
+          "gettimeofday_calls": 55,
+          "changed_pixels": {
+            "after": 206,
+            "redraw": 217
+          },
+          "interior_ink_pixels": {
+            "before": 1383,
+            "after": 1385,
+            "redraw": 1396
+          },
+          "frames": {
+            "before": "5c26f3d66dfe990f9fd611e1ca08bd1be73e93d249ed063531dcb2ce8b45a9c5",
+            "after": "1ef6adb2fcf205a5d96fe80e1726a74f6a2d31c69a8549376f3a231d7c65e794",
+            "redraw": "8ffc29b80c840ce8fc657a77b91d882ff61cbf7e08064bb7357da5f47d411873"
+          },
+          "trace_sha256": "3db1117014e8258970a4ced959883dbfaf5e409f9ea833012a0f450d09142798",
+          "viewable": true,
+          "group_absent": true
+        },
+        {
+          "name": "clock-digital-0",
+          "uid": 0,
+          "style": "digital",
+          "guest_utc_bounds": [
+            1793560984,
+            1793561003
+          ],
+          "time_calls": 20,
+          "seconds_advanced": 17,
+          "gettimeofday_calls": 57,
+          "changed_pixels": {
+            "after": 64,
+            "redraw": 73
+          },
+          "interior_ink_pixels": {
+            "before": 505,
+            "after": 503,
+            "redraw": 510
+          },
+          "frames": {
+            "before": "02cb1d60d4f730ca402d0ded158eded37a91a6494057c5e19201b021077554ea",
+            "after": "a5519c54b5bf78c00f9c816d5fa0e30b199527054ce3c069d91000c071be5df6",
+            "redraw": "af46a144f19895b9da7ce58365050f55ca81a1261ad238e464a6e11b3f5e62da"
+          },
+          "trace_sha256": "89b428f227f6e5bb45a699352cb795981ccb23097544a8e0063a8e525ae08b55",
+          "viewable": true,
+          "group_absent": true
+        },
+        {
+          "name": "clock-analog-1234",
+          "uid": 1234,
+          "style": "analog",
+          "guest_utc_bounds": [
+            1793561056,
+            1793561075
+          ],
+          "time_calls": 19,
+          "seconds_advanced": 17,
+          "gettimeofday_calls": 57,
+          "changed_pixels": {
+            "after": 213,
+            "redraw": 220
+          },
+          "interior_ink_pixels": {
+            "before": 1396,
+            "after": 1393,
+            "redraw": 1400
+          },
+          "frames": {
+            "before": "984b11d0c6c4ef5c954ed799e667cc23c0071df9e5724dc71be27b67a1ec9811",
+            "after": "6465599041e8ed43a7da2b7a99a8a5f7bc70b3bde7212cd30e656003a19858cb",
+            "redraw": "a4117ed9fbe28426c2bcc364c5eb91242b7c01ea373d552cf4a02c1799ac60e3"
+          },
+          "trace_sha256": "cb6da4780b5461604355f25b585cc5f2e50d00f1ffc4b8a977018e506041ebee",
+          "viewable": true,
+          "group_absent": true
+        },
+        {
+          "name": "clock-digital-1234",
+          "uid": 1234,
+          "style": "digital",
+          "guest_utc_bounds": [
+            1793561141,
+            1793561160
+          ],
+          "time_calls": 20,
+          "seconds_advanced": 17,
+          "gettimeofday_calls": 57,
+          "changed_pixels": {
+            "after": 25,
+            "redraw": 69
+          },
+          "interior_ink_pixels": {
+            "before": 520,
+            "after": 525,
+            "redraw": 513
+          },
+          "frames": {
+            "before": "1ce7bb3271e263489e1850bd026ade7ffa5acaf6aec686539232c4693080805a",
+            "after": "d1f60834addbb1e2a77549005667425c44e74058414419dae06cd5ca6e0b6975",
+            "redraw": "38b27c65bb92bf6ed22e9a0440caa8124dbeeab818d3b73d6c4708255d9bdfa9"
+          },
+          "trace_sha256": "64dc21abd1f383817ea54d34f36e406ed18d72a7906994854dc934df19b333cd",
+          "viewable": true,
+          "group_absent": true
+        }
+      ]
+    },
+    {
+      "directory": ".work/irix-xclock-time/runs/ordinary-2qota0w8",
+      "result_sha256": "146c1d3bd47fe58ba2d5fac7317901281065cca9ce8690f2152bc8bd0ef8e037",
+      "serial_sha256": "e7788a1dfa58f59a1a140d470fd1a09d3a56daab99594f1a0324fe23e08fbbdd",
+      "mode": "ordinary",
+      "native_controls": 12,
+      "native_x11_before": true,
+      "native_x11_after": true,
+      "clean_shutdown": true,
+      "clocks": [
+        {
+          "name": "clock-analog-0",
+          "uid": 0,
+          "style": "analog",
+          "guest_utc_bounds": [
+            1793561187,
+            1793561206
+          ],
+          "time_calls": 19,
+          "seconds_advanced": 17,
+          "gettimeofday_calls": 57,
+          "changed_pixels": {
+            "after": 217,
+            "redraw": 215
+          },
+          "interior_ink_pixels": {
+            "before": 1383,
+            "after": 1382,
+            "redraw": 1380
+          },
+          "frames": {
+            "before": "9559719ae506674b80672d8c438ac19b935da5e93714a19f8a7440ee4a09d44e",
+            "after": "fe13520be6fbe31df0847d2d2406586274557d540e1ee391c14cb6daf993c556",
+            "redraw": "9b8d04c2728f99331e3c757b4011d1b5e661067c1255817be5dd1c4598cdda1a"
+          },
+          "trace_sha256": "31befd1043a684e3e16c3298674ea6df8c437f59209892a0de7df371dd74e70f",
+          "viewable": true,
+          "group_absent": true
+        },
+        {
+          "name": "clock-digital-0",
+          "uid": 0,
+          "style": "digital",
+          "guest_utc_bounds": [
+            1793561272,
+            1793561291
+          ],
+          "time_calls": 20,
+          "seconds_advanced": 17,
+          "gettimeofday_calls": 57,
+          "changed_pixels": {
+            "after": 12,
+            "redraw": 84
+          },
+          "interior_ink_pixels": {
+            "before": 511,
+            "after": 513,
+            "redraw": 515
+          },
+          "frames": {
+            "before": "18a77ff572e7892e41f9eea874026bc05527a2de33b60099307cbd1ae1d2aa7e",
+            "after": "511eabd3033b95004eccb145c4e12ab9fea29596bce5db0cea1e7e1ba635f3bd",
+            "redraw": "e8c6fda8e5129c8263adee8b7af968d1586dd8805771244a7b5b14d6f32b68be"
+          },
+          "trace_sha256": "950d634ed291f55d10a1a6051878d8ad644b125916a52c4a5b40f824bd356e99",
+          "viewable": true,
+          "group_absent": true
+        },
+        {
+          "name": "clock-analog-1234",
+          "uid": 1234,
+          "style": "analog",
+          "guest_utc_bounds": [
+            1793561343,
+            1793561362
+          ],
+          "time_calls": 19,
+          "seconds_advanced": 17,
+          "gettimeofday_calls": 55,
+          "changed_pixels": {
+            "after": 225,
+            "redraw": 212
+          },
+          "interior_ink_pixels": {
+            "before": 1394,
+            "after": 1399,
+            "redraw": 1386
+          },
+          "frames": {
+            "before": "16c8d383c2a23c340e9193ac680ad9d1b25d029bd369da62df5f511182f87ff4",
+            "after": "59d827c05a956923c015176a0971441fd91cefedc6d7f9d40bbc1694cff62c85",
+            "redraw": "059c65915d75ba8daf0da4c1561401cee3215e3d78c34b63db11b0cf9285c759"
+          },
+          "trace_sha256": "fa2f389d1950305a349fcda7d5084496d0c33dc55254466537097950fbdfd2e8",
+          "viewable": true,
+          "group_absent": true
+        },
+        {
+          "name": "clock-digital-1234",
+          "uid": 1234,
+          "style": "digital",
+          "guest_utc_bounds": [
+            1793561428,
+            1793561447
+          ],
+          "time_calls": 20,
+          "seconds_advanced": 17,
+          "gettimeofday_calls": 57,
+          "changed_pixels": {
+            "after": 35,
+            "redraw": 40
+          },
+          "interior_ink_pixels": {
+            "before": 506,
+            "after": 513,
+            "redraw": 518
+          },
+          "frames": {
+            "before": "2567bd11295bd93ad61806f2b7e150d054e78e97470826928e45529065cfade3",
+            "after": "5161263f8a7f508356529883a3ba4819807b899ea9d2ea3c12f013246bf35d18",
+            "redraw": "5a914ab5d501b8f0b6893f60efe6058157bc77f296dcf1ac1141cb5753675e6a"
+          },
+          "trace_sha256": "547f1c9db42b0944328279b36735abece00728244e62ab975e19be143d29eed5",
+          "viewable": true,
+          "group_absent": true
+        }
+      ]
+    }
+  ],
+  "clocks": 8,
+  "limits": [
+    "Four bounded 18-second vendor launches per mode; watchdog cleanup is intentional for these interactive clients.",
+    "UTC0 only; local timezone/DST and longer sessions are unqualified.",
+    "Digital text/date also require visual review of retained frames against the recorded guest UTC bounds. Pixel changes alone do not establish correct displayed text."
+  ]
+}

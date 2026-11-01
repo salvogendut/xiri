@@ -1,0 +1,1163 @@
+{
+  "schema": 1,
+  "status": "installer-time-progress-helper-boundary",
+  "installation_success": false,
+  "pin_label_note": "Initial captures retain a copied F_TIME descriptor-allocation description. Only this human-readable label is accepted as an alias; all source, configuration and binary fields must match the corrected pin exactly. Raw results are preserved.",
+  "hardware_report_printed": true,
+  "hardware_identification_complete": false,
+  "distribution_read": false,
+  "qualifier_sha256": "2a38aa2efa36a4a84ebe2714506ed5a76874ca11a8299dd16bf7d940ccfbcbf4",
+  "trace_decoder_sha256": "df111c15ab1dd8988de1c76c8bf4c24262413049ed3f48632598b2c514191ede",
+  "pin": {
+    "schema": 1,
+    "description": "Measured IRIX time and gettimeofday",
+    "ident": "XIRI_IRIX_TIME_20261101",
+    "source_revision": "76de548ab644cb471f4c5b97ec89671c1d385c5b",
+    "source_branch": "xiri",
+    "build_arch": "mips64eb",
+    "page_bytes": 8192,
+    "boot_kernel_sha256": "3fbdfa95f13c1e69432a73a71168080526480f7e3130979d05f3091a531b2afd",
+    "native_kernel_sha256": "956bcd16d46d0c0d1625cea6cb10c3c7086e9be3e95a98f32e18efddecc97ed0",
+    "debug_kernel_sha256": "6693987451d272a820fd90d9e6da45d3b152876a5f0512f311a1a5b996558ddf",
+    "native_o32_sha256": "c294fbb1f2110445be31c096481ea54ab561c7e59ca5b9fc7171310098d755d4",
+    "source_dirty": false,
+    "emulator_revision": "9df1df14334838a989253efefe26f0547e6da592",
+    "emulator_branch": "xiri/netbsd64-tlb",
+    "emulator_sha256": "1b3f7702ba7f43b5c4fca8ba8884243559f46371d8d67a36ce5e6fee1e595eba",
+    "ci_client_sha256": "8711321aa6eaae440da3c7920b00ae4cf1c7f2abbdb15a9919f58485500ffb6c",
+    "base_disk_sha256": "269038c7b77660c83d3835208fc0b2702c93110c14b3c55a42416f51672cee2a",
+    "nvram_sha256": "ee883474d52f09278287b2044f7aeca61d2e7bc39c0bb8fd85c983ab64063d15",
+    "config_sha256": "bc7d26912d4ae7ff607b667ca663ea82013d8018ea33d302cd8e1236bf5e113c",
+    "runtimes": [
+      {
+        "name": "vendor-o32-libc",
+        "path": "/usr/lib/libc.so.1",
+        "sha256": "ea766492103a193e9d404942705e4e28987545e37f699ede232b6c0f8c97c954"
+      },
+      {
+        "name": "vendor-o32-rld",
+        "path": "/lib/rld",
+        "sha256": "30228b54c1e5585b365514eb7c9895b03cc0f61cb898e05e3ddafece87863439"
+      },
+      {
+        "name": "vendor-n32-libc",
+        "path": "/lib32/libc.so.1",
+        "sha256": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e"
+      },
+      {
+        "name": "vendor-n32-rld",
+        "path": "/lib32/rld",
+        "sha256": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b"
+      }
+    ],
+    "config_path": "lab/irix-time/XIRI_IRIX_TIME"
+  },
+  "source_evidence": [
+    {
+      "revision": "5aca2679d78276864d2980a08314887b2058fb2c",
+      "path": "sys/compat/irix/irix_syscall.h",
+      "sha256": "0c915192b9b87bf5ddc3226006e8cf9ad709e23f7e4385628c413bb559dc9767"
+    },
+    {
+      "revision": "5aca2679d78276864d2980a08314887b2058fb2c",
+      "path": "sys/compat/irix/irix_fcntl.h",
+      "sha256": "6d13ce56060541b673ba0b83f2e6dc26e8b15f923b756e8bc484615b879470d8"
+    },
+    {
+      "revision": "5aca2679d78276864d2980a08314887b2058fb2c",
+      "path": "sys/compat/svr4/svr4_fcntl.h",
+      "sha256": "f7cf61772d8440dae4142b44872991fb5ca06e0df19988555bd63d6ad0d0b2ad"
+    }
+  ],
+  "manifest_sha256": "d85d13ac92bea732170fd4ca1546139711da6d993db2f42be22a82551a28784d",
+  "inputs_sha256": "e7b233ea4073b88e1a8839173ef738cb2cf46497a46c3945189f6a0057e6b5ac",
+  "root_session_home": "/",
+  "native_home": "/usr/people/xiritest",
+  "native_write_foreign_read": true,
+  "graphical_login_qualified": false,
+  "native_controls": 4,
+  "cases": [
+    {
+      "name": "hardware",
+      "argv": [
+        "./runner",
+        "./session",
+        "0",
+        "0",
+        "0",
+        "0",
+        "--",
+        "root.env",
+        "/emul/irix/usr/sbin/inst",
+        "-H"
+      ],
+      "runner_rc": 0,
+      "actual": {
+        "errno_bytes": 0,
+        "errno": 0,
+        "exit": 0,
+        "signal": 0,
+        "killed": 0,
+        "stdout": "CPUARCH=\n\nCPUBOARD=\nMODE=32bit\nGFXBOARD=SERVER\nSUBGR=SERVER\n",
+        "stderr": "Internal program error: SIGBUS not handled for mmap.\nInternal program error: SIGSEGV not handled for mmap.\nWARNING: Unrecognized cpu hardware type.  See the \"hardware\" help topic for details.\nWARNING: Unrecognized cpu architecture type.  See the \"hardware\" help topic for details.\n"
+      },
+      "group_absent": true,
+      "log_sha256": "c34775eb0cccde0d36b3121e04cc812b62e403b1770fa03106dab8077ddcceee",
+      "trace_sha256": "b370989913739c33080d409db023ea89ba0335701aa130d278490c8d7a320dc6"
+    },
+    {
+      "name": "distribution",
+      "argv": [
+        "./runner",
+        "./session",
+        "0",
+        "0",
+        "0",
+        "0",
+        "--",
+        "root.env",
+        "/emul/irix/usr/sbin/inst",
+        "-n",
+        "-M",
+        "-r",
+        "/emul/irix",
+        "-f",
+        "/cdrom/dist",
+        "-c",
+        "/cdrom/commands"
+      ],
+      "runner_rc": 0,
+      "actual": {
+        "errno_bytes": 0,
+        "errno": 0,
+        "exit": -1,
+        "signal": 9,
+        "killed": 1,
+        "stdout": "",
+        "stderr": "Internal program error: SIGBUS not handled for mmap.\nInternal program error: SIGSEGV not handled for mmap.\n"
+      },
+      "group_absent": true,
+      "log_sha256": "e9d90de2a1b589629f5c873f4933665f7dd7fc2f9f1a3f7f25df73c7938a40f2",
+      "trace_sha256": "82d5ebee41e612bffefc63672152cb8fb08db45a00c4c7673611cd3b3fe7eed9"
+    }
+  ],
+  "traces": {
+    "hardware": {
+      "installer_mmap": {
+        "pid": 2089,
+        "lwp": 2089,
+        "call": {
+          "syscall": 1134,
+          "pc": 262479264,
+          "a0": 0,
+          "a1": 1048576,
+          "a2": 3,
+          "a3": 321
+        },
+        "result": {
+          "syscall": 1134,
+          "v0": 2019524608,
+          "a3": 0
+        }
+      },
+      "signal_registration": [
+        {
+          "pid": 2089,
+          "lwp": 2089,
+          "call": {
+            "syscall": 1162,
+            "pc": 262522236,
+            "a0": 10,
+            "a1": 2147446448,
+            "a2": 0,
+            "a3": 263182456
+          },
+          "result": {
+            "syscall": 1162,
+            "v0": 89,
+            "a3": 1
+          }
+        },
+        {
+          "pid": 2089,
+          "lwp": 2089,
+          "call": {
+            "syscall": 1162,
+            "pc": 262522236,
+            "a0": 11,
+            "a1": 2147446448,
+            "a2": 0,
+            "a3": 263182456
+          },
+          "result": {
+            "syscall": 1162,
+            "v0": 89,
+            "a3": 1
+          }
+        }
+      ],
+      "unsupported": [
+        {
+          "pid": 2089,
+          "lwp": 2089,
+          "call": {
+            "syscall": 1040,
+            "pc": 263705228,
+            "a0": 92,
+            "a1": 0,
+            "a2": 61,
+            "a3": 0
+          },
+          "result": {
+            "syscall": 1040,
+            "v0": 89,
+            "a3": 1
+          }
+        },
+        {
+          "pid": 2089,
+          "lwp": 2089,
+          "call": {
+            "syscall": 1156,
+            "pc": 263670020,
+            "a0": 109,
+            "a1": 2147450176,
+            "a2": 257,
+            "a3": 0
+          },
+          "result": {
+            "syscall": 1156,
+            "v0": 89,
+            "a3": 1
+          }
+        },
+        {
+          "pid": 2089,
+          "lwp": 2089,
+          "call": {
+            "syscall": 1040,
+            "pc": 263705228,
+            "a0": 108,
+            "a1": 264120416,
+            "a2": 264113192,
+            "a3": 264090000
+          },
+          "result": {
+            "syscall": 1040,
+            "v0": 89,
+            "a3": 1
+          }
+        },
+        {
+          "pid": 2089,
+          "lwp": 2089,
+          "call": {
+            "syscall": 1040,
+            "pc": 262470072,
+            "a0": 129,
+            "a1": 0,
+            "a2": 385,
+            "a3": 4294967295
+          },
+          "result": {
+            "syscall": 1040,
+            "v0": 89,
+            "a3": 1
+          }
+        },
+        {
+          "pid": 2089,
+          "lwp": 2089,
+          "call": {
+            "syscall": 1162,
+            "pc": 262522236,
+            "a0": 10,
+            "a1": 2147446448,
+            "a2": 0,
+            "a3": 263182456
+          },
+          "result": {
+            "syscall": 1162,
+            "v0": 89,
+            "a3": 1
+          }
+        },
+        {
+          "pid": 2089,
+          "lwp": 2089,
+          "call": {
+            "syscall": 1162,
+            "pc": 262522236,
+            "a0": 11,
+            "a1": 2147446448,
+            "a2": 0,
+            "a3": 263182456
+          },
+          "result": {
+            "syscall": 1162,
+            "v0": 89,
+            "a3": 1
+          }
+        },
+        {
+          "pid": 2089,
+          "lwp": 2089,
+          "call": {
+            "syscall": 1040,
+            "pc": 262470072,
+            "a0": 92,
+            "a1": 1,
+            "a2": 0,
+            "a3": 47
+          },
+          "result": {
+            "syscall": 1040,
+            "v0": 89,
+            "a3": 1
+          }
+        },
+        {
+          "pid": 2089,
+          "lwp": 2089,
+          "call": {
+            "syscall": 1060,
+            "pc": 263234772,
+            "a0": 18,
+            "a1": 2,
+            "a2": 268483928,
+            "a3": 1
+          },
+          "result": {
+            "syscall": 1060,
+            "v0": 89,
+            "a3": 1
+          }
+        },
+        {
+          "pid": 2089,
+          "lwp": 2089,
+          "call": {
+            "syscall": 1162,
+            "pc": 262522236,
+            "a0": 2,
+            "a1": 2147450192,
+            "a2": 2147450224,
+            "a3": 263182456
+          },
+          "result": {
+            "syscall": 1162,
+            "v0": 89,
+            "a3": 1
+          }
+        },
+        {
+          "pid": 2089,
+          "lwp": 2089,
+          "call": {
+            "syscall": 1162,
+            "pc": 262522236,
+            "a0": 2,
+            "a1": 2147450272,
+            "a2": 2147450304,
+            "a3": 263182456
+          },
+          "result": {
+            "syscall": 1162,
+            "v0": 89,
+            "a3": 1
+          }
+        },
+        {
+          "pid": 2089,
+          "lwp": 2089,
+          "call": {
+            "syscall": 1162,
+            "pc": 262522236,
+            "a0": 3,
+            "a1": 2147450304,
+            "a2": 0,
+            "a3": 263182456
+          },
+          "result": {
+            "syscall": 1162,
+            "v0": 89,
+            "a3": 1
+          }
+        },
+        {
+          "pid": 2089,
+          "lwp": 2089,
+          "call": {
+            "syscall": 1162,
+            "pc": 262522236,
+            "a0": 13,
+            "a1": 2147450304,
+            "a2": 0,
+            "a3": 263182456
+          },
+          "result": {
+            "syscall": 1162,
+            "v0": 89,
+            "a3": 1
+          }
+        },
+        {
+          "pid": 2089,
+          "lwp": 2089,
+          "call": {
+            "syscall": 1162,
+            "pc": 262522236,
+            "a0": 24,
+            "a1": 2147450304,
+            "a2": 0,
+            "a3": 263182456
+          },
+          "result": {
+            "syscall": 1162,
+            "v0": 89,
+            "a3": 1
+          }
+        },
+        {
+          "pid": 2089,
+          "lwp": 2089,
+          "call": {
+            "syscall": 1162,
+            "pc": 262522236,
+            "a0": 31,
+            "a1": 2147450304,
+            "a2": 0,
+            "a3": 263182456
+          },
+          "result": {
+            "syscall": 1162,
+            "v0": 89,
+            "a3": 1
+          }
+        },
+        {
+          "pid": 2089,
+          "lwp": 2089,
+          "call": {
+            "syscall": 1040,
+            "pc": 262470072,
+            "a0": 5,
+            "a1": 1,
+            "a2": 73264160,
+            "a3": 0
+          },
+          "result": {
+            "syscall": 1040,
+            "v0": 89,
+            "a3": 1
+          }
+        },
+        {
+          "pid": 2089,
+          "lwp": 2089,
+          "call": {
+            "syscall": 1040,
+            "pc": 262470072,
+            "a0": 5,
+            "a1": 1,
+            "a2": 4294967295,
+            "a3": 24000
+          },
+          "result": {
+            "syscall": 1040,
+            "v0": 89,
+            "a3": 1
+          }
+        },
+        {
+          "pid": 2089,
+          "lwp": 2089,
+          "call": {
+            "syscall": 1130,
+            "pc": 262502756,
+            "a0": 22,
+            "a1": 0,
+            "a2": 263574784,
+            "a3": 1083004
+          },
+          "result": {
+            "syscall": 1130,
+            "v0": 89,
+            "a3": 1
+          }
+        }
+      ],
+      "machfile_mmap": {
+        "pid": 2089,
+        "lwp": 2089,
+        "call": {
+          "syscall": 1134,
+          "pc": 262479264,
+          "a0": 0,
+          "a1": 5025,
+          "a2": 1,
+          "a3": 1
+        },
+        "result": {
+          "syscall": 1134,
+          "v0": 2019516416,
+          "a3": 0
+        }
+      }
+    },
+    "distribution": {
+      "installer_mmap": {
+        "pid": 486,
+        "lwp": 486,
+        "call": {
+          "syscall": 1134,
+          "pc": 262479264,
+          "a0": 0,
+          "a1": 1048576,
+          "a2": 3,
+          "a3": 321
+        },
+        "result": {
+          "syscall": 1134,
+          "v0": 2019524608,
+          "a3": 0
+        }
+      },
+      "signal_registration": [
+        {
+          "pid": 486,
+          "lwp": 486,
+          "call": {
+            "syscall": 1162,
+            "pc": 262522236,
+            "a0": 10,
+            "a1": 2147446368,
+            "a2": 0,
+            "a3": 263182456
+          },
+          "result": {
+            "syscall": 1162,
+            "v0": 89,
+            "a3": 1
+          }
+        },
+        {
+          "pid": 486,
+          "lwp": 486,
+          "call": {
+            "syscall": 1162,
+            "pc": 262522236,
+            "a0": 11,
+            "a1": 2147446368,
+            "a2": 0,
+            "a3": 263182456
+          },
+          "result": {
+            "syscall": 1162,
+            "v0": 89,
+            "a3": 1
+          }
+        }
+      ],
+      "unsupported": [
+        {
+          "pid": 486,
+          "lwp": 486,
+          "call": {
+            "syscall": 1040,
+            "pc": 263705228,
+            "a0": 92,
+            "a1": 0,
+            "a2": 61,
+            "a3": 0
+          },
+          "result": {
+            "syscall": 1040,
+            "v0": 89,
+            "a3": 1
+          }
+        },
+        {
+          "pid": 486,
+          "lwp": 486,
+          "call": {
+            "syscall": 1156,
+            "pc": 263670020,
+            "a0": 109,
+            "a1": 2147450096,
+            "a2": 257,
+            "a3": 0
+          },
+          "result": {
+            "syscall": 1156,
+            "v0": 89,
+            "a3": 1
+          }
+        },
+        {
+          "pid": 486,
+          "lwp": 486,
+          "call": {
+            "syscall": 1040,
+            "pc": 263705228,
+            "a0": 108,
+            "a1": 264120416,
+            "a2": 264113192,
+            "a3": 264090000
+          },
+          "result": {
+            "syscall": 1040,
+            "v0": 89,
+            "a3": 1
+          }
+        },
+        {
+          "pid": 486,
+          "lwp": 486,
+          "call": {
+            "syscall": 1040,
+            "pc": 262470072,
+            "a0": 129,
+            "a1": 0,
+            "a2": 385,
+            "a3": 4294967295
+          },
+          "result": {
+            "syscall": 1040,
+            "v0": 89,
+            "a3": 1
+          }
+        },
+        {
+          "pid": 486,
+          "lwp": 486,
+          "call": {
+            "syscall": 1162,
+            "pc": 262522236,
+            "a0": 10,
+            "a1": 2147446368,
+            "a2": 0,
+            "a3": 263182456
+          },
+          "result": {
+            "syscall": 1162,
+            "v0": 89,
+            "a3": 1
+          }
+        },
+        {
+          "pid": 486,
+          "lwp": 486,
+          "call": {
+            "syscall": 1162,
+            "pc": 262522236,
+            "a0": 11,
+            "a1": 2147446368,
+            "a2": 0,
+            "a3": 263182456
+          },
+          "result": {
+            "syscall": 1162,
+            "v0": 89,
+            "a3": 1
+          }
+        },
+        {
+          "pid": 486,
+          "lwp": 486,
+          "call": {
+            "syscall": 1040,
+            "pc": 262470072,
+            "a0": 92,
+            "a1": 1,
+            "a2": 0,
+            "a3": 47
+          },
+          "result": {
+            "syscall": 1040,
+            "v0": 89,
+            "a3": 1
+          }
+        },
+        {
+          "pid": 486,
+          "lwp": 486,
+          "call": {
+            "syscall": 1060,
+            "pc": 263234772,
+            "a0": 18,
+            "a1": 2,
+            "a2": 268483928,
+            "a3": 1
+          },
+          "result": {
+            "syscall": 1060,
+            "v0": 89,
+            "a3": 1
+          }
+        },
+        {
+          "pid": 486,
+          "lwp": 486,
+          "call": {
+            "syscall": 1162,
+            "pc": 262522236,
+            "a0": 2,
+            "a1": 2147450112,
+            "a2": 2147450144,
+            "a3": 263182456
+          },
+          "result": {
+            "syscall": 1162,
+            "v0": 89,
+            "a3": 1
+          }
+        },
+        {
+          "pid": 486,
+          "lwp": 486,
+          "call": {
+            "syscall": 1162,
+            "pc": 262522236,
+            "a0": 2,
+            "a1": 2147450192,
+            "a2": 2147450224,
+            "a3": 263182456
+          },
+          "result": {
+            "syscall": 1162,
+            "v0": 89,
+            "a3": 1
+          }
+        },
+        {
+          "pid": 486,
+          "lwp": 486,
+          "call": {
+            "syscall": 1162,
+            "pc": 262522236,
+            "a0": 3,
+            "a1": 2147450224,
+            "a2": 0,
+            "a3": 263182456
+          },
+          "result": {
+            "syscall": 1162,
+            "v0": 89,
+            "a3": 1
+          }
+        },
+        {
+          "pid": 486,
+          "lwp": 486,
+          "call": {
+            "syscall": 1162,
+            "pc": 262522236,
+            "a0": 13,
+            "a1": 2147450224,
+            "a2": 0,
+            "a3": 263182456
+          },
+          "result": {
+            "syscall": 1162,
+            "v0": 89,
+            "a3": 1
+          }
+        },
+        {
+          "pid": 486,
+          "lwp": 486,
+          "call": {
+            "syscall": 1162,
+            "pc": 262522236,
+            "a0": 24,
+            "a1": 2147450224,
+            "a2": 0,
+            "a3": 263182456
+          },
+          "result": {
+            "syscall": 1162,
+            "v0": 89,
+            "a3": 1
+          }
+        },
+        {
+          "pid": 486,
+          "lwp": 486,
+          "call": {
+            "syscall": 1162,
+            "pc": 262522236,
+            "a0": 31,
+            "a1": 2147450224,
+            "a2": 0,
+            "a3": 263182456
+          },
+          "result": {
+            "syscall": 1162,
+            "v0": 89,
+            "a3": 1
+          }
+        },
+        {
+          "pid": 486,
+          "lwp": 486,
+          "call": {
+            "syscall": 1008,
+            "pc": 262619764,
+            "a0": 268488512,
+            "a1": 420,
+            "a2": 0,
+            "a3": 420
+          },
+          "result": {
+            "syscall": 1008,
+            "v0": 89,
+            "a3": 1
+          }
+        },
+        {
+          "pid": 486,
+          "lwp": 486,
+          "call": {
+            "syscall": 1008,
+            "pc": 262619764,
+            "a0": 268476696,
+            "a1": 420,
+            "a2": 0,
+            "a3": 420
+          },
+          "result": {
+            "syscall": 1008,
+            "v0": 89,
+            "a3": 1
+          }
+        },
+        {
+          "pid": 486,
+          "lwp": 486,
+          "call": {
+            "syscall": 1162,
+            "pc": 262522236,
+            "a0": 2,
+            "a1": 2147447856,
+            "a2": 2147447888,
+            "a3": 263182456
+          },
+          "result": {
+            "syscall": 1162,
+            "v0": 89,
+            "a3": 1
+          }
+        },
+        {
+          "pid": 486,
+          "lwp": 486,
+          "call": {
+            "syscall": 1162,
+            "pc": 262522236,
+            "a0": 18,
+            "a1": 2147447856,
+            "a2": 2147447888,
+            "a3": 263182456
+          },
+          "result": {
+            "syscall": 1162,
+            "v0": 89,
+            "a3": 1
+          }
+        },
+        {
+          "pid": 486,
+          "lwp": 486,
+          "call": {
+            "syscall": 1162,
+            "pc": 262522236,
+            "a0": 3,
+            "a1": 2147447888,
+            "a2": 0,
+            "a3": 263182456
+          },
+          "result": {
+            "syscall": 1162,
+            "v0": 89,
+            "a3": 1
+          }
+        },
+        {
+          "pid": 486,
+          "lwp": 486,
+          "call": {
+            "syscall": 1162,
+            "pc": 262522236,
+            "a0": 13,
+            "a1": 2147447888,
+            "a2": 0,
+            "a3": 263182456
+          },
+          "result": {
+            "syscall": 1162,
+            "v0": 89,
+            "a3": 1
+          }
+        },
+        {
+          "pid": 486,
+          "lwp": 486,
+          "call": {
+            "syscall": 1162,
+            "pc": 262522236,
+            "a0": 24,
+            "a1": 2147447888,
+            "a2": 0,
+            "a3": 263182456
+          },
+          "result": {
+            "syscall": 1162,
+            "v0": 89,
+            "a3": 1
+          }
+        },
+        {
+          "pid": 486,
+          "lwp": 486,
+          "call": {
+            "syscall": 1162,
+            "pc": 262522236,
+            "a0": 31,
+            "a1": 2147447888,
+            "a2": 0,
+            "a3": 263182456
+          },
+          "result": {
+            "syscall": 1162,
+            "v0": 89,
+            "a3": 1
+          }
+        }
+      ],
+      "subcommand_spawn": {
+        "pid": 486,
+        "lwp": 486,
+        "call": {
+          "syscall": 1129,
+          "pc": 262623288,
+          "a0": 262623400,
+          "a1": 50331712,
+          "a2": 2147448464,
+          "a3": 73212384
+        },
+        "result": {
+          "syscall": 1129,
+          "v0": 555,
+          "a3": 0
+        }
+      },
+      "armed_release": {
+        "pid": 555,
+        "lwp": 555,
+        "call": {
+          "syscall": 1130,
+          "pc": 262502756,
+          "a0": 6,
+          "a1": 486,
+          "a2": 0,
+          "a3": 0
+        },
+        "result": {
+          "syscall": 1130,
+          "v0": 0,
+          "a3": 0
+        }
+      },
+      "child_exec": {
+        "pid": 555,
+        "lwp": 555,
+        "call": {
+          "syscall": 1059,
+          "pc": 262750508,
+          "a0": 73209552,
+          "a1": 2147448580,
+          "a2": 268488416,
+          "a3": 0
+        },
+        "result": {
+          "syscall": 1059,
+          "v0": 0,
+          "a3": 2147450864
+        }
+      },
+      "descriptor_duplicates": [
+        {
+          "pid": 555,
+          "lwp": 555,
+          "call": {
+            "syscall": 1062,
+            "pc": 262500976,
+            "a0": 4,
+            "a1": 0,
+            "a2": 1,
+            "a3": 1
+          },
+          "result": {
+            "syscall": 1062,
+            "v0": 1,
+            "a3": 0
+          }
+        },
+        {
+          "pid": 555,
+          "lwp": 555,
+          "call": {
+            "syscall": 1062,
+            "pc": 262500976,
+            "a0": 6,
+            "a1": 0,
+            "a2": 2,
+            "a3": 1
+          },
+          "result": {
+            "syscall": 1062,
+            "v0": 2,
+            "a3": 0
+          }
+        }
+      ],
+      "gettimeofday_successes": 54,
+      "time_successes": [
+        {
+          "pid": 486,
+          "lwp": 486,
+          "call": {
+            "syscall": 1013,
+            "pc": 262502912,
+            "a0": 0,
+            "a1": 2147450806,
+            "a2": 73203834,
+            "a3": 2147450807
+          },
+          "result": {
+            "syscall": 1013,
+            "v0": 1793561015,
+            "a3": 0
+          }
+        },
+        {
+          "pid": 486,
+          "lwp": 486,
+          "call": {
+            "syscall": 1013,
+            "pc": 262502912,
+            "a0": 0,
+            "a1": 268473944,
+            "a2": 268484424,
+            "a3": 0
+          },
+          "result": {
+            "syscall": 1013,
+            "v0": 1793561015,
+            "a3": 0
+          }
+        },
+        {
+          "pid": 486,
+          "lwp": 486,
+          "call": {
+            "syscall": 1013,
+            "pc": 262502912,
+            "a0": 0,
+            "a1": 268491336,
+            "a2": 1,
+            "a3": 268491337
+          },
+          "result": {
+            "syscall": 1013,
+            "v0": 1793561015,
+            "a3": 0
+          }
+        }
+      ],
+      "gettimeofday_example": {
+        "pid": 486,
+        "lwp": 486,
+        "call": {
+          "syscall": 1128,
+          "pc": 262545600,
+          "a0": 2147447520,
+          "a1": 2147448056,
+          "a2": 2147447928,
+          "a3": 2147447664
+        },
+        "result": {
+          "syscall": 1128,
+          "v0": 0,
+          "a3": 0
+        }
+      },
+      "select_calls": 20,
+      "helper_searches": [
+        "/emul/netbsd32",
+        "/etc/ld.so.conf",
+        "/lib/libedit.so.3",
+        "/lib/libterminfo.so.2",
+        "/lib/libgcc_s.so.1",
+        "/lib/libc.so.12",
+        "/etc/malloc.conf",
+        "/bin/sh",
+        "/libexec/ld.elf_so-o32",
+        "/libexec/ld.elf_so-mipseb",
+        "/emul/netbsd32",
+        "/libexec/ld.elf_so",
+        "/emul/netbsd32",
+        "/etc/ld.so.conf",
+        "/lib/libedit.so.3",
+        "/lib/libterminfo.so.2",
+        "/lib/libgcc_s.so.1",
+        "/lib/libc.so.12",
+        "/etc/malloc.conf",
+        ".",
+        "/tmp/xiri-installer",
+        "/sbin/ls",
+        "/usr/bin/ls",
+        "/usr/bsd/ls",
+        "/usr/sbin/ls",
+        "/etc/ls",
+        "/usr/etc/ls",
+        "ls",
+        "/sbin/mkdir",
+        "/usr/bin/mkdir",
+        "/usr/bsd/mkdir",
+        "/usr/sbin/mkdir",
+        "/etc/mkdir",
+        "/usr/etc/mkdir",
+        "mkdir",
+        "/sbin/ls",
+        "/usr/bin/ls",
+        "/usr/bsd/ls",
+        "/usr/sbin/ls",
+        "/etc/ls",
+        "/usr/etc/ls",
+        "ls"
+      ],
+      "note": "Trace a3 after successful exec belongs to the replacement image; it is not an errno flag."
+    }
+  },
+  "run": {
+    "directory": ".work/irix-installer-time/runs/ci-q529e133",
+    "result_sha256": "24baf27d4f4a1acaa9e224890bceb7f9b9eecb4cbf0f13bbce802c3a8d42b1c2",
+    "serial_sha256": "69e99542dd96cbad61fa389534b4c070b559679a987ab047d24a62240f37005f",
+    "clean_shutdown": true,
+    "sources": {
+      "scripts/probe-irix-installer-time.py": "22fce02f396fbc03f5bef269f3ed255363eee378937e703b71122e59cd4feda1",
+      "scripts/setup-xiri-user.sh": "c74c3d13be95823e41a081f6a0439dbf062ba7be3b4e75c03e8d2e3be0a4eeb6",
+      "lab/irix-process/runner.c": "51c8045805878f0566a62a66c157b32035d98144bc3bb06e51c78b2fa5f8a141",
+      "lab/irix-toolchest/session.c": "e183b4aefdfb428e01dc609230e87a7546a0b31e9d4b5e236503e0a8bb3b09f5"
+    }
+  },
+  "limitations": [
+    "Distribution attempt reaches its 30-second watchdog; this is not installation success.",
+    "F_DUPFD now creates both requested stdout/stderr descriptors before native shell exec.",
+    "Time and gettimeofday now succeed. Helper searches still omit /bin; the continuing timeout needs further helper/output/wait diagnosis.",
+    "Signal registration, hardware queries, systeminfo, umask and creat remain unsupported in the trace.",
+    "This installer report makes no installation or catalog-entry claim; xclock success is qualified separately."
+  ]
+}

@@ -314,3 +314,13 @@ regressions pass another 220 records and 44 controls. The original guest,
 all six native matrix/regression guests and installer retry halt cleanly.
 The installer attempt retains its bounded timeout and whole-group cleanup.
 No guest artifact from an earlier checkpoint was changed.
+
+
+The [time cycle](results/2026-11-01-irix-time.md) uses 192 original records,
+480 native records and 44 controls, followed by eight bounded xclock launches
+and the installer retry. Builds are sequential with two jobs; no more than
+four guests run concurrently. ABI fixtures must exit normally; interactive
+xclock uses an intentional 18-second watchdog with group cleanup. Original
+and native guests halt cleanly. XWD captures are converted losslessly to PNG;
+clock/date semantics are checked independently of pixel changes. Existing
+qualified emulators, worktrees and kernels remain pinned.

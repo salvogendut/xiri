@@ -13,17 +13,18 @@ now supplies the measured child lifecycle, with 340 executions / 600 records
 and 44 controls passing. The [new retry](results/2026-11-01-irix-installer-sproc.md)
 creates the subcommand child, arms parent release and executes native `/bin/sh`.
 The [F_DUPFD follow-up](results/2026-11-01-irix-dupfd.md) now fixes the two
-pipe-writer duplications. The [new retry](results/2026-11-01-irix-installer-dupfd.md)
-still reaches its watchdog amid repeated gettimeofday ENOSYS calls. Time
-support for the installer and xclock is next. Distribution reading and
-installation remain unqualified.
+pipe-writer duplications. The [time follow-up](results/2026-11-01-irix-installer-time.md)
+now confirms successful time/gettimeofday calls, while the unchanged dry run
+still reaches its watchdog. Distribution reading and installation remain
+unqualified.
 
 The helper shell searches IRIX-style directories for `ls` and `mkdir`, omitting
-NetBSD's `/bin`. With descriptor setup fixed, resolve the clock loop, then capture helper output and qualify
-an explicit helper/bootstrap arrangement or stage the required original
-utilities. This is a runtime path decision, not permission to fabricate an
-installer result or import unrelated package history. Timekeeping and other
-observed unsupported calls remain separate work.
+NetBSD's `/bin`. Next capture helper arguments/output and qualify an explicit
+native bootstrap arrangement or the required original utilities, then follow
+the parent's output/child-completion handling. The missing paths do not prove
+the timeout's sole cause. Signal registration, system/hardware information,
+umask and creat remain observed gaps. No package history or catalog entry is
+created merely by resolving these ABI requirements.
 
 Native/IRIX shared-home access passes again. Cold-boot home persistence remains
 qualified by the [earlier probe](results/2026-11-01-irix-installer.md); graphical

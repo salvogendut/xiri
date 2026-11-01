@@ -17,7 +17,7 @@ The reference supplies concrete appearance and content targets for Xiri:
 | Terminal | Console window, rendered text, shell prompt and command output | Retain native shell execution and resolve intermittent startup; compare resources and colors |
 | Icon Catalog | Freeware page 9 of 18, page tabs, toolbar glyphs, labeled application icons | Install a pinned page for a known installed application and verify its action, then qualify broader catalogs |
 | Desktop icons | camera, UnixRoot, dumpster and Welcome to SGI | Qualify background/file-manager services, icon resources and assigned actions |
-| xclock | Analog face and colored hands | Existing launch is established; time progression remains a separate functional check |
+| xclock | Analog face and colored hands | [Current UTC time, updates and redraw pass](results/2026-11-01-irix-time.md) in bounded runs; reference colors and a combined desktop session remain separate checks |
 
 The populated catalog comes from this installation's application and page
 data. Xiri currently stages only a selected runtime/application set and no

@@ -1,0 +1,856 @@
+{
+  "schema": 1,
+  "status": "passed",
+  "qualifier_sha256": "cd6f621c8dde66123f72ef9d47d5d3fac20461b741bff9c76d8995e2534ed84f",
+  "pin_label_note": "Initial captures retain a copied F_TIME descriptor-allocation description. Only this human-readable label is accepted as an alias; all source, configuration and binary fields must match the corrected pin exactly. Raw results are preserved.",
+  "reference_directory": ".work/irix-reference/time-records-runs/ci-cmkx7nzx",
+  "reference_result_sha256": "84440c5f8803f169723b7b01c1aed531de0f13650dd9b88023be0ed348d8e7af",
+  "reference_records_sha256": "519348beaec2705ce2fc2ce84c7af2e574bf8a9c7f947ee0887c928742ee855a",
+  "records": 480,
+  "controls": 44,
+  "runs": [
+    {
+      "directory": ".work/irix-time/runs/lp64-ci-mtxmm6xh",
+      "result_sha256": "7e1ca9a333adab2d667e9e68a483fd86cc4e58cf0c328063f1ce7e9c9092480f",
+      "serial_sha256": "df333cb08e26ad661d774332af62f2376ca51a0fd82660a2ce54d2fcc5bd6535",
+      "fixtures_log_sha256": "4c4063081bf7884f5741a2c2dee55af445c2e7758f0e4a04cb9866ce9e36ad57",
+      "pin": {
+        "schema": 1,
+        "description": "Measured IRIX time and gettimeofday",
+        "ident": "XIRI_IRIX_TIME_20261101",
+        "source_revision": "76de548ab644cb471f4c5b97ec89671c1d385c5b",
+        "source_branch": "xiri",
+        "build_arch": "mips64eb",
+        "page_bytes": 8192,
+        "boot_kernel_sha256": "3fbdfa95f13c1e69432a73a71168080526480f7e3130979d05f3091a531b2afd",
+        "native_kernel_sha256": "956bcd16d46d0c0d1625cea6cb10c3c7086e9be3e95a98f32e18efddecc97ed0",
+        "debug_kernel_sha256": "6693987451d272a820fd90d9e6da45d3b152876a5f0512f311a1a5b996558ddf",
+        "native_o32_sha256": "c294fbb1f2110445be31c096481ea54ab561c7e59ca5b9fc7171310098d755d4",
+        "source_dirty": false,
+        "emulator_revision": "9df1df14334838a989253efefe26f0547e6da592",
+        "emulator_branch": "xiri/netbsd64-tlb",
+        "emulator_sha256": "1b3f7702ba7f43b5c4fca8ba8884243559f46371d8d67a36ce5e6fee1e595eba",
+        "ci_client_sha256": "8711321aa6eaae440da3c7920b00ae4cf1c7f2abbdb15a9919f58485500ffb6c",
+        "base_disk_sha256": "269038c7b77660c83d3835208fc0b2702c93110c14b3c55a42416f51672cee2a",
+        "nvram_sha256": "ee883474d52f09278287b2044f7aeca61d2e7bc39c0bb8fd85c983ab64063d15",
+        "config_sha256": "bc7d26912d4ae7ff607b667ca663ea82013d8018ea33d302cd8e1236bf5e113c",
+        "runtimes": [
+          {
+            "name": "vendor-o32-libc",
+            "path": "/usr/lib/libc.so.1",
+            "sha256": "ea766492103a193e9d404942705e4e28987545e37f699ede232b6c0f8c97c954"
+          },
+          {
+            "name": "vendor-o32-rld",
+            "path": "/lib/rld",
+            "sha256": "30228b54c1e5585b365514eb7c9895b03cc0f61cb898e05e3ddafece87863439"
+          },
+          {
+            "name": "vendor-n32-libc",
+            "path": "/lib32/libc.so.1",
+            "sha256": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e"
+          },
+          {
+            "name": "vendor-n32-rld",
+            "path": "/lib32/rld",
+            "sha256": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b"
+          }
+        ],
+        "config_path": "lab/irix-time/XIRI_IRIX_TIME"
+      },
+      "sources": {
+        "lab/irix-process/runner.c": "51c8045805878f0566a62a66c157b32035d98144bc3bb06e51c78b2fa5f8a141",
+        "lab/irix-toolchest/session.c": "e183b4aefdfb428e01dc609230e87a7546a0b31e9d4b5e236503e0a8bb3b09f5",
+        "scripts/probe-irix-time.py": "5c53d9f067a09d20d56e0af525427762bd20cda935f62b6906eb2528a7409c0a",
+        "lab/irix-time/native-control.c": "a5d8b7aac376a76ab1a39d6e20c0cff751d9b9cd88c648a97da14bb05f34d2f9"
+      },
+      "kernel_abi": "lp64",
+      "mode": "ci",
+      "records": 192,
+      "controls": [
+        {
+          "phase": "before",
+          "uid": 0,
+          "name": "native-o32",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "before",
+          "uid": 0,
+          "name": "vendor-asa",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_O32\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "before",
+          "uid": 0,
+          "name": "vendor-echo",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_N32\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "before",
+          "uid": 1234,
+          "name": "native-o32",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "before",
+          "uid": 1234,
+          "name": "vendor-asa",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_O32\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "before",
+          "uid": 1234,
+          "name": "vendor-echo",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_N32\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "before",
+          "uid": 0,
+          "name": "native-time",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "NATIVE_TIME uid=0 seconds=1 microseconds=1 progression=1 select=1\n",
+            "stderr": ""
+          },
+          "group_absent": true
+        },
+        {
+          "phase": "before",
+          "uid": 1234,
+          "name": "native-time",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "NATIVE_TIME uid=1234 seconds=1 microseconds=1 progression=1 select=1\n",
+            "stderr": ""
+          },
+          "group_absent": true
+        },
+        {
+          "phase": "after",
+          "uid": 0,
+          "name": "native-o32",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "after",
+          "uid": 0,
+          "name": "vendor-asa",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_O32\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "after",
+          "uid": 0,
+          "name": "vendor-echo",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_N32\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "after",
+          "uid": 1234,
+          "name": "native-o32",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "after",
+          "uid": 1234,
+          "name": "vendor-asa",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_O32\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "after",
+          "uid": 1234,
+          "name": "vendor-echo",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_N32\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "after",
+          "uid": 0,
+          "name": "native-time",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "NATIVE_TIME uid=0 seconds=1 microseconds=1 progression=1 select=1\n",
+            "stderr": ""
+          },
+          "group_absent": true
+        },
+        {
+          "phase": "after",
+          "uid": 1234,
+          "name": "native-time",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "NATIVE_TIME uid=1234 seconds=1 microseconds=1 progression=1 select=1\n",
+            "stderr": ""
+          },
+          "group_absent": true
+        }
+      ],
+      "group_cleanup_passed": true,
+      "clean_shutdown": true
+    },
+    {
+      "directory": ".work/irix-time/runs/lp64-ordinary-5gahy6td",
+      "result_sha256": "b2251b85ccac0543ee760b059b50b9f034c2e5f9febb1a46da7bd78d29315df0",
+      "serial_sha256": "338656cd0d6bf0f9a80b7d979dfa59bbeff9ad3bf31e4780b735526328a84113",
+      "fixtures_log_sha256": "e75a248032dd8cb9717bd93c60f472a48ff794bec94d1536583631a21e1e28d2",
+      "pin": {
+        "schema": 1,
+        "description": "Measured IRIX time and gettimeofday",
+        "ident": "XIRI_IRIX_TIME_20261101",
+        "source_revision": "76de548ab644cb471f4c5b97ec89671c1d385c5b",
+        "source_branch": "xiri",
+        "build_arch": "mips64eb",
+        "page_bytes": 8192,
+        "boot_kernel_sha256": "3fbdfa95f13c1e69432a73a71168080526480f7e3130979d05f3091a531b2afd",
+        "native_kernel_sha256": "956bcd16d46d0c0d1625cea6cb10c3c7086e9be3e95a98f32e18efddecc97ed0",
+        "debug_kernel_sha256": "6693987451d272a820fd90d9e6da45d3b152876a5f0512f311a1a5b996558ddf",
+        "native_o32_sha256": "c294fbb1f2110445be31c096481ea54ab561c7e59ca5b9fc7171310098d755d4",
+        "source_dirty": false,
+        "emulator_revision": "9df1df14334838a989253efefe26f0547e6da592",
+        "emulator_branch": "xiri/netbsd64-tlb",
+        "emulator_sha256": "1b3f7702ba7f43b5c4fca8ba8884243559f46371d8d67a36ce5e6fee1e595eba",
+        "ci_client_sha256": "8711321aa6eaae440da3c7920b00ae4cf1c7f2abbdb15a9919f58485500ffb6c",
+        "base_disk_sha256": "269038c7b77660c83d3835208fc0b2702c93110c14b3c55a42416f51672cee2a",
+        "nvram_sha256": "ee883474d52f09278287b2044f7aeca61d2e7bc39c0bb8fd85c983ab64063d15",
+        "config_sha256": "bc7d26912d4ae7ff607b667ca663ea82013d8018ea33d302cd8e1236bf5e113c",
+        "runtimes": [
+          {
+            "name": "vendor-o32-libc",
+            "path": "/usr/lib/libc.so.1",
+            "sha256": "ea766492103a193e9d404942705e4e28987545e37f699ede232b6c0f8c97c954"
+          },
+          {
+            "name": "vendor-o32-rld",
+            "path": "/lib/rld",
+            "sha256": "30228b54c1e5585b365514eb7c9895b03cc0f61cb898e05e3ddafece87863439"
+          },
+          {
+            "name": "vendor-n32-libc",
+            "path": "/lib32/libc.so.1",
+            "sha256": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e"
+          },
+          {
+            "name": "vendor-n32-rld",
+            "path": "/lib32/rld",
+            "sha256": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b"
+          }
+        ],
+        "config_path": "lab/irix-time/XIRI_IRIX_TIME"
+      },
+      "sources": {
+        "lab/irix-process/runner.c": "51c8045805878f0566a62a66c157b32035d98144bc3bb06e51c78b2fa5f8a141",
+        "lab/irix-toolchest/session.c": "e183b4aefdfb428e01dc609230e87a7546a0b31e9d4b5e236503e0a8bb3b09f5",
+        "scripts/probe-irix-time.py": "5c53d9f067a09d20d56e0af525427762bd20cda935f62b6906eb2528a7409c0a",
+        "lab/irix-time/native-control.c": "a5d8b7aac376a76ab1a39d6e20c0cff751d9b9cd88c648a97da14bb05f34d2f9"
+      },
+      "kernel_abi": "lp64",
+      "mode": "ordinary",
+      "records": 192,
+      "controls": [
+        {
+          "phase": "before",
+          "uid": 0,
+          "name": "native-o32",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "before",
+          "uid": 0,
+          "name": "vendor-asa",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_O32\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "before",
+          "uid": 0,
+          "name": "vendor-echo",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_N32\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "before",
+          "uid": 1234,
+          "name": "native-o32",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "before",
+          "uid": 1234,
+          "name": "vendor-asa",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_O32\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "before",
+          "uid": 1234,
+          "name": "vendor-echo",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_N32\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "before",
+          "uid": 0,
+          "name": "native-time",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "NATIVE_TIME uid=0 seconds=1 microseconds=1 progression=1 select=1\n",
+            "stderr": ""
+          },
+          "group_absent": true
+        },
+        {
+          "phase": "before",
+          "uid": 1234,
+          "name": "native-time",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "NATIVE_TIME uid=1234 seconds=1 microseconds=1 progression=1 select=1\n",
+            "stderr": ""
+          },
+          "group_absent": true
+        },
+        {
+          "phase": "after",
+          "uid": 0,
+          "name": "native-o32",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "after",
+          "uid": 0,
+          "name": "vendor-asa",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_O32\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "after",
+          "uid": 0,
+          "name": "vendor-echo",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_N32\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "after",
+          "uid": 1234,
+          "name": "native-o32",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "after",
+          "uid": 1234,
+          "name": "vendor-asa",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_O32\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "after",
+          "uid": 1234,
+          "name": "vendor-echo",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_N32\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "after",
+          "uid": 0,
+          "name": "native-time",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "NATIVE_TIME uid=0 seconds=1 microseconds=1 progression=1 select=1\n",
+            "stderr": ""
+          },
+          "group_absent": true
+        },
+        {
+          "phase": "after",
+          "uid": 1234,
+          "name": "native-time",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "NATIVE_TIME uid=1234 seconds=1 microseconds=1 progression=1 select=1\n",
+            "stderr": ""
+          },
+          "group_absent": true
+        }
+      ],
+      "group_cleanup_passed": true,
+      "clean_shutdown": true
+    },
+    {
+      "directory": ".work/irix-time/runs/o32-ci-wdxai6sq",
+      "result_sha256": "973c9664cb5d12a7c9f45e20d9bb5d9c5bc3b4ba2ee305e22c2ba9ce1588a414",
+      "serial_sha256": "3cf4c00010576e3871afaeec00a3625a7b2de1ecab6bd07fa683809b5b321a5a",
+      "fixtures_log_sha256": "006162faa0837c5b87c49cae6282f7a3713d1d72eb2492dc9d000cf14ddbe317",
+      "pin": {
+        "schema": 1,
+        "description": "Measured IRIX time and gettimeofday",
+        "ident": "XIRI_IRIX_TIME_O32_20261101",
+        "source_revision": "76de548ab644cb471f4c5b97ec89671c1d385c5b",
+        "source_branch": "xiri",
+        "build_arch": "mipseb",
+        "page_bytes": 4096,
+        "boot_kernel_sha256": "21c18b62fa7d64c772c74a926a0bce8277a4aeb1e6c323cc3f870df59863275c",
+        "native_kernel_sha256": "21c18b62fa7d64c772c74a926a0bce8277a4aeb1e6c323cc3f870df59863275c",
+        "debug_kernel_sha256": "0816aeef7a8518b6273d4c1658c4bfd1b4484e0690dd64941d846bf9dc5ba44b",
+        "native_o32_sha256": "c294fbb1f2110445be31c096481ea54ab561c7e59ca5b9fc7171310098d755d4",
+        "source_dirty": false,
+        "emulator_revision": "9df1df14334838a989253efefe26f0547e6da592",
+        "emulator_branch": "xiri/netbsd64-tlb",
+        "emulator_sha256": "1b3f7702ba7f43b5c4fca8ba8884243559f46371d8d67a36ce5e6fee1e595eba",
+        "ci_client_sha256": "8711321aa6eaae440da3c7920b00ae4cf1c7f2abbdb15a9919f58485500ffb6c",
+        "base_disk_sha256": "269038c7b77660c83d3835208fc0b2702c93110c14b3c55a42416f51672cee2a",
+        "nvram_sha256": "ee883474d52f09278287b2044f7aeca61d2e7bc39c0bb8fd85c983ab64063d15",
+        "config_sha256": "b2123f381166a8bd49c2cbec9f584a03d8d0eef0dc719264234898aa6789074c",
+        "runtimes": [
+          {
+            "name": "vendor-o32-libc",
+            "path": "/usr/lib/libc.so.1",
+            "sha256": "ea766492103a193e9d404942705e4e28987545e37f699ede232b6c0f8c97c954"
+          },
+          {
+            "name": "vendor-o32-rld",
+            "path": "/lib/rld",
+            "sha256": "30228b54c1e5585b365514eb7c9895b03cc0f61cb898e05e3ddafece87863439"
+          },
+          {
+            "name": "vendor-n32-libc",
+            "path": "/lib32/libc.so.1",
+            "sha256": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e"
+          },
+          {
+            "name": "vendor-n32-rld",
+            "path": "/lib32/rld",
+            "sha256": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b"
+          }
+        ],
+        "config_path": "lab/irix-time/XIRI_IRIX_TIME_O32"
+      },
+      "sources": {
+        "lab/irix-process/runner.c": "51c8045805878f0566a62a66c157b32035d98144bc3bb06e51c78b2fa5f8a141",
+        "lab/irix-toolchest/session.c": "e183b4aefdfb428e01dc609230e87a7546a0b31e9d4b5e236503e0a8bb3b09f5",
+        "scripts/probe-irix-time.py": "5c53d9f067a09d20d56e0af525427762bd20cda935f62b6906eb2528a7409c0a",
+        "lab/irix-time/native-control.c": "a5d8b7aac376a76ab1a39d6e20c0cff751d9b9cd88c648a97da14bb05f34d2f9"
+      },
+      "kernel_abi": "o32",
+      "mode": "ci",
+      "records": 96,
+      "controls": [
+        {
+          "phase": "before",
+          "uid": 0,
+          "name": "native-o32",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "before",
+          "uid": 0,
+          "name": "vendor-asa",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_O32\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "before",
+          "uid": 1234,
+          "name": "native-o32",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "before",
+          "uid": 1234,
+          "name": "vendor-asa",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_O32\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "before",
+          "uid": 0,
+          "name": "native-time",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "NATIVE_TIME uid=0 seconds=1 microseconds=1 progression=1 select=1\n",
+            "stderr": ""
+          },
+          "group_absent": true
+        },
+        {
+          "phase": "before",
+          "uid": 1234,
+          "name": "native-time",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "NATIVE_TIME uid=1234 seconds=1 microseconds=1 progression=1 select=1\n",
+            "stderr": ""
+          },
+          "group_absent": true
+        },
+        {
+          "phase": "after",
+          "uid": 0,
+          "name": "native-o32",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "after",
+          "uid": 0,
+          "name": "vendor-asa",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_O32\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "after",
+          "uid": 1234,
+          "name": "native-o32",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "after",
+          "uid": 1234,
+          "name": "vendor-asa",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_VENDOR_O32\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "after",
+          "uid": 0,
+          "name": "native-time",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "NATIVE_TIME uid=0 seconds=1 microseconds=1 progression=1 select=1\n",
+            "stderr": ""
+          },
+          "group_absent": true
+        },
+        {
+          "phase": "after",
+          "uid": 1234,
+          "name": "native-time",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "NATIVE_TIME uid=1234 seconds=1 microseconds=1 progression=1 select=1\n",
+            "stderr": ""
+          },
+          "group_absent": true
+        }
+      ],
+      "group_cleanup_passed": true,
+      "clean_shutdown": true
+    }
+  ],
+  "source_evidence": [
+    {
+      "repository": "NetBSD-xiri",
+      "revision": "76de548ab644cb471f4c5b97ec89671c1d385c5b",
+      "path": "sys/compat/irix_o32/irix_o32.c",
+      "sha256": "b7b2e0adba355d580b571ec79d5e835df0a35546f26f217bed06ab18178fef59"
+    },
+    {
+      "repository": "NetBSD-xiri",
+      "revision": "76de548ab644cb471f4c5b97ec89671c1d385c5b",
+      "path": "sys/kern/kern_tc.c",
+      "sha256": "3d9e5d84ed428e1c9e827c52201200af698d889ebdd8dea5515a8796ef2e929d"
+    },
+    {
+      "repository": "NetBSD-xiri",
+      "revision": "76de548ab644cb471f4c5b97ec89671c1d385c5b",
+      "path": "sys/arch/mips/mips/copy.S",
+      "sha256": "1ea57fd36ea02e1175718b5957ed298c7dc3d4a60f3ecf24d953a56bfda2a6d1"
+    }
+  ],
+  "limits": [
+    "Raw time ignores all pointer arguments; libc is responsible for its optional output pointer.",
+    "Gettimeofday has one destination, two signed32-bit fields, no kernel timezone argument; null is EFAULT.",
+    "Absolute seconds differ between boots. Each record must match its own native date bounds and ordering; microseconds, progression, returns and guarded/partial writes are checked independently.",
+    "Current positive signed32-bit dates only; pre-epoch, 2038 overflow, wall-clock adjustment, timezone/DST and physical hardware remain unqualified."
+  ]
+}

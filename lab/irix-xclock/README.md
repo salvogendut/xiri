@@ -99,3 +99,14 @@ confirms the libXmu ENOMEM boundary in all four CI attempts, before any X socket
 or connect call. Native xclock displays and the before/after native/vendor
 controls pass. This is a recheck of the existing blocker; no loader fix is
 claimed by the SIOCNREAD checkpoint.
+
+
+The later [time checkpoint](../../docs/results/2026-11-01-irix-time.md) follows
+the qualified libXmu relocation fix. Original analog/digital xclock now shows
+current UTC time, advances and redraws in both modes under both identities.
+Use `scripts/probe-irix-xclock-time.py --seed-directory
+.work/irix-xclock/runs/ci-0xaicapn` with `--mode ci` or `--mode ordinary`, then
+pass both stopped run directories to `scripts/qualify-irix-xclock-time.py`.
+The [time lab](../irix-time/README.md) describes the ABI oracle, kernel pins,
+bounded lifetime, native controls and PNG evidence. Historical harnesses and
+seeds remain unchanged for reproduction.
