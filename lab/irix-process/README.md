@@ -1,5 +1,7 @@
 # Bounded IRIX process interfaces
 
+Later checkpoint: [original winterm now runs a native interactive shell](../../docs/results/2026-11-01-irix-shell.md), with measured descriptor/session/exec interfaces and actual keyboard input.
+
 This lab measures fork, the getpid/getppid register pair, traditional signal
 masks and positive-child exit waits against the supplied IRIX 6.5.22m system.
 It then observes original winterm/xwsh with the candidate NetBSD kernel.

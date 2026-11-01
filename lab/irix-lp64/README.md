@@ -1,5 +1,7 @@
 # IRIX o32/n32 on the LP64 Indy kernel
 
+Later checkpoint: [original winterm now runs a native interactive shell](../../docs/results/2026-11-01-irix-shell.md), with measured descriptor/session/exec interfaces and actual keyboard input.
+
 This lab ports the bounded IRIX personality to the qualified LP64 kernel and
 adds n32 dispatch, ELF loading and heap growth. It retains the original o32
 kernel route. The [result record](../../docs/results/2026-10-30-irix-lp64.md)

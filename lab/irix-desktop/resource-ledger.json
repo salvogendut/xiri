@@ -80,7 +80,8 @@
         "docs/results/2026-10-31-irix-winterm-resources.json",
         "docs/results/2026-10-31-irix-winterm-access.json",
         "docs/results/2026-10-31-irix-winterm-pty.json",
-        "docs/results/2026-11-01-irix-winterm-process.json"
+        "docs/results/2026-11-01-irix-winterm-process.json",
+        "docs/results/2026-11-01-irix-shell.json"
       ],
       "note": "22 original Screen fonts indexed; the requested 15-pixel medium face renders in native xterm under both identities and modes. The access follow-up pins both native xterm regular and bold slots to the verified normal face after an unconstrained control hit X_OpenFont BadAlloc; this does not qualify other faces."
     },
@@ -97,13 +98,14 @@
         "lab/irix-x11-fonts/manifest.json",
         "docs/results/2026-10-31-irix-winterm-resources.json",
         "docs/results/2026-10-31-irix-winterm-fault.json",
-        "docs/results/2026-10-31-irix-winterm-access.json"
+        "docs/results/2026-10-31-irix-winterm-access.json",
+        "docs/results/2026-11-01-irix-shell.json"
       ],
       "note": "The access adapter permits reading C/XLC_LOCALE. Original xwsh passes the earlier locale/font failure and reaches terminal setup. lseek is still unsupported but no longer the immediate observed startup boundary. Other locales and delayed modules remain unqualified."
     },
     {
       "id": "terminal_defaults",
-      "status": "xwsh_startup_read_observed",
+      "status": "interactive_native_shell_observed",
       "image_paths": [
         "/usr/lib/X11/app-defaults/XWsh",
         "/usr/lib/X11/app-defaults/IWsh",
@@ -112,9 +114,10 @@
       "evidence": [
         "lab/irix-winterm/manifest.json",
         "docs/results/2026-10-31-irix-winterm-fault.json",
-        "docs/results/2026-10-31-irix-winterm-access.json"
+        "docs/results/2026-10-31-irix-winterm-access.json",
+        "docs/results/2026-11-01-irix-shell.json"
       ],
-      "note": "Original xwsh now checks and reads XWsh app-defaults and passes the previous null-font crash. IWsh consumption is unqualified; the unchanged winterm launcher still has a separate gettxt exec limitation."
+      "note": "Original XWsh defaults and winterm launcher now support a native interactive shell with explicit WINTERM. gettxt still fails exec and emits a warning; IWsh remains unqualified."
     },
     {
       "id": "window_manager_defaults",
@@ -128,7 +131,7 @@
       "evidence": [
         "lab/irix-desktop/manifest.json"
       ],
-      "note": "Evaluate the original 4Dwm after a usable winterm. Collision relocation exists; 4 KiB load boundaries and referenced artwork remain open."
+      "note": "Evaluate original 4Dwm next, preserving the working winterm/native-shell baseline. Collision relocation exists; 4 KiB load boundaries and referenced artwork remain open."
     },
     {
       "id": "session_defaults",
@@ -224,14 +227,15 @@
     },
     {
       "id": "native_pty_namespace",
-      "status": "allocator_and_child_slave_open_observed",
+      "status": "native_shell_input_and_cleanup_observed",
       "image_paths": [],
       "evidence": [
         "lab/irix-pty/setup.sh",
         "docs/results/2026-10-31-irix-pty.md",
-        "docs/results/2026-11-01-irix-process.md"
+        "docs/results/2026-11-01-irix-process.md",
+        "docs/results/2026-11-01-irix-shell.json"
       ],
-      "note": "Generated native ptm clone, ptyfs group 0/mode 0600, nullfs slave view under /emul/irix/dev/pts and first 400 q/r aliases. Do not import original device nodes. Original xwsh now forks and opens the slave in its child, then reaches unsupported execve. Native exec/session/descriptor setup, signal handlers, terminal modes and shell/input remain open."
+      "note": "Generated native ptm clone, ptyfs group 0/mode 0600, nullfs foreign view and 400 q/r aliases. Native handoff verifies/reopens the same /dev/pts device before controlling-terminal acquisition, avoiding the captured layered-tty revoke panic. Native shell keyboard commands and bounded descendant cleanup pass; foreign termios, resize, handlers and normal app exit remain open. No original device nodes are imported."
     }
   ],
   "native_session_inputs": [
@@ -242,6 +246,6 @@
     "PATH and XUSERFILESEARCHPATH",
     "generated or deliberately migrated per-user desktop state",
     "Native PTY allocation, ownership, controlling terminal and termios translation for the selected shell",
-    "Native fork/exec ABI transition, child descriptors, session/process group and signal disposition setup; no additional image assets needed for the process checkpoint"
+    "Native fork/exec ABI transition, child descriptors and session/process group; verified native PTY reopen and controlling-terminal setup through /usr/libexec/xiri-shell. No additional vendor image assets needed for the shell checkpoint."
   ]
 }

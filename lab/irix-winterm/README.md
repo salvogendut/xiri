@@ -1,6 +1,6 @@
 # Original IRIX winterm / xwsh
 
-Latest: the [process checkpoint](../../docs/results/2026-11-01-irix-process.md) advances original xwsh through fork and child PTY slave opening to unsupported execve. Its terminal window, scrollbar and cursor now render; no shell prompt is available yet. Native session/descriptor setup, signal handlers, terminal attributes and shell/input come next, followed by 4Dwm evaluation. The [PTY checkpoint](../../docs/results/2026-10-31-irix-pty.md) supplies allocation and permissions, and the earlier [access follow-up](../../docs/results/2026-10-31-irix-winterm-access.md) cleared the locale/font crash.
+Latest: the [shell checkpoint](../../docs/results/2026-11-01-irix-shell.md) runs NetBSD `/bin/sh -i` inside original xwsh through the unchanged winterm launcher. Real X keyboard input runs commands and creates a verified marker; the [PNG](../../docs/results/images/2026-11-01-irix-winterm-shell.png) shows the prompt and output. A native helper supplies controlling-terminal setup and avoids the observed layered-tty teardown panic. Foreign signal handlers, resize, normal app exit and gettxt remain open. Original 4Dwm evaluation is next.
 
 Earlier diagnosis: the startup fault was a null font object in tuFont::getWidth, alongside unsupported access calls for staged locale/defaults. See the [fault capture](../../docs/results/2026-10-31-irix-winterm-fault.md).
 

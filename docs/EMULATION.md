@@ -197,9 +197,19 @@ packaging inside a script so a failure cannot log out the interactive shell.
 The [process lab](../lab/irix-process/README.md) adds paired original-IRIX
 fork/mask/wait measurements, full LP64 CI/ordinary and o32 matrices, independent
 native KERN_PROC2 mask/identity snapshots, and process-group cleanup controls.
-Original xwsh forks and opens the slave in its child, then reaches unsupported
-execve. The observer retains all child trace events and signals plus the first
+At that historical checkpoint, original xwsh forks and opens the slave in its
+child, then reaches unsupported execve. The observer retains all child trace events and signals plus the first
 2,000 parent events, avoiding repeated serial transfer of the parent's loop
 after command failure. The full-trace hash/count and capture scope are recorded.
-Native shell/session/descriptor handling, signal delivery and terminal modes
-remain prerequisites for the winterm goal and subsequent 4Dwm evaluation.
+The subsequent [shell lab](../lab/irix-shell/README.md) measures descriptor,
+session and exec interfaces and verifies native shell commands through original
+winterm. It stages the pinned NetBSD X development set, explicitly makes the
+session environment readable by the test UID, and generates the final Return
+character inside the guest shell so serial-console multiline editing cannot
+corrupt the typed command. A native helper reopens the verified native PTY
+before controlling-terminal setup; direct acquisition through the nullfs view
+triggered a captured `exit1 -> layer_revoke -> vrelel` panic on teardown.
+The reserved-UID guard tracks and cleans up descendants across setsid and
+launcher exit. Native controls cover detached descendants, tty hangup and X
+keyboard input. Foreign signal handlers, resize and normal app exit remain open;
+4Dwm evaluation follows this working shell baseline.

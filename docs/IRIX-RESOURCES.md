@@ -21,7 +21,7 @@ experiment that establishes whether the resource is actually used.
 | SGI color values | `/usr/lib/X11/rgb.txt` | [Resource pin](../lab/irix-toolchest-input/resources.json). Source of numeric SGIGray76/SGIDarkGray values. Current Toolchest uses explicit Xt numeric overrides. Original xclock additionally requests SGILightGray (170,170,170) and SGISlateBlue (113,113,198), both present in this file; its current launch still warns about those names. Copying the file does not constitute qualified server color-name support. |
 | SGI Screen fonts | `/usr/lib/X11/fonts/misc/Scr*.pcf[.Z]` | [Selected font manifest](../lab/irix-x11-fonts/manifest.json): 22 fonts, 118,634 bytes. All 22 are indexed; xwsh's requested 15-pixel medium face renders in native xterm in both modes/identities. Use the native X server's font path, distinct from the foreign filesystem. |
 | X locale data | `/usr/lib/X11/locale/locale.alias`, `locale.dir`, `C/{XI18N_OBJS,XLC_LOCALE}`, `iso8859-1/{Compose,XI18N_OBJS,XLC_LOCALE}` | [Font/locale manifest](../lab/irix-x11-fonts/manifest.json). Alias/directory files were already staged; the [resource experiment](../lab/irix-x11-fonts/README.md) adds C/ISO8859-1 data separately from fonts; the [access follow-up](results/2026-10-31-irix-winterm-access.md) verifies successful checks and reads of `C/XLC_LOCALE`, clearing the earlier locale/font failure. External modules mentioned by XI18N_OBJS and other locales remain unqualified. |
-| Terminal defaults and launcher | `/usr/lib/X11/app-defaults/XWsh`, `IWsh`; `/usr/sbin/winterm`; `/usr/bin/gettxt` | [Winterm manifest](../lab/irix-winterm/manifest.json). XWsh defaults are now checked and read successfully. IWsh consumption remains unqualified. The launcher uses a message helper that currently fails exec. |
+| Terminal defaults and launcher | `/usr/lib/X11/app-defaults/XWsh`, `IWsh`; `/usr/sbin/winterm`; `/usr/bin/gettxt` | [Winterm manifest](../lab/irix-winterm/manifest.json). XWsh defaults are now checked and read successfully. IWsh consumption remains unqualified. The launcher’s gettxt helper still fails exec; explicit WINTERM allows the unchanged script to launch xwsh with a native shell. |
 | Window-manager and desktop defaults | `/usr/lib/X11/app-defaults/4DWm`, `system.4Dwmrc`, `system.4Dwmdesks`, `system.backgrounds` | [Desktop manifest](../lab/irix-desktop/manifest.json). Extracted candidates; 4Dwm still has loader blockers. Runtime requirements and artwork referenced by these files need qualification. |
 | Session scripts and default icon/device lists | `/usr/lib/X11/xdm/Xsession`, `Xsession.dt`, `Xresources`, `DefaultDeviceList`, `DefaultIconList`; corresponding `/var/X11/xdm` paths | [Session analysis](../lab/irix-desktop/session.json) and [desktop manifest](../lab/irix-desktop/manifest.json). Reference for launch order, resource lookup, per-screen setup and restoration. Adapt selected behavior to native X.org/NetBSD services. |
 | Desktop helpers and programs | `/usr/lib/desktop/*`; `/usr/sbin/fm`, `bgicons`, `iconcatalog`, `genDeviceIcons`, `FLtoPopDB`; `/usr/bin/X11/wait4wm`, `tellwm`, `reaper` | [Desktop manifest](../lab/irix-desktop/manifest.json). Initial files/metadata extracted; executable/library closures, delayed modules and runtime data remain to be inventoried. |
@@ -56,11 +56,15 @@ foundation. The [PTY checkpoint](results/2026-10-31-irix-pty.md) uses native
 ptm/ptyfs allocation and ownership, a group-0/mode-0600 disposable ptyfs mount,
 and a nullfs view under `/emul/irix/dev/pts` with the first 400 IRIX q/r aliases.
 These are generated native session resources, not files to import from IRIX.
-The [process checkpoint](results/2026-11-01-irix-process.md) now advances xwsh
-through fork and child slave opening to unsupported execve. No additional
-original resources were needed. Native shell selection, session/process-group
-setup, descriptor duplication, signal handlers and terminal attributes remain
-unqualified; importing an IRIX shell would not supply these missing interfaces. The image's Xsgi, kernel, device nodes and boot
+The [shell checkpoint](results/2026-11-01-irix-shell.md) now runs native
+`/bin/sh` through original winterm/xwsh and accepts typed commands. No further
+image resources were needed: the existing Screen fonts, C locale, XWsh defaults
+and original runtime closure suffice for this path. The native helper verifies
+and reopens `/dev/pts/N` before acquiring the controlling terminal, sets 80x24,
+and execs `/bin/sh -i`; this avoids the observed layered-tty revoke panic.
+The test uses explicit HOME, PATH, WINTERM and a reserved numeric UID; production
+account/session setup, gettxt, foreign signal handlers, resize and normal app
+exit still need work. The image's Xsgi, kernel, device nodes and boot
 scripts remain reference inputs for the native NetBSD integration.
 
 The [desktop acceptance plan](ROADMAP.md#milestone-3-original-desktop-proof)
