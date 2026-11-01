@@ -61,5 +61,8 @@ PYTHONDONTWRITEBYTECODE=1 python3 scripts/qualify-irix-installer-helpers.py \
 
 Read the [result](../../docs/results/2026-11-01-irix-installer-helpers.md) for
 the observed boundary and the separately identified future wait interface.
+The [signal reference lab](../irix-signal/README.md) subsequently measures
+that wait inside original-IRIX handlers, together with registration, frame
+delivery and return. NetBSD signal/wait-any implementation remains pending.
 Large traces, embedded vendor script and disassemblies stay under `.work`;
 only hashes and derived interface observations are committed.

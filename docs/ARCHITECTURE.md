@@ -207,12 +207,17 @@ The [installer helper trace](results/2026-11-01-irix-installer-helpers.md)
 separates native utility lookup from foreign child completion. Its embedded
 script runs through native `/bin/sh`; four explicit native aliases let it
 exit zero, but the IRIX parent leaves it a zombie. The parent receives ENOSYS
-from SIGCHLD sigaction. Its library callback predicts waitsys selector7 with
-options0x43, beyond the current positive-child-only implementation. Support
-requires measured foreign signal frames/trampolines and sigreturn plus the
-appropriate wait selector/options; successful native exec alone cannot
-provide those interfaces. Native `stat -qd` compatibility remains a separate
-userland requirement. The final module/service split is unchanged.
+from SIGCHLD sigaction. The [original signal reference](results/2026-11-01-irix-signal-reference.md)
+now measures registration, both frame forms, sigreturn and the callback's
+predicted waitsys selector7/options0x43. That wait succeeds in reference
+handlers, beyond the current NetBSD positive-child-only implementation.
+Signal delivery needs explicit ABI serializers: o32 and n32 ucontexts both
+start GPRs at byte 40 but use different widths and FPU layouts. Native
+signal/wait machinery should own process state, with foreign trampoline
+inheritance and exec cleanup handled by the personality. Return must preserve
+native machine-state checks and convert FPU halves correctly. These kernel
+interfaces remain unimplemented; native `stat -qd` compatibility remains a
+separate userland requirement. The final module/service split is unchanged.
 
 Keep the IRIX runtime in a distinct tree while making selected user files available consistently to native and compatible processes. The path policy must cover absolute library paths, executable lookup, temporary files, user identities, and desktop configuration.
 

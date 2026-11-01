@@ -175,3 +175,13 @@ No integration or affected emulator rebuild was needed. The
 existing time kernel and qualified emulator in fresh disposable guests;
 detached reproductions and the unrelated IRIS performance branch remain
 untouched. Only Xiri lab tooling and documentation change in this cycle.
+
+The 2026-11-01 signal-reference cycle starts from Xiri `dd4c1f4`, NetBSD
+`xiri` `1532f82a003` and IRIS `xiri` `045d692`. A fresh fetch from
+`https://github.com/techomancer/iris.git` again finds upstream
+`4ad1b1d435dc115697433f091b10dfa8c48aa7ed` already contained in the IRIS
+integration branch. There are no new commits to merge or emulator changes
+to rebuild. The [480-execution reference](results/2026-11-01-irix-signal-reference.md)
+uses the pinned original-IRIX emulator; NetBSD runtime source remains
+`76de548ab644cb471f4c5b97ec89671c1d385c5b`. Both fork integration worktrees
+remain clean and detached reproductions remain pinned.

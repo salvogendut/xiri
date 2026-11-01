@@ -1,5 +1,9 @@
 # Original installer helper paths and child completion
 
+Follow-up: the [original signal reference](2026-11-01-irix-signal-reference.md)
+now measures registration, frames, sigreturn and the predicted wait-any call.
+NetBSD implementation remains pending; the capture below is unchanged.
+
 Four native utility aliases let the original installer's target-directory
 bootstrap **exit zero**, in both CI and ordinary IRIS execution. The parent
 still leaves that child a zombie and reaches its 30-second watchdog. The

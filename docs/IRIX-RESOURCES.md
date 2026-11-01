@@ -179,3 +179,9 @@ script's fallback device value zero does not qualify filesystem identity or
 cross-filesystem installation. Signal handling and child reaping are kernel
 requirements, separate from these utility resources. Existing xmahjongg,
 package-hook and Freeware catalog requirements remain open.
+
+The [signal reference](results/2026-11-01-irix-signal-reference.md) adds no
+runtime resource imports. Its independent fixtures measure kernel interfaces;
+private inspection of the already staged n32 libc confirms the trampoline
+convention. Signal support must accommodate that original runtime. It does
+not supply missing utilities, package payloads or catalog assets.

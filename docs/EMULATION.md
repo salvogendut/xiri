@@ -335,3 +335,13 @@ All direct foreign entry/return pairs are cross-checked with the text decoder.
 The supervisor's group-absence check is supplemented by absence of every
 traced PID, since the native helper creates its own session. All guests halt
 after transfer; this cycle changes no kernel or emulator artifact.
+
+The [signal reference cycle](results/2026-11-01-irix-signal-reference.md)
+passes 480 original-IRIX executions in CI mode using 240 frozen libc-free
+ELFs. All records complete normally; the independent qualifier checks
+registration, delivery, return, FPU and child-reaping evidence. An earlier
+smoke run exposed an o32 assembly fixture macro error; its separate failing
+archive is retained. Both guests halt cleanly, at most two overlap, and the
+final host check finds no IRIS processes. Sequential fixture builds and the
+existing pinned emulator/seed remain unchanged. NetBSD and ordinary-mode
+qualification belong to the subsequent implementation cycle.

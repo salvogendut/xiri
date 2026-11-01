@@ -25,13 +25,17 @@ directories that omit `/bin`. Four explicit native utility aliases
 guests, while the unchanged installer still waits and leaves the child a
 zombie. SIGCHLD registration returns ENOSYS; the supplied library's completion
 callback would use `waitsys(P_ALL, 0, ..., 0x43, 0)`, another unimplemented
-mode. That call is a static prediction, not a runtime observation.
+mode. The [signal reference](results/2026-11-01-irix-signal-reference.md) now
+executes that call successfully inside independent original-IRIX handlers,
+including confirmation that the child is reaped. Its 480 executions also
+measure registration, o32/n32 frames, signal return and FPU restoration.
+The installer itself has not yet executed this callback on NetBSD.
 
 The aliases are a disposable lab arrangement, not general IRIX command
 compatibility. Native `stat -qd` fails and the original script falls back to
-zero, so filesystem-device comparison remains unqualified. Measure signal
-registration, trampoline/frame/return and wait-any behavior next, then
-resolve the utility mismatch before claiming installer support. Hardware
+zero, so filesystem-device comparison remains unqualified. Implement the
+measured signal and wait-any subset, qualify it on NetBSD and retry the
+installer, then resolve the utility mismatch before claiming installer support. Hardware
 information, umask and creat also remain gaps. No package history or catalog
 entry has been created.
 
