@@ -1,0 +1,431 @@
+{
+  "schema": 1,
+  "status": "observed-boundary",
+  "qualifier_sha256": "fce26633cff1776f31e2c7c14dedd8d8c866ace9bf12a0b15037a9cc789956be",
+  "graphical_success": false,
+  "runs": [
+    {
+      "directory": ".work/irix-4dwm/runs/prda-ci-v52olycp",
+      "result_sha256": "4ecbf3a74f81a905906aafda9197a1560b595af2e0dea3d46a728bd5c263626c",
+      "trace_sha256": "b2bbcd7f4c823413c8db13c190ba7f006cba2d479fa4c44048add370e20759d8",
+      "stage": "prda",
+      "mode": "ci",
+      "pin": {
+        "schema": 1,
+        "description": "Measured PRDA process state, exec reset and fork COW/PID update",
+        "ident": "XIRI_IRIX_PRDA_20261101",
+        "source_revision": "348bd3c8e794f9535e1964bc86d309746e1b576d",
+        "source_branch": "xiri/irix-prda",
+        "build_arch": "mips64eb",
+        "page_bytes": 8192,
+        "boot_kernel_sha256": "b83a5c360c4b818f8ee03cbda341e724517a2923938e6fd4c0183b8af6fccfb6",
+        "native_kernel_sha256": "7a7abd9a9fd3b6605d70bec7621077a7a0886c8094a067f9ac7bf49a2e3782cf",
+        "debug_kernel_sha256": "160db09959e95e833191ff065b355ea543d5ce5a17aa40b9717040c24402b2ea",
+        "native_o32_sha256": "c294fbb1f2110445be31c096481ea54ab561c7e59ca5b9fc7171310098d755d4",
+        "source_dirty": false,
+        "emulator_revision": "9df1df14334838a989253efefe26f0547e6da592",
+        "emulator_branch": "xiri/netbsd64-tlb",
+        "emulator_sha256": "1b3f7702ba7f43b5c4fca8ba8884243559f46371d8d67a36ce5e6fee1e595eba",
+        "ci_client_sha256": "8711321aa6eaae440da3c7920b00ae4cf1c7f2abbdb15a9919f58485500ffb6c",
+        "base_disk_sha256": "269038c7b77660c83d3835208fc0b2702c93110c14b3c55a42416f51672cee2a",
+        "nvram_sha256": "ee883474d52f09278287b2044f7aeca61d2e7bc39c0bb8fd85c983ab64063d15",
+        "config_sha256": "3a920e71e19286e72e8be2ce3dc5d548c32451abde8245a82a01d170a7637a53",
+        "runtimes": [
+          {
+            "name": "vendor-o32-libc",
+            "path": "/usr/lib/libc.so.1",
+            "sha256": "ea766492103a193e9d404942705e4e28987545e37f699ede232b6c0f8c97c954"
+          },
+          {
+            "name": "vendor-o32-rld",
+            "path": "/lib/rld",
+            "sha256": "30228b54c1e5585b365514eb7c9895b03cc0f61cb898e05e3ddafece87863439"
+          },
+          {
+            "name": "vendor-n32-libc",
+            "path": "/lib32/libc.so.1",
+            "sha256": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e"
+          },
+          {
+            "name": "vendor-n32-rld",
+            "path": "/lib32/rld",
+            "sha256": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b"
+          }
+        ],
+        "config_path": "lab/irix-prda/XIRI_IRIX_PRDA"
+      },
+      "sources": {
+        "scripts/probe-irix-4dwm-prda.py": "4a1ffac35e9f7c2fdcd81f8c6d85defafdd10d5f73922994f5b6efa9ea005e5d",
+        "lab/irix-shell/guard.c": "1bb3a7cc79f83bbc7de56c50c2ba5d0565dcc92eb7ff2d5b58d6f1e2257c11e3",
+        "lab/irix-toolchest/session.c": "e183b4aefdfb428e01dc609230e87a7546a0b31e9d4b5e236503e0a8bb3b09f5",
+        "lab/irix-lp64/runner.c": "005bdf3fffce5fb8ca79073e92cc41431aa953550c41014183d5de986a104463",
+        "lab/irix-4dwm/wmcheck.c": "51e9e549ca7362b29edbadb2ee192411ba36febf1ca103db793cdf137118fd13"
+      },
+      "staged": {
+        "/emul/irix/usr/bin/X11/4Dwm": "9b6db8756f24bb8f789ea8b23d26857e8020c8817a845b5096ccc4da8dcac7df",
+        "/emul/irix/usr/bin/X11/toolchest": "20efa5c36c1e0dba1176fdd98000057e574b21c787ca364e1811100f9f2ba860",
+        "/emul/irix/lib32/rld": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b",
+        "/emul/irix/lib32/libc.so.1": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e",
+        "/emul/irix/usr/lib32/libc.so.1": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e",
+        "/emul/irix/usr/lib32/internal/libimdXutil.so": "70cde99e88b21c950df9e04a0313bc9931465177d888f59eb45181c74d58647f",
+        "/emul/irix/usr/lib32/internal/libimdUtil.so": "d170951e98b868cefda1906329e210db04f43672522cab686c13f2cbd80c949f",
+        "/emul/irix/usr/lib32/internal/libimdFtrIcon.so": "99c57009020d614ccb691075ebf6b8c4b0f08e31467e6eba34b978abaf293441",
+        "/emul/irix/usr/lib32/libXm.so.1": "3c95e7c7fa9d26bde299a4313ce4cd03e749a90c7edf0bc42a3af3697491030c",
+        "/emul/irix/usr/lib32/libXmu.so": "42cc93453cd776caadfb5e7f7740ea26a87d8b931fb6e0febb7f716063eb28c7",
+        "/emul/irix/usr/lib32/libXext.so": "1d6a94a6602428a459b044e8564203c436815a9a8b3804ee3027503131defc4a",
+        "/emul/irix/usr/lib32/libXt.so": "452b4a3ae72728825c382896e45ca214ea750721d9586d1db263189063b5fb30",
+        "/emul/irix/usr/lib32/libX11.so.1": "2e3287c4842eb4149c9f839229093a28c180edf43dcf1f28b68102cdcf989642",
+        "/emul/irix/usr/lib32/libm.so": "8ab1b4e569cfb55ddb181ccf31b0a4a28a699894a55b6d8e778b8c15508ab4d0",
+        "/emul/irix/usr/lib32/libC.so.2": "e81c01921778d03148c45b66bdf7e935f49f7025a52f1f2ece5889e0c6eaf884",
+        "/emul/irix/usr/lib32/libCsup.so": "f3120e7dccf58919e45f7cff503e0686059fdb7f7facfee1ad32327f081c3fb0",
+        "/emul/irix/usr/lib32/libgen.so": "a3102584a1929b91e4db3428b8e022fff3cff690ec646dd9edbf094e7ad28d7d",
+        "/emul/irix/usr/lib32/libvk.so.1": "92818537abf4d09f5501d15f24ce024f1c4ad3ebbea2f18683547f71d0f56991",
+        "/emul/irix/usr/lib32/libXpm.so.1": "a7ea5a37f84b6c5520404cfa810d98c4c14b618acecaf0b17608fa28c5e53896",
+        "/emul/irix/usr/lib32/internal/libimdFtrDB.so": "ea57f287b178655dac04b6c06de953482ed23f95e30df816c16bf8cca8defb9f",
+        "/emul/irix/usr/lib32/libil.so": "a09cb4aea1be804fc9d550a6b1f59b2e8ffac3a52520a10006d44cab2d32c1e2",
+        "/emul/irix/usr/lib32/libifl.so": "1e2840da9add9994ef4a28a60b96ce5adbc3162b7543abc063dd9cbbef3139fd",
+        "/emul/irix/usr/lib32/libGL.so": "4ce211808b0baa3a2ac9d596c63be2e769acc8554fc82177019fd62d48445597",
+        "/emul/irix/usr/lib32/libGLU.so": "287842d59919ae332be7305e46e223b3599e9f38c3c9b5118906d7ff3ab87294",
+        "/emul/irix/usr/lib32/libSgm.so.1": "fc0cc9605fe443e0348cbac0205e607f1ac984771e1e65192d4e5674e9f893c4",
+        "/emul/irix/usr/lib32/libGLcore.so": "14d736eeb97e9f117f969336b98055912591e7d427f7bfea57ecae6e918752a4",
+        "/emul/irix/usr/lib32/libXsgivc.so": "2704330d4c16b56ab650456ae0f3a5c1cfc9213eaaf014817e4e6dc68b075606",
+        "/emul/irix/usr/lib32/libgl.so": "96349d52e132fb19fd2f016b66f50a1a0765d788673375181df0f3c130e298ea",
+        "/emul/irix/usr/lib32/libXi.so": "c8535479fccd8d5791fc79a8539fcc5b1448d73fe3748e4bde0a2e71ab65a18a",
+        "/emul/irix/usr/lib/X11/app-defaults/4DWm": "44fe41ae91b87ca4e306d99741673501202b6fe776225a4690171475a19c0153",
+        "/emul/irix/usr/lib/X11/system.4Dwmrc": "ac1fcf2df3eb19c8f50358bca0c97bd816686e8e63cd87a9f6da93f6168b48ac",
+        "/emul/irix/usr/lib/X11/system.4Dwmdesks": "a893e56342cfb1bf25d9e8c68c9b1c41ebff2dd871e5b66e10eb2c608b176ccb",
+        "/emul/irix/usr/lib/X11/system.backgrounds": "fd7030a155ee789453f24599c58252253f996f00f9c39526828736d1a57aef1d"
+      },
+      "controls": [
+        {
+          "phase": "before",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "after",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          }
+        }
+      ],
+      "cases": [
+        {
+          "name": "4Dwm",
+          "actual": {
+            "pid": 1708,
+            "exit": -1,
+            "signal": 9,
+            "killed": 1,
+            "absent": 1,
+            "valid": 1,
+            "elapsed_ms": 30098,
+            "stdout": "",
+            "stderr": "Xlib:  extension \"SGI-AccessControl\" missing on display \"127.0.0.1:98.0\".\n4Dwm: Cannot open configuration file\nXlib:  extension \"SGI-AccessControl\" missing on display \"127.0.0.1:98.0\".\nMakeTPWidgets: Cannot Get TP state\nXlib:  extension \"SGI-AccessControl\" missing on display \"127.0.0.1:98.0\".\nMakeTPWidgets: Cannot Get MonoMode state\nXlib:  extension \"SGI-AccessControl\" missing on display \"127.0.0.1:98.0\".\nXlib:  extension \"SGI-AccessControl\" missing on display \"127.0.0.1:98.0\".\n"
+          },
+          "tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     9 children:\n     0x200062 (has no name): ()  5x5+0+0  +0+0\n        1 child:\n        0x200063 (has no name): ()  117x153+0+0  +0+0\n     0x20005c (has no name): ()  326x140+0+628  +0+628\n        1 child:\n        0x20005d (has no name): ()  316x130+5+5  +5+633\n           1 child:\n           0x200055 \"trustedPathManager\": (\"trustedPathManager\" \"4DWm\")  316x130+0+0  +5+633\n              1 child:\n              0x200056 (has no name): ()  316x130+0+0  +5+633\n                 1 child:\n                 0x200057 (has no name): ()  316x130+0+0  +5+633\n                    4 children:\n                    0x20005b (has no name): ()  296x30+10+50  +15+683\n                    0x20005a (has no name): ()  148x30+10+10  +15+643\n                    0x200059 (has no name): ()  138x30+168+10  +173+643\n                    0x200058 (has no name): ()  296x30+10+90  +15+723\n     0x20004b (has no name): ()  1x1+0+0  +0+0\n     0x200043 (has no name): ()  5x5+0+0  +0+0\n        1 child:\n        0x200045 (has no name): ()  84x175+0+0  +0+0\n     0x200042 (has no name): ()  1x1+0+0  +0+0\n     0x20000b (has no name): ()  10x10+10000+10000  +10000+10000\n     0x200001 \"4Dwm\": (\"4Dwm\" \"4DWm\")  1x1+0+0  +0+0\n     0x20002d (has no name): ()  10x10+-100+-100  +-100+-100\n     0x20004a \"4Dwm\": (\"4Dwm\" \"4DWm\")  10x10+10000+0  +10000+0\n\n",
+          "properties": "_SGI_DESKS_MANAGER(WINDOW): window id # 0x20002d\nWM_ICON_SIZE(WM_ICON_SIZE):\n\t\tminimum icon size: 16 by 16\n\t\tmaximum icon size: 50 by 50\n\t\tincremental size change: 1 by 1\n_MOTIF_WM_INFO(_MOTIF_WM_INFO) = 0x2, 0x20002d\n_SGI_TELL_WM(STRING) = \"auto_place\", \"auto_save\", \"beep\", \"circle_down\", \"circle_up\", \"end_session\", \"explicit_save\", \"force_restart\", \"interactive_place\", \"minimize_all\", \"opaque\", \"outline\", \"pack_icons\", \"quit\", \"refresh\", \"restart\", \"restore_all\", \"save_configuration\"\n_MOTIF_DEFAULT_BINDINGS(STRING) = \"osfCancel:<Key>Escape\\nosfLeft:<Key>Left\\nosfUp:<Key>Up\\nosfRight:<Key>Right\\nosfDown:<Key>Down\\nosfEndLine:<Key>End\\nosfBeginLine:<Key>Home\\nosfPageUp:<Key>Prior\\nosfPageDown:<Key>Next\\nosfBackSpace:<Key>BackSpace\\nosfDelete:<Key>Delete\\nosfInsert:<Key>Insert\\nosfAddMode:Shift<Key>F8\\nosfHelp:<Key>F1\\nosfMenu:Shift<Key>F10\\nosfMenuBar:<Key>F10\\nosfSelect:<Key>Select\\nosfActivate:<Key>KP_Enter\\nosfClear:<Key>Clear\\nosfUndo:<Key>Undo\"\n_XKB_RULES_NAMES(STRING) = \"base\", \"pc105\", \"us\", \"\", \"\"\n",
+          "frame_sha256": "b4fb18afb00e701035ae9265651d2283f22a927147a8b2072474ef39e45a9f77",
+          "trace_info": "SHA256 (wm.ktrace) = 9f659d8ef51bded17965f55fa1420acfbc2785973b0835df7d4020400c99ea76\nSHA256 (wm.dump) = dc82a0091fea8837c61ba2921267d1ea6f0d505462ef794c12077a1c19b79900\n",
+          "wmcheck": "WMCHECK_STATUS=5\nWM_REPARENT client=4194305 frame=2097252 x=158 y=218 frame_x=150 frame_y=160\nWM_FOCUS client=4194305 focus=4194306 matched=0\n"
+        }
+      ],
+      "clean_shutdown": true
+    },
+    {
+      "directory": ".work/irix-4dwm/runs/resources-ci-lfc6jflb",
+      "result_sha256": "b2e807167c21065d8e27fccaf7a5a09dad934fb6b520198eebcfba94be6b64d4",
+      "trace_sha256": "37f453f3f06ea7db64d79d4cb49f152b4e62f14ce708eab08fd66d23a178c72f",
+      "stage": "resources",
+      "mode": "ci",
+      "pin": {
+        "schema": 1,
+        "description": "Measured PRDA process state, exec reset and fork COW/PID update",
+        "ident": "XIRI_IRIX_PRDA_20261101",
+        "source_revision": "348bd3c8e794f9535e1964bc86d309746e1b576d",
+        "source_branch": "xiri/irix-prda",
+        "build_arch": "mips64eb",
+        "page_bytes": 8192,
+        "boot_kernel_sha256": "b83a5c360c4b818f8ee03cbda341e724517a2923938e6fd4c0183b8af6fccfb6",
+        "native_kernel_sha256": "7a7abd9a9fd3b6605d70bec7621077a7a0886c8094a067f9ac7bf49a2e3782cf",
+        "debug_kernel_sha256": "160db09959e95e833191ff065b355ea543d5ce5a17aa40b9717040c24402b2ea",
+        "native_o32_sha256": "c294fbb1f2110445be31c096481ea54ab561c7e59ca5b9fc7171310098d755d4",
+        "source_dirty": false,
+        "emulator_revision": "9df1df14334838a989253efefe26f0547e6da592",
+        "emulator_branch": "xiri/netbsd64-tlb",
+        "emulator_sha256": "1b3f7702ba7f43b5c4fca8ba8884243559f46371d8d67a36ce5e6fee1e595eba",
+        "ci_client_sha256": "8711321aa6eaae440da3c7920b00ae4cf1c7f2abbdb15a9919f58485500ffb6c",
+        "base_disk_sha256": "269038c7b77660c83d3835208fc0b2702c93110c14b3c55a42416f51672cee2a",
+        "nvram_sha256": "ee883474d52f09278287b2044f7aeca61d2e7bc39c0bb8fd85c983ab64063d15",
+        "config_sha256": "3a920e71e19286e72e8be2ce3dc5d548c32451abde8245a82a01d170a7637a53",
+        "runtimes": [
+          {
+            "name": "vendor-o32-libc",
+            "path": "/usr/lib/libc.so.1",
+            "sha256": "ea766492103a193e9d404942705e4e28987545e37f699ede232b6c0f8c97c954"
+          },
+          {
+            "name": "vendor-o32-rld",
+            "path": "/lib/rld",
+            "sha256": "30228b54c1e5585b365514eb7c9895b03cc0f61cb898e05e3ddafece87863439"
+          },
+          {
+            "name": "vendor-n32-libc",
+            "path": "/lib32/libc.so.1",
+            "sha256": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e"
+          },
+          {
+            "name": "vendor-n32-rld",
+            "path": "/lib32/rld",
+            "sha256": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b"
+          }
+        ],
+        "config_path": "lab/irix-prda/XIRI_IRIX_PRDA"
+      },
+      "sources": {
+        "scripts/probe-irix-4dwm-resources.py": "97b7ce0f94f5e55c4481f6e64c343b95d19e57ebb5430df687f334488735dd2b",
+        "lab/irix-shell/guard.c": "1bb3a7cc79f83bbc7de56c50c2ba5d0565dcc92eb7ff2d5b58d6f1e2257c11e3",
+        "lab/irix-toolchest/session.c": "e183b4aefdfb428e01dc609230e87a7546a0b31e9d4b5e236503e0a8bb3b09f5",
+        "lab/irix-lp64/runner.c": "005bdf3fffce5fb8ca79073e92cc41431aa953550c41014183d5de986a104463",
+        "lab/irix-4dwm/wmcheck.c": "51e9e549ca7362b29edbadb2ee192411ba36febf1ca103db793cdf137118fd13"
+      },
+      "staged": {
+        "/emul/irix/usr/bin/X11/4Dwm": "9b6db8756f24bb8f789ea8b23d26857e8020c8817a845b5096ccc4da8dcac7df",
+        "/emul/irix/usr/bin/X11/toolchest": "20efa5c36c1e0dba1176fdd98000057e574b21c787ca364e1811100f9f2ba860",
+        "/emul/irix/lib32/rld": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b",
+        "/emul/irix/lib32/libc.so.1": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e",
+        "/emul/irix/usr/lib32/libc.so.1": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e",
+        "/emul/irix/usr/lib32/internal/libimdXutil.so": "70cde99e88b21c950df9e04a0313bc9931465177d888f59eb45181c74d58647f",
+        "/emul/irix/usr/lib32/internal/libimdUtil.so": "d170951e98b868cefda1906329e210db04f43672522cab686c13f2cbd80c949f",
+        "/emul/irix/usr/lib32/internal/libimdFtrIcon.so": "99c57009020d614ccb691075ebf6b8c4b0f08e31467e6eba34b978abaf293441",
+        "/emul/irix/usr/lib32/libXm.so.1": "3c95e7c7fa9d26bde299a4313ce4cd03e749a90c7edf0bc42a3af3697491030c",
+        "/emul/irix/usr/lib32/libXmu.so": "42cc93453cd776caadfb5e7f7740ea26a87d8b931fb6e0febb7f716063eb28c7",
+        "/emul/irix/usr/lib32/libXext.so": "1d6a94a6602428a459b044e8564203c436815a9a8b3804ee3027503131defc4a",
+        "/emul/irix/usr/lib32/libXt.so": "452b4a3ae72728825c382896e45ca214ea750721d9586d1db263189063b5fb30",
+        "/emul/irix/usr/lib32/libX11.so.1": "2e3287c4842eb4149c9f839229093a28c180edf43dcf1f28b68102cdcf989642",
+        "/emul/irix/usr/lib32/libm.so": "8ab1b4e569cfb55ddb181ccf31b0a4a28a699894a55b6d8e778b8c15508ab4d0",
+        "/emul/irix/usr/lib32/libC.so.2": "e81c01921778d03148c45b66bdf7e935f49f7025a52f1f2ece5889e0c6eaf884",
+        "/emul/irix/usr/lib32/libCsup.so": "f3120e7dccf58919e45f7cff503e0686059fdb7f7facfee1ad32327f081c3fb0",
+        "/emul/irix/usr/lib32/libgen.so": "a3102584a1929b91e4db3428b8e022fff3cff690ec646dd9edbf094e7ad28d7d",
+        "/emul/irix/usr/lib32/libvk.so.1": "92818537abf4d09f5501d15f24ce024f1c4ad3ebbea2f18683547f71d0f56991",
+        "/emul/irix/usr/lib32/libXpm.so.1": "a7ea5a37f84b6c5520404cfa810d98c4c14b618acecaf0b17608fa28c5e53896",
+        "/emul/irix/usr/lib32/internal/libimdFtrDB.so": "ea57f287b178655dac04b6c06de953482ed23f95e30df816c16bf8cca8defb9f",
+        "/emul/irix/usr/lib32/libil.so": "a09cb4aea1be804fc9d550a6b1f59b2e8ffac3a52520a10006d44cab2d32c1e2",
+        "/emul/irix/usr/lib32/libifl.so": "1e2840da9add9994ef4a28a60b96ce5adbc3162b7543abc063dd9cbbef3139fd",
+        "/emul/irix/usr/lib32/libGL.so": "4ce211808b0baa3a2ac9d596c63be2e769acc8554fc82177019fd62d48445597",
+        "/emul/irix/usr/lib32/libGLU.so": "287842d59919ae332be7305e46e223b3599e9f38c3c9b5118906d7ff3ab87294",
+        "/emul/irix/usr/lib32/libSgm.so.1": "fc0cc9605fe443e0348cbac0205e607f1ac984771e1e65192d4e5674e9f893c4",
+        "/emul/irix/usr/lib32/libGLcore.so": "14d736eeb97e9f117f969336b98055912591e7d427f7bfea57ecae6e918752a4",
+        "/emul/irix/usr/lib32/libXsgivc.so": "2704330d4c16b56ab650456ae0f3a5c1cfc9213eaaf014817e4e6dc68b075606",
+        "/emul/irix/usr/lib32/libgl.so": "96349d52e132fb19fd2f016b66f50a1a0765d788673375181df0f3c130e298ea",
+        "/emul/irix/usr/lib32/libXi.so": "c8535479fccd8d5791fc79a8539fcc5b1448d73fe3748e4bde0a2e71ab65a18a",
+        "/emul/irix/usr/lib/X11/app-defaults/4DWm": "44fe41ae91b87ca4e306d99741673501202b6fe776225a4690171475a19c0153",
+        "/emul/irix/usr/lib/X11/system.4Dwmrc": "ac1fcf2df3eb19c8f50358bca0c97bd816686e8e63cd87a9f6da93f6168b48ac",
+        "/emul/irix/usr/lib/X11/system.4Dwmdesks": "a893e56342cfb1bf25d9e8c68c9b1c41ebff2dd871e5b66e10eb2c608b176ccb",
+        "/emul/irix/usr/lib/X11/system.backgrounds": "fd7030a155ee789453f24599c58252253f996f00f9c39526828736d1a57aef1d"
+      },
+      "controls": [
+        {
+          "phase": "before",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "after",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          }
+        }
+      ],
+      "cases": [
+        {
+          "name": "4Dwm",
+          "actual": {
+            "pid": 303,
+            "exit": -1,
+            "signal": 9,
+            "killed": 1,
+            "absent": 1,
+            "valid": 1,
+            "elapsed_ms": 30082,
+            "stdout": "",
+            "stderr": "Xlib:  extension \"SGI-AccessControl\" missing on display \"127.0.0.1:98.0\".\nXlib:  extension \"SGI-AccessControl\" missing on display \"127.0.0.1:98.0\".\nMakeTPWidgets: Cannot Get TP state\nXlib:  extension \"SGI-AccessControl\" missing on display \"127.0.0.1:98.0\".\nMakeTPWidgets: Cannot Get MonoMode state\nXlib:  extension \"SGI-AccessControl\" missing on display \"127.0.0.1:98.0\".\nXlib:  extension \"SGI-AccessControl\" missing on display \"127.0.0.1:98.0\".\n"
+          },
+          "tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     12 children:\n     0x600002 \"Xiri native window B\": (\"xiri-wm-probe\" \"XiriWMProbe\")  300x160+570+160  +570+160\n     0x600001 \"Xiri native window A\": (\"xiri-wm-probe\" \"XiriWMProbe\")  300x160+150+160  +150+160\n     0x200065 (has no name): ()  309x144+0+624  +0+624\n        1 child:\n        0x200066 (has no name): ()  295x130+7+7  +7+631\n           1 child:\n           0x20005e \"trustedPathManager\": (\"trustedPathManager\" \"4DWm\")  295x130+0+0  +7+631\n              1 child:\n              0x20005f (has no name): ()  295x130+0+0  +7+631\n                 1 child:\n                 0x200060 (has no name): ()  295x130+0+0  +7+631\n                    4 children:\n                    0x200064 (has no name): ()  275x30+10+50  +17+681\n                    0x200063 (has no name): ()  137x30+10+10  +17+641\n                    0x200062 (has no name): ()  128x30+157+10  +164+641\n                    0x200061 (has no name): ()  275x30+10+90  +17+721\n     0x200054 (has no name): ()  1x1+0+0  +0+0\n     0x200053 (has no name): ()  1x1+0+0  +0+0\n     0x400001 (has no name): ()  1x1+-2+-2  +-2+-2\n     0x200050 (has no name): ()  5x5+0+0  +0+0\n        1 child:\n        0x200051 (has no name): ()  70x57+0+0  +0+0\n     0x200046 (has no name): ()  5x5+0+0  +0+0\n        1 child:\n        0x200048 (has no name): ()  152x55+0+0  +0+0\n     0x20000b (has no name): ()  10x10+10000+10000  +10000+10000\n     0x200001 \"4Dwm\": (\"4Dwm\" \"4DWm\")  1x1+0+0  +0+0\n     0x200031 (has no name): ()  10x10+-100+-100  +-100+-100\n     0x200052 \"4Dwm\": (\"4Dwm\" \"4DWm\")  10x10+10000+0  +10000+0\n\n",
+          "properties": "_SGI_DESKS_MANAGER(WINDOW): window id # 0x200031\nWM_ICON_SIZE(WM_ICON_SIZE):\n\t\tminimum icon size: 16 by 16\n\t\tmaximum icon size: 85 by 67\n\t\tincremental size change: 1 by 1\n_SGI__MENU_WINDOW(WINDOW): window id # 0x400001\n_MOTIF_WM_INFO(_MOTIF_WM_INFO) = 0x2, 0x200031\n_SGI_TELL_WM(STRING) = \"auto_place\", \"auto_save\", \"beep\", \"circle_down\", \"circle_up\", \"end_session\", \"explicit_save\", \"force_restart\", \"interactive_place\", \"minimize_all\", \"opaque\", \"outline\", \"pack_icons\", \"quit\", \"refresh\", \"restart\", \"restore_all\", \"save_configuration\"\n_MOTIF_DEFAULT_BINDINGS(STRING) = \"osfCancel:<Key>Escape\\nosfLeft:<Key>Left\\nosfUp:<Key>Up\\nosfRight:<Key>Right\\nosfDown:<Key>Down\\nosfEndLine:<Key>End\\nosfBeginLine:<Key>Home\\nosfPageUp:<Key>Prior\\nosfPageDown:<Key>Next\\nosfBackSpace:<Key>BackSpace\\nosfDelete:<Key>Delete\\nosfInsert:<Key>Insert\\nosfAddMode:Shift<Key>F8\\nosfHelp:<Key>F1\\nosfMenu:Shift<Key>F10\\nosfMenuBar:<Key>F10\\nosfSelect:<Key>Select\\nosfActivate:<Key>KP_Enter\\nosfClear:<Key>Clear\\nosfUndo:<Key>Undo\"\n_XKB_RULES_NAMES(STRING) = \"base\", \"pc105\", \"us\", \"\", \"\"\n",
+          "frame_sha256": "84a1ebb2f4134864de8429b14503480bd17e4c6a4688d1dfd1076af9ec145b26",
+          "trace_info": "SHA256 (wm.ktrace) = d598f2393bfd5f0eb57a9b2dbdad37f930b6d573fccaa02022255cc060d9f95d\nSHA256 (wm.dump) = 1a9b9664e2a086618521fdb9103b6093be0c8bced1b4817185d83c61a294fed4\n",
+          "wmcheck": "WMCHECK_STATUS=3\nwindows were not reparented\n"
+        }
+      ],
+      "clean_shutdown": true
+    },
+    {
+      "directory": ".work/irix-4dwm/runs/resources-ordinary-ftotu8vv",
+      "result_sha256": "9360e5ea96aa2c7cbe6df127a120260e9e968b2f8afdf2355d1b65d8bb588252",
+      "trace_sha256": "3fcb1f5c3d6f9d15db0fdc36adc3011b02930cf5836d8d925cac1d3a971862df",
+      "stage": "resources",
+      "mode": "ordinary",
+      "pin": {
+        "schema": 1,
+        "description": "Measured PRDA process state, exec reset and fork COW/PID update",
+        "ident": "XIRI_IRIX_PRDA_20261101",
+        "source_revision": "348bd3c8e794f9535e1964bc86d309746e1b576d",
+        "source_branch": "xiri/irix-prda",
+        "build_arch": "mips64eb",
+        "page_bytes": 8192,
+        "boot_kernel_sha256": "b83a5c360c4b818f8ee03cbda341e724517a2923938e6fd4c0183b8af6fccfb6",
+        "native_kernel_sha256": "7a7abd9a9fd3b6605d70bec7621077a7a0886c8094a067f9ac7bf49a2e3782cf",
+        "debug_kernel_sha256": "160db09959e95e833191ff065b355ea543d5ce5a17aa40b9717040c24402b2ea",
+        "native_o32_sha256": "c294fbb1f2110445be31c096481ea54ab561c7e59ca5b9fc7171310098d755d4",
+        "source_dirty": false,
+        "emulator_revision": "9df1df14334838a989253efefe26f0547e6da592",
+        "emulator_branch": "xiri/netbsd64-tlb",
+        "emulator_sha256": "1b3f7702ba7f43b5c4fca8ba8884243559f46371d8d67a36ce5e6fee1e595eba",
+        "ci_client_sha256": "8711321aa6eaae440da3c7920b00ae4cf1c7f2abbdb15a9919f58485500ffb6c",
+        "base_disk_sha256": "269038c7b77660c83d3835208fc0b2702c93110c14b3c55a42416f51672cee2a",
+        "nvram_sha256": "ee883474d52f09278287b2044f7aeca61d2e7bc39c0bb8fd85c983ab64063d15",
+        "config_sha256": "3a920e71e19286e72e8be2ce3dc5d548c32451abde8245a82a01d170a7637a53",
+        "runtimes": [
+          {
+            "name": "vendor-o32-libc",
+            "path": "/usr/lib/libc.so.1",
+            "sha256": "ea766492103a193e9d404942705e4e28987545e37f699ede232b6c0f8c97c954"
+          },
+          {
+            "name": "vendor-o32-rld",
+            "path": "/lib/rld",
+            "sha256": "30228b54c1e5585b365514eb7c9895b03cc0f61cb898e05e3ddafece87863439"
+          },
+          {
+            "name": "vendor-n32-libc",
+            "path": "/lib32/libc.so.1",
+            "sha256": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e"
+          },
+          {
+            "name": "vendor-n32-rld",
+            "path": "/lib32/rld",
+            "sha256": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b"
+          }
+        ],
+        "config_path": "lab/irix-prda/XIRI_IRIX_PRDA"
+      },
+      "sources": {
+        "scripts/probe-irix-4dwm-resources.py": "97b7ce0f94f5e55c4481f6e64c343b95d19e57ebb5430df687f334488735dd2b",
+        "lab/irix-shell/guard.c": "1bb3a7cc79f83bbc7de56c50c2ba5d0565dcc92eb7ff2d5b58d6f1e2257c11e3",
+        "lab/irix-toolchest/session.c": "e183b4aefdfb428e01dc609230e87a7546a0b31e9d4b5e236503e0a8bb3b09f5",
+        "lab/irix-lp64/runner.c": "005bdf3fffce5fb8ca79073e92cc41431aa953550c41014183d5de986a104463",
+        "lab/irix-4dwm/wmcheck.c": "51e9e549ca7362b29edbadb2ee192411ba36febf1ca103db793cdf137118fd13"
+      },
+      "staged": {
+        "/emul/irix/usr/bin/X11/4Dwm": "9b6db8756f24bb8f789ea8b23d26857e8020c8817a845b5096ccc4da8dcac7df",
+        "/emul/irix/usr/bin/X11/toolchest": "20efa5c36c1e0dba1176fdd98000057e574b21c787ca364e1811100f9f2ba860",
+        "/emul/irix/lib32/rld": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b",
+        "/emul/irix/lib32/libc.so.1": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e",
+        "/emul/irix/usr/lib32/libc.so.1": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e",
+        "/emul/irix/usr/lib32/internal/libimdXutil.so": "70cde99e88b21c950df9e04a0313bc9931465177d888f59eb45181c74d58647f",
+        "/emul/irix/usr/lib32/internal/libimdUtil.so": "d170951e98b868cefda1906329e210db04f43672522cab686c13f2cbd80c949f",
+        "/emul/irix/usr/lib32/internal/libimdFtrIcon.so": "99c57009020d614ccb691075ebf6b8c4b0f08e31467e6eba34b978abaf293441",
+        "/emul/irix/usr/lib32/libXm.so.1": "3c95e7c7fa9d26bde299a4313ce4cd03e749a90c7edf0bc42a3af3697491030c",
+        "/emul/irix/usr/lib32/libXmu.so": "42cc93453cd776caadfb5e7f7740ea26a87d8b931fb6e0febb7f716063eb28c7",
+        "/emul/irix/usr/lib32/libXext.so": "1d6a94a6602428a459b044e8564203c436815a9a8b3804ee3027503131defc4a",
+        "/emul/irix/usr/lib32/libXt.so": "452b4a3ae72728825c382896e45ca214ea750721d9586d1db263189063b5fb30",
+        "/emul/irix/usr/lib32/libX11.so.1": "2e3287c4842eb4149c9f839229093a28c180edf43dcf1f28b68102cdcf989642",
+        "/emul/irix/usr/lib32/libm.so": "8ab1b4e569cfb55ddb181ccf31b0a4a28a699894a55b6d8e778b8c15508ab4d0",
+        "/emul/irix/usr/lib32/libC.so.2": "e81c01921778d03148c45b66bdf7e935f49f7025a52f1f2ece5889e0c6eaf884",
+        "/emul/irix/usr/lib32/libCsup.so": "f3120e7dccf58919e45f7cff503e0686059fdb7f7facfee1ad32327f081c3fb0",
+        "/emul/irix/usr/lib32/libgen.so": "a3102584a1929b91e4db3428b8e022fff3cff690ec646dd9edbf094e7ad28d7d",
+        "/emul/irix/usr/lib32/libvk.so.1": "92818537abf4d09f5501d15f24ce024f1c4ad3ebbea2f18683547f71d0f56991",
+        "/emul/irix/usr/lib32/libXpm.so.1": "a7ea5a37f84b6c5520404cfa810d98c4c14b618acecaf0b17608fa28c5e53896",
+        "/emul/irix/usr/lib32/internal/libimdFtrDB.so": "ea57f287b178655dac04b6c06de953482ed23f95e30df816c16bf8cca8defb9f",
+        "/emul/irix/usr/lib32/libil.so": "a09cb4aea1be804fc9d550a6b1f59b2e8ffac3a52520a10006d44cab2d32c1e2",
+        "/emul/irix/usr/lib32/libifl.so": "1e2840da9add9994ef4a28a60b96ce5adbc3162b7543abc063dd9cbbef3139fd",
+        "/emul/irix/usr/lib32/libGL.so": "4ce211808b0baa3a2ac9d596c63be2e769acc8554fc82177019fd62d48445597",
+        "/emul/irix/usr/lib32/libGLU.so": "287842d59919ae332be7305e46e223b3599e9f38c3c9b5118906d7ff3ab87294",
+        "/emul/irix/usr/lib32/libSgm.so.1": "fc0cc9605fe443e0348cbac0205e607f1ac984771e1e65192d4e5674e9f893c4",
+        "/emul/irix/usr/lib32/libGLcore.so": "14d736eeb97e9f117f969336b98055912591e7d427f7bfea57ecae6e918752a4",
+        "/emul/irix/usr/lib32/libXsgivc.so": "2704330d4c16b56ab650456ae0f3a5c1cfc9213eaaf014817e4e6dc68b075606",
+        "/emul/irix/usr/lib32/libgl.so": "96349d52e132fb19fd2f016b66f50a1a0765d788673375181df0f3c130e298ea",
+        "/emul/irix/usr/lib32/libXi.so": "c8535479fccd8d5791fc79a8539fcc5b1448d73fe3748e4bde0a2e71ab65a18a",
+        "/emul/irix/usr/lib/X11/app-defaults/4DWm": "44fe41ae91b87ca4e306d99741673501202b6fe776225a4690171475a19c0153",
+        "/emul/irix/usr/lib/X11/system.4Dwmrc": "ac1fcf2df3eb19c8f50358bca0c97bd816686e8e63cd87a9f6da93f6168b48ac",
+        "/emul/irix/usr/lib/X11/system.4Dwmdesks": "a893e56342cfb1bf25d9e8c68c9b1c41ebff2dd871e5b66e10eb2c608b176ccb",
+        "/emul/irix/usr/lib/X11/system.backgrounds": "fd7030a155ee789453f24599c58252253f996f00f9c39526828736d1a57aef1d"
+      },
+      "controls": [
+        {
+          "phase": "before",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "after",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          }
+        }
+      ],
+      "cases": [
+        {
+          "name": "4Dwm",
+          "actual": {
+            "pid": 1896,
+            "exit": -1,
+            "signal": 9,
+            "killed": 1,
+            "absent": 1,
+            "valid": 1,
+            "elapsed_ms": 30099,
+            "stdout": "",
+            "stderr": "Xlib:  extension \"SGI-AccessControl\" missing on display \"127.0.0.1:98.0\".\nXlib:  extension \"SGI-AccessControl\" missing on display \"127.0.0.1:98.0\".\nMakeTPWidgets: Cannot Get TP state\nXlib:  extension \"SGI-AccessControl\" missing on display \"127.0.0.1:98.0\".\nMakeTPWidgets: Cannot Get MonoMode state\nXlib:  extension \"SGI-AccessControl\" missing on display \"127.0.0.1:98.0\".\nXlib:  extension \"SGI-AccessControl\" missing on display \"127.0.0.1:98.0\".\n"
+          },
+          "tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     12 children:\n     0x600002 \"Xiri native window B\": (\"xiri-wm-probe\" \"XiriWMProbe\")  300x160+570+160  +570+160\n     0x600001 \"Xiri native window A\": (\"xiri-wm-probe\" \"XiriWMProbe\")  300x160+150+160  +150+160\n     0x200065 (has no name): ()  309x144+0+624  +0+624\n        1 child:\n        0x200066 (has no name): ()  295x130+7+7  +7+631\n           1 child:\n           0x20005e \"trustedPathManager\": (\"trustedPathManager\" \"4DWm\")  295x130+0+0  +7+631\n              1 child:\n              0x20005f (has no name): ()  295x130+0+0  +7+631\n                 1 child:\n                 0x200060 (has no name): ()  295x130+0+0  +7+631\n                    4 children:\n                    0x200064 (has no name): ()  275x30+10+50  +17+681\n                    0x200063 (has no name): ()  137x30+10+10  +17+641\n                    0x200062 (has no name): ()  128x30+157+10  +164+641\n                    0x200061 (has no name): ()  275x30+10+90  +17+721\n     0x200054 (has no name): ()  1x1+0+0  +0+0\n     0x200053 (has no name): ()  1x1+0+0  +0+0\n     0x400001 (has no name): ()  1x1+-2+-2  +-2+-2\n     0x200050 (has no name): ()  5x5+0+0  +0+0\n        1 child:\n        0x200051 (has no name): ()  70x57+0+0  +0+0\n     0x200046 (has no name): ()  5x5+0+0  +0+0\n        1 child:\n        0x200048 (has no name): ()  152x55+0+0  +0+0\n     0x20000b (has no name): ()  10x10+10000+10000  +10000+10000\n     0x200001 \"4Dwm\": (\"4Dwm\" \"4DWm\")  1x1+0+0  +0+0\n     0x200031 (has no name): ()  10x10+-100+-100  +-100+-100\n     0x200052 \"4Dwm\": (\"4Dwm\" \"4DWm\")  10x10+10000+0  +10000+0\n\n",
+          "properties": "_SGI_DESKS_MANAGER(WINDOW): window id # 0x200031\nWM_ICON_SIZE(WM_ICON_SIZE):\n\t\tminimum icon size: 16 by 16\n\t\tmaximum icon size: 85 by 67\n\t\tincremental size change: 1 by 1\n_SGI__MENU_WINDOW(WINDOW): window id # 0x400001\n_MOTIF_WM_INFO(_MOTIF_WM_INFO) = 0x2, 0x200031\n_SGI_TELL_WM(STRING) = \"auto_place\", \"auto_save\", \"beep\", \"circle_down\", \"circle_up\", \"end_session\", \"explicit_save\", \"force_restart\", \"interactive_place\", \"minimize_all\", \"opaque\", \"outline\", \"pack_icons\", \"quit\", \"refresh\", \"restart\", \"restore_all\", \"save_configuration\"\n_MOTIF_DEFAULT_BINDINGS(STRING) = \"osfCancel:<Key>Escape\\nosfLeft:<Key>Left\\nosfUp:<Key>Up\\nosfRight:<Key>Right\\nosfDown:<Key>Down\\nosfEndLine:<Key>End\\nosfBeginLine:<Key>Home\\nosfPageUp:<Key>Prior\\nosfPageDown:<Key>Next\\nosfBackSpace:<Key>BackSpace\\nosfDelete:<Key>Delete\\nosfInsert:<Key>Insert\\nosfAddMode:Shift<Key>F8\\nosfHelp:<Key>F1\\nosfMenu:Shift<Key>F10\\nosfMenuBar:<Key>F10\\nosfSelect:<Key>Select\\nosfActivate:<Key>KP_Enter\\nosfClear:<Key>Clear\\nosfUndo:<Key>Undo\"\n_XKB_RULES_NAMES(STRING) = \"base\", \"pc105\", \"us\", \"\", \"\"\n",
+          "frame_sha256": "84a1ebb2f4134864de8429b14503480bd17e4c6a4688d1dfd1076af9ec145b26",
+          "trace_info": "SHA256 (wm.ktrace) = 2df4c3b61ce366e9c51ea36ad8218bd39e1c9f6a26b2b804678feb8701c22bcf\nSHA256 (wm.dump) = 7107e0df34da27b651c591daf45d5567c2a311ee5d04559dc84401ac0ae25379\n",
+          "wmcheck": "WMCHECK_STATUS=3\nwindows were not reparented\n"
+        }
+      ],
+      "clean_shutdown": true
+    }
+  ]
+}

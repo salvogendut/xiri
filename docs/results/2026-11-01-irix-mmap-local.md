@@ -93,3 +93,8 @@ winterm launcher), with typed shell commands, UID1234-owned output markers,
 eight native controlling-terminal controls, ten other controls and clean
 shutdown. Existing gettxt, signal-handler, resize and normal-exit limitations
 remain explicit.
+
+The later [PRDA checkpoint](2026-11-01-irix-prda.md) clears the libc fault;
+its [4Dwm follow-up](2026-11-01-irix-4dwm.md) reaches window interaction and
+a combined winterm shell with session saving disabled. The negative captures
+above remain the evidence for this earlier mapping checkpoint.

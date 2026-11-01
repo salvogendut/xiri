@@ -110,3 +110,8 @@ full traces and guest disks stay under ignored `.work`. The bounded trace view
 uses raw `kdump -x` and the existing process trace filter because the installed
 o32 kdump cannot safely format native LP64 msghdr records. The complete binary
 and text traces remain on each stopped guest disk.
+
+The later [4Dwm session](../../docs/results/2026-11-01-irix-4dwm.md) preserves
+this native handoff and typed-command proof alongside original Toolchest and
+4Dwm on the PRDA kernel. Session saving is disabled; terminal signal, resize,
+gettxt and normal-exit limitations remain unchanged.

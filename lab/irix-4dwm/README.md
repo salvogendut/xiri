@@ -55,7 +55,94 @@ The [fixed/local mmap checkpoint](../../docs/results/2026-11-01-irix-mmap-local.
 now removes the GL mapping warning and fault at 0x1050. The native page-zero
 guard remains in force for native programs, including after foreign exec.
 `probe-irix-4dwm-local.py` checks reparenting, focus, keyboard delivery and
-pointer dragging using the original `wmcheck.c` native client; the current
+pointer dragging using the original `wmcheck.c` native client; the pre-PRDA
 4Dwm faults in libc `_usinit` at the absent PRDA PID field (`0x200e00`) before reparenting, so this is a negative
 management check. `probe-irix-4dwm-local-fault.py` captures that subsequent
 fault with native tracer controls. Raw frames and disassembly remain private.
+
+## PRDA and readable resource follow-up
+
+The [PRDA checkpoint](../../docs/results/2026-11-01-irix-prda.md) clears the
+libc fault. `probe-irix-4dwm-prda.py` retains the exact initial observation:
+4Dwm reparents/decorates native clients, but pointer focus fails. Its original
+configuration file was unreadable by UID1234 despite matching content hashes.
+`probe-irix-4dwm-resources.py` explicitly restores mode 0444 on the four
+original files and uses a private UID1234-owned HOME. CI and ordinary execution
+both remove the open warning and reach further session-saving activity, but
+fail the reparenting bound. The bounded supervisor still cleans up all
+processes and native X remains usable.
+
+`probe-irix-4dwm-sessionless.py` isolates window management using explicit
+`SG_manageSession: false` and `SG_autoSave: false` resources. This is a diagnostic
+configuration; it does not qualify session saving or restoration.
+`probe-irix-4dwm-desktop.py` exercises the combined original applications and
+native shell handoff. The first attempt reaches the shell handoff but fails
+keyboard input while 4Dwm is stalled; it is excluded from desktop acceptance.
+Raw captures remain private until a real interactive success is qualified.
+
+The session-saving isolation restores reparenting. Its first check then exposed
+a native test-helper error: XGetInputFocus may return the special PointerRoot
+value, which cannot be passed to XQueryTree as a window ID. The corrected
+`wmcheck-pointer.c` resolves the real pointer's deepest child for that focus
+policy, requires it to be the intended client, and still requires delivery of
+an actual XTest KeyPress. It never assigns focus itself. Historical `wmcheck.c`
+and its recorded failures remain unchanged.
+
+`probe-irix-4dwm-windowtest.py` and
+`probe-irix-4dwm-desktop-windowtest.py` use that corrected check. Their combined
+session explicitly stages the pinned original XKeysymDB/rgb resources with
+readable permissions; the standalone shell seed did not contain the previously
+qualified Toolchest keysyms. The terminal's typing helper retains the established
+explicit focus request, separately from the window-manager focus test.
+
+The first combined session (`desktop-sessionless-ci-8t6uorae`) passes native
+reparenting, pointer focus, actual key delivery, dragging and a command-created
+winterm shell marker. The repeated combined run using the corrected focus
+helper also passes. See the [application report](../../docs/results/2026-11-01-irix-4dwm.md).
+Standalone checks are additionally required to wait for IsViewable: reparenting
+can precede mapping. `wmcheck-ready.c` adds that gate without assigning focus;
+`probe-irix-4dwm-windowready.py` retains the standalone comparison.
+
+Both readiness-aware standalone runs pass. The first ordinary combined attempt
+passed window interaction but captured a three-row winterm and no command
+marker. Its geometry/input failure is excluded from acceptance. The final
+`probe-irix-4dwm-session.py` uses `session.sh` to finish native drag checks before
+releasing original client startup. `type-ready.c` requires a viewable terminal
+large enough for the input coordinates, without resizing it. This separates
+synthetic movement from concurrently mapping applications and preserves the
+known terminal-resize limitation.
+
+The reordered ordinary session passes with a full-height terminal. Its first CI
+attempt passes the window tests but leaves xwsh alive without a mapped terminal
+or handoff. Startup repeatability is therefore open even when individual
+bounded sessions pass. `qualify-irix-4dwm-attempts.py` binds eight intermediate
+attempts, including both earlier CI successes and this later failure, without
+promoting failed attempts into the accepted interaction matrix.
+
+## Accepted interaction matrix
+
+The unchanged final CI repeat passes, as does ordinary execution. The accepted
+matrix contains both readiness-aware standalone runs and both final combined
+sessions. It checks eight native ABI and sixteen native controlling-terminal
+controls, full descendant cleanup and clean guest halts. The
+[qualification](../../docs/results/2026-11-01-irix-4dwm.json) binds the successful
+runs and the separate failed-attempt history. Startup repeatability remains open.
+
+```sh
+PYTHONDONTWRITEBYTECODE=1 python3 scripts/probe-irix-4dwm-windowready.py
+PYTHONDONTWRITEBYTECODE=1 python3 scripts/probe-irix-4dwm-windowready.py --mode ordinary
+PYTHONDONTWRITEBYTECODE=1 python3 scripts/probe-irix-4dwm-session.py
+PYTHONDONTWRITEBYTECODE=1 python3 scripts/probe-irix-4dwm-session.py --mode ordinary
+PYTHONDONTWRITEBYTECODE=1 python3 scripts/qualify-irix-4dwm-windowtest.py \
+  .work/irix-4dwm/runs/windowready-ci-5a8k9gfu \
+  .work/irix-4dwm/runs/windowready-ordinary-oxrzw7ig \
+  .work/irix-4dwm/runs/session-ci-xb3cj1si \
+  .work/irix-4dwm/runs/session-ordinary-tr7z_ql2 \
+  --output docs/results/2026-11-01-irix-4dwm.json \
+  --png docs/results/images/2026-11-01-irix-4dwm-shell.png
+```
+
+The PNG comes from ordinary execution and matches the captured XWD pixel for
+pixel. Historical harness/helper variants remain frozen to preserve source
+hashes for the staged resource fixes and failed attempts. Original binaries,
+resource bytes, raw traces, frames and guest disks stay in ignored `.work`.

@@ -94,3 +94,7 @@ The new [observer](../../scripts/probe-irix-winterm-access.py) and
 and the stopped CI font/locale seed. They preserve the historical fault runs,
 record normal exit as well as faults, and pin both native xterm font slots to
 the verified normal Screen face. See the new result for excluded controls.
+
+The [4Dwm follow-up](../../docs/results/2026-11-01-irix-4dwm.md) now runs the
+original winterm launcher/xwsh with a working native shell under original 4Dwm.
+The explicit native PTY handoff remains required.

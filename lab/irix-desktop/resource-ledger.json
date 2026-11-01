@@ -41,9 +41,11 @@
       ],
       "evidence": [
         "lab/irix-toolchest-input/resources.json",
-        "docs/results/2026-10-31-irix-toolchest-input.json"
+        "docs/results/2026-10-31-irix-toolchest-input.json",
+        "docs/results/2026-11-01-irix-4dwm.md",
+        "docs/results/2026-11-01-irix-4dwm.json"
       ],
-      "note": "Readable original key-name database enables measured menu keyboard behavior."
+      "note": "Readable original key-name database enables measured menu keyboard behavior. Explicitly installed mode 0444 for the combined desktop; the shell-only seed did not contain it."
     },
     {
       "id": "sgi_colors",
@@ -52,9 +54,11 @@
         "/usr/lib/X11/rgb.txt"
       ],
       "evidence": [
-        "lab/irix-toolchest-input/resources.json"
+        "lab/irix-toolchest-input/resources.json",
+        "docs/results/2026-11-01-irix-4dwm.md",
+        "docs/results/2026-11-01-irix-4dwm.json"
       ],
-      "note": "Current session uses two extracted numeric Xt color values; general named-color support is not qualified. Original xclock also requests the two recorded colors; current captures retain warnings and default colors.",
+      "note": "Numeric values from the original rgb.txt supply Toolchest and 4Dwm resource overrides. General named-color support is not qualified. Original xclock still retains its recorded color warnings/defaults. The plain blue-gray root background is a native presentation choice.",
       "observed_xclock_colors": {
         "SGILightGray": [
           170,
@@ -66,6 +70,10 @@
           113,
           198
         ]
+      },
+      "observed_4dwm_colors": {
+        "SGILightGray": "#aaaaaa",
+        "SGIBrightGray": "#c5c1aa"
       }
     },
     {
@@ -81,7 +89,9 @@
         "docs/results/2026-10-31-irix-winterm-access.json",
         "docs/results/2026-10-31-irix-winterm-pty.json",
         "docs/results/2026-11-01-irix-winterm-process.json",
-        "docs/results/2026-11-01-irix-shell.json"
+        "docs/results/2026-11-01-irix-shell.json",
+        "docs/results/2026-11-01-irix-4dwm.md",
+        "docs/results/2026-11-01-irix-4dwm.json"
       ],
       "note": "22 original Screen fonts indexed; the requested 15-pixel medium face renders in native xterm under both identities and modes. The access follow-up pins both native xterm regular and bold slots to the verified normal face after an unconstrained control hit X_OpenFont BadAlloc; this does not qualify other faces."
     },
@@ -115,13 +125,15 @@
         "lab/irix-winterm/manifest.json",
         "docs/results/2026-10-31-irix-winterm-fault.json",
         "docs/results/2026-10-31-irix-winterm-access.json",
-        "docs/results/2026-11-01-irix-shell.json"
+        "docs/results/2026-11-01-irix-shell.json",
+        "docs/results/2026-11-01-irix-4dwm.md",
+        "docs/results/2026-11-01-irix-4dwm.json"
       ],
       "note": "Original XWsh defaults and winterm launcher now support a native interactive shell with explicit WINTERM. gettxt still fails exec and emits a warning; IWsh remains unqualified."
     },
     {
       "id": "window_manager_defaults",
-      "status": "staged_startup_after_gl_mapping",
+      "status": "window_management_and_combined_shell_observed",
       "image_paths": [
         "/usr/lib/X11/app-defaults/4DWm",
         "/usr/lib/X11/system.4Dwmrc",
@@ -132,9 +144,13 @@
         "lab/irix-desktop/manifest.json",
         "docs/results/2026-11-01-irix-4dwm-loader.json",
         "docs/results/2026-11-01-irix-mmap-local.json",
-        "docs/results/2026-11-01-irix-4dwm-mmap.json"
+        "docs/results/2026-11-01-irix-4dwm-mmap.json",
+        "docs/results/2026-11-01-irix-prda.json",
+        "docs/results/2026-11-01-irix-4dwm-prda.json",
+        "docs/results/2026-11-01-irix-4dwm.md",
+        "docs/results/2026-11-01-irix-4dwm.json"
       ],
-      "note": "The original defaults and 25-library closure are staged. The 4 KiB library boundary and fixed/local GL mapping now pass. The next fault is libc _usinit reading the absent PRDA PID field at 0x200e00; resource consumption, artwork and desktop interaction remain unqualified."
+      "note": "The original defaults and 25-library closure are staged. Subpage mappings, fixed/local GL mapping and PRDA initialization clear the measured startup faults. Explicit mode 0444 on all four resources restores UID1234 access. With SG_manageSession and SG_autoSave disabled, original 4Dwm passes reparenting, pointer focus, key delivery and dragging alongside Toolchest and a working winterm shell. Saved-session operations, referenced artwork and complete desktop services remain unqualified. Successful CI/ordinary sessions are qualified as bounded observations; a failed CI xwsh startup is retained and repeatability remains open."
     },
     {
       "id": "session_defaults",
@@ -236,7 +252,9 @@
         "lab/irix-pty/setup.sh",
         "docs/results/2026-10-31-irix-pty.md",
         "docs/results/2026-11-01-irix-process.md",
-        "docs/results/2026-11-01-irix-shell.json"
+        "docs/results/2026-11-01-irix-shell.json",
+        "docs/results/2026-11-01-irix-4dwm.md",
+        "docs/results/2026-11-01-irix-4dwm.json"
       ],
       "note": "Generated native ptm clone, ptyfs group 0/mode 0600, nullfs foreign view and 400 q/r aliases. Native handoff verifies/reopens the same /dev/pts device before controlling-terminal acquisition, avoiding the captured layered-tty revoke panic. Native shell keyboard commands and bounded descendant cleanup pass; foreign termios, resize, handlers and normal app exit remain open. No original device nodes are imported."
     }
@@ -250,6 +268,8 @@
     "generated or deliberately migrated per-user desktop state",
     "Native PTY allocation, ownership, controlling terminal and termios translation for the selected shell",
     "Native fork/exec ABI transition, child descriptors and session/process group; verified native PTY reopen and controlling-terminal setup through /usr/libexec/xiri-shell. No additional vendor image assets needed for the shell checkpoint.",
-    "IRIX PRDA process data at 0x200000: original libc _usinit reads its PID at offset 0xe00. Kernel ABI state, not an image resource; original initialization/fork/exec behavior is being measured."
+    "IRIX PRDA process data at 0x200000 is now measured and implemented: PID at +0xe00, initial ABI FP flags and native CPU identity, fork COW/PID refresh, exec reset. Kernel ABI state, not an image resource; share groups and general threads remain unsupported.",
+    "4Dwm currently needs explicit SG_manageSession=false and SG_autoSave=false; session-saving file operations/services remain open. A Trusted Path Manager panel and SGI-AccessControl requests remain under feature-query investigation.",
+    "Observed 4Dwm saved-state paths: HOME/.xroomsrc, HOME/.xroomsrc.tmp and HOME/.desktop-127.0.0.1 for the controlled display. The enabled path hits unimplemented mkdir/unlink/fsync/rename and a later (null).tmp name. Generated native user state, not image resources to import."
   ]
 }

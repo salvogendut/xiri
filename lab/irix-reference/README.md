@@ -210,3 +210,9 @@ The [TCP lab](../irix-tcp/README.md) adds 168 original o32/n32 interface
 comparisons, including an original assembly loopback peer, option/error
 behavior, retry timing and the runtime clock query. Vendor content and raw
 reference traces remain private.
+
+The [PRDA lab](../irix-prda/README.md) adds 32 original reference executions
+and 72 records for initial state, user writes, fork COW/PID refresh, exec reset
+and traditional signal masks. The reference confirms CPU PRId 0x440 and initial
+FP flags 0/4 for o32/n32. Its guest halted cleanly; decoded records are tracked,
+while the original media and raw captures remain private.

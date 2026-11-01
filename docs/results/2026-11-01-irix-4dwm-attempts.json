@@ -1,0 +1,957 @@
+{
+  "schema": 1,
+  "status": "bring-up-history",
+  "qualifier_sha256": "e3f23343c782f5113d0ee048569239fc802d5194c2bfecd538cdea584adad29d",
+  "scope": "Diagnostic history; not the final accepted interaction matrix",
+  "runs": [
+    {
+      "directory": ".work/irix-4dwm/runs/desktop-ci-xbmumkve",
+      "result_sha256": "02405861efa81860251505be96facd6493102cb698ab10c4f6beaebdb54e5c1d",
+      "stage": "desktop",
+      "mode": "ci",
+      "status": "error",
+      "window_check_status": 3,
+      "shell_command_proved": false,
+      "sources": {
+        "scripts/probe-irix-4dwm-desktop.py": "ba32b1b1e8fb16366cb9d675a1a491b8caead6cb4f1919cff5697d39a24289a6",
+        "lab/irix-shell/guard.c": "1bb3a7cc79f83bbc7de56c50c2ba5d0565dcc92eb7ff2d5b58d6f1e2257c11e3",
+        "lab/irix-toolchest/session.c": "e183b4aefdfb428e01dc609230e87a7546a0b31e9d4b5e236503e0a8bb3b09f5",
+        "lab/irix-lp64/runner.c": "005bdf3fffce5fb8ca79073e92cc41431aa953550c41014183d5de986a104463",
+        "lab/irix-4dwm/wmcheck.c": "51e9e549ca7362b29edbadb2ee192411ba36febf1ca103db793cdf137118fd13",
+        "lab/irix-shell/type.c": "84ea7e51e7079d8d9f4cc3dd9c401c2ddf229cce79e0554c76da5cf8444ebb32",
+        "lab/irix-shell/handoff.c": "24e89b5a57543448defb35a8d836d5ee525ec9a402f807ffdc92b8ac8227f325",
+        "lab/irix-shell/ctty-control.c": "6d4583baf6fbae054930519d465634712a1cef4339305bb58e146c1aa5b2f824",
+        "lab/irix-4dwm/desktop.sh": "b3b64be1a55b6ae85d0333607a32f54b5ff689b65327f8c6c4c956bbe84d5fbc",
+        "lab/irix-4dwm/setup-pty.sh": "8ff9bb102309ac544ec3d31edfe72f67968da20040980936659539128c26bbf0"
+      },
+      "controls": [
+        {
+          "phase": "before",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          }
+        }
+      ],
+      "native_ctty_controls": [
+        {
+          "phase": "before",
+          "uid": 0,
+          "mode": 0,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "NATIVE_CTTY mode=0 pid=3327 tty=/dev/pts/0 acquired=1\nNATIVE_CTTY mode=0 exit=-1 signal=1\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "before",
+          "uid": 0,
+          "mode": 2,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "NATIVE_CTTY mode=2 pid=3901 tty=/dev/pts/0 acquired=1\nNATIVE_CTTY mode=2 exit=-1 signal=1\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "before",
+          "uid": 1234,
+          "mode": 0,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "NATIVE_CTTY mode=0 pid=2159 tty=/dev/pts/0 acquired=1\nNATIVE_CTTY mode=0 exit=-1 signal=1\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "before",
+          "uid": 1234,
+          "mode": 2,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "NATIVE_CTTY mode=2 pid=2219 tty=/dev/pts/0 acquired=1\nNATIVE_CTTY mode=2 exit=-1 signal=1\n",
+            "stderr": ""
+          }
+        }
+      ],
+      "cases": [
+        {
+          "name": "desktop",
+          "actual": {
+            "pid": 3391,
+            "exit": -1,
+            "signal": 9,
+            "killed": 1,
+            "absent": 1,
+            "valid": 1,
+            "elapsed_ms": 90124,
+            "stdout": "",
+            "stderr": ""
+          },
+          "typing": "suffix=$(printf '\\n_'); ./type 127.0.0.1:98 winterm 'printf '\"'\"'XIRI \b_4DWM_SHELL_OK\\n'\"'\"'; uname -s; id -u; printf '\"'\"'XIRI_4DWM_SHELL_OK\\n'\"'\"' >  \b/tmp/xiri-wm/job/result'\"${suffix%_}\" >typing.out 2>&1; echo TYPE_STATUS=$?; sle \bep 2; xwininfo -display 127.0.0.1:98 -root -tree >desktop.tree; xprop -display 1 \b27.0.0.1:98 -root >desktop.props; xwd -display 127.0.0.1:98 -root -silent >deskt \bop.xwd; wait \"$job\"; echo GUARD_STATUS=$?; xiri_rc=$?; printf '\\nXIRI_2bd4f56534 \b9440358b1e5a5c30986504_RC=%s\\n' \"$xiri_rc\"\nTYPE_STATUS=1\nGUARD_STATUS=0\n\nXIRI_2bd4f565349440358b1e5a5c30986504_RC=0\nxiri-indy# ",
+          "cookie": "XIRI_4DWM_SHELL_OK",
+          "output": "",
+          "handoff": "NATIVE_HANDOFF pid=2969 sid=2969 pgid=2969 tpgid=2969 uid=1234 euid=1234 gid=1234 egid=1234 groups=0 tty=/dev/pts/0 rows=24 cols=80\n",
+          "tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     18 children:\n     0x800011 (has no name): ()  1x1+0+0  +0+0\n     0x800010 (has no name): ()  1x1+0+0  +0+0\n     0x80000b (has no name): ()  1x1+0+0  +0+0\n     0x800005 \"winterm\": (\"winterm\" \"XWsh\")  965x504+10+180  +10+180\n        2 children:\n        0x800012 (has no name): ()  965x504+18+0  +28+180\n           1 child:\n           0x800013 (has no name): ()  965x504+0+0  +28+180\n        0x800006 (has no name): ()  18x504+0+0  +10+180\n     0x600026 \"Toolchest\": (\"toolchest\" \"Toolchest\")  103x158+10+10  +10+10\n        1 child:\n        0x600027 (has no name): ()  103x158+0+0  +11+11\n           6 children:\n           0x60002d (has no name): ()  99x24+2+2  +13+13\n           0x60002c (has no name): ()  99x24+2+28  +13+39\n           0x60002b (has no name): ()  99x24+2+54  +13+65\n           0x60002a (has no name): ()  99x24+2+80  +13+91\n           0x600029 (has no name): ()  99x24+2+106  +13+117\n           0x600028 (has no name): ()  99x24+2+132  +13+143\n     0x600018 (has no name): ()  188x102+10+35  +10+35\n        4 children:\n        0x600023 (has no name): ()  187x102+0+0  +10+35\n        0x60001d (has no name): ()  144x344+0+0  +10+35\n        0x60001b (has no name): ()  187x52+0+0  +10+35\n        0x600019 (has no name): ()  188x102+0+0  +10+35\n     0x600013 (has no name): ()  5x5+10+35  +10+35\n        6 children:\n        0x600025 (has no name): ()  135x178+0+0  +10+35\n        0x600022 (has no name): ()  168x272+0+0  +10+35\n           1 child:\n           0x600024 (has no name): ()  164x24+2+196  +12+231\n        0x600021 (has no name): ()  123x128+0+0  +10+35\n        0x600020 (has no name): ()  177x128+0+0  +10+35\n        0x60001f (has no name): ()  16x16+0+0  +10+35\n        0x600014 (has no name): ()  158x248+0+0  +10+35\n           3 children:\n           0x60001e (has no name): ()  154x24+2+50  +12+85\n           0x60001c (has no name): ()  154x24+2+26  +12+61\n           0x60001a (has no name): ()  154x24+2+2  +12+37\n     0x600001 \"toolchest\": (\"toolchest\" \"Toolchest\")  1x1+10+10  +10+10\n     0x200060 (has no name): ()  309x144+0+624  +0+624\n        1 child:\n        0x200061 (has no name): ()  295x130+7+7  +7+631\n           1 child:\n           0x200059 \"trustedPathManager\": (\"trustedPathManager\" \"4DWm\")  295x130+0+0  +7+631\n              1 child:\n              0x20005a (has no name): ()  295x130+0+0  +7+631\n                 1 child:\n                 0x20005b (has no name): ()  295x130+0+0  +7+631\n                    4 children:\n                    0x20005f (has no name): ()  275x30+10+50  +17+681\n                    0x20005e (has no name): ()  137x30+10+10  +17+641\n                    0x20005d (has no name): ()  128x30+157+10  +164+641\n                    0x20005c (has no name): ()  275x30+10+90  +17+721\n     0x200054 (has no name): ()  1x1+0+0  +0+0\n     0x200053 (has no name): ()  1x1+0+0  +0+0\n     0x400001 (has no name): ()  1x1+-2+-2  +-2+-2\n     0x200050 (has no name): ()  5x5+0+0  +0+0\n        1 child:\n        0x200051 (has no name): ()  70x57+0+0  +0+0\n     0x200046 (has no name): ()  5x5+0+0  +0+0\n        1 child:\n        0x200048 (has no name): ()  152x55+0+0  +0+0\n     0x20000b (has no name): ()  10x10+10000+10000  +10000+10000\n     0x200001 \"4Dwm\": (\"4Dwm\" \"4DWm\")  1x1+0+0  +0+0\n     0x200031 (has no name): ()  10x10+-100+-100  +-100+-100\n     0x200052 \"4Dwm\": (\"4Dwm\" \"4DWm\")  10x10+10000+0  +10000+0\n\n",
+          "properties": "_SGI_DESKS_MANAGER(WINDOW): window id # 0x200031\nWM_ICON_SIZE(WM_ICON_SIZE):\n\t\tminimum icon size: 16 by 16\n\t\tmaximum icon size: 85 by 67\n\t\tincremental size change: 1 by 1\n_SGI__MENU_WINDOW(WINDOW): window id # 0x400001\n_MOTIF_WM_INFO(_MOTIF_WM_INFO) = 0x2, 0x200031\n_SGI_TELL_WM(STRING) = \"auto_place\", \"auto_save\", \"beep\", \"circle_down\", \"circle_up\", \"end_session\", \"explicit_save\", \"force_restart\", \"interactive_place\", \"minimize_all\", \"opaque\", \"outline\", \"pack_icons\", \"quit\", \"refresh\", \"restart\", \"restore_all\", \"save_configuration\"\n_MOTIF_DEFAULT_BINDINGS(STRING) = \"osfCancel:<Key>Escape\\nosfLeft:<Key>Left\\nosfUp:<Key>Up\\nosfRight:<Key>Right\\nosfDown:<Key>Down\\nosfEndLine:<Key>End\\nosfBeginLine:<Key>Home\\nosfPageUp:<Key>Prior\\nosfPageDown:<Key>Next\\nosfBackSpace:<Key>BackSpace\\nosfDelete:<Key>Delete\\nosfInsert:<Key>Insert\\nosfAddMode:Shift<Key>F8\\nosfHelp:<Key>F1\\nosfMenu:Shift<Key>F10\\nosfMenuBar:<Key>F10\\nosfSelect:<Key>Select\\nosfActivate:<Key>KP_Enter\\nosfClear:<Key>Clear\\nosfUndo:<Key>Undo\"\n_XKB_RULES_NAMES(STRING) = \"base\", \"pc105\", \"us\", \"\", \"\"\n",
+          "frame_sha256": "e9f94a226f26ac6d5ad0d233bdec4ad55c68c11070facd39181a7e1ff0523fa1",
+          "wmcheck": "WMCHECK_STATUS=3\nwindows were not reparented\n",
+          "logs": {
+            "wm": "Xlib:  extension \"SGI-AccessControl\" missing on display \"127.0.0.1:98.0\".\nXlib:  extension \"SGI-AccessControl\" missing on display \"127.0.0.1:98.0\".\nMakeTPWidgets: Cannot Get TP state\nXlib:  extension \"SGI-AccessControl\" missing on display \"127.0.0.1:98.0\".\nMakeTPWidgets: Cannot Get MonoMode state\nXlib:  extension \"SGI-AccessControl\" missing on display \"127.0.0.1:98.0\".\nXlib:  extension \"SGI-AccessControl\" missing on display \"127.0.0.1:98.0\".\n",
+            "toolchest": "Warning: translation table syntax error: Unknown keysym name:  osfActivate\nWarning: ... found while parsing ':<Key>osfActivate:ManagerParentActivate()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfBeginLine\nWarning: ... found while parsing ':<Key>osfBeginLine:ManagerGadgetTraverseHome()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfSelect\nWarning: ... found while parsing ':<Key>osfSelect:ManagerGadgetSelect()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfSelect\nWarning: ... found while parsing ':<Key>osfSelect:MenuBarGadgetSelect()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfActivate\nWarning: ... found while parsing ':<Key>osfActivate:ManagerParentActivate()'\nWarning: String to TranslationTable conversion encountered errors\nWarning: translation table syntax error: Unknown keysym name:  osfHelp\nWarning: ... found while parsing ':<Key>osfHelp:MenuHelp()'\nWarning: String to TranslationTable conversion encountered errors\n",
+            "winterm": "/emul/irix/usr/sbin/winterm: Cannot execute ELF binary /emul/irix/usr/bin/gettxt\n"
+          }
+        }
+      ],
+      "clean_shutdown": true
+    },
+    {
+      "directory": ".work/irix-4dwm/runs/sessionless-ci-pu5ebc4y",
+      "result_sha256": "8f007ddd3aef2d0bd96c814a6bbb9d6a6bd05c3e14dc22a9623418e18d192615",
+      "stage": "sessionless",
+      "mode": "ci",
+      "status": "observed",
+      "window_check_status": 1,
+      "shell_command_proved": false,
+      "sources": {
+        "scripts/probe-irix-4dwm-sessionless.py": "4bcd383f4235df31e0c4c940a5fa9f2eb19d7604a156f6074f004db0de1fc06a",
+        "lab/irix-shell/guard.c": "1bb3a7cc79f83bbc7de56c50c2ba5d0565dcc92eb7ff2d5b58d6f1e2257c11e3",
+        "lab/irix-toolchest/session.c": "e183b4aefdfb428e01dc609230e87a7546a0b31e9d4b5e236503e0a8bb3b09f5",
+        "lab/irix-lp64/runner.c": "005bdf3fffce5fb8ca79073e92cc41431aa953550c41014183d5de986a104463",
+        "lab/irix-4dwm/wmcheck.c": "51e9e549ca7362b29edbadb2ee192411ba36febf1ca103db793cdf137118fd13"
+      },
+      "controls": [
+        {
+          "phase": "before",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "after",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          }
+        }
+      ],
+      "native_ctty_controls": [],
+      "cases": [
+        {
+          "name": "4Dwm",
+          "actual": {
+            "pid": 303,
+            "exit": -1,
+            "signal": 9,
+            "killed": 1,
+            "absent": 1,
+            "valid": 1,
+            "elapsed_ms": 30096,
+            "stdout": "",
+            "stderr": "Xlib:  extension \"SGI-AccessControl\" missing on display \"127.0.0.1:98.0\".\nXlib:  extension \"SGI-AccessControl\" missing on display \"127.0.0.1:98.0\".\nMakeTPWidgets: Cannot Get TP state\nXlib:  extension \"SGI-AccessControl\" missing on display \"127.0.0.1:98.0\".\nMakeTPWidgets: Cannot Get MonoMode state\nXlib:  extension \"SGI-AccessControl\" missing on display \"127.0.0.1:98.0\".\nXlib:  extension \"SGI-AccessControl\" missing on display \"127.0.0.1:98.0\".\n"
+          },
+          "tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     11 children:\n     0x200071 (has no name): ()  5x5+0+0  +0+0\n        1 child:\n        0x200072 (has no name): ()  143x240+0+0  +0+0\n     0x200065 (has no name): ()  309x144+0+624  +0+624\n        1 child:\n        0x200066 (has no name): ()  295x130+7+7  +7+631\n           1 child:\n           0x20005e \"trustedPathManager\": (\"trustedPathManager\" \"4DWm\")  295x130+0+0  +7+631\n              1 child:\n              0x20005f (has no name): ()  295x130+0+0  +7+631\n                 1 child:\n                 0x200060 (has no name): ()  295x130+0+0  +7+631\n                    4 children:\n                    0x200064 (has no name): ()  275x30+10+50  +17+681\n                    0x200063 (has no name): ()  137x30+10+10  +17+641\n                    0x200062 (has no name): ()  128x30+157+10  +164+641\n                    0x200061 (has no name): ()  275x30+10+90  +17+721\n     0x200054 (has no name): ()  1x1+0+0  +0+0\n     0x200053 (has no name): ()  1x1+0+0  +0+0\n     0x400001 (has no name): ()  1x1+-2+-2  +-2+-2\n     0x200050 (has no name): ()  5x5+0+0  +0+0\n        1 child:\n        0x200051 (has no name): ()  70x57+0+0  +0+0\n     0x200046 (has no name): ()  5x5+0+0  +0+0\n        1 child:\n        0x200048 (has no name): ()  152x55+0+0  +0+0\n     0x20000b (has no name): ()  10x10+10000+10000  +10000+10000\n     0x200001 \"4Dwm\": (\"4Dwm\" \"4DWm\")  1x1+0+0  +0+0\n     0x200031 (has no name): ()  10x10+-100+-100  +-100+-100\n     0x200052 \"4Dwm\": (\"4Dwm\" \"4DWm\")  10x10+10000+0  +10000+0\n\n",
+          "properties": "_SGI_DESKS_MANAGER(WINDOW): window id # 0x200031\nWM_ICON_SIZE(WM_ICON_SIZE):\n\t\tminimum icon size: 16 by 16\n\t\tmaximum icon size: 85 by 67\n\t\tincremental size change: 1 by 1\n_SGI__MENU_WINDOW(WINDOW): window id # 0x400001\n_MOTIF_WM_INFO(_MOTIF_WM_INFO) = 0x2, 0x200031\n_SGI_TELL_WM(STRING) = \"auto_place\", \"auto_save\", \"beep\", \"circle_down\", \"circle_up\", \"end_session\", \"explicit_save\", \"force_restart\", \"interactive_place\", \"minimize_all\", \"opaque\", \"outline\", \"pack_icons\", \"quit\", \"refresh\", \"restart\", \"restore_all\", \"save_configuration\"\n_MOTIF_DEFAULT_BINDINGS(STRING) = \"osfCancel:<Key>Escape\\nosfLeft:<Key>Left\\nosfUp:<Key>Up\\nosfRight:<Key>Right\\nosfDown:<Key>Down\\nosfEndLine:<Key>End\\nosfBeginLine:<Key>Home\\nosfPageUp:<Key>Prior\\nosfPageDown:<Key>Next\\nosfBackSpace:<Key>BackSpace\\nosfDelete:<Key>Delete\\nosfInsert:<Key>Insert\\nosfAddMode:Shift<Key>F8\\nosfHelp:<Key>F1\\nosfMenu:Shift<Key>F10\\nosfMenuBar:<Key>F10\\nosfSelect:<Key>Select\\nosfActivate:<Key>KP_Enter\\nosfClear:<Key>Clear\\nosfUndo:<Key>Undo\"\n_XKB_RULES_NAMES(STRING) = \"base\", \"pc105\", \"us\", \"\", \"\"\n",
+          "frame_sha256": "1209027022e223dc050cb2c4aab3dfae2f7b95ce07e591ff6bebcdb60feb4386",
+          "trace_info": "SHA256 (wm.ktrace) = 50e8aa8e5f2494bda699f0020f5d080f8baa072a131aef621617e46d72e0b8db\nSHA256 (wm.dump) = e069a57078020a6f2c9693f403fde2c3ce477c792ab477ec72ffaa087a9f15ec\n",
+          "wmcheck": "WMCHECK_STATUS=1\nWM_REPARENT client=6291457 frame=2097267 x=150 y=160 frame_x=142 frame_y=96\nX Error of failed request:  BadWindow (invalid Window parameter)\n  Major opcode of failed request:  15 (X_QueryTree)\n  Resource id in failed request:  0x1\n  Serial number of failed request:  37\n  Current serial number in output stream:  0\n"
+        }
+      ],
+      "clean_shutdown": true
+    },
+    {
+      "directory": ".work/irix-4dwm/runs/windowtest-ci-ozbsbuy4",
+      "result_sha256": "1821a60df613bd672a1747f466d52098368782b32e4a425c6a6444e27cd6cc97",
+      "stage": "windowtest",
+      "mode": "ci",
+      "status": "observed",
+      "window_check_status": 5,
+      "shell_command_proved": false,
+      "sources": {
+        "scripts/probe-irix-4dwm-windowtest.py": "ce07d95afb31dfdeea19b7c8baa9607d82bef12781bdd833f055b39c1b13c511",
+        "lab/irix-shell/guard.c": "1bb3a7cc79f83bbc7de56c50c2ba5d0565dcc92eb7ff2d5b58d6f1e2257c11e3",
+        "lab/irix-toolchest/session.c": "e183b4aefdfb428e01dc609230e87a7546a0b31e9d4b5e236503e0a8bb3b09f5",
+        "lab/irix-lp64/runner.c": "005bdf3fffce5fb8ca79073e92cc41431aa953550c41014183d5de986a104463",
+        "lab/irix-4dwm/wmcheck-pointer.c": "9aba502221c75d1af67790595f9115c310309a9e0e21730e09ee688eb477b35f"
+      },
+      "controls": [
+        {
+          "phase": "before",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "after",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          }
+        }
+      ],
+      "native_ctty_controls": [],
+      "cases": [
+        {
+          "name": "4Dwm",
+          "actual": {
+            "pid": 1522,
+            "exit": -1,
+            "signal": 9,
+            "killed": 1,
+            "absent": 1,
+            "valid": 1,
+            "elapsed_ms": 30086,
+            "stdout": "",
+            "stderr": "Xlib:  extension \"SGI-AccessControl\" missing on display \"127.0.0.1:98.0\".\nXlib:  extension \"SGI-AccessControl\" missing on display \"127.0.0.1:98.0\".\nMakeTPWidgets: Cannot Get TP state\nXlib:  extension \"SGI-AccessControl\" missing on display \"127.0.0.1:98.0\".\nMakeTPWidgets: Cannot Get MonoMode state\nXlib:  extension \"SGI-AccessControl\" missing on display \"127.0.0.1:98.0\".\nXlib:  extension \"SGI-AccessControl\" missing on display \"127.0.0.1:98.0\".\n"
+          },
+          "tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     11 children:\n     0x200071 (has no name): ()  5x5+0+0  +0+0\n        1 child:\n        0x200072 (has no name): ()  143x240+0+0  +0+0\n     0x200065 (has no name): ()  309x144+0+624  +0+624\n        1 child:\n        0x200066 (has no name): ()  295x130+7+7  +7+631\n           1 child:\n           0x20005e \"trustedPathManager\": (\"trustedPathManager\" \"4DWm\")  295x130+0+0  +7+631\n              1 child:\n              0x20005f (has no name): ()  295x130+0+0  +7+631\n                 1 child:\n                 0x200060 (has no name): ()  295x130+0+0  +7+631\n                    4 children:\n                    0x200064 (has no name): ()  275x30+10+50  +17+681\n                    0x200063 (has no name): ()  137x30+10+10  +17+641\n                    0x200062 (has no name): ()  128x30+157+10  +164+641\n                    0x200061 (has no name): ()  275x30+10+90  +17+721\n     0x200054 (has no name): ()  1x1+0+0  +0+0\n     0x200053 (has no name): ()  1x1+0+0  +0+0\n     0x400001 (has no name): ()  1x1+-2+-2  +-2+-2\n     0x200050 (has no name): ()  5x5+0+0  +0+0\n        1 child:\n        0x200051 (has no name): ()  70x57+0+0  +0+0\n     0x200046 (has no name): ()  5x5+0+0  +0+0\n        1 child:\n        0x200048 (has no name): ()  152x55+0+0  +0+0\n     0x20000b (has no name): ()  10x10+10000+10000  +10000+10000\n     0x200001 \"4Dwm\": (\"4Dwm\" \"4DWm\")  1x1+0+0  +0+0\n     0x200031 (has no name): ()  10x10+-100+-100  +-100+-100\n     0x200052 \"4Dwm\": (\"4Dwm\" \"4DWm\")  10x10+10000+0  +10000+0\n\n",
+          "properties": "_SGI_DESKS_MANAGER(WINDOW): window id # 0x200031\nWM_ICON_SIZE(WM_ICON_SIZE):\n\t\tminimum icon size: 16 by 16\n\t\tmaximum icon size: 85 by 67\n\t\tincremental size change: 1 by 1\n_SGI__MENU_WINDOW(WINDOW): window id # 0x400001\n_MOTIF_WM_INFO(_MOTIF_WM_INFO) = 0x2, 0x200031\n_SGI_TELL_WM(STRING) = \"auto_place\", \"auto_save\", \"beep\", \"circle_down\", \"circle_up\", \"end_session\", \"explicit_save\", \"force_restart\", \"interactive_place\", \"minimize_all\", \"opaque\", \"outline\", \"pack_icons\", \"quit\", \"refresh\", \"restart\", \"restore_all\", \"save_configuration\"\n_MOTIF_DEFAULT_BINDINGS(STRING) = \"osfCancel:<Key>Escape\\nosfLeft:<Key>Left\\nosfUp:<Key>Up\\nosfRight:<Key>Right\\nosfDown:<Key>Down\\nosfEndLine:<Key>End\\nosfBeginLine:<Key>Home\\nosfPageUp:<Key>Prior\\nosfPageDown:<Key>Next\\nosfBackSpace:<Key>BackSpace\\nosfDelete:<Key>Delete\\nosfInsert:<Key>Insert\\nosfAddMode:Shift<Key>F8\\nosfHelp:<Key>F1\\nosfMenu:Shift<Key>F10\\nosfMenuBar:<Key>F10\\nosfSelect:<Key>Select\\nosfActivate:<Key>KP_Enter\\nosfClear:<Key>Clear\\nosfUndo:<Key>Undo\"\n_XKB_RULES_NAMES(STRING) = \"base\", \"pc105\", \"us\", \"\", \"\"\n",
+          "frame_sha256": "1209027022e223dc050cb2c4aab3dfae2f7b95ce07e591ff6bebcdb60feb4386",
+          "trace_info": "SHA256 (wm.ktrace) = bde9bcd7af7016135d4d894a8a0890377f7619d48a911e90453d37f70a7348ca\nSHA256 (wm.dump) = 4e5c43b582e9a933045333b07510b4ea26837b3be4e5d93cf1fa46174feed2a8\n",
+          "wmcheck": "WMCHECK_STATUS=5\nWM_REPARENT client=6291457 frame=2097267 x=150 y=160 frame_x=142 frame_y=96\nWM_FOCUS_POLICY pointer_root=1 pointer_leaf=841\nWM_FOCUS client=6291457 focus=1 matched=0\n"
+        }
+      ],
+      "clean_shutdown": true
+    },
+    {
+      "directory": ".work/irix-4dwm/runs/windowtest-ordinary-jf7eql92",
+      "result_sha256": "95f0f2e5e8e04c15e5ac23cdd990543e14146f2fd1dc17a5138227ac5e8a138c",
+      "stage": "windowtest",
+      "mode": "ordinary",
+      "status": "observed",
+      "window_check_status": 5,
+      "shell_command_proved": false,
+      "sources": {
+        "scripts/probe-irix-4dwm-windowtest.py": "ce07d95afb31dfdeea19b7c8baa9607d82bef12781bdd833f055b39c1b13c511",
+        "lab/irix-shell/guard.c": "1bb3a7cc79f83bbc7de56c50c2ba5d0565dcc92eb7ff2d5b58d6f1e2257c11e3",
+        "lab/irix-toolchest/session.c": "e183b4aefdfb428e01dc609230e87a7546a0b31e9d4b5e236503e0a8bb3b09f5",
+        "lab/irix-lp64/runner.c": "005bdf3fffce5fb8ca79073e92cc41431aa953550c41014183d5de986a104463",
+        "lab/irix-4dwm/wmcheck-pointer.c": "9aba502221c75d1af67790595f9115c310309a9e0e21730e09ee688eb477b35f"
+      },
+      "controls": [
+        {
+          "phase": "before",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "after",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          }
+        }
+      ],
+      "native_ctty_controls": [],
+      "cases": [
+        {
+          "name": "4Dwm",
+          "actual": {
+            "pid": 1919,
+            "exit": -1,
+            "signal": 9,
+            "killed": 1,
+            "absent": 1,
+            "valid": 1,
+            "elapsed_ms": 30104,
+            "stdout": "",
+            "stderr": "Xlib:  extension \"SGI-AccessControl\" missing on display \"127.0.0.1:98.0\".\nXlib:  extension \"SGI-AccessControl\" missing on display \"127.0.0.1:98.0\".\nMakeTPWidgets: Cannot Get TP state\nXlib:  extension \"SGI-AccessControl\" missing on display \"127.0.0.1:98.0\".\nMakeTPWidgets: Cannot Get MonoMode state\nXlib:  extension \"SGI-AccessControl\" missing on display \"127.0.0.1:98.0\".\nXlib:  extension \"SGI-AccessControl\" missing on display \"127.0.0.1:98.0\".\n"
+          },
+          "tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     11 children:\n     0x200071 (has no name): ()  5x5+0+0  +0+0\n        1 child:\n        0x200072 (has no name): ()  143x240+0+0  +0+0\n     0x200065 (has no name): ()  309x144+0+624  +0+624\n        1 child:\n        0x200066 (has no name): ()  295x130+7+7  +7+631\n           1 child:\n           0x20005e \"trustedPathManager\": (\"trustedPathManager\" \"4DWm\")  295x130+0+0  +7+631\n              1 child:\n              0x20005f (has no name): ()  295x130+0+0  +7+631\n                 1 child:\n                 0x200060 (has no name): ()  295x130+0+0  +7+631\n                    4 children:\n                    0x200064 (has no name): ()  275x30+10+50  +17+681\n                    0x200063 (has no name): ()  137x30+10+10  +17+641\n                    0x200062 (has no name): ()  128x30+157+10  +164+641\n                    0x200061 (has no name): ()  275x30+10+90  +17+721\n     0x200054 (has no name): ()  1x1+0+0  +0+0\n     0x200053 (has no name): ()  1x1+0+0  +0+0\n     0x400001 (has no name): ()  1x1+-2+-2  +-2+-2\n     0x200050 (has no name): ()  5x5+0+0  +0+0\n        1 child:\n        0x200051 (has no name): ()  70x57+0+0  +0+0\n     0x200046 (has no name): ()  5x5+0+0  +0+0\n        1 child:\n        0x200048 (has no name): ()  152x55+0+0  +0+0\n     0x20000b (has no name): ()  10x10+10000+10000  +10000+10000\n     0x200001 \"4Dwm\": (\"4Dwm\" \"4DWm\")  1x1+0+0  +0+0\n     0x200031 (has no name): ()  10x10+-100+-100  +-100+-100\n     0x200052 \"4Dwm\": (\"4Dwm\" \"4DWm\")  10x10+10000+0  +10000+0\n\n",
+          "properties": "_SGI_DESKS_MANAGER(WINDOW): window id # 0x200031\nWM_ICON_SIZE(WM_ICON_SIZE):\n\t\tminimum icon size: 16 by 16\n\t\tmaximum icon size: 85 by 67\n\t\tincremental size change: 1 by 1\n_SGI__MENU_WINDOW(WINDOW): window id # 0x400001\n_MOTIF_WM_INFO(_MOTIF_WM_INFO) = 0x2, 0x200031\n_SGI_TELL_WM(STRING) = \"auto_place\", \"auto_save\", \"beep\", \"circle_down\", \"circle_up\", \"end_session\", \"explicit_save\", \"force_restart\", \"interactive_place\", \"minimize_all\", \"opaque\", \"outline\", \"pack_icons\", \"quit\", \"refresh\", \"restart\", \"restore_all\", \"save_configuration\"\n_MOTIF_DEFAULT_BINDINGS(STRING) = \"osfCancel:<Key>Escape\\nosfLeft:<Key>Left\\nosfUp:<Key>Up\\nosfRight:<Key>Right\\nosfDown:<Key>Down\\nosfEndLine:<Key>End\\nosfBeginLine:<Key>Home\\nosfPageUp:<Key>Prior\\nosfPageDown:<Key>Next\\nosfBackSpace:<Key>BackSpace\\nosfDelete:<Key>Delete\\nosfInsert:<Key>Insert\\nosfAddMode:Shift<Key>F8\\nosfHelp:<Key>F1\\nosfMenu:Shift<Key>F10\\nosfMenuBar:<Key>F10\\nosfSelect:<Key>Select\\nosfActivate:<Key>KP_Enter\\nosfClear:<Key>Clear\\nosfUndo:<Key>Undo\"\n_XKB_RULES_NAMES(STRING) = \"base\", \"pc105\", \"us\", \"\", \"\"\n",
+          "frame_sha256": "1209027022e223dc050cb2c4aab3dfae2f7b95ce07e591ff6bebcdb60feb4386",
+          "trace_info": "SHA256 (wm.ktrace) = 9a82c2a0bee68be3067358014538d939cb6c3103584e57ffdee26b8b22b5466a\nSHA256 (wm.dump) = 8a838a0494053ae3832cd5daadb2be3fdd12fa57004c5fd82a3552cedbfb7e6c\n",
+          "wmcheck": "WMCHECK_STATUS=5\nWM_REPARENT client=6291457 frame=2097267 x=150 y=160 frame_x=142 frame_y=96\nWM_FOCUS_POLICY pointer_root=1 pointer_leaf=841\nWM_FOCUS client=6291457 focus=1 matched=0\n"
+        }
+      ],
+      "clean_shutdown": true
+    },
+    {
+      "directory": ".work/irix-4dwm/runs/desktop-sessionless-ci-8t6uorae",
+      "result_sha256": "bb5e11f9b5f26db08539a11f8d385b63584d45a08a47bcdb5cb1637c4313204e",
+      "stage": "desktop-sessionless",
+      "mode": "ci",
+      "status": "observed",
+      "window_check_status": 0,
+      "shell_command_proved": true,
+      "sources": {
+        "scripts/probe-irix-4dwm-desktop-sessionless.py": "02e7eb283d97a78268bec848f77ffaf19a3c8e423c27b5d419f1846e54a42e0f",
+        "lab/irix-shell/guard.c": "1bb3a7cc79f83bbc7de56c50c2ba5d0565dcc92eb7ff2d5b58d6f1e2257c11e3",
+        "lab/irix-toolchest/session.c": "e183b4aefdfb428e01dc609230e87a7546a0b31e9d4b5e236503e0a8bb3b09f5",
+        "lab/irix-lp64/runner.c": "005bdf3fffce5fb8ca79073e92cc41431aa953550c41014183d5de986a104463",
+        "lab/irix-4dwm/wmcheck.c": "51e9e549ca7362b29edbadb2ee192411ba36febf1ca103db793cdf137118fd13",
+        "lab/irix-shell/type.c": "84ea7e51e7079d8d9f4cc3dd9c401c2ddf229cce79e0554c76da5cf8444ebb32",
+        "lab/irix-shell/handoff.c": "24e89b5a57543448defb35a8d836d5ee525ec9a402f807ffdc92b8ac8227f325",
+        "lab/irix-shell/ctty-control.c": "6d4583baf6fbae054930519d465634712a1cef4339305bb58e146c1aa5b2f824",
+        "lab/irix-4dwm/desktop-sessionless.sh": "3d3e308d2205853c779f9c2f8013ed4f3812c9f64153044225c0783ab294cdc5",
+        "lab/irix-4dwm/setup-pty.sh": "8ff9bb102309ac544ec3d31edfe72f67968da20040980936659539128c26bbf0"
+      },
+      "controls": [
+        {
+          "phase": "before",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "after",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          }
+        }
+      ],
+      "native_ctty_controls": [
+        {
+          "phase": "before",
+          "uid": 0,
+          "mode": 0,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "NATIVE_CTTY mode=0 pid=1049 tty=/dev/pts/0 acquired=1\nNATIVE_CTTY mode=0 exit=-1 signal=1\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "before",
+          "uid": 0,
+          "mode": 2,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "NATIVE_CTTY mode=2 pid=2155 tty=/dev/pts/0 acquired=1\nNATIVE_CTTY mode=2 exit=-1 signal=1\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "before",
+          "uid": 1234,
+          "mode": 0,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "NATIVE_CTTY mode=0 pid=3438 tty=/dev/pts/0 acquired=1\nNATIVE_CTTY mode=0 exit=-1 signal=1\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "before",
+          "uid": 1234,
+          "mode": 2,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "NATIVE_CTTY mode=2 pid=3633 tty=/dev/pts/0 acquired=1\nNATIVE_CTTY mode=2 exit=-1 signal=1\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "after",
+          "uid": 0,
+          "mode": 0,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "NATIVE_CTTY mode=0 pid=3645 tty=/dev/pts/0 acquired=1\nNATIVE_CTTY mode=0 exit=-1 signal=1\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "after",
+          "uid": 0,
+          "mode": 2,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "NATIVE_CTTY mode=2 pid=2411 tty=/dev/pts/0 acquired=1\nNATIVE_CTTY mode=2 exit=-1 signal=1\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "after",
+          "uid": 1234,
+          "mode": 0,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "NATIVE_CTTY mode=0 pid=3611 tty=/dev/pts/0 acquired=1\nNATIVE_CTTY mode=0 exit=-1 signal=1\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "after",
+          "uid": 1234,
+          "mode": 2,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "NATIVE_CTTY mode=2 pid=3881 tty=/dev/pts/0 acquired=1\nNATIVE_CTTY mode=2 exit=-1 signal=1\n",
+            "stderr": ""
+          }
+        }
+      ],
+      "cases": [
+        {
+          "name": "desktop",
+          "actual": {
+            "pid": 1113,
+            "exit": -1,
+            "signal": 9,
+            "killed": 1,
+            "absent": 1,
+            "valid": 1,
+            "elapsed_ms": 90182,
+            "stdout": "",
+            "stderr": ""
+          },
+          "typing": "suffix=$(printf '\\n_'); ./type 127.0.0.1:98 winterm 'printf '\"'\"'XIRI \b_4DWM_SHELL_OK\\n'\"'\"'; uname -s; id -u; printf '\"'\"'XIRI_4DWM_SHELL_OK\\n'\"'\"' >  \b/tmp/xiri-wm/job/result'\"${suffix%_}\" >typing.out 2>&1; echo TYPE_STATUS=$?; sle \bep 2; xwininfo -display 127.0.0.1:98 -root -tree >desktop.tree; xprop -display 1 \b27.0.0.1:98 -root >desktop.props; xwd -display 127.0.0.1:98 -root -silent >deskt \bop.xwd; wait \"$job\"; echo GUARD_STATUS=$?; xiri_rc=$?; printf '\\nXIRI_c3d688c3ea \b694bc6af5e7868a2cb6ebc_RC=%s\\n' \"$xiri_rc\"\nTYPE_STATUS=0\nGUARD_STATUS=0\n\nXIRI_c3d688c3ea694bc6af5e7868a2cb6ebc_RC=0\nxiri-indy# ",
+          "cookie": "XIRI_4DWM_SHELL_OK",
+          "output": "XIRI_4DWM_SHELL_OK\n",
+          "handoff": "NATIVE_HANDOFF pid=3419 sid=3419 pgid=3419 tpgid=3419 uid=1234 euid=1234 gid=1234 egid=1234 groups=0 tty=/dev/pts/0 rows=24 cols=80\n",
+          "tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     20 children:\n     0x200060 (has no name): ()  309x144+0+624  +0+624\n        1 child:\n        0x200061 (has no name): ()  295x130+7+7  +7+631\n           1 child:\n           0x200059 \"trustedPathManager\": (\"trustedPathManager\" \"4DWm\")  295x130+0+0  +7+631\n              1 child:\n              0x20005a (has no name): ()  295x130+0+0  +7+631\n                 1 child:\n                 0x20005b (has no name): ()  295x130+0+0  +7+631\n                    4 children:\n                    0x20005f (has no name): ()  275x30+10+50  +17+681\n                    0x20005e (has no name): ()  137x30+10+10  +17+641\n                    0x20005d (has no name): ()  128x30+157+10  +164+641\n                    0x20005c (has no name): ()  275x30+10+90  +17+721\n     0x200070 (has no name): ()  999x576+2+116  +2+116\n        11 children:\n        0x20007b (has no name): ()  983x504+8+64  +10+180\n           1 child:\n           0x800005 \"winterm\": (\"winterm\" \"XWsh\")  983x504+0+0  +10+180\n              2 children:\n              0x800012 (has no name): ()  965x504+18+0  +28+180\n                 2 children:\n                 0x800013 (has no name): ()  965x504+0+0  +28+180\n                 0x80001b (has no name): ()  965x504+0+0  +28+180\n              0x800006 (has no name): ()  18x504+0+0  +10+180\n                 1 child:\n                 0x80001c (has no name): ()  16x30+1+18  +11+198\n        0x20007a (has no name): ()  985x32+7+32  +9+148\n        0x200079 (has no name): ()  985x25+7+7  +9+123\n        0x200078 (has no name): ()  8x512+0+32  +2+148\n        0x200077 (has no name): ()  32x32+0+544  +2+660\n        0x200076 (has no name): ()  935x8+32+568  +34+684\n        0x200075 (has no name): ()  32x32+967+544  +969+660\n        0x200074 (has no name): ()  8x512+991+32  +993+148\n        0x200073 (has no name): ()  32x32+967+0  +969+116\n        0x200072 (has no name): ()  935x7+32+0  +34+116\n        0x200071 (has no name): ()  32x32+0+0  +2+116\n     0x800011 (has no name): ()  1x1+0+0  +0+0\n     0x800010 (has no name): ()  1x1+0+0  +0+0\n     0x80000b (has no name): ()  1x1+0+0  +0+0\n     0x200068 (has no name): ()  105x210+9+0  +9+0\n        3 children:\n        0x20006b (has no name): ()  105x160+0+50  +9+50\n           1 child:\n           0x600026 \"Toolchest\": (\"toolchest\" \"Toolchest\")  103x158+0+0  +9+50\n              1 child:\n              0x600027 (has no name): ()  103x158+0+0  +10+51\n                 6 children:\n                 0x60002d (has no name): ()  99x24+2+2  +12+53\n                 0x60002c (has no name): ()  99x24+2+28  +12+79\n                 0x60002b (has no name): ()  99x24+2+54  +12+105\n                 0x60002a (has no name): ()  99x24+2+80  +12+131\n                 0x600029 (has no name): ()  99x24+2+106  +12+157\n                 0x600028 (has no name): ()  99x24+2+132  +12+183\n        0x20006a (has no name): ()  105x25+0+25  +9+25\n        0x200069 (has no name): ()  105x25+0+0  +9+0\n     0x200066 (has no name): ()  5x5+0+0  +0+0\n        1 child:\n        0x200067 (has no name): ()  143x240+0+0  +0+0\n     0x600018 (has no name): ()  188x102+10+35  +10+35\n        4 children:\n        0x600023 (has no name): ()  187x102+0+0  +10+35\n        0x60001d (has no name): ()  144x344+0+0  +10+35\n        0x60001b (has no name): ()  187x52+0+0  +10+35\n        0x600019 (has no name): ()  188x102+0+0  +10+35\n     0x600013 (has no name): ()  5x5+10+35  +10+35\n        6 children:\n        0x600025 (has no name): ()  135x178+0+0  +10+35\n        0x600022 (has no name): ()  168x272+0+0  +10+35\n           1 child:\n           0x600024 (has no name): ()  164x24+2+196  +12+231\n        0x600021 (has no name): ()  123x128+0+0  +10+35\n        0x600020 (has no name): ()  177x128+0+0  +10+35\n        0x60001f (has no name): ()  16x16+0+0  +10+35\n        0x600014 (has no name): ()  158x248+0+0  +10+35\n           3 children:\n           0x60001e (has no name): ()  154x24+2+50  +12+85\n           0x60001c (has no name): ()  154x24+2+26  +12+61\n           0x60001a (has no name): ()  154x24+2+2  +12+37\n     0x600001 \"toolchest\": (\"toolchest\" \"Toolchest\")  1x1+10+10  +10+10\n     0x20007c (has no name): ()  97x99+0+0  +0+0\n     0x200054 (has no name): ()  1x1+0+0  +0+0\n     0x200053 (has no name): ()  1x1+0+0  +0+0\n     0x400001 (has no name): ()  1x1+-2+-2  +-2+-2\n     0x200050 (has no name): ()  5x5+0+0  +0+0\n        1 child:\n        0x200051 (has no name): ()  70x57+0+0  +0+0\n     0x200046 (has no name): ()  5x5+0+0  +0+0\n        1 child:\n        0x200048 (has no name): ()  152x55+0+0  +0+0\n     0x20000b (has no name): ()  10x10+10000+10000  +10000+10000\n     0x200001 \"4Dwm\": (\"4Dwm\" \"4DWm\")  1x1+0+0  +0+0\n     0x200031 (has no name): ()  10x10+-100+-100  +-100+-100\n     0x200052 \"4Dwm\": (\"4Dwm\" \"4DWm\")  10x10+10000+0  +10000+0\n\n",
+          "properties": "_SGI_DESKS_MANAGER(WINDOW): window id # 0x200031\nWM_ICON_SIZE(WM_ICON_SIZE):\n\t\tminimum icon size: 16 by 16\n\t\tmaximum icon size: 85 by 67\n\t\tincremental size change: 1 by 1\n_SGI__MENU_WINDOW(WINDOW): window id # 0x400001\n_MOTIF_WM_INFO(_MOTIF_WM_INFO) = 0x2, 0x200031\n_SGI_TELL_WM(STRING) = \"auto_place\", \"auto_save\", \"beep\", \"circle_down\", \"circle_up\", \"end_session\", \"explicit_save\", \"force_restart\", \"interactive_place\", \"minimize_all\", \"opaque\", \"outline\", \"pack_icons\", \"quit\", \"refresh\", \"restart\", \"restore_all\", \"save_configuration\"\n_MOTIF_DEFAULT_BINDINGS(STRING) = \"osfCancel:<Key>Escape\\nosfLeft:<Key>Left\\nosfUp:<Key>Up\\nosfRight:<Key>Right\\nosfDown:<Key>Down\\nosfEndLine:<Key>End\\nosfBeginLine:<Key>Home\\nosfPageUp:<Key>Prior\\nosfPageDown:<Key>Next\\nosfBackSpace:<Key>BackSpace\\nosfDelete:<Key>Delete\\nosfInsert:<Key>Insert\\nosfAddMode:Shift<Key>F8\\nosfHelp:<Key>F1\\nosfMenu:Shift<Key>F10\\nosfMenuBar:<Key>F10\\nosfSelect:<Key>Select\\nosfActivate:<Key>KP_Enter\\nosfClear:<Key>Clear\\nosfUndo:<Key>Undo\"\n_XKB_RULES_NAMES(STRING) = \"base\", \"pc105\", \"us\", \"\", \"\"\n",
+          "frame_sha256": "407f6d95338044099b748c86fc078d7fe2933b60de52e8695bb8cf5770da5606",
+          "wmcheck": "WMCHECK_STATUS=0\nWM_REPARENT client=10485761 frame=2097277 x=150 y=160 frame_x=142 frame_y=96\nWM_FOCUS client=10485761 focus=10485761 matched=1\nWM_KEY delivered=1\nWM_DRAG dx=50 dy=30\nWM_CHECK passed\n",
+          "logs": {
+            "wm": "Xlib:  extension \"SGI-AccessControl\" missing on display \"127.0.0.1:98.0\".\nXlib:  extension \"SGI-AccessControl\" missing on display \"127.0.0.1:98.0\".\nMakeTPWidgets: Cannot Get TP state\nXlib:  extension \"SGI-AccessControl\" missing on display \"127.0.0.1:98.0\".\nMakeTPWidgets: Cannot Get MonoMode state\nXlib:  extension \"SGI-AccessControl\" missing on display \"127.0.0.1:98.0\".\nXlib:  extension \"SGI-AccessControl\" missing on display \"127.0.0.1:98.0\".\n",
+            "toolchest": "",
+            "winterm": "/emul/irix/usr/sbin/winterm: Cannot execute ELF binary /emul/irix/usr/bin/gettxt\n"
+          },
+          "marker_owner": 1234
+        }
+      ],
+      "clean_shutdown": true
+    },
+    {
+      "directory": ".work/irix-4dwm/runs/desktop-windowtest-ci-1nl6prov",
+      "result_sha256": "56b4d537c327506815aad7f6a39e3a2eeb9d322d4553470a9abc80a0d8967a12",
+      "stage": "desktop-windowtest",
+      "mode": "ci",
+      "status": "observed",
+      "window_check_status": 0,
+      "shell_command_proved": true,
+      "sources": {
+        "scripts/probe-irix-4dwm-desktop-windowtest.py": "3ab9752dc68dbb96a11057fcaf91f1785eb5432567ed3daf5d02899fdf8db58b",
+        "lab/irix-shell/guard.c": "1bb3a7cc79f83bbc7de56c50c2ba5d0565dcc92eb7ff2d5b58d6f1e2257c11e3",
+        "lab/irix-toolchest/session.c": "e183b4aefdfb428e01dc609230e87a7546a0b31e9d4b5e236503e0a8bb3b09f5",
+        "lab/irix-lp64/runner.c": "005bdf3fffce5fb8ca79073e92cc41431aa953550c41014183d5de986a104463",
+        "lab/irix-4dwm/wmcheck-pointer.c": "9aba502221c75d1af67790595f9115c310309a9e0e21730e09ee688eb477b35f",
+        "lab/irix-shell/type.c": "84ea7e51e7079d8d9f4cc3dd9c401c2ddf229cce79e0554c76da5cf8444ebb32",
+        "lab/irix-shell/handoff.c": "24e89b5a57543448defb35a8d836d5ee525ec9a402f807ffdc92b8ac8227f325",
+        "lab/irix-shell/ctty-control.c": "6d4583baf6fbae054930519d465634712a1cef4339305bb58e146c1aa5b2f824",
+        "lab/irix-4dwm/desktop-sessionless.sh": "3d3e308d2205853c779f9c2f8013ed4f3812c9f64153044225c0783ab294cdc5",
+        "lab/irix-4dwm/setup-pty.sh": "8ff9bb102309ac544ec3d31edfe72f67968da20040980936659539128c26bbf0"
+      },
+      "controls": [
+        {
+          "phase": "before",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "after",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          }
+        }
+      ],
+      "native_ctty_controls": [
+        {
+          "phase": "before",
+          "uid": 0,
+          "mode": 0,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "NATIVE_CTTY mode=0 pid=1948 tty=/dev/pts/0 acquired=1\nNATIVE_CTTY mode=0 exit=-1 signal=1\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "before",
+          "uid": 0,
+          "mode": 2,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "NATIVE_CTTY mode=2 pid=3234 tty=/dev/pts/0 acquired=1\nNATIVE_CTTY mode=2 exit=-1 signal=1\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "before",
+          "uid": 1234,
+          "mode": 0,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "NATIVE_CTTY mode=0 pid=2159 tty=/dev/pts/0 acquired=1\nNATIVE_CTTY mode=0 exit=-1 signal=1\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "before",
+          "uid": 1234,
+          "mode": 2,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "NATIVE_CTTY mode=2 pid=3566 tty=/dev/pts/0 acquired=1\nNATIVE_CTTY mode=2 exit=-1 signal=1\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "after",
+          "uid": 0,
+          "mode": 0,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "NATIVE_CTTY mode=0 pid=4012 tty=/dev/pts/0 acquired=1\nNATIVE_CTTY mode=0 exit=-1 signal=1\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "after",
+          "uid": 0,
+          "mode": 2,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "NATIVE_CTTY mode=2 pid=3490 tty=/dev/pts/0 acquired=1\nNATIVE_CTTY mode=2 exit=-1 signal=1\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "after",
+          "uid": 1234,
+          "mode": 0,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "NATIVE_CTTY mode=0 pid=3233 tty=/dev/pts/0 acquired=1\nNATIVE_CTTY mode=0 exit=-1 signal=1\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "after",
+          "uid": 1234,
+          "mode": 2,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "NATIVE_CTTY mode=2 pid=2410 tty=/dev/pts/0 acquired=1\nNATIVE_CTTY mode=2 exit=-1 signal=1\n",
+            "stderr": ""
+          }
+        }
+      ],
+      "cases": [
+        {
+          "name": "desktop",
+          "actual": {
+            "pid": 2012,
+            "exit": -1,
+            "signal": 9,
+            "killed": 1,
+            "absent": 1,
+            "valid": 1,
+            "elapsed_ms": 90162,
+            "stdout": "",
+            "stderr": ""
+          },
+          "typing": "suffix=$(printf '\\n_'); ./type 127.0.0.1:98 winterm 'printf '\"'\"'XIRI \b_4DWM_SHELL_OK\\n'\"'\"'; uname -s; id -u; printf '\"'\"'XIRI_4DWM_SHELL_OK\\n'\"'\"' >  \b/tmp/xiri-wm/job/result'\"${suffix%_}\" >typing.out 2>&1; echo TYPE_STATUS=$?; sle \bep 2; xwininfo -display 127.0.0.1:98 -root -tree >desktop.tree; xprop -display 1 \b27.0.0.1:98 -root >desktop.props; xwd -display 127.0.0.1:98 -root -silent >deskt \bop.xwd; wait \"$job\"; echo GUARD_STATUS=$?; xiri_rc=$?; printf '\\nXIRI_79ad5f7275 \bc3459a81cd0982898c25ee_RC=%s\\n' \"$xiri_rc\"\nTYPE_STATUS=0\nGUARD_STATUS=0\n\nXIRI_79ad5f7275c3459a81cd0982898c25ee_RC=0\nxiri-indy# ",
+          "cookie": "XIRI_4DWM_SHELL_OK",
+          "output": "XIRI_4DWM_SHELL_OK\n",
+          "handoff": "NATIVE_HANDOFF pid=3041 sid=3041 pgid=3041 tpgid=3041 uid=1234 euid=1234 gid=1234 egid=1234 groups=0 tty=/dev/pts/0 rows=24 cols=80\n",
+          "tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     20 children:\n     0x200060 (has no name): ()  309x144+0+624  +0+624\n        1 child:\n        0x200061 (has no name): ()  295x130+7+7  +7+631\n           1 child:\n           0x200059 \"trustedPathManager\": (\"trustedPathManager\" \"4DWm\")  295x130+0+0  +7+631\n              1 child:\n              0x20005a (has no name): ()  295x130+0+0  +7+631\n                 1 child:\n                 0x20005b (has no name): ()  295x130+0+0  +7+631\n                    4 children:\n                    0x20005f (has no name): ()  275x30+10+50  +17+681\n                    0x20005e (has no name): ()  137x30+10+10  +17+641\n                    0x20005d (has no name): ()  128x30+157+10  +164+641\n                    0x20005c (has no name): ()  275x30+10+90  +17+721\n     0x200070 (has no name): ()  999x576+2+116  +2+116\n        11 children:\n        0x20007b (has no name): ()  983x504+8+64  +10+180\n           1 child:\n           0x800005 \"winterm\": (\"winterm\" \"XWsh\")  983x504+0+0  +10+180\n              2 children:\n              0x800012 (has no name): ()  965x504+18+0  +28+180\n                 2 children:\n                 0x800013 (has no name): ()  965x504+0+0  +28+180\n                 0x80001b (has no name): ()  965x504+0+0  +28+180\n              0x800006 (has no name): ()  18x504+0+0  +10+180\n                 1 child:\n                 0x80001c (has no name): ()  16x30+1+18  +11+198\n        0x20007a (has no name): ()  985x32+7+32  +9+148\n        0x200079 (has no name): ()  985x25+7+7  +9+123\n        0x200078 (has no name): ()  8x512+0+32  +2+148\n        0x200077 (has no name): ()  32x32+0+544  +2+660\n        0x200076 (has no name): ()  935x8+32+568  +34+684\n        0x200075 (has no name): ()  32x32+967+544  +969+660\n        0x200074 (has no name): ()  8x512+991+32  +993+148\n        0x200073 (has no name): ()  32x32+967+0  +969+116\n        0x200072 (has no name): ()  935x7+32+0  +34+116\n        0x200071 (has no name): ()  32x32+0+0  +2+116\n     0x800011 (has no name): ()  1x1+0+0  +0+0\n     0x800010 (has no name): ()  1x1+0+0  +0+0\n     0x80000b (has no name): ()  1x1+0+0  +0+0\n     0x200068 (has no name): ()  105x210+9+0  +9+0\n        3 children:\n        0x20006b (has no name): ()  105x160+0+50  +9+50\n           1 child:\n           0x600026 \"Toolchest\": (\"toolchest\" \"Toolchest\")  103x158+0+0  +9+50\n              1 child:\n              0x600027 (has no name): ()  103x158+0+0  +10+51\n                 6 children:\n                 0x60002d (has no name): ()  99x24+2+2  +12+53\n                 0x60002c (has no name): ()  99x24+2+28  +12+79\n                 0x60002b (has no name): ()  99x24+2+54  +12+105\n                 0x60002a (has no name): ()  99x24+2+80  +12+131\n                 0x600029 (has no name): ()  99x24+2+106  +12+157\n                 0x600028 (has no name): ()  99x24+2+132  +12+183\n        0x20006a (has no name): ()  105x25+0+25  +9+25\n        0x200069 (has no name): ()  105x25+0+0  +9+0\n     0x200066 (has no name): ()  5x5+0+0  +0+0\n        1 child:\n        0x200067 (has no name): ()  143x240+0+0  +0+0\n     0x600018 (has no name): ()  188x102+10+35  +10+35\n        4 children:\n        0x600023 (has no name): ()  187x102+0+0  +10+35\n        0x60001d (has no name): ()  144x344+0+0  +10+35\n        0x60001b (has no name): ()  187x52+0+0  +10+35\n        0x600019 (has no name): ()  188x102+0+0  +10+35\n     0x600013 (has no name): ()  5x5+10+35  +10+35\n        6 children:\n        0x600025 (has no name): ()  135x178+0+0  +10+35\n        0x600022 (has no name): ()  168x272+0+0  +10+35\n           1 child:\n           0x600024 (has no name): ()  164x24+2+196  +12+231\n        0x600021 (has no name): ()  123x128+0+0  +10+35\n        0x600020 (has no name): ()  177x128+0+0  +10+35\n        0x60001f (has no name): ()  16x16+0+0  +10+35\n        0x600014 (has no name): ()  158x248+0+0  +10+35\n           3 children:\n           0x60001e (has no name): ()  154x24+2+50  +12+85\n           0x60001c (has no name): ()  154x24+2+26  +12+61\n           0x60001a (has no name): ()  154x24+2+2  +12+37\n     0x600001 \"toolchest\": (\"toolchest\" \"Toolchest\")  1x1+10+10  +10+10\n     0x20007c (has no name): ()  97x99+0+0  +0+0\n     0x200054 (has no name): ()  1x1+0+0  +0+0\n     0x200053 (has no name): ()  1x1+0+0  +0+0\n     0x400001 (has no name): ()  1x1+-2+-2  +-2+-2\n     0x200050 (has no name): ()  5x5+0+0  +0+0\n        1 child:\n        0x200051 (has no name): ()  70x57+0+0  +0+0\n     0x200046 (has no name): ()  5x5+0+0  +0+0\n        1 child:\n        0x200048 (has no name): ()  152x55+0+0  +0+0\n     0x20000b (has no name): ()  10x10+10000+10000  +10000+10000\n     0x200001 \"4Dwm\": (\"4Dwm\" \"4DWm\")  1x1+0+0  +0+0\n     0x200031 (has no name): ()  10x10+-100+-100  +-100+-100\n     0x200052 \"4Dwm\": (\"4Dwm\" \"4DWm\")  10x10+10000+0  +10000+0\n\n",
+          "properties": "_SGI_DESKS_MANAGER(WINDOW): window id # 0x200031\nWM_ICON_SIZE(WM_ICON_SIZE):\n\t\tminimum icon size: 16 by 16\n\t\tmaximum icon size: 85 by 67\n\t\tincremental size change: 1 by 1\n_SGI__MENU_WINDOW(WINDOW): window id # 0x400001\n_MOTIF_WM_INFO(_MOTIF_WM_INFO) = 0x2, 0x200031\n_SGI_TELL_WM(STRING) = \"auto_place\", \"auto_save\", \"beep\", \"circle_down\", \"circle_up\", \"end_session\", \"explicit_save\", \"force_restart\", \"interactive_place\", \"minimize_all\", \"opaque\", \"outline\", \"pack_icons\", \"quit\", \"refresh\", \"restart\", \"restore_all\", \"save_configuration\"\n_MOTIF_DEFAULT_BINDINGS(STRING) = \"osfCancel:<Key>Escape\\nosfLeft:<Key>Left\\nosfUp:<Key>Up\\nosfRight:<Key>Right\\nosfDown:<Key>Down\\nosfEndLine:<Key>End\\nosfBeginLine:<Key>Home\\nosfPageUp:<Key>Prior\\nosfPageDown:<Key>Next\\nosfBackSpace:<Key>BackSpace\\nosfDelete:<Key>Delete\\nosfInsert:<Key>Insert\\nosfAddMode:Shift<Key>F8\\nosfHelp:<Key>F1\\nosfMenu:Shift<Key>F10\\nosfMenuBar:<Key>F10\\nosfSelect:<Key>Select\\nosfActivate:<Key>KP_Enter\\nosfClear:<Key>Clear\\nosfUndo:<Key>Undo\"\n_XKB_RULES_NAMES(STRING) = \"base\", \"pc105\", \"us\", \"\", \"\"\n",
+          "frame_sha256": "407f6d95338044099b748c86fc078d7fe2933b60de52e8695bb8cf5770da5606",
+          "wmcheck": "WMCHECK_STATUS=0\nWM_REPARENT client=10485761 frame=2097277 x=150 y=160 frame_x=142 frame_y=96\nWM_FOCUS_POLICY pointer_root=0 pointer_leaf=841\nWM_FOCUS client=10485761 focus=10485761 matched=1\nWM_KEY delivered=1\nWM_DRAG dx=50 dy=30\nWM_CHECK passed\n",
+          "logs": {
+            "wm": "Xlib:  extension \"SGI-AccessControl\" missing on display \"127.0.0.1:98.0\".\nXlib:  extension \"SGI-AccessControl\" missing on display \"127.0.0.1:98.0\".\nMakeTPWidgets: Cannot Get TP state\nXlib:  extension \"SGI-AccessControl\" missing on display \"127.0.0.1:98.0\".\nMakeTPWidgets: Cannot Get MonoMode state\nXlib:  extension \"SGI-AccessControl\" missing on display \"127.0.0.1:98.0\".\nXlib:  extension \"SGI-AccessControl\" missing on display \"127.0.0.1:98.0\".\n",
+            "toolchest": "",
+            "winterm": "/emul/irix/usr/sbin/winterm: Cannot execute ELF binary /emul/irix/usr/bin/gettxt\n"
+          },
+          "marker_owner": 1234
+        }
+      ],
+      "clean_shutdown": true
+    },
+    {
+      "directory": ".work/irix-4dwm/runs/desktop-windowtest-ordinary-vp_w7uxk",
+      "result_sha256": "d298a835643e85f3bb24b9bbdb0ab903a29d3bbc0a15590813200642ad834f55",
+      "stage": "desktop-windowtest",
+      "mode": "ordinary",
+      "status": "error",
+      "window_check_status": 0,
+      "shell_command_proved": false,
+      "sources": {
+        "scripts/probe-irix-4dwm-desktop-windowtest.py": "3ab9752dc68dbb96a11057fcaf91f1785eb5432567ed3daf5d02899fdf8db58b",
+        "lab/irix-shell/guard.c": "1bb3a7cc79f83bbc7de56c50c2ba5d0565dcc92eb7ff2d5b58d6f1e2257c11e3",
+        "lab/irix-toolchest/session.c": "e183b4aefdfb428e01dc609230e87a7546a0b31e9d4b5e236503e0a8bb3b09f5",
+        "lab/irix-lp64/runner.c": "005bdf3fffce5fb8ca79073e92cc41431aa953550c41014183d5de986a104463",
+        "lab/irix-4dwm/wmcheck-pointer.c": "9aba502221c75d1af67790595f9115c310309a9e0e21730e09ee688eb477b35f",
+        "lab/irix-shell/type.c": "84ea7e51e7079d8d9f4cc3dd9c401c2ddf229cce79e0554c76da5cf8444ebb32",
+        "lab/irix-shell/handoff.c": "24e89b5a57543448defb35a8d836d5ee525ec9a402f807ffdc92b8ac8227f325",
+        "lab/irix-shell/ctty-control.c": "6d4583baf6fbae054930519d465634712a1cef4339305bb58e146c1aa5b2f824",
+        "lab/irix-4dwm/desktop-sessionless.sh": "3d3e308d2205853c779f9c2f8013ed4f3812c9f64153044225c0783ab294cdc5",
+        "lab/irix-4dwm/setup-pty.sh": "8ff9bb102309ac544ec3d31edfe72f67968da20040980936659539128c26bbf0"
+      },
+      "controls": [
+        {
+          "phase": "before",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          }
+        }
+      ],
+      "native_ctty_controls": [
+        {
+          "phase": "before",
+          "uid": 0,
+          "mode": 0,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "NATIVE_CTTY mode=0 pid=1200 tty=/dev/pts/0 acquired=1\nNATIVE_CTTY mode=0 exit=-1 signal=1\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "before",
+          "uid": 0,
+          "mode": 2,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "NATIVE_CTTY mode=2 pid=2155 tty=/dev/pts/0 acquired=1\nNATIVE_CTTY mode=2 exit=-1 signal=1\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "before",
+          "uid": 1234,
+          "mode": 0,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "NATIVE_CTTY mode=0 pid=3454 tty=/dev/pts/0 acquired=1\nNATIVE_CTTY mode=0 exit=-1 signal=1\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "before",
+          "uid": 1234,
+          "mode": 2,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "NATIVE_CTTY mode=2 pid=3697 tty=/dev/pts/0 acquired=1\nNATIVE_CTTY mode=2 exit=-1 signal=1\n",
+            "stderr": ""
+          }
+        }
+      ],
+      "cases": [
+        {
+          "name": "desktop",
+          "actual": {
+            "pid": 1264,
+            "exit": -1,
+            "signal": 9,
+            "killed": 1,
+            "absent": 1,
+            "valid": 1,
+            "elapsed_ms": 90148,
+            "stdout": "",
+            "stderr": ""
+          },
+          "typing": "suffix=$(printf '\\n_'); ./type 127.0.0.1:98 winterm 'printf '\"'\"'XIRI \b_4DWM_SHELL_OK\\n'\"'\"'; uname -s; id -u; printf '\"'\"'XIRI_4DWM_SHELL_OK\\n'\"'\"' >  \b/tmp/xiri-wm/job/result'\"${suffix%_}\" >typing.out 2>&1; echo TYPE_STATUS=$?; sle \bep 2; xwininfo -display 127.0.0.1:98 -root -tree >desktop.tree; xprop -display 1 \b27.0.0.1:98 -root >desktop.props; xwd -display 127.0.0.1:98 -root -silent >deskt \bop.xwd; wait \"$job\"; echo GUARD_STATUS=$?; xiri_rc=$?; printf '\\nXIRI_c02366653d \bef44e19685b6352ee5dd24_RC=%s\\n' \"$xiri_rc\"\nTYPE_STATUS=0\nGUARD_STATUS=0\n\nXIRI_c02366653def44e19685b6352ee5dd24_RC=0\nxiri-indy# ",
+          "cookie": "XIRI_4DWM_SHELL_OK",
+          "output": "",
+          "handoff": "NATIVE_HANDOFF pid=3539 sid=3539 pgid=3539 tpgid=3539 uid=1234 euid=1234 gid=1234 egid=1234 groups=0 tty=/dev/pts/0 rows=24 cols=80\n",
+          "tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     20 children:\n     0x200070 (has no name): ()  999x144+2+116  +2+116\n        11 children:\n        0x20007b (has no name): ()  983x72+8+64  +10+180\n           1 child:\n           0x800005 \"winterm\": (\"winterm\" \"XWsh\")  983x72+0+0  +10+180\n              2 children:\n              0x800012 (has no name): ()  965x72+18+0  +28+180\n                 2 children:\n                 0x800013 (has no name): ()  965x72+0+0  +28+180\n                 0x80001b (has no name): ()  965x72+0+0  +28+180\n              0x800006 (has no name): ()  18x72+0+0  +10+180\n                 1 child:\n                 0x80001c (has no name): ()  16x30+1+18  +11+198\n        0x20007a (has no name): ()  985x32+7+32  +9+148\n        0x200079 (has no name): ()  985x25+7+7  +9+123\n        0x200078 (has no name): ()  8x80+0+32  +2+148\n        0x200077 (has no name): ()  32x32+0+112  +2+228\n        0x200076 (has no name): ()  935x8+32+136  +34+252\n        0x200075 (has no name): ()  32x32+967+112  +969+228\n        0x200074 (has no name): ()  8x80+991+32  +993+148\n        0x200073 (has no name): ()  32x32+967+0  +969+116\n        0x200072 (has no name): ()  935x7+32+0  +34+116\n        0x200071 (has no name): ()  32x32+0+0  +2+116\n     0x800011 (has no name): ()  1x1+0+0  +0+0\n     0x800010 (has no name): ()  1x1+0+0  +0+0\n     0x80000b (has no name): ()  1x1+0+0  +0+0\n     0x200068 (has no name): ()  105x210+9+0  +9+0\n        3 children:\n        0x20006b (has no name): ()  105x160+0+50  +9+50\n           1 child:\n           0x600026 \"Toolchest\": (\"toolchest\" \"Toolchest\")  103x158+0+0  +9+50\n              1 child:\n              0x600027 (has no name): ()  103x158+0+0  +10+51\n                 6 children:\n                 0x60002d (has no name): ()  99x24+2+2  +12+53\n                 0x60002c (has no name): ()  99x24+2+28  +12+79\n                 0x60002b (has no name): ()  99x24+2+54  +12+105\n                 0x60002a (has no name): ()  99x24+2+80  +12+131\n                 0x600029 (has no name): ()  99x24+2+106  +12+157\n                 0x600028 (has no name): ()  99x24+2+132  +12+183\n        0x20006a (has no name): ()  105x25+0+25  +9+25\n        0x200069 (has no name): ()  105x25+0+0  +9+0\n     0x200066 (has no name): ()  5x5+0+0  +0+0\n        1 child:\n        0x200067 (has no name): ()  143x240+0+0  +0+0\n     0x600018 (has no name): ()  188x102+10+35  +10+35\n        4 children:\n        0x600023 (has no name): ()  187x102+0+0  +10+35\n        0x60001d (has no name): ()  144x344+0+0  +10+35\n        0x60001b (has no name): ()  187x52+0+0  +10+35\n        0x600019 (has no name): ()  188x102+0+0  +10+35\n     0x600013 (has no name): ()  5x5+10+35  +10+35\n        6 children:\n        0x600025 (has no name): ()  135x178+0+0  +10+35\n        0x600022 (has no name): ()  168x272+0+0  +10+35\n           1 child:\n           0x600024 (has no name): ()  164x24+2+196  +12+231\n        0x600021 (has no name): ()  123x128+0+0  +10+35\n        0x600020 (has no name): ()  177x128+0+0  +10+35\n        0x60001f (has no name): ()  16x16+0+0  +10+35\n        0x600014 (has no name): ()  158x248+0+0  +10+35\n           3 children:\n           0x60001e (has no name): ()  154x24+2+50  +12+85\n           0x60001c (has no name): ()  154x24+2+26  +12+61\n           0x60001a (has no name): ()  154x24+2+2  +12+37\n     0x600001 \"toolchest\": (\"toolchest\" \"Toolchest\")  1x1+10+10  +10+10\n     0x200060 (has no name): ()  309x144+0+624  +0+624\n        1 child:\n        0x200061 (has no name): ()  295x130+7+7  +7+631\n           1 child:\n           0x200059 \"trustedPathManager\": (\"trustedPathManager\" \"4DWm\")  295x130+0+0  +7+631\n              1 child:\n              0x20005a (has no name): ()  295x130+0+0  +7+631\n                 1 child:\n                 0x20005b (has no name): ()  295x130+0+0  +7+631\n                    4 children:\n                    0x20005f (has no name): ()  275x30+10+50  +17+681\n                    0x20005e (has no name): ()  137x30+10+10  +17+641\n                    0x20005d (has no name): ()  128x30+157+10  +164+641\n                    0x20005c (has no name): ()  275x30+10+90  +17+721\n     0x20007c (has no name): ()  97x99+0+0  +0+0\n     0x200054 (has no name): ()  1x1+0+0  +0+0\n     0x200053 (has no name): ()  1x1+0+0  +0+0\n     0x400001 (has no name): ()  1x1+-2+-2  +-2+-2\n     0x200050 (has no name): ()  5x5+0+0  +0+0\n        1 child:\n        0x200051 (has no name): ()  70x57+0+0  +0+0\n     0x200046 (has no name): ()  5x5+0+0  +0+0\n        1 child:\n        0x200048 (has no name): ()  152x55+0+0  +0+0\n     0x20000b (has no name): ()  10x10+10000+10000  +10000+10000\n     0x200001 \"4Dwm\": (\"4Dwm\" \"4DWm\")  1x1+0+0  +0+0\n     0x200031 (has no name): ()  10x10+-100+-100  +-100+-100\n     0x200052 \"4Dwm\": (\"4Dwm\" \"4DWm\")  10x10+10000+0  +10000+0\n\n",
+          "properties": "_SGI_DESKS_MANAGER(WINDOW): window id # 0x200031\nWM_ICON_SIZE(WM_ICON_SIZE):\n\t\tminimum icon size: 16 by 16\n\t\tmaximum icon size: 85 by 67\n\t\tincremental size change: 1 by 1\n_SGI__MENU_WINDOW(WINDOW): window id # 0x400001\n_MOTIF_WM_INFO(_MOTIF_WM_INFO) = 0x2, 0x200031\n_SGI_TELL_WM(STRING) = \"auto_place\", \"auto_save\", \"beep\", \"circle_down\", \"circle_up\", \"end_session\", \"explicit_save\", \"force_restart\", \"interactive_place\", \"minimize_all\", \"opaque\", \"outline\", \"pack_icons\", \"quit\", \"refresh\", \"restart\", \"restore_all\", \"save_configuration\"\n_MOTIF_DEFAULT_BINDINGS(STRING) = \"osfCancel:<Key>Escape\\nosfLeft:<Key>Left\\nosfUp:<Key>Up\\nosfRight:<Key>Right\\nosfDown:<Key>Down\\nosfEndLine:<Key>End\\nosfBeginLine:<Key>Home\\nosfPageUp:<Key>Prior\\nosfPageDown:<Key>Next\\nosfBackSpace:<Key>BackSpace\\nosfDelete:<Key>Delete\\nosfInsert:<Key>Insert\\nosfAddMode:Shift<Key>F8\\nosfHelp:<Key>F1\\nosfMenu:Shift<Key>F10\\nosfMenuBar:<Key>F10\\nosfSelect:<Key>Select\\nosfActivate:<Key>KP_Enter\\nosfClear:<Key>Clear\\nosfUndo:<Key>Undo\"\n_XKB_RULES_NAMES(STRING) = \"base\", \"pc105\", \"us\", \"\", \"\"\n",
+          "frame_sha256": "f7998c82cee5622c915e6faecd673097401ce0db14a109deb99b33343c2732e6",
+          "wmcheck": "WMCHECK_STATUS=0\nWM_REPARENT client=10485761 frame=2097277 x=150 y=160 frame_x=142 frame_y=96\nWM_FOCUS_POLICY pointer_root=0 pointer_leaf=841\nWM_FOCUS client=10485761 focus=10485761 matched=1\nWM_KEY delivered=1\nWM_DRAG dx=50 dy=30\nWM_CHECK passed\n",
+          "logs": {
+            "wm": "Xlib:  extension \"SGI-AccessControl\" missing on display \"127.0.0.1:98.0\".\nXlib:  extension \"SGI-AccessControl\" missing on display \"127.0.0.1:98.0\".\nMakeTPWidgets: Cannot Get TP state\nXlib:  extension \"SGI-AccessControl\" missing on display \"127.0.0.1:98.0\".\nMakeTPWidgets: Cannot Get MonoMode state\nXlib:  extension \"SGI-AccessControl\" missing on display \"127.0.0.1:98.0\".\nXlib:  extension \"SGI-AccessControl\" missing on display \"127.0.0.1:98.0\".\n",
+            "toolchest": "",
+            "winterm": "/emul/irix/usr/sbin/winterm: Cannot execute ELF binary /emul/irix/usr/bin/gettxt\n"
+          }
+        }
+      ],
+      "clean_shutdown": true
+    },
+    {
+      "directory": ".work/irix-4dwm/runs/session-ci-snc1fk1_",
+      "result_sha256": "741d36828e38da80e838b58c89050ddcd1ce354aa558f8a0b9885f0394691ba8",
+      "stage": "session",
+      "mode": "ci",
+      "status": "error",
+      "window_check_status": 0,
+      "shell_command_proved": false,
+      "sources": {
+        "scripts/probe-irix-4dwm-session.py": "6afa80325a4a216178a7fcbb474437bd3cfa6cd2e047ffcc02b31ce1dd11ab93",
+        "lab/irix-shell/guard.c": "1bb3a7cc79f83bbc7de56c50c2ba5d0565dcc92eb7ff2d5b58d6f1e2257c11e3",
+        "lab/irix-toolchest/session.c": "e183b4aefdfb428e01dc609230e87a7546a0b31e9d4b5e236503e0a8bb3b09f5",
+        "lab/irix-lp64/runner.c": "005bdf3fffce5fb8ca79073e92cc41431aa953550c41014183d5de986a104463",
+        "lab/irix-4dwm/wmcheck-ready.c": "de1527ba1352c0d57cab75bb7b502a7c4cec2a335a3094e668698e122d8aa30e",
+        "lab/irix-4dwm/type-ready.c": "61ce22cbda6c66ccaf53cbcffab5f3080be95004bcd3e5c6893dc54a8a9db838",
+        "lab/irix-shell/handoff.c": "24e89b5a57543448defb35a8d836d5ee525ec9a402f807ffdc92b8ac8227f325",
+        "lab/irix-shell/ctty-control.c": "6d4583baf6fbae054930519d465634712a1cef4339305bb58e146c1aa5b2f824",
+        "lab/irix-4dwm/session.sh": "dc1aec95673ed2e750323f7a13d282aa27d7e3b91f7ba561cc5b9aa1636d2092",
+        "lab/irix-4dwm/setup-pty.sh": "8ff9bb102309ac544ec3d31edfe72f67968da20040980936659539128c26bbf0"
+      },
+      "controls": [
+        {
+          "phase": "before",
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 37,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "XIRI_ABI_PROBE\n",
+            "stderr": ""
+          }
+        }
+      ],
+      "native_ctty_controls": [
+        {
+          "phase": "before",
+          "uid": 0,
+          "mode": 0,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "NATIVE_CTTY mode=0 pid=1320 tty=/dev/pts/0 acquired=1\nNATIVE_CTTY mode=0 exit=-1 signal=1\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "before",
+          "uid": 0,
+          "mode": 2,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "NATIVE_CTTY mode=2 pid=2155 tty=/dev/pts/0 acquired=1\nNATIVE_CTTY mode=2 exit=-1 signal=1\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "before",
+          "uid": 1234,
+          "mode": 0,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "NATIVE_CTTY mode=0 pid=3310 tty=/dev/pts/0 acquired=1\nNATIVE_CTTY mode=0 exit=-1 signal=1\n",
+            "stderr": ""
+          }
+        },
+        {
+          "phase": "before",
+          "uid": 1234,
+          "mode": 2,
+          "actual": {
+            "errno_bytes": 0,
+            "errno": 0,
+            "exit": 0,
+            "signal": 0,
+            "killed": 0,
+            "stdout": "NATIVE_CTTY mode=2 pid=3547 tty=/dev/pts/0 acquired=1\nNATIVE_CTTY mode=2 exit=-1 signal=1\n",
+            "stderr": ""
+          }
+        }
+      ],
+      "cases": [
+        {
+          "name": "desktop",
+          "actual": {
+            "pid": 1384,
+            "exit": -1,
+            "signal": 9,
+            "killed": 1,
+            "absent": 1,
+            "valid": 1,
+            "elapsed_ms": 90086,
+            "stdout": "",
+            "stderr": ""
+          },
+          "typing": "suffix=$(printf '\\n_')suffix=$(printf '\\n_'); ./type 127.0.0.1:98 winterm 'printf '\"'\"'XIRI \b_4DWM_SHELL_OK\\n'\"'\"'; uname -s; id -u; printf '\"'\"'XIRI_4DWM_SHELL_OK\\n'\"'\"' >  \b/tmp/xiri-wm/job/result'\"${suffix%_}\" >typing.out 2>&1; echo TYPE_STATUS=$?; sle \bep 2; xwininfo -display 127.0.0.1:98 -root -tree >desktop.tree; xprop -display 1 \b27.0.0.1:98 -root >desktop.props; xwd -display 127.0.0.1:98 -root -silent >deskt \bop.xwd; wait \"$job\"; echo GUARD_STATUS=$?; xiri_rc=$?; printf '\\nXIRI_869ff2f8de \b604be1989d02cf330c09d6_RC=%s\\n' \"$xiri_rc\"\nTYPE_STATUS=3\nGUARD_STATUS=0\n\nXIRI_869ff2f8de604be1989d02cf330c09d6_RC=0\nxiri-indy# ",
+          "cookie": "XIRI_4DWM_SHELL_OK",
+          "output": "",
+          "handoff": "",
+          "tree": "\nxwininfo: Window id: 0x349 (the root window) (has no name)\n\n  Root window id: 0x349 (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     15 children:\n     0x200086 (has no name): ()  105x210+9+0  +9+0\n        3 children:\n        0x200089 (has no name): ()  105x160+0+50  +9+50\n           1 child:\n           0x600026 \"Toolchest\": (\"toolchest\" \"Toolchest\")  103x158+0+0  +9+50\n              1 child:\n              0x600027 (has no name): ()  103x158+0+0  +10+51\n                 6 children:\n                 0x60002d (has no name): ()  99x24+2+2  +12+53\n                 0x60002c (has no name): ()  99x24+2+28  +12+79\n                 0x60002b (has no name): ()  99x24+2+54  +12+105\n                 0x60002a (has no name): ()  99x24+2+80  +12+131\n                 0x600029 (has no name): ()  99x24+2+106  +12+157\n                 0x600028 (has no name): ()  99x24+2+132  +12+183\n        0x200088 (has no name): ()  105x25+0+25  +9+25\n        0x200087 (has no name): ()  105x25+0+0  +9+0\n     0x600018 (has no name): ()  188x102+10+35  +10+35\n        4 children:\n        0x600023 (has no name): ()  187x102+0+0  +10+35\n        0x60001d (has no name): ()  144x344+0+0  +10+35\n        0x60001b (has no name): ()  187x52+0+0  +10+35\n        0x600019 (has no name): ()  188x102+0+0  +10+35\n     0x600013 (has no name): ()  5x5+10+35  +10+35\n        6 children:\n        0x600025 (has no name): ()  135x178+0+0  +10+35\n        0x600022 (has no name): ()  168x272+0+0  +10+35\n           1 child:\n           0x600024 (has no name): ()  164x24+2+196  +12+231\n        0x600021 (has no name): ()  123x128+0+0  +10+35\n        0x600020 (has no name): ()  177x128+0+0  +10+35\n        0x60001f (has no name): ()  16x16+0+0  +10+35\n        0x600014 (has no name): ()  158x248+0+0  +10+35\n           3 children:\n           0x60001e (has no name): ()  154x24+2+50  +12+85\n           0x60001c (has no name): ()  154x24+2+26  +12+61\n           0x60001a (has no name): ()  154x24+2+2  +12+37\n     0x600001 \"toolchest\": (\"toolchest\" \"Toolchest\")  1x1+10+10  +10+10\n     0x20006a (has no name): ()  5x5+0+0  +0+0\n        1 child:\n        0x20006b (has no name): ()  143x240+0+0  +0+0\n     0x200060 (has no name): ()  309x144+0+624  +0+624\n        1 child:\n        0x200061 (has no name): ()  295x130+7+7  +7+631\n           1 child:\n           0x200059 \"trustedPathManager\": (\"trustedPathManager\" \"4DWm\")  295x130+0+0  +7+631\n              1 child:\n              0x20005a (has no name): ()  295x130+0+0  +7+631\n                 1 child:\n                 0x20005b (has no name): ()  295x130+0+0  +7+631\n                    4 children:\n                    0x20005f (has no name): ()  275x30+10+50  +17+681\n                    0x20005e (has no name): ()  137x30+10+10  +17+641\n                    0x20005d (has no name): ()  128x30+157+10  +164+641\n                    0x20005c (has no name): ()  275x30+10+90  +17+721\n     0x200054 (has no name): ()  1x1+0+0  +0+0\n     0x200053 (has no name): ()  1x1+0+0  +0+0\n     0x400001 (has no name): ()  1x1+-2+-2  +-2+-2\n     0x200050 (has no name): ()  5x5+0+0  +0+0\n        1 child:\n        0x200051 (has no name): ()  70x57+0+0  +0+0\n     0x200046 (has no name): ()  5x5+0+0  +0+0\n        1 child:\n        0x200048 (has no name): ()  152x55+0+0  +0+0\n     0x20000b (has no name): ()  10x10+10000+10000  +10000+10000\n     0x200001 \"4Dwm\": (\"4Dwm\" \"4DWm\")  1x1+0+0  +0+0\n     0x200031 (has no name): ()  10x10+-100+-100  +-100+-100\n     0x200052 \"4Dwm\": (\"4Dwm\" \"4DWm\")  10x10+10000+0  +10000+0\n\n",
+          "properties": "_SGI_DESKS_MANAGER(WINDOW): window id # 0x200031\nWM_ICON_SIZE(WM_ICON_SIZE):\n\t\tminimum icon size: 16 by 16\n\t\tmaximum icon size: 85 by 67\n\t\tincremental size change: 1 by 1\n_SGI__MENU_WINDOW(WINDOW): window id # 0x400001\n_MOTIF_WM_INFO(_MOTIF_WM_INFO) = 0x2, 0x200031\n_SGI_TELL_WM(STRING) = \"auto_place\", \"auto_save\", \"beep\", \"circle_down\", \"circle_up\", \"end_session\", \"explicit_save\", \"force_restart\", \"interactive_place\", \"minimize_all\", \"opaque\", \"outline\", \"pack_icons\", \"quit\", \"refresh\", \"restart\", \"restore_all\", \"save_configuration\"\n_MOTIF_DEFAULT_BINDINGS(STRING) = \"osfCancel:<Key>Escape\\nosfLeft:<Key>Left\\nosfUp:<Key>Up\\nosfRight:<Key>Right\\nosfDown:<Key>Down\\nosfEndLine:<Key>End\\nosfBeginLine:<Key>Home\\nosfPageUp:<Key>Prior\\nosfPageDown:<Key>Next\\nosfBackSpace:<Key>BackSpace\\nosfDelete:<Key>Delete\\nosfInsert:<Key>Insert\\nosfAddMode:Shift<Key>F8\\nosfHelp:<Key>F1\\nosfMenu:Shift<Key>F10\\nosfMenuBar:<Key>F10\\nosfSelect:<Key>Select\\nosfActivate:<Key>KP_Enter\\nosfClear:<Key>Clear\\nosfUndo:<Key>Undo\"\n_XKB_RULES_NAMES(STRING) = \"base\", \"pc105\", \"us\", \"\", \"\"\n",
+          "frame_sha256": "bd14ec8daba2509b693a87e9d2ebbcbd2d83750a90391b8a849436ea5df89b41",
+          "wmcheck": "WMCHECK_STATUS=0\nWM_VIEWABLE clients=2\nWM_REPARENT client=6291457 frame=2097260 x=150 y=160 frame_x=142 frame_y=96\nWM_FOCUS_POLICY pointer_root=0 pointer_leaf=841\nWM_FOCUS client=6291457 focus=6291457 matched=1\nWM_KEY delivered=1\nWM_DRAG dx=50 dy=30\nWM_CHECK passed\n",
+          "type_output": "",
+          "logs": {
+            "wm": "Xlib:  extension \"SGI-AccessControl\" missing on display \"127.0.0.1:98.0\".\nXlib:  extension \"SGI-AccessControl\" missing on display \"127.0.0.1:98.0\".\nMakeTPWidgets: Cannot Get TP state\nXlib:  extension \"SGI-AccessControl\" missing on display \"127.0.0.1:98.0\".\nMakeTPWidgets: Cannot Get MonoMode state\nXlib:  extension \"SGI-AccessControl\" missing on display \"127.0.0.1:98.0\".\nXlib:  extension \"SGI-AccessControl\" missing on display \"127.0.0.1:98.0\".\n",
+            "toolchest": "",
+            "winterm": "/emul/irix/usr/sbin/winterm: Cannot execute ELF binary /emul/irix/usr/bin/gettxt\n"
+          }
+        }
+      ],
+      "clean_shutdown": true
+    }
+  ]
+}

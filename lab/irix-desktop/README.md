@@ -135,6 +135,14 @@ The earlier boundary pins in this lab remain historical evidence.
 
 The subsequent [getpeername lab](../irix-peername/README.md) now reaches both endpoint queries, followed by unsupported gethostname, fcntl and sendmsg, plus shutdown on cleanup. Use the [desktop acceptance plan](../../docs/ROADMAP.md#milestone-3-original-desktop-proof) and the user-supplied SGI interface guidelines once X applications run.
 
-Current application order: the [shell checkpoint](../../docs/results/2026-11-01-irix-shell.md) now runs a native interactive shell through original winterm/xwsh, including typed commands and bounded descendant cleanup. Evaluate original 4Dwm next while preserving this terminal baseline. Foreign signal handlers, resize, normal app exit and broader session behavior remain explicit follow-ups. Bounded collision relocation and 4 KiB data mapping are now qualified. 4Dwm now passes its fixed/local GL mapping and reaches libc `_usinit` and the missing PRDA PID field; artwork and session services remain open.
+Current application order: the [shell checkpoint](../../docs/results/2026-11-01-irix-shell.md) now runs a native interactive shell through original winterm/xwsh, including typed commands and bounded descendant cleanup. The [4Dwm session](../../docs/results/2026-11-01-irix-4dwm.md) now preserves this terminal baseline alongside original Toolchest. Foreign signal handlers, resize, normal app exit and broader session behavior remain explicit follow-ups. Bounded collision relocation and 4 KiB data mapping are now qualified. 4Dwm now passes its fixed/local GL mapping and libc PRDA initialization; artwork and session services remain open.
 
-The [4Dwm loader checkpoint](../../docs/results/2026-11-01-irix-elfmap-subpage.md) now handles the two 4 KiB data boundaries and passes 750 mapping/limit checks. The [fixed/local mmap checkpoint](../../docs/results/2026-11-01-irix-mmap-local.md) now also clears GL initialization, with 660 mapping cases and native page-zero controls. Original 4Dwm next faults in libc `_usinit` while reading the missing PRDA PID field at `0x200e00`; desktop interaction remains unqualified.
+The [4Dwm loader checkpoint](../../docs/results/2026-11-01-irix-elfmap-subpage.md) now handles the two 4 KiB data boundaries and passes 750 mapping/limit checks. The [fixed/local mmap checkpoint](../../docs/results/2026-11-01-irix-mmap-local.md) now also clears GL initialization, with 660 mapping cases and native page-zero controls. The measured PRDA checkpoint clears that libc fault. Original 4Dwm now passes focus, key delivery and dragging in the combined shell session, with session saving explicitly disabled.
+
+The [PRDA follow-up](../../docs/results/2026-11-01-irix-prda.md) now clears
+4Dwm's later libc fault and reaches initial decorations. Resource hashes alone
+do not qualify staging: restore readable modes on 4DWm defaults and the three
+system resource files after copying. UID1234 reads them with mode 0444;
+the [combined session](../../docs/results/2026-11-01-irix-4dwm.md) now passes
+focus, key delivery, dragging and shell execution with session saving disabled.
+Complete desktop services remain open.
