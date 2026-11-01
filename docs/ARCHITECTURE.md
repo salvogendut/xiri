@@ -1,6 +1,6 @@
 # Xiri proposed architecture
 
-Status: architectural target agreed on 2026-10-14; emulator-first development added on 2026-10-15. Marked static o32 writable data/BSS, arguments, file I/O, and private memory mappings are validated as a bounded subset in emulation; general compatibility and the desktop remain unvalidated. The [execution roadmap](ROADMAP.md) defines the remaining experiments.
+Status: architectural target agreed on 2026-10-14; implementation status updated 2026-11-01. The kernel personality runs selected original o32/n32 applications. Original 4Dwm and Toolchest run alongside winterm with a native shell in bounded sessions. File/icon clients now pass resource-limit queries and AUTORESRV allocation, then stop at PR_INIT_THREADS. General compatibility and the complete desktop remain unqualified. The [execution roadmap](ROADMAP.md) defines the remaining experiments.
 
 Xiri will use NetBSD as its underlying OS, execute selected IRIX binaries on the workstation's MIPS CPU through an IRIX personality, and preserve the existing IRIX desktop. Applications built natively for NetBSD should share that desktop with the compatible programs.
 
@@ -23,6 +23,37 @@ flowchart TB
 The diagram describes logical interfaces, not completed components. The IRIX libraries and desktop would initially come from the user's installation. On physical SGI hardware, ordinary MIPS code can run directly when the selected CPU supports its instruction set.
 
 Initial development runs the complete NetBSD/sgimips system inside an Indy emulator on a modern host. The emulator supplies the MIPS CPU and SGI devices; Xiri still implements the IRIX OS interfaces inside NetBSD. This is the same guest architecture intended for the physical Indy. A separate user-mode IRIX runner on a native x86 or ARM OS would require additional CPU translation and integration, and remains a later objective. See the [emulation plan](EMULATION.md).
+
+## Components and deployment
+
+Xiri is a NetBSD-based compatibility environment with kernel and user-space
+parts. It currently requires a kernel built with our compatibility changes;
+installing a background service on an unmodified NetBSD system is insufficient.
+
+| Component | Responsibility | Current implementation |
+| --- | --- | --- |
+| IRIX kernel personality | Recognize/load foreign ELF images; translate system calls, layouts, errors and process/VM behavior | Built into the NetBSD fork through `COMPAT_IRIX_O32`, despite the name covering both o32 and n32 |
+| Original IRIX runtime and desktop | rld/libc and other libraries, 4Dwm, Toolchest, winterm, file/icon clients, fonts and defaults | Selected files imported from the reference image; runtime lookup under `/emul/irix` with native fallback |
+| Native NetBSD platform | Scheduler, memory, storage, networking, devices, X server and native applications | Native facilities remain authoritative; graphics/application tests currently use native Xvfb, with local display acceptance separate |
+| Session and service integration | Environment, launch order, native shell handoff, application launching and host-service adapters | Test launchers/helpers exist; complete login/logout, file monitoring and other desktop services remain work to qualify |
+| Development lab | Boot/reference automation, probes, traces, comparisons and reproducible artifacts | This repository plus the IRIS emulator fork; the emulator is not intended to be required on a supported physical MIPS workstation |
+
+Supporting daemons could be packaged as ordinary NetBSD services, while the
+desktop itself could be offered as an X login session. Those are user-space
+deployment choices; they do not replace the kernel's executable and system-call
+handling. A loadable compatibility module could be investigated later, but it
+would still execute in the kernel. The current personality is built in, and
+running it as a standalone module on a stock kernel has not been established.
+
+The long-term packaging could therefore combine a compatible NetBSD kernel,
+an importer/runtime tree, and session/service packages. Upstream integration
+could eventually make a custom kernel unnecessary; that is a future outcome,
+not the present installation model. On x86 or ARM, CPU translation would also
+be necessary because the original applications contain MIPS instructions.
+
+Repository ownership follows this division: `NetBSD-xiri` contains kernel and
+machine changes; `iris` supplies the emulated Indy used for development; this
+`xiri` repository holds the integration lab, import tools, tests and documentation.
 
 ## Host kernel and drivers
 
@@ -66,7 +97,13 @@ The [static interface extension](results/2026-10-30-irix-o32-basics.md) adds arg
 
 An initial static probe can avoid dynamic-loader dependencies, but real desktop programs cannot. Establish a dynamically linked test early. A successful command-line executable is evidence for that executable only.
 
-Kernel integration through NetBSD's executable and emulation facilities is the leading approach for native execution. A userspace tracer may help observe behavior, but is not assumed to implement all signal, threading, and VM semantics.
+Kernel integration through NetBSD's executable and emulation facilities is now
+implemented as the bounded `COMPAT_IRIX_O32` personality. A userspace tracer
+may help observe behavior, but is not assumed to implement all signal,
+threading and VM semantics. The [AUTORESRV result](results/2026-11-01-irix-mmap-autoresrv.md)
+illustrates the boundary: the kernel performs native demand mappings for an
+IRIX request, while the unchanged libpthread subsequently asks for the still
+unsupported [PR_INIT_THREADS operation](results/2026-11-01-irix-desktop-autoresrv.md).
 
 ## Original desktop preservation
 
