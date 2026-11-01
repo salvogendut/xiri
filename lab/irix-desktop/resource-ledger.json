@@ -121,7 +121,7 @@
     },
     {
       "id": "window_manager_defaults",
-      "status": "extracted_unqualified",
+      "status": "staged_startup_before_gl_mmap_fault",
       "image_paths": [
         "/usr/lib/X11/app-defaults/4DWm",
         "/usr/lib/X11/system.4Dwmrc",
@@ -129,9 +129,10 @@
         "/usr/lib/X11/system.backgrounds"
       ],
       "evidence": [
-        "lab/irix-desktop/manifest.json"
+        "lab/irix-desktop/manifest.json",
+        "docs/results/2026-11-01-irix-4dwm-loader.json"
       ],
-      "note": "Evaluate original 4Dwm next, preserving the working winterm/native-shell baseline. Collision relocation exists; 4 KiB load boundaries and referenced artwork remain open."
+      "note": "4DWm defaults and system window-manager resources are staged with the unchanged library closure. The 4 KiB loader boundary is resolved; GL initialization now encounters a fixed/local private mmap request. Resource consumption, artwork and window-management behavior remain unqualified."
     },
     {
       "id": "session_defaults",
