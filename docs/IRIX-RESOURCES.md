@@ -11,6 +11,11 @@ pin the selected files, and stage them in disposable guests with explicit file
 modes. New discoveries should update this checklist, their manifest and the
 experiment that establishes whether the resource is actually used.
 
+The [user-supplied desktop capture](IRIX-DESKTOP-REFERENCE.md) records the
+visual target: populated catalog tabs, icon/toolbar artwork, desktop icons,
+SGI colors and a patterned background. Use a known installed application for
+the first page/action test; the complete pictured application set is optional.
+
 ## Already extracted
 
 | Resource | Image paths | Evidence and current use |
@@ -36,8 +41,11 @@ its original defaults name the dummy page `Blank`, and system catalog pages
 are not staged. Emptiness alone is not a compatibility failure. Populated pages
 and actions need a separate test with a known installed application.
 
-Both file-manager launches now crash after unsupported `pipe` and `sgikopt`
-calls. Earlier waitsys limitations remain unqualified. Filetype rules, artwork
+The [pipe retry](results/2026-11-01-irix-desktop-pipe.md) now renders a
+FileManager window and the home-folder invocation exits zero. Repeated select
+EINVAL blocks usable browsing; the CI capture times out. A process snapshot
+includes fmserv, whose behavior remains unqualified. Earlier waitsys
+limitations also remain open. Filetype rules, artwork
 and delayed services still need runtime checks. Missing `uxsgiimd`/`uxsgierr`
 message catalogs remain diagnostic candidates; current evidence does not
 establish them as startup prerequisites.
@@ -100,3 +108,28 @@ unimplemented mkdir/unlink/fsync/rename and later `(null).tmp`. mkdir is now
 qualified, but saved-session behavior has not been retried. These are
 generated user-state dependencies to implement and qualify, not missing
 original artwork or configuration files to extract.
+
+
+The home-folder launch additionally probes `/var/config/desktop` and
+`$HOME/.disableDesktop`. Track these as service/user enablement candidates;
+the lookup does not prove either file must be imported. Native session policy
+should supply enablement and per-user preferences. No new image assets were
+required for pipe support or the initial FileManager rendering.
+
+## Software installation and persistent users
+
+The [freeware inventory](results/2026-11-01-irix-freeware.md) identifies four
+May 2004 CD sets. The selected xmahjongg package supplies catalog install/
+removal hooks, two icon `.fti` files and a `.ftr` rule; retain these together
+with its software payload. The hooks require original `iconcatalogedit` and
+the file-type Makefile/tool chain. Test their actual execution and native
+filesystem effects before claiming installation support.
+
+Original `inst`, `swmgr`, `SoftwareManager` and `iconcatalogedit` plus their
+37-path static closure are pinned in the [installer manifest](../lab/irix-installer/manifest.json).
+`/var/inst/machfile` is generic input; the old installation's package history
+must not claim software absent from the Xiri runtime. Installed manuals and
+`/etc/stdcshrc`, `/etc/stdlogin`, `/etc/stdprofile` are privately inspected
+references. Native user accounts use `/usr/people/<username>` and generate
+fresh desktop state there. Original root sessions use `/` as HOME. See the
+[software/home design](IRIX-SOFTWARE.md).

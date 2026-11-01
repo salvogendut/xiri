@@ -101,3 +101,11 @@ unchanged qualified revision. Existing historical build commands likewise
 fetch the consolidated branch and retain their explicit detached commit.
 A new combined runtime qualification is required before adopting the integrated
 fork tips as new lab baselines; host regression tests alone do not replace it.
+
+The 2026-11-01 pipe/installer cycle rechecked upstream at
+`f17b4d3bc1663efd02f93a5e0e4811eebba510c8`, already in IRIS `xiri`
+`087d250ab25884baaf03cc998377f75711fe5aa4`. No integration or new emulator
+build was needed. The pinned guest emulator remains `9df1df14334838a989253efefe26f0547e6da592`;
+[pipe qualification](results/2026-11-01-irix-pipe.md) records the affected
+kernel builds and guest checks. Unrelated shared-checkout performance work
+was left untouched.

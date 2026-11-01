@@ -23,6 +23,8 @@ Confirmed project requirements:
 - Use NetBSD as the underlying operating system.
 - Preserve the IRIX desktop.
 - Support selected legacy IRIX applications alongside maintained software.
+- Use the original IRIX installers and package hooks to add applications to Icon Catalog.
+- Give ordinary users native homes under `/usr/people/<username>`; IRIX root sessions use `/`.
 - Keep planning and execution documents in this repository.
 
 Hardware available for testing: Indy, Indigo2, and Octane. Exact CPU, graphics, RAM, and installed IRIX versions remain to be inventoried. Fuel is a possible later target; access to one has not been established.
@@ -33,6 +35,7 @@ Hardware available for testing: Indy, Indigo2, and Octane. Exact CPU, graphics, 
 - [Proposed architecture](docs/ARCHITECTURE.md): compatibility boundaries, original desktop preservation, graphics, and application integration.
 - [Execution roadmap](docs/ROADMAP.md): experiments, dependencies, acceptance criteria, and unresolved choices.
 - [Fork development](docs/FORKS.md): the consolidated IRIS and NetBSD `xiri` branches, pinned worktrees and reproduction rules.
+- [IRIX software and user homes](docs/IRIX-SOFTWARE.md): original installers, xmahjongg/Freeware acceptance and the native account layout.
 - [IRIX resource checklist](docs/IRIX-RESOURCES.md): extracted image assets, runtime evidence, remaining resources and native session state.
 - [Indy emulation environment](docs/EMULATION.md): IRIS versus MAME, build and image prerequisites, development loop, and qualification gates.
 
@@ -50,7 +53,7 @@ The [ELF-map relocation checkpoint](docs/results/2026-10-31-irix-elfmap-relocati
 
 The [winterm fault capture](docs/results/2026-10-31-irix-winterm-fault.md) identifies a null font object in `tuFont::getWidth` and actual unsupported `access` calls for staged locale/app-defaults files. The [access adapter](docs/results/2026-10-31-irix-access.md) now clears this failure. The subsequent [PTY checkpoint](docs/results/2026-10-31-irix-pty.md) supplies native allocation, device identities and slave permissions. The [process checkpoint](docs/results/2026-11-01-irix-process.md) adds fork and child waits. The [shell checkpoint](docs/results/2026-11-01-irix-shell.md) now runs NetBSD `/bin/sh` inside original xwsh through the unchanged winterm launcher, with real X keyboard input, a command-created marker, native session checks and descendant cleanup. [The PNG](docs/results/images/2026-11-01-irix-winterm-shell.png) shows the prompt and command output. The [4Dwm follow-up](docs/results/2026-11-01-irix-4dwm.md) now manages windows alongside Toolchest and the working terminal, with session saving disabled. Complete desktop services precede xclock timekeeping.
 
-The [resource checklist](docs/IRIX-RESOURCES.md) tracks required image assets and remaining gaps. With Toolchest rendering observed, the [desktop acceptance plan](docs/ROADMAP.md#milestone-3-original-desktop-proof) uses the supplied SGI interface guidelines to qualify the complete environment.
+The [resource checklist](docs/IRIX-RESOURCES.md) tracks required image assets and remaining gaps; the [user-supplied original desktop capture](docs/IRIX-DESKTOP-REFERENCE.md) supplies our visual reference. With Toolchest rendering observed, the [desktop acceptance plan](docs/ROADMAP.md#milestone-3-original-desktop-proof) uses the supplied SGI interface guidelines to qualify the complete environment.
 
 The [expanded desktop attempt](docs/results/2026-11-01-irix-desktop-components.md)
 adds original fm, bgicons and Icon Catalog to the session. The
@@ -64,9 +67,11 @@ also passes, including native signal-mask synchronization and fork/exec state.
 the following session-directory blocker, with 3,200 records and 1,540 native
 filesystem effects verified. The [desktop retry](docs/results/2026-11-01-irix-desktop-mkdir.md)
 opens Icon Catalog's empty fallback page; system page data is not staged, so
-emptiness alone is not a compatibility failure. `bgicons` exits zero. Both
-file-manager launches now crash after unsupported pipe/sgikopt calls; terminal
-startup reliability and catalog actions remain open.
+emptiness alone is not a compatibility failure. `bgicons` exits zero. The subsequent [pipe adapter](docs/results/2026-11-01-irix-pipe.md) passes
+220 exact reference comparisons and 44 native/vendor controls. The
+[desktop retry](docs/results/2026-11-01-irix-desktop-pipe.md) now renders a
+FileManager window, but it loops on select EINVAL; file browsing and actions
+remain unqualified. Ordinary shell checks pass; CI desktop capture times out.
 The static closure and resource locations are inventoried; full desktop
 startup, file operations and services remain pending.
 
@@ -79,3 +84,15 @@ The [4Dwm loader checkpoint](docs/results/2026-11-01-irix-elfmap-subpage.md) now
 The [4Dwm PNG](docs/results/images/2026-11-01-irix-4dwm-shell.png) shows
 original decorations, Toolchest and the working winterm shell. This is an
 initial session: saving/restoration and startup repeatability remain open.
+
+The supplied [May 2004 Freeware media](docs/results/2026-11-01-irix-freeware.md)
+contains four CD sets and 489 distinct package names. The selected first
+installation target is xmahjongg 3.6.1, using original `inst` and its own
+`iconcatalogedit` hooks for the **Freeware** page. The [software plan](docs/IRIX-SOFTWARE.md)
+also defines persistent `/usr/people` homes shared by native and IRIX programs.
+
+The [installer/home probe](docs/results/2026-11-01-irix-installer.md) now verifies
+native and IRIX access to one `/usr/people` home, including cold-boot
+persistence. Original `inst` reaches an unsupported shared/autogrow mmap;
+`libinst` then writes through the failed-map pointer. Installation, the
+Freeware catalog action and graphical login persistence remain open.

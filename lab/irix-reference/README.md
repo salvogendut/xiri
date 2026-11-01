@@ -216,3 +216,10 @@ and 72 records for initial state, user writes, fork COW/PID refresh, exec reset
 and traditional signal masks. The reference confirms CPU PRId 0x440 and initial
 FP flags 0/4 for o32/n32. Its guest halted cleanly; decoded records are tracked,
 while the original media and raw captures remain private.
+
+The supplied freeware disk has now been [inventoried read-only](../../docs/results/2026-11-01-irix-freeware.md):
+four May 2004 CD sets, 489 distinct package names. The separately supplied
+`irix65_chd/irix65.chd` matches this installed reference's SHA-256 exactly.
+Prismatic overlays remain untouched. Original installer/home inspection and
+the selected xmahjongg installation route are tracked in the
+[installer lab](../irix-installer/README.md).

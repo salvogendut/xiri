@@ -1,0 +1,89 @@
+{
+  "schema": 1,
+  "status": "diagnostic-only",
+  "runs": [
+    {
+      "directory": ".work/irix-desktop-pipe/runs/ci-qpjwtevs",
+      "reason": "180000-ms request rejected by the unchanged 120000-ms guard; no desktop clients launched",
+      "result_sha256": "e094bb27bad9273ce12c7fa0de681d200f2ae82878f9c4cc76feb2a896ea323c",
+      "serial_sha256": "340a66a658e88abe2864683fad92dcac25ca9946f42f3eb29e32b60cde9d7380",
+      "frozen_sources": {
+        ".work/irix-desktop-pipe/runs/ci-qpjwtevs/sources/probe-irix-desktop-pipe.py": "a9e7d921a67193962fbdaad8ef119de3721a9b77f7e11f38e958700e059fdc1d",
+        ".work/irix-desktop-pipe/runs/ci-qpjwtevs/sources/guard.c": "1bb3a7cc79f83bbc7de56c50c2ba5d0565dcc92eb7ff2d5b58d6f1e2257c11e3"
+      },
+      "clean_shutdown": true
+    },
+    {
+      "directory": ".work/irix-desktop-pipe/runs/ordinary-1c8c63bx",
+      "reason": "Obsolete harness interrupted during native-helper compilation after the guard mismatch was found",
+      "result_sha256": "5bc0e31161303f1c79a0fb89a22dd4c19ee6aef55cca3c155230f9b1907b3e4f",
+      "serial_sha256": "0938619624db32792b42265c0ee0f55e284ca9f91b633c7c043755bfbf7f87dd",
+      "frozen_sources": {
+        ".work/irix-desktop-pipe/runs/ordinary-1c8c63bx/sources/probe-irix-desktop-pipe.py": "a9e7d921a67193962fbdaad8ef119de3721a9b77f7e11f38e958700e059fdc1d",
+        ".work/irix-desktop-pipe/runs/ordinary-1c8c63bx/sources/guard.c": "1bb3a7cc79f83bbc7de56c50c2ba5d0565dcc92eb7ff2d5b58d6f1e2257c11e3"
+      },
+      "clean_shutdown": true
+    },
+    {
+      "directory": ".work/irix-desktop-pipe/runs/ci-l4b0vala",
+      "reason": "180000-ms guard accepted; startup control tried nonexistent /bin/true and failed exec with ENOENT before desktop launch",
+      "result_sha256": "8611b40bf746adb4e4c9c8cd3cdf9c732838b5e8ce93f609b9a4847d2351077c",
+      "serial_sha256": "927664b7a7c39b741cf0fceea8085da82eaf93db4183f61c3dfe8d7f61cdefb7",
+      "frozen_sources": {
+        ".work/irix-desktop-pipe/runs/ci-l4b0vala/sources/probe-irix-desktop-pipe.py": "5d6e47ef892cf7d1805e2c8c8ccdbb84aa9e06edb8b9602b4199bc2b1360c44d",
+        ".work/irix-desktop-pipe/runs/ci-l4b0vala/sources/guard.c": "d0bc0777891ea9f96752299187b39def17e4fb77faefb0944dbf312fa0bd2aa3"
+      },
+      "clean_shutdown": true
+    },
+    {
+      "directory": ".work/irix-desktop-pipe/runs/ordinary-u7xm3vok",
+      "reason": "180000-ms guard accepted; startup control tried nonexistent /bin/true and failed exec with ENOENT before desktop launch",
+      "result_sha256": "09014340c84824680e4e1021a93c67769af2b339a92c9a67959b17ebe33f493a",
+      "serial_sha256": "08c2e7df4f550aec029c1c6cfaa6d14f37d7e49d1920b04333d2c2eba0f9c6a0",
+      "frozen_sources": {
+        ".work/irix-desktop-pipe/runs/ordinary-u7xm3vok/sources/probe-irix-desktop-pipe.py": "5d6e47ef892cf7d1805e2c8c8ccdbb84aa9e06edb8b9602b4199bc2b1360c44d",
+        ".work/irix-desktop-pipe/runs/ordinary-u7xm3vok/sources/guard.c": "d0bc0777891ea9f96752299187b39def17e4fb77faefb0944dbf312fa0bd2aa3"
+      },
+      "clean_shutdown": true
+    },
+    {
+      "directory": ".work/irix-desktop-pipe/runs/select-ci-xuvbpsqm",
+      "reason": "Focused select diagnostic stopped at inherited /tmp font checks before launching clients; corrected harness explicitly restages and checks fonts after boot",
+      "result_sha256": "902c70bda71f67602825550cd4ff9cdb078a01797eece96da4d24c5cfdd6edfe",
+      "serial_sha256": "e56b408425e8300ea74ff92319957834f3a52aa8bcb6f2f133bdbca60eef1079",
+      "frozen_sources": {
+        ".work/irix-desktop-pipe/runs/select-ci-xuvbpsqm/sources/probe-irix-fm-select.py": "52b3d203a1ed58f25392d3c90e6c9b63d480037028841d6619fcec2d5720e428"
+      },
+      "clean_shutdown": true
+    },
+    {
+      "directory": ".work/irix-desktop-pipe/runs/select-ci-amxv941i",
+      "reason": "Tracer stopped on native SIGCHLD (20) before the failing select; three successful selects observed; no select error diagnosed. Corrected tracer forwards SIGCHLD and continues.",
+      "result_sha256": "49ac2402dd861972c303a44b3946fd8e43eee1ff94a3357faf2ba93e47abfa5b",
+      "serial_sha256": "f3759702b2bbc393ac50bbfeaa951e473efa8be1d94335dcc134d941ec7c632f",
+      "trace_sha256": "eec9c259f45601cd48ec8c87860e95769b4e92b79f93eaa839bbecd8fb8087f5",
+      "frozen_sources": {
+        ".work/irix-desktop-pipe/runs/select-ci-amxv941i/sources/fault.c": "de9b9b272675f5b0cf52e5d6ab03ba4241614e7c6bf4b1a123f48135084c80af",
+        ".work/irix-desktop-pipe/runs/select-ci-amxv941i/sources/probe-irix-fm-select.py": "2b44c45754fc24fb52995522c2222a002dd8c98800b302f3e3c9c37e2d5f1462",
+        ".work/irix-desktop-pipe/runs/select-ci-amxv941i/sources/select-trace.c": "de0c46a3cea18debbeb8512f824be35390fda29761cbf318821f2b02f23af754"
+      },
+      "clean_shutdown": true
+    },
+    {
+      "directory": ".work/irix-desktop-pipe/runs/select-ci-0vi7vj4u",
+      "reason": "Focused tracer reached successful selects and gettimeofday ENOSYS, then timed out at a select with NULL timeout. The target EINVAL was not reproduced. No after-controls; trace recovered read-only from the halted FFS partition.",
+      "result_sha256": "6b89e4d46e8a1e4f6d6b1088610f4b5f37ba15ad7bb48cf2be0badd4bf40a62f",
+      "serial_sha256": "f333f533d55e1cf2e3312ec7b6f1473934a9f2459414388b52f742bd1f706c7e",
+      "trace_sha256": "bd99d5dc0efbd122f40c7fd27300995b56f0822be02f16220cc047a66d733c37",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "frozen_sources": {
+        ".work/irix-desktop-pipe/runs/select-ci-0vi7vj4u/sources/fault.c": "de9b9b272675f5b0cf52e5d6ab03ba4241614e7c6bf4b1a123f48135084c80af",
+        ".work/irix-desktop-pipe/runs/select-ci-0vi7vj4u/sources/probe-irix-fm-select.py": "2b44c45754fc24fb52995522c2222a002dd8c98800b302f3e3c9c37e2d5f1462",
+        ".work/irix-desktop-pipe/runs/select-ci-0vi7vj4u/sources/select-trace.c": "133750582c8911a59391f8a9cf9d8a32a6cd10d3caab6f7edd5518ce6253a2d5"
+      },
+      "clean_shutdown": true,
+      "observed_gettimeofday_enosys": 3,
+      "select_einval_reproduced": false
+    }
+  ]
+}

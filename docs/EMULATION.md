@@ -256,3 +256,18 @@ Active emulator and kernel development now uses the consolidated
 [`xiri` branches](FORKS.md). Existing guest qualification remains tied to its
 recorded commits and binaries; consolidation does not silently update those
 pins.
+
+
+The [pipe checkpoint](results/2026-11-01-irix-pipe.md) adds native pipe dispatch
+with exactly matching V0/V1 returns, flags, data flow, fork/EOF and allocation
+rollback. The matrix passes 220 native records and 44 controls across LP64
+CI/ordinary and o32 CI. The new desktop observer uses a separate guard with a
+180-second ceiling and an initial native guard control; previous failed
+captures and qualified guard sources remain unchanged.
+
+The [installer/home experiment](results/2026-11-01-irix-installer.md) uses one
+disposable CI guest at a time, followed by clean shutdown. Native account and
+shared-home file checks survive a cold boot. Original inst startup is blocked
+by the captured shared/autogrow mmap request; both native controls and the
+known-fault tracer controls pass. The separate full-desktop CI capture timeout
+remains unresolved; this smaller passing harness does not clear it.

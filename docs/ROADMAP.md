@@ -161,7 +161,14 @@ dependency candidates; a visible window alone does not complete these checks.
 - [x] Clear the observed `mmap(MAP_AUTORESRV)` boundary with [private demand mappings](results/2026-11-01-irix-mmap-autoresrv.md), preserving fixed/local and native controls.
 - [x] Measure and implement initial `prctl(PR_INIT_THREADS)` state and native signal holds: [260 executions / 860 records and 32 asynchronous-signal checks](results/2026-11-01-irix-init-threads.md) pass. Thread creation remains separate.
 - [x] Implement [measured mkdir support](results/2026-11-01-irix-mkdir.md): 3,200 records, 1,540 independently verified directory creations and 44 controls pass. Native group ownership remains explicit policy.
-- [ ] Qualify usable file/icon clients after directory creation. The [desktop retry](results/2026-11-01-irix-desktop-mkdir.md) now opens Icon Catalog’s empty fallback page with system page data unstaged, and bgicons exits zero. Measure pipe semantics and isolate the subsequent fm crash after pipe/sgikopt ENOSYS; qualify a catalog page/action for an installed application separately. Preserve intermittent terminal geometry/startup failures. Session saving remains disabled.
+- [x] Record the [user-supplied original desktop reference](IRIX-DESKTOP-REFERENCE.md), with a pixel-preserving PNG and explicit appearance/content targets.
+- [x] Implement [measured pipe support](results/2026-11-01-irix-pipe.md): 220 exact records and 44 native/vendor controls, including descriptor exhaustion/rollback and forked writers.
+- [ ] Qualify usable file/icon clients after directory creation. The [desktop retry](results/2026-11-01-irix-desktop-mkdir.md) now opens Icon Catalog’s empty fallback page with system page data unstaged, and bgicons exits zero. The [pipe retry](results/2026-11-01-irix-desktop-pipe.md) now renders FileManager, but its select EINVAL loop and the failed CI desktop capture need diagnosis; qualify a catalog page/action for an installed application separately. Preserve intermittent terminal geometry/startup failures. Session saving remains disabled.
+- [x] Inventory the supplied [May 2004 freeware sets](results/2026-11-01-irix-freeware.md): four CDs, 489 distinct packages; record zero-filled ncurses/nedit metadata separately.
+- [x] Establish [native /usr/people account creation and shared-file access](results/2026-11-01-irix-installer.md), including cold-boot persistence.
+- [ ] Measure and implement the shared/autogrow mmap request identified in original `libinst` startup; the captured failure pointer causes its SIGSEGV before distribution reading.
+- [ ] Run original IRIX `inst`, then Software Manager, to install **xmahjongg 3.6.1**. Its original hooks must create the **Freeware** catalog entry and icon/type rules; qualify launch, persistence after login, upgrade and removal. See the [software plan](IRIX-SOFTWARE.md).
+- [ ] Qualify persistent native accounts under `/usr/people/<username>` with shared native/IRIX access, generated desktop state and logout/login persistence. Original root sessions use `HOME=/`; avoid a second emulation-root copy of user homes.
 - [ ] Implement required service adapters, including the measured file-notification and launch behavior.
 - [x] Exercise native X test windows under original 4Dwm in the same native Xvfb session used by Toolchest and winterm.
 - [ ] Show a maintained host-native graphical application and an IRIX application in the same local session; qualify physical display output separately.
@@ -180,6 +187,7 @@ Acceptance: an original desktop session executing inside the emulated Indy on Ne
 - [ ] Validate real storage, networking, cache/DMA behavior, input and local display; record differences from emulation.
 - [ ] Package a reproducible installation for the first supported configuration.
 - [ ] Provide an import workflow for the selected original runtime and desktop files.
+- [ ] Deliver the original IRIX installers with qualified dependency/conflict reporting, installation history, catalog hooks and repeatable upgrade/removal. Keep the runtime-bootstrap import distinct from ongoing installation through inst/Software Manager.
 - [ ] Build a small maintained native software set, starting with networking and development tools.
 - [ ] Qualify the selected legacy applications using representative work, not just startup.
 - [ ] Measure desktop responsiveness, application startup, memory use, and any software rendering.

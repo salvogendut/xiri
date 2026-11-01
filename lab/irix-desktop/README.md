@@ -161,3 +161,17 @@ also passes. The [latest desktop follow-up](../../docs/results/2026-11-01-irix-d
 opens Icon Catalog with a blank main page and advances background-icon setup.
 No additional image assets were staged. Catalog contents/actions, file-manager
 startup and session repeatability remain open.
+
+
+The [pipe follow-up](../../docs/results/2026-11-01-irix-desktop-pipe.md) now
+renders FileManager and observes the home-folder invocation exit zero. The
+remaining select EINVAL loop prevents browsing qualification; CI capture
+fails, while ordinary shell/window checks pass. The
+[original desktop reference](../../docs/IRIX-DESKTOP-REFERENCE.md) records the
+user-supplied appearance/content target.
+
+The [installer/home follow-up](../../docs/results/2026-11-01-irix-installer.md)
+now qualifies native/IRIX shared homes under `/usr/people` and cold-boot file
+persistence. Original inst startup reaches a shared/autogrow mmap boundary.
+The selected package is xmahjongg; its own hooks target Icon Catalog's
+Freeware page. The pinned combined-session results above remain unchanged.

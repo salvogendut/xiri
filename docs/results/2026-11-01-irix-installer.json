@@ -1,0 +1,204 @@
+{
+  "schema": 1,
+  "status": "installer-startup-mmap-boundary",
+  "installation_success": false,
+  "qualifier_sha256": "729858a9f47edf586f87e2eaf7e8b8145533a006a1c198014133444d80cb7aa4",
+  "pin": {
+    "schema": 1,
+    "description": "Measured IRIX pipe lifecycle with native filesystem policy",
+    "ident": "XIRI_IRIX_PIPE_20261101",
+    "source_revision": "039ac3ab33386392c178031ad4997b0cd86fb53c",
+    "source_branch": "xiri",
+    "build_arch": "mips64eb",
+    "page_bytes": 8192,
+    "boot_kernel_sha256": "c251bc055180151095a0251d9027f1e7db2edd73a750da60d4ef5a17ff01febf",
+    "native_kernel_sha256": "ff0bc2979ae3091c90c427ede124f8c66676315a401031ed3ff6e8fbde3514f3",
+    "debug_kernel_sha256": "6fc000b35500e397fb6b390fc8cb5e38725343116bfe1b85fa353a677e8b529b",
+    "native_o32_sha256": "c294fbb1f2110445be31c096481ea54ab561c7e59ca5b9fc7171310098d755d4",
+    "source_dirty": false,
+    "emulator_revision": "9df1df14334838a989253efefe26f0547e6da592",
+    "emulator_branch": "xiri/netbsd64-tlb",
+    "emulator_sha256": "1b3f7702ba7f43b5c4fca8ba8884243559f46371d8d67a36ce5e6fee1e595eba",
+    "ci_client_sha256": "8711321aa6eaae440da3c7920b00ae4cf1c7f2abbdb15a9919f58485500ffb6c",
+    "base_disk_sha256": "269038c7b77660c83d3835208fc0b2702c93110c14b3c55a42416f51672cee2a",
+    "nvram_sha256": "ee883474d52f09278287b2044f7aeca61d2e7bc39c0bb8fd85c983ab64063d15",
+    "config_sha256": "050ea8e162b9b3e3392287ed4e3c004b744cc057d5ee10da243f3e6d453d11a0",
+    "runtimes": [
+      {
+        "name": "vendor-o32-libc",
+        "path": "/usr/lib/libc.so.1",
+        "sha256": "ea766492103a193e9d404942705e4e28987545e37f699ede232b6c0f8c97c954"
+      },
+      {
+        "name": "vendor-o32-rld",
+        "path": "/lib/rld",
+        "sha256": "30228b54c1e5585b365514eb7c9895b03cc0f61cb898e05e3ddafece87863439"
+      },
+      {
+        "name": "vendor-n32-libc",
+        "path": "/lib32/libc.so.1",
+        "sha256": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e"
+      },
+      {
+        "name": "vendor-n32-rld",
+        "path": "/lib32/rld",
+        "sha256": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b"
+      }
+    ],
+    "config_path": "lab/irix-pipe/XIRI_IRIX_PIPE"
+  },
+  "source_evidence": [
+    {
+      "revision": "039ac3ab33386392c178031ad4997b0cd86fb53c",
+      "path": "sys/compat/irix_o32/irix_o32.c",
+      "sha256": "45b373e452b882d11db4cbed5c1f0398a7004d01fed5491a57ebce1c6c1eab08"
+    },
+    {
+      "revision": "5aca2679d78276864d2980a08314887b2058fb2c",
+      "path": "sys/compat/irix/irix_mman.h",
+      "sha256": "b92365c7579bf62d12d9bc7ce4d511e1b791a7d94dfcd8a9e495c2223589191c"
+    }
+  ],
+  "manifest_sha256": "d85d13ac92bea732170fd4ca1546139711da6d993db2f42be22a82551a28784d",
+  "inputs_sha256": "e7b233ea4073b88e1a8839173ef738cb2cf46497a46c3945189f6a0057e6b5ac",
+  "home": {
+    "path": "/usr/people/xiritest",
+    "uid": 1234,
+    "primary_gid": 100,
+    "shell": "/bin/ksh",
+    "mode": "0700",
+    "create_and_repeat": true,
+    "native_write_foreign_read": true,
+    "file_owner": 1234,
+    "cold_boot_persistence": true,
+    "desktop_login_qualified": false,
+    "note": "Direct shared-file probes use explicit UID/GID 1234; the native account primary GID is users/100."
+  },
+  "root_session_home": "/",
+  "cases": [
+    {
+      "name": "hardware",
+      "argv": [
+        "./runner",
+        "./session",
+        "0",
+        "0",
+        "0",
+        "0",
+        "--",
+        "root.env",
+        "/emul/irix/usr/sbin/inst",
+        "-H"
+      ],
+      "runner_rc": 0,
+      "actual": {
+        "errno_bytes": 0,
+        "errno": 0,
+        "exit": -1,
+        "signal": 11,
+        "killed": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "group_absent": true,
+      "log_sha256": "fc48eafd7b4d0fef156cbf84181ff2d18433bab2937d32be297b9eb82e830160",
+      "trace_sha256": "4486f6e9e15907596b1fb3337f2eda251aade5cc87114ce245795100c4240bf4"
+    },
+    {
+      "name": "distribution",
+      "argv": [
+        "./runner",
+        "./session",
+        "0",
+        "0",
+        "0",
+        "0",
+        "--",
+        "root.env",
+        "/emul/irix/usr/sbin/inst",
+        "-n",
+        "-M",
+        "-r",
+        "/emul/irix",
+        "-f",
+        "/cdrom/dist",
+        "-c",
+        "/cdrom/commands"
+      ],
+      "runner_rc": 0,
+      "actual": {
+        "errno_bytes": 0,
+        "errno": 0,
+        "exit": -1,
+        "signal": 11,
+        "killed": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "group_absent": true,
+      "log_sha256": "fc48eafd7b4d0fef156cbf84181ff2d18433bab2937d32be297b9eb82e830160",
+      "trace_sha256": "1ac049f9ed50b66509b064c23b6ae8bfda8cd24e2d73e29e7f5117e8c4ac78e7"
+    }
+  ],
+  "fault": {
+    "mmap": {
+      "a0": 0,
+      "a1": 1048576,
+      "a2": 3,
+      "a3": 321,
+      "a4": 3,
+      "a5": 0,
+      "ra": 71178628
+    },
+    "error": 22,
+    "flags": [
+      "SHARED",
+      "AUTOGROW",
+      "AUTORESRV"
+    ],
+    "epc": "0x043e18d4",
+    "instruction_pc": "0x043e18d8",
+    "instruction": "sb zero,0(a4)",
+    "branch_delay": true,
+    "fault_address": "0xffffffff",
+    "register8": "0xffffffffffffffff",
+    "library": "/usr/lib32/internal/libinst.so",
+    "function": "iStringG::vprintf",
+    "original_code_bytes_match": true,
+    "disassembly_sha256": "8a4b0faf076175b7b6d1b369f8c452378d877fa10c985522940fc8b821b1bd19"
+  },
+  "controls": {
+    "native_execution": 8,
+    "native_known_fault": 2
+  },
+  "runs": [
+    {
+      "directory": ".work/irix-installer/runs/ci-e8jv2xtk",
+      "result_sha256": "de93a143bbcf273b246d253acd18977ef824b8646a4c3f0716fdc397209358c4",
+      "serial_sha256": "654b37ffad5645c734ea7943e980ea476f2f286763b1e2c2a6e1149977e75236",
+      "clean_shutdown": true,
+      "sources": {
+        "scripts/probe-irix-installer.py": "29f8a560a045a17261634c2861f4215fd38c1319cd288aa9bc74d5aceab2871b",
+        "scripts/setup-xiri-user.sh": "c74c3d13be95823e41a081f6a0439dbf062ba7be3b4e75c03e8d2e3be0a4eeb6",
+        "lab/irix-process/runner.c": "51c8045805878f0566a62a66c157b32035d98144bc3bb06e51c78b2fa5f8a141",
+        "lab/irix-toolchest/session.c": "e183b4aefdfb428e01dc609230e87a7546a0b31e9d4b5e236503e0a8bb3b09f5"
+      }
+    },
+    {
+      "directory": ".work/irix-installer/runs/mmap-ci-pq57kpty",
+      "result_sha256": "14f7f1c3cf7c9537e43e5320b0044b61e577aeb1364c93837ba0cf622e96e502",
+      "serial_sha256": "fe3614f356b441551c2120f65d654f21d679a948d93219c6503b90f94f171d87",
+      "clean_shutdown": true,
+      "sources": {
+        "scripts/probe-irix-installer-fault.py": "cc22b8470c2bc48499a2b8746c2a4355a4ed27e1ee47e09799de3737f19cd9be",
+        "lab/irix-4dwm/mmap-trace.c": "b3ac483400acc7e47b57bf1b93ec00029d5493f5c1acacd12f6af3d056791b0d",
+        "lab/irix-toolchest/fault.c": "de9b9b272675f5b0cf52e5d6ab03ba4241614e7c6bf4b1a123f48135084c80af"
+      }
+    }
+  ],
+  "limitations": [
+    "No successful installation, package hooks or GUI installer demonstrated.",
+    "Shared/autogrow mmap semantics require original-IRIX measurement before implementation.",
+    "Native home/file persistence is established; graphical login, catalog launch and removal remain unqualified."
+  ]
+}

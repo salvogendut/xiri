@@ -1,6 +1,6 @@
 # Xiri proposed architecture
 
-Status: architectural target agreed on 2026-10-14; implementation status updated 2026-11-01. The kernel personality runs selected original o32/n32 applications. Original 4Dwm and Toolchest run alongside winterm with a native shell in bounded sessions. File/icon clients now pass resource-limit queries, AUTORESRV allocation, measured pthread initialization and directory creation. Icon Catalog now reaches a blank main window; file-manager startup and complete desktop behavior remain open. General compatibility and the complete desktop remain unqualified. The [execution roadmap](ROADMAP.md) defines the remaining experiments.
+Status: architectural target agreed on 2026-10-14; implementation status updated 2026-11-01. The kernel personality runs selected original o32/n32 applications. Original 4Dwm and Toolchest run alongside winterm with a native shell in bounded sessions. File/icon clients now pass resource-limit queries, AUTORESRV allocation, measured pthread initialization and directory creation. Icon Catalog reaches an empty main window and FileManager now renders, but repeated select EINVAL blocks usable browsing; CI capture and complete desktop behavior remain open. General compatibility and the complete desktop remain unqualified. The [execution roadmap](ROADMAP.md) defines the remaining experiments.
 
 Xiri will use NetBSD as its underlying OS, execute selected IRIX binaries on the workstation's MIPS CPU through an IRIX personality, and preserve the existing IRIX desktop. Applications built natively for NetBSD should share that desktop with the compatible programs.
 
@@ -140,8 +140,10 @@ IRIX request. The subsequent [PR_INIT_THREADS adapter](results/2026-11-01-irix-i
 maintains measured PRDA holds and synchronizes native signal masks; it does
 not establish thread creation. The [mkdir adapter](results/2026-11-01-irix-mkdir.md)
 now uses native VFS creation with measured pathname translation and explicit
-native group-ownership policy. It adds no new core hook. The [desktop retry](results/2026-11-01-irix-desktop-mkdir.md)
-reaches Icon Catalog's empty fallback window; pipe, wider waits and remaining client behavior
+native group-ownership policy. It adds no new core hook. The [pipe adapter](results/2026-11-01-irix-pipe.md)
+similarly dispatches to native descriptor allocation with the measured V0/V1
+return convention and no extra core hook. The [desktop retry](results/2026-11-01-irix-desktop-mkdir.md)
+reaches Icon Catalog's empty fallback window; wider waits and remaining client behavior
 are still separate compatibility work.
 
 ## Original desktop preservation
@@ -183,6 +185,17 @@ Keep the IRIX runtime in a distinct tree while making selected user files availa
 A compatibility launcher should select the appropriate runtime for IRIX programs and dispatch host-native programs without routing them through IRIX libraries. Define environment and argument handling explicitly. This is needed for a native editor or network client to become a useful part of the preserved desktop.
 
 Keep original system binaries, libraries, and desktop assets outside the source repository. Store dependency manifests, import tooling, source references, and tests. Determine packaging terms for any third-party files before distributing a bundled runtime.
+
+Original IRIX `inst` and Software Manager are the intended application
+installation path. Their package history, prerequisites, shell/helper calls,
+alternate-root handling and catalog/type registration must be qualified.
+The first selected package is xmahjongg with its own Freeware-page hooks;
+see [software installation](IRIX-SOFTWARE.md).
+
+Ordinary accounts use native `/usr/people/<username>` homes. Their original
+IRIX desktop state belongs beneath that same HOME, with native ownership and
+persistent storage. Original root sessions use `HOME=/`. The native account
+helper does not relocate NetBSD's administrative account.
 
 ## Graphics boundaries
 

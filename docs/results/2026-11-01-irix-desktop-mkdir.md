@@ -92,3 +92,8 @@ new generated-state paths and the distinction between empty fallback rendering
 and populated-catalog qualification. Kernel source is NetBSD `xiri`
 `1690de11a095134b6eee4d7f85a8b046b1a86c47`; IRIS upstream and retained emulator
 pins are recorded in the [mkdir result](2026-11-01-irix-mkdir.md#upstream-and-scope).
+
+
+Next checkpoint: [measured pipe support](2026-11-01-irix-pipe.md) now passes
+220 native records and 44 native/vendor controls. The sgikopt behavior remains
+unchanged; desktop observations are recorded separately from kernel qualification.

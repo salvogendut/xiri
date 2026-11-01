@@ -175,7 +175,7 @@
     },
     {
       "id": "desktop_helpers",
-      "status": "mkdir_cleared_catalog_rendering_fm_crash_observed",
+      "status": "filemanager_window_select_error_observed",
       "image_paths": [
         "/usr/lib/desktop/*",
         "/usr/sbin/fm",
@@ -200,9 +200,11 @@
         "docs/results/2026-11-01-irix-init-threads.json",
         "docs/results/2026-11-01-irix-desktop-init-threads.json",
         "docs/results/2026-11-01-irix-mkdir.json",
-        "docs/results/2026-11-01-irix-desktop-mkdir.json"
+        "docs/results/2026-11-01-irix-desktop-mkdir.json",
+        "docs/results/2026-11-01-irix-pipe.json",
+        "docs/results/2026-11-01-irix-desktop-pipe.json"
       ],
-      "note": "The 38-path static ELF closure and 16 selected resources remain unchanged. bgicons exits zero after creating per-user session directories. Icon Catalog renders its empty Blank fallback page; no page data is staged. Both fm launches crash after pipe/sgikopt ENOSYS; causality needs isolation. Delayed modules, artwork, catalog actions and services remain unqualified; fmserv is not directly launched."
+      "note": "Vendor closure/resources unchanged. bgicons and the home-folder invocation exit zero. FileManager renders and stays alive but loops on select EINVAL; usable browsing/actions are not qualified. Icon Catalog retains its empty fallback. A process snapshot includes fmserv, but service behavior is unqualified. The ordinary shell/window checks pass; CI desktop capture times out and its guest does not halt cleanly."
     },
     {
       "id": "artwork",
@@ -317,6 +319,58 @@
         "docs/results/2026-11-01-irix-desktop-mkdir.json"
       ],
       "note": "Create as native per-user state; do not copy old account directories from IRIX. Lookup candidates are not all observed creations. Native authorization, umask and filesystem ownership policy apply."
+    },
+    {
+      "id": "desktop_enablement",
+      "status": "lookup_candidates",
+      "image_paths": [
+        "/var/config/desktop"
+      ],
+      "user_paths": [
+        "$HOME/.disableDesktop"
+      ],
+      "evidence": [
+        "docs/results/2026-11-01-irix-desktop-pipe.json"
+      ],
+      "note": "Observed lookups from the home-folder launch. Presence/necessity is not established; supply native session policy and user preferences rather than copying old machine/account state."
+    },
+    {
+      "id": "original_software_installers",
+      "status": "startup_shared_autogrow_mmap_fault_captured",
+      "image_paths": [
+        "/usr/sbin/inst",
+        "/usr/sbin/swmgr",
+        "/usr/sbin/SoftwareManager",
+        "/usr/sbin/iconcatalogedit",
+        "/var/inst/machfile"
+      ],
+      "evidence": [
+        "lab/irix-installer/manifest.json",
+        "lab/irix-installer/inputs.json",
+        "docs/IRIX-SOFTWARE.md",
+        "docs/results/2026-11-01-irix-installer.json"
+      ],
+      "note": "Use original installation history and hooks; do not import inventory claiming unstaged software. First selected package is fw_xmahjongg 3.6.1, Freeware page."
+    },
+    {
+      "id": "persistent_native_homes",
+      "status": "native_foreign_shared_file_and_cold_boot_persistence_passed",
+      "image_paths": [
+        "/etc/stdcshrc",
+        "/etc/stdlogin",
+        "/etc/stdprofile"
+      ],
+      "generated_paths": [
+        "/usr/people/<username>",
+        "/usr/people/<username>/.desktop-<hostname>",
+        "/usr/people/<username>/.desktophost/<hostname>"
+      ],
+      "evidence": [
+        "scripts/setup-xiri-user.sh",
+        "docs/IRIX-SOFTWARE.md",
+        "docs/results/2026-11-01-irix-installer.json"
+      ],
+      "note": "Native accounts, native /bin/ksh and skeleton. Share one HOME with IRIX apps; clients create desktop state. Root foreign sessions use HOME=/; no old personal state imported. Graphical login and desktop-state restoration remain unqualified."
     }
   ],
   "native_session_inputs": [
@@ -332,5 +386,17 @@
     "4Dwm currently needs explicit SG_manageSession=false and SG_autoSave=false; session-saving file operations/services remain open. A Trusted Path Manager panel and SGI-AccessControl requests remain under feature-query investigation.",
     "Observed 4Dwm saved-state paths: HOME/.xroomsrc, HOME/.xroomsrc.tmp and HOME/.desktop-127.0.0.1 for the controlled display. The enabled path hits unimplemented mkdir/unlink/fsync/rename and a later (null).tmp name. Generated native user state, not image resources to import.",
     "Expanded desktop startup now passes limits, executable loading, AUTORESRV allocation and measured PR_INIT_THREADS with native signal holds. HOME/.desktop-xiri-indy is generated per-user state; mkdir support and fm wait semantics are next. This does not establish thread creation, logical-swap parity or a usable full desktop."
-  ]
+  ],
+  "visual_reference": {
+    "description": "User-supplied normal IRIX desktop capture with terminal, Toolchest, Icon Catalog and xclock",
+    "document": "docs/IRIX-DESKTOP-REFERENCE.md",
+    "provenance": "docs/results/2026-11-01-irix-desktop-reference.json",
+    "targets": [
+      "catalog pages and application actions",
+      "icon and toolbar artwork",
+      "desktop root/device/trash icons",
+      "SGI colors, fonts and patterned background"
+    ],
+    "runtime_qualification": false
+  }
 }
