@@ -82,7 +82,7 @@ remain diagnostics, not application compatibility results.
 
 The final import run `ordinary-w6lzsg5x` observes original xmahjongg rendering
 under 4Dwm, with native execution/X controls, full import provenance and
-clean descendant removal. Icon Catalog remains Blank. The preceding
+clean descendant removal. Icon Catalog remained Blank in that baseline. The preceding
 `ordinary-o5u6xm80` exposed mode-0644 libraries rejected by SGI_ELFMAP
 `VEXEC`; [permissions.json](permissions.json) records the explicit ELF 0555
 adjustment. Persistent native fonts and manual session helpers are installed
@@ -104,14 +104,26 @@ and [switching instructions](../../docs/XIRI-IMAGE.md#return-to-irix).
 The development profile uses [xorg.conf](xorg.conf) at 1280×1024; the earlier
 1024×768 X11 lab configuration remains pinned. [toolchest.chestrc](toolchest.chestrc)
 includes the original menus, overrides Open Unix Shell and Icon Catalog, and
-adds the supported Applications menu. `MWMSHELL` selects a native-shell alias;
+retains the original menu structure. The added Applications menu was removed
+on 2026-11-02 at the user’s request; older image bundles retain it. `MWMSHELL` selects a native-shell alias;
 [xiri-launch.sh](xiri-launch.sh) uses explicit vendor application paths and
 unique terminal handoff logs. Imported IRIX shells and menus are unchanged.
 
-Run `scripts/probe-xiri-desktop-launch.py --seed .work/xiri-image/prepared-seed`
+Run `scripts/probe-xiri-desktop-launch.py --seed .work/xiri-image/prepared-seed-20261102`
 to update a disposable clone and exercise real menu selections, repeated
 terminal commands, larger-frame pixels, payload integrity and cleanup.
 See the [launch investigation](../../docs/results/2026-11-02-desktop-launch.md).
 The resulting clean raw guest can be packaged by `scripts/build-xiri-image.py`;
 verify the new bundle with `scripts/probe-xiri-image.py` and
 `scripts/qualify-xiri-image.py` before promoting it.
+
+The current upgrade requires the [desktop filesystem kernel](../irix-lxstat/README.md),
+[native FAM build](../native-fam/README.md) and separate
+[SGI toolbar bitmap payload](../irix-desktop-bitmaps/README.md). It installs
+both disk kernel forms, the daemon/configuration, native xiritest account and
+shared desktop-path alias. FAM starts and stops with `xiri-desktop`; any
+pre-existing rpcbind is retained. The probe waits for catalog discovery after
+both initial startup and reopening, then checks Freeware notifications,
+FileManager, native file creation/deletion, file hashes and cleanup.
+The [service result](../../docs/results/2026-11-02-desktop-services.md) records
+the observed improvements and remaining filetype locking/artwork gap.

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Update a disposable prepared guest and exercise actual Toolchest launches."""
+"""Upgrade a prepared guest with desktop services and test original menus."""
 import argparse
 import gzip
 import importlib.util
@@ -22,12 +22,13 @@ FILES = {
     'manual-session.sh': '/usr/local/libexec/xiri/manual-session.sh',
     'toolchest.chestrc': '/usr/local/share/xiri/toolchest.chestrc',
     'xorg.conf': '/usr/local/share/xiri/xorg.conf',
+    'fam.conf': '/usr/local/share/xiri/fam.conf',
 }
 
 
 def main():
     p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument('--seed', type=Path, default=ROOT/'.work/xiri-image/prepared-seed')
+    p.add_argument('--seed', type=Path, default=ROOT/'.work/xiri-image/prepared-seed-20261102')
     p.add_argument('--debug-failure', action='store_true',
                    help='Keep a failed guest available through the diagnostic request queue')
     a = p.parse_args()
@@ -37,8 +38,7 @@ def main():
     assert previous['status'] == 'observed' and previous['clean_shutdown']
     assert previous['guest_payload_verified'] and previous['persistent_helpers_installed']
     assert probe.sha256(seed/'disk.raw') == provenance['raw_sha256']
-    pin = json.loads((ROOT/'lab/irix-signal/baseline.json').read_text())
-    assert previous['pin'] == pin
+    pin = json.loads((ROOT/'lab/irix-lxstat/baseline.json').read_text())
     probe.IRIS = ROOT/'.work/target-netbsd64/release/iris'
     probe.CI = ROOT/'.work/target-netbsd64/release/iris-ci'
     assert probe.sha256(probe.IRIS) == pin['emulator_sha256']
@@ -46,10 +46,28 @@ def main():
     runs.mkdir(exist_ok=True)
     directory = Path(tempfile.mkdtemp(prefix='ordinary-', dir=runs))
     print('Results: '+str(directory.relative_to(ROOT)), flush=True)
+    shutil.copyfile(Path(__file__), directory/'harness.py')
     media = directory/'media'
     media.mkdir()
     for name in FILES:
         shutil.copyfile(ROOT/'lab/irix-installed-desktop'/name, media/name)
+    kernel = ROOT/'.work/netbsd-irix-desktop-build'
+    extras = {
+        'netbsd': (kernel/'kernel-media/netbsd', '/netbsd', pin['native_kernel_sha256']),
+        'netbsd.boot': (kernel/'tftp/netbsd-XIRI_INDY', '/netbsd.boot', pin['boot_kernel_sha256']),
+    }
+    fam = json.loads((ROOT/'.work/native-fam/result.json').read_text())
+    assert fam['status'] == 'built' and fam['btree_host_passed']
+    assert fam['source_manifest_sha256'] == probe.sha256(ROOT/'lab/native-fam/source.json')
+    extras['famd'] = (ROOT/'.work/native-fam/fam-2.7.0/src/famd', '/usr/local/sbin/famd', fam['files']['src/famd'])
+    extras['btree-native'] = (ROOT/'.work/native-fam/btree-native', '/root/desktop-launch/btree-native', fam['btree_native_sha256'])
+    for name,(source,dest,digest) in extras.items():
+        assert probe.sha256(source) == digest
+        shutil.copyfile(source,media/name)
+    bitmaps = json.loads((ROOT/'lab/irix-desktop-bitmaps/copy-ledger.json').read_text())
+    payload = ROOT/'.work/irix-desktop-bitmaps/payload.tgz'
+    assert probe.sha256(payload) == bitmaps['payload_sha256']
+    shutil.copyfile(payload,media/'bitmaps.tgz')
     shutil.copyfile(ROOT/'lab/irix-4dwm/type-ready.c', media/'type.c')
     # Keep the old fixed-display input qualification reproducible.
     source = (ROOT/'lab/irix-toolchest-input/inputcheck.c').read_text()
@@ -60,10 +78,12 @@ def main():
     staged = dict(previous['staged'])
     ledger = json.loads((ROOT/'lab/irix-installed-desktop/copy-ledger.json').read_text())
     staged.update({r['netbsd_destination']: r['sha256'] for r in ledger['files'] if r['type'] == 'file'})
+    staged.update({r['netbsd_destination']: r['sha256'] for r in bitmaps['files'] if r['type'] == 'file'})
     (media/'STAGED').write_text(''.join(f'SHA256 ({path}) = {h}\n' for path,h in sorted(staged.items())))
     perms = json.loads((ROOT/'lab/irix-installed-desktop/permissions.json').read_text())
     (media/'permissions.sh').write_text('set -eu\n'+''.join('test -x '+shlex.quote(path)+'\n' for path in perms['files']))
     installed = {dest: probe.sha256(media/name) for name,dest in FILES.items()}
+    installed.update({dest:digest for source,dest,digest in extras.values()})
     (media/'INSTALLED').write_text(''.join(f'SHA256 ({path}) = {h}\n' for path,h in installed.items()))
     sources = {str(path.relative_to(ROOT)):probe.sha256(path) for path in [Path(__file__),
         ROOT/'scripts/probe-netbsd.py', ROOT/'lab/irix-4dwm/type-ready.c',
@@ -74,11 +94,12 @@ def main():
     for name in ['disk.raw','nvram.bin']:
         probe.run(['cp','--reflink=auto','--sparse=always',seed/name,directory/name])
     config = (ROOT/'lab/indy-netbsd/iris.toml').read_text()
-    config = re.sub(r'^tftp_dir = .*$', 'tftp_dir = '+json.dumps(str(ROOT/'.work/netbsd-irix-signal-build/tftp')), config, flags=re.M)
+    config = re.sub(r'^tftp_dir = .*$', 'tftp_dir = '+json.dumps(str(kernel/'tftp')), config, flags=re.M)
     lab = probe.Lab(SimpleNamespace(mode='ordinary',debugger=False,boot_timeout=600),directory,config_text=config)
     result = dict(status='error',clean_shutdown=False,pin=pin,staged=staged,
         base_image=provenance,base_seed_result_sha256=probe.sha256(seed/'result.json'),
         sources=sources,installed_files=installed,launches={},desktop_dimensions=[1280,1024],
+        desktop_services=True,native_fam_build=fam,bitmap_ledger_sha256=probe.sha256(ROOT/'lab/irix-desktop-bitmaps/copy-ledger.json'),
         payload_manifest_sha256=previous['payload_manifest_sha256'])
 
     def cmd(command, timeout=120):
@@ -101,6 +122,11 @@ def main():
         result[name+'_capture'] = reply
         print(name+': captured',flush=True)
 
+    def wait_window(title):
+        cmd('tries=0; until xwininfo -root -tree | grep -F '+shlex.quote(title)+
+            ' >/dev/null; do kill -0 "$manual" || exit 1; tries=$((tries+1)); '
+            'test "$tries" -lt 60 || exit 1; sleep 2; done',180)
+
     def remove_closed_terminals():
         # The current xwsh can retain its window after the native shell exits.
         # Remove only this guest's reserved-UID xwsh processes before selecting
@@ -112,7 +138,7 @@ def main():
         x = int(re.search(r'Absolute upper-left X:\s+(\d+)',info)[1])
         y = int(re.search(r'Absolute upper-left Y:\s+(\d+)',info)[1])
         wid = re.search(r'Window id: (0x[0-9a-f]+)',info)[1]
-        cmd(f'./input focus {wid}; ./input click {x+40} {y+14+row*26}; sleep 1; ./input click {x+180} {y+item_y}; sleep 3')
+        cmd(f'./input focus {wid}; ./input click {x+5} {y+14+row*26}; sleep 1; ./input click {x+180} {y+item_y}; sleep 3')
 
     try:
         lab.start()
@@ -123,13 +149,23 @@ def main():
         result['executable_permissions_applied'] = True
         for name,dest in FILES.items():
             cmd('install -m '+('555' if name.endswith('.sh') else '444')+' /cdrom/'+name+' '+dest)
+        cmd('mkdir -p /usr/local/sbin; tar xzpf /cdrom/bitmaps.tgz -C /; test -d /emul/irix/usr/lib/desktop; if test ! -e /usr/lib/desktop && test ! -L /usr/lib/desktop; then ln -s /emul/irix/usr/lib/desktop /usr/lib/desktop; fi; test "$(readlink /usr/lib/desktop)" = /emul/irix/usr/lib/desktop')
+        cmd('getent group xiritest >/dev/null || groupadd -g 1234 xiritest; id xiritest >/dev/null 2>&1 || useradd -u 1234 -g 1234 -d /usr/people/xiritest -s /bin/sh xiritest; test "$(id -u xiritest)" = 1234; test "$(id -g xiritest)" = 1234')
+        for name,(source,dest,digest) in extras.items():
+            cmd('install -m 555 /cdrom/'+name+' '+dest)
+        result['btree_native'] = cmd('./btree-native')
         cmd('ln -sf /bin/sh /usr/local/libexec/xiri/command-shell && sha256 -c /cdrom/INSTALLED && test "$(readlink /usr/local/libexec/xiri/command-shell)" = /bin/sh')
         result['persistent_helpers_installed'] = True
         cmd('cc -O2 -Wall -Wextra -Werror -I/usr/X11R7/include -L/usr/X11R7/lib -Wl,-rpath,/usr/X11R7/lib /cdrom/input.c -lXtst -lX11 -o input && cc -O2 -Wall -Wextra -Werror -I/usr/X11R7/include -L/usr/X11R7/lib -Wl,-rpath,/usr/X11R7/lib /cdrom/type.c -lXtst -lX11 -o type',180)
         result['native_before'] = cmd('/root/irix-desktop/native-o32; test "$?" = 37')
-        cmd('export PATH=/usr/X11R7/bin:$PATH DISPLAY=127.0.0.1:0; /usr/local/bin/xiri-desktop >desktop.log 2>&1 & manual=$!; tries=0; until ./type "$DISPLAY" xmahjongg "" >game-focus.log 2>&1; do tries=$((tries+1)); test "$tries" -lt 120 || break; sleep 2; done; ./type "$DISPLAY" xmahjongg "" >game-focus.log 2>&1 && job=$(sed -n "s/.*Logs: //p" desktop.log | head -1); test -d "$job"',360)
+        cmd('export PATH=/usr/X11R7/bin:$PATH DISPLAY=127.0.0.1:0; /usr/local/bin/xiri-desktop >desktop.log 2>&1 & manual=$!; tries=0; until ./type "$DISPLAY" xmahjongg "" >game-focus.log 2>&1; do kill -0 "$manual" || break; tries=$((tries+1)); test "$tries" -lt 120 || break; sleep 2; done; ./type "$DISPLAY" xmahjongg "" >game-focus.log 2>&1 && job=$(sed -n "s/.*Logs: //p" desktop.log | head -1); test -d "$job"',360)
         result['display'] = get('xdpyinfo').decode()
         assert 'dimensions:    1280x1024 pixels' in result['display']
+        result['fam_registration'] = cmd('rpcinfo -p 127.0.0.1 | awk \'$1 == 391002 && $2 == 1 && $3 == "tcp" {print; found=1} END {exit !found}\'')
+        wait_window('Page 1 of 18')
+        result['catalog_initial_tree'] = get('xwininfo -root -tree').decode()
+        assert 'Page 1 of 18' in result['catalog_initial_tree']
+        assert 'Trusted Path' not in result['catalog_initial_tree']
         # Show that pixels beyond both old bounds reach the composed framebuffer.
         result['edge_pixels'] = {}
         for color,expected in [('red','fe0000'),('blue','0000fe')]:
@@ -159,18 +195,35 @@ def main():
             if i == 0:
                 cmd('./type "$DISPLAY" winterm "exit" && ./input key Return; sleep 2')
                 remove_closed_terminals()
-        # Applications follows the six original top-level rows.
-        for app,index,title in [('xclock',1,'xclock'),('iconcatalog',2,'Icon Catalog'),('xmahjongg',3,'xmahjongg')]:
-            menu(6,170+22*index)
-            tree = get('xwininfo -root -tree').decode()
-            assert '"'+title+'"' in tree, (app,tree)
-            logs = get('for d in "$job"/launch-'+app+'.*; do echo "$d"; cat "$d/stderr"; done').decode()
-            result['launches'][app] = dict(tree=tree,logs=logs)
-            print('MENU_'+app+'_OK',flush=True)
+        # Original Find menu: Icon Catalog precedes its generated page list.
+        menu(3,185)
+        wait_window('Page 1 of 18')
+        tree = get('xwininfo -root -tree').decode()
+        assert re.search(r'"Icon Catalog(?::[^"\n]*)?"', tree), tree
+        logs = get('for d in "$job"/launch-iconcatalog.*; do echo "$d"; cat "$d/stderr"; done').decode()
+        result['launches']['iconcatalog'] = dict(tree=tree,logs=logs)
+        result['toolchest_custom_applications_menu'] = False
+        print('MENU_iconcatalog_OK',flush=True)
+        wid = re.search(r'(0x[0-9a-f]+) "Icon Catalog:.*Page 1 of 18', tree)[1]
+        cmd('./input focus '+wid+'; '+ './input key Next; '*8+'sleep 3')
+        wait_window('Icon Catalog: Freeware (Page 9 of 18)')
+        result['catalog_freeware_tree'] = get('xwininfo -root -tree').decode()
+        assert 'Icon Catalog: Freeware (Page 9 of 18)' in result['catalog_freeware_tree']
+        result['freeware_notifications'] = get('grep -E \'"xmahjongg" Exists|Freeware" EndExist\' "$job/fam.log"').decode()
+        assert '"xmahjongg" Exists' in result['freeware_notifications']
+        cmd('mkdir -p /usr/people/xiritest/XiriTest/Examples; echo "Native NetBSD file viewed by IRIX FileManager." >/usr/people/xiritest/XiriTest/Readme.txt; chown -R 1234:1234 /usr/people/xiritest/XiriTest; su -m xiritest -c "cd /usr/people/xiritest; /usr/local/libexec/xiri/session $job/desktop.env /emul/irix/usr/sbin/fm /usr/people/xiritest/XiriTest" >fm.log 2>&1 & sleep 10')
+        wait_window('xiri-indy:/usr/people/xiritest/XiriTest')
+        result['filemanager_tree'] = get('xwininfo -root -tree').decode()
+        assert 'xiri-indy:/usr/people/xiritest/XiriTest' in result['filemanager_tree']
+        cmd('touch /usr/people/xiritest/.desktop-xiri-indy/xiri-event-probe; sleep 3; rm /usr/people/xiritest/.desktop-xiri-indy/xiri-event-probe; sleep 3')
+        result['file_notifications'] = get('grep xiri-event-probe "$job/fam.log"').decode()
+        assert 'Created' in result['file_notifications'] and 'Deleted' in result['file_notifications']
+        (directory/'catalog-fm.xwd').write_bytes(get('xwd -root -silent'))
+        result['catalog_fm_xwd_sha256'] = probe.sha256(directory/'catalog-fm.xwd')
         cmd('./type "$DISPLAY" winterm "echo Toolchest launch works" && ./input key Return; sleep 1')
         capture('menu-desktop')
         result['native_x11_after'] = 'dimensions:' in cmd('xdpyinfo | grep dimensions')
-        cmd('kill -TERM "$manual"; wait "$manual" || test "$?" = 130; ps -axo uid,pid,comm >remaining.txt; ! awk \'$1 == 1234 { found=1 } END { exit !found }\' remaining.txt')
+        cmd('kill -TERM "$manual"; wait "$manual" || test "$?" = 130; ps -axo uid,pid,comm >remaining.txt; ! awk \'$1 == 1234 { found=1 } END { exit !found }\' remaining.txt; ! pgrep -x famd; ! pgrep -x rpcbind; test ! -d /var/run/xiri-desktop.lock')
         result['session_logs'] = get('cat desktop.log; for f in "$job"/*.err "$job"/guard.log "$job"/launch-*/*; do test ! -f "$f" || { echo "$f"; cat "$f"; }; done').decode(errors='backslashreplace')
         result['native_after'] = cmd('/root/irix-desktop/native-o32; test "$?" = 37')
         cmd('sha256 -c /cdrom/STAGED >/root/update-vendor-after.log && sha256 -c /cdrom/INSTALLED >/root/update-files-after.log',900)

@@ -361,9 +361,10 @@ until catalog launch and interaction are checked.
 ## Reusable desktop image
 
 Use the [prepared CHD](XIRI-IMAGE.md) for current manual IRIS testing and
-routine desktop experiments. It contains the qualified signal kernel,
+routine desktop experiments. The current service bundle contains the qualified
+desktop filesystem/poll kernel, native FAM and shared desktop-path integration,
 installed IRIX application/catalog payload, persistent native fonts and
-session helpers. The [image qualification](results/2026-11-02-xiri-image.md)
+session helpers. The [current image qualification](results/2026-11-02-desktop-services-image.json)
 records archive verification, a complete 8 GiB raw round trip, direct SCSI
 disk boot and native Xorg/Newport observations. Older lab baselines remain
 pinned for reproducing earlier interfaces. Create fresh CHD overlays or raw

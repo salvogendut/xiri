@@ -19,7 +19,7 @@ The [signal implementation](docs/results/2026-11-01-irix-signal.md) now passes
 registration, o32/n32 delivery/return, FPU restoration and wait-any reaping.
 The [installed-image import](docs/results/2026-11-01-irix-installed-desktop.md)
 now includes 166 catalog entries across 17 tabs, with xmahjongg rendering
-under 4Dwm. Icon Catalog still shows Blank despite the installed pages.
+under 4Dwm. That first import still showed Icon Catalog's Blank fallback.
 The [reusable CHD guide](docs/XIRI-IMAGE.md) covers manual IRIS testing and
 automated reuse; the [copy ledger](docs/IRIX-IMPORT.md) records every source
 and destination, including persistent fonts and executable library modes.
@@ -29,10 +29,19 @@ installation or every application's runtime behavior.
 The [desktop launch qualification](docs/results/2026-11-02-desktop-launch.md)
 adds a 1280×1024 Newport screen and working Toolchest actions for the
 supported applications. Open Unix Shell starts original xwsh with a native
-NetBSD shell; two repeated menu launches accept typed commands. The new
-Applications menu opens xclock, Icon Catalog and xmahjongg. Other original
-menu actions, catalog contents and automatic xwsh closure after shell exit
-remain unfinished.
+NetBSD shell; two repeated menu launches accept typed commands. The initial
+Applications menu opened xclock, Icon Catalog and xmahjongg. The
+current configuration removes that custom menu at the user's request and
+retains Desktop → Open Unix Shell and Find → Icon Catalog.
+
+The [desktop repair checkpoint](docs/results/2026-11-02-desktop-services.md)
+adds measured directory/link/poll support and native FAM. Icon Catalog now
+discovers 18 pages and lists the 21 Freeware entries; FileManager lists native
+files and folders. Reporting MAC support as absent removes the Trusted Path
+panel. Filetype icon artwork and catalog application actions remain unfinished:
+the latest trace reaches an unsupported `F_SETBSDLKW` call on `desktop.otr`.
+Automatic xwsh closure after shell exit also remains open. Xorg stays in use;
+further Xsgi experiments are deferred.
 
 The candidate build host has been [inventoried](docs/results/2026-10-29-host-inventory.md), and [NetBSD 11.0 sgimips inputs](lab/netbsd-11.0/README.md) have been downloaded and verified. The [guest lab](lab/indy-netbsd/README.md), [installation record](docs/results/2026-10-29-indy-netbsd-install.md), and [debugger/probe results](docs/results/2026-10-30-netbsd-debugger-probe.md) retain the configuration, commands, evidence, and unresolved emulator issues. Use the [development setup checklist](docs/ROADMAP.md#development-setup-checklist) for the remaining work.
 
@@ -90,11 +99,11 @@ filesystem effects verified. The [desktop retry](docs/results/2026-11-01-irix-de
 opens Icon Catalog's empty fallback page; system pages were not staged in that test, so
 emptiness alone is not a compatibility failure. `bgicons` exits zero. The subsequent [pipe adapter](docs/results/2026-11-01-irix-pipe.md) passes
 220 exact reference comparisons and 44 native/vendor controls. The
-[desktop retry](docs/results/2026-11-01-irix-desktop-pipe.md) now renders a
-FileManager window, but it loops on select EINVAL; file browsing and actions
-remain unqualified. Ordinary shell checks pass; CI desktop capture times out.
-The static closure and resource locations are inventoried; full desktop
-startup, file operations and services remain pending.
+[earlier desktop retry](docs/results/2026-11-01-irix-desktop-pipe.md) rendered a
+FileManager window but looped on select EINVAL, while CI capture timed out.
+The later [desktop service repair](docs/results/2026-11-02-desktop-services.md)
+now lists native files and catalog entries. Full file operations, actions and
+desktop/session behavior remain pending.
 
 The user-provided [IRIX 6.5.22m reference](lab/irix-reference/README.md) now boots to a shell and runs native asa/echo probes. Its 4Dwm and Toolchest are n32; native ldd confirms the inventoried library paths, and both programs reach a controlled TCP connection refusal on IRIX. Reference XFS alerts, a clean graphical session, later runtime modules and session services still need investigation. See the [prerequisites](docs/EMULATION.md#prerequisites-and-current-gaps).
 

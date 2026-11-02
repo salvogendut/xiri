@@ -1,6 +1,6 @@
 # Xiri proposed architecture
 
-Status: architectural target agreed on 2026-10-14; implementation status updated 2026-11-01. The kernel personality runs selected original o32/n32 applications. Original 4Dwm and Toolchest run alongside winterm with a native shell in bounded sessions. File/icon clients now pass resource-limit queries, AUTORESRV allocation, measured pthread initialization and directory creation. Icon Catalog reaches an empty main window and FileManager now renders, but repeated select EINVAL blocks usable browsing; CI capture and complete desktop behavior remain open. General compatibility and the complete desktop remain unqualified. The [execution roadmap](ROADMAP.md) defines the remaining experiments.
+Status: architectural target agreed on 2026-10-14; implementation status updated 2026-11-02. The kernel personality runs selected original o32/n32 applications. Original 4Dwm and Toolchest run alongside winterm with a native shell on native Xorg. Measured filesystem/poll adapters and native FAM now let Icon Catalog discover 18 pages and list application names, while FileManager lists native files and folders. Toolbar bitmaps are imported; filetype artwork, catalog actions and complete desktop behavior remain unqualified. The [execution roadmap](ROADMAP.md) defines the remaining experiments.
 
 Xiri will use NetBSD as its underlying OS, execute selected IRIX binaries on the workstation's MIPS CPU through an IRIX personality, and preserve the existing IRIX desktop. Applications built natively for NetBSD should share that desktop with the compatible programs.
 
@@ -42,8 +42,8 @@ installing a background service on an unmodified NetBSD system is insufficient.
 | --- | --- | --- |
 | IRIX kernel personality | Recognize/load foreign ELF images; translate system calls, layouts, errors and process/VM behavior | Built into the NetBSD fork through `COMPAT_IRIX_O32`, despite the name covering both o32 and n32 |
 | Original IRIX runtime and desktop | rld/libc and other libraries, 4Dwm, Toolchest, winterm, file/icon clients, fonts and defaults | Selected files imported from the reference image; runtime lookup under `/emul/irix` with native fallback |
-| Native NetBSD platform | Scheduler, memory, storage, networking, devices, X server and native applications | Native facilities remain authoritative; graphics/application tests currently use native Xvfb, with local display acceptance separate |
-| Session and service integration | Environment, launch order, native shell handoff, application launching and host-service adapters | Test launchers/helpers exist; complete login/logout, file monitoring and other desktop services remain work to qualify |
+| Native NetBSD platform | Scheduler, memory, storage, networking, devices, X server and native applications | Native Xorg drives the emulated Newport display at 1280×1024; Xvfb remains available for controlled tests. Physical display acceptance is separate |
+| Session and service integration | Environment, launch order, native shell handoff, application launching and host-service adapters | The development launcher owns native FAM v1 and any rpcbind it starts. Real file notifications reach original clients; complete login/logout, restoration and broader desktop services remain open |
 | Development lab | Boot/reference automation, probes, traces, comparisons and reproducible artifacts | This repository plus the IRIS emulator fork; the emulator is not intended to be required on a supported physical MIPS workstation |
 
 Supporting daemons could be packaged as ordinary NetBSD services, while the
@@ -55,6 +55,13 @@ modeled after `compat_linux` is the desired final delivery target**, agreed on
 [release roadmap](ROADMAP.md#milestone-4-usable-first-release). The current
 qualification uses the personality built into the kernel; standalone module
 loading on a stock kernel has not been established.
+
+The [FAM integration](results/2026-11-02-desktop-services.md) is native
+userspace code. Its filesystem watches require a shared native alias for
+the imported desktop resource tree; the kernel's foreign pathname lookup
+does not apply to the native daemon. The current service maps loopback
+clients to the dedicated test account and is explicitly a single-user
+development configuration, pending broader account/session design.
 
 The code already has [module registration and initialization/finalization
 hooks](https://github.com/salvogendut/NetBSD-xiri/blob/c11c9f16fad11837a169a3cd566582bebea2c029/sys/compat/irix_o32/irix_o32.c#L131):

@@ -42,6 +42,12 @@ not repin qualified kernels, emulator binaries, runtime resources or guest disks
 
 ## IRIS upstream updates
 
+The [2026-11-02 desktop cycle](results/2026-11-02-iris-upstream-desktop.md)
+integrates upstream `43e525a847ceeb9453af5d685dd8d353bea133e1` into `xiri`,
+with 2,578 workspace and 2,921 JIT/idle library tests passing. The existing
+integration worktree owns `xiri`; the shared performance checkout and pinned
+guest binaries remain unchanged.
+
 Check [techomancer/iris](https://github.com/techomancer/iris) at the start of each
 development cycle and once per active day during longer cycles. This is part
 of active repository work; no unattended scheduler is installed.
@@ -222,3 +228,8 @@ rebuild was needed. The work changes Xiri's native Xorg configuration and
 desktop launch integration; the NetBSD signal kernel and both fork source
 branches remain unchanged. The performance checkout and pinned lab worktrees
 are preserved.
+
+The desktop filesystem/RPC cycle qualifies NetBSD `xiri` source
+`9c8bd4e328f` with 6,500 records and 32 controls across LP64 CI/ordinary and
+o32 CI guests. Separate desktop build directories preserve the signal kernel
+and qualified CHD. See the [result](results/2026-11-02-irix-desktop-fs.md).

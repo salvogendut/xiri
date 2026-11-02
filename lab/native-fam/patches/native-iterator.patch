@@ -1,0 +1,29 @@
+--- include/BTree.h
++++ include/BTree.h
+@@ -349,14 +349,11 @@
+ typename BTree<Key, Value>::Closure
+ BTree<Key, Value>::Node::next(const Key& pred) const
+ {
+-    if (!this)
+-	return OVER;
+-
+     unsigned i = find(pred);
+     assert(i <= n);
+     if (i < n && key[i] == pred)
+ 	i++;
+-    Closure it = link[i]->next(pred);
++    Closure it = link[i] ? link[i]->next(pred) : Closure(OVER);
+     if (Status(it) != OVER)
+ 	return it;
+     if (i == n)
+--- src/Pollster.c++
++++ src/Pollster.c++
+@@ -82,7 +82,7 @@
+ {
+     assert(!polling);
+     assert(polled_interests.size() || polled_hosts.size());
+-    Log::debug("polling every %d seconds", pintvl.tv_sec);
++    Log::debug("polling every %lld seconds", (long long)pintvl.tv_sec);
+     (void) Scheduler::install_recurring_task(pintvl, polling_task, NULL);
+     polling = true;
+ }

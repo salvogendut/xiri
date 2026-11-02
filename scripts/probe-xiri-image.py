@@ -42,6 +42,10 @@ def main():
     support = {r['netbsd_destination']:r['sha256'] for r in ledger['files']
                if r['type'] == 'file' and r['netbsd_destination'] not in staged}
     support.update(seed_result.get('installed_files', {}))
+    if seed_result.get('desktop_services'):
+        assert probe.sha256(bundle/'bitmap-copy-ledger.json') == seed_result['bitmap_ledger_sha256']
+        support.update({r['netbsd_destination']:r['sha256'] for r in
+            json.loads((bundle/'bitmap-copy-ledger.json').read_text())['files'] if r['type']=='file'})
     (media/'SUPPORT').write_text(''.join(f'SHA256 ({path}) = {h}\n' for path,h in support.items()))
     (media/'SHA256').write_text(''.join(f'SHA256 ({path.name}) = {probe.sha256(path)}\n' for path in sorted(media.iterdir())))
     probe.run(['genisoimage', '-quiet', '-R', '-J', '-o', directory/'probe.iso', media])
@@ -94,6 +98,11 @@ def main():
         lab.send('root')
         lab.wait(r'xiri-indy# ', 15)
         lab.logged_in = True
+        if seed_result.get('desktop_services'):
+            # PROM/kernel boot can reset the renderer selection. Match the
+            # qualified upgrade probe by selecting it after multiuser boot.
+            result['compositor'] = lab.monitor_command('disp compositor sw')
+            assert 'Compositor: sw' in result['compositor']
         result['direct_disk_boot'] = True
         print('CHD disk boot reached NetBSD login', flush=True)
         cmd('uname -v | grep '+pin['ident'])
@@ -106,25 +115,34 @@ def main():
         result['support_files_verified'] = support
         result['native_control'] = cmd('/root/irix-desktop/native-o32; test "$?" = 37')
         assert 'XIRI_ABI_PROBE' in result['native_control']
-        cmd('XIRI_SESSION_MS=300000 /usr/local/bin/xiri-desktop >manual-desktop.log 2>&1 & manual=$!; tries=0; until ./image-type 127.0.0.1:0 xmahjongg "" >game-focus.log 2>&1; do tries=$((tries+1)); test "$tries" -lt 120 || break; sleep 2; done; echo READY_TRIES=$tries; /usr/X11R7/bin/xdpyinfo -display 127.0.0.1:0 >manual-display 2>&1; /usr/X11R7/bin/xwininfo -display 127.0.0.1:0 -root -tree >manual-tree 2>&1; /usr/X11R7/bin/xwd -display 127.0.0.1:0 -root -silent >manual.xwd 2>manual-frame.err; sleep 2; /usr/X11R7/bin/xwd -display 127.0.0.1:0 -root -silent >game.xwd 2>game-frame.err; kill -TERM "$manual"; wait "$manual"; echo MANUAL_STATUS=$?', 420)
+        if seed_result.get('desktop_services'):
+            cmd('test "$(readlink /usr/lib/desktop)" = /emul/irix/usr/lib/desktop && test "$(id -u xiritest)" = 1234 && test "$(id -g xiritest)" = 1234')
+            result['desktop_services'] = True
+        cmd('XIRI_SESSION_MS=300000 /usr/local/bin/xiri-desktop >manual-desktop.log 2>&1 & manual=$!; tries=0; until ./image-type 127.0.0.1:0 xmahjongg "" >game-focus.log 2>&1; do kill -0 "$manual" || break; tries=$((tries+1)); test "$tries" -lt 120 || break; sleep 2; done; ./image-type 127.0.0.1:0 xmahjongg "" >game-focus.log 2>&1', 360)
+        if seed_result.get('desktop_services'):
+            cmd('tries=0; until /usr/X11R7/bin/xwininfo -display 127.0.0.1:0 -root -tree | grep "of 18)" >/dev/null; do kill -0 "$manual" || exit 1; tries=$((tries+1)); test "$tries" -lt 60 || exit 1; sleep 2; done',180)
+            result['framebuffer_capture'] = lab.monitor_command('screen shot '+str(directory/'desktop.png'))
+            result['framebuffer_png_sha256'] = probe.sha256(directory/'desktop.png')
+        cmd('/usr/X11R7/bin/xdpyinfo -display 127.0.0.1:0 >manual-display 2>&1; /usr/X11R7/bin/xwininfo -display 127.0.0.1:0 -root -tree >manual-tree 2>&1; sleep 2; /usr/X11R7/bin/xwd -display 127.0.0.1:0 -root -silent >game.xwd 2>game-frame.err; kill -TERM "$manual"; wait "$manual"; echo MANUAL_STATUS=$?',180)
         result['launcher_log'] = get('cat manual-desktop.log').decode(errors='backslashreplace')
         result['display'] = get('cat manual-display').decode(errors='backslashreplace')
         result['tree'] = get('cat manual-tree').decode(errors='backslashreplace')
         result['desktop_dimensions'] = dimensions
         result['newport_x11'] = ('dimensions:    %dx%d pixels' % tuple(dimensions)) in result['display']
         assert result['newport_x11']
-        frame = get('cat manual.xwd')
-        if frame:
-            (directory/'manual.xwd').write_bytes(frame)
-            result['frame_sha256'] = probe.sha256(directory/'manual.xwd')
-        game = get('cat game.xwd')
-        if game:
-            (directory/'game.xwd').write_bytes(game)
-            result['game_frame_sha256'] = probe.sha256(directory/'game.xwd')
+        if not seed_result.get('desktop_services'):
+            game = get('cat game.xwd')
+            if game:
+                (directory/'game.xwd').write_bytes(game)
+                result['game_frame_sha256'] = probe.sha256(directory/'game.xwd')
         result['game_focus'] = get('cat game-focus.log').decode(errors='backslashreplace')
         result['session_logs'] = get('for d in /var/tmp/xiri-desktop/session.*; do for f in "$d"/guard.log "$d"/*.err "$d"/*.exit "$d"/handoff "$d"/Xorg.log; do test ! -f "$f" || { echo "$f"; cat "$f"; }; done; done').decode(errors='backslashreplace')
         result['remaining_uid1234'] = get("ps -axo uid,pid,comm | awk '$1 == 1234 { print }'").decode().strip()
         assert not result['remaining_uid1234']
+        if seed_result.get('desktop_services'):
+            cmd('! pgrep -x famd && ! pgrep -x rpcbind && test ! -d /var/run/xiri-desktop.lock')
+            result['services_absent_after'] = True
+            assert 'of 18)' in result['tree'] and 'Trusted Path' not in result['tree']
         result['native_after'] = cmd('/root/irix-desktop/native-o32; test "$?" = 37')
         assert 'XIRI_ABI_PROBE' in result['native_after']
         result['status'] = 'observed'

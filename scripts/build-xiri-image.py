@@ -20,13 +20,15 @@ def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--seed-run', required=True, type=Path)
     p.add_argument('--output-directory', required=True, type=Path)
+    p.add_argument('--baseline', type=Path, default=ROOT/'lab/irix-signal/baseline.json')
+    p.add_argument('--kernel', type=Path, default=ROOT/'.work/netbsd-irix-signal-build/tftp/netbsd-XIRI_INDY')
     a = p.parse_args()
     seed, out = a.seed_run.resolve(), a.output_directory.resolve()
     r = json.loads((seed/'result.json').read_text())
     assert r['status'] == 'observed' and r['clean_shutdown']
     assert r['guest_payload_verified'] and r['executable_permissions_applied']
     assert r['persistent_helpers_installed'] and r['native_x11_after']
-    pin = json.loads((ROOT/'lab/irix-signal/baseline.json').read_text())
+    pin = json.loads(a.baseline.read_text())
     assert r['pin'] == pin
     assert (seed/'disk.raw').stat().st_size == 8589934592
     out.mkdir(parents=True, exist_ok=False)
@@ -53,6 +55,12 @@ def main():
     shutil.copyfile(seed/'result.json', out/'seed-result.json')
     shutil.copyfile(ROOT/'lab/irix-installed-desktop/prismatic.cfg', out/'prismatic.cfg')
     readme = (ROOT/'lab/irix-installed-desktop/image-README.txt').read_text()
+    if not r.get('desktop_services'):
+        start = readme.index('Toolchest retains its original menus')
+        end = readme.index('Other original menu actions', start)
+        readme = readme[:start] + ('This older seed predates the desktop service repair.\n'
+            'Its Toolchest customization follows its pinned seed configuration.\n'
+            'Icon Catalog retains the Blank/communication limitation.\n') + readme[end:]
     if r.get('desktop_dimensions') != [1280, 1024]:
         start = readme.index('Xiri uses a 1280x1024 X screen.')
         end = readme.index('Other original menu actions', start)
@@ -61,12 +69,17 @@ def main():
     (out/'README.txt').write_text(readme)
     (out/'prismatic-state').mkdir()
     shutil.copyfile(seed/'nvram.bin', out/'prismatic-state/nvram.bin')
-    kernel = ROOT/'.work/netbsd-irix-signal-build/tftp/netbsd-XIRI_INDY'
+    kernel = a.kernel.resolve()
     assert sha(kernel) == pin['boot_kernel_sha256']
     shutil.copyfile(kernel, out/'tftp/netbsd-XIRI_INDY')
     for source in ['lab/irix-installed-desktop/copy-ledger.json',
                    'lab/irix-installed-desktop/permissions.json']:
         shutil.copyfile(ROOT/source, out/Path(source).name)
+    if r.get('desktop_services'):
+        bitmap_ledger = ROOT/'lab/irix-desktop-bitmaps/copy-ledger.json'
+        assert sha(bitmap_ledger) == r['bitmap_ledger_sha256']
+        shutil.copyfile(bitmap_ledger, out/'bitmap-copy-ledger.json')
+        shutil.copyfile(ROOT/'lab/native-fam/source.json', out/'native-fam-source.json')
     (out/'iris.toml').write_text('''# Run IRIS with this directory as its working directory.
 nvram = "nvram.bin"
 banks = [128, 128, 0, 0]
@@ -98,6 +111,7 @@ mac = "08:00:69:12:34:57"
 tftp_dir = "tftp"
 ''')
     report = dict(schema=1, status='chd-roundtrip-verified', script_sha256=sha(Path(__file__)),
+        baseline=str(a.baseline.resolve().relative_to(ROOT)), baseline_sha256=sha(a.baseline),
         source_run=str(seed.relative_to(ROOT)), source_result_sha256=sha(seed/'result.json'),
         source_raw_sha256=raw_hash, decoded_raw_sha256=raw_hash, logical_bytes=8589934592,
         sector_bytes=512, geometry=[16384,16,64], compression='zlib', pin=pin,

@@ -22,10 +22,14 @@ Use shutdown -h now and wait for the halt/PROM before closing the emulator.
 
 Xiri uses a 1280x1024 X screen. Default PROM timing may add two right pixels.
 Desktop > Open Unix Shell opens IRIX xwsh with NetBSD's /bin/sh.
-Applications contains Unix Shell, Clock, Icon Catalog and Mahjongg.
+Toolchest retains its original menus, without an added Applications menu.
 Find > Icon Catalog also uses the native launch bridge.
+Icon Catalog now discovers its pages and lists application names, including
+the 21 Freeware entries. Native FAM runs for this single-user session and
+is stopped with it. FileManager can list native files and folders.
+Filetype icon artwork and catalog launch actions remain unfinished. The
+next measured gap is file locking while opening the desktop type database.
 Other original menu actions and complete desktop services remain unfinished.
-Icon Catalog still has its known Blank/communication limitation.
 Typing exit can leave a blank xwsh window after the native shell exits;
 automatic terminal closure remains unfinished. Stopping xiri-desktop
 removes the session's remaining clients.

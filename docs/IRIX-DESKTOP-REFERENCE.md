@@ -20,20 +20,22 @@ The reference supplies concrete appearance and content targets for Xiri:
 | xclock | Analog face and colored hands | [Current UTC time, updates and redraw pass](results/2026-11-01-irix-time.md) in bounded runs; reference colors and a combined desktop session remain separate checks |
 
 The populated catalog comes from this installation's application and page
-data. Xiri currently stages only a selected runtime/application set and no
-system catalog pages. Its empty `Blank` fallback is therefore consistent with
-that reduced installation; it should not be judged solely by icon count.
+data. The installed-image import now stages 166 catalog entries across 17 original
+system pages, including Freeware. The older 20261102 image showed
+`Blank`; the current service image has 18 visible pages. Rendering the imported icons and launching their applications
+remain separate checks from discovering the page directories.
 The reference does make the remaining resource work visible: page data,
 filetype/action rules, icon and toolbar artwork, palettes and the background.
 Not every application shown needs to be imported to establish desktop support.
 
-Current Xiri captures also show a Trusted Path panel that is not visible here.
-The recorded SGI-AccessControl feature-query issue remains open. This image is
+Earlier Xiri captures showed a Trusted Path panel that is not visible here.
+The measured MAC feature query now removes it. The desktop repair also restores
+toolbar glyphs, while application/filetype artwork remains absent. This image is
 a visual reference; behavior is qualified by the linked runtime experiments
 and the [desktop acceptance plan](ROADMAP.md#milestone-3-original-desktop-proof).
 
-The first selected addition is now [xmahjongg through original inst](IRIX-SOFTWARE.md).
-Its package registers the **Freeware** page itself. Compare the resulting
-entry/artwork and launch with this reference after installer compatibility is
-qualified; ordinary users should share persistent `/usr/people` homes with
+The first selected application is [xmahjongg](IRIX-SOFTWARE.md), currently
+imported with its existing **Freeware** registration. Original `inst` remains
+the later installation target. Compare entry artwork and launch with this
+reference; ordinary users should share persistent `/usr/people` homes with
 native NetBSD programs.

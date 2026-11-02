@@ -15,6 +15,14 @@ are collected together. Importing these resources does not yet qualify
 catalog actions or every listed application; original unresolved links and
 remaining runtime-data dependencies are recorded separately.
 
+The [desktop repair](results/2026-11-02-desktop-services.md) now gets page and
+entry labels through native FAM v1: 18 visible pages, including 21 Freeware
+entries. Native FAM needs `/usr/lib/desktop` to resolve to the imported tree;
+it cannot use the kernel's foreign pathname lookup. This generated alias and
+the service account/configuration are recorded in [IRIX-IMPORT.md](IRIX-IMPORT.md).
+The original clients are unchanged. Their filetype artwork remains absent;
+the latest trace opens `desktop.otr`, then fails `F_SETBSDLKW` with EINVAL.
+
 This is the running record of what xiri needs from the supplied IRIX image.
 It separates demonstrated runtime inputs, extracted candidates and assets
 still to locate. A file's presence in the image does not prove it is required.
@@ -35,6 +43,7 @@ the first page/action test; the complete pictured application set is optional.
 
 | Resource | Image paths | Evidence and current use |
 | --- | --- | --- |
+| SGI desktop toolbar bitmaps | `/usr/include/X11/bitmaps/sgidesktop` | Fresh `fm` requests seven names from this missing directory. The separate [copy ledger](../lab/irix-desktop-bitmaps/copy-ledger.json) pins 48 files and six aliases, imported beneath `/emul/irix`; these are distinct from filetype iconlib artwork. |
 | Original applications and runtimes | Toolchest/4Dwm under `/usr/bin/X11`; `/usr/sbin/winterm`, `/usr/sbin/xwsh`; ABI-specific rld/libc and library closures | [Desktop](../lab/irix-desktop/manifest.json), [winterm](../lab/irix-winterm/manifest.json), [xclock](../lab/irix-xclock/manifest.json). Keep complete per-application closures; static DT_NEEDED discovery does not cover later loading. |
 | Toolchest menu and defaults | `/usr/lib/X11/system.chestrc`, `/usr/lib/X11/app-defaults/Toolchest` | [Desktop manifest](../lab/irix-desktop/manifest.json); both remain unchanged. The development desktop adds [native launch overrides](../lab/irix-installed-desktop/toolchest.chestrc): the vendor `.sh` actions force the imported static n32 shell, currently rejected at exec. The local `toolchest(1X)` manual documents `f.exec`/`MWMSHELL` and menu overrides. |
 | Motif key names | `/usr/lib/X11/XKeysymDB` | [Resource pin](../lab/irix-toolchest-input/resources.json). Missing names produce translation errors and prevent tested keyboard navigation; install readable by ordinary users under `/emul/irix`. |
@@ -56,10 +65,11 @@ its original defaults name the dummy page `Blank`, and that earlier test
 did not stage system catalog pages. Emptiness alone is not a compatibility failure. Populated pages
 and actions need a separate test with a known installed application.
 
-The [pipe retry](results/2026-11-01-irix-desktop-pipe.md) now renders a
-FileManager window and the home-folder invocation exits zero. Repeated select
-EINVAL blocks usable browsing; the CI capture times out. A process snapshot
-includes fmserv, whose behavior remains unqualified. Earlier waitsys
+The earlier [pipe retry](results/2026-11-01-irix-desktop-pipe.md) rendered a
+FileManager window and the home-folder invocation exited zero. Repeated select
+EINVAL blocked usable browsing; that CI capture timed out. The newer desktop
+service result supersedes this startup boundary and lists native files, with
+fmserv and FAM present. Earlier waitsys
 limitations also remain open. Filetype rules, artwork
 and delayed services still need runtime checks. Missing `uxsgiimd`/`uxsgierr`
 message catalogs remain diagnostic candidates; current evidence does not
@@ -113,9 +123,9 @@ The [4Dwm loader checkpoint](results/2026-11-01-irix-elfmap-subpage.md) now hand
 The combined [4Dwm session](results/2026-11-01-irix-4dwm.md) also explicitly
 installs the pinned XKeysymDB and rgb.txt in mode 0444. Its shell-only seed did
 not include the prior Toolchest keysym installation. These are existing image
-assets, not additional dependencies to extract. The remaining Trusted Path
-panel/SGI-AccessControl behavior needs feature-query investigation; no new
-font import was required for this window-manager step.
+assets, not additional dependencies to extract. The later measured `_SC_MAC`
+query now reports MAC support absent, matching the original image and removing
+the Trusted Path panel. No new font import was required for this fix.
 
 With session saving enabled, 4Dwm probes HOME/.xroomsrc, its .tmp peer and
 HOME/.desktop-127.0.0.1 for the controlled display. That earlier capture hits

@@ -38,15 +38,50 @@ EOF
 chmod 444 "$job/desktop.env"
 xpid=
 guardpid=
+fampid=
+rpcpid=
+locked=
 cleanup()
 {
     trap - EXIT INT TERM
     if test -n "$guardpid"; then kill -TERM "$guardpid" 2>/dev/null || true; wait "$guardpid" || true; fi
+    if test -n "$fampid"; then kill "$fampid" 2>/dev/null || true; wait "$fampid" || true; fi
+    if test -n "$rpcpid"; then kill "$rpcpid" 2>/dev/null || true; wait "$rpcpid" || true; fi
     if test -n "$xpid"; then kill "$xpid" 2>/dev/null || true; wait "$xpid" || true; fi
+    if test -n "$locked"; then rmdir /var/run/xiri-desktop.lock; fi
     echo "Session logs: $job"
 }
 trap cleanup EXIT
 trap 'exit 130' INT TERM
+mkdir /var/run/xiri-desktop.lock || { echo 'A Xiri desktop session already owns the services.' >&2; exit 1; }
+locked=yes
+test "$(id -u xiritest)" = 1234 && test "$(id -g xiritest)" = 1234
+test "$(readlink /usr/lib/desktop)" = /emul/irix/usr/lib/desktop
+# FAM evaluates logical IRIX watch paths using the native namespace. The
+# installer supplies the shared desktop alias and dedicated native account.
+# Keep the daemon owned by this session: its temporary effective UID 1234
+# also makes it a target of the existing reserved-UID cleanup guard.
+if pgrep -x famd >/dev/null; then
+    echo 'A FAM daemon is already running; this development session needs its own.' >&2
+    exit 1
+fi
+if ! rpcinfo -p 127.0.0.1 >"$job/rpc-before.txt" 2>&1; then
+    rpcbind -d -h 127.0.0.1 >"$job/rpcbind.log" 2>&1 &
+    rpcpid=$!
+    tries=0
+    until rpcinfo -p 127.0.0.1 >"$job/rpc-before.txt" 2>&1; do
+        tries=$((tries+1)); test "$tries" -lt 10; kill -0 "$rpcpid"; sleep 1
+    done
+fi
+/usr/local/sbin/famd -d -c "$share/fam.conf" -p 391002.1 >"$job/fam.log" 2>&1 &
+fampid=$!
+tries=0
+# FAM uses portmapper discovery, then its own wire protocol, not RPC calls.
+# rpcinfo -t sends a NULL RPC request that is not a valid FAM message.
+until rpcinfo -p 127.0.0.1 >"$job/fam-ready.txt" 2>&1 &&
+    awk '$1 == 391002 && $2 == 1 && $3 == "tcp" {found=1} END {exit !found}' "$job/fam-ready.txt"; do
+    tries=$((tries+1)); test "$tries" -lt 10; kill -0 "$fampid"; sleep 1
+done
 if test "$server" = newport; then
     wsconscfg -f /dev/ttyEcfg 0 2>/dev/null || true
     Xorg :0 -config "$share/xorg.conf" -ac -noreset >"$job/Xorg.log" 2>&1 &

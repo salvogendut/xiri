@@ -1,0 +1,196 @@
+{
+  "schema": 1,
+  "status": "desktop-interfaces-qualified",
+  "qualifier_sha256": "f36f87283f69ebd6c6035d1a3d89e0f5686436914df485dd39f836d3369c37be",
+  "runs": [
+    {
+      "path": ".work/irix-desktop-fs/runs/lp64-ci-fz02op7d",
+      "mode": "ci",
+      "kernel_abi": "lp64",
+      "pin": {
+        "schema": 1,
+        "description": "Desktop link metadata, MAC query, poll and directory enumeration",
+        "ident": "XIRI_IRIX_DESKTOP_20261102",
+        "source_revision": "9c8bd4e328ff5c54db63a5102ba7128fe45ac35d",
+        "source_branch": "xiri",
+        "build_arch": "mips64eb",
+        "page_bytes": 8192,
+        "boot_kernel_sha256": "41089acd5e759130bde5055a2034c302be20ec6f562c65d7b9cc75b03e50957a",
+        "native_kernel_sha256": "f420e35d20e5350f3c5b55b1290843f9188e3eac019581a5abae21a3a667ff4d",
+        "debug_kernel_sha256": "9bc4ea246ef4cd34458be8c654ed5d1feabcab663537837039db96bd9f6dc674",
+        "native_o32_sha256": "c294fbb1f2110445be31c096481ea54ab561c7e59ca5b9fc7171310098d755d4",
+        "source_dirty": false,
+        "emulator_revision": "9df1df14334838a989253efefe26f0547e6da592",
+        "emulator_branch": "xiri/netbsd64-tlb",
+        "emulator_sha256": "1b3f7702ba7f43b5c4fca8ba8884243559f46371d8d67a36ce5e6fee1e595eba",
+        "ci_client_sha256": "8711321aa6eaae440da3c7920b00ae4cf1c7f2abbdb15a9919f58485500ffb6c",
+        "base_disk_sha256": "269038c7b77660c83d3835208fc0b2702c93110c14b3c55a42416f51672cee2a",
+        "nvram_sha256": "ee883474d52f09278287b2044f7aeca61d2e7bc39c0bb8fd85c983ab64063d15",
+        "config_sha256": "92809651e34cd06668b9d6967648bd1dbc8161e76c3c305b07117fdd26c57e17",
+        "runtimes": [
+          {
+            "name": "vendor-o32-libc",
+            "path": "/usr/lib/libc.so.1",
+            "sha256": "ea766492103a193e9d404942705e4e28987545e37f699ede232b6c0f8c97c954"
+          },
+          {
+            "name": "vendor-o32-rld",
+            "path": "/lib/rld",
+            "sha256": "30228b54c1e5585b365514eb7c9895b03cc0f61cb898e05e3ddafece87863439"
+          },
+          {
+            "name": "vendor-n32-libc",
+            "path": "/lib32/libc.so.1",
+            "sha256": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e"
+          },
+          {
+            "name": "vendor-n32-rld",
+            "path": "/lib32/rld",
+            "sha256": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b"
+          }
+        ],
+        "config_path": "lab/irix-lxstat/XIRI_IRIX_DESKTOP"
+      },
+      "result_sha256": "b44b940ecacfb74ee27878e547836a451102479821fbacf75cc76b179179c243",
+      "fixtures_sha256": "cb2f115ce018a698da74ea4a72bec015a7222c8c325ace57894b6fdfed53433f",
+      "counts": {
+        "lxstat": 672,
+        "xstat": 648,
+        "desktop-queries": 240,
+        "poll": 240,
+        "dirent": 800
+      },
+      "controls": 12,
+      "original_pipe_readiness_differences": 24
+    },
+    {
+      "path": ".work/irix-desktop-fs/runs/lp64-ordinary-ia2wlhe8",
+      "mode": "ordinary",
+      "kernel_abi": "lp64",
+      "pin": {
+        "schema": 1,
+        "description": "Desktop link metadata, MAC query, poll and directory enumeration",
+        "ident": "XIRI_IRIX_DESKTOP_20261102",
+        "source_revision": "9c8bd4e328ff5c54db63a5102ba7128fe45ac35d",
+        "source_branch": "xiri",
+        "build_arch": "mips64eb",
+        "page_bytes": 8192,
+        "boot_kernel_sha256": "41089acd5e759130bde5055a2034c302be20ec6f562c65d7b9cc75b03e50957a",
+        "native_kernel_sha256": "f420e35d20e5350f3c5b55b1290843f9188e3eac019581a5abae21a3a667ff4d",
+        "debug_kernel_sha256": "9bc4ea246ef4cd34458be8c654ed5d1feabcab663537837039db96bd9f6dc674",
+        "native_o32_sha256": "c294fbb1f2110445be31c096481ea54ab561c7e59ca5b9fc7171310098d755d4",
+        "source_dirty": false,
+        "emulator_revision": "9df1df14334838a989253efefe26f0547e6da592",
+        "emulator_branch": "xiri/netbsd64-tlb",
+        "emulator_sha256": "1b3f7702ba7f43b5c4fca8ba8884243559f46371d8d67a36ce5e6fee1e595eba",
+        "ci_client_sha256": "8711321aa6eaae440da3c7920b00ae4cf1c7f2abbdb15a9919f58485500ffb6c",
+        "base_disk_sha256": "269038c7b77660c83d3835208fc0b2702c93110c14b3c55a42416f51672cee2a",
+        "nvram_sha256": "ee883474d52f09278287b2044f7aeca61d2e7bc39c0bb8fd85c983ab64063d15",
+        "config_sha256": "92809651e34cd06668b9d6967648bd1dbc8161e76c3c305b07117fdd26c57e17",
+        "runtimes": [
+          {
+            "name": "vendor-o32-libc",
+            "path": "/usr/lib/libc.so.1",
+            "sha256": "ea766492103a193e9d404942705e4e28987545e37f699ede232b6c0f8c97c954"
+          },
+          {
+            "name": "vendor-o32-rld",
+            "path": "/lib/rld",
+            "sha256": "30228b54c1e5585b365514eb7c9895b03cc0f61cb898e05e3ddafece87863439"
+          },
+          {
+            "name": "vendor-n32-libc",
+            "path": "/lib32/libc.so.1",
+            "sha256": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e"
+          },
+          {
+            "name": "vendor-n32-rld",
+            "path": "/lib32/rld",
+            "sha256": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b"
+          }
+        ],
+        "config_path": "lab/irix-lxstat/XIRI_IRIX_DESKTOP"
+      },
+      "result_sha256": "0e41636567fe498f37ad93564e86e5922102293f7b32af0d9be184ed2c989e6d",
+      "fixtures_sha256": "ad79026dd4158733b831ef4fa52d73622ee935bb552c7d77d5c21740e32fa5e5",
+      "counts": {
+        "lxstat": 672,
+        "xstat": 648,
+        "desktop-queries": 240,
+        "poll": 240,
+        "dirent": 800
+      },
+      "controls": 12,
+      "original_pipe_readiness_differences": 24
+    },
+    {
+      "path": ".work/irix-desktop-fs/runs/o32-ci-s20_jauq",
+      "mode": "ci",
+      "kernel_abi": "o32",
+      "pin": {
+        "schema": 1,
+        "description": "Desktop link metadata, MAC query, poll and directory enumeration",
+        "ident": "XIRI_IRIX_DESKTOP_O32_20261102",
+        "source_revision": "9c8bd4e328ff5c54db63a5102ba7128fe45ac35d",
+        "source_branch": "xiri",
+        "build_arch": "mipseb",
+        "page_bytes": 4096,
+        "boot_kernel_sha256": "b12bcb9a1f18f89e7e3fc529b76689ebfeedd5163597571ea559861958712166",
+        "native_kernel_sha256": "b12bcb9a1f18f89e7e3fc529b76689ebfeedd5163597571ea559861958712166",
+        "debug_kernel_sha256": "34e336178b10a2c234c84348bbfed81734f085c4cfe57f3c2ca83391e7002aad",
+        "native_o32_sha256": "c294fbb1f2110445be31c096481ea54ab561c7e59ca5b9fc7171310098d755d4",
+        "source_dirty": false,
+        "emulator_revision": "9df1df14334838a989253efefe26f0547e6da592",
+        "emulator_branch": "xiri/netbsd64-tlb",
+        "emulator_sha256": "1b3f7702ba7f43b5c4fca8ba8884243559f46371d8d67a36ce5e6fee1e595eba",
+        "ci_client_sha256": "8711321aa6eaae440da3c7920b00ae4cf1c7f2abbdb15a9919f58485500ffb6c",
+        "base_disk_sha256": "269038c7b77660c83d3835208fc0b2702c93110c14b3c55a42416f51672cee2a",
+        "nvram_sha256": "ee883474d52f09278287b2044f7aeca61d2e7bc39c0bb8fd85c983ab64063d15",
+        "config_sha256": "45cfd843614524dc6bf2f076968416f13bc8385eb7851af1161c4e90952dc09c",
+        "runtimes": [
+          {
+            "name": "vendor-o32-libc",
+            "path": "/usr/lib/libc.so.1",
+            "sha256": "ea766492103a193e9d404942705e4e28987545e37f699ede232b6c0f8c97c954"
+          },
+          {
+            "name": "vendor-o32-rld",
+            "path": "/lib/rld",
+            "sha256": "30228b54c1e5585b365514eb7c9895b03cc0f61cb898e05e3ddafece87863439"
+          },
+          {
+            "name": "vendor-n32-libc",
+            "path": "/lib32/libc.so.1",
+            "sha256": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e"
+          },
+          {
+            "name": "vendor-n32-rld",
+            "path": "/lib32/rld",
+            "sha256": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b"
+          }
+        ],
+        "config_path": "lab/irix-lxstat/XIRI_IRIX_DESKTOP_O32"
+      },
+      "result_sha256": "27da7429292241dcca5996898f0c2bb107f09f072440b824abb08a86f1f99d7a",
+      "fixtures_sha256": "1c4cf1692966d5562fe3ec70822eb016f82b04f7458fcb4563cde3d4d7c02582",
+      "counts": {
+        "lxstat": 336,
+        "xstat": 324,
+        "desktop-queries": 120,
+        "poll": 120,
+        "dirent": 400
+      },
+      "controls": 8,
+      "original_pipe_readiness_differences": 12
+    }
+  ],
+  "observations": 6500,
+  "controls": 32,
+  "original_pipe_readiness_differences": 60,
+  "limits": [
+    "Native pipe poll readiness retains the documented POLLOUT/POLLRDNORM differences.",
+    "Directory padding is unspecified; native prevalidation avoids IRIX partial-byte writes on unmapped spans.",
+    "Inodes, directory ordering/cookies and page sizes come from the native host.",
+    "This syscall matrix alone does not qualify desktop services or application actions."
+  ]
+}

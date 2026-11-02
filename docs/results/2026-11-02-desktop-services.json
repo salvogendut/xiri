@@ -1,0 +1,423 @@
+{
+  "schema": 1,
+  "status": "desktop-services-and-original-menus-qualified",
+  "kernel_pin": {
+    "schema": 1,
+    "description": "Desktop link metadata, MAC query, poll and directory enumeration",
+    "ident": "XIRI_IRIX_DESKTOP_20261102",
+    "source_revision": "9c8bd4e328ff5c54db63a5102ba7128fe45ac35d",
+    "source_branch": "xiri",
+    "build_arch": "mips64eb",
+    "page_bytes": 8192,
+    "boot_kernel_sha256": "41089acd5e759130bde5055a2034c302be20ec6f562c65d7b9cc75b03e50957a",
+    "native_kernel_sha256": "f420e35d20e5350f3c5b55b1290843f9188e3eac019581a5abae21a3a667ff4d",
+    "debug_kernel_sha256": "9bc4ea246ef4cd34458be8c654ed5d1feabcab663537837039db96bd9f6dc674",
+    "native_o32_sha256": "c294fbb1f2110445be31c096481ea54ab561c7e59ca5b9fc7171310098d755d4",
+    "source_dirty": false,
+    "emulator_revision": "9df1df14334838a989253efefe26f0547e6da592",
+    "emulator_branch": "xiri/netbsd64-tlb",
+    "emulator_sha256": "1b3f7702ba7f43b5c4fca8ba8884243559f46371d8d67a36ce5e6fee1e595eba",
+    "ci_client_sha256": "8711321aa6eaae440da3c7920b00ae4cf1c7f2abbdb15a9919f58485500ffb6c",
+    "base_disk_sha256": "269038c7b77660c83d3835208fc0b2702c93110c14b3c55a42416f51672cee2a",
+    "nvram_sha256": "ee883474d52f09278287b2044f7aeca61d2e7bc39c0bb8fd85c983ab64063d15",
+    "config_sha256": "92809651e34cd06668b9d6967648bd1dbc8161e76c3c305b07117fdd26c57e17",
+    "runtimes": [
+      {
+        "name": "vendor-o32-libc",
+        "path": "/usr/lib/libc.so.1",
+        "sha256": "ea766492103a193e9d404942705e4e28987545e37f699ede232b6c0f8c97c954"
+      },
+      {
+        "name": "vendor-o32-rld",
+        "path": "/lib/rld",
+        "sha256": "30228b54c1e5585b365514eb7c9895b03cc0f61cb898e05e3ddafece87863439"
+      },
+      {
+        "name": "vendor-n32-libc",
+        "path": "/lib32/libc.so.1",
+        "sha256": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e"
+      },
+      {
+        "name": "vendor-n32-rld",
+        "path": "/lib32/rld",
+        "sha256": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b"
+      }
+    ],
+    "config_path": "lab/irix-lxstat/XIRI_IRIX_DESKTOP"
+  },
+  "native_fam": {
+    "status": "built",
+    "source_manifest_sha256": "7ebe5e3f64436f08e55d90c22443a49061f23ad72fd816c82363c100ef03635b",
+    "builder_sha256": "634da112817ab6063006e0c15f0fc97b07ffde16bfcffdd997aa5a72c0d7c39f",
+    "btree_test_sha256": "0f04e353f74574f36839f53ed6f83c3e8ef2d8e307a0f2bdc88a4d947f552240",
+    "btree_host_passed": true,
+    "btree_native_sha256": "4c66d978242bb138045dad5e4e4098cdc22eb2424b435f8c1f930797a2dfa9e9",
+    "files": {
+      "src/famd": "7347893cdea4143addb3ede979013968b2e4674ed390b86dea8e1838e14fd72c",
+      "test/test": "a7519dfea569ef6cfcf39eedc2f774f53cadb6deaa12f0ca0a7e5be870c92e27",
+      "lib/.libs/libfam.a": "a7e8ecf9d45726798bcd561e3a5beeefadea268b3d66585458dac5ad14ecb9e4"
+    },
+    "logs": {
+      "configure.log": "5d5b70029afe0dc16b86c918cbba5313e0bc58f926c1c6529face70c45c3c395",
+      "build.log": "0736096ef0a83c1a2695ef414c2cf7c8471aea8a3beea1e229962b94e19bcc86"
+    }
+  },
+  "diagnostic_run": ".work/desktop-repair/diag-txcx1bxd",
+  "clean_shutdown": true,
+  "serial_sha256": "25838805cbbd2a15fcf5fa2b16afb7f2f72a5d2773515ed2681216284b57aa13",
+  "filetype_trace": {
+    "path": ".work/desktop-repair/fm-fresh.ktrace",
+    "sha256": "b18a71246615c77a9b9a26f8850f57e6b80a71f9e13815dcafb663bec6cb1270",
+    "bytes": 633794,
+    "calls": 2417,
+    "database_open_and_lock_calls": [
+      {
+        "pid": 379,
+        "lwp": 379,
+        "call": {
+          "syscall": 1005,
+          "pc": 262470640,
+          "a0": 268755424,
+          "a1": 0,
+          "a2": 438,
+          "a3": 402653184
+        },
+        "paths": [
+          "/emul/irix/usr/lib/filetype/desktop.otr"
+        ],
+        "result": {
+          "syscall": 1005,
+          "v0": 9,
+          "a3": 0
+        }
+      },
+      {
+        "pid": 379,
+        "lwp": 379,
+        "call": {
+          "syscall": 1060,
+          "pc": 263234772,
+          "a0": 4294967295,
+          "a1": 0,
+          "a2": 4294901760,
+          "a3": 0
+        },
+        "result": {
+          "syscall": 1060,
+          "v0": 89,
+          "a3": 1
+        }
+      },
+      {
+        "pid": 379,
+        "lwp": 379,
+        "call": {
+          "syscall": 1062,
+          "pc": 262500976,
+          "a0": 9,
+          "a1": 13,
+          "a2": 2147440928,
+          "a3": 402653184
+        },
+        "result": {
+          "syscall": 1062,
+          "v0": 22,
+          "a3": 1
+        }
+      },
+      {
+        "pid": 379,
+        "lwp": 379,
+        "call": {
+          "syscall": 1005,
+          "pc": 262470640,
+          "a0": 268755424,
+          "a1": 0,
+          "a2": 438,
+          "a3": 402653184
+        },
+        "paths": [
+          "/emul/irix/usr/lib/filetype/desktop.otr"
+        ],
+        "result": {
+          "syscall": 1005,
+          "v0": 10,
+          "a3": 0
+        }
+      },
+      {
+        "pid": 379,
+        "lwp": 379,
+        "call": {
+          "syscall": 1060,
+          "pc": 263234772,
+          "a0": 4294967295,
+          "a1": 0,
+          "a2": 4294901760,
+          "a3": 0
+        },
+        "result": {
+          "syscall": 1060,
+          "v0": 89,
+          "a3": 1
+        }
+      },
+      {
+        "pid": 379,
+        "lwp": 379,
+        "call": {
+          "syscall": 1062,
+          "pc": 262500976,
+          "a0": 10,
+          "a1": 13,
+          "a2": 2147446192,
+          "a3": 402653184
+        },
+        "result": {
+          "syscall": 1062,
+          "v0": 22,
+          "a3": 1
+        }
+      },
+      {
+        "pid": 379,
+        "lwp": 379,
+        "call": {
+          "syscall": 1005,
+          "pc": 262470640,
+          "a0": 268755424,
+          "a1": 0,
+          "a2": 438,
+          "a3": 402653184
+        },
+        "paths": [
+          "/emul/irix/usr/lib/filetype/desktop.otr"
+        ],
+        "result": {
+          "syscall": 1005,
+          "v0": 12,
+          "a3": 0
+        }
+      },
+      {
+        "pid": 379,
+        "lwp": 379,
+        "call": {
+          "syscall": 1060,
+          "pc": 263234772,
+          "a0": 4294967295,
+          "a1": 0,
+          "a2": 4294901760,
+          "a3": 0
+        },
+        "result": {
+          "syscall": 1060,
+          "v0": 89,
+          "a3": 1
+        }
+      },
+      {
+        "pid": 379,
+        "lwp": 379,
+        "call": {
+          "syscall": 1062,
+          "pc": 262500976,
+          "a0": 12,
+          "a1": 13,
+          "a2": 2147446256,
+          "a3": 402653184
+        },
+        "result": {
+          "syscall": 1062,
+          "v0": 22,
+          "a3": 1
+        }
+      },
+      {
+        "pid": 379,
+        "lwp": 379,
+        "call": {
+          "syscall": 1005,
+          "pc": 262470640,
+          "a0": 268755424,
+          "a1": 0,
+          "a2": 438,
+          "a3": 402653184
+        },
+        "paths": [
+          "/emul/irix/usr/lib/filetype/desktop.otr"
+        ],
+        "result": {
+          "syscall": 1005,
+          "v0": 13,
+          "a3": 0
+        }
+      },
+      {
+        "pid": 379,
+        "lwp": 379,
+        "call": {
+          "syscall": 1060,
+          "pc": 263234772,
+          "a0": 4294967295,
+          "a1": 0,
+          "a2": 4294901760,
+          "a3": 0
+        },
+        "result": {
+          "syscall": 1060,
+          "v0": 89,
+          "a3": 1
+        }
+      },
+      {
+        "pid": 379,
+        "lwp": 379,
+        "call": {
+          "syscall": 1062,
+          "pc": 262500976,
+          "a0": 13,
+          "a1": 13,
+          "a2": 2147446480,
+          "a3": 402653184
+        },
+        "result": {
+          "syscall": 1062,
+          "v0": 22,
+          "a3": 1
+        }
+      }
+    ]
+  },
+  "bitmap_ledger_sha256": "113bff97f1476f6d8eb2af27fdccd7e5560d7a36eb47b55af272acabd8e9430e",
+  "evidence": {
+    ".work/desktop-repair/freeware-population.txt": "f601cde4bf5241c830af6fb7fd1adfb8b28dedc273a28161418cc0fe8fcc11ca",
+    ".work/desktop-repair/patched-fam-events.txt": "33564be2f161e3a79332230d0a62697ed0772c2ad443ef849713043e35235c7d",
+    ".work/desktop-repair/menu-freeware-events.txt": "c62fdf8b6524014f60b6798326c1fd6722b2764ef3fcb7f3582435265c612d4c",
+    ".work/desktop-repair/services-cleanup.txt": "6a3ac3d21d63392b2fbf73fbb0982a99f82d1067f16b43c60cdf443711185261",
+    ".work/desktop-repair/fm-toolbar-proof.txt": "06924a2091dca17eb34bef4e99e083af402995ebb7156238b2ed8ee6a065429e",
+    ".work/desktop-repair/fm-services-cleanup.txt": "48b1e1bf89618f30369373caaaa1ad792ae49ce4037bb7149eb78811eb63f473"
+  },
+  "limitations": [
+    "Filetype artwork and catalog launch actions remain unqualified.",
+    "Fresh trace identifies command 13 F_SETBSDLKW as the next database boundary."
+  ],
+  "screenshot": {
+    "path": "docs/results/images/2026-11-02-freeware-labels.png",
+    "sha256": "38714aaaefcd690fde49ea436a6200f49f186d7e5337ad71260baba92e8ffb12",
+    "source": ".work/desktop-repair/freeware-populated.png",
+    "description": "Diagnostic desktop: 21 Freeware labels, file-manager window behind; filetype artwork absent."
+  },
+  "menu_and_events_followup_run": ".work/desktop-launch/ordinary-b8k7xtrq",
+  "filemanager_screenshot": {
+    "path": "docs/results/images/2026-11-02-fm-toolbar.png",
+    "sha256": "03286ecbdb64714aeb37c6c12d006235a6176f6c922a07a8bd1e6ffc8e8012c6",
+    "source": ".work/desktop-repair/fm-toolbar.png",
+    "description": "Original FileManager lists native Examples and Readme.txt; toolbar glyphs restored, filetype icons absent."
+  },
+  "diagnostic_followups": {
+    "ordinary-b8k7xtrq": {
+      "result_sha256": "165307f4c0a42a9fabea4233d29653091f86d2463a04e6248347e74c74135164",
+      "initial_status": "error",
+      "clean_shutdown": true,
+      "base_raw_unchanged": true
+    },
+    "ordinary-j1f46njv": {
+      "result_sha256": "d34fd8c578886ae57f557c6ba298b5e00c2355dc17a43fd72224d2d8c3d1211d",
+      "initial_status": "error",
+      "clean_shutdown": true,
+      "base_raw_unchanged": true
+    }
+  },
+  "qualification": {
+    "run": ".work/desktop-launch/ordinary-b02m61p7",
+    "result_sha256": "ca5cd2cfb3c1c9241ed572e48679df748ad8eb55940f0c4205de29bd477597e8",
+    "serial_sha256": "2d08af8d93dd0df5d04a41159fa265a3bf4d73840fb36a6eb48e3aa400ed3d55",
+    "sources": {
+      "scripts/probe-xiri-desktop-launch.py": "14e36dbae4fcb003fd029ff5ba6764cd2610e80328b3faef02a1a2fcc26b226d",
+      "scripts/probe-netbsd.py": "adfa9547fa98af28fd55e4e155e7667b2b0a8c7cea8aee8d58079da946b72a1d",
+      "lab/irix-4dwm/type-ready.c": "61ce22cbda6c66ccaf53cbcffab5f3080be95004bcd3e5c6893dc54a8a9db838",
+      "lab/irix-toolchest-input/inputcheck.c": "446a41e88f390c16f09a247cf9b15ed69552b86f20a4a00253c154e8da8b48ad",
+      "lab/irix-installed-desktop/xiri-desktop.sh": "80e2a739036b40ca7ae656ed04899cc48098aec8867fc5abc83bdd5e9413ccc3",
+      "lab/irix-installed-desktop/xiri-launch.sh": "9ba40ddaa23045bce7c5fcf8bec4030010b5c1533e8664b65efa4e74b9692394",
+      "lab/irix-installed-desktop/manual-session.sh": "6844cf5138cc78f4d5da48b32c0ed8f072aede0b9e61402ea89c3335d5037c56",
+      "lab/irix-installed-desktop/toolchest.chestrc": "c900745d336cf1916fa98d9a903711cce624e5a4e4f8e6b07bbcba87efcb1328",
+      "lab/irix-installed-desktop/xorg.conf": "b961af95955cedae9d3c221253d3515c47541e8caf403876d443883a11d6f5fa",
+      "lab/irix-installed-desktop/fam.conf": "3f45accd590400ec46733ad76541ad5fdc75cda3ec081a218d35de9849f0c18d"
+    },
+    "kernel_pin": {
+      "schema": 1,
+      "description": "Desktop link metadata, MAC query, poll and directory enumeration",
+      "ident": "XIRI_IRIX_DESKTOP_20261102",
+      "source_revision": "9c8bd4e328ff5c54db63a5102ba7128fe45ac35d",
+      "source_branch": "xiri",
+      "build_arch": "mips64eb",
+      "page_bytes": 8192,
+      "boot_kernel_sha256": "41089acd5e759130bde5055a2034c302be20ec6f562c65d7b9cc75b03e50957a",
+      "native_kernel_sha256": "f420e35d20e5350f3c5b55b1290843f9188e3eac019581a5abae21a3a667ff4d",
+      "debug_kernel_sha256": "9bc4ea246ef4cd34458be8c654ed5d1feabcab663537837039db96bd9f6dc674",
+      "native_o32_sha256": "c294fbb1f2110445be31c096481ea54ab561c7e59ca5b9fc7171310098d755d4",
+      "source_dirty": false,
+      "emulator_revision": "9df1df14334838a989253efefe26f0547e6da592",
+      "emulator_branch": "xiri/netbsd64-tlb",
+      "emulator_sha256": "1b3f7702ba7f43b5c4fca8ba8884243559f46371d8d67a36ce5e6fee1e595eba",
+      "ci_client_sha256": "8711321aa6eaae440da3c7920b00ae4cf1c7f2abbdb15a9919f58485500ffb6c",
+      "base_disk_sha256": "269038c7b77660c83d3835208fc0b2702c93110c14b3c55a42416f51672cee2a",
+      "nvram_sha256": "ee883474d52f09278287b2044f7aeca61d2e7bc39c0bb8fd85c983ab64063d15",
+      "config_sha256": "92809651e34cd06668b9d6967648bd1dbc8161e76c3c305b07117fdd26c57e17",
+      "runtimes": [
+        {
+          "name": "vendor-o32-libc",
+          "path": "/usr/lib/libc.so.1",
+          "sha256": "ea766492103a193e9d404942705e4e28987545e37f699ede232b6c0f8c97c954"
+        },
+        {
+          "name": "vendor-o32-rld",
+          "path": "/lib/rld",
+          "sha256": "30228b54c1e5585b365514eb7c9895b03cc0f61cb898e05e3ddafece87863439"
+        },
+        {
+          "name": "vendor-n32-libc",
+          "path": "/lib32/libc.so.1",
+          "sha256": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e"
+        },
+        {
+          "name": "vendor-n32-rld",
+          "path": "/lib32/rld",
+          "sha256": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b"
+        }
+      ],
+      "config_path": "lab/irix-lxstat/XIRI_IRIX_DESKTOP"
+    },
+    "staged_regular_files": 1749,
+    "installed_native_and_config_files": 10,
+    "native_controls_passed": true,
+    "launches": {
+      "winterm-1": {
+        "proof": "XIRI_MENU_SHELL_1_OK",
+        "handoffs": "NATIVE_HANDOFF pid=4478 sid=4478 pgid=4478 tpgid=4478 uid=1234 euid=1234 gid=1234 egid=1234 groups=0 tty=/dev/pts/0 rows=24 cols=80\n"
+      },
+      "winterm-2": {
+        "proof": "XIRI_MENU_SHELL_2_OK",
+        "handoffs": "NATIVE_HANDOFF pid=4478 sid=4478 pgid=4478 tpgid=4478 uid=1234 euid=1234 gid=1234 egid=1234 groups=0 tty=/dev/pts/0 rows=24 cols=80\nNATIVE_HANDOFF pid=536 sid=536 pgid=536 tpgid=536 uid=1234 euid=1234 gid=1234 egid=1234 groups=0 tty=/dev/pts/0 rows=24 cols=80\n"
+      },
+      "iconcatalog": {
+        "tree": "\nxwininfo: Window id: 0x34e (the root window) (has no name)\n\n  Root window id: 0x34e (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     26 children:\n     0x2000a4 (has no name): ()  916x540+120+96  +120+96\n        10 children:\n        0x2000ae (has no name): ()  900x500+8+32  +128+128\n           1 child:\n           0xc0006b \"Icon Catalog: Alias (Page 1 of 18)\": (\"IconCatalog\" \"IconCatalog\")  900x500+0+0  +128+128\n              2 children:\n              0xc0009b (has no name): ()  1280x1024+0+0  +128+128\n              0xc0006c (has no name): ()  900x500+0+0  +128+128\n                 2 children:\n                 0xc00095 (has no name): ()  900x26+0+0  +128+128\n                    5 children:\n                    0xc0009a (has no name): ()  52x22+5+2  +133+130\n                    0xc00099 (has no name): ()  78x22+64+2  +192+130\n                    0xc00098 (has no name): ()  47x22+149+2  +277+130\n                    0xc00097 (has no name): ()  50x22+203+2  +331+130\n                    0xc00096 (has no name): ()  48x22+847+2  +975+130\n                 0xc0006d (has no name): ()  900x474+0+26  +128+154\n                    4 children:\n                    0xc00088 (has no name): ()  870x424+30+0  +158+154\n                       4 children:\n                       0xc00094 (has no name): ()  845x18+3+403  +161+557\n                       0xc00093 (has no name): ()  18x399+849+3  +1007+157\n                       0xc00092 (has no name): ()  18x18+849+403  +1007+557\n                       0xc00089 (has no name): ()  845x399+3+3  +161+157\n                    0xc0007d (has no name): ()  30x424+0+0  +128+154\n                       5 children:\n                       0xc00084 (has no name): ()  30x78+0+0  +128+154\n                          3 children:\n                          0xc00087 (has no name): ()  24x24+3+0  +131+154\n                          0xc00086 (has no name): ()  24x24+3+27  +131+181\n                          0xc00085 (has no name): ()  24x24+3+54  +131+208\n                       0xc00083 (has no name): ()  30x12+0+78  +128+232\n                       0xc00080 (has no name): ()  30x24+0+90  +128+244\n                          2 children:\n                          0xc00082 (has no name): ()  24x24+3+0  +131+244\n                          0xc00081 (has no name): ()  77x26+0+0  +128+244\n                       0xc0007f (has no name): ()  30x12+0+114  +128+268\n                       0xc0007e (has no name): ()  30x148+0+126  +128+280\n                    0xc00070 (has no name): ()  900x30+0+424  +128+578\n                       3 children:\n                       0xc0007b (has no name): ()  888x25+6+0  +134+578\n                          1 child:\n                          0xc0007c (has no name): ()  57x22+0+0  +134+578\n                       0xc00076 (has no name): ()  6x30+0+0  +128+578\n                          4 children:\n                          0xc0007a (has no name): ()  6x1+0+0  +128+578\n                          0xc00079 (has no name): ()  6x1+0+1  +128+579\n                          0xc00078 (has no name): ()  1x28+0+2  +128+580\n                          0xc00077 (has no name): ()  5x28+1+2  +129+580\n                       0xc00071 (has no name): ()  6x30+894+0  +1022+578\n                          4 children:\n                          0xc00075 (has no name): ()  6x1+0+0  +1022+578\n                          0xc00074 (has no name): ()  6x1+0+1  +1022+579\n                          0xc00073 (has no name): ()  1x29+5+1  +1027+579\n                          0xc00072 (has no name): ()  6x29+0+1  +1022+579\n                    0xc0006e (has no name): ()  900x20+0+454  +128+608\n                       1 child:\n                       0xc0006f (has no name): ()  900x20+0+0  +128+608\n        0x2000ad (has no name): ()  902x25+7+7  +127+103\n        0x2000ac (has no name): ()  8x476+0+32  +120+128\n        0x2000ab (has no name): ()  32x32+0+508  +120+604\n        0x2000aa (has no name): ()  852x8+32+532  +152+628\n        0x2000a9 (has no name): ()  32x32+884+508  +1004+604\n        0x2000a8 (has no name): ()  8x476+908+32  +1028+128\n        0x2000a7 (has no name): ()  32x32+884+0  +1004+96\n        0x2000a6 (has no name): ()  852x7+32+0  +152+96\n        0x2000a5 (has no name): ()  32x32+0+0  +120+96\n     0xc00032 (has no name): ()  5x5+0+0  +0+0\n        1 child:\n        0xc00033 (has no name): ()  191x178+0+0  +0+0\n     0xc0000c (has no name): ()  159x154+0+0  +0+0\n        5 children:\n        0xc00019 (has no name): ()  225x130+0+0  +0+0\n        0xc00018 (has no name): ()  178x152+0+0  +0+0\n        0xc00017 (has no name): ()  78x102+0+0  +0+0\n        0xc00016 (has no name): ()  189x176+0+0  +0+0\n        0xc0000d (has no name): ()  159x154+0+0  +0+0\n     0xc00006 \"Icon Catalog\": (\"iconcatalog\" \"IconCatalog\")  1x1+640+512  +640+512\n     0xc00001 \"Icon Catalog\": (\"iconcatalog\" \"IconCatalog\")  600x300+0+0  +0+0\n     0xa00013 (has no name): ()  144x516+106+106  +106+106\n        6 children:\n        0xa0002b (has no name): ()  142x166+0+0  +106+106\n        0xa00028 (has no name): ()  171x252+0+0  +106+106\n           1 child:\n           0xa0002a (has no name): ()  165x22+3+181  +109+287\n        0xa00027 (has no name): ()  144x516+0+0  +106+106\n        0xa00026 (has no name): ()  184x120+0+0  +106+106\n        0xa00025 (has no name): ()  16x16+0+0  +106+106\n        0xa00014 (has no name): ()  161x230+0+0  +106+106\n           3 children:\n           0xa00024 (has no name): ()  155x22+3+47  +109+153\n           0xa00022 (has no name): ()  155x22+3+25  +109+131\n           0xa00020 (has no name): ()  155x22+3+3  +109+109\n     0x200061 (has no name): ()  105x185+9+0  +9+0\n        2 children:\n        0x200063 (has no name): ()  105x160+0+25  +9+25\n           1 child:\n           0xa0002c \"Toolchest\": (\"toolchest\" \"Toolchest\")  103x158+0+0  +9+25\n              1 child:\n              0xa0002d (has no name): ()  103x158+0+0  +10+26\n                 6 children:\n                 0xa00033 (has no name): ()  99x24+2+2  +12+28\n                 0xa00032 (has no name): ()  99x24+2+28  +12+54\n                 0xa00031 (has no name): ()  99x24+2+54  +12+80\n                 0xa00030 (has no name): ()  99x24+2+80  +12+106\n                 0xa0002f (has no name): ()  99x24+2+106  +12+132\n                 0xa0002e (has no name): ()  99x24+2+132  +12+158\n        0x200062 (has no name): ()  105x25+0+0  +9+0\n     0x200098 (has no name): ()  999x544+88+64  +88+64\n        10 children:\n        0x2000a2 (has no name): ()  983x504+8+32  +96+96\n           1 child:\n           0x800005 \"winterm\": (\"winterm\" \"XWsh\")  983x504+0+0  +96+96\n              2 children:\n              0x800012 (has no name): ()  965x504+18+0  +114+96\n                 2 children:\n                 0x80001b (has no name): ()  965x504+0+0  +114+96\n                 0x800023 (has no name): ()  965x504+0+0  +114+96\n              0x800006 (has no name): ()  18x504+0+0  +96+96\n                 1 child:\n                 0x800024 (has no name): ()  16x30+1+18  +97+114\n        0x2000a1 (has no name): ()  985x25+7+7  +95+71\n        0x2000a0 (has no name): ()  8x480+0+32  +88+96\n        0x20009f (has no name): ()  32x32+0+512  +88+576\n        0x20009e (has no name): ()  935x8+32+536  +120+600\n        0x20009d (has no name): ()  32x32+967+512  +1055+576\n        0x20009c (has no name): ()  8x480+991+32  +1079+96\n        0x20009b (has no name): ()  32x32+967+0  +1055+64\n        0x20009a (has no name): ()  935x7+32+0  +120+64\n        0x200099 (has no name): ()  32x32+0+0  +88+64\n     0x800011 (has no name): ()  1x1+0+0  +0+0\n     0x800010 (has no name): ()  1x1+0+0  +0+0\n     0x80000b (has no name): ()  1x1+0+0  +0+0\n     0x1200001 (has no name): ()  10x10+-100+-100  +-100+-100\n     0x2000a3 (has no name): ()  97x99+0+0  +0+0\n     0x2000af (has no name): ()  97x99+0+0  +0+0\n     0xa0001b (has no name): ()  195x96+10+35  +10+35\n        4 children:\n        0xa00029 (has no name): ()  194x96+0+0  +10+35\n        0xa00023 (has no name): ()  151x318+0+0  +10+35\n        0xa00021 (has no name): ()  194x50+0+0  +10+35\n        0xa0001c (has no name): ()  195x96+0+0  +10+35\n     0xa00001 \"toolchest\": (\"toolchest\" \"Toolchest\")  1x1+10+10  +10+10\n     0x200053 (has no name): ()  5x5+0+0  +0+0\n        1 child:\n        0x200054 (has no name): ()  146x224+0+0  +0+0\n     0x20004e (has no name): ()  1x1+0+0  +0+0\n     0x20004d (has no name): ()  1x1+0+0  +0+0\n     0x20004c \"4Dwm\": (\"4Dwm\" \"4DWm\")  10x10+10000+0  +10000+0\n     0x400001 (has no name): ()  1x1+-2+-2  +-2+-2\n     0x20004a (has no name): ()  5x5+0+0  +0+0\n        1 child:\n        0x20004b (has no name): ()  77x61+0+0  +0+0\n     0x20003f (has no name): ()  5x5+0+0  +0+0\n        1 child:\n        0x200041 (has no name): ()  159x59+0+0  +0+0\n     0x20002a (has no name): ()  10x10+-100+-100  +-100+-100\n     0x20000b (has no name): ()  10x10+10000+10000  +10000+10000\n     0x200001 \"4Dwm\": (\"4Dwm\" \"4DWm\")  1x1+0+0  +0+0\n\n",
+        "logs": "/var/tmp/xiri-desktop/session.tkSydp/launch-iconcatalog.dVMNpA\n"
+      }
+    },
+    "file_notifications": "famd[3949]: will poll xiri-event-probe\nfamd[3949]: sent event to client 5: request 2 \"xiri-event-probe\" Created\nfamd[3949]: will poll xiri-event-probe\nfamd[3949]: sent event to client 4: request 1 \"xiri-event-probe\" Created\nfamd[3949]: will poll xiri-event-probe\nfamd[3949]: sent event to client 7: request 1 \"xiri-event-probe\" Created\nfamd[3949]: will poll xiri-event-probe\nfamd[3949]: sent event to client 8: request 2 \"xiri-event-probe\" Created\nfamd[3949]: sent event to client 5: request 2 \"xiri-event-probe\" Deleted\nfamd[3949]: sent event to client 4: request 1 \"xiri-event-probe\" Deleted\nfamd[3949]: sent event to client 7: request 1 \"xiri-event-probe\" Deleted\nfamd[3949]: sent event to client 8: request 2 \"xiri-event-probe\" Deleted\n",
+    "freeware_notifications": "famd[3949]: sent event to ImdFileMonitor_618: request 38 \"/usr/people/xiritest/.desktop-xiri-indy/iconcatalog/pages/Freeware\" EndExist\nfamd[3949]: sent event to ImdFileMonitor_618: request 39 \"/usr/people/xiritest/.desktop-xiri-indy/iconcatalog/pages/Freeware\" EndExist\nfamd[3949]: sent event to ImdFileMonitor_618: request 40 \"/usr/lib/desktop/iconcatalog/pages/C/Freeware\" EndExist\nfamd[3949]: sent event to ImdFileMonitor_618: request 41 \"xmahjongg\" Exists\nfamd[3949]: sent event to ImdFileMonitor_618: request 41 \"/usr/lib/desktop/iconcatalog/pages/C/Freeware\" EndExist\n",
+    "clean_shutdown": true,
+    "base_raw_unchanged": true,
+    "persistent_helpers_installed": true,
+    "toolchest_custom_applications_menu": false,
+    "full-desktop_png_sha256": "f0911626b000a7fdce6ec3121b06f72f2c4e207e716e3e9f153af42606c03e4d",
+    "menu-desktop_png_sha256": "f0911626b000a7fdce6ec3121b06f72f2c4e207e716e3e9f153af42606c03e4d"
+  },
+  "image_qualification": {
+    "path": "docs/results/2026-11-02-desktop-services-image.json",
+    "sha256": "45cacde02daaae384fb9f00320d546073990422d62e3ba60cff0c59c645594cf"
+  },
+  "owned_emulators_remaining": 0
+}

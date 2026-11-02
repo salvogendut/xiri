@@ -13,16 +13,3 @@ Menu Find
 {
     "Icon Catalog" f.exec "/usr/local/bin/xiri-launch iconcatalog"
 }
-
-Menu ToolChest
-{
-    "Applications" f.menu XiriApplications
-}
-
-Menu XiriApplications
-{
-    "Unix Shell" f.exec "/usr/local/bin/xiri-launch winterm"
-    "Clock" f.exec "/usr/local/bin/xiri-launch xclock"
-    "Icon Catalog" f.exec "/usr/local/bin/xiri-launch iconcatalog"
-    "Mahjongg" f.exec "/usr/local/bin/xiri-launch xmahjongg"
-}
