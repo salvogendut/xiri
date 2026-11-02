@@ -1,0 +1,13 @@
+{
+  "status": "error",
+  "clean_shutdown": true,
+  "direct_disk_boot": true,
+  "error": "0 0",
+  "run": ".work/xiri-image/runs/chd-cc9bzcpv",
+  "result_sha256": "8d0017bc9bdec1fa66c3b739ef7ed7ff07f93615f585f030a9c5d7bebf50aff8",
+  "console_followup": {
+    "code": 0,
+    "output": "stty -f /dev/ttyE0 size; wsconscfg -f /dev/ttyEcfg 0; stty -f /dev/tt \byE0 size; sysctl kern.consdev; xiri_rc=$?; printf '\\nXIRI_2bb54198839540c282966b \be7fcca8fa8_RC=%s\\n' \"$xiri_rc\"\n0 0\nwsconscfg: screen 0 is already configured\n0 0\nkern.consdev = ttyZ0\n\nXIRI_2bb54198839540c282966be7fcca8fa8_RC=0\nxiri-indy# "
+  },
+  "scope": "Serial-console CHD boot reports ttyE0 size 0 0; desktop checks were not reached in this run. Graphical-console captures are qualified separately."
+}

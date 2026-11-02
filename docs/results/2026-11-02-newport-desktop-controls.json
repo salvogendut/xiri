@@ -1,0 +1,60 @@
+{
+  "emulator_revision": "819c6825504d40ad9f9aa00554249affd2da9446",
+  "kernel_baseline": "lab/newport-accel/corrected-baseline.json",
+  "conclusion": "Color correction succeeds; xmahjongg artwork corruption remains specific to XAA. Individual operation-disable controls do not fix it and introduce missing backgrounds/text. Do not promote as fully qualified accelerated desktop.",
+  "controls": [
+    {
+      "name": "full-xaa",
+      "run": ".work/desktop-usability/ordinary-faim47mf",
+      "run_status": "observed",
+      "clean_shutdown": true,
+      "result_sha256": "e6bb4bfafe55cffdeccaba50a2d979ec1247305a74474fb158f55562272962d2",
+      "screenshot_sha256": "cd986959a419a757a99723672c3212bffa0bf427380522d9595d101cdb867a5a",
+      "artwork_corrupted": true,
+      "screenshot": "docs/results/images/2026-11-02-newport-desktop-full-xaa.png"
+    },
+    {
+      "name": "software",
+      "run": ".work/newport-accel/desktop-control-hqu6h3no",
+      "run_status": "error",
+      "clean_shutdown": true,
+      "result_sha256": "7e89b1622520d82e662ead008421b84fd0e8976ea997d804a4dc2e324a1ff53f",
+      "screenshot_sha256": "6e5b23d2edc784e5a2ca42398bb2718bfdaf5b034d4eb7ae51f03d90615f1f5d",
+      "artwork_corrupted": false,
+      "harness_error": "guard=$(cat /var/run/xiri-desktop.lock/guard.pid); kill -TERM \"$guard\"; sleep 3; ! pgrep -x Xorg",
+      "xorg_log_sha256": "e316ee6736bf4ff479f75efe8bb3b40056d6e009f7f3f3c403ed49916653b512",
+      "screenshot": "docs/results/images/2026-11-02-newport-desktop-software.png"
+    },
+    {
+      "name": "no-screen-copy",
+      "run": ".work/newport-accel/no-copy-control-n6zl4zkz",
+      "run_status": "error",
+      "clean_shutdown": true,
+      "result_sha256": "e802d17427060c57e0f42e769ed3a1845d64762d59456abd155fd585be14faac",
+      "screenshot_sha256": "4be44cd52723eb18d7296c742b60e4d8a411236b7077fa0b80ba164127d0f1e7",
+      "artwork_corrupted": true,
+      "harness_error": "pkill -TERM -x manual-guard; sleep 3; ! pgrep -x Xorg",
+      "xorg_log_sha256": "dfceef226034ca87e5b9b2f504d22129bccd0ad667b62af427e1b7d20dbe88cc"
+    },
+    {
+      "name": "no-image-write",
+      "run": ".work/newport-accel/no-image-control-ua2kdtyv",
+      "run_status": "observed",
+      "clean_shutdown": true,
+      "result_sha256": "6ad20e1ebeea8ee53b507a63cee6521e6b56c3182291b70e31c4ff5184f54eec",
+      "screenshot_sha256": "13e9c7c483ab364c28f48ede90c7b9d73bc4419899264eca22d26f584de44ed9",
+      "artwork_corrupted": true,
+      "xorg_log_sha256": "34cb5b721b1c94991e9e35ee46d484ce5954814c201ab628725c3533fbdf684e"
+    },
+    {
+      "name": "no-color-expansion",
+      "run": ".work/newport-accel/no-expand-control-jccbum0g",
+      "run_status": "observed",
+      "clean_shutdown": true,
+      "result_sha256": "4f5d91ee168287171178ad16a8d3fb1ff2bef8a0e620c59a9a0e3e0de341a7e6",
+      "screenshot_sha256": "2034e694004c5b50fdfc76950d991cdf40813223a7d7be645fd2bd4cbb58ff01",
+      "artwork_corrupted": true,
+      "xorg_log_sha256": "32326d83e5b84c6078edfd63dfee5aed2770f35e02f378beef8dc3c894430504"
+    }
+  ]
+}

@@ -1,8 +1,9 @@
 # Fork workflow
 
 Use `xiri` as the integration branch for both the IRIS and NetBSD forks.
-IRIS is checked out at `../iris`; the NetBSD checkout is `../NetBSD-nixbench`
-and its origin is `salvogendut/NetBSD-xiri`.
+IRIS is checked out at `../iris`; the NetBSD checkout is `../NetBSD-xiri`
+and its origin is `salvogendut/NetBSD-xiri`. The older `../NetBSD-nixbench`
+path remains a compatibility symlink.
 
 Make routine changes on `xiri`. When needed, create a temporary topic branch,
 merge it into that project's `xiri` branch at the end of the work cycle, and

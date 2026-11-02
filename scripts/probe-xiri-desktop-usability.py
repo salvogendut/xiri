@@ -32,6 +32,10 @@ def main():
     parser.add_argument('--seed', type=Path, default=ROOT/'.work/xiri-image/prepared-seed-20261102-services')
     parser.add_argument('--kernel-build', type=Path, default=ROOT/'.work/netbsd-irix-desktop-build')
     parser.add_argument('--baseline', type=Path)
+    parser.add_argument('--iris-bin-dir', type=Path, default=ROOT/'.work/target-netbsd64/release')
+    parser.add_argument('--xorg-config', type=Path, help='install and qualify an alternate Xorg configuration')
+    parser.add_argument('--arrange-winterm', action='store_true',
+                        help='record and resize winterm for diagnostic interaction checks')
     args = parser.parse_args()
     seed = args.seed.resolve()
     kernel_build = args.kernel_build.resolve()
@@ -46,8 +50,8 @@ def main():
         assert p.sha256(ROOT.parent/'NetBSD-nixbench'/name) == digest
     rpcbin = ROOT/'.work/native-rpcbind/rpcbind'
     assert p.sha256(rpcbin) == rpc['rpcbind_sha256']
-    p.IRIS = ROOT/'.work/target-netbsd64/release/iris'
-    p.CI = ROOT/'.work/target-netbsd64/release/iris-ci'
+    p.IRIS = args.iris_bin_dir.resolve()/'iris'
+    p.CI = args.iris_bin_dir.resolve()/'iris-ci'
     assert p.sha256(p.IRIS) == pin['emulator_sha256']
     runs = ROOT/'.work/desktop-usability'
     runs.mkdir(exist_ok=True)
@@ -60,6 +64,8 @@ def main():
                        'lab/irix-installed-desktop')/name
         shutil.copyfile(source, media/name)
     shutil.copyfile(rpcbin, media/'rpcbind')
+    if args.xorg_config:
+        shutil.copyfile(args.xorg_config, media/'xorg.conf')
     for name, source, key in [('netbsd',kernel_build/'kernel-media/netbsd','native_kernel_sha256'),
                              ('netbsd.boot',kernel_build/'tftp/netbsd-XIRI_INDY','boot_kernel_sha256')]:
         assert p.sha256(source)==pin[key]
@@ -71,10 +77,14 @@ def main():
     input_source = input_source.replace('XTestFakeButtonEvent(d, 1,', 'XTestFakeButtonEvent(d, argc == 5 ? atoi(argv[4]) : 1,')
     (media/'input.c').write_text(input_source)
     shutil.copyfile(ROOT/'lab/irix-4dwm/type-ready.c', media/'type.c')
+    if args.arrange_winterm:
+        shutil.copyfile(ROOT/'lab/irix-filelocks/place-window.c', media/'place.c')
     installed = dict(old['installed_files'])
     installed.update({dest:p.sha256(media/name) for name,dest in FILES.items()})
     installed['/usr/sbin/rpcbind'] = rpc['rpcbind_sha256']
     installed.update({'/netbsd':pin['native_kernel_sha256'],'/netbsd.boot':pin['boot_kernel_sha256']})
+    if args.xorg_config:
+        installed['/usr/local/share/xiri/xorg.conf'] = p.sha256(media/'xorg.conf')
     (media/'SHA256').write_text(''.join(f'SHA256 ({f.name}) = {p.sha256(f)}\n' for f in sorted(media.iterdir())))
     p.run(['genisoimage','-quiet','-R','-J','-o',d/'probe.iso',media])
     for name in ['disk.raw','nvram.bin']:
@@ -104,6 +114,9 @@ def main():
              logout={})
     if old.get('desktop_behavior'):
         r['desktop_behavior'] = old['desktop_behavior']
+    if args.xorg_config:
+        r['xorg_configuration'] = dict(source=str(args.xorg_config), sha256=p.sha256(media/'xorg.conf'),
+            acceleration_requested='Option "NoAccel" "false"' in args.xorg_config.read_text())
 
     def cmd(command, timeout=120):
         before = len(lab.serial_text())
@@ -182,10 +195,14 @@ def main():
         cmd('mount -t cd9660 -o ro /dev/cd0a /cdrom && cd /cdrom && sha256 -c SHA256 >/root/usability-media.log && mkdir -p /root/usability && cd /root/usability')
         cmd('rm -f graphics-login returned-toolchest returned-root-menu toolchest.log root-menu.log')
         cmd('install -m 444 /cdrom/netbsd /netbsd && install -m 444 /cdrom/netbsd.boot /netbsd.boot')
+        if args.xorg_config:
+            cmd('install -m 444 /cdrom/xorg.conf /usr/local/share/xiri/xorg.conf')
         for name,dest in FILES.items():
             cmd('install -m '+('555' if name.endswith('.sh') else '444')+' /cdrom/'+name+' '+dest)
         cmd('install -m 555 /cdrom/rpcbind /usr/sbin/rpcbind && cc -O2 -Wall -Wextra -Werror /cdrom/manual-guard.c -o /usr/local/libexec/xiri/manual-guard',180)
         cmd('cc -O2 -Wall -Wextra -Werror -I/usr/X11R7/include -L/usr/X11R7/lib -Wl,-rpath,/usr/X11R7/lib /cdrom/input.c -lX11 -lXtst -o input && cc -O2 -Wall -Wextra -Werror -I/usr/X11R7/include -L/usr/X11R7/lib -Wl,-rpath,/usr/X11R7/lib /cdrom/type.c -lX11 -lXtst -o type',180)
+        if args.arrange_winterm:
+            cmd('cc -O2 -Wall -Wextra -Werror -I/usr/X11R7/include -L/usr/X11R7/lib -Wl,-rpath,/usr/X11R7/lib /cdrom/place.c -lX11 -o place',180)
         cmd("sed -e '/^constty/s/on secure/off secure/' -e '/^ttyE0/s/off secure/on secure/' -e '/^ttyZ0/s/off secure/on secure local softcar/' /etc/ttys >/etc/ttys.new && mv /etc/ttys.new /etc/ttys")
         # Allocate a text VT on serial diagnostic boots too; graphics boots
         # already have screen zero. init starts the gettys after rc finishes.
@@ -229,6 +246,10 @@ def main():
             wait_for('test -s "$job/handoff"')
             cmd("shell_pid=$(sed -n 's/^NATIVE_HANDOFF pid=\\([0-9][0-9]*\\).*/\\1/p' \"$job/handoff\"); test -n \"$shell_pid\"")
             wait_for('ps -p "$shell_pid" -o comm= | grep -Eq \'^[[:space:]]*sh[[:space:]]*$\'')
+            winterm_geometry = None
+            if args.arrange_winterm:
+                winterm_geometry = get('xwininfo -name winterm; xprop -name winterm WM_NORMAL_HINTS')
+                cmd('./place winterm 10 180 983 504')
             for command, output in [
                     ('echo GRAPHICAL_SHELL_OK', 'shell-proof'), ('pwd', 'shell-pwd'),
                     ('id -un', 'shell-user'), ('echo "$HOME"', 'shell-home')]:
@@ -239,7 +260,7 @@ def main():
             assert get('cat "$job/shell-pwd"').strip() == '/usr/people/xiritest'
             assert get('cat "$job/shell-user"').strip() == 'xiritest'
             assert get('cat "$job/shell-home"').strip() == '/usr/people/xiritest'
-            if pin['ident'] == 'XIRI_IRIX_VENDOR_SHELL_20261102':
+            if old.get('vendor_shell') or pin['ident'] == 'XIRI_IRIX_VENDOR_SHELL_20261102':
                 proof = cmd(shlex.join(['su', '-m', 'xiritest', '-c',
                     shlex.join(['/emul/irix/bin/sh', '-c',
                         'echo NULL_OK >/dev/null && echo IRIX_SHELL_IMAGE_OK'])]))
@@ -248,6 +269,14 @@ def main():
             entry = dict(tree=get('xwininfo -root -tree'),rpc_log=get('cat "$job/rpcbind.log"'),
                          bindings=get('netstat -an -f inet | grep 111'),
                          registration=get('rpcinfo -p 127.0.0.1'))
+            if args.xorg_config:
+                entry['xorg_log'] = get('cat /var/log/Xorg.0.log')
+                entry['xaa_enabled'] = 'Using XFree86 Acceleration Architecture (XAA)' in entry['xorg_log']
+                if 'Option "NoAccel" "false"' in args.xorg_config.read_text():
+                    assert entry['xaa_enabled']
+            if args.arrange_winterm:
+                entry['winterm_geometry_before_arrangement'] = winterm_geometry
+                entry['winterm_arranged'] = [10, 180, 983, 504]
             entry['identity'] = dict(user='xiritest', home='/usr/people/xiritest', cwd='/usr/people/xiritest')
             assert 'cannot bind' not in entry['rpc_log']
             assert '127.0.0.1.111' in entry['bindings'] and '*.111' not in entry['bindings']

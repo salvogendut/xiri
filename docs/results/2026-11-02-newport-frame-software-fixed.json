@@ -1,0 +1,235 @@
+{
+  "mode": "ordinary",
+  "accelerated": false,
+  "status": "passed",
+  "checks": [
+    {
+      "name": "Verify kernel and mount diagnostic media",
+      "guest_exit_status": 0,
+      "seconds": 0.607
+    },
+    {
+      "name": "Prepare wsdisplay and build the Xlib probe",
+      "guest_exit_status": 0,
+      "seconds": 36.113
+    },
+    {
+      "name": "Start Newport Xorg and wait for a client connection",
+      "guest_exit_status": 0,
+      "seconds": 13.602
+    },
+    {
+      "name": "Start drawing and input probe",
+      "guest_exit_status": 0,
+      "seconds": 1.566
+    },
+    {
+      "name": "Keyboard text, releases, mouse movement and three buttons",
+      "guest_exit_status": 0,
+      "seconds": 1.863
+    },
+    {
+      "name": "Open a twm desktop and xterm",
+      "guest_exit_status": 0,
+      "seconds": 5.746
+    },
+    {
+      "name": "Command entered through the graphical terminal",
+      "guest_exit_status": 0,
+      "seconds": 1.258
+    },
+    {
+      "name": "Stop X clients and server cleanly",
+      "guest_exit_status": 0,
+      "seconds": 0.605
+    }
+  ],
+  "clean_shutdown": true,
+  "started_utc": "2026-11-02T22:24:01Z",
+  "base_disk_sha256": "259709c2e67d02c6752ea26d61e3b2d1c40e9f7e0caedd82232f4c4bda589c57",
+  "kernel_sha256": "58888643294a2794770d8b6a7b4dcfb89b77449511160d91100130f6d774fd88",
+  "pin": {
+    "schema": 1,
+    "description": "Framed Newport console with corrected RGB24 XAA colors and plane masks",
+    "ident": "XIRI_NEWPORT_FRAME_20261102",
+    "source_revision": "314c8c32e84e41a0eda05366d3004bb10a68c86e",
+    "source_branch": "feature/newport-framed-console",
+    "build_arch": "mips64eb",
+    "page_bytes": 8192,
+    "boot_kernel_sha256": "58888643294a2794770d8b6a7b4dcfb89b77449511160d91100130f6d774fd88",
+    "native_kernel_sha256": "cd8891b55e2bc7ecded0c400c397482cbb7f09e5806210c75bae2de0c7d2c8b1",
+    "debug_kernel_sha256": "e754fb36238ada117514a199fe744092508b779cb154184bc85c40515772ed94",
+    "native_o32_sha256": "c294fbb1f2110445be31c096481ea54ab561c7e59ca5b9fc7171310098d755d4",
+    "source_dirty": true,
+    "emulator_revision": "819c6825504d40ad9f9aa00554249affd2da9446",
+    "emulator_branch": "xiri",
+    "emulator_sha256": "3dd9299d71f1899ff5a8c9b76f6a24752d19e4f9a0bcfe0edf3a29001dc9c49e",
+    "ci_client_sha256": "2543b1fae0b442516c40c9d9155eebc9f9569561146b4f62948171fe7eb5c7f3",
+    "base_disk_sha256": "259709c2e67d02c6752ea26d61e3b2d1c40e9f7e0caedd82232f4c4bda589c57",
+    "nvram_sha256": "bf4cbbda9f4fd04bce4b90d06dda76da7d666de0edcf529745719a29ddbf6c7c",
+    "config_sha256": "cc08c192391cae62a42ebfa8a1b456c4a30a382cbfb3dfbc80179255d8c715ea",
+    "runtimes": [
+      {
+        "name": "vendor-o32-libc",
+        "path": "/usr/lib/libc.so.1",
+        "sha256": "ea766492103a193e9d404942705e4e28987545e37f699ede232b6c0f8c97c954"
+      },
+      {
+        "name": "vendor-o32-rld",
+        "path": "/lib/rld",
+        "sha256": "30228b54c1e5585b365514eb7c9895b03cc0f61cb898e05e3ddafece87863439"
+      },
+      {
+        "name": "vendor-n32-libc",
+        "path": "/lib32/libc.so.1",
+        "sha256": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e"
+      },
+      {
+        "name": "vendor-n32-rld",
+        "path": "/lib32/rld",
+        "sha256": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b"
+      }
+    ],
+    "config_path": "lab/newport-accel/XIRI_NEWPORT_FRAME",
+    "source_snapshot": "lab/newport-accel/source-snapshot.json",
+    "source_snapshot_sha256": "4eee3dd11f331b721e8c9266ed91784da5ca813edc730c6f7237971604cabeec",
+    "committed_source_equivalence": "lab/newport-accel/committed-source-equivalence.json",
+    "committed_source_revision": "a536d8c4da20c1eef2c7ff209ba51223dde00b61"
+  },
+  "base_image": {
+    "bundle": "/var/home/salvogendut/Dev/xiri/.work/images/xiri-netbsd-desktop-20261102-behavior",
+    "chd_sha256": "2d18cd7c2c3b940a41c790e7d7710cf56834e7319f1be7bcc0c4717649c5467b",
+    "raw_sha256": "259709c2e67d02c6752ea26d61e3b2d1c40e9f7e0caedd82232f4c4bda589c57"
+  },
+  "emulator_sha256": "3dd9299d71f1899ff5a8c9b76f6a24752d19e4f9a0bcfe0edf3a29001dc9c49e",
+  "harness_sha256": "394dce001339f3d20be76c663282921bec66ce5a3c2f87492218f5bd1dd9269c",
+  "nvram_sha256": "bf4cbbda9f4fd04bce4b90d06dda76da7d666de0edcf529745719a29ddbf6c7c",
+  "probe_sha256": "d6a1b1b65a9ca4b4eb1affd8eb4b1e01f943eef4d649d8bbe3943f155baab3c3",
+  "xorg_config_sha256": "b961af95955cedae9d3c221253d3515c47541e8caf403876d443883a11d6f5fa",
+  "display_pixels": [
+    {
+      "x": 100,
+      "y": 160,
+      "expected": "fe0000",
+      "actual": "fe0000"
+    },
+    {
+      "x": 100,
+      "y": 280,
+      "expected": "fe0000",
+      "actual": "fe0000"
+    },
+    {
+      "x": 100,
+      "y": 380,
+      "expected": "fe0000",
+      "actual": "fe0000"
+    },
+    {
+      "x": 100,
+      "y": 460,
+      "expected": "fe0000",
+      "actual": "fe0000"
+    },
+    {
+      "x": 568,
+      "y": 128,
+      "expected": "fe0000",
+      "actual": "fe0000"
+    },
+    {
+      "x": 220,
+      "y": 160,
+      "expected": "00fe00",
+      "actual": "00fe00"
+    },
+    {
+      "x": 220,
+      "y": 280,
+      "expected": "00fe00",
+      "actual": "00fe00"
+    },
+    {
+      "x": 220,
+      "y": 380,
+      "expected": "00fe00",
+      "actual": "00fe00"
+    },
+    {
+      "x": 220,
+      "y": 460,
+      "expected": "00fe00",
+      "actual": "00fe00"
+    },
+    {
+      "x": 584,
+      "y": 128,
+      "expected": "00fe00",
+      "actual": "00fe00"
+    },
+    {
+      "x": 340,
+      "y": 160,
+      "expected": "0000fe",
+      "actual": "0000fe"
+    },
+    {
+      "x": 340,
+      "y": 280,
+      "expected": "0000fe",
+      "actual": "0000fe"
+    },
+    {
+      "x": 340,
+      "y": 380,
+      "expected": "0000fe",
+      "actual": "0000fe"
+    },
+    {
+      "x": 340,
+      "y": 460,
+      "expected": "0000fe",
+      "actual": "0000fe"
+    },
+    {
+      "x": 568,
+      "y": 144,
+      "expected": "0000fe",
+      "actual": "0000fe"
+    },
+    {
+      "x": 460,
+      "y": 160,
+      "expected": "fefefe",
+      "actual": "fefefe"
+    },
+    {
+      "x": 460,
+      "y": 280,
+      "expected": "fefefe",
+      "actual": "fefefe"
+    },
+    {
+      "x": 460,
+      "y": 380,
+      "expected": "fefefe",
+      "actual": "fefefe"
+    },
+    {
+      "x": 460,
+      "y": 460,
+      "expected": "fefefe",
+      "actual": "fefefe"
+    },
+    {
+      "x": 584,
+      "y": 144,
+      "expected": "fefefe",
+      "actual": "fefefe"
+    }
+  ],
+  "drawing_passed": true,
+  "xaa_enabled": false,
+  "seconds": 236.623,
+  "base_disk_unchanged": true
+}

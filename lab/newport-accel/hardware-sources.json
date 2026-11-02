@@ -1,0 +1,41 @@
+{
+  "catalog": "../sgi/sources.json",
+  "sources": [
+    {
+      "catalog_id": "asic-rex3",
+      "title": "SGI REX3 specification",
+      "url": "https://erikarn.github.io/sgi/indy/datasheets/sgi_indy_rex3.pdf",
+      "local_copy": ".work/iris-upstream-sproc/docs/Indy/rex3.pdf",
+      "sections": [
+        "3.5.5 fast clear",
+        "3.9 table 22 framebuffer formats",
+        "programming notes: COLORI RGB format"
+      ],
+      "sha256": "9abe890d1a806ed67c26647e9b7ab309072d4d2a8faf2c75af52cc1530b33917"
+    },
+    {
+      "catalog_id": "asic-rb2",
+      "title": "SGI RAM Buffer (RB2) specification, revision 2.3",
+      "url": "https://erikarn.github.io/sgi/indy/datasheets/sgi_indy_rb2.pdf",
+      "local_copy": ".work/newport-accel/rb2.pdf",
+      "sections": [
+        "4.2 direct write mask and fast-clear bypass",
+        "4.4 write formatter",
+        "table 4.4 framebuffer pixel formats"
+      ],
+      "sha256": "d52e669fb7049a3727ad226ccb1fa6a2232c512b1a9ba1c6cf8f9ce0059947b0"
+    },
+    {
+      "title": "NetBSD Newport XAA implementation",
+      "url": "https://github.com/NetBSD/xsrc/blob/netbsd-11/external/mit/xf86-video-newport/dist/src/newport_accel.c",
+      "local_copy": ".work/netbsd-x/newport_accel.c",
+      "sections": [
+        "NewportColor2Planes24",
+        "NewportXAASetupForSolidFill",
+        "NewportXAASetupForScreenToScreenCopy"
+      ],
+      "sha256": "14ba402a8d12f49546fc46204f44f8768cf02498c5927a8246ca62957f3bd11c"
+    }
+  ],
+  "interpretation": "For the RGB24 plane format, COLORVRAM fast-clear and WRMASK carry physical interleaved plane bits. IRIS must decode these into its packed BGR framebuffer without changing register readback. COLORI and HOSTRW retain their logical packed color format."
+}

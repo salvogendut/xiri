@@ -1,0 +1,24 @@
+{
+  "status": "passed",
+  "emulator_revision": "819c6825504d40ad9f9aa00554249affd2da9446",
+  "filter": "dev::ng1",
+  "features": [
+    "rex-jit"
+  ],
+  "passed": 183,
+  "ignored": 5,
+  "failed": 0,
+  "expected_value_draws_per_renderer": 1044,
+  "renderers": [
+    "generic",
+    "Cranelift"
+  ],
+  "negative_control": {
+    "failed": 2,
+    "passed": 0,
+    "mode": "RGB24 fast-clear, red channel write mask",
+    "raw_mask": "0x492492",
+    "before_log": ".work/newport-accel/rex-before.log"
+  },
+  "log": ".work/newport-accel/rex-after.log"
+}

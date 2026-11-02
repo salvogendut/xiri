@@ -23,14 +23,19 @@ def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('bundle', type=Path)
     p.add_argument('--debug-failure', action='store_true')
+    p.add_argument('--iris-bin-dir', type=Path, default=ROOT/'.work/target-netbsd64/release')
+    p.add_argument('--console-size', nargs=2, type=int, metavar=('ROWS', 'COLS'),
+                   help='check the text console dimensions before starting X')
+    p.add_argument('--arrange-winterm', action='store_true',
+                   help='record and resize winterm for diagnostic interaction checks')
     a = p.parse_args()
     bundle = a.bundle.resolve()
     manifest = json.loads((bundle/'manifest.json').read_text())
     assert manifest['status'] == 'chd-roundtrip-verified'
     assert probe.sha256(bundle/'netbsd-xiri.chd') == manifest['chd_sha256']
     pin = manifest['pin']
-    probe.IRIS = ROOT/'.work/target-netbsd64/release/iris'
-    probe.CI = ROOT/'.work/target-netbsd64/release/iris-ci'
+    probe.IRIS = a.iris_bin_dir.resolve()/'iris'
+    probe.CI = a.iris_bin_dir.resolve()/'iris-ci'
     assert probe.sha256(probe.IRIS) == pin['emulator_sha256']
     runs = ROOT/'.work/xiri-image/runs'
     runs.mkdir(parents=True, exist_ok=True)
@@ -127,6 +132,10 @@ def main():
         cmd('test "$(sha256 -q /netbsd)" = '+pin['native_kernel_sha256']+
             ' && test "$(sha256 -q /netbsd.boot)" = '+pin['boot_kernel_sha256'])
         cmd('cd /root && test -x /usr/local/bin/xiri-desktop && test -r /usr/local/share/xiri/fonts/fonts.dir && test -d /usr/people/xiritest')
+        if a.console_size:
+            size = get('stty -f /dev/ttyE0 size').decode().strip()
+            assert size == ' '.join(map(str, a.console_size)), size
+            result['console_size'] = a.console_size
         if seed_result.get('installed_files'):
             cmd('test "$(readlink /usr/local/libexec/xiri/command-shell)" = /bin/sh')
         cmd('mount -t cd9660 -o ro /dev/cd0a /cdrom && cd /cdrom && sha256 -c SHA256 && sha256 -c SUPPORT && cd /root && cc -O2 -Wall -Wextra -Werror -I/usr/X11R7/include /cdrom/type.c -L/usr/X11R7/lib -Wl,-rpath,/usr/X11R7/lib -lX11 -lXtst -o image-type', 180)
@@ -152,6 +161,10 @@ def main():
                 cmd('(n=0; until test -s "$job/handoff"; do n=$((n+1)); test "$n" -lt 30 || exit 1; sleep 1; done)')
                 cmd("shell_pid=$(sed -n 's/^NATIVE_HANDOFF pid=\\([0-9][0-9]*\\).*/\\1/p' \"$job/handoff\"); test -n \"$shell_pid\"")
                 cmd('(n=0; until ps -p "$shell_pid" -o comm= | grep -Eq \'^[[:space:]]*sh[[:space:]]*$\'; do n=$((n+1)); test "$n" -lt 30 || exit 1; sleep 1; done)')
+                if a.arrange_winterm:
+                    result['winterm_geometry_before_arrangement'] = get('xwininfo -name winterm; xprop -name winterm WM_NORMAL_HINTS').decode()
+                    cmd('./image-place winterm 10 180 983 504')
+                    result['winterm_arranged'] = [10, 180, 983, 504]
                 cmd(shlex.join(['./image-type', '127.0.0.1:0', 'winterm',
                     'pwd > "$XIRI_SESSION_DIR/image-pwd"\n']))
                 cmd('(n=0; until test -s "$job/image-pwd"; do n=$((n+1)); test "$n" -lt 20 || exit 1; sleep 1; done)')
@@ -218,6 +231,10 @@ def main():
         result['desktop_dimensions'] = dimensions
         result['newport_x11'] = ('dimensions:    %dx%d pixels' % tuple(dimensions)) in result['display']
         assert result['newport_x11']
+        if seed_result.get('xorg_configuration'):
+            result['xorg_log'] = get('cat /var/log/Xorg.0.log').decode(errors='backslashreplace')
+            result['xaa_enabled'] = 'Using XFree86 Acceleration Architecture (XAA)' in result['xorg_log']
+            assert result['xaa_enabled'] == seed_result['xorg_configuration']['acceleration_requested']
         if not seed_result.get('desktop_services'):
             game = get('cat game.xwd')
             if game:

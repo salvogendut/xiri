@@ -33,6 +33,42 @@ its opened icon while running and returning to the exact closed pixels after
 exit. It also verifies filesystem and Dumpster double-clicks opening their
 directory views. Full Dumpster operations and launch animation remain open.
 
+## Experimental framed-console acceleration image
+
+The separate `.work/images/xiri-netbsd-desktop-20261102-framed-accel/` bundle
+uses the requested NetBSD `feature/newport-framed-console` snapshot, equivalent
+to commit `a536d8c4da2`, and IRIS `xiri` commit `819c682`. It enables Newport XAA
+at 1280×1024 and includes the corrected emulator binaries. The CHD is
+480,575,544 bytes; SHA256:
+`483560d87b3002a0a8fdae3d170caebcf4fed47c0d6bf87c9de69d1d50d71826`.
+
+Run its bundled backend:
+
+```sh
+cd .work/images/xiri-netbsd-desktop-20261102-framed-accel
+./run-iris.sh
+```
+
+Use the root login and `xiri-desktop` command described below. An existing
+Prismatic executable needs the corrected IRIS backend rebuilt into it;
+the CHD alone cannot fix accelerated colors in an older emulator.
+
+**This remains an experiment:** the RGB24 color and mask checks pass, but
+xmahjongg artwork is corrupted with XAA. Winterm can also start with incorrect
+vertical font metrics; the automated interaction checks explicitly resize it.
+The earlier software-rendered bundle remains the qualified comparison image
+and the default in `lab/irix-installed-desktop/image.json`. The original icon
+state qualification belongs to that software-rendered cycle.
+
+To compare rendering modes, log out and edit
+`/usr/local/share/xiri/xorg.conf` as root: `NoAccel "true"` disables XAA;
+`NoAccel "false"` enables it. Restart `xiri-desktop` after changing it.
+Keep overlays separate. See the [cycle record](results/2026-11-02-newport-framed-acceleration.md)
+for the tests and remaining artwork defect. The [direct CHD observation](results/2026-11-03-newport-framed-image.json)
+verifies boot, catalog launch and clean shutdown; its
+[PNG](results/images/2026-11-03-newport-framed-image.png) retains the visible
+artwork failure.
+
 ## Start it in IRIS
 
 Keep `netbsd-xiri.chd`, `iris.toml`, `nvram-graphics.bin` and `nvram.bin` together. Use an Indy

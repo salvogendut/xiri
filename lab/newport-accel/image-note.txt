@@ -1,0 +1,23 @@
+Framed-console kernel from feature/newport-framed-console (a536d8c4da2;
+recorded build snapshot). Newport Xorg XAA acceleration is ENABLED.
+Use ./run-iris.sh: the included IRIS backend fixes the RGB24 physical-plane
+color and write-mask interpretation. An older Prismatic/IRIS backend still
+shows incorrect accelerated colors with this same disk image.
+
+Known limitation: xmahjongg tile/control artwork is still corrupted with
+XAA enabled; software rendering is correct. This image is an acceleration
+experiment, not a replacement for the qualified software-rendered image.
+
+Native fill/copy/XOR/upload and partial-mask checks pass. The accelerated
+and software test screenshots match byte-for-byte; all 20 sampled colors,
+keyboard/mouse input, and native terminal checks pass. No speedup claim is
+made from these correctness runs. The software-rendered behavior image
+remains available for comparison.
+
+Winterm can start with incorrect vertical font metrics. The diagnostic
+interaction checks record its initial geometry and resize it explicitly;
+that does not fix its intermittent startup sizing in this image.
+
+To compare software rendering: log out, then as root change NoAccel from
+false to true in /usr/local/share/xiri/xorg.conf and start xiri-desktop again.
+Set it back to false to re-enable XAA. Keep each trial in its own CHD overlay.

@@ -1,9 +1,13 @@
 # Newport display correctness and performance
 
 The user reports that the NetBSD/Xiri display feels less responsive than
-original IRIX. The current manual image uses native Xorg's Newport driver
-with `Option "NoAccel" "true"`; this is a concrete performance constraint,
-not yet a measured explanation of the entire difference.
+original IRIX. The [framed-console/XAA cycle](results/2026-11-02-newport-framed-acceleration.md)
+now fixes the measured RGB24 color/mask mismatch in IRIS. Native XAA and
+software controls pass the same expanded drawing/input checks and produce
+identical screenshots. This establishes correctness for that workload;
+the full desktop still exposes corrupted xmahjongg artwork with XAA enabled.
+That is under investigation before performance comparisons. The earlier software-rendered image
+is preserved as a control.
 
 ## Components to investigate
 
@@ -15,17 +19,29 @@ not yet a measured explanation of the entire difference.
 | Xiri compatibility and application behavior | Adds syscall/runtime work for original IRIX clients. Compare a native X client against the same workload in an IRIX client before assigning rendering delays to compatibility. |
 | Host frontend and emulator build | Rendering mode, JIT/interpreter selection and CPU scheduling can change perceived speed. Use matching machine profiles and record the exact builds for comparisons. |
 
-The [accelerated-color finding](results/2026-10-30-netbsd-x11.md#accelerated-color-finding)
-provides a specific starting point. A solid fill expected pixel `0xfe` but
-returned `0x092492`; a screen copy preserved the incorrect color, while image
-upload was correct. The release Xorg driver converts color bits to physical
-plane order for fast clear. The inspected IRIS implementation consumed the
-COLORVRAM value directly in its pixel representation. WRMASK uses the same
-conversion. This identifies a mismatch; it does not establish that NetBSD is
-the side to change. Recheck it with the current IRIS integration build before
-making a new driver change. Keep the qualified software path as a comparison.
+The [original accelerated-color finding](results/2026-10-30-netbsd-x11.md#accelerated-color-finding)
+was reproduced with the current integration build: red `0xfe` became
+`0x092492` in fills and copies, while uploads were correct. IRIS `xiri`
+`819c682` corrects COLORVRAM and WRMASK interpretation for RGB24. NetBSD's
+installed Xorg driver follows the documented plane layout and is unchanged.
+The generic, generated LLVM and Cranelift paths share the corrected semantics;
+other depths/planes and physical hardware remain separate validation work.
 
 ## Supplied SGI manual
+
+The additional hardware collection at `../sgi` supplies a more specific
+reference: its `sources.json` entries `asic-rex3` and `asic-rb2`. REX3
+section 3.9, table 22, describes RGB24 physical planes; the
+[RB2 specification](https://erikarn.github.io/sgi/indy/datasheets/sgi_indy_rb2.pdf)
+section 4.2 describes direct write-mask delivery and bypass of the normal
+formatter during fast clear. Table 4.4 repeats the physical layout. These
+support NetBSD Xorg's `NewportColor2Planes24` encoding: physical bits 23..0
+are B0, R0, G0 through B7, R7, G7, while IRIS stores packed BGR pixels.
+Decode COLORVRAM and WRMASK at the rendering boundary; retain raw register
+readback and the existing COLORI/HOSTRW formats. The
+[source manifest](../lab/newport-accel/hardware-sources.json) records local
+copies, hashes and sections. This establishes a documented emulator
+correction; it is not a physical-Indy validation.
 
 The local reference is *IRIX Device Driver Programmer's Guide*, document
 007-0911-110, 882 PDF pages:
@@ -55,19 +71,23 @@ IRIX APIs in the examples must be translated into NetBSD equivalents.
 
 ## Next performance cycle
 
-1. Reproduce solid-fill, copy, upload and composed-framebuffer checks with
+1. Completed for RGB24: solid-fill, copy, upload and composed-framebuffer checks with
    acceleration disabled and enabled on the same image and emulator build.
    Extend the existing `scripts/qualify-netbsd-x11.py --accelerated` workload
    rather than accepting an attractive screenshot as a correctness test.
-2. Resolve the measured fast-clear/plane-mask mismatch against documented
+2. Completed for RGB24: resolve the measured fast-clear/plane-mask mismatch against documented
    register definitions and original IRIX observations. Preserve the other
    depth/plane combinations when changing IRIS or the Xorg driver.
-3. Measure native Xorg fill/copy/upload/text and window movement with host
+3. Isolate the remaining XAA xmahjongg artwork corruption. Screen-copy,
+   image-write and color-expansion disable controls do not resolve it;
+   disabling individual primitives can introduce additional missing output.
+4. Measure native Xorg fill/copy/upload/text and window movement with host
    elapsed time and explicit X synchronization. Record CPU use and display
    configuration; use equivalent hardware/frontend settings for IRIX.
-4. Restore validated accelerated operations incrementally and repeat the
+5. Restore validated accelerated operations incrementally and repeat the
    desktop interaction tests. Then profile remaining compatibility or
    frontend costs. Do not assume every delay originates in the kernel driver.
 
-The current desktop usability cycle still takes precedence. Missing Icon
-Catalog artwork has a separate measured filetype-database locking dependency.
+Continue desktop behavior work alongside measured graphics performance. Icon
+Catalog artwork was repaired separately through the filetype database locks
+and native FAM resource mapping.

@@ -5,10 +5,10 @@ Use `xiri` as the integration branch in each fork:
 | Project | Remote | Local development checkout | Default branch |
 | --- | --- | --- | --- |
 | IRIS | [salvogendut/iris, xiri](https://github.com/salvogendut/iris/tree/xiri) | `../iris` | `main` |
-| NetBSD | [salvogendut/NetBSD-xiri, xiri](https://github.com/salvogendut/NetBSD-xiri/tree/xiri) | `../NetBSD-nixbench` | `trunk` |
+| NetBSD | [salvogendut/NetBSD-xiri, xiri](https://github.com/salvogendut/NetBSD-xiri/tree/xiri) | `../NetBSD-xiri` | `trunk` |
 
-The local NetBSD directory retains its older name; its origin points to
-NetBSD-xiri. There is currently no separate `../NetBSD-xiri` checkout.
+The NetBSD checkout is now `../NetBSD-xiri`; `../NetBSD-nixbench` is a
+compatibility symlink to it, preserving older reproduction commands.
 The [consolidation record](results/2026-11-01-xiri-branches.md) records the
 merged histories, removed branch names and verification. Work includes both
 the IRIX compatibility chain and XFS in NetBSD, and all NetBSD/frontend/TLB
@@ -24,8 +24,8 @@ normal fast-forward push; the owning task can advance its checkout when ready.
 ```sh
 git -C ../iris switch xiri
 git -C ../iris pull --ff-only origin xiri
-git -C ../NetBSD-nixbench switch xiri
-git -C ../NetBSD-nixbench pull --ff-only origin xiri
+git -C ../NetBSD-xiri switch xiri
+git -C ../NetBSD-xiri pull --ff-only origin xiri
 ```
 
 Make routine changes on `xiri`. When a topic branch is needed, create it from
@@ -41,6 +41,27 @@ keep kernel builds sequential with at most two jobs. Branch consolidation does
 not repin qualified kernels, emulator binaries, runtime resources or guest disks.
 
 ## IRIS upstream updates
+
+The framed-console/acceleration trial rechecked upstream on 2026-11-02
+and again on 2026-11-03 (Europe/Rome, 23:00 UTC on November 2):
+`upstream/main` remains `2eb811f43a69a9dec7f0ceb50cb439b7e088845c`, already
+contained in `xiri` at `e0493739955391c1a344655fd0361d4997e51372`
+and still contained after the color correction at `819c682`.
+No merge was needed. A separate release build in `.work/target-newport-accel`
+is used for this trial; the older qualified emulator binaries remain intact.
+At the user's explicit request, its NetBSD source comes from a snapshot of
+`feature/newport-framed-console`. Those frame changes were subsequently
+committed by their owning task as `a536d8c4da2`; all twelve changed files
+match the build snapshot byte-for-byte. See
+[the trial inputs](../lab/newport-accel/README.md).
+
+IRIS `xiri` commit `819c6825504d40ad9f9aa00554249affd2da9446` corrects
+RGB24 fast-clear colors and physical write masks using the REX3/RB2 layout
+catalogued in `../sgi`. The new expected-value regressions fail on the
+previous renderer; 183 Newport tests pass after the correction, including
+generic and Cranelift paths. Guest qualification uses a separate build of
+this commit, preserving the earlier binaries and disk images. The shared
+IRIS/Prismatic performance checkouts remain untouched.
 
 The [desktop behavior cycle](results/2026-11-02-irix-desktop-behavior.md)
 reviewed upstream `2eb811f43a69a9dec7f0ceb50cb439b7e088845c` and merged/pushed it

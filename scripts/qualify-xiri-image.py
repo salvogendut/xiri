@@ -27,6 +27,8 @@ def main():
     p.add_argument('--output', required=True, type=Path)
     p.add_argument('--png', required=True, type=Path)
     p.add_argument('--promote', action='store_true')
+    p.add_argument('--record-bundle', action='store_true',
+                   help='save verification in this bundle without changing the default image')
     a = p.parse_args()
     r = json.loads((a.run/'result.json').read_text())
     bundle = ROOT/r['bundle']
@@ -46,6 +48,8 @@ def main():
     assert sha(bundle/'copy-ledger.json') == m['copy_ledger_sha256']
     assert sha(bundle/'permissions.json') == m['permission_manifest_sha256']
     assert sha(bundle/'iris.toml') == m['config_sha256']
+    for relative, digest in m.get('emulator_files', {}).items():
+        assert sha(bundle/relative) == digest, relative
     baseline = ROOT/m.get('baseline','lab/irix-signal/baseline.json')
     if 'baseline_sha256' in m:
         assert sha(baseline) == m['baseline_sha256']
@@ -158,8 +162,25 @@ def main():
         report['limitations'][0] = ('Catalog launch, execution notification, granite and home links '
             'pass from the CHD; the source-disk qualification covers closed/opened/closed pixels. '
             'Gameplay, transient launch animation and full Dumpster operations remain unqualified.')
+    if m.get('experimental_note'):
+        report['experimental_note'] = m['experimental_note']
+        report['limitations'].insert(0, m['experimental_note'])
+        if seed_result.get('xorg_configuration', {}).get('acceleration_requested'):
+            report['limitations'].append('The inherited closed/opened/closed icon-pixel qualification used software rendering; that state cycle was not repeated with XAA in this CHD probe.')
+    if m.get('emulator_files'):
+        report['emulator_files'] = m['emulator_files']
+    if seed_result.get('xorg_configuration'):
+        report['xorg_configuration'] = seed_result['xorg_configuration']
+        assert r['xaa_enabled'] == seed_result['xorg_configuration']['acceleration_requested']
+        report['xaa_enabled'] = r['xaa_enabled']
+    if r.get('console_size'):
+        report['console_size'] = r['console_size']
+    if r.get('winterm_arranged'):
+        report['winterm_arranged'] = r['winterm_arranged']
+        report['winterm_geometry_before_arrangement'] = r['winterm_geometry_before_arrangement']
+        report['limitations'].append('Winterm was explicitly resized for diagnostic input checks; its unassisted startup sizing remains unqualified in this run.')
     a.output.write_text(json.dumps(report, indent=2)+'\n')
-    if a.promote:
+    if a.promote or a.record_bundle:
         manual_nvram = bundle/'nvram-graphics.bin' if m.get('manual_nvram_sha256') else a.run/'nvram.bin'
         if m.get('manual_nvram_sha256'):
             assert sha(manual_nvram) == m['manual_nvram_sha256']
@@ -181,6 +202,7 @@ def main():
             qualification=str(a.output), qualification_sha256=sha(a.output),
             qualification_run=str(a.run))
         (bundle/'manifest.json').write_text(json.dumps(promoted, indent=2)+'\n')
+    if a.promote:
         public = dict(schema=1, bundle=r['bundle'], image=r['bundle']+'/netbsd-xiri.chd',
             chd_sha256=r['chd_sha256'], chd_bytes=m['chd_bytes'], logical_bytes=m['logical_bytes'],
             raw_sha256=m['source_raw_sha256'], nvram_sha256=report['nvram_sha256'],
@@ -191,6 +213,11 @@ def main():
         if m.get('manual_nvram_sha256'):
             public['manual_nvram_sha256'] = m['manual_nvram_sha256']
             public['manual_console'] = m['manual_console']
+        if m.get('emulator_files'):
+            public['emulator_revision'] = m['pin']['emulator_revision']
+            public['emulator_files'] = m['emulator_files']
+        if m['pin'].get('committed_source_revision'):
+            public['kernel_source_equivalent_commit'] = m['pin']['committed_source_revision']
         if seed_result.get('desktop_behavior'):
             public['desktop_behavior_resource_ledger_sha256'] = seed_result['desktop_behavior']['resource_ledger_sha256']
             public['native_fam_source_manifest_sha256'] = seed_result['native_fam_build']['source_manifest_sha256']

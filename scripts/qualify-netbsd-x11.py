@@ -64,25 +64,47 @@ def monitor(lab, command):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--mode', choices=['ci', 'ordinary'], default='ci')
-    parser.add_argument('--accelerated', action='store_true', help='reproduce the open XAA color failure')
+    parser.add_argument('--accelerated', action='store_true', help='exercise Newport XAA acceleration')
+    parser.add_argument('--seed', type=Path, help='reuse a prepared desktop raw seed')
+    parser.add_argument('--baseline', type=Path, help='kernel/emulator pin for the prepared seed test')
+    parser.add_argument('--kernel-build', type=Path, help='isolated kernel build with tftp output')
     parser.add_argument('--boot-timeout', type=int, default=300)
     args = parser.parse_args()
     args.debugger = False
     if args.boot_timeout < 1:
         parser.error('boot timeout must be positive')
+    if any([args.seed, args.baseline, args.kernel_build]) and not all([args.seed, args.baseline, args.kernel_build]):
+        parser.error('--seed, --baseline and --kernel-build must be supplied together')
     output_root = ROOT / '.work/netbsd-x'
     output_root.mkdir(exist_ok=True)
     directory = Path(tempfile.mkdtemp(prefix=f'{args.mode}-', dir=output_root))
-    lab = probe.Lab(args, directory)
+    config_text = None
+    pin = None
+    if args.seed:
+        args.seed = args.seed.resolve()
+        args.kernel_build = args.kernel_build.resolve()
+        pin = json.loads(args.baseline.read_text())
+        assert probe.sha256(probe.IRIS) == pin['emulator_sha256']
+        config_text = (ROOT/'lab/indy-netbsd/iris.toml').read_text()
+        config_text = re.sub(r'^tftp_dir = .*$', 'tftp_dir = '+json.dumps(str(args.kernel_build/'tftp')),
+                             config_text, flags=re.M)
+    lab = probe.Lab(args, directory, config_text=config_text)
     result = {'mode': args.mode, 'accelerated': args.accelerated, 'status': 'error',
               'checks': [], 'clean_shutdown': False,
               'started_utc': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())}
     started = time.monotonic()
     print(f'Results: {directory.relative_to(ROOT)}', flush=True)
     try:
-        checkpoint = ROOT / '.work/indy-netbsd-kernel'
+        checkpoint = args.seed or ROOT / '.work/indy-netbsd-kernel'
         result['base_disk_sha256'] = probe.sha256(checkpoint / 'disk.raw')
-        result['kernel_sha256'] = probe.sha256(ROOT / '.work/netbsd-11.0/tftp/netbsd-XIRI_INDY')
+        kernel = (args.kernel_build/'tftp/netbsd-XIRI_INDY' if args.seed else
+                  ROOT / '.work/netbsd-11.0/tftp/netbsd-XIRI_INDY')
+        result['kernel_sha256'] = probe.sha256(kernel)
+        if pin:
+            assert result['kernel_sha256'] == pin['boot_kernel_sha256']
+            provenance = json.loads((checkpoint/'image-source.json').read_text())
+            assert result['base_disk_sha256'] == provenance['raw_sha256']
+            result.update(pin=pin, base_image=provenance)
         result['emulator_sha256'] = probe.sha256(probe.IRIS)
         result['harness_sha256'] = probe.sha256(Path(__file__).resolve())
         for name in ['disk.raw', 'nvram.bin']:
@@ -97,12 +119,15 @@ def main():
                     [f'sgimips/binary/sets/{name}.tgz' for name in SETS]]
         if len(selected) != len(SETS):
             raise RuntimeError('X11 sets missing from pinned manifest')
-        subprocess.run(['sha512sum', '-c', '-'], cwd=inputs,
-                       input='\n'.join(selected) + '\n', text=True, check=True)
-        for name in SETS:
-            (media / f'{name}.tgz').symlink_to(inputs / f'sgimips/binary/sets/{name}.tgz')
+        if not args.seed:
+            subprocess.run(['sha512sum', '-c', '-'], cwd=inputs,
+                           input='\n'.join(selected) + '\n', text=True, check=True)
+            for name in SETS:
+                (media / f'{name}.tgz').symlink_to(inputs / f'sgimips/binary/sets/{name}.tgz')
         for name in ['probe.c', 'xorg.conf']:
             probe.run(['cp', ROOT / 'lab/indy-netbsd/x11' / name, media / name])
+        if args.seed:
+            probe.run(['cp', ROOT/'lab/irix-installed-desktop/xorg.conf', media/'xorg.conf'])
         if args.accelerated:
             config = media / 'xorg.conf'
             config.write_text(config.read_text().replace('Option "NoAccel" "true"', 'Option "NoAccel" "false"'))
@@ -111,13 +136,17 @@ def main():
         probe.run(['genisoimage', '-quiet', '-R', '-J', '-follow-links', '-V', 'XIRI_X11',
                    '-o', directory / 'probe.iso', media], timeout=60)
         lab.start()
-        guest(lab, result, 'Install verified X11 sets',
+        if args.seed:
+            guest(lab, result, 'Verify kernel and mount diagnostic media',
+                  'uname -v | grep '+pin['ident']+' && mount -t cd9660 -o ro /dev/cd0a /cdrom')
+        else:
+            guest(lab, result, 'Install verified X11 sets',
               'mkdir -p /cdrom && mount -t cd9660 -o ro /dev/cd0a /cdrom && '
               '(set -e; for s in xbase xcomp xetc xfont xserver; do '
               'echo "Installing $s"; tar -xzpf /cdrom/$s.tgz -C /; done)', 1200)
         guest(lab, result, 'Prepare wsdisplay and build the Xlib probe',
               f'mkdir -p {GUEST} && cp /cdrom/probe.c /cdrom/xorg.conf {GUEST}/ && '
-              'wsconscfg -f /dev/ttyEcfg 0 && '
+              '(wsconscfg -f /dev/ttyEcfg 0 2>/dev/null || test -c /dev/ttyE0) && '
               'cc -O2 -Wall -Wextra -I/usr/X11R7/include -L/usr/X11R7/lib '
               f'-Wl,-rpath,/usr/X11R7/lib {GUEST}/probe.c -lX11 -o {GUEST}/probe', 180)
         guest(lab, result, 'Start Newport Xorg and wait for a client connection',
@@ -135,12 +164,18 @@ def main():
               'test "$xwait" -lt 30 || break; sleep 1; done; '
               f'grep -q READY {GUEST}/probe.log', 60)
         monitor(lab, 'screen info')
+        if args.seed:
+            monitor(lab, 'disp compositor gl')
+            monitor(lab, 'disp compositor sw')
+            monitor(lab, 'key shift')
+            monitor(lab, 'screen wait 500 10000')
         monitor(lab, f'screen shot {directory}/drawing.png')
         pixel_checks = []
         # Xorg allocates 0xfe components on this release; compare the composed
         # frame as well as XGetImage, which reads the shadow buffer with NoAccel.
         for i, expected in enumerate(['fe0000', '00fe00', '0000fe', 'fefefe']):
             for x, y in [(100 + 120 * i, 160), (100 + 120 * i, 280),
+                         (100 + 120 * i, 380), (100 + 120 * i, 460),
                          (568 + 16 * (i % 2), 128 + 16 * (i // 2))]:
                 output = monitor(lab, f'screen pix {x} {y}')
                 match = re.search(r'= ([0-9a-fA-F]{6})', output)
@@ -177,7 +212,10 @@ def main():
         guest(lab, result, 'Stop X clients and server cleanly',
               'kill "$tpid" "$wpid"; wait "$tpid" 2>/dev/null; '
               'wait "$wpid" 2>/dev/null; kill "$xpid"; wait "$xpid"; sync', 90)
-        read_file(lab, '/var/log/Xorg.0.log', directory / 'Xorg.0.log')
+        xorg_log = read_file(lab, '/var/log/Xorg.0.log', directory / 'Xorg.0.log')
+        result['xaa_enabled'] = 'Using XFree86 Acceleration Architecture (XAA)' in xorg_log
+        if result['xaa_enabled'] != args.accelerated:
+            raise RuntimeError('Xorg acceleration selection does not match the requested mode')
         if not result['drawing_passed'] or any(p['actual'] != p['expected'] for p in pixel_checks):
             raise RuntimeError('drawing/readback or composed display pixel mismatch')
         result['status'] = 'passed'
@@ -213,6 +251,8 @@ def main():
                           'xiri-overlay', f'/tmp/iris-ci-{pid}-scsi1{suffix}',
                           str(directory / f'live{suffix}')])
         result['seconds'] = round(time.monotonic() - started, 3)
+        if args.seed:
+            result['base_disk_unchanged'] = probe.sha256(args.seed/'disk.raw') == result['base_disk_sha256']
         if not lab.clean_shutdown:
             result['status'] = 'error'
         (directory / 'result.json').write_text(json.dumps(result, indent=2) + '\n')

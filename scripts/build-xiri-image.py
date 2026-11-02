@@ -22,6 +22,9 @@ def main():
     p.add_argument('--output-directory', required=True, type=Path)
     p.add_argument('--baseline', type=Path, default=ROOT/'lab/irix-signal/baseline.json')
     p.add_argument('--kernel', type=Path, default=ROOT/'.work/netbsd-irix-signal-build/tftp/netbsd-XIRI_INDY')
+    p.add_argument('--experimental-note', help='label a diagnostic image without claiming full qualification')
+    p.add_argument('--iris-bin-dir', type=Path,
+                   help='include the pinned standalone emulator and a local launch script')
     a = p.parse_args()
     seed, out = a.seed_run.resolve(), a.output_directory.resolve()
     r = json.loads((seed/'result.json').read_text())
@@ -34,6 +37,22 @@ def main():
     out.mkdir(parents=True, exist_ok=False)
     (out/'tftp').mkdir()
     (out/'verification').mkdir()
+    emulator_files = {}
+    if a.iris_bin_dir:
+        (out/'emulator').mkdir()
+        for name, key in [('iris', 'emulator_sha256'), ('iris-ci', 'ci_client_sha256')]:
+            source = a.iris_bin_dir/name
+            assert sha(source) == pin[key], name
+            destination = out/'emulator'/name
+            shutil.copy2(source, destination)
+            assert sha(destination) == pin[key], name
+            emulator_files['emulator/'+name] = pin[key]
+        launcher = out/'run-iris.sh'
+        launcher.write_text('#!/bin/sh\nset -eu\n'
+            'bundle_dir=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)\n'
+            'cd "$bundle_dir"\nexec ./emulator/iris --config iris.toml "$@"\n')
+        launcher.chmod(0o755)
+        emulator_files['run-iris.sh'] = sha(launcher)
     raw_hash = sha(seed/'disk.raw')
     commands = []
 
@@ -55,6 +74,11 @@ def main():
     shutil.copyfile(seed/'result.json', out/'seed-result.json')
     shutil.copyfile(ROOT/'lab/irix-installed-desktop/prismatic.cfg', out/'prismatic.cfg')
     readme = (ROOT/'lab/irix-installed-desktop/image-README.txt').read_text()
+    if emulator_files:
+        readme = ('Run ./run-iris.sh to use the included, tested IRIS backend.\n'
+            'Prismatic must be rebuilt with the IRIS revision in manifest.json\n'
+            'before using this accelerated image; the CHD cannot update its backend.\n\n'
+            + readme)
     if r.get('desktop_behavior'):
         readme = readme.replace(
             'Opened-icon shape feedback and interactive IRIX shell use remain unqualified.',
@@ -84,6 +108,8 @@ def main():
         end = readme.index('Other original menu actions', start)
         readme = readme[:start] + ('This legacy seed uses the earlier desktop configuration.\n'
             'Toolchest launches have not been qualified for it.\n') + readme[end:]
+    if a.experimental_note:
+        readme = 'EXPERIMENTAL IMAGE\n'+a.experimental_note+'\n\n'+readme
     (out/'README.txt').write_text(readme)
     (out/'prismatic-state').mkdir()
     manual_nvram = seed/'nvram.bin'
@@ -159,6 +185,12 @@ tftp_dir = "tftp"
         permission_manifest_sha256=sha(out/'permissions.json'),
         tool_version=subprocess.run(TOOL, text=True, capture_output=True).stdout.splitlines()[0],
         commands=commands, direct_chd_boot='pending separate cold-boot probe')
+    if a.experimental_note:
+        report['experimental_note'] = a.experimental_note
+    if emulator_files:
+        report['emulator_files'] = emulator_files
+    if r.get('xorg_configuration'):
+        report['xorg_configuration'] = r['xorg_configuration']
     if r.get('graphics_boot'):
         report['manual_nvram_sha256'] = sha(manual_nvram)
         report['manual_console'] = 'graphics; AutoLoad Yes; serial B diagnostic login'
