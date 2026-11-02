@@ -151,3 +151,12 @@ See [manual image instructions](../XIRI-IMAGE.md#experimental-framed-console-acc
 All owned emulator instances were shut down after testing. The November 3
 active-day upstream check still found `2eb811f` already integrated; no merge
 was needed. The color fix is pushed on IRIS `xiri` as `819c682`.
+
+## User acceptance and next cycle
+
+On November 3 the user reported that acceleration is substantially snappier
+and more usable, and accepted this as the base for further work. The next
+priority is xmahjongg's corrupted artwork. This feedback does not erase the
+recorded failures or establish a timed performance result. The manually used
+NVRAM has changed since packaging and must be preserved; investigation uses
+the frozen prepared raw disk and disposable copies instead.

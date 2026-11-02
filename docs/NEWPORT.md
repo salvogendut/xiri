@@ -9,6 +9,13 @@ the full desktop still exposes corrupted xmahjongg artwork with XAA enabled.
 That is under investigation before performance comparisons. The earlier software-rendered image
 is preserved as a control.
 
+On 2026-11-03 the user manually tested the accelerated CHD and found it
+noticeably snappier and more usable than software rendering, despite the
+remaining glitches. It is the accepted development baseline for the
+xmahjongg follow-up. This is user-observed responsiveness, not a controlled
+benchmark. Preserve its manual overlay/NVRAM and the earlier software image;
+run diagnostics on disposable copies of the frozen prepared disk.
+
 ## Components to investigate
 
 | Component | Responsibility and current evidence |

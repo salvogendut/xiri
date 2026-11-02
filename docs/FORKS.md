@@ -42,6 +42,13 @@ not repin qualified kernels, emulator binaries, runtime resources or guest disks
 
 ## IRIS upstream updates
 
+The November 3 xmahjongg cycle checked upstream again: `2eb811f` is still
+already contained in IRIS `xiri` `819c682`; no integration was needed.
+NetBSD `xiri` is now `5f094bc6ab9` after the separate runtime-theme merge.
+The rendering investigation keeps its existing framed-kernel pin for a
+controlled comparison. All three project checkouts were clean and pushed
+before starting the investigation.
+
 The framed-console/acceleration trial rechecked upstream on 2026-11-02
 and again on 2026-11-03 (Europe/Rome, 23:00 UTC on November 2):
 `upstream/main` remains `2eb811f43a69a9dec7f0ceb50cb439b7e088845c`, already
