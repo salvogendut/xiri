@@ -1,5 +1,10 @@
 # IRIX resource checklist
 
+The working reference release is **IRIX 6.5.22**, confirmed by the user on
+2026-11-02; the [installed-image baseline](results/2026-10-30-irix-vendor-baseline.md)
+identifies the maintenance release as **6.5.22m**. Resource and behavior
+findings below refer to that installation unless explicitly stated otherwise.
+
 The current reusable baseline and manual IRIS procedure are in
 [XIRI-IMAGE.md](XIRI-IMAGE.md). [IRIX-IMPORT.md](IRIX-IMPORT.md) records exact
 source/destination mappings, permission adjustments and the SGI catalog
@@ -38,6 +43,22 @@ The [user-supplied desktop capture](IRIX-DESKTOP-REFERENCE.md) records the
 visual target: populated catalog tabs, icon/toolbar artwork, desktop icons,
 SGI colors and a patterned background. Use a known installed application for
 the first page/action test; the complete pictured application set is optional.
+
+## IRIX information sources
+
+- [IRIX7 Silicon Graphics Technical Document Archive](https://irix7.com/techpubs.html)
+  — user-supplied reference index, checked 2026-11-02. It catalogs SGI manuals
+  by document number and revision, including desktop, programming,
+  administration and hardware documentation. Use the linked original manuals
+  as evidence and record the exact revision and pages used. Unlinked document
+  numbers identify missing copies; another revision may be available.
+- [IRIX Interactive Desktop User Interface Guidelines, 007-2167-006](https://techpubs.jurassic.nl/library/manuals/2000/007-2167-006/sgi_html/)
+  — desktop behavior and interface reference for the acceptance plan.
+- [Desktop Integration Guide, chapter 11, 007-2006-130](https://techpubs.jurassic.nl/library/manuals/2000/007-2006-130/sgi_html/ch11.html)
+  — Icon Catalog registration; findings and the supplementary customization
+  reference are recorded in [IRIX-IMPORT.md](IRIX-IMPORT.md#icon-catalog-reference-check-2026-11-02).
+- [Supplied device-driver guide and Newport notes](NEWPORT.md#supplied-sgi-manual)
+  — local copy of 007-0911-110, its checksum, relevant pages and hardware limits.
 
 ## Already extracted
 

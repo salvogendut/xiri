@@ -1,18 +1,21 @@
 # Reusable Xiri development image
 
-The local bundle is `.work/images/xiri-netbsd-desktop-20261102-services/`.
-`netbsd-xiri.chd` is an 8 GiB NetBSD disk compressed to 480,153,720 bytes
+The local bundle is `.work/images/xiri-netbsd-desktop-20261102-graphical/`.
+`netbsd-xiri.chd` is an 8 GiB NetBSD disk compressed to 480,190,454 bytes
 (about 458 MiB). It contains the qualified Xiri kernel, original IRIX
 runtimes, installed application/catalog payload, persistent fonts and a
 manual desktop launcher. The [desktop service qualification](results/2026-11-02-desktop-services.md)
 adds native FAM, catalog contents, toolbar bitmaps and the original Toolchest
-menus. The [cold-boot record](results/2026-11-02-desktop-services-image.json)
-verifies the new kernel, persistent resources, native Xorg/Newport and cleanup. The [import ledger](IRIX-IMPORT.md) records
+menus. The [usability update](results/2026-11-02-desktop-usability.md) adds
+graphical automatic boot, console login, both logout menus, window-manager
+readiness before client startup, and the native rpcbind loopback fix.
+The [cold-boot record](results/2026-11-02-desktop-usability-image.json)
+verifies the persistent resources, native Xorg/Newport and cleanup. The [import ledger](IRIX-IMPORT.md) records
 the source and destination paths; vendor bytes remain outside Git.
 
 ## Start it in IRIS
 
-Keep `netbsd-xiri.chd`, `iris.toml` and `nvram.bin` together. Use an Indy
+Keep `netbsd-xiri.chd`, `iris.toml`, `nvram-graphics.bin` and `nvram.bin` together. Use an Indy
 IP24 with an R4400, Newport graphics, 256 MiB RAM and the disk at **SCSI ID
 1**. The included configuration selects these settings and CHD overlays.
 A compatible IRIS build must include our NetBSD CPU/TLB/device fixes; see
@@ -27,14 +30,15 @@ For the standalone emulator, change to the bundle directory and run:
 
 For the GUI, configure a machine with those settings and select the CHD
 and supplied NVRAM using absolute paths if they are outside the machine
-folder. Enable SCSI interrupt deferral. Open **Machine → Serial console**;
-the supplied configuration uses serial channel B at `127.0.0.1:8891`.
+folder. Select `nvram-graphics.bin` for automatic boot on the display.
+Enable SCSI interrupt deferral. The diagnostic serial login uses channel B
+at `127.0.0.1:8891` through **Machine → Serial console**.
 Monitor and serial A ports are 8898 and 8890. Adjust all three if another
 machine already uses them.
 
-Select **Start System**, or enter `boot` at the PROM command monitor.
-Log into NetBSD as `root` (the development guest has no root password),
-then start the desktop from that serial console:
+The graphical profile starts NetBSD automatically. Log into NetBSD on the
+display as `root` (the development guest has no root password), then start
+the desktop:
 
 ```sh
 /usr/local/bin/xiri-desktop
@@ -55,12 +59,17 @@ The original vendor menu files and IRIX shells are preserved; other original
 menu actions still need compatibility work. Each supported menu launch has
 its own `launch-APP.*/` log directory inside the current session directory.
 
-The previous `.work/images/xiri-netbsd-desktop-20261102/` and
+The previous `.work/images/xiri-netbsd-desktop-20261102-services/`,
+`.work/images/xiri-netbsd-desktop-20261102/` and
 `.work/images/xiri-netbsd-desktop-20261101/` bundles are retained.
 Use the new CHD in a fresh machine directory/overlay; do not attach an overlay
 from the older base image to it.
 
-Press Ctrl-C in the serial console running the launcher to end the session.
+Choose **Desktop → Log Out** in Toolchest to return to the launching shell.
+For the desktop menu, hold the right mouse button over empty background,
+move to **Log Out**, then release. Both routes stop the owned clients and
+services. They do not save an IRIX session. Ctrl-C in a serial console
+running the launcher remains an alternative.
 Then shut down NetBSD before stopping IRIS:
 
 ```sh
@@ -81,21 +90,29 @@ multiuser and observes the installed desktop using the existing release
 binary. The [updated desktop check](results/2026-11-02-desktop-launch.md#replacement-image-and-prismatic-confirmation)
 additionally covers the larger screen and a menu-created native shell,
 with a [Prismatic screenshot](results/images/2026-11-02-prismatic-menu-shell.png).
-Those Prismatic observations used the earlier image. The service image has
-passed the pinned standalone IRIS cold-boot test; its Prismatic configuration
-is unchanged, but the frontend has not been retested with this particular CHD.
+Those Prismatic observations used earlier images. The current image is
+qualified with the pinned standalone IRIS build, including actual Newport
+frames and PS/2 console/menu input. Prismatic has not been retested with this
+particular CHD and graphical NVRAM; its configuration still uses the same
+machine and disk settings.
+
+One earlier serial cold-boot capture was black and was rejected by the
+qualifier. The fresh retry produced a valid desktop frame before test input;
+its cause remains unresolved. The [usability record](results/2026-11-02-desktop-usability.md)
+keeps both observations and the successful graphical-boot checks.
 
 Prismatic embeds IRIS but uses its own configuration format. Use the
 included `prismatic.cfg`, not `iris.toml`. The bundle also includes an
-independent `prismatic-state/nvram.bin` seeded with the NetBSD boot settings.
+independent `prismatic-state/nvram.bin` seeded with the graphical NetBSD boot settings.
 From the bundle directory:
 
 ```sh
 ~/Dev/prismatic/target/release/prismatic --config prismatic.cfg --state-dir prismatic-state
 ```
 
-Press Ctrl+P to start if the frontend is paused. Use the serial console at
-`127.0.0.1:8891` for NetBSD login with the provided serial-console NVRAM.
+Press Ctrl+P to start if the frontend is paused, then click the display to
+capture input. NetBSD boots on the display; log in as `root` and run
+`xiri-desktop`. Serial B at `127.0.0.1:8891` remains available for diagnostics.
 Do not attach the same writable CHD/overlay to another running emulator;
 make a separate copy when testing simultaneously. Ports 8890, 8891 and
 8898 can be changed in `[advanced.expert]` if occupied.
@@ -107,6 +124,18 @@ attaching the CHD does not import the bundle's boot variables. The PROM
 commands below fix an existing machine still looking for `sash`.
 
 ## PROM settings and fallback
+
+`nvram-graphics.bin` selects `console=g` and `AutoLoad=Yes`; the separate
+`nvram.bin` retains the serial PROM profile for automated probes. To change
+an existing machine's console profile at the PROM, use:
+
+```text
+setenv -f console g
+setenv AutoLoad Yes
+```
+
+Restart the machine for the console change to take effect. For a diagnostic
+serial PROM boot, use `setenv -f console d` and `setenv AutoLoad No` instead.
 
 The verified boot path uses the disk's existing NetBSD volume-header
 loader and `/netbsd.boot`, the ELF32 PROM wrapper. `/netbsd` contains the
@@ -178,7 +207,7 @@ launcher without importing applications again:
 
 ```sh
 PYTHONDONTWRITEBYTECODE=1 python3 scripts/probe-xiri-image.py \
-  .work/images/xiri-netbsd-desktop-20261102-services
+  .work/images/xiri-netbsd-desktop-20261102-graphical
 ```
 
 For older harnesses that require a raw disk, materialize a stopped seed
@@ -186,11 +215,11 @@ once (the tool reuses the verified extraction when available):
 
 ```sh
 PYTHONDONTWRITEBYTECODE=1 python3 scripts/prepare-xiri-seed.py \
-  .work/images/xiri-netbsd-desktop-20261102-services \
-  --output-directory .work/xiri-image/prepared-seed-20261102-services
+  .work/images/xiri-netbsd-desktop-20261102-graphical \
+  --output-directory .work/xiri-image/prepared-seed-20261102-graphical
 ```
 
-This produces `.work/xiri-image/prepared-seed-20261102-services/`. Clone its `disk.raw` for
+This produces `.work/xiri-image/prepared-seed-20261102-graphical/`. Clone its `disk.raw` for
 runs; preserve that seed. Repeating preparation checks its hash and does
 not reimport files. Use it with harnesses whose kernel and payload pins match. Keep the older
 prepared seeds for historical regression tests; do not substitute a newer

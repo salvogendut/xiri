@@ -69,6 +69,7 @@ int main(int argc, char **argv)
     unsigned char data[3][8192];
     size_t used[3] = {0}, total[3] = {0};
     char *end;
+    const char *stop_file = getenv("XIRI_SESSION_STOP_FILE");
     if (argc < 3) return 2;
     long duration = strtol(argv[1], &end, 10);
     if (*end || duration < 0 || duration > 86400000) return 2;
@@ -127,7 +128,8 @@ int main(int argc, char **argv)
         remaining = owned(1);
         if (remaining < 0) failed = 1;
         if (finished && remaining == 0) break;
-        if (!killed && (stop_requested || failed || now() >= deadline)) {
+        if (!killed && (stop_requested || failed || now() >= deadline ||
+            (stop_file && access(stop_file, F_OK) == 0))) {
             if (kill(-1, SIGKILL) && errno != ESRCH) failed = 1;
             killed = 1; deadline = now() + 5000;
         } else if (killed && now() >= deadline) { failed = 1; break; }

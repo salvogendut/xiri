@@ -99,6 +99,24 @@ Prismatic's own schema; its machine state/NVRAM must also select the NetBSD
 loader. See the [Prismatic boot result](../../docs/results/2026-11-02-prismatic-xiri.md)
 and [switching instructions](../../docs/XIRI-IMAGE.md#return-to-irix).
 
+## Graphical session qualification
+
+`scripts/probe-xiri-desktop-usability.py` uses a disposable copy of the
+prepared service seed. It installs the current native session helpers and
+rpcbind, sets up graphical and diagnostic serial logins, and boots with
+graphical PROM output. Emulated keyboard and pointer input exercise console
+login, native shell commands through winterm, Toolchest logout and the
+desktop menu's press-drag-release logout. The probe requires service/client
+cleanup and return to the launching console after each session, checks the
+syslog warning count and native execution, then observes clean unmount/halt
+through the pinned kernel's message ring.
+
+The [usability record](../../docs/results/2026-11-02-desktop-usability.md)
+retains failed diagnostics separately from qualified replacement artifacts.
+The generated `4Dwmrc` and logout request file are native session state;
+the vendor menu resource remains unchanged. Session saving and filetype
+icon artwork are separate outstanding work.
+
 ## Display and menu integration
 
 The development profile uses [xorg.conf](xorg.conf) at 1280×1024; the earlier

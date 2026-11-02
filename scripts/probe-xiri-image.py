@@ -7,7 +7,9 @@ import json
 from pathlib import Path
 import re
 import shutil
+import subprocess
 import tempfile
+import time
 from types import SimpleNamespace
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -19,6 +21,7 @@ spec.loader.exec_module(probe)
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('bundle', type=Path)
+    p.add_argument('--debug-failure', action='store_true')
     a = p.parse_args()
     bundle = a.bundle.resolve()
     manifest = json.loads((bundle/'manifest.json').read_text())
@@ -55,6 +58,13 @@ def main():
         'tftp_dir = '+json.dumps(str(bundle/'tftp')))
     config += '\n[scsi.4]\npath = '+json.dumps(str(directory/'probe.iso'))+'\ncdrom = true\n'
     lab = probe.Lab(SimpleNamespace(mode='ordinary', debugger=False, boot_timeout=600), directory, config_text=config)
+    # Pace diagnostic commands while Xorg and foreign clients share the CPU.
+    def paced_send(text, newline=True):
+        data = (text + ('\r' if newline else '')).encode('ascii')
+        for byte in data:
+            lab.serial.sendall(bytes([byte]))
+            time.sleep(.005)
+    lab.send = paced_send
     original_launch = lab.launch
     def launch(command, name):
         if name == 'emulator':
@@ -118,11 +128,24 @@ def main():
         if seed_result.get('desktop_services'):
             cmd('test "$(readlink /usr/lib/desktop)" = /emul/irix/usr/lib/desktop && test "$(id -u xiritest)" = 1234 && test "$(id -g xiritest)" = 1234')
             result['desktop_services'] = True
+        if seed_result.get('native_rpcbind_build'):
+            cmd("rpc_errors_before=$(awk '/rpcbind: cannot bind/ {n++} END {print n+0}' /var/log/messages)")
         cmd('XIRI_SESSION_MS=300000 /usr/local/bin/xiri-desktop >manual-desktop.log 2>&1 & manual=$!; tries=0; until ./image-type 127.0.0.1:0 xmahjongg "" >game-focus.log 2>&1; do kill -0 "$manual" || break; tries=$((tries+1)); test "$tries" -lt 120 || break; sleep 2; done; ./image-type 127.0.0.1:0 xmahjongg "" >game-focus.log 2>&1', 360)
         if seed_result.get('desktop_services'):
-            cmd('tries=0; until /usr/X11R7/bin/xwininfo -display 127.0.0.1:0 -root -tree | grep "of 18)" >/dev/null; do kill -0 "$manual" || exit 1; tries=$((tries+1)); test "$tries" -lt 60 || exit 1; sleep 2; done',180)
+            cmd('(tries=0; until /usr/X11R7/bin/xwininfo -display 127.0.0.1:0 -root -tree | grep "of 18)" >/dev/null; do kill -0 "$manual" || exit 1; tries=$((tries+1)); test "$tries" -lt 60 || exit 1; sleep 2; done)',180)
+            lab.monitor_command('screen shot '+str(directory/'before-input.png'))
+            result['framebuffer_colors_before_input'] = int(subprocess.check_output(
+                ['magick',str(directory/'before-input.png'),'-format','%k','info:']))
+            # Exercise real keyboard input as on a manual console session.
+            result['keyboard_wake'] = lab.monitor_command('key shift')
+            lab.monitor_command('screen wait 500 10000')
             result['framebuffer_capture'] = lab.monitor_command('screen shot '+str(directory/'desktop.png'))
             result['framebuffer_png_sha256'] = probe.sha256(directory/'desktop.png')
+            result['framebuffer_colors_after_input'] = int(subprocess.check_output(
+                ['magick',str(directory/'desktop.png'),'-format','%k','info:']))
+            assert result['framebuffer_colors_after_input'] > 32, 'blank desktop framebuffer'
+        if seed_result.get('native_rpcbind_build'):
+            result['rpcbind_warning_check'] = cmd("rpc_errors_after=$(awk '/rpcbind: cannot bind/ {n++} END {print n+0}' /var/log/messages); echo RPC_BIND_WARNINGS_BEFORE=$rpc_errors_before AFTER=$rpc_errors_after; test \"$rpc_errors_before\" = \"$rpc_errors_after\"")
         cmd('/usr/X11R7/bin/xdpyinfo -display 127.0.0.1:0 >manual-display 2>&1; /usr/X11R7/bin/xwininfo -display 127.0.0.1:0 -root -tree >manual-tree 2>&1; sleep 2; /usr/X11R7/bin/xwd -display 127.0.0.1:0 -root -silent >game.xwd 2>game-frame.err; kill -TERM "$manual"; wait "$manual"; echo MANUAL_STATUS=$?',180)
         result['launcher_log'] = get('cat manual-desktop.log').decode(errors='backslashreplace')
         result['display'] = get('cat manual-display').decode(errors='backslashreplace')
@@ -148,6 +171,22 @@ def main():
         result['status'] = 'observed'
     except Exception as error:
         result['error'] = str(error)
+        if a.debug_failure and lab.logged_in:
+            (directory/'ready').write_text('ready\n')
+            (ROOT/'.work/desktop-fixes/active').write_text(str(directory))
+            print('Failed: '+str(error)+'; debug request queue ready',flush=True)
+            last = time.monotonic()
+            while time.monotonic()-last < 1200:
+                request = directory/'request.json'
+                if not request.exists(): time.sleep(.2); continue
+                item = json.loads(request.read_text()); request.unlink(); last = time.monotonic()
+                if item['command'] == 'SHUTDOWN': break
+                try:
+                    output = lab.monitor_command(item['command']) if item.get('monitor') else cmd(item['command'],item.get('timeout',120))
+                    reply = dict(code=0,output=output)
+                except Exception as failure:
+                    reply = dict(error=str(failure),output='')
+                (directory/('response-'+item['id']+'.json')).write_text(json.dumps(reply))
         raise
     finally:
         lab.close()

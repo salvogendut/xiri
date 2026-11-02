@@ -7,7 +7,13 @@ Prismatic: run from this directory with --config prismatic.cfg
 The two configuration formats differ. Both use the same CHD.
 Use a fresh copy for another machine; do not share a writable overlay.
 
-At the PROM, select Start System or enter these commands at option 5:
+When nvram-graphics.bin is included, the default manual profile boots on the
+display automatically. In Prismatic press Ctrl+P to start, click the display
+to capture input, log in as root (no password), then run xiri-desktop.
+The separate nvram.bin retains the serial PROM profile for automated tests.
+Serial B remains available at localhost:8891 for a diagnostic login.
+
+At a PROM menu, select Start System or enter these commands in the monitor:
   setenv systempartition scsi(0)disk(1)rdisk(0)partition(8)
   setenv osloadpartition scsi(0)disk(1)rdisk(0)partition(0)
   setenv osloader boot
@@ -16,8 +22,12 @@ At the PROM, select Start System or enter these commands at option 5:
   boot
 The promoted NVRAM already contains these settings.
 
-Log in as root (no password) on serial B, TCP localhost:8891.
-Run /usr/local/bin/xiri-desktop. Press Ctrl-C in that serial console to stop.
+For a serial-profile boot, log in as root on serial B and run xiri-desktop.
+In the graphical profile, Log Out in Toolchest or the desktop's right-click
+menu ends the session and returns to the launching shell. For the desktop
+menu, hold the right button, move to Log Out, then release it.
+This does not yet save an IRIX desktop session.
+Ctrl-C in the launching serial terminal remains an alternative.
 Use shutdown -h now and wait for the halt/PROM before closing the emulator.
 
 Xiri uses a 1280x1024 X screen. Default PROM timing may add two right pixels.

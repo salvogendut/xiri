@@ -68,7 +68,14 @@ def main():
             'Toolchest launches have not been qualified for it.\n') + readme[end:]
     (out/'README.txt').write_text(readme)
     (out/'prismatic-state').mkdir()
-    shutil.copyfile(seed/'nvram.bin', out/'prismatic-state/nvram.bin')
+    manual_nvram = seed/'nvram.bin'
+    if r.get('graphics_boot'):
+        assert set(r['logout']) == {'toolchest', 'root-menu'}
+        assert all(entry['returned_to_graphics_shell'] for entry in r['logout'].values())
+        manual_nvram = seed/'nvram-graphics.bin'
+        assert sha(manual_nvram) == r['graphics_nvram_sha256']
+        shutil.copyfile(manual_nvram, out/'nvram-graphics.bin')
+    shutil.copyfile(manual_nvram, out/'prismatic-state/nvram.bin')
     kernel = a.kernel.resolve()
     assert sha(kernel) == pin['boot_kernel_sha256']
     shutil.copyfile(kernel, out/'tftp/netbsd-XIRI_INDY')
@@ -80,6 +87,13 @@ def main():
         assert sha(bitmap_ledger) == r['bitmap_ledger_sha256']
         shutil.copyfile(bitmap_ledger, out/'bitmap-copy-ledger.json')
         shutil.copyfile(ROOT/'lab/native-fam/source.json', out/'native-fam-source.json')
+    if r.get('native_rpcbind_build'):
+        rpc_pin = ROOT/'lab/native-rpcbind/source.json'
+        rpc = json.loads(rpc_pin.read_text())
+        assert rpc['source_revision'] == r['native_rpcbind_build']['source_revision']
+        assert rpc['sources'] == r['native_rpcbind_build']['sources']
+        assert rpc['rpcbind_sha256'] == r['native_rpcbind_build']['rpcbind_sha256']
+        shutil.copyfile(rpc_pin, out/'native-rpcbind-source.json')
     (out/'iris.toml').write_text('''# Run IRIS with this directory as its working directory.
 nvram = "nvram.bin"
 banks = [128, 128, 0, 0]
@@ -110,6 +124,9 @@ mode = "nat"
 mac = "08:00:69:12:34:57"
 tftp_dir = "tftp"
 ''')
+    if r.get('graphics_boot'):
+        config = (out/'iris.toml').read_text().replace('nvram = "nvram.bin"', 'nvram = "nvram-graphics.bin"')
+        (out/'iris.toml').write_text(config)
     report = dict(schema=1, status='chd-roundtrip-verified', script_sha256=sha(Path(__file__)),
         baseline=str(a.baseline.resolve().relative_to(ROOT)), baseline_sha256=sha(a.baseline),
         source_run=str(seed.relative_to(ROOT)), source_result_sha256=sha(seed/'result.json'),
@@ -120,6 +137,9 @@ tftp_dir = "tftp"
         permission_manifest_sha256=sha(out/'permissions.json'),
         tool_version=subprocess.run(TOOL, text=True, capture_output=True).stdout.splitlines()[0],
         commands=commands, direct_chd_boot='pending separate cold-boot probe')
+    if r.get('graphics_boot'):
+        report['manual_nvram_sha256'] = sha(manual_nvram)
+        report['manual_console'] = 'graphics; AutoLoad Yes; serial B diagnostic login'
     (out/'manifest.json').write_text(json.dumps(report, indent=2)+'\n')
     print('Created', image, 'and verified exact raw-disk round trip', flush=True)
 

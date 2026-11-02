@@ -43,7 +43,7 @@ installing a background service on an unmodified NetBSD system is insufficient.
 | IRIX kernel personality | Recognize/load foreign ELF images; translate system calls, layouts, errors and process/VM behavior | Built into the NetBSD fork through `COMPAT_IRIX_O32`, despite the name covering both o32 and n32 |
 | Original IRIX runtime and desktop | rld/libc and other libraries, 4Dwm, Toolchest, winterm, file/icon clients, fonts and defaults | Selected files imported from the reference image; runtime lookup under `/emul/irix` with native fallback |
 | Native NetBSD platform | Scheduler, memory, storage, networking, devices, X server and native applications | Native Xorg drives the emulated Newport display at 1280×1024; Xvfb remains available for controlled tests. Physical display acceptance is separate |
-| Session and service integration | Environment, launch order, native shell handoff, application launching and host-service adapters | The development launcher owns native FAM v1 and any rpcbind it starts. Real file notifications reach original clients; complete login/logout, restoration and broader desktop services remain open |
+| Session and service integration | Environment, launch order, native shell handoff, application launching and host-service adapters | The development launcher owns native FAM v1 and any rpcbind it starts. Graphical login and both logout menus pass with client/service cleanup. Real file notifications reach original clients; session restoration and broader desktop services remain open |
 | Development lab | Boot/reference automation, probes, traces, comparisons and reproducible artifacts | This repository plus the IRIS emulator fork; the emulator is not intended to be required on a supported physical MIPS workstation |
 
 Supporting daemons could be packaged as ordinary NetBSD services, while the
@@ -62,6 +62,15 @@ the imported desktop resource tree; the kernel's foreign pathname lookup
 does not apply to the native daemon. The current service maps loopback
 clients to the dedicated test account and is explicitly a single-user
 development configuration, pending broader account/session design.
+
+The [desktop usability work](results/2026-11-02-desktop-usability.md) routes
+Toolchest and 4Dwm logout through a native request-file helper. The existing
+supervisor, running with the reserved client UID, removes that user's
+session processes; the root launcher reaps the X server and services it
+started. The per-session 4Dwm configuration changes the logout command while
+preserving the imported vendor file. This supplies development-session exit
+without implementing IRIX saved-session restoration. Graphical console
+login and the diagnostic serial getty are ordinary NetBSD configuration.
 
 The code already has [module registration and initialization/finalization
 hooks](https://github.com/salvogendut/NetBSD-xiri/blob/c11c9f16fad11837a169a3cd566582bebea2c029/sys/compat/irix_o32/irix_o32.c#L131):

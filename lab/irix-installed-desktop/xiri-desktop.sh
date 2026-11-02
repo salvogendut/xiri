@@ -103,7 +103,7 @@ xset -display "127.0.0.1:$display" -dpms
 xset -display "127.0.0.1:$display" s reset
 xsetroot -display "127.0.0.1:$display" -solid '#556677'
 echo "Xiri desktop on display $display. Press Ctrl-C here to stop. Logs: $job"
-"$base/manual-guard" "$duration" "$base/session" "$job/desktop.env" \
+XIRI_SESSION_STOP_FILE="$job/logout" "$base/manual-guard" "$duration" "$base/session" "$job/desktop.env" \
     /bin/sh "$base/manual-session.sh" "$job" >"$job/guard.log" 2>&1 &
 guardpid=$!
 wait "$guardpid"

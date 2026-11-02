@@ -4,6 +4,12 @@ Xiri is a project to give real SGI workstations a maintained operating system wh
 
 The agreed target is the full original IRIX desktop on NetBSD and X.org, supported by an IRIX binary compatibility layer. Modern applications would run natively on NetBSD. Preserving the desktop includes its behavior and integration, beyond window decorations. Running the original desktop on this foundation remains to be demonstrated.
 
+Our working IRIX reference is **IRIX 6.5.22**, confirmed by the user on
+2026-11-02. The installed reference image is recorded as **6.5.22m** in the
+[baseline provenance](docs/results/2026-10-30-irix-vendor-baseline.md).
+Current application and desktop results apply to that reference release;
+other IRIX releases need their own qualification.
+
 The desired final delivery form for the compatibility layer is a **loadable
 NetBSD kernel module modeled after `compat_linux`**, with separate runtime-import
 and desktop/session packages. Current qualification uses a built-in personality
@@ -42,6 +48,18 @@ panel. Filetype icon artwork and catalog application actions remain unfinished:
 the latest trace reaches an unsupported `F_SETBSDLKW` call on `desktop.otr`.
 Automatic xwsh closure after shell exit also remains open. Xorg stays in use;
 further Xsgi experiments are deferred.
+
+The [desktop usability update](docs/results/2026-11-02-desktop-usability.md)
+adds graphical console boot/login, working Toolchest and desktop-menu logout,
+window-manager readiness before starting clients, and native rpcbind's
+duplicate-loopback fix. Two desktop sessions return to the console with
+clients/services removed. Session restoration and missing icon artwork
+remain separate work.
+
+The reported responsiveness gap and the supplied SGI driver guide are tracked
+in [Newport performance](docs/NEWPORT.md). The current Xorg configuration
+disables acceleration after a measured fast-clear color mismatch; the next
+graphics cycle will compare correctness and timing before changing that setting.
 
 The candidate build host has been [inventoried](docs/results/2026-10-29-host-inventory.md), and [NetBSD 11.0 sgimips inputs](lab/netbsd-11.0/README.md) have been downloaded and verified. The [guest lab](lab/indy-netbsd/README.md), [installation record](docs/results/2026-10-29-indy-netbsd-install.md), and [debugger/probe results](docs/results/2026-10-30-netbsd-debugger-probe.md) retain the configuration, commands, evidence, and unresolved emulator issues. Use the [development setup checklist](docs/ROADMAP.md#development-setup-checklist) for the remaining work.
 
@@ -83,7 +101,7 @@ The [ELF-map relocation checkpoint](docs/results/2026-10-31-irix-elfmap-relocati
 
 The [winterm fault capture](docs/results/2026-10-31-irix-winterm-fault.md) identifies a null font object in `tuFont::getWidth` and actual unsupported `access` calls for staged locale/app-defaults files. The [access adapter](docs/results/2026-10-31-irix-access.md) now clears this failure. The subsequent [PTY checkpoint](docs/results/2026-10-31-irix-pty.md) supplies native allocation, device identities and slave permissions. The [process checkpoint](docs/results/2026-11-01-irix-process.md) adds fork and child waits. The [shell checkpoint](docs/results/2026-11-01-irix-shell.md) now runs NetBSD `/bin/sh` inside original xwsh through the unchanged winterm launcher, with real X keyboard input, a command-created marker, native session checks and descendant cleanup. [The PNG](docs/results/images/2026-11-01-irix-winterm-shell.png) shows the prompt and command output. The [4Dwm follow-up](docs/results/2026-11-01-irix-4dwm.md) now manages windows alongside Toolchest and the working terminal, with session saving disabled. Broader desktop services remain open; the later time checkpoint also qualifies bounded xclock updates.
 
-The [resource checklist](docs/IRIX-RESOURCES.md) tracks required image assets and remaining gaps; the [user-supplied original desktop capture](docs/IRIX-DESKTOP-REFERENCE.md) supplies our visual reference. With Toolchest rendering observed, the [desktop acceptance plan](docs/ROADMAP.md#milestone-3-original-desktop-proof) uses the supplied SGI interface guidelines to qualify the complete environment.
+The [resource checklist](docs/IRIX-RESOURCES.md) tracks required image assets and remaining gaps; its [information sources](docs/IRIX-RESOURCES.md#irix-information-sources) include the IRIX7 technical-publications archive and SGI desktop manuals. The [user-supplied original desktop capture](docs/IRIX-DESKTOP-REFERENCE.md) supplies our visual reference. With Toolchest rendering observed, the [desktop acceptance plan](docs/ROADMAP.md#milestone-3-original-desktop-proof) uses the supplied SGI interface guidelines to qualify the complete environment.
 
 The [expanded desktop attempt](docs/results/2026-11-01-irix-desktop-components.md)
 adds original fm, bgicons and Icon Catalog to the session. The

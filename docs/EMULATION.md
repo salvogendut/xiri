@@ -361,11 +361,16 @@ until catalog launch and interaction are checked.
 ## Reusable desktop image
 
 Use the [prepared CHD](XIRI-IMAGE.md) for current manual IRIS testing and
-routine desktop experiments. The current service bundle contains the qualified
+routine desktop experiments. The current graphical bundle contains the qualified
 desktop filesystem/poll kernel, native FAM and shared desktop-path integration,
 installed IRIX application/catalog payload, persistent native fonts and
-session helpers. The [current image qualification](results/2026-11-02-desktop-services-image.json)
+session helpers. The [usability update](results/2026-11-02-desktop-usability.md)
+adds graphical automatic boot, a diagnostic serial login, both logout menus
+and the native RPC binding fix. The [current image qualification](results/2026-11-02-desktop-usability-image.json)
 records archive verification, a complete 8 GiB raw round trip, direct SCSI
 disk boot and native Xorg/Newport observations. Older lab baselines remain
 pinned for reproducing earlier interfaces. Create fresh CHD overlays or raw
 clones for new runs; rebuild/import only when changing the payload.
+Keep the graphical manual NVRAM separate from the serial automation profile.
+The [Newport notes](NEWPORT.md) track the current software rendering setting,
+the SGI driver-guide references and the next acceleration investigation.

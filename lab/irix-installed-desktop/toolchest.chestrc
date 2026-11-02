@@ -13,3 +13,9 @@ Menu Find
 {
     "Icon Catalog" f.exec "/usr/local/bin/xiri-launch iconcatalog"
 }
+
+remove "Log Out" from Desktop
+Menu Desktop
+{
+    "Log Out" f.exec "/usr/local/bin/xiri-logout"
+}

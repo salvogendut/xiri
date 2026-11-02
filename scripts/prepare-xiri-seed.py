@@ -42,6 +42,10 @@ def main():
         partial.rename(disk)
     shutil.copyfile(bundle/'seed-result.json', out/'result.json')
     shutil.copyfile(bundle/'nvram.bin', out/'nvram.bin')
+    if m.get('manual_nvram_sha256'):
+        graphics = bundle/'nvram-graphics.bin'
+        assert sha(graphics) == m['manual_nvram_sha256']
+        shutil.copyfile(graphics, out/'nvram-graphics.bin')
     (out/'image-source.json').write_text(json.dumps(dict(bundle=str(bundle),
         chd_sha256=m['chd_sha256'], raw_sha256=m['source_raw_sha256']), indent=2)+'\n')
     print('Reusable seed:', out)

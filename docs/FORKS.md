@@ -48,6 +48,11 @@ with 2,578 workspace and 2,921 JIT/idle library tests passing. The existing
 integration worktree owns `xiri`; the shared performance checkout and pinned
 guest binaries remain unchanged.
 
+The [desktop usability cycle](results/2026-11-02-desktop-usability.md)
+rechecked the same upstream revision later on 2026-11-02; there were no new
+commits to integrate. Native rpcbind's duplicate-loopback fix is NetBSD
+`xiri` commit `d3a316bd7e1`; it does not repin or rebuild the guest kernel.
+
 Check [techomancer/iris](https://github.com/techomancer/iris) at the start of each
 development cycle and once per active day during longer cycles. This is part
 of active repository work; no unattended scheduler is installed.

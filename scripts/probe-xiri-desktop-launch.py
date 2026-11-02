@@ -19,6 +19,7 @@ spec.loader.exec_module(probe)
 FILES = {
     'xiri-desktop.sh': '/usr/local/bin/xiri-desktop',
     'xiri-launch.sh': '/usr/local/bin/xiri-launch',
+    'xiri-logout.sh': '/usr/local/bin/xiri-logout',
     'manual-session.sh': '/usr/local/libexec/xiri/manual-session.sh',
     'toolchest.chestrc': '/usr/local/share/xiri/toolchest.chestrc',
     'xorg.conf': '/usr/local/share/xiri/xorg.conf',
@@ -51,6 +52,7 @@ def main():
     media.mkdir()
     for name in FILES:
         shutil.copyfile(ROOT/'lab/irix-installed-desktop'/name, media/name)
+    shutil.copyfile(ROOT/'lab/irix-installed-desktop/manual-guard.c', media/'manual-guard.c')
     kernel = ROOT/'.work/netbsd-irix-desktop-build'
     extras = {
         'netbsd': (kernel/'kernel-media/netbsd', '/netbsd', pin['native_kernel_sha256']),
@@ -88,6 +90,7 @@ def main():
     sources = {str(path.relative_to(ROOT)):probe.sha256(path) for path in [Path(__file__),
         ROOT/'scripts/probe-netbsd.py', ROOT/'lab/irix-4dwm/type-ready.c',
         ROOT/'lab/irix-toolchest-input/inputcheck.c',
+        ROOT/'lab/irix-installed-desktop/manual-guard.c',
         *[ROOT/'lab/irix-installed-desktop'/name for name in FILES]]}
     (media/'SHA256').write_text(''.join(f'SHA256 ({path.name}) = {probe.sha256(path)}\n' for path in sorted(media.iterdir())))
     probe.run(['genisoimage','-quiet','-R','-J','-o',directory/'probe.iso',media])
@@ -96,6 +99,12 @@ def main():
     config = (ROOT/'lab/indy-netbsd/iris.toml').read_text()
     config = re.sub(r'^tftp_dir = .*$', 'tftp_dir = '+json.dumps(str(kernel/'tftp')), config, flags=re.M)
     lab = probe.Lab(SimpleNamespace(mode='ordinary',debugger=False,boot_timeout=600),directory,config_text=config)
+    def paced_send(text, newline=True):
+        data = (text + ('\r' if newline else '')).encode('ascii')
+        for byte in data:
+            lab.serial.sendall(bytes([byte]))
+            time.sleep(.005)
+    lab.send = paced_send
     result = dict(status='error',clean_shutdown=False,pin=pin,staged=staged,
         base_image=provenance,base_seed_result_sha256=probe.sha256(seed/'result.json'),
         sources=sources,installed_files=installed,launches={},desktop_dimensions=[1280,1024],
@@ -123,9 +132,9 @@ def main():
         print(name+': captured',flush=True)
 
     def wait_window(title):
-        cmd('tries=0; until xwininfo -root -tree | grep -F '+shlex.quote(title)+
+        cmd('(tries=0; until xwininfo -root -tree | grep -F '+shlex.quote(title)+
             ' >/dev/null; do kill -0 "$manual" || exit 1; tries=$((tries+1)); '
-            'test "$tries" -lt 60 || exit 1; sleep 2; done',180)
+            'test "$tries" -lt 60 || exit 1; sleep 2; done)',180)
 
     def remove_closed_terminals():
         # The current xwsh can retain its window after the native shell exits.
@@ -149,6 +158,8 @@ def main():
         result['executable_permissions_applied'] = True
         for name,dest in FILES.items():
             cmd('install -m '+('555' if name.endswith('.sh') else '444')+' /cdrom/'+name+' '+dest)
+        cmd('cc -O2 -Wall -Wextra -Werror /cdrom/manual-guard.c -o /usr/local/libexec/xiri/manual-guard',180)
+        installed['/usr/local/libexec/xiri/manual-guard'] = get('sha256 -q /usr/local/libexec/xiri/manual-guard').decode().strip()
         cmd('mkdir -p /usr/local/sbin; tar xzpf /cdrom/bitmaps.tgz -C /; test -d /emul/irix/usr/lib/desktop; if test ! -e /usr/lib/desktop && test ! -L /usr/lib/desktop; then ln -s /emul/irix/usr/lib/desktop /usr/lib/desktop; fi; test "$(readlink /usr/lib/desktop)" = /emul/irix/usr/lib/desktop')
         cmd('getent group xiritest >/dev/null || groupadd -g 1234 xiritest; id xiritest >/dev/null 2>&1 || useradd -u 1234 -g 1234 -d /usr/people/xiritest -s /bin/sh xiritest; test "$(id -u xiritest)" = 1234; test "$(id -g xiritest)" = 1234')
         for name,(source,dest,digest) in extras.items():
@@ -185,7 +196,7 @@ def main():
         remove_closed_terminals()
         result['terminal_exit_policy'] = 'Native shell exit followed by explicit reserved-UID xwsh cleanup; automatic terminal close remains unqualified.'
         for i in range(2):
-            menu(0,218)
+            menu(0,196)
             marker = f'XIRI_MENU_SHELL_{i+1}_OK'
             cmd('./type "$DISPLAY" winterm '+shlex.quote('echo '+marker+' > "$XIRI_SESSION_DIR/menu-proof-'+str(i)+'"')+' && ./input key Return; sleep 1')
             proof = get('cat "$job/menu-proof-'+str(i)+'"').decode().strip()
@@ -205,7 +216,13 @@ def main():
         result['toolchest_custom_applications_menu'] = False
         print('MENU_iconcatalog_OK',flush=True)
         wid = re.search(r'(0x[0-9a-f]+) "Icon Catalog:.*Page 1 of 18', tree)[1]
-        cmd('./input focus '+wid+'; '+ './input key Next; '*8+'sleep 3')
+        # Synthetic key holds can repeat while an emulated client is busy.
+        # Disable repeat for this bounded navigation test and observe every page.
+        cmd('xset r off && ./input focus '+wid)
+        for page in range(2,10):
+            cmd('./input key Next')
+            wait_window('Page '+str(page)+' of 18)')
+        cmd('xset r on')
         wait_window('Icon Catalog: Freeware (Page 9 of 18)')
         result['catalog_freeware_tree'] = get('xwininfo -root -tree').decode()
         assert 'Icon Catalog: Freeware (Page 9 of 18)' in result['catalog_freeware_tree']

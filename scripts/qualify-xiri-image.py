@@ -59,6 +59,13 @@ def main():
     for path, digest in r['sources'].items():
         assert sha(ROOT/path) == digest, path
     seed_result = json.loads((bundle/'seed-result.json').read_text())
+    if seed_result.get('native_rpcbind_build'):
+        rpc = json.loads((bundle/'native-rpcbind-source.json').read_text())
+        for key in ['source_revision', 'sources', 'rpcbind_sha256']:
+            assert rpc[key] == seed_result['native_rpcbind_build'][key]
+        assert '_RC=0' in r['rpcbind_warning_check']
+        counts = re.search(r'RPC_BIND_WARNINGS_BEFORE=(\d+) AFTER=(\d+)', r['rpcbind_warning_check'])
+        assert counts and counts[1] == counts[2]
     staged = seed_result['staged']
     dimensions = seed_result.get('desktop_dimensions', [1024, 768])
     expected_support = {f['netbsd_destination']:f['sha256']
@@ -111,6 +118,7 @@ def main():
         direct_disk_boot=True, newport_x11=True, desktop_dimensions=dimensions,
         desktop_services=bool(r.get('desktop_services')),
         services_absent_after=r.get('services_absent_after'),
+        rpcbind_warning_check=r.get('rpcbind_warning_check'),
         bitmap_ledger_sha256=seed_result.get('bitmap_ledger_sha256'),
         support_files_verified=expected_support,
         native_controls_passed=True, tree=r['tree'], game_focus=r['game_focus'],
@@ -122,12 +130,18 @@ def main():
             'The exact pinned CLI emulator was tested; other IRIS builds need manual validation.'])
     a.output.write_text(json.dumps(report, indent=2)+'\n')
     if a.promote:
+        manual_nvram = bundle/'nvram-graphics.bin' if m.get('manual_nvram_sha256') else a.run/'nvram.bin'
+        if m.get('manual_nvram_sha256'):
+            assert sha(manual_nvram) == m['manual_nvram_sha256']
+        state_nvram = bundle/'prismatic-state/nvram.bin'
+        if state_nvram.exists():
+            assert sha(state_nvram) == m.get('manual_nvram_sha256', m['nvram_sha256']), 'Prismatic state has changed; preserve it'
         if not original.exists():
             shutil.copyfile(bundle/'manifest.json', original)
             shutil.copyfile(bundle/'nvram.bin', bundle/'verification/build-nvram.bin')
         shutil.copyfile(a.run/'nvram.bin', bundle/'nvram.bin')
         if (bundle/'prismatic-state').is_dir():
-            shutil.copyfile(a.run/'nvram.bin', bundle/'prismatic-state/nvram.bin')
+            shutil.copyfile(manual_nvram, bundle/'prismatic-state/nvram.bin')
         # Preserve each input manifest so later observations remain verifiable.
         retained = bundle/'verification'/('manifest-'+sha(source)+'.json')
         if source.resolve() != retained.resolve():
@@ -144,6 +158,9 @@ def main():
             copy_ledger_sha256=m['copy_ledger_sha256'],
             permission_manifest_sha256=m['permission_manifest_sha256'],
             qualification=str(a.output), qualification_sha256=sha(a.output))
+        if m.get('manual_nvram_sha256'):
+            public['manual_nvram_sha256'] = m['manual_nvram_sha256']
+            public['manual_console'] = m['manual_console']
         (ROOT/'lab/irix-installed-desktop/image.json').write_text(json.dumps(public, indent=2)+'\n')
     print('Verified direct CHD boot, native X/Newport, visible xmahjongg, cleanup and PNG fidelity')
 

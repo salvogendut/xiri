@@ -18,6 +18,8 @@ compatible NetBSD/MIPS kernel by upstreaming or removing required core changes;
 that stock-kernel deployment is not yet demonstrated. See the
 [module deployment boundary](ARCHITECTURE.md#components-and-deployment).
 
+The user-reported display responsiveness gap is tracked in [Newport performance](NEWPORT.md), including the supplied SGI driver manual, the current NoAccel setting and the measured fast-clear/plane-format mismatch. Recheck acceleration correctness on the current emulator before assigning the fix to NetBSD or IRIS.
+
 ## Development setup checklist
 
 The candidate host inventory, pinned IRIS CLI build, verified NetBSD inputs, guest installation, and host kernel build are complete. The R4400 guest reaches multiuser after a cold boot with the custom kernel, supports debugger breakpoints, and passes an automated probe. Repeated disk writes, cold-read integrity, and bidirectional network transfers pass in both execution modes; see the [I/O results](results/2026-10-30-netbsd-io.md). See the [installation record](results/2026-10-29-indy-netbsd-install.md), [kernel build record](results/2026-10-30-netbsd-kernel.md), and [debugger/probe results](results/2026-10-30-netbsd-debugger-probe.md).
@@ -192,7 +194,9 @@ dependency candidates; a visible window alone does not complete these checks.
 - [ ] Show a maintained host-native graphical application and an IRIX application in the same local session; qualify physical display output separately.
 - [ ] Verify normal window operations, file navigation, desktop updates, and saved preferences.
 - [ ] Repeat logout and login, checking process cleanup and restoration of expected state.
+- [x] Qualify the development session's graphical console login, repeated desktop start, both logout menus and client/service cleanup. [Usability result](results/2026-11-02-desktop-usability.md); IRIX session saving/restoration remains open.
 - [ ] Compare behavior with the reference installation and list component-level differences.
+- [ ] Qualify later IRIX releases separately from the current **6.5.22 / 6.5.22m** reference. Retain release-specific image/resource pins and behavior results; record differences as they are encountered.
 
 Acceptance: an original desktop session executing inside the emulated Indy on NetBSD, with working native and compatible application launch and a reproducible demonstration. A screenshot or themed substitute alone does not satisfy this milestone. The physical desktop remains required for the first hardware release.
 
