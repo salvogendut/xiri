@@ -214,3 +214,11 @@ The 2026-11-02 Prismatic boot cycle fetched IRIS upstream again: revision
 The [Prismatic test](results/2026-11-02-prismatic-xiri.md) exercised its
 existing release binary and preserved its separate performance checkout.
 This was frontend validation, with no development changes on that branch.
+
+The 2026-11-02 desktop display/menu cycle fetched upstream again and found
+`4ad1b1d435dc115697433f091b10dfa8c48aa7ed` already contained in IRIS `xiri`
+`045d69245609d186907a20e0b002e2b60be9a1ac`. No merge or affected emulator
+rebuild was needed. The work changes Xiri's native Xorg configuration and
+desktop launch integration; the NetBSD signal kernel and both fork source
+branches remain unchanged. The performance checkout and pinned lab worktrees
+are preserved.

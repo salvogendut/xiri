@@ -1,12 +1,13 @@
 # Reusable Xiri development image
 
-The local bundle is `.work/images/xiri-netbsd-desktop-20261101/`.
-`netbsd-xiri.chd` is an 8 GiB NetBSD disk compressed to 479,911,028 bytes
+The local bundle is `.work/images/xiri-netbsd-desktop-20261102/`.
+`netbsd-xiri.chd` is an 8 GiB NetBSD disk compressed to 479,786,856 bytes
 (about 458 MiB). It contains the qualified Xiri kernel, original IRIX
 runtimes, installed application/catalog payload, persistent fonts and a
-manual desktop launcher. [Cold-boot qualification](results/2026-11-02-xiri-image.md)
-verifies disk boot and visible windows on native Xorg/Newport. The [import ledger](IRIX-IMPORT.md) records the
-source and destination paths; vendor bytes remain outside Git.
+manual desktop launcher. [Display and launch qualification](results/2026-11-02-desktop-launch.md)
+includes cold disk boot, visible windows on native Xorg/Newport and a
+menu-created shell in Prismatic. The [import ledger](IRIX-IMPORT.md) records
+the source and destination paths; vendor bytes remain outside Git.
 
 ## Start it in IRIS
 
@@ -44,6 +45,18 @@ UID 1234 and `HOME=/usr/people/xiritest` for clients. Native `/bin/sh` runs
 inside winterm through the existing PTY handoff. The launcher has no
 session time limit by default. Logs are under `/var/tmp/xiri-desktop/`.
 
+The X screen is 1280×1024; the default PROM timing can leave two extra
+framebuffer columns. **Desktop → Open Unix Shell** now opens another xwsh
+with NetBSD's shell. **Applications** contains Unix Shell, Clock, Icon Catalog
+and Mahjongg. Find → Icon Catalog uses the same native launch bridge.
+The original vendor menu files and IRIX shells are preserved; other original
+menu actions still need compatibility work. Each supported menu launch has
+its own `launch-APP.*/` log directory inside the current session directory.
+
+The previous `.work/images/xiri-netbsd-desktop-20261101/` bundle is retained.
+Use the new CHD in a fresh machine directory/overlay; do not attach an overlay
+from the older base image to it.
+
 Press Ctrl-C in the serial console running the launcher to end the session.
 Then shut down NetBSD before stopping IRIS:
 
@@ -62,7 +75,10 @@ altering it.
 
 The [Prismatic boot check](results/2026-11-02-prismatic-xiri.md) reaches
 multiuser and observes the installed desktop using the existing release
-binary. Catalog communication and display repaint issues remain follow-ups.
+binary. The [updated desktop check](results/2026-11-02-desktop-launch.md#replacement-image-and-prismatic-confirmation)
+additionally covers the larger screen and a menu-created native shell,
+with a [Prismatic screenshot](results/images/2026-11-02-prismatic-menu-shell.png).
+Catalog communication remains unfinished.
 
 Prismatic embeds IRIS but uses its own configuration format. Use the
 included `prismatic.cfg`, not `iris.toml`. The bundle also includes an
@@ -157,7 +173,7 @@ launcher without importing applications again:
 
 ```sh
 PYTHONDONTWRITEBYTECODE=1 python3 scripts/probe-xiri-image.py \
-  .work/images/xiri-netbsd-desktop-20261101
+  .work/images/xiri-netbsd-desktop-20261102
 ```
 
 For older harnesses that require a raw disk, materialize a stopped seed
@@ -165,10 +181,11 @@ once (the tool reuses the verified extraction when available):
 
 ```sh
 PYTHONDONTWRITEBYTECODE=1 python3 scripts/prepare-xiri-seed.py \
-  .work/images/xiri-netbsd-desktop-20261101
+  .work/images/xiri-netbsd-desktop-20261102 \
+  --output-directory .work/xiri-image/prepared-seed-20261102
 ```
 
-This produces `.work/xiri-image/prepared-seed/`. Clone its `disk.raw` for
+This produces `.work/xiri-image/prepared-seed-20261102/`. Clone its `disk.raw` for
 runs; preserve that seed. Repeating preparation checks its hash and does
 not reimport files. The installed-image probe accepts this directory as
 `--staged-seed` when its kernel and payload manifests still match.
@@ -194,5 +211,8 @@ application compatibility and package installation remain open. Only
 xmahjongg's application-specific data tree was collected completely.
 The manual launcher disables 4Dwm session saving and may show its existing
 Trusted Path warning. The winterm launcher also logs a `gettxt` execution
-warning while still reaching the native shell prompt. These limits accompany the image; copying the
-original resources does not establish full desktop compatibility.
+warning while still reaching the native shell prompt. These limits accompany
+the image; copying the original resources does not establish full desktop
+compatibility. Typing `exit` can leave a blank xwsh window after its native
+shell exits; automatic terminal closure remains open. Stopping `xiri-desktop`
+removes those clients.

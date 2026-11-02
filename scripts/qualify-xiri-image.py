@@ -54,10 +54,13 @@ def main():
         assert 'XIRI_ABI_PROBE' in r[key] and '_RC=0' in r[key]
     for path, digest in r['sources'].items():
         assert sha(ROOT/path) == digest, path
-    staged = json.loads((bundle/'seed-result.json').read_text())['staged']
+    seed_result = json.loads((bundle/'seed-result.json').read_text())
+    staged = seed_result['staged']
+    dimensions = seed_result.get('desktop_dimensions', [1024, 768])
     expected_support = {f['netbsd_destination']:f['sha256']
         for f in json.loads((bundle/'copy-ledger.json').read_text())['files']
         if f['type'] == 'file' and f['netbsd_destination'] not in staged}
+    expected_support.update(seed_result.get('installed_files', {}))
     assert r['support_files_verified'] == expected_support
     assert 'TYPE_WINDOW' in r['game_focus'] and 'viewable=1' in r['game_focus']
     assert '"xmahjongg"' in r['tree']
@@ -65,7 +68,7 @@ def main():
     a.png.parent.mkdir(parents=True, exist_ok=True)
     subprocess.run(['magick', str(a.run/'game.xwd'), '-strip', str(a.png)], check=True)
     raw = pixels(a.run/'game.xwd')
-    assert len(raw) == 1024*768*4 and pixels(a.png) == raw
+    assert len(raw) == dimensions[0]*dimensions[1]*4 and pixels(a.png) == raw
     report = dict(schema=1, status='disk-boot-and-desktop-observation-verified',
         qualifier_sha256=sha(Path(__file__)), directory=str(a.run), bundle=r['bundle'],
         result_sha256=sha(a.run/'result.json'), serial_sha256=sha(a.run/'serial.log'),
@@ -74,7 +77,8 @@ def main():
         logical_bytes=m['logical_bytes'], raw_sha256=m['source_raw_sha256'],
         pin=r['pin'], sources=r['sources'], copy_ledger_sha256=m['copy_ledger_sha256'],
         permission_manifest_sha256=m['permission_manifest_sha256'],
-        direct_disk_boot=True, newport_x11=True, support_files_verified=expected_support,
+        direct_disk_boot=True, newport_x11=True, desktop_dimensions=dimensions,
+        support_files_verified=expected_support,
         native_controls_passed=True, tree=r['tree'], game_focus=r['game_focus'],
         session_logs=r['session_logs'], remaining_uid1234='', clean_shutdown=True,
         base_chd_unchanged=True, nvram_sha256=sha(a.run/'nvram.bin'),
@@ -89,6 +93,8 @@ def main():
             shutil.copyfile(bundle/'manifest.json', original)
             shutil.copyfile(bundle/'nvram.bin', bundle/'verification/build-nvram.bin')
         shutil.copyfile(a.run/'nvram.bin', bundle/'nvram.bin')
+        if (bundle/'prismatic-state').is_dir():
+            shutil.copyfile(a.run/'nvram.bin', bundle/'prismatic-state/nvram.bin')
         # Preserve each input manifest so later observations remain verifiable.
         retained = bundle/'verification'/('manifest-'+sha(source)+'.json')
         if source.resolve() != retained.resolve():

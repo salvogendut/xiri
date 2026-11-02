@@ -25,6 +25,8 @@ HOME=/usr/people/xiritest
 USER=xiritest
 LOGNAME=xiritest
 SHELL=/bin/sh
+MWMSHELL=/usr/local/libexec/xiri/command-shell
+XIRI_SESSION_DIR=$job
 DISPLAY=127.0.0.1:$display
 LANG=C
 LC_ALL=C
@@ -61,6 +63,9 @@ until xdpyinfo -display "127.0.0.1:$display" >"$job/display.txt" 2>&1; do
 done
 xset -display "127.0.0.1:$display" +fp "$share/fonts"
 xset -display "127.0.0.1:$display" fp rehash
+xset -display "127.0.0.1:$display" s off
+xset -display "127.0.0.1:$display" -dpms
+xset -display "127.0.0.1:$display" s reset
 xsetroot -display "127.0.0.1:$display" -solid '#556677'
 echo "Xiri desktop on display $display. Press Ctrl-C here to stop. Logs: $job"
 "$base/manual-guard" "$duration" "$base/session" "$job/desktop.env" \

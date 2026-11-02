@@ -26,6 +26,14 @@ and destination, including persistent fonts and executable library modes.
 Original-installer retries are deferred; copying files does not qualify
 installation or every application's runtime behavior.
 
+The [desktop launch qualification](docs/results/2026-11-02-desktop-launch.md)
+adds a 1280×1024 Newport screen and working Toolchest actions for the
+supported applications. Open Unix Shell starts original xwsh with a native
+NetBSD shell; two repeated menu launches accept typed commands. The new
+Applications menu opens xclock, Icon Catalog and xmahjongg. Other original
+menu actions, catalog contents and automatic xwsh closure after shell exit
+remain unfinished.
+
 The candidate build host has been [inventoried](docs/results/2026-10-29-host-inventory.md), and [NetBSD 11.0 sgimips inputs](lab/netbsd-11.0/README.md) have been downloaded and verified. The [guest lab](lab/indy-netbsd/README.md), [installation record](docs/results/2026-10-29-indy-netbsd-install.md), and [debugger/probe results](docs/results/2026-10-30-netbsd-debugger-probe.md) retain the configuration, commands, evidence, and unresolved emulator issues. Use the [development setup checklist](docs/ROADMAP.md#development-setup-checklist) for the remaining work.
 
 Confirmed project requirements:

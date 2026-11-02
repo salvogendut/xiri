@@ -51,6 +51,16 @@ def main():
     assert sha(seed/'disk.raw') == raw_hash
     shutil.copyfile(seed/'nvram.bin', out/'nvram.bin')
     shutil.copyfile(seed/'result.json', out/'seed-result.json')
+    shutil.copyfile(ROOT/'lab/irix-installed-desktop/prismatic.cfg', out/'prismatic.cfg')
+    readme = (ROOT/'lab/irix-installed-desktop/image-README.txt').read_text()
+    if r.get('desktop_dimensions') != [1280, 1024]:
+        start = readme.index('Xiri uses a 1280x1024 X screen.')
+        end = readme.index('Other original menu actions', start)
+        readme = readme[:start] + ('This legacy seed uses the earlier desktop configuration.\n'
+            'Toolchest launches have not been qualified for it.\n') + readme[end:]
+    (out/'README.txt').write_text(readme)
+    (out/'prismatic-state').mkdir()
+    shutil.copyfile(seed/'nvram.bin', out/'prismatic-state/nvram.bin')
     kernel = ROOT/'.work/netbsd-irix-signal-build/tftp/netbsd-XIRI_INDY'
     assert sha(kernel) == pin['boot_kernel_sha256']
     shutil.copyfile(kernel, out/'tftp/netbsd-XIRI_INDY')

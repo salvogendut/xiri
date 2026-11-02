@@ -63,7 +63,9 @@ def main():
                'lab/irix-installed-desktop/manual-guard.c',
                'lab/irix-installed-desktop/manual-session.sh',
                'lab/irix-installed-desktop/xiri-desktop.sh',
-               'lab/irix-4dwm/setup-pty.sh', 'lab/indy-netbsd/x11/xorg.conf',
+               'lab/irix-4dwm/setup-pty.sh', 'lab/irix-installed-desktop/xorg.conf',
+               'lab/irix-installed-desktop/xiri-launch.sh',
+               'lab/irix-installed-desktop/toolchest.chestrc',
                'lab/irix-shell/handoff.c']
     for name in sources[2:]:
         shutil.copyfile(ROOT/name, media/Path(name).name)
@@ -162,10 +164,18 @@ def main():
         result['executable_permissions_applied'] = True
         cmd('mkdir -p /usr/people/xiritest /tmp/xiri-import/job && chown 1234:1234 /usr/people/xiritest /tmp/xiri-import/job && chmod 700 /usr/people/xiritest /tmp/xiri-import/job && cd /tmp/xiri-import && cp /cdrom/*.c /cdrom/session.sh /cdrom/desktop.env . && chmod 555 session.sh && chmod 444 desktop.env && : >input.txt && chmod 444 input.txt && cc -O2 -Wall -Wextra -Werror guard.c -o guard && cc -O2 -Wall -Wextra -Werror session.c -o session && cc -O2 -Wall -Wextra -Werror runner.c -o runner && chmod 555 guard session runner && ulimit -c 0', 240)
         cmd('uname -v | grep '+shlex.quote(pin['ident']))
-        cmd('mkdir -p /usr/local/libexec/xiri /usr/local/share/xiri/fonts /usr/local/bin && install -m 444 /cdrom/*.pcf* /usr/local/share/xiri/fonts/ && /usr/X11R7/bin/mkfontdir /usr/local/share/xiri/fonts && install -m 444 /cdrom/xorg.conf /usr/local/share/xiri/xorg.conf && install -m 555 /cdrom/manual-session.sh /cdrom/setup-pty.sh /usr/local/libexec/xiri/ && install -m 555 /cdrom/xiri-desktop.sh /usr/local/bin/xiri-desktop && install -m 555 session /usr/local/libexec/xiri/session && cc -O2 -Wall -Wextra -Werror manual-guard.c -o /usr/local/libexec/xiri/manual-guard && cc -O2 -Wall -Wextra -Werror handoff.c -o /usr/libexec/xiri-shell && chmod 555 /usr/local/libexec/xiri/manual-guard /usr/libexec/xiri-shell && install -m 444 /cdrom/netbsd.boot /netbsd.boot', 240)
+        cmd('mkdir -p /usr/local/libexec/xiri /usr/local/share/xiri/fonts /usr/local/bin && install -m 444 /cdrom/*.pcf* /usr/local/share/xiri/fonts/ && /usr/X11R7/bin/mkfontdir /usr/local/share/xiri/fonts && install -m 444 /cdrom/xorg.conf /usr/local/share/xiri/xorg.conf && install -m 555 /cdrom/manual-session.sh /cdrom/setup-pty.sh /usr/local/libexec/xiri/ && install -m 555 /cdrom/xiri-desktop.sh /usr/local/bin/xiri-desktop && install -m 555 /cdrom/xiri-launch.sh /usr/local/bin/xiri-launch && install -m 444 /cdrom/toolchest.chestrc /usr/local/share/xiri/toolchest.chestrc && ln -sf /bin/sh /usr/local/libexec/xiri/command-shell && install -m 555 session /usr/local/libexec/xiri/session && cc -O2 -Wall -Wextra -Werror manual-guard.c -o /usr/local/libexec/xiri/manual-guard && cc -O2 -Wall -Wextra -Werror handoff.c -o /usr/libexec/xiri-shell && chmod 555 /usr/local/libexec/xiri/manual-guard /usr/libexec/xiri-shell && install -m 444 /cdrom/netbsd.boot /netbsd.boot', 240)
         result['manual_guard_control'] = shell.guard(cmd('/usr/local/libexec/xiri/manual-guard 0 /bin/sleep 30 >manual-guard.log 2>&1 & mgpid=$!; sleep 2; kill -TERM "$mgpid"; wait "$mgpid"; cat manual-guard.log'))
         assert result['manual_guard_control']['absent'] == result['manual_guard_control']['valid'] == result['manual_guard_control']['killed'] == 1
         result['persistent_helpers_installed'] = True
+        result['desktop_dimensions'] = [1280, 1024]
+        result['installed_files'] = {dest: probe.sha256(media/name) for name, dest in {
+            'xorg.conf': '/usr/local/share/xiri/xorg.conf',
+            'toolchest.chestrc': '/usr/local/share/xiri/toolchest.chestrc',
+            'xiri-launch.sh': '/usr/local/bin/xiri-launch',
+            'xiri-desktop.sh': '/usr/local/bin/xiri-desktop',
+            'manual-session.sh': '/usr/local/libexec/xiri/manual-session.sh',
+        }.items()}
         cmd('export PATH=/usr/X11R7/bin:$PATH; install -d -m 755 /tmp/irix-screen-fonts && install -m 444 /cdrom/*.pcf* /tmp/irix-screen-fonts/ && mkfontdir /tmp/irix-screen-fonts')
         cmd('Xvfb :98 -screen 0 1024x768x24 -ac -noreset >xvfb.log 2>&1 & xpid=$!; sleep 3; xdpyinfo -display 127.0.0.1:98 >/dev/null && xset -display 127.0.0.1:98 +fp /tmp/irix-screen-fonts && xset -display 127.0.0.1:98 fp rehash && xsetroot -display 127.0.0.1:98 -solid "#556677"')
         controls('before')

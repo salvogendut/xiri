@@ -1,0 +1,53 @@
+{
+  "schema": 1,
+  "status": "disk-boot-display-and-menu-shell-verified",
+  "run": ".work/prismatic-xiri/menu-20261102-013108",
+  "existing_binary_sha256": "3023cd1a6895740480f32c32e6b82928c4eee3fc7439c3bda1f38e2628acad92",
+  "binary_rebuilt_by_test": false,
+  "binary_provenance": "Frozen copy of the existing Prismatic release executable; differs from the earlier boot-only test. No source revision is inferred from the current checkout.",
+  "chd_sha256": "d8ad6f45e3e8c50b0f532366ecddf5e887df76752927bd0ae80cfd74f67333f2",
+  "model": "Indy IP24",
+  "cpu": "R4400",
+  "ram_mib": 256,
+  "graphics": "Newport",
+  "scsi_id": 1,
+  "inputs": {
+    "configuration_sha256": "43b4c11249dac524239378aae91f3a6787b2db50670ff40757b6dad7e2a9fb75",
+    "frozen_harness_sha256": "e90df0d4ce7096c658f91212e9a7ba6aa443e8174510c9bb776b6c4ee324787f"
+  },
+  "evidence": {
+    "result_sha256": "f77bf6b13e3ebce68159b103cf2923cd7c99dfaa64789f93d562555808a7a03d",
+    "serial_sha256": "b2a9907d3f9149574ec0dd86a34dc4d8a5772417307a4fec64a34d5ffef264a9",
+    "frontend_log_sha256": "c07772e886c46ae88ad43a187b0e9f50b7e293d6807440a51f0eb43d62c93f73"
+  },
+  "multiuser": true,
+  "desktop_dimensions": [
+    1280,
+    1024
+  ],
+  "framebuffer_dimensions": [
+    1282,
+    1024
+  ],
+  "menu": "Desktop > Open Unix Shell",
+  "menu_shell_command": "XIRI_PRISMATIC_MENU_OK",
+  "input_method": "Guest XTest helpers click Toolchest and type into the new winterm under Prismatic; frontend F4 captures the rendered framebuffer.",
+  "native_o32_controls_passed": true,
+  "reserved_uid_cleanup_passed": true,
+  "clean_shutdown": true,
+  "frontend_exit": 0,
+  "base_chd_unchanged": true,
+  "screenshot": {
+    "path": "docs/results/images/2026-11-02-prismatic-menu-shell.png",
+    "sha256": "2719ecb394109094597022f441373f91c061f2bd5b473794934df7f148385e45",
+    "source": ".work/prismatic-xiri/menu-20261102-013108/prismatic-20261102-003320Z-WibimX.ppm",
+    "source_sha256": "5ddd95682d5ce009ef641b97ba21320ae02410381784d02a5367ee085e8600a5",
+    "pixels_match": true
+  },
+  "limitations": [
+    "Automatic xwsh closure after native shell exit remains unqualified; startup xwsh was explicitly removed before selecting the new terminal.",
+    "Other original menu actions, complete desktop services and Icon Catalog contents/launching remain unfinished.",
+    "Default emulated PROM timing adds two columns beyond the 1280x1024 X root.",
+    "Only the isolated test was stopped; the user-owned Prismatic instance was left running."
+  ]
+}

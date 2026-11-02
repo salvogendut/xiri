@@ -22,6 +22,9 @@ def main():
     payload = json.loads((ROOT/'.work/irix-installed-desktop/payload.json').read_text())
     seed = json.loads((a.seed_run/'result.json').read_text())
     modes = json.loads((ROOT/'lab/irix-installed-desktop/permissions.json').read_text())
+    native_fonts = {'/usr/local/share/xiri/fonts/'+Path(path).name: info['sha256']
+        for path,info in json.loads((ROOT/'lab/irix-x11-fonts/manifest.json').read_text())['files'].items()
+        if '/fonts/' in path}
     records = {}
     for target, info in payload['paths'].items():
         source = target.removeprefix('/emul/irix')
@@ -35,6 +38,10 @@ def main():
     for target, digest in seed['staged'].items():
         if target in records:
             assert records[target]['sha256'] == digest
+        elif target in native_fonts:
+            # New reusable seeds also record native font copies. The resource
+            # pass below supplies their original IRIX path and provenance.
+            assert native_fonts[target] == digest
         else:
             assert target.startswith('/emul/irix/')
             records[target] = dict(irix_source=target.removeprefix('/emul/irix'),
@@ -71,7 +78,8 @@ def main():
             '/usr/local/libexec/xiri/{manual-guard,session,manual-session.sh,setup-pty.sh}',
             '/usr/libexec/xiri-shell', '/usr/local/share/xiri/xorg.conf',
             '/usr/local/share/xiri/fonts/fonts.dir', '/usr/people/xiritest',
-            '/var/tmp/xiri-desktop/session.*', '/emul/irix/dev/ptc and PTY aliases/mounts'],
+            '/usr/local/bin/xiri-launch', '/usr/local/libexec/xiri/command-shell -> /bin/sh',
+            '/usr/local/share/xiri/toolchest.chestrc', '/var/tmp/xiri-desktop/session.*', '/emul/irix/dev/ptc and PTY aliases/mounts'],
         exclusions=['IRIX kernel, Xsgi, boot scripts, installed-package history and old personal home state are not imported.',
             'Static libraries and catalog registration do not include every application data tree or delayed dependency.'])
     a.output.parent.mkdir(parents=True, exist_ok=True)

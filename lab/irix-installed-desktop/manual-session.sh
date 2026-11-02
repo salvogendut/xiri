@@ -16,7 +16,8 @@ observe wm /emul/irix/usr/bin/X11/4Dwm -display "$DISPLAY" \
     -xrm '*background: #aaaaaa' -xrm '*activeBackground: #c5c1aa' &
 sleep 4
 observe toolchest /emul/irix/usr/bin/X11/toolchest -display "$DISPLAY" \
-    -geometry +10+10 -xrm '*background: #c1c1c1' -xrm '*decalForeground: #555555' &
+    -geometry +10+10 -xrm '*background: #c1c1c1' -xrm '*decalForeground: #555555' \
+    /usr/local/share/xiri/toolchest.chestrc &
 observe winterm /bin/sh /emul/irix/usr/sbin/winterm -name winterm \
     -title winterm -geometry 80x24+10+180 \
     -e /usr/libexec/xiri-shell "$PWD/handoff" &

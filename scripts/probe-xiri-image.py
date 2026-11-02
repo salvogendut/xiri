@@ -36,9 +36,12 @@ def main():
     media.mkdir()
     shutil.copyfile(ROOT/'lab/irix-4dwm/type-ready.c', media/'type.c')
     ledger = json.loads((bundle/'copy-ledger.json').read_text())
-    staged = json.loads((bundle/'seed-result.json').read_text())['staged']
+    seed_result = json.loads((bundle/'seed-result.json').read_text())
+    staged = seed_result['staged']
+    dimensions = seed_result.get('desktop_dimensions', [1024, 768])
     support = {r['netbsd_destination']:r['sha256'] for r in ledger['files']
                if r['type'] == 'file' and r['netbsd_destination'] not in staged}
+    support.update(seed_result.get('installed_files', {}))
     (media/'SUPPORT').write_text(''.join(f'SHA256 ({path}) = {h}\n' for path,h in support.items()))
     (media/'SHA256').write_text(''.join(f'SHA256 ({path.name}) = {probe.sha256(path)}\n' for path in sorted(media.iterdir())))
     probe.run(['genisoimage', '-quiet', '-R', '-J', '-o', directory/'probe.iso', media])
@@ -97,6 +100,8 @@ def main():
         cmd('test "$(sha256 -q /netbsd)" = '+pin['native_kernel_sha256']+
             ' && test "$(sha256 -q /netbsd.boot)" = '+pin['boot_kernel_sha256'])
         cmd('cd /root && test -x /usr/local/bin/xiri-desktop && test -r /usr/local/share/xiri/fonts/fonts.dir && test -d /usr/people/xiritest')
+        if seed_result.get('installed_files'):
+            cmd('test "$(readlink /usr/local/libexec/xiri/command-shell)" = /bin/sh')
         cmd('mount -t cd9660 -o ro /dev/cd0a /cdrom && cd /cdrom && sha256 -c SHA256 && sha256 -c SUPPORT && cd /root && cc -O2 -Wall -Wextra -Werror -I/usr/X11R7/include /cdrom/type.c -L/usr/X11R7/lib -Wl,-rpath,/usr/X11R7/lib -lX11 -lXtst -o image-type', 180)
         result['support_files_verified'] = support
         result['native_control'] = cmd('/root/irix-desktop/native-o32; test "$?" = 37')
@@ -105,7 +110,9 @@ def main():
         result['launcher_log'] = get('cat manual-desktop.log').decode(errors='backslashreplace')
         result['display'] = get('cat manual-display').decode(errors='backslashreplace')
         result['tree'] = get('cat manual-tree').decode(errors='backslashreplace')
-        result['newport_x11'] = 'dimensions:    1024x768 pixels' in result['display']
+        result['desktop_dimensions'] = dimensions
+        result['newport_x11'] = ('dimensions:    %dx%d pixels' % tuple(dimensions)) in result['display']
+        assert result['newport_x11']
         frame = get('cat manual.xwd')
         if frame:
             (directory/'manual.xwd').write_bytes(frame)

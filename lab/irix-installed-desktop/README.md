@@ -98,3 +98,20 @@ state, plus the verified SGI documentation for catalog registration.
 Prismatic's own schema; its machine state/NVRAM must also select the NetBSD
 loader. See the [Prismatic boot result](../../docs/results/2026-11-02-prismatic-xiri.md)
 and [switching instructions](../../docs/XIRI-IMAGE.md#return-to-irix).
+
+## Display and menu integration
+
+The development profile uses [xorg.conf](xorg.conf) at 1280×1024; the earlier
+1024×768 X11 lab configuration remains pinned. [toolchest.chestrc](toolchest.chestrc)
+includes the original menus, overrides Open Unix Shell and Icon Catalog, and
+adds the supported Applications menu. `MWMSHELL` selects a native-shell alias;
+[xiri-launch.sh](xiri-launch.sh) uses explicit vendor application paths and
+unique terminal handoff logs. Imported IRIX shells and menus are unchanged.
+
+Run `scripts/probe-xiri-desktop-launch.py --seed .work/xiri-image/prepared-seed`
+to update a disposable clone and exercise real menu selections, repeated
+terminal commands, larger-frame pixels, payload integrity and cleanup.
+See the [launch investigation](../../docs/results/2026-11-02-desktop-launch.md).
+The resulting clean raw guest can be packaged by `scripts/build-xiri-image.py`;
+verify the new bundle with `scripts/probe-xiri-image.py` and
+`scripts/qualify-xiri-image.py` before promoting it.

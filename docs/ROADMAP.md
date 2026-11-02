@@ -156,6 +156,8 @@ dependency candidates; a visible window alone does not complete these checks.
 - [ ] Turn the remaining comparisons into reproducible desktop acceptance cases against the original installation.
 - [x] Launch original 4Dwm against native Xvfb and demonstrate reparenting, focus, key delivery and dragging in the [combined shell session](results/2026-11-01-irix-4dwm.md); Newport/physical display qualification remains separate.
 - [x] Add original Toolchest and a working winterm shell to the same 4Dwm session.
+- [x] Qualify [1280×1024 Newport geometry and supported Toolchest launches](results/2026-11-02-desktop-launch.md): two menu-created native shells accept typed commands; Applications opens original xclock, Icon Catalog and xmahjongg. Imported vendor menus and shells remain unchanged, with explicit native launch overrides.
+- [ ] Diagnose xwsh retaining its window after native shell exit and producing PTY write EIO when further input reaches it. The menu test explicitly removes that closed-shell client; automatic terminal closure is not yet qualified.
 - [x] Attempt the original file manager, background icons and Icon Catalog in the [expanded session](results/2026-11-01-irix-desktop-components.md); retain startup failures and inventory the next resources.
 - [x] Clear the initial `getrlimit(RLIMIT_PTHREAD)` and bgicons executable-alignment blockers with [measured limit/loader support](results/2026-11-01-irix-rlimit.md): 4,760 NetBSD limit records and 280 loader executions pass.
 - [x] Clear the observed `mmap(MAP_AUTORESRV)` boundary with [private demand mappings](results/2026-11-01-irix-mmap-autoresrv.md), preserving fixed/local and native controls.
