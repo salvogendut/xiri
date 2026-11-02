@@ -22,15 +22,17 @@ The reference supplies concrete appearance and content targets for Xiri:
 The populated catalog comes from this installation's application and page
 data. The installed-image import now stages 166 catalog entries across 17 original
 system pages, including Freeware. The older 20261102 image showed
-`Blank`; the current service image has 18 visible pages. Rendering the imported icons and launching their applications
-remain separate checks from discovering the page directories.
+`Blank`; the current image has 18 visible pages and application-specific
+Freeware icons. Launching those applications remains a separate check from
+page discovery and artwork rendering.
 The reference does make the remaining resource work visible: page data,
 filetype/action rules, icon and toolbar artwork, palettes and the background.
 Not every application shown needs to be imported to establish desktop support.
 
 Earlier Xiri captures showed a Trusted Path panel that is not visible here.
 The measured MAC feature query now removes it. The desktop repair also restores
-toolbar glyphs, while application/filetype artwork remains absent. This image is
+toolbar glyphs; the [icon repair](results/2026-11-02-desktop-icons.md) adds
+Freeware application and FileManager folder/document artwork. This image is
 a visual reference; behavior is qualified by the linked runtime experiments
 and the [desktop acceptance plan](ROADMAP.md#milestone-3-original-desktop-proof).
 

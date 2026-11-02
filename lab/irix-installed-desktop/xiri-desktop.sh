@@ -73,7 +73,7 @@ if ! rpcinfo -p 127.0.0.1 >"$job/rpc-before.txt" 2>&1; then
         tries=$((tries+1)); test "$tries" -lt 10; kill -0 "$rpcpid"; sleep 1
     done
 fi
-/usr/local/sbin/famd -d -c "$share/fam.conf" -p 391002.1 >"$job/fam.log" 2>&1 &
+XIRI_FAM_ROOT=/emul/irix /usr/local/sbin/famd -d -c "$share/fam.conf" -p 391002.1 >"$job/fam.log" 2>&1 &
 fampid=$!
 tries=0
 # FAM uses portmapper discovery, then its own wire protocol, not RPC calls.

@@ -238,3 +238,17 @@ The desktop filesystem/RPC cycle qualifies NetBSD `xiri` source
 `9c8bd4e328f` with 6,500 records and 32 controls across LP64 CI/ordinary and
 o32 CI guests. Separate desktop build directories preserve the signal kernel
 and qualified CHD. See the [result](results/2026-11-02-irix-desktop-fs.md).
+
+The 2026-11-02 icon/file-locking cycle fetched IRIS upstream again at
+`43e525a847ceeb9453af5d685dd8d353bea133e1`, already contained in integration
+`xiri` at `a4a1659d0b3180713f988d73b7b7da204048ae6a`. No merge or emulator
+rebuild was needed. NetBSD `xiri` adds measured o32/n32 record-lock translation
+at `3e154cdc37c`; separate filelocks build directories preserve the previous
+kernels and images. See the [locking/artwork record](results/2026-11-02-irix-filelocks.md)
+for reference measurements and validation.
+
+The same icon cycle adds measured o32/n32 seek offsets at NetBSD `xiri`
+`57430add71d693d33ba2048f4543e74d16ea315e`. Clean builds are pinned in
+`lab/irix-filetypes/{baseline,o32-baseline}.json`; the lock-only builds remain
+preserved. Both NetBSD commits are pushed. Native FAM pathname mapping is
+maintained in this repository; no IRIS source changes were required.

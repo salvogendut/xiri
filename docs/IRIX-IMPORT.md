@@ -154,9 +154,20 @@ target `//usr/freeware/bin/xmahjongg`. The session sets `LANG=C` and
 an absent Freeware registration nor a proven locale mismatch explained the
 earlier Blank page. The [desktop repair trace](results/2026-11-02-desktop-services.md)
 now establishes the missing directory/poll adapters and native FAM namespace
-as discovery blockers. Pages and entry labels work. The remaining artwork
-path opens `desktop.otr` and fails the next file-locking call; the original
-links and compiled tables have not been rewritten.
+as discovery blockers. The [icon repair](results/2026-11-02-desktop-icons.md)
+adds record locking for `desktop.otr`, seek offsets for embedded filetype
+tags, and native FAM path translation. Application-specific Freeware icons
+and FileManager folder/document icons now render. The original links,
+compiled tables and executables remain unchanged. No new vendor assets
+were needed in this cycle.
+
+The session starts native FAM with `XIRI_FAM_ROOT=/emul/irix`. FAM watches
+physical imported paths while returning the original client pathnames; it
+falls back to native paths for the shared `/usr/people` home. The previous
+`/usr/lib/desktop` alias is retained for existing helpers. A broad
+`/usr/freeware` alias was used only to diagnose the problem and is not installed
+in the reusable image. Neither the temporary filetype observer library nor
+`_RLD_LIST` overrides are part of the final desktop.
 
 The user also supplied the community page
 [IRIX Customizing the Desktop](https://wiki.preterhuman.net/IRIX_Customizing_the_Desktop).

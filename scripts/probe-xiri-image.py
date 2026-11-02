@@ -133,6 +133,9 @@ def main():
         cmd('XIRI_SESSION_MS=300000 /usr/local/bin/xiri-desktop >manual-desktop.log 2>&1 & manual=$!; tries=0; until ./image-type 127.0.0.1:0 xmahjongg "" >game-focus.log 2>&1; do kill -0 "$manual" || break; tries=$((tries+1)); test "$tries" -lt 120 || break; sleep 2; done; ./image-type 127.0.0.1:0 xmahjongg "" >game-focus.log 2>&1', 360)
         if seed_result.get('desktop_services'):
             cmd('(tries=0; until /usr/X11R7/bin/xwininfo -display 127.0.0.1:0 -root -tree | grep "of 18)" >/dev/null; do kill -0 "$manual" || exit 1; tries=$((tries+1)); test "$tries" -lt 60 || exit 1; sleep 2; done)',180)
+            # Refresh the monitor compositor after Xorg changes display state.
+            lab.monitor_command('disp compositor gl')
+            lab.monitor_command('disp compositor sw')
             lab.monitor_command('screen shot '+str(directory/'before-input.png'))
             result['framebuffer_colors_before_input'] = int(subprocess.check_output(
                 ['magick',str(directory/'before-input.png'),'-format','%k','info:']))

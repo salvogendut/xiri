@@ -7,6 +7,7 @@ from pathlib import Path
 import shutil
 import subprocess
 import tarfile
+import tempfile
 import urllib.request
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -40,6 +41,12 @@ def main():
         run(work/'btree-host')
         run(str(prefix)+'g++', '--sysroot='+str(work/'sysroot'), '-O2', '-std=gnu++98',
             '-I'+str(source/'include'), '-I'+str(source), test, '-o', work/'btree-native')
+        path_test = ROOT/'lab/native-fam/emul-path-test.cpp'
+        run('g++', '-O2', '-std=gnu++98', '-Wall', '-Wextra', '-Werror', path_test, '-o', work/'emul-path-host')
+        with tempfile.TemporaryDirectory(prefix='xiri-fam-path-') as temp:
+            run(work/'emul-path-host', temp)
+        run(str(prefix)+'g++', '--sysroot='+str(work/'sysroot'), '-O2', '-std=gnu++98',
+            '-Wall', '-Wextra', '-Werror', path_test, '-o', work/'emul-path-native')
         return
     spec = json.loads((ROOT/'lab/native-fam/source.json').read_text())
     work = ROOT/'.work/native-fam'
@@ -58,6 +65,8 @@ def main():
         assert digest(path, algorithm) == pin[algorithm], name
     for name, expected in spec.get('local_patches', {}).items():
         assert digest(ROOT/name) == expected, name
+    for name, expected in spec.get('local_support', {}).items():
+        assert digest(ROOT/name) == expected, name
     source = work/'fam-2.7.0'
     if not source.exists():
         with tarfile.open(cache/'fam-2.7.0.tar.gz') as archive:
@@ -73,6 +82,8 @@ def main():
                 '--directory='+str(source.relative_to(ROOT)), ROOT/name, cwd=ROOT)
         for name in ['imon-compat.h', 'IMonKQueue.c++']:
             shutil.copyfile(cache/'files'/name, source/'src'/name)
+        for name in spec.get('local_support', {}):
+            shutil.copyfile(ROOT/name, source/'src'/Path(name).name)
         (work/'source-ready.json').write_text(json.dumps(spec, indent=2)+'\n')
     assert json.loads((work/'source-ready.json').read_text()) == spec
     sysroot = work/'sysroot'
@@ -92,6 +103,8 @@ def main():
                   builder_sha256=digest(Path(__file__).resolve()),
                   btree_test_sha256=digest(ROOT/'lab/native-fam/btree-test.cpp'),
                   btree_host_passed=True, btree_native_sha256=digest(work/'btree-native'),
+                  emul_path_host_passed=True, emul_path_native_sha256=digest(work/'emul-path-native'),
+                  emul_path_test_sha256=digest(ROOT/'lab/native-fam/emul-path-test.cpp'),
                   files={n:digest(source/n) for n in ['src/famd', 'test/test', 'lib/.libs/libfam.a']},
                   logs={n:digest(work/n) for n in ['configure.log', 'build.log']})
     (work/'result.json').write_text(json.dumps(result, indent=2)+'\n')

@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updated": "2026-11-01",
+  "updated": "2026-11-02",
   "scope": "Running image-resource checklist; presence does not establish necessity or compatibility",
   "vendor_bytes": "Ignored .work only; read-only extraction; manifests own checksums",
   "entries": [
@@ -175,7 +175,7 @@
     },
     {
       "id": "desktop_helpers",
-      "status": "filemanager_window_select_error_observed",
+      "status": "catalog_and_filemanager_rendered",
       "image_paths": [
         "/usr/lib/desktop/*",
         "/usr/sbin/fm",
@@ -202,36 +202,42 @@
         "docs/results/2026-11-01-irix-mkdir.json",
         "docs/results/2026-11-01-irix-desktop-mkdir.json",
         "docs/results/2026-11-01-irix-pipe.json",
-        "docs/results/2026-11-01-irix-desktop-pipe.json"
+        "docs/results/2026-11-01-irix-desktop-pipe.json",
+        "lab/irix-installed-desktop/copy-ledger.json",
+        "docs/results/2026-11-02-desktop-icons.md"
       ],
-      "note": "Vendor closure/resources unchanged. bgicons and the home-folder invocation exit zero. FileManager renders and stays alive but loops on select EINVAL; usable browsing/actions are not qualified. Icon Catalog retains its empty fallback. A process snapshot includes fmserv, but service behavior is unqualified. The ordinary shell/window checks pass; CI desktop capture times out and its guest does not halt cleanly."
+      "note": "Icon Catalog and FileManager render entries and icons with native FAM. General file operations, background icons and session restoration remain open."
     },
     {
       "id": "artwork",
-      "status": "roots_located_unqualified",
+      "status": "freeware_and_filemanager_artwork_observed",
       "image_paths": [
         "/usr/lib/images",
         "/usr/lib/filetype/iconlib"
       ],
       "evidence": [
-        "lab/irix-desktop-components/manifest.json"
+        "lab/irix-desktop-components/manifest.json",
+        "lab/irix-installed-desktop/copy-ledger.json",
+        "docs/results/2026-11-02-desktop-icons.md"
       ],
-      "note": "Image roots located: /usr/lib/images has 235 top-level entries; filetype/iconlib is also present. Contents are not yet staged or qualified as required artwork."
+      "note": "Imported iconlib/images and toolbar glyphs render in the Freeware catalog and native-home FileManager. Other artwork remains to qualify."
     },
     {
       "id": "filetype_rules",
-      "status": "roots_located_unqualified",
+      "status": "imported_classification_and_artwork_observed",
       "image_paths": [
         "/usr/lib/filetype"
       ],
       "evidence": [
-        "lab/irix-desktop-components/manifest.json"
+        "lab/irix-desktop-components/manifest.json",
+        "lab/irix-installed-desktop/copy-ledger.json",
+        "docs/results/2026-11-02-desktop-icons.md"
       ],
-      "note": "File-type root located with system/default/local, .otr tables, devices and iconlib entries. Rule contents, referenced artwork and action handlers are not yet staged or qualified."
+      "note": "Original compiled tables and executable tags are unchanged. Locks and seek offsets enable classification; native FAM path mapping prevents false DanglingReference results. Launch actions remain unqualified."
     },
     {
       "id": "schemes",
-      "status": "lookup_paths_missing_in_guest",
+      "status": "installed_tree_imported",
       "image_paths": [
         "/usr/lib/X11/schemes/Base/BaseColorPalette",
         "/usr/lib/X11/schemes/Myers/BaseColorPalette",
@@ -241,9 +247,11 @@
       "evidence": [
         "docs/results/2026-10-31-irix-winterm-fault.json",
         "docs/results/2026-10-31-irix-winterm-access.json",
-        "lab/irix-desktop-components/manifest.json"
+        "lab/irix-desktop-components/manifest.json",
+        "lab/irix-installed-desktop/copy-ledger.json",
+        "docs/results/2026-11-02-desktop-icons.md"
       ],
-      "note": "Original xwsh now gets ENOENT for these system and HOME/.desktop-xiri-indy/schemes/{Base,Myers}/BaseColorPalette candidates and continues to terminal setup. Inventory and appearance qualification remain open. Image root /usr/lib/X11/schemes now inventoried with 31 top-level entries; palette contents remain unstaged."
+      "note": "Installed schemes are imported with the desktop payload. Presence does not qualify every customization panel or theme."
     },
     {
       "id": "additional_fonts",
@@ -267,12 +275,14 @@
     },
     {
       "id": "desktop_services",
-      "status": "needs_inventory",
+      "status": "native_fam_rpc_and_cleanup_observed",
       "image_paths": [],
       "evidence": [
-        "docs/results/2026-11-01-irix-desktop-components.md"
+        "docs/results/2026-11-01-irix-desktop-components.md",
+        "lab/irix-installed-desktop/copy-ledger.json",
+        "docs/results/2026-11-02-desktop-icons.md"
       ],
-      "note": "Qualify file monitoring, caches, device discovery and optional audio/powersaver/sysmon helpers. The first expanded attempt stops in client initialization, before establishing a file-monitoring service contract."
+      "note": "Native single-user FAM v1 and corrected rpcbind run under session ownership. XIRI_FAM_ROOT=/emul/irix maps imported paths while preserving event names; native homes retain fallback."
     },
     {
       "id": "native_pty_namespace",
@@ -290,15 +300,17 @@
     },
     {
       "id": "icon_catalog_pages",
-      "status": "empty_fallback_rendered_system_pages_unstaged",
+      "status": "imported_18_pages_21_freeware_icons_observed",
       "image_paths": [
         "/usr/lib/desktop/iconcatalog/pages"
       ],
       "evidence": [
         "lab/irix-desktop-components/manifest.json",
-        "docs/results/2026-11-01-irix-desktop-mkdir.json"
+        "docs/results/2026-11-01-irix-desktop-mkdir.json",
+        "lab/irix-installed-desktop/copy-ledger.json",
+        "docs/results/2026-11-02-desktop-icons.md"
       ],
-      "note": "Original defaults name the dummy page Blank; this empty main window now renders. System page data remains unstaged. Emptiness alone does not establish a compatibility failure. Qualify one pinned page and action for a known installed application; system-page discovery is not proven."
+      "note": "166 original catalog links were imported across 17 system pages. The client shows 18 pages, including 21 Freeware entries with artwork. Original unresolved targets remain listed in the import ledger."
     },
     {
       "id": "generated_desktop_directories",
@@ -370,7 +382,7 @@
         "docs/IRIX-SOFTWARE.md",
         "docs/results/2026-11-01-irix-installer.json"
       ],
-      "note": "Native accounts, native /bin/ksh and skeleton. Share one HOME with IRIX apps; clients create desktop state. Root foreign sessions use HOME=/; no old personal state imported. Graphical login and desktop-state restoration remain unqualified."
+      "note": "Native accounts, native /bin/ksh and skeleton. Share one HOME with IRIX apps; clients create desktop state. Root foreign sessions use HOME=/; no old personal state imported. Graphical root console login is qualified; ordinary-user graphical login and desktop-state restoration remain unqualified."
     }
   ],
   "native_session_inputs": [
@@ -383,9 +395,9 @@
     "Native PTY allocation, ownership, controlling terminal and termios translation for the selected shell",
     "Native fork/exec ABI transition, child descriptors and session/process group; verified native PTY reopen and controlling-terminal setup through /usr/libexec/xiri-shell. No additional vendor image assets needed for the shell checkpoint.",
     "IRIX PRDA process data at 0x200000 is now measured and implemented: PID at +0xe00, initial ABI FP flags and native CPU identity, fork COW/PID refresh, exec reset. Kernel ABI state, not an image resource; share groups and general threads remain unsupported.",
-    "4Dwm currently needs explicit SG_manageSession=false and SG_autoSave=false; session-saving file operations/services remain open. A Trusted Path Manager panel and SGI-AccessControl requests remain under feature-query investigation.",
+    "4Dwm currently needs explicit SG_manageSession=false and SG_autoSave=false; session-saving file operations/services remain open. The measured MAC-absent query now removes the Trusted Path panel.",
     "Observed 4Dwm saved-state paths: HOME/.xroomsrc, HOME/.xroomsrc.tmp and HOME/.desktop-127.0.0.1 for the controlled display. The enabled path hits unimplemented mkdir/unlink/fsync/rename and a later (null).tmp name. Generated native user state, not image resources to import.",
-    "Expanded desktop startup now passes limits, executable loading, AUTORESRV allocation and measured PR_INIT_THREADS with native signal holds. HOME/.desktop-xiri-indy is generated per-user state; mkdir support and fm wait semantics are next. This does not establish thread creation, logical-swap parity or a usable full desktop."
+    "Expanded desktop startup now passes limits, executable loading, AUTORESRV allocation and measured PR_INIT_THREADS with native signal holds. HOME/.desktop-xiri-indy is generated per-user state; measured directory operations and native FAM now support catalog and FileManager contents. This does not establish thread creation, logical-swap parity or a usable full desktop."
   ],
   "visual_reference": {
     "description": "User-supplied normal IRIX desktop capture with terminal, Toolchest, Icon Catalog and xclock",

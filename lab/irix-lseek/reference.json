@@ -1,0 +1,91 @@
+{
+  "schema": 1,
+  "release": "IRIX 6.5.22m",
+  "directory": ".work/irix-reference/filetype-runs/ci-sjhhb4l0",
+  "files": {
+    ".work/irix-reference/filetype-runs/ci-sjhhb4l0/result.json": "b72dc6befeaa5ae598dc51f2ee1bf4e7bf012a0c55da77970538ae3675959b88",
+    ".work/irix-reference/filetype-runs/ci-sjhhb4l0/seek-final-results.tar": "44ec8f8bf60fd974e022b4f852af822bfc0e7168a63ffdd84170e502141ec720",
+    ".work/irix-reference/filetype-runs/ci-sjhhb4l0/response-final.json": "dafaea426b1f33786badd00fb71fcdea226511ae5feeacf96053c8d2748510be",
+    ".work/irix-reference/filetype-runs/ci-sjhhb4l0/response-wide.json": "fb838fe93cb0bda1715e171986de4e96f90a33007c6deb88d3160a27c806f0e5",
+    ".work/irix-reference/filetype-runs/ci-sjhhb4l0/response-seektrace.json": "f489aed29f56eecfa58627a5a9cd2d65ac5886ac38fa860f2f31ba2b523b4c06",
+    ".work/irix-reference/filetype-runs/ci-sjhhb4l0/reference.out": "51b640d1320ed7d3c63ead8d240f2fa7be475b81fcbe0fb17a2733fba2deb4ac",
+    ".work/irix-reference/filetype-runs/ci-sjhhb4l0/probe-n32": "3fa076591b6bdf24682d0b514ec40063b2dcbcd705dd4e465e16c92d9b59a0e6",
+    ".work/irix-reference/filetype-runs/ci-sjhhb4l0/wide-n32": "6a059bbf4de6fc0a84d860addd3b490524ae6675cf985adea42b4909183b5ff8",
+    ".work/irix-reference/filetype-runs/ci-sjhhb4l0/typehook.so": "1139b19510821cc1eef8d6836d461fd94bea76439bdc5b4364af2c2537e2f9a6",
+    ".work/irix-lseek/build-initial.py": "4af6fe0c7b123cf51bacbc9fb6cdbdb1e535f71579e489f3c0be919a451da365",
+    ".work/irix-lseek/reference-initial.py": "3e524df9914f7cf9a4235f03c3146fabb6556eb57270f73f6dfe2fb5bb973bc6",
+    ".work/irix-lseek/diagnose-seek-final.py": "430b0c15eb970a6723be3b90de342fc840e084aa8b79302d0db5d1f891488095",
+    ".work/irix-lseek/probe-seek-o32.py": "52eaf9958674fcca84e6ccccaaa6d447a9aa6c1a1c0e8983677b108e807c8ae0"
+  },
+  "fixtures": {
+    "schema": 1,
+    "sources": {
+      "scripts/build-irix-lseek.py": "4bdcf9d82fee6416b5c6955377441f737b1614297d5dfd8669bb152d309787f8",
+      "lab/irix-lseek/probe.c": "68b015123f802a247b51857d43afa7e7b0f1b3195acf4fe547b31760bee5e48d",
+      "lab/irix-prda/start.S": "00aa6b1e26feba4817798e32876c2286fe60547ae8ceeacb56b3d6904e40310d",
+      "lab/irix-prda/call.S": "677d247b98c292a3a5f0c8cfae4614ab9c6995ddde00501b700db0e857986a4f",
+      "lab/irix-prda/probe.ld": "08cff42138f41bc5ef5c02a903ed16fab4db0d6a8d208f90dafd2157b30573dc"
+    },
+    "files": {
+      "o32-direct-lseek": {
+        "sha256": "84b8e8a9496e95de4bea5a98b83af7cc029de28240b1ff3500b8fe14f48cab5f",
+        "bytes": 9020
+      },
+      "o32-indirect-lseek": {
+        "sha256": "1d5b58a77a9ed8eafff683e303ad55b34602631c03f27b74f163edeb392fe392",
+        "bytes": 9020
+      },
+      "n32-direct-lseek": {
+        "sha256": "aa675591fb9c809dcf6ee89f92282b62183d6ac59756444f2cb72107fd19d909",
+        "bytes": 9020
+      },
+      "n32-indirect-lseek": {
+        "sha256": "b2e9435c63104d2d42d57f5fd5e4b3874695702d39050533a9acdab79fbbd797",
+        "bytes": 9020
+      }
+    },
+    "cases": [
+      {
+        "name": "o32-direct-lseek",
+        "abi": "o32",
+        "indirect": false,
+        "symbols": {
+          "N32": 0
+        },
+        "record_bytes": 1536
+      },
+      {
+        "name": "o32-indirect-lseek",
+        "abi": "o32",
+        "indirect": true,
+        "symbols": {
+          "N32": 0
+        },
+        "record_bytes": 1536
+      },
+      {
+        "name": "n32-direct-lseek",
+        "abi": "n32",
+        "indirect": false,
+        "symbols": {
+          "N32": 1
+        },
+        "record_bytes": 1536
+      },
+      {
+        "name": "n32-indirect-lseek",
+        "abi": "n32",
+        "indirect": true,
+        "symbols": {
+          "N32": 1
+        },
+        "record_bytes": 1536
+      }
+    ]
+  },
+  "notes": [
+    "The reference request queue reran the final valid-whence fixtures; response-final.json and seek-final-results.tar supersede initial SIGSYS runs.",
+    "Invalid whence 3 delivered SIGSYS; separate diagnostic outputs are retained.",
+    "The native o32 kernel artifact is byte-identical before and after the source commit; LP64 is rebuilt and tested from the clean committed source."
+  ]
+}

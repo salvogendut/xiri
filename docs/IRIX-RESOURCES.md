@@ -25,8 +25,12 @@ entry labels through native FAM v1: 18 visible pages, including 21 Freeware
 entries. Native FAM needs `/usr/lib/desktop` to resolve to the imported tree;
 it cannot use the kernel's foreign pathname lookup. This generated alias and
 the service account/configuration are recorded in [IRIX-IMPORT.md](IRIX-IMPORT.md).
-The original clients are unchanged. Their filetype artwork remains absent;
-the latest trace opens `desktop.otr`, then fails `F_SETBSDLKW` with EINVAL.
+The original clients are unchanged. The [icon repair](results/2026-11-02-desktop-icons.md)
+now renders Freeware application artwork and FileManager folder/document icons.
+Measured record locking and seek offsets let the vendor library read the
+existing filetype database and executable tags. Native FAM now resolves
+imported paths with `XIRI_FAM_ROOT=/emul/irix`, preserving client event names
+and native home fallback. No additional vendor assets were required.
 
 This is the running record of what xiri needs from the supplied IRIX image.
 It separates demonstrated runtime inputs, extracted candidates and assets
@@ -91,15 +95,16 @@ FileManager window and the home-folder invocation exited zero. Repeated select
 EINVAL blocked usable browsing; that CI capture timed out. The newer desktop
 service result supersedes this startup boundary and lists native files, with
 fmserv and FAM present. Earlier waitsys
-limitations also remain open. Filetype rules, artwork
-and delayed services still need runtime checks. Missing `uxsgiimd`/`uxsgierr`
+limitations also remain open. Filetype classification and Freeware artwork
+now pass the later icon repair; broader actions and delayed services still
+need runtime checks. Missing `uxsgiimd`/`uxsgierr`
 message catalogs remain diagnostic candidates; current evidence does not
 establish them as startup prerequisites.
 
 | Candidate | What to record next |
 | --- | --- |
-| Icon, bitmap, cursor and backdrop assets | The new inventory locates `/usr/lib/images` (235 top-level entries) and `/usr/lib/filetype/iconlib`. Resolve actual referenced files before staging them; preserve formats, directory layout and case. Their presence does not prove runtime necessity. |
-| File-type rules and actions (FTR) | `/usr/lib/filetype` contains system/default/local entries, .otr tables, devices and iconlib. Inventory their contents and referenced command handlers as client lookup paths are reached. Separate file identification from executing an action. |
+| Icon, bitmap, cursor and backdrop assets | `/usr/lib/images` and `/usr/lib/filetype/iconlib` are now imported by the installed-desktop ledger. Freeware application artwork and FileManager folder/document icons render; other backdrops, devices and cursors still need individual qualification. Preserve original formats, case and layout. |
+| File-type rules and actions (FTR) | The imported `/usr/lib/filetype` includes source definitions, compiled `.otr` tables and iconlib. The vendor classifier now identifies xmahjongg, xclock, directories and text files. Launch/open actions remain separate from this classification and artwork qualification. |
 | Color schemes, palettes and saved preferences | xwsh actually probes `/usr/lib/X11/{,C/}schemes/{Base,Myers}/BaseColorPalette` and `$HOME/.desktop-xiri-indy/schemes/{Base,Myers}/BaseColorPalette`. The implemented checks return `ENOENT` for these candidates in the guest, and xwsh continues to terminal setup. Inventory the image files and qualify appearance separately. Two numeric Toolchest colors do not establish full SGI appearance. |
 | Additional fonts, aliases and encodings | Record actual requests from each original client. The private inventory has broader Fixed-font metadata; only the selected Screen family is in the import experiment. Preserve XLFD names and alias relationships. |
 | Locale/input-method modules and catalogs | Resolve any actual module loads named by XI18N_OBJS; inventory message catalogs used by gettxt and desktop helpers. The xwsh error path now probes `/usr/lib/locale/C/LC_MESSAGES/uxsyserr`, `C/Xopen/LC_MESSAGES/uxsyserr` and `C/LC_MESSAGES/uxsyserr.cat`; the later fork failure also probes the corresponding `uxsgierr` paths. Their absence does not prevent the fallback English diagnostic. Multilingual locales and input methods are separate from the current C-locale checks. |

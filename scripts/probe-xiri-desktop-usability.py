@@ -28,9 +28,14 @@ FILES = {
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--debug-failure', action='store_true')
+    parser.add_argument('--seed', type=Path, default=ROOT/'.work/xiri-image/prepared-seed-20261102-services')
+    parser.add_argument('--kernel-build', type=Path, default=ROOT/'.work/netbsd-irix-desktop-build')
+    parser.add_argument('--baseline', type=Path)
     args = parser.parse_args()
-    seed = ROOT/'.work/xiri-image/prepared-seed-20261102-services'
+    seed = args.seed.resolve()
+    kernel_build = args.kernel_build.resolve()
     old = json.loads((seed/'result.json').read_text())
+    pin = json.loads(args.baseline.read_text()) if args.baseline else old['pin']
     provenance = json.loads((seed/'image-source.json').read_text())
     assert old['status'] == 'observed' and old['clean_shutdown']
     assert p.sha256(seed/'disk.raw') == provenance['raw_sha256']
@@ -42,7 +47,7 @@ def main():
     assert p.sha256(rpcbin) == rpc['rpcbind_sha256']
     p.IRIS = ROOT/'.work/target-netbsd64/release/iris'
     p.CI = ROOT/'.work/target-netbsd64/release/iris-ci'
-    assert p.sha256(p.IRIS) == old['pin']['emulator_sha256']
+    assert p.sha256(p.IRIS) == pin['emulator_sha256']
     runs = ROOT/'.work/desktop-usability'
     runs.mkdir(exist_ok=True)
     d = Path(tempfile.mkdtemp(prefix='ordinary-', dir=runs))
@@ -52,6 +57,10 @@ def main():
     for name in [*FILES, 'manual-guard.c']:
         shutil.copyfile(ROOT/'lab/irix-installed-desktop'/name, media/name)
     shutil.copyfile(rpcbin, media/'rpcbind')
+    for name, source, key in [('netbsd',kernel_build/'kernel-media/netbsd','native_kernel_sha256'),
+                             ('netbsd.boot',kernel_build/'tftp/netbsd-XIRI_INDY','boot_kernel_sha256')]:
+        assert p.sha256(source)==pin[key]
+        shutil.copyfile(source,media/name)
     # This helper injects X events; console login itself uses emulated PS/2 keys.
     input_source = (ROOT/'lab/irix-toolchest-input/inputcheck.c').read_text()
     input_source = input_source.replace('XOpenDisplay("127.0.0.1:98")', 'XOpenDisplay(getenv("DISPLAY"))')
@@ -62,12 +71,13 @@ def main():
     installed = dict(old['installed_files'])
     installed.update({dest:p.sha256(media/name) for name,dest in FILES.items()})
     installed['/usr/sbin/rpcbind'] = rpc['rpcbind_sha256']
+    installed.update({'/netbsd':pin['native_kernel_sha256'],'/netbsd.boot':pin['boot_kernel_sha256']})
     (media/'SHA256').write_text(''.join(f'SHA256 ({f.name}) = {p.sha256(f)}\n' for f in sorted(media.iterdir())))
     p.run(['genisoimage','-quiet','-R','-J','-o',d/'probe.iso',media])
     for name in ['disk.raw','nvram.bin']:
         p.run(['cp','--reflink=auto','--sparse=always',seed/name,d/name])
     config = (ROOT/'lab/indy-netbsd/iris.toml').read_text()
-    config = re.sub(r'^tftp_dir = .*$', 'tftp_dir = '+json.dumps(str(ROOT/'.work/netbsd-irix-desktop-build/tftp')), config, flags=re.M)
+    config = re.sub(r'^tftp_dir = .*$', 'tftp_dir = '+json.dumps(str(kernel_build/'tftp')), config, flags=re.M)
     lab = p.Lab(SimpleNamespace(mode='ordinary',debugger=False,boot_timeout=600),d,config_text=config)
     # Graphical workloads can overrun the diagnostic serial receiver when a
     # long command arrives in one host TCP burst. Preserve every input byte.
@@ -77,7 +87,7 @@ def main():
             lab.serial.sendall(bytes([byte]))
             time.sleep(.005)
     lab.send = paced_send
-    r = dict(status='error',clean_shutdown=False,pin=old['pin'],staged=old['staged'],
+    r = dict(status='error',clean_shutdown=False,pin=pin,staged=old['staged'],
              base_image=provenance,base_seed_result_sha256=p.sha256(seed/'result.json'),
              payload_manifest_sha256=old['payload_manifest_sha256'],
              desktop_dimensions=[1280,1024],desktop_services=True,
@@ -85,6 +95,9 @@ def main():
              installed_files=installed,native_rpcbind_build=rpc,
              sources={str(Path(__file__).relative_to(ROOT)):p.sha256(Path(__file__)),
                       **{str(f.relative_to(ROOT)):p.sha256(f) for f in media.iterdir()}},
+             artwork_source_run=str(seed.relative_to(ROOT)),
+             artwork_source_result_sha256=p.sha256(seed/'result.json'),
+             icon_artwork=bool(old.get('freeware_target_notifications')),
              logout={})
 
     def cmd(command, timeout=120):
@@ -105,6 +118,8 @@ def main():
         lab.monitor_command('key Enter')
 
     def capture(name):
+        lab.monitor_command('disp compositor gl')
+        lab.monitor_command('disp compositor sw')
         lab.monitor_command('screen wait 500 10000')
         lab.monitor_command('screen shot '+str(d/(name+'.png')))
         r[name+'_png_sha256'] = p.sha256(d/(name+'.png'))
@@ -112,8 +127,8 @@ def main():
     def wait_for(condition, timeout=180):
         cmd('(tries=0; until '+condition+'; do tries=$((tries+1)); test "$tries" -lt '+str(timeout//2)+' || exit 1; sleep 2; done)',timeout+20)
 
-    symbols = ROOT/'.work/netbsd-irix-desktop-build/obj/sys/arch/sgimips/compile/XIRI_IRIX_DESKTOP/netbsd.gdb'
-    assert p.sha256(symbols) == old['pin']['debug_kernel_sha256']
+    symbols = kernel_build/'obj/sys/arch/sgimips/compile'/Path(pin['config_path']).name/'netbsd.gdb'
+    assert p.sha256(symbols) == pin['debug_kernel_sha256']
     symbol_table = subprocess.check_output(['nm', str(symbols)], text=True)
     msgbuf_symbol = int(re.search(r'^([0-9a-f]+) [BbDd] msgbufp$',symbol_table,re.M)[1],16)
 
@@ -160,6 +175,8 @@ def main():
     try:
         lab.start()
         cmd('mount -t cd9660 -o ro /dev/cd0a /cdrom && cd /cdrom && sha256 -c SHA256 >/root/usability-media.log && mkdir -p /root/usability && cd /root/usability')
+        cmd('rm -f graphics-login returned-toolchest returned-root-menu toolchest.log root-menu.log')
+        cmd('install -m 444 /cdrom/netbsd /netbsd && install -m 444 /cdrom/netbsd.boot /netbsd.boot')
         for name,dest in FILES.items():
             cmd('install -m '+('555' if name.endswith('.sh') else '444')+' /cdrom/'+name+' '+dest)
         cmd('install -m 555 /cdrom/rpcbind /usr/sbin/rpcbind && cc -O2 -Wall -Wextra -Werror /cdrom/manual-guard.c -o /usr/local/libexec/xiri/manual-guard',180)
@@ -167,7 +184,7 @@ def main():
         cmd("sed -e '/^constty/s/on secure/off secure/' -e '/^ttyE0/s/off secure/on secure/' -e '/^ttyZ0/s/off secure/on secure local softcar/' /etc/ttys >/etc/ttys.new && mv /etc/ttys.new /etc/ttys")
         # Allocate a text VT on serial diagnostic boots too; graphics boots
         # already have screen zero. init starts the gettys after rc finishes.
-        cmd("printf '\\n# Xiri local display login.\\n/usr/sbin/wsconscfg -f /dev/ttyEcfg 0 2>/dev/null || true\\n' >>/etc/rc.local")
+        cmd("grep -F '/usr/sbin/wsconscfg -f /dev/ttyEcfg 0' /etc/rc.local >/dev/null || printf '\\n# Xiri local display login.\\n/usr/sbin/wsconscfg -f /dev/ttyEcfg 0 2>/dev/null || true\\n' >>/etc/rc.local")
         for dest in ['/usr/local/libexec/xiri/manual-guard','/etc/ttys','/etc/rc.local']:
             installed[dest] = get('sha256 -q '+dest).strip()
         r['native_before'] = cmd('/root/irix-desktop/native-o32; test "$?" = 37')

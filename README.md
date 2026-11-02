@@ -44,17 +44,19 @@ The [desktop repair checkpoint](docs/results/2026-11-02-desktop-services.md)
 adds measured directory/link/poll support and native FAM. Icon Catalog now
 discovers 18 pages and lists the 21 Freeware entries; FileManager lists native
 files and folders. Reporting MAC support as absent removes the Trusted Path
-panel. Filetype icon artwork and catalog application actions remain unfinished:
-the latest trace reaches an unsupported `F_SETBSDLKW` call on `desktop.otr`.
-Automatic xwsh closure after shell exit also remains open. Xorg stays in use;
+panel. The [icon repair](docs/results/2026-11-02-desktop-icons.md) now restores
+application-specific Freeware artwork and FileManager folder/document icons.
+It adds measured record locks and seek offsets, and gives native FAM the
+imported pathname view. Catalog application actions remain to be qualified.
+Intermittent xwsh startup failures and automatic closure after shell exit
+also remain open. Xorg stays in use;
 further Xsgi experiments are deferred.
 
 The [desktop usability update](docs/results/2026-11-02-desktop-usability.md)
 adds graphical console boot/login, working Toolchest and desktop-menu logout,
 window-manager readiness before starting clients, and native rpcbind's
 duplicate-loopback fix. Two desktop sessions return to the console with
-clients/services removed. Session restoration and missing icon artwork
-remain separate work.
+clients/services removed. Session restoration remains separate work.
 
 The reported responsiveness gap and the supplied SGI driver guide are tracked
 in [Newport performance](docs/NEWPORT.md). The current Xorg configuration

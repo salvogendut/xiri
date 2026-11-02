@@ -114,8 +114,9 @@ through the pinned kernel's message ring.
 The [usability record](../../docs/results/2026-11-02-desktop-usability.md)
 retains failed diagnostics separately from qualified replacement artifacts.
 The generated `4Dwmrc` and logout request file are native session state;
-the vendor menu resource remains unchanged. Session saving and filetype
-icon artwork are separate outstanding work.
+the vendor menu resource remains unchanged. Session saving remains open.
+The [icon repair](../../docs/results/2026-11-02-desktop-icons.md) now restores
+Freeware application artwork and native-home FileManager icons.
 
 ## Display and menu integration
 
@@ -144,4 +145,8 @@ pre-existing rpcbind is retained. The probe waits for catalog discovery after
 both initial startup and reopening, then checks Freeware notifications,
 FileManager, native file creation/deletion, file hashes and cleanup.
 The [service result](../../docs/results/2026-11-02-desktop-services.md) records
-the observed improvements and remaining filetype locking/artwork gap.
+the observed improvements and the then-open filetype locking/artwork gap.
+That gap is resolved by the later lock/seek adapters and native FAM
+`XIRI_FAM_ROOT` mapping, exercised by `probe-xiri-desktop-icons.py`.
+No additional vendor files, rewritten registrations or broad `/usr/freeware`
+alias are required.

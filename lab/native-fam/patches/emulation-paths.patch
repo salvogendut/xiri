@@ -1,0 +1,144 @@
+--- src/File.h
++++ src/File.h
+@@ -33,7 +33,7 @@
+ 
+ public:
+ 
+-    File(const char *name, Client *, Request, const Cred&);
++    File(const char *name, Client *, Request, const Cred&, const char *logical = NULL);
+     Type type() const;
+ 
+ };
+--- src/Directory.h
++++ src/Directory.h
+@@ -39,7 +39,7 @@
+ 
+ public:
+ 
+-    Directory(const char *name, Client *, Request, const Cred&);
++    Directory(const char *name, Client *, Request, const Cred&, const char *logical = NULL);
+     ~Directory();
+ 
+     virtual void resume();
+--- src/File.c++
++++ src/File.c++
+@@ -24,8 +24,8 @@
+ 
+ #include "Event.h"
+ 
+-File::File(const char *name, Client *c, Request r, const Cred& cr)
+-    : ClientInterest(name, c, r, cr, FILE)
++File::File(const char *name, Client *c, Request r, const Cred& cr, const char *logical)
++    : ClientInterest(name, c, r, cr, FILE, logical)
+ {
+     //  The ClientInterest constructor posts the Exists event.
+     post_event(Event::EndExist);
+--- src/Directory.c++
++++ src/Directory.c++
+@@ -41,8 +41,8 @@
+ 
+ Directory *Directory::current_dir;
+ 
+-Directory::Directory(const char *name, Client *c, Request r, const Cred& cr)
+-    : ClientInterest(name, c, r, cr, DIRECTORY), entries(NULL), unhangPid(-1)
++Directory::Directory(const char *name, Client *c, Request r, const Cred& cr, const char *logical)
++    : ClientInterest(name, c, r, cr, DIRECTORY, logical), entries(NULL), unhangPid(-1)
+ {
+     dir_bits() = 0;
+     if (exported_to_host())
+--- src/ClientInterest.h
++++ src/ClientInterest.h
+@@ -68,7 +68,7 @@
+     
+ protected:
+ 
+-    ClientInterest(const char *name, Client *, Request, const Cred&, Type);
++    ClientInterest(const char *name, Client *, Request, const Cred&, Type, const char *logical);
+     void post_event(const Event&, const char * = NULL);
+ 
+ private:
+@@ -82,6 +82,7 @@
+     const Cred mycred;
+     FileSystem *myfilesystem;
+     Request fs_request;
++    char *eventname;
+ 
+     void filesystem(FileSystem *);
+ 
+--- src/ClientInterest.c++
++++ src/ClientInterest.c++
+@@ -24,6 +24,8 @@
+ 
+ #include <assert.h>
+ #include <errno.h>
++#include <stdlib.h>
++#include <string.h>
+ 
+ #include "Client.h"
+ #include "Event.h"
+@@ -31,10 +33,11 @@
+ #include "FileSystemTable.h"
+ 
+ ClientInterest::ClientInterest(const char *name,
+-			       Client *c, Request r, const Cred& cr, Type type)
++			       Client *c, Request r, const Cred& cr, Type type, const char *logical)
+     : Interest(name, myfilesystem = FileSystemTable::find(name, cr),
+                c->host(), VERIFY_EXPORTED),
+-      myclient(c), request(r), mycred(cr), fs_request(0)
++      myclient(c), request(r), mycred(cr), fs_request(0),
++      eventname(strdup(logical ? logical : name))
+ {
+     ci_bits() = ACTIVE_STATE;
+     if (exported_to_host())
+@@ -62,6 +65,7 @@
+ ClientInterest::~ClientInterest()
+ {
+     myfilesystem->cancel(this, fs_request);
++    free(eventname);
+ }
+ 
+ void
+@@ -126,8 +130,8 @@
+ ClientInterest::post_event(const Event& event, const char *eventpath)
+ {
+     assert(active());
+-    if (!eventpath)
+-	eventpath = name();
++    if (!eventpath || strcmp(eventpath, name()) == 0)
++	eventpath = eventname;
+     myclient->post_event(event, request, eventpath);
+ }
+ 
+--- src/MxClient.c++
++++ src/MxClient.c++
+@@ -24,6 +24,8 @@
+ #include "MxClient.h"
+ 
+ #include <assert.h>
++#include <stdlib.h>
++#include "emul-path.h"
+ 
+ #include "DirEntry.h"
+ #include "Directory.h"
+@@ -79,7 +81,9 @@
+ {
+     if (check_new(request, path))
+     {
+-	ClientInterest *ip = new File(path, this, request, cred);
++	cred.become_user();
++	const std::string physical = xiri_fam_path(getenv("XIRI_FAM_ROOT"), path, false);
++	ClientInterest *ip = new File(physical.c_str(), this, request, cred, path);
+ 	requests.insert(request, ip);
+     }
+ }
+@@ -89,7 +93,9 @@
+ {
+     if (check_new(request, path))
+     {
+-	ClientInterest *ip = new Directory(path, this, request, cred);
++	cred.become_user();
++	const std::string physical = xiri_fam_path(getenv("XIRI_FAM_ROOT"), path, true);
++	ClientInterest *ip = new Directory(physical.c_str(), this, request, cred, path);
+ 	requests.insert(request, ip);
+     }
+ }

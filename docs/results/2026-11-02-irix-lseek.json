@@ -1,0 +1,185 @@
+{
+  "schema": 1,
+  "status": "passed",
+  "executions": 12,
+  "syscall_records": 348,
+  "reference_directory": "/var/home/salvogendut/Dev/xiri/.work/irix-reference/filetype-runs/ci-sjhhb4l0",
+  "reference_sha256": "44ec8f8bf60fd974e022b4f852af822bfc0e7168a63ffdd84170e502141ec720",
+  "reference_identity": "6.5 6.5.22m\nuid=0(root) gid=0(sys)\n1\n",
+  "reference_clean_shutdown": true,
+  "wide_n32_sha256": "6a059bbf4de6fc0a84d860addd3b490524ae6675cf985adea42b4909183b5ff8",
+  "wide_n32_output": "OFF_T 8\nSEEK 0 0 -> 0 errno=0\nSEEK 2147483648 0 -> 2147483648 errno=0\nSEEK 4294967303 0 -> 4294967303 errno=0\nSEEK -1 1 -> 4294967302 errno=0\nSEEK 0 1 -> 4294967302 errno=0\nSEEK -4294967296 1 -> 6 errno=0\nSEEK 3 0 -> 3 errno=0\nBYTE d\n",
+  "runs": [
+    {
+      "directory": ".work/desktop-icons/ordinary-250peiym",
+      "pin": {
+        "schema": 1,
+        "description": "IRIX desktop filetype record locks and seek offsets",
+        "ident": "XIRI_IRIX_ICONS_20261102",
+        "source_revision": "57430add71d693d33ba2048f4543e74d16ea315e",
+        "source_branch": "xiri",
+        "build_arch": "mips64eb",
+        "page_bytes": 8192,
+        "boot_kernel_sha256": "0708c12e604024eb6b98d8fc586ee90f4eef55c720d3db3b09c102410f5de1a7",
+        "native_kernel_sha256": "58ba4c933843d787475e669879a703f9631858c6437241b4f50d8d202ac0bb19",
+        "debug_kernel_sha256": "87b5d2ee8baf2451c1c92d894559d94e7b9dbed7573b5e22fea81573071e635c",
+        "native_o32_sha256": "c294fbb1f2110445be31c096481ea54ab561c7e59ca5b9fc7171310098d755d4",
+        "source_dirty": false,
+        "emulator_revision": "9df1df14334838a989253efefe26f0547e6da592",
+        "emulator_branch": "xiri/netbsd64-tlb",
+        "emulator_sha256": "1b3f7702ba7f43b5c4fca8ba8884243559f46371d8d67a36ce5e6fee1e595eba",
+        "ci_client_sha256": "8711321aa6eaae440da3c7920b00ae4cf1c7f2abbdb15a9919f58485500ffb6c",
+        "base_disk_sha256": "269038c7b77660c83d3835208fc0b2702c93110c14b3c55a42416f51672cee2a",
+        "nvram_sha256": "ee883474d52f09278287b2044f7aeca61d2e7bc39c0bb8fd85c983ab64063d15",
+        "config_sha256": "0eb73eacce8be22da29a6431bae63469f456451ac01459ed1706d7dfa88c5b8a",
+        "runtimes": [
+          {
+            "name": "vendor-o32-libc",
+            "path": "/usr/lib/libc.so.1",
+            "sha256": "ea766492103a193e9d404942705e4e28987545e37f699ede232b6c0f8c97c954"
+          },
+          {
+            "name": "vendor-o32-rld",
+            "path": "/lib/rld",
+            "sha256": "30228b54c1e5585b365514eb7c9895b03cc0f61cb898e05e3ddafece87863439"
+          },
+          {
+            "name": "vendor-n32-libc",
+            "path": "/lib32/libc.so.1",
+            "sha256": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e"
+          },
+          {
+            "name": "vendor-n32-rld",
+            "path": "/lib32/rld",
+            "sha256": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b"
+          }
+        ],
+        "config_path": "lab/irix-filetypes/XIRI_IRIX_ICONS"
+      },
+      "cases": [
+        {
+          "name": "n32-direct-lseek-0.out",
+          "sha256": "bc1f11720a16e63d867e49064ef6a5c5a2dffd564946c4d3ed5e62ad037c596b",
+          "syscall_records": 29
+        },
+        {
+          "name": "n32-direct-lseek-1234.out",
+          "sha256": "22575dfff320ac8bc5cab081e81c0ba201ac9eb4ea87fd1e867169792195bcf8",
+          "syscall_records": 29
+        },
+        {
+          "name": "n32-indirect-lseek-0.out",
+          "sha256": "bc1f11720a16e63d867e49064ef6a5c5a2dffd564946c4d3ed5e62ad037c596b",
+          "syscall_records": 29
+        },
+        {
+          "name": "n32-indirect-lseek-1234.out",
+          "sha256": "22575dfff320ac8bc5cab081e81c0ba201ac9eb4ea87fd1e867169792195bcf8",
+          "syscall_records": 29
+        },
+        {
+          "name": "o32-direct-lseek-0.out",
+          "sha256": "12f7c1ca79536359ac07549b56e8992aacc3d4d8c36ddc11f83c6585dd3863a8",
+          "syscall_records": 29
+        },
+        {
+          "name": "o32-direct-lseek-1234.out",
+          "sha256": "219509f9da6ac1bb17be92605aa16ee5b4b2cab4c441a70a5b9edf4b6bca6369",
+          "syscall_records": 29
+        },
+        {
+          "name": "o32-indirect-lseek-0.out",
+          "sha256": "12f7c1ca79536359ac07549b56e8992aacc3d4d8c36ddc11f83c6585dd3863a8",
+          "syscall_records": 29
+        },
+        {
+          "name": "o32-indirect-lseek-1234.out",
+          "sha256": "219509f9da6ac1bb17be92605aa16ee5b4b2cab4c441a70a5b9edf4b6bca6369",
+          "syscall_records": 29
+        }
+      ],
+      "result_sha256": "908d6a546f6633ce16e3dc487318f22cf934ce1f65cb01d37aa9bd5c5edc0562",
+      "archive_sha256": "665ef49aca1b1c3e2000e7d612759014aa5fc4b69e27d6210d1d0f99728d973a",
+      "serial_sha256": "365bc9ba0aa66dc0fdc0d0765f71aceeb0fbe226dbae14bb345060644a434ed8",
+      "clean_shutdown": true
+    },
+    {
+      "directory": ".work/desktop-icons/seek-o32-j_5npegq",
+      "pin": {
+        "schema": 1,
+        "description": "IRIX desktop filetype record locks and seek offsets",
+        "ident": "XIRI_IRIX_ICONS_O32_20261102",
+        "source_revision": "57430add71d693d33ba2048f4543e74d16ea315e",
+        "source_branch": "xiri",
+        "build_arch": "mipseb",
+        "page_bytes": 4096,
+        "boot_kernel_sha256": "a2dae0435ed0420764caf024fbf47039c4575e951e60225218d3734181d98ac9",
+        "native_kernel_sha256": "a2dae0435ed0420764caf024fbf47039c4575e951e60225218d3734181d98ac9",
+        "debug_kernel_sha256": "319c45d23aa67e2b10a91590522f9a9106f960406e823feeb9402ffc2138590d",
+        "native_o32_sha256": "c294fbb1f2110445be31c096481ea54ab561c7e59ca5b9fc7171310098d755d4",
+        "source_dirty": false,
+        "emulator_revision": "9df1df14334838a989253efefe26f0547e6da592",
+        "emulator_branch": "xiri/netbsd64-tlb",
+        "emulator_sha256": "1b3f7702ba7f43b5c4fca8ba8884243559f46371d8d67a36ce5e6fee1e595eba",
+        "ci_client_sha256": "8711321aa6eaae440da3c7920b00ae4cf1c7f2abbdb15a9919f58485500ffb6c",
+        "base_disk_sha256": "269038c7b77660c83d3835208fc0b2702c93110c14b3c55a42416f51672cee2a",
+        "nvram_sha256": "ee883474d52f09278287b2044f7aeca61d2e7bc39c0bb8fd85c983ab64063d15",
+        "config_sha256": "7085b3babfe8653b4187aa9f77bf8287c5da44776e2d0a265faedbf9cfa45af6",
+        "runtimes": [
+          {
+            "name": "vendor-o32-libc",
+            "path": "/usr/lib/libc.so.1",
+            "sha256": "ea766492103a193e9d404942705e4e28987545e37f699ede232b6c0f8c97c954"
+          },
+          {
+            "name": "vendor-o32-rld",
+            "path": "/lib/rld",
+            "sha256": "30228b54c1e5585b365514eb7c9895b03cc0f61cb898e05e3ddafece87863439"
+          },
+          {
+            "name": "vendor-n32-libc",
+            "path": "/lib32/libc.so.1",
+            "sha256": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e"
+          },
+          {
+            "name": "vendor-n32-rld",
+            "path": "/lib32/rld",
+            "sha256": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b"
+          }
+        ],
+        "config_path": "lab/irix-filetypes/XIRI_IRIX_ICONS_O32"
+      },
+      "cases": [
+        {
+          "name": "o32-direct-lseek-0.out",
+          "sha256": "12f7c1ca79536359ac07549b56e8992aacc3d4d8c36ddc11f83c6585dd3863a8",
+          "syscall_records": 29
+        },
+        {
+          "name": "o32-direct-lseek-1234.out",
+          "sha256": "219509f9da6ac1bb17be92605aa16ee5b4b2cab4c441a70a5b9edf4b6bca6369",
+          "syscall_records": 29
+        },
+        {
+          "name": "o32-indirect-lseek-0.out",
+          "sha256": "12f7c1ca79536359ac07549b56e8992aacc3d4d8c36ddc11f83c6585dd3863a8",
+          "syscall_records": 29
+        },
+        {
+          "name": "o32-indirect-lseek-1234.out",
+          "sha256": "219509f9da6ac1bb17be92605aa16ee5b4b2cab4c441a70a5b9edf4b6bca6369",
+          "syscall_records": 29
+        }
+      ],
+      "result_sha256": "72a3e734cde5e4ffb71c1b51e952cdf5f4067ede284810a5eda969986484999e",
+      "archive_sha256": "b5701ccccfe6beb427218c3338393e4c529e99da7a7afe281d3fde4fef17f0f0",
+      "serial_sha256": "b5f5877998f744bb79d1fb59f96a8d09f278c5d7abf559689b5e9d754b26465a",
+      "clean_shutdown": true
+    }
+  ],
+  "sources": {
+    "scripts/qualify-irix-lseek.py": "d7d6426dc39ca14474627e78f07bb80d9d829509b4cdcd887f247d5a3cbb28cd",
+    "lab/irix-lseek/probe.c": "68b015123f802a247b51857d43afa7e7b0f1b3195acf4fe547b31760bee5e48d",
+    "lab/irix-lseek/wide.c": "6ca070e49b6901fb3f6f449c7775b64a78709e2477c360ff53df34ad674bec29"
+  }
+}

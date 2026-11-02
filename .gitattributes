@@ -1,2 +1,2 @@
-# Unified-diff context has a space prefix before the source's literal tabs.
-lab/native-fam/patches/*.patch whitespace=-space-before-tab
+# Unified-diff context preserves source tabs and blank-line space prefixes.
+lab/native-fam/patches/*.patch whitespace=-space-before-tab,-blank-at-eol

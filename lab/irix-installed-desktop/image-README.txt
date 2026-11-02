@@ -37,13 +37,27 @@ Find > Icon Catalog also uses the native launch bridge.
 Icon Catalog now discovers its pages and lists application names, including
 the 21 Freeware entries. Native FAM runs for this single-user session and
 is stopped with it. FileManager can list native files and folders.
-Filetype icon artwork and catalog launch actions remain unfinished. The
-next measured gap is file locking while opening the desktop type database.
+Application-specific Freeware icons and FileManager folder/document icons
+now render. The kernel supplies the measured IRIX locks and seek offsets;
+native FAM resolves imported paths beneath /emul/irix while retaining the
+original client event names. Catalog launch actions remain to be qualified.
 Other original menu actions and complete desktop services remain unfinished.
 Typing exit can leave a blank xwsh window after the native shell exits;
-automatic terminal closure remains unfinished. Stopping xiri-desktop
+automatic terminal closure remains unfinished. An intermittent xwsh startup
+SIGFPE was also captured during a repeated desktop session and remains open.
+Stopping xiri-desktop
 removes the session's remaining clients.
 Client UID is 1234; HOME is /usr/people/xiritest. Logs: /var/tmp/xiri-desktop.
+
+Suggested manual checks:
+- Open the Freeware page and inspect the application-specific icons.
+- Open Unix Shell from Toolchest, type commands, and open a second shell.
+- Close the initially launched xmahjongg, then try its catalog entry.
+- Try other catalog entries individually; an icon does not certify the app.
+- Inspect files/folders in /usr/people/xiritest/XiriTest with FileManager.
+- Log out through Toolchest, restart the desktop, and try the desktop menu.
+Record the exact entry/action and any dialog or terminal output. Session logs
+are in /var/tmp/xiri-desktop/session.*; retain the CHD overlay for diagnosis.
 
 To return to IRIX: halt NetBSD, stop the emulator, attach the original IRIX
 CHD at SCSI ID 1, then at the PROM:
