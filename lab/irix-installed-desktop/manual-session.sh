@@ -2,6 +2,16 @@
 set -eu
 job=$(cd "$1" && pwd)
 cd "${HOME:?Desktop session needs a home directory.}"
+# The vendor workspace reads Desktop links; the marker selects Dumpster's FTR.
+# Seed a new desktop once, preserving later user additions and removals.
+if test ! -d "$HOME/Desktop"; then
+    mkdir -p "$HOME/Desktop" "$HOME/dumpster"
+    touch "$HOME/dumpster/.dumpster"
+    ln -s / "$HOME/Desktop/UnixRoot"
+    ln -s "$HOME" "$HOME/Desktop/$(id -un)"
+    ln -s ../dumpster "$HOME/Desktop/dumpster"
+fi
+/emul/irix/usr/sbin/bgicons -overlay >"$job/bgicons.out" 2>"$job/bgicons.err"
 # Preserve the vendor menus, routing their logout action through our supervisor.
 sed 's|/usr/bin/X11/endsession|/usr/local/bin/xiri-logout|g' \
     /emul/irix/usr/lib/X11/system.4Dwmrc >"$job/4Dwmrc"
@@ -17,6 +27,9 @@ observe()
 }
 observe wm /emul/irix/usr/bin/X11/4Dwm -display "$DISPLAY" \
     -xrm "*configFile: $job/4Dwmrc" \
+    -xrm '*SG_useBackgrounds: true' \
+    -xrm '*Global*backgroundDescription: -bitmap /usr/include/X11/bitmaps/granite -bg #69b5b5 -fg #868686' \
+    -xrm '*defaultBackgroundDescription: -bitmap /usr/include/X11/bitmaps/granite -bg #69b5b5 -fg #868686' \
     -xrm '*SG_manageSession: false' -xrm '*SG_autoSave: false' \
     -xrm '*background: #aaaaaa' -xrm '*activeBackground: #c5c1aa' &
 tries=0
@@ -30,6 +43,18 @@ until xprop -display "$DISPLAY" -root _MOTIF_WM_INFO >"$job/wm-ready.txt" 2>&1 &
     fi
     sleep 1
 done
+tries=0
+until xprop -display "$DISPLAY" -root _SGI_DESKS_BACKGROUND >"$job/backdrop-ready.txt" 2>&1 &&
+    grep -Eq 'pixmap id # 0x[1-9a-f][0-9a-f]*' "$job/backdrop-ready.txt"; do
+    tries=$((tries+1))
+    if test "$tries" -ge 60; then
+        echo '4Dwm did not publish its backdrop pixmap; check the granite resource.' >&2
+        touch "$job/logout"
+        exit 1
+    fi
+    sleep 1
+done
+observe background /emul/irix/usr/sbin/fm -b &
 observe toolchest /emul/irix/usr/bin/X11/toolchest -display "$DISPLAY" \
     -geometry +10+10 -xrm '*background: #c1c1c1' -xrm '*decalForeground: #555555' \
     /usr/local/share/xiri/toolchest.chestrc &

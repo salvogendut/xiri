@@ -55,6 +55,19 @@ def main():
     shutil.copyfile(seed/'result.json', out/'seed-result.json')
     shutil.copyfile(ROOT/'lab/irix-installed-desktop/prismatic.cfg', out/'prismatic.cfg')
     readme = (ROOT/'lab/irix-installed-desktop/image-README.txt').read_text()
+    if r.get('desktop_behavior'):
+        readme = readme.replace(
+            'Opened-icon shape feedback and interactive IRIX shell use remain unqualified.',
+            'xmahjongg changes to its running icon after launch and returns to its closed\n'
+            'icon after exit. The desktop has the original granite backdrop plus\n'
+            'filesystem, home and Dumpster icons; double-click opens their directory\n'
+            'views. Dumpster empty/recovery and interactive IRIX shell use remain\n'
+            'unqualified. Native xdm login is deferred until desktop behavior is complete.')
+        readme = readme.replace('- Close the initially launched xmahjongg, then try its catalog entry.',
+            '- Close the initially launched xmahjongg, then double-click its catalog entry.\n'
+            '  Check the flat/running icon shapes before launch and after exit.\n'
+            '- Open the filesystem, home and Dumpster desktop icons.\n'
+            '  Do not assume every Dumpster action is implemented yet.')
     if not r.get('vendor_shell'):
         start = readme.index('Double-clicking xmahjongg')
         end = readme.index('Other original menu actions', start)
@@ -92,6 +105,10 @@ def main():
         assert sha(bitmap_ledger) == r['bitmap_ledger_sha256']
         shutil.copyfile(bitmap_ledger, out/'bitmap-copy-ledger.json')
         shutil.copyfile(ROOT/'lab/native-fam/source.json', out/'native-fam-source.json')
+    if r.get('desktop_behavior'):
+        behavior_ledger = ROOT/'lab/irix-desktop-behavior/resources.json'
+        assert sha(behavior_ledger) == r['desktop_behavior']['resource_ledger_sha256']
+        shutil.copyfile(behavior_ledger, out/'desktop-behavior-resources.json')
     if r.get('native_rpcbind_build'):
         rpc_pin = ROOT/'lab/native-rpcbind/source.json'
         rpc = json.loads(rpc_pin.read_text())

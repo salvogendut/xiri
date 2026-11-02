@@ -63,7 +63,7 @@
         "docs/results/2026-11-01-irix-4dwm.md",
         "docs/results/2026-11-01-irix-4dwm.json"
       ],
-      "note": "Numeric values from the original rgb.txt supply Toolchest and 4Dwm resource overrides. General named-color support is not qualified. Original xclock still retains its recorded color warnings/defaults. The plain blue-gray root background is a native presentation choice.",
+      "note": "Numeric values from the original rgb.txt supply Toolchest and 4Dwm resource overrides. General named-color support is not qualified. Original xclock still retains its recorded color warnings/defaults. The later desktop-behavior cycle uses the original granite bitmap with the reference gray/teal pair; see its supplementary resource ledger.",
       "observed_xclock_colors": {
         "SGILightGray": [
           170,
@@ -204,9 +204,10 @@
         "docs/results/2026-11-01-irix-pipe.json",
         "docs/results/2026-11-01-irix-desktop-pipe.json",
         "lab/irix-installed-desktop/copy-ledger.json",
-        "docs/results/2026-11-02-desktop-icons.md"
+        "docs/results/2026-11-02-desktop-icons.md",
+        "docs/results/2026-11-02-irix-desktop-behavior.md"
       ],
-      "note": "Icon Catalog and FileManager render entries and icons with native FAM. General file operations, background icons and session restoration remain open."
+      "note": "Icon Catalog and FileManager render entries and icons with native FAM, including execution notifications for opened artwork. fm -b supplies filesystem/home/Dumpster desktop icons. General file operations, Dumpster commands and session restoration remain open."
     },
     {
       "id": "artwork",
@@ -383,6 +384,18 @@
         "docs/results/2026-11-01-irix-installer.json"
       ],
       "note": "Native accounts, native /bin/ksh and skeleton. Share one HOME with IRIX apps; clients create desktop state. Root foreign sessions use HOME=/; no old personal state imported. Graphical root console login is qualified; ordinary-user graphical login and desktop-state restoration remain unqualified."
+    },
+    {
+      "id": "granite_backdrop",
+      "status": "desktop_behavior_resource",
+      "image_paths": [
+        "/usr/include/X11/bitmaps/granite"
+      ],
+      "evidence": [
+        "lab/irix-desktop-behavior/resources.json",
+        "docs/results/2026-11-02-irix-desktop-behavior.md"
+      ],
+      "note": "One additional bitmap, copied under /emul/irix with mode 0444. 4Dwm publishes the backdrop pixmap; Desktop links and the Dumpster marker are generated under the actual HOME, preserving existing user content."
     }
   ],
   "native_session_inputs": [

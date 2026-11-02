@@ -11,6 +11,7 @@ import tempfile
 import urllib.request
 
 ROOT = Path(__file__).resolve().parent.parent
+WORK = Path(os.environ.get('XIRI_FAM_BUILD_DIR', ROOT/'.work/native-fam')).resolve()
 
 
 def digest(path, algorithm='sha256'):
@@ -24,7 +25,7 @@ def run(*args, **kw):
 
 def main():
     if os.environ.get('XIRI_FAM_BUILD_TOOLBOX') == '1':
-        work = ROOT/'.work/native-fam'
+        work = WORK
         source = work/'fam-2.7.0'
         prefix = ROOT/'.work/netbsd-irix-build/tools/bin/mipseb--netbsd-'
         env = dict(os.environ, CC=str(prefix)+'gcc --sysroot='+str(work/'sysroot'),
@@ -49,7 +50,7 @@ def main():
             '-Wall', '-Wextra', '-Werror', path_test, '-o', work/'emul-path-native')
         return
     spec = json.loads((ROOT/'lab/native-fam/source.json').read_text())
-    work = ROOT/'.work/native-fam'
+    work = WORK
     work.mkdir(parents=True, exist_ok=True)
     cache = work/'inputs'; cache.mkdir(exist_ok=True)
     inputs = dict(spec['files'])
@@ -98,6 +99,7 @@ def main():
         run('tar', '--no-same-owner', '-xzf', sets/'comp.tgz', '-C', sysroot, './usr/include', './usr/lib')
         (sysroot/'usr/include/machine').symlink_to('sgimips')
     run('toolbox', 'run', '-c', 'xiri-iris', 'env', 'XIRI_FAM_BUILD_TOOLBOX=1',
+        'XIRI_FAM_BUILD_DIR='+str(work),
         'PYTHONDONTWRITEBYTECODE=1', 'python3', Path(__file__).resolve())
     result = dict(status='built', source_manifest_sha256=digest(ROOT/'lab/native-fam/source.json'),
                   builder_sha256=digest(Path(__file__).resolve()),

@@ -38,9 +38,19 @@ It adds a native `/emul/irix/dev/null` binding for shell redirection. The
 original desktop helpers `launcheffect` and `waitmap` are now located on
 IRIX 6.5.22m; their [hash/path inventory](../lab/irix-vendor-shell/launch-helpers.json)
 marks them as extracted candidates, not installed or qualified resources.
-Opened-icon feedback remains a separate check.
+Opened-icon feedback was still pending at that checkpoint.
 The [shell CHD](results/2026-11-02-irix-shell-image.md) includes the native
 null-device setup and kernel changes without adding vendor resources.
+
+The subsequent [desktop behavior cycle](results/2026-11-02-irix-desktop-behavior.md)
+addresses opened-state feedback through native FAM execution events; the
+original filetype artwork was already complete. It also starts `fm -b` and
+imports the original granite bitmap. The
+[supplementary resource ledger](../lab/irix-desktop-behavior/resources.json)
+records that single addition and the generated Desktop/home/Dumpster links.
+The [behavior CHD](results/2026-11-02-desktop-behavior-image.md) includes these
+changes and retains the older shell CHD. `launcheffect`, `waitmap` and
+`telldesktop` remain candidates; they are not needed for this minimal setup.
 
 This is the running record of what xiri needs from the supplied IRIX image.
 It separates demonstrated runtime inputs, extracted candidates and assets
@@ -86,6 +96,7 @@ not additional resources.
 
 | Resource | Image paths | Evidence and current use |
 | --- | --- | --- |
+| Granite backdrop | `/usr/include/X11/bitmaps/granite` | [Supplementary ledger](../lab/irix-desktop-behavior/resources.json); copy beneath `/emul/irix`, mode 0444. Original 4Dwm supplies the background pixmap; `fm -b` supplies desktop icons. No Xsgi or saved root session is imported. |
 | SGI desktop toolbar bitmaps | `/usr/include/X11/bitmaps/sgidesktop` | Fresh `fm` requests seven names from this missing directory. The separate [copy ledger](../lab/irix-desktop-bitmaps/copy-ledger.json) pins 48 files and six aliases, imported beneath `/emul/irix`; these are distinct from filetype iconlib artwork. |
 | Original applications and runtimes | Toolchest/4Dwm under `/usr/bin/X11`; `/usr/sbin/winterm`, `/usr/sbin/xwsh`; ABI-specific rld/libc and library closures | [Desktop](../lab/irix-desktop/manifest.json), [winterm](../lab/irix-winterm/manifest.json), [xclock](../lab/irix-xclock/manifest.json). Keep complete per-application closures; static DT_NEEDED discovery does not cover later loading. |
 | Toolchest menu and defaults | `/usr/lib/X11/system.chestrc`, `/usr/lib/X11/app-defaults/Toolchest` | [Desktop manifest](../lab/irix-desktop/manifest.json); both remain unchanged. The development desktop adds [native launch overrides](../lab/irix-installed-desktop/toolchest.chestrc): the vendor `.sh` actions force the imported static n32 shell, currently rejected at exec. The local `toolchest(1X)` manual documents `f.exec`/`MWMSHELL` and menu overrides. |

@@ -13,6 +13,13 @@ to capture input, log in as root (no password), then run xiri-desktop.
 The separate nvram.bin retains the serial PROM profile for automated tests.
 Serial B remains available at localhost:8891 for a diagnostic login.
 
+Root starts the native Xorg/FAM services. The desktop and its winterm shells
+then run as xiritest (UID 1234), with HOME=/usr/people/xiritest. This is an
+xiritest desktop, not a root desktop. Direct xiritest console login is not
+enabled for this development launcher. A future real IRIX root session
+should use HOME=/; do not change NetBSD root's account home to imitate it.
+Wait for the xiritest@xiri$ prompt in winterm before typing commands.
+
 At a PROM menu, select Start System or enter these commands in the monitor:
   setenv systempartition scsi(0)disk(1)rdisk(0)partition(8)
   setenv osloadpartition scsi(0)disk(1)rdisk(0)partition(0)
@@ -51,6 +58,8 @@ Other original menu actions and complete desktop services remain unfinished.
 Typing exit can leave a blank xwsh window after the native shell exits;
 automatic terminal closure remains unfinished. An intermittent xwsh startup
 SIGFPE was also captured during a repeated desktop session and remains open.
+A cold-boot diagnostic produced a very short winterm window with incorrect
+vertical font metrics; resizing restored input. Initial sizing remains open.
 Stopping xiri-desktop
 removes the session's remaining clients.
 Client UID is 1234; HOME is /usr/people/xiritest. Logs: /var/tmp/xiri-desktop.
@@ -58,6 +67,8 @@ Client UID is 1234; HOME is /usr/people/xiritest. Logs: /var/tmp/xiri-desktop.
 Suggested manual checks:
 - Open the Freeware page and inspect the application-specific icons.
 - Open Unix Shell from Toolchest, type commands, and open a second shell.
+- Run id -un, echo "$HOME" and pwd in winterm: expect xiritest and
+  /usr/people/xiritest for both paths.
 - Close the initially launched xmahjongg, then try its catalog entry.
 - Try other catalog entries individually; an icon does not certify the app.
 - Inspect files/folders in /usr/people/xiritest/XiriTest with FileManager.

@@ -63,11 +63,22 @@ Toolchest-launched winterm windows.
 The [original-shell checkpoint](docs/results/2026-11-02-irix-vendor-shell.md)
 now runs unmodified IRIX `/bin/sh`, with 772 checks across LP64 CI/ordinary
 and o32 regression guests. Icon Catalog successfully launches xmahjongg on
-two double-click attempts. Opened-icon feedback and full interactive job
-control remain to qualify; winterm keeps its native shell default. A native
+two double-click attempts. Full interactive job control remains to qualify;
+winterm keeps its native shell default. A native
 null-device binding also fixes shell redirection inside the emulation tree.
-The [new manual CHD](docs/results/2026-11-02-irix-shell-image.md) packages these
+The [shell image](docs/results/2026-11-02-irix-shell-image.md) packages these
 changes, with fresh graphical boot/logout and actual CHD catalog-launch checks.
+
+The [desktop behavior update](docs/results/2026-11-02-irix-desktop-behavior.md)
+adds FAM execution feedback for running/closed application icons, the original
+granite backdrop and filesystem/home/Dumpster desktop icons. It uses existing
+vendor artwork and one additional bitmap; the kernel is unchanged. The
+[new manual CHD](docs/results/2026-11-02-desktop-behavior-image.md) includes
+these changes and labels the ordinary desktop user as `xiritest`; root
+remains the service launcher. Dumpster
+operations, transient launch animation, preferences and session restoration
+remain separate work. Native xdm integration is deferred until the desktop
+behavior is more complete.
 
 The [desktop usability update](docs/results/2026-11-02-desktop-usability.md)
 adds graphical console boot/login, working Toolchest and desktop-menu logout,

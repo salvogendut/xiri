@@ -59,6 +59,12 @@ def main():
     for path, digest in r['sources'].items():
         assert sha(ROOT/path) == digest, path
     seed_result = json.loads((bundle/'seed-result.json').read_text())
+    if seed_result.get('desktop_behavior'):
+        assert sha(bundle/'desktop-behavior-resources.json') == seed_result['desktop_behavior']['resource_ledger_sha256']
+        assert 'granite' in r['desktop_behavior']['backdrop']
+        assert 'pixmap id #' in r['desktop_behavior']['backdrop']
+        assert '_RC=0' in r['desktop_behavior']['home_layout']
+        assert '"/usr/freeware/bin/xmahjongg" Executing' in r['desktop_behavior']['execution_events']
     if seed_result.get('native_rpcbind_build'):
         rpc = json.loads((bundle/'native-rpcbind-source.json').read_text())
         for key in ['source_revision', 'sources', 'rpcbind_sha256']:
@@ -146,6 +152,12 @@ def main():
             'opened-icon shape feedback remain unqualified.')
         report['limitations'].append('Winterm still uses NetBSD sh; interactive IRIX sh is unqualified. '
             'GIMP signal registration and xosview statistics interfaces remain unsupported.')
+    if seed_result.get('desktop_behavior'):
+        report['desktop_behavior'] = r['desktop_behavior']
+        report['desktop_behavior_qualification'] = seed_result['desktop_behavior']
+        report['limitations'][0] = ('Catalog launch, execution notification, granite and home links '
+            'pass from the CHD; the source-disk qualification covers closed/opened/closed pixels. '
+            'Gameplay, transient launch animation and full Dumpster operations remain unqualified.')
     a.output.write_text(json.dumps(report, indent=2)+'\n')
     if a.promote:
         manual_nvram = bundle/'nvram-graphics.bin' if m.get('manual_nvram_sha256') else a.run/'nvram.bin'
@@ -179,6 +191,9 @@ def main():
         if m.get('manual_nvram_sha256'):
             public['manual_nvram_sha256'] = m['manual_nvram_sha256']
             public['manual_console'] = m['manual_console']
+        if seed_result.get('desktop_behavior'):
+            public['desktop_behavior_resource_ledger_sha256'] = seed_result['desktop_behavior']['resource_ledger_sha256']
+            public['native_fam_source_manifest_sha256'] = seed_result['native_fam_build']['source_manifest_sha256']
         (ROOT/'lab/irix-installed-desktop/image.json').write_text(json.dumps(public, indent=2)+'\n')
     print('Verified direct CHD boot, native X/Newport, visible xmahjongg, cleanup and PNG fidelity')
 

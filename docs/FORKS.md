@@ -42,6 +42,12 @@ not repin qualified kernels, emulator binaries, runtime resources or guest disks
 
 ## IRIS upstream updates
 
+The [desktop behavior cycle](results/2026-11-02-irix-desktop-behavior.md)
+reviewed upstream `2eb811f43a69a9dec7f0ceb50cb439b7e088845c` and merged/pushed it
+as IRIS `xiri` commit `e0493739955391c1a344655fd0361d4997e51372`. Only the Octane
+halt-request document and its index link changed. Whitespace and link checks
+passed; executable code and the qualified 9df1df1 emulator pin are unchanged.
+
 The [original-shell cycle](results/2026-11-02-iris-upstream-vendor-shell.md)
 integrates upstream `4c1c87f5161c13b323d9b5d57a93779d355729b5` through
 `xiri` merge `f38cfa1c5e62def9fbefa5244e07adf285f02d3b`. Workspace tests

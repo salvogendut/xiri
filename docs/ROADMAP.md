@@ -20,14 +20,18 @@ that stock-kernel deployment is not yet demonstrated. See the
 
 The user-reported display responsiveness gap is tracked in [Newport performance](NEWPORT.md), including the supplied SGI driver manual, the current NoAccel setting and the measured fast-clear/plane-format mismatch. Recheck acceleration correctness on the current emulator before assigning the fix to NetBSD or IRIS.
 
-The latest [catalog/application follow-up](results/2026-11-02-irix-elfmap-high.md)
-qualifies high preferred ELF library addresses and corrects the desktop's
-starting directory. Next application work is static n32 shell admission and
-launch-child process/directory calls for Icon Catalog, the exact signal
-registration requested by GIMP, and measured statistics interfaces for
-xosview. Catalog opened-state feedback, missing launch helpers and a new
-manual image remain explicit follow-ups; imported files alone do not imply
-working applications.
+The [original-shell checkpoint](results/2026-11-02-irix-vendor-shell.md) and
+[published shell image](results/2026-11-02-irix-shell-image.md) now run the
+catalog command path and start winterm in HOME. The
+[desktop behavior cycle](results/2026-11-02-irix-desktop-behavior.md) addresses
+running-icon feedback, granite and filesystem/home/Dumpster icons before
+xdm integration. Next desktop work includes Dumpster actions, launch animation,
+preferences and persistence; GIMP signal registration and xosview statistics
+remain application-specific work. The
+[new manual CHD](results/2026-11-02-desktop-behavior-image.md) packages the
+session/FAM changes and clearly labels xiritest as the desktop user, with
+root retained as service launcher. Intermittent winterm startup/font-metric
+behavior also needs investigation.
 
 ## Development setup checklist
 
@@ -164,6 +168,9 @@ dependency candidates; a visible window alone does not complete these checks.
 
 - [x] Revisit the supplied manual after the first rendered Toolchest client and map its relevant chapters to the comparisons above.
 - [x] Maintain the [image-resource checklist](IRIX-RESOURCES.md) and [ledger](../lab/irix-desktop/resource-ledger.json), distinguishing extracted assets, observed use, remaining artwork/catalog/service gaps and native session state.
+- [x] Qualify opened-icon feedback after catalog double-click, the granite backdrop, and filesystem/home/Dumpster icons before graphical-login integration. The [desktop behavior result](results/2026-11-02-irix-desktop-behavior.md) passes launch/exit artwork restoration and desktop directory opening; broader actions remain below.
+- [ ] Later integrate native NetBSD xdm: separate X-server/system-service startup from the user session, preserve login identity/HOME and X authentication, and qualify login → desktop → logout → login. Deferred at the user's request until desktop behavior is further completed; keep the current manual launcher for now.
+- [ ] Replace the reserved-UID development supervisor when adding direct user login. On 2026-11-02 the user chose to keep root launching services and label the UID1234/xiritest desktop clearly in the new image. Its HOME is `/usr/people/xiritest`; a future actual IRIX root session should use `/`. Current cleanup assumes that UID is reserved and must not be used around an independent xiritest login shell.
 - [ ] Turn the remaining comparisons into reproducible desktop acceptance cases against the original installation.
 - [x] Launch original 4Dwm against native Xvfb and demonstrate reparenting, focus, key delivery and dragging in the [combined shell session](results/2026-11-01-irix-4dwm.md); Newport/physical display qualification remains separate.
 - [x] Add original Toolchest and a working winterm shell to the same 4Dwm session.
@@ -197,7 +204,7 @@ dependency candidates; a visible window alone does not complete these checks.
 - [x] Connect original Icon Catalog and FileManager to native FAM v1, fix the daemon's optimized tree-iterator crash, and expose the imported desktop paths to its native namespace. Observe 18 catalog pages, 21 Freeware entries, native files/folders and live file notifications.
 - [x] Prioritize original IRIX `/bin/sh`: [bounded static n32 admission, directory/process-group adapters and shell execution](results/2026-11-02-irix-vendor-shell.md), with 772 checks and two xmahjongg launches through the catalog's original action.
 - [x] Package the shell kernel, native null device and winterm HOME fix in a [new manual CHD](results/2026-11-02-irix-shell-image.md); verify graphical boot/logout and a fresh catalog launch from the CHD.
-- [ ] Qualify xmahjongg interaction, opened-icon feedback and later-login persistence. Its existing **Freeware** entry now launches the game on double-click; page discovery, labels and application-specific artwork already work. Evaluate the located original `launcheffect`/`waitmap` helpers for launch feedback. Keep unresolved links and additional application runtime data explicit.
+- [ ] Qualify xmahjongg gameplay, later-login persistence, Dumpster operations and transient launch animation. The **Freeware** double-click launch and opened/closed artwork cycle now pass. Evaluate the located original `launcheffect`/`waitmap` helpers separately; keep unresolved links and additional application runtime data explicit.
 - [ ] Later resume original IRIX `inst`, then Software Manager, to install **xmahjongg 3.6.1** from distribution media. Its original hooks must create the **Freeware** entry and icon/type rules; qualify installation history, upgrade and removal separately from file import. See the [software plan](IRIX-SOFTWARE.md).
 - [ ] Qualify persistent native accounts under `/usr/people/<username>` with shared native/IRIX access, generated desktop state and logout/login persistence. Original root sessions use `HOME=/`; avoid a second emulation-root copy of user homes.
 - [ ] Implement required service adapters, including the measured file-notification and launch behavior.

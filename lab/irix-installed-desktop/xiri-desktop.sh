@@ -33,7 +33,7 @@ LC_ALL=C
 TZ=UTC0
 PATH=/bin:/usr/bin:/usr/X11R7/bin:/emul/irix/usr/bin:/emul/irix/usr/bin/X11:/emul/irix/usr/sbin:/emul/irix/usr/freeware/bin
 WINTERM=/emul/irix/usr/sbin/xwsh -name winterm
-PS1=xiri$ 
+PS1=xiritest@xiri\$$(printf ' ')
 EOF
 chmod 444 "$job/desktop.env"
 xpid=
@@ -73,7 +73,7 @@ if ! rpcinfo -p 127.0.0.1 >"$job/rpc-before.txt" 2>&1; then
         tries=$((tries+1)); test "$tries" -lt 10; kill -0 "$rpcpid"; sleep 1
     done
 fi
-XIRI_FAM_ROOT=/emul/irix /usr/local/sbin/famd -d -c "$share/fam.conf" -p 391002.1 >"$job/fam.log" 2>&1 &
+XIRI_FAM_EXEC=1 XIRI_FAM_ROOT=/emul/irix /usr/local/sbin/famd -d -c "$share/fam.conf" -p 391002.1 >"$job/fam.log" 2>&1 &
 fampid=$!
 tries=0
 # FAM uses portmapper discovery, then its own wire protocol, not RPC calls.
@@ -101,8 +101,8 @@ xset -display "127.0.0.1:$display" fp rehash
 xset -display "127.0.0.1:$display" s off
 xset -display "127.0.0.1:$display" -dpms
 xset -display "127.0.0.1:$display" s reset
-xsetroot -display "127.0.0.1:$display" -solid '#556677'
-echo "Xiri desktop on display $display. Press Ctrl-C here to stop. Logs: $job"
+xsetroot -display "127.0.0.1:$display" -solid '#69b5b5'
+echo "Xiri desktop as xiritest (UID 1234, HOME=/usr/people/xiritest), display $display. Press Ctrl-C here to stop. Logs: $job"
 XIRI_SESSION_STOP_FILE="$job/logout" "$base/manual-guard" "$duration" "$base/session" "$job/desktop.env" \
     /bin/sh "$base/manual-session.sh" "$job" >"$job/guard.log" 2>&1 &
 guardpid=$!

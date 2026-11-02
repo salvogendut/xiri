@@ -12,11 +12,11 @@ The reference supplies concrete appearance and content targets for Xiri:
 
 | Component | Visible reference | Qualification to add |
 | --- | --- | --- |
-| 4Dwm | SGI beveled frames, title bars and patterned desktop background | Preserve window interaction; qualify the original palette/backdrop separately |
+| 4Dwm | SGI beveled frames, title bars and patterned desktop background | [Granite backdrop](results/2026-11-02-irix-desktop-behavior.md); additional background choices/preferences remain separate |
 | Toolchest | Standard menus plus an installation-specific AutoCAD entry | Keep working menus and qualify actions for installed programs |
 | Terminal | Console window, rendered text, shell prompt and command output | Retain native shell execution and resolve intermittent startup; compare resources and colors |
 | Icon Catalog | Freeware page 9 of 18, page tabs, toolbar glyphs, labeled application icons | Install a pinned page for a known installed application and verify its action, then qualify broader catalogs |
-| Desktop icons | camera, UnixRoot, dumpster and Welcome to SGI | Qualify background/file-manager services, icon resources and assigned actions |
+| Desktop icons | camera, UnixRoot, dumpster and Welcome to SGI | [Filesystem/home/Dumpster icons and directory opening](results/2026-11-02-irix-desktop-behavior.md); other pictured icons and Dumpster operations remain separate |
 | xclock | Analog face and colored hands | [Current UTC time, updates and redraw pass](results/2026-11-01-irix-time.md) in bounded runs; reference colors and a combined desktop session remain separate checks |
 
 The populated catalog comes from this installation's application and page

@@ -102,6 +102,8 @@ def main():
              artwork_source_result_sha256=p.sha256(seed/'result.json'),
              icon_artwork=bool(old.get('freeware_target_notifications')),
              logout={})
+    if old.get('desktop_behavior'):
+        r['desktop_behavior'] = old['desktop_behavior']
 
     def cmd(command, timeout=120):
         before = len(lab.serial_text())
@@ -222,10 +224,21 @@ def main():
             wait_for('grep -q "Logs: " '+route+'.log')
             cmd('job=$(sed -n "s/.*Logs: //p" '+route+'.log | head -1); test -d "$job"')
             wait_for("xwininfo -root -tree | grep 'of 18)' >/dev/null")
-            cmd('./type "$DISPLAY" winterm '+shlex.quote('echo GRAPHICAL_SHELL_OK > "$XIRI_SESSION_DIR/shell-proof"; pwd > "$XIRI_SESSION_DIR/shell-pwd"')+' && ./input key Return')
-            wait_for('test -s "$job/shell-proof"')
+            # A mapped xwsh window can precede its PTY and shell. Typing then
+            # loses the beginning of a command, even though the window is ready.
+            wait_for('test -s "$job/handoff"')
+            cmd("shell_pid=$(sed -n 's/^NATIVE_HANDOFF pid=\\([0-9][0-9]*\\).*/\\1/p' \"$job/handoff\"); test -n \"$shell_pid\"")
+            wait_for('ps -p "$shell_pid" -o comm= | grep -Eq \'^[[:space:]]*sh[[:space:]]*$\'')
+            for command, output in [
+                    ('echo GRAPHICAL_SHELL_OK', 'shell-proof'), ('pwd', 'shell-pwd'),
+                    ('id -un', 'shell-user'), ('echo "$HOME"', 'shell-home')]:
+                cmd('./type "$DISPLAY" winterm '+shlex.quote(
+                    command+' > "$XIRI_SESSION_DIR/'+output+'"\n'))
+                wait_for('test -s "$job/'+output+'"')
             assert get('cat "$job/shell-proof"').strip() == 'GRAPHICAL_SHELL_OK'
             assert get('cat "$job/shell-pwd"').strip() == '/usr/people/xiritest'
+            assert get('cat "$job/shell-user"').strip() == 'xiritest'
+            assert get('cat "$job/shell-home"').strip() == '/usr/people/xiritest'
             if pin['ident'] == 'XIRI_IRIX_VENDOR_SHELL_20261102':
                 proof = cmd(shlex.join(['su', '-m', 'xiritest', '-c',
                     shlex.join(['/emul/irix/bin/sh', '-c',
@@ -235,6 +248,7 @@ def main():
             entry = dict(tree=get('xwininfo -root -tree'),rpc_log=get('cat "$job/rpcbind.log"'),
                          bindings=get('netstat -an -f inet | grep 111'),
                          registration=get('rpcinfo -p 127.0.0.1'))
+            entry['identity'] = dict(user='xiritest', home='/usr/people/xiritest', cwd='/usr/people/xiritest')
             assert 'cannot bind' not in entry['rpc_log']
             assert '127.0.0.1.111' in entry['bindings'] and '*.111' not in entry['bindings']
             assert re.search(r'391002\s+1\s+tcp',entry['registration'])

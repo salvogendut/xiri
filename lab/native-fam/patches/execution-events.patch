@@ -1,0 +1,55 @@
+--- src/Interest.h
++++ src/Interest.h
+@@ -75,6 +75,7 @@
+     //  Public Class Method
+ 
+     static void imon_handler(dev_t, ino_t, int event);
++    static void refresh_exec_state();
+ 
+     static void enable_xtab_verification(bool enable);
+ 
+--- src/Interest.c++
++++ src/Interest.c++
+@@ -22,6 +22,10 @@
+ 
+ #include <stdio.h>
+ #include "Interest.h"
++#include "Cred.h"
++#include "exec-state.h"
++
++static XiriExecState xiri_exec_state;
+ 
+ #include <sys/param.h>
+ #if HAVE_SYS_SYSMACROS_H
+@@ -241,8 +245,21 @@
+ }
+ 
+ void
++Interest::refresh_exec_state()
++{
++    if (XiriExecState::enabled()) {
++        Cred::SuperUser.become_user();
++        if (!xiri_exec_state.refresh())
++            Log::debug("execution snapshot failed; retaining previous state");
++    }
++}
++
++void
+ Interest::report_exec_state()
+ {
++    if (XiriExecState::enabled() && xiri_exec_state.ready())
++        cur_exec_state = xiri_exec_state.contains(old_stat) ?
++            EXECUTING : NOT_EXECUTING;
+     if (old_exec_state != cur_exec_state && active())
+     {   post_event(cur_exec_state == EXECUTING ?
+ 			  Event::Executing : Event::Exited);
+--- src/Pollster.c++
++++ src/Pollster.c++
+@@ -104,6 +104,7 @@
+     timeval t0, t1;
+     (void) gettimeofday(&t0, NULL);
+ 
++    Interest::refresh_exec_state();
+     int ni = 0;
+     for (Interest *ip = polled_interests.first();
+ 	 ip;

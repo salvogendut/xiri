@@ -1,9 +1,9 @@
 # Reusable Xiri development image
 
-The local bundle is `.work/images/xiri-netbsd-desktop-20261102-shell/`.
-`netbsd-xiri.chd` is an 8 GiB NetBSD disk compressed to 480,480,764 bytes
+The local bundle is `.work/images/xiri-netbsd-desktop-20261102-behavior/`.
+`netbsd-xiri.chd` is an 8 GiB NetBSD disk compressed to 480,653,409 bytes
 (about 458 MiB); its hashes are recorded in
-[the image result](results/2026-11-02-irix-shell-image.json).
+[the image result](results/2026-11-02-desktop-behavior-image.json).
 It contains the qualified Xiri kernel, original IRIX
 runtimes, installed application/catalog payload, persistent fonts and a
 manual desktop launcher. The [desktop service qualification](results/2026-11-02-desktop-services.md)
@@ -13,7 +13,7 @@ graphical automatic boot, console login, both logout menus, window-manager
 readiness before client startup, and the native rpcbind loopback fix.
 The [icon repair](results/2026-11-02-desktop-icons.md) adds measured locks,
 seek offsets and native FAM pathname mapping, with Freeware application and
-FileManager folder/document artwork. The [cold-boot record](results/2026-11-02-irix-shell-image.json)
+FileManager folder/document artwork. The [cold-boot record](results/2026-11-02-desktop-behavior-image.json)
 verifies the persistent resources, native Xorg/Newport and cleanup. The [import ledger](IRIX-IMPORT.md) records
 the source and destination paths; vendor bytes remain outside Git.
 
@@ -21,10 +21,17 @@ The [shell image update](results/2026-11-02-irix-shell-image.md) packages
 the high-address library mapping fix, original IRIX `/bin/sh` command support
 and native null-device binding. Double-clicking xmahjongg in Icon Catalog's
 Freeware page launches it. Winterm still runs NetBSD's shell, now starting
-in `/usr/people/xiritest`, as verified with `pwd`. Opened-icon shape feedback
-and interactive original-shell use remain unqualified. GIMP gets past its
+in `/usr/people/xiritest`, as verified with `pwd`. Interactive original-shell
+use remains unqualified. GIMP gets past its
 former library mapping failure but fails signal registration; xosview still
 needs IRIX statistics interfaces.
+
+The [desktop behavior image](results/2026-11-02-desktop-behavior-image.md)
+adds native FAM execution feedback, the granite backdrop and filesystem/home/
+Dumpster desktop icons. The source-disk probe verifies xmahjongg changing to
+its opened icon while running and returning to the exact closed pixels after
+exit. It also verifies filesystem and Dumpster double-clicks opening their
+directory views. Full Dumpster operations and launch animation remain open.
 
 ## Start it in IRIS
 
@@ -57,6 +64,16 @@ the desktop:
 /usr/local/bin/xiri-desktop
 ```
 
+Root is the service launcher. The desktop itself runs as **xiritest, UID
+1234**, so `/usr/people/xiritest` is its home. In winterm, `id -un` should
+report `xiritest`, and `echo "$HOME"` and `pwd` should both show that path.
+The user chose to retain this arrangement for the new test image. Direct
+xiritest login is deferred because the current supervisor reserves the
+whole UID for cleanup. A future actual IRIX root desktop should use HOME
+`/`; NetBSD root's own account remains unchanged.
+Wait for winterm's `xiritest@xiri$` prompt before typing: its window can appear
+before the shell has finished starting.
+
 The launcher starts native Xorg/Newport and original 4Dwm, Toolchest,
 winterm, xclock, Icon Catalog and xmahjongg. It uses the reserved ordinary
 UID 1234 and `HOME=/usr/people/xiritest` for clients. Native `/bin/sh` runs
@@ -72,7 +89,8 @@ The original vendor menu files and IRIX shells are preserved; other original
 menu actions still need compatibility work. Each supported menu launch has
 its own `launch-APP.*/` log directory inside the current session directory.
 
-The previous `.work/images/xiri-netbsd-desktop-20261102-icons/`,
+The previous `.work/images/xiri-netbsd-desktop-20261102-shell/`,
+`.work/images/xiri-netbsd-desktop-20261102-icons/`,
 `.work/images/xiri-netbsd-desktop-20261102-graphical/`,
 `.work/images/xiri-netbsd-desktop-20261102-services/`,
 `.work/images/xiri-netbsd-desktop-20261102/` and
@@ -222,7 +240,7 @@ launcher without importing applications again:
 
 ```sh
 PYTHONDONTWRITEBYTECODE=1 python3 scripts/probe-xiri-image.py \
-  .work/images/xiri-netbsd-desktop-20261102-shell
+  .work/images/xiri-netbsd-desktop-20261102-behavior
 ```
 
 For older harnesses that require a raw disk, materialize a stopped seed
@@ -230,11 +248,11 @@ once (the tool reuses the verified extraction when available):
 
 ```sh
 PYTHONDONTWRITEBYTECODE=1 python3 scripts/prepare-xiri-seed.py \
-  .work/images/xiri-netbsd-desktop-20261102-shell \
-  --output-directory .work/xiri-image/prepared-seed-20261102-shell
+  .work/images/xiri-netbsd-desktop-20261102-behavior \
+  --output-directory .work/xiri-image/prepared-seed-20261102-behavior
 ```
 
-This produces `.work/xiri-image/prepared-seed-20261102-shell/`. Clone its `disk.raw` for
+This produces `.work/xiri-image/prepared-seed-20261102-behavior/`. Clone its `disk.raw` for
 runs; preserve that seed. Repeating preparation checks its hash and does
 not reimport files. Use it with harnesses whose kernel and payload pins match. Keep the older
 prepared seeds for historical regression tests; do not substitute a newer
@@ -281,14 +299,18 @@ This remains a single-user development service at UID/GID 1234.
 The [icon repair](results/2026-11-02-desktop-icons.md) restores application-specific
 Freeware artwork and FileManager folder/document icons through measured
 locks, seek offsets and native FAM pathname mapping. The shell update adds
-xmahjongg catalog launches. Opened-icon feedback, full file operations, broad
-application compatibility and package installation remain open. Only
+xmahjongg catalog launches; the behavior update adds opened/closed icon
+feedback. Full file operations, broad application compatibility and package
+installation remain open. Only
 xmahjongg's application-specific data tree was collected completely.
 The manual launcher disables 4Dwm session saving. Winterm can log a `gettxt`
 warning while reaching the native shell prompt; typing `exit` can leave its
 xwsh window open. A repeated desktop start also captured an intermittent
 xwsh SIGFPE before its window appeared; that failed run and core are retained
-in the icon result. Stopping `xiri-desktop` removes remaining clients.
+in the icon result. A direct-CHD diagnostic also produced an unusually short
+terminal window with incorrect vertical font metrics; resizing restored input.
+Initial sizing still needs investigation. Stopping `xiri-desktop` removes
+remaining clients.
 
 
 ## Manual application checks

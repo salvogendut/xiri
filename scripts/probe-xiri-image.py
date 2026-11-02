@@ -149,6 +149,9 @@ def main():
                     '-L/usr/X11R7/lib -Wl,-rpath,/usr/X11R7/lib -lX11 -lXtst -o catalog-input && '
                     'cc -O2 -Wall -Wextra -Werror -I/usr/X11R7/include /cdrom/place.c '
                     '-L/usr/X11R7/lib -Wl,-rpath,/usr/X11R7/lib -lX11 -o image-place', 180)
+                cmd('(n=0; until test -s "$job/handoff"; do n=$((n+1)); test "$n" -lt 30 || exit 1; sleep 1; done)')
+                cmd("shell_pid=$(sed -n 's/^NATIVE_HANDOFF pid=\\([0-9][0-9]*\\).*/\\1/p' \"$job/handoff\"); test -n \"$shell_pid\"")
+                cmd('(n=0; until ps -p "$shell_pid" -o comm= | grep -Eq \'^[[:space:]]*sh[[:space:]]*$\'; do n=$((n+1)); test "$n" -lt 30 || exit 1; sleep 1; done)')
                 cmd(shlex.join(['./image-type', '127.0.0.1:0', 'winterm',
                     'pwd > "$XIRI_SESSION_DIR/image-pwd"\n']))
                 cmd('(n=0; until test -s "$job/image-pwd"; do n=$((n+1)); test "$n" -lt 20 || exit 1; sleep 1; done)')
@@ -184,6 +187,13 @@ def main():
                     input='XTEST double-click', page='Freeware', target='xmahjongg',
                     tree=get('xwininfo -root -tree').decode())
                 assert '"xmahjongg"' in result['catalog_launch']['tree']
+                if seed_result.get('desktop_behavior'):
+                    cmd('(n=0; until grep -q \'"/usr/freeware/bin/xmahjongg" Executing\' "$job/fam.log"; do n=$((n+1)); test "$n" -lt 30 || exit 1; sleep 1; done)')
+                    backdrop = get('xprop -root _SGI_DESKS_BACKGROUND_DESCRIPTION _SGI_DESKS_BACKGROUND').decode()
+                    assert 'granite' in backdrop and 'pixmap id #' in backdrop
+                    homes = cmd('test "$(readlink /usr/people/xiritest/Desktop/UnixRoot)" = / && test "$(readlink /usr/people/xiritest/Desktop/xiritest)" = /usr/people/xiritest && test "$(readlink /usr/people/xiritest/Desktop/dumpster)" = ../dumpster && test -f /usr/people/xiritest/dumpster/.dumpster')
+                    result['desktop_behavior'] = dict(backdrop=backdrop, home_layout=homes,
+                        execution_events=get('grep \'"/usr/freeware/bin/xmahjongg" Executing\' "$job/fam.log"').decode())
                 print('CHD catalog double-click launched xmahjongg', flush=True)
             # Refresh the monitor compositor after Xorg changes display state.
             lab.monitor_command('disp compositor gl')

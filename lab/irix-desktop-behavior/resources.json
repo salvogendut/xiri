@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "reference_release": "IRIX 6.5.22m",
+  "reference_run": ".work/irix-reference/filetype-runs/ci-42chw46c",
+  "files": [
+    {
+      "source": "/usr/include/X11/bitmaps/granite",
+      "destination": "/emul/irix/usr/include/X11/bitmaps/granite",
+      "bytes": 51354,
+      "sha256": "665d656bd27f58b93787681847039847cb6c0f72bf92de88068142876bd639ec",
+      "mode": "0444",
+      "purpose": "4Dwm granite backdrop; rendered by the vendor window manager on native Xorg"
+    }
+  ],
+  "generated_home_paths": {
+    "Desktop/UnixRoot": "symlink to /",
+    "Desktop/<login>": "symlink to actual HOME",
+    "Desktop/dumpster": "symlink to ../dumpster",
+    "dumpster/.dumpster": "empty marker selecting the original Dumpster filetype",
+    "Desktop": "seeded only when absent; retain user changes on subsequent sessions"
+  },
+  "not_imported": [
+    "original root home/session files",
+    "Xsgi",
+    "launcheffect",
+    "waitmap",
+    "FLtoPopDB",
+    "IRIX xsetroot",
+    "telldesktop (candidate; empty-Dumpster request not qualified)"
+  ]
+}

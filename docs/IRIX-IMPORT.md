@@ -20,6 +20,18 @@ image is read-only; all vendor bytes and generated disk images stay in `.work`.
 
 ## Placement
 
+The [desktop behavior cycle](results/2026-11-02-irix-desktop-behavior.md) adds
+one resource beyond the published shell image: the original
+`/usr/include/X11/bitmaps/granite`, installed at
+`/emul/irix/usr/include/X11/bitmaps/granite` with mode 0444. Its
+[supplementary ledger](../lab/irix-desktop-behavior/resources.json) owns the
+checksum and provenance. The session creates a new user's `Desktop` links
+to `/`, HOME and `../dumpster`, plus `dumpster/.dumpster`; these are native
+user state, not copied IRIX root-home files. Existing Desktop content is
+preserved. The existing 1,990-record ledger and older shell CHD remain intact;
+the [behavior CHD](results/2026-11-02-desktop-behavior-image.md) includes the
+supplementary ledger and resource.
+
 The [original-shell checkpoint](results/2026-11-02-irix-vendor-shell.md)
 uses the already imported `/emul/irix/bin/sh` bytes (source `/bin/sh` resolves
 to `/sbin/sh`). No additional shell import is needed. Native setup now
