@@ -55,6 +55,11 @@ def main():
     shutil.copyfile(seed/'result.json', out/'seed-result.json')
     shutil.copyfile(ROOT/'lab/irix-installed-desktop/prismatic.cfg', out/'prismatic.cfg')
     readme = (ROOT/'lab/irix-installed-desktop/image-README.txt').read_text()
+    if not r.get('vendor_shell'):
+        start = readme.index('Double-clicking xmahjongg')
+        end = readme.index('Other original menu actions', start)
+        readme = readme[:start] + ('This seed predates the original-shell update.\n'
+            'Catalog launches and the winterm home directory fix are not qualified.\n') + readme[end:]
     if not r.get('desktop_services'):
         start = readme.index('Toolchest retains its original menus')
         end = readme.index('Other original menu actions', start)

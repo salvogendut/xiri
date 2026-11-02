@@ -21,6 +21,7 @@ FILES = {
     'xiri-desktop.sh':'/usr/local/bin/xiri-desktop',
     'xiri-logout.sh':'/usr/local/bin/xiri-logout',
     'manual-session.sh':'/usr/local/libexec/xiri/manual-session.sh',
+    'setup-pty.sh':'/usr/local/libexec/xiri/setup-pty.sh',
     'toolchest.chestrc':'/usr/local/share/xiri/toolchest.chestrc',
 }
 
@@ -55,7 +56,9 @@ def main():
     shutil.copyfile(Path(__file__), d/'harness.py')
     media = d/'media'; media.mkdir()
     for name in [*FILES, 'manual-guard.c']:
-        shutil.copyfile(ROOT/'lab/irix-installed-desktop'/name, media/name)
+        source = ROOT/('lab/irix-4dwm' if name == 'setup-pty.sh' else
+                       'lab/irix-installed-desktop')/name
+        shutil.copyfile(source, media/name)
     shutil.copyfile(rpcbin, media/'rpcbind')
     for name, source, key in [('netbsd',kernel_build/'kernel-media/netbsd','native_kernel_sha256'),
                              ('netbsd.boot',kernel_build/'tftp/netbsd-XIRI_INDY','boot_kernel_sha256')]:
@@ -219,9 +222,16 @@ def main():
             wait_for('grep -q "Logs: " '+route+'.log')
             cmd('job=$(sed -n "s/.*Logs: //p" '+route+'.log | head -1); test -d "$job"')
             wait_for("xwininfo -root -tree | grep 'of 18)' >/dev/null")
-            cmd('./type "$DISPLAY" winterm '+shlex.quote('echo GRAPHICAL_SHELL_OK > "$XIRI_SESSION_DIR/shell-proof"')+' && ./input key Return')
+            cmd('./type "$DISPLAY" winterm '+shlex.quote('echo GRAPHICAL_SHELL_OK > "$XIRI_SESSION_DIR/shell-proof"; pwd > "$XIRI_SESSION_DIR/shell-pwd"')+' && ./input key Return')
             wait_for('test -s "$job/shell-proof"')
             assert get('cat "$job/shell-proof"').strip() == 'GRAPHICAL_SHELL_OK'
+            assert get('cat "$job/shell-pwd"').strip() == '/usr/people/xiritest'
+            if pin['ident'] == 'XIRI_IRIX_VENDOR_SHELL_20261102':
+                proof = cmd(shlex.join(['su', '-m', 'xiritest', '-c',
+                    shlex.join(['/emul/irix/bin/sh', '-c',
+                        'echo NULL_OK >/dev/null && echo IRIX_SHELL_IMAGE_OK'])]))
+                assert '\nIRIX_SHELL_IMAGE_OK\n' in proof and '_RC=0' in proof
+                r['vendor_shell'] = proof
             entry = dict(tree=get('xwininfo -root -tree'),rpc_log=get('cat "$job/rpcbind.log"'),
                          bindings=get('netstat -an -f inet | grep 111'),
                          registration=get('rpcinfo -p 127.0.0.1'))

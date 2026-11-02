@@ -39,6 +39,8 @@ original desktop helpers `launcheffect` and `waitmap` are now located on
 IRIX 6.5.22m; their [hash/path inventory](../lab/irix-vendor-shell/launch-helpers.json)
 marks them as extracted candidates, not installed or qualified resources.
 Opened-icon feedback remains a separate check.
+The [shell CHD](results/2026-11-02-irix-shell-image.md) includes the native
+null-device setup and kernel changes without adding vendor resources.
 
 This is the running record of what xiri needs from the supplied IRIX image.
 It separates demonstrated runtime inputs, extracted candidates and assets

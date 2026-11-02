@@ -114,3 +114,7 @@ are not yet a newly qualified manual image. On that existing image, plain
 Both application diagnostic guests halted cleanly. A final host process check
 found no remaining IRIS instances. The source and documentation changes are
 pushed; no existing qualified image or pinned emulator was replaced.
+
+The subsequent [shell image](2026-11-02-irix-shell-image.md) includes the
+mapping and HOME fixes, plus original-shell command support. The older
+icons CHD remains preserved; the new bundle is the current manual baseline.

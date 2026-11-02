@@ -109,3 +109,7 @@ desktop persistence remain separate work.
 The desktop diagnostic also halted cleanly after its supervisor removed the
 remaining clients and services. All emulator instances owned by this cycle
 were stopped; unrelated user sessions are left alone.
+
+The subsequent [shell-image qualification](2026-11-02-irix-shell-image.md)
+packages these changes in a new manual CHD and repeats the catalog launch
+from that disk. The older icons CHD remains preserved.

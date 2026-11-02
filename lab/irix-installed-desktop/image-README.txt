@@ -40,7 +40,13 @@ is stopped with it. FileManager can list native files and folders.
 Application-specific Freeware icons and FileManager folder/document icons
 now render. The kernel supplies the measured IRIX locks and seek offsets;
 native FAM resolves imported paths beneath /emul/irix while retaining the
-original client event names. Catalog launch actions remain to be qualified.
+original client event names. Double-clicking xmahjongg on the Freeware page
+launches it through the original IRIX shell. The shell now supports the
+measured command-launch path; winterm still uses NetBSD's shell. New winterms
+start in /usr/people/xiritest, so pwd shows the user's home directory.
+Opened-icon shape feedback and interactive IRIX shell use remain unqualified.
+GIMP gets past the former library mapping failure but still fails signal
+registration. xosview's IRIX statistics interfaces remain unsupported.
 Other original menu actions and complete desktop services remain unfinished.
 Typing exit can leave a blank xwsh window after the native shell exits;
 automatic terminal closure remains unfinished. An intermittent xwsh startup

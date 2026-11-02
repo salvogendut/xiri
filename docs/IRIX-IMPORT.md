@@ -24,8 +24,9 @@ The [original-shell checkpoint](results/2026-11-02-irix-vendor-shell.md)
 uses the already imported `/emul/irix/bin/sh` bytes (source `/bin/sh` resolves
 to `/sbin/sh`). No additional shell import is needed. Native setup now
 creates `/emul/irix/dev/null` using the native device's major/minor and mode
-0666; this is generated NetBSD state, not an IRIX device copy. The preserved
-image/copy ledger is unchanged until a new image qualification.
+0666; this is generated NetBSD state, not an IRIX device copy. The
+[shell image](results/2026-11-02-irix-shell-image.md) includes this setup and
+the new kernel. Its vendor copy ledger and imported bytes are unchanged.
 
 `/usr/lib/desktop/launcheffect` and `waitmap` have been located and extracted
 privately as launch-feedback candidates. Their [separate inventory](../lab/irix-vendor-shell/launch-helpers.json)
@@ -216,8 +217,8 @@ No vendor payload changed during the [high-address mapper and launch diagnosis](
 GIMP's `libgtk-1.2.so.1` was already staged with the required mode; the kernel
 mapping range caused the failure. The existing generated helper
 `/usr/local/libexec/xiri/manual-session.sh` now starts applications in HOME
-and writes logs using absolute session paths. The published icons CHD retains
+and writes logs using absolute session paths. The new shell CHD includes
+this helper and verifies `pwd` in winterm. The preserved icons CHD retains
 the previous helper. `/usr/lib/desktop/launcheffect` and
-`/usr/lib/desktop/waitmap` are newly traced missing-path candidates; their
-source presence and runtime role must be verified before copying and adding
-entries to the machine-readable ledger.
+`/usr/lib/desktop/waitmap` have since been located and privately extracted;
+their runtime role remains to qualify before installation.

@@ -1,0 +1,34 @@
+{
+  "status": "error",
+  "clean_shutdown": true,
+  "base_chd_unchanged": true,
+  "error": "guest command failed: (n=0; until pgrep -u 1234 -x xmahjongg >catalog-game.pid; do n=$((n+1)); test \"$n\" -lt 30 || exit 1; sleep 1; done)",
+  "winterm_home": "/usr/people/xiritest",
+  "native_null_device": "test -c /emul/irix/dev/null && test \"$(stat -f %Hr /emul/irix/dev/nul \bl)\" = \"$(stat -f %Hr /dev/null)\" && test \"$(stat -f %Lr /emul/irix/dev/null)\" =  \b\"$(stat -f %Lr /dev/null)\"; xiri_rc=$?; printf '\\nXIRI_52d1e88e4c3b47d4bbe1ba4d3 \bd230a89_RC=%s\\n' \"$xiri_rc\"\n\nXIRI_52d1e88e4c3b47d4bbe1ba4d3d230a89_RC=0\nxiri-indy# ",
+  "sources": {
+    "scripts/probe-xiri-image.py": "b3c8302302570c7e7e29ed133e9d44f4f2dbb5cad7f62dd648b9373e5b4371ba",
+    "lab/irix-4dwm/type-ready.c": "61ce22cbda6c66ccaf53cbcffab5f3080be95004bcd3e5c6893dc54a8a9db838",
+    "lab/irix-vendor-shell/catalog-input.c": "ff331c512a6acc0f19941904059584a140ddbc9e0abefb79dd457f1b1b92b46c",
+    "lab/irix-filelocks/place-window.c": "af51ade704c9df4d589c3ae01e571da6a7d6f43de2fd51e3a1766935f04d3ddb"
+  },
+  "chd_sha256": "c98f88ee9709f721ddbc54fbec8067aea7b9b66433ad14ab737c47280fb3ad64",
+  "schema": 1,
+  "directory": ".work/xiri-image/runs/chd-wy6f_2w1",
+  "result_sha256": "f901a59e7537eb4ed7ee8af9cefc2cd20ede04915bf5fa275124f69ebe8f1461",
+  "serial_sha256": "f448e67306d6b22d039aa3a71ce6df099618e33c05db149bb0f2fe9b14c3d6ca",
+  "note": "Initial check used basename-only pgrep. Original catalog launch retains its full symlink path; the new process and game window were present. This run is diagnostic, not the promoted qualification.",
+  "diagnostics": {
+    "catalog-state": {
+      "code": 0,
+      "output": "xwininfo -root -tree | grep -E \"Icon Catalog|xmahjongg|grok|winterm\"; \b pgrep -al iconcatalog; cat \"$job/iconcatalog.err\"; tail -20 \"$job/iconcatalog.o \but\"; xiri_rc=$?; printf '\\nXIRI_d7bc83003508427491369738e29e648c_RC=%s\\n' \"$xiri \b_rc\"\n           0xc00004 \"xmahjongg\": (\"xmahjongg\" \"XMahjongg\")  1006x614+0+0  +64+64\n           0xe0006b \"Icon Catalog: Freeware (Page 9 of 18)\": (\"IconCatalog\" \"IconCatalog\")  900x500+0+0  +372+450\n           0x800005 \"winterm\": (\"winterm\" \"XWsh\")  983x504+0+0  +10+180\n     0xe00006 \"Icon Catalog\": (\"iconcatalog\" \"IconCatalog\")  1x1+640+512  +640+512\n     0xe00001 \"Icon Catalog\": (\"iconcatalog\" \"IconCatalog\")  600x300+400+450  +400+450\npgrep: unknown option -- a\nUsage: pgrep [-Lfilnqvx] [-d delim] [-F pidfile] [-G gid] [-g pgrp] [-P ppid] [-s sid] [-t tty]\n             [-U uid] [-u euid] pattern ...\nboard number 2057136789\n\nXIRI_d7bc83003508427491369738e29e648c_RC=0\nxiri-indy# "
+    },
+    "processes": {
+      "code": 0,
+      "output": "ps -axo uid,euid,pid,ppid,comm,args | grep -E \"1234|xmahjongg|iconcat \balog|xwsh\"; cat \"$job/xmahjongg.pid\"; cat \"$job/xmahjongg.exit\"; cat catalog-gam \be.pid; xprop -name xmahjongg _NET_WM_PID WM_CLIENT_MACHINE WM_COMMAND; xiri_rc=$ \b?; printf '\\nXIRI_e418997defd44e8da1e565bd0ee3330f_RC=%s\\n' \"$xiri_rc\"\n1234 1234 4379    1 /usr/li /usr/lib/desktop/iconcatalog/pages/C/Freeware/xmahj\n1234 1234 1309 1370 sh      sh -i \n1234 1234  192 3938 /bin/sh /bin/sh /usr/local/libexec/xiri/manual-session.sh /\n1234 1234  194 4457 /emul/i /emul/irix/usr/bin/X11/toolchest /usr/local/share/x\n1234 1234  195  192 /usr/sb /usr/sbin/iconcatalog \n1234 1234  198 4205 /emul/i /emul/irix/usr/bin/X11/xclock \n1234 1234 1370    1 /emul/i /emul/irix/usr/sbin/xwsh -e /usr/libexec/xiri-shell\n1234 1234 2474  166 /usr/lo /usr/local/sbin/famd -d -c /usr/local/share/xiri/fa\n1234 1234 2799 4182 /emul/i /emul/irix/usr/bin/X11/4Dwm \n1234 1234 3496  166 /usr/lo /usr/local/libexec/xiri/manual-guard 600000 /usr/lo\n1234 1234 3938 3496 /bin/sh /bin/sh /usr/local/libexec/xiri/manual-session.sh /\n1234 1234 4182 3938 /bin/sh /bin/sh /usr/local/libexec/xiri/manual-session.sh /\n1234 1234 4205 3938 /bin/sh /bin/sh /usr/local/libexec/xiri/manual-session.sh /\n1234 1234 4457 3938 /bin/sh /bin/sh /usr/local/libexec/xiri/manual-session.sh /\n199\n143\n_NET_WM_PID:  no such atom on any window.\nWM_CLIENT_MACHINE(STRING) = \"xiri-indy\"\nWM_COMMAND:  not found.\n\nXIRI_e418997defd44e8da1e565bd0ee3330f_RC=0\nxiri-indy# "
+    },
+    "catalog-pid": {
+      "code": 0,
+      "output": "pgrep -u 1234 -f '^/usr/lib/desktop/iconcatalog/pages/C/Freeware/xmah \bjongg( |$)'; ps -ww -p 4379 -o pid,comm,args; kill -TERM \"$manual\"; wait \"$manua \bl\"; test ! -d /var/run/xiri-desktop.lock && ! pgrep -u 1234 && ! pgrep -x famd & \b& ! pgrep -x rpcbind; xiri_rc=$?; printf '\\nXIRI_f5ac3815894f4af98ce8a15a2475470 \b7_RC=%s\\n' \"$xiri_rc\"\n4379\n PID COMMAND COMMAND\n4379 /usr/li /usr/lib/desktop/iconcatalog/pages/C/Freeware/xmahjongg \nNov  2 19:03:38 xiri-indy rpcbind: rpcbind terminating on signal 15. Restart with \"rpcbind -w\"\n\nXIRI_f5ac3815894f4af98ce8a15a24754707_RC=0\nxiri-indy# "
+    }
+  }
+}

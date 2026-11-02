@@ -47,7 +47,7 @@ files and folders. Reporting MAC support as absent removes the Trusted Path
 panel. The [icon repair](docs/results/2026-11-02-desktop-icons.md) now restores
 application-specific Freeware artwork and FileManager folder/document icons.
 It adds measured record locks and seek offsets, and gives native FAM the
-imported pathname view. Catalog application actions remain to be qualified.
+imported pathname view. Broader catalog application behavior remains to be qualified.
 Intermittent xwsh startup failures and automatic closure after shell exit
 also remain open. Xorg stays in use;
 further Xsgi experiments are deferred.
@@ -58,8 +58,7 @@ GIMP's high-address GTK library mapping failure (700 mapping checks and
 it is not yet usable. That investigation identified Catalog Open's static
 IRIX shell boundary, and xosview needs kernel statistics interfaces. Desktop sessions now start
 applications in the configured home, with `pwd` verified in initial and
-Toolchest-launched winterm windows. These changes are not yet in the published
-icons CHD.
+Toolchest-launched winterm windows.
 
 The [original-shell checkpoint](docs/results/2026-11-02-irix-vendor-shell.md)
 now runs unmodified IRIX `/bin/sh`, with 772 checks across LP64 CI/ordinary
@@ -67,7 +66,8 @@ and o32 regression guests. Icon Catalog successfully launches xmahjongg on
 two double-click attempts. Opened-icon feedback and full interactive job
 control remain to qualify; winterm keeps its native shell default. A native
 null-device binding also fixes shell redirection inside the emulation tree.
-These changes are not yet packaged in the preserved manual CHD.
+The [new manual CHD](docs/results/2026-11-02-irix-shell-image.md) packages these
+changes, with fresh graphical boot/logout and actual CHD catalog-launch checks.
 
 The [desktop usability update](docs/results/2026-11-02-desktop-usability.md)
 adds graphical console boot/login, working Toolchest and desktop-menu logout,

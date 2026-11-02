@@ -6,6 +6,7 @@ import importlib.util
 import json
 from pathlib import Path
 import re
+import shlex
 import shutil
 import subprocess
 import tempfile
@@ -40,6 +41,10 @@ def main():
     shutil.copyfile(ROOT/'lab/irix-4dwm/type-ready.c', media/'type.c')
     ledger = json.loads((bundle/'copy-ledger.json').read_text())
     seed_result = json.loads((bundle/'seed-result.json').read_text())
+    shell_image = bool(seed_result.get('vendor_shell'))
+    if shell_image:
+        shutil.copyfile(ROOT/'lab/irix-vendor-shell/catalog-input.c', media/'catalog-input.c')
+        shutil.copyfile(ROOT/'lab/irix-filelocks/place-window.c', media/'place.c')
     staged = seed_result['staged']
     dimensions = seed_result.get('desktop_dimensions', [1024, 768])
     support = {r['netbsd_destination']:r['sha256'] for r in ledger['files']
@@ -77,6 +82,9 @@ def main():
         chd_sha256=manifest['chd_sha256'], sources={
             'scripts/probe-xiri-image.py':probe.sha256(Path(__file__)),
             'lab/irix-4dwm/type-ready.c':probe.sha256(ROOT/'lab/irix-4dwm/type-ready.c')})
+    if shell_image:
+        for name in ['lab/irix-vendor-shell/catalog-input.c', 'lab/irix-filelocks/place-window.c']:
+            result['sources'][name] = probe.sha256(ROOT/name)
 
     def cmd(command, timeout=120):
         before = len(lab.serial_text())
@@ -130,9 +138,53 @@ def main():
             result['desktop_services'] = True
         if seed_result.get('native_rpcbind_build'):
             cmd("rpc_errors_before=$(awk '/rpcbind: cannot bind/ {n++} END {print n+0}' /var/log/messages)")
-        cmd('XIRI_SESSION_MS=300000 /usr/local/bin/xiri-desktop >manual-desktop.log 2>&1 & manual=$!; tries=0; until ./image-type 127.0.0.1:0 xmahjongg "" >game-focus.log 2>&1; do kill -0 "$manual" || break; tries=$((tries+1)); test "$tries" -lt 120 || break; sleep 2; done; ./image-type 127.0.0.1:0 xmahjongg "" >game-focus.log 2>&1', 360)
+        session_ms = 600000 if shell_image else 300000
+        cmd('XIRI_SESSION_MS='+str(session_ms)+' /usr/local/bin/xiri-desktop >manual-desktop.log 2>&1 & manual=$!; tries=0; until ./image-type 127.0.0.1:0 xmahjongg "" >game-focus.log 2>&1; do kill -0 "$manual" || break; tries=$((tries+1)); test "$tries" -lt 120 || break; sleep 2; done; ./image-type 127.0.0.1:0 xmahjongg "" >game-focus.log 2>&1', 360)
         if seed_result.get('desktop_services'):
             cmd('(tries=0; until /usr/X11R7/bin/xwininfo -display 127.0.0.1:0 -root -tree | grep "of 18)" >/dev/null; do kill -0 "$manual" || exit 1; tries=$((tries+1)); test "$tries" -lt 60 || exit 1; sleep 2; done)',180)
+            if shell_image:
+                cmd('export PATH=/usr/X11R7/bin:$PATH DISPLAY=127.0.0.1:0; '
+                    'job=$(sed -n "s/.*Logs: //p" manual-desktop.log | head -1); test -d "$job"; '
+                    'cc -O2 -Wall -Wextra -Werror -I/usr/X11R7/include /cdrom/catalog-input.c '
+                    '-L/usr/X11R7/lib -Wl,-rpath,/usr/X11R7/lib -lX11 -lXtst -o catalog-input && '
+                    'cc -O2 -Wall -Wextra -Werror -I/usr/X11R7/include /cdrom/place.c '
+                    '-L/usr/X11R7/lib -Wl,-rpath,/usr/X11R7/lib -lX11 -o image-place', 180)
+                cmd(shlex.join(['./image-type', '127.0.0.1:0', 'winterm',
+                    'pwd > "$XIRI_SESSION_DIR/image-pwd"\n']))
+                cmd('(n=0; until test -s "$job/image-pwd"; do n=$((n+1)); test "$n" -lt 20 || exit 1; sleep 1; done)')
+                result['winterm_home'] = get('cat "$job/image-pwd"').decode().strip()
+                assert result['winterm_home'] == '/usr/people/xiritest'
+                result['native_null_device'] = cmd('test -c /emul/irix/dev/null && '
+                    'test "$(stat -f %Hr /emul/irix/dev/null)" = "$(stat -f %Hr /dev/null)" && '
+                    'test "$(stat -f %Lr /emul/irix/dev/null)" = "$(stat -f %Lr /dev/null)"')
+                old_pid = get('cat "$job/xmahjongg.pid"').decode().strip()
+                assert old_pid.isdigit()
+                cmd('kill '+old_pid+'; (n=0; while pgrep -x xmahjongg >/dev/null; do '
+                    'n=$((n+1)); test "$n" -lt 30 || exit 1; sleep 1; done)')
+                tree = get('xwininfo -root -tree').decode()
+                match = re.search(r'(0x[0-9a-f]+) "Icon Catalog: [^"\n]*\(Page (\d+) of 18\)', tree)
+                assert match, tree
+                wid, page = match[1], int(match[2])
+                cmd('xset r off')
+                for _ in range(abs(9-page)):
+                    cmd(shlex.join(['./catalog-input', '127.0.0.1:0', wid, 'key',
+                                    'Next' if page < 9 else 'Prior'])+'; sleep 1')
+                cmd('xset r on; ./image-place "Icon Catalog: Freeware (Page 9 of 18)" 372 450 900 500; sleep 2')
+                cmd(shlex.join(['./catalog-input', '127.0.0.1:0', wid, 'double', '1070', '682']))
+                # Catalog launches retain the original symlink path as argv[0].
+                # Match that path explicitly instead of assuming a basename.
+                cmd("(n=0; until pgrep -u 1234 -f "
+                    "'^/usr/lib/desktop/iconcatalog/pages/C/Freeware/xmahjongg( |$)' >catalog-game.pid; do "
+                    'n=$((n+1)); test "$n" -lt 30 || exit 1; sleep 1; done)')
+                new_pid = get('cat catalog-game.pid').decode().strip()
+                assert new_pid.isdigit() and new_pid != old_pid
+                cmd('./image-type "$DISPLAY" xmahjongg "" >game-focus.log; '
+                    './image-place xmahjongg 10 30 1006 614; sleep 2')
+                result['catalog_launch'] = dict(initial_pid=int(old_pid), launched_pid=int(new_pid),
+                    input='XTEST double-click', page='Freeware', target='xmahjongg',
+                    tree=get('xwininfo -root -tree').decode())
+                assert '"xmahjongg"' in result['catalog_launch']['tree']
+                print('CHD catalog double-click launched xmahjongg', flush=True)
             # Refresh the monitor compositor after Xorg changes display state.
             lab.monitor_command('disp compositor gl')
             lab.monitor_command('disp compositor sw')

@@ -82,6 +82,17 @@ def main():
     assert r['support_files_verified'] == expected_support
     assert 'TYPE_WINDOW' in r['game_focus'] and 'viewable=1' in r['game_focus']
     assert '"xmahjongg"' in r['tree']
+    if seed_result.get('vendor_shell'):
+        assert '\nIRIX_SHELL_IMAGE_OK\n' in seed_result['vendor_shell']
+        assert r['winterm_home'] == '/usr/people/xiritest'
+        assert '_RC=0' in r['native_null_device']
+        launch = r['catalog_launch']
+        assert launch['input'] == 'XTEST double-click' and launch['page'] == 'Freeware'
+        assert launch['target'] == 'xmahjongg'
+        assert launch['initial_pid'] > 0 and launch['launched_pid'] > 0
+        assert launch['initial_pid'] != launch['launched_pid']
+        assert '"xmahjongg"' in launch['tree']
+        assert '"Icon Catalog: Freeware (Page 9 of 18)"' in launch['tree']
     a.png.parent.mkdir(parents=True, exist_ok=True)
     if r.get('framebuffer_png_sha256'):
         # Use actual composed Newport colors. The big-endian XWD-to-PNG path
@@ -128,6 +139,13 @@ def main():
         limitations=['Window observation does not establish gameplay or catalog actions.',
             'Complete desktop services and later-login application state remain unqualified.',
             'The exact pinned CLI emulator was tested; other IRIS builds need manual validation.'])
+    if seed_result.get('vendor_shell'):
+        report.update(winterm_home=r['winterm_home'], catalog_launch=r['catalog_launch'],
+            native_null_device=r['native_null_device'], vendor_shell=seed_result['vendor_shell'])
+        report['limitations'][0] = ('Catalog double-click launches xmahjongg; gameplay and '
+            'opened-icon shape feedback remain unqualified.')
+        report['limitations'].append('Winterm still uses NetBSD sh; interactive IRIX sh is unqualified. '
+            'GIMP signal registration and xosview statistics interfaces remain unsupported.')
     a.output.write_text(json.dumps(report, indent=2)+'\n')
     if a.promote:
         manual_nvram = bundle/'nvram-graphics.bin' if m.get('manual_nvram_sha256') else a.run/'nvram.bin'

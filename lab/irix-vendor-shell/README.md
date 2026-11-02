@@ -67,7 +67,8 @@ and record new pins rather than replacing the existing artifacts silently.
 `/emul/irix/dev`. This is native session setup, not an imported IRIX device
 number. It prevents O_CREAT redirection from creating a regular `null` file
 inside the emulation tree. The harness exercises this with the vendor shell
-as both identities. The published icons CHD is unchanged.
+as both identities. The [new shell CHD](../../docs/results/2026-11-02-irix-shell-image.md)
+packages this setup and the qualified kernel; the older icons CHD is preserved.
 
 See the [result](../../docs/results/2026-11-02-irix-vendor-shell.md) for
 scope, evidence and remaining desktop behavior.

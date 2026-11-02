@@ -48,6 +48,11 @@ integrates upstream `4c1c87f5161c13b323d9b5d57a93779d355729b5` through
 pass 2,618 checks and JIT/idle library tests pass 2,956. Existing guest
 emulator pins remain unchanged.
 
+The [shell-image packaging cycle](results/2026-11-02-irix-shell-image.md)
+rechecked upstream on 2026-11-02: it remains at `4c1c87f5161c13b323d9b5d57a93779d355729b5`.
+No merge or emulator rebuild was needed. Image checks retain the qualified
+`9df1df14334838a989253efefe26f0547e6da592` emulator pin.
+
 The same cycle adds NetBSD shell support at
 `849755450135c6734bb61c4973d687d0c8060739`. Concurrent work switched the
 shared checkout to `feature/wscons-decor` before the compatibility-only

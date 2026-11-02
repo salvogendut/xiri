@@ -26,6 +26,8 @@ broader application behavior and persistence remain unqualified. The
 records the earlier boundary, the high-address mapping fix for GIMP, its subsequent
 signal registration failure, and xosview's unsupported statistics queries.
 No further library copying was needed for GIMP's observed loader failure.
+The [shell image](results/2026-11-02-irix-shell-image.md) packages these fixes
+and verifies xmahjongg's existing catalog action after a direct CHD boot.
 
 Original IRIX `inst` and Software Manager (`swmgr`) remain the later target
 for adding, upgrading and removing software with correct dependency handling,
