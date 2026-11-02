@@ -15,6 +15,13 @@ FileManager folder/document artwork. The [cold-boot record](results/2026-11-02-d
 verifies the persistent resources, native Xorg/Newport and cleanup. The [import ledger](IRIX-IMPORT.md) records
 the source and destination paths; vendor bytes remain outside Git.
 
+The subsequent [application follow-up](results/2026-11-02-irix-elfmap-high.md)
+fixes high preferred library mappings and the shell starting directory in
+source. Those changes are not yet packaged in this preserved icons bundle.
+In this image, `pwd` initially names a temporary session directory; run `cd`
+to enter `/usr/people/xiritest`. Icon Catalog actions and GIMP/xosview still
+have the documented compatibility gaps.
+
 ## Start it in IRIS
 
 Keep `netbsd-xiri.chd`, `iris.toml`, `nvram-graphics.bin` and `nvram.bin` together. Use an Indy

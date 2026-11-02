@@ -19,7 +19,11 @@ the existing Freeware page and all 21 entry names. Native FAM supplies the
 directory notifications; no new package registration was fabricated. The
 [icon repair](results/2026-11-02-desktop-icons.md) also restores the imported
 application-specific artwork. Launching xmahjongg from its catalog entry
-remains the next integration check.
+is now traced to an ENOEXEC failure when the catalog child executes the
+original static n32 `/bin/sh`. The [application follow-up](results/2026-11-02-irix-elfmap-high.md)
+records this boundary, the high-address mapping fix for GIMP, its subsequent
+signal registration failure, and xosview's unsupported statistics queries.
+No further library copying was needed for GIMP's observed loader failure.
 
 Original IRIX `inst` and Software Manager (`swmgr`) remain the later target
 for adding, upgrading and removing software with correct dependency handling,

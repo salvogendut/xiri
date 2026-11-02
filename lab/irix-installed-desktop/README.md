@@ -150,3 +150,12 @@ That gap is resolved by the later lock/seek adapters and native FAM
 `XIRI_FAM_ROOT` mapping, exercised by `probe-xiri-desktop-icons.py`.
 No additional vendor files, rewritten registrations or broad `/usr/freeware`
 alias are required.
+
+The [application follow-up](../../docs/results/2026-11-02-irix-elfmap-high.md)
+changes `manual-session.sh` to start clients from the session's HOME while
+keeping all logs and handoff paths under the absolute session directory.
+Initial and Toolchest-created winterm shells report `/usr/people/xiritest`.
+This launcher change requires installing the updated script at
+`/usr/local/libexec/xiri/manual-session.sh`; it is not in the preserved icons
+CHD. No additional vendor files were copied in this cycle. Catalog launch
+helpers remain resource candidates pending source-image inspection.

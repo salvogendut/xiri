@@ -1,0 +1,5734 @@
+{
+  "schema": 1,
+  "status": "qualified",
+  "reference_directory": ".work/irix-reference/elfmap-high-runs/ci-tv2ovref",
+  "reference_result_sha256": "52d2fb8ddd09c6771a9a5b0674732ecb09e782a5ce6ff6deca5b28490f17ed3f",
+  "reference_executions": 280,
+  "cases": 70,
+  "runs": [
+    {
+      "directory": ".work/irix-elfmap-high/runs/lp64-ci-xzosu1ch",
+      "result_sha256": "625beaf98b1cc777650ee4312174a6edc86dec5411b97c9b40322d56b0d97e53",
+      "kernel_abi": "lp64",
+      "mode": "ci",
+      "pin": {
+        "schema": 1,
+        "description": "High preferred ELF library addresses",
+        "ident": "XIRI_IRIX_ELFMAP_HIGH_20261102",
+        "source_revision": "ac4423d4657c4664898dfcab44b9f19c66f46f3b",
+        "source_branch": "xiri",
+        "build_arch": "mips64eb",
+        "page_bytes": 8192,
+        "boot_kernel_sha256": "6fad918d089b0a2f26660a82becac23308dcb0a7734045039da97b3475db8bd4",
+        "native_kernel_sha256": "89d18303ff1fd5a50e7dc7c3762b5cc39fa94adccf8db836eb787ec87af745aa",
+        "debug_kernel_sha256": "7ccb074c0dd37b4a9c74903dbf1d44b3ad6e69ec7a0416f54ad386fdf43728e3",
+        "native_o32_sha256": "c294fbb1f2110445be31c096481ea54ab561c7e59ca5b9fc7171310098d755d4",
+        "source_dirty": false,
+        "emulator_revision": "9df1df14334838a989253efefe26f0547e6da592",
+        "emulator_branch": "xiri/netbsd64-tlb",
+        "emulator_sha256": "1b3f7702ba7f43b5c4fca8ba8884243559f46371d8d67a36ce5e6fee1e595eba",
+        "ci_client_sha256": "8711321aa6eaae440da3c7920b00ae4cf1c7f2abbdb15a9919f58485500ffb6c",
+        "base_disk_sha256": "269038c7b77660c83d3835208fc0b2702c93110c14b3c55a42416f51672cee2a",
+        "nvram_sha256": "ee883474d52f09278287b2044f7aeca61d2e7bc39c0bb8fd85c983ab64063d15",
+        "config_sha256": "0eb73eacce8be22da29a6431bae63469f456451ac01459ed1706d7dfa88c5b8a",
+        "runtimes": [
+          {
+            "name": "vendor-o32-libc",
+            "path": "/usr/lib/libc.so.1",
+            "sha256": "ea766492103a193e9d404942705e4e28987545e37f699ede232b6c0f8c97c954"
+          },
+          {
+            "name": "vendor-o32-rld",
+            "path": "/lib/rld",
+            "sha256": "30228b54c1e5585b365514eb7c9895b03cc0f61cb898e05e3ddafece87863439"
+          },
+          {
+            "name": "vendor-n32-libc",
+            "path": "/lib32/libc.so.1",
+            "sha256": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e"
+          },
+          {
+            "name": "vendor-n32-rld",
+            "path": "/lib32/rld",
+            "sha256": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b"
+          }
+        ],
+        "config_path": "lab/irix-elfmap-high/XIRI_IRIX_ELFMAP_HIGH"
+      },
+      "clean_shutdown": true,
+      "observations": 280,
+      "controls": 12,
+      "oracle_differences": [
+        {
+          "name": "o32-elfmap-rollback-0",
+          "fields": {
+            "second_v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-rollback-tail-0",
+          "fields": {
+            "second_v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-count-one-0",
+          "fields": {
+            "v0": {
+              "netbsd": 22,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-count-three-0",
+          "fields": {
+            "v0": {
+              "netbsd": 22,
+              "irix": 8
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-fd-directory-0",
+          "fields": {
+            "v0": {
+              "netbsd": 22,
+              "irix": 19
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-fd-device-0",
+          "fields": {
+            "v0": {
+              "netbsd": 22,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-fd-read-write-0",
+          "fields": {
+            "v0": {
+              "netbsd": 26,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-no-execute-0",
+          "fields": {
+            "v0": {
+              "netbsd": 13,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-text-write-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-data-exec-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-text-bss-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-zero-memory-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 11
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-file-over-memory-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-unaligned-address-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-unaligned-offset-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-nonpower-align-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-small-align-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-large-align-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-incongruent-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-overlap-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 12
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-reversed-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-file-overlap-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-offset-wrap-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 14
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-address-wrap-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 12
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-oversized-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-large-span-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-short-file-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-occupied-rx-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-occupied-rw-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-occupied-bss-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-repeated-collision-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            },
+            "second_v0": {
+              "netbsd": 67256320,
+              "irix": 1573027840
+            },
+            "third_v0": {
+              "netbsd": 67403776,
+              "irix": 1573191680
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-occupied-fallback-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67125248,
+              "irix": 1572864000
+            },
+            "second_v0": {
+              "netbsd": 67272704,
+              "irix": 1573027840
+            },
+            "third_v0": {
+              "netbsd": 67420160,
+              "irix": 1573191680
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-mixed-align-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67125248,
+              "irix": 1572864000
+            },
+            "reserved": {
+              "netbsd": 0,
+              "irix": 49152
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-mixed-align-zero-residue-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-occupied-pure-bss-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-occupied-full-tail-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-upper-edge-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-no-bounded-space-0",
+          "fields": {
+            "v0": {
+              "netbsd": 12,
+              "irix": 0
+            },
+            "v1": {
+              "netbsd": 4277009102,
+              "irix": 0
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-as-limit-payload-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-relocated-text-fault-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-relocated-gap-fault-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-high-occupied-rx-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-high-occupied-rw-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-high-repeated-collision-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            },
+            "second_v0": {
+              "netbsd": 67256320,
+              "irix": 1573027840
+            },
+            "third_v0": {
+              "netbsd": 67403776,
+              "irix": 1573191680
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-near-2g-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 2130706432
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-kernel-address-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 1572864000
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-cross-user-limit-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 1572864000
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-rollback-0",
+          "fields": {
+            "second_v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-rollback-tail-0",
+          "fields": {
+            "second_v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-count-one-0",
+          "fields": {
+            "v0": {
+              "netbsd": 22,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-count-three-0",
+          "fields": {
+            "v0": {
+              "netbsd": 22,
+              "irix": 8
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-fd-closed-0",
+          "fields": {
+            "v0": {
+              "netbsd": 9,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-fd-write-only-0",
+          "fields": {
+            "v0": {
+              "netbsd": 9,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-fd-directory-0",
+          "fields": {
+            "v0": {
+              "netbsd": 22,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-fd-device-0",
+          "fields": {
+            "v0": {
+              "netbsd": 22,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-fd-read-write-0",
+          "fields": {
+            "v0": {
+              "netbsd": 26,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-no-execute-0",
+          "fields": {
+            "v0": {
+              "netbsd": 13,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-text-write-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-data-exec-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-text-bss-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-zero-memory-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 11
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-file-over-memory-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-unaligned-address-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-unaligned-offset-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-nonpower-align-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-small-align-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-large-align-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-incongruent-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-overlap-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 12
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-reversed-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-file-overlap-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-offset-wrap-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 14
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-address-wrap-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 12
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-oversized-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-large-span-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-short-file-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-occupied-rx-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-occupied-rw-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-occupied-bss-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-repeated-collision-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            },
+            "second_v0": {
+              "netbsd": 67256320,
+              "irix": 1573027840
+            },
+            "third_v0": {
+              "netbsd": 67403776,
+              "irix": 1573191680
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-occupied-fallback-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67125248,
+              "irix": 1572864000
+            },
+            "second_v0": {
+              "netbsd": 67272704,
+              "irix": 1573027840
+            },
+            "third_v0": {
+              "netbsd": 67420160,
+              "irix": 1573191680
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-mixed-align-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67125248,
+              "irix": 1572864000
+            },
+            "reserved": {
+              "netbsd": 0,
+              "irix": 49152
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-mixed-align-zero-residue-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-occupied-pure-bss-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-occupied-full-tail-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-upper-edge-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-no-bounded-space-0",
+          "fields": {
+            "v0": {
+              "netbsd": 12,
+              "irix": 0
+            },
+            "v1": {
+              "netbsd": 4277009102,
+              "irix": 0
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-as-limit-payload-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-relocated-text-fault-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-relocated-gap-fault-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-high-occupied-rx-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-high-occupied-rw-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-high-repeated-collision-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            },
+            "second_v0": {
+              "netbsd": 67256320,
+              "irix": 1573027840
+            },
+            "third_v0": {
+              "netbsd": 67403776,
+              "irix": 1573191680
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-near-2g-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 2130706432
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-kernel-address-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 1572864000
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-cross-user-limit-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 1572864000
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-rollback-1234",
+          "fields": {
+            "second_v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-rollback-tail-1234",
+          "fields": {
+            "second_v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-count-one-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 22,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-count-three-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 22,
+              "irix": 8
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-fd-directory-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 22,
+              "irix": 19
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-fd-device-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 22,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-fd-read-write-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 26,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-no-execute-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 13,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-text-write-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-data-exec-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-text-bss-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-zero-memory-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 11
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-file-over-memory-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-unaligned-address-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-unaligned-offset-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-nonpower-align-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-small-align-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-large-align-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-incongruent-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-overlap-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 12
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-reversed-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-file-overlap-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-offset-wrap-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 14
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-address-wrap-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 12
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-oversized-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-large-span-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-short-file-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-occupied-rx-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-occupied-rw-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-occupied-bss-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-repeated-collision-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            },
+            "second_v0": {
+              "netbsd": 67256320,
+              "irix": 1573027840
+            },
+            "third_v0": {
+              "netbsd": 67403776,
+              "irix": 1573191680
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-occupied-fallback-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67125248,
+              "irix": 1572864000
+            },
+            "second_v0": {
+              "netbsd": 67272704,
+              "irix": 1573027840
+            },
+            "third_v0": {
+              "netbsd": 67420160,
+              "irix": 1573191680
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-mixed-align-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67125248,
+              "irix": 1572864000
+            },
+            "reserved": {
+              "netbsd": 0,
+              "irix": 49152
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-mixed-align-zero-residue-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-occupied-pure-bss-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-occupied-full-tail-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-upper-edge-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-no-bounded-space-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 12,
+              "irix": 0
+            },
+            "v1": {
+              "netbsd": 4277009102,
+              "irix": 0
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-as-limit-payload-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-relocated-text-fault-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-relocated-gap-fault-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-high-occupied-rx-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-high-occupied-rw-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-high-repeated-collision-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            },
+            "second_v0": {
+              "netbsd": 67256320,
+              "irix": 1573027840
+            },
+            "third_v0": {
+              "netbsd": 67403776,
+              "irix": 1573191680
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-near-2g-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 2130706432
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-kernel-address-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 1572864000
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-cross-user-limit-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 1572864000
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-rollback-1234",
+          "fields": {
+            "second_v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-rollback-tail-1234",
+          "fields": {
+            "second_v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-count-one-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 22,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-count-three-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 22,
+              "irix": 8
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-fd-closed-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 9,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-fd-write-only-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 9,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-fd-directory-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 22,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-fd-device-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 22,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-fd-read-write-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 26,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-no-execute-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 13,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-text-write-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-data-exec-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-text-bss-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-zero-memory-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 11
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-file-over-memory-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-unaligned-address-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-unaligned-offset-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-nonpower-align-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-small-align-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-large-align-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-incongruent-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-overlap-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 12
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-reversed-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-file-overlap-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-offset-wrap-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 14
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-address-wrap-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 12
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-oversized-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-large-span-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-short-file-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-occupied-rx-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-occupied-rw-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-occupied-bss-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-repeated-collision-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            },
+            "second_v0": {
+              "netbsd": 67256320,
+              "irix": 1573027840
+            },
+            "third_v0": {
+              "netbsd": 67403776,
+              "irix": 1573191680
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-occupied-fallback-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67125248,
+              "irix": 1572864000
+            },
+            "second_v0": {
+              "netbsd": 67272704,
+              "irix": 1573027840
+            },
+            "third_v0": {
+              "netbsd": 67420160,
+              "irix": 1573191680
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-mixed-align-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67125248,
+              "irix": 1572864000
+            },
+            "reserved": {
+              "netbsd": 0,
+              "irix": 49152
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-mixed-align-zero-residue-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-occupied-pure-bss-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-occupied-full-tail-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-upper-edge-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-no-bounded-space-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 12,
+              "irix": 0
+            },
+            "v1": {
+              "netbsd": 4277009102,
+              "irix": 0
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-as-limit-payload-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-relocated-text-fault-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-relocated-gap-fault-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-high-occupied-rx-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-high-occupied-rw-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-high-repeated-collision-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            },
+            "second_v0": {
+              "netbsd": 67256320,
+              "irix": 1573027840
+            },
+            "third_v0": {
+              "netbsd": 67403776,
+              "irix": 1573191680
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-near-2g-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 2130706432
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-kernel-address-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 1572864000
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-cross-user-limit-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 1572864000
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "directory": ".work/irix-elfmap-high/runs/lp64-ordinary-b9sw8n7c",
+      "result_sha256": "7906873c600253f8853e3e73c2ad77ab6f5cb4e890aa1aa574ee2ba2b8ba24ee",
+      "kernel_abi": "lp64",
+      "mode": "ordinary",
+      "pin": {
+        "schema": 1,
+        "description": "High preferred ELF library addresses",
+        "ident": "XIRI_IRIX_ELFMAP_HIGH_20261102",
+        "source_revision": "ac4423d4657c4664898dfcab44b9f19c66f46f3b",
+        "source_branch": "xiri",
+        "build_arch": "mips64eb",
+        "page_bytes": 8192,
+        "boot_kernel_sha256": "6fad918d089b0a2f26660a82becac23308dcb0a7734045039da97b3475db8bd4",
+        "native_kernel_sha256": "89d18303ff1fd5a50e7dc7c3762b5cc39fa94adccf8db836eb787ec87af745aa",
+        "debug_kernel_sha256": "7ccb074c0dd37b4a9c74903dbf1d44b3ad6e69ec7a0416f54ad386fdf43728e3",
+        "native_o32_sha256": "c294fbb1f2110445be31c096481ea54ab561c7e59ca5b9fc7171310098d755d4",
+        "source_dirty": false,
+        "emulator_revision": "9df1df14334838a989253efefe26f0547e6da592",
+        "emulator_branch": "xiri/netbsd64-tlb",
+        "emulator_sha256": "1b3f7702ba7f43b5c4fca8ba8884243559f46371d8d67a36ce5e6fee1e595eba",
+        "ci_client_sha256": "8711321aa6eaae440da3c7920b00ae4cf1c7f2abbdb15a9919f58485500ffb6c",
+        "base_disk_sha256": "269038c7b77660c83d3835208fc0b2702c93110c14b3c55a42416f51672cee2a",
+        "nvram_sha256": "ee883474d52f09278287b2044f7aeca61d2e7bc39c0bb8fd85c983ab64063d15",
+        "config_sha256": "0eb73eacce8be22da29a6431bae63469f456451ac01459ed1706d7dfa88c5b8a",
+        "runtimes": [
+          {
+            "name": "vendor-o32-libc",
+            "path": "/usr/lib/libc.so.1",
+            "sha256": "ea766492103a193e9d404942705e4e28987545e37f699ede232b6c0f8c97c954"
+          },
+          {
+            "name": "vendor-o32-rld",
+            "path": "/lib/rld",
+            "sha256": "30228b54c1e5585b365514eb7c9895b03cc0f61cb898e05e3ddafece87863439"
+          },
+          {
+            "name": "vendor-n32-libc",
+            "path": "/lib32/libc.so.1",
+            "sha256": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e"
+          },
+          {
+            "name": "vendor-n32-rld",
+            "path": "/lib32/rld",
+            "sha256": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b"
+          }
+        ],
+        "config_path": "lab/irix-elfmap-high/XIRI_IRIX_ELFMAP_HIGH"
+      },
+      "clean_shutdown": true,
+      "observations": 280,
+      "controls": 12,
+      "oracle_differences": [
+        {
+          "name": "o32-elfmap-rollback-0",
+          "fields": {
+            "second_v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-rollback-tail-0",
+          "fields": {
+            "second_v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-count-one-0",
+          "fields": {
+            "v0": {
+              "netbsd": 22,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-count-three-0",
+          "fields": {
+            "v0": {
+              "netbsd": 22,
+              "irix": 8
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-fd-directory-0",
+          "fields": {
+            "v0": {
+              "netbsd": 22,
+              "irix": 19
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-fd-device-0",
+          "fields": {
+            "v0": {
+              "netbsd": 22,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-fd-read-write-0",
+          "fields": {
+            "v0": {
+              "netbsd": 26,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-no-execute-0",
+          "fields": {
+            "v0": {
+              "netbsd": 13,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-text-write-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-data-exec-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-text-bss-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-zero-memory-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 11
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-file-over-memory-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-unaligned-address-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-unaligned-offset-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-nonpower-align-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-small-align-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-large-align-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-incongruent-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-overlap-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 12
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-reversed-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-file-overlap-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-offset-wrap-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 14
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-address-wrap-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 12
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-oversized-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-large-span-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-short-file-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-occupied-rx-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-occupied-rw-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-occupied-bss-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-repeated-collision-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            },
+            "second_v0": {
+              "netbsd": 67256320,
+              "irix": 1573027840
+            },
+            "third_v0": {
+              "netbsd": 67403776,
+              "irix": 1573191680
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-occupied-fallback-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67125248,
+              "irix": 1572864000
+            },
+            "second_v0": {
+              "netbsd": 67272704,
+              "irix": 1573027840
+            },
+            "third_v0": {
+              "netbsd": 67420160,
+              "irix": 1573191680
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-mixed-align-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67125248,
+              "irix": 1572864000
+            },
+            "reserved": {
+              "netbsd": 0,
+              "irix": 49152
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-mixed-align-zero-residue-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-occupied-pure-bss-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-occupied-full-tail-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-upper-edge-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-no-bounded-space-0",
+          "fields": {
+            "v0": {
+              "netbsd": 12,
+              "irix": 0
+            },
+            "v1": {
+              "netbsd": 4277009102,
+              "irix": 0
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-as-limit-payload-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-relocated-text-fault-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-relocated-gap-fault-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-high-occupied-rx-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-high-occupied-rw-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-high-repeated-collision-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            },
+            "second_v0": {
+              "netbsd": 67256320,
+              "irix": 1573027840
+            },
+            "third_v0": {
+              "netbsd": 67403776,
+              "irix": 1573191680
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-near-2g-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 2130706432
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-kernel-address-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 1572864000
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-cross-user-limit-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 1572864000
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-rollback-0",
+          "fields": {
+            "second_v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-rollback-tail-0",
+          "fields": {
+            "second_v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-count-one-0",
+          "fields": {
+            "v0": {
+              "netbsd": 22,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-count-three-0",
+          "fields": {
+            "v0": {
+              "netbsd": 22,
+              "irix": 8
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-fd-closed-0",
+          "fields": {
+            "v0": {
+              "netbsd": 9,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-fd-write-only-0",
+          "fields": {
+            "v0": {
+              "netbsd": 9,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-fd-directory-0",
+          "fields": {
+            "v0": {
+              "netbsd": 22,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-fd-device-0",
+          "fields": {
+            "v0": {
+              "netbsd": 22,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-fd-read-write-0",
+          "fields": {
+            "v0": {
+              "netbsd": 26,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-no-execute-0",
+          "fields": {
+            "v0": {
+              "netbsd": 13,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-text-write-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-data-exec-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-text-bss-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-zero-memory-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 11
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-file-over-memory-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-unaligned-address-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-unaligned-offset-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-nonpower-align-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-small-align-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-large-align-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-incongruent-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-overlap-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 12
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-reversed-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-file-overlap-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-offset-wrap-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 14
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-address-wrap-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 12
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-oversized-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-large-span-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-short-file-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-occupied-rx-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-occupied-rw-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-occupied-bss-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-repeated-collision-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            },
+            "second_v0": {
+              "netbsd": 67256320,
+              "irix": 1573027840
+            },
+            "third_v0": {
+              "netbsd": 67403776,
+              "irix": 1573191680
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-occupied-fallback-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67125248,
+              "irix": 1572864000
+            },
+            "second_v0": {
+              "netbsd": 67272704,
+              "irix": 1573027840
+            },
+            "third_v0": {
+              "netbsd": 67420160,
+              "irix": 1573191680
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-mixed-align-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67125248,
+              "irix": 1572864000
+            },
+            "reserved": {
+              "netbsd": 0,
+              "irix": 49152
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-mixed-align-zero-residue-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-occupied-pure-bss-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-occupied-full-tail-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-upper-edge-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-no-bounded-space-0",
+          "fields": {
+            "v0": {
+              "netbsd": 12,
+              "irix": 0
+            },
+            "v1": {
+              "netbsd": 4277009102,
+              "irix": 0
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-as-limit-payload-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-relocated-text-fault-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-relocated-gap-fault-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-high-occupied-rx-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-high-occupied-rw-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-high-repeated-collision-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            },
+            "second_v0": {
+              "netbsd": 67256320,
+              "irix": 1573027840
+            },
+            "third_v0": {
+              "netbsd": 67403776,
+              "irix": 1573191680
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-near-2g-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 2130706432
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-kernel-address-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 1572864000
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-cross-user-limit-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 1572864000
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-rollback-1234",
+          "fields": {
+            "second_v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-rollback-tail-1234",
+          "fields": {
+            "second_v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-count-one-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 22,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-count-three-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 22,
+              "irix": 8
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-fd-directory-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 22,
+              "irix": 19
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-fd-device-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 22,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-fd-read-write-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 26,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-no-execute-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 13,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-text-write-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-data-exec-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-text-bss-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-zero-memory-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 11
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-file-over-memory-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-unaligned-address-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-unaligned-offset-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-nonpower-align-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-small-align-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-large-align-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-incongruent-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-overlap-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 12
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-reversed-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-file-overlap-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-offset-wrap-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 14
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-address-wrap-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 12
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-oversized-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-large-span-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-short-file-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-occupied-rx-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-occupied-rw-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-occupied-bss-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-repeated-collision-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            },
+            "second_v0": {
+              "netbsd": 67256320,
+              "irix": 1573027840
+            },
+            "third_v0": {
+              "netbsd": 67403776,
+              "irix": 1573191680
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-occupied-fallback-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67125248,
+              "irix": 1572864000
+            },
+            "second_v0": {
+              "netbsd": 67272704,
+              "irix": 1573027840
+            },
+            "third_v0": {
+              "netbsd": 67420160,
+              "irix": 1573191680
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-mixed-align-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67125248,
+              "irix": 1572864000
+            },
+            "reserved": {
+              "netbsd": 0,
+              "irix": 49152
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-mixed-align-zero-residue-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-occupied-pure-bss-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-occupied-full-tail-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-upper-edge-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-no-bounded-space-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 12,
+              "irix": 0
+            },
+            "v1": {
+              "netbsd": 4277009102,
+              "irix": 0
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-as-limit-payload-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-relocated-text-fault-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-relocated-gap-fault-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-high-occupied-rx-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-high-occupied-rw-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-high-repeated-collision-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            },
+            "second_v0": {
+              "netbsd": 67256320,
+              "irix": 1573027840
+            },
+            "third_v0": {
+              "netbsd": 67403776,
+              "irix": 1573191680
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-near-2g-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 2130706432
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-kernel-address-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 1572864000
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-cross-user-limit-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 1572864000
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-rollback-1234",
+          "fields": {
+            "second_v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-rollback-tail-1234",
+          "fields": {
+            "second_v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-count-one-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 22,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-count-three-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 22,
+              "irix": 8
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-fd-closed-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 9,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-fd-write-only-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 9,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-fd-directory-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 22,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-fd-device-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 22,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-fd-read-write-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 26,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-no-execute-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 13,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-text-write-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-data-exec-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-text-bss-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-zero-memory-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 11
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-file-over-memory-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-unaligned-address-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-unaligned-offset-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-nonpower-align-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-small-align-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-large-align-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-incongruent-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-overlap-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 12
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-reversed-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-file-overlap-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-offset-wrap-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 14
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-address-wrap-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 12
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-oversized-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-large-span-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-short-file-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-occupied-rx-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-occupied-rw-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-occupied-bss-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-repeated-collision-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            },
+            "second_v0": {
+              "netbsd": 67256320,
+              "irix": 1573027840
+            },
+            "third_v0": {
+              "netbsd": 67403776,
+              "irix": 1573191680
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-occupied-fallback-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67125248,
+              "irix": 1572864000
+            },
+            "second_v0": {
+              "netbsd": 67272704,
+              "irix": 1573027840
+            },
+            "third_v0": {
+              "netbsd": 67420160,
+              "irix": 1573191680
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-mixed-align-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67125248,
+              "irix": 1572864000
+            },
+            "reserved": {
+              "netbsd": 0,
+              "irix": 49152
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-mixed-align-zero-residue-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-occupied-pure-bss-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-occupied-full-tail-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-upper-edge-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-no-bounded-space-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 12,
+              "irix": 0
+            },
+            "v1": {
+              "netbsd": 4277009102,
+              "irix": 0
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-as-limit-payload-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-relocated-text-fault-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-relocated-gap-fault-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-high-occupied-rx-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-high-occupied-rw-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-high-repeated-collision-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            },
+            "second_v0": {
+              "netbsd": 67256320,
+              "irix": 1573027840
+            },
+            "third_v0": {
+              "netbsd": 67403776,
+              "irix": 1573191680
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-near-2g-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 2130706432
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-kernel-address-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 1572864000
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "n32-elfmap-cross-user-limit-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 1572864000
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "directory": ".work/irix-elfmap-high/runs/o32-ci-x8qoay7w",
+      "result_sha256": "15be77eed606eabe8a4344fe67d1feca5a6f5dae6a78a73de7b62d1a9694a3b8",
+      "kernel_abi": "o32",
+      "mode": "ci",
+      "pin": {
+        "schema": 1,
+        "description": "High preferred ELF library addresses",
+        "ident": "XIRI_IRIX_ELFMAP_HIGH_O32_20261102",
+        "source_revision": "ac4423d4657c4664898dfcab44b9f19c66f46f3b",
+        "source_branch": "xiri",
+        "build_arch": "mipseb",
+        "page_bytes": 4096,
+        "boot_kernel_sha256": "1584f6a546a0ac705e9682de801997e472d7c9bb8a437ae018a1e211743dccbc",
+        "native_kernel_sha256": "1584f6a546a0ac705e9682de801997e472d7c9bb8a437ae018a1e211743dccbc",
+        "debug_kernel_sha256": "86522fc608b0fb5cfadc8303abb8a5df2b4fe3cdf83e53dd50a6f58aae1080a8",
+        "native_o32_sha256": "c294fbb1f2110445be31c096481ea54ab561c7e59ca5b9fc7171310098d755d4",
+        "source_dirty": false,
+        "emulator_revision": "9df1df14334838a989253efefe26f0547e6da592",
+        "emulator_branch": "xiri/netbsd64-tlb",
+        "emulator_sha256": "1b3f7702ba7f43b5c4fca8ba8884243559f46371d8d67a36ce5e6fee1e595eba",
+        "ci_client_sha256": "8711321aa6eaae440da3c7920b00ae4cf1c7f2abbdb15a9919f58485500ffb6c",
+        "base_disk_sha256": "269038c7b77660c83d3835208fc0b2702c93110c14b3c55a42416f51672cee2a",
+        "nvram_sha256": "ee883474d52f09278287b2044f7aeca61d2e7bc39c0bb8fd85c983ab64063d15",
+        "config_sha256": "7085b3babfe8653b4187aa9f77bf8287c5da44776e2d0a265faedbf9cfa45af6",
+        "runtimes": [
+          {
+            "name": "vendor-o32-libc",
+            "path": "/usr/lib/libc.so.1",
+            "sha256": "ea766492103a193e9d404942705e4e28987545e37f699ede232b6c0f8c97c954"
+          },
+          {
+            "name": "vendor-o32-rld",
+            "path": "/lib/rld",
+            "sha256": "30228b54c1e5585b365514eb7c9895b03cc0f61cb898e05e3ddafece87863439"
+          },
+          {
+            "name": "vendor-n32-libc",
+            "path": "/lib32/libc.so.1",
+            "sha256": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e"
+          },
+          {
+            "name": "vendor-n32-rld",
+            "path": "/lib32/rld",
+            "sha256": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b"
+          }
+        ],
+        "config_path": "lab/irix-elfmap-high/XIRI_IRIX_ELFMAP_HIGH_O32"
+      },
+      "clean_shutdown": true,
+      "observations": 140,
+      "controls": 8,
+      "oracle_differences": [
+        {
+          "name": "o32-elfmap-rollback-0",
+          "fields": {
+            "second_v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-rollback-tail-0",
+          "fields": {
+            "second_v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-count-one-0",
+          "fields": {
+            "v0": {
+              "netbsd": 22,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-count-three-0",
+          "fields": {
+            "v0": {
+              "netbsd": 22,
+              "irix": 8
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-fd-directory-0",
+          "fields": {
+            "v0": {
+              "netbsd": 22,
+              "irix": 19
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-fd-device-0",
+          "fields": {
+            "v0": {
+              "netbsd": 22,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-fd-read-write-0",
+          "fields": {
+            "v0": {
+              "netbsd": 26,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-no-execute-0",
+          "fields": {
+            "v0": {
+              "netbsd": 13,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-text-write-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-data-exec-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-text-bss-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-zero-memory-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 11
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-file-over-memory-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-unaligned-address-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-unaligned-offset-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-nonpower-align-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-small-align-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-large-align-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-incongruent-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-overlap-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 12
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-reversed-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-file-overlap-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-offset-wrap-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 14
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-address-wrap-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 12
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-oversized-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-large-span-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-short-file-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-occupied-rx-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-occupied-rw-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-occupied-bss-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-repeated-collision-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            },
+            "second_v0": {
+              "netbsd": 67256320,
+              "irix": 1573027840
+            },
+            "third_v0": {
+              "netbsd": 67403776,
+              "irix": 1573191680
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-occupied-fallback-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67125248,
+              "irix": 1572864000
+            },
+            "second_v0": {
+              "netbsd": 67272704,
+              "irix": 1573027840
+            },
+            "third_v0": {
+              "netbsd": 67420160,
+              "irix": 1573191680
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-mixed-align-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67125248,
+              "irix": 1572864000
+            },
+            "reserved": {
+              "netbsd": 0,
+              "irix": 49152
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-mixed-align-zero-residue-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-occupied-pure-bss-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-occupied-full-tail-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-upper-edge-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-no-bounded-space-0",
+          "fields": {
+            "v0": {
+              "netbsd": 12,
+              "irix": 0
+            },
+            "v1": {
+              "netbsd": 4277009102,
+              "irix": 0
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-as-limit-payload-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-relocated-text-fault-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-relocated-gap-fault-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-high-occupied-rx-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-high-occupied-rw-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-high-repeated-collision-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            },
+            "second_v0": {
+              "netbsd": 67256320,
+              "irix": 1573027840
+            },
+            "third_v0": {
+              "netbsd": 67403776,
+              "irix": 1573191680
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-near-2g-0",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 2130706432
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-kernel-address-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 1572864000
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-cross-user-limit-0",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 1572864000
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-rollback-1234",
+          "fields": {
+            "second_v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-rollback-tail-1234",
+          "fields": {
+            "second_v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-count-one-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 22,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-count-three-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 22,
+              "irix": 8
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-fd-directory-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 22,
+              "irix": 19
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-fd-device-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 22,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-fd-read-write-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 26,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-no-execute-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 13,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-text-write-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-data-exec-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-text-bss-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-zero-memory-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 11
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-file-over-memory-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-unaligned-address-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-unaligned-offset-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-nonpower-align-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-small-align-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-large-align-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-incongruent-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-overlap-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 12
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-reversed-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-file-overlap-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-offset-wrap-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 14
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-address-wrap-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 12
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-oversized-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-large-span-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-short-file-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 234881024
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-occupied-rx-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-occupied-rw-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-occupied-bss-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-repeated-collision-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            },
+            "second_v0": {
+              "netbsd": 67256320,
+              "irix": 1573027840
+            },
+            "third_v0": {
+              "netbsd": 67403776,
+              "irix": 1573191680
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-occupied-fallback-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67125248,
+              "irix": 1572864000
+            },
+            "second_v0": {
+              "netbsd": 67272704,
+              "irix": 1573027840
+            },
+            "third_v0": {
+              "netbsd": 67420160,
+              "irix": 1573191680
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-mixed-align-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67125248,
+              "irix": 1572864000
+            },
+            "reserved": {
+              "netbsd": 0,
+              "irix": 49152
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-mixed-align-zero-residue-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-occupied-pure-bss-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-occupied-full-tail-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-upper-edge-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-no-bounded-space-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 12,
+              "irix": 0
+            },
+            "v1": {
+              "netbsd": 4277009102,
+              "irix": 0
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-as-limit-payload-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-relocated-text-fault-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-relocated-gap-fault-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-high-occupied-rx-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-high-occupied-rw-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-high-repeated-collision-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 1572864000
+            },
+            "second_v0": {
+              "netbsd": 67256320,
+              "irix": 1573027840
+            },
+            "third_v0": {
+              "netbsd": 67403776,
+              "irix": 1573191680
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-near-2g-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 67108864,
+              "irix": 2130706432
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-kernel-address-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 1572864000
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        },
+        {
+          "name": "o32-elfmap-cross-user-limit-1234",
+          "fields": {
+            "v0": {
+              "netbsd": 8,
+              "irix": 1572864000
+            },
+            "a3": {
+              "netbsd": 1,
+              "irix": 0
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "checks": 700,
+  "controls": 32,
+  "qualifier_sha256": "5d03b090821fba26b1c5eafe0810f51397ade010006edae96173ec55b34f082f",
+  "limitations": [
+    "The four original no-bounded-space cases fail while establishing the 960 MiB occupant; they do not measure ELFMAP.",
+    "IRIX relocates the two above-user-limit requests; this bounded NetBSD subset rejects them with ENOEXEC.",
+    "NetBSD relocates the near-2GiB request because of its compat stack reservation; IRIX uses the requested address.",
+    "The first two native runs exposed an incorrect near-2GiB checker expectation; they are preserved and excluded."
+  ]
+}

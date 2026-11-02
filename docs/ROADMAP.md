@@ -20,6 +20,15 @@ that stock-kernel deployment is not yet demonstrated. See the
 
 The user-reported display responsiveness gap is tracked in [Newport performance](NEWPORT.md), including the supplied SGI driver manual, the current NoAccel setting and the measured fast-clear/plane-format mismatch. Recheck acceleration correctness on the current emulator before assigning the fix to NetBSD or IRIS.
 
+The latest [catalog/application follow-up](results/2026-11-02-irix-elfmap-high.md)
+qualifies high preferred ELF library addresses and corrects the desktop's
+starting directory. Next application work is static n32 shell admission and
+launch-child process/directory calls for Icon Catalog, the exact signal
+registration requested by GIMP, and measured statistics interfaces for
+xosview. Catalog opened-state feedback, missing launch helpers and a new
+manual image remain explicit follow-ups; imported files alone do not imply
+working applications.
+
 ## Development setup checklist
 
 The candidate host inventory, pinned IRIS CLI build, verified NetBSD inputs, guest installation, and host kernel build are complete. The R4400 guest reaches multiuser after a cold boot with the custom kernel, supports debugger breakpoints, and passes an automated probe. Repeated disk writes, cold-read integrity, and bidirectional network transfers pass in both execution modes; see the [I/O results](results/2026-10-30-netbsd-io.md). See the [installation record](results/2026-10-29-indy-netbsd-install.md), [kernel build record](results/2026-10-30-netbsd-kernel.md), and [debugger/probe results](results/2026-10-30-netbsd-debugger-probe.md).

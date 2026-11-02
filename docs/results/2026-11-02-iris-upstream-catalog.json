@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "upstream_revision": "3cba53ad50c500f73c4e0d97cb4cb13e7662c820",
+  "integration_revision": "c0eb0b27f30dceddfad53fc1895bf2576be0c6da",
+  "conflicts": false,
+  "pushed": true,
+  "tests": {
+    "workspace": {
+      "passed": 2589,
+      "ignored": 33,
+      "failed": 0,
+      "log": ".work/catalog-actions/iris-workspace.log",
+      "sha256": "678fe113ad7978812252f0bb90ce62b493b54cf6bb01a4f164a27c14ac3a134f"
+    },
+    "jit-idle": {
+      "passed": 2927,
+      "ignored": 32,
+      "failed": 0,
+      "log": ".work/catalog-actions/iris-jit-idle.log",
+      "sha256": "60598c2870333d2bd4369545a1adbe16c5487f6484595093b55d98b06cc6139c"
+    }
+  },
+  "limitations": [
+    "Linux tests do not exercise the Windows-specific memory backend.",
+    "Pinned runtime emulators and detached labs were not repinned."
+  ]
+}

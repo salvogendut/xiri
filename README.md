@@ -52,6 +52,15 @@ Intermittent xwsh startup failures and automatic closure after shell exit
 also remain open. Xorg stays in use;
 further Xsgi experiments are deferred.
 
+The [application follow-up](docs/results/2026-11-02-irix-elfmap-high.md) fixes
+GIMP's high-address GTK library mapping failure (700 mapping checks and
+32 controls). GIMP now reaches Xorg, then stops at signal-handler registration;
+it is not yet usable. Catalog Open reaches an unsupported static IRIX shell,
+and xosview needs kernel statistics interfaces. Desktop sessions now start
+applications in the configured home, with `pwd` verified in initial and
+Toolchest-launched winterm windows. These changes are not yet in the published
+icons CHD.
+
 The [desktop usability update](docs/results/2026-11-02-desktop-usability.md)
 adds graphical console boot/login, working Toolchest and desktop-menu logout,
 window-manager readiness before starting clients, and native rpcbind's

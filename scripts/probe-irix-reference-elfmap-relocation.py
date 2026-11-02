@@ -40,7 +40,7 @@ def archive_observations(archive,cases,checkpoint):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--checkpoint', choices=['elfmap-relocation'], default='elfmap-relocation')
+    parser.add_argument('--checkpoint', choices=['elfmap-relocation', 'elfmap-high'], default='elfmap-relocation')
     args = parser.parse_args()
     checkpoint = args.checkpoint
     reference = ROOT / '.work/irix-reference'

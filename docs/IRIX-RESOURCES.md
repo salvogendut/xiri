@@ -48,6 +48,14 @@ visual target: populated catalog tabs, icon/toolbar artwork, desktop icons,
 SGI colors and a patterned background. Use a known installed application for
 the first page/action test; the complete pictured application set is optional.
 
+The [catalog action trace](results/2026-11-02-irix-elfmap-high.md) additionally
+checks `/usr/lib/desktop/launcheffect` and `/usr/lib/desktop/waitmap`. Both
+return ENOENT in the current staged image. Their source-image presence and
+role in launch feedback need inspection before import. xmahjongg's OPEN
+rule and opened-state artwork are already present. GIMP's GTK library was
+also present; its mapping failure required a kernel address-range change,
+not additional resources.
+
 ## IRIX information sources
 
 - [IRIX7 Silicon Graphics Technical Document Archive](https://irix7.com/techpubs.html)

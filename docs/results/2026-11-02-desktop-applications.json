@@ -1,0 +1,102 @@
+{
+  "schema": 1,
+  "status": "diagnosed",
+  "kernel_revision": "ac4423d4657c4664898dfcab44b9f19c66f46f3b",
+  "reference_release": "6.5.22m",
+  "gimp": {
+    "before_trace": ".work/catalog-actions/diagnose-wmkppqs6/gimp.ktrace",
+    "before_sha256": "1d1b1232cd4223bcc82a0998dda22428cc3c3be65202e9e1cebaa101810cf1f2",
+    "initial_library": "/usr/freeware/lib32/libgtk-1.2.so.1",
+    "after_trace": ".work/catalog-actions/gimp-high-lmxc2zwx/gimp.ktrace",
+    "after_sha256": "270ad5a051f9b41a298a1a8b0ba424150b1fa6a655ef0bd11ba1a2dba77c01f6",
+    "elfmap_successes": 11,
+    "elfmap_failures": 0,
+    "next_error": "LibGimp-ERROR **: unable to set handler for signal 1",
+    "usable": false
+  },
+  "catalog": {
+    "trace": ".work/catalog-actions/diagnose-wmkppqs6/catalog-zero.ktrace",
+    "sha256": "0984e1867b9907a31b5a0fbe6e3a78dbbb1479a6bee90d2a3c3e200e8399633e",
+    "exec": "/emul/irix/bin/sh",
+    "exec_errno": 8,
+    "opened_artwork_present": true,
+    "launch_qualified": false,
+    "missing_helpers": [
+      "/usr/lib/desktop/launcheffect",
+      "/usr/lib/desktop/waitmap"
+    ],
+    "native_shell_override": {
+      "value": "/usr/local/libexec/xiri/command-shell",
+      "trace": ".work/catalog-actions/gimp-high-lmxc2zwx/catalog-shell-real.ktrace",
+      "sha256": "5b75d4d1c5d0fd8bec9e7d56a5be19bb881316f3009029113c64dad1cf242968",
+      "result": "Still executes /emul/irix/bin/sh, ENOEXEC"
+    }
+  },
+  "xosview": {
+    "trace": ".work/catalog-actions/diagnose-wmkppqs6/xosview.ktrace",
+    "sha256": "d8c0fad6e6170c831b79fd4388321972d11173cf010501966de177b625fada61",
+    "error": "sysinfo scall interface not supported",
+    "unimplemented_sysmp": [
+      {
+        "command": 1
+      },
+      {
+        "command": 9,
+        "subselector": 1
+      },
+      {
+        "command": 9,
+        "subselector": 8
+      }
+    ],
+    "unimplemented_syssgi": 5
+  },
+  "home": {
+    "script": "lab/irix-installed-desktop/manual-session.sh",
+    "sha256": "8d211fca1bba205269d449561050cc1dbcfb6c9d171b5c51e5f279fa67e65606",
+    "expected": "/usr/people/xiritest",
+    "checks": [
+      {
+        "name": "pwd-initial",
+        "response": ".work/catalog-actions/gimp-high-lmxc2zwx/response-pwd-initial.json",
+        "sha256": "19653cff86f3d7d7160a53065a2b4e2a6197c902bc08748b5e44a9b78ba2ce64",
+        "passed": true
+      },
+      {
+        "name": "pwd-menu",
+        "response": ".work/catalog-actions/gimp-high-lmxc2zwx/response-pwd-menu.json",
+        "sha256": "c8479f35e3d8c7ad037bd59d04f511d5afbcdce7114f0112f762160e78039c04",
+        "passed": true
+      }
+    ],
+    "screenshot": {
+      "path": "docs/results/images/2026-11-02-winterm-home.png",
+      "sha256": "dd70b6592af5d77c1b035ab087fbff724a79824e392c5571ad876fbca5a3a7bb"
+    },
+    "logout": {
+      "passed": true,
+      "response": ".work/catalog-actions/gimp-high-lmxc2zwx/response-home-logout.json",
+      "sha256": "5af425acaa2fd7ae67d5a2a55190f846a9669701346b3282a165725d70861023",
+      "checks": [
+        "supervisor exited",
+        "X socket lock removed",
+        "desktop service lock removed",
+        "no processes with UID 1234"
+      ]
+    }
+  },
+  "previous_manual_bundle": ".work/images/xiri-netbsd-desktop-20261102-icons",
+  "new_manual_image": false,
+  "diagnostic_cleanup": [
+    {
+      "directory": ".work/catalog-actions/diagnose-wmkppqs6",
+      "clean_shutdown": true,
+      "result_sha256": "3dbcf1e7fc136ac209950098bdf1bd71eeb6ba76c3e8bbef3efb85e42772bc37"
+    },
+    {
+      "directory": ".work/catalog-actions/gimp-high-lmxc2zwx",
+      "clean_shutdown": true,
+      "result_sha256": "3dbcf1e7fc136ac209950098bdf1bd71eeb6ba76c3e8bbef3efb85e42772bc37"
+    }
+  ]
+}

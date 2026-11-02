@@ -197,3 +197,15 @@ The community examples are useful leads, not directly executed recipes.
 For instance, the shown FTR include line ends with a colon and one background
 example has an unterminated quoted path. New rules must be checked against
 SGI syntax and the actual compiler. Existing xmahjongg rules remain intact.
+
+### Application follow-up (2026-11-02)
+
+No vendor payload changed during the [high-address mapper and launch diagnosis](results/2026-11-02-irix-elfmap-high.md).
+GIMP's `libgtk-1.2.so.1` was already staged with the required mode; the kernel
+mapping range caused the failure. The existing generated helper
+`/usr/local/libexec/xiri/manual-session.sh` now starts applications in HOME
+and writes logs using absolute session paths. The published icons CHD retains
+the previous helper. `/usr/lib/desktop/launcheffect` and
+`/usr/lib/desktop/waitmap` are newly traced missing-path candidates; their
+source presence and runtime role must be verified before copying and adding
+entries to the machine-readable ledger.

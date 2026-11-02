@@ -252,3 +252,22 @@ The same icon cycle adds measured o32/n32 seek offsets at NetBSD `xiri`
 `lab/irix-filetypes/{baseline,o32-baseline}.json`; the lock-only builds remain
 preserved. Both NetBSD commits are pushed. Native FAM pathname mapping is
 maintained in this repository; no IRIS source changes were required.
+
+The 2026-11-02 catalog/application cycle fetched eight new IRIS commits through
+`3cba53ad50c500f73c4e0d97cb4cb13e7662c820` and merged them without conflicts
+into `xiri` at `c0eb0b27f30dceddfad53fc1895bf2576be0c6da`, now pushed. The
+changes cover JIT worker shutdown, weak lock ownership, Octane cleanup,
+ISP1040 completion interrupts, sparse disk-copy fallback, CI shell markers and
+Windows memory remapping. Offline locked workspace tests passed (2,589 tests,
+33 ignored); the `jitv2,idle-pause` library suite passed (2,927 tests,
+32 ignored). These Linux tests do not validate the Windows-specific backend.
+The integration used `.work/iris-upstream-sproc` and nightly 2026-10-28 in the
+existing Toolbox. Logs are `.work/catalog-actions/iris-{workspace,jit-idle}.log`.
+The pinned guest emulator and detached reproduction worktrees remain unchanged.
+
+The same application cycle qualifies NetBSD `xiri` commit
+`ac4423d4657c4664898dfcab44b9f19c66f46f3b`, now pushed, for high preferred
+library addresses. Separate elfmap-high builds preserve the icons kernel.
+The [result](results/2026-11-02-irix-elfmap-high.md) records 700 mapping checks,
+32 controls and the original IRIX comparison. The existing manual CHD is
+unchanged.
