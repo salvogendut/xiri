@@ -65,6 +65,10 @@ Both use the original installed GIMP and libraries, with no vendor patches.
 
 ## Icon Catalog and xosview
 
+Follow-up: the [original-shell checkpoint](2026-11-02-irix-vendor-shell.md)
+clears the shell/chdir/process-group boundary described below and demonstrates
+xmahjongg double-click launch. This section preserves the earlier diagnosis.
+
 A recognized double-click and the keyboard Open action both fork a catalog
 child, then attempt `/emul/irix/bin/sh`; exec returns ENOEXEC. That original
 shell is a static n32 ELF (flags `0x20000020`), outside the current marked

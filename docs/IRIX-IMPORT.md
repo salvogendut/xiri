@@ -20,6 +20,18 @@ image is read-only; all vendor bytes and generated disk images stay in `.work`.
 
 ## Placement
 
+The [original-shell checkpoint](results/2026-11-02-irix-vendor-shell.md)
+uses the already imported `/emul/irix/bin/sh` bytes (source `/bin/sh` resolves
+to `/sbin/sh`). No additional shell import is needed. Native setup now
+creates `/emul/irix/dev/null` using the native device's major/minor and mode
+0666; this is generated NetBSD state, not an IRIX device copy. The preserved
+image/copy ledger is unchanged until a new image qualification.
+
+`/usr/lib/desktop/launcheffect` and `waitmap` have been located and extracted
+privately as launch-feedback candidates. Their [separate inventory](../lab/irix-vendor-shell/launch-helpers.json)
+records exact hashes and intended `/emul/irix` destinations. They are not
+part of the installed payload or the successful catalog-launch demonstration.
+
 | Original IRIX source | NetBSD destination | Purpose |
 | --- | --- | --- |
 | `/lib/rld`, `/lib32/rld`, libc and resolved `/usr/lib{,32}` libraries | Same path beneath `/emul/irix` | Original dynamic loaders and o32/n32 runtimes |

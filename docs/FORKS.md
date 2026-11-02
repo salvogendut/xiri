@@ -42,6 +42,20 @@ not repin qualified kernels, emulator binaries, runtime resources or guest disks
 
 ## IRIS upstream updates
 
+The [original-shell cycle](results/2026-11-02-iris-upstream-vendor-shell.md)
+integrates upstream `4c1c87f5161c13b323d9b5d57a93779d355729b5` through
+`xiri` merge `f38cfa1c5e62def9fbefa5244e07adf285f02d3b`. Workspace tests
+pass 2,618 checks and JIT/idle library tests pass 2,956. Existing guest
+emulator pins remain unchanged.
+
+The same cycle adds NetBSD shell support at
+`849755450135c6734bb61c4973d687d0c8060739`. Concurrent work switched the
+shared checkout to `feature/wscons-decor` before the compatibility-only
+commit; that commit was then fast-forwarded into `xiri` from the isolated
+`.work/netbsd-vendor-shell-src` checkout and pushed. The active feature
+branch and its uncommitted Newport edits were preserved. Final qualification
+uses the clean committed tree, not the shared checkout's work in progress.
+
 The [2026-11-02 desktop cycle](results/2026-11-02-iris-upstream-desktop.md)
 integrates upstream `43e525a847ceeb9453af5d685dd8d353bea133e1` into `xiri`,
 with 2,578 workspace and 2,921 JIT/idle library tests passing. The existing

@@ -55,11 +55,19 @@ further Xsgi experiments are deferred.
 The [application follow-up](docs/results/2026-11-02-irix-elfmap-high.md) fixes
 GIMP's high-address GTK library mapping failure (700 mapping checks and
 32 controls). GIMP now reaches Xorg, then stops at signal-handler registration;
-it is not yet usable. Catalog Open reaches an unsupported static IRIX shell,
-and xosview needs kernel statistics interfaces. Desktop sessions now start
+it is not yet usable. That investigation identified Catalog Open's static
+IRIX shell boundary, and xosview needs kernel statistics interfaces. Desktop sessions now start
 applications in the configured home, with `pwd` verified in initial and
 Toolchest-launched winterm windows. These changes are not yet in the published
 icons CHD.
+
+The [original-shell checkpoint](docs/results/2026-11-02-irix-vendor-shell.md)
+now runs unmodified IRIX `/bin/sh`, with 772 checks across LP64 CI/ordinary
+and o32 regression guests. Icon Catalog successfully launches xmahjongg on
+two double-click attempts. Opened-icon feedback and full interactive job
+control remain to qualify; winterm keeps its native shell default. A native
+null-device binding also fixes shell redirection inside the emulation tree.
+These changes are not yet packaged in the preserved manual CHD.
 
 The [desktop usability update](docs/results/2026-11-02-desktop-usability.md)
 adds graphical console boot/login, working Toolchest and desktop-menu logout,

@@ -22,6 +22,11 @@ In this image, `pwd` initially names a temporary session directory; run `cd`
 to enter `/usr/people/xiritest`. Icon Catalog actions and GIMP/xosview still
 have the documented compatibility gaps.
 
+The later [original-shell checkpoint](results/2026-11-02-irix-vendor-shell.md)
+demonstrates catalog double-click launch with the new kernel and native
+null-device setup in disposable guests. It also remains outside this
+preserved CHD; do not expect that result from the existing image yet.
+
 ## Start it in IRIS
 
 Keep `netbsd-xiri.chd`, `iris.toml`, `nvram-graphics.bin` and `nvram.bin` together. Use an Indy

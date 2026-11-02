@@ -5,6 +5,18 @@ set -eu
 umount /dev/pts
 mount -t ptyfs -o group=0,mode=0600 ptyfs /dev/pts
 mkdir -p /emul/irix/dev
+# O_CREAT pathname lookup selects this emulation directory for shell
+# redirection. Supply the native null device there; otherwise root can create
+# a regular "null" file and ordinary users cannot redirect to /dev/null.
+null_major=$(stat -f '%Hr' /dev/null)
+null_minor=$(stat -f '%Lr' /dev/null)
+if test ! -e /emul/irix/dev/null; then
+    mknod /emul/irix/dev/null c "$null_major" "$null_minor"
+fi
+test -c /emul/irix/dev/null
+test "$(stat -f %Hr /emul/irix/dev/null)" = "$null_major"
+test "$(stat -f %Lr /emul/irix/dev/null)" = "$null_minor"
+chmod 666 /emul/irix/dev/null
 # Absolute symlinks are resolved inside the selected emulation root. Share
 # the actual native ptyfs view there so libc's two slave names reach one vnode.
 mkdir -p /emul/irix/dev/pts

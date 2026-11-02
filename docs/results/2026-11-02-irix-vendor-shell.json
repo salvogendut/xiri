@@ -1,0 +1,221 @@
+{
+  "schema": 1,
+  "status": "passed",
+  "source_revision": "849755450135c6734bb61c4973d687d0c8060739",
+  "runs": [
+    {
+      "run": ".work/irix-vendor-shell/lp64-ci-6benu4q9",
+      "result_sha256": "711dcf048b545f3d1a45bbac4fba827fba74773476a46aea91a180546033cfdc",
+      "fixture_log_sha256": "7b248c69334936aa2b096ff6b3d0627ece8edae0b918c457843ea56a2788305a",
+      "mode": "ci",
+      "kernel_abi": "lp64",
+      "checks": 304,
+      "controls": 12,
+      "clean_shutdown": true,
+      "pin": {
+        "schema": 1,
+        "description": "Original IRIX static n32 shell and cwd/process-group adapters",
+        "ident": "XIRI_IRIX_VENDOR_SHELL_20261102",
+        "source_revision": "849755450135c6734bb61c4973d687d0c8060739",
+        "source_branch": "xiri",
+        "build_arch": "mips64eb",
+        "page_bytes": 8192,
+        "boot_kernel_sha256": "068f94286bb5e35b322d3871e96d5b224d9d8adf06aa7ef5da03ff7c46d1e7a0",
+        "native_kernel_sha256": "56656733ac07888e686dbe897fe1a2986353b33a4a6999e47b3d453d5004366e",
+        "debug_kernel_sha256": "f80675cb1cedefde307f3bf3f3d59f87f183ae7bc79672d39196c90ca49deb37",
+        "native_o32_sha256": "c294fbb1f2110445be31c096481ea54ab561c7e59ca5b9fc7171310098d755d4",
+        "source_dirty": false,
+        "emulator_revision": "9df1df14334838a989253efefe26f0547e6da592",
+        "emulator_branch": "xiri/netbsd64-tlb",
+        "emulator_sha256": "1b3f7702ba7f43b5c4fca8ba8884243559f46371d8d67a36ce5e6fee1e595eba",
+        "ci_client_sha256": "8711321aa6eaae440da3c7920b00ae4cf1c7f2abbdb15a9919f58485500ffb6c",
+        "base_disk_sha256": "269038c7b77660c83d3835208fc0b2702c93110c14b3c55a42416f51672cee2a",
+        "nvram_sha256": "ee883474d52f09278287b2044f7aeca61d2e7bc39c0bb8fd85c983ab64063d15",
+        "config_sha256": "cc08c192391cae62a42ebfa8a1b456c4a30a382cbfb3dfbc80179255d8c715ea",
+        "runtimes": [
+          {
+            "name": "vendor-o32-libc",
+            "path": "/usr/lib/libc.so.1",
+            "sha256": "ea766492103a193e9d404942705e4e28987545e37f699ede232b6c0f8c97c954"
+          },
+          {
+            "name": "vendor-o32-rld",
+            "path": "/lib/rld",
+            "sha256": "30228b54c1e5585b365514eb7c9895b03cc0f61cb898e05e3ddafece87863439"
+          },
+          {
+            "name": "vendor-n32-libc",
+            "path": "/lib32/libc.so.1",
+            "sha256": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e"
+          },
+          {
+            "name": "vendor-n32-rld",
+            "path": "/lib32/rld",
+            "sha256": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b"
+          }
+        ],
+        "config_path": "lab/irix-vendor-shell/XIRI_IRIX_VENDOR_SHELL"
+      },
+      "harness_sha256": "5e438fd697fc3c48e0f8de7c69d95489bb39a0d2b088deb79819001223481e3e"
+    },
+    {
+      "run": ".work/irix-vendor-shell/lp64-ordinary-61u9_a_q",
+      "result_sha256": "7b24bbe6d80a48bc3f99991195ccf72daa74626c18cc11e2697817144a1ce97f",
+      "fixture_log_sha256": "1e0fe57ba6f3d9b6830ed113839a24c7f9c9e7c617fb2e65fd37b533f9f795e2",
+      "mode": "ordinary",
+      "kernel_abi": "lp64",
+      "checks": 304,
+      "controls": 12,
+      "clean_shutdown": true,
+      "pin": {
+        "schema": 1,
+        "description": "Original IRIX static n32 shell and cwd/process-group adapters",
+        "ident": "XIRI_IRIX_VENDOR_SHELL_20261102",
+        "source_revision": "849755450135c6734bb61c4973d687d0c8060739",
+        "source_branch": "xiri",
+        "build_arch": "mips64eb",
+        "page_bytes": 8192,
+        "boot_kernel_sha256": "068f94286bb5e35b322d3871e96d5b224d9d8adf06aa7ef5da03ff7c46d1e7a0",
+        "native_kernel_sha256": "56656733ac07888e686dbe897fe1a2986353b33a4a6999e47b3d453d5004366e",
+        "debug_kernel_sha256": "f80675cb1cedefde307f3bf3f3d59f87f183ae7bc79672d39196c90ca49deb37",
+        "native_o32_sha256": "c294fbb1f2110445be31c096481ea54ab561c7e59ca5b9fc7171310098d755d4",
+        "source_dirty": false,
+        "emulator_revision": "9df1df14334838a989253efefe26f0547e6da592",
+        "emulator_branch": "xiri/netbsd64-tlb",
+        "emulator_sha256": "1b3f7702ba7f43b5c4fca8ba8884243559f46371d8d67a36ce5e6fee1e595eba",
+        "ci_client_sha256": "8711321aa6eaae440da3c7920b00ae4cf1c7f2abbdb15a9919f58485500ffb6c",
+        "base_disk_sha256": "269038c7b77660c83d3835208fc0b2702c93110c14b3c55a42416f51672cee2a",
+        "nvram_sha256": "ee883474d52f09278287b2044f7aeca61d2e7bc39c0bb8fd85c983ab64063d15",
+        "config_sha256": "cc08c192391cae62a42ebfa8a1b456c4a30a382cbfb3dfbc80179255d8c715ea",
+        "runtimes": [
+          {
+            "name": "vendor-o32-libc",
+            "path": "/usr/lib/libc.so.1",
+            "sha256": "ea766492103a193e9d404942705e4e28987545e37f699ede232b6c0f8c97c954"
+          },
+          {
+            "name": "vendor-o32-rld",
+            "path": "/lib/rld",
+            "sha256": "30228b54c1e5585b365514eb7c9895b03cc0f61cb898e05e3ddafece87863439"
+          },
+          {
+            "name": "vendor-n32-libc",
+            "path": "/lib32/libc.so.1",
+            "sha256": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e"
+          },
+          {
+            "name": "vendor-n32-rld",
+            "path": "/lib32/rld",
+            "sha256": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b"
+          }
+        ],
+        "config_path": "lab/irix-vendor-shell/XIRI_IRIX_VENDOR_SHELL"
+      },
+      "harness_sha256": "5e438fd697fc3c48e0f8de7c69d95489bb39a0d2b088deb79819001223481e3e"
+    },
+    {
+      "run": ".work/irix-vendor-shell/o32-ci-6jpt_9pi",
+      "result_sha256": "64330b0f4af934a6750e293501af722293d07a55a3c0c1901d03fe2de5c3f910",
+      "fixture_log_sha256": "86a71c58b7f20e265c911f90409757f95547ce36313c8210bdc41c336dafb4ef",
+      "mode": "ci",
+      "kernel_abi": "o32",
+      "checks": 164,
+      "controls": 8,
+      "clean_shutdown": true,
+      "pin": {
+        "schema": 1,
+        "description": "Original IRIX static n32 shell and cwd/process-group adapters",
+        "ident": "XIRI_IRIX_VENDOR_SHELL_O32_20261102",
+        "source_revision": "849755450135c6734bb61c4973d687d0c8060739",
+        "source_branch": "xiri",
+        "build_arch": "mipseb",
+        "page_bytes": 4096,
+        "boot_kernel_sha256": "4e3892a27f95a64e04ae5fba0e5b4078222008912c14d989305a211fbd0613ba",
+        "native_kernel_sha256": "4e3892a27f95a64e04ae5fba0e5b4078222008912c14d989305a211fbd0613ba",
+        "debug_kernel_sha256": "f7b6516427d34ed2b33ec26ca6e3e1ef094bb6d5a0c7418bce264cbb02018988",
+        "native_o32_sha256": "c294fbb1f2110445be31c096481ea54ab561c7e59ca5b9fc7171310098d755d4",
+        "source_dirty": false,
+        "emulator_revision": "9df1df14334838a989253efefe26f0547e6da592",
+        "emulator_branch": "xiri/netbsd64-tlb",
+        "emulator_sha256": "1b3f7702ba7f43b5c4fca8ba8884243559f46371d8d67a36ce5e6fee1e595eba",
+        "ci_client_sha256": "8711321aa6eaae440da3c7920b00ae4cf1c7f2abbdb15a9919f58485500ffb6c",
+        "base_disk_sha256": "269038c7b77660c83d3835208fc0b2702c93110c14b3c55a42416f51672cee2a",
+        "nvram_sha256": "ee883474d52f09278287b2044f7aeca61d2e7bc39c0bb8fd85c983ab64063d15",
+        "config_sha256": "c7f6ac23d5397b0a146135a4c186152ad62b2d0ebe40aa51aa797a6f04f84e86",
+        "runtimes": [
+          {
+            "name": "vendor-o32-libc",
+            "path": "/usr/lib/libc.so.1",
+            "sha256": "ea766492103a193e9d404942705e4e28987545e37f699ede232b6c0f8c97c954"
+          },
+          {
+            "name": "vendor-o32-rld",
+            "path": "/lib/rld",
+            "sha256": "30228b54c1e5585b365514eb7c9895b03cc0f61cb898e05e3ddafece87863439"
+          },
+          {
+            "name": "vendor-n32-libc",
+            "path": "/lib32/libc.so.1",
+            "sha256": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e"
+          },
+          {
+            "name": "vendor-n32-rld",
+            "path": "/lib32/rld",
+            "sha256": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b"
+          }
+        ],
+        "config_path": "lab/irix-vendor-shell/XIRI_IRIX_VENDOR_SHELL_O32"
+      },
+      "harness_sha256": "5e438fd697fc3c48e0f8de7c69d95489bb39a0d2b088deb79819001223481e3e"
+    }
+  ],
+  "reference": {
+    "run": ".work/irix-reference/filetype-runs/ci-h0bvvp5w",
+    "version": "6.5 6.5.22m\nuid=0(root) gid=0(sys)\n1\n",
+    "result_sha256": "b141e6f942f2b1dec71648016946ee0f6826ab1e7b38bede9748bccc92e5217b",
+    "outputs_sha256": "2eb77e2dd7bfe4d27b5ba85e3e99cefe7815fefa7278178dd11214942cc6fca9",
+    "inputs_sha256": "c08fb4b3fa767a8fb6e77fdf2f6278cad5842d0ae111eda712e1de2f7a3ba1e1",
+    "executions": 78,
+    "clean_shutdown": true
+  },
+  "vendor_shell": {
+    "path": "/emul/irix/bin/sh",
+    "source": "/sbin/sh (target of /bin/sh)",
+    "sha256": "ab6dd5b0585aec1f0fc7147d14fb68cd81986c9a5996315d9d5f16fd4e570c57"
+  },
+  "published_image": "20261102-icons remains unchanged",
+  "scope": "Original noninteractive n32 shell, cwd/process groups and bounded static admission; full interactive job control remains unqualified",
+  "desktop": {
+    "run": ".work/irix-vendor-shell/bringup-tk_33_ep",
+    "mode": "ordinary",
+    "native_kernel_sha256": "1f95f7b74f298d3b35f0e4367c56cb324fec7d0b4988cf0577a55bf834a28825",
+    "compat_patch_sha256": "23dfc643e764c193669f5ecaf45bf6c797176b4bfac1e1c2119759b5996dca60",
+    "trace_sha256": "67d82809241a3e51548bd457885812a3509d58e55f69b133cd1d8a36d7670c32",
+    "response_sha256": {
+      "response-catalog-freeware.json": "39ab19198c87adacc5eb0c260fc279a4f21a6be5ec95148f16f06310d8cbc438",
+      "response-catalog-open.json": "64316e4ff80b838ac75c55bc33a09f029dc025222a18c0b9498e079165f49d8b",
+      "response-screen-native.json": "47354a3adbc4938dc90e0e4d044ab3b7383b4f63154d524885356d1764b036a2",
+      "response-mahjongg-open.json": "08e049b15921331436e42ff0985e78974ee84b0656478c5c3ac73dcc99ddf057",
+      "response-mahjongg-place.json": "ffe0f4caa1c535048bd27369201da0e109ccbe1875ba0ffc34d36e61b5020156",
+      "response-capture-fixed.json": "db0dd2c618fc9736ef5fa6ead5bc09fdf175a291093cf396686e58f85366f10b",
+      "response-interactive-shell.json": "b318554ffba9cb5d18063ea010a7cde6c1145af11a0bb4d4e324dbdc3adeba4c",
+      "response-interactive-exit.json": "7673e9c409cd2660dd7b6d0660cae487103814afe96eb823b499b3a63c1dd54c",
+      "response-shell-interactive-direct.json": "6ae39532c4e49c5efe06d899cd33aad71de705275965bbf5262e54cee45b93da"
+    },
+    "catalog_pid": 198,
+    "first_shell_pid": 445,
+    "initial_target": "grok (coordinate corrected afterward)",
+    "xmahjongg_launch_pids": [
+      1825,
+      4569
+    ],
+    "launch": "XTEST double clicks on existing Freeware entry, after stopping autostart game",
+    "screenshot": "docs/results/images/2026-11-02-catalog-shell-xmahjongg.png",
+    "screenshot_sha256": "819f4347968d337a4c41eea9fc59fbedfed04062c84946fa9705a13f31621702",
+    "screenshot_method": "Native Xorg root XWD converted to PNG; emulator monitor PNGs were black and excluded",
+    "opened_shape": "not qualified",
+    "interactive_terminal": "Attempt did not establish original shell identity: native PID 212 handled subsequent commands. Forced-interactive pipe smoke separately entered original prompt; terminal job control remains unqualified.",
+    "clean_shutdown": true,
+    "result_sha256": "3dbcf1e7fc136ac209950098bdf1bd71eeb6ba76c3e8bbef3efb85e42772bc37"
+  }
+}

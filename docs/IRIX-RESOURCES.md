@@ -32,6 +32,14 @@ existing filetype database and executable tags. Native FAM now resolves
 imported paths with `XIRI_FAM_ROOT=/emul/irix`, preserving client event names
 and native home fallback. No additional vendor assets were required.
 
+The [original-shell checkpoint](results/2026-11-02-irix-vendor-shell.md)
+uses the existing `/bin/sh` import and launches xmahjongg from Icon Catalog.
+It adds a native `/emul/irix/dev/null` binding for shell redirection. The
+original desktop helpers `launcheffect` and `waitmap` are now located on
+IRIX 6.5.22m; their [hash/path inventory](../lab/irix-vendor-shell/launch-helpers.json)
+marks them as extracted candidates, not installed or qualified resources.
+Opened-icon feedback remains a separate check.
+
 This is the running record of what xiri needs from the supplied IRIX image.
 It separates demonstrated runtime inputs, extracted candidates and assets
 still to locate. A file's presence in the image does not prove it is required.

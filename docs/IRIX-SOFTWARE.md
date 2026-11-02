@@ -18,10 +18,12 @@ The [desktop service repair](results/2026-11-02-desktop-services.md) now shows
 the existing Freeware page and all 21 entry names. Native FAM supplies the
 directory notifications; no new package registration was fabricated. The
 [icon repair](results/2026-11-02-desktop-icons.md) also restores the imported
-application-specific artwork. Launching xmahjongg from its catalog entry
-is now traced to an ENOEXEC failure when the catalog child executes the
-original static n32 `/bin/sh`. The [application follow-up](results/2026-11-02-irix-elfmap-high.md)
-records this boundary, the high-address mapping fix for GIMP, its subsequent
+application-specific artwork. The [original-shell checkpoint](results/2026-11-02-irix-vendor-shell.md)
+clears the static n32 `/bin/sh` rejection and demonstrates two double-click
+launches of xmahjongg from its existing Freeware entry. Opened-state feedback,
+broader application behavior and persistence remain unqualified. The
+[application follow-up](results/2026-11-02-irix-elfmap-high.md)
+records the earlier boundary, the high-address mapping fix for GIMP, its subsequent
 signal registration failure, and xosview's unsupported statistics queries.
 No further library copying was needed for GIMP's observed loader failure.
 
