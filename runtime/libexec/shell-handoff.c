@@ -36,8 +36,15 @@ int main(int argc, char **argv)
     if (ioctl(0, TIOCSCTTY, NULL) || tcsetpgrp(0, getpgrp())) {
         perror("native controlling terminal"); return 125;
     }
-    struct winsize ws = {24, 80, 0, 0};
-    if (ioctl(0, TIOCSWINSZ, &ws)) { perror("native window size"); return 125; }
+    struct winsize ws;
+    if (ioctl(0, TIOCGWINSZ, &ws)) { perror("native window size"); return 125; }
+    /* Preserve dimensions set by the terminal before exec. Use a fallback
+     * only for dimensions that the terminal has not initialized. */
+    if (!ws.ws_row || !ws.ws_col) {
+        if (!ws.ws_row) ws.ws_row = 24;
+        if (!ws.ws_col) ws.ws_col = 80;
+        if (ioctl(0, TIOCSWINSZ, &ws)) { perror("native window size"); return 125; }
+    }
     FILE *out = fopen(argv[1], "wx");
     if (!out) { perror("native handoff report"); return 125; }
     fprintf(out, "NATIVE_HANDOFF pid=%d sid=%d pgid=%d tpgid=%d uid=%d euid=%d gid=%d egid=%d groups=%d tty=%s rows=%d cols=%d\n",
