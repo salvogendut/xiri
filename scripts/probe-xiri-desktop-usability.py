@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 """Qualify graphical console login, desktop logout and native RPC binding."""
 import argparse
-import gzip
-import importlib.util
 import json
 from pathlib import Path
 import re
@@ -14,9 +12,8 @@ import time
 from types import SimpleNamespace
 
 ROOT = Path(__file__).resolve().parent.parent
-spec = importlib.util.spec_from_file_location('base', ROOT/'scripts/probe-netbsd.py')
-p = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(p)
+from xiri_lab import Guest, load_probe, source_hashes
+p = load_probe()
 FILES = {
     'xiri-desktop.sh':'/usr/local/bin/xiri-desktop',
     'xiri-logout.sh':'/usr/local/bin/xiri-logout',
@@ -99,21 +96,16 @@ def main():
     config = (ROOT/'lab/indy-netbsd/iris.toml').read_text()
     config = re.sub(r'^tftp_dir = .*$', 'tftp_dir = '+json.dumps(str(kernel_build/'tftp')), config, flags=re.M)
     lab = p.Lab(SimpleNamespace(mode='ordinary',debugger=False,boot_timeout=600),d,config_text=config)
-    # Graphical workloads can overrun the diagnostic serial receiver when a
-    # long command arrives in one host TCP burst. Preserve every input byte.
-    def paced_send(text, newline=True):
-        data = (text + ('\r' if newline else '')).encode('ascii')
-        for byte in data:
-            lab.serial.sendall(bytes([byte]))
-            time.sleep(.005)
-    lab.send = paced_send
+    guest = Guest(lab)
+    cmd = guest.command
+    get = guest.read_text
     r = dict(status='error',clean_shutdown=False,pin=pin,staged=old['staged'],
              base_image=provenance,base_seed_result_sha256=p.sha256(seed/'result.json'),
              payload_manifest_sha256=old['payload_manifest_sha256'],
              desktop_dimensions=[1280,1024],desktop_services=True,
              native_fam_build=old['native_fam_build'],bitmap_ledger_sha256=old['bitmap_ledger_sha256'],
              installed_files=installed,native_rpcbind_build=rpc,
-             sources={str(Path(__file__).relative_to(ROOT)):p.sha256(Path(__file__)),
+             sources={**source_hashes(), str(Path(__file__).relative_to(ROOT)):p.sha256(Path(__file__)),
                       **{str(f.relative_to(ROOT)):p.sha256(f) for f in media.iterdir()}},
              artwork_source_run=str(seed.relative_to(ROOT)),
              artwork_source_result_sha256=p.sha256(seed/'result.json'),
@@ -130,32 +122,15 @@ def main():
             source_pin=json.loads((ROOT/'lab/newport-xaa/source.json').read_text()),
             patch_sha256=p.sha256(ROOT/'lab/newport-xaa/texture-coordinates.patch'))
 
-    def cmd(command, timeout=120):
-        before = len(lab.serial_text())
-        code = lab.command(command,timeout)
-        text = lab.serial_text()[before:]
-        if code: raise RuntimeError('guest command failed: '+command+'\n'+text[-2000:])
-        return text
-
-    def get(command):
-        out = cmd('echo HEX_START; { '+command+'; } | gzip -c | od -An -v -tx1; echo HEX_END',240)
-        match = re.search(r'^HEX_START\n([0-9a-f \n]+)^HEX_END$',out,re.M)
-        if not match: raise RuntimeError('missing compressed response')
-        return gzip.decompress(bytes.fromhex(match[1])).decode(errors='backslashreplace')
-
     def keytext(text):
         lab.monitor_command('key type '+text)
         lab.monitor_command('key Enter')
 
     def capture(name):
-        lab.monitor_command('disp compositor gl')
-        lab.monitor_command('disp compositor sw')
-        lab.monitor_command('screen wait 500 10000')
-        lab.monitor_command('screen shot '+str(d/(name+'.png')))
+        guest.capture(d/(name+'.png'))
         r[name+'_png_sha256'] = p.sha256(d/(name+'.png'))
 
-    def wait_for(condition, timeout=180):
-        cmd('(tries=0; until '+condition+'; do tries=$((tries+1)); test "$tries" -lt '+str(timeout//2)+' || exit 1; sleep 2; done)',timeout+20)
+    wait_for = guest.wait_for
 
     symbols = kernel_build/'obj/sys/arch/sgimips/compile'/Path(pin['config_path']).name/'netbsd.gdb'
     assert p.sha256(symbols) == pin['debug_kernel_sha256']
@@ -251,6 +226,9 @@ def main():
         capture('graphics-login')
         cmd('cd /root/usability; export PATH=/usr/X11R7/bin:$PATH DISPLAY=127.0.0.1:0')
         rpc_errors_before = int(get("awk '/rpcbind: cannot bind/ {n++} END {print n+0}' /var/log/messages").strip())
+        cmd('tail -n 0 -F /var/log/messages >rpc-watch.log 2>rpc-watch.err & '
+            'rpc_watch=$!; sleep 2; kill -0 "$rpc_watch"; logger -t xiri-rpc-watch XIRI_RPC_WATCH_START')
+        wait_for('grep -q XIRI_RPC_WATCH_START rpc-watch.log',30)
         for route in ['toolchest','root-menu']:
             keytext('xiri-desktop >/root/usability/'+route+'.log 2>&1')
             wait_for('grep -q "Logs: " '+route+'.log')
@@ -349,8 +327,12 @@ def main():
             print(route+' logout returned to graphical shell',flush=True)
         capture('graphics-after-logout')
         rpc_errors_after = int(get("awk '/rpcbind: cannot bind/ {n++} END {print n+0}' /var/log/messages").strip())
-        assert rpc_errors_after == rpc_errors_before
-        r['rpcbind_warning_check'] = dict(before=rpc_errors_before,after=rpc_errors_after)
+        cmd('kill -0 "$rpc_watch" && logger -t xiri-rpc-watch XIRI_RPC_WATCH_END')
+        wait_for('grep -q XIRI_RPC_WATCH_END rpc-watch.log',30)
+        cmd('kill "$rpc_watch"; wait "$rpc_watch" || :')
+        r['rpcbind_warning_events'] = get('cat rpc-watch.log')
+        assert 'rpcbind: cannot bind' not in r['rpcbind_warning_events']
+        r['rpcbind_warning_check'] = dict(before=rpc_errors_before,after=rpc_errors_after,new_warnings=0)
         r['native_after'] = cmd('/root/irix-desktop/native-o32; test "$?" = 37')
         all_files = dict(old['staged']); all_files.update(installed)
         # Verify unchanged vendor payload and every installed helper in the guest.

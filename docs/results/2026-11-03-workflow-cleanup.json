@@ -1,0 +1,438 @@
+{
+  "schema": 1,
+  "status": "workflow-and-desktop-checks-passed",
+  "date": "2026-11-03",
+  "sources": {
+    "xiri": "d76f1c5a7605c5cbc9581dc8d5cf4c8af7c26efdcfd057bea509f41414871fa2",
+    "config/development.json": "c7378f47e29b10670b54329d2f6037472580a505a8732d70e065f4d4d030c6d8",
+    "scripts/xiri_lab/__init__.py": "98abff8b2f3c19912cf6993ac5094008cb9ecea0fb6d66c149f76184d9182743",
+    "scripts/xiri_lab/guest.py": "e589b08a06a91fca6fde4c4b10a3e97b90807da82bf6d545b45b1da517d0c954",
+    "scripts/xiri_lab/workflow.py": "13379b5ce411d1c358184cca82d2f69abd392d0e4ed975c1cdcaa709c00f645e",
+    "scripts/prepare-xiri-seed.py": "da0184b5b45c9a1af5a50e7a1641145c865dd2f0f78d25e0570614d33bfa4025",
+    "scripts/probe-xiri-image.py": "f76bcf845016b2f99fe42106817c4915e561280ff48d96b4909d456153f2b44b",
+    "scripts/probe-xiri-desktop-usability.py": "8b0bd3a0f79c8bf91579af0fdf0b0251e9f818c96b847b41ba3aafb1a5bf1121",
+    "scripts/probe-netbsd.py": "adfa9547fa98af28fd55e4e155e7667b2b0a8c7cea8aee8d58079da946b72a1d",
+    "scripts/qualify-xiri-image.py": "fbbfa062c7a7da698d5c6a253536265d6b7ea13b6bb5024d1b549f7da86d2035",
+    "tests/test_workflow.py": "e2b0c87da6e13819a17188ca2d83782486dbf3715dd7b682e94d11685b2b0831"
+  },
+  "host_tests": {
+    "command": [
+      "python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ],
+    "passed": 18,
+    "log_sha256": "2449ba4887b79f292daba6511f23814aef6a3414991c17ebf8e67f43ecd8e0c3"
+  },
+  "iris": {
+    "upstream": "68f4e4a6d56d85e109ef3d4363854df1cd39cfda",
+    "integration": "c84757d2f812412581253352c9947c1058e9cf3a",
+    "checks": [
+      {
+        "name": "workspace",
+        "command": [
+          "toolbox",
+          "run",
+          "-c",
+          "xiri-iris",
+          "env",
+          "RUSTUP_HOME=/var/home/salvogendut/Dev/xiri/.work/rustup",
+          "CARGO_HOME=/var/home/salvogendut/Dev/xiri/.work/cargo",
+          "CARGO_TARGET_DIR=/var/home/salvogendut/Dev/xiri/.work/target-iris-streamline",
+          "CARGO_BUILD_JOBS=2",
+          "LIBGL_ALWAYS_SOFTWARE=1",
+          "xvfb-run",
+          "-a",
+          "/var/home/salvogendut/Dev/xiri/.work/cargo/bin/cargo",
+          "+nightly-2026-10-28",
+          "test",
+          "--manifest-path",
+          "/var/home/salvogendut/Dev/xiri/.work/iris-upstream-sproc/Cargo.toml",
+          "--locked",
+          "--offline",
+          "--workspace",
+          "--",
+          "--test-threads=2"
+        ],
+        "exit_status": 0
+      },
+      {
+        "name": "idle-park",
+        "command": [
+          "toolbox",
+          "run",
+          "-c",
+          "xiri-iris",
+          "env",
+          "RUSTUP_HOME=/var/home/salvogendut/Dev/xiri/.work/rustup",
+          "CARGO_HOME=/var/home/salvogendut/Dev/xiri/.work/cargo",
+          "CARGO_TARGET_DIR=/var/home/salvogendut/Dev/xiri/.work/target-iris-streamline",
+          "CARGO_BUILD_JOBS=2",
+          "LIBGL_ALWAYS_SOFTWARE=1",
+          "xvfb-run",
+          "-a",
+          "/var/home/salvogendut/Dev/xiri/.work/cargo/bin/cargo",
+          "+nightly-2026-10-28",
+          "test",
+          "--manifest-path",
+          "/var/home/salvogendut/Dev/xiri/.work/iris-upstream-sproc/Cargo.toml",
+          "--locked",
+          "--offline",
+          "--lib",
+          "--features",
+          "idle-pause",
+          "idle_park",
+          "--",
+          "--test-threads=2"
+        ],
+        "exit_status": 0
+      },
+      {
+        "name": "binaries",
+        "command": [
+          "toolbox",
+          "run",
+          "-c",
+          "xiri-iris",
+          "env",
+          "RUSTUP_HOME=/var/home/salvogendut/Dev/xiri/.work/rustup",
+          "CARGO_HOME=/var/home/salvogendut/Dev/xiri/.work/cargo",
+          "CARGO_TARGET_DIR=/var/home/salvogendut/Dev/xiri/.work/target-iris-streamline",
+          "CARGO_BUILD_JOBS=2",
+          "LIBGL_ALWAYS_SOFTWARE=1",
+          "xvfb-run",
+          "-a",
+          "/var/home/salvogendut/Dev/xiri/.work/cargo/bin/cargo",
+          "+nightly-2026-10-28",
+          "build",
+          "--manifest-path",
+          "/var/home/salvogendut/Dev/xiri/.work/iris-upstream-sproc/Cargo.toml",
+          "--locked",
+          "--offline",
+          "--bin",
+          "iris",
+          "--bin",
+          "iris-ci"
+        ],
+        "exit_status": 0
+      }
+    ],
+    "cli": [
+      {
+        "name": "help",
+        "command": [
+          "toolbox",
+          "run",
+          "-c",
+          "xiri-iris",
+          "/var/home/salvogendut/Dev/xiri/.work/target-iris-streamline/debug/iris",
+          "--help"
+        ],
+        "cwd": "/var/home/salvogendut/Dev/xiri/.work/streamline/config-validation",
+        "exit_status": 0,
+        "expected": 0,
+        "output": "Irresponsible Rust IRIX Simulator\n\nUsage: iris [OPTIONS]\n\nOptions:\n      --config <CONFIG>\n          Path to iris.toml config file [default: iris.toml]\n          \n          [default: iris.toml]\n\n      --prom <PROM>\n          Path to PROM image\n\n      --machine <NAME>\n          The machine to emulate: a `[machine] profile` name such as `octane_ip30`. Overrides the config file. `--machine help` lists them\n\n      --nvram <NVRAM>\n          Path to NVRAM file (default: nvram.bin in cwd)\n\n      --nveeprom <NVEEPROM>\n          Path to Indigo2 motherboard EEPROM file (default: nveeprom.bin in cwd)\n\n      --bank0 <BANK0>\n          RAM bank 0 size in MB (0/8/16/32/64/128; IP28 also supports 256/512)\n\n      --bank1 <BANK1>\n          RAM bank 1 size in MB (0/8/16/32/64/128; IP28 also supports 256/512)\n\n      --bank2 <BANK2>\n          RAM bank 2 size in MB (0/8/16/32/64/128; IP28 also supports 256/512)\n\n      --bank3 <BANK3>\n          RAM bank 3 size in MB (0/8/16/32/64/128; IP28 also supports 256/512)\n\n      --jitv2-threads <N>\n          jitv2 compile-pool thread count (fixed at startup, see jitv2.threads)\n\n      --scsi1 <SCSI1>\n          SCSI ID 1 image path (HDD)\n\n      --scsi2 <SCSI2>\n          SCSI ID 2 image path (HDD)\n\n      --scsi3 <SCSI3>\n          SCSI ID 3 image path (HDD)\n\n      --cdrom4 <CDROM4>\n          SCSI ID 4 image path (CD-ROM, primary disc)\n\n      --cdrom5 <CDROM5>\n          SCSI ID 5 image path (CD-ROM, primary disc)\n\n      --cdrom6 <CDROM6>\n          SCSI ID 6 image path (CD-ROM, primary disc)\n\n      --scsi7 <SCSI7>\n          SCSI ID 7 image path (HDD)\n\n      --no-write-cache\n          Report every hard disk's write cache off (`write_cache = false` in each `[scsi.N]`): every write is stored on the host's disk before the guest is told it is done, as on the drives SGI shipped. Slower. The default is a write cache, which can lose about 5 s of writes in a host crash (see STORAGE.md)\n\n      --cdrom4-extra <ISO>\n          Additional ISO images for CD-ROM ID 4 (can be specified multiple times)\n\n      --cdrom5-extra <ISO>\n          Additional ISO images for CD-ROM ID 5 (can be specified multiple times)\n\n      --cdrom6-extra <ISO>\n          Additional ISO images for CD-ROM ID 6 (can be specified multiple times)\n\n      --2x\n          2\u00d7 window scaling for HiDPI/4K monitors\n\n      --headless\n          Run headless: no window, no REX3 graphics (audio unaffected; use --noaudio to disable)\n\n      --noaudio\n          Disable audio emulation (no HAL2); graphics still works\n\n      --audio-host <HOST>\n          Host audio system for HAL2: default, alsa or pulseaudio (overrides [audio] host)\n\n          Possible values:\n          - default:    The platform's usual one: CoreAudio on macOS, WASAPI on Windows, ALSA on Linux\n          - alsa:       ALSA (Linux)\n          - pulseaudio: A PulseAudio server, or PipeWire's pipewire-pulse (Linux). Falls back to ALSA when none answers\n\n      --nfs-dir <DIR>\n          Enable NFS share: path to the directory to export (enables NFS)\n\n      --nat-subnet <CIDR>\n          NAT subnet in CIDR notation (e.g. 192.168.5.0/24). Gateway gets .1, guest (IRIX) gets .2. Default: 192.168.0.0/24\n\n      --net-mode <MODE>\n          Networking backend: \"nat\" (default, software gateway) or \"pcap\" (bridge onto a real host interface; requires --features pcap)\n\n          Possible values:\n          - nat:    Built-in software NAT gateway (ARP/DHCP/DNS/ICMP/TCP/UDP + port forwarding). Works without any host privileges or extra libraries. This is the default\n          - pcap:   Bridge raw Ethernet frames onto a real host interface via libpcap (Linux/macOS) or a WinPcap-compatible driver (WinPcap or Npcap) on Windows. Requires building with `--features pcap` and elevated privileges at runtime. The guest appears as a real L2 host on the physical LAN; NAT services (DHCP/DNS/NFS/port-forward) are NOT provided \u2014 use the real network's\n          - off:    No Ethernet: the adapter is not plugged into anything. O2 and Octane only (`MachineConfig::validate`); the Indy and Indigo2 always have a network\n          - stream: A private segment carried over a stream socket in QEMU's `-netdev stream` framing, to a peer that serves it (`[network] stream`). iris provides no gateway services on it\n\n      --pcap-interface <IFACE>\n          Host interface to bridge onto in PCAP mode (e.g. eth0, en0). Implies --net-mode pcap. List candidates with --list-net-interfaces\n\n      --validate\n          Check the configuration (`--config`, with any other options applied) without starting the machine: that it parses, that its settings agree, that its files and directories exist and its ports differ. Exits 0 if it would run, 1 with each problem on stderr if not\n\n      --list-net-interfaces\n          Print the host network interfaces libpcap can bridge onto, then exit. Requires a build with --features pcap\n\n      --no-scsi-deferred-int\n          Disable deferred SCSI status interrupts (default: enabled for OpenBSD/NetBSD compatibility)\n\n      --cpu <MODEL>\n          Emulated CPU: `r4400` (default), `r5000`, or `r10000`. Overrides `[machine] cpu`.\n          \n          All three models are compiled into every build \u2014 each is its own monomorphisation, so the hot path carries no per-model branch \u2014 and this picks between them at construction. The `r5k` Cargo feature is removed.\n\n          Possible values:\n          - r4400:  MIPS R4400, 16K direct-mapped L1s, 1 MB L2. The Indy IRIS has always shipped\n          - r5000:  MIPS R5000, 2-way 32K L1s, no secondary cache, MIPS IV\n          - r10000: MIPS R10000, 2-way 32K L1s, 1 MB secondary cache, MIPS IV. The CPU in the Indigo2 IMPACT (IP28). The machine uses shadow cache arrays; see `docs/indigo2-ip28.md` and `src/cpu/mips_cache_shadow.rs`\n\n      --cache <MODEL>\n          Cache model: `auto` (default: `shadow` in a jitv2 build, else `full`), `full` or `shadow`. Overrides `[machine] cache`. The R10000 is always `shadow`\n          \n          [possible values: auto, full, shadow]\n\n      --graphics <BOARD>\n          Graphics board: `newport` (default), `xz`, `extreme`, `solidimpact`, `highimpact`, `maximpact` (or `impact:solid`, `impact:high`, `impact:max`)\n\n          Possible values:\n          - newport:     Newport (REX3) \u2014 fully emulated. Default\n          - xz:          GR2 XZ (2 GE7) \u2014 Indy XZ or Indigo2 XZ (`src/dev/gr2`). In bring-up\n          - extreme:     GR2 Extreme (8 GE7) \u2014 Indigo2 only (`src/dev/gr2`). In bring-up\n          - solidimpact: Solid IMPACT (1 GE11, 1 RE4)\n          - highimpact:  High IMPACT (2 GE11, 1 RE4)\n          - maximpact:   Maximum IMPACT (2 GE11, 2 RE4)\n          - v6:          VPro V6: BUZZ A, 32 MB. Octane only (`src/dev/odyssey`)\n          - v8:          VPro V8: BUZZ A, 128 MB. Octane only\n          - v10:         VPro V10: BUZZ B, 32 MB. Octane only. It shipped only in the Octane2 and needs Crossbow 1.4, so the machine takes the Octane2's Crossbow and Bridge revisions\n          - v12:         VPro V12: BUZZ B, 128 MB. Octane only. It shipped only in the Octane2 and needs Crossbow 1.4, so the machine takes the Octane2's Crossbow and Bridge revisions\n          - none:        No graphics board: the machine runs on its serial console. Octane only\n          \n          [aliases: --board, --graphics-board]\n\n      --gdb-port <PORT>\n          Enable GDB stub on the given TCP port (e.g. --gdb-port 1234). Connect with: target remote localhost:<port>\n\n      --monitor-port <PORT>\n          Monitor console port on 127.0.0.1 (default 8888). Give each iris running at once its own\n\n      --vnc [<ADDR>]\n          Serve the screen, keyboard and mouse over VNC on ADDR (`host:port`, or a port on 127.0.0.1; default 127.0.0.1:5900). Works with a window, with --ci, and on every graphics board\n\n      --serial-port-a <PORT>\n          Serial channel A (tty2) port on 127.0.0.1 (default 8880)\n\n      --serial-port-b <PORT>\n          Serial channel B (tty1, the console) port on 127.0.0.1 (default 8881)\n\n      --serial-socket-a <PATH>\n          Also serve serial channel A on this Unix socket\n\n      --serial-socket-b <PATH>\n          Also serve serial channel B on this Unix socket\n\n      --keyboard <LAYOUT>\n          Physical host keyboard: `ansi` (default), `iso` or `jis`. Use `jis` for a Japanese keyboard with the PROM's `keybd` set to JP\n\n          Possible values:\n          - ansi: US-style: `\\|` above Enter\n          - iso:  European ISO: extra key left of Z, `#~`-style key left of Enter\n          - jis:  Japanese JIS 106/109: `]}` left of Enter, plus `\u00a5`, `\u308d` and the conversion keys\n\n      --test-device\n          Map the bare-metal test device into GIO expansion slot 0: SIGNATURE, PUTC (guest console \u2192 stdout), DUMP (machine state \u2192 JSON) and EXIT (terminate with the guest's exit code). Off by default\n\n      --test-device-dump <FILE>\n          Where the test device writes its machine-state dump\n\n      --cheritest-dump-hook\n          cheritest convention: a guest write to CP0 register 26 dumps machine state. Needs --test-device. Never enable for a normal boot \u2014 CP0 26 is ECC on a real R4400 and the PROM writes it during cache init\n\n      --tftp-dir <DIR>\n          Serve this directory read-only over TFTP at the gateway address, so the PROM can network-boot from it: `boot -f bootp()<file>`. Off when unset\n\n      --rsh-dir <DIR>\n          Let the guest `rsh <gateway> cat|ls|echo|pwd` against this directory, read-only, through a built-in rsh server at the gateway (TCP 514). Nothing is executed on the host. Off when unset\n\n      --load-elf <FILE>\n          Load a static ELF32 MSB (big-endian MIPS) binary into RAM before the CPU starts and set PC to its entry point, instead of booting the PROM. For bare-metal test binaries; see also the monitor's `loadelf`\n\n      --perfetto <FILE>\n          Record a Perfetto trace into FILE from startup (build with `--features perfetto`). Open it at ui.perfetto.dev\n\n      --perfetto-cats <LIST>\n          Perfetto categories, e.g. `irq,gfx` or `all,-jit` [default: all]\n\n      --perfetto-clock <CLOCK>\n          Perfetto timeline: `host` (ns) or `guest` (instructions) [default: host]\n\n      --ci\n          CI mode: enable the control socket and apply speed-favoring fidelity shortcuts. Hides the window unless --ci-display is set; offscreen graphics remain active unless --headless is explicitly set\n\n      --ci-socket <PATH>\n          Override the default control-socket path (iris.sock in $TMPDIR, else /tmp)\n\n      --ci-display\n          With --ci, keep the Newport window visible for interactive test development (deferred rendering at 10\u201315 fps)\n\n      --serial-log <FILE>\n          With --ci, append every byte the guest emits on ttyd1 (IRIX serial console) to this file. Useful for live tailing during an install\n\n      --serial-log-timestamps <MODE>\n          `off` (raw transcript) or `wall`: prefix each completed serial-log line with a UTC ISO-8601 timestamp\n\n          Possible values:\n          - off:  Raw bytes, byte-for-byte a transcript (the default)\n          - wall: `[YYYY-MM-DDTHH:MM:SS.ffffffZ] ` before each completed line\n          - ecs:  One ECS JSON line per completed, non-empty line (logger `irix.guest`)\n\n      --serial-log-a <FILE>\n          Write what the guest sends on serial channel A to this file when A is not the console (Indy, Indigo2)\n\n      --serial-log-b <FILE>\n          Write what the guest sends on serial channel B to this file when B is not the console (Octane, O2)\n\n      --clock-fixed-mhz <MHZ>\n          Override CP0 Count MHz (default 33 on IP22/IP24, 97.5 on IP28). IRIX reports twice this rate as CPU MHz, e.g. --clock-fixed-mhz 50\n\n  -h, --help\n          Print help (see a summary with '-h')\niris: build features: tlbvmap\n"
+      },
+      {
+        "name": "indy-image",
+        "command": [
+          "toolbox",
+          "run",
+          "-c",
+          "xiri-iris",
+          "/var/home/salvogendut/Dev/xiri/.work/target-iris-streamline/debug/iris",
+          "--validate",
+          "--config",
+          "iris.toml"
+        ],
+        "cwd": "/var/home/salvogendut/Dev/xiri/.work/images/xiri-netbsd-desktop-20261103-newport-xmahjongg",
+        "exit_status": 0,
+        "expected": 0,
+        "output": "iris: iris.toml: ok (SGI Indy (IP24))\niris: build features: tlbvmap\n"
+      },
+      {
+        "name": "o2_ip32-embedded",
+        "command": [
+          "toolbox",
+          "run",
+          "-c",
+          "xiri-iris",
+          "/var/home/salvogendut/Dev/xiri/.work/target-iris-streamline/debug/iris",
+          "--validate",
+          "--config",
+          "/var/home/salvogendut/Dev/xiri/.work/streamline/config-validation/o2_ip32-embedded.toml"
+        ],
+        "cwd": "/var/home/salvogendut/Dev/xiri/.work/streamline/config-validation",
+        "exit_status": 0,
+        "expected": 0,
+        "output": "iris: /var/home/salvogendut/Dev/xiri/.work/streamline/config-validation/o2_ip32-embedded.toml: ok (SGI O2 (IP32))\niris: build features: tlbvmap\n"
+      },
+      {
+        "name": "o2_ip32-defaults",
+        "command": [
+          "toolbox",
+          "run",
+          "-c",
+          "xiri-iris",
+          "/var/home/salvogendut/Dev/xiri/.work/target-iris-streamline/debug/iris",
+          "--validate",
+          "--config",
+          "/var/home/salvogendut/Dev/xiri/.work/streamline/config-validation/o2_ip32-defaults.toml"
+        ],
+        "cwd": "/var/home/salvogendut/Dev/xiri/.work/streamline/config-validation",
+        "exit_status": 0,
+        "expected": 0,
+        "output": "iris: /var/home/salvogendut/Dev/xiri/.work/streamline/config-validation/o2_ip32-defaults.toml: ok (SGI O2 (IP32))\niris: build features: tlbvmap\n"
+      },
+      {
+        "name": "o2_ip32-explicit-missing",
+        "command": [
+          "toolbox",
+          "run",
+          "-c",
+          "xiri-iris",
+          "/var/home/salvogendut/Dev/xiri/.work/target-iris-streamline/debug/iris",
+          "--validate",
+          "--config",
+          "/var/home/salvogendut/Dev/xiri/.work/streamline/config-validation/o2_ip32-explicit-missing.toml"
+        ],
+        "cwd": "/var/home/salvogendut/Dev/xiri/.work/streamline/config-validation",
+        "exit_status": 1,
+        "expected": 1,
+        "output": "iris: build features: tlbvmap\nConfiguration error: prom missing-explicit.prom: No such file or directory (os error 2)\n"
+      },
+      {
+        "name": "octane_ip30-embedded",
+        "command": [
+          "toolbox",
+          "run",
+          "-c",
+          "xiri-iris",
+          "/var/home/salvogendut/Dev/xiri/.work/target-iris-streamline/debug/iris",
+          "--validate",
+          "--config",
+          "/var/home/salvogendut/Dev/xiri/.work/streamline/config-validation/octane_ip30-embedded.toml"
+        ],
+        "cwd": "/var/home/salvogendut/Dev/xiri/.work/streamline/config-validation",
+        "exit_status": 0,
+        "expected": 0,
+        "output": "iris: /var/home/salvogendut/Dev/xiri/.work/streamline/config-validation/octane_ip30-embedded.toml: ok (SGI Octane (IP30))\niris: build features: tlbvmap\n"
+      },
+      {
+        "name": "octane_ip30-defaults",
+        "command": [
+          "toolbox",
+          "run",
+          "-c",
+          "xiri-iris",
+          "/var/home/salvogendut/Dev/xiri/.work/target-iris-streamline/debug/iris",
+          "--validate",
+          "--config",
+          "/var/home/salvogendut/Dev/xiri/.work/streamline/config-validation/octane_ip30-defaults.toml"
+        ],
+        "cwd": "/var/home/salvogendut/Dev/xiri/.work/streamline/config-validation",
+        "exit_status": 0,
+        "expected": 0,
+        "output": "iris: /var/home/salvogendut/Dev/xiri/.work/streamline/config-validation/octane_ip30-defaults.toml: ok (SGI Octane (IP30))\niris: build features: tlbvmap\n"
+      },
+      {
+        "name": "octane_ip30-explicit-missing",
+        "command": [
+          "toolbox",
+          "run",
+          "-c",
+          "xiri-iris",
+          "/var/home/salvogendut/Dev/xiri/.work/target-iris-streamline/debug/iris",
+          "--validate",
+          "--config",
+          "/var/home/salvogendut/Dev/xiri/.work/streamline/config-validation/octane_ip30-explicit-missing.toml"
+        ],
+        "cwd": "/var/home/salvogendut/Dev/xiri/.work/streamline/config-validation",
+        "exit_status": 1,
+        "expected": 1,
+        "output": "iris: build features: tlbvmap\nConfiguration error: prom missing-explicit.prom: No such file or directory (os error 2)\n"
+      }
+    ],
+    "workspace_summaries": [
+      "test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 2595 filtered out; finished in 0.00s",
+      "test result: ok. 2563 passed; 0 failed; 33 ignored; 0 measured; 0 filtered out; finished in 300.23s",
+      "test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s",
+      "test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s",
+      "test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s",
+      "test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s",
+      "test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s",
+      "test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s",
+      "test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 2.51s",
+      "test result: ok. 92 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.67s",
+      "test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 18.37s",
+      "test result: ok. 2 passed; 0 failed; 3 ignored; 0 measured; 0 filtered out; finished in 0.89s",
+      "test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s"
+    ],
+    "idle_parking_passed": 25,
+    "newport_passed": 183,
+    "logs": {
+      "iris-workspace.log": "c9973de7e2d923f71264528700a7d5586044e5937e260bd064380515488c511c",
+      "iris-idle-park.log": "dade53971fceebbfb6ead67bf50cea3ef9e0d4f427a50d97acd5029be8b96500",
+      "iris-binaries.log": "965e7c47853ed57594db7acc8368139bfe393939fe5b6c68cef49fe97aa15178"
+    },
+    "integration_at_close": "3b854a857c5c8227f0860622be477ad71cbc88d3",
+    "branch_owner_at_close": "../iris",
+    "tested_merge_is_ancestor": true,
+    "additional_changes_qualification": "Separate performance integration; not claimed by this cycle"
+  },
+  "image": {
+    "pointer": "lab/irix-installed-desktop/image.json",
+    "pointer_sha256": "d65cdd1430273400ceae5105c944fede82c2615d6c9f66b470d6c73c15b9a131",
+    "unchanged": true,
+    "workflow": ".work/workflows/check-9kenk7jc",
+    "qualification": "docs/results/2026-11-03-workflow-cleanup-image.json",
+    "qualification_sha256": "b9dd64c533df280c2799dbe567d86c7be21cc5a8c2fdb29246c170a9fe37ee37",
+    "screenshot": "docs/results/images/2026-11-03-workflow-cleanup-image.png",
+    "screenshot_sha256": "3bddb6f577ba9a22ecc1a143e0c96c5066f28b06a94238d78defb49231e895b2"
+  },
+  "seed": {
+    "workflow": ".work/workflows/seed-6l3vo1y0",
+    "result": {
+      "command": [
+        "/usr/bin/python3",
+        "/var/home/salvogendut/Dev/xiri/scripts/prepare-xiri-seed.py",
+        "/var/home/salvogendut/Dev/xiri/.work/images/xiri-netbsd-desktop-20261103-newport-xmahjongg",
+        "--output-directory",
+        "/var/home/salvogendut/Dev/xiri/.work/xiri-image/seed-1fa5c92ffac3"
+      ],
+      "environment": {},
+      "status": "complete",
+      "pid": 3,
+      "exit_status": 0
+    }
+  },
+  "historical_rpc_count_failure": {
+    "run": ".work/xiri-image/runs/chd-dnf0xk5g",
+    "result_sha256": "9e2890feb0e35a333f0550a88c5b3a92416373d1e80e3181404b55534a0751fc",
+    "clean_shutdown": true,
+    "reason": "Historical warning count decreased from 2 to 0; observation changed to a live log watcher"
+  },
+  "replay_rpc_count_failure": {
+    "run": ".work/desktop-usability/ordinary-t042ou24",
+    "result_sha256": "b211d7d4256deace635a426b1f8b890716a27bc2a36345a6496d2cf3d9b9c57e",
+    "clean_shutdown": true,
+    "both_logout_routes_passed": true,
+    "reason": "Historical RPC warning count changed after successful desktop checks"
+  },
+  "initial_replay": {
+    "run": ".work/desktop-usability/ordinary-rc2e6pvx",
+    "status": "error",
+    "error": "timed out after 120s waiting for '\\\\nXIRI_39a56eacfb074867b5e60d57b3dc001c_RC=(\\\\d+)\\\\n'",
+    "clean_shutdown": true,
+    "result_sha256": "266c8e99948c28e4a9f4f0b88931622d3ef9fc5cb2ccf83bf07292cd967468c2",
+    "serial_sha256": "aa435b4c400b266b38669eb84b00b2edc6076d6cd7ba12010b6a66142feebb69",
+    "retained_toolchest_logout": true,
+    "comparison": {
+      "initial": {
+        "pixels": 617684,
+        "different_pixels": 0
+      },
+      "move": {
+        "pixels": 617684,
+        "different_pixels": 0
+      },
+      "undo": {
+        "pixels": 617684,
+        "different_pixels": 0
+      },
+      "redraw": {
+        "pixels": 617684,
+        "different_pixels": 0
+      }
+    }
+  },
+  "replay": {
+    "run": ".work/desktop-usability/ordinary-e5xx3o99",
+    "result_sha256": "797d445a9b17180bf391f9b8f2ae49d49088096a998a961c0bc0a11192a28ff4",
+    "serial_sha256": "8a3b9971f301ef3a998a1b7c24e91317b37c8550d55d22ddf48f9e1434785a42",
+    "status": "observed",
+    "clean_shutdown": true,
+    "base_raw_unchanged": true,
+    "rpcbind_warning_check": {
+      "before": 2,
+      "after": 2,
+      "new_warnings": 0
+    },
+    "rpcbind_warning_events": "Nov  3 06:19:08 xiri-indy xiri-rpc-watch: XIRI_RPC_WATCH_START\nNov  3 06:24:10 xiri-indy rpcbind: rpcbind terminating on signal 15. Restart with \"rpcbind -w\"\nNov  3 06:27:28 xiri-indy rpcbind: rpcbind terminating on signal 15. Restart with \"rpcbind -w\"\nNov  3 06:28:07 xiri-indy xiri-rpc-watch: XIRI_RPC_WATCH_END\n",
+    "logout": {
+      "toolchest": {
+        "returned_to_graphics_shell": true,
+        "identity": {
+          "user": "xiritest",
+          "home": "/usr/people/xiritest",
+          "cwd": "/usr/people/xiritest"
+        },
+        "render_probe_passed": true,
+        "xaa_enabled": true
+      },
+      "root-menu": {
+        "returned_to_graphics_shell": true,
+        "identity": {
+          "user": "xiritest",
+          "home": "/usr/people/xiritest",
+          "cwd": "/usr/people/xiritest"
+        },
+        "render_probe_passed": true,
+        "xaa_enabled": true
+      }
+    },
+    "game_comparison": {
+      "initial": {
+        "pixels": 617684,
+        "different_pixels": 0,
+        "reference": "docs/results/images/2026-11-03-newport-xmahjongg-desktop-initial.png",
+        "capture": ".work/desktop-usability/ordinary-e5xx3o99/xmahjongg-initial.png",
+        "capture_sha256": "ff00caf97f45ad7ad929bc9f178bca3aca43ca45b740244946108efdd2a07ce0"
+      },
+      "move": {
+        "pixels": 617684,
+        "different_pixels": 0,
+        "reference": "docs/results/images/2026-11-03-newport-xmahjongg-desktop-move.png",
+        "capture": ".work/desktop-usability/ordinary-e5xx3o99/xmahjongg-move.png",
+        "capture_sha256": "b387dd1f0120bb31b05e51f3fe35c609548588800370c9e274a4a7c964ba66d8"
+      },
+      "undo": {
+        "pixels": 617684,
+        "different_pixels": 0,
+        "reference": "docs/results/images/2026-11-03-newport-xmahjongg-desktop-undo.png",
+        "capture": ".work/desktop-usability/ordinary-e5xx3o99/xmahjongg-undo.png",
+        "capture_sha256": "2d47140b98608aad7e7a83bd0d6413127521118aefec09591cecc75ef7af65fc"
+      },
+      "redraw": {
+        "pixels": 617684,
+        "different_pixels": 0,
+        "reference": "docs/results/images/2026-11-03-newport-xmahjongg-desktop-redraw.png",
+        "capture": ".work/desktop-usability/ordinary-e5xx3o99/xmahjongg-redraw.png",
+        "capture_sha256": "5a45b4f7e6b64fdf03651e278adbf1da90653b73358cb691a54f7dcdba759a8d"
+      }
+    }
+  },
+  "limits": [
+    "No new kernel build or image promotion in this cycle",
+    "Integrated IRIS binaries are not substituted for the qualified desktop emulator",
+    "Module, service packaging, xdm and clogin remain planned",
+    "Known graphics and application compatibility limits remain"
+  ],
+  "process_cleanup": {
+    "owned_processes": [],
+    "other_iris_processes": [],
+    "checked_runs": [
+      ".work/xiri-image/runs/chd-yh2qhz2i",
+      ".work/xiri-image/runs/chd-dnf0xk5g",
+      ".work/xiri-image/runs/chd-v3krnbq0",
+      ".work/desktop-usability/ordinary-rc2e6pvx",
+      ".work/desktop-usability/ordinary-t042ou24",
+      ".work/desktop-usability/ordinary-e5xx3o99"
+    ],
+    "all_guests_clean_shutdown": true
+  }
+}

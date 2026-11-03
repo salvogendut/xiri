@@ -162,3 +162,11 @@ typed-input checks. See [manual image instructions](../XIRI-IMAGE.md).
 All owned test emulators were stopped. Both fork integration branches remain
 clean and pushed; this cycle changes Xiri's reproducible xsrc patch and image
 workflow, without repinning the kernel or emulator.
+
+## Manual follow-up
+
+On 2026-11-03 the user reported a quick survey of most of the desktop: many
+tools and programs worked as expected, while others needed tuning. No list
+of tested applications or individual failures accompanied that observation,
+so it does not change the per-application qualification claims above. Retain
+the current image as the working baseline while streamlining development.

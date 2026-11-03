@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 """Cold boot a disposable CHD copy from disk and exercise the manual launcher."""
 import argparse
-import gzip
-import importlib.util
 import json
 from pathlib import Path
 import re
@@ -14,9 +12,8 @@ import time
 from types import SimpleNamespace
 
 ROOT = Path(__file__).resolve().parent.parent
-spec = importlib.util.spec_from_file_location('base', ROOT/'scripts/probe-netbsd.py')
-probe = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(probe)
+from xiri_lab import Guest, load_probe, source_hashes
+probe = load_probe()
 
 
 def main():
@@ -70,13 +67,9 @@ def main():
         'tftp_dir = '+json.dumps(str(bundle/'tftp')))
     config += '\n[scsi.4]\npath = '+json.dumps(str(directory/'probe.iso'))+'\ncdrom = true\n'
     lab = probe.Lab(SimpleNamespace(mode='ordinary', debugger=False, boot_timeout=600), directory, config_text=config)
-    # Pace diagnostic commands while Xorg and foreign clients share the CPU.
-    def paced_send(text, newline=True):
-        data = (text + ('\r' if newline else '')).encode('ascii')
-        for byte in data:
-            lab.serial.sendall(bytes([byte]))
-            time.sleep(.005)
-    lab.send = paced_send
+    guest = Guest(lab)
+    cmd = guest.command
+    get = guest.read
     original_launch = lab.launch
     def launch(command, name):
         if name == 'emulator':
@@ -86,7 +79,7 @@ def main():
     lab.launch = launch
     result = dict(status='error', clean_shutdown=False, bundle=str(bundle.relative_to(ROOT)),
         input_manifest_sha256=probe.sha256(bundle/'manifest.json'), pin=pin,
-        chd_sha256=manifest['chd_sha256'], sources={
+        chd_sha256=manifest['chd_sha256'], sources={**source_hashes(),
             'scripts/probe-xiri-image.py':probe.sha256(Path(__file__)),
             'lab/irix-4dwm/type-ready.c':probe.sha256(ROOT/'lab/irix-4dwm/type-ready.c')})
     if shell_image:
@@ -94,19 +87,6 @@ def main():
             result['sources'][name] = probe.sha256(ROOT/name)
     if seed_result.get('newport_driver'):
         result['sources']['lab/newport-xaa/render-probe.c'] = probe.sha256(ROOT/'lab/newport-xaa/render-probe.c')
-
-    def cmd(command, timeout=120):
-        before = len(lab.serial_text())
-        if lab.command(command, timeout):
-            raise RuntimeError('guest command failed: '+command)
-        return lab.serial_text()[before:]
-
-    def get(command):
-        out = cmd('echo HEX_START; { '+command+'; } 2>transfer.err | gzip -c | od -An -v -tx1; echo HEX_END', 240)
-        match = re.search(r'^HEX_START\n([0-9a-f \n]+)^HEX_END$', out, re.M)
-        if not match:
-            raise RuntimeError('missing payload')
-        return gzip.decompress(bytes.fromhex(match[1]))
 
     try:
         lab.start(boot=False)
@@ -151,6 +131,10 @@ def main():
             result['desktop_services'] = True
         if seed_result.get('native_rpcbind_build'):
             cmd("rpc_errors_before=$(awk '/rpcbind: cannot bind/ {n++} END {print n+0}' /var/log/messages)")
+            # Follow new messages across rotation; historical counts can shrink.
+            cmd('tail -n 0 -F /var/log/messages >rpc-watch.log 2>rpc-watch.err & '
+                'rpc_watch=$!; sleep 2; kill -0 "$rpc_watch"; logger -t xiri-rpc-watch XIRI_RPC_WATCH_START')
+            guest.wait_for('grep -q XIRI_RPC_WATCH_START rpc-watch.log',30)
         session_ms = 600000 if shell_image else 300000
         cmd('XIRI_SESSION_MS='+str(session_ms)+' /usr/local/bin/xiri-desktop >manual-desktop.log 2>&1 & manual=$!; tries=0; until ./image-type 127.0.0.1:0 xmahjongg "" >game-focus.log 2>&1; do kill -0 "$manual" || break; tries=$((tries+1)); test "$tries" -lt 120 || break; sleep 2; done; ./image-type 127.0.0.1:0 xmahjongg "" >game-focus.log 2>&1', 360)
         if seed_result.get('newport_driver'):
@@ -231,7 +215,12 @@ def main():
                 ['magick',str(directory/'desktop.png'),'-format','%k','info:']))
             assert result['framebuffer_colors_after_input'] > 32, 'blank desktop framebuffer'
         if seed_result.get('native_rpcbind_build'):
-            result['rpcbind_warning_check'] = cmd("rpc_errors_after=$(awk '/rpcbind: cannot bind/ {n++} END {print n+0}' /var/log/messages); echo RPC_BIND_WARNINGS_BEFORE=$rpc_errors_before AFTER=$rpc_errors_after; test \"$rpc_errors_before\" = \"$rpc_errors_after\"")
+            cmd('kill -0 "$rpc_watch" && logger -t xiri-rpc-watch XIRI_RPC_WATCH_END')
+            guest.wait_for('grep -q XIRI_RPC_WATCH_END rpc-watch.log',30)
+            cmd('kill "$rpc_watch"; wait "$rpc_watch" || :')
+            result['rpcbind_warning_events'] = get('cat rpc-watch.log').decode(errors='backslashreplace')
+            assert 'rpcbind: cannot bind' not in result['rpcbind_warning_events']
+            result['rpcbind_warning_check'] = cmd("rpc_errors_after=$(awk '/rpcbind: cannot bind/ {n++} END {print n+0}' /var/log/messages); echo RPC_BIND_WARNINGS_BEFORE=$rpc_errors_before AFTER=$rpc_errors_after")
         cmd('/usr/X11R7/bin/xdpyinfo -display 127.0.0.1:0 >manual-display 2>&1; /usr/X11R7/bin/xwininfo -display 127.0.0.1:0 -root -tree >manual-tree 2>&1; sleep 2; /usr/X11R7/bin/xwd -display 127.0.0.1:0 -root -silent >game.xwd 2>game-frame.err; kill -TERM "$manual"; wait "$manual"; echo MANUAL_STATUS=$?',180)
         result['launcher_log'] = get('cat manual-desktop.log').decode(errors='backslashreplace')
         result['display'] = get('cat manual-display').decode(errors='backslashreplace')

@@ -44,8 +44,13 @@ def main():
     shutil.copyfile(bundle/'nvram.bin', out/'nvram.bin')
     if m.get('manual_nvram_sha256'):
         graphics = bundle/'nvram-graphics.bin'
-        assert sha(graphics) == m['manual_nvram_sha256']
-        shutil.copyfile(graphics, out/'nvram-graphics.bin')
+        # A manual boot updates this file. Automation needs only serial NVRAM;
+        # never treat the user's current graphical state as a frozen seed.
+        if graphics.exists() and sha(graphics) == m['manual_nvram_sha256']:
+            if not (out/'nvram-graphics.bin').exists():
+                shutil.copyfile(graphics, out/'nvram-graphics.bin')
+        else:
+            print('Graphical NVRAM has changed; preserving it in the manual bundle.')
     (out/'image-source.json').write_text(json.dumps(dict(bundle=str(bundle),
         chd_sha256=m['chd_sha256'], raw_sha256=m['source_raw_sha256']), indent=2)+'\n')
     print('Reusable seed:', out)

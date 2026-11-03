@@ -21,6 +21,19 @@ def pixels(path):
     return subprocess.check_output(['magick', str(path), '-depth', '8', 'rgba:-'])
 
 
+def verify_rpc_warnings(result):
+    assert '_RC=0' in result['rpcbind_warning_check']
+    events = result.get('rpcbind_warning_events')
+    if events is not None:
+        assert 'XIRI_RPC_WATCH_START' in events and 'XIRI_RPC_WATCH_END' in events
+        assert events.index('XIRI_RPC_WATCH_START') < events.index('XIRI_RPC_WATCH_END')
+        assert 'rpcbind: cannot bind' not in events
+    else:
+        # Preserve the qualification rules for historical observations.
+        counts = re.search(r'RPC_BIND_WARNINGS_BEFORE=(\d+) AFTER=(\d+)', result['rpcbind_warning_check'])
+        assert counts and counts[1] == counts[2]
+
+
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('run', type=Path)
@@ -73,9 +86,7 @@ def main():
         rpc = json.loads((bundle/'native-rpcbind-source.json').read_text())
         for key in ['source_revision', 'sources', 'rpcbind_sha256']:
             assert rpc[key] == seed_result['native_rpcbind_build'][key]
-        assert '_RC=0' in r['rpcbind_warning_check']
-        counts = re.search(r'RPC_BIND_WARNINGS_BEFORE=(\d+) AFTER=(\d+)', r['rpcbind_warning_check'])
-        assert counts and counts[1] == counts[2]
+        verify_rpc_warnings(r)
     staged = seed_result['staged']
     dimensions = seed_result.get('desktop_dimensions', [1024, 768])
     expected_support = {f['netbsd_destination']:f['sha256']
@@ -140,6 +151,7 @@ def main():
         desktop_services=bool(r.get('desktop_services')),
         services_absent_after=r.get('services_absent_after'),
         rpcbind_warning_check=r.get('rpcbind_warning_check'),
+        rpcbind_warning_events=r.get('rpcbind_warning_events'),
         bitmap_ledger_sha256=seed_result.get('bitmap_ledger_sha256'),
         support_files_verified=expected_support,
         native_controls_passed=True, tree=r['tree'], game_focus=r['game_focus'],

@@ -1,5 +1,12 @@
 # Reusable Xiri development image
 
+For routine work, use `./xiri status`, `./xiri doctor`, `./xiri run` and
+`./xiri check` from the repository. The [development guide](DEVELOPMENT.md)
+explains seed reuse, isolated builds and packaging. These commands read the
+selected image manifest; the explicit paths below document this image and
+older reproduction checkpoints. Automated checks never promote their result
+or replace the manual bundle's NVRAM/overlay state.
+
 The current accelerated development bundle is
 `.work/images/xiri-netbsd-desktop-20261103-newport-xmahjongg/`.
 `netbsd-xiri.chd` is an 8 GiB NetBSD disk compressed to 480,615,682 bytes
@@ -385,6 +392,12 @@ remaining clients.
 
 
 ## Manual application checks
+
+On 2026-11-03 the user reported that a quick survey of most of the desktop
+found many tools and programs working as expected, with others needing tuning.
+This supports using the current accelerated image as the development baseline.
+It is broad manual feedback, not an application-by-application qualification;
+specific application names, actions and failures have not yet been recorded.
 
 Start with the **Freeware** page and inspect the icons, then use Toolchest's
 **Open Unix Shell** twice and type commands in each terminal. Close the

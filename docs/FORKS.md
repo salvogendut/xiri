@@ -42,6 +42,23 @@ not repin qualified kernels, emulator binaries, runtime resources or guest disks
 
 ## IRIS upstream updates
 
+The 2026-11-03 workflow-cleanup cycle fetched upstream
+`68f4e4a6d56d85e109ef3d4363854df1cd39cfda` and merged/pushed it as
+`c84757d2f812412581253352c9947c1058e9cf3a`, integrating its storage,
+configuration-validation, serial, virtio-serial, idle-parking and NFS updates.
+The fork's embedded O2/Octane firmware selection is preserved, including
+strict explicit-path errors. See the [cycle record](results/2026-11-03-workflow-cleanup.md)
+for the integration commit and validation. The manual desktop bundle retains
+its tested `819c682` emulator; integration does not repin that artifact.
+
+This merge was made in `.work/iris-upstream-sproc`. Subsequent independent
+performance integration advanced `xiri` to `3b854a8` and returned its ownership
+to `../iris`; the temporary worktree is now detached at `26771f9`. The new tip
+contains `c84757d`. Its additional changes belong to that separate cycle.
+`./xiri status` finds the actual branch owner; `./xiri build iris` builds there
+without switching a shared checkout. NetBSD development uses `../NetBSD-xiri` on `xiri`.
+See the [maintained commands](DEVELOPMENT.md).
+
 The November 3 xmahjongg cycle checked upstream again: `2eb811f` is still
 already contained in IRIS `xiri` `819c682`; no integration was needed.
 NetBSD `xiri` is now `5f094bc6ab9` after the separate runtime-theme merge.

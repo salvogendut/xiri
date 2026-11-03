@@ -51,6 +51,17 @@ session as xiritest (UID 1234, HOME `/usr/people/xiritest`). The user chose to
 retain and label that arrangement. Direct user login needs a supervisor that
 does not reserve the entire UID for cleanup; it is not enabled yet.
 
+The 2026-11-03 deployment request makes the next boundary explicit: boot-load
+an IRIX compatibility module; install auxiliary native services with rc.d and
+configuration files; and offer the original desktop to a normally authenticated
+xiritest account through native xdm. Original IRIX clogin follows later.
+The implementation must replace reserved-UID cleanup with session ownership,
+keep authentication/X authority intact, and leave system-service and X-server
+lifetime with their native supervisors. This is planned work after the current
+[workflow cleanup](DEVELOPMENT.md), not a claim that module or xdm deployment
+already works. Native Newport/platform drivers remain separate from the
+foreign personality. See the [packaging phase](ROADMAP.md#next-packaging-phase).
+
 Supporting daemons could be packaged as ordinary NetBSD services, while the
 desktop itself could be offered as an X login session. Those are user-space
 deployment choices; they do not replace the kernel's executable and system-call

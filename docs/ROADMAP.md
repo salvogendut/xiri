@@ -1,8 +1,55 @@
 # Xiri execution roadmap
 
-Status: execution started, updated 2026-11-03. Host inventory, the pinned IRIS build, verified NetBSD inputs, the installed R4400 guest, and a host-built custom kernel boot are complete. Debugger breakpoints and an automated smoke probe now pass, including comparison of CI and ordinary execution. Bounded disk and network integrity tests also pass in both modes. Snapshot restore, CI rollback, and post-restore cold boots now pass with the fork's RAM-map fix. NetBSD X/Newport display and input now pass in both modes with software rendering and a keyboard-controller fix. The historical IRIX source audit, fork kernel baseline, marked static o32 execution, bounded argument/file/memory probes, and writable ELF data/BSS are complete. Supplied IRIX 6.5.22m media provides native asa/echo observations and an unmodified vendor rejection baseline. Bounded o32 interpreter loading, runtime queries, SGI_ELFMAP, indirect dispatch, and allocation now run unmodified vendor asa through its original libc/rld. Its output and the interface probes are compared with original IRIX. The separate LP64 kernel/native baseline passes after firmware-call and emulator TLB fixes. The bounded dual-ABI personality now runs n32 echo alongside o32 asa, with explicit argument widths, ELF32 auxiliary data and heap growth. Desktop library closure and initial resource/session inventory identify 4Dwm’s alignment/relocation requirements. The TCP subset, socket-address queries and measured hostname/descriptor/sendmsg/shutdown interfaces now let Toolchest complete X setup and send processed requests. Measured legacy recvmsg now returns a 32-byte X reply. Toolchest’s later SIGSEGV is now traced to a missing HOME variable and avoided with an explicit session wrapper. The measured select subset passes both LP64 modes and the o32 kernel. The xstat/fxstat adapters now supply measured pathname and descriptor metadata. Toolchest requests the correct app-defaults size, reads its full menu and avoids the earlier allocator SIGSEGV; the [SIOCNREAD checkpoint](results/2026-10-31-irix-siocnread.md) removes the next XIO exit and produces a rendered Toolchest menu with 60-second visibility and Expose-redraw checks under both identities. The [resource/input follow-up](results/2026-10-31-irix-toolchest-input.md) adds bounded mouse/keyboard menu checks with original keysyms and explicit SGI colors. Application launch and full event/session behavior remain unqualified. Later entries below cover full display geometry, original desktop startup and bounded XAA rendering; fragmented NFS corruption and the earlier installer HTTP stall remain open. Original [xclock windows now render](results/2026-10-31-irix-elfmap-relocation.md) in both styles and identities after bounded relocation; [bounded timekeeping now passes](results/2026-11-01-irix-time.md). The [access follow-up](results/2026-10-31-irix-winterm-access.md) clears the xwsh locale/font crash. The [PTY checkpoint](results/2026-10-31-irix-pty.md) supplies allocation and slave permissions. The [shell checkpoint](results/2026-11-01-irix-shell.md) follows the process subset with native exec/session/descriptor handling: the unchanged winterm launcher now opens an interactive native shell in xwsh and accepts typed commands. A native PTY handoff avoids the observed layered-tty teardown panic. Signal handlers, resize and normal app exit in xwsh remain to qualify.
+Status: updated 2026-11-03. The current image runs the original 4Dwm desktop,
+Toolchest, Icon Catalog, File Manager, winterm and xclock on NetBSD/Xorg with
+accelerated Newport. Catalog launching, running-icon feedback, backdrop,
+desktop icons and logout pass bounded checks; the latest xmahjongg texture
+repair passes native pixel comparisons and desktop interaction checks.
+Compatibility and desktop behavior remain incomplete. See the
+[current overview](../README.md), [rendering evidence](results/2026-11-03-newport-xmahjongg.md)
+and [historical checkpoints](HISTORY.md).
 
-The agreed target is the full original IRIX desktop on NetBSD and X.org, supported by an IRIX personality. The current application order is winterm (including PTY, keyboard input and a native shell), then the original 4Dwm window manager and desktop session. The later time checkpoint now verifies bounded xclock updates; the installer helper bootstrap now exits zero with four native aliases, and the measured traditional-signal/child-reaping subset now passes. Installed-image applications and catalog registration take priority over further installer retries. Initial implementation and testing use an emulated Indy. The development loop now supports [unmodified vendor asa/echo and bounded o32/n32 probes](results/2026-10-30-irix-lp64.md) on the NetBSD fork. Broader ABI coverage, desktop feasibility, and physical Indy qualification follow before expanding to additional machines and applications.
+The agreed target remains the full original IRIX desktop on NetBSD and X.org,
+with modern software running natively. The [repository/workflow cleanup](results/2026-11-03-workflow-cleanup.md) is
+complete: the maintained `./xiri` commands and both desktop checks are qualified.
+The packaging phase below follows next. Retain the working image as a
+regression baseline throughout that work.
+
+## Next packaging phase
+
+The user requested these deployment changes on 2026-11-03. The implementation
+order follows their dependencies, rather than the order of the request:
+
+1. **Define and separate service/session ownership.** Inventory the existing
+   native helpers and configurations; package required long-lived services
+   with NetBSD rc.d startup, configuration files and explicit dependencies.
+   Keep per-login environment and client startup in a user session. Replace
+   cleanup of every process belonging to reserved UID 1234 with cleanup scoped
+   to the session, so other activity by xiritest survives logout. Preserve the
+   current manual launcher while the replacement is tested.
+2. **Qualify the loadable IRIX personality.** Model its build, registration,
+   dependencies and lifecycle after `compat_linux`; load it during boot before
+   foreign programs or login services start. Audit `selcommon_kern`,
+   `emul.e_sigmask`, exported symbols, MIPS relocations and dependencies first.
+   Build a kernel without the built-in personality, then test load, busy-unload
+   refusal, unload/reload, reboot and existing o32/n32 application regressions.
+   Newport and other native platform drivers remain native NetBSD components;
+   module delivery does not by itself remove all required core-kernel changes.
+3. **Normal xiritest login through native xdm.** Preserve the authenticated UID,
+   groups, HOME `/usr/people/xiritest`, working directory and X authority. Test
+   login → desktop → logout → login, failed startup cleanup and coexistence
+   with a separate login by the same user. System services and the X server
+   must not be owned or stopped by the client-session wrapper.
+4. **Original IRIX clogin later.** Once the xdm/session boundary is established,
+   investigate clogin's authentication and service interfaces against original
+   IRIX. Reuse the qualified session startup; do not assume the login binary is
+   already compatible.
+
+Acceptance requires repeatable installation/configuration and a fresh manual
+CHD for the resulting deployment. These are planned changes; the current image
+still uses the built-in personality and root service launcher. Continue
+application/desktop fixes alongside packaging without losing the established
+regression coverage.
 
 Active fork work is consolidated on [`xiri` in IRIS and NetBSD](FORKS.md).
 Historical lab revisions remain pinned in detached worktrees.
@@ -169,7 +216,7 @@ dependency candidates; a visible window alone does not complete these checks.
 - [x] Revisit the supplied manual after the first rendered Toolchest client and map its relevant chapters to the comparisons above.
 - [x] Maintain the [image-resource checklist](IRIX-RESOURCES.md) and [ledger](../lab/irix-desktop/resource-ledger.json), distinguishing extracted assets, observed use, remaining artwork/catalog/service gaps and native session state.
 - [x] Qualify opened-icon feedback after catalog double-click, the granite backdrop, and filesystem/home/Dumpster icons before graphical-login integration. The [desktop behavior result](results/2026-11-02-irix-desktop-behavior.md) passes launch/exit artwork restoration and desktop directory opening; broader actions remain below.
-- [ ] Later integrate native NetBSD xdm: separate X-server/system-service startup from the user session, preserve login identity/HOME and X authentication, and qualify login → desktop → logout → login. Deferred at the user's request until desktop behavior is further completed; keep the current manual launcher for now.
+- [ ] Later integrate native NetBSD xdm: separate X-server/system-service startup from the user session, preserve login identity/HOME and X authentication, and qualify login → desktop → logout → login. Queued in the 2026-11-03 packaging phase after service/session ownership is separated; retain the current manual launcher until qualified. Native IRIX clogin follows xdm later.
 - [ ] Replace the reserved-UID development supervisor when adding direct user login. On 2026-11-02 the user chose to keep root launching services and label the UID1234/xiritest desktop clearly in the new image. Its HOME is `/usr/people/xiritest`; a future actual IRIX root session should use `/`. Current cleanup assumes that UID is reserved and must not be used around an independent xiritest login shell.
 - [ ] Turn the remaining comparisons into reproducible desktop acceptance cases against the original installation.
 - [x] Launch original 4Dwm against native Xvfb and demonstrate reparenting, focus, key delivery and dragging in the [combined shell session](results/2026-11-01-irix-4dwm.md); Newport/physical display qualification remains separate.
