@@ -73,6 +73,14 @@ Winterm was explicitly resized for input checks; its startup metrics still
 need work. Prismatic must use a compatible IRIS backend and a fresh image
 state directory. Preserve overlays belonging to the older CHD.
 
+The [new service/session runtime](results/2026-11-03-xiri-session.md) is
+qualified on disposable clones, including same-user shell survival and
+existing-X-server reuse. It has not been packaged into this selected CHD.
+This image still uses the older reserved-UID launcher; native xdm and the
+replacement deployment image are the next cycle. The full replay raw disk
+also predates the separately qualified FAM stop hook; install the final
+runtime before preparing a future image.
+
 ## Previous accelerated image with the xmahjongg repair
 
 This bundle retains the framed kernel equivalent to NetBSD `a536d8c4da2`

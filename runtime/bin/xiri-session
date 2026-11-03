@@ -1,0 +1,45 @@
+#!/bin/sh
+# Client session on an existing display, under the authenticated native account.
+set -eu
+export PATH=/bin:/usr/bin:/usr/X11R7/bin:/emul/irix/usr/bin:/emul/irix/usr/bin/X11:/emul/irix/usr/sbin:/emul/irix/usr/freeware/bin
+base=/usr/local/libexec/xiri
+. /etc/xiri/session.conf
+user=$(id -un)
+test "$(id -u)" != 0 || { echo 'Run xiri-session as the desktop user.' >&2; exit 1; }
+test "$user" = "$xiri_user" || { echo "FAM is configured for $xiri_user; this account is $user." >&2; exit 1; }
+: "${HOME:?A login HOME is required.}" "${DISPLAY:?An existing X display is required.}"
+test -d "$HOME" && test -w "$HOME"
+test -f /var/run/xiri-pty-ready || { echo 'Start xiri_devices before logging in.' >&2; exit 1; }
+# Preserve the login's XAUTHORITY and supplementary groups; do not own its X server.
+xdpyinfo >/dev/null 2>&1 || { echo 'Cannot connect to the supplied X display.' >&2; exit 1; }
+"$base/x11-check" vacant || { echo 'This display already has a window manager.' >&2; exit 1; }
+rpcinfo -p 127.0.0.1 | awk '$1 == 391002 && $2 == 1 && $3 == "tcp" {found=1} END {exit !found}' || {
+    echo 'Start the xiri_famd service before the desktop.' >&2; exit 1;
+}
+duration=${XIRI_SESSION_MS:-0}
+case "$duration" in ''|*[!0-9]*) echo 'XIRI_SESSION_MS must be milliseconds.' >&2; exit 2;; esac
+umask 077
+if test -z "${XIRI_SESSION_DIR:-}"; then
+    mkdir -p "$HOME/.xiri/sessions"
+    XIRI_SESSION_DIR=$(mktemp -d "$HOME/.xiri/sessions/session.XXXXXX")
+fi
+job=$(cd "$XIRI_SESSION_DIR" && pwd)
+test "$(stat -f %u "$job")" = "$(id -u)" && test -w "$job"
+mkdir "$job/session.lock" || { echo 'This session directory has already been used.' >&2; exit 1; }
+export XIRI_SESSION_DIR="$job" USER="$user" LOGNAME="$user" SHELL=/bin/sh
+export LANG="$xiri_locale" LC_ALL="$xiri_locale" TZ="$xiri_timezone"
+export MWMSHELL=/usr/local/libexec/xiri/command-shell
+export WINTERM='/emul/irix/usr/sbin/xwsh -name winterm'
+export PS1="$user@xiri\$ "
+cd "$HOME"
+printf 'SESSION user=%s uid=%s groups=%s home=%s cwd=%s display=%s authority=%s\n' \
+    "$user" "$(id -u)" "$(id -G)" "$HOME" "$PWD" "$DISPLAY" "${XAUTHORITY:-default}" >"$job/identity"
+xset +fp "$xiri_fonts"
+xset fp rehash
+xset s off
+xset -dpms
+xset s reset
+xsetroot -solid '#69b5b5'
+echo "Xiri client session as $user. Logs: $job"
+export XIRI_SESSION_STOP_FILE="$job/logout"
+exec "$base/session-guard" "$duration" /bin/sh "$base/desktop-clients.sh" "$job" >"$job/guard.log" 2>&1

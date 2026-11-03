@@ -1,0 +1,67 @@
+#!/bin/sh
+# Manual convenience wrapper: own one X server and delegate clients to the user.
+set -eu
+test "$(id -u)" = 0 || { echo 'Run xiri-desktop as root; use xiri-session on an existing user display.' >&2; exit 1; }
+export PATH=/usr/X11R7/bin:/bin:/sbin:/usr/bin:/usr/sbin
+. /etc/xiri/session.conf
+case "$xiri_user" in ''|*[!a-zA-Z0-9_.-]*) echo 'Invalid configured user.' >&2; exit 2;; esac
+uid=$(id -u "$xiri_user"); gid=$(id -g "$xiri_user")
+test "$uid" != 0
+server=${1:-newport}
+case "$server" in newport) number=0;; --xvfb) number=98;; *) echo 'Usage: xiri-desktop [newport|--xvfb]' >&2; exit 2;; esac
+test "$#" -le 1
+duration=${XIRI_SESSION_MS:-0}
+case "$duration" in ''|*[!0-9]*) echo 'XIRI_SESSION_MS must be milliseconds.' >&2; exit 2;; esac
+test ! -f "/tmp/.X$number-lock" || { echo "Display $number is already occupied." >&2; exit 1; }
+# Services survive desktop logout. Boot normally owns these starts; onestart
+# keeps the manual wrapper useful before they have been enabled in rc.conf.
+/etc/rc.d/xiri_devices onestart
+/etc/rc.d/rpcbind onestatus >/dev/null 2>&1 || /etc/rc.d/rpcbind onestart
+/etc/rc.d/xiri_famd onestatus >/dev/null 2>&1 || /etc/rc.d/xiri_famd onestart
+mkdir -p /var/tmp/xiri-desktop
+job=$(mktemp -d /var/tmp/xiri-desktop/session.XXXXXX)
+chown "$uid:$gid" "$job"; chmod 700 "$job"
+xpid= userpid= locked=
+cleanup()
+{
+    trap - EXIT INT TERM HUP
+    # Request descendant cleanup before terminating our X server. FAM/rpcbind
+    # belong to rc.d and are deliberately absent from this cleanup list.
+    if test -n "$userpid"; then
+        touch "$job/logout"
+        wait "$userpid" || :
+    fi
+    if test -n "$xpid"; then kill "$xpid" 2>/dev/null || :; wait "$xpid" || :; fi
+    if test -n "$locked"; then rmdir /var/run/xiri-desktop.lock; fi
+    echo "Session logs: $job"
+}
+trap cleanup EXIT
+trap 'exit 130' INT TERM HUP
+mkdir /var/run/xiri-desktop.lock || { echo 'Another manual desktop owns the display.' >&2; exit 1; }
+locked=yes
+export DISPLAY="127.0.0.1:$number" XAUTHORITY="$job/Xauthority"
+umask 077
+: >"$XAUTHORITY"
+cookie=$(od -An -N16 -tx1 /dev/urandom | tr -d ' \n')
+test "${#cookie}" = 32
+xauth -f "$XAUTHORITY" add "$DISPLAY" MIT-MAGIC-COOKIE-1 "$cookie"
+unset cookie
+chown "$uid:$gid" "$XAUTHORITY"
+if test "$server" = newport; then
+    wsconscfg -f /dev/ttyEcfg 0 2>/dev/null || :
+    Xorg :0 -config /usr/local/share/xiri/xorg.conf -auth "$XAUTHORITY" -noreset >"$job/Xorg.log" 2>&1 &
+else
+    Xvfb :98 -screen 0 1024x768x24 -auth "$XAUTHORITY" -noreset >"$job/Xvfb.log" 2>&1 &
+fi
+xpid=$!
+echo "Xiri desktop as $xiri_user (UID $uid), display $number. Logs: $job"
+tries=0
+until xdpyinfo >"$job/display.txt" 2>&1; do
+    tries=$((tries+1)); test "$tries" -lt 30; kill -0 "$xpid"; sleep 1
+done
+# All interpolated values here are validated or generated under this fixed
+# path. su establishes the native login groups and HOME before the user entry.
+su -l "$xiri_user" -c "exec env DISPLAY='$DISPLAY' XAUTHORITY='$XAUTHORITY' XIRI_SESSION_DIR='$job' XIRI_SESSION_MS='$duration' /usr/local/bin/xiri-session" >"$job/session.log" 2>&1 &
+userpid=$!
+wait "$userpid"
+userpid=

@@ -42,6 +42,18 @@ not repin qualified kernels, emulator binaries, runtime resources or guest disks
 
 ## IRIS upstream updates
 
+The 2026-11-03 service/session cycle fetched upstream again at
+`28fa516684c54e00e35b258c65e5dcac3a36165c`, already contained in IRIS `xiri`
+`1aed0dfc842a427e32a53ad083e1be0a9d46a613`. There were no new commits to
+integrate and no emulator build changes. This cycle changes native userspace
+integration in Xiri. Independent console-artwork work advanced NetBSD `xiri`
+to `1c248bf932f369c3271239b8c20bc3efd55bca44` during the cycle; those changes
+were left untouched. Guest qualification retains the module image's tested
+`819c682` emulator and the kernel/module from `d1ce7a96615`.
+The [qualification](results/2026-11-03-xiri-session.md) passes native descendant
+checks, four desktop sessions and service lifecycle checks. Detached
+reproduction worktrees and the selected manual image are preserved.
+
 The 2026-11-03 module-image cycle checked upstream again at
 `28fa516684c54e00e35b258c65e5dcac3a36165c`. It is already contained in
 `xiri` `1aed0df`; no integration or fork source changes were needed.

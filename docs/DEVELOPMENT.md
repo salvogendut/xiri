@@ -75,7 +75,8 @@ python3 -m unittest discover -s tests -v
 
 They cover artifact mismatch/missing-file rejection, mutable NVRAM,
 worktree selection, binary guest transfers, monitor errors, interruption
-cleanup and RPC warning detection across log rotation. Guest behavior is checked separately with `./xiri check`.
+cleanup, RPC warning detection across log rotation and runtime installation
+without overwriting local configuration. Guest behavior is checked separately with `./xiri check`.
 The two maintained desktop probes share `scripts/xiri_lab/guest.py` for
 UART writes paced at 20 ms per byte, compressed output, monitor captures and bounded waits;
 the established `probe-netbsd.py` still owns boot and teardown. Result files
@@ -117,3 +118,29 @@ for explicit comparison builds in separate output directories. See the
 and remaining stock-kernel dependencies, and the
 [image preparation recipe](../lab/irix-module/README.md#prepare-a-manual-image)
 for boot configuration and manual-image acceptance.
+
+## Native service/session runtime
+
+[`runtime/`](../runtime/README.md) is the maintained deployment source for
+rc.d services, configuration, manual/user launchers and native session helpers.
+The older lab copies remain pinned to their original experiments. Native build
+and install commands, prerequisites and ownership are in the runtime guide.
+
+Run the focused guest qualifier with:
+
+```sh
+python3 scripts/probe-xiri-session.py --seed .work/xiri-image/prepared-seed-20261103-module
+```
+
+It clones the seed, verifies staged source hashes, builds and installs the
+runtime, reboots with services enabled, and exercises accelerated Newport
+desktop sessions. The result, source snapshot, logs and PNGs stay under
+`.work/irix-session/runs/ordinary-*`. `--guard-only` limits the run to native
+descendant lifecycle checks; `--services-only` checks daemon stop/start,
+restart, RPC unregistration and external-owner refusal. `--debug-failure`
+keeps a failed guest available
+for a bounded local command queue; normal teardown still owns that emulator.
+The [cycle record](results/2026-11-03-xiri-session.md) pins the desktop and
+service lifecycle runs, source coverage and screenshots. The probe does not
+change the current CHD or image pointer. Native xdm login
+and image packaging are separate follow-up work.

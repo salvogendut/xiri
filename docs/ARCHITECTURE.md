@@ -1,6 +1,12 @@
 # Xiri proposed architecture
 
-Status: architectural target agreed on 2026-10-14; implementation status updated 2026-11-02. The kernel personality runs selected original o32/n32 applications. Original 4Dwm and Toolchest run alongside winterm with a native shell on native Xorg. Measured filesystem/poll adapters and native FAM now let Icon Catalog discover 18 pages and list application names, while FileManager lists native files and folders. Toolbar bitmaps and application-specific Freeware/FileManager artwork now render after measured record locks, seek offsets and native FAM pathname mapping. The original static n32 shell now executes through bounded admission, and Icon Catalog demonstrates two xmahjongg double-click launches. Opened-state feedback and complete desktop behavior remain unqualified. The [execution roadmap](ROADMAP.md) defines the remaining experiments.
+Status: updated 2026-11-03. The original IRIX 6.5.22m desktop runs on
+native accelerated Newport Xorg, including winterm with a native shell,
+catalog launches, running-icon feedback, backdrop and desktop icons. The
+IRIX personality now boot-loads as a module on our NetBSD fork. Native
+service and user-session integration lives in [`runtime/`](../runtime/README.md).
+The [execution roadmap](ROADMAP.md) tracks remaining application, desktop
+and deployment work.
 
 Xiri will use NetBSD as its underlying OS, execute selected IRIX binaries on the workstation's MIPS CPU through an IRIX personality, and preserve the existing IRIX desktop. Applications built natively for NetBSD should share that desktop with the compatible programs.
 
@@ -40,27 +46,30 @@ installing a background service on an unmodified NetBSD system is insufficient.
 
 | Component | Responsibility | Current implementation |
 | --- | --- | --- |
-| IRIX kernel personality | Recognize/load foreign ELF images; translate system calls, layouts, errors and process/VM behavior | Built into the NetBSD fork through `COMPAT_IRIX_O32`, despite the name covering both o32 and n32 |
+| IRIX kernel personality | Recognize/load foreign ELF images; translate system calls, layouts, errors and process/VM behavior | Boot-loaded `compat_irix_o32.kmod` on our NetBSD fork; both o32 and n32 are supported despite the name; a built-in configuration remains available |
 | Original IRIX runtime and desktop | rld/libc and other libraries, 4Dwm, Toolchest, winterm, file/icon clients, fonts and defaults | Selected files imported from the reference image; runtime lookup under `/emul/irix` with native fallback |
 | Native NetBSD platform | Scheduler, memory, storage, networking, devices, X server and native applications | Native Xorg drives the emulated Newport display at 1280×1024; Xvfb remains available for controlled tests. Physical display acceptance is separate |
-| Session and service integration | Environment, launch order, native shell handoff, application launching and host-service adapters | The development launcher owns native FAM v1 and any rpcbind it starts. Graphical console login and both logout menus pass with client/service cleanup. FAM supplies file notifications and optional process-execution polling for opened icons. The session starts `fm -b` and initializes the user's Desktop; session restoration and broader desktop services remain open |
+| Session and service integration | Environment, launch order, native shell handoff, application launching and host-service adapters | Maintained rc.d services own native FAM v1 and PTY setup; native rpcbind retains its service lifecycle. The unprivileged client session owns its descendants. FAM supplies file notifications and process-execution polling for opened icons. The session starts `fm -b` and initializes Desktop; session restoration and broader desktop services remain open |
 | Development lab | Boot/reference automation, probes, traces, comparisons and reproducible artifacts | This repository plus the IRIS emulator fork; the emulator is not intended to be required on a supported physical MIPS workstation |
 
-The development image uses root to start services, then runs the client
-session as xiritest (UID 1234, HOME `/usr/people/xiritest`). The user chose to
-retain and label that arrangement. Direct user login needs a supervisor that
-does not reserve the entire UID for cleanup; it is not enabled yet.
+The selected module CHD still uses the older root launcher with reserved-UID
+cleanup. The maintained runtime separates that ownership: system services
+start before LOGIN; `xiri-session` runs as the native account, retaining HOME,
+supplementary groups and X authority on an existing X display. Its
+`EVFILT_PROC`/`NOTE_TRACK` supervisor follows descendants, including daemonized
+children, without terminating unrelated processes of the same user. The
+manual `xiri-desktop` wrapper starts an authenticated X server, enters the
+configured account with `su -l`, and stops only its own X server after logout.
 
-The 2026-11-03 deployment request makes the next boundary explicit: boot-load
-an IRIX compatibility module; install auxiliary native services with rc.d and
-configuration files; and offer the original desktop to a normally authenticated
-xiritest account through native xdm. Original IRIX clogin follows later.
-The implementation must replace reserved-UID cleanup with session ownership,
-keep authentication/X authority intact, and leave system-service and X-server
-lifetime with their native supervisors. The [module cycle](results/2026-11-03-irix-module.md)
-implements the first step on our fork; service/session separation and xdm
-remain planned work after the [workflow cleanup](DEVELOPMENT.md). Native
-Newport/platform drivers remain separate from the foreign personality. See the [packaging phase](ROADMAP.md#next-packaging-phase).
+The 2026-11-03 deployment request prioritizes a boot-loaded personality,
+configured native services and then normal xiritest login through xdm.
+Original IRIX clogin follows later. The [module cycle](results/2026-11-03-irix-module.md)
+implements the kernel boundary on our fork. The [service/session qualification](results/2026-11-03-xiri-session.md) passes
+four desktops, independent shell survival, inherited groups/X authority and
+service restart. Its prerequisites are in the [runtime guide](../runtime/README.md);
+xdm and a replacement deployment image remain separate steps. Newport and
+other native platform drivers remain separate from the foreign personality.
+See the [packaging phase](ROADMAP.md#next-packaging-phase).
 
 Supporting daemons could be packaged as ordinary NetBSD services, while the
 desktop itself could be offered as an X login session. Those are user-space
@@ -82,13 +91,12 @@ clients to the dedicated test account and is explicitly a single-user
 development configuration, pending broader account/session design.
 
 The [desktop usability work](results/2026-11-02-desktop-usability.md) routes
-Toolchest and 4Dwm logout through a native request-file helper. The existing
-supervisor, running with the reserved client UID, removes that user's
-session processes; the root launcher reaps the X server and services it
-started. The per-session 4Dwm configuration changes the logout command while
-preserving the imported vendor file. This supplies development-session exit
-without implementing IRIX saved-session restoration. Graphical console
-login and the diagnostic serial getty are ordinary NetBSD configuration.
+Toolchest and 4Dwm logout through a native request-file helper. That interface
+is retained by the descendant supervisor. Its per-session 4Dwm configuration
+changes the logout command while preserving the imported vendor file. This
+supplies session exit without implementing IRIX saved-session restoration.
+Graphical console login and the diagnostic serial getty remain ordinary
+NetBSD configuration.
 
 The code already has [module registration and initialization/finalization
 hooks](https://github.com/salvogendut/NetBSD-xiri/blob/c11c9f16fad11837a169a3cd566582bebea2c029/sys/compat/irix_o32/irix_o32.c#L131):
@@ -128,8 +136,8 @@ for the corresponding ABI). Follow its module structure, registration,
 dependency handling and load/unload lifecycle, with the IRIX runtime under
 `/emul/irix` and desktop/session services packaged separately. IRIX ABI behavior
 still comes from IRIX reference measurements; the Linux module supplies the
-integration model. Xiri's current dependencies and MIPS module build still
-need qualification.
+integration model. The module milestone qualifies these dependencies on the Xiri fork;
+a stock-kernel build remains a separate target.
 
 The intended packaging combines the loadable personality, an importer/runtime
 tree, and session/service packages. Upstreaming or removing required core
@@ -139,7 +147,8 @@ the original applications contain MIPS instructions.
 
 Repository ownership follows this division: `NetBSD-xiri` contains kernel and
 machine changes; `iris` supplies the emulated Indy used for development; this
-`xiri` repository holds the integration lab, import tools, tests and documentation.
+`xiri` repository holds the native service/session runtime, integration lab,
+import tools, tests and documentation.
 
 ## Host kernel and drivers
 

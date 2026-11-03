@@ -30,7 +30,8 @@ Xiri development uses these sibling checkouts:
 | [IRIS](https://github.com/salvogendut/iris/tree/xiri) | `../iris` | `xiri` | Our emulator fork and primary development/testing environment for the emulated SGI Indy. |
 | [Prismatic](https://github.com/salvogendut/prismatic) | `../prismatic` | `main` | Our graphical frontend to IRIS, used for interactive emulator and desktop testing. |
 
-This repository holds the Xiri workflow, probes, resource manifests and
+This repository holds the native [service/session runtime](runtime/README.md),
+Xiri workflow, probes, resource manifests and
 documentation. See the [fork workflow](docs/FORKS.md) for integration rules
 and the [image guide](docs/XIRI-IMAGE.md) for matching Prismatic's IRIS backend
 to a qualified desktop image.
@@ -81,9 +82,11 @@ application-specific gaps. The user's broader desktop survey is encouraging,
 but it is not a per-application qualification.
 
 The [module milestone](docs/results/2026-11-03-irix-module.md) follows the
-`compat_linux` model. Packaging continues with configured userspace services
-and normal `xiritest` desktop login through xdm, followed later by original
-IRIX clogin. The
+`compat_linux` model. The [qualified service/session runtime](docs/results/2026-11-03-xiri-session.md)
+separates boot services from user sessions and follows descendants for logout
+cleanup. The selected
+manual CHD still contains its earlier launcher. Normal `xiritest` desktop
+login through xdm is next, with original IRIX clogin later. The
 [roadmap](docs/ROADMAP.md) defines the dependency and acceptance work.
 
 - [Architecture](docs/ARCHITECTURE.md): kernel, imported runtime, native services and desktop boundaries.

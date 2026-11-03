@@ -1,0 +1,95 @@
+{
+  "schema": 1,
+  "status": "passed",
+  "clean_shutdown": true,
+  "scope": "services",
+  "seed": {
+    "bundle": "/var/home/salvogendut/Dev/xiri/.work/images/xiri-netbsd-desktop-20261103-module",
+    "chd_sha256": "0d15ff1cb41eb28d5f411cc296f249fb30fa9f356b2f6e84d46f2ef86ba68629",
+    "raw_sha256": "d345b4822829d9c5839d0adc3c46c2b784a31f18546e3c9b7e9638fd95400a9b"
+  },
+  "pin": {
+    "schema": 1,
+    "description": "Boot-loaded IRIX o32/n32 personality with accelerated Newport desktop",
+    "ident": "XIRI_IRIX_MODULE_20261103",
+    "source_revision": "c46d4e9a931acda3cf784636ebb9dc91abfb1fe1",
+    "source_branch": "topic/compat-irix-module",
+    "build_arch": "mips64eb",
+    "page_bytes": 8192,
+    "boot_kernel_sha256": "567265ee63695a792025ca3c9b8797e674c170c36d6f03f290579d859af9017c",
+    "native_kernel_sha256": "830483994877a61efc833c3361ed2a6799df003d7e39033181b070908e3f17cd",
+    "debug_kernel_sha256": "36d7cc85c533e03c7da298ed10a8662f2a2c3d0177932f1b98909bcdc379f8fa",
+    "native_o32_sha256": "c294fbb1f2110445be31c096481ea54ab561c7e59ca5b9fc7171310098d755d4",
+    "source_dirty": true,
+    "emulator_revision": "819c6825504d40ad9f9aa00554249affd2da9446",
+    "emulator_branch": "xiri",
+    "emulator_sha256": "3dd9299d71f1899ff5a8c9b76f6a24752d19e4f9a0bcfe0edf3a29001dc9c49e",
+    "ci_client_sha256": "2543b1fae0b442516c40c9d9155eebc9f9569561146b4f62948171fe7eb5c7f3",
+    "base_disk_sha256": "2d19c840bcc5d5e5d424a5f12b4def72b9e8681e6b9e172b22bd51943bf7bb82",
+    "nvram_sha256": "025e170feb9adcfbfa55a745ba2d976fd0ba0f3d39967d7f52622d6ad54c2ef5",
+    "config_sha256": "b4b1d27b1d8e80ec31b07f9f98e0ca1da8a1793cb90880bbc1e65a4b169c8fe2",
+    "runtimes": [
+      {
+        "name": "vendor-o32-libc",
+        "path": "/usr/lib/libc.so.1",
+        "sha256": "ea766492103a193e9d404942705e4e28987545e37f699ede232b6c0f8c97c954"
+      },
+      {
+        "name": "vendor-o32-rld",
+        "path": "/lib/rld",
+        "sha256": "30228b54c1e5585b365514eb7c9895b03cc0f61cb898e05e3ddafece87863439"
+      },
+      {
+        "name": "vendor-n32-libc",
+        "path": "/lib32/libc.so.1",
+        "sha256": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e"
+      },
+      {
+        "name": "vendor-n32-rld",
+        "path": "/lib32/rld",
+        "sha256": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b"
+      }
+    ],
+    "config_path": "lab/irix-module/XIRI_IRIX_MODULE",
+    "committed_source_revision": "d1ce7a9661530ebbf4f55d47a34642e9429421e7",
+    "module_build_manifest": "lab/irix-module/build.json",
+    "module_build_manifest_sha256": "692c3f06b3487c8be18388c1a33d7a9605b0bb339204ffe482ece519ded78a4f"
+  },
+  "sources": {
+    "scripts/xiri_lab/__init__.py": "98abff8b2f3c19912cf6993ac5094008cb9ecea0fb6d66c149f76184d9182743",
+    "scripts/xiri_lab/guest.py": "e589b08a06a91fca6fde4c4b10a3e97b90807da82bf6d545b45b1da517d0c954",
+    "scripts/probe-netbsd.py": "adfa9547fa98af28fd55e4e155e7667b2b0a8c7cea8aee8d58079da946b72a1d",
+    "runtime/Makefile": "6c90346ed45fed80c8e1e40c7691eaec0b4cb22290728e6ea1079a756bd848bb",
+    "runtime/install.sh": "ce814793f53ad15f63e7ca75f80808c5fbbab2f319050043cfa1a2e09cb67557",
+    "runtime/README.md": "7342d715a9575cbe4209d0369041ebfde231fba8f725a4c6db2397bd238ad5ed",
+    "runtime/bin/xiri-launch": "e93699b941b709291e8b6f7be5a5ee58bd9faf4286776cbb5ae7c6f4a90a1b96",
+    "runtime/bin/xiri-logout": "06be5189a07f2f13f8d699ce8f5c7e7f28034027e5b76a119e4a136b84eb790c",
+    "runtime/bin/xiri-session": "85cacd11e4a013fcfe73adb0b4bc823aa4c143c16e1e879b313b044724edc64a",
+    "runtime/bin/xiri-desktop": "c20e0e8ee4a8c7ccfc68791cd7f2848062aea0520d0a23a14688c7e83c3d76f2",
+    "runtime/libexec/desktop-clients.sh": "c2b4ace1e1c13de8f82ebc246ded36edd6bbb9181c8c2363334c63c159f3b037",
+    "runtime/libexec/setup-pty.sh": "3670d50d4d96a7560f1376b64e2a1b7033feb3311120eedfa6eb4b0df62115a9",
+    "runtime/libexec/shell-handoff.c": "24e89b5a57543448defb35a8d836d5ee525ec9a402f807ffdc92b8ac8227f325",
+    "runtime/libexec/session-guard.c": "b6e0bf1b9036a3b4bbe27bdc43f8fdf9d090298b745da624de25db3282104203",
+    "runtime/libexec/x11-check.c": "5774f7fd2669390f8ab600f98711fba216735ad6d2bae6254e8b244a17ac51b8",
+    "runtime/rc.d/xiri_devices": "004cd8c79b25d408dcf3e6a5ae387440b7620ba0cc685467ad134eae0a4af17e",
+    "runtime/rc.d/xiri_famd": "6669ab48614713237fd740a533274fea00ea5acb3ac61ab0b7c21295a12bbcf1",
+    "runtime/etc/fam.conf": "0b85b499f668c1ecde9c409ac83cdca9cf4ba2722274010f30b09fd5fe9eee95",
+    "runtime/etc/session.conf": "9f56cb36f31e17246f311f856127038b3493cc52dc69028f731c913d950d9a88",
+    "lab/irix-session/descendants.c": "02c35bc4d7d5d27f72e5ce43694718c14c85068d4800d609dd730411de849c80",
+    "lab/irix-session/guard-tests.sh": "b198bd2a25d7a0ed8b9d2ddad007dc3b27e8ebf7256f58502c860420bf834eff",
+    "lab/irix-4dwm/type-ready.c": "61ce22cbda6c66ccaf53cbcffab5f3080be95004bcd3e5c6893dc54a8a9db838",
+    "lab/irix-filelocks/place-window.c": "af51ade704c9df4d589c3ae01e571da6a7d6f43de2fd51e3a1766935f04d3ddb",
+    "lab/irix-vendor-shell/catalog-input.c": "ff331c512a6acc0f19941904059584a140ddbc9e0abefb79dd457f1b1b92b46c",
+    "lab/newport-xaa/render-probe.c": "1b4acde386fa7451186b6f6b9a5e00ea22f44f48b09de0775a8e120092b26fa4",
+    "lab/irix-toolchest-input/inputcheck.c": "446a41e88f390c16f09a247cf9b15ed69552b86f20a4a00253c154e8da8b48ad",
+    "scripts/probe-xiri-session.py": "15f76cd349bb388f47cfb5130872c6dd0e3dcad3778ecbfd910e70b3a890c215"
+  },
+  "cycles": [
+    "/etc/rc.d/xiri_famd status && /etc/rc.d/xiri_famd stop && ! pgrep -x  \bfamd && rpcinfo -p 127.0.0.1 | awk '$1 == 391002 && $2 == 1 {found=1} END {exit  \bfound}' && /etc/rc.d/xiri_famd start && /etc/rc.d/xiri_famd status; xiri_rc=$?;  \bprintf '\\nXIRI_5596bfa031f04241bbf5f5fd38aa6e36_RC=%s\\n' \"$xiri_rc\"\nxiri_famd is running as pid 4054.\nStopping xiri_famd.\nxiri_famd is running as pid 3561.\n\nXIRI_5596bfa031f04241bbf5f5fd38aa6e36_RC=0\nxiri-indy# ",
+    "/etc/rc.d/xiri_famd status && /etc/rc.d/xiri_famd stop && ! pgrep -x  \bfamd && rpcinfo -p 127.0.0.1 | awk '$1 == 391002 && $2 == 1 {found=1} END {exit  \bfound}' && /etc/rc.d/xiri_famd start && /etc/rc.d/xiri_famd status; xiri_rc=$?;  \bprintf '\\nXIRI_c9eab558d581448998b0905f4e02fe63_RC=%s\\n' \"$xiri_rc\"\nxiri_famd is running as pid 3561.\nStopping xiri_famd.\nxiri_famd is running as pid 4076.\n\nXIRI_c9eab558d581448998b0905f4e02fe63_RC=0\nxiri-indy# "
+  ],
+  "restart": "old=$(cat /var/run/xiri_famd.pid); /etc/rc.d/xiri_famd restart && tes \bt \"$old\" != \"$(cat /var/run/xiri_famd.pid)\" && /etc/rc.d/xiri_famd status; xiri_ \brc=$?; printf '\\nXIRI_6e26215b41ef4a849a8f9885a9702386_RC=%s\\n' \"$xiri_rc\"\nStopping xiri_famd.\nxiri_famd is running as pid 4968.\n\nXIRI_6e26215b41ef4a849a8f9885a9702386_RC=0\nxiri-indy# ",
+  "unowned_refusal": "FAM is already running outside xiri_famd.\n",
+  "service_script_sha256": "6669ab48614713237fd740a533274fea00ea5acb3ac61ab0b7c21295a12bbcf1",
+  "base_raw_unchanged": true
+}
