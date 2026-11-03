@@ -1,0 +1,2631 @@
+{
+  "schema": 1,
+  "status": "excluded-from-primary-survey-clean-halt-failed",
+  "run": ".work/catalog-cycle/survey-1-k_ljbtpt",
+  "result_sha256": "e6a715455d683e2c1865460c6afb4b6fe5f8877e53e12fe10be9158d07cd32a3",
+  "serial_sha256": "fa9b38cc5d1177908bdf4b0e7ae0a064e616381c766294885cc1f7f5428e6aca",
+  "archive_sha256": "61536bc7fd8222dced2bd14ac1b648840c12569e3e77bf584300c048bea26f5a",
+  "harness_sha256": "1ec84690414624519d5cb05db8a02fe081ad86e481a95686ff5db294e46ba8ba",
+  "media_sources": {
+    "type.c": "61ce22cbda6c66ccaf53cbcffab5f3080be95004bcd3e5c6893dc54a8a9db838",
+    "place.c": "af51ade704c9df4d589c3ae01e571da6a7d6f43de2fd51e3a1766935f04d3ddb",
+    "catalog-input.c": "ff331c512a6acc0f19941904059584a140ddbc9e0abefb79dd457f1b1b92b46c",
+    "app.sh": "f94a78e0dbefe1c367a969d9e72e77c2fec22b72158f95ab0ca63d0ce418a2a1",
+    "observe.sh": "87e58cc4f879ff62c11bc95e68d0c270e60672fbedc59dfc2a04ed2ae38d0bee",
+    "guard-control.c": "cc71ccc39b2f75caf44f2afc9f97a2073373c36b40016a214b0345300724bcb0",
+    "windows.c": "63389feea651a5f1501bee38816d2beb00841a727a5fb74a38b3449dbf6bae11",
+    "window-control.c": "a9636e389799f9170dc031eb5c4138ba8d8c7f742824be1a7883f635dacaab92",
+    "query-control.c": "4a8d8ef99a8fe72b3f984dc3d1e695687c225e7ab5dd23406ad5ffe5804a3c3a",
+    "app-guard.c": "d7a94c103c1c454f488ee6c63d878fac4b2a4fe170a6938c5f33869efbfb084a",
+    "inventory.json": "64d66708cb032fd279f8061fff0e263575983849011098c0a8484b3267e7720a"
+  },
+  "clean_shutdown": false,
+  "cleanup_error": "Graphical halt did not record clean unmount and halt",
+  "source_unchanged": true,
+  "chd_sha256": "20b328a070537255c8c0aa4771aefd83cbaa8027208b93bf997302c426ef83b7",
+  "halt_serial": "xiri-indy# shutdown -h now\nShutdown NOW!\nshutdown: [pid 2583]\nxiri-indy# wall: You have write permission turned off; no reply possible\n                                                                               \n\n\u0007*** FINAL System shutdown message from root@xiri-indy ***\u0007                    \n\nSystem going down IMMEDIATELY                                                  \n\n                                                                               \n\n                                                                               \n\n\n\nSystem shutdown time has arrived\u0007\u0007\n\n\n\nAbout to run shutdown hooks...\n\nStopping cron.\nStopping inetd.\nStopping xdm.\nStopping xiri_famd.\nSaved entropy to /var/db/entropy-file.\nForcibly unmounting /var/shm\nRemoving block-type swap devices\nswapctl: removing /dev/sd0b as swap device\nTue Nov  3 23:17:36 UTC 2026\n\nxiri-indy# shutdown -h now\nShutdown NOW!\nshutdown: [pid 4204]\nxiri-indy# wall: You have write permission turned off; no reply possible\n                                                                               \n\n\u0007*** FINAL System shutdown message from root@xiri-indy ***\u0007                    \n\nSystem going down IMMEDIATELY                                                  \n\n                                                                               \n\n                                                                               \n\n\n\nSystem shutdown time has arrived\u0007\u0007\n\n\n\nAbout to run shutdown hooks...\n\ncron not running? (check /var/run/cron.pid).\ninetd not running? (check /var/run/inetd.pid).\nxdm not running? (check /var/run/xdm.pid).\nxiri_famd not running? (check /var/run/xiri_famd.pid).\nSaved entropy to /var/db/entropy-file.\n\n\nDone running shutdown hooks.\n\n",
+  "all_launch_cleanup_verified": true,
+  "observations": [
+    {
+      "case": {
+        "id": "app-057",
+        "target": "/usr/sbin/insight",
+        "kind": "elf",
+        "sha256": "f7bf3a73c1457af741a66de6d747ee1fe0e54d4f17567d112512b7ce2aeaa7d5",
+        "pages": [
+          "DesktopTools"
+        ],
+        "names": [
+          "insight"
+        ],
+        "partition": 1
+      },
+      "run": ".work/catalog-cycle/survey-1-k_ljbtpt",
+      "status": "window-observed",
+      "guard": {
+        "pid": "491",
+        "exit": "-1",
+        "signal": "15",
+        "stopped": "1",
+        "absent": "1",
+        "valid": "1",
+        "tracked": "2",
+        "remaining": "0",
+        "reason": "timeout",
+        "uid": "1234",
+        "gid": "1234",
+        "elapsed": "45060"
+      },
+      "owned_pids": [
+        491,
+        715
+      ],
+      "new_windows": [
+        {
+          "id": "1800011",
+          "width": 637,
+          "height": 124,
+          "name": "infosearch",
+          "class_name": "InfoSearch",
+          "instance": "infoDialog_popup"
+        }
+      ],
+      "samples": {
+        "3": {
+          "windows": [
+            {
+              "id": "1800011",
+              "width": 637,
+              "height": 124,
+              "name": "infosearch",
+              "class_name": "InfoSearch",
+              "instance": "infoDialog_popup"
+            }
+          ],
+          "processes": [
+            {
+              "pid": 491,
+              "ppid": 490,
+              "uid": 1234,
+              "state": "Ss",
+              "cpu_time": "0:00.10",
+              "pcpu": "0.0",
+              "command": "/usr/sbin/insight "
+            },
+            {
+              "pid": 715,
+              "ppid": 491,
+              "uid": 1234,
+              "state": "S",
+              "cpu_time": "0:00.25",
+              "pcpu": "1.1",
+              "command": "infosearch "
+            }
+          ],
+          "snapshot_complete": true,
+          "query_status": 0
+        },
+        "15": {
+          "windows": [
+            {
+              "id": "1800011",
+              "width": 637,
+              "height": 124,
+              "name": "infosearch",
+              "class_name": "InfoSearch",
+              "instance": "infoDialog_popup"
+            }
+          ],
+          "processes": [
+            {
+              "pid": 491,
+              "ppid": 490,
+              "uid": 1234,
+              "state": "Ss",
+              "cpu_time": "0:00.10",
+              "pcpu": "0.0",
+              "command": "/usr/sbin/insight "
+            },
+            {
+              "pid": 715,
+              "ppid": 491,
+              "uid": 1234,
+              "state": "S",
+              "cpu_time": "0:00.25",
+              "pcpu": "0.0",
+              "command": "infosearch "
+            }
+          ],
+          "snapshot_complete": true,
+          "query_status": 0
+        },
+        "35": {
+          "windows": [
+            {
+              "id": "1800011",
+              "width": 637,
+              "height": 124,
+              "name": "infosearch",
+              "class_name": "InfoSearch",
+              "instance": "infoDialog_popup"
+            }
+          ],
+          "processes": [
+            {
+              "pid": 491,
+              "ppid": 490,
+              "uid": 1234,
+              "state": "Is",
+              "cpu_time": "0:00.10",
+              "pcpu": "0.0",
+              "command": "/usr/sbin/insight "
+            },
+            {
+              "pid": 715,
+              "ppid": 491,
+              "uid": 1234,
+              "state": "I",
+              "cpu_time": "0:00.25",
+              "pcpu": "0.0",
+              "command": "infosearch "
+            }
+          ],
+          "snapshot_complete": true,
+          "query_status": 0
+        },
+        "last": {
+          "windows": [],
+          "processes": [],
+          "snapshot_complete": true,
+          "query_status": 0
+        }
+      },
+      "after_ps_pid_matches": [],
+      "observation_interrupted": false,
+      "batch_interrupted": false,
+      "window_query_failures": [],
+      "cleanup_verified": true,
+      "stdout": "",
+      "stderr": "",
+      "stdout_bytes": 0,
+      "stderr_bytes": 0,
+      "screenshot": {
+        "path": "app-057.png",
+        "sha256": "8b07304385377d9b7d80545ba0ffa7245ba63bd81e998c994422d787a110a628"
+      },
+      "normal_interaction_tested": false,
+      "catalog_double_click_tested": false,
+      "record_hashes": {
+        "before.windows": "f3c04ef515e515a7e6bb3317b657e249190684e1eb3314bb3790bbe6b91ffb5d",
+        "before.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "before.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "before.ps": "903c314e1b2a7a60e5b1c0660b8b1c4e760540a6b27102a6b2f15fd7d8e26513",
+        "argv": "c0967f17dd7f1eecc4e01a3df6ed20d699801d276ce11bf9beec4b1d9f275728",
+        "guard": "a91f773704fd33b248012f29511554857de92e3bafc0e02858a032e1eba863ab",
+        "guard.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "app.pid": "76b9bf7abc6c828814d919b5d66d18fd2ba7c5821df8c1e9e968ba3ee10f03c7",
+        "stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "3.windows": "316afacb6cf1994505714db8689219564ca666a17f72de009dd63347371e6428",
+        "3.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "3.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "3.ps": "e8770ede66a34e16fa14a170305b1f6ddca9ef1724bfdcd9f3f9b02a71b10dd7",
+        "15.windows": "316afacb6cf1994505714db8689219564ca666a17f72de009dd63347371e6428",
+        "15.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "15.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "15.ps": "9110111f5951a4ab3a2f3a24b58966a5de6e354943c2cd23c6fd5b6009db853d",
+        "35.windows": "316afacb6cf1994505714db8689219564ca666a17f72de009dd63347371e6428",
+        "35.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "35.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "35.ps": "f6223ff561db95d977196fae56dc39d0b96ec586a2e6aecda06be9d1a3a98f1c",
+        "last.ps": "974fa9f18fe44535050bb973893db062fb6bc1907e347caac1b260824da9c7d5",
+        "guard.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "last.windows": "f3c04ef515e515a7e6bb3317b657e249190684e1eb3314bb3790bbe6b91ffb5d",
+        "last.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "last.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "after.windows": "f3c04ef515e515a7e6bb3317b657e249190684e1eb3314bb3790bbe6b91ffb5d",
+        "after.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "after.ps": "e351ee27fb8060194156eba1533813d7c332939e9de51fbd48b01c4da17d487d"
+      }
+    },
+    {
+      "case": {
+        "id": "app-059",
+        "target": "/usr/sbin/mailbox",
+        "kind": "elf",
+        "sha256": "be1658dff0295cf0333c69f30e280414b1826967c34baf1d37b806791f97cdfc",
+        "pages": [
+          "DesktopTools"
+        ],
+        "names": [
+          "mailbox"
+        ],
+        "partition": 1
+      },
+      "run": ".work/catalog-cycle/survey-1-k_ljbtpt",
+      "status": "observation-interrupted",
+      "guard": {
+        "pid": "3297",
+        "exit": "-1",
+        "signal": "15",
+        "stopped": "1",
+        "absent": "1",
+        "valid": "1",
+        "tracked": "1",
+        "remaining": "0",
+        "reason": "timeout",
+        "uid": "1234",
+        "gid": "1234",
+        "elapsed": "45702"
+      },
+      "owned_pids": [
+        3297
+      ],
+      "new_windows": [],
+      "samples": {
+        "3": {
+          "windows": [],
+          "processes": [],
+          "snapshot_complete": false,
+          "query_status": 142
+        },
+        "last": {
+          "windows": [],
+          "processes": [],
+          "snapshot_complete": true,
+          "query_status": 0
+        }
+      },
+      "after_ps_pid_matches": [],
+      "observation_interrupted": true,
+      "batch_interrupted": false,
+      "window_query_failures": [
+        {
+          "sample": "3",
+          "status": 142,
+          "error": ""
+        }
+      ],
+      "cleanup_verified": true,
+      "stdout": "",
+      "stderr": "",
+      "stdout_bytes": 0,
+      "stderr_bytes": 0,
+      "screenshot": {
+        "path": "app-059.png",
+        "sha256": "9733dce1ee7d9d1200e9d326ea63132776ad0e752c3014da853966ec14b6c352"
+      },
+      "normal_interaction_tested": false,
+      "catalog_double_click_tested": false,
+      "record_hashes": {
+        "before.windows": "f3c04ef515e515a7e6bb3317b657e249190684e1eb3314bb3790bbe6b91ffb5d",
+        "before.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "before.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "before.ps": "ab6e10903c45f78499cc13df54f06c6f6714398a25f4dac7148292da893dca9c",
+        "argv": "ce7e935dd18494a3bd28ec428a478a5cc610e6248233fd6e02e362d4bc0da8aa",
+        "guard": "2106370cd0c6ddbd7f90e5d668aa3de59a62498bf57e9ac609526b5012a55d8b",
+        "guard.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "app.pid": "2b5c5353a153f2352331049d393985277740e7c2d431565ae12be6c52f527fbc",
+        "stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "3.windows": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "3.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "3.windows.status": "1dadd7223f8953c76459851cca53c62990c1a7b87a5795d31bbfa4059160e9f8",
+        "3.ps": "e072d4aeff7aa72f9f9d2f0d1663121469e4cc58748165cd8b041cb2230613c4",
+        "guard.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "last.windows": "f3c04ef515e515a7e6bb3317b657e249190684e1eb3314bb3790bbe6b91ffb5d",
+        "last.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "last.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "last.ps": "a8affa1265775697fa9f35b22cc95c921416b5b44679cea00bf3fa7b3334756d",
+        "after.windows": "f3c04ef515e515a7e6bb3317b657e249190684e1eb3314bb3790bbe6b91ffb5d",
+        "after.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after.ps": "796669b9260aeabcc80e3f5011e012dfd5dade761bf1957493174c95d63dd050",
+        "after.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      }
+    },
+    {
+      "case": {
+        "id": "app-069",
+        "target": "/usr/sbin/xwsh",
+        "kind": "elf",
+        "sha256": "52aa26d001fa1439fabb8ed4697cb93fa69125a466404ea5eccde9486bd545a7",
+        "pages": [
+          "DesktopTools"
+        ],
+        "names": [
+          "xwsh"
+        ],
+        "partition": 1
+      },
+      "run": ".work/catalog-cycle/survey-1-k_ljbtpt",
+      "status": "window-observed",
+      "guard": {
+        "pid": "4002",
+        "exit": "0",
+        "signal": "0",
+        "stopped": "1",
+        "absent": "1",
+        "valid": "1",
+        "tracked": "2",
+        "remaining": "0",
+        "reason": "timeout",
+        "uid": "1234",
+        "gid": "1234",
+        "elapsed": "45059"
+      },
+      "owned_pids": [
+        970,
+        4002
+      ],
+      "new_windows": [
+        {
+          "id": "1800005",
+          "width": 663,
+          "height": 600,
+          "name": "xwsh",
+          "class_name": "XWsh",
+          "instance": "xwsh"
+        }
+      ],
+      "samples": {
+        "3": {
+          "windows": [
+            {
+              "id": "1800005",
+              "width": 663,
+              "height": 600,
+              "name": "xwsh",
+              "class_name": "XWsh",
+              "instance": "xwsh"
+            }
+          ],
+          "processes": [
+            {
+              "pid": 970,
+              "ppid": 4002,
+              "uid": 1234,
+              "state": "Ss",
+              "cpu_time": "0:00.01",
+              "pcpu": "0.0",
+              "command": "-sh "
+            },
+            {
+              "pid": 4002,
+              "ppid": 841,
+              "uid": 1234,
+              "state": "Ss",
+              "cpu_time": "0:00.20",
+              "pcpu": "0.0",
+              "command": "/usr/sbin/xwsh "
+            }
+          ],
+          "snapshot_complete": true,
+          "query_status": 0
+        },
+        "15": {
+          "windows": [
+            {
+              "id": "1800005",
+              "width": 663,
+              "height": 600,
+              "name": "xwsh",
+              "class_name": "XWsh",
+              "instance": "xwsh"
+            }
+          ],
+          "processes": [
+            {
+              "pid": 970,
+              "ppid": 4002,
+              "uid": 1234,
+              "state": "Ss",
+              "cpu_time": "0:00.01",
+              "pcpu": "0.0",
+              "command": "-sh "
+            },
+            {
+              "pid": 4002,
+              "ppid": 841,
+              "uid": 1234,
+              "state": "Ss",
+              "cpu_time": "0:00.20",
+              "pcpu": "0.0",
+              "command": "/usr/sbin/xwsh "
+            }
+          ],
+          "snapshot_complete": true,
+          "query_status": 0
+        },
+        "35": {
+          "windows": [
+            {
+              "id": "1800005",
+              "width": 663,
+              "height": 600,
+              "name": "xwsh",
+              "class_name": "XWsh",
+              "instance": "xwsh"
+            }
+          ],
+          "processes": [
+            {
+              "pid": 970,
+              "ppid": 4002,
+              "uid": 1234,
+              "state": "Is",
+              "cpu_time": "0:00.01",
+              "pcpu": "0.0",
+              "command": "-sh "
+            },
+            {
+              "pid": 4002,
+              "ppid": 841,
+              "uid": 1234,
+              "state": "Is",
+              "cpu_time": "0:00.20",
+              "pcpu": "0.0",
+              "command": "/usr/sbin/xwsh "
+            }
+          ],
+          "snapshot_complete": true,
+          "query_status": 0
+        },
+        "last": {
+          "windows": [],
+          "processes": [],
+          "snapshot_complete": true,
+          "query_status": 0
+        }
+      },
+      "after_ps_pid_matches": [],
+      "observation_interrupted": false,
+      "batch_interrupted": false,
+      "window_query_failures": [],
+      "cleanup_verified": true,
+      "stdout": "",
+      "stderr": "",
+      "stdout_bytes": 0,
+      "stderr_bytes": 0,
+      "screenshot": {
+        "path": "app-069.png",
+        "sha256": "7a9cbeba218e4e5be6687c44ee2fac5b1a303b5575aeb4ddfb90a6f41536731c"
+      },
+      "normal_interaction_tested": false,
+      "catalog_double_click_tested": false,
+      "record_hashes": {
+        "before.windows": "f3c04ef515e515a7e6bb3317b657e249190684e1eb3314bb3790bbe6b91ffb5d",
+        "before.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "before.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "before.ps": "4155463a3575ae1ad5155552b6693e3d2e0df8d413d8d7f5f758ee1bec44731e",
+        "argv": "67df964b412352ef06102224bf9c4c8666f3a2a05578af8bf7717d51010512d3",
+        "guard": "1d7a6d2c98162e56620715c0bbc7643a6d9545c4c8f9a4db8633d6d3564cdd1c",
+        "guard.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "app.pid": "bbea4fc9465ef09b1df8abda31962bae043354d3309a7bb51a7148ebe60567ce",
+        "stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "3.windows": "9796f4eb1cfcdd8c46afc6995beb9c3dc1a9be25ac8a4b39c162b988d7a8f3fa",
+        "3.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "3.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "3.ps": "c1a2b976b40f645ab044d395cc1ae7d09830b83315ebcc489c58156a28eeb2fc",
+        "15.windows": "9796f4eb1cfcdd8c46afc6995beb9c3dc1a9be25ac8a4b39c162b988d7a8f3fa",
+        "15.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "15.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "15.ps": "5baf48c84d3690853683f190fed5fb032cae1a7336790498618cb24945206dc7",
+        "35.windows": "9796f4eb1cfcdd8c46afc6995beb9c3dc1a9be25ac8a4b39c162b988d7a8f3fa",
+        "35.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "35.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "35.ps": "ab19024f8b96ef27ae9a688a7fe6f9dd437919dba35697b81cbe21a0891f7588",
+        "last.ps": "88650720d1d2d9129b4da289933f82d4178ef92875c49720c651066692bf1d78",
+        "guard.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "last.windows": "f3c04ef515e515a7e6bb3317b657e249190684e1eb3314bb3790bbe6b91ffb5d",
+        "last.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "last.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "after.windows": "f3c04ef515e515a7e6bb3317b657e249190684e1eb3314bb3790bbe6b91ffb5d",
+        "after.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "after.ps": "9782e2f1efc224dfa0d663a026eff33d14f925b68cb2df7cdf56118482ab763b"
+      }
+    },
+    {
+      "case": {
+        "id": "app-071",
+        "target": "/usr/sbin/cvd",
+        "kind": "script",
+        "sha256": "e47768a82d66a4e42f19a383e8746e9137db9ab79b12a2d92175f912abbfea1d",
+        "pages": [
+          "DeveloperMagic"
+        ],
+        "names": [
+          "cvd"
+        ],
+        "partition": 1
+      },
+      "run": ".work/catalog-cycle/survey-1-k_ljbtpt",
+      "status": "nonzero-exit",
+      "guard": {
+        "pid": "3862",
+        "exit": "127",
+        "signal": "0",
+        "stopped": "0",
+        "absent": "1",
+        "valid": "1",
+        "tracked": "2",
+        "remaining": "0",
+        "reason": "leader-exit",
+        "uid": "1234",
+        "gid": "1234",
+        "elapsed": "206"
+      },
+      "owned_pids": [
+        1061,
+        3862
+      ],
+      "new_windows": [],
+      "samples": {
+        "last": {
+          "windows": [],
+          "processes": [],
+          "snapshot_complete": true,
+          "query_status": 0
+        }
+      },
+      "after_ps_pid_matches": [],
+      "observation_interrupted": false,
+      "batch_interrupted": false,
+      "window_query_failures": [],
+      "cleanup_verified": true,
+      "stdout": "",
+      "stderr": "/usr/sbin/cvd[289]: /usr/lib/WorkShop/cvmain:  not found\n",
+      "stdout_bytes": 0,
+      "stderr_bytes": 57,
+      "screenshot": {},
+      "normal_interaction_tested": false,
+      "catalog_double_click_tested": false,
+      "record_hashes": {
+        "before.windows": "f3c04ef515e515a7e6bb3317b657e249190684e1eb3314bb3790bbe6b91ffb5d",
+        "before.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "before.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "before.ps": "fefbbbe600e34f319db559952be10336ecd8ac3f16a9af0c906af82860f3a228",
+        "argv": "efc4d81d0f1b3d80d8d68699d3be197e21883b28c145495d0d0bb2a862585282",
+        "guard": "f7964ce7f1ea9b0d1e507bffe6a482e43e7e5773fd76f99e2aea197e8372de4b",
+        "guard.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "app.pid": "0adb35c0a38741977ce8f12b16e9d8557ef2a6ab6f1fa12c9f9ed89a0753bf5c",
+        "stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "9693bc0e001458cc0fb02664b1ce4eb9cc3d439bbb400a3380c3f0513b19fc1f",
+        "guard.status": "743c7850cccfba5e53a9002663ec1ddd1079315a98bdbfdde10e6044f56abefe",
+        "last.windows": "f3c04ef515e515a7e6bb3317b657e249190684e1eb3314bb3790bbe6b91ffb5d",
+        "last.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "last.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "last.ps": "f87721a65d6bb2f768bc02e077024be2b4c4624fbf200d8887f7b56311a618a7",
+        "after.windows": "f3c04ef515e515a7e6bb3317b657e249190684e1eb3314bb3790bbe6b91ffb5d",
+        "after.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "after.ps": "4ccf351d74003b51999188f63a551b7d7d7987ddf025fe9f25aba9d782540446"
+      }
+    },
+    {
+      "case": {
+        "id": "app-073",
+        "target": "/usr/sbin/cvperf",
+        "kind": "elf",
+        "sha256": "d2c53f27a7c6076e1184f79ed0bdad32a010a80d3a350a60ffd979abe6da0db8",
+        "pages": [
+          "DeveloperMagic"
+        ],
+        "names": [
+          "cvperf"
+        ],
+        "partition": 1
+      },
+      "run": ".work/catalog-cycle/survey-1-k_ljbtpt",
+      "status": "terminated-by-signal",
+      "guard": {
+        "pid": "4130",
+        "exit": "-1",
+        "signal": "11",
+        "stopped": "0",
+        "absent": "1",
+        "valid": "1",
+        "tracked": "1",
+        "remaining": "0",
+        "reason": "leader-exit",
+        "uid": "1234",
+        "gid": "1234",
+        "elapsed": "466"
+      },
+      "owned_pids": [
+        4130
+      ],
+      "new_windows": [],
+      "samples": {
+        "last": {
+          "windows": [],
+          "processes": [],
+          "snapshot_complete": true,
+          "query_status": 0
+        }
+      },
+      "after_ps_pid_matches": [],
+      "observation_interrupted": false,
+      "batch_interrupted": false,
+      "window_query_failures": [],
+      "cleanup_verified": true,
+      "stdout": "",
+      "stderr": "",
+      "stdout_bytes": 0,
+      "stderr_bytes": 0,
+      "screenshot": {},
+      "normal_interaction_tested": false,
+      "catalog_double_click_tested": false,
+      "record_hashes": {
+        "before.windows": "f3c04ef515e515a7e6bb3317b657e249190684e1eb3314bb3790bbe6b91ffb5d",
+        "before.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "before.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "before.ps": "410eb9242987b4148d6cc9661753b48d5fad5c703e1268d2dc78a893bddc5a03",
+        "argv": "4613eef6c74e43591906bb4d03571e4fab6668e6064a7960b86dccfc26f8438f",
+        "guard": "7a522a62bba96057a03974f410416a4fd633f1c4e2a5e142395194b9debf1d4b",
+        "guard.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "app.pid": "37c9a888873789be9e269c0930cfbbf59ffd927f9781309618416baded9ab219",
+        "stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "guard.status": "690e07064753123c967bbac0180f32da6a753a5bd8b79a47644cef58e776d9f0",
+        "last.windows": "f3c04ef515e515a7e6bb3317b657e249190684e1eb3314bb3790bbe6b91ffb5d",
+        "last.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "last.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "last.ps": "0983cda0c284cae77a699db0a5633f070c9dbab8fbb05256baef479062f36841",
+        "after.windows": "f3c04ef515e515a7e6bb3317b657e249190684e1eb3314bb3790bbe6b91ffb5d",
+        "after.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "after.ps": "54d00f7e8451d71531a018d9e4a95535e47c43780ec73106798bf3f9f09de277"
+      }
+    },
+    {
+      "case": {
+        "id": "app-075",
+        "target": "/usr/sbin/swpkg",
+        "kind": "elf",
+        "sha256": "1b3cdf5dc69dd866b3593920533da8b806a605fd355c15397197e1517862089c",
+        "pages": [
+          "DeveloperMagic"
+        ],
+        "names": [
+          "swpkg"
+        ],
+        "partition": 1
+      },
+      "run": ".work/catalog-cycle/survey-1-k_ljbtpt",
+      "status": "nonzero-exit",
+      "guard": {
+        "pid": "1189",
+        "exit": "1",
+        "signal": "0",
+        "stopped": "0",
+        "absent": "1",
+        "valid": "1",
+        "tracked": "2",
+        "remaining": "0",
+        "reason": "leader-exit",
+        "uid": "1234",
+        "gid": "1234",
+        "elapsed": "623"
+      },
+      "owned_pids": [
+        1189,
+        3990
+      ],
+      "new_windows": [],
+      "samples": {
+        "last": {
+          "windows": [],
+          "processes": [],
+          "snapshot_complete": true,
+          "query_status": 0
+        }
+      },
+      "after_ps_pid_matches": [],
+      "observation_interrupted": false,
+      "batch_interrupted": false,
+      "window_query_failures": [],
+      "cleanup_verified": true,
+      "stdout": "",
+      "stderr": "VkMsgFacility: VkMsgOpen failed with status TT_ERR_NOMP!\n",
+      "stdout_bytes": 0,
+      "stderr_bytes": 57,
+      "screenshot": {},
+      "normal_interaction_tested": false,
+      "catalog_double_click_tested": false,
+      "record_hashes": {
+        "before.windows": "f3c04ef515e515a7e6bb3317b657e249190684e1eb3314bb3790bbe6b91ffb5d",
+        "before.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "before.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "before.ps": "99d1f752f87886c29fb1e3ff5ff5fc99adb2d216f234115f50401af810de2a51",
+        "argv": "a9fc4f7514689719a09aab32c8a18eb895c8e6b1d72dfd7c6264e2a44107f6be",
+        "guard": "25aec41da87fbcaea62e26722d6c55c9e07caa4bc3aaf6b2b175f86a637773f8",
+        "guard.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "app.pid": "b4eb0c32519be3c43368cb817c696a9764583cee8105f8bf1629b8d2f2c4a5b0",
+        "stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "afefa8d4d44f6c3355fb30e0ccbac116770686e7977bdbd7b24ba59fd5d4f0bf",
+        "guard.status": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+        "last.windows": "f3c04ef515e515a7e6bb3317b657e249190684e1eb3314bb3790bbe6b91ffb5d",
+        "last.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "last.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "last.ps": "0234e88f483d8a78ff8abc376d162d38348ce328037d32dd65e835b6458862f4",
+        "after.windows": "f3c04ef515e515a7e6bb3317b657e249190684e1eb3314bb3790bbe6b91ffb5d",
+        "after.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "after.ps": "77a6604242e5efd4f2304acdc5623ac81135f5f6ae9af31c5795747f8dc72c3b"
+      }
+    },
+    {
+      "case": {
+        "id": "app-092",
+        "target": "/usr/bin/EcLink",
+        "kind": "elf",
+        "sha256": "2c5f6eacf7ad0438effcb1ea8f6fbb7a64bd828097183caa9ac7dd65cb44f1ff",
+        "pages": [
+          "ImagingTools"
+        ],
+        "names": [
+          "EcLink"
+        ],
+        "partition": 1
+      },
+      "run": ".work/catalog-cycle/survey-1-k_ljbtpt",
+      "status": "window-observed",
+      "guard": {
+        "pid": "4258",
+        "exit": "-1",
+        "signal": "15",
+        "stopped": "1",
+        "absent": "1",
+        "valid": "1",
+        "tracked": "1",
+        "remaining": "0",
+        "reason": "timeout",
+        "uid": "1234",
+        "gid": "1234",
+        "elapsed": "45058"
+      },
+      "owned_pids": [
+        4258
+      ],
+      "new_windows": [
+        {
+          "id": "1800047",
+          "width": 488,
+          "height": 422,
+          "name": "EcLink 3.1.3",
+          "class_name": "Eclipse",
+          "instance": "Eclipse"
+        },
+        {
+          "id": "1800089",
+          "width": 330,
+          "height": 72,
+          "name": "Error",
+          "class_name": "Eclipse",
+          "instance": "Error"
+        }
+      ],
+      "samples": {
+        "3": {
+          "windows": [
+            {
+              "id": "1800047",
+              "width": 488,
+              "height": 422,
+              "name": "EcLink 3.1.3",
+              "class_name": "Eclipse",
+              "instance": "Eclipse"
+            },
+            {
+              "id": "1800089",
+              "width": 330,
+              "height": 72,
+              "name": "Error",
+              "class_name": "Eclipse",
+              "instance": "Error"
+            }
+          ],
+          "processes": [
+            {
+              "pid": 4258,
+              "ppid": 4590,
+              "uid": 1234,
+              "state": "Rs",
+              "cpu_time": "0:01.79",
+              "pcpu": "46.8",
+              "command": "/usr/bin/EcLink "
+            }
+          ],
+          "snapshot_complete": true,
+          "query_status": 0
+        },
+        "15": {
+          "windows": [
+            {
+              "id": "1800047",
+              "width": 488,
+              "height": 422,
+              "name": "EcLink 3.1.3",
+              "class_name": "Eclipse",
+              "instance": "Eclipse"
+            },
+            {
+              "id": "1800089",
+              "width": 330,
+              "height": 72,
+              "name": "Error",
+              "class_name": "Eclipse",
+              "instance": "Error"
+            }
+          ],
+          "processes": [
+            {
+              "pid": 4258,
+              "ppid": 4590,
+              "uid": 1234,
+              "state": "Rs",
+              "cpu_time": "0:12.26",
+              "pcpu": "67.7",
+              "command": "/usr/bin/EcLink "
+            }
+          ],
+          "snapshot_complete": true,
+          "query_status": 0
+        },
+        "35": {
+          "windows": [
+            {
+              "id": "1800047",
+              "width": 488,
+              "height": 422,
+              "name": "EcLink 3.1.3",
+              "class_name": "Eclipse",
+              "instance": "Eclipse"
+            },
+            {
+              "id": "1800089",
+              "width": 330,
+              "height": 72,
+              "name": "Error",
+              "class_name": "Eclipse",
+              "instance": "Error"
+            }
+          ],
+          "processes": [
+            {
+              "pid": 4258,
+              "ppid": 4590,
+              "uid": 1234,
+              "state": "Rs",
+              "cpu_time": "0:29.81",
+              "pcpu": "73.9",
+              "command": "/usr/bin/EcLink "
+            }
+          ],
+          "snapshot_complete": true,
+          "query_status": 0
+        },
+        "last": {
+          "windows": [],
+          "processes": [],
+          "snapshot_complete": true,
+          "query_status": 0
+        }
+      },
+      "after_ps_pid_matches": [],
+      "observation_interrupted": false,
+      "batch_interrupted": false,
+      "window_query_failures": [],
+      "cleanup_verified": true,
+      "stdout": "",
+      "stderr": "Couldn't loap pixmap \"/usr/Eclipse/util/bitmaps/left_point_button\"\nCouldn't loap pixmap \"/usr/Eclipse/util/bitmaps/left_point_button\"\nCouldn't loap pixmap \"/usr/Eclipse/util/bitmaps/left_point_button\"\nCouldn't loap pixmap \"/usr/Eclipse/util/bitmaps/right_point_button\"\nCouldn't loap pixmap \"/usr/Eclipse/util/bitmaps/right_point_button\"\nCouldn't loap pixmap \"/usr/Eclipse/util/bitmaps/right_point_button\"\nCan't open /dev/scsi/sc0d6l0: No such file or directory\nCan't open /dev/scsi/sc0d6l0: No such file or directory\n",
+      "stdout_bytes": 0,
+      "stderr_bytes": 517,
+      "screenshot": {
+        "path": "app-092.png",
+        "sha256": "e0dd902edd76ff2007f2ee88a3b3efe100fe7b30c4f445622ab20893ae2f51bb"
+      },
+      "normal_interaction_tested": false,
+      "catalog_double_click_tested": false,
+      "record_hashes": {
+        "before.windows": "f3c04ef515e515a7e6bb3317b657e249190684e1eb3314bb3790bbe6b91ffb5d",
+        "before.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "before.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "before.ps": "62fa2beefce32b8cf130abbc870518e1743a9f8817e35a7389e7e90ffe811845",
+        "argv": "2b479565315e2c766db4ec8b7825d8458a4a51ffaef48a0620f1be3a96f1372d",
+        "guard": "fd12e491970d4132f8964eb4f2756c1e04bdbd404251b671c95b76da80127e1f",
+        "guard.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "app.pid": "436da2115acfedccabaea9e5c6a1c9b60d3077cac1cefd38b40b1fa7fabc368e",
+        "stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "33098b21dc09b83141863a9866c67112a3252b327dca1a7e9a789c48e93f9840",
+        "3.windows": "065e3e45649c79a3589f4e1a76dc1d5f8bda44b969e940b3c5edc6480e2cfab3",
+        "3.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "3.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "3.ps": "f05de8940626ae51f1410d4fe88bf61e5b6572edd54b5cebe57105f643798d5c",
+        "15.windows": "065e3e45649c79a3589f4e1a76dc1d5f8bda44b969e940b3c5edc6480e2cfab3",
+        "15.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "15.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "15.ps": "e130f25f37d0f4ab4b17cbea49a296e73ee38b1fa1ffe5186feeb592ded811a0",
+        "35.windows": "065e3e45649c79a3589f4e1a76dc1d5f8bda44b969e940b3c5edc6480e2cfab3",
+        "35.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "35.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "35.ps": "d84e0fdcd1a56cecc55023637a8ef18afe7473097f0d6b82c988f70fef7656f4",
+        "last.ps": "b16fada8dbc70c75afd8f8e8a16a60c6f34e1a8b79c7067b6501a81257c9749c",
+        "guard.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "last.windows": "f3c04ef515e515a7e6bb3317b657e249190684e1eb3314bb3790bbe6b91ffb5d",
+        "last.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "last.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "after.windows": "f3c04ef515e515a7e6bb3317b657e249190684e1eb3314bb3790bbe6b91ffb5d",
+        "after.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "after.ps": "050d8bc8e3d661a53ac39ccc9ed614d1e0a453d8c9947eedb3b8c7944d4b101b"
+      }
+    },
+    {
+      "case": {
+        "id": "app-094",
+        "target": "/usr/bin/EcRender",
+        "kind": "elf",
+        "sha256": "130e76e3745430e29e0315cfb99d14272489f39d5ff33e119476afe317a388c9",
+        "pages": [
+          "ImagingTools"
+        ],
+        "names": [
+          "EcRender"
+        ],
+        "partition": 1
+      },
+      "run": ".work/catalog-cycle/survey-1-k_ljbtpt",
+      "status": "nonzero-exit",
+      "guard": {
+        "pid": "1347",
+        "exit": "126",
+        "signal": "0",
+        "stopped": "0",
+        "absent": "1",
+        "valid": "1",
+        "tracked": "1",
+        "remaining": "0",
+        "reason": "leader-exit",
+        "uid": "1234",
+        "gid": "1234",
+        "elapsed": "89"
+      },
+      "owned_pids": [
+        1347
+      ],
+      "new_windows": [],
+      "samples": {
+        "last": {
+          "windows": [],
+          "processes": [],
+          "snapshot_complete": true,
+          "query_status": 0
+        }
+      },
+      "after_ps_pid_matches": [],
+      "observation_interrupted": false,
+      "batch_interrupted": false,
+      "window_query_failures": [],
+      "cleanup_verified": true,
+      "stdout": "",
+      "stderr": "xiri-catalog: /usr/bin/EcRender: cannot execute\n",
+      "stdout_bytes": 0,
+      "stderr_bytes": 48,
+      "screenshot": {},
+      "normal_interaction_tested": false,
+      "catalog_double_click_tested": false,
+      "record_hashes": {
+        "before.windows": "f3c04ef515e515a7e6bb3317b657e249190684e1eb3314bb3790bbe6b91ffb5d",
+        "before.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "before.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "before.ps": "64a9450f1c618cd42d10a971902cfb660a4681c1581a4e9636b108b79174dc58",
+        "argv": "1817cf72ccf21a397d4f19477d2abcd8059b8291b3866b86f6560812045aca24",
+        "guard": "c8ff4a10ff8926d4fea07f2cf587cc45542aa79fe3cf4bcfe29df65fd6cc48db",
+        "guard.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "app.pid": "a6055f5253a95ac40ab797613235fac8d9c7390dd70e0a7b0f8d4850ce0b9cfa",
+        "stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "1c0f8ebd22ff2f0bc49e9e11f7f287ff31d4bb4a2a58b1d91f0ab6d946033dd7",
+        "guard.status": "703d2c10fa601276a4dd96193faed68902a642a44eb5b01b40d6fc8499e12822",
+        "last.windows": "f3c04ef515e515a7e6bb3317b657e249190684e1eb3314bb3790bbe6b91ffb5d",
+        "last.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "last.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "last.ps": "fba339f1c90ae27a3878531b957e9c05ccd55821a48b926bec5d8f3a7f8feb50",
+        "after.windows": "f3c04ef515e515a7e6bb3317b657e249190684e1eb3314bb3790bbe6b91ffb5d",
+        "after.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "after.ps": "e8c131952e9031d45043accb86e81b937ccfd592586456e92006037256b69074"
+      }
+    },
+    {
+      "case": {
+        "id": "app-096",
+        "target": "/usr/sbin/tfxConfig",
+        "kind": "elf",
+        "sha256": "3a82cdc28fb4bd2a7fb542da26476295b1ced8cb6751055fc7d6d243d97f00bf",
+        "pages": [
+          "Interoperability"
+        ],
+        "names": [
+          "tfxConfig"
+        ],
+        "partition": 1
+      },
+      "run": ".work/catalog-cycle/survey-1-k_ljbtpt",
+      "status": "nonzero-exit",
+      "guard": {
+        "pid": "1444",
+        "exit": "126",
+        "signal": "0",
+        "stopped": "0",
+        "absent": "1",
+        "valid": "1",
+        "tracked": "1",
+        "remaining": "0",
+        "reason": "leader-exit",
+        "uid": "1234",
+        "gid": "1234",
+        "elapsed": "181"
+      },
+      "owned_pids": [
+        1444
+      ],
+      "new_windows": [],
+      "samples": {
+        "last": {
+          "windows": [],
+          "processes": [],
+          "snapshot_complete": true,
+          "query_status": 0
+        }
+      },
+      "after_ps_pid_matches": [],
+      "observation_interrupted": false,
+      "batch_interrupted": false,
+      "window_query_failures": [],
+      "cleanup_verified": true,
+      "stdout": "",
+      "stderr": "xiri-catalog: /usr/sbin/tfxConfig: cannot execute\n",
+      "stdout_bytes": 0,
+      "stderr_bytes": 50,
+      "screenshot": {},
+      "normal_interaction_tested": false,
+      "catalog_double_click_tested": false,
+      "record_hashes": {
+        "before.windows": "f3c04ef515e515a7e6bb3317b657e249190684e1eb3314bb3790bbe6b91ffb5d",
+        "before.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "before.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "before.ps": "b33d2bfb02b302e9d562f62e3aee952f20b9cb84253dbaa1c7120e5336948457",
+        "argv": "9baf210d3b71601b04af052a822181acad17e3139c4edbfc5058d7558035e345",
+        "guard": "5bbdc1468be88110806376e71d58cb639dbb43e9c379608bd92f1ade38e198b1",
+        "guard.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "app.pid": "d468265197d1fd6798a670e4b782e824b5b71ec230ed4d18b6ddfbf116753456",
+        "stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "12d614ccb6781c95ff534a29684a2f841d08d00de879db0f4b260afeceeeb669",
+        "guard.status": "703d2c10fa601276a4dd96193faed68902a642a44eb5b01b40d6fc8499e12822",
+        "last.windows": "f3c04ef515e515a7e6bb3317b657e249190684e1eb3314bb3790bbe6b91ffb5d",
+        "last.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "last.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "last.ps": "a8941637c47798f379bddd78552e308398170bf4beff8a16d37947d5dee8e5e8",
+        "after.windows": "f3c04ef515e515a7e6bb3317b657e249190684e1eb3314bb3790bbe6b91ffb5d",
+        "after.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "after.ps": "bcad77e2665980d8594f498a1e1dc9ef8beb0b0c105ade30ae9fb79c39eee6e0"
+      }
+    },
+    {
+      "case": {
+        "id": "app-098",
+        "target": "/usr/sbin/cdplayer",
+        "kind": "elf",
+        "sha256": "6daa22a9300849f63edbec277df5589c63bef6379a9bed46658322da7436ffb8",
+        "pages": [
+          "MediaTools"
+        ],
+        "names": [
+          "cdplayer"
+        ],
+        "partition": 1
+      },
+      "run": ".work/catalog-cycle/survey-1-k_ljbtpt",
+      "status": "terminated-by-signal",
+      "guard": {
+        "pid": "1476",
+        "exit": "-1",
+        "signal": "8",
+        "stopped": "0",
+        "absent": "1",
+        "valid": "1",
+        "tracked": "1",
+        "remaining": "0",
+        "reason": "leader-exit",
+        "uid": "1234",
+        "gid": "1234",
+        "elapsed": "688"
+      },
+      "owned_pids": [
+        1476
+      ],
+      "new_windows": [],
+      "samples": {
+        "last": {
+          "windows": [],
+          "processes": [],
+          "snapshot_complete": true,
+          "query_status": 0
+        }
+      },
+      "after_ps_pid_matches": [],
+      "observation_interrupted": false,
+      "batch_interrupted": false,
+      "window_query_failures": [],
+      "cleanup_verified": true,
+      "stdout": "",
+      "stderr": "",
+      "stdout_bytes": 0,
+      "stderr_bytes": 0,
+      "screenshot": {},
+      "normal_interaction_tested": false,
+      "catalog_double_click_tested": false,
+      "record_hashes": {
+        "before.windows": "f3c04ef515e515a7e6bb3317b657e249190684e1eb3314bb3790bbe6b91ffb5d",
+        "before.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "before.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "before.ps": "b919d038aa041096f1f67050be0203bcacd3c72d1058afc2d5cd4e70cfd34e20",
+        "argv": "3a83e1eb204db02874926cab395cfa619168aec9b9e8aa85be191aabf79989d3",
+        "guard": "635e35c71b878e7ec45e66dd85c025cbf362bdf6111c569aff60a15b982ca8f5",
+        "guard.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "app.pid": "2105a2c7da6d87e97645e118d238df3c7161fccaa05bc63b5b09114b8d61305b",
+        "stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "guard.status": "748ea33db356501af68a9e37a1583cfa57192a894aab2a692c5475f031d1e81a",
+        "last.windows": "f3c04ef515e515a7e6bb3317b657e249190684e1eb3314bb3790bbe6b91ffb5d",
+        "last.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "last.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "last.ps": "c64ddd179d15b4982cf7f5117e0f51edfd4761b5b54fc895ed9a0ed553b1b043",
+        "after.windows": "f3c04ef515e515a7e6bb3317b657e249190684e1eb3314bb3790bbe6b91ffb5d",
+        "after.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "after.ps": "f7d327949804f6c947b071baaada1282f60cd3fa324d46f9aa2113eddbc38845"
+      }
+    },
+    {
+      "case": {
+        "id": "app-100",
+        "target": "/usr/sbin/datman",
+        "kind": "elf",
+        "sha256": "efe589aeb1a8a80630234b9da1e555a978c0ac562c1cca690c50a79a22209572",
+        "pages": [
+          "MediaTools"
+        ],
+        "names": [
+          "datman"
+        ],
+        "partition": 1
+      },
+      "run": ".work/catalog-cycle/survey-1-k_ljbtpt",
+      "status": "zero-exit-without-window",
+      "guard": {
+        "pid": "1614",
+        "exit": "0",
+        "signal": "0",
+        "stopped": "0",
+        "absent": "1",
+        "valid": "1",
+        "tracked": "3",
+        "remaining": "0",
+        "reason": "leader-exit",
+        "uid": "1234",
+        "gid": "1234",
+        "elapsed": "1215"
+      },
+      "owned_pids": [
+        1572,
+        1614,
+        4051
+      ],
+      "new_windows": [],
+      "samples": {
+        "last": {
+          "windows": [],
+          "processes": [],
+          "snapshot_complete": true,
+          "query_status": 0
+        }
+      },
+      "after_ps_pid_matches": [],
+      "observation_interrupted": false,
+      "batch_interrupted": false,
+      "window_query_failures": [],
+      "cleanup_verified": true,
+      "stdout": "",
+      "stderr": "Can't find color named sgislateblue\n",
+      "stdout_bytes": 0,
+      "stderr_bytes": 36,
+      "screenshot": {},
+      "normal_interaction_tested": false,
+      "catalog_double_click_tested": false,
+      "record_hashes": {
+        "before.windows": "f3c04ef515e515a7e6bb3317b657e249190684e1eb3314bb3790bbe6b91ffb5d",
+        "before.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "before.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "before.ps": "bef579df8f4bc3eb69c777e946bf1c3c7a2ae7fa62fe48eceacfe8ef4afb24af",
+        "argv": "cddaa140310913a5c8e2c1978052204c11bddd015a412959dea095654a257f05",
+        "guard": "d3cabdab3bb9ada1e542bd031ab945ac063787f4c0ecf10c6d5ed41967a27256",
+        "guard.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "app.pid": "c844c106b8233bba6035c084f9701383cc86238efe364142e825c78dd45a96be",
+        "stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "b52d460946d11b5c6e1957c33e00b9b1c81d6b09a7525c14b665cf4b78c87bfe",
+        "guard.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "last.windows": "f3c04ef515e515a7e6bb3317b657e249190684e1eb3314bb3790bbe6b91ffb5d",
+        "last.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "last.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "last.ps": "3091a43cdd09de1a37a41fbb4121720480e1975fefce95b8ee3568e56513aac5",
+        "after.windows": "f3c04ef515e515a7e6bb3317b657e249190684e1eb3314bb3790bbe6b91ffb5d",
+        "after.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "after.ps": "c8996d6dc8e248461db583836b5d9d53c0bea522ce6d3165f2ae960293eb4154"
+      }
+    },
+    {
+      "case": {
+        "id": "app-102",
+        "target": "/usr/sbin/imged",
+        "kind": "elf",
+        "sha256": "fbc94829c746eabe0e43b7ed21f2f2bb4ecae599d05785962da2a3eb8370d27c",
+        "pages": [
+          "MediaTools"
+        ],
+        "names": [
+          "image_editor"
+        ],
+        "partition": 1
+      },
+      "run": ".work/catalog-cycle/survey-1-k_ljbtpt",
+      "status": "zero-exit-without-window",
+      "guard": {
+        "pid": "1611",
+        "exit": "0",
+        "signal": "0",
+        "stopped": "0",
+        "absent": "1",
+        "valid": "1",
+        "tracked": "2",
+        "remaining": "0",
+        "reason": "leader-exit",
+        "uid": "1234",
+        "gid": "1234",
+        "elapsed": "387"
+      },
+      "owned_pids": [
+        1611,
+        4438
+      ],
+      "new_windows": [],
+      "samples": {
+        "last": {
+          "windows": [],
+          "processes": [],
+          "snapshot_complete": true,
+          "query_status": 0
+        }
+      },
+      "after_ps_pid_matches": [],
+      "observation_interrupted": false,
+      "batch_interrupted": false,
+      "window_query_failures": [],
+      "cleanup_verified": true,
+      "stdout": "",
+      "stderr": "/usr/sbin/imged: ReadDisplay extension not supported by current X server!usage: imged <infile> [xsize ysize [-rgb]]\n",
+      "stdout_bytes": 0,
+      "stderr_bytes": 116,
+      "screenshot": {},
+      "normal_interaction_tested": false,
+      "catalog_double_click_tested": false,
+      "record_hashes": {
+        "before.windows": "f3c04ef515e515a7e6bb3317b657e249190684e1eb3314bb3790bbe6b91ffb5d",
+        "before.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "before.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "before.ps": "637575e9ecb53dfbf43acf384762dcd9b49054e695d2401adb6c2d02c69eabe3",
+        "argv": "1bc68f5579a6bf2011f456aa15620b3ef74893be72ce03161452d726074893aa",
+        "guard": "e8106de29dd8ddb56c60a083ed919618d1a7d679a7f6ee5b5066b5af1fe00dba",
+        "guard.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "app.pid": "3a27dd9ebfe322e9477fa3f0bb41307859a05942f293dd79c7bf2d3bd353c5ab",
+        "stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "a1e5a6c9c02a954bb6f75d04d13b39e76d2d7429364e9ebb43555d3e20c55adb",
+        "guard.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "last.windows": "f3c04ef515e515a7e6bb3317b657e249190684e1eb3314bb3790bbe6b91ffb5d",
+        "last.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "last.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "last.ps": "e16c327ce8dbc7a3d70f442944fee09bc268a2545a5a7e92c8e23a4ed09cf402",
+        "after.windows": "f3c04ef515e515a7e6bb3317b657e249190684e1eb3314bb3790bbe6b91ffb5d",
+        "after.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "after.ps": "c20c2e56751674c3595dd500eb6efec08c3a945da3bd5adbbc8c353a04d65c38"
+      }
+    },
+    {
+      "case": {
+        "id": "app-104",
+        "target": "/usr/sbin/imginfo",
+        "kind": "elf",
+        "sha256": "c2754d80e1611d09d189b8bd10afcc6296db0ca742ace7b9ab5dc3f40d930c88",
+        "pages": [
+          "MediaTools"
+        ],
+        "names": [
+          "imginfo"
+        ],
+        "partition": 1
+      },
+      "run": ".work/catalog-cycle/survey-1-k_ljbtpt",
+      "status": "nonzero-exit",
+      "guard": {
+        "pid": "1742",
+        "exit": "126",
+        "signal": "0",
+        "stopped": "0",
+        "absent": "1",
+        "valid": "1",
+        "tracked": "1",
+        "remaining": "0",
+        "reason": "leader-exit",
+        "uid": "1234",
+        "gid": "1234",
+        "elapsed": "150"
+      },
+      "owned_pids": [
+        1742
+      ],
+      "new_windows": [],
+      "samples": {
+        "last": {
+          "windows": [],
+          "processes": [],
+          "snapshot_complete": true,
+          "query_status": 0
+        }
+      },
+      "after_ps_pid_matches": [],
+      "observation_interrupted": false,
+      "batch_interrupted": false,
+      "window_query_failures": [],
+      "cleanup_verified": true,
+      "stdout": "",
+      "stderr": "xiri-catalog: /usr/sbin/imginfo: cannot execute\n",
+      "stdout_bytes": 0,
+      "stderr_bytes": 48,
+      "screenshot": {},
+      "normal_interaction_tested": false,
+      "catalog_double_click_tested": false,
+      "record_hashes": {
+        "before.windows": "f3c04ef515e515a7e6bb3317b657e249190684e1eb3314bb3790bbe6b91ffb5d",
+        "before.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "before.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "before.ps": "97d5505bac189c07bd2e1299ff8c63cb7467841e80d27d167937cddab8be08c0",
+        "argv": "2b73dc0b4b73338ee89b3db5341de4f85d86d706432f0e4775b4264ec15007c4",
+        "guard": "12427851742e8dae3ea6413f61389faad5c7afe86ff6076d0e9431315f2afa0a",
+        "guard.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "app.pid": "41126ebaec02546a64ec49d9a7a8ff32497c66c78ada68a7c709b0e2c73fd380",
+        "stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "112920d21d2e9b2920cc04ef4d513336dac28abadce99617d3eb68d66bc1855f",
+        "guard.status": "703d2c10fa601276a4dd96193faed68902a642a44eb5b01b40d6fc8499e12822",
+        "last.windows": "f3c04ef515e515a7e6bb3317b657e249190684e1eb3314bb3790bbe6b91ffb5d",
+        "last.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "last.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "last.ps": "fc921c936553b70a0377becc4a031fd5be3a6f64e80e47f1c2dd57746aa23e37",
+        "after.windows": "f3c04ef515e515a7e6bb3317b657e249190684e1eb3314bb3790bbe6b91ffb5d",
+        "after.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "after.ps": "b61d5af3970026d7f7c732745f2963ca5d2a1692c36679608f31c47b2918e69f"
+      }
+    },
+    {
+      "case": {
+        "id": "app-106",
+        "target": "/usr/sbin/imgworks",
+        "kind": "elf",
+        "sha256": "d4d99e08510ac239f43084a374bbb3cbb7386c6fb0d08df9e91fed646a59e31e",
+        "pages": [
+          "MediaTools"
+        ],
+        "names": [
+          "imgworks"
+        ],
+        "partition": 1
+      },
+      "run": ".work/catalog-cycle/survey-1-k_ljbtpt",
+      "status": "nonzero-exit",
+      "guard": {
+        "pid": "4566",
+        "exit": "126",
+        "signal": "0",
+        "stopped": "0",
+        "absent": "1",
+        "valid": "1",
+        "tracked": "1",
+        "remaining": "0",
+        "reason": "leader-exit",
+        "uid": "1234",
+        "gid": "1234",
+        "elapsed": "89"
+      },
+      "owned_pids": [
+        4566
+      ],
+      "new_windows": [],
+      "samples": {
+        "last": {
+          "windows": [],
+          "processes": [],
+          "snapshot_complete": true,
+          "query_status": 0
+        }
+      },
+      "after_ps_pid_matches": [],
+      "observation_interrupted": false,
+      "batch_interrupted": false,
+      "window_query_failures": [],
+      "cleanup_verified": true,
+      "stdout": "",
+      "stderr": "xiri-catalog: /usr/sbin/imgworks: cannot execute\n",
+      "stdout_bytes": 0,
+      "stderr_bytes": 49,
+      "screenshot": {},
+      "normal_interaction_tested": false,
+      "catalog_double_click_tested": false,
+      "record_hashes": {
+        "before.windows": "f3c04ef515e515a7e6bb3317b657e249190684e1eb3314bb3790bbe6b91ffb5d",
+        "before.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "before.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "before.ps": "0500b2e54139b8b31e00bca5b4070725a02c1e7f2e6143d8a404850f5322185a",
+        "argv": "271a82f6520c8fa240822318612ffd7f9c6ce53e9807e7b86d93170d7df9c70b",
+        "guard": "3e14072e7806380af22781226f78037eb3d81ad04c054f9b3915376fe3e7e650",
+        "guard.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "app.pid": "40f0f65d7f51bf2003c9d0287d62ff693d7f82e8a75d9c09ffbd36f666aa7fe7",
+        "stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "1b913467de867495fa90e4b64902737c5f22445239a2500f66dcb7b3ad6a9a72",
+        "guard.status": "703d2c10fa601276a4dd96193faed68902a642a44eb5b01b40d6fc8499e12822",
+        "last.windows": "f3c04ef515e515a7e6bb3317b657e249190684e1eb3314bb3790bbe6b91ffb5d",
+        "last.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "last.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "last.ps": "650be68db89b8a299d6386989973a6848acc8eeaa918ace0c3ee1135f7733f29",
+        "after.windows": "f3c04ef515e515a7e6bb3317b657e249190684e1eb3314bb3790bbe6b91ffb5d",
+        "after.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "after.ps": "f24cb6db2f76486740e1d8f09715676cfab39087d17bff98e75810103d183d44"
+      }
+    },
+    {
+      "case": {
+        "id": "app-108",
+        "target": "/usr/sbin/mediaplayer",
+        "kind": "elf",
+        "sha256": "672e72c4ae6a06c37838d4daabb1ae55957cbcf0c06ce59ae97ca77513f79cd6",
+        "pages": [
+          "MediaTools"
+        ],
+        "names": [
+          "mediaplayer"
+        ],
+        "partition": 1
+      },
+      "run": ".work/catalog-cycle/survey-1-k_ljbtpt",
+      "status": "window-observed",
+      "guard": {
+        "pid": "1886",
+        "exit": "0",
+        "signal": "0",
+        "stopped": "1",
+        "absent": "1",
+        "valid": "1",
+        "tracked": "2",
+        "remaining": "0",
+        "reason": "timeout",
+        "uid": "1234",
+        "gid": "1234",
+        "elapsed": "45051"
+      },
+      "owned_pids": [
+        1828,
+        1886
+      ],
+      "new_windows": [
+        {
+          "id": "1800098",
+          "width": 300,
+          "height": 91,
+          "name": "MediaPlayer",
+          "class_name": "MediaPlayer",
+          "instance": "MediaPlayer"
+        }
+      ],
+      "samples": {
+        "3": {
+          "windows": [
+            {
+              "id": "1800098",
+              "width": 300,
+              "height": 91,
+              "name": "MediaPlayer",
+              "class_name": "MediaPlayer",
+              "instance": "MediaPlayer"
+            }
+          ],
+          "processes": [
+            {
+              "pid": 1828,
+              "ppid": 1,
+              "uid": 1234,
+              "state": "S",
+              "cpu_time": "0:00.53",
+              "pcpu": "4.9",
+              "command": "/usr/sbin/mediaplayer "
+            }
+          ],
+          "snapshot_complete": true,
+          "query_status": 0
+        },
+        "15": {
+          "windows": [
+            {
+              "id": "1800098",
+              "width": 300,
+              "height": 91,
+              "name": "MediaPlayer",
+              "class_name": "MediaPlayer",
+              "instance": "MediaPlayer"
+            }
+          ],
+          "processes": [
+            {
+              "pid": 1828,
+              "ppid": 1,
+              "uid": 1234,
+              "state": "S",
+              "cpu_time": "0:00.53",
+              "pcpu": "0.0",
+              "command": "/usr/sbin/mediaplayer "
+            }
+          ],
+          "snapshot_complete": true,
+          "query_status": 0
+        },
+        "35": {
+          "windows": [
+            {
+              "id": "1800098",
+              "width": 300,
+              "height": 91,
+              "name": "MediaPlayer",
+              "class_name": "MediaPlayer",
+              "instance": "MediaPlayer"
+            }
+          ],
+          "processes": [
+            {
+              "pid": 1828,
+              "ppid": 1,
+              "uid": 1234,
+              "state": "I",
+              "cpu_time": "0:00.53",
+              "pcpu": "0.0",
+              "command": "/usr/sbin/mediaplayer "
+            }
+          ],
+          "snapshot_complete": true,
+          "query_status": 0
+        },
+        "last": {
+          "windows": [],
+          "processes": [],
+          "snapshot_complete": true,
+          "query_status": 0
+        }
+      },
+      "after_ps_pid_matches": [],
+      "observation_interrupted": false,
+      "batch_interrupted": false,
+      "window_query_failures": [],
+      "cleanup_verified": true,
+      "stdout": "",
+      "stderr": "",
+      "stdout_bytes": 0,
+      "stderr_bytes": 0,
+      "screenshot": {
+        "path": "app-108.png",
+        "sha256": "0a41f037b89ede216b171d22e791debbff4df2a738c015c748a414af62be4c92"
+      },
+      "normal_interaction_tested": false,
+      "catalog_double_click_tested": false,
+      "record_hashes": {
+        "before.windows": "f3c04ef515e515a7e6bb3317b657e249190684e1eb3314bb3790bbe6b91ffb5d",
+        "before.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "before.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "before.ps": "cfd7ccea4b205133a4efea65164841c579fa4555822eefe041806c9cfa7a759f",
+        "argv": "9f235527d3fa0afefe30d5899c9cc215e7fe0bc7860575d99842f0496c2d65fe",
+        "guard": "e869610441e1328f6761c48e6d01372623ed374bcf9fd3f4a0e9a03754ad22b9",
+        "guard.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "app.pid": "2e1ca3d9fcb0efbaf5f4bcc0261af2c21fea722bf9ccdfe6ef4edb783baf9dff",
+        "stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "3.windows": "f0d0d516997f5e146d1f7a35a106a5eaaaedef6cf93678425c679b2555709690",
+        "3.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "3.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "3.ps": "e51886654a4ed1242f732097e0fcd349172b900dc75634c0bb6994da977a1450",
+        "15.windows": "f0d0d516997f5e146d1f7a35a106a5eaaaedef6cf93678425c679b2555709690",
+        "15.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "15.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "15.ps": "c677fd5ab49f082af54b623e294ae310715c87042f72aa1b72ceacab33ae5a20",
+        "35.windows": "f0d0d516997f5e146d1f7a35a106a5eaaaedef6cf93678425c679b2555709690",
+        "35.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "35.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "35.ps": "427b55061f31cbfd7c668d5402c0fce1f26f0a3559998e7385e4bdf926b052a7",
+        "last.ps": "3bc05541a285beb4d1193020785d463bd6939bd4e3c022f932433e2b55898071",
+        "guard.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "last.windows": "f3c04ef515e515a7e6bb3317b657e249190684e1eb3314bb3790bbe6b91ffb5d",
+        "last.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "last.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "after.windows": "f3c04ef515e515a7e6bb3317b657e249190684e1eb3314bb3790bbe6b91ffb5d",
+        "after.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "after.ps": "740d74746e9503a573634c368e6cd4d49c9759aafdb8194c26e2970f0530bc34"
+      }
+    },
+    {
+      "case": {
+        "id": "app-110",
+        "target": "/usr/sbin/moviemaker",
+        "kind": "elf",
+        "sha256": "7b3f4449f170df4f8b6adce323166f7abb28e42282ec967a8c4706b48ad3f467",
+        "pages": [
+          "MediaTools"
+        ],
+        "names": [
+          "moviemaker"
+        ],
+        "partition": 1
+      },
+      "run": ".work/catalog-cycle/survey-1-k_ljbtpt",
+      "status": "observation-interrupted",
+      "guard": {
+        "pid": "2042",
+        "exit": "-1",
+        "signal": "15",
+        "stopped": "1",
+        "absent": "1",
+        "valid": "1",
+        "tracked": "1",
+        "remaining": "0",
+        "reason": "timeout",
+        "uid": "1234",
+        "gid": "1234",
+        "elapsed": "51702"
+      },
+      "owned_pids": [
+        2042
+      ],
+      "new_windows": [],
+      "samples": {
+        "3": {
+          "windows": [],
+          "processes": [
+            {
+              "pid": 2042,
+              "ppid": 2044,
+              "uid": 1234,
+              "state": "Ss",
+              "cpu_time": "0:01.54",
+              "pcpu": "23.4",
+              "command": "/usr/sbin/moviemaker "
+            }
+          ],
+          "snapshot_complete": false,
+          "query_status": 142
+        },
+        "last": {
+          "windows": [],
+          "processes": [],
+          "snapshot_complete": true,
+          "query_status": 0
+        }
+      },
+      "after_ps_pid_matches": [],
+      "observation_interrupted": true,
+      "batch_interrupted": false,
+      "window_query_failures": [
+        {
+          "sample": "3",
+          "status": 142,
+          "error": ""
+        }
+      ],
+      "cleanup_verified": true,
+      "stdout": "",
+      "stderr": "",
+      "stdout_bytes": 0,
+      "stderr_bytes": 0,
+      "screenshot": {
+        "path": "app-110.png",
+        "sha256": "9733dce1ee7d9d1200e9d326ea63132776ad0e752c3014da853966ec14b6c352"
+      },
+      "normal_interaction_tested": false,
+      "catalog_double_click_tested": false,
+      "record_hashes": {
+        "before.windows": "f3c04ef515e515a7e6bb3317b657e249190684e1eb3314bb3790bbe6b91ffb5d",
+        "before.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "before.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "before.ps": "a3127438a92b4fbb34440401a42c58e0e33c003fe6aeda9c31f9055f122fd0f5",
+        "argv": "c73cef3811da3f0c93486741f9ad49631d8e757542af8e907a92b330c96e8844",
+        "guard": "fb02e7b8275bd9917d2f1b46656e538b917b726f3e8fa6dd0e5816eb62236e1d",
+        "guard.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "app.pid": "723e5870331753f8c60f28980fcea812118024850240bc7eb9e92fa7cdbcc844",
+        "stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "3.windows": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "3.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "3.windows.status": "1dadd7223f8953c76459851cca53c62990c1a7b87a5795d31bbfa4059160e9f8",
+        "3.ps": "2592e1a7f8d5abcd4f3cb15cbb84f8d2f19eea1982a995e254190541b6a4e65b",
+        "guard.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "last.windows": "f3c04ef515e515a7e6bb3317b657e249190684e1eb3314bb3790bbe6b91ffb5d",
+        "last.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "last.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "last.ps": "7e96db2a7d59dc0885abf0f019a3eb70ce8535831dc93c7cdf1bad9f05ba561d",
+        "after.windows": "f3c04ef515e515a7e6bb3317b657e249190684e1eb3314bb3790bbe6b91ffb5d",
+        "after.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after.ps": "c01d9a977a9a9e0ebbbb3b42a5d70b80074e9977f8ed8ef22ed6517ed04d9d6b",
+        "after.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      }
+    },
+    {
+      "case": {
+        "id": "app-112",
+        "target": "/usr/sbin/soundeditor",
+        "kind": "elf",
+        "sha256": "447d18a35c475300e59d6d1f8998ecef2197282c849fb06b6079d881a6affea7",
+        "pages": [
+          "MediaTools"
+        ],
+        "names": [
+          "soundeditor"
+        ],
+        "partition": 1
+      },
+      "run": ".work/catalog-cycle/survey-1-k_ljbtpt",
+      "status": "zero-exit-without-window",
+      "guard": {
+        "pid": "4529",
+        "exit": "0",
+        "signal": "0",
+        "stopped": "0",
+        "absent": "1",
+        "valid": "1",
+        "tracked": "2",
+        "remaining": "0",
+        "reason": "leader-exit",
+        "uid": "1234",
+        "gid": "1234",
+        "elapsed": "1942"
+      },
+      "owned_pids": [
+        2124,
+        4529
+      ],
+      "new_windows": [],
+      "samples": {
+        "last": {
+          "windows": [],
+          "processes": [],
+          "snapshot_complete": true,
+          "query_status": 0
+        }
+      },
+      "after_ps_pid_matches": [],
+      "observation_interrupted": false,
+      "batch_interrupted": false,
+      "window_query_failures": [],
+      "cleanup_verified": true,
+      "stdout": "",
+      "stderr": "Could not get input sample rate.\n",
+      "stdout_bytes": 0,
+      "stderr_bytes": 33,
+      "screenshot": {},
+      "normal_interaction_tested": false,
+      "catalog_double_click_tested": false,
+      "record_hashes": {
+        "before.windows": "f3c04ef515e515a7e6bb3317b657e249190684e1eb3314bb3790bbe6b91ffb5d",
+        "before.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "before.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "before.ps": "ef18bd9127131d36dea285a4e57c1dfe4d247333260d62b5bca33f6a62431516",
+        "argv": "852fa302e802499ef1950370ed2b567deb933d07e1152eddbc1602792df22e25",
+        "guard": "fd392de3b5b497bd162b03c548db77f1b676dd386c20c103bc48daeed195beb8",
+        "guard.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "app.pid": "62ada493290a9d1a68573f4589352fe95d6b2cf4cc5916d9fb063a01728de327",
+        "stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "2c7435da734e54d90d02d93a89f90397b7a3095215f516363f0f1dd18628a635",
+        "guard.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "last.windows": "f3c04ef515e515a7e6bb3317b657e249190684e1eb3314bb3790bbe6b91ffb5d",
+        "last.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "last.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "last.ps": "eca4d33992e62ae1183383c09a229dbaa084a756f0e0f8aa1d2166a36d3af833",
+        "after.windows": "f3c04ef515e515a7e6bb3317b657e249190684e1eb3314bb3790bbe6b91ffb5d",
+        "after.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "after.ps": "8bcfd2c670e0430aa24fedb4b02a2c187796ff0b59a93f69be945413d27f8b1c"
+      }
+    },
+    {
+      "case": {
+        "id": "app-114",
+        "target": "/usr/sbin/soundtrack",
+        "kind": "elf",
+        "sha256": "a446d1986f223ff26b2d867950b700f3efc26d746429a934027487efc37e409a",
+        "pages": [
+          "MediaTools"
+        ],
+        "names": [
+          "soundtrack"
+        ],
+        "partition": 1
+      },
+      "run": ".work/catalog-cycle/survey-1-k_ljbtpt",
+      "status": "terminated-by-signal",
+      "guard": {
+        "pid": "2172",
+        "exit": "-1",
+        "signal": "8",
+        "stopped": "0",
+        "absent": "1",
+        "valid": "1",
+        "tracked": "1",
+        "remaining": "0",
+        "reason": "leader-exit",
+        "uid": "1234",
+        "gid": "1234",
+        "elapsed": "659"
+      },
+      "owned_pids": [
+        2172
+      ],
+      "new_windows": [],
+      "samples": {
+        "last": {
+          "windows": [],
+          "processes": [],
+          "snapshot_complete": true,
+          "query_status": 0
+        }
+      },
+      "after_ps_pid_matches": [],
+      "observation_interrupted": false,
+      "batch_interrupted": false,
+      "window_query_failures": [],
+      "cleanup_verified": true,
+      "stdout": "",
+      "stderr": "",
+      "stdout_bytes": 0,
+      "stderr_bytes": 0,
+      "screenshot": {},
+      "normal_interaction_tested": false,
+      "catalog_double_click_tested": false,
+      "record_hashes": {
+        "before.windows": "f3c04ef515e515a7e6bb3317b657e249190684e1eb3314bb3790bbe6b91ffb5d",
+        "before.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "before.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "before.ps": "e93b71adbf95cf48a065655907dc290e175b6446e00c9a036f2728fad3b0e4f4",
+        "argv": "91b32f445e0159307d7a12dc3ff34e1b8c46401d95c36f420a4ca3370de5751b",
+        "guard": "44c0c1d6bfd89a23f84d925b9b8bbb0ce6b08b46fa5560b53c8582eaaaf77e0d",
+        "guard.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "app.pid": "7d3fd567687cceae40a7b95a5c65c95764bc54b4822121a6500aa4a3b539abbf",
+        "stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "guard.status": "748ea33db356501af68a9e37a1583cfa57192a894aab2a692c5475f031d1e81a",
+        "last.windows": "f3c04ef515e515a7e6bb3317b657e249190684e1eb3314bb3790bbe6b91ffb5d",
+        "last.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "last.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "last.ps": "206ad0d0b3d3921bd32597ad54cd93bf2369735590fff88f394a562ccfc39645",
+        "after.windows": "f3c04ef515e515a7e6bb3317b657e249190684e1eb3314bb3790bbe6b91ffb5d",
+        "after.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "after.ps": "03bc235f0653d9c98bb8f442ab1de587a7d4153a627d822bfab19dd18d2a0d4c"
+      }
+    },
+    {
+      "case": {
+        "id": "app-116",
+        "target": "/usr/sbin/videoout",
+        "kind": "elf",
+        "sha256": "6fde5e13174da431fbaa04753c803054fd5ae8fbd2d8df6711c78f22e84ff2c2",
+        "pages": [
+          "MediaTools"
+        ],
+        "names": [
+          "videoout"
+        ],
+        "partition": 1
+      },
+      "run": ".work/catalog-cycle/survey-1-k_ljbtpt",
+      "status": "nonzero-exit",
+      "guard": {
+        "pid": "2252",
+        "exit": "1",
+        "signal": "0",
+        "stopped": "0",
+        "absent": "1",
+        "valid": "1",
+        "tracked": "1",
+        "remaining": "0",
+        "reason": "leader-exit",
+        "uid": "1234",
+        "gid": "1234",
+        "elapsed": "5313"
+      },
+      "owned_pids": [
+        2252
+      ],
+      "new_windows": [],
+      "samples": {
+        "3": {
+          "windows": [],
+          "processes": [
+            {
+              "pid": 2252,
+              "ppid": 2456,
+              "uid": 1234,
+              "state": "Ss",
+              "cpu_time": "0:00.18",
+              "pcpu": "0.0",
+              "command": "/usr/sbin/videoout "
+            }
+          ],
+          "snapshot_complete": true,
+          "query_status": 0
+        },
+        "last": {
+          "windows": [],
+          "processes": [],
+          "snapshot_complete": true,
+          "query_status": 0
+        }
+      },
+      "after_ps_pid_matches": [],
+      "observation_interrupted": false,
+      "batch_interrupted": false,
+      "window_query_failures": [],
+      "cleanup_verified": true,
+      "stdout": "",
+      "stderr": "/usr/sbin/videoout: couldn't open VL video\n",
+      "stdout_bytes": 0,
+      "stderr_bytes": 43,
+      "screenshot": {
+        "path": "app-116.png",
+        "sha256": "9733dce1ee7d9d1200e9d326ea63132776ad0e752c3014da853966ec14b6c352"
+      },
+      "normal_interaction_tested": false,
+      "catalog_double_click_tested": false,
+      "record_hashes": {
+        "before.windows": "f3c04ef515e515a7e6bb3317b657e249190684e1eb3314bb3790bbe6b91ffb5d",
+        "before.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "before.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "before.ps": "6a9bda04469605e19c27271bff1d661aab96aa16c09ee5def128b04fe52f8dff",
+        "argv": "ba64abd78e12f1cc9cb52d354084d30b7b3f3e985ec94d9b92de829e59cb61c3",
+        "guard": "7d69d727f1d5f096457d273b3fab9b48a66c90b55a5e5e3ff26b4a15d53ba5b6",
+        "guard.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "app.pid": "ef0986df4bcabebc0ac5e17dcea2a0bbabdb34892e491e780d63fae1dc3fe9ba",
+        "stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "e9de1e5962aafe6673dc24939e7229909ced2849faccfe857c46504a6db22e35",
+        "3.windows": "f3c04ef515e515a7e6bb3317b657e249190684e1eb3314bb3790bbe6b91ffb5d",
+        "3.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "3.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "3.ps": "34e92bc8ba77e5aea3d141520c11bb54bcf02fc9e1602e78efac23cb0ccd0867",
+        "guard.status": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+        "last.windows": "f3c04ef515e515a7e6bb3317b657e249190684e1eb3314bb3790bbe6b91ffb5d",
+        "last.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "last.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "last.ps": "12e0858e7b976ce56b84f526041ba5ef458d000e28b33ff6ea54ef5bd9364054",
+        "after.windows": "f3c04ef515e515a7e6bb3317b657e249190684e1eb3314bb3790bbe6b91ffb5d",
+        "after.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after.ps": "005321eb68ee41a9c9ad2fa2884a4b47ec9ddbbe682dfc1eb29deb6f97ff5f1b",
+        "after.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      }
+    },
+    {
+      "case": {
+        "id": "app-118",
+        "target": "/usr/sbin/PrintStatus",
+        "kind": "elf",
+        "sha256": "50bed15a9caa3fd1a12fcfdb2e34d0950b5640dfdeb8a8863ca48d8764718404",
+        "pages": [
+          "Printing"
+        ],
+        "names": [
+          "PrintStatus"
+        ],
+        "partition": 1
+      },
+      "run": ".work/catalog-cycle/survey-1-k_ljbtpt",
+      "status": "window-observed",
+      "guard": {
+        "pid": "5159",
+        "exit": "-1",
+        "signal": "15",
+        "stopped": "1",
+        "absent": "1",
+        "valid": "1",
+        "tracked": "2",
+        "remaining": "0",
+        "reason": "timeout",
+        "uid": "1234",
+        "gid": "1234",
+        "elapsed": "45054"
+      },
+      "owned_pids": [
+        5159,
+        5631
+      ],
+      "new_windows": [
+        {
+          "id": "1800018",
+          "width": 373,
+          "height": 138,
+          "name": "Error",
+          "class_name": "Printstatus",
+          "instance": "PrintStatus"
+        }
+      ],
+      "samples": {
+        "3": {
+          "windows": [
+            {
+              "id": "1800018",
+              "width": 373,
+              "height": 138,
+              "name": "Error",
+              "class_name": "Printstatus",
+              "instance": "PrintStatus"
+            }
+          ],
+          "processes": [
+            {
+              "pid": 5159,
+              "ppid": 2255,
+              "uid": 1234,
+              "state": "Ss",
+              "cpu_time": "0:00.21",
+              "pcpu": "0.4",
+              "command": "/usr/sbin/PrintStatus "
+            }
+          ],
+          "snapshot_complete": true,
+          "query_status": 0
+        },
+        "15": {
+          "windows": [
+            {
+              "id": "1800018",
+              "width": 373,
+              "height": 138,
+              "name": "Error",
+              "class_name": "Printstatus",
+              "instance": "PrintStatus"
+            }
+          ],
+          "processes": [
+            {
+              "pid": 5159,
+              "ppid": 2255,
+              "uid": 1234,
+              "state": "Ss",
+              "cpu_time": "0:00.21",
+              "pcpu": "0.0",
+              "command": "/usr/sbin/PrintStatus "
+            }
+          ],
+          "snapshot_complete": true,
+          "query_status": 0
+        },
+        "35": {
+          "windows": [
+            {
+              "id": "1800018",
+              "width": 373,
+              "height": 138,
+              "name": "Error",
+              "class_name": "Printstatus",
+              "instance": "PrintStatus"
+            }
+          ],
+          "processes": [
+            {
+              "pid": 5159,
+              "ppid": 2255,
+              "uid": 1234,
+              "state": "Is",
+              "cpu_time": "0:00.21",
+              "pcpu": "0.0",
+              "command": "/usr/sbin/PrintStatus "
+            }
+          ],
+          "snapshot_complete": true,
+          "query_status": 0
+        },
+        "last": {
+          "windows": [],
+          "processes": [],
+          "snapshot_complete": true,
+          "query_status": 0
+        }
+      },
+      "after_ps_pid_matches": [],
+      "observation_interrupted": false,
+      "batch_interrupted": false,
+      "window_query_failures": [],
+      "cleanup_verified": true,
+      "stdout": "",
+      "stderr": "sh: /usr/bin/lpstat:  not found\n",
+      "stdout_bytes": 0,
+      "stderr_bytes": 32,
+      "screenshot": {
+        "path": "app-118.png",
+        "sha256": "b22c3e50b5ae96b3eb92dd613d1c9316dc8cd832e4ea565668f877410897ac9b"
+      },
+      "normal_interaction_tested": false,
+      "catalog_double_click_tested": false,
+      "record_hashes": {
+        "before.windows": "f3c04ef515e515a7e6bb3317b657e249190684e1eb3314bb3790bbe6b91ffb5d",
+        "before.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "before.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "before.ps": "1aafbdac5f8310532fc461a697487096c18a68099e6c0a0785a1d8f402452560",
+        "argv": "2eb769c8b9ecb7383b479fa529158bacb6cdf7ecf5c6b18e378426676b0f08e6",
+        "guard": "a70c5a0cdf5193494c3538b511ba7f0b7bf89d586d4cdb77e6bb1d3b682a79ae",
+        "guard.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "app.pid": "5ab9d61f102b267300661eb4cadcc282e4e136aea2ae2f37b498fc4dd5b2868b",
+        "stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "d9ed7bd826a10c6a89512d689708ae3e9cd6db3ff1e47210bd2f5030b8bd04bc",
+        "3.windows": "4b3a5587acba56cc8dd28093a0b34e395a00257e610e9dc6bd8f226d9ea84fb1",
+        "3.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "3.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "3.ps": "b7ab5a197bc0320b21794c26b5ef912fd4426203e40ccee6ad559c03896118f7",
+        "15.windows": "4b3a5587acba56cc8dd28093a0b34e395a00257e610e9dc6bd8f226d9ea84fb1",
+        "15.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "15.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "15.ps": "8bae341776c3d2f7c8055df5eca7f68721f2a19b20fa41a0f74f5fcf03ef20e2",
+        "35.windows": "4b3a5587acba56cc8dd28093a0b34e395a00257e610e9dc6bd8f226d9ea84fb1",
+        "35.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "35.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "35.ps": "a5a3538a2eb457816517d22594a6876424983cc1900b00c7ca39d18dedc8d214",
+        "last.ps": "b8fb9f8fdb0a0662d77c9cebe94658397731b7e3f77978af7e408b189846aa85",
+        "guard.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "last.windows": "f3c04ef515e515a7e6bb3317b657e249190684e1eb3314bb3790bbe6b91ffb5d",
+        "last.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "last.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "after.windows": "f3c04ef515e515a7e6bb3317b657e249190684e1eb3314bb3790bbe6b91ffb5d",
+        "after.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "after.ps": "567651f8c1c7fb3500bad75142d12ae91eb7a17a4ff3b7c8eb51929cb0f8d69d"
+      }
+    },
+    {
+      "case": {
+        "id": "app-120",
+        "target": "/usr/sbin/confidence",
+        "kind": "elf",
+        "sha256": "b69d33002a8c301893b33a4a10e16183dc9ca65d8be94492f0dce3d210432105",
+        "pages": [
+          "SupportTools"
+        ],
+        "names": [
+          "confidence"
+        ],
+        "partition": 1
+      },
+      "run": ".work/catalog-cycle/survey-1-k_ljbtpt",
+      "status": "window-observed",
+      "guard": {
+        "pid": "2399",
+        "exit": "-1",
+        "signal": "15",
+        "stopped": "1",
+        "absent": "1",
+        "valid": "1",
+        "tracked": "2",
+        "remaining": "0",
+        "reason": "timeout",
+        "uid": "1234",
+        "gid": "1234",
+        "elapsed": "45085"
+      },
+      "owned_pids": [
+        2399,
+        5549
+      ],
+      "new_windows": [
+        {
+          "id": "1800049",
+          "width": 691,
+          "height": 321,
+          "name": "Confidence Tests",
+          "class_name": "Confidence",
+          "instance": "Confidence"
+        }
+      ],
+      "samples": {
+        "3": {
+          "windows": [
+            {
+              "id": "1800049",
+              "width": 691,
+              "height": 321,
+              "name": "Confidence Tests",
+              "class_name": "Confidence",
+              "instance": "Confidence"
+            }
+          ],
+          "processes": [
+            {
+              "pid": 2399,
+              "ppid": 2287,
+              "uid": 1234,
+              "state": "Ss",
+              "cpu_time": "0:00.79",
+              "pcpu": "12.4",
+              "command": "/usr/sbin/confidence "
+            },
+            {
+              "pid": 5549,
+              "ppid": 2399,
+              "uid": 1234,
+              "state": "Z",
+              "cpu_time": "0:00.00",
+              "pcpu": "0.0",
+              "command": "(sh)"
+            }
+          ],
+          "snapshot_complete": true,
+          "query_status": 0
+        },
+        "15": {
+          "windows": [
+            {
+              "id": "1800049",
+              "width": 691,
+              "height": 321,
+              "name": "Confidence Tests",
+              "class_name": "Confidence",
+              "instance": "Confidence"
+            }
+          ],
+          "processes": [
+            {
+              "pid": 2399,
+              "ppid": 2287,
+              "uid": 1234,
+              "state": "Ss",
+              "cpu_time": "0:00.79",
+              "pcpu": "1.5",
+              "command": "/usr/sbin/confidence "
+            },
+            {
+              "pid": 5549,
+              "ppid": 2399,
+              "uid": 1234,
+              "state": "Z",
+              "cpu_time": "0:00.00",
+              "pcpu": "0.0",
+              "command": "(sh)"
+            }
+          ],
+          "snapshot_complete": true,
+          "query_status": 0
+        },
+        "35": {
+          "windows": [
+            {
+              "id": "1800049",
+              "width": 691,
+              "height": 321,
+              "name": "Confidence Tests",
+              "class_name": "Confidence",
+              "instance": "Confidence"
+            }
+          ],
+          "processes": [
+            {
+              "pid": 2399,
+              "ppid": 2287,
+              "uid": 1234,
+              "state": "Is",
+              "cpu_time": "0:00.79",
+              "pcpu": "0.0",
+              "command": "/usr/sbin/confidence "
+            },
+            {
+              "pid": 5549,
+              "ppid": 2399,
+              "uid": 1234,
+              "state": "Z",
+              "cpu_time": "0:00.00",
+              "pcpu": "0.0",
+              "command": "(sh)"
+            }
+          ],
+          "snapshot_complete": true,
+          "query_status": 0
+        },
+        "last": {
+          "windows": [],
+          "processes": [],
+          "snapshot_complete": true,
+          "query_status": 0
+        }
+      },
+      "after_ps_pid_matches": [],
+      "observation_interrupted": false,
+      "batch_interrupted": false,
+      "window_query_failures": [],
+      "cleanup_verified": true,
+      "stdout": "",
+      "stderr": "Warning: Color name \"SGIVeryLightGrey\" is not defined\n/bin/sh: /usr/sbin/showprods:  not found\n",
+      "stdout_bytes": 0,
+      "stderr_bytes": 95,
+      "screenshot": {
+        "path": "app-120.png",
+        "sha256": "478b007c5e4343129273caa40e90a1041da963fdaed49c803bbf79c29b3845ab"
+      },
+      "normal_interaction_tested": false,
+      "catalog_double_click_tested": false,
+      "record_hashes": {
+        "before.windows": "f3c04ef515e515a7e6bb3317b657e249190684e1eb3314bb3790bbe6b91ffb5d",
+        "before.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "before.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "before.ps": "322ecc6838006728d63235a4065f665ee45e3d5f087a974b230d08353ddfbdd5",
+        "argv": "9eb762b51fcefaf3e49a4bfbd34f33c6d4d5687ecc300ae9476c39ec31194856",
+        "guard": "a09fe4656ed6d64dddd52efca14fd8a235ceb963e88ae64a76db059d5840bdb2",
+        "guard.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "app.pid": "270ac4d80b1405654d71822e03cd86c46869715dde35d2b0428e6e1e781a37e9",
+        "stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "f1c7242fde15ee508b8a01e24a6d0e6af6431b42514022fa41e31dd537999b1f",
+        "3.windows": "f2b1e609ce01a3cf43fd5ea75a38af3263759a3f115779317de8a174132d8d4b",
+        "3.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "3.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "3.ps": "527e48a8f90fe10756dea34d349ee77e928fd4afde6613e1478257b6796f0379",
+        "15.windows": "f2b1e609ce01a3cf43fd5ea75a38af3263759a3f115779317de8a174132d8d4b",
+        "15.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "15.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "15.ps": "42e16d8610eb2cca08c841f3f1a35b719ddb9148f313eb856938c3d8ce496359",
+        "35.windows": "f2b1e609ce01a3cf43fd5ea75a38af3263759a3f115779317de8a174132d8d4b",
+        "35.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "35.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "35.ps": "9f1458cee58ba472b726db302ab41241ad053c1d631573c91ff33b65f55d4461",
+        "last.ps": "3000e6a7edc4b4e7eb6e3f39d06b0c1f793c197a2e936cfe6bf2c11073711cac",
+        "guard.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "last.windows": "f3c04ef515e515a7e6bb3317b657e249190684e1eb3314bb3790bbe6b91ffb5d",
+        "last.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "last.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "after.windows": "f3c04ef515e515a7e6bb3317b657e249190684e1eb3314bb3790bbe6b91ffb5d",
+        "after.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "after.ps": "048193ba58444d4aa6a17eb9c25daf2260ad2b5fbbe3d252622599d9db3f31c0"
+      }
+    },
+    {
+      "case": {
+        "id": "app-122",
+        "target": "/usr/sbin/sitemgr",
+        "kind": "elf",
+        "sha256": "c1d03713b5c61e2f490ad7dc587ebefb33baa501b5420374fac02e1809543050",
+        "pages": [
+          "WebTools"
+        ],
+        "names": [
+          "sitemgr"
+        ],
+        "partition": 1
+      },
+      "run": ".work/catalog-cycle/survey-1-k_ljbtpt",
+      "status": "nonzero-exit",
+      "guard": {
+        "pid": "2750",
+        "exit": "126",
+        "signal": "0",
+        "stopped": "0",
+        "absent": "1",
+        "valid": "1",
+        "tracked": "1",
+        "remaining": "0",
+        "reason": "leader-exit",
+        "uid": "1234",
+        "gid": "1234",
+        "elapsed": "90"
+      },
+      "owned_pids": [
+        2750
+      ],
+      "new_windows": [],
+      "samples": {
+        "last": {
+          "windows": [],
+          "processes": [],
+          "snapshot_complete": true,
+          "query_status": 0
+        }
+      },
+      "after_ps_pid_matches": [],
+      "observation_interrupted": false,
+      "batch_interrupted": false,
+      "window_query_failures": [],
+      "cleanup_verified": true,
+      "stdout": "",
+      "stderr": "xiri-catalog: /usr/sbin/sitemgr: cannot execute\n",
+      "stdout_bytes": 0,
+      "stderr_bytes": 48,
+      "screenshot": {},
+      "normal_interaction_tested": false,
+      "catalog_double_click_tested": false,
+      "record_hashes": {
+        "before.windows": "f3c04ef515e515a7e6bb3317b657e249190684e1eb3314bb3790bbe6b91ffb5d",
+        "before.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "before.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "before.ps": "e83fe171a8b7ff4c58f535ff34e50e851e18a5c9bb216beb2382a9acf5380683",
+        "argv": "defed3f009d889bda747bbb557ba2bbef2e8fe81f25262e99c6c10febe66c5dd",
+        "guard": "c729ad09b238e9a6791af248b9ed96597c56a1a914c6a60a18954eefb24ccc1c",
+        "guard.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "app.pid": "7e21bc8004df9bc73295b0e3245a682bdd3c40f86ae32c3f1af9f2c32e6d0bef",
+        "stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "c68e1cb205d6ca60d8d096000ebe822bb99cdcd2e9edc62456f008f473a0396e",
+        "guard.status": "703d2c10fa601276a4dd96193faed68902a642a44eb5b01b40d6fc8499e12822",
+        "last.windows": "f3c04ef515e515a7e6bb3317b657e249190684e1eb3314bb3790bbe6b91ffb5d",
+        "last.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "last.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "last.ps": "81ae6957ffe94a154557ef05e55585887f0d20ff1ea3366881db4f345d63c17f",
+        "after.windows": "f3c04ef515e515a7e6bb3317b657e249190684e1eb3314bb3790bbe6b91ffb5d",
+        "after.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "after.ps": "da32308e4df4c06e16642a4cc7167d1e8d7902b2b8d7313f4eddac6edab20993"
+      }
+    }
+  ],
+  "followup": "Repeat these 22 targets in smaller fresh batches; keep this shutdown failure separate from application startup results. The owner stopped its emulator after halt checks failed.",
+  "repeat_summary": {
+    "primary_evidence": "docs/results/2026-11-03-irix-catalog.json",
+    "sha256": "fa07be25ab7196176da00baba7bb4bb41286f9e7153c2ef4034dfa58ba27e28b",
+    "all_repeat_guests_halted_cleanly": true,
+    "observations": [
+      {
+        "case": "app-057",
+        "run": ".work/catalog-cycle/survey-1-lyc09kxp",
+        "status": "window-observed",
+        "same_startup_category": true
+      },
+      {
+        "case": "app-059",
+        "run": ".work/catalog-cycle/survey-1-lyc09kxp",
+        "status": "observation-interrupted",
+        "same_startup_category": true
+      },
+      {
+        "case": "app-069",
+        "run": ".work/catalog-cycle/survey-1-lyc09kxp",
+        "status": "window-observed",
+        "same_startup_category": true
+      },
+      {
+        "case": "app-071",
+        "run": ".work/catalog-cycle/survey-1-lyc09kxp",
+        "status": "nonzero-exit",
+        "same_startup_category": true
+      },
+      {
+        "case": "app-073",
+        "run": ".work/catalog-cycle/survey-1-lyc09kxp",
+        "status": "terminated-by-signal",
+        "same_startup_category": true
+      },
+      {
+        "case": "app-075",
+        "run": ".work/catalog-cycle/survey-1-lyc09kxp",
+        "status": "nonzero-exit",
+        "same_startup_category": true
+      },
+      {
+        "case": "app-092",
+        "run": ".work/catalog-cycle/survey-1-lyc09kxp",
+        "status": "window-observed",
+        "same_startup_category": true
+      },
+      {
+        "case": "app-094",
+        "run": ".work/catalog-cycle/survey-1-lyc09kxp",
+        "status": "nonzero-exit",
+        "same_startup_category": true
+      },
+      {
+        "case": "app-096",
+        "run": ".work/catalog-cycle/survey-1-d3rwa3xq",
+        "status": "nonzero-exit",
+        "same_startup_category": true
+      },
+      {
+        "case": "app-098",
+        "run": ".work/catalog-cycle/survey-1-d3rwa3xq",
+        "status": "terminated-by-signal",
+        "same_startup_category": true
+      },
+      {
+        "case": "app-100",
+        "run": ".work/catalog-cycle/survey-1-d3rwa3xq",
+        "status": "zero-exit-without-window",
+        "same_startup_category": true
+      },
+      {
+        "case": "app-102",
+        "run": ".work/catalog-cycle/survey-1-d3rwa3xq",
+        "status": "zero-exit-without-window",
+        "same_startup_category": true
+      },
+      {
+        "case": "app-104",
+        "run": ".work/catalog-cycle/survey-1-d3rwa3xq",
+        "status": "nonzero-exit",
+        "same_startup_category": true
+      },
+      {
+        "case": "app-106",
+        "run": ".work/catalog-cycle/survey-1-d3rwa3xq",
+        "status": "nonzero-exit",
+        "same_startup_category": true
+      },
+      {
+        "case": "app-108",
+        "run": ".work/catalog-cycle/survey-1-d3rwa3xq",
+        "status": "window-observed",
+        "same_startup_category": true
+      },
+      {
+        "case": "app-110",
+        "run": ".work/catalog-cycle/survey-1-d3rwa3xq",
+        "status": "observation-interrupted",
+        "same_startup_category": true
+      },
+      {
+        "case": "app-112",
+        "run": ".work/catalog-cycle/survey-1-ibpvja2i",
+        "status": "zero-exit-without-window",
+        "same_startup_category": true
+      },
+      {
+        "case": "app-114",
+        "run": ".work/catalog-cycle/survey-1-ibpvja2i",
+        "status": "terminated-by-signal",
+        "same_startup_category": true
+      },
+      {
+        "case": "app-116",
+        "run": ".work/catalog-cycle/survey-1-ibpvja2i",
+        "status": "nonzero-exit",
+        "same_startup_category": true
+      },
+      {
+        "case": "app-118",
+        "run": ".work/catalog-cycle/survey-1-ibpvja2i",
+        "status": "window-observed",
+        "same_startup_category": true
+      },
+      {
+        "case": "app-120",
+        "run": ".work/catalog-cycle/survey-1-ibpvja2i",
+        "status": "window-observed",
+        "same_startup_category": true
+      },
+      {
+        "case": "app-122",
+        "run": ".work/catalog-cycle/survey-1-ibpvja2i",
+        "status": "nonzero-exit",
+        "same_startup_category": true
+      }
+    ]
+  }
+}

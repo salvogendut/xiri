@@ -11,6 +11,27 @@ source/destination mappings, permission adjustments and the SGI catalog
 reference check. Historical installer observations below retain their
 original scope; the installed-image payload is now a separate working path.
 
+The [catalog survey](ICON-CATALOG.md) found that Acrobat's imported
+`/usr/adobe/Acrobat4.0/bin/acroread` is a launcher. It exits 127 because
+`bin/acroread.dist` is absent from the current image. A read-only
+[source audit](../lab/irix-catalog/acrobat-source.json) locates that helper,
+the actual `Reader/mipsirix/bin/acroread` executable, libraries, app-defaults,
+fonts, plug-ins and documentation: 84 paths beneath `/usr/adobe/Acrobat4.0`.
+These are candidates for a later import, not resources added by this survey.
+Preserve their relative layout under `/emul/irix/usr/adobe/Acrobat4.0` and
+record file modes, links and hashes when staging the package. Opening and
+rendering a PDF remains untested.
+
+Other application payload gaps are recorded in the
+[catalog survey](results/2026-11-03-irix-catalog.md) and
+[software notes](IRIX-SOFTWARE.md). Galculator's Fontconfig configuration and
+font discovery are a separate resource path from the core X fonts already
+used by the desktop: it reports no default configuration and no fonts.
+Emacs, Dia, LyX, xpat2, CaseVision and Eclipse also report missing data or
+helpers. Locate and hash the relevant package trees before copying them.
+Missing XSGIvc/ReadDisplay interfaces and audio/video prerequisites remain
+interface or hardware work; additional files alone do not qualify those tools.
+
 The [winterm reliability cycle](results/2026-11-03-winterm-reliability.md)
 reuses the existing libraries, locale data and fonts; it imports no new desktop
 resources. The supplied XWsh wildcard default can select NetBSD's scalable

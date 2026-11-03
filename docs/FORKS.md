@@ -42,6 +42,15 @@ not repin qualified kernels, emulator binaries, runtime resources or guest disks
 
 ## IRIS upstream updates
 
+The 2026-11-03 catalog survey fetched upstream at
+`28fa516684c54e00e35b258c65e5dcac3a36165c`, already contained in IRIS
+`xiri` `ae62114344a1d435152b8ae7e48c599974b4aec7`. No merge or emulator
+rebuild was needed. The survey retains the qualified GIMP CHD and its
+`819c682` emulator; both fork integration checkouts started clean.
+The active-day check after midnight in Europe/Rome on 2026-11-04 fetched
+the same upstream revision and reconfirmed ancestry; no integration or
+additional emulator build was required.
+
 The 2026-11-03 GIMP cycle fetched upstream again at
 `28fa516684c54e00e35b258c65e5dcac3a36165c`. It is already an ancestor of
 IRIS `xiri` `ae62114344a1d435152b8ae7e48c599974b4aec7`; no merge or rebuild

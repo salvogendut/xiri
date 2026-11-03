@@ -32,8 +32,12 @@ The [GIMP checkpoint](docs/results/2026-11-03-irix-gimp.md) now demonstrates
 original GIMP 1.2.5 editing, XCF/PNG save and reopen, normal exit and catalog
 launching as xiritest. Its additional resources and signal-mask module update
 are included in the current image; application and desktop-login checks
-are recorded separately. The next pass follows the
-[tab-by-tab catalog checklist](docs/ICON-CATALOG.md).
+are recorded separately. The [catalog startup survey](docs/results/2026-11-03-irix-catalog.md)
+now records 124 distinct launch attempts in the
+[166-entry, tab-by-tab checklist](docs/ICON-CATALOG.md). It distinguishes
+windows, errors and busy processes without a window; useful operation still
+needs individual checks. Freeware NEdit accepts text but cannot save, and
+Acrobat's launcher needs the rest of its original installation.
 
 ## Related repositories
 

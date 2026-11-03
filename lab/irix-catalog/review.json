@@ -1,0 +1,346 @@
+{
+  "schema": 1,
+  "cases": {
+    "app-030": {
+      "ui": "error-dialog",
+      "note": "Cannot save the active AccessX profile; xmodmap helper is also absent.",
+      "screenshot": ".work/catalog-cycle/survey-2-odt55vzp/app-030.png",
+      "sha256": "eea7db84bf9c8b725fa2ef51c5ee216d76838ee49b545700a930e9f0375f1c1f"
+    },
+    "app-031": {
+      "ui": "error-dialog",
+      "note": "Reports that this machine has no audio driver.",
+      "screenshot": ".work/catalog-cycle/survey-1-jkn8hami/app-031.png",
+      "sha256": "571055fa5ec66d050904a41c197597b5a3c1b67601fbe8483e871d82d7e08811"
+    },
+    "app-032": {
+      "ui": "main-window",
+      "note": "Background Setting renders its pattern list and preview; Apply and persistence are untested.",
+      "screenshot": ".work/catalog-cycle/survey-2-odt55vzp/app-032.png",
+      "sha256": "ca33aa3da86fdbda59ce9da06af7abf37e66b43cc78707eaf7c48bd7247f70d0"
+    },
+    "app-034": {
+      "ui": "main-window",
+      "note": "Desktop Settings renders its controls; changing settings and persistence are untested.",
+      "screenshot": ".work/catalog-cycle/survey-2-odt55vzp/app-034.png",
+      "sha256": "24bfacb515b084ce6b8af486f7baea56df1bef7d951882f580e09cfc3abddf74"
+    },
+    "app-035": {
+      "ui": "error-dialog",
+      "note": "Reports that the X display lacks the XSGIvc extension required by xsetmon.",
+      "screenshot": ".work/catalog-cycle/survey-1-jkn8hami/app-035.png",
+      "sha256": "33f157a3e243a5e4ce779c3fd3e4dc12d0a00e1ff6b78a3a4ff584808b852a55"
+    },
+    "app-005": {
+      "ui": "catalog-launch-fails",
+      "note": "A real Applications double-click executes the original wrapper, which reports missing acroread.dist; no Reader process remains.",
+      "screenshot": ".work/catalog-cycle/survey-0-ucxhf9bn/catalog-acrobat.png",
+      "sha256": "711530f709a59a98e6f95e9d5152b41ec69ab4892b702176c756abf84a35cd16"
+    },
+    "app-085": {
+      "ui": "partial-use",
+      "note": "Freeware double-click, visible text editing, opened/closed icon artwork and Quit/Discard work. Save fails with cannot create; the file remains absent. A native write in the home\u2019s .xiri-catalog subdirectory succeeds; a control in the exact destination directory remains pending. Exit status was not captured.",
+      "screenshot": ".work/catalog-cycle/survey-0-ucxhf9bn/nedit-edited.png",
+      "sha256": "714f73f1b9d02247503b01f84ecc2fd2338f6605945b8fc6159e73163eb952f1"
+    },
+    "app-039": {
+      "ui": "error-dialog",
+      "note": "Reports that Monpanel requires a machine with the flat panel adapter.",
+      "screenshot": ".work/catalog-cycle/survey-1-jkn8hami/app-039.png",
+      "sha256": "c34c06850508885e9a5d0171fc901f0726f71db5b6749764a594fbe0a3c2e3d5"
+    },
+    "app-048": {
+      "ui": "privilege-prompt",
+      "note": "Requests root privileges for installing/removing licenses and offers Continue for read-only mode; neither path was exercised.",
+      "screenshot": ".work/catalog-cycle/survey-2-odt55vzp/app-048.png",
+      "sha256": "5ef3f392ed66744cf9b4c4b73ba334dd0fd327a2f43d9ecfa219e93d99a39325"
+    },
+    "app-056": {
+      "ui": "information-dialog",
+      "note": "Explains that InfoSearch has been replaced by the configured desktop web browser; browser/document handling remains untested.",
+      "screenshot": ".work/catalog-cycle/survey-2-odt55vzp/app-056.png",
+      "sha256": "2113271d43d69f2145f58e7766685523027c4f33cb649187d39f7c7270bc4ae3"
+    },
+    "app-058": {
+      "ui": "missing-x-extension",
+      "note": "The automatic X query timed out. An interactive retry reports that ReadDisplay is unsupported; pointer steering failed during the attempt. Timed descendant cleanup and subsequent desktop readiness passed. Magnification remains unqualified.",
+      "screenshot": ".work/catalog-cycle/survey-0-ucxhf9bn/mag-interactive.png",
+      "sha256": "ce69c63801320f72d52e7506fb357da649dd7fdcba986ad16277f927dcb79e49"
+    },
+    "app-007": {
+      "ui": "busy-without-window",
+      "note": "No viewable application window in the bounded launch. The late process sample shows 0:29.98 CPU time and 71.3% guest ps CPU for /usr/freeware/bin/evolution. Investigate the shared GNOME startup path; this is not proof of an indefinite hang.",
+      "run": ".work/catalog-cycle/survey-0-6zl1541s",
+      "samples": {
+        "windows": [],
+        "processes": [
+          {
+            "pid": 967,
+            "ppid": 974,
+            "uid": 1234,
+            "state": "Rs",
+            "cpu_time": "0:29.98",
+            "pcpu": "71.3",
+            "command": "/usr/freeware/bin/evolution "
+          }
+        ],
+        "snapshot_complete": true,
+        "query_status": 0
+      }
+    },
+    "app-009": {
+      "ui": "busy-without-window",
+      "note": "No viewable application window in the bounded launch. The late process sample shows 0:29.74 CPU time and 73.4% guest ps CPU for /usr/freeware/bin/gedit. Investigate the shared GNOME startup path; this is not proof of an indefinite hang.",
+      "run": ".work/catalog-cycle/survey-0-6zl1541s",
+      "samples": {
+        "windows": [],
+        "processes": [
+          {
+            "pid": 1220,
+            "ppid": 1221,
+            "uid": 1234,
+            "state": "Rs",
+            "cpu_time": "0:29.74",
+            "pcpu": "73.4",
+            "command": "/usr/freeware/bin/gedit "
+          }
+        ],
+        "snapshot_complete": true,
+        "query_status": 0
+      }
+    },
+    "app-010": {
+      "ui": "busy-without-window",
+      "note": "No viewable application window in the bounded launch. The late process sample shows 0:29.69 CPU time and 70.3% guest ps CPU for gnome-terminal -x lynx. Investigate the shared GNOME startup path; this is not proof of an indefinite hang.",
+      "run": ".work/catalog-cycle/survey-0-6zl1541s",
+      "samples": {
+        "windows": [],
+        "processes": [
+          {
+            "pid": 3606,
+            "ppid": 1362,
+            "uid": 1234,
+            "state": "Is",
+            "cpu_time": "0:00.10",
+            "pcpu": "0.0",
+            "command": "/emul/irix/bin/sh -c exec \"$@\" xiri-catalog /usr/freeware/bin/glynx "
+          },
+          {
+            "pid": 3956,
+            "ppid": 3606,
+            "uid": 1234,
+            "state": "R",
+            "cpu_time": "0:29.69",
+            "pcpu": "70.3",
+            "command": "gnome-terminal -x lynx "
+          }
+        ],
+        "snapshot_complete": true,
+        "query_status": 0
+      }
+    },
+    "app-011": {
+      "ui": "busy-without-window",
+      "note": "No viewable application window in the bounded launch. The late process sample shows 0:30.08 CPU time and 71.0% guest ps CPU for /usr/freeware/bin/gnome-terminal. Investigate the shared GNOME startup path; this is not proof of an indefinite hang.",
+      "run": ".work/catalog-cycle/survey-0-6zl1541s",
+      "samples": {
+        "windows": [],
+        "processes": [
+          {
+            "pid": 4712,
+            "ppid": 3711,
+            "uid": 1234,
+            "state": "Rs",
+            "cpu_time": "0:30.08",
+            "pcpu": "71.0",
+            "command": "/usr/freeware/bin/gnome-terminal "
+          }
+        ],
+        "snapshot_complete": true,
+        "query_status": 0
+      }
+    },
+    "app-015": {
+      "ui": "busy-without-window",
+      "note": "No viewable application window in the bounded launch. The late process sample shows 0:29.84 CPU time and 71.3% guest ps CPU for gnome-terminal -x mc. Investigate the shared GNOME startup path; this is not proof of an indefinite hang.",
+      "run": ".work/catalog-cycle/survey-0-6zl1541s",
+      "samples": {
+        "windows": [],
+        "processes": [
+          {
+            "pid": 1770,
+            "ppid": 1995,
+            "uid": 1234,
+            "state": "Is",
+            "cpu_time": "0:00.10",
+            "pcpu": "0.0",
+            "command": "/emul/irix/bin/sh -c exec \"$@\" xiri-catalog /usr/freeware/bin/midnight-commander "
+          },
+          {
+            "pid": 4468,
+            "ppid": 1770,
+            "uid": 1234,
+            "state": "R",
+            "cpu_time": "0:29.84",
+            "pcpu": "71.3",
+            "command": "gnome-terminal -x mc "
+          }
+        ],
+        "snapshot_complete": true,
+        "query_status": 0
+      }
+    },
+    "app-078": {
+      "ui": "busy-without-window",
+      "note": "No viewable application window in the bounded launch. The late process sample shows 0:30.03 CPU time and 71.3% guest ps CPU for /usr/freeware/bin/balsa. Investigate the shared GNOME startup path; this is not proof of an indefinite hang.",
+      "run": ".work/catalog-cycle/survey-0-6zl1541s",
+      "samples": {
+        "windows": [],
+        "processes": [
+          {
+            "pid": 5503,
+            "ppid": 3987,
+            "uid": 1234,
+            "state": "Rs",
+            "cpu_time": "0:30.03",
+            "pcpu": "71.3",
+            "command": "/usr/freeware/bin/balsa "
+          }
+        ],
+        "snapshot_complete": true,
+        "query_status": 0
+      }
+    },
+    "app-082": {
+      "ui": "busy-without-window",
+      "note": "No viewable application window in the bounded launch. The late process sample shows 0:30.19 CPU time and 73.1% guest ps CPU for /usr/freeware/bin/glade. Investigate the shared GNOME startup path; this is not proof of an indefinite hang.",
+      "run": ".work/catalog-cycle/survey-0-6zl1541s",
+      "samples": {
+        "windows": [],
+        "processes": [
+          {
+            "pid": 3704,
+            "ppid": 5759,
+            "uid": 1234,
+            "state": "Rs",
+            "cpu_time": "0:30.19",
+            "pcpu": "73.1",
+            "command": "/usr/freeware/bin/glade "
+          }
+        ],
+        "snapshot_complete": true,
+        "query_status": 0
+      }
+    },
+    "app-083": {
+      "ui": "busy-without-window",
+      "note": "No viewable application window in the bounded launch. The late process sample shows 0:30.24 CPU time and 69.1% guest ps CPU for /usr/freeware/bin/gnumeric. Investigate the shared GNOME startup path; this is not proof of an indefinite hang.",
+      "run": ".work/catalog-cycle/survey-0-6zl1541s",
+      "samples": {
+        "windows": [],
+        "processes": [
+          {
+            "pid": 4194,
+            "ppid": 4040,
+            "uid": 1234,
+            "state": "Rs",
+            "cpu_time": "0:30.24",
+            "pcpu": "69.1",
+            "command": "/usr/freeware/bin/gnumeric "
+          }
+        ],
+        "snapshot_complete": true,
+        "query_status": 0
+      }
+    },
+    "app-088": {
+      "ui": "busy-without-window",
+      "note": "No viewable application window in the bounded launch. The late process sample shows 0:30.14 CPU time and 70.6% guest ps CPU for /usr/freeware/bin/xchat. Investigate the shared GNOME startup path; this is not proof of an indefinite hang.",
+      "run": ".work/catalog-cycle/survey-0-6zl1541s",
+      "samples": {
+        "windows": [],
+        "processes": [
+          {
+            "pid": 6107,
+            "ppid": 5915,
+            "uid": 1234,
+            "state": "Rs",
+            "cpu_time": "0:30.14",
+            "pcpu": "70.6",
+            "command": "/usr/freeware/bin/xchat "
+          }
+        ],
+        "snapshot_complete": true,
+        "query_status": 0
+      }
+    },
+    "app-099": {
+      "ui": "cleanup-unverified",
+      "note": "X queries timed out and the launch tracker ended with absent=0, valid=0 and one remaining tracked identity. Later process snapshots do not show that PID, so an actual live-process leak is not established. The entire disposable guest subsequently halted cleanly. Investigate process tracking and application startup together.",
+      "run": ".work/catalog-cycle/survey-2-_6lek34z"
+    },
+    "app-008": {
+      "ui": "launch-error",
+      "note": "Exits 1. Fontconfig cannot load its default configuration and reports no fonts; UTF-8 conversion also warns. This is separate from the X-server fonts already used by the desktop.",
+      "run": ".work/catalog-cycle/survey-0-6zl1541s"
+    },
+    "app-012": {
+      "ui": "launch-error",
+      "note": "Exits 1 with Function not implemented while writing its GNOME preferences; its help-topics file is also unavailable.",
+      "run": ".work/catalog-cycle/survey-0-6zl1541s"
+    },
+    "app-019": {
+      "ui": "error-dialog",
+      "note": "The chess frontend creates windows but reports a fatal error because the gnuchessx engine is missing.",
+      "run": ".work/catalog-cycle/survey-0-6zl1541s"
+    },
+    "app-020": {
+      "ui": "usage-only",
+      "note": "Prints usage and exits 255 when no mailbox/file argument is supplied. Test with a configured input before judging useful operation.",
+      "run": ".work/catalog-cycle/survey-0-6zl1541s"
+    },
+    "app-022": {
+      "ui": "main-window",
+      "note": "Xfig and its error window open; CompKeyDB is missing, disabling multi-key sequences. Drawing, save and normal exit remain untested.",
+      "run": ".work/catalog-cycle/survey-0-6zl1541s"
+    },
+    "app-023": {
+      "ui": "launch-error",
+      "note": "Exits 0 without a window after its control socket fails with Address family not supported by protocol family.",
+      "run": ".work/catalog-cycle/survey-0-6zl1541s"
+    },
+    "app-024": {
+      "ui": "launch-error",
+      "note": "Exits 0 without a window and reports sysinfo scall interface not supported.",
+      "run": ".work/catalog-cycle/survey-0-6zl1541s"
+    },
+    "app-079": {
+      "ui": "launch-error",
+      "note": "Exits 0 with missing Emacs architecture data, Lisp directories and term/x-win. A complete Emacs resource import remains necessary.",
+      "run": ".work/catalog-cycle/survey-0-6zl1541s"
+    },
+    "app-089": {
+      "ui": "launch-error",
+      "note": "Its wrapper selects bin-NetBSD-ALL/xmcd, which is absent. Check OS detection as well as the original xmcd payload before retrying.",
+      "run": ".work/catalog-cycle/survey-0-6zl1541s"
+    },
+    "app-090": {
+      "ui": "launch-error",
+      "note": "Exits 0 after reporting that the XSane EULA text is missing. No scanner operation was tested.",
+      "run": ".work/catalog-cycle/survey-0-6zl1541s"
+    },
+    "app-066": {
+      "ui": "main-window",
+      "note": "Adobe ShowPS 1.0.7 opens its main window and file selector. PostScript rendering, PDF handling and normal exit have not been tested.",
+      "screenshot": ".work/catalog-cycle/survey-2-odt55vzp/app-066.png",
+      "sha256": "b296c0399fb09162f1f9abe1bb2794164c6f86b7a8d0891b1ca7fc59b258d0dd"
+    },
+    "app-057": {
+      "ui": "information-dialog",
+      "note": "InSight opens the InfoSearch notice explaining that the configured desktop web browser replaces the client. Browser and document handling remain untested.",
+      "screenshot": ".work/catalog-cycle/survey-1-lyc09kxp/app-057.png",
+      "sha256": "7f31e410b827611077e5000665708496e60572324904731a782c2478d2326e6d"
+    }
+  },
+  "scope": "Human interpretations of startup logs, mapped-window/process records and selected screenshots. Useful interaction is qualified only where explicitly recorded."
+}

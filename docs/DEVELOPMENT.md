@@ -90,6 +90,15 @@ the native driver artifact. Its older defaults are historical; pass all
 current paths explicitly. Do not rewrite old experiment defaults or delete
 qualified artifacts as part of routine cleanup.
 
+For application startup surveys, use the
+[catalog lab](../lab/irix-catalog/README.md) and retain the
+[per-tab checklist](ICON-CATALOG.md). Its runner creates disposable guests
+from the qualified GIMP bundle, records bounded process/window observations
+and verifies cleanup. Use `--limit` and `--after-case` for small fresh batches;
+keep interrupted queries and failed halts as diagnostics. The qualifier checks
+inventory coverage and raw evidence before the renderer updates the checklist.
+Startup observations remain separate from useful operation and normal exit.
+
 ## IRIX module development
 
 The [module lab](../lab/irix-module/README.md) provides the separate

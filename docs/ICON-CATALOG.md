@@ -1,276 +1,290 @@
 # Icon Catalog application checklist
 
-Next application pass after the GIMP cold-image run, requested on 2026-11-03.
-The existing [source inventory](../lab/irix-installed-desktop/manifest.json)
-contains 166 launchers in 17 system tabs from the supplied IRIX installation.
-The running desktop reports 18 pages; inspect the additional page and reconcile
-its contents during the pass. This list describes catalog registration,
-not proof that each program or all its resources are present in Xiri.
+Updated 2026-11-04 after the [startup survey](results/2026-11-03-irix-catalog.md).
+This is the requested list to use when returning to failures one by one.
+It preserves all **166 registered entries in 17 system tabs** from the supplied
+IRIX 6.5.22 installation, including unresolved source links that the running
+catalog may omit. The eighteenth page is the user's empty **Blank** page.
+Click the stacked page edges at the bottom-right of Icon Catalog to open the
+[menu of all pages](results/images/2026-11-03-irix-catalog-pages.png), including
+those whose tabs do not fit along the bottom.
 
-For each launcher, record the tested image/module revisions, account, direct
-execution and catalog double-click, time to the expected window or terminal
-output, running-icon feedback, one useful action, normal exit and descendant
-cleanup. Document and directory entries should open their assigned handler.
-For a process without its expected UI, capture
-CPU time/activity, children and logs before classifying it as slow or stuck.
-Record missing resources, unsupported calls and crashes separately. Use bounded
-actions for system tools and leave settings unchanged unless the test requires
-an explicit, reversible change in its disposable guest.
+The current GIMP CHD was tested as **xiritest**, UID/GID 1234, HOME and cwd
+`/usr/people/xiritest`, with accelerated 1280×1024 NetBSD Xorg. There were
+**124 distinct direct program-target attempts**; repeated targets share the
+same startup observation. GIMP, xmahjongg and xclock retain their separately
+linked bounded results. The 19 document/web entries, 13 unresolved source
+links and one directory target are distinguished below.
 
-Rows remain pending unless a current-image result is linked. Existing bounded results for
-[GIMP](results/2026-11-03-irix-gimp.md),
-[winterm](results/2026-11-03-winterm-reliability.md),
-[xmahjongg](results/2026-11-03-newport-xmahjongg.md) and
-[xclock time](results/2026-11-01-irix-time.md) remain evidence for their stated
-checks; they do not qualify every launcher alias or wider application behavior.
+**A window is not a functional pass.** It may be a warning, privilege request
+or setup dialog. The launch guard requested a stop at its 45-second deadline;
+measured cleanup could take longer. Such a stop is not a normal GUI exit or
+an application crash. CPU/process samples, exact output, window observations,
+interrupted queries and cleanup failures are retained in the
+[machine-readable evidence](results/2026-11-03-irix-catalog.json).
+
+The [interactive checks](results/2026-11-03-irix-catalog-interactive.json)
+exercise real catalog double-clicks for Acrobat and Freeware NEdit. NEdit
+accepts visible text and restores its icon after Quit/Discard, but saving
+fails; Acrobat's launcher reaches its missing Reader helper. Other aliases
+still need individual double-click, running-icon, useful-action, persistence
+and normal-exit tests. Terminal tools ran with stdin closed and may require
+arguments or a terminal. System/hardware tools were observed without applying
+settings or installing software.
+
 
 ## Alias (2)
 
-| Entry | Original target | Current-image result / evidence |
+| Entry | Original target | Observed result / next check |
 | --- | --- | --- |
-| `Maya6.5` | `/usr/aw/maya6.5/bin/Maya6.5` | Pending |
-| `Maya6.5_Extras` | `/usr/aw/maya6.5/bin/Maya6.5_Extras` | Pending; inspect source target (not a resolved regular file) |
+| `Maya6.5` | `/usr/aw/maya6.5/bin/Maya6.5` | **No window before test stop.** UX:csh: SV=0: /bin/uname - Command not found |
+| `Maya6.5_Extras` | `/usr/aw/maya6.5/bin/Maya6.5_Extras` | Directory target; browsing and its payload remain untested. |
 
 ## AliasWavefront (4)
 
-| Entry | Original target | Current-image result / evidence |
+| Entry | Original target | Observed result / next check |
 | --- | --- | --- |
-| `dispatcher` | `/usr/aw/COM2.0/bin/dispatcher` | Pending |
-| `Dispatcher.doc` | `/usr/aw/COM2.0/doc/dispatcher_html/Dispatcher.doc` | Pending |
-| `Licenser` | `/usr/aw/COM2.0/bin/Licenser` | Pending |
-| `mayalive4.0` | `/usr/aw/maya6.5/bin/mayalive4.0` | Pending; inspect source target (not a resolved regular file) |
+| `dispatcher` | `/usr/aw/COM2.0/bin/dispatcher` | **Exits 126 without a window.** xiri-catalog: /usr/aw/COM2.0/bin/dispatcher: cannot execute |
+| `Dispatcher.doc` | `/usr/aw/COM2.0/doc/dispatcher_html/Dispatcher.doc` | Document/web shortcut; assigned handler and destination remain untested. |
+| `Licenser` | `/usr/aw/COM2.0/bin/Licenser` | **Exits 1 without a window.** |
+| `mayalive4.0` | `/usr/aw/maya6.5/bin/mayalive4.0` | Unresolved target in the original source inventory; no launch attempted. |
 
 ## Applications (31)
 
-| Entry | Original target | Current-image result / evidence |
+| Entry | Original target | Observed result / next check |
 | --- | --- | --- |
-| `AboutNetscapeMessenger` | `/var/netscape/communicator/AboutNetscapeMessenger` | Pending |
-| `acadr13` | `/opt/acad13/bin/acadr13` | Pending |
-| `acroread` | `/usr/adobe/Acrobat4.0/bin/acroread` | Pending |
-| `dia` | `/usr/freeware/bin/dia` | Pending |
-| `evolution` | `/usr/freeware/bin/evolution` | Pending |
-| `galculator` | `/usr/freeware/bin/galculator` | Pending |
-| `gedit` | `/usr/freeware/bin/gedit` | Pending |
-| `glynx` | `/usr/freeware/bin/glynx` | Pending |
-| `gnome-terminal` | `/usr/freeware/bin/gnome-terminal` | Pending |
-| `gnome-terminal --login` | `/usr/freeware/bin/gnome-terminal --login` | Pending; inspect source target (not a resolved regular file) |
-| `gtop` | `/usr/freeware/bin/gtop` | Pending |
-| `jot` | `/usr/sbin/jot` | Pending |
-| `lyx` | `/usr/freeware/bin/lyx` | Pending |
-| `maker` | `/usr/frame/bin/maker` | Pending; inspect source target (not a resolved regular file) |
-| `MediaMail` | `/usr/bin/X11/MediaMail` | Pending; inspect source target (not a resolved regular file) |
-| `midnight-commander` | `/usr/freeware/bin/midnight-commander` | Pending |
-| `Mozilla` | `/var/netscape/mozilla/mozilla` | Pending |
-| `mozilla` | `/usr/bin/X11/mozilla` | Pending |
-| `nedit` | `/usr/sbin/nedit` | Pending |
-| `NetscapeMail` | `/var/netscape/communicator/NetscapeMail` | Pending |
-| `showcase` | `/usr/sbin/showcase` | Pending |
-| `Wingz` | `/usr/bin/X11/Wingz` | Pending; inspect source target (not a resolved regular file) |
-| `xboard` | `/usr/freeware/bin/xboard` | Pending |
-| `xbuffy` | `/usr/freeware/bin/xbuffy` | Pending |
-| `xearth` | `/usr/freeware/bin/xearth` | Pending |
-| `xfig` | `/usr/freeware/bin/xfig` | Pending |
-| `xmms` | `/usr/freeware/bin/xmms` | Pending |
-| `xosview` | `/usr/freeware/bin/xosview` | Pending |
-| `xpat2` | `/usr/freeware/bin/xpat2` | Pending |
-| `xscreensaver-demo` | `/usr/freeware/bin/xscreensaver-demo` | Pending |
-| `zsh` | `/usr/freeware/bin/zsh` | Pending |
+| `AboutNetscapeMessenger` | `/var/netscape/communicator/AboutNetscapeMessenger` | Document/web shortcut; assigned handler and destination remain untested. |
+| `acadr13` | `/opt/acad13/bin/acadr13` | **Exits 127 without a window.** /opt/acad13/bin/acadr13[14]: /bin/uname:  not found /opt/acad13/bin/acadr13[59]: /bin/uname:  not found /opt/acad13/bin/acadr13[59]: Echo:  not found /opt/acad13/bin/acadr13[63]: /opt/acad13/bin/acad:  not foun… |
+| `acroread` | `/usr/adobe/Acrobat4.0/bin/acroread` | **Catalog launch fails.** A real Applications double-click executes the original wrapper, which reports missing acroread.dist; no Reader process remains. |
+| `dia` | `/usr/freeware/bin/dia` | **Exits 1 without a window.** Gtk-CRITICAL **: file gtkcontainer.c: line 713: assertion 'widget != NULL' failed. Couldn't find standard objects when looking for object-libs, exiting... |
+| `evolution` | `/usr/freeware/bin/evolution` | **Busy without a window.** Running and accumulating CPU time, with no viewable app window before the test stop. Late CPU samples are in the evidence; investigate whether a shared GNOME startup issue explains the pattern. |
+| `galculator` | `/usr/freeware/bin/galculator` | **Launch fails.** Exits 1. Fontconfig cannot load its default configuration and reports no fonts; UTF-8 conversion also warns. This is separate from the X-server fonts already used by the desktop. |
+| `gedit` | `/usr/freeware/bin/gedit` | **Busy without a window.** Running and accumulating CPU time, with no viewable app window before the test stop. Late CPU samples are in the evidence; investigate whether a shared GNOME startup issue explains the pattern. |
+| `glynx` | `/usr/freeware/bin/glynx` | **Busy without a window.** Running and accumulating CPU time, with no viewable app window before the test stop. Late CPU samples are in the evidence; investigate whether a shared GNOME startup issue explains the pattern. |
+| `gnome-terminal` | `/usr/freeware/bin/gnome-terminal` | **Busy without a window.** Running and accumulating CPU time, with no viewable app window before the test stop. Late CPU samples are in the evidence; investigate whether a shared GNOME startup issue explains the pattern. |
+| `gnome-terminal --login` | `/usr/freeware/bin/gnome-terminal --login` | Unresolved target in the original source inventory; no launch attempted. The target contains command-line text; check registration/action handling. |
+| `gtop` | `/usr/freeware/bin/gtop` | **Launch fails.** Exits 1 with Function not implemented while writing its GNOME preferences; its help-topics file is also unavailable. |
+| `jot` | `/usr/sbin/jot` | **Exits 0 without a new window.** |
+| `lyx` | `/usr/freeware/bin/lyx` | **Window observed.** Question. Use and normal exit remain untested. LyX Warning! Couldn't determine system directory. Try the '-sysdir' command line parameter or set the environment variable LYX_DIR_11x to the LyX system directory containing the file 'chkconfig.ltx'. Using buil… |
+| `maker` | `/usr/frame/bin/maker` | Unresolved target in the original source inventory; no launch attempted. |
+| `MediaMail` | `/usr/bin/X11/MediaMail` | Unresolved target in the original source inventory; no launch attempted. |
+| `midnight-commander` | `/usr/freeware/bin/midnight-commander` | **Busy without a window.** Running and accumulating CPU time, with no viewable app window before the test stop. Late CPU samples are in the evidence; investigate whether a shared GNOME startup issue explains the pattern. |
+| `Mozilla` | `/var/netscape/mozilla/mozilla` | **Exits 1 without a window.** Cannot find mozilla runtime directory. Exiting. |
+| `mozilla` | `/usr/bin/X11/mozilla` | **Exits 1 without a window.** Cannot find mozilla runtime directory. Exiting. |
+| `nedit` | `/usr/sbin/nedit` | **Exits 126 without a window.** xiri-catalog: /usr/sbin/nedit: cannot execute |
+| `NetscapeMail` | `/var/netscape/communicator/NetscapeMail` | Document/web shortcut; assigned handler and destination remain untested. |
+| `showcase` | `/usr/sbin/showcase` | **Exits 1 without a window.** |
+| `Wingz` | `/usr/bin/X11/Wingz` | Unresolved target in the original source inventory; no launch attempted. |
+| `xboard` | `/usr/freeware/bin/xboard` | **Error dialog.** The chess frontend creates windows but reports a fatal error because the gnuchessx engine is missing. |
+| `xbuffy` | `/usr/freeware/bin/xbuffy` | **Needs arguments.** Prints usage and exits 255 when no mailbox/file argument is supplied. Test with a configured input before judging useful operation. |
+| `xearth` | `/usr/freeware/bin/xearth` | **Exits 126 without a window.** xiri-catalog: /usr/freeware/bin/xearth: cannot execute |
+| `xfig` | `/usr/freeware/bin/xfig` | **Main window opens.** Xfig and its error window open; CompKeyDB is missing, disabling multi-key sequences. Drawing, save and normal exit remain untested. |
+| `xmms` | `/usr/freeware/bin/xmms` | **Launch fails.** Exits 0 without a window after its control socket fails with Address family not supported by protocol family. |
+| `xosview` | `/usr/freeware/bin/xosview` | **Launch fails.** Exits 0 without a window and reports sysinfo scall interface not supported. |
+| `xpat2` | `/usr/freeware/bin/xpat2` | **Exits 1 without a window.** FAILED to open keyboard file "keys" xpat2: WARNING, cannot load configuration file /usr/freeware/lib/xpat/default/Cards.conf xpat2: cannot read suits |
+| `xscreensaver-demo` | `/usr/freeware/bin/xscreensaver-demo` | **Window observed.** XScreenSaver 4.01, 24-Feb-2002, XScreenSaver. Use and normal exit remain untested. |
+| `zsh` | `/usr/freeware/bin/zsh` | **Exits 0 without a new window.** |
 
 ## Collaboration (6)
 
-| Entry | Original target | Current-image result / evidence |
+| Entry | Original target | Observed result / next check |
 | --- | --- | --- |
-| `AboutNetscapeMessenger` | `/var/netscape/communicator/AboutNetscapeMessenger` | Pending |
-| `inperson` | `/usr/sbin/inperson` | Pending; inspect source target (not a resolved regular file) |
-| `MediaMail` | `/usr/bin/X11/MediaMail` | Pending; inspect source target (not a resolved regular file) |
-| `NetscapeMail` | `/var/netscape/communicator/NetscapeMail` | Pending |
-| `outbox` | `/usr/sbin/outbox` | Pending |
-| `sgimeeting` | `/usr/bin/X11/sgimeeting` | Pending |
+| `AboutNetscapeMessenger` | `/var/netscape/communicator/AboutNetscapeMessenger` | Document/web shortcut; assigned handler and destination remain untested. |
+| `inperson` | `/usr/sbin/inperson` | Unresolved target in the original source inventory; no launch attempted. |
+| `MediaMail` | `/usr/bin/X11/MediaMail` | Unresolved target in the original source inventory; no launch attempted. |
+| `NetscapeMail` | `/var/netscape/communicator/NetscapeMail` | Document/web shortcut; assigned handler and destination remain untested. |
+| `outbox` | `/usr/sbin/outbox` | **Exits 126 without a window.** xiri-catalog: /usr/sbin/outbox: cannot execute |
+| `sgimeeting` | `/usr/bin/X11/sgimeeting` | **Exits 0 without a new window.** awk: can't open file /usr/SGImeeting/config/sgimeeting source line number 1 /usr/bin/X11/sgimeeting[180]: /usr/SGImeeting:  not found /usr/bin/X11/sgimeeting[181]: ./bin/sgim_cc:  not found /usr/bin/X11/sgimeet… |
 
 ## ControlPanels (18)
 
-| Entry | Original target | Current-image result / evidence |
+| Entry | Original target | Observed result / next check |
 | --- | --- | --- |
-| `accessibility` | `/usr/sbin/accessx` | Pending |
-| `audiopanel` | `/usr/sbin/audiopanel` | Pending |
-| `background` | `/usr/sbin/background` | Pending |
-| `colorscheme` | `/usr/sbin/colorscheme` | Pending |
-| `desktop` | `/usr/sbin/desktop` | Pending |
-| `display` | `/usr/bin/X11/xsetmon` | Pending |
-| `iconviews` | `/usr/sbin/fmprefs` | Pending |
-| `keyboard` | `/usr/sbin/keyboard` | Pending |
-| `language` | `/usr/sbin/language` | Pending |
-| `monpanel` | `/usr/sbin/monpanel` | Pending |
-| `mouse` | `/usr/sbin/mouse` | Pending |
-| `screensaver` | `/usr/sbin/screensaver` | Pending |
-| `sounds` | `/usr/sbin/dtSounds` | Pending |
-| `syserrpanel` | `/usr/sbin/syserrpanel` | Pending |
-| `utilities` | `/usr/sbin/dtUtilities` | Pending |
-| `videopanel` | `/usr/sbin/videopanel` | Pending |
-| `webcontrol` | `/root/usr/sbin/webcontrol` | Pending; inspect source target (not a resolved regular file) |
-| `windows` | `/usr/sbin/windows` | Pending |
+| `accessibility` | `/usr/sbin/accessx` | **Error dialog.** Cannot save the active AccessX profile; xmodmap helper is also absent. |
+| `audiopanel` | `/usr/sbin/audiopanel` | **Error dialog.** Reports that this machine has no audio driver. |
+| `background` | `/usr/sbin/background` | **Main window opens.** Background Setting renders its pattern list and preview; Apply and persistence are untested. |
+| `colorscheme` | `/usr/sbin/colorscheme` | **Window observed.** Color Scheme Browser. Use and normal exit remain untested. |
+| `desktop` | `/usr/sbin/desktop` | **Main window opens.** Desktop Settings renders its controls; changing settings and persistence are untested. |
+| `display` | `/usr/bin/X11/xsetmon` | **Error dialog.** Reports that the X display lacks the XSGIvc extension required by xsetmon. |
+| `iconviews` | `/usr/sbin/fmprefs` | **Window observed.** Default Layout for Icon Views. Use and normal exit remain untested. |
+| `keyboard` | `/usr/sbin/keyboard` | **Exits 126 without a window.** xiri-catalog: /usr/sbin/keyboard: cannot execute |
+| `language` | `/usr/sbin/language` | **Exits 1 without a window.** Error:            Can't get default (en) or fallback (en) dictionaries No dictionary loaded.  Messages may be very strange Fatal Error:      Couldn't load config files Exiting |
+| `monpanel` | `/usr/sbin/monpanel` | **Error dialog.** Reports that Monpanel requires a machine with the flat panel adapter. |
+| `mouse` | `/usr/sbin/mouse` | **Window observed.** Mouse Settings. Use and normal exit remain untested. |
+| `screensaver` | `/usr/sbin/screensaver` | **Window observed.** Screen Saver. Use and normal exit remain untested. |
+| `sounds` | `/usr/sbin/dtSounds` | **Window observed.** dtSounds. Use and normal exit remain untested. |
+| `syserrpanel` | `/usr/sbin/syserrpanel` | **Exits 1 without a window.** cannot read config file: /usr/lib/sysmon/notifier.config |
+| `utilities` | `/usr/sbin/dtUtilities` | **Window observed.** Default Viewer & Editor Utilities. Use and normal exit remain untested. |
+| `videopanel` | `/usr/sbin/videopanel` | **Window observed.** vcp. Use and normal exit remain untested. |
+| `webcontrol` | `/root/usr/sbin/webcontrol` | Unresolved target in the original source inventory; no launch attempted. |
+| `windows` | `/usr/sbin/windows` | **Window observed.** Window Settings. Use and normal exit remain untested. |
 
 ## Demos (2)
 
-| Entry | Original target | Current-image result / evidence |
+| Entry | Original target | Observed result / next check |
 | --- | --- | --- |
-| `bzflag` | `/usr/freeware/bin/bzflag` | Pending |
-| `bzfs` | `/usr/freeware/bzfs` | Pending; inspect source target (not a resolved regular file) |
+| `bzflag` | `/usr/freeware/bin/bzflag` | **X observation interrupted.** The bounded X query failed; process cleanup and the guest halt are recorded. Repeat interactively before classifying the application. |
+| `bzfs` | `/usr/freeware/bzfs` | Unresolved target in the original source inventory; no launch attempted. |
 
 ## DesktopTools (24)
 
-| Entry | Original target | Current-image result / evidence |
+| Entry | Original target | Observed result / next check |
 | --- | --- | --- |
-| `clock` | `/usr/sbin/clock` | Pending |
-| `colorview` | `/usr/sbin/colorview` | Pending |
-| `desktophelp` | `/usr/sbin/desktophelp` | Pending |
-| `enterlicense` | `/usr/etc/enterlicense` | Pending |
-| `gr_osview` | `/usr/sbin/gr_osview` | Pending |
-| `ical` | `/usr/sbin/ical` | Pending |
-| `infosearch` | `/usr/sbin/infosearch` | Pending |
-| `insight` | `/usr/sbin/insight` | Pending |
-| `LicenseManager` | `/usr/etc/LicenseManager` | Pending |
-| `mag` | `/usr/sbin/mag` | Pending |
-| `mailbox` | `/usr/sbin/mailbox` | Pending |
-| `makemap` | `/usr/sbin/makemap` | Pending |
-| `notepad` | `/usr/sbin/notepad` | Pending; inspect source target (not a resolved regular file) |
-| `rcpDevice` | `/usr/lib/desktop/rcpDevice` | Pending |
-| `showmap` | `/usr/sbin/showmap` | Pending |
-| `snoop` | `/usr/bin/snoop` | Pending |
-| `SoftwareManager` | `/usr/sbin/SoftwareManager` | Pending |
-| `xcalc` | `/usr/bin/X11/xcalc` | Pending |
-| `xclock` | `/usr/bin/X11/xclock` | Pending |
-| `xfontsel` | `/usr/bin/X11/xfontsel` | Pending |
-| `xpsview` | `/usr/bin/X11/xpsview` | Pending |
-| `xshowcmap` | `/usr/bin/X11/xshowcmap` | Pending |
-| `xwininfo` | `/usr/bin/X11/xwininfo` | Pending |
-| `xwsh` | `/usr/sbin/xwsh` | Pending |
+| `clock` | `/usr/sbin/clock` | **Exits 0 without a new window.** |
+| `colorview` | `/usr/sbin/colorview` | **Exits 1 without a window.** cannot open rgb database "/usr/lib/X11/rgb" |
+| `desktophelp` | `/usr/sbin/desktophelp` | **Exits 0 without a new window.** sh: /usr/bin/X11/xconfirm:  not found |
+| `enterlicense` | `/usr/etc/enterlicense` | **Window observed.** License Manager 3.4 - Privileges Required. Use and normal exit remain untested. |
+| `gr_osview` | `/usr/sbin/gr_osview` | **Exits 0 without a new window.** can't open memory special file |
+| `ical` | `/usr/sbin/ical` | **X observation interrupted.** The bounded X query failed; process cleanup and the guest halt are recorded. Repeat interactively before classifying the application. |
+| `infosearch` | `/usr/sbin/infosearch` | **Information dialog.** Explains that InfoSearch has been replaced by the configured desktop web browser; browser/document handling remains untested. |
+| `insight` | `/usr/sbin/insight` | **Information dialog.** InSight opens the InfoSearch notice explaining that the configured desktop web browser replaces the client. Browser and document handling remain untested. |
+| `LicenseManager` | `/usr/etc/LicenseManager` | **Privilege prompt.** Requests root privileges for installing/removing licenses and offers Continue for read-only mode; neither path was exercised. |
+| `mag` | `/usr/sbin/mag` | **Missing X extension.** The automatic X query timed out. An interactive retry reports that ReadDisplay is unsupported; pointer steering failed during the attempt. Timed descendant cleanup and subsequent desktop readiness passed. Magnification remains unqualified. |
+| `mailbox` | `/usr/sbin/mailbox` | **X observation interrupted.** The bounded X query failed; process cleanup and the guest halt are recorded. Repeat interactively before classifying the application. |
+| `makemap` | `/usr/sbin/makemap` | **Exits 1 without a window.** ERROR #114  _GLgetfd : Cannot Open Graphics: ERR_NOGRAPHICS |
+| `notepad` | `/usr/sbin/notepad` | Unresolved target in the original source inventory; no launch attempted. |
+| `rcpDevice` | `/usr/lib/desktop/rcpDevice` | **Exits 1 without a window.** /usr/lib/desktop/rcpDevice[12]: test: argument expected Invalid argument: |
+| `showmap` | `/usr/sbin/showmap` | **Exits 1 without a window.** ERROR #114  _GLgetfd : Cannot Open Graphics: ERR_NOGRAPHICS |
+| `snoop` | `/usr/bin/snoop` | **Exits 1 without a window.** Warning: sigaltstack: Function not implemented |
+| `SoftwareManager` | `/usr/sbin/SoftwareManager` | **Window observed.** SuWindow. Use and normal exit remain untested. |
+| `xcalc` | `/usr/bin/X11/xcalc` | **Window observed.** Calculator. Use and normal exit remain untested. Warning: Color name "sgilightgray" is not defined Warning: Cannot convert string "calculator" to type Pixmap |
+| `xclock` | `/usr/bin/X11/xclock` | [Prior bounded UTC/time pass](results/2026-11-01-irix-time.md); not repeated by this survey. |
+| `xfontsel` | `/usr/bin/X11/xfontsel` | **Window observed.** xfontsel. Use and normal exit remain untested. |
+| `xpsview` | `/usr/bin/X11/xpsview` | **Main window opens.** Adobe ShowPS 1.0.7 opens its main window and file selector. PostScript rendering, PDF handling and normal exit have not been tested. |
+| `xshowcmap` | `/usr/bin/X11/xshowcmap` | **Window observed.** colors. Use and normal exit remain untested. |
+| `xwininfo` | `/usr/bin/X11/xwininfo` | **No window before test stop.** This tool needs interactive window selection; the survey supplied no selection. |
+| `xwsh` | `/usr/sbin/xwsh` | **Window observed.** xwsh. Use and normal exit remain untested. |
 
 ## DeveloperMagic (6)
 
-| Entry | Original target | Current-image result / evidence |
+| Entry | Original target | Observed result / next check |
 | --- | --- | --- |
-| `cvbuild` | `/usr/sbin/cvbuild` | Pending |
-| `cvd` | `/usr/sbin/cvd` | Pending |
-| `cvmake` | `/usr/sbin/cvmake` | Pending |
-| `cvperf` | `/usr/sbin/cvperf` | Pending |
-| `cvstatic` | `/usr/sbin/cvstatic` | Pending |
-| `swpkg` | `/usr/sbin/swpkg` | Pending |
+| `cvbuild` | `/usr/sbin/cvbuild` | **Exits 1 without a window.** VkMsgFacility: Couldn't find /usr/lib/CaseVision/ttutil VkMsgFacility: Warning: couldn't find case session, using default VkMsgFacility: Couldn't find /usr/lib/CaseVision/ttutil VkMsgFacility: Warning: couldn't… |
+| `cvd` | `/usr/sbin/cvd` | **Exits 127 without a window.** /usr/sbin/cvd[289]: /usr/lib/WorkShop/cvmain:  not found |
+| `cvmake` | `/usr/sbin/cvmake` | **Exits 1 without a window.** VkMsgFacility: Couldn't find /usr/lib/CaseVision/ttutil VkMsgFacility: Warning: couldn't find case session, using default VkMsgFacility: Couldn't find /usr/lib/CaseVision/ttutil VkMsgFacility: Warning: couldn't… |
+| `cvperf` | `/usr/sbin/cvperf` | **Terminates on signal 11.** |
+| `cvstatic` | `/usr/sbin/cvstatic` | **Exits 1 without a window.** VkMsgFacility: Couldn't find /usr/lib/CaseVision/ttutil VkMsgFacility: Warning: couldn't find case session, using default VkMsgFacility: Couldn't find /usr/lib/CaseVision/ttutil VkMsgFacility: Warning: couldn't… |
+| `swpkg` | `/usr/sbin/swpkg` | **Exits 1 without a window.** VkMsgFacility: VkMsgOpen failed with status TT_ERR_NOMP! |
 
 ## Freeware (21)
 
-| Entry | Original target | Current-image result / evidence |
+| Entry | Original target | Observed result / next check |
 | --- | --- | --- |
-| `abiword` | `/usr/freeware/bin/abiword` | Pending |
-| `balsa` | `/usr/freeware/bin/balsa` | Pending |
-| `CUPS` | `/usr/freeware/etc/cups/CUPS` | Pending |
-| `dia` | `/usr/freeware/bin/dia` | Pending |
-| `emacs` | `/usr/freeware/bin/emacs` | Pending |
-| `fluid` | `/usr/freeware/bin/fluid` | Pending |
-| `FreewareRelnotes` | `/usr/freeware/relnotes/shared/FreewareRelnotes` | Pending |
-| `gedit` | `/usr/freeware/bin/gedit` | Pending |
-| `gftp` | `/usr/freeware/bin/gftp` | Pending |
-| `gimp` | `/usr/freeware/bin/gimp` | [Basic setup, edit/save/reopen, catalog launch and clean exit pass](results/2026-11-03-irix-gimp.md); preference backup and wider plug-ins remain open. |
-| `glade` | `/usr/freeware/bin/glade` | Pending |
-| `gnumeric` | `/usr/freeware/bin/gnumeric` | Pending |
-| `grok` | `/usr/freeware/bin/grok` | Pending |
-| `Maelstrom` | `/usr/freeware/bin/Maelstrom` | Pending |
-| `nedit` | `/usr/freeware/bin/nedit` | Pending |
-| `plan` | `/usr/freeware/bin/plan` | Pending |
-| `xcdroast` | `/usr/freeware/bin/xcdroast` | Pending |
-| `xchat` | `/usr/freeware/bin/xchat` | Pending |
-| `xmahjongg` | `//usr/freeware/bin/xmahjongg` | Pending |
-| `xmcd` | `/usr/freeware/bin/xmcd` | Pending |
-| `xsane` | `/usr/freeware/bin/xsane` | Pending |
+| `abiword` | `/usr/freeware/bin/abiword` | **Exits 0 without a new window.** Error: can't find AbiWord executables: /usr/freeware/bin/AbiWord_d -or- /usr/freeware/bin/AbiWord_s |
+| `balsa` | `/usr/freeware/bin/balsa` | **Busy without a window.** Running and accumulating CPU time, with no viewable app window before the test stop. Late CPU samples are in the evidence; investigate whether a shared GNOME startup issue explains the pattern. |
+| `CUPS` | `/usr/freeware/etc/cups/CUPS` | Document/web shortcut; assigned handler and destination remain untested. |
+| `dia` | `/usr/freeware/bin/dia` | **Exits 1 without a window.** Gtk-CRITICAL **: file gtkcontainer.c: line 713: assertion 'widget != NULL' failed. Couldn't find standard objects when looking for object-libs, exiting... |
+| `emacs` | `/usr/freeware/bin/emacs` | **Launch fails.** Exits 0 with missing Emacs architecture data, Lisp directories and term/x-win. A complete Emacs resource import remains necessary. |
+| `fluid` | `/usr/freeware/bin/fluid` | **Window observed.** fluid, Bin. Use and normal exit remain untested. |
+| `FreewareRelnotes` | `/usr/freeware/relnotes/shared/FreewareRelnotes` | Document/web shortcut; assigned handler and destination remain untested. |
+| `gedit` | `/usr/freeware/bin/gedit` | **Busy without a window.** Running and accumulating CPU time, with no viewable app window before the test stop. Late CPU samples are in the evidence; investigate whether a shared GNOME startup issue explains the pattern. |
+| `gftp` | `/usr/freeware/bin/gftp` | **Exits 0 without a new window.** Error: Can't find gFTP binaries installed in /usr/freeware/bin |
+| `gimp` | `/usr/freeware/bin/gimp` | [Prior bounded pass: setup, paint, XCF/PNG save/reopen, catalog launch and exit](results/2026-11-03-irix-gimp.md). Preference backup and wider plug-ins remain open. |
+| `glade` | `/usr/freeware/bin/glade` | **Busy without a window.** Running and accumulating CPU time, with no viewable app window before the test stop. Late CPU samples are in the evidence; investigate whether a shared GNOME startup issue explains the pattern. |
+| `gnumeric` | `/usr/freeware/bin/gnumeric` | **Busy without a window.** Running and accumulating CPU time, with no viewable app window before the test stop. Late CPU samples are in the evidence; investigate whether a shared GNOME startup issue explains the pattern. |
+| `grok` | `/usr/freeware/bin/grok` | **Window observed.** grok, Grok Dialog_popup. Use and normal exit remain untested. |
+| `Maelstrom` | `/usr/freeware/bin/Maelstrom` | **Exits 1 without a window.** Couldn't create bound network socket |
+| `nedit` | `/usr/freeware/bin/nedit` | **Partial use.** Freeware double-click, visible text editing, opened/closed icon artwork and Quit/Discard work. Save fails with cannot create; the file remains absent. A native write in the home’s .xiri-catalog subdirectory succeeds; a control in the exact destination directory remains pending. Exit status was not captured. |
+| `plan` | `/usr/freeware/bin/plan` | **Window observed.** plan, Warning_popup. Use and normal exit remain untested. ERROR: Error while reading files: Failed to read master file ~/.dayplan, error 2 Failed to read private file ~/.dayplan.priv, error 2 ERROR: Error while reading files: Failed to read master file ~/.dayplan, err… |
+| `xcdroast` | `/usr/freeware/bin/xcdroast` | **Exits 1 without a window.** ** WARNING **: Installation problem? /usr/freeware/lib32/xcdroast/bin/xcdrwrap not found. ** WARNING **: No /usr/freeware/lib32/xcdroast/bin/xcdrwrap installed ** WARNING **: (Invalid lib-directory? Check -l op… |
+| `xchat` | `/usr/freeware/bin/xchat` | **Busy without a window.** Running and accumulating CPU time, with no viewable app window before the test stop. Late CPU samples are in the evidence; investigate whether a shared GNOME startup issue explains the pattern. |
+| `xmahjongg` | `//usr/freeware/bin/xmahjongg` | [Prior bounded rendering/interaction pass](results/2026-11-03-newport-xmahjongg.md); a complete game remains unqualified. |
+| `xmcd` | `/usr/freeware/bin/xmcd` | **Launch fails.** Its wrapper selects bin-NetBSD-ALL/xmcd, which is absent. Check OS detection as well as the original xmcd payload before retrying. |
+| `xsane` | `/usr/freeware/bin/xsane` | **Launch fails.** Exits 0 after reporting that the XSane EULA text is missing. No scanner operation was tested. |
 
 ## Imaging (2)
 
-| Entry | Original target | Current-image result / evidence |
+| Entry | Original target | Observed result / next check |
 | --- | --- | --- |
-| `Eclipse` | `/usr/bin/Eclipse` | Pending |
-| `www.formvision.de` | `/usr/Eclipse/etc/www.formvision.de` | Pending |
+| `Eclipse` | `/usr/bin/Eclipse` | **Exits 0 without a new window.** Couldn't loap pixmap "/usr/Eclipse/util/bitmaps/red_toolbox_mult" Couldn't loap pixmap "/usr/Eclipse/util/bitmaps/red_toolbox_mult" Couldn't loap pixmap "/usr/Eclipse/util/bitmaps/red_toolbox_mult" Couldn't loa… |
+| `www.formvision.de` | `/usr/Eclipse/etc/www.formvision.de` | Document/web shortcut; assigned handler and destination remain untested. |
 
 ## ImagingTools (4)
 
-| Entry | Original target | Current-image result / evidence |
+| Entry | Original target | Observed result / next check |
 | --- | --- | --- |
-| `EcLink` | `/usr/bin/EcLink` | Pending |
-| `EcMonitorSetup` | `/usr/bin/EcMonitorSetup` | Pending |
-| `EcRender` | `/usr/bin/EcRender` | Pending |
-| `EcWatch` | `/usr/bin/EcWatch` | Pending |
+| `EcLink` | `/usr/bin/EcLink` | **Window observed.** EcLink 3.1.3, Error. Use and normal exit remain untested. Couldn't loap pixmap "/usr/Eclipse/util/bitmaps/left_point_button" Couldn't loap pixmap "/usr/Eclipse/util/bitmaps/left_point_button" Couldn't loap pixmap "/usr/Eclipse/util/bitmaps/left_point_button" Couldn't … |
+| `EcMonitorSetup` | `/usr/bin/EcMonitorSetup` | **Terminates on signal 6.** Assertion failed: w->glwDrawingArea.visualInfo, file ./GLwDrawA.c, line 433 |
+| `EcRender` | `/usr/bin/EcRender` | **Exits 126 without a window.** xiri-catalog: /usr/bin/EcRender: cannot execute |
+| `EcWatch` | `/usr/bin/EcWatch` | **Window observed.** EcWatch 3.1.3. Use and normal exit remain untested. |
 
 ## Interoperability (1)
 
-| Entry | Original target | Current-image result / evidence |
+| Entry | Original target | Observed result / next check |
 | --- | --- | --- |
-| `tfxConfig` | `/usr/sbin/tfxConfig` | Pending |
+| `tfxConfig` | `/usr/sbin/tfxConfig` | **Exits 126 without a window.** xiri-catalog: /usr/sbin/tfxConfig: cannot execute |
 
 ## MediaTools (22)
 
-| Entry | Original target | Current-image result / evidence |
+| Entry | Original target | Observed result / next check |
 | --- | --- | --- |
-| `cdman` | `/usr/sbin/cdman` | Pending |
-| `cdplayer` | `/usr/sbin/cdplayer` | Pending |
-| `compview` | `/usr/sbin/compview` | Pending |
-| `datman` | `/usr/sbin/datman` | Pending |
-| `datplayer` | `/usr/sbin/datplayer` | Pending |
-| `image_editor` | `/usr/sbin/imged` | Pending |
-| `imgcopy` | `/usr/sbin/imgcopy` | Pending |
-| `imginfo` | `/usr/sbin/imginfo` | Pending |
-| `imgview` | `/usr/sbin/imgview` | Pending |
-| `imgworks` | `/usr/sbin/imgworks` | Pending |
-| `macromedia` | `/usr/sbin/macromedia` | Pending; inspect source target (not a resolved regular file) |
-| `mediaconvert` | `/usr/sbin/mediaconvert` | Pending |
-| `mediaplayer` | `/usr/sbin/mediaplayer` | Pending |
-| `mediarecorder` | `/usr/sbin/mediarecorder` | Pending |
-| `moviemaker` | `/usr/sbin/moviemaker` | Pending |
-| `musicplayer` | `/usr/sbin/musicplayer` | Pending |
-| `soundeditor` | `/usr/sbin/soundeditor` | Pending |
-| `soundplayer` | `/usr/sbin/soundplayer` | Pending |
-| `soundtrack` | `/usr/sbin/soundtrack` | Pending |
-| `videoin` | `/usr/sbin/videoin` | Pending |
-| `videoout` | `/usr/sbin/videoout` | Pending |
-| `videopanel` | `/usr/sbin/videopanel` | Pending |
+| `cdman` | `/usr/sbin/cdman` | **Terminates on signal 8.** |
+| `cdplayer` | `/usr/sbin/cdplayer` | **Terminates on signal 8.** |
+| `compview` | `/usr/sbin/compview` | **Cleanup not verified.** X queries timed out and the launch tracker ended with absent=0, valid=0 and one remaining tracked identity. Later process snapshots do not show that PID, so an actual live-process leak is not established. The entire disposable guest subsequently halted cleanly. Investigate process tracking and application startup together. |
+| `datman` | `/usr/sbin/datman` | **Exits 0 without a new window.** Can't find color named sgislateblue |
+| `datplayer` | `/usr/sbin/datplayer` | **Terminates on signal 8.** |
+| `image_editor` | `/usr/sbin/imged` | **Exits 0 without a new window.** /usr/sbin/imged: ReadDisplay extension not supported by current X server!usage: imged <infile> [xsize ysize [-rgb]] |
+| `imgcopy` | `/usr/sbin/imgcopy` | **Exits 126 without a window.** xiri-catalog: /usr/sbin/imgcopy: cannot execute |
+| `imginfo` | `/usr/sbin/imginfo` | **Exits 126 without a window.** xiri-catalog: /usr/sbin/imginfo: cannot execute |
+| `imgview` | `/usr/sbin/imgview` | **Exits 126 without a window.** xiri-catalog: /usr/sbin/imgview: cannot execute |
+| `imgworks` | `/usr/sbin/imgworks` | **Exits 126 without a window.** xiri-catalog: /usr/sbin/imgworks: cannot execute |
+| `macromedia` | `/usr/sbin/macromedia` | Unresolved target in the original source inventory; no launch attempted. |
+| `mediaconvert` | `/usr/sbin/mediaconvert` | **Window observed.** MediaConvert. Use and normal exit remain untested. |
+| `mediaplayer` | `/usr/sbin/mediaplayer` | **Window observed.** MediaPlayer. Use and normal exit remain untested. |
+| `mediarecorder` | `/usr/sbin/mediarecorder` | **Terminates on signal 6.** libmovierecord failed to create shared arena at /var/tmp/.mvrlBAAa000Fv: out of disk space?  swap space? Assertion failed: queue, file events.c, line 580 |
+| `moviemaker` | `/usr/sbin/moviemaker` | **X observation interrupted.** The bounded X query failed; process cleanup and the guest halt are recorded. Repeat interactively before classifying the application. |
+| `musicplayer` | `/usr/sbin/musicplayer` | **Exits 1 without a window.** Error Loading Skin.. sh: /sbin/tar:  not found sh: /usr/sbin/gzip:  not found |
+| `soundeditor` | `/usr/sbin/soundeditor` | **Exits 0 without a new window.** Could not get input sample rate. |
+| `soundplayer` | `/usr/sbin/soundplayer` | **Exits 1 without a window.** soundplayer: no audio output devices found |
+| `soundtrack` | `/usr/sbin/soundtrack` | **Terminates on signal 8.** |
+| `videoin` | `/usr/sbin/videoin` | **Exits 0 without a new window.** videoin: error opening video: VL: Failed allocation of resource or memory |
+| `videoout` | `/usr/sbin/videoout` | **Exits 1 without a window.** /usr/sbin/videoout: couldn't open VL video |
+| `videopanel` | `/usr/sbin/videopanel` | **Window observed.** vcp. Use and normal exit remain untested. |
 
 ## Printing (3)
 
-| Entry | Original target | Current-image result / evidence |
+| Entry | Original target | Observed result / next check |
 | --- | --- | --- |
-| `printers` | `/usr/sbin/printers` | Pending |
-| `PrintPanel` | `/usr/sbin/PrintPanel` | Pending |
-| `PrintStatus` | `/usr/sbin/PrintStatus` | Pending |
+| `printers` | `/usr/sbin/printers` | **Window observed.** Printer Manager for xiritest@xiri-indy, Error. Use and normal exit remain untested. Warning: Color name "SGIVeryLightGrey" is not defined sh: /usr/bin/lpstat:  not found sh: /usr/bin/lpstat:  not found |
+| `PrintPanel` | `/usr/sbin/PrintPanel` | **Window observed.** PrintPanel on xiri-indy, Error. Use and normal exit remain untested. Warning: Color name "SGILightGrey" is not defined sh: /usr/bin/lpstat:  not found sh: /usr/bin/lpstat:  not found |
+| `PrintStatus` | `/usr/sbin/PrintStatus` | **Window observed.** Error. Use and normal exit remain untested. sh: /usr/bin/lpstat:  not found |
 
 ## SupportTools (4)
 
-| Entry | Original target | Current-image result / evidence |
+| Entry | Original target | Observed result / next check |
 | --- | --- | --- |
-| `confidence` | `/usr/sbin/confidence` | Pending |
-| `Embedded_Support_Partner` | `/var/esp/ssc/ESPartnerURL` | Pending |
-| `Supportfolio_Online` | `/usr/share/WebMagic/jumpsites/Supportfolio_Online` | Pending |
-| `SupportInfo` | `/usr/share/WebMagic/jumpsites/SupportInfo` | Pending |
+| `confidence` | `/usr/sbin/confidence` | **Window observed.** Confidence Tests. Use and normal exit remain untested. Warning: Color name "SGIVeryLightGrey" is not defined /bin/sh: /usr/sbin/showprods:  not found |
+| `Embedded_Support_Partner` | `/var/esp/ssc/ESPartnerURL` | Document/web shortcut; assigned handler and destination remain untested. |
+| `Supportfolio_Online` | `/usr/share/WebMagic/jumpsites/Supportfolio_Online` | Document/web shortcut; assigned handler and destination remain untested. |
+| `SupportInfo` | `/usr/share/WebMagic/jumpsites/SupportInfo` | Document/web shortcut; assigned handler and destination remain untested. |
 
 ## WebTools (12)
 
-| Entry | Original target | Current-image result / evidence |
+| Entry | Original target | Observed result / next check |
 | --- | --- | --- |
-| `AboutNetscapeMessenger` | `/var/netscape/communicator/AboutNetscapeMessenger` | Pending |
-| `ApacheGuide` | `/var/sgi_apache/server/share/htdocs/ApacheGuide` | Pending |
-| `InfoSearch` | `/usr/lib/infosearch/C/InfoSearch` | Pending |
-| `mozilla` | `/usr/bin/X11/mozilla` | Pending |
-| `netscape` | `/usr/bin/X11/netscape` | Pending |
-| `NetscapeMail` | `/var/netscape/communicator/NetscapeMail` | Pending |
-| `outbox` | `/usr/sbin/outbox` | Pending |
-| `SiliconSurf` | `/usr/share/WebMagic/jumpsites/SiliconSurf` | Pending |
-| `sitemgr` | `/usr/sbin/sitemgr` | Pending |
-| `webjumper` | `/usr/sbin/webjumper` | Pending |
-| `WebSetup` | `/var/www/htdocs/webface/WebSetup` | Pending; inspect source target (not a resolved regular file) |
-| `WelcomeToWeb` | `/var/netscape/communicator/WelcomeToWeb` | Pending |
+| `AboutNetscapeMessenger` | `/var/netscape/communicator/AboutNetscapeMessenger` | Document/web shortcut; assigned handler and destination remain untested. |
+| `ApacheGuide` | `/var/sgi_apache/server/share/htdocs/ApacheGuide` | Document/web shortcut; assigned handler and destination remain untested. |
+| `InfoSearch` | `/usr/lib/infosearch/C/InfoSearch` | Document/web shortcut; assigned handler and destination remain untested. |
+| `mozilla` | `/usr/bin/X11/mozilla` | **Exits 1 without a window.** Cannot find mozilla runtime directory. Exiting. |
+| `netscape` | `/usr/bin/X11/netscape` | **Exits 1 without a window.** |
+| `NetscapeMail` | `/var/netscape/communicator/NetscapeMail` | Document/web shortcut; assigned handler and destination remain untested. |
+| `outbox` | `/usr/sbin/outbox` | **Exits 126 without a window.** xiri-catalog: /usr/sbin/outbox: cannot execute |
+| `SiliconSurf` | `/usr/share/WebMagic/jumpsites/SiliconSurf` | Document/web shortcut; assigned handler and destination remain untested. |
+| `sitemgr` | `/usr/sbin/sitemgr` | **Exits 126 without a window.** xiri-catalog: /usr/sbin/sitemgr: cannot execute |
+| `webjumper` | `/usr/sbin/webjumper` | **Window observed.** WebJumper. Use and normal exit remain untested. |
+| `WebSetup` | `/var/www/htdocs/webface/WebSetup` | Unresolved target in the original source inventory; no launch attempted. |
+| `WelcomeToWeb` | `/var/netscape/communicator/WelcomeToWeb` | Document/web shortcut; assigned handler and destination remain untested. |
 
 ## WhatsNew (4)
 
-| Entry | Original target | Current-image result / evidence |
+| Entry | Original target | Observed result / next check |
 | --- | --- | --- |
-| `New_IRIX_Info` | `/var/www/htdocs/WhatsNew/New_IRIX_Info` | Pending |
-| `sgimeeting` | `/usr/bin/X11/sgimeeting` | Pending |
-| `WebSetup` | `/var/www/htdocs/webface/WebSetup` | Pending; inspect source target (not a resolved regular file) |
-| `Welcome_to_SGI` | `/var/www/htdocs/WhatsNew/Welcome_to_SGI` | Pending |
+| `New_IRIX_Info` | `/var/www/htdocs/WhatsNew/New_IRIX_Info` | Document/web shortcut; assigned handler and destination remain untested. |
+| `sgimeeting` | `/usr/bin/X11/sgimeeting` | **Exits 0 without a new window.** awk: can't open file /usr/SGImeeting/config/sgimeeting source line number 1 /usr/bin/X11/sgimeeting[180]: /usr/SGImeeting:  not found /usr/bin/X11/sgimeeting[181]: ./bin/sgim_cc:  not found /usr/bin/X11/sgimeet… |
+| `WebSetup` | `/var/www/htdocs/webface/WebSetup` | Unresolved target in the original source inventory; no launch attempted. |
+| `Welcome_to_SGI` | `/var/www/htdocs/WhatsNew/Welcome_to_SGI` | Document/web shortcut; assigned handler and destination remain untested. |
+
+## Blank (user page, 0)
+
+The native directory listing confirms that `.desktop-xiri-indy/iconcatalog/pages/Blank`
+is empty. It is an additional user page, not a missing system-application tab.

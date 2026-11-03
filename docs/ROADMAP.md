@@ -1,6 +1,6 @@
 # Xiri execution roadmap
 
-Status: updated 2026-11-03. The current image runs the original 4Dwm desktop,
+Status: updated 2026-11-04. The current image runs the original 4Dwm desktop,
 Toolchest, Icon Catalog, File Manager, winterm and xclock on NetBSD/Xorg with
 accelerated Newport. Catalog launching, running-icon feedback, backdrop,
 desktop icons and logout pass bounded checks; the latest xmahjongg texture
@@ -46,18 +46,27 @@ missing `rename` preference-backup path, larger images/tile swapping and
 individual plug-ins. Shared-memory transport currently uses its fallback.
 The replacement manual CHD has separate boot/session acceptance.
 
-After the GIMP run, work through Icon Catalog tab by tab, as requested on
-2026-11-03. Use the [application checklist](ICON-CATALOG.md), starting from
-the existing 166-entry, 17-system-page inventory, and
-include any additional user pages visible in the current session. Maintain
-one checklist entry per launcher, preserving its tab, target and resource
-requirements. For each entry record direct execution, catalog double-click,
-visible UI, a basic useful action, and normal exit with child cleanup.
-Record CPU activity and processes left without a window separately from a
-successful launch. Link evidence and distinguish missing software, unsupported
-interfaces, slow startup and crashes; existing partial checks are not blanket
-application support. Finish GIMP's cold-image acceptance before starting this
-broader application pass.
+The [catalog startup survey](results/2026-11-03-irix-catalog.md) now attempts
+all 124 distinct program targets selected from the 166-entry inventory.
+The [application checklist](ICON-CATALOG.md) preserves all 17 system pages
+and the empty user Blank page. The bottom-right page menu exposes all 18.
+Nine launch targets reproduce busy processes without a window; three invoke
+GNOME Terminal. Acrobat needs its Reader installation, while Freeware NEdit
+launches through the catalog and accepts text but fails to save. These remain
+separate from functional passes. Interrupted X queries and compview's failed
+cleanup tracking are retained explicitly; all disposable guests are stopped.
+
+Return to these entries individually, as requested. First reproduce one
+busy GNOME application in a fresh home, then diagnose the observed boundary;
+separately stage Acrobat's complete package and investigate NEdit file creation.
+For each repaired entry qualify catalog double-click, running-icon feedback,
+a useful operation, persistence and normal exit with child cleanup. Continue
+through the document/web handlers and unresolved registrations. Keep missing
+resources, unsupported interfaces, hardware requirements, slow startup and
+crashes distinct; startup UI alone does not qualify application support.
+Investigate the survey's native child-control stalls and batch shutdown
+failure alongside compview's tracking failure; retain the failing runs rather
+than attributing these symptoms to an individual application without evidence.
 
 ## Next packaging phase
 

@@ -14,10 +14,27 @@ links, filetype rules/icons, application defaults and required libraries
 together with each application. Qualify direct execution, catalog launch,
 interaction and persistence before calling an application supported.
 
-The next pass after GIMP will test these launchers tab by tab. The
-[Icon Catalog checklist](ICON-CATALOG.md) lists every imported system entry
-and defines the startup, interaction and exit evidence to collect, including
-processes consuming CPU without producing a window.
+The [Icon Catalog checklist](ICON-CATALOG.md) tracks each imported system
+entry by tab, with startup observations, errors and later interaction/exit
+checks. The survey uses the qualified GIMP CHD in disposable guests and
+records processes that remain alive without producing a window.
+
+Several launchers need more than their executable and static library closure.
+Acrobat calls a missing `acroread.dist` helper and Reader installation;
+AbiWord calls missing `AbiWord_d`/`AbiWord_s` programs; Mozilla and gFTP
+report absent runtime programs. Emacs needs its Lisp/data directories,
+while Dia, LyX and xpat2 report missing application data. Preserve complete
+package layouts and record the additional source/destination paths before
+testing again. The [Acrobat source audit](../lab/irix-catalog/acrobat-source.json)
+locates its original installation for that later work. No additional vendor
+resources are imported by the survey.
+
+Window creation remains a separate check from useful operation. Freeware's
+NEdit launches through the catalog, accepts visible text, changes its icon
+and closes through Quit/Discard, but Save reports that it cannot create the
+file. A native write in the home's `.xiri-catalog/` subdirectory succeeds;
+a control in the exact destination directory remains pending. This is a
+partial application result, with the file-creation failure still to diagnose.
 
 The [desktop service repair](results/2026-11-02-desktop-services.md) now shows
 the existing Freeware page and all 21 entry names. Native FAM supplies the

@@ -1,0 +1,196 @@
+{
+  "schema": 1,
+  "status": "bounded-interactive-observations",
+  "run": "/var/home/salvogendut/Dev/xiri/.work/catalog-cycle/survey-0-ucxhf9bn",
+  "result_sha256": "2d0fb7e8bea08395999c9a98de2d8740a857f3f6c1f80e9c07fed4dc1668ad49",
+  "serial_sha256": "6e98c1613d5952af59dbefad02ceb7303d93ce2a3b81ecd221447012f67803fc",
+  "harness_sha256": "277b7b802c83ead867917d7e20ebfb1dba67fcdc3396ec342b816e3a6fcdc338",
+  "pin": {
+    "schema": 1,
+    "description": "GIMP full signal mask module update; unchanged qualified N64 core kernel",
+    "ident": "XIRI_IRIX_MODULE_20261103",
+    "source_revision": "9390bc04900a0d04796d494aca5b00651f12954d",
+    "source_branch": "xiri",
+    "build_arch": "mips64eb",
+    "page_bytes": 8192,
+    "boot_kernel_sha256": "260b253f579ca46a50b83e367f95600b54c86756c47f5d9e0f9391251bfd7122",
+    "native_kernel_sha256": "ed97268e4c1db1c91a8973d16c1e31555816c2a29c220b29b9095eadf3b2ae04",
+    "debug_kernel_sha256": "0ac97373a1eec2648ff3efc178d6839c6bda6ae41e8045a1d79bf6a5c404958b",
+    "native_o32_sha256": "c294fbb1f2110445be31c096481ea54ab561c7e59ca5b9fc7171310098d755d4",
+    "source_dirty": false,
+    "emulator_revision": "819c6825504d40ad9f9aa00554249affd2da9446",
+    "emulator_branch": "xiri",
+    "emulator_sha256": "3dd9299d71f1899ff5a8c9b76f6a24752d19e4f9a0bcfe0edf3a29001dc9c49e",
+    "ci_client_sha256": "2543b1fae0b442516c40c9d9155eebc9f9569561146b4f62948171fe7eb5c7f3",
+    "base_disk_sha256": "2d19c840bcc5d5e5d424a5f12b4def72b9e8681e6b9e172b22bd51943bf7bb82",
+    "nvram_sha256": "025e170feb9adcfbfa55a745ba2d976fd0ba0f3d39967d7f52622d6ad54c2ef5",
+    "config_sha256": "b4b1d27b1d8e80ec31b07f9f98e0ca1da8a1793cb90880bbc1e65a4b169c8fe2",
+    "runtimes": [
+      {
+        "name": "vendor-o32-libc",
+        "path": "/usr/lib/libc.so.1",
+        "sha256": "ea766492103a193e9d404942705e4e28987545e37f699ede232b6c0f8c97c954"
+      },
+      {
+        "name": "vendor-o32-rld",
+        "path": "/lib/rld",
+        "sha256": "30228b54c1e5585b365514eb7c9895b03cc0f61cb898e05e3ddafece87863439"
+      },
+      {
+        "name": "vendor-n32-libc",
+        "path": "/lib32/libc.so.1",
+        "sha256": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e"
+      },
+      {
+        "name": "vendor-n32-rld",
+        "path": "/lib32/rld",
+        "sha256": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b"
+      }
+    ],
+    "config_path": "lab/irix-module/XIRI_IRIX_MODULE",
+    "committed_source_revision": "9390bc04900a0d04796d494aca5b00651f12954d",
+    "module_build_manifest": "lab/irix-gimp/build.json",
+    "module_build_manifest_sha256": "62b602499254d709bfb56b5c65c68046133aeb3b56df55a2ee7600305efa61c8",
+    "module_source_equivalent_commit": "7b7794b0c07f31f953c34b6be6826156898649d7"
+  },
+  "module": {
+    "name": "compat_irix_o32",
+    "path": "/stand/sgimips/11.99.9/modules/compat_irix_o32/compat_irix_o32.kmod",
+    "sha256": "1f7beada69c483ccdf6f118e5b9bae6210b4cddfe5319f4527fb2b2cf2be4efd",
+    "build_manifest": "lab/irix-gimp/build.json",
+    "build_manifest_sha256": "62b602499254d709bfb56b5c65c68046133aeb3b56df55a2ee7600305efa61c8",
+    "modstat": "NAME                       CLASS    SOURCE   FLAG  REFS    SIZE REQUIRES \naccf_dataready             misc     builtin  -        0       - -\naccf_httpready             misc     builtin  -        0       - -\naes                        misc     builtin  -        1       - -\naes_ccm                    misc     builtin  -        0       - ,compat_netbsd32\naio                        misc     builtin  -        0       - -\naudio                      driver   builtin  -        1       - -\nblake2s                    misc     builtin  -        0       - -\nbpf                        driver   builtin  -        0       - lf32,compat_netbsd32\nbpf_filter                 misc     builtin  -        3       - -\nbufq_disksort              bufq     builtin  -        0       - -\nbufq_fcfs                  bufq     builtin  -        1       - -\nbufq_priocscan             bufq     builtin  -        0       - -\nccd                        driver   builtin  -        0       - ,compat_netbsd32\ncd9660                     vfs      builtin  -        0       - -\nchacha                     misc     builtin  -        0       - -\nclockctl                   driver   builtin  -        0       - -\ncoda                       vfs      builtin  -        0       - lf32,compat_netbsd32\ncompat_100                 exec     builtin  -        2       - -\ncompat_110                 exec     builtin  -        1       - -\ncompat_16                  exec     builtin  -        1       - lib,if_ppp\ncompat_20                  exec     builtin  -        2       - lib,if_ppp\ncompat_30                  exec     builtin  -        2       - lib,if_ppp\ncompat_40                  exec     builtin  -        2       - lib,if_ppp\ncompat_43                  exec     builtin  -        1       - 2\ncompat_50                  exec     builtin  -        4       - lib,if_ppp\ncompat_50_quota            exec     builtin  -        1       - p\ncompat_60                  exec     builtin  -        3       - lib,if_ppp\ncompat_70                  exec     builtin  -        1       - 2,compat_netbsd32\ncompat_80                  exec     builtin  -        2       - lib,if_ppp\ncompat_90                  exec     builtin  -        2       - ib,if_ppp\ncompat_irix_o32            exec     filesys  -        0       - exec_elf32,compat_netbsd32\ncompat_netbsd32            exec     builtin  -       11       - ib,if_ppp\ncompat_netbsd32_100        exec     builtin  -        1       - ,compat_netbsd32\ncompat_netbsd32_110        exec     builtin  -        0       - c_elf32,compat_netbsd32\ncompat_netbsd32_16         exec     builtin  -        0       - _ppp\ncompat_netbsd32_20         exec     builtin  -        1       - 2,compat_netbsd32\ncompat_netbsd32_30         exec     builtin  -        1       - 2,compat_netbsd32\ncompat_netbsd32_40         exec     builtin  -        1       - bsd32\ncompat_netbsd32_43         exec     builtin  -        0       - mpat_netbsd32\ncompat_netbsd32_50         exec     builtin  -        2       - 2,compat_netbsd32\ncompat_netbsd32_60         exec     builtin  -        1       - 2,compat_netbsd32\ncompat_netbsd32_80         exec     builtin  -        1       - 2,compat_netbsd32\ncompat_netbsd32_90         exec     builtin  -        1       - 2,compat_netbsd32\ncompat_netbsd32_coredump   misc     builtin  -        0       - 32\ncompat_netbsd32_mqueue     exec     builtin  -        0       - c_elf32,compat_netbsd32\ncompat_netbsd32_nfssrv     exec     builtin  -        0       - at_netbsd32\ncompat_netbsd32_ptrace     exec     builtin  -        1       - trace_common\ncompat_netbsd32_quota      exec     builtin  -        0       - \ncompat_netbsd32_quota_50   exec     builtin  -        0       - 32,compat_netbsd32\ncompat_netbsd32_sysvipc    exec     builtin  -        1       - sd32\ncompat_netbsd32_sysvipc_50 exec     builtin  -        0       - \ncompat_sysctl_09_43        exec     builtin  -        1       - -\ncompat_sysv_50             exec     builtin  -        1       - npf\ncompat_util                misc     builtin  -        3       - -\ncons                       driver   builtin  -        0       - -\ncoredump                   misc     builtin  -        1       - -\ndk_subr                    misc     builtin  -        1       - -\ndrvctl                     driver   builtin  -        0       - -\nefs                        vfs      builtin  -        0       - -\nexec_elf32                 exec     builtin  -        2       - -\nexec_elf64                 exec     builtin  -        0       - -\nexec_script                exec     builtin  -        0       - -\next2fs                     vfs      builtin  -        0       - 2,compat_netbsd32\nextensions                 secmodel builtin  -        1       - -\nfdesc                      vfs      builtin  -        0       - -\nffs                        vfs      builtin  -        1       - c_elf32,compat_netbsd32\ni2c_bitbang                misc     builtin  -        0       - -\ni2cexec                    misc     builtin  -        0       - -\nif_agr                     driver   builtin  -        0       - -\nif_gif                     driver   builtin  -        0       - bsd32\nif_gre                     driver   builtin  -        0       - -\nif_loop                    driver   builtin  -        0       - -\nif_npflog                  driver   builtin  -        0       - -\nif_ppp                     driver   builtin  -        2       - ,compat_netbsd32\nif_sl                      driver   builtin  -        0       - zlib,if_ppp\nif_stf                     driver   builtin  -        0       - -\nif_tap                     driver   builtin  -        0       - -\nif_tun                     driver   builtin  -        0       - -\nif_vlan                    driver   builtin  -        0       - -\nip_ecn                     misc     builtin  -        1       - -\nkernfs                     vfs      builtin  -        0       - -\nksem                       misc     builtin  -        1       - -\nlayerfs                    misc     builtin  -        3       - -\nlfs                        vfs      builtin  -        0       - -\nmfs                        vfs      builtin  -        0       - elf32,compat_netbsd32\nmiiverbose                 driver   builtin  -        0       - -\nmqueue                     misc     builtin  -        2       - -\nmsdos                      vfs      builtin  -        0       - -\nnfs                        vfs      builtin  -        1       - -\nnfsserver                  misc     builtin  -        1       - 2\nnpf                        misc     builtin  -        5       - c_elf32,compat_netbsd32\nnpf_alg_icmp               misc     builtin  -        0       - mpat_netbsd32\nnpf_ext_log                misc     builtin  -        0       - c_elf32,compat_netbsd32\nnpf_ext_normalize          misc     builtin  -        0       - c_elf32,compat_netbsd32\nnpf_ext_rndblock           misc     builtin  -        0       - c_elf32,compat_netbsd32\nnpf_ext_route              misc     builtin  -        0       - c_elf32,compat_netbsd32\nntfs                       vfs      builtin  -        0       - -\nnull                       vfs      builtin  -        0       - f32,compat_netbsd32\noverlay                    vfs      builtin  -        0       - tbsd32\npci                        driver   builtin  -        0       - -\nppp_bsdcomp                misc     builtin  -        0       - compat_netbsd32\nppp_deflate                misc     builtin  -        0       - \nprocfs                     vfs      builtin  -        0       - f32,compat_netbsd32\nptrace                     exec     builtin  -        0       - lf32,compat_netbsd32\nptrace_common              exec     builtin  -        3       - -\nptyfs                      vfs      builtin  -        0       - -\npuffs                      vfs      builtin  -        0       - f32,compat_netbsd32\nputter                     driver   builtin  -        1       - -\nscsi_subr                  exec     builtin  -        0       - -\nscsiverbose                misc     builtin  -        0       - -\nsecmodel_bsd44             secmodel builtin  -        0       - elf32,compat_netbsd32\nsecurelevel                secmodel builtin  -        1       - -\nslcompress                 misc     builtin  -        2       - -\nspkr                       driver   builtin  -        0       - lf32,compat_netbsd32\nsuser                      secmodel builtin  -        1       - -\nsysmon                     driver   builtin  -        1       - -\nsysmon_power               driver   builtin  -        0       - _netbsd32\nsysmon_taskq               misc     builtin  -        0       - -\nsysv_ipc                   exec     builtin  -        3       - -\ntmpfs                      vfs      builtin  -        0       - -\nufs                        misc     builtin  -        3       - c_elf32,compat_netbsd32\numap                       vfs      builtin  -        0       - elf32,compat_netbsd32\nunion                      vfs      builtin  -        0       - -\nvcoda                      driver   builtin  -        1       - -\nvnd                        driver   builtin  -        0       - -\nwapbl                      vfs      builtin  -        2       - -\nzlib                       misc     builtin  -        1       - -\n",
+    "securelevel": 1
+  },
+  "media_sources": {
+    "type.c": "61ce22cbda6c66ccaf53cbcffab5f3080be95004bcd3e5c6893dc54a8a9db838",
+    "place.c": "af51ade704c9df4d589c3ae01e571da6a7d6f43de2fd51e3a1766935f04d3ddb",
+    "catalog-input.c": "ff331c512a6acc0f19941904059584a140ddbc9e0abefb79dd457f1b1b92b46c",
+    "app.sh": "f94a78e0dbefe1c367a969d9e72e77c2fec22b72158f95ab0ca63d0ce418a2a1",
+    "observe.sh": "2c8a38e99f9b786846898c829012292de3582ced27a729c6204b0511524b1e9f",
+    "guard-control.c": "cc71ccc39b2f75caf44f2afc9f97a2073373c36b40016a214b0345300724bcb0",
+    "windows.c": "63389feea651a5f1501bee38816d2beb00841a727a5fb74a38b3449dbf6bae11",
+    "window-control.c": "a9636e389799f9170dc031eb5c4138ba8d8c7f742824be1a7883f635dacaab92",
+    "app-guard.c": "d7a94c103c1c454f488ee6c63d878fac4b2a4fe170a6938c5f33869efbfb084a",
+    "inventory.json": "64d66708cb032fd279f8061fff0e263575983849011098c0a8484b3267e7720a"
+  },
+  "clean_shutdown": true,
+  "source_unchanged": true,
+  "records": {
+    "catalog-start": {
+      "sha256": "9cafaed78146fff68d7778725b81fc1676cdb00b295ce9c20ab7e9278645264a",
+      "observations": {
+        "pages": "/usr/people/xiritest/.desktop-xiri-indy/iconcatalog/pages/Blank\n/usr/people/xiritest/.desktop-xiri-indy/iconcatalog/pages/Alias\n/usr/people/xiritest/.desktop-xiri-indy/iconcatalog/pages/AliasWavefront\n/usr/people/xiritest/.desktop-xiri-indy/iconcatalog/pages/Applications\n/usr/people/xiritest/.desktop-xiri-indy/iconcatalog/pages/Collaboration\n/usr/people/xiritest/.desktop-xiri-indy/iconcatalog/pages/ControlPanels\n/usr/people/xiritest/.desktop-xiri-indy/iconcatalog/pages/Demos\n/usr/people/xiritest/.desktop-xiri-indy/iconcatalog/pages/DesktopTools\n/usr/people/xiritest/.desktop-xiri-indy/iconcatalog/pages/DeveloperMagic\n/usr/people/xiritest/.desktop-xiri-indy/iconcatalog/pages/Freeware\ntotal 4\ndrwxr-xr-x   2 xiritest  xiritest  512 Nov  1 22:54 .\ndrwxr-xr-x  12 xiritest  xiritest  512 Nov  2 09:07 ..\n           0x140006b \"Icon Catalog: Alias (Page 1 of 18)\": (\"IconCatalog\" \"IconCatalog\")  900x500+0+0  +372+450\n     0x1400006 \"Icon Catalog\": (\"iconcatalog\" \"IconCatalog\")  1x1+640+512  +640+512\n     0x1400001 \"Icon Catalog\": (\"iconcatalog\" \"IconCatalog\")  600x300+400+450  +400+450\n",
+        "cleanup_game": "test ! -s \"$job/xmahjongg.pid\" || kill \"$(cat \"$job/xmahjongg.pid\")\"; \b sleep 1; xiri_rc=$?; printf '\\nXIRI_727d03431d374cb18e61bad6eec2b9a4_RC=%s\\n' \" \b$xiri_rc\"\n\nXIRI_727d03431d374cb18e61bad6eec2b9a4_RC=0\nxiri-indy# ",
+        "catalog": "           0x140006b \"Icon Catalog: Alias (Page 1 of 18)\": (\"IconCatalog\" \"IconCatalog\")  900x500+0+0  +372+450\n     0x1400006 \"Icon Catalog\": (\"iconcatalog\" \"IconCatalog\")  1x1+640+512  +640+512\n     0x1400001 \"Icon Catalog\": (\"iconcatalog\" \"IconCatalog\")  600x300+400+450  +400+450\n"
+      }
+    },
+    "hidden-tabs": {
+      "sha256": "9a1c31d138c2d2fbf6fcd7c5cf3c2f7242c2f3f8844fb3db1fb6a85902adc136",
+      "observations": {
+        "before": "           0x140006b \"Icon Catalog: Alias (Page 1 of 18)\": (\"IconCatalog\" \"IconCatalog\")  900x500+0+0  +372+450\n     0x1400006 \"Icon Catalog\": (\"iconcatalog\" \"IconCatalog\")  1x1+640+512  +640+512\n     0x1400001 \"Icon Catalog\": (\"iconcatalog\" \"IconCatalog\")  600x300+400+450  +400+450\n",
+        "click": "clicked at 1165 912\r\n> ",
+        "after": "           0x140006b \"Icon Catalog: Alias (Page 1 of 18)\": (\"IconCatalog\" \"IconCatalog\")  900x500+0+0  +372+450\n     0x1400006 \"Icon Catalog\": (\"iconcatalog\" \"IconCatalog\")  1x1+640+512  +640+512\n     0x1400001 \"Icon Catalog\": (\"iconcatalog\" \"IconCatalog\")  600x300+400+450  +400+450\n"
+      }
+    },
+    "applications": {
+      "sha256": "7a3bb0643caa7b3d45d3b2daebb3bddbd0686fb73a94c1d9071edf656a92a564",
+      "observations": {
+        "click": "clicked at 1200 645\r\n> ",
+        "tree": "           0x140006b \"Icon Catalog: Applications (Page 3 of 18)\": (\"IconCatalog\" \"IconCatalog\")  900x500+0+0  +372+450\n     0x1400006 \"Icon Catalog\": (\"iconcatalog\" \"IconCatalog\")  1x1+640+512  +640+512\n     0x1400001 \"Icon Catalog\": (\"iconcatalog\" \"IconCatalog\")  600x300+400+450  +400+450\n"
+      }
+    },
+    "catalog-acrobat": {
+      "sha256": "4c1d9919f7ad440658fea255c809316458f27736afa87f4442f492cd3fd87a94",
+      "observations": {
+        "before": "4Dwmrc\nXresources.previous\nbackdrop-ready.txt\nbackground.err\nbackground.out\nbackground.pid\nbgicons.err\nbgicons.out\nguard.log\nhandoff\niconcatalog.err\niconcatalog.out\niconcatalog.pid\nidentity\nsession.lock\ntoolchest.err\ntoolchest.out\ntoolchest.pid\nwinterm.err\nwinterm.exit\nwinterm.out\nwinterm.pid\nwm.err\nwm.out\nwm.pid\nxclock.err\nxclock.out\nxclock.pid\nxmahjongg.err\nxmahjongg.exit\nxmahjongg.out\nxmahjongg.pid\nfamd[2131]: -chdir to \"/\"\nfamd[2131]: +chdir to \"/emul/irix/usr/lib/desktop/iconcatalog/pages/C/Applications\"\nfamd[2131]: -chdir to \"/\"\nfamd[2131]: +chdir to \"/emul/irix/usr/lib/desktop/iconcatalog/pages/C/Applications\"\nfamd[2131]: -chdir to \"/\"\nfamd[2131]: +chdir to \"/emul/irix/usr/lib/desktop/iconcatalog/pages/C/Applications\"\nfamd[2131]: -chdir to \"/\"\nfamd[2131]: +chdir to \"/emul/irix/usr/lib/desktop/iconcatalog/pages/C/Applications\"\nfamd[2131]: -chdir to \"/\"\nfamd[2131]: polled 160 interests and 0 hosts in 0.173 seconds\n",
+        "click": "./catalog-input 127.0.0.1:0 0x140006b double 1008 525; sleep 3; xiri_ \brc=$?; printf '\\nXIRI_ce0789e11d5a45cbb946e03efd9bd9d7_RC=%s\\n' \"$xiri_rc\"\n\nXIRI_ce0789e11d5a45cbb946e03efd9bd9d7_RC=0\nxiri-indy# ",
+        "events": "famd[2131]: will poll acroread\nfamd[2131]: sent event to ImdFileMonitor_3825: request 12 \"acroread\" Exists\nfamd[2131]: ImdFileMonitor_3825 said: request 19 monitor file \"/usr/adobe/Acrobat4.0/bin/acroread\"\nfamd[2131]: will poll /emul/irix/usr/adobe/Acrobat4.0/bin/acroread\nfamd[2131]: sent event to ImdFileMonitor_3825: request 19 \"/usr/adobe/Acrobat4.0/bin/acroread\" Exists\nfamd[2131]: sent event to ImdFileMonitor_3825: request 19 \"/usr/adobe/Acrobat4.0/bin/acroread\" EndExist\n",
+        "errors": "/usr/people/xiritest/.xiri/sessions/session.D3S6wn/iconcatalog.err:1:/usr/lib/desktop/iconcatalog/pages/C/Applications/acroread[23]: /usr/adobe/Acrobat4.0/bin/acroread.dist:  not found\n",
+        "processes": "",
+        "windows": "WINDOW id=40004c width=10 height=10 name=3444776d class=3444576d instance=3444776d\nWINDOW id=a00009 width=180 height=180 name=78636c6f636b class=58436c6f636b instance=78636c6f636b\nWINDOW id=c0002c width=103 height=158 name=546f6f6c6368657374 class=546f6f6c6368657374 instance=746f6f6c6368657374\nWINDOW id=1000005 width=663 height=360 name=77696e7465726d class=58577368 instance=77696e7465726d\nWINDOW id=140006b width=900 height=500 name=49636f6e20436174616c6f673a204170706c69636174696f6e732028506167652033206f6620313829 class=49636f6e436174616c6f67 instance=49636f6e436174616c6f67\n",
+        "screenshot_sha256": "711530f709a59a98e6f95e9d5152b41ec69ab4892b702176c756abf84a35cd16"
+      }
+    },
+    "freeware": {
+      "sha256": "82ee813c11cfc3573d90ca00114a0b5aeb58ddeed6202af41a2ecb46a8d4ed0d",
+      "observations": {
+        "menu": "clicked at 1165 912\r\n> ",
+        "choice": "clicked at 1200 792\r\n> ",
+        "tree": "           0x140006b \"Icon Catalog: Freeware (Page 9 of 18)\": (\"IconCatalog\" \"IconCatalog\")  900x500+0+0  +372+450\n     0x1400006 \"Icon Catalog\": (\"iconcatalog\" \"IconCatalog\")  1x1+640+512  +640+512\n     0x1400001 \"Icon Catalog\": (\"iconcatalog\" \"IconCatalog\")  600x300+400+450  +400+450\n"
+      }
+    },
+    "catalog-nedit": {
+      "sha256": "51997d2fcddf096e4df69151208aa3e1548e349fe9a3a2e52f8380d9d2f2380f",
+      "observations": {
+        "click": "./catalog-input 127.0.0.1:0 0x140006b double 589 680; sleep 6; xiri_r \bc=$?; printf '\\nXIRI_092edc3d462643f0a5edceb67bddde47_RC=%s\\n' \"$xiri_rc\"\n\nXIRI_092edc3d462643f0a5edceb67bddde47_RC=0\nxiri-indy# ",
+        "windows": "WINDOW id=40004c width=10 height=10 name=3444776d class=3444576d instance=3444776d\nWINDOW id=a00009 width=180 height=180 name=78636c6f636b class=58436c6f636b instance=78636c6f636b\nWINDOW id=c0002c width=103 height=158 name=546f6f6c6368657374 class=546f6f6c6368657374 instance=746f6f6c6368657374\nWINDOW id=1000005 width=663 height=360 name=77696e7465726d class=58577368 instance=77696e7465726d\nWINDOW id=140006b width=900 height=500 name=49636f6e20436174616c6f673a2046726565776172652028506167652039206f6620313829 class=49636f6e436174616c6f67 instance=49636f6e436174616c6f67\nWINDOW id=e00102 width=594 height=564 name=556e7469746c6564 class=4e45646974 instance=6e65646974\n",
+        "processes": " 839    1 1234 S    0:01.75  4.9 /usr/lib/desktop/iconcatalog/pages/C/Freeware/nedit \n",
+        "errors": "/usr/lib/desktop/iconcatalog/pages/C/Applications/acroread[23]: /usr/adobe/Acrobat4.0/bin/acroread.dist:  not found\n",
+        "events": "famd[2131]: sent event to ImdFileMonitor_3825: request 62 \"/usr/freeware/bin/nedit\" Executing\n",
+        "screenshot_sha256": "b7e533f966e3a777d041f71daba97df09c0a0c9ad368b6151f0465f64c240cfb"
+      }
+    },
+    "nedit-edit": {
+      "sha256": "05085dfac8c3c7df6d0931ac11d206eabd7e641c770aa9f2f93658b6207f00b3",
+      "observations": {
+        "windows": "WINDOW id=40004c width=10 height=10 name=3444776d class=3444576d instance=3444776d\nWINDOW id=a00009 width=180 height=180 name=78636c6f636b class=58436c6f636b instance=78636c6f636b\nWINDOW id=c0002c width=103 height=158 name=546f6f6c6368657374 class=546f6f6c6368657374 instance=746f6f6c6368657374\nWINDOW id=1000005 width=663 height=360 name=77696e7465726d class=58577368 instance=77696e7465726d\nWINDOW id=140006b width=900 height=500 name=49636f6e20436174616c6f673a2046726565776172652028506167652039206f6620313829 class=49636f6e436174616c6f67 instance=49636f6e436174616c6f67\nWINDOW id=e00102 width=594 height=330 name=556e7469746c656420286d6f64696669656429 class=4e45646974 instance=6e65646974\nWINDOW id=e0014c width=362 height=446 name=536176652046696c65204173 class=4e45646974 instance=46696c6553656c6563745f706f707570\n"
+      }
+    },
+    "nedit-save-inspect": {
+      "sha256": "15e26bfe65c9f614539e9139415e58b83412bb85dbdec0a2e57925f5b91a2d35",
+      "observations": {
+        "files": "",
+        "windows": "WINDOW id=40004c width=10 height=10 name=3444776d class=3444576d instance=3444776d\nWINDOW id=a00009 width=180 height=180 name=78636c6f636b class=58436c6f636b instance=78636c6f636b\nWINDOW id=c0002c width=103 height=158 name=546f6f6c6368657374 class=546f6f6c6368657374 instance=746f6f6c6368657374\nWINDOW id=1000005 width=663 height=360 name=77696e7465726d class=58577368 instance=77696e7465726d\nWINDOW id=140006b width=900 height=500 name=49636f6e20436174616c6f673a2046726565776172652028506167652039206f6620313829 class=49636f6e436174616c6f67 instance=49636f6e436174616c6f67\nWINDOW id=e00102 width=594 height=330 name=556e7469746c656420286d6f64696669656429 class=4e45646974 instance=6e65646974\nWINDOW id=e0014c width=362 height=446 name=536176652046696c65204173 class=4e45646974 instance=46696c6553656c6563745f706f707570\nWINDOW id=e00181 width=422 height=118 name=20 class=4e45646974 instance=6572726f725f706f707570\n"
+      }
+    },
+    "nedit-save-failure": {
+      "sha256": "5da30860838414d45cd859f3c252e41b2aa0464d0be7caf0106acd5481fefee5",
+      "observations": {
+        "file_absent": "test ! -e /usr/people/xiritest/catalog-nedit.txt; xiri_rc=$?; printf  \b'\\nXIRI_88d8bba0848a431eaa8fa4ed23c53af2_RC=%s\\n' \"$xiri_rc\"\n\nXIRI_88d8bba0848a431eaa8fa4ed23c53af2_RC=0\nxiri-indy# ",
+        "native_write_control": "su -l xiritest -c 'umask 077; printf CATALOG_NATIVE_WRITE >.xiri-cata \blog/write-control && test -s .xiri-catalog/write-control && rm .xiri-catalog/wri \bte-control'; xiri_rc=$?; printf '\\nXIRI_3758264ccf0c470089ee8de309c412b6_RC=%s\\n \b' \"$xiri_rc\"\n\nXIRI_3758264ccf0c470089ee8de309c412b6_RC=0\nxiri-indy# ",
+        "windows": "WINDOW id=40004c width=10 height=10 name=3444776d class=3444576d instance=3444776d\nWINDOW id=a00009 width=180 height=180 name=78636c6f636b class=58436c6f636b instance=78636c6f636b\nWINDOW id=c0002c width=103 height=158 name=546f6f6c6368657374 class=546f6f6c6368657374 instance=746f6f6c6368657374\nWINDOW id=1000005 width=663 height=360 name=77696e7465726d class=58577368 instance=77696e7465726d\nWINDOW id=140006b width=900 height=500 name=49636f6e20436174616c6f673a2046726565776172652028506167652039206f6620313829 class=49636f6e436174616c6f67 instance=49636f6e436174616c6f67\nWINDOW id=e00102 width=594 height=330 name=556e7469746c656420286d6f64696669656429 class=4e45646974 instance=6e65646974\n",
+        "screenshot_sha256": "714f73f1b9d02247503b01f84ecc2fd2338f6605945b8fc6159e73163eb952f1"
+      }
+    },
+    "nedit-quit-dialog": {
+      "sha256": "8ca0ef59e0aa8510abab222ce67faa9e7fa04ad39b80f3c0f56635d5f7ed84cc",
+      "observations": {
+        "windows": "WINDOW id=40004c width=10 height=10 name=3444776d class=3444576d instance=3444776d\nWINDOW id=a00009 width=180 height=180 name=78636c6f636b class=58436c6f636b instance=78636c6f636b\nWINDOW id=c0002c width=103 height=158 name=546f6f6c6368657374 class=546f6f6c6368657374 instance=746f6f6c6368657374\nWINDOW id=1000005 width=663 height=360 name=77696e7465726d class=58577368 instance=77696e7465726d\nWINDOW id=140006b width=900 height=500 name=49636f6e20436174616c6f673a2046726565776172652028506167652039206f6620313829 class=49636f6e436174616c6f67 instance=49636f6e436174616c6f67\nWINDOW id=e00102 width=594 height=330 name=556e7469746c656420286d6f64696669656429 class=4e45646974 instance=6e65646974\nWINDOW id=e001b9 width=277 height=118 name=20 class=4e45646974 instance=5761726e696e67\n"
+      }
+    },
+    "nedit-quit": {
+      "sha256": "de910d9a40e61ff4bf3372c563924f2ced557d9ef74d6ce0746b8d112c516a3b",
+      "observations": {
+        "discard": "clicked at 147 124\r\n> ",
+        "windows": "WINDOW id=40004c width=10 height=10 name=3444776d class=3444576d instance=3444776d\nWINDOW id=a00009 width=180 height=180 name=78636c6f636b class=58436c6f636b instance=78636c6f636b\nWINDOW id=c0002c width=103 height=158 name=546f6f6c6368657374 class=546f6f6c6368657374 instance=746f6f6c6368657374\nWINDOW id=1000005 width=663 height=360 name=77696e7465726d class=58577368 instance=77696e7465726d\nWINDOW id=140006b width=900 height=500 name=49636f6e20436174616c6f673a2046726565776172652028506167652039206f6620313829 class=49636f6e436174616c6f67 instance=49636f6e436174616c6f67\n",
+        "events": "famd[2131]: sent event to ImdFileMonitor_3825: request 62 \"/usr/freeware/bin/nedit\" Executing\n",
+        "errors": "/usr/lib/desktop/iconcatalog/pages/C/Applications/acroread[23]: /usr/adobe/Acrobat4.0/bin/acroread.dist:  not found\n",
+        "screenshot_sha256": "c371631160890f38d10efda631e16fd64237715d979b9638e37fe486b6d0bde9",
+        "exit_code_captured": false
+      }
+    },
+    "interactive-final": {
+      "sha256": "4681924fe60738f7e7a7b554432d79527a36fba794cc6be76403c7c2211a96b9",
+      "observations": {
+        "mag_retry": "-rw-r--r--  1 xiritest  xiritest  257 Nov  3 22:50 /usr/people/xiritest/.xiri-catalog/mag-interactive.log\nOWN pid=3763 parent=3560\nOWN pid=919 parent=3763\n/emul/irix/usr/sbin/mag: ReadDisplay extension not supported by current X server!GUARD pid=3763 exit=0 signal=0 stopped=1 absent=1 valid=1 tracked=2 remaining=0 reason=timeout uid=1234 gid=1234 elapsed=92467\n",
+        "nedit_events": "famd[2131]: will poll nedit\nfamd[2131]: sent event to ImdFileMonitor_3825: request 12 \"nedit\" Exists\nfamd[2131]: ImdFileMonitor_3825 said: request 33 monitor file \"/usr/sbin/nedit\"\nfamd[2131]: will poll /emul/irix/usr/sbin/nedit\nfamd[2131]: sent event to ImdFileMonitor_3825: request 33 \"/usr/sbin/nedit\" Exists\nfamd[2131]: sent event to ImdFileMonitor_3825: request 33 \"/usr/sbin/nedit\" EndExist\nfamd[2131]: sent event to ImdFileMonitor_3825: request 33 \"/usr/sbin/nedit\" Acknowledge\nfamd[2131]: will poll nedit\nfamd[2131]: sent event to ImdFileMonitor_3825: request 47 \"nedit\" Exists\nfamd[2131]: ImdFileMonitor_3825 said: request 62 monitor file \"/usr/freeware/bin/nedit\"\nfamd[2131]: will poll /emul/irix/usr/freeware/bin/nedit\nfamd[2131]: sent event to ImdFileMonitor_3825: request 62 \"/usr/freeware/bin/nedit\" Exists\nfamd[2131]: sent event to ImdFileMonitor_3825: request 62 \"/usr/freeware/bin/nedit\" EndExist\nfamd[2131]: sent event to ImdFileMonitor_3825: request 62 \"/usr/freeware/bin/nedit\" Executing\nfamd[2131]: sent event to ImdFileMonitor_3825: request 62 \"/usr/freeware/bin/nedit\" Exited\n",
+        "ready": "/usr/local/libexec/xiri/x11-check ready; xiri_rc=$?; printf '\\nXIRI_9 \b6f51f9a50614b4598b46241c8ffb8e6_RC=%s\\n' \"$xiri_rc\"\n\nXIRI_96f51f9a50614b4598b46241c8ffb8e6_RC=0\nxiri-indy# ",
+        "windows": "WINDOW id=40004c width=10 height=10 name=3444776d class=3444576d instance=3444776d\nWINDOW id=a00009 width=180 height=180 name=78636c6f636b class=58436c6f636b instance=78636c6f636b\nWINDOW id=c0002c width=103 height=158 name=546f6f6c6368657374 class=546f6f6c6368657374 instance=746f6f6c6368657374\nWINDOW id=1000005 width=663 height=360 name=77696e7465726d class=58577368 instance=77696e7465726d\nWINDOW id=140006b width=900 height=500 name=49636f6e20436174616c6f673a2046726565776172652028506167652039206f6620313829 class=49636f6e436174616c6f67 instance=49636f6e436174616c6f67\n"
+      }
+    }
+  },
+  "limitations": [
+    "NEdit save failed; no file was created. Quit/Discard closed the process, but its exit status was not captured.",
+    "The magnifier pointer attempt failed and its combined output joined GUARD to an unterminated error line. The anchored waiter therefore timed out; the later log proves timed descendant cleanup and recovered X readiness.",
+    "Catalog double-clicks were tested for Acrobat and Freeware NEdit only; other entries retain direct startup observations.",
+    "The native write control used .xiri-catalog/write-control under HOME; it did not test creation directly in HOME, the parent of the failed NEdit destination."
+  ],
+  "chd_sha256": "20b328a070537255c8c0aa4771aefd83cbaa8027208b93bf997302c426ef83b7",
+  "manifest_sha256": "03c357cc246ecf582809c1b718cf579e3dc2185e0a0918c6eb109c27116cf4c7",
+  "screenshots": {
+    "2026-11-03-irix-catalog-pages.png": "7233124a7744262aab12e0f92aabdea5b8f5e29db094458214a13d65c26e63f4",
+    "2026-11-03-irix-catalog-nedit.png": "714f73f1b9d02247503b01f84ecc2fd2338f6605945b8fc6159e73163eb952f1",
+    "2026-11-03-irix-catalog-nedit-save.png": "15082968852f42a9bf570764d4d6057c7d0ce12f5a1a5e1d4a7dc2aa6da028a8"
+  }
+}

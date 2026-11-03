@@ -1,9 +1,20 @@
-# Development history through 2026-11-03
+# Development history through 2026-11-04
 
 This is the former README, retained as a chronological evidence index. Its
 status statements describe individual checkpoints and may be superseded by
 later entries. Use the [current README](../README.md), [development guide](DEVELOPMENT.md)
 and [selected image](../lab/irix-installed-desktop/image.json) for current work.
+
+The [2026-11-03–04 catalog survey](results/2026-11-03-irix-catalog.md)
+records 124 distinct program-target attempts and updates the full
+[166-entry checklist](ICON-CATALOG.md), including the empty eighteenth user
+page. Nine targets reproduce CPU activity without a window. Acrobat's
+catalog action reaches a missing Reader helper; a read-only source audit
+locates the rest of its installation. Freeware NEdit launches, accepts text
+and restores its icon on Quit/Discard, but saving fails. Window creation,
+startup errors, interrupted observations and a failed compview cleanup
+tracker remain distinct results. The original CHD is unchanged; no vendor
+resources or compatibility fixes were added during the survey.
 
 The [2026-11-03 GIMP cycle](results/2026-11-03-irix-gimp.md) adds full action
 mask registration and preserves explicit self-masks with NODEFER. It passes
@@ -12,7 +23,7 @@ Original GIMP setup, paintbrush editing, XCF/PNG save and reopen, normal exit
 and catalog launch now work with the additional original resources. Missing
 preference-backup rename and broader plug-in behavior remain explicit limits.
 The replacement CHD carries these resources and the module update; separate
-fresh GIMP and xdm/desktop checks precede promotion. The next systematic
+fresh GIMP and xdm/desktop checks precede promotion. The subsequent systematic
 application pass is recorded in the [catalog checklist](ICON-CATALOG.md).
 
 The [2026-11-03 winterm reliability cycle](results/2026-11-03-winterm-reliability.md)
