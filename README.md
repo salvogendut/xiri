@@ -15,7 +15,9 @@ See the [rendering results](docs/results/2026-11-03-newport-xmahjongg.md).
 
 The manual launcher starts services as root and runs the desktop as
 **xiritest**, UID 1234, with HOME and initial directory `/usr/people/xiritest`.
-Normal xdm login is planned. The [current manual CHD](docs/results/2026-11-03-irix-module-image.md)
+Native [xdm login is qualified](docs/results/2026-11-03-xiri-xdm.md) in the
+maintained runtime, including a separate user's standard NetBSD ctwm session.
+It awaits packaging into a replacement image. The [current manual CHD](docs/results/2026-11-03-irix-module-image.md)
 loads `compat_irix_o32.kmod` during boot and runs the desktop on a kernel
 without built-in IRIX support. This [module build](lab/irix-module/README.md)
 still requires our NetBSD fork’s core hooks.
@@ -84,9 +86,11 @@ but it is not a per-application qualification.
 The [module milestone](docs/results/2026-11-03-irix-module.md) follows the
 `compat_linux` model. The [qualified service/session runtime](docs/results/2026-11-03-xiri-session.md)
 separates boot services from user sessions and follows descendants for logout
-cleanup. The selected
-manual CHD still contains its earlier launcher. Normal `xiritest` desktop
-login through xdm is next, with original IRIX clogin later. The
+cleanup. Native [xdm integration](docs/results/2026-11-03-xiri-xdm.md) now
+passes password login, full-screen 4Dwm and ctwm sessions, both IRIX logout
+menus and recovery checks. Packaging these changes into a new manual CHD is
+next; the selected image still contains its earlier launcher. Original IRIX
+clogin remains later work. The
 [roadmap](docs/ROADMAP.md) defines the dependency and acceptance work.
 
 - [Architecture](docs/ARCHITECTURE.md): kernel, imported runtime, native services and desktop boundaries.

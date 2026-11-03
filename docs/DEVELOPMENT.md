@@ -142,5 +142,24 @@ keeps a failed guest available
 for a bounded local command queue; normal teardown still owns that emulator.
 The [cycle record](results/2026-11-03-xiri-session.md) pins the desktop and
 service lifecycle runs, source coverage and screenshots. The probe does not
-change the current CHD or image pointer. Native xdm login
-and image packaging are separate follow-up work.
+change the current CHD or image pointer.
+
+For native xdm integration, run:
+
+```sh
+python3 scripts/probe-xiri-xdm.py
+```
+
+This separately clones the same seed, installs the opt-in xdm configuration,
+selects the user's `.xsession` and reboots. It tests native password rejection
+and acceptance, full-screen X geometry, readable greeter text, desktop input,
+both logout menus, failed startup/retry and unrelated-login/service survival.
+A separate native account without `.xsession` must retain NetBSD's standard
+ctwm desktop, then permit another xiritest/4Dwm login.
+Results, the frozen harness/runtime and GL scanout PNGs stay under
+`.work/irix-xdm/runs/ordinary-*`. `--debug-failure` provides the same bounded
+command queue; SIGTERM requests cleanup instead of leaving the guest running.
+The [integration record](results/2026-11-03-xiri-xdm.md) describes evidence and
+remaining boundaries. Packaging and qualifying a replacement CHD is separate
+from this runtime test; `./xiri check` continues to test the selected manual
+image with its existing launcher.

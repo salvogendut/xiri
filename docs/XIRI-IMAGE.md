@@ -76,8 +76,12 @@ state directory. Preserve overlays belonging to the older CHD.
 The [new service/session runtime](results/2026-11-03-xiri-session.md) is
 qualified on disposable clones, including same-user shell survival and
 existing-X-server reuse. It has not been packaged into this selected CHD.
-This image still uses the older reserved-UID launcher; native xdm and the
-replacement deployment image are the next cycle. The full replay raw disk
+This image still uses the older reserved-UID launcher. Native xdm integration
+now has its own [runtime and qualification cycle](results/2026-11-03-xiri-xdm.md),
+with normal password login as xiritest and an explicit full-screen Newport
+configuration. It is not enabled in this selected CHD. The replacement image
+must package both runtime cycles and pass direct-disk boot before promotion.
+The full service/session replay raw disk
 also predates the separately qualified FAM stop hook; install the final
 runtime before preparing a future image.
 

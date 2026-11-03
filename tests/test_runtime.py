@@ -46,6 +46,26 @@ class RuntimeInstallTests(unittest.TestCase):
         self.assertEqual((self.stage/'etc/xiri/fam.conf.example').read_bytes(),
                          (ROOT/'runtime/etc/fam.conf').read_bytes())
 
+    def test_xdm_opt_in_preserves_display_and_login_policy(self):
+        self.install('--enable-services')
+        self.assertFalse((self.stage/'etc/rc.conf.d/xdm').exists())
+        self.install('--enable-xdm')
+        xdm = self.stage/'etc/rc.conf.d/xdm'
+        servers = self.stage/'etc/xiri/xdm/Xservers'
+        resources = self.stage/'etc/xiri/xdm/Xresources'
+        self.assertIn('xdm=YES', xdm.read_text())
+        self.assertIn('-server /etc/xiri/xdm/Xservers', xdm.read_text())
+        self.assertIn('-resources /etc/xiri/xdm/Xresources', xdm.read_text())
+        self.assertIn('-config /usr/local/share/xiri/xorg.conf', servers.read_text())
+        for path in (xdm, servers, resources):
+            path.write_text('# administrator configuration\n')
+        self.install('--enable-xdm')
+        for path in (xdm, servers, resources):
+            self.assertEqual(path.read_text(), '# administrator configuration\n')
+        # Choosing a session and a password belongs to the account, not install.
+        for name in ('etc/master.passwd', 'etc/ttys', 'usr/people', 'etc/X11'):
+            self.assertFalse((self.stage/name).exists())
+
 
 if __name__ == '__main__':
     unittest.main()

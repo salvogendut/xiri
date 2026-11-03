@@ -3,7 +3,7 @@
 This is the maintained NetBSD userspace integration for the imported IRIX
 6.5.22m desktop. Historical `lab/` launchers remain for reproducing their
 original images. Installing this runtime does not import applications or
-change the kernel, selected CHD, or login manager.
+change the kernel or selected CHD. Native xdm configuration is opt-in.
 
 ## Ownership
 
@@ -12,6 +12,7 @@ change the kernel, selected CHD, or login manager.
 | Native `rpcbind` rc.d service | System portmapper; survives desktop logout |
 | `xiri_devices` rc.d service | Prepares native/IRIX PTY aliases once per boot, before LOGIN |
 | `xiri_famd` rc.d service | Owns one native FAM v1 daemon and its PID file; survives logout |
+| Native `xdm` rc.d service (opt-in) | Starts Xorg, authenticates the native account, supplies X authority and resets the display after logout |
 | `xiri-session` | Runs clients as the current native user on an existing authenticated X display; leaves X and system services running |
 | `xiri-desktop` | Root convenience wrapper: ensures services are available, starts an authenticated X server, uses `su -l` for the configured user, and stops its own X server after logout |
 | `xiri-launch`, `xiri-logout` | Native menu helpers; launched applications belong to the session's descendant tree; logout requests cleanup through its private directory |
@@ -36,8 +37,8 @@ authority file. Neither entry starts an X server with `-ac`.
 FAM still maps local IRIX v1 clients to **one configured account**, currently
 `xiritest`. This split does not implement authenticated multiuser FAM. Keep
 `xiri_user` in `/etc/xiri/session.conf` and `untrusted_user` in
-`/etc/xiri/fam.conf` consistent. Native xdm and original IRIX clogin are later
-integration steps.
+`/etc/xiri/fam.conf` consistent. Native xdm uses the same configured account;
+original IRIX clogin remains a later integration step.
 
 ## Build and install
 
@@ -85,6 +86,68 @@ wrapper uses `/var/tmp/xiri-desktop/session.*` and labels the user explicitly.
 An optional `XIRI_SESSION_MS` duration is in milliseconds (zero means no time
 limit). Both original logout menus call the native request helper.
 
+## Native xdm login
+
+The prepared system includes NetBSD's native xdm and PAM configuration.
+The optional configuration uses those standard files and selects the qualified
+Newport server command via `xdm -server /etc/xiri/xdm/Xservers`. The greeter
+resource overlay includes NetBSD's layout and selects `Xft.render: false`:
+the current accelerated Render text path otherwise loses its glyphs. This
+uses Xft's software text path while retaining XAA and the Render extension.
+It retains
+native X authorization, local-only display management and the standard
+`/etc/X11/xdm/Xsession` dispatch to `$HOME/.xsession`.
+
+Build/install as above, then explicitly enable the services and display manager:
+
+```sh
+# As root, in runtime/:
+sh install.sh --enable-xdm
+passwd xiritest
+```
+
+This creates `/etc/rc.conf.d/xdm` with `xdm=YES` and
+`xdm_flags="-server /etc/xiri/xdm/Xservers -resources /etc/xiri/xdm/Xresources"`
+if absent. Existing rc.d policy and both display configuration files are
+preserved; compare their `.example` files on upgrades.
+The installer does not change an account's password,
+home, `.xsession`, native xdm/PAM files or console gettys.
+
+As `xiritest`, select the desktop (review any existing `.xsession` first):
+
+```sh
+cp /usr/local/share/xiri/xdm.xsession "$HOME/.xsession"
+chmod 700 "$HOME/.xsession"
+```
+
+Other native users who leave `.xsession` unset retain NetBSD's standard
+Xsession desktop (ctwm, terminal and clock). Xiri is a per-user selection;
+the installer does not replace the system-wide Xsession. This does not extend
+FAM beyond its one configured IRIX desktop account.
+
+On the Indy, set **ttyE0** to `off` in `/etc/ttys` before rebooting; a getty
+must not read the same graphical keyboard as xdm. Keep **ttyZ0** enabled for
+serial administration. Reboot to run PTY preparation before any desktop login.
+Log in at the graphical prompt as `xiritest` with the native account's password.
+The session starts in `/usr/people/xiritest`, with the account's supplementary
+groups and xdm's authority file. The `.xsession` entry maps local `:0` to
+`127.0.0.1:0` because the current IRIX personality supports IPv4 TCP sockets;
+xdm's existing authority entries authenticate this connection. It does not
+create a replacement cookie or allow unauthenticated clients.
+Xdm can supply a temporary `/tmp/.Xauth*` file; clients and diagnostics must
+honor `XAUTHORITY` rather than assume `$HOME/.Xauthority`.
+Startup diagnostics are in
+`$HOME/.xsession-errors`; client logs remain in `$HOME/.xiri/sessions/`.
+Xdm diagnostics are `/var/log/xdm.log`.
+
+Both original logout menus end the client session and return to xdm. System
+FAM/rpcbind remain running. A failed session also returns to authentication;
+inspect `.xsession-errors` and the newest guard/client logs from serial login.
+For the root manual fallback, stop xdm with `/etc/rc.d/xdm stop`, then run
+`xiri-desktop`. To restore the previous graphical-console workflow permanently,
+set `xdm=NO`, restore ttyE0 to `on`, and reboot. Do not run both display owners
+at the same time.
+
 ## Existing prerequisites
 
 The installer supplies integration files only. The prepared image must
@@ -118,3 +181,10 @@ installation-policy tests run with `python3 -m unittest discover -s tests -v`.
 
 The [2026-11-03 qualification](../docs/results/2026-11-03-xiri-session.md) records the passed runs,
 source coverage, cleanup results and screenshots.
+
+`python3 scripts/probe-xiri-xdm.py` separately qualifies native graphical
+password login, readable greeter text, full-screen geometry, both logout menus
+and failed-startup recovery. It also logs in a separate native account with
+no `.xsession`, checks the standard ctwm desktop and terminal, then returns
+to xiritest. It builds and boots a disposable clone; the
+selected CHD is unchanged. See the [xdm integration record](../docs/results/2026-11-03-xiri-xdm.md).

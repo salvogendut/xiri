@@ -42,6 +42,17 @@ not repin qualified kernels, emulator binaries, runtime resources or guest disks
 
 ## IRIS upstream updates
 
+The 2026-11-03 xdm cycle fetched upstream again at
+`28fa516684c54e00e35b258c65e5dcac3a36165c`, already contained in IRIS `xiri`
+`1aed0dfc842a427e32a53ad083e1be0a9d46a613`. No merge or affected emulator
+rebuild was needed. Both fork checkouts were clean; NetBSD `xiri` remains
+`1c248bf932f369c3271239b8c20bc3efd55bca44`. This cycle changes native Xiri
+userspace only and retains the module image's qualified kernel/module and
+`819c682` emulator. Pinned reproductions and the previous manual image remain
+untouched. The [xdm qualification](results/2026-11-03-xiri-xdm.md) covers
+three IRIX sessions, a separate native ctwm account, full-screen acceleration,
+logout/recovery and clean guest shutdown.
+
 The 2026-11-03 service/session cycle fetched upstream again at
 `28fa516684c54e00e35b258c65e5dcac3a36165c`, already contained in IRIS `xiri`
 `1aed0dfc842a427e32a53ad083e1be0a9d46a613`. There were no new commits to

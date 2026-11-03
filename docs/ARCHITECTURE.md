@@ -49,6 +49,7 @@ installing a background service on an unmodified NetBSD system is insufficient.
 | IRIX kernel personality | Recognize/load foreign ELF images; translate system calls, layouts, errors and process/VM behavior | Boot-loaded `compat_irix_o32.kmod` on our NetBSD fork; both o32 and n32 are supported despite the name; a built-in configuration remains available |
 | Original IRIX runtime and desktop | rld/libc and other libraries, 4Dwm, Toolchest, winterm, file/icon clients, fonts and defaults | Selected files imported from the reference image; runtime lookup under `/emul/irix` with native fallback |
 | Native NetBSD platform | Scheduler, memory, storage, networking, devices, X server and native applications | Native Xorg drives the emulated Newport display at 1280×1024; Xvfb remains available for controlled tests. Physical display acceptance is separate |
+| Native display manager (opt-in) | Authenticate a native account, own the X server and X authority, return to the greeter on session exit | NetBSD xdm/PAM and its standard Xsession launch the selected user's `.xsession`, which enters `xiri-session`; original IRIX clogin remains separate work |
 | Session and service integration | Environment, launch order, native shell handoff, application launching and host-service adapters | Maintained rc.d services own native FAM v1 and PTY setup; native rpcbind retains its service lifecycle. The unprivileged client session owns its descendants. FAM supplies file notifications and process-execution polling for opened icons. The session starts `fm -b` and initializes Desktop; session restoration and broader desktop services remain open |
 | Development lab | Boot/reference automation, probes, traces, comparisons and reproducible artifacts | This repository plus the IRIS emulator fork; the emulator is not intended to be required on a supported physical MIPS workstation |
 
@@ -66,13 +67,15 @@ configured native services and then normal xiritest login through xdm.
 Original IRIX clogin follows later. The [module cycle](results/2026-11-03-irix-module.md)
 implements the kernel boundary on our fork. The [service/session qualification](results/2026-11-03-xiri-session.md) passes
 four desktops, independent shell survival, inherited groups/X authority and
-service restart. Its prerequisites are in the [runtime guide](../runtime/README.md);
-xdm and a replacement deployment image remain separate steps. Newport and
+service restart. Its prerequisites are in the [runtime guide](../runtime/README.md).
+The [xdm integration](results/2026-11-03-xiri-xdm.md) reuses that boundary
+through the native login manager; a replacement deployment image requires
+its own disk-boot qualification. Newport and
 other native platform drivers remain separate from the foreign personality.
 See the [packaging phase](ROADMAP.md#next-packaging-phase).
 
-Supporting daemons could be packaged as ordinary NetBSD services, while the
-desktop itself could be offered as an X login session. Those are user-space
+Supporting daemons are packaged as ordinary NetBSD services, while the
+desktop can be selected as an X login session. Those are user-space
 deployment choices; they do not replace the kernel's executable and system-call
 handling. A loadable module still executes in the kernel. **A loadable module
 modeled after `compat_linux` is the desired final delivery target**, agreed on

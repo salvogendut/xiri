@@ -80,6 +80,22 @@ IRIX APIs in the examples must be translated into NetBSD equivalents.
 
 ## Next performance cycle
 
+The native xdm integration exposed another text case on 2026-11-03: the
+standard Xft greeter painted its frame and logo but no greeting, prompts or
+typed username. Installed fonts resolve correctly (`Sans` selects Luxi Sans),
+and disabling antialiasing alone did not restore the labels. `Xft.render:
+false` restores them using software text, with XAA still enabled. The
+opt-in xdm resource overlay contains this workaround. Isolate the native
+Render glyph path with a focused client and accelerated/software server
+controls before assigning the underlying fault to the driver or emulator.
+The earlier texture/pixel checks do not cover this glyph workload.
+
+Xdm explicitly uses the same `1280x1024` mode and `Virtual 1280 1024` as the
+qualified manual launcher. The pinned IRIS scanout captures are 1282×1024
+(two additional columns); the active X desktop is 1280×1024. A smaller X
+root such as 1024×768 must fail xdm qualification. Do not rely on bare
+`startx` selecting this configuration automatically.
+
 1. Completed for RGB24: solid-fill, copy, upload and composed-framebuffer checks with
    acceleration disabled and enabled on the same image and emulator build.
    Extend the existing `scripts/qualify-netbsd-x11.py --accelerated` workload

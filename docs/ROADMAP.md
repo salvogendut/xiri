@@ -18,9 +18,11 @@ on the Xiri fork, including a desktop without built-in IRIX support. The
 and module and passes graphical boot, repeated desktop/logout, accelerated
 rendering and a fresh catalog launch from disk. The maintained
 [service/session runtime](../runtime/README.md) now passes its
-[qualification](results/2026-11-03-xiri-session.md); native xdm is next.
-Retain the working manual
-image as a regression baseline throughout that work.
+[qualification](results/2026-11-03-xiri-session.md), and native
+[xdm integration](results/2026-11-03-xiri-xdm.md) now passes normal xiritest
+login and a separate native user's standard ctwm session. Package both runtime
+cycles into a new manual CHD next, retaining the working image as a regression
+baseline.
 
 ## Next packaging phase
 
@@ -44,11 +46,15 @@ order was updated to prioritize the kernel module at the user’s request:
    [cycle checks](results/2026-11-03-xiri-session.md).
    FAM remains a single-configured-account service. The selected manual
    CHD retains its older launcher until a replacement image is qualified.
-3. **Normal xiritest login through native xdm.** Preserve the authenticated UID,
-   groups, HOME `/usr/people/xiritest`, working directory and X authority. Test
-   login → desktop → logout → login, failed startup cleanup and coexistence
-   with a separate login by the same user. System services and the X server
-   must not be owned or stopped by the client-session wrapper.
+3. **Normal xiritest login through native xdm: runtime qualified.** The
+   [xdm checks](results/2026-11-03-xiri-xdm.md) preserve the authenticated UID,
+   groups, HOME `/usr/people/xiritest`, working directory and native X authority.
+   Three successful IRIX sessions, both logout menus, failed startup recovery,
+   independent same-user shell survival and a separate native ctwm login pass.
+   Xorg uses the explicit 1280×1024 accelerated Newport configuration.
+   Native xdm owns the display; the client session leaves system services alive.
+   A greeter resource workaround restores missing Xft text; the underlying
+   glyph-rendering issue remains in [Newport work](NEWPORT.md).
 4. **Original IRIX clogin later.** Once the xdm/session boundary is established,
    investigate clogin's authentication and service interfaces against original
    IRIX. Reuse the qualified session startup; do not assume the login binary is
@@ -57,8 +63,9 @@ order was updated to prioritize the kernel module at the user’s request:
 Acceptance requires repeatable installation/configuration and a fresh manual
 CHD for the resulting deployment. The first module milestone is complete
 on our fork and its [replacement manual image](results/2026-11-03-irix-module-image.md)
-is qualified. Service/session packaging is qualified separately; the user
-chose to finish that boundary before xdm and a new CHD. The current image
+is qualified. Service/session and xdm integration are qualified separately;
+their replacement CHD still needs packaging and direct-disk boot checks.
+The current image
 boot-loads the module and retains its older root launcher with xiritest clients.
 Continue application/desktop fixes alongside packaging without losing the
 established regression coverage.
@@ -228,7 +235,7 @@ dependency candidates; a visible window alone does not complete these checks.
 - [x] Revisit the supplied manual after the first rendered Toolchest client and map its relevant chapters to the comparisons above.
 - [x] Maintain the [image-resource checklist](IRIX-RESOURCES.md) and [ledger](../lab/irix-desktop/resource-ledger.json), distinguishing extracted assets, observed use, remaining artwork/catalog/service gaps and native session state.
 - [x] Qualify opened-icon feedback after catalog double-click, the granite backdrop, and filesystem/home/Dumpster icons before graphical-login integration. The [desktop behavior result](results/2026-11-02-irix-desktop-behavior.md) passes launch/exit artwork restoration and desktop directory opening; broader actions remain below.
-- [ ] Later integrate native NetBSD xdm: separate X-server/system-service startup from the user session, preserve login identity/HOME and X authentication, and qualify login → desktop → logout → login. Queued in the 2026-11-03 packaging phase after service/session ownership is separated; retain the current manual launcher until qualified. Native IRIX clogin follows xdm later.
+- [x] Integrate native NetBSD xdm in the maintained runtime. The [qualification](results/2026-11-03-xiri-xdm.md) covers full-screen login → desktop → logout → login, identity/HOME/groups/X authority, failed startup, both IRIX logout menus and a separate user's standard ctwm session. Replacement CHD packaging remains pending; native IRIX clogin follows later.
 - [x] Replace reserved-UID cleanup in the maintained runtime with a native descendant supervisor. The [session qualification](results/2026-11-03-xiri-session.md) preserves independent same-user activity, groups, HOME and X authority. The selected manual CHD still has its older reserved-UID launcher until the next image cycle; direct xdm login is not enabled there. The xiritest home remains `/usr/people/xiritest`; an actual IRIX root session should use `/`.
 - [ ] Turn the remaining comparisons into reproducible desktop acceptance cases against the original installation.
 - [x] Launch original 4Dwm against native Xvfb and demonstrate reparenting, focus, key delivery and dragging in the [combined shell session](results/2026-11-01-irix-4dwm.md); Newport/physical display qualification remains separate.
