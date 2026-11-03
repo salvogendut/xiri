@@ -24,6 +24,20 @@ login and a separate native user's standard ctwm session. The [xdm CHD](results/
 now packages both runtime cycles and passes direct-disk login, logout/relogin
 and catalog checks. Earlier images remain regression baselines.
 
+The [winterm reliability cycle](results/2026-11-03-winterm-reliability.md)
+adds measured PTY window sizing and SIGCHLD NOCLDSTOP handling to the module,
+plus a native shell handoff that preserves the terminal's dimensions. Paired
+original-IRIX/NetBSD checks pass 248 ioctl observations and 24 child-exit
+signal/frame controls. Foreground resize and normal terminal exit now work;
+the intermittent font collapse now reproduces in both native and IRIX Xlib
+against Xorg's scalable IBM Courier face. A session resource default selects
+the existing SGI Screen bitmap font. Follow-ups are the native Type1 metric
+failure, continued-child notification parity, IRIX nanosleep, broader job control and
+retesting GIMP against the updated signal handling. The extended font
+diagnostic also captured repeated characters during XTest input; investigate
+that separately without attributing it to concurrency before a controlled
+comparison. Its failed input attempts are excluded from terminal acceptance.
+
 ## Next packaging phase
 
 The user requested these deployment changes on 2026-11-03. The implementation
@@ -197,12 +211,13 @@ Decision gate: if the display or desktop exposes a major feasibility obstacle, d
 - [x] Measure and implement the bounded [PTY allocator interfaces](results/2026-10-31-irix-pty.md), including native ownership/namespace setup and original libc slave opens. Original xwsh advances to unsupported fork.
 - [x] Measure and implement the [bounded process subset](results/2026-11-01-irix-process.md): fork/getpid, traditional signal masks and positive-child exit waits, with independent native identity/mask/COW/file-offset and process-group cleanup checks. Original xwsh reaches child execve after opening its slave.
 - [x] Run a native interactive shell through [original winterm/xwsh](results/2026-11-01-irix-shell.md), with paired descriptor/session/exec probes, real keyboard input, a PNG and bounded descendant cleanup.
-- [ ] Qualify foreign signal handlers, resize, normal terminal exit and broader shell behavior; general layered-tty revoke remains open.
+- [x] Qualify [winterm resize and normal terminal exit](results/2026-11-03-winterm-reliability.md), including measured NOCLDSTOP child-exit handlers, preserved nondefault dimensions and foreground SIGWINCH delivery.
+- [ ] Complete broader shell/job-control behavior, continued-child notification parity and IRIX nanosleep. Investigate the native Type1 font-metric failure; terminal defaults now use the verified SGI bitmap face. General layered-tty revoke remains open.
 - [x] Qualify the [4 KiB data mapping extension](results/2026-11-01-irix-elfmap-subpage.md): 750 mapping/limit checks; original 4Dwm passes its previous library boundary.
 - [x] Resolve [4Dwm’s fixed/local GL mapping](results/2026-11-01-irix-mmap-local.md): 660 cases, 30 controls and 32 native page-zero checks.
 - [x] Provide [measured PRDA process data](results/2026-11-01-irix-prda.md): 80 executions / 180 records, fork COW/PID updates, exec reset, damaged-state policy and native-exec controls.
 - [x] Demonstrate [4Dwm window interaction and a combined shell session](results/2026-11-01-irix-4dwm.md): real reparenting, pointer focus, key delivery, dragging and typed winterm commands alongside Toolchest. Session saving is explicitly disabled.
-- [ ] Resolve 4Dwm session file/service dependencies and feature queries, then qualify menus, minimize/maximize, native resize, desks, restoration and logout. Preserve the working terminal; its foreign signal/resize/normal-exit limits remain explicit.
+- [ ] Resolve remaining 4Dwm session file/service dependencies and feature queries, then qualify broader menus, minimize/maximize, desks and restoration. Preserve the qualified terminal resize/exit and both desktop logout routes.
 - [x] Capture the [actual libXmu mapping failure](results/2026-10-31-irix-xclock-elfmap.md): unchanged libXmu headers request two addresses already occupied by libXaw text, and the mapper returns ENOMEM. Native breakpoint controls and clean shutdown pass.
 - [x] Add [bounded collision relocation](results/2026-10-31-irix-elfmap-relocation.md): 576 mapper/limit checks, both ABIs, unchanged headers, alignment/gap/sentinel checks, and eight original analog/digital xclock windows. The later subpage checkpoint separately qualifies 4Dwm's 4 KiB data boundaries.
 - [x] Measure and implement [time/gettimeofday](results/2026-11-01-irix-time.md): 192 original records, 480 native records and 44 controls. Eight bounded original analog/digital xclock launches show current UTC time, advance and redraw; PNGs are retained. Longer sessions and timezone/DST remain follow-ups.

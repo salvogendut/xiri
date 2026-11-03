@@ -1,0 +1,5662 @@
+{
+  "status": "passed",
+  "fixtures": {
+    "schema": 1,
+    "sources": {
+      "scripts/build-irix-winterm-fixtures.py": "d474b47ce560d88c2099391393cbcc5dddf9cfa3c29cd8152950b27ffd5294b3",
+      "lab/irix-winterm-reliability/winsize-raw.c": "739a3905362cd3ac63b9b09a8893153b9033ab5727c3c9a4b9dab5f7241977cb",
+      "lab/irix-signal/probe.c": "668e42b30877938a0ed2ac5a82bb42ef452a4183c06e818ba7210846100508f6",
+      "lab/irix-signal/start.S": "6a501160b0de40ea20411cca699f3c46331797b81cfe73dcfe9a14f804c88673",
+      "lab/irix-signal/trampoline-v2.S": "46949b7b5606072d62a9681c1a2886b7c67afdf2d7f9b5ed4a3fb270e6043e8c",
+      "lab/irix-signal/fpu.S": "d5ccbe6f8a4fc22477973cb9fe62148ca1b2138168236d87721605bf76429b34",
+      "lab/irix-mmap-local/call.S": "677d247b98c292a3a5f0c8cfae4614ab9c6995ddde00501b700db0e857986a4f",
+      "lab/irix-mmap-local/probe.ld": "08cff42138f41bc5ef5c02a903ed16fab4db0d6a8d208f90dafd2157b30573dc"
+    },
+    "files": {
+      "o32-direct-winsize": {
+        "sha256": "e84cc8a1279fc8eb6fc6af119bfb7f5b044982c89a46b194aa32785cfd7ec798",
+        "bytes": 9116
+      },
+      "o32-direct-child-legacy": {
+        "sha256": "e71330108ebdef76a63b4bbf35c61b4365fb21133954b4dda56fd52502eb86d0",
+        "bytes": 11372
+      },
+      "o32-direct-child-siginfo": {
+        "sha256": "a4adfe63babd9ac99908767d6e59ef39d0294b6897d46a05ea229a87c8de0398",
+        "bytes": 11372
+      },
+      "o32-direct-child-signal": {
+        "sha256": "50d86c250f6d4d34b41c9bf94019573e821743d3cd0897793a717459ae18405c",
+        "bytes": 11372
+      },
+      "o32-indirect-winsize": {
+        "sha256": "e25fd56b64c30fde783bd9803f53f53da5acd4f7f1c27b36b38d119415e7f194",
+        "bytes": 9116
+      },
+      "o32-indirect-child-legacy": {
+        "sha256": "2dd7b7f6276aaa6dcf3bc86fae549c9f622c52a85f9fd91b52c481efaed4d8e1",
+        "bytes": 11372
+      },
+      "o32-indirect-child-siginfo": {
+        "sha256": "f11bcc091d9bc59509eef2b12b113603eb2de15da445c534e466f13da1fa6204",
+        "bytes": 11372
+      },
+      "o32-indirect-child-signal": {
+        "sha256": "1f07303d672df75de3d4a284e78f6e5c2d06a910fe6fa7ce019c037538e40ddb",
+        "bytes": 11372
+      },
+      "n32-direct-winsize": {
+        "sha256": "0adb963aad5cbe8f42b7e5e1f4732aad58e969011a2567064320e3e52dcf2802",
+        "bytes": 9116
+      },
+      "n32-direct-child-legacy": {
+        "sha256": "1e68acc2a43f737d4e3834b0937793aa7dcfbdbc7c53e6d317da554c758e64db",
+        "bytes": 11372
+      },
+      "n32-direct-child-siginfo": {
+        "sha256": "b2ba6b221ea4fb9e20ee861bf0dc55aef9109ef0e9a7aecff8080c09325e3c01",
+        "bytes": 11372
+      },
+      "n32-direct-child-signal": {
+        "sha256": "18f8af901b4a329182faa1b6a6874102027d258e8e9a8244aa1f1e3155f68026",
+        "bytes": 11372
+      },
+      "n32-indirect-winsize": {
+        "sha256": "635eacadde0653cfb0b3997a92cbfda652ec579a87c910107b3a64949ca6d2e0",
+        "bytes": 9116
+      },
+      "n32-indirect-child-legacy": {
+        "sha256": "a37bd53aebafd85012d77ea916507c957260c2ca2aca7bc06a9c43992689433c",
+        "bytes": 11372
+      },
+      "n32-indirect-child-siginfo": {
+        "sha256": "7bfb3f728a37dfbacdf409612bd1be52374b97c722d3689279bcbcade8659812",
+        "bytes": 11372
+      },
+      "n32-indirect-child-signal": {
+        "sha256": "a8c259fe9efa4cc3ea35fe0f5b420c7eed62e0adf64b5a64022f8fa7946d675b",
+        "bytes": 11372
+      }
+    }
+  },
+  "reference": ".work/winterm-cycle/raw-reference-v2",
+  "native": ".work/winterm-cycle/updated-checks/raw-native",
+  "winsize_observations": 248,
+  "child_executions": 24,
+  "records": {
+    "o32-direct-winsize-0": {
+      "reference_sha256": "5bcc409aef1c08f16517e8a994cb378a1c4264f26e9cb2151a5b7aa5302320ce",
+      "observations": [
+        [
+          1,
+          0,
+          0,
+          287454020,
+          0,
+          0,
+          1432778632,
+          0
+        ],
+        [
+          2,
+          0,
+          0,
+          287454020,
+          2031713,
+          50856401,
+          1432778632,
+          0
+        ],
+        [
+          3,
+          0,
+          0,
+          287454020,
+          2031713,
+          50856401,
+          1432778632,
+          0
+        ],
+        [
+          4,
+          0,
+          0,
+          287454020,
+          0,
+          0,
+          1432778632,
+          0
+        ],
+        [
+          5,
+          0,
+          0,
+          287454020,
+          0,
+          0,
+          1432778632,
+          0
+        ],
+        [
+          6,
+          0,
+          0,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          7,
+          0,
+          0,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          8,
+          1,
+          9,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          9,
+          1,
+          9,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          10,
+          1,
+          9,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          11,
+          1,
+          9,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          12,
+          1,
+          25,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          13,
+          1,
+          25,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          14,
+          1,
+          22,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          15,
+          1,
+          22,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          16,
+          1,
+          25,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          17,
+          1,
+          25,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          18,
+          1,
+          22,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          19,
+          1,
+          22,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          20,
+          1,
+          14,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          21,
+          1,
+          14,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          22,
+          1,
+          14,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          23,
+          1,
+          14,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          24,
+          0,
+          0,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          25,
+          0,
+          0,
+          2785017855,
+          4294967295,
+          4289045925,
+          1432778632,
+          0
+        ],
+        [
+          26,
+          1,
+          14,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          2779096485
+        ],
+        [
+          27,
+          1,
+          14,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          28,
+          0,
+          0,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          29,
+          1,
+          14,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          30,
+          0,
+          0,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          31,
+          0,
+          0,
+          287454020,
+          0,
+          0,
+          1432778632,
+          0
+        ]
+      ],
+      "native_sha256": "5bcc409aef1c08f16517e8a994cb378a1c4264f26e9cb2151a5b7aa5302320ce"
+    },
+    "o32-direct-winsize-1": {
+      "reference_sha256": "5bcc409aef1c08f16517e8a994cb378a1c4264f26e9cb2151a5b7aa5302320ce",
+      "observations": [
+        [
+          1,
+          0,
+          0,
+          287454020,
+          0,
+          0,
+          1432778632,
+          0
+        ],
+        [
+          2,
+          0,
+          0,
+          287454020,
+          2031713,
+          50856401,
+          1432778632,
+          0
+        ],
+        [
+          3,
+          0,
+          0,
+          287454020,
+          2031713,
+          50856401,
+          1432778632,
+          0
+        ],
+        [
+          4,
+          0,
+          0,
+          287454020,
+          0,
+          0,
+          1432778632,
+          0
+        ],
+        [
+          5,
+          0,
+          0,
+          287454020,
+          0,
+          0,
+          1432778632,
+          0
+        ],
+        [
+          6,
+          0,
+          0,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          7,
+          0,
+          0,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          8,
+          1,
+          9,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          9,
+          1,
+          9,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          10,
+          1,
+          9,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          11,
+          1,
+          9,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          12,
+          1,
+          25,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          13,
+          1,
+          25,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          14,
+          1,
+          22,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          15,
+          1,
+          22,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          16,
+          1,
+          25,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          17,
+          1,
+          25,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          18,
+          1,
+          22,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          19,
+          1,
+          22,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          20,
+          1,
+          14,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          21,
+          1,
+          14,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          22,
+          1,
+          14,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          23,
+          1,
+          14,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          24,
+          0,
+          0,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          25,
+          0,
+          0,
+          2785017855,
+          4294967295,
+          4289045925,
+          1432778632,
+          0
+        ],
+        [
+          26,
+          1,
+          14,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          2779096485
+        ],
+        [
+          27,
+          1,
+          14,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          28,
+          0,
+          0,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          29,
+          1,
+          14,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          30,
+          0,
+          0,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          31,
+          0,
+          0,
+          287454020,
+          0,
+          0,
+          1432778632,
+          0
+        ]
+      ],
+      "native_sha256": "5bcc409aef1c08f16517e8a994cb378a1c4264f26e9cb2151a5b7aa5302320ce"
+    },
+    "o32-direct-child-legacy-0": {
+      "reference_sha256": "0a5c8c191750932cdc91610d1189e8c83441b7e9f6ebb4a664d7ac36e2b4b3d4",
+      "reference": {
+        "name": "o32-direct-child-legacy",
+        "identity": 0,
+        "kind": 2,
+        "registration": [
+          0,
+          4277009102,
+          0
+        ],
+        "query": [
+          0,
+          4277009102,
+          0
+        ],
+        "action_after": [
+          0,
+          "fixture handler",
+          0,
+          0,
+          0,
+          0
+        ],
+        "old_copyout_bytes": 32,
+        "disposition_changed": true,
+        "guards_verified": true,
+        "handler_count": 1,
+        "child_reaped_in_handler": false,
+        "frame": {
+          "form": "sigcontext",
+          "regmask": 4294967295,
+          "greg_offset": 16,
+          "greg_bytes": 8,
+          "greg_count": 32,
+          "fp_offset": 272,
+          "fp_csr_offset": 532,
+          "fp_present": false,
+          "stack_bytes": 920,
+          "alignment": 8,
+          "saved_mask": [
+            16384,
+            0,
+            0,
+            0
+          ],
+          "active_mask": [
+            147456,
+            0,
+            0,
+            0
+          ],
+          "handler_action": [
+            0,
+            "fixture handler",
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "nocldstop_retained": true
+      },
+      "native_sha256": "3c0d64fd55c25da623e489072b407aabdc25ebe383dac1389bc5d767a717bd8a",
+      "native": {
+        "name": "o32-direct-child-legacy",
+        "identity": 0,
+        "kind": 2,
+        "registration": [
+          0,
+          4277009102,
+          0
+        ],
+        "query": [
+          0,
+          4277009102,
+          0
+        ],
+        "action_after": [
+          0,
+          "fixture handler",
+          0,
+          0,
+          0,
+          0
+        ],
+        "old_copyout_bytes": 32,
+        "disposition_changed": true,
+        "guards_verified": true,
+        "handler_count": 1,
+        "child_reaped_in_handler": false,
+        "frame": {
+          "form": "sigcontext",
+          "regmask": 4294967295,
+          "greg_offset": 16,
+          "greg_bytes": 8,
+          "greg_count": 32,
+          "fp_offset": 272,
+          "fp_csr_offset": 532,
+          "fp_present": false,
+          "stack_bytes": 1024,
+          "alignment": 8,
+          "saved_mask": [
+            16384,
+            0,
+            0,
+            0
+          ],
+          "active_mask": [
+            147456,
+            0,
+            0,
+            0
+          ],
+          "handler_action": [
+            0,
+            "fixture handler",
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "nocldstop_retained": true
+      }
+    },
+    "o32-direct-child-legacy-1": {
+      "reference_sha256": "4c5e49bd9643b59fc44044a7f9ad5f2764de5f67110fbcd961caef734d5cdd61",
+      "reference": {
+        "name": "o32-direct-child-legacy",
+        "identity": 1234,
+        "kind": 2,
+        "registration": [
+          0,
+          4277009102,
+          0
+        ],
+        "query": [
+          0,
+          4277009102,
+          0
+        ],
+        "action_after": [
+          0,
+          "fixture handler",
+          0,
+          0,
+          0,
+          0
+        ],
+        "old_copyout_bytes": 32,
+        "disposition_changed": true,
+        "guards_verified": true,
+        "handler_count": 1,
+        "child_reaped_in_handler": false,
+        "frame": {
+          "form": "sigcontext",
+          "regmask": 4294967295,
+          "greg_offset": 16,
+          "greg_bytes": 8,
+          "greg_count": 32,
+          "fp_offset": 272,
+          "fp_csr_offset": 532,
+          "fp_present": false,
+          "stack_bytes": 920,
+          "alignment": 8,
+          "saved_mask": [
+            16384,
+            0,
+            0,
+            0
+          ],
+          "active_mask": [
+            147456,
+            0,
+            0,
+            0
+          ],
+          "handler_action": [
+            0,
+            "fixture handler",
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "nocldstop_retained": true
+      },
+      "native_sha256": "12b97346c6e9b01bf53b05c0b2d5272cb65b015863524d596ba40f99a833502b",
+      "native": {
+        "name": "o32-direct-child-legacy",
+        "identity": 1234,
+        "kind": 2,
+        "registration": [
+          0,
+          4277009102,
+          0
+        ],
+        "query": [
+          0,
+          4277009102,
+          0
+        ],
+        "action_after": [
+          0,
+          "fixture handler",
+          0,
+          0,
+          0,
+          0
+        ],
+        "old_copyout_bytes": 32,
+        "disposition_changed": true,
+        "guards_verified": true,
+        "handler_count": 1,
+        "child_reaped_in_handler": false,
+        "frame": {
+          "form": "sigcontext",
+          "regmask": 4294967295,
+          "greg_offset": 16,
+          "greg_bytes": 8,
+          "greg_count": 32,
+          "fp_offset": 272,
+          "fp_csr_offset": 532,
+          "fp_present": false,
+          "stack_bytes": 1024,
+          "alignment": 8,
+          "saved_mask": [
+            16384,
+            0,
+            0,
+            0
+          ],
+          "active_mask": [
+            147456,
+            0,
+            0,
+            0
+          ],
+          "handler_action": [
+            0,
+            "fixture handler",
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "nocldstop_retained": true
+      }
+    },
+    "o32-direct-child-siginfo-0": {
+      "reference_sha256": "2643dbaf6da91b5e410d829c6d46aae4ead121593c166c5f5cb9033f5ad3479e",
+      "reference": {
+        "name": "o32-direct-child-siginfo",
+        "identity": 0,
+        "kind": 2,
+        "registration": [
+          0,
+          4277009102,
+          0
+        ],
+        "query": [
+          0,
+          4277009102,
+          0
+        ],
+        "action_after": [
+          8,
+          "fixture handler",
+          0,
+          0,
+          0,
+          0
+        ],
+        "old_copyout_bytes": 32,
+        "disposition_changed": true,
+        "guards_verified": true,
+        "handler_count": 1,
+        "child_reaped_in_handler": false,
+        "frame": {
+          "form": "ucontext",
+          "flags": 7,
+          "greg_offset": 40,
+          "greg_bytes": 4,
+          "greg_count": 36,
+          "fp_offset": 184,
+          "fp_csr_offset": 312,
+          "siginfo_offset": 512,
+          "stack_bytes": 1000,
+          "alignment": 8,
+          "saved_mask": [
+            16384,
+            0,
+            0,
+            0
+          ],
+          "active_mask": [
+            147456,
+            0,
+            0,
+            0
+          ],
+          "handler_action": [
+            8,
+            "fixture handler",
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "nocldstop_retained": true
+      },
+      "native_sha256": "620df3382d9be2a49093c7d86b1b6409a102f1629030cb4ee997e0d63e566530",
+      "native": {
+        "name": "o32-direct-child-siginfo",
+        "identity": 0,
+        "kind": 2,
+        "registration": [
+          0,
+          4277009102,
+          0
+        ],
+        "query": [
+          0,
+          4277009102,
+          0
+        ],
+        "action_after": [
+          8,
+          "fixture handler",
+          0,
+          0,
+          0,
+          0
+        ],
+        "old_copyout_bytes": 32,
+        "disposition_changed": true,
+        "guards_verified": true,
+        "handler_count": 1,
+        "child_reaped_in_handler": false,
+        "frame": {
+          "form": "ucontext",
+          "flags": 7,
+          "greg_offset": 40,
+          "greg_bytes": 4,
+          "greg_count": 36,
+          "fp_offset": 184,
+          "fp_csr_offset": 312,
+          "siginfo_offset": 512,
+          "stack_bytes": 1024,
+          "alignment": 8,
+          "saved_mask": [
+            16384,
+            0,
+            0,
+            0
+          ],
+          "active_mask": [
+            147456,
+            0,
+            0,
+            0
+          ],
+          "handler_action": [
+            8,
+            "fixture handler",
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "nocldstop_retained": true
+      }
+    },
+    "o32-direct-child-siginfo-1": {
+      "reference_sha256": "771acad1234b2dc7621b672106cf54f7cca38db73d5323a561dfaeb1de93737a",
+      "reference": {
+        "name": "o32-direct-child-siginfo",
+        "identity": 1234,
+        "kind": 2,
+        "registration": [
+          0,
+          4277009102,
+          0
+        ],
+        "query": [
+          0,
+          4277009102,
+          0
+        ],
+        "action_after": [
+          8,
+          "fixture handler",
+          0,
+          0,
+          0,
+          0
+        ],
+        "old_copyout_bytes": 32,
+        "disposition_changed": true,
+        "guards_verified": true,
+        "handler_count": 1,
+        "child_reaped_in_handler": false,
+        "frame": {
+          "form": "ucontext",
+          "flags": 7,
+          "greg_offset": 40,
+          "greg_bytes": 4,
+          "greg_count": 36,
+          "fp_offset": 184,
+          "fp_csr_offset": 312,
+          "siginfo_offset": 512,
+          "stack_bytes": 1000,
+          "alignment": 8,
+          "saved_mask": [
+            16384,
+            0,
+            0,
+            0
+          ],
+          "active_mask": [
+            147456,
+            0,
+            0,
+            0
+          ],
+          "handler_action": [
+            8,
+            "fixture handler",
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "nocldstop_retained": true
+      },
+      "native_sha256": "371242111404b0d93294ac727a210d5a957bb12dd475f174d196d89616058f67",
+      "native": {
+        "name": "o32-direct-child-siginfo",
+        "identity": 1234,
+        "kind": 2,
+        "registration": [
+          0,
+          4277009102,
+          0
+        ],
+        "query": [
+          0,
+          4277009102,
+          0
+        ],
+        "action_after": [
+          8,
+          "fixture handler",
+          0,
+          0,
+          0,
+          0
+        ],
+        "old_copyout_bytes": 32,
+        "disposition_changed": true,
+        "guards_verified": true,
+        "handler_count": 1,
+        "child_reaped_in_handler": false,
+        "frame": {
+          "form": "ucontext",
+          "flags": 7,
+          "greg_offset": 40,
+          "greg_bytes": 4,
+          "greg_count": 36,
+          "fp_offset": 184,
+          "fp_csr_offset": 312,
+          "siginfo_offset": 512,
+          "stack_bytes": 1024,
+          "alignment": 8,
+          "saved_mask": [
+            16384,
+            0,
+            0,
+            0
+          ],
+          "active_mask": [
+            147456,
+            0,
+            0,
+            0
+          ],
+          "handler_action": [
+            8,
+            "fixture handler",
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "nocldstop_retained": true
+      }
+    },
+    "o32-direct-child-signal-0": {
+      "reference_sha256": "d590236edcce28dd7cd7f9e4e04c8f3dfe1fb77c550322e6987da7c275405935",
+      "reference": {
+        "name": "o32-direct-child-signal",
+        "identity": 0,
+        "kind": 2,
+        "registration": [
+          0,
+          4277009102,
+          0
+        ],
+        "query": [
+          0,
+          4277009102,
+          0
+        ],
+        "action_after": [
+          18,
+          "fixture handler",
+          0,
+          0,
+          0,
+          0
+        ],
+        "old_copyout_bytes": 32,
+        "disposition_changed": true,
+        "guards_verified": true,
+        "handler_count": 1,
+        "child_reaped_in_handler": false,
+        "frame": {
+          "form": "sigcontext",
+          "regmask": 4294967295,
+          "greg_offset": 16,
+          "greg_bytes": 8,
+          "greg_count": 32,
+          "fp_offset": 272,
+          "fp_csr_offset": 532,
+          "fp_present": false,
+          "stack_bytes": 920,
+          "alignment": 8,
+          "saved_mask": [
+            16384,
+            0,
+            0,
+            0
+          ],
+          "active_mask": [
+            16384,
+            0,
+            0,
+            0
+          ],
+          "handler_action": [
+            18,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "nocldstop_retained": true
+      },
+      "native_sha256": "7c62fbf18ddabf1b0be701dd06822b829d3031bbf41e4178fcbe13fd619488a0",
+      "native": {
+        "name": "o32-direct-child-signal",
+        "identity": 0,
+        "kind": 2,
+        "registration": [
+          0,
+          4277009102,
+          0
+        ],
+        "query": [
+          0,
+          4277009102,
+          0
+        ],
+        "action_after": [
+          18,
+          "fixture handler",
+          0,
+          0,
+          0,
+          0
+        ],
+        "old_copyout_bytes": 32,
+        "disposition_changed": true,
+        "guards_verified": true,
+        "handler_count": 1,
+        "child_reaped_in_handler": false,
+        "frame": {
+          "form": "sigcontext",
+          "regmask": 4294967295,
+          "greg_offset": 16,
+          "greg_bytes": 8,
+          "greg_count": 32,
+          "fp_offset": 272,
+          "fp_csr_offset": 532,
+          "fp_present": false,
+          "stack_bytes": 1024,
+          "alignment": 8,
+          "saved_mask": [
+            16384,
+            0,
+            0,
+            0
+          ],
+          "active_mask": [
+            16384,
+            0,
+            0,
+            0
+          ],
+          "handler_action": [
+            18,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "nocldstop_retained": true
+      }
+    },
+    "o32-direct-child-signal-1": {
+      "reference_sha256": "f9c4d0488873e10742c039182425cbe8028f177f3b6140d6204e539f84e69f01",
+      "reference": {
+        "name": "o32-direct-child-signal",
+        "identity": 1234,
+        "kind": 2,
+        "registration": [
+          0,
+          4277009102,
+          0
+        ],
+        "query": [
+          0,
+          4277009102,
+          0
+        ],
+        "action_after": [
+          18,
+          "fixture handler",
+          0,
+          0,
+          0,
+          0
+        ],
+        "old_copyout_bytes": 32,
+        "disposition_changed": true,
+        "guards_verified": true,
+        "handler_count": 1,
+        "child_reaped_in_handler": false,
+        "frame": {
+          "form": "sigcontext",
+          "regmask": 4294967295,
+          "greg_offset": 16,
+          "greg_bytes": 8,
+          "greg_count": 32,
+          "fp_offset": 272,
+          "fp_csr_offset": 532,
+          "fp_present": false,
+          "stack_bytes": 920,
+          "alignment": 8,
+          "saved_mask": [
+            16384,
+            0,
+            0,
+            0
+          ],
+          "active_mask": [
+            16384,
+            0,
+            0,
+            0
+          ],
+          "handler_action": [
+            18,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "nocldstop_retained": true
+      },
+      "native_sha256": "b5eabae64aa55919a9e97a9188e47dc1a01c79a5cabe3aee7736d6b08119267c",
+      "native": {
+        "name": "o32-direct-child-signal",
+        "identity": 1234,
+        "kind": 2,
+        "registration": [
+          0,
+          4277009102,
+          0
+        ],
+        "query": [
+          0,
+          4277009102,
+          0
+        ],
+        "action_after": [
+          18,
+          "fixture handler",
+          0,
+          0,
+          0,
+          0
+        ],
+        "old_copyout_bytes": 32,
+        "disposition_changed": true,
+        "guards_verified": true,
+        "handler_count": 1,
+        "child_reaped_in_handler": false,
+        "frame": {
+          "form": "sigcontext",
+          "regmask": 4294967295,
+          "greg_offset": 16,
+          "greg_bytes": 8,
+          "greg_count": 32,
+          "fp_offset": 272,
+          "fp_csr_offset": 532,
+          "fp_present": false,
+          "stack_bytes": 1024,
+          "alignment": 8,
+          "saved_mask": [
+            16384,
+            0,
+            0,
+            0
+          ],
+          "active_mask": [
+            16384,
+            0,
+            0,
+            0
+          ],
+          "handler_action": [
+            18,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "nocldstop_retained": true
+      }
+    },
+    "o32-indirect-winsize-0": {
+      "reference_sha256": "5bcc409aef1c08f16517e8a994cb378a1c4264f26e9cb2151a5b7aa5302320ce",
+      "observations": [
+        [
+          1,
+          0,
+          0,
+          287454020,
+          0,
+          0,
+          1432778632,
+          0
+        ],
+        [
+          2,
+          0,
+          0,
+          287454020,
+          2031713,
+          50856401,
+          1432778632,
+          0
+        ],
+        [
+          3,
+          0,
+          0,
+          287454020,
+          2031713,
+          50856401,
+          1432778632,
+          0
+        ],
+        [
+          4,
+          0,
+          0,
+          287454020,
+          0,
+          0,
+          1432778632,
+          0
+        ],
+        [
+          5,
+          0,
+          0,
+          287454020,
+          0,
+          0,
+          1432778632,
+          0
+        ],
+        [
+          6,
+          0,
+          0,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          7,
+          0,
+          0,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          8,
+          1,
+          9,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          9,
+          1,
+          9,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          10,
+          1,
+          9,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          11,
+          1,
+          9,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          12,
+          1,
+          25,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          13,
+          1,
+          25,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          14,
+          1,
+          22,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          15,
+          1,
+          22,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          16,
+          1,
+          25,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          17,
+          1,
+          25,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          18,
+          1,
+          22,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          19,
+          1,
+          22,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          20,
+          1,
+          14,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          21,
+          1,
+          14,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          22,
+          1,
+          14,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          23,
+          1,
+          14,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          24,
+          0,
+          0,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          25,
+          0,
+          0,
+          2785017855,
+          4294967295,
+          4289045925,
+          1432778632,
+          0
+        ],
+        [
+          26,
+          1,
+          14,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          2779096485
+        ],
+        [
+          27,
+          1,
+          14,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          28,
+          0,
+          0,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          29,
+          1,
+          14,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          30,
+          0,
+          0,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          31,
+          0,
+          0,
+          287454020,
+          0,
+          0,
+          1432778632,
+          0
+        ]
+      ],
+      "native_sha256": "5bcc409aef1c08f16517e8a994cb378a1c4264f26e9cb2151a5b7aa5302320ce"
+    },
+    "o32-indirect-winsize-1": {
+      "reference_sha256": "5bcc409aef1c08f16517e8a994cb378a1c4264f26e9cb2151a5b7aa5302320ce",
+      "observations": [
+        [
+          1,
+          0,
+          0,
+          287454020,
+          0,
+          0,
+          1432778632,
+          0
+        ],
+        [
+          2,
+          0,
+          0,
+          287454020,
+          2031713,
+          50856401,
+          1432778632,
+          0
+        ],
+        [
+          3,
+          0,
+          0,
+          287454020,
+          2031713,
+          50856401,
+          1432778632,
+          0
+        ],
+        [
+          4,
+          0,
+          0,
+          287454020,
+          0,
+          0,
+          1432778632,
+          0
+        ],
+        [
+          5,
+          0,
+          0,
+          287454020,
+          0,
+          0,
+          1432778632,
+          0
+        ],
+        [
+          6,
+          0,
+          0,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          7,
+          0,
+          0,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          8,
+          1,
+          9,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          9,
+          1,
+          9,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          10,
+          1,
+          9,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          11,
+          1,
+          9,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          12,
+          1,
+          25,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          13,
+          1,
+          25,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          14,
+          1,
+          22,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          15,
+          1,
+          22,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          16,
+          1,
+          25,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          17,
+          1,
+          25,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          18,
+          1,
+          22,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          19,
+          1,
+          22,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          20,
+          1,
+          14,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          21,
+          1,
+          14,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          22,
+          1,
+          14,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          23,
+          1,
+          14,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          24,
+          0,
+          0,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          25,
+          0,
+          0,
+          2785017855,
+          4294967295,
+          4289045925,
+          1432778632,
+          0
+        ],
+        [
+          26,
+          1,
+          14,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          2779096485
+        ],
+        [
+          27,
+          1,
+          14,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          28,
+          0,
+          0,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          29,
+          1,
+          14,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          30,
+          0,
+          0,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          31,
+          0,
+          0,
+          287454020,
+          0,
+          0,
+          1432778632,
+          0
+        ]
+      ],
+      "native_sha256": "5bcc409aef1c08f16517e8a994cb378a1c4264f26e9cb2151a5b7aa5302320ce"
+    },
+    "o32-indirect-child-legacy-0": {
+      "reference_sha256": "9ab2caeb1700c5ef8aaf0349df9381dd1cafc54f8028f34104234bf0d92f1505",
+      "reference": {
+        "name": "o32-indirect-child-legacy",
+        "identity": 0,
+        "kind": 2,
+        "registration": [
+          0,
+          4277009102,
+          0
+        ],
+        "query": [
+          0,
+          4277009102,
+          0
+        ],
+        "action_after": [
+          0,
+          "fixture handler",
+          0,
+          0,
+          0,
+          0
+        ],
+        "old_copyout_bytes": 32,
+        "disposition_changed": true,
+        "guards_verified": true,
+        "handler_count": 1,
+        "child_reaped_in_handler": false,
+        "frame": {
+          "form": "sigcontext",
+          "regmask": 4294967295,
+          "greg_offset": 16,
+          "greg_bytes": 8,
+          "greg_count": 32,
+          "fp_offset": 272,
+          "fp_csr_offset": 532,
+          "fp_present": false,
+          "stack_bytes": 920,
+          "alignment": 8,
+          "saved_mask": [
+            16384,
+            0,
+            0,
+            0
+          ],
+          "active_mask": [
+            147456,
+            0,
+            0,
+            0
+          ],
+          "handler_action": [
+            0,
+            "fixture handler",
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "nocldstop_retained": true
+      },
+      "native_sha256": "d94a66b39d30f251975ac8345d7256302cc90aee8c7b0f5b71b9ac990867526b",
+      "native": {
+        "name": "o32-indirect-child-legacy",
+        "identity": 0,
+        "kind": 2,
+        "registration": [
+          0,
+          4277009102,
+          0
+        ],
+        "query": [
+          0,
+          4277009102,
+          0
+        ],
+        "action_after": [
+          0,
+          "fixture handler",
+          0,
+          0,
+          0,
+          0
+        ],
+        "old_copyout_bytes": 32,
+        "disposition_changed": true,
+        "guards_verified": true,
+        "handler_count": 1,
+        "child_reaped_in_handler": false,
+        "frame": {
+          "form": "sigcontext",
+          "regmask": 4294967295,
+          "greg_offset": 16,
+          "greg_bytes": 8,
+          "greg_count": 32,
+          "fp_offset": 272,
+          "fp_csr_offset": 532,
+          "fp_present": false,
+          "stack_bytes": 1024,
+          "alignment": 8,
+          "saved_mask": [
+            16384,
+            0,
+            0,
+            0
+          ],
+          "active_mask": [
+            147456,
+            0,
+            0,
+            0
+          ],
+          "handler_action": [
+            0,
+            "fixture handler",
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "nocldstop_retained": true
+      }
+    },
+    "o32-indirect-child-legacy-1": {
+      "reference_sha256": "467f0f438fef66f51dcebf7c9ca403b6d2a47c36a238a3e455ecddc8f20f3999",
+      "reference": {
+        "name": "o32-indirect-child-legacy",
+        "identity": 1234,
+        "kind": 2,
+        "registration": [
+          0,
+          4277009102,
+          0
+        ],
+        "query": [
+          0,
+          4277009102,
+          0
+        ],
+        "action_after": [
+          0,
+          "fixture handler",
+          0,
+          0,
+          0,
+          0
+        ],
+        "old_copyout_bytes": 32,
+        "disposition_changed": true,
+        "guards_verified": true,
+        "handler_count": 1,
+        "child_reaped_in_handler": false,
+        "frame": {
+          "form": "sigcontext",
+          "regmask": 4294967295,
+          "greg_offset": 16,
+          "greg_bytes": 8,
+          "greg_count": 32,
+          "fp_offset": 272,
+          "fp_csr_offset": 532,
+          "fp_present": false,
+          "stack_bytes": 920,
+          "alignment": 8,
+          "saved_mask": [
+            16384,
+            0,
+            0,
+            0
+          ],
+          "active_mask": [
+            147456,
+            0,
+            0,
+            0
+          ],
+          "handler_action": [
+            0,
+            "fixture handler",
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "nocldstop_retained": true
+      },
+      "native_sha256": "5bbeafaf0253e8d86943b3128f41aa71293bfb15b05c8b4ae52dae826578d4a5",
+      "native": {
+        "name": "o32-indirect-child-legacy",
+        "identity": 1234,
+        "kind": 2,
+        "registration": [
+          0,
+          4277009102,
+          0
+        ],
+        "query": [
+          0,
+          4277009102,
+          0
+        ],
+        "action_after": [
+          0,
+          "fixture handler",
+          0,
+          0,
+          0,
+          0
+        ],
+        "old_copyout_bytes": 32,
+        "disposition_changed": true,
+        "guards_verified": true,
+        "handler_count": 1,
+        "child_reaped_in_handler": false,
+        "frame": {
+          "form": "sigcontext",
+          "regmask": 4294967295,
+          "greg_offset": 16,
+          "greg_bytes": 8,
+          "greg_count": 32,
+          "fp_offset": 272,
+          "fp_csr_offset": 532,
+          "fp_present": false,
+          "stack_bytes": 1024,
+          "alignment": 8,
+          "saved_mask": [
+            16384,
+            0,
+            0,
+            0
+          ],
+          "active_mask": [
+            147456,
+            0,
+            0,
+            0
+          ],
+          "handler_action": [
+            0,
+            "fixture handler",
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "nocldstop_retained": true
+      }
+    },
+    "o32-indirect-child-siginfo-0": {
+      "reference_sha256": "41a7cc7cf4b12001b3d680640b5821fd4cff13407df17b1e6aca430757d90c87",
+      "reference": {
+        "name": "o32-indirect-child-siginfo",
+        "identity": 0,
+        "kind": 2,
+        "registration": [
+          0,
+          4277009102,
+          0
+        ],
+        "query": [
+          0,
+          4277009102,
+          0
+        ],
+        "action_after": [
+          8,
+          "fixture handler",
+          0,
+          0,
+          0,
+          0
+        ],
+        "old_copyout_bytes": 32,
+        "disposition_changed": true,
+        "guards_verified": true,
+        "handler_count": 1,
+        "child_reaped_in_handler": false,
+        "frame": {
+          "form": "ucontext",
+          "flags": 7,
+          "greg_offset": 40,
+          "greg_bytes": 4,
+          "greg_count": 36,
+          "fp_offset": 184,
+          "fp_csr_offset": 312,
+          "siginfo_offset": 512,
+          "stack_bytes": 1000,
+          "alignment": 8,
+          "saved_mask": [
+            16384,
+            0,
+            0,
+            0
+          ],
+          "active_mask": [
+            147456,
+            0,
+            0,
+            0
+          ],
+          "handler_action": [
+            8,
+            "fixture handler",
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "nocldstop_retained": true
+      },
+      "native_sha256": "cb6c5b736e7460bd68a02a78ba61ab1aad810398c796252b1ff89b7464f127b8",
+      "native": {
+        "name": "o32-indirect-child-siginfo",
+        "identity": 0,
+        "kind": 2,
+        "registration": [
+          0,
+          4277009102,
+          0
+        ],
+        "query": [
+          0,
+          4277009102,
+          0
+        ],
+        "action_after": [
+          8,
+          "fixture handler",
+          0,
+          0,
+          0,
+          0
+        ],
+        "old_copyout_bytes": 32,
+        "disposition_changed": true,
+        "guards_verified": true,
+        "handler_count": 1,
+        "child_reaped_in_handler": false,
+        "frame": {
+          "form": "ucontext",
+          "flags": 7,
+          "greg_offset": 40,
+          "greg_bytes": 4,
+          "greg_count": 36,
+          "fp_offset": 184,
+          "fp_csr_offset": 312,
+          "siginfo_offset": 512,
+          "stack_bytes": 1024,
+          "alignment": 8,
+          "saved_mask": [
+            16384,
+            0,
+            0,
+            0
+          ],
+          "active_mask": [
+            147456,
+            0,
+            0,
+            0
+          ],
+          "handler_action": [
+            8,
+            "fixture handler",
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "nocldstop_retained": true
+      }
+    },
+    "o32-indirect-child-siginfo-1": {
+      "reference_sha256": "808f89459b3825e826bde352e9ffb300ff47c8ca53d7dde2d6f9b10f6c3a1b27",
+      "reference": {
+        "name": "o32-indirect-child-siginfo",
+        "identity": 1234,
+        "kind": 2,
+        "registration": [
+          0,
+          4277009102,
+          0
+        ],
+        "query": [
+          0,
+          4277009102,
+          0
+        ],
+        "action_after": [
+          8,
+          "fixture handler",
+          0,
+          0,
+          0,
+          0
+        ],
+        "old_copyout_bytes": 32,
+        "disposition_changed": true,
+        "guards_verified": true,
+        "handler_count": 1,
+        "child_reaped_in_handler": false,
+        "frame": {
+          "form": "ucontext",
+          "flags": 7,
+          "greg_offset": 40,
+          "greg_bytes": 4,
+          "greg_count": 36,
+          "fp_offset": 184,
+          "fp_csr_offset": 312,
+          "siginfo_offset": 512,
+          "stack_bytes": 1000,
+          "alignment": 8,
+          "saved_mask": [
+            16384,
+            0,
+            0,
+            0
+          ],
+          "active_mask": [
+            147456,
+            0,
+            0,
+            0
+          ],
+          "handler_action": [
+            8,
+            "fixture handler",
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "nocldstop_retained": true
+      },
+      "native_sha256": "d31dfd5b30517eb2bf11bc3ba8714e02801a911d0f960f5986fcee4697d90a6f",
+      "native": {
+        "name": "o32-indirect-child-siginfo",
+        "identity": 1234,
+        "kind": 2,
+        "registration": [
+          0,
+          4277009102,
+          0
+        ],
+        "query": [
+          0,
+          4277009102,
+          0
+        ],
+        "action_after": [
+          8,
+          "fixture handler",
+          0,
+          0,
+          0,
+          0
+        ],
+        "old_copyout_bytes": 32,
+        "disposition_changed": true,
+        "guards_verified": true,
+        "handler_count": 1,
+        "child_reaped_in_handler": false,
+        "frame": {
+          "form": "ucontext",
+          "flags": 7,
+          "greg_offset": 40,
+          "greg_bytes": 4,
+          "greg_count": 36,
+          "fp_offset": 184,
+          "fp_csr_offset": 312,
+          "siginfo_offset": 512,
+          "stack_bytes": 1024,
+          "alignment": 8,
+          "saved_mask": [
+            16384,
+            0,
+            0,
+            0
+          ],
+          "active_mask": [
+            147456,
+            0,
+            0,
+            0
+          ],
+          "handler_action": [
+            8,
+            "fixture handler",
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "nocldstop_retained": true
+      }
+    },
+    "o32-indirect-child-signal-0": {
+      "reference_sha256": "37b1dba95bf5929c50e72dfc6c055c01491ee5f03acdca34783c1613ffd454a8",
+      "reference": {
+        "name": "o32-indirect-child-signal",
+        "identity": 0,
+        "kind": 2,
+        "registration": [
+          0,
+          4277009102,
+          0
+        ],
+        "query": [
+          0,
+          4277009102,
+          0
+        ],
+        "action_after": [
+          18,
+          "fixture handler",
+          0,
+          0,
+          0,
+          0
+        ],
+        "old_copyout_bytes": 32,
+        "disposition_changed": true,
+        "guards_verified": true,
+        "handler_count": 1,
+        "child_reaped_in_handler": false,
+        "frame": {
+          "form": "sigcontext",
+          "regmask": 4294967295,
+          "greg_offset": 16,
+          "greg_bytes": 8,
+          "greg_count": 32,
+          "fp_offset": 272,
+          "fp_csr_offset": 532,
+          "fp_present": false,
+          "stack_bytes": 920,
+          "alignment": 8,
+          "saved_mask": [
+            16384,
+            0,
+            0,
+            0
+          ],
+          "active_mask": [
+            16384,
+            0,
+            0,
+            0
+          ],
+          "handler_action": [
+            18,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "nocldstop_retained": true
+      },
+      "native_sha256": "38b2dc06cfa9ba95713b420b4678d47ec9f77e999f0da8280d9a7a78eb66c75e",
+      "native": {
+        "name": "o32-indirect-child-signal",
+        "identity": 0,
+        "kind": 2,
+        "registration": [
+          0,
+          4277009102,
+          0
+        ],
+        "query": [
+          0,
+          4277009102,
+          0
+        ],
+        "action_after": [
+          18,
+          "fixture handler",
+          0,
+          0,
+          0,
+          0
+        ],
+        "old_copyout_bytes": 32,
+        "disposition_changed": true,
+        "guards_verified": true,
+        "handler_count": 1,
+        "child_reaped_in_handler": false,
+        "frame": {
+          "form": "sigcontext",
+          "regmask": 4294967295,
+          "greg_offset": 16,
+          "greg_bytes": 8,
+          "greg_count": 32,
+          "fp_offset": 272,
+          "fp_csr_offset": 532,
+          "fp_present": false,
+          "stack_bytes": 1024,
+          "alignment": 8,
+          "saved_mask": [
+            16384,
+            0,
+            0,
+            0
+          ],
+          "active_mask": [
+            16384,
+            0,
+            0,
+            0
+          ],
+          "handler_action": [
+            18,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "nocldstop_retained": true
+      }
+    },
+    "o32-indirect-child-signal-1": {
+      "reference_sha256": "be3f15d5cc1d11e4dcddd5d36d532d8dc98dbdc195f81476f353f368fffbea7e",
+      "reference": {
+        "name": "o32-indirect-child-signal",
+        "identity": 1234,
+        "kind": 2,
+        "registration": [
+          0,
+          4277009102,
+          0
+        ],
+        "query": [
+          0,
+          4277009102,
+          0
+        ],
+        "action_after": [
+          18,
+          "fixture handler",
+          0,
+          0,
+          0,
+          0
+        ],
+        "old_copyout_bytes": 32,
+        "disposition_changed": true,
+        "guards_verified": true,
+        "handler_count": 1,
+        "child_reaped_in_handler": false,
+        "frame": {
+          "form": "sigcontext",
+          "regmask": 4294967295,
+          "greg_offset": 16,
+          "greg_bytes": 8,
+          "greg_count": 32,
+          "fp_offset": 272,
+          "fp_csr_offset": 532,
+          "fp_present": false,
+          "stack_bytes": 920,
+          "alignment": 8,
+          "saved_mask": [
+            16384,
+            0,
+            0,
+            0
+          ],
+          "active_mask": [
+            16384,
+            0,
+            0,
+            0
+          ],
+          "handler_action": [
+            18,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "nocldstop_retained": true
+      },
+      "native_sha256": "bcea316d86644d3f296ebfb3699f2cba0a6d7f0762372d9e20c464efecd1bc52",
+      "native": {
+        "name": "o32-indirect-child-signal",
+        "identity": 1234,
+        "kind": 2,
+        "registration": [
+          0,
+          4277009102,
+          0
+        ],
+        "query": [
+          0,
+          4277009102,
+          0
+        ],
+        "action_after": [
+          18,
+          "fixture handler",
+          0,
+          0,
+          0,
+          0
+        ],
+        "old_copyout_bytes": 32,
+        "disposition_changed": true,
+        "guards_verified": true,
+        "handler_count": 1,
+        "child_reaped_in_handler": false,
+        "frame": {
+          "form": "sigcontext",
+          "regmask": 4294967295,
+          "greg_offset": 16,
+          "greg_bytes": 8,
+          "greg_count": 32,
+          "fp_offset": 272,
+          "fp_csr_offset": 532,
+          "fp_present": false,
+          "stack_bytes": 1024,
+          "alignment": 8,
+          "saved_mask": [
+            16384,
+            0,
+            0,
+            0
+          ],
+          "active_mask": [
+            16384,
+            0,
+            0,
+            0
+          ],
+          "handler_action": [
+            18,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "nocldstop_retained": true
+      }
+    },
+    "n32-direct-winsize-0": {
+      "reference_sha256": "5bcc409aef1c08f16517e8a994cb378a1c4264f26e9cb2151a5b7aa5302320ce",
+      "observations": [
+        [
+          1,
+          0,
+          0,
+          287454020,
+          0,
+          0,
+          1432778632,
+          0
+        ],
+        [
+          2,
+          0,
+          0,
+          287454020,
+          2031713,
+          50856401,
+          1432778632,
+          0
+        ],
+        [
+          3,
+          0,
+          0,
+          287454020,
+          2031713,
+          50856401,
+          1432778632,
+          0
+        ],
+        [
+          4,
+          0,
+          0,
+          287454020,
+          0,
+          0,
+          1432778632,
+          0
+        ],
+        [
+          5,
+          0,
+          0,
+          287454020,
+          0,
+          0,
+          1432778632,
+          0
+        ],
+        [
+          6,
+          0,
+          0,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          7,
+          0,
+          0,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          8,
+          1,
+          9,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          9,
+          1,
+          9,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          10,
+          1,
+          9,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          11,
+          1,
+          9,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          12,
+          1,
+          25,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          13,
+          1,
+          25,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          14,
+          1,
+          22,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          15,
+          1,
+          22,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          16,
+          1,
+          25,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          17,
+          1,
+          25,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          18,
+          1,
+          22,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          19,
+          1,
+          22,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          20,
+          1,
+          14,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          21,
+          1,
+          14,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          22,
+          1,
+          14,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          23,
+          1,
+          14,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          24,
+          0,
+          0,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          25,
+          0,
+          0,
+          2785017855,
+          4294967295,
+          4289045925,
+          1432778632,
+          0
+        ],
+        [
+          26,
+          1,
+          14,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          2779096485
+        ],
+        [
+          27,
+          1,
+          14,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          28,
+          0,
+          0,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          29,
+          1,
+          14,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          30,
+          0,
+          0,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          31,
+          0,
+          0,
+          287454020,
+          0,
+          0,
+          1432778632,
+          0
+        ]
+      ],
+      "native_sha256": "5bcc409aef1c08f16517e8a994cb378a1c4264f26e9cb2151a5b7aa5302320ce"
+    },
+    "n32-direct-winsize-1": {
+      "reference_sha256": "5bcc409aef1c08f16517e8a994cb378a1c4264f26e9cb2151a5b7aa5302320ce",
+      "observations": [
+        [
+          1,
+          0,
+          0,
+          287454020,
+          0,
+          0,
+          1432778632,
+          0
+        ],
+        [
+          2,
+          0,
+          0,
+          287454020,
+          2031713,
+          50856401,
+          1432778632,
+          0
+        ],
+        [
+          3,
+          0,
+          0,
+          287454020,
+          2031713,
+          50856401,
+          1432778632,
+          0
+        ],
+        [
+          4,
+          0,
+          0,
+          287454020,
+          0,
+          0,
+          1432778632,
+          0
+        ],
+        [
+          5,
+          0,
+          0,
+          287454020,
+          0,
+          0,
+          1432778632,
+          0
+        ],
+        [
+          6,
+          0,
+          0,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          7,
+          0,
+          0,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          8,
+          1,
+          9,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          9,
+          1,
+          9,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          10,
+          1,
+          9,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          11,
+          1,
+          9,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          12,
+          1,
+          25,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          13,
+          1,
+          25,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          14,
+          1,
+          22,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          15,
+          1,
+          22,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          16,
+          1,
+          25,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          17,
+          1,
+          25,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          18,
+          1,
+          22,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          19,
+          1,
+          22,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          20,
+          1,
+          14,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          21,
+          1,
+          14,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          22,
+          1,
+          14,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          23,
+          1,
+          14,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          24,
+          0,
+          0,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          25,
+          0,
+          0,
+          2785017855,
+          4294967295,
+          4289045925,
+          1432778632,
+          0
+        ],
+        [
+          26,
+          1,
+          14,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          2779096485
+        ],
+        [
+          27,
+          1,
+          14,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          28,
+          0,
+          0,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          29,
+          1,
+          14,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          30,
+          0,
+          0,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          31,
+          0,
+          0,
+          287454020,
+          0,
+          0,
+          1432778632,
+          0
+        ]
+      ],
+      "native_sha256": "5bcc409aef1c08f16517e8a994cb378a1c4264f26e9cb2151a5b7aa5302320ce"
+    },
+    "n32-direct-child-legacy-0": {
+      "reference_sha256": "faeafd6919b224444bc70304e2b5803af80af2fed93082a07a9c2d525cf2c7c8",
+      "reference": {
+        "name": "n32-direct-child-legacy",
+        "identity": 0,
+        "kind": 2,
+        "registration": [
+          0,
+          4277009102,
+          0
+        ],
+        "query": [
+          0,
+          4277009102,
+          0
+        ],
+        "action_after": [
+          0,
+          "fixture handler",
+          0,
+          0,
+          0,
+          0
+        ],
+        "old_copyout_bytes": 32,
+        "disposition_changed": true,
+        "guards_verified": true,
+        "handler_count": 1,
+        "child_reaped_in_handler": false,
+        "frame": {
+          "form": "sigcontext",
+          "regmask": 4294967295,
+          "greg_offset": 16,
+          "greg_bytes": 8,
+          "greg_count": 32,
+          "fp_offset": 272,
+          "fp_csr_offset": 532,
+          "fp_present": false,
+          "stack_bytes": 928,
+          "alignment": 16,
+          "saved_mask": [
+            16384,
+            0,
+            0,
+            0
+          ],
+          "active_mask": [
+            147456,
+            0,
+            0,
+            0
+          ],
+          "handler_action": [
+            0,
+            "fixture handler",
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "nocldstop_retained": true
+      },
+      "native_sha256": "92dfc0bb38d999f6b25e4cc5e7231bbb0b208d10a0f16529da5662071d043b51",
+      "native": {
+        "name": "n32-direct-child-legacy",
+        "identity": 0,
+        "kind": 2,
+        "registration": [
+          0,
+          4277009102,
+          0
+        ],
+        "query": [
+          0,
+          4277009102,
+          0
+        ],
+        "action_after": [
+          0,
+          "fixture handler",
+          0,
+          0,
+          0,
+          0
+        ],
+        "old_copyout_bytes": 32,
+        "disposition_changed": true,
+        "guards_verified": true,
+        "handler_count": 1,
+        "child_reaped_in_handler": false,
+        "frame": {
+          "form": "sigcontext",
+          "regmask": 4294967295,
+          "greg_offset": 16,
+          "greg_bytes": 8,
+          "greg_count": 32,
+          "fp_offset": 272,
+          "fp_csr_offset": 532,
+          "fp_present": false,
+          "stack_bytes": 1024,
+          "alignment": 16,
+          "saved_mask": [
+            16384,
+            0,
+            0,
+            0
+          ],
+          "active_mask": [
+            147456,
+            0,
+            0,
+            0
+          ],
+          "handler_action": [
+            0,
+            "fixture handler",
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "nocldstop_retained": true
+      }
+    },
+    "n32-direct-child-legacy-1": {
+      "reference_sha256": "ef4f85926b1347918251f2b47f21f0f1dbfc49056c3dae3c73408405e927d467",
+      "reference": {
+        "name": "n32-direct-child-legacy",
+        "identity": 1234,
+        "kind": 2,
+        "registration": [
+          0,
+          4277009102,
+          0
+        ],
+        "query": [
+          0,
+          4277009102,
+          0
+        ],
+        "action_after": [
+          0,
+          "fixture handler",
+          0,
+          0,
+          0,
+          0
+        ],
+        "old_copyout_bytes": 32,
+        "disposition_changed": true,
+        "guards_verified": true,
+        "handler_count": 1,
+        "child_reaped_in_handler": false,
+        "frame": {
+          "form": "sigcontext",
+          "regmask": 4294967295,
+          "greg_offset": 16,
+          "greg_bytes": 8,
+          "greg_count": 32,
+          "fp_offset": 272,
+          "fp_csr_offset": 532,
+          "fp_present": false,
+          "stack_bytes": 928,
+          "alignment": 16,
+          "saved_mask": [
+            16384,
+            0,
+            0,
+            0
+          ],
+          "active_mask": [
+            147456,
+            0,
+            0,
+            0
+          ],
+          "handler_action": [
+            0,
+            "fixture handler",
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "nocldstop_retained": true
+      },
+      "native_sha256": "030d0d8f22502829914f88ebb14ce40349ec8fee3749c2facd3c7a8cbfdb6926",
+      "native": {
+        "name": "n32-direct-child-legacy",
+        "identity": 1234,
+        "kind": 2,
+        "registration": [
+          0,
+          4277009102,
+          0
+        ],
+        "query": [
+          0,
+          4277009102,
+          0
+        ],
+        "action_after": [
+          0,
+          "fixture handler",
+          0,
+          0,
+          0,
+          0
+        ],
+        "old_copyout_bytes": 32,
+        "disposition_changed": true,
+        "guards_verified": true,
+        "handler_count": 1,
+        "child_reaped_in_handler": false,
+        "frame": {
+          "form": "sigcontext",
+          "regmask": 4294967295,
+          "greg_offset": 16,
+          "greg_bytes": 8,
+          "greg_count": 32,
+          "fp_offset": 272,
+          "fp_csr_offset": 532,
+          "fp_present": false,
+          "stack_bytes": 1024,
+          "alignment": 16,
+          "saved_mask": [
+            16384,
+            0,
+            0,
+            0
+          ],
+          "active_mask": [
+            147456,
+            0,
+            0,
+            0
+          ],
+          "handler_action": [
+            0,
+            "fixture handler",
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "nocldstop_retained": true
+      }
+    },
+    "n32-direct-child-siginfo-0": {
+      "reference_sha256": "9f5c303eda095bcb5c0189e6bc0a218d26f4b28b129aff3c24e70cd7bf950b67",
+      "reference": {
+        "name": "n32-direct-child-siginfo",
+        "identity": 0,
+        "kind": 2,
+        "registration": [
+          0,
+          4277009102,
+          0
+        ],
+        "query": [
+          0,
+          4277009102,
+          0
+        ],
+        "action_after": [
+          8,
+          "fixture handler",
+          0,
+          0,
+          0,
+          0
+        ],
+        "old_copyout_bytes": 32,
+        "disposition_changed": true,
+        "guards_verified": true,
+        "handler_count": 1,
+        "child_reaped_in_handler": false,
+        "frame": {
+          "form": "ucontext",
+          "flags": 7,
+          "greg_offset": 40,
+          "greg_bytes": 8,
+          "greg_count": 37,
+          "fp_offset": 336,
+          "fp_csr_offset": 592,
+          "siginfo_offset": 800,
+          "stack_bytes": 992,
+          "alignment": 16,
+          "saved_mask": [
+            16384,
+            0,
+            0,
+            0
+          ],
+          "active_mask": [
+            147456,
+            0,
+            0,
+            0
+          ],
+          "handler_action": [
+            8,
+            "fixture handler",
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "nocldstop_retained": true
+      },
+      "native_sha256": "61ad93c1719ea650a552980ad87e90678fce0e1a958d9ea2b84f7a1497f45061",
+      "native": {
+        "name": "n32-direct-child-siginfo",
+        "identity": 0,
+        "kind": 2,
+        "registration": [
+          0,
+          4277009102,
+          0
+        ],
+        "query": [
+          0,
+          4277009102,
+          0
+        ],
+        "action_after": [
+          8,
+          "fixture handler",
+          0,
+          0,
+          0,
+          0
+        ],
+        "old_copyout_bytes": 32,
+        "disposition_changed": true,
+        "guards_verified": true,
+        "handler_count": 1,
+        "child_reaped_in_handler": false,
+        "frame": {
+          "form": "ucontext",
+          "flags": 7,
+          "greg_offset": 40,
+          "greg_bytes": 8,
+          "greg_count": 37,
+          "fp_offset": 336,
+          "fp_csr_offset": 592,
+          "siginfo_offset": 800,
+          "stack_bytes": 1024,
+          "alignment": 16,
+          "saved_mask": [
+            16384,
+            0,
+            0,
+            0
+          ],
+          "active_mask": [
+            147456,
+            0,
+            0,
+            0
+          ],
+          "handler_action": [
+            8,
+            "fixture handler",
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "nocldstop_retained": true
+      }
+    },
+    "n32-direct-child-siginfo-1": {
+      "reference_sha256": "12120ecbe0ec6b4c5b262213c524977632b3652e94b036a4b0c6bde7c990c367",
+      "reference": {
+        "name": "n32-direct-child-siginfo",
+        "identity": 1234,
+        "kind": 2,
+        "registration": [
+          0,
+          4277009102,
+          0
+        ],
+        "query": [
+          0,
+          4277009102,
+          0
+        ],
+        "action_after": [
+          8,
+          "fixture handler",
+          0,
+          0,
+          0,
+          0
+        ],
+        "old_copyout_bytes": 32,
+        "disposition_changed": true,
+        "guards_verified": true,
+        "handler_count": 1,
+        "child_reaped_in_handler": false,
+        "frame": {
+          "form": "ucontext",
+          "flags": 7,
+          "greg_offset": 40,
+          "greg_bytes": 8,
+          "greg_count": 37,
+          "fp_offset": 336,
+          "fp_csr_offset": 592,
+          "siginfo_offset": 800,
+          "stack_bytes": 992,
+          "alignment": 16,
+          "saved_mask": [
+            16384,
+            0,
+            0,
+            0
+          ],
+          "active_mask": [
+            147456,
+            0,
+            0,
+            0
+          ],
+          "handler_action": [
+            8,
+            "fixture handler",
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "nocldstop_retained": true
+      },
+      "native_sha256": "c3905009d0e7524a9eb3a84662cc46bae04cda0558507fd4722d18596736d0fd",
+      "native": {
+        "name": "n32-direct-child-siginfo",
+        "identity": 1234,
+        "kind": 2,
+        "registration": [
+          0,
+          4277009102,
+          0
+        ],
+        "query": [
+          0,
+          4277009102,
+          0
+        ],
+        "action_after": [
+          8,
+          "fixture handler",
+          0,
+          0,
+          0,
+          0
+        ],
+        "old_copyout_bytes": 32,
+        "disposition_changed": true,
+        "guards_verified": true,
+        "handler_count": 1,
+        "child_reaped_in_handler": false,
+        "frame": {
+          "form": "ucontext",
+          "flags": 7,
+          "greg_offset": 40,
+          "greg_bytes": 8,
+          "greg_count": 37,
+          "fp_offset": 336,
+          "fp_csr_offset": 592,
+          "siginfo_offset": 800,
+          "stack_bytes": 1024,
+          "alignment": 16,
+          "saved_mask": [
+            16384,
+            0,
+            0,
+            0
+          ],
+          "active_mask": [
+            147456,
+            0,
+            0,
+            0
+          ],
+          "handler_action": [
+            8,
+            "fixture handler",
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "nocldstop_retained": true
+      }
+    },
+    "n32-direct-child-signal-0": {
+      "reference_sha256": "8bffe62b4654fddc4e064f5d6d6143a6ef4b68036a04571fd7eb6f38a2d503f9",
+      "reference": {
+        "name": "n32-direct-child-signal",
+        "identity": 0,
+        "kind": 2,
+        "registration": [
+          0,
+          4277009102,
+          0
+        ],
+        "query": [
+          0,
+          4277009102,
+          0
+        ],
+        "action_after": [
+          18,
+          "fixture handler",
+          0,
+          0,
+          0,
+          0
+        ],
+        "old_copyout_bytes": 32,
+        "disposition_changed": true,
+        "guards_verified": true,
+        "handler_count": 1,
+        "child_reaped_in_handler": false,
+        "frame": {
+          "form": "sigcontext",
+          "regmask": 4294967295,
+          "greg_offset": 16,
+          "greg_bytes": 8,
+          "greg_count": 32,
+          "fp_offset": 272,
+          "fp_csr_offset": 532,
+          "fp_present": false,
+          "stack_bytes": 928,
+          "alignment": 16,
+          "saved_mask": [
+            16384,
+            0,
+            0,
+            0
+          ],
+          "active_mask": [
+            16384,
+            0,
+            0,
+            0
+          ],
+          "handler_action": [
+            18,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "nocldstop_retained": true
+      },
+      "native_sha256": "7d4aa4a061262ba646b91d11b451e46dc5c47d1463bd603ab53ac0e4f6fd4220",
+      "native": {
+        "name": "n32-direct-child-signal",
+        "identity": 0,
+        "kind": 2,
+        "registration": [
+          0,
+          4277009102,
+          0
+        ],
+        "query": [
+          0,
+          4277009102,
+          0
+        ],
+        "action_after": [
+          18,
+          "fixture handler",
+          0,
+          0,
+          0,
+          0
+        ],
+        "old_copyout_bytes": 32,
+        "disposition_changed": true,
+        "guards_verified": true,
+        "handler_count": 1,
+        "child_reaped_in_handler": false,
+        "frame": {
+          "form": "sigcontext",
+          "regmask": 4294967295,
+          "greg_offset": 16,
+          "greg_bytes": 8,
+          "greg_count": 32,
+          "fp_offset": 272,
+          "fp_csr_offset": 532,
+          "fp_present": false,
+          "stack_bytes": 1024,
+          "alignment": 16,
+          "saved_mask": [
+            16384,
+            0,
+            0,
+            0
+          ],
+          "active_mask": [
+            16384,
+            0,
+            0,
+            0
+          ],
+          "handler_action": [
+            18,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "nocldstop_retained": true
+      }
+    },
+    "n32-direct-child-signal-1": {
+      "reference_sha256": "720d9857e09c48eec60caebaf6204bfbb9a3e193cb09f6a27bb762c99bb51e6c",
+      "reference": {
+        "name": "n32-direct-child-signal",
+        "identity": 1234,
+        "kind": 2,
+        "registration": [
+          0,
+          4277009102,
+          0
+        ],
+        "query": [
+          0,
+          4277009102,
+          0
+        ],
+        "action_after": [
+          18,
+          "fixture handler",
+          0,
+          0,
+          0,
+          0
+        ],
+        "old_copyout_bytes": 32,
+        "disposition_changed": true,
+        "guards_verified": true,
+        "handler_count": 1,
+        "child_reaped_in_handler": false,
+        "frame": {
+          "form": "sigcontext",
+          "regmask": 4294967295,
+          "greg_offset": 16,
+          "greg_bytes": 8,
+          "greg_count": 32,
+          "fp_offset": 272,
+          "fp_csr_offset": 532,
+          "fp_present": false,
+          "stack_bytes": 928,
+          "alignment": 16,
+          "saved_mask": [
+            16384,
+            0,
+            0,
+            0
+          ],
+          "active_mask": [
+            16384,
+            0,
+            0,
+            0
+          ],
+          "handler_action": [
+            18,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "nocldstop_retained": true
+      },
+      "native_sha256": "d7291ee769eda644a943f6f85222071a51c58876766af9a6acdb20fa5faaae9b",
+      "native": {
+        "name": "n32-direct-child-signal",
+        "identity": 1234,
+        "kind": 2,
+        "registration": [
+          0,
+          4277009102,
+          0
+        ],
+        "query": [
+          0,
+          4277009102,
+          0
+        ],
+        "action_after": [
+          18,
+          "fixture handler",
+          0,
+          0,
+          0,
+          0
+        ],
+        "old_copyout_bytes": 32,
+        "disposition_changed": true,
+        "guards_verified": true,
+        "handler_count": 1,
+        "child_reaped_in_handler": false,
+        "frame": {
+          "form": "sigcontext",
+          "regmask": 4294967295,
+          "greg_offset": 16,
+          "greg_bytes": 8,
+          "greg_count": 32,
+          "fp_offset": 272,
+          "fp_csr_offset": 532,
+          "fp_present": false,
+          "stack_bytes": 1024,
+          "alignment": 16,
+          "saved_mask": [
+            16384,
+            0,
+            0,
+            0
+          ],
+          "active_mask": [
+            16384,
+            0,
+            0,
+            0
+          ],
+          "handler_action": [
+            18,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "nocldstop_retained": true
+      }
+    },
+    "n32-indirect-winsize-0": {
+      "reference_sha256": "5bcc409aef1c08f16517e8a994cb378a1c4264f26e9cb2151a5b7aa5302320ce",
+      "observations": [
+        [
+          1,
+          0,
+          0,
+          287454020,
+          0,
+          0,
+          1432778632,
+          0
+        ],
+        [
+          2,
+          0,
+          0,
+          287454020,
+          2031713,
+          50856401,
+          1432778632,
+          0
+        ],
+        [
+          3,
+          0,
+          0,
+          287454020,
+          2031713,
+          50856401,
+          1432778632,
+          0
+        ],
+        [
+          4,
+          0,
+          0,
+          287454020,
+          0,
+          0,
+          1432778632,
+          0
+        ],
+        [
+          5,
+          0,
+          0,
+          287454020,
+          0,
+          0,
+          1432778632,
+          0
+        ],
+        [
+          6,
+          0,
+          0,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          7,
+          0,
+          0,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          8,
+          1,
+          9,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          9,
+          1,
+          9,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          10,
+          1,
+          9,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          11,
+          1,
+          9,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          12,
+          1,
+          25,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          13,
+          1,
+          25,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          14,
+          1,
+          22,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          15,
+          1,
+          22,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          16,
+          1,
+          25,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          17,
+          1,
+          25,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          18,
+          1,
+          22,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          19,
+          1,
+          22,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          20,
+          1,
+          14,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          21,
+          1,
+          14,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          22,
+          1,
+          14,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          23,
+          1,
+          14,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          24,
+          0,
+          0,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          25,
+          0,
+          0,
+          2785017855,
+          4294967295,
+          4289045925,
+          1432778632,
+          0
+        ],
+        [
+          26,
+          1,
+          14,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          2779096485
+        ],
+        [
+          27,
+          1,
+          14,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          28,
+          0,
+          0,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          29,
+          1,
+          14,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          30,
+          0,
+          0,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          31,
+          0,
+          0,
+          287454020,
+          0,
+          0,
+          1432778632,
+          0
+        ]
+      ],
+      "native_sha256": "5bcc409aef1c08f16517e8a994cb378a1c4264f26e9cb2151a5b7aa5302320ce"
+    },
+    "n32-indirect-winsize-1": {
+      "reference_sha256": "5bcc409aef1c08f16517e8a994cb378a1c4264f26e9cb2151a5b7aa5302320ce",
+      "observations": [
+        [
+          1,
+          0,
+          0,
+          287454020,
+          0,
+          0,
+          1432778632,
+          0
+        ],
+        [
+          2,
+          0,
+          0,
+          287454020,
+          2031713,
+          50856401,
+          1432778632,
+          0
+        ],
+        [
+          3,
+          0,
+          0,
+          287454020,
+          2031713,
+          50856401,
+          1432778632,
+          0
+        ],
+        [
+          4,
+          0,
+          0,
+          287454020,
+          0,
+          0,
+          1432778632,
+          0
+        ],
+        [
+          5,
+          0,
+          0,
+          287454020,
+          0,
+          0,
+          1432778632,
+          0
+        ],
+        [
+          6,
+          0,
+          0,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          7,
+          0,
+          0,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          8,
+          1,
+          9,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          9,
+          1,
+          9,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          10,
+          1,
+          9,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          11,
+          1,
+          9,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          12,
+          1,
+          25,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          13,
+          1,
+          25,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          14,
+          1,
+          22,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          15,
+          1,
+          22,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          16,
+          1,
+          25,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          17,
+          1,
+          25,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          18,
+          1,
+          22,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          19,
+          1,
+          22,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          20,
+          1,
+          14,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          21,
+          1,
+          14,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          22,
+          1,
+          14,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          23,
+          1,
+          14,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          24,
+          0,
+          0,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          25,
+          0,
+          0,
+          2785017855,
+          4294967295,
+          4289045925,
+          1432778632,
+          0
+        ],
+        [
+          26,
+          1,
+          14,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          2779096485
+        ],
+        [
+          27,
+          1,
+          14,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          28,
+          0,
+          0,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          29,
+          1,
+          14,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          30,
+          0,
+          0,
+          287454020,
+          4294967295,
+          4294967295,
+          1432778632,
+          0
+        ],
+        [
+          31,
+          0,
+          0,
+          287454020,
+          0,
+          0,
+          1432778632,
+          0
+        ]
+      ],
+      "native_sha256": "5bcc409aef1c08f16517e8a994cb378a1c4264f26e9cb2151a5b7aa5302320ce"
+    },
+    "n32-indirect-child-legacy-0": {
+      "reference_sha256": "e1870396b4cbecd05194637683eaf004e67ec9cf28846718b1a566d5a4fdb32d",
+      "reference": {
+        "name": "n32-indirect-child-legacy",
+        "identity": 0,
+        "kind": 2,
+        "registration": [
+          0,
+          4277009102,
+          0
+        ],
+        "query": [
+          0,
+          4277009102,
+          0
+        ],
+        "action_after": [
+          0,
+          "fixture handler",
+          0,
+          0,
+          0,
+          0
+        ],
+        "old_copyout_bytes": 32,
+        "disposition_changed": true,
+        "guards_verified": true,
+        "handler_count": 1,
+        "child_reaped_in_handler": false,
+        "frame": {
+          "form": "sigcontext",
+          "regmask": 4294967295,
+          "greg_offset": 16,
+          "greg_bytes": 8,
+          "greg_count": 32,
+          "fp_offset": 272,
+          "fp_csr_offset": 532,
+          "fp_present": false,
+          "stack_bytes": 928,
+          "alignment": 16,
+          "saved_mask": [
+            16384,
+            0,
+            0,
+            0
+          ],
+          "active_mask": [
+            147456,
+            0,
+            0,
+            0
+          ],
+          "handler_action": [
+            0,
+            "fixture handler",
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "nocldstop_retained": true
+      },
+      "native_sha256": "2ec3e7d5546bc821af8e0d7794017e00872b195e23f2f98e8c7fa3d8ea5ac7ef",
+      "native": {
+        "name": "n32-indirect-child-legacy",
+        "identity": 0,
+        "kind": 2,
+        "registration": [
+          0,
+          4277009102,
+          0
+        ],
+        "query": [
+          0,
+          4277009102,
+          0
+        ],
+        "action_after": [
+          0,
+          "fixture handler",
+          0,
+          0,
+          0,
+          0
+        ],
+        "old_copyout_bytes": 32,
+        "disposition_changed": true,
+        "guards_verified": true,
+        "handler_count": 1,
+        "child_reaped_in_handler": false,
+        "frame": {
+          "form": "sigcontext",
+          "regmask": 4294967295,
+          "greg_offset": 16,
+          "greg_bytes": 8,
+          "greg_count": 32,
+          "fp_offset": 272,
+          "fp_csr_offset": 532,
+          "fp_present": false,
+          "stack_bytes": 1024,
+          "alignment": 16,
+          "saved_mask": [
+            16384,
+            0,
+            0,
+            0
+          ],
+          "active_mask": [
+            147456,
+            0,
+            0,
+            0
+          ],
+          "handler_action": [
+            0,
+            "fixture handler",
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "nocldstop_retained": true
+      }
+    },
+    "n32-indirect-child-legacy-1": {
+      "reference_sha256": "b74c6c234a0ae6d66171753329beeb3721c9f87f006a9fbded758b3879460dfb",
+      "reference": {
+        "name": "n32-indirect-child-legacy",
+        "identity": 1234,
+        "kind": 2,
+        "registration": [
+          0,
+          4277009102,
+          0
+        ],
+        "query": [
+          0,
+          4277009102,
+          0
+        ],
+        "action_after": [
+          0,
+          "fixture handler",
+          0,
+          0,
+          0,
+          0
+        ],
+        "old_copyout_bytes": 32,
+        "disposition_changed": true,
+        "guards_verified": true,
+        "handler_count": 1,
+        "child_reaped_in_handler": false,
+        "frame": {
+          "form": "sigcontext",
+          "regmask": 4294967295,
+          "greg_offset": 16,
+          "greg_bytes": 8,
+          "greg_count": 32,
+          "fp_offset": 272,
+          "fp_csr_offset": 532,
+          "fp_present": false,
+          "stack_bytes": 928,
+          "alignment": 16,
+          "saved_mask": [
+            16384,
+            0,
+            0,
+            0
+          ],
+          "active_mask": [
+            147456,
+            0,
+            0,
+            0
+          ],
+          "handler_action": [
+            0,
+            "fixture handler",
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "nocldstop_retained": true
+      },
+      "native_sha256": "fcae2d2f9814fb22f286bcd638f8d0b913226e651d96c444c30edffb15e7bf18",
+      "native": {
+        "name": "n32-indirect-child-legacy",
+        "identity": 1234,
+        "kind": 2,
+        "registration": [
+          0,
+          4277009102,
+          0
+        ],
+        "query": [
+          0,
+          4277009102,
+          0
+        ],
+        "action_after": [
+          0,
+          "fixture handler",
+          0,
+          0,
+          0,
+          0
+        ],
+        "old_copyout_bytes": 32,
+        "disposition_changed": true,
+        "guards_verified": true,
+        "handler_count": 1,
+        "child_reaped_in_handler": false,
+        "frame": {
+          "form": "sigcontext",
+          "regmask": 4294967295,
+          "greg_offset": 16,
+          "greg_bytes": 8,
+          "greg_count": 32,
+          "fp_offset": 272,
+          "fp_csr_offset": 532,
+          "fp_present": false,
+          "stack_bytes": 1024,
+          "alignment": 16,
+          "saved_mask": [
+            16384,
+            0,
+            0,
+            0
+          ],
+          "active_mask": [
+            147456,
+            0,
+            0,
+            0
+          ],
+          "handler_action": [
+            0,
+            "fixture handler",
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "nocldstop_retained": true
+      }
+    },
+    "n32-indirect-child-siginfo-0": {
+      "reference_sha256": "fc725861cba8227a71c9c156957de69d30dd35d9436f1073f60b82d486c54de0",
+      "reference": {
+        "name": "n32-indirect-child-siginfo",
+        "identity": 0,
+        "kind": 2,
+        "registration": [
+          0,
+          4277009102,
+          0
+        ],
+        "query": [
+          0,
+          4277009102,
+          0
+        ],
+        "action_after": [
+          8,
+          "fixture handler",
+          0,
+          0,
+          0,
+          0
+        ],
+        "old_copyout_bytes": 32,
+        "disposition_changed": true,
+        "guards_verified": true,
+        "handler_count": 1,
+        "child_reaped_in_handler": false,
+        "frame": {
+          "form": "ucontext",
+          "flags": 7,
+          "greg_offset": 40,
+          "greg_bytes": 8,
+          "greg_count": 37,
+          "fp_offset": 336,
+          "fp_csr_offset": 592,
+          "siginfo_offset": 800,
+          "stack_bytes": 992,
+          "alignment": 16,
+          "saved_mask": [
+            16384,
+            0,
+            0,
+            0
+          ],
+          "active_mask": [
+            147456,
+            0,
+            0,
+            0
+          ],
+          "handler_action": [
+            8,
+            "fixture handler",
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "nocldstop_retained": true
+      },
+      "native_sha256": "fc5ce3ea1c97307c448ca5d5385c31a0965201f18b7f958f9279fad6b8264229",
+      "native": {
+        "name": "n32-indirect-child-siginfo",
+        "identity": 0,
+        "kind": 2,
+        "registration": [
+          0,
+          4277009102,
+          0
+        ],
+        "query": [
+          0,
+          4277009102,
+          0
+        ],
+        "action_after": [
+          8,
+          "fixture handler",
+          0,
+          0,
+          0,
+          0
+        ],
+        "old_copyout_bytes": 32,
+        "disposition_changed": true,
+        "guards_verified": true,
+        "handler_count": 1,
+        "child_reaped_in_handler": false,
+        "frame": {
+          "form": "ucontext",
+          "flags": 7,
+          "greg_offset": 40,
+          "greg_bytes": 8,
+          "greg_count": 37,
+          "fp_offset": 336,
+          "fp_csr_offset": 592,
+          "siginfo_offset": 800,
+          "stack_bytes": 1024,
+          "alignment": 16,
+          "saved_mask": [
+            16384,
+            0,
+            0,
+            0
+          ],
+          "active_mask": [
+            147456,
+            0,
+            0,
+            0
+          ],
+          "handler_action": [
+            8,
+            "fixture handler",
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "nocldstop_retained": true
+      }
+    },
+    "n32-indirect-child-siginfo-1": {
+      "reference_sha256": "fa6f5ef174c752d8a23c8e12d4a0be13bb5379493489be14d2ab5754730f361d",
+      "reference": {
+        "name": "n32-indirect-child-siginfo",
+        "identity": 1234,
+        "kind": 2,
+        "registration": [
+          0,
+          4277009102,
+          0
+        ],
+        "query": [
+          0,
+          4277009102,
+          0
+        ],
+        "action_after": [
+          8,
+          "fixture handler",
+          0,
+          0,
+          0,
+          0
+        ],
+        "old_copyout_bytes": 32,
+        "disposition_changed": true,
+        "guards_verified": true,
+        "handler_count": 1,
+        "child_reaped_in_handler": false,
+        "frame": {
+          "form": "ucontext",
+          "flags": 7,
+          "greg_offset": 40,
+          "greg_bytes": 8,
+          "greg_count": 37,
+          "fp_offset": 336,
+          "fp_csr_offset": 592,
+          "siginfo_offset": 800,
+          "stack_bytes": 992,
+          "alignment": 16,
+          "saved_mask": [
+            16384,
+            0,
+            0,
+            0
+          ],
+          "active_mask": [
+            147456,
+            0,
+            0,
+            0
+          ],
+          "handler_action": [
+            8,
+            "fixture handler",
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "nocldstop_retained": true
+      },
+      "native_sha256": "357db88da0c70905a4a4907d4b4cd48a8c498bd362822a1d9fcfca7e89ad2fb3",
+      "native": {
+        "name": "n32-indirect-child-siginfo",
+        "identity": 1234,
+        "kind": 2,
+        "registration": [
+          0,
+          4277009102,
+          0
+        ],
+        "query": [
+          0,
+          4277009102,
+          0
+        ],
+        "action_after": [
+          8,
+          "fixture handler",
+          0,
+          0,
+          0,
+          0
+        ],
+        "old_copyout_bytes": 32,
+        "disposition_changed": true,
+        "guards_verified": true,
+        "handler_count": 1,
+        "child_reaped_in_handler": false,
+        "frame": {
+          "form": "ucontext",
+          "flags": 7,
+          "greg_offset": 40,
+          "greg_bytes": 8,
+          "greg_count": 37,
+          "fp_offset": 336,
+          "fp_csr_offset": 592,
+          "siginfo_offset": 800,
+          "stack_bytes": 1024,
+          "alignment": 16,
+          "saved_mask": [
+            16384,
+            0,
+            0,
+            0
+          ],
+          "active_mask": [
+            147456,
+            0,
+            0,
+            0
+          ],
+          "handler_action": [
+            8,
+            "fixture handler",
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "nocldstop_retained": true
+      }
+    },
+    "n32-indirect-child-signal-0": {
+      "reference_sha256": "9cffea323fe5c01390ad9c12496a22a612450ad5347fcfc2a3a73a27e42ed799",
+      "reference": {
+        "name": "n32-indirect-child-signal",
+        "identity": 0,
+        "kind": 2,
+        "registration": [
+          0,
+          4277009102,
+          0
+        ],
+        "query": [
+          0,
+          4277009102,
+          0
+        ],
+        "action_after": [
+          18,
+          "fixture handler",
+          0,
+          0,
+          0,
+          0
+        ],
+        "old_copyout_bytes": 32,
+        "disposition_changed": true,
+        "guards_verified": true,
+        "handler_count": 1,
+        "child_reaped_in_handler": false,
+        "frame": {
+          "form": "sigcontext",
+          "regmask": 4294967295,
+          "greg_offset": 16,
+          "greg_bytes": 8,
+          "greg_count": 32,
+          "fp_offset": 272,
+          "fp_csr_offset": 532,
+          "fp_present": false,
+          "stack_bytes": 928,
+          "alignment": 16,
+          "saved_mask": [
+            16384,
+            0,
+            0,
+            0
+          ],
+          "active_mask": [
+            16384,
+            0,
+            0,
+            0
+          ],
+          "handler_action": [
+            18,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "nocldstop_retained": true
+      },
+      "native_sha256": "f033c9292758f3d5feb11c89645d5aaa37bc37a8c7427f497ca99f9522749931",
+      "native": {
+        "name": "n32-indirect-child-signal",
+        "identity": 0,
+        "kind": 2,
+        "registration": [
+          0,
+          4277009102,
+          0
+        ],
+        "query": [
+          0,
+          4277009102,
+          0
+        ],
+        "action_after": [
+          18,
+          "fixture handler",
+          0,
+          0,
+          0,
+          0
+        ],
+        "old_copyout_bytes": 32,
+        "disposition_changed": true,
+        "guards_verified": true,
+        "handler_count": 1,
+        "child_reaped_in_handler": false,
+        "frame": {
+          "form": "sigcontext",
+          "regmask": 4294967295,
+          "greg_offset": 16,
+          "greg_bytes": 8,
+          "greg_count": 32,
+          "fp_offset": 272,
+          "fp_csr_offset": 532,
+          "fp_present": false,
+          "stack_bytes": 1024,
+          "alignment": 16,
+          "saved_mask": [
+            16384,
+            0,
+            0,
+            0
+          ],
+          "active_mask": [
+            16384,
+            0,
+            0,
+            0
+          ],
+          "handler_action": [
+            18,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "nocldstop_retained": true
+      }
+    },
+    "n32-indirect-child-signal-1": {
+      "reference_sha256": "8241956c7c92ffeb4c61f0a3fc53631f10fde1098682475be3bb0cf3c2319dc3",
+      "reference": {
+        "name": "n32-indirect-child-signal",
+        "identity": 1234,
+        "kind": 2,
+        "registration": [
+          0,
+          4277009102,
+          0
+        ],
+        "query": [
+          0,
+          4277009102,
+          0
+        ],
+        "action_after": [
+          18,
+          "fixture handler",
+          0,
+          0,
+          0,
+          0
+        ],
+        "old_copyout_bytes": 32,
+        "disposition_changed": true,
+        "guards_verified": true,
+        "handler_count": 1,
+        "child_reaped_in_handler": false,
+        "frame": {
+          "form": "sigcontext",
+          "regmask": 4294967295,
+          "greg_offset": 16,
+          "greg_bytes": 8,
+          "greg_count": 32,
+          "fp_offset": 272,
+          "fp_csr_offset": 532,
+          "fp_present": false,
+          "stack_bytes": 928,
+          "alignment": 16,
+          "saved_mask": [
+            16384,
+            0,
+            0,
+            0
+          ],
+          "active_mask": [
+            16384,
+            0,
+            0,
+            0
+          ],
+          "handler_action": [
+            18,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "nocldstop_retained": true
+      },
+      "native_sha256": "5199c619cf648dcabae1bb8707953a1fb1c449011b54b3650846c3c01be85650",
+      "native": {
+        "name": "n32-indirect-child-signal",
+        "identity": 1234,
+        "kind": 2,
+        "registration": [
+          0,
+          4277009102,
+          0
+        ],
+        "query": [
+          0,
+          4277009102,
+          0
+        ],
+        "action_after": [
+          18,
+          "fixture handler",
+          0,
+          0,
+          0,
+          0
+        ],
+        "old_copyout_bytes": 32,
+        "disposition_changed": true,
+        "guards_verified": true,
+        "handler_count": 1,
+        "child_reaped_in_handler": false,
+        "frame": {
+          "form": "sigcontext",
+          "regmask": 4294967295,
+          "greg_offset": 16,
+          "greg_bytes": 8,
+          "greg_count": 32,
+          "fp_offset": 272,
+          "fp_csr_offset": 532,
+          "fp_present": false,
+          "stack_bytes": 1024,
+          "alignment": 16,
+          "saved_mask": [
+            16384,
+            0,
+            0,
+            0
+          ],
+          "active_mask": [
+            16384,
+            0,
+            0,
+            0
+          ],
+          "handler_action": [
+            18,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "nocldstop_retained": true
+      }
+    }
+  },
+  "reference_environment": {
+    "clean_shutdown": true,
+    "emulator_sha256": "cc6561d0bdfec6ce30d656caf4a6eaee6ffbf622e5348c3b77b73810d5293f56",
+    "firmware_sha256": "333a0b2e39bb828a28a758b6f633ae7290030129dc747297a1be68dc317b86ae",
+    "seed_nvram_sha256": "bcd1c819174de95387d0bb61be7446dd95c9e1ac80a05677e8c8e07e48000c5f",
+    "raw_disk_size": 100663296000,
+    "raw_disk_validation": "Size checked here; SHA-256 established during media intake, not recomputed",
+    "release": "IRIX 6.5.22m",
+    "run": ".work/winterm-cycle/winsize-reference/ci-5an50s0l",
+    "result_sha256": "63de6742734708599dc555e0bfe142bc569e36cccaf4c49042b4e4b3efdd272c",
+    "archive_sha256": "f361802421f9d590565f03ebc88a776e9645bcce0ad944c5b896fad6a1ebe025"
+  },
+  "native_environment": {
+    "run": ".work/xdm-image/prepare/ordinary-3s9w06m4",
+    "boot_kernel_sha256": "260b253f579ca46a50b83e367f95600b54c86756c47f5d9e0f9391251bfd7122",
+    "module_sha256": "e775398868484a306897d9c07ebd85f56d39687e4ebb9357d0c1a53fed198f47",
+    "securelevel": 1,
+    "archive_sha256": "7d1d1d3155afa238a6c5d90450291aff34d428d2d3b44f79d76632f2206b304e",
+    "credential_setup": "Native root/su launcher sets credentials before foreign exec, without foreign capability setters",
+    "clean_shutdown": true
+  },
+  "qualifier_sha256": "c69d96b66b6d5b92e3880db0715618e253044ec1d4e03fe14f1369209b02586a"
+}

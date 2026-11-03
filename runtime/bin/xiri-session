@@ -36,6 +36,11 @@ printf 'SESSION user=%s uid=%s groups=%s home=%s cwd=%s display=%s authority=%s\
     "$user" "$(id -u)" "$(id -G)" "$HOME" "$PWD" "$DISPLAY" "${XAUTHORITY:-default}" >"$job/identity"
 xset +fp "$xiri_fonts"
 xset fp rehash
+# Supply terminal defaults without replacing the login's existing resources.
+resources=${xiri_xresources:-/etc/xiri/Xresources}
+test -r "$resources"
+xrdb -query >"$job/Xresources.previous"
+cat "$resources" "$job/Xresources.previous" | xrdb -merge
 xset s off
 xset -dpms
 xset s reset

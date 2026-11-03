@@ -11,6 +11,16 @@ source/destination mappings, permission adjustments and the SGI catalog
 reference check. Historical installer observations below retain their
 original scope; the installed-image payload is now a separate working path.
 
+The [winterm reliability cycle](results/2026-11-03-winterm-reliability.md)
+reuses the existing libraries, locale data and fonts; it imports no new desktop
+resources. The supplied XWsh wildcard default can select NetBSD's scalable
+IBM Courier face. Native and original Xlib both observe its intermittent
+collapse from 12×21 to 12×2 logical extents. The imported SGI Screen bitmap
+face stays at 8×15 on that same failing X server. The native session's
+`/etc/xiri/Xresources` now selects that exact face for terminal text, while
+preserving existing display resource choices. The underlying Type1 failure
+remains open; it is not an absent IRIX font or a foreign-only metric failure.
+
 The immediate application path now imports already installed software from
 the supplied disk image. The [installed-desktop inventory](results/2026-11-01-irix-installed-desktop.md)
 locates 166 catalog links in 17 tabs, all installed filetype rules/compiled

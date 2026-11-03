@@ -12,7 +12,7 @@ catalog launches and running-icon feedback. Native NetBSD Xorg drives a
 1280×1024 accelerated Newport display. It retains the xmahjongg texture
 correction qualified by the earlier [rendering and interaction checks](docs/results/2026-11-03-newport-xmahjongg.md).
 
-The [current manual CHD](docs/results/2026-11-03-xiri-wheel.md) boots into
+The [current manual CHD](docs/results/2026-11-03-winterm-reliability.md) boots into
 native NetBSD xdm. Log in as **xiritest** with password **xiritest** for the
 IRIX desktop, or **netbsdtest** / **netbsdtest** for standard NetBSD ctwm.
 `netbsdtest` belongs to `wheel` and can run `su -` for a root login shell;
@@ -20,9 +20,14 @@ root's password is empty in this development image.
 These are public development-image credentials. The IRIX session uses UID
 1234 and HOME/cwd `/usr/people/xiritest`; system services start at boot. NetBSD
 loads `compat_irix_o32.kmod` during boot and runs the desktop on a kernel
-without built-in IRIX support. This [kernel/module build](lab/irix-xdm/README.md)
+without built-in IRIX support. The retained [core kernel](lab/irix-xdm/README.md)
 also fixes a native memory-allocation fault found during CHD qualification.
-It still requires our NetBSD fork’s core hooks.
+It still requires our NetBSD fork’s core hooks. The [latest module and shell
+handoff](lab/irix-winterm-reliability/README.md) preserve terminal dimensions,
+deliver resize notifications to foreground jobs and let winterm close normally
+when its shell exits.
+Terminal defaults now select the imported SGI Screen bitmap font, avoiding
+the reproduced collapsed metrics from Xorg's scalable IBM Courier face.
 
 ## Related repositories
 
@@ -80,10 +85,12 @@ Use the `xiri` integration branches for both forks, following the
 
 ## Remaining work
 
-Compatibility is incomplete. Winterm has intermittent startup/font-metric
-quirks; broader graphics operations, Dumpster actions, preferences and session
-persistence need work. GIMP signal registration and xosview statistics remain
-application-specific gaps. The user's broader desktop survey is encouraging,
+Compatibility is incomplete. The underlying Type1 font-metric failure remains
+open; winterm's default now uses a verified SGI bitmap face. Broader graphics operations,
+Dumpster actions, preferences and session persistence need work. GIMP needs
+retesting after the SIGCHLD change; xosview still needs IRIX statistics interfaces.
+Continued-child signal behavior and IRIX nanosleep also remain open.
+The user's broader desktop survey is encouraging,
 but it is not a per-application qualification.
 
 The [module milestone](docs/results/2026-11-03-irix-module.md) follows the

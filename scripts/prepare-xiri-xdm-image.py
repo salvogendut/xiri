@@ -21,6 +21,7 @@ def main():
     parser.add_argument('--seed', type=Path, default=ROOT/'.work/xiri-image/prepared-seed-20261103-module')
     parser.add_argument('--kernel-build',type=Path,default=ROOT/'.work/netbsd-module-build')
     parser.add_argument('--baseline',type=Path,help='install a replacement kernel/module pair from --kernel-build')
+    parser.add_argument('--keep-accounts',action='store_true',help='refresh an existing xdm image without changing accounts or passwords')
     args = parser.parse_args()
     seed = args.seed.resolve()
     origin = json.loads((seed/'image-source.json').read_text())
@@ -103,10 +104,15 @@ def main():
                 build_manifest_sha256=pin['module_build_manifest_sha256'])
         cmd('mkdir -p /root/xdm-image-build && cp -R /cdrom/runtime /root/xdm-image-build/ && '
             'cd /root/xdm-image-build/runtime && make && sh install.sh --enable-xdm',300)
-        cmd('groupadd -g 1235 xiritest-extra && usermod -G xiritest-extra '
-            '-p "$(pwhash -b 6 xiritest)" xiritest && groupadd -g 1236 netbsdtest && '
-            'useradd -m -u 1236 -g netbsdtest -G wheel -d /home/netbsdtest -s /bin/sh '
-            '-p "$(pwhash -b 6 netbsdtest)" netbsdtest')
+        if args.keep_accounts:
+            cmd('test "$(id -u xiritest)" = 1234 && test "$(id -g xiritest)" = 1234 && '
+                'test "$(id -u netbsdtest)" = 1236 && test "$(id -g netbsdtest)" = 1236 && '
+                'id -Gn netbsdtest | tr " " "\\n" | grep -qx wheel')
+        else:
+            cmd('groupadd -g 1235 xiritest-extra && usermod -G xiritest-extra '
+                '-p "$(pwhash -b 6 xiritest)" xiritest && groupadd -g 1236 netbsdtest && '
+                'useradd -m -u 1236 -g netbsdtest -G wheel -d /home/netbsdtest -s /bin/sh '
+                '-p "$(pwhash -b 6 netbsdtest)" netbsdtest')
         cmd('install -o xiritest -g xiritest -m 700 /usr/local/share/xiri/xdm.xsession /usr/people/xiritest/.xsession && '
             'cp /etc/ttys /etc/ttys.before-xdm && '
             "sed '/^ttyE0[[:space:]]/s/[[:space:]]on[[:space:]]/ off /' /etc/ttys.before-xdm >/etc/ttys && "

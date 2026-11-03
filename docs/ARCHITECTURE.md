@@ -282,6 +282,21 @@ The tested invalid-context policy preserves native machine-state checks.
 Actual installer callbacks and native `stat -qd` compatibility remain to
 qualify when installer work resumes. The module/service split is unchanged.
 
+The [winterm reliability work](results/2026-11-03-winterm-reliability.md)
+adds two explicit eight-byte window-size ioctls for native PTY masters and
+slaves. The native tty layer owns sizing and foreground SIGWINCH delivery;
+the shell handoff preserves initialized dimensions while retaining its native
+vnode/controlling-terminal setup. IRIX SIGCHLD's SA_NOCLDSTOP now maps to the
+native flag, allowing xwsh's child-exit handler to register. Continued-child
+notification parity and the observed n32 libc nanosleep call remain open.
+
+Terminal font defaults belong to the native session resources. Both native
+and IRIX Xlib observed Xorg's scalable IBM Courier face collapse to 12×2
+metrics, while the imported SGI Screen bitmap remained 8×15. The session
+loads `/etc/xiri/Xresources` below the login's existing resource values.
+This avoids that face for default terminal text without changing the foreign
+binary or treating the native Type1 failure as a compatibility-module defect.
+
 Keep the IRIX runtime in a distinct tree while making selected user files available consistently to native and compatible processes. The path policy must cover absolute library paths, executable lookup, temporary files, user identities, and desktop configuration.
 
 A compatibility launcher should select the appropriate runtime for IRIX programs and dispatch host-native programs without routing them through IRIX libraries. Define environment and argument handling explicitly. This is needed for a native editor or network client to become a useful part of the preserved desktop.

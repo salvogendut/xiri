@@ -216,6 +216,8 @@ def main(argv=None):
         elif args.action == 'check':
             if manifest.get('session_manager') == 'xdm':
                 command = [sys.executable, root/'scripts/probe-xiri-xdm.py', '--bundle', bundle]
+                if manifest.get('winterm_checks'):
+                    command.append('--winterm')
             else:
                 command = [sys.executable, root/'scripts/probe-xiri-image.py', bundle,
                            '--iris-bin-dir', bundle/'emulator', '--arrange-winterm']

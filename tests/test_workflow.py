@@ -182,13 +182,17 @@ class ArtifactTests(unittest.TestCase):
         (self.root/'config').mkdir()
         (self.root/'config/development.json').write_text(json.dumps(dict(
             schema=1,build_jobs=2,image_pointer='pointer.json')))
-        for manager,probe in [('xdm','probe-xiri-xdm.py --bundle'),('manual','probe-xiri-image.py')]:
+        for manager,probe,winterm in [('xdm','probe-xiri-xdm.py --bundle',False),
+                                     ('xdm','probe-xiri-xdm.py --bundle',True),
+                                     ('manual','probe-xiri-image.py',False)]:
             self.manifest['session_manager']=manager
+            self.manifest['winterm_checks']=winterm
             (self.bundle/'manifest.json').write_text(json.dumps(self.manifest))
             output=io.StringIO()
             with patch('xiri_lab.workflow.ROOT',self.root),redirect_stdout(output):
                 self.assertEqual(main(['check','--dry-run']),0)
             self.assertIn(probe,output.getvalue())
+            self.assertEqual('--winterm' in output.getvalue(),winterm)
 
     def test_build_finds_branch_owner_without_switching_shared_checkout(self):
         repo = self.root/'shared'; owner = self.root/'branch owner'

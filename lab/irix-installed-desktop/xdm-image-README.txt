@@ -43,15 +43,23 @@ Keep the included kernel and module together; they still require our fork.
 Suggested manual checks:
 - Log in as xiritest. In winterm run id -un, echo "$HOME" and pwd.
 - Open Unix Shell from Toolchest and try a second terminal.
+- Run stty size, resize the terminal, and run stty size again. Dimensions
+  should follow the visible character grid. Type exit in the extra terminal;
+  its window should close without ending the desktop.
 - Close the initial xmahjongg, then double-click its Freeware catalog entry.
 - Check running-icon feedback, granite, filesystem/home and Dumpster icons.
 - Log out through both IRIX menus, logging in again between checks.
 - Log in as netbsdtest, use the native terminal/ctwm, then return to xiritest.
 
-Known limits: winterm can start with incorrect font metrics or tiny text;
-resizing is a diagnostic workaround, not a complete repair. It uses NetBSD
-/bin/sh; original IRIX /bin/sh handles catalog command launches. GIMP signal
-registration, xosview statistics, complete Dumpster actions, preferences and
+Terminal defaults use the imported SGI Screen bitmap font (8x15 cells).
+/etc/xiri/Xresources supplies these defaults below existing display resources.
+Known limits: Xorg's scalable IBM Courier face can return collapsed 12x2
+metrics to native and IRIX clients; that underlying Type1 failure remains open.
+Window resizing and normal shell exit are covered by the new checks.
+Winterm uses NetBSD /bin/sh; original IRIX /bin/sh
+handles catalog command launches. GIMP needs retesting after the SIGCHLD fix.
+Continued-child notifications, IRIX nanosleep, xosview statistics,
+complete Dumpster actions, preferences and
 saved-session behavior remain unfinished. A catalog icon does not certify
 the corresponding application. Boot's inherited savecore namelist warnings
 do not prevent boot, but automatic crash-dump collection remains unqualified.

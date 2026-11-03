@@ -20,7 +20,7 @@ install -m 555 "$build/shell-handoff" "$stage/usr/libexec/xiri-shell"
 for name in desktop-clients.sh setup-pty.sh; do install -m 555 "libexec/$name" "$stage/usr/local/libexec/xiri/$name"; done
 ln -snf /bin/sh "$stage/usr/local/libexec/xiri/command-shell"
 for name in xiri_devices xiri_famd; do install -m 555 "rc.d/$name" "$stage/etc/rc.d/$name"; done
-for name in session.conf fam.conf; do
+for name in session.conf fam.conf Xresources; do
     install -m 444 "etc/$name" "$stage/etc/xiri/$name.example"
     test -e "$stage/etc/xiri/$name" || install -m 644 "etc/$name" "$stage/etc/xiri/$name"
 done

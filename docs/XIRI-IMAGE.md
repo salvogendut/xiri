@@ -8,14 +8,16 @@ older reproduction checkpoints. Automated checks never promote their result
 or replace the manual bundle's NVRAM/overlay state.
 
 The current accelerated xdm bundle is
-`.work/images/xiri-netbsd-desktop-20261103-xdm-wheel-v2/`.
-`netbsd-xiri.chd` is an 8 GiB NetBSD disk compressed to 481,227,717 bytes
+`.work/images/xiri-netbsd-desktop-20261103-winterm-v2/`.
+`netbsd-xiri.chd` is an 8 GiB NetBSD disk compressed to 481,236,546 bytes
 (about 459 MiB). Its SHA256 is
-`95eeecc4195dc63e80352b28a522b93da06495ebe95bcb4ce79f0b48b7572693`.
-The [wheel update](results/2026-11-03-xiri-wheel.md) verifies a fresh xdm login
-and `su -` from `netbsdtest`. Full desktop evidence is inherited from its
-preserved `20261103-xdm-v2` parent: the [xdm image cycle](results/2026-11-03-xiri-xdm-image.md)
-records disk boot, both user desktops, rendering and catalog checks. The previous
+`ebecbb0d0c87ae9a58bb58bdc008011cbe1bcea8d4a062a0649f1d7ddf796a65`.
+The [winterm update](results/2026-11-03-winterm-reliability.md) packages terminal
+resize and normal-exit fixes, with fresh disk-boot, xdm, both user desktop,
+rendering and catalog checks. The previous
+`20261103-xdm-wheel-v2` image retains the [wheel-account qualification](results/2026-11-03-xiri-wheel.md),
+including interactive `su -`; the replacement preserves those account files
+and checks effective wheel membership inside the native desktop. The previous
 `20261103-module` image remains available with its original root launcher. The previous `20261103-newport-xmahjongg`
 built-in image remains available as a control, including its manual state.
 The earlier `20261102-behavior` software bundle
@@ -38,8 +40,8 @@ the high-address library mapping fix, original IRIX `/bin/sh` command support
 and native null-device binding. Double-clicking xmahjongg in Icon Catalog's
 Freeware page launches it. Winterm still runs NetBSD's shell, now starting
 in `/usr/people/xiritest`, as verified with `pwd`. Interactive original-shell
-use remains unqualified. GIMP gets past its
-former library mapping failure but fails signal registration; xosview still
+use remains unqualified. GIMP's former library mapping failure was cleared;
+it needs retesting after the latest SIGCHLD registration change. xosview still
 needs IRIX statistics interfaces.
 
 The [desktop behavior image](results/2026-11-02-desktop-behavior-image.md)
@@ -51,16 +53,18 @@ directory views. Full Dumpster operations and launch animation remain open.
 
 ## Current xdm image
 
-The matched kernel/module pair comes from NetBSD `xiri` commit
+The core kernel remains byte-identical to NetBSD `xiri` commit
 `9390bc04900`, including the [UVM allocation fix](results/2026-11-03-uvm-pglist.md)
-found during CHD qualification. The personality boot-loads as `exec / filesys`
-at normal securelevel 1. The [build pins](../lab/irix-xdm/README.md) preserve
-the source and artifact hashes; the Xiri fork hooks are still required.
+found during CHD qualification. The replacement module's sources match commit
+`4f3d8a183ea`; it is built against that same kernel. The personality boot-loads
+as `exec / filesys` at normal securelevel 1. The [winterm build pins](../lab/irix-winterm-reliability/README.md)
+retain the original build provenance and committed-source equivalence;
+the Xiri fork hooks are still required.
 
 Launch the qualified bundle directly:
 
 ```sh
-/var/home/salvogendut/Dev/xiri/.work/images/xiri-netbsd-desktop-20261103-xdm-wheel-v2/run-iris.sh
+/var/home/salvogendut/Dev/xiri/.work/images/xiri-netbsd-desktop-20261103-winterm-v2/run-iris.sh
 ```
 
 It boots automatically to native NetBSD xdm. Use these public development
@@ -81,18 +85,27 @@ selected only by xiritest's `.xsession`; FAM still serves that one configured
 IRIX account. Root has no password and remains available on serial B for
 administration. The ttyE0 getty is disabled so xdm owns the graphical keyboard.
 
-The inherited [parent qualification](results/2026-11-03-xiri-xdm-image.json) covers three IRIX
+The fresh [image qualification](results/2026-11-03-winterm-image.json) covers three IRIX
 logins, a separate native ctwm login, both IRIX logout routes, failed-startup
 recovery, catalog launch, full-screen acceleration and clean halt. PNGs show
-[4Dwm](results/images/2026-11-03-xiri-xdm-image.png),
-[ctwm](results/images/2026-11-03-xiri-xdm-image-native.png) and the
-[greeter](results/images/2026-11-03-xiri-xdm-image-greeter.png).
-The [account-update qualification](results/2026-11-03-xiri-wheel.json) repeats
-fresh-CHD native login, wheel membership, interactive `su -`, logout and
-clean halt; it does not repeat the full desktop suite.
-Winterm startup/font metrics and the greeter's Xft Render workaround remain
-explicit limits. The native logout test ends ctwm from its own terminal;
+[4Dwm](results/images/2026-11-03-winterm-image.png),
+[ctwm](results/images/2026-11-03-winterm-image-native.png), the
+[greeter](results/images/2026-11-03-winterm-image-greeter.png) and
+[winterm before any test resize](results/images/2026-11-03-winterm-image-winterm.png).
+Each IRIX login checks untouched terminal geometry and foreground SIGWINCH
+delivery; an extra 100×30 terminal preserves its size and closes on typed
+`exit`. Terminal defaults select the imported SGI Screen bitmap font with
+8×15 cells. The underlying intermittent Type1 font-metric failure remains
+open, as does the greeter's Xft Render workaround.
+The native logout test ends ctwm from its own terminal;
 it does not qualify its Quit menu.
+
+`./xiri check` automatically includes these winterm checks for the selected
+bundle. The explicit command is:
+
+```sh
+python3 scripts/probe-xiri-xdm.py --bundle .work/images/xiri-netbsd-desktop-20261103-winterm-v2 --winterm
+```
 
 For root's manual fallback, stop xdm with `/etc/rc.d/xdm stop`, then run
 `xiri-desktop`. User logs are in `~/.xsession-errors` and `~/.xiri/sessions/`;
@@ -461,13 +474,14 @@ feedback. Full file operations, broad application compatibility and package
 installation remain open. Only
 xmahjongg's application-specific data tree was collected completely.
 The manual launcher disables 4Dwm session saving. Winterm can log a `gettxt`
-warning while reaching the native shell prompt; typing `exit` can leave its
-xwsh window open. A repeated desktop start also captured an intermittent
+warning while reaching the native shell prompt. The winterm cycle fixes the
+observed window left open after typed `exit` and propagates terminal resize
+to foreground jobs. An earlier repeated desktop start captured an intermittent
 xwsh SIGFPE before its window appeared; that failed run and core are retained
-in the icon result. A direct-CHD diagnostic also produced an unusually short
-terminal window with incorrect vertical font metrics; resizing restored input.
-Initial sizing still needs investigation. Stopping `xiri-desktop` removes
-remaining clients.
+in the icon result. The unusually short terminal is now reproduced as a native
+Xorg Type1 font-metric failure. Terminal defaults select the existing SGI Screen
+bitmap face; the Type1 root cause remains open. Session supervision removes
+remaining clients at logout.
 
 
 ## Manual application checks

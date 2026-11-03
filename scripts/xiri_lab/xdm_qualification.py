@@ -32,6 +32,11 @@ def verify_sessions(r):
     assert native['shell']==['netbsdtest','/home/netbsdtest','/home/netbsdtest','1236']
     assert native['wm_pid']>0 and '"UXTerm"' in native['tree']
     assert '1280x1024 pixels' in native['dimensions'] and '"xlogin"' in native['greeter_after']
+    if native.get('wheel_expected'):
+        assert 'wheel' in native['groups'] and 'netbsdtest' in native['groups']
+    if 'wm_process' in native:
+        pid,ppid,state,command=native['wm_process']
+        assert int(pid)==native['wm_pid'] and int(ppid)>0 and command.rsplit('/',1)[-1]=='ctwm' and not state.startswith('Z')
     assert set(r['survivors']) >= {'before-login','during-toolchest','after-toolchest',
         'during-root-menu','after-root-menu','after-failure','during-native-login','after-native-login','after-retry'}
     assert set(r['greeter_text']) >= {'xdm-greeter','xdm-after-toolchest','xdm-after-root-menu','xdm-after-native-login'}
@@ -48,6 +53,19 @@ def verify_sessions(r):
     assert 'rpcbind: cannot bind' not in events
     for key in ('native_control','native_after'):
         assert 'XIRI_ABI_PROBE' in r[key] and '_RC=0' in r[key]
+    if 'winterm' in r:
+        assert len(r['winterm'])==3
+        for entry in r['winterm']:
+            assert entry['foreground_resize']==[
+                'READY rows=24 cols=80 foreground=1',
+                'RESIZED rows=21 cols=66 SIGWINCH=1']
+            assert re.search(r'rows=24 cols=(78|80)\b',entry['handoff'])
+            if '/etc/xiri/Xresources' in r['installed_files']:
+                assert 'resize increment: 8 by 15' in entry['initial_hints']
+        extra=r['winterm'][0]
+        assert re.search(r'rows=30 cols=(98|100)\b',extra['extra_handoff'])
+        assert extra['normal_exit']['process_gone'] and extra['normal_exit']['window_gone']
+        assert not extra['exit_stderr']
 
 
 def qualify(a, verify_irix_module):
@@ -100,6 +118,22 @@ def qualify(a, verify_irix_module):
                      'FAM supports one configured IRIX desktop account; clogin and saved sessions remain open.',
                      'The greeter uses Xft.render:false; the underlying Render glyph issue remains open.',
                      'Kernel/module require Xiri fork hooks; physical hardware is unqualified.'])
+    if 'winterm' in r:
+        for entry in r['winterm']:
+            frame=a.run/entry['untouched_png']
+            assert sha256(frame)==entry['untouched_png_sha256']
+            assert struct.unpack('>II',frame.read_bytes()[16:24])==(1282,1024)
+        frame=a.run/r['winterm'][0]['untouched_png']
+        target=a.png.with_stem(a.png.stem+'-winterm')
+        shutil.copyfile(frame,target)
+        report['screenshots']['winterm-untouched']=dict(path=str(target),sha256=sha256(target),source=str(frame),
+            dimensions=[1282,1024],method='IRIS ordinary GL scanout',byte_identical=True)
+        if '/etc/xiri/Xresources' in r['installed_files']:
+            report['terminal_font']=dict(resource='/etc/xiri/Xresources',
+                face='-sgi-screen-medium-r-normal--15-150-72-72-m-80-iso8859-1',cell=[8,15])
+            report['limitations'][0]='The SGI Screen bitmap default avoids the reproduced Type1 font collapse; the native Type1 metric defect remains open.'
+        else:
+            report['limitations'][0]='Three untouched winterm starts, resizing and normal exit pass; this image retains the wildcard font choice and its intermittent collapse remains possible.'
     a.output.parent.mkdir(parents=True,exist_ok=True)
     a.output.write_text(json.dumps(report,indent=2)+'\n')
     if a.promote or a.record_bundle:
@@ -112,6 +146,8 @@ def qualify(a, verify_irix_module):
         promoted=dict(m,direct_chd_boot='verified',
                       xdm={**m['xdm'],'image_login_qualification':'verified'},qualification=str(a.output),
                       qualification_sha256=sha256(a.output),qualification_run=str(a.run))
+        if 'winterm' in r:
+            promoted['winterm_checks']=True
         (bundle/'manifest.json').write_text(json.dumps(promoted,indent=2)+'\n')
     if a.promote:
         public={key:m[key] for key in ('chd_sha256','chd_bytes','logical_bytes','nvram_sha256',

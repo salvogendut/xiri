@@ -20,12 +20,17 @@ directory notifications; no new package registration was fabricated. The
 [icon repair](results/2026-11-02-desktop-icons.md) also restores the imported
 application-specific artwork. The [original-shell checkpoint](results/2026-11-02-irix-vendor-shell.md)
 clears the static n32 `/bin/sh` rejection and demonstrates two double-click
-launches of xmahjongg from its existing Freeware entry. Opened-state feedback,
-broader application behavior and persistence remain unqualified. The
+launches of xmahjongg from its existing Freeware entry. The later
+[desktop behavior cycle](results/2026-11-02-desktop-behavior-image.md) qualifies
+its opened-state feedback; broader application behavior remains unqualified. The
 [application follow-up](results/2026-11-02-irix-elfmap-high.md)
 records the earlier boundary, the high-address mapping fix for GIMP, its subsequent
 signal registration failure, and xosview's unsupported statistics queries.
 No further library copying was needed for GIMP's observed loader failure.
+The [winterm cycle](results/2026-11-03-winterm-reliability.md) now adds SIGCHLD
+NOCLDSTOP registration, terminal resize and normal shell exit. Retest GIMP
+against that module before treating its old signal failure as the current
+boundary; no new GIMP success is claimed here.
 The [shell image](results/2026-11-02-irix-shell-image.md) packages these fixes
 and verifies xmahjongg's existing catalog action after a direct CHD boot.
 

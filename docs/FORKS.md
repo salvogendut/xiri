@@ -42,6 +42,21 @@ not repin qualified kernels, emulator binaries, runtime resources or guest disks
 
 ## IRIS upstream updates
 
+The 2026-11-03 winterm reliability cycle fetched upstream at
+`28fa516684c54e00e35b258c65e5dcac3a36165c`, already contained in the current
+IRIS `xiri` tip `ae62114344a1d435152b8ae7e48c599974b4aec7`. There were no new
+upstream commits to integrate. Diagnostics retain the current CHD's qualified
+`819c682` emulator; the independent COW persistence changes in the integration
+checkout do not repin that artifact.
+
+The corresponding NetBSD module changes are committed on `xiri` as
+`4f3d8a183ea`: PTY window-size translation and SIGCHLD SA_NOCLDSTOP support.
+The [source-equivalence record](../lab/irix-winterm-reliability/source-equivalence.json)
+checks every module-build source against that commit. The N64 core kernel
+remains byte-identical to `9390bc04900`; only the compatibility module is
+rebuilt in the separate `.work/netbsd-winterm-build` directory. The
+[cycle report](results/2026-11-03-winterm-reliability.md) records validation.
+
 The 2026-11-03 wheel-account image update fetched upstream again at
 `28fa516684c54e00e35b258c65e5dcac3a36165c`, already contained in IRIS `xiri`
 `1aed0dfc842a427e32a53ad083e1be0a9d46a613`. No merge or fork build was needed;

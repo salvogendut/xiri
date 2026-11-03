@@ -37,7 +37,7 @@ class RuntimeInstallTests(unittest.TestCase):
         rpc = self.stage/'etc/rc.conf.d/rpcbind'
         self.assertIn('rpcbind_flags="-h 127.0.0.1"', rpc.read_text())
         files = [rpc, self.stage/'etc/rc.conf.d/xiri_famd', self.stage/'etc/xiri/fam.conf',
-                 self.stage/'etc/xiri/session.conf']
+                 self.stage/'etc/xiri/session.conf', self.stage/'etc/xiri/Xresources']
         for path in files:
             path.write_text('# local policy\n')
         self.install('--enable-services')
@@ -45,6 +45,8 @@ class RuntimeInstallTests(unittest.TestCase):
             self.assertEqual(path.read_text(), '# local policy\n')
         self.assertEqual((self.stage/'etc/xiri/fam.conf.example').read_bytes(),
                          (ROOT/'runtime/etc/fam.conf').read_bytes())
+        self.assertEqual((self.stage/'etc/xiri/Xresources.example').read_bytes(),
+                         (ROOT/'runtime/etc/Xresources').read_bytes())
 
     def test_xdm_opt_in_preserves_display_and_login_policy(self):
         self.install('--enable-services')

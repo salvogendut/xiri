@@ -5,6 +5,19 @@ status statements describe individual checkpoints and may be superseded by
 later entries. Use the [current README](../README.md), [development guide](DEVELOPMENT.md)
 and [selected image](../lab/irix-installed-desktop/image.json) for current work.
 
+The [2026-11-03 winterm reliability cycle](results/2026-11-03-winterm-reliability.md)
+adds PTY window sizing and SIGCHLD NOCLDSTOP support in the loadable module.
+The native shell handoff preserves initial dimensions; foreground jobs receive
+SIGWINCH and typing `exit` closes an extra terminal normally. Paired original
+IRIX/NetBSD checks cover both ABIs and dispatch paths under root and UID 1234.
+Earlier statements below about missing terminal resize/exit are historical.
+The intermittent collapsed-font case reproduces in native and IRIX Xlib on
+the same Xorg Type1 face. Terminal defaults now use the verified SGI Screen
+bitmap font; the native Type1 failure, continued-child notifications and
+IRIX nanosleep remain separate gaps. The replacement CHD passes three IRIX
+login/resize cycles, normal terminal exit and the separate native ctwm login;
+all owned test guests halt cleanly.
+
 
 Xiri is a project to give real SGI workstations a maintained operating system while preserving the IRIX desktop and selected IRIX applications.
 

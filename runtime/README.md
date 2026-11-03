@@ -86,6 +86,19 @@ wrapper uses `/var/tmp/xiri-desktop/session.*` and labels the user explicitly.
 An optional `XIRI_SESSION_MS` duration is in milliseconds (zero means no time
 limit). Both original logout menus call the native request helper.
 
+`/etc/xiri/Xresources` supplies terminal font defaults. It selects the existing
+SGI Screen bitmap font (8×15 cells), avoiding an intermittent 12×2 result from
+Xorg's scalable IBM Courier face. Both native and IRIX Xlib observe that bad
+Type1 result; the underlying scaler issue remains open. The session merges
+these defaults below existing display resources, preserving an explicit user
+font choice. `xiri_xresources` in `session.conf` can select another resource
+file. Reinstallation preserves the administrator's file and updates its
+`.example`, just like the other configuration files.
+
+The native shell handoff preserves initialized PTY dimensions. The compatibility
+module translates the measured window-size ioctls, so foreground native jobs
+receive SIGWINCH and updated dimensions when original winterm is resized.
+
 ## Native xdm login
 
 The prepared system includes NetBSD's native xdm and PAM configuration.

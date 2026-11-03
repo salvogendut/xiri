@@ -90,6 +90,15 @@ Render glyph path with a focused client and accelerated/software server
 controls before assigning the underlying fault to the driver or emulator.
 The earlier texture/pixel checks do not cover this glyph workload.
 
+The [winterm investigation](results/2026-11-03-winterm-reliability.md) also
+captures incorrect core-font metrics for Xorg's scalable IBM Courier face:
+both native and original IRIX Xlib receive 12×2 logical cells instead of the
+previously measured 12×21. The imported SGI Screen bitmap remains 8×15 on
+that same failing server and is now the terminal default. The precise
+Type1/scaling/cache cause remains unlocalized; this is not evidence that the
+Newport drawing driver caused it. Investigate it separately from the Xft
+Render greeter issue and retain native/foreign client controls.
+
 Xdm explicitly uses the same `1280x1024` mode and `Virtual 1280 1024` as the
 qualified manual launcher. The pinned IRIS scanout captures are 1282×1024
 (two additional columns); the active X desktop is 1280×1024. A smaller X
@@ -111,7 +120,7 @@ root such as 1024×768 must fail xdm qualification. Do not rely on bare
    elapsed time and explicit X synchronization. Record CPU use and display
    configuration; use equivalent hardware/frontend settings for IRIX.
 5. Extend accelerated coverage to other Render operators and the remaining
-   depth-32 plane-mask failure. Investigate winterm's startup font metrics,
+   depth-32 plane-mask failure. Isolate the native Type1 font-metric failure,
    then profile remaining compatibility or frontend costs. Do not assume
    every delay originates in the kernel driver.
 

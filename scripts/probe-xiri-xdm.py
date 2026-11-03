@@ -25,6 +25,7 @@ def main():
     parser.add_argument('--seed', type=Path, default=ROOT/'.work/xiri-image/prepared-seed-20261103-module')
     parser.add_argument('--bundle', type=Path, help='cold-boot this CHD and test its installed xdm runtime')
     parser.add_argument('--debug-failure', action='store_true')
+    parser.add_argument('--winterm', action='store_true', help='check untouched startup, foreground resize and normal terminal exit')
     args = parser.parse_args()
     seed = args.seed.resolve()
     if args.bundle:
@@ -58,11 +59,13 @@ def main():
         'lab/irix-filelocks/place-window.c':'place.c',
         'lab/newport-xaa/render-probe.c':'render-probe.c',
         'lab/irix-vendor-shell/catalog-input.c':'catalog-input.c',
+        'lab/irix-winterm-reliability/resize-watch.c':'resize-watch.c',
     }.items():
         shutil.copyfile(ROOT/src, media/dest); sources[src] = sha256(ROOT/src)
     sources['scripts/probe-xiri-xdm.py'] = hashlib.sha256(snapshot).hexdigest()
     sources['scripts/xiri_lab/xdm_image.py'] = sha256(ROOT/'scripts/xiri_lab/xdm_image.py')
     sources['scripts/xiri_lab/kernel_log.py'] = sha256(ROOT/'scripts/xiri_lab/kernel_log.py')
+    sources['scripts/xiri_lab/winterm.py'] = sha256(ROOT/'scripts/xiri_lab/winterm.py')
     if args.bundle:
         support = support_files(bundle,previous)
         (media/'SUPPORT').write_text(''.join(f'SHA256 ({path}) = {digest}\n' for path,digest in sorted(support.items())))
@@ -155,6 +158,9 @@ def main():
         wait("xwininfo -root -tree | grep 'of 18)' >/dev/null",180)
         cmd("shell_pid=$(sed -n 's/^NATIVE_HANDOFF pid=\\([0-9][0-9]*\\).*/\\1/p' \"$job/handoff\")")
         wait('ps -p "$shell_pid" -o comm= | grep -Eq \'^[[:space:]]*sh[[:space:]]*$\'')
+        if args.winterm:
+            from xiri_lab.winterm import check
+            check(guest, d, r, extra=not r.get('winterm'))
         cmd('./place winterm 10 180 983 504')
         cmd(shlex.join(['./type','127.0.0.1:0','winterm',
             '(id -un; echo "$HOME"; pwd; id -G; echo "${XAUTHORITY:-$HOME/.Xauthority}") > "$XIRI_SESSION_DIR/shell-proof"\n']))
@@ -216,9 +222,9 @@ def main():
             '-p "$(pwhash -b 6 netbsdtest)" netbsdtest || exit; fi; '
             'test "$(id -u netbsdtest)" = 1236 && test "$(id -g netbsdtest)" = 1236 && '
             'test "$(getent passwd netbsdtest | cut -d: -f6)" = /home/netbsdtest && '
-            'test ! -e /home/netbsdtest/.xsession && rm -f /home/netbsdtest/native-proof')
+            'test ! -e /home/netbsdtest/.xsession && rm -f /home/netbsdtest/native-proof /home/netbsdtest/native-groups')
         login('netbsdtest',user='netbsdtest')
-        wait("pgrep -u 1236 -f '^/usr/X11R7/bin/ctwm( |$)' >native-wm.pid",120)
+        wait("pgrep -u 1236 -f '^/usr/X11R7/bin/ctwm( |$)' >native-wm-startup.pid",120)
         # Serial diagnostics use the display owner's authority, independently
         # of whichever authority pathname xdm supplied to the native user.
         cmd('export DISPLAY=:0; XAUTHORITY=$(ps -axww -o args= | '
@@ -228,16 +234,31 @@ def main():
         terminal = re.search(r'"([^"\n]+)": \("[^"\n]*" "UXTerm"\)',tree)
         assert terminal,tree
         cmd(shlex.join(['./type',':0',terminal[1],
-            '(id -un; echo "$HOME"; pwd; id -u) > "$HOME/native-proof"\n']))
-        wait('test -s /home/netbsdtest/native-proof',30)
+            '(id -un; echo "$HOME"; pwd; id -u) > "$HOME/native-proof"; id -Gn > "$HOME/native-groups"\n']))
+        wait('test -s /home/netbsdtest/native-proof && test -s /home/netbsdtest/native-groups',30)
         proof = get('cat /home/netbsdtest/native-proof').splitlines()
         assert proof == ['netbsdtest','/home/netbsdtest','/home/netbsdtest','1236'],proof
+        groups=get('cat /home/netbsdtest/native-groups').split()
+        wheel_expected=args.bundle is not None and 'wheel' in manifest['xdm']['accounts']['netbsdtest'].get('supplementary_groups',[])
+        assert 'netbsdtest' in groups and (not wheel_expected or 'wheel' in groups),groups
         cmd("! pgrep -u 1236 -f '^/emul/irix/' && ! pgrep -u 1234 -f '^/emul/irix/usr/bin/X11/4Dwm( |$)'")
         dimensions = get('xdpyinfo | grep dimensions:').strip()
         assert re.search(r'dimensions:\s+1280x1024 pixels',dimensions),dimensions
         capture('xdm-native-ctwm'); survivors('during-native-login')
+        # Startup forks (including the m4 parser child) can briefly share
+        # ctwm's argv. Refresh after the managed terminal is usable; require
+        # exactly one manager rather than retaining the early PID snapshot.
+        wait("pgrep -u 1236 -f '^/usr/X11R7/bin/ctwm( |$)' >native-wm.pid && "
+             'test "$(wc -l <native-wm.pid)" -eq 1',30)
+        wm_pid=int(get('cat native-wm.pid').strip())
+        wm_process=get('ps -p '+str(wm_pid)+' -o pid,ppid,stat,comm').splitlines()
+        assert len(wm_process)==2 and wm_process[0].split()==['PID','PPID','STAT','COMMAND'],wm_process
+        wm_process=wm_process[1].split()
+        assert len(wm_process)==4 and int(wm_process[0])==wm_pid and wm_process[3].rsplit('/',1)[-1]=='ctwm' and not wm_process[2].startswith('Z'),wm_process
         r['native_login'] = dict(user='netbsdtest',shell=proof,tree=tree,dimensions=dimensions,
-                                wm_pid=int(get('cat native-wm.pid').strip()))
+                                groups=groups,wheel_expected=wheel_expected,
+                                startup_wm_pids=list(map(int,get('cat native-wm-startup.pid').split())),
+                                wm_process=wm_process,wm_pid=wm_pid)
         # Let the keyboard helper disconnect before the user's WM exit resets X.
         cmd(shlex.join(['./type',':0',terminal[1],
             '(sleep 2; kill -TERM '+str(r['native_login']['wm_pid'])+') &\n']))
@@ -283,6 +304,8 @@ def main():
             '-L/usr/X11R7/lib -Wl,-rpath,/usr/X11R7/lib -lX11 -lXtst -o "$name" || exit; done; '
             'cc -O2 -Wall -Wextra -Werror -I/usr/X11R7/include render-probe.c '
             '-L/usr/X11R7/lib -Wl,-rpath,/usr/X11R7/lib -lXrender -lX11 -o render-probe',300)
+        if args.winterm:
+            cmd('cc -O2 -Wall -Wextra -Werror resize-watch.c -o /tmp/xiri-resize-watch')
         if not args.bundle:
             # Account selection is explicit, outside the runtime installer.
             cmd('groupadd -g 1235 xiritest-extra && usermod -G xiritest-extra -p "$(pwhash -b 6 xiritest)" xiritest && '
@@ -357,6 +380,8 @@ def main():
                   '/etc/xiri/xdm/Xservers','/etc/xiri/xdm/Xresources','/usr/people/xiritest/.xsession']
         paths += ['/etc/rc.d/'+x for x in ['xiri_devices','xiri_famd']]
         paths += ['/etc/rc.conf.d/'+x for x in ['xiri_devices','xiri_famd','rpcbind','xdm']]
+        if not args.bundle or '/etc/xiri/Xresources' in previous['installed_files']:
+            paths.append('/etc/xiri/Xresources')
         listing = get('sha256 '+shlex.join(paths))
         r['installed_files'] = dict(re.findall(r'^SHA256 \((.+)\) = ([0-9a-f]{64})$',listing,re.M))
         assert len(r['installed_files']) == len(paths)
