@@ -20,6 +20,16 @@ image is read-only; all vendor bytes and generated disk images stay in `.work`.
 
 ## Placement
 
+The [xdm image cycle](results/2026-11-03-xiri-xdm-image.md) needs no new IRIX
+files. Its additions are native: `runtime/` installs rc.d services, helpers,
+configuration and an xdm session example; image preparation selects that
+example as `/usr/people/xiritest/.xsession`. `/home/netbsdtest` is a separate
+native ctwm account. Native xdm supplies credentials and per-login X authority;
+IRIX root's home, saved sessions and vendor login-manager files are not copied.
+Service logs are `/var/log/xiri-fam.log` and `/var/log/xdm.log`; user logs are
+`$HOME/.xsession-errors` and `$HOME/.xiri/sessions/`. These are generated native
+state, separate from the imported-file ledger below.
+
 The [desktop behavior cycle](results/2026-11-02-irix-desktop-behavior.md) adds
 one resource beyond the published shell image: the original
 `/usr/include/X11/bitmaps/granite`, installed at

@@ -20,9 +20,9 @@ rendering and a fresh catalog launch from disk. The maintained
 [service/session runtime](../runtime/README.md) now passes its
 [qualification](results/2026-11-03-xiri-session.md), and native
 [xdm integration](results/2026-11-03-xiri-xdm.md) now passes normal xiritest
-login and a separate native user's standard ctwm session. Package both runtime
-cycles into a new manual CHD next, retaining the working image as a regression
-baseline.
+login and a separate native user's standard ctwm session. The [xdm CHD](results/2026-11-03-xiri-xdm-image.md)
+now packages both runtime cycles and passes direct-disk login, logout/relogin
+and catalog checks. Earlier images remain regression baselines.
 
 ## Next packaging phase
 
@@ -44,9 +44,9 @@ order was updated to prioritize the kernel module at the user’s request:
    both menu logouts, existing-X-server reuse, independent shell survival,
    groups/X authority, failed startup and service restart pass the
    [cycle checks](results/2026-11-03-xiri-session.md).
-   FAM remains a single-configured-account service. The selected manual
-   CHD retains its older launcher until a replacement image is qualified.
-3. **Normal xiritest login through native xdm: runtime qualified.** The
+   FAM remains a single-configured-account service. The [current image](results/2026-11-03-xiri-xdm-image.md)
+   packages these services; the earlier module image retains its old launcher.
+3. **Normal xiritest login through native xdm: runtime and image qualified.** The
    [xdm checks](results/2026-11-03-xiri-xdm.md) preserve the authenticated UID,
    groups, HOME `/usr/people/xiritest`, working directory and native X authority.
    Three successful IRIX sessions, both logout menus, failed startup recovery,
@@ -63,10 +63,10 @@ order was updated to prioritize the kernel module at the user’s request:
 Acceptance requires repeatable installation/configuration and a fresh manual
 CHD for the resulting deployment. The first module milestone is complete
 on our fork and its [replacement manual image](results/2026-11-03-irix-module-image.md)
-is qualified. Service/session and xdm integration are qualified separately;
-their replacement CHD still needs packaging and direct-disk boot checks.
-The current image
-boot-loads the module and retains its older root launcher with xiritest clients.
+is qualified. The [xdm replacement CHD](results/2026-11-03-xiri-xdm-image.md)
+now packages service/session integration and normal native login. It boot-loads
+the module, starts system services and authenticates the desktop account through
+xdm. A separate account retains the standard native ctwm desktop.
 Continue application/desktop fixes alongside packaging without losing the
 established regression coverage.
 
@@ -235,8 +235,8 @@ dependency candidates; a visible window alone does not complete these checks.
 - [x] Revisit the supplied manual after the first rendered Toolchest client and map its relevant chapters to the comparisons above.
 - [x] Maintain the [image-resource checklist](IRIX-RESOURCES.md) and [ledger](../lab/irix-desktop/resource-ledger.json), distinguishing extracted assets, observed use, remaining artwork/catalog/service gaps and native session state.
 - [x] Qualify opened-icon feedback after catalog double-click, the granite backdrop, and filesystem/home/Dumpster icons before graphical-login integration. The [desktop behavior result](results/2026-11-02-irix-desktop-behavior.md) passes launch/exit artwork restoration and desktop directory opening; broader actions remain below.
-- [x] Integrate native NetBSD xdm in the maintained runtime. The [qualification](results/2026-11-03-xiri-xdm.md) covers full-screen login → desktop → logout → login, identity/HOME/groups/X authority, failed startup, both IRIX logout menus and a separate user's standard ctwm session. Replacement CHD packaging remains pending; native IRIX clogin follows later.
-- [x] Replace reserved-UID cleanup in the maintained runtime with a native descendant supervisor. The [session qualification](results/2026-11-03-xiri-session.md) preserves independent same-user activity, groups, HOME and X authority. The selected manual CHD still has its older reserved-UID launcher until the next image cycle; direct xdm login is not enabled there. The xiritest home remains `/usr/people/xiritest`; an actual IRIX root session should use `/`.
+- [x] Integrate native NetBSD xdm in the maintained runtime. The [qualification](results/2026-11-03-xiri-xdm.md) covers full-screen login → desktop → logout → login, identity/HOME/groups/X authority, failed startup, both IRIX logout menus and a separate user's standard ctwm session. The [replacement CHD](results/2026-11-03-xiri-xdm-image.md) passes direct-disk checks; native IRIX clogin follows later.
+- [x] Replace reserved-UID cleanup in the maintained runtime with a native descendant supervisor. The [session qualification](results/2026-11-03-xiri-session.md) preserves independent same-user activity, groups, HOME and X authority. The current xdm CHD packages this supervisor; the previous module image keeps its older reserved-UID launcher as a control. The xiritest home remains `/usr/people/xiritest`; an actual IRIX root session should use `/`.
 - [ ] Turn the remaining comparisons into reproducible desktop acceptance cases against the original installation.
 - [x] Launch original 4Dwm against native Xvfb and demonstrate reparenting, focus, key delivery and dragging in the [combined shell session](results/2026-11-01-irix-4dwm.md); Newport/physical display qualification remains separate.
 - [x] Add original Toolchest and a working winterm shell to the same 4Dwm session.
@@ -252,7 +252,7 @@ dependency candidates; a visible window alone does not complete these checks.
 - [x] Implement [measured mkdir support](results/2026-11-01-irix-mkdir.md): 3,200 records, 1,540 independently verified directory creations and 44 controls pass. Native group ownership remains explicit policy.
 - [x] Record the [user-supplied original desktop reference](IRIX-DESKTOP-REFERENCE.md), with a pixel-preserving PNG and explicit appearance/content targets.
 - [x] Implement [measured pipe support](results/2026-11-01-irix-pipe.md): 220 exact records and 44 native/vendor controls, including descriptor exhaustion/rollback and forked writers.
-- [ ] Complete usable file/icon clients. The [desktop service repair](results/2026-11-02-desktop-services.md) supersedes the earlier empty catalog/select startup boundary: system pages and entry labels now appear, FileManager lists native files, and FAM delivers changes. The [icon repair](results/2026-11-02-desktop-icons.md) qualifies Freeware artwork and FileManager folder/document icons. Qualify catalog actions next. Preserve intermittent terminal geometry/startup failures. Session saving remains disabled.
+- [ ] Complete usable file/icon clients. The [desktop service repair](results/2026-11-02-desktop-services.md) supersedes the earlier empty catalog/select startup boundary: system pages and entry labels now appear, FileManager lists native files, and FAM delivers changes. The [icon repair](results/2026-11-02-desktop-icons.md) qualifies Freeware artwork and FileManager folder/document icons. The [xdm CHD](results/2026-11-03-xiri-xdm-image.md) also qualifies catalog double-click launching. Broader file operations and intermittent terminal geometry/startup failures remain. Session saving remains disabled.
 - [x] Inventory the supplied [May 2004 freeware sets](results/2026-11-01-irix-freeware.md): four CDs, 489 distinct packages; record zero-filled ncurses/nedit metadata separately.
 - [x] Establish [native /usr/people account creation and shared-file access](results/2026-11-01-irix-installer.md), including cold-boot persistence.
 - [x] Measure and implement the installer's [shared zero-device mapping](results/2026-11-01-irix-mmap-shared.md): 472 original records, 1,180 native records/backing files and 44 controls. Regular-file AUTOGROW remains separate.

@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "cases": 195841,
+  "source_revision": "9390bc04900a0d04796d494aca5b00651f12954d",
+  "source_sha256": "47f62159d99df61870b39a071af57a781493553f6a0c8415610cae0bc4489c39",
+  "previous_source_sha256": "a6bf7d0ebb6a30bb29dd0c37450a2e6d0e1ad8ed84276b06bef7315152efb352",
+  "previous_exit_status": 1,
+  "fixed_exit_status": 0,
+  "reproduction": "INVALID page lookup 0x8c10000 outside [0x8c12000, 0x8c22000) in case 1",
+  "sources": {
+    "scripts/test-uvm-pglist.py": "7727b74a7ddcd1a06d733d69cd429b2b233fd98557aeb5a550213abf576deb90",
+    "lab/uvm-pglist/allocator.c": "0d6b8a7e57be1aeec2272c41b079243b4cce012391c05dbe7b61246702585206"
+  },
+  "limitations": [
+    "Synthetic physical-page provider; no concurrent page daemon."
+  ]
+}

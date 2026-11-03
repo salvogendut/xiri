@@ -64,6 +64,9 @@ def main():
                    help='save verification in this bundle without changing the default image')
     a = p.parse_args()
     r = json.loads((a.run/'result.json').read_text())
+    if r.get('scope') == 'xdm-direct-chd':
+        from xiri_lab.xdm_qualification import qualify
+        return qualify(a, verify_irix_module)
     bundle = ROOT/r['bundle']
     original = bundle/'verification/build-manifest.json'
     candidates = [bundle/'manifest.json', original,

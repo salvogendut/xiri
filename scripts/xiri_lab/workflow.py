@@ -54,6 +54,8 @@ def verify_image(root, pointer, bundle, manifest):
     }
     if manifest['pin'].get('module_build_manifest'):
         files['irix-module-build.json'] = manifest['pin']['module_build_manifest_sha256']
+    if manifest.get('qualification_nvram'):
+        files[manifest['qualification_nvram']] = manifest['qualification_nvram_sha256']
     if files.get('emulator/iris') != manifest['pin']['emulator_sha256'] or \
        files.get('emulator/iris-ci') != manifest['pin']['ci_client_sha256']:
         raise ValueError('Bundled emulator hashes disagree with the qualification pin')
@@ -212,8 +214,11 @@ def main(argv=None):
         if args.action == 'run':
             command = [bundle/'run-iris.sh']
         elif args.action == 'check':
-            command = [sys.executable, root/'scripts/probe-xiri-image.py', bundle,
-                       '--iris-bin-dir', bundle/'emulator', '--arrange-winterm']
+            if manifest.get('session_manager') == 'xdm':
+                command = [sys.executable, root/'scripts/probe-xiri-xdm.py', '--bundle', bundle]
+            else:
+                command = [sys.executable, root/'scripts/probe-xiri-image.py', bundle,
+                           '--iris-bin-dir', bundle/'emulator', '--arrange-winterm']
         elif args.action == 'seed':
             output = (args.output or root/'.work/xiri-image'/('seed-'+manifest['chd_sha256'][:12])).resolve()
             if output == bundle or output.is_relative_to(bundle):

@@ -1,5 +1,7 @@
 """Host-side failure and lifecycle checks; no guest or imported IRIX files needed."""
 import importlib.util
+import io
+from contextlib import redirect_stdout
 import json
 from pathlib import Path
 import signal
@@ -110,6 +112,17 @@ class ArtifactTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'Artifact hash mismatch'):
             verify_image(self.root, self.pointer, self.bundle, self.manifest)
 
+    def test_frozen_xdm_boot_profile_is_verified_separately_from_manual_state(self):
+        frozen=self.bundle/'verification/graphics-boot-nvram.bin'
+        frozen.parent.mkdir();frozen.write_bytes(b'prepared graphical boot')
+        self.manifest.update(qualification_nvram='verification/graphics-boot-nvram.bin',
+                             qualification_nvram_sha256=sha256(frozen))
+        (self.bundle/'nvram-graphics.bin').write_bytes(b'changed manual state')
+        verify_image(self.root,self.pointer,self.bundle,self.manifest)
+        frozen.write_bytes(b'wrong boot variables')
+        with self.assertRaisesRegex(ValueError,'Artifact hash mismatch'):
+            verify_image(self.root,self.pointer,self.bundle,self.manifest)
+
     def test_module_build_manifest_is_an_immutable_artifact(self):
         path = self.bundle/'irix-module-build.json'
         path.write_text('matching module build')
@@ -163,6 +176,19 @@ class ArtifactTests(unittest.TestCase):
                 main(['image', '--seed-run', str(self.root/'seed'),
                       '--output', str(self.bundle/'new-image'), '--dry-run'])
         self.assertFalse((self.bundle/'new-image').exists())
+
+    def test_check_selects_installed_session_manager(self):
+        from xiri_lab.workflow import main
+        (self.root/'config').mkdir()
+        (self.root/'config/development.json').write_text(json.dumps(dict(
+            schema=1,build_jobs=2,image_pointer='pointer.json')))
+        for manager,probe in [('xdm','probe-xiri-xdm.py --bundle'),('manual','probe-xiri-image.py')]:
+            self.manifest['session_manager']=manager
+            (self.bundle/'manifest.json').write_text(json.dumps(self.manifest))
+            output=io.StringIO()
+            with patch('xiri_lab.workflow.ROOT',self.root),redirect_stdout(output):
+                self.assertEqual(main(['check','--dry-run']),0)
+            self.assertIn(probe,output.getvalue())
 
     def test_build_finds_branch_owner_without_switching_shared_checkout(self):
         repo = self.root/'shared'; owner = self.root/'branch owner'

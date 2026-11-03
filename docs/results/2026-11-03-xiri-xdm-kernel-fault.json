@@ -1,0 +1,104 @@
+{
+  "status": "error",
+  "scope": "xdm-direct-chd",
+  "error": "timed out after 120s waiting for '\\\\nXIRI_567e56a1fb8d45fb91de73f2b1a2311f_RC=(\\\\d+)\\\\n'",
+  "clean_shutdown": false,
+  "cleanup_error": "monitor connection closed",
+  "base_chd_unchanged": true,
+  "seed": {
+    "bundle": "/var/home/salvogendut/Dev/xiri/.work/images/xiri-netbsd-desktop-20261103-xdm",
+    "chd_sha256": "d0587d346242aea1482c9fffebec8c4b807aaacb129ef05ef064a34f6d4655a5",
+    "raw_sha256": "8f1dba840a11828bac8fec8a2a5556130a81690b8ce7a63ccbd18b00095bcc5d"
+  },
+  "pin": {
+    "schema": 1,
+    "description": "Boot-loaded IRIX o32/n32 personality with accelerated Newport desktop",
+    "ident": "XIRI_IRIX_MODULE_20261103",
+    "source_revision": "c46d4e9a931acda3cf784636ebb9dc91abfb1fe1",
+    "source_branch": "topic/compat-irix-module",
+    "build_arch": "mips64eb",
+    "page_bytes": 8192,
+    "boot_kernel_sha256": "567265ee63695a792025ca3c9b8797e674c170c36d6f03f290579d859af9017c",
+    "native_kernel_sha256": "830483994877a61efc833c3361ed2a6799df003d7e39033181b070908e3f17cd",
+    "debug_kernel_sha256": "36d7cc85c533e03c7da298ed10a8662f2a2c3d0177932f1b98909bcdc379f8fa",
+    "native_o32_sha256": "c294fbb1f2110445be31c096481ea54ab561c7e59ca5b9fc7171310098d755d4",
+    "source_dirty": true,
+    "emulator_revision": "819c6825504d40ad9f9aa00554249affd2da9446",
+    "emulator_branch": "xiri",
+    "emulator_sha256": "3dd9299d71f1899ff5a8c9b76f6a24752d19e4f9a0bcfe0edf3a29001dc9c49e",
+    "ci_client_sha256": "2543b1fae0b442516c40c9d9155eebc9f9569561146b4f62948171fe7eb5c7f3",
+    "base_disk_sha256": "2d19c840bcc5d5e5d424a5f12b4def72b9e8681e6b9e172b22bd51943bf7bb82",
+    "nvram_sha256": "025e170feb9adcfbfa55a745ba2d976fd0ba0f3d39967d7f52622d6ad54c2ef5",
+    "config_sha256": "b4b1d27b1d8e80ec31b07f9f98e0ca1da8a1793cb90880bbc1e65a4b169c8fe2",
+    "runtimes": [
+      {
+        "name": "vendor-o32-libc",
+        "path": "/usr/lib/libc.so.1",
+        "sha256": "ea766492103a193e9d404942705e4e28987545e37f699ede232b6c0f8c97c954"
+      },
+      {
+        "name": "vendor-o32-rld",
+        "path": "/lib/rld",
+        "sha256": "30228b54c1e5585b365514eb7c9895b03cc0f61cb898e05e3ddafece87863439"
+      },
+      {
+        "name": "vendor-n32-libc",
+        "path": "/lib32/libc.so.1",
+        "sha256": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e"
+      },
+      {
+        "name": "vendor-n32-rld",
+        "path": "/lib32/rld",
+        "sha256": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b"
+      }
+    ],
+    "config_path": "lab/irix-module/XIRI_IRIX_MODULE",
+    "committed_source_revision": "d1ce7a9661530ebbf4f55d47a34642e9429421e7",
+    "module_build_manifest": "lab/irix-module/build.json",
+    "module_build_manifest_sha256": "692c3f06b3487c8be18388c1a33d7a9605b0bb339204ffe482ece519ded78a4f"
+  },
+  "sources": {
+    "scripts/xiri_lab/__init__.py": "98abff8b2f3c19912cf6993ac5094008cb9ecea0fb6d66c149f76184d9182743",
+    "scripts/xiri_lab/guest.py": "e589b08a06a91fca6fde4c4b10a3e97b90807da82bf6d545b45b1da517d0c954",
+    "scripts/probe-netbsd.py": "adfa9547fa98af28fd55e4e155e7667b2b0a8c7cea8aee8d58079da946b72a1d",
+    "runtime/Makefile": "6c90346ed45fed80c8e1e40c7691eaec0b4cb22290728e6ea1079a756bd848bb",
+    "runtime/install.sh": "9c20cc3c501f672bfea418c48509cc362bfff69b3aa904f28de9a7fcf2511b6a",
+    "runtime/README.md": "6ecfc3b8c5b63d8d958ea072319b75da8be87dd581e67e2fdbd53600250cc63c",
+    "runtime/bin/xiri-launch": "e93699b941b709291e8b6f7be5a5ee58bd9faf4286776cbb5ae7c6f4a90a1b96",
+    "runtime/bin/xiri-logout": "06be5189a07f2f13f8d699ce8f5c7e7f28034027e5b76a119e4a136b84eb790c",
+    "runtime/bin/xiri-session": "85cacd11e4a013fcfe73adb0b4bc823aa4c143c16e1e879b313b044724edc64a",
+    "runtime/bin/xiri-desktop": "c20e0e8ee4a8c7ccfc68791cd7f2848062aea0520d0a23a14688c7e83c3d76f2",
+    "runtime/libexec/desktop-clients.sh": "c2b4ace1e1c13de8f82ebc246ded36edd6bbb9181c8c2363334c63c159f3b037",
+    "runtime/libexec/setup-pty.sh": "3670d50d4d96a7560f1376b64e2a1b7033feb3311120eedfa6eb4b0df62115a9",
+    "runtime/libexec/shell-handoff.c": "24e89b5a57543448defb35a8d836d5ee525ec9a402f807ffdc92b8ac8227f325",
+    "runtime/libexec/session-guard.c": "b6e0bf1b9036a3b4bbe27bdc43f8fdf9d090298b745da624de25db3282104203",
+    "runtime/libexec/x11-check.c": "5774f7fd2669390f8ab600f98711fba216735ad6d2bae6254e8b244a17ac51b8",
+    "runtime/rc.d/xiri_devices": "004cd8c79b25d408dcf3e6a5ae387440b7620ba0cc685467ad134eae0a4af17e",
+    "runtime/rc.d/xiri_famd": "6669ab48614713237fd740a533274fea00ea5acb3ac61ab0b7c21295a12bbcf1",
+    "runtime/etc/fam.conf": "0b85b499f668c1ecde9c409ac83cdca9cf4ba2722274010f30b09fd5fe9eee95",
+    "runtime/etc/session.conf": "9f56cb36f31e17246f311f856127038b3493cc52dc69028f731c913d950d9a88",
+    "runtime/etc/xdm.xsession": "983ecc9eaa9763d5198b99c9a55b86a1a9dd785e851370144dcd8d9ec98233f3",
+    "runtime/etc/xdm-Xservers": "94ae5bdb1fb16df62c2181cdd4a4c971a44637cbe1364d56b79f66d2d04b0ac8",
+    "runtime/etc/xdm-Xresources": "10a72b52fc3222c0f3166531c4b90478ba4586610d03657535ed45e272d58db3",
+    "lab/irix-4dwm/type-ready.c": "61ce22cbda6c66ccaf53cbcffab5f3080be95004bcd3e5c6893dc54a8a9db838",
+    "lab/irix-filelocks/place-window.c": "af51ade704c9df4d589c3ae01e571da6a7d6f43de2fd51e3a1766935f04d3ddb",
+    "lab/newport-xaa/render-probe.c": "1b4acde386fa7451186b6f6b9a5e00ea22f44f48b09de0775a8e120092b26fa4",
+    "lab/irix-vendor-shell/catalog-input.c": "ff331c512a6acc0f19941904059584a140ddbc9e0abefb79dd457f1b1b92b46c",
+    "scripts/probe-xiri-xdm.py": "3d5475b2bb53f845dace625feee612acc1c267f01aadf4ddee28793305466ed4",
+    "scripts/xiri_lab/xdm_image.py": "24c8caedb13dac6e288e87bebb69bf8149a8a0322a9b0e5bac0d8155f7bcd0cc",
+    "scripts/xiri_lab/kernel_log.py": "1af61cafd398d63d12cda2344516cecf8edb43ba4c866fec5d4d3d34d560ea45"
+  },
+  "run": ".work/irix-xdm/runs/ordinary-47ikvfc8",
+  "kernel_log": "[   1.0000000] Copyright (c) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,\n[   1.0000000]     2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013,\n[   1.0000000]     2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023,\n[   1.0000000]     2024, 2025, 2026\n[   1.0000000]     The NetBSD Foundation, Inc.  All rights reserved.\n[   1.0000000] Copyright (c) 1982, 1986, 1989, 1991, 1993\n[   1.0000000]     The Regents of the University of California.  All rights reserved.\n\n[   1.0000000] NetBSD 11.99.9 (XIRI_IRIX_MODULE_20261103) #1: Tue Nov  3 06:59:09 UTC 2026\n[   1.0000000] \tsalvogendut@toolbx:/var/home/salvogendut/Dev/xiri/.work/netbsd-module-build/obj/sys/arch/sgimips/compile/XIRI_IRIX_MODULE\n[   1.0000000] total memory = 255 MB\n[   1.0000000] (768 KB reserved for ARCS)\n[   1.0000000] avail memory = 244 MB\n[   1.0000000] timecounter: Timecounters tick every 10.000 msec\n[   1.0000000] mainbus0 (root): SGI-IP22 [SGI, 69123457], 1 processor\n[   1.0000000] cpu0 at mainbus0: MIPS R4400 CPU (0x440) Rev. 4.0 with MIPS R4010 FPC Rev. 0.0\n[   1.0000000] cpu0: 48 TLB entries, 1TB (40-bit) VAs, 4KB (12-bit) PAs, 16MB max page size\n[   1.0000000] cpu0: 16KB/16B direct-mapped L1 instruction cache\n[   1.0000000] cpu0: 16KB/16B direct-mapped write-back L1 data cache\n[   1.0000000] cpu0: 1024KB/128B direct-mapped write-back L2 unified cache\n[   1.0000000] int0 at mainbus0 addr 0x1fbd9880\n[   1.0000000] int0: bus 33MHz, CPU 66MHz\n[   1.0000000] imc0 at mainbus0 addr 0x1fa00000: revision 3\n[   1.0000000] gio0 at imc0\n[   1.0000000] newport0 at gio0: SGI NG1 (board revision 0, cmap revision 2, xmap revision 3, vc2 revision 0), depth 24, monitor ID 10 (1280x1024 60Hz)\n[   1.0000000] newport0: 13W3 Monitor ID 10, PROM ID -1, determined monitor ID 10 (1280x1024 60Hz)\n[   1.0000000] wsdisplay0 at newport0 kbdmux 1: console (default, vt100 emulation)\n[   1.0000000] wsmux1: connecting to wsdisplay0\n[   1.0000000] hpc0 at gio0: SGI HPC3 (onboard)\n[   1.0000000] zsc0 at hpc0 offset 0x59830\n[   1.0000000] zstty0 at zsc0 channel 1\n[   1.0000000] zstty1 at zsc0 channel 0\n[   1.0000000] pckbc0 at hpc0 offset 0x59840\n[   1.0000000] pckbd0 at pckbc0 (kbd slot)\n[   1.0000000] wskbd0 at pckbd0: console keyboard, using wsdisplay0\n[   1.0000000] pms0 at pckbc0 (aux slot)\n[   1.0000000] wsmouse0 at pms0 mux 0\n[   1.0000000] sq0 at hpc0 offset 0x54000: SGI Seeq 80c03\n[   1.0000000] sq0: Ethernet address 08:00:69:12:34:57\n[   1.0000000] wdsc0 at hpc0 offset 0x44000: WD33C93A (20.0 MHz clock, BURST DMA, SCSI ID 0)\n[   1.0000000] scsibus0 at wdsc0: 8 targets, 8 luns per target\n[   1.0000000] haltwo at hpc0 offset 0x58000 not configured\n[   1.0000000] pi1ppc0 at hpc0 offset 0x59800\n[   1.0000000] pi1ppc0: capabilities=0x8<PS2>\n[   1.0000000] ppbus0 at pi1ppc0\n[   1.0000000] ppbus0: No IEEE1284 device found.\n[   1.0000000] button0 at hpc0 offset 0x59850\n[   1.0000000] hpc1 at gio0: SGI HPC3 (IOPLUS mezzanine)\n[   1.0000000] hpc1: using EXP0's DMA channel\n[   1.0000000] sq at hpc1 offset 0x54000 not configured\n[   1.0000000] hpc2 at gio0: SGI HPC1.5 (GIO slot)\n[   1.0000000] dsclock0 at mainbus0 addr 0x1fbe0000\n[   1.0000000] ioc0 at mainbus0 addr 0x1fbd9800: rev 0, machine Indy (Guinness), board rev 0\n[   1.0000000] WARNING: system needs entropy for security; see entropy(7)\n[   1.0000000] timecounter: Timecounter \"mips3_cp0_counter\" frequency 33000000 Hz quality 100\n[   1.0000030] timecounter: Timecounter \"clockinterrupt\" frequency 100 Hz quality 0\n[   1.0000030] scsibus0: waiting 2 seconds for devices to settle...\n[   3.0602552] sd0 at scsibus0 target 1 lun 0: <SGI, IRIS EMUL DISK, 1.0> disk fixed\n[   3.1380515] sd0: 8192 MB, 16645 cyl, 16 head, 62 sec, 512 bytes/sect x 16777216 sectors\n[   3.2495576] sd0: async, 8-bit transfers\n[   3.3052972] cd0 at scsibus0 target 4 lun 0: <Sony, CDU-76S, 1.0> cdrom removable\n[   3.3670560] cd0: async, 8-bit transfers\n[   3.4253153] boot device: sd0\n[   3.4860573] root on sd0a dumps on sd0b\n[   3.5595030] kern.module.path=/stand/sgimips/11.99.9/modules\n[   4.6901983] entropy: best effort\n[ 704.7881785] pid 4058(sh): trap: cpu0, TLB miss (load or instr. fetch) in kernel mode\n[ 704.7881785] status=0x8000ff83, cause=0x10000008, epc=0xffffffff882c978c, vaddr=0x14\n[ 704.7881785] tf=0x980000000943b970 ksp=0x980000000943bab0 ra=0xffffffff882c978c ppl=0\n[ 704.7881785] kernel: TLB miss (load or instr. fetch) trap\n",
+  "fault": {
+    "epc": "0xffffffff882c978c",
+    "virtual_address": "0x14",
+    "physical_lookup": "0x8c10000",
+    "segment_start": "0x8c12000",
+    "aligned_lower_bound": "0x8c14000",
+    "page_size": 8192,
+    "requested_pages": 2,
+    "alignment_bytes": 16384,
+    "caller": "cpu_uarea_alloc"
+  }
+}

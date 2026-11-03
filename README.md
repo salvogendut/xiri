@@ -9,18 +9,18 @@ separate qualification.
 The current desktop runs original 4Dwm, Toolchest, Icon Catalog, File Manager,
 winterm and xclock. It has SGI fonts, the granite backdrop, desktop icons,
 catalog launches and running-icon feedback. Native NetBSD Xorg drives a
-1280×1024 accelerated Newport display. The latest image fixes xmahjongg's
-texture corruption and passes launch, move/undo, redraw and logout checks.
-See the [rendering results](docs/results/2026-11-03-newport-xmahjongg.md).
+1280×1024 accelerated Newport display. It retains the xmahjongg texture
+correction qualified by the earlier [rendering and interaction checks](docs/results/2026-11-03-newport-xmahjongg.md).
 
-The manual launcher starts services as root and runs the desktop as
-**xiritest**, UID 1234, with HOME and initial directory `/usr/people/xiritest`.
-Native [xdm login is qualified](docs/results/2026-11-03-xiri-xdm.md) in the
-maintained runtime, including a separate user's standard NetBSD ctwm session.
-It awaits packaging into a replacement image. The [current manual CHD](docs/results/2026-11-03-irix-module-image.md)
+The [current manual CHD](docs/results/2026-11-03-xiri-xdm-image.md) boots into
+native NetBSD xdm. Log in as **xiritest** with password **xiritest** for the
+IRIX desktop, or **netbsdtest** / **netbsdtest** for standard NetBSD ctwm.
+These are public development-image credentials. The IRIX session uses UID
+1234 and HOME/cwd `/usr/people/xiritest`; system services start at boot. NetBSD
 loads `compat_irix_o32.kmod` during boot and runs the desktop on a kernel
-without built-in IRIX support. This [module build](lab/irix-module/README.md)
-still requires our NetBSD fork’s core hooks.
+without built-in IRIX support. This [kernel/module build](lab/irix-xdm/README.md)
+also fixes a native memory-allocation fault found during CHD qualification.
+It still requires our NetBSD fork’s core hooks.
 
 ## Related repositories
 
@@ -48,7 +48,8 @@ With the local image bundle and development dependencies already prepared:
 ./xiri run
 ```
 
-Log in as `root` and run `xiri-desktop`. Log out through Toolchest or 4Dwm.
+Log in at xdm as `xiritest`. Log out through Toolchest or 4Dwm to return to
+the greeter. Root serial login remains available for administration.
 The [manual image guide](docs/XIRI-IMAGE.md) covers PROM settings, Prismatic,
 boot troubleshooting and the exact image provenance. `./xiri run` uses the
 selected bundle's tested emulator and preserves manual overlays and NVRAM.
@@ -88,9 +89,9 @@ The [module milestone](docs/results/2026-11-03-irix-module.md) follows the
 separates boot services from user sessions and follows descendants for logout
 cleanup. Native [xdm integration](docs/results/2026-11-03-xiri-xdm.md) now
 passes password login, full-screen 4Dwm and ctwm sessions, both IRIX logout
-menus and recovery checks. Packaging these changes into a new manual CHD is
-next; the selected image still contains its earlier launcher. Original IRIX
-clogin remains later work. The
+menus and recovery checks. The [xdm image](docs/results/2026-11-03-xiri-xdm-image.md)
+packages those changes and passes direct disk boot, both desktop logins and
+catalog launching. Original IRIX clogin remains later work. The
 [roadmap](docs/ROADMAP.md) defines the dependency and acceptance work.
 
 - [Architecture](docs/ARCHITECTURE.md): kernel, imported runtime, native services and desktop boundaries.

@@ -15,20 +15,33 @@ import time
 from types import SimpleNamespace
 
 from xiri_lab import Guest, ROOT, load_probe, sha256, source_hashes
+from xiri_lab.xdm_image import support_files
+from xiri_lab.kernel_log import KernelLog
 
 
 def main():
     snapshot = Path(__file__).read_bytes()
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--seed', type=Path, default=ROOT/'.work/xiri-image/prepared-seed-20261103-module')
+    parser.add_argument('--bundle', type=Path, help='cold-boot this CHD and test its installed xdm runtime')
     parser.add_argument('--debug-failure', action='store_true')
     args = parser.parse_args()
     seed = args.seed.resolve()
-    origin = json.loads((seed/'image-source.json').read_text())
-    previous = json.loads((seed/'result.json').read_text())
+    if args.bundle:
+        bundle = args.bundle.resolve()
+        manifest = json.loads((bundle/'manifest.json').read_text())
+        assert manifest['status'] == 'chd-roundtrip-verified' and manifest['session_manager'] == 'xdm'
+        assert sha256(bundle/'netbsd-xiri.chd') == manifest['chd_sha256']
+        assert sha256(bundle/'seed-result.json') == manifest['source_result_sha256']
+        previous = json.loads((bundle/'seed-result.json').read_text())
+        origin = dict(bundle=str(bundle),chd_sha256=manifest['chd_sha256'],raw_sha256=manifest['source_raw_sha256'])
+        assert previous['pin'] == manifest['pin']
+    else:
+        origin = json.loads((seed/'image-source.json').read_text())
+        previous = json.loads((seed/'result.json').read_text())
+        assert sha256(seed/'disk.raw') == origin['raw_sha256']
+        bundle = Path(origin['bundle'])
     assert previous['status'] == 'observed' and previous['clean_shutdown']
-    assert sha256(seed/'disk.raw') == origin['raw_sha256']
-    bundle = Path(origin['bundle'])
     p = load_probe()
     p.IRIS, p.CI = bundle/'emulator/iris', bundle/'emulator/iris-ci'
     assert sha256(p.IRIS) == previous['pin']['emulator_sha256']
@@ -44,20 +57,44 @@ def main():
         'lab/irix-4dwm/type-ready.c':'type.c',
         'lab/irix-filelocks/place-window.c':'place.c',
         'lab/newport-xaa/render-probe.c':'render-probe.c',
+        'lab/irix-vendor-shell/catalog-input.c':'catalog-input.c',
     }.items():
         shutil.copyfile(ROOT/src, media/dest); sources[src] = sha256(ROOT/src)
     sources['scripts/probe-xiri-xdm.py'] = hashlib.sha256(snapshot).hexdigest()
+    sources['scripts/xiri_lab/xdm_image.py'] = sha256(ROOT/'scripts/xiri_lab/xdm_image.py')
+    sources['scripts/xiri_lab/kernel_log.py'] = sha256(ROOT/'scripts/xiri_lab/kernel_log.py')
+    if args.bundle:
+        support = support_files(bundle,previous)
+        (media/'SUPPORT').write_text(''.join(f'SHA256 ({path}) = {digest}\n' for path,digest in sorted(support.items())))
     (media/'SHA256').write_text(''.join(f'SHA256 ({f.relative_to(media)}) = {sha256(f)}\n' for f in sorted(media.rglob('*')) if f.is_file()))
     p.run(['genisoimage','-quiet','-R','-J','-o',d/'probe.iso',media])
-    for name in ['disk.raw','nvram.bin']:
-        p.run(['cp','--reflink=auto','--sparse=always',seed/name,d/name])
-    config = re.sub(r'^tftp_dir = .*$', 'tftp_dir = '+json.dumps(str(bundle/'tftp')),
-                    (ROOT/'lab/indy-netbsd/iris.toml').read_text(), flags=re.M)
+    if args.bundle:
+        p.run(['cp','--reflink=auto','--sparse=always',bundle/'netbsd-xiri.chd',d/'disk.chd'])
+        graphics_nvram=bundle/manifest['qualification_nvram']
+        assert sha256(graphics_nvram)==manifest['qualification_nvram_sha256']==manifest['manual_nvram_sha256']
+        shutil.copyfile(graphics_nvram,d/'nvram.bin')
+        config=(bundle/'iris.toml').read_text().replace('tftp_dir = "tftp"','tftp_dir = '+json.dumps(str(d/'no-tftp')))
+        config+='\n[scsi.4]\npath = '+json.dumps(str(d/'probe.iso'))+'\ncdrom = true\n'
+    else:
+        for name in ['disk.raw','nvram.bin']:
+            p.run(['cp','--reflink=auto','--sparse=always',seed/name,d/name])
+        config = re.sub(r'^tftp_dir = .*$', 'tftp_dir = '+json.dumps(str(bundle/'tftp')),
+                        (ROOT/'lab/indy-netbsd/iris.toml').read_text(), flags=re.M)
     lab = p.Lab(SimpleNamespace(mode='ordinary',debugger=False,boot_timeout=600), d, config_text=config)
+    if args.bundle:
+        original_launch=lab.launch
+        def launch(command,name):
+            if name=='emulator':
+                command=list(command);command[command.index('--scsi1')+1]=str(d/'disk.chd')
+            return original_launch(command,name)
+        lab.launch=launch
     guest = Guest(lab)
     cmd, get, wait = guest.command, guest.read_text, guest.wait_for
     r = dict(schema=1,status='error',clean_shutdown=False,seed=origin,pin=previous['pin'],
              sources={**source_hashes(),**sources},sessions=[],screenshots={})
+    if args.bundle:
+        r.update(scope='xdm-direct-chd',bundle=str(bundle.relative_to(ROOT)),
+                 input_manifest_sha256=sha256(bundle/'manifest.json'),chd_sha256=manifest['chd_sha256'])
 
     def capture(name):
         # Capture the ordinary GL scanout, including the graphical greeter.
@@ -142,6 +179,36 @@ def main():
         assert not owners.intersection(r['service_and_side_pids'].values())
         cmd("! pgrep -u 1234 -f '^/emul/irix/usr/(bin/X11/4Dwm|sbin/xwsh|sbin/iconcatalog)( |$)'")
 
+    def catalog_launch():
+        old_pid=get('cat "$job/xmahjongg.pid"').strip();assert old_pid.isdigit()
+        cmd('kill '+old_pid)
+        wait("! pgrep -u 1234 -f '^/emul/irix/usr/freeware/bin/xmahjongg( |$)'",30)
+        tree=get('xwininfo -root -tree')
+        match=re.search(r'(0x[0-9a-f]+) "Icon Catalog: [^"\n]*\(Page (\d+) of 18\)',tree)
+        assert match,tree
+        wid,page=match[1],int(match[2])
+        cmd('xset r off')
+        for _ in range(abs(9-page)):
+            cmd(shlex.join(['./catalog-input','127.0.0.1:0',wid,'key','Next' if page<9 else 'Prior'])+'; sleep 1')
+        cmd('xset r on; ./place "Icon Catalog: Freeware (Page 9 of 18)" 372 450 900 500; sleep 2')
+        cmd(shlex.join(['./catalog-input','127.0.0.1:0',wid,'double','1070','682']))
+        wait("pgrep -u 1234 -f '^/usr/lib/desktop/iconcatalog/pages/C/Freeware/xmahjongg( |$)' >catalog-game.pid",60)
+        new_pid=get('cat catalog-game.pid').strip();assert new_pid.isdigit() and new_pid!=old_pid
+        cmd('./type "$DISPLAY" xmahjongg "" >game-focus.log; ./place xmahjongg 10 30 1006 614; sleep 2')
+        wait('grep -q \'"/usr/freeware/bin/xmahjongg" Executing\' /var/log/xiri-fam.log',30)
+        backdrop=get('xprop -root _SGI_DESKS_BACKGROUND_DESCRIPTION _SGI_DESKS_BACKGROUND')
+        assert 'granite' in backdrop and 'pixmap id #' in backdrop
+        cmd('test "$(readlink /usr/people/xiritest/Desktop/UnixRoot)" = / && '
+            'test "$(readlink /usr/people/xiritest/Desktop/xiritest)" = /usr/people/xiritest && '
+            'test "$(readlink /usr/people/xiritest/Desktop/dumpster)" = ../dumpster && '
+            'test -f /usr/people/xiritest/dumpster/.dumpster')
+        r['catalog_launch']=dict(initial_pid=int(old_pid),launched_pid=int(new_pid),
+            input='XTEST double-click',page='Freeware',target='xmahjongg',tree=get('xwininfo -root -tree'),
+            backdrop=backdrop,execution_events=get('grep \'"/usr/freeware/bin/xmahjongg" Executing\' /var/log/xiri-fam.log'))
+        assert '"xmahjongg"' in r['catalog_launch']['tree']
+        capture('xdm-catalog-launch')
+        print('CHD catalog double-click launched xmahjongg',flush=True)
+
     def native_login():
         # No Xiri session selection: exercise NetBSD's unchanged default Xsession.
         cmd('if ! id netbsdtest >/dev/null 2>&1; then groupadd -g 1236 netbsdtest && '
@@ -188,23 +255,46 @@ def main():
 
     signal.signal(signal.SIGTERM, interrupted)
     try:
-        lab.start()
-        cmd('mount -t cd9660 -o ro /dev/cd0a /cdrom && cd /cdrom && sha256 -c SHA256 >/root/xdm-media.log && mkdir -p /root/xdm-test && cp -R runtime /root/xdm-test/ && cp *.c /root/xdm-test/ && cd /root/xdm-test')
-        cmd('cd runtime && make && sh install.sh --enable-xdm && cd ..',300)
-        cmd('for name in type place; do cc -O2 -Wall -Wextra -Werror -I/usr/X11R7/include "$name.c" '
+        if args.bundle:
+            lab.start(boot=False)
+            # Use the exact manual AutoLoad profile, with no network boot path.
+            lab.wait('login: ',600);lab.send('root');lab.wait('xiri-indy# ',30);lab.logged_in=True
+            r['graphics_console']=cmd('sysctl kern.consdev | grep ttyE0 && tty | grep ttyZ0')
+            r['direct_disk_boot']=True
+            cmd('uname -v | grep '+previous['pin']['ident'])
+            cmd('test "$(sha256 -q /netbsd)" = '+previous['pin']['native_kernel_sha256']+
+                ' && test "$(sha256 -q /netbsd.boot)" = '+previous['pin']['boot_kernel_sha256'])
+            module=previous['irix_module']
+            r['irix_module']=dict(name=module['name'],path=module['path'],sha256=get('sha256 -q '+shlex.quote(module['path'])).strip(),
+                                 modstat=get('modstat'),securelevel=int(get('sysctl -n kern.securelevel').strip()))
+            assert r['irix_module']['sha256']==module['sha256'] and r['irix_module']['securelevel']==1
+            print('CHD graphical autoboot reached native xdm',flush=True)
+        else:
+            lab.start()
+        cmd('mount -t cd9660 -o ro /dev/cd0a /cdrom && cd /cdrom && sha256 -c SHA256 >/root/xdm-media.log && mkdir -p /root/xdm-test && cp *.c /root/xdm-test/ && cd /root/xdm-test')
+        if args.bundle:
+            cmd('cd /cdrom && sha256 -c SUPPORT >/root/xdm-support.log && cd /root/xdm-test',1800)
+            r['support_files_verified']=support
+            cmd('test -f /usr/people/xiritest/.xsession && test ! -e /home/netbsdtest/.xsession && id netbsdtest')
+            r['native_control']=cmd('/root/irix-desktop/native-o32; test "$?" = 37')
+        else:
+            cmd('cp -R /cdrom/runtime . && cd runtime && make && sh install.sh --enable-xdm && cd ..',300)
+        cmd('for name in type place catalog-input; do cc -O2 -Wall -Wextra -Werror -I/usr/X11R7/include "$name.c" '
             '-L/usr/X11R7/lib -Wl,-rpath,/usr/X11R7/lib -lX11 -lXtst -o "$name" || exit; done; '
             'cc -O2 -Wall -Wextra -Werror -I/usr/X11R7/include render-probe.c '
             '-L/usr/X11R7/lib -Wl,-rpath,/usr/X11R7/lib -lXrender -lX11 -o render-probe',300)
-        # Account selection is explicit, outside the runtime installer.
-        cmd('groupadd -g 1235 xiritest-extra && usermod -G xiritest-extra -p "$(pwhash -b 6 xiritest)" xiritest && '
-            'install -o xiritest -g xiritest -m 700 /usr/local/share/xiri/xdm.xsession /usr/people/xiritest/.xsession && '
-            'cp /etc/ttys /etc/ttys.before-xdm && '
-            "sed '/^ttyE0[[:space:]]/s/[[:space:]]on[[:space:]]/ off /' /etc/ttys.before-xdm >/etc/ttys")
+        if not args.bundle:
+            # Account selection is explicit, outside the runtime installer.
+            cmd('groupadd -g 1235 xiritest-extra && usermod -G xiritest-extra -p "$(pwhash -b 6 xiritest)" xiritest && '
+                'install -o xiritest -g xiritest -m 700 /usr/local/share/xiri/xdm.xsession /usr/people/xiritest/.xsession && '
+                'cp /etc/ttys /etc/ttys.before-xdm && '
+                "sed '/^ttyE0[[:space:]]/s/[[:space:]]on[[:space:]]/ off /' /etc/ttys.before-xdm >/etc/ttys")
         r['ttys'] = get('cat /etc/ttys')
-        lab.offset = len(lab.serial_text()); lab.send('shutdown -h now')
-        lab.wait('unmounting done',120); lab.wait(r'Option\?',30); lab.logged_in = False
-        lab.send('5'); lab.wait('>> ',15); lab.send('boot -f bootp()/netbsd-XIRI_INDY')
-        lab.wait('login: ',600); lab.send('root'); lab.wait('xiri-indy# ',30); lab.logged_in = True
+        if not args.bundle:
+            lab.offset = len(lab.serial_text()); lab.send('shutdown -h now')
+            lab.wait('unmounting done',120); lab.wait(r'Option\?',30); lab.logged_in = False
+            lab.send('5'); lab.wait('>> ',15); lab.send('boot -f bootp()/netbsd-XIRI_INDY')
+            lab.wait('login: ',600); lab.send('root'); lab.wait('xiri-indy# ',30); lab.logged_in = True
         cmd('cd /root/xdm-test; export PATH=/usr/local/bin:/usr/X11R7/bin:/bin:/sbin:/usr/bin:/usr/sbin; ulimit -c 0')
         r['boot_services'] = cmd('/etc/rc.d/xdm status && /etc/rc.d/rpcbind status && /etc/rc.d/xiri_famd status && '
             'test -f /var/run/xiri-pty-ready && modstat | grep -E "^compat_irix_o32[[:space:]]+exec[[:space:]]+filesys"')
@@ -216,6 +306,9 @@ def main():
         r['xorg_log'] = get('cat /var/log/Xorg.0.log')
         assert 'Using XFree86 Acceleration Architecture (XAA)' in r['xorg_log']
         print('Native xdm greeter started at boot',flush=True)
+        cmd('tail -n 0 -F /var/log/messages >rpc-watch.log 2>rpc-watch.err & rpc_watch=$!; '
+            'sleep 2; kill -0 "$rpc_watch"; logger -t xiri-rpc-watch XIRI_RPC_WATCH_START')
+        wait('grep -q XIRI_RPC_WATCH_START rpc-watch.log',30)
         login('incorrect'); time.sleep(8)
         r['rejected_login_greeter'] = greeter()
         cmd('test ! -f /usr/people/xiritest/.xsession-errors')
@@ -252,7 +345,9 @@ def main():
         assert re.search(r'^GUARD .* exit=7 .*reason=leader-exit ',r['failed_startup']['guard'],re.M)
         cmd('cp clients.good /usr/local/libexec/xiri/desktop-clients.sh; rm /usr/people/xiritest/.xsession-errors')
         native_login()
-        login(); entry = ready(); capture('xdm-desktop-retry'); cmd('touch "$job/logout"')
+        login(); entry = ready(); capture('xdm-desktop-retry')
+        if args.bundle: catalog_launch()
+        cmd('touch "$job/logout"')
         entry['greeter_after'] = greeter(); guard(entry); survivors('after-retry'); r['retry'] = entry
         cmd('printf "exit\\n" >&9; exec 9>&-; wait "$side_su"')
         r['xdm_log'] = get('cat /var/log/xdm.log')
@@ -266,9 +361,23 @@ def main():
         r['installed_files'] = dict(re.findall(r'^SHA256 \((.+)\) = ([0-9a-f]{64})$',listing,re.M))
         assert len(r['installed_files']) == len(paths)
         r['native_after'] = cmd('/root/irix-desktop/native-o32; test "$?" = 37')
+        cmd('kill -0 "$rpc_watch" && logger -t xiri-rpc-watch XIRI_RPC_WATCH_END')
+        wait('grep -q XIRI_RPC_WATCH_END rpc-watch.log',30)
+        cmd('kill "$rpc_watch"; wait "$rpc_watch" || :')
+        r['rpcbind_warning_events']=get('cat rpc-watch.log')
+        assert 'rpcbind: cannot bind' not in r['rpcbind_warning_events']
         r['status'] = 'passed'
     except Exception as error:
         r['error'] = str(error); print('Failed: '+str(error),flush=True)
+        if args.bundle:
+            # Graphical DDB can leave serial silent. Preserve the kernel ring
+            # before attempting shutdown, even without interactive debugging.
+            try:
+                r['failure_kernel_log']=KernelLog(lab,int(manifest['kernel_msgbuf_symbol'],16)).read()
+                (d/'failure-kernel.log').write_text(r['failure_kernel_log'])
+                capture('xdm-failure')
+            except Exception as failure:
+                r['failure_capture_error']=str(failure)
         if args.debug_failure and lab.logged_in and not r.get('interrupted'):
             (d/'ready').write_text('ready\n'); print('Debug requests: '+str(d/'request.json'),flush=True)
             last = time.monotonic()
@@ -285,9 +394,13 @@ def main():
                 (d/('response-'+item['id']+'.json')).write_text(json.dumps(reply))
         raise
     finally:
+        if args.bundle and lab.logged_in:
+            try:r['shutdown_log']=KernelLog(lab,int(manifest['kernel_msgbuf_symbol'],16)).halt()
+            except Exception as error:r['cleanup_error']=str(error)
         lab.close(); r['clean_shutdown'] = lab.clean_shutdown
-        r['base_raw_unchanged'] = sha256(seed/'disk.raw') == origin['raw_sha256']
-        if r['status'] == 'passed' and not (r['clean_shutdown'] and r['base_raw_unchanged']):
+        unchanged = sha256(bundle/'netbsd-xiri.chd')==manifest['chd_sha256'] if args.bundle else sha256(seed/'disk.raw')==origin['raw_sha256']
+        r['base_chd_unchanged' if args.bundle else 'base_raw_unchanged'] = unchanged
+        if r['status'] == 'passed' and not (r['clean_shutdown'] and unchanged):
             r.update(status='error',error='Qualification requires a clean halt and unchanged source disk')
         (d/'result.json').write_text(json.dumps(r,indent=2)+'\n')
     if r['status'] != 'passed': raise RuntimeError(r['error'])

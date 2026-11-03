@@ -53,8 +53,8 @@ installing a background service on an unmodified NetBSD system is insufficient.
 | Session and service integration | Environment, launch order, native shell handoff, application launching and host-service adapters | Maintained rc.d services own native FAM v1 and PTY setup; native rpcbind retains its service lifecycle. The unprivileged client session owns its descendants. FAM supplies file notifications and process-execution polling for opened icons. The session starts `fm -b` and initializes Desktop; session restoration and broader desktop services remain open |
 | Development lab | Boot/reference automation, probes, traces, comparisons and reproducible artifacts | This repository plus the IRIS emulator fork; the emulator is not intended to be required on a supported physical MIPS workstation |
 
-The selected module CHD still uses the older root launcher with reserved-UID
-cleanup. The maintained runtime separates that ownership: system services
+The [selected xdm CHD](results/2026-11-03-xiri-xdm-image.md) packages the
+maintained runtime and native login manager. System services
 start before LOGIN; `xiri-session` runs as the native account, retaining HOME,
 supplementary groups and X authority on an existing X display. Its
 `EVFILT_PROC`/`NOTE_TRACK` supervisor follows descendants, including daemonized
@@ -69,8 +69,8 @@ implements the kernel boundary on our fork. The [service/session qualification](
 four desktops, independent shell survival, inherited groups/X authority and
 service restart. Its prerequisites are in the [runtime guide](../runtime/README.md).
 The [xdm integration](results/2026-11-03-xiri-xdm.md) reuses that boundary
-through the native login manager; a replacement deployment image requires
-its own disk-boot qualification. Newport and
+through the native login manager; the [replacement image](results/2026-11-03-xiri-xdm-image.md)
+passes direct-disk boot and both IRIX/native login paths. Newport and
 other native platform drivers remain separate from the foreign personality.
 See the [packaging phase](ROADMAP.md#next-packaging-phase).
 
@@ -81,7 +81,7 @@ handling. A loadable module still executes in the kernel. **A loadable module
 modeled after `compat_linux` is the desired final delivery target**, agreed on
 2026-11-01 and tracked in the
 [release roadmap](ROADMAP.md#milestone-4-usable-first-release). The current
-manual image [boot-loads the personality](results/2026-11-03-irix-module-image.md)
+manual image [boot-loads the personality](results/2026-11-03-xiri-xdm-image.md)
 from `compat_irix_o32.kmod` at normal securelevel. The
 [loadable-module build](../lab/irix-module/README.md) targets the Xiri fork;
 standalone module loading on a stock kernel has not been established.

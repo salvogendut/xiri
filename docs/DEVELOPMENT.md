@@ -12,7 +12,7 @@ The entry point covers routine work against the selected image; the older
 | `./xiri status [--json]` | Show the selected image, its kernel/emulator pins and current integration worktree revisions/status. Source tips can be newer than the tested image. |
 | `./xiri doctor` | Hash-check immutable image inputs and the qualification record; check host tools and Toolbox. It does not boot a guest. |
 | `./xiri run` | Open the bundle's pinned IRIS launcher for manual testing. NVRAM, overlays and snapshots retain normal manual-session behavior. |
-| `./xiri check` | Boot a disposable CHD copy, check desktop behavior, render pixels, home directory, catalog launching and cleanup, then write a qualification JSON and PNG. |
+| `./xiri check` | Boot a disposable CHD copy and select checks for its manifest: xdm login/4Dwm/ctwm for xdm images, or the manual launcher for older images. Check rendering, home directory, catalog launching and cleanup, then write qualification JSON and PNGs. |
 | `./xiri seed [--output PATH]` | Extract or reuse a raw automation seed without repeating the import. A mismatched existing disk is rejected. Changed manual graphical NVRAM is preserved and excluded from a new frozen seed. |
 | `./xiri build kernel` | Build tools and the configured modular mips64eb kernel from the NetBSD `xiri` worktree, with at most two build jobs. Build its matching personality with the command below. |
 | `./xiri build iris` | Build the IRIS `xiri` worktree with the pinned Rust toolchain, locked offline dependencies and two jobs. |
@@ -160,6 +160,24 @@ Results, the frozen harness/runtime and GL scanout PNGs stay under
 `.work/irix-xdm/runs/ordinary-*`. `--debug-failure` provides the same bounded
 command queue; SIGTERM requests cleanup instead of leaving the guest running.
 The [integration record](results/2026-11-03-xiri-xdm.md) describes evidence and
-remaining boundaries. Packaging and qualifying a replacement CHD is separate
-from this runtime test; `./xiri check` continues to test the selected manual
-image with its existing launcher.
+remaining boundaries. To prepare an image, use
+`python3 scripts/prepare-xiri-xdm-image.py`, then package its halted run with
+`./xiri image`. The [image cycle](results/2026-11-03-xiri-xdm-image.md) records
+the recipe and result. The full payload hash check can take more than five
+minutes in the emulator; it has a bounded 30-minute allowance.
+For a replacement kernel/module pair, pass `--kernel-build BUILD --baseline
+BASELINE` to the preparer, then the same baseline and boot kernel to
+`./xiri image`. The preparer verifies the old inventory before installing
+the new pair and checks its normal boot loading after graphical reboot.
+The [native allocator regression](results/2026-11-03-uvm-pglist.md) runs with
+`python3 scripts/test-uvm-pglist.py` against the fork's actual source.
+
+`python3 scripts/probe-xiri-xdm.py --bundle NEW_BUNDLE` cold-boots the CHD using
+its graphical AutoLoad NVRAM and tests the installed runtime. It supplies no
+TFTP boot kernel and does not reinstall runtime files or reset the accounts'
+passwords. The native account must already exist. A frozen profile under
+`verification/` lets tests keep working after manual NVRAM changes. Use the standard
+`qualify-xiri-image.py` command for validation/promotion; it recognizes the
+xdm record and requires both login paths. The bundle's build PROM profiles and
+manual overlays remain intact. `./xiri check` performs the same dispatch from
+the selected manifest and never promotes an observation by itself.

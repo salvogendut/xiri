@@ -7,19 +7,20 @@ selected image manifest; the explicit paths below document this image and
 older reproduction checkpoints. Automated checks never promote their result
 or replace the manual bundle's NVRAM/overlay state.
 
-The current accelerated development bundle is
-`.work/images/xiri-netbsd-desktop-20261103-module/`.
-`netbsd-xiri.chd` is an 8 GiB NetBSD disk compressed to 481,180,579 bytes
+The current accelerated xdm bundle is
+`.work/images/xiri-netbsd-desktop-20261103-xdm-v2/`.
+`netbsd-xiri.chd` is an 8 GiB NetBSD disk compressed to 481,225,588 bytes
 (about 459 MiB). Its SHA256 is
-`0d15ff1cb41eb28d5f411cc296f249fb30fa9f356b2f6e84d46f2ef86ba68629`.
-The [module-image cycle](results/2026-11-03-irix-module-image.md) records its
-boot, desktop and rendering checks. The previous `20261103-newport-xmahjongg`
+`1eb35a78f36aab9b67592fc32fa79604e4ddb244dcc7561b56b976e7b24cce83`.
+The [xdm image cycle](results/2026-11-03-xiri-xdm-image.md) records its disk
+boot, both user desktops, rendering and catalog checks. The previous
+`20261103-module` image remains available with its original root launcher. The previous `20261103-newport-xmahjongg`
 built-in image remains available as a control, including its manual state.
 The earlier `20261102-behavior` software bundle
 and `20261102-framed-accel` bundle are preserved for comparison.
-It contains the qualified Xiri kernel, original IRIX
-runtimes, installed application/catalog payload, persistent fonts and a
-manual desktop launcher. The [desktop service qualification](results/2026-11-02-desktop-services.md)
+The current bundle contains the qualified Xiri kernel, original IRIX
+runtimes, installed application/catalog payload, persistent fonts, boot services and
+native xdm login, plus a manual fallback launcher. The [desktop service qualification](results/2026-11-02-desktop-services.md)
 adds native FAM, catalog contents, toolbar bitmaps and the original Toolchest
 menus. The [usability update](results/2026-11-02-desktop-usability.md) adds
 graphical automatic boot, console login, both logout menus, window-manager
@@ -46,9 +47,53 @@ its opened icon while running and returning to the exact closed pixels after
 exit. It also verifies filesystem and Dumpster double-clicks opening their
 directory views. Full Dumpster operations and launch animation remain open.
 
-## Current module-based image
+## Current xdm image
 
-The current kernel is source-equivalent to NetBSD `xiri` `d1ce7a96615`, using
+The matched kernel/module pair comes from NetBSD `xiri` commit
+`9390bc04900`, including the [UVM allocation fix](results/2026-11-03-uvm-pglist.md)
+found during CHD qualification. The personality boot-loads as `exec / filesys`
+at normal securelevel 1. The [build pins](../lab/irix-xdm/README.md) preserve
+the source and artifact hashes; the Xiri fork hooks are still required.
+
+Launch the qualified bundle directly:
+
+```sh
+/var/home/salvogendut/Dev/xiri/.work/images/xiri-netbsd-desktop-20261103-xdm-v2/run-iris.sh
+```
+
+It boots automatically to native NetBSD xdm. Use these public development
+credentials:
+
+| User | Password | Desktop | HOME |
+| --- | --- | --- | --- |
+| `xiritest` | `xiritest` | Original IRIX 4Dwm | `/usr/people/xiritest` |
+| `netbsdtest` | `netbsdtest` | Standard native NetBSD ctwm | `/home/netbsdtest` |
+
+Xorg explicitly selects the qualified 1280×1024 Newport configuration with
+XAA enabled. Original IRIX logout menus return to xdm; system services survive.
+Native xdm/PAM and the system Xsession remain unchanged. The IRIX session is
+selected only by xiritest's `.xsession`; FAM still serves that one configured
+IRIX account. Root has no password and remains available on serial B for
+administration. The ttyE0 getty is disabled so xdm owns the graphical keyboard.
+
+The [qualification](results/2026-11-03-xiri-xdm-image.json) covers three IRIX
+logins, a separate native ctwm login, both IRIX logout routes, failed-startup
+recovery, catalog launch, full-screen acceleration and clean halt. PNGs show
+[4Dwm](results/images/2026-11-03-xiri-xdm-image.png),
+[ctwm](results/images/2026-11-03-xiri-xdm-image-native.png) and the
+[greeter](results/images/2026-11-03-xiri-xdm-image-greeter.png).
+Winterm startup/font metrics and the greeter's Xft Render workaround remain
+explicit limits. The native logout test ends ctwm from its own terminal;
+it does not qualify its Quit menu.
+
+For root's manual fallback, stop xdm with `/etc/rc.d/xdm stop`, then run
+`xiri-desktop`. User logs are in `~/.xsession-errors` and `~/.xiri/sessions/`;
+service logs are `/var/log/xdm.log` and `/var/log/xiri-fam.log`. Use serial B
+for `shutdown -h now` before closing the emulator.
+
+## Previous module image with the root launcher
+
+That earlier kernel is source-equivalent to NetBSD `xiri` `d1ce7a96615`, using
 `XIRI_IRIX_MODULE` without built-in IRIX support. During boot, NetBSD loads
 `compat_irix_o32.kmod` from `/stand/sgimips/11.99.9/modules/`; `/etc/modules.conf`
 and `modules=YES` in `/etc/rc.conf` enable it. Both o32 and n32 applications use
@@ -73,17 +118,10 @@ Winterm was explicitly resized for input checks; its startup metrics still
 need work. Prismatic must use a compatible IRIS backend and a fresh image
 state directory. Preserve overlays belonging to the older CHD.
 
-The [new service/session runtime](results/2026-11-03-xiri-session.md) is
-qualified on disposable clones, including same-user shell survival and
-existing-X-server reuse. It has not been packaged into this selected CHD.
-This image still uses the older reserved-UID launcher. Native xdm integration
-now has its own [runtime and qualification cycle](results/2026-11-03-xiri-xdm.md),
-with normal password login as xiritest and an explicit full-screen Newport
-configuration. It is not enabled in this selected CHD. The replacement image
-must package both runtime cycles and pass direct-disk boot before promotion.
-The full service/session replay raw disk
-also predates the separately qualified FAM stop hook; install the final
-runtime before preparing a future image.
+The [service/session runtime](results/2026-11-03-xiri-session.md) and
+[xdm integration](results/2026-11-03-xiri-xdm.md) are now packaged in the
+current xdm image above. This older module CHD retains its original launcher
+and manual state as a regression control.
 
 ## Previous accelerated image with the xmahjongg repair
 
@@ -108,7 +146,7 @@ The [direct CHD qualification](results/2026-11-03-newport-xmahjongg-image.json)
 checks disk boot, the replacement module hash, native Render, catalog launch
 and cleanup. Its [PNG](results/images/2026-11-03-newport-xmahjongg-image.png)
 shows the launched game. This bundle is preserved as a built-in control;
-`lab/irix-installed-desktop/image.json` now selects the module-based image.
+That cycle selected the module-based image; the current pointer selects the xdm image above.
 The inherited opened/closed Icon Catalog pixel check belongs to the
 software cycle; catalog launch is checked again from the new CHD.
 
@@ -171,29 +209,18 @@ at `127.0.0.1:8891` through **Machine → Serial console**.
 Monitor and serial A ports are 8898 and 8890. Adjust all three if another
 machine already uses them.
 
-The graphical profile starts NetBSD automatically. Log into NetBSD on the
-display as `root` (the development guest has no root password), then start
-the desktop:
+The graphical profile starts NetBSD and xdm automatically. Log in as
+`xiritest` / `xiritest` for IRIX or `netbsdtest` / `netbsdtest` for native ctwm.
+In winterm, `id -un` reports `xiritest`; `echo "$HOME"` and `pwd` both report
+`/usr/people/xiritest`. Wait for its `xiritest@xiri$` prompt before typing.
+Native `/bin/sh` runs inside winterm through the PTY handoff. A future actual
+IRIX root desktop should use HOME `/`; NetBSD root's account remains unchanged.
 
-```sh
-/usr/local/bin/xiri-desktop
-```
-
-Root is the service launcher. The desktop itself runs as **xiritest, UID
-1234**, so `/usr/people/xiritest` is its home. In winterm, `id -un` should
-report `xiritest`, and `echo "$HOME"` and `pwd` should both show that path.
-The user chose to retain this arrangement for the new test image. Direct
-xiritest login is deferred because the current supervisor reserves the
-whole UID for cleanup. A future actual IRIX root desktop should use HOME
-`/`; NetBSD root's own account remains unchanged.
-Wait for winterm's `xiritest@xiri$` prompt before typing: its window can appear
-before the shell has finished starting.
-
-The launcher starts native Xorg/Newport and original 4Dwm, Toolchest,
-winterm, xclock, Icon Catalog and xmahjongg. It uses the reserved ordinary
-UID 1234 and `HOME=/usr/people/xiritest` for clients. Native `/bin/sh` runs
-inside winterm through the existing PTY handoff. The launcher has no
-session time limit by default. Logs are under `/var/tmp/xiri-desktop/`.
+The IRIX session starts original 4Dwm, Toolchest, winterm, xclock, Icon Catalog,
+xmahjongg and desktop icons on xdm's X server. It has no session time limit
+by default. The native account uses the unchanged system Xsession and ctwm.
+Older images still require root login followed by `xiri-desktop`; use their
+bundled README for that historical workflow.
 
 The X screen is 1280×1024; the default PROM timing can leave two extra
 framebuffer columns. **Desktop → Open Unix Shell** now opens another xwsh
@@ -215,12 +242,11 @@ The previous `.work/images/xiri-netbsd-desktop-20261102-behavior/`,
 Use the new CHD in a fresh machine directory/overlay; do not attach an overlay
 from the older base image to it.
 
-Choose **Desktop → Log Out** in Toolchest to return to the launching shell.
+Choose **Desktop → Log Out** in Toolchest to return to xdm.
 For the desktop menu, hold the right mouse button over empty background,
-move to **Log Out**, then release. Both routes stop the owned clients and
-services. They do not save an IRIX session. Ctrl-C in a serial console
-running the launcher remains an alternative.
-Then shut down NetBSD before stopping IRIS:
+move to **Log Out**, then release. Both routes stop the session's clients;
+FAM, rpcbind and xdm remain running. They do not save an IRIX session.
+For shutdown, log in as root on serial B and halt NetBSD before stopping IRIS:
 
 ```sh
 shutdown -h now
@@ -261,8 +287,9 @@ From the bundle directory:
 ```
 
 Press Ctrl+P to start if the frontend is paused, then click the display to
-capture input. NetBSD boots on the display; log in as `root` and run
-`xiri-desktop`. Serial B at `127.0.0.1:8891` remains available for diagnostics.
+capture input. NetBSD boots to xdm; use `xiritest` / `xiritest` or
+`netbsdtest` / `netbsdtest`. Serial B at `127.0.0.1:8891` remains available
+for root administration.
 Do not attach the same writable CHD/overlay to another running emulator;
 make a separate copy when testing simultaneously. Ports 8890, 8891 and
 8898 can be changed in `[advanced.expert]` if occupied.
@@ -350,17 +377,18 @@ IRIS also supports `rtc save` in its monitor.
 
 ## Reuse in automated work
 
-Use the prepared image for routine desktop work. Inventory/extraction is
-only necessary when deliberately changing the imported payload. This
-probe clones the CHD, boots directly from disk and uses its installed
-launcher without importing applications again:
+Use `./xiri check` for the selected image. It chooses the xdm or legacy
+launcher probe from the manifest and never changes the current image pointer.
+For the current bundle, the explicit command is:
 
 ```sh
-PYTHONDONTWRITEBYTECODE=1 python3 scripts/probe-xiri-image.py \
-  .work/images/xiri-netbsd-desktop-20261103-module \
-  --iris-bin-dir .work/images/xiri-netbsd-desktop-20261103-module/emulator \
-  --arrange-winterm
+python3 scripts/probe-xiri-xdm.py \
+  --bundle .work/images/xiri-netbsd-desktop-20261103-xdm
 ```
+
+This clones the CHD and frozen graphical boot profile under `verification/`,
+boots from disk without a TFTP kernel and checks the installed runtime.
+Manual NVRAM/overlays remain untouched. Imported payload is reused.
 
 For older harnesses that require a raw disk, materialize a stopped seed
 once (the tool reuses the verified extraction when available):
@@ -413,8 +441,9 @@ The complete desktop is still under development. Icon Catalog discovers 18
 pages and lists application names, including all 21 Freeware entries. Native
 FAM supplies real directory notifications; FileManager lists native files and
 folders. The imported toolbar glyphs render, and the Trusted Path panel is gone.
-The launcher owns FAM and any rpcbind it starts, then removes them on exit.
-This remains a single-user development service at UID/GID 1234.
+Boot rc.d owns FAM and rpcbind; they remain running across desktop logouts.
+FAM serves the configured IRIX account at UID/GID 1234. Other native accounts
+can use the standard NetBSD session.
 
 The [icon repair](results/2026-11-02-desktop-icons.md) restores application-specific
 Freeware artwork and FileManager folder/document icons through measured

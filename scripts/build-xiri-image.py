@@ -31,6 +31,12 @@ def main():
     assert r['status'] == 'observed' and r['clean_shutdown']
     assert r['guest_payload_verified'] and r['executable_permissions_applied']
     assert r['persistent_helpers_installed'] and r['native_x11_after']
+    xdm = r.get('session_manager') == 'xdm'
+    if xdm:
+        assert r['xdm']['greeter_boot_verified'] and r['graphics_boot']
+        assert r['base_raw_unchanged']
+        for path, digest in r['runtime_sources'].items():
+            assert sha(ROOT/path) == digest, path
     pin = json.loads(a.baseline.read_text())
     assert r['pin'] == pin
     assert bool(r.get('irix_module')) == bool(pin.get('module_build_manifest'))
@@ -125,17 +131,23 @@ def main():
         end = readme.index('Other original menu actions', start)
         readme = readme[:start] + ('This legacy seed uses the earlier desktop configuration.\n'
             'Toolchest launches have not been qualified for it.\n') + readme[end:]
+    if xdm:
+        readme = (ROOT/'lab/irix-installed-desktop/xdm-image-README.txt').read_text()
+        shutil.copyfile(seed/'result.json',out/'xdm-preparation.json')
     if a.experimental_note:
         readme = 'EXPERIMENTAL IMAGE\n'+a.experimental_note+'\n\n'+readme
     (out/'README.txt').write_text(readme)
     (out/'prismatic-state').mkdir()
     manual_nvram = seed/'nvram.bin'
     if r.get('graphics_boot'):
-        assert set(r['logout']) == {'toolchest', 'root-menu'}
-        assert all(entry['returned_to_graphics_shell'] for entry in r['logout'].values())
+        if not xdm:
+            assert set(r['logout']) == {'toolchest', 'root-menu'}
+            assert all(entry['returned_to_graphics_shell'] for entry in r['logout'].values())
         manual_nvram = seed/'nvram-graphics.bin'
         assert sha(manual_nvram) == r['graphics_nvram_sha256']
         shutil.copyfile(manual_nvram, out/'nvram-graphics.bin')
+        if xdm:
+            shutil.copyfile(manual_nvram,out/'verification/graphics-boot-nvram.bin')
     shutil.copyfile(manual_nvram, out/'prismatic-state/nvram.bin')
     kernel = a.kernel.resolve()
     assert sha(kernel) == pin['boot_kernel_sha256']
@@ -215,6 +227,13 @@ tftp_dir = "tftp"
     if r.get('graphics_boot'):
         report['manual_nvram_sha256'] = sha(manual_nvram)
         report['manual_console'] = 'graphics; AutoLoad Yes; serial B diagnostic login'
+    if xdm:
+        report['session_manager'] = 'xdm'
+        report['xdm'] = r['xdm']
+        report['runtime_sources'] = r['runtime_sources']
+        report['qualification_nvram'] = 'verification/graphics-boot-nvram.bin'
+        report['qualification_nvram_sha256'] = sha(manual_nvram)
+        report['kernel_msgbuf_symbol'] = r['kernel_msgbuf_symbol']
     (out/'manifest.json').write_text(json.dumps(report, indent=2)+'\n')
     print('Created', image, 'and verified exact raw-disk round trip', flush=True)
 

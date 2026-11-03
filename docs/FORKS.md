@@ -42,6 +42,18 @@ not repin qualified kernels, emulator binaries, runtime resources or guest disks
 
 ## IRIS upstream updates
 
+The 2026-11-03 xdm-image cycle fetched upstream at
+`28fa516684c54e00e35b258c65e5dcac3a36165c`, already contained in IRIS `xiri`
+`1aed0dfc842a427e32a53ad083e1be0a9d46a613`; no upstream merge was needed.
+The first CHD login exposed a native UVM allocator lower-bound fault. NetBSD
+`xiri` commit `9390bc04900a0d04796d494aca5b00651f12954d` fixes it; the
+[allocator record](results/2026-11-03-uvm-pglist.md) preserves the failed run
+and exact regression. A fresh kernel/module build uses the integration
+checkout and `.work/netbsd-xdm-build`. The image retains the qualified
+`819c682` emulator; the [image record](results/2026-11-03-xiri-xdm-image.md)
+tracks replacement validation. Older detached builds and manual images
+remain unchanged.
+
 The 2026-11-03 xdm cycle fetched upstream again at
 `28fa516684c54e00e35b258c65e5dcac3a36165c`, already contained in IRIS `xiri`
 `1aed0dfc842a427e32a53ad083e1be0a9d46a613`. No merge or affected emulator
