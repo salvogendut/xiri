@@ -33,10 +33,31 @@ the intermittent font collapse now reproduces in both native and IRIX Xlib
 against Xorg's scalable IBM Courier face. A session resource default selects
 the existing SGI Screen bitmap font. Follow-ups are the native Type1 metric
 failure, continued-child notification parity, IRIX nanosleep, broader job control and
-retesting GIMP against the updated signal handling. The extended font
+broader terminal workloads. The extended font
 diagnostic also captured repeated characters during XTest input; investigate
 that separately without attributing it to concurrency before a controlled
 comparison. Its failed input attempts are excluded from terminal acceptance.
+
+The [GIMP cycle](results/2026-11-03-irix-gimp.md) adds full-mask signal
+registration with paired o32/n32 checks and imports the original setup/data/
+plug-in resources. GIMP now paints, saves/reopens matching XCF and PNG files,
+quits normally and launches from Freeware as xiritest. Follow-ups are the
+missing `rename` preference-backup path, larger images/tile swapping and
+individual plug-ins. Shared-memory transport currently uses its fallback.
+The replacement manual CHD has separate boot/session acceptance.
+
+After the GIMP run, work through Icon Catalog tab by tab, as requested on
+2026-11-03. Use the [application checklist](ICON-CATALOG.md), starting from
+the existing 166-entry, 17-system-page inventory, and
+include any additional user pages visible in the current session. Maintain
+one checklist entry per launcher, preserving its tab, target and resource
+requirements. For each entry record direct execution, catalog double-click,
+visible UI, a basic useful action, and normal exit with child cleanup.
+Record CPU activity and processes left without a window separately from a
+successful launch. Link evidence and distinguish missing software, unsupported
+interfaces, slow startup and crashes; existing partial checks are not blanket
+application support. Finish GIMP's cold-image acceptance before starting this
+broader application pass.
 
 ## Next packaging phase
 
@@ -106,7 +127,7 @@ catalog command path and start winterm in HOME. The
 [desktop behavior cycle](results/2026-11-02-irix-desktop-behavior.md) addresses
 running-icon feedback, granite and filesystem/home/Dumpster icons before
 xdm integration. Next desktop work includes Dumpster actions, launch animation,
-preferences and persistence; GIMP signal registration and xosview statistics
+preferences and persistence; broader GIMP behavior and xosview statistics
 remain application-specific work. The
 [new manual CHD](results/2026-11-02-desktop-behavior-image.md) packages the
 session/FAM changes and clearly labels xiritest as the desktop user, with

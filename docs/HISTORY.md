@@ -5,6 +5,16 @@ status statements describe individual checkpoints and may be superseded by
 later entries. Use the [current README](../README.md), [development guide](DEVELOPMENT.md)
 and [selected image](../lab/irix-installed-desktop/image.json) for current work.
 
+The [2026-11-03 GIMP cycle](results/2026-11-03-irix-gimp.md) adds full action
+mask registration and preserves explicit self-masks with NODEFER. It passes
+80 paired signal records, 80 existing regressions and four native controls.
+Original GIMP setup, paintbrush editing, XCF/PNG save and reopen, normal exit
+and catalog launch now work with the additional original resources. Missing
+preference-backup rename and broader plug-in behavior remain explicit limits.
+The replacement CHD carries these resources and the module update; separate
+fresh GIMP and xdm/desktop checks precede promotion. The next systematic
+application pass is recorded in the [catalog checklist](ICON-CATALOG.md).
+
 The [2026-11-03 winterm reliability cycle](results/2026-11-03-winterm-reliability.md)
 adds PTY window sizing and SIGCHLD NOCLDSTOP support in the loadable module.
 The native shell handoff preserves initial dimensions; foreground jobs receive

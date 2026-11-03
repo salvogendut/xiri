@@ -12,7 +12,7 @@ catalog launches and running-icon feedback. Native NetBSD Xorg drives a
 1280×1024 accelerated Newport display. It retains the xmahjongg texture
 correction qualified by the earlier [rendering and interaction checks](docs/results/2026-11-03-newport-xmahjongg.md).
 
-The [current manual CHD](docs/results/2026-11-03-winterm-reliability.md) boots into
+The [current manual CHD](docs/results/2026-11-03-irix-gimp.md) boots into
 native NetBSD xdm. Log in as **xiritest** with password **xiritest** for the
 IRIX desktop, or **netbsdtest** / **netbsdtest** for standard NetBSD ctwm.
 `netbsdtest` belongs to `wheel` and can run `su -` for a root login shell;
@@ -22,12 +22,18 @@ These are public development-image credentials. The IRIX session uses UID
 loads `compat_irix_o32.kmod` during boot and runs the desktop on a kernel
 without built-in IRIX support. The retained [core kernel](lab/irix-xdm/README.md)
 also fixes a native memory-allocation fault found during CHD qualification.
-It still requires our NetBSD fork’s core hooks. The [latest module and shell
+It still requires our NetBSD fork’s core hooks. The [winterm module and shell
 handoff](lab/irix-winterm-reliability/README.md) preserve terminal dimensions,
 deliver resize notifications to foreground jobs and let winterm close normally
 when its shell exits.
 Terminal defaults now select the imported SGI Screen bitmap font, avoiding
 the reproduced collapsed metrics from Xorg's scalable IBM Courier face.
+The [GIMP checkpoint](docs/results/2026-11-03-irix-gimp.md) now demonstrates
+original GIMP 1.2.5 editing, XCF/PNG save and reopen, normal exit and catalog
+launching as xiritest. Its additional resources and signal-mask module update
+are included in the current image; application and desktop-login checks
+are recorded separately. The next pass follows the
+[tab-by-tab catalog checklist](docs/ICON-CATALOG.md).
 
 ## Related repositories
 
@@ -87,8 +93,11 @@ Use the `xiri` integration branches for both forks, following the
 
 Compatibility is incomplete. The underlying Type1 font-metric failure remains
 open; winterm's default now uses a verified SGI bitmap face. Broader graphics operations,
-Dumpster actions, preferences and session persistence need work. GIMP needs
-retesting after the SIGCHLD change; xosview still needs IRIX statistics interfaces.
+Dumpster actions, preferences and session persistence need work. The
+[GIMP checkpoint](docs/results/2026-11-03-irix-gimp.md) covers basic editing
+and XCF/PNG round trips; preference-backup `rename`, large images and the wider
+plug-in collection remain open. xosview
+still needs IRIX statistics interfaces.
 Continued-child signal behavior and IRIX nanosleep also remain open.
 The user's broader desktop survey is encouraging,
 but it is not a per-application qualification.

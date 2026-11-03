@@ -256,3 +256,32 @@ this helper and verifies `pwd` in winterm. The preserved icons CHD retains
 the previous helper. `/usr/lib/desktop/launcheffect` and
 `/usr/lib/desktop/waitmap` have since been located and privately extracted;
 their runtime role remains to qualify before installation.
+
+### GIMP application resources (2026-11-03)
+
+After resolving signal registration, the original GIMP 1.2.5 setup requires
+its application data, defaults and plug-ins. Run `scripts/stage-irix-gimp.py`
+against the read-only supplied installation. Its
+[ledger](../lab/irix-gimp/resources.json) records every source/destination,
+checksum, original mode and applied mode. The three trees are
+`/usr/freeware/{share,etc,lib32}/gimp/1.2`; the additional library files are
+`libgck-1.2.so.1`, `libgtkxmhtml.so.2` and `libgimpprint.so.2` under
+`/usr/freeware/lib32`. Destinations retain these paths below `/emul/irix`.
+ELF files use the existing 0555 policy; scripts use 0755, other files 0644,
+and directories 0755. Source bytes remain unchanged.
+
+The payload also installs original `/sbin/sh` at `/emul/irix/sbin/sh`.
+IRIX libc uses this canonical path for `popen`; the previously imported
+`/bin/sh` contains identical bytes but did not cover that pathname. The
+runtime installer publishes `/usr/freeware -> /emul/irix/usr/freeware` when
+unused, because native `cp` invoked by the original setup script does not
+apply the foreign emulation-root lookup to its arguments. Existing native
+directories and links are preserved.
+
+Image preparation accepts `--gimp-resources .work/irix-gimp-resources` and
+verifies archive members, file hashes, ownership, modes and link targets.
+It records the resource ledger in the resulting CHD bundle. Per-user setup
+runs as xiritest in `/usr/people/xiritest`; no `.gimp-1.2` from the source
+image or its package database is copied. See the
+[application observations](results/2026-11-03-irix-gimp.md) for tested paths
+and remaining compatibility gaps.

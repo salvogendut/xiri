@@ -1,0 +1,165 @@
+{
+  "schema": 1,
+  "status": "cold-chd-gimp-basic-paths-verified",
+  "bundle": ".work/images/xiri-netbsd-desktop-20261103-gimp",
+  "chd_sha256": "20b328a070537255c8c0aa4771aefd83cbaa8027208b93bf997302c426ef83b7",
+  "run": ".work/gimp-cycle/cold-gimp-44pcuvgz",
+  "run_result_sha256": "b3af085f151eeaa3b24e902d809a47cba6c3a03d64dfd2c113d828b72b861db7",
+  "harness_sha256": "e665fa6e181d4d2433bf034ab4e3c9e2cc24aca6f929323adf13cbadbe942091",
+  "serial_sha256": "2fc243fe7fb5149dc3fed9f079b91c65190bd8c91df3601e09e8ad8bc7383e0e",
+  "monitor_sha256": "8ebd03dd4662fc079cb4e46a8b1aa5b82fc9cd33a07b406419d8b0b5bdc13b18",
+  "pin": {
+    "schema": 1,
+    "description": "GIMP full signal mask module update; unchanged qualified N64 core kernel",
+    "ident": "XIRI_IRIX_MODULE_20261103",
+    "source_revision": "9390bc04900a0d04796d494aca5b00651f12954d",
+    "source_branch": "xiri",
+    "build_arch": "mips64eb",
+    "page_bytes": 8192,
+    "boot_kernel_sha256": "260b253f579ca46a50b83e367f95600b54c86756c47f5d9e0f9391251bfd7122",
+    "native_kernel_sha256": "ed97268e4c1db1c91a8973d16c1e31555816c2a29c220b29b9095eadf3b2ae04",
+    "debug_kernel_sha256": "0ac97373a1eec2648ff3efc178d6839c6bda6ae41e8045a1d79bf6a5c404958b",
+    "native_o32_sha256": "c294fbb1f2110445be31c096481ea54ab561c7e59ca5b9fc7171310098d755d4",
+    "source_dirty": false,
+    "emulator_revision": "819c6825504d40ad9f9aa00554249affd2da9446",
+    "emulator_branch": "xiri",
+    "emulator_sha256": "3dd9299d71f1899ff5a8c9b76f6a24752d19e4f9a0bcfe0edf3a29001dc9c49e",
+    "ci_client_sha256": "2543b1fae0b442516c40c9d9155eebc9f9569561146b4f62948171fe7eb5c7f3",
+    "base_disk_sha256": "2d19c840bcc5d5e5d424a5f12b4def72b9e8681e6b9e172b22bd51943bf7bb82",
+    "nvram_sha256": "025e170feb9adcfbfa55a745ba2d976fd0ba0f3d39967d7f52622d6ad54c2ef5",
+    "config_sha256": "b4b1d27b1d8e80ec31b07f9f98e0ca1da8a1793cb90880bbc1e65a4b169c8fe2",
+    "runtimes": [
+      {
+        "name": "vendor-o32-libc",
+        "path": "/usr/lib/libc.so.1",
+        "sha256": "ea766492103a193e9d404942705e4e28987545e37f699ede232b6c0f8c97c954"
+      },
+      {
+        "name": "vendor-o32-rld",
+        "path": "/lib/rld",
+        "sha256": "30228b54c1e5585b365514eb7c9895b03cc0f61cb898e05e3ddafece87863439"
+      },
+      {
+        "name": "vendor-n32-libc",
+        "path": "/lib32/libc.so.1",
+        "sha256": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e"
+      },
+      {
+        "name": "vendor-n32-rld",
+        "path": "/lib32/rld",
+        "sha256": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b"
+      }
+    ],
+    "config_path": "lab/irix-module/XIRI_IRIX_MODULE",
+    "committed_source_revision": "9390bc04900a0d04796d494aca5b00651f12954d",
+    "module_build_manifest": "lab/irix-gimp/build.json",
+    "module_build_manifest_sha256": "62b602499254d709bfb56b5c65c68046133aeb3b56df55a2ee7600305efa61c8",
+    "module_source_equivalent_commit": "7b7794b0c07f31f953c34b6be6826156898649d7"
+  },
+  "module": {
+    "name": "compat_irix_o32",
+    "path": "/stand/sgimips/11.99.9/modules/compat_irix_o32/compat_irix_o32.kmod",
+    "sha256": "1f7beada69c483ccdf6f118e5b9bae6210b4cddfe5319f4527fb2b2cf2be4efd",
+    "build_manifest": "lab/irix-gimp/build.json",
+    "build_manifest_sha256": "62b602499254d709bfb56b5c65c68046133aeb3b56df55a2ee7600305efa61c8",
+    "modstat": "NAME                       CLASS    SOURCE   FLAG  REFS    SIZE REQUIRES \naccf_dataready             misc     builtin  -        0       - -\naccf_httpready             misc     builtin  -        0       - -\naes                        misc     builtin  -        1       - -\naes_ccm                    misc     builtin  -        0       - ,compat_netbsd32\naio                        misc     builtin  -        0       - -\naudio                      driver   builtin  -        1       - -\nblake2s                    misc     builtin  -        0       - -\nbpf                        driver   builtin  -        0       - lf32,compat_netbsd32\nbpf_filter                 misc     builtin  -        3       - -\nbufq_disksort              bufq     builtin  -        0       - -\nbufq_fcfs                  bufq     builtin  -        1       - -\nbufq_priocscan             bufq     builtin  -        0       - -\nccd                        driver   builtin  -        0       - ,compat_netbsd32\ncd9660                     vfs      builtin  -        0       - -\nchacha                     misc     builtin  -        0       - -\nclockctl                   driver   builtin  -        0       - -\ncoda                       vfs      builtin  -        0       - lf32,compat_netbsd32\ncompat_100                 exec     builtin  -        2       - -\ncompat_110                 exec     builtin  -        1       - -\ncompat_16                  exec     builtin  -        1       - lib,if_ppp\ncompat_20                  exec     builtin  -        2       - lib,if_ppp\ncompat_30                  exec     builtin  -        2       - lib,if_ppp\ncompat_40                  exec     builtin  -        2       - lib,if_ppp\ncompat_43                  exec     builtin  -        1       - 2\ncompat_50                  exec     builtin  -        4       - lib,if_ppp\ncompat_50_quota            exec     builtin  -        1       - p\ncompat_60                  exec     builtin  -        3       - lib,if_ppp\ncompat_70                  exec     builtin  -        1       - 2,compat_netbsd32\ncompat_80                  exec     builtin  -        2       - lib,if_ppp\ncompat_90                  exec     builtin  -        2       - ib,if_ppp\ncompat_irix_o32            exec     filesys  -        0       - exec_elf32,compat_netbsd32\ncompat_netbsd32            exec     builtin  -       11       - ib,if_ppp\ncompat_netbsd32_100        exec     builtin  -        1       - ,compat_netbsd32\ncompat_netbsd32_110        exec     builtin  -        0       - c_elf32,compat_netbsd32\ncompat_netbsd32_16         exec     builtin  -        0       - _ppp\ncompat_netbsd32_20         exec     builtin  -        1       - 2,compat_netbsd32\ncompat_netbsd32_30         exec     builtin  -        1       - 2,compat_netbsd32\ncompat_netbsd32_40         exec     builtin  -        1       - bsd32\ncompat_netbsd32_43         exec     builtin  -        0       - mpat_netbsd32\ncompat_netbsd32_50         exec     builtin  -        2       - 2,compat_netbsd32\ncompat_netbsd32_60         exec     builtin  -        1       - 2,compat_netbsd32\ncompat_netbsd32_80         exec     builtin  -        1       - 2,compat_netbsd32\ncompat_netbsd32_90         exec     builtin  -        1       - 2,compat_netbsd32\ncompat_netbsd32_coredump   misc     builtin  -        0       - 32\ncompat_netbsd32_mqueue     exec     builtin  -        0       - c_elf32,compat_netbsd32\ncompat_netbsd32_nfssrv     exec     builtin  -        0       - at_netbsd32\ncompat_netbsd32_ptrace     exec     builtin  -        1       - trace_common\ncompat_netbsd32_quota      exec     builtin  -        0       - \ncompat_netbsd32_quota_50   exec     builtin  -        0       - 32,compat_netbsd32\ncompat_netbsd32_sysvipc    exec     builtin  -        1       - sd32\ncompat_netbsd32_sysvipc_50 exec     builtin  -        0       - \ncompat_sysctl_09_43        exec     builtin  -        1       - -\ncompat_sysv_50             exec     builtin  -        1       - npf\ncompat_util                misc     builtin  -        3       - -\ncons                       driver   builtin  -        0       - -\ncoredump                   misc     builtin  -        1       - -\ndk_subr                    misc     builtin  -        1       - -\ndrvctl                     driver   builtin  -        0       - -\nefs                        vfs      builtin  -        0       - -\nexec_elf32                 exec     builtin  -        2       - -\nexec_elf64                 exec     builtin  -        0       - -\nexec_script                exec     builtin  -        0       - -\next2fs                     vfs      builtin  -        0       - 2,compat_netbsd32\nextensions                 secmodel builtin  -        1       - -\nfdesc                      vfs      builtin  -        0       - -\nffs                        vfs      builtin  -        1       - c_elf32,compat_netbsd32\ni2c_bitbang                misc     builtin  -        0       - -\ni2cexec                    misc     builtin  -        0       - -\nif_agr                     driver   builtin  -        0       - -\nif_gif                     driver   builtin  -        0       - bsd32\nif_gre                     driver   builtin  -        0       - -\nif_loop                    driver   builtin  -        0       - -\nif_npflog                  driver   builtin  -        0       - -\nif_ppp                     driver   builtin  -        2       - ,compat_netbsd32\nif_sl                      driver   builtin  -        0       - zlib,if_ppp\nif_stf                     driver   builtin  -        0       - -\nif_tap                     driver   builtin  -        0       - -\nif_tun                     driver   builtin  -        0       - -\nif_vlan                    driver   builtin  -        0       - -\nip_ecn                     misc     builtin  -        1       - -\nkernfs                     vfs      builtin  -        0       - -\nksem                       misc     builtin  -        1       - -\nlayerfs                    misc     builtin  -        3       - -\nlfs                        vfs      builtin  -        0       - -\nmfs                        vfs      builtin  -        0       - elf32,compat_netbsd32\nmiiverbose                 driver   builtin  -        0       - -\nmqueue                     misc     builtin  -        2       - -\nmsdos                      vfs      builtin  -        0       - -\nnfs                        vfs      builtin  -        1       - -\nnfsserver                  misc     builtin  -        1       - 2\nnpf                        misc     builtin  -        5       - c_elf32,compat_netbsd32\nnpf_alg_icmp               misc     builtin  -        0       - mpat_netbsd32\nnpf_ext_log                misc     builtin  -        0       - c_elf32,compat_netbsd32\nnpf_ext_normalize          misc     builtin  -        0       - c_elf32,compat_netbsd32\nnpf_ext_rndblock           misc     builtin  -        0       - c_elf32,compat_netbsd32\nnpf_ext_route              misc     builtin  -        0       - c_elf32,compat_netbsd32\nntfs                       vfs      builtin  -        0       - -\nnull                       vfs      builtin  -        0       - f32,compat_netbsd32\noverlay                    vfs      builtin  -        0       - tbsd32\npci                        driver   builtin  -        0       - -\nppp_bsdcomp                misc     builtin  -        0       - compat_netbsd32\nppp_deflate                misc     builtin  -        0       - \nprocfs                     vfs      builtin  -        0       - f32,compat_netbsd32\nptrace                     exec     builtin  -        0       - lf32,compat_netbsd32\nptrace_common              exec     builtin  -        3       - -\nptyfs                      vfs      builtin  -        0       - -\npuffs                      vfs      builtin  -        0       - f32,compat_netbsd32\nputter                     driver   builtin  -        1       - -\nscsi_subr                  exec     builtin  -        0       - -\nscsiverbose                misc     builtin  -        0       - -\nsecmodel_bsd44             secmodel builtin  -        0       - elf32,compat_netbsd32\nsecurelevel                secmodel builtin  -        1       - -\nslcompress                 misc     builtin  -        2       - -\nspkr                       driver   builtin  -        0       - lf32,compat_netbsd32\nsuser                      secmodel builtin  -        1       - -\nsysmon                     driver   builtin  -        1       - -\nsysmon_power               driver   builtin  -        0       - _netbsd32\nsysmon_taskq               misc     builtin  -        0       - -\nsysv_ipc                   exec     builtin  -        3       - -\ntmpfs                      vfs      builtin  -        0       - -\nufs                        misc     builtin  -        3       - c_elf32,compat_netbsd32\numap                       vfs      builtin  -        0       - elf32,compat_netbsd32\nunion                      vfs      builtin  -        0       - -\nvcoda                      driver   builtin  -        1       - -\nvnd                        driver   builtin  -        0       - -\nwapbl                      vfs      builtin  -        2       - -\nzlib                       misc     builtin  -        1       - -\n",
+    "securelevel": 1
+  },
+  "resources": {
+    "manifest_sha256": "f78342cf63ec66073445b620cba81f4faddfcc60e0102d05bca470f42b7ee8c4",
+    "payload_sha256": "ccf2f145de03dbb2744e9d8f60f48f33f3c54770ea4189093d27839b271b304f",
+    "paths": 1217,
+    "namespace_alias": "/usr/freeware -> /emul/irix/usr/freeware",
+    "application_qualification": "pending separate GIMP UI check"
+  },
+  "fresh_overlay": true,
+  "resource_injection": false,
+  "source_user_profile_imported": false,
+  "identity": {
+    "uid": 1234,
+    "gid": 1234,
+    "home": "/usr/people/xiritest",
+    "login": "native xdm"
+  },
+  "first_setup": {
+    "setup": "total 40\ndrwx------  17 xiritest  xiritest   512 Nov  3 20:03 .\ndrwx------   9 xiritest  xiritest   512 Nov  3 20:03 ..\ndrwx------   2 xiritest  xiritest   512 Nov  3 20:03 brushes\ndrwx------   2 xiritest  xiritest   512 Nov  3 20:03 curves\ndrwx------   2 xiritest  xiritest   512 Nov  3 20:03 fractalexplorer\ndrwx------   2 xiritest  xiritest   512 Nov  3 20:03 generated_brushes\ndrwx------   2 xiritest  xiritest   512 Nov  3 20:03 gfig\ndrwx------   2 xiritest  xiritest   512 Nov  3 20:03 gflare\n-rw-------   1 xiritest  xiritest   794 Nov  3 20:03 gimprc\ndrwx------   5 xiritest  xiritest   512 Nov  3 20:03 gimpressionist\ndrwx------   2 xiritest  xiritest   512 Nov  3 20:03 gradients\n-rw-------   1 xiritest  xiritest   198 Nov  3 20:03 gtkrc\ndrwx------   2 xiritest  xiritest   512 Nov  3 20:03 levels\ndrwx------   2 xiritest  xiritest   512 Nov  3 20:03 modules\ndrwx------   2 xiritest  xiritest  1024 Nov  3 20:03 palettes\ndrwx------   2 xiritest  xiritest   512 Nov  3 20:03 patterns\ndrwx------   2 xiritest  xiritest   512 Nov  3 20:03 plug-ins\ndrwx------   2 xiritest  xiritest   512 Nov  3 20:03 scripts\ndrwx------   2 xiritest  xiritest   512 Nov  3 20:03 tmp\n-rw-------   1 xiritest  xiritest  1144 Nov  3 20:03 unitrc\n\nGdk-WARNING **: shmget failed: error 89 (Function not implemented)\n"
+  },
+  "first_main": {
+    "tree": "           0x1a002a1 \"GIMP Tip of the Day\": (\"tip_of_the_day\" \"Gimp\")  513x137+0+0  +383+443\n           0x1a00294 \"Brush Selection\": (\"brush_selection\" \"Gimp\")  178x255+0+0  +410+60\n           0x1a00283 \"Tool Options\": (\"tool_options\" \"Gimp\")  178x217+0+0  +210+60\n           0x1a00253 \"Layers, Channels & Paths\": (\"layers_channels_paths\" \"Gimp\")  281x329+0+0  +60+360\n           0x1a00181 \"The GIMP\": (\"toolbox\" \"Gimp\")  142x220+0+0  +60+60\n     0x1a00001 (has no name): (\"gimp\" \"Gimp\")  10x10+10+10  +10+10\n",
+    "process": "3229    1    0    0 Is   0:00.01  0.0 /usr/sbin/inetd \n3350 2741   12   12 I    0:00.52  0.0 qmgr \n3419  457 1234 1234 I    0:00.03  0.0 /bin/sh \n3549  468 1234 1234 I    0:01.68  0.0 /usr/sbin/fm-3549 \n 584  692 1234 1234 S    0:18.19 15.8 gimp \n 692  690 1234 1234 Is+  0:00.13  0.0 sh \n4588  584 1234 1234 S    0:03.38  8.1 /usr/freeware/lib32/gimp/1.2/plug-ins/scr\n 330 3113    0    0 S    0:02.47  0.1 -sh \n1002  330    0    0 S+   0:00.08  0.0 gzip \n1217 4524    0    0 O+   0:00.07  0.0 ps \n1342  330    0    0 S+   0:00.05  0.0 od \n3113    1    0    0 Is   0:00.89  0.0 login \n4269 4524    0    0 S+   0:00.05  0.0 tail \n4524  330    0    0 S+   0:00.01  0.0 -sh \n2677    1 1234 1234 S    0:32.35  0.0 /usr/local/sbin/famd \n\nGdk-WARNING **: shmget failed: error 89 (Function not implemented)\ngimp: Can't rename /usr/people/xiritest/.gimp-1.2/gimprc to /usr/people/xiritest/.gimp-1.2/gimprc.old; Function not implemented\ngimp: shmget() failed: Disabling shared memory tile transport.\n"
+  },
+  "editing": {
+    "tree": "           0x1a002f7 \"xiri-gimp-test.png-0.0 (RGB) 100%\": (\"image_window\" \"Gimp\")  295x319+0+0  +128+128\n",
+    "process": " 584  692 1234 1234 S    0:20.06  4.0 gimp \n4588  584 1234 1234 I    0:03.38  0.0 /usr/freeware/lib32/gimp/1.2/plug-ins/scr\n"
+  },
+  "saved_png": {
+    "bytes": 5544,
+    "sha256": "21d875156957ce6ee4093a7aa1cb42f7da5aeededd9185b230ffa128e609182a",
+    "dimensions": [
+      256,
+      256
+    ],
+    "decoded_rgb_bytes": 196608,
+    "changed_pixels": 5168,
+    "dark_pixels": 15468,
+    "method": "Independent ImageMagick PNG decoding compared to generated input"
+  },
+  "test_inputs": {
+    "xiri-gimp-test.xcf": "cfde34b1654f5896743efb8fcb367f9bce1c1c757119c737022c165764a5e97f",
+    "xiri-gimp-test.png": "8715c7aaa64eb0619465d946ee1490a36e1f10d1f0db0e27134a8812e19b8b78"
+  },
+  "catalog_launch": {
+    "saved_png_sha256": "21d875156957ce6ee4093a7aa1cb42f7da5aeededd9185b230ffa128e609182a",
+    "pre_wait_state": " 584  692 1234 1234 Z    0:00.00  0.0 (gimp)\n\nGdk-WARNING **: shmget failed: error 89 (Function not implemented)\ngimp: Can't rename /usr/people/xiritest/.gimp-1.2/gimprc to /usr/people/xiritest/.gimp-1.2/gimprc.old; Function not implemented\ngimp: shmget() failed: Disabling shared memory tile transport.\n",
+    "exit": "0\n",
+    "children_absent": true,
+    "catalog_seconds": 32.24,
+    "catalog_pid": 1446,
+    "process": " PID PPID  UID  GID STAT    TIME %CPU COMMAND\n1446    1 1234 1234 S    0:14.72 22.0 /usr/lib/desktop/iconcatalog/pages/C/Free\n",
+    "tree": "           0x1800213 \"GIMP Tip of the Day\": (\"tip_of_the_day\" \"Gimp\")  513x136+0+0  +383+444\n           0x1800206 \"Brush Selection\": (\"brush_selection\" \"Gimp\")  178x255+0+0  +402+32\n           0x18001f4 \"Tool Options\": (\"tool_options\" \"Gimp\")  178x217+0+0  +202+32\n           0x18001c4 \"Layers, Channels & Paths\": (\"layers_channels_paths\" \"Gimp\")  281x337+0+0  +52+328\n           0x18000f2 \"The GIMP\": (\"toolbox\" \"Gimp\")  142x220+0+0  +52+32\n     0x1800001 (has no name): (\"gimp\" \"Gimp\")  10x10+10+10  +10+10\n           0x100006b \"Icon Catalog: Freeware (Page 9 of 18)\": (\"IconCatalog\" \"IconCatalog\")  900x500+0+0  +372+450\n     0x1000006 \"Icon Catalog\": (\"iconcatalog\" \"IconCatalog\")  1x1+640+512  +640+512\n     0x1000001 \"Icon Catalog\": (\"iconcatalog\" \"IconCatalog\")  600x300+400+450  +400+450\n",
+    "events": "famd[2677]: ImdFileMonitor_416 said: request 142 monitor file \"/usr/freeware/bin/gimp\"\nfamd[2677]: sent event to ImdFileMonitor_416: request 142 \"/usr/freeware/bin/gimp\" Exists\nfamd[2677]: sent event to ImdFileMonitor_416: request 142 \"/usr/freeware/bin/gimp\" EndExist\nfamd[2677]: sent event to ImdFileMonitor_416: request 142 \"/usr/freeware/bin/gimp\" Executing\n"
+  },
+  "reopened": {
+    "xcf": "           0x180025a \"xiri-gimp-test.xcf-0.0 (RGB) 100%\": (\"image_window\" \"Gimp\")  295x319+0+0  +224+224\n",
+    "png": "           0x1800316 \"xiri-gimp-test.png-2.0 (RGB) 100%\": (\"image_window\" \"Gimp\")  295x319+0+0  +320+320\n           0x18002dd \"xiri-gimp-test.png-1.0 (RGB) 100%\": (\"image_window\" \"Gimp\")  295x319+0+0  +256+256\n",
+    "process": "1446    1 1234 1234 S    0:17.33  2.7 /usr/lib/desktop/iconcatalog/pages/C/Free\n1455 1446 1234 1234 I    0:03.28  0.0 /usr/freeware/lib32/gimp/1.2/plug-ins/scr\n"
+  },
+  "final": {
+    "children": [
+      1455
+    ],
+    "catalog_processes_absent": true,
+    "native_after": "/root/irix-desktop/native-o32; test \"$?\" = 37; xiri_rc=$?; printf '\\n \bXIRI_693a43731c9642e88584c5fa9fe74762_RC=%s\\n' \"$xiri_rc\"\nXIRI_ABI_PROBE\n\nXIRI_693a43731c9642e88584c5fa9fe74762_RC=0\nxiri-indy# ",
+    "events": "famd[2677]: ImdFileMonitor_416 said: request 142 monitor file \"/usr/freeware/bin/gimp\"\nfamd[2677]: sent event to ImdFileMonitor_416: request 142 \"/usr/freeware/bin/gimp\" Exists\nfamd[2677]: sent event to ImdFileMonitor_416: request 142 \"/usr/freeware/bin/gimp\" EndExist\nfamd[2677]: sent event to ImdFileMonitor_416: request 142 \"/usr/freeware/bin/gimp\" Executing\nfamd[2677]: sent event to ImdFileMonitor_416: request 142 \"/usr/freeware/bin/gimp\" Exited\n",
+    "processes": " 298 2877 1234 1234 Ss   0:10.77  0.0 /usr/local/libexec/xiri/session-guard \n 416 3419 1234 1234 I    0:06.54  0.0 /usr/sbin/iconcatalog \n 457  298 1234 1234 Is   0:00.11  0.0 /bin/sh \n 460  457 1234 1234 I    0:00.02  0.0 /bin/sh \n 462  464 1234 1234 I    0:02.01  0.0 /emul/irix/usr/bin/X11/4Dwm \n 464  457 1234 1234 I    0:00.02  0.0 /bin/sh \n 468  457 1234 1234 I    0:00.02  0.0 /bin/sh \n 478  457 1234 1234 I    0:00.02  0.0 /bin/sh \n 479  457 1234 1234 I    0:00.03  0.0 /bin/sh \n 665  460 1234 1234 I    0:00.54  0.0 /emul/irix/usr/bin/X11/toolchest \n 690    1 1234 1234 I    0:00.84  0.0 /emul/irix/usr/sbin/xwsh \n1569  478 1234 1234 I    0:00.60  0.0 /emul/irix/usr/freeware/bin/xmahjongg \n3170  479 1234 1234 S    0:00.77  0.0 /emul/irix/usr/bin/X11/xclock \n3419  457 1234 1234 I    0:00.03  0.0 /bin/sh \n3549  468 1234 1234 I    0:01.74  0.0 /usr/sbin/fm-3549 \n 692  690 1234 1234 Is+  0:00.14  0.0 sh \n2677    1 1234 1234 R    1:38.41 13.9 /usr/local/sbin/famd \n",
+    "stderr": "\nGdk-WARNING **: shmget failed: error 89 (Function not implemented)\ngimp: Can't rename /usr/people/xiritest/.gimp-1.2/gimprc to /usr/people/xiritest/.gimp-1.2/gimprc.old; Function not implemented\ngimp: shmget() failed: Disabling shared memory tile transport.\n\nGdk-WARNING **: shmget failed: error 89 (Function not implemented)\n/usr/lib/desktop/iconcatalog/pages/C/Freeware/gimp: shmget() failed: Disabling shared memory tile transport.\n",
+    "home": "xiritest xiritest /usr/people/xiritest/.gimp-1.2\nxiritest xiritest /usr/people/xiritest/xiri-gimp-test.png\nSHA256 (/usr/people/xiritest/xiri-gimp-test.png) = 21d875156957ce6ee4093a7aa1cb42f7da5aeededd9185b230ffa128e609182a\n"
+  },
+  "clean_shutdown": true,
+  "source_unchanged": true,
+  "screenshot": {
+    "path": "docs/results/images/2026-11-03-irix-gimp-cold.png",
+    "sha256": "0526866e426d103778cc046a2410fd2271748896180043e429e7b07e355a7198",
+    "source": ".work/gimp-cycle/cold-checks/reopened.png",
+    "byte_identical": true,
+    "method": "IRIS software framebuffer after GL/SW readback refresh"
+  },
+  "evidence": {
+    ".work/gimp-cycle/cold-checks/edit.json": "2632bb9a33016ff79b418e26cae29178f5593d3b9aa633ad94297b50b648afc5",
+    ".work/gimp-cycle/cold-checks/final.json": "248b60edfc88405128ddba29fa63d4b84fde80b97de4befc574e87136295c9ce",
+    ".work/gimp-cycle/cold-checks/first-setup.json": "02af35cf2e41e5eaf79e81725e7a91ea3af9d2d4069dea311595b45a4554f9b3",
+    ".work/gimp-cycle/cold-checks/main.json": "ecb42ae2eff82e111bfabd27181e94ee25fe1e594b1fe74f3de8c258c373b845",
+    ".work/gimp-cycle/cold-checks/pixels.json": "4b87466d347f8543470c2ce18fabe6bcf33d6eb40f2956304f255e23c938b36f",
+    ".work/gimp-cycle/cold-checks/quit-check.json": "0dff57795e3a447ada0eaa48486d567a390f0a686ee1ebe0f32b98bb5493253a",
+    ".work/gimp-cycle/cold-checks/relaunch.json": "947fb561ebc6b71ee7a064431d5377dd130686ca930a6e65743fb81c937cb679",
+    ".work/gimp-cycle/cold-checks/reopen.json": "8892002a8c307996611d9acbfd858fef368a37940d690b5351c39a759d1a88bd",
+    ".work/gimp-cycle/cold-checks/setup.json": "7525ea71fc5941359edbb746da7888c07a5b75889d2aac67145be8c02907a7d7"
+  },
+  "limitations": [
+    "This run reopens generated XCF/PNG inputs and paints/saves the PNG; the separate first application report qualifies creating/saving both formats.",
+    "Preference backup rename remains unsupported; shared-memory tile transport uses its fallback.",
+    "The shell-launched GIMP was a zero-CPU zombie after Quit until its winterm parent collected status 0 with wait; it and Script-Fu were then absent.",
+    "The PNG Load input sequence produced two windows with the edited content; the input-repetition cause was not isolated.",
+    "Full plug-in coverage, large images, tile swapping, recovery, printing and extended sessions remain unqualified."
+  ]
+}

@@ -14,6 +14,7 @@ from types import SimpleNamespace
 from xiri_lab import Guest, ROOT, load_probe, sha256, source_hashes
 from xiri_lab.xdm_image import runtime_files, support_files
 from xiri_lab.kernel_log import KernelLog
+from xiri_lab.gimp_resources import prepare as prepare_gimp_resources
 
 
 def main():
@@ -22,6 +23,7 @@ def main():
     parser.add_argument('--kernel-build',type=Path,default=ROOT/'.work/netbsd-module-build')
     parser.add_argument('--baseline',type=Path,help='install a replacement kernel/module pair from --kernel-build')
     parser.add_argument('--keep-accounts',action='store_true',help='refresh an existing xdm image without changing accounts or passwords')
+    parser.add_argument('--gimp-resources', type=Path, help='verified output directory from stage-irix-gimp.py')
     args = parser.parse_args()
     seed = args.seed.resolve()
     origin = json.loads((seed/'image-source.json').read_text())
@@ -43,6 +45,7 @@ def main():
     (d/'harness.py').write_bytes(Path(__file__).read_bytes())
     print('Results: '+str(d.relative_to(ROOT)),flush=True)
     media = d/'media'; media.mkdir()
+    gimp = prepare_gimp_resources(args.gimp_resources.resolve(), media) if args.gimp_resources else None
     replacement=None
     if args.baseline:
         build_path=ROOT/pin['module_build_manifest']
@@ -81,6 +84,7 @@ def main():
              base_seed_result_sha256=sha256(seed/'result.json'),
              sources={**source_hashes(), 'scripts/prepare-xiri-xdm-image.py':sha256(Path(__file__)),
                       'scripts/xiri_lab/kernel_log.py':sha256(ROOT/'scripts/xiri_lab/kernel_log.py'),
+                      'scripts/xiri_lab/gimp_resources.py':sha256(ROOT/'scripts/xiri_lab/gimp_resources.py'),
                       'scripts/xiri_lab/xdm_image.py':sha256(ROOT/'scripts/xiri_lab/xdm_image.py')},
              runtime_sources={str(f.relative_to(media)):sha256(f) for f in (media/'runtime').rglob('*') if f.is_file()})
     r['kernel_msgbuf_symbol']=hex(msgbuf_symbol)
@@ -102,8 +106,13 @@ def main():
             r['irix_module']=dict(name='compat_irix_o32',path=path,
                 sha256=sha256(media/'compat_irix_o32.kmod'),build_manifest=pin['module_build_manifest'],
                 build_manifest_sha256=pin['module_build_manifest_sha256'])
+        if gimp:
+            cmd('tar xzpf /cdrom/gimp-resources.tgz -C / && sh /cdrom/gimp-verify.sh >/root/gimp-resource-check.log', 600)
+            r['gimp_resources'] = {k:v for k,v in gimp.items() if k != 'files'}
         cmd('mkdir -p /root/xdm-image-build && cp -R /cdrom/runtime /root/xdm-image-build/ && '
             'cd /root/xdm-image-build/runtime && make && sh install.sh --enable-xdm',300)
+        if gimp:
+            cmd('test "$(readlink /usr/freeware)" = /emul/irix/usr/freeware')
         if args.keep_accounts:
             cmd('test "$(id -u xiritest)" = 1234 && test "$(id -g xiritest)" = 1234 && '
                 'test "$(id -u netbsdtest)" = 1236 && test "$(id -g netbsdtest)" = 1236 && '
@@ -123,6 +132,8 @@ def main():
         listing = get('sha256 '+shlex.join(paths))
         r['installed_files'] = dict(re.findall(r'^SHA256 \((.+)\) = ([0-9a-f]{64})$',listing,re.M))
         assert len(r['installed_files']) == len(paths)
+        if gimp:
+            r['installed_files'].update(gimp['files'])
         r['ttys'] = get('cat /etc/ttys')
         assert re.search(r'^ttyE0\s+.*\soff\s',r['ttys'],re.M)
         assert re.search(r'^ttyZ0\s+.*\son\s',r['ttys'],re.M)

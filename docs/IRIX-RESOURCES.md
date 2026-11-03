@@ -86,6 +86,20 @@ rule and opened-state artwork are already present. GIMP's GTK library was
 also present; its mapping failure required a kernel address-range change,
 not additional resources.
 
+The later [GIMP startup work](results/2026-11-03-irix-gimp.md) identifies
+separate application-data requirements. The [GIMP ledger](../lab/irix-gimp/resources.json)
+records 1,133 files, 53 directories and 31 symbolic links, all copied beneath
+`/emul/irix`: the `share/gimp/1.2`, `etc/gimp/1.2` and `lib32/gimp/1.2`
+trees under `/usr/freeware`, three additional plug-in libraries, and the
+canonical `/sbin/sh` used by libc's `popen`. The original shell is already
+present through `/bin/sh`, but that alias alone does not satisfy `popen`.
+Native helpers invoked by the setup script also need
+`/usr/freeware -> /emul/irix/usr/freeware`; the runtime installer creates
+that link only when the native prefix is unused. GIMP generates its own
+per-user `.gimp-1.2` directory. No old user settings or installation database
+are imported. The ledger is a resource inventory, not a claim that every
+plug-in has been tested.
+
 ## IRIX information sources
 
 - [IRIX7 Silicon Graphics Technical Document Archive](https://irix7.com/techpubs.html)

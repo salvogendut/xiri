@@ -42,6 +42,21 @@ not repin qualified kernels, emulator binaries, runtime resources or guest disks
 
 ## IRIS upstream updates
 
+The 2026-11-03 GIMP cycle fetched upstream again at
+`28fa516684c54e00e35b258c65e5dcac3a36165c`. It is already an ancestor of
+IRIS `xiri` `ae62114344a1d435152b8ae7e48c599974b4aec7`; no merge or rebuild
+is required. The application diagnostic retains the current winterm CHD's
+qualified `819c682` emulator. Both fork checkouts started clean on `xiri`.
+
+NetBSD `xiri` now contains and has pushed the full-action-mask/NODEFER fix
+`7b7794b0c07` and its documentation follow-up `675a3ac19e5`. The isolated
+`.work/netbsd-gimp-build` module retains the unchanged `9390bc04900` N64
+core. The [build record](../lab/irix-gimp/build.json) verifies source
+equivalence; [paired signal records](results/2026-11-03-irix-gimp-signals.json)
+and [application observations](results/2026-11-03-irix-gimp.json) record the
+passed checks and clean shutdown. Pinned worktrees and the winterm manual
+image remain intact.
+
 The 2026-11-03 winterm reliability cycle fetched upstream at
 `28fa516684c54e00e35b258c65e5dcac3a36165c`, already contained in the current
 IRIS `xiri` tip `ae62114344a1d435152b8ae7e48c599974b4aec7`. There were no new

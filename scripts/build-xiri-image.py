@@ -134,6 +134,8 @@ def main():
     if xdm:
         readme = (ROOT/'lab/irix-installed-desktop/xdm-image-README.txt').read_text()
         shutil.copyfile(seed/'result.json',out/'xdm-preparation.json')
+    if r.get('gimp_resources'):
+        readme += (ROOT/'lab/irix-gimp/image-README.txt').read_text()
     if a.experimental_note:
         readme = 'EXPERIMENTAL IMAGE\n'+a.experimental_note+'\n\n'+readme
     (out/'README.txt').write_text(readme)
@@ -218,6 +220,11 @@ tftp_dir = "tftp"
         report['experimental_note'] = a.experimental_note
     if r.get('irix_module'):
         report['irix_module'] = r['irix_module']
+    if r.get('gimp_resources'):
+        ledger = seed/'media/gimp-resources.json'
+        assert sha(ledger) == r['gimp_resources']['manifest_sha256']
+        shutil.copyfile(ledger, out/'gimp-resources.json')
+        report['gimp_resources'] = r['gimp_resources']
     if emulator_files:
         report['emulator_files'] = emulator_files
     if r.get('xorg_configuration'):

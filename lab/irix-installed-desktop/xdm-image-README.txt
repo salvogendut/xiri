@@ -57,7 +57,8 @@ Known limits: Xorg's scalable IBM Courier face can return collapsed 12x2
 metrics to native and IRIX clients; that underlying Type1 failure remains open.
 Window resizing and normal shell exit are covered by the new checks.
 Winterm uses NetBSD /bin/sh; original IRIX /bin/sh
-handles catalog command launches. GIMP needs retesting after the SIGCHLD fix.
+handles catalog command launches. Application support depends on the module
+and resource set recorded in this bundle; see any application notes below.
 Continued-child notifications, IRIX nanosleep, xosview statistics,
 complete Dumpster actions, preferences and
 saved-session behavior remain unfinished. A catalog icon does not certify

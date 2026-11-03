@@ -14,6 +14,11 @@ links, filetype rules/icons, application defaults and required libraries
 together with each application. Qualify direct execution, catalog launch,
 interaction and persistence before calling an application supported.
 
+The next pass after GIMP will test these launchers tab by tab. The
+[Icon Catalog checklist](ICON-CATALOG.md) lists every imported system entry
+and defines the startup, interaction and exit evidence to collect, including
+processes consuming CPU without producing a window.
+
 The [desktop service repair](results/2026-11-02-desktop-services.md) now shows
 the existing Freeware page and all 21 entry names. Native FAM supplies the
 directory notifications; no new package registration was fabricated. The
@@ -28,11 +33,19 @@ records the earlier boundary, the high-address mapping fix for GIMP, its subsequ
 signal registration failure, and xosview's unsupported statistics queries.
 No further library copying was needed for GIMP's observed loader failure.
 The [winterm cycle](results/2026-11-03-winterm-reliability.md) now adds SIGCHLD
-NOCLDSTOP registration, terminal resize and normal shell exit. Retest GIMP
-against that module before treating its old signal failure as the current
-boundary; no new GIMP success is claimed here.
-The [shell image](results/2026-11-02-irix-shell-image.md) packages these fixes
-and verifies xmahjongg's existing catalog action after a direct CHD boot.
+NOCLDSTOP registration, terminal resize and normal shell exit. The subsequent
+[GIMP checkpoint](results/2026-11-03-irix-gimp.md) fixes registration of full
+signal masks and adds the original application data, plug-ins and canonical
+`/sbin/sh`. Basic paintbrush editing, XCF/PNG save and reopen, normal exit and
+launch from the existing Freeware entry now work as xiritest. Preference
+backups still require `rename`; shared-memory transport uses a working
+fallback, and the wider plug-in collection remains unqualified. The new
+CHD includes the resources and replacement module, with separate
+[fresh GIMP](results/2026-11-03-irix-gimp-cold.json) and
+[desktop-login](results/2026-11-03-irix-gimp-image.json) checks.
+The earlier [shell image](results/2026-11-02-irix-shell-image.md) packages
+the original-shell and high-address mapping fixes and verifies xmahjongg's
+existing catalog action after a direct CHD boot.
 
 Original IRIX `inst` and Software Manager (`swmgr`) remain the later target
 for adding, upgrading and removing software with correct dependency handling,
