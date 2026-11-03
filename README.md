@@ -18,6 +18,21 @@ The manual launcher starts services as root and runs the desktop as
 Normal xdm login is planned. The compatibility personality is currently
 built into our custom NetBSD kernel.
 
+## Related repositories
+
+Xiri development uses these sibling checkouts:
+
+| Repository | Local checkout | Branch | Role |
+| --- | --- | --- | --- |
+| [NetBSD-xiri](https://github.com/salvogendut/NetBSD-xiri/tree/xiri) | `../NetBSD-xiri` | `xiri` | Our custom NetBSD fork, containing the IRIX compatibility personality and native platform changes. |
+| [IRIS](https://github.com/salvogendut/iris/tree/xiri) | `../iris` | `xiri` | Our emulator fork and primary development/testing environment for the emulated SGI Indy. |
+| [Prismatic](https://github.com/salvogendut/prismatic) | `../prismatic` | `main` | Our graphical frontend to IRIS, used for interactive emulator and desktop testing. |
+
+This repository holds the Xiri workflow, probes, resource manifests and
+documentation. See the [fork workflow](docs/FORKS.md) for integration rules
+and the [image guide](docs/XIRI-IMAGE.md) for matching Prismatic's IRIS backend
+to a qualified desktop image.
+
 ## Run the current image
 
 With the local image bundle and development dependencies already prepared:
