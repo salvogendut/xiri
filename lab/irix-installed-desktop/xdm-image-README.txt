@@ -15,6 +15,8 @@ Log in using these public, disposable development-image credentials:
 
 The IRIX session uses UID 1234 and HOME/cwd /usr/people/xiritest.
 The native account uses UID 1236 and HOME/cwd /home/netbsdtest.
+netbsdtest belongs to wheel: run su - in its terminal for a root login shell.
+Root has no password in this development image.
 Only xiritest selects the Xiri .xsession; the system Xsession/PAM stay native.
 FAM still supports one configured IRIX desktop account, not multiple users.
 Xorg uses the full 1280x1024 accelerated Newport configuration. The pinned

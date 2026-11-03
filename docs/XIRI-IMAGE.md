@@ -8,12 +8,14 @@ older reproduction checkpoints. Automated checks never promote their result
 or replace the manual bundle's NVRAM/overlay state.
 
 The current accelerated xdm bundle is
-`.work/images/xiri-netbsd-desktop-20261103-xdm-v2/`.
-`netbsd-xiri.chd` is an 8 GiB NetBSD disk compressed to 481,225,588 bytes
+`.work/images/xiri-netbsd-desktop-20261103-xdm-wheel-v2/`.
+`netbsd-xiri.chd` is an 8 GiB NetBSD disk compressed to 481,227,717 bytes
 (about 459 MiB). Its SHA256 is
-`1eb35a78f36aab9b67592fc32fa79604e4ddb244dcc7561b56b976e7b24cce83`.
-The [xdm image cycle](results/2026-11-03-xiri-xdm-image.md) records its disk
-boot, both user desktops, rendering and catalog checks. The previous
+`95eeecc4195dc63e80352b28a522b93da06495ebe95bcb4ce79f0b48b7572693`.
+The [wheel update](results/2026-11-03-xiri-wheel.md) verifies a fresh xdm login
+and `su -` from `netbsdtest`. Full desktop evidence is inherited from its
+preserved `20261103-xdm-v2` parent: the [xdm image cycle](results/2026-11-03-xiri-xdm-image.md)
+records disk boot, both user desktops, rendering and catalog checks. The previous
 `20261103-module` image remains available with its original root launcher. The previous `20261103-newport-xmahjongg`
 built-in image remains available as a control, including its manual state.
 The earlier `20261102-behavior` software bundle
@@ -58,7 +60,7 @@ the source and artifact hashes; the Xiri fork hooks are still required.
 Launch the qualified bundle directly:
 
 ```sh
-/var/home/salvogendut/Dev/xiri/.work/images/xiri-netbsd-desktop-20261103-xdm-v2/run-iris.sh
+/var/home/salvogendut/Dev/xiri/.work/images/xiri-netbsd-desktop-20261103-xdm-wheel-v2/run-iris.sh
 ```
 
 It boots automatically to native NetBSD xdm. Use these public development
@@ -69,6 +71,9 @@ credentials:
 | `xiritest` | `xiritest` | Original IRIX 4Dwm | `/usr/people/xiritest` |
 | `netbsdtest` | `netbsdtest` | Standard native NetBSD ctwm | `/home/netbsdtest` |
 
+`netbsdtest` belongs to `wheel`. Run `su -` in its terminal to open a root
+login shell; root's password remains empty in this development image.
+
 Xorg explicitly selects the qualified 1280×1024 Newport configuration with
 XAA enabled. Original IRIX logout menus return to xdm; system services survive.
 Native xdm/PAM and the system Xsession remain unchanged. The IRIX session is
@@ -76,12 +81,15 @@ selected only by xiritest's `.xsession`; FAM still serves that one configured
 IRIX account. Root has no password and remains available on serial B for
 administration. The ttyE0 getty is disabled so xdm owns the graphical keyboard.
 
-The [qualification](results/2026-11-03-xiri-xdm-image.json) covers three IRIX
+The inherited [parent qualification](results/2026-11-03-xiri-xdm-image.json) covers three IRIX
 logins, a separate native ctwm login, both IRIX logout routes, failed-startup
 recovery, catalog launch, full-screen acceleration and clean halt. PNGs show
 [4Dwm](results/images/2026-11-03-xiri-xdm-image.png),
 [ctwm](results/images/2026-11-03-xiri-xdm-image-native.png) and the
 [greeter](results/images/2026-11-03-xiri-xdm-image-greeter.png).
+The [account-update qualification](results/2026-11-03-xiri-wheel.json) repeats
+fresh-CHD native login, wheel membership, interactive `su -`, logout and
+clean halt; it does not repeat the full desktop suite.
 Winterm startup/font metrics and the greeter's Xft Render workaround remain
 explicit limits. The native logout test ends ctwm from its own terminal;
 it does not qualify its Quit menu.

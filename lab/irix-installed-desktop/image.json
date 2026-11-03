@@ -1,6 +1,6 @@
 {
-  "chd_sha256": "1eb35a78f36aab9b67592fc32fa79604e4ddb244dcc7561b56b976e7b24cce83",
-  "chd_bytes": 481225588,
+  "chd_sha256": "95eeecc4195dc63e80352b28a522b93da06495ebe95bcb4ce79f0b48b7572693",
+  "chd_bytes": 481227717,
   "logical_bytes": 8589934592,
   "nvram_sha256": "e8ed0dc7fa9b739699c96fea5d0d0681447db69d787a2fae05c5fcc85350f9c8",
   "config_sha256": "77c252ecac0b780d32570af5793b99320a59edbd3b8ef8a9bb9b5129a4277ea9",
@@ -14,14 +14,14 @@
     "run-iris.sh": "86cf47bb79b0eb980e40a566ff64f795b358a94f753015ae9460bb1e6e8d9680"
   },
   "schema": 1,
-  "bundle": ".work/images/xiri-netbsd-desktop-20261103-xdm-v2",
-  "image": ".work/images/xiri-netbsd-desktop-20261103-xdm-v2/netbsd-xiri.chd",
-  "raw_sha256": "c712ef8733ae3697157c4ec3c0c6e4a73d6c481809694d582fa405345d435371",
+  "bundle": ".work/images/xiri-netbsd-desktop-20261103-xdm-wheel-v2",
+  "image": ".work/images/xiri-netbsd-desktop-20261103-xdm-wheel-v2/netbsd-xiri.chd",
+  "raw_sha256": "66d2b205bb2a676d95bd1c9f92fcb543183aab5f1b08f6f41eb460e214e90d8e",
   "kernel_source": "9390bc04900a0d04796d494aca5b00651f12954d",
   "kernel_source_equivalent_commit": "9390bc04900a0d04796d494aca5b00651f12954d",
   "emulator_revision": "819c6825504d40ad9f9aa00554249affd2da9446",
-  "qualification": "docs/results/2026-11-03-xiri-xdm-image.json",
-  "qualification_sha256": "dea387b6fe04be00ff8903f94ad2de1524608e73d14832cebf46735938aa2706",
+  "qualification": "docs/results/2026-11-03-xiri-wheel.json",
+  "qualification_sha256": "3fca2c175d15d4477c2c26633bf56bbbe0db80ed80749174ce8f3db19713c48c",
   "session_manager": "xdm",
   "xdm": {
     "greeter_boot_verified": true,
@@ -34,12 +34,15 @@
       "netbsdtest": {
         "uid": 1236,
         "home": "/home/netbsdtest",
-        "desktop": "ctwm"
+        "desktop": "ctwm",
+        "supplementary_groups": [
+          "wheel"
+        ]
       }
     },
     "runtime_qualification": "docs/results/2026-11-03-xiri-xdm.json",
     "runtime_qualification_sha256": "d713325147c7bd7be540832e48fef02cc2449a31ce7c7809d4240fa5edf3adae",
-    "image_login_qualification": "verified"
+    "image_login_qualification": "wheel account verified; full desktop behavior inherited"
   },
   "irix_module": {
     "name": "compat_irix_o32",
@@ -52,5 +55,6 @@
   "newport_driver_sha256": "ce4f780398641bf90cc8ebe517dd03617df7bb447ba89da22c28357d4d898a74",
   "xaa_enabled": true,
   "desktop_behavior_resource_ledger_sha256": "9126f132039416f8f37ecca2ef7ad4a51f5bdedf9f9c7482dc3d0bb5a9fcddfa",
-  "native_fam_source_manifest_sha256": "9c8c18bc5f5418a4fa6ba1f906e05bb4905bc205fc3a82d440a886a86eda6d7d"
+  "native_fam_source_manifest_sha256": "9c8c18bc5f5418a4fa6ba1f906e05bb4905bc205fc3a82d440a886a86eda6d7d",
+  "qualification_scope": "wheel update; full desktop behavior inherited"
 }

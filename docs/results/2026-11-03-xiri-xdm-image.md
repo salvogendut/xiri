@@ -1,6 +1,7 @@
 # Xdm desktop image
 
-The replacement CHD is qualified and selected for manual testing. The
+This qualified CHD is preserved as the parent of the current
+[wheel-account update](2026-11-03-xiri-wheel.md). The
 [direct-disk result](2026-11-03-xiri-xdm-image.json) passes full-screen xdm,
 three IRIX logins, the separate native ctwm login, both original IRIX logout
 menus, failed-startup recovery, catalog launch and clean shutdown. The

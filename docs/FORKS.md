@@ -42,6 +42,11 @@ not repin qualified kernels, emulator binaries, runtime resources or guest disks
 
 ## IRIS upstream updates
 
+The 2026-11-03 wheel-account image update fetched upstream again at
+`28fa516684c54e00e35b258c65e5dcac3a36165c`, already contained in IRIS `xiri`
+`1aed0dfc842a427e32a53ad083e1be0a9d46a613`. No merge or fork build was needed;
+the update changes native account membership and image metadata only.
+
 The 2026-11-03 xdm-image cycle fetched upstream at
 `28fa516684c54e00e35b258c65e5dcac3a36165c`, already contained in IRIS `xiri`
 `1aed0dfc842a427e32a53ad083e1be0a9d46a613`; no upstream merge was needed.

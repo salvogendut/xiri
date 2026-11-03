@@ -26,6 +26,8 @@ configuration and an xdm session example; image preparation selects that
 example as `/usr/people/xiritest/.xsession`. `/home/netbsdtest` is a separate
 native ctwm account. Native xdm supplies credentials and per-login X authority;
 IRIX root's home, saved sessions and vendor login-manager files are not copied.
+The [wheel update](results/2026-11-03-xiri-wheel.md) adds `netbsdtest` to the
+native `/etc/group` wheel entry for `su -`; it requires no vendor resources.
 Service logs are `/var/log/xiri-fam.log` and `/var/log/xdm.log`; user logs are
 `$HOME/.xsession-errors` and `$HOME/.xiri/sessions/`. These are generated native
 state, separate from the imported-file ledger below.

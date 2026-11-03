@@ -1,0 +1,108 @@
+{
+  "status": "xdm-wheel-update-verified",
+  "scope": "netbsdtest supplementary wheel group",
+  "bundle": ".work/images/xiri-netbsd-desktop-20261103-xdm-wheel-v2",
+  "chd_sha256": "95eeecc4195dc63e80352b28a522b93da06495ebe95bcb4ce79f0b48b7572693",
+  "raw_sha256": "66d2b205bb2a676d95bd1c9f92fcb543183aab5f1b08f6f41eb460e214e90d8e",
+  "chd_bytes": 481227717,
+  "full_desktop_suite_rerun": false,
+  "inherited_full_desktop_qualification": {
+    "path": "docs/results/2026-11-03-xiri-xdm-image.json",
+    "sha256": "dea387b6fe04be00ff8903f94ad2de1524608e73d14832cebf46735938aa2706"
+  },
+  "preparation": {
+    "status": "passed",
+    "scope": "xdm-wheel-prepare",
+    "clean_shutdown": true,
+    "bundle": ".work/images/xiri-netbsd-desktop-20261103-xdm-v2",
+    "source_disk_sha256": "c712ef8733ae3697157c4ec3c0c6e4a73d6c481809694d582fa405345d435371",
+    "input_manifest_sha256": "841b16c53d307a0fb01dc734eab45a402ce1e64d1d0a42829c210e534a2735fe",
+    "inherited_seed_result_sha256": "b6d8727f1801629a32ec5d4454784372cfb5bfba7bfcda39a9f5f6cddf0686c2",
+    "sources": {
+      "scripts/xiri_lab/__init__.py": "98abff8b2f3c19912cf6993ac5094008cb9ecea0fb6d66c149f76184d9182743",
+      "scripts/xiri_lab/guest.py": "e589b08a06a91fca6fde4c4b10a3e97b90807da82bf6d545b45b1da517d0c954",
+      "scripts/probe-netbsd.py": "adfa9547fa98af28fd55e4e155e7667b2b0a8c7cea8aee8d58079da946b72a1d",
+      "lab/irix-xdm/wheel-update.py": "80bd8d37e264e6cea7713b355e7babdbdb325b25e8af820bffd7ad5c4e47633a",
+      "lab/irix-4dwm/type-ready.c": "61ce22cbda6c66ccaf53cbcffab5f3080be95004bcd3e5c6893dc54a8a9db838",
+      "scripts/xiri_lab/kernel_log.py": "1af61cafd398d63d12cda2344516cecf8edb43ba4c866fec5d4d3d34d560ea45"
+    },
+    "console": "sysctl kern.consdev | grep ttyE0 && tty | grep ttyZ0; xiri_rc=$?; pri \bntf '\\nXIRI_b0671efd04f24deb8ee11f9222fe2a72_RC=%s\\n' \"$xiri_rc\"\nkern.consdev = ttyE0\n/dev/ttyZ0\n\nXIRI_b0671efd04f24deb8ee11f9222fe2a72_RC=0\nxiri-indy# ",
+    "group_before": "wheel:*:0:root\ndaemon:*:1:daemon\nkmem:*:2:root\nsys:*:3:root\ntty:*:4:root\noperator:*:5:root\nmail:*:6:\nbin:*:7:\nwsrc:*:9:\nmaildrop:*:11:\npostfix:*:12:\ngames:*:13:\nnamed:*:14:\nntpd:*:15:\nsshd:*:16:\n_pflogd:*:18:\n_rwhod:*:19:\nstaff:*:20:root\n_proxy:*:21:\n_timedc:*:22:\n_sdpd:*:23:\n_httpd:*:24:\n_mdnsd:*:25:\n_tests:*:26:\n_tcpdump:*:27:\n_tss:*:28:\n_gpio:*:29:\n_rtadvd:*:30:\nguest:*:31:root\n_unbound:*:32:\n_nsd:*:33:\nnvmm:*:34:root\n_dhcpcd:*:35:\nnobody:*:39:\nutmp:*:45:\nauthpf:*:72:\nusers:*:100:\ndialer:*:117:\nnogroup:*:32766:\nxiritest:*:1234:\nxiritest-extra:*:1235:xiritest\nnetbsdtest:*:1236:\n",
+    "group_after": "wheel:*:0:root,netbsdtest\ndaemon:*:1:daemon\nkmem:*:2:root\nsys:*:3:root\ntty:*:4:root\noperator:*:5:root\nmail:*:6:\nbin:*:7:\nwsrc:*:9:\nmaildrop:*:11:\npostfix:*:12:\ngames:*:13:\nnamed:*:14:\nntpd:*:15:\nsshd:*:16:\n_pflogd:*:18:\n_rwhod:*:19:\nstaff:*:20:root\n_proxy:*:21:\n_timedc:*:22:\n_sdpd:*:23:\n_httpd:*:24:\n_mdnsd:*:25:\n_tests:*:26:\n_tcpdump:*:27:\n_tss:*:28:\n_gpio:*:29:\n_rtadvd:*:30:\nguest:*:31:root\n_unbound:*:32:\n_nsd:*:33:\nnvmm:*:34:root\n_dhcpcd:*:35:\nnobody:*:39:\nutmp:*:45:\nauthpf:*:72:\nusers:*:100:\ndialer:*:117:\nnogroup:*:32766:\nxiritest:*:1234:\nxiritest-extra:*:1235:xiritest\nnetbsdtest:*:1236:\n",
+    "passwd_sha256": "SHA256 (/etc/master.passwd) = 12f9354f4fc068da7149ce8b31be368b014cef8c491827de74da666c5006d669\nSHA256 (/etc/passwd) = 9d902cb1be4da1cfde275304c4ef959152b537772c46a21c1e6a2decf5f643c6\n",
+    "group_sha256": "6c4cc057c8dd186aa142a112e3e6f793a53c50ce7e43d7d0905367a90ecd49b9",
+    "account": "uid=1236(netbsdtest) gid=1236(netbsdtest) groups=1236(netbsdtest),0(wheel)\nwheel:*:0:root,netbsdtest\n",
+    "dimensions": "  dimensions:    1280x1024 pixels (339x271 millimeters)\n",
+    "services_before": "2749\n2402\n801\n",
+    "login_proof": [
+      "netbsdtest",
+      "1236",
+      "netbsdtest wheel",
+      "/home/netbsdtest"
+    ],
+    "su_login_proof": [
+      "root",
+      "0",
+      "/root",
+      "/root"
+    ],
+    "png_sha256": "98ce62e399f390b827ae63d5bf09a4daca17516598b5c0b4ba21889d49d1c108",
+    "services_after": "2749\n2402\n801\n",
+    "kernel_files": "SHA256 (/netbsd) = ed97268e4c1db1c91a8973d16c1e31555816c2a29c220b29b9095eadf3b2ae04\nSHA256 (/netbsd.boot) = 260b253f579ca46a50b83e367f95600b54c86756c47f5d9e0f9391251bfd7122\nSHA256 (/stand/sgimips/11.99.9/modules/compat_irix_o32/compat_irix_o32.kmod) = 8c406c907263a9a97455af00bdf74176438d91bddfbc4e45d15dc1c44f5cdd4b\n",
+    "modstat": "NAME                       CLASS    SOURCE   FLAG  REFS    SIZE REQUIRES \ncompat_irix_o32            exec     filesys  -        0       - exec_elf32,compat_netbsd32\n",
+    "securelevel": 1,
+    "native_after": "/root/irix-desktop/native-o32; test \"$?\" = 37; xiri_rc=$?; printf '\\n \bXIRI_6bad911983ca4313b25a157623785ed6_RC=%s\\n' \"$xiri_rc\"\nXIRI_ABI_PROBE\n\nXIRI_6bad911983ca4313b25a157623785ed6_RC=0\nxiri-indy# ",
+    "shutdown_log": "[   1.0000000] Copyright (c) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,\n[   1.0000000]     2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013,\n[   1.0000000]     2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023,\n[   1.0000000]     2024, 2025, 2026\n[   1.0000000]     The NetBSD Foundation, Inc.  All rights reserved.\n[   1.0000000] Copyright (c) 1982, 1986, 1989, 1991, 1993\n[   1.0000000]     The Regents of the University of California.  All rights reserved.\n\n[   1.0000000] NetBSD 11.99.9 (XIRI_IRIX_MODULE_20261103) #0: Tue Nov  3 12:18:11 UTC 2026\n[   1.0000000] \tsalvogendut@toolbx:/var/home/salvogendut/Dev/xiri/.work/netbsd-xdm-build/obj/sys/arch/sgimips/compile/XIRI_IRIX_MODULE\n[   1.0000000] total memory = 255 MB\n[   1.0000000] (768 KB reserved for ARCS)\n[   1.0000000] avail memory = 244 MB\n[   1.0000000] timecounter: Timecounters tick every 10.000 msec\n[   1.0000000] mainbus0 (root): SGI-IP22 [SGI, 69123457], 1 processor\n[   1.0000000] cpu0 at mainbus0: MIPS R4400 CPU (0x440) Rev. 4.0 with MIPS R4010 FPC Rev. 0.0\n[   1.0000000] cpu0: 48 TLB entries, 1TB (40-bit) VAs, 4KB (12-bit) PAs, 16MB max page size\n[   1.0000000] cpu0: 16KB/16B direct-mapped L1 instruction cache\n[   1.0000000] cpu0: 16KB/16B direct-mapped write-back L1 data cache\n[   1.0000000] cpu0: 1024KB/128B direct-mapped write-back L2 unified cache\n[   1.0000000] int0 at mainbus0 addr 0x1fbd9880\n[   1.0000000] int0: bus 33MHz, CPU 66MHz\n[   1.0000000] imc0 at mainbus0 addr 0x1fa00000: revision 3\n[   1.0000000] gio0 at imc0\n[   1.0000000] newport0 at gio0: SGI NG1 (board revision 0, cmap revision 2, xmap revision 3, vc2 revision 0), depth 24, monitor ID 10 (1280x1024 60Hz)\n[   1.0000000] newport0: 13W3 Monitor ID 10, PROM ID -1, determined monitor ID 10 (1280x1024 60Hz)\n[   1.0000000] wsdisplay0 at newport0 kbdmux 1: console (default, vt100 emulation)\n[   1.0000000] wsmux1: connecting to wsdisplay0\n[   1.0000000] hpc0 at gio0: SGI HPC3 (onboard)\n[   1.0000000] zsc0 at hpc0 offset 0x59830\n[   1.0000000] zstty0 at zsc0 channel 1\n[   1.0000000] zstty1 at zsc0 channel 0\n[   1.0000000] pckbc0 at hpc0 offset 0x59840\n[   1.0000000] pckbd0 at pckbc0 (kbd slot)\n[   1.0000000] wskbd0 at pckbd0: console keyboard, using wsdisplay0\n[   1.0000000] pms0 at pckbc0 (aux slot)\n[   1.0000000] wsmouse0 at pms0 mux 0\n[   1.0000000] sq0 at hpc0 offset 0x54000: SGI Seeq 80c03\n[   1.0000000] sq0: Ethernet address 08:00:69:12:34:57\n[   1.0000000] wdsc0 at hpc0 offset 0x44000: WD33C93A (20.0 MHz clock, BURST DMA, SCSI ID 0)\n[   1.0000000] scsibus0 at wdsc0: 8 targets, 8 luns per target\n[   1.0000000] haltwo at hpc0 offset 0x58000 not configured\n[   1.0000000] pi1ppc0 at hpc0 offset 0x59800\n[   1.0000000] pi1ppc0: capabilities=0x8<PS2>\n[   1.0000000] ppbus0 at pi1ppc0\n[   1.0000000] ppbus0: No IEEE1284 device found.\n[   1.0000000] button0 at hpc0 offset 0x59850\n[   1.0000000] hpc1 at gio0: SGI HPC3 (IOPLUS mezzanine)\n[   1.0000000] hpc1: using EXP0's DMA channel\n[   1.0000000] sq at hpc1 offset 0x54000 not configured\n[   1.0000000] hpc2 at gio0: SGI HPC1.5 (GIO slot)\n[   1.0000000] dsclock0 at mainbus0 addr 0x1fbe0000\n[   1.0000000] ioc0 at mainbus0 addr 0x1fbd9800: rev 0, machine Indy (Guinness), board rev 0\n[   1.0000000] WARNING: system needs entropy for security; see entropy(7)\n[   1.0000000] timecounter: Timecounter \"mips3_cp0_counter\" frequency 33000000 Hz quality 100\n[   1.0000030] timecounter: Timecounter \"clockinterrupt\" frequency 100 Hz quality 0\n[   1.0000030] scsibus0: waiting 2 seconds for devices to settle...\n[   3.0600039] sd0 at scsibus0 target 1 lun 0: <SGI, IRIS EMUL DISK, 1.0> disk fixed\n[   3.1119911] sd0: 8192 MB, 16645 cyl, 16 head, 62 sec, 512 bytes/sect x 16777216 sectors\n[   3.2299869] sd0: async, 8-bit transfers\n[   3.2888368] cd0 at scsibus0 target 4 lun 0: <Sony, CDU-76S, 1.0> cdrom removable\n[   3.3554278] cd0: async, 8-bit transfers\n[   3.4215923] boot device: sd0\n[   3.4822135] root on sd0a dumps on sd0b\n[   3.5657841] kern.module.path=/stand/sgimips/11.99.9/modules\n[   4.7770512] entropy: best effort\n[ 354.4879455] syncing disks... done\n[ 354.5672771] unmounting file systems...\n[ 354.6188066] unmounted /dev/cd0a on /cdrom type cd9660\n[ 354.6188066] unmounted /dev/pts on /emul/irix/dev/pts type null\n[ 354.6188066] unmounted ptyfs on /dev/pts type ptyfs\n[ 354.6188066] unmounted procfs on /proc type procfs\n[ 354.6188066] unmounted kernfs on /kern type kernfs\n[ 355.3888227] unmounted /dev/sd0a on / type ffs\n[ 355.3888227] unmounting done\n[ 355.4376437] halting...\n\n",
+    "source_disk_unchanged": true
+  },
+  "check": {
+    "status": "passed",
+    "scope": "xdm-wheel-chd",
+    "clean_shutdown": true,
+    "bundle": ".work/images/xiri-netbsd-desktop-20261103-xdm-wheel-v2",
+    "source_disk_sha256": "95eeecc4195dc63e80352b28a522b93da06495ebe95bcb4ce79f0b48b7572693",
+    "input_manifest_sha256": "519f19ff3fa04c05e9ab70cc414c3d551826c1f5a0714520c9e3dca7b5d1c72b",
+    "inherited_seed_result_sha256": "6ee298c2ce3d1fb86dc90067e5e8a8bc1f42f4a2e61e5278af7eec797b8152e4",
+    "sources": {
+      "scripts/xiri_lab/__init__.py": "98abff8b2f3c19912cf6993ac5094008cb9ecea0fb6d66c149f76184d9182743",
+      "scripts/xiri_lab/guest.py": "e589b08a06a91fca6fde4c4b10a3e97b90807da82bf6d545b45b1da517d0c954",
+      "scripts/probe-netbsd.py": "adfa9547fa98af28fd55e4e155e7667b2b0a8c7cea8aee8d58079da946b72a1d",
+      "lab/irix-xdm/wheel-update.py": "80bd8d37e264e6cea7713b355e7babdbdb325b25e8af820bffd7ad5c4e47633a",
+      "lab/irix-4dwm/type-ready.c": "61ce22cbda6c66ccaf53cbcffab5f3080be95004bcd3e5c6893dc54a8a9db838",
+      "scripts/xiri_lab/kernel_log.py": "1af61cafd398d63d12cda2344516cecf8edb43ba4c866fec5d4d3d34d560ea45"
+    },
+    "console": "sysctl kern.consdev | grep ttyE0 && tty | grep ttyZ0; xiri_rc=$?; pri \bntf '\\nXIRI_97f296c9b4f542dcb6d49c6fcab5ed63_RC=%s\\n' \"$xiri_rc\"\nkern.consdev = ttyE0\n/dev/ttyZ0\n\nXIRI_97f296c9b4f542dcb6d49c6fcab5ed63_RC=0\nxiri-indy# ",
+    "group_before": "wheel:*:0:root,netbsdtest\ndaemon:*:1:daemon\nkmem:*:2:root\nsys:*:3:root\ntty:*:4:root\noperator:*:5:root\nmail:*:6:\nbin:*:7:\nwsrc:*:9:\nmaildrop:*:11:\npostfix:*:12:\ngames:*:13:\nnamed:*:14:\nntpd:*:15:\nsshd:*:16:\n_pflogd:*:18:\n_rwhod:*:19:\nstaff:*:20:root\n_proxy:*:21:\n_timedc:*:22:\n_sdpd:*:23:\n_httpd:*:24:\n_mdnsd:*:25:\n_tests:*:26:\n_tcpdump:*:27:\n_tss:*:28:\n_gpio:*:29:\n_rtadvd:*:30:\nguest:*:31:root\n_unbound:*:32:\n_nsd:*:33:\nnvmm:*:34:root\n_dhcpcd:*:35:\nnobody:*:39:\nutmp:*:45:\nauthpf:*:72:\nusers:*:100:\ndialer:*:117:\nnogroup:*:32766:\nxiritest:*:1234:\nxiritest-extra:*:1235:xiritest\nnetbsdtest:*:1236:\n",
+    "group_after": "wheel:*:0:root,netbsdtest\ndaemon:*:1:daemon\nkmem:*:2:root\nsys:*:3:root\ntty:*:4:root\noperator:*:5:root\nmail:*:6:\nbin:*:7:\nwsrc:*:9:\nmaildrop:*:11:\npostfix:*:12:\ngames:*:13:\nnamed:*:14:\nntpd:*:15:\nsshd:*:16:\n_pflogd:*:18:\n_rwhod:*:19:\nstaff:*:20:root\n_proxy:*:21:\n_timedc:*:22:\n_sdpd:*:23:\n_httpd:*:24:\n_mdnsd:*:25:\n_tests:*:26:\n_tcpdump:*:27:\n_tss:*:28:\n_gpio:*:29:\n_rtadvd:*:30:\nguest:*:31:root\n_unbound:*:32:\n_nsd:*:33:\nnvmm:*:34:root\n_dhcpcd:*:35:\nnobody:*:39:\nutmp:*:45:\nauthpf:*:72:\nusers:*:100:\ndialer:*:117:\nnogroup:*:32766:\nxiritest:*:1234:\nxiritest-extra:*:1235:xiritest\nnetbsdtest:*:1236:\n",
+    "passwd_sha256": "SHA256 (/etc/master.passwd) = 12f9354f4fc068da7149ce8b31be368b014cef8c491827de74da666c5006d669\nSHA256 (/etc/passwd) = 9d902cb1be4da1cfde275304c4ef959152b537772c46a21c1e6a2decf5f643c6\n",
+    "group_sha256": "6c4cc057c8dd186aa142a112e3e6f793a53c50ce7e43d7d0905367a90ecd49b9",
+    "account": "uid=1236(netbsdtest) gid=1236(netbsdtest) groups=1236(netbsdtest),0(wheel)\nwheel:*:0:root,netbsdtest\n",
+    "dimensions": "  dimensions:    1280x1024 pixels (339x271 millimeters)\n",
+    "services_before": "2419\n2650\n467\n",
+    "login_proof": [
+      "netbsdtest",
+      "1236",
+      "netbsdtest wheel",
+      "/home/netbsdtest"
+    ],
+    "su_login_proof": [
+      "root",
+      "0",
+      "/root",
+      "/root"
+    ],
+    "png_sha256": "53ab03082d4dde3352cca4b8500572ba4fc9f47529e18684eabe9fe5b803bab0",
+    "services_after": "2419\n2650\n467\n",
+    "kernel_files": "SHA256 (/netbsd) = ed97268e4c1db1c91a8973d16c1e31555816c2a29c220b29b9095eadf3b2ae04\nSHA256 (/netbsd.boot) = 260b253f579ca46a50b83e367f95600b54c86756c47f5d9e0f9391251bfd7122\nSHA256 (/stand/sgimips/11.99.9/modules/compat_irix_o32/compat_irix_o32.kmod) = 8c406c907263a9a97455af00bdf74176438d91bddfbc4e45d15dc1c44f5cdd4b\n",
+    "modstat": "NAME                       CLASS    SOURCE   FLAG  REFS    SIZE REQUIRES \ncompat_irix_o32            exec     filesys  -        0       - exec_elf32,compat_netbsd32\n",
+    "securelevel": 1,
+    "native_after": "/root/irix-desktop/native-o32; test \"$?\" = 37; xiri_rc=$?; printf '\\n \bXIRI_ea01673f23ff4af8bc470c941ce59190_RC=%s\\n' \"$xiri_rc\"\nXIRI_ABI_PROBE\n\nXIRI_ea01673f23ff4af8bc470c941ce59190_RC=0\nxiri-indy# ",
+    "shutdown_log": "[   1.0000000] Copyright (c) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,\n[   1.0000000]     2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013,\n[   1.0000000]     2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023,\n[   1.0000000]     2024, 2025, 2026\n[   1.0000000]     The NetBSD Foundation, Inc.  All rights reserved.\n[   1.0000000] Copyright (c) 1982, 1986, 1989, 1991, 1993\n[   1.0000000]     The Regents of the University of California.  All rights reserved.\n\n[   1.0000000] NetBSD 11.99.9 (XIRI_IRIX_MODULE_20261103) #0: Tue Nov  3 12:18:11 UTC 2026\n[   1.0000000] \tsalvogendut@toolbx:/var/home/salvogendut/Dev/xiri/.work/netbsd-xdm-build/obj/sys/arch/sgimips/compile/XIRI_IRIX_MODULE\n[   1.0000000] total memory = 255 MB\n[   1.0000000] (768 KB reserved for ARCS)\n[   1.0000000] avail memory = 244 MB\n[   1.0000000] timecounter: Timecounters tick every 10.000 msec\n[   1.0000000] mainbus0 (root): SGI-IP22 [SGI, 69123457], 1 processor\n[   1.0000000] cpu0 at mainbus0: MIPS R4400 CPU (0x440) Rev. 4.0 with MIPS R4010 FPC Rev. 0.0\n[   1.0000000] cpu0: 48 TLB entries, 1TB (40-bit) VAs, 4KB (12-bit) PAs, 16MB max page size\n[   1.0000000] cpu0: 16KB/16B direct-mapped L1 instruction cache\n[   1.0000000] cpu0: 16KB/16B direct-mapped write-back L1 data cache\n[   1.0000000] cpu0: 1024KB/128B direct-mapped write-back L2 unified cache\n[   1.0000000] int0 at mainbus0 addr 0x1fbd9880\n[   1.0000000] int0: bus 33MHz, CPU 66MHz\n[   1.0000000] imc0 at mainbus0 addr 0x1fa00000: revision 3\n[   1.0000000] gio0 at imc0\n[   1.0000000] newport0 at gio0: SGI NG1 (board revision 0, cmap revision 2, xmap revision 3, vc2 revision 0), depth 24, monitor ID 10 (1280x1024 60Hz)\n[   1.0000000] newport0: 13W3 Monitor ID 10, PROM ID -1, determined monitor ID 10 (1280x1024 60Hz)\n[   1.0000000] wsdisplay0 at newport0 kbdmux 1: console (default, vt100 emulation)\n[   1.0000000] wsmux1: connecting to wsdisplay0\n[   1.0000000] hpc0 at gio0: SGI HPC3 (onboard)\n[   1.0000000] zsc0 at hpc0 offset 0x59830\n[   1.0000000] zstty0 at zsc0 channel 1\n[   1.0000000] zstty1 at zsc0 channel 0\n[   1.0000000] pckbc0 at hpc0 offset 0x59840\n[   1.0000000] pckbd0 at pckbc0 (kbd slot)\n[   1.0000000] wskbd0 at pckbd0: console keyboard, using wsdisplay0\n[   1.0000000] pms0 at pckbc0 (aux slot)\n[   1.0000000] wsmouse0 at pms0 mux 0\n[   1.0000000] sq0 at hpc0 offset 0x54000: SGI Seeq 80c03\n[   1.0000000] sq0: Ethernet address 08:00:69:12:34:57\n[   1.0000000] wdsc0 at hpc0 offset 0x44000: WD33C93A (20.0 MHz clock, BURST DMA, SCSI ID 0)\n[   1.0000000] scsibus0 at wdsc0: 8 targets, 8 luns per target\n[   1.0000000] haltwo at hpc0 offset 0x58000 not configured\n[   1.0000000] pi1ppc0 at hpc0 offset 0x59800\n[   1.0000000] pi1ppc0: capabilities=0x8<PS2>\n[   1.0000000] ppbus0 at pi1ppc0\n[   1.0000000] ppbus0: No IEEE1284 device found.\n[   1.0000000] button0 at hpc0 offset 0x59850\n[   1.0000000] hpc1 at gio0: SGI HPC3 (IOPLUS mezzanine)\n[   1.0000000] hpc1: using EXP0's DMA channel\n[   1.0000000] sq at hpc1 offset 0x54000 not configured\n[   1.0000000] hpc2 at gio0: SGI HPC1.5 (GIO slot)\n[   1.0000000] dsclock0 at mainbus0 addr 0x1fbe0000\n[   1.0000000] ioc0 at mainbus0 addr 0x1fbd9800: rev 0, machine Indy (Guinness), board rev 0\n[   1.0000000] WARNING: system needs entropy for security; see entropy(7)\n[   1.0000000] timecounter: Timecounter \"mips3_cp0_counter\" frequency 33000000 Hz quality 100\n[   1.0000030] timecounter: Timecounter \"clockinterrupt\" frequency 100 Hz quality 0\n[   1.0000030] scsibus0: waiting 2 seconds for devices to settle...\n[   3.0570785] sd0 at scsibus0 target 1 lun 0: <SGI, IRIS EMUL DISK, 1.0> disk fixed\n[   3.1172191] sd0: 8192 MB, 16645 cyl, 16 head, 62 sec, 512 bytes/sect x 16777216 sectors\n[   3.2260822] sd0: async, 8-bit transfers\n[   3.2811581] cd0 at scsibus0 target 4 lun 0: <Sony, CDU-76S, 1.0> cdrom removable\n[   3.3456635] cd0: async, 8-bit transfers\n[   3.3992517] boot device: sd0\n[   3.4538764] root on sd0a dumps on sd0b\n[   3.5274327] kern.module.path=/stand/sgimips/11.99.9/modules\n[   4.6364585] entropy: best effort\n[ 342.9327118] syncing disks... done\n[ 343.0061441] unmounting file systems...\n[ 343.0626127] unmounted /dev/cd0a on /cdrom type cd9660\n[ 343.0626127] unmounted /dev/pts on /emul/irix/dev/pts type null\n[ 343.0626127] unmounted ptyfs on /dev/pts type ptyfs\n[ 343.0626127] unmounted procfs on /proc type procfs\n[ 343.0626127] unmounted kernfs on /kern type kernfs\n[ 343.8126333] unmounted /dev/sd0a on / type ffs\n[ 343.8126333] unmounting done\n[ 343.8641456] halting...\n\n",
+    "source_disk_unchanged": true
+  },
+  "check_directory": ".work/xdm-wheel/check-va4madqv",
+  "check_result_sha256": "8d2d63a35ea34472a61e26d767c51ebde71ff2d07046ed35b2463a7d400123ff",
+  "qualifier_sha256": "2e6f86a933a7b0387ef29f48d712c3fc4d5b5cebfb626d4e3c5b257c59d31eae",
+  "png": "docs/results/images/2026-11-03-xiri-wheel.png",
+  "png_sha256": "53ab03082d4dde3352cca4b8500572ba4fc9f47529e18684eabe9fe5b803bab0"
+}

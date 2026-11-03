@@ -105,7 +105,7 @@ def main():
             'cd /root/xdm-image-build/runtime && make && sh install.sh --enable-xdm',300)
         cmd('groupadd -g 1235 xiritest-extra && usermod -G xiritest-extra '
             '-p "$(pwhash -b 6 xiritest)" xiritest && groupadd -g 1236 netbsdtest && '
-            'useradd -m -u 1236 -g netbsdtest -d /home/netbsdtest -s /bin/sh '
+            'useradd -m -u 1236 -g netbsdtest -G wheel -d /home/netbsdtest -s /bin/sh '
             '-p "$(pwhash -b 6 netbsdtest)" netbsdtest')
         cmd('install -o xiritest -g xiritest -m 700 /usr/local/share/xiri/xdm.xsession /usr/people/xiritest/.xsession && '
             'cp /etc/ttys /etc/ttys.before-xdm && '
@@ -155,7 +155,8 @@ def main():
                  persistent_helpers_installed=True,native_x11_after=True,
                  session_manager='xdm',xdm={'greeter_boot_verified':True,
                     'accounts':{'xiritest':{'uid':1234,'home':'/usr/people/xiritest','desktop':'4Dwm'},
-                                'netbsdtest':{'uid':1236,'home':'/home/netbsdtest','desktop':'ctwm'}},
+                                'netbsdtest':{'uid':1236,'home':'/home/netbsdtest','desktop':'ctwm',
+                                              'supplementary_groups':['wheel']}},
                     'runtime_qualification':'docs/results/2026-11-03-xiri-xdm.json',
                     'runtime_qualification_sha256':sha256(ROOT/'docs/results/2026-11-03-xiri-xdm.json'),
                     'image_login_qualification':'pending direct CHD check'})

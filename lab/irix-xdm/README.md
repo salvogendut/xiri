@@ -30,3 +30,9 @@ the checked-in pins or previously qualified outputs.
 source hashes, including `sys/uvm/uvm_pglist.c`. `image-baseline.json` retains
 the qualified emulator and vendor-runtime hashes while selecting this new
 kernel/module build. No vendor payload is stored here.
+
+The [wheel update](../../docs/results/2026-11-03-xiri-wheel.md) adds the requested
+native account administration access to the existing image. `wheel-update.py`
+prepares the account-only change or tests a fresh CHD; `qualify-wheel.py`
+validates its lineage and login/su evidence before optional promotion. Full
+desktop regression evidence remains explicitly inherited from the parent.

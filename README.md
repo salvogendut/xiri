@@ -12,9 +12,11 @@ catalog launches and running-icon feedback. Native NetBSD Xorg drives a
 1280×1024 accelerated Newport display. It retains the xmahjongg texture
 correction qualified by the earlier [rendering and interaction checks](docs/results/2026-11-03-newport-xmahjongg.md).
 
-The [current manual CHD](docs/results/2026-11-03-xiri-xdm-image.md) boots into
+The [current manual CHD](docs/results/2026-11-03-xiri-wheel.md) boots into
 native NetBSD xdm. Log in as **xiritest** with password **xiritest** for the
 IRIX desktop, or **netbsdtest** / **netbsdtest** for standard NetBSD ctwm.
+`netbsdtest` belongs to `wheel` and can run `su -` for a root login shell;
+root's password is empty in this development image.
 These are public development-image credentials. The IRIX session uses UID
 1234 and HOME/cwd `/usr/people/xiritest`; system services start at boot. NetBSD
 loads `compat_irix_o32.kmod` during boot and runs the desktop on a kernel
