@@ -160,3 +160,7 @@ priority is xmahjongg's corrupted artwork. This feedback does not erase the
 recorded failures or establish a timed performance result. The manually used
 NVRAM has changed since packaging and must be preserved; investigation uses
 the frozen prepared raw disk and disposable copies instead.
+
+The subsequent [xmahjongg cycle](2026-11-03-newport-xmahjongg.md) resolves the
+reproduced artwork corruption in the Xorg driver and preserves this image
+as the original accelerated comparison.

@@ -49,6 +49,13 @@ The rendering investigation keeps its existing framed-kernel pin for a
 controlled comparison. All three project checkouts were clean and pushed
 before starting the investigation.
 
+The xmahjongg repair changes the Xorg driver in **NetBSD xsrc**, which is a
+separate repository from the NetBSD kernel fork. The reproducible
+[source pin and patch](../lab/newport-xaa/README.md) currently live in Xiri;
+neither fork needs another code change for this correction. Native builds
+of the original and patched module isolate the change against the same
+Xorg headers. The existing kernel and IRIS integration pins remain intact.
+
 The framed-console/acceleration trial rechecked upstream on 2026-11-02
 and again on 2026-11-03 (Europe/Rome, 23:00 UTC on November 2):
 `upstream/main` remains `2eb811f43a69a9dec7f0ceb50cb439b7e088845c`, already

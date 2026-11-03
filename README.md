@@ -89,10 +89,12 @@ clients/services removed. Session restoration remains separate work.
 The reported responsiveness gap and the supplied SGI driver guide are tracked
 in [Newport performance](docs/NEWPORT.md). The [framed-console/XAA cycle](docs/results/2026-11-02-newport-framed-acceleration.md)
 fixes RGB24 fast-clear colors and plane masks in IRIS. Accelerated and software
-native drawing checks now produce identical screenshots. Full-desktop testing
-still shows xmahjongg artwork corruption with XAA; that and performance
-measurements remain open. A [separate experimental CHD](docs/XIRI-IMAGE.md#experimental-framed-console-acceleration-image)
-includes the framed kernel and corrected emulator for manual comparison.
+native drawing checks now produce identical screenshots. The
+[xmahjongg follow-up](docs/results/2026-11-03-newport-xmahjongg.md) corrects XAA
+texture coordinates in the Xorg Newport driver: all 617,684 game-window pixels
+now match software rendering with Composite enabled. Performance measurements
+and broader Render support remain open. Separate [manual images](docs/XIRI-IMAGE.md)
+retain the framed kernel and corrected emulator for comparison.
 
 The candidate build host has been [inventoried](docs/results/2026-10-29-host-inventory.md), and [NetBSD 11.0 sgimips inputs](lab/netbsd-11.0/README.md) have been downloaded and verified. The [guest lab](lab/indy-netbsd/README.md), [installation record](docs/results/2026-10-29-indy-netbsd-install.md), and [debugger/probe results](docs/results/2026-10-30-netbsd-debugger-probe.md) retain the configuration, commands, evidence, and unresolved emulator issues. Use the [development setup checklist](docs/ROADMAP.md#development-setup-checklist) for the remaining work.
 

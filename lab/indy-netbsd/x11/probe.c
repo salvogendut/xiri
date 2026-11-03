@@ -8,6 +8,8 @@
 static Display *d;
 static Window w;
 static GC gc;
+static Visual *test_visual;
+static int test_depth;
 static unsigned long colors[4];
 
 /* Exercise nonuniform, odd-width images and a shaped pixmap copy. Flat
@@ -23,15 +25,15 @@ static int
 check_images(int width, int sx, int sy)
 {
     enum { WIDTH = 97, HEIGHT = 193, DX = 520, DY = 200 };
-    XImage *source = XCreateImage(d, DefaultVisual(d, DefaultScreen(d)),
-        DefaultDepth(d, DefaultScreen(d)), ZPixmap, 0, NULL, WIDTH, HEIGHT, 32, 0);
+    XImage *source = XCreateImage(d, test_visual,
+        test_depth, ZPixmap, 0, NULL, WIDTH, HEIGHT, 32, 0);
     if (!source) exit(2);
     source->data = calloc(source->bytes_per_line, HEIGHT);
     if (!source->data) exit(2);
     for (int y = 0; y < HEIGHT; y++)
         for (int x = 0; x < WIDTH; x++)
             XPutPixel(source, x, y, pattern_pixel(x, y));
-    Pixmap pixmap = XCreatePixmap(d, w, WIDTH, HEIGHT, DefaultDepth(d, DefaultScreen(d)));
+    Pixmap pixmap = XCreatePixmap(d, w, WIDTH, HEIGHT, test_depth);
     GC pgc = XCreateGC(d, pixmap, 0, NULL);
     XPutImage(d, pixmap, pgc, source, 0, 0, 0, 0, WIDTH, HEIGHT);
     char bits[((WIDTH + 7) / 8) * HEIGHT];
@@ -100,8 +102,8 @@ check_blits(void)
 {
     enum { WIDTH = 97, HEIGHT = 193, DX = 520, DY = 200 };
     const int moves[][2] = {{3,5},{-3,-5},{3,-5},{-3,5},{0,5},{0,-5},{3,0},{-3,0}};
-    XImage *source = XCreateImage(d, DefaultVisual(d, DefaultScreen(d)),
-        DefaultDepth(d, DefaultScreen(d)), ZPixmap, 0, NULL, WIDTH, HEIGHT, 32, 0);
+    XImage *source = XCreateImage(d, test_visual,
+        test_depth, ZPixmap, 0, NULL, WIDTH, HEIGHT, 32, 0);
     if (!source || source->bits_per_pixel != 32) exit(2);
     source->data = calloc(source->bytes_per_line, HEIGHT);
     if (!source->data) exit(2);
@@ -142,6 +144,63 @@ check_blits(void)
     return ok;
 }
 
+/* Aligned transfers and atlas subrectangles take different XAA paths from
+ * the odd-width and small clipped images above. */
+static int
+check_atlas(void)
+{
+    const int widths[] = {1,2,3,4,7,8,15,16,31,32,33,63,64,65,96};
+    enum { HEIGHT=93, DX=520, DY=200, SX=1009, SY=87, AH=257 };
+    for (int layout=0; layout<2; layout++) {
+        int aw = layout ? 2051 : 2048;
+        XImage *src = XCreateImage(d, test_visual,
+            test_depth, ZPixmap, 0, NULL, aw, AH, 32, 0);
+        if (!src || src->bits_per_pixel != 32) exit(2);
+        src->data = calloc(src->bytes_per_line, AH);
+        if (!src->data) exit(2);
+        src->byte_order = src->bitmap_bit_order = LSBFirst;
+        for (int y=0; y<AH; y++)
+            for (int x=0; x<aw; x++)
+                for (int b=0; b<4; b++)
+                    src->data[y*src->bytes_per_line+4*x+b]=pattern_pixel(x,y)>>(8*b);
+        Pixmap atlas = XCreatePixmap(d,w,aw,AH,test_depth);
+        Pixmap back = XCreatePixmap(d,w,96,HEIGHT,test_depth);
+        GC pgc = XCreateGC(d,atlas,0,NULL);
+        XPutImage(d,atlas,pgc,src,0,0,0,0,aw,AH);
+        int ok=1;
+        for (unsigned i=0; i<sizeof(widths)/sizeof(widths[0]) && ok; i++) {
+            int width=widths[i];
+            for (int pass=0; pass<3 && ok; pass++) {
+                XSetForeground(d,gc,0);
+                XFillRectangle(d,w,gc,DX,DY,96,HEIGHT);
+                if (pass==0) XPutImage(d,w,gc,src,SX,SY,DX,DY,width,HEIGHT);
+                else XCopyArea(d,atlas,w,gc,SX,SY,width,HEIGHT,DX,DY);
+                if (pass==2) {
+                    XCopyArea(d,w,back,pgc,DX,DY,width,HEIGHT,0,0);
+                    XFillRectangle(d,w,gc,DX,DY,96,HEIGHT);
+                    XCopyArea(d,back,w,gc,0,0,width,HEIGHT,DX,DY);
+                }
+                XImage *actual=XGetImage(d,w,DX,DY,96,HEIGHT,AllPlanes,ZPixmap);
+                if (!actual) exit(2);
+                for (int y=0; y<HEIGHT && ok; y++)
+                    for (int x=0; x<96; x++) {
+                        unsigned long expected=x<width?pattern_pixel(SX+x,SY+y):0;
+                        unsigned long got=XGetPixel(actual,x,y);
+                        if (got!=expected) {
+                            fprintf(stderr,"PIXEL_FAIL atlas=%d width=%d pass=%d x=%d y=%d expected=%lx actual=%lx\n",aw,width,pass,x,y,expected,got);
+                            ok=0;break;
+                        }
+                    }
+                XDestroyImage(actual);
+                if (ok) printf("ATLAS_PASS atlas=%d width=%d pass=%d pixels=%d\n",aw,width,pass,96*HEIGHT);
+            }
+        }
+        XFreeGC(d,pgc);XFreePixmap(d,atlas);XFreePixmap(d,back);XDestroyImage(src);
+        if (!ok) return 0;
+    }
+    return 1;
+}
+
 static void
 draw(void)
 {
@@ -159,8 +218,8 @@ draw(void)
     XFillRectangle(d, w, gc, 20, 200, 100, 80);
     XSetFunction(d, gc, GXcopy);
 
-    XImage *tile = XCreateImage(d, DefaultVisual(d, DefaultScreen(d)),
-        DefaultDepth(d, DefaultScreen(d)), ZPixmap, 0, NULL, 32, 32, 32, 0);
+    XImage *tile = XCreateImage(d, test_visual,
+        test_depth, ZPixmap, 0, NULL, 32, 32, 32, 0);
     if (!tile) exit(2);
     tile->data = calloc(tile->bytes_per_line, tile->height);
     if (!tile->data) exit(2);
@@ -172,7 +231,7 @@ draw(void)
 
     /* Each primary must also survive a physical WRMASK conversion. Clear the
      * destination on every Expose so this checks preservation, not old pixels. */
-    Visual *visual = DefaultVisual(d, DefaultScreen(d));
+    Visual *visual = test_visual;
     unsigned long masks[4] = { visual->red_mask, visual->green_mask,
         visual->blue_mask, AllPlanes };
     XSetForeground(d, gc, 0);
@@ -215,7 +274,7 @@ draw(void)
     const int widths[] = {1, 2, 3, 4, 31, 32, 33, 63, 64, 65, 84};
     for (unsigned i = 0; i < sizeof(widths)/sizeof(widths[0]); i++)
         if (!check_images(widths[i], 13, 9)) return;
-    if (check_blits()) puts("PIXELS_PASS");
+    if (check_blits() && check_atlas()) puts("PIXELS_PASS");
 }
 
 int
@@ -228,14 +287,28 @@ main(void)
     d = XOpenDisplay(NULL);
     if (!d) return 1;
     int screen = DefaultScreen(d);
+    test_visual = DefaultVisual(d, screen);
+    test_depth = DefaultDepth(d, screen);
+    const char *requested_depth = getenv("XIRI_TEST_DEPTH");
+    if (requested_depth && atoi(requested_depth) != test_depth) {
+        XVisualInfo info;
+        if (!XMatchVisualInfo(d, screen, atoi(requested_depth), TrueColor, &info)) return 2;
+        test_visual = info.visual;
+        test_depth = info.depth;
+    }
+    Colormap cmap = XCreateColormap(d, RootWindow(d, screen), test_visual, AllocNone);
     for (int i = 0; i < 4; i++) {
         XColor actual, exact;
-        if (!XAllocNamedColor(d, DefaultColormap(d, screen), names[i], &actual, &exact))
+        if (!XAllocNamedColor(d, cmap, names[i], &actual, &exact))
             return 2;
         colors[i] = actual.pixel;
     }
-    w = XCreateSimpleWindow(d, RootWindow(d, screen), 40, 40, 640, 480,
-        0, WhitePixel(d, screen), BlackPixel(d, screen));
+    XSetWindowAttributes attrs;
+    attrs.colormap = cmap;
+    attrs.background_pixel = attrs.border_pixel = 0;
+    w = XCreateWindow(d, RootWindow(d, screen), 40, 40, 640, 480, 0,
+        test_depth, InputOutput, test_visual,
+        CWColormap | CWBackPixel | CWBorderPixel, &attrs);
     XStoreName(d, w, "Xiri Newport probe");
     XSelectInput(d, w, ExposureMask | KeyPressMask | KeyReleaseMask |
         ButtonPressMask | ButtonReleaseMask | PointerMotionMask);
@@ -243,7 +316,7 @@ main(void)
     XMapWindow(d, w);
     XSync(d, False);
     XSetInputFocus(d, w, RevertToParent, CurrentTime);
-    printf("READY depth=%d size=%dx%d window=0x%lx\n", DefaultDepth(d, screen),
+    printf("READY depth=%d size=%dx%d window=0x%lx\n", test_depth,
         DisplayWidth(d, screen), DisplayHeight(d, screen), w);
     for (;;) {
         XEvent e;

@@ -4,10 +4,11 @@ The user reports that the NetBSD/Xiri display feels less responsive than
 original IRIX. The [framed-console/XAA cycle](results/2026-11-02-newport-framed-acceleration.md)
 now fixes the measured RGB24 color/mask mismatch in IRIS. Native XAA and
 software controls pass the same expanded drawing/input checks and produce
-identical screenshots. This establishes correctness for that workload;
-the full desktop still exposes corrupted xmahjongg artwork with XAA enabled.
-That is under investigation before performance comparisons. The earlier software-rendered image
-is preserved as a control.
+identical screenshots. The [xmahjongg follow-up](results/2026-11-03-newport-xmahjongg.md)
+also repairs clipped/repeated Render textures in the Xorg Newport driver.
+The accelerated game now matches the software-rendered game across all
+617,684 pixels of its window, with Composite enabled and a 32-bit visual.
+The earlier software-rendered image is preserved as a control.
 
 On 2026-11-03 the user manually tested the accelerated CHD and found it
 noticeably snappier and more usable than software rendering, despite the
@@ -21,7 +22,7 @@ run diagnostics on disposable copies of the frozen prepared disk.
 | Component | Responsibility and current evidence |
 | --- | --- |
 | NetBSD kernel `sys/arch/sgimips/gio/newport.c`, `newportreg.h`, `newportvar.h` | wsdisplay console, device access/mapping, display state and console drawing. The driver uses bus_space accessors and REX3/DCB FIFO waits. |
-| Xorg `xf86-video-newport` in NetBSD xsrc | X rendering, shadow uploads and optional XAA acceleration. This is separate from the kernel console driver. The installed binary comes from the NetBSD release sets. |
+| Xorg `xf86-video-newport` in NetBSD xsrc | X rendering, shadow uploads and optional XAA acceleration. Separate from the kernel console driver. The new candidate replaces the release-set module with the pinned [texture correction](../lab/newport-xaa/README.md). |
 | IRIS Newport emulation | Executes the emulated REX3 operations and produces framebuffer pixels. Its interpretation must match the register and plane formats expected by both operating systems. |
 | Xiri compatibility and application behavior | Adds syscall/runtime work for original IRIX clients. Compare a native X client against the same workload in an IRIX client before assigning rendering delays to compatibility. |
 | Host frontend and emulator build | Rendering mode, JIT/interpreter selection and CPU scheduling can change perceived speed. Use matching machine profiles and record the exact builds for comparisons. |
@@ -30,7 +31,8 @@ The [original accelerated-color finding](results/2026-10-30-netbsd-x11.md#accele
 was reproduced with the current integration build: red `0xfe` became
 `0x092492` in fills and copies, while uploads were correct. IRIS `xiri`
 `819c682` corrects COLORVRAM and WRMASK interpretation for RGB24. NetBSD's
-installed Xorg driver follows the documented plane layout and is unchanged.
+Xorg driver follows the documented physical plane layout; the later userspace
+texture correction addresses a separate defect.
 The generic, generated LLVM and Cranelift paths share the corrected semantics;
 other depths/planes and physical hardware remain separate validation work.
 
@@ -85,15 +87,17 @@ IRIX APIs in the examples must be translated into NetBSD equivalents.
 2. Completed for RGB24: resolve the measured fast-clear/plane-mask mismatch against documented
    register definitions and original IRIX observations. Preserve the other
    depth/plane combinations when changing IRIS or the Xorg driver.
-3. Isolate the remaining XAA xmahjongg artwork corruption. Screen-copy,
-   image-write and color-expansion disable controls do not resolve it;
-   disabling individual primitives can introduce additional missing output.
+3. Completed for the reproduced xmahjongg corruption: correct XAA texture
+   coordinates and A8 solid-color byte order in the Xorg driver. A focused
+   8,536-pixel regression fails before the patch and passes afterward, as does
+   software rendering. Keep broader Render/operator/depth qualification separate.
 4. Measure native Xorg fill/copy/upload/text and window movement with host
    elapsed time and explicit X synchronization. Record CPU use and display
    configuration; use equivalent hardware/frontend settings for IRIX.
-5. Restore validated accelerated operations incrementally and repeat the
-   desktop interaction tests. Then profile remaining compatibility or
-   frontend costs. Do not assume every delay originates in the kernel driver.
+5. Extend accelerated coverage to other Render operators and the remaining
+   depth-32 plane-mask failure. Investigate winterm's startup font metrics,
+   then profile remaining compatibility or frontend costs. Do not assume
+   every delay originates in the kernel driver.
 
 Continue desktop behavior work alongside measured graphics performance. Icon
 Catalog artwork was repaired separately through the filetype database locks

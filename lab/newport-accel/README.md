@@ -93,12 +93,18 @@ own backend and needs rebuilding before it can provide the same correction.
 
 The final native regression also checks narrow subrectangles, shifted mask
 origins, monochrome expansion, little-endian image data and overlapping copies
-in all eight directions (1,404,075 image-pixel comparisons). Full-desktop XAA
-still corrupts xmahjongg artwork. Disabling image writes, color expansion or
+in all eight directions (1,404,075 image-pixel comparisons). At this checkpoint,
+full-desktop XAA still corrupts xmahjongg artwork. Disabling image writes, color expansion or
 screen copies individually does not fix it. The manual accelerated bundle is
 explicitly experimental and does not replace the software-rendered image.
 
 After a clean direct CHD probe, use `scripts/qualify-xiri-image.py
 --record-bundle` to retain the verification and tested diagnostic NVRAM in
-this bundle. Omit `--promote`: the default image pointer stays on the working
-software-rendered image. The graphical NVRAM is preserved.
+this bundle. Omit `--promote` for this older control; the default image pointer
+follows the newer tested bundle. The graphical NVRAM is preserved.
+
+The subsequent [Xorg texture repair](../newport-xaa/README.md) fixes that game
+corruption while retaining this kernel/emulator pin. Keep this earlier CHD
+and its manually used NVRAM/overlay as controls; use the new bundle for the
+patched Xorg module. The promotion instructions above apply to this older
+control, not to the replacement image.

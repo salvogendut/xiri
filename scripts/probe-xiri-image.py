@@ -46,6 +46,8 @@ def main():
     shutil.copyfile(ROOT/'lab/irix-4dwm/type-ready.c', media/'type.c')
     ledger = json.loads((bundle/'copy-ledger.json').read_text())
     seed_result = json.loads((bundle/'seed-result.json').read_text())
+    if seed_result.get('newport_driver'):
+        shutil.copyfile(ROOT/'lab/newport-xaa/render-probe.c', media/'render-probe.c')
     shell_image = bool(seed_result.get('vendor_shell'))
     if shell_image:
         shutil.copyfile(ROOT/'lab/irix-vendor-shell/catalog-input.c', media/'catalog-input.c')
@@ -90,6 +92,8 @@ def main():
     if shell_image:
         for name in ['lab/irix-vendor-shell/catalog-input.c', 'lab/irix-filelocks/place-window.c']:
             result['sources'][name] = probe.sha256(ROOT/name)
+    if seed_result.get('newport_driver'):
+        result['sources']['lab/newport-xaa/render-probe.c'] = probe.sha256(ROOT/'lab/newport-xaa/render-probe.c')
 
     def cmd(command, timeout=120):
         before = len(lab.serial_text())
@@ -149,6 +153,10 @@ def main():
             cmd("rpc_errors_before=$(awk '/rpcbind: cannot bind/ {n++} END {print n+0}' /var/log/messages)")
         session_ms = 600000 if shell_image else 300000
         cmd('XIRI_SESSION_MS='+str(session_ms)+' /usr/local/bin/xiri-desktop >manual-desktop.log 2>&1 & manual=$!; tries=0; until ./image-type 127.0.0.1:0 xmahjongg "" >game-focus.log 2>&1; do kill -0 "$manual" || break; tries=$((tries+1)); test "$tries" -lt 120 || break; sleep 2; done; ./image-type 127.0.0.1:0 xmahjongg "" >game-focus.log 2>&1', 360)
+        if seed_result.get('newport_driver'):
+            cmd('cc -O2 -Wall -Wextra -Werror -I/usr/X11R7/include -L/usr/X11R7/lib -Wl,-rpath,/usr/X11R7/lib /cdrom/render-probe.c -lXrender -lX11 -o image-render-probe',180)
+            result['render_probe'] = cmd('DISPLAY=127.0.0.1:0 ./image-render-probe',120)
+            assert 'RENDER_PASS pixels=8536 mismatches=0' in result['render_probe']
         if seed_result.get('desktop_services'):
             cmd('(tries=0; until /usr/X11R7/bin/xwininfo -display 127.0.0.1:0 -root -tree | grep "of 18)" >/dev/null; do kill -0 "$manual" || exit 1; tries=$((tries+1)); test "$tries" -lt 60 || exit 1; sleep 2; done)',180)
             if shell_image:

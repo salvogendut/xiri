@@ -173,6 +173,12 @@ def main():
         report['xorg_configuration'] = seed_result['xorg_configuration']
         assert r['xaa_enabled'] == seed_result['xorg_configuration']['acceleration_requested']
         report['xaa_enabled'] = r['xaa_enabled']
+    if seed_result.get('newport_driver'):
+        driver = seed_result['newport_driver']
+        assert r['support_files_verified']['/usr/X11R7/lib/modules/drivers/newport_drv.so'] == driver['sha256']
+        assert 'RENDER_PASS pixels=8536 mismatches=0' in r['render_probe']
+        report['newport_driver'] = driver
+        report['render_probe'] = r['render_probe']
     if r.get('console_size'):
         report['console_size'] = r['console_size']
     if r.get('winterm_arranged'):
@@ -218,6 +224,9 @@ def main():
             public['emulator_files'] = m['emulator_files']
         if m['pin'].get('committed_source_revision'):
             public['kernel_source_equivalent_commit'] = m['pin']['committed_source_revision']
+        if seed_result.get('newport_driver'):
+            public['newport_driver_sha256'] = seed_result['newport_driver']['sha256']
+            public['xaa_enabled'] = r['xaa_enabled']
         if seed_result.get('desktop_behavior'):
             public['desktop_behavior_resource_ledger_sha256'] = seed_result['desktop_behavior']['resource_ledger_sha256']
             public['native_fam_source_manifest_sha256'] = seed_result['native_fam_build']['source_manifest_sha256']

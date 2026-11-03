@@ -34,6 +34,8 @@ def main():
     parser.add_argument('--baseline', type=Path)
     parser.add_argument('--iris-bin-dir', type=Path, default=ROOT/'.work/target-netbsd64/release')
     parser.add_argument('--xorg-config', type=Path, help='install and qualify an alternate Xorg configuration')
+    parser.add_argument('--newport-driver', type=Path, help='install a native Newport Xorg module and check its Render path')
+    parser.add_argument('--check-xmahjongg', action='store_true', help='exercise the vendor game within the desktop')
     parser.add_argument('--arrange-winterm', action='store_true',
                         help='record and resize winterm for diagnostic interaction checks')
     args = parser.parse_args()
@@ -66,6 +68,9 @@ def main():
     shutil.copyfile(rpcbin, media/'rpcbind')
     if args.xorg_config:
         shutil.copyfile(args.xorg_config, media/'xorg.conf')
+    if args.newport_driver:
+        shutil.copyfile(args.newport_driver, media/'newport_drv.so')
+        shutil.copyfile(ROOT/'lab/newport-xaa/render-probe.c', media/'render-probe.c')
     for name, source, key in [('netbsd',kernel_build/'kernel-media/netbsd','native_kernel_sha256'),
                              ('netbsd.boot',kernel_build/'tftp/netbsd-XIRI_INDY','boot_kernel_sha256')]:
         assert p.sha256(source)==pin[key]
@@ -77,7 +82,7 @@ def main():
     input_source = input_source.replace('XTestFakeButtonEvent(d, 1,', 'XTestFakeButtonEvent(d, argc == 5 ? atoi(argv[4]) : 1,')
     (media/'input.c').write_text(input_source)
     shutil.copyfile(ROOT/'lab/irix-4dwm/type-ready.c', media/'type.c')
-    if args.arrange_winterm:
+    if args.arrange_winterm or args.check_xmahjongg:
         shutil.copyfile(ROOT/'lab/irix-filelocks/place-window.c', media/'place.c')
     installed = dict(old['installed_files'])
     installed.update({dest:p.sha256(media/name) for name,dest in FILES.items()})
@@ -85,6 +90,8 @@ def main():
     installed.update({'/netbsd':pin['native_kernel_sha256'],'/netbsd.boot':pin['boot_kernel_sha256']})
     if args.xorg_config:
         installed['/usr/local/share/xiri/xorg.conf'] = p.sha256(media/'xorg.conf')
+    if args.newport_driver:
+        installed['/usr/X11R7/lib/modules/drivers/newport_drv.so'] = p.sha256(media/'newport_drv.so')
     (media/'SHA256').write_text(''.join(f'SHA256 ({f.name}) = {p.sha256(f)}\n' for f in sorted(media.iterdir())))
     p.run(['genisoimage','-quiet','-R','-J','-o',d/'probe.iso',media])
     for name in ['disk.raw','nvram.bin']:
@@ -117,6 +124,11 @@ def main():
     if args.xorg_config:
         r['xorg_configuration'] = dict(source=str(args.xorg_config), sha256=p.sha256(media/'xorg.conf'),
             acceleration_requested='Option "NoAccel" "false"' in args.xorg_config.read_text())
+    if args.newport_driver:
+        r['newport_driver'] = dict(source=str(args.newport_driver.resolve()),
+            sha256=p.sha256(media/'newport_drv.so'),
+            source_pin=json.loads((ROOT/'lab/newport-xaa/source.json').read_text()),
+            patch_sha256=p.sha256(ROOT/'lab/newport-xaa/texture-coordinates.patch'))
 
     def cmd(command, timeout=120):
         before = len(lab.serial_text())
@@ -197,11 +209,14 @@ def main():
         cmd('install -m 444 /cdrom/netbsd /netbsd && install -m 444 /cdrom/netbsd.boot /netbsd.boot')
         if args.xorg_config:
             cmd('install -m 444 /cdrom/xorg.conf /usr/local/share/xiri/xorg.conf')
+        if args.newport_driver:
+            cmd('install -m 444 /cdrom/newport_drv.so /usr/X11R7/lib/modules/drivers/newport_drv.so')
+            cmd('cc -O2 -Wall -Wextra -Werror -I/usr/X11R7/include -L/usr/X11R7/lib -Wl,-rpath,/usr/X11R7/lib /cdrom/render-probe.c -lXrender -lX11 -o render-probe',180)
         for name,dest in FILES.items():
             cmd('install -m '+('555' if name.endswith('.sh') else '444')+' /cdrom/'+name+' '+dest)
         cmd('install -m 555 /cdrom/rpcbind /usr/sbin/rpcbind && cc -O2 -Wall -Wextra -Werror /cdrom/manual-guard.c -o /usr/local/libexec/xiri/manual-guard',180)
         cmd('cc -O2 -Wall -Wextra -Werror -I/usr/X11R7/include -L/usr/X11R7/lib -Wl,-rpath,/usr/X11R7/lib /cdrom/input.c -lX11 -lXtst -o input && cc -O2 -Wall -Wextra -Werror -I/usr/X11R7/include -L/usr/X11R7/lib -Wl,-rpath,/usr/X11R7/lib /cdrom/type.c -lX11 -lXtst -o type',180)
-        if args.arrange_winterm:
+        if args.arrange_winterm or args.check_xmahjongg:
             cmd('cc -O2 -Wall -Wextra -Werror -I/usr/X11R7/include -L/usr/X11R7/lib -Wl,-rpath,/usr/X11R7/lib /cdrom/place.c -lX11 -o place',180)
         cmd("sed -e '/^constty/s/on secure/off secure/' -e '/^ttyE0/s/off secure/on secure/' -e '/^ttyZ0/s/off secure/on secure local softcar/' /etc/ttys >/etc/ttys.new && mv /etc/ttys.new /etc/ttys")
         # Allocate a text VT on serial diagnostic boots too; graphics boots
@@ -282,6 +297,34 @@ def main():
             assert '127.0.0.1.111' in entry['bindings'] and '*.111' not in entry['bindings']
             assert re.search(r'391002\s+1\s+tcp',entry['registration'])
             capture(route+'-desktop')
+            if args.newport_driver:
+                entry['render_probe'] = cmd('./render-probe',120)
+                assert 'RENDER_PASS pixels=8536 mismatches=0' in entry['render_probe']
+            if args.check_xmahjongg and route == 'toolchest':
+                # The session starts a demonstration game. Close it before
+                # creating the fixed board so window-name lookup is unambiguous.
+                cmd('./type "$DISPLAY" xmahjongg q')
+                wait_for('! xwininfo -name xmahjongg >/dev/null 2>&1',30)
+                cmd('./type "$DISPLAY" winterm '+shlex.quote(
+                    '/emul/irix/usr/freeware/bin/xmahjongg --number 12345 > "$XIRI_SESSION_DIR/xmahjongg.log" 2>&1 &\n'))
+                wait_for('xwininfo -name xmahjongg > /root/usability/xmahjongg-window')
+                cmd('./place xmahjongg 150 270 1006 614; sleep 5')
+                entry['xmahjongg'] = dict(window=get('xwininfo -name xmahjongg'),
+                    extensions=get('xdpyinfo | grep -E "Composite|RENDER"'),
+                    board=12345)
+                assert 'Depth: 32' in entry['xmahjongg']['window']
+                assert 'Composite' in entry['xmahjongg']['extensions']
+                capture('xmahjongg-initial')
+                cmd('./type "$DISPLAY" xmahjongg h; sleep 1')
+                cmd('./type "$DISPLAY" xmahjongg '+shlex.quote('\n')+'; sleep 3')
+                capture('xmahjongg-move')
+                cmd('./type "$DISPLAY" xmahjongg u; sleep 2')
+                capture('xmahjongg-undo')
+                cmd('./place xmahjongg 170 290 1050 650; sleep 2; ./place xmahjongg 150 270 1006 614; sleep 2')
+                capture('xmahjongg-redraw')
+                entry['xmahjongg']['log'] = get('cat "$job/xmahjongg.log"')
+                cmd('./type "$DISPLAY" xmahjongg q')
+                wait_for('! xwininfo -name xmahjongg >/dev/null 2>&1',30)
             if route == 'toolchest':
                 cmd('./input click 14 39; sleep 1; ./input click 189 243')
             else:

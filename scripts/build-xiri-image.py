@@ -191,6 +191,8 @@ tftp_dir = "tftp"
         report['emulator_files'] = emulator_files
     if r.get('xorg_configuration'):
         report['xorg_configuration'] = r['xorg_configuration']
+    if r.get('newport_driver'):
+        report['newport_driver'] = r['newport_driver']
     if r.get('graphics_boot'):
         report['manual_nvram_sha256'] = sha(manual_nvram)
         report['manual_console'] = 'graphics; AutoLoad Yes; serial B diagnostic login'

@@ -1,0 +1,39 @@
+{
+  "module_sha256": "ce4f780398641bf90cc8ebe517dd03617df7bb447ba89da22c28357d4d898a74",
+  "module_bytes": 47832,
+  "compiler": "cc (nb3 20260326) 12.5.0",
+  "xorg_version": "1.10.6",
+  "video_driver_abi": "10.0",
+  "source": {
+    "repository": "https://github.com/NetBSD/xsrc",
+    "revision": "b2f7e3892002986f53e61cb0540e281fcbfab335",
+    "path": "external/mit/xf86-video-newport/dist/src",
+    "upstream_files_sha256": {
+      "Makefile.am": "feddb6eb4d7eb2b3226e8fd8e71ea1edbf4b320a266eb20e2d2e90a821d22863",
+      "newport.h": "4fa915abd4f623c814790b0f62179f20f6d04d1146f3e015c4f2ec27b7a168cb",
+      "newport_accel.c": "14ba402a8d12f49546fc46204f44f8768cf02498c5927a8246ca62957f3bd11c",
+      "newport_cmap.c": "f5e24ea22f69605bfd2dc85099a069bec6525a9b964ce07bad75f6c4df531df1",
+      "newport_cursor.c": "f867774e1c6dfbfa64e5df4e4be670f9b51b218f6b8a47281ec93c5abc369003",
+      "newport_driver.c": "fdd7a1cf49d25f14dea32dafb69c3b929a3e9b05f77c176644f3fe505a57cd91",
+      "newport_regs.c": "79faf58b05f514a2d39edd80aa136a54c062301f85be4f3bca6fe94255ed4833",
+      "newport_regs.h": "00fd740ac34b1a7d2e979e3259be765123d08bd38a87fc81923e4986cbc47720",
+      "newport_shadow.c": "1c7c7aa70d5c5a8540c12c13c9068633e9d654cb36676a76c17c9e1020060d8e"
+    },
+    "patch": "lab/newport-xaa/texture-coordinates.patch",
+    "upstream_xmahjongg": "https://www.lcdf.org/xmahjongg/xmahjongg-3.6.1.tar.gz",
+    "upstream_xmahjongg_sha256": "f7aa542b5459a3fb0474997e78c6502b706d8a5bf4962f2093415ac851267610"
+  },
+  "inputs_sha256": {
+    "texture-coordinates.patch": "65a0a51fcfea0440d5cf9e234ecdc1afb80ed58712263fb36c99eb68202371fe",
+    "config.h": "6dfa9054a34ed4f76d4416c47d2f4198c66c4fe105467b63bee5d3b4d6c98038",
+    "build-driver.sh": "07981c5fa9d87ee567bbb7f980ea3879313b5125cd5cf8df5c7d1c027c5845cf"
+  },
+  "native_build_run": ".work/newport-xmahjongg/isolated-_k6qp88q",
+  "build_exit_status": 0,
+  "stock_module_sha256": "92e051790627caf3b3f2d2f09487cc6454d9f7a1ff6b4a5c34231d3df0053b85",
+  "sdk_sha256": {
+    "/usr/X11R7/include/xorg/xorg-server.h": "9bac1071590d5c43f7307c25fa990d0f14c929c12efd56759079e5734150fcdd",
+    "/usr/X11R7/include/xorg/xaa.h": "dbc9c30cb0f8a9e74fbfa0d4ad69a3720defe488615858004952c90040ce576d",
+    "/usr/X11R7/include/xorg/xf86.h": "136023cd5c1501ec97a69c0ad1f7377d55f4d07354ae814ddf421a3dcea0df66"
+  }
+}

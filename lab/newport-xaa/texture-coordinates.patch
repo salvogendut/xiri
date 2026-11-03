@@ -1,0 +1,120 @@
+--- a/newport_accel.c
++++ b/newport_accel.c
+@@ -1353,9 +1353,10 @@
+ 	free(pNewport->pTexture);
+ 	pNewport->pTexture = xnfalloc(pNewport->uTextureSize = width * height * sizeof(unsigned int));
+     }
+-    col = (((unsigned int)red & 0xFF00) << 8)
++    /* HOSTRW uses BGR byte order, like SetupForCPUToScreenTexture. */
++    col = (((unsigned int)blue & 0xFF00) << 8)
+         | ((unsigned int)green & 0xFF00)
+-	| ((unsigned int)blue >> 8);
++	| ((unsigned int)red >> 8);
+ 	
+     pNewport->uTextureWidth = width;
+     pNewport->uTextureHeight = height;
+@@ -1495,7 +1496,8 @@
+     pNewportRegs = pNewport->pNewportRegs;
+     
+     p = pNewport->pTexture + srcx + (srcy * pNewport->uTextureWidth);
+-    add = pNewport->uTextureWidth - w + srcx;
++    /* srcx is already included in p; advance exactly one source row. */
++    add = pNewport->uTextureWidth - w;
+     while (h--) 
+     {
+ 	for (d = w; d; d--)
+@@ -1512,44 +1514,6 @@
+ 
+ *******************************************************************************/
+ static void
+-NewportRenderTextureScale(NewportPtr pNewport, int srcx, int srcy, int w, int h)
+-{
+-    int d;
+-    int dx, dy;
+-    int curx, cury;
+-    unsigned int *pLine;
+-    int l, p;
+-    NewportRegsPtr pNewportRegs;
+-    pNewportRegs = pNewport->pNewportRegs;
+-    
+-    dx = ((pNewport->uTextureWidth - srcx) << 16) / w;
+-    dy = ((pNewport->uTextureHeight - srcy) << 16) / h;
+-    
+-    cury = srcy << 16;    
+-    while (h--)
+-    {	
+-	l = (cury + 0x7FFF) >> 16;
+-	if (l >= pNewport->uTextureHeight)
+-	    l = pNewport->uTextureHeight-1;
+-	pLine = pNewport->pTexture + l * pNewport->uTextureWidth;
+-
+-	curx = srcx << 16;
+-	for (d = w; d; d--)
+-	{
+-	    p = (curx + 0x7FFF) >> 16;
+-	    if (p >= pNewport->uTextureWidth)
+-		p = pNewport->uTextureWidth-1;
+-	    pNewportRegs->go.hostrw0 = pLine[p];		
+-	    curx += dx;
+-	}
+-        cury += dy;
+-    }
+-}
+-
+-/*******************************************************************************
+-
+-*******************************************************************************/
+-static void
+ NewportRenderTextureRepeat(NewportPtr pNewport, int srcx, int srcy, int w, int h)
+ {
+     int d;
+@@ -1557,18 +1521,22 @@
+     NewportRegsPtr pNewportRegs;
+     pNewportRegs = pNewport->pNewportRegs;
+     
+-    srcx %= pNewport->uTextureWidth;
+-    srcy %= pNewport->uTextureHeight;
++    /* Render permits negative source origins for repeated pictures. */
++    srcx %= (int)pNewport->uTextureWidth;
++    srcy %= (int)pNewport->uTextureHeight;
++    if (srcx < 0) srcx += pNewport->uTextureWidth;
++    if (srcy < 0) srcy += pNewport->uTextureHeight;
+     
+     while (h--)
+-    {	
++    {
++        int tx = srcx; /* Each row starts at the same tile column. */
+ 	pLine = pNewport->pTexture + pNewport->uTextureWidth * srcy;
+ 	for (d = w; d; d--)
+ 	{
+-	    pNewportRegs->go.hostrw0 = pLine[srcx];
+-	    srcx++;
+-	    if (srcx >= pNewport->uTextureWidth)
+-		srcx = 0;
++	    pNewportRegs->go.hostrw0 = pLine[tx];
++	    tx++;
++	    if (tx >= pNewport->uTextureWidth)
++		tx = 0;
+ 	}
+         srcy++;
+ 	if (srcy >= pNewport->uTextureHeight)
+@@ -1609,14 +1577,12 @@
+ 
+     NewportWaitIdle(pNewport, NEWPORT_GFIFO_ENTRIES);
+     
+-    if (srcx + w == pNewport->uTextureWidth
+-        && srcy + h == pNewport->uTextureHeight)
++    /* XAA rejects transforms and calls this once per clipped rectangle.
++     * w/h are copy extents, not a requested scaled texture size. */
++    if (pNewport->uTextureFlags & XAA_RENDER_REPEAT)
++	NewportRenderTextureRepeat(pNewport, srcx, srcy, w, h);
++    else
+ 	NewportRenderTexture1to1(pNewport, srcx, srcy, w, h);
+-    else
+-    if (pNewport->uTextureFlags & XAA_RENDER_REPEAT)
+-	NewportRenderTextureRepeat(pNewport,  srcx, srcy, w, h);
+-    else
+-	NewportRenderTextureScale(pNewport, srcx, srcy, w, h);
+ 
+     NewportWaitIdle(pNewport, NEWPORT_GFIFO_ENTRIES);        
+ 

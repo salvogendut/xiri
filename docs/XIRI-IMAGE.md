@@ -1,9 +1,13 @@
 # Reusable Xiri development image
 
-The local bundle is `.work/images/xiri-netbsd-desktop-20261102-behavior/`.
-`netbsd-xiri.chd` is an 8 GiB NetBSD disk compressed to 480,653,409 bytes
-(about 458 MiB); its hashes are recorded in
-[the image result](results/2026-11-02-desktop-behavior-image.json).
+The current accelerated development bundle is
+`.work/images/xiri-netbsd-desktop-20261103-newport-xmahjongg/`.
+`netbsd-xiri.chd` is an 8 GiB NetBSD disk compressed to 480,615,682 bytes
+(about 458 MiB). Its SHA256 is
+`1fa5c92ffac3706680e16acd1270df4707928106529cf94084152f9dfac14ab5`.
+The [texture-repair cycle](results/2026-11-03-newport-xmahjongg.md) records its
+source and rendering checks. The earlier `20261102-behavior` software bundle
+and `20261102-framed-accel` bundle are preserved for comparison.
 It contains the qualified Xiri kernel, original IRIX
 runtimes, installed application/catalog payload, persistent fonts and a
 manual desktop launcher. The [desktop service qualification](results/2026-11-02-desktop-services.md)
@@ -33,6 +37,32 @@ its opened icon while running and returning to the exact closed pixels after
 exit. It also verifies filesystem and Dumpster double-clicks opening their
 directory views. Full Dumpster operations and launch animation remain open.
 
+## Accelerated image with the xmahjongg repair
+
+This bundle retains the framed kernel equivalent to NetBSD `a536d8c4da2`
+and IRIS `xiri` `819c682`, and replaces the Xorg Newport module with the
+[pinned texture correction](../lab/newport-xaa/README.md). XAA and Composite
+remain enabled. xmahjongg matches the software control pixel for pixel;
+hint/take, undo and resize/restore pass under 4Dwm.
+
+Launch the bundled emulator with this one-liner:
+
+```sh
+/var/home/salvogendut/Dev/xiri/.work/images/xiri-netbsd-desktop-20261103-newport-xmahjongg/run-iris.sh
+```
+
+Log in as root and run `xiri-desktop`. Use the bundled IRIS backend for the
+exact tested behavior. Prismatic requires the corresponding backend rebuild.
+This remains a development image: broader 32-bit plane masks, winterm startup
+font metrics, additional application compatibility and full gameplay still
+need work. The diagnostic checks explicitly resize winterm for input.
+The [direct CHD qualification](results/2026-11-03-newport-xmahjongg-image.json)
+checks disk boot, the replacement module hash, native Render, catalog launch
+and cleanup. Its [PNG](results/images/2026-11-03-newport-xmahjongg-image.png)
+shows the launched game. `lab/irix-installed-desktop/image.json` selects this
+bundle. The inherited opened/closed Icon Catalog pixel check belongs to the
+software cycle; catalog launch is checked again from the new CHD.
+
 ## Experimental framed-console acceleration image
 
 The separate `.work/images/xiri-netbsd-desktop-20261102-framed-accel/` bundle
@@ -53,12 +83,12 @@ Use the root login and `xiri-desktop` command described below. An existing
 Prismatic executable needs the corrected IRIS backend rebuilt into it;
 the CHD alone cannot fix accelerated colors in an older emulator.
 
-**This remains an experiment:** the RGB24 color and mask checks pass, but
-xmahjongg artwork is corrupted with XAA. Winterm can also start with incorrect
+**This older bundle remains a control:** the RGB24 color and mask checks pass,
+but its unpatched Xorg module corrupts xmahjongg artwork with XAA. Winterm can also start with incorrect
 vertical font metrics; the automated interaction checks explicitly resize it.
-The earlier software-rendered bundle remains the qualified comparison image
-and the default in `lab/irix-installed-desktop/image.json`. The original icon
-state qualification belongs to that software-rendered cycle.
+The earlier software-rendered bundle remains a comparison image. The original
+icon-state qualification belongs to that software-rendered cycle. Preserve
+the manual overlay/NVRAM of this older accelerated bundle.
 
 To compare rendering modes, log out and edit
 `/usr/local/share/xiri/xorg.conf` as root: `NoAccel "true"` disables XAA;
@@ -81,7 +111,7 @@ the bundle's `manifest.json`.
 For the standalone emulator, change to the bundle directory and run:
 
 ```sh
-/path/to/iris --config iris.toml
+./run-iris.sh
 ```
 
 For the GUI, configure a machine with those settings and select the CHD
@@ -125,7 +155,9 @@ The original vendor menu files and IRIX shells are preserved; other original
 menu actions still need compatibility work. Each supported menu launch has
 its own `launch-APP.*/` log directory inside the current session directory.
 
-The previous `.work/images/xiri-netbsd-desktop-20261102-shell/`,
+The previous `.work/images/xiri-netbsd-desktop-20261102-behavior/`,
+`.work/images/xiri-netbsd-desktop-20261102-framed-accel/`,
+`.work/images/xiri-netbsd-desktop-20261102-shell/`,
 `.work/images/xiri-netbsd-desktop-20261102-icons/`,
 `.work/images/xiri-netbsd-desktop-20261102-graphical/`,
 `.work/images/xiri-netbsd-desktop-20261102-services/`,
@@ -276,7 +308,9 @@ launcher without importing applications again:
 
 ```sh
 PYTHONDONTWRITEBYTECODE=1 python3 scripts/probe-xiri-image.py \
-  .work/images/xiri-netbsd-desktop-20261102-behavior
+  .work/images/xiri-netbsd-desktop-20261103-newport-xmahjongg \
+  --iris-bin-dir .work/images/xiri-netbsd-desktop-20261103-newport-xmahjongg/emulator \
+  --arrange-winterm
 ```
 
 For older harnesses that require a raw disk, materialize a stopped seed
@@ -284,11 +318,11 @@ once (the tool reuses the verified extraction when available):
 
 ```sh
 PYTHONDONTWRITEBYTECODE=1 python3 scripts/prepare-xiri-seed.py \
-  .work/images/xiri-netbsd-desktop-20261102-behavior \
-  --output-directory .work/xiri-image/prepared-seed-20261102-behavior
+  .work/images/xiri-netbsd-desktop-20261103-newport-xmahjongg \
+  --output-directory .work/xiri-image/prepared-seed-20261103-newport-xmahjongg
 ```
 
-This produces `.work/xiri-image/prepared-seed-20261102-behavior/`. Clone its `disk.raw` for
+This produces `.work/xiri-image/prepared-seed-20261103-newport-xmahjongg/`. Clone its `disk.raw` for
 runs; preserve that seed. Repeating preparation checks its hash and does
 not reimport files. Use it with harnesses whose kernel and payload pins match. Keep the older
 prepared seeds for historical regression tests; do not substitute a newer
@@ -300,8 +334,9 @@ To construct a replacement after qualifying a changed raw seed:
 PYTHONDONTWRITEBYTECODE=1 python3 scripts/build-xiri-image.py \
   --seed-run PATH_TO_HALTED_QUALIFIED_RUN \
   --output-directory NEW_BUNDLE_DIRECTORY \
-  --baseline lab/irix-vendor-shell/baseline.json \
-  --kernel .work/netbsd-irix-vendor-shell-clean-build/tftp/netbsd-XIRI_INDY
+  --baseline lab/newport-accel/corrected-baseline.json \
+  --kernel .work/netbsd-newport-frame-build/tftp/netbsd-XIRI_INDY \
+  --iris-bin-dir .work/target-newport-accel/release
 ```
 
 The builder runs `chdman verify` and requires a full extracted disk to

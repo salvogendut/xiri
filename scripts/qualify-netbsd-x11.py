@@ -64,6 +64,7 @@ def monitor(lab, command):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--mode', choices=['ci', 'ordinary'], default='ci')
+    parser.add_argument('--depth', type=int, choices=[24, 32], default=24, help='TrueColor visual for the native probe')
     parser.add_argument('--accelerated', action='store_true', help='exercise Newport XAA acceleration')
     parser.add_argument('--seed', type=Path, help='reuse a prepared desktop raw seed')
     parser.add_argument('--baseline', type=Path, help='kernel/emulator pin for the prepared seed test')
@@ -89,7 +90,7 @@ def main():
         config_text = re.sub(r'^tftp_dir = .*$', 'tftp_dir = '+json.dumps(str(args.kernel_build/'tftp')),
                              config_text, flags=re.M)
     lab = probe.Lab(args, directory, config_text=config_text)
-    result = {'mode': args.mode, 'accelerated': args.accelerated, 'status': 'error',
+    result = {'mode': args.mode, 'accelerated': args.accelerated, 'depth': args.depth, 'status': 'error',
               'checks': [], 'clean_shutdown': False,
               'started_utc': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())}
     started = time.monotonic()
@@ -158,7 +159,7 @@ def main():
               'test "$xwait" -lt 60 || break; sleep 1; done; '
               'xdpyinfo > /root/xdpyinfo.txt && xset s off && xset -dpms', 120)
         guest(lab, result, 'Start drawing and input probe',
-              f'{{ {GUEST}/probe >{GUEST}/probe.log 2>&1 & ppid=$!; }}; '
+              f'{{ XIRI_TEST_DEPTH={args.depth} {GUEST}/probe >{GUEST}/probe.log 2>&1 & ppid=$!; }}; '
               f'xwait=0; until grep -q "PIXEL" {GUEST}/probe.log; do '
               'kill -0 "$ppid" || break; xwait=$((xwait + 1)); '
               'test "$xwait" -lt 30 || break; sleep 1; done; '
