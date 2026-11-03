@@ -8,12 +8,14 @@ older reproduction checkpoints. Automated checks never promote their result
 or replace the manual bundle's NVRAM/overlay state.
 
 The current accelerated development bundle is
-`.work/images/xiri-netbsd-desktop-20261103-newport-xmahjongg/`.
-`netbsd-xiri.chd` is an 8 GiB NetBSD disk compressed to 480,615,682 bytes
-(about 458 MiB). Its SHA256 is
-`1fa5c92ffac3706680e16acd1270df4707928106529cf94084152f9dfac14ab5`.
-The [texture-repair cycle](results/2026-11-03-newport-xmahjongg.md) records its
-source and rendering checks. The earlier `20261102-behavior` software bundle
+`.work/images/xiri-netbsd-desktop-20261103-module/`.
+`netbsd-xiri.chd` is an 8 GiB NetBSD disk compressed to 481,180,579 bytes
+(about 459 MiB). Its SHA256 is
+`0d15ff1cb41eb28d5f411cc296f249fb30fa9f356b2f6e84d46f2ef86ba68629`.
+The [module-image cycle](results/2026-11-03-irix-module-image.md) records its
+boot, desktop and rendering checks. The previous `20261103-newport-xmahjongg`
+built-in image remains available as a control, including its manual state.
+The earlier `20261102-behavior` software bundle
 and `20261102-framed-accel` bundle are preserved for comparison.
 It contains the qualified Xiri kernel, original IRIX
 runtimes, installed application/catalog payload, persistent fonts and a
@@ -44,7 +46,34 @@ its opened icon while running and returning to the exact closed pixels after
 exit. It also verifies filesystem and Dumpster double-clicks opening their
 directory views. Full Dumpster operations and launch animation remain open.
 
-## Accelerated image with the xmahjongg repair
+## Current module-based image
+
+The current kernel is source-equivalent to NetBSD `xiri` `d1ce7a96615`, using
+`XIRI_IRIX_MODULE` without built-in IRIX support. During boot, NetBSD loads
+`compat_irix_o32.kmod` from `/stand/sgimips/11.99.9/modules/`; `/etc/modules.conf`
+and `modules=YES` in `/etc/rc.conf` enable it. Both o32 and n32 applications use
+this module. Normal securelevel remains 1; manual `modload` is unnecessary.
+The kernel and module are a matched pair and still require the Xiri fork.
+
+The image keeps the tested `819c682` IRIS backend, corrected Newport Xorg
+driver, original resources and root-launcher/xiritest-session arrangement.
+Launch it with:
+
+```sh
+/var/home/salvogendut/Dev/xiri/.work/images/xiri-netbsd-desktop-20261103-module/run-iris.sh
+```
+
+Log in as `root` (no password), then run `xiri-desktop`.
+`modstat | grep compat_irix_o32` should show `exec` and `filesys`. The
+[qualification record](results/2026-11-03-irix-module-image.json) and
+[PNG](results/images/2026-11-03-irix-module-image.png) cover a fresh CHD boot,
+module and resource hashes, accelerated drawing and catalog launching.
+The preparation probe also checks graphical login and both logout routes.
+Winterm was explicitly resized for input checks; its startup metrics still
+need work. Prismatic must use a compatible IRIS backend and a fresh image
+state directory. Preserve overlays belonging to the older CHD.
+
+## Previous accelerated image with the xmahjongg repair
 
 This bundle retains the framed kernel equivalent to NetBSD `a536d8c4da2`
 and IRIS `xiri` `819c682`, and replaces the Xorg Newport module with the
@@ -66,8 +95,9 @@ need work. The diagnostic checks explicitly resize winterm for input.
 The [direct CHD qualification](results/2026-11-03-newport-xmahjongg-image.json)
 checks disk boot, the replacement module hash, native Render, catalog launch
 and cleanup. Its [PNG](results/images/2026-11-03-newport-xmahjongg-image.png)
-shows the launched game. `lab/irix-installed-desktop/image.json` selects this
-bundle. The inherited opened/closed Icon Catalog pixel check belongs to the
+shows the launched game. This bundle is preserved as a built-in control;
+`lab/irix-installed-desktop/image.json` now selects the module-based image.
+The inherited opened/closed Icon Catalog pixel check belongs to the
 software cycle; catalog launch is checked again from the new CHD.
 
 ## Experimental framed-console acceleration image
@@ -315,8 +345,8 @@ launcher without importing applications again:
 
 ```sh
 PYTHONDONTWRITEBYTECODE=1 python3 scripts/probe-xiri-image.py \
-  .work/images/xiri-netbsd-desktop-20261103-newport-xmahjongg \
-  --iris-bin-dir .work/images/xiri-netbsd-desktop-20261103-newport-xmahjongg/emulator \
+  .work/images/xiri-netbsd-desktop-20261103-module \
+  --iris-bin-dir .work/images/xiri-netbsd-desktop-20261103-module/emulator \
   --arrange-winterm
 ```
 
@@ -325,11 +355,11 @@ once (the tool reuses the verified extraction when available):
 
 ```sh
 PYTHONDONTWRITEBYTECODE=1 python3 scripts/prepare-xiri-seed.py \
-  .work/images/xiri-netbsd-desktop-20261103-newport-xmahjongg \
-  --output-directory .work/xiri-image/prepared-seed-20261103-newport-xmahjongg
+  .work/images/xiri-netbsd-desktop-20261103-module \
+  --output-directory .work/xiri-image/prepared-seed-20261103-module
 ```
 
-This produces `.work/xiri-image/prepared-seed-20261103-newport-xmahjongg/`. Clone its `disk.raw` for
+This produces `.work/xiri-image/prepared-seed-20261103-module/`. Clone its `disk.raw` for
 runs; preserve that seed. Repeating preparation checks its hash and does
 not reimport files. Use it with harnesses whose kernel and payload pins match. Keep the older
 prepared seeds for historical regression tests; do not substitute a newer
@@ -341,9 +371,9 @@ To construct a replacement after qualifying a changed raw seed:
 PYTHONDONTWRITEBYTECODE=1 python3 scripts/build-xiri-image.py \
   --seed-run PATH_TO_HALTED_QUALIFIED_RUN \
   --output-directory NEW_BUNDLE_DIRECTORY \
-  --baseline lab/newport-accel/corrected-baseline.json \
-  --kernel .work/netbsd-newport-frame-build/tftp/netbsd-XIRI_INDY \
-  --iris-bin-dir .work/target-newport-accel/release
+  --baseline lab/irix-module/image-baseline.json \
+  --kernel .work/netbsd-module-build/tftp/netbsd-XIRI_INDY \
+  --iris-bin-dir .work/images/xiri-netbsd-desktop-20261103-module/emulator
 ```
 
 The builder runs `chdman verify` and requires a full extracted disk to

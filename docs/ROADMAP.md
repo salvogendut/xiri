@@ -14,7 +14,10 @@ with modern software running natively. The [repository/workflow cleanup](results
 complete: the maintained `./xiri` commands and both desktop checks are qualified.
 The [first module milestone](results/2026-11-03-irix-module.md) now passes
 on the Xiri fork, including a desktop without built-in IRIX support. The
-service/session work below is next. Retain the working manual image as a
+[new manual CHD](results/2026-11-03-irix-module-image.md) packages that kernel
+and module and passes graphical boot, repeated desktop/logout, accelerated
+rendering and a fresh catalog launch from disk. The service/session work below
+is next. Retain the working manual image as a
 regression baseline throughout that work.
 
 ## Next packaging phase
@@ -49,10 +52,11 @@ order was updated to prioritize the kernel module at the user’s request:
 
 Acceptance requires repeatable installation/configuration and a fresh manual
 CHD for the resulting deployment. The first module milestone is complete
-on our fork; service/session packaging and the replacement image remain.
-The current manual image still uses the built-in personality and root service
-launcher. Continue application/desktop fixes alongside packaging without losing the established
-regression coverage.
+on our fork and its [replacement manual image](results/2026-11-03-irix-module-image.md)
+is qualified. Service/session packaging remains. The current image boot-loads
+the module and retains the root service launcher with xiritest desktop clients.
+Continue application/desktop fixes alongside packaging without losing the
+established regression coverage.
 
 Active fork work is consolidated on [`xiri` in IRIS and NetBSD](FORKS.md).
 Historical lab revisions remain pinned in detached worktrees.
@@ -276,6 +280,7 @@ Acceptance: an original desktop session executing inside the emulated Indy on Ne
 - [x] Package the IRIX personality as a loadable kernel module modeled after `compat_linux`, with a reproducible build/install path and explicit kernel-version/architecture dependencies. [First milestone on our fork](results/2026-11-03-irix-module.md); stock-kernel delivery remains below.
 - [ ] Audit core dependencies, including `selcommon_kern` and the pthread-initialization `emul.e_sigmask` hook; upstream or remove them to enable deployment on a compatible standard NetBSD kernel.
 - [x] Qualify module load, dependency resolution, refusal to unload while in use, unload/reload after exit, and the application regressions on a kernel without the built-in IRIX personality. Normal boot and the desktop also pass in the [module cycle](results/2026-11-03-irix-module.md).
+- [x] Deliver a reusable [module-based manual CHD](results/2026-11-03-irix-module-image.md), with matching kernel/module hashes, boot configuration, graphical login/logout and direct-CHD desktop qualification.
 - [ ] Boot the qualified build on the physical Indy and repeat ABI and desktop acceptance there.
 - [ ] Validate real storage, networking, cache/DMA behavior, input and local display; record differences from emulation.
 - [ ] Package a reproducible installation for the first supported configuration.

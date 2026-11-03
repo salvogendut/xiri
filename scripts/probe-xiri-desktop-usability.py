@@ -32,6 +32,7 @@ def main():
     parser.add_argument('--iris-bin-dir', type=Path, default=ROOT/'.work/target-netbsd64/release')
     parser.add_argument('--xorg-config', type=Path, help='install and qualify an alternate Xorg configuration')
     parser.add_argument('--newport-driver', type=Path, help='install a native Newport Xorg module and check its Render path')
+    parser.add_argument('--irix-module', type=Path, help='install the pinned IRIX personality for boot loading')
     parser.add_argument('--check-xmahjongg', action='store_true', help='exercise the vendor game within the desktop')
     parser.add_argument('--arrange-winterm', action='store_true',
                         help='record and resize winterm for diagnostic interaction checks')
@@ -68,6 +69,21 @@ def main():
     if args.newport_driver:
         shutil.copyfile(args.newport_driver, media/'newport_drv.so')
         shutil.copyfile(ROOT/'lab/newport-xaa/render-probe.c', media/'render-probe.c')
+    module = None
+    if pin.get('module_build_manifest'):
+        assert args.irix_module, 'the modular kernel requires its matching personality'
+        build_path = ROOT/pin['module_build_manifest']
+        assert p.sha256(build_path) == pin['module_build_manifest_sha256']
+        build = json.loads(build_path.read_text())
+        assert build['artifacts']['netbsd']['sha256'] == pin['native_kernel_sha256']
+        assert build['artifacts']['netbsd.boot']['sha256'] == pin['boot_kernel_sha256']
+        assert p.sha256(args.irix_module) == build['artifacts']['compat_irix_o32.kmod']['sha256']
+        shutil.copyfile(args.irix_module, media/'compat_irix_o32.kmod')
+        module = dict(name='compat_irix_o32', sha256=p.sha256(args.irix_module),
+                      build_manifest=pin['module_build_manifest'],
+                      build_manifest_sha256=pin['module_build_manifest_sha256'])
+    else:
+        assert not args.irix_module, 'module installation requires a matching baseline'
     for name, source, key in [('netbsd',kernel_build/'kernel-media/netbsd','native_kernel_sha256'),
                              ('netbsd.boot',kernel_build/'tftp/netbsd-XIRI_INDY','boot_kernel_sha256')]:
         assert p.sha256(source)==pin[key]
@@ -182,6 +198,14 @@ def main():
         cmd('mount -t cd9660 -o ro /dev/cd0a /cdrom && cd /cdrom && sha256 -c SHA256 >/root/usability-media.log && mkdir -p /root/usability && cd /root/usability')
         cmd('rm -f graphics-login returned-toolchest returned-root-menu toolchest.log root-menu.log')
         cmd('install -m 444 /cdrom/netbsd /netbsd && install -m 444 /cdrom/netbsd.boot /netbsd.boot')
+        if module:
+            module['path'] = get('sysctl -n kern.module.path').strip()+'/compat_irix_o32/compat_irix_o32.kmod'
+            cmd('mkdir -p '+shlex.quote(str(Path(module['path']).parent))+' && install -m 444 /cdrom/compat_irix_o32.kmod '+shlex.quote(module['path']))
+            cmd("touch /etc/modules.conf; grep -Eq '^compat_irix_o32([[:space:]]|$)' /etc/modules.conf || printf '\\ncompat_irix_o32\\n' >>/etc/modules.conf")
+            cmd("sed '/^modules=/d' /etc/rc.conf >/etc/rc.conf.new && printf '\\nmodules=YES\\n' >>/etc/rc.conf.new && mv /etc/rc.conf.new /etc/rc.conf")
+            installed[module['path']] = module['sha256']
+            for dest in ['/etc/modules.conf', '/etc/rc.conf']:
+                installed[dest] = get('sha256 -q '+dest).strip()
         if args.xorg_config:
             cmd('install -m 444 /cdrom/xorg.conf /usr/local/share/xiri/xorg.conf')
         if args.newport_driver:
@@ -217,6 +241,12 @@ def main():
         lab.wait('login: ',600); lab.send('root'); lab.wait('xiri-indy# ',30)
         lab.logged_in = True
         r['graphics_console'] = cmd('sysctl kern.consdev | grep ttyE0 && tty | grep ttyZ0')
+        if module:
+            module['modstat'] = get('modstat')
+            assert re.search(r'^compat_irix_o32\s+exec\s+filesys\s', module['modstat'], re.M)
+            module['securelevel'] = int(get('sysctl -n kern.securelevel').strip())
+            assert module['securelevel'] == 1
+            r['irix_module'] = module
         lab.monitor_command('disp compositor sw')
         keytext('root')
         wait_for("who | awk '$1 == \"root\" && $2 == \"ttyE0\" {found=1} END {exit !found}'")

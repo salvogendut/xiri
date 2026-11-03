@@ -15,10 +15,10 @@ See the [rendering results](docs/results/2026-11-03-newport-xmahjongg.md).
 
 The manual launcher starts services as root and runs the desktop as
 **xiritest**, UID 1234, with HOME and initial directory `/usr/people/xiritest`.
-Normal xdm login is planned. The current manual CHD uses the built-in
-personality. A separate [loadable-module build](lab/irix-module/README.md)
-now runs the desktop on a kernel without built-in IRIX support; it still
-requires our NetBSD fork’s core hooks.
+Normal xdm login is planned. The [current manual CHD](docs/results/2026-11-03-irix-module-image.md)
+loads `compat_irix_o32.kmod` during boot and runs the desktop on a kernel
+without built-in IRIX support. This [module build](lab/irix-module/README.md)
+still requires our NetBSD fork’s core hooks.
 
 ## Related repositories
 

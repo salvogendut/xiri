@@ -14,7 +14,7 @@ The entry point covers routine work against the selected image; the older
 | `./xiri run` | Open the bundle's pinned IRIS launcher for manual testing. NVRAM, overlays and snapshots retain normal manual-session behavior. |
 | `./xiri check` | Boot a disposable CHD copy, check desktop behavior, render pixels, home directory, catalog launching and cleanup, then write a qualification JSON and PNG. |
 | `./xiri seed [--output PATH]` | Extract or reuse a raw automation seed without repeating the import. A mismatched existing disk is rejected. Changed manual graphical NVRAM is preserved and excluded from a new frozen seed. |
-| `./xiri build kernel` | Build tools and the configured mips64eb kernel from the NetBSD `xiri` worktree, with at most two build jobs. |
+| `./xiri build kernel` | Build tools and the configured modular mips64eb kernel from the NetBSD `xiri` worktree, with at most two build jobs. Build its matching personality with the command below. |
 | `./xiri build iris` | Build the IRIS `xiri` worktree with the pinned Rust toolchain, locked offline dependencies and two jobs. |
 | `./xiri image --seed-run RUN --output NEW_BUNDLE` | Package a halted, qualified raw run as a new CHD bundle. Uses selected-image pins unless matching replacements are explicitly supplied. |
 
@@ -99,8 +99,21 @@ checks lifecycle, normal boot loading and the Newport desktop on a disposable
 seed. `scripts/probe-irix-module-regressions.py --seed <passed-module-run>`
 replays the measured signal, sproc and receive cases with the boot-loaded module.
 
-The ordinary `./xiri build kernel` and current manual-image pointer retain
-their existing configuration. Module work has isolated source/tool/object
-paths and the same pinned emulator as the manual desktop. See the
-[cycle evidence](results/2026-11-03-irix-module.md) for its exact inputs and
-remaining stock-kernel dependencies.
+The ordinary `./xiri build kernel` now selects `XIRI_IRIX_MODULE`. Complete
+that new source build with its matching personality:
+
+```sh
+./xiri build kernel
+python3 scripts/build-irix-module.py --build .work/builds/netbsd
+```
+
+The second command audits imports, relocations and the absence of a built-in
+IRIX personality, and writes `.work/builds/netbsd/module.json`. Keep these
+two artifacts together. Neither command replaces the qualified manual image
+or the retained `.work/netbsd-module-build` outputs. The previous built-in
+configuration remains available as `lab/newport-accel/XIRI_NEWPORT_FRAME`
+for explicit comparison builds in separate output directories. See the
+[module cycle evidence](results/2026-11-03-irix-module.md) for exact inputs
+and remaining stock-kernel dependencies, and the
+[image preparation recipe](../lab/irix-module/README.md#prepare-a-manual-image)
+for boot configuration and manual-image acceptance.

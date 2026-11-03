@@ -110,6 +110,16 @@ class ArtifactTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'Artifact hash mismatch'):
             verify_image(self.root, self.pointer, self.bundle, self.manifest)
 
+    def test_module_build_manifest_is_an_immutable_artifact(self):
+        path = self.bundle/'irix-module-build.json'
+        path.write_text('matching module build')
+        self.manifest['pin'].update(module_build_manifest='module/build.json',
+                                    module_build_manifest_sha256=sha256(path))
+        verify_image(self.root, self.pointer, self.bundle, self.manifest)
+        path.write_text('another module build')
+        with self.assertRaisesRegex(ValueError, 'Artifact hash mismatch'):
+            verify_image(self.root, self.pointer, self.bundle, self.manifest)
+
     def test_emulator_pin_disagreement_rejected(self):
         self.manifest['pin']['emulator_sha256'] = 'different build'
         with self.assertRaisesRegex(ValueError, 'emulator hashes disagree'):
@@ -199,6 +209,48 @@ class RpcLogTests(unittest.TestCase):
         self.verify(dict(rpcbind_warning_check='RPC_BIND_WARNINGS_BEFORE=2 AFTER=2 XIRI_RC=0'))
         with self.assertRaises(AssertionError):
             self.verify(dict(rpcbind_warning_check='RPC_BIND_WARNINGS_BEFORE=2 AFTER=0 XIRI_RC=0'))
+
+
+class ModuleImageTests(unittest.TestCase):
+    def setUp(self):
+        spec = importlib.util.spec_from_file_location('module_image_qualifier', ROOT/'scripts/qualify-xiri-image.py')
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        self.verify = module.verify_irix_module
+        self.pin = dict(module_build_manifest='build.json', module_build_manifest_sha256='build-hash',
+                        native_kernel_sha256='native-hash', boot_kernel_sha256='boot-hash')
+        self.build = dict(artifacts={name:dict(sha256=digest) for name, digest in [
+            ('netbsd', 'native-hash'), ('netbsd.boot', 'boot-hash'), ('compat_irix_o32.kmod', 'module-hash')]})
+        evidence = dict(name='compat_irix_o32', path='/stand/sgimips/test/modules/compat_irix_o32/compat_irix_o32.kmod',
+                        sha256='module-hash', modstat='compat_irix_o32 exec filesys 0 - exec_elf32,compat_netbsd32\n', securelevel=1,
+                        build_manifest='build.json', build_manifest_sha256='build-hash')
+        self.seed = dict(irix_module=dict(evidence), installed_files={evidence['path']:'module-hash',
+                         '/etc/modules.conf':'modules-conf-hash', '/etc/rc.conf':'rc-conf-hash'})
+        self.result = dict(irix_module=dict(evidence))
+
+    def test_matching_module_boot_passes(self):
+        self.verify(self.pin, self.seed, self.build, self.result)
+
+    def test_mismatched_kernel_or_module_rejected(self):
+        for artifact in ['netbsd', 'netbsd.boot', 'compat_irix_o32.kmod']:
+            with self.subTest(artifact=artifact):
+                build = json.loads(json.dumps(self.build))
+                build['artifacts'][artifact]['sha256'] = 'wrong'
+                with self.assertRaises(AssertionError):
+                    self.verify(self.pin, self.seed, build, self.result)
+
+    def test_absent_builtin_or_weakened_boot_rejected(self):
+        for changes in [dict(modstat=''), dict(modstat='compat_irix_o32 exec builtin 0 - -\n'),
+                        dict(securelevel=0), dict(sha256='wrong')]:
+            with self.subTest(changes=changes):
+                result = dict(irix_module={**self.result['irix_module'], **changes})
+                with self.assertRaises(AssertionError):
+                    self.verify(self.pin, self.seed, self.build, result)
+
+    def test_missing_boot_configuration_rejected(self):
+        del self.seed['installed_files']['/etc/modules.conf']
+        with self.assertRaises(AssertionError):
+            self.verify(self.pin, self.seed, self.build, self.result)
 
 
 class LifecycleTests(unittest.TestCase):

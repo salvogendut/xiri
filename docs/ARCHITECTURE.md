@@ -69,7 +69,8 @@ handling. A loadable module still executes in the kernel. **A loadable module
 modeled after `compat_linux` is the desired final delivery target**, agreed on
 2026-11-01 and tracked in the
 [release roadmap](ROADMAP.md#milestone-4-usable-first-release). The current
-manual image uses the personality built into the kernel. The separate
+manual image [boot-loads the personality](results/2026-11-03-irix-module-image.md)
+from `compat_irix_o32.kmod` at normal securelevel. The
 [loadable-module build](../lab/irix-module/README.md) targets the Xiri fork;
 standalone module loading on a stock kernel has not been established.
 
@@ -207,8 +208,9 @@ non-LOCAL backing; group-aware guards reject unimplemented map changes.
 Exec/exit hooks detach members and release owned stacks, with retained vmspace
 references protecting peers during exec. It uses existing fork/UVM interfaces
 and adds no core hook. General sharing, pthread creation and foreign signal
-handlers remain separate; deployment is still a built-in personality pending
-the planned compat_linux-style module. The [F_DUPFD adapter](results/2026-11-01-irix-dupfd.md)
+handlers remain separate. These adapters are now also built into the
+[loadable personality](results/2026-11-03-irix-module.md), following the
+compat_linux module model. The [F_DUPFD adapter](results/2026-11-01-irix-dupfd.md)
 now adds the installer's descriptor allocation through native sys_fcntl, with
 explicit signed-minimum translation and the allocated descriptor preserved.
 Native allocation owns limits and references; no additional core hook is needed.

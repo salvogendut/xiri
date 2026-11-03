@@ -33,6 +33,17 @@ def main():
     assert r['persistent_helpers_installed'] and r['native_x11_after']
     pin = json.loads(a.baseline.read_text())
     assert r['pin'] == pin
+    assert bool(r.get('irix_module')) == bool(pin.get('module_build_manifest'))
+    if pin.get('module_build_manifest'):
+        module = r['irix_module']
+        build_path = ROOT/pin['module_build_manifest']
+        assert sha(build_path) == pin['module_build_manifest_sha256'] == module['build_manifest_sha256']
+        build = json.loads(build_path.read_text())
+        assert build['artifacts']['netbsd']['sha256'] == pin['native_kernel_sha256']
+        assert build['artifacts']['netbsd.boot']['sha256'] == pin['boot_kernel_sha256']
+        assert module['sha256'] == build['artifacts']['compat_irix_o32.kmod']['sha256']
+        assert r['installed_files'][module['path']] == module['sha256']
+        assert module['securelevel'] == 1
     assert (seed/'disk.raw').stat().st_size == 8589934592
     out.mkdir(parents=True, exist_ok=False)
     (out/'tftp').mkdir()
@@ -74,6 +85,12 @@ def main():
     shutil.copyfile(seed/'result.json', out/'seed-result.json')
     shutil.copyfile(ROOT/'lab/irix-installed-desktop/prismatic.cfg', out/'prismatic.cfg')
     readme = (ROOT/'lab/irix-installed-desktop/image-README.txt').read_text()
+    if r.get('irix_module'):
+        shutil.copyfile(build_path, out/'irix-module-build.json')
+        readme = ('IRIX compatibility loads from compat_irix_o32.kmod during normal boot.\n'
+            'Check it with: modstat | grep compat_irix_o32\n'
+            'Expect exec / filesys. Keep this module and kernel together.\n'
+            'The default securelevel remains 1; no manual modload is needed.\n\n'+readme)
     if emulator_files:
         readme = ('Run ./run-iris.sh to use the included, tested IRIS backend.\n'
             'Prismatic must be rebuilt with the IRIS revision in manifest.json\n'
@@ -187,6 +204,8 @@ tftp_dir = "tftp"
         commands=commands, direct_chd_boot='pending separate cold-boot probe')
     if a.experimental_note:
         report['experimental_note'] = a.experimental_note
+    if r.get('irix_module'):
+        report['irix_module'] = r['irix_module']
     if emulator_files:
         report['emulator_files'] = emulator_files
     if r.get('xorg_configuration'):

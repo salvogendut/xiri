@@ -42,6 +42,13 @@ not repin qualified kernels, emulator binaries, runtime resources or guest disks
 
 ## IRIS upstream updates
 
+The 2026-11-03 module-image cycle checked upstream again at
+`28fa516684c54e00e35b258c65e5dcac3a36165c`. It is already contained in
+`xiri` `1aed0df`; no integration or fork source changes were needed.
+The image uses the previously qualified `819c682` emulator and the matching
+kernel/module artifacts from NetBSD `d1ce7a96615`. Image boot and desktop
+checks are recorded separately from source-build qualification.
+
 The module cycle merged and pushed NetBSD commits `c46d4e9a931` and
 `d1ce7a96615` to `xiri`. The completed `topic/compat-irix-module` branch was
 removed after the push; its source worktree is detached at `d1ce7a96615`.

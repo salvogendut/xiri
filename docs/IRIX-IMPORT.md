@@ -1,7 +1,7 @@
 # Imported IRIX files and reusable NetBSD image
 
-The prepared image contains NetBSD, the qualified Xiri kernel and the IRIX
-runtime/application payload. It is a development baseline for cloning and
+The prepared image contains NetBSD, the matching Xiri kernel and boot-loaded
+compatibility module, and the IRIX runtime/application payload. It is a development baseline for cloning and
 manual IRIS testing. Routine runs should reuse it; importing from the IRIX
 source disk is a bootstrap or deliberate payload-update operation.
 
@@ -68,6 +68,16 @@ resolves them through the emulation root. Host extraction records these
 links as metadata and never follows them into the host filesystem.
 
 ## Permissions and generated state
+
+The [module-image preparation](../lab/irix-module/README.md#prepare-a-manual-image)
+adds no vendor resources. Its native files are a matching `/netbsd`,
+PROM-compatible `/netbsd.boot`, and
+`/stand/sgimips/11.99.9/modules/compat_irix_o32/compat_irix_o32.kmod` (mode 0444).
+The installer derives that module directory from `kern.module.path`, adds
+`compat_irix_o32` to `/etc/modules.conf`, and enables `modules=YES` in
+`/etc/rc.conf`. Preparation and CHD qualification record and verify their
+hashes. The module belongs to the same NetBSD build as the kernel, rather
+than the IRIX copy ledger. Normal boot retains securelevel 1.
 
 The first launch exposed an essential permission difference. Some original
 shared libraries are mode 0644, while the current SGI_ELFMAP implementation

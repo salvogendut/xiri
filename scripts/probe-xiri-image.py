@@ -115,6 +115,16 @@ def main():
         cmd('uname -v | grep '+pin['ident'])
         cmd('test "$(sha256 -q /netbsd)" = '+pin['native_kernel_sha256']+
             ' && test "$(sha256 -q /netbsd.boot)" = '+pin['boot_kernel_sha256'])
+        if pin.get('module_build_manifest'):
+            module = seed_result['irix_module']
+            result['irix_module'] = dict(name=module['name'], path=module['path'],
+                sha256=get('sha256 -q '+shlex.quote(module['path'])).decode().strip(),
+                modstat=get('modstat').decode(),
+                securelevel=int(get('sysctl -n kern.securelevel').decode().strip()))
+            assert result['irix_module']['sha256'] == module['sha256']
+            assert re.search(r'^compat_irix_o32\s+exec\s+filesys\s', result['irix_module']['modstat'], re.M)
+            assert result['irix_module']['securelevel'] == 1
+            print('IRIX module loaded from disk at normal securelevel', flush=True)
         cmd('cd /root && test -x /usr/local/bin/xiri-desktop && test -r /usr/local/share/xiri/fonts/fonts.dir && test -d /usr/people/xiritest')
         if a.console_size:
             size = get('stty -f /dev/ttyE0 size').decode().strip()

@@ -34,6 +34,26 @@ def verify_rpc_warnings(result):
         assert counts and counts[1] == counts[2]
 
 
+def verify_irix_module(pin, seed, build, result):
+    """Require matching artifacts and a filesystem-loaded personality at boot."""
+    module = seed['irix_module']
+    observed = result['irix_module']
+    assert module['name'] == 'compat_irix_o32'
+    assert module['build_manifest'] == pin['module_build_manifest']
+    assert module['build_manifest_sha256'] == pin['module_build_manifest_sha256']
+    for artifact, key in [('netbsd', 'native_kernel_sha256'), ('netbsd.boot', 'boot_kernel_sha256')]:
+        assert build['artifacts'][artifact]['sha256'] == pin[key]
+    assert module['sha256'] == build['artifacts']['compat_irix_o32.kmod']['sha256']
+    assert seed['installed_files'][module['path']] == module['sha256']
+    for path in ['/etc/modules.conf', '/etc/rc.conf']:
+        assert path in seed['installed_files']
+    for key in ['name', 'path', 'sha256']:
+        assert observed[key] == module[key]
+    for evidence in [module, observed]:
+        assert re.search(r'^compat_irix_o32\s+exec\s+filesys\s', evidence['modstat'], re.M)
+        assert evidence['securelevel'] == 1
+
+
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('run', type=Path)
@@ -76,6 +96,12 @@ def main():
     for path, digest in r['sources'].items():
         assert sha(ROOT/path) == digest, path
     seed_result = json.loads((bundle/'seed-result.json').read_text())
+    if m['pin'].get('module_build_manifest'):
+        build_path = bundle/'irix-module-build.json'
+        assert sha(build_path) == m['pin']['module_build_manifest_sha256']
+        assert sha(ROOT/m['pin']['module_build_manifest']) == sha(build_path)
+        assert m['irix_module'] == seed_result['irix_module']
+        verify_irix_module(m['pin'], seed_result, json.loads(build_path.read_text()), r)
     if seed_result.get('desktop_behavior'):
         assert sha(bundle/'desktop-behavior-resources.json') == seed_result['desktop_behavior']['resource_ledger_sha256']
         assert 'granite' in r['desktop_behavior']['backdrop']
@@ -193,6 +219,10 @@ def main():
         report['render_probe'] = r['render_probe']
     if r.get('console_size'):
         report['console_size'] = r['console_size']
+    if m['pin'].get('module_build_manifest'):
+        report['irix_module'] = r['irix_module']
+        report['module_build_manifest_sha256'] = m['pin']['module_build_manifest_sha256']
+        report['limitations'].append('The loadable personality still requires the Xiri fork core hooks; this is not a stock-NetBSD module.')
     if r.get('winterm_arranged'):
         report['winterm_arranged'] = r['winterm_arranged']
         report['winterm_geometry_before_arrangement'] = r['winterm_geometry_before_arrangement']
@@ -236,6 +266,9 @@ def main():
             public['emulator_files'] = m['emulator_files']
         if m['pin'].get('committed_source_revision'):
             public['kernel_source_equivalent_commit'] = m['pin']['committed_source_revision']
+        if m['pin'].get('module_build_manifest'):
+            public['irix_module'] = r['irix_module']
+            public['module_build_manifest_sha256'] = m['pin']['module_build_manifest_sha256']
         if seed_result.get('newport_driver'):
             public['newport_driver_sha256'] = seed_result['newport_driver']['sha256']
             public['xaa_enabled'] = r['xaa_enabled']

@@ -76,8 +76,9 @@ The native parent holds asa's stdin open and waits for a close-on-exec
 acknowledgment before testing busy unload. It closes the input and reaps the
 child before testing successful unload. All owned emulators are stopped.
 
-The existing manual CHD remains the comparison baseline until a replacement
-image passes its own cold-boot and desktop checks.
+The [module-based manual CHD](../../docs/results/2026-11-03-irix-module-image.md)
+now passes its own cold-boot and desktop checks and is selected by `./xiri run`.
+The previous built-in CHD and its user state remain available for comparison.
 
 The ordinary multiuser desktop capture and lifecycle records are in the
 [cycle result](../../docs/results/2026-11-03-irix-module.md). After a passed
@@ -104,3 +105,35 @@ python3 scripts/probe-irix-lp64.py --mode ordinary --require-module \
 That pin deliberately checks the exact disk and NVRAM hashes. A newly prepared
 seed needs a fresh pin and its own evidence; do not silently replace a
 qualified seed or modify the recorded pin to bypass a mismatch.
+
+## Prepare a manual image
+
+[image-baseline.json](image-baseline.json) pairs the audited module build with
+the accelerated desktop's tested IRIS binaries. Prepare a disposable clone
+of the previous image using the graphical console/desktop probe:
+
+```sh
+python3 scripts/probe-xiri-desktop-usability.py \
+  --seed .work/xiri-image/seed-1fa5c92ffac3 \
+  --kernel-build .work/netbsd-module-build \
+  --baseline lab/irix-module/image-baseline.json \
+  --iris-bin-dir .work/images/xiri-netbsd-desktop-20261103-newport-xmahjongg/emulator \
+  --xorg-config lab/newport-accel/xorg.conf \
+  --newport-driver .work/newport-xmahjongg/newport_drv.so \
+  --irix-module .work/netbsd-module-build/obj/sys/modules/compat_irix_o32/compat_irix_o32.kmod \
+  --check-xmahjongg --arrange-winterm
+```
+
+The probe verifies the matching kernel/module hashes, installs the module
+under `kern.module.path`, preserves other `/etc/modules.conf` entries, enables
+the modules rc.d service and reboots onto the graphical console. Its result
+records hashes for the module and both boot configuration files alongside
+the existing native helper ledger. It requires `modstat` to report the IRIX
+personality as `exec / filesys` at securelevel 1 before testing the desktop.
+
+Package the passed, halted run with `scripts/build-xiri-image.py`, using
+this baseline and `.work/netbsd-module-build/tftp/netbsd-XIRI_INDY`.
+Then cold-boot the actual CHD with `scripts/probe-xiri-image.py` and qualify
+with `scripts/qualify-xiri-image.py`. The qualifier checks the module again,
+including its file hash and normal securelevel; successful CHD compression
+alone does not promote an image. See the [image procedure](../../docs/XIRI-IMAGE.md).

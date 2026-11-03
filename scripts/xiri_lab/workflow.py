@@ -52,6 +52,8 @@ def verify_image(root, pointer, bundle, manifest):
         'tftp/netbsd-XIRI_INDY': manifest['pin']['boot_kernel_sha256'],
         **manifest['emulator_files'],
     }
+    if manifest['pin'].get('module_build_manifest'):
+        files['irix-module-build.json'] = manifest['pin']['module_build_manifest_sha256']
     if files.get('emulator/iris') != manifest['pin']['emulator_sha256'] or \
        files.get('emulator/iris-ci') != manifest['pin']['ci_client_sha256']:
         raise ValueError('Bundled emulator hashes disagree with the qualification pin')

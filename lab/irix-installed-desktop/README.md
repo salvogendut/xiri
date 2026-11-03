@@ -159,3 +159,15 @@ This launcher change requires installing the updated script at
 `/usr/local/libexec/xiri/manual-session.sh`; it is not in the preserved icons
 CHD. No additional vendor files were copied in this cycle. Catalog launch
 helpers remain resource candidates pending source-image inspection.
+
+
+## Current module-based image
+
+The [module-image qualification](../../docs/results/2026-11-03-irix-module-image.md)
+packages the same vendor payload and accelerated Xorg driver with the matching
+modular kernel and `compat_irix_o32.kmod`. It loads at boot through native
+`modules.conf`/rc.d configuration. The current [image pointer](image.json)
+selects this bundle; `./xiri run` uses its pinned emulator. Graphical login,
+both logout routes, xmahjongg interaction and a fresh catalog launch from the
+CHD pass. Root still launches services and clients run as xiritest. The old
+CHD and its manual state are preserved. No new IRIX import is required.
