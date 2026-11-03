@@ -42,6 +42,26 @@ not repin qualified kernels, emulator binaries, runtime resources or guest disks
 
 ## IRIS upstream updates
 
+The module cycle merged and pushed NetBSD commits `c46d4e9a931` and
+`d1ce7a96615` to `xiri`. The completed `topic/compat-irix-module` branch was
+removed after the push; its source worktree is detached at `d1ce7a96615`.
+They build the o32/n32 personality as an N64 module and repair a diagnostic
+receive assertion exposed by the desktop test. The [cycle record](results/2026-11-03-irix-module.md)
+contains lifecycle, boot, desktop and regression evidence. Its isolated
+`.work/netbsd-module-src` source and `.work/netbsd-module-build` artifacts
+preserve the tested input; the older detached lab worktrees stay pinned.
+
+The 2026-11-03 kernel-module cycle fetched upstream
+`28fa516684c54e00e35b258c65e5dcac3a36165c` and integrated it as
+`1aed0dfc842a427e32a53ad083e1be0a9d46a613` on IRIS `xiri`, then pushed it.
+The sole new upstream commit corrects the Octane CPU in a virtio-serial
+validation test. Our previous integration already contains that correction
+and an O2 rejection assertion. Resolving the overlapping test hunk preserved
+our version; `git diff --cached --exit-code HEAD` verified an identical tree
+before the merge commit, and `git diff --check` passed. No executable or test
+code changed in this integration. Guest module qualification retains the
+qualified `819c682` emulator bundled with the current desktop image.
+
 The 2026-11-03 workflow-cleanup cycle fetched upstream
 `68f4e4a6d56d85e109ef3d4363854df1cd39cfda` and merged/pushed it as
 `c84757d2f812412581253352c9947c1058e9cf3a`, integrating its storage,

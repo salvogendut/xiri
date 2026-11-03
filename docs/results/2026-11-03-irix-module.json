@@ -1,0 +1,118 @@
+{
+  "schema": 1,
+  "status": "passed",
+  "source_revision": "d1ce7a9661530ebbf4f55d47a34642e9429421e7",
+  "build": "lab/irix-module/build.json",
+  "build_sha256": "692c3f06b3487c8be18388c1a33d7a9605b0bb339204ffe482ece519ded78a4f",
+  "kernel_builtin_irix": false,
+  "module": "compat_irix_o32",
+  "architectures": {
+    "kernel": "mips64eb",
+    "foreign": [
+      "o32",
+      "n32"
+    ]
+  },
+  "artifacts": {
+    "compat_irix_o32.kmod": {
+      "path": "obj/sys/modules/compat_irix_o32/compat_irix_o32.kmod",
+      "sha256": "28908b9311dc342afd28d0aaccb3bd45da3b1b0689de697325778e611c52c70d"
+    },
+    "netbsd": {
+      "path": "kernel-media/netbsd",
+      "sha256": "830483994877a61efc833c3361ed2a6799df003d7e39033181b070908e3f17cd"
+    },
+    "netbsd.boot": {
+      "path": "tftp/netbsd-XIRI_INDY",
+      "sha256": "567265ee63695a792025ca3c9b8797e674c170c36d6f03f290579d859af9017c"
+    }
+  },
+  "imports": 147,
+  "relocations": [
+    "R_MIPS_32",
+    "R_MIPS_64",
+    "R_MIPS_HI16",
+    "R_MIPS_HIGHER",
+    "R_MIPS_HIGHEST",
+    "R_MIPS_LO16",
+    "R_MIPS_NONE"
+  ],
+  "remaining_core_hooks": [
+    "selcommon_kern",
+    "emul.e_sigmask"
+  ],
+  "runs": {
+    "lifecycle": {
+      "directory": ".work/irix-module/runs/ordinary-stpqqniv",
+      "result_sha256": "cf1907094ead8e3073a5a1d17ca86d23e62974e986e88fe82d29c9ca44bc7189",
+      "serial_sha256": "ca1e4e4b43c65cfb3eacdaadfbea37562fe9ae181549e3a612acd0fab8b473f9",
+      "clean_shutdown": true
+    },
+    "lp64": {
+      "directory": ".work/irix-lp64-runs/ordinary-kige1unl",
+      "result_sha256": "ddffdac8b2c2bd836b2f43eb674236a56713cc06f078330555ddac1b4bb569cb",
+      "serial_sha256": "8ec6bdcd47cc6d830a7a8cf6048217696b126464d2c481ae51785185704e89b8",
+      "clean_shutdown": true
+    },
+    "regressions": {
+      "directory": ".work/irix-module/runs/regressions-ek8jt4ig",
+      "result_sha256": "cbe151dc063dfcf3864eb75154ff42b9aaaa168cd0776edda063edb3a74b1275",
+      "serial_sha256": "a2dc1fac539c53b0dc67be1c6507acd48677d3d01545e132da0a57859ad178a6",
+      "clean_shutdown": true
+    }
+  },
+  "checks": {
+    "lifecycle_vendor_executions": 12,
+    "lp64_cases": 243,
+    "signal_cases": 48,
+    "sproc_cases": 48,
+    "recvmsg_cases": 72,
+    "native_signal_time_controls": 4,
+    "host_tests": 18
+  },
+  "lifecycle": "XIRI_MODULE_BUSY_OK\nBUSY result=-1 errno=16\nIDLE result=0 errno=0\n",
+  "desktop": {
+    "home": "/usr/people/xiritest",
+    "png": "docs/results/2026-11-03-irix-module-desktop.png",
+    "png_sha256": "1e964edcf69e7fe5503d3df16874da05b52e7d682456932d97b5d3db9a194c92",
+    "securelevel": 1,
+    "module_administration": "modunload: compat_irix_o32: Operation not permitted\n"
+  },
+  "boot_modules": [
+    "compat_irix_o32            exec     filesys  -        0       - exec_elf32,compat_netbsd32",
+    "compat_netbsd32            exec     builtin  -       11       - ib,if_ppp",
+    "exec_elf32                 exec     builtin  -        2       - -"
+  ],
+  "sources": {
+    "scripts/xiri_lab/__init__.py": "98abff8b2f3c19912cf6993ac5094008cb9ecea0fb6d66c149f76184d9182743",
+    "scripts/xiri_lab/guest.py": "e589b08a06a91fca6fde4c4b10a3e97b90807da82bf6d545b45b1da517d0c954",
+    "scripts/probe-netbsd.py": "adfa9547fa98af28fd55e4e155e7667b2b0a8c7cea8aee8d58079da946b72a1d",
+    "scripts/probe-irix-module.py": "07af6ed63ca069ade3086ae7ced49c7475c0b10dbb4cc9aa9d2f1c563c5dcc8f",
+    "lab/irix-module/lifecycle.c": "edd1deb1fdecdc9100321f68b1dd8a7026a33d551bb2ef7e0e4de97b9995c6c5",
+    "lab/irix-lp64/runner.c": "005bdf3fffce5fb8ca79073e92cc41431aa953550c41014183d5de986a104463",
+    "scripts/probe-irix-module-regressions.py": "7b24b5320eb35183ff4d9e9f6e667d4614910d1632b40992c00c4b875bdaba1d",
+    "scripts/qualify-irix-signal.py": "fafc2032eb3bccb58d641913ec51b4c7f0b44e6015a6577df4289b7300b655c6",
+    "scripts/qualify-irix-signal-reference-v2.py": "5f7cd3b5f7281afcf317163391c9a955a466a34fea33cbb25c8dee9d5d38519d",
+    "scripts/qualify-irix-sproc-kernel.py": "bc946fd2d0386e6d63328539d827c09fe6749dfaca2f3b973da1b46c74e2c27a",
+    "scripts/qualify-irix-sproc.py": "28a3a3b7411002bde3fc5f759c30a24e46a955d05a1af4faeaf25655adbe9dad",
+    "scripts/probe-irix-runtime.py": "89b946e035ecf0525b3c08cdc80ca0b77d8db6aa90fd60cf410ddc7eb3a4d553",
+    "scripts/irix-recvmsg-records.py": "935f00feb2f63824332b39ea94f23ee897964370c97b2578010917b2a6bda761",
+    "lab/irix-recvmsg/reference.json": "418015fc2474f60ee649a8aa7f13d93ab1c6046c2492fabc808182b5d9f959ed",
+    "lab/irix-recvmsg/receive.c": "79617f3feeb2927204619b8d17a54a8de9352b17453521da16f8986f99f94858",
+    "lab/irix-process/runner.c": "51c8045805878f0566a62a66c157b32035d98144bc3bb06e51c78b2fa5f8a141",
+    "lab/irix-signal/native-signals.c": "528a1ec8762d39dcc18e2515c461ca15508f163db39708d4b80172026f17e535",
+    "lab/irix-time/native-control.c": "a5d8b7aac376a76ab1a39d6e20c0cff751d9b9cd88c648a97da14bb05f34d2f9",
+    "scripts/probe-irix-lp64.py": "561e970aba20b89c8ea835ead4825531a13998eef7e1fb4447b883b6de9c9650"
+  },
+  "emulator_sha256": "3dd9299d71f1899ff5a8c9b76f6a24752d19e4f9a0bcfe0edf3a29001dc9c49e",
+  "upstream": {
+    "revision": "28fa516684c54e00e35b258c65e5dcac3a36165c",
+    "integration": "1aed0dfc842a427e32a53ad083e1be0a9d46a613",
+    "tree_unchanged": true
+  },
+  "limitations": [
+    "Requires the matching Xiri-fork N64 kernel and existing core hooks.",
+    "Module loading on a stock kernel and physical hardware remains unqualified.",
+    "The current manual CHD still uses the built-in personality; this cycle preserves it."
+  ]
+}

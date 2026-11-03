@@ -1,0 +1,11 @@
+# Keep native platform support; load the foreign personality separately.
+include "arch/sgimips/conf/GENERIC64_IP2x"
+ident "XIRI_IRIX_MODULE_20261103"
+makeoptions DEBUG="-g"
+# Direct PROM ELF32 boot does not pass a NetBSD symbol-table bootinfo record.
+makeoptions COPY_SYMTAB=1
+no haud* at hpc0
+options NEWPORT_FRAME
+options MODULAR
+no config netbsd
+config netbsd root on sd0a type ffs

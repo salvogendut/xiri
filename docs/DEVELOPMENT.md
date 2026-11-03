@@ -88,3 +88,19 @@ This more specialized probe requires a matching kernel build with symbols and
 the native driver artifact. Its older defaults are historical; pass all
 current paths explicitly. Do not rewrite old experiment defaults or delete
 qualified artifacts as part of routine cleanup.
+
+## IRIX module development
+
+The [module lab](../lab/irix-module/README.md) provides the separate
+`XIRI_IRIX_MODULE` configuration and `scripts/build-irix-module.py`.
+It builds a kernel without `COMPAT_IRIX_O32`, then links the same personality
+as a filesystem-loaded module. `scripts/probe-irix-module.py --desktop`
+checks lifecycle, normal boot loading and the Newport desktop on a disposable
+seed. `scripts/probe-irix-module-regressions.py --seed <passed-module-run>`
+replays the measured signal, sproc and receive cases with the boot-loaded module.
+
+The ordinary `./xiri build kernel` and current manual-image pointer retain
+their existing configuration. Module work has isolated source/tool/object
+paths and the same pinned emulator as the manual desktop. See the
+[cycle evidence](results/2026-11-03-irix-module.md) for its exact inputs and
+remaining stock-kernel dependencies.

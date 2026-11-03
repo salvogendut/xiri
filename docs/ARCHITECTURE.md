@@ -57,10 +57,10 @@ configuration files; and offer the original desktop to a normally authenticated
 xiritest account through native xdm. Original IRIX clogin follows later.
 The implementation must replace reserved-UID cleanup with session ownership,
 keep authentication/X authority intact, and leave system-service and X-server
-lifetime with their native supervisors. This is planned work after the current
-[workflow cleanup](DEVELOPMENT.md), not a claim that module or xdm deployment
-already works. Native Newport/platform drivers remain separate from the
-foreign personality. See the [packaging phase](ROADMAP.md#next-packaging-phase).
+lifetime with their native supervisors. The [module cycle](results/2026-11-03-irix-module.md)
+implements the first step on our fork; service/session separation and xdm
+remain planned work after the [workflow cleanup](DEVELOPMENT.md). Native
+Newport/platform drivers remain separate from the foreign personality. See the [packaging phase](ROADMAP.md#next-packaging-phase).
 
 Supporting daemons could be packaged as ordinary NetBSD services, while the
 desktop itself could be offered as an X login session. Those are user-space
@@ -69,8 +69,9 @@ handling. A loadable module still executes in the kernel. **A loadable module
 modeled after `compat_linux` is the desired final delivery target**, agreed on
 2026-11-01 and tracked in the
 [release roadmap](ROADMAP.md#milestone-4-usable-first-release). The current
-qualification uses the personality built into the kernel; standalone module
-loading on a stock kernel has not been established.
+manual image uses the personality built into the kernel. The separate
+[loadable-module build](../lab/irix-module/README.md) targets the Xiri fork;
+standalone module loading on a stock kernel has not been established.
 
 The [FAM integration](results/2026-11-02-desktop-services.md) is native
 userspace code. Its filesystem watches require a shared native alias for
@@ -91,12 +92,14 @@ login and the diagnostic serial getty are ordinary NetBSD configuration.
 The code already has [module registration and initialization/finalization
 hooks](https://github.com/salvogendut/NetBSD-xiri/blob/c11c9f16fad11837a169a3cd566582bebea2c029/sys/compat/irix_o32/irix_o32.c#L131):
 `MODULE_CLASS_EXEC`, `exec_add` and `exec_remove`. Dependencies are `exec_elf32`
-and, on LP64, `compat_netbsd32`. There is no separate `sys/modules/compat_irix_o32`
-build recipe yet. A concrete core-kernel dependency is our added
+and, on LP64, `compat_netbsd32`. `sys/modules/compat_irix_o32` now builds a
+module for `mips64eb`; NetBSD’s MIPS object loader currently requires N64.
+The module supports both foreign o32 and n32 programs. The kernel retains
+`exec_elf32` and `compat_netbsd32` as built-in dependencies. The audited
+module has 147 imports, all supplied by the module-test kernel. One is our
 `selcommon_kern` helper in `sys/kern/sys_select.c`, used by foreign select;
-the inspected upstream tree does not provide it. Module packaging therefore
-needs a dependency/export audit and resolution of this helper, in addition to
-load/unload and application tests.
+the inspected upstream tree does not provide it. Stock-kernel deployment
+still requires upstreaming or replacing this helper.
 
 The pthread-initialization work adds another core dependency: an optional
 `emul.e_sigmask` callback in `lwp_userret` to refresh a user-managed signal hold
@@ -111,9 +114,11 @@ restart and general multi-LWP behavior remain separate qualification work.
 
 NetBSD's [current module framework](https://man.netbsd.org/module.7) supports
 execution interpreters and uses [modload](https://man.netbsd.org/modload.8).
-An eventual installed module could be loaded at boot through
-[modules.conf](https://man.netbsd.org/modules.conf.5). These are deployment
-targets, not commands qualified for the current Xiri artifacts.
+The module cycle uses the existing modules rc.d service and
+[modules.conf](https://man.netbsd.org/modules.conf.5) to load before multiuser
+startup. Direct PROM boot requires `COPY_SYMTAB=1` to embed kernel symbols.
+Interactive lifecycle tests use single-user securelevel 0; normal startup
+retains securelevel 1 and its restrictions on module administration.
 
 [NetBSD's Linux compatibility](https://man.netbsd.org/compat_linux.8) is the
 chosen architectural model: `compat_linux` is available as a kernel module, while

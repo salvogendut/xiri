@@ -12,29 +12,31 @@ and [historical checkpoints](HISTORY.md).
 The agreed target remains the full original IRIX desktop on NetBSD and X.org,
 with modern software running natively. The [repository/workflow cleanup](results/2026-11-03-workflow-cleanup.md) is
 complete: the maintained `./xiri` commands and both desktop checks are qualified.
-The packaging phase below follows next. Retain the working image as a
+The [first module milestone](results/2026-11-03-irix-module.md) now passes
+on the Xiri fork, including a desktop without built-in IRIX support. The
+service/session work below is next. Retain the working manual image as a
 regression baseline throughout that work.
 
 ## Next packaging phase
 
 The user requested these deployment changes on 2026-11-03. The implementation
-order follows their dependencies, rather than the order of the request:
+order was updated to prioritize the kernel module at the user’s request:
 
-1. **Define and separate service/session ownership.** Inventory the existing
+1. **Loadable IRIX personality: qualified on our fork.** The
+   [module cycle](results/2026-11-03-irix-module.md) follows `compat_linux`
+   for registration, dependencies and lifecycle. Boot loading, busy-unload
+   refusal, unload/reload, the desktop and o32/n32 regressions pass on a
+   kernel without the built-in personality. The export/relocation audit
+   passes. Stock-kernel delivery still needs upstreaming or replacing
+   `selcommon_kern` and `emul.e_sigmask`. Newport and other native platform
+   drivers remain separate NetBSD components.
+2. **Define and separate service/session ownership.** Inventory the existing
    native helpers and configurations; package required long-lived services
    with NetBSD rc.d startup, configuration files and explicit dependencies.
    Keep per-login environment and client startup in a user session. Replace
    cleanup of every process belonging to reserved UID 1234 with cleanup scoped
    to the session, so other activity by xiritest survives logout. Preserve the
    current manual launcher while the replacement is tested.
-2. **Qualify the loadable IRIX personality.** Model its build, registration,
-   dependencies and lifecycle after `compat_linux`; load it during boot before
-   foreign programs or login services start. Audit `selcommon_kern`,
-   `emul.e_sigmask`, exported symbols, MIPS relocations and dependencies first.
-   Build a kernel without the built-in personality, then test load, busy-unload
-   refusal, unload/reload, reboot and existing o32/n32 application regressions.
-   Newport and other native platform drivers remain native NetBSD components;
-   module delivery does not by itself remove all required core-kernel changes.
 3. **Normal xiritest login through native xdm.** Preserve the authenticated UID,
    groups, HOME `/usr/people/xiritest`, working directory and X authority. Test
    login → desktop → logout → login, failed startup cleanup and coexistence
@@ -46,9 +48,10 @@ order follows their dependencies, rather than the order of the request:
    already compatible.
 
 Acceptance requires repeatable installation/configuration and a fresh manual
-CHD for the resulting deployment. These are planned changes; the current image
-still uses the built-in personality and root service launcher. Continue
-application/desktop fixes alongside packaging without losing the established
+CHD for the resulting deployment. The first module milestone is complete
+on our fork; service/session packaging and the replacement image remain.
+The current manual image still uses the built-in personality and root service
+launcher. Continue application/desktop fixes alongside packaging without losing the established
 regression coverage.
 
 Active fork work is consolidated on [`xiri` in IRIS and NetBSD](FORKS.md).
@@ -59,8 +62,8 @@ kernel module for the IRIX personality, modeled after `compat_linux`**. Use
 NetBSD's Linux compatibility module as the reference for module structure,
 registration, dependency handling, load/unload lifecycle and separation from
 the foreign runtime. Xiri's runtime importer and desktop/session packages
-remain separate user-space components. Built-in custom kernels remain the
-current development and qualification method. Aim to work with an otherwise standard,
+remain separate user-space components. Both built-in and module builds now
+have qualification on our fork. Aim to work with an otherwise standard,
 compatible NetBSD/MIPS kernel by upstreaming or removing required core changes;
 that stock-kernel deployment is not yet demonstrated. See the
 [module deployment boundary](ARCHITECTURE.md#components-and-deployment).
@@ -270,9 +273,9 @@ Acceptance: an original desktop session executing inside the emulated Indy on Ne
 
 ## Milestone 4 Usable first release
 
-- [ ] Package the IRIX personality as a loadable kernel module modeled after `compat_linux`, with a reproducible build/install path and explicit kernel-version/architecture dependencies.
+- [x] Package the IRIX personality as a loadable kernel module modeled after `compat_linux`, with a reproducible build/install path and explicit kernel-version/architecture dependencies. [First milestone on our fork](results/2026-11-03-irix-module.md); stock-kernel delivery remains below.
 - [ ] Audit core dependencies, including `selcommon_kern` and the pthread-initialization `emul.e_sigmask` hook; upstream or remove them to enable deployment on a compatible standard NetBSD kernel.
-- [ ] Qualify module load, dependency resolution, refusal to unload while in use, unload/reload after exit, and the application regressions on a kernel without the built-in IRIX personality.
+- [x] Qualify module load, dependency resolution, refusal to unload while in use, unload/reload after exit, and the application regressions on a kernel without the built-in IRIX personality. Normal boot and the desktop also pass in the [module cycle](results/2026-11-03-irix-module.md).
 - [ ] Boot the qualified build on the physical Indy and repeat ABI and desktop acceptance there.
 - [ ] Validate real storage, networking, cache/DMA behavior, input and local display; record differences from emulation.
 - [ ] Package a reproducible installation for the first supported configuration.

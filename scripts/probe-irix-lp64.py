@@ -9,6 +9,8 @@ import shlex
 import tempfile
 import time
 
+from xiri_lab import Guest
+
 ROOT = Path(__file__).resolve().parent.parent
 
 
@@ -28,11 +30,14 @@ def main():
     parser.add_argument('--mode', choices=['ci', 'ordinary'], default='ci')
     parser.add_argument('--pin', type=Path, default=ROOT/'lab/irix-lp64/baseline.json')
     parser.add_argument('--build-directory', type=Path, default=ROOT/'.work/netbsd-irix64-build')
+    parser.add_argument('--checkpoint', type=Path, default=ROOT/'.work/indy-netbsd-kernel')
+    parser.add_argument('--iris-bin-dir', type=Path, default=ROOT/'.work/target-netbsd64/release')
+    parser.add_argument('--require-module', action='store_true', help='require the filesystem-loaded IRIX personality')
     args = parser.parse_args()
     args.debugger, args.boot_timeout = False, 300
     pin = json.loads(args.pin.read_text())
-    probe.IRIS = ROOT / '.work/target-netbsd64/release/iris'
-    probe.CI = ROOT / '.work/target-netbsd64/release/iris-ci'
+    probe.IRIS = args.iris_bin_dir.resolve()/'iris'
+    probe.CI = args.iris_bin_dir.resolve()/'iris-ci'
     for name, path in [('emulator', probe.IRIS), ('ci_client', probe.CI)]:
         if not path.is_file() or probe.sha256(path) != pin[name + '_sha256']:
             parser.error('missing or different pinned input: ' + name)
@@ -56,7 +61,7 @@ def main():
         parser.error('foreign fixtures are stale; rebuild them first')
     inputs += [(n, foreign_dir / n, i['sha256']) for n,i in foreign['files'].items()]
     inputs += [(r['name'], ROOT / '.work/irix-reference/vendor' / r['path'].lstrip('/'), r['sha256']) for r in pin['runtimes']]
-    checkpoint = ROOT / '.work/indy-netbsd-kernel'
+    checkpoint = args.checkpoint.resolve()
     for name, path, sha in [*inputs,
                              ('base disk', checkpoint / 'disk.raw', pin['base_disk_sha256']),
                              ('NVRAM', checkpoint / 'nvram.bin', pin['nvram_sha256']),
@@ -70,6 +75,8 @@ def main():
     config = (ROOT / 'lab/indy-netbsd/iris.toml').read_text()
     config = re.sub(r'^tftp_dir = .*$', 'tftp_dir = ' + json.dumps(str(kernel_dir)), config, flags=re.M)
     lab = probe.Lab(args, directory, config_text=config)
+    if args.require_module:
+        Guest(lab)  # Preserve the maintained UART pacing for the new workflow.
     result = {'status': 'error', 'mode': args.mode, 'clean_shutdown': False,
               'pin': pin, 'manifest': manifest, 'foreign_manifest': foreign, 'observations': [],
               'harness_sha256': probe.sha256(Path(__file__).resolve()),
@@ -120,7 +127,6 @@ def main():
                           'expect': native if name == 'native-o32' else success})
     cases.append({'name': 'native-after', 'program': 'native-o32', 'expect': native})
     try:
-        checkpoint = ROOT / '.work/indy-netbsd-kernel'
         result['base_disk_sha256'] = probe.sha256(checkpoint / 'disk.raw')
         result['nvram_sha256'] = probe.sha256(checkpoint / 'nvram.bin')
         for name in ['disk.raw', 'nvram.bin']:
@@ -163,6 +169,11 @@ def main():
         (media / 'run.sh').write_text('\n'.join(lines) + '\n')
         probe.run(['genisoimage', '-quiet', '-R', '-J', '-V', 'XIRI_IRIX_LP64', '-o', directory / 'probe.iso', media])
         lab.start()
+        if args.require_module:
+            before = len(lab.serial_text())
+            if lab.command("modstat | grep -E '^compat_irix_o32[[:space:]]+exec[[:space:]]+filesys[[:space:]]'", 30):
+                raise RuntimeError('IRIX personality is not a loaded module')
+            result['loaded_module'] = lab.serial_text()[before:]
         before = len(lab.serial_text())
         rc = lab.command('uname -a && sysctl kern.configname hw.machine hw.machine_arch && getconf PAGESIZE', 30)
         result['identity'] = lab.serial_text()[before:]

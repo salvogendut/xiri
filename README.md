@@ -15,8 +15,10 @@ See the [rendering results](docs/results/2026-11-03-newport-xmahjongg.md).
 
 The manual launcher starts services as root and runs the desktop as
 **xiritest**, UID 1234, with HOME and initial directory `/usr/people/xiritest`.
-Normal xdm login is planned. The compatibility personality is currently
-built into our custom NetBSD kernel.
+Normal xdm login is planned. The current manual CHD uses the built-in
+personality. A separate [loadable-module build](lab/irix-module/README.md)
+now runs the desktop on a kernel without built-in IRIX support; it still
+requires our NetBSD fork’s core hooks.
 
 ## Related repositories
 
@@ -78,9 +80,10 @@ persistence need work. GIMP signal registration and xosview statistics remain
 application-specific gaps. The user's broader desktop survey is encouraging,
 but it is not a per-application qualification.
 
-The next packaging phase is a boot-loadable compatibility module modeled on
-`compat_linux`, configured userspace services, and normal `xiritest` desktop
-login through xdm, followed later by original IRIX clogin. The
+The [module milestone](docs/results/2026-11-03-irix-module.md) follows the
+`compat_linux` model. Packaging continues with configured userspace services
+and normal `xiritest` desktop login through xdm, followed later by original
+IRIX clogin. The
 [roadmap](docs/ROADMAP.md) defines the dependency and acceptance work.
 
 - [Architecture](docs/ARCHITECTURE.md): kernel, imported runtime, native services and desktop boundaries.
