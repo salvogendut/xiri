@@ -39,12 +39,25 @@ def run_once(args, number):
     d = Path(tempfile.mkdtemp(prefix='boot-', dir=runs))
     print('Results: '+str(d.relative_to(ROOT)), flush=True)
     shutil.copyfile(__file__, d/'harness.py')
+    if args.acrobat_replay:
+        from xiri_lab.image_apps import check as check_image_apps
+        shutil.copyfile(ROOT/'scripts/xiri_lab/image_apps.py', d/'image-apps.py')
     media = d/'media'; media.mkdir()
     for source in ['lab/system-stability/xinput.c', 'lab/system-stability/memory.c', 'lab/system-stability/guard-loop.sh',
                    'lab/system-stability/cd9660.c', 'lab/system-stability/cd9660_mount.h',
                    'lab/irix-catalog/guard-control.c', 'lab/irix-catalog/query-control.c',
                    'lab/irix-session/descendants.c', 'lab/irix-session/guard-tests.sh']:
         shutil.copyfile(ROOT/source, media/Path(source).name)
+    if args.acrobat_replay:
+        for source, name in {
+            'lab/system-stability/click-original.c': 'click-original.c',
+            'lab/system-stability/click-trace.c': 'click-trace.c',
+            'lab/irix-4dwm/type-ready.c': 'type.c',
+            'lab/irix-filelocks/place-window.c': 'place.c',
+            'lab/irix-vendor-shell/catalog-input.c': 'catalog-input.c',
+            'lab/irix-catalog/windows.c': 'windows.c',
+        }.items():
+            shutil.copyfile(ROOT/source, media/name)
     # Reproduce the survey's variant, which observes children after leader exit.
     guard = (ROOT/'runtime/libexec/session-guard.c').read_text()
     for old, new in [
@@ -111,6 +124,8 @@ def run_once(args, number):
     if seed_record: result['seed'] = seed_record
     result['sources']['scripts/xiri_lab/kernel_log.py'] = sha256(ROOT/'scripts/xiri_lab/kernel_log.py')
     result['sources']['runtime/libexec/session-guard.c'] = sha256(ROOT/'runtime/libexec/session-guard.c')
+    if args.acrobat_replay:
+        result['sources']['scripts/xiri_lab/image_apps.py'] = sha256(d/'image-apps.py')
     started = time.monotonic()
     base = '/tmp/xiri-stability'
 
@@ -274,13 +289,18 @@ def run_once(args, number):
             'for file in xinput query-control; do cc -O2 -Wall -Wextra -Werror -I/usr/X11R7/include "$file.c" '
             '-L/usr/X11R7/lib -Wl,-rpath,/usr/X11R7/lib -lX11 -lXtst -o "$file"; done)', 180)
         cmd('chmod 555 app-guard guard-control descendants memory xinput query-control')
+        if args.acrobat_replay:
+            cmd('(set -e; for file in click-original click-trace type place catalog-input windows; do '
+                'cc -O2 -Wall -Wextra -Werror -I/usr/X11R7/include "$file.c" '
+                '-L/usr/X11R7/lib -Wl,-rpath,/usr/X11R7/lib -lX11 -lXtst -o "$file"; done)', 180)
         cmd('./cd9660 --diagnostic >cd9660.log 2>&1', 180)
         result['cd9660'] = get('cat cd9660.log')
         cd_result = re.search(r'CD9660_RESULT checks=(\d+) failures=(\d+)', result['cd9660'])
         assert cd_result, 'Missing CD ABI regression summary'
+        require_cd9660 = candidate is not None or args.require_cd9660
         result['cd9660_regression'] = dict(checks=int(cd_result[1]), failures=int(cd_result[2]),
-                                          expected_fixed=candidate is not None)
-        if candidate: assert int(cd_result[2]) == 0, 'Candidate CD mount ABI regression failed'
+                                          expected_fixed=require_cd9660)
+        if require_cd9660: assert int(cd_result[2]) == 0, 'Required CD mount ABI regression failed'
         result['guard_sha256'] = get('sha256 -q /usr/local/libexec/xiri/session-guard').strip()
         assert result['guard_sha256'] == previous['installed_files']['/usr/local/libexec/xiri/session-guard']
         result['greeter_dimensions'] = greeter(); capture('greeter')
@@ -308,7 +328,10 @@ def run_once(args, number):
             irix_authority()
             wait('test -s "$job/handoff" && /usr/local/libexec/xiri/x11-check ready', 180)
             wait('xwininfo -root -tree | grep "of 18)" >/dev/null', 120)
-            input_checks(label, 'xiritest'); child_checks(label); capture(label)
+            input_checks(label, 'xiritest'); child_checks(label)
+            if args.acrobat_replay and index == 0:
+                check_image_apps(guest, d, result, base, args.acrobat_replay)
+            capture(label)
             cmd('touch "$job/logout"')
             greeter()
             guard_log = get('cat "$job/guard.log"')
@@ -408,10 +431,14 @@ def main():
     parser.add_argument('--debug-failure', action='store_true')
     parser.add_argument('--halt-active', action='store_true', help='finish with shutdown during an active IRIX desktop')
     parser.add_argument('--pressure-mib', type=int, default=0, help='hold this many dirty native MiB during the checks (maximum 192)')
+    parser.add_argument('--require-cd9660', action='store_true', help='require the CD regression to pass on the installed image too')
+    parser.add_argument('--acrobat-replay', type=int, default=0, metavar='COUNT',
+                        help='check the original GNOME shell/preferences and repeat the PDF/capture/focus/exit sequence')
     args = parser.parse_args()
     if args.seed and not args.kernel_build: parser.error('--seed requires --kernel-build')
     if not (1 <= args.runs <= 20 and 1 <= args.sessions <= 20 and
-            1 <= args.input_iterations <= 1000 and 1 <= args.child_iterations <= 200 and 0 <= args.pressure_mib <= 192):
+            1 <= args.input_iterations <= 1000 and 1 <= args.child_iterations <= 200 and
+            0 <= args.pressure_mib <= 192 and 0 <= args.acrobat_replay <= 20):
         parser.error('invalid run/session/iteration count')
     for number in range(1, args.runs+1):
         if not run_once(args, number): return 1

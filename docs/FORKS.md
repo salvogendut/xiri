@@ -42,6 +42,20 @@ not repin qualified kernels, emulator binaries, runtime resources or guest disks
 
 ## IRIS upstream updates
 
+The 2026-11-04 replacement-image cycle fetched
+`https://github.com/techomancer/iris.git` at 19:50 UTC. Upstream remains
+`3bcde9f702f0b52fdb296eeda4fe10b26555f3da`, already integrated in IRIS `xiri`
+`bd67e65ff159748635dd484adf7fac94a591f84b`; no merge or affected emulator
+rebuild is needed. Image work uses NetBSD `xiri` commit
+`0cd56e7a286c4cd3d67ab7cc971b233a83ac1655`, its qualified native core and
+unchanged IRIX module. The [new image pin](../lab/system-stability/baseline.json)
+retains the tested `819c682` emulator and records the replacement core's
+source/build provenance explicitly. The [replacement-image record](results/2026-11-04-system-stability-image.md)
+qualifies CHD round-trip, disk boot and both-user xdm behavior, but holds
+promotion after reproducing a native XTest timeout. Neither fork changes in
+this image cycle; the previous manual bundle/state and pinned lab worktrees
+remain unchanged.
+
 The 2026-11-04 system-stability cycle fetched
 `https://github.com/techomancer/iris.git` again at 18:15 UTC. Upstream remains
 `3bcde9f702f0b52fdb296eeda4fe10b26555f3da`, already integrated in IRIS `xiri`

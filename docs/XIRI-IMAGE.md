@@ -12,6 +12,13 @@ The current accelerated xdm bundle is
 `netbsd-xiri.chd` is an 8 GiB NetBSD disk compressed to 496,114,811 bytes
 (about 473 MiB). Its SHA256 is
 `c10185ffd95a08a1db31d325ad6fe6ee537e9f18de230347f435960858388b6d`.
+The [native CD mount candidate](results/2026-11-04-system-stability-image.md)
+is built at `.work/images/xiri-netbsd-desktop-20261104-stability/`. Its raw/CHD
+round trip and full-screen xdm/4Dwm/ctwm checks pass, but the application replay
+reproduces a native XTest button-synchronization timeout. It is not promoted;
+the current image and its manual state above remain selected. The report
+retains the candidate's hashes, screenshots, exact failing stage and shorter
+capture-and-click reproducer.
 The [cumulative application update](results/2026-11-04-irix-acrobat-image.md)
 adds the qualified GNOME sockets/PTY/original-shell support, preference saving
 and the complete original Acrobat Reader installation with its legacy ELF

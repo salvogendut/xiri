@@ -106,8 +106,18 @@ separate from the earlier stalls. The corrected core passes 158 CD checks.
 Two cold boots pass 1,200 native input cycles, 160 child-launch cases, both
 user desktops and active-desktop shutdown, including a candidate run with
 96 MiB held by an independent process and measured paging. The intermittent
-older failures were not reproduced. Package and qualify the corrected core
-in a replacement manual image before changing the current image selection.
+older failures were not reproduced in that first cycle. The
+[replacement-image cycle](results/2026-11-04-system-stability-image.md) now
+packages the corrected core and passes full-screen xdm, both desktops,
+recovery, rendering, catalog and clean halt. Its application gate reproduces
+the native XTest timeout at `button-sync`, including a shorter capture/click
+test. A stopped-client diagnostic also reaches that alarm, but native GDB
+crashes during inspection; later procfs reads do not establish the earlier
+cause. Keep the previous manual image selected. Next, capture Xorg's delayed
+request/wakeup state at the failure using a working inspection path. Preserve
+the separate coordinate/focus fixture failures and interrupted runs as
+exclusions; do not count retries as acceptance. Native child-control stalls,
+the earlier catalog halt, Type1 metrics and Xft/Render remain open system work.
 
 The next shared-system candidates are the native Xft/Render and Type1 font
 gaps, common IRIX filesystem/timing/job-control interfaces, and general

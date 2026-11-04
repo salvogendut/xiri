@@ -135,7 +135,10 @@ It translates ownership and permission masks in modern mount arguments and
 preserves the legacy layout, defaults and update behavior. This is a general
 native compatibility correction, separate from the IRIX personality and its
 core hooks; the IRIX module is byte-identical. The corrected core is qualified
-in disposable overlays before a future manual-image update.
+in disposable overlays and packaged in an
+[unpromoted candidate image](results/2026-11-04-system-stability-image.md).
+Disk boot and both-user xdm checks pass, but a reproduced native XTest timeout
+holds promotion. The selected manual image still has the preceding core.
 
 The [traditional-signal adapter](results/2026-11-01-irix-signal.md) adds
 explicit foreign frame conversion around native signal, machine-context and

@@ -1,0 +1,822 @@
+{
+  "schema": 1,
+  "status": "disk-session-pass-focus-qualification-held",
+  "promoted": false,
+  "selected_image": ".work/images/xiri-netbsd-desktop-20261104-acrobat",
+  "selected_pointer": {
+    "path": "lab/irix-installed-desktop/image.json",
+    "sha256": "6baba631a45aa4b901ecfe43f8f786c49fce6271344697716f3e623ca922a065"
+  },
+  "candidate_bundle": ".work/images/xiri-netbsd-desktop-20261104-stability",
+  "chd_sha256": "068e7ed67451cf664deafd8695d3825e141bcd41af0e0e02e701d18e43c450ff",
+  "chd_bytes": 496116307,
+  "raw_sha256": "ad458af429db5e77242139d02f80b9e8e8de17532b7acf2dc7fe764f75473d95",
+  "decoded_raw_sha256": "ad458af429db5e77242139d02f80b9e8e8de17532b7acf2dc7fe764f75473d95",
+  "disk_session_qualification": {
+    "path": "docs/results/2026-11-04-system-stability-image.json",
+    "sha256": "86cad607746b7ef0ee9ca16ef640724a7123f30488e26da4ee04c6ffdd9d2240"
+  },
+  "preparation": {
+    "path": ".work/xdm-image/prepare/ordinary-zu8hi6kg/result.json",
+    "sha256": "8e1fe75a3186e3ee28d2c2b303bdd1f8ba3a7ba7b3cfb0d11d4649975a5f0bbd"
+  },
+  "installed_changes": {
+    "/netbsd": {
+      "before": "ed97268e4c1db1c91a8973d16c1e31555816c2a29c220b29b9095eadf3b2ae04",
+      "after": "5cbf43d2656fb6eefce3f487e0ba9c994e5104e7ae9908d7e158f49bb732c8b4"
+    },
+    "/netbsd.boot": {
+      "before": "260b253f579ca46a50b83e367f95600b54c86756c47f5d9e0f9391251bfd7122",
+      "after": "61a6f8dd16ec8ac092f54ddafbd895d45086e1b905310ae28136bbadb3f1984b"
+    }
+  },
+  "core_build": {
+    "path": "lab/system-stability/build.json",
+    "sha256": "c5cc652089ea785bb81ad3a2455fa6f35d7680f2af02eb70467e55140e9035c1"
+  },
+  "baseline": {
+    "path": "lab/system-stability/baseline.json",
+    "sha256": "e5658f26b6c1cd290aa62d0cb6449011e04bc9697ffe836a2a9c7c156210ed9d"
+  },
+  "resource_ledgers_unchanged": true,
+  "old_manual_state": {
+    "unchanged": true,
+    "artifacts": {
+      ".work/images/xiri-netbsd-desktop-20261104-acrobat/netbsd-xiri.chd": "c10185ffd95a08a1db31d325ad6fe6ee537e9f18de230347f435960858388b6d",
+      ".work/images/xiri-netbsd-desktop-20261104-acrobat/netbsd-xiri.chd.diff.chd": "2b2ac7f06201fd7aecafd092990ea424f38408291cede929309723194b9bd976",
+      ".work/images/xiri-netbsd-desktop-20261104-acrobat/nvram-graphics.bin": "8bac0c9111fb5b5ab5095fcaf648567db607d0c9b87f5bdd010b85c652053e9d",
+      ".work/images/xiri-netbsd-desktop-20261104-acrobat/nvram.bin": "2590e2a737ea22712ca7354d593913f8a6804f2fe3b8a06ecf32e54b650331fe",
+      ".work/images/xiri-netbsd-desktop-20261104-acrobat/prismatic-state/nvram.bin": "14acbfd5b8c2072ba68867b450fb5e778d893eaf0c7ccf1623a06a80bb2b98b5"
+    }
+  },
+  "candidate": {
+    "result": {
+      "path": ".work/system-stability/boot-25ukabya/result.json",
+      "sha256": "ebb83313f3adad05132ff3fb816de98c1ca67be07d15c184926541247832d1c4"
+    },
+    "harness": {
+      "path": ".work/system-stability/boot-25ukabya/harness.py",
+      "sha256": "98e89d5d1284ef4ba916fab919dc624e84bd2f61930e62c5c67426005a4ece36"
+    },
+    "application_harness": {
+      "path": ".work/system-stability/boot-25ukabya/image-apps.py",
+      "sha256": "6838b2848f2c3e9c0d890cd13fe68b65513236bceda7f99025643f3b9af7fabb"
+    },
+    "evidence": {
+      "path": ".work/system-stability/boot-25ukabya/guest-evidence.tgz",
+      "sha256": "f482f4b6c58c9681aa2b3199675173ed15097ae7a84220cb8d915730e16a8469"
+    },
+    "observations": {
+      "schema": 1,
+      "status": "error",
+      "clean_shutdown": true,
+      "boot": 1,
+      "bundle": ".work/images/xiri-netbsd-desktop-20261104-stability",
+      "manifest_sha256": "37e4edfce2a91919c1963025b5947d0f83827dcc6fcc2c343e478e48fe1552dd",
+      "chd_sha256": "068e7ed67451cf664deafd8695d3825e141bcd41af0e0e02e701d18e43c450ff",
+      "pin": {
+        "schema": 1,
+        "description": "Native NetBSD32 CD9660 ownership/mask correction with the unchanged cumulative IRIX desktop module",
+        "ident": "XIRI_IRIX_MODULE_20261103",
+        "source_revision": "0cd56e7a286c4cd3d67ab7cc971b233a83ac1655",
+        "source_branch": "xiri",
+        "build_arch": "mips64eb",
+        "page_bytes": 8192,
+        "boot_kernel_sha256": "61a6f8dd16ec8ac092f54ddafbd895d45086e1b905310ae28136bbadb3f1984b",
+        "native_kernel_sha256": "5cbf43d2656fb6eefce3f487e0ba9c994e5104e7ae9908d7e158f49bb732c8b4",
+        "debug_kernel_sha256": "d24bbcbcb3af2b1e68c49e2e8a6b1fcdcda2323675bd87ab0463e7b577b2467f",
+        "native_o32_sha256": "c294fbb1f2110445be31c096481ea54ab561c7e59ca5b9fc7171310098d755d4",
+        "source_dirty": false,
+        "emulator_revision": "819c6825504d40ad9f9aa00554249affd2da9446",
+        "emulator_branch": "xiri",
+        "emulator_sha256": "3dd9299d71f1899ff5a8c9b76f6a24752d19e4f9a0bcfe0edf3a29001dc9c49e",
+        "ci_client_sha256": "2543b1fae0b442516c40c9d9155eebc9f9569561146b4f62948171fe7eb5c7f3",
+        "base_disk_sha256": "2d19c840bcc5d5e5d424a5f12b4def72b9e8681e6b9e172b22bd51943bf7bb82",
+        "nvram_sha256": "025e170feb9adcfbfa55a745ba2d976fd0ba0f3d39967d7f52622d6ad54c2ef5",
+        "config_sha256": "b4b1d27b1d8e80ec31b07f9f98e0ca1da8a1793cb90880bbc1e65a4b169c8fe2",
+        "runtimes": [
+          {
+            "name": "vendor-o32-libc",
+            "path": "/usr/lib/libc.so.1",
+            "sha256": "ea766492103a193e9d404942705e4e28987545e37f699ede232b6c0f8c97c954"
+          },
+          {
+            "name": "vendor-o32-rld",
+            "path": "/lib/rld",
+            "sha256": "30228b54c1e5585b365514eb7c9895b03cc0f61cb898e05e3ddafece87863439"
+          },
+          {
+            "name": "vendor-n32-libc",
+            "path": "/lib32/libc.so.1",
+            "sha256": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e"
+          },
+          {
+            "name": "vendor-n32-rld",
+            "path": "/lib32/rld",
+            "sha256": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b"
+          }
+        ],
+        "config_path": "lab/irix-module/XIRI_IRIX_MODULE",
+        "committed_source_revision": "0cd56e7a286c4cd3d67ab7cc971b233a83ac1655",
+        "module_build_manifest": "lab/system-stability/build.json",
+        "module_build_manifest_sha256": "c5cc652089ea785bb81ad3a2455fa6f35d7680f2af02eb70467e55140e9035c1",
+        "module_source_equivalent_commit": "0cd56e7a286c4cd3d67ab7cc971b233a83ac1655"
+      },
+      "module": {
+        "name": "compat_irix_o32",
+        "path": "/stand/sgimips/11.99.9/modules/compat_irix_o32/compat_irix_o32.kmod",
+        "sha256": "37c8a5114483ad834d0dbef551175e506a1874599aa8caf70366481be7559b2f",
+        "build_manifest": "lab/system-stability/build.json",
+        "build_manifest_sha256": "c5cc652089ea785bb81ad3a2455fa6f35d7680f2af02eb70467e55140e9035c1",
+        "modstat": "NAME                       CLASS    SOURCE   FLAG  REFS    SIZE REQUIRES \naccf_dataready             misc     builtin  -        0       - -\naccf_httpready             misc     builtin  -        0       - -\naes                        misc     builtin  -        1       - -\naes_ccm                    misc     builtin  -        0       - ,compat_netbsd32\naio                        misc     builtin  -        0       - -\naudio                      driver   builtin  -        1       - -\nblake2s                    misc     builtin  -        0       - -\nbpf                        driver   builtin  -        0       - lf32,compat_netbsd32\nbpf_filter                 misc     builtin  -        3       - -\nbufq_disksort              bufq     builtin  -        0       - -\nbufq_fcfs                  bufq     builtin  -        1       - -\nbufq_priocscan             bufq     builtin  -        0       - -\nccd                        driver   builtin  -        0       - ,compat_netbsd32\ncd9660                     vfs      builtin  -        0       - -\nchacha                     misc     builtin  -        0       - -\nclockctl                   driver   builtin  -        0       - -\ncoda                       vfs      builtin  -        0       - lf32,compat_netbsd32\ncompat_100                 exec     builtin  -        2       - -\ncompat_110                 exec     builtin  -        1       - -\ncompat_16                  exec     builtin  -        1       - lib,if_ppp\ncompat_20                  exec     builtin  -        2       - lib,if_ppp\ncompat_30                  exec     builtin  -        2       - lib,if_ppp\ncompat_40                  exec     builtin  -        2       - lib,if_ppp\ncompat_43                  exec     builtin  -        1       - 2\ncompat_50                  exec     builtin  -        4       - lib,if_ppp\ncompat_50_quota            exec     builtin  -        1       - p\ncompat_60                  exec     builtin  -        3       - lib,if_ppp\ncompat_70                  exec     builtin  -        1       - 2,compat_netbsd32\ncompat_80                  exec     builtin  -        2       - lib,if_ppp\ncompat_90                  exec     builtin  -        2       - ib,if_ppp\ncompat_irix_o32            exec     filesys  -        0       - exec_elf32,compat_netbsd32\ncompat_netbsd32            exec     builtin  -       11       - ib,if_ppp\ncompat_netbsd32_100        exec     builtin  -        1       - ,compat_netbsd32\ncompat_netbsd32_110        exec     builtin  -        0       - c_elf32,compat_netbsd32\ncompat_netbsd32_16         exec     builtin  -        0       - _ppp\ncompat_netbsd32_20         exec     builtin  -        1       - 2,compat_netbsd32\ncompat_netbsd32_30         exec     builtin  -        1       - 2,compat_netbsd32\ncompat_netbsd32_40         exec     builtin  -        1       - bsd32\ncompat_netbsd32_43         exec     builtin  -        0       - mpat_netbsd32\ncompat_netbsd32_50         exec     builtin  -        2       - 2,compat_netbsd32\ncompat_netbsd32_60         exec     builtin  -        1       - 2,compat_netbsd32\ncompat_netbsd32_80         exec     builtin  -        1       - 2,compat_netbsd32\ncompat_netbsd32_90         exec     builtin  -        1       - 2,compat_netbsd32\ncompat_netbsd32_coredump   misc     builtin  -        0       - 32\ncompat_netbsd32_mqueue     exec     builtin  -        0       - c_elf32,compat_netbsd32\ncompat_netbsd32_nfssrv     exec     builtin  -        0       - at_netbsd32\ncompat_netbsd32_ptrace     exec     builtin  -        1       - trace_common\ncompat_netbsd32_quota      exec     builtin  -        0       - \ncompat_netbsd32_quota_50   exec     builtin  -        0       - 32,compat_netbsd32\ncompat_netbsd32_sysvipc    exec     builtin  -        1       - sd32\ncompat_netbsd32_sysvipc_50 exec     builtin  -        0       - \ncompat_sysctl_09_43        exec     builtin  -        1       - -\ncompat_sysv_50             exec     builtin  -        1       - npf\ncompat_util                misc     builtin  -        3       - -\ncons                       driver   builtin  -        0       - -\ncoredump                   misc     builtin  -        1       - -\ndk_subr                    misc     builtin  -        1       - -\ndrvctl                     driver   builtin  -        0       - -\nefs                        vfs      builtin  -        0       - -\nexec_elf32                 exec     builtin  -        2       - -\nexec_elf64                 exec     builtin  -        0       - -\nexec_script                exec     builtin  -        0       - -\next2fs                     vfs      builtin  -        0       - 2,compat_netbsd32\nextensions                 secmodel builtin  -        1       - -\nfdesc                      vfs      builtin  -        0       - -\nffs                        vfs      builtin  -        1       - c_elf32,compat_netbsd32\ni2c_bitbang                misc     builtin  -        0       - -\ni2cexec                    misc     builtin  -        0       - -\nif_agr                     driver   builtin  -        0       - -\nif_gif                     driver   builtin  -        0       - bsd32\nif_gre                     driver   builtin  -        0       - -\nif_loop                    driver   builtin  -        0       - -\nif_npflog                  driver   builtin  -        0       - -\nif_ppp                     driver   builtin  -        2       - ,compat_netbsd32\nif_sl                      driver   builtin  -        0       - zlib,if_ppp\nif_stf                     driver   builtin  -        0       - -\nif_tap                     driver   builtin  -        0       - -\nif_tun                     driver   builtin  -        0       - -\nif_vlan                    driver   builtin  -        0       - -\nip_ecn                     misc     builtin  -        1       - -\nkernfs                     vfs      builtin  -        0       - -\nksem                       misc     builtin  -        1       - -\nlayerfs                    misc     builtin  -        3       - -\nlfs                        vfs      builtin  -        0       - -\nmfs                        vfs      builtin  -        0       - elf32,compat_netbsd32\nmiiverbose                 driver   builtin  -        0       - -\nmqueue                     misc     builtin  -        2       - -\nmsdos                      vfs      builtin  -        0       - -\nnfs                        vfs      builtin  -        1       - -\nnfsserver                  misc     builtin  -        1       - 2\nnpf                        misc     builtin  -        5       - c_elf32,compat_netbsd32\nnpf_alg_icmp               misc     builtin  -        0       - mpat_netbsd32\nnpf_ext_log                misc     builtin  -        0       - c_elf32,compat_netbsd32\nnpf_ext_normalize          misc     builtin  -        0       - c_elf32,compat_netbsd32\nnpf_ext_rndblock           misc     builtin  -        0       - c_elf32,compat_netbsd32\nnpf_ext_route              misc     builtin  -        0       - c_elf32,compat_netbsd32\nntfs                       vfs      builtin  -        0       - -\nnull                       vfs      builtin  -        0       - f32,compat_netbsd32\noverlay                    vfs      builtin  -        0       - tbsd32\npci                        driver   builtin  -        0       - -\nppp_bsdcomp                misc     builtin  -        0       - compat_netbsd32\nppp_deflate                misc     builtin  -        0       - \nprocfs                     vfs      builtin  -        0       - f32,compat_netbsd32\nptrace                     exec     builtin  -        0       - lf32,compat_netbsd32\nptrace_common              exec     builtin  -        3       - -\nptyfs                      vfs      builtin  -        0       - -\npuffs                      vfs      builtin  -        0       - f32,compat_netbsd32\nputter                     driver   builtin  -        1       - -\nscsi_subr                  exec     builtin  -        0       - -\nscsiverbose                misc     builtin  -        0       - -\nsecmodel_bsd44             secmodel builtin  -        0       - elf32,compat_netbsd32\nsecurelevel                secmodel builtin  -        1       - -\nslcompress                 misc     builtin  -        2       - -\nspkr                       driver   builtin  -        0       - lf32,compat_netbsd32\nsuser                      secmodel builtin  -        1       - -\nsysmon                     driver   builtin  -        1       - -\nsysmon_power               driver   builtin  -        0       - _netbsd32\nsysmon_taskq               misc     builtin  -        0       - -\nsysv_ipc                   exec     builtin  -        3       - -\ntmpfs                      vfs      builtin  -        0       - -\nufs                        misc     builtin  -        3       - c_elf32,compat_netbsd32\numap                       vfs      builtin  -        0       - elf32,compat_netbsd32\nunion                      vfs      builtin  -        0       - -\nvcoda                      driver   builtin  -        1       - -\nvnd                        driver   builtin  -        0       - -\nwapbl                      vfs      builtin  -        2       - -\nzlib                       misc     builtin  -        1       - -\n",
+        "securelevel": 1
+      },
+      "harness_sha256": "98e89d5d1284ef4ba916fab919dc624e84bd2f61930e62c5c67426005a4ece36",
+      "sources": {
+        "scripts/xiri_lab/__init__.py": "98abff8b2f3c19912cf6993ac5094008cb9ecea0fb6d66c149f76184d9182743",
+        "scripts/xiri_lab/guest.py": "e589b08a06a91fca6fde4c4b10a3e97b90807da82bf6d545b45b1da517d0c954",
+        "scripts/probe-netbsd.py": "adfa9547fa98af28fd55e4e155e7667b2b0a8c7cea8aee8d58079da946b72a1d",
+        "scripts/xiri_lab/kernel_log.py": "501ba691d8df0fc480a842f1bff9134cc6148e0bbd6dc091d2943462b97b6bde",
+        "runtime/libexec/session-guard.c": "b6e0bf1b9036a3b4bbe27bdc43f8fdf9d090298b745da624de25db3282104203",
+        "scripts/xiri_lab/image_apps.py": "6838b2848f2c3e9c0d890cd13fe68b65513236bceda7f99025643f3b9af7fabb"
+      },
+      "media": {
+        "xinput.c": "d3ef710e37079cc0950ec1a0b1eb6f546c185b3dfc8cb792514e75ffc3c64fdc",
+        "memory.c": "007da6640e7fc352ae66fd76421b5aecc3af65269e5a3bff587459ed5bbbc138",
+        "guard-loop.sh": "eb1d89df546ac393033e7ec26e27526dcc70042ede1c2ece969280694386a870",
+        "cd9660.c": "644e78e957a942fa83ff0d2e8f9862e2ec7ac3b457e916611580d1cb3858a26f",
+        "cd9660_mount.h": "0f8acc433fb11ae84ffbb83e5ffffb7416090296fdec6d79c9b2a2e2b4ec8269",
+        "guard-control.c": "cc71ccc39b2f75caf44f2afc9f97a2073373c36b40016a214b0345300724bcb0",
+        "query-control.c": "4a8d8ef99a8fe72b3f984dc3d1e695687c225e7ab5dd23406ad5ffe5804a3c3a",
+        "descendants.c": "02c35bc4d7d5d27f72e5ce43694718c14c85068d4800d609dd730411de849c80",
+        "guard-tests.sh": "31cae7f38047bcaf57c862e070f1b48d880e4e3bd77be1537606563e98eadf11",
+        "click-original.c": "5599a802520c351dc72bc0b2a3d056e46aae1bc2c3c42f1959a142a2c6945d5c",
+        "click-trace.c": "3c85682a8f91087e4f64555f6df16e52fc6ea6b6c6cbfe74cd1a22da97484ebd",
+        "type.c": "61ce22cbda6c66ccaf53cbcffab5f3080be95004bcd3e5c6893dc54a8a9db838",
+        "place.c": "af51ade704c9df4d589c3ae01e571da6a7d6f43de2fd51e3a1766935f04d3ddb",
+        "catalog-input.c": "ff331c512a6acc0f19941904059584a140ddbc9e0abefb79dd457f1b1b92b46c",
+        "windows.c": "63389feea651a5f1501bee38816d2beb00841a727a5fb74a38b3449dbf6bae11",
+        "app-guard.c": "d7a94c103c1c454f488ee6c63d878fac4b2a4fe170a6938c5f33869efbfb084a"
+      },
+      "phases": [
+        {
+          "kind": "input",
+          "label": "greeter",
+          "user": "root",
+          "display": ":0",
+          "iterations": 10,
+          "events": 20,
+          "host_seconds": 14.344,
+          "log_file": "greeter-unix.log",
+          "log_sha256": "62e523966df023cdde0530cd01aabb8bc08616c6680cde1c56cda7541d89102b"
+        },
+        {
+          "kind": "input",
+          "label": "greeter",
+          "user": "root",
+          "display": "127.0.0.1:0",
+          "iterations": 10,
+          "events": 20,
+          "host_seconds": 14.576,
+          "log_file": "greeter-tcp.log",
+          "log_sha256": "ebcb2c2f5f9e18365e1d7d6bec0400216192a0be0041f10f71e0402adfd4fd57"
+        },
+        {
+          "kind": "children",
+          "label": "greeter",
+          "iterations": 5,
+          "launches": 10,
+          "adversarial": true,
+          "host_seconds": 50.645
+        },
+        {
+          "kind": "input",
+          "label": "irix-1",
+          "user": "xiritest",
+          "display": ":0",
+          "iterations": 10,
+          "events": 20,
+          "host_seconds": 15.619,
+          "log_file": "irix-1-unix.log",
+          "log_sha256": "21ddd32744a21dea36aed02ad633591d7086afdaf2c09c40c56dc6c13af007b4"
+        },
+        {
+          "kind": "input",
+          "label": "irix-1",
+          "user": "xiritest",
+          "display": "127.0.0.1:0",
+          "iterations": 10,
+          "events": 20,
+          "host_seconds": 16.016,
+          "log_file": "irix-1-tcp.log",
+          "log_sha256": "80a63c118a0bc5e965e1aee26b898a9190338b8ad6e4479bc875f04399108df0"
+        },
+        {
+          "kind": "children",
+          "label": "irix-1",
+          "iterations": 5,
+          "launches": 10,
+          "adversarial": true,
+          "host_seconds": 51.128
+        }
+      ],
+      "sessions": [],
+      "parameters": {
+        "kernel_build": null,
+        "seed": null,
+        "runs": 1,
+        "sessions": 1,
+        "input_iterations": 10,
+        "child_iterations": 5,
+        "debug_failure": true,
+        "halt_active": true,
+        "pressure_mib": 0,
+        "require_cd9660": true,
+        "acrobat_replay": 6
+      },
+      "boot_services": "NAME                       CLASS    SOURCE   FLAG  REFS    SIZE REQUIRES \naccf_dataready             misc     builtin  -        0       - -\naccf_httpready             misc     builtin  -        0       - -\naes                        misc     builtin  -        1       - -\naes_ccm                    misc     builtin  -        0       - ,compat_netbsd32\naio                        misc     builtin  -        0       - -\naudio                      driver   builtin  -        1       - -\nblake2s                    misc     builtin  -        0       - -\nbpf                        driver   builtin  -        0       - lf32,compat_netbsd32\nbpf_filter                 misc     builtin  -        3       - -\nbufq_disksort              bufq     builtin  -        0       - -\nbufq_fcfs                  bufq     builtin  -        1       - -\nbufq_priocscan             bufq     builtin  -        0       - -\nccd                        driver   builtin  -        0       - ,compat_netbsd32\ncd9660                     vfs      builtin  -        0       - -\nchacha                     misc     builtin  -        0       - -\nclockctl                   driver   builtin  -        0       - -\ncoda                       vfs      builtin  -        0       - lf32,compat_netbsd32\ncompat_100                 exec     builtin  -        2       - -\ncompat_110                 exec     builtin  -        1       - -\ncompat_16                  exec     builtin  -        1       - lib,if_ppp\ncompat_20                  exec     builtin  -        2       - lib,if_ppp\ncompat_30                  exec     builtin  -        2       - lib,if_ppp\ncompat_40                  exec     builtin  -        2       - lib,if_ppp\ncompat_43                  exec     builtin  -        1       - 2\ncompat_50                  exec     builtin  -        4       - lib,if_ppp\ncompat_50_quota            exec     builtin  -        1       - p\ncompat_60                  exec     builtin  -        3       - lib,if_ppp\ncompat_70                  exec     builtin  -        1       - 2,compat_netbsd32\ncompat_80                  exec     builtin  -        2       - lib,if_ppp\ncompat_90                  exec     builtin  -        2       - ib,if_ppp\ncompat_irix_o32            exec     filesys  -        0       - exec_elf32,compat_netbsd32\ncompat_netbsd32            exec     builtin  -       11       - ib,if_ppp\ncompat_netbsd32_100        exec     builtin  -        1       - ,compat_netbsd32\ncompat_netbsd32_110        exec     builtin  -        0       - c_elf32,compat_netbsd32\ncompat_netbsd32_16         exec     builtin  -        0       - _ppp\ncompat_netbsd32_20         exec     builtin  -        1       - 2,compat_netbsd32\ncompat_netbsd32_30         exec     builtin  -        1       - 2,compat_netbsd32\ncompat_netbsd32_40         exec     builtin  -        1       - bsd32\ncompat_netbsd32_43         exec     builtin  -        0       - mpat_netbsd32\ncompat_netbsd32_50         exec     builtin  -        2       - 2,compat_netbsd32\ncompat_netbsd32_60         exec     builtin  -        1       - 2,compat_netbsd32\ncompat_netbsd32_80         exec     builtin  -        1       - 2,compat_netbsd32\ncompat_netbsd32_90         exec     builtin  -        1       - 2,compat_netbsd32\ncompat_netbsd32_coredump   misc     builtin  -        0       - 32\ncompat_netbsd32_mqueue     exec     builtin  -        0       - c_elf32,compat_netbsd32\ncompat_netbsd32_nfssrv     exec     builtin  -        0       - at_netbsd32\ncompat_netbsd32_ptrace     exec     builtin  -        1       - trace_common\ncompat_netbsd32_quota      exec     builtin  -        0       - \ncompat_netbsd32_quota_50   exec     builtin  -        0       - 32,compat_netbsd32\ncompat_netbsd32_sysvipc    exec     builtin  -        1       - sd32\ncompat_netbsd32_sysvipc_50 exec     builtin  -        0       - \ncompat_sysctl_09_43        exec     builtin  -        1       - -\ncompat_sysv_50             exec     builtin  -        1       - npf\ncompat_util                misc     builtin  -        3       - -\ncons                       driver   builtin  -        0       - -\ncoredump                   misc     builtin  -        1       - -\ndk_subr                    misc     builtin  -        1       - -\ndrvctl                     driver   builtin  -        0       - -\nefs                        vfs      builtin  -        0       - -\nexec_elf32                 exec     builtin  -        2       - -\nexec_elf64                 exec     builtin  -        0       - -\nexec_script                exec     builtin  -        0       - -\next2fs                     vfs      builtin  -        0       - 2,compat_netbsd32\nextensions                 secmodel builtin  -        1       - -\nfdesc                      vfs      builtin  -        0       - -\nffs                        vfs      builtin  -        1       - c_elf32,compat_netbsd32\ni2c_bitbang                misc     builtin  -        0       - -\ni2cexec                    misc     builtin  -        0       - -\nif_agr                     driver   builtin  -        0       - -\nif_gif                     driver   builtin  -        0       - bsd32\nif_gre                     driver   builtin  -        0       - -\nif_loop                    driver   builtin  -        0       - -\nif_npflog                  driver   builtin  -        0       - -\nif_ppp                     driver   builtin  -        2       - ,compat_netbsd32\nif_sl                      driver   builtin  -        0       - zlib,if_ppp\nif_stf                     driver   builtin  -        0       - -\nif_tap                     driver   builtin  -        0       - -\nif_tun                     driver   builtin  -        0       - -\nif_vlan                    driver   builtin  -        0       - -\nip_ecn                     misc     builtin  -        1       - -\nkernfs                     vfs      builtin  -        0       - -\nksem                       misc     builtin  -        1       - -\nlayerfs                    misc     builtin  -        3       - -\nlfs                        vfs      builtin  -        0       - -\nmfs                        vfs      builtin  -        0       - elf32,compat_netbsd32\nmiiverbose                 driver   builtin  -        0       - -\nmqueue                     misc     builtin  -        2       - -\nmsdos                      vfs      builtin  -        0       - -\nnfs                        vfs      builtin  -        1       - -\nnfsserver                  misc     builtin  -        1       - 2\nnpf                        misc     builtin  -        5       - c_elf32,compat_netbsd32\nnpf_alg_icmp               misc     builtin  -        0       - mpat_netbsd32\nnpf_ext_log                misc     builtin  -        0       - c_elf32,compat_netbsd32\nnpf_ext_normalize          misc     builtin  -        0       - c_elf32,compat_netbsd32\nnpf_ext_rndblock           misc     builtin  -        0       - c_elf32,compat_netbsd32\nnpf_ext_route              misc     builtin  -        0       - c_elf32,compat_netbsd32\nntfs                       vfs      builtin  -        0       - -\nnull                       vfs      builtin  -        0       - f32,compat_netbsd32\noverlay                    vfs      builtin  -        0       - tbsd32\npci                        driver   builtin  -        0       - -\nppp_bsdcomp                misc     builtin  -        0       - compat_netbsd32\nppp_deflate                misc     builtin  -        0       - \nprocfs                     vfs      builtin  -        0       - f32,compat_netbsd32\nptrace                     exec     builtin  -        0       - lf32,compat_netbsd32\nptrace_common              exec     builtin  -        3       - -\nptyfs                      vfs      builtin  -        0       - -\npuffs                      vfs      builtin  -        0       - f32,compat_netbsd32\nputter                     driver   builtin  -        1       - -\nscsi_subr                  exec     builtin  -        0       - -\nscsiverbose                misc     builtin  -        0       - -\nsecmodel_bsd44             secmodel builtin  -        0       - elf32,compat_netbsd32\nsecurelevel                secmodel builtin  -        1       - -\nslcompress                 misc     builtin  -        2       - -\nspkr                       driver   builtin  -        0       - lf32,compat_netbsd32\nsuser                      secmodel builtin  -        1       - -\nsysmon                     driver   builtin  -        1       - -\nsysmon_power               driver   builtin  -        0       - _netbsd32\nsysmon_taskq               misc     builtin  -        0       - -\nsysv_ipc                   exec     builtin  -        3       - -\ntmpfs                      vfs      builtin  -        0       - -\nufs                        misc     builtin  -        3       - c_elf32,compat_netbsd32\numap                       vfs      builtin  -        0       - elf32,compat_netbsd32\nunion                      vfs      builtin  -        0       - -\nvcoda                      driver   builtin  -        1       - -\nvnd                        driver   builtin  -        0       - -\nwapbl                      vfs      builtin  -        2       - -\nzlib                       misc     builtin  -        1       - -\n2733\n511\n2643\n",
+      "service_pids": [
+        "2733",
+        "511",
+        "2643"
+      ],
+      "cd9660_regression": {
+        "checks": 158,
+        "failures": 0,
+        "expected_fixed": true
+      },
+      "guard_sha256": "b4970e085ebc533cc6d286151f8b93056493be399beeffc5f84d8d77985d8d09",
+      "greeter_dimensions": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+      "screenshots": {
+        "greeter": "da53031ab9667fa93afe82a1605ea89fa9e11bbd4a620cef71df7252307573f9",
+        "apps-gnome-preferences": "624b0e700e0e6a942026dcbd8b57767aaeb5442a250da5cd474fbc29fe4a3990",
+        "apps-gnome-reopened": "1efb78772ec0c909842f7bd5aafe8dc75859f76a2a6cdf632616bd06d267d3c8",
+        "apps-acrobat-first-run": "08ea7ba3b7ecacb5d6f94c9d7f645691e922d1469baf52c0f7e10bc5d7c5d962",
+        "apps-acrobat-open-dialog": "7879101b5e1dad3b29118a2926f1d3a64e5e4261dc88ca6414da6f9d66c69c2d",
+        "apps-acrobat-pdf-1": "34253025e30e7eddd6270879ace514de8bc4a226cecc591b8aee5532ca64c849",
+        "apps-acrobat-pdf-2": "34253025e30e7eddd6270879ace514de8bc4a226cecc591b8aee5532ca64c849",
+        "apps-acrobat-pdf-3": "34253025e30e7eddd6270879ace514de8bc4a226cecc591b8aee5532ca64c849",
+        "apps-acrobat-pdf-4": "34253025e30e7eddd6270879ace514de8bc4a226cecc591b8aee5532ca64c849",
+        "apps-acrobat-pdf-5": "34253025e30e7eddd6270879ace514de8bc4a226cecc591b8aee5532ca64c849",
+        "failure": "b6fb26793a3bedefdacb0aca862dd735bc6933ad5185a732d0edceb92774df71"
+      },
+      "negative_input": "XINPUT BEGIN iteration=0 display=:0 stage=receiver-open mono=404.156682483\nXINPUT_TIMEOUT see last BEGIN stage\n",
+      "image_apps": {
+        "status": "running",
+        "stage": "PDF/capture/focus/exit 5/6",
+        "replays": [
+          {
+            "iteration": 1,
+            "helper": "original",
+            "pid": 1862,
+            "pdf_geometry": "\nxwininfo: Window id: 0x1800175 \"xiri-acrobat-test.pdf\"\n\n  Absolute upper-left X:  50\n  Absolute upper-left Y:  50\n  Relative upper-left X:  0\n  Relative upper-left Y:  0\n  Width: 800\n  Height: 600\n  Depth: 24\n  Visual: 0x21\n  Visual Class: TrueColor\n  Border width: 0\n  Class: InputOutput\n  Colormap: 0x20 (not installed)\n  Bit Gravity State: ForgetGravity\n  Window Gravity State: NorthWestGravity\n  Backing Store State: NotUseful\n  Save Under State: no\n  Map State: IsViewable\n  Override Redirect State: no\n  Corners:  +50+50  -430+50  -430-374  +50-374\n  -geometry 800x600+42+18\n\n",
+            "pdf_windows": "WINDOW id=40004c width=10 height=10 name=3444776d class=3444576d instance=3444776d\nWINDOW id=a00009 width=180 height=180 name=78636c6f636b class=58436c6f636b instance=78636c6f636b\nWINDOW id=e00004 width=1006 height=614 name=786d61686a6f6e6767 class=584d61686a6f6e6767 instance=786d61686a6f6e6767\nWINDOW id=c0002c width=103 height=158 name=546f6f6c6368657374 class=546f6f6c6368657374 instance=746f6f6c6368657374\nWINDOW id=1000005 width=663 height=360 name=77696e7465726d class=58577368 instance=77696e7465726d\nWINDOW id=140006b width=900 height=500 name=49636f6e20436174616c6f673a204170706c69636174696f6e732028506167652033206f6620313829 class=49636f6e436174616c6f67 instance=49636f6e436174616c6f67\nWINDOW id=1800175 width=800 height=600 name=786972692d6163726f6261742d746573742e706466 class=4163726f52656164 instance=646f63756d656e745368656c6c\n",
+            "focus_command": "/tmp/click 300 300; xiri_rc=$?; printf '\\nXIRI_355491cbfed140e3b5634c \b217a34633f_RC=%s\\n' \"$xiri_rc\"\n\nXIRI_355491cbfed140e3b5634c217a34633f_RC=0\nxiri-indy# ",
+            "focus_status": 0,
+            "windows_after": "WINDOW id=40004c width=10 height=10 name=3444776d class=3444576d instance=3444776d\nWINDOW id=a00009 width=180 height=180 name=78636c6f636b class=58436c6f636b instance=78636c6f636b\nWINDOW id=e00004 width=1006 height=614 name=786d61686a6f6e6767 class=584d61686a6f6e6767 instance=786d61686a6f6e6767\nWINDOW id=c0002c width=103 height=158 name=546f6f6c6368657374 class=546f6f6c6368657374 instance=746f6f6c6368657374\nWINDOW id=1000005 width=663 height=360 name=77696e7465726d class=58577368 instance=77696e7465726d\nWINDOW id=140006b width=900 height=500 name=49636f6e20436174616c6f673a204170706c69636174696f6e732028506167652033206f6620313829 class=49636f6e436174616c6f67 instance=49636f6e436174616c6f67\n",
+            "gui_exit": true
+          },
+          {
+            "iteration": 2,
+            "helper": "original",
+            "pid": 5341,
+            "pdf_geometry": "\nxwininfo: Window id: 0x1800155 \"xiri-acrobat-test.pdf\"\n\n  Absolute upper-left X:  50\n  Absolute upper-left Y:  50\n  Relative upper-left X:  0\n  Relative upper-left Y:  0\n  Width: 800\n  Height: 600\n  Depth: 24\n  Visual: 0x21\n  Visual Class: TrueColor\n  Border width: 0\n  Class: InputOutput\n  Colormap: 0x20 (not installed)\n  Bit Gravity State: ForgetGravity\n  Window Gravity State: NorthWestGravity\n  Backing Store State: NotUseful\n  Save Under State: no\n  Map State: IsViewable\n  Override Redirect State: no\n  Corners:  +50+50  -430+50  -430-374  +50-374\n  -geometry 800x600+42+18\n\n",
+            "pdf_windows": "WINDOW id=40004c width=10 height=10 name=3444776d class=3444576d instance=3444776d\nWINDOW id=a00009 width=180 height=180 name=78636c6f636b class=58436c6f636b instance=78636c6f636b\nWINDOW id=e00004 width=1006 height=614 name=786d61686a6f6e6767 class=584d61686a6f6e6767 instance=786d61686a6f6e6767\nWINDOW id=c0002c width=103 height=158 name=546f6f6c6368657374 class=546f6f6c6368657374 instance=746f6f6c6368657374\nWINDOW id=1000005 width=663 height=360 name=77696e7465726d class=58577368 instance=77696e7465726d\nWINDOW id=140006b width=900 height=500 name=49636f6e20436174616c6f673a204170706c69636174696f6e732028506167652033206f6620313829 class=49636f6e436174616c6f67 instance=49636f6e436174616c6f67\nWINDOW id=1800155 width=800 height=600 name=786972692d6163726f6261742d746573742e706466 class=4163726f52656164 instance=646f63756d656e745368656c6c\n",
+            "focus_command": "/tmp/click 300 300; xiri_rc=$?; printf '\\nXIRI_e15231080afc4ef5a7c451 \b161a4e8eec_RC=%s\\n' \"$xiri_rc\"\n\nXIRI_e15231080afc4ef5a7c451161a4e8eec_RC=0\nxiri-indy# ",
+            "focus_status": 0,
+            "windows_after": "WINDOW id=40004c width=10 height=10 name=3444776d class=3444576d instance=3444776d\nWINDOW id=a00009 width=180 height=180 name=78636c6f636b class=58436c6f636b instance=78636c6f636b\nWINDOW id=e00004 width=1006 height=614 name=786d61686a6f6e6767 class=584d61686a6f6e6767 instance=786d61686a6f6e6767\nWINDOW id=c0002c width=103 height=158 name=546f6f6c6368657374 class=546f6f6c6368657374 instance=746f6f6c6368657374\nWINDOW id=1000005 width=663 height=360 name=77696e7465726d class=58577368 instance=77696e7465726d\nWINDOW id=140006b width=900 height=500 name=49636f6e20436174616c6f673a204170706c69636174696f6e732028506167652033206f6620313829 class=49636f6e436174616c6f67 instance=49636f6e436174616c6f67\n",
+            "gui_exit": true
+          },
+          {
+            "iteration": 3,
+            "helper": "original",
+            "pid": 2237,
+            "pdf_geometry": "\nxwininfo: Window id: 0x1800155 \"xiri-acrobat-test.pdf\"\n\n  Absolute upper-left X:  50\n  Absolute upper-left Y:  50\n  Relative upper-left X:  0\n  Relative upper-left Y:  0\n  Width: 800\n  Height: 600\n  Depth: 24\n  Visual: 0x21\n  Visual Class: TrueColor\n  Border width: 0\n  Class: InputOutput\n  Colormap: 0x20 (not installed)\n  Bit Gravity State: ForgetGravity\n  Window Gravity State: NorthWestGravity\n  Backing Store State: NotUseful\n  Save Under State: no\n  Map State: IsViewable\n  Override Redirect State: no\n  Corners:  +50+50  -430+50  -430-374  +50-374\n  -geometry 800x600+42+18\n\n",
+            "pdf_windows": "WINDOW id=40004c width=10 height=10 name=3444776d class=3444576d instance=3444776d\nWINDOW id=a00009 width=180 height=180 name=78636c6f636b class=58436c6f636b instance=78636c6f636b\nWINDOW id=e00004 width=1006 height=614 name=786d61686a6f6e6767 class=584d61686a6f6e6767 instance=786d61686a6f6e6767\nWINDOW id=c0002c width=103 height=158 name=546f6f6c6368657374 class=546f6f6c6368657374 instance=746f6f6c6368657374\nWINDOW id=1000005 width=663 height=360 name=77696e7465726d class=58577368 instance=77696e7465726d\nWINDOW id=140006b width=900 height=500 name=49636f6e20436174616c6f673a204170706c69636174696f6e732028506167652033206f6620313829 class=49636f6e436174616c6f67 instance=49636f6e436174616c6f67\nWINDOW id=1800155 width=800 height=600 name=786972692d6163726f6261742d746573742e706466 class=4163726f52656164 instance=646f63756d656e745368656c6c\n",
+            "focus_command": "/tmp/click 300 300; xiri_rc=$?; printf '\\nXIRI_90858b316eab442dab984b \b68470c9ad7_RC=%s\\n' \"$xiri_rc\"\n\nXIRI_90858b316eab442dab984b68470c9ad7_RC=0\nxiri-indy# ",
+            "focus_status": 0,
+            "windows_after": "WINDOW id=40004c width=10 height=10 name=3444776d class=3444576d instance=3444776d\nWINDOW id=a00009 width=180 height=180 name=78636c6f636b class=58436c6f636b instance=78636c6f636b\nWINDOW id=e00004 width=1006 height=614 name=786d61686a6f6e6767 class=584d61686a6f6e6767 instance=786d61686a6f6e6767\nWINDOW id=c0002c width=103 height=158 name=546f6f6c6368657374 class=546f6f6c6368657374 instance=746f6f6c6368657374\nWINDOW id=1000005 width=663 height=360 name=77696e7465726d class=58577368 instance=77696e7465726d\nWINDOW id=140006b width=900 height=500 name=49636f6e20436174616c6f673a204170706c69636174696f6e732028506167652033206f6620313829 class=49636f6e436174616c6f67 instance=49636f6e436174616c6f67\n",
+            "gui_exit": true
+          },
+          {
+            "iteration": 4,
+            "helper": "traced",
+            "pid": 2212,
+            "pdf_geometry": "\nxwininfo: Window id: 0x1800155 \"xiri-acrobat-test.pdf\"\n\n  Absolute upper-left X:  50\n  Absolute upper-left Y:  50\n  Relative upper-left X:  0\n  Relative upper-left Y:  0\n  Width: 800\n  Height: 600\n  Depth: 24\n  Visual: 0x21\n  Visual Class: TrueColor\n  Border width: 0\n  Class: InputOutput\n  Colormap: 0x20 (not installed)\n  Bit Gravity State: ForgetGravity\n  Window Gravity State: NorthWestGravity\n  Backing Store State: NotUseful\n  Save Under State: no\n  Map State: IsViewable\n  Override Redirect State: no\n  Corners:  +50+50  -430+50  -430-374  +50-374\n  -geometry 800x600+42+18\n\n",
+            "pdf_windows": "WINDOW id=40004c width=10 height=10 name=3444776d class=3444576d instance=3444776d\nWINDOW id=a00009 width=180 height=180 name=78636c6f636b class=58436c6f636b instance=78636c6f636b\nWINDOW id=e00004 width=1006 height=614 name=786d61686a6f6e6767 class=584d61686a6f6e6767 instance=786d61686a6f6e6767\nWINDOW id=c0002c width=103 height=158 name=546f6f6c6368657374 class=546f6f6c6368657374 instance=746f6f6c6368657374\nWINDOW id=1000005 width=663 height=360 name=77696e7465726d class=58577368 instance=77696e7465726d\nWINDOW id=140006b width=900 height=500 name=49636f6e20436174616c6f673a204170706c69636174696f6e732028506167652033206f6620313829 class=49636f6e436174616c6f67 instance=49636f6e436174616c6f67\nWINDOW id=1800155 width=800 height=600 name=786972692d6163726f6261742d746573742e706466 class=4163726f52656164 instance=646f63756d656e745368656c6c\n",
+            "focus_log": "acrobat-focus-4.log",
+            "focus_status": 0,
+            "windows_after": "WINDOW id=40004c width=10 height=10 name=3444776d class=3444576d instance=3444776d\nWINDOW id=a00009 width=180 height=180 name=78636c6f636b class=58436c6f636b instance=78636c6f636b\nWINDOW id=e00004 width=1006 height=614 name=786d61686a6f6e6767 class=584d61686a6f6e6767 instance=786d61686a6f6e6767\nWINDOW id=c0002c width=103 height=158 name=546f6f6c6368657374 class=546f6f6c6368657374 instance=746f6f6c6368657374\nWINDOW id=1000005 width=663 height=360 name=77696e7465726d class=58577368 instance=77696e7465726d\nWINDOW id=140006b width=900 height=500 name=49636f6e20436174616c6f673a204170706c69636174696f6e732028506167652033206f6620313829 class=49636f6e436174616c6f67 instance=49636f6e436174616c6f67\n",
+            "gui_exit": true,
+            "focus_trace": "CLICK BEGIN stage=open mono=1310.707036419\nCLICK END stage=open mono=1310.729664843\nCLICK BEGIN stage=motion-sync mono=1310.729839116\nCLICK END stage=motion-sync mono=1310.785618025\nCLICK BEGIN stage=button-sync mono=1310.990194268\nCLICK END stage=button-sync mono=1311.096164934\nCLICK BEGIN stage=close mono=1311.096344571\nCLICK END stage=close mono=1311.102030874\n"
+          },
+          {
+            "iteration": 5,
+            "helper": "traced",
+            "pid": 2425,
+            "pdf_geometry": "\nxwininfo: Window id: 0x1800155 \"xiri-acrobat-test.pdf\"\n\n  Absolute upper-left X:  50\n  Absolute upper-left Y:  50\n  Relative upper-left X:  0\n  Relative upper-left Y:  0\n  Width: 800\n  Height: 600\n  Depth: 24\n  Visual: 0x21\n  Visual Class: TrueColor\n  Border width: 0\n  Class: InputOutput\n  Colormap: 0x20 (not installed)\n  Bit Gravity State: ForgetGravity\n  Window Gravity State: NorthWestGravity\n  Backing Store State: NotUseful\n  Save Under State: no\n  Map State: IsViewable\n  Override Redirect State: no\n  Corners:  +50+50  -430+50  -430-374  +50-374\n  -geometry 800x600+42+18\n\n",
+            "pdf_windows": "WINDOW id=40004c width=10 height=10 name=3444776d class=3444576d instance=3444776d\nWINDOW id=a00009 width=180 height=180 name=78636c6f636b class=58436c6f636b instance=78636c6f636b\nWINDOW id=e00004 width=1006 height=614 name=786d61686a6f6e6767 class=584d61686a6f6e6767 instance=786d61686a6f6e6767\nWINDOW id=c0002c width=103 height=158 name=546f6f6c6368657374 class=546f6f6c6368657374 instance=746f6f6c6368657374\nWINDOW id=1000005 width=663 height=360 name=77696e7465726d class=58577368 instance=77696e7465726d\nWINDOW id=140006b width=900 height=500 name=49636f6e20436174616c6f673a204170706c69636174696f6e732028506167652033206f6620313829 class=49636f6e436174616c6f67 instance=49636f6e436174616c6f67\nWINDOW id=1800155 width=800 height=600 name=786972692d6163726f6261742d746573742e706466 class=4163726f52656164 instance=646f63756d656e745368656c6c\n",
+            "focus_log": "acrobat-focus-5.log"
+          }
+        ],
+        "fresh_profiles": "test ! -e /usr/people/xiritest/.gnome/Terminal && test ! -e /usr/peop \ble/xiritest/.acrorc; xiri_rc=$?; printf '\\nXIRI_5026fdb64774497dbfc9bb210cc4ef8d \b_RC=%s\\n' \"$xiri_rc\"\n\nXIRI_5026fdb64774497dbfc9bb210cc4ef8d_RC=0\nxiri-indy# ",
+        "environment": [
+          "mipsirix",
+          "1234",
+          "/usr/people/xiritest"
+        ],
+        "gnome": {
+          "pid": 4386,
+          "shell": [
+            "is",
+            "/usr/people/xiritest",
+            "/usr/people/xiritest",
+            "1234"
+          ],
+          "saved": "\n[Placement]\nDock=Menubar\\\\0,0,0,0\n\n[Config]\nfont=-*-fixed-medium-r-normal--14-*-*-*-*-*-*-*,*-r-*\nwordclass=-A-Za-z0-9,./?%&#\nscrollpos=right\nbell_silenced=false\nblinking=false\nswap_del_and_backspace=false\ndel_is_del=false\nlogin_by_default=false\nuse_bold=true\nuse_im=true\nuse_fontset=true\nscrollbacklines=257\ncolor_set=0\ncolor_scheme=linux\nmenubar=true\nscrollonkey=true\nscrollonoutput=false\ntransparent=false\nshaded=false\nscroll_background=false\nbackground_pixmap=false\npixmap_file=\npalette=rgb:0000/0000/0000 rgb:aaaa/0000/0000 rgb:0000/aaaa/0000 rgb:aaaa/5555/0000 rgb:0000/0000/aaaa rgb:aaaa/0000/aaaa rgb:0000/aaaa/aaaa rgb:aaaa/aaaa/aaaa rgb:5555/5555/5555 rgb:ffff/5555/5555 rgb:5555/ffff/5555 rgb:ffff/ffff/5555 rgb:5555/5555/ffff rgb:ffff/5555/ffff rgb:5555/ffff/ffff rgb:ffff/ffff/ffff rgb:bebe/bebe/bebe rgb:0000/0000/0000 \n",
+          "exit": {
+            "status": 0,
+            "stderr": "\nGdk-WARNING **: shmget failed: error 89 (Function not implemented)\n\nGnomeUI-WARNING **: Could not open help topics file NULL\n"
+          },
+          "reopened_pid": 1443,
+          "reopened": "\n[Placement]\nDock=Menubar\\\\0,0,0,0\n\n[Config]\nfont=-*-fixed-medium-r-normal--14-*-*-*-*-*-*-*,*-r-*\nwordclass=-A-Za-z0-9,./?%&#\nscrollpos=right\nbell_silenced=false\nblinking=false\nswap_del_and_backspace=false\ndel_is_del=false\nlogin_by_default=false\nuse_bold=true\nuse_im=true\nuse_fontset=true\nscrollbacklines=257\ncolor_set=0\ncolor_scheme=linux\nmenubar=true\nscrollonkey=true\nscrollonoutput=false\ntransparent=false\nshaded=false\nscroll_background=false\nbackground_pixmap=false\npixmap_file=\npalette=rgb:0000/0000/0000 rgb:aaaa/0000/0000 rgb:0000/aaaa/0000 rgb:aaaa/5555/0000 rgb:0000/0000/aaaa rgb:aaaa/0000/aaaa rgb:0000/aaaa/aaaa rgb:aaaa/aaaa/aaaa rgb:5555/5555/5555 rgb:ffff/5555/5555 rgb:5555/ffff/5555 rgb:ffff/ffff/5555 rgb:5555/5555/ffff rgb:ffff/5555/ffff rgb:5555/ffff/ffff rgb:ffff/ffff/ffff rgb:bebe/bebe/bebe rgb:0000/0000/0000 \n",
+          "reopened_exit": {
+            "status": 0,
+            "stderr": "\nGdk-WARNING **: shmget failed: error 89 (Function not implemented)\n\nGnomeUI-WARNING **: Could not open help topics file NULL\n"
+          },
+          "file_identity": "1234 1234 600"
+        },
+        "captures": [
+          "apps-gnome-preferences",
+          "apps-gnome-reopened",
+          "apps-acrobat-first-run",
+          "apps-acrobat-open-dialog",
+          "apps-acrobat-pdf-1",
+          "apps-acrobat-pdf-2",
+          "apps-acrobat-pdf-3",
+          "apps-acrobat-pdf-4",
+          "apps-acrobat-pdf-5"
+        ],
+        "pdf_sha256": "f1bc498f742ca8f72f22cf650a43584494b41e1b2eb24b7e2d8d626eab758c9a"
+      },
+      "error": "guest command failed (124): /tmp/xiri-stability/click-trace 300 300 >acrobat-focus-5.log 2>&1\n/tmp/xiri-stability/click-trace 300 300 >acrobat-focus-5.log 2>&1; xi \bri_rc=$?; printf '\\nXIRI_489cdc2e51b844a4959641a8bd55450d_RC=%s\\n' \"$xiri_rc\"\n\nXIRI_489cdc2e51b844a4959641a8bd55450d_RC=124\nxiri-indy# ",
+      "failure_diagnostics": {
+        "status": "stopped pc=ffffffff880e6110\r\n  stop #1: stopped by `stop`\r\n  count_hz=33000000 (33.000 MHz)  count=0x0fae3871 compare=0x0fb105fa\r\n> ",
+        "regs": "PC: 0xffffffff880e6110\r\nHI: 0x0000000000000002 LO: 0x0000000000000000\r\nzero($00): 0x0000000000000000  at  ($01): 0xffffffffffffffe0  v0  ($02): 0x000000000000000c  v1  ($03): 0x9800000008717ee0  \r\na0  ($04): 0x9800000017a8ae00  a1  ($05): 0x9800000008717ee0  a2  ($06): 0x9800000008717ed0  a3  ($07): 0x0000000000000002  \r\nt0  ($08): 0x0000000008000000  t1  ($09): 0x0000000000000004  t2  ($10): 0x0000000000000000  t3  ($11): 0x000000000000005d  \r\nt4  ($12): 0xffffffff8000ff81  t5  ($13): 0x0000000000000078  t6  ($14): 0x0000000000000000  t7  ($15): 0x000000000000fa49  \r\ns0  ($16): 0x9800000017a8ae00  s1  ($17): 0x9800000017dfd200  s2  ($18): 0x0000000000000001  s3  ($19): 0x9800000008717ec0  \r\ns4  ($20): 0x9800000008717ed0  s5  ($21): 0x00000000781318b0  s6  ($22): 0xffffffff8858cf20  s7  ($23): 0x0000000000000000  \r\nt8  ($24): 0x9800000017a8ae00  t9  ($25): 0xffffffff8807b3f0  k0  ($26): 0x9800000008717ea0  k1  ($27): 0x9800000017a8ae00  \r\ngp  ($28): 0xffffffff886783f0  sp  ($29): 0x9800000008717d80  fp  ($30): 0x0000000000000000  ra  ($31): 0xffffffff8807b594  \r\nCP0 Status: 0x8000ff81 (CU:3___ IM:76543210 KX K:K IE)\r\nCP0 Cause:  0x10000020 (CE:1 IP:________ Exc:08(SYS))\r\nCP0 EPC: 0x00000000781318b0 BadVAddr: 0x00000000781318a0\r\n> ",
+        "cop0": "COP0 Registers:\r\n   0 Index   : 0x000000000000001a\r\n   1 Random  : 0x000000000000002b\r\n   2 EntryLo0: 0x00000000005f2f1a\r\n   3 EntryLo1: 0x00000000005f2f5a\r\n   4 Context : 0x00000000003c0980\r\n   5 PageMask: 0x0000000000000000\r\n   6 Wired   : 0x0000000000000001\r\n   8 BadVAddr: 0x00000000781318a0\r\n   9 Count   : 0x000000000fae3871\r\n  10 EntryHi : 0x000000007813000a\r\n  11 Compare : 0x000000000fb105fa\r\n  12 Status  : 0x000000008000ff81 CU:3___ IM:76543210 KX K:K IE\r\n  13 Cause   : 0x0000000010000020 CE:1 IP:________ Exc:08(SYS)\r\n  14 EPC     : 0x00000000781318b0\r\n  15 PRId    : 0x0000000000000440\r\n  16 Config  : 0x0000000000c08483\r\n  17 LLAddr  : 0x00000000017dc449\r\n  18 WatchLo : 0x0000000000000000\r\n  19 WatchHi : 0x0000000000000000\r\n  20 XContext: 0x00000000003c0980\r\n  23 Debug   : 0x0000000000000000\r\n  24 DEPC    : 0x0000000000000000\r\n  26 ECC     : 0x0000000000000000\r\n  27 CacheErr: 0x0000000000000000\r\n  28 TagLo   : 0x0000000000000000\r\n  29 TagHi   : 0x0000000000000000\r\n  30 ErrorEPC: 0x0000000000000000\r\n  IP7 timer: count_hz=33000000 (33.000 MHz)  fired=142348\r\n> ",
+        "bt 20": "Backtrace:\r\n#00 pc=0xffffffff880e6110 sp=0x9800000008717d80 0xffffffff880e6110\r\n\r\n> ",
+        "stack": "9800000008717d80: 9800000017dfd200\r\n9800000008717d88: ffffffff880e6220\r\n9800000008717d90: 00000000780302c0\r\n9800000008717d98: 0000000000000000\r\n9800000008717da0: 9800000017a8ae00\r\n9800000008717da8: ffffffff8807b594\r\n9800000008717db0: fefefefefefefefe\r\n9800000008717db8: fefefefefefefefe\r\n9800000008717dc0: fefefefefefefefe\r\n9800000008717dc8: fefefefefefefefe\r\n9800000008717dd0: fefefefefefefefe\r\n9800000008717dd8: fefefefefefefefe\r\n9800000008717de0: fefefefefefefefe\r\n9800000008717de8: fefefefefefefefe\r\n9800000008717df0: fefefefefefefefe\r\n9800000008717df8: fefefefefefefefe\r\n> "
+      },
+      "halt": "[   1.0000000] Copyright (c) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,\n[   1.0000000]     2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013,\n[   1.0000000]     2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023,\n[   1.0000000]     2024, 2025, 2026\n[   1.0000000]     The NetBSD Foundation, Inc.  All rights reserved.\n[   1.0000000] Copyright (c) 1982, 1986, 1989, 1991, 1993\n[   1.0000000]     The Regents of the University of California.  All rights reserved.\n\n[   1.0000000] NetBSD 11.99.9 (XIRI_IRIX_MODULE_20261103) #1: Wed Nov  4 18:42:42 UTC 2026\n[   1.0000000] \tsalvogendut@toolbx:/var/home/salvogendut/Dev/xiri/.work/netbsd-stability-build/obj/sys/arch/sgimips/compile/XIRI_IRIX_MODULE\n[   1.0000000] total memory = 255 MB\n[   1.0000000] (768 KB reserved for ARCS)\n[   1.0000000] avail memory = 244 MB\n[   1.0000000] timecounter: Timecounters tick every 10.000 msec\n[   1.0000000] mainbus0 (root): SGI-IP22 [SGI, 69123457], 1 processor\n[   1.0000000] cpu0 at mainbus0: MIPS R4400 CPU (0x440) Rev. 4.0 with MIPS R4010 FPC Rev. 0.0\n[   1.0000000] cpu0: 48 TLB entries, 1TB (40-bit) VAs, 4KB (12-bit) PAs, 16MB max page size\n[   1.0000000] cpu0: 16KB/16B direct-mapped L1 instruction cache\n[   1.0000000] cpu0: 16KB/16B direct-mapped write-back L1 data cache\n[   1.0000000] cpu0: 1024KB/128B direct-mapped write-back L2 unified cache\n[   1.0000000] int0 at mainbus0 addr 0x1fbd9880\n[   1.0000000] int0: bus 33MHz, CPU 66MHz\n[   1.0000000] imc0 at mainbus0 addr 0x1fa00000: revision 3\n[   1.0000000] gio0 at imc0\n[   1.0000000] newport0 at gio0: SGI NG1 (board revision 0, cmap revision 2, xmap revision 3, vc2 revision 0), depth 24, monitor ID 10 (1280x1024 60Hz)\n[   1.0000000] newport0: 13W3 Monitor ID 10, PROM ID -1, determined monitor ID 10 (1280x1024 60Hz)\n[   1.0000000] wsdisplay0 at newport0 kbdmux 1: console (default, vt100 emulation)\n[   1.0000000] wsmux1: connecting to wsdisplay0\n[   1.0000000] hpc0 at gio0: SGI HPC3 (onboard)\n[   1.0000000] zsc0 at hpc0 offset 0x59830\n[   1.0000000] zstty0 at zsc0 channel 1\n[   1.0000000] zstty1 at zsc0 channel 0\n[   1.0000000] pckbc0 at hpc0 offset 0x59840\n[   1.0000000] pckbd0 at pckbc0 (kbd slot)\n[   1.0000000] wskbd0 at pckbd0: console keyboard, using wsdisplay0\n[   1.0000000] pms0 at pckbc0 (aux slot)\n[   1.0000000] wsmouse0 at pms0 mux 0\n[   1.0000000] sq0 at hpc0 offset 0x54000: SGI Seeq 80c03\n[   1.0000000] sq0: Ethernet address 08:00:69:12:34:57\n[   1.0000000] wdsc0 at hpc0 offset 0x44000: WD33C93A (20.0 MHz clock, BURST DMA, SCSI ID 0)\n[   1.0000000] scsibus0 at wdsc0: 8 targets, 8 luns per target\n[   1.0000000] haltwo at hpc0 offset 0x58000 not configured\n[   1.0000000] pi1ppc0 at hpc0 offset 0x59800\n[   1.0000000] pi1ppc0: capabilities=0x8<PS2>\n[   1.0000000] ppbus0 at pi1ppc0\n[   1.0000000] ppbus0: No IEEE1284 device found.\n[   1.0000000] button0 at hpc0 offset 0x59850\n[   1.0000000] hpc1 at gio0: SGI HPC3 (IOPLUS mezzanine)\n[   1.0000000] hpc1: using EXP0's DMA channel\n[   1.0000000] sq at hpc1 offset 0x54000 not configured\n[   1.0000000] hpc2 at gio0: SGI HPC1.5 (GIO slot)\n[   1.0000000] dsclock0 at mainbus0 addr 0x1fbe0000\n[   1.0000000] ioc0 at mainbus0 addr 0x1fbd9800: rev 0, machine Indy (Guinness), board rev 0\n[   1.0000000] WARNING: system needs entropy for security; see entropy(7)\n[   1.0000000] timecounter: Timecounter \"mips3_cp0_counter\" frequency 33000000 Hz quality 100\n[   1.0000030] timecounter: Timecounter \"clockinterrupt\" frequency 100 Hz quality 0\n[   1.0000030] scsibus0: waiting 2 seconds for devices to settle...\n[   3.0746713] sd0 at scsibus0 target 1 lun 0: <SGI, IRIS EMUL DISK, 1.0> disk fixed\n[   3.1421554] sd0: 8192 MB, 16645 cyl, 16 head, 62 sec, 512 bytes/sect x 16777216 sectors\n[   3.3083548] sd0: async, 8-bit transfers\n[   3.3691991] cd0 at scsibus0 target 4 lun 0: <Sony, CDU-76S, 1.0> cdrom removable\n[   3.4453951] cd0: async, 8-bit transfers\n[   3.5144514] boot device: sd0\n[   3.5824209] root on sd0a dumps on sd0b\n[   3.6547548] kern.module.path=/stand/sgimips/11.99.9/modules\n[   4.9604762] entropy: best effort\n[ 3243.4203915] syncing disks... done\n[ 3243.4955175] unmounting file systems...\n[ 3243.5427140] unmounted /dev/cd0a on /cdrom type cd9660\n[ 3243.5427140] unmounted ptyfs on /dev/pts type ptyfs\n[ 3243.5427140] unmounted procfs on /proc type procfs\n[ 3243.5427140] unmounted kernfs on /kern type kernfs\n[ 3244.5327561] unmounted /dev/sd0a on / type ffs\n[ 3244.5327561] unmounting done\n[ 3244.5810259] halting...\n\n",
+      "host_seconds": 3272.056,
+      "source_unchanged": true
+    },
+    "passed_before_failure": {
+      "input_cycles": 40,
+      "button_events": 80,
+      "child_launch_cases": 20,
+      "adversarial_cases": 16,
+      "pdf_replays": 4
+    },
+    "failure_stage": "button-sync",
+    "focus_log": {
+      "path": "docs/results/2026-11-04-stability-image-focus-timeout.log",
+      "sha256": "83fcb417369f75a5a73715099f23e68316ecc07247849c35bf81f5f55bc133f7"
+    }
+  },
+  "control": {
+    "result": {
+      "path": ".work/system-stability/boot-g__svm0j/result.json",
+      "sha256": "c6cb2f25db2a632239b645a2b8c452a95d4938e236815dac7c3b8af683c3af21"
+    },
+    "status": "excluded-cold-focus-failure-and-failed-recovery",
+    "error": "guest command failed (1): (tries=0; until test -s \"$job/image-gnome-reopened.pid\" && xwininfo -name Terminal >/dev/null; do tries=$((tries+1)); test \"$tries\" -lt 60 || exit 1; sleep 2; done)\n(tries=0; until test -s \"$job/image-gnome-reopened.pid\" && xwininfo - \bname Terminal >/dev/null; do tries=$((tries+1)); test \"$tries\" -lt 60 || exit 1; \b sleep 2; done); xiri_rc=$?; printf '\\nXIRI_34974dea1ad24710987e3887a0c31f96_RC= \b%s\\n' \"$xiri_rc\"\n\nXIRI_34974dea1ad24710987e3887a0c31f96_RC=1\nxiri-indy# ",
+    "clean_shutdown": true,
+    "source_unchanged": true,
+    "cd9660": {
+      "checks": 158,
+      "failures": 92,
+      "expected_fixed": false
+    },
+    "cd_log": {
+      "path": "docs/results/2026-11-04-stability-image-cd9660-before.log",
+      "sha256": "558f164c55e4f128ecbab8339e90ce12e7decbcfa33ecb6c1678099e4eb93160"
+    },
+    "focus_state": {
+      "output": "JOB=/usr/people/xiritest/.xiri/sessions/session.YFU2to\n-rw-------  1 xiritest  xiritest  126 Nov  4 20:45 /usr/people/xiritest/.xiri/sessions/session.YFU2to/image-gnome-reopened.err\n-rw-------  1 xiritest  xiritest    0 Nov  4 20:44 /usr/people/xiritest/.xiri/sessions/session.YFU2to/image-gnome-reopened.out\n-rw-------  1 xiritest  xiritest  126 Nov  4 20:43 /usr/people/xiritest/.xiri/sessions/session.YFU2to/image-gnome.err\n-rw-------  1 xiritest  xiritest    0 Nov  4 20:43 /usr/people/xiritest/.xiri/sessions/session.YFU2to/image-gnome.out\n-rw-------  1 xiritest  xiritest    5 Nov  4 20:43 /usr/people/xiritest/.xiri/sessions/session.YFU2to/image-gnome.pid\n-rw-------  1 xiritest  xiritest    2 Nov  4 20:44 /usr/people/xiritest/.xiri/sessions/session.YFU2to/image-gnome.status\n\nGdk-WARNING **: shmget failed: error 89 (Function not implemented)\n\nGnomeUI-WARNING **: Could not open help topics file NULL\n2395    1 I    select  0:01.70 /emul/irix/usr/sbin/xwsh -e /usr/libexec/xiri-sh\n2928 2844 Ss   select  0:25.72 /usr/X11R7/bin/Xorg :0 -config /usr/local/share/\n 938 2395 Is+  ttyraw  0:00.17 sh -i \n1195  938 I    poll    0:00.90 /usr/freeware/bin/gnome-terminal \n1787 1853 R+   pipe_rd 0:00.03 egrep gnome-terminal|winterm|xwsh|sh -i|Xorg \nWINDOW id=40004c width=10 height=10 name=3444776d class=3444576d instance=3444776d\nWINDOW id=c00009 width=180 height=180 name=78636c6f636b class=58436c6f636b instance=78636c6f636b\nWINDOW id=a0002c width=103 height=158 name=546f6f6c6368657374 class=546f6f6c6368657374 instance=746f6f6c6368657374\nWINDOW id=e00004 width=1006 height=614 name=786d61686a6f6e6767 class=584d61686a6f6e6767 instance=786d61686a6f6e6767\nWINDOW id=120006b width=900 height=500 name=49636f6e20436174616c6f673a20416c6961732028506167652031206f6620313829 class=49636f6e436174616c6f67 instance=49636f6e436174616c6f67\nWINDOW id=1000005 width=663 height=360 name=77696e7465726d class=58577368 instance=77696e7465726d\nWINDOW id=1a00006 width=584 height=368 name=5465726d696e616c class=5465726d696e616c instance=5465726d696e616c2e30\n"
+    },
+    "continuation_result": {
+      "path": ".work/system-stability/boot-g__svm0j/continuation/result.json",
+      "sha256": "c3bfa343f43bd23e2fd399ba1a12059836c880069fbb088b446a06a79d068ccf"
+    },
+    "continuation": {
+      "status": "error",
+      "scope": "manual-diagnostic-continuation-not-cold-acceptance",
+      "origin": ".work/system-stability/boot-g__svm0j",
+      "harness_sha256": "3e277f18fda236686938f7bf9b3065210fe52b27aea95da929e35ccbc738d1f0",
+      "application_harness_sha256": "a4443d46d462e28217e05a3ee17bf8bc1116bffb8deeade9c7fffd9d1b808863",
+      "recovery": [
+        "Terminate only the observed GNOME PID 1195.",
+        "Focus winterm and send Ctrl-C to cancel the incomplete typed shell line.",
+        "Retain the test profile and earlier GNOME logs in the session directory before starting fresh controls."
+      ],
+      "error": "guest command failed (1): (tries=0; until ! kill -0 1195 2>/dev/null; do tries=$((tries+1)); test \"$tries\" -lt 15 || exit 1; sleep 2; done)\n(tries=0; until ! kill -0 1195 2>/dev/null; do tries=$((tries+1)); te \bst \"$tries\" -lt 15 || exit 1; sleep 2; done); xiri_rc=$?; printf '\\nXIRI_6fe147f \b7c59645d79c0d3e96fc247625_RC=%s\\n' \"$xiri_rc\"\n\nXIRI_6fe147f7c59645d79c0d3e96fc247625_RC=1\nxiri-indy# "
+    }
+  },
+  "coordinate_failure": {
+    "path": "docs/results/2026-11-04-stability-image-coordinate-diagnostic.json",
+    "sha256": "072a3dc8620df7428e3bba0a95a34b056c8298a36558772b01324bdbd8ea1345"
+  },
+  "interrupted": {
+    "result": {
+      "path": ".work/system-stability/boot-6ggr0q6m/result.json",
+      "sha256": "0f481d2c8f9b76c145c2ef8be2b7a2ef6aee57781cff7dd4262bfd36a1ce7083"
+    },
+    "status": "excluded-explicit-interruption",
+    "error": "Stability test interrupted",
+    "evidence_error": "timed out after 20s waiting for '\\\\nXIRI_cbd09373bdec4ee3ab12cdf23272eaeb_RC=(\\\\d+)\\\\n'",
+    "clean_shutdown": true,
+    "recovery": {
+      "cause": "SIGTERM interrupted paced serial input mid-shell command; cleanup commands reached a continuation prompt.",
+      "action": "Sent Ctrl-C and shutdown -h now to the owned serial B connection; original harness retains interrupted failure status and verifies the halt ring."
+    }
+  },
+  "diagnostic_followups": {
+    "capture-replay": {
+      "result": {
+        "path": ".work/system-stability/boot-25ukabya/capture-replay/result.json",
+        "sha256": "17e5700ac9bb75cb4fc76b07dff37e802eb35b6da420b359e3b0574c5b34d74e"
+      },
+      "observations": {
+        "scope": "diagnostic-capture-focus-repetitions",
+        "status": "failed",
+        "cases": [
+          {
+            "iteration": 1,
+            "png_sha256": "b6fb26793a3bedefdacb0aca862dd735bc6933ad5185a732d0edceb92774df71",
+            "status": 0
+          },
+          {
+            "iteration": 2,
+            "png_sha256": "b6fb26793a3bedefdacb0aca862dd735bc6933ad5185a732d0edceb92774df71",
+            "status": 0
+          },
+          {
+            "iteration": 3,
+            "png_sha256": "b6fb26793a3bedefdacb0aca862dd735bc6933ad5185a732d0edceb92774df71",
+            "status": 0
+          },
+          {
+            "iteration": 4,
+            "png_sha256": "b6fb26793a3bedefdacb0aca862dd735bc6933ad5185a732d0edceb92774df71",
+            "status": 0
+          },
+          {
+            "iteration": 5,
+            "png_sha256": "b6fb26793a3bedefdacb0aca862dd735bc6933ad5185a732d0edceb92774df71",
+            "status": 0
+          },
+          {
+            "iteration": 6,
+            "png_sha256": "b6fb26793a3bedefdacb0aca862dd735bc6933ad5185a732d0edceb92774df71",
+            "error": "guest command failed (124): ./click-trace 300 300 >capture-repeat-6.log 2>&1\n./click-trace 300 300 >capture-repeat-6.log 2>&1; xiri_rc=$?; printf  \b'\\nXIRI_ebdff4330ea8489c94be08310a8d3f54_RC=%s\\n' \"$xiri_rc\"\n\nXIRI_ebdff4330ea8489c94be08310a8d3f54_RC=124\nxiri-indy# "
+          }
+        ],
+        "error": "guest command failed (124): ./click-trace 300 300 >capture-repeat-6.log 2>&1\n./click-trace 300 300 >capture-repeat-6.log 2>&1; xiri_rc=$?; printf  \b'\\nXIRI_ebdff4330ea8489c94be08310a8d3f54_RC=%s\\n' \"$xiri_rc\"\n\nXIRI_ebdff4330ea8489c94be08310a8d3f54_RC=124\nxiri-indy# "
+      }
+    },
+    "pause-replay": {
+      "result": {
+        "path": ".work/system-stability/boot-25ukabya/pause-replay/result.json",
+        "sha256": "88ac2a571eb9d0eeacf000482b7a9112126f54110ddf7f28e294f45e239d39d9"
+      },
+      "observations": {
+        "status": "completed-without-timeout",
+        "scope": "diagnostic-pause-after-timeout",
+        "cases": [
+          {
+            "iteration": 1,
+            "png_sha256": "b6fb26793a3bedefdacb0aca862dd735bc6933ad5185a732d0edceb92774df71",
+            "output": "TEST_PID=5276\nEXIT_STATUS=0\n"
+          },
+          {
+            "iteration": 2,
+            "png_sha256": "b6fb26793a3bedefdacb0aca862dd735bc6933ad5185a732d0edceb92774df71",
+            "output": "TEST_PID=2725\nEXIT_STATUS=0\n"
+          },
+          {
+            "iteration": 3,
+            "png_sha256": "b6fb26793a3bedefdacb0aca862dd735bc6933ad5185a732d0edceb92774df71",
+            "output": "TEST_PID=3937\nEXIT_STATUS=0\n"
+          },
+          {
+            "iteration": 4,
+            "png_sha256": "b6fb26793a3bedefdacb0aca862dd735bc6933ad5185a732d0edceb92774df71",
+            "output": "TEST_PID=5620\nEXIT_STATUS=0\n"
+          },
+          {
+            "iteration": 5,
+            "png_sha256": "b6fb26793a3bedefdacb0aca862dd735bc6933ad5185a732d0edceb92774df71",
+            "output": "TEST_PID=2682\nEXIT_STATUS=0\n"
+          },
+          {
+            "iteration": 6,
+            "png_sha256": "b6fb26793a3bedefdacb0aca862dd735bc6933ad5185a732d0edceb92774df71",
+            "output": "TEST_PID=2730\nEXIT_STATUS=0\n"
+          },
+          {
+            "iteration": 7,
+            "png_sha256": "b6fb26793a3bedefdacb0aca862dd735bc6933ad5185a732d0edceb92774df71",
+            "output": "TEST_PID=5868\nEXIT_STATUS=0\n"
+          },
+          {
+            "iteration": 8,
+            "png_sha256": "b6fb26793a3bedefdacb0aca862dd735bc6933ad5185a732d0edceb92774df71",
+            "output": "TEST_PID=2630\nEXIT_STATUS=0\n"
+          },
+          {
+            "iteration": 9,
+            "png_sha256": "b6fb26793a3bedefdacb0aca862dd735bc6933ad5185a732d0edceb92774df71",
+            "output": "TEST_PID=2881\nEXIT_STATUS=0\n"
+          },
+          {
+            "iteration": 10,
+            "png_sha256": "b6fb26793a3bedefdacb0aca862dd735bc6933ad5185a732d0edceb92774df71",
+            "output": "TEST_PID=5659\nEXIT_STATUS=0\n"
+          },
+          {
+            "iteration": 11,
+            "png_sha256": "b6fb26793a3bedefdacb0aca862dd735bc6933ad5185a732d0edceb92774df71",
+            "output": "TEST_PID=2626\nEXIT_STATUS=0\n"
+          },
+          {
+            "iteration": 12,
+            "png_sha256": "b6fb26793a3bedefdacb0aca862dd735bc6933ad5185a732d0edceb92774df71",
+            "output": "TEST_PID=5858\nEXIT_STATUS=0\n"
+          },
+          {
+            "iteration": 13,
+            "png_sha256": "b6fb26793a3bedefdacb0aca862dd735bc6933ad5185a732d0edceb92774df71",
+            "output": "TEST_PID=2887\nEXIT_STATUS=0\n"
+          },
+          {
+            "iteration": 14,
+            "png_sha256": "b6fb26793a3bedefdacb0aca862dd735bc6933ad5185a732d0edceb92774df71",
+            "output": "TEST_PID=5543\nEXIT_STATUS=0\n"
+          },
+          {
+            "iteration": 15,
+            "png_sha256": "b6fb26793a3bedefdacb0aca862dd735bc6933ad5185a732d0edceb92774df71",
+            "output": "TEST_PID=2889\nEXIT_STATUS=0\n"
+          },
+          {
+            "iteration": 16,
+            "png_sha256": "b6fb26793a3bedefdacb0aca862dd735bc6933ad5185a732d0edceb92774df71",
+            "output": "TEST_PID=2885\nEXIT_STATUS=0\n"
+          },
+          {
+            "iteration": 17,
+            "png_sha256": "b6fb26793a3bedefdacb0aca862dd735bc6933ad5185a732d0edceb92774df71",
+            "output": "TEST_PID=2896\nEXIT_STATUS=0\n"
+          },
+          {
+            "iteration": 18,
+            "png_sha256": "b6fb26793a3bedefdacb0aca862dd735bc6933ad5185a732d0edceb92774df71",
+            "output": "TEST_PID=3068\nEXIT_STATUS=0\n"
+          },
+          {
+            "iteration": 19,
+            "png_sha256": "b6fb26793a3bedefdacb0aca862dd735bc6933ad5185a732d0edceb92774df71",
+            "output": "TEST_PID=3029\nEXIT_STATUS=0\n"
+          },
+          {
+            "iteration": 20,
+            "png_sha256": "b6fb26793a3bedefdacb0aca862dd735bc6933ad5185a732d0edceb92774df71",
+            "output": "TEST_PID=2976\nEXIT_STATUS=0\n"
+          }
+        ]
+      }
+    },
+    "foreground-pause": {
+      "result": {
+        "path": ".work/system-stability/boot-25ukabya/foreground-pause/result.json",
+        "sha256": "6f23bda1ff513c8c4e248db2527b1c8d0887b903220460b09a04549e1f375ed9"
+      },
+      "observations": {
+        "status": "error",
+        "scope": "diagnostic-foreground-stop-after-timeout",
+        "cases": [
+          {
+            "iteration": 1,
+            "png_sha256": "b6fb26793a3bedefdacb0aca862dd735bc6933ad5185a732d0edceb92774df71",
+            "output": "./click-stop 300 300 >stop-1.log 2>&1; rc=$?; echo STOP_TEST_STATUS=$ \brc; xiri_rc=$?; printf '\\nXIRI_3390b212354a4f80801fa9270e8ffa91_RC=%s\\n' \"$xiri_ \brc\"\nSTOP_TEST_STATUS=0\n\nXIRI_3390b212354a4f80801fa9270e8ffa91_RC=0\nxiri-indy# ",
+            "status": 0
+          },
+          {
+            "iteration": 2,
+            "png_sha256": "b6fb26793a3bedefdacb0aca862dd735bc6933ad5185a732d0edceb92774df71",
+            "output": "./click-stop 300 300 >stop-2.log 2>&1; rc=$?; echo STOP_TEST_STATUS=$ \brc; xiri_rc=$?; printf '\\nXIRI_246241e519214aa4ada71439f79fe8aa_RC=%s\\n' \"$xiri_ \brc\"\nSTOP_TEST_STATUS=0\n\nXIRI_246241e519214aa4ada71439f79fe8aa_RC=0\nxiri-indy# ",
+            "status": 0
+          },
+          {
+            "iteration": 3,
+            "png_sha256": "b6fb26793a3bedefdacb0aca862dd735bc6933ad5185a732d0edceb92774df71",
+            "output": "./click-stop 300 300 >stop-3.log 2>&1; rc=$?; echo STOP_TEST_STATUS=$ \brc; xiri_rc=$?; printf '\\nXIRI_153f0cd5f7ec480784454abb876f4bba_RC=%s\\n' \"$xiri_ \brc\"\nSTOP_TEST_STATUS=0\n\nXIRI_153f0cd5f7ec480784454abb876f4bba_RC=0\nxiri-indy# ",
+            "status": 0
+          },
+          {
+            "iteration": 4,
+            "png_sha256": "b6fb26793a3bedefdacb0aca862dd735bc6933ad5185a732d0edceb92774df71",
+            "output": "./click-stop 300 300 >stop-4.log 2>&1; rc=$?; echo STOP_TEST_STATUS=$ \brc; xiri_rc=$?; printf '\\nXIRI_8f0177011f55474f84ad1e54eead7d4f_RC=%s\\n' \"$xiri_ \brc\"\nSTOP_TEST_STATUS=0\n\nXIRI_8f0177011f55474f84ad1e54eead7d4f_RC=0\nxiri-indy# ",
+            "status": 0
+          },
+          {
+            "iteration": 5,
+            "png_sha256": "b6fb26793a3bedefdacb0aca862dd735bc6933ad5185a732d0edceb92774df71",
+            "output": "./click-stop 300 300 >stop-5.log 2>&1; rc=$?; echo STOP_TEST_STATUS=$ \brc; xiri_rc=$?; printf '\\nXIRI_152e832ce3554184b470e03c9063be46_RC=%s\\n' \"$xiri_ \brc\"\nSTOP_TEST_STATUS=0\n\nXIRI_152e832ce3554184b470e03c9063be46_RC=0\nxiri-indy# ",
+            "status": 0
+          },
+          {
+            "iteration": 6,
+            "png_sha256": "b6fb26793a3bedefdacb0aca862dd735bc6933ad5185a732d0edceb92774df71",
+            "output": "./click-stop 300 300 >stop-6.log 2>&1; rc=$?; echo STOP_TEST_STATUS=$ \brc; xiri_rc=$?; printf '\\nXIRI_c69e579dc1f448ceabd66ef3c536726e_RC=%s\\n' \"$xiri_ \brc\"\nSTOP_TEST_STATUS=0\n\nXIRI_c69e579dc1f448ceabd66ef3c536726e_RC=0\nxiri-indy# ",
+            "status": 0
+          },
+          {
+            "iteration": 7,
+            "png_sha256": "b6fb26793a3bedefdacb0aca862dd735bc6933ad5185a732d0edceb92774df71",
+            "output": "./click-stop 300 300 >stop-7.log 2>&1; rc=$?; echo STOP_TEST_STATUS=$ \brc; xiri_rc=$?; printf '\\nXIRI_21ed17e9fe844cfe8da9c4bae4540f0d_RC=%s\\n' \"$xiri_ \brc\"\nSTOP_TEST_STATUS=0\n\nXIRI_21ed17e9fe844cfe8da9c4bae4540f0d_RC=0\nxiri-indy# ",
+            "status": 0
+          },
+          {
+            "iteration": 8,
+            "png_sha256": "b6fb26793a3bedefdacb0aca862dd735bc6933ad5185a732d0edceb92774df71",
+            "output": "./click-stop 300 300 >stop-8.log 2>&1; rc=$?; echo STOP_TEST_STATUS=$ \brc; xiri_rc=$?; printf '\\nXIRI_378fbc9ee5ae4cba859242a95d145eec_RC=%s\\n' \"$xiri_ \brc\"\nSTOP_TEST_STATUS=0\n\nXIRI_378fbc9ee5ae4cba859242a95d145eec_RC=0\nxiri-indy# ",
+            "status": 0
+          },
+          {
+            "iteration": 9,
+            "png_sha256": "b6fb26793a3bedefdacb0aca862dd735bc6933ad5185a732d0edceb92774df71",
+            "output": "./click-stop 300 300 >stop-9.log 2>&1; rc=$?; echo STOP_TEST_STATUS=$ \brc; xiri_rc=$?; printf '\\nXIRI_37c660dc53d74bf595b71d31bab60dc5_RC=%s\\n' \"$xiri_ \brc\"\nSTOP_TEST_STATUS=0\n\nXIRI_37c660dc53d74bf595b71d31bab60dc5_RC=0\nxiri-indy# ",
+            "status": 0
+          },
+          {
+            "iteration": 10,
+            "png_sha256": "b6fb26793a3bedefdacb0aca862dd735bc6933ad5185a732d0edceb92774df71",
+            "output": "./click-stop 300 300 >stop-10.log 2>&1; rc=$?; echo STOP_TEST_STATUS= \b$rc; xiri_rc=$?; printf '\\nXIRI_a0d944aceda946608987e5c69104420d_RC=%s\\n' \"$xiri \b_rc\"\nSTOP_TEST_STATUS=0\n\nXIRI_a0d944aceda946608987e5c69104420d_RC=0\nxiri-indy# ",
+            "status": 0
+          },
+          {
+            "iteration": 11,
+            "png_sha256": "b6fb26793a3bedefdacb0aca862dd735bc6933ad5185a732d0edceb92774df71",
+            "output": "./click-stop 300 300 >stop-11.log 2>&1; rc=$?; echo STOP_TEST_STATUS= \b$rc; xiri_rc=$?; printf '\\nXIRI_16025ebf5e8d41ef82c76fe8810d0765_RC=%s\\n' \"$xiri \b_rc\"\nSTOP_TEST_STATUS=0\n\nXIRI_16025ebf5e8d41ef82c76fe8810d0765_RC=0\nxiri-indy# ",
+            "status": 0
+          },
+          {
+            "iteration": 12,
+            "png_sha256": "b6fb26793a3bedefdacb0aca862dd735bc6933ad5185a732d0edceb92774df71",
+            "output": "./click-stop 300 300 >stop-12.log 2>&1; rc=$?; echo STOP_TEST_STATUS= \b$rc; xiri_rc=$?; printf '\\nXIRI_306e0481b1fa4483b7cb29d2baa3fdab_RC=%s\\n' \"$xiri \b_rc\"\n[1] + Suspended (signal)      ./click-stop 300 300 >stop-12.log 2>&1\nSTOP_TEST_STATUS=145\n\nXIRI_306e0481b1fa4483b7cb29d2baa3fdab_RC=0\nxiri-indy# ",
+            "status": 145
+          }
+        ],
+        "shell_flags": "set -m; echo FLAGS=$-; xiri_rc=$?; printf '\\nXIRI_615f50b56aba44b080b \b9e5e8da07b224_RC=%s\\n' \"$xiri_rc\"\nFLAGS=EiLlms\n\nXIRI_615f50b56aba44b080b9e5e8da07b224_RC=0\nxiri-indy# ",
+        "error": "invalid literal for int() with base 10: ''"
+      }
+    }
+  },
+  "direct_clicks": "REPEAT=1 STATUS=0\nREPEAT=2 STATUS=0\nREPEAT=3 STATUS=0\nREPEAT=4 STATUS=0\nREPEAT=5 STATUS=0\nREPEAT=6 STATUS=0\nREPEAT=7 STATUS=0\nREPEAT=8 STATUS=0\nREPEAT=9 STATUS=0\nREPEAT=10 STATUS=0\nREPEAT=11 STATUS=0\nREPEAT=12 STATUS=0\nREPEAT=13 STATUS=0\nREPEAT=14 STATUS=0\nREPEAT=15 STATUS=0\nREPEAT=16 STATUS=0\nREPEAT=17 STATUS=0\nREPEAT=18 STATUS=0\nREPEAT=19 STATUS=0\nREPEAT=20 STATUS=0\n",
+  "timeout_responses": {
+    "timeout-state": {
+      "output": "CLICK BEGIN stage=open mono=1415.351955328\nCLICK END stage=open mono=1415.374376419\nCLICK BEGIN stage=motion-sync mono=1415.374541783\nCLICK END stage=motion-sync mono=1415.388360995\nCLICK BEGIN stage=button-sync mono=1415.593645237\nCLICK_TIMEOUT see last BEGIN stage\n1313 2643 Ss   select  1:09.51 /usr/X11R7/bin/Xorg :0 -config /usr/local/share/\n2425    1 S    select  0:11.40 /usr/adobe/Acrobat4.0/bin/acroread.dist (acrorea\n2464 2115 R+   pipe_rd 0:00.03 egrep Xorg|acroread|click|xiri-stability|gnome-t\n[    98.716] (==) Mouse: Emulate3Buttons, Emulate3Timeout: 50\n[    98.717] (**) Mouse: ZAxisMapping: buttons 4 and 5\n[    98.718] (**) Mouse: Buttons: 9\n[    98.719] (II) XINPUT: Adding extended input device \"Mouse\" (type: MOUSE)\n[    98.724] (**) Mouse: (accel) keeping acceleration scheme 1\n[    98.724] (**) Mouse: (accel) acceleration profile 0\n[    98.725] (**) Mouse: (accel) acceleration factor: 2.000\n[    98.725] (**) Mouse: (accel) acceleration threshold: 4\n/usr/bin/gdb\n/usr/bin/ktrace\n"
+    },
+    "server-query": {
+      "output": "/tmp/xiri-stability/windows >post-timeout-windows.log 2>&1; rc=$?; ec \bho QUERY_STATUS=$rc; head -15 post-timeout-windows.log; xiri_rc=$?; printf '\\nXI \bRI_bdd58afb5b214b23b2f47844ba08682d_RC=%s\\n' \"$xiri_rc\"\nQUERY_STATUS=0\nWINDOW id=40004c width=10 height=10 name=3444776d class=3444576d instance=3444776d\nWINDOW id=a00009 width=180 height=180 name=78636c6f636b class=58436c6f636b instance=78636c6f636b\nWINDOW id=e00004 width=1006 height=614 name=786d61686a6f6e6767 class=584d61686a6f6e6767 instance=786d61686a6f6e6767\nWINDOW id=c0002c width=103 height=158 name=546f6f6c6368657374 class=546f6f6c6368657374 instance=746f6f6c6368657374\nWINDOW id=1000005 width=663 height=360 name=77696e7465726d class=58577368 instance=77696e7465726d\nWINDOW id=140006b width=900 height=500 name=49636f6e20436174616c6f673a204170706c69636174696f6e732028506167652033206f6620313829 class=49636f6e436174616c6f67 instance=49636f6e436174616c6f67\nWINDOW id=1800155 width=800 height=600 name=786972692d6163726f6261742d746573742e706466 class=4163726f52656164 instance=646f63756d656e745368656c6c\n\nXIRI_bdd58afb5b214b23b2f47844ba08682d_RC=0\nxiri-indy# "
+    },
+    "repeat-trace": {
+      "output": "STATUS=0\nCLICK BEGIN stage=open mono=1685.928412267\nCLICK END stage=open mono=1685.960887509\nCLICK BEGIN stage=motion-sync mono=1685.961099933\nCLICK END stage=motion-sync mono=1685.971576600\nCLICK BEGIN stage=button-sync mono=1686.175475054\nCLICK END stage=button-sync mono=1686.290257388\nCLICK BEGIN stage=close mono=1686.290492388\nCLICK END stage=close mono=1686.293841297\n  2550   2550 click-trace RET   _lwp_self 0, 2550/0x9f6\n  2550   2550 click-trace CALL  _lwp_self\n  2550   2550 click-trace RET   _lwp_self 0, 2550/0x9f6\n  2550   2550 click-trace CALL  _lwp_self\n  2550   2550 click-trace RET   _lwp_self 0, 2550/0x9f6\n  2550   2550 click-trace CALL  _lwp_self\n  2550   2550 click-trace RET   _lwp_self 0, 2550/0x9f6\n  2550   2550 click-trace CALL  _lwp_self\n  2550   2550 click-trace RET   _lwp_self 0, 2550/0x9f6\n  2550   2550 click-trace CALL  netbsd32___sigprocmask14(0,3,0,0x7fff7a08,0,0)\n  2550   2550 click-trace RET   netbsd32___sigprocmask14 0\n  2550   2550 click-trace CALL  _lwp_self\n  2550   2550 click-trace RET   _lwp_self 0, 2550/0x9f6\n  2550   2550 click-trace CALL  netbsd32___sigprocmask14(0,1,0,0x7fff7910,0,0x7fff7a08)\n  2550   2550 click-trace RET   netbsd32___sigprocmask14 0\n  2550   2550 click-trace CALL  netbsd32___sigprocmask14(0,3,0,0x7fff7a08,0,0)\n  2550   2550 click-trace RET   netbsd32___sigprocmask14 0\n  2550   2550 click-trace CALL  netbsd32___sysctl(0,0x784948d0,0,2,0,0x78516be0,0,0x7fff790c,0,0,0,0)\n  2550   2550 click-trace RET   netbsd32___sysctl 0\n  2550   2550 click-trace CALL  netbsd32___sysctl(0,0x7fff7908,0,2,0,0x7fff7900,0,0x7fff7904,0,0,0,0)\n  2550   2550 click-trace RET   netbsd32___sysctl 0\n  2550   2550 click-trace CALL  netbsd32_rasctl(0,0x783e6510,0,0x14,0,0)\n  2550   2550 click-trace RET   netbsd32_rasctl 0\n  2550   2550 click-trace CALL  netbsd32_rasctl(0,0x783e51b0,0,0x18,0,0)\n  2550   2550 click-trace RET   netbsd32_rasctl 0\n  2550   2550 click-trace CALL  netbsd32_rasctl(0,0x783e5190,0,0x18,0,0)\n  2550   2550 click-trace RET   netbsd32_rasctl 0\n  2550   2550 click-trace CALL  _lwp_self\n  2550   2550 click-trace RET   _lwp_self 0, 2550/0x9f6\n  2550   2550 click-trace CALL  netbsd32___sigprocmask14(0,1,0,0x7fff7910,0,0x7fff7a08)\n  2550   2550 click-trace RET   netbsd32___sigprocmask14 0\n  2550   2550 click-trace CALL  netbsd32___sigprocmask14(0,3,0,0x7fff7a08,0,0)\n  2550   2550 click-trace RET   netbsd32___sigprocmask14 0\n  2550   2550 click-trace CALL  netbsd32_readlink(0,0x78489528,0,0x7fff74d8,0,0x400)\n  2550   2550 click-trace NAMI  \"/etc/malloc.conf\"\n  2550   2550 click-trace RET   netbsd32_readlink -1 errno 2 No such file or directory\n  2550   2550 click-trace CALL  issetugid\n  2550   2550 click-trace RET   issetugid 0\n  2550   2550 click-trace CALL  netbsd32___sysctl(0,0x7fff6438,0,2,0,0x78517b90,0,0x7fff6434,0,0,0,0)\n  2550   2550 click-trace RET   netbsd32___sysctl 0\n  2550   2550 click-trace CALL  netbsd32_mmap(0,0,PROT_NONE,0x4000<FILE,ALIGN=NONE>,0,3,0,0xe001002,0xffffffff,0xffffffff,0,0,0,0)\n  2550   2550 click-trace RET   netbsd32_mmap 0, 2018754560/0x7853c000\n  2550   2550 click-trace CALL  netbsd32_madvise(0,0x7853c000,0,0x4000,0,6)\n  2550   2550 click-trace RET   netbsd32_madvise 0\n  2550   2550 click-trace CALL  netbsd32_munmap(0,0x7853c000,0,0x4000)\n  2550   2550 click-trace RET   netbsd32_munmap 0\n  2550   2550 click-trace CALL  netbsd32_mmap(0,0,PROT_NONE,0x200000<FILE,ALIGN=NONE>,0,3,0,0xe001002,0xffffffff,0xffffffff,0,0,0,0)\n  2550   2550 click-trace RET   netbsd32_mmap 0, 2013003776/0x77fc0000\n  2550   2550 click-trace CALL  netbsd32_munmap(0,0x77fc0000,0,0x200000)\n  2550   2550 click-trace RET   netbsd32_munmap 0\n  2550   2550 click-trace CALL  netbsd32_mmap(0,0,PROT_NONE,0x3fe000<FILE,STACK,ALIGN=NONE>,0,3,0,0x15001002,0xffffffff,0xffffffff,0,0,0,0)\n  2550   2550 click-trace RET   netbsd32_mmap 0, 2009071616/0x77c00000\n  2550   2550 click-trace CALL  netbsd32_munmap(0,0x77e00000,0,0x1fe000)\n  2550   2550 click-trace RET   netbsd32_munmap 0\n  2550   2550 click-trace CALL  netbsd32_break(0,0x411"
+    },
+    "capture-timeout-state": {
+      "output": "CLICK BEGIN stage=open mono=1846.547787417\nCLICK END stage=open mono=1846.572287296\nCLICK BEGIN stage=motion-sync mono=1846.572457296\nCLICK END stage=motion-sync mono=1846.579905387\nCLICK BEGIN stage=button-sync mono=1846.783931296\nCLICK_TIMEOUT see last BEGIN stage\n/usr/X11R7/bin/Xorg: setuid ELF 32-bit MSB pie executable, MIPS, MIPS-I version 1 (SYSV), dynamically linked, interpreter /usr/libexec/ld.elf_so, for NetBSD 11.0, not stripped\n001411e8 T ClientSleepUntil\n002f3f44 b grabClient\n002f3f40 b grabState\n002f697c b pPending\n"
+    },
+    "stopped-pid": {
+      "output": "jobs -l; ps -ax -o pid,ppid,stat,wchan,args | egrep \"click-stop|click \b-pause|Xorg|gdb\"; cat stop-12.log; xiri_rc=$?; printf '\\nXIRI_d73244a6f67143e7a4 \b7858a55ac7bfc2_RC=%s\\n' \"$xiri_rc\"\n[1] + 6069 Suspended (signal) ./click-stop 300 300 >stop-12.log 2>&1\n1313 2643 Ss   select  /usr/X11R7/bin/Xorg :0 -config /usr/local/share/xiri/xor\n6004  340 R+   -       egrep click-stop|click-pause|Xorg|gdb \n6069  340 T    -       ./click-stop 300 300 \nCLICK BEGIN stage=open mono=2566.892246870\nCLICK END stage=open mono=2566.916062839\nCLICK BEGIN stage=motion-sync mono=2566.916237779\nCLICK END stage=motion-sync mono=2566.923921870\nCLICK BEGIN stage=button-sync mono=2567.125804506\nCLICK_TIMEOUT see last BEGIN stage\n\nXIRI_d73244a6f67143e7a47858a55ac7bfc2_RC=0\nxiri-indy# "
+    },
+    "stopped-xserver": {
+      "output": "GDB_STATUS=139\n\n\nFatal signal: Segmentation fault\n----- Backtrace -----\n0x32b21b _Z22gdb_internal_backtracev\n0x3277d3 _ZL19handle_fatal_signali\n0x327a47 _ZL14handle_sigsegvi\n0x78123713 ???\n0x0 ???\n---------------------\nA fatal error internal to GDB has been detected, further\ndebugging is not possible.  GDB will now terminate.\n\nThis is a bug, please report it.  For instructions, see:\n<https://www.gnu.org/software/gdb/bugs/>.\n\n"
+    },
+    "final-debug-state": {
+      "output": "1313 2643 Ss   select  /usr/X11R7/bin/Xorg \n6069  340 T    -       ./click-stop \nUSER     CMD          PID   FD  MOUNT         INUM MODE         SZ|DV R/W\nCLICK BEGIN stage=open mono=2566.892246870\nCLICK END stage=open mono=2566.916062839\nCLICK BEGIN stage=motion-sync mono=2566.916237779\nCLICK END stage=motion-sync mono=2566.923921870\nCLICK BEGIN stage=button-sync mono=2567.125804506\nCLICK_TIMEOUT see last BEGIN stage\n3c85682a8f91087e4f64555f6df16e52fc6ea6b6c6cbfe74cd1a22da97484ebd\ne014ec398d51d30b91fb5018095b42071768e8bec34aeab4008766de4378a35f\n203ec9f176a7c125ab17be5985fd5df5a48a5df80c2a113bd0e087c1d5fc8ae9\ntcp        0      0  127.0.0.1.65498        127.0.0.1.1021         ESTABLISHED\ntcp        0      0  127.0.0.1.1021         127.0.0.1.65500        ESTABLISHED\ntcp        0      0  127.0.0.1.65500        127.0.0.1.1021         ESTABLISHED\ntcp        0      0  127.0.0.1.6000         127.0.0.1.65502        ESTABLISHED\ntcp        0      0  127.0.0.1.65502        127.0.0.1.6000         ESTABLISHED\ntcp        0      0  127.0.0.1.6000         127.0.0.1.65503        ESTABLISHED\ntcp        0      0  127.0.0.1.65503        127.0.0.1.6000         ESTABLISHED\ntcp        0      0  127.0.0.1.6000         127.0.0.1.65504        ESTABLISHED\ntcp        0      0  127.0.0.1.65504        127.0.0.1.6000         ESTABLISHED\ntcp        0      0  127.0.0.1.6000         127.0.0.1.65505        ESTABLISHED\ntcp        0      0  127.0.0.1.65505        127.0.0.1.6000         ESTABLISHED\ntcp        0      0  127.0.0.1.6000         127.0.0.1.65506        ESTABLISHED\ntcp        0      0  127.0.0.1.65506        127.0.0.1.6000         ESTABLISHED\ntcp        0      0  127.0.0.1.6000         127.0.0.1.65507        ESTABLISHED\ntcp        0      0  127.0.0.1.65507        127.0.0.1.6000         ESTABLISHED\ntcp        0      0  127.0.0.1.6000         127.0.0.1.65512        ESTABLISHED\ntcp        0      0  127.0.0.1.65512        127.0.0.1.6000         ESTABLISHED\ntcp        0      0  *.6000                 *.*                    LISTEN\ntcp        0      0  127.0.0.1.1021         *.*                    LISTEN\ntcp        0      0  127.0.0.1.111          *.*                    LISTEN\nudp        0      0  *.1023                 *.*                   \nudp        0      0  127.0.0.1.111          *.*                   \nudp        0      0  *.*                    *.*                   \nudp        0      0  *.68                   *.*                   \nudp        0      0  *.*                    *.*                   \n"
+    },
+    "procfs-state": {
+      "output": "procfs on /proc type procfs (local)\ndr-xr-xr-x  1 root  wheel  512 Nov  4 21:22 /proc\ndr-xr-xr-x  2 root  wheel  512 Nov  4 21:22 /proc/1313\n0x10000 0x2e4000 r-x rwx COW NC 1 0 0\n0x2f4000 0x302000 rw- rwx COW NNC 1 0 0\n0x302000 0x30c000 rw- rwx COW NNC 1 0 0\n0x747e4000 0x748a8000 rw- rwx COW NNC 1 0 0\n0x748a8000 0x74a10000 rw- rwx COW NNC 1 0 0\n0x74a10000 0x74ab4000 rw- rwx COW NNC 1 0 0\n0x74b0c000 0x74be8000 rw- rwx COW NNC 1 0 0\n0x74be8000 0x74bf0000 rw- rwx COW NNC 1 0 0\n0x74c18000 0x74c24000 rw- rwx COW NNC 1 0 0\n0x74c38000 0x74c4c000 rw- rwx COW NNC 1 0 0\n0x74c4c000 0x74c74000 rw- rwx COW NNC 1 0 0\n0x74c90000 0x74e3c000 rw- rwx COW NNC 1 0 0\n0x74e3c000 0x74fc0000 rw- rwx COW NNC 1 0 0\n0x74fc0000 0x75058000 rw- rwx COW NNC 1 0 0\n0x7505c000 0x75060000 rw- rwx COW NNC 1 0 0\n1313 Ss   select  /usr/X11R7/bin/Xorg \n6069 T    -       ./click-stop \n"
+    },
+    "xserver-memory": {
+      "output": "\nElf file type is DYN (Position-Independent Executable file)\nEntry point 0x37ae0\nThere are 10 program headers, starting at offset 52\n\nProgram Headers:\n  Type           Offset   VirtAddr   PhysAddr   FileSiz MemSiz  Flg Align\n  PHDR           0x000034 0x00000034 0x00000034 0x00140 0x00140 R   0x4\n  INTERP         0x000174 0x00000174 0x00000174 0x00017 0x00017 R   0x1\n      [Requesting program interpreter: /usr/libexec/ld.elf_so]\n  ABIFLAGS       0x0001b8 0x000001b8 0x000001b8 0x00018 0x00018 R   0x8\n  REGINFO        0x0001d0 0x000001d0 0x000001d0 0x00018 0x00018 R   0x4\n  LOAD           0x000000 0x00000000 0x00000000 0x2d3350 0x2d3350 R E 0x10000\n  LOAD           0x2d4000 0x002e4000 0x002e4000 0x0e11c 0x16e1c RW  0x10000\n  DYNAMIC        0x0001e8 0x000001e8 0x000001e8 0x00160 0x00160 R   0x4\n002f6974 b BlockHandlerRegistered\n00141074 t SertafiedBlockHandler\n00140e50 t SertafiedDelete\n002f6970 b SertafiedGeneration\n002f6978 b SertafiedResType\n00140f38 t SertafiedWakeupHandler\n002f216c B currentTime\n002f3f44 b grabClient\n002f3f40 b grabState\n002f697c b pPending\nGRAB_WORDS\n                00000000        77779cc0        00000000        00000000\n                0000004f        7596a7d0        00000000        00000000\nPENDING_WORDS\n                00000000        0000001e        0000001d        0000004c\n                00000000        00000000        00000000        00000000\n"
+    },
+    "release-debug-job": {
+      "output": "kill -KILL 6069; wait 6069; echo DEBUG_JOB_WAIT=$?; if kill -0 6069 2 \b>/dev/null; then echo DEBUG_JOB_REMAINS; else echo DEBUG_JOB_GONE; fi; /usr/loca \bl/libexec/xiri/x11-check ready; xiri_rc=$?; printf '\\nXIRI_35e849b4adc3492eb99bc \b7e0c2840547_RC=%s\\n' \"$xiri_rc\"\nDEBUG_JOB_WAIT=127\nDEBUG_JOB_REMAINS\n[1]   Killed                  ./click-stop 300 300 >stop-12.log 2>&1\n\nXIRI_35e849b4adc3492eb99bc7e0c2840547_RC=0\nxiri-indy# "
+    }
+  },
+  "source_reading": {
+    "Xext/xtest.c": {
+      "url": "https://raw.githubusercontent.com/NetBSD/xsrc/b2f7e3892002986f53e61cb0540e281fcbfab335/external/mit/xorg-server.old/dist/Xext/xtest.c",
+      "sha256": "58e80188cfb7bc5d47959673d16d2574d3a52ea244976e67f02da7bccf7f0454"
+    },
+    "dix/dixutils.c": {
+      "url": "https://raw.githubusercontent.com/NetBSD/xsrc/b2f7e3892002986f53e61cb0540e281fcbfab335/external/mit/xorg-server.old/dist/dix/dixutils.c",
+      "sha256": "9c9c7beb70eb738479a1ea6cbcdade975d8f0c45e72a67a4109310e5e45405f8"
+    },
+    "dix/dispatch.c": {
+      "url": "https://raw.githubusercontent.com/NetBSD/xsrc/b2f7e3892002986f53e61cb0540e281fcbfab335/external/mit/xorg-server.old/dist/dix/dispatch.c",
+      "sha256": "8388d025803617f9dd129122045d4076508875907635fd8727771152babfe35a"
+    },
+    "os/WaitFor.c": {
+      "url": "https://raw.githubusercontent.com/NetBSD/xsrc/b2f7e3892002986f53e61cb0540e281fcbfab335/external/mit/xorg-server.old/dist/os/WaitFor.c",
+      "sha256": "c173906c04f14b842a265d4a121247f3f20c5a9eb3a5afdad2b6c2a79b4bd178"
+    },
+    "Xext/sleepuntil.c": {
+      "url": "https://raw.githubusercontent.com/NetBSD/xsrc/b2f7e3892002986f53e61cb0540e281fcbfab335/external/mit/xorg-server.old/dist/Xext/sleepuntil.c",
+      "sha256": "65f60e17aaed44e0457c2926ecc41d051ebf008dd6f46848e13f88f42e1490b3"
+    }
+  },
+  "screenshots": {
+    "acrobat": {
+      "path": "docs/results/images/2026-11-04-system-stability-image-acrobat.png",
+      "sha256": "34253025e30e7eddd6270879ace514de8bc4a226cecc591b8aee5532ca64c849",
+      "source": ".work/system-stability/boot-25ukabya/apps-acrobat-pdf-5.png"
+    },
+    "timeout": {
+      "path": "docs/results/images/2026-11-04-system-stability-image-timeout.png",
+      "sha256": "b6fb26793a3bedefdacb0aca862dd735bc6933ad5185a732d0edceb92774df71",
+      "source": ".work/system-stability/boot-25ukabya/failure.png"
+    },
+    "gnome": {
+      "path": "docs/results/images/2026-11-04-system-stability-image-gnome.png",
+      "sha256": "1efb78772ec0c909842f7bd5aafe8dc75859f76a2a6cdf632616bd06d267d3c8",
+      "source": ".work/system-stability/boot-25ukabya/apps-gnome-reopened.png"
+    },
+    "typing-focus": {
+      "path": "docs/results/images/2026-11-04-stability-image-typing-focus.png",
+      "sha256": "ad058269c0238b8bfad663c2aa40149445b15999d41653fc8f4ad6a8df4433ec",
+      "source": ".work/system-stability/boot-g__svm0j/failure.png"
+    }
+  },
+  "limits": [
+    "The new CHD passed disk/session acceptance but failed the application focus gate and is not promoted.",
+    "The unmodified timed helper exits 124 twice at button-sync. A foreground diagnostic variant stops at its alarm on repetition 12; the native debugger then crashes. A later procfs read finds grabState=0 and pPending=0, which does not establish their values when the timeout occurred.",
+    "Subsequent successful clicks and diagnostic variants do not turn a failed run into acceptance.",
+    "The native child-control stalls, catalog-batch halt failure and diagnostic GNOME SIGTERM cleanup wait remain unresolved.",
+    "The final one-line GNOME launch avoids the observed focus race by construction; the attempted verification stopped in preliminary cleanup. Exact prior sources are retained.",
+    "Physical hardware, broader PDFs/printing, Type1 metrics and Xft/Render remain unqualified."
+  ],
+  "logs": {
+    "host-tests.log": {
+      "path": ".work/stability-image/host-tests.log",
+      "sha256": "5f9ebc2b0bdf91f42db4ff72f92d2f7facbc856f75628e6fdcb0fffce548a598"
+    },
+    "prepare.log": {
+      "path": ".work/stability-image/prepare.log",
+      "sha256": "163859c4edf7ccc1e35816bc981e9d0dc261ae233a3787ab95aa2390ffc8428a"
+    },
+    "build.log": {
+      "path": ".work/stability-image/build.log",
+      "sha256": "6f7e2de9c84a7b3b0ed60285e9e06e7b004955d84b2f5c295bee704ffa0f66fa"
+    },
+    "xdm.log": {
+      "path": ".work/stability-image/xdm.log",
+      "sha256": "68db7260b9b923da62f7e9d7fcaf182720e153246dbcbc86a531eea4eb3b7fe8"
+    },
+    "replay-baseline.log": {
+      "path": ".work/stability-image/replay-baseline.log",
+      "sha256": "2b0c5fa414b0a6dd1222e412188aec1cf2c2d9224c3ebadd3b2ce39fe9a381d8"
+    },
+    "replay-candidate.log": {
+      "path": ".work/stability-image/replay-candidate.log",
+      "sha256": "e079edf9e863812e7f70a55690f2357a652d34cbf579cc2e94b54a027e0bee50"
+    },
+    "replay-baseline-fixed.log": {
+      "path": ".work/stability-image/replay-baseline-fixed.log",
+      "sha256": "5976bd64018f035145c5f68cc02856f8825fcc803ee05077f4ae0e1154bf7fb2"
+    },
+    "replay-candidate-fixed.log": {
+      "path": ".work/stability-image/replay-candidate-fixed.log",
+      "sha256": "66f83a317f6700d47e49475b7716694bb5d743d7b7e07d989f4747af3c868f31"
+    },
+    "control-continuation.log": {
+      "path": ".work/stability-image/control-continuation.log",
+      "sha256": "76f95197cdce2dd159d636475ec05153e73fe71f8808b84598996c9b8257ad31"
+    },
+    "capture-replay.log": {
+      "path": ".work/stability-image/capture-replay.log",
+      "sha256": "cb729b7eea006ee914be6f978cab8a45801f2b6c74f104293a6b1906f39c5526"
+    },
+    "pause-replay.log": {
+      "path": ".work/stability-image/pause-replay.log",
+      "sha256": "86e4de05f6e827f6d573d67c84143cf37cb9c9f27168a5688a68a42fdb9880e1"
+    },
+    "foreground-pause.log": {
+      "path": ".work/stability-image/foreground-pause.log",
+      "sha256": "56ce9bfa9f9182339e8432469606ad04c441d6a46b90af0e48df1585512034b8"
+    }
+  }
+}

@@ -79,3 +79,43 @@ Each run retains its exact harness and media. The maintained runner's installed
 artifact fields contain only verified hashes; the input bundle pin and candidate
 build ledger remain separate to avoid attributing the replacement core to the
 input image's source revision.
+
+For replacement-image acceptance, `--require-cd9660` also requires every CD
+check to pass without installing a candidate kernel. `--acrobat-replay 6`
+adds a cold-profile GNOME Terminal check (original interactive shell,
+preference save/reopen and normal exits) followed by six catalog-launched
+Acrobat PDF/capture/focus/exit sequences. The first half use
+`click-original.c`, byte-identical to the earlier helper source that timed out;
+the remainder use `click-trace.c` with the same X calls and event delays,
+per-stage monotonic timestamps and an async-safe timeout report. The helper
+runs immediately after the original GL → software capture sequence, before
+any extra guest query. A timeout fails the run and enters the normal CPU,
+kernel and guest-log diagnostics; it is not counted as a successful retry.
+The application-control source is copied into each run beside its harness.
+The replay places Reader at a fixed position before each capture: 4Dwm's
+normal cascading otherwise moves the Open toolbar button under the original
+`300 300` focus coordinate on the fifth launch. It checks that the file dialog
+is no longer viewable and records the document window's geometry. This fixture
+correction preserves the original capture → focus → Quit sequence; it does not
+explain the earlier native helper timeout.
+GNOME launch and PID recording are submitted as one shell line. With two
+typed lines, the newly mapped terminal can take focus while the second line
+is still being entered into winterm. The image report retains that failed
+control and the exact source used by each accepted run.
+
+For example, against a newly packaged image:
+
+```sh
+python3 scripts/probe-system-stability.py --bundle NEW_BUNDLE \
+  --runs 1 --sessions 1 --input-iterations 10 --child-iterations 5 \
+  --require-cd9660 --acrobat-replay 6 --halt-active --debug-failure
+```
+
+These smoke and focus checks complement the full `probe-xiri-xdm.py --winterm`
+image checks. A successful replay does not establish the earlier timeout's
+cause or qualify unrelated applications, larger documents or general fonts.
+The [replacement-image report](../../docs/results/2026-11-04-system-stability-image.md)
+records a failed `button-sync` deadline, a second occurrence in a reduced
+capture/click loop, and the separate stopped-client diagnostics. Disk/session
+checks pass, but the application failure holds image promotion. Preserve the
+failed result and archive; a later successful click is diagnostic only.

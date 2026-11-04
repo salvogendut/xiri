@@ -69,9 +69,13 @@ Individual application repairs are paused for the
 repeatable native input, process-cleanup, login/logout and shutdown diagnostics,
 and fixes a native NetBSD32 CD mount defect that made CD files unreadable to
 ordinary users. The corrected core passes 158 CD ABI checks; the IRIX module
-is unchanged. The selected manual CHD still has the previous core pending
-separate image packaging and qualification. Earlier intermittent stalls remain
-tracked until their causes are reproduced.
+is unchanged. A [replacement CHD](docs/results/2026-11-04-system-stability-image.md)
+now packages that core and passes full-screen xdm, both user desktops,
+rendering, catalog launch and clean shutdown. It remains unpromoted because
+the application replay reproduces a native XTest timeout at button
+synchronization, also seen in a shorter capture-and-click test. `./xiri run`
+retains the preceding image. The timeout's cause and the earlier native
+child-control stalls remain open.
 
 ## Related repositories
 
