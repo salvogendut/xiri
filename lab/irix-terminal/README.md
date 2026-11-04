@@ -1,7 +1,9 @@
-# GNOME Terminal child startup
+# GNOME Terminal and original IRIX shell
 
 The [cycle report](../../docs/results/2026-11-04-irix-terminal.md) records
-the application observations and remaining interactive-terminal limits.
+the initial application observations. The subsequent
+[termios report](../../docs/results/2026-11-04-irix-termios.md) qualifies the
+original IRIX shell's prompt, foreground commands, Ctrl-C, resize and exit.
 This cycle follows the GNOME/gedit Unix-socket work. The original terminal
 first fails at IRIX `socketpair` (1155), before a child exists. After that
 interface works, its child needs the original `gnome-pty-helper`, native PTY
@@ -23,6 +25,8 @@ bytes, verified by their manifests.
 | `rights.c` | One complete legacy descriptor, invalid descriptor/input, unsupported capacities/counts/flags and receive-copyout cleanup |
 | `ptm.c` | Measured I_STR 0x5064 request on `/dev/ptmx`, `/dev/ptc`, ordinary files and invalid descriptors/pointers; bounded unsupported fields |
 | `rights-peer.c` + `native-peer.c` | Independent native SCM_RIGHTS sender: one descriptor, two rejected descriptors, rights-buffer fault and data-buffer fault; verify descriptor counts after every receive |
+| `termios.c` | Four legacy/modern termio/termios families, get/set/drain/flush selectors, flags, controls, rates, descriptor errors and guarded pointer faults |
+| `tty-session.c` | Automatic controlling-terminal acquisition, O_NOCTTY, non-leader open, session/group queries, group setting and descriptor/pointer errors |
 
 `reference.json` retains 240 observations from original IRIX 6.5.22m and
 its clean halt. A preceding broad malformed-rights experiment crashed the
@@ -84,7 +88,97 @@ For the separate native-shell control, select the existing handoff using
 `gnome-terminal --execute /usr/libexec/xiri-shell REPORT`, with a fresh,
 user-writable report pathname. This supplied terminal's `-e` option does not
 split a combined command/argument string. The normal catalog entry still
-uses the original IRIX shell. Distinguish its command-input/exit checks from
-a native prompt and foreground-job resize check; the native handoff does
-not implement foreign termios. The glynx and Midnight Commander launchers
+uses the original IRIX shell. The subsequent termios cycle now verifies that
+shell's interactive behavior separately; the native handoff does not
+implement foreign termios. The glynx and Midnight Commander launchers
 also require the actual `lynx` and `mc` executables and package resources.
+
+## Terminal attributes and session acquisition
+
+Build the newer module in `.work/netbsd-termios-build`, preserving the
+qualified core and earlier module outputs. `termios-build.json` records its
+inputs and artifact hashes. This cycle adds no vendor payload and uses the
+already installed original PTY helper and native-root slave symlink.
+
+```sh
+python3 scripts/build-irix-terminal.py --suite termios --suite tty-session
+python3 scripts/build-irix-module.py --build .work/netbsd-termios-build
+```
+
+Unlike the older single-mode fixtures, `termios` takes four arguments:
+`command fd-kind pointer-kind variant`. The 108 rows in
+[`termios-cases.json`](termios-cases.json) are the exact tested arguments.
+Run each row in all four ABI/trap forms as root and UID/GID 1234, for 864
+observations. Provide a writable `input.txt` in the working directory.
+The fixture allocates and unlocks its own PTY, opens the slave with O_NOCTTY,
+and establishes explicit common settings before the operation under test.
+
+Descriptor kinds are slave (0), master (1), regular file (2), null device
+(3) and invalid descriptor (4). Pointer kinds are valid (0), null (1), high
+address (2), a boundary crossing into an inaccessible page (3), read-only
+(4) and unaligned (5). Variants select baseline settings (0), raw VMIN/VTIME
+(1), alternate flags (2), disabled/changed controls (3), changed rates (4)
+and an ignored legacy line byte (5). Some variants do not change fields in
+every structure; the case list retains those observations explicitly.
+
+Each 1,024-byte record stores the request and identities at words 0–6,
+the target return-register triple at word 26, the target buffer/guard bytes
+at byte 256 and the final modern termios buffer at byte 512. Setup and
+cleanup have separate return triples. The qualifier checks actual outcomes,
+flags, rates, controls, guard bytes and unchanged state after failed setters.
+
+`tty-session` takes a single mode 0–7 and contributes 64 observations. Its
+child attempts setsid and opens the PTY slave; modes exercise acquisition,
+O_NOCTTY, a non-leader, master/bad/file descriptors, a null output pointer
+and an absent foreground group. Native credentials and tty ownership decide
+whether acquisition or group changes are permitted.
+
+On original IRIX, run the ELF directly and save `NAME.out`, `NAME.err` and
+`status-UID.txt` containing `NAME STATUS`. On NetBSD, use the existing
+bounded runner and retain `NAME.log`/`.err`. Attribute names are
+`ABI-FORM-CMDHEX-KIND-POINTER-VARIANT-UID`; session names are
+`ABI-FORM-MODE-UID`. Both archives contain the four matching ELF files at
+their root. Archive the directory itself to avoid IRIX's argument-list limit.
+The compact reference JSON files preserve measured fields and raw-archive
+hashes; the raw local archives remain required by the qualifier.
+
+The disposable original-IRIX reference creates the test account with UID/GID
+1234 and permits that account to open `/dev/ttyq[0-9]*` and `/dev/ttyr[0-9]*`
+by setting those clone-local nodes to mode 0666. This is fixture preparation,
+not a proposed runtime permission policy. The fixture still unlocks each
+allocated master with I_STR/UNLKPT before opening its slave. Initial attempts
+without that unlock returned EACCES and are excluded from the accepted matrix.
+The supplied source image is not edited.
+
+```sh
+python3 scripts/qualify-irix-termios.py \
+  --reference .work/termios-cycle/reference.tar \
+  --native .work/termios-cycle/native-v2.tgz \
+  --reference-run .work/termios-cycle/reference/ci-g28ef6hy \
+  --native-run .work/catalog-cycle/survey-0-0pqvd7q7 \
+  --output termios-result.json
+python3 scripts/qualify-irix-termios.py --sessions \
+  --reference .work/termios-cycle/session-reference.tar \
+  --native .work/termios-cycle/session-native-v2.tgz \
+  --manifest .work/irix-tty-session/probes/manifest.json \
+  --reference-run .work/termios-cycle/reference/ci-g28ef6hy \
+  --native-run .work/catalog-cycle/survey-0-0pqvd7q7 \
+  --output tty-session-result.json
+```
+
+Final qualification requires both clean halts and an unchanged source CHD.
+`--diagnostic` permits a still-running native guest and labels its output
+accordingly. The explicit comparison policies omit only undefined termios
+padding and retained legacy baud bits in modern flags, and allow native
+EPERM where IRIX returns EINVAL for an absent foreground group. Full flags,
+controls and explicit modern rates remain checked.
+
+For the application test, launch the original GNOME Terminal without a shell
+override. Use real X input to check `$-` includes `i`, HOME/cwd, a fresh command
+proof, Ctrl-C, resize and typed `exit`. Compile `interrupt-watch.c` natively
+and run it as a foreground child of the original shell; its report checks
+foreground membership and actual SIGINT delivery. Use the existing
+`lab/irix-winterm-reliability/resize-watch.c` for SIGWINCH. After Ctrl-C, type a
+fresh command: an interactive shell can discard the rest of an interrupted
+compound line. A missing marker from that discarded line is not evidence
+that the shell hung. Keep failed test attempts as diagnostics.

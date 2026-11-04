@@ -49,10 +49,13 @@ is qualified in a disposable guest; it is not yet in the manual GIMP CHD.
 The [terminal follow-up](docs/results/2026-11-04-irix-terminal.md) adds
 socket pairs, legacy descriptor passing and the original GNOME PTY helper.
 GNOME Terminal now starts the original IRIX shell, accepts commands in the
-correct home directory and closes on `exit`. Interactive terminal detection,
-the normal prompt and broader terminal applications still need work.
-An explicit native-shell handoff passes prompt, command, foreground resize
-and normal-exit checks in that original terminal.
+correct home directory and closes on `exit`. The subsequent
+[interactive-shell checks](docs/results/2026-11-04-irix-termios.md) add measured
+terminal attributes and controlling-terminal acquisition to the module.
+The unchanged IRIX shell now shows its prompt, recognizes an interactive
+terminal, runs foreground commands, survives Ctrl-C and delivers resize
+notifications. GNOME preference saving and broader job control remain open.
+These candidate changes are not yet in the manual GIMP CHD.
 
 ## Related repositories
 

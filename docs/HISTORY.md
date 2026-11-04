@@ -5,6 +5,16 @@ status statements describe individual checkpoints and may be superseded by
 later entries. Use the [current README](../README.md), [development guide](DEVELOPMENT.md)
 and [selected image](../lab/irix-installed-desktop/image.json) for current work.
 
+The [2026-11-04 termios cycle](results/2026-11-04-irix-termios.md) adds
+measured terminal attributes and controlling-terminal/session interfaces to
+the module. The original IRIX shell in GNOME Terminal now shows its prompt,
+recognizes an interactive tty, handles foreground Ctrl-C and resize, and
+exits normally in the xiritest home directory. Its 928 paired ABI observations
+cover both supported ABIs and root/non-root operation. GNOME preference
+saving and broader stop/resume job control remain open. Earlier missing-prompt
+observations below describe the preceding module; the manual GIMP CHD remains
+unchanged.
+
 The [2026-11-04 terminal cycle](results/2026-11-04-irix-terminal.md) adds
 socket pairs, one-descriptor legacy Unix transfers and the measured PTY
 master check to the module. With the original helper and native PTY aliases,

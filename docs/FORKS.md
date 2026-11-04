@@ -42,6 +42,22 @@ not repin qualified kernels, emulator binaries, runtime resources or guest disks
 
 ## IRIS upstream updates
 
+The 2026-11-04 interactive-shell cycle fetched
+`https://github.com/techomancer/iris.git` again and confirmed upstream
+`3bcde9f702f0b52fdb296eeda4fe10b26555f3da` is already contained in IRIS
+`xiri` `bd67e65ff159748635dd484adf7fac94a591f84b`. There were no new commits
+to integrate or affected emulator changes to rebuild; the preceding cycle's
+eight stream tests remain the validation for that integration. The outstanding
+NetBSD push through `4cf85855f1ee` also completed. New terminal-attribute work
+uses NetBSD `xiri` and `.work/netbsd-termios-build`, preserving the qualified
+core, pinned lab worktrees and manual CHD. The
+[termios report](results/2026-11-04-irix-termios.md) records its application
+checks and [module provenance](../lab/irix-terminal/termios-build.json).
+NetBSD `xiri` commit `89b8a71e1e4bf8a6e7d3ef3962b40adca08c1e2a` is pushed
+and matches every recorded source hash. Its 928 new paired observations,
+896 existing regressions, original-shell/catalog checks and both-user xdm
+sequence pass; all test guests halt cleanly.
+
 The 2026-11-04 GNOME Terminal cycle fetched upstream
 `3bcde9f702f0b52fdb296eeda4fe10b26555f3da` and merged it into IRIS `xiri`
 as `bd67e65ff159748635dd484adf7fac94a591f84b`, then pushed the merge.

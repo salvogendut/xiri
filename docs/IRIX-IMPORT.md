@@ -323,6 +323,14 @@ database, user profile or package database is copied. The terminal protocol
 also needs module socketpair/descriptor support and native PTY setup; the
 helper alone does not establish working terminal behavior.
 
+The subsequent [interactive-shell cycle](results/2026-11-04-irix-termios.md)
+imports no further runtime payload. It adds module support for the original
+shell's terminal attributes and controlling-terminal setup. Original terminal
+headers were inspected read-only for constants and layout; their hashes are
+recorded in [the lab](../lab/irix-terminal/termios-headers.json), and the headers
+are not redistributed. Independent probes establish behavior on IRIX 6.5.22m.
+The manual CHD remains at the earlier GIMP checkpoint.
+
 The diagnostic seed also contains an older `/emul/irix/etc/passwd` with
 `/tmp/xiri-home` for xiritest and `/root` for root. Those fields are stale:
 the native account and session HOME/cwd are `/usr/people/xiritest`, while

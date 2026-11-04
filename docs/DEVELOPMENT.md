@@ -100,7 +100,9 @@ inventory coverage and raw evidence before the renderer updates the checklist.
 Startup observations remain separate from useful operation and normal exit.
 
 The [terminal lab](../lab/irix-terminal/README.md) supplies paired socketpair,
-legacy descriptor-transfer and PTY-master fixtures. The catalog harness's
+legacy descriptor-transfer, PTY-master, termios and tty-session fixtures.
+The interactive-shell cycle uses the separate `.work/netbsd-termios-build`
+module output, with its source hashes retained beside the fixtures. The catalog harness's
 `--pty-setup` option installs a candidate device script before graphical
 login; it records the source hash and requires setup to succeed. Use a clean
 seed and the module matching its unchanged core. The terminal qualifier

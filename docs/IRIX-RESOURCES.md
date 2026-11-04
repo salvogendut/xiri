@@ -33,6 +33,12 @@ emulation paths and native `/usr/freeware` aliases. Import their complete
 original program/dependency/data trees before judging browser or file-manager
 behavior; a successful terminal wrapper is not a test of those programs.
 
+The [interactive-shell follow-up](results/2026-11-04-irix-termios.md) adds no
+vendor files. It reuses that helper and runtime, with terminal attributes and
+controlling-terminal acquisition supplied by the compatibility module.
+GNOME's preference-save error remains an interface issue to diagnose; this
+cycle does not copy an existing user's `.gnome` settings to hide it.
+
 Other application payload gaps are recorded in the
 [catalog survey](results/2026-11-03-irix-catalog.md) and
 [software notes](IRIX-SOFTWARE.md). Galculator's Fontconfig configuration and

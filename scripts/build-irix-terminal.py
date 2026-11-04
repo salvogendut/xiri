@@ -19,6 +19,8 @@ SUITES = {
     'socketpair': [*range(8), *range(10, 19)],
     'rights': list(range(18)),
     'ptm': list(range(10)),
+    'termios': [],
+    'tty-session': list(range(8)),
     'rights-peer': list(range(4)),
 }
 

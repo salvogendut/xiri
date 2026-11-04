@@ -125,8 +125,14 @@ are both `/usr/people/xiritest`. Typing `exit` removes the window and returns
 status 0; the guard reports all four tracked processes absent. The
 [default-shell PNG](images/2026-11-04-irix-terminal-default.png) shows command
 output, but no shell prompt. Its trace records unsupported TCGETA/TCGETS and
-foreground-group setup, including a failed open following ttyname. Complete
+terminal-session queries, including a failed open following ttyname. Complete
 interactive IRIX termios/job-control support is still required.
+
+Follow-up: the [termios cycle](2026-11-04-irix-termios.md) now qualifies the
+original shell's interactive prompt, Ctrl-C and foreground resize. Selector
+`0x7416` is the terminal session-ID query, not foreground-group setup; the
+older trace's failure occurs before the child replaces its inherited stdin.
+Broader stop/resume job control remains unqualified.
 
 A separate direct launch selects the already maintained native handoff:
 

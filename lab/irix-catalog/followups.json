@@ -24,10 +24,10 @@
     },
     "app-011": {
       "target": "/usr/freeware/bin/gnome-terminal",
-      "label": "Shell commands and catalog launch pass; interactive setup incomplete",
-      "note": "GNOME Terminal now launches from Applications, changes its running icon, accepts original IRIX shell commands in /usr/people/xiritest and closes on typed exit. The original shell has no normal prompt because terminal setup remains incomplete. An explicitly selected native-shell handoff passes prompt, foreground resize and exit checks; the catalog default is unchanged.",
-      "report": "results/2026-11-04-irix-terminal.md",
-      "candidate_module_sha256": "b2ba5ba7ad5a3bae7ed6b4594daac9eddc21c653603d8500f6d16217925033e1"
+      "label": "Interactive original shell and catalog checks pass; preferences incomplete",
+      "note": "Applications double-click launches GNOME Terminal as xiritest with the original IRIX shell, an interactive prompt and HOME/cwd /usr/people/xiritest. Typed commands, foreground Ctrl-C, resize notifications and normal exit pass; the catalog running icon changes and returns to its original appearance. Preference saving still returns ENOSYS, help/shared-memory warnings remain, and broader stop/resume job control is unqualified. These candidate changes are not yet in the manual CHD.",
+      "report": "results/2026-11-04-irix-termios.md",
+      "candidate_module_sha256": "e7d8a4a5e937e304ff7237add2ba2f8de7ba389e57fdb1bc6ffd5fc0db8a9910"
     },
     "app-015": {
       "target": "/usr/freeware/bin/midnight-commander",

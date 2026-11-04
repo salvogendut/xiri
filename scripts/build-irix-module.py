@@ -42,6 +42,7 @@ def main():
     assert re.search(r'^#define\s+MODULAR\b', (config_dir/'opt_modular.h').read_text(), re.M)
     paths = [str(path.relative_to(source)) for path in sorted((source/'sys/compat/irix_o32').glob('*.[ch]'))]
     paths += ['sys/modules/compat_irix_o32/Makefile', 'sys/modules/Makefile',
+              'sys/arch/mips/conf/files.mips',
               'sys/arch/mips/mips/kobj_machdep.c', 'sys/kern/sys_select.c',
               'sys/kern/kern_lwp.c', 'sys/sys/proc.h', 'sys/uvm/uvm_pglist.c']
     result = dict(schema=1, status='built', source=str(source),

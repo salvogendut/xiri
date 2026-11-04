@@ -6,11 +6,16 @@ catalog launches, running-icon feedback, backdrop and desktop icons. The
 IRIX personality now boot-loads as a module on our NetBSD fork. Native
 service and user-session integration lives in [`runtime/`](../runtime/README.md).
 The candidate [terminal interfaces](results/2026-11-04-irix-terminal.md)
-add pathname Unix stream socket pairs and one-descriptor legacy transfers
+add Unix stream socket pairs and one-descriptor legacy transfers
 inside the module, using native socket ownership and cleanup. PTY setup maps
 the emulation slave directory directly to native ptyfs through `/../dev/pts`,
-superseding the earlier nullfs view. General termios/STREAMS support remains
-incomplete; these changes require no new core-kernel hook.
+superseding the earlier nullfs view. The following
+[termios adapter](results/2026-11-04-irix-termios.md) translates measured
+terminal attributes and session/group queries through the native PTY line
+discipline. A foreign session leader can acquire its native PTY slave on
+open, subject to native ownership checks and `O_NOCTTY`. Serial hardware,
+other line disciplines and general STREAMS support remain incomplete;
+these changes require no new core-kernel hook.
 The [execution roadmap](ROADMAP.md) tracks remaining application, desktop
 and deployment work.
 

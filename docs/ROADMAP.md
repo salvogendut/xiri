@@ -73,10 +73,14 @@ The [terminal cycle](results/2026-11-04-irix-terminal.md) traces that generic
 login error through missing socketpair, the absent original PTY helper,
 PTY ownership and libc's master check. The candidate adds one-descriptor
 legacy transfers and reaches the original IRIX shell. Basic typed commands,
-home-directory file creation and `exit` work, but the shell does not yet
-recognize an interactive terminal. Next qualify the measured termios and
-foreground-group interfaces, then repeat glynx/Midnight Commander use;
-do not count their shared terminal startup as application support.
+home-directory file creation and `exit` work. The subsequent
+[termios cycle](results/2026-11-04-irix-termios.md) qualifies 864 attribute
+observations and 64 controlling-terminal/session observations against original
+IRIX. Its original shell recognizes an interactive terminal and passes prompt,
+command, Ctrl-C, foreground resize and normal-exit checks. GNOME preference
+writing and broader stop/resume job control remain open. The glynx and
+Midnight Commander wrappers still need their missing `lynx` and `mc` program
+trees; their shared terminal startup is not application support.
 
 Return to these entries individually, as requested. Use the new startup
 observations to choose the next GNOME interface/resource boundary; separately
