@@ -22,6 +22,17 @@ Preserve their relative layout under `/emul/irix/usr/adobe/Acrobat4.0` and
 record file modes, links and hashes when staging the package. Opening and
 rendering a PDF remains untested.
 
+The [terminal follow-up](results/2026-11-04-irix-terminal.md) imports the
+original n32 `/usr/freeware/sbin/gnome-pty-helper` beneath `/emul/irix`;
+its [ledger](../lab/irix-terminal/resources.json) records the unchanged bytes
+and non-setuid destination mode. GNOME Terminal also needs the module's
+socket-pair/descriptor interfaces and native PTY setup. The existing `glynx`
+and `midnight-commander` files are small launch scripts for `lynx` and `mc`.
+Both underlying executables are absent from the diagnostic guest, at their
+emulation paths and native `/usr/freeware` aliases. Import their complete
+original program/dependency/data trees before judging browser or file-manager
+behavior; a successful terminal wrapper is not a test of those programs.
+
 Other application payload gaps are recorded in the
 [catalog survey](results/2026-11-03-irix-catalog.md) and
 [software notes](IRIX-SOFTWARE.md). Galculator's Fontconfig configuration and

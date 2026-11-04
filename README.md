@@ -46,6 +46,14 @@ overwrites a text document and launches through Freeware with running-icon
 feedback. Preferences and several resources still need work. This follow-up
 is qualified in a disposable guest; it is not yet in the manual GIMP CHD.
 
+The [terminal follow-up](docs/results/2026-11-04-irix-terminal.md) adds
+socket pairs, legacy descriptor passing and the original GNOME PTY helper.
+GNOME Terminal now starts the original IRIX shell, accepts commands in the
+correct home directory and closes on `exit`. Interactive terminal detection,
+the normal prompt and broader terminal applications still need work.
+An explicit native-shell handoff passes prompt, command, foreground resize
+and normal-exit checks in that original terminal.
+
 ## Related repositories
 
 Xiri development uses these sibling checkouts:

@@ -1,0 +1,69 @@
+{
+  "schema": 1,
+  "status": "staged-unqualified",
+  "extraction": "guestfish --ro; mount ro,norecovery",
+  "source_image_manifest_sha256": "79b464ad3856eca2d034f418445860b3d262437f0347ccadedc67e60c8330521",
+  "script_sha256": "298275fc77dededbe2357a1da58468a6cd1f1a5fe1c1cc38a65de738f7fe5d40",
+  "payload_sha256": "d3c7649f5766981f32a221c9860812aef4eaa3e586e2a1f38f612e5cbd869e65",
+  "paths": {
+    "/usr/freeware/sbin/gnome-pty-helper": {
+      "irix_source": "/usr/freeware/sbin/gnome-pty-helper",
+      "canonical_source": "/usr/freeware/sbin/gnome-pty-helper",
+      "netbsd_destination": "/emul/irix/usr/freeware/sbin/gnome-pty-helper",
+      "type": "file",
+      "original_mode": "0o755",
+      "mode": "0o555",
+      "uid": 0,
+      "gid": 0,
+      "bytes": 23120,
+      "sha256": "65bf5d62f33271292b48533e8093f511f47bc069091b6a0da58ad4fc17656612",
+      "elf": {
+        "class": 32,
+        "endian": "big",
+        "machine": 8,
+        "abi": "n32",
+        "type": 2,
+        "flags": "0x20000024",
+        "entry": "0x10001bf4",
+        "interpreter": [
+          "/usr/lib32/libc.so.1"
+        ],
+        "needed": [
+          "libc.so.1"
+        ],
+        "rpath": [
+          "/usr/freeware/lib32"
+        ],
+        "soname": [],
+        "loads": [
+          {
+            "offset": 0,
+            "address": 268435456,
+            "file_bytes": 16384,
+            "memory_bytes": 16384,
+            "flags": 5,
+            "alignment": 16384
+          },
+          {
+            "offset": 16384,
+            "address": 268517376,
+            "file_bytes": 4096,
+            "memory_bytes": 4096,
+            "flags": 6,
+            "alignment": 16384
+          }
+        ],
+        "load_boundaries_8k": true,
+        "liblist": [
+          "libc.so.1"
+        ],
+        "mips_rld_version": 1,
+        "mips_flags": "0x6c11"
+      }
+    }
+  },
+  "limitations": [
+    "Resource presence does not qualify PTY allocation, descriptor passing or shell operation.",
+    "No setuid mode, user preferences or accounting database is imported."
+  ]
+}

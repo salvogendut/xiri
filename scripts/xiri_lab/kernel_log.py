@@ -40,10 +40,13 @@ class KernelLog:
     def halt(self):
         before=self.read()
         self.lab.send('shutdown -h now')
-        deadline=time.monotonic()+120
+        deadline=time.monotonic()+300
         while time.monotonic()<deadline:
-            time.sleep(3)
+            # Reading the ring pauses the guest. Leave enough uninterrupted
+            # execution for rc shutdown hooks and their guest-clock deadlines.
+            time.sleep(10)
             after=self.read()
+            (self.lab.directory/'shutdown-dmesg.txt').write_text(after)
             if after!=before and 'unmounting done' in after[-2048:] and 'halting...' in after[-256:]:
                 self.lab.logged_in=False
                 self.lab.clean_shutdown=True

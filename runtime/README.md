@@ -77,6 +77,15 @@ the same boot. Re-running it during a desktop restart is a no-op. FAM logs to
 daemon outside its PID file. Native rpcbind retains its own standard PID
 file and rc.d lifecycle.
 
+The candidate PTY setup maps both IRIX `/dev/ptc` and `/dev/ptmx` to native
+ptm minor 2, which grants a new slave to the caller. Its `/emul/irix/dev/pts`
+symlink targets `/../dev/pts`: NetBSD's explicit native-root lookup reaches
+the native vnode even from an IRIX process. This replaces the earlier nullfs
+view, whose controlling-terminal vnode could panic during session teardown.
+An already configured ptyfs mount is retained; changing its group/mode still
+requires setup before PTYs are in use. An occupied old mount is never forcibly
+unmounted. The existing native winterm shell handoff remains in place.
+
 Run `xiri-desktop` as root for the existing manual workflow. On a display
 already owned by a login session, run `/usr/local/bin/xiri-session` as
 `xiritest`. The user entry refuses an inaccessible display, a root caller,

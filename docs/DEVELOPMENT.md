@@ -99,6 +99,17 @@ keep interrupted queries and failed halts as diagnostics. The qualifier checks
 inventory coverage and raw evidence before the renderer updates the checklist.
 Startup observations remain separate from useful operation and normal exit.
 
+The [terminal lab](../lab/irix-terminal/README.md) supplies paired socketpair,
+legacy descriptor-transfer and PTY-master fixtures. The catalog harness's
+`--pty-setup` option installs a candidate device script before graphical
+login; it records the source hash and requires setup to succeed. Use a clean
+seed and the module matching its unchanged core. The terminal qualifier
+requires a clean final halt and distinguishes measured IRIX parity from
+explicitly unsupported shapes and native-peer cleanup controls. Kernel-ring
+shutdown polling retains its last observation in `shutdown-dmesg.txt` and
+allows 300 seconds with ten-second intervals between reads, since each read
+pauses the guest.
+
 ## IRIX module development
 
 The [module lab](../lab/irix-module/README.md) provides the separate

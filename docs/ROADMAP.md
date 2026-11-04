@@ -69,6 +69,15 @@ partly blank; Glade opens with OAF/preferences warnings; Gnumeric needs its
 GNOME print fonts; XChat reaches a first-run notice. None is a functional
 pass merely because a window now appears.
 
+The [terminal cycle](results/2026-11-04-irix-terminal.md) traces that generic
+login error through missing socketpair, the absent original PTY helper,
+PTY ownership and libc's master check. The candidate adds one-descriptor
+legacy transfers and reaches the original IRIX shell. Basic typed commands,
+home-directory file creation and `exit` work, but the shell does not yet
+recognize an interactive terminal. Next qualify the measured termios and
+foreground-group interfaces, then repeat glynx/Midnight Commander use;
+do not count their shared terminal startup as application support.
+
 Return to these entries individually, as requested. Use the new startup
 observations to choose the next GNOME interface/resource boundary; separately
 stage Acrobat's complete package and investigate NEdit file creation.

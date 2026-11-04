@@ -17,18 +17,24 @@
     },
     "app-010": {
       "target": "/usr/freeware/bin/glynx",
-      "label": "Terminal login fails in candidate",
-      "note": "The glynx wrapper now opens GNOME Terminal and a login-error dialog. It reports unable to fork: Function not implemented, plus failed Terminal preferences. Trace child/PTY setup before attributing this to the fork syscall itself."
+      "label": "Missing Lynx payload in candidate",
+      "note": "The original glynx wrapper now gets through GNOME Terminal startup and exits quickly. It invokes gnome-terminal -x lynx, but /usr/freeware/bin/lynx is absent from both the imported tree and its native alias. Import the actual browser and package resources before testing it; catalog double-click and browser use remain unqualified.",
+      "report": "results/2026-11-04-irix-terminal.md",
+      "candidate_module_sha256": "b2ba5ba7ad5a3bae7ed6b4594daac9eddc21c653603d8500f6d16217925033e1"
     },
     "app-011": {
       "target": "/usr/freeware/bin/gnome-terminal",
-      "label": "Terminal login fails in candidate",
-      "note": "GNOME Terminal opens with a login-error dialog and no usable shell. It reports unable to fork: Function not implemented, plus failed preferences. The precise unsupported child/PTY setup call remains to diagnose."
+      "label": "Shell commands and catalog launch pass; interactive setup incomplete",
+      "note": "GNOME Terminal now launches from Applications, changes its running icon, accepts original IRIX shell commands in /usr/people/xiritest and closes on typed exit. The original shell has no normal prompt because terminal setup remains incomplete. An explicitly selected native-shell handoff passes prompt, foreground resize and exit checks; the catalog default is unchanged.",
+      "report": "results/2026-11-04-irix-terminal.md",
+      "candidate_module_sha256": "b2ba5ba7ad5a3bae7ed6b4594daac9eddc21c653603d8500f6d16217925033e1"
     },
     "app-015": {
       "target": "/usr/freeware/bin/midnight-commander",
-      "label": "Terminal login fails in candidate",
-      "note": "The Midnight Commander wrapper reaches the same GNOME Terminal login error: unable to fork: Function not implemented. The requested terminal program is not qualified."
+      "label": "Missing Midnight Commander payload in candidate",
+      "note": "The original wrapper now gets through GNOME Terminal startup and exits quickly. It invokes gnome-terminal -x mc, but /usr/freeware/bin/mc is absent from both the imported tree and its native alias. Import the actual file manager and package resources before testing it; catalog double-click and file operations remain unqualified.",
+      "report": "results/2026-11-04-irix-terminal.md",
+      "candidate_module_sha256": "b2ba5ba7ad5a3bae7ed6b4594daac9eddc21c653603d8500f6d16217925033e1"
     },
     "app-078": {
       "target": "/usr/freeware/bin/balsa",

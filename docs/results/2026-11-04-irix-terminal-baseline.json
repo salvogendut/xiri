@@ -1,0 +1,1045 @@
+{
+  "schema": 1,
+  "status": "diagnostic",
+  "scope": "Independent startup observations, not functional application passes",
+  "attempts": {
+    "baseline": {
+      "trace_sha256": "03f1bcae3f116682afd5970ca6345e68f6bf3a3ff06c08fbda6b00f604cc746e",
+      "trace_bytes": 375624,
+      "decoded_sha256": "22026f7ea6765307d589cf8e1d75033685424b38904da30d75c7e089024d64a6",
+      "calls": 1224,
+      "selected_calls": [
+        {
+          "pid": 490,
+          "lwp": 490,
+          "call": {
+            "syscall": 1059,
+            "pc": 235169800,
+            "a0": 235572216,
+            "a1": 235565608,
+            "a2": 235572144,
+            "a3": 115
+          },
+          "paths": [
+            "/emul/irix/usr/freeware/bin/gnome-terminal",
+            "/emul/irix",
+            "/emul/irix/usr/lib32/libc.so.1"
+          ],
+          "result": {
+            "syscall": 1059,
+            "v0": 0,
+            "a3": 2147450864
+          }
+        },
+        {
+          "pid": 490,
+          "lwp": 490,
+          "call": {
+            "syscall": 1155,
+            "pc": 262585360,
+            "a0": 1,
+            "a1": 2,
+            "a2": 0,
+            "a3": 67310312
+          },
+          "result": {
+            "syscall": 1155,
+            "v0": 89,
+            "a3": 1
+          }
+        }
+      ],
+      "errors": [
+        {
+          "syscall": 1000,
+          "error": 89,
+          "count": 1
+        },
+        {
+          "syscall": 1003,
+          "error": 11,
+          "count": 11
+        },
+        {
+          "syscall": 1005,
+          "error": 2,
+          "count": 38
+        },
+        {
+          "syscall": 1005,
+          "error": 17,
+          "count": 1
+        },
+        {
+          "syscall": 1010,
+          "error": 89,
+          "count": 2
+        },
+        {
+          "syscall": 1030,
+          "error": 89,
+          "count": 1
+        },
+        {
+          "syscall": 1040,
+          "error": 22,
+          "count": 2
+        },
+        {
+          "syscall": 1040,
+          "error": 89,
+          "count": 7
+        },
+        {
+          "syscall": 1054,
+          "error": 9,
+          "count": 2
+        },
+        {
+          "syscall": 1054,
+          "error": 89,
+          "count": 10
+        },
+        {
+          "syscall": 1080,
+          "error": 17,
+          "count": 3
+        },
+        {
+          "syscall": 1114,
+          "error": 89,
+          "count": 2
+        },
+        {
+          "syscall": 1153,
+          "error": 89,
+          "count": 2
+        },
+        {
+          "syscall": 1155,
+          "error": 89,
+          "count": 1
+        },
+        {
+          "syscall": 1156,
+          "error": 89,
+          "count": 1
+        },
+        {
+          "syscall": 1158,
+          "error": 2,
+          "count": 50
+        },
+        {
+          "syscall": 1159,
+          "error": 2,
+          "count": 9
+        },
+        {
+          "syscall": 1191,
+          "error": 89,
+          "count": 1
+        },
+        {
+          "syscall": 1203,
+          "error": 89,
+          "count": 4
+        }
+      ],
+      "paths": [
+        "/emul/irix/etc/passwd"
+      ],
+      "observation": "\nGdk-WARNING **: shmget failed: error 89 (Function not implemented)\n\nGnomeUI-WARNING **: Could not open help topics file NULL\nfailure writing /usr/people/xiritest/.gnome/Terminal: Function not implemented\nfailure writing /usr/people/xiritest/.gnome/Terminal: Function not implemented\nError: unable to fork: Function not implemented\nWINDOW id=40004c width=10 height=10 name=3444776d class=3444576d instance=3444776d\nWINDOW id=c00009 width=180 height=180 name=78636c6f636b class=58436c6f636b instance=78636c6f636b\nWINDOW id=e00004 width=1006 height=614 name=786d61686a6f6e6767 class=584d61686a6f6e6767 instance=786d61686a6f6e6767\nWINDOW id=a0002c width=103 height=158 name=546f6f6c6368657374 class=546f6f6c6368657374 instance=746f6f6c6368657374\nWINDOW id=1000005 width=663 height=360 name=77696e7465726d class=58577368 instance=77696e7465726d\nWINDOW id=120006b width=900 height=500 name=49636f6e20436174616c6f673a20416c6961732028506167652031206f6620313829 class=49636f6e436174616c6f67 instance=49636f6e436174616c6f67\nWINDOW id=1800006 width=584 height=368 name=5465726d696e616c class=5465726d696e616c instance=5465726d696e616c2e30\nWINDOW id=180008f width=292 height=151 name=4572726f72 class=476e6f6d652d7465726d696e616c instance=676e6f6d652d7465726d696e616c\n PID PPID  UID  GID STAT    TIME %CPU COMMAND\n   0    0    0    0 DKl  0:01.39  0.4 [system]\n   1    0    0    0 Is   0:00.12  0.0 init \n 192    1    0    0 I    0:00.21  0.0 xconsole \n 251    1    0    0 Is   0:00.18  0.0 /usr/libexec/postfix/master -w \n 321    1    0    0 Is   0:00.01  0.0 /usr/sbin/inetd -l \n 331    1    0    0 Is   0:00.04  0.0 /usr/sbin/cron \n 344    1   35   35 I    0:00.06  0.0 dhcpcd: [manager] [ip4] [ip6] \n 345  344   35   35 I    0:00.01  0.0 dhcpcd: [network proxy] \n 372  344    0    0 I    0:00.06  0.0 dhcpcd: [privileged proxy] \n 382  344   35   35 I    0:00.02  0.0 dhcpcd: [control proxy] \n 416  479 1234 1234 I    0:00.02  0.0 /bin/sh /usr/local/libexec/xiri/desktop-clients.sh /usr/people/xiritest/.xiri/sessions/session.MqFhT3 \n 422  416 1234 1234 S    0:01.32  0.0 /emul/irix/usr/bin/X11/4Dwm \n 431  479 1234 1234 I    0:00.02  0.0 /bin/sh /usr/local/libexec/xiri/desktop-clients.sh /usr/people/xiritest/.xiri/sessions/session.MqFhT3 \n 466 1072 1234 1234 S    0:00.47  0.0 /emul/irix/usr/bin/X11/toolchest /usr/local/share/xiri/toolchest.chestrc \n 467    1    0    0 Is   0:00.05  0.0 /usr/sbin/rpcbind -h 127.0.0.1 \n 479 3709 1234 1234 Is   0:00.12  0.0 /bin/sh /usr/local/libexec/xiri/desktop-clients.sh /usr/people/xiritest/.xiri/sessions/session.MqFhT3 \n 490  491 1234 1234 Ss   0:01.01  5.0 /usr/freeware/bin/gnome-terminal \n 502  479 1234 1234 I    0:00.02  0.0 /bin/sh /usr/local/libexec/xiri/desktop-clients.sh /usr/people/xiritest/.xiri/sessions/session.MqFhT3 \n 505  692 1234 1234 I    0:00.57  0.0 /emul/irix/usr/freeware/bin/xmahjongg \n 692  479 1234 1234 I    0:00.02  0.0 /bin/sh /usr/local/libexec/xiri/desktop-clients.sh /usr/people/xiritest/.xiri/sessions/session.MqFhT3 \n 752    1    0    0 Ss   0:00.20  0.0 /usr/sbin/syslogd -s \n1072  479 1234 1234 I    0:00.02  0.0 /bin/sh /usr/local/libexec/xiri/desktop-clients.sh /usr/people/xiritest/.xiri/sessions/session.MqFhT3 \n1709  479 1234 1234 I    0:00.02  0.0 /bin/sh /usr/local/libexec/xiri/desktop-clients.sh /usr/people/xiritest/.xiri/sessions/session.MqFhT3 \n1983    1 1234 1234 S    0:00.17  0.0 /emul/irix/usr/sbin/xwsh -e /usr/libexec/xiri-shell /usr/people/xiritest/.xiri/sessions/session.MqFhT3/handoff \n2047 2993 1234 1234 I    0:00.07  0.0 fmserv 127.0.0.1:0.0 \n2332    1    0    0 Is   0:00.05  0.0 /usr/X11R7/bin/xdm -server /etc/xiri/xdm/Xservers -resources /etc/xiri/xdm/Xresources \n2675 2332    0    0 Ss   0:15.02  3.0 /usr/X11R7/bin/Xorg :0 -config /usr/local/share/xiri/xorg.conf -noretro -auth /var/db/xdm/authdir/authfiles/A:0-dEjUy1 \n2677  502 1234 1234 S    0:01.87  0.0 /usr/sbin/iconcatalog \n2993  431 1234 1234 I    0:01.50  0.0 /usr/sbin/fm-2993 -b (fm)\n3094 2332    0    0 Is   0:02.97  0.0 xdm: :0 \n3234  251   12   12 I    0:00.49  0.0 pickup -l -t unix -u \n3517  251   12   12 I    0:00.49  0.0 qmgr -l -t unix -u \n3709 3094 1234 1234 Ss   0:02.20  0.0 /usr/local/libexec/xiri/session-guard 0 /bin/sh /usr/local/libexec/xiri/desktop-clients.sh /usr/people/xiritest/.xiri/sessions/session.MqFhT3 \n3944 1709 1234 1234 S    0:00.21  0.0 /emul/irix/usr/bin/X11/xclock \n 585 1983 1234 1234 Is+  0:00.10  0.0 sh -i \n 336 1517    0    0 S    0:02.75  2.2 -sh \n 491 3613 1234 1234 S    0:00.26  0.5 /tmp/xiri-catalog/app-guard 120000 /bin/sh /tmp/xiri-catalog/app.sh /usr/people/xiritest/.xiri-catalog/terminal-start /usr/freeware/bin/gnome-terminal \n 708  336    0    0 O+   0:00.05  0.0 ps -axww -o pid,ppid,uid,gid,stat,time,pcpu,args \n1517    1    0    0 Is   0:00.83  0.0 login \n3613  336    0 1234 S<   0:00.16  0.0 su -l xiritest -c /usr/bin/env LANG=C LC_ALL=C TZ=UTC0 DISPLAY=127.0.0.1:0 XAUTHORITY=/usr/people/xiritest/.Xauthority XIRI_SESSION_STOP_FILE=/usr/people/xiritest/.xiri-catalog/terminal-start/stop /tmp/xiri-catalog/app-guard 120000 /bin/sh /tmp/xiri-catalog/app.sh /usr/people/xiritest/.xiri-catalog/terminal-start /usr/freeware/bin/gnome-terminal \n2229    1 1234 1234 S    0:18.20  0.0 /usr/local/sbin/famd -d -c /etc/xiri/fam.conf -p 391002 \n-rw-r--r--  1 root  wheel  375624 Nov  4 08:26 /tmp/gnome-terminal.ktrace\n",
+      "cleanup": "touch /usr/people/xiritest/.xiri-catalog/terminal-start/stop; wait \"$ \bxiri_terminal_owner\"; cat /usr/people/xiritest/.xiri-catalog/terminal-start/guar \bd; cat /usr/people/xiritest/.xiri-catalog/terminal-start/guard.err; /usr/local/l \bibexec/xiri/x11-check ready; xiri_rc=$?; printf '\\nXIRI_52d603f84017444b93fdfbe0 \b0e180d4d_RC=%s\\n' \"$xiri_rc\"\nOWN pid=490 parent=491\nGUARD pid=490 exit=-1 signal=15 stopped=1 absent=1 valid=1 tracked=1 remaining=0 reason=logout uid=1234 gid=1234 elapsed=102038\n\nXIRI_52d603f84017444b93fdfbe00e180d4d_RC=0\nxiri-indy# "
+    },
+    "candidate-v1": {
+      "trace_sha256": "acd681f68563a09c5ae17495f9be48c8f761021e8149ed3bb043e6b8cbff73b7",
+      "trace_bytes": 298204,
+      "decoded_sha256": "de612d8df359efd8e1e3e7b8e7924fc09d2a620cb7c9f869ef178613db0e2ea3",
+      "calls": 1042,
+      "selected_calls": [
+        {
+          "pid": 2376,
+          "lwp": 2376,
+          "call": {
+            "syscall": 1059,
+            "pc": 235169800,
+            "a0": 235572192,
+            "a1": 235565608,
+            "a2": 235572120,
+            "a3": 115
+          },
+          "paths": [
+            "/emul/irix/usr/freeware/bin/gnome-terminal",
+            "/emul/irix",
+            "/emul/irix/usr/lib32/libc.so.1"
+          ],
+          "result": {
+            "syscall": 1059,
+            "v0": 0,
+            "a3": 2147450864
+          }
+        },
+        {
+          "pid": 2376,
+          "lwp": 2376,
+          "call": {
+            "syscall": 1155,
+            "pc": 262585360,
+            "a0": 1,
+            "a1": 2,
+            "a2": 0,
+            "a3": 67310312
+          },
+          "result": {
+            "syscall": 1155,
+            "v0": 0,
+            "a3": 0
+          }
+        },
+        {
+          "pid": 2376,
+          "lwp": 2376,
+          "call": {
+            "syscall": 1155,
+            "pc": 262585360,
+            "a0": 1,
+            "a1": 2,
+            "a2": 0,
+            "a3": 67310320
+          },
+          "result": {
+            "syscall": 1155,
+            "v0": 0,
+            "a3": 0
+          }
+        },
+        {
+          "pid": 2376,
+          "lwp": 2376,
+          "call": {
+            "syscall": 1002,
+            "pc": 262530836,
+            "a0": 2147449151,
+            "a1": 1,
+            "a2": 0,
+            "a3": 1054308
+          },
+          "result": {
+            "syscall": 1002,
+            "v0": 5672,
+            "a3": 0
+          }
+        },
+        {
+          "pid": 5672,
+          "lwp": 5672,
+          "call": {
+            "syscall": 1059,
+            "pc": 262750508,
+            "a0": 67305552,
+            "a1": 2147449224,
+            "a2": 268645488,
+            "a3": 0
+          },
+          "paths": [
+            "/emul/irix/usr/freeware/sbin/gnome-pty-helper",
+            "/usr/freeware/sbin/gnome-pty-helper"
+          ],
+          "result": {
+            "syscall": 1059,
+            "v0": 2,
+            "a3": 1
+          }
+        }
+      ],
+      "errors": [
+        {
+          "syscall": 1000,
+          "error": 89,
+          "count": 1
+        },
+        {
+          "syscall": 1003,
+          "error": 11,
+          "count": 4
+        },
+        {
+          "syscall": 1004,
+          "error": 32,
+          "count": 1
+        },
+        {
+          "syscall": 1005,
+          "error": 2,
+          "count": 37
+        },
+        {
+          "syscall": 1005,
+          "error": 17,
+          "count": 1
+        },
+        {
+          "syscall": 1006,
+          "error": 9,
+          "count": 2
+        },
+        {
+          "syscall": 1010,
+          "error": 89,
+          "count": 4
+        },
+        {
+          "syscall": 1030,
+          "error": 89,
+          "count": 1
+        },
+        {
+          "syscall": 1040,
+          "error": 22,
+          "count": 2
+        },
+        {
+          "syscall": 1040,
+          "error": 89,
+          "count": 8
+        },
+        {
+          "syscall": 1054,
+          "error": 9,
+          "count": 1
+        },
+        {
+          "syscall": 1054,
+          "error": 89,
+          "count": 10
+        },
+        {
+          "syscall": 1059,
+          "error": 2,
+          "count": 1
+        },
+        {
+          "syscall": 1080,
+          "error": 17,
+          "count": 3
+        },
+        {
+          "syscall": 1114,
+          "error": 89,
+          "count": 2
+        },
+        {
+          "syscall": 1130,
+          "error": 89,
+          "count": 2
+        },
+        {
+          "syscall": 1153,
+          "error": 89,
+          "count": 2
+        },
+        {
+          "syscall": 1156,
+          "error": 89,
+          "count": 1
+        },
+        {
+          "syscall": 1158,
+          "error": 2,
+          "count": 45
+        },
+        {
+          "syscall": 1159,
+          "error": 2,
+          "count": 9
+        },
+        {
+          "syscall": 1170,
+          "error": 22,
+          "count": 1
+        },
+        {
+          "syscall": 1191,
+          "error": 89,
+          "count": 1
+        },
+        {
+          "syscall": 1203,
+          "error": 89,
+          "count": 4
+        }
+      ],
+      "paths": [
+        "/emul/irix/etc/passwd",
+        "/emul/irix/usr/freeware/sbin/gnome-pty-helper",
+        "/usr/freeware/sbin/gnome-pty-helper"
+      ],
+      "observation": "\nGdk-WARNING **: shmget failed: error 89 (Function not implemented)\n\nGnomeUI-WARNING **: Could not open help topics file NULL\nfailure writing /usr/people/xiritest/.gnome/Terminal: Function not implemented\nfailure writing /usr/people/xiritest/.gnome/Terminal: Function not implemented\nError: unable to fork: Error 0\nGdk-ERROR **: X connection to 127.0.0.1:0.0 broken (explicit kill or server shutdown).\nWINDOW id=40004c width=10 height=10 name=3444776d class=3444576d instance=3444776d\nWINDOW id=c00009 width=180 height=180 name=78636c6f636b class=58436c6f636b instance=78636c6f636b\nWINDOW id=a0002c width=103 height=158 name=546f6f6c6368657374 class=546f6f6c6368657374 instance=746f6f6c6368657374\nWINDOW id=e00004 width=1006 height=614 name=786d61686a6f6e6767 class=584d61686a6f6e6767 instance=786d61686a6f6e6767\nWINDOW id=1000005 width=663 height=360 name=77696e7465726d class=58577368 instance=77696e7465726d\nWINDOW id=120006b width=900 height=500 name=49636f6e20436174616c6f673a20416c6961732028506167652031206f6620313829 class=49636f6e436174616c6f67 instance=49636f6e436174616c6f67\n PID PPID  UID  GID STAT    TIME %CPU COMMAND\n   0    0    0    0 DKl  0:01.75  0.0 [system]\n   1    0    0    0 Ss   0:00.14  0.0 init \n 192    1    0    0 I    0:00.21  0.0 xconsole \n 250    1    0    0 Is   0:00.19  0.0 /usr/libexec/postfix/master -w \n 322  250   12   12 I    0:00.47  0.0 qmgr -l -t unix -u \n 326    1    0    0 Is   0:00.03  0.0 /usr/sbin/cron \n 344    1   35   35 I    0:00.05  0.0 dhcpcd: [manager] [ip4] [ip6] \n 345  344   35   35 I    0:00.01  0.0 dhcpcd: [network proxy] \n 372  344    0    0 I    0:00.06  0.0 dhcpcd: [privileged proxy] \n 382  344   35   35 I    0:00.01  0.0 dhcpcd: [control proxy] \n 426 2908 1234 1234 I    0:00.02  0.0 /bin/sh /usr/local/libexec/xiri/desktop-clients.sh /usr/people/xiritest/.xiri/sessions/session.dMFVjI \n 427 2908 1234 1234 I    0:00.02  0.0 /bin/sh /usr/local/libexec/xiri/desktop-clients.sh /usr/people/xiritest/.xiri/sessions/session.dMFVjI \n 431 1068 1234 1234 S    0:00.43  0.0 /emul/irix/usr/bin/X11/toolchest /usr/local/share/xiri/toolchest.chestrc \n 465  692 1234 1234 I    0:00.57  0.0 /emul/irix/usr/freeware/bin/xmahjongg \n 580 3377 1234 1234 I    0:00.07  0.0 fmserv 127.0.0.1:0.0 \n 603    1    0    0 Ss   0:00.21  0.0 /usr/sbin/syslogd -s \n 690  427 1234 1234 S    0:01.89  0.0 /usr/sbin/iconcatalog \n 692 2908 1234 1234 I    0:00.02  0.0 /bin/sh /usr/local/libexec/xiri/desktop-clients.sh /usr/people/xiritest/.xiri/sessions/session.dMFVjI \n 748    1    0    0 Ss   0:00.04  0.0 /usr/sbin/rpcbind -h 127.0.0.1 \n1068 2908 1234 1234 I    0:00.01  0.0 /bin/sh /usr/local/libexec/xiri/desktop-clients.sh /usr/people/xiritest/.xiri/sessions/session.dMFVjI \n2710 3566 1234 1234 S    0:00.31  0.0 /emul/irix/usr/bin/X11/xclock \n2714    1    0    0 Is   0:00.04  0.0 /usr/X11R7/bin/xdm -server /etc/xiri/xdm/Xservers -resources /etc/xiri/xdm/Xresources \n2803 3118 1234 1234 Ss   0:03.71  0.0 /usr/local/libexec/xiri/session-guard 0 /bin/sh /usr/local/libexec/xiri/desktop-clients.sh /usr/people/xiritest/.xiri/sessions/session.dMFVjI \n2908 2803 1234 1234 Is   0:00.10  0.0 /bin/sh /usr/local/libexec/xiri/desktop-clients.sh /usr/people/xiritest/.xiri/sessions/session.dMFVjI \n2909 2714    0    0 Ss   0:15.44  0.0 /usr/X11R7/bin/Xorg :0 -config /usr/local/share/xiri/xorg.conf -noretro -auth /var/db/xdm/authdir/authfiles/A:0-iCoYeI \n2977  250   12   12 I    0:00.46  0.0 pickup -l -t unix -u \n3118 2714    0    0 Is   0:03.05  0.0 xdm: :0 \n3229 2908 1234 1234 I    0:00.02  0.0 /bin/sh /usr/local/libexec/xiri/desktop-clients.sh /usr/people/xiritest/.xiri/sessions/session.dMFVjI \n3297 3229 1234 1234 S    0:01.30  0.0 /emul/irix/usr/bin/X11/4Dwm \n3377  426 1234 1234 I    0:01.56  0.0 /usr/sbin/fm-3377 -b (fm)\n3440    1    0    0 Is   0:00.01  0.0 /usr/sbin/inetd -l \n3566 2908 1234 1234 I    0:00.02  0.0 /bin/sh /usr/local/libexec/xiri/desktop-clients.sh /usr/people/xiritest/.xiri/sessions/session.dMFVjI \n3967    1 1234 1234 S    0:00.17  0.0 /emul/irix/usr/sbin/xwsh -e /usr/libexec/xiri-shell /usr/people/xiritest/.xiri/sessions/session.dMFVjI/handoff \n3689 3967 1234 1234 Is+  0:00.10  0.0 sh -i \n 335 1314    0    0 S    0:03.01  0.3 -sh \n1314    1    0    0 Is   0:00.86  0.0 login \n2295  335    0    0 O+   0:00.06  0.0 ps -axww -o pid,ppid,uid,gid,stat,time,pcpu,args \n2390    1 1234 1234 S    0:36.20 11.2 /usr/local/sbin/famd -d -c /etc/xiri/fam.conf -p 391002 \n-rw-r--r--  1 root  wheel  298204 Nov  4 08:43 /tmp/gnome-terminal.ktrace\n",
+      "cleanup": "touch /usr/people/xiritest/.xiri-catalog/terminal-v1/stop; wait \"$xir \bi_terminal_owner\"; cat /usr/people/xiritest/.xiri-catalog/terminal-v1/guard; cat \b /usr/people/xiritest/.xiri-catalog/terminal-v1/guard.err; /usr/local/libexec/xi \bri/x11-check ready; xiri_rc=$?; printf '\\nXIRI_3d32ba73eeef4a4c98d01c5cfe11c15a_ \bRC=%s\\n' \"$xiri_rc\"\nOWN pid=2376 parent=2369\nOWN pid=5672 parent=2376\nGUARD pid=2376 exit=1 signal=0 stopped=0 absent=1 valid=1 tracked=2 remaining=0 reason=leader-exit uid=1234 gid=1234 elapsed=2177\n\nXIRI_3d32ba73eeef4a4c98d01c5cfe11c15a_RC=0\nxiri-indy# "
+    },
+    "helper-v1": {
+      "trace_sha256": "2854b33017801c2f200038d97bbc8fb006ec78ea9432439c32ba2579f08449a1",
+      "trace_bytes": 336757,
+      "decoded_sha256": "94ade386e55a40a002fb07f89ab4fa7cdc51c3e675baf1473b1f649bbd0a676e",
+      "calls": 1048,
+      "selected_calls": [
+        {
+          "pid": 4917,
+          "lwp": 4917,
+          "call": {
+            "syscall": 1059,
+            "pc": 235169800,
+            "a0": 235572248,
+            "a1": 235565608,
+            "a2": 235572176,
+            "a3": 115
+          },
+          "paths": [
+            "/emul/irix/usr/freeware/bin/gnome-terminal",
+            "/emul/irix",
+            "/emul/irix/usr/lib32/libc.so.1"
+          ],
+          "result": {
+            "syscall": 1059,
+            "v0": 0,
+            "a3": 2147450864
+          }
+        },
+        {
+          "pid": 4917,
+          "lwp": 4917,
+          "call": {
+            "syscall": 1155,
+            "pc": 262585360,
+            "a0": 1,
+            "a1": 2,
+            "a2": 0,
+            "a3": 67310312
+          },
+          "result": {
+            "syscall": 1155,
+            "v0": 0,
+            "a3": 0
+          }
+        },
+        {
+          "pid": 4917,
+          "lwp": 4917,
+          "call": {
+            "syscall": 1155,
+            "pc": 262585360,
+            "a0": 1,
+            "a1": 2,
+            "a2": 0,
+            "a3": 67310320
+          },
+          "result": {
+            "syscall": 1155,
+            "v0": 0,
+            "a3": 0
+          }
+        },
+        {
+          "pid": 4917,
+          "lwp": 4917,
+          "call": {
+            "syscall": 1002,
+            "pc": 262530836,
+            "a0": 2147449151,
+            "a1": 1,
+            "a2": 0,
+            "a3": 1054308
+          },
+          "result": {
+            "syscall": 1002,
+            "v0": 5552,
+            "a3": 0
+          }
+        },
+        {
+          "pid": 5552,
+          "lwp": 5552,
+          "call": {
+            "syscall": 1059,
+            "pc": 262750508,
+            "a0": 67305552,
+            "a1": 2147449224,
+            "a2": 268645488,
+            "a3": 0
+          },
+          "paths": [
+            "/emul/irix/usr/freeware/sbin/gnome-pty-helper",
+            "/emul/irix",
+            "/emul/irix/usr/lib32/libc.so.1"
+          ],
+          "result": {
+            "syscall": 1059,
+            "v0": 0,
+            "a3": 2147450864
+          }
+        },
+        {
+          "pid": 5552,
+          "lwp": 5552,
+          "call": {
+            "syscall": 1124,
+            "pc": 262505872,
+            "a0": 4294967295,
+            "a1": 1234,
+            "a2": 2147450112,
+            "a3": 0
+          },
+          "result": {
+            "syscall": 1124,
+            "v0": 89,
+            "a3": 1
+          }
+        },
+        {
+          "pid": 5552,
+          "lwp": 5552,
+          "call": {
+            "syscall": 1123,
+            "pc": 262505808,
+            "a0": 4294967295,
+            "a1": 1234,
+            "a2": 2147450112,
+            "a3": 1
+          },
+          "result": {
+            "syscall": 1123,
+            "v0": 89,
+            "a3": 1
+          }
+        },
+        {
+          "pid": 5552,
+          "lwp": 5552,
+          "call": {
+            "syscall": 1002,
+            "pc": 262530836,
+            "a0": 2147448815,
+            "a1": 1,
+            "a2": 0,
+            "a3": 1054308
+          },
+          "result": {
+            "syscall": 1002,
+            "v0": 2972,
+            "a3": 0
+          }
+        },
+        {
+          "pid": 2972,
+          "lwp": 2972,
+          "call": {
+            "syscall": 1059,
+            "pc": 262750508,
+            "a0": 263489768,
+            "a1": 2147448888,
+            "a2": 2147450316,
+            "a3": 0
+          },
+          "paths": [
+            "/emul/irix/usr/sbin/mkpts",
+            "/usr/sbin/mkpts"
+          ],
+          "result": {
+            "syscall": 1059,
+            "v0": 2,
+            "a3": 1
+          }
+        },
+        {
+          "pid": 2972,
+          "lwp": 2972,
+          "call": {
+            "syscall": 1124,
+            "pc": 262505872,
+            "a0": 4294967295,
+            "a1": 1234,
+            "a2": 268444472,
+            "a3": 1
+          },
+          "result": {
+            "syscall": 1124,
+            "v0": 89,
+            "a3": 1
+          }
+        },
+        {
+          "pid": 2972,
+          "lwp": 2972,
+          "call": {
+            "syscall": 1123,
+            "pc": 262505808,
+            "a0": 4294967295,
+            "a1": 1234,
+            "a2": 268444472,
+            "a3": 1
+          },
+          "result": {
+            "syscall": 1123,
+            "v0": 89,
+            "a3": 1
+          }
+        }
+      ],
+      "errors": [
+        {
+          "syscall": 1000,
+          "error": 89,
+          "count": 1
+        },
+        {
+          "syscall": 1005,
+          "error": 2,
+          "count": 40
+        },
+        {
+          "syscall": 1005,
+          "error": 17,
+          "count": 1
+        },
+        {
+          "syscall": 1006,
+          "error": 9,
+          "count": 2
+        },
+        {
+          "syscall": 1010,
+          "error": 89,
+          "count": 2
+        },
+        {
+          "syscall": 1015,
+          "error": 1,
+          "count": 1
+        },
+        {
+          "syscall": 1016,
+          "error": 1,
+          "count": 1
+        },
+        {
+          "syscall": 1030,
+          "error": 89,
+          "count": 1
+        },
+        {
+          "syscall": 1040,
+          "error": 22,
+          "count": 3
+        },
+        {
+          "syscall": 1040,
+          "error": 89,
+          "count": 10
+        },
+        {
+          "syscall": 1054,
+          "error": 9,
+          "count": 1
+        },
+        {
+          "syscall": 1054,
+          "error": 89,
+          "count": 11
+        },
+        {
+          "syscall": 1059,
+          "error": 2,
+          "count": 1
+        },
+        {
+          "syscall": 1062,
+          "error": 9,
+          "count": 1
+        },
+        {
+          "syscall": 1080,
+          "error": 17,
+          "count": 4
+        },
+        {
+          "syscall": 1114,
+          "error": 89,
+          "count": 2
+        },
+        {
+          "syscall": 1123,
+          "error": 89,
+          "count": 2
+        },
+        {
+          "syscall": 1124,
+          "error": 89,
+          "count": 2
+        },
+        {
+          "syscall": 1153,
+          "error": 89,
+          "count": 2
+        },
+        {
+          "syscall": 1156,
+          "error": 89,
+          "count": 2
+        },
+        {
+          "syscall": 1158,
+          "error": 2,
+          "count": 42
+        },
+        {
+          "syscall": 1159,
+          "error": 2,
+          "count": 9
+        },
+        {
+          "syscall": 1191,
+          "error": 89,
+          "count": 1
+        },
+        {
+          "syscall": 1203,
+          "error": 89,
+          "count": 6
+        }
+      ],
+      "paths": [
+        "/emul/irix/etc/passwd",
+        "/emul/irix/usr/freeware/sbin/gnome-pty-helper",
+        "/emul/irix/dev/ptmx",
+        "/dev/ptmx",
+        "/emul/irix/dev/ttyq2",
+        "/emul/irix/usr/sbin/mkpts",
+        "/usr/sbin/mkpts"
+      ],
+      "observation": "\nGdk-WARNING **: shmget failed: error 89 (Function not implemented)\n\nGnomeUI-WARNING **: Could not open help topics file NULL\nfailure writing /usr/people/xiritest/.gnome/Terminal: Function not implemented\nfailure writing /usr/people/xiritest/.gnome/Terminal: Function not implemented\nWINDOW id=40004c width=10 height=10 name=3444776d class=3444576d instance=3444776d\nWINDOW id=c00009 width=180 height=180 name=78636c6f636b class=58436c6f636b instance=78636c6f636b\nWINDOW id=a0002c width=103 height=158 name=546f6f6c6368657374 class=546f6f6c6368657374 instance=746f6f6c6368657374\nWINDOW id=e00004 width=1006 height=614 name=786d61686a6f6e6767 class=584d61686a6f6e6767 instance=786d61686a6f6e6767\nWINDOW id=1000005 width=663 height=360 name=77696e7465726d class=58577368 instance=77696e7465726d\nWINDOW id=120006b width=900 height=500 name=49636f6e20436174616c6f673a20416c6961732028506167652031206f6620313829 class=49636f6e436174616c6f67 instance=49636f6e436174616c6f67\nWINDOW id=1800006 width=584 height=368 name=5465726d696e616c class=5465726d696e616c instance=5465726d696e616c2e30\n PID PPID  UID  GID STAT    TIME %CPU COMMAND\n   0    0    0    0 DKl  0:02.27  0.1 [system]\n   1    0    0    0 Is   0:00.14  0.0 init \n 192    1    0    0 I    0:00.21  0.0 xconsole \n 250    1    0    0 Ss   0:00.19  0.0 /usr/libexec/postfix/master -w \n 322  250   12   12 S    0:00.47  0.0 qmgr -l -t unix -u \n 326    1    0    0 Ss   0:00.04  0.0 /usr/sbin/cron \n 344    1   35   35 I    0:00.05  0.0 dhcpcd: [manager] [ip4] [ip6] \n 345  344   35   35 I    0:00.01  0.0 dhcpcd: [network proxy] \n 372  344    0    0 I    0:00.06  0.0 dhcpcd: [privileged proxy] \n 382  344   35   35 I    0:00.01  0.0 dhcpcd: [control proxy] \n 426 2908 1234 1234 I    0:00.02  0.0 /bin/sh /usr/local/libexec/xiri/desktop-clients.sh /usr/people/xiritest/.xiri/sessions/session.dMFVjI \n 427 2908 1234 1234 I    0:00.02  0.0 /bin/sh /usr/local/libexec/xiri/desktop-clients.sh /usr/people/xiritest/.xiri/sessions/session.dMFVjI \n 431 1068 1234 1234 I    0:00.43  0.0 /emul/irix/usr/bin/X11/toolchest /usr/local/share/xiri/toolchest.chestrc \n 465  692 1234 1234 I    0:00.57  0.0 /emul/irix/usr/freeware/bin/xmahjongg \n 580 3377 1234 1234 I    0:00.07  0.0 fmserv 127.0.0.1:0.0 \n 603    1    0    0 Ss   0:00.22  0.0 /usr/sbin/syslogd -s \n 690  427 1234 1234 S    0:01.89  0.0 /usr/sbin/iconcatalog \n 692 2908 1234 1234 I    0:00.02  0.0 /bin/sh /usr/local/libexec/xiri/desktop-clients.sh /usr/people/xiritest/.xiri/sessions/session.dMFVjI \n 748    1    0    0 Ss   0:00.04  0.0 /usr/sbin/rpcbind -h 127.0.0.1 \n1068 2908 1234 1234 I    0:00.01  0.0 /bin/sh /usr/local/libexec/xiri/desktop-clients.sh /usr/people/xiritest/.xiri/sessions/session.dMFVjI \n2710 3566 1234 1234 S    0:00.46  0.0 /emul/irix/usr/bin/X11/xclock \n2714    1    0    0 Is   0:00.04  0.0 /usr/X11R7/bin/xdm -server /etc/xiri/xdm/Xservers -resources /etc/xiri/xdm/Xresources \n2803 3118 1234 1234 Ss   0:05.93  0.0 /usr/local/libexec/xiri/session-guard 0 /bin/sh /usr/local/libexec/xiri/desktop-clients.sh /usr/people/xiritest/.xiri/sessions/session.dMFVjI \n2908 2803 1234 1234 Is   0:00.10  0.0 /bin/sh /usr/local/libexec/xiri/desktop-clients.sh /usr/people/xiritest/.xiri/sessions/session.dMFVjI \n2909 2714    0    0 Rs   0:16.10  1.9 /usr/X11R7/bin/Xorg :0 -config /usr/local/share/xiri/xorg.conf -noretro -auth /var/db/xdm/authdir/authfiles/A:0-iCoYeI \n2972 5552 1234 1234 S    0:00.00  0.0 gnome-pty-helper \n2977  250   12   12 S    0:00.46  0.0 pickup -l -t unix -u \n3118 2714    0    0 Is   0:03.05  0.0 xdm: :0 \n3229 2908 1234 1234 I    0:00.02  0.0 /bin/sh /usr/local/libexec/xiri/desktop-clients.sh /usr/people/xiritest/.xiri/sessions/session.dMFVjI \n3297 3229 1234 1234 S    0:01.32  0.0 /emul/irix/usr/bin/X11/4Dwm \n3377  426 1234 1234 I    0:01.56  0.0 /usr/sbin/fm-3377 -b (fm)\n3440    1    0    0 Is   0:00.01  0.0 /usr/sbin/inetd -l \n3566 2908 1234 1234 I    0:00.02  0.0 /bin/sh /usr/local/libexec/xiri/desktop-clients.sh /usr/people/xiritest/.xiri/sessions/session.dMFVjI \n3967    1 1234 1234 I    0:00.17  0.0 /emul/irix/usr/sbin/xwsh -e /usr/libexec/xiri-shell /usr/people/xiritest/.xiri/sessions/session.dMFVjI/handoff \n4917 4915 1234 1234 Ss   0:00.75  2.8 /usr/freeware/bin/gnome-terminal \n5552 4917 1234 1234 S    0:00.03  0.0 gnome-pty-helper \n3689 3967 1234 1234 Is+  0:00.10  0.0 sh -i \n 335 1314    0    0 S    0:04.19  1.3 -sh \n1314    1    0    0 Is   0:00.86  0.0 login \n4915 5109 1234 1234 S    0:00.27  0.3 /tmp/xiri-catalog/app-guard 120000 /bin/sh /tmp/xiri-catalog/app.sh /usr/people/xiritest/.xiri-catalog/terminal-helper-v1 /usr/freeware/bin/gnome-terminal \n5109  335    0 1234 S<   0:00.16  0.0 su -l xiritest -c /usr/bin/env LANG=C LC_ALL=C TZ=UTC0 DISPLAY=127.0.0.1:0 XAUTHORITY=/usr/people/xiritest/.Xauthority XIRI_SESSION_STOP_FILE=/usr/people/xiritest/.xiri-catalog/terminal-helper-v1/stop /tmp/xiri-catalog/app-guard 120000 /bin/sh /tmp/xiri-catalog/app.sh /usr/people/xiritest/.xiri-catalog/terminal-helper-v1 /usr/freeware/bin/gnome-terminal \n5757  335    0    0 O+   0:00.06  0.0 ps -axww -o pid,ppid,uid,gid,stat,time,pcpu,args \n2390    1 1234 1234 S    1:02.82 18.7 /usr/local/sbin/famd -d -c /etc/xiri/fam.conf -p 391002 \n-rw-r--r--  1 root  wheel  336757 Nov  4 08:47 /tmp/gnome-terminal.ktrace\n",
+      "cleanup": "touch /usr/people/xiritest/.xiri-catalog/terminal-helper-v1/stop; wai \bt \"$xiri_terminal_owner\"; cat /usr/people/xiritest/.xiri-catalog/terminal-helper \b-v1/guard; cat /usr/people/xiritest/.xiri-catalog/terminal-helper-v1/guard.err;  \b/usr/local/libexec/xiri/x11-check ready; xiri_rc=$?; printf '\\nXIRI_b2d78eb8e806 \b4ca29495a96753619a56_RC=%s\\n' \"$xiri_rc\"\nOWN pid=4917 parent=4915\nOWN pid=5552 parent=4917\nOWN pid=2972 parent=5552\nGUARD pid=4917 exit=-1 signal=15 stopped=1 absent=1 valid=1 tracked=3 remaining=0 reason=logout uid=1234 gid=1234 elapsed=99093\n\nXIRI_b2d78eb8e8064ca29495a96753619a56_RC=0\nxiri-indy# "
+    },
+    "ptmx-v1": {
+      "trace_sha256": "928c47576561360434f8f35d51c7456d89d8092bda6f2b48db59b630f1577ad2",
+      "trace_bytes": 400311,
+      "decoded_sha256": "5f79b1f49ab6cd56706b6f6761ef500dd43b818a62338f7ca7f81105a33f724f",
+      "calls": 1309,
+      "selected_calls": [
+        {
+          "pid": 2526,
+          "lwp": 2526,
+          "call": {
+            "syscall": 1059,
+            "pc": 235169800,
+            "a0": 235572232,
+            "a1": 235565608,
+            "a2": 235572160,
+            "a3": 115
+          },
+          "paths": [
+            "/emul/irix/usr/freeware/bin/gnome-terminal",
+            "/emul/irix",
+            "/emul/irix/usr/lib32/libc.so.1"
+          ],
+          "result": {
+            "syscall": 1059,
+            "v0": 0,
+            "a3": 2147450864
+          }
+        },
+        {
+          "pid": 2526,
+          "lwp": 2526,
+          "call": {
+            "syscall": 1155,
+            "pc": 262585360,
+            "a0": 1,
+            "a1": 2,
+            "a2": 0,
+            "a3": 67310312
+          },
+          "result": {
+            "syscall": 1155,
+            "v0": 0,
+            "a3": 0
+          }
+        },
+        {
+          "pid": 2526,
+          "lwp": 2526,
+          "call": {
+            "syscall": 1155,
+            "pc": 262585360,
+            "a0": 1,
+            "a1": 2,
+            "a2": 0,
+            "a3": 67310320
+          },
+          "result": {
+            "syscall": 1155,
+            "v0": 0,
+            "a3": 0
+          }
+        },
+        {
+          "pid": 2526,
+          "lwp": 2526,
+          "call": {
+            "syscall": 1002,
+            "pc": 262530836,
+            "a0": 2147449151,
+            "a1": 1,
+            "a2": 0,
+            "a3": 1054308
+          },
+          "result": {
+            "syscall": 1002,
+            "v0": 2527,
+            "a3": 0
+          }
+        },
+        {
+          "pid": 2527,
+          "lwp": 2527,
+          "call": {
+            "syscall": 1059,
+            "pc": 262750508,
+            "a0": 67305552,
+            "a1": 2147449224,
+            "a2": 268645488,
+            "a3": 0
+          },
+          "paths": [
+            "/emul/irix/usr/freeware/sbin/gnome-pty-helper",
+            "/emul/irix",
+            "/emul/irix/usr/lib32/libc.so.1"
+          ],
+          "result": {
+            "syscall": 1059,
+            "v0": 0,
+            "a3": 2147450864
+          }
+        },
+        {
+          "pid": 2527,
+          "lwp": 2527,
+          "call": {
+            "syscall": 1124,
+            "pc": 262505872,
+            "a0": 4294967295,
+            "a1": 1234,
+            "a2": 2147450112,
+            "a3": 0
+          },
+          "result": {
+            "syscall": 1124,
+            "v0": 89,
+            "a3": 1
+          }
+        },
+        {
+          "pid": 2527,
+          "lwp": 2527,
+          "call": {
+            "syscall": 1123,
+            "pc": 262505808,
+            "a0": 4294967295,
+            "a1": 1234,
+            "a2": 2147450112,
+            "a3": 1
+          },
+          "result": {
+            "syscall": 1123,
+            "v0": 89,
+            "a3": 1
+          }
+        },
+        {
+          "pid": 2527,
+          "lwp": 2527,
+          "call": {
+            "syscall": 1054,
+            "pc": 262475332,
+            "a0": 3,
+            "a1": 21256,
+            "a2": 2147449568,
+            "a3": 0
+          },
+          "result": {
+            "syscall": 1054,
+            "v0": 0,
+            "a3": 0
+          }
+        },
+        {
+          "pid": 2527,
+          "lwp": 2527,
+          "call": {
+            "syscall": 1054,
+            "pc": 262475332,
+            "a0": 3,
+            "a1": 21256,
+            "a2": 2147449408,
+            "a3": 1
+          },
+          "result": {
+            "syscall": 1054,
+            "v0": 89,
+            "a3": 1
+          }
+        },
+        {
+          "pid": 2527,
+          "lwp": 2527,
+          "call": {
+            "syscall": 1124,
+            "pc": 262505872,
+            "a0": 4294967295,
+            "a1": 1234,
+            "a2": 268444472,
+            "a3": 1
+          },
+          "result": {
+            "syscall": 1124,
+            "v0": 89,
+            "a3": 1
+          }
+        },
+        {
+          "pid": 2527,
+          "lwp": 2527,
+          "call": {
+            "syscall": 1123,
+            "pc": 262505808,
+            "a0": 4294967295,
+            "a1": 1234,
+            "a2": 268444472,
+            "a3": 1
+          },
+          "result": {
+            "syscall": 1123,
+            "v0": 89,
+            "a3": 1
+          }
+        }
+      ],
+      "errors": [
+        {
+          "syscall": 1000,
+          "error": 89,
+          "count": 1
+        },
+        {
+          "syscall": 1005,
+          "error": 2,
+          "count": 43
+        },
+        {
+          "syscall": 1005,
+          "error": 17,
+          "count": 1
+        },
+        {
+          "syscall": 1006,
+          "error": 9,
+          "count": 2
+        },
+        {
+          "syscall": 1010,
+          "error": 89,
+          "count": 2
+        },
+        {
+          "syscall": 1030,
+          "error": 89,
+          "count": 1
+        },
+        {
+          "syscall": 1040,
+          "error": 22,
+          "count": 3
+        },
+        {
+          "syscall": 1040,
+          "error": 89,
+          "count": 10
+        },
+        {
+          "syscall": 1054,
+          "error": 9,
+          "count": 2
+        },
+        {
+          "syscall": 1054,
+          "error": 89,
+          "count": 12
+        },
+        {
+          "syscall": 1062,
+          "error": 9,
+          "count": 1
+        },
+        {
+          "syscall": 1080,
+          "error": 17,
+          "count": 4
+        },
+        {
+          "syscall": 1114,
+          "error": 89,
+          "count": 2
+        },
+        {
+          "syscall": 1123,
+          "error": 89,
+          "count": 2
+        },
+        {
+          "syscall": 1124,
+          "error": 89,
+          "count": 2
+        },
+        {
+          "syscall": 1153,
+          "error": 89,
+          "count": 2
+        },
+        {
+          "syscall": 1156,
+          "error": 89,
+          "count": 2
+        },
+        {
+          "syscall": 1158,
+          "error": 2,
+          "count": 51
+        },
+        {
+          "syscall": 1159,
+          "error": 2,
+          "count": 9
+        },
+        {
+          "syscall": 1191,
+          "error": 89,
+          "count": 1
+        },
+        {
+          "syscall": 1203,
+          "error": 89,
+          "count": 6
+        }
+      ],
+      "paths": [
+        "/emul/irix/etc/passwd",
+        "/emul/irix/usr/freeware/sbin/gnome-pty-helper",
+        "/emul/irix/dev/ptmx",
+        "/emul/irix/dev/ttyq2",
+        "/emul/irix/dev/pts/2"
+      ],
+      "observation": "\nGdk-WARNING **: shmget failed: error 89 (Function not implemented)\n\nGnomeUI-WARNING **: Could not open help topics file NULL\nfailure writing /usr/people/xiritest/.gnome/Terminal: Function not implemented\nfailure writing /usr/people/xiritest/.gnome/Terminal: Function not implemented\nError: unable to fork: Error 0\nWINDOW id=40004c width=10 height=10 name=3444776d class=3444576d instance=3444776d\nWINDOW id=c00009 width=180 height=180 name=78636c6f636b class=58436c6f636b instance=78636c6f636b\nWINDOW id=a0002c width=103 height=158 name=546f6f6c6368657374 class=546f6f6c6368657374 instance=746f6f6c6368657374\nWINDOW id=e00004 width=1006 height=614 name=786d61686a6f6e6767 class=584d61686a6f6e6767 instance=786d61686a6f6e6767\nWINDOW id=1000005 width=663 height=360 name=77696e7465726d class=58577368 instance=77696e7465726d\nWINDOW id=120006b width=900 height=500 name=49636f6e20436174616c6f673a20416c6961732028506167652031206f6620313829 class=49636f6e436174616c6f67 instance=49636f6e436174616c6f67\nWINDOW id=1800006 width=584 height=368 name=5465726d696e616c class=5465726d696e616c instance=5465726d696e616c2e30\nWINDOW id=180008f width=333 height=215 name=4572726f72 class=476e6f6d652d7465726d696e616c instance=676e6f6d652d7465726d696e616c\n PID PPID  UID  GID STAT    TIME %CPU COMMAND\n   0    0    0    0 DKl  0:02.90  0.4 [system]\n   1    0    0    0 Is   0:00.14  0.0 init \n 192    1    0    0 I    0:00.21  0.0 xconsole \n 250    1    0    0 Is   0:00.20  0.0 /usr/libexec/postfix/master -w \n 322  250   12   12 I    0:00.47  0.0 qmgr -l -t unix -u \n 326    1    0    0 Is   0:00.04  0.0 /usr/sbin/cron \n 344    1   35   35 I    0:00.05  0.0 dhcpcd: [manager] [ip4] [ip6] \n 345  344   35   35 I    0:00.01  0.0 dhcpcd: [network proxy] \n 372  344    0    0 I    0:00.06  0.0 dhcpcd: [privileged proxy] \n 382  344   35   35 I    0:00.01  0.0 dhcpcd: [control proxy] \n 426 2908 1234 1234 I    0:00.02  0.0 /bin/sh /usr/local/libexec/xiri/desktop-clients.sh /usr/people/xiritest/.xiri/sessions/session.dMFVjI \n 427 2908 1234 1234 I    0:00.02  0.0 /bin/sh /usr/local/libexec/xiri/desktop-clients.sh /usr/people/xiritest/.xiri/sessions/session.dMFVjI \n 431 1068 1234 1234 S    0:00.43  0.0 /emul/irix/usr/bin/X11/toolchest /usr/local/share/xiri/toolchest.chestrc \n 465  692 1234 1234 I    0:00.57  0.0 /emul/irix/usr/freeware/bin/xmahjongg \n 580 3377 1234 1234 I    0:00.07  0.0 fmserv 127.0.0.1:0.0 \n 603    1    0    0 Ss   0:00.22  0.0 /usr/sbin/syslogd -s \n 690  427 1234 1234 S    0:01.91  0.0 /usr/sbin/iconcatalog \n 692 2908 1234 1234 I    0:00.02  0.0 /bin/sh /usr/local/libexec/xiri/desktop-clients.sh /usr/people/xiritest/.xiri/sessions/session.dMFVjI \n 748    1    0    0 Ss   0:00.05  0.0 /usr/sbin/rpcbind -h 127.0.0.1 \n1068 2908 1234 1234 I    0:00.01  0.0 /bin/sh /usr/local/libexec/xiri/desktop-clients.sh /usr/people/xiritest/.xiri/sessions/session.dMFVjI \n2526 5165 1234 1234 Ss   0:00.85  4.1 /usr/freeware/bin/gnome-terminal \n2527 2526 1234 1234 S    0:00.03  0.0 gnome-pty-helper \n2710 3566 1234 1234 S    0:00.66  0.0 /emul/irix/usr/bin/X11/xclock \n2714    1    0    0 Is   0:00.04  0.0 /usr/X11R7/bin/xdm -server /etc/xiri/xdm/Xservers -resources /etc/xiri/xdm/Xresources \n2803 3118 1234 1234 Ss   0:08.63  0.0 /usr/local/libexec/xiri/session-guard 0 /bin/sh /usr/local/libexec/xiri/desktop-clients.sh /usr/people/xiritest/.xiri/sessions/session.dMFVjI \n2908 2803 1234 1234 Is   0:00.10  0.0 /bin/sh /usr/local/libexec/xiri/desktop-clients.sh /usr/people/xiritest/.xiri/sessions/session.dMFVjI \n2909 2714    0    0 Ss   0:17.11  0.0 /usr/X11R7/bin/Xorg :0 -config /usr/local/share/xiri/xorg.conf -noretro -auth /var/db/xdm/authdir/authfiles/A:0-iCoYeI \n2977  250   12   12 I    0:00.47  0.0 pickup -l -t unix -u \n3118 2714    0    0 Is   0:03.05  0.0 xdm: :0 \n3229 2908 1234 1234 I    0:00.02  0.0 /bin/sh /usr/local/libexec/xiri/desktop-clients.sh /usr/people/xiritest/.xiri/sessions/session.dMFVjI \n3297 3229 1234 1234 S    0:01.35  0.0 /emul/irix/usr/bin/X11/4Dwm \n3377  426 1234 1234 I    0:01.56  0.0 /usr/sbin/fm-3377 -b (fm)\n3440    1    0    0 Is   0:00.01  0.0 /usr/sbin/inetd -l \n3566 2908 1234 1234 I    0:00.02  0.0 /bin/sh /usr/local/libexec/xiri/desktop-clients.sh /usr/people/xiritest/.xiri/sessions/session.dMFVjI \n3967    1 1234 1234 I    0:00.17  0.0 /emul/irix/usr/sbin/xwsh -e /usr/libexec/xiri-shell /usr/people/xiritest/.xiri/sessions/session.dMFVjI/handoff \n3689 3967 1234 1234 Is+  0:00.10  0.0 sh -i \n 335 1314    0    0 S    0:05.15  0.0 -sh \n1314    1    0    0 Is   0:00.86  0.0 login \n2467  335    0    0 O+   0:00.05  0.0 ps -axww -o pid,ppid,uid,gid,stat,time,pcpu,args \n2512  335    0 1234 S<   0:00.15  0.0 su -l xiritest -c /usr/bin/env LANG=C LC_ALL=C TZ=UTC0 DISPLAY=127.0.0.1:0 XAUTHORITY=/usr/people/xiritest/.Xauthority XIRI_SESSION_STOP_FILE=/usr/people/xiritest/.xiri-catalog/terminal-ptmx-v1/stop /tmp/xiri-catalog/app-guard 120000 /bin/sh /tmp/xiri-catalog/app.sh /usr/people/xiritest/.xiri-catalog/terminal-ptmx-v1 /usr/freeware/bin/gnome-terminal \n5165 2512 1234 1234 S    0:00.25  0.1 /tmp/xiri-catalog/app-guard 120000 /bin/sh /tmp/xiri-catalog/app.sh /usr/people/xiritest/.xiri-catalog/terminal-ptmx-v1 /usr/freeware/bin/gnome-terminal \n2390    1 1234 1234 S    1:36.96  0.0 /usr/local/sbin/famd -d -c /etc/xiri/fam.conf -p 391002 \n-rw-r--r--  1 root  wheel  400311 Nov  4 08:51 /tmp/gnome-terminal.ktrace\n",
+      "cleanup": "touch /usr/people/xiritest/.xiri-catalog/terminal-ptmx-v1/stop; wait  \b\"$xiri_terminal_owner\"; cat /usr/people/xiritest/.xiri-catalog/terminal-ptmx-v1/ \bguard; cat /usr/people/xiritest/.xiri-catalog/terminal-ptmx-v1/guard.err; /usr/l \bocal/libexec/xiri/x11-check ready; xiri_rc=$?; printf '\\nXIRI_afc55f30e6324c42a7 \b25395ba535923f_RC=%s\\n' \"$xiri_rc\"\nOWN pid=2526 parent=5165\nOWN pid=2527 parent=2526\nGUARD pid=2526 exit=-1 signal=15 stopped=1 absent=1 valid=1 tracked=2 remaining=0 reason=logout uid=1234 gid=1234 elapsed=107348\n\nXIRI_afc55f30e6324c42a725395ba535923f_RC=0\nxiri-indy# "
+    }
+  }
+}

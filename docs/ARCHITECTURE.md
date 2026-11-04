@@ -1,10 +1,16 @@
 # Xiri proposed architecture
 
-Status: updated 2026-11-03. The original IRIX 6.5.22m desktop runs on
+Status: updated 2026-11-04. The original IRIX 6.5.22m desktop runs on
 native accelerated Newport Xorg, including winterm with a native shell,
 catalog launches, running-icon feedback, backdrop and desktop icons. The
 IRIX personality now boot-loads as a module on our NetBSD fork. Native
 service and user-session integration lives in [`runtime/`](../runtime/README.md).
+The candidate [terminal interfaces](results/2026-11-04-irix-terminal.md)
+add pathname Unix stream socket pairs and one-descriptor legacy transfers
+inside the module, using native socket ownership and cleanup. PTY setup maps
+the emulation slave directory directly to native ptyfs through `/../dev/pts`,
+superseding the earlier nullfs view. General termios/STREAMS support remains
+incomplete; these changes require no new core-kernel hook.
 The [execution roadmap](ROADMAP.md) tracks remaining application, desktop
 and deployment work.
 

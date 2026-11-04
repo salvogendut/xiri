@@ -42,6 +42,26 @@ not repin qualified kernels, emulator binaries, runtime resources or guest disks
 
 ## IRIS upstream updates
 
+The 2026-11-04 GNOME Terminal cycle fetched upstream
+`3bcde9f702f0b52fdb296eeda4fe10b26555f3da` and merged it into IRIS `xiri`
+as `bd67e65ff159748635dd484adf7fac94a591f84b`, then pushed the merge.
+The sole new commit changes the network redial timing test; production code
+is unchanged. All eight `net::stream::tests` passed using the pinned nightly
+compiler and a separate `.work/iris-terminal-target` output directory.
+The first invocation could not find Cargo inside the toolbox; the explicit
+Cargo-path retry is the successful validation. The qualified guest emulator
+and manual CHD remain pinned. NetBSD module work uses `xiri` and the separate
+`.work/netbsd-terminal-build` output.
+
+NetBSD `xiri` commit `4cf85855f1ee` adds the terminal interfaces. All source
+inputs match the [recorded module build](../lab/irix-terminal/build.json)
+byte for byte. The [cycle report](results/2026-11-04-irix-terminal.md) records
+392 new terminal/descriptor checks, 136 Unix-stream and 368 IPv4 regressions,
+original-shell commands/catalog launching, a native foreground resize check
+and native/IRIX login regression coverage. The core, pinned lab worktrees
+and published manual CHD remain unchanged.
+
+
 The 2026-11-04 GNOME startup cycle fetched upstream
 `28fa516684c54e00e35b258c65e5dcac3a36165c` and verified that it remains an
 ancestor of IRIS `xiri` `ae62114344a1d435152b8ae7e48c599974b4aec7`.

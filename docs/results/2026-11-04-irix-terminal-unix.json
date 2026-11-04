@@ -1,0 +1,1312 @@
+{
+  "status": "passed",
+  "reference_sha256": "16d47fe3e5ae24a58bfd9ab4182fc39c2e24bfcba9eff9c8c10cd6b6909a14ff",
+  "native_sha256": "c4d9fc7d5b83a08e5120aaaae7a0cad47b7cfb2f24770362b67a68909bc7dfce",
+  "reference_run": "None",
+  "native_run": ".work/catalog-cycle/survey-0-8y06hup1",
+  "candidate_module": {
+    "schema": 1,
+    "status": "built",
+    "source": "/var/home/salvogendut/Dev/NetBSD-xiri",
+    "source_revision": "0b2e08f1c0b47a22acaef55d6e88c1a7d7b0f101",
+    "source_status": " M sys/compat/irix_o32/irix_o32.c\n",
+    "source_files": {
+      "sys/compat/irix_o32/irix_errno.h": "36c93897342fe90413b9252209cf300c4d63657e175a2e8e7d547826b9b9be1a",
+      "sys/compat/irix_o32/irix_errno_map.h": "e3adecc6040d14afa371eff3d6e17f126b7d074201b8e98cf842ec650a86f64f",
+      "sys/compat/irix_o32/irix_o32.c": "b0e9bae77ca9aa4a8f8e3b3815ef6924d6d19c9a8af6f8f9fed9df9723ca0695",
+      "sys/compat/irix_o32/irix_signal.c": "a990e1ea3f2ceea2978407a6916cc2e4790e357fa53c8f3a63520d5f8108a40a",
+      "sys/compat/irix_o32/irix_signal.h": "8b0a98ffee639ce755cf5b7f84f79c6295f563cee015cab25afe5a0dd870e373",
+      "sys/compat/irix_o32/irix_sproc.c": "97144d2f8897cbba77dd6f00a877330bd4e5ee11efda652ca6b26d72d8af0844",
+      "sys/compat/irix_o32/irix_sproc.h": "b7ffc50caad3f78984218cf7601fc5ea1a4042dd25bdf4ab1ac6cd9b15994414",
+      "sys/compat/irix_o32/irix_stat.h": "45a7cad87190acb37732421ac589b6b287f9454dfccb874cf163622b233e1f23",
+      "sys/modules/compat_irix_o32/Makefile": "b3436a7c62a48d9a7139536315b65a644314fc4552fba3430c0b00c5408f9278",
+      "sys/modules/Makefile": "cc44af13029e3272dc5c80b0356bc66c396a32ff1d2ce9bda7fb7e749c091797",
+      "sys/arch/mips/mips/kobj_machdep.c": "75af7317121c508d23ca3b2c757130ecd31a77a4d7d786683d6bb5e99ad949d2",
+      "sys/kern/sys_select.c": "d3acf564acfd23f38ba32214e6e708dc28246e25b682969dafb730d92dd290b1",
+      "sys/kern/kern_lwp.c": "dcf9c71f79e2bfcd0e07be1c78abbca975a7de3620b8529d7e9bdbc99ed912f8",
+      "sys/sys/proc.h": "11ee2ae7d63c93f7ec094d1f3b424ccd4cedbe16127e3d6afa84f4cf26e022ee",
+      "sys/uvm/uvm_pglist.c": "47f62159d99df61870b39a071af57a781493553f6a0c8415610cae0bc4489c39"
+    },
+    "config_path": "lab/irix-module/XIRI_IRIX_MODULE",
+    "config_sha256": "b4b1d27b1d8e80ec31b07f9f98e0ca1da8a1793cb90880bbc1e65a4b169c8fe2",
+    "sources": {
+      "scripts/build-irix-module.py": "5a255a7744e514967e1e2261d4e5c3167c68a88fcac76dfc28392fcd37a0a51a"
+    },
+    "undefined_symbols": [
+      "VOP_ACCESS",
+      "VOP_GETATTR",
+      "VOP_READDIR",
+      "VOP_READLINK",
+      "VOP_UNLOCK",
+      "cdevsw_lookup",
+      "child_return",
+      "copyin",
+      "copyinstr",
+      "copyout",
+      "copyoutstr",
+      "coredump_elf32",
+      "cpu_getmcontext",
+      "cpu_setmcontext",
+      "cv_broadcast",
+      "cv_destroy",
+      "cv_init",
+      "cv_wait_sig",
+      "do_sys_accept",
+      "do_sys_bind",
+      "do_sys_connect",
+      "do_sys_fstat",
+      "do_sys_getsockname",
+      "do_sys_mkdir",
+      "do_sys_recvmsg_so",
+      "do_sys_sendmsg_so",
+      "do_sys_waitid",
+      "emul_find_interp",
+      "exec_add",
+      "exec_elf32_makecmds",
+      "exec_free_emul_arg",
+      "exec_read",
+      "exec_remove",
+      "exec_setup_stack",
+      "execve1",
+      "fd_close",
+      "fd_getfile",
+      "fd_getsock",
+      "fd_getsock1",
+      "fd_getvnode",
+      "fd_putfile",
+      "fd_set_exclose",
+      "fork1",
+      "free_control_mbuf",
+      "getframe",
+      "kauth_cred_dup",
+      "kauth_cred_free",
+      "kauth_cred_get",
+      "kauth_cred_getgid",
+      "kauth_cred_getuid",
+      "kauth_cred_setegid",
+      "kauth_cred_seteuid",
+      "kern_assert",
+      "kern_free",
+      "kmem_alloc",
+      "kmem_free",
+      "kmem_zalloc",
+      "kpreempt",
+      "ktr_kuser",
+      "lwp_userret",
+      "m_freem",
+      "m_get",
+      "memcmp",
+      "memcpy",
+      "memset",
+      "microtime",
+      "mips_emul_branch",
+      "mips_fpu_ops",
+      "mips_options",
+      "mutex_destroy",
+      "mutex_enter",
+      "mutex_exit",
+      "mutex_init",
+      "mutex_owned",
+      "namei",
+      "nanosleep1",
+      "netbsd32_vm_default_addr",
+      "new_vmcmd",
+      "old_sysctl",
+      "pathbuf_create",
+      "pathbuf_destroy",
+      "pcu_discard",
+      "ptc_cdevsw",
+      "pts_cdevsw",
+      "selcommon_kern",
+      "sendsig_reset",
+      "setregs",
+      "sigaction1",
+      "sigexit",
+      "sigprocmask1",
+      "snprintf",
+      "soisdisconnected",
+      "solockretry",
+      "soshutdown",
+      "strcmp",
+      "strlcpy",
+      "strnlen",
+      "sys___posix_chown",
+      "sys___socket30",
+      "sys_chdir",
+      "sys_chmod",
+      "sys_close",
+      "sys_dup",
+      "sys_exit",
+      "sys_fcntl",
+      "sys_getgid_with_egid",
+      "sys_getpgrp",
+      "sys_getpid_with_ppid",
+      "sys_getsid",
+      "sys_getuid_with_euid",
+      "sys_kill",
+      "sys_listen",
+      "sys_lseek",
+      "sys_mmap",
+      "sys_mprotect",
+      "sys_munmap",
+      "sys_nosys",
+      "sys_obreak",
+      "sys_open",
+      "sys_pipe",
+      "sys_poll",
+      "sys_read",
+      "sys_sched_yield",
+      "sys_setsid",
+      "sys_setsockopt",
+      "sys_socketpair",
+      "sys_write",
+      "trace_enter",
+      "trace_exit",
+      "trapsignal",
+      "uio_setup_sysspace",
+      "uiomove",
+      "uvm_map_checkprot",
+      "uvm_map_extract",
+      "uvm_map_findspace",
+      "uvm_map_inherit",
+      "uvm_map_lookup_entry",
+      "uvm_map_reserve",
+      "uvm_unmap1",
+      "uvmexp_pagemask",
+      "uvmexp_pagesize",
+      "uvmspace_addref",
+      "uvmspace_free",
+      "vm_map_lock_read",
+      "vm_map_unlock_read",
+      "vmcmd_map_pagedvn",
+      "vmcmd_map_readvn",
+      "vmcmd_map_zero",
+      "vmcmd_readvn",
+      "vn_lock",
+      "vn_marktext",
+      "vn_stat",
+      "vn_writechk",
+      "vput",
+      "zerodev"
+    ],
+    "relocation_types": [
+      "R_MIPS_32",
+      "R_MIPS_64",
+      "R_MIPS_HI16",
+      "R_MIPS_HIGHER",
+      "R_MIPS_HIGHEST",
+      "R_MIPS_LO16",
+      "R_MIPS_NONE"
+    ],
+    "core_hooks": [
+      "selcommon_kern",
+      "emul.e_sigmask"
+    ],
+    "artifacts": {
+      "compat_irix_o32.kmod": {
+        "path": "obj/sys/modules/compat_irix_o32/compat_irix_o32.kmod",
+        "sha256": "b2ba5ba7ad5a3bae7ed6b4594daac9eddc21c653603d8500f6d16217925033e1"
+      },
+      "netbsd": {
+        "path": "kernel-media/netbsd",
+        "sha256": "ed97268e4c1db1c91a8973d16c1e31555816c2a29c220b29b9095eadf3b2ae04"
+      },
+      "netbsd.boot": {
+        "path": "tftp/netbsd-XIRI_INDY",
+        "sha256": "260b253f579ca46a50b83e367f95600b54c86756c47f5d9e0f9391251bfd7122"
+      }
+    },
+    "debug_kernel_sha256": "0ac97373a1eec2648ff3efc178d6839c6bda6ae41e8045a1d79bf6a5c404958b"
+  },
+  "observations": [
+    {
+      "name": "n32-direct-0-0",
+      "uid": 0,
+      "mode": 0,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "528ef54b1048dcccfc6e46d581d97835e3eb5aeb26bb53835fa198ada0d5eb13"
+    },
+    {
+      "name": "n32-direct-0-1234",
+      "uid": 1234,
+      "mode": 0,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "dbf255104b483a76058267ffb1f1bf9dd2eeb4b3c523554f21fc54dd6f1f96ba"
+    },
+    {
+      "name": "n32-direct-1-0",
+      "uid": 0,
+      "mode": 1,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "cba7ce357319cb97437c4fc82e4aed6cc29ab6a6c4dc1f089cee305cc8303e2b"
+    },
+    {
+      "name": "n32-direct-1-1234",
+      "uid": 1234,
+      "mode": 1,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "07d29787610accc062b95c2bc41de31754389a87ece7fd9568280e8def06060c"
+    },
+    {
+      "name": "n32-direct-10-0",
+      "uid": 0,
+      "mode": 10,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "21165b104b1d37f5c21ec25b3e658f39701325701b340beb983b264504b1567e"
+    },
+    {
+      "name": "n32-direct-10-1234",
+      "uid": 1234,
+      "mode": 10,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "e5541e9c596173eed461b7817e958059081c64649ee2dd5c8ab5d0554259213b"
+    },
+    {
+      "name": "n32-direct-11-0",
+      "uid": 0,
+      "mode": 11,
+      "contract": "subset",
+      "policy": "datagrams unsupported",
+      "sha256": "bf14bf25ca54410b3486e2985c0e99ff629171870f48157948ff32d6faced039"
+    },
+    {
+      "name": "n32-direct-11-1234",
+      "uid": 1234,
+      "mode": 11,
+      "contract": "subset",
+      "policy": "datagrams unsupported",
+      "sha256": "99e2c343bb8b9eb496c30a550687bdaca556080e6f65b84b47564d6839ad2a96"
+    },
+    {
+      "name": "n32-direct-12-0",
+      "uid": 0,
+      "mode": 12,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "505b47671c9e79d9ae66d82f4c1b45a14e9c1f6da1f2cf26dd1e6afd71fa7fd6"
+    },
+    {
+      "name": "n32-direct-12-1234",
+      "uid": 1234,
+      "mode": 12,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "c9a77a828cbaef9ac5da118a89495259aad5f79606db7dcf2aa6dd8c705b111a"
+    },
+    {
+      "name": "n32-direct-2-0",
+      "uid": 0,
+      "mode": 2,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "74f1556e10c4aa1b1960ebfad2bf4748df3b7ff3dd50a029324467accc40f848"
+    },
+    {
+      "name": "n32-direct-2-1234",
+      "uid": 1234,
+      "mode": 2,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "ef4e25d6d7afed8e08f34f60cf360f57d58af7944b638a2f265776a416346a28"
+    },
+    {
+      "name": "n32-direct-20-0",
+      "uid": 0,
+      "mode": 20,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "ffb66fed91a1986c05ca1c3aa64ac18c3fd818c19ab9646188ab97210d96b5e3"
+    },
+    {
+      "name": "n32-direct-20-1234",
+      "uid": 1234,
+      "mode": 20,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "2ec2873069ebca5f89882e3e3704b44fa3239b186db40888fa19f726d00b8c20"
+    },
+    {
+      "name": "n32-direct-21-0",
+      "uid": 0,
+      "mode": 21,
+      "contract": "subset",
+      "policy": "short family rejected",
+      "sha256": "35dbe15ffa677d70e64fa400543f867f9ce30be7710da57fdb853568b5f0a219"
+    },
+    {
+      "name": "n32-direct-21-1234",
+      "uid": 1234,
+      "mode": 21,
+      "contract": "subset",
+      "policy": "short family rejected",
+      "sha256": "2f0fa1faff6dd5056167a3d514afb21f2f53ecca85ea4a1bcfdc3a6e411855ce"
+    },
+    {
+      "name": "n32-direct-22-0",
+      "uid": 0,
+      "mode": 22,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "83914c56ef6873a1015f3a108f1cfafffcdc93310602d579577e1210f2069d5d"
+    },
+    {
+      "name": "n32-direct-22-1234",
+      "uid": 1234,
+      "mode": 22,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "f09cbe3e73989830912003cd829bd85470618083f1a96bac47ecf807b86b1137"
+    },
+    {
+      "name": "n32-direct-23-0",
+      "uid": 0,
+      "mode": 23,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "517e28e4384cb1679dd250b918292045b3a8358cdc600dae18cd925153a12d3a"
+    },
+    {
+      "name": "n32-direct-23-1234",
+      "uid": 1234,
+      "mode": 23,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "6b08b6b8fd2f2a26b2edeb974891f313ee69cbfe5f458c85f6141370fe15fa2d"
+    },
+    {
+      "name": "n32-direct-24-0",
+      "uid": 0,
+      "mode": 24,
+      "contract": "subset",
+      "policy": "oversize address rejected",
+      "sha256": "e513c0c2e91044ca39eeadd119dc50e1dbce0349c653c6637c43c278144c4180"
+    },
+    {
+      "name": "n32-direct-24-1234",
+      "uid": 1234,
+      "mode": 24,
+      "contract": "subset",
+      "policy": "oversize address rejected",
+      "sha256": "845520b829eaeb477045d0ff9fc73db80f4970e2046c38a056d733a87a1524ec"
+    },
+    {
+      "name": "n32-direct-25-0",
+      "uid": 0,
+      "mode": 25,
+      "contract": "subset",
+      "policy": "null input returns EFAULT",
+      "sha256": "1c885c5d609964cec4865d773388ed9992e49cf618aae91db2f45afb3ff8ec8b"
+    },
+    {
+      "name": "n32-direct-25-1234",
+      "uid": 1234,
+      "mode": 25,
+      "contract": "subset",
+      "policy": "null input returns EFAULT",
+      "sha256": "c03e2bc900caf2ef251b0fa88df9f9324bd83ae4f843fdc6d22ad4362fbf4ead"
+    },
+    {
+      "name": "n32-direct-26-0",
+      "uid": 0,
+      "mode": 26,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "8d2ec0eb378d71930d8548ba94548690d751b231b3bc3746e3ba1e970d000106"
+    },
+    {
+      "name": "n32-direct-26-1234",
+      "uid": 1234,
+      "mode": 26,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "fbe9ad9a45a16a7743348cb71a780bf3762817d30527b164a68821879ccabee2"
+    },
+    {
+      "name": "n32-direct-27-0",
+      "uid": 0,
+      "mode": 27,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "7db3a3cb9d4d6d2d114d8e083cc4f176544cec63ddabb05dc658c733ec06ad7f"
+    },
+    {
+      "name": "n32-direct-27-1234",
+      "uid": 1234,
+      "mode": 27,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "ae0240e7bb6218328b7777af4595f20eb3f5d6a28412e2c8e073601178e7ef4f"
+    },
+    {
+      "name": "n32-direct-28-0",
+      "uid": 0,
+      "mode": 28,
+      "contract": "subset",
+      "policy": "native pathname capacity enforced",
+      "sha256": "528eb000695daa4af45431084fa06d579e535ec799a409f67311b43392e5ff9b"
+    },
+    {
+      "name": "n32-direct-28-1234",
+      "uid": 1234,
+      "mode": 28,
+      "contract": "subset",
+      "policy": "native pathname capacity enforced",
+      "sha256": "1cbd94cd7fc93879c643d36a5ba966393d3cd2df26d3837b13e18b576f89e986"
+    },
+    {
+      "name": "n32-direct-3-0",
+      "uid": 0,
+      "mode": 3,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "e4f0de3d7772f35dffdea4db0f89086ac59c56f824c27cf3d231f3b29d08a516"
+    },
+    {
+      "name": "n32-direct-3-1234",
+      "uid": 1234,
+      "mode": 3,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "4a5ee0cb54ec627a0c1a647fa111d7d6d0860ca91ca1ef929d069c0957808b2e"
+    },
+    {
+      "name": "n32-direct-4-0",
+      "uid": 0,
+      "mode": 4,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "245386d998a11b78492d3c58ca1853e61b048635fff7a72af5d7c751743df08f"
+    },
+    {
+      "name": "n32-direct-4-1234",
+      "uid": 1234,
+      "mode": 4,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "87ed8155cf4645d703e72ab970f5f329096586123c59bfab6499bc76a7e9abdb"
+    },
+    {
+      "name": "n32-indirect-0-0",
+      "uid": 0,
+      "mode": 0,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "528ef54b1048dcccfc6e46d581d97835e3eb5aeb26bb53835fa198ada0d5eb13"
+    },
+    {
+      "name": "n32-indirect-0-1234",
+      "uid": 1234,
+      "mode": 0,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "dbf255104b483a76058267ffb1f1bf9dd2eeb4b3c523554f21fc54dd6f1f96ba"
+    },
+    {
+      "name": "n32-indirect-1-0",
+      "uid": 0,
+      "mode": 1,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "cba7ce357319cb97437c4fc82e4aed6cc29ab6a6c4dc1f089cee305cc8303e2b"
+    },
+    {
+      "name": "n32-indirect-1-1234",
+      "uid": 1234,
+      "mode": 1,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "07d29787610accc062b95c2bc41de31754389a87ece7fd9568280e8def06060c"
+    },
+    {
+      "name": "n32-indirect-10-0",
+      "uid": 0,
+      "mode": 10,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "21165b104b1d37f5c21ec25b3e658f39701325701b340beb983b264504b1567e"
+    },
+    {
+      "name": "n32-indirect-10-1234",
+      "uid": 1234,
+      "mode": 10,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "e5541e9c596173eed461b7817e958059081c64649ee2dd5c8ab5d0554259213b"
+    },
+    {
+      "name": "n32-indirect-11-0",
+      "uid": 0,
+      "mode": 11,
+      "contract": "subset",
+      "policy": "datagrams unsupported",
+      "sha256": "bf14bf25ca54410b3486e2985c0e99ff629171870f48157948ff32d6faced039"
+    },
+    {
+      "name": "n32-indirect-11-1234",
+      "uid": 1234,
+      "mode": 11,
+      "contract": "subset",
+      "policy": "datagrams unsupported",
+      "sha256": "99e2c343bb8b9eb496c30a550687bdaca556080e6f65b84b47564d6839ad2a96"
+    },
+    {
+      "name": "n32-indirect-12-0",
+      "uid": 0,
+      "mode": 12,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "505b47671c9e79d9ae66d82f4c1b45a14e9c1f6da1f2cf26dd1e6afd71fa7fd6"
+    },
+    {
+      "name": "n32-indirect-12-1234",
+      "uid": 1234,
+      "mode": 12,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "c9a77a828cbaef9ac5da118a89495259aad5f79606db7dcf2aa6dd8c705b111a"
+    },
+    {
+      "name": "n32-indirect-2-0",
+      "uid": 0,
+      "mode": 2,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "74f1556e10c4aa1b1960ebfad2bf4748df3b7ff3dd50a029324467accc40f848"
+    },
+    {
+      "name": "n32-indirect-2-1234",
+      "uid": 1234,
+      "mode": 2,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "ef4e25d6d7afed8e08f34f60cf360f57d58af7944b638a2f265776a416346a28"
+    },
+    {
+      "name": "n32-indirect-20-0",
+      "uid": 0,
+      "mode": 20,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "ffb66fed91a1986c05ca1c3aa64ac18c3fd818c19ab9646188ab97210d96b5e3"
+    },
+    {
+      "name": "n32-indirect-20-1234",
+      "uid": 1234,
+      "mode": 20,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "2ec2873069ebca5f89882e3e3704b44fa3239b186db40888fa19f726d00b8c20"
+    },
+    {
+      "name": "n32-indirect-21-0",
+      "uid": 0,
+      "mode": 21,
+      "contract": "subset",
+      "policy": "short family rejected",
+      "sha256": "35dbe15ffa677d70e64fa400543f867f9ce30be7710da57fdb853568b5f0a219"
+    },
+    {
+      "name": "n32-indirect-21-1234",
+      "uid": 1234,
+      "mode": 21,
+      "contract": "subset",
+      "policy": "short family rejected",
+      "sha256": "2f0fa1faff6dd5056167a3d514afb21f2f53ecca85ea4a1bcfdc3a6e411855ce"
+    },
+    {
+      "name": "n32-indirect-22-0",
+      "uid": 0,
+      "mode": 22,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "83914c56ef6873a1015f3a108f1cfafffcdc93310602d579577e1210f2069d5d"
+    },
+    {
+      "name": "n32-indirect-22-1234",
+      "uid": 1234,
+      "mode": 22,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "f09cbe3e73989830912003cd829bd85470618083f1a96bac47ecf807b86b1137"
+    },
+    {
+      "name": "n32-indirect-23-0",
+      "uid": 0,
+      "mode": 23,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "517e28e4384cb1679dd250b918292045b3a8358cdc600dae18cd925153a12d3a"
+    },
+    {
+      "name": "n32-indirect-23-1234",
+      "uid": 1234,
+      "mode": 23,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "6b08b6b8fd2f2a26b2edeb974891f313ee69cbfe5f458c85f6141370fe15fa2d"
+    },
+    {
+      "name": "n32-indirect-24-0",
+      "uid": 0,
+      "mode": 24,
+      "contract": "subset",
+      "policy": "oversize address rejected",
+      "sha256": "e513c0c2e91044ca39eeadd119dc50e1dbce0349c653c6637c43c278144c4180"
+    },
+    {
+      "name": "n32-indirect-24-1234",
+      "uid": 1234,
+      "mode": 24,
+      "contract": "subset",
+      "policy": "oversize address rejected",
+      "sha256": "845520b829eaeb477045d0ff9fc73db80f4970e2046c38a056d733a87a1524ec"
+    },
+    {
+      "name": "n32-indirect-25-0",
+      "uid": 0,
+      "mode": 25,
+      "contract": "subset",
+      "policy": "null input returns EFAULT",
+      "sha256": "1c885c5d609964cec4865d773388ed9992e49cf618aae91db2f45afb3ff8ec8b"
+    },
+    {
+      "name": "n32-indirect-25-1234",
+      "uid": 1234,
+      "mode": 25,
+      "contract": "subset",
+      "policy": "null input returns EFAULT",
+      "sha256": "c03e2bc900caf2ef251b0fa88df9f9324bd83ae4f843fdc6d22ad4362fbf4ead"
+    },
+    {
+      "name": "n32-indirect-26-0",
+      "uid": 0,
+      "mode": 26,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "8d2ec0eb378d71930d8548ba94548690d751b231b3bc3746e3ba1e970d000106"
+    },
+    {
+      "name": "n32-indirect-26-1234",
+      "uid": 1234,
+      "mode": 26,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "fbe9ad9a45a16a7743348cb71a780bf3762817d30527b164a68821879ccabee2"
+    },
+    {
+      "name": "n32-indirect-27-0",
+      "uid": 0,
+      "mode": 27,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "7db3a3cb9d4d6d2d114d8e083cc4f176544cec63ddabb05dc658c733ec06ad7f"
+    },
+    {
+      "name": "n32-indirect-27-1234",
+      "uid": 1234,
+      "mode": 27,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "ae0240e7bb6218328b7777af4595f20eb3f5d6a28412e2c8e073601178e7ef4f"
+    },
+    {
+      "name": "n32-indirect-28-0",
+      "uid": 0,
+      "mode": 28,
+      "contract": "subset",
+      "policy": "native pathname capacity enforced",
+      "sha256": "528eb000695daa4af45431084fa06d579e535ec799a409f67311b43392e5ff9b"
+    },
+    {
+      "name": "n32-indirect-28-1234",
+      "uid": 1234,
+      "mode": 28,
+      "contract": "subset",
+      "policy": "native pathname capacity enforced",
+      "sha256": "1cbd94cd7fc93879c643d36a5ba966393d3cd2df26d3837b13e18b576f89e986"
+    },
+    {
+      "name": "n32-indirect-3-0",
+      "uid": 0,
+      "mode": 3,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "e4f0de3d7772f35dffdea4db0f89086ac59c56f824c27cf3d231f3b29d08a516"
+    },
+    {
+      "name": "n32-indirect-3-1234",
+      "uid": 1234,
+      "mode": 3,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "4a5ee0cb54ec627a0c1a647fa111d7d6d0860ca91ca1ef929d069c0957808b2e"
+    },
+    {
+      "name": "n32-indirect-4-0",
+      "uid": 0,
+      "mode": 4,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "245386d998a11b78492d3c58ca1853e61b048635fff7a72af5d7c751743df08f"
+    },
+    {
+      "name": "n32-indirect-4-1234",
+      "uid": 1234,
+      "mode": 4,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "87ed8155cf4645d703e72ab970f5f329096586123c59bfab6499bc76a7e9abdb"
+    },
+    {
+      "name": "o32-direct-0-0",
+      "uid": 0,
+      "mode": 0,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "528ef54b1048dcccfc6e46d581d97835e3eb5aeb26bb53835fa198ada0d5eb13"
+    },
+    {
+      "name": "o32-direct-0-1234",
+      "uid": 1234,
+      "mode": 0,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "dbf255104b483a76058267ffb1f1bf9dd2eeb4b3c523554f21fc54dd6f1f96ba"
+    },
+    {
+      "name": "o32-direct-1-0",
+      "uid": 0,
+      "mode": 1,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "cba7ce357319cb97437c4fc82e4aed6cc29ab6a6c4dc1f089cee305cc8303e2b"
+    },
+    {
+      "name": "o32-direct-1-1234",
+      "uid": 1234,
+      "mode": 1,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "07d29787610accc062b95c2bc41de31754389a87ece7fd9568280e8def06060c"
+    },
+    {
+      "name": "o32-direct-10-0",
+      "uid": 0,
+      "mode": 10,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "21165b104b1d37f5c21ec25b3e658f39701325701b340beb983b264504b1567e"
+    },
+    {
+      "name": "o32-direct-10-1234",
+      "uid": 1234,
+      "mode": 10,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "e5541e9c596173eed461b7817e958059081c64649ee2dd5c8ab5d0554259213b"
+    },
+    {
+      "name": "o32-direct-11-0",
+      "uid": 0,
+      "mode": 11,
+      "contract": "subset",
+      "policy": "datagrams unsupported",
+      "sha256": "bf14bf25ca54410b3486e2985c0e99ff629171870f48157948ff32d6faced039"
+    },
+    {
+      "name": "o32-direct-11-1234",
+      "uid": 1234,
+      "mode": 11,
+      "contract": "subset",
+      "policy": "datagrams unsupported",
+      "sha256": "99e2c343bb8b9eb496c30a550687bdaca556080e6f65b84b47564d6839ad2a96"
+    },
+    {
+      "name": "o32-direct-12-0",
+      "uid": 0,
+      "mode": 12,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "505b47671c9e79d9ae66d82f4c1b45a14e9c1f6da1f2cf26dd1e6afd71fa7fd6"
+    },
+    {
+      "name": "o32-direct-12-1234",
+      "uid": 1234,
+      "mode": 12,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "c9a77a828cbaef9ac5da118a89495259aad5f79606db7dcf2aa6dd8c705b111a"
+    },
+    {
+      "name": "o32-direct-2-0",
+      "uid": 0,
+      "mode": 2,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "74f1556e10c4aa1b1960ebfad2bf4748df3b7ff3dd50a029324467accc40f848"
+    },
+    {
+      "name": "o32-direct-2-1234",
+      "uid": 1234,
+      "mode": 2,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "ef4e25d6d7afed8e08f34f60cf360f57d58af7944b638a2f265776a416346a28"
+    },
+    {
+      "name": "o32-direct-20-0",
+      "uid": 0,
+      "mode": 20,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "ffb66fed91a1986c05ca1c3aa64ac18c3fd818c19ab9646188ab97210d96b5e3"
+    },
+    {
+      "name": "o32-direct-20-1234",
+      "uid": 1234,
+      "mode": 20,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "2ec2873069ebca5f89882e3e3704b44fa3239b186db40888fa19f726d00b8c20"
+    },
+    {
+      "name": "o32-direct-21-0",
+      "uid": 0,
+      "mode": 21,
+      "contract": "subset",
+      "policy": "short family rejected",
+      "sha256": "35dbe15ffa677d70e64fa400543f867f9ce30be7710da57fdb853568b5f0a219"
+    },
+    {
+      "name": "o32-direct-21-1234",
+      "uid": 1234,
+      "mode": 21,
+      "contract": "subset",
+      "policy": "short family rejected",
+      "sha256": "2f0fa1faff6dd5056167a3d514afb21f2f53ecca85ea4a1bcfdc3a6e411855ce"
+    },
+    {
+      "name": "o32-direct-22-0",
+      "uid": 0,
+      "mode": 22,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "83914c56ef6873a1015f3a108f1cfafffcdc93310602d579577e1210f2069d5d"
+    },
+    {
+      "name": "o32-direct-22-1234",
+      "uid": 1234,
+      "mode": 22,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "f09cbe3e73989830912003cd829bd85470618083f1a96bac47ecf807b86b1137"
+    },
+    {
+      "name": "o32-direct-23-0",
+      "uid": 0,
+      "mode": 23,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "517e28e4384cb1679dd250b918292045b3a8358cdc600dae18cd925153a12d3a"
+    },
+    {
+      "name": "o32-direct-23-1234",
+      "uid": 1234,
+      "mode": 23,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "6b08b6b8fd2f2a26b2edeb974891f313ee69cbfe5f458c85f6141370fe15fa2d"
+    },
+    {
+      "name": "o32-direct-24-0",
+      "uid": 0,
+      "mode": 24,
+      "contract": "subset",
+      "policy": "oversize address rejected",
+      "sha256": "e513c0c2e91044ca39eeadd119dc50e1dbce0349c653c6637c43c278144c4180"
+    },
+    {
+      "name": "o32-direct-24-1234",
+      "uid": 1234,
+      "mode": 24,
+      "contract": "subset",
+      "policy": "oversize address rejected",
+      "sha256": "845520b829eaeb477045d0ff9fc73db80f4970e2046c38a056d733a87a1524ec"
+    },
+    {
+      "name": "o32-direct-25-0",
+      "uid": 0,
+      "mode": 25,
+      "contract": "subset",
+      "policy": "null input returns EFAULT",
+      "sha256": "1c885c5d609964cec4865d773388ed9992e49cf618aae91db2f45afb3ff8ec8b"
+    },
+    {
+      "name": "o32-direct-25-1234",
+      "uid": 1234,
+      "mode": 25,
+      "contract": "subset",
+      "policy": "null input returns EFAULT",
+      "sha256": "c03e2bc900caf2ef251b0fa88df9f9324bd83ae4f843fdc6d22ad4362fbf4ead"
+    },
+    {
+      "name": "o32-direct-26-0",
+      "uid": 0,
+      "mode": 26,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "8d2ec0eb378d71930d8548ba94548690d751b231b3bc3746e3ba1e970d000106"
+    },
+    {
+      "name": "o32-direct-26-1234",
+      "uid": 1234,
+      "mode": 26,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "fbe9ad9a45a16a7743348cb71a780bf3762817d30527b164a68821879ccabee2"
+    },
+    {
+      "name": "o32-direct-27-0",
+      "uid": 0,
+      "mode": 27,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "7db3a3cb9d4d6d2d114d8e083cc4f176544cec63ddabb05dc658c733ec06ad7f"
+    },
+    {
+      "name": "o32-direct-27-1234",
+      "uid": 1234,
+      "mode": 27,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "ae0240e7bb6218328b7777af4595f20eb3f5d6a28412e2c8e073601178e7ef4f"
+    },
+    {
+      "name": "o32-direct-28-0",
+      "uid": 0,
+      "mode": 28,
+      "contract": "subset",
+      "policy": "native pathname capacity enforced",
+      "sha256": "528eb000695daa4af45431084fa06d579e535ec799a409f67311b43392e5ff9b"
+    },
+    {
+      "name": "o32-direct-28-1234",
+      "uid": 1234,
+      "mode": 28,
+      "contract": "subset",
+      "policy": "native pathname capacity enforced",
+      "sha256": "1cbd94cd7fc93879c643d36a5ba966393d3cd2df26d3837b13e18b576f89e986"
+    },
+    {
+      "name": "o32-direct-3-0",
+      "uid": 0,
+      "mode": 3,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "e4f0de3d7772f35dffdea4db0f89086ac59c56f824c27cf3d231f3b29d08a516"
+    },
+    {
+      "name": "o32-direct-3-1234",
+      "uid": 1234,
+      "mode": 3,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "4a5ee0cb54ec627a0c1a647fa111d7d6d0860ca91ca1ef929d069c0957808b2e"
+    },
+    {
+      "name": "o32-direct-4-0",
+      "uid": 0,
+      "mode": 4,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "245386d998a11b78492d3c58ca1853e61b048635fff7a72af5d7c751743df08f"
+    },
+    {
+      "name": "o32-direct-4-1234",
+      "uid": 1234,
+      "mode": 4,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "87ed8155cf4645d703e72ab970f5f329096586123c59bfab6499bc76a7e9abdb"
+    },
+    {
+      "name": "o32-indirect-0-0",
+      "uid": 0,
+      "mode": 0,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "528ef54b1048dcccfc6e46d581d97835e3eb5aeb26bb53835fa198ada0d5eb13"
+    },
+    {
+      "name": "o32-indirect-0-1234",
+      "uid": 1234,
+      "mode": 0,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "dbf255104b483a76058267ffb1f1bf9dd2eeb4b3c523554f21fc54dd6f1f96ba"
+    },
+    {
+      "name": "o32-indirect-1-0",
+      "uid": 0,
+      "mode": 1,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "cba7ce357319cb97437c4fc82e4aed6cc29ab6a6c4dc1f089cee305cc8303e2b"
+    },
+    {
+      "name": "o32-indirect-1-1234",
+      "uid": 1234,
+      "mode": 1,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "07d29787610accc062b95c2bc41de31754389a87ece7fd9568280e8def06060c"
+    },
+    {
+      "name": "o32-indirect-10-0",
+      "uid": 0,
+      "mode": 10,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "21165b104b1d37f5c21ec25b3e658f39701325701b340beb983b264504b1567e"
+    },
+    {
+      "name": "o32-indirect-10-1234",
+      "uid": 1234,
+      "mode": 10,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "e5541e9c596173eed461b7817e958059081c64649ee2dd5c8ab5d0554259213b"
+    },
+    {
+      "name": "o32-indirect-11-0",
+      "uid": 0,
+      "mode": 11,
+      "contract": "subset",
+      "policy": "datagrams unsupported",
+      "sha256": "bf14bf25ca54410b3486e2985c0e99ff629171870f48157948ff32d6faced039"
+    },
+    {
+      "name": "o32-indirect-11-1234",
+      "uid": 1234,
+      "mode": 11,
+      "contract": "subset",
+      "policy": "datagrams unsupported",
+      "sha256": "99e2c343bb8b9eb496c30a550687bdaca556080e6f65b84b47564d6839ad2a96"
+    },
+    {
+      "name": "o32-indirect-12-0",
+      "uid": 0,
+      "mode": 12,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "505b47671c9e79d9ae66d82f4c1b45a14e9c1f6da1f2cf26dd1e6afd71fa7fd6"
+    },
+    {
+      "name": "o32-indirect-12-1234",
+      "uid": 1234,
+      "mode": 12,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "c9a77a828cbaef9ac5da118a89495259aad5f79606db7dcf2aa6dd8c705b111a"
+    },
+    {
+      "name": "o32-indirect-2-0",
+      "uid": 0,
+      "mode": 2,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "74f1556e10c4aa1b1960ebfad2bf4748df3b7ff3dd50a029324467accc40f848"
+    },
+    {
+      "name": "o32-indirect-2-1234",
+      "uid": 1234,
+      "mode": 2,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "ef4e25d6d7afed8e08f34f60cf360f57d58af7944b638a2f265776a416346a28"
+    },
+    {
+      "name": "o32-indirect-20-0",
+      "uid": 0,
+      "mode": 20,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "ffb66fed91a1986c05ca1c3aa64ac18c3fd818c19ab9646188ab97210d96b5e3"
+    },
+    {
+      "name": "o32-indirect-20-1234",
+      "uid": 1234,
+      "mode": 20,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "2ec2873069ebca5f89882e3e3704b44fa3239b186db40888fa19f726d00b8c20"
+    },
+    {
+      "name": "o32-indirect-21-0",
+      "uid": 0,
+      "mode": 21,
+      "contract": "subset",
+      "policy": "short family rejected",
+      "sha256": "35dbe15ffa677d70e64fa400543f867f9ce30be7710da57fdb853568b5f0a219"
+    },
+    {
+      "name": "o32-indirect-21-1234",
+      "uid": 1234,
+      "mode": 21,
+      "contract": "subset",
+      "policy": "short family rejected",
+      "sha256": "2f0fa1faff6dd5056167a3d514afb21f2f53ecca85ea4a1bcfdc3a6e411855ce"
+    },
+    {
+      "name": "o32-indirect-22-0",
+      "uid": 0,
+      "mode": 22,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "83914c56ef6873a1015f3a108f1cfafffcdc93310602d579577e1210f2069d5d"
+    },
+    {
+      "name": "o32-indirect-22-1234",
+      "uid": 1234,
+      "mode": 22,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "f09cbe3e73989830912003cd829bd85470618083f1a96bac47ecf807b86b1137"
+    },
+    {
+      "name": "o32-indirect-23-0",
+      "uid": 0,
+      "mode": 23,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "517e28e4384cb1679dd250b918292045b3a8358cdc600dae18cd925153a12d3a"
+    },
+    {
+      "name": "o32-indirect-23-1234",
+      "uid": 1234,
+      "mode": 23,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "6b08b6b8fd2f2a26b2edeb974891f313ee69cbfe5f458c85f6141370fe15fa2d"
+    },
+    {
+      "name": "o32-indirect-24-0",
+      "uid": 0,
+      "mode": 24,
+      "contract": "subset",
+      "policy": "oversize address rejected",
+      "sha256": "e513c0c2e91044ca39eeadd119dc50e1dbce0349c653c6637c43c278144c4180"
+    },
+    {
+      "name": "o32-indirect-24-1234",
+      "uid": 1234,
+      "mode": 24,
+      "contract": "subset",
+      "policy": "oversize address rejected",
+      "sha256": "845520b829eaeb477045d0ff9fc73db80f4970e2046c38a056d733a87a1524ec"
+    },
+    {
+      "name": "o32-indirect-25-0",
+      "uid": 0,
+      "mode": 25,
+      "contract": "subset",
+      "policy": "null input returns EFAULT",
+      "sha256": "1c885c5d609964cec4865d773388ed9992e49cf618aae91db2f45afb3ff8ec8b"
+    },
+    {
+      "name": "o32-indirect-25-1234",
+      "uid": 1234,
+      "mode": 25,
+      "contract": "subset",
+      "policy": "null input returns EFAULT",
+      "sha256": "c03e2bc900caf2ef251b0fa88df9f9324bd83ae4f843fdc6d22ad4362fbf4ead"
+    },
+    {
+      "name": "o32-indirect-26-0",
+      "uid": 0,
+      "mode": 26,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "8d2ec0eb378d71930d8548ba94548690d751b231b3bc3746e3ba1e970d000106"
+    },
+    {
+      "name": "o32-indirect-26-1234",
+      "uid": 1234,
+      "mode": 26,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "fbe9ad9a45a16a7743348cb71a780bf3762817d30527b164a68821879ccabee2"
+    },
+    {
+      "name": "o32-indirect-27-0",
+      "uid": 0,
+      "mode": 27,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "7db3a3cb9d4d6d2d114d8e083cc4f176544cec63ddabb05dc658c733ec06ad7f"
+    },
+    {
+      "name": "o32-indirect-27-1234",
+      "uid": 1234,
+      "mode": 27,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "ae0240e7bb6218328b7777af4595f20eb3f5d6a28412e2c8e073601178e7ef4f"
+    },
+    {
+      "name": "o32-indirect-28-0",
+      "uid": 0,
+      "mode": 28,
+      "contract": "subset",
+      "policy": "native pathname capacity enforced",
+      "sha256": "528eb000695daa4af45431084fa06d579e535ec799a409f67311b43392e5ff9b"
+    },
+    {
+      "name": "o32-indirect-28-1234",
+      "uid": 1234,
+      "mode": 28,
+      "contract": "subset",
+      "policy": "native pathname capacity enforced",
+      "sha256": "1cbd94cd7fc93879c643d36a5ba966393d3cd2df26d3837b13e18b576f89e986"
+    },
+    {
+      "name": "o32-indirect-3-0",
+      "uid": 0,
+      "mode": 3,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "e4f0de3d7772f35dffdea4db0f89086ac59c56f824c27cf3d231f3b29d08a516"
+    },
+    {
+      "name": "o32-indirect-3-1234",
+      "uid": 1234,
+      "mode": 3,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "4a5ee0cb54ec627a0c1a647fa111d7d6d0860ca91ca1ef929d069c0957808b2e"
+    },
+    {
+      "name": "o32-indirect-4-0",
+      "uid": 0,
+      "mode": 4,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "245386d998a11b78492d3c58ca1853e61b048635fff7a72af5d7c751743df08f"
+    },
+    {
+      "name": "o32-indirect-4-1234",
+      "uid": 1234,
+      "mode": 4,
+      "contract": "IRIX parity",
+      "policy": null,
+      "sha256": "87ed8155cf4645d703e72ab970f5f329096586123c59bfab6499bc76a7e9abdb"
+    }
+  ],
+  "qualifier_sha256": "0ce870a9e672f6c91e48dd21ddcef4f0195a7024cd03975f8845809c9ce84e35"
+}

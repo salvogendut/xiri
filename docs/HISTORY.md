@@ -5,6 +5,14 @@ status statements describe individual checkpoints and may be superseded by
 later entries. Use the [current README](../README.md), [development guide](DEVELOPMENT.md)
 and [selected image](../lab/irix-installed-desktop/image.json) for current work.
 
+The [2026-11-04 terminal cycle](results/2026-11-04-irix-terminal.md) adds
+socket pairs, one-descriptor legacy Unix transfers and the measured PTY
+master check to the module. With the original helper and native PTY aliases,
+GNOME Terminal starts the original IRIX shell: typed commands, the correct
+home directory and normal `exit` work. Interactive terminal detection remains
+incomplete. Candidate resources and runtime changes remain separate from
+the published GIMP CHD.
+
 The [2026-11-04 GNOME cycle](results/2026-11-04-irix-gnome.md) fixes gedit's
 measured ORBit Unix-listener loop in the loadable module. It passes 136 Unix
 socket observations and 368 existing IPv4 regressions on the unchanged core

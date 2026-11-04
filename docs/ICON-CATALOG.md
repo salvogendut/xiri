@@ -1,7 +1,8 @@
 # Icon Catalog application checklist
 
 Updated 2026-11-04 after the [startup survey](results/2026-11-03-irix-catalog.md)
-and [GNOME follow-up](results/2026-11-04-irix-gnome.md).
+and the [GNOME](results/2026-11-04-irix-gnome.md) and
+[terminal](results/2026-11-04-irix-terminal.md) follow-ups.
 This is the requested list to use when returning to failures one by one.
 It preserves all **166 registered entries in 17 system tabs** from the supplied
 IRIX 6.5.22 installation, including unresolved source links that the running
@@ -37,7 +38,9 @@ settings or installing software.
 follow-up uses the pathname Unix socket module and 50 additional original
 resource paths in a disposable guest. Gedit passes basic document checks;
 the eight other previously busy targets have new bounded startup observations.
-These follow-ups are not yet included in the published GIMP CHD. Historical
+The later terminal cycle adds socket pairs, one-descriptor transfer and native
+PTY setup; its individual rows distinguish shell checks from terminal-program
+support. These follow-ups are not yet included in the published GIMP CHD. Historical
 survey evidence is retained; untested behavior is not promoted to a pass.
 
 
@@ -68,15 +71,15 @@ survey evidence is retained; untested behavior is not promoted to a pass.
 | `evolution` | `/usr/freeware/bin/evolution` | **Error dialog in candidate.** Evolution reaches a copy-error dialog; /usr/freeware/share/evolution/default_user/* is missing. Main mail use and normal exit remain untested. [Follow-up](results/2026-11-04-irix-gnome.md). |
 | `galculator` | `/usr/freeware/bin/galculator` | **Launch fails.** Exits 1. Fontconfig cannot load its default configuration and reports no fonts; UTF-8 conversion also warns. This is separate from the X-server fonts already used by the desktop. |
 | `gedit` | `/usr/freeware/bin/gedit` | **Basic document checks pass in candidate.** Freeware double-click, opened/closed icon artwork, text editing, new-file save, reopen, overwrite and GUI exit work as xiritest. Preference writes still fail; help, image loading and plug-ins need further work. The Applications alias has not been double-clicked separately. [Follow-up](results/2026-11-04-irix-gnome.md). |
-| `glynx` | `/usr/freeware/bin/glynx` | **Terminal login fails in candidate.** The glynx wrapper now opens GNOME Terminal and a login-error dialog. It reports unable to fork: Function not implemented, plus failed Terminal preferences. Trace child/PTY setup before attributing this to the fork syscall itself. [Follow-up](results/2026-11-04-irix-gnome.md). |
-| `gnome-terminal` | `/usr/freeware/bin/gnome-terminal` | **Terminal login fails in candidate.** GNOME Terminal opens with a login-error dialog and no usable shell. It reports unable to fork: Function not implemented, plus failed preferences. The precise unsupported child/PTY setup call remains to diagnose. [Follow-up](results/2026-11-04-irix-gnome.md). |
+| `glynx` | `/usr/freeware/bin/glynx` | **Missing Lynx payload in candidate.** The original glynx wrapper now gets through GNOME Terminal startup and exits quickly. It invokes gnome-terminal -x lynx, but /usr/freeware/bin/lynx is absent from both the imported tree and its native alias. Import the actual browser and package resources before testing it; catalog double-click and browser use remain unqualified. [Follow-up](results/2026-11-04-irix-terminal.md). |
+| `gnome-terminal` | `/usr/freeware/bin/gnome-terminal` | **Shell commands and catalog launch pass; interactive setup incomplete.** GNOME Terminal now launches from Applications, changes its running icon, accepts original IRIX shell commands in /usr/people/xiritest and closes on typed exit. The original shell has no normal prompt because terminal setup remains incomplete. An explicitly selected native-shell handoff passes prompt, foreground resize and exit checks; the catalog default is unchanged. [Follow-up](results/2026-11-04-irix-terminal.md). |
 | `gnome-terminal --login` | `/usr/freeware/bin/gnome-terminal --login` | Unresolved target in the original source inventory; no launch attempted. The target contains command-line text; check registration/action handling. |
 | `gtop` | `/usr/freeware/bin/gtop` | **Launch fails.** Exits 1 with Function not implemented while writing its GNOME preferences; its help-topics file is also unavailable. |
 | `jot` | `/usr/sbin/jot` | **Exits 0 without a new window.** |
 | `lyx` | `/usr/freeware/bin/lyx` | **Window observed.** Question. Use and normal exit remain untested. LyX Warning! Couldn't determine system directory. Try the '-sysdir' command line parameter or set the environment variable LYX_DIR_11x to the LyX system directory containing the file 'chkconfig.ltx'. Using buil… |
 | `maker` | `/usr/frame/bin/maker` | Unresolved target in the original source inventory; no launch attempted. |
 | `MediaMail` | `/usr/bin/X11/MediaMail` | Unresolved target in the original source inventory; no launch attempted. |
-| `midnight-commander` | `/usr/freeware/bin/midnight-commander` | **Terminal login fails in candidate.** The Midnight Commander wrapper reaches the same GNOME Terminal login error: unable to fork: Function not implemented. The requested terminal program is not qualified. [Follow-up](results/2026-11-04-irix-gnome.md). |
+| `midnight-commander` | `/usr/freeware/bin/midnight-commander` | **Missing Midnight Commander payload in candidate.** The original wrapper now gets through GNOME Terminal startup and exits quickly. It invokes gnome-terminal -x mc, but /usr/freeware/bin/mc is absent from both the imported tree and its native alias. Import the actual file manager and package resources before testing it; catalog double-click and file operations remain unqualified. [Follow-up](results/2026-11-04-irix-terminal.md). |
 | `Mozilla` | `/var/netscape/mozilla/mozilla` | **Exits 1 without a window.** Cannot find mozilla runtime directory. Exiting. |
 | `mozilla` | `/usr/bin/X11/mozilla` | **Exits 1 without a window.** Cannot find mozilla runtime directory. Exiting. |
 | `nedit` | `/usr/sbin/nedit` | **Exits 126 without a window.** xiri-catalog: /usr/sbin/nedit: cannot execute |

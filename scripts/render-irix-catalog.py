@@ -24,7 +24,7 @@ def result(e):
  if e.get('case') in followups['cases']:
   later=followups['cases'][e['case']]
   assert later['target']==e['target']
-  return '**'+esc(later['label'])+'.** '+esc(later['note'])+' [Follow-up]('+followups['report']+').'
+  return '**'+esc(later['label'])+'.** '+esc(later['note'])+' [Follow-up]('+later.get('report',followups['report'])+').'
  if e.get('prior_qualification'):
   if e['name']=='gimp':return '[Prior bounded pass: setup, paint, XCF/PNG save/reopen, catalog launch and exit](results/2026-11-03-irix-gimp.md). Preference backup and wider plug-ins remain open.'
   if e['name']=='xmahjongg':return '[Prior bounded rendering/interaction pass](results/2026-11-03-newport-xmahjongg.md); a complete game remains unqualified.'
@@ -56,7 +56,8 @@ def result(e):
 intro='''# Icon Catalog application checklist
 
 Updated 2026-11-04 after the [startup survey](results/2026-11-03-irix-catalog.md)
-and [GNOME follow-up](results/2026-11-04-irix-gnome.md).
+and the [GNOME](results/2026-11-04-irix-gnome.md) and
+[terminal](results/2026-11-04-irix-terminal.md) follow-ups.
 This is the requested list to use when returning to failures one by one.
 It preserves all **166 registered entries in 17 system tabs** from the supplied
 IRIX 6.5.22 installation, including unresolved source links that the running
@@ -92,7 +93,9 @@ settings or installing software.
 follow-up uses the pathname Unix socket module and 50 additional original
 resource paths in a disposable guest. Gedit passes basic document checks;
 the eight other previously busy targets have new bounded startup observations.
-These follow-ups are not yet included in the published GIMP CHD. Historical
+The later terminal cycle adds socket pairs, one-descriptor transfer and native
+PTY setup; its individual rows distinguish shell checks from terminal-program
+support. These follow-ups are not yet included in the published GIMP CHD. Historical
 survey evidence is retained; untested behavior is not promoted to a pass.
 '''
 parts=[intro]

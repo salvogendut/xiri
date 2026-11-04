@@ -21,7 +21,10 @@ def main():
         help="Install a candidate module in the disposable disk and reboot before login")
     parser.add_argument("--seed",type=Path,
         help="Clone an earlier cleanly halted catalog guest, including its disk overlay")
+    parser.add_argument("--pty-setup",type=Path,
+        help="Install and run a candidate native PTY setup before desktop login")
     args=parser.parse_args()
+    if args.pty_setup:args.extra_file.append(args.pty_setup)
     bundle=ROOT/'.work/images/xiri-netbsd-desktop-20261103-gimp'
     manifest = json.loads((bundle/'manifest.json').read_text())
     assert manifest['session_manager'] == 'xdm'
@@ -130,10 +133,16 @@ def main():
                 lab.logged_in=True;lab.clean_shutdown=False
             record['candidate_module']=candidate
         cmd('export PATH=/usr/local/bin:/usr/X11R7/bin:/bin:/sbin:/usr/bin:/usr/sbin; ulimit -c 0')
+        if args.pty_setup:
+            source='/cdrom/'+args.pty_setup.name
+            cmd('mount -t cd9660 -o ro /dev/cd0a /cdrom')
+            assert get('sha256 -q '+shlex.quote(source)).strip()==sha256(args.pty_setup)
+            record['pty_setup']=dict(source=str(args.pty_setup),sha256=sha256(args.pty_setup),
+                output=cmd('install -m 555 '+shlex.quote(source)+' /usr/local/libexec/xiri/setup-pty.sh; /bin/sh /usr/local/libexec/xiri/setup-pty.sh',120))
         cmd('export DISPLAY=:0; XAUTHORITY=$(ps -axww -o args= | awk \'$1 == "/usr/X11R7/bin/Xorg" {for(i=1;i<NF;i++) if($i=="-auth") print $(i+1)}\'); export XAUTHORITY')
         wait('xwininfo -root -tree | grep \'"xlogin"\' >/dev/null',120)
         guest.monitor('disp compositor gl')
-        cmd('mount -t cd9660 -o ro /dev/cd0a /cdrom; mkdir -p /tmp/xiri-catalog; cd /tmp/xiri-catalog; cc -O2 -Wall -Wextra -Werror -I/usr/X11R7/include /cdrom/type.c -L/usr/X11R7/lib -Wl,-rpath,/usr/X11R7/lib -lX11 -lXtst -o type; cc -O2 -Wall -Wextra -Werror -I/usr/X11R7/include /cdrom/place.c -L/usr/X11R7/lib -Wl,-rpath,/usr/X11R7/lib -lX11 -o place; cc -O2 -Wall -Wextra -Werror -I/usr/X11R7/include /cdrom/catalog-input.c -L/usr/X11R7/lib -Wl,-rpath,/usr/X11R7/lib -lX11 -lXtst -o catalog-input; cc -O2 -Wall -Wextra -Werror /cdrom/app-guard.c -o app-guard; cc -O2 -Wall -Wextra -Werror /cdrom/guard-control.c -o guard-control; cc -O2 -Wall -Wextra -Werror -I/usr/X11R7/include /cdrom/windows.c -L/usr/X11R7/lib -Wl,-rpath,/usr/X11R7/lib -lX11 -o windows; cc -O2 -Wall -Wextra -Werror -I/usr/X11R7/include /cdrom/window-control.c -L/usr/X11R7/lib -Wl,-rpath,/usr/X11R7/lib -lX11 -o window-control',180)
+        cmd(('' if args.pty_setup else 'mount -t cd9660 -o ro /dev/cd0a /cdrom; ')+'mkdir -p /tmp/xiri-catalog; cd /tmp/xiri-catalog; cc -O2 -Wall -Wextra -Werror -I/usr/X11R7/include /cdrom/type.c -L/usr/X11R7/lib -Wl,-rpath,/usr/X11R7/lib -lX11 -lXtst -o type; cc -O2 -Wall -Wextra -Werror -I/usr/X11R7/include /cdrom/place.c -L/usr/X11R7/lib -Wl,-rpath,/usr/X11R7/lib -lX11 -o place; cc -O2 -Wall -Wextra -Werror -I/usr/X11R7/include /cdrom/catalog-input.c -L/usr/X11R7/lib -Wl,-rpath,/usr/X11R7/lib -lX11 -lXtst -o catalog-input; cc -O2 -Wall -Wextra -Werror /cdrom/app-guard.c -o app-guard; cc -O2 -Wall -Wextra -Werror /cdrom/guard-control.c -o guard-control; cc -O2 -Wall -Wextra -Werror -I/usr/X11R7/include /cdrom/windows.c -L/usr/X11R7/lib -Wl,-rpath,/usr/X11R7/lib -lX11 -o windows; cc -O2 -Wall -Wextra -Werror -I/usr/X11R7/include /cdrom/window-control.c -L/usr/X11R7/lib -Wl,-rpath,/usr/X11R7/lib -lX11 -o window-control',180)
         cmd('install -m 555 /cdrom/app.sh /cdrom/observe.sh /tmp/xiri-catalog/')
         guest.monitor('key type xiritest');guest.monitor('key Return');guest.monitor('key type xiritest');guest.monitor('key Return')
         wait('grep -q "Logs: " /usr/people/xiritest/.xsession-errors',120)
