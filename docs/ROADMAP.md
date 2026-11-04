@@ -93,8 +93,28 @@ feedback remains unresolved. The [cumulative CHD](results/2026-11-04-irix-acroba
 now packages these changes and passes cold application, full-screen xdm,
 both user desktops, recovery, catalog and clean-shutdown checks.
 
-Return to these entries individually, as requested. Next investigate NEdit
-file creation and the missing Lynx/Midnight Commander payloads. Keep Acrobat's
+Per the user's 2026-11-04 priority change, defer individual application repairs
+and first qualify system stability. The [native stability probe](../lab/system-stability/README.md)
+repeats X input, child supervision, both user desktops, logout and clean halt
+with diagnostics that distinguish transport, process and kernel failures.
+Preserve the survey's native child-control stalls, failed batch halt and the
+Acrobat image's transient native input timeout as unresolved evidence until
+a cause is reproduced and a correction is tested.
+The [system cycle](results/2026-11-04-system-stability.md) has also reproduced
+and corrected native NetBSD32 CD9660 ownership/mask translation; that cause is
+separate from the earlier stalls. The corrected core passes 158 CD checks.
+Two cold boots pass 1,200 native input cycles, 160 child-launch cases, both
+user desktops and active-desktop shutdown, including a candidate run with
+96 MiB held by an independent process and measured paging. The intermittent
+older failures were not reproduced. Package and qualify the corrected core
+in a replacement manual image before changing the current image selection.
+
+The next shared-system candidates are the native Xft/Render and Type1 font
+gaps, common IRIX filesystem/timing/job-control interfaces, and general
+deployment beyond the current test account and custom core hooks. Select the
+next cycle from measured impact after the stability results. Keep NEdit file
+creation and the missing Lynx/Midnight Commander payloads queued for the later
+application pass. Keep Acrobat's
 wrapper execution feedback, broader PDF use and print/browser integration
 as separate follow-ups.
 For each repaired entry qualify catalog double-click, running-icon feedback,

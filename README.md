@@ -64,6 +64,15 @@ from Icon Catalog, although its icon does not change to the running shape.
 These cumulative module, runtime and resource updates are packaged in the
 current manual image; earlier images and their manual state are retained.
 
+Individual application repairs are paused for the
+[system-stability cycle](docs/results/2026-11-04-system-stability.md). It adds
+repeatable native input, process-cleanup, login/logout and shutdown diagnostics,
+and fixes a native NetBSD32 CD mount defect that made CD files unreadable to
+ordinary users. The corrected core passes 158 CD ABI checks; the IRIX module
+is unchanged. The selected manual CHD still has the previous core pending
+separate image packaging and qualification. Earlier intermittent stalls remain
+tracked until their causes are reproduced.
+
 ## Related repositories
 
 Xiri development uses these sibling checkouts:

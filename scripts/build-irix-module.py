@@ -44,7 +44,8 @@ def main():
     paths += ['sys/modules/compat_irix_o32/Makefile', 'sys/modules/Makefile',
               'sys/arch/mips/conf/files.mips',
               'sys/arch/mips/mips/kobj_machdep.c', 'sys/kern/sys_select.c',
-              'sys/kern/kern_lwp.c', 'sys/sys/proc.h', 'sys/uvm/uvm_pglist.c']
+              'sys/kern/kern_lwp.c', 'sys/sys/proc.h', 'sys/uvm/uvm_pglist.c',
+              'sys/compat/netbsd32/netbsd32.h', 'sys/compat/netbsd32/netbsd32_fs.c']
     result = dict(schema=1, status='built', source=str(source),
                   source_revision=output('git', '-C', str(source), 'rev-parse', 'HEAD').strip(),
                   source_status=output('git', '-C', str(source), 'status', '--short'),

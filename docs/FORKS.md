@@ -42,6 +42,22 @@ not repin qualified kernels, emulator binaries, runtime resources or guest disks
 
 ## IRIS upstream updates
 
+The 2026-11-04 system-stability cycle fetched
+`https://github.com/techomancer/iris.git` again at 18:15 UTC. Upstream remains
+`3bcde9f702f0b52fdb296eeda4fe10b26555f3da`, already integrated in IRIS `xiri`
+`bd67e65ff159748635dd484adf7fac94a591f84b`. There are no new commits to merge
+or affected emulator changes to rebuild. The
+[system-stability cycle](results/2026-11-04-system-stability.md) retains the
+qualified image's pinned emulator and uses disposable CHD overlays. NetBSD
+`xiri` commit `0cd56e7a286c4cd3d67ab7cc971b233a83ac1655` is pushed; it fixes
+native NetBSD32 CD9660 ownership/mask translation. The separate
+`.work/netbsd-stability-build` core passes 158 CD checks and a complete loaded
+desktop/login/logout/active-shutdown run. The original GIMP image passes the
+separate baseline stability run while retaining its known CD failures. The
+[build ledger](../lab/system-stability/build.json) records matching committed
+source bytes and the unchanged IRIX module. The manual CHD and pinned lab
+worktrees remain unchanged pending separate image qualification.
+
 The 2026-11-04 preferences/Acrobat cycle again fetched
 `https://github.com/techomancer/iris.git`. Upstream remains
 `3bcde9f702f0b52fdb296eeda4fe10b26555f3da`, already integrated in IRIS `xiri`

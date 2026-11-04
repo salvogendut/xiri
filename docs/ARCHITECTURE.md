@@ -129,6 +129,14 @@ The pthread-initialization work adds another core dependency: an optional
 before pending-signal delivery. This hook also needs upstream integration or
 an equivalent supported interface for deployment on a standard kernel.
 
+The [native stability cycle](results/2026-11-04-system-stability.md) also fixes
+CD9660 mount translation for native NetBSD o32 programs in `compat_netbsd32`.
+It translates ownership and permission masks in modern mount arguments and
+preserves the legacy layout, defaults and update behavior. This is a general
+native compatibility correction, separate from the IRIX personality and its
+core hooks; the IRIX module is byte-identical. The corrected core is qualified
+in disposable overlays before a future manual-image update.
+
 The [traditional-signal adapter](results/2026-11-01-irix-signal.md) adds
 explicit foreign frame conversion around native signal, machine-context and
 PCU interfaces, without another core-kernel hook. Its measured o32/n32
