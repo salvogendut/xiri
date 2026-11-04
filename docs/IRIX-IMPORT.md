@@ -285,3 +285,25 @@ runs as xiritest in `/usr/people/xiritest`; no `.gimp-1.2` from the source
 image or its package database is copied. See the
 [application observations](results/2026-11-03-irix-gimp.md) for tested paths
 and remaining compatibility gaps.
+
+### GNOME VFS and gedit resources (2026-11-04)
+
+`python3 scripts/stage-irix-gnome.py` reads the same supplied installation
+with `guestfish --ro` and XFS `ro,norecovery`. It stages four trees under
+`/usr/freeware`: `share/gedit`, `lib32/gedit`, `lib32/vfs` and `etc/vfs`, plus
+`lib32/libgnomevfs-pthread.so`, `lib32/libbz2.so.1` and
+`share/pixmaps/gedit-icon.png`. Every destination is the original path below
+`/emul/irix`. The [ledger](../lab/irix-gnome/resources.json) lists 42 files
+and eight directories, all source/destination pairs, hashes and modes.
+ELF files use 0555, data 0644 and directories 0755, with root ownership.
+
+The stage uses the installed-desktop and GIMP inventories to resolve existing
+dependencies; dynamically loaded VFS and editor modules are explicit inputs.
+The generated `.work/irix-gnome-resources/payload.tgz` is local-only. Verify
+every file hash and each entry's owner, group and mode after extraction.
+The diagnostic guest did so before launching gedit. Its existing native
+`/usr/freeware` alias remains necessary for native helpers. No old `.gnome`
+profile or package database is copied. The [application record](results/2026-11-04-irix-gnome.md)
+distinguishes working text saves from failing preferences and unresolved
+image/help resources; module support alone does not supply these files.
+This resource payload has not yet been packaged in a replacement manual CHD.

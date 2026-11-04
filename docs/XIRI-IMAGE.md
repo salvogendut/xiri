@@ -48,6 +48,11 @@ editing, XCF/PNG save and reopen, normal exit and catalog launch. Preference
 backups need `rename`, and wider plug-ins remain unqualified. xosview still
 needs IRIX statistics interfaces.
 
+The later [GNOME/gedit cycle](results/2026-11-04-irix-gnome.md) qualifies a
+pathname Unix socket module and additional GNOME resources in a disposable
+copy of this disk. Those changes are not included in the selected manual
+CHD yet; its module and resource pins below still describe the GIMP image.
+
 The [desktop behavior image](results/2026-11-02-desktop-behavior-image.md)
 adds native FAM execution feedback, the granite backdrop and filesystem/home/
 Dumpster desktop icons. The source-disk probe verifies xmahjongg changing to

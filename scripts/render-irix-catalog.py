@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Render the 2026-11-03–04 evidence into the maintained per-tab checklist."""
+"""Render the startup survey and later qualified follow-ups by catalog tab."""
 import hashlib,json
 from pathlib import Path
 root=Path(__file__).resolve().parent.parent
@@ -10,6 +10,9 @@ inv=json.loads(inventory.read_text())
 obs={o['case']['id']:o for o in report['observations']}
 assert set(obs)=={c['id'] for c in inv['cases']}
 reviews=report['reviews']
+followups=json.loads((root/'lab/irix-catalog/followups.json').read_text())
+assert followups['inventory_sha256']==report['inventory_sha256']
+assert set(followups['cases']) <= set(obs)
 def esc(s):return s.replace('|','\\|').replace('`',"'").replace('\n',' ')
 def diagnostic(o):
  lines=[x.strip() for x in (o['stdout']+'\n'+o['stderr']).splitlines() if x.strip()]
@@ -18,6 +21,10 @@ def diagnostic(o):
  text=' '.join(lines)
  return ' '+esc(text[:210]+('…' if len(text)>210 else ''))
 def result(e):
+ if e.get('case') in followups['cases']:
+  later=followups['cases'][e['case']]
+  assert later['target']==e['target']
+  return '**'+esc(later['label'])+'.** '+esc(later['note'])+' [Follow-up]('+followups['report']+').'
  if e.get('prior_qualification'):
   if e['name']=='gimp':return '[Prior bounded pass: setup, paint, XCF/PNG save/reopen, catalog launch and exit](results/2026-11-03-irix-gimp.md). Preference backup and wider plug-ins remain open.'
   if e['name']=='xmahjongg':return '[Prior bounded rendering/interaction pass](results/2026-11-03-newport-xmahjongg.md); a complete game remains unqualified.'
@@ -48,7 +55,8 @@ def result(e):
  raise RuntimeError(status)
 intro='''# Icon Catalog application checklist
 
-Updated 2026-11-04 after the [startup survey](results/2026-11-03-irix-catalog.md).
+Updated 2026-11-04 after the [startup survey](results/2026-11-03-irix-catalog.md)
+and [GNOME follow-up](results/2026-11-04-irix-gnome.md).
 This is the requested list to use when returning to failures one by one.
 It preserves all **166 registered entries in 17 system tabs** from the supplied
 IRIX 6.5.22 installation, including unresolved source links that the running
@@ -79,6 +87,13 @@ still need individual double-click, running-icon, useful-action, persistence
 and normal-exit tests. Terminal tools ran with stdin closed and may require
 arguments or a terminal. System/hardware tools were observed without applying
 settings or installing software.
+
+**Later candidate-module checks are identified in their rows.** The GNOME
+follow-up uses the pathname Unix socket module and 50 additional original
+resource paths in a disposable guest. Gedit passes basic document checks;
+the eight other previously busy targets have new bounded startup observations.
+These follow-ups are not yet included in the published GIMP CHD. Historical
+survey evidence is retained; untested behavior is not promoted to a pass.
 '''
 parts=[intro]
 for page in sorted({e['page'] for e in inv['entries']}):

@@ -15,6 +15,12 @@ def main():
     parser.add_argument("--interactive",action="store_true")
     parser.add_argument("--limit",type=int)
     parser.add_argument("--after-case",help="Resume after this case in the partition's fixed order")
+    parser.add_argument("--extra-file",type=Path,action="append",default=[],
+        help="Add a diagnostic file to the read-only probe CD")
+    parser.add_argument("--module-build",type=Path,
+        help="Install a candidate module in the disposable disk and reboot before login")
+    parser.add_argument("--seed",type=Path,
+        help="Clone an earlier cleanly halted catalog guest, including its disk overlay")
     args=parser.parse_args()
     bundle=ROOT/'.work/images/xiri-netbsd-desktop-20261103-gimp'
     manifest = json.loads((bundle/'manifest.json').read_text())
@@ -56,12 +62,32 @@ def main():
         cases=cases[ids.index(args.after_case)+1:]
     if args.limit:cases=cases[:args.limit]
     (media/'inventory.json').write_text(json.dumps(inventory,indent=2)+'\n')
+    for source in args.extra_file:
+        destination=media/source.name
+        if not source.is_file() or destination.exists():
+            parser.error('extra file missing or collides with probe media: '+str(source))
+        shutil.copyfile(source,destination)
+    candidate=None
+    if args.module_build:
+        candidate=json.loads((args.module_build/'module.json').read_text())
+        artifact=candidate['artifacts']['compat_irix_o32.kmod']
+        source=args.module_build/artifact['path']
+        assert sha256(source)==artifact['sha256']
+        assert candidate['artifacts']['netbsd']['sha256']==manifest['pin']['native_kernel_sha256']
+        assert candidate['artifacts']['netbsd.boot']['sha256']==manifest['pin']['boot_kernel_sha256']
+        assert not (media/'compat_irix_o32.kmod').exists()
+        shutil.copyfile(source,media/'compat_irix_o32.kmod')
     p.run(['genisoimage','-quiet','-R','-J','-o',d/'probe.iso',media])
     disk = d/'disk.chd'
     source_disk = bundle/'netbsd-xiri.chd'
     source_digest = sha256(source_disk)
     p.run(['cp','--reflink=auto','--sparse=always',source_disk,disk])
     shutil.copyfile(profile,d/'nvram.bin')
+    if args.seed:
+        seed=json.loads((args.seed/'result.json').read_text())
+        assert seed['clean_shutdown'] and seed['source_unchanged']
+        assert sha256(args.seed/'disk.chd')==source_digest
+        p.run(['cp','--reflink=auto',args.seed/'disk.chd.diff.chd',d/'disk.chd.diff.chd'])
     config = (bundle/'iris.toml').read_text().replace('tftp_dir = "tftp"',
         'tftp_dir = '+json.dumps(str(d/'no-tftp')))
     assert 'tftp_dir = '+json.dumps(str(d/'no-tftp')) in config
@@ -75,11 +101,34 @@ def main():
     lab.launch = disk_launch
     guest=Guest(lab);cmd,get,wait=guest.command,guest.read_text,guest.wait_for
     record=dict(status='diagnostic',bundle=str(bundle),pin=manifest['pin'],module=manifest['irix_module'],harness_sha256=sha256(Path(__file__)),clean_shutdown=False)
+    if args.seed:
+        record['seed']=dict(path=str(args.seed),result_sha256=sha256(args.seed/'result.json'),
+            overlay_sha256=sha256(args.seed/'disk.chd.diff.chd'))
     def interrupted(signum,frame):raise RuntimeError('Interrupted')
     signal.signal(signal.SIGTERM,interrupted)
     try:
         lab.start(boot=False)
         lab.wait('login: ',600);lab.send('root');lab.wait('xiri-indy# ',30);lab.logged_in=True
+        if candidate:
+            installed=get('sha256 -q '+manifest['irix_module']['path']).strip()
+            if installed!=candidate['artifacts']['compat_irix_o32.kmod']['sha256']:
+                cmd('mount -t cd9660 -o ro /dev/cd0a /cdrom')
+                assert get('sha256 -q /cdrom/compat_irix_o32.kmod').strip()==candidate['artifacts']['compat_irix_o32.kmod']['sha256']
+                cmd('install -m 444 /cdrom/compat_irix_o32.kmod '+manifest['irix_module']['path'])
+                record['install_shutdown']=KernelLog(lab,int(manifest['kernel_msgbuf_symbol'],16)).halt()
+                # The graphical PROM does not print its menu to the serial port.
+                # Preserve the install boot's logs and cold-start the same private
+                # disk/NVRAM with a new owned emulator process.
+                lab.close()
+                reboot=d/'boot-after-install';reboot.mkdir()
+                shutil.copyfile(d/'nvram.bin',reboot/'nvram.bin')
+                lab=p.Lab(SimpleNamespace(mode='ordinary',debugger=False,boot_timeout=600),reboot,config_text=config)
+                launch=lab.launch;lab.launch=disk_launch
+                guest=Guest(lab);cmd,get,wait=guest.command,guest.read_text,guest.wait_for
+                lab.start(boot=False)
+                lab.wait('login: ',600);lab.send('root');lab.wait('xiri-indy# ',30)
+                lab.logged_in=True;lab.clean_shutdown=False
+            record['candidate_module']=candidate
         cmd('export PATH=/usr/local/bin:/usr/X11R7/bin:/bin:/sbin:/usr/bin:/usr/sbin; ulimit -c 0')
         cmd('export DISPLAY=:0; XAUTHORITY=$(ps -axww -o args= | awk \'$1 == "/usr/X11R7/bin/Xorg" {for(i=1;i<NF;i++) if($i=="-auth") print $(i+1)}\'); export XAUTHORITY')
         wait('xwininfo -root -tree | grep \'"xlogin"\' >/dev/null',120)
@@ -90,7 +139,8 @@ def main():
         wait('grep -q "Logs: " /usr/people/xiritest/.xsession-errors',120)
         cmd('job=$(sed -n "s/.*Logs: //p" /usr/people/xiritest/.xsession-errors | head -1); XAUTHORITY=$(sed -n "s/.* authority=//p" "$job/identity"); test "$XAUTHORITY" != default || XAUTHORITY=/usr/people/xiritest/.Xauthority; export XAUTHORITY DISPLAY=127.0.0.1:0')
         wait('test -s "$job/handoff" && /usr/local/libexec/xiri/x11-check ready',180)
-        assert get('sha256 -q '+manifest['irix_module']['path']).strip()==manifest['irix_module']['sha256']
+        expected_module=candidate['artifacts']['compat_irix_o32.kmod']['sha256'] if candidate else manifest['irix_module']['sha256']
+        assert get('sha256 -q '+manifest['irix_module']['path']).strip()==expected_module
         cmd('mkdir -p /usr/people/xiritest/.xiri-catalog && chown xiritest:xiritest /usr/people/xiritest/.xiri-catalog; xset r off')
         cmd("su -l xiritest -c '/tmp/xiri-catalog/app-guard 10000 /tmp/xiri-catalog/guard-control' >guard-control.log; test \"$?\" = 37; grep -q CATALOG_NATIVE_CHILD_FINISHED guard-control.log; grep -q 'absent=1 valid=1' guard-control.log")
         cmd("su -l xiritest -c '/tmp/xiri-catalog/app-guard 1000 /tmp/xiri-catalog/guard-control linger' >guard-timeout.log; test \"$?\" = 0; grep -q 'absent=1 valid=1' guard-timeout.log; grep -q 'reason=timeout' guard-timeout.log")

@@ -39,6 +39,13 @@ windows, errors and busy processes without a window; useful operation still
 needs individual checks. Freeware NEdit accepts text but cannot save, and
 Acrobat's launcher needs the rest of its original installation.
 
+The [GNOME follow-up](docs/results/2026-11-04-irix-gnome.md) now resolves
+gedit's busy ORBit startup with pathname Unix stream sockets in the module.
+With 50 additional original resource paths, gedit edits, saves/reopens and
+overwrites a text document and launches through Freeware with running-icon
+feedback. Preferences and several resources still need work. This follow-up
+is qualified in a disposable guest; it is not yet in the manual GIMP CHD.
+
 ## Related repositories
 
 Xiri development uses these sibling checkouts:

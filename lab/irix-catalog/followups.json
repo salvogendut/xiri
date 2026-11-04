@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "inventory_sha256": "64d66708cb032fd279f8061fff0e263575983849011098c0a8484b3267e7720a",
+  "report": "results/2026-11-04-irix-gnome.md",
+  "candidate_module_sha256": "4c868b35245339976c4ed0c987b36c78cec350941028a4ca02127c6e1af406b5",
+  "resources_sha256": "c9ad79263a25f0e4cf5618c657c4b8cccdcb9dbd7c446ec61b2835e8f9a21746",
+  "cases": {
+    "app-009": {
+      "target": "/usr/freeware/bin/gedit",
+      "label": "Basic document checks pass in candidate",
+      "note": "Freeware double-click, opened/closed icon artwork, text editing, new-file save, reopen, overwrite and GUI exit work as xiritest. Preference writes still fail; help, image loading and plug-ins need further work. The Applications alias has not been double-clicked separately."
+    },
+    "app-007": {
+      "target": "/usr/freeware/bin/evolution",
+      "label": "Error dialog in candidate",
+      "note": "Evolution reaches a copy-error dialog; /usr/freeware/share/evolution/default_user/* is missing. Main mail use and normal exit remain untested."
+    },
+    "app-010": {
+      "target": "/usr/freeware/bin/glynx",
+      "label": "Terminal login fails in candidate",
+      "note": "The glynx wrapper now opens GNOME Terminal and a login-error dialog. It reports unable to fork: Function not implemented, plus failed Terminal preferences. Trace child/PTY setup before attributing this to the fork syscall itself."
+    },
+    "app-011": {
+      "target": "/usr/freeware/bin/gnome-terminal",
+      "label": "Terminal login fails in candidate",
+      "note": "GNOME Terminal opens with a login-error dialog and no usable shell. It reports unable to fork: Function not implemented, plus failed preferences. The precise unsupported child/PTY setup call remains to diagnose."
+    },
+    "app-015": {
+      "target": "/usr/freeware/bin/midnight-commander",
+      "label": "Terminal login fails in candidate",
+      "note": "The Midnight Commander wrapper reaches the same GNOME Terminal login error: unable to fork: Function not implemented. The requested terminal program is not qualified."
+    },
+    "app-078": {
+      "target": "/usr/freeware/bin/balsa",
+      "label": "Setup window in candidate",
+      "note": "Configure Balsa opens, with a partly blank wizard in the captured frame. Setup completion, mail operations, settings persistence and normal exit remain untested."
+    },
+    "app-082": {
+      "target": "/usr/freeware/bin/glade",
+      "label": "Main windows in candidate",
+      "note": "Glade opens its main window, widget palette and properties panel. OAF activation and preference writes warn. Creating, saving and reopening a project, catalog clicks and normal exit remain untested."
+    },
+    "app-083": {
+      "target": "/usr/freeware/bin/gnumeric",
+      "label": "Font error in candidate",
+      "note": "Gnumeric reports no suitable default font and missing fontmap2 from its GNOME print installation. Inspect/import the original font package before spreadsheet checks."
+    },
+    "app-088": {
+      "target": "/usr/freeware/bin/xchat",
+      "label": "Information dialog in candidate",
+      "note": "XChat reaches the first-run download-directory notice. It was stopped without advancing the dialog; main UI, network use, persistence and normal exit remain untested."
+    }
+  }
+}

@@ -121,6 +121,23 @@ per-user `.gimp-1.2` directory. No old user settings or installation database
 are imported. The ledger is a resource inventory, not a claim that every
 plug-in has been tested.
 
+The [GNOME/gedit follow-up](results/2026-11-04-irix-gnome.md) adds a
+[50-path ledger](../lab/irix-gnome/resources.json): original gedit dialogs and
+plug-ins, GNOME VFS modules/configuration, `libgnomevfs-pthread.so`, its extra
+`libbz2.so.1` dependency and `gedit-icon.png`. All retain their original
+paths below `/emul/irix`; no user profile is imported. The threading backend
+is loaded dynamically and is absent from the earlier static dependency
+closure. Gedit's icon image is present and verified but still fails to load;
+help topics and the wider plug-ins need separate checks. This payload is
+installed only in the disposable qualification guest so far.
+
+The repeated startup checks identify further application inputs to inspect:
+Evolution's missing `/usr/freeware/share/evolution/default_user` tree and
+Gnumeric's GNOME print fonts/`fontmap2` (its dialog names the usual
+`/usr/freeware/share/fonts/fontmap2` location). Neither package has been
+imported by this cycle. Balsa's partly blank setup and Glade's OAF warning
+need diagnosis before assigning them to missing resources.
+
 ## IRIX information sources
 
 - [IRIX7 Silicon Graphics Technical Document Archive](https://irix7.com/techpubs.html)

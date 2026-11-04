@@ -1,6 +1,7 @@
 # Icon Catalog application checklist
 
-Updated 2026-11-04 after the [startup survey](results/2026-11-03-irix-catalog.md).
+Updated 2026-11-04 after the [startup survey](results/2026-11-03-irix-catalog.md)
+and [GNOME follow-up](results/2026-11-04-irix-gnome.md).
 This is the requested list to use when returning to failures one by one.
 It preserves all **166 registered entries in 17 system tabs** from the supplied
 IRIX 6.5.22 installation, including unresolved source links that the running
@@ -32,6 +33,13 @@ and normal-exit tests. Terminal tools ran with stdin closed and may require
 arguments or a terminal. System/hardware tools were observed without applying
 settings or installing software.
 
+**Later candidate-module checks are identified in their rows.** The GNOME
+follow-up uses the pathname Unix socket module and 50 additional original
+resource paths in a disposable guest. Gedit passes basic document checks;
+the eight other previously busy targets have new bounded startup observations.
+These follow-ups are not yet included in the published GIMP CHD. Historical
+survey evidence is retained; untested behavior is not promoted to a pass.
+
 
 ## Alias (2)
 
@@ -57,18 +65,18 @@ settings or installing software.
 | `acadr13` | `/opt/acad13/bin/acadr13` | **Exits 127 without a window.** /opt/acad13/bin/acadr13[14]: /bin/uname:  not found /opt/acad13/bin/acadr13[59]: /bin/uname:  not found /opt/acad13/bin/acadr13[59]: Echo:  not found /opt/acad13/bin/acadr13[63]: /opt/acad13/bin/acad:  not foun… |
 | `acroread` | `/usr/adobe/Acrobat4.0/bin/acroread` | **Catalog launch fails.** A real Applications double-click executes the original wrapper, which reports missing acroread.dist; no Reader process remains. |
 | `dia` | `/usr/freeware/bin/dia` | **Exits 1 without a window.** Gtk-CRITICAL **: file gtkcontainer.c: line 713: assertion 'widget != NULL' failed. Couldn't find standard objects when looking for object-libs, exiting... |
-| `evolution` | `/usr/freeware/bin/evolution` | **Busy without a window.** Running and accumulating CPU time, with no viewable app window before the test stop. Late CPU samples are in the evidence; investigate whether a shared GNOME startup issue explains the pattern. |
+| `evolution` | `/usr/freeware/bin/evolution` | **Error dialog in candidate.** Evolution reaches a copy-error dialog; /usr/freeware/share/evolution/default_user/* is missing. Main mail use and normal exit remain untested. [Follow-up](results/2026-11-04-irix-gnome.md). |
 | `galculator` | `/usr/freeware/bin/galculator` | **Launch fails.** Exits 1. Fontconfig cannot load its default configuration and reports no fonts; UTF-8 conversion also warns. This is separate from the X-server fonts already used by the desktop. |
-| `gedit` | `/usr/freeware/bin/gedit` | **Busy without a window.** Running and accumulating CPU time, with no viewable app window before the test stop. Late CPU samples are in the evidence; investigate whether a shared GNOME startup issue explains the pattern. |
-| `glynx` | `/usr/freeware/bin/glynx` | **Busy without a window.** Running and accumulating CPU time, with no viewable app window before the test stop. Late CPU samples are in the evidence; investigate whether a shared GNOME startup issue explains the pattern. |
-| `gnome-terminal` | `/usr/freeware/bin/gnome-terminal` | **Busy without a window.** Running and accumulating CPU time, with no viewable app window before the test stop. Late CPU samples are in the evidence; investigate whether a shared GNOME startup issue explains the pattern. |
+| `gedit` | `/usr/freeware/bin/gedit` | **Basic document checks pass in candidate.** Freeware double-click, opened/closed icon artwork, text editing, new-file save, reopen, overwrite and GUI exit work as xiritest. Preference writes still fail; help, image loading and plug-ins need further work. The Applications alias has not been double-clicked separately. [Follow-up](results/2026-11-04-irix-gnome.md). |
+| `glynx` | `/usr/freeware/bin/glynx` | **Terminal login fails in candidate.** The glynx wrapper now opens GNOME Terminal and a login-error dialog. It reports unable to fork: Function not implemented, plus failed Terminal preferences. Trace child/PTY setup before attributing this to the fork syscall itself. [Follow-up](results/2026-11-04-irix-gnome.md). |
+| `gnome-terminal` | `/usr/freeware/bin/gnome-terminal` | **Terminal login fails in candidate.** GNOME Terminal opens with a login-error dialog and no usable shell. It reports unable to fork: Function not implemented, plus failed preferences. The precise unsupported child/PTY setup call remains to diagnose. [Follow-up](results/2026-11-04-irix-gnome.md). |
 | `gnome-terminal --login` | `/usr/freeware/bin/gnome-terminal --login` | Unresolved target in the original source inventory; no launch attempted. The target contains command-line text; check registration/action handling. |
 | `gtop` | `/usr/freeware/bin/gtop` | **Launch fails.** Exits 1 with Function not implemented while writing its GNOME preferences; its help-topics file is also unavailable. |
 | `jot` | `/usr/sbin/jot` | **Exits 0 without a new window.** |
 | `lyx` | `/usr/freeware/bin/lyx` | **Window observed.** Question. Use and normal exit remain untested. LyX Warning! Couldn't determine system directory. Try the '-sysdir' command line parameter or set the environment variable LYX_DIR_11x to the LyX system directory containing the file 'chkconfig.ltx'. Using buil… |
 | `maker` | `/usr/frame/bin/maker` | Unresolved target in the original source inventory; no launch attempted. |
 | `MediaMail` | `/usr/bin/X11/MediaMail` | Unresolved target in the original source inventory; no launch attempted. |
-| `midnight-commander` | `/usr/freeware/bin/midnight-commander` | **Busy without a window.** Running and accumulating CPU time, with no viewable app window before the test stop. Late CPU samples are in the evidence; investigate whether a shared GNOME startup issue explains the pattern. |
+| `midnight-commander` | `/usr/freeware/bin/midnight-commander` | **Terminal login fails in candidate.** The Midnight Commander wrapper reaches the same GNOME Terminal login error: unable to fork: Function not implemented. The requested terminal program is not qualified. [Follow-up](results/2026-11-04-irix-gnome.md). |
 | `Mozilla` | `/var/netscape/mozilla/mozilla` | **Exits 1 without a window.** Cannot find mozilla runtime directory. Exiting. |
 | `mozilla` | `/usr/bin/X11/mozilla` | **Exits 1 without a window.** Cannot find mozilla runtime directory. Exiting. |
 | `nedit` | `/usr/sbin/nedit` | **Exits 126 without a window.** xiri-catalog: /usr/sbin/nedit: cannot execute |
@@ -171,23 +179,23 @@ settings or installing software.
 | Entry | Original target | Observed result / next check |
 | --- | --- | --- |
 | `abiword` | `/usr/freeware/bin/abiword` | **Exits 0 without a new window.** Error: can't find AbiWord executables: /usr/freeware/bin/AbiWord_d -or- /usr/freeware/bin/AbiWord_s |
-| `balsa` | `/usr/freeware/bin/balsa` | **Busy without a window.** Running and accumulating CPU time, with no viewable app window before the test stop. Late CPU samples are in the evidence; investigate whether a shared GNOME startup issue explains the pattern. |
+| `balsa` | `/usr/freeware/bin/balsa` | **Setup window in candidate.** Configure Balsa opens, with a partly blank wizard in the captured frame. Setup completion, mail operations, settings persistence and normal exit remain untested. [Follow-up](results/2026-11-04-irix-gnome.md). |
 | `CUPS` | `/usr/freeware/etc/cups/CUPS` | Document/web shortcut; assigned handler and destination remain untested. |
 | `dia` | `/usr/freeware/bin/dia` | **Exits 1 without a window.** Gtk-CRITICAL **: file gtkcontainer.c: line 713: assertion 'widget != NULL' failed. Couldn't find standard objects when looking for object-libs, exiting... |
 | `emacs` | `/usr/freeware/bin/emacs` | **Launch fails.** Exits 0 with missing Emacs architecture data, Lisp directories and term/x-win. A complete Emacs resource import remains necessary. |
 | `fluid` | `/usr/freeware/bin/fluid` | **Window observed.** fluid, Bin. Use and normal exit remain untested. |
 | `FreewareRelnotes` | `/usr/freeware/relnotes/shared/FreewareRelnotes` | Document/web shortcut; assigned handler and destination remain untested. |
-| `gedit` | `/usr/freeware/bin/gedit` | **Busy without a window.** Running and accumulating CPU time, with no viewable app window before the test stop. Late CPU samples are in the evidence; investigate whether a shared GNOME startup issue explains the pattern. |
+| `gedit` | `/usr/freeware/bin/gedit` | **Basic document checks pass in candidate.** Freeware double-click, opened/closed icon artwork, text editing, new-file save, reopen, overwrite and GUI exit work as xiritest. Preference writes still fail; help, image loading and plug-ins need further work. The Applications alias has not been double-clicked separately. [Follow-up](results/2026-11-04-irix-gnome.md). |
 | `gftp` | `/usr/freeware/bin/gftp` | **Exits 0 without a new window.** Error: Can't find gFTP binaries installed in /usr/freeware/bin |
 | `gimp` | `/usr/freeware/bin/gimp` | [Prior bounded pass: setup, paint, XCF/PNG save/reopen, catalog launch and exit](results/2026-11-03-irix-gimp.md). Preference backup and wider plug-ins remain open. |
-| `glade` | `/usr/freeware/bin/glade` | **Busy without a window.** Running and accumulating CPU time, with no viewable app window before the test stop. Late CPU samples are in the evidence; investigate whether a shared GNOME startup issue explains the pattern. |
-| `gnumeric` | `/usr/freeware/bin/gnumeric` | **Busy without a window.** Running and accumulating CPU time, with no viewable app window before the test stop. Late CPU samples are in the evidence; investigate whether a shared GNOME startup issue explains the pattern. |
+| `glade` | `/usr/freeware/bin/glade` | **Main windows in candidate.** Glade opens its main window, widget palette and properties panel. OAF activation and preference writes warn. Creating, saving and reopening a project, catalog clicks and normal exit remain untested. [Follow-up](results/2026-11-04-irix-gnome.md). |
+| `gnumeric` | `/usr/freeware/bin/gnumeric` | **Font error in candidate.** Gnumeric reports no suitable default font and missing fontmap2 from its GNOME print installation. Inspect/import the original font package before spreadsheet checks. [Follow-up](results/2026-11-04-irix-gnome.md). |
 | `grok` | `/usr/freeware/bin/grok` | **Window observed.** grok, Grok Dialog_popup. Use and normal exit remain untested. |
 | `Maelstrom` | `/usr/freeware/bin/Maelstrom` | **Exits 1 without a window.** Couldn't create bound network socket |
 | `nedit` | `/usr/freeware/bin/nedit` | **Partial use.** Freeware double-click, visible text editing, opened/closed icon artwork and Quit/Discard work. Save fails with cannot create; the file remains absent. A native write in the home’s .xiri-catalog subdirectory succeeds; a control in the exact destination directory remains pending. Exit status was not captured. |
 | `plan` | `/usr/freeware/bin/plan` | **Window observed.** plan, Warning_popup. Use and normal exit remain untested. ERROR: Error while reading files: Failed to read master file ~/.dayplan, error 2 Failed to read private file ~/.dayplan.priv, error 2 ERROR: Error while reading files: Failed to read master file ~/.dayplan, err… |
 | `xcdroast` | `/usr/freeware/bin/xcdroast` | **Exits 1 without a window.** ** WARNING **: Installation problem? /usr/freeware/lib32/xcdroast/bin/xcdrwrap not found. ** WARNING **: No /usr/freeware/lib32/xcdroast/bin/xcdrwrap installed ** WARNING **: (Invalid lib-directory? Check -l op… |
-| `xchat` | `/usr/freeware/bin/xchat` | **Busy without a window.** Running and accumulating CPU time, with no viewable app window before the test stop. Late CPU samples are in the evidence; investigate whether a shared GNOME startup issue explains the pattern. |
+| `xchat` | `/usr/freeware/bin/xchat` | **Information dialog in candidate.** XChat reaches the first-run download-directory notice. It was stopped without advancing the dialog; main UI, network use, persistence and normal exit remain untested. [Follow-up](results/2026-11-04-irix-gnome.md). |
 | `xmahjongg` | `//usr/freeware/bin/xmahjongg` | [Prior bounded rendering/interaction pass](results/2026-11-03-newport-xmahjongg.md); a complete game remains unqualified. |
 | `xmcd` | `/usr/freeware/bin/xmcd` | **Launch fails.** Its wrapper selects bin-NetBSD-ALL/xmcd, which is absent. Check OS detection as well as the original xmcd payload before retrying. |
 | `xsane` | `/usr/freeware/bin/xsane` | **Launch fails.** Exits 0 after reporting that the XSane EULA text is missing. No scanner operation was tested. |

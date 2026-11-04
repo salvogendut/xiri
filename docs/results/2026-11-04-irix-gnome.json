@@ -1,0 +1,3630 @@
+{
+  "schema": 1,
+  "status": "passed-bounded-gedit-document-checks",
+  "run": ".work/catalog-cycle/survey-0-c0butyt1",
+  "clean_shutdown": true,
+  "source_chd_unchanged": true,
+  "published_image_updated": false,
+  "source_chd": "20b328a070537255c8c0aa4771aefd83cbaa8027208b93bf997302c426ef83b7",
+  "source_equivalent_commit": "0b2e08f1c0b47a22acaef55d6e88c1a7d7b0f101",
+  "module_sha256": "4c868b35245339976c4ed0c987b36c78cec350941028a4ca02127c6e1af406b5",
+  "build_record_sha256": "cfcb44a6c7291b9f4c1ceca9fc745d130f006bbda53f74fca8a75cd0b85cd440",
+  "resource_ledger_sha256": "c9ad79263a25f0e4cf5618c657c4b8cccdcb9dbd7c446ec61b2835e8f9a21746",
+  "baseline_record_sha256": "2c0469ad6ea52f733863a5679cd2cb9dc18b8db24cbe7cb84a0a3b0496f9d990",
+  "unix": {
+    "report": "2026-11-04-irix-gnome-unix.json",
+    "observations": 136,
+    "irix_comparisons": 96,
+    "subset_policies": 40,
+    "sha256": "03cdb00cb40d2b0c13b6536055177d822c2598f16330c4db6d671fa882a0eab5"
+  },
+  "regression": {
+    "observations": 368,
+    "tcp": 304,
+    "recvmsg": 64,
+    "result": {
+      "setup": "mkdir -p /tmp/xiri-unix-regression; cd /tmp/xiri-unix-regression; tar \b xzf /cdrom/regression.tgz; cc -O2 -Wall -Wextra -Werror server.c -o server; cc  \b-O2 -Wall -Wextra -Werror receive.c -o receive; cp /tmp/xiri-unix-v2/bin/runner  \b.; chmod 555 tcp/* recvmsg/*; touch input.txt; chmod 444 input.txt; xiri_rc=$?;  \bprintf '\\nXIRI_a4259aaa66bb4d5584a91027faea2bc3_RC=%s\\n' \"$xiri_rc\"\n\nXIRI_a4259aaa66bb4d5584a91027faea2bc3_RC=0\nxiri-indy# ",
+      "run": "sh /tmp/xiri-unix-regression/run.sh >/tmp/xiri-unix-regression/result \bs.log 2>&1; xiri_rc=$?; printf '\\nXIRI_ecb31451a7e74c5883a0154f79086cf5_RC=%s\\n' \b \"$xiri_rc\"\n\nXIRI_ecb31451a7e74c5883a0154f79086cf5_RC=0\nxiri-indy# ",
+      "observations": [
+        {
+          "name": "tcp-o32-direct-socket-default-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-socket-default-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-socket-tcp-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-socket-tcp-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-socket-bad-domain-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-socket-bad-domain-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-socket-bad-type-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-socket-bad-type-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-socket-udp-type-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-socket-udp-type-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-socket-bad-protocol-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-socket-bad-protocol-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-socket-tcp-udp-protocol-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-socket-tcp-udp-protocol-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-socket-native-flags-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-socket-native-flags-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-socket-bad-stack-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-socket-bad-stack-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-socket-delay-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-socket-delay-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-connect-refused-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-connect-refused-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-connect-bad-fd-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-connect-bad-fd-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-connect-file-fd-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-connect-file-fd-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-connect-null-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-connect-null-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-connect-high-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-connect-high-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-connect-wrap-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-connect-wrap-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-connect-short-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-connect-short-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-connect-long-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-connect-long-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-connect-negative-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-connect-negative-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-connect-family-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-connect-family-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-connect-bad-stack-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-connect-bad-stack-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-connect-delay-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-connect-delay-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-setopt-nodelay-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-setopt-nodelay-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-setopt-nodelay-off-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-setopt-nodelay-off-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-setopt-keepalive-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-setopt-keepalive-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-setopt-bad-fd-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-setopt-bad-fd-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-setopt-file-fd-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-setopt-file-fd-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-setopt-null-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-setopt-null-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-setopt-high-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-setopt-high-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-setopt-wrap-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-setopt-wrap-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-setopt-short-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-setopt-short-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-setopt-long-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-setopt-long-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-setopt-negative-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-setopt-negative-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-setopt-option-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-setopt-option-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-setopt-level-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-setopt-level-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-setopt-bad-stack-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-setopt-bad-stack-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-setopt-wrap-stack-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-setopt-wrap-stack-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-echo-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-direct-echo-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-socket-default-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-socket-default-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-socket-tcp-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-socket-tcp-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-socket-bad-domain-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-socket-bad-domain-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-socket-bad-type-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-socket-bad-type-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-socket-udp-type-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-socket-udp-type-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-socket-bad-protocol-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-socket-bad-protocol-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-socket-tcp-udp-protocol-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-socket-tcp-udp-protocol-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-socket-native-flags-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-socket-native-flags-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-socket-bad-stack-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-socket-bad-stack-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-socket-delay-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-socket-delay-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-connect-refused-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-connect-refused-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-connect-bad-fd-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-connect-bad-fd-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-connect-file-fd-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-connect-file-fd-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-connect-null-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-connect-null-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-connect-high-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-connect-high-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-connect-wrap-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-connect-wrap-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-connect-short-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-connect-short-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-connect-long-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-connect-long-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-connect-negative-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-connect-negative-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-connect-family-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-connect-family-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-connect-bad-stack-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-connect-bad-stack-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-connect-delay-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-connect-delay-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-setopt-nodelay-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-setopt-nodelay-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-setopt-nodelay-off-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-setopt-nodelay-off-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-setopt-keepalive-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-setopt-keepalive-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-setopt-bad-fd-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-setopt-bad-fd-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-setopt-file-fd-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-setopt-file-fd-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-setopt-null-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-setopt-null-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-setopt-high-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-setopt-high-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-setopt-wrap-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-setopt-wrap-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-setopt-short-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-setopt-short-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-setopt-long-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-setopt-long-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-setopt-negative-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-setopt-negative-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-setopt-option-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-setopt-option-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-setopt-level-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-setopt-level-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-setopt-bad-stack-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-setopt-bad-stack-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-setopt-wrap-stack-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-setopt-wrap-stack-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-echo-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-o32-indirect-echo-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-socket-default-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-socket-default-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-socket-tcp-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-socket-tcp-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-socket-bad-domain-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-socket-bad-domain-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-socket-bad-type-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-socket-bad-type-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-socket-udp-type-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-socket-udp-type-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-socket-bad-protocol-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-socket-bad-protocol-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-socket-tcp-udp-protocol-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-socket-tcp-udp-protocol-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-socket-native-flags-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-socket-native-flags-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-socket-bad-stack-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-socket-bad-stack-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-socket-delay-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-socket-delay-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-connect-refused-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-connect-refused-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-connect-bad-fd-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-connect-bad-fd-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-connect-file-fd-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-connect-file-fd-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-connect-null-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-connect-null-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-connect-high-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-connect-high-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-connect-wrap-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-connect-wrap-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-connect-short-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-connect-short-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-connect-long-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-connect-long-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-connect-negative-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-connect-negative-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-connect-family-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-connect-family-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-connect-bad-stack-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-connect-bad-stack-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-connect-delay-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-connect-delay-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-setopt-nodelay-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-setopt-nodelay-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-setopt-nodelay-off-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-setopt-nodelay-off-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-setopt-keepalive-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-setopt-keepalive-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-setopt-bad-fd-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-setopt-bad-fd-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-setopt-file-fd-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-setopt-file-fd-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-setopt-null-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-setopt-null-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-setopt-high-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-setopt-high-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-setopt-wrap-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-setopt-wrap-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-setopt-short-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-setopt-short-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-setopt-long-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-setopt-long-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-setopt-negative-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-setopt-negative-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-setopt-option-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-setopt-option-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-setopt-level-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-setopt-level-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-setopt-bad-stack-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-setopt-bad-stack-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-setopt-wrap-stack-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-setopt-wrap-stack-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-echo-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-direct-echo-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-socket-default-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-socket-default-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-socket-tcp-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-socket-tcp-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-socket-bad-domain-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-socket-bad-domain-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-socket-bad-type-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-socket-bad-type-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-socket-udp-type-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-socket-udp-type-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-socket-bad-protocol-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-socket-bad-protocol-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-socket-tcp-udp-protocol-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-socket-tcp-udp-protocol-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-socket-native-flags-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-socket-native-flags-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-socket-bad-stack-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-socket-bad-stack-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-socket-delay-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-socket-delay-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-connect-refused-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-connect-refused-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-connect-bad-fd-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-connect-bad-fd-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-connect-file-fd-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-connect-file-fd-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-connect-null-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-connect-null-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-connect-high-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-connect-high-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-connect-wrap-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-connect-wrap-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-connect-short-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-connect-short-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-connect-long-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-connect-long-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-connect-negative-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-connect-negative-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-connect-family-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-connect-family-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-connect-bad-stack-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-connect-bad-stack-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-connect-delay-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-connect-delay-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-setopt-nodelay-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-setopt-nodelay-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-setopt-nodelay-off-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-setopt-nodelay-off-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-setopt-keepalive-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-setopt-keepalive-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-setopt-bad-fd-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-setopt-bad-fd-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-setopt-file-fd-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-setopt-file-fd-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-setopt-null-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-setopt-null-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-setopt-high-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-setopt-high-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-setopt-wrap-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-setopt-wrap-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-setopt-short-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-setopt-short-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-setopt-long-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-setopt-long-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-setopt-negative-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-setopt-negative-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-setopt-option-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-setopt-option-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-setopt-level-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-setopt-level-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-setopt-bad-stack-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-setopt-bad-stack-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-setopt-wrap-stack-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-setopt-wrap-stack-1234",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-echo-0",
+          "passed": true
+        },
+        {
+          "name": "tcp-n32-indirect-echo-1234",
+          "passed": true
+        },
+        {
+          "name": "recvmsg-o32-direct-recvmsg-length-0-0",
+          "passed": true
+        },
+        {
+          "name": "recvmsg-o32-direct-recvmsg-length-0-1234",
+          "passed": true
+        },
+        {
+          "name": "recvmsg-o32-direct-recvmsg-length-1-0",
+          "passed": true
+        },
+        {
+          "name": "recvmsg-o32-direct-recvmsg-length-1-1234",
+          "passed": true
+        },
+        {
+          "name": "recvmsg-o32-direct-recvmsg-length-16-0",
+          "passed": true
+        },
+        {
+          "name": "recvmsg-o32-direct-recvmsg-length-16-1234",
+          "passed": true
+        },
+        {
+          "name": "recvmsg-o32-direct-recvmsg-two-0",
+          "passed": true
+        },
+        {
+          "name": "recvmsg-o32-direct-recvmsg-two-1234",
+          "passed": true
+        },
+        {
+          "name": "recvmsg-o32-direct-recvmsg-partial-fault-0",
+          "passed": true
+        },
+        {
+          "name": "recvmsg-o32-direct-recvmsg-partial-fault-1234",
+          "passed": true
+        },
+        {
+          "name": "recvmsg-o32-direct-recvmsg-eof-0",
+          "passed": true
+        },
+        {
+          "name": "recvmsg-o32-direct-recvmsg-eof-1234",
+          "passed": true
+        },
+        {
+          "name": "recvmsg-o32-direct-recvmsg-nonblock-empty-0",
+          "passed": true
+        },
+        {
+          "name": "recvmsg-o32-direct-recvmsg-nonblock-empty-1234",
+          "passed": true
+        },
+        {
+          "name": "recvmsg-o32-direct-recvmsg-peek-short-0",
+          "passed": true
+        },
+        {
+          "name": "recvmsg-o32-direct-recvmsg-peek-short-1234",
+          "passed": true
+        },
+        {
+          "name": "recvmsg-o32-indirect-recvmsg-length-0-0",
+          "passed": true
+        },
+        {
+          "name": "recvmsg-o32-indirect-recvmsg-length-0-1234",
+          "passed": true
+        },
+        {
+          "name": "recvmsg-o32-indirect-recvmsg-length-1-0",
+          "passed": true
+        },
+        {
+          "name": "recvmsg-o32-indirect-recvmsg-length-1-1234",
+          "passed": true
+        },
+        {
+          "name": "recvmsg-o32-indirect-recvmsg-length-16-0",
+          "passed": true
+        },
+        {
+          "name": "recvmsg-o32-indirect-recvmsg-length-16-1234",
+          "passed": true
+        },
+        {
+          "name": "recvmsg-o32-indirect-recvmsg-two-0",
+          "passed": true
+        },
+        {
+          "name": "recvmsg-o32-indirect-recvmsg-two-1234",
+          "passed": true
+        },
+        {
+          "name": "recvmsg-o32-indirect-recvmsg-partial-fault-0",
+          "passed": true
+        },
+        {
+          "name": "recvmsg-o32-indirect-recvmsg-partial-fault-1234",
+          "passed": true
+        },
+        {
+          "name": "recvmsg-o32-indirect-recvmsg-eof-0",
+          "passed": true
+        },
+        {
+          "name": "recvmsg-o32-indirect-recvmsg-eof-1234",
+          "passed": true
+        },
+        {
+          "name": "recvmsg-o32-indirect-recvmsg-nonblock-empty-0",
+          "passed": true
+        },
+        {
+          "name": "recvmsg-o32-indirect-recvmsg-nonblock-empty-1234",
+          "passed": true
+        },
+        {
+          "name": "recvmsg-o32-indirect-recvmsg-peek-short-0",
+          "passed": true
+        },
+        {
+          "name": "recvmsg-o32-indirect-recvmsg-peek-short-1234",
+          "passed": true
+        },
+        {
+          "name": "recvmsg-n32-direct-recvmsg-length-0-0",
+          "passed": true
+        },
+        {
+          "name": "recvmsg-n32-direct-recvmsg-length-0-1234",
+          "passed": true
+        },
+        {
+          "name": "recvmsg-n32-direct-recvmsg-length-1-0",
+          "passed": true
+        },
+        {
+          "name": "recvmsg-n32-direct-recvmsg-length-1-1234",
+          "passed": true
+        },
+        {
+          "name": "recvmsg-n32-direct-recvmsg-length-16-0",
+          "passed": true
+        },
+        {
+          "name": "recvmsg-n32-direct-recvmsg-length-16-1234",
+          "passed": true
+        },
+        {
+          "name": "recvmsg-n32-direct-recvmsg-two-0",
+          "passed": true
+        },
+        {
+          "name": "recvmsg-n32-direct-recvmsg-two-1234",
+          "passed": true
+        },
+        {
+          "name": "recvmsg-n32-direct-recvmsg-partial-fault-0",
+          "passed": true
+        },
+        {
+          "name": "recvmsg-n32-direct-recvmsg-partial-fault-1234",
+          "passed": true
+        },
+        {
+          "name": "recvmsg-n32-direct-recvmsg-eof-0",
+          "passed": true
+        },
+        {
+          "name": "recvmsg-n32-direct-recvmsg-eof-1234",
+          "passed": true
+        },
+        {
+          "name": "recvmsg-n32-direct-recvmsg-nonblock-empty-0",
+          "passed": true
+        },
+        {
+          "name": "recvmsg-n32-direct-recvmsg-nonblock-empty-1234",
+          "passed": true
+        },
+        {
+          "name": "recvmsg-n32-direct-recvmsg-peek-short-0",
+          "passed": true
+        },
+        {
+          "name": "recvmsg-n32-direct-recvmsg-peek-short-1234",
+          "passed": true
+        },
+        {
+          "name": "recvmsg-n32-indirect-recvmsg-length-0-0",
+          "passed": true
+        },
+        {
+          "name": "recvmsg-n32-indirect-recvmsg-length-0-1234",
+          "passed": true
+        },
+        {
+          "name": "recvmsg-n32-indirect-recvmsg-length-1-0",
+          "passed": true
+        },
+        {
+          "name": "recvmsg-n32-indirect-recvmsg-length-1-1234",
+          "passed": true
+        },
+        {
+          "name": "recvmsg-n32-indirect-recvmsg-length-16-0",
+          "passed": true
+        },
+        {
+          "name": "recvmsg-n32-indirect-recvmsg-length-16-1234",
+          "passed": true
+        },
+        {
+          "name": "recvmsg-n32-indirect-recvmsg-two-0",
+          "passed": true
+        },
+        {
+          "name": "recvmsg-n32-indirect-recvmsg-two-1234",
+          "passed": true
+        },
+        {
+          "name": "recvmsg-n32-indirect-recvmsg-partial-fault-0",
+          "passed": true
+        },
+        {
+          "name": "recvmsg-n32-indirect-recvmsg-partial-fault-1234",
+          "passed": true
+        },
+        {
+          "name": "recvmsg-n32-indirect-recvmsg-eof-0",
+          "passed": true
+        },
+        {
+          "name": "recvmsg-n32-indirect-recvmsg-eof-1234",
+          "passed": true
+        },
+        {
+          "name": "recvmsg-n32-indirect-recvmsg-nonblock-empty-0",
+          "passed": true
+        },
+        {
+          "name": "recvmsg-n32-indirect-recvmsg-nonblock-empty-1234",
+          "passed": true
+        },
+        {
+          "name": "recvmsg-n32-indirect-recvmsg-peek-short-0",
+          "passed": true
+        },
+        {
+          "name": "recvmsg-n32-indirect-recvmsg-peek-short-1234",
+          "passed": true
+        }
+      ],
+      "server": "RDY\n",
+      "receive": null,
+      "receive_records": [
+        {
+          "case": 845,
+          "mode": 0,
+          "bytes": 8
+        },
+        {
+          "case": 845,
+          "mode": 0,
+          "bytes": 8
+        },
+        {
+          "case": 846,
+          "mode": 0,
+          "bytes": 8
+        },
+        {
+          "case": 846,
+          "mode": 0,
+          "bytes": 8
+        },
+        {
+          "case": 849,
+          "mode": 0,
+          "bytes": 8
+        },
+        {
+          "case": 849,
+          "mode": 0,
+          "bytes": 8
+        },
+        {
+          "case": 850,
+          "mode": 0,
+          "bytes": 8
+        },
+        {
+          "case": 850,
+          "mode": 0,
+          "bytes": 8
+        },
+        {
+          "case": 874,
+          "mode": 0,
+          "bytes": 8
+        },
+        {
+          "case": 874,
+          "mode": 0,
+          "bytes": 8
+        },
+        {
+          "case": 880,
+          "mode": 1,
+          "bytes": 0
+        },
+        {
+          "case": 880,
+          "mode": 1,
+          "bytes": 0
+        },
+        {
+          "case": 881,
+          "mode": 2,
+          "bytes": 0
+        },
+        {
+          "case": 881,
+          "mode": 2,
+          "bytes": 0
+        },
+        {
+          "case": 883,
+          "mode": 0,
+          "bytes": 8
+        },
+        {
+          "case": 883,
+          "mode": 0,
+          "bytes": 8
+        },
+        {
+          "case": 914,
+          "mode": 0,
+          "bytes": 8
+        },
+        {
+          "case": 914,
+          "mode": 0,
+          "bytes": 8
+        },
+        {
+          "case": 915,
+          "mode": 0,
+          "bytes": 8
+        },
+        {
+          "case": 915,
+          "mode": 0,
+          "bytes": 8
+        },
+        {
+          "case": 918,
+          "mode": 0,
+          "bytes": 8
+        },
+        {
+          "case": 918,
+          "mode": 0,
+          "bytes": 8
+        },
+        {
+          "case": 919,
+          "mode": 0,
+          "bytes": 8
+        },
+        {
+          "case": 919,
+          "mode": 0,
+          "bytes": 8
+        },
+        {
+          "case": 943,
+          "mode": 0,
+          "bytes": 8
+        },
+        {
+          "case": 943,
+          "mode": 0,
+          "bytes": 8
+        },
+        {
+          "case": 949,
+          "mode": 1,
+          "bytes": 0
+        },
+        {
+          "case": 949,
+          "mode": 1,
+          "bytes": 0
+        },
+        {
+          "case": 950,
+          "mode": 2,
+          "bytes": 0
+        },
+        {
+          "case": 950,
+          "mode": 2,
+          "bytes": 0
+        },
+        {
+          "case": 952,
+          "mode": 0,
+          "bytes": 8
+        },
+        {
+          "case": 952,
+          "mode": 0,
+          "bytes": 8
+        },
+        {
+          "case": 983,
+          "mode": 0,
+          "bytes": 8
+        },
+        {
+          "case": 983,
+          "mode": 0,
+          "bytes": 8
+        },
+        {
+          "case": 984,
+          "mode": 0,
+          "bytes": 8
+        },
+        {
+          "case": 984,
+          "mode": 0,
+          "bytes": 8
+        },
+        {
+          "case": 987,
+          "mode": 0,
+          "bytes": 8
+        },
+        {
+          "case": 987,
+          "mode": 0,
+          "bytes": 8
+        },
+        {
+          "case": 988,
+          "mode": 0,
+          "bytes": 8
+        },
+        {
+          "case": 988,
+          "mode": 0,
+          "bytes": 8
+        },
+        {
+          "case": 1012,
+          "mode": 0,
+          "bytes": 8
+        },
+        {
+          "case": 1012,
+          "mode": 0,
+          "bytes": 8
+        },
+        {
+          "case": 1018,
+          "mode": 1,
+          "bytes": 0
+        },
+        {
+          "case": 1018,
+          "mode": 1,
+          "bytes": 0
+        },
+        {
+          "case": 1019,
+          "mode": 2,
+          "bytes": 0
+        },
+        {
+          "case": 1019,
+          "mode": 2,
+          "bytes": 0
+        },
+        {
+          "case": 1021,
+          "mode": 0,
+          "bytes": 8
+        },
+        {
+          "case": 1021,
+          "mode": 0,
+          "bytes": 8
+        },
+        {
+          "case": 1052,
+          "mode": 0,
+          "bytes": 8
+        },
+        {
+          "case": 1052,
+          "mode": 0,
+          "bytes": 8
+        },
+        {
+          "case": 1053,
+          "mode": 0,
+          "bytes": 8
+        },
+        {
+          "case": 1053,
+          "mode": 0,
+          "bytes": 8
+        },
+        {
+          "case": 1056,
+          "mode": 0,
+          "bytes": 8
+        },
+        {
+          "case": 1056,
+          "mode": 0,
+          "bytes": 8
+        },
+        {
+          "case": 1057,
+          "mode": 0,
+          "bytes": 8
+        },
+        {
+          "case": 1057,
+          "mode": 0,
+          "bytes": 8
+        },
+        {
+          "case": 1081,
+          "mode": 0,
+          "bytes": 8
+        },
+        {
+          "case": 1081,
+          "mode": 0,
+          "bytes": 8
+        },
+        {
+          "case": 1087,
+          "mode": 1,
+          "bytes": 0
+        },
+        {
+          "case": 1087,
+          "mode": 1,
+          "bytes": 0
+        },
+        {
+          "case": 1088,
+          "mode": 2,
+          "bytes": 0
+        },
+        {
+          "case": 1088,
+          "mode": 2,
+          "bytes": 0
+        },
+        {
+          "case": 1090,
+          "mode": 0,
+          "bytes": 8
+        },
+        {
+          "case": 1090,
+          "mode": 0,
+          "bytes": 8
+        }
+      ]
+    },
+    "fixture_manifest_sha256": "f6598fd3d67e1a7ae5bc9f4bc32b789859389167daf2067d6aa6b367152211a2"
+  },
+  "application": {
+    "identity": {
+      "uid": 1234,
+      "gid": 1234,
+      "home": "/usr/people/xiritest",
+      "cwd": "/usr/people/xiritest"
+    },
+    "executable": "/usr/freeware/bin/gedit",
+    "executable_sha256": "19c648f17373da8b9412e1cba988d7135f2ba177ca20ba62509de0c80a96ccef",
+    "records": {
+      "gedit-reopen": {
+        "normal_exit": "OWN pid=7386 parent=4546\nGUARD pid=7386 exit=0 signal=0 stopped=0 absent=1 valid=1 tracked=1 remaining=0 reason=leader-exit uid=1234 gid=1234 elapsed=389885\n\nGdk-WARNING **: shmget failed: error 89 (Function not implemented)\ngdk_imlib ERROR: Cannot load image: /usr/freeware/share/pixmaps/gedit-icon.png\nAll fallbacks failed.\n\nGnomeUI-WARNING **: Could not open help topics file NULL\nfailure writing /usr/people/xiritest/.gnome/Editor_Plugins: Function not implemented\nfailure writing /usr/people/xiritest/.gnome/gedit: Function not implemented\nfailure writing /usr/people/xiritest/.gnome/gedit: Function not implemented\n00000000  58 69 72 69 20 47 4e 4f  4d 45 20 73 6f 63 6b 65  |Xiri GNOME socke|\n00000010  74 20 63 68 65 63 6b 0a  4f 72 69 67 69 6e 61 6c  |t check.Original|\n00000020  20 49 52 49 58 20 67 65  64 69 74 20 6f 6e 20 4e  | IRIX gedit on N|\n00000030  65 74 42 53 44 2e 0a                              |etBSD..|\n00000037\n",
+        "start": "su -l xiritest -c '/usr/bin/env LANG=C LC_ALL=C TZ=UTC0 DISPLAY=127.0 \b.0.1:0 XAUTHORITY=/usr/people/xiritest/.Xauthority XIRI_SESSION_STOP_FILE=/usr/p \beople/xiritest/.xiri-catalog/gedit-reopen/stop /tmp/xiri-catalog/app-guard 60000 \b0 /bin/sh /tmp/xiri-catalog/app.sh /usr/people/xiritest/.xiri-catalog/gedit-reop \ben /usr/freeware/bin/gedit /usr/people/xiritest/xiri-gedit-test.txt' >/usr/peopl \be/xiritest/.xiri-catalog/gedit-reopen/guard 2>/usr/people/xiritest/.xiri-catalog \b/gedit-reopen/guard.err & xiri_gedit_owner=$!; xiri_rc=$?; printf '\\nXIRI_eea79c \bfd0fa64612b7d4df57a548a763_RC=%s\\n' \"$xiri_rc\"\n[3] 6811\n\nXIRI_eea79cfd0fa64612b7d4df57a548a763_RC=0\nxiri-indy# ",
+        "reopened": "\nGdk-WARNING **: shmget failed: error 89 (Function not implemented)\ngdk_imlib ERROR: Cannot load image: /usr/freeware/share/pixmaps/gedit-icon.png\nAll fallbacks failed.\n\nGnomeUI-WARNING **: Could not open help topics file NULL\nWINDOW id=40004c width=10 height=10 name=3444776d class=3444576d instance=3444776d\nWINDOW id=a00009 width=180 height=180 name=78636c6f636b class=58436c6f636b instance=78636c6f636b\nWINDOW id=c0002c width=103 height=158 name=546f6f6c6368657374 class=546f6f6c6368657374 instance=746f6f6c6368657374\nWINDOW id=e00004 width=1006 height=614 name=786d61686a6f6e6767 class=584d61686a6f6e6767 instance=786d61686a6f6e6767\nWINDOW id=1200005 width=663 height=360 name=77696e7465726d class=58577368 instance=77696e7465726d\nWINDOW id=100006b width=900 height=500 name=49636f6e20436174616c6f673a20416c6961732028506167652031206f6620313829 class=49636f6e436174616c6f67 instance=49636f6e436174616c6f67\nWINDOW id=18001b6 width=600 height=400 name=6765646974202d205b2f7573722f70656f706c652f78697269746573742f786972692d67656469742d746573742e7478745d class=6765646974 instance=6765646974\n PID PPID  UID  GID STAT    TIME %CPU COMMAND\n   0    0    0    0 DKl  0:03.82  0.0 [system]\n   1    0    0    0 Is   0:00.12  0.0 init \n 192    1    0    0 I    0:00.21  0.0 xconsole \n 249    1    0    0 Is   0:00.21  0.0 /usr/libexec/postfix/master -w \n 326    1    0    0 Is   0:00.05  0.0 /usr/sbin/cron \n 344    1   35   35 I    0:00.06  0.0 dhcpcd: [manager] [ip4] [ip6] \n 345  344   35   35 I    0:00.01  0.0 dhcpcd: [network proxy] \n 372  344    0    0 I    0:00.06  0.0 dhcpcd: [privileged proxy] \n 382  344   35   35 I    0:00.01  0.0 dhcpcd: [control proxy] \n 407  479 1234 1234 I    0:00.02  0.0 /bin/sh /usr/local/libexec/xiri/desktop-clients.sh /usr/people/xiritest/.xiri/sessions/session.LaGf0R \n 416  479 1234 1234 I    0:00.01  0.0 /bin/sh /usr/local/libexec/xiri/desktop-clients.sh /usr/people/xiritest/.xiri/sessions/session.LaGf0R \n 422  416 1234 1234 S    0:01.31  0.0 /emul/irix/usr/bin/X11/4Dwm \n 427  479 1234 1234 I    0:00.02  0.0 /bin/sh /usr/local/libexec/xiri/desktop-clients.sh /usr/people/xiritest/.xiri/sessions/session.LaGf0R \n 431  479 1234 1234 I    0:00.02  0.0 /bin/sh /usr/local/libexec/xiri/desktop-clients.sh /usr/people/xiritest/.xiri/sessions/session.LaGf0R \n 465  407 1234 1234 S    0:00.94  0.0 /emul/irix/usr/bin/X11/xclock \n 467    1    0    0 Ss   0:00.05  0.0 /usr/sbin/rpcbind -h 127.0.0.1 \n 479 3837 1234 1234 Is   0:00.10  0.0 /bin/sh /usr/local/libexec/xiri/desktop-clients.sh /usr/people/xiritest/.xiri/sessions/session.LaGf0R \n 502 2929 1234 1234 S    0:01.80  0.0 /usr/sbin/iconcatalog \n 577    1 1234 1234 I    0:00.17  0.0 /emul/irix/usr/sbin/xwsh -e /usr/libexec/xiri-shell /usr/people/xiritest/.xiri/sessions/session.LaGf0R/handoff \n 585  692 1234 1234 I    0:00.07  0.0 fmserv 127.0.0.1:0.0 \n 690 1072 1234 1234 I    0:00.53  0.0 /emul/irix/usr/freeware/bin/xmahjongg \n 692  427 1234 1234 I    0:01.50  0.0 /usr/sbin/fm-692 -b (fm)\n 752    1    0    0 Ss   0:00.25  0.0 /usr/sbin/syslogd -s \n1072  479 1234 1234 I    0:00.02  0.0 /bin/sh /usr/local/libexec/xiri/desktop-clients.sh /usr/people/xiritest/.xiri/sessions/session.LaGf0R \n1215 2729    0    0 Ss   0:19.57  1.7 /usr/X11R7/bin/Xorg :0 -config /usr/local/share/xiri/xorg.conf -noretro -auth /var/db/xdm/authdir/authfiles/A:0-QjhFYp \n2729    1    0    0 Is   0:00.04  0.0 /usr/X11R7/bin/xdm -server /etc/xiri/xdm/Xservers -resources /etc/xiri/xdm/Xresources \n2929  479 1234 1234 I    0:00.02  0.0 /bin/sh /usr/local/libexec/xiri/desktop-clients.sh /usr/people/xiritest/.xiri/sessions/session.LaGf0R \n2972    1    0    0 Is   0:00.02  0.0 /usr/sbin/inetd -l \n3042  249   12   12 I    0:00.48  0.0 qmgr -l -t unix -u \n3098  249   12   12 I    0:00.48  0.0 pickup -l -t unix -u \n3303 2729    0    0 Is   0:02.93  0.0 xdm: :0 \n3315  431 1234 1234 I    0:00.43  0.0 /emul/irix/usr/bin/X11/toolchest /usr/local/share/xiri/toolchest.chestrc \n3837 3303 1234 1234 Ss   0:11.85  0.0 /usr/local/libexec/xiri/session-guard 0 /bin/sh /usr/local/libexec/xiri/desktop-clients.sh /usr/people/xiritest/.xiri/sessions/session.LaGf0R \n4562 7916 1234 1234 Ss   0:02.59  7.6 /usr/freeware/bin/gedit /usr/people/xiritest/xiri-gedit-test.txt \n 581  577 1234 1234 Is+  0:00.10  0.0 sh -i \n 333    1    0    0 Is   0:00.82  0.0 login \n2782 3165    0    0 S+   0:00.05  1.5 od -An -v -tx1 \n3165  333    0    0 S    0:07.22  1.0 -sh \n4883 3165    0    0 S+   0:00.06  2.6 gzip -c \n6811 3165    0 1234 S<   0:00.11  0.0 su -l xiritest -c /usr/bin/env LANG=C LC_ALL=C TZ=UTC0 DISPLAY=127.0.0.1:0 XAUTHORITY=/usr/people/xiritest/.Xauthority XIRI_SESSION_STOP_FILE=/usr/people/xiritest/.xiri-catalog/gedit-reopen/stop /tmp/xiri-catalog/app-guard 600000 /bin/sh /tmp/xiri-catalog/app.sh /usr/people/xiritest/.xiri-catalog/gedit-reopen /usr/freeware/bin/gedit /usr/people/xiritest/xiri-gedit-test.txt \n7190 3165    0    0 O+   0:00.06  1.5 ps -axww -o pid,ppid,uid,gid,stat,time,pcpu,args \n7916 6811 1234 1234 S    0:00.29  0.0 /tmp/xiri-catalog/app-guard 600000 /bin/sh /tmp/xiri-catalog/app.sh /usr/people/xiritest/.xiri-catalog/gedit-reopen /usr/freeware/bin/gedit /usr/people/xiritest/xiri-gedit-test.txt \n2481    1 1234 1234 S    2:05.08  0.0 /usr/local/sbin/famd -d -c /etc/xiri/fam.conf -p 391002 \n"
+      },
+      "gedit-save": {
+        "type": "/tmp/xiri-catalog/type 127.0.0.1:0 'Save As...' xiri-gedit-test.txt;  \bxiri_rc=$?; printf '\\nXIRI_36d42b03732f4d55898ee1dfc1ff9577_RC=%s\\n' \"$xiri_rc\"\nTYPE_WINDOW width=441 height=388 viewable=1\n\nXIRI_36d42b03732f4d55898ee1dfc1ff9577_RC=0\nxiri-indy# ",
+        "files": "-rw-r--r--  1 xiritest  xiritest  55 Nov  4 07:29 /usr/people/xiritest/xiri-gedit-test.txt\nXiri GNOME socket check\nOriginal IRIX gedit on NetBSD.\n\nGdk-WARNING **: shmget failed: error 89 (Function not implemented)\ngdk_imlib ERROR: Cannot load image: /usr/freeware/share/pixmaps/gedit-icon.png\nAll fallbacks failed.\n\nGnomeUI-WARNING **: Could not open help topics file NULL\nWINDOW id=40004c width=10 height=10 name=3444776d class=3444576d instance=3444776d\nWINDOW id=a00009 width=180 height=180 name=78636c6f636b class=58436c6f636b instance=78636c6f636b\nWINDOW id=c0002c width=103 height=158 name=546f6f6c6368657374 class=546f6f6c6368657374 instance=746f6f6c6368657374\nWINDOW id=e00004 width=1006 height=614 name=786d61686a6f6e6767 class=584d61686a6f6e6767 instance=786d61686a6f6e6767\nWINDOW id=1200005 width=663 height=360 name=77696e7465726d class=58577368 instance=77696e7465726d\nWINDOW id=100006b width=900 height=500 name=49636f6e20436174616c6f673a20416c6961732028506167652031206f6620313829 class=49636f6e436174616c6f67 instance=49636f6e436174616c6f67\nWINDOW id=18001b6 width=600 height=400 name=6765646974202d205b2f7573722f70656f706c652f78697269746573742f786972692d67656469742d746573742e7478745d class=6765646974 instance=6765646974\n"
+      },
+      "gedit-overwrite": {
+        "open_windows": "WINDOW id=40004c width=10 height=10 name=3444776d class=3444576d instance=3444776d\nWINDOW id=a00009 width=180 height=180 name=78636c6f636b class=58436c6f636b instance=78636c6f636b\nWINDOW id=c0002c width=103 height=158 name=546f6f6c6368657374 class=546f6f6c6368657374 instance=746f6f6c6368657374\nWINDOW id=1200005 width=663 height=360 name=77696e7465726d class=58577368 instance=77696e7465726d\nWINDOW id=100006b width=900 height=500 name=49636f6e20436174616c6f673a2046726565776172652028506167652039206f6620313829 class=49636f6e436174616c6f67 instance=49636f6e436174616c6f67\nWINDOW id=e001b6 width=600 height=400 name=6765646974202d205b2f7573722f70656f706c652f78697269746573742f786972692d67656469742d746573742e7478745d class=6765646974 instance=6765646974\n",
+        "saved": "Xiri GNOME socket check\nOriginal IRIX gedit on NetBSD.\nCatalog reopen and second save.\n427e8a18a019ac52a7f79d7d978ac6116bf43e6eac28d7b8c29120c8c1d6e466\n1234 1234 100644 87\nWINDOW id=40004c width=10 height=10 name=3444776d class=3444576d instance=3444776d\nWINDOW id=a00009 width=180 height=180 name=78636c6f636b class=58436c6f636b instance=78636c6f636b\nWINDOW id=c0002c width=103 height=158 name=546f6f6c6368657374 class=546f6f6c6368657374 instance=746f6f6c6368657374\nWINDOW id=1200005 width=663 height=360 name=77696e7465726d class=58577368 instance=77696e7465726d\nWINDOW id=100006b width=900 height=500 name=49636f6e20436174616c6f673a2046726565776172652028506167652039206f6620313829 class=49636f6e436174616c6f67 instance=49636f6e436174616c6f67\nWINDOW id=e001b6 width=600 height=400 name=6765646974202d205b2f7573722f70656f706c652f78697269746573742f786972692d67656469742d746573742e7478745d class=6765646974 instance=6765646974\n\nGdk-WARNING **: shmget failed: error 89 (Function not implemented)\ngdk_imlib ERROR: Cannot load image: /usr/freeware/share/pixmaps/gedit-icon.png\nAll fallbacks failed.\n\nGnomeUI-WARNING **: Could not open help topics file NULL\n"
+      },
+      "gedit-catalog": {
+        "click": "/tmp/xiri-catalog/catalog-input 127.0.0.1:0 0x100006b double 649 604; \b sleep 5; xiri_rc=$?; printf '\\nXIRI_adaa87fe4c2446e88a440a4d251fcccb_RC=%s\\n' \" \b$xiri_rc\"\n\nXIRI_adaa87fe4c2446e88a440a4d251fcccb_RC=0\nxiri-indy# ",
+        "windows": "WINDOW id=40004c width=10 height=10 name=3444776d class=3444576d instance=3444776d\nWINDOW id=a00009 width=180 height=180 name=78636c6f636b class=58436c6f636b instance=78636c6f636b\nWINDOW id=c0002c width=103 height=158 name=546f6f6c6368657374 class=546f6f6c6368657374 instance=746f6f6c6368657374\nWINDOW id=1200005 width=663 height=360 name=77696e7465726d class=58577368 instance=77696e7465726d\nWINDOW id=100006b width=900 height=500 name=49636f6e20436174616c6f673a2046726565776172652028506167652039206f6620313829 class=49636f6e436174616c6f67 instance=49636f6e436174616c6f67\nWINDOW id=e001b6 width=600 height=400 name=6765646974202d205b556e7469746c656420315d class=6765646974 instance=6765646974\n",
+        "processes": "4643    1 1234 1234 S    0:02.38  8.4 /usr/lib/desktop/iconcatalog/pages/C/Freeware/gedit \n",
+        "events": "famd[2481]: ImdFileMonitor_502 said: request 21 monitor file \"/usr/freeware/bin/gedit\"\nfamd[2481]: sent event to ImdFileMonitor_502: request 21 \"/usr/freeware/bin/gedit\" Exists\nfamd[2481]: sent event to ImdFileMonitor_502: request 21 \"/usr/freeware/bin/gedit\" EndExist\nfamd[2481]: sent event to ImdFileMonitor_502: request 21 \"/usr/freeware/bin/gedit\" Executing\n",
+        "launch_seconds": 30.23
+      },
+      "gedit-catalog-prepare": {
+        "exit": "OWN pid=4562 parent=7916\nGUARD pid=4562 exit=0 signal=0 stopped=0 absent=1 valid=1 tracked=1 remaining=0 reason=leader-exit uid=1234 gid=1234 elapsed=140882\n\nGdk-WARNING **: shmget failed: error 89 (Function not implemented)\ngdk_imlib ERROR: Cannot load image: /usr/freeware/share/pixmaps/gedit-icon.png\nAll fallbacks failed.\n\nGnomeUI-WARNING **: Could not open help topics file NULL\nfailure writing /usr/people/xiritest/.gnome/Editor_Plugins: Function not implemented\nfailure writing /usr/people/xiritest/.gnome/gedit: Function not implemented\nfailure writing /usr/people/xiritest/.gnome/gedit: Function not implemented\n0517af7359f4a7cde4b795dc9f8d5699b04ecd9f501527b80e8783f0a70c78d1\n1234 1234 100644 55\n",
+        "windows": "WINDOW id=40004c width=10 height=10 name=3444776d class=3444576d instance=3444776d\nWINDOW id=a00009 width=180 height=180 name=78636c6f636b class=58436c6f636b instance=78636c6f636b\nWINDOW id=c0002c width=103 height=158 name=546f6f6c6368657374 class=546f6f6c6368657374 instance=746f6f6c6368657374\nWINDOW id=1200005 width=663 height=360 name=77696e7465726d class=58577368 instance=77696e7465726d\nWINDOW id=100006b width=900 height=500 name=49636f6e20436174616c6f673a2046726565776172652028506167652039206f6620313829 class=49636f6e436174616c6f67 instance=49636f6e436174616c6f67\n"
+      },
+      "gedit-finish": {
+        "after": " PID PPID  UID  GID STAT    TIME %CPU COMMAND\n   0    0    0    0 DKl  0:04.68  0.0 [system]\n   1    0    0    0 Ss   0:00.12  0.0 init \n 192    1    0    0 I    0:00.21  0.0 xconsole \n 249    1    0    0 Is   0:00.22  0.0 /usr/libexec/postfix/master -w \n 326    1    0    0 Ss   0:00.06  0.0 /usr/sbin/cron \n 344    1   35   35 I    0:00.06  0.0 dhcpcd: [manager] [ip4] [ip6] \n 345  344   35   35 I    0:00.01  0.0 dhcpcd: [network proxy] \n 372  344    0    0 I    0:00.06  0.0 dhcpcd: [privileged proxy] \n 382  344   35   35 I    0:00.01  0.0 dhcpcd: [control proxy] \n 407  479 1234 1234 I    0:00.02  0.0 /bin/sh /usr/local/libexec/xiri/desktop-clients.sh /usr/people/xiritest/.xiri/sessions/session.LaGf0R \n 416  479 1234 1234 I    0:00.01  0.0 /bin/sh /usr/local/libexec/xiri/desktop-clients.sh /usr/people/xiritest/.xiri/sessions/session.LaGf0R \n 422  416 1234 1234 S    0:01.44  0.0 /emul/irix/usr/bin/X11/4Dwm \n 427  479 1234 1234 I    0:00.02  0.0 /bin/sh /usr/local/libexec/xiri/desktop-clients.sh /usr/people/xiritest/.xiri/sessions/session.LaGf0R \n 431  479 1234 1234 I    0:00.02  0.0 /bin/sh /usr/local/libexec/xiri/desktop-clients.sh /usr/people/xiritest/.xiri/sessions/session.LaGf0R \n 465  407 1234 1234 S    0:01.24  0.0 /emul/irix/usr/bin/X11/xclock \n 467    1    0    0 Is   0:00.06  0.0 /usr/sbin/rpcbind -h 127.0.0.1 \n 479 3837 1234 1234 Is   0:00.10  0.0 /bin/sh /usr/local/libexec/xiri/desktop-clients.sh /usr/people/xiritest/.xiri/sessions/session.LaGf0R \n 502 2929 1234 1234 S    0:02.69  0.0 /usr/sbin/iconcatalog \n 577    1 1234 1234 S    0:00.19  0.0 /emul/irix/usr/sbin/xwsh -e /usr/libexec/xiri-shell /usr/people/xiritest/.xiri/sessions/session.LaGf0R/handoff \n 585  692 1234 1234 I    0:00.07  0.0 fmserv 127.0.0.1:0.0 \n 692  427 1234 1234 S    0:01.53  0.0 /usr/sbin/fm-692 -b (fm)\n 752    1    0    0 Is   0:00.25  0.0 /usr/sbin/syslogd -s \n1215 2729    0    0 Ss   0:25.76  1.9 /usr/X11R7/bin/Xorg :0 -config /usr/local/share/xiri/xorg.conf -noretro -auth /var/db/xdm/authdir/authfiles/A:0-QjhFYp \n2729    1    0    0 Is   0:00.04  0.0 /usr/X11R7/bin/xdm -server /etc/xiri/xdm/Xservers -resources /etc/xiri/xdm/Xresources \n2929  479 1234 1234 I    0:00.02  0.0 /bin/sh /usr/local/libexec/xiri/desktop-clients.sh /usr/people/xiritest/.xiri/sessions/session.LaGf0R \n2972    1    0    0 Is   0:00.02  0.0 /usr/sbin/inetd -l \n3042  249   12   12 I    0:00.48  0.0 qmgr -l -t unix -u \n3098  249   12   12 I    0:00.48  0.0 pickup -l -t unix -u \n3303 2729    0    0 Is   0:02.93  0.0 xdm: :0 \n3315  431 1234 1234 I    0:00.45  0.0 /emul/irix/usr/bin/X11/toolchest /usr/local/share/xiri/toolchest.chestrc \n3837 3303 1234 1234 Ss   0:16.21  0.0 /usr/local/libexec/xiri/session-guard 0 /bin/sh /usr/local/libexec/xiri/desktop-clients.sh /usr/people/xiritest/.xiri/sessions/session.LaGf0R \n 581  577 1234 1234 Is+  0:00.10  0.0 sh -i \n 333    1    0    0 Is   0:00.82  0.0 login \n3165  333    0    0 S    0:08.86  0.0 -sh \n4586 3165    0    0 S+   0:00.01  0.0 -sh \n4690 3165    0    0 S+   0:00.06  3.0 gzip -c \n6939 4586    0    0 O+   0:00.06  0.0 ps -axww -o pid,ppid,uid,gid,stat,time,pcpu,args \n8044 3165    0    0 S+   0:00.05  2.0 od -An -v -tx1 \n2481    1 1234 1234 R    2:59.14 16.1 /usr/local/sbin/famd -d -c /etc/xiri/fam.conf -p 391002 \nWINDOW id=40004c width=10 height=10 name=3444776d class=3444576d instance=3444776d\nWINDOW id=a00009 width=180 height=180 name=78636c6f636b class=58436c6f636b instance=78636c6f636b\nWINDOW id=c0002c width=103 height=158 name=546f6f6c6368657374 class=546f6f6c6368657374 instance=746f6f6c6368657374\nWINDOW id=1200005 width=663 height=360 name=77696e7465726d class=58577368 instance=77696e7465726d\nWINDOW id=100006b width=900 height=500 name=49636f6e20436174616c6f673a2046726565776172652028506167652039206f6620313829 class=49636f6e436174616c6f67 instance=49636f6e436174616c6f67\nfamd[2481]: ImdFileMonitor_502 said: request 21 monitor file \"/usr/freeware/bin/gedit\"\nfamd[2481]: sent event to ImdFileMonitor_502: request 21 \"/usr/freeware/bin/gedit\" Exists\nfamd[2481]: sent event to ImdFileMonitor_502: request 21 \"/usr/freeware/bin/gedit\" EndExist\nfamd[2481]: sent event to ImdFileMonitor_502: request 21 \"/usr/freeware/bin/gedit\" Executing\nfamd[2481]: sent event to ImdFileMonitor_502: request 21 \"/usr/freeware/bin/gedit\" Exited\n\nGdk-WARNING **: shmget failed: error 89 (Function not implemented)\ngdk_imlib ERROR: Cannot load image: /usr/freeware/share/pixmaps/gedit-icon.png\nAll fallbacks failed.\n\nGnomeUI-WARNING **: Could not open help topics file NULL\nfailure writing /usr/people/xiritest/.gnome/Editor_Plugins: Function not implemented\nfailure writing /usr/people/xiritest/.gnome/gedit: Function not implemented\nfailure writing /usr/people/xiritest/.gnome/gedit: Function not implemented\n"
+      },
+      "icon-pixels": {
+        "box": [
+          620,
+          580,
+          680,
+          625
+        ],
+        "closed_sha256": "8d49e927399c5cdec0688d07c45f17b0eec2ab7e3c3420cddbf42528539760bd",
+        "running_sha256": "1d6887ba6a7805a6496c9e619adeac5189ca30707895676f610ebf715570c24c",
+        "after_sha256": "8d49e927399c5cdec0688d07c45f17b0eec2ab7e3c3420cddbf42528539760bd",
+        "changed_pixels": 855,
+        "closed_restored": true
+      },
+      "sampler-controls": {
+        "controls": "cd /tmp/xiri-gnome-sampler; cp controls.sh controls-v1.sh; sed 's|/bi \bn/true|/bin/sleep 0|g' controls.sh >controls-v2.sh; tail -n +3 controls-v2.sh >r \besumed.sh; /bin/sh -e resumed.sh; xiri_rc=$?; printf '\\nXIRI_54e9ade451064529833 \bf949bc878c3ca_RC=%s\\n' \"$xiri_rc\"\nSAMPLER_CONTROLS_OK\n\nXIRI_54e9ade451064529833f949bc878c3ca_RC=0\nxiri-indy# ",
+        "source_sha256": "29c5f02200573383de67659ca31b82e3b2158a62fd6c5c76f30dfeeeb0560681",
+        "script_sha256": "a9374a4238911f347365226791521c19f3b7e0c6b150f3f8aa4d5a3cd5c5ea08",
+        "diagnostic": "Initial sleep control passed; the early-exit fixture used nonexistent /bin/true and correctly produced BAD_EXEC. Remaining controls resumed with /bin/sleep 0."
+      },
+      "host-cleanup": {
+        "emulator_processes": []
+      }
+    },
+    "final_guest": {
+      "resources": "sh /tmp/gnome-verify.sh; xiri_rc=$?; printf '\\nXIRI_a115ef68d56e45f3b \bda95587d10cc732_RC=%s\\n' \"$xiri_rc\"\nGNOME_RESOURCES_OK\n\nXIRI_a115ef68d56e45f3bda95587d10cc732_RC=0\nxiri-indy# ",
+      "artifacts": "ed97268e4c1db1c91a8973d16c1e31555816c2a29c220b29b9095eadf3b2ae04\n260b253f579ca46a50b83e367f95600b54c86756c47f5d9e0f9391251bfd7122\n4c868b35245339976c4ed0c987b36c78cec350941028a4ca02127c6e1af406b5\ncompat_irix_o32            exec     filesys  -        0       - exec_elf32,compat_netbsd32\n",
+      "document": {
+        "bytes": 87,
+        "sha256": "427e8a18a019ac52a7f79d7d978ac6116bf43e6eac28d7b8c29120c8c1d6e466",
+        "expected_text": "Xiri GNOME socket check\nOriginal IRIX gedit on NetBSD.\nCatalog reopen and second save.\n"
+      },
+      "metadata": "1234 1234 100644 87\n",
+      "session": "SESSION user=xiritest uid=1234 groups=1234 1235 home=/usr/people/xiritest cwd=/usr/people/xiritest display=127.0.0.1:0 authority=default\n PID PPID  UID  GID STAT    TIME %CPU COMMAND\n   0    0    0    0 DKl  0:07.57  0.0 [system]\n   1    0    0    0 Is   0:00.12  0.0 init \n 192    1    0    0 I    0:00.21  0.0 xconsole \n 249    1    0    0 Is   0:00.25  0.0 /usr/libexec/postfix/master -w \n 326    1    0    0 Ss   0:00.08  0.0 /usr/sbin/cron \n 344    1   35   35 I    0:00.06  0.0 dhcpcd: [manager] [ip4] [ip6] \n 345  344   35   35 I    0:00.01  0.0 dhcpcd: [network proxy] \n 372  344    0    0 I    0:00.06  0.0 dhcpcd: [privileged proxy] \n 382  344   35   35 I    0:00.01  0.0 dhcpcd: [control proxy] \n 407  479 1234 1234 I    0:00.02  0.0 /bin/sh /usr/local/libexec/xiri/desktop-clients.sh /usr/people/xiritest/.xiri/sessions/session.LaGf0R \n 416  479 1234 1234 I    0:00.01  0.0 /bin/sh /usr/local/libexec/xiri/desktop-clients.sh /usr/people/xiritest/.xiri/sessions/session.LaGf0R \n 422  416 1234 1234 I    0:01.65  0.0 /emul/irix/usr/bin/X11/4Dwm \n 427  479 1234 1234 I    0:00.02  0.0 /bin/sh /usr/local/libexec/xiri/desktop-clients.sh /usr/people/xiritest/.xiri/sessions/session.LaGf0R \n 431  479 1234 1234 I    0:00.02  0.0 /bin/sh /usr/local/libexec/xiri/desktop-clients.sh /usr/people/xiritest/.xiri/sessions/session.LaGf0R \n 465  407 1234 1234 S    0:02.00  0.0 /emul/irix/usr/bin/X11/xclock \n 467    1    0    0 Ss   0:00.06  0.0 /usr/sbin/rpcbind -h 127.0.0.1 \n 479 3837 1234 1234 Is   0:00.10  0.0 /bin/sh /usr/local/libexec/xiri/desktop-clients.sh /usr/people/xiritest/.xiri/sessions/session.LaGf0R \n 502 2929 1234 1234 I    0:02.90  0.0 /usr/sbin/iconcatalog \n 577    1 1234 1234 I    0:00.21  0.0 /emul/irix/usr/sbin/xwsh -e /usr/libexec/xiri-shell /usr/people/xiritest/.xiri/sessions/session.LaGf0R/handoff \n 585  692 1234 1234 I    0:00.07  0.0 fmserv 127.0.0.1:0.0 \n 692  427 1234 1234 I    0:01.56  0.0 /usr/sbin/fm-692 -b (fm)\n 752    1    0    0 Ss   0:00.27  0.0 /usr/sbin/syslogd -s \n1215 2729    0    0 Ss   0:45.08  0.0 /usr/X11R7/bin/Xorg :0 -config /usr/local/share/xiri/xorg.conf -noretro -auth /var/db/xdm/authdir/authfiles/A:0-QjhFYp \n2729    1    0    0 Is   0:00.04  0.0 /usr/X11R7/bin/xdm -server /etc/xiri/xdm/Xservers -resources /etc/xiri/xdm/Xresources \n2929  479 1234 1234 I    0:00.02  0.0 /bin/sh /usr/local/libexec/xiri/desktop-clients.sh /usr/people/xiritest/.xiri/sessions/session.LaGf0R \n2972    1    0    0 Is   0:00.02  0.0 /usr/sbin/inetd -l \n3042  249   12   12 I    0:00.49  0.0 qmgr -l -t unix -u \n3098  249   12   12 I    0:00.50  0.0 pickup -l -t unix -u \n3303 2729    0    0 Is   0:02.93  0.0 xdm: :0 \n3315  431 1234 1234 I    0:00.47  0.0 /emul/irix/usr/bin/X11/toolchest /usr/local/share/xiri/toolchest.chestrc \n3837 3303 1234 1234 Ss   0:27.06  0.0 /usr/local/libexec/xiri/session-guard 0 /bin/sh /usr/local/libexec/xiri/desktop-clients.sh /usr/people/xiritest/.xiri/sessions/session.LaGf0R \n 581  577 1234 1234 Is+  0:00.10  0.0 sh -i \n 333    1    0    0 Is   0:00.82  0.0 login \n3165  333    0    0 S    0:14.71  2.2 -sh \n4719 3165    0    0 O+   0:00.07  0.0 ps -axww -o pid,ppid,uid,gid,stat,time,pcpu,args \n6858 3165    0    0 S+   0:00.05  0.0 od -An -v -tx1 \n9622 3165    0    0 S+   0:00.06  0.0 gzip -c \n2481    1 1234 1234 S    5:20.74  0.0 /usr/local/sbin/famd -d -c /etc/xiri/fam.conf -p 391002 \n",
+      "desktop_png_sha256": "8e71bc17b5186c36b40c435c77a631f7c2b6b2a66233d6b38e816b69580052e2"
+    }
+  },
+  "startup_followups": [
+    {
+      "case": {
+        "id": "app-007",
+        "target": "/usr/freeware/bin/evolution",
+        "kind": "elf",
+        "sha256": "a66240d68dcb2775a8c93606195d26200d3a6a92ed3a557e9b8f8c1e32eacd2a",
+        "pages": [
+          "Applications"
+        ],
+        "names": [
+          "evolution"
+        ],
+        "partition": 0
+      },
+      "run": ".work/gnome-cycle",
+      "status": "window-observed",
+      "guard": {
+        "pid": "7644",
+        "exit": "-1",
+        "signal": "15",
+        "stopped": "1",
+        "absent": "1",
+        "valid": "1",
+        "tracked": "2",
+        "remaining": "0",
+        "reason": "timeout",
+        "uid": "1234",
+        "gid": "1234",
+        "elapsed": "45038"
+      },
+      "owned_pids": [
+        7644,
+        7975
+      ],
+      "new_windows": [
+        {
+          "id": "e00034",
+          "width": 249,
+          "height": 135,
+          "name": "Error",
+          "class_name": "Evolution",
+          "instance": "evolution"
+        }
+      ],
+      "samples": {
+        "3": {
+          "windows": [
+            {
+              "id": "e00034",
+              "width": 249,
+              "height": 135,
+              "name": "Error",
+              "class_name": "Evolution",
+              "instance": "evolution"
+            }
+          ],
+          "processes": [
+            {
+              "pid": 7644,
+              "ppid": 5016,
+              "uid": 1234,
+              "state": "Ss",
+              "cpu_time": "0:01.92",
+              "pcpu": "47.1",
+              "command": "/usr/freeware/bin/evolution "
+            }
+          ],
+          "snapshot_complete": true,
+          "query_status": 0
+        },
+        "15": {
+          "windows": [
+            {
+              "id": "e00034",
+              "width": 249,
+              "height": 135,
+              "name": "Error",
+              "class_name": "Evolution",
+              "instance": "evolution"
+            }
+          ],
+          "processes": [
+            {
+              "pid": 7644,
+              "ppid": 5016,
+              "uid": 1234,
+              "state": "Ss",
+              "cpu_time": "0:01.92",
+              "pcpu": "6.7",
+              "command": "/usr/freeware/bin/evolution "
+            }
+          ],
+          "snapshot_complete": true,
+          "query_status": 0
+        },
+        "35": {
+          "windows": [
+            {
+              "id": "e00034",
+              "width": 249,
+              "height": 135,
+              "name": "Error",
+              "class_name": "Evolution",
+              "instance": "evolution"
+            }
+          ],
+          "processes": [
+            {
+              "pid": 7644,
+              "ppid": 5016,
+              "uid": 1234,
+              "state": "Is",
+              "cpu_time": "0:01.92",
+              "pcpu": "1.1",
+              "command": "/usr/freeware/bin/evolution "
+            }
+          ],
+          "snapshot_complete": true,
+          "query_status": 0
+        },
+        "last": {
+          "windows": [],
+          "processes": [],
+          "snapshot_complete": true,
+          "query_status": 0
+        }
+      },
+      "after_ps_pid_matches": [],
+      "observation_interrupted": false,
+      "batch_interrupted": false,
+      "window_query_failures": [],
+      "cleanup_verified": true,
+      "stdout": "",
+      "stderr": "\nGdk-WARNING **: shmget failed: error 89 (Function not implemented)\ncp: /usr/freeware/share/evolution/default_user/*: No such file or directory\n",
+      "stdout_bytes": 0,
+      "stderr_bytes": 144,
+      "screenshot": {
+        "path": "app-007.png",
+        "sha256": "5df14b6e141ca39a286a84b7ef991521bad6d30b9c49b5efd83975c71a01677d"
+      },
+      "normal_interaction_tested": false,
+      "catalog_double_click_tested": false,
+      "record_hashes": {
+        "before.windows": "3ca8446c2c4f0d83a7eba031682d69f19488e92d72b95715fb47974a5dd00f01",
+        "before.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "before.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "before.ps": "4ba7b8c2cfdbd499bc77c8397612f26be958f1957cb8a46438677ab0109f2c5e",
+        "argv": "76f4c89e78398488babc3161e7fd5fd3d909f04bb1d85da243f36d967387267e",
+        "guard": "971bbfd887f347dfc5cd2ae02839801f45b7f3a8567f722a61a92ec5c3b83f82",
+        "guard.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "app.pid": "3bfbf2bce90cf8b275071a9389cce665cb77bd00d3d541efcd4c9931a49232fd",
+        "stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "6d4fa9fdd09b28e8765d46b7f3b9e15ccb38e4df3c1ee0d39166546213a4d07b",
+        "3.windows": "c4f75ef880a912034c5ee8f9d8a2a0bc995b7f73e1a3df8a2af8c572bf637fc6",
+        "3.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "3.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "3.ps": "e23eb049272ed6fabfe24f34ee84b41f3f83bbc0a638dbd5c1f3ec6fc5002fcf",
+        "15.windows": "c4f75ef880a912034c5ee8f9d8a2a0bc995b7f73e1a3df8a2af8c572bf637fc6",
+        "15.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "15.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "15.ps": "fcd046240f7d937b241623df121e2fae7ab22a1faf9bfb5225580d139fb9664d",
+        "35.windows": "c4f75ef880a912034c5ee8f9d8a2a0bc995b7f73e1a3df8a2af8c572bf637fc6",
+        "35.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "35.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "35.ps": "b6578a0f5d9d68d4a90e90d38b7fe8de8940cb1448b6115cd7474456a003ad0a",
+        "last.ps": "929f75d163deb75b187d05bdff5d30290f184a66117defd2e07b14aa8d5f2112",
+        "guard.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "last.windows": "3ca8446c2c4f0d83a7eba031682d69f19488e92d72b95715fb47974a5dd00f01",
+        "last.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "last.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "after.windows": "3ca8446c2c4f0d83a7eba031682d69f19488e92d72b95715fb47974a5dd00f01",
+        "after.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "after.ps": "9fa8861051327e0f63355abda4e2bbb450cb7f34009138003ba481b0c650cfad"
+      }
+    },
+    {
+      "case": {
+        "id": "app-010",
+        "target": "/usr/freeware/bin/glynx",
+        "kind": "text-command",
+        "sha256": "02bdba05edccea5e9d1cd5cd0881305925988e7e0577ad4b69d1559bb49cb148",
+        "pages": [
+          "Applications"
+        ],
+        "names": [
+          "glynx"
+        ],
+        "partition": 0
+      },
+      "run": ".work/gnome-cycle",
+      "status": "window-observed",
+      "guard": {
+        "pid": "5058",
+        "exit": "-1",
+        "signal": "15",
+        "stopped": "1",
+        "absent": "1",
+        "valid": "1",
+        "tracked": "2",
+        "remaining": "0",
+        "reason": "timeout",
+        "uid": "1234",
+        "gid": "1234",
+        "elapsed": "45063"
+      },
+      "owned_pids": [
+        5058,
+        7898
+      ],
+      "new_windows": [
+        {
+          "id": "e00006",
+          "width": 584,
+          "height": 368,
+          "name": "Terminal",
+          "class_name": "Terminal",
+          "instance": "Terminal.0"
+        },
+        {
+          "id": "e0008f",
+          "width": 292,
+          "height": 151,
+          "name": "Error",
+          "class_name": "Gnome-terminal",
+          "instance": "gnome-terminal"
+        }
+      ],
+      "samples": {
+        "3": {
+          "windows": [
+            {
+              "id": "e00006",
+              "width": 584,
+              "height": 368,
+              "name": "Terminal",
+              "class_name": "Terminal",
+              "instance": "Terminal.0"
+            },
+            {
+              "id": "e0008f",
+              "width": 292,
+              "height": 151,
+              "name": "Error",
+              "class_name": "Gnome-terminal",
+              "instance": "gnome-terminal"
+            }
+          ],
+          "processes": [
+            {
+              "pid": 5058,
+              "ppid": 5059,
+              "uid": 1234,
+              "state": "Ss",
+              "cpu_time": "0:00.08",
+              "pcpu": "0.0",
+              "command": "/emul/irix/bin/sh -c exec \"$@\" xiri-catalog /usr/freeware/bin/glynx "
+            },
+            {
+              "pid": 7898,
+              "ppid": 5058,
+              "uid": 1234,
+              "state": "S",
+              "cpu_time": "0:00.67",
+              "pcpu": "12.6",
+              "command": "gnome-terminal -x lynx "
+            }
+          ],
+          "snapshot_complete": true,
+          "query_status": 0
+        },
+        "15": {
+          "windows": [
+            {
+              "id": "e00006",
+              "width": 584,
+              "height": 368,
+              "name": "Terminal",
+              "class_name": "Terminal",
+              "instance": "Terminal.0"
+            },
+            {
+              "id": "e0008f",
+              "width": 292,
+              "height": 151,
+              "name": "Error",
+              "class_name": "Gnome-terminal",
+              "instance": "gnome-terminal"
+            }
+          ],
+          "processes": [
+            {
+              "pid": 5058,
+              "ppid": 5059,
+              "uid": 1234,
+              "state": "Ss",
+              "cpu_time": "0:00.08",
+              "pcpu": "0.0",
+              "command": "/emul/irix/bin/sh -c exec \"$@\" xiri-catalog /usr/freeware/bin/glynx "
+            },
+            {
+              "pid": 7898,
+              "ppid": 5058,
+              "uid": 1234,
+              "state": "S",
+              "cpu_time": "0:00.67",
+              "pcpu": "1.5",
+              "command": "gnome-terminal -x lynx "
+            }
+          ],
+          "snapshot_complete": true,
+          "query_status": 0
+        },
+        "35": {
+          "windows": [
+            {
+              "id": "e00006",
+              "width": 584,
+              "height": 368,
+              "name": "Terminal",
+              "class_name": "Terminal",
+              "instance": "Terminal.0"
+            },
+            {
+              "id": "e0008f",
+              "width": 292,
+              "height": 151,
+              "name": "Error",
+              "class_name": "Gnome-terminal",
+              "instance": "gnome-terminal"
+            }
+          ],
+          "processes": [
+            {
+              "pid": 5058,
+              "ppid": 5059,
+              "uid": 1234,
+              "state": "Is",
+              "cpu_time": "0:00.08",
+              "pcpu": "0.0",
+              "command": "/emul/irix/bin/sh -c exec \"$@\" xiri-catalog /usr/freeware/bin/glynx "
+            },
+            {
+              "pid": 7898,
+              "ppid": 5058,
+              "uid": 1234,
+              "state": "I",
+              "cpu_time": "0:00.67",
+              "pcpu": "0.0",
+              "command": "gnome-terminal -x lynx "
+            }
+          ],
+          "snapshot_complete": true,
+          "query_status": 0
+        },
+        "last": {
+          "windows": [],
+          "processes": [],
+          "snapshot_complete": true,
+          "query_status": 0
+        }
+      },
+      "after_ps_pid_matches": [],
+      "observation_interrupted": false,
+      "batch_interrupted": false,
+      "window_query_failures": [],
+      "cleanup_verified": true,
+      "stdout": "",
+      "stderr": "\nGdk-WARNING **: shmget failed: error 89 (Function not implemented)\n\nGnomeUI-WARNING **: Could not open help topics file NULL\nfailure writing /usr/people/xiritest/.gnome/Terminal: Function not implemented\nfailure writing /usr/people/xiritest/.gnome/Terminal: Function not implemented\nError: unable to fork: Function not implemented\n",
+      "stdout_bytes": 0,
+      "stderr_bytes": 332,
+      "screenshot": {
+        "path": "app-010.png",
+        "sha256": "1392e8a55b6e0189c70de116578b676675c8527749b0d6eb2eefd8f9a88d656d"
+      },
+      "normal_interaction_tested": false,
+      "catalog_double_click_tested": false,
+      "record_hashes": {
+        "before.windows": "3ca8446c2c4f0d83a7eba031682d69f19488e92d72b95715fb47974a5dd00f01",
+        "before.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "before.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "before.ps": "7d2882d93fcf5ee9301ea45a3376ce41dc8620d9a697efefac32db250e863471",
+        "argv": "3ba0febdc3abc71d2e6e138cb1ec68a9c5499f42dea4a632558535af22e4819f",
+        "guard": "4d22c4a5924f1bc845aed15132f12a9d64e285fa9bfe3657f88e980480854fdd",
+        "guard.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "app.pid": "f07e40e31fd70542ae97963fadceddee538c158c2258668bfc43b31a32a32caa",
+        "stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "ac91aba2617c19c3e81825833860056a091b6a9ff2867d927b137dc4daeaaf39",
+        "3.windows": "aac539b2058000a8228a58fa251c9fee25329af8da0312d227fd1df150a0cd4e",
+        "3.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "3.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "3.ps": "7ccf5078f24e0c73e75414b8fd1c7b1c7eb10c99b55baefe6ddec100460bb64a",
+        "15.windows": "aac539b2058000a8228a58fa251c9fee25329af8da0312d227fd1df150a0cd4e",
+        "15.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "15.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "15.ps": "4e116c1b249a4ee9b16ed0b61519e8265d07a9278936bb8c8a4e133e74aa1d1e",
+        "35.windows": "aac539b2058000a8228a58fa251c9fee25329af8da0312d227fd1df150a0cd4e",
+        "35.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "35.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "35.ps": "15a5bda41cb896d51873fcb6745bc37e02b274cc52a2a3e0c44bb160cc736f25",
+        "last.ps": "7b7f7b789c1d4dd3cb18028e1d8cf90df56dd1f3c86431ebb88ced2880319a4e",
+        "guard.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "last.windows": "3ca8446c2c4f0d83a7eba031682d69f19488e92d72b95715fb47974a5dd00f01",
+        "last.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "last.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "after.windows": "3ca8446c2c4f0d83a7eba031682d69f19488e92d72b95715fb47974a5dd00f01",
+        "after.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "after.ps": "d3a58996605f1d56eb9c5268211e2b37e527af7c04c1c91fbb039776e08a3ba1"
+      }
+    },
+    {
+      "case": {
+        "id": "app-011",
+        "target": "/usr/freeware/bin/gnome-terminal",
+        "kind": "elf",
+        "sha256": "b9cc7f5d4550c622c8d02570828c414de55e72050f10a77598d1f1e46751419d",
+        "pages": [
+          "Applications"
+        ],
+        "names": [
+          "gnome-terminal"
+        ],
+        "partition": 0
+      },
+      "run": ".work/gnome-cycle",
+      "status": "window-observed",
+      "guard": {
+        "pid": "5333",
+        "exit": "-1",
+        "signal": "15",
+        "stopped": "1",
+        "absent": "1",
+        "valid": "1",
+        "tracked": "1",
+        "remaining": "0",
+        "reason": "timeout",
+        "uid": "1234",
+        "gid": "1234",
+        "elapsed": "45050"
+      },
+      "owned_pids": [
+        5333
+      ],
+      "new_windows": [
+        {
+          "id": "e00006",
+          "width": 584,
+          "height": 368,
+          "name": "Terminal",
+          "class_name": "Terminal",
+          "instance": "Terminal.0"
+        },
+        {
+          "id": "e0008f",
+          "width": 292,
+          "height": 151,
+          "name": "Error",
+          "class_name": "Gnome-terminal",
+          "instance": "gnome-terminal"
+        }
+      ],
+      "samples": {
+        "3": {
+          "windows": [
+            {
+              "id": "e00006",
+              "width": 584,
+              "height": 368,
+              "name": "Terminal",
+              "class_name": "Terminal",
+              "instance": "Terminal.0"
+            },
+            {
+              "id": "e0008f",
+              "width": 292,
+              "height": 151,
+              "name": "Error",
+              "class_name": "Gnome-terminal",
+              "instance": "gnome-terminal"
+            }
+          ],
+          "processes": [
+            {
+              "pid": 5333,
+              "ppid": 5332,
+              "uid": 1234,
+              "state": "Ss",
+              "cpu_time": "0:00.72",
+              "pcpu": "11.6",
+              "command": "/usr/freeware/bin/gnome-terminal "
+            }
+          ],
+          "snapshot_complete": true,
+          "query_status": 0
+        },
+        "15": {
+          "windows": [
+            {
+              "id": "e00006",
+              "width": 584,
+              "height": 368,
+              "name": "Terminal",
+              "class_name": "Terminal",
+              "instance": "Terminal.0"
+            },
+            {
+              "id": "e0008f",
+              "width": 292,
+              "height": 151,
+              "name": "Error",
+              "class_name": "Gnome-terminal",
+              "instance": "gnome-terminal"
+            }
+          ],
+          "processes": [
+            {
+              "pid": 5333,
+              "ppid": 5332,
+              "uid": 1234,
+              "state": "Ss",
+              "cpu_time": "0:00.72",
+              "pcpu": "1.4",
+              "command": "/usr/freeware/bin/gnome-terminal "
+            }
+          ],
+          "snapshot_complete": true,
+          "query_status": 0
+        },
+        "35": {
+          "windows": [
+            {
+              "id": "e00006",
+              "width": 584,
+              "height": 368,
+              "name": "Terminal",
+              "class_name": "Terminal",
+              "instance": "Terminal.0"
+            },
+            {
+              "id": "e0008f",
+              "width": 292,
+              "height": 151,
+              "name": "Error",
+              "class_name": "Gnome-terminal",
+              "instance": "gnome-terminal"
+            }
+          ],
+          "processes": [
+            {
+              "pid": 5333,
+              "ppid": 5332,
+              "uid": 1234,
+              "state": "Is",
+              "cpu_time": "0:00.72",
+              "pcpu": "0.0",
+              "command": "/usr/freeware/bin/gnome-terminal "
+            }
+          ],
+          "snapshot_complete": true,
+          "query_status": 0
+        },
+        "last": {
+          "windows": [],
+          "processes": [],
+          "snapshot_complete": true,
+          "query_status": 0
+        }
+      },
+      "after_ps_pid_matches": [],
+      "observation_interrupted": false,
+      "batch_interrupted": false,
+      "window_query_failures": [],
+      "cleanup_verified": true,
+      "stdout": "",
+      "stderr": "\nGdk-WARNING **: shmget failed: error 89 (Function not implemented)\n\nGnomeUI-WARNING **: Could not open help topics file NULL\nfailure writing /usr/people/xiritest/.gnome/Terminal: Function not implemented\nfailure writing /usr/people/xiritest/.gnome/Terminal: Function not implemented\nError: unable to fork: Function not implemented\n",
+      "stdout_bytes": 0,
+      "stderr_bytes": 332,
+      "screenshot": {
+        "path": "app-011.png",
+        "sha256": "886b31cab73ca8b06f8b80c04d505bdada59641802f9bdb70e53a58870439d14"
+      },
+      "normal_interaction_tested": false,
+      "catalog_double_click_tested": false,
+      "record_hashes": {
+        "before.windows": "3ca8446c2c4f0d83a7eba031682d69f19488e92d72b95715fb47974a5dd00f01",
+        "before.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "before.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "before.ps": "f632df48ba9f4c7a84a4668a3b66621e89bfc8f669b7a91e992ce3f844b373dc",
+        "argv": "e412978a975b263163189c731917b8eb9ade1a868f95567f50ae4dafb0141cdf",
+        "guard": "baff4446f99191ba861d8e6ff6f95a3300cf68d7ea5370029ac7e5d4ba6d31cb",
+        "guard.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "app.pid": "5adeb5a95a5c656b0aae8ee1b375a445b3a51ccdce13e9a5c6d771b0f1f3a4af",
+        "stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "ac91aba2617c19c3e81825833860056a091b6a9ff2867d927b137dc4daeaaf39",
+        "3.windows": "aac539b2058000a8228a58fa251c9fee25329af8da0312d227fd1df150a0cd4e",
+        "3.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "3.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "3.ps": "b74217b913dd70af45ceec3371eb470003f173bf53545a10b35572df7aa102b6",
+        "15.windows": "aac539b2058000a8228a58fa251c9fee25329af8da0312d227fd1df150a0cd4e",
+        "15.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "15.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "15.ps": "b77770123aec2bf3097f23b70e2435735a316f341c6217400547a022612e217e",
+        "35.windows": "aac539b2058000a8228a58fa251c9fee25329af8da0312d227fd1df150a0cd4e",
+        "35.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "35.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "35.ps": "992f8a6c9122b34f7c90fd806907804465094e8a52fc3ae18d56c503e733f8c7",
+        "last.ps": "ea99c4b239270dccff6069843020aa9aa3af20577bd14765c79bceda4542314a",
+        "guard.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "last.windows": "3ca8446c2c4f0d83a7eba031682d69f19488e92d72b95715fb47974a5dd00f01",
+        "last.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "last.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "after.windows": "3ca8446c2c4f0d83a7eba031682d69f19488e92d72b95715fb47974a5dd00f01",
+        "after.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "after.ps": "a3fa18f1a4cd92c94c7c7a6683de8faa0eb761890666ad3d7db01f0a84e4edb0"
+      }
+    },
+    {
+      "case": {
+        "id": "app-015",
+        "target": "/usr/freeware/bin/midnight-commander",
+        "kind": "text-command",
+        "sha256": "ab58abeca3694f9b95b37a9451e787ea5c5146b3a68afdc05adae49008dcd9dd",
+        "pages": [
+          "Applications"
+        ],
+        "names": [
+          "midnight-commander"
+        ],
+        "partition": 0
+      },
+      "run": ".work/gnome-cycle",
+      "status": "window-observed",
+      "guard": {
+        "pid": "5584",
+        "exit": "-1",
+        "signal": "15",
+        "stopped": "1",
+        "absent": "1",
+        "valid": "1",
+        "tracked": "2",
+        "remaining": "0",
+        "reason": "timeout",
+        "uid": "1234",
+        "gid": "1234",
+        "elapsed": "45062"
+      },
+      "owned_pids": [
+        5227,
+        5584
+      ],
+      "new_windows": [
+        {
+          "id": "e00006",
+          "width": 584,
+          "height": 368,
+          "name": "Terminal",
+          "class_name": "Terminal",
+          "instance": "Terminal.0"
+        },
+        {
+          "id": "e0008f",
+          "width": 292,
+          "height": 151,
+          "name": "Error",
+          "class_name": "Gnome-terminal",
+          "instance": "gnome-terminal"
+        }
+      ],
+      "samples": {
+        "3": {
+          "windows": [
+            {
+              "id": "e00006",
+              "width": 584,
+              "height": 368,
+              "name": "Terminal",
+              "class_name": "Terminal",
+              "instance": "Terminal.0"
+            },
+            {
+              "id": "e0008f",
+              "width": 292,
+              "height": 151,
+              "name": "Error",
+              "class_name": "Gnome-terminal",
+              "instance": "gnome-terminal"
+            }
+          ],
+          "processes": [
+            {
+              "pid": 5227,
+              "ppid": 5584,
+              "uid": 1234,
+              "state": "S",
+              "cpu_time": "0:00.66",
+              "pcpu": "14.8",
+              "command": "gnome-terminal -x mc "
+            },
+            {
+              "pid": 5584,
+              "ppid": 6399,
+              "uid": 1234,
+              "state": "Ss",
+              "cpu_time": "0:00.07",
+              "pcpu": "0.0",
+              "command": "/emul/irix/bin/sh -c exec \"$@\" xiri-catalog /usr/freeware/bin/midnight-commander "
+            }
+          ],
+          "snapshot_complete": true,
+          "query_status": 0
+        },
+        "15": {
+          "windows": [
+            {
+              "id": "e00006",
+              "width": 584,
+              "height": 368,
+              "name": "Terminal",
+              "class_name": "Terminal",
+              "instance": "Terminal.0"
+            },
+            {
+              "id": "e0008f",
+              "width": 292,
+              "height": 151,
+              "name": "Error",
+              "class_name": "Gnome-terminal",
+              "instance": "gnome-terminal"
+            }
+          ],
+          "processes": [
+            {
+              "pid": 5227,
+              "ppid": 5584,
+              "uid": 1234,
+              "state": "S",
+              "cpu_time": "0:00.66",
+              "pcpu": "1.8",
+              "command": "gnome-terminal -x mc "
+            },
+            {
+              "pid": 5584,
+              "ppid": 6399,
+              "uid": 1234,
+              "state": "Ss",
+              "cpu_time": "0:00.07",
+              "pcpu": "0.0",
+              "command": "/emul/irix/bin/sh -c exec \"$@\" xiri-catalog /usr/freeware/bin/midnight-commander "
+            }
+          ],
+          "snapshot_complete": true,
+          "query_status": 0
+        },
+        "35": {
+          "windows": [
+            {
+              "id": "e00006",
+              "width": 584,
+              "height": 368,
+              "name": "Terminal",
+              "class_name": "Terminal",
+              "instance": "Terminal.0"
+            },
+            {
+              "id": "e0008f",
+              "width": 292,
+              "height": 151,
+              "name": "Error",
+              "class_name": "Gnome-terminal",
+              "instance": "gnome-terminal"
+            }
+          ],
+          "processes": [
+            {
+              "pid": 5227,
+              "ppid": 5584,
+              "uid": 1234,
+              "state": "I",
+              "cpu_time": "0:00.66",
+              "pcpu": "0.0",
+              "command": "gnome-terminal -x mc "
+            },
+            {
+              "pid": 5584,
+              "ppid": 6399,
+              "uid": 1234,
+              "state": "Is",
+              "cpu_time": "0:00.07",
+              "pcpu": "0.0",
+              "command": "/emul/irix/bin/sh -c exec \"$@\" xiri-catalog /usr/freeware/bin/midnight-commander "
+            }
+          ],
+          "snapshot_complete": true,
+          "query_status": 0
+        },
+        "last": {
+          "windows": [],
+          "processes": [],
+          "snapshot_complete": true,
+          "query_status": 0
+        }
+      },
+      "after_ps_pid_matches": [],
+      "observation_interrupted": false,
+      "batch_interrupted": false,
+      "window_query_failures": [],
+      "cleanup_verified": true,
+      "stdout": "",
+      "stderr": "\nGdk-WARNING **: shmget failed: error 89 (Function not implemented)\n\nGnomeUI-WARNING **: Could not open help topics file NULL\nfailure writing /usr/people/xiritest/.gnome/Terminal: Function not implemented\nfailure writing /usr/people/xiritest/.gnome/Terminal: Function not implemented\nError: unable to fork: Function not implemented\n",
+      "stdout_bytes": 0,
+      "stderr_bytes": 332,
+      "screenshot": {
+        "path": "app-015.png",
+        "sha256": "0e2ac1c503eb2f4a78497fa800c80e42a079b6dfe3ef76e08ff34e00c67b9744"
+      },
+      "normal_interaction_tested": false,
+      "catalog_double_click_tested": false,
+      "record_hashes": {
+        "before.windows": "3ca8446c2c4f0d83a7eba031682d69f19488e92d72b95715fb47974a5dd00f01",
+        "before.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "before.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "before.ps": "6b3e33941cf65aed66c15e114401401b7bedf64425561ad1f13cbfe0eee9f344",
+        "argv": "74a7e57cd2ee78183c45609e6765961c39eb5d32e3dd057c1c52a9ed183663aa",
+        "guard": "a3f87e2a70a25f126a095497b162a14818f8623416cebc862581ce6ac4841bb9",
+        "guard.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "app.pid": "0819fb915f438e87b3553b0e74d2eb4b873f1a9857824defa3cf77dd9f237bf6",
+        "stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "ac91aba2617c19c3e81825833860056a091b6a9ff2867d927b137dc4daeaaf39",
+        "3.windows": "aac539b2058000a8228a58fa251c9fee25329af8da0312d227fd1df150a0cd4e",
+        "3.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "3.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "3.ps": "40abc4d0ada45f7ec01d43943110276b33a82ef689c1a941aa1713edf934b70c",
+        "15.windows": "aac539b2058000a8228a58fa251c9fee25329af8da0312d227fd1df150a0cd4e",
+        "15.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "15.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "15.ps": "ecdfb0d901348cb3a1aa024050e20ec731f97e08c9f32c94bb3830340acad34a",
+        "35.windows": "aac539b2058000a8228a58fa251c9fee25329af8da0312d227fd1df150a0cd4e",
+        "35.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "35.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "35.ps": "fe94f7d968cd9542f2b79fab2d2711736d13ab929a60a73d558ca9fd434ad6f8",
+        "last.ps": "51400b2a3b744d116c654a5db23005238a635867875facdd98b5d5a565f3af05",
+        "guard.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "last.windows": "3ca8446c2c4f0d83a7eba031682d69f19488e92d72b95715fb47974a5dd00f01",
+        "last.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "last.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "after.windows": "3ca8446c2c4f0d83a7eba031682d69f19488e92d72b95715fb47974a5dd00f01",
+        "after.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "after.ps": "f4d400b1ad421cf2b0b346c2b89424d5a0caaa9ee41b88c61ed35c2089ad6b07"
+      }
+    },
+    {
+      "case": {
+        "id": "app-078",
+        "target": "/usr/freeware/bin/balsa",
+        "kind": "elf",
+        "sha256": "a7ade6e1f41b4313707999c2d82da700fb2ca10041cd41bae5d4240973b725c8",
+        "pages": [
+          "Freeware"
+        ],
+        "names": [
+          "balsa"
+        ],
+        "partition": 0
+      },
+      "run": ".work/gnome-cycle",
+      "status": "window-observed",
+      "guard": {
+        "pid": "5785",
+        "exit": "-1",
+        "signal": "15",
+        "stopped": "1",
+        "absent": "1",
+        "valid": "1",
+        "tracked": "1",
+        "remaining": "0",
+        "reason": "timeout",
+        "uid": "1234",
+        "gid": "1234",
+        "elapsed": "45048"
+      },
+      "owned_pids": [
+        5785
+      ],
+      "new_windows": [
+        {
+          "id": "e0004f",
+          "width": 532,
+          "height": 375,
+          "name": "Configure Balsa",
+          "class_name": "Balsa",
+          "instance": "balsa"
+        }
+      ],
+      "samples": {
+        "3": {
+          "windows": [
+            {
+              "id": "e0004f",
+              "width": 532,
+              "height": 375,
+              "name": "Configure Balsa",
+              "class_name": "Balsa",
+              "instance": "balsa"
+            }
+          ],
+          "processes": [
+            {
+              "pid": 5785,
+              "ppid": 8812,
+              "uid": 1234,
+              "state": "Ss",
+              "cpu_time": "0:01.49",
+              "pcpu": "35.5",
+              "command": "/usr/freeware/bin/balsa "
+            }
+          ],
+          "snapshot_complete": true,
+          "query_status": 0
+        },
+        "15": {
+          "windows": [
+            {
+              "id": "e0004f",
+              "width": 532,
+              "height": 375,
+              "name": "Configure Balsa",
+              "class_name": "Balsa",
+              "instance": "balsa"
+            }
+          ],
+          "processes": [
+            {
+              "pid": 5785,
+              "ppid": 8812,
+              "uid": 1234,
+              "state": "Ss",
+              "cpu_time": "0:01.49",
+              "pcpu": "4.9",
+              "command": "/usr/freeware/bin/balsa "
+            }
+          ],
+          "snapshot_complete": true,
+          "query_status": 0
+        },
+        "35": {
+          "windows": [
+            {
+              "id": "e0004f",
+              "width": 532,
+              "height": 375,
+              "name": "Configure Balsa",
+              "class_name": "Balsa",
+              "instance": "balsa"
+            }
+          ],
+          "processes": [
+            {
+              "pid": 5785,
+              "ppid": 8812,
+              "uid": 1234,
+              "state": "Is",
+              "cpu_time": "0:01.49",
+              "pcpu": "0.7",
+              "command": "/usr/freeware/bin/balsa "
+            }
+          ],
+          "snapshot_complete": true,
+          "query_status": 0
+        },
+        "last": {
+          "windows": [],
+          "processes": [],
+          "snapshot_complete": true,
+          "query_status": 0
+        }
+      },
+      "after_ps_pid_matches": [],
+      "observation_interrupted": false,
+      "batch_interrupted": false,
+      "window_query_failures": [],
+      "cleanup_verified": true,
+      "stdout": "",
+      "stderr": "\nGdk-WARNING **: shmget failed: error 89 (Function not implemented)\n\n** WARNING **: *** Could not load basic configuration!\n\n\n** WARNING **: Cannot find expected file \"balsa/balsa-logo.png\" (spliced with \"pixmaps\") with no extra prefixes\n\n** WARNING **: Cannot find expected file \"balsa/balsa-watermark.png\" (spliced with \"pixmaps\") with no extra prefixes\n",
+      "stdout_bytes": 0,
+      "stderr_bytes": 356,
+      "screenshot": {
+        "path": "app-078.png",
+        "sha256": "5633d260fcc92c372d238617743191765444fc31332f3c34a66b859505d656dc"
+      },
+      "normal_interaction_tested": false,
+      "catalog_double_click_tested": false,
+      "record_hashes": {
+        "before.windows": "3ca8446c2c4f0d83a7eba031682d69f19488e92d72b95715fb47974a5dd00f01",
+        "before.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "before.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "before.ps": "76db0e10e1f75ec0bddd314c2e80b73a08f4cfb5ecc68a0b76453c37e3aa9263",
+        "argv": "4b329f42f692b56b1d575f717fec3884cedfe8258fcc6b678a5a7c245fdeb85a",
+        "guard": "b1be1757e319caf55c7c9325d39d6604e0413b452c01ba2634c0606e3df495eb",
+        "guard.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "app.pid": "0387582eeda815858ce0bcb57132121543a4dabfea088620103aec6736024536",
+        "stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "21b38b0217ca9fc0a30a1fcdd7d7efa34b8d72e9cc4af8c762e3719f46b84519",
+        "3.windows": "7ecb77a69c55cb467bdf411450f9e5b5372f481879d04f7aefbe4dc74a41384c",
+        "3.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "3.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "3.ps": "4369f8a928703bdd9f3207fec330a8e2a0f02a2d0338be439518e576b74fe0bc",
+        "15.windows": "7ecb77a69c55cb467bdf411450f9e5b5372f481879d04f7aefbe4dc74a41384c",
+        "15.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "15.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "15.ps": "a7cdd9ee7202705d775cfe0633b9f560368c0cc137b4c975a2a17ac3da7e0013",
+        "35.windows": "7ecb77a69c55cb467bdf411450f9e5b5372f481879d04f7aefbe4dc74a41384c",
+        "35.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "35.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "35.ps": "9bd7adc1eebf88e9395e94c6c857458a13aa5f778006216d1a47be3be05a975b",
+        "last.ps": "b13e2a86ab6e81c7424190caa743571197baafe97b62f6d7e87ec9a5a1f29542",
+        "guard.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "last.windows": "3ca8446c2c4f0d83a7eba031682d69f19488e92d72b95715fb47974a5dd00f01",
+        "last.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "last.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "after.windows": "3ca8446c2c4f0d83a7eba031682d69f19488e92d72b95715fb47974a5dd00f01",
+        "after.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "after.ps": "974fd3b397384ccf11d131a5721b75835ed7ca0f54a3fe6a30ce8d97409aaeb0"
+      }
+    },
+    {
+      "case": {
+        "id": "app-082",
+        "target": "/usr/freeware/bin/glade",
+        "kind": "elf",
+        "sha256": "c47d980a77eb88890cc8dc3f77df5bb0327e77343ec6816ef7ac0a70d53b70c1",
+        "pages": [
+          "Freeware"
+        ],
+        "names": [
+          "glade"
+        ],
+        "partition": 0
+      },
+      "run": ".work/gnome-cycle",
+      "status": "window-observed",
+      "guard": {
+        "pid": "5826",
+        "exit": "-1",
+        "signal": "15",
+        "stopped": "1",
+        "absent": "1",
+        "valid": "1",
+        "tracked": "3",
+        "remaining": "0",
+        "reason": "timeout",
+        "uid": "1234",
+        "gid": "1234",
+        "elapsed": "45055"
+      },
+      "owned_pids": [
+        5826,
+        8598,
+        9046
+      ],
+      "new_windows": [
+        {
+          "id": "e0025f",
+          "width": 242,
+          "height": 200,
+          "name": "Glade: <untitled>",
+          "class_name": "Glade",
+          "instance": "project"
+        },
+        {
+          "id": "e0029f",
+          "width": 112,
+          "height": 383,
+          "name": "Palette",
+          "class_name": "Glade",
+          "instance": "palette"
+        },
+        {
+          "id": "e002cd",
+          "width": 234,
+          "height": 370,
+          "name": "Properties: <none>",
+          "class_name": "Glade",
+          "instance": "object_inspector"
+        }
+      ],
+      "samples": {
+        "3": {
+          "windows": [
+            {
+              "id": "e0025f",
+              "width": 242,
+              "height": 200,
+              "name": "Glade: <untitled>",
+              "class_name": "Glade",
+              "instance": "project"
+            },
+            {
+              "id": "e0029f",
+              "width": 112,
+              "height": 383,
+              "name": "Palette",
+              "class_name": "Glade",
+              "instance": "palette"
+            },
+            {
+              "id": "e002cd",
+              "width": 234,
+              "height": 370,
+              "name": "Properties: <none>",
+              "class_name": "Glade",
+              "instance": "object_inspector"
+            }
+          ],
+          "processes": [
+            {
+              "pid": 5826,
+              "ppid": 8757,
+              "uid": 1234,
+              "state": "Ss",
+              "cpu_time": "0:01.43",
+              "pcpu": "26.0",
+              "command": "/usr/freeware/bin/glade "
+            }
+          ],
+          "snapshot_complete": true,
+          "query_status": 0
+        },
+        "15": {
+          "windows": [
+            {
+              "id": "e0025f",
+              "width": 242,
+              "height": 200,
+              "name": "Glade: <untitled>",
+              "class_name": "Glade",
+              "instance": "project"
+            },
+            {
+              "id": "e0029f",
+              "width": 112,
+              "height": 383,
+              "name": "Palette",
+              "class_name": "Glade",
+              "instance": "palette"
+            },
+            {
+              "id": "e002cd",
+              "width": 234,
+              "height": 370,
+              "name": "Properties: <none>",
+              "class_name": "Glade",
+              "instance": "object_inspector"
+            }
+          ],
+          "processes": [
+            {
+              "pid": 5826,
+              "ppid": 8757,
+              "uid": 1234,
+              "state": "Ss",
+              "cpu_time": "0:01.43",
+              "pcpu": "4.3",
+              "command": "/usr/freeware/bin/glade "
+            }
+          ],
+          "snapshot_complete": true,
+          "query_status": 0
+        },
+        "35": {
+          "windows": [
+            {
+              "id": "e0025f",
+              "width": 242,
+              "height": 200,
+              "name": "Glade: <untitled>",
+              "class_name": "Glade",
+              "instance": "project"
+            },
+            {
+              "id": "e0029f",
+              "width": 112,
+              "height": 383,
+              "name": "Palette",
+              "class_name": "Glade",
+              "instance": "palette"
+            },
+            {
+              "id": "e002cd",
+              "width": 234,
+              "height": 370,
+              "name": "Properties: <none>",
+              "class_name": "Glade",
+              "instance": "object_inspector"
+            }
+          ],
+          "processes": [
+            {
+              "pid": 5826,
+              "ppid": 8757,
+              "uid": 1234,
+              "state": "Is",
+              "cpu_time": "0:01.43",
+              "pcpu": "0.6",
+              "command": "/usr/freeware/bin/glade "
+            }
+          ],
+          "snapshot_complete": true,
+          "query_status": 0
+        },
+        "last": {
+          "windows": [],
+          "processes": [],
+          "snapshot_complete": true,
+          "query_status": 0
+        }
+      },
+      "after_ps_pid_matches": [],
+      "observation_interrupted": false,
+      "batch_interrupted": false,
+      "window_query_failures": [],
+      "cleanup_verified": true,
+      "stdout": "",
+      "stderr": "\nGdk-WARNING **: shmget failed: error 89 (Function not implemented)\n\n** CRITICAL **: file oaf-activate.c: line 125: assertion `ac' failed.\n\nGnomeUI-WARNING **: Could not open help topics file NULL\nfailure writing /usr/people/xiritest/.gnome/Glade: Function not implemented\nfailure writing /usr/people/xiritest/.gnome/Glade: Function not implemented\nfailure writing /usr/people/xiritest/.gnome/Glade: Function not implemented\n",
+      "stdout_bytes": 0,
+      "stderr_bytes": 425,
+      "screenshot": {
+        "path": "app-082.png",
+        "sha256": "1e63f78f1e4ad9022dc0dfde3cff6e1c9e3ab5ed5293979ecf1a1c7157f4f939"
+      },
+      "normal_interaction_tested": false,
+      "catalog_double_click_tested": false,
+      "record_hashes": {
+        "before.windows": "3ca8446c2c4f0d83a7eba031682d69f19488e92d72b95715fb47974a5dd00f01",
+        "before.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "before.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "before.ps": "d93537236f84e9995592254b61ef263e91af475a54712544106d9bea68c00f8a",
+        "argv": "269e5b8d75c84b48e781621bb65b2ade0ce26c754fd160bc922110b76b4e4cbe",
+        "guard": "38845b99936261f5377ba525731c2f187d6a3902e04c3258e81c08656fd6c52a",
+        "guard.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "app.pid": "374e5992a3e874ec6966d5ae4b685d576347c4c7040bf114d0f09eb14f4bc7a8",
+        "stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "89d7cd18ae06f5cc71566703f7d2a9bd0ee6dd0960212db4673aa43372aa3e48",
+        "3.windows": "67d319174d976a98a9e284f307b7db1cfeb615f64d2d463e3a8ecc9e1d871c81",
+        "3.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "3.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "3.ps": "313fab192baa15d14b02cbe3c77dfe22dcf1b2c970775b4edf0c69b92e50aa01",
+        "15.windows": "67d319174d976a98a9e284f307b7db1cfeb615f64d2d463e3a8ecc9e1d871c81",
+        "15.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "15.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "15.ps": "12415de2a03868d1b7042dc3710e3b9c945df63acd553106b0d6b344e9896b7f",
+        "35.windows": "67d319174d976a98a9e284f307b7db1cfeb615f64d2d463e3a8ecc9e1d871c81",
+        "35.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "35.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "35.ps": "b51a2c4ed9ceadc4ed58f4bfc9d7d79c320e41989e200210dd90971f77339d75",
+        "last.ps": "7ab377e2d3983841c2d5df135994ab911b7b7b7c1e15349031ed373b27df9f61",
+        "guard.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "last.windows": "3ca8446c2c4f0d83a7eba031682d69f19488e92d72b95715fb47974a5dd00f01",
+        "last.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "last.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "after.windows": "3ca8446c2c4f0d83a7eba031682d69f19488e92d72b95715fb47974a5dd00f01",
+        "after.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "after.ps": "0f6717e44a50128cf4d8bd93d5cc82a1179bc82f33e5ab53701b67dcdd6fcfb4"
+      }
+    },
+    {
+      "case": {
+        "id": "app-083",
+        "target": "/usr/freeware/bin/gnumeric",
+        "kind": "elf",
+        "sha256": "4595053c095cfa497098ab186749d35c3641b1299910f0d8b984bd42166f0e40",
+        "pages": [
+          "Freeware"
+        ],
+        "names": [
+          "gnumeric"
+        ],
+        "partition": 0
+      },
+      "run": ".work/gnome-cycle",
+      "status": "window-observed",
+      "guard": {
+        "pid": "9132",
+        "exit": "-1",
+        "signal": "15",
+        "stopped": "1",
+        "absent": "1",
+        "valid": "1",
+        "tracked": "1",
+        "remaining": "0",
+        "reason": "timeout",
+        "uid": "1234",
+        "gid": "1234",
+        "elapsed": "45046"
+      },
+      "owned_pids": [
+        9132
+      ],
+      "new_windows": [
+        {
+          "id": "e00012",
+          "width": 410,
+          "height": 455,
+          "name": "Error",
+          "class_name": "Gnumeric",
+          "instance": "gnumeric"
+        }
+      ],
+      "samples": {
+        "3": {
+          "windows": [
+            {
+              "id": "e00012",
+              "width": 410,
+              "height": 455,
+              "name": "Error",
+              "class_name": "Gnumeric",
+              "instance": "gnumeric"
+            }
+          ],
+          "processes": [
+            {
+              "pid": 9132,
+              "ppid": 6012,
+              "uid": 1234,
+              "state": "Ss",
+              "cpu_time": "0:01.04",
+              "pcpu": "9.7",
+              "command": "/usr/freeware/bin/gnumeric "
+            }
+          ],
+          "snapshot_complete": true,
+          "query_status": 0
+        },
+        "15": {
+          "windows": [
+            {
+              "id": "e00012",
+              "width": 410,
+              "height": 455,
+              "name": "Error",
+              "class_name": "Gnumeric",
+              "instance": "gnumeric"
+            }
+          ],
+          "processes": [
+            {
+              "pid": 9132,
+              "ppid": 6012,
+              "uid": 1234,
+              "state": "Ss",
+              "cpu_time": "0:01.04",
+              "pcpu": "1.2",
+              "command": "/usr/freeware/bin/gnumeric "
+            }
+          ],
+          "snapshot_complete": true,
+          "query_status": 0
+        },
+        "35": {
+          "windows": [
+            {
+              "id": "e00012",
+              "width": 410,
+              "height": 455,
+              "name": "Error",
+              "class_name": "Gnumeric",
+              "instance": "gnumeric"
+            }
+          ],
+          "processes": [
+            {
+              "pid": 9132,
+              "ppid": 6012,
+              "uid": 1234,
+              "state": "Is",
+              "cpu_time": "0:01.04",
+              "pcpu": "0.0",
+              "command": "/usr/freeware/bin/gnumeric "
+            }
+          ],
+          "snapshot_complete": true,
+          "query_status": 0
+        },
+        "last": {
+          "windows": [],
+          "processes": [],
+          "snapshot_complete": true,
+          "query_status": 0
+        }
+      },
+      "after_ps_pid_matches": [],
+      "observation_interrupted": false,
+      "batch_interrupted": false,
+      "window_query_failures": [],
+      "cleanup_verified": true,
+      "stdout": "",
+      "stderr": "\nGdk-WARNING **: shmget failed: error 89 (Function not implemented)\n\n** CRITICAL **: file gnome-font-face.c: line 483: assertion `face != NULL' failed.\n\n** CRITICAL **: file gnome-rfont.c: line 974: assertion `gnomefont != NULL' failed.\n",
+      "stdout_bytes": 0,
+      "stderr_bytes": 237,
+      "screenshot": {
+        "path": "app-083.png",
+        "sha256": "ec7d1a511ae57dfb99eb8408899e934809e090d26da7c282960864dd57b59d5b"
+      },
+      "normal_interaction_tested": false,
+      "catalog_double_click_tested": false,
+      "record_hashes": {
+        "before.windows": "3ca8446c2c4f0d83a7eba031682d69f19488e92d72b95715fb47974a5dd00f01",
+        "before.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "before.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "before.ps": "7904f5feb71de14226a3cfd1bcf32909ec2647e5551b4618b71623adfb93a39a",
+        "argv": "76d9a20b4a90a8262543cf8f999c84c38844a8b31e8a512e44b542550afb56c9",
+        "guard": "3ac6ab61d55a926aabb7f892f28c1fa51fb897a15287b2347a144ba6d92bda59",
+        "guard.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "app.pid": "154d72099fb9641c2a1c8bc2017471fea8e697fbcad6b1861534f8ea499ac2eb",
+        "stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "379fefa35fc103d18624147de1bf3555bb3bf8c8d8cdef9affcfa93508446d19",
+        "3.windows": "233c0497f18b749b9d3570c8a55f43befbc7a909b7d002d3fcf025ae01a6b9cc",
+        "3.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "3.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "3.ps": "48ff1736f521aeddfaa4d941d7fb5e4d376f72184a75e9ebba05ad7ad9b965a2",
+        "15.windows": "233c0497f18b749b9d3570c8a55f43befbc7a909b7d002d3fcf025ae01a6b9cc",
+        "15.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "15.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "15.ps": "6cca759b6322022e5cfaa6a560f998e3e69649b281bdee4f3f63e1296b663188",
+        "35.windows": "233c0497f18b749b9d3570c8a55f43befbc7a909b7d002d3fcf025ae01a6b9cc",
+        "35.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "35.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "35.ps": "467bfbfa44c9798351ea024a32853f0893a215e8ecb4a514e72fa4443b9c4abc",
+        "last.ps": "05fe2911b6bf41016f7b0e648a4c7fe98e50085cb66ac882b21904aa670877f2",
+        "guard.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "last.windows": "3ca8446c2c4f0d83a7eba031682d69f19488e92d72b95715fb47974a5dd00f01",
+        "last.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "last.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "after.windows": "3ca8446c2c4f0d83a7eba031682d69f19488e92d72b95715fb47974a5dd00f01",
+        "after.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "after.ps": "c5cf4dff97661cfe1ee01271a86fbfbc82295e5ae410f953be03c3ccac4bbc14"
+      }
+    },
+    {
+      "case": {
+        "id": "app-088",
+        "target": "/usr/freeware/bin/xchat",
+        "kind": "elf",
+        "sha256": "7af111d2006418a64876f6bbe8c0c9f69bccbdc91c48f87472a31c7a0f6a2152",
+        "pages": [
+          "Freeware"
+        ],
+        "names": [
+          "xchat"
+        ],
+        "partition": 0
+      },
+      "run": ".work/gnome-cycle",
+      "status": "window-observed",
+      "guard": {
+        "pid": "6479",
+        "exit": "-1",
+        "signal": "15",
+        "stopped": "1",
+        "absent": "1",
+        "valid": "1",
+        "tracked": "1",
+        "remaining": "0",
+        "reason": "timeout",
+        "uid": "1234",
+        "gid": "1234",
+        "elapsed": "45048"
+      },
+      "owned_pids": [
+        6479
+      ],
+      "new_windows": [
+        {
+          "id": "e00006",
+          "width": 10,
+          "height": 10,
+          "name": "xchat",
+          "class_name": "",
+          "instance": ""
+        },
+        {
+          "id": "e00018",
+          "width": 307,
+          "height": 131,
+          "name": "Information",
+          "class_name": "Xchat",
+          "instance": "xchat"
+        }
+      ],
+      "samples": {
+        "3": {
+          "windows": [
+            {
+              "id": "e00006",
+              "width": 10,
+              "height": 10,
+              "name": "xchat",
+              "class_name": "",
+              "instance": ""
+            },
+            {
+              "id": "e00018",
+              "width": 307,
+              "height": 131,
+              "name": "Information",
+              "class_name": "Xchat",
+              "instance": "xchat"
+            }
+          ],
+          "processes": [
+            {
+              "pid": 6479,
+              "ppid": 5995,
+              "uid": 1234,
+              "state": "Ss",
+              "cpu_time": "0:00.70",
+              "pcpu": "0.9",
+              "command": "/usr/freeware/bin/xchat "
+            }
+          ],
+          "snapshot_complete": true,
+          "query_status": 0
+        },
+        "15": {
+          "windows": [
+            {
+              "id": "e00006",
+              "width": 10,
+              "height": 10,
+              "name": "xchat",
+              "class_name": "",
+              "instance": ""
+            },
+            {
+              "id": "e00018",
+              "width": 307,
+              "height": 131,
+              "name": "Information",
+              "class_name": "Xchat",
+              "instance": "xchat"
+            }
+          ],
+          "processes": [
+            {
+              "pid": 6479,
+              "ppid": 5995,
+              "uid": 1234,
+              "state": "Ss",
+              "cpu_time": "0:00.70",
+              "pcpu": "0.0",
+              "command": "/usr/freeware/bin/xchat "
+            }
+          ],
+          "snapshot_complete": true,
+          "query_status": 0
+        },
+        "35": {
+          "windows": [
+            {
+              "id": "e00006",
+              "width": 10,
+              "height": 10,
+              "name": "xchat",
+              "class_name": "",
+              "instance": ""
+            },
+            {
+              "id": "e00018",
+              "width": 307,
+              "height": 131,
+              "name": "Information",
+              "class_name": "Xchat",
+              "instance": "xchat"
+            }
+          ],
+          "processes": [
+            {
+              "pid": 6479,
+              "ppid": 5995,
+              "uid": 1234,
+              "state": "Is",
+              "cpu_time": "0:00.70",
+              "pcpu": "0.0",
+              "command": "/usr/freeware/bin/xchat "
+            }
+          ],
+          "snapshot_complete": true,
+          "query_status": 0
+        },
+        "last": {
+          "windows": [],
+          "processes": [],
+          "snapshot_complete": true,
+          "query_status": 0
+        }
+      },
+      "after_ps_pid_matches": [],
+      "observation_interrupted": false,
+      "batch_interrupted": false,
+      "window_query_failures": [],
+      "cleanup_verified": true,
+      "stdout": "",
+      "stderr": "\nGdk-WARNING **: shmget failed: error 89 (Function not implemented)\n",
+      "stdout_bytes": 0,
+      "stderr_bytes": 68,
+      "screenshot": {
+        "path": "app-088.png",
+        "sha256": "a614a999e2e1066d83b62ce43c16ccbd6bdd20514cd5c3e89ab33e4a330e10ec"
+      },
+      "normal_interaction_tested": false,
+      "catalog_double_click_tested": false,
+      "record_hashes": {
+        "before.windows": "3ca8446c2c4f0d83a7eba031682d69f19488e92d72b95715fb47974a5dd00f01",
+        "before.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "before.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "before.ps": "ebdd2aa9479240bc55102e08e464614dfdaec60ebe109df392b3b38c762084f9",
+        "argv": "b5fc40a554a2d19a7fe1321ca517f90a5a855c97a06ecfc0271c4ebe912f5ef9",
+        "guard": "b600ec3d7e63639357b3173dab6749aeab9ecb9440f224c04a194c07e948a812",
+        "guard.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "app.pid": "fd1d880e0d8c89bd5e99b7d21693402df351213aaf71a1ad5302e990e0c57f55",
+        "stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "359c02087effe75c2df69b088af69f35b4f39321f359cfb5b7f36cb55af8c619",
+        "3.windows": "2c7a61ec6c35a1cbe6f809a48eb14a47d23a162f3d93e0976b70879a9f3f214b",
+        "3.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "3.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "3.ps": "b59d6e30970a6820e35b819c8d1ab729c37faf1d6476613029f20d889be39981",
+        "15.windows": "2c7a61ec6c35a1cbe6f809a48eb14a47d23a162f3d93e0976b70879a9f3f214b",
+        "15.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "15.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "15.ps": "661f772e535d59513787f271b14fe1a46e46cab974fc94b227ee7e647a29599e",
+        "35.windows": "2c7a61ec6c35a1cbe6f809a48eb14a47d23a162f3d93e0976b70879a9f3f214b",
+        "35.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "35.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "35.ps": "b8b1a2ba088c17a4af30cbed5722b12e6eb6937f776c3a677f88cd8126ca8a76",
+        "last.ps": "f737267c8a38b1893797f267b4af62c42039886ffb79b662057f9797d5c6adb7",
+        "guard.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "last.windows": "3ca8446c2c4f0d83a7eba031682d69f19488e92d72b95715fb47974a5dd00f01",
+        "last.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "last.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "after.windows": "3ca8446c2c4f0d83a7eba031682d69f19488e92d72b95715fb47974a5dd00f01",
+        "after.windows.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after.windows.status": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "after.ps": "d26d8cddef3f2098c8acf4a2ff0468aecc4efeec432495d4f3be3077a57e2657"
+      }
+    }
+  ],
+  "native_controls": {
+    "guard": "OWN pid=592 parent=591\nOWN pid=1825 parent=592\nCATALOG_NATIVE_CHILD_FINISHED\nGUARD pid=592 exit=37 signal=0 stopped=0 absent=1 valid=1 tracked=2 remaining=0 reason=leader-exit uid=1234 gid=1234 elapsed=1094\nOWN pid=590 parent=2843\nOWN pid=792 parent=590\nGUARD pid=590 exit=37 signal=0 stopped=1 absent=1 valid=1 tracked=2 remaining=0 reason=timeout uid=1234 gid=1234 elapsed=1033\n",
+    "window": "WINDOW id=40004c width=10 height=10 name=3444776d class=3444576d instance=3444776d\nWINDOW id=a00009 width=180 height=180 name=78636c6f636b class=58436c6f636b instance=78636c6f636b\nWINDOW id=c0002c width=103 height=158 name=546f6f6c6368657374 class=546f6f6c6368657374 instance=746f6f6c6368657374\nWINDOW id=e00004 width=1006 height=614 name=786d61686a6f6e6767 class=584d61686a6f6e6767 instance=786d61686a6f6e6767\nWINDOW id=1200005 width=663 height=360 name=77696e7465726d class=58577368 instance=77696e7465726d\nWINDOW id=100006b width=900 height=500 name=49636f6e20436174616c6f673a20416c6961732028506167652031206f6620313829 class=49636f6e436174616c6f67 instance=49636f6e436174616c6f67\nWINDOW id=1800001 width=100 height=100 name=5355525645595f56495349424c45 class= instance=\n",
+    "query_timeout": "SURVEY_SERVER_HELD\nQUERY_STATUS=142\n"
+  },
+  "artifacts": {
+    ".work/gnome-cycle/gedit-catalog-before.png": "5fb3def1c64a1dae74a7d6a914137a6f0788736d07d91947892d8f577563d58c",
+    ".work/gnome-cycle/gedit-catalog.png": "ba3c098cc0a2d44dbba6295b52c021f3d326bffaeced24f8348e0ddd2f9267f2",
+    ".work/gnome-cycle/gedit-catalog-after.png": "ef00378a526ddee26a1af3f9190539e3eb7067f4a52082fdfc54b95ae459fde8",
+    ".work/gnome-cycle/desktop-final.png": "8e71bc17b5186c36b40c435c77a631f7c2b6b2a66233d6b38e816b69580052e2",
+    ".work/gnome-cycle/gedit-overwrite.png": "bf4a51c8d893c9951c676666e7e01a33ed05c1156db641efe97b2f518ab6dc20",
+    ".work/gnome-cycle/gedit-document.txt": "427e8a18a019ac52a7f79d7d978ac6116bf43e6eac28d7b8c29120c8c1d6e466",
+    ".work/gnome-cycle/shared-startup.tgz": "6e2232b29a6743e75d15ccd8acc2223c4c54e9ca7b71c0e76b3a7aba9aab664a",
+    ".work/gnome-cycle/unix-candidate-v2.tgz": "d229457c29bfd146add759b09c3372388937c745340c420bf874a28c7c06ffe4",
+    ".work/gnome-cycle/regression-results.log": "66da69df3844114821433eafd9740722c0443d37ed4461aa6b702cf2b1ecd137",
+    ".work/gnome-cycle/regression-manifest.json": "f6598fd3d67e1a7ae5bc9f4bc32b789859389167daf2067d6aa6b367152211a2",
+    ".work/gnome-cycle/regression-run.sh": "9a603840df0ad0d429cec54832738ff06df1ff60d3b6c348e047571b02875c8f",
+    ".work/gnome-cycle/regress.py": "83d26b76f6c641532536b5f0f5ae2aa3cab143fb4504aeedadf6b2f2fae0006b",
+    ".work/gnome-cycle/receive.log": "a36f732d276c929ef708751959075341a14649b2da225a99c7dea620ea38fdce",
+    ".work/gnome-cycle/resource-install.json": "5a72d6c193160d1c22e2df299dcf40b7b55b1325cd5e1ec93b8f5e2a0b15f308",
+    ".work/gnome-cycle/sampler-controls.tgz": "fe1b2e36afe7c3553dcf2f5b17889c556bc8570d910e1669bf53b2de1a9eac30",
+    ".work/gnome-cycle/sampler-controls.log": "c82e78187526455f65b53885433908ce0a05146feafe60d2d3f2f77714ff2727",
+    ".work/gnome-cycle/sampler-retry.log": "0eb1eae0ddf95bb4fe2d9284baa51c59a401920d39479f65a49b1117a4971200",
+    ".work/gnome-cycle/shared-startup.py": "2fd13ce6f4ac89d0571fb4f58654d3499cf1ce4c8d365653d7ae3e6968bcaf4d",
+    ".work/gnome-cycle/final-guest.py": "bc731d6a103892c1f3d436cdde564057d2fcb79ac588fae359d4baba4d0b8fc9",
+    ".work/gnome-cycle/gedit-resources.json": "a69f94ea333d19f18f6c38c2b58a7b2ef9539f01ef3782a40e7e560d52bbf0a7",
+    ".work/gnome-cycle/v3-observations.json": "e544e403f49e3d9a28d785864535586399f77a4a6f5895c7d935a92d5637b290",
+    ".work/gnome-cycle/gedit-edit.json": "3708f6d6f8d5132f40dfa5bd02ad55ea6cc6124e59ad3cb701e72d1f9ffe059f",
+    ".work/gnome-cycle/gedit-open-click.json": "ef2af0e340265f73f3de3df835ebe3f56f91363f774f51cd38a7628d1a4e44df",
+    ".work/gnome-cycle/gedit-open-dialog.json": "7c4ac23a7cea2d28b064285d188b7f260f4daba63f4c6e2200e994b9307e7037",
+    ".work/gnome-cycle/gedit-catalog-prepare.log": "8418f86b4c491e9f6523e74694d7c8ba9545ee39e77b2db67fffff1d48e54605"
+  },
+  "source_run_sha256": "0c340a524fad315457f7137010ed1d8b508df6c6c93269cb8ecce4780c4393c4",
+  "shutdown_log": "[   1.0000000] Copyright (c) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,\n[   1.0000000]     2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013,\n[   1.0000000]     2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023,\n[   1.0000000]     2024, 2025, 2026\n[   1.0000000]     The NetBSD Foundation, Inc.  All rights reserved.\n[   1.0000000] Copyright (c) 1982, 1986, 1989, 1991, 1993\n[   1.0000000]     The Regents of the University of California.  All rights reserved.\n\n[   1.0000000] NetBSD 11.99.9 (XIRI_IRIX_MODULE_20261103) #0: Tue Nov  3 12:18:11 UTC 2026\n[   1.0000000] \tsalvogendut@toolbx:/var/home/salvogendut/Dev/xiri/.work/netbsd-xdm-build/obj/sys/arch/sgimips/compile/XIRI_IRIX_MODULE\n[   1.0000000] total memory = 255 MB\n[   1.0000000] (768 KB reserved for ARCS)\n[   1.0000000] avail memory = 244 MB\n[   1.0000000] timecounter: Timecounters tick every 10.000 msec\n[   1.0000000] mainbus0 (root): SGI-IP22 [SGI, 69123457], 1 processor\n[   1.0000000] cpu0 at mainbus0: MIPS R4400 CPU (0x440) Rev. 4.0 with MIPS R4010 FPC Rev. 0.0\n[   1.0000000] cpu0: 48 TLB entries, 1TB (40-bit) VAs, 4KB (12-bit) PAs, 16MB max page size\n[   1.0000000] cpu0: 16KB/16B direct-mapped L1 instruction cache\n[   1.0000000] cpu0: 16KB/16B direct-mapped write-back L1 data cache\n[   1.0000000] cpu0: 1024KB/128B direct-mapped write-back L2 unified cache\n[   1.0000000] int0 at mainbus0 addr 0x1fbd9880\n[   1.0000000] int0: bus 33MHz, CPU 66MHz\n[   1.0000000] imc0 at mainbus0 addr 0x1fa00000: revision 3\n[   1.0000000] gio0 at imc0\n[   1.0000000] newport0 at gio0: SGI NG1 (board revision 0, cmap revision 2, xmap revision 3, vc2 revision 0), depth 24, monitor ID 10 (1280x1024 60Hz)\n[   1.0000000] newport0: 13W3 Monitor ID 10, PROM ID -1, determined monitor ID 10 (1280x1024 60Hz)\n[   1.0000000] wsdisplay0 at newport0 kbdmux 1: console (default, vt100 emulation)\n[   1.0000000] wsmux1: connecting to wsdisplay0\n[   1.0000000] hpc0 at gio0: SGI HPC3 (onboard)\n[   1.0000000] zsc0 at hpc0 offset 0x59830\n[   1.0000000] zstty0 at zsc0 channel 1\n[   1.0000000] zstty1 at zsc0 channel 0\n[   1.0000000] pckbc0 at hpc0 offset 0x59840\n[   1.0000000] pckbd0 at pckbc0 (kbd slot)\n[   1.0000000] wskbd0 at pckbd0: console keyboard, using wsdisplay0\n[   1.0000000] pms0 at pckbc0 (aux slot)\n[   1.0000000] wsmouse0 at pms0 mux 0\n[   1.0000000] sq0 at hpc0 offset 0x54000: SGI Seeq 80c03\n[   1.0000000] sq0: Ethernet address 08:00:69:12:34:57\n[   1.0000000] wdsc0 at hpc0 offset 0x44000: WD33C93A (20.0 MHz clock, BURST DMA, SCSI ID 0)\n[   1.0000000] scsibus0 at wdsc0: 8 targets, 8 luns per target\n[   1.0000000] haltwo at hpc0 offset 0x58000 not configured\n[   1.0000000] pi1ppc0 at hpc0 offset 0x59800\n[   1.0000000] pi1ppc0: capabilities=0x8<PS2>\n[   1.0000000] ppbus0 at pi1ppc0\n[   1.0000000] ppbus0: No IEEE1284 device found.\n[   1.0000000] button0 at hpc0 offset 0x59850\n[   1.0000000] hpc1 at gio0: SGI HPC3 (IOPLUS mezzanine)\n[   1.0000000] hpc1: using EXP0's DMA channel\n[   1.0000000] sq at hpc1 offset 0x54000 not configured\n[   1.0000000] hpc2 at gio0: SGI HPC1.5 (GIO slot)\n[   1.0000000] dsclock0 at mainbus0 addr 0x1fbe0000\n[   1.0000000] ioc0 at mainbus0 addr 0x1fbd9800: rev 0, machine Indy (Guinness), board rev 0\n[   1.0000000] WARNING: system needs entropy for security; see entropy(7)\n[   1.0000000] timecounter: Timecounter \"mips3_cp0_counter\" frequency 33000000 Hz quality 100\n[   1.0000030] timecounter: Timecounter \"clockinterrupt\" frequency 100 Hz quality 0\n[   1.0000030] scsibus0: waiting 2 seconds for devices to settle...\n[   3.0576644] sd0 at scsibus0 target 1 lun 0: <SGI, IRIS EMUL DISK, 1.0> disk fixed\n[   3.1166193] sd0: 8192 MB, 16645 cyl, 16 head, 62 sec, 512 bytes/sect x 16777216 sectors\n[   3.2278688] sd0: async, 8-bit transfers\n[   3.2844468] cd0 at scsibus0 target 4 lun 0: <Sony, CDU-76S, 1.0> cdrom removable\n[   3.3506578] cd0: async, 8-bit transfers\n[   3.4102720] boot device: sd0\n[   3.4815218] root on sd0a dumps on sd0b\n[   3.5471379] kern.module.path=/stand/sgimips/11.99.9/modules\n[   4.7086601] entropy: best effort\n[ 3054.8809645] syncing disks... done\n[ 3054.9556594] unmounting file systems...\n[ 3055.0032650] unmounted /dev/cd0a on /cdrom type cd9660\n[ 3055.0032650] unmounted /dev/pts on /emul/irix/dev/pts type null\n[ 3055.0032650] unmounted ptyfs on /dev/pts type ptyfs\n[ 3055.0032650] unmounted procfs on /proc type procfs\n[ 3055.0032650] unmounted kernfs on /kern type kernfs\n[ 3056.0732992] unmounted /dev/sd0a on / type ffs\n[ 3056.0732992] unmounting done\n[ 3056.1201380] halting...\n\n",
+  "limitations": [
+    "Only bounded text-document operations are qualified for gedit; settings, help, image loading and plug-ins remain incomplete.",
+    "The catalog-launched process has GUI/PID/FAM cleanup evidence but no captured exit status; the two guarded direct launches exit 0.",
+    "Eight other startup observations are windows/dialogs, not functional passes; their stop was the timed guard.",
+    "The Applications alias of gedit has not been double-clicked separately.",
+    "No replacement manual CHD was created or promoted."
+  ],
+  "diagnostic_runs": [
+    {
+      "path": ".work/catalog-cycle/survey-0-aeix2ks7/result.json",
+      "sha256": "753d5a3bd17edcb8e7f43ab4621404ce3c8a6e85a49ca3b5d457b49904f609e1",
+      "clean_shutdown": true,
+      "source_unchanged": true,
+      "error": null,
+      "cleanup_error": null
+    },
+    {
+      "path": ".work/catalog-cycle/survey-0-264_w6z9/result.json",
+      "sha256": "55164dc22f9847f18531f8c197dfad090f735d865ffc55dd50133311e6c09768",
+      "clean_shutdown": true,
+      "source_unchanged": true,
+      "error": "timed out after 30s waiting for 'Option\\\\?'",
+      "cleanup_error": null
+    },
+    {
+      "path": ".work/catalog-cycle/survey-0-cui5fpe9/result.json",
+      "sha256": "415191c77eac290ff764b65810f0204327bf118f6b48e9fd29abbeaff818f3b7",
+      "clean_shutdown": true,
+      "source_unchanged": true,
+      "error": null,
+      "cleanup_error": null
+    },
+    {
+      "path": ".work/gnome-cycle/reference/ci-1mqn_2w2/result.json",
+      "sha256": "4996fba3d57e9db3c4b38fa843c27704df84feeb05b66dee4714aec465df61d3",
+      "clean_shutdown": true,
+      "source_unchanged": null,
+      "error": null,
+      "cleanup_error": null
+    }
+  ]
+}

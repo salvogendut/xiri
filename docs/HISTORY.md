@@ -5,6 +5,15 @@ status statements describe individual checkpoints and may be superseded by
 later entries. Use the [current README](../README.md), [development guide](DEVELOPMENT.md)
 and [selected image](../lab/irix-installed-desktop/image.json) for current work.
 
+The [2026-11-04 GNOME cycle](results/2026-11-04-irix-gnome.md) fixes gedit's
+measured ORBit Unix-listener loop in the loadable module. It passes 136 Unix
+socket observations and 368 existing IPv4 regressions on the unchanged core
+kernel. With 50 original resource paths, gedit edits, saves/reopens and
+overwrites a text document, launches through Freeware and exits through its
+UI. All eight other previously busy targets now produce windows or dialogs,
+with their remaining blockers recorded in the checklist. These checks use a
+disposable guest; the GIMP manual image is unchanged.
+
 The [2026-11-03–04 catalog survey](results/2026-11-03-irix-catalog.md)
 records 124 distinct program-target attempts and updates the full
 [166-entry checklist](ICON-CATALOG.md), including the empty eighteenth user

@@ -1,0 +1,36 @@
+{
+  "status": "observed",
+  "application": "/usr/freeware/bin/gedit",
+  "application_sha256": "19c648f17373da8b9412e1cba988d7135f2ba177ca20ba62509de0c80a96ccef",
+  "run": ".work/catalog-cycle/survey-0-aeix2ks7",
+  "source_chd_preserved": true,
+  "clean_shutdown": true,
+  "trace": {
+    "sha256": "4cb189f057304d632d477be36f1ca060755b213d081a18c1f14efa0cd19a34c5",
+    "bytes": 1334794,
+    "entry_return_pairs": 3337,
+    "failed_socket_calls": 1669,
+    "failed_close_calls": 1668,
+    "socket_arguments": [
+      1,
+      2,
+      0
+    ],
+    "socket_errno": 124,
+    "close_argument": "-1",
+    "close_errno": 9,
+    "transfer_recovery": "Initial transfer exceeded its deadline; complete gzip/hex frame recovered from serial log and verified against native cksum.",
+    "guest_cksum": "401715460 1334794"
+  },
+  "sampler": {
+    "samples": 13,
+    "native_control": "13 samples of /bin/sleep 20; controlled SIGKILL and reap",
+    "symbol": "iiop_connection_server_unix+0xe8",
+    "library_sha256": "e8418b62688fe7f1f0327a7a7af23c5b76c6136fd81c5d57a797059b0bbc6bfd",
+    "instructions_match": true,
+    "source_sha256": "0b6526b1f7810a5e62f39d4aaf599ff00dcf64329da3d1361306e181a9ad1af8",
+    "source_artifact": ".work/catalog-cycle/survey-0-aeix2ks7/media/sample.c"
+  },
+  "guard": "OWN pid=714 parent=1043\nGUARD pid=714 exit=-1 signal=15 stopped=1 absent=1 valid=1 tracked=1 remaining=0 reason=timeout uid=1234 gid=1234 elapsed=45068\n",
+  "stderr": "\nGdk-WARNING **: shmget failed: error 89 (Function not implemented)\n\n** WARNING **: Could not find /usr/freeware/share/pixmaps/gedit-icon.png\n"
+}

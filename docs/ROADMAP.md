@@ -56,9 +56,22 @@ launches through the catalog and accepts text but fails to save. These remain
 separate from functional passes. Interrupted X queries and compview's failed
 cleanup tracking are retained explicitly; all disposable guests are stopped.
 
-Return to these entries individually, as requested. First reproduce one
-busy GNOME application in a fresh home, then diagnose the observed boundary;
-separately stage Acrobat's complete package and investigate NEdit file creation.
+The [GNOME follow-up](results/2026-11-04-irix-gnome.md) identifies gedit's
+ORBit Unix-listener loop. The candidate module implements the measured
+pathname-stream subset; original GNOME VFS modules and editor resources then
+let gedit edit, save/reopen and overwrite a document and launch through the
+catalog. Preference persistence, image decoding/help and broader plug-ins
+remain open. The published GIMP CHD is unchanged by this diagnostic cycle.
+All eight other formerly busy targets now reach windows/dialogs and become
+idle in the repeated bounded check. Evolution needs its default-user tree;
+the three terminal routes fail during child/login setup; Balsa setup is
+partly blank; Glade opens with OAF/preferences warnings; Gnumeric needs its
+GNOME print fonts; XChat reaches a first-run notice. None is a functional
+pass merely because a window now appears.
+
+Return to these entries individually, as requested. Use the new startup
+observations to choose the next GNOME interface/resource boundary; separately
+stage Acrobat's complete package and investigate NEdit file creation.
 For each repaired entry qualify catalog double-click, running-icon feedback,
 a useful operation, persistence and normal exit with child cleanup. Continue
 through the document/web handlers and unresolved registrations. Keep missing

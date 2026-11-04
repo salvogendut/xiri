@@ -19,6 +19,13 @@ entry by tab, with startup observations, errors and later interaction/exit
 checks. The survey uses the qualified GIMP CHD in disposable guests and
 records processes that remain alive without producing a window.
 
+The [GNOME startup follow-up](results/2026-11-04-irix-gnome.md) repairs the
+measured Unix-socket loop in gedit's ORBit library and imports the original
+VFS/editor resources. Gedit now passes basic text creation, save/reopen,
+overwrite, catalog launch and GUI-exit checks as xiritest. Its preferences,
+help and image loading remain incomplete. The checklist keeps these candidate
+module results separate from the earlier manual-image survey.
+
 Several launchers need more than their executable and static library closure.
 Acrobat calls a missing `acroread.dist` helper and Reader installation;
 AbiWord calls missing `AbiWord_d`/`AbiWord_s` programs; Mozilla and gFTP

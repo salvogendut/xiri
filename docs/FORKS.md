@@ -42,6 +42,22 @@ not repin qualified kernels, emulator binaries, runtime resources or guest disks
 
 ## IRIS upstream updates
 
+The 2026-11-04 GNOME startup cycle fetched upstream
+`28fa516684c54e00e35b258c65e5dcac3a36165c` and verified that it remains an
+ancestor of IRIS `xiri` `ae62114344a1d435152b8ae7e48c599974b4aec7`.
+There were no new commits to merge or emulator changes to rebuild. Both fork
+checkouts started clean. Socket compatibility work uses NetBSD's `xiri`
+checkout and the separate `.work/netbsd-gnome-build` module output; the
+qualified GIMP module, core kernel, emulator and manual CHD are preserved.
+
+NetBSD `xiri` commit `0b2e08f1c0b` adds pathname Unix stream sockets and is
+pushed. All recorded module/core inputs match the tested build byte for byte.
+The [GNOME cycle](results/2026-11-04-irix-gnome.md) records 136 Unix socket
+observations, 368 existing IPv4 regressions, gedit's document/catalog checks
+and the follow-up application survey. The source/artifact pins are retained
+in [the build record](../lab/irix-gnome/build.json); pinned worktrees and the
+published GIMP CHD remain unchanged.
+
 The 2026-11-03 catalog survey fetched upstream at
 `28fa516684c54e00e35b258c65e5dcac3a36165c`, already contained in IRIS
 `xiri` `ae62114344a1d435152b8ae7e48c599974b4aec7`. No merge or emulator
