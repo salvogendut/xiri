@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-"""Stage original gedit data and GNOME VFS modules from read-only IRIX.
+"""Stage original GNOME application data and VFS modules from read-only IRIX.
 
 Only ignored local artifacts are written. This does not modify a test image
 or copy a user's GNOME configuration; resource presence is not qualification.
 """
+import argparse
 import hashlib
 import importlib.util
 import json
@@ -17,7 +18,8 @@ import tarfile
 ROOT = Path(__file__).resolve().parent.parent
 WORK = ROOT/'.work/irix-gnome-resources'
 BASES = ['/usr/freeware/share/gedit', '/usr/freeware/lib32/gedit',
-         '/usr/freeware/lib32/vfs', '/usr/freeware/etc/vfs']
+         '/usr/freeware/lib32/vfs', '/usr/freeware/etc/vfs',
+         '/usr/freeware/share/gnome-terminal']
 
 
 def sha(path):
@@ -132,6 +134,11 @@ def collect(pid):
 
 
 def main():
+    global WORK
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--output-directory', type=Path, default=WORK)
+    args = parser.parse_args()
+    WORK = args.output_directory.resolve()
     WORK.mkdir(exist_ok=True)
     reference=ROOT/'.work/irix-reference'
     raw=reference/'media/irix65.raw'

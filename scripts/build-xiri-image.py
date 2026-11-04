@@ -36,7 +36,12 @@ def main():
         assert r['xdm']['greeter_boot_verified'] and r['graphics_boot']
         assert r['base_raw_unchanged']
         for path, digest in r['runtime_sources'].items():
-            assert sha(ROOT/path) == digest, path
+            # The preparation media is the immutable source of what was built.
+            # Documentation can advance while the guest is being qualified;
+            # executable/runtime inputs must still match the working tree.
+            assert sha(seed/'media'/path) == digest, path
+            if path != 'runtime/README.md':
+                assert sha(ROOT/path) == digest, path
     pin = json.loads(a.baseline.read_text())
     assert r['pin'] == pin
     assert bool(r.get('irix_module')) == bool(pin.get('module_build_manifest'))
@@ -136,6 +141,14 @@ def main():
         shutil.copyfile(seed/'result.json',out/'xdm-preparation.json')
     if r.get('gimp_resources'):
         readme += (ROOT/'lab/irix-gimp/image-README.txt').read_text()
+    if 'acrobat' in r.get('application_resources', {}):
+        readme = readme.replace(
+            'Known limits: the preference backup rename syscall is missing; first-run\n'
+            'output can report failure to rename gimprc to gimprc.old. Preference\n'
+            'persistence is unqualified. Shared-memory tile transport is disabled and\n',
+            'Preference saving, exact backup and relaunch pass the later checks.\n'
+            'Known limits: shared-memory tile transport is disabled and\n')
+        readme += (ROOT/'lab/irix-acrobat/image-README.txt').read_text()
     if a.experimental_note:
         readme = 'EXPERIMENTAL IMAGE\n'+a.experimental_note+'\n\n'+readme
     (out/'README.txt').write_text(readme)
@@ -225,6 +238,15 @@ tftp_dir = "tftp"
         assert sha(ledger) == r['gimp_resources']['manifest_sha256']
         shutil.copyfile(ledger, out/'gimp-resources.json')
         report['gimp_resources'] = r['gimp_resources']
+    if r.get('application_resources'):
+        for name, resources in r['application_resources'].items():
+            assert name in ('gnome', 'terminal', 'acrobat')
+            ledger = seed/'media'/(name+'-resources.json')
+            assert sha(ledger) == resources['manifest_sha256']
+            shutil.copyfile(ledger, out/ledger.name)
+        report['application_resources'] = r['application_resources']
+    if r.get('emulation_accounts'):
+        report['emulation_accounts'] = r['emulation_accounts']
     if emulator_files:
         report['emulator_files'] = emulator_files
     if r.get('xorg_configuration'):

@@ -111,5 +111,9 @@ gedit entry, use its Open dialog to reopen the document, append a line and
 save over it. Verify the exact bytes and UID/GID 1234, then use Exit and
 check the PID/window disappearance and FAM Executing/Exited events. Preserve
 before/running/after icon PNGs. The Applications alias remains a separate
-catalog click to qualify. Do not interpret failing `.gnome` preference
-writes or help/image warnings as successful settings persistence.
+catalog click to qualify. The later
+[preference cycle](../../docs/results/2026-11-04-irix-preferences.md) adds
+measured rename support and verifies gedit tab-width and GNOME Terminal
+settings across normal exit/relaunch. Its expanded
+[resource ledger](preferences-resources.json) adds the original terminal
+preferences dialog. Help/image warnings remain separate limitations.

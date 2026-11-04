@@ -42,6 +42,19 @@ not repin qualified kernels, emulator binaries, runtime resources or guest disks
 
 ## IRIS upstream updates
 
+The 2026-11-04 preferences/Acrobat cycle again fetched
+`https://github.com/techomancer/iris.git`. Upstream remains
+`3bcde9f702f0b52fdb296eeda4fe10b26555f3da`, already integrated in IRIS `xiri`
+`bd67e65ff159748635dd484adf7fac94a591f84b`; no production changes or affected
+emulator checks were required. The qualified emulator artifacts remain pinned.
+NetBSD `xiri` commits `d35accbc0f8919a7b37debc17de117e0086e52bd` (rename)
+and `2ca3d76a4384cd73dbef1bd09b9cace12afadf41` (legacy Acrobat ELF) are pushed.
+The separate `.work/netbsd-preferences-build` and `.work/netbsd-acrobat-build`
+outputs preserve the prior termios build and unchanged core kernel. The
+[pathname](../lab/irix-pathops/build.json) and [Acrobat](../lab/irix-acrobat/build.json)
+ledgers tie the tested modules to exact equivalent committed source bytes.
+
+
 The 2026-11-04 interactive-shell cycle fetched
 `https://github.com/techomancer/iris.git` again and confirmed upstream
 `3bcde9f702f0b52fdb296eeda4fe10b26555f3da` is already contained in IRIS

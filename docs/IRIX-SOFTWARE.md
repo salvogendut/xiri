@@ -22,19 +22,22 @@ records processes that remain alive without producing a window.
 The [GNOME startup follow-up](results/2026-11-04-irix-gnome.md) repairs the
 measured Unix-socket loop in gedit's ORBit library and imports the original
 VFS/editor resources. Gedit now passes basic text creation, save/reopen,
-overwrite, catalog launch and GUI-exit checks as xiritest. Its preferences,
-help and image loading remain incomplete. The checklist keeps these candidate
+overwrite, catalog launch and GUI-exit checks as xiritest. Help and image
+loading remain incomplete. The later [preference cycle](results/2026-11-04-irix-preferences.md)
+qualifies settings persistence in gedit, GNOME Terminal and GIMP. The checklist keeps these candidate
 module results separate from the earlier manual-image survey.
 
 Several launchers need more than their executable and static library closure.
-Acrobat calls a missing `acroread.dist` helper and Reader installation;
 AbiWord calls missing `AbiWord_d`/`AbiWord_s` programs; Mozilla and gFTP
 report absent runtime programs. Emacs needs its Lisp/data directories,
 while Dia, LyX and xpat2 report missing application data. Preserve complete
 package layouts and record the additional source/destination paths before
-testing again. The [Acrobat source audit](../lab/irix-catalog/acrobat-source.json)
-locates its original installation for that later work. No additional vendor
-resources are imported by the survey.
+testing again. No additional vendor resources were imported by the survey.
+The subsequent [Acrobat cycle](results/2026-11-04-irix-acrobat.md) imports its
+complete Reader installation and adds support for its legacy ELF layout.
+Catalog launch, PDF display, page/zoom changes, reopen and normal exit pass;
+the catalog icon stays unchanged while Reader runs. The exact copy paths
+are recorded in the [Acrobat resource ledger](../lab/irix-acrobat/resources.json).
 
 Window creation remains a separate check from useful operation. Freeware's
 NEdit launches through the catalog, accepts visible text, changes its icon
@@ -62,7 +65,7 @@ NOCLDSTOP registration, terminal resize and normal shell exit. The subsequent
 signal masks and adds the original application data, plug-ins and canonical
 `/sbin/sh`. Basic paintbrush editing, XCF/PNG save and reopen, normal exit and
 launch from the existing Freeware entry now work as xiritest. Preference
-backups still require `rename`; shared-memory transport uses a working
+backups now pass the later rename checks; shared-memory transport uses a working
 fallback, and the wider plug-in collection remains unqualified. The new
 CHD includes the resources and replacement module, with separate
 [fresh GIMP](results/2026-11-03-irix-gimp-cold.json) and

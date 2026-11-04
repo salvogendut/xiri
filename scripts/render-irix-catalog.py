@@ -26,7 +26,7 @@ def result(e):
   assert later['target']==e['target']
   return '**'+esc(later['label'])+'.** '+esc(later['note'])+' [Follow-up]('+later.get('report',followups['report'])+').'
  if e.get('prior_qualification'):
-  if e['name']=='gimp':return '[Prior bounded pass: setup, paint, XCF/PNG save/reopen, catalog launch and exit](results/2026-11-03-irix-gimp.md). Preference backup and wider plug-ins remain open.'
+  if e['name']=='gimp':return '[Prior bounded pass: setup, paint, XCF/PNG save/reopen, catalog launch and exit](results/2026-11-03-irix-gimp.md). [Preference save, exact backup and relaunch now pass](results/2026-11-04-irix-preferences.md); wider plug-ins remain open.'
   if e['name']=='xmahjongg':return '[Prior bounded rendering/interaction pass](results/2026-11-03-newport-xmahjongg.md); a complete game remains unqualified.'
   return '[Prior bounded UTC/time pass](results/2026-11-01-irix-time.md); not repeated by this survey.'
  if e['kind']=='missing':
@@ -56,8 +56,10 @@ def result(e):
 intro='''# Icon Catalog application checklist
 
 Updated 2026-11-04 after the [startup survey](results/2026-11-03-irix-catalog.md)
-and the [GNOME](results/2026-11-04-irix-gnome.md) and
-[terminal](results/2026-11-04-irix-terminal.md) follow-ups.
+and the [GNOME](results/2026-11-04-irix-gnome.md),
+[terminal](results/2026-11-04-irix-terminal.md),
+[preference](results/2026-11-04-irix-preferences.md) and
+[Acrobat](results/2026-11-04-irix-acrobat.md) follow-ups.
 This is the requested list to use when returning to failures one by one.
 It preserves all **166 registered entries in 17 system tabs** from the supplied
 IRIX 6.5.22 installation, including unresolved source links that the running
@@ -66,7 +68,7 @@ Click the stacked page edges at the bottom-right of Icon Catalog to open the
 [menu of all pages](results/images/2026-11-03-irix-catalog-pages.png), including
 those whose tabs do not fit along the bottom.
 
-The current GIMP CHD was tested as **xiritest**, UID/GID 1234, HOME and cwd
+The original GIMP CHD survey ran as **xiritest**, UID/GID 1234, HOME and cwd
 `/usr/people/xiritest`, with accelerated 1280×1024 NetBSD Xorg. There were
 **124 distinct direct program-target attempts**; repeated targets share the
 same startup observation. GIMP, xmahjongg and xclock retain their separately
@@ -83,20 +85,24 @@ interrupted queries and cleanup failures are retained in the
 The [interactive checks](results/2026-11-03-irix-catalog-interactive.json)
 exercise real catalog double-clicks for Acrobat and Freeware NEdit. NEdit
 accepts visible text and restores its icon after Quit/Discard, but saving
-fails; Acrobat's launcher reaches its missing Reader helper. Other aliases
+fails. Acrobat's then-missing Reader helper is supplied by the later complete
+import; PDF operations and catalog launch now pass, while its running icon
+remains unchanged. Other aliases
 still need individual double-click, running-icon, useful-action, persistence
 and normal-exit tests. Terminal tools ran with stdin closed and may require
 arguments or a terminal. System/hardware tools were observed without applying
 settings or installing software.
 
-**Later candidate-module checks are identified in their rows.** The GNOME
+**Later module/application checks are identified in their rows.** The GNOME
 follow-up uses the pathname Unix socket module and 50 additional original
 resource paths in a disposable guest. Gedit passes basic document checks;
 the eight other previously busy targets have new bounded startup observations.
 The later terminal cycle adds socket pairs, one-descriptor transfer and native
 PTY setup; its individual rows distinguish shell checks from terminal-program
-support. These follow-ups are not yet included in the published GIMP CHD. Historical
-survey evidence is retained; untested behavior is not promoted to a pass.
+support. The preference cycle adds measured rename behavior and expands the
+GNOME resources to 53 paths. The [image guide](XIRI-IMAGE.md) identifies which
+changes are in the selected cumulative CHD. Historical survey evidence is
+retained; untested behavior is not promoted to a pass.
 '''
 parts=[intro]
 for page in sorted({e['page'] for e in inv['entries']}):

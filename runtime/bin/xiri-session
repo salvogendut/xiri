@@ -28,6 +28,9 @@ test "$(stat -f %u "$job")" = "$(id -u)" && test -w "$job"
 mkdir "$job/session.lock" || { echo 'This session directory has already been used.' >&2; exit 1; }
 export XIRI_SESSION_DIR="$job" USER="$user" LOGNAME="$user" SHELL=/bin/sh
 export LANG="$xiri_locale" LC_ALL="$xiri_locale" TZ="$xiri_timezone"
+# The original Acrobat launcher supports this platform override; native uname
+# correctly continues to report NetBSD to native programs and shell scripts.
+export ACRO_CONFIG=mipsirix
 export MWMSHELL=/usr/local/libexec/xiri/command-shell
 export WINTERM='/emul/irix/usr/sbin/xwsh -name winterm'
 export PS1="$user@xiri\$ "

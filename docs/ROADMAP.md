@@ -42,7 +42,7 @@ The [GIMP cycle](results/2026-11-03-irix-gimp.md) adds full-mask signal
 registration with paired o32/n32 checks and imports the original setup/data/
 plug-in resources. GIMP now paints, saves/reopens matching XCF and PNG files,
 quits normally and launches from Freeware as xiritest. Follow-ups are the
-missing `rename` preference-backup path, larger images/tile swapping and
+larger images/tile swapping and
 individual plug-ins. Shared-memory transport currently uses its fallback.
 The replacement manual CHD has separate boot/session acceptance.
 
@@ -51,7 +51,7 @@ all 124 distinct program targets selected from the 166-entry inventory.
 The [application checklist](ICON-CATALOG.md) preserves all 17 system pages
 and the empty user Blank page. The bottom-right page menu exposes all 18.
 Nine launch targets reproduce busy processes without a window; three invoke
-GNOME Terminal. Acrobat needs its Reader installation, while Freeware NEdit
+GNOME Terminal. Acrobat initially lacked its Reader installation, while Freeware NEdit
 launches through the catalog and accepts text but fails to save. These remain
 separate from functional passes. Interrupted X queries and compview's failed
 cleanup tracking are retained explicitly; all disposable guests are stopped.
@@ -60,8 +60,8 @@ The [GNOME follow-up](results/2026-11-04-irix-gnome.md) identifies gedit's
 ORBit Unix-listener loop. The candidate module implements the measured
 pathname-stream subset; original GNOME VFS modules and editor resources then
 let gedit edit, save/reopen and overwrite a document and launch through the
-catalog. Preference persistence, image decoding/help and broader plug-ins
-remain open. The published GIMP CHD is unchanged by this diagnostic cycle.
+catalog. Image decoding/help and broader plug-ins remain open. Preference
+persistence is covered by the later cycle below.
 All eight other formerly busy targets now reach windows/dialogs and become
 idle in the repeated bounded check. Evolution needs its default-user tree;
 the three terminal routes fail during child/login setup; Balsa setup is
@@ -77,14 +77,26 @@ home-directory file creation and `exit` work. The subsequent
 [termios cycle](results/2026-11-04-irix-termios.md) qualifies 864 attribute
 observations and 64 controlling-terminal/session observations against original
 IRIX. Its original shell recognizes an interactive terminal and passes prompt,
-command, Ctrl-C, foreground resize and normal-exit checks. GNOME preference
-writing and broader stop/resume job control remain open. The glynx and
+command, Ctrl-C, foreground resize and normal-exit checks. Broader stop/resume
+job control remains open. The glynx and
 Midnight Commander wrappers still need their missing `lynx` and `mc` program
 trees; their shared terminal startup is not application support.
 
-Return to these entries individually, as requested. Use the new startup
-observations to choose the next GNOME interface/resource boundary; separately
-stage Acrobat's complete package and investigate NEdit file creation.
+The [preference cycle](results/2026-11-04-irix-preferences.md) now qualifies
+256 paired rename observations and 16 namespace controls. GNOME Terminal,
+gedit and GIMP settings survive normal exit/relaunch; GIMP preserves an exact
+backup. The [Acrobat cycle](results/2026-11-04-irix-acrobat.md) imports the
+complete original package and supports its measured legacy ELF layout, with
+514 loader/mapping executions. Reader displays a PDF, changes page/zoom,
+reopens it and exits normally; catalog launching works but its running-icon
+feedback remains unresolved. The [cumulative CHD](results/2026-11-04-irix-acrobat-image.md)
+now packages these changes and passes cold application, full-screen xdm,
+both user desktops, recovery, catalog and clean-shutdown checks.
+
+Return to these entries individually, as requested. Next investigate NEdit
+file creation and the missing Lynx/Midnight Commander payloads. Keep Acrobat's
+wrapper execution feedback, broader PDF use and print/browser integration
+as separate follow-ups.
 For each repaired entry qualify catalog double-click, running-icon feedback,
 a useful operation, persistence and normal exit with child cleanup. Continue
 through the document/web handlers and unresolved registrations. Keep missing

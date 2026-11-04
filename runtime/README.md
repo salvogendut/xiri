@@ -210,3 +210,15 @@ and failed-startup recovery. It also logs in a separate native account with
 no `.xsession`, checks the standard ctwm desktop and terminal, then returns
 to xiritest. It builds and boots a disposable clone; the
 selected CHD is unchanged. See the [xdm integration record](../docs/results/2026-11-03-xiri-xdm.md).
+
+
+### Application launcher resources
+
+The installer exposes imported `/usr/freeware` and `/usr/adobe` prefixes to
+native utilities called by original IRIX scripts. It creates a symlink only
+when the corresponding payload exists and the native path is unused; existing
+administrator files, directories and links are preserved. The desktop session
+exports `ACRO_CONFIG=mipsirix`, an option already supported by the original
+Acrobat wrapper. It leaves native `uname` behavior intact. Importing application
+resources is the image preparer's job; the runtime installer does not copy
+vendor files or user preference profiles.

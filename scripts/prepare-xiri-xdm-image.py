@@ -15,6 +15,7 @@ from xiri_lab import Guest, ROOT, load_probe, sha256, source_hashes
 from xiri_lab.xdm_image import runtime_files, support_files
 from xiri_lab.kernel_log import KernelLog
 from xiri_lab.gimp_resources import prepare as prepare_gimp_resources
+from xiri_lab.application_resources import PACKAGES, prepare as prepare_application_resources
 
 
 def main():
@@ -24,6 +25,9 @@ def main():
     parser.add_argument('--baseline',type=Path,help='install a replacement kernel/module pair from --kernel-build')
     parser.add_argument('--keep-accounts',action='store_true',help='refresh an existing xdm image without changing accounts or passwords')
     parser.add_argument('--gimp-resources', type=Path, help='verified output directory from stage-irix-gimp.py')
+    for name in PACKAGES:
+        parser.add_argument('--'+name+'-resources', type=Path,
+                            help='verified output directory from stage-irix-'+name+'.py')
     args = parser.parse_args()
     seed = args.seed.resolve()
     origin = json.loads((seed/'image-source.json').read_text())
@@ -46,6 +50,20 @@ def main():
     print('Results: '+str(d.relative_to(ROOT)),flush=True)
     media = d/'media'; media.mkdir()
     gimp = prepare_gimp_resources(args.gimp_resources.resolve(), media) if args.gimp_resources else None
+    applications = {}
+    for name in PACKAGES:
+        directory = getattr(args, name+'_resources')
+        if directory:
+            applications[name] = prepare_application_resources(name, directory.resolve(), media)
+    # Preserve resource provenance when refreshing an already imported image.
+    inherited_resources = dict(previous.get('application_resources', {}))
+    if previous.get('gimp_resources') and not gimp:
+        inherited_resources['gimp'] = previous['gimp_resources']
+    for name, resources in inherited_resources.items():
+        if name not in applications:
+            ledger = bundle/(name+'-resources.json')
+            assert sha256(ledger) == resources['manifest_sha256']
+            shutil.copyfile(ledger, media/ledger.name)
     replacement=None
     if args.baseline:
         build_path=ROOT/pin['module_build_manifest']
@@ -60,6 +78,10 @@ def main():
     shutil.copytree(ROOT/'runtime',media/'runtime',ignore=shutil.ignore_patterns('build'))
     support = support_files(bundle,previous)
     (media/'SUPPORT').write_text(''.join(f'SHA256 ({path}) = {digest}\n' for path,digest in sorted(support.items())))
+    # Send a file list on the CD instead of a growing serial command line.
+    installed_paths = sorted(set(previous['installed_files']) | set(runtime_files()) |
+                             {'/emul/irix/etc/passwd'})
+    (media/'INSTALLED-PATHS').write_bytes(b''.join(path.encode()+b'\0' for path in installed_paths))
     (media/'motd').write_text('Xiri development image: native NetBSD xdm + original IRIX desktop\n'
         'Graphical login: xiritest / xiritest (IRIX); netbsdtest / netbsdtest (ctwm).\n'
         'These are public lab passwords. Root serial login is for administration.\n'
@@ -79,12 +101,16 @@ def main():
             'bitmap_ledger_sha256','installed_files','native_rpcbind_build','desktop_behavior',
             'xorg_configuration','newport_driver','irix_module')
     r = {key:previous[key] for key in keep}
+    for key in ('gimp_resources', 'application_resources'):
+        if key in previous:
+            r[key] = previous[key]
     r['pin']=pin
     r.update(status='error',clean_shutdown=False,base_image=origin,
              base_seed_result_sha256=sha256(seed/'result.json'),
              sources={**source_hashes(), 'scripts/prepare-xiri-xdm-image.py':sha256(Path(__file__)),
                       'scripts/xiri_lab/kernel_log.py':sha256(ROOT/'scripts/xiri_lab/kernel_log.py'),
                       'scripts/xiri_lab/gimp_resources.py':sha256(ROOT/'scripts/xiri_lab/gimp_resources.py'),
+                      'scripts/xiri_lab/application_resources.py':sha256(ROOT/'scripts/xiri_lab/application_resources.py'),
                       'scripts/xiri_lab/xdm_image.py':sha256(ROOT/'scripts/xiri_lab/xdm_image.py')},
              runtime_sources={str(f.relative_to(media)):sha256(f) for f in (media/'runtime').rglob('*') if f.is_file()})
     r['kernel_msgbuf_symbol']=hex(msgbuf_symbol)
@@ -109,10 +135,17 @@ def main():
         if gimp:
             cmd('tar xzpf /cdrom/gimp-resources.tgz -C / && sh /cdrom/gimp-verify.sh >/root/gimp-resource-check.log', 600)
             r['gimp_resources'] = {k:v for k,v in gimp.items() if k != 'files'}
+        for name, resources in applications.items():
+            cmd(f'tar xzpf /cdrom/{name}-resources.tgz -C / && '
+                f'sh /cdrom/{name}-verify.sh >/root/{name}-resource-check.log', 600)
+            r.setdefault('application_resources', {})[name] = {
+                key: value for key, value in resources.items() if key != 'files'}
         cmd('mkdir -p /root/xdm-image-build && cp -R /cdrom/runtime /root/xdm-image-build/ && '
             'cd /root/xdm-image-build/runtime && make && sh install.sh --enable-xdm',300)
         if gimp:
             cmd('test "$(readlink /usr/freeware)" = /emul/irix/usr/freeware')
+        if 'acrobat' in applications:
+            cmd('test "$(readlink /usr/adobe)" = /emul/irix/usr/adobe')
         if args.keep_accounts:
             cmd('test "$(id -u xiritest)" = 1234 && test "$(id -g xiritest)" = 1234 && '
                 'test "$(id -u netbsdtest)" = 1236 && test "$(id -g netbsdtest)" = 1236 && '
@@ -122,18 +155,34 @@ def main():
                 '-p "$(pwhash -b 6 xiritest)" xiritest && groupadd -g 1236 netbsdtest && '
                 'useradd -m -u 1236 -g netbsdtest -G wheel -d /home/netbsdtest -s /bin/sh '
                 '-p "$(pwhash -b 6 netbsdtest)" netbsdtest')
+        # Migrate the synthetic IRIX lookup data left by early /tmp-home probes.
+        # Native login accounts and their password database remain independent.
+        native_accounts = get('sha256 /etc/passwd /etc/master.passwd')
+        before_accounts = get('cat /emul/irix/etc/passwd')
+        cmd("awk -F: 'BEGIN {OFS=\":\"} "
+            "$1 == \"root\" && $3 == 0 {$6=\"/\"} "
+            "$1 == \"xiritest\" && $3 == 1234 {$6=\"/usr/people/xiritest\"} "
+            "{print}' /emul/irix/etc/passwd >/root/xdm-image-build/emul-passwd && "
+            'install -m 644 /root/xdm-image-build/emul-passwd /emul/irix/etc/passwd')
+        after_accounts = get('cat /emul/irix/etc/passwd')
+        assert re.search(r'^xiritest:[^:]*:1234:1234:[^:]*:/usr/people/xiritest:/bin/sh$', after_accounts, re.M)
+        assert re.search(r'^root:[^:]*:0:0:[^:]*:/:/bin/sh$', after_accounts, re.M)
+        assert native_accounts == get('sha256 /etc/passwd /etc/master.passwd')
+        r['emulation_accounts'] = dict(before=before_accounts, after=after_accounts,
+                                      native_databases_unchanged=True)
         cmd('install -o xiritest -g xiritest -m 700 /usr/local/share/xiri/xdm.xsession /usr/people/xiritest/.xsession && '
             'cp /etc/ttys /etc/ttys.before-xdm && '
             "sed '/^ttyE0[[:space:]]/s/[[:space:]]on[[:space:]]/ off /' /etc/ttys.before-xdm >/etc/ttys && "
             'install -m 644 /cdrom/motd /etc/motd')
         # Leave legacy diagnostic tools for reproduction; only select the new runtime.
         r['vendor_shell'] = cmd("su -m xiritest -c '/emul/irix/bin/sh -c \"echo IRIX_SHELL_IMAGE_OK\"'")
-        paths = sorted(set(r['installed_files']) | set(runtime_files()))
-        listing = get('sha256 '+shlex.join(paths))
+        listing = get('xargs -0 sha256 </cdrom/INSTALLED-PATHS', 600)
         r['installed_files'] = dict(re.findall(r'^SHA256 \((.+)\) = ([0-9a-f]{64})$',listing,re.M))
-        assert len(r['installed_files']) == len(paths)
+        assert len(r['installed_files']) == len(installed_paths)
         if gimp:
             r['installed_files'].update(gimp['files'])
+        for resources in applications.values():
+            r['installed_files'].update(resources['files'])
         r['ttys'] = get('cat /etc/ttys')
         assert re.search(r'^ttyE0\s+.*\soff\s',r['ttys'],re.M)
         assert re.search(r'^ttyZ0\s+.*\son\s',r['ttys'],re.M)

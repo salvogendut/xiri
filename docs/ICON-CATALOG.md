@@ -1,8 +1,10 @@
 # Icon Catalog application checklist
 
 Updated 2026-11-04 after the [startup survey](results/2026-11-03-irix-catalog.md)
-and the [GNOME](results/2026-11-04-irix-gnome.md) and
-[terminal](results/2026-11-04-irix-terminal.md) follow-ups.
+and the [GNOME](results/2026-11-04-irix-gnome.md),
+[terminal](results/2026-11-04-irix-terminal.md),
+[preference](results/2026-11-04-irix-preferences.md) and
+[Acrobat](results/2026-11-04-irix-acrobat.md) follow-ups.
 This is the requested list to use when returning to failures one by one.
 It preserves all **166 registered entries in 17 system tabs** from the supplied
 IRIX 6.5.22 installation, including unresolved source links that the running
@@ -11,7 +13,7 @@ Click the stacked page edges at the bottom-right of Icon Catalog to open the
 [menu of all pages](results/images/2026-11-03-irix-catalog-pages.png), including
 those whose tabs do not fit along the bottom.
 
-The current GIMP CHD was tested as **xiritest**, UID/GID 1234, HOME and cwd
+The original GIMP CHD survey ran as **xiritest**, UID/GID 1234, HOME and cwd
 `/usr/people/xiritest`, with accelerated 1280×1024 NetBSD Xorg. There were
 **124 distinct direct program-target attempts**; repeated targets share the
 same startup observation. GIMP, xmahjongg and xclock retain their separately
@@ -28,20 +30,24 @@ interrupted queries and cleanup failures are retained in the
 The [interactive checks](results/2026-11-03-irix-catalog-interactive.json)
 exercise real catalog double-clicks for Acrobat and Freeware NEdit. NEdit
 accepts visible text and restores its icon after Quit/Discard, but saving
-fails; Acrobat's launcher reaches its missing Reader helper. Other aliases
+fails. Acrobat's then-missing Reader helper is supplied by the later complete
+import; PDF operations and catalog launch now pass, while its running icon
+remains unchanged. Other aliases
 still need individual double-click, running-icon, useful-action, persistence
 and normal-exit tests. Terminal tools ran with stdin closed and may require
 arguments or a terminal. System/hardware tools were observed without applying
 settings or installing software.
 
-**Later candidate-module checks are identified in their rows.** The GNOME
+**Later module/application checks are identified in their rows.** The GNOME
 follow-up uses the pathname Unix socket module and 50 additional original
 resource paths in a disposable guest. Gedit passes basic document checks;
 the eight other previously busy targets have new bounded startup observations.
 The later terminal cycle adds socket pairs, one-descriptor transfer and native
 PTY setup; its individual rows distinguish shell checks from terminal-program
-support. These follow-ups are not yet included in the published GIMP CHD. Historical
-survey evidence is retained; untested behavior is not promoted to a pass.
+support. The preference cycle adds measured rename behavior and expands the
+GNOME resources to 53 paths. The [image guide](XIRI-IMAGE.md) identifies which
+changes are in the selected cumulative CHD. Historical survey evidence is
+retained; untested behavior is not promoted to a pass.
 
 
 ## Alias (2)
@@ -66,13 +72,13 @@ survey evidence is retained; untested behavior is not promoted to a pass.
 | --- | --- | --- |
 | `AboutNetscapeMessenger` | `/var/netscape/communicator/AboutNetscapeMessenger` | Document/web shortcut; assigned handler and destination remain untested. |
 | `acadr13` | `/opt/acad13/bin/acadr13` | **Exits 127 without a window.** /opt/acad13/bin/acadr13[14]: /bin/uname:  not found /opt/acad13/bin/acadr13[59]: /bin/uname:  not found /opt/acad13/bin/acadr13[59]: Echo:  not found /opt/acad13/bin/acadr13[63]: /opt/acad13/bin/acad:  not foun… |
-| `acroread` | `/usr/adobe/Acrobat4.0/bin/acroread` | **Catalog launch fails.** A real Applications double-click executes the original wrapper, which reports missing acroread.dist; no Reader process remains. |
+| `acroread` | `/usr/adobe/Acrobat4.0/bin/acroread` | **PDF and catalog launch checks pass; running icon unchanged.** The complete original Reader package opens a nine-page PDF, changes page and zoom, reopens through its chooser and exits normally as xiritest. Applications double-click launches Reader after xdm login. Its icon remains unchanged while running and FAM records no wrapper execution event; feedback, broader PDFs, printing and browser integration remain open. [Follow-up](results/2026-11-04-irix-acrobat.md). |
 | `dia` | `/usr/freeware/bin/dia` | **Exits 1 without a window.** Gtk-CRITICAL **: file gtkcontainer.c: line 713: assertion 'widget != NULL' failed. Couldn't find standard objects when looking for object-libs, exiting... |
 | `evolution` | `/usr/freeware/bin/evolution` | **Error dialog in candidate.** Evolution reaches a copy-error dialog; /usr/freeware/share/evolution/default_user/* is missing. Main mail use and normal exit remain untested. [Follow-up](results/2026-11-04-irix-gnome.md). |
 | `galculator` | `/usr/freeware/bin/galculator` | **Launch fails.** Exits 1. Fontconfig cannot load its default configuration and reports no fonts; UTF-8 conversion also warns. This is separate from the X-server fonts already used by the desktop. |
-| `gedit` | `/usr/freeware/bin/gedit` | **Basic document checks pass in candidate.** Freeware double-click, opened/closed icon artwork, text editing, new-file save, reopen, overwrite and GUI exit work as xiritest. Preference writes still fail; help, image loading and plug-ins need further work. The Applications alias has not been double-clicked separately. [Follow-up](results/2026-11-04-irix-gnome.md). |
+| `gedit` | `/usr/freeware/bin/gedit` | **Basic document and preference checks pass.** Freeware double-click, opened/closed icon artwork, text editing, new-file save, reopen, overwrite and GUI exit work as xiritest. Tab-width preferences now save and survive a normal exit/relaunch. Help, image loading, paper resources and broader plug-ins remain open. The Applications alias has not been double-clicked separately. [Follow-up](results/2026-11-04-irix-preferences.md). |
 | `glynx` | `/usr/freeware/bin/glynx` | **Missing Lynx payload in candidate.** The original glynx wrapper now gets through GNOME Terminal startup and exits quickly. It invokes gnome-terminal -x lynx, but /usr/freeware/bin/lynx is absent from both the imported tree and its native alias. Import the actual browser and package resources before testing it; catalog double-click and browser use remain unqualified. [Follow-up](results/2026-11-04-irix-terminal.md). |
-| `gnome-terminal` | `/usr/freeware/bin/gnome-terminal` | **Interactive original shell and catalog checks pass; preferences incomplete.** Applications double-click launches GNOME Terminal as xiritest with the original IRIX shell, an interactive prompt and HOME/cwd /usr/people/xiritest. Typed commands, foreground Ctrl-C, resize notifications and normal exit pass; the catalog running icon changes and returns to its original appearance. Preference saving still returns ENOSYS, help/shared-memory warnings remain, and broader stop/resume job control is unqualified. These candidate changes are not yet in the manual CHD. [Follow-up](results/2026-11-04-irix-termios.md). |
+| `gnome-terminal` | `/usr/freeware/bin/gnome-terminal` | **Interactive original shell, catalog and preferences pass.** Applications double-click launches the original IRIX shell with its prompt and HOME/cwd /usr/people/xiritest. Typed commands, foreground Ctrl-C, resize, normal exit and running-icon feedback pass. Scrollback and other settings now persist across a normal exit/relaunch. Help/shared-memory warnings and broader stop/resume job control remain open. [Follow-up](results/2026-11-04-irix-preferences.md). |
 | `gnome-terminal --login` | `/usr/freeware/bin/gnome-terminal --login` | Unresolved target in the original source inventory; no launch attempted. The target contains command-line text; check registration/action handling. |
 | `gtop` | `/usr/freeware/bin/gtop` | **Launch fails.** Exits 1 with Function not implemented while writing its GNOME preferences; its help-topics file is also unavailable. |
 | `jot` | `/usr/sbin/jot` | **Exits 0 without a new window.** |
@@ -188,9 +194,9 @@ survey evidence is retained; untested behavior is not promoted to a pass.
 | `emacs` | `/usr/freeware/bin/emacs` | **Launch fails.** Exits 0 with missing Emacs architecture data, Lisp directories and term/x-win. A complete Emacs resource import remains necessary. |
 | `fluid` | `/usr/freeware/bin/fluid` | **Window observed.** fluid, Bin. Use and normal exit remain untested. |
 | `FreewareRelnotes` | `/usr/freeware/relnotes/shared/FreewareRelnotes` | Document/web shortcut; assigned handler and destination remain untested. |
-| `gedit` | `/usr/freeware/bin/gedit` | **Basic document checks pass in candidate.** Freeware double-click, opened/closed icon artwork, text editing, new-file save, reopen, overwrite and GUI exit work as xiritest. Preference writes still fail; help, image loading and plug-ins need further work. The Applications alias has not been double-clicked separately. [Follow-up](results/2026-11-04-irix-gnome.md). |
+| `gedit` | `/usr/freeware/bin/gedit` | **Basic document and preference checks pass.** Freeware double-click, opened/closed icon artwork, text editing, new-file save, reopen, overwrite and GUI exit work as xiritest. Tab-width preferences now save and survive a normal exit/relaunch. Help, image loading, paper resources and broader plug-ins remain open. The Applications alias has not been double-clicked separately. [Follow-up](results/2026-11-04-irix-preferences.md). |
 | `gftp` | `/usr/freeware/bin/gftp` | **Exits 0 without a new window.** Error: Can't find gFTP binaries installed in /usr/freeware/bin |
-| `gimp` | `/usr/freeware/bin/gimp` | [Prior bounded pass: setup, paint, XCF/PNG save/reopen, catalog launch and exit](results/2026-11-03-irix-gimp.md). Preference backup and wider plug-ins remain open. |
+| `gimp` | `/usr/freeware/bin/gimp` | [Prior bounded pass: setup, paint, XCF/PNG save/reopen, catalog launch and exit](results/2026-11-03-irix-gimp.md). [Preference save, exact backup and relaunch now pass](results/2026-11-04-irix-preferences.md); wider plug-ins remain open. |
 | `glade` | `/usr/freeware/bin/glade` | **Main windows in candidate.** Glade opens its main window, widget palette and properties panel. OAF activation and preference writes warn. Creating, saving and reopening a project, catalog clicks and normal exit remain untested. [Follow-up](results/2026-11-04-irix-gnome.md). |
 | `gnumeric` | `/usr/freeware/bin/gnumeric` | **Font error in candidate.** Gnumeric reports no suitable default font and missing fontmap2 from its GNOME print installation. Inspect/import the original font package before spreadsheet checks. [Follow-up](results/2026-11-04-irix-gnome.md). |
 | `grok` | `/usr/freeware/bin/grok` | **Window observed.** grok, Grok Dialog_popup. Use and normal exit remain untested. |

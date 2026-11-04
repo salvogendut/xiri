@@ -306,9 +306,9 @@ every file hash and each entry's owner, group and mode after extraction.
 The diagnostic guest did so before launching gedit. Its existing native
 `/usr/freeware` alias remains necessary for native helpers. No old `.gnome`
 profile or package database is copied. The [application record](results/2026-11-04-irix-gnome.md)
-distinguishes working text saves from failing preferences and unresolved
-image/help resources; module support alone does not supply these files.
-This resource payload has not yet been packaged in a replacement manual CHD.
+distinguishes its working text saves from the then-failing preferences and
+unresolved image/help resources. The expanded import and preference repair
+are recorded below; module support alone does not supply these files.
 
 ### GNOME PTY helper (2026-11-04)
 
@@ -329,11 +329,51 @@ shell's terminal attributes and controlling-terminal setup. Original terminal
 headers were inspected read-only for constants and layout; their hashes are
 recorded in [the lab](../lab/irix-terminal/termios-headers.json), and the headers
 are not redistributed. Independent probes establish behavior on IRIX 6.5.22m.
-The manual CHD remains at the earlier GIMP checkpoint.
+The cumulative image preparation below includes this module support.
 
-The diagnostic seed also contains an older `/emul/irix/etc/passwd` with
+The earlier diagnostic seed contains an older `/emul/irix/etc/passwd` with
 `/tmp/xiri-home` for xiritest and `/root` for root. Those fields are stale:
 the native account and session HOME/cwd are `/usr/people/xiritest`, while
-the intended IRIX root convention is `/`. Account-file migration remains
-an explicit packaging follow-up; do not copy the original image's password
-database or change the native root account to compensate.
+the intended IRIX root convention is `/`. The cumulative image preparation
+migrates this synthetic file as described below. Do not copy the original
+image's password database or change the native root account to compensate.
+
+
+### Preferences and complete Acrobat resources (2026-11-04)
+
+The expanded [GNOME ledger](../lab/irix-gnome/preferences-resources.json) adds
+`/usr/freeware/share/gnome-terminal` and its `glade/gnome-terminal.glade` to
+the prior import: 43 files and ten directories in total. Stage it separately
+with `stage-irix-gnome.py --output-directory .work/irix-gnome-preferences-resources`
+to preserve the earlier 50-path artifact. The original dialog works with the
+rename module; GNOME Terminal, gedit and GIMP now persist preferences as
+recorded in the [preference report](results/2026-11-04-irix-preferences.md).
+
+`stage-irix-acrobat.py` stages the complete `/usr/adobe/Acrobat4.0` tree and
+its missing `/usr/lib/libMrm.so.1` dependency. The [86-path ledger](../lab/irix-acrobat/resources.json)
+contains 62 files, 17 directories and seven symbolic links. Every source
+path is retained below `/emul/irix`, with original bytes, root ownership,
+0555 ELF files, 0755 executable scripts/directories, 0644 data and unchanged
+link targets. It includes acroread.dist, the actual Reader, libraries,
+fonts, plug-ins, app-defaults, the sample Acrobat.pdf and reader.pdf help.
+No source-image user settings or package database are imported.
+
+The native runtime installer creates `/usr/adobe -> /emul/irix/usr/adobe`
+when that native prefix is unused, preserving administrator directories and
+even dangling links. Acrobat's original wrapper calls native utilities with
+those absolute paths. Its existing `ACRO_CONFIG=mipsirix` override is exported
+by the IRIX desktop session; native uname continues to identify NetBSD.
+
+`prepare-xiri-xdm-image.py` now accepts verified GNOME, terminal and Acrobat
+resource directories, checks archive contents/hashes/modes/owners/links and
+retains their ledgers in the image. Refreshing an image preserves the inherited
+GIMP resource ledger. The synthetic `/emul/irix/etc/passwd` is migrated to
+xiritest HOME `/usr/people/xiritest` and IRIX root HOME `/`; native account and
+password database hashes must remain unchanged. The native root home remains
+`/root`. This migration applies to the generated compatibility lookup file,
+not the supplied IRIX installation's accounts.
+
+The [cumulative manual image](results/2026-11-04-irix-acrobat-image.md) now
+includes these resource sets and the account migration. Its immutable CHD,
+resource ledgers and separate cold application/session checks are recorded
+there; previous images and diagnostic overlays remain preserved.

@@ -93,11 +93,28 @@ qualified artifacts as part of routine cleanup.
 For application startup surveys, use the
 [catalog lab](../lab/irix-catalog/README.md) and retain the
 [per-tab checklist](ICON-CATALOG.md). Its runner creates disposable guests
-from the qualified GIMP bundle, records bounded process/window observations
+from the historical GIMP bundle by default, records bounded process/window observations
 and verifies cleanup. Use `--limit` and `--after-case` for small fresh batches;
 keep interrupted queries and failed halts as diagnostics. The qualifier checks
 inventory coverage and raw evidence before the renderer updates the checklist.
 Startup observations remain separate from useful operation and normal exit.
+
+Pass `--bundle .work/images/xiri-netbsd-desktop-20261104-acrobat` to exercise
+the new cumulative image; retain the old default for reproducing the survey.
+`--seed` overlays must belong to that same base CHD. The
+[preference lab](../lab/irix-pathops/README.md) and
+[Acrobat lab](../lab/irix-acrobat/README.md) cover the new paired pathname and
+legacy-loader fixtures. Their application checks use fresh disposable homes
+and keep diagnostic settings out of the manual image.
+
+`prepare-xiri-xdm-image.py` accepts `--gnome-resources`, `--terminal-resources`
+and `--acrobat-resources` directories produced by the respective stagers.
+It validates archive membership, original bytes, ownership, modes and links,
+preserves inherited GIMP provenance, and migrates only the synthetic IRIX
+account lookup file. Native accounts/passwords stay unchanged with
+`--keep-accounts`. The builder verifies the prepared runtime snapshot; current
+runtime code must still match, while its README may advance independently.
+The bundle retains the exact source hashes actually prepared in the guest.
 
 The [terminal lab](../lab/irix-terminal/README.md) supplies paired socketpair,
 legacy descriptor-transfer, PTY-master, termios and tty-session fixtures.

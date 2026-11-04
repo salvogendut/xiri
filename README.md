@@ -12,7 +12,7 @@ catalog launches and running-icon feedback. Native NetBSD Xorg drives a
 1280×1024 accelerated Newport display. It retains the xmahjongg texture
 correction qualified by the earlier [rendering and interaction checks](docs/results/2026-11-03-newport-xmahjongg.md).
 
-The [current manual CHD](docs/results/2026-11-03-irix-gimp.md) boots into
+The [current manual CHD](docs/results/2026-11-04-irix-acrobat-image.md) boots into
 native NetBSD xdm. Log in as **xiritest** with password **xiritest** for the
 IRIX desktop, or **netbsdtest** / **netbsdtest** for standard NetBSD ctwm.
 `netbsdtest` belongs to `wheel` and can run `su -` for a root login shell;
@@ -36,15 +36,13 @@ are recorded separately. The [catalog startup survey](docs/results/2026-11-03-ir
 now records 124 distinct launch attempts in the
 [166-entry, tab-by-tab checklist](docs/ICON-CATALOG.md). It distinguishes
 windows, errors and busy processes without a window; useful operation still
-needs individual checks. Freeware NEdit accepts text but cannot save, and
-Acrobat's launcher needs the rest of its original installation.
+needs individual checks. Freeware NEdit accepts text but cannot save.
 
 The [GNOME follow-up](docs/results/2026-11-04-irix-gnome.md) now resolves
 gedit's busy ORBit startup with pathname Unix stream sockets in the module.
-With 50 additional original resource paths, gedit edits, saves/reopens and
+With the additional original resources, gedit edits, saves/reopens and
 overwrites a text document and launches through Freeware with running-icon
-feedback. Preferences and several resources still need work. This follow-up
-is qualified in a disposable guest; it is not yet in the manual GIMP CHD.
+feedback. Image decoding, help and broader plug-ins remain open.
 
 The [terminal follow-up](docs/results/2026-11-04-irix-terminal.md) adds
 socket pairs, legacy descriptor passing and the original GNOME PTY helper.
@@ -54,8 +52,17 @@ correct home directory and closes on `exit`. The subsequent
 terminal attributes and controlling-terminal acquisition to the module.
 The unchanged IRIX shell now shows its prompt, recognizes an interactive
 terminal, runs foreground commands, survives Ctrl-C and delivers resize
-notifications. GNOME preference saving and broader job control remain open.
-These candidate changes are not yet in the manual GIMP CHD.
+notifications. Broader stop/resume job control remains open.
+
+The [preference cycle](docs/results/2026-11-04-irix-preferences.md) implements
+measured IRIX `rename` behavior. GNOME Terminal and gedit settings survive
+exit/relaunch, and GIMP saves its settings with an exact `gimprc.old` backup.
+The [Acrobat cycle](docs/results/2026-11-04-irix-acrobat.md) imports the complete
+original Reader package and supports its older ELF layout. Reader opens PDFs,
+changes page and zoom, reopens a document and exits normally. It also launches
+from Icon Catalog, although its icon does not change to the running shape.
+These cumulative module, runtime and resource updates are packaged in the
+current manual image; earlier images and their manual state are retained.
 
 ## Related repositories
 
@@ -117,7 +124,7 @@ Compatibility is incomplete. The underlying Type1 font-metric failure remains
 open; winterm's default now uses a verified SGI bitmap face. Broader graphics operations,
 Dumpster actions, preferences and session persistence need work. The
 [GIMP checkpoint](docs/results/2026-11-03-irix-gimp.md) covers basic editing
-and XCF/PNG round trips; preference-backup `rename`, large images and the wider
+and XCF/PNG round trips; large images and the wider
 plug-in collection remain open. xosview
 still needs IRIX statistics interfaces.
 Continued-child signal behavior and IRIX nanosleep also remain open.

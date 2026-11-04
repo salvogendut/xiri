@@ -5,6 +5,19 @@ status statements describe individual checkpoints and may be superseded by
 later entries. Use the [current README](../README.md), [development guide](DEVELOPMENT.md)
 and [selected image](../lab/irix-installed-desktop/image.json) for current work.
 
+The [2026-11-04 preference cycle](results/2026-11-04-irix-preferences.md)
+adds measured rename semantics, with 256 paired records and sixteen namespace
+controls. GNOME Terminal and gedit settings survive normal exit/relaunch;
+GIMP also retains an exact prior-file backup. The new original Terminal Glade
+resource brings the GNOME ledger to 53 paths. The subsequent
+[Acrobat work](results/2026-11-04-irix-acrobat.md) adds the complete original package and bounded legacy ELF layouts, with 514
+native executable/mapping checks and 44 new original-IRIX comparisons.
+These results supersede the preference and missing-Reader blockers below.
+The [cumulative CHD](results/2026-11-04-irix-acrobat-image.md) packages these
+changes with fresh profiles, migrated compatibility account homes and
+separate cold-application, xdm/4Dwm/ctwm and cleanup acceptance. Reader
+catalog launches work; its running-icon feedback remains unresolved.
+
 The [2026-11-04 termios cycle](results/2026-11-04-irix-termios.md) adds
 measured terminal attributes and controlling-terminal/session interfaces to
 the module. The original IRIX shell in GNOME Terminal now shows its prompt,

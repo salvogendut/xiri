@@ -47,8 +47,9 @@ native controls with clean guest shutdown. The separate
 [application report](../../docs/results/2026-11-03-irix-gimp.json) records the
 first successful editing and save/reopen cycle, including matching decoded
 XCF/PNG pixels, both launch routes, normal exit and the complete resource
-verification. These are bounded results; preference backups still require
-the missing rename syscall and most plug-ins have not been exercised.
+verification. The later [preference cycle](../../docs/results/2026-11-04-irix-preferences.md)
+adds measured rename support and verifies preference saving, an exact backup
+and relaunch. Most plug-ins have not been exercised.
 
 For a new image, prepare a disposable seed from the qualified winterm bundle,
 then use `prepare-xiri-xdm-image.py --keep-accounts --gimp-resources

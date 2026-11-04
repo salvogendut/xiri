@@ -1,0 +1,226 @@
+[
+  {
+    "name": "new-file",
+    "setup": "printf SOURCE >src",
+    "source": "src",
+    "destination": "dst",
+    "mode": 0
+  },
+  {
+    "name": "replace-file",
+    "setup": "printf SOURCE >src; printf OLD >dst",
+    "source": "src",
+    "destination": "dst",
+    "mode": 0
+  },
+  {
+    "name": "same-name",
+    "setup": "printf SOURCE >src",
+    "source": "src",
+    "destination": "src",
+    "mode": 0
+  },
+  {
+    "name": "same-inode",
+    "setup": "printf SOURCE >src; ln src dst",
+    "source": "src",
+    "destination": "dst",
+    "mode": 0
+  },
+  {
+    "name": "source-symlink",
+    "setup": "printf TARGET >alias; ln -s alias src",
+    "source": "src",
+    "destination": "dst",
+    "mode": 0
+  },
+  {
+    "name": "destination-symlink",
+    "setup": "printf SOURCE >src; printf TARGET >alias; ln -s alias dst",
+    "source": "src",
+    "destination": "dst",
+    "mode": 0
+  },
+  {
+    "name": "dangling-source",
+    "setup": "ln -s absent src",
+    "source": "src",
+    "destination": "dst",
+    "mode": 0
+  },
+  {
+    "name": "dangling-destination",
+    "setup": "printf SOURCE >src; ln -s absent dst",
+    "source": "src",
+    "destination": "dst",
+    "mode": 0
+  },
+  {
+    "name": "move-directory",
+    "setup": "mkdir src; printf CHILD >src/item",
+    "source": "src",
+    "destination": "dst",
+    "mode": 0
+  },
+  {
+    "name": "replace-empty-directory",
+    "setup": "mkdir src dst; printf CHILD >src/item",
+    "source": "src",
+    "destination": "dst",
+    "mode": 0
+  },
+  {
+    "name": "nonempty-directory",
+    "setup": "mkdir src dst; printf CHILD >src/item; printf OLD >dst/item",
+    "source": "src",
+    "destination": "dst",
+    "mode": 0
+  },
+  {
+    "name": "file-to-directory",
+    "setup": "printf SOURCE >src; mkdir dst",
+    "source": "src",
+    "destination": "dst",
+    "mode": 0
+  },
+  {
+    "name": "directory-to-file",
+    "setup": "mkdir src; printf OLD >dst",
+    "source": "src",
+    "destination": "dst",
+    "mode": 0
+  },
+  {
+    "name": "missing-source",
+    "setup": ":",
+    "source": "src",
+    "destination": "dst",
+    "mode": 0
+  },
+  {
+    "name": "missing-parent",
+    "setup": "printf SOURCE >src",
+    "source": "src",
+    "destination": "absent/dst",
+    "mode": 0
+  },
+  {
+    "name": "source-trailing-slash",
+    "setup": "printf SOURCE >src",
+    "source": "src/",
+    "destination": "dst",
+    "mode": 0
+  },
+  {
+    "name": "destination-trailing-slash",
+    "setup": "printf SOURCE >src",
+    "source": "src",
+    "destination": "dst/",
+    "mode": 0
+  },
+  {
+    "name": "directory-trailing-slash",
+    "setup": "mkdir src",
+    "source": "src/",
+    "destination": "dst/",
+    "mode": 0
+  },
+  {
+    "name": "empty-source",
+    "setup": "printf SOURCE >src",
+    "source": "",
+    "destination": "dst",
+    "mode": 0
+  },
+  {
+    "name": "empty-destination",
+    "setup": "printf SOURCE >src",
+    "source": "src",
+    "destination": "",
+    "mode": 0
+  },
+  {
+    "name": "source-null",
+    "setup": "printf SOURCE >src",
+    "source": "src",
+    "destination": "dst",
+    "mode": 1
+  },
+  {
+    "name": "source-high",
+    "setup": "printf SOURCE >src",
+    "source": "src",
+    "destination": "dst",
+    "mode": 2
+  },
+  {
+    "name": "destination-null",
+    "setup": "printf SOURCE >src",
+    "source": "src",
+    "destination": "dst",
+    "mode": 3
+  },
+  {
+    "name": "destination-high",
+    "setup": "printf SOURCE >src",
+    "source": "src",
+    "destination": "dst",
+    "mode": 4
+  },
+  {
+    "name": "source-long",
+    "setup": "printf SOURCE >src",
+    "source": "src",
+    "destination": "dst",
+    "mode": 5
+  },
+  {
+    "name": "destination-long",
+    "setup": "printf SOURCE >src",
+    "source": "src",
+    "destination": "dst",
+    "mode": 6
+  },
+  {
+    "name": "missing-source-null-destination",
+    "setup": ":",
+    "source": "src",
+    "destination": "dst",
+    "mode": 3
+  },
+  {
+    "name": "source-null-missing-parent",
+    "setup": "printf SOURCE >src",
+    "source": "src",
+    "destination": "absent/dst",
+    "mode": 1
+  },
+  {
+    "name": "dot-source",
+    "setup": "mkdir src; printf CHILD >src/item",
+    "source": "src/.",
+    "destination": "dst",
+    "mode": 0
+  },
+  {
+    "name": "into-descendant",
+    "setup": "mkdir src; mkdir src/child",
+    "source": "src",
+    "destination": "src/child/dst",
+    "mode": 0
+  },
+  {
+    "name": "parent-unwritable",
+    "setup": "printf SOURCE >src; chmod 555 .",
+    "source": "src",
+    "destination": "dst",
+    "mode": 0
+  },
+  {
+    "name": "unsearchable-parent",
+    "setup": "mkdir box; printf SOURCE >box/source; chmod 000 box",
+    "source": "box/source",
+    "destination": "dst",
+    "mode": 0
+  }
+]

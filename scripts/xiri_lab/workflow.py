@@ -54,6 +54,12 @@ def verify_image(root, pointer, bundle, manifest):
     }
     if manifest['pin'].get('module_build_manifest'):
         files['irix-module-build.json'] = manifest['pin']['module_build_manifest_sha256']
+    if manifest.get('gimp_resources'):
+        files['gimp-resources.json'] = manifest['gimp_resources']['manifest_sha256']
+    for name, resources in manifest.get('application_resources', {}).items():
+        if name not in ('gnome', 'terminal', 'acrobat'):
+            raise ValueError('Unknown application resource ledger: '+name)
+        files[name+'-resources.json'] = resources['manifest_sha256']
     if manifest.get('qualification_nvram'):
         files[manifest['qualification_nvram']] = manifest['qualification_nvram_sha256']
     if files.get('emulator/iris') != manifest['pin']['emulator_sha256'] or \

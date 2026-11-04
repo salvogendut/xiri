@@ -68,6 +68,23 @@ class RuntimeInstallTests(unittest.TestCase):
         for name in ('etc/master.passwd', 'etc/ttys', 'usr/people', 'etc/X11'):
             self.assertFalse((self.stage/name).exists())
 
+    def test_application_prefixes_preserve_existing_native_paths(self):
+        for prefix in ('freeware', 'adobe'):
+            (self.stage/'emul/irix/usr'/prefix).mkdir(parents=True)
+        self.install()
+        for prefix in ('freeware', 'adobe'):
+            path = self.stage/'usr'/prefix
+            self.assertEqual(os.readlink(path), '/emul/irix/usr/'+prefix)
+            path.unlink()
+        adobe = self.stage/'usr/adobe'
+        adobe.mkdir()
+        (adobe/'local').write_text('administrator data\n')
+        freeware = self.stage/'usr/freeware'
+        freeware.symlink_to('/administrator/absent-target')
+        self.install()
+        self.assertEqual((adobe/'local').read_text(), 'administrator data\n')
+        self.assertEqual(os.readlink(freeware), '/administrator/absent-target')
+
 
 if __name__ == '__main__':
     unittest.main()

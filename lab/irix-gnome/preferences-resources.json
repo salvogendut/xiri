@@ -1,0 +1,981 @@
+{
+  "schema": 1,
+  "status": "staged-unqualified",
+  "source_image_manifest_sha256": "79b464ad3856eca2d034f418445860b3d262437f0347ccadedc67e60c8330521",
+  "extraction": "guestfish --ro, mount ro,norecovery; no host symlinks created",
+  "script_sha256": "b78662cfc7936b69b555b750828189e729d997de83e219612a04de5c56ece778",
+  "gimp_manifest_sha256": "f78342cf63ec66073445b620cba81f4faddfcc60e0102d05bca470f42b7ee8c4",
+  "bases": [
+    "/usr/freeware/share/gedit",
+    "/usr/freeware/lib32/gedit",
+    "/usr/freeware/lib32/vfs",
+    "/usr/freeware/etc/vfs",
+    "/usr/freeware/share/gnome-terminal"
+  ],
+  "archives": {
+    "/usr/freeware/share/gedit": {
+      "sha256": "0de5452b2eb85bee937d73802645586d22915df7af0245c44a12880d0c712587",
+      "bytes": 143360
+    },
+    "/usr/freeware/lib32/gedit": {
+      "sha256": "2dbd88c49b83346b1b3ec9c4598005b8c4140cc7cb20d69c508557d92b4cc03b",
+      "bytes": 296960
+    },
+    "/usr/freeware/lib32/vfs": {
+      "sha256": "17a7e9b16d4f83385dec3d9e03950334ed8f12c1c30cd00f1e107e10f34e4a6e",
+      "bytes": 481280
+    },
+    "/usr/freeware/etc/vfs": {
+      "sha256": "3752227f4210169cd68def64bc46ba137249014ea83395290c33a598fd5aa751",
+      "bytes": 10240
+    },
+    "/usr/freeware/share/gnome-terminal": {
+      "sha256": "06d8a3358d60281bcc06ecfe6e095d8e5b52a6f89355621306e2860d1a0a24d1",
+      "bytes": 51200
+    }
+  },
+  "payload_sha256": "aed09382900180c1a40a4e477d090f5d3ac46638165549f4dd325a9c3e73e55a",
+  "paths": {
+    "/usr/freeware/share/gedit": {
+      "irix_source": "/usr/freeware/share/gedit",
+      "netbsd_destination": "/emul/irix/usr/freeware/share/gedit",
+      "original_mode": "0o755",
+      "type": "directory",
+      "mode": "0o755"
+    },
+    "/usr/freeware/share/gedit/glade": {
+      "irix_source": "/usr/freeware/share/gedit/glade",
+      "netbsd_destination": "/emul/irix/usr/freeware/share/gedit/glade",
+      "original_mode": "0o755",
+      "type": "directory",
+      "mode": "0o755"
+    },
+    "/usr/freeware/share/gedit/glade/about.glade": {
+      "irix_source": "/usr/freeware/share/gedit/glade/about.glade",
+      "netbsd_destination": "/emul/irix/usr/freeware/share/gedit/glade/about.glade",
+      "original_mode": "0o644",
+      "type": "file",
+      "bytes": 1184,
+      "sha256": "fc6c3b9df6f9be71d432f9cb580988518893aa308333206894767b29a7708c24",
+      "mode": "0o644"
+    },
+    "/usr/freeware/share/gedit/glade/asciitable.glade": {
+      "irix_source": "/usr/freeware/share/gedit/glade/asciitable.glade",
+      "netbsd_destination": "/emul/irix/usr/freeware/share/gedit/glade/asciitable.glade",
+      "original_mode": "0o644",
+      "type": "file",
+      "bytes": 5153,
+      "sha256": "ef4ec5e8445a3235a2dd362c83c4b510dfab4efbd502f1274a3705cff54c0061",
+      "mode": "0o644"
+    },
+    "/usr/freeware/share/gedit/glade/browse.glade": {
+      "irix_source": "/usr/freeware/share/gedit/glade/browse.glade",
+      "netbsd_destination": "/emul/irix/usr/freeware/share/gedit/glade/browse.glade",
+      "original_mode": "0o644",
+      "type": "file",
+      "bytes": 4875,
+      "sha256": "8aefa743051e7776745a03934aab3fefaa24e9a8ddb320a2a4cd7c756f19bb09",
+      "mode": "0o644"
+    },
+    "/usr/freeware/share/gedit/glade/convert.glade": {
+      "irix_source": "/usr/freeware/share/gedit/glade/convert.glade",
+      "netbsd_destination": "/emul/irix/usr/freeware/share/gedit/glade/convert.glade",
+      "original_mode": "0o644",
+      "type": "file",
+      "bytes": 6213,
+      "sha256": "4d96a8046d1ff2dda4ba0027f43a59d284d57b441aa273ae09a2212f74bfd3b8",
+      "mode": "0o644"
+    },
+    "/usr/freeware/share/gedit/glade/diff.glade": {
+      "irix_source": "/usr/freeware/share/gedit/glade/diff.glade",
+      "netbsd_destination": "/emul/irix/usr/freeware/share/gedit/glade/diff.glade",
+      "original_mode": "0o644",
+      "type": "file",
+      "bytes": 9088,
+      "sha256": "8450f66120a64accfe55f026b12badbd0126992fa285ef64da9d479a69378085",
+      "mode": "0o644"
+    },
+    "/usr/freeware/share/gedit/glade/docinfo.glade": {
+      "irix_source": "/usr/freeware/share/gedit/glade/docinfo.glade",
+      "netbsd_destination": "/emul/irix/usr/freeware/share/gedit/glade/docinfo.glade",
+      "original_mode": "0o644",
+      "type": "file",
+      "bytes": 13183,
+      "sha256": "a210522ffe20dbac5367f5d5a89945cb220e2ded76a709b9f597bc74134760c9",
+      "mode": "0o644"
+    },
+    "/usr/freeware/share/gedit/glade/email.glade": {
+      "irix_source": "/usr/freeware/share/gedit/glade/email.glade",
+      "netbsd_destination": "/emul/irix/usr/freeware/share/gedit/glade/email.glade",
+      "original_mode": "0o644",
+      "type": "file",
+      "bytes": 20773,
+      "sha256": "504acc431dd1f9c160abec338c17bf7d97cae0fe279f306b6ef24d2028418767",
+      "mode": "0o644"
+    },
+    "/usr/freeware/share/gedit/glade/goto-line.glade": {
+      "irix_source": "/usr/freeware/share/gedit/glade/goto-line.glade",
+      "netbsd_destination": "/emul/irix/usr/freeware/share/gedit/glade/goto-line.glade",
+      "original_mode": "0o644",
+      "type": "file",
+      "bytes": 3299,
+      "sha256": "7815cc5a545eacd239039a3609927a73770e5018efe92228a135e02058d919e9",
+      "mode": "0o644"
+    },
+    "/usr/freeware/share/gedit/glade/plugin-manager.glade": {
+      "irix_source": "/usr/freeware/share/gedit/glade/plugin-manager.glade",
+      "netbsd_destination": "/emul/irix/usr/freeware/share/gedit/glade/plugin-manager.glade",
+      "original_mode": "0o644",
+      "type": "file",
+      "bytes": 10754,
+      "sha256": "35acd7fa3f3a0e3e72aa0c19fc7dce82199bd9f79c547287a198af3aceddd0fd",
+      "mode": "0o644"
+    },
+    "/usr/freeware/share/gedit/glade/prefs.glade": {
+      "irix_source": "/usr/freeware/share/gedit/glade/prefs.glade",
+      "netbsd_destination": "/emul/irix/usr/freeware/share/gedit/glade/prefs.glade",
+      "original_mode": "0o644",
+      "type": "file",
+      "bytes": 23417,
+      "sha256": "90bc3bb5453522b275eb72f2d4dff25a00b7d5331a1deb0bdfbe1b67b47ab799",
+      "mode": "0o644"
+    },
+    "/usr/freeware/share/gedit/glade/program.glade": {
+      "irix_source": "/usr/freeware/share/gedit/glade/program.glade",
+      "netbsd_destination": "/emul/irix/usr/freeware/share/gedit/glade/program.glade",
+      "original_mode": "0o644",
+      "type": "file",
+      "bytes": 4075,
+      "sha256": "11c46d6298b4ea03bc4bbeeceb8dc14507489eff90b0ebb4720ddb87ba8b4747",
+      "mode": "0o644"
+    },
+    "/usr/freeware/share/gedit/glade/replace.glade": {
+      "irix_source": "/usr/freeware/share/gedit/glade/replace.glade",
+      "netbsd_destination": "/emul/irix/usr/freeware/share/gedit/glade/replace.glade",
+      "original_mode": "0o644",
+      "type": "file",
+      "bytes": 6898,
+      "sha256": "b106651c4da310dbc2f1124a9bc162c88a8119f5cab176d595cc0f55602bf4db",
+      "mode": "0o644"
+    },
+    "/usr/freeware/share/gedit/glade/shell_output.glade": {
+      "irix_source": "/usr/freeware/share/gedit/glade/shell_output.glade",
+      "netbsd_destination": "/emul/irix/usr/freeware/share/gedit/glade/shell_output.glade",
+      "original_mode": "0o644",
+      "type": "file",
+      "bytes": 6370,
+      "sha256": "26ebd2f2f845f77ec1bd445f6de686ce2b6662d176edef26326fcf7cd4aac76c",
+      "mode": "0o644"
+    },
+    "/usr/freeware/share/gedit/glade/sort.glade": {
+      "irix_source": "/usr/freeware/share/gedit/glade/sort.glade",
+      "netbsd_destination": "/emul/irix/usr/freeware/share/gedit/glade/sort.glade",
+      "original_mode": "0o644",
+      "type": "file",
+      "bytes": 3754,
+      "sha256": "319535ff439b24d2a57044bb75f9645a6519c3deae6d09127c2c300f046f1079",
+      "mode": "0o644"
+    },
+    "/usr/freeware/share/gedit/glade/uri.glade": {
+      "irix_source": "/usr/freeware/share/gedit/glade/uri.glade",
+      "netbsd_destination": "/emul/irix/usr/freeware/share/gedit/glade/uri.glade",
+      "original_mode": "0o644",
+      "type": "file",
+      "bytes": 3538,
+      "sha256": "27c02eb705134238f555102f27ea1cc51c534f353625b68c2e9e650027498403",
+      "mode": "0o644"
+    },
+    "/usr/freeware/lib32/gedit": {
+      "irix_source": "/usr/freeware/lib32/gedit",
+      "netbsd_destination": "/emul/irix/usr/freeware/lib32/gedit",
+      "original_mode": "0o755",
+      "type": "directory",
+      "mode": "0o755"
+    },
+    "/usr/freeware/lib32/gedit/plugins": {
+      "irix_source": "/usr/freeware/lib32/gedit/plugins",
+      "netbsd_destination": "/emul/irix/usr/freeware/lib32/gedit/plugins",
+      "original_mode": "0o755",
+      "type": "directory",
+      "mode": "0o755"
+    },
+    "/usr/freeware/lib32/gedit/plugins/libasciitable.so": {
+      "irix_source": "/usr/freeware/lib32/gedit/plugins/libasciitable.so",
+      "netbsd_destination": "/emul/irix/usr/freeware/lib32/gedit/plugins/libasciitable.so",
+      "original_mode": "0o755",
+      "type": "file",
+      "bytes": 26140,
+      "sha256": "72aea502d1873de941d97e2c1807e2af60bb4b02c5da33de0b9ae079b5bcf6e5",
+      "mode": "0o555"
+    },
+    "/usr/freeware/lib32/gedit/plugins/libbrowse.so": {
+      "irix_source": "/usr/freeware/lib32/gedit/plugins/libbrowse.so",
+      "netbsd_destination": "/emul/irix/usr/freeware/lib32/gedit/plugins/libbrowse.so",
+      "original_mode": "0o755",
+      "type": "file",
+      "bytes": 25500,
+      "sha256": "9f1501b1f5da24f540ee8543244642e68d783e2e2efb5ef966a4a0a17ede2ba8",
+      "mode": "0o555"
+    },
+    "/usr/freeware/lib32/gedit/plugins/libconvert.so": {
+      "irix_source": "/usr/freeware/lib32/gedit/plugins/libconvert.so",
+      "netbsd_destination": "/emul/irix/usr/freeware/lib32/gedit/plugins/libconvert.so",
+      "original_mode": "0o755",
+      "type": "file",
+      "bytes": 25480,
+      "sha256": "8206bf16bf9daa1a41be1074d7def77cf7a689d059393901debc71c5f22436dc",
+      "mode": "0o555"
+    },
+    "/usr/freeware/lib32/gedit/plugins/libdiff.so": {
+      "irix_source": "/usr/freeware/lib32/gedit/plugins/libdiff.so",
+      "netbsd_destination": "/emul/irix/usr/freeware/lib32/gedit/plugins/libdiff.so",
+      "original_mode": "0o755",
+      "type": "file",
+      "bytes": 27932,
+      "sha256": "a297151a1d16895ba45d968036b4e94f5a47e0ebf0fab90448a164117eb13b55",
+      "mode": "0o555"
+    },
+    "/usr/freeware/lib32/gedit/plugins/libdocinfo.so": {
+      "irix_source": "/usr/freeware/lib32/gedit/plugins/libdocinfo.so",
+      "netbsd_destination": "/emul/irix/usr/freeware/lib32/gedit/plugins/libdocinfo.so",
+      "original_mode": "0o755",
+      "type": "file",
+      "bytes": 26804,
+      "sha256": "049d02db1d64f50989cc5c2c64331b7abb8fa7b0ea7b984fe212a6bd2246e49a",
+      "mode": "0o555"
+    },
+    "/usr/freeware/lib32/gedit/plugins/libemail.so": {
+      "irix_source": "/usr/freeware/lib32/gedit/plugins/libemail.so",
+      "netbsd_destination": "/emul/irix/usr/freeware/lib32/gedit/plugins/libemail.so",
+      "original_mode": "0o755",
+      "type": "file",
+      "bytes": 26232,
+      "sha256": "855842fc3570c1b16f3c26c33e93db6b35dedba9d774f6264c15d17b822d5e5e",
+      "mode": "0o555"
+    },
+    "/usr/freeware/lib32/gedit/plugins/libreverse.so": {
+      "irix_source": "/usr/freeware/lib32/gedit/plugins/libreverse.so",
+      "netbsd_destination": "/emul/irix/usr/freeware/lib32/gedit/plugins/libreverse.so",
+      "original_mode": "0o755",
+      "type": "file",
+      "bytes": 23816,
+      "sha256": "6c53a97969dafdde9f69ae1b98f51bdc5b4e1efa39918a6dacd89a2b8acc67de",
+      "mode": "0o555"
+    },
+    "/usr/freeware/lib32/gedit/plugins/libsample.so": {
+      "irix_source": "/usr/freeware/lib32/gedit/plugins/libsample.so",
+      "netbsd_destination": "/emul/irix/usr/freeware/lib32/gedit/plugins/libsample.so",
+      "original_mode": "0o755",
+      "type": "file",
+      "bytes": 23760,
+      "sha256": "24d9a4d6696b9f07d932501c87ffe76df4edb4893062daaa0773b70201c00143",
+      "mode": "0o555"
+    },
+    "/usr/freeware/lib32/gedit/plugins/libshell_output.so": {
+      "irix_source": "/usr/freeware/lib32/gedit/plugins/libshell_output.so",
+      "netbsd_destination": "/emul/irix/usr/freeware/lib32/gedit/plugins/libshell_output.so",
+      "original_mode": "0o755",
+      "type": "file",
+      "bytes": 25492,
+      "sha256": "6eb5cbb478047a9c4c4f379cc6f5623537fce0316e2993f5f7ea965798771e97",
+      "mode": "0o555"
+    },
+    "/usr/freeware/lib32/gedit/plugins/libsort.so": {
+      "irix_source": "/usr/freeware/lib32/gedit/plugins/libsort.so",
+      "netbsd_destination": "/emul/irix/usr/freeware/lib32/gedit/plugins/libsort.so",
+      "original_mode": "0o755",
+      "type": "file",
+      "bytes": 25444,
+      "sha256": "c6f54c2cb75808c7059e240d863dfd9cb3cab971c4d27c83954b41fc05a7b29b",
+      "mode": "0o555"
+    },
+    "/usr/freeware/lib32/gedit/plugins/libtime.so": {
+      "irix_source": "/usr/freeware/lib32/gedit/plugins/libtime.so",
+      "netbsd_destination": "/emul/irix/usr/freeware/lib32/gedit/plugins/libtime.so",
+      "original_mode": "0o755",
+      "type": "file",
+      "bytes": 23928,
+      "sha256": "35e7990bf4450ba9e2878cb9577cc4e3a915c9f68c284964bacd7913b1fd0357",
+      "mode": "0o555"
+    },
+    "/usr/freeware/lib32/vfs": {
+      "irix_source": "/usr/freeware/lib32/vfs",
+      "netbsd_destination": "/emul/irix/usr/freeware/lib32/vfs",
+      "original_mode": "0o755",
+      "type": "directory",
+      "mode": "0o755"
+    },
+    "/usr/freeware/lib32/vfs/modules": {
+      "irix_source": "/usr/freeware/lib32/vfs/modules",
+      "netbsd_destination": "/emul/irix/usr/freeware/lib32/vfs/modules",
+      "original_mode": "0o755",
+      "type": "directory",
+      "mode": "0o755"
+    },
+    "/usr/freeware/lib32/vfs/modules/libbzip2.so": {
+      "irix_source": "/usr/freeware/lib32/vfs/modules/libbzip2.so",
+      "netbsd_destination": "/emul/irix/usr/freeware/lib32/vfs/modules/libbzip2.so",
+      "original_mode": "0o644",
+      "type": "file",
+      "bytes": 26544,
+      "sha256": "4d1096be0e1a26d79c434122e06dd1e0e996169131c0b0b3bd6d4eb65eb806c3",
+      "mode": "0o555"
+    },
+    "/usr/freeware/lib32/vfs/modules/libdesktop.so": {
+      "irix_source": "/usr/freeware/lib32/vfs/modules/libdesktop.so",
+      "netbsd_destination": "/emul/irix/usr/freeware/lib32/vfs/modules/libdesktop.so",
+      "original_mode": "0o644",
+      "type": "file",
+      "bytes": 29252,
+      "sha256": "b6039d9247c725f7ed4f8ebcbe7cec9e1371cdbe1f1c74a187b6c46fbf5dc780",
+      "mode": "0o555"
+    },
+    "/usr/freeware/lib32/vfs/modules/libextfs.so": {
+      "irix_source": "/usr/freeware/lib32/vfs/modules/libextfs.so",
+      "netbsd_destination": "/emul/irix/usr/freeware/lib32/vfs/modules/libextfs.so",
+      "original_mode": "0o644",
+      "type": "file",
+      "bytes": 30252,
+      "sha256": "84c4dfe4d8b15effdb1520a2a01c5ca140b6cd30fef40e13fa3451438b1e534e",
+      "mode": "0o555"
+    },
+    "/usr/freeware/lib32/vfs/modules/libfile.so": {
+      "irix_source": "/usr/freeware/lib32/vfs/modules/libfile.so",
+      "netbsd_destination": "/emul/irix/usr/freeware/lib32/vfs/modules/libfile.so",
+      "original_mode": "0o644",
+      "type": "file",
+      "bytes": 54200,
+      "sha256": "93f105a143987432da7ee6ac2852dd83db333da8e89649f3d03660fa5c5d706a",
+      "mode": "0o555"
+    },
+    "/usr/freeware/lib32/vfs/modules/libftp.so": {
+      "irix_source": "/usr/freeware/lib32/vfs/modules/libftp.so",
+      "netbsd_destination": "/emul/irix/usr/freeware/lib32/vfs/modules/libftp.so",
+      "original_mode": "0o644",
+      "type": "file",
+      "bytes": 33192,
+      "sha256": "964405e92698d0f98d27af5a5d5f719101a000a35661cc056adc1a5918d794b4",
+      "mode": "0o555"
+    },
+    "/usr/freeware/lib32/vfs/modules/libgzip.so": {
+      "irix_source": "/usr/freeware/lib32/vfs/modules/libgzip.so",
+      "netbsd_destination": "/emul/irix/usr/freeware/lib32/vfs/modules/libgzip.so",
+      "original_mode": "0o644",
+      "type": "file",
+      "bytes": 27992,
+      "sha256": "2eb0233ec71e6beef38a38850349f20606a9717020a7fc063e2d09e97389c641",
+      "mode": "0o555"
+    },
+    "/usr/freeware/lib32/vfs/modules/libhttp.so": {
+      "irix_source": "/usr/freeware/lib32/vfs/modules/libhttp.so",
+      "netbsd_destination": "/emul/irix/usr/freeware/lib32/vfs/modules/libhttp.so",
+      "original_mode": "0o644",
+      "type": "file",
+      "bytes": 104704,
+      "sha256": "37f2a67e3ecb62c0a5e0c6e6c952d20e17a23c56bc6dfa113049826094305398",
+      "mode": "0o555"
+    },
+    "/usr/freeware/lib32/vfs/modules/libnntp.so": {
+      "irix_source": "/usr/freeware/lib32/vfs/modules/libnntp.so",
+      "netbsd_destination": "/emul/irix/usr/freeware/lib32/vfs/modules/libnntp.so",
+      "original_mode": "0o644",
+      "type": "file",
+      "bytes": 58212,
+      "sha256": "fd470cbe550f6d423e7af548099dddd4b1895dd44787a1da986224c4fee0b855",
+      "mode": "0o555"
+    },
+    "/usr/freeware/lib32/vfs/modules/libvfs-pipe.so": {
+      "irix_source": "/usr/freeware/lib32/vfs/modules/libvfs-pipe.so",
+      "netbsd_destination": "/emul/irix/usr/freeware/lib32/vfs/modules/libvfs-pipe.so",
+      "original_mode": "0o644",
+      "type": "file",
+      "bytes": 25816,
+      "sha256": "76fb65085fcda55f0200a5da3bef30cbad69f771b5e18a9c8a7005a0bba4e410",
+      "mode": "0o555"
+    },
+    "/usr/freeware/lib32/vfs/modules/libvfs-test.so": {
+      "irix_source": "/usr/freeware/lib32/vfs/modules/libvfs-test.so",
+      "netbsd_destination": "/emul/irix/usr/freeware/lib32/vfs/modules/libvfs-test.so",
+      "original_mode": "0o644",
+      "type": "file",
+      "bytes": 29044,
+      "sha256": "424bab665bb1933723ee6db541ea61e1c338bf967f550504668379493bd730b4",
+      "mode": "0o555"
+    },
+    "/usr/freeware/lib32/vfs/modules/libvfs-translate.so": {
+      "irix_source": "/usr/freeware/lib32/vfs/modules/libvfs-translate.so",
+      "netbsd_destination": "/emul/irix/usr/freeware/lib32/vfs/modules/libvfs-translate.so",
+      "original_mode": "0o644",
+      "type": "file",
+      "bytes": 48824,
+      "sha256": "8d7ece6d6e2c74dd0dbe3b695cbd31e3cab381aa93cc904797d0e1c4914894e0",
+      "mode": "0o555"
+    },
+    "/usr/freeware/etc/vfs": {
+      "irix_source": "/usr/freeware/etc/vfs",
+      "netbsd_destination": "/emul/irix/usr/freeware/etc/vfs",
+      "original_mode": "0o755",
+      "type": "directory",
+      "mode": "0o755"
+    },
+    "/usr/freeware/etc/vfs/modules": {
+      "irix_source": "/usr/freeware/etc/vfs/modules",
+      "netbsd_destination": "/emul/irix/usr/freeware/etc/vfs/modules",
+      "original_mode": "0o755",
+      "type": "directory",
+      "mode": "0o755"
+    },
+    "/usr/freeware/etc/vfs/modules/default-modules.conf": {
+      "irix_source": "/usr/freeware/etc/vfs/modules/default-modules.conf",
+      "netbsd_destination": "/emul/irix/usr/freeware/etc/vfs/modules/default-modules.conf",
+      "original_mode": "0o644",
+      "type": "file",
+      "bytes": 617,
+      "sha256": "57300c221e097f2d3ece1fea03b52a5c78cd52a9bdd662d35f96f34ee9bb087e",
+      "mode": "0o644"
+    },
+    "/usr/freeware/etc/vfs/modules/ssl-modules.conf": {
+      "irix_source": "/usr/freeware/etc/vfs/modules/ssl-modules.conf",
+      "netbsd_destination": "/emul/irix/usr/freeware/etc/vfs/modules/ssl-modules.conf",
+      "original_mode": "0o644",
+      "type": "file",
+      "bytes": 12,
+      "sha256": "a8813f7701201c4d72d97b9437cbbc8b8118181ddffbf62bd8780b4008b33557",
+      "mode": "0o644"
+    },
+    "/usr/freeware/share/gnome-terminal": {
+      "irix_source": "/usr/freeware/share/gnome-terminal",
+      "netbsd_destination": "/emul/irix/usr/freeware/share/gnome-terminal",
+      "original_mode": "0o755",
+      "type": "directory",
+      "mode": "0o755"
+    },
+    "/usr/freeware/share/gnome-terminal/glade": {
+      "irix_source": "/usr/freeware/share/gnome-terminal/glade",
+      "netbsd_destination": "/emul/irix/usr/freeware/share/gnome-terminal/glade",
+      "original_mode": "0o755",
+      "type": "directory",
+      "mode": "0o755"
+    },
+    "/usr/freeware/share/gnome-terminal/glade/gnome-terminal.glade": {
+      "irix_source": "/usr/freeware/share/gnome-terminal/glade/gnome-terminal.glade",
+      "netbsd_destination": "/emul/irix/usr/freeware/share/gnome-terminal/glade/gnome-terminal.glade",
+      "original_mode": "0o644",
+      "type": "file",
+      "bytes": 38772,
+      "sha256": "af69e50b3e7894f704e0de4b0059fe8c26c395dd713f55aa63a8ef4a90b4a9f7",
+      "mode": "0o644"
+    },
+    "/usr/freeware/lib32/libgnomevfs-pthread.so": {
+      "irix_source": "/usr/freeware/lib32/libgnomevfs-pthread.so",
+      "netbsd_destination": "/emul/irix/usr/freeware/lib32/libgnomevfs-pthread.so",
+      "type": "file",
+      "canonical_source": "/usr/freeware/lib32/libgnomevfs-pthread.so",
+      "original_mode": "0o644",
+      "mode": "0o555",
+      "bytes": 86328,
+      "sha256": "fa508bbe871715485793445bd557bc235f4239824caf36be1f19925a1824b062"
+    },
+    "/usr/freeware/share/pixmaps/gedit-icon.png": {
+      "irix_source": "/usr/freeware/share/pixmaps/gedit-icon.png",
+      "netbsd_destination": "/emul/irix/usr/freeware/share/pixmaps/gedit-icon.png",
+      "type": "file",
+      "canonical_source": "/usr/freeware/share/pixmaps/gedit-icon.png",
+      "original_mode": "0o644",
+      "mode": "0o644",
+      "bytes": 5443,
+      "sha256": "2bb988614d774aed6ec43767d09e205a4c2ca2c7da3b57e4949b30133ed9e856"
+    },
+    "/usr/freeware/lib32/libbz2.so.1": {
+      "irix_source": "/usr/freeware/lib32/libbz2.so.1",
+      "netbsd_destination": "/emul/irix/usr/freeware/lib32/libbz2.so.1",
+      "type": "file",
+      "canonical_source": "/usr/freeware/lib32/libbz2.so.1",
+      "original_mode": "0o644",
+      "mode": "0o555",
+      "bytes": 103636,
+      "sha256": "7af5f200a348bae51d26a943353567171de897e3cc2231078cbfd8aa3bf85d8a"
+    }
+  },
+  "dependencies": [
+    {
+      "source": "/usr/freeware/lib32/gedit/plugins/libasciitable.so",
+      "needed": "libintl.so.3",
+      "selected": "/usr/freeware/lib32/libintl.so.3",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/gedit/plugins/libasciitable.so",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/gedit/plugins/libbrowse.so",
+      "needed": "libintl.so.3",
+      "selected": "/usr/freeware/lib32/libintl.so.3",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/gedit/plugins/libbrowse.so",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/gedit/plugins/libconvert.so",
+      "needed": "libintl.so.3",
+      "selected": "/usr/freeware/lib32/libintl.so.3",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/gedit/plugins/libconvert.so",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/gedit/plugins/libdiff.so",
+      "needed": "libintl.so.3",
+      "selected": "/usr/freeware/lib32/libintl.so.3",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/gedit/plugins/libdiff.so",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/gedit/plugins/libdocinfo.so",
+      "needed": "libintl.so.3",
+      "selected": "/usr/freeware/lib32/libintl.so.3",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/gedit/plugins/libdocinfo.so",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/gedit/plugins/libemail.so",
+      "needed": "libintl.so.3",
+      "selected": "/usr/freeware/lib32/libintl.so.3",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/gedit/plugins/libemail.so",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/gedit/plugins/libreverse.so",
+      "needed": "libintl.so.3",
+      "selected": "/usr/freeware/lib32/libintl.so.3",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/gedit/plugins/libreverse.so",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/gedit/plugins/libsample.so",
+      "needed": "libintl.so.3",
+      "selected": "/usr/freeware/lib32/libintl.so.3",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/gedit/plugins/libsample.so",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/gedit/plugins/libshell_output.so",
+      "needed": "libintl.so.3",
+      "selected": "/usr/freeware/lib32/libintl.so.3",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/gedit/plugins/libshell_output.so",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/gedit/plugins/libsort.so",
+      "needed": "libintl.so.3",
+      "selected": "/usr/freeware/lib32/libintl.so.3",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/gedit/plugins/libsort.so",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/gedit/plugins/libtime.so",
+      "needed": "libintl.so.3",
+      "selected": "/usr/freeware/lib32/libintl.so.3",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/gedit/plugins/libtime.so",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/vfs/modules/libbzip2.so",
+      "needed": "libbz2.so.1",
+      "selected": "/usr/freeware/lib32/libbz2.so.1",
+      "in_existing_payload": false
+    },
+    {
+      "source": "/usr/freeware/lib32/vfs/modules/libbzip2.so",
+      "needed": "librt.so",
+      "selected": "/usr/lib32/librt.so",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/vfs/modules/libbzip2.so",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/vfs/modules/libdesktop.so",
+      "needed": "librt.so",
+      "selected": "/usr/lib32/librt.so",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/vfs/modules/libdesktop.so",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/vfs/modules/libextfs.so",
+      "needed": "librt.so",
+      "selected": "/usr/lib32/librt.so",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/vfs/modules/libextfs.so",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/vfs/modules/libfile.so",
+      "needed": "librt.so",
+      "selected": "/usr/lib32/librt.so",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/vfs/modules/libfile.so",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/vfs/modules/libftp.so",
+      "needed": "librt.so",
+      "selected": "/usr/lib32/librt.so",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/vfs/modules/libftp.so",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/vfs/modules/libgzip.so",
+      "needed": "libz.so",
+      "selected": "/usr/freeware/lib32/libz.so",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/vfs/modules/libgzip.so",
+      "needed": "librt.so",
+      "selected": "/usr/lib32/librt.so",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/vfs/modules/libgzip.so",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/vfs/modules/libhttp.so",
+      "needed": "libgmodule-1.2.so.1",
+      "selected": "/usr/freeware/lib32/libgmodule-1.2.so.1",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/vfs/modules/libhttp.so",
+      "needed": "libgthread-1.2.so.1",
+      "selected": "/usr/freeware/lib32/libgthread-1.2.so.1",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/vfs/modules/libhttp.so",
+      "needed": "libglib-1.2.so.1",
+      "selected": "/usr/freeware/lib32/libglib-1.2.so.1",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/vfs/modules/libhttp.so",
+      "needed": "libpthread.so",
+      "selected": "/usr/lib32/libpthread.so",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/vfs/modules/libhttp.so",
+      "needed": "libxml.so.2",
+      "selected": "/usr/freeware/lib32/libxml.so.2",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/vfs/modules/libhttp.so",
+      "needed": "libz.so",
+      "selected": "/usr/freeware/lib32/libz.so",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/vfs/modules/libhttp.so",
+      "needed": "libgconf-gtk-1.so.2",
+      "selected": "/usr/freeware/lib32/libgconf-gtk-1.so.2",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/vfs/modules/libhttp.so",
+      "needed": "libintl.so.3",
+      "selected": "/usr/freeware/lib32/libintl.so.3",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/vfs/modules/libhttp.so",
+      "needed": "libgconf-1.so.2",
+      "selected": "/usr/freeware/lib32/libgconf-1.so.2",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/vfs/modules/libhttp.so",
+      "needed": "liboaf.so.1",
+      "selected": "/usr/freeware/lib32/liboaf.so.1",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/vfs/modules/libhttp.so",
+      "needed": "libORBitCosNaming.so.1",
+      "selected": "/usr/freeware/lib32/libORBitCosNaming.so.1",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/vfs/modules/libhttp.so",
+      "needed": "libORBit.so.1",
+      "selected": "/usr/freeware/lib32/libORBit.so.1",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/vfs/modules/libhttp.so",
+      "needed": "libIIOP.so.1",
+      "selected": "/usr/freeware/lib32/libIIOP.so.1",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/vfs/modules/libhttp.so",
+      "needed": "libORBitutil.so.1",
+      "selected": "/usr/freeware/lib32/libORBitutil.so.1",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/vfs/modules/libhttp.so",
+      "needed": "libgtk-1.2.so.1",
+      "selected": "/usr/freeware/lib32/libgtk-1.2.so.1",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/vfs/modules/libhttp.so",
+      "needed": "libgdk-1.2.so.1",
+      "selected": "/usr/freeware/lib32/libgdk-1.2.so.1",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/vfs/modules/libhttp.so",
+      "needed": "libXi.so",
+      "selected": "/usr/lib32/libXi.so",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/vfs/modules/libhttp.so",
+      "needed": "libXext.so",
+      "selected": "/usr/lib32/libXext.so",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/vfs/modules/libhttp.so",
+      "needed": "libX11.so.1",
+      "selected": "/usr/lib32/libX11.so.1",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/vfs/modules/libhttp.so",
+      "needed": "libm.so",
+      "selected": "/usr/lib32/libm.so",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/vfs/modules/libhttp.so",
+      "needed": "librt.so",
+      "selected": "/usr/lib32/librt.so",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/vfs/modules/libhttp.so",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/vfs/modules/libnntp.so",
+      "needed": "librt.so",
+      "selected": "/usr/lib32/librt.so",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/vfs/modules/libnntp.so",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/vfs/modules/libvfs-pipe.so",
+      "needed": "libgmodule-1.2.so.1",
+      "selected": "/usr/freeware/lib32/libgmodule-1.2.so.1",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/vfs/modules/libvfs-pipe.so",
+      "needed": "libgthread-1.2.so.1",
+      "selected": "/usr/freeware/lib32/libgthread-1.2.so.1",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/vfs/modules/libvfs-pipe.so",
+      "needed": "libglib-1.2.so.1",
+      "selected": "/usr/freeware/lib32/libglib-1.2.so.1",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/vfs/modules/libvfs-pipe.so",
+      "needed": "libpthread.so",
+      "selected": "/usr/lib32/libpthread.so",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/vfs/modules/libvfs-pipe.so",
+      "needed": "librt.so",
+      "selected": "/usr/lib32/librt.so",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/vfs/modules/libvfs-pipe.so",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/vfs/modules/libvfs-test.so",
+      "needed": "libxml.so.2",
+      "selected": "/usr/freeware/lib32/libxml.so.2",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/vfs/modules/libvfs-test.so",
+      "needed": "libz.so",
+      "selected": "/usr/freeware/lib32/libz.so",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/vfs/modules/libvfs-test.so",
+      "needed": "librt.so",
+      "selected": "/usr/lib32/librt.so",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/vfs/modules/libvfs-test.so",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/vfs/modules/libvfs-translate.so",
+      "needed": "libgmodule-1.2.so.1",
+      "selected": "/usr/freeware/lib32/libgmodule-1.2.so.1",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/vfs/modules/libvfs-translate.so",
+      "needed": "libgthread-1.2.so.1",
+      "selected": "/usr/freeware/lib32/libgthread-1.2.so.1",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/vfs/modules/libvfs-translate.so",
+      "needed": "libglib-1.2.so.1",
+      "selected": "/usr/freeware/lib32/libglib-1.2.so.1",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/vfs/modules/libvfs-translate.so",
+      "needed": "libpthread.so",
+      "selected": "/usr/lib32/libpthread.so",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/vfs/modules/libvfs-translate.so",
+      "needed": "librt.so",
+      "selected": "/usr/lib32/librt.so",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/vfs/modules/libvfs-translate.so",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/libgnomevfs-pthread.so",
+      "needed": "librt.so",
+      "selected": "/usr/lib32/librt.so",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/libgnomevfs-pthread.so",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/freeware/lib32/libbz2.so.1",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib32/libc.so.1",
+      "in_existing_payload": true
+    }
+  ],
+  "elf_parser_sha256": "aadf43001a1ef36cb4c923d8514291739dff76febf72e93d34bb0f64cfed809e",
+  "limitations": [
+    "Original application resources only; user settings and package database are excluded.",
+    "Plugin execution and additional dynamic dependencies require separate qualification."
+  ]
+}

@@ -1,0 +1,1765 @@
+{
+  "schema": 1,
+  "status": "passed",
+  "reference_sha256": "a285f083275ed25eba1a5d01c03ef3cd100f336a73f8d53be04a2a7a7a8b1a44",
+  "native_sha256": "e54f3aa662071b6e246bdd0214a943174312b2c501b4379a541b3a1fb94e12a7",
+  "native_run": ".work/catalog-cycle/survey-0-g47sbeqd",
+  "candidate_module": {
+    "schema": 1,
+    "status": "built",
+    "source": "/var/home/salvogendut/Dev/NetBSD-xiri",
+    "source_revision": "5f45ee1ac5d508eeb4a4b1b922354215fe841888",
+    "source_status": " M sys/compat/irix_o32/irix_o32.c\n",
+    "source_files": {
+      "sys/compat/irix_o32/irix_errno.h": "36c93897342fe90413b9252209cf300c4d63657e175a2e8e7d547826b9b9be1a",
+      "sys/compat/irix_o32/irix_errno_map.h": "e3adecc6040d14afa371eff3d6e17f126b7d074201b8e98cf842ec650a86f64f",
+      "sys/compat/irix_o32/irix_o32.c": "f3962710f0ad28d394137fee29cd20ab453b6daa5e339a16dd06e2589f28b1e6",
+      "sys/compat/irix_o32/irix_signal.c": "a990e1ea3f2ceea2978407a6916cc2e4790e357fa53c8f3a63520d5f8108a40a",
+      "sys/compat/irix_o32/irix_signal.h": "8b0a98ffee639ce755cf5b7f84f79c6295f563cee015cab25afe5a0dd870e373",
+      "sys/compat/irix_o32/irix_sproc.c": "97144d2f8897cbba77dd6f00a877330bd4e5ee11efda652ca6b26d72d8af0844",
+      "sys/compat/irix_o32/irix_sproc.h": "b7ffc50caad3f78984218cf7601fc5ea1a4042dd25bdf4ab1ac6cd9b15994414",
+      "sys/compat/irix_o32/irix_stat.h": "45a7cad87190acb37732421ac589b6b287f9454dfccb874cf163622b233e1f23",
+      "sys/compat/irix_o32/irix_tty.c": "27c2a3086e38dc5b2c87d12885bc15d770e789507cf3d9375b5cf89d116d576e",
+      "sys/compat/irix_o32/irix_tty.h": "80fef54a11cd6240a384c061fe36d32c8ec81c721c2864c5033d9b489196e39b",
+      "sys/modules/compat_irix_o32/Makefile": "f021b21445210b3e1d3b758b64513e149e380e32c1e431d18b3927cd8b616c45",
+      "sys/modules/Makefile": "cc44af13029e3272dc5c80b0356bc66c396a32ff1d2ce9bda7fb7e749c091797",
+      "sys/arch/mips/conf/files.mips": "4c64715f586ccdbf7f503f0ab9f28178d45a0c5aa2da4e3b9954d2fde9dbc8a4",
+      "sys/arch/mips/mips/kobj_machdep.c": "75af7317121c508d23ca3b2c757130ecd31a77a4d7d786683d6bb5e99ad949d2",
+      "sys/kern/sys_select.c": "d3acf564acfd23f38ba32214e6e708dc28246e25b682969dafb730d92dd290b1",
+      "sys/kern/kern_lwp.c": "dcf9c71f79e2bfcd0e07be1c78abbca975a7de3620b8529d7e9bdbc99ed912f8",
+      "sys/sys/proc.h": "11ee2ae7d63c93f7ec094d1f3b424ccd4cedbe16127e3d6afa84f4cf26e022ee",
+      "sys/uvm/uvm_pglist.c": "47f62159d99df61870b39a071af57a781493553f6a0c8415610cae0bc4489c39"
+    },
+    "config_path": "lab/irix-module/XIRI_IRIX_MODULE",
+    "config_sha256": "b4b1d27b1d8e80ec31b07f9f98e0ca1da8a1793cb90880bbc1e65a4b169c8fe2",
+    "sources": {
+      "scripts/build-irix-module.py": "157c75ee5f586179f1f652543c4afda46bbcad1912ce918fa565467d14191442"
+    },
+    "undefined_symbols": [
+      "VOP_ACCESS",
+      "VOP_GETATTR",
+      "VOP_READDIR",
+      "VOP_READLINK",
+      "VOP_UNLOCK",
+      "cdevsw_lookup",
+      "child_return",
+      "copyin",
+      "copyinstr",
+      "copyout",
+      "copyoutstr",
+      "coredump_elf32",
+      "cpu_getmcontext",
+      "cpu_setmcontext",
+      "cv_broadcast",
+      "cv_destroy",
+      "cv_init",
+      "cv_wait_sig",
+      "do_sys_accept",
+      "do_sys_bind",
+      "do_sys_connect",
+      "do_sys_fstat",
+      "do_sys_getsockname",
+      "do_sys_mkdir",
+      "do_sys_recvmsg_so",
+      "do_sys_rename",
+      "do_sys_sendmsg_so",
+      "do_sys_waitid",
+      "emul_find_interp",
+      "exec_add",
+      "exec_elf32_makecmds",
+      "exec_free_emul_arg",
+      "exec_read",
+      "exec_remove",
+      "exec_setup_stack",
+      "execve1",
+      "fd_close",
+      "fd_getfile",
+      "fd_getsock",
+      "fd_getsock1",
+      "fd_getvnode",
+      "fd_putfile",
+      "fd_set_exclose",
+      "fork1",
+      "free_control_mbuf",
+      "getframe",
+      "kauth_cred_dup",
+      "kauth_cred_free",
+      "kauth_cred_get",
+      "kauth_cred_getgid",
+      "kauth_cred_getuid",
+      "kauth_cred_setegid",
+      "kauth_cred_seteuid",
+      "kern_assert",
+      "kern_free",
+      "kmem_alloc",
+      "kmem_free",
+      "kmem_zalloc",
+      "kpreempt",
+      "ktr_kuser",
+      "lwp_userret",
+      "m_freem",
+      "m_get",
+      "memcmp",
+      "memcpy",
+      "memset",
+      "microtime",
+      "mips_emul_branch",
+      "mips_fpu_ops",
+      "mips_options",
+      "mutex_destroy",
+      "mutex_enter",
+      "mutex_exit",
+      "mutex_init",
+      "mutex_owned",
+      "namei",
+      "nanosleep1",
+      "netbsd32_vm_default_addr",
+      "new_vmcmd",
+      "old_sysctl",
+      "pathbuf_create",
+      "pathbuf_destroy",
+      "pcu_discard",
+      "proc_lock",
+      "ptc_cdevsw",
+      "pts_cdevsw",
+      "selcommon_kern",
+      "sendsig_reset",
+      "setregs",
+      "sigaction1",
+      "sigexit",
+      "sigprocmask1",
+      "snprintf",
+      "soisdisconnected",
+      "solockretry",
+      "soshutdown",
+      "strcmp",
+      "strlcpy",
+      "strnlen",
+      "sys___posix_chown",
+      "sys___socket30",
+      "sys_chdir",
+      "sys_chmod",
+      "sys_close",
+      "sys_dup",
+      "sys_exit",
+      "sys_fcntl",
+      "sys_getgid_with_egid",
+      "sys_getpgrp",
+      "sys_getpid_with_ppid",
+      "sys_getsid",
+      "sys_getuid_with_euid",
+      "sys_kill",
+      "sys_listen",
+      "sys_lseek",
+      "sys_mmap",
+      "sys_mprotect",
+      "sys_munmap",
+      "sys_nosys",
+      "sys_obreak",
+      "sys_open",
+      "sys_pipe",
+      "sys_poll",
+      "sys_read",
+      "sys_sched_yield",
+      "sys_setsid",
+      "sys_setsockopt",
+      "sys_socketpair",
+      "sys_write",
+      "trace_enter",
+      "trace_exit",
+      "trapsignal",
+      "uio_setup_sysspace",
+      "uiomove",
+      "uvm_map_checkprot",
+      "uvm_map_extract",
+      "uvm_map_findspace",
+      "uvm_map_inherit",
+      "uvm_map_lookup_entry",
+      "uvm_map_reserve",
+      "uvm_unmap1",
+      "uvmexp_pagemask",
+      "uvmexp_pagesize",
+      "uvmspace_addref",
+      "uvmspace_free",
+      "vm_map_lock_read",
+      "vm_map_unlock_read",
+      "vmcmd_map_pagedvn",
+      "vmcmd_map_readvn",
+      "vmcmd_map_zero",
+      "vmcmd_readvn",
+      "vn_lock",
+      "vn_marktext",
+      "vn_stat",
+      "vn_writechk",
+      "vput",
+      "zerodev"
+    ],
+    "relocation_types": [
+      "R_MIPS_32",
+      "R_MIPS_64",
+      "R_MIPS_HI16",
+      "R_MIPS_HIGHER",
+      "R_MIPS_HIGHEST",
+      "R_MIPS_LO16",
+      "R_MIPS_NONE"
+    ],
+    "core_hooks": [
+      "selcommon_kern",
+      "emul.e_sigmask"
+    ],
+    "artifacts": {
+      "compat_irix_o32.kmod": {
+        "path": "obj/sys/modules/compat_irix_o32/compat_irix_o32.kmod",
+        "sha256": "cb20d5867e4adcd86536d4f65495a6f86b8a631e6dccf7f84aba610423062d85"
+      },
+      "netbsd": {
+        "path": "kernel-media/netbsd",
+        "sha256": "ed97268e4c1db1c91a8973d16c1e31555816c2a29c220b29b9095eadf3b2ae04"
+      },
+      "netbsd.boot": {
+        "path": "tftp/netbsd-XIRI_INDY",
+        "sha256": "260b253f579ca46a50b83e367f95600b54c86756c47f5d9e0f9391251bfd7122"
+      }
+    },
+    "debug_kernel_sha256": "0ac97373a1eec2648ff3efc178d6839c6bda6ae41e8045a1d79bf6a5c404958b"
+  },
+  "qualifier_sha256": "9e78259d67ef983d4568f74f8c186bf6a746def11ae7671ac61fb8e86ca8c31b",
+  "observations": [
+    {
+      "name": "o32-direct-new-file-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "06fd7ae7808ae191a8642238b19f168a7eed780e2ef4d34f356af73c93ec76fd"
+    },
+    {
+      "name": "o32-direct-replace-file-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "b3cea6aa0a2ad68f2932f8f58bdf59b5a7448a3e48bf8ddabd8194819145fc97"
+    },
+    {
+      "name": "o32-direct-same-name-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "dcb8ff34d7abcb1530f379aed528bda0959eb325e4fabb67145c92290757b5f1"
+    },
+    {
+      "name": "o32-direct-same-inode-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "bca9c1c064fb4f43b336ccbb46f9c46449d7770e3f1e4508c0ed86328e1b41a5"
+    },
+    {
+      "name": "o32-direct-source-symlink-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "41ada91bc4ae285c89b9f5f976b1abd5660a0a5a76509c2ce08c6733bac5cbab"
+    },
+    {
+      "name": "o32-direct-destination-symlink-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "996a2beeaed274ac2779379de10e0ea21b746c77204e889c6f5c12dcea01b686"
+    },
+    {
+      "name": "o32-direct-dangling-source-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "09ba8bf068d34ecdef0e91ebee7d610301f0212598ef4a1cc3124cc0fc13838a"
+    },
+    {
+      "name": "o32-direct-dangling-destination-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "f1672efb0730e2c7c13ab5cb0086a8c8e1437826771bfa3e63d0f4760546419d"
+    },
+    {
+      "name": "o32-direct-move-directory-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "b76001284e37077e5695ee7f629dbc1ec3970a587e5000b3211ae9975eed450f"
+    },
+    {
+      "name": "o32-direct-replace-empty-directory-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "4232b8c73f1acf5b766967562668c44c5aeb4c25dc836bc82d4139b187f2754e"
+    },
+    {
+      "name": "o32-direct-nonempty-directory-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "1ac56e4b10950f3dfb4310bb4ef2cade350d7a61bf4e97d2595a8c5030f4fb52"
+    },
+    {
+      "name": "o32-direct-file-to-directory-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "cb950730dd6011872d69325682db872106f8e32c335508ab5dba53749ab14295"
+    },
+    {
+      "name": "o32-direct-directory-to-file-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "250a61956d06bc9480e9bf60fd45d45c0275d98343a833a83ca548d739d4ac24"
+    },
+    {
+      "name": "o32-direct-missing-source-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "de23652698899438eabf7527df7d2dca8662ee04c992703c926986716b2759d7"
+    },
+    {
+      "name": "o32-direct-missing-parent-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "bf89b9160b7968f406f006944d6f8cac6667b6c239505630709b07636d1caeae"
+    },
+    {
+      "name": "o32-direct-source-trailing-slash-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "06fd7ae7808ae191a8642238b19f168a7eed780e2ef4d34f356af73c93ec76fd"
+    },
+    {
+      "name": "o32-direct-destination-trailing-slash-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "06fd7ae7808ae191a8642238b19f168a7eed780e2ef4d34f356af73c93ec76fd"
+    },
+    {
+      "name": "o32-direct-directory-trailing-slash-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "430e75ce0758bd715307178a5ced5d91b24d29cb6b41444d8c6a8b627a72712c"
+    },
+    {
+      "name": "o32-direct-empty-source-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "bf89b9160b7968f406f006944d6f8cac6667b6c239505630709b07636d1caeae"
+    },
+    {
+      "name": "o32-direct-empty-destination-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "bf89b9160b7968f406f006944d6f8cac6667b6c239505630709b07636d1caeae"
+    },
+    {
+      "name": "o32-direct-source-null-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "64e9034a47823b702cf0432121f17add71cbbeeddbf47ca91e648f49ffbc098c"
+    },
+    {
+      "name": "o32-direct-source-high-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "2960ecd1acbebb90cbd1435a194c9a1a7b31301c2511f83b1b6b42184b8251f4"
+    },
+    {
+      "name": "o32-direct-destination-null-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "9e8da748f49def22cf477b0b2b9ab005b5c1a5e1028338d5dd75d4b792c96ef6"
+    },
+    {
+      "name": "o32-direct-destination-high-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "4cfb23a3423de05311b367279d865341edaef4fc6fa62131ad39e1a369785a64"
+    },
+    {
+      "name": "o32-direct-source-long-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "e717b9837fc5f81d70cc811af6369666ffd8d967b51f03899ef9839f38881b24"
+    },
+    {
+      "name": "o32-direct-destination-long-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "a32a0e1e073b493b5f55bb990d7fa1a3f8763bcb636f1a66d421acc5b7d88c9a"
+    },
+    {
+      "name": "o32-direct-missing-source-null-destination-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "1f495469a9a329a3544fd99738b5535d98742cb0f3ff3d624346f018dcaabb01"
+    },
+    {
+      "name": "o32-direct-source-null-missing-parent-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "64e9034a47823b702cf0432121f17add71cbbeeddbf47ca91e648f49ffbc098c"
+    },
+    {
+      "name": "o32-direct-dot-source-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "99d73c53dd660d355167bf76757d4f14f0e8fc10a7a1a86c61912c106dd6e3e8"
+    },
+    {
+      "name": "o32-direct-into-descendant-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "5a55da5be616cb781a3e6f4857fea74ae522bcfceb984cc9c70a2625094413bc"
+    },
+    {
+      "name": "o32-direct-parent-unwritable-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "06fd7ae7808ae191a8642238b19f168a7eed780e2ef4d34f356af73c93ec76fd"
+    },
+    {
+      "name": "o32-direct-unsearchable-parent-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "9499fb8d86e67be85afe98bb3a6439bd93d5f08f4f9ce23722b78b5c758cafb3"
+    },
+    {
+      "name": "o32-indirect-new-file-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "06fd7ae7808ae191a8642238b19f168a7eed780e2ef4d34f356af73c93ec76fd"
+    },
+    {
+      "name": "o32-indirect-replace-file-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "b3cea6aa0a2ad68f2932f8f58bdf59b5a7448a3e48bf8ddabd8194819145fc97"
+    },
+    {
+      "name": "o32-indirect-same-name-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "dcb8ff34d7abcb1530f379aed528bda0959eb325e4fabb67145c92290757b5f1"
+    },
+    {
+      "name": "o32-indirect-same-inode-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "bca9c1c064fb4f43b336ccbb46f9c46449d7770e3f1e4508c0ed86328e1b41a5"
+    },
+    {
+      "name": "o32-indirect-source-symlink-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "41ada91bc4ae285c89b9f5f976b1abd5660a0a5a76509c2ce08c6733bac5cbab"
+    },
+    {
+      "name": "o32-indirect-destination-symlink-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "996a2beeaed274ac2779379de10e0ea21b746c77204e889c6f5c12dcea01b686"
+    },
+    {
+      "name": "o32-indirect-dangling-source-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "09ba8bf068d34ecdef0e91ebee7d610301f0212598ef4a1cc3124cc0fc13838a"
+    },
+    {
+      "name": "o32-indirect-dangling-destination-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "f1672efb0730e2c7c13ab5cb0086a8c8e1437826771bfa3e63d0f4760546419d"
+    },
+    {
+      "name": "o32-indirect-move-directory-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "b76001284e37077e5695ee7f629dbc1ec3970a587e5000b3211ae9975eed450f"
+    },
+    {
+      "name": "o32-indirect-replace-empty-directory-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "4232b8c73f1acf5b766967562668c44c5aeb4c25dc836bc82d4139b187f2754e"
+    },
+    {
+      "name": "o32-indirect-nonempty-directory-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "1ac56e4b10950f3dfb4310bb4ef2cade350d7a61bf4e97d2595a8c5030f4fb52"
+    },
+    {
+      "name": "o32-indirect-file-to-directory-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "cb950730dd6011872d69325682db872106f8e32c335508ab5dba53749ab14295"
+    },
+    {
+      "name": "o32-indirect-directory-to-file-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "250a61956d06bc9480e9bf60fd45d45c0275d98343a833a83ca548d739d4ac24"
+    },
+    {
+      "name": "o32-indirect-missing-source-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "de23652698899438eabf7527df7d2dca8662ee04c992703c926986716b2759d7"
+    },
+    {
+      "name": "o32-indirect-missing-parent-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "bf89b9160b7968f406f006944d6f8cac6667b6c239505630709b07636d1caeae"
+    },
+    {
+      "name": "o32-indirect-source-trailing-slash-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "06fd7ae7808ae191a8642238b19f168a7eed780e2ef4d34f356af73c93ec76fd"
+    },
+    {
+      "name": "o32-indirect-destination-trailing-slash-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "06fd7ae7808ae191a8642238b19f168a7eed780e2ef4d34f356af73c93ec76fd"
+    },
+    {
+      "name": "o32-indirect-directory-trailing-slash-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "430e75ce0758bd715307178a5ced5d91b24d29cb6b41444d8c6a8b627a72712c"
+    },
+    {
+      "name": "o32-indirect-empty-source-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "bf89b9160b7968f406f006944d6f8cac6667b6c239505630709b07636d1caeae"
+    },
+    {
+      "name": "o32-indirect-empty-destination-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "bf89b9160b7968f406f006944d6f8cac6667b6c239505630709b07636d1caeae"
+    },
+    {
+      "name": "o32-indirect-source-null-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "64e9034a47823b702cf0432121f17add71cbbeeddbf47ca91e648f49ffbc098c"
+    },
+    {
+      "name": "o32-indirect-source-high-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "2960ecd1acbebb90cbd1435a194c9a1a7b31301c2511f83b1b6b42184b8251f4"
+    },
+    {
+      "name": "o32-indirect-destination-null-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "9e8da748f49def22cf477b0b2b9ab005b5c1a5e1028338d5dd75d4b792c96ef6"
+    },
+    {
+      "name": "o32-indirect-destination-high-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "4cfb23a3423de05311b367279d865341edaef4fc6fa62131ad39e1a369785a64"
+    },
+    {
+      "name": "o32-indirect-source-long-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "e717b9837fc5f81d70cc811af6369666ffd8d967b51f03899ef9839f38881b24"
+    },
+    {
+      "name": "o32-indirect-destination-long-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "a32a0e1e073b493b5f55bb990d7fa1a3f8763bcb636f1a66d421acc5b7d88c9a"
+    },
+    {
+      "name": "o32-indirect-missing-source-null-destination-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "1f495469a9a329a3544fd99738b5535d98742cb0f3ff3d624346f018dcaabb01"
+    },
+    {
+      "name": "o32-indirect-source-null-missing-parent-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "64e9034a47823b702cf0432121f17add71cbbeeddbf47ca91e648f49ffbc098c"
+    },
+    {
+      "name": "o32-indirect-dot-source-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "99d73c53dd660d355167bf76757d4f14f0e8fc10a7a1a86c61912c106dd6e3e8"
+    },
+    {
+      "name": "o32-indirect-into-descendant-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "5a55da5be616cb781a3e6f4857fea74ae522bcfceb984cc9c70a2625094413bc"
+    },
+    {
+      "name": "o32-indirect-parent-unwritable-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "06fd7ae7808ae191a8642238b19f168a7eed780e2ef4d34f356af73c93ec76fd"
+    },
+    {
+      "name": "o32-indirect-unsearchable-parent-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "9499fb8d86e67be85afe98bb3a6439bd93d5f08f4f9ce23722b78b5c758cafb3"
+    },
+    {
+      "name": "n32-direct-new-file-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "06fd7ae7808ae191a8642238b19f168a7eed780e2ef4d34f356af73c93ec76fd"
+    },
+    {
+      "name": "n32-direct-replace-file-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "b3cea6aa0a2ad68f2932f8f58bdf59b5a7448a3e48bf8ddabd8194819145fc97"
+    },
+    {
+      "name": "n32-direct-same-name-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "dcb8ff34d7abcb1530f379aed528bda0959eb325e4fabb67145c92290757b5f1"
+    },
+    {
+      "name": "n32-direct-same-inode-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "bca9c1c064fb4f43b336ccbb46f9c46449d7770e3f1e4508c0ed86328e1b41a5"
+    },
+    {
+      "name": "n32-direct-source-symlink-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "41ada91bc4ae285c89b9f5f976b1abd5660a0a5a76509c2ce08c6733bac5cbab"
+    },
+    {
+      "name": "n32-direct-destination-symlink-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "996a2beeaed274ac2779379de10e0ea21b746c77204e889c6f5c12dcea01b686"
+    },
+    {
+      "name": "n32-direct-dangling-source-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "09ba8bf068d34ecdef0e91ebee7d610301f0212598ef4a1cc3124cc0fc13838a"
+    },
+    {
+      "name": "n32-direct-dangling-destination-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "f1672efb0730e2c7c13ab5cb0086a8c8e1437826771bfa3e63d0f4760546419d"
+    },
+    {
+      "name": "n32-direct-move-directory-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "b76001284e37077e5695ee7f629dbc1ec3970a587e5000b3211ae9975eed450f"
+    },
+    {
+      "name": "n32-direct-replace-empty-directory-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "4232b8c73f1acf5b766967562668c44c5aeb4c25dc836bc82d4139b187f2754e"
+    },
+    {
+      "name": "n32-direct-nonempty-directory-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "1ac56e4b10950f3dfb4310bb4ef2cade350d7a61bf4e97d2595a8c5030f4fb52"
+    },
+    {
+      "name": "n32-direct-file-to-directory-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "cb950730dd6011872d69325682db872106f8e32c335508ab5dba53749ab14295"
+    },
+    {
+      "name": "n32-direct-directory-to-file-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "250a61956d06bc9480e9bf60fd45d45c0275d98343a833a83ca548d739d4ac24"
+    },
+    {
+      "name": "n32-direct-missing-source-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "de23652698899438eabf7527df7d2dca8662ee04c992703c926986716b2759d7"
+    },
+    {
+      "name": "n32-direct-missing-parent-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "bf89b9160b7968f406f006944d6f8cac6667b6c239505630709b07636d1caeae"
+    },
+    {
+      "name": "n32-direct-source-trailing-slash-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "06fd7ae7808ae191a8642238b19f168a7eed780e2ef4d34f356af73c93ec76fd"
+    },
+    {
+      "name": "n32-direct-destination-trailing-slash-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "06fd7ae7808ae191a8642238b19f168a7eed780e2ef4d34f356af73c93ec76fd"
+    },
+    {
+      "name": "n32-direct-directory-trailing-slash-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "430e75ce0758bd715307178a5ced5d91b24d29cb6b41444d8c6a8b627a72712c"
+    },
+    {
+      "name": "n32-direct-empty-source-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "bf89b9160b7968f406f006944d6f8cac6667b6c239505630709b07636d1caeae"
+    },
+    {
+      "name": "n32-direct-empty-destination-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "bf89b9160b7968f406f006944d6f8cac6667b6c239505630709b07636d1caeae"
+    },
+    {
+      "name": "n32-direct-source-null-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "64e9034a47823b702cf0432121f17add71cbbeeddbf47ca91e648f49ffbc098c"
+    },
+    {
+      "name": "n32-direct-source-high-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "2960ecd1acbebb90cbd1435a194c9a1a7b31301c2511f83b1b6b42184b8251f4"
+    },
+    {
+      "name": "n32-direct-destination-null-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "9e8da748f49def22cf477b0b2b9ab005b5c1a5e1028338d5dd75d4b792c96ef6"
+    },
+    {
+      "name": "n32-direct-destination-high-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "4cfb23a3423de05311b367279d865341edaef4fc6fa62131ad39e1a369785a64"
+    },
+    {
+      "name": "n32-direct-source-long-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "e717b9837fc5f81d70cc811af6369666ffd8d967b51f03899ef9839f38881b24"
+    },
+    {
+      "name": "n32-direct-destination-long-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "a32a0e1e073b493b5f55bb990d7fa1a3f8763bcb636f1a66d421acc5b7d88c9a"
+    },
+    {
+      "name": "n32-direct-missing-source-null-destination-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "1f495469a9a329a3544fd99738b5535d98742cb0f3ff3d624346f018dcaabb01"
+    },
+    {
+      "name": "n32-direct-source-null-missing-parent-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "64e9034a47823b702cf0432121f17add71cbbeeddbf47ca91e648f49ffbc098c"
+    },
+    {
+      "name": "n32-direct-dot-source-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "99d73c53dd660d355167bf76757d4f14f0e8fc10a7a1a86c61912c106dd6e3e8"
+    },
+    {
+      "name": "n32-direct-into-descendant-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "5a55da5be616cb781a3e6f4857fea74ae522bcfceb984cc9c70a2625094413bc"
+    },
+    {
+      "name": "n32-direct-parent-unwritable-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "06fd7ae7808ae191a8642238b19f168a7eed780e2ef4d34f356af73c93ec76fd"
+    },
+    {
+      "name": "n32-direct-unsearchable-parent-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "9499fb8d86e67be85afe98bb3a6439bd93d5f08f4f9ce23722b78b5c758cafb3"
+    },
+    {
+      "name": "n32-indirect-new-file-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "06fd7ae7808ae191a8642238b19f168a7eed780e2ef4d34f356af73c93ec76fd"
+    },
+    {
+      "name": "n32-indirect-replace-file-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "b3cea6aa0a2ad68f2932f8f58bdf59b5a7448a3e48bf8ddabd8194819145fc97"
+    },
+    {
+      "name": "n32-indirect-same-name-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "dcb8ff34d7abcb1530f379aed528bda0959eb325e4fabb67145c92290757b5f1"
+    },
+    {
+      "name": "n32-indirect-same-inode-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "bca9c1c064fb4f43b336ccbb46f9c46449d7770e3f1e4508c0ed86328e1b41a5"
+    },
+    {
+      "name": "n32-indirect-source-symlink-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "41ada91bc4ae285c89b9f5f976b1abd5660a0a5a76509c2ce08c6733bac5cbab"
+    },
+    {
+      "name": "n32-indirect-destination-symlink-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "996a2beeaed274ac2779379de10e0ea21b746c77204e889c6f5c12dcea01b686"
+    },
+    {
+      "name": "n32-indirect-dangling-source-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "09ba8bf068d34ecdef0e91ebee7d610301f0212598ef4a1cc3124cc0fc13838a"
+    },
+    {
+      "name": "n32-indirect-dangling-destination-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "f1672efb0730e2c7c13ab5cb0086a8c8e1437826771bfa3e63d0f4760546419d"
+    },
+    {
+      "name": "n32-indirect-move-directory-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "b76001284e37077e5695ee7f629dbc1ec3970a587e5000b3211ae9975eed450f"
+    },
+    {
+      "name": "n32-indirect-replace-empty-directory-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "4232b8c73f1acf5b766967562668c44c5aeb4c25dc836bc82d4139b187f2754e"
+    },
+    {
+      "name": "n32-indirect-nonempty-directory-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "1ac56e4b10950f3dfb4310bb4ef2cade350d7a61bf4e97d2595a8c5030f4fb52"
+    },
+    {
+      "name": "n32-indirect-file-to-directory-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "cb950730dd6011872d69325682db872106f8e32c335508ab5dba53749ab14295"
+    },
+    {
+      "name": "n32-indirect-directory-to-file-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "250a61956d06bc9480e9bf60fd45d45c0275d98343a833a83ca548d739d4ac24"
+    },
+    {
+      "name": "n32-indirect-missing-source-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "de23652698899438eabf7527df7d2dca8662ee04c992703c926986716b2759d7"
+    },
+    {
+      "name": "n32-indirect-missing-parent-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "bf89b9160b7968f406f006944d6f8cac6667b6c239505630709b07636d1caeae"
+    },
+    {
+      "name": "n32-indirect-source-trailing-slash-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "06fd7ae7808ae191a8642238b19f168a7eed780e2ef4d34f356af73c93ec76fd"
+    },
+    {
+      "name": "n32-indirect-destination-trailing-slash-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "06fd7ae7808ae191a8642238b19f168a7eed780e2ef4d34f356af73c93ec76fd"
+    },
+    {
+      "name": "n32-indirect-directory-trailing-slash-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "430e75ce0758bd715307178a5ced5d91b24d29cb6b41444d8c6a8b627a72712c"
+    },
+    {
+      "name": "n32-indirect-empty-source-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "bf89b9160b7968f406f006944d6f8cac6667b6c239505630709b07636d1caeae"
+    },
+    {
+      "name": "n32-indirect-empty-destination-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "bf89b9160b7968f406f006944d6f8cac6667b6c239505630709b07636d1caeae"
+    },
+    {
+      "name": "n32-indirect-source-null-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "64e9034a47823b702cf0432121f17add71cbbeeddbf47ca91e648f49ffbc098c"
+    },
+    {
+      "name": "n32-indirect-source-high-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "2960ecd1acbebb90cbd1435a194c9a1a7b31301c2511f83b1b6b42184b8251f4"
+    },
+    {
+      "name": "n32-indirect-destination-null-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "9e8da748f49def22cf477b0b2b9ab005b5c1a5e1028338d5dd75d4b792c96ef6"
+    },
+    {
+      "name": "n32-indirect-destination-high-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "4cfb23a3423de05311b367279d865341edaef4fc6fa62131ad39e1a369785a64"
+    },
+    {
+      "name": "n32-indirect-source-long-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "e717b9837fc5f81d70cc811af6369666ffd8d967b51f03899ef9839f38881b24"
+    },
+    {
+      "name": "n32-indirect-destination-long-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "a32a0e1e073b493b5f55bb990d7fa1a3f8763bcb636f1a66d421acc5b7d88c9a"
+    },
+    {
+      "name": "n32-indirect-missing-source-null-destination-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "1f495469a9a329a3544fd99738b5535d98742cb0f3ff3d624346f018dcaabb01"
+    },
+    {
+      "name": "n32-indirect-source-null-missing-parent-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "64e9034a47823b702cf0432121f17add71cbbeeddbf47ca91e648f49ffbc098c"
+    },
+    {
+      "name": "n32-indirect-dot-source-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "99d73c53dd660d355167bf76757d4f14f0e8fc10a7a1a86c61912c106dd6e3e8"
+    },
+    {
+      "name": "n32-indirect-into-descendant-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "5a55da5be616cb781a3e6f4857fea74ae522bcfceb984cc9c70a2625094413bc"
+    },
+    {
+      "name": "n32-indirect-parent-unwritable-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "06fd7ae7808ae191a8642238b19f168a7eed780e2ef4d34f356af73c93ec76fd"
+    },
+    {
+      "name": "n32-indirect-unsearchable-parent-0",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "9499fb8d86e67be85afe98bb3a6439bd93d5f08f4f9ce23722b78b5c758cafb3"
+    },
+    {
+      "name": "o32-direct-new-file-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "54ca9418dd7629ecfa1ea6dac10e6b93649c6cfbfb7e1ff4d997a0e8c7a783f2"
+    },
+    {
+      "name": "o32-direct-replace-file-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "cd401ccb286ea8c87df0eb3df2a526bcd82ef7898430bf46d66c948aecaa28dc"
+    },
+    {
+      "name": "o32-direct-same-name-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "0b4a231ed9d7cb9d783c90a68d2668811d522d48fd4475433e7a68763704373f"
+    },
+    {
+      "name": "o32-direct-same-inode-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "bdebca2589216d171fda834d8a93f52ca1b235bc32bc5080515d3524de146819"
+    },
+    {
+      "name": "o32-direct-source-symlink-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "3e101c8b9ae01b1c295863d8330106a6072f30c11d453e374682544ea8d19881"
+    },
+    {
+      "name": "o32-direct-destination-symlink-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "7208634b112db834e61658f7a1f2858663d369ca3e3320a79827c961e21dfd8b"
+    },
+    {
+      "name": "o32-direct-dangling-source-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "848b5713461499fb3e1980b594b2ad404005c54799443c72e562fcdf0e0ade26"
+    },
+    {
+      "name": "o32-direct-dangling-destination-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "a0b579a90281950cc7e8fe57ec9e8205d827953ddd5f4b5d7820ce54770f5fa7"
+    },
+    {
+      "name": "o32-direct-move-directory-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "7d1ea918965cd25cae210c5c552182a8627c83e8c9f0e316b51fbcb577c8690b"
+    },
+    {
+      "name": "o32-direct-replace-empty-directory-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "94f09f73106ef26f2e9aa913d4958f626f62ccbabd428d8eda1bfeeb7d22e2a1"
+    },
+    {
+      "name": "o32-direct-nonempty-directory-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "c211d16bbb83ec833e97a311ae4a2cb49e4d11da5c568e98cc63dcbb6725a483"
+    },
+    {
+      "name": "o32-direct-file-to-directory-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "a4f034dfaeb63c21ff1f117042ce322432a1ff4b15d872031a3771a74cc597ef"
+    },
+    {
+      "name": "o32-direct-directory-to-file-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "3d654e0169902fde823b46bac407ed1d8cc6d6c9e94f929789000d016acda17a"
+    },
+    {
+      "name": "o32-direct-missing-source-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "81ef7feac9fb3c3231a321a5eb28d0ad2d6d8288bf9d981f6fb67955356099de"
+    },
+    {
+      "name": "o32-direct-missing-parent-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "9d1ecfeb6ba2c566493d01bec5158e05b10e400bc937f5f9eb9da51fcce5cef2"
+    },
+    {
+      "name": "o32-direct-source-trailing-slash-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "54ca9418dd7629ecfa1ea6dac10e6b93649c6cfbfb7e1ff4d997a0e8c7a783f2"
+    },
+    {
+      "name": "o32-direct-destination-trailing-slash-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "54ca9418dd7629ecfa1ea6dac10e6b93649c6cfbfb7e1ff4d997a0e8c7a783f2"
+    },
+    {
+      "name": "o32-direct-directory-trailing-slash-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "78801f72c063d6d21466dca4a0b57efc5673551cef58fd4d5041392d4a6bc65c"
+    },
+    {
+      "name": "o32-direct-empty-source-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "9d1ecfeb6ba2c566493d01bec5158e05b10e400bc937f5f9eb9da51fcce5cef2"
+    },
+    {
+      "name": "o32-direct-empty-destination-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "9d1ecfeb6ba2c566493d01bec5158e05b10e400bc937f5f9eb9da51fcce5cef2"
+    },
+    {
+      "name": "o32-direct-source-null-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "8ea58675d103467e5872dff9ba11cc8c75f3e49a217942cabb65c993537101e3"
+    },
+    {
+      "name": "o32-direct-source-high-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "1e69b8e8e158dc25b757d1dccaa951ffda13926205f5e090137914edb870f501"
+    },
+    {
+      "name": "o32-direct-destination-null-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "d141928a7dd782bf28d257dcf73d6beb4fa65511f659530d24b2c12a366de5ae"
+    },
+    {
+      "name": "o32-direct-destination-high-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "8424c73d4b67921dd5f6f1f741b6e71db99f5804d24331073f86809dd297d375"
+    },
+    {
+      "name": "o32-direct-source-long-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "1025ba7c5902351b9b2d2f9a1572aab187498704e50240fdccadaab2fd5d43b3"
+    },
+    {
+      "name": "o32-direct-destination-long-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "4299627235b83c03e0b9e4a7cfd3be714f627f4dbdf6376f6d675590d15d914a"
+    },
+    {
+      "name": "o32-direct-missing-source-null-destination-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "2b49d04128c9784805086f08af497dafa69c760b9cd014b04138dcb1d11fb13f"
+    },
+    {
+      "name": "o32-direct-source-null-missing-parent-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "8ea58675d103467e5872dff9ba11cc8c75f3e49a217942cabb65c993537101e3"
+    },
+    {
+      "name": "o32-direct-dot-source-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "1a000bbafbd53d680c5d68a79f46e61cf4e562bb19e3a446c4e68528228d521f"
+    },
+    {
+      "name": "o32-direct-into-descendant-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "734a8fcedbba6fa110693dc8fc782d8008c29ca0d0e9b1aa74a78bc90b251fd7"
+    },
+    {
+      "name": "o32-direct-parent-unwritable-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "f39039baa64f20ad205235b48894a1c8ee31e8aa839274f441265e2a6a836d83"
+    },
+    {
+      "name": "o32-direct-unsearchable-parent-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "7462646fce25931eb74aaf481ca70f7d01e51810fdc285155523d8acf84c5bd5"
+    },
+    {
+      "name": "o32-indirect-new-file-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "54ca9418dd7629ecfa1ea6dac10e6b93649c6cfbfb7e1ff4d997a0e8c7a783f2"
+    },
+    {
+      "name": "o32-indirect-replace-file-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "cd401ccb286ea8c87df0eb3df2a526bcd82ef7898430bf46d66c948aecaa28dc"
+    },
+    {
+      "name": "o32-indirect-same-name-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "0b4a231ed9d7cb9d783c90a68d2668811d522d48fd4475433e7a68763704373f"
+    },
+    {
+      "name": "o32-indirect-same-inode-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "bdebca2589216d171fda834d8a93f52ca1b235bc32bc5080515d3524de146819"
+    },
+    {
+      "name": "o32-indirect-source-symlink-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "3e101c8b9ae01b1c295863d8330106a6072f30c11d453e374682544ea8d19881"
+    },
+    {
+      "name": "o32-indirect-destination-symlink-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "7208634b112db834e61658f7a1f2858663d369ca3e3320a79827c961e21dfd8b"
+    },
+    {
+      "name": "o32-indirect-dangling-source-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "848b5713461499fb3e1980b594b2ad404005c54799443c72e562fcdf0e0ade26"
+    },
+    {
+      "name": "o32-indirect-dangling-destination-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "a0b579a90281950cc7e8fe57ec9e8205d827953ddd5f4b5d7820ce54770f5fa7"
+    },
+    {
+      "name": "o32-indirect-move-directory-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "7d1ea918965cd25cae210c5c552182a8627c83e8c9f0e316b51fbcb577c8690b"
+    },
+    {
+      "name": "o32-indirect-replace-empty-directory-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "94f09f73106ef26f2e9aa913d4958f626f62ccbabd428d8eda1bfeeb7d22e2a1"
+    },
+    {
+      "name": "o32-indirect-nonempty-directory-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "c211d16bbb83ec833e97a311ae4a2cb49e4d11da5c568e98cc63dcbb6725a483"
+    },
+    {
+      "name": "o32-indirect-file-to-directory-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "a4f034dfaeb63c21ff1f117042ce322432a1ff4b15d872031a3771a74cc597ef"
+    },
+    {
+      "name": "o32-indirect-directory-to-file-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "3d654e0169902fde823b46bac407ed1d8cc6d6c9e94f929789000d016acda17a"
+    },
+    {
+      "name": "o32-indirect-missing-source-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "81ef7feac9fb3c3231a321a5eb28d0ad2d6d8288bf9d981f6fb67955356099de"
+    },
+    {
+      "name": "o32-indirect-missing-parent-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "9d1ecfeb6ba2c566493d01bec5158e05b10e400bc937f5f9eb9da51fcce5cef2"
+    },
+    {
+      "name": "o32-indirect-source-trailing-slash-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "54ca9418dd7629ecfa1ea6dac10e6b93649c6cfbfb7e1ff4d997a0e8c7a783f2"
+    },
+    {
+      "name": "o32-indirect-destination-trailing-slash-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "54ca9418dd7629ecfa1ea6dac10e6b93649c6cfbfb7e1ff4d997a0e8c7a783f2"
+    },
+    {
+      "name": "o32-indirect-directory-trailing-slash-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "78801f72c063d6d21466dca4a0b57efc5673551cef58fd4d5041392d4a6bc65c"
+    },
+    {
+      "name": "o32-indirect-empty-source-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "9d1ecfeb6ba2c566493d01bec5158e05b10e400bc937f5f9eb9da51fcce5cef2"
+    },
+    {
+      "name": "o32-indirect-empty-destination-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "9d1ecfeb6ba2c566493d01bec5158e05b10e400bc937f5f9eb9da51fcce5cef2"
+    },
+    {
+      "name": "o32-indirect-source-null-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "8ea58675d103467e5872dff9ba11cc8c75f3e49a217942cabb65c993537101e3"
+    },
+    {
+      "name": "o32-indirect-source-high-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "1e69b8e8e158dc25b757d1dccaa951ffda13926205f5e090137914edb870f501"
+    },
+    {
+      "name": "o32-indirect-destination-null-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "d141928a7dd782bf28d257dcf73d6beb4fa65511f659530d24b2c12a366de5ae"
+    },
+    {
+      "name": "o32-indirect-destination-high-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "8424c73d4b67921dd5f6f1f741b6e71db99f5804d24331073f86809dd297d375"
+    },
+    {
+      "name": "o32-indirect-source-long-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "1025ba7c5902351b9b2d2f9a1572aab187498704e50240fdccadaab2fd5d43b3"
+    },
+    {
+      "name": "o32-indirect-destination-long-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "4299627235b83c03e0b9e4a7cfd3be714f627f4dbdf6376f6d675590d15d914a"
+    },
+    {
+      "name": "o32-indirect-missing-source-null-destination-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "2b49d04128c9784805086f08af497dafa69c760b9cd014b04138dcb1d11fb13f"
+    },
+    {
+      "name": "o32-indirect-source-null-missing-parent-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "8ea58675d103467e5872dff9ba11cc8c75f3e49a217942cabb65c993537101e3"
+    },
+    {
+      "name": "o32-indirect-dot-source-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "1a000bbafbd53d680c5d68a79f46e61cf4e562bb19e3a446c4e68528228d521f"
+    },
+    {
+      "name": "o32-indirect-into-descendant-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "734a8fcedbba6fa110693dc8fc782d8008c29ca0d0e9b1aa74a78bc90b251fd7"
+    },
+    {
+      "name": "o32-indirect-parent-unwritable-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "f39039baa64f20ad205235b48894a1c8ee31e8aa839274f441265e2a6a836d83"
+    },
+    {
+      "name": "o32-indirect-unsearchable-parent-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "7462646fce25931eb74aaf481ca70f7d01e51810fdc285155523d8acf84c5bd5"
+    },
+    {
+      "name": "n32-direct-new-file-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "54ca9418dd7629ecfa1ea6dac10e6b93649c6cfbfb7e1ff4d997a0e8c7a783f2"
+    },
+    {
+      "name": "n32-direct-replace-file-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "cd401ccb286ea8c87df0eb3df2a526bcd82ef7898430bf46d66c948aecaa28dc"
+    },
+    {
+      "name": "n32-direct-same-name-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "0b4a231ed9d7cb9d783c90a68d2668811d522d48fd4475433e7a68763704373f"
+    },
+    {
+      "name": "n32-direct-same-inode-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "bdebca2589216d171fda834d8a93f52ca1b235bc32bc5080515d3524de146819"
+    },
+    {
+      "name": "n32-direct-source-symlink-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "3e101c8b9ae01b1c295863d8330106a6072f30c11d453e374682544ea8d19881"
+    },
+    {
+      "name": "n32-direct-destination-symlink-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "7208634b112db834e61658f7a1f2858663d369ca3e3320a79827c961e21dfd8b"
+    },
+    {
+      "name": "n32-direct-dangling-source-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "848b5713461499fb3e1980b594b2ad404005c54799443c72e562fcdf0e0ade26"
+    },
+    {
+      "name": "n32-direct-dangling-destination-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "a0b579a90281950cc7e8fe57ec9e8205d827953ddd5f4b5d7820ce54770f5fa7"
+    },
+    {
+      "name": "n32-direct-move-directory-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "7d1ea918965cd25cae210c5c552182a8627c83e8c9f0e316b51fbcb577c8690b"
+    },
+    {
+      "name": "n32-direct-replace-empty-directory-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "94f09f73106ef26f2e9aa913d4958f626f62ccbabd428d8eda1bfeeb7d22e2a1"
+    },
+    {
+      "name": "n32-direct-nonempty-directory-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "c211d16bbb83ec833e97a311ae4a2cb49e4d11da5c568e98cc63dcbb6725a483"
+    },
+    {
+      "name": "n32-direct-file-to-directory-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "a4f034dfaeb63c21ff1f117042ce322432a1ff4b15d872031a3771a74cc597ef"
+    },
+    {
+      "name": "n32-direct-directory-to-file-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "3d654e0169902fde823b46bac407ed1d8cc6d6c9e94f929789000d016acda17a"
+    },
+    {
+      "name": "n32-direct-missing-source-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "81ef7feac9fb3c3231a321a5eb28d0ad2d6d8288bf9d981f6fb67955356099de"
+    },
+    {
+      "name": "n32-direct-missing-parent-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "9d1ecfeb6ba2c566493d01bec5158e05b10e400bc937f5f9eb9da51fcce5cef2"
+    },
+    {
+      "name": "n32-direct-source-trailing-slash-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "54ca9418dd7629ecfa1ea6dac10e6b93649c6cfbfb7e1ff4d997a0e8c7a783f2"
+    },
+    {
+      "name": "n32-direct-destination-trailing-slash-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "54ca9418dd7629ecfa1ea6dac10e6b93649c6cfbfb7e1ff4d997a0e8c7a783f2"
+    },
+    {
+      "name": "n32-direct-directory-trailing-slash-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "78801f72c063d6d21466dca4a0b57efc5673551cef58fd4d5041392d4a6bc65c"
+    },
+    {
+      "name": "n32-direct-empty-source-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "9d1ecfeb6ba2c566493d01bec5158e05b10e400bc937f5f9eb9da51fcce5cef2"
+    },
+    {
+      "name": "n32-direct-empty-destination-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "9d1ecfeb6ba2c566493d01bec5158e05b10e400bc937f5f9eb9da51fcce5cef2"
+    },
+    {
+      "name": "n32-direct-source-null-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "8ea58675d103467e5872dff9ba11cc8c75f3e49a217942cabb65c993537101e3"
+    },
+    {
+      "name": "n32-direct-source-high-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "1e69b8e8e158dc25b757d1dccaa951ffda13926205f5e090137914edb870f501"
+    },
+    {
+      "name": "n32-direct-destination-null-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "d141928a7dd782bf28d257dcf73d6beb4fa65511f659530d24b2c12a366de5ae"
+    },
+    {
+      "name": "n32-direct-destination-high-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "8424c73d4b67921dd5f6f1f741b6e71db99f5804d24331073f86809dd297d375"
+    },
+    {
+      "name": "n32-direct-source-long-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "1025ba7c5902351b9b2d2f9a1572aab187498704e50240fdccadaab2fd5d43b3"
+    },
+    {
+      "name": "n32-direct-destination-long-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "4299627235b83c03e0b9e4a7cfd3be714f627f4dbdf6376f6d675590d15d914a"
+    },
+    {
+      "name": "n32-direct-missing-source-null-destination-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "2b49d04128c9784805086f08af497dafa69c760b9cd014b04138dcb1d11fb13f"
+    },
+    {
+      "name": "n32-direct-source-null-missing-parent-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "8ea58675d103467e5872dff9ba11cc8c75f3e49a217942cabb65c993537101e3"
+    },
+    {
+      "name": "n32-direct-dot-source-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "1a000bbafbd53d680c5d68a79f46e61cf4e562bb19e3a446c4e68528228d521f"
+    },
+    {
+      "name": "n32-direct-into-descendant-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "734a8fcedbba6fa110693dc8fc782d8008c29ca0d0e9b1aa74a78bc90b251fd7"
+    },
+    {
+      "name": "n32-direct-parent-unwritable-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "f39039baa64f20ad205235b48894a1c8ee31e8aa839274f441265e2a6a836d83"
+    },
+    {
+      "name": "n32-direct-unsearchable-parent-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "7462646fce25931eb74aaf481ca70f7d01e51810fdc285155523d8acf84c5bd5"
+    },
+    {
+      "name": "n32-indirect-new-file-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "54ca9418dd7629ecfa1ea6dac10e6b93649c6cfbfb7e1ff4d997a0e8c7a783f2"
+    },
+    {
+      "name": "n32-indirect-replace-file-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "cd401ccb286ea8c87df0eb3df2a526bcd82ef7898430bf46d66c948aecaa28dc"
+    },
+    {
+      "name": "n32-indirect-same-name-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "0b4a231ed9d7cb9d783c90a68d2668811d522d48fd4475433e7a68763704373f"
+    },
+    {
+      "name": "n32-indirect-same-inode-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "bdebca2589216d171fda834d8a93f52ca1b235bc32bc5080515d3524de146819"
+    },
+    {
+      "name": "n32-indirect-source-symlink-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "3e101c8b9ae01b1c295863d8330106a6072f30c11d453e374682544ea8d19881"
+    },
+    {
+      "name": "n32-indirect-destination-symlink-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "7208634b112db834e61658f7a1f2858663d369ca3e3320a79827c961e21dfd8b"
+    },
+    {
+      "name": "n32-indirect-dangling-source-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "848b5713461499fb3e1980b594b2ad404005c54799443c72e562fcdf0e0ade26"
+    },
+    {
+      "name": "n32-indirect-dangling-destination-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "a0b579a90281950cc7e8fe57ec9e8205d827953ddd5f4b5d7820ce54770f5fa7"
+    },
+    {
+      "name": "n32-indirect-move-directory-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "7d1ea918965cd25cae210c5c552182a8627c83e8c9f0e316b51fbcb577c8690b"
+    },
+    {
+      "name": "n32-indirect-replace-empty-directory-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "94f09f73106ef26f2e9aa913d4958f626f62ccbabd428d8eda1bfeeb7d22e2a1"
+    },
+    {
+      "name": "n32-indirect-nonempty-directory-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "c211d16bbb83ec833e97a311ae4a2cb49e4d11da5c568e98cc63dcbb6725a483"
+    },
+    {
+      "name": "n32-indirect-file-to-directory-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "a4f034dfaeb63c21ff1f117042ce322432a1ff4b15d872031a3771a74cc597ef"
+    },
+    {
+      "name": "n32-indirect-directory-to-file-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "3d654e0169902fde823b46bac407ed1d8cc6d6c9e94f929789000d016acda17a"
+    },
+    {
+      "name": "n32-indirect-missing-source-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "81ef7feac9fb3c3231a321a5eb28d0ad2d6d8288bf9d981f6fb67955356099de"
+    },
+    {
+      "name": "n32-indirect-missing-parent-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "9d1ecfeb6ba2c566493d01bec5158e05b10e400bc937f5f9eb9da51fcce5cef2"
+    },
+    {
+      "name": "n32-indirect-source-trailing-slash-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "54ca9418dd7629ecfa1ea6dac10e6b93649c6cfbfb7e1ff4d997a0e8c7a783f2"
+    },
+    {
+      "name": "n32-indirect-destination-trailing-slash-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "54ca9418dd7629ecfa1ea6dac10e6b93649c6cfbfb7e1ff4d997a0e8c7a783f2"
+    },
+    {
+      "name": "n32-indirect-directory-trailing-slash-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "78801f72c063d6d21466dca4a0b57efc5673551cef58fd4d5041392d4a6bc65c"
+    },
+    {
+      "name": "n32-indirect-empty-source-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "9d1ecfeb6ba2c566493d01bec5158e05b10e400bc937f5f9eb9da51fcce5cef2"
+    },
+    {
+      "name": "n32-indirect-empty-destination-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "9d1ecfeb6ba2c566493d01bec5158e05b10e400bc937f5f9eb9da51fcce5cef2"
+    },
+    {
+      "name": "n32-indirect-source-null-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "8ea58675d103467e5872dff9ba11cc8c75f3e49a217942cabb65c993537101e3"
+    },
+    {
+      "name": "n32-indirect-source-high-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "1e69b8e8e158dc25b757d1dccaa951ffda13926205f5e090137914edb870f501"
+    },
+    {
+      "name": "n32-indirect-destination-null-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "d141928a7dd782bf28d257dcf73d6beb4fa65511f659530d24b2c12a366de5ae"
+    },
+    {
+      "name": "n32-indirect-destination-high-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "8424c73d4b67921dd5f6f1f741b6e71db99f5804d24331073f86809dd297d375"
+    },
+    {
+      "name": "n32-indirect-source-long-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "1025ba7c5902351b9b2d2f9a1572aab187498704e50240fdccadaab2fd5d43b3"
+    },
+    {
+      "name": "n32-indirect-destination-long-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "4299627235b83c03e0b9e4a7cfd3be714f627f4dbdf6376f6d675590d15d914a"
+    },
+    {
+      "name": "n32-indirect-missing-source-null-destination-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "2b49d04128c9784805086f08af497dafa69c760b9cd014b04138dcb1d11fb13f"
+    },
+    {
+      "name": "n32-indirect-source-null-missing-parent-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "8ea58675d103467e5872dff9ba11cc8c75f3e49a217942cabb65c993537101e3"
+    },
+    {
+      "name": "n32-indirect-dot-source-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "1a000bbafbd53d680c5d68a79f46e61cf4e562bb19e3a446c4e68528228d521f"
+    },
+    {
+      "name": "n32-indirect-into-descendant-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "734a8fcedbba6fa110693dc8fc782d8008c29ca0d0e9b1aa74a78bc90b251fd7"
+    },
+    {
+      "name": "n32-indirect-parent-unwritable-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "f39039baa64f20ad205235b48894a1c8ee31e8aa839274f441265e2a6a836d83"
+    },
+    {
+      "name": "n32-indirect-unsearchable-parent-1234",
+      "passed": true,
+      "differences": [],
+      "record_sha256": "7462646fce25931eb74aaf481ca70f7d01e51810fdc285155523d8acf84c5bd5"
+    }
+  ]
+}

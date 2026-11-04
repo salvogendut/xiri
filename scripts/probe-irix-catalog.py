@@ -12,6 +12,9 @@ def main():
     import argparse
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--partition",type=int,choices=(0,1,2),required=True)
+    parser.add_argument("--bundle",type=Path,
+        default=ROOT/'.work/images/xiri-netbsd-desktop-20261103-gimp',
+        help="Image bundle to clone; prior catalog runs retain their original default")
     parser.add_argument("--interactive",action="store_true")
     parser.add_argument("--limit",type=int)
     parser.add_argument("--after-case",help="Resume after this case in the partition's fixed order")
@@ -25,7 +28,7 @@ def main():
         help="Install and run a candidate native PTY setup before desktop login")
     args=parser.parse_args()
     if args.pty_setup:args.extra_file.append(args.pty_setup)
-    bundle=ROOT/'.work/images/xiri-netbsd-desktop-20261103-gimp'
+    bundle=args.bundle.resolve()
     manifest = json.loads((bundle/'manifest.json').read_text())
     assert manifest['session_manager'] == 'xdm'
     assert sha256(bundle/'netbsd-xiri.chd') == manifest['chd_sha256']

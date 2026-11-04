@@ -7,8 +7,10 @@
   "cases": {
     "app-009": {
       "target": "/usr/freeware/bin/gedit",
-      "label": "Basic document checks pass in candidate",
-      "note": "Freeware double-click, opened/closed icon artwork, text editing, new-file save, reopen, overwrite and GUI exit work as xiritest. Preference writes still fail; help, image loading and plug-ins need further work. The Applications alias has not been double-clicked separately."
+      "label": "Basic document and preference checks pass",
+      "note": "Freeware double-click, opened/closed icon artwork, text editing, new-file save, reopen, overwrite and GUI exit work as xiritest. Tab-width preferences now save and survive a normal exit/relaunch. Help, image loading, paper resources and broader plug-ins remain open. The Applications alias has not been double-clicked separately.",
+      "report": "results/2026-11-04-irix-preferences.md",
+      "candidate_module_sha256": "cb20d5867e4adcd86536d4f65495a6f86b8a631e6dccf7f84aba610423062d85"
     },
     "app-007": {
       "target": "/usr/freeware/bin/evolution",
@@ -24,10 +26,10 @@
     },
     "app-011": {
       "target": "/usr/freeware/bin/gnome-terminal",
-      "label": "Interactive original shell and catalog checks pass; preferences incomplete",
-      "note": "Applications double-click launches GNOME Terminal as xiritest with the original IRIX shell, an interactive prompt and HOME/cwd /usr/people/xiritest. Typed commands, foreground Ctrl-C, resize notifications and normal exit pass; the catalog running icon changes and returns to its original appearance. Preference saving still returns ENOSYS, help/shared-memory warnings remain, and broader stop/resume job control is unqualified. These candidate changes are not yet in the manual CHD.",
-      "report": "results/2026-11-04-irix-termios.md",
-      "candidate_module_sha256": "e7d8a4a5e937e304ff7237add2ba2f8de7ba389e57fdb1bc6ffd5fc0db8a9910"
+      "label": "Interactive original shell, catalog and preferences pass",
+      "note": "Applications double-click launches the original IRIX shell with its prompt and HOME/cwd /usr/people/xiritest. Typed commands, foreground Ctrl-C, resize, normal exit and running-icon feedback pass. Scrollback and other settings now persist across a normal exit/relaunch. Help/shared-memory warnings and broader stop/resume job control remain open.",
+      "report": "results/2026-11-04-irix-preferences.md",
+      "candidate_module_sha256": "cb20d5867e4adcd86536d4f65495a6f86b8a631e6dccf7f84aba610423062d85"
     },
     "app-015": {
       "target": "/usr/freeware/bin/midnight-commander",
@@ -55,6 +57,13 @@
       "target": "/usr/freeware/bin/xchat",
       "label": "Information dialog in candidate",
       "note": "XChat reaches the first-run download-directory notice. It was stopped without advancing the dialog; main UI, network use, persistence and normal exit remain untested."
+    },
+    "app-005": {
+      "target": "/usr/adobe/Acrobat4.0/bin/acroread",
+      "label": "PDF and catalog launch checks pass; running icon unchanged",
+      "note": "The complete original Reader package opens a nine-page PDF, changes page and zoom, reopens through its chooser and exits normally as xiritest. Applications double-click launches Reader after xdm login. Its icon remains unchanged while running and FAM records no wrapper execution event; feedback, broader PDFs, printing and browser integration remain open.",
+      "report": "results/2026-11-04-irix-acrobat.md",
+      "candidate_module_sha256": "37c8a5114483ad834d0dbef551175e506a1874599aa8caf70366481be7559b2f"
     }
   }
 }

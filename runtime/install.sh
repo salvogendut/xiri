@@ -21,12 +21,15 @@ for name in desktop-clients.sh setup-pty.sh; do install -m 555 "libexec/$name" "
 ln -snf /bin/sh "$stage/usr/local/libexec/xiri/command-shell"
 # IRIX scripts can execute native utilities. Those utilities do not apply the
 # emulation-root lookup to their pathname arguments (GIMP's user_install uses
-# native cp with /usr/freeware sources). Publish the otherwise unused prefix,
+# native cp with /usr/freeware sources, Acrobat's native cat with /usr/adobe).
+# Publish these otherwise unused prefixes,
 # while preserving any administrator-owned directory or link already there.
-if test -d "$stage/emul/irix/usr/freeware" &&
-    ! test -e "$stage/usr/freeware" && ! test -L "$stage/usr/freeware"; then
-    ln -s /emul/irix/usr/freeware "$stage/usr/freeware"
-fi
+for prefix in freeware adobe; do
+    if test -d "$stage/emul/irix/usr/$prefix" &&
+        ! test -e "$stage/usr/$prefix" && ! test -L "$stage/usr/$prefix"; then
+        ln -s "/emul/irix/usr/$prefix" "$stage/usr/$prefix"
+    fi
+done
 for name in xiri_devices xiri_famd; do install -m 555 "rc.d/$name" "$stage/etc/rc.d/$name"; done
 for name in session.conf fam.conf Xresources; do
     install -m 444 "etc/$name" "$stage/etc/xiri/$name.example"

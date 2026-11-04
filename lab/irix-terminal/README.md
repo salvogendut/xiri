@@ -4,6 +4,10 @@ The [cycle report](../../docs/results/2026-11-04-irix-terminal.md) records
 the initial application observations. The subsequent
 [termios report](../../docs/results/2026-11-04-irix-termios.md) qualifies the
 original IRIX shell's prompt, foreground commands, Ctrl-C, resize and exit.
+The later [preference report](../../docs/results/2026-11-04-irix-preferences.md)
+qualifies settings saving and relaunch using the original Glade dialog and
+the rename adapter. See the [image guide](../../docs/XIRI-IMAGE.md) for the
+cumulative manual image; the earlier candidate artifacts below remain pinned.
 This cycle follows the GNOME/gedit Unix-socket work. The original terminal
 first fails at IRIX `socketpair` (1155), before a child exists. After that
 interface works, its child needs the original `gnome-pty-helper`, native PTY
@@ -57,7 +61,7 @@ Use `scripts/probe-irix-catalog.py --partition 0 --interactive` with
 `--extra-file`, and `--pty-setup runtime/libexec/setup-pty.sh`. The latter
 installs and runs the candidate setup before graphical login. `--seed`
 accepts only a cleanly halted earlier catalog guest whose base CHD matches.
-The unchanged manual image, core kernel and pinned emulator remain separate
+The earlier manual image, core kernel and pinned emulator remain separate
 from this candidate. The guard owns every launched application and descendant.
 
 Run each fixture separately under the bounded runner. For rights fixtures,

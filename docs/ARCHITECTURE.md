@@ -350,3 +350,22 @@ It persists the compatibility tree, native font directory and session helpers.
 Routine tests clone that image or its verified raw seed; payload extraction
 is reserved for explicit updates. The [copy ledger](IRIX-IMPORT.md) separates
 original resources from native generated state.
+
+
+### Preference rename and legacy application layouts (2026-11-04)
+
+The [rename adapter](results/2026-11-04-irix-preferences.md) copies both foreign
+pathname strings before native lookup, preserves POSIX same-inode behavior,
+normalizes measured trailing slashes and maps ENOTEMPTY to IRIX EEXIST. It
+retains native permissions and emulation-root selection. Its 256 paired
+records and sixteen namespace controls are separate from the three application
+preference/save/relaunch checks. fchmod and unlink remain unsupported.
+
+The legacy Acrobat loader extension accepts the measured MIPS-I CPIC flags,
+4 KiB load alignment and zero PT_PHDR memory size with valid file metadata.
+It retains native-page virtual alignment and all bounds/ABI/protection checks.
+An ELF-mapped RW library segment with a half-native-page file offset uses
+owned anonymous pages and a file read, followed by zero BSS, with the existing
+rollback journal. It does not change the native core ELF loader. The complete
+original Reader also requires its original resources and the runtime's
+supported platform override; ELF admission alone is not an application pass.

@@ -11,16 +11,19 @@ source/destination mappings, permission adjustments and the SGI catalog
 reference check. Historical installer observations below retain their
 original scope; the installed-image payload is now a separate working path.
 
-The [catalog survey](ICON-CATALOG.md) found that Acrobat's imported
-`/usr/adobe/Acrobat4.0/bin/acroread` is a launcher. It exits 127 because
-`bin/acroread.dist` is absent from the current image. A read-only
-[source audit](../lab/irix-catalog/acrobat-source.json) locates that helper,
-the actual `Reader/mipsirix/bin/acroread` executable, libraries, app-defaults,
-fonts, plug-ins and documentation: 84 paths beneath `/usr/adobe/Acrobat4.0`.
-These are candidates for a later import, not resources added by this survey.
-Preserve their relative layout under `/emul/irix/usr/adobe/Acrobat4.0` and
-record file modes, links and hashes when staging the package. Opening and
-rendering a PDF remains untested.
+The [catalog survey](ICON-CATALOG.md) found that Acrobat's imported launcher
+was missing its helper and Reader tree. The complete package is now staged
+in the [86-path ledger](../lab/irix-acrobat/resources.json): 62 files,
+17 directories and seven links, including the wrapper/helper, actual Reader,
+libraries, fonts, app-defaults, plug-ins and documentation, plus the missing
+`/usr/lib/libMrm.so.1`. Paths are preserved below `/emul/irix`; ELF files use
+0555 and original bytes are unchanged. The native `/usr/adobe` alias and
+session `ACRO_CONFIG=mipsirix` let the original launcher use native utilities.
+Reader renders the bundled sample, changes page and zoom, reopens it through
+its file chooser and exits normally in the candidate guest. A separate
+[cold-image check](results/2026-11-04-irix-acrobat-image.md) verifies the
+packaged catalog launch, PDF and exit. Reader running-icon feedback remains
+unresolved; wider PDF/plug-in behavior is separate.
 
 The [terminal follow-up](results/2026-11-04-irix-terminal.md) imports the
 original n32 `/usr/freeware/sbin/gnome-pty-helper` beneath `/emul/irix`;
@@ -36,8 +39,11 @@ behavior; a successful terminal wrapper is not a test of those programs.
 The [interactive-shell follow-up](results/2026-11-04-irix-termios.md) adds no
 vendor files. It reuses that helper and runtime, with terminal attributes and
 controlling-terminal acquisition supplied by the compatibility module.
-GNOME's preference-save error remains an interface issue to diagnose; this
-cycle does not copy an existing user's `.gnome` settings to hide it.
+The later [preference cycle](results/2026-11-04-irix-preferences.md) fixes
+rename and imports the original GNOME Terminal Glade dialog. The expanded
+[53-path GNOME ledger](../lab/irix-gnome/preferences-resources.json) preserves
+the earlier data and adds that resource. GNOME Terminal, gedit and GIMP save
+settings and read them back after relaunch; no source-image user profile is copied.
 
 Other application payload gaps are recorded in the
 [catalog survey](results/2026-11-03-irix-catalog.md) and
@@ -145,8 +151,9 @@ plug-ins, GNOME VFS modules/configuration, `libgnomevfs-pthread.so`, its extra
 paths below `/emul/irix`; no user profile is imported. The threading backend
 is loaded dynamically and is absent from the earlier static dependency
 closure. Gedit's icon image is present and verified but still fails to load;
-help topics and the wider plug-ins need separate checks. This payload is
-installed only in the disposable qualification guest so far.
+help topics and the wider plug-ins need separate checks. The expanded 53-path
+import is included by the cumulative image preparation described in
+[IRIX-IMPORT.md](IRIX-IMPORT.md#preferences-and-complete-acrobat-resources-2026-11-04).
 
 The repeated startup checks identify further application inputs to inspect:
 Evolution's missing `/usr/freeware/share/evolution/default_user` tree and

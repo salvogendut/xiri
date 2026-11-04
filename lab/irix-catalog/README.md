@@ -1,6 +1,6 @@
 # Icon Catalog startup survey
 
-This lab records the current image's startup behavior before repairing individual
+This lab records the surveyed image's startup behavior before repairing individual
 applications. [inventory.json](inventory.json) maps all 166 catalog entries to
 programs, script wrappers, document shortcuts, a directory and unresolved source
 targets. Repeated targets share one direct-launch observation; separate catalog
@@ -22,8 +22,11 @@ python3 scripts/probe-irix-catalog.py --partition 2
 
 The three partitions contain 40, 42 and 42 launch targets. `--limit 1` runs a
 pilot; `--interactive` exposes the existing bounded local request queue instead
-of executing the partition. The current runner pins the qualified
-`20261103-gimp` bundle. It does not replace the selected CHD or manual state.
+of executing the partition. The runner defaults to the historical
+`20261103-gimp` bundle. Pass `--bundle PATH` to test another qualified bundle,
+such as `.work/images/xiri-netbsd-desktop-20261104-acrobat`. It does not replace
+the selected CHD or manual state. A `--seed` overlay must match that bundle's
+base CHD; do not reuse an overlay from a different image.
 
 Each launch uses original IRIX sh with the desktop's X authority and native
 xiritest identity, HOME and current directory. Standard input is `/dev/null`,

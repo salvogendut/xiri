@@ -1,0 +1,1689 @@
+{
+  "schema": 1,
+  "status": "staged-unqualified",
+  "source_image_manifest_sha256": "79b464ad3856eca2d034f418445860b3d262437f0347ccadedc67e60c8330521",
+  "extraction": "guestfish --ro, mount ro,norecovery; no host symlinks created",
+  "script_sha256": "6b41ba34c907ff59385617d6f49a67524013f57e42f32b3c133e081313a959a0",
+  "gimp_manifest_sha256": "f78342cf63ec66073445b620cba81f4faddfcc60e0102d05bca470f42b7ee8c4",
+  "bases": [
+    "/usr/adobe/Acrobat4.0"
+  ],
+  "archives": {
+    "/usr/adobe/Acrobat4.0": {
+      "sha256": "3f4ba1f6cae173af8821cd989cb9b3134d9a6fee7c46a9cb141b1ce170eaf235",
+      "bytes": 24453120
+    }
+  },
+  "payload_sha256": "fc2963cac7a24a72b1744846238e77e449935655c00632568776eb2734f36adc",
+  "paths": {
+    "/usr/adobe/Acrobat4.0": {
+      "irix_source": "/usr/adobe/Acrobat4.0",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0",
+      "original_mode": "0o755",
+      "type": "directory",
+      "mode": "0o755"
+    },
+    "/usr/adobe/Acrobat4.0/Reader": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Reader",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Reader",
+      "original_mode": "0o755",
+      "type": "directory",
+      "mode": "0o755"
+    },
+    "/usr/adobe/Acrobat4.0/Reader/help": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Reader/help",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Reader/help",
+      "original_mode": "0o755",
+      "type": "directory",
+      "mode": "0o755"
+    },
+    "/usr/adobe/Acrobat4.0/Reader/help/search.pdf": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Reader/help/search.pdf",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Reader/help/search.pdf",
+      "original_mode": "0o755",
+      "type": "symlink",
+      "target": "reader.pdf",
+      "mode": "0o777"
+    },
+    "/usr/adobe/Acrobat4.0/Reader/help/reader.pdf": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Reader/help/reader.pdf",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Reader/help/reader.pdf",
+      "original_mode": "0o644",
+      "type": "file",
+      "bytes": 415715,
+      "sha256": "e259fc8974b8f0fab712e0970bb7e35b1a46e8f3a34709294629a24391498299",
+      "mode": "0o644"
+    },
+    "/usr/adobe/Acrobat4.0/Reader/mipsirix": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Reader/mipsirix",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Reader/mipsirix",
+      "original_mode": "0o755",
+      "type": "directory",
+      "mode": "0o755"
+    },
+    "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins",
+      "original_mode": "0o755",
+      "type": "directory",
+      "mode": "0o755"
+    },
+    "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/vdkHome": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/vdkHome",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/vdkHome",
+      "original_mode": "0o755",
+      "type": "directory",
+      "mode": "0o755"
+    },
+    "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/vdkHome/language": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/vdkHome/language",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/vdkHome/language",
+      "original_mode": "0o755",
+      "type": "directory",
+      "mode": "0o755"
+    },
+    "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/vdkHome/language/acro20.lng": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/vdkHome/language/acro20.lng",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/vdkHome/language/acro20.lng",
+      "original_mode": "0o644",
+      "type": "file",
+      "bytes": 22902,
+      "sha256": "6b7167510d9564ae698ffc939d1616cd50ef53957cce71dc8b1e2edecc6903dd",
+      "mode": "0o644"
+    },
+    "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/vdkHome/language/vdk10.rsd": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/vdkHome/language/vdk10.rsd",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/vdkHome/language/vdk10.rsd",
+      "original_mode": "0o644",
+      "type": "file",
+      "bytes": 60458,
+      "sha256": "0816bdca8634dab51c7d7bc9e00edf34b4232c6eebc1bcaac8090ba61a7ac5f5",
+      "mode": "0o644"
+    },
+    "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/vdkHome/language/vdk10.rst": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/vdkHome/language/vdk10.rst",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/vdkHome/language/vdk10.rst",
+      "original_mode": "0o644",
+      "type": "file",
+      "bytes": 2255,
+      "sha256": "6a58c07be7e8439bc6dec61560f6e74d3de94601fa23dad2931ac66015e506cb",
+      "mode": "0o644"
+    },
+    "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/vdkHome/language/vdk10.stc": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/vdkHome/language/vdk10.stc",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/vdkHome/language/vdk10.stc",
+      "original_mode": "0o644",
+      "type": "file",
+      "bytes": 15103,
+      "sha256": "4053259270084d640ed2189c16ae0e5bf8795c05aadb85fd347ec16616b713b5",
+      "mode": "0o644"
+    },
+    "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/vdkHome/language/vdk10.stp": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/vdkHome/language/vdk10.stp",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/vdkHome/language/vdk10.stp",
+      "original_mode": "0o644",
+      "type": "file",
+      "bytes": 2711,
+      "sha256": "01d28fa25a53630c3c691d0231984d0f4e548164e253bbcbd244768643177216",
+      "mode": "0o644"
+    },
+    "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/vdkHome/language/vdk10.syd": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/vdkHome/language/vdk10.syd",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/vdkHome/language/vdk10.syd",
+      "original_mode": "0o644",
+      "type": "file",
+      "bytes": 806912,
+      "sha256": "35515d29b8dd04fa1d8567768c2bf96d190fac39fdb1e88109400007cdc9d5d0",
+      "mode": "0o644"
+    },
+    "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/vdkHome/vdk10.cmp": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/vdkHome/vdk10.cmp",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/vdkHome/vdk10.cmp",
+      "original_mode": "0o644",
+      "type": "file",
+      "bytes": 3977,
+      "sha256": "9224f9ed189e9fe073631a0b5b110d6bcbfc57e1e5dd21ce295034ce3f5747d9",
+      "mode": "0o644"
+    },
+    "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/vdkHome/vdk10.lic": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/vdkHome/vdk10.lic",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/vdkHome/vdk10.lic",
+      "original_mode": "0o644",
+      "type": "file",
+      "bytes": 43,
+      "sha256": "83b010e94959dbc21f907449b3ba849e9eafcbd37772010ffbcd2d4922e86d48",
+      "mode": "0o644"
+    },
+    "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/vdkHome/vdk10.std": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/vdkHome/vdk10.std",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/vdkHome/vdk10.std",
+      "original_mode": "0o644",
+      "type": "file",
+      "bytes": 1982,
+      "sha256": "0bd64021b59ddf72f16742dfb13d75730cbda526f1a44af44a8df3949fec41f8",
+      "mode": "0o644"
+    },
+    "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/vdkHome/vdk10.syx": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/vdkHome/vdk10.syx",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/vdkHome/vdk10.syx",
+      "original_mode": "0o644",
+      "type": "file",
+      "bytes": 392,
+      "sha256": "d373e1111b9ac7bc464ebfe7dc681e29581207bdcb2252cad7f9b48fef1082fe",
+      "mode": "0o644"
+    },
+    "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/acrosrch.uid": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/acrosrch.uid",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/acrosrch.uid",
+      "original_mode": "0o644",
+      "type": "file",
+      "bytes": 90112,
+      "sha256": "9b0656b1ff1e29e9effbac4337c5c401725f85a1c030197b036b7be59dc4ae31",
+      "mode": "0o644"
+    },
+    "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/autoIndx.api": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/autoIndx.api",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/autoIndx.api",
+      "original_mode": "0o755",
+      "type": "file",
+      "bytes": 90741,
+      "sha256": "9a90a487020497a257756dce5bf95a901795e72699db5d6422a2f1b15bb62169",
+      "mode": "0o555",
+      "elf": {
+        "class": 32,
+        "endian": "big",
+        "machine": 8,
+        "abi": "o32",
+        "type": 3,
+        "flags": "0x2",
+        "entry": "0x5ffe2bb0",
+        "interpreter": [],
+        "needed": [
+          "libXm.so.1",
+          "libXt.so",
+          "libXext.so",
+          "libX11.so.1"
+        ],
+        "rpath": [],
+        "soname": [
+          "autoIndx.so"
+        ],
+        "loads": [
+          {
+            "offset": 0,
+            "address": 1610481664,
+            "file_bytes": 49152,
+            "memory_bytes": 49152,
+            "flags": 5,
+            "alignment": 4096
+          },
+          {
+            "offset": 49152,
+            "address": 1610547200,
+            "file_bytes": 8192,
+            "memory_bytes": 8192,
+            "flags": 6,
+            "alignment": 4096
+          }
+        ],
+        "load_boundaries_8k": false,
+        "liblist": [
+          "libXm.so.1",
+          "libXt.so",
+          "libXext.so",
+          "libX11.so.1"
+        ],
+        "mips_rld_version": 1,
+        "mips_flags": "0x411"
+      }
+    },
+    "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/search.api": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/search.api",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/search.api",
+      "original_mode": "0o755",
+      "type": "file",
+      "bytes": 2727061,
+      "sha256": "c41eb9a261e183fa4bbab8f3e0b7fa851925d17a9576a6b9c26097ce224bee77",
+      "mode": "0o555",
+      "elf": {
+        "class": 32,
+        "endian": "big",
+        "machine": 8,
+        "abi": "o32",
+        "type": 3,
+        "flags": "0x2",
+        "entry": "0x5fe3be30",
+        "interpreter": [],
+        "needed": [
+          "libMrm.so.1",
+          "libXm.so.1",
+          "libXt.so",
+          "libXext.so",
+          "libX11.so.1"
+        ],
+        "rpath": [],
+        "soname": [
+          "search.so"
+        ],
+        "loads": [
+          {
+            "offset": 0,
+            "address": 1608581120,
+            "file_bytes": 1507328,
+            "memory_bytes": 1507328,
+            "flags": 5,
+            "alignment": 4096
+          },
+          {
+            "offset": 1507328,
+            "address": 1610153984,
+            "file_bytes": 163840,
+            "memory_bytes": 438944,
+            "flags": 6,
+            "alignment": 4096
+          }
+        ],
+        "load_boundaries_8k": false,
+        "liblist": [
+          "libMrm.so.1",
+          "libXm.so.1",
+          "libXt.so",
+          "libXext.so",
+          "libX11.so.1"
+        ],
+        "mips_rld_version": 1,
+        "mips_flags": "0x411"
+      }
+    },
+    "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/JavaScripts": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/JavaScripts",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/JavaScripts",
+      "original_mode": "0o755",
+      "type": "directory",
+      "mode": "0o755"
+    },
+    "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/JavaScripts/AFStrENU.js": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/JavaScripts/AFStrENU.js",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/JavaScripts/AFStrENU.js",
+      "original_mode": "0o644",
+      "type": "file",
+      "bytes": 2177,
+      "sha256": "a2bd21453c6adffb272950fc09fa5654b8be7e90e1f6af5b915ca66d65b5ad7f",
+      "mode": "0o644"
+    },
+    "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/JavaScripts/AForm.js": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/JavaScripts/AForm.js",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/JavaScripts/AForm.js",
+      "original_mode": "0o644",
+      "type": "file",
+      "bytes": 32709,
+      "sha256": "e1011d02aa4ccd0011358ba98bb486bc104ed580f2909e675d80c5441ce07e5a",
+      "mode": "0o644"
+    },
+    "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/AcroForm.api": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/AcroForm.api",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/AcroForm.api",
+      "original_mode": "0o755",
+      "type": "file",
+      "bytes": 1823165,
+      "sha256": "4e332e16a1ed9f3028c76fb4603812eff6aa7de13d2a2e9b7c9f5fe98dec939e",
+      "mode": "0o555",
+      "elf": {
+        "class": 32,
+        "endian": "big",
+        "machine": 8,
+        "abi": "o32",
+        "type": 3,
+        "flags": "0x2",
+        "entry": "0x5feda480",
+        "interpreter": [],
+        "needed": [
+          "libm.so",
+          "libgen.so",
+          "libC.so",
+          "libXm.so.1",
+          "libXt.so",
+          "libXext.so",
+          "libX11.so.1"
+        ],
+        "rpath": [],
+        "soname": [
+          "AcroForm.so"
+        ],
+        "loads": [
+          {
+            "offset": 0,
+            "address": 1609302016,
+            "file_bytes": 1163264,
+            "memory_bytes": 1163264,
+            "flags": 5,
+            "alignment": 4096
+          },
+          {
+            "offset": 1163264,
+            "address": 1610481664,
+            "file_bytes": 106496,
+            "memory_bytes": 111552,
+            "flags": 6,
+            "alignment": 4096
+          }
+        ],
+        "load_boundaries_8k": false,
+        "liblist": [
+          "libm.so",
+          "libgen.so",
+          "libC.so",
+          "libXm.so.1",
+          "libXt.so",
+          "libXext.so",
+          "libX11.so.1"
+        ],
+        "mips_rld_version": 1,
+        "mips_flags": "0x411"
+      }
+    },
+    "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/Highlight.api": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/Highlight.api",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/Highlight.api",
+      "original_mode": "0o755",
+      "type": "file",
+      "bytes": 91925,
+      "sha256": "66e897486f7a4b1d8374e0424f32d07fd9ae62d8c0bf72ef8d3eea9f23016508",
+      "mode": "0o555",
+      "elf": {
+        "class": 32,
+        "endian": "big",
+        "machine": 8,
+        "abi": "o32",
+        "type": 3,
+        "flags": "0x2",
+        "entry": "0x5ffe23f0",
+        "interpreter": [],
+        "needed": [
+          "libXm.so.1",
+          "libXt.so",
+          "libXext.so",
+          "libX11.so.1"
+        ],
+        "rpath": [],
+        "soname": [
+          "Highlight.so"
+        ],
+        "loads": [
+          {
+            "offset": 0,
+            "address": 1610481664,
+            "file_bytes": 53248,
+            "memory_bytes": 53248,
+            "flags": 5,
+            "alignment": 4096
+          },
+          {
+            "offset": 53248,
+            "address": 1610547200,
+            "file_bytes": 4096,
+            "memory_bytes": 4096,
+            "flags": 6,
+            "alignment": 4096
+          }
+        ],
+        "load_boundaries_8k": false,
+        "liblist": [
+          "libXm.so.1",
+          "libXt.so",
+          "libXext.so",
+          "libX11.so.1"
+        ],
+        "mips_rld_version": 1,
+        "mips_flags": "0x411"
+      }
+    },
+    "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/ewh.api": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/ewh.api",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/ewh.api",
+      "original_mode": "0o755",
+      "type": "file",
+      "bytes": 226397,
+      "sha256": "4c57b32ab2610c674dc2dcc9bfb39bd85d2f224aefbdda3a99e4316e243cf29d",
+      "mode": "0o555",
+      "elf": {
+        "class": 32,
+        "endian": "big",
+        "machine": 8,
+        "abi": "o32",
+        "type": 3,
+        "flags": "0x2",
+        "entry": "0x5ffc4350",
+        "interpreter": [],
+        "needed": [
+          "libXm.so.1",
+          "libXt.so",
+          "libXext.so",
+          "libX11.so.1"
+        ],
+        "rpath": [],
+        "soname": [
+          "ewh.so"
+        ],
+        "loads": [
+          {
+            "offset": 0,
+            "address": 1610350592,
+            "file_bytes": 135168,
+            "memory_bytes": 135168,
+            "flags": 5,
+            "alignment": 4096
+          },
+          {
+            "offset": 135168,
+            "address": 1610547200,
+            "file_bytes": 8192,
+            "memory_bytes": 11792,
+            "flags": 6,
+            "alignment": 4096
+          }
+        ],
+        "load_boundaries_8k": false,
+        "liblist": [
+          "libXm.so.1",
+          "libXt.so",
+          "libXext.so",
+          "libX11.so.1"
+        ],
+        "mips_rld_version": 1,
+        "mips_flags": "0x411"
+      }
+    },
+    "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/wwwlink.api.vulnerable": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/wwwlink.api.vulnerable",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/wwwlink.api.vulnerable",
+      "original_mode": "0o755",
+      "type": "file",
+      "bytes": 263189,
+      "sha256": "3a45c495d60a6df4abad4a32415e445563f31b0b766be674f7982fa1b3c604bf",
+      "mode": "0o555",
+      "elf": {
+        "class": 32,
+        "endian": "big",
+        "machine": 8,
+        "abi": "o32",
+        "type": 3,
+        "flags": "0x2",
+        "entry": "0x5ffc5e70",
+        "interpreter": [],
+        "needed": [
+          "libXm.so.1",
+          "libXt.so",
+          "libXext.so",
+          "libX11.so.1",
+          "libm.so"
+        ],
+        "rpath": [],
+        "soname": [
+          "wwwlink.so"
+        ],
+        "loads": [
+          {
+            "offset": 0,
+            "address": 1610350592,
+            "file_bytes": 151552,
+            "memory_bytes": 151552,
+            "flags": 5,
+            "alignment": 4096
+          },
+          {
+            "offset": 151552,
+            "address": 1610547200,
+            "file_bytes": 20480,
+            "memory_bytes": 23504,
+            "flags": 6,
+            "alignment": 4096
+          }
+        ],
+        "load_boundaries_8k": false,
+        "liblist": [
+          "libXm.so.1",
+          "libXt.so",
+          "libXext.so",
+          "libX11.so.1",
+          "libm.so"
+        ],
+        "mips_rld_version": 1,
+        "mips_flags": "0x411"
+      }
+    },
+    "/usr/adobe/Acrobat4.0/Reader/mipsirix/app-defaults": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/app-defaults",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Reader/mipsirix/app-defaults",
+      "original_mode": "0o755",
+      "type": "directory",
+      "mode": "0o755"
+    },
+    "/usr/adobe/Acrobat4.0/Reader/mipsirix/app-defaults/AcroRead": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/app-defaults/AcroRead",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Reader/mipsirix/app-defaults/AcroRead",
+      "original_mode": "0o644",
+      "type": "file",
+      "bytes": 2460,
+      "sha256": "c4f3c1473d4d3fc338955c2839f68dc74a25c1b4a38d86807af8cec9b13fb5e7",
+      "mode": "0o644"
+    },
+    "/usr/adobe/Acrobat4.0/Reader/mipsirix/bin": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/bin",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Reader/mipsirix/bin",
+      "original_mode": "0o755",
+      "type": "directory",
+      "mode": "0o755"
+    },
+    "/usr/adobe/Acrobat4.0/Reader/mipsirix/bin/LICENSE": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/bin/LICENSE",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Reader/mipsirix/bin/LICENSE",
+      "original_mode": "0o644",
+      "type": "file",
+      "bytes": 6076,
+      "sha256": "df1790e5988f829486c9073ae403f482b955cbcb7c7cdecfeb0afcba5658cd08",
+      "mode": "0o644"
+    },
+    "/usr/adobe/Acrobat4.0/Reader/mipsirix/bin/acroread": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/bin/acroread",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Reader/mipsirix/bin/acroread",
+      "original_mode": "0o755",
+      "type": "file",
+      "bytes": 3945520,
+      "sha256": "69cdcb532eebd482cb713cb950b2d378b663387783fe74b88aa25ec9ac58df02",
+      "mode": "0o555",
+      "elf": {
+        "class": 32,
+        "endian": "big",
+        "machine": 8,
+        "abi": "o32",
+        "type": 2,
+        "flags": "0x4",
+        "entry": "0x44d010",
+        "interpreter": [
+          "/usr/lib/libc.so.1"
+        ],
+        "needed": [
+          "libreadcore.so.4.0",
+          "libAGM.so.3.0",
+          "libCoolType.so.1.0",
+          "libICC.so.1.0",
+          "libXm.so.1",
+          "libXt.so",
+          "libXext.so",
+          "libX11.so.1",
+          "libgen.so",
+          "libm.so",
+          "libC.so",
+          "libc.so.1"
+        ],
+        "rpath": [],
+        "soname": [],
+        "loads": [
+          {
+            "offset": 0,
+            "address": 4194304,
+            "file_bytes": 2113536,
+            "memory_bytes": 2113536,
+            "flags": 5,
+            "alignment": 4096
+          },
+          {
+            "offset": 2113536,
+            "address": 268435456,
+            "file_bytes": 266240,
+            "memory_bytes": 288736,
+            "flags": 6,
+            "alignment": 4096
+          }
+        ],
+        "load_boundaries_8k": false,
+        "liblist": [
+          "libreadcore.so.4.0",
+          "libAGM.so.3.0",
+          "libCoolType.so.1.0",
+          "libICC.so.1.0",
+          "libXm.so.1",
+          "libXt.so",
+          "libXext.so",
+          "libX11.so.1",
+          "libgen.so",
+          "libm.so",
+          "libC.so",
+          "libc.so.1"
+        ],
+        "mips_rld_version": 1,
+        "mips_flags": "0x411"
+      }
+    },
+    "/usr/adobe/Acrobat4.0/Reader/mipsirix/bin/adobeLicense": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/bin/adobeLicense",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Reader/mipsirix/bin/adobeLicense",
+      "original_mode": "0o755",
+      "type": "file",
+      "bytes": 18608,
+      "sha256": "30365a6901ef3e837a69c8ec7a0a52d7d40e1d54f50d08a83ebc3642e5bc4661",
+      "mode": "0o555",
+      "elf": {
+        "class": 32,
+        "endian": "big",
+        "machine": 8,
+        "abi": "o32",
+        "type": 2,
+        "flags": "0x4",
+        "entry": "0x401260",
+        "interpreter": [
+          "/usr/lib/libc.so.1"
+        ],
+        "needed": [
+          "libXm.so.1",
+          "libXt.so",
+          "libX11.so.1",
+          "libc.so.1"
+        ],
+        "rpath": [],
+        "soname": [],
+        "loads": [
+          {
+            "offset": 0,
+            "address": 4194304,
+            "file_bytes": 12288,
+            "memory_bytes": 12288,
+            "flags": 5,
+            "alignment": 4096
+          },
+          {
+            "offset": 12288,
+            "address": 268435456,
+            "file_bytes": 4096,
+            "memory_bytes": 4096,
+            "flags": 6,
+            "alignment": 4096
+          }
+        ],
+        "load_boundaries_8k": false,
+        "liblist": [
+          "libXm.so.1",
+          "libXt.so",
+          "libX11.so.1",
+          "libc.so.1"
+        ],
+        "mips_rld_version": 1,
+        "mips_flags": "0x410"
+      }
+    },
+    "/usr/adobe/Acrobat4.0/Reader/mipsirix/fonts": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/fonts",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Reader/mipsirix/fonts",
+      "original_mode": "0o755",
+      "type": "symlink",
+      "target": "../../Resource/Font",
+      "mode": "0o777"
+    },
+    "/usr/adobe/Acrobat4.0/Reader/mipsirix/lib": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/lib",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Reader/mipsirix/lib",
+      "original_mode": "0o755",
+      "type": "directory",
+      "mode": "0o755"
+    },
+    "/usr/adobe/Acrobat4.0/Reader/mipsirix/lib/libAGM.so": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/lib/libAGM.so",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Reader/mipsirix/lib/libAGM.so",
+      "original_mode": "0o755",
+      "type": "symlink",
+      "target": "libAGM.so.3.0",
+      "mode": "0o777"
+    },
+    "/usr/adobe/Acrobat4.0/Reader/mipsirix/lib/libCoolType.so": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/lib/libCoolType.so",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Reader/mipsirix/lib/libCoolType.so",
+      "original_mode": "0o755",
+      "type": "symlink",
+      "target": "libCoolType.so.1.0",
+      "mode": "0o777"
+    },
+    "/usr/adobe/Acrobat4.0/Reader/mipsirix/lib/libICC.so": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/lib/libICC.so",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Reader/mipsirix/lib/libICC.so",
+      "original_mode": "0o755",
+      "type": "symlink",
+      "target": "libICC.so.1.0",
+      "mode": "0o777"
+    },
+    "/usr/adobe/Acrobat4.0/Reader/mipsirix/lib/libreadcore.so": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/lib/libreadcore.so",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Reader/mipsirix/lib/libreadcore.so",
+      "original_mode": "0o755",
+      "type": "symlink",
+      "target": "libreadcore.so.4.0",
+      "mode": "0o777"
+    },
+    "/usr/adobe/Acrobat4.0/Reader/mipsirix/lib/XKeysymDB": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/lib/XKeysymDB",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Reader/mipsirix/lib/XKeysymDB",
+      "original_mode": "0o644",
+      "type": "file",
+      "bytes": 3994,
+      "sha256": "071833fcdab8252a61e1e06d7d0a0251ec43e8c0f75a88b016d375a15bb75d95",
+      "mode": "0o644"
+    },
+    "/usr/adobe/Acrobat4.0/Reader/mipsirix/lib/libAGM.so.3.0": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/lib/libAGM.so.3.0",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Reader/mipsirix/lib/libAGM.so.3.0",
+      "original_mode": "0o755",
+      "type": "file",
+      "bytes": 1756596,
+      "sha256": "8ed5d4f93d6a5ccfb56eaeeefe4b195b2566d730e38cc3503d1dbe239cfe72fe",
+      "mode": "0o555",
+      "elf": {
+        "class": 32,
+        "endian": "big",
+        "machine": 8,
+        "abi": "o32",
+        "type": 3,
+        "flags": "0x2",
+        "entry": "0x229b794",
+        "interpreter": [],
+        "needed": [],
+        "rpath": [],
+        "soname": [
+          "libAGM.so.3.0"
+        ],
+        "loads": [
+          {
+            "offset": 0,
+            "address": 36110336,
+            "file_bytes": 913408,
+            "memory_bytes": 913408,
+            "flags": 5,
+            "alignment": 4096
+          },
+          {
+            "offset": 913408,
+            "address": 37027840,
+            "file_bytes": 151552,
+            "memory_bytes": 151552,
+            "flags": 6,
+            "alignment": 4096
+          }
+        ],
+        "load_boundaries_8k": false,
+        "liblist": [],
+        "mips_rld_version": 1,
+        "mips_flags": "0xc11"
+      }
+    },
+    "/usr/adobe/Acrobat4.0/Reader/mipsirix/lib/libCoolType.so.1.0": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/lib/libCoolType.so.1.0",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Reader/mipsirix/lib/libCoolType.so.1.0",
+      "original_mode": "0o755",
+      "type": "file",
+      "bytes": 3647404,
+      "sha256": "de3140979363233029b3972a2818bcc309e8e351ec90719560be3265ab7a2187",
+      "mode": "0o555",
+      "elf": {
+        "class": 32,
+        "endian": "big",
+        "machine": 8,
+        "abi": "o32",
+        "type": 3,
+        "flags": "0x2",
+        "entry": "0x23cc7b0",
+        "interpreter": [],
+        "needed": [],
+        "rpath": [],
+        "soname": [
+          "libCoolType.so.1.0"
+        ],
+        "loads": [
+          {
+            "offset": 0,
+            "address": 37224448,
+            "file_bytes": 1941504,
+            "memory_bytes": 1941504,
+            "flags": 5,
+            "alignment": 4096
+          },
+          {
+            "offset": 1941504,
+            "address": 39190528,
+            "file_bytes": 425984,
+            "memory_bytes": 434944,
+            "flags": 6,
+            "alignment": 4096
+          }
+        ],
+        "load_boundaries_8k": false,
+        "liblist": [],
+        "mips_rld_version": 1,
+        "mips_flags": "0xc11"
+      }
+    },
+    "/usr/adobe/Acrobat4.0/Reader/mipsirix/lib/libICC.so.1.0": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/lib/libICC.so.1.0",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Reader/mipsirix/lib/libICC.so.1.0",
+      "original_mode": "0o755",
+      "type": "file",
+      "bytes": 1134836,
+      "sha256": "f613526ad06e1bedc6729410779a4c758c09db94076ab7b3e74744d0bfe58109",
+      "mode": "0o555",
+      "elf": {
+        "class": 32,
+        "endian": "big",
+        "machine": 8,
+        "abi": "o32",
+        "type": 3,
+        "flags": "0x2",
+        "entry": "0x25f43f0",
+        "interpreter": [],
+        "needed": [],
+        "rpath": [],
+        "soname": [
+          "libICC.so.1.0"
+        ],
+        "loads": [
+          {
+            "offset": 0,
+            "address": 39649280,
+            "file_bytes": 610304,
+            "memory_bytes": 610304,
+            "flags": 5,
+            "alignment": 4096
+          },
+          {
+            "offset": 610304,
+            "address": 40304640,
+            "file_bytes": 98304,
+            "memory_bytes": 98304,
+            "flags": 6,
+            "alignment": 4096
+          }
+        ],
+        "load_boundaries_8k": false,
+        "liblist": [],
+        "mips_rld_version": 1,
+        "mips_flags": "0xc11"
+      }
+    },
+    "/usr/adobe/Acrobat4.0/Reader/mipsirix/lib/libreadcore.so.4.0": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/lib/libreadcore.so.4.0",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Reader/mipsirix/lib/libreadcore.so.4.0",
+      "original_mode": "0o755",
+      "type": "file",
+      "bytes": 4488348,
+      "sha256": "e5d9addb2649932ee5a8e5224ccc0b899c8e8978a241626ae85a04fa4bdde159",
+      "mode": "0o555",
+      "elf": {
+        "class": 32,
+        "endian": "big",
+        "machine": 8,
+        "abi": "o32",
+        "type": 3,
+        "flags": "0x2",
+        "entry": "0x26cbcd0",
+        "interpreter": [],
+        "needed": [],
+        "rpath": [],
+        "soname": [
+          "libreadcore.so.4.0"
+        ],
+        "loads": [
+          {
+            "offset": 0,
+            "address": 40435712,
+            "file_bytes": 2732032,
+            "memory_bytes": 2732032,
+            "flags": 5,
+            "alignment": 4096
+          },
+          {
+            "offset": 2732032,
+            "address": 43188224,
+            "file_bytes": 339968,
+            "memory_bytes": 353264,
+            "flags": 6,
+            "alignment": 4096
+          }
+        ],
+        "load_boundaries_8k": false,
+        "liblist": [],
+        "mips_rld_version": 1,
+        "mips_flags": "0xc11"
+      }
+    },
+    "/usr/adobe/Acrobat4.0/Reader/mipsirix/res": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/res",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Reader/mipsirix/res",
+      "original_mode": "0o755",
+      "type": "symlink",
+      "target": "../res",
+      "mode": "0o777"
+    },
+    "/usr/adobe/Acrobat4.0/Reader/res": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Reader/res",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Reader/res",
+      "original_mode": "0o755",
+      "type": "directory",
+      "mode": "0o755"
+    },
+    "/usr/adobe/Acrobat4.0/Reader/res/splashScreen11R.xbm": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Reader/res/splashScreen11R.xbm",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Reader/res/splashScreen11R.xbm",
+      "original_mode": "0o644",
+      "type": "file",
+      "bytes": 122322,
+      "sha256": "37cdc9fb689a2e37df5e14cebd7613bb6b71b6a405c45a6277990f2c57c705eb",
+      "mode": "0o644"
+    },
+    "/usr/adobe/Acrobat4.0/Reader/res/splashScreen18R.xpm": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Reader/res/splashScreen18R.xpm",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Reader/res/splashScreen18R.xpm",
+      "original_mode": "0o644",
+      "type": "file",
+      "bytes": 190740,
+      "sha256": "ad610989da6dfd298d8491e4012f97192dc38143b5dea0cdbe35eb7f35fc5fc6",
+      "mode": "0o644"
+    },
+    "/usr/adobe/Acrobat4.0/Reader/res/splashScreen21.xbm": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Reader/res/splashScreen21.xbm",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Reader/res/splashScreen21.xbm",
+      "original_mode": "0o644",
+      "type": "file",
+      "bytes": 108447,
+      "sha256": "170747461617291b8cf54de45d40fe7599d6650638de39d2932ed64558d8e03c",
+      "mode": "0o644"
+    },
+    "/usr/adobe/Acrobat4.0/Reader/res/splashScreen28.xpm": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Reader/res/splashScreen28.xpm",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Reader/res/splashScreen28.xpm",
+      "original_mode": "0o644",
+      "type": "file",
+      "bytes": 343496,
+      "sha256": "c8ddccb0b3f88d20deebcda4940b10c662248f93332751e615e658e7e061b00a",
+      "mode": "0o644"
+    },
+    "/usr/adobe/Acrobat4.0/Reader/AcroVersion": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Reader/AcroVersion",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Reader/AcroVersion",
+      "original_mode": "0o644",
+      "type": "file",
+      "bytes": 4,
+      "sha256": "5ca797740e932dd836206d2b4bea825c83bc47e25e45006d0a2b62fe71be40b6",
+      "mode": "0o644"
+    },
+    "/usr/adobe/Acrobat4.0/Reader/Acrobat.pdf": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Reader/Acrobat.pdf",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Reader/Acrobat.pdf",
+      "original_mode": "0o644",
+      "type": "file",
+      "bytes": 226035,
+      "sha256": "f1bc498f742ca8f72f22cf650a43584494b41e1b2eb24b7e2d8d626eab758c9a",
+      "mode": "0o644"
+    },
+    "/usr/adobe/Acrobat4.0/Reader/License.pdf": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Reader/License.pdf",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Reader/License.pdf",
+      "original_mode": "0o644",
+      "type": "file",
+      "bytes": 9067,
+      "sha256": "2cd703bd9a3bfeee2933c3466f6b3efc3f1493776a9f2364b600727e22932faf",
+      "mode": "0o644"
+    },
+    "/usr/adobe/Acrobat4.0/Reader/MapTypes.pdf": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Reader/MapTypes.pdf",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Reader/MapTypes.pdf",
+      "original_mode": "0o644",
+      "type": "file",
+      "bytes": 146653,
+      "sha256": "8915001084a1c0c1cdf8c1b9f3f2f44873c46f1a2383a1c3a1392b7844c8fdbd",
+      "mode": "0o644"
+    },
+    "/usr/adobe/Acrobat4.0/Browsers": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Browsers",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Browsers",
+      "original_mode": "0o755",
+      "type": "directory",
+      "mode": "0o755"
+    },
+    "/usr/adobe/Acrobat4.0/Browsers/mipsirix": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Browsers/mipsirix",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Browsers/mipsirix",
+      "original_mode": "0o755",
+      "type": "directory",
+      "mode": "0o755"
+    },
+    "/usr/adobe/Acrobat4.0/Browsers/mipsirix/nppdf.so": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Browsers/mipsirix/nppdf.so",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Browsers/mipsirix/nppdf.so",
+      "original_mode": "0o755",
+      "type": "file",
+      "bytes": 152656,
+      "sha256": "b5eb867d11b8e6b2c75bab6b6a86e6cb562b16e2a6fafc484b426a350372ae11",
+      "mode": "0o555",
+      "elf": {
+        "class": 32,
+        "endian": "big",
+        "machine": 8,
+        "abi": "o32",
+        "type": 3,
+        "flags": "0x2",
+        "entry": "0x2243ac0",
+        "interpreter": [],
+        "needed": [],
+        "rpath": [],
+        "soname": [
+          "nppdf.so"
+        ],
+        "loads": [
+          {
+            "offset": 0,
+            "address": 35913728,
+            "file_bytes": 77824,
+            "memory_bytes": 77824,
+            "flags": 5,
+            "alignment": 4096
+          },
+          {
+            "offset": 77824,
+            "address": 36044800,
+            "file_bytes": 12288,
+            "memory_bytes": 12288,
+            "flags": 6,
+            "alignment": 4096
+          }
+        ],
+        "load_boundaries_8k": false,
+        "liblist": [],
+        "mips_rld_version": 1,
+        "mips_flags": "0xc11"
+      }
+    },
+    "/usr/adobe/Acrobat4.0/Browsers/netscape": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Browsers/netscape",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Browsers/netscape",
+      "original_mode": "0o755",
+      "type": "file",
+      "bytes": 4852,
+      "sha256": "531ad5125e686bab304df1c965ad4ac4b91837f803b7e2f3807967d8c0429fdf",
+      "mode": "0o755"
+    },
+    "/usr/adobe/Acrobat4.0/Resource": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Resource",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Resource",
+      "original_mode": "0o755",
+      "type": "directory",
+      "mode": "0o755"
+    },
+    "/usr/adobe/Acrobat4.0/Resource/Font": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Resource/Font",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Resource/Font",
+      "original_mode": "0o755",
+      "type": "directory",
+      "mode": "0o755"
+    },
+    "/usr/adobe/Acrobat4.0/Resource/Font/AdobeSansMM": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Resource/Font/AdobeSansMM",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Resource/Font/AdobeSansMM",
+      "original_mode": "0o444",
+      "type": "file",
+      "bytes": 146100,
+      "sha256": "3523c77d2d670743efa5771378d360b4b26a46bcff81b36e2929dfd5e4447f5e",
+      "mode": "0o644"
+    },
+    "/usr/adobe/Acrobat4.0/Resource/Font/AdobeSansMM.MMM": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Resource/Font/AdobeSansMM.MMM",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Resource/Font/AdobeSansMM.MMM",
+      "original_mode": "0o444",
+      "type": "file",
+      "bytes": 7188,
+      "sha256": "129ef4d95e942b5931d6edf56612046df789d35af8903585da964d155d21c7ba",
+      "mode": "0o644"
+    },
+    "/usr/adobe/Acrobat4.0/Resource/Font/AdobeSerifMM": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Resource/Font/AdobeSerifMM",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Resource/Font/AdobeSerifMM",
+      "original_mode": "0o444",
+      "type": "file",
+      "bytes": 188429,
+      "sha256": "872a37bd7f0da92748e5537c7808106cb4f7dc980beb9bac191a71629edc2afc",
+      "mode": "0o644"
+    },
+    "/usr/adobe/Acrobat4.0/Resource/Font/AdobeSerifMM.MMM": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Resource/Font/AdobeSerifMM.MMM",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Resource/Font/AdobeSerifMM.MMM",
+      "original_mode": "0o444",
+      "type": "file",
+      "bytes": 7188,
+      "sha256": "ce7b65807dccd3f63c54700da51d7e6180033d4e9fe6fe37891dfb4360d12523",
+      "mode": "0o644"
+    },
+    "/usr/adobe/Acrobat4.0/Resource/Font/Arial": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Resource/Font/Arial",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Resource/Font/Arial",
+      "original_mode": "0o444",
+      "type": "file",
+      "bytes": 63350,
+      "sha256": "4bc43e069e0877c93f77ec0890a83b8c8dc992a2b56bf9498a49b0ebd580ef77",
+      "mode": "0o644"
+    },
+    "/usr/adobe/Acrobat4.0/Resource/Font/Arial-Bold": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Resource/Font/Arial-Bold",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Resource/Font/Arial-Bold",
+      "original_mode": "0o444",
+      "type": "file",
+      "bytes": 63097,
+      "sha256": "f968b26aba6ded974fdd0c44ce91e34260fba61b06efe8daaacc132754aa4c45",
+      "mode": "0o644"
+    },
+    "/usr/adobe/Acrobat4.0/Resource/Font/Arial-BoldItalic": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Resource/Font/Arial-BoldItalic",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Resource/Font/Arial-BoldItalic",
+      "original_mode": "0o444",
+      "type": "file",
+      "bytes": 63183,
+      "sha256": "2e0b085bae2186fa785b061ed399305fae6f580073ab5dcd67959b6e981e485f",
+      "mode": "0o644"
+    },
+    "/usr/adobe/Acrobat4.0/Resource/Font/Arial-Italic": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Resource/Font/Arial-Italic",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Resource/Font/Arial-Italic",
+      "original_mode": "0o444",
+      "type": "file",
+      "bytes": 63389,
+      "sha256": "7212fe89778542ad09d00093e3d03ed858b24ae3a05a5c1cdf923b2f95b56f39",
+      "mode": "0o644"
+    },
+    "/usr/adobe/Acrobat4.0/Resource/Font/Courier": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Resource/Font/Courier",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Resource/Font/Courier",
+      "original_mode": "0o444",
+      "type": "file",
+      "bytes": 68703,
+      "sha256": "a95fbc2680ee2c47d997767c660beda61faf29f738a42d7b5454c858e9dd3b00",
+      "mode": "0o644"
+    },
+    "/usr/adobe/Acrobat4.0/Resource/Font/Courier-Bold": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Resource/Font/Courier-Bold",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Resource/Font/Courier-Bold",
+      "original_mode": "0o444",
+      "type": "file",
+      "bytes": 70543,
+      "sha256": "9c375fbee9df50b136348cda93f441f8c82d11d7abcdd9562198331722034076",
+      "mode": "0o644"
+    },
+    "/usr/adobe/Acrobat4.0/Resource/Font/Courier-BoldOblique": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Resource/Font/Courier-BoldOblique",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Resource/Font/Courier-BoldOblique",
+      "original_mode": "0o444",
+      "type": "file",
+      "bytes": 101247,
+      "sha256": "b9feec874340241128ce78c4d1519c21b978d3c0b491906bad72431d844e4f9e",
+      "mode": "0o644"
+    },
+    "/usr/adobe/Acrobat4.0/Resource/Font/Courier-Oblique": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Resource/Font/Courier-Oblique",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Resource/Font/Courier-Oblique",
+      "original_mode": "0o444",
+      "type": "file",
+      "bytes": 97061,
+      "sha256": "75fdd4f6cfefc3fc7757332bbebf9680acdcd9d26a18b2ff007e8aed7c855066",
+      "mode": "0o644"
+    },
+    "/usr/adobe/Acrobat4.0/Resource/Font/Fonts14.upr": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Resource/Font/Fonts14.upr",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Resource/Font/Fonts14.upr",
+      "original_mode": "0o444",
+      "type": "file",
+      "bytes": 1305,
+      "sha256": "b7c1d6d760d33b3a44358a810d1013eafedd165ccece75c1f398bc3751c2f0b1",
+      "mode": "0o644"
+    },
+    "/usr/adobe/Acrobat4.0/Resource/Font/Symbol": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Resource/Font/Symbol",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Resource/Font/Symbol",
+      "original_mode": "0o444",
+      "type": "file",
+      "bytes": 58647,
+      "sha256": "6effde1ce90d1a63209484db837bf41b7cd2bcb4acf7e7e06ce9c5ecdd5fad3b",
+      "mode": "0o644"
+    },
+    "/usr/adobe/Acrobat4.0/Resource/Font/TimesNewRoman": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Resource/Font/TimesNewRoman",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Resource/Font/TimesNewRoman",
+      "original_mode": "0o444",
+      "type": "file",
+      "bytes": 69881,
+      "sha256": "4582b6cb3e056c3c89f133e3775a4b6c862558caead5589cb40f060c0447b1d3",
+      "mode": "0o644"
+    },
+    "/usr/adobe/Acrobat4.0/Resource/Font/TimesNewRoman-Bold": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Resource/Font/TimesNewRoman-Bold",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Resource/Font/TimesNewRoman-Bold",
+      "original_mode": "0o444",
+      "type": "file",
+      "bytes": 69858,
+      "sha256": "afd878e3a3727108b0162446e5bf2f1fe54c4b878e8da2deeb41c4aeb713033f",
+      "mode": "0o644"
+    },
+    "/usr/adobe/Acrobat4.0/Resource/Font/TimesNewRoman-BoldItalic": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Resource/Font/TimesNewRoman-BoldItalic",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Resource/Font/TimesNewRoman-BoldItalic",
+      "original_mode": "0o444",
+      "type": "file",
+      "bytes": 76267,
+      "sha256": "da7364dd750b78286f3702f6a687f505c62bb86417a9268b87a5de46f05ecdb0",
+      "mode": "0o644"
+    },
+    "/usr/adobe/Acrobat4.0/Resource/Font/TimesNewRoman-Italic": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Resource/Font/TimesNewRoman-Italic",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Resource/Font/TimesNewRoman-Italic",
+      "original_mode": "0o444",
+      "type": "file",
+      "bytes": 74198,
+      "sha256": "3be18727bd20cd3e1e36b9f94acfb7821d34cadaf76476edb89b177ded97561e",
+      "mode": "0o644"
+    },
+    "/usr/adobe/Acrobat4.0/Resource/Font/ZapfDingbats": {
+      "irix_source": "/usr/adobe/Acrobat4.0/Resource/Font/ZapfDingbats",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/Resource/Font/ZapfDingbats",
+      "original_mode": "0o444",
+      "type": "file",
+      "bytes": 78084,
+      "sha256": "994018f03f44551b4ce6821e60897119e5d12b60c78d4927a2a4448e30832c1f",
+      "mode": "0o644"
+    },
+    "/usr/adobe/Acrobat4.0/bin": {
+      "irix_source": "/usr/adobe/Acrobat4.0/bin",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/bin",
+      "original_mode": "0o755",
+      "type": "directory",
+      "mode": "0o755"
+    },
+    "/usr/adobe/Acrobat4.0/bin/acroread": {
+      "irix_source": "/usr/adobe/Acrobat4.0/bin/acroread",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/bin/acroread",
+      "original_mode": "0o755",
+      "type": "file",
+      "bytes": 715,
+      "sha256": "116485c0bc6f9941356a072e6daf63e06fe3dcf98e23f1dd67cb37176369267b",
+      "mode": "0o755"
+    },
+    "/usr/adobe/Acrobat4.0/bin/acroread.dist": {
+      "irix_source": "/usr/adobe/Acrobat4.0/bin/acroread.dist",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/bin/acroread.dist",
+      "original_mode": "0o755",
+      "type": "file",
+      "bytes": 8830,
+      "sha256": "5d465553c5118d3e2dbe00bf4839cef1c9c7bd3e6daa6e67fb78e1ce63a0ce3b",
+      "mode": "0o755"
+    },
+    "/usr/adobe/Acrobat4.0/ReadMe": {
+      "irix_source": "/usr/adobe/Acrobat4.0/ReadMe",
+      "netbsd_destination": "/emul/irix/usr/adobe/Acrobat4.0/ReadMe",
+      "original_mode": "0o644",
+      "type": "file",
+      "bytes": 22054,
+      "sha256": "2f58433f1204c5a7c7c1999fbf1664014f15f0e0fbaa97a45c8a40abf8be410a",
+      "mode": "0o644"
+    },
+    "/usr/lib/libMrm.so.1": {
+      "irix_source": "/usr/lib/libMrm.so.1",
+      "netbsd_destination": "/emul/irix/usr/lib/libMrm.so.1",
+      "type": "file",
+      "canonical_source": "/usr/lib/libMrm.so.1",
+      "original_mode": "0o444",
+      "mode": "0o555",
+      "bytes": 237540,
+      "sha256": "45146a50317f606a9f029b30e64edd0a220eea30a6fb763e910fcd9189eb2d90",
+      "elf": {
+        "class": 32,
+        "endian": "big",
+        "machine": 8,
+        "abi": "o32",
+        "type": 3,
+        "flags": "0x10000003",
+        "entry": "0xbbc64d0",
+        "interpreter": [],
+        "needed": [
+          "libXm.so.1",
+          "libXt.so",
+          "libX11.so.1",
+          "libc.so.1"
+        ],
+        "rpath": [],
+        "soname": [
+          "libMrm.so.1"
+        ],
+        "loads": [
+          {
+            "offset": 0,
+            "address": 196870144,
+            "file_bytes": 118784,
+            "memory_bytes": 118784,
+            "flags": 5,
+            "alignment": 8192
+          },
+          {
+            "offset": 118784,
+            "address": 197054464,
+            "file_bytes": 16384,
+            "memory_bytes": 16496,
+            "flags": 6,
+            "alignment": 4096
+          }
+        ],
+        "load_boundaries_8k": false,
+        "liblist": [
+          "libXm.so.1",
+          "libXt.so",
+          "libX11.so.1",
+          "libc.so.1"
+        ],
+        "mips_rld_version": 1,
+        "mips_flags": "0x6c11"
+      }
+    }
+  },
+  "dependencies": [
+    {
+      "source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/autoIndx.api",
+      "needed": "libXm.so.1",
+      "selected": "/usr/lib/libXm.so.1",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/autoIndx.api",
+      "needed": "libXt.so",
+      "selected": "/usr/lib/libXt.so",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/autoIndx.api",
+      "needed": "libXext.so",
+      "selected": "/usr/lib/libXext.so",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/autoIndx.api",
+      "needed": "libX11.so.1",
+      "selected": "/usr/lib/libX11.so.1",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/search.api",
+      "needed": "libMrm.so.1",
+      "selected": "/usr/lib/libMrm.so.1",
+      "in_existing_payload": false
+    },
+    {
+      "source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/search.api",
+      "needed": "libXm.so.1",
+      "selected": "/usr/lib/libXm.so.1",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/search.api",
+      "needed": "libXt.so",
+      "selected": "/usr/lib/libXt.so",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/search.api",
+      "needed": "libXext.so",
+      "selected": "/usr/lib/libXext.so",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/search.api",
+      "needed": "libX11.so.1",
+      "selected": "/usr/lib/libX11.so.1",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/AcroForm.api",
+      "needed": "libm.so",
+      "selected": "/usr/lib/libm.so",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/AcroForm.api",
+      "needed": "libgen.so",
+      "selected": "/usr/lib/libgen.so",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/AcroForm.api",
+      "needed": "libC.so",
+      "selected": "/usr/lib/libC.so",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/AcroForm.api",
+      "needed": "libXm.so.1",
+      "selected": "/usr/lib/libXm.so.1",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/AcroForm.api",
+      "needed": "libXt.so",
+      "selected": "/usr/lib/libXt.so",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/AcroForm.api",
+      "needed": "libXext.so",
+      "selected": "/usr/lib/libXext.so",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/AcroForm.api",
+      "needed": "libX11.so.1",
+      "selected": "/usr/lib/libX11.so.1",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/Highlight.api",
+      "needed": "libXm.so.1",
+      "selected": "/usr/lib/libXm.so.1",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/Highlight.api",
+      "needed": "libXt.so",
+      "selected": "/usr/lib/libXt.so",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/Highlight.api",
+      "needed": "libXext.so",
+      "selected": "/usr/lib/libXext.so",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/Highlight.api",
+      "needed": "libX11.so.1",
+      "selected": "/usr/lib/libX11.so.1",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/ewh.api",
+      "needed": "libXm.so.1",
+      "selected": "/usr/lib/libXm.so.1",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/ewh.api",
+      "needed": "libXt.so",
+      "selected": "/usr/lib/libXt.so",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/ewh.api",
+      "needed": "libXext.so",
+      "selected": "/usr/lib/libXext.so",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/ewh.api",
+      "needed": "libX11.so.1",
+      "selected": "/usr/lib/libX11.so.1",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/wwwlink.api.vulnerable",
+      "needed": "libXm.so.1",
+      "selected": "/usr/lib/libXm.so.1",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/wwwlink.api.vulnerable",
+      "needed": "libXt.so",
+      "selected": "/usr/lib/libXt.so",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/wwwlink.api.vulnerable",
+      "needed": "libXext.so",
+      "selected": "/usr/lib/libXext.so",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/wwwlink.api.vulnerable",
+      "needed": "libX11.so.1",
+      "selected": "/usr/lib/libX11.so.1",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/plug_ins/wwwlink.api.vulnerable",
+      "needed": "libm.so",
+      "selected": "/usr/lib/libm.so",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/bin/acroread",
+      "needed": "libreadcore.so.4.0",
+      "selected": "/usr/adobe/Acrobat4.0/Reader/mipsirix/lib/libreadcore.so.4.0",
+      "in_existing_payload": false
+    },
+    {
+      "source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/bin/acroread",
+      "needed": "libAGM.so.3.0",
+      "selected": "/usr/adobe/Acrobat4.0/Reader/mipsirix/lib/libAGM.so.3.0",
+      "in_existing_payload": false
+    },
+    {
+      "source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/bin/acroread",
+      "needed": "libCoolType.so.1.0",
+      "selected": "/usr/adobe/Acrobat4.0/Reader/mipsirix/lib/libCoolType.so.1.0",
+      "in_existing_payload": false
+    },
+    {
+      "source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/bin/acroread",
+      "needed": "libICC.so.1.0",
+      "selected": "/usr/adobe/Acrobat4.0/Reader/mipsirix/lib/libICC.so.1.0",
+      "in_existing_payload": false
+    },
+    {
+      "source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/bin/acroread",
+      "needed": "libXm.so.1",
+      "selected": "/usr/lib/libXm.so.1",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/bin/acroread",
+      "needed": "libXt.so",
+      "selected": "/usr/lib/libXt.so",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/bin/acroread",
+      "needed": "libXext.so",
+      "selected": "/usr/lib/libXext.so",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/bin/acroread",
+      "needed": "libX11.so.1",
+      "selected": "/usr/lib/libX11.so.1",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/bin/acroread",
+      "needed": "libgen.so",
+      "selected": "/usr/lib/libgen.so",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/bin/acroread",
+      "needed": "libm.so",
+      "selected": "/usr/lib/libm.so",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/bin/acroread",
+      "needed": "libC.so",
+      "selected": "/usr/lib/libC.so",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/bin/acroread",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib/libc.so.1",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/bin/adobeLicense",
+      "needed": "libXm.so.1",
+      "selected": "/usr/lib/libXm.so.1",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/bin/adobeLicense",
+      "needed": "libXt.so",
+      "selected": "/usr/lib/libXt.so",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/bin/adobeLicense",
+      "needed": "libX11.so.1",
+      "selected": "/usr/lib/libX11.so.1",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/adobe/Acrobat4.0/Reader/mipsirix/bin/adobeLicense",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib/libc.so.1",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/lib/libMrm.so.1",
+      "needed": "libXm.so.1",
+      "selected": "/usr/lib/libXm.so.1",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/lib/libMrm.so.1",
+      "needed": "libXt.so",
+      "selected": "/usr/lib/libXt.so",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/lib/libMrm.so.1",
+      "needed": "libX11.so.1",
+      "selected": "/usr/lib/libX11.so.1",
+      "in_existing_payload": true
+    },
+    {
+      "source": "/usr/lib/libMrm.so.1",
+      "needed": "libc.so.1",
+      "selected": "/usr/lib/libc.so.1",
+      "in_existing_payload": true
+    }
+  ],
+  "elf_parser_sha256": "aadf43001a1ef36cb4c923d8514291739dff76febf72e93d34bb0f64cfed809e",
+  "limitations": [
+    "Original application resources only; user settings and package database are excluded.",
+    "Plugin execution and additional dynamic dependencies require separate qualification."
+  ]
+}
