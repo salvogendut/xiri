@@ -98,8 +98,8 @@ and first qualify system stability. The [native stability probe](../lab/system-s
 repeats X input, child supervision, both user desktops, logout and clean halt
 with diagnostics that distinguish transport, process and kernel failures.
 Preserve the survey's native child-control stalls, failed batch halt and the
-Acrobat image's transient native input timeout as unresolved evidence until
-a cause is reproduced and a correction is tested.
+Acrobat image's transient native input timeout as evidence; require a
+reproduced cause and tested correction before closing each observation.
 The [system cycle](results/2026-11-04-system-stability.md) has also reproduced
 and corrected native NetBSD32 CD9660 ownership/mask translation; that cause is
 separate from the earlier stalls. The corrected core passes 158 CD checks.
@@ -113,16 +113,29 @@ recovery, rendering, catalog and clean halt. Its application gate reproduces
 the native XTest timeout at `button-sync`, including a shorter capture/click
 test. A stopped-client diagnostic also reaches that alarm, but native GDB
 crashes during inspection; later procfs reads do not establish the earlier
-cause. Keep the previous manual image selected. Next, capture Xorg's delayed
-request/wakeup state at the failure using a working inspection path. Preserve
-the separate coordinate/focus fixture failures and interrupted runs as
-exclusions; do not count retries as acceptance. Native child-control stalls,
-the earlier catalog halt, Type1 metrics and Xft/Render remain open system work.
+cause. The [follow-up](results/2026-11-04-xorg-scheduling.md) now captures that
+state at the alarm: the release is ready, while a higher-priority client
+continues QueryPointer requests. Round-robin Xorg dispatch avoids the stall.
+The selected replacement passes 60 native query-loop controls, six complete
+Acrobat sequences, GNOME Terminal, CD9660 and both-user session/shutdown gates;
+a separate reduced replay passes 60 capture/focus cycles. Keep the original
+failures, fixture exclusions and normal shell-zombie observation distinct.
+Native child-control stalls, the earlier catalog halt, Type1 metrics and
+Xft/Render remain open system work.
 
-The next shared-system candidates are the native Xft/Render and Type1 font
-gaps, common IRIX filesystem/timing/job-control interfaces, and general
+The user's 2026-11-05 follow-up selects native fonts as the next cycle now
+that the scheduling image passes: investigate the Type1/Courier metric collapse
+and accelerated Xft/Render text, retaining the SGI Screen bitmap fallback
+until a replacement is qualified. Compare winterm with its earlier Courier
+appearance. Also compare Toolchest menus against IRIX 6.5.22: some entries
+appear entirely blank. Distinguish absent labels/resources from clipping or
+rendering before assigning a cause; do not assume every blank row is the
+same font defect.
+
+Other shared-system candidates are common IRIX filesystem/timing/job-control
+interfaces and general
 deployment beyond the current test account and custom core hooks. Select the
-next cycle from measured impact after the stability results. Keep NEdit file
+following cycle from measured impact after the font/menu results. Keep NEdit file
 creation and the missing Lynx/Midnight Commander payloads queued for the later
 application pass. Keep Acrobat's
 wrapper execution feedback, broader PDF use and print/browser integration

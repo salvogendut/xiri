@@ -1,0 +1,775 @@
+{
+  "schema": 1,
+  "scope": "alarm-time Xorg state and native scheduler diagnostics; separate from image qualification",
+  "context": {
+    "cycle": "XTest timeout investigation",
+    "date_utc": "2026-11-04",
+    "upstream_checked_utc": "2026-11-04 21:45",
+    "upstream": "3bcde9f702f0b52fdb296eeda4fe10b26555f3da",
+    "upstream_integration": "already contained; no new merge/build",
+    "manual_before": {
+      ".work/images/xiri-netbsd-desktop-20261104-acrobat/netbsd-xiri.chd": "c10185ffd95a08a1db31d325ad6fe6ee537e9f18de230347f435960858388b6d",
+      "lab/irix-installed-desktop/image.json": "6baba631a45aa4b901ecfe43f8f786c49fce6271344697716f3e623ca922a065",
+      "scripts/probe-system-stability.py": "b225fa8a5d9562a76a4a18407ce968d1f7e2a30a8887db89232dc7389856ff39",
+      "scripts/xiri_lab/image_apps.py": "34d468f7a3cfd2e312f5ad30d4588cb80db000a90e85650636d9009d3f6407b5",
+      ".work/images/xiri-netbsd-desktop-20261104-acrobat/nvram.bin": "2590e2a737ea22712ca7354d593913f8a6804f2fe3b8a06ecf32e54b650331fe",
+      ".work/images/xiri-netbsd-desktop-20261104-acrobat/netbsd-xiri.chd.diff.chd": "2b2ac7f06201fd7aecafd092990ea424f38408291cede929309723194b9bd976",
+      ".work/images/xiri-netbsd-desktop-20261104-acrobat/nvram-graphics.bin": "8bac0c9111fb5b5ab5095fcaf648567db607d0c9b87f5bdd010b85c652053e9d"
+    },
+    "repos": {
+      ".": "3cdf36d92a033d1a9a51c325c56181017e067638",
+      "../iris": "bd67e65ff159748635dd484adf7fac94a591f84b",
+      "../NetBSD-xiri": "0cd56e7a286c4cd3d67ab7cc971b233a83ac1655"
+    },
+    "active_day_recheck": {
+      "local_date": "2026-11-05",
+      "checked_utc": "2026-11-04 23:00",
+      "upstream": "3bcde9f702f0b52fdb296eeda4fe10b26555f3da",
+      "result": "already integrated; both fork xiri branches clean and match origin; no affected rebuild"
+    }
+  },
+  "run": ".work/system-stability/boot-xt37m0co",
+  "reproductions": [
+    {
+      "directory": ".work/system-stability/boot-xt37m0co/state-replay-3",
+      "status": "timeout-captured",
+      "repetition": 8,
+      "passes_before": 7,
+      "trace": "CLICK BEGIN stage=open mono=1218.495978056\nCLICK END stage=open mono=1218.522043511\nCLICK BEGIN stage=motion-sync mono=1218.522314207\nCLICK END stage=motion-sync mono=1218.530477056\nCLICK BEGIN stage=button-sync mono=1218.738685601\nCLICK_TIMEOUT state captured in snapshot\n",
+      "snapshot": {
+        "path": "docs/results/2026-11-04-xorg-scheduling-initial.log",
+        "sha256": "35cb79f8c2ce73d718e1d5e13ce37fd47ca01aef011ac2171ce6891e2c4f7e12"
+      },
+      "original_result": {
+        "path": ".work/system-stability/boot-xt37m0co/state-replay-3/result.json",
+        "sha256": "987047f8e5bd021042eed96b192502e403e2f0ac5ba82d2103d24a6f8899c16c"
+      },
+      "diagnostic_record": {
+        "path": ".work/system-stability/boot-xt37m0co/state-replay-3/diagnostic.json",
+        "sha256": "e088e50579d8d1a8bba26b7359d421091dae57fbf0c596091b3436c782cec4d4"
+      },
+      "server_pid": 1058,
+      "server_sha256": "48a4a07110209f604e75bd03f82494be838a80d51d12492769b323f3a1595ee4",
+      "config": "1058\ngrabState 303f40 1\ngrabClient 303f44 1\npPending 30697c 1\ncurrentTime 30216c 2\nBlockHandlerRegistered 306974 1\ntimers 308b08 8\nAllSockets 30abfc 16\nAllClients 30ac7c 16\nLastSelectMask 30ac3c 16\nClientsWithInput 30ad3c 16\nGrabInProgress 308994 1\nNewOutputPending 30229c 1\nAnyClientsWriteBlocked 3022a4 1\nOutputPending 30ad7c 16\nClientsWriteBlocked 30acbc 16\nSmartScheduleTime 302150 1\ndispatchException 303e68 1\nclients 30a020 64\nConnectionTranslation 308990 1\nSavedAllClients 308a28 16\nSavedAllSockets 3089e8 16\nSavedClientsWithInput 3089a8 16\nIgnoredClientsWithInput 30abbc 16\nGrabImperviousClients 308a68 16\n",
+      "geometry": "\nxwininfo: Window id: 0x1800175 \"xiri-acrobat-test.pdf\"\n\n  Absolute upper-left X:  50\n  Absolute upper-left Y:  50\n  Relative upper-left X:  0\n  Relative upper-left Y:  0\n  Width: 800\n  Height: 600\n  Depth: 24\n  Visual: 0x21\n  Visual Class: TrueColor\n  Border width: 0\n  Class: InputOutput\n  Colormap: 0x20 (not installed)\n  Bit Gravity State: ForgetGravity\n  Window Gravity State: NorthWestGravity\n  Backing Store State: NotUseful\n  Save Under State: no\n  Map State: IsViewable\n  Override Redirect State: no\n  Corners:  +50+50  -430+50  -430-374  +50-374\n  -geometry 800x600+42+18\n\n",
+      "sources": {
+        "resume.py": {
+          "path": ".work/system-stability/boot-xt37m0co/state-replay-3/resume.py",
+          "sha256": "87d416b57e3f225173074dadf7ce5b2bd6ace9cdb2f6137888f9a049fac50496"
+        },
+        "diagnostic.py": {
+          "path": ".work/system-stability/boot-xt37m0co/state-replay-3/diagnostic.py",
+          "sha256": "6be067dbfc20f465c2962406a2ae72d0b0d11d440cf268c5a362dcaca6aa3f86"
+        },
+        "requests.py": {
+          "path": ".work/system-stability/boot-xt37m0co/state-replay-3/requests.py",
+          "sha256": "661313ba2bd97f8025a89644037b5e797a0f693ab5f357e5912bbec2c4377bb9"
+        }
+      }
+    },
+    {
+      "directory": ".work/system-stability/boot-xt37m0co/state-replay-v2",
+      "status": "timeout-captured",
+      "repetition": 30,
+      "passes_before": 29,
+      "trace": "CLICK BEGIN stage=open mono=2020.549058356\nCLICK END stage=open mono=2020.570592781\nCLICK BEGIN stage=motion-sync mono=2020.570777568\nCLICK END stage=motion-sync mono=2020.577367902\nCLICK BEGIN stage=button-sync mono=2020.784906114\nCLICK_TIMEOUT state captured in snapshot\n",
+      "snapshot": {
+        "path": "docs/results/2026-11-04-xorg-scheduling-expanded.log",
+        "sha256": "21acea8b8104aff68f0fbb4ae821142668a0d9c5d42954c6eb5cac3a05947343"
+      },
+      "original_result": {
+        "path": ".work/system-stability/boot-xt37m0co/state-replay-v2/result.json",
+        "sha256": "3ebbfdb68edd35eb759e41c14ff7ac39adcebff80183a414c4bea5c91511f5ee"
+      },
+      "diagnostic_record": {
+        "path": ".work/system-stability/boot-xt37m0co/state-replay-v2/diagnostic.json",
+        "sha256": "b846024febe98ff0278394e9057672d8753f5fa21b88b9d332a8c25580ed5a59"
+      },
+      "server_pid": 1058,
+      "server_sha256": "48a4a07110209f604e75bd03f82494be838a80d51d12492769b323f3a1595ee4",
+      "config": "1058\ngrabState 303f40 1\ngrabClient 303f44 1\npPending 30697c 1\ncurrentTime 30216c 2\nBlockHandlerRegistered 306974 1\ntimers 308b08 8\nAllSockets 30abfc 16\nAllClients 30ac7c 16\nLastSelectMask 30ac3c 16\nClientsWithInput 30ad3c 16\nGrabInProgress 308994 1\nNewOutputPending 30229c 1\nAnyClientsWriteBlocked 3022a4 1\nOutputPending 30ad7c 16\nClientsWriteBlocked 30acbc 16\nSmartScheduleTime 302150 1\ndispatchException 303e68 1\nclients 30a020 64\nConnectionTranslation 308990 1\nSavedAllClients 308a28 16\nSavedAllSockets 3089e8 16\nSavedClientsWithInput 3089a8 16\nIgnoredClientsWithInput 30abbc 16\nGrabImperviousClients 308a68 16\nSmartScheduleDisable 303e64 1\nSmartScheduleSlice 2faa60 1\nSmartScheduleInterval 2faa5c 1\nSmartScheduleMaxSlice 2faa58 1\nSmartLastClient 303f14 1\nSmartLastIndex 303e70 41\nnready.0 308b00 1\n",
+      "geometry": "\nxwininfo: Window id: 0x1800175 \"xiri-acrobat-test.pdf\"\n\n  Absolute upper-left X:  50\n  Absolute upper-left Y:  50\n  Relative upper-left X:  0\n  Relative upper-left Y:  0\n  Width: 800\n  Height: 600\n  Depth: 24\n  Visual: 0x21\n  Visual Class: TrueColor\n  Border width: 0\n  Class: InputOutput\n  Colormap: 0x20 (installed)\n  Bit Gravity State: ForgetGravity\n  Window Gravity State: NorthWestGravity\n  Backing Store State: NotUseful\n  Save Under State: no\n  Map State: IsViewable\n  Override Redirect State: no\n  Corners:  +50+50  -430+50  -430-374  +50-374\n  -geometry 800x600+42+18\n\n",
+      "sources": {
+        "resume-v2.py": {
+          "path": ".work/system-stability/boot-xt37m0co/state-replay-v2/resume-v2.py",
+          "sha256": "c91e8ccedda7baed505e9fb1db9f626c5d2a3961250c698b6d273790954198cc"
+        },
+        "diagnostic_v2.py": {
+          "path": ".work/system-stability/boot-xt37m0co/state-replay-v2/diagnostic_v2.py",
+          "sha256": "6fa29c2e8d2d12dbd3d95b0ef330244c823b4bbb9df69ea6ab12d6612c4c06d3"
+        },
+        "requests.py": {
+          "path": ".work/system-stability/boot-xt37m0co/state-replay-v2/requests.py",
+          "sha256": "661313ba2bd97f8025a89644037b5e797a0f693ab5f357e5912bbec2c4377bb9"
+        }
+      }
+    }
+  ],
+  "public_source": {
+    "url": "https://www.x.org/releases/individual/xserver/xorg-server-1.10.6.tar.bz2",
+    "sha256": "c4da5a97b6986688efe74bc9bff6a38795977019ac032dd6d787abad32c50682"
+  },
+  "state_reader": {
+    "path": "lab/system-stability/click-state.c",
+    "sha256": "98e4ae60accb8826d0d4dc81f2d137efd9d6688f0c5d6d44f4bb35fdaca0fa46"
+  },
+  "native_control_source_artifacts": [
+    {
+      "path": ".work/xtest-delay/media-controls/xtest-fairness.c",
+      "sha256": "74c3688f320276cef97caa9b3cee7d9dd3d6759fba82853c857d27ec8ff6a1cd"
+    },
+    {
+      "path": ".work/xtest-delay/media-controls/scheduler-mode.c",
+      "sha256": "e599735f9e49057c9391dc0e43c8567bf099d84b41fe2b55a4f39add7917e3fb"
+    }
+  ],
+  "native_controls": [
+    {
+      "status": "differential-inconclusive",
+      "scope": "native ctwm, native Xlib receiver/sender, live Xorg flag differential",
+      "cases": [
+        {
+          "phase": "default-1",
+          "iteration": 1,
+          "status": 0,
+          "log": "FAIRNESS_BEGIN pid=5395 sender=2484 window=0xc00001 warmup=40\nCLICK BEGIN stage=open mono=2214.641312598\nCLICK END stage=open mono=2214.660125931\nCLICK BEGIN stage=motion-sync mono=2214.660307537\nCLICK END stage=motion-sync mono=2214.664461840\nCLICK BEGIN stage=button-sync mono=2214.865414871\nCLICK END stage=button-sync mono=2214.968028962\nCLICK BEGIN stage=close mono=2214.968210628\nCLICK END stage=close mono=2214.970680295\nFAIRNESS_RESULT released=1 sender_status=0 queries=148 seconds=0.397374\n"
+        },
+        {
+          "phase": "default-1",
+          "iteration": 2,
+          "status": 0,
+          "log": "FAIRNESS_BEGIN pid=5161 sender=2380 window=0xc00001 warmup=40\nCLICK BEGIN stage=open mono=2224.954059356\nCLICK END stage=open mono=2224.972828053\nCLICK BEGIN stage=motion-sync mono=2224.972995568\nCLICK END stage=motion-sync mono=2224.977413992\nCLICK BEGIN stage=button-sync mono=2225.185390840\nCLICK END stage=button-sync mono=2225.906337689\nCLICK BEGIN stage=close mono=2225.906519810\nCLICK END stage=close mono=2225.908084780\nFAIRNESS_RESULT released=1 sender_status=0 queries=1120 seconds=1.027216\n"
+        },
+        {
+          "phase": "default-1",
+          "iteration": 3,
+          "status": 0,
+          "log": "FAIRNESS_BEGIN pid=5403 sender=5020 window=0xc00001 warmup=40\nCLICK BEGIN stage=open mono=2235.991019931\nCLICK END stage=open mono=2236.010475446\nCLICK BEGIN stage=motion-sync mono=2236.010646295\nCLICK END stage=motion-sync mono=2236.014806537\nCLICK BEGIN stage=button-sync mono=2236.215391901\nCLICK END stage=button-sync mono=2239.906347113\nCLICK BEGIN stage=close mono=2239.906565962\nCLICK END stage=close mono=2239.908574174\nFAIRNESS_RESULT released=1 sender_status=0 queries=6111 seconds=3.993500\n"
+        },
+        {
+          "phase": "round-robin-1",
+          "iteration": 1,
+          "status": 0,
+          "log": "FAIRNESS_BEGIN pid=5018 sender=2506 window=0xc00001 warmup=40\nCLICK BEGIN stage=open mono=2252.563158234\nCLICK END stage=open mono=2252.580874022\nCLICK BEGIN stage=motion-sync mono=2252.581046780\nCLICK END stage=motion-sync mono=2252.584992568\nCLICK BEGIN stage=button-sync mono=2252.785415780\nCLICK END stage=button-sync mono=2252.889373598\nCLICK BEGIN stage=close mono=2252.889549265\nCLICK END stage=close mono=2252.891721871\nFAIRNESS_RESULT released=1 sender_status=0 queries=170 seconds=0.396769\n"
+        },
+        {
+          "phase": "round-robin-1",
+          "iteration": 2,
+          "status": 0,
+          "log": "FAIRNESS_BEGIN pid=2399 sender=2501 window=0xc00001 warmup=40\nCLICK BEGIN stage=open mono=2263.056103749\nCLICK END stage=open mono=2263.073989749\nCLICK BEGIN stage=motion-sync mono=2263.074156386\nCLICK END stage=motion-sync mono=2263.078152719\nCLICK BEGIN stage=button-sync mono=2263.285455325\nCLICK END stage=button-sync mono=2263.389751507\nCLICK BEGIN stage=close mono=2263.389967992\nCLICK END stage=close mono=2263.391878386\nFAIRNESS_RESULT released=1 sender_status=0 queries=167 seconds=0.407363\n"
+        },
+        {
+          "phase": "round-robin-1",
+          "iteration": 3,
+          "status": 0,
+          "log": "FAIRNESS_BEGIN pid=2622 sender=5676 window=0xc00001 warmup=40\nCLICK BEGIN stage=open mono=2273.637992628\nCLICK END stage=open mono=2273.655623234\nCLICK BEGIN stage=motion-sync mono=2273.655786598\nCLICK END stage=motion-sync mono=2273.659718901\nCLICK BEGIN stage=button-sync mono=2273.865772386\nCLICK END stage=button-sync mono=2273.968903295\nCLICK BEGIN stage=close mono=2273.969081204\nCLICK END stage=close mono=2273.970617628\nFAIRNESS_RESULT released=1 sender_status=0 queries=156 seconds=0.402925\n"
+        },
+        {
+          "phase": "default-2",
+          "iteration": 1,
+          "status": 0,
+          "log": "FAIRNESS_BEGIN pid=4435 sender=1188 window=0xc00001 warmup=40\nCLICK BEGIN stage=open mono=2286.570940507\nCLICK END stage=open mono=2286.589812749\nCLICK BEGIN stage=motion-sync mono=2286.590033052\nCLICK END stage=motion-sync mono=2286.594326658\nCLICK BEGIN stage=button-sync mono=2286.795390386\nCLICK END stage=button-sync mono=2292.856640022\nCLICK BEGIN stage=close mono=2292.856817961\nCLICK END stage=close mono=2292.858315355\nFAIRNESS_RESULT released=1 sender_status=0 queries=9837 seconds=6.360154\n"
+        },
+        {
+          "phase": "default-2",
+          "iteration": 2,
+          "status": 0,
+          "log": "FAIRNESS_BEGIN pid=934 sender=2425 window=0xc00001 warmup=40\nCLICK BEGIN stage=open mono=2302.939960174\nCLICK END stage=open mono=2302.959361779\nCLICK BEGIN stage=motion-sync mono=2302.959548143\nCLICK END stage=motion-sync mono=2302.966257537\nCLICK BEGIN stage=button-sync mono=2303.175399446\nCLICK END stage=button-sync mono=2303.906302658\nCLICK BEGIN stage=close mono=2303.906479295\nCLICK END stage=close mono=2303.908860325\nFAIRNESS_RESULT released=1 sender_status=0 queries=1197 seconds=1.036271\n"
+        },
+        {
+          "phase": "default-2",
+          "iteration": 3,
+          "status": 0,
+          "log": "FAIRNESS_BEGIN pid=1729 sender=4334 window=0xc00001 warmup=40\nCLICK BEGIN stage=open mono=2313.926460507\nCLICK END stage=open mono=2313.944491325\nCLICK BEGIN stage=motion-sync mono=2313.944653810\nCLICK END stage=motion-sync mono=2313.948916416\nCLICK BEGIN stage=button-sync mono=2314.155403234\nCLICK END stage=button-sync mono=2314.258423840\nCLICK BEGIN stage=close mono=2314.258597113\nCLICK END stage=close mono=2314.260977992\nFAIRNESS_RESULT released=1 sender_status=0 queries=154 seconds=0.401607\n"
+        },
+        {
+          "phase": "round-robin-2",
+          "iteration": 1,
+          "status": 0,
+          "log": "FAIRNESS_BEGIN pid=2283 sender=2389 window=0xc00001 warmup=40\nCLICK BEGIN stage=open mono=2326.889846810\nCLICK END stage=open mono=2326.910485931\nCLICK BEGIN stage=motion-sync mono=2326.910650689\nCLICK END stage=motion-sync mono=2326.914558567\nCLICK BEGIN stage=button-sync mono=2327.115407204\nCLICK END stage=button-sync mono=2327.220163780\nCLICK BEGIN stage=close mono=2327.220347386\nCLICK END stage=close mono=2327.221803840\nFAIRNESS_RESULT released=1 sender_status=0 queries=152 seconds=0.403039\n"
+        },
+        {
+          "phase": "round-robin-2",
+          "iteration": 2,
+          "status": 0,
+          "log": "FAIRNESS_BEGIN pid=2167 sender=2090 window=0xc00001 warmup=40\nCLICK BEGIN stage=open mono=2337.392162567\nCLICK END stage=open mono=2337.415465113\nCLICK BEGIN stage=motion-sync mono=2337.415640355\nCLICK END stage=motion-sync mono=2337.421799689\nCLICK BEGIN stage=button-sync mono=2337.622762598\nCLICK END stage=button-sync mono=2337.724970355\nCLICK BEGIN stage=close mono=2337.725174416\nCLICK END stage=close mono=2337.727296476\nFAIRNESS_RESULT released=1 sender_status=0 queries=168 seconds=0.403337\n"
+        },
+        {
+          "phase": "round-robin-2",
+          "iteration": 3,
+          "status": 0,
+          "log": "FAIRNESS_BEGIN pid=2398 sender=2464 window=0xc00001 warmup=40\nCLICK BEGIN stage=open mono=2348.470057810\nCLICK END stage=open mono=2348.502971173\nCLICK BEGIN stage=motion-sync mono=2348.503258416\nCLICK END stage=motion-sync mono=2348.507754022\nCLICK BEGIN stage=button-sync mono=2348.712784355\nCLICK END stage=button-sync mono=2348.820795961\nCLICK BEGIN stage=close mono=2348.821058870\nCLICK END stage=close mono=2348.824344689\nFAIRNESS_RESULT released=1 sender_status=0 queries=100 seconds=0.468084\n"
+        }
+      ],
+      "helper_source_sha256": "74c3688f320276cef97caa9b3cee7d9dd3d6759fba82853c857d27ec8ff6a1cd",
+      "helper_hashes": "SHA256 (xtest-fairness.c) = 74c3688f320276cef97caa9b3cee7d9dd3d6759fba82853c857d27ec8ff6a1cd\nSHA256 (xtest-fairness) = 640a8d0d9d10fd61d1279e0f9afb00f063ef3117b1e66d9a90504ac22168b6e0\nSHA256 (scheduler-mode.c) = e599735f9e49057c9391dc0e43c8567bf099d84b41fe2b55a4f39add7917e3fb\nSHA256 (scheduler-mode) = a1fd34173bfff4d51bff067675aa24644c8f3c526a99e060a6686fa98c618334\nSHA256 (click-trace) = 796746cd6193f0553bb4b871744fb8262579233b2dc25cecc41abb954b0cf4f1\n",
+      "default_failures": 0,
+      "round_robin_failures": 0,
+      "mode_changes": [
+        {
+          "phase": "default-1",
+          "output": "./scheduler-mode 1058 303e64 0; xiri_rc=$?; printf '\\nXIRI_35cba7e79d \bd345299bf1b8fc0187fdd6_RC=%s\\n' \"$xiri_rc\"\nSCHEDULER_MODE pid=1058 address=303e64 before=0 after=0 verified=1 resumed=1\n\nXIRI_35cba7e79dd345299bf1b8fc0187fdd6_RC=0\nxiri-indy# "
+        },
+        {
+          "phase": "round-robin-1",
+          "output": "./scheduler-mode 1058 303e64 1; xiri_rc=$?; printf '\\nXIRI_bcb7bc8137 \b1c47f7bab2f3e1344d8273_RC=%s\\n' \"$xiri_rc\"\nSCHEDULER_MODE pid=1058 address=303e64 before=0 after=1 verified=1 resumed=1\n\nXIRI_bcb7bc81371c47f7bab2f3e1344d8273_RC=0\nxiri-indy# "
+        },
+        {
+          "phase": "default-2",
+          "output": "./scheduler-mode 1058 303e64 0; xiri_rc=$?; printf '\\nXIRI_3b76e13576 \be740ebb27a0485e27c88f2_RC=%s\\n' \"$xiri_rc\"\nSCHEDULER_MODE pid=1058 address=303e64 before=1 after=0 verified=1 resumed=1\n\nXIRI_3b76e13576e740ebb27a0485e27c88f2_RC=0\nxiri-indy# "
+        },
+        {
+          "phase": "round-robin-2",
+          "output": "./scheduler-mode 1058 303e64 1; xiri_rc=$?; printf '\\nXIRI_3455a56a83 \b894247a5855cc45a285f19_RC=%s\\n' \"$xiri_rc\"\nSCHEDULER_MODE pid=1058 address=303e64 before=0 after=1 verified=1 resumed=1\n\nXIRI_3455a56a83894247a5855cc45a285f19_RC=0\nxiri-indy# "
+        }
+      ],
+      "original_result": {
+        "path": ".work/system-stability/boot-xt37m0co/native-controls/result.json",
+        "sha256": "28b2a27688771bdc7b3e6f3b99c678b973b3f7b72b0d50bfeb692a82f25eb06f"
+      },
+      "harness": {
+        "path": ".work/system-stability/boot-xt37m0co/native-controls/harness.py",
+        "sha256": "4fc65e60ff7c8ac7a11548646b6fc81eb3b75ad0c1d44039ce10d652ce63aadb"
+      }
+    },
+    {
+      "status": "completed-without-timeout-differential",
+      "scope": "native pointer-query stress; live differential and fresh Xorg startup",
+      "phases": [
+        {
+          "label": "default",
+          "mode": "./scheduler-mode 1058 303e64 0; xiri_rc=$?; printf '\\nXIRI_575826e938 \be341e69d2a1b74026eb4e5_RC=%s\\n' \"$xiri_rc\"\nSCHEDULER_MODE pid=1058 address=303e64 before=0 after=0 verified=1 resumed=1\n\nXIRI_575826e938e341e69d2a1b74026eb4e5_RC=0\nxiri-indy# ",
+          "log": "FAIRNESS_CASE=1\nFAIRNESS_BEGIN pid=2508 sender=5289 window=0xc00001 warmup=40\nCLICK BEGIN stage=open mono=2443.452260385\nCLICK END stage=open mono=2443.472801506\nCLICK BEGIN stage=motion-sync mono=2443.472989446\nCLICK END stage=motion-sync mono=2443.477569446\nCLICK BEGIN stage=button-sync mono=2443.687480143\nCLICK END stage=button-sync mono=2444.088534385\nCLICK BEGIN stage=close mono=2444.088708779\nCLICK END stage=close mono=2444.090768021\nFAIRNESS_RESULT released=1 sender_status=0 queries=618 seconds=0.721249\nFAIRNESS_STATUS=0\nFAIRNESS_CASE=2\nFAIRNESS_BEGIN pid=4853 sender=2467 window=0xc00001 warmup=40\nCLICK BEGIN stage=open mono=2444.320021718\nCLICK END stage=open mono=2444.341801446\nCLICK BEGIN stage=motion-sync mono=2444.342281961\nCLICK END stage=motion-sync mono=2444.348257567\nCLICK BEGIN stage=button-sync mono=2444.557457900\nCLICK END stage=button-sync mono=2450.188396294\nCLICK BEGIN stage=close mono=2450.188578385\nCLICK END stage=close mono=2450.190906082\nFAIRNESS_RESULT released=1 sender_status=0 queries=9201 seconds=5.942099\nFAIRNESS_STATUS=0\nFAIRNESS_CASE=3\nFAIRNESS_BEGIN pid=2282 sender=5148 window=0x1000001 warmup=40\nCLICK BEGIN stage=open mono=2450.387869234\nCLICK END stage=open mono=2450.405896719\nCLICK BEGIN stage=motion-sync mono=2450.406065143\nCLICK END stage=motion-sync mono=2450.410272446\nCLICK BEGIN stage=button-sync mono=2450.617519476\nCLICK END stage=button-sync mono=2451.088384628\nCLICK BEGIN stage=close mono=2451.088563749\nCLICK END stage=close mono=2451.090924900\nFAIRNESS_RESULT released=1 sender_status=0 queries=778 seconds=0.766974\nFAIRNESS_STATUS=0\nFAIRNESS_CASE=4\nFAIRNESS_BEGIN pid=5531 sender=3554 window=0xe00001 warmup=40\nCLICK BEGIN stage=open mono=2451.297191809\nCLICK END stage=open mono=2451.315452294\nCLICK BEGIN stage=motion-sync mono=2451.315616628\nCLICK END stage=motion-sync mono=2451.319846143\nCLICK BEGIN stage=button-sync mono=2451.527539022\nCLICK END stage=button-sync mono=2452.088374173\nCLICK BEGIN stage=close mono=2452.088553749\nCLICK END stage=close mono=2452.090047506\nFAIRNESS_RESULT released=1 sender_status=0 queries=905 seconds=0.867684\nFAIRNESS_STATUS=0\nFAIRNESS_CASE=5\nFAIRNESS_BEGIN pid=4653 sender=2377 window=0xc00001 warmup=40\nCLICK BEGIN stage=open mono=2452.305927870\nCLICK END stage=open mono=2452.324150718\nCLICK BEGIN stage=motion-sync mono=2452.324317658\nCLICK END stage=motion-sync mono=2452.328653658\nCLICK BEGIN stage=button-sync mono=2452.537493173\nCLICK END stage=button-sync mono=2453.118496719\nCLICK BEGIN stage=close mono=2453.118673143\nCLICK END stage=close mono=2453.121042900\nFAIRNESS_RESULT released=1 sender_status=0 queries=966 seconds=0.881051\nFAIRNESS_STATUS=0\nFAIRNESS_CASE=6\nFAIRNESS_BEGIN pid=5462 sender=2634 window=0x1000001 warmup=40\nCLICK BEGIN stage=open mono=2453.326654961\nCLICK END stage=open mono=2453.344751264\nCLICK BEGIN stage=motion-sync mono=2453.344923506\nCLICK END stage=motion-sync mono=2453.349173991\nCLICK BEGIN stage=button-sync mono=2453.557499325\nCLICK END stage=button-sync mono=2454.429276537\nCLICK BEGIN stage=close mono=2454.429529840\nCLICK END stage=close mono=2454.433357930\nFAIRNESS_RESULT released=1 sender_status=0 queries=1440 seconds=1.171022\nFAIRNESS_STATUS=0\nFAIRNESS_CASE=7\nFAIRNESS_BEGIN pid=5146 sender=2713 window=0xe00001 warmup=40\nCLICK BEGIN stage=open mono=2454.640333658\nCLICK END stage=open mono=2454.660317143\nCLICK BEGIN stage=motion-sync mono=2454.660494234\nCLICK END stage=motion-sync mono=2454.664638779\nCLICK BEGIN stage=button-sync mono=2454.867550719\nCLICK END stage=button-sync mono=2455.088438628\nCLICK BEGIN stage=close mono=2455.088616597\nCLICK END stage=close mono=2455.090966052\nFAIRNESS_RESULT released=1 sender_status=0 queries=351 seconds=0.516499\nFAIRNESS_STATUS=0\nFAIRNESS_CASE=8\nFAIRNESS_BEGIN pid=2712 sender=3903 window=0x1000001 warmup=40\nCLICK BEGIN stage=open mono=2455.291086961\nCLICK END stage=open mono=2455.309942385\nCLICK BEGIN stage=motion-sync mono=2455.310111718\nCLICK END stage=motion-sync mono=2455.314574143\nCLICK BEGIN stage=button-sync mono=2455.517501082\nCLICK END stage=button-sync mono=2459.119266021\nCLICK BEGIN stage=close mono=2459.119548385\nCLICK END stage=close mono=2459.123006416\nFAIRNESS_RESULT released=1 sender_status=0 queries=6020 seconds=3.895799\nFAIRNESS_STATUS=0\nFAIRNESS_CASE=9\nFAIRNESS_BEGIN pid=2629 sender=2527 window=0xe00001 warmup=40\nCLICK BEGIN stage=open mono=2459.322850628\nCLICK END stage=open mono=2459.342523294\nCLICK BEGIN stage=motion-sync mono=2459.342692809\nCLICK END stage=motion-sync mono=2459.347880203\nCLICK BEGIN stage=button-sync mono=2459.557550446\nCLICK END stage=button-sync mono=2461.088414718\nCLICK BEGIN stage=close mono=2461.088599324\nCLICK END stage=close mono=2461.090113718\nFAIRNESS_RESULT released=1 sender_status=0 queries=2575 seconds=1.839441\nFAIRNESS_STATUS=0\nFAIRNESS_CASE=10\nFAIRNESS_BEGIN pid=2513 sender=2626 window=0xc00001 warmup=40\nCLICK BEGIN stage=open mono=2461.289769415\nCLICK END stage=open mono=2461.308752203\nCLICK BEGIN stage=motion-sync mono=2461.308919446\nCLICK END stage=motion-sync mono=2461.312800355\nCLICK BEGIN stage=button-sync mono=2461.517534021\nCLICK END stage=button-sync mono=2464.428358082\nCLICK BEGIN stage=close mono=2464.428543688\nCLICK END stage=close mono=2464.430845961\nFAIRNESS_RESULT released=1 sender_status=0 queries=4816 seconds=3.207801\nFAIRNESS_STATUS=0\n",
+          "statuses": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "failures": 0
+        },
+        {
+          "label": "round-robin-live",
+          "mode": "./scheduler-mode 1058 303e64 1; xiri_rc=$?; printf '\\nXIRI_48a427111a \b424d94b3525ccb54254c32_RC=%s\\n' \"$xiri_rc\"\nSCHEDULER_MODE pid=1058 address=303e64 before=0 after=1 verified=1 resumed=1\n\nXIRI_48a427111a424d94b3525ccb54254c32_RC=0\nxiri-indy# ",
+          "log": "FAIRNESS_CASE=1\nFAIRNESS_BEGIN pid=3949 sender=1364 window=0xc00001 warmup=40\nCLICK BEGIN stage=open mono=2480.033462203\nCLICK END stage=open mono=2480.054468779\nCLICK BEGIN stage=motion-sync mono=2480.054658688\nCLICK END stage=motion-sync mono=2480.058945476\nCLICK BEGIN stage=button-sync mono=2480.261471324\nCLICK END stage=button-sync mono=2480.364796234\nCLICK BEGIN stage=close mono=2480.364983294\nCLICK END stage=close mono=2480.366499203\nFAIRNESS_RESULT released=1 sender_status=0 queries=153 seconds=0.411358\nFAIRNESS_STATUS=0\nFAIRNESS_CASE=2\nFAIRNESS_BEGIN pid=4455 sender=1316 window=0xc00001 warmup=40\nCLICK BEGIN stage=open mono=2480.592181597\nCLICK END stage=open mono=2480.611874658\nCLICK BEGIN stage=motion-sync mono=2480.612058839\nCLICK END stage=motion-sync mono=2480.616297870\nCLICK BEGIN stage=button-sync mono=2480.821471930\nCLICK END stage=button-sync mono=2480.925413961\nCLICK BEGIN stage=close mono=2480.925596839\nCLICK END stage=close mono=2480.927651112\nFAIRNESS_RESULT released=1 sender_status=0 queries=155 seconds=0.407806\nFAIRNESS_STATUS=0\nFAIRNESS_CASE=3\nFAIRNESS_BEGIN pid=4563 sender=4577 window=0xc00001 warmup=40\nCLICK BEGIN stage=open mono=2481.136205597\nCLICK END stage=open mono=2481.155993022\nCLICK BEGIN stage=motion-sync mono=2481.156157233\nCLICK END stage=motion-sync mono=2481.160069961\nCLICK BEGIN stage=button-sync mono=2481.361443537\nCLICK END stage=button-sync mono=2481.466522415\nCLICK BEGIN stage=close mono=2481.466697233\nCLICK END stage=close mono=2481.468632961\nFAIRNESS_RESULT released=1 sender_status=0 queries=171 seconds=0.397336\nFAIRNESS_STATUS=0\nFAIRNESS_CASE=4\nFAIRNESS_BEGIN pid=1061 sender=4188 window=0xc00001 warmup=40\nCLICK BEGIN stage=open mono=2481.667641112\nCLICK END stage=open mono=2481.685183264\nCLICK BEGIN stage=motion-sync mono=2481.685361749\nCLICK END stage=motion-sync mono=2481.689438446\nCLICK BEGIN stage=button-sync mono=2481.891450718\nCLICK END stage=button-sync mono=2481.995366870\nCLICK BEGIN stage=close mono=2481.995558718\nCLICK END stage=close mono=2481.997513961\nFAIRNESS_RESULT released=1 sender_status=0 queries=164 seconds=0.392802\nFAIRNESS_STATUS=0\nFAIRNESS_CASE=5\nFAIRNESS_BEGIN pid=2553 sender=1062 window=0xc00001 warmup=40\nCLICK BEGIN stage=open mono=2482.202669415\nCLICK END stage=open mono=2482.220455143\nCLICK BEGIN stage=motion-sync mono=2482.220639688\nCLICK END stage=motion-sync mono=2482.224650840\nCLICK BEGIN stage=button-sync mono=2482.431471203\nCLICK END stage=button-sync mono=2482.534889779\nCLICK BEGIN stage=close mono=2482.535064870\nCLICK END stage=close mono=2482.536502112\nFAIRNESS_RESULT released=1 sender_status=0 queries=175 seconds=0.414084\nFAIRNESS_STATUS=0\nFAIRNESS_CASE=6\nFAIRNESS_BEGIN pid=1323 sender=2687 window=0xc00001 warmup=40\nCLICK BEGIN stage=open mono=2482.739186385\nCLICK END stage=open mono=2482.756036052\nCLICK BEGIN stage=motion-sync mono=2482.756198082\nCLICK END stage=motion-sync mono=2482.761531052\nCLICK BEGIN stage=button-sync mono=2482.971444627\nCLICK END stage=button-sync mono=2483.074449052\nCLICK BEGIN stage=close mono=2483.074625264\nCLICK END stage=close mono=2483.076034900\nFAIRNESS_RESULT released=1 sender_status=0 queries=169 seconds=0.407195\nFAIRNESS_STATUS=0\nFAIRNESS_CASE=7\nFAIRNESS_BEGIN pid=2627 sender=4462 window=0xc00001 warmup=40\nCLICK BEGIN stage=open mono=2483.278124688\nCLICK END stage=open mono=2483.297251446\nCLICK BEGIN stage=motion-sync mono=2483.297424355\nCLICK END stage=motion-sync mono=2483.301438385\nCLICK BEGIN stage=button-sync mono=2483.511485203\nCLICK END stage=button-sync mono=2483.615358355\nCLICK BEGIN stage=close mono=2483.615540506\nCLICK END stage=close mono=2483.619097779\nFAIRNESS_RESULT released=1 sender_status=0 queries=171 seconds=0.402178\nFAIRNESS_STATUS=0\nFAIRNESS_CASE=8\nFAIRNESS_BEGIN pid=1857 sender=1351 window=0xc00001 warmup=40\nCLICK BEGIN stage=open mono=2483.822157233\nCLICK END stage=open mono=2483.839695658\nCLICK BEGIN stage=motion-sync mono=2483.839862446\nCLICK END stage=motion-sync mono=2483.843835233\nCLICK BEGIN stage=button-sync mono=2484.051467112\nCLICK END stage=button-sync mono=2484.154697688\nCLICK BEGIN stage=close mono=2484.154870385\nCLICK END stage=close mono=2484.156329203\nFAIRNESS_RESULT released=1 sender_status=0 queries=169 seconds=0.404297\nFAIRNESS_STATUS=0\nFAIRNESS_CASE=9\nFAIRNESS_BEGIN pid=1276 sender=1135 window=0xc00001 warmup=40\nCLICK BEGIN stage=open mono=2484.348844779\nCLICK END stage=open mono=2484.366284112\nCLICK BEGIN stage=motion-sync mono=2484.366455537\nCLICK END stage=motion-sync mono=2484.370346506\nCLICK BEGIN stage=button-sync mono=2484.571438749\nCLICK END stage=button-sync mono=2484.674637446\nCLICK BEGIN stage=close mono=2484.674823476\nCLICK END stage=close mono=2484.676226355\nFAIRNESS_RESULT released=1 sender_status=0 queries=168 seconds=0.398397\nFAIRNESS_STATUS=0\nFAIRNESS_CASE=10\nFAIRNESS_BEGIN pid=3633 sender=2517 window=0xc00001 warmup=40\nCLICK BEGIN stage=open mono=2484.870174142\nCLICK END stage=open mono=2484.887387961\nCLICK BEGIN stage=motion-sync mono=2484.887553234\nCLICK END stage=motion-sync mono=2484.891521324\nCLICK BEGIN stage=button-sync mono=2485.101566688\nCLICK END stage=button-sync mono=2485.341552870\nCLICK BEGIN stage=close mono=2485.341738173\nCLICK END stage=close mono=2485.344701779\nFAIRNESS_RESULT released=1 sender_status=0 queries=106 seconds=0.543040\nFAIRNESS_STATUS=0\n",
+          "statuses": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "failures": 0
+        },
+        {
+          "label": "round-robin-startup",
+          "server": "3682 /usr/X11R7/bin/Xorg :0 -config /usr/local/share/xiri/xorg.conf -dumbSched -noretro -auth /var/db/xdm/authdir/authfiles/A:0-nOU102 \n  dimensions:    1280x1024 pixels (339x271 millimeters)\n",
+          "log": "FAIRNESS_CASE=1\nFAIRNESS_BEGIN pid=2885 sender=2882 window=0xc00001 warmup=40\nCLICK BEGIN stage=open mono=2550.119010930\nCLICK END stage=open mono=2550.137258264\nCLICK BEGIN stage=motion-sync mono=2550.137439809\nCLICK END stage=motion-sync mono=2550.141553900\nCLICK BEGIN stage=button-sync mono=2550.351459688\nCLICK END stage=button-sync mono=2550.454571839\nCLICK BEGIN stage=close mono=2550.454753567\nCLICK END stage=close mono=2550.456205112\nFAIRNESS_RESULT released=1 sender_status=0 queries=161 seconds=0.419163\nFAIRNESS_STATUS=0\nFAIRNESS_CASE=2\nFAIRNESS_BEGIN pid=2783 sender=2968 window=0xc00001 warmup=40\nCLICK BEGIN stage=open mono=2550.681699142\nCLICK END stage=open mono=2550.699108900\nCLICK BEGIN stage=motion-sync mono=2550.699284779\nCLICK END stage=motion-sync mono=2550.703071567\nCLICK BEGIN stage=button-sync mono=2550.911465536\nCLICK END stage=button-sync mono=2551.015851748\nCLICK BEGIN stage=close mono=2551.016118567\nCLICK END stage=close mono=2551.019424142\nFAIRNESS_RESULT released=1 sender_status=0 queries=165 seconds=0.420498\nFAIRNESS_STATUS=0\nFAIRNESS_CASE=3\nFAIRNESS_BEGIN pid=3006 sender=5851 window=0xc00001 warmup=40\nCLICK BEGIN stage=open mono=2551.239809536\nCLICK END stage=open mono=2551.266069597\nCLICK BEGIN stage=motion-sync mono=2551.266257961\nCLICK END stage=motion-sync mono=2551.270318688\nCLICK BEGIN stage=button-sync mono=2551.471481051\nCLICK END stage=button-sync mono=2551.574611415\nCLICK BEGIN stage=close mono=2551.574814476\nCLICK END stage=close mono=2551.576265749\nFAIRNESS_RESULT released=1 sender_status=0 queries=158 seconds=0.407798\nFAIRNESS_STATUS=0\nFAIRNESS_CASE=4\nFAIRNESS_BEGIN pid=6060 sender=1620 window=0xc00001 warmup=40\nCLICK BEGIN stage=open mono=2551.794639203\nCLICK END stage=open mono=2551.811745233\nCLICK BEGIN stage=motion-sync mono=2551.811918355\nCLICK END stage=motion-sync mono=2551.815694233\nCLICK BEGIN stage=button-sync mono=2552.021455052\nCLICK END stage=button-sync mono=2552.124847749\nCLICK BEGIN stage=close mono=2552.125028445\nCLICK END stage=close mono=2552.126507779\nFAIRNESS_RESULT released=1 sender_status=0 queries=152 seconds=0.410270\nFAIRNESS_STATUS=0\nFAIRNESS_CASE=5\nFAIRNESS_BEGIN pid=4630 sender=1572 window=0xc00001 warmup=40\nCLICK BEGIN stage=open mono=2552.343145415\nCLICK END stage=open mono=2552.360834627\nCLICK BEGIN stage=motion-sync mono=2552.361004567\nCLICK END stage=motion-sync mono=2552.365306173\nCLICK BEGIN stage=button-sync mono=2552.571533173\nCLICK END stage=button-sync mono=2552.674950779\nCLICK BEGIN stage=close mono=2552.675133264\nCLICK END stage=close mono=2552.678136657\nFAIRNESS_RESULT released=1 sender_status=0 queries=162 seconds=0.404822\nFAIRNESS_STATUS=0\nFAIRNESS_CASE=6\nFAIRNESS_BEGIN pid=4819 sender=4444 window=0xc00001 warmup=40\nCLICK BEGIN stage=open mono=2552.895480385\nCLICK END stage=open mono=2552.913455142\nCLICK BEGIN stage=motion-sync mono=2552.913626930\nCLICK END stage=motion-sync mono=2552.917584870\nCLICK BEGIN stage=button-sync mono=2553.121479294\nCLICK END stage=button-sync mono=2553.224898051\nCLICK BEGIN stage=close mono=2553.225088870\nCLICK END stage=close mono=2553.226558203\nFAIRNESS_RESULT released=1 sender_status=0 queries=151 seconds=0.410407\nFAIRNESS_STATUS=0\nFAIRNESS_CASE=7\nFAIRNESS_BEGIN pid=4833 sender=1318 window=0xc00001 warmup=40\nCLICK BEGIN stage=open mono=2553.444417264\nCLICK END stage=open mono=2553.463577657\nCLICK BEGIN stage=motion-sync mono=2553.463751264\nCLICK END stage=motion-sync mono=2553.467771809\nCLICK BEGIN stage=button-sync mono=2553.671447870\nCLICK END stage=button-sync mono=2553.775183900\nCLICK BEGIN stage=close mono=2553.775363415\nCLICK END stage=close mono=2553.777337082\nFAIRNESS_RESULT released=1 sender_status=0 queries=160 seconds=0.404116\nFAIRNESS_STATUS=0\nFAIRNESS_CASE=8\nFAIRNESS_BEGIN pid=2809 sender=1317 window=0xc00001 warmup=40\nCLICK BEGIN stage=open mono=2553.979561354\nCLICK END stage=open mono=2554.003941264\nCLICK BEGIN stage=motion-sync mono=2554.004115961\nCLICK END stage=motion-sync mono=2554.008126536\nCLICK BEGIN stage=button-sync mono=2554.211445567\nCLICK END stage=button-sync mono=2554.314598567\nCLICK BEGIN stage=close mono=2554.314774112\nCLICK END stage=close mono=2554.316834233\nFAIRNESS_RESULT released=1 sender_status=0 queries=157 seconds=0.401562\nFAIRNESS_STATUS=0\nFAIRNESS_CASE=9\nFAIRNESS_BEGIN pid=1579 sender=2883 window=0xc00001 warmup=40\nCLICK BEGIN stage=open mono=2554.529693870\nCLICK END stage=open mono=2554.548431900\nCLICK BEGIN stage=motion-sync mono=2554.548610839\nCLICK END stage=motion-sync mono=2554.552626051\nCLICK BEGIN stage=button-sync mono=2554.761453991\nCLICK END stage=button-sync mono=2554.865479991\nCLICK BEGIN stage=close mono=2554.865663718\nCLICK END stage=close mono=2554.867604809\nFAIRNESS_RESULT released=1 sender_status=0 queries=158 seconds=0.409104\nFAIRNESS_STATUS=0\nFAIRNESS_CASE=10\nFAIRNESS_BEGIN pid=4718 sender=2943 window=0xc00001 warmup=40\nCLICK BEGIN stage=open mono=2555.078697809\nCLICK END stage=open mono=2555.096532900\nCLICK BEGIN stage=motion-sync mono=2555.096705173\nCLICK END stage=motion-sync mono=2555.102689354\nCLICK BEGIN stage=button-sync mono=2555.311452324\nCLICK END stage=button-sync mono=2555.417230233\nCLICK BEGIN stage=close mono=2555.418059930\nCLICK END stage=close mono=2555.421434294\nFAIRNESS_RESULT released=1 sender_status=0 queries=163 seconds=0.410309\nFAIRNESS_STATUS=0\nFAIRNESS_CASE=11\nFAIRNESS_BEGIN pid=4711 sender=1391 window=0xc00001 warmup=40\nCLICK BEGIN stage=open mono=2555.629337657\nCLICK END stage=open mono=2555.647283536\nCLICK BEGIN stage=motion-sync mono=2555.647521718\nCLICK END stage=motion-sync mono=2555.651676021\nCLICK BEGIN stage=button-sync mono=2555.861451991\nCLICK END stage=button-sync mono=2555.965255142\nCLICK BEGIN stage=close mono=2555.965442082\nCLICK END stage=close mono=2555.967395082\nFAIRNESS_RESULT released=1 sender_status=0 queries=160 seconds=0.402746\nFAIRNESS_STATUS=0\nFAIRNESS_CASE=12\nFAIRNESS_BEGIN pid=2113 sender=1607 window=0xc00001 warmup=40\nCLICK BEGIN stage=open mono=2556.178687597\nCLICK END stage=open mono=2556.196924809\nCLICK BEGIN stage=motion-sync mono=2556.197094991\nCLICK END stage=motion-sync mono=2556.201267567\nCLICK BEGIN stage=button-sync mono=2556.411455142\nCLICK END stage=button-sync mono=2556.515143930\nCLICK BEGIN stage=close mono=2556.515320506\nCLICK END stage=close mono=2556.517275779\nFAIRNESS_RESULT released=1 sender_status=0 queries=160 seconds=0.409041\nFAIRNESS_STATUS=0\nFAIRNESS_CASE=13\nFAIRNESS_BEGIN pid=832 sender=1532 window=0xc00001 warmup=40\nCLICK BEGIN stage=open mono=2556.718774748\nCLICK END stage=open mono=2556.740633112\nCLICK BEGIN stage=motion-sync mono=2556.740907173\nCLICK END stage=motion-sync mono=2556.747193900\nCLICK BEGIN stage=button-sync mono=2556.951459597\nCLICK END stage=button-sync mono=2557.056451627\nCLICK BEGIN stage=close mono=2557.056635627\nCLICK END stage=close mono=2557.058601173\nFAIRNESS_RESULT released=1 sender_status=0 queries=158 seconds=0.403779\nFAIRNESS_STATUS=0\nFAIRNESS_CASE=14\nFAIRNESS_BEGIN pid=2667 sender=2773 window=0xc00001 warmup=40\nCLICK BEGIN stage=open mono=2557.278791324\nCLICK END stage=open mono=2557.297510385\nCLICK BEGIN stage=motion-sync mono=2557.297681324\nCLICK END stage=motion-sync mono=2557.301662597\nCLICK BEGIN stage=button-sync mono=2557.511450294\nCLICK END stage=button-sync mono=2557.614556233\nCLICK BEGIN stage=close mono=2557.614731567\nCLICK END stage=close mono=2557.616749233\nFAIRNESS_RESULT released=1 sender_status=0 queries=153 seconds=0.411035\nFAIRNESS_STATUS=0\nFAIRNESS_CASE=15\nFAIRNESS_BEGIN pid=2474 sender=2551 window=0xc00001 warmup=40\nCLICK BEGIN stage=open mono=2557.836196718\nCLICK END stage=open mono=2557.855457294\nCLICK BEGIN stage=motion-sync mono=2557.855635991\nCLICK END stage=motion-sync mono=2557.859583839\nCLICK BEGIN stage=button-sync mono=2558.061456748\nCLICK END stage=button-sync mono=2558.165550142\nCLICK BEGIN stage=close mono=2558.165819445\nCLICK END stage=close mono=2558.168339354\nFAIRNESS_RESULT released=1 sender_status=0 queries=158 seconds=0.414761\nFAIRNESS_STATUS=0\nFAIRNESS_CASE=16\nFAIRNESS_BEGIN pid=2848 sender=4144 window=0xc00001 warmup=40\nCLICK BEGIN stage=open mono=2558.374144718\nCLICK END stage=open mono=2558.392419536\nCLICK BEGIN stage=motion-sync mono=2558.392591264\nCLICK END stage=motion-sync mono=2558.397371961\nCLICK BEGIN stage=button-sync mono=2558.601449718\nCLICK END stage=button-sync mono=2558.704468415\nCLICK BEGIN stage=close mono=2558.704653233\nCLICK END stage=close mono=2558.706157203\nFAIRNESS_RESULT released=1 sender_status=0 queries=158 seconds=0.404202\nFAIRNESS_STATUS=0\nFAIRNESS_CASE=17\nFAIRNESS_BEGIN pid=6124 sender=5619 window=0xc00001 warmup=40\nCLICK BEGIN stage=open mono=2558.932193476\nCLICK END stage=open mono=2558.949427112\nCLICK BEGIN stage=motion-sync mono=2558.949605930\nCLICK END stage=motion-sync mono=2558.953355415\nCLICK BEGIN stage=button-sync mono=2559.161464961\nCLICK END stage=button-sync mono=2559.264461506\nCLICK BEGIN stage=close mono=2559.264647779\nCLICK END stage=close mono=2559.266071900\nFAIRNESS_RESULT released=1 sender_status=0 queries=153 seconds=0.415274\nFAIRNESS_STATUS=0\nFAIRNESS_CASE=18\nFAIRNESS_BEGIN pid=3133 sender=2782 window=0xc00001 warmup=40\nCLICK BEGIN stage=open mono=2559.479898870\nCLICK END stage=open mono=2559.498937233\nCLICK BEGIN stage=motion-sync mono=2559.499108476\nCLICK END stage=motion-sync mono=2559.503092506\nCLICK BEGIN stage=button-sync mono=2559.711490203\nCLICK END stage=button-sync mono=2559.816284506\nCLICK BEGIN stage=close mono=2559.816473445\nCLICK END stage=close mono=2559.818429627\nFAIRNESS_RESULT released=1 sender_status=0 queries=164 seconds=0.407389\nFAIRNESS_STATUS=0\nFAIRNESS_CASE=19\nFAIRNESS_BEGIN pid=3176 sender=2514 window=0xc00001 warmup=40\nCLICK BEGIN stage=open mono=2560.032069991\nCLICK END stage=open mono=2560.050920536\nCLICK BEGIN stage=motion-sync mono=2560.051097991\nCLICK END stage=motion-sync mono=2560.055235476\nCLICK BEGIN stage=button-sync mono=2560.261451688\nCLICK END stage=button-sync mono=2560.365208506\nCLICK BEGIN stage=close mono=2560.365395445\nCLICK END stage=close mono=2560.367567779\nFAIRNESS_RESULT released=1 sender_status=0 queries=157 seconds=0.404201\nFAIRNESS_STATUS=0\nFAIRNESS_CASE=20\nFAIRNESS_BEGIN pid=2424 sender=2511 window=0xc00001 warmup=40\nCLICK BEGIN stage=open mono=2560.574092264\nCLICK END stage=open mono=2560.592640354\nCLICK BEGIN stage=motion-sync mono=2560.592813870\nCLICK END stage=motion-sync mono=2560.596857779\nCLICK BEGIN stage=button-sync mono=2560.801458324\nCLICK END stage=button-sync mono=2560.906738688\nCLICK BEGIN stage=close mono=2560.907016324\nCLICK END stage=close mono=2560.910230264\nFAIRNESS_RESULT released=1 sender_status=0 queries=169 seconds=0.410172\nFAIRNESS_STATUS=0\n",
+          "statuses": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "failures": 0
+        }
+      ],
+      "original_result": {
+        "path": ".work/system-stability/boot-xt37m0co/native-extended/result.json",
+        "sha256": "40fedb4e14af4a1754d1925d71d11025a46428d640d28d1cb59694523862400f"
+      },
+      "harness": {
+        "path": ".work/system-stability/boot-xt37m0co/native-extended/harness.py",
+        "sha256": "66cba3b50d13724fa302e7009cd14b387c84426defbfd0dac7c7c93b2bd241f8"
+      }
+    }
+  ],
+  "exclusions": [
+    {
+      "directory": ".",
+      "reason": "Initial PDF window-name typo; reduced replay resumed after correcting the selector.",
+      "status": "error",
+      "error": "timed out after 80s waiting for '\\\\nXIRI_bfe30078134645679bb79fbec7a509c7_RC=(\\\\d+)\\\\n'",
+      "result": {
+        "path": ".work/system-stability/boot-xt37m0co/result.json",
+        "sha256": "5d55f300feac5f1a69b6a17e4f98fcf5a4c6e8df0cd3642a6e99c89d85734612"
+      }
+    },
+    {
+      "directory": "state-replay",
+      "reason": "NetBSD ps field syntax supplied no Xorg PID.",
+      "status": "running",
+      "error": "invalid literal for int() with base 10: ''",
+      "result": {
+        "path": ".work/system-stability/boot-xt37m0co/state-replay/result.json",
+        "sha256": "b02238ab54d0d323096ffdbb2c5863beb7e7fa189f5878179c389578b7796c9c"
+      }
+    },
+    {
+      "directory": "state-replay-2",
+      "reason": "Expected maps format differed from procfs output.",
+      "status": "error",
+      "error": "00010000-002e4000 r-xp 00000000 0a:00 165923                             /usr/X11R7/bin/Xorg\n002f4000-00302000 rw-p 002d4000 0a:00 165923                             /usr/X11R7/bin/Xorg\n00302000-0030c000 rw-p 00000000 00:00 0                                  \n748a8000-7496c000 rw-p 00000000 00:00 0                                  \n7496c000-74aa8000 rw-p 00000000 00:00 0                                  \n74aa8000-74c40000 rw-p 00000000 00:00 0                                  \n74c40000-74e30000 rw-p 00000000 00:00 0                                  \n74e30000-74fb4000 rw-p 00000000 00:00 0                                  \n74fb4000-75120000 rw-p 00000000 00:00 0                                  \n75120000-75314000 rw-p 00000000 00:00 0                                  \n75314000-753a0000 rw-p 00000000 00:00 0                                  \n753a0000-75598000 rw-p 00000000 00:00 0                                  \n75598000-75684000 rw-p 00000000 00:00 0                                  \n75684000-7585c000 rw-p 00000000 00:00 0                                  \n7585c000-75a50000 rw-p 00000000 00:00 0                                  \n75a50000-75a66000 r-xp 00000000 0a:00 366652                             /lib/libpthread.so.1.6\n75a66000-75a74000 ---p 00000000 00:00 0                                  \n75a74000-75a76000 rw-p 00014000 0a:00 366652                             /lib/libpthread.so.1.6\n75a76000-75a80000 rw-p 00000000 00:00 0                                  \n75a80000-75ce0000 r-xp 00000000 0a:00 69813                              /usr/lib/libstdc++.so.9.1\n75ce0000-75cee000 ---p 00000000 00:00 0                                  \n75cee000-75d02000 rw-p 0025e000 0a:00 69813                              /usr/lib/libstdc++.so.9.1\n75d02000-75d04000 rw-p 00000000 00:00 0                                  \n75d08000-75d10000 rw-p 00000000 00:00 0                                  \n75d10000-75d20000 r-xp 00000000 0a:00 366667                             /lib/libterminfo.so.2.0\n75d20000-75d2e000 ---p 00000000 00:00 0                                  \n75d2e000-75d30000 rw-p 0000e000 0a:00 366667                             /lib/libterminfo.so.2.0\n75d30000-75d5e000 r-xp 00000000 0a:00 69339                              /usr/lib/libexpat.so.2.7\n75d5e000-75d6c000 ---p 00000000 00:00 0                                  \n75d6c000-75d70000 rw-p 0002c000 0a:00 69339                              /usr/lib/libexpat.so.2.7\n75d70000-75dc8000 r-xp 00000000 0a:00 160776                             /usr/X11R7/lib/libglapi.so.1.0\n75dc8000-75dd8000 ---p 00000000 00:00 0                                  \n75dd8000-75ddc000 rw-p 00058000 0a:00 160776                             /usr/X11R7/lib/libglapi.so.1.0\n75de0000-75de4000 r-xp 00000000 0a:00 160803                             /usr/X11R7/lib/libxcb-dri2.so.0.1\n75de4000-75df2000 ---p 00000000 00:00 0                                  \n75df2000-75df4000 rw-p 00002000 0a:00 160803                             /usr/X11R7/lib/libxcb-dri2.so.0.1\n75df4000-75e00000 rw-p 00000000 00:00 0                                  \n75e00000-75e02000 r-xp 00000000 0a:00 160659                             /usr/X11R7/lib/libX11-xcb.so.1.0\n75e02000-75e10000 ---p 00000000 00:00 0                                  \n75e10000-75e12000 rw-p 00000000 0a:00 160659                             /usr/X11R7/lib/libX11-xcb.so.1.0\n75e14000-75e20000 rw-p 00000000 00:00 0                                  \n75e20000-769ae000 r-xp 00000000 0a:00 183732                             /usr/X11R7/lib/modules/dri/gallium_dri.so.0\n769ae000-769bc000 ---p 00000000 00:00 0                                  \n769bc000-76a2c000 rw-p 00b8c000 0a:00 183732                             /usr/X11R7/lib/modules/dri/gallium_dri.so.0\n76a2c000-76ba0000 rw-p 00000000 00:00 0                                  \n76ba0000-76c34000 rw-p 00000000 00:00 0                                  \n76c34000-76c80000 rw-p 00000000 00:00 0                                  \n76c80000-76d80000 rw-p 00000000 00:00 0                                  \n76d80000-76f60000 rw-p 00000000 00:00 0                                  \n76f60000-76fa0000 rw-p 00000000 00:00 0                                  \n76fa0000-77180000 rw-p 00000000 00:00 0                                  \n77180000-771e8000 r-xp 00000000 0a:00 183730                             /usr/X11R7/lib/modules/libxaa.so.0\n771e8000-771f6000 ---p 00000000 00:00 0                                  \n771f6000-771fa000 rw-p 00066000 0a:00 183730                             /usr/X11R7/lib/modules/libxaa.so.0\n77200000-77220000 rw-p 00000000 00:00 0                                  \n77220000-77400000 rw-p 00000000 00:00 0                                  \n77400000-77408000 r-xp 00000000 0a:00 183724                             /usr/X11R7/lib/modules/libshadowfb.so.0\n77408000-77416000 ---p 00000000 00:00 0                                  \n77416000-77418000 rw-p 00006000 0a:00 183724                             /usr/X11R7/lib/modules/libshadowfb.so.0\n77418000-77420000 rw-p 00000000 00:00 0                                  \n77420000-77440000 r-xp 00000000 0a:00 183722                             /usr/X11R7/lib/modules/libfb.so.0\n77440000-77442000 rw-p 00020000 0a:00 183722                             /usr/X11R7/lib/modules/libfb.so.0\n77444000-77460000 rw-p 00000000 00:00 0                                  \n77460000-7746c000 r-xp 00000000 0a:00 183748                             /usr/X11R7/lib/modules/drivers/mouse_drv.so.1\n7746c000-7747a000 ---p 00000000 00:00 0                                  \n7747a000-7747c000 rw-p 0000a000 0a:00 183748                             /usr/X11R7/lib/modules/drivers/mouse_drv.so.1\n77480000-77484000 r-xp 00000000 0a:00 183744                             /usr/X11R7/lib/modules/drivers/kbd_drv.so.2\n77484000-77494000 ---p 00000000 00:00 0                                  \n77494000-77496000 rw-p 00004000 0a:00 183744                             /usr/X11R7/lib/modules/drivers/kbd_drv.so.2\n77498000-774a0000 rw-p 00000000 00:00 0                                  \n774a0000-774aa000 r-xp 00000000 0a:00 183749                             /usr/X11R7/lib/modules/drivers/newport_drv.so\n774aa000-774b8000 ---p 00000000 00:00 0                                  \n774b8000-774ba000 rw-p 00008000 0a:00 183749                             /usr/X11R7/lib/modules/drivers/newport_drv.so\n774bc000-774c0000 rw-p 00000000 00:00 0                                  \n774c0000-774c6000 r-xp 00000000 0a:00 183763                             /usr/X11R7/lib/modules/extensions/libdri2.so.0\n774c6000-774d4000 ---p 00000000 00:00 0                                  \n774d4000-774d6000 rw-p 00004000 0a:00 183763                             /usr/X11R7/lib/modules/extensions/libdri2.so.0\n774d8000-774e0000 rw-p 00000000 00:00 0                                  \n774e0000-774ea000 r-xp 00000000 0a:00 183760                             /usr/X11R7/lib/modules/extensions/libdri.so.0\n774ea000-774fa000 ---p 00000000 00:00 0                                  \n774fa000-774fc000 rw-p 0000a000 0a:00 183760                             /usr/X11R7/lib/modules/extensions/libdri.so.0\n774fc000-77500000 rw-p 00000000 00:00 0                                  \n77500000-77508000 r-xp 00000000 0a:00 183769                             /usr/X11R7/lib/modules/extensions/librecord.so.0\n77508000-77516000 ---p 00000000 00:00 0                                  \n77516000-77518000 rw-p 00006000 0a:00 183769                             /usr/X11R7/lib/modules/extensions/librecord.so.0\n77518000-77520000 rw-p 00000000 00:00 0                                  \n77520000-77594000 r-xp 00000000 0a:00 183767                             /usr/X11R7/lib/modules/extensions/libglx.so.0\n77594000-775a2000 ---p 00000000 00:00 0                                  \n775a2000-775a6000 rw-p 00072000 0a:00 183767                             /usr/X11R7/lib/modules/extensions/libglx.so.0\n775aa000-775ac000 rw-p 00000000 00:00 0                                  \n775ac000-775ae000 r--s 00000000 0a:00 366652                             /lib/libpthread.so.1.6\n775ae000-775b0000 r--s 00000000 0a:00 69813                              /usr/lib/libstdc++.so.9.1\n775b0000-775b6000 r-xp 00000000 0a:00 183758                             /usr/X11R7/lib/modules/extensions/libdbe.so.0\n775b6000-775c4000 ---p 00000000 00:00 0                                  \n775c4000-775c6000 rw-p 00004000 0a:00 183758                             /usr/X11R7/lib/modules/extensions/libdbe.so.0\n775c6000-775c8000 r--s 00000000 0a:00 366667                             /lib/libterminfo.so.2.0\n775c8000-775ca000 r--s 00000000 0a:00 69339                              /usr/lib/libexpat.so.2.7\n775ca000-775cc000 r--s 00000000 0a:00 160776                             /usr/X11R7/lib/libglapi.so.1.0\n775cc000-775ce000 r--s 00000000 0a:00 160803                             /usr/X11R7/lib/libxcb-dri2.so.0.1\n775ce000-775d0000 r--s 00000000 0a:00 160659                             /usr/X11R7/lib/libX11-xcb.so.1.0\n775d0000-775ec000 r-xp 00000000 0a:00 183765                             /usr/X11R7/lib/modules/extensions/libextmod.so.0\n775ec000-775fa000 ---p 00000000 00:00 0                                  \n775fa000-775fc000 rw-p 0001a000 0a:00 183765                             /usr/X11R7/lib/modules/extensions/libextmod.so.0\n775fc000-775fe000 r--s 00000000 0a:00 183732                             /usr/X11R7/lib/modules/dri/gallium_dri.so.0\n775fe000-77600000 rw-s 000f0000 00:00 0                                  \n77600000-77602000 r--s 00000000 0a:00 183730                             /usr/X11R7/lib/modules/libxaa.so.0\n77602000-77604000 r--s 00000000 0a:00 183724                             /usr/X11R7/lib/modules/libshadowfb.so.0\n77604000-777e0000 rw-p 00000000 00:00 0                                  \n777e0000-77808000 r-xp 00000000 0a:00 160884                             /usr/X11R7/lib/libxcb.so.2.0\n77808000-77816000 ---p 00000000 00:00 0                                  \n77816000-77818000 rw-p 00026000 0a:00 160884                             /usr/X11R7/lib/libxcb.so.2.0\n77818000-77820000 rw-p 00000000 00:00 0                                  \n77820000-77830000 r-xp 00000000 0a:00 366601                             /lib/libcrypt.so.1.0\n77830000-77832000 rw-p 00010000 0a:00 366601                             /lib/libcrypt.so.1.0\n77832000-77840000 rw-p 00000000 00:00 0                                  \n77840000-778a6000 r-xp 00000000 0a:00 69480                              /usr/lib/libpci.so.2.2\n778a6000-778b4000 ---p 00000000 00:00 0                                  \n778b4000-778b8000 rw-p 00064000 0a:00 69480                              /usr/lib/libpci.so.2.2\n778b8000-778c0000 rw-p 00000000 00:00 0                                  \n778c0000-778d2000 r-xp 00000000 0a:00 69282                              /usr/lib/libbz2.so.1.1\n778d2000-778e0000 ---p 00000000 00:00 0                                  \n778e0000-778e2000 rw-p 00010000 0a:00 69282                              /usr/lib/libbz2.so.1.1\n778e2000-778e4000 r--s 00000000 0a:00 183722                             /usr/X11R7/lib/modules/libfb.so.0\n778e4000-778f0000 rw-p 00000000 00:00 0                                  \n778f0000-77908000 r-xp 00000000 0a:00 366676                             /lib/libz.so.1.0\n77908000-77916000 ---p 00000000 00:00 0                                  \n77916000-77918000 rw-p 00016000 0a:00 366676                             /lib/libz.so.1.0\n77918000-77920000 rw-p 00000000 00:00 0                                  \n77920000-77a76000 r-xp 00000000 0a:00 160662                             /usr/X11R7/lib/libX11.so.7.1\n77a76000-77a84000 ---p 00000000 00:00 0                                  \n77a84000-77a8a000 rw-p 00154000 0a:00 160662                             /usr/X11R7/lib/libX11.so.7.1\n77a8a000-77a8c000 r--s 00000000 0a:00 183748                             /usr/X11R7/lib/modules/drivers/mouse_drv.so.1\n77a8c000-77a90000 rw-p 00000000 00:00 0                                  \n77a90000-77aa4000 r-xp 00000000 0a:00 160692                             /usr/X11R7/lib/libXext.so.7.1\n77aa4000-77ab4000 ---p 00000000 00:00 0                                  \n77ab4000-77ab6000 rw-p 00014000 0a:00 160692                             /usr/X11R7/lib/libXext.so.7.1\n77ab6000-77ab8000 r--s 00000000 0a:00 183744                             /usr/X11R7/lib/modules/drivers/kbd_drv.so.2\n77ab8000-77ac0000 rw-p 00000000 00:00 0                                  \n77ac0000-77ada000 r-xp 00000000 0a:00 160653                             /usr/X11R7/lib/libICE.so.7.0\n77ada000-77ae8000 ---p 00000000 00:00 0                                  \n77ae8000-77aea000 rw-p 00018000 0a:00 160653                             /usr/X11R7/lib/libICE.so.7.0\n77aea000-77af0000 rw-p 00000000 00:00 0                                  \n77af0000-77afa000 r-xp 00000000 0a:00 160656                             /usr/X11R7/lib/libSM.so.7.0\n77afa000-77b08000 ---p 00000000 00:00 0                                  \n77b08000-77b0a000 rw-p 00008000 0a:00 160656                             /usr/X11R7/lib/libSM.so.7.0\n77b0a000-77b0c000 r--s 00000000 0a:00 183749                             /usr/X11R7/lib/modules/drivers/newport_drv.so\n77b0c000-77b10000 rw-p 00000000 00:00 0                                  \n77b10000-77b7a000 r-xp 00000000 0a:00 160734                             /usr/X11R7/lib/libXt.so.7.0\n77b7a000-77b88000 ---p 00000000 00:00 0                                  \n77b88000-77b8e000 rw-p 00068000 0a:00 160734                             /usr/X11R7/lib/libXt.so.7.0\n77b8e000-77b90000 r--s 00000000 0a:00 183763                             /usr/X11R7/lib/modules/extensions/libdri2.so.0\n77b90000-77bb0000 r-xp 00000000 0a:00 69324                              /usr/lib/libelf.so.2.0\n77bb0000-77bbe000 ---p 00000000 00:00 0                                  \n77bbe000-77bc0000 rw-p 0001e000 0a:00 69324                              /usr/lib/libelf.so.2.0\n77bc0000-77db8000 r-xp 00000000 0a:00 366598                             /lib/libc.so.12.224\n77db8000-77dbc000 ---p 001f8000 0a:00 366598                             /lib/libc.so.12.224\n77dbc000-77dc0000 r-xp 001fc000 0a:00 366598                             /lib/libc.so.12.224\n77dc0000-77dc4000 ---p 00200000 0a:00 366598                             /lib/libc.so.12.224\n77dc4000-77dc8000 r-xp 00204000 0a:00 366598                             /lib/libc.so.12.224\n77dc8000-77dcc000 ---p 00208000 0a:00 366598                             /lib/libc.so.12.224\n77dcc000-77dd0000 r-xp 0020c000 0a:00 366598                             /lib/libc.so.12.224\n77dd0000-77dd4000 ---p 00210000 0a:00 366598                             /lib/libc.so.12.224\n77dd4000-77e06000 r-xp 00214000 0a:00 366598                             /lib/libc.so.12.224\n77e06000-77e14000 ---p 00000000 00:00 0                                  \n77e14000-77e22000 rw-p 00244000 0a:00 366598                             /lib/libc.so.12.224\n77e22000-77e38000 rw-p 00000000 00:00 0                                  \n77e38000-77e40000 rw-p 00000000 00:00 0                                  \n77e40000-77e52000 r-xp 00000000 0a:00 366619                             /lib/libgcc_s.so.1.0\n77e52000-77e60000 ---p 00000000 00:00 0                                  \n77e60000-77e62000 rw-p 00010000 0a:00 366619                             /lib/libgcc_s.so.1.0\n77e62000-77e64000 r--s 00000000 0a:00 183760                             /usr/X11R7/lib/modules/extensions/libdri.so.0\n77e64000-77e70000 rw-p 00000000 00:00 0                                  \n77e70000-78336000 r-xp 00000000 0a:00 366604                             /lib/libcrypto.so.16.0\n78336000-78346000 ---p 00000000 00:00 0                                  \n78346000-7838a000 rw-p 004c6000 0a:00 366604                             /lib/libcrypto.so.16.0\n7838a000-7838c000 r--s 00000000 0a:00 183769                             /usr/X11R7/lib/modules/extensions/librecord.so.0\n7838c000-78390000 rw-p 00000000 00:00 0                                  \n78390000-783a6000 r-xp 00000000 0a:00 160755                             /usr/X11R7/lib/libdrm.so.3.8\n783a6000-783b4000 ---p 00000000 00:00 0                                  \n783b4000-783b6000 rw-p 00014000 0a:00 160755                             /usr/X11R7/lib/libdrm.so.3.8\n783b6000-783b8000 r--s 00000000 0a:00 183767                             /usr/X11R7/lib/modules/extensions/libglx.so.0\n783b8000-783c0000 rw-p 00000000 00:00 0                                  \n783c0000-783c8000 r-xp 00000000 0a:00 160779                             /usr/X11R7/lib/libpciaccess.so.0.4\n783c8000-783d6000 ---p 00000000 00:00 0                                  \n783d6000-783d8000 rw-p 00006000 0a:00 160779                             /usr/X11R7/lib/libpciaccess.so.0.4\n783d8000-783e0000 rw-p 00000000 00:00 0                                  \n783e0000-783e6000 r-xp 00000000 0a:00 160689                             /usr/X11R7/lib/libXdmcp.so.7.0\n783e6000-783f4000 ---p 00000000 00:00 0                                  \n783f4000-783f6000 rw-p 00004000 0a:00 160689                             /usr/X11R7/lib/libXdmcp.so.7.0\n783f6000-783f8000 r--s 00000000 0a:00 183758                             /usr/X11R7/lib/modules/extensions/libdbe.so.0\n783f8000-78400000 rw-p 00000000 00:00 0                                  \n78400000-78406000 r-xp 00000000 0a:00 160767                             /usr/X11R7/lib/libfontenc.so.2.0\n78406000-78416000 ---p 00000000 00:00 0                                  \n78416000-78418000 rw-p 00006000 0a:00 160767                             /usr/X11R7/lib/libfontenc.so.2.0\n78418000-78420000 rw-p 00000000 00:00 0                                  \n78420000-78422000 r-xp 00000000 0a:00 160668                             /usr/X11R7/lib/libXau.so.7.0\n78422000-78432000 ---p 00000000 00:00 0                                  \n78432000-78434000 rw-p 00002000 0a:00 160668                             /usr/X11R7/lib/libXau.so.7.0\n78434000-78436000 r--s 00000000 0a:00 183765                             /usr/X11R7/lib/modules/extensions/libextmod.so.0\n78436000-78440000 rw-p 00000000 00:00 0                                  \n78440000-78524000 r-xp 00000000 0a:00 160770                             /usr/X11R7/lib/libfreetype.so.19.0\n78524000-78532000 ---p 00000000 00:00 0                                  \n78532000-78538000 rw-p 000e2000 0a:00 160770                             /usr/X11R7/lib/libfreetype.so.19.0\n78538000-7853c000 rw-p 00000000 00:00 0                                  \n7853c000-7853e000 r--s 00000000 0a:00 160884                             /usr/X11R7/lib/libxcb.so.2.0\n7853e000-78540000 r--s 00000000 0a:00 366601                             /lib/libcrypt.so.1.0\n78540000-78582000 r-xp 00000000 0a:00 160698                             /usr/X11R7/lib/libXfont.so.3.0\n78582000-78590000 ---p 00000000 00:00 0                                  \n78590000-78594000 rw-p 00040000 0a:00 160698                             /usr/X11R7/lib/libXfont.so.3.0\n78594000-78596000 r--s 00000000 0a:00 69480                              /usr/lib/libpci.so.2.2\n78596000-78598000 r--s 00000000 0a:00 69282                              /usr/lib/libbz2.so.1.1\n78598000-7859a000 r--s 00000000 0a:00 366676                             /lib/libz.so.1.0\n7859a000-7859c000 r--s 00000000 0a:00 160662                             /usr/X11R7/lib/libX11.so.7.1\n7859c000-7859e000 r--s 00000000 0a:00 160692                             /usr/X11R7/lib/libXext.so.7.1\n7859e000-785a0000 r--s 00000000 0a:00 160653                             /usr/X11R7/lib/libICE.so.7.0\n785a0000-78624000 r-xp 00000000 0a:00 160782                             /usr/X11R7/lib/libpixman-1.so.2.4\n78624000-78634000 ---p 00000000 00:00 0                                  \n78634000-78638000 rw-p 00084000 0a:00 160782                             /usr/X11R7/lib/libpixman-1.so.2.4\n78638000-7863a000 r--s 00000000 0a:00 160656                             /usr/X11R7/lib/libSM.so.7.0\n7863a000-7863c000 r--s 00000000 0a:00 160734                             /usr/X11R7/lib/libXt.so.7.0\n7863c000-7863e000 r--s 00000000 0a:00 69324                              /usr/lib/libelf.so.2.0\n7863e000-78640000 r--s 00000000 0a:00 366598                             /lib/libc.so.12.224\n78640000-78644000 r-xp 00000000 0a:00 69336                              /usr/lib/libexecinfo.so.0.0\n78644000-78652000 ---p 00000000 00:00 0                                  \n78652000-78654000 rw-p 00002000 0a:00 69336                              /usr/lib/libexecinfo.so.0.0\n78654000-78656000 r--s 00000000 0a:00 366619                             /lib/libgcc_s.so.1.0\n78656000-78658000 r--s 00000000 0a:00 366604                             /lib/libcrypto.so.16.0\n78658000-7865a000 r--s 00000000 0a:00 160755                             /usr/X11R7/lib/libdrm.so.3.8\n7865a000-7865c000 r--s 00000000 0a:00 160779                             /usr/X11R7/lib/libpciaccess.so.0.4\n7865c000-7865e000 r--s 00000000 0a:00 160689                             /usr/X11R7/lib/libXdmcp.so.7.0\n7865e000-78660000 r--s 00000000 0a:00 160767                             /usr/X11R7/lib/libfontenc.so.2.0\n78660000-7869e000 r-xp 00000000 0a:00 366637                             /lib/libm.so.0.14\n7869e000-786ac000 ---p 00000000 00:00 0                                  \n786ac000-786ae000 rw-p 0003c000 0a:00 366637                             /lib/libm.so.0.14\n786ae000-786b0000 r--s 00000000 0a:00 160668                             /usr/X11R7/lib/libXau.so.7.0\n786b0000-786b2000 r--s 00000000 0a:00 160770                             /usr/X11R7/lib/libfreetype.so.19.0\n786b2000-786b4000 r--s 00000000 0a:00 160698                             /usr/X11R7/lib/libXfont.so.3.0\n786b4000-786b6000 r--s 00000000 0a:00 160782                             /usr/X11R7/lib/libpixman-1.so.2.4\n786b6000-786c0000 rw-p 00000000 00:00 0                                  \n786c0000-786da000 r-xp 00000000 0a:00 824836                             /libexec/ld.elf_so\n786da000-786e8000 ---p 00000000 00:00 0                                  \n786e8000-786ec000 rw-p 00000000 00:00 0                                  \n786ec000-786ee000 r--s 00000000 0a:00 69336                              /usr/lib/libexecinfo.so.0.0\n786ee000-786f0000 r--s 00000000 0a:00 366637                             /lib/libm.so.0.14\n786f0000-786f8000 rw-p 00000000 00:00 0                                  \n786f8000-7fbf8000 ---p 00000000 00:00 0                                  \n7fbf8000-7ffe0000 rw-p 00000000 00:00 0                                  \n7ffe0000-7fff6000 rw-p 00000000 00:00 0                                  \n7fff6000-7fff8000 rw-p 00000000 00:00 0                                  \n",
+      "result": {
+        "path": ".work/system-stability/boot-xt37m0co/state-replay-2/result.json",
+        "sha256": "53a9f17c423833aeceed391559ce77f9a2928165ece58e972a50a0c0b6a1e207"
+      }
+    },
+    {
+      "directory": "acrobat-fixed",
+      "reason": "Read stale previous-session log/authority before the new login was established.",
+      "status": "error",
+      "error": "guest command failed (1): (tries=0; until test -s \"$job/handoff\" && /usr/local/libexec/xiri/x11-check ready; do tries=$((tries+1)); test \"$tries\" -lt 90 || exit 1; sleep 2; done)\nHORIZATION-1 key (failed key comparison)\nInvalid XDM-AUTHORIZATION-1 key (failed key comparison)\nInvalid XDM-AUTHORIZATION-1 key (failed key comparison)\nInvalid XDM-AUTHORIZATION-1 key (failed key comparison)\nInvalid XDM-AUTHORIZATION-1 key (failed key comparison)\nInvalid XDM-AUTHORIZATION-1 key (failed key comparison)\nInvalid XDM-AUTHORIZATION-1 key (failed key comparison)\nInvalid XDM-AUTHORIZATION-1 key (failed key comparison)\nInvalid XDM-AUTHORIZATION-1 key (failed key comparison)\nInvalid XDM-AUTHORIZATION-1 key (failed key comparison)\nInvalid XDM-AUTHORIZATION-1 key (failed key comparison)\nInvalid XDM-AUTHORIZATION-1 key (failed key comparison)\nInvalid XDM-AUTHORIZATION-1 key (failed key comparison)\nInvalid XDM-AUTHORIZATION-1 key (failed key comparison)\nInvalid XDM-AUTHORIZATION-1 key (failed key comparison)\nInvalid XDM-AUTHORIZATION-1 key (failed key comparison)\nInvalid XDM-AUTHORIZATION-1 key (failed key comparison)\nInvalid XDM-AUTHORIZATION-1 key (failed key comparison)\nInvalid XDM-AUTHORIZATION-1 key (failed key comparison)\nInvalid XDM-AUTHORIZATION-1 key (failed key comparison)\nInvalid XDM-AUTHORIZATION-1 key (failed key comparison)\nInvalid XDM-AUTHORIZATION-1 key (failed key comparison)\nInvalid XDM-AUTHORIZATION-1 key (failed key comparison)\nInvalid XDM-AUTHORIZATION-1 key (failed key comparison)\nInvalid XDM-AUTHORIZATION-1 key (failed key comparison)\nInvalid XDM-AUTHORIZATION-1 key (failed key comparison)\nInvalid XDM-AUTHORIZATION-1 key (failed key comparison)\nInvalid XDM-AUTHORIZATION-1 key (failed key comparison)\nInvalid XDM-AUTHORIZATION-1 key (failed key comparison)\nInvalid XDM-AUTHORIZATION-1 key (failed key comparison)\nInvalid XDM-AUTHORIZATION-1 key (failed key comparison)\nInvalid XDM-AUTHORIZATION-1 key (failed key comparison)\nInvalid XDM-AUTHORIZATION-1 key (failed key comparison)\nInvalid XDM-AUTHORIZATION-1 key (failed key comparison)\nInvalid XDM-AUTHORIZATION-1 key (failed key comparison)\n\nXIRI_e14738d2215148b78319bdb2f912a355_RC=1\nxiri-indy# ",
+      "result": {
+        "path": ".work/system-stability/boot-xt37m0co/acrobat-fixed/result.json",
+        "sha256": "3c6e0f2ff943242781b5088e507d31a8e7720ecbb4f04237d61f4a70a79cadc3"
+      }
+    },
+    {
+      "directory": "acrobat-fixed-resume",
+      "reason": "Restoring the server cookie alone did not create a logged-in session.",
+      "status": "error",
+      "error": "guest command failed (1): (tries=0; until test -s \"$job/handoff\" && /usr/local/libexec/xiri/x11-check ready; do tries=$((tries+1)); test \"$tries\" -lt 90 || exit 1; sleep 2; done)\n(tries=0; until test -s \"$job/handoff\" && /usr/local/libexec/xiri/x11 \b-check ready; do tries=$((tries+1)); test \"$tries\" -lt 90 || exit 1; sleep 2; do \bne); xiri_rc=$?; printf '\\nXIRI_c1cc7bdb9bb24363aa1eeadba6c72439_RC=%s\\n' \"$xiri \b_rc\"\n\nXIRI_c1cc7bdb9bb24363aa1eeadba6c72439_RC=1\nxiri-indy# ",
+      "result": {
+        "path": ".work/system-stability/boot-xt37m0co/acrobat-fixed-resume/result.json",
+        "sha256": "c7dcf7f811d771d25d037ecdcaa4ecb647b148f4e68067be54d00538761b6502"
+      }
+    }
+  ],
+  "fixed_replay": {
+    "status": "error",
+    "scope": "reduced Acrobat capture/focus replay after fresh Xorg -dumbSched startup; diagnostic only",
+    "cases": [
+      {
+        "iteration": 1,
+        "helper": "original",
+        "png_sha256": "384c2d1ea59ec920e4ab7dbbe951b0bc08bc98337e1300c7663b337abdfbaafc",
+        "status": 0
+      },
+      {
+        "iteration": 2,
+        "helper": "original",
+        "png_sha256": "f67312dce1c8c69d4e84534918858abb9dbc5cf495b5c4fa2793582a4d906ed0",
+        "status": 0
+      },
+      {
+        "iteration": 3,
+        "helper": "original",
+        "png_sha256": "f67312dce1c8c69d4e84534918858abb9dbc5cf495b5c4fa2793582a4d906ed0",
+        "status": 0
+      },
+      {
+        "iteration": 4,
+        "helper": "original",
+        "png_sha256": "f67312dce1c8c69d4e84534918858abb9dbc5cf495b5c4fa2793582a4d906ed0",
+        "status": 0
+      },
+      {
+        "iteration": 5,
+        "helper": "original",
+        "png_sha256": "f67312dce1c8c69d4e84534918858abb9dbc5cf495b5c4fa2793582a4d906ed0",
+        "status": 0
+      },
+      {
+        "iteration": 6,
+        "helper": "original",
+        "png_sha256": "f67312dce1c8c69d4e84534918858abb9dbc5cf495b5c4fa2793582a4d906ed0",
+        "status": 0
+      },
+      {
+        "iteration": 7,
+        "helper": "original",
+        "png_sha256": "f67312dce1c8c69d4e84534918858abb9dbc5cf495b5c4fa2793582a4d906ed0",
+        "status": 0
+      },
+      {
+        "iteration": 8,
+        "helper": "original",
+        "png_sha256": "f67312dce1c8c69d4e84534918858abb9dbc5cf495b5c4fa2793582a4d906ed0",
+        "status": 0
+      },
+      {
+        "iteration": 9,
+        "helper": "original",
+        "png_sha256": "f67312dce1c8c69d4e84534918858abb9dbc5cf495b5c4fa2793582a4d906ed0",
+        "status": 0
+      },
+      {
+        "iteration": 10,
+        "helper": "original",
+        "png_sha256": "f67312dce1c8c69d4e84534918858abb9dbc5cf495b5c4fa2793582a4d906ed0",
+        "status": 0
+      },
+      {
+        "iteration": 11,
+        "helper": "original",
+        "png_sha256": "f67312dce1c8c69d4e84534918858abb9dbc5cf495b5c4fa2793582a4d906ed0",
+        "status": 0
+      },
+      {
+        "iteration": 12,
+        "helper": "original",
+        "png_sha256": "f67312dce1c8c69d4e84534918858abb9dbc5cf495b5c4fa2793582a4d906ed0",
+        "status": 0
+      },
+      {
+        "iteration": 13,
+        "helper": "original",
+        "png_sha256": "f67312dce1c8c69d4e84534918858abb9dbc5cf495b5c4fa2793582a4d906ed0",
+        "status": 0
+      },
+      {
+        "iteration": 14,
+        "helper": "original",
+        "png_sha256": "f67312dce1c8c69d4e84534918858abb9dbc5cf495b5c4fa2793582a4d906ed0",
+        "status": 0
+      },
+      {
+        "iteration": 15,
+        "helper": "original",
+        "png_sha256": "f67312dce1c8c69d4e84534918858abb9dbc5cf495b5c4fa2793582a4d906ed0",
+        "status": 0
+      },
+      {
+        "iteration": 16,
+        "helper": "original",
+        "png_sha256": "f67312dce1c8c69d4e84534918858abb9dbc5cf495b5c4fa2793582a4d906ed0",
+        "status": 0
+      },
+      {
+        "iteration": 17,
+        "helper": "original",
+        "png_sha256": "f67312dce1c8c69d4e84534918858abb9dbc5cf495b5c4fa2793582a4d906ed0",
+        "status": 0
+      },
+      {
+        "iteration": 18,
+        "helper": "original",
+        "png_sha256": "f67312dce1c8c69d4e84534918858abb9dbc5cf495b5c4fa2793582a4d906ed0",
+        "status": 0
+      },
+      {
+        "iteration": 19,
+        "helper": "original",
+        "png_sha256": "f67312dce1c8c69d4e84534918858abb9dbc5cf495b5c4fa2793582a4d906ed0",
+        "status": 0
+      },
+      {
+        "iteration": 20,
+        "helper": "original",
+        "png_sha256": "f67312dce1c8c69d4e84534918858abb9dbc5cf495b5c4fa2793582a4d906ed0",
+        "status": 0
+      },
+      {
+        "iteration": 21,
+        "helper": "original",
+        "png_sha256": "f67312dce1c8c69d4e84534918858abb9dbc5cf495b5c4fa2793582a4d906ed0",
+        "status": 0
+      },
+      {
+        "iteration": 22,
+        "helper": "original",
+        "png_sha256": "f67312dce1c8c69d4e84534918858abb9dbc5cf495b5c4fa2793582a4d906ed0",
+        "status": 0
+      },
+      {
+        "iteration": 23,
+        "helper": "original",
+        "png_sha256": "f67312dce1c8c69d4e84534918858abb9dbc5cf495b5c4fa2793582a4d906ed0",
+        "status": 0
+      },
+      {
+        "iteration": 24,
+        "helper": "original",
+        "png_sha256": "f67312dce1c8c69d4e84534918858abb9dbc5cf495b5c4fa2793582a4d906ed0",
+        "status": 0
+      },
+      {
+        "iteration": 25,
+        "helper": "original",
+        "png_sha256": "f67312dce1c8c69d4e84534918858abb9dbc5cf495b5c4fa2793582a4d906ed0",
+        "status": 0
+      },
+      {
+        "iteration": 26,
+        "helper": "original",
+        "png_sha256": "f67312dce1c8c69d4e84534918858abb9dbc5cf495b5c4fa2793582a4d906ed0",
+        "status": 0
+      },
+      {
+        "iteration": 27,
+        "helper": "original",
+        "png_sha256": "f67312dce1c8c69d4e84534918858abb9dbc5cf495b5c4fa2793582a4d906ed0",
+        "status": 0
+      },
+      {
+        "iteration": 28,
+        "helper": "original",
+        "png_sha256": "f67312dce1c8c69d4e84534918858abb9dbc5cf495b5c4fa2793582a4d906ed0",
+        "status": 0
+      },
+      {
+        "iteration": 29,
+        "helper": "original",
+        "png_sha256": "f67312dce1c8c69d4e84534918858abb9dbc5cf495b5c4fa2793582a4d906ed0",
+        "status": 0
+      },
+      {
+        "iteration": 30,
+        "helper": "original",
+        "png_sha256": "f67312dce1c8c69d4e84534918858abb9dbc5cf495b5c4fa2793582a4d906ed0",
+        "status": 0
+      },
+      {
+        "iteration": 31,
+        "helper": "traced",
+        "png_sha256": "f67312dce1c8c69d4e84534918858abb9dbc5cf495b5c4fa2793582a4d906ed0",
+        "status": 0
+      },
+      {
+        "iteration": 32,
+        "helper": "traced",
+        "png_sha256": "f67312dce1c8c69d4e84534918858abb9dbc5cf495b5c4fa2793582a4d906ed0",
+        "status": 0
+      },
+      {
+        "iteration": 33,
+        "helper": "traced",
+        "png_sha256": "f67312dce1c8c69d4e84534918858abb9dbc5cf495b5c4fa2793582a4d906ed0",
+        "status": 0
+      },
+      {
+        "iteration": 34,
+        "helper": "traced",
+        "png_sha256": "f67312dce1c8c69d4e84534918858abb9dbc5cf495b5c4fa2793582a4d906ed0",
+        "status": 0
+      },
+      {
+        "iteration": 35,
+        "helper": "traced",
+        "png_sha256": "f67312dce1c8c69d4e84534918858abb9dbc5cf495b5c4fa2793582a4d906ed0",
+        "status": 0
+      },
+      {
+        "iteration": 36,
+        "helper": "traced",
+        "png_sha256": "f67312dce1c8c69d4e84534918858abb9dbc5cf495b5c4fa2793582a4d906ed0",
+        "status": 0
+      },
+      {
+        "iteration": 37,
+        "helper": "traced",
+        "png_sha256": "f67312dce1c8c69d4e84534918858abb9dbc5cf495b5c4fa2793582a4d906ed0",
+        "status": 0
+      },
+      {
+        "iteration": 38,
+        "helper": "traced",
+        "png_sha256": "f67312dce1c8c69d4e84534918858abb9dbc5cf495b5c4fa2793582a4d906ed0",
+        "status": 0
+      },
+      {
+        "iteration": 39,
+        "helper": "traced",
+        "png_sha256": "f67312dce1c8c69d4e84534918858abb9dbc5cf495b5c4fa2793582a4d906ed0",
+        "status": 0
+      },
+      {
+        "iteration": 40,
+        "helper": "traced",
+        "png_sha256": "f67312dce1c8c69d4e84534918858abb9dbc5cf495b5c4fa2793582a4d906ed0",
+        "status": 0
+      },
+      {
+        "iteration": 41,
+        "helper": "traced",
+        "png_sha256": "f67312dce1c8c69d4e84534918858abb9dbc5cf495b5c4fa2793582a4d906ed0",
+        "status": 0
+      },
+      {
+        "iteration": 42,
+        "helper": "traced",
+        "png_sha256": "f67312dce1c8c69d4e84534918858abb9dbc5cf495b5c4fa2793582a4d906ed0",
+        "status": 0
+      },
+      {
+        "iteration": 43,
+        "helper": "traced",
+        "png_sha256": "f67312dce1c8c69d4e84534918858abb9dbc5cf495b5c4fa2793582a4d906ed0",
+        "status": 0
+      },
+      {
+        "iteration": 44,
+        "helper": "traced",
+        "png_sha256": "f67312dce1c8c69d4e84534918858abb9dbc5cf495b5c4fa2793582a4d906ed0",
+        "status": 0
+      },
+      {
+        "iteration": 45,
+        "helper": "traced",
+        "png_sha256": "f67312dce1c8c69d4e84534918858abb9dbc5cf495b5c4fa2793582a4d906ed0",
+        "status": 0
+      },
+      {
+        "iteration": 46,
+        "helper": "traced",
+        "png_sha256": "f67312dce1c8c69d4e84534918858abb9dbc5cf495b5c4fa2793582a4d906ed0",
+        "status": 0
+      },
+      {
+        "iteration": 47,
+        "helper": "traced",
+        "png_sha256": "f67312dce1c8c69d4e84534918858abb9dbc5cf495b5c4fa2793582a4d906ed0",
+        "status": 0
+      },
+      {
+        "iteration": 48,
+        "helper": "traced",
+        "png_sha256": "f67312dce1c8c69d4e84534918858abb9dbc5cf495b5c4fa2793582a4d906ed0",
+        "status": 0
+      },
+      {
+        "iteration": 49,
+        "helper": "traced",
+        "png_sha256": "f67312dce1c8c69d4e84534918858abb9dbc5cf495b5c4fa2793582a4d906ed0",
+        "status": 0
+      },
+      {
+        "iteration": 50,
+        "helper": "traced",
+        "png_sha256": "f67312dce1c8c69d4e84534918858abb9dbc5cf495b5c4fa2793582a4d906ed0",
+        "status": 0
+      },
+      {
+        "iteration": 51,
+        "helper": "traced",
+        "png_sha256": "f67312dce1c8c69d4e84534918858abb9dbc5cf495b5c4fa2793582a4d906ed0",
+        "status": 0
+      },
+      {
+        "iteration": 52,
+        "helper": "traced",
+        "png_sha256": "f67312dce1c8c69d4e84534918858abb9dbc5cf495b5c4fa2793582a4d906ed0",
+        "status": 0
+      },
+      {
+        "iteration": 53,
+        "helper": "traced",
+        "png_sha256": "f67312dce1c8c69d4e84534918858abb9dbc5cf495b5c4fa2793582a4d906ed0",
+        "status": 0
+      },
+      {
+        "iteration": 54,
+        "helper": "traced",
+        "png_sha256": "f67312dce1c8c69d4e84534918858abb9dbc5cf495b5c4fa2793582a4d906ed0",
+        "status": 0
+      },
+      {
+        "iteration": 55,
+        "helper": "traced",
+        "png_sha256": "f67312dce1c8c69d4e84534918858abb9dbc5cf495b5c4fa2793582a4d906ed0",
+        "status": 0
+      },
+      {
+        "iteration": 56,
+        "helper": "traced",
+        "png_sha256": "f67312dce1c8c69d4e84534918858abb9dbc5cf495b5c4fa2793582a4d906ed0",
+        "status": 0
+      },
+      {
+        "iteration": 57,
+        "helper": "traced",
+        "png_sha256": "f67312dce1c8c69d4e84534918858abb9dbc5cf495b5c4fa2793582a4d906ed0",
+        "status": 0
+      },
+      {
+        "iteration": 58,
+        "helper": "traced",
+        "png_sha256": "f67312dce1c8c69d4e84534918858abb9dbc5cf495b5c4fa2793582a4d906ed0",
+        "status": 0
+      },
+      {
+        "iteration": 59,
+        "helper": "traced",
+        "png_sha256": "f67312dce1c8c69d4e84534918858abb9dbc5cf495b5c4fa2793582a4d906ed0",
+        "status": 0
+      },
+      {
+        "iteration": 60,
+        "helper": "traced",
+        "png_sha256": "f67312dce1c8c69d4e84534918858abb9dbc5cf495b5c4fa2793582a4d906ed0",
+        "status": 0
+      }
+    ],
+    "server": "3682 /usr/X11R7/bin/Xorg :0 -config /usr/local/share/xiri/xorg.conf -dumbSched -noretro -auth /var/db/xdm/authdir/authfiles/A:0-nOU102 \n  dimensions:    1280x1024 pixels (339x271 millimeters)\n",
+    "pid": 4973,
+    "geometry": "\nxwininfo: Window id: 0x1800155 \"xiri-acrobat-test.pdf\"\n\n  Absolute upper-left X:  50\n  Absolute upper-left Y:  50\n  Relative upper-left X:  0\n  Relative upper-left Y:  0\n  Width: 800\n  Height: 600\n  Depth: 24\n  Visual: 0x21\n  Visual Class: TrueColor\n  Border width: 0\n  Class: InputOutput\n  Colormap: 0x20 (not installed)\n  Bit Gravity State: ForgetGravity\n  Window Gravity State: NorthWestGravity\n  Backing Store State: NotUseful\n  Save Under State: no\n  Map State: IsViewable\n  Override Redirect State: no\n  Corners:  +50+50  -430+50  -430-374  +50-374\n  -geometry 800x600+42+18\n\n",
+    "traces": "CLICK BEGIN stage=open mono=3361.359108443\nCLICK END stage=open mono=3361.398075806\nCLICK BEGIN stage=motion-sync mono=3361.398348018\nCLICK END stage=motion-sync mono=3361.410125079\nCLICK BEGIN stage=button-sync mono=3361.612070928\nCLICK END stage=button-sync mono=3361.822282019\nCLICK BEGIN stage=close mono=3361.822549019\nCLICK END stage=close mono=3361.827922231\nCLICK BEGIN stage=open mono=3369.528492321\nCLICK END stage=open mono=3369.567975594\nCLICK BEGIN stage=motion-sync mono=3369.568243382\nCLICK END stage=motion-sync mono=3369.581080291\nCLICK BEGIN stage=button-sync mono=3369.782315564\nCLICK END stage=button-sync mono=3369.890386382\nCLICK BEGIN stage=close mono=3369.890670049\nCLICK END stage=close mono=3369.897784564\nCLICK BEGIN stage=open mono=3377.570297655\nCLICK END stage=open mono=3377.607092352\nCLICK BEGIN stage=motion-sync mono=3377.607350473\nCLICK END stage=motion-sync mono=3377.619860109\nCLICK BEGIN stage=button-sync mono=3377.822126200\nCLICK END stage=button-sync mono=3377.931104321\nCLICK BEGIN stage=close mono=3377.931985170\nCLICK END stage=close mono=3377.936978594\nCLICK BEGIN stage=open mono=3385.634422837\nCLICK END stage=open mono=3385.676012018\nCLICK BEGIN stage=motion-sync mono=3385.676287503\nCLICK END stage=motion-sync mono=3385.689483836\nCLICK BEGIN stage=button-sync mono=3385.893844261\nCLICK END stage=button-sync mono=3386.006785867\nCLICK BEGIN stage=close mono=3386.006985625\nCLICK END stage=close mono=3386.012486958\nCLICK BEGIN stage=open mono=3393.684690988\nCLICK END stage=open mono=3393.734344018\nCLICK BEGIN stage=motion-sync mono=3393.734563139\nCLICK END stage=motion-sync mono=3393.745603139\nCLICK BEGIN stage=button-sync mono=3393.957515321\nCLICK END stage=button-sync mono=3394.067560018\nCLICK BEGIN stage=close mono=3394.067792230\nCLICK END stage=close mono=3394.071140624\nCLICK BEGIN stage=open mono=3401.708926836\nCLICK END stage=open mono=3401.767317049\nCLICK BEGIN stage=motion-sync mono=3401.767489109\nCLICK END stage=motion-sync mono=3401.774870352\nCLICK BEGIN stage=button-sync mono=3401.976204170\nCLICK END stage=button-sync mono=3402.086606988\nCLICK BEGIN stage=close mono=3402.086947200\nCLICK END stage=close mono=3402.091400139\nCLICK BEGIN stage=open mono=3409.699425079\nCLICK END stage=open mono=3409.802941049\nCLICK BEGIN stage=motion-sync mono=3409.803112897\nCLICK END stage=motion-sync mono=3409.810607200\nCLICK BEGIN stage=button-sync mono=3410.016104685\nCLICK END stage=button-sync mono=3410.124627897\nCLICK BEGIN stage=close mono=3410.124803352\nCLICK END stage=close mono=3410.128072412\nCLICK BEGIN stage=open mono=3417.754563018\nCLICK END stage=open mono=3417.893921533\nCLICK BEGIN stage=motion-sync mono=3417.894089139\nCLICK END stage=motion-sync mono=3417.901585746\nCLICK BEGIN stage=button-sync mono=3418.110266655\nCLICK END stage=button-sync mono=3418.221134988\nCLICK BEGIN stage=close mono=3418.221322624\nCLICK END stage=close mono=3418.224539564\nCLICK BEGIN stage=open mono=3425.859933261\nCLICK END stage=open mono=3425.914146079\nCLICK BEGIN stage=motion-sync mono=3425.914320927\nCLICK END stage=motion-sync mono=3425.921781473\nCLICK BEGIN stage=button-sync mono=3426.131499988\nCLICK END stage=button-sync mono=3426.236361837\nCLICK BEGIN stage=close mono=3426.236538230\nCLICK END stage=close mono=3426.239477897\nCLICK BEGIN stage=open mono=3433.866278109\nCLICK END stage=open mono=3433.889782655\nCLICK BEGIN stage=motion-sync mono=3433.889954443\nCLICK END stage=motion-sync mono=3433.897927261\nCLICK BEGIN stage=button-sync mono=3434.103955564\nCLICK END stage=button-sync mono=3434.216592140\nCLICK BEGIN stage=close mono=3434.216851806\nCLICK END stage=close mono=3434.221486442\nCLICK BEGIN stage=open mono=3441.864651412\nCLICK END stage=open mono=3441.905520927\nCLICK BEGIN stage=motion-sync mono=3441.905788230\nCLICK END stage=motion-sync mono=3441.915124594\nCLICK BEGIN stage=button-sync mono=3442.123847685\nCLICK END stage=button-sync mono=3442.234962473\nCLICK BEGIN stage=close mono=3442.235293867\nCLICK END stage=close mono=3442.240213321\nCLICK BEGIN stage=open mono=3449.880401867\nCLICK END stage=open mono=3449.902305412\nCLICK BEGIN stage=motion-sync mono=3449.902476836\nCLICK END stage=motion-sync mono=3449.908603291\nCLICK BEGIN stage=button-sync mono=3450.111485018\nCLICK END stage=button-sync mono=3450.217341867\nCLICK BEGIN stage=close mono=3450.217522564\nCLICK END stage=close mono=3450.220394594\nCLICK BEGIN stage=open mono=3457.641433836\nCLICK END stage=open mono=3457.663428867\nCLICK BEGIN stage=motion-sync mono=3457.663600048\nCLICK END stage=motion-sync mono=3457.674667321\nCLICK BEGIN stage=button-sync mono=3457.881485321\nCLICK END stage=button-sync mono=3457.989946079\nCLICK BEGIN stage=close mono=3457.990121291\nCLICK END stage=close mono=3457.993572594\nCLICK BEGIN stage=open mono=3465.612856654\nCLICK END stage=open mono=3465.634002230\nCLICK BEGIN stage=motion-sync mono=3465.634171109\nCLICK END stage=motion-sync mono=3465.640223776\nCLICK BEGIN stage=button-sync mono=3465.841458715\nCLICK END stage=button-sync mono=3465.948619897\nCLICK BEGIN stage=close mono=3465.948798685\nCLICK END stage=close mono=3465.951886594\nCLICK BEGIN stage=open mono=3473.566415958\nCLICK END stage=open mono=3473.588504927\nCLICK BEGIN stage=motion-sync mono=3473.588682018\nCLICK END stage=motion-sync mono=3473.597231867\nCLICK BEGIN stage=button-sync mono=3473.801456715\nCLICK END stage=button-sync mono=3473.905257170\nCLICK BEGIN stage=close mono=3473.905434715\nCLICK END stage=close mono=3473.908422685\nCLICK BEGIN stage=open mono=3481.520537230\nCLICK END stage=open mono=3481.542916806\nCLICK BEGIN stage=motion-sync mono=3481.543098382\nCLICK END stage=motion-sync mono=3481.549335321\nCLICK BEGIN stage=button-sync mono=3481.751472200\nCLICK END stage=button-sync mono=3481.871791563\nCLICK BEGIN stage=close mono=3481.871951503\nCLICK END stage=close mono=3481.875058836\nCLICK BEGIN stage=open mono=3489.501091654\nCLICK END stage=open mono=3489.528998170\nCLICK BEGIN stage=motion-sync mono=3489.529188079\nCLICK END stage=motion-sync mono=3489.538657685\nCLICK BEGIN stage=button-sync mono=3489.741502533\nCLICK END stage=button-sync mono=3489.852019442\nCLICK BEGIN stage=close mono=3489.852166836\nCLICK END stage=close mono=3489.875143291\nCLICK BEGIN stage=open mono=3497.471071291\nCLICK END stage=open mono=3497.499931321\nCLICK BEGIN stage=motion-sync mono=3497.500105806\nCLICK END stage=motion-sync mono=3497.506786806\nCLICK BEGIN stage=button-sync mono=3497.762158927\nCLICK END stage=button-sync mono=3497.883164806\nCLICK BEGIN stage=close mono=3497.883437412\nCLICK END stage=close mono=3497.912222806\nCLICK BEGIN stage=open mono=3505.537503442\nCLICK END stage=open mono=3505.560101412\nCLICK BEGIN stage=motion-sync mono=3505.560271654\nCLICK END stage=motion-sync mono=3505.567724927\nCLICK BEGIN stage=button-sync mono=3505.773370048\nCLICK END stage=button-sync mono=3505.904087715\nCLICK BEGIN stage=close mono=3505.904243139\nCLICK END stage=close mono=3505.919561321\nCLICK BEGIN stage=open mono=3513.546018503\nCLICK END stage=open mono=3513.568430048\nCLICK BEGIN stage=motion-sync mono=3513.568602836\nCLICK END stage=motion-sync mono=3513.576160836\nCLICK BEGIN stage=button-sync mono=3513.779027503\nCLICK END stage=button-sync mono=3513.895465624\nCLICK BEGIN stage=close mono=3513.895624866\nCLICK END stage=close mono=3513.898524200\nCLICK BEGIN stage=open mono=3521.486011230\nCLICK END stage=open mono=3521.507406291\nCLICK BEGIN stage=motion-sync mono=3521.507574382\nCLICK END stage=motion-sync mono=3521.514766867\nCLICK BEGIN stage=button-sync mono=3521.722107473\nCLICK END stage=button-sync mono=3521.842142866\nCLICK BEGIN stage=close mono=3521.842296533\nCLICK END stage=close mono=3521.872098442\nCLICK BEGIN stage=open mono=3529.509478654\nCLICK END stage=open mono=3529.532671775\nCLICK BEGIN stage=motion-sync mono=3529.532872291\nCLICK END stage=motion-sync mono=3529.543155291\nCLICK BEGIN stage=button-sync mono=3529.751749654\nCLICK END stage=button-sync mono=3529.858961503\nCLICK BEGIN stage=close mono=3529.859236291\nCLICK END stage=close mono=3529.863238200\nCLICK BEGIN stage=open mono=3537.482529351\nCLICK END stage=open mono=3537.503406836\nCLICK BEGIN stage=motion-sync mono=3537.503580200\nCLICK END stage=motion-sync mono=3537.510010836\nCLICK BEGIN stage=button-sync mono=3537.721613745\nCLICK END stage=button-sync mono=3537.853320988\nCLICK BEGIN stage=close mono=3537.853498139\nCLICK END stage=close mono=3537.856386169\nCLICK BEGIN stage=open mono=3545.439702442\nCLICK END stage=open mono=3545.463331078\nCLICK BEGIN stage=motion-sync mono=3545.463515533\nCLICK END stage=motion-sync mono=3545.469778139\nCLICK BEGIN stage=button-sync mono=3545.671922533\nCLICK END stage=button-sync mono=3545.811454078\nCLICK BEGIN stage=close mono=3545.811683169\nCLICK END stage=close mono=3545.814635684\nCLICK BEGIN stage=open mono=3553.402212472\nCLICK END stage=open mono=3553.424758139\nCLICK BEGIN stage=motion-sync mono=3553.424929563\nCLICK END stage=motion-sync mono=3553.432629836\nCLICK BEGIN stage=button-sync mono=3553.641653351\nCLICK END stage=button-sync mono=3553.805860594\nCLICK BEGIN stage=close mono=3553.806024200\nCLICK END stage=close mono=3553.808954200\nCLICK BEGIN stage=open mono=3561.408517139\nCLICK END stage=open mono=3561.430699109\nCLICK BEGIN stage=motion-sync mono=3561.430885381\nCLICK END stage=motion-sync mono=3561.438200988\nCLICK BEGIN stage=button-sync mono=3561.643514957\nCLICK END stage=button-sync mono=3561.802958836\nCLICK BEGIN stage=close mono=3561.803205563\nCLICK END stage=close mono=3561.808369563\nCLICK BEGIN stage=open mono=3569.428886109\nCLICK END stage=open mono=3569.452451957\nCLICK BEGIN stage=motion-sync mono=3569.452624139\nCLICK END stage=motion-sync mono=3569.460175321\nCLICK BEGIN stage=button-sync mono=3569.663562836\nCLICK END stage=button-sync mono=3569.770853866\nCLICK BEGIN stage=close mono=3569.771125624\nCLICK END stage=close mono=3569.776342109\nCLICK BEGIN stage=open mono=3577.378919593\nCLICK END stage=open mono=3577.406192987\nCLICK BEGIN stage=motion-sync mono=3577.406367169\nCLICK END stage=motion-sync mono=3577.412809321\nCLICK BEGIN stage=button-sync mono=3577.613821290\nCLICK END stage=button-sync mono=3577.725221927\nCLICK BEGIN stage=close mono=3577.725390078\nCLICK END stage=close mono=3577.728959048\nCLICK BEGIN stage=open mono=3585.306730381\nCLICK END stage=open mono=3585.330309290\nCLICK BEGIN stage=motion-sync mono=3585.330478260\nCLICK END stage=motion-sync mono=3585.336932866\nCLICK BEGIN stage=button-sync mono=3585.545185775\nCLICK END stage=button-sync mono=3585.651536957\nCLICK BEGIN stage=close mono=3585.651714048\nCLICK END stage=close mono=3585.653961230\nCLICK BEGIN stage=open mono=3593.277135048\nCLICK END stage=open mono=3593.299926139\nCLICK BEGIN stage=motion-sync mono=3593.300091200\nCLICK END stage=motion-sync mono=3593.306943987\nCLICK BEGIN stage=button-sync mono=3593.515197533\nCLICK END stage=button-sync mono=3593.620495715\nCLICK BEGIN stage=close mono=3593.620669745\nCLICK END stage=close mono=3593.623592806\n",
+    "error": "guest command failed (1): (tries=0; until ! kill -0 4973 2>/dev/null; do tries=$((tries+1)); test \"$tries\" -lt 60 || exit 1; sleep 2; done)\n(tries=0; until ! kill -0 4973 2>/dev/null; do tries=$((tries+1)); te \bst \"$tries\" -lt 60 || exit 1; sleep 2; done); xiri_rc=$?; printf '\\nXIRI_254a3af \b8059b4b08841b0b6610665f07_RC=%s\\n' \"$xiri_rc\"\n\nXIRI_254a3af8059b4b08841b0b6610665f07_RC=1\nxiri-indy# ",
+    "original_result": {
+      "path": ".work/system-stability/boot-xt37m0co/acrobat-fixed-login/result.json",
+      "sha256": "e5c299967211aea39501d7088c3f572697d56b83d83193b144a639f5150db08d"
+    },
+    "harness": {
+      "path": ".work/system-stability/boot-xt37m0co/acrobat-fixed-login/harness.py",
+      "sha256": "54c82611458229da7a553a8ffc89d52e7e1b99ccedbf13f11edafc65b32e9d8b"
+    },
+    "png": {
+      "path": "docs/results/images/2026-11-04-xorg-scheduling-acrobat.png",
+      "sha256": "f67312dce1c8c69d4e84534918858abb9dbc5cf495b5c4fa2793582a4d906ed0"
+    }
+  },
+  "normal_exit_followup": {
+    "status": "passed",
+    "scope": "reap the winterm background job after 60 successful focus cases; preserve original exit-predicate failure",
+    "pid": 4973,
+    "before": " PID PPID  UID STAT COMMAND\n4973 3407 1234 Z    (acroread)\nWINDOW id=40004c width=10 height=10 name=3444776d class=3444576d instance=3444776d\nWINDOW id=c00009 width=180 height=180 name=78636c6f636b class=58436c6f636b instance=78636c6f636b\nWINDOW id=a0002c width=103 height=158 name=546f6f6c6368657374 class=546f6f6c6368657374 instance=746f6f6c6368657374\nWINDOW id=e00004 width=1006 height=614 name=786d61686a6f6e6767 class=584d61686a6f6e6767 instance=786d61686a6f6e6767\nWINDOW id=140006b width=900 height=500 name=49636f6e20436174616c6f673a20416c6961732028506167652031206f6620313829 class=49636f6e436174616c6f67 instance=49636f6e436174616c6f67\nWINDOW id=1000005 width=663 height=360 name=77696e7465726d class=58577368 instance=77696e7465726d\n",
+    "shell_wait_status": "0",
+    "original_result": {
+      "path": ".work/system-stability/boot-xt37m0co/reduced-exit-control/result.json",
+      "sha256": "fbf250167053aed4923004056db29128d7a2e0b4a9465b34b529400d7404fa3f"
+    },
+    "harness": {
+      "path": ".work/system-stability/boot-xt37m0co/reduced-exit-control/harness.py",
+      "sha256": "69ea1f049af644b1e4e3caf742415eaee22ba7c0ac4c4279b5d6d1679309affe"
+    }
+  },
+  "diagnostic_guest": {
+    "status": "error",
+    "error": "timed out after 80s waiting for '\\\\nXIRI_bfe30078134645679bb79fbec7a509c7_RC=(\\\\d+)\\\\n'",
+    "clean_shutdown": true,
+    "source_unchanged": true,
+    "host_seconds": 3933.387,
+    "result": {
+      "path": ".work/system-stability/boot-xt37m0co/result.json",
+      "sha256": "5d55f300feac5f1a69b6a17e4f98fcf5a4c6e8df0cd3642a6e99c89d85734612"
+    }
+  }
+}

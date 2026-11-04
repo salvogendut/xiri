@@ -1,17 +1,26 @@
-# Development history through 2026-11-04
+# Development history through 2026-11-05
 
 This is the former README, retained as a chronological evidence index. Its
 status statements describe individual checkpoints and may be superseded by
 later entries. Use the [current README](../README.md), [development guide](DEVELOPMENT.md)
 and [selected image](../lab/irix-installed-desktop/image.json) for current work.
 
+The [Xorg scheduling cycle](results/2026-11-04-xorg-scheduling.md), completed
+on 2026-11-05 local time, captures the native input timeout at its alarm.
+A ready delayed release waits behind a higher-priority pointer-query client.
+The runtime selects round-robin dispatch; the new manual CHD passes native
+input/query controls, six complete Acrobat sequences, GNOME Terminal,
+both-user xdm, rendering, catalog and clean-halt checks. It also includes the
+previously qualified CD9660 core correction. The user selects native fonts
+and comparison of blank Toolchest entries with IRIX as the next system work.
+
 The [2026-11-04 stability cycle](results/2026-11-04-system-stability.md)
 corrects native NetBSD32 CD9660 ownership/mask translation and qualifies the
 core with input, child-supervision, session and paging checks. The subsequent
 [candidate CHD](results/2026-11-04-system-stability-image.md) passes disk and
 both-user xdm acceptance but reproduces a native XTest timeout in the
-application gate. Its stage trace and reduced capture/click reproducer remain
-open diagnostics; the preceding manual image stays selected.
+application gate. Its stage trace and reduced capture/click reproducer led
+to the scheduling correction above; that failed candidate was not promoted.
 
 The [2026-11-04 preference cycle](results/2026-11-04-irix-preferences.md)
 adds measured rename semantics, with 256 paired records and sixteen namespace

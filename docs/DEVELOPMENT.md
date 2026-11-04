@@ -115,6 +115,10 @@ account lookup file. Native accounts/passwords stay unchanged with
 `--keep-accounts`. The builder verifies the prepared runtime snapshot; current
 runtime code must still match, while its README may advance independently.
 The bundle retains the exact source hashes actually prepared in the guest.
+`--refresh-xservers` explicitly adopts the maintained Xorg launch command in
+the disposable image and records the old/new configuration hashes. Use it
+when preparing an image for a server-command change such as `-dumbSched`;
+the general runtime installer continues to preserve administrator settings.
 
 The [terminal lab](../lab/irix-terminal/README.md) supplies paired socketpair,
 legacy descriptor-transfer, PTY-master, termios and tty-session fixtures.

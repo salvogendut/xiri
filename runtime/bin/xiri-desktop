@@ -49,7 +49,8 @@ unset cookie
 chown "$uid:$gid" "$XAUTHORITY"
 if test "$server" = newport; then
     wsconscfg -f /dev/ttyEcfg 0 2>/dev/null || :
-    Xorg :0 -config /usr/local/share/xiri/xorg.conf -auth "$XAUTHORITY" -noreset >"$job/Xorg.log" 2>&1 &
+    # Match xdm: avoid Xorg 1.10.6 smart-scheduler input starvation.
+    Xorg :0 -config /usr/local/share/xiri/xorg.conf -dumbSched -auth "$XAUTHORITY" -noreset >"$job/Xorg.log" 2>&1 &
 else
     Xvfb :98 -screen 0 1024x768x24 -auth "$XAUTHORITY" -noreset >"$job/Xvfb.log" 2>&1 &
 fi

@@ -1,5 +1,9 @@
 # Native CD mount correction in the desktop image
 
+This record preserves the failed candidate's original gate. The later
+[Xorg scheduling cycle](2026-11-04-xorg-scheduling.md) identifies the input
+stall and qualifies a separate replacement; that newer bundle is now selected.
+
 The replacement bundle is
 `.work/images/xiri-netbsd-desktop-20261104-stability/`. It contains the
 [qualified native CD9660 correction](2026-11-04-system-stability.md) from

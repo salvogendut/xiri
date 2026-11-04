@@ -8,17 +8,18 @@ older reproduction checkpoints. Automated checks never promote their result
 or replace the manual bundle's NVRAM/overlay state.
 
 The current accelerated xdm bundle is
-`.work/images/xiri-netbsd-desktop-20261104-acrobat/`.
-`netbsd-xiri.chd` is an 8 GiB NetBSD disk compressed to 496,114,811 bytes
+`.work/images/xiri-netbsd-desktop-20261104-scheduler/`.
+`netbsd-xiri.chd` is an 8 GiB NetBSD disk compressed to 496,124,430 bytes
 (about 473 MiB). Its SHA256 is
-`c10185ffd95a08a1db31d325ad6fe6ee537e9f18de230347f435960858388b6d`.
-The [native CD mount candidate](results/2026-11-04-system-stability-image.md)
-is built at `.work/images/xiri-netbsd-desktop-20261104-stability/`. Its raw/CHD
-round trip and full-screen xdm/4Dwm/ctwm checks pass, but the application replay
-reproduces a native XTest button-synchronization timeout. It is not promoted;
-the current image and its manual state above remain selected. The report
-retains the candidate's hashes, screenshots, exact failing stage and shorter
-capture-and-click reproducer.
+`b6e5c89ef897f441e0c8cfbb5f174a23f082383414c8fb64105500c971992d36`.
+The [scheduling update](results/2026-11-04-xorg-scheduling.md) includes the
+qualified native CD9660 core correction and selects Xorg's round-robin
+scheduler in xdm and the manual launcher. It passes disk round-trip,
+full-screen xdm/4Dwm/ctwm, rendering, catalog, native input/query-loop controls,
+GNOME Terminal, six Acrobat sequences and clean shutdown. XAA stays enabled.
+The preceding [CD mount candidate](results/2026-11-04-system-stability-image.md)
+retains its reproduced XTest timeout and was never promoted. The earlier
+`20261104-acrobat` manual bundle, overlay and NVRAM remain intact.
 The [cumulative application update](results/2026-11-04-irix-acrobat-image.md)
 adds the qualified GNOME sockets/PTY/original-shell support, preference saving
 and the complete original Acrobat Reader installation with its legacy ELF
@@ -93,7 +94,7 @@ the Xiri fork hooks are still required.
 Launch the qualified bundle directly:
 
 ```sh
-/var/home/salvogendut/Dev/xiri/.work/images/xiri-netbsd-desktop-20261104-acrobat/run-iris.sh
+/var/home/salvogendut/Dev/xiri/.work/images/xiri-netbsd-desktop-20261104-scheduler/run-iris.sh
 ```
 
 It boots automatically to native NetBSD xdm. Use these public development
@@ -133,7 +134,7 @@ it does not qualify its Quit menu.
 bundle. The explicit command is:
 
 ```sh
-python3 scripts/probe-xiri-xdm.py --bundle .work/images/xiri-netbsd-desktop-20261104-acrobat --winterm
+python3 scripts/probe-xiri-xdm.py --bundle .work/images/xiri-netbsd-desktop-20261104-scheduler --winterm
 ```
 
 For root's manual fallback, stop xdm with `/etc/rc.d/xdm stop`, then run

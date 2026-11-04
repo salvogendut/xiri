@@ -117,5 +117,36 @@ cause or qualify unrelated applications, larger documents or general fonts.
 The [replacement-image report](../../docs/results/2026-11-04-system-stability-image.md)
 records a failed `button-sync` deadline, a second occurrence in a reduced
 capture/click loop, and the separate stopped-client diagnostics. Disk/session
-checks pass, but the application failure holds image promotion. Preserve the
+checks passed, but the application failure held that image's promotion. Preserve the
 failed result and archive; a later successful click is diagnostic only.
+The [subsequent scheduler image](../../docs/results/2026-11-04-xorg-scheduling.md)
+passes fresh application, query-loop, both-user session and clean-halt gates
+and is selected independently of those failed runs.
+
+## Pointer-query scheduling control
+
+`--fairness-iterations 10` adds a native Xlib receiver that behaves like a drag
+handler: after button press, it queries the pointer until release. A separate
+`click-trace` process sends the unchanged 100 ms delayed release with its
+ten-second alarm. Forty preliminary press/release events exercise Xorg's
+normal input-priority boost. The receiver has its own twenty-second bound,
+records its UID, query count and elapsed time, and resets synthetic button
+state after recording the result. Each case must observe release and a zero
+sender exit status. The probe runs these controls over Unix and loopback TCP
+at the greeter and in both user desktops. These are additional checks; the
+ordinary input, deliberately held-server, child-supervision and clean-halt
+checks remain required.
+
+The [scheduler investigation](../../docs/results/2026-11-04-xorg-scheduling.md)
+captures the earlier timeout while the release is already ready in Xorg.
+`click-state.c` is the exact expanded diagnostic used for that observation,
+separate from the ordinary acceptance helpers. It preserves their X calls
+and alarm, opens procfs before testing, and on timeout records its signal
+context plus Xorg state without calling Xlib from the handler. Its config
+starts with the verified Xorg PID, followed by `symbol address-in-hex words`
+lines (maximum 32 entries, 256 words each). Addresses and private structure
+layouts are specific to the recorded Xorg binary/load base; the report
+retains that config and both raw snapshots. It is not installed in an image.
+The attempted Xorg register read failed, so the evidence does not contain a
+server backtrace. The successful client-state reads and native scheduler
+controls are the usable evidence.

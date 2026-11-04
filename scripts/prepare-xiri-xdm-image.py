@@ -24,6 +24,8 @@ def main():
     parser.add_argument('--kernel-build',type=Path,default=ROOT/'.work/netbsd-module-build')
     parser.add_argument('--baseline',type=Path,help='install a replacement kernel/module pair from --kernel-build')
     parser.add_argument('--keep-accounts',action='store_true',help='refresh an existing xdm image without changing accounts or passwords')
+    parser.add_argument('--refresh-xservers', action='store_true',
+                        help='install the maintained Xorg command in this disposable image')
     parser.add_argument('--gimp-resources', type=Path, help='verified output directory from stage-irix-gimp.py')
     for name in PACKAGES:
         parser.add_argument('--'+name+'-resources', type=Path,
@@ -142,6 +144,15 @@ def main():
                 key: value for key, value in resources.items() if key != 'files'}
         cmd('mkdir -p /root/xdm-image-build && cp -R /cdrom/runtime /root/xdm-image-build/ && '
             'cd /root/xdm-image-build/runtime && make && sh install.sh --enable-xdm',300)
+        if args.refresh_xservers:
+            # The general installer preserves administrator configuration.
+            # Image preparation can explicitly adopt the new server command
+            # after verifying the input image against its support inventory.
+            before = get('sha256 -q /etc/xiri/xdm/Xservers').strip()
+            cmd('install -m 644 /cdrom/runtime/etc/xdm-Xservers /etc/xiri/xdm/Xservers')
+            after = get('sha256 -q /etc/xiri/xdm/Xservers').strip()
+            assert after == sha256(media/'runtime/etc/xdm-Xservers')
+            r['xserver_configuration_update'] = dict(before_sha256=before, after_sha256=after)
         if gimp:
             cmd('test "$(readlink /usr/freeware)" = /emul/irix/usr/freeware')
         if 'acrobat' in applications:

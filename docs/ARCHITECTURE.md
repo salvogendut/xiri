@@ -134,11 +134,15 @@ CD9660 mount translation for native NetBSD o32 programs in `compat_netbsd32`.
 It translates ownership and permission masks in modern mount arguments and
 preserves the legacy layout, defaults and update behavior. This is a general
 native compatibility correction, separate from the IRIX personality and its
-core hooks; the IRIX module is byte-identical. The corrected core is qualified
-in disposable overlays and packaged in an
-[unpromoted candidate image](results/2026-11-04-system-stability-image.md).
-Disk boot and both-user xdm checks pass, but a reproduced native XTest timeout
-holds promotion. The selected manual image still has the preceding core.
+core hooks; the IRIX module is byte-identical. The corrected core is now in
+the [selected image](results/2026-11-04-xorg-scheduling.md). The first candidate
+was held after reproducing a native XTest timeout. Alarm-time state identifies
+Xorg 1.10.6 client-priority starvation after the delayed release has woken.
+The runtime selects `-dumbSched` in both Xorg launch commands, retaining XAA
+and the original XTest delays. This is a native server configuration workaround;
+it adds no kernel or IRIX-personality dependency. Cold-image input, query-loop,
+application, both-user session and clean-shutdown gates pass. Reassess the
+option with a newer server; unrelated older native stalls remain open.
 
 The [traditional-signal adapter](results/2026-11-01-irix-signal.md) adds
 explicit foreign frame conversion around native signal, machine-context and

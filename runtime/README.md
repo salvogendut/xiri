@@ -120,6 +120,15 @@ It retains
 native X authorization, local-only display management and the standard
 `/etc/X11/xdm/Xsession` dispatch to `$HOME/.xsession`.
 
+Both xdm and the manual `xiri-desktop` launcher select `-dumbSched` for the
+bundled Xorg 1.10.6. Its smart scheduler can repeatedly serve a pointer-query
+client while another client's delayed button release is ready, stalling
+input synchronization. The existing option selects round-robin dispatch;
+it preserves XAA acceleration and the normal XTest event delays. Reassess
+this workaround when upgrading the server. Existing installations retain
+their administrator-owned Xservers file: adopt the new `.example` command
+and restart xdm when no user session is active.
+
 Build/install as above, then explicitly enable the services and display manager:
 
 ```sh

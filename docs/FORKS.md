@@ -42,6 +42,21 @@ not repin qualified kernels, emulator binaries, runtime resources or guest disks
 
 ## IRIS upstream updates
 
+The 2026-11-04 XTest investigation fetched
+`https://github.com/techomancer/iris.git` at 21:45 UTC. Upstream remains
+`3bcde9f702f0b52fdb296eeda4fe10b26555f3da`, already contained in IRIS `xiri`
+`bd67e65ff159748635dd484adf7fac94a591f84b`. There is no new merge or affected
+emulator build to validate. Diagnostic guests retain the image's pinned
+`819c682` emulator and use disposable overlays; the preceding Acrobat image
+and its manual state remain intact. The [scheduler image](results/2026-11-04-xorg-scheduling.md)
+is selected after fresh native/application, both-user session and clean-halt
+acceptance. Neither fork changes in this cycle.
+The active-day recheck after local midnight on 2026-11-05 (2026-11-04
+23:00 UTC) fetched the same upstream revision. Both fork `xiri` branches
+remain clean and match their origin tracking refs; no integration or emulator
+rebuild is needed. The scheduling candidate changes only Xiri runtime launch
+configuration and retains the tested kernel/module/emulator artifacts.
+
 The 2026-11-04 replacement-image cycle fetched
 `https://github.com/techomancer/iris.git` at 19:50 UTC. Upstream remains
 `3bcde9f702f0b52fdb296eeda4fe10b26555f3da`, already integrated in IRIS `xiri`

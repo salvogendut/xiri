@@ -12,7 +12,7 @@ catalog launches and running-icon feedback. Native NetBSD Xorg drives a
 1280×1024 accelerated Newport display. It retains the xmahjongg texture
 correction qualified by the earlier [rendering and interaction checks](docs/results/2026-11-03-newport-xmahjongg.md).
 
-The [current manual CHD](docs/results/2026-11-04-irix-acrobat-image.md) boots into
+The [current manual CHD](docs/results/2026-11-04-xorg-scheduling.md) boots into
 native NetBSD xdm. Log in as **xiritest** with password **xiritest** for the
 IRIX desktop, or **netbsdtest** / **netbsdtest** for standard NetBSD ctwm.
 `netbsdtest` belongs to `wheel` and can run `su -` for a root login shell;
@@ -69,13 +69,17 @@ Individual application repairs are paused for the
 repeatable native input, process-cleanup, login/logout and shutdown diagnostics,
 and fixes a native NetBSD32 CD mount defect that made CD files unreadable to
 ordinary users. The corrected core passes 158 CD ABI checks; the IRIX module
-is unchanged. A [replacement CHD](docs/results/2026-11-04-system-stability-image.md)
-now packages that core and passes full-screen xdm, both user desktops,
-rendering, catalog launch and clean shutdown. It remains unpromoted because
-the application replay reproduces a native XTest timeout at button
-synchronization, also seen in a shorter capture-and-click test. `./xiri run`
-retains the preceding image. The timeout's cause and the earlier native
-child-control stalls remain open.
+is unchanged. The [Xorg scheduling investigation](docs/results/2026-11-04-xorg-scheduling.md)
+then identifies a ready delayed-button release starved by a higher-priority
+pointer-query client. Both desktop launchers select the legacy server's
+round-robin scheduler while retaining XAA. The new selected CHD passes 60
+native query-loop controls, six complete Acrobat launch/PDF/focus/exit cycles,
+GNOME Terminal checks, full-screen xdm, both desktops and clean shutdown.
+The separate reduced replay passes 60 capture/focus cycles. `./xiri run`
+now selects this image, including the CD9660 correction; previous images and
+their manual state remain intact. The earlier child-control stalls and
+catalog-batch halt remain separate open observations. Native fonts and blank
+Toolchest menu entries are the next system work.
 
 ## Related repositories
 

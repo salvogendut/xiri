@@ -1,2 +1,3 @@
 # Local accelerated Newport display. Native xdm owns its authorization/reset.
-:0 local /usr/X11R7/bin/Xorg :0 -config /usr/local/share/xiri/xorg.conf -noretro
+# Xorg 1.10.6's smart scheduler can starve a ready delayed-button release.
+:0 local /usr/X11R7/bin/Xorg :0 -config /usr/local/share/xiri/xorg.conf -dumbSched -noretro

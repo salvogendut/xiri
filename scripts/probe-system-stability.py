@@ -48,6 +48,9 @@ def run_once(args, number):
                    'lab/irix-catalog/guard-control.c', 'lab/irix-catalog/query-control.c',
                    'lab/irix-session/descendants.c', 'lab/irix-session/guard-tests.sh']:
         shutil.copyfile(ROOT/source, media/Path(source).name)
+    if args.fairness_iterations:
+        for name in ('xtest-fairness.c', 'click-trace.c'):
+            shutil.copyfile(ROOT/'lab/system-stability'/name, media/name)
     if args.acrobat_replay:
         for source, name in {
             'lab/system-stability/click-original.c': 'click-original.c',
@@ -176,6 +179,32 @@ def run_once(args, number):
                 host_seconds=round(time.monotonic()-began, 3), log_file=label+'-'+transport+'.log',
                 log_sha256=get('sha256 -q '+path).strip()))
             print(label+' '+transport+': '+str(args.input_iterations)+' native input round trips passed', flush=True)
+        if args.fairness_iterations: fairness_checks(label, user, authority)
+
+    def fairness_checks(label, user, authority):
+        # A native drag-style receiver continuously queries the pointer while
+        # an independent client sends the original 100 ms delayed release.
+        # Ordinary event receivers alone do not exercise scheduler starvation.
+        for display, transport in [(':0', 'unix'), ('127.0.0.1:0', 'tcp')]:
+            path = base+'/'+label+'-fairness-'+transport+'.log'
+            call = 'export DISPLAY='+shlex.quote(display)+' XAUTHORITY='+shlex.quote(authority)+'; '
+            call += ('i=0; while test "$i" -lt '+str(args.fairness_iterations)+'; do '
+                     'i=$((i+1)); echo FAIRNESS_ITERATION=$i; '+
+                     shlex.join([base+'/xtest-fairness', base+'/click-trace'])+' || exit $?; done')
+            call = ('su -l '+user+' -c ' if user else '/bin/sh -c ')+shlex.quote(call)
+            cmd(call+' >'+path+' 2>&1; rc=$?; echo "$rc" >'+path+'.status; test "$rc" = 0',
+                max(120, args.fairness_iterations*22))
+            output = get('cat '+path)
+            name = Path(path).name
+            (d/name).write_text(output)
+            cases = re.findall(r'^FAIRNESS_RESULT released=1 sender_status=0 queries=(\d+) seconds=([\d.]+)$', output, re.M)
+            assert len(cases) == args.fairness_iterations, output
+            uids = re.findall(r'^FAIRNESS_BEGIN pid=\d+ uid=(\d+) ', output, re.M)
+            assert uids == [{None:'0', 'xiritest':'1234', 'netbsdtest':'1236'}[user]]*args.fairness_iterations
+            result['phases'].append(dict(kind='fairness', label=label, user=user or 'root', display=display,
+                iterations=args.fairness_iterations, cases=[dict(queries=int(q), seconds=float(t)) for q,t in cases],
+                log_file=name, log_sha256=sha256(d/name)))
+            print(label+' '+transport+': '+str(args.fairness_iterations)+' native pointer-query controls passed', flush=True)
 
     def child_checks(label):
         directory = base+'/'+label+'-children'
@@ -208,7 +237,7 @@ def run_once(args, number):
         # names and verify against the digest taken immediately after the test.
         with tarfile.open(fileobj=io.BytesIO(archive), mode='r:gz') as stream:
             for phase in result['phases']:
-                if phase['kind'] != 'input': continue
+                if phase['kind'] not in ('input', 'fairness'): continue
                 name = phase['log_file']
                 (d/name).write_bytes(stream.extractfile('./'+name).read())
                 assert sha256(d/name) == phase['log_sha256']
@@ -289,6 +318,10 @@ def run_once(args, number):
             'for file in xinput query-control; do cc -O2 -Wall -Wextra -Werror -I/usr/X11R7/include "$file.c" '
             '-L/usr/X11R7/lib -Wl,-rpath,/usr/X11R7/lib -lX11 -lXtst -o "$file"; done)', 180)
         cmd('chmod 555 app-guard guard-control descendants memory xinput query-control')
+        if args.fairness_iterations:
+            cmd('(set -e; for file in xtest-fairness click-trace; do '
+                'cc -O2 -Wall -Wextra -Werror -I/usr/X11R7/include "$file.c" '
+                '-L/usr/X11R7/lib -Wl,-rpath,/usr/X11R7/lib -lX11 -lXtst -o "$file"; done)', 180)
         if args.acrobat_replay:
             cmd('(set -e; for file in click-original click-trace type place catalog-input windows; do '
                 'cc -O2 -Wall -Wextra -Werror -I/usr/X11R7/include "$file.c" '
@@ -304,6 +337,8 @@ def run_once(args, number):
         result['guard_sha256'] = get('sha256 -q /usr/local/libexec/xiri/session-guard').strip()
         assert result['guard_sha256'] == previous['installed_files']['/usr/local/libexec/xiri/session-guard']
         result['greeter_dimensions'] = greeter(); capture('greeter')
+        result['xorg_command'] = get("ps -axww -o args= | awk '$1 == \"/usr/X11R7/bin/Xorg\"'").strip()
+        result['xorg_sha256'] = get('sha256 -q /usr/X11R7/bin/Xorg').strip()
         if args.pressure_mib:
             result['memory_before'] = get('vmstat -s')
             cmd('su -l xiritest -c '+shlex.quote(base+'/memory '+str(args.pressure_mib))+
@@ -428,6 +463,8 @@ def main():
     parser.add_argument('--sessions', type=int, default=2)
     parser.add_argument('--input-iterations', type=int, default=100)
     parser.add_argument('--child-iterations', type=int, default=20)
+    parser.add_argument('--fairness-iterations', type=int, default=0,
+                        help='repeat native pointer-query/delayed-release controls on each desktop and transport')
     parser.add_argument('--debug-failure', action='store_true')
     parser.add_argument('--halt-active', action='store_true', help='finish with shutdown during an active IRIX desktop')
     parser.add_argument('--pressure-mib', type=int, default=0, help='hold this many dirty native MiB during the checks (maximum 192)')
@@ -438,6 +475,7 @@ def main():
     if args.seed and not args.kernel_build: parser.error('--seed requires --kernel-build')
     if not (1 <= args.runs <= 20 and 1 <= args.sessions <= 20 and
             1 <= args.input_iterations <= 1000 and 1 <= args.child_iterations <= 200 and
+            0 <= args.fairness_iterations <= 100 and
             0 <= args.pressure_mib <= 192 and 0 <= args.acrobat_replay <= 20):
         parser.error('invalid run/session/iteration count')
     for number in range(1, args.runs+1):
