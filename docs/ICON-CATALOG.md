@@ -1,6 +1,6 @@
 # Icon Catalog application checklist
 
-Updated 2026-11-04 after the [startup survey](results/2026-11-03-irix-catalog.md)
+Updated 2026-11-05 after the [startup survey](results/2026-11-03-irix-catalog.md)
 and the [GNOME](results/2026-11-04-irix-gnome.md),
 [terminal](results/2026-11-04-irix-terminal.md),
 [preference](results/2026-11-04-irix-preferences.md) and
@@ -26,6 +26,12 @@ shells, and fixes a separate native wait-accounting bug. Its old/new
 22-target system replays verify bounded cleanup and halt; they do not upgrade
 individual applications to functional passes. The original catalog stalls
 remain retained and unexplained.
+
+The [process-tracking follow-up](results/2026-11-05-process-tracking.md)
+separates compview's X-query timeout from descendant cleanup. Paired old/current
+replays clean up both tracked descendants and halt; the first X query still
+times out and later queries recover. The historical tracking failure remains
+open, and these cleanup results do not qualify compview's functionality.
 
 The original GIMP CHD survey ran as **xiritest**, UID/GID 1234, HOME and cwd
 `/usr/people/xiritest`, with accelerated 1280×1024 NetBSD Xorg. There were
@@ -92,7 +98,7 @@ retained; untested behavior is not promoted to a pass.
 | `galculator` | `/usr/freeware/bin/galculator` | **Launch fails.** Exits 1. Fontconfig cannot load its default configuration and reports no fonts; UTF-8 conversion also warns. This is separate from the X-server fonts already used by the desktop. |
 | `gedit` | `/usr/freeware/bin/gedit` | **Basic document and preference checks pass.** Freeware double-click, opened/closed icon artwork, text editing, new-file save, reopen, overwrite and GUI exit work as xiritest. Tab-width preferences now save and survive a normal exit/relaunch. Help, image loading, paper resources and broader plug-ins remain open. The Applications alias has not been double-clicked separately. [Follow-up](results/2026-11-04-irix-preferences.md). |
 | `glynx` | `/usr/freeware/bin/glynx` | **Missing Lynx payload in candidate.** The original glynx wrapper now gets through GNOME Terminal startup and exits quickly. It invokes gnome-terminal -x lynx, but /usr/freeware/bin/lynx is absent from both the imported tree and its native alias. Import the actual browser and package resources before testing it; catalog double-click and browser use remain unqualified. [Follow-up](results/2026-11-04-irix-terminal.md). |
-| `gnome-terminal` | `/usr/freeware/bin/gnome-terminal` | **Interactive original shell, catalog and preferences pass.** Applications double-click launches the original IRIX shell with its prompt and HOME/cwd /usr/people/xiritest. Typed commands, foreground Ctrl-C, resize, normal exit and running-icon feedback pass. Scrollback and other settings now persist across a normal exit/relaunch. The later direct-terminal [job checks](results/2026-11-05-irix-job-control.md) pass Ctrl-Z, bg/fg, background terminal reads and explicit waits. Help/shared-memory warnings and arbitrary nested pipelines remain open. [Preferences](results/2026-11-04-irix-preferences.md). |
+| `gnome-terminal` | `/usr/freeware/bin/gnome-terminal` | **Interactive original shell, catalog and preferences pass.** Applications double-click launches the original IRIX shell with its prompt and HOME/cwd /usr/people/xiritest. Typed commands, foreground Ctrl-C, resize, normal exit and running-icon feedback pass. Scrollback and other settings now persist across a normal exit/relaunch. The later direct-terminal [job checks](results/2026-11-05-irix-job-control.md) pass Ctrl-Z, bg/fg, background terminal reads and explicit waits. Help/shared-memory warnings and arbitrary nested pipelines remain open. [Follow-up](results/2026-11-04-irix-preferences.md). |
 | `gnome-terminal --login` | `/usr/freeware/bin/gnome-terminal --login` | Unresolved target in the original source inventory; no launch attempted. The target contains command-line text; check registration/action handling. |
 | `gtop` | `/usr/freeware/bin/gtop` | **Launch fails.** Exits 1 with Function not implemented while writing its GNOME preferences; its help-topics file is also unavailable. |
 | `jot` | `/usr/sbin/jot` | **Exits 0 without a new window.** |
@@ -251,7 +257,7 @@ retained; untested behavior is not promoted to a pass.
 | --- | --- | --- |
 | `cdman` | `/usr/sbin/cdman` | **Terminates on signal 8.** |
 | `cdplayer` | `/usr/sbin/cdplayer` | **Terminates on signal 8.** |
-| `compview` | `/usr/sbin/compview` | **Cleanup not verified.** X queries timed out and the launch tracker ended with absent=0, valid=0 and one remaining tracked identity. Later process snapshots do not show that PID, so an actual live-process leak is not established. The entire disposable guest subsequently halted cleanly. Investigate process tracking and application startup together. |
+| `compview` | `/usr/sbin/compview` | **Cleanup passes in paired replays; functionality unqualified.** The old GIMP and current native-wait images each track and clean up both descendants, confirm absent PIDs and halt cleanly. The first bounded X query still times out; subsequent queries recover. The original absent=0/valid=0 tracking failure remains unexplained. Useful interaction and normal application exit remain untested. [Follow-up](results/2026-11-05-process-tracking.md). |
 | `datman` | `/usr/sbin/datman` | **Exits 0 without a new window.** Can't find color named sgislateblue |
 | `datplayer` | `/usr/sbin/datplayer` | **Terminates on signal 8.** |
 | `image_editor` | `/usr/sbin/imged` | **Exits 0 without a new window.** /usr/sbin/imged: ReadDisplay extension not supported by current X server!usage: imged <infile> [xsize ysize [-rgb]] |

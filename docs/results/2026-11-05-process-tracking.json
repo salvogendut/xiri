@@ -1,0 +1,752 @@
+{
+  "schema": 1,
+  "status": "passed-bounded-controls-history-open",
+  "date": "2026-11-05",
+  "historical_failure": {
+    "run": ".work/catalog-cycle/survey-2-_6lek34z",
+    "guard": {
+      "pid": "1356",
+      "exit": "0",
+      "signal": "0",
+      "stopped": "1",
+      "absent": "0",
+      "valid": "0",
+      "tracked": "2",
+      "remaining": "1",
+      "reason": "timeout",
+      "uid": "1234",
+      "gid": "1234",
+      "elapsed": "64142"
+    },
+    "status": "cleanup-unverified",
+    "after_ps_pid_matches": [],
+    "source": "docs/results/2026-11-03-irix-catalog.json",
+    "source_sha256": "fa07be25ab7196176da00baba7bb4bb41286f9e7153c2ef4034dfa58ba27e28b",
+    "causal_resolution": false
+  },
+  "native": [
+    {
+      "run": ".work/process-tracking/native-rata_nbf",
+      "result_sha256": "4f0b52cab270daf4770edd23e333ab150e8e034042263367babc6b8eaf001b7b",
+      "archive_sha256": "8d348a429234ba6d61433ea9b3c7c3797de92f01ab4b9c0b8dc4f6ccb145a43e",
+      "bundle": ".work/images/xiri-netbsd-desktop-20261105-wait",
+      "chd_sha256": "90ca82ecdfbe184a96990515938f7856eb6983f77719d487fb7c6b34ba73eece",
+      "manifest_sha256": "5859bd4e434eb410dae72a6f8b3d7df5b20b88f1ab4ec41e801a3a58ef330d88",
+      "pin": {
+        "schema": 1,
+        "description": "Native multi-child wait accounting and selection, with qualified IRIX job-control module",
+        "ident": "XIRI_IRIX_MODULE_20261103",
+        "source_revision": "ded40d74024a79922c33f56c4b7c342cc39aa9f9",
+        "source_branch": "xiri",
+        "build_arch": "mips64eb",
+        "page_bytes": 8192,
+        "boot_kernel_sha256": "5fd2dd05d1549e0e6e29a02c2d6d8c6bae2b8443edad272f12e878f24eb06e54",
+        "native_kernel_sha256": "c92f0b2fcc182836393a87ca41a0315a0681e93ed3e904fad925d3c370e4dd98",
+        "debug_kernel_sha256": "c8a16452262753d7a7bdca13539c6737163dea4c83d462bee434ac9daf88bd5d",
+        "native_o32_sha256": "c294fbb1f2110445be31c096481ea54ab561c7e59ca5b9fc7171310098d755d4",
+        "source_dirty": true,
+        "emulator_revision": "819c6825504d40ad9f9aa00554249affd2da9446",
+        "emulator_branch": "xiri",
+        "emulator_sha256": "3dd9299d71f1899ff5a8c9b76f6a24752d19e4f9a0bcfe0edf3a29001dc9c49e",
+        "ci_client_sha256": "2543b1fae0b442516c40c9d9155eebc9f9569561146b4f62948171fe7eb5c7f3",
+        "base_disk_sha256": "2d19c840bcc5d5e5d424a5f12b4def72b9e8681e6b9e172b22bd51943bf7bb82",
+        "nvram_sha256": "025e170feb9adcfbfa55a745ba2d976fd0ba0f3d39967d7f52622d6ad54c2ef5",
+        "config_sha256": "b4b1d27b1d8e80ec31b07f9f98e0ca1da8a1793cb90880bbc1e65a4b169c8fe2",
+        "runtimes": [
+          {
+            "name": "vendor-o32-libc",
+            "path": "/usr/lib/libc.so.1",
+            "sha256": "ea766492103a193e9d404942705e4e28987545e37f699ede232b6c0f8c97c954"
+          },
+          {
+            "name": "vendor-o32-rld",
+            "path": "/lib/rld",
+            "sha256": "30228b54c1e5585b365514eb7c9895b03cc0f61cb898e05e3ddafece87863439"
+          },
+          {
+            "name": "vendor-n32-libc",
+            "path": "/lib32/libc.so.1",
+            "sha256": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e"
+          },
+          {
+            "name": "vendor-n32-rld",
+            "path": "/lib32/rld",
+            "sha256": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b"
+          }
+        ],
+        "config_path": "lab/irix-module/XIRI_IRIX_MODULE",
+        "module_build_manifest": "lab/native-wait/build.json",
+        "module_build_manifest_sha256": "3a0042397ae75d05a5af15a407f305afe284cc0dd830a2733fc3dd27960f4615",
+        "build_source_revision": "ded40d74024a79922c33f56c4b7c342cc39aa9f9",
+        "build_source_status": " M sys/kern/kern_exit.c\n M tests/lib/libc/sys/t_wait.c\n"
+      },
+      "module": {
+        "name": "compat_irix_o32",
+        "path": "/stand/sgimips/11.99.9/modules/compat_irix_o32/compat_irix_o32.kmod",
+        "sha256": "8e97285b0a2185c0b2b5a2ed6e4202dd9ec568a9ba1514ea45a569a8c4c1b366",
+        "build_manifest": "lab/native-wait/build.json",
+        "build_manifest_sha256": "3a0042397ae75d05a5af15a407f305afe284cc0dd830a2733fc3dd27960f4615"
+      },
+      "harness_sha256": "7f00a0f85b981375b9295c3d7756f4b8a671a1e1191bab03d6f4a98d41c932b0",
+      "source_sha256": {
+        "lab/irix-process-tracking/events.c": "a9ee2ef6ce8315a325667c7e2501f903016beeccc24485574aaace05822737f9",
+        "lab/irix-session/descendants.c": "02c35bc4d7d5d27f72e5ce43694718c14c85068d4800d609dd730411de849c80",
+        "lab/irix-session/guard-tests.sh": "31cae7f38047bcaf57c862e070f1b48d880e4e3bd77be1537606563e98eadf11"
+      },
+      "guest_hashes": "SHA256 (/netbsd) = c92f0b2fcc182836393a87ca41a0315a0681e93ed3e904fad925d3c370e4dd98\nSHA256 (/netbsd.boot) = 5fd2dd05d1549e0e6e29a02c2d6d8c6bae2b8443edad272f12e878f24eb06e54\nSHA256 (/stand/sgimips/11.99.9/modules/compat_irix_o32/compat_irix_o32.kmod) = 8e97285b0a2185c0b2b5a2ed6e4202dd9ec568a9ba1514ea45a569a8c4c1b366\nSHA256 (/usr/local/libexec/xiri/session-guard) = b4970e085ebc533cc6d286151f8b93056493be399beeffc5f84d8d77985d8d09\nSHA256 (events) = 235375d54f3d73fa089fd553b8c23fe421ee44207aff331b75d793be9b066059\nSHA256 (events.c) = a9ee2ef6ce8315a325667c7e2501f903016beeccc24485574aaace05822737f9\n",
+      "fixture_elf_sha256": "235375d54f3d73fa089fd553b8c23fe421ee44207aff331b75d793be9b066059",
+      "events": [
+        {
+          "uid": 0,
+          "batch": 1,
+          "status": "0",
+          "output": "EVENT_PASS uid=0 mode=fast batch=1 rounds=16 births=128 exits=128\nEVENT_PASS uid=0 mode=orphan batch=1 rounds=16 births=128 exits=128\nEVENT_PASS uid=0 mode=held batch=1 rounds=16 births=128 exits=128\n"
+        },
+        {
+          "uid": 0,
+          "batch": 64,
+          "status": "0",
+          "output": "EVENT_PASS uid=0 mode=fast batch=64 rounds=16 births=128 exits=128\nEVENT_PASS uid=0 mode=orphan batch=64 rounds=16 births=128 exits=128\nEVENT_PASS uid=0 mode=held batch=64 rounds=16 births=128 exits=128\n"
+        },
+        {
+          "uid": 1234,
+          "batch": 1,
+          "status": "0",
+          "output": "EVENT_PASS uid=1234 mode=fast batch=1 rounds=16 births=128 exits=128\nEVENT_PASS uid=1234 mode=orphan batch=1 rounds=16 births=128 exits=128\nEVENT_PASS uid=1234 mode=held batch=1 rounds=16 births=128 exits=128\n"
+        },
+        {
+          "uid": 1234,
+          "batch": 64,
+          "status": "0",
+          "output": "EVENT_PASS uid=1234 mode=fast batch=64 rounds=16 births=128 exits=128\nEVENT_PASS uid=1234 mode=orphan batch=64 rounds=16 births=128 exits=128\nEVENT_PASS uid=1234 mode=held batch=64 rounds=16 births=128 exits=128\n"
+        }
+      ],
+      "lifecycles": 1536,
+      "supervisor_controls": {
+        "hold": {
+          "pid": "3390",
+          "exit": "-1",
+          "signal": "9",
+          "stopped": "1",
+          "absent": "1",
+          "valid": "1",
+          "tracked": "1",
+          "remaining": "0",
+          "reason": "timeout",
+          "uid": "1234",
+          "gid": "1234",
+          "elapsed": "2278"
+        },
+        "escape": {
+          "pid": "3193",
+          "exit": "-1",
+          "signal": "9",
+          "stopped": "1",
+          "absent": "1",
+          "valid": "1",
+          "tracked": "3",
+          "remaining": "0",
+          "reason": "timeout",
+          "uid": "1234",
+          "gid": "1234",
+          "elapsed": "2252"
+        },
+        "live-burst": {
+          "pid": "3281",
+          "exit": "-1",
+          "signal": "9",
+          "stopped": "1",
+          "absent": "1",
+          "valid": "1",
+          "tracked": "25",
+          "remaining": "0",
+          "reason": "signal",
+          "uid": "1234",
+          "gid": "1234",
+          "elapsed": "2238"
+        },
+        "burst": {
+          "pid": "5422",
+          "exit": "0",
+          "signal": "0",
+          "stopped": "1",
+          "absent": "1",
+          "valid": "1",
+          "tracked": "49",
+          "remaining": "0",
+          "reason": "leader-exit",
+          "uid": "1234",
+          "gid": "1234",
+          "elapsed": "501"
+        },
+        "fail": {
+          "pid": "3408",
+          "exit": "7",
+          "signal": "0",
+          "stopped": "1",
+          "absent": "1",
+          "valid": "1",
+          "tracked": "3",
+          "remaining": "0",
+          "reason": "leader-exit",
+          "uid": "1234",
+          "gid": "1234",
+          "elapsed": "1134"
+        },
+        "exec-fail": {
+          "pid": "3406",
+          "exit": "126",
+          "signal": "0",
+          "stopped": "0",
+          "absent": "1",
+          "valid": "1",
+          "tracked": "1",
+          "remaining": "0",
+          "reason": "leader-exit",
+          "uid": "1234",
+          "gid": "1234",
+          "elapsed": "30"
+        },
+        "logout": {
+          "pid": "6618",
+          "exit": "-1",
+          "signal": "9",
+          "stopped": "1",
+          "absent": "1",
+          "valid": "1",
+          "tracked": "3",
+          "remaining": "0",
+          "reason": "logout",
+          "uid": "1234",
+          "gid": "1234",
+          "elapsed": "2172"
+        },
+        "signal": {
+          "pid": "6099",
+          "exit": "-1",
+          "signal": "9",
+          "stopped": "1",
+          "absent": "1",
+          "valid": "1",
+          "tracked": "3",
+          "remaining": "0",
+          "reason": "signal",
+          "uid": "1234",
+          "gid": "1234",
+          "elapsed": "2140"
+        }
+      },
+      "clean_shutdown": true,
+      "source_unchanged": true
+    },
+    {
+      "run": ".work/process-tracking/native-pzzasuut",
+      "result_sha256": "cf92105e80ae48a30052a4f93b4532eaeb367ead14757cc1b86dd1b0fe28db1c",
+      "archive_sha256": "c6b8d967f84752874d9424c56e797d973a89da1e447995c6d089faf54f7a63c1",
+      "bundle": ".work/images/xiri-netbsd-desktop-20261103-gimp",
+      "chd_sha256": "20b328a070537255c8c0aa4771aefd83cbaa8027208b93bf997302c426ef83b7",
+      "manifest_sha256": "03c357cc246ecf582809c1b718cf579e3dc2185e0a0918c6eb109c27116cf4c7",
+      "pin": {
+        "schema": 1,
+        "description": "GIMP full signal mask module update; unchanged qualified N64 core kernel",
+        "ident": "XIRI_IRIX_MODULE_20261103",
+        "source_revision": "9390bc04900a0d04796d494aca5b00651f12954d",
+        "source_branch": "xiri",
+        "build_arch": "mips64eb",
+        "page_bytes": 8192,
+        "boot_kernel_sha256": "260b253f579ca46a50b83e367f95600b54c86756c47f5d9e0f9391251bfd7122",
+        "native_kernel_sha256": "ed97268e4c1db1c91a8973d16c1e31555816c2a29c220b29b9095eadf3b2ae04",
+        "debug_kernel_sha256": "0ac97373a1eec2648ff3efc178d6839c6bda6ae41e8045a1d79bf6a5c404958b",
+        "native_o32_sha256": "c294fbb1f2110445be31c096481ea54ab561c7e59ca5b9fc7171310098d755d4",
+        "source_dirty": false,
+        "emulator_revision": "819c6825504d40ad9f9aa00554249affd2da9446",
+        "emulator_branch": "xiri",
+        "emulator_sha256": "3dd9299d71f1899ff5a8c9b76f6a24752d19e4f9a0bcfe0edf3a29001dc9c49e",
+        "ci_client_sha256": "2543b1fae0b442516c40c9d9155eebc9f9569561146b4f62948171fe7eb5c7f3",
+        "base_disk_sha256": "2d19c840bcc5d5e5d424a5f12b4def72b9e8681e6b9e172b22bd51943bf7bb82",
+        "nvram_sha256": "025e170feb9adcfbfa55a745ba2d976fd0ba0f3d39967d7f52622d6ad54c2ef5",
+        "config_sha256": "b4b1d27b1d8e80ec31b07f9f98e0ca1da8a1793cb90880bbc1e65a4b169c8fe2",
+        "runtimes": [
+          {
+            "name": "vendor-o32-libc",
+            "path": "/usr/lib/libc.so.1",
+            "sha256": "ea766492103a193e9d404942705e4e28987545e37f699ede232b6c0f8c97c954"
+          },
+          {
+            "name": "vendor-o32-rld",
+            "path": "/lib/rld",
+            "sha256": "30228b54c1e5585b365514eb7c9895b03cc0f61cb898e05e3ddafece87863439"
+          },
+          {
+            "name": "vendor-n32-libc",
+            "path": "/lib32/libc.so.1",
+            "sha256": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e"
+          },
+          {
+            "name": "vendor-n32-rld",
+            "path": "/lib32/rld",
+            "sha256": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b"
+          }
+        ],
+        "config_path": "lab/irix-module/XIRI_IRIX_MODULE",
+        "committed_source_revision": "9390bc04900a0d04796d494aca5b00651f12954d",
+        "module_build_manifest": "lab/irix-gimp/build.json",
+        "module_build_manifest_sha256": "62b602499254d709bfb56b5c65c68046133aeb3b56df55a2ee7600305efa61c8",
+        "module_source_equivalent_commit": "7b7794b0c07f31f953c34b6be6826156898649d7"
+      },
+      "module": {
+        "name": "compat_irix_o32",
+        "path": "/stand/sgimips/11.99.9/modules/compat_irix_o32/compat_irix_o32.kmod",
+        "sha256": "1f7beada69c483ccdf6f118e5b9bae6210b4cddfe5319f4527fb2b2cf2be4efd",
+        "build_manifest": "lab/irix-gimp/build.json",
+        "build_manifest_sha256": "62b602499254d709bfb56b5c65c68046133aeb3b56df55a2ee7600305efa61c8"
+      },
+      "harness_sha256": "b5d2c28550a4349a3716eab5ab4e1c8f952503abc59016cb937f234c734fc142",
+      "source_sha256": {
+        "lab/irix-process-tracking/events.c": "a9ee2ef6ce8315a325667c7e2501f903016beeccc24485574aaace05822737f9",
+        "lab/irix-session/descendants.c": "02c35bc4d7d5d27f72e5ce43694718c14c85068d4800d609dd730411de849c80",
+        "lab/irix-session/guard-tests.sh": "31cae7f38047bcaf57c862e070f1b48d880e4e3bd77be1537606563e98eadf11"
+      },
+      "guest_hashes": "SHA256 (/netbsd) = ed97268e4c1db1c91a8973d16c1e31555816c2a29c220b29b9095eadf3b2ae04\nSHA256 (/netbsd.boot) = 260b253f579ca46a50b83e367f95600b54c86756c47f5d9e0f9391251bfd7122\nSHA256 (/stand/sgimips/11.99.9/modules/compat_irix_o32/compat_irix_o32.kmod) = 1f7beada69c483ccdf6f118e5b9bae6210b4cddfe5319f4527fb2b2cf2be4efd\nSHA256 (/usr/local/libexec/xiri/session-guard) = b4970e085ebc533cc6d286151f8b93056493be399beeffc5f84d8d77985d8d09\nSHA256 (events) = 235375d54f3d73fa089fd553b8c23fe421ee44207aff331b75d793be9b066059\nSHA256 (events.c) = a9ee2ef6ce8315a325667c7e2501f903016beeccc24485574aaace05822737f9\n",
+      "fixture_elf_sha256": "235375d54f3d73fa089fd553b8c23fe421ee44207aff331b75d793be9b066059",
+      "events": [
+        {
+          "uid": 0,
+          "batch": 1,
+          "status": "0",
+          "output": "EVENT_PASS uid=0 mode=fast batch=1 rounds=16 births=128 exits=128\nEVENT_PASS uid=0 mode=orphan batch=1 rounds=16 births=128 exits=128\nEVENT_PASS uid=0 mode=held batch=1 rounds=16 births=128 exits=128\n"
+        },
+        {
+          "uid": 0,
+          "batch": 64,
+          "status": "0",
+          "output": "EVENT_PASS uid=0 mode=fast batch=64 rounds=16 births=128 exits=128\nEVENT_PASS uid=0 mode=orphan batch=64 rounds=16 births=128 exits=128\nEVENT_PASS uid=0 mode=held batch=64 rounds=16 births=128 exits=128\n"
+        },
+        {
+          "uid": 1234,
+          "batch": 1,
+          "status": "0",
+          "output": "EVENT_PASS uid=1234 mode=fast batch=1 rounds=16 births=128 exits=128\nEVENT_PASS uid=1234 mode=orphan batch=1 rounds=16 births=128 exits=128\nEVENT_PASS uid=1234 mode=held batch=1 rounds=16 births=128 exits=128\n"
+        },
+        {
+          "uid": 1234,
+          "batch": 64,
+          "status": "0",
+          "output": "EVENT_PASS uid=1234 mode=fast batch=64 rounds=16 births=128 exits=128\nEVENT_PASS uid=1234 mode=orphan batch=64 rounds=16 births=128 exits=128\nEVENT_PASS uid=1234 mode=held batch=64 rounds=16 births=128 exits=128\n"
+        }
+      ],
+      "lifecycles": 1536,
+      "supervisor_controls": {
+        "hold": {
+          "pid": "5402",
+          "exit": "-1",
+          "signal": "9",
+          "stopped": "1",
+          "absent": "1",
+          "valid": "1",
+          "tracked": "1",
+          "remaining": "0",
+          "reason": "timeout",
+          "uid": "1234",
+          "gid": "1234",
+          "elapsed": "2250"
+        },
+        "escape": {
+          "pid": "6561",
+          "exit": "-1",
+          "signal": "9",
+          "stopped": "1",
+          "absent": "1",
+          "valid": "1",
+          "tracked": "3",
+          "remaining": "0",
+          "reason": "timeout",
+          "uid": "1234",
+          "gid": "1234",
+          "elapsed": "2277"
+        },
+        "live-burst": {
+          "pid": "3271",
+          "exit": "-1",
+          "signal": "9",
+          "stopped": "1",
+          "absent": "1",
+          "valid": "1",
+          "tracked": "25",
+          "remaining": "0",
+          "reason": "signal",
+          "uid": "1234",
+          "gid": "1234",
+          "elapsed": "2257"
+        },
+        "burst": {
+          "pid": "6445",
+          "exit": "0",
+          "signal": "0",
+          "stopped": "0",
+          "absent": "1",
+          "valid": "1",
+          "tracked": "49",
+          "remaining": "0",
+          "reason": "leader-exit",
+          "uid": "1234",
+          "gid": "1234",
+          "elapsed": "498"
+        },
+        "fail": {
+          "pid": "3409",
+          "exit": "7",
+          "signal": "0",
+          "stopped": "1",
+          "absent": "1",
+          "valid": "1",
+          "tracked": "3",
+          "remaining": "0",
+          "reason": "leader-exit",
+          "uid": "1234",
+          "gid": "1234",
+          "elapsed": "1113"
+        },
+        "exec-fail": {
+          "pid": "6881",
+          "exit": "126",
+          "signal": "0",
+          "stopped": "0",
+          "absent": "1",
+          "valid": "1",
+          "tracked": "1",
+          "remaining": "0",
+          "reason": "leader-exit",
+          "uid": "1234",
+          "gid": "1234",
+          "elapsed": "30"
+        },
+        "logout": {
+          "pid": "3365",
+          "exit": "-1",
+          "signal": "9",
+          "stopped": "1",
+          "absent": "1",
+          "valid": "1",
+          "tracked": "3",
+          "remaining": "0",
+          "reason": "logout",
+          "uid": "1234",
+          "gid": "1234",
+          "elapsed": "2190"
+        },
+        "signal": {
+          "pid": "6399",
+          "exit": "-1",
+          "signal": "9",
+          "stopped": "1",
+          "absent": "1",
+          "valid": "1",
+          "tracked": "3",
+          "remaining": "0",
+          "reason": "signal",
+          "uid": "1234",
+          "gid": "1234",
+          "elapsed": "2095"
+        }
+      },
+      "clean_shutdown": true,
+      "source_unchanged": true
+    }
+  ],
+  "compview": [
+    {
+      "run": ".work/catalog-cycle/survey-2-vz18nkns",
+      "result_sha256": "bb9bd51f453354436ce0f88238a5c18507fbcb11d8b2edb0618958cd44c91fa7",
+      "archive_sha256": "5e68cfb5d9c154e88a1eed974dcd211b2a709c2dc6a101747609f05118ec32e7",
+      "bundle": "/var/home/salvogendut/Dev/xiri/.work/images/xiri-netbsd-desktop-20261103-gimp",
+      "pin": {
+        "schema": 1,
+        "description": "GIMP full signal mask module update; unchanged qualified N64 core kernel",
+        "ident": "XIRI_IRIX_MODULE_20261103",
+        "source_revision": "9390bc04900a0d04796d494aca5b00651f12954d",
+        "source_branch": "xiri",
+        "build_arch": "mips64eb",
+        "page_bytes": 8192,
+        "boot_kernel_sha256": "260b253f579ca46a50b83e367f95600b54c86756c47f5d9e0f9391251bfd7122",
+        "native_kernel_sha256": "ed97268e4c1db1c91a8973d16c1e31555816c2a29c220b29b9095eadf3b2ae04",
+        "debug_kernel_sha256": "0ac97373a1eec2648ff3efc178d6839c6bda6ae41e8045a1d79bf6a5c404958b",
+        "native_o32_sha256": "c294fbb1f2110445be31c096481ea54ab561c7e59ca5b9fc7171310098d755d4",
+        "source_dirty": false,
+        "emulator_revision": "819c6825504d40ad9f9aa00554249affd2da9446",
+        "emulator_branch": "xiri",
+        "emulator_sha256": "3dd9299d71f1899ff5a8c9b76f6a24752d19e4f9a0bcfe0edf3a29001dc9c49e",
+        "ci_client_sha256": "2543b1fae0b442516c40c9d9155eebc9f9569561146b4f62948171fe7eb5c7f3",
+        "base_disk_sha256": "2d19c840bcc5d5e5d424a5f12b4def72b9e8681e6b9e172b22bd51943bf7bb82",
+        "nvram_sha256": "025e170feb9adcfbfa55a745ba2d976fd0ba0f3d39967d7f52622d6ad54c2ef5",
+        "config_sha256": "b4b1d27b1d8e80ec31b07f9f98e0ca1da8a1793cb90880bbc1e65a4b169c8fe2",
+        "runtimes": [
+          {
+            "name": "vendor-o32-libc",
+            "path": "/usr/lib/libc.so.1",
+            "sha256": "ea766492103a193e9d404942705e4e28987545e37f699ede232b6c0f8c97c954"
+          },
+          {
+            "name": "vendor-o32-rld",
+            "path": "/lib/rld",
+            "sha256": "30228b54c1e5585b365514eb7c9895b03cc0f61cb898e05e3ddafece87863439"
+          },
+          {
+            "name": "vendor-n32-libc",
+            "path": "/lib32/libc.so.1",
+            "sha256": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e"
+          },
+          {
+            "name": "vendor-n32-rld",
+            "path": "/lib32/rld",
+            "sha256": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b"
+          }
+        ],
+        "config_path": "lab/irix-module/XIRI_IRIX_MODULE",
+        "committed_source_revision": "9390bc04900a0d04796d494aca5b00651f12954d",
+        "module_build_manifest": "lab/irix-gimp/build.json",
+        "module_build_manifest_sha256": "62b602499254d709bfb56b5c65c68046133aeb3b56df55a2ee7600305efa61c8",
+        "module_source_equivalent_commit": "7b7794b0c07f31f953c34b6be6826156898649d7"
+      },
+      "module": {
+        "name": "compat_irix_o32",
+        "path": "/stand/sgimips/11.99.9/modules/compat_irix_o32/compat_irix_o32.kmod",
+        "sha256": "1f7beada69c483ccdf6f118e5b9bae6210b4cddfe5319f4527fb2b2cf2be4efd",
+        "build_manifest": "lab/irix-gimp/build.json",
+        "build_manifest_sha256": "62b602499254d709bfb56b5c65c68046133aeb3b56df55a2ee7600305efa61c8"
+      },
+      "manifest_sha256": "03c357cc246ecf582809c1b718cf579e3dc2185e0a0918c6eb109c27116cf4c7",
+      "case": {
+        "id": "app-099",
+        "target": "/usr/sbin/compview",
+        "kind": "elf",
+        "sha256": "6d2a2eefc915fdf1b43639485e2eeca3f328f11eae24b83e057d20637983a463",
+        "pages": [
+          "MediaTools"
+        ],
+        "names": [
+          "compview"
+        ],
+        "partition": 2
+      },
+      "guard": {
+        "pid": "3048",
+        "exit": "0",
+        "signal": "0",
+        "stopped": "1",
+        "absent": "1",
+        "valid": "1",
+        "tracked": "2",
+        "remaining": "0",
+        "reason": "timeout",
+        "uid": "1234",
+        "gid": "1234",
+        "elapsed": "45557"
+      },
+      "owned_pids": [
+        3048,
+        490
+      ],
+      "after_pids_absent": true,
+      "queries": {
+        "before": 0,
+        "3": 142,
+        "last": 0,
+        "after": 0
+      },
+      "bootstrap_controls": "OWN pid=3618 parent=2920\nOWN pid=367 parent=3618\nCATALOG_NATIVE_CHILD_FINISHED\nGUARD pid=3618 exit=37 signal=0 stopped=0 absent=1 valid=1 tracked=2 remaining=0 reason=leader-exit uid=1234 gid=1234 elapsed=1074\nOWN pid=3670 parent=535\nOWN pid=792 parent=3670\nGUARD pid=3670 exit=37 signal=0 stopped=1 absent=1 valid=1 tracked=2 remaining=0 reason=timeout uid=1234 gid=1234 elapsed=1052\n",
+      "screenshot": {
+        "path": "app-099.png",
+        "sha256": "288fd682f6fe5f1fdb67f722f6665e605d562fdd2776b8a81308c9ffa793d0dc"
+      },
+      "harness_sha256": "e76d4abd696b289f296b5236e17325d1ccc57d6e607dfece18d9558dfda873b5",
+      "probe_sources": {
+        "lab/irix-catalog/app.sh": "f94a78e0dbefe1c367a969d9e72e77c2fec22b72158f95ab0ca63d0ce418a2a1",
+        "lab/irix-catalog/observe.sh": "87e58cc4f879ff62c11bc95e68d0c270e60672fbedc59dfc2a04ed2ae38d0bee",
+        "runtime/libexec/session-guard.c": "b6e0bf1b9036a3b4bbe27bdc43f8fdf9d090298b745da624de25db3282104203"
+      },
+      "clean_shutdown": true,
+      "source_unchanged": true,
+      "functional_qualification": false
+    },
+    {
+      "run": ".work/catalog-cycle/survey-2-n0sq6jcy",
+      "result_sha256": "4e23e647dba966c4a7b0579ce00af78ada1054adc7e41a464759d382c1ad74ef",
+      "archive_sha256": "3c9dec5b6d271de67172e69699bc8014f7e20f92a7bb9e17e68f4842127a7302",
+      "bundle": "/var/home/salvogendut/Dev/xiri/.work/images/xiri-netbsd-desktop-20261105-wait",
+      "pin": {
+        "schema": 1,
+        "description": "Native multi-child wait accounting and selection, with qualified IRIX job-control module",
+        "ident": "XIRI_IRIX_MODULE_20261103",
+        "source_revision": "ded40d74024a79922c33f56c4b7c342cc39aa9f9",
+        "source_branch": "xiri",
+        "build_arch": "mips64eb",
+        "page_bytes": 8192,
+        "boot_kernel_sha256": "5fd2dd05d1549e0e6e29a02c2d6d8c6bae2b8443edad272f12e878f24eb06e54",
+        "native_kernel_sha256": "c92f0b2fcc182836393a87ca41a0315a0681e93ed3e904fad925d3c370e4dd98",
+        "debug_kernel_sha256": "c8a16452262753d7a7bdca13539c6737163dea4c83d462bee434ac9daf88bd5d",
+        "native_o32_sha256": "c294fbb1f2110445be31c096481ea54ab561c7e59ca5b9fc7171310098d755d4",
+        "source_dirty": true,
+        "emulator_revision": "819c6825504d40ad9f9aa00554249affd2da9446",
+        "emulator_branch": "xiri",
+        "emulator_sha256": "3dd9299d71f1899ff5a8c9b76f6a24752d19e4f9a0bcfe0edf3a29001dc9c49e",
+        "ci_client_sha256": "2543b1fae0b442516c40c9d9155eebc9f9569561146b4f62948171fe7eb5c7f3",
+        "base_disk_sha256": "2d19c840bcc5d5e5d424a5f12b4def72b9e8681e6b9e172b22bd51943bf7bb82",
+        "nvram_sha256": "025e170feb9adcfbfa55a745ba2d976fd0ba0f3d39967d7f52622d6ad54c2ef5",
+        "config_sha256": "b4b1d27b1d8e80ec31b07f9f98e0ca1da8a1793cb90880bbc1e65a4b169c8fe2",
+        "runtimes": [
+          {
+            "name": "vendor-o32-libc",
+            "path": "/usr/lib/libc.so.1",
+            "sha256": "ea766492103a193e9d404942705e4e28987545e37f699ede232b6c0f8c97c954"
+          },
+          {
+            "name": "vendor-o32-rld",
+            "path": "/lib/rld",
+            "sha256": "30228b54c1e5585b365514eb7c9895b03cc0f61cb898e05e3ddafece87863439"
+          },
+          {
+            "name": "vendor-n32-libc",
+            "path": "/lib32/libc.so.1",
+            "sha256": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e"
+          },
+          {
+            "name": "vendor-n32-rld",
+            "path": "/lib32/rld",
+            "sha256": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b"
+          }
+        ],
+        "config_path": "lab/irix-module/XIRI_IRIX_MODULE",
+        "module_build_manifest": "lab/native-wait/build.json",
+        "module_build_manifest_sha256": "3a0042397ae75d05a5af15a407f305afe284cc0dd830a2733fc3dd27960f4615",
+        "build_source_revision": "ded40d74024a79922c33f56c4b7c342cc39aa9f9",
+        "build_source_status": " M sys/kern/kern_exit.c\n M tests/lib/libc/sys/t_wait.c\n"
+      },
+      "module": {
+        "name": "compat_irix_o32",
+        "path": "/stand/sgimips/11.99.9/modules/compat_irix_o32/compat_irix_o32.kmod",
+        "sha256": "8e97285b0a2185c0b2b5a2ed6e4202dd9ec568a9ba1514ea45a569a8c4c1b366",
+        "build_manifest": "lab/native-wait/build.json",
+        "build_manifest_sha256": "3a0042397ae75d05a5af15a407f305afe284cc0dd830a2733fc3dd27960f4615"
+      },
+      "manifest_sha256": "5859bd4e434eb410dae72a6f8b3d7df5b20b88f1ab4ec41e801a3a58ef330d88",
+      "case": {
+        "id": "app-099",
+        "target": "/usr/sbin/compview",
+        "kind": "elf",
+        "sha256": "6d2a2eefc915fdf1b43639485e2eeca3f328f11eae24b83e057d20637983a463",
+        "pages": [
+          "MediaTools"
+        ],
+        "names": [
+          "compview"
+        ],
+        "partition": 2
+      },
+      "guard": {
+        "pid": "490",
+        "exit": "0",
+        "signal": "0",
+        "stopped": "1",
+        "absent": "1",
+        "valid": "1",
+        "tracked": "2",
+        "remaining": "0",
+        "reason": "timeout",
+        "uid": "1234",
+        "gid": "1234",
+        "elapsed": "45049"
+      },
+      "owned_pids": [
+        490,
+        717
+      ],
+      "after_pids_absent": true,
+      "queries": {
+        "before": 0,
+        "3": 142,
+        "last": 0,
+        "after": 0
+      },
+      "bootstrap_controls": "OWN pid=4008 parent=3361\nOWN pid=367 parent=4008\nCATALOG_NATIVE_CHILD_FINISHED\nGUARD pid=4008 exit=37 signal=0 stopped=0 absent=1 valid=1 tracked=2 remaining=0 reason=leader-exit uid=1234 gid=1234 elapsed=1079\nOWN pid=594 parent=593\nOWN pid=596 parent=594\nGUARD pid=594 exit=37 signal=0 stopped=1 absent=1 valid=1 tracked=2 remaining=0 reason=timeout uid=1234 gid=1234 elapsed=1052\n",
+      "screenshot": {
+        "path": "app-099.png",
+        "sha256": "a945a14b68a084a91f21521e0c22a4dbd1a1b9d7d248248ba264f7de07c8a3c0"
+      },
+      "harness_sha256": "e76d4abd696b289f296b5236e17325d1ccc57d6e607dfece18d9558dfda873b5",
+      "probe_sources": {
+        "lab/irix-catalog/app.sh": "f94a78e0dbefe1c367a969d9e72e77c2fec22b72158f95ab0ca63d0ce418a2a1",
+        "lab/irix-catalog/observe.sh": "87e58cc4f879ff62c11bc95e68d0c270e60672fbedc59dfc2a04ed2ae38d0bee",
+        "runtime/libexec/session-guard.c": "b6e0bf1b9036a3b4bbe27bdc43f8fdf9d090298b745da624de25db3282104203"
+      },
+      "clean_shutdown": true,
+      "source_unchanged": true,
+      "functional_qualification": false
+    }
+  ],
+  "iris_integration": {
+    "checked_at_utc": "2026-11-05 15:11",
+    "upstream_url": "https://github.com/techomancer/iris.git",
+    "upstream_revision": "54ea8c05afa2996c192768cc72bbe6fcb3c01f5f",
+    "merge_revision": "e67e3cc3731c17de1a0c226dbd2d4448d07ec80f",
+    "branch": "xiri",
+    "build": {
+      "record": ".work/workflows/build-ycateavf/build.json",
+      "sha256": "c9dc0678689b736daba352fb21098add51aeefffa29088c5db9f2c644ba1dd53",
+      "exit_status": 0
+    },
+    "tests": {
+      "odyssey": {
+        "log": ".work/process-tracking/iris-odyssey-tests.log",
+        "sha256": "f1a92b0c381db2682c489d008325744ecbfa2608da0960593ed512f76ef1fa0a",
+        "passed": 356,
+        "ignored": 4
+      },
+      "network": {
+        "log": ".work/process-tracking/iris-network-tests.log",
+        "sha256": "a5de106a6c08386aa3efb6a07d7fd46beb6d26d243f4c4f652cb141fbbd78a5d",
+        "passed": 158,
+        "ignored": 0
+      },
+      "irix-sh": {
+        "socket_timeout_reset": "passed with fake socket",
+        "command_length_255_256": "passed before network I/O",
+        "text_line_length_255_256": "passed before network I/O",
+        "live_telnet": "not tested"
+      }
+    },
+    "manual_image_emulator_unchanged": "819c6825504d40ad9f9aa00554249affd2da9446"
+  },
+  "native_core_changed": false,
+  "runtime_changed": false,
+  "manual_image_changed": false,
+  "preliminary_runs": [
+    {
+      "run": ".work/process-tracking/native-pyw624_4",
+      "result_sha256": "0f1fd6c4fa6b773abc8fc826cfe9b514cb2a5c66389c1aa9cd4536e04ffc11fc",
+      "archive_sha256": "05ec84576273e1129fe7f4f87d939fbc1be5b50062c75bcb10634a494ed100c6",
+      "status": "passed",
+      "clean_shutdown": true,
+      "source_unchanged": true,
+      "note": "Earlier fixture did not require reparenting; excluded from final totals."
+    },
+    {
+      "run": ".work/process-tracking/native-g_owajjx",
+      "result_sha256": "2f39a20b52d2408360f221a8f9aa43cc778a9220d48b3fc1cc25da031087788a",
+      "archive_sha256": "8125a514f9e84dc05fd2f8c31f64edf52b36054f75da04fb6f2cc5ec77b3b415",
+      "status": "error",
+      "clean_shutdown": true,
+      "source_unchanged": true,
+      "note": "Earlier fixture did not require reparenting; excluded from final totals. Supervisor script unreadable after CD mode 000 was copied; fixed by install -m 444."
+    }
+  ],
+  "host_tests": {
+    "count": 48,
+    "log": ".work/process-tracking/host-tests.log",
+    "sha256": "2372ad28cc8e37d18988523eb0d1ef447bd71e84ac91e4527140e72d68ba476d"
+  },
+  "doctor": {
+    "log": ".work/process-tracking/doctor.log",
+    "sha256": "c663c4351d0d43e69912805ad46fa73fd9645c699b27bbb81afd27eeb4f04df2"
+  }
+}

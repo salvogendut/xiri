@@ -1,0 +1,58 @@
+# Native child-event tracking
+
+This lab separates native NetBSD descendant notifications and supervisor
+cleanup from an application's startup or X11 behavior. It follows the
+retained compview observation whose guard reported one remaining process
+even though its PID was absent from the process snapshots. Passing a replay
+does not establish why that earlier observation failed.
+
+`events.c` uses a pipe to identify all intended children independently of
+`EVFILT_PROC`. It then checks each `NOTE_CHILD` and `NOTE_EXIT`, including
+the original parent PID, ordering, exit status and duplicate/trailing events.
+It exercises three trees:
+
+- Eight children that exit immediately, allowing notifications to accumulate.
+- Four children that each create a grandchild in a new session. Each grandchild
+  waits for reparenting before exiting, requiring it to outlive its parent.
+- Eight children held behind a pipe until every birth record has arrived,
+  then released together by closing the parent's pipe.
+
+Both one-event and 64-event receive buffers are tested as root and xiritest
+(UID 1234). Sixteen rounds produce 1,536 complete child lifecycles per image.
+The fixture checks direct-child reaping too. Children have bounded alarms;
+losing the parent releases held children. Run this fixture only in a disposable
+guest, never as a host process.
+
+```sh
+python3 scripts/probe-process-tracking.py \
+  --bundle .work/images/xiri-netbsd-desktop-20261105-wait --guard-tests
+```
+
+For the older comparison, use the same command with
+`.work/images/xiri-netbsd-desktop-20261103-gimp`. `--rounds` accepts 1–64.
+`--guard-tests` also runs the maintained adversarial fixtures against the
+image's installed session guard. These cover live/exit bursts, detached
+descendants, leader and exec failures, logout, signals, and survival of an
+independent process belonging to the same user. They do not rebuild or replace
+the installed guard.
+
+The runner verifies the selected CHD, emulator, configuration, boot profile,
+kernel/module and installed guard hashes. Each run gets a private CHD copy
+and writable overlay, an ordinary graphical emulator, and read-only test CD.
+The source image and selected manual state remain unchanged. Evidence under
+`.work/process-tracking/native-*` includes the exact harness and fixtures,
+guest logs/binaries, source hashes, result JSON and clean-unmount/halt log.
+Failure capture includes CPU state, kernel messages and a PNG when available.
+A test is successful only with all expected results, an observation archive,
+an unchanged source CHD and a clean guest halt.
+
+The paired compview replay uses the existing catalog observer unchanged:
+
+```sh
+python3 scripts/probe-irix-catalog.py --bundle BUNDLE \
+  --partition 2 --after-case app-097 --limit 1
+```
+
+That is a bounded cleanup experiment, not an application functionality test.
+Its X-query status and final PID snapshots must be retained alongside the
+guard's result; a window-query timeout is not evidence of a leaked process.

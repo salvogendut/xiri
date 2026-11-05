@@ -27,7 +27,7 @@
     "app-011": {
       "target": "/usr/freeware/bin/gnome-terminal",
       "label": "Interactive original shell, catalog and preferences pass",
-      "note": "Applications double-click launches the original IRIX shell with its prompt and HOME/cwd /usr/people/xiritest. Typed commands, foreground Ctrl-C, resize, normal exit and running-icon feedback pass. Scrollback and other settings now persist across a normal exit/relaunch. Help/shared-memory warnings and broader stop/resume job control remain open.",
+      "note": "Applications double-click launches the original IRIX shell with its prompt and HOME/cwd /usr/people/xiritest. Typed commands, foreground Ctrl-C, resize, normal exit and running-icon feedback pass. Scrollback and other settings now persist across a normal exit/relaunch. The later direct-terminal [job checks](results/2026-11-05-irix-job-control.md) pass Ctrl-Z, bg/fg, background terminal reads and explicit waits. Help/shared-memory warnings and arbitrary nested pipelines remain open.",
       "report": "results/2026-11-04-irix-preferences.md",
       "candidate_module_sha256": "cb20d5867e4adcd86536d4f65495a6f86b8a631e6dccf7f84aba610423062d85"
     },
@@ -64,6 +64,12 @@
       "note": "The complete original Reader package opens a nine-page PDF, changes page and zoom, reopens through its chooser and exits normally as xiritest. Applications double-click launches Reader after xdm login. Its icon remains unchanged while running and FAM records no wrapper execution event; feedback, broader PDFs, printing and browser integration remain open.",
       "report": "results/2026-11-04-irix-acrobat.md",
       "candidate_module_sha256": "37c8a5114483ad834d0dbef551175e506a1874599aa8caf70366481be7559b2f"
+    },
+    "app-099": {
+      "target": "/usr/sbin/compview",
+      "label": "Cleanup passes in paired replays; functionality unqualified",
+      "note": "The old GIMP and current native-wait images each track and clean up both descendants, confirm absent PIDs and halt cleanly. The first bounded X query still times out; subsequent queries recover. The original absent=0/valid=0 tracking failure remains unexplained. Useful interaction and normal application exit remain untested.",
+      "report": "results/2026-11-05-process-tracking.md"
     }
   }
 }

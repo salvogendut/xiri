@@ -55,7 +55,7 @@ def result(e):
  raise RuntimeError(status)
 intro='''# Icon Catalog application checklist
 
-Updated 2026-11-04 after the [startup survey](results/2026-11-03-irix-catalog.md)
+Updated 2026-11-05 after the [startup survey](results/2026-11-03-irix-catalog.md)
 and the [GNOME](results/2026-11-04-irix-gnome.md),
 [terminal](results/2026-11-04-irix-terminal.md),
 [preference](results/2026-11-04-irix-preferences.md) and
@@ -67,6 +67,26 @@ catalog may omit. The eighteenth page is the user's empty **Blank** page.
 Click the stacked page edges at the bottom-right of Icon Catalog to open the
 [menu of all pages](results/images/2026-11-03-irix-catalog-pages.png), including
 those whose tabs do not fit along the bottom.
+
+The [2026-11-05 shared text repair](results/2026-11-05-newport-text.md)
+restores native Newport software-fallback drawing, including disabled labels
+and Xft/Render glyphs. Repeat previously blank UI observations on that driver
+when application work resumes; this repair alone does not upgrade any entry
+below to a functional pass. Missing Fontconfig or GNOME print resources remain
+separate from Xorg's drawing path.
+
+The [job-control cycle](results/2026-11-05-irix-job-control.md) adds measured
+sleep, child-state and process-group support, verifies real jobs in both
+shells, and fixes a separate native wait-accounting bug. Its old/new
+22-target system replays verify bounded cleanup and halt; they do not upgrade
+individual applications to functional passes. The original catalog stalls
+remain retained and unexplained.
+
+The [process-tracking follow-up](results/2026-11-05-process-tracking.md)
+separates compview's X-query timeout from descendant cleanup. Paired old/current
+replays clean up both tracked descendants and halt; the first X query still
+times out and later queries recover. The historical tracking failure remains
+open, and these cleanup results do not qualify compview's functionality.
 
 The original GIMP CHD survey ran as **xiritest**, UID/GID 1234, HOME and cwd
 `/usr/people/xiritest`, with accelerated 1280×1024 NetBSD Xorg. There were

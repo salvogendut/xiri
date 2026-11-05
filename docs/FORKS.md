@@ -42,6 +42,23 @@ not repin qualified kernels, emulator binaries, runtime resources or guest disks
 
 ## IRIS upstream updates
 
+The 2026-11-05 process-tracking cycle fetched upstream through
+`54ea8c05afa2996c192768cc72bbe6fcb3c01f5f`. Merge
+`e67e3cc3731c17de1a0c226dbd2d4448d07ec80f` is pushed on IRIS `xiri`.
+The three commits cover Odyssey reads/lighting, IRIX 6.5.30 NFS negotiation,
+and irix-sh timeout/line-length handling. The sole source conflict combines
+our existing NetBSD AUTH_SYS mount fix with upstream's equivalent AUTH_UNIX
+name, retaining AUTH_NULL as the second accepted flavour.
+The isolated release build, 356 Odyssey tests (four ignored), and 158 network
+tests pass. Host controls also check irix-sh's timeout reset and 255/256-byte
+command/text-line boundaries without opening a guest connection. These checks
+do not qualify a live IRIX 6.5.30 mount or telnet session. Logs and hashes are
+indexed in the [process-tracking record](results/2026-11-05-process-tracking.json).
+NetBSD remains at `e9ff76a58affee773b767d334f98075bf86daf7e`; no kernel change
+is inferred from an unreproduced tracking failure. The manual image and
+diagnostic guests retain pinned emulator `819c682`, and detached reproduction
+worktrees remain unchanged.
+
 The 2026-11-05 process/job-control cycle fetched upstream at 09:55 UTC and
 found `436847c55cd0` and `61fcc816ef62`, covering the Odyssey/VPro memory and
 fragment pipeline plus graphics configuration defaults. Merge `4c53dfc303c4`

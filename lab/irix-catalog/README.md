@@ -87,6 +87,13 @@ with verified cleanup and clean halt after five native control pairs each;
 this does not establish the cause of the historical stalls. The separate
 [native wait fix](../native-wait/README.md) has its own deterministic test.
 
+The [process-tracking follow-up](../irix-process-tracking/README.md) isolates
+compview with `--partition 2 --after-case app-097 --limit 1` on both images.
+Its guards verify cleanup, while the first X query still times out and later
+queries recover. The native fixture independently checks child/exit events
+against pipe-published identities. Keep these results separate from the
+historical tracking failure and from application functionality.
+
 For another bounded replay, use:
 
 ```sh

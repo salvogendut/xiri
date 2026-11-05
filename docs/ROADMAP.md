@@ -185,6 +185,18 @@ font, shell-job and cleanup checks plus the same 22-target catalog batch,
 and is now selected for manual testing. The earlier Type1 and intermediate
 job-control images remain preserved.
 
+The [process-tracking follow-up](results/2026-11-05-process-tracking.md)
+passes 3,072 independent native child lifecycles and 16 installed-supervisor
+scenarios across the old GIMP and current native-wait images. Compview's
+paired replays now verify cleanup and halt, while the first X query still
+times out and later queries recover. This separates the current query symptom
+from the historical tracking failure without explaining that earlier failure.
+The maintained fixture requires orphan reparenting and compares events with
+pipe-published identities. No kernel/runtime change or new image is warranted
+by these passes. Keep the historical tracking/bootstrap/shutdown observations
+open; a recurrence needs simultaneous notification, identity and teardown
+evidence. Individual application fixes remain deferred.
+
 ## Next packaging phase
 
 The user requested these deployment changes on 2026-11-03. The implementation

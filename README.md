@@ -59,6 +59,11 @@ original IRIX shell and winterm's native shell pass Ctrl-Z, bg/fg, Ctrl-C,
 background reads, explicit waits and logout with active jobs.
 It also fixes a shared NetBSD wait-accounting bug exposed by native
 multi-child tests; the same test binary fails before the fix and passes after it.
+The [tracking follow-up](docs/results/2026-11-05-process-tracking.md) verifies
+3,072 native child lifecycles and 16 supervisor cleanup scenarios on old/current
+images. Compview cleanup passes in both replays, while its first X query still
+times out. The historical tracking failure remains open; the selected CHD is
+unchanged.
 
 The [preference cycle](docs/results/2026-11-04-irix-preferences.md) implements
 measured IRIX `rename` behavior. GNOME Terminal and gedit settings survive
