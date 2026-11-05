@@ -8,19 +8,26 @@ older reproduction checkpoints. Automated checks never promote their result
 or replace the manual bundle's NVRAM/overlay state.
 
 The current accelerated xdm bundle is
-`.work/images/xiri-netbsd-desktop-20261105-type1/`.
-`netbsd-xiri.chd` is an 8 GiB NetBSD disk compressed to 496,147,647 bytes
+`.work/images/xiri-netbsd-desktop-20261105-wait/`.
+`netbsd-xiri.chd` is an 8 GiB NetBSD disk compressed to 496,151,497 bytes
 (about 473 MiB). Its SHA256 is
-`bedf6db0e46559817366a5e5ba6b9886d5aaf197cc63e3da06cc590d6d0d5350`.
-The [Type1 update](results/2026-11-05-type1-image.md) replaces the native
-kernel to preserve MIPS floating-point registers across signal return.
-Only `/netbsd` and `/netbsd.boot` change in the installed-file inventory.
-The IRIX module, fonts, libraries, resources, service helpers, account layout
-and accelerated Newport driver are retained. Cold CHD qualification covers
-345 text comparisons, both users, three untouched winterm starts/resizes,
-both logout routes, recovery, catalog launch and clean halt. The focused
-[scalable-font qualification](results/2026-11-05-type1-scaler.md) separately
-checks native FPU restoration, Type1 size requests and original winterm.
+`90ca82ecdfbe184a96990515938f7856eb6983f77719d487fb7c6b34ba73eece`.
+The [job-control/native-wait update](results/2026-11-05-native-wait-image.md)
+adds IRIX sleep, child-state and process-group support, plus a generic NetBSD
+multi-child wait-accounting fix. Compared with the Type1 image, only
+`/netbsd`, `/netbsd.boot` and the IRIX module change in the installed-file
+inventory. Fonts, libraries, resources, service helpers, account layout and
+accelerated Newport are retained. Cold CHD qualification covers 345 text
+comparisons, both users, three winterm starts/resizes, native and original
+IRIX shell jobs, both logout routes, recovery, catalog launch and clean halt.
+The final 22-target catalog replay also verifies cleanup and shutdown.
+`./xiri check` now repeats the shell-job checks automatically.
+
+The earlier [Type1 update](results/2026-11-05-type1-image.md) preserves MIPS
+floating-point registers across signal return. Its fix remains included;
+the focused [scalable-font qualification](results/2026-11-05-type1-scaler.md)
+separately checks native FPU restoration, Type1 sizes and original winterm.
+The `20261105-type1` and intermediate `20261105-jobs` bundles remain available.
 
 The preceding [font/menu update](results/2026-11-05-newport-text.md) restores
 disabled Toolchest labels and native Xft/Render glyphs with the corrected
@@ -98,21 +105,24 @@ directory views. Full Dumpster operations and launch animation remain open.
 
 ## Current xdm image
 
-The core kernel matches NetBSD `xiri` commit
-`3b25e6cf2251f180c89027d00b33ee1c29933517`. It retains the
-[UVM allocation](results/2026-11-03-uvm-pglist.md) and
-[CD9660 ABI](results/2026-11-04-system-stability.md) corrections and adds
-[native FPU signal restoration](results/2026-11-05-type1-scaler.md).
-The unchanged IRIX personality boot-loads as `exec / filesys` at normal
-securelevel 1. The [build ledger](../lab/type1-scaler/build.json) retains its
-actual pre-commit provenance; the
-[source-equivalence record](../lab/type1-scaler/source-equivalence.json)
-verifies the later committed inputs. The Xiri fork hooks are still required.
+The core kernel and module match NetBSD `xiri` commit
+`e9ff76a58affee773b767d334f98075bf86daf7e`. They retain the
+[UVM allocation](results/2026-11-03-uvm-pglist.md),
+[CD9660 ABI](results/2026-11-04-system-stability.md) and
+[native FPU signal restoration](results/2026-11-05-type1-scaler.md)
+corrections, and add the measured IRIX sleep/child-state/group interfaces
+and native multi-child wait fix. The IRIX personality boot-loads as
+`exec / filesys` at normal securelevel 1. The
+[build ledger](../lab/native-wait/build.json) retains its actual pre-commit
+provenance; the [source-equivalence record](../lab/native-wait/source-equivalence.json)
+verifies the later committed inputs. The matching core and module are
+required, including the opt-in continued-child notification policy.
+The Xiri fork hooks are still required.
 
 Launch the qualified bundle directly:
 
 ```sh
-/var/home/salvogendut/Dev/xiri/.work/images/xiri-netbsd-desktop-20261105-type1/run-iris.sh
+/var/home/salvogendut/Dev/xiri/.work/images/xiri-netbsd-desktop-20261105-wait/run-iris.sh
 ```
 
 It boots automatically to native NetBSD xdm. Use these public development
@@ -133,13 +143,13 @@ selected only by xiritest's `.xsession`; FAM still serves that one configured
 IRIX account. Root has no password and remains available on serial B for
 administration. The ttyE0 getty is disabled so xdm owns the graphical keyboard.
 
-The fresh [image qualification](results/2026-11-05-type1-image.json) covers three IRIX
+The fresh [image qualification](results/2026-11-05-native-wait-image.json) covers three IRIX
 logins, a separate native ctwm login, both IRIX logout routes, failed-startup
 recovery, catalog launch, full-screen acceleration and clean halt. PNGs show
-[4Dwm](results/images/2026-11-05-type1-image.png),
-[ctwm](results/images/2026-11-05-type1-image-native.png), the
-[greeter](results/images/2026-11-05-type1-image-greeter.png) and
-[winterm before any test resize](results/images/2026-11-05-type1-image-winterm.png).
+[4Dwm](results/images/2026-11-05-native-wait-image.png),
+[ctwm](results/images/2026-11-05-native-wait-image-native.png), the
+[greeter](results/images/2026-11-05-native-wait-image-greeter.png) and
+[winterm before any test resize](results/images/2026-11-05-native-wait-image-winterm.png).
 Each IRIX login checks untouched terminal geometry and foreground SIGWINCH
 delivery; an extra 100×30 terminal preserves its size and closes on typed
 `exit`. Terminal defaults explicitly select NetBSD's 100dpi Adobe Courier
@@ -153,11 +163,14 @@ label rendering separately from individual command functionality.
 The native logout test ends ctwm from its own terminal;
 it does not qualify its Quit menu.
 
-`./xiri check` automatically includes these winterm and font checks for the selected
+The shell-job checks cover winterm's native shell and the original IRIX shell
+in GNOME Terminal: Ctrl-Z, bg/fg, Ctrl-C, background reads, explicit waits,
+terminal exit and logout with running/stopped jobs. `./xiri check`
+automatically includes these job, winterm and font checks for the selected
 bundle. The explicit command is:
 
 ```sh
-python3 scripts/probe-xiri-xdm.py --bundle .work/images/xiri-netbsd-desktop-20261105-type1 --winterm --fonts
+python3 scripts/probe-xiri-xdm.py --bundle .work/images/xiri-netbsd-desktop-20261105-wait --winterm --fonts --jobs
 ```
 
 For root's manual fallback, stop xdm with `/etc/rc.d/xdm stop`, then run

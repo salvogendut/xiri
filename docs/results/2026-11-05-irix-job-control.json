@@ -1,0 +1,144 @@
+{
+  "schema": 1,
+  "status": "passed",
+  "phase": "IRIX ABI and terminals, native multi-child wait, and cold-image qualification",
+  "build": {
+    "path": "lab/irix-job-control/build.json",
+    "sha256": "44e7d1319763542e79543a6477ca931c2b1e35d702f2ce9092656165e594241d"
+  },
+  "source_equivalence": {
+    "path": "lab/irix-job-control/source-equivalence.json",
+    "sha256": "e98d169810a4a76b51755afe1470925d8735c00777fd66c5913b73b7877a8229"
+  },
+  "abi": {
+    "record": {
+      "path": ".work/job-control/abi-final-v3.json",
+      "sha256": "9806a565d3a6e38b0bce0e2b34a4fae0d6b0a71c6e1042ee2309e2386f221264"
+    },
+    "sleep_cases": 264,
+    "child_cases": 256,
+    "native_controls": 4,
+    "scope": {
+      "sleep_comparisons": 264,
+      "child_event_contracts": 256,
+      "pgid_zero_exit_policy_differences": 32,
+      "native_controls": 4,
+      "undefined_reference_siginfo_bytes_excluded": true,
+      "candidate_unused_siginfo_bytes_required_zero": true
+    },
+    "inputs": {
+      "sleep_reference": {
+        "path": "/var/home/salvogendut/Dev/xiri/.work/job-control/sleep-reference-v3.tar",
+        "sha256": "e402d87c78e5fc060a1ccd8e7209d265f77c8a3efaab049aaf4bc8114f92e74b"
+      },
+      "child_reference": {
+        "path": "/var/home/salvogendut/Dev/xiri/.work/job-control/children-reference-v3.tar",
+        "sha256": "5f8ac20d4b0b2b726b8db10196b082d4ad3d2d299b0fa6b35c8e0d60619cfa28"
+      },
+      "baseline": {
+        "path": "/var/home/salvogendut/Dev/xiri/.work/job-control/baseline-matrices.tgz",
+        "sha256": "85ba7f724e20b1a9010c277f75c40af6d99b9e03f27341db28c709a299191240"
+      },
+      "candidate": {
+        "path": "/var/home/salvogendut/Dev/xiri/.work/job-control/candidate-v3-matrices.tgz",
+        "sha256": "fb4012cca1dccb267140924971c848af09f3b0f10afa9f9ffc62e767c4d8a28b"
+      }
+    },
+    "baseline": {
+      "nanosleep_enosys": 24,
+      "stop_wait_einval": 16
+    }
+  },
+  "groups": {
+    "record": {
+      "path": ".work/job-control/groups-final.json",
+      "sha256": "672638acf4be952f135360f40356428a29d09157c83d838c061475d951a79b53"
+    },
+    "cases": 24,
+    "operations": 888,
+    "inputs": {
+      ".work/job-control/groups-reference-v2.tar": "885a442a3e04d0aab3239cec05973096f769c032440c9be5691b613f84969a91",
+      ".work/job-control/groups-candidate-v3.tgz": "9cc7a41c69c71c81243c874049e7cbb86cb9e7f5e87d5ae8f937d467f6c757cf"
+    }
+  },
+  "wait_options": {
+    "record": {
+      "path": ".work/job-control/wait-options-final.json",
+      "sha256": "3f3355e6a15faf42ac01ae8a3a6e324d5ae0e2b41d517098d465465ac5dc3f73"
+    },
+    "cases": 24,
+    "matching_selections": 360,
+    "empty_selection_differences": 24,
+    "inputs": {
+      ".work/job-control/wait-options-reference.tar": "7c4fa55db2f7b693f4e1de46bf6606840478e34ed87a6134bb4038f5eee6c63d",
+      ".work/job-control/wait-options-candidate.tgz": "5750045bbb19ea8abe61a546fff23feddbc6e90a2a84cda5332bc198abe9ad22"
+    }
+  },
+  "regressions": {
+    "record": {
+      "path": ".work/job-control/regression-result.json",
+      "sha256": "ed339801847d0ffb6488637c72a6f88f926de49f287bbe9854a2bab785533e9d"
+    },
+    "counts": {
+      "signal": 48,
+      "sproc": 48,
+      "process": 144
+    },
+    "records": {
+      "path": ".work/job-control/regression-records.txt",
+      "sha256": "d314badf70436b174f42e8be4f4d65d80c17a58583b8f9e06f72a296f76ca8c8"
+    },
+    "inputs": {
+      "path": ".work/job-control/regression-inputs.json",
+      "sha256": "c1dfb30ff00c8b5215066a22c7904d24a34d64ac100e021451b5be9ee717478b"
+    }
+  },
+  "libc": {
+    "record": {
+      "path": ".work/job-control/libc-result.json",
+      "sha256": "d4e28aa7c75348b6abf056a0372482094a783939ef73497826564a58067ea439"
+    },
+    "cases": 8
+  },
+  "negative_controls": [
+    {
+      "record": {
+        "path": ".work/job-control/negative-controls.json",
+        "sha256": "da56799c8dc664ba839180227ce444af6be070baabed3b91e0da5655039264fc"
+      }
+    },
+    {
+      "record": {
+        "path": ".work/job-control/group-negative-controls.json",
+        "sha256": "ffbee8fb197ef45f1e8d1e001309b9ee43dd768a5d6cf4fa21c0bc16934d1690"
+      }
+    },
+    {
+      "record": {
+        "path": ".work/job-control/wait-options-negative-controls.json",
+        "sha256": "eda2ff1d3a0892f3095a8f556ee278ad70cf7d5df427d4ca9038c8ca034ab752"
+      }
+    }
+  ],
+  "terminals": {
+    "path": "docs/results/2026-11-05-irix-terminal-jobs.json",
+    "sha256": "969062af32601666947788b11e946dd1ff2167fac5afe4bf87969854e2b5c988"
+  },
+  "cold_image_checkpoint": {
+    "path": "docs/results/2026-11-05-irix-job-control-image.json",
+    "sha256": "4d22879cdafe9449f60c0475ef9f068a5cf1e8fff97862f94631e08bf2ebbd5c",
+    "selected": false
+  },
+  "native_wait_followup": {
+    "path": "docs/results/2026-11-05-native-wait.json",
+    "sha256": "5446db38934d606181503919a549add66d840a068a61c364d729e42c5dd7b783"
+  },
+  "catalog_replays": {
+    "path": "docs/results/2026-11-05-irix-catalog-replay.json",
+    "sha256": "c86591813dc3400aef3bd54192f4869596778b7f5f5a1e61ee63a66c19c7a0de"
+  },
+  "selected_image": {
+    "path": "docs/results/2026-11-05-native-wait-image.json",
+    "sha256": "3db47e6f144bd3b1369efaa9768a68a21382a28998533ba4994470c9d4f6f934"
+  }
+}

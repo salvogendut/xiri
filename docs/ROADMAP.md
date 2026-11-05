@@ -32,9 +32,9 @@ signal/frame controls. Foreground resize and normal terminal exit now work;
 the intermittent font collapse now reproduces in both native and IRIX Xlib
 against Xorg's scalable IBM Courier face. A session resource default selects
 the existing SGI Screen bitmap font; later font cycles below select bitmap
-Courier and fix the native Type1 cause. Follow-ups are continued-child
-notification parity, IRIX nanosleep, broader job control and
-broader terminal workloads. The extended font
+Courier and fix the native Type1 cause. The later job-control cycle qualifies
+continued-child notification policy, IRIX nanosleep and real shell jobs;
+broader terminal workloads remain open. The extended font
 diagnostic also captured repeated characters during XTest input; investigate
 that separately without attributing it to concurrency before a controlled
 comparison. Its failed input attempts are excluded from terminal acceptance.
@@ -78,8 +78,8 @@ home-directory file creation and `exit` work. The subsequent
 [termios cycle](results/2026-11-04-irix-termios.md) qualifies 864 attribute
 observations and 64 controlling-terminal/session observations against original
 IRIX. Its original shell recognizes an interactive terminal and passes prompt,
-command, Ctrl-C, foreground resize and normal-exit checks. Broader stop/resume
-job control remains open. The glynx and
+command, Ctrl-C, foreground resize and normal-exit checks. The later
+job-control cycle also qualifies stop/resume and background jobs. The glynx and
 Midnight Commander wrappers still need their missing `lynx` and `mc` program
 trees; their shared terminal startup is not application support.
 
@@ -165,6 +165,26 @@ Investigate the survey's native child-control stalls and batch shutdown
 failure alongside compview's tracking failure; retain the failing runs rather
 than attributing these symptoms to an individual application without evidence.
 
+The completed process/job-control cycle follows the user's 2026-11-05 order:
+first measure and implement IRIX stop/continue notifications, child waiting
+and nanosleep; then qualify real shell foreground/background jobs and cleanup;
+finally revisit the retained native child-control stalls and catalog-batch
+shutdown failure on the corrected baseline. Successful bounded tests do not
+close an earlier unexplained hang without evidence of its cause.
+The [sleep/wait/group interfaces and real terminal jobs](results/2026-11-05-irix-job-control.md)
+now pass their focused qualification, including the original IRIX shell,
+logout with active jobs and a separate native-user login. The final-module
+regressions also pass. Paired old/new 22-target catalog batches complete with
+verified cleanup and clean halt; the historical stalls remain unreproduced.
+A separate native multi-child test reproduced a shared NetBSD wait-accounting
+defect; its fix and before/after tests are isolated in the
+[native wait lab](../lab/native-wait/README.md). The new native tests fail on
+the unfixed core and pass unchanged on the fixed core under both identities.
+The [final CHD](results/2026-11-05-native-wait-image.md) passes cold desktop,
+font, shell-job and cleanup checks plus the same 22-target catalog batch,
+and is now selected for manual testing. The earlier Type1 and intermediate
+job-control images remain preserved.
+
 ## Next packaging phase
 
 The user requested these deployment changes on 2026-11-03. The implementation
@@ -176,8 +196,8 @@ order was updated to prioritize the kernel module at the user’s request:
    refusal, unload/reload, the desktop and o32/n32 regressions pass on a
    kernel without the built-in personality. The export/relocation audit
    passes. Stock-kernel delivery still needs upstreaming or replacing
-   `selcommon_kern` and `emul.e_sigmask`. Newport and other native platform
-   drivers remain separate NetBSD components.
+   `selcommon_kern`, `emul.e_sigmask` and `EMUL_NOCLDSTOP_CONT`. Newport and
+   other native platform drivers remain separate NetBSD components.
 2. **Service/session ownership: qualified.** The maintained
    [`runtime/`](../runtime/README.md) packages boot services with rc.d and
    configuration, plus an unprivileged session on an existing X display.
@@ -340,7 +360,8 @@ Decision gate: if the display or desktop exposes a major feasibility obstacle, d
 - [x] Run a native interactive shell through [original winterm/xwsh](results/2026-11-01-irix-shell.md), with paired descriptor/session/exec probes, real keyboard input, a PNG and bounded descendant cleanup.
 - [x] Qualify [winterm resize and normal terminal exit](results/2026-11-03-winterm-reliability.md), including measured NOCLDSTOP child-exit handlers, preserved nondefault dimensions and foreground SIGWINCH delivery.
 - [x] Correct the reproduced [native Type1 collapse](results/2026-11-05-type1-scaler.md) through MIPS FPU signal-return preservation, with independent register, font and original winterm controls.
-- [ ] Complete broader shell/job-control behavior, continued-child notification parity and IRIX nanosleep. General layered-tty revoke remains open; terminal defaults retain the verified NetBSD bitmap Courier face.
+- [x] Qualify IRIX sleep, stop/continue notifications, process groups and real foreground/background terminal jobs, including logout with active jobs.
+- [ ] Extend beyond the qualified shell sequences to arbitrary nested pipelines and general layered-tty revoke. Terminal defaults retain the verified NetBSD bitmap Courier face.
 - [x] Qualify the [4 KiB data mapping extension](results/2026-11-01-irix-elfmap-subpage.md): 750 mapping/limit checks; original 4Dwm passes its previous library boundary.
 - [x] Resolve [4Dwm’s fixed/local GL mapping](results/2026-11-01-irix-mmap-local.md): 660 cases, 30 controls and 32 native page-zero checks.
 - [x] Provide [measured PRDA process data](results/2026-11-01-irix-prda.md): 80 executions / 180 records, fork COW/PID updates, exec reset, damaged-state policy and native-exec controls.
@@ -433,7 +454,7 @@ Acceptance: an original desktop session executing inside the emulated Indy on Ne
 ## Milestone 4 Usable first release
 
 - [x] Package the IRIX personality as a loadable kernel module modeled after `compat_linux`, with a reproducible build/install path and explicit kernel-version/architecture dependencies. [First milestone on our fork](results/2026-11-03-irix-module.md); stock-kernel delivery remains below.
-- [ ] Audit core dependencies, including `selcommon_kern` and the pthread-initialization `emul.e_sigmask` hook; upstream or remove them to enable deployment on a compatible standard NetBSD kernel.
+- [ ] Audit core dependencies, including `selcommon_kern`, the pthread-initialization `emul.e_sigmask` hook and the opt-in `EMUL_NOCLDSTOP_CONT` policy; upstream or remove them to enable deployment on a compatible standard NetBSD kernel.
 - [x] Qualify module load, dependency resolution, refusal to unload while in use, unload/reload after exit, and the application regressions on a kernel without the built-in IRIX personality. Normal boot and the desktop also pass in the [module cycle](results/2026-11-03-irix-module.md).
 - [x] Deliver a reusable [module-based manual CHD](results/2026-11-03-irix-module-image.md), with matching kernel/module hashes, boot configuration, graphical login/logout and direct-CHD desktop qualification.
 - [ ] Boot the qualified build on the physical Indy and repeat ABI and desktop acceptance there.

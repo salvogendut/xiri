@@ -1,6 +1,10 @@
 # Bounded IRIX process interfaces
 
-Later checkpoint: [original winterm now runs a native interactive shell](../../docs/results/2026-11-01-irix-shell.md), with measured descriptor/session/exec interfaces and actual keyboard input.
+Later checkpoints: [original winterm runs a native interactive shell](../../docs/results/2026-11-01-irix-shell.md), with measured descriptor/session/exec interfaces and actual keyboard input.
+The [child-state cycle](../irix-job-control/README.md) extends wait selection
+to process groups and all children, adds stop/resume events and replays 144
+of this lab's wait/error cases. The positive-child-only scope below describes
+this earlier checkpoint, not the current module's complete interface.
 
 This lab measures fork, the getpid/getppid register pair, traditional signal
 masks and positive-child exit waits against the supplied IRIX 6.5.22m system.

@@ -69,13 +69,16 @@ records the complete cold-boot run, with
 [untouched winterm PNG](../../docs/results/images/2026-11-03-winterm-image-winterm.png).
 All imported binaries, toolchains, images and raw records remain in `.work/`.
 
-The n32 libc stop/continue experiment is not part of NetBSD acceptance:
+The n32 libc stop/continue experiment was not part of this checkpoint's NetBSD acceptance:
 `usleep()` reaches unsupported IRIX `nanosleep`, and native SA_NOCLDSTOP
 still differs from the reference on continued-child notifications. The
 current fixture fails and reaps its child when the delay is unsupported.
 Its original-system observations used the archived pre-guard source. The
 qualified raw signal controls cover child exit handling, not full stop/continue
-parity. The font collapse later reproduced in both native and original Xlib
+parity. The later [child-state cycle](../irix-job-control/README.md) implements
+and measures IRIX `nanosleep`, including the vendor libc wrappers, and adds
+stop/resume wait events and continued-child notification policy.
+The font collapse later reproduced in both native and original Xlib
 on Xorg's scalable IBM Courier face. SGI Screen stayed at 8×15 in that failing
 session; the later appearance cycle selected NetBSD bitmap Courier at 11×20.
 The [Type1 follow-up](../../docs/results/2026-11-05-type1-scaler.md) now fixes

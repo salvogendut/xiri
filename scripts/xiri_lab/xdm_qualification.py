@@ -9,6 +9,39 @@ from .xdm_image import support_files
 from .fonts import verify as verify_fonts
 
 
+def verify_job_control(entry):
+    assert entry['status'] == 'passed'
+    assert set(entry['shells']) == {'native', 'irix'}
+    for shell in entry['shells'].values():
+        proof = shell['proof']
+        assert proof[:3] == ['xiritest', '/usr/people/xiritest', '/usr/people/xiritest']
+        assert {'i', 'm'} <= set(proof[4]) and shell['monitor_enabled_at_start']
+        foreground = shell['stop_resume']
+        worker = foreground['worker']
+        assert worker['uid'] == 1234 and worker['foreground'] == 1
+        assert worker['pid'] == worker['pgid'] == worker['tpgid']
+        assert worker['pgid'] != int(proof[3])
+        assert re.search(r'Stopped|Suspended', foreground['stopped'], re.I)
+        assert 'Running' in foreground['background']
+        assert foreground['exit'] == 42
+        assert '\nCONT\n' in foreground['events'] and foreground['events'].endswith('INT\n')
+        read = shell['background_read']
+        assert read['worker']['uid'] == 1234 and read['worker']['foreground'] == 0
+        assert re.search(r'Stopped|Suspended', read['jobs'], re.I)
+        assert read['exit'] == 0 and read['events'].endswith('READ\n')
+        assert shell['background_wait']['exit'] == 37
+    clean = r'GUARD .*absent=1 valid=1 .*remaining=0 '
+    assert re.search(r'GUARD .*exit=0 signal=0 stopped=0 absent=1 valid=1 '
+                     r'.*remaining=0 reason=leader-exit uid=1234 gid=1234 ',
+                     entry['shells']['irix']['terminal_guard'])
+    assert re.search(clean, entry['logout_guard'])
+    jobs = entry['logout_jobs']
+    assert jobs['running']['uid'] == jobs['stopped']['uid'] == 1234
+    assert jobs['running']['foreground'] == 0 and jobs['stopped']['foreground'] == 1
+    assert len({jobs['running']['pid'], jobs['stopped']['pid'], jobs['shell_pid']}) == 3
+    assert entry['archive']['path'] == 'job-control.tgz'
+
+
 def verify_sessions(r):
     assert r['scope']=='xdm-direct-chd' and r['status']=='passed'
     assert r['clean_shutdown'] and r['base_chd_unchanged'] and r['direct_disk_boot']
@@ -80,6 +113,8 @@ def verify_sessions(r):
         assert set(r.get('font_checks', {})) == {'greeter', 'irix-1', 'irix-2', 'irix-3', 'native'}
     for entry in r.get('font_checks', {}).values():
         verify_fonts(entry)
+    if 'job_control' in r or 'scripts/xiri_lab/job_control.py' in r.get('sources', {}):
+        verify_job_control(r['job_control'])
 
 
 def qualify(a, verify_irix_module):
@@ -90,6 +125,8 @@ def qualify(a, verify_irix_module):
              *sorted((bundle/'verification').glob('manifest-*.json'))]
     source=next(p for p in sources if p.exists() and sha256(p)==r['input_manifest_sha256'])
     m=json.loads(source.read_text())
+    if m.get('job_control_checks'):
+        verify_job_control(r['job_control'])
     assert m['status']=='chd-roundtrip-verified' and m['session_manager']=='xdm'
     assert m['source_raw_sha256']==m['decoded_raw_sha256'] and m['logical_bytes']==8589934592
     assert sha256(bundle/'netbsd-xiri.chd')==m['chd_sha256']==r['chd_sha256']
@@ -132,6 +169,36 @@ def qualify(a, verify_irix_module):
                      'FAM supports one configured IRIX desktop account; clogin and saved sessions remain open.',
                      'The greeter uses Xft.render:false; the underlying Render glyph issue remains open.',
                      'Kernel/module require Xiri fork hooks; physical hardware is unqualified.'])
+    # A prepared disk can record dirty build inputs honestly. Establish later
+    # committed equivalence separately; do not rewrite its pin or observation.
+    source_commit = m['pin'].get('committed_source_revision')
+    if source_commit is None:
+        path = (ROOT/m['pin']['module_build_manifest']).with_name('source-equivalence.json')
+        if path.exists():
+            equivalent = json.loads(path.read_text())
+            build = json.loads((bundle/'irix-module-build.json').read_text())
+            assert equivalent['status'] == 'source-equivalent'
+            assert equivalent['build_manifest_sha256'] == m['pin']['module_build_manifest_sha256']
+            assert equivalent['source_files'] == build['source_files']
+            assert equivalent['branch'] == 'xiri' and equivalent['tracked_clean']
+            source_commit = equivalent['commit']
+            assert re.fullmatch('[0-9a-f]{40}', source_commit)
+            report['source_equivalence'] = dict(path=str(path.relative_to(ROOT)),
+                sha256=sha256(path), commit=source_commit)
+    if a.promote:
+        assert source_commit, 'Commit and verify the built source before promoting this image'
+    report['kernel_source_equivalent_commit'] = source_commit
+    if 'job_control' in r:
+        jobs = r['job_control']
+        assert sha256(a.run/jobs['archive']['path']) == jobs['archive']['sha256']
+        for name, digest in jobs['screenshots'].items():
+            frame = a.run/name
+            assert sha256(frame) == digest
+            assert struct.unpack('>II', frame.read_bytes()[16:24]) == (1282, 1024)
+            target = a.png.with_stem(a.png.stem+'-'+frame.stem)
+            shutil.copyfile(frame, target)
+            report['screenshots'][frame.stem] = dict(path=str(target), sha256=digest,
+                source=str(frame), dimensions=[1282, 1024], method='IRIS ordinary scanout', byte_identical=True)
     if 'winterm' in r:
         for entry in r['winterm']:
             frame=a.run/entry['untouched_png']
@@ -177,6 +244,8 @@ def qualify(a, verify_irix_module):
                       qualification_sha256=sha256(a.output),qualification_run=str(a.run))
         if 'winterm' in r:
             promoted['winterm_checks']=True
+        if 'job_control' in r:
+            promoted['job_control_checks']=True
         (bundle/'manifest.json').write_text(json.dumps(promoted,indent=2)+'\n')
     if a.promote:
         public={key:m[key] for key in ('chd_sha256','chd_bytes','logical_bytes','nvram_sha256',
@@ -184,7 +253,7 @@ def qualify(a, verify_irix_module):
                 'manual_console','emulator_files')}
         public.update(schema=1,bundle=r['bundle'],image=r['bundle']+'/netbsd-xiri.chd',
             raw_sha256=m['source_raw_sha256'],kernel_source=m['pin']['source_revision'],
-            kernel_source_equivalent_commit=m['pin']['committed_source_revision'],
+            kernel_source_equivalent_commit=source_commit,
             emulator_revision=m['pin']['emulator_revision'],qualification=str(a.output),
             qualification_sha256=sha256(a.output),session_manager='xdm',xdm=promoted['xdm'],
             irix_module=r['irix_module'],module_build_manifest_sha256=m['pin']['module_build_manifest_sha256'],

@@ -1,0 +1,162 @@
+{
+  "status": "passed",
+  "guest": "/var/home/salvogendut/Dev/xiri/.work/job-control/native/candidate-7qxi2utm",
+  "initial_greeter": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+  "job_control": {
+    "status": "passed",
+    "shells": {
+      "native": {
+        "proof": [
+          "xiritest",
+          "/usr/people/xiritest",
+          "/usr/people/xiritest",
+          "1018",
+          "iLms",
+          "sh"
+        ],
+        "monitor_enabled_at_start": true,
+        "stop_resume": {
+          "worker": {
+            "pid": 5053,
+            "pgid": 5053,
+            "sid": 1018,
+            "tpgid": 5053,
+            "uid": 1234,
+            "foreground": 1
+          },
+          "stopped": "[1] + Suspended               /tmp/xiri-job-ui/job-worker \"${jc}/foreground\"\n",
+          "background": "[1] + Running                 /tmp/xiri-job-ui/job-worker \"${jc}/foreground\"\n",
+          "events": "READY pid=5053 pgid=5053 sid=1018 tpgid=5053 uid=1234 foreground=1\nCONT\nCONT\nINT\n",
+          "exit": 42
+        },
+        "background_read": {
+          "worker": {
+            "pid": 2354,
+            "pgid": 2354,
+            "sid": 1018,
+            "tpgid": 1018,
+            "uid": 1234,
+            "foreground": 0
+          },
+          "first_jobs": "[1] + Stopped (tty input)     /tmp/xiri-job-ui/job-worker \"${jc}/read\" read\n",
+          "jobs": "[1] + Stopped (tty input)     /tmp/xiri-job-ui/job-worker \"${jc}/read\" read\n",
+          "events": "READY pid=2354 pgid=2354 sid=1018 tpgid=1018 uid=1234 foreground=0\nCONT\nREAD\n",
+          "exit": 0
+        },
+        "background_wait": {
+          "worker": {
+            "pid": 1312,
+            "pgid": 1312,
+            "sid": 1018,
+            "tpgid": 1018,
+            "uid": 1234,
+            "foreground": 0
+          },
+          "exit": 37
+        }
+      },
+      "irix": {
+        "proof": [
+          "xiritest",
+          "/usr/people/xiritest",
+          "/usr/people/xiritest",
+          "832",
+          "ism",
+          "sh"
+        ],
+        "monitor_enabled_at_start": true,
+        "stop_resume": {
+          "worker": {
+            "pid": 5373,
+            "pgid": 5373,
+            "sid": 832,
+            "tpgid": 5373,
+            "uid": 1234,
+            "foreground": 1
+          },
+          "stopped": "[1] + Stopped (SIGTSTP)        /tmp/xiri-job-ui/job-worker \"$jc/foreground\"\n",
+          "background": "[1] +  Running                 /tmp/xiri-job-ui/job-worker \"$jc/foreground\"\n",
+          "events": "READY pid=5373 pgid=5373 sid=832 tpgid=5373 uid=1234 foreground=1\nCONT\nINT\n",
+          "exit": 42
+        },
+        "background_read": {
+          "worker": {
+            "pid": 4076,
+            "pgid": 4076,
+            "sid": 832,
+            "tpgid": 832,
+            "uid": 1234,
+            "foreground": 0
+          },
+          "first_jobs": "[1] +  Running                 /tmp/xiri-job-ui/job-worker \"$jc/read\" read & echo $! >\"$jc/read.pid\"\n",
+          "jobs": "[1] + Stopped (SIGTTIN)        /tmp/xiri-job-ui/job-worker \"$jc/read\" read & echo $! >\"$jc/read.pid\"\n",
+          "events": "READY pid=4076 pgid=4076 sid=832 tpgid=832 uid=1234 foreground=0\nCONT\nREAD\n",
+          "exit": 0
+        },
+        "background_wait": {
+          "worker": {
+            "pid": 2612,
+            "pgid": 2612,
+            "sid": 832,
+            "tpgid": 832,
+            "uid": 1234,
+            "foreground": 0
+          },
+          "exit": 37
+        },
+        "terminal_guard": "OWN pid=2254 parent=4711\nOWN pid=4834 parent=2254\nOWN pid=832 parent=2254\nOWN pid=2219 parent=832\nOWN pid=2737 parent=832\nOWN pid=4400 parent=2737\nOWN pid=5373 parent=832\nOWN pid=4076 parent=832\nOWN pid=2612 parent=832\nGUARD pid=2254 exit=0 signal=0 stopped=0 absent=1 valid=1 tracked=9 remaining=0 reason=leader-exit uid=1234 gid=1234 elapsed=269730\n"
+      }
+    },
+    "session": "/usr/people/xiritest/.xiri/sessions/session.yJqIcf",
+    "screenshots": {
+      "jobs-native.png": "d14945ee463f1f4978e34b493cbc807a728129f5441cfd1b3f8e457b3d4cd6ef",
+      "jobs-irix.png": "a6a3ba657fe946e942b698e76126f46af139586ad61574b34b2639c6f1f40e9a",
+      "jobs-before-logout.png": "6785747ff398d54b807419bfa7d77f808a95566106790ec0518de59900c35cee"
+    },
+    "logout_jobs": {
+      "running": {
+        "pid": 2456,
+        "pgid": 2456,
+        "sid": 1018,
+        "tpgid": 2629,
+        "uid": 1234,
+        "foreground": 0
+      },
+      "stopped": {
+        "pid": 2629,
+        "pgid": 2629,
+        "sid": 1018,
+        "tpgid": 2629,
+        "uid": 1234,
+        "foreground": 1
+      },
+      "shell_pid": 1018,
+      "jobs": "[1] - Running                 /tmp/xiri-job-ui/job-worker \"${jc}/logout-running\"\n[2] + Suspended               /tmp/xiri-job-ui/job-worker \"${jc}/logout-stopped\"\n"
+    },
+    "logout_guard": "OWN pid=4449 parent=1785\nOWN pid=4533 parent=4449\nOWN pid=1985 parent=4449\nOWN pid=4634 parent=4449\nOWN pid=5085 parent=4449\nOWN pid=2015 parent=4449\nOWN pid=2000 parent=5085\nOWN pid=4770 parent=4449\nOWN pid=4956 parent=4449\nOWN pid=2001 parent=4449\nOWN pid=1962 parent=4449\nOWN pid=2014 parent=4449\nOWN pid=1871 parent=4449\nOWN pid=2004 parent=2014\nOWN pid=4385 parent=1871\nOWN pid=1956 parent=4449\nOWN pid=1958 parent=4449\nOWN pid=1214 parent=4449\nOWN pid=4137 parent=4449\nOWN pid=875 parent=1956\nOWN pid=2323 parent=1958\nOWN pid=879 parent=1214\nOWN pid=1014 parent=4137\nOWN pid=874 parent=875\nOWN pid=1095 parent=875\nOWN pid=1100 parent=875\nOWN pid=1101 parent=4385\nOWN pid=1047 parent=875\nOWN pid=1097 parent=875\nOWN pid=1056 parent=875\nOWN pid=3199 parent=875\nOWN pid=5101 parent=875\nOWN pid=2100 parent=875\nOWN pid=1967 parent=875\nOWN pid=2604 parent=875\nOWN pid=1305 parent=875\nOWN pid=1018 parent=1305\nOWN pid=3692 parent=2004\nOWN pid=2481 parent=1018\nOWN pid=1944 parent=1018\nOWN pid=4853 parent=1018\nOWN pid=4144 parent=4853\nOWN pid=5053 parent=1018\nOWN pid=2354 parent=1018\nOWN pid=1312 parent=1018\nOWN pid=3948 parent=1018\nOWN pid=4711 parent=1018\nOWN pid=2254 parent=4711\nOWN pid=4834 parent=2254\nOWN pid=832 parent=2254\nOWN pid=2219 parent=832\nOWN pid=2737 parent=832\nOWN pid=4400 parent=2737\nOWN pid=5373 parent=832\nOWN pid=4076 parent=832\nOWN pid=2612 parent=832\nOWN pid=2002 parent=1018\nOWN pid=2456 parent=1018\nOWN pid=2629 parent=1018\n[1]   Terminated              \"${@}\" >\"${job}/${name}.out\" 2>\"${job}/${name}...\nOWN pid=1696 parent=4385\nOWN pid=1741 parent=1696\nGUARD pid=4449 exit=-1 signal=15 stopped=1 absent=1 valid=1 tracked=61 remaining=0 reason=logout uid=1234 gid=1234 elapsed=691097\n",
+    "archive": {
+      "path": "job-control.tgz",
+      "sha256": "56b59030b6ff5a86a1c582b8be4e2c9626c5c87cb487e8b39c7a31d2f7f270a0"
+    }
+  },
+  "greeter_after": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+  "native_greeter_after": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+  "native_login": {
+    "proof": [
+      "netbsdtest",
+      "/home/netbsdtest",
+      "/home/netbsdtest",
+      "1236"
+    ],
+    "wm_pid": 2753
+  },
+  "schema": 1,
+  "directory": ".work/job-control/interactive-final-3411f7ce",
+  "result_sha256": "c3a0abfe74b88511a8c35fdf950f6b3bd2bd32576fdee71da93daafcbab97a90",
+  "build_manifest": "lab/irix-job-control/build.json",
+  "build_manifest_sha256": "44e7d1319763542e79543a6477ca931c2b1e35d702f2ce9092656165e594241d",
+  "sources": {
+    "scripts/xiri_lab/job_control.py": "0955e36825da36b378356f76537b3e995afc83fd329581410d66b68ceb7118e3"
+  },
+  "harness_sha256": "536596a19b24242697338d96bfe4bca23b6d3701422300f05974d0d95fff9a8b"
+}

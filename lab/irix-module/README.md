@@ -14,9 +14,13 @@ The module follows the existing `MODULE_CLASS_EXEC` registration and
 supply the NetBSD bootloader's symbol-table bootinfo record.
 
 This is module delivery on the Xiri fork. The kernel still supplies
-`selcommon_kern` and `emul.e_sigmask`; upstreaming or replacing those hooks
-is a separate requirement for stock-NetBSD deployment. Newport remains a
-native driver and is not part of the compatibility module.
+`selcommon_kern`, `emul.e_sigmask`, and the opt-in `EMUL_NOCLDSTOP_CONT`
+child-notification policy; upstreaming or replacing these interfaces is a
+separate requirement for stock-NetBSD deployment. The
+[child-state cycle](../irix-job-control/README.md) requires a matching core and
+module: the existing `emul.e_flags` layout is unchanged, but an older core
+does not implement the new flag. Newport remains a native driver and is not
+part of the compatibility module.
 
 ## Build
 

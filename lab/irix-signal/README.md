@@ -102,8 +102,12 @@ them with `probe-irix-reference-signal-v2.py` and
 
 The native adapter uses traditional signals 1..31, explicit o32/n32 context
 serialization and native signal/machine-context facilities. It includes
-waitsys P_ALL/id=0 for the measured child callback. Alternate-stack setup,+nested delivery, syscall restart, realtime signals and general multi-LWP
-behavior remain outside this qualification.
+waitsys P_ALL/id=0 for the measured child callback. Alternate-stack setup,
+nested delivery, syscall restart, realtime signals and general multi-LWP
+behavior remain outside this qualification. The later
+[child-state cycle](../irix-job-control/README.md) separately qualifies
+stop/resume notifications, `SA_NOCLDSTOP`, and interrupted/restarted IRIX
+`nanosleep`; it also replays 48 of this lab's signal records.
 
 The final build pins are `baseline.json` and `o32-baseline.json`; isolated
 build directories are `.work/netbsd-irix-signal-build` and

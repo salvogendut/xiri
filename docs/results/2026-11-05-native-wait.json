@@ -1,0 +1,165 @@
+{
+  "schema": 1,
+  "status": "passed",
+  "inputs": {
+    "baseline": {
+      "records": "/var/home/salvogendut/Dev/xiri/.work/job-control/native-wait-tests-baseline.txt",
+      "sha256": "dc2e00ff582b1c1909f3735aebebf79e57ef594436057ccf26018f0bb7b4480f",
+      "metadata": "/var/home/salvogendut/Dev/xiri/.work/job-control/native-wait-baseline-inputs.json",
+      "metadata_sha256": "cd13d8910247a4a474fea64038bb512a55f96a6497b484cffb34460f96ce4519",
+      "guest": "/var/home/salvogendut/Dev/xiri/.work/job-control/native/candidate-qduqn8li",
+      "core": "2cdc980030e19ef475489661146424dc72bc34fa5e08282b1dde035dacfdccbf",
+      "source_sha256": "e6a083a820c5456b70a7b5e00ef06b5df2122ed0f7bd7006ac6199ba1b30aaa8",
+      "binary_sha256": "509ad41d75dafbc326b89df6bdff53160c80079943adb9fcfae9c3a35f04cb1b",
+      "compiler_flags": "-O2 -Wall -Wextra -Werror -Wno-array-bounds -Wno-stringop-overflow",
+      "guest_hashes": "SHA256 (/tmp/xiri-job/t_wait.c) = e6a083a820c5456b70a7b5e00ef06b5df2122ed0f7bd7006ac6199ba1b30aaa8\nSHA256 (/tmp/xiri-job/t_wait) = 509ad41d75dafbc326b89df6bdff53160c80079943adb9fcfae9c3a35f04cb1b\nSHA256 (/netbsd) = 2cdc980030e19ef475489661146424dc72bc34fa5e08282b1dde035dacfdccbf\ncc (nb3 20260326) 12.5.0\n",
+      "records_sha256": "dc2e00ff582b1c1909f3735aebebf79e57ef594436057ccf26018f0bb7b4480f"
+    },
+    "fixed": {
+      "records": "/var/home/salvogendut/Dev/xiri/.work/job-control/native-wait-tests-fixed.txt",
+      "sha256": "a21993e41db848eb7907ac8ebbf138dc6b408b6970be16f34a0192ccf46112b2",
+      "metadata": "/var/home/salvogendut/Dev/xiri/.work/job-control/native-wait-fixed-inputs.json",
+      "metadata_sha256": "dbf1b1aab723ab899ad7aca2e9ec80f4e20f9dfdbd075d6d313d1ac7200d9267",
+      "guest": "/var/home/salvogendut/Dev/xiri/.work/job-control/native/wait-fixed-omrh1etj",
+      "source_sha256": "e6a083a820c5456b70a7b5e00ef06b5df2122ed0f7bd7006ac6199ba1b30aaa8",
+      "binary_sha256": "509ad41d75dafbc326b89df6bdff53160c80079943adb9fcfae9c3a35f04cb1b",
+      "guest_hashes": "SHA256 (/tmp/xiri-job/t_wait.c) = e6a083a820c5456b70a7b5e00ef06b5df2122ed0f7bd7006ac6199ba1b30aaa8\nSHA256 (/tmp/xiri-job/t_wait) = 509ad41d75dafbc326b89df6bdff53160c80079943adb9fcfae9c3a35f04cb1b\nSHA256 (/netbsd) = c92f0b2fcc182836393a87ca41a0315a0681e93ed3e904fad925d3c370e4dd98\nSHA256 (/netbsd.boot) = 5fd2dd05d1549e0e6e29a02c2d6d8c6bae2b8443edad272f12e878f24eb06e54\n",
+      "records_sha256": "a21993e41db848eb7907ac8ebbf138dc6b408b6970be16f34a0192ccf46112b2",
+      "build_manifest_sha256": "3a0042397ae75d05a5af15a407f305afe284cc0dd830a2733fc3dd27960f4615"
+    }
+  },
+  "observations": {
+    "baseline": {
+      "wait6_continued_multiple:0": {
+        "exit": 1,
+        "stdout": "failed: 4 checks failed; see output for more details\n",
+        "stderr": "t_wait: WARNING: Running test cases without atf-run(1) is unsupported\nt_wait: WARNING: No isolation nor timeout control is being applied; you may get unexpected failures; see atf-test-case(4)\n*** Check failed: t_wait.c:363: found != pid: selector 0 options 0x10\n*** Check failed: t_wait.c:363: found != pid: selector 1 options 0x10\n*** Check failed: t_wait.c:363: found != pid: selector 0 options 0x10\n*** Check failed: t_wait.c:363: found != pid: selector 1 options 0x10\n",
+        "group_absent": true
+      },
+      "wait6_continued_multiple:1234": {
+        "exit": 1,
+        "stdout": "failed: 4 checks failed; see output for more details\n",
+        "stderr": "t_wait: WARNING: Running test cases without atf-run(1) is unsupported\nt_wait: WARNING: No isolation nor timeout control is being applied; you may get unexpected failures; see atf-test-case(4)\n*** Check failed: t_wait.c:363: found != pid: selector 0 options 0x10\n*** Check failed: t_wait.c:363: found != pid: selector 1 options 0x10\n*** Check failed: t_wait.c:363: found != pid: selector 0 options 0x10\n*** Check failed: t_wait.c:363: found != pid: selector 1 options 0x10\n",
+        "group_absent": true
+      },
+      "wait6_stop_exit_after_continue:0": {
+        "exit": 1,
+        "stdout": "failed: 2 checks failed; see output for more details\n",
+        "stderr": "t_wait: WARNING: Running test cases without atf-run(1) is unsupported\nt_wait: WARNING: No isolation nor timeout control is being applied; you may get unexpected failures; see atf-test-case(4)\n*** Check failed: t_wait.c:363: found != pid: selector 0 options 0x2\n*** Check failed: t_wait.c:363: found != pid: selector 1 options 0x2\n",
+        "group_absent": true
+      },
+      "wait6_stop_exit_after_continue:1234": {
+        "exit": 1,
+        "stdout": "failed: 2 checks failed; see output for more details\n",
+        "stderr": "t_wait: WARNING: Running test cases without atf-run(1) is unsupported\nt_wait: WARNING: No isolation nor timeout control is being applied; you may get unexpected failures; see atf-test-case(4)\n*** Check failed: t_wait.c:363: found != pid: selector 0 options 0x2\n*** Check failed: t_wait.c:363: found != pid: selector 1 options 0x2\n",
+        "group_absent": true
+      },
+      "wait6_stop_and_go:0": {
+        "exit": 0,
+        "stdout": "passed\nuser: 0 system: 0\nuser: 0 system: 0\nuser: 0 system: 0\n",
+        "stderr": "t_wait: WARNING: Running test cases without atf-run(1) is unsupported\nt_wait: WARNING: No isolation nor timeout control is being applied; you may get unexpected failures; see atf-test-case(4)\n",
+        "group_absent": true
+      },
+      "wait6_stop_and_go:1234": {
+        "exit": 0,
+        "stdout": "passed\nuser: 0 system: 0\nuser: 0 system: 0\nuser: 0 system: 0\n",
+        "stderr": "t_wait: WARNING: Running test cases without atf-run(1) is unsupported\nt_wait: WARNING: No isolation nor timeout control is being applied; you may get unexpected failures; see atf-test-case(4)\n",
+        "group_absent": true
+      },
+      "wait6_stopgo_loop:0": {
+        "exit": 0,
+        "stdout": "passed\nBefore loop of SIGSTOP/SIGCONT sequence 100 times\nuser: 0 system: 0\n",
+        "stderr": "t_wait: WARNING: Running test cases without atf-run(1) is unsupported\nt_wait: WARNING: No isolation nor timeout control is being applied; you may get unexpected failures; see atf-test-case(4)\n",
+        "group_absent": true
+      },
+      "wait6_stopgo_loop:1234": {
+        "exit": 0,
+        "stdout": "passed\nBefore loop of SIGSTOP/SIGCONT sequence 100 times\nuser: 0 system: 0\n",
+        "stderr": "t_wait: WARNING: Running test cases without atf-run(1) is unsupported\nt_wait: WARNING: No isolation nor timeout control is being applied; you may get unexpected failures; see atf-test-case(4)\n",
+        "group_absent": true
+      }
+    },
+    "fixed": {
+      "wait6_continued_multiple:0": {
+        "exit": 0,
+        "stdout": "passed\n",
+        "stderr": "t_wait: WARNING: Running test cases without atf-run(1) is unsupported\nt_wait: WARNING: No isolation nor timeout control is being applied; you may get unexpected failures; see atf-test-case(4)\n",
+        "group_absent": true
+      },
+      "wait6_continued_multiple:1234": {
+        "exit": 0,
+        "stdout": "passed\n",
+        "stderr": "t_wait: WARNING: Running test cases without atf-run(1) is unsupported\nt_wait: WARNING: No isolation nor timeout control is being applied; you may get unexpected failures; see atf-test-case(4)\n",
+        "group_absent": true
+      },
+      "wait6_stop_exit_after_continue:0": {
+        "exit": 0,
+        "stdout": "passed\n",
+        "stderr": "t_wait: WARNING: Running test cases without atf-run(1) is unsupported\nt_wait: WARNING: No isolation nor timeout control is being applied; you may get unexpected failures; see atf-test-case(4)\n",
+        "group_absent": true
+      },
+      "wait6_stop_exit_after_continue:1234": {
+        "exit": 0,
+        "stdout": "passed\n",
+        "stderr": "t_wait: WARNING: Running test cases without atf-run(1) is unsupported\nt_wait: WARNING: No isolation nor timeout control is being applied; you may get unexpected failures; see atf-test-case(4)\n",
+        "group_absent": true
+      },
+      "wait6_stop_and_go:0": {
+        "exit": 0,
+        "stdout": "passed\nuser: 0 system: 0\nuser: 0 system: 0\nuser: 0 system: 0\n",
+        "stderr": "t_wait: WARNING: Running test cases without atf-run(1) is unsupported\nt_wait: WARNING: No isolation nor timeout control is being applied; you may get unexpected failures; see atf-test-case(4)\n",
+        "group_absent": true
+      },
+      "wait6_stop_and_go:1234": {
+        "exit": 0,
+        "stdout": "passed\nuser: 0 system: 0\nuser: 0 system: 0\nuser: 0 system: 0\n",
+        "stderr": "t_wait: WARNING: Running test cases without atf-run(1) is unsupported\nt_wait: WARNING: No isolation nor timeout control is being applied; you may get unexpected failures; see atf-test-case(4)\n",
+        "group_absent": true
+      },
+      "wait6_stopgo_loop:0": {
+        "exit": 0,
+        "stdout": "passed\nBefore loop of SIGSTOP/SIGCONT sequence 100 times\nuser: 0 system: 0\n",
+        "stderr": "t_wait: WARNING: Running test cases without atf-run(1) is unsupported\nt_wait: WARNING: No isolation nor timeout control is being applied; you may get unexpected failures; see atf-test-case(4)\n",
+        "group_absent": true
+      },
+      "wait6_stopgo_loop:1234": {
+        "exit": 0,
+        "stdout": "passed\nBefore loop of SIGSTOP/SIGCONT sequence 100 times\nuser: 0 system: 0\n",
+        "stderr": "t_wait: WARNING: Running test cases without atf-run(1) is unsupported\nt_wait: WARNING: No isolation nor timeout control is being applied; you may get unexpected failures; see atf-test-case(4)\n",
+        "group_absent": true
+      }
+    }
+  },
+  "baseline_new_case_failures": 4,
+  "baseline_old_case_passes": 4,
+  "fixed_case_passes": 8,
+  "binary_identical": true,
+  "source_equivalence": {
+    "path": "lab/native-wait/source-equivalence.json",
+    "sha256": "441313ecf95d59d87c085a228e70a2af24946bd7fb63b8ed5758418c48ef3c9c",
+    "commit": "e9ff76a58affee773b767d334f98075bf86daf7e"
+  },
+  "guest": {
+    "path": "/var/home/salvogendut/Dev/xiri/.work/job-control/native/wait-fixed-omrh1etj/result.json",
+    "sha256": "834e64fa4320ec6c8cb5cf6e1332ba17c1a2e833c466d39b979219410ae04ba0",
+    "clean_shutdown": true
+  },
+  "abi": {
+    "path": "/var/home/salvogendut/Dev/xiri/.work/native-wait/abi.json",
+    "sha256": "42e91b48a83ab9dad22605444dedc6a50b4c15ce766ff1727ba174727d8254ba",
+    "sleep_cases": 264,
+    "child_cases": 256
+  },
+  "regressions": {
+    "path": "/var/home/salvogendut/Dev/xiri/.work/native-wait/regression-result.json",
+    "sha256": "ed339801847d0ffb6488637c72a6f88f926de49f287bbe9854a2bab785533e9d",
+    "counts": {
+      "signal": 48,
+      "sproc": 48,
+      "process": 144
+    }
+  },
+  "source": "scripts/qualify-native-wait.py",
+  "source_sha256": "87cab2f5fa72333f3fa67397d4f8bdcee86c62c746904591014a31a28bd88f9c",
+  "scope": "Native wait selection/accounting; not proof of the older catalog stall cause"
+}

@@ -20,6 +20,13 @@ when application work resumes; this repair alone does not upgrade any entry
 below to a functional pass. Missing Fontconfig or GNOME print resources remain
 separate from Xorg's drawing path.
 
+The [job-control cycle](results/2026-11-05-irix-job-control.md) adds measured
+sleep, child-state and process-group support, verifies real jobs in both
+shells, and fixes a separate native wait-accounting bug. Its old/new
+22-target system replays verify bounded cleanup and halt; they do not upgrade
+individual applications to functional passes. The original catalog stalls
+remain retained and unexplained.
+
 The original GIMP CHD survey ran as **xiritest**, UID/GID 1234, HOME and cwd
 `/usr/people/xiritest`, with accelerated 1280×1024 NetBSD Xorg. There were
 **124 distinct direct program-target attempts**; repeated targets share the
@@ -85,7 +92,7 @@ retained; untested behavior is not promoted to a pass.
 | `galculator` | `/usr/freeware/bin/galculator` | **Launch fails.** Exits 1. Fontconfig cannot load its default configuration and reports no fonts; UTF-8 conversion also warns. This is separate from the X-server fonts already used by the desktop. |
 | `gedit` | `/usr/freeware/bin/gedit` | **Basic document and preference checks pass.** Freeware double-click, opened/closed icon artwork, text editing, new-file save, reopen, overwrite and GUI exit work as xiritest. Tab-width preferences now save and survive a normal exit/relaunch. Help, image loading, paper resources and broader plug-ins remain open. The Applications alias has not been double-clicked separately. [Follow-up](results/2026-11-04-irix-preferences.md). |
 | `glynx` | `/usr/freeware/bin/glynx` | **Missing Lynx payload in candidate.** The original glynx wrapper now gets through GNOME Terminal startup and exits quickly. It invokes gnome-terminal -x lynx, but /usr/freeware/bin/lynx is absent from both the imported tree and its native alias. Import the actual browser and package resources before testing it; catalog double-click and browser use remain unqualified. [Follow-up](results/2026-11-04-irix-terminal.md). |
-| `gnome-terminal` | `/usr/freeware/bin/gnome-terminal` | **Interactive original shell, catalog and preferences pass.** Applications double-click launches the original IRIX shell with its prompt and HOME/cwd /usr/people/xiritest. Typed commands, foreground Ctrl-C, resize, normal exit and running-icon feedback pass. Scrollback and other settings now persist across a normal exit/relaunch. Help/shared-memory warnings and broader stop/resume job control remain open. [Follow-up](results/2026-11-04-irix-preferences.md). |
+| `gnome-terminal` | `/usr/freeware/bin/gnome-terminal` | **Interactive original shell, catalog and preferences pass.** Applications double-click launches the original IRIX shell with its prompt and HOME/cwd /usr/people/xiritest. Typed commands, foreground Ctrl-C, resize, normal exit and running-icon feedback pass. Scrollback and other settings now persist across a normal exit/relaunch. The later direct-terminal [job checks](results/2026-11-05-irix-job-control.md) pass Ctrl-Z, bg/fg, background terminal reads and explicit waits. Help/shared-memory warnings and arbitrary nested pipelines remain open. [Preferences](results/2026-11-04-irix-preferences.md). |
 | `gnome-terminal --login` | `/usr/freeware/bin/gnome-terminal --login` | Unresolved target in the original source inventory; no launch attempted. The target contains command-line text; check registration/action handling. |
 | `gtop` | `/usr/freeware/bin/gtop` | **Launch fails.** Exits 1 with Function not implemented while writing its GNOME preferences; its help-topics file is also unavailable. |
 | `jot` | `/usr/sbin/jot` | **Exits 0 without a new window.** |

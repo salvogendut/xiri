@@ -12,7 +12,7 @@ catalog launches and running-icon feedback. Native NetBSD Xorg drives a
 1280×1024 accelerated Newport display. It retains the xmahjongg texture
 correction qualified by the earlier [rendering and interaction checks](docs/results/2026-11-03-newport-xmahjongg.md).
 
-The [current manual CHD](docs/results/2026-11-05-type1-image.md) boots into
+The [current manual CHD](docs/results/2026-11-05-native-wait-image.md) boots into
 native NetBSD xdm. Log in as **xiritest** with password **xiritest** for the
 IRIX desktop, or **netbsdtest** / **netbsdtest** for standard NetBSD ctwm.
 `netbsdtest` belongs to `wheel` and can run `su -` for a root login shell;
@@ -20,7 +20,7 @@ root's password is empty in this development image.
 These are public development-image credentials. The IRIX session uses UID
 1234 and HOME/cwd `/usr/people/xiritest`; system services start at boot. NetBSD
 loads `compat_irix_o32.kmod` during boot and runs the desktop on a kernel
-without built-in IRIX support. The [core kernel](lab/type1-scaler/README.md)
+without built-in IRIX support. The [core kernel](lab/native-wait/README.md)
 retains the native memory-allocation and CD9660 corrections found during
 earlier qualification.
 It still requires our NetBSD fork’s core hooks. The [winterm module and shell
@@ -53,7 +53,12 @@ correct home directory and closes on `exit`. The subsequent
 terminal attributes and controlling-terminal acquisition to the module.
 The unchanged IRIX shell now shows its prompt, recognizes an interactive
 terminal, runs foreground commands, survives Ctrl-C and delivers resize
-notifications. Broader stop/resume job control remains open.
+notifications. The [job-control cycle](docs/results/2026-11-05-irix-job-control.md)
+adds measured sleep, child-state and process-group interfaces. Both the
+original IRIX shell and winterm's native shell pass Ctrl-Z, bg/fg, Ctrl-C,
+background reads, explicit waits and logout with active jobs.
+It also fixes a shared NetBSD wait-accounting bug exposed by native
+multi-child tests; the same test binary fails before the fix and passes after it.
 
 The [preference cycle](docs/results/2026-11-04-irix-preferences.md) implements
 measured IRIX `rename` behavior. GNOME Terminal and gedit settings survive
@@ -93,9 +98,13 @@ font size into zero. The corrected core passes all 24 native register cases,
 200,000 conversions under signals, 560 font operations and 24 IRIX FPU
 records. An explicit Type1 winterm passes input, resize and normal exit.
 The IRIX module, font libraries and bitmap desktop default are unchanged.
-The new selected CHD passes its own cold xdm/4Dwm/ctwm, 345 text comparisons,
-winterm, catalog, logout/recovery and clean-shutdown checks. `./xiri run` opens
-that image; the earlier fonts bundle and manual state are preserved.
+That checkpoint passes its own cold desktop/font qualification and remains
+available. The [current job-control image](docs/results/2026-11-05-native-wait-image.md)
+adds the measured IRIX interfaces and native wait fix, then repeats cold
+xdm/4Dwm/ctwm, 345 text comparisons, shell jobs, winterm, catalog launch,
+logout/recovery and clean halt. Its separate 22-target replay also completes
+with verified cleanup. `./xiri run` opens this image; earlier bundles and
+manual state are preserved.
 
 ## Related repositories
 
@@ -160,7 +169,9 @@ Dumpster actions, preferences and session persistence need work. The
 and XCF/PNG round trips; large images and the wider
 plug-in collection remain open. xosview
 still needs IRIX statistics interfaces.
-Continued-child signal behavior and IRIX nanosleep also remain open.
+General nested pipelines and layered-terminal revoke remain open; the
+qualified job-control subset and its explicit wait-policy differences are
+recorded in the [cycle report](docs/results/2026-11-05-irix-job-control.md).
 The user's broader desktop survey is encouraging,
 but it is not a per-application qualification.
 

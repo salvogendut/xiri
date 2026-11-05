@@ -226,6 +226,8 @@ def main(argv=None):
                     command.append('--winterm')
                 if manifest.get('terminal_font'):
                     command.append('--fonts')
+                if manifest.get('job_control_checks'):
+                    command.append('--jobs')
             else:
                 command = [sys.executable, root/'scripts/probe-xiri-image.py', bundle,
                            '--iris-bin-dir', bundle/'emulator', '--arrange-winterm']

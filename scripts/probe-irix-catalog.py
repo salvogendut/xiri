@@ -17,6 +17,10 @@ def main():
         help="Image bundle to clone; prior catalog runs retain their original default")
     parser.add_argument("--interactive",action="store_true")
     parser.add_argument("--limit",type=int)
+    parser.add_argument("--controls-only",action="store_true",
+        help="Replay the native bootstrap controls and halt without launching catalog apps")
+    parser.add_argument("--control-repetitions",type=int,default=1,choices=range(1,101),
+        metavar="1..100",help="Repeat the exact native child/timeout pair before the survey")
     parser.add_argument("--after-case",help="Resume after this case in the partition's fixed order")
     parser.add_argument("--extra-file",type=Path,action="append",default=[],
         help="Add a diagnostic file to the read-only probe CD")
@@ -107,6 +111,28 @@ def main():
     lab.launch = disk_launch
     guest=Guest(lab);cmd,get,wait=guest.command,guest.read_text,guest.wait_for
     record=dict(status='diagnostic',bundle=str(bundle),pin=manifest['pin'],module=manifest['irix_module'],harness_sha256=sha256(Path(__file__)),clean_shutdown=False)
+    record['control_repetitions']=args.control_repetitions
+    record['controls_only']=args.controls_only
+    def diagnostics(phase):
+        # Preserve the state before shutdown or a guest-side collection command
+        # can obscure the original wait. Reading the monitor needs no live shell.
+        evidence=dict(phase=phase)
+        record.setdefault('failure_diagnostics',[]).append(evidence)
+        try:
+            guest.monitor('stop')
+            for command in ['status','regs','cop0','bt 20','stack']:
+                evidence[command]=guest.monitor(command)
+        except Exception as error:evidence['monitor_error']=str(error)
+        finally:
+            try:guest.monitor('start')
+            except Exception as error:evidence['resume_error']=str(error)
+        try:
+            path=d/('failure-'+phase+'-kernel.log')
+            path.write_text(KernelLog(lab,int(manifest['kernel_msgbuf_symbol'],16)).read())
+            evidence['kernel_log']=dict(path=path.name,sha256=sha256(path))
+            path=d/('failure-'+phase+'.png');guest.capture(path)
+            evidence['screenshot']=dict(path=path.name,sha256=sha256(path))
+        except Exception as error:evidence['capture_error']=str(error)
     if args.seed:
         record['seed']=dict(path=str(args.seed),result_sha256=sha256(args.seed/'result.json'),
             overlay_sha256=sha256(args.seed/'disk.chd.diff.chd'))
@@ -154,9 +180,14 @@ def main():
         expected_module=candidate['artifacts']['compat_irix_o32.kmod']['sha256'] if candidate else manifest['irix_module']['sha256']
         assert get('sha256 -q '+manifest['irix_module']['path']).strip()==expected_module
         cmd('mkdir -p /usr/people/xiritest/.xiri-catalog && chown xiritest:xiritest /usr/people/xiritest/.xiri-catalog; xset r off')
-        cmd("su -l xiritest -c '/tmp/xiri-catalog/app-guard 10000 /tmp/xiri-catalog/guard-control' >guard-control.log; test \"$?\" = 37; grep -q CATALOG_NATIVE_CHILD_FINISHED guard-control.log; grep -q 'absent=1 valid=1' guard-control.log")
-        cmd("su -l xiritest -c '/tmp/xiri-catalog/app-guard 1000 /tmp/xiri-catalog/guard-control linger' >guard-timeout.log; test \"$?\" = 0; grep -q 'absent=1 valid=1' guard-timeout.log; grep -q 'reason=timeout' guard-timeout.log")
-        record['guard_controls']=get('cat guard-control.log guard-timeout.log')
+        record['guard_replays']=[]
+        for iteration in range(args.control_repetitions):
+            record['active_control']=iteration+1
+            cmd("su -l xiritest -c '/tmp/xiri-catalog/app-guard 10000 /tmp/xiri-catalog/guard-control' >guard-control.log; test \"$?\" = 37 && grep -q CATALOG_NATIVE_CHILD_FINISHED guard-control.log && grep -q 'absent=1 valid=1' guard-control.log")
+            cmd("su -l xiritest -c '/tmp/xiri-catalog/app-guard 1000 /tmp/xiri-catalog/guard-control linger' >guard-timeout.log; test \"$?\" = 0 && grep -q 'absent=1 valid=1' guard-timeout.log && grep -q 'reason=timeout' guard-timeout.log")
+            record['guard_replays'].append(get('cat guard-control.log guard-timeout.log'))
+            del record['active_control']
+        record['guard_controls']=record['guard_replays'][0]
         cmd('./window-control & control=$!; sleep 1; ./windows >windows-control.log; kill "$control"; wait "$control" || :')
         cmd('grep -q 5355525645595f56495349424c45 windows-control.log && ! grep -q 5355525645595f48494444454e windows-control.log')
         record['window_control']=get('cat windows-control.log')
@@ -181,6 +212,9 @@ def main():
         guest.monitor('screen shot '+str(d/'initial.png'))
         (d/'initial.json').write_text(json.dumps(record,indent=2)+'\n')
         print('Ready: '+str(d),flush=True);(d/'ready').touch()
+        if args.controls_only:
+            record['status']='controls-observed'
+            return
         if not args.interactive:
             for case in cases:
                 record['active_case']=case
@@ -228,7 +262,7 @@ def main():
             except Exception as error:reply=dict(error=str(error))
             (d/('response-'+item['id']+'.json')).write_text(json.dumps(reply))
     except Exception as error:
-        record['error']=str(error);raise
+        record['error']=str(error);diagnostics('operation');raise
     finally:
         if lab.logged_in and record.get('cases') and not record.get('observations_sha256'):
             try:
@@ -237,7 +271,8 @@ def main():
             except Exception as error:record['observation_transfer_error']=str(error)
         if lab.logged_in:
             try:record['shutdown_log']=KernelLog(lab,int(manifest['kernel_msgbuf_symbol'],16)).halt()
-            except Exception as error:record['cleanup_error']=str(error)
+            except Exception as error:
+                record['cleanup_error']=str(error);diagnostics('shutdown')
         lab.close();record['clean_shutdown']=lab.clean_shutdown
         record['source_unchanged']=sha256(bundle/'netbsd-xiri.chd')==manifest['chd_sha256']
         (d/'result.json').write_text(json.dumps(record,indent=2)+'\n')

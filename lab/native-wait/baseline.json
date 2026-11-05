@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "description": "Native multi-child wait accounting and selection, with qualified IRIX job-control module",
+  "ident": "XIRI_IRIX_MODULE_20261103",
+  "source_revision": "ded40d74024a79922c33f56c4b7c342cc39aa9f9",
+  "source_branch": "xiri",
+  "build_arch": "mips64eb",
+  "page_bytes": 8192,
+  "boot_kernel_sha256": "5fd2dd05d1549e0e6e29a02c2d6d8c6bae2b8443edad272f12e878f24eb06e54",
+  "native_kernel_sha256": "c92f0b2fcc182836393a87ca41a0315a0681e93ed3e904fad925d3c370e4dd98",
+  "debug_kernel_sha256": "c8a16452262753d7a7bdca13539c6737163dea4c83d462bee434ac9daf88bd5d",
+  "native_o32_sha256": "c294fbb1f2110445be31c096481ea54ab561c7e59ca5b9fc7171310098d755d4",
+  "source_dirty": true,
+  "emulator_revision": "819c6825504d40ad9f9aa00554249affd2da9446",
+  "emulator_branch": "xiri",
+  "emulator_sha256": "3dd9299d71f1899ff5a8c9b76f6a24752d19e4f9a0bcfe0edf3a29001dc9c49e",
+  "ci_client_sha256": "2543b1fae0b442516c40c9d9155eebc9f9569561146b4f62948171fe7eb5c7f3",
+  "base_disk_sha256": "2d19c840bcc5d5e5d424a5f12b4def72b9e8681e6b9e172b22bd51943bf7bb82",
+  "nvram_sha256": "025e170feb9adcfbfa55a745ba2d976fd0ba0f3d39967d7f52622d6ad54c2ef5",
+  "config_sha256": "b4b1d27b1d8e80ec31b07f9f98e0ca1da8a1793cb90880bbc1e65a4b169c8fe2",
+  "runtimes": [
+    {
+      "name": "vendor-o32-libc",
+      "path": "/usr/lib/libc.so.1",
+      "sha256": "ea766492103a193e9d404942705e4e28987545e37f699ede232b6c0f8c97c954"
+    },
+    {
+      "name": "vendor-o32-rld",
+      "path": "/lib/rld",
+      "sha256": "30228b54c1e5585b365514eb7c9895b03cc0f61cb898e05e3ddafece87863439"
+    },
+    {
+      "name": "vendor-n32-libc",
+      "path": "/lib32/libc.so.1",
+      "sha256": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e"
+    },
+    {
+      "name": "vendor-n32-rld",
+      "path": "/lib32/rld",
+      "sha256": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b"
+    }
+  ],
+  "config_path": "lab/irix-module/XIRI_IRIX_MODULE",
+  "module_build_manifest": "lab/native-wait/build.json",
+  "module_build_manifest_sha256": "3a0042397ae75d05a5af15a407f305afe284cc0dd830a2733fc3dd27960f4615",
+  "build_source_revision": "ded40d74024a79922c33f56c4b7c342cc39aa9f9",
+  "build_source_status": " M sys/kern/kern_exit.c\n M tests/lib/libc/sys/t_wait.c\n"
+}

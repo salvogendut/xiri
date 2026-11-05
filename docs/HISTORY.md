@@ -5,6 +5,19 @@ status statements describe individual checkpoints and may be superseded by
 later entries. Use the [current README](../README.md), [development guide](DEVELOPMENT.md)
 and [selected image](../lab/irix-installed-desktop/image.json) for current work.
 
+The [2026-11-05 process/job-control cycle](results/2026-11-05-irix-job-control.md)
+implements measured IRIX sleep, child-state and process-group interfaces,
+then qualifies native and original IRIX shell jobs with active-job logout.
+Separate native tests reproduce and fix continued-child accounting and
+multi-child wait selection on NetBSD. The same test binary fails before
+the fix and passes afterward under both identities; the full IRIX matrices
+and existing signal/process regressions also pass. The
+[replacement image](results/2026-11-05-native-wait-image.md) passes cold
+desktop, font, terminal-job, catalog and shutdown checks and becomes the
+selected manual bundle. Three retained 22-target catalog replays complete
+with verified cleanup, but do not establish the cause of the historical
+stalls. The Type1 and intermediate job-control images remain available.
+
 The [2026-11-05 Type1 cycle](results/2026-11-05-type1-scaler.md) isolates the
 remaining collapsed Courier metrics to native MIPS FPU validity loss during
 signal return. The core correction passes 24 register cases, 200,000

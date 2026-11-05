@@ -27,6 +27,7 @@ def main():
     parser.add_argument('--debug-failure', action='store_true')
     parser.add_argument('--winterm', action='store_true', help='check untouched startup, foreground resize and normal terminal exit')
     parser.add_argument('--fonts', action='store_true', help='compare native core/Xft pixels and Courier metrics in both desktops')
+    parser.add_argument('--jobs', action='store_true', help='exercise native and original IRIX shell job control, then logout with active jobs')
     args = parser.parse_args()
     seed = args.seed.resolve()
     if args.bundle:
@@ -67,6 +68,14 @@ def main():
     sources['scripts/xiri_lab/xdm_image.py'] = sha256(ROOT/'scripts/xiri_lab/xdm_image.py')
     sources['scripts/xiri_lab/kernel_log.py'] = sha256(ROOT/'scripts/xiri_lab/kernel_log.py')
     sources['scripts/xiri_lab/winterm.py'] = sha256(ROOT/'scripts/xiri_lab/winterm.py')
+    if args.jobs:
+        from xiri_lab.job_control import SOURCES
+        for source, name in SOURCES.items():
+            shutil.copyfile(ROOT/source, media/name)
+            sources[source] = sha256(ROOT/source)
+        source = ROOT/'scripts/xiri_lab/job_control.py'
+        sources[str(source.relative_to(ROOT))] = sha256(source)
+        shutil.copyfile(source, d/'job-control.py')
     if args.fonts:
         for source in ['lab/newport-text/text-pixels.c', 'lab/newport-text/xft-pixels.c',
                        'lab/irix-winterm-reliability/font-metrics.c']:
@@ -188,6 +197,9 @@ def main():
         assert 'RENDER_PASS pixels=8536 mismatches=0' in render
         dimensions = get("xdpyinfo | grep dimensions:").strip()
         assert re.search(r'dimensions:\s+1280x1024 pixels',dimensions), dimensions
+        if args.jobs and 'job_control' not in r:
+            from xiri_lab.job_control import check as check_jobs
+            check_jobs(guest, d, r)
         return dict(identity=get('cat "$job/identity"'),shell=proof,render=render,
                     dimensions=dimensions, framebuffer=guest.monitor('screen info'),
                     tree=get('xwininfo -root -tree'),job=get('printf "%s" "$job"'))
@@ -198,6 +210,9 @@ def main():
         owners = {int(x) for x in re.findall(r'^OWN pid=(\d+) ',entry['guard'],re.M)}
         assert not owners.intersection(r['service_and_side_pids'].values())
         cmd("! pgrep -u 1234 -f '^/emul/irix/usr/(bin/X11/4Dwm|sbin/xwsh|sbin/iconcatalog)( |$)'")
+        if args.jobs:
+            from xiri_lab.job_control import after_logout
+            after_logout(guest, d, r)
 
     def catalog_launch():
         old_pid=get('cat "$job/xmahjongg.pid"').strip();assert old_pid.isdigit()
@@ -323,6 +338,10 @@ def main():
             '-L/usr/X11R7/lib -Wl,-rpath,/usr/X11R7/lib -lXrender -lX11 -o render-probe',300)
         if args.winterm:
             cmd('cc -O2 -Wall -Wextra -Werror resize-watch.c -o /tmp/xiri-resize-watch')
+        if args.jobs:
+            cmd('mkdir -p /tmp/xiri-job-ui && cc -O2 -Wall -Wextra -Werror job-worker.c '
+                '-o /tmp/xiri-job-ui/job-worker && install -m 755 type place /tmp/xiri-job-ui/ && '
+                'install -m 644 /cdrom/job-app.sh /tmp/xiri-job-ui/job-app.sh', 180)
         if args.fonts:
             from xiri_lab.fonts import compile as compile_fonts
             compile_fonts(guest)

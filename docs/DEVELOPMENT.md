@@ -27,6 +27,12 @@ waits for it; do not kill its supervisor while that cleanup is in progress.
 The existing probe remains the owner of its emulator and container processes.
 Manual `run` transfers control directly to IRIS.
 
+Images qualified with shell jobs retain `job_control_checks` in their
+manifest. `./xiri check` then requests `--jobs` automatically, covering native
+winterm and the original IRIX shell, foreground/background control, child
+waiting and logout with active jobs. The [job-control lab](../lab/irix-job-control/README.md)
+documents the raw ABI fixtures and original-shell prompt behavior.
+
 The [configuration](../config/development.json) defines fork locations,
 integration branch, build jobs, toolchain and kernel configuration. Image
 selection is separate: [image.json](../lab/irix-installed-desktop/image.json)

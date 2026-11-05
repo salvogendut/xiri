@@ -45,7 +45,8 @@ def main():
               'sys/arch/mips/conf/files.mips',
               'sys/arch/mips/mips/kobj_machdep.c', 'sys/kern/sys_select.c',
               'sys/arch/mips/mips/mips_fpu.c',
-              'sys/kern/kern_lwp.c', 'sys/sys/proc.h', 'sys/uvm/uvm_pglist.c',
+              'sys/kern/kern_lwp.c', 'sys/kern/kern_sig.c', 'sys/kern/kern_exit.c',
+              'sys/sys/proc.h', 'sys/uvm/uvm_pglist.c',
               'sys/compat/netbsd32/netbsd32.h', 'sys/compat/netbsd32/netbsd32_fs.c']
     result = dict(schema=1, status='built', source=str(source),
                   source_revision=output('git', '-C', str(source), 'rev-parse', 'HEAD').strip(),
@@ -54,7 +55,8 @@ def main():
                   config_path=str(config.relative_to(ROOT)), config_sha256=sha256(config),
                   sources={'scripts/build-irix-module.py':sha256(Path(__file__))},
                   undefined_symbols=undefined, relocation_types=relocations,
-                  core_hooks=['selcommon_kern', 'emul.e_sigmask'], artifacts={})
+                  core_hooks=['selcommon_kern', 'emul.e_sigmask',
+                              'emul.e_flags:EMUL_NOCLDSTOP_CONT'], artifacts={})
     for name, path in [('compat_irix_o32.kmod', module), ('netbsd', kernel),
                        ('netbsd.boot', build/'tftp/netbsd-XIRI_INDY')]:
         result['artifacts'][name] = dict(path=str(path.relative_to(build)), sha256=sha256(path))

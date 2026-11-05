@@ -81,6 +81,27 @@ also retain two native child-control timeouts before any application
 observation. Those guests required forced host cleanup; the control/shutdown
 stalls remain open and are excluded from application qualification.
 
+The [2026-11-05 system replay](../../docs/results/2026-11-05-irix-catalog-replay.json)
+repeats the retained 22-target batch on old and current images. Both finish
+with verified cleanup and clean halt after five native control pairs each;
+this does not establish the cause of the historical stalls. The separate
+[native wait fix](../native-wait/README.md) has its own deterministic test.
+
+For another bounded replay, use:
+
+```sh
+python3 scripts/probe-irix-catalog.py --bundle BUNDLE --partition 1 \
+  --after-case app-055 --limit 22 --control-repetitions 5
+python3 scripts/qualify-irix-catalog-replay.py --runs OLD_RUN NEW_RUN \
+  --output .work/catalog-replay.json
+```
+
+`--controls-only` runs the bootstrap controls without application launches.
+On an operation or shutdown failure, the probe saves monitor registers,
+stack, kernel messages and a PNG before teardown. The replay qualifier checks
+every control pair, exact target/source equality, descendant cleanup and halt;
+it does not replace the per-application checklist with startup-only claims.
+
 After the full partitions finish, qualify their printed run directories:
 
 ```sh

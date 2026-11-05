@@ -42,6 +42,24 @@ not repin qualified kernels, emulator binaries, runtime resources or guest disks
 
 ## IRIS upstream updates
 
+The 2026-11-05 process/job-control cycle fetched upstream at 09:55 UTC and
+found `436847c55cd0` and `61fcc816ef62`, covering the Odyssey/VPro memory and
+fragment pipeline plus graphics configuration defaults. Merge `4c53dfc303c4`
+on IRIS `xiri` preserves both sets of changelog notes after the sole manual
+conflict; source files merge automatically. The isolated release build passes,
+as do 354 Odyssey tests (four ignored) and 54 configuration tests. The merge
+is pushed to `origin/xiri`. The
+current manual image and ABI comparisons retain their pinned `819c682`
+emulator; no qualified artifact or detached lab worktree is replaced.
+
+NetBSD `xiri` commits `ded40d74024a79922c33f56c4b7c342cc39aa9f9` and
+`e9ff76a58affee773b767d334f98075bf86daf7e` are pushed. They add the measured
+IRIX sleep/child-state/group interfaces and fix a separate native multi-child
+wait-accounting defect. The [cycle report](results/2026-11-05-irix-job-control.md)
+records the native before/after tests, full ABI and regression checks, and
+real shell jobs. Build/source-equivalence ledgers preserve both the v3
+module checkpoint and the later native-core fix.
+
 The 2026-11-05 Type1 scaler investigation fetched upstream again at 07:08 UTC.
 Revision `3bcde9f702f0b52fdb296eeda4fe10b26555f3da` remains contained in
 IRIS `xiri` at `bd67e65ff159748635dd484adf7fac94a591f84b`.

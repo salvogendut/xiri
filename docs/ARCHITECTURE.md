@@ -134,6 +134,23 @@ The pthread-initialization work adds another core dependency: an optional
 before pending-signal delivery. This hook also needs upstream integration or
 an equivalent supported interface for deployment on a standard kernel.
 
+The [child-state cycle](../lab/irix-job-control/README.md) adds an opt-in
+`EMUL_NOCLDSTOP_CONT` flag in the existing `emul.e_flags` field. IRIX's
+`SA_NOCLDSTOP` suppresses continued-child notifications as well as stopped-child
+notifications. The core applies that policy before queuing SIGCHLD; dropping
+it at delivery would still interrupt a wait and could replace a pending exit
+notification. Native NetBSD keeps its existing behavior. This is a third core
+interface to upstream or replace for stock-kernel deployment, and requires
+the matching core/module pair. Sleep and foreign wait translation stay in
+the loadable IRIX module.
+
+The same cycle found a separate native wait-accounting bug: consuming a
+continuation subtracted from the stopped/zombie count a second time, and a
+scan shortcut skipped continuations behind live siblings. The shared fix is
+covered by [native before/after tests](results/2026-11-05-native-wait.json).
+It adds no module interface; native and foreign parents use the corrected
+common wait machinery.
+
 The [native stability cycle](results/2026-11-04-system-stability.md) also fixes
 CD9660 mount translation for native NetBSD o32 programs in `compat_netbsd32`.
 It translates ownership and permission masks in modern mount arguments and
@@ -318,8 +335,10 @@ adds two explicit eight-byte window-size ioctls for native PTY masters and
 slaves. The native tty layer owns sizing and foreground SIGWINCH delivery;
 the shell handoff preserves initialized dimensions while retaining its native
 vnode/controlling-terminal setup. IRIX SIGCHLD's SA_NOCLDSTOP now maps to the
-native flag, allowing xwsh's child-exit handler to register. Continued-child
-notification parity and the observed n32 libc nanosleep call remain open.
+native flag, allowing xwsh's child-exit handler to register. The later
+[child-state cycle](results/2026-11-05-irix-job-control.md) implements the
+continued-child suppression policy and measured n32/o32 nanosleep behavior,
+then qualifies foreground/background jobs in both shells.
 
 Terminal font defaults belong to the native session resources. Both native
 and IRIX Xlib observed Xorg's scalable IBM Courier face collapse to 12×2
