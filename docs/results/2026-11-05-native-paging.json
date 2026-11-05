@@ -1,0 +1,2706 @@
+{
+  "schema": 1,
+  "status": "checkpoint",
+  "scope": "Native sleep, swap-control and cleanup postcheck investigation",
+  "deployment": "New CHD remains unselected; occasional startup kernel crash retained and further investigation deferred at user request.",
+  "upstream": {
+    "upstream_checked_utc": "2026-11-05 19:40 UTC",
+    "upstream_revision": "c382cdcc25389769b5ae3a436ae1ff73ae42e964",
+    "iris_revision": "fb24628e1bf97a4f379309c79e808d82929672b7",
+    "integration": "already contained; no new commits",
+    "netbsd_revision": "e9ff76a58affee773b767d334f98075bf86daf7e",
+    "kernel_debug_layout": {
+      "path": ".work/native-sleep/kernel-layout.txt",
+      "sha256": "dcc95475cebcdbff987d5e415eaab15d2195e8bab2355f72a02cb81641853ebd"
+    }
+  },
+  "native_runs": [
+    {
+      "status": "error",
+      "clean_shutdown": false,
+      "source_unchanged": true,
+      "error": "timed out after 200s waiting for '\\\\nXIRI_859f6c80c0c0445a8739608aac7d770e_RC=(\\\\d+)\\\\n'",
+      "archive_error": "timed out after 180s waiting for '\\\\nXIRI_b5b2bfd56ef14c4180092bc959a6a11f_RC=(\\\\d+)\\\\n'",
+      "halt_error": "[Errno 32] Broken pipe",
+      "iterations": 100,
+      "pressure_mib": 96,
+      "sampled": false,
+      "plaintext_swap": false,
+      "swap_control_status": "0",
+      "cases": [
+        {
+          "label": "greeter-unloaded",
+          "method": "usleep",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=usleep iterations=100 child=462 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=101 involuntary=13"
+        },
+        {
+          "label": "greeter-unloaded",
+          "method": "nanosleep",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=nanosleep iterations=100 child=3245 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=102 involuntary=18"
+        },
+        {
+          "label": "greeter-unloaded",
+          "method": "select",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=select iterations=100 child=3617 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=101 involuntary=18"
+        },
+        {
+          "label": "greeter-pressure",
+          "method": "usleep",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=usleep iterations=100 child=431 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=101 involuntary=19"
+        },
+        {
+          "label": "greeter-pressure",
+          "method": "nanosleep",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=nanosleep iterations=100 child=504 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=101 involuntary=14"
+        },
+        {
+          "label": "greeter-pressure",
+          "method": "select",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=select iterations=100 child=1983 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=101 involuntary=18"
+        }
+      ],
+      "installed_artifacts": {
+        "native_kernel_sha256": "3cd6c8da5c9263b116927978b25b4b6a901dc66216aede41be1e3edb680eede6",
+        "boot_kernel_sha256": "5526f57cc6297c2b788b3eb1d15336fc0a863045645024866c0f05a4b68107a6",
+        "module_sha256": "8e97285b0a2185c0b2b5a2ed6e4202dd9ec568a9ba1514ea45a569a8c4c1b366"
+      },
+      "run": ".work/native-sleep/native-0enmhxsy",
+      "result_sha256": "a13771db687dcbcc6102ac9ef2838217a505f8ae9c5e060292589d7f9b8b0931",
+      "artifacts": {
+        "capture-help.txt": "b498cf794e37f2231c6364e764b37bc6436ae6c1e42f26b84e9858548269e590",
+        "capture-stop.txt": "fcebd49d6edbcd57753431bd6c667584610f1630168ab1c3e913d167a563d3b0",
+        "crash-ram-analysis.json": "32d4041af56ad31a4a759b6fbe631843db265bb9e552496ec0d914007ad12ebb",
+        "emulator-command.json": "ffe325668c2f90298ab41b4238c4225dde1a6e8e93fe227464122c7b3e15c025",
+        "snapshot-save.txt": "77713b9c313dc9051c8942b640c0211f8be2a0c6dbb64187872ed60ff04d1f35",
+        "startup-crash.json": "a17adf82a36763ff2f6802ecac1b01e6993c8ef2b0eb6afa7353209fe56188fb",
+        "startup-failure-cop0.txt": "aa694a6096d18387ebb74f16094eeb6eb953e7dff28912b96ae34ae77242b8ab",
+        "startup-failure-kernel.txt": "3cb1ea1374bd1ce118aa51deef0cedc9ac865741cfd9e4ce23557eb3f5a74966",
+        "startup-failure-registers.txt": "128055b987eae44fad94284915500cc61b866818e6d51c5378843541a2e09a7d",
+        "startup-failure-tlb.txt": "3bd58e5861b530728d1ccf2994a79b6eea015405cc82875fbd077b4f68dbddec",
+        "startup-failure-uarea.txt": "dc273717a1bb9e4329b7fc6fc34b112af00fbb0edea443273a3f7242f45a13c6",
+        "trapframe-analysis.json": "45e42c5fe2288c885db8c17c08dd1f882396cc51fdf46feb83c0275b5bc300fb"
+      }
+    },
+    {
+      "status": "passed",
+      "clean_shutdown": true,
+      "source_unchanged": true,
+      "iterations": 100,
+      "pressure_mib": 96,
+      "sampled": false,
+      "plaintext_swap": false,
+      "swap_control_status": "0",
+      "cases": [
+        {
+          "label": "greeter-unloaded",
+          "method": "usleep",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=usleep iterations=100 child=463 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=101 involuntary=17"
+        },
+        {
+          "label": "greeter-unloaded",
+          "method": "nanosleep",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=nanosleep iterations=100 child=3478 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=102 involuntary=17"
+        },
+        {
+          "label": "greeter-unloaded",
+          "method": "select",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=select iterations=100 child=478 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=101 involuntary=17"
+        },
+        {
+          "label": "greeter-pressure",
+          "method": "usleep",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=usleep iterations=100 child=666 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=101 involuntary=15"
+        },
+        {
+          "label": "greeter-pressure",
+          "method": "nanosleep",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=nanosleep iterations=100 child=508 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=101 involuntary=15"
+        },
+        {
+          "label": "greeter-pressure",
+          "method": "select",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=select iterations=100 child=579 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=101 involuntary=18"
+        },
+        {
+          "label": "irix-pressure",
+          "method": "usleep",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=usleep iterations=100 child=3753 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=103 involuntary=23"
+        },
+        {
+          "label": "irix-pressure",
+          "method": "nanosleep",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=nanosleep iterations=100 child=3475 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=102 involuntary=15"
+        },
+        {
+          "label": "irix-pressure",
+          "method": "select",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=select iterations=100 child=4094 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=103 involuntary=18"
+        }
+      ],
+      "installed_artifacts": {
+        "native_kernel_sha256": "3cd6c8da5c9263b116927978b25b4b6a901dc66216aede41be1e3edb680eede6",
+        "boot_kernel_sha256": "5526f57cc6297c2b788b3eb1d15336fc0a863045645024866c0f05a4b68107a6",
+        "module_sha256": "8e97285b0a2185c0b2b5a2ed6e4202dd9ec568a9ba1514ea45a569a8c4c1b366"
+      },
+      "run": ".work/native-sleep/native-2ilns0iv",
+      "result_sha256": "ffa2cdb08586189021aa996bf69b72dc6a9003d9238726ebb41e73f486be0b57",
+      "external_instrumentation": {
+        "command": "bp add 0xffffffff8807a478 pc if (a1 & 0x7c) == 0x10 && (a0 & 0x18) == 0 && (a3 & 3) != 0",
+        "response": "Breakpoint added: 1: ffffffff8807a478 pc enabled if (a1 & 0x7c) == 0x10 && (a0 & 0x18) == 0 && (a3 & 3) != 0\r\n> ",
+        "purpose": "Stop at trap entry for a misaligned kernel instruction PC before debugger recursion; diagnostic, not unmodified timing qualification",
+        "added_utc": "2026-11-05T21:57:03Z"
+      },
+      "artifacts": {
+        "emulator-command.json": "128fc86b58ca5aa65d9169f026e69cf34bd205036c614417ac6545568ebdddfb",
+        "external-breakpoint.json": "4af39e86c52d0f013d46aee6019eeeb9cbaec1f5fadac8928d8da67f9eb815c0",
+        "observations.tgz": "3dddeca8326e5774dcd7bca11a305a1ae1fbfe63e1850f6045863d08d6cd9f45",
+        "shutdown-dmesg.txt": "5be2922a613b5f3d750fd6a30bc2876df69bbc51458ac756f8bb8e8b27421d56"
+      }
+    },
+    {
+      "status": "error",
+      "clean_shutdown": true,
+      "source_unchanged": true,
+      "error": "swap readback control failed",
+      "iterations": 100,
+      "pressure_mib": 96,
+      "sampled": false,
+      "plaintext_swap": false,
+      "cases": [],
+      "installed_artifacts": {
+        "native_kernel_sha256": "3cd6c8da5c9263b116927978b25b4b6a901dc66216aede41be1e3edb680eede6",
+        "boot_kernel_sha256": "5526f57cc6297c2b788b3eb1d15336fc0a863045645024866c0f05a4b68107a6",
+        "module_sha256": "8e97285b0a2185c0b2b5a2ed6e4202dd9ec568a9ba1514ea45a569a8c4c1b366"
+      },
+      "swap_readback": "SWAP_RESIDENCY primary_bytes=100663296 extra_bytes=0 pages=12288 absent=0\nSWAP_RESIDENCY primary_bytes=100663296 extra_bytes=8388608 pages=12288 absent=0\nSWAP_RESIDENCY primary_bytes=100663296 extra_bytes=16777216 pages=12288 absent=0\nSWAP_RESIDENCY primary_bytes=100663296 extra_bytes=25165824 pages=12288 absent=0\nSWAP_RESIDENCY primary_bytes=100663296 extra_bytes=33554432 pages=12288 absent=0\nSWAP_RESIDENCY primary_bytes=100663296 extra_bytes=41943040 pages=12288 absent=0\nSWAP_RESIDENCY primary_bytes=100663296 extra_bytes=50331648 pages=12288 absent=0\nSWAP_RESIDENCY primary_bytes=100663296 extra_bytes=58720256 pages=12288 absent=0\nSWAP_RESIDENCY primary_bytes=100663296 extra_bytes=67108864 pages=12288 absent=0\nSWAP_RESIDENCY primary_bytes=100663296 extra_bytes=75497472 pages=12288 absent=214\n",
+      "swap_readback_status": "0",
+      "readback_swap_config": "vm.swap_encrypt = 1\nDevice                        1K-blocks     Used    Avail Capacity  Priority\n/dev/sd0b                         32736        0    32736     0%    0\n/tmp/xiri-sleep/readback.swap    131072        0   131072     0%    0\nTotal                            163808        0   163808     0%\n",
+      "seed": {
+        "path": ".work/native-sleep/native-nhofgfl6",
+        "result_sha256": "611c18bc243995190404cca1ddc74b604cc9b01afe74d93b2cf0ee82b83127f7",
+        "overlay_sha256": "7e62d7227096ed645e9e5d7854d30277cdc0cdd130ac22ec9d251bb097d13821"
+      },
+      "seed_unchanged": true,
+      "run": ".work/native-sleep/native-42m0jeju",
+      "result_sha256": "8270be240ee5aebdb421580b5cb465440c419d4295c79e28995ae752ed8359bb",
+      "artifacts": {
+        "emulator-command.json": "7d946cdbf0c4acb213a639721c97e2cc59609ed7bcb78e50dc01d273bf6afa15",
+        "observations.tgz": "419e1e6a8520f6cdd26e018024eb63d6cda55ccd45158b07e8d7c79fa29b3be8",
+        "readback-failure.json": "89e7041c77c7658d4371349beacf68700a31542f8aa0e9cf4a4cd4f6b64324fb",
+        "shutdown-dmesg.txt": "ac92907106954fe347f8c9c704f5079ad994d3975b6f2b6da00db942da7fd227"
+      },
+      "kernel_build": {
+        "source_revision": "e9ff76a58affee773b767d334f98075bf86daf7e",
+        "source_status": " M sys/uvm/uvm_pdaemon.c\n M sys/uvm/uvm_swap.c\n",
+        "source_files": {
+          "sys/compat/irix_o32/irix_errno.h": "36c93897342fe90413b9252209cf300c4d63657e175a2e8e7d547826b9b9be1a",
+          "sys/compat/irix_o32/irix_errno_map.h": "e3adecc6040d14afa371eff3d6e17f126b7d074201b8e98cf842ec650a86f64f",
+          "sys/compat/irix_o32/irix_o32.c": "51359c0eb8f45f5baa9da037e47ac247cf7aaf5821a67ea0535f1b897a82b0ad",
+          "sys/compat/irix_o32/irix_signal.c": "a990e1ea3f2ceea2978407a6916cc2e4790e357fa53c8f3a63520d5f8108a40a",
+          "sys/compat/irix_o32/irix_signal.h": "8b0a98ffee639ce755cf5b7f84f79c6295f563cee015cab25afe5a0dd870e373",
+          "sys/compat/irix_o32/irix_sproc.c": "97144d2f8897cbba77dd6f00a877330bd4e5ee11efda652ca6b26d72d8af0844",
+          "sys/compat/irix_o32/irix_sproc.h": "b7ffc50caad3f78984218cf7601fc5ea1a4042dd25bdf4ab1ac6cd9b15994414",
+          "sys/compat/irix_o32/irix_stat.h": "45a7cad87190acb37732421ac589b6b287f9454dfccb874cf163622b233e1f23",
+          "sys/compat/irix_o32/irix_tty.c": "27c2a3086e38dc5b2c87d12885bc15d770e789507cf3d9375b5cf89d116d576e",
+          "sys/compat/irix_o32/irix_tty.h": "80fef54a11cd6240a384c061fe36d32c8ec81c721c2864c5033d9b489196e39b",
+          "sys/modules/compat_irix_o32/Makefile": "f021b21445210b3e1d3b758b64513e149e380e32c1e431d18b3927cd8b616c45",
+          "sys/modules/Makefile": "cc44af13029e3272dc5c80b0356bc66c396a32ff1d2ce9bda7fb7e749c091797",
+          "sys/arch/mips/conf/files.mips": "4c64715f586ccdbf7f503f0ab9f28178d45a0c5aa2da4e3b9954d2fde9dbc8a4",
+          "sys/arch/mips/mips/kobj_machdep.c": "75af7317121c508d23ca3b2c757130ecd31a77a4d7d786683d6bb5e99ad949d2",
+          "sys/kern/sys_select.c": "d3acf564acfd23f38ba32214e6e708dc28246e25b682969dafb730d92dd290b1",
+          "sys/arch/mips/mips/mips_fpu.c": "1b80f251be637c321548e84f09b5a7013168a91e5983c39aa39e7af9c3194596",
+          "sys/kern/kern_lwp.c": "dcf9c71f79e2bfcd0e07be1c78abbca975a7de3620b8529d7e9bdbc99ed912f8",
+          "sys/kern/kern_sig.c": "353ab6c2148892e30d7616cf4f75cd5317705ce65bf226fb3c2e753e940e212d",
+          "sys/kern/kern_exit.c": "a7eb4781b329d0c09d96910ace54b53be8b5f32997e8617a14fa3a72a059374b",
+          "sys/sys/proc.h": "c2670d380979e7a7c5309150e3239bcbb3985ac76761f7cca3171838b38d8b09",
+          "sys/uvm/uvm_pglist.c": "47f62159d99df61870b39a071af57a781493553f6a0c8415610cae0bc4489c39",
+          "sys/uvm/uvm_pdaemon.c": "3258680120a00055d72d2341af65b6b768032192aaec04feefcd1d508e06f27d",
+          "sys/uvm/uvm_swap.c": "5fd06622bdc25006103b2754b810b97eca870be5d8759fda7d7133b4a7dbf459",
+          "sys/compat/netbsd32/netbsd32.h": "d02736ef3f4f6add134bfef9f5459c7250af24e43cf0dfe84e7ff2a74b283f0d",
+          "sys/compat/netbsd32/netbsd32_fs.c": "a1325ab7cedf522a64177e50e45a7b7698bf87080fa8a41f8ef48deb3112a59b"
+        },
+        "artifacts": {
+          "compat_irix_o32.kmod": {
+            "path": "obj/sys/modules/compat_irix_o32/compat_irix_o32.kmod",
+            "sha256": "8e97285b0a2185c0b2b5a2ed6e4202dd9ec568a9ba1514ea45a569a8c4c1b366"
+          },
+          "netbsd": {
+            "path": "kernel-media/netbsd",
+            "sha256": "3cd6c8da5c9263b116927978b25b4b6a901dc66216aede41be1e3edb680eede6"
+          },
+          "netbsd.boot": {
+            "path": "tftp/netbsd-XIRI_INDY",
+            "sha256": "5526f57cc6297c2b788b3eb1d15336fc0a863045645024866c0f05a4b68107a6"
+          }
+        },
+        "build_manifest_sha256": "0c5d1ce29e711f38b7b9c5787877e8e560b9c2f97b0510e0f465bf57dc2bbc47"
+      }
+    },
+    {
+      "status": "passed",
+      "clean_shutdown": true,
+      "source_unchanged": true,
+      "iterations": 100,
+      "pressure_mib": 96,
+      "sampled": false,
+      "plaintext_swap": true,
+      "swap_control_status": "0",
+      "cases": [
+        {
+          "label": "greeter-unloaded",
+          "method": "usleep",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=usleep iterations=100 child=235 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=101 involuntary=19"
+        },
+        {
+          "label": "greeter-unloaded",
+          "method": "nanosleep",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=nanosleep iterations=100 child=2011 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=101 involuntary=15"
+        },
+        {
+          "label": "greeter-unloaded",
+          "method": "select",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=select iterations=100 child=421 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=101 involuntary=18"
+        },
+        {
+          "label": "greeter-pressure",
+          "method": "usleep",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=usleep iterations=100 child=502 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=101 involuntary=19"
+        },
+        {
+          "label": "greeter-pressure",
+          "method": "nanosleep",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=nanosleep iterations=100 child=469 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=101 involuntary=19"
+        },
+        {
+          "label": "greeter-pressure",
+          "method": "select",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=select iterations=100 child=585 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=101 involuntary=21"
+        },
+        {
+          "label": "irix-pressure",
+          "method": "usleep",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=usleep iterations=100 child=687 rc=0 observer_failed=0 minor_faults=40 major_faults=0 voluntary=101 involuntary=14"
+        },
+        {
+          "label": "irix-pressure",
+          "method": "nanosleep",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=nanosleep iterations=100 child=761 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=101 involuntary=14"
+        },
+        {
+          "label": "irix-pressure",
+          "method": "select",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=select iterations=100 child=3481 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=101 involuntary=17"
+        }
+      ],
+      "installed_artifacts": {
+        "native_kernel_sha256": "3cd6c8da5c9263b116927978b25b4b6a901dc66216aede41be1e3edb680eede6",
+        "boot_kernel_sha256": "5526f57cc6297c2b788b3eb1d15336fc0a863045645024866c0f05a4b68107a6",
+        "module_sha256": "8e97285b0a2185c0b2b5a2ed6e4202dd9ec568a9ba1514ea45a569a8c4c1b366"
+      },
+      "run": ".work/native-sleep/native-651yeudy",
+      "result_sha256": "6f40dd315f37a95432cc2ad814bcc6dadf9fb41161eb734c2a6e6f4d164d979b",
+      "external_instrumentation": {
+        "command": "bp add 0xffffffff8807a478 pc if (a1 & 0x7c) == 0x10 && (a0 & 0x18) == 0 && (a3 & 3) != 0",
+        "response": "Breakpoint added: 1: ffffffff8807a478 pc enabled if (a1 & 0x7c) == 0x10 && (a0 & 0x18) == 0 && (a3 & 3) != 0\r\n> ",
+        "purpose": "Stop at trap entry for a misaligned kernel instruction PC before debugger recursion; diagnostic, not unmodified timing qualification",
+        "added_utc": "2026-11-05T21:57:03Z"
+      },
+      "artifacts": {
+        "emulator-command.json": "a280b4c1d10aeb1a0fe701b27f5b5f63ccc5bf5edb9e25bf0e4f112385e09845",
+        "external-breakpoint.json": "4af39e86c52d0f013d46aee6019eeeb9cbaec1f5fadac8928d8da67f9eb815c0",
+        "observations.tgz": "6efbfcbaca8be119838f52fe0010d48aab6b711b4b00d922733c4172d594c109",
+        "shutdown-dmesg.txt": "9381d3add9e5e6d409a78e60f2e2da98e5edf5478da5168ec778f9cd0f8a3028"
+      }
+    },
+    {
+      "status": "error",
+      "clean_shutdown": true,
+      "source_unchanged": true,
+      "error": "",
+      "iterations": 100,
+      "pressure_mib": 96,
+      "sampled": false,
+      "plaintext_swap": false,
+      "swap_control_status": "0",
+      "cases": [
+        {
+          "label": "greeter-unloaded",
+          "method": "usleep",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=usleep iterations=100 child=3817 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=101 involuntary=19"
+        },
+        {
+          "label": "greeter-unloaded",
+          "method": "nanosleep",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=nanosleep iterations=100 child=455 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=101 involuntary=17"
+        },
+        {
+          "label": "greeter-unloaded",
+          "method": "select",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=select iterations=100 child=465 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=101 involuntary=18"
+        },
+        {
+          "label": "greeter-pressure",
+          "method": "usleep",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=usleep iterations=100 child=3426 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=101 involuntary=13"
+        },
+        {
+          "label": "greeter-pressure",
+          "method": "nanosleep",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=nanosleep iterations=100 child=1256 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=101 involuntary=20"
+        },
+        {
+          "label": "greeter-pressure",
+          "method": "select",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=select iterations=100 child=3248 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=101 involuntary=19"
+        },
+        {
+          "label": "irix-pressure",
+          "method": "usleep",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=usleep iterations=100 child=1691 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=101 involuntary=18"
+        },
+        {
+          "label": "irix-pressure",
+          "method": "nanosleep",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=nanosleep iterations=100 child=3613 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=101 involuntary=17"
+        },
+        {
+          "label": "irix-pressure",
+          "method": "select",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=select iterations=100 child=687 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=101 involuntary=19"
+        }
+      ],
+      "installed_artifacts": {
+        "native_kernel_sha256": "b10460f040acdfbf7db584acb1ccba1aa69d40b24ed5d2e036a6e781d3f33dc1",
+        "boot_kernel_sha256": "5233b0f9ed8343b0885684b37d1c2a955ce706dce975104637cbf7066d3aa200",
+        "module_sha256": "8e97285b0a2185c0b2b5a2ed6e4202dd9ec568a9ba1514ea45a569a8c4c1b366"
+      },
+      "memory_readback": "MEMORY_READY pid=665 bytes=100663296 checksum=3138096\nMEMORY_VERIFIED bytes=100663296 written_bytes=24576 checksum=3138096 major_before=0 major_after=0\n",
+      "run": ".work/native-sleep/native-7oqpzrvn",
+      "result_sha256": "5ea47c83f58adf376576c9b15ec9e1f6e4d141d0fba017cf182738d90c7b8f86",
+      "artifacts": {
+        "emulator-command.json": "9d3d92e43a172ec11db85d402ad5f6d4054c9806915322730ea7f0d464b7722c",
+        "media-replacement.json": "892d54bb33b14d9c1d2ff9227381e6b331f6d4a102ec07d73012855a213541f8",
+        "observations.tgz": "8128be8e2b949c2abf7ebd54a382059924c770a8dd7df7a6a8e150c5144637a4",
+        "shutdown-dmesg.txt": "817d77d5f5f9fbad7d0313a538768c99f4bfc3793b9bf68daa91b8c87377fd80",
+        "timing-analysis.json": "9dc0890e125c90f12ea790d1751e996584906797f13ce225a10afca6b576cd2d"
+      },
+      "kernel_build": {
+        "source_revision": "e9ff76a58affee773b767d334f98075bf86daf7e",
+        "source_status": " M sys/uvm/uvm_pdaemon.c\n M sys/uvm/uvm_swap.c\n",
+        "source_files": {
+          "sys/compat/irix_o32/irix_errno.h": "36c93897342fe90413b9252209cf300c4d63657e175a2e8e7d547826b9b9be1a",
+          "sys/compat/irix_o32/irix_errno_map.h": "e3adecc6040d14afa371eff3d6e17f126b7d074201b8e98cf842ec650a86f64f",
+          "sys/compat/irix_o32/irix_o32.c": "51359c0eb8f45f5baa9da037e47ac247cf7aaf5821a67ea0535f1b897a82b0ad",
+          "sys/compat/irix_o32/irix_signal.c": "a990e1ea3f2ceea2978407a6916cc2e4790e357fa53c8f3a63520d5f8108a40a",
+          "sys/compat/irix_o32/irix_signal.h": "8b0a98ffee639ce755cf5b7f84f79c6295f563cee015cab25afe5a0dd870e373",
+          "sys/compat/irix_o32/irix_sproc.c": "97144d2f8897cbba77dd6f00a877330bd4e5ee11efda652ca6b26d72d8af0844",
+          "sys/compat/irix_o32/irix_sproc.h": "b7ffc50caad3f78984218cf7601fc5ea1a4042dd25bdf4ab1ac6cd9b15994414",
+          "sys/compat/irix_o32/irix_stat.h": "45a7cad87190acb37732421ac589b6b287f9454dfccb874cf163622b233e1f23",
+          "sys/compat/irix_o32/irix_tty.c": "27c2a3086e38dc5b2c87d12885bc15d770e789507cf3d9375b5cf89d116d576e",
+          "sys/compat/irix_o32/irix_tty.h": "80fef54a11cd6240a384c061fe36d32c8ec81c721c2864c5033d9b489196e39b",
+          "sys/modules/compat_irix_o32/Makefile": "f021b21445210b3e1d3b758b64513e149e380e32c1e431d18b3927cd8b616c45",
+          "sys/modules/Makefile": "cc44af13029e3272dc5c80b0356bc66c396a32ff1d2ce9bda7fb7e749c091797",
+          "sys/arch/mips/conf/files.mips": "4c64715f586ccdbf7f503f0ab9f28178d45a0c5aa2da4e3b9954d2fde9dbc8a4",
+          "sys/arch/mips/mips/kobj_machdep.c": "75af7317121c508d23ca3b2c757130ecd31a77a4d7d786683d6bb5e99ad949d2",
+          "sys/kern/sys_select.c": "d3acf564acfd23f38ba32214e6e708dc28246e25b682969dafb730d92dd290b1",
+          "sys/arch/mips/mips/mips_fpu.c": "1b80f251be637c321548e84f09b5a7013168a91e5983c39aa39e7af9c3194596",
+          "sys/kern/kern_lwp.c": "dcf9c71f79e2bfcd0e07be1c78abbca975a7de3620b8529d7e9bdbc99ed912f8",
+          "sys/kern/kern_sig.c": "353ab6c2148892e30d7616cf4f75cd5317705ce65bf226fb3c2e753e940e212d",
+          "sys/kern/kern_exit.c": "a7eb4781b329d0c09d96910ace54b53be8b5f32997e8617a14fa3a72a059374b",
+          "sys/sys/proc.h": "c2670d380979e7a7c5309150e3239bcbb3985ac76761f7cca3171838b38d8b09",
+          "sys/uvm/uvm_pglist.c": "47f62159d99df61870b39a071af57a781493553f6a0c8415610cae0bc4489c39",
+          "sys/uvm/uvm_pdaemon.c": "a8913c43039c551c0fcd487abafa7b686f37c4037424cc367dca63e9eca55e28",
+          "sys/uvm/uvm_swap.c": "5fd06622bdc25006103b2754b810b97eca870be5d8759fda7d7133b4a7dbf459",
+          "sys/compat/netbsd32/netbsd32.h": "d02736ef3f4f6add134bfef9f5459c7250af24e43cf0dfe84e7ff2a74b283f0d",
+          "sys/compat/netbsd32/netbsd32_fs.c": "a1325ab7cedf522a64177e50e45a7b7698bf87080fa8a41f8ef48deb3112a59b"
+        },
+        "artifacts": {
+          "compat_irix_o32.kmod": {
+            "path": "obj/sys/modules/compat_irix_o32/compat_irix_o32.kmod",
+            "sha256": "8e97285b0a2185c0b2b5a2ed6e4202dd9ec568a9ba1514ea45a569a8c4c1b366"
+          },
+          "netbsd": {
+            "path": "kernel-media/netbsd",
+            "sha256": "b10460f040acdfbf7db584acb1ccba1aa69d40b24ed5d2e036a6e781d3f33dc1"
+          },
+          "netbsd.boot": {
+            "path": "tftp/netbsd-XIRI_INDY",
+            "sha256": "5233b0f9ed8343b0885684b37d1c2a955ce706dce975104637cbf7066d3aa200"
+          }
+        },
+        "build_manifest_sha256": "adf0f84d7cf0f8620a30379e1a03f906422ccf8a5b6de82b0effc47c93320008"
+      }
+    },
+    {
+      "status": "observed-failure",
+      "clean_shutdown": true,
+      "source_unchanged": true,
+      "iterations": 100,
+      "pressure_mib": 96,
+      "sampled": true,
+      "cases": [
+        {
+          "label": "greeter-unloaded",
+          "method": "nanosleep",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=nanosleep iterations=100 child=337 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=101 involuntary=17"
+        },
+        {
+          "label": "greeter-unloaded",
+          "method": "usleep",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=usleep iterations=100 child=379 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=101 involuntary=17"
+        },
+        {
+          "label": "greeter-unloaded",
+          "method": "select",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=select iterations=100 child=451 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=101 involuntary=16"
+        },
+        {
+          "label": "greeter-pressure",
+          "method": "nanosleep",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=nanosleep iterations=100 child=466 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=102 involuntary=17"
+        },
+        {
+          "label": "greeter-pressure",
+          "method": "usleep",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=usleep iterations=100 child=664 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=101 involuntary=15"
+        },
+        {
+          "label": "greeter-pressure",
+          "method": "select",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=select iterations=100 child=421 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=101 involuntary=18"
+        },
+        {
+          "label": "irix-pressure",
+          "method": "nanosleep",
+          "status": "124",
+          "summary": "SLEEP_RESULT method=nanosleep iterations=100 child=708 rc=124 observer_failed=0 minor_faults=36 major_faults=0 voluntary=9 involuntary=0"
+        },
+        {
+          "label": "irix-pressure",
+          "method": "usleep",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=usleep iterations=100 child=720 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=101 involuntary=18"
+        },
+        {
+          "label": "irix-pressure",
+          "method": "select",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=select iterations=100 child=921 rc=0 observer_failed=0 minor_faults=38 major_faults=0 voluntary=101 involuntary=14"
+        }
+      ],
+      "run": ".work/native-sleep/native-9uqmmdmy",
+      "result_sha256": "0d692be590e6ba2c068ce88e79761836121b0fa7cbf32101dd5f68b9eb5a629b",
+      "artifacts": {
+        "emulator-command.json": "722990e3ba6afd185507990ee6d72481cdc8f7af21ab241d1c45dbeece155467",
+        "kernel-samples.jsonl": "a53d7518343c1abb461b51ceb1c9d7f164538ed4b9e333d6dcc5b49301f5aad4",
+        "observations.tgz": "9ec200dae45b9e42f50e0627b79af25e4c2bb5bb2da1ec0fe123990a567f256c",
+        "pagedaemon-name.txt": "3348164db5cbbdac6bda4453d71c71391d35f93f48fa993b672c0bda9aa3b290",
+        "sample-lwp-identities.json": "b96f0d3f6c16cb1c4d3d790eb3a2ce6d5970a19c9db7809458cb74332178e3fa",
+        "shutdown-dmesg.txt": "aa364a2b88b2c8568b8d204d9fb989a2d9dfdbda8af79058a12ca4c23f9c79c3",
+        "symbol-analysis.json": "d545c8ec2c6a97a3d8c03c8f5cff5861da5286e2bc50e5b96dfee9c7561e3116"
+      }
+    },
+    {
+      "status": "error",
+      "clean_shutdown": false,
+      "source_unchanged": true,
+      "archive_error": "timed out after 300s waiting for '\\\\nXIRI_e3761ea3fe8d4244bc993d87300d5fb3_RC=(\\\\d+)\\\\n'",
+      "halt_error": "Graphical halt did not record clean unmount and halt",
+      "iterations": 100,
+      "pressure_mib": 96,
+      "cases": [
+        {
+          "label": "greeter-unloaded",
+          "method": "usleep",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=usleep iterations=100 child=294 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=101 involuntary=15"
+        },
+        {
+          "label": "greeter-unloaded",
+          "method": "nanosleep",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=nanosleep iterations=100 child=3054 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=101 involuntary=18"
+        },
+        {
+          "label": "greeter-unloaded",
+          "method": "select",
+          "status": "2",
+          "summary": "SLEEP_RESULT method=select iterations=100 child=562 rc=0 observer_failed=1 minor_faults=36 major_faults=0 voluntary=102 involuntary=15"
+        },
+        {
+          "label": "greeter-pressure",
+          "method": "usleep",
+          "status": "2",
+          "summary": "SLEEP_RESULT method=usleep iterations=100 child=234 rc=0 observer_failed=1 minor_faults=36 major_faults=0 voluntary=101 involuntary=16"
+        },
+        {
+          "label": "greeter-pressure",
+          "method": "nanosleep",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=nanosleep iterations=100 child=463 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=101 involuntary=14"
+        },
+        {
+          "label": "greeter-pressure",
+          "method": "select",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=select iterations=100 child=664 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=101 involuntary=18"
+        },
+        {
+          "label": "irix-pressure",
+          "method": "usleep",
+          "status": "124",
+          "summary": "SLEEP_RESULT method=usleep iterations=100 child=830 rc=124 observer_failed=0 minor_faults=36 major_faults=0 voluntary=56 involuntary=12"
+        },
+        {
+          "label": "irix-pressure",
+          "method": "nanosleep",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=nanosleep iterations=100 child=635 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=103 involuntary=18"
+        },
+        {
+          "label": "irix-pressure",
+          "method": "select",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=select iterations=100 child=719 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=101 involuntary=21"
+        }
+      ],
+      "run": ".work/native-sleep/native-_qotjx9b",
+      "result_sha256": "caab228f4ca5dbcd97d7f0eac6783f028841087c270b5c765bc379e80f8df688",
+      "artifacts": {
+        "collection-controller-pause.json": "89b00aa9fceda929fba6987317c9ecd739cf60de34edf49ae64b08216235f9b4",
+        "emulator-command.json": "bf0631a2064f04d59eb24ad1125dddf7165b111b5d847e7cea587bf2d23849d7",
+        "irix-pressure-nanosleep-trace.json": "0292a127f5c86e40b451315e42fb9f6699ca9cfba5f221acc90df84808fb26c1",
+        "irix-pressure-select-trace.json": "0cd302929bc2ed03744945d54f1e8e0190019c0f25bb9eb02f9abf237065b229",
+        "irix-pressure-usleep-trace.json": "9b2eebb043b83e2c737e8dba4acc1283362751235e9b51d8a27fbd27f7752ca0",
+        "network-observations.tgz": "86722b4fb0e3e4ab3c867400e6cea286e391872aa85dcddac474a0e11ad2eddd",
+        "network-recovery.json": "9f961584597195fcc402599349316eb0c76cd7aa1b363eb8b390bb2f8b21339b",
+        "shutdown-dmesg.txt": "bd1b893b06519a67fe155da3f42249bb1097a0c9f92af6114bd517e63226eeac",
+        "stall-analysis.json": "338901a60e97c84fc035e3223d8a6e7bfccd68887a77cf91955b156f3585dd28"
+      }
+    },
+    {
+      "status": "passed",
+      "clean_shutdown": true,
+      "source_unchanged": true,
+      "iterations": 100,
+      "pressure_mib": 96,
+      "sampled": false,
+      "plaintext_swap": false,
+      "cases": [],
+      "installed_artifacts": {
+        "native_kernel_sha256": "3cd6c8da5c9263b116927978b25b4b6a901dc66216aede41be1e3edb680eede6",
+        "boot_kernel_sha256": "5526f57cc6297c2b788b3eb1d15336fc0a863045645024866c0f05a4b68107a6",
+        "module_sha256": "8e97285b0a2185c0b2b5a2ed6e4202dd9ec568a9ba1514ea45a569a8c4c1b366"
+      },
+      "swap_readback": "SWAP_RESIDENCY primary_bytes=100663296 extra_bytes=0 pages=12288 absent=0 elapsed_ms=2571\nSWAP_RESIDENCY primary_bytes=100663296 extra_bytes=8388608 pages=12288 absent=0 elapsed_ms=2749\nSWAP_RESIDENCY primary_bytes=100663296 extra_bytes=16777216 pages=12288 absent=0 elapsed_ms=2963\nSWAP_RESIDENCY primary_bytes=100663296 extra_bytes=25165824 pages=12288 absent=0 elapsed_ms=3134\nSWAP_RESIDENCY primary_bytes=100663296 extra_bytes=33554432 pages=12288 absent=0 elapsed_ms=3371\nSWAP_RESIDENCY primary_bytes=100663296 extra_bytes=41943040 pages=12288 absent=0 elapsed_ms=3561\nSWAP_RESIDENCY primary_bytes=100663296 extra_bytes=50331648 pages=12288 absent=0 elapsed_ms=3781\nSWAP_RESIDENCY primary_bytes=100663296 extra_bytes=58720256 pages=12288 absent=0 elapsed_ms=3951\nSWAP_RESIDENCY primary_bytes=100663296 extra_bytes=67108864 pages=12288 absent=0 elapsed_ms=21043\nSWAP_RESIDENCY primary_bytes=100663296 extra_bytes=75497472 pages=12288 absent=0 elapsed_ms=39791\nSWAP_RESIDENCY primary_bytes=100663296 extra_bytes=83886080 pages=12288 absent=696 elapsed_ms=77557\nSWAP_PRESSURE_RELEASED absent=752 elapsed_ms=79002\nSWAP_READBACK primary_bytes=100663296 extra_bytes=83886080 absent_before=752 major_before=4 major_after=756 written_bytes=24576 elapsed_ms=107846 valid=1\n",
+      "swap_readback_status": "0",
+      "swap_readback_launcher_status": "0",
+      "readback_swap_config": "vm.swap_encrypt = 1\nDevice                        1K-blocks     Used    Avail Capacity  Priority\n/dev/sd0b                         32736        0    32736     0%    0\n/tmp/xiri-sleep/readback.swap    131072        0   131072     0%    0\nTotal                            163808        0   163808     0%\n",
+      "run": ".work/native-sleep/native-esih3j6l",
+      "result_sha256": "d6b2cd8e64d8142bd56c5cd9751e1481db272781398ce30809b89f48fb13c743",
+      "artifacts": {
+        "emulator-command.json": "3d008259314a70c9feb12641b7630d36bbb58e855f0cc5e0d52ad93db7f80814",
+        "observations.tgz": "8f553159c4d9fe34d4477f74a01ff26b3329c08ced0b79b524ede0051189d2c3",
+        "shutdown-dmesg.txt": "7cd0b1e2a061ab180336fc204c64c2ac55e21c1a4e5edbb2988f8c3bed69cf09"
+      }
+    },
+    {
+      "status": "error",
+      "clean_shutdown": true,
+      "source_unchanged": true,
+      "archive_error": "timed out after 300s waiting for '\\\\nXIRI_0232d288897e489f9d7b7d2d909425dd_RC=(\\\\d+)\\\\n'",
+      "iterations": 100,
+      "pressure_mib": 96,
+      "cases": [
+        {
+          "label": "greeter-unloaded",
+          "method": "usleep",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=usleep iterations=100 child=3027 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=101 involuntary=19"
+        },
+        {
+          "label": "greeter-unloaded",
+          "method": "nanosleep",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=nanosleep iterations=100 child=3711 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=101 involuntary=19"
+        },
+        {
+          "label": "greeter-unloaded",
+          "method": "select",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=select iterations=100 child=456 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=101 involuntary=20"
+        },
+        {
+          "label": "greeter-pressure",
+          "method": "usleep",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=usleep iterations=100 child=407 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=102 involuntary=18"
+        },
+        {
+          "label": "greeter-pressure",
+          "method": "nanosleep",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=nanosleep iterations=100 child=416 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=101 involuntary=16"
+        },
+        {
+          "label": "greeter-pressure",
+          "method": "select",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=select iterations=100 child=3305 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=101 involuntary=19"
+        },
+        {
+          "label": "irix-pressure",
+          "method": "usleep",
+          "status": "124",
+          "summary": "SLEEP_RESULT method=usleep iterations=100 child=710 rc=124 observer_failed=0 minor_faults=44 major_faults=0 voluntary=65 involuntary=15"
+        },
+        {
+          "label": "irix-pressure",
+          "method": "nanosleep",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=nanosleep iterations=100 child=711 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=101 involuntary=21"
+        },
+        {
+          "label": "irix-pressure",
+          "method": "select",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=select iterations=100 child=672 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=102 involuntary=16"
+        }
+      ],
+      "run": ".work/native-sleep/native-iqlyn9vr",
+      "result_sha256": "9bccc68ddd102bf24546c0fbe17e9fc36d7171eb365f1096d22105bb8c02aa72",
+      "artifacts": {
+        "collection-controller-pause.json": "e9a1119c3f9b7d211d9ef922f814b7c1d149378f59338c9d5939b0728e413696",
+        "emulator-command.json": "9953a04de1bbaa1eef10fd36651b25034a37a975c1beb6a51e03801d4a14f4a3",
+        "guard-replay.tgz": "9952e174409c4ac05d06aed9b06539e2913a0181a2501a3815a649c05437ce5b",
+        "irix-pressure-nanosleep-trace.json": "c7073f374a385b42061510afb4d0ea90ca1f25436189452bc1589a220a37d954",
+        "irix-pressure-select-trace.json": "3948620e48bec8c0a7e03974871905a1039bf879d4d2bcbb700bdd49ecafc7bd",
+        "irix-pressure-usleep-trace.json": "cbd668506da3418a5400bfb18ce7fa1167af46a72f44e1f5c6a2006df5224bcc",
+        "network-observations.tgz": "501eb96f3e89d13ff0deaa1843720898de21cc16fa5e647c541d59c8b2ef860f",
+        "network-recovery.json": "417ef86b8ddb71dd9994ced6e1ddb6779fbf2788c7c4921425f113d23dad060c",
+        "shutdown-dmesg.txt": "47489e1ce8a3ab9e1410a0532f89cfffd07cabdeb43c6a954d5e1f24e9e097b5",
+        "stall-analysis.json": "c99131fe76ee324f3f00d7d53ef290b6a2ad602fa9f99dc835099538bc23acbd",
+        "timing-analysis.json": "6bfa3e4bfdd0c55364fd429dc4c4fa00df50107db99c50a6a616c92fb82db0ff"
+      }
+    },
+    {
+      "status": "error",
+      "clean_shutdown": true,
+      "source_unchanged": true,
+      "error": "",
+      "iterations": 100,
+      "pressure_mib": 96,
+      "sampled": false,
+      "plaintext_swap": false,
+      "swap_control_status": "0",
+      "cases": [
+        {
+          "label": "greeter-unloaded",
+          "method": "usleep",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=usleep iterations=100 child=457 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=102 involuntary=17"
+        },
+        {
+          "label": "greeter-unloaded",
+          "method": "nanosleep",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=nanosleep iterations=100 child=463 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=101 involuntary=19"
+        },
+        {
+          "label": "greeter-unloaded",
+          "method": "select",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=select iterations=100 child=3036 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=101 involuntary=17"
+        },
+        {
+          "label": "greeter-pressure",
+          "method": "usleep",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=usleep iterations=100 child=431 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=102 involuntary=17"
+        },
+        {
+          "label": "greeter-pressure",
+          "method": "nanosleep",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=nanosleep iterations=100 child=507 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=101 involuntary=16"
+        },
+        {
+          "label": "greeter-pressure",
+          "method": "select",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=select iterations=100 child=2087 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=101 involuntary=19"
+        },
+        {
+          "label": "irix-pressure",
+          "method": "usleep",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=usleep iterations=100 child=3561 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=101 involuntary=22"
+        },
+        {
+          "label": "irix-pressure",
+          "method": "nanosleep",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=nanosleep iterations=100 child=3635 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=102 involuntary=18"
+        },
+        {
+          "label": "irix-pressure",
+          "method": "select",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=select iterations=100 child=760 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=101 involuntary=17"
+        }
+      ],
+      "installed_artifacts": {
+        "native_kernel_sha256": "3cd6c8da5c9263b116927978b25b4b6a901dc66216aede41be1e3edb680eede6",
+        "boot_kernel_sha256": "5526f57cc6297c2b788b3eb1d15336fc0a863045645024866c0f05a4b68107a6",
+        "module_sha256": "8e97285b0a2185c0b2b5a2ed6e4202dd9ec568a9ba1514ea45a569a8c4c1b366"
+      },
+      "memory_readback": "MEMORY_READY pid=419 bytes=100663296 checksum=3138096\nMEMORY_VERIFIED bytes=100663296 written_bytes=24576 checksum=3138096 major_before=0 major_after=0\n",
+      "run": ".work/native-sleep/native-nhofgfl6",
+      "result_sha256": "611c18bc243995190404cca1ddc74b604cc9b01afe74d93b2cf0ee82b83127f7",
+      "artifacts": {
+        "emulator-command.json": "5b66bf4603c1d201c5975993065d1faf29f890ed683ded0aca2594106c8fa719",
+        "observations.tgz": "0740d21bb650f85aa2acfd78600e8ac64ba07e3b0635ad7061deb6cb0114cd5e",
+        "shutdown-dmesg.txt": "f4ec3641e0bb387b00357731fb1db2544caa558f05363fe195a4434be705416e",
+        "timing-analysis.json": "0c6dc63b3bd70152b1c300584cb6b446412d5e78e6a3ae704e0aab6fb78268b5"
+      },
+      "kernel_build": {
+        "source_revision": "e9ff76a58affee773b767d334f98075bf86daf7e",
+        "source_status": " M sys/uvm/uvm_pdaemon.c\n M sys/uvm/uvm_swap.c\n",
+        "source_files": {
+          "sys/compat/irix_o32/irix_errno.h": "36c93897342fe90413b9252209cf300c4d63657e175a2e8e7d547826b9b9be1a",
+          "sys/compat/irix_o32/irix_errno_map.h": "e3adecc6040d14afa371eff3d6e17f126b7d074201b8e98cf842ec650a86f64f",
+          "sys/compat/irix_o32/irix_o32.c": "51359c0eb8f45f5baa9da037e47ac247cf7aaf5821a67ea0535f1b897a82b0ad",
+          "sys/compat/irix_o32/irix_signal.c": "a990e1ea3f2ceea2978407a6916cc2e4790e357fa53c8f3a63520d5f8108a40a",
+          "sys/compat/irix_o32/irix_signal.h": "8b0a98ffee639ce755cf5b7f84f79c6295f563cee015cab25afe5a0dd870e373",
+          "sys/compat/irix_o32/irix_sproc.c": "97144d2f8897cbba77dd6f00a877330bd4e5ee11efda652ca6b26d72d8af0844",
+          "sys/compat/irix_o32/irix_sproc.h": "b7ffc50caad3f78984218cf7601fc5ea1a4042dd25bdf4ab1ac6cd9b15994414",
+          "sys/compat/irix_o32/irix_stat.h": "45a7cad87190acb37732421ac589b6b287f9454dfccb874cf163622b233e1f23",
+          "sys/compat/irix_o32/irix_tty.c": "27c2a3086e38dc5b2c87d12885bc15d770e789507cf3d9375b5cf89d116d576e",
+          "sys/compat/irix_o32/irix_tty.h": "80fef54a11cd6240a384c061fe36d32c8ec81c721c2864c5033d9b489196e39b",
+          "sys/modules/compat_irix_o32/Makefile": "f021b21445210b3e1d3b758b64513e149e380e32c1e431d18b3927cd8b616c45",
+          "sys/modules/Makefile": "cc44af13029e3272dc5c80b0356bc66c396a32ff1d2ce9bda7fb7e749c091797",
+          "sys/arch/mips/conf/files.mips": "4c64715f586ccdbf7f503f0ab9f28178d45a0c5aa2da4e3b9954d2fde9dbc8a4",
+          "sys/arch/mips/mips/kobj_machdep.c": "75af7317121c508d23ca3b2c757130ecd31a77a4d7d786683d6bb5e99ad949d2",
+          "sys/kern/sys_select.c": "d3acf564acfd23f38ba32214e6e708dc28246e25b682969dafb730d92dd290b1",
+          "sys/arch/mips/mips/mips_fpu.c": "1b80f251be637c321548e84f09b5a7013168a91e5983c39aa39e7af9c3194596",
+          "sys/kern/kern_lwp.c": "dcf9c71f79e2bfcd0e07be1c78abbca975a7de3620b8529d7e9bdbc99ed912f8",
+          "sys/kern/kern_sig.c": "353ab6c2148892e30d7616cf4f75cd5317705ce65bf226fb3c2e753e940e212d",
+          "sys/kern/kern_exit.c": "a7eb4781b329d0c09d96910ace54b53be8b5f32997e8617a14fa3a72a059374b",
+          "sys/sys/proc.h": "c2670d380979e7a7c5309150e3239bcbb3985ac76761f7cca3171838b38d8b09",
+          "sys/uvm/uvm_pglist.c": "47f62159d99df61870b39a071af57a781493553f6a0c8415610cae0bc4489c39",
+          "sys/uvm/uvm_pdaemon.c": "3258680120a00055d72d2341af65b6b768032192aaec04feefcd1d508e06f27d",
+          "sys/uvm/uvm_swap.c": "5fd06622bdc25006103b2754b810b97eca870be5d8759fda7d7133b4a7dbf459",
+          "sys/compat/netbsd32/netbsd32.h": "d02736ef3f4f6add134bfef9f5459c7250af24e43cf0dfe84e7ff2a74b283f0d",
+          "sys/compat/netbsd32/netbsd32_fs.c": "a1325ab7cedf522a64177e50e45a7b7698bf87080fa8a41f8ef48deb3112a59b"
+        },
+        "artifacts": {
+          "compat_irix_o32.kmod": {
+            "path": "obj/sys/modules/compat_irix_o32/compat_irix_o32.kmod",
+            "sha256": "8e97285b0a2185c0b2b5a2ed6e4202dd9ec568a9ba1514ea45a569a8c4c1b366"
+          },
+          "netbsd": {
+            "path": "kernel-media/netbsd",
+            "sha256": "3cd6c8da5c9263b116927978b25b4b6a901dc66216aede41be1e3edb680eede6"
+          },
+          "netbsd.boot": {
+            "path": "tftp/netbsd-XIRI_INDY",
+            "sha256": "5526f57cc6297c2b788b3eb1d15336fc0a863045645024866c0f05a4b68107a6"
+          }
+        },
+        "build_manifest_sha256": "0c5d1ce29e711f38b7b9c5787877e8e560b9c2f97b0510e0f465bf57dc2bbc47"
+      }
+    },
+    {
+      "status": "observed-failure",
+      "clean_shutdown": true,
+      "source_unchanged": true,
+      "iterations": 100,
+      "pressure_mib": 96,
+      "sampled": false,
+      "plaintext_swap": false,
+      "swap_control_status": "1",
+      "cases": [],
+      "installed_artifacts": {
+        "native_kernel_sha256": "c92f0b2fcc182836393a87ca41a0315a0681e93ed3e904fad925d3c370e4dd98",
+        "boot_kernel_sha256": "5fd2dd05d1549e0e6e29a02c2d6d8c6bae2b8443edad272f12e878f24eb06e54",
+        "module_sha256": "8e97285b0a2185c0b2b5a2ed6e4202dd9ec568a9ba1514ea45a569a8c4c1b366"
+      },
+      "run": ".work/native-sleep/native-p4ctkvmw",
+      "result_sha256": "0017cf1eb64d19580726d69c097614edb8822750d3d5d6799be863a6f73110cb",
+      "artifacts": {
+        "emulator-command.json": "6bdb4911aae7d47ca3dd1ac66787fefa6b392ff4d5ba67390aef176cc4800d1d",
+        "media-replacement.json": "345139a22da479b2ed15747f72bfecc88b9f2f412a1b466e1a8f6b88843b65b6",
+        "observations.tgz": "fd745770ac3a0d41659006dc9c4a30c9746048a92a69c7a8e94d82aa3aa4bc88",
+        "shutdown-dmesg.txt": "54a8f088f3c3fe45bc48825522573390fd2460fef183918fd37d2b68d9a5156d"
+      }
+    },
+    {
+      "status": "error",
+      "clean_shutdown": true,
+      "source_unchanged": true,
+      "error": "Interrupted by signal 15",
+      "iterations": 100,
+      "pressure_mib": 96,
+      "sampled": false,
+      "plaintext_swap": true,
+      "cases": [
+        {
+          "label": "greeter-unloaded",
+          "method": "usleep",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=usleep iterations=100 child=380 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=101 involuntary=19"
+        },
+        {
+          "label": "greeter-unloaded",
+          "method": "nanosleep",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=nanosleep iterations=100 child=452 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=101 involuntary=15"
+        },
+        {
+          "label": "greeter-unloaded",
+          "method": "select",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=select iterations=100 child=235 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=101 involuntary=19"
+        },
+        {
+          "label": "greeter-pressure",
+          "method": "usleep",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=usleep iterations=100 child=3805 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=101 involuntary=17"
+        }
+      ],
+      "run": ".work/native-sleep/native-rt8bq751",
+      "result_sha256": "6b25dfe4292ce721e7daa499884c30e1a212f0ad5e119b6d26db125176b580d6",
+      "artifacts": {
+        "actual-swap-encryption.txt": "131c3d96d18f965f0ebc482e5e0bc092c5c4fee380974d5fbfceac803f4911ed",
+        "emulator-command.json": "8a42dfac4c1878f39d54aff525e6bb3f030a16b08f9be4bedff6482557b056b9",
+        "interruption-reason.json": "b4b2fd3a3f1b629cd4cfa3b1bec52523671e909d846d8a44bb5d2205961e47b4",
+        "observations.tgz": "b39669eb95d0b9aa24303a36c256fa7577855077427f17bd1447d5722d13f886",
+        "shutdown-dmesg.txt": "bd41f2855d17d8c8dbaf277b1c8503b47a215a29328ebc0fed644cc9d5967fb1"
+      }
+    },
+    {
+      "status": "error",
+      "clean_shutdown": false,
+      "source_unchanged": true,
+      "error": "Interrupted by signal 15",
+      "iterations": 100,
+      "pressure_mib": 96,
+      "sampled": false,
+      "plaintext_swap": false,
+      "cases": [],
+      "run": ".work/native-sleep/native-tt_jha6x",
+      "result_sha256": "e474cf14ef78054c964c28e317fce2e3bfb007a14d92862de6eae9e3d3066c80",
+      "artifacts": {
+        "emulator-command.json": "8632c6c18657d00e42e6507590aab9e54628827a20704a20f8bb8925b3794d5f",
+        "interruption-reason.json": "5e185a80524cd2ba528b7a962b5d882f92a16705ccb8fc833d02b082c1d7382d"
+      },
+      "kernel_build": {
+        "source_revision": "e9ff76a58affee773b767d334f98075bf86daf7e",
+        "source_status": " M sys/uvm/uvm_pdaemon.c\n",
+        "source_files": {
+          "sys/compat/irix_o32/irix_errno.h": "36c93897342fe90413b9252209cf300c4d63657e175a2e8e7d547826b9b9be1a",
+          "sys/compat/irix_o32/irix_errno_map.h": "e3adecc6040d14afa371eff3d6e17f126b7d074201b8e98cf842ec650a86f64f",
+          "sys/compat/irix_o32/irix_o32.c": "51359c0eb8f45f5baa9da037e47ac247cf7aaf5821a67ea0535f1b897a82b0ad",
+          "sys/compat/irix_o32/irix_signal.c": "a990e1ea3f2ceea2978407a6916cc2e4790e357fa53c8f3a63520d5f8108a40a",
+          "sys/compat/irix_o32/irix_signal.h": "8b0a98ffee639ce755cf5b7f84f79c6295f563cee015cab25afe5a0dd870e373",
+          "sys/compat/irix_o32/irix_sproc.c": "97144d2f8897cbba77dd6f00a877330bd4e5ee11efda652ca6b26d72d8af0844",
+          "sys/compat/irix_o32/irix_sproc.h": "b7ffc50caad3f78984218cf7601fc5ea1a4042dd25bdf4ab1ac6cd9b15994414",
+          "sys/compat/irix_o32/irix_stat.h": "45a7cad87190acb37732421ac589b6b287f9454dfccb874cf163622b233e1f23",
+          "sys/compat/irix_o32/irix_tty.c": "27c2a3086e38dc5b2c87d12885bc15d770e789507cf3d9375b5cf89d116d576e",
+          "sys/compat/irix_o32/irix_tty.h": "80fef54a11cd6240a384c061fe36d32c8ec81c721c2864c5033d9b489196e39b",
+          "sys/modules/compat_irix_o32/Makefile": "f021b21445210b3e1d3b758b64513e149e380e32c1e431d18b3927cd8b616c45",
+          "sys/modules/Makefile": "cc44af13029e3272dc5c80b0356bc66c396a32ff1d2ce9bda7fb7e749c091797",
+          "sys/arch/mips/conf/files.mips": "4c64715f586ccdbf7f503f0ab9f28178d45a0c5aa2da4e3b9954d2fde9dbc8a4",
+          "sys/arch/mips/mips/kobj_machdep.c": "75af7317121c508d23ca3b2c757130ecd31a77a4d7d786683d6bb5e99ad949d2",
+          "sys/kern/sys_select.c": "d3acf564acfd23f38ba32214e6e708dc28246e25b682969dafb730d92dd290b1",
+          "sys/arch/mips/mips/mips_fpu.c": "1b80f251be637c321548e84f09b5a7013168a91e5983c39aa39e7af9c3194596",
+          "sys/kern/kern_lwp.c": "dcf9c71f79e2bfcd0e07be1c78abbca975a7de3620b8529d7e9bdbc99ed912f8",
+          "sys/kern/kern_sig.c": "353ab6c2148892e30d7616cf4f75cd5317705ce65bf226fb3c2e753e940e212d",
+          "sys/kern/kern_exit.c": "a7eb4781b329d0c09d96910ace54b53be8b5f32997e8617a14fa3a72a059374b",
+          "sys/sys/proc.h": "c2670d380979e7a7c5309150e3239bcbb3985ac76761f7cca3171838b38d8b09",
+          "sys/uvm/uvm_pglist.c": "47f62159d99df61870b39a071af57a781493553f6a0c8415610cae0bc4489c39",
+          "sys/uvm/uvm_pdaemon.c": "a8913c43039c551c0fcd487abafa7b686f37c4037424cc367dca63e9eca55e28",
+          "sys/compat/netbsd32/netbsd32.h": "d02736ef3f4f6add134bfef9f5459c7250af24e43cf0dfe84e7ff2a74b283f0d",
+          "sys/compat/netbsd32/netbsd32_fs.c": "a1325ab7cedf522a64177e50e45a7b7698bf87080fa8a41f8ef48deb3112a59b"
+        },
+        "artifacts": {
+          "compat_irix_o32.kmod": {
+            "path": "obj/sys/modules/compat_irix_o32/compat_irix_o32.kmod",
+            "sha256": "8e97285b0a2185c0b2b5a2ed6e4202dd9ec568a9ba1514ea45a569a8c4c1b366"
+          },
+          "netbsd": {
+            "path": "kernel-media/netbsd",
+            "sha256": "1280fd8b62e93fb8fde3ddffbaeeae011d22bde15f7469087a9f59d95102b9dc"
+          },
+          "netbsd.boot": {
+            "path": "tftp/netbsd-XIRI_INDY",
+            "sha256": "4c98e0b87e15093e3eed83c80f9d58ff8c8863223849d52c01253fd9a736f03c"
+          }
+        },
+        "build_manifest_sha256": "2701175d6ae005b60d7d832e187e571d70bac2894586dcde8c126dcf13bfbf61"
+      }
+    },
+    {
+      "status": "error",
+      "clean_shutdown": true,
+      "source_unchanged": true,
+      "error": "readback stayed resident; swap-in unproven",
+      "iterations": 100,
+      "pressure_mib": 96,
+      "sampled": false,
+      "plaintext_swap": false,
+      "swap_control_status": "0",
+      "cases": [
+        {
+          "label": "greeter-unloaded",
+          "method": "usleep",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=usleep iterations=100 child=453 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=102 involuntary=20"
+        },
+        {
+          "label": "greeter-unloaded",
+          "method": "nanosleep",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=nanosleep iterations=100 child=463 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=101 involuntary=17"
+        },
+        {
+          "label": "greeter-unloaded",
+          "method": "select",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=select iterations=100 child=407 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=101 involuntary=19"
+        },
+        {
+          "label": "greeter-pressure",
+          "method": "usleep",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=usleep iterations=100 child=680 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=101 involuntary=13"
+        },
+        {
+          "label": "greeter-pressure",
+          "method": "nanosleep",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=nanosleep iterations=100 child=3758 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=101 involuntary=17"
+        },
+        {
+          "label": "greeter-pressure",
+          "method": "select",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=select iterations=100 child=3357 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=101 involuntary=18"
+        },
+        {
+          "label": "irix-pressure",
+          "method": "usleep",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=usleep iterations=100 child=1308 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=102 involuntary=29"
+        },
+        {
+          "label": "irix-pressure",
+          "method": "nanosleep",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=nanosleep iterations=100 child=920 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=101 involuntary=16"
+        },
+        {
+          "label": "irix-pressure",
+          "method": "select",
+          "status": "0",
+          "summary": "SLEEP_RESULT method=select iterations=100 child=946 rc=0 observer_failed=0 minor_faults=36 major_faults=0 voluntary=101 involuntary=16"
+        }
+      ],
+      "installed_artifacts": {
+        "native_kernel_sha256": "3cd6c8da5c9263b116927978b25b4b6a901dc66216aede41be1e3edb680eede6",
+        "boot_kernel_sha256": "5526f57cc6297c2b788b3eb1d15336fc0a863045645024866c0f05a4b68107a6",
+        "module_sha256": "8e97285b0a2185c0b2b5a2ed6e4202dd9ec568a9ba1514ea45a569a8c4c1b366"
+      },
+      "memory_readback": "MEMORY_READY pid=479 bytes=100663296 checksum=3138096\nMEMORY_DEACTIVATED bytes=100663296\nMEMORY_VERIFIED bytes=100663296 written_bytes=24576 checksum=3138096 major_before=0 major_after=0\n",
+      "readback_pressure": "MEMORY_READY pid=3057 bytes=33554432 checksum=1045008\n",
+      "run": ".work/native-sleep/native-zsqysjp7",
+      "result_sha256": "375f7e0cade6fbbb161f40fc2c24af2f97cb5369bfaa9e6b2b3ccfbd5639a6da",
+      "artifacts": {
+        "emulator-command.json": "8f414b1b266686a6f5583338a4e8a68cec1f419e47776295228dcc6118884636",
+        "observations.tgz": "28e638df408f07773d30341c5713ba06ebd485ffae8e779d4a2f792ab8f2b61d",
+        "shutdown-dmesg.txt": "8fe3e2db5cbd8f9a78262c6a1369a0b058a3dcea548211233d4c456560dc71a1",
+        "timing-analysis.json": "2a910c816338db39fa381b11c0633da00040e0bacba1a1c98891668e0d6210d7"
+      },
+      "kernel_build": {
+        "source_revision": "e9ff76a58affee773b767d334f98075bf86daf7e",
+        "source_status": " M sys/uvm/uvm_pdaemon.c\n M sys/uvm/uvm_swap.c\n",
+        "source_files": {
+          "sys/compat/irix_o32/irix_errno.h": "36c93897342fe90413b9252209cf300c4d63657e175a2e8e7d547826b9b9be1a",
+          "sys/compat/irix_o32/irix_errno_map.h": "e3adecc6040d14afa371eff3d6e17f126b7d074201b8e98cf842ec650a86f64f",
+          "sys/compat/irix_o32/irix_o32.c": "51359c0eb8f45f5baa9da037e47ac247cf7aaf5821a67ea0535f1b897a82b0ad",
+          "sys/compat/irix_o32/irix_signal.c": "a990e1ea3f2ceea2978407a6916cc2e4790e357fa53c8f3a63520d5f8108a40a",
+          "sys/compat/irix_o32/irix_signal.h": "8b0a98ffee639ce755cf5b7f84f79c6295f563cee015cab25afe5a0dd870e373",
+          "sys/compat/irix_o32/irix_sproc.c": "97144d2f8897cbba77dd6f00a877330bd4e5ee11efda652ca6b26d72d8af0844",
+          "sys/compat/irix_o32/irix_sproc.h": "b7ffc50caad3f78984218cf7601fc5ea1a4042dd25bdf4ab1ac6cd9b15994414",
+          "sys/compat/irix_o32/irix_stat.h": "45a7cad87190acb37732421ac589b6b287f9454dfccb874cf163622b233e1f23",
+          "sys/compat/irix_o32/irix_tty.c": "27c2a3086e38dc5b2c87d12885bc15d770e789507cf3d9375b5cf89d116d576e",
+          "sys/compat/irix_o32/irix_tty.h": "80fef54a11cd6240a384c061fe36d32c8ec81c721c2864c5033d9b489196e39b",
+          "sys/modules/compat_irix_o32/Makefile": "f021b21445210b3e1d3b758b64513e149e380e32c1e431d18b3927cd8b616c45",
+          "sys/modules/Makefile": "cc44af13029e3272dc5c80b0356bc66c396a32ff1d2ce9bda7fb7e749c091797",
+          "sys/arch/mips/conf/files.mips": "4c64715f586ccdbf7f503f0ab9f28178d45a0c5aa2da4e3b9954d2fde9dbc8a4",
+          "sys/arch/mips/mips/kobj_machdep.c": "75af7317121c508d23ca3b2c757130ecd31a77a4d7d786683d6bb5e99ad949d2",
+          "sys/kern/sys_select.c": "d3acf564acfd23f38ba32214e6e708dc28246e25b682969dafb730d92dd290b1",
+          "sys/arch/mips/mips/mips_fpu.c": "1b80f251be637c321548e84f09b5a7013168a91e5983c39aa39e7af9c3194596",
+          "sys/kern/kern_lwp.c": "dcf9c71f79e2bfcd0e07be1c78abbca975a7de3620b8529d7e9bdbc99ed912f8",
+          "sys/kern/kern_sig.c": "353ab6c2148892e30d7616cf4f75cd5317705ce65bf226fb3c2e753e940e212d",
+          "sys/kern/kern_exit.c": "a7eb4781b329d0c09d96910ace54b53be8b5f32997e8617a14fa3a72a059374b",
+          "sys/sys/proc.h": "c2670d380979e7a7c5309150e3239bcbb3985ac76761f7cca3171838b38d8b09",
+          "sys/uvm/uvm_pglist.c": "47f62159d99df61870b39a071af57a781493553f6a0c8415610cae0bc4489c39",
+          "sys/uvm/uvm_pdaemon.c": "3258680120a00055d72d2341af65b6b768032192aaec04feefcd1d508e06f27d",
+          "sys/uvm/uvm_swap.c": "5fd06622bdc25006103b2754b810b97eca870be5d8759fda7d7133b4a7dbf459",
+          "sys/compat/netbsd32/netbsd32.h": "d02736ef3f4f6add134bfef9f5459c7250af24e43cf0dfe84e7ff2a74b283f0d",
+          "sys/compat/netbsd32/netbsd32_fs.c": "a1325ab7cedf522a64177e50e45a7b7698bf87080fa8a41f8ef48deb3112a59b"
+        },
+        "artifacts": {
+          "compat_irix_o32.kmod": {
+            "path": "obj/sys/modules/compat_irix_o32/compat_irix_o32.kmod",
+            "sha256": "8e97285b0a2185c0b2b5a2ed6e4202dd9ec568a9ba1514ea45a569a8c4c1b366"
+          },
+          "netbsd": {
+            "path": "kernel-media/netbsd",
+            "sha256": "3cd6c8da5c9263b116927978b25b4b6a901dc66216aede41be1e3edb680eede6"
+          },
+          "netbsd.boot": {
+            "path": "tftp/netbsd-XIRI_INDY",
+            "sha256": "5526f57cc6297c2b788b3eb1d15336fc0a863045645024866c0f05a4b68107a6"
+          }
+        },
+        "build_manifest_sha256": "0c5d1ce29e711f38b7b9c5787877e8e560b9c2f97b0510e0f465bf57dc2bbc47"
+      }
+    }
+  ],
+  "baseline_stalls": {
+    "native-_qotjx9b": {
+      "mono_ns": 13513827515,
+      "real_ns": 13513819182,
+      "swap": 290,
+      "pageins": 0,
+      "pgwait": 0,
+      "intrs": 1434,
+      "switches": 38,
+      "cpu_ticks": [
+        0,
+        0,
+        1290,
+        35,
+        9
+      ],
+      "before": {
+        "mono_ns": "547770829149",
+        "real_ns": "1793908490105258997",
+        "pid": "830",
+        "present": "1",
+        "state": "3",
+        "flags": "84",
+        "schedflags": "0",
+        "wmesg": "nanoslp",
+        "lwp": "65767aa525d0b11c",
+        "uarea": "dc025d35f8b18c3d",
+        "wchan": "65767aa525d0b11c",
+        "slptime": "0",
+        "free": "123",
+        "active": "18744",
+        "inactive": "9000",
+        "paging": "0",
+        "swap": "1198",
+        "pageins": "200",
+        "pgwait": "0",
+        "intrs": "113296",
+        "switches": "50475",
+        "cpu": "11202,1924,11680,1318,28422"
+      },
+      "after": {
+        "mono_ns": "561284656664",
+        "real_ns": "1793908503619078179",
+        "pid": "830",
+        "present": "1",
+        "state": "2",
+        "flags": "4",
+        "schedflags": "0",
+        "lwp": "65767aa525d0b11c",
+        "uarea": "dc025d35f8b18c3d",
+        "wchan": "c6a5698ca3ae2e28",
+        "slptime": "0",
+        "free": "680",
+        "active": "18131",
+        "inactive": "9103",
+        "paging": "0",
+        "swap": "1488",
+        "pageins": "200",
+        "pgwait": "0",
+        "intrs": "114730",
+        "switches": "50513",
+        "cpu": "11202,1924,12970,1353,28431"
+      },
+      "long_syscalls": [
+        {
+          "pid": 632,
+          "code": 430,
+          "error": 0,
+          "elapsed_ns": 13512273303,
+          "begin": {
+            "offset": 255384,
+            "kind": 1,
+            "pid": 632,
+            "lid": 632,
+            "time_ns": 1793908490106713301,
+            "command": "sleep-probe",
+            "code": 430,
+            "args": "000000007fff76700000000000000000"
+          },
+          "end": {
+            "offset": 257160,
+            "kind": 2,
+            "pid": 632,
+            "lid": 632,
+            "time_ns": 1793908503618986604,
+            "command": "sleep-probe",
+            "code": 430,
+            "error": 0,
+            "retval": 0,
+            "retval1": 0
+          }
+        },
+        {
+          "pid": 830,
+          "code": 430,
+          "error": 0,
+          "elapsed_ns": 13463667455,
+          "begin": {
+            "offset": 256952,
+            "kind": 1,
+            "pid": 830,
+            "lid": 830,
+            "time_ns": 1793908490157112179,
+            "command": "sleep-probe",
+            "code": 430,
+            "args": "000000007fff75880000000000000000"
+          },
+          "end": {
+            "offset": 258688,
+            "kind": 2,
+            "pid": 830,
+            "lid": 830,
+            "time_ns": 1793908503620779634,
+            "command": "sleep-probe",
+            "code": 430,
+            "error": 0,
+            "retval": 0,
+            "retval1": 0
+          }
+        }
+      ],
+      "network_recovery": {
+        "archive": "network-observations.tgz",
+        "sha256": "86722b4fb0e3e4ab3c867400e6cea286e391872aa85dcddac474a0e11ad2eddd",
+        "bytes": 508585,
+        "guest_sha_verified": true,
+        "original_serial_transfer_interrupted": true
+      }
+    },
+    "native-iqlyn9vr": {
+      "mono_ns": 13712078454,
+      "real_ns": 13712064393,
+      "swap": 273,
+      "pageins": 0,
+      "pgwait": 0,
+      "intrs": 1519,
+      "switches": 43,
+      "cpu_ticks": [
+        1,
+        0,
+        1318,
+        31,
+        0
+      ],
+      "before": {
+        "mono_ns": "581821492240",
+        "real_ns": "1793909129139972392",
+        "pid": "710",
+        "present": "1",
+        "state": "3",
+        "flags": "84",
+        "schedflags": "0",
+        "wmesg": "nanoslp",
+        "lwp": "4a8f14e063eac312",
+        "uarea": "1076ad78e881bc1e",
+        "wchan": "4a8f14e063eac312",
+        "slptime": "0",
+        "free": "126",
+        "active": "18737",
+        "inactive": "9000",
+        "paging": "0",
+        "swap": "1236",
+        "pageins": "207",
+        "pgwait": "0",
+        "intrs": "117922",
+        "switches": "52004",
+        "cpu": "12358,2025,12848,1585,29104"
+      },
+      "after": {
+        "mono_ns": "595533570694",
+        "real_ns": "1793909142852036785",
+        "pid": "710",
+        "present": "1",
+        "state": "2",
+        "flags": "4",
+        "schedflags": "0",
+        "lwp": "4a8f14e063eac312",
+        "uarea": "1076ad78e881bc1e",
+        "wchan": "b2eaecd2ae58c11a",
+        "slptime": "0",
+        "free": "680",
+        "active": "18134",
+        "inactive": "9101",
+        "paging": "0",
+        "swap": "1509",
+        "pageins": "207",
+        "pgwait": "0",
+        "intrs": "119441",
+        "switches": "52047",
+        "cpu": "12359,2025,14166,1616,29104"
+      },
+      "long_syscalls": [
+        {
+          "pid": 709,
+          "code": 430,
+          "error": 0,
+          "elapsed_ns": 13710449606,
+          "begin": {
+            "offset": 297000,
+            "kind": 1,
+            "pid": 709,
+            "lid": 709,
+            "time_ns": 1793909129141496634,
+            "command": "sleep-probe",
+            "code": 430,
+            "args": "000000007fff79800000000000000000"
+          },
+          "end": {
+            "offset": 298776,
+            "kind": 2,
+            "pid": 709,
+            "lid": 709,
+            "time_ns": 1793909142851946240,
+            "command": "sleep-probe",
+            "code": 430,
+            "error": 0,
+            "retval": 0,
+            "retval1": 0
+          }
+        },
+        {
+          "pid": 710,
+          "code": 430,
+          "error": 0,
+          "elapsed_ns": 13673266939,
+          "begin": {
+            "offset": 298568,
+            "kind": 1,
+            "pid": 710,
+            "lid": 710,
+            "time_ns": 1793909129180333240,
+            "command": "sleep-probe",
+            "code": 430,
+            "args": "000000007fff79380000000000000000"
+          },
+          "end": {
+            "offset": 300304,
+            "kind": 2,
+            "pid": 710,
+            "lid": 710,
+            "time_ns": 1793909142853600179,
+            "command": "sleep-probe",
+            "code": 430,
+            "error": 0,
+            "retval": 0,
+            "retval1": 0
+          }
+        }
+      ],
+      "network_recovery": {
+        "archive": "network-observations.tgz",
+        "sha256": "501eb96f3e89d13ff0deaa1843720898de21cc16fa5e647c541d59c8b2ef860f",
+        "bytes": 508086,
+        "guest_sha_verified": true,
+        "original_serial_transfer_interrupted": true
+      }
+    }
+  },
+  "sampled_kernel": {
+    "sample_count": 243,
+    "pauses_total": 30.19086430541938,
+    "pause_max": 0.129761382995639,
+    "functions": {
+      "inv_shift_rows": 4,
+      "br_aes_ct_bitslice_Sbox": 9,
+      "fd_getfile": 1,
+      "shift_rows": 13,
+      "rotr16": 3,
+      "pool_cache_get_paddr": 1,
+      "??": 9,
+      "add_round_key": 2,
+      "br_aes_ct_ortho": 2,
+      "mix_columns": 2,
+      "cpu_idle": 133,
+      "SHA256_Transform": 1,
+      "nullop": 54,
+      "br_aes_ct_bitslice_encrypt": 1,
+      "inv_mix_columns": 1,
+      "pool_cache_put_paddr": 1,
+      "delay": 1,
+      "vm_physseg_find_bsearch": 1,
+      "_splsw_splhigh": 1,
+      "syscall": 1,
+      "uvm_pagewakeup": 1,
+      "strlen": 1
+    },
+    "addresses": {
+      "0xffffffff8811aa44": {
+        "function": "inv_shift_rows",
+        "location": "/var/home/salvogendut/Dev/NetBSD-xiri/sys/crypto/aes/aes_ct_dec.c:115"
+      },
+      "0xffffffff8811aa30": {
+        "function": "inv_shift_rows",
+        "location": "/var/home/salvogendut/Dev/NetBSD-xiri/sys/crypto/aes/aes_ct_dec.c:115"
+      },
+      "0xffffffff88119f3c": {
+        "function": "br_aes_ct_bitslice_Sbox",
+        "location": "/var/home/salvogendut/Dev/NetBSD-xiri/sys/crypto/aes/aes_ct.c:208"
+      },
+      "0xffffffff882dfcf0": {
+        "function": "fd_getfile",
+        "location": "/var/home/salvogendut/Dev/NetBSD-xiri/sys/kern/kern_descrip.c:380"
+      },
+      "0xffffffff88119e34": {
+        "function": "br_aes_ct_bitslice_Sbox",
+        "location": "/var/home/salvogendut/Dev/NetBSD-xiri/sys/crypto/aes/aes_ct.c:146"
+      },
+      "0xffffffff8811b190": {
+        "function": "shift_rows",
+        "location": "/var/home/salvogendut/Dev/NetBSD-xiri/sys/crypto/aes/aes_ct_enc.c:56"
+      },
+      "0xffffffff8811b34c": {
+        "function": "rotr16",
+        "location": "/var/home/salvogendut/Dev/NetBSD-xiri/sys/crypto/aes/aes_ct_enc.c:66"
+      },
+      "0xffffffff8811b17c": {
+        "function": "shift_rows",
+        "location": "/var/home/salvogendut/Dev/NetBSD-xiri/sys/crypto/aes/aes_ct_enc.c:52 (discriminator 1)"
+      },
+      "0xffffffff88341368": {
+        "function": "pool_cache_get_paddr",
+        "location": "/var/home/salvogendut/Dev/NetBSD-xiri/sys/kern/subr_pool.c:2698"
+      },
+      "0x000000000fa517e8": {
+        "function": "??",
+        "location": "??:0"
+      },
+      "0xffffffff8811b39c": {
+        "function": "add_round_key",
+        "location": "/var/home/salvogendut/Dev/NetBSD-xiri/sys/crypto/aes/aes_ct_enc.c:37"
+      },
+      "0xffffffff8811a0ec": {
+        "function": "br_aes_ct_ortho",
+        "location": "/var/home/salvogendut/Dev/NetBSD-xiri/sys/crypto/aes/aes_ct.c:243 (discriminator 2)"
+      },
+      "0xffffffff8811b310": {
+        "function": "rotr16",
+        "location": "/var/home/salvogendut/Dev/NetBSD-xiri/sys/crypto/aes/aes_ct_enc.c:66"
+      },
+      "0xffffffff8811b488": {
+        "function": "shift_rows",
+        "location": "/var/home/salvogendut/Dev/NetBSD-xiri/sys/crypto/aes/aes_ct_enc.c:52 (discriminator 1)"
+      },
+      "0xffffffff88119f40": {
+        "function": "br_aes_ct_bitslice_Sbox",
+        "location": "/var/home/salvogendut/Dev/NetBSD-xiri/sys/crypto/aes/aes_ct.c:209"
+      },
+      "0xffffffff88119f64": {
+        "function": "br_aes_ct_bitslice_Sbox",
+        "location": "/var/home/salvogendut/Dev/NetBSD-xiri/sys/crypto/aes/aes_ct.c:215"
+      },
+      "0xffffffff8811b260": {
+        "function": "mix_columns",
+        "location": "/var/home/salvogendut/Dev/NetBSD-xiri/sys/crypto/aes/aes_ct_enc.c:83"
+      },
+      "0xffffffff8811b1b0": {
+        "function": "shift_rows",
+        "location": "/var/home/salvogendut/Dev/NetBSD-xiri/sys/crypto/aes/aes_ct_enc.c:59"
+      },
+      "0xffffffff8811b20c": {
+        "function": "mix_columns",
+        "location": "/var/home/salvogendut/Dev/NetBSD-xiri/sys/crypto/aes/aes_ct_enc.c:86"
+      },
+      "0xffffffff88119ed4": {
+        "function": "br_aes_ct_bitslice_Sbox",
+        "location": "/var/home/salvogendut/Dev/NetBSD-xiri/sys/crypto/aes/aes_ct.c:178"
+      },
+      "0xffffffff8811b3c4": {
+        "function": "add_round_key",
+        "location": "/var/home/salvogendut/Dev/NetBSD-xiri/sys/crypto/aes/aes_ct_enc.c:39"
+      },
+      "0xffffffff8811b46c": {
+        "function": "shift_rows",
+        "location": "/var/home/salvogendut/Dev/NetBSD-xiri/sys/crypto/aes/aes_ct_enc.c:58"
+      },
+      "0xffffffff8811b31c": {
+        "function": "rotr16",
+        "location": "/var/home/salvogendut/Dev/NetBSD-xiri/sys/crypto/aes/aes_ct_enc.c:66"
+      },
+      "0xffffffff8807236c": {
+        "function": "cpu_idle",
+        "location": "/var/home/salvogendut/Dev/NetBSD-xiri/sys/arch/mips/mips/cpu_subr.c:623"
+      },
+      "0x000000000026700c": {
+        "function": "??",
+        "location": "??:0"
+      },
+      "0xffffffff8811aa58": {
+        "function": "inv_shift_rows",
+        "location": "/var/home/salvogendut/Dev/NetBSD-xiri/sys/crypto/aes/aes_ct_dec.c:116"
+      },
+      "0xffffffff8811aa50": {
+        "function": "inv_shift_rows",
+        "location": "/var/home/salvogendut/Dev/NetBSD-xiri/sys/crypto/aes/aes_ct_dec.c:116"
+      },
+      "0x0000000078566bfc": {
+        "function": "??",
+        "location": "??:0"
+      },
+      "0xffffffff8843419c": {
+        "function": "SHA256_Transform",
+        "location": "/var/home/salvogendut/Dev/NetBSD-xiri/sys/lib/libkern/../../../common/lib/libc/hash/sha2/sha2.c:410"
+      },
+      "0xffffffff88072368": {
+        "function": "cpu_idle",
+        "location": "/var/home/salvogendut/Dev/NetBSD-xiri/sys/arch/mips/mips/cpu_subr.c:623"
+      },
+      "0xffffffff88072370": {
+        "function": "cpu_idle",
+        "location": "/var/home/salvogendut/Dev/NetBSD-xiri/sys/arch/mips/mips/cpu_subr.c:623"
+      },
+      "0xffffffff88072364": {
+        "function": "cpu_idle",
+        "location": "/var/home/salvogendut/Dev/NetBSD-xiri/sys/arch/mips/mips/cpu_subr.c:627"
+      },
+      "0xffffffff88072360": {
+        "function": "cpu_idle",
+        "location": "/var/home/salvogendut/Dev/NetBSD-xiri/sys/arch/mips/mips/cpu_subr.c:627"
+      },
+      "0xffffffff88311668": {
+        "function": "nullop",
+        "location": "/var/home/salvogendut/Dev/NetBSD-xiri/sys/kern/kern_stub.c:323"
+      },
+      "0xffffffff8811b1c4": {
+        "function": "shift_rows",
+        "location": "/var/home/salvogendut/Dev/NetBSD-xiri/sys/crypto/aes/aes_ct_enc.c:59"
+      },
+      "0xffffffff88119ce0": {
+        "function": "br_aes_ct_bitslice_Sbox",
+        "location": "/var/home/salvogendut/Dev/NetBSD-xiri/sys/crypto/aes/aes_ct.c:69"
+      },
+      "0xffffffff8811b19c": {
+        "function": "shift_rows",
+        "location": "/var/home/salvogendut/Dev/NetBSD-xiri/sys/crypto/aes/aes_ct_enc.c:57"
+      },
+      "0xffffffff8811b1c8": {
+        "function": "shift_rows",
+        "location": "/var/home/salvogendut/Dev/NetBSD-xiri/sys/crypto/aes/aes_ct_enc.c:59"
+      },
+      "0xffffffff8811b1d0": {
+        "function": "shift_rows",
+        "location": "/var/home/salvogendut/Dev/NetBSD-xiri/sys/crypto/aes/aes_ct_enc.c:52 (discriminator 1)"
+      },
+      "0xffffffff8811b1cc": {
+        "function": "shift_rows",
+        "location": "/var/home/salvogendut/Dev/NetBSD-xiri/sys/crypto/aes/aes_ct_enc.c:52 (discriminator 1)"
+      },
+      "0xffffffff8811b178": {
+        "function": "shift_rows",
+        "location": "/var/home/salvogendut/Dev/NetBSD-xiri/sys/crypto/aes/aes_ct_enc.c:55"
+      },
+      "0xffffffff88119cf4": {
+        "function": "br_aes_ct_bitslice_Sbox",
+        "location": "/var/home/salvogendut/Dev/NetBSD-xiri/sys/crypto/aes/aes_ct.c:85"
+      },
+      "0xffffffff88119dc4": {
+        "function": "br_aes_ct_bitslice_Sbox",
+        "location": "/var/home/salvogendut/Dev/NetBSD-xiri/sys/crypto/aes/aes_ct.c:128"
+      },
+      "0xffffffff8811b408": {
+        "function": "br_aes_ct_bitslice_encrypt",
+        "location": "/var/home/salvogendut/Dev/NetBSD-xiri/sys/crypto/aes/aes_ct_enc.c:110 (discriminator 1)"
+      },
+      "0xffffffff8811a110": {
+        "function": "br_aes_ct_ortho",
+        "location": "/var/home/salvogendut/Dev/NetBSD-xiri/sys/crypto/aes/aes_ct.c:243 (discriminator 2)"
+      },
+      "0xffffffff88119df4": {
+        "function": "br_aes_ct_bitslice_Sbox",
+        "location": "/var/home/salvogendut/Dev/NetBSD-xiri/sys/crypto/aes/aes_ct.c:130"
+      },
+      "0xffffffff8811acac": {
+        "function": "inv_mix_columns",
+        "location": "/var/home/salvogendut/Dev/NetBSD-xiri/sys/crypto/aes/aes_ct_dec.c:157"
+      },
+      "0xffffffff8831166c": {
+        "function": "nullop",
+        "location": "/var/home/salvogendut/Dev/NetBSD-xiri/sys/kern/kern_stub.c:323"
+      },
+      "0xffffffff8834151c": {
+        "function": "pool_cache_put_paddr",
+        "location": "/var/home/salvogendut/Dev/NetBSD-xiri/sys/kern/subr_pool.c:2901"
+      },
+      "0x00000000782d7fa4": {
+        "function": "??",
+        "location": "??:0"
+      },
+      "0x00000000782d7b28": {
+        "function": "??",
+        "location": "??:0"
+      },
+      "0xffffffff8806d740": {
+        "function": "delay",
+        "location": "/var/home/salvogendut/Dev/NetBSD-xiri/sys/arch/sgimips/sgimips/machdep.c:836 (discriminator 1)"
+      },
+      "0x00000000782cf0cc": {
+        "function": "??",
+        "location": "??:0"
+      },
+      "0x00000000782d7fa0": {
+        "function": "??",
+        "location": "??:0"
+      },
+      "0xffffffff882ca26c": {
+        "function": "vm_physseg_find_bsearch",
+        "location": "/var/home/salvogendut/Dev/NetBSD-xiri/sys/uvm/uvm_physseg.c:906 (discriminator 2)"
+      },
+      "0xffffffff880719cc": {
+        "function": "_splsw_splhigh",
+        "location": "spl.o:?"
+      },
+      "0xffffffff8807b6f0": {
+        "function": "syscall",
+        "location": "/var/home/salvogendut/Dev/NetBSD-xiri/sys/arch/mips/mips/syscall.c:253"
+      },
+      "0x00000000781c8c04": {
+        "function": "??",
+        "location": "??:0"
+      },
+      "0xffffffff882c48c8": {
+        "function": "uvm_pagewakeup",
+        "location": "/var/home/salvogendut/Dev/NetBSD-xiri/sys/uvm/uvm_page.c:1663"
+      },
+      "0xffffffff88455070": {
+        "function": "strlen",
+        "location": "??:?"
+      },
+      "0x0000000000026640": {
+        "function": "??",
+        "location": "??:0"
+      }
+    },
+    "samples_sha256": "a53d7518343c1abb461b51ceb1c9d7f164538ed4b9e333d6dcc5b49301f5aad4",
+    "note": "Diagnostic pause/read/start samples; stack words are not an unwound backtrace"
+  },
+  "capture_comparison": {
+    "boot-p_s6tcc_/greeter": {
+      "dimensions": [
+        1282,
+        1024
+      ],
+      "original_sha256": "f562f7135f9502985aaca013a00746112376dbeac307c9f24cd801df6146e54b",
+      "wait_sha256": "f562f7135f9502985aaca013a00746112376dbeac307c9f24cd801df6146e54b",
+      "same_pixels": true,
+      "original_extrema": [
+        [
+          0,
+          255
+        ],
+        [
+          0,
+          255
+        ],
+        [
+          0,
+          255
+        ]
+      ],
+      "wait_extrema": [
+        [
+          0,
+          255
+        ],
+        [
+          0,
+          255
+        ],
+        [
+          0,
+          255
+        ]
+      ]
+    },
+    "boot-p_s6tcc_/failure": {
+      "dimensions": [
+        1282,
+        1024
+      ],
+      "original_sha256": "32741367cf35f41de357eecfc136b857c452ad1a6bde571c091652ff3bcb6547",
+      "wait_sha256": "32741367cf35f41de357eecfc136b857c452ad1a6bde571c091652ff3bcb6547",
+      "same_pixels": true,
+      "original_extrema": [
+        [
+          0,
+          255
+        ],
+        [
+          0,
+          255
+        ],
+        [
+          0,
+          255
+        ]
+      ],
+      "wait_extrema": [
+        [
+          0,
+          255
+        ],
+        [
+          0,
+          255
+        ],
+        [
+          0,
+          255
+        ]
+      ]
+    },
+    "boot-osm2yg4q/greeter": {
+      "dimensions": [
+        1282,
+        1024
+      ],
+      "original_sha256": "2f30803d11921316c8692e312d2bc96a6ec406e629575655076668d643ffa30f",
+      "wait_sha256": "2f30803d11921316c8692e312d2bc96a6ec406e629575655076668d643ffa30f",
+      "same_pixels": true,
+      "original_extrema": [
+        [
+          0,
+          255
+        ],
+        [
+          0,
+          255
+        ],
+        [
+          0,
+          255
+        ]
+      ],
+      "wait_extrema": [
+        [
+          0,
+          255
+        ],
+        [
+          0,
+          255
+        ],
+        [
+          0,
+          255
+        ]
+      ]
+    },
+    "boot-osm2yg4q/failure": {
+      "dimensions": [
+        1282,
+        1024
+      ],
+      "original_sha256": "2f30803d11921316c8692e312d2bc96a6ec406e629575655076668d643ffa30f",
+      "wait_sha256": "9a8deeb25a5a4cbb354193743b60ad9501e78edf564b700e86307839f9313a01",
+      "same_pixels": false,
+      "original_extrema": [
+        [
+          0,
+          255
+        ],
+        [
+          0,
+          255
+        ],
+        [
+          0,
+          255
+        ]
+      ],
+      "wait_extrema": [
+        [
+          0,
+          255
+        ],
+        [
+          0,
+          255
+        ],
+        [
+          0,
+          255
+        ]
+      ]
+    }
+  },
+  "system_runs": [
+    {
+      "status": "error",
+      "clean_shutdown": true,
+      "source_unchanged": true,
+      "error": "guest command failed (1): su -l xiritest -c 'XAUTHORITY=/tmp/.XauthKUgAWS ktrace -t csw -f /tmp/xiri-stability/irix-1-unix.log.ktrace /tmp/xiri-stability/xinput :0 100 10' >/tmp/xiri-stability/irix-1-unix.log 2>&1; rc=$?; echo \"$rc\" >/tmp/xiri-stability/irix-1-unix.log.status; test \"$rc\" = 0\nsu -l xiritest -c 'XAUTHORITY=/tmp/.XauthKUgAWS ktrace -t csw -f /tmp \b/xiri-stability/irix-1-unix.log.ktrace /tmp/xiri-stability/xinput :0 100 10' >/t \bmp/xiri-stability/irix-1-unix.log 2>&1; rc=$?; echo \"$rc\" >/tmp/xiri-stability/i \brix-1-unix.log.status; test \"$rc\" = 0; xiri_rc=$?; printf '\\nXIRI_80b2ca18f92d49 \b8db5b44d38152f6c0b_RC=%s\\n' \"$xiri_rc\"\n\nXIRI_80b2ca18f92d498db5b44d38152f6c0b_RC=1\nxiri-indy# ",
+      "parameters": {
+        "kernel_build": null,
+        "seed": null,
+        "runs": 1,
+        "sessions": 2,
+        "input_iterations": 100,
+        "child_iterations": 20,
+        "fairness_iterations": 0,
+        "debug_failure": true,
+        "trace_native": true,
+        "halt_active": true,
+        "pressure_mib": 96,
+        "require_cd9660": true,
+        "acrobat_replay": 0
+      },
+      "phases": [
+        {
+          "kind": "input",
+          "label": "greeter",
+          "user": "root",
+          "display": ":0",
+          "iterations": 100,
+          "events": 200,
+          "host_seconds": 46.931,
+          "log_file": "greeter-unix.log",
+          "log_sha256": "2caee7d5429192775aec2520c3d1b0c6a244d0eefa4d2213257126ea5d72fed5"
+        },
+        {
+          "kind": "input",
+          "label": "greeter",
+          "user": "root",
+          "display": "127.0.0.1:0",
+          "iterations": 100,
+          "events": 200,
+          "host_seconds": 47.776,
+          "log_file": "greeter-tcp.log",
+          "log_sha256": "2a0f792ce24a0d1be16483d6d4644141e7b73f153d991006c1332cd2ab142fb2"
+        },
+        {
+          "kind": "children",
+          "label": "greeter",
+          "iterations": 20,
+          "launches": 40,
+          "adversarial": true,
+          "host_seconds": 100.376
+        }
+      ],
+      "sessions": [],
+      "cd9660_regression": {
+        "checks": 158,
+        "failures": 0,
+        "expected_fixed": true
+      },
+      "guard_sha256": "e33ee6bd22afc26aa5f16d7f4e6a78eed966a301a7ee9233b33556a39e735aa7",
+      "native_libc_sha256": "1b51fa3410950e25f3b17f70cf6f4eeba684191643d69afa25efda4f5d9ecb66",
+      "xorg_sha256": "48a4a07110209f604e75bd03f82494be838a80d51d12492769b323f3a1595ee4",
+      "run": ".work/system-stability/boot-p_s6tcc_",
+      "result_sha256": "0a7ae3af4f8ed8d0b4abef4e1e4a74d97e72fb65c9aba46dae9d0c36617f5024",
+      "candidate_kernel": null,
+      "evidence": {
+        "failure-kernel.log": "e25c4ac5760d9d56623a8a1a1f630b18c6210a005e9edbdf436a0eaa435f103d",
+        "failure.png": "32741367cf35f41de357eecfc136b857c452ad1a6bde571c091652ff3bcb6547"
+      }
+    },
+    {
+      "status": "error",
+      "clean_shutdown": true,
+      "source_unchanged": true,
+      "error": "guest command failed (1): su -l xiritest -c '/bin/sh -x /tmp/xiri-stability/guard-tests.sh /tmp/xiri-stability/irix-1-children' >/tmp/xiri-stability/irix-1-children/adversarial.log 2>&1\nsu -l xiritest -c '/bin/sh -x /tmp/xiri-stability/guard-tests.sh /tmp \b/xiri-stability/irix-1-children' >/tmp/xiri-stability/irix-1-children/adversaria \bl.log 2>&1; xiri_rc=$?; printf '\\nXIRI_6b9c4809ce5f474f85d8094c13b50be1_RC=%s\\n' \b \"$xiri_rc\"\n\nXIRI_6b9c4809ce5f474f85d8094c13b50be1_RC=1\nxiri-indy# ",
+      "parameters": {
+        "kernel_build": null,
+        "seed": null,
+        "runs": 1,
+        "sessions": 1,
+        "input_iterations": 1,
+        "child_iterations": 20,
+        "fairness_iterations": 0,
+        "debug_failure": false,
+        "trace_native": true,
+        "halt_active": true,
+        "pressure_mib": 96,
+        "require_cd9660": true,
+        "acrobat_replay": 0
+      },
+      "phases": [
+        {
+          "kind": "input",
+          "label": "greeter",
+          "user": "root",
+          "display": ":0",
+          "iterations": 1,
+          "events": 2,
+          "host_seconds": 12.756,
+          "log_file": "greeter-unix.log",
+          "log_sha256": "aed08df5d19af4d645abe781a6c770c93b49b814aa8d95545826e6f5a58c8c2a"
+        },
+        {
+          "kind": "input",
+          "label": "greeter",
+          "user": "root",
+          "display": "127.0.0.1:0",
+          "iterations": 1,
+          "events": 2,
+          "host_seconds": 12.877,
+          "log_file": "greeter-tcp.log",
+          "log_sha256": "9c35e2de1dd722265c93457b8667e26bd91df5042e35257b10f548a733ca50dc"
+        },
+        {
+          "kind": "children",
+          "label": "greeter",
+          "iterations": 20,
+          "launches": 40,
+          "adversarial": true,
+          "host_seconds": 106.358
+        },
+        {
+          "kind": "input",
+          "label": "irix-1",
+          "user": "xiritest",
+          "display": ":0",
+          "iterations": 1,
+          "events": 2,
+          "host_seconds": 29.669,
+          "log_file": "irix-1-unix.log",
+          "log_sha256": "65824decaf7559b5f6d987e46e15935c8c1e180181140fc755c322fb07edba6f"
+        },
+        {
+          "kind": "input",
+          "label": "irix-1",
+          "user": "xiritest",
+          "display": "127.0.0.1:0",
+          "iterations": 1,
+          "events": 2,
+          "host_seconds": 14.216,
+          "log_file": "irix-1-tcp.log",
+          "log_sha256": "8ff8b059fa1be80249bf99aafcd82f2eb2dfafd4d5a9eaa99b84348492534a19"
+        }
+      ],
+      "sessions": [],
+      "cd9660_regression": {
+        "checks": 158,
+        "failures": 0,
+        "expected_fixed": true
+      },
+      "guard_sha256": "e33ee6bd22afc26aa5f16d7f4e6a78eed966a301a7ee9233b33556a39e735aa7",
+      "native_libc_sha256": "1b51fa3410950e25f3b17f70cf6f4eeba684191643d69afa25efda4f5d9ecb66",
+      "xorg_sha256": "48a4a07110209f604e75bd03f82494be838a80d51d12492769b323f3a1595ee4",
+      "run": ".work/system-stability/boot-osm2yg4q",
+      "result_sha256": "6a0671ffb6a5084390496262c4b5ca6cf70d3408bedeeb7c585d813d96f804ed",
+      "candidate_kernel": null,
+      "evidence": {
+        "guest-evidence.tgz": "9a12977a7a415d6832618c0b94ae81ec20a2ee996aa1e6953a664324b582ae72",
+        "failure-kernel.log": "bda4a8693c552cd991efd7dbb8f63b479380c847f744cb83706f41225f98ce4c",
+        "failure.png": "2f30803d11921316c8692e312d2bc96a6ec406e629575655076668d643ffa30f"
+      }
+    },
+    {
+      "status": "error",
+      "clean_shutdown": true,
+      "source_unchanged": true,
+      "error": "guest command failed (1): su -l xiritest -c 'XAUTHORITY=/tmp/.XauthFdZUUa /tmp/xiri-stability/xinput :0 100 10' >/tmp/xiri-stability/irix-1-unix.log 2>&1; rc=$?; echo \"$rc\" >/tmp/xiri-stability/irix-1-unix.log.status; test \"$rc\" = 0\nsu -l xiritest -c 'XAUTHORITY=/tmp/.XauthFdZUUa /tmp/xiri-stability/x \binput :0 100 10' >/tmp/xiri-stability/irix-1-unix.log 2>&1; rc=$?; echo \"$rc\" >/ \btmp/xiri-stability/irix-1-unix.log.status; test \"$rc\" = 0; xiri_rc=$?; printf '\\ \bnXIRI_78f7d9db996c4cf1b991504ebea32e24_RC=%s\\n' \"$xiri_rc\"\n\nXIRI_78f7d9db996c4cf1b991504ebea32e24_RC=1\nxiri-indy# ",
+      "parameters": {
+        "kernel_build": ".work/netbsd-paging-latency-build",
+        "seed": null,
+        "runs": 1,
+        "sessions": 2,
+        "input_iterations": 100,
+        "child_iterations": 20,
+        "fairness_iterations": 0,
+        "debug_failure": false,
+        "trace_native": false,
+        "halt_active": true,
+        "pressure_mib": 96,
+        "require_cd9660": true,
+        "acrobat_replay": 0
+      },
+      "phases": [
+        {
+          "kind": "input",
+          "label": "greeter",
+          "user": "root",
+          "display": ":0",
+          "iterations": 100,
+          "events": 200,
+          "host_seconds": 44.196,
+          "log_file": "greeter-unix.log",
+          "log_sha256": "a611949f3423f991552976a1a3c2508e96cc82a31de297402760920e3473cece"
+        },
+        {
+          "kind": "input",
+          "label": "greeter",
+          "user": "root",
+          "display": "127.0.0.1:0",
+          "iterations": 100,
+          "events": 200,
+          "host_seconds": 45.603,
+          "log_file": "greeter-tcp.log",
+          "log_sha256": "d298cde71585a016cb784a19604024c5d3515309c0e67b2abd6ae8e38572138c"
+        },
+        {
+          "kind": "children",
+          "label": "greeter",
+          "iterations": 20,
+          "launches": 40,
+          "adversarial": true,
+          "host_seconds": 99.029
+        }
+      ],
+      "sessions": [],
+      "installed_kernel": {
+        "native_kernel_sha256": "1280fd8b62e93fb8fde3ddffbaeeae011d22bde15f7469087a9f59d95102b9dc",
+        "boot_kernel_sha256": "4c98e0b87e15093e3eed83c80f9d58ff8c8863223849d52c01253fd9a736f03c",
+        "build_manifest_sha256": "2701175d6ae005b60d7d832e187e571d70bac2894586dcde8c126dcf13bfbf61"
+      },
+      "installed_module": {
+        "path": "/stand/sgimips/11.99.9/modules/compat_irix_o32/compat_irix_o32.kmod",
+        "sha256": "8e97285b0a2185c0b2b5a2ed6e4202dd9ec568a9ba1514ea45a569a8c4c1b366",
+        "build_manifest_sha256": "2701175d6ae005b60d7d832e187e571d70bac2894586dcde8c126dcf13bfbf61"
+      },
+      "swap_config": "vm.swap_encrypt = 0\nDevice      1K-blocks     Used    Avail Capacity  Priority\n/dev/sd0b       32736        0    32736     0%    0\n",
+      "cd9660_regression": {
+        "checks": 158,
+        "failures": 0,
+        "expected_fixed": true
+      },
+      "guard_sha256": "e33ee6bd22afc26aa5f16d7f4e6a78eed966a301a7ee9233b33556a39e735aa7",
+      "native_libc_sha256": "1b51fa3410950e25f3b17f70cf6f4eeba684191643d69afa25efda4f5d9ecb66",
+      "xorg_sha256": "48a4a07110209f604e75bd03f82494be838a80d51d12492769b323f3a1595ee4",
+      "run": ".work/system-stability/boot-hyqc8uvm",
+      "result_sha256": "98b3c482745cc64b84349d46aba314adbf839fff27a419ae94d8d68b3539e286",
+      "candidate_kernel": {
+        "source_revision": "e9ff76a58affee773b767d334f98075bf86daf7e",
+        "source_status": " M sys/uvm/uvm_pdaemon.c\n",
+        "source_files": {
+          "sys/compat/irix_o32/irix_errno.h": "36c93897342fe90413b9252209cf300c4d63657e175a2e8e7d547826b9b9be1a",
+          "sys/compat/irix_o32/irix_errno_map.h": "e3adecc6040d14afa371eff3d6e17f126b7d074201b8e98cf842ec650a86f64f",
+          "sys/compat/irix_o32/irix_o32.c": "51359c0eb8f45f5baa9da037e47ac247cf7aaf5821a67ea0535f1b897a82b0ad",
+          "sys/compat/irix_o32/irix_signal.c": "a990e1ea3f2ceea2978407a6916cc2e4790e357fa53c8f3a63520d5f8108a40a",
+          "sys/compat/irix_o32/irix_signal.h": "8b0a98ffee639ce755cf5b7f84f79c6295f563cee015cab25afe5a0dd870e373",
+          "sys/compat/irix_o32/irix_sproc.c": "97144d2f8897cbba77dd6f00a877330bd4e5ee11efda652ca6b26d72d8af0844",
+          "sys/compat/irix_o32/irix_sproc.h": "b7ffc50caad3f78984218cf7601fc5ea1a4042dd25bdf4ab1ac6cd9b15994414",
+          "sys/compat/irix_o32/irix_stat.h": "45a7cad87190acb37732421ac589b6b287f9454dfccb874cf163622b233e1f23",
+          "sys/compat/irix_o32/irix_tty.c": "27c2a3086e38dc5b2c87d12885bc15d770e789507cf3d9375b5cf89d116d576e",
+          "sys/compat/irix_o32/irix_tty.h": "80fef54a11cd6240a384c061fe36d32c8ec81c721c2864c5033d9b489196e39b",
+          "sys/modules/compat_irix_o32/Makefile": "f021b21445210b3e1d3b758b64513e149e380e32c1e431d18b3927cd8b616c45",
+          "sys/modules/Makefile": "cc44af13029e3272dc5c80b0356bc66c396a32ff1d2ce9bda7fb7e749c091797",
+          "sys/arch/mips/conf/files.mips": "4c64715f586ccdbf7f503f0ab9f28178d45a0c5aa2da4e3b9954d2fde9dbc8a4",
+          "sys/arch/mips/mips/kobj_machdep.c": "75af7317121c508d23ca3b2c757130ecd31a77a4d7d786683d6bb5e99ad949d2",
+          "sys/kern/sys_select.c": "d3acf564acfd23f38ba32214e6e708dc28246e25b682969dafb730d92dd290b1",
+          "sys/arch/mips/mips/mips_fpu.c": "1b80f251be637c321548e84f09b5a7013168a91e5983c39aa39e7af9c3194596",
+          "sys/kern/kern_lwp.c": "dcf9c71f79e2bfcd0e07be1c78abbca975a7de3620b8529d7e9bdbc99ed912f8",
+          "sys/kern/kern_sig.c": "353ab6c2148892e30d7616cf4f75cd5317705ce65bf226fb3c2e753e940e212d",
+          "sys/kern/kern_exit.c": "a7eb4781b329d0c09d96910ace54b53be8b5f32997e8617a14fa3a72a059374b",
+          "sys/sys/proc.h": "c2670d380979e7a7c5309150e3239bcbb3985ac76761f7cca3171838b38d8b09",
+          "sys/uvm/uvm_pglist.c": "47f62159d99df61870b39a071af57a781493553f6a0c8415610cae0bc4489c39",
+          "sys/uvm/uvm_pdaemon.c": "a8913c43039c551c0fcd487abafa7b686f37c4037424cc367dca63e9eca55e28",
+          "sys/compat/netbsd32/netbsd32.h": "d02736ef3f4f6add134bfef9f5459c7250af24e43cf0dfe84e7ff2a74b283f0d",
+          "sys/compat/netbsd32/netbsd32_fs.c": "a1325ab7cedf522a64177e50e45a7b7698bf87080fa8a41f8ef48deb3112a59b"
+        },
+        "artifacts": {
+          "compat_irix_o32.kmod": {
+            "path": "obj/sys/modules/compat_irix_o32/compat_irix_o32.kmod",
+            "sha256": "8e97285b0a2185c0b2b5a2ed6e4202dd9ec568a9ba1514ea45a569a8c4c1b366"
+          },
+          "netbsd": {
+            "path": "kernel-media/netbsd",
+            "sha256": "1280fd8b62e93fb8fde3ddffbaeeae011d22bde15f7469087a9f59d95102b9dc"
+          },
+          "netbsd.boot": {
+            "path": "tftp/netbsd-XIRI_INDY",
+            "sha256": "4c98e0b87e15093e3eed83c80f9d58ff8c8863223849d52c01253fd9a736f03c"
+          }
+        },
+        "build_manifest_sha256": "2701175d6ae005b60d7d832e187e571d70bac2894586dcde8c126dcf13bfbf61"
+      },
+      "evidence": {
+        "guest-evidence.tgz": "bdbba75f3fd47c2b9dfea72b888af8340e7c8b72238fcfd566aebf897dc1db20",
+        "failure-kernel.log": "8e73a12211d51288e7ff3876394b4406ea07bdb46ce8da1959789154cf9ae642",
+        "failure.png": "afbd394f802c46d8f5ed50a4a018fab64dbbe70263141c489bd3e314baac0b0f"
+      }
+    },
+    {
+      "status": "passed",
+      "clean_shutdown": true,
+      "source_unchanged": true,
+      "parameters": {
+        "kernel_build": ".work/netbsd-paging-latency-v2-build",
+        "seed": null,
+        "runs": 1,
+        "sessions": 2,
+        "input_iterations": 100,
+        "child_iterations": 20,
+        "fairness_iterations": 0,
+        "debug_failure": false,
+        "trace_native": false,
+        "halt_active": true,
+        "pressure_mib": 96,
+        "require_cd9660": true,
+        "acrobat_replay": 0
+      },
+      "phases": [
+        {
+          "kind": "input",
+          "label": "greeter",
+          "user": "root",
+          "display": ":0",
+          "iterations": 100,
+          "events": 200,
+          "host_seconds": 44.482,
+          "log_file": "greeter-unix.log",
+          "log_sha256": "a0b9e6e84d5e86f38c265f9c81f8655c7b5ccc67ca2a4b693b9746b6d22e105f"
+        },
+        {
+          "kind": "input",
+          "label": "greeter",
+          "user": "root",
+          "display": "127.0.0.1:0",
+          "iterations": 100,
+          "events": 200,
+          "host_seconds": 45.772,
+          "log_file": "greeter-tcp.log",
+          "log_sha256": "8bc1cb1e8080d75563023966af16565a10d059999e5dda4de2951c0bd390442c"
+        },
+        {
+          "kind": "children",
+          "label": "greeter",
+          "iterations": 20,
+          "launches": 40,
+          "adversarial": true,
+          "host_seconds": 96.761
+        },
+        {
+          "kind": "input",
+          "label": "irix-1",
+          "user": "xiritest",
+          "display": ":0",
+          "iterations": 100,
+          "events": 200,
+          "host_seconds": 46.255,
+          "log_file": "irix-1-unix.log",
+          "log_sha256": "d1951d509b83fec9c5e26eea0da205d24fa59c75c0f990cc80ac948c6a34824f"
+        },
+        {
+          "kind": "input",
+          "label": "irix-1",
+          "user": "xiritest",
+          "display": "127.0.0.1:0",
+          "iterations": 100,
+          "events": 200,
+          "host_seconds": 61.528,
+          "log_file": "irix-1-tcp.log",
+          "log_sha256": "b55a3f6b98ce2bd4988786536256ef4d47b4a865e26134389a63990dcf081c50"
+        },
+        {
+          "kind": "children",
+          "label": "irix-1",
+          "iterations": 20,
+          "launches": 40,
+          "adversarial": true,
+          "host_seconds": 123.618
+        },
+        {
+          "kind": "input",
+          "label": "irix-2",
+          "user": "xiritest",
+          "display": ":0",
+          "iterations": 100,
+          "events": 200,
+          "host_seconds": 46.334,
+          "log_file": "irix-2-unix.log",
+          "log_sha256": "234df992a32cd473f9cb5823d32465c9e04e429ccd999a735e95e1c3853bbe2a"
+        },
+        {
+          "kind": "input",
+          "label": "irix-2",
+          "user": "xiritest",
+          "display": "127.0.0.1:0",
+          "iterations": 100,
+          "events": 200,
+          "host_seconds": 47.725,
+          "log_file": "irix-2-tcp.log",
+          "log_sha256": "0b05fb5e25d5531efebe5ebb708ad4a1110bf9591b6b9acab6401d59bdfc0fc2"
+        },
+        {
+          "kind": "children",
+          "label": "irix-2",
+          "iterations": 20,
+          "launches": 40,
+          "adversarial": true,
+          "host_seconds": 96.416
+        },
+        {
+          "kind": "input",
+          "label": "native-ctwm",
+          "user": "netbsdtest",
+          "display": ":0",
+          "iterations": 100,
+          "events": 200,
+          "host_seconds": 46.346,
+          "log_file": "native-ctwm-unix.log",
+          "log_sha256": "32efc49fafea91d186af946455f8006e2a768df9d7f1a14206fb39e81bea977f"
+        },
+        {
+          "kind": "input",
+          "label": "native-ctwm",
+          "user": "netbsdtest",
+          "display": "127.0.0.1:0",
+          "iterations": 100,
+          "events": 200,
+          "host_seconds": 47.375,
+          "log_file": "native-ctwm-tcp.log",
+          "log_sha256": "5481d6a459f514a1e63e395027aa82d146757d2ef10e9af1ea62906d453f3c1b"
+        }
+      ],
+      "sessions": [
+        {
+          "user": "xiritest",
+          "guard": "OWN pid=1485 parent=1398\nOWN pid=1263 parent=1485\nOWN pid=3699 parent=1485\nOWN pid=1489 parent=1485\nOWN pid=1480 parent=1485\nOWN pid=1475 parent=1480\nOWN pid=1431 parent=1485\nOWN pid=4251 parent=1485\nOWN pid=1689 parent=1485\nOWN pid=2646 parent=1485\nOWN pid=1502 parent=1485\nOWN pid=1598 parent=1485\nOWN pid=4841 parent=1485\nOWN pid=1443 parent=1485\nOWN pid=4572 parent=1485\nOWN pid=1329 parent=1485\nOWN pid=1144 parent=1443\nOWN pid=1440 parent=1485\nOWN pid=3760 parent=1485\nOWN pid=1444 parent=1485\nOWN pid=1949 parent=1440\nOWN pid=1446 parent=4572\nOWN pid=1445 parent=3760\nOWN pid=3820 parent=1444\nOWN pid=5095 parent=1329\nOWN pid=1455 parent=5095\nOWN pid=1493 parent=5095\nOWN pid=3938 parent=5095\nOWN pid=2710 parent=1446\nOWN pid=3937 parent=5095\nOWN pid=1503 parent=5095\nOWN pid=1488 parent=5095\nOWN pid=4981 parent=5095\nOWN pid=1258 parent=5095\nOWN pid=1484 parent=5095\nOWN pid=3618 parent=5095\nOWN pid=4413 parent=5095\nOWN pid=4442 parent=5095\nOWN pid=4466 parent=4442\nOWN pid=1716 parent=1144\nGUARD pid=1485 exit=-1 signal=15 stopped=1 absent=1 valid=1 tracked=40 remaining=0 reason=logout uid=1234 gid=1234 elapsed=376505\n"
+        },
+        {
+          "user": "xiritest",
+          "guard": "OWN pid=320 parent=5757\nOWN pid=3637 parent=320\nOWN pid=3497 parent=320\nOWN pid=5660 parent=320\nOWN pid=5503 parent=320\nOWN pid=5786 parent=320\nOWN pid=2609 parent=5503\nOWN pid=4013 parent=320\nOWN pid=2810 parent=320\nOWN pid=4898 parent=320\nOWN pid=5659 parent=320\nOWN pid=6248 parent=320\nOWN pid=3097 parent=320\nOWN pid=2839 parent=320\nOWN pid=2256 parent=320\nOWN pid=3006 parent=320\nOWN pid=5345 parent=320\nOWN pid=2889 parent=320\nOWN pid=3010 parent=2256\nOWN pid=2937 parent=3006\nOWN pid=5693 parent=5345\nOWN pid=5346 parent=2889\nOWN pid=4118 parent=320\nOWN pid=2516 parent=320\nOWN pid=2799 parent=4118\nOWN pid=2666 parent=2516\nOWN pid=5299 parent=5693\nOWN pid=5537 parent=5693\nOWN pid=2910 parent=5693\nOWN pid=2885 parent=2937\nOWN pid=6249 parent=5693\nOWN pid=6261 parent=5693\nOWN pid=5107 parent=5693\nOWN pid=2898 parent=5693\nOWN pid=2735 parent=5693\nOWN pid=3347 parent=5693\nOWN pid=5927 parent=5693\nOWN pid=6375 parent=5693\nOWN pid=2812 parent=5693\nOWN pid=1736 parent=2812\nOWN pid=1696 parent=3010\nGUARD pid=320 exit=-1 signal=15 stopped=1 absent=1 valid=1 tracked=41 remaining=0 reason=logout uid=1234 gid=1234 elapsed=248767\n"
+        },
+        {
+          "user": "netbsdtest",
+          "returned_to_greeter": true
+        }
+      ],
+      "installed_kernel": {
+        "native_kernel_sha256": "b10460f040acdfbf7db584acb1ccba1aa69d40b24ed5d2e036a6e781d3f33dc1",
+        "boot_kernel_sha256": "5233b0f9ed8343b0885684b37d1c2a955ce706dce975104637cbf7066d3aa200",
+        "build_manifest_sha256": "adf0f84d7cf0f8620a30379e1a03f906422ccf8a5b6de82b0effc47c93320008"
+      },
+      "installed_module": {
+        "path": "/stand/sgimips/11.99.9/modules/compat_irix_o32/compat_irix_o32.kmod",
+        "sha256": "8e97285b0a2185c0b2b5a2ed6e4202dd9ec568a9ba1514ea45a569a8c4c1b366",
+        "build_manifest_sha256": "adf0f84d7cf0f8620a30379e1a03f906422ccf8a5b6de82b0effc47c93320008"
+      },
+      "swap_config": "vm.swap_encrypt = 1\nDevice      1K-blocks     Used    Avail Capacity  Priority\n/dev/sd0b       32736        0    32736     0%    0\n",
+      "cd9660_regression": {
+        "checks": 158,
+        "failures": 0,
+        "expected_fixed": true
+      },
+      "guard_sha256": "e33ee6bd22afc26aa5f16d7f4e6a78eed966a301a7ee9233b33556a39e735aa7",
+      "native_libc_sha256": "1b51fa3410950e25f3b17f70cf6f4eeba684191643d69afa25efda4f5d9ecb66",
+      "xorg_sha256": "48a4a07110209f604e75bd03f82494be838a80d51d12492769b323f3a1595ee4",
+      "shutdown_state": "active-irix-desktop",
+      "run": ".work/system-stability/boot-wbz2fp4t",
+      "result_sha256": "3d27993eea85d3872b0f886f61fdb2306dc4ee5080e637f0571f9dcf511b0a7f",
+      "candidate_kernel": {
+        "source_revision": "e9ff76a58affee773b767d334f98075bf86daf7e",
+        "source_status": " M sys/uvm/uvm_pdaemon.c\n M sys/uvm/uvm_swap.c\n",
+        "source_files": {
+          "sys/compat/irix_o32/irix_errno.h": "36c93897342fe90413b9252209cf300c4d63657e175a2e8e7d547826b9b9be1a",
+          "sys/compat/irix_o32/irix_errno_map.h": "e3adecc6040d14afa371eff3d6e17f126b7d074201b8e98cf842ec650a86f64f",
+          "sys/compat/irix_o32/irix_o32.c": "51359c0eb8f45f5baa9da037e47ac247cf7aaf5821a67ea0535f1b897a82b0ad",
+          "sys/compat/irix_o32/irix_signal.c": "a990e1ea3f2ceea2978407a6916cc2e4790e357fa53c8f3a63520d5f8108a40a",
+          "sys/compat/irix_o32/irix_signal.h": "8b0a98ffee639ce755cf5b7f84f79c6295f563cee015cab25afe5a0dd870e373",
+          "sys/compat/irix_o32/irix_sproc.c": "97144d2f8897cbba77dd6f00a877330bd4e5ee11efda652ca6b26d72d8af0844",
+          "sys/compat/irix_o32/irix_sproc.h": "b7ffc50caad3f78984218cf7601fc5ea1a4042dd25bdf4ab1ac6cd9b15994414",
+          "sys/compat/irix_o32/irix_stat.h": "45a7cad87190acb37732421ac589b6b287f9454dfccb874cf163622b233e1f23",
+          "sys/compat/irix_o32/irix_tty.c": "27c2a3086e38dc5b2c87d12885bc15d770e789507cf3d9375b5cf89d116d576e",
+          "sys/compat/irix_o32/irix_tty.h": "80fef54a11cd6240a384c061fe36d32c8ec81c721c2864c5033d9b489196e39b",
+          "sys/modules/compat_irix_o32/Makefile": "f021b21445210b3e1d3b758b64513e149e380e32c1e431d18b3927cd8b616c45",
+          "sys/modules/Makefile": "cc44af13029e3272dc5c80b0356bc66c396a32ff1d2ce9bda7fb7e749c091797",
+          "sys/arch/mips/conf/files.mips": "4c64715f586ccdbf7f503f0ab9f28178d45a0c5aa2da4e3b9954d2fde9dbc8a4",
+          "sys/arch/mips/mips/kobj_machdep.c": "75af7317121c508d23ca3b2c757130ecd31a77a4d7d786683d6bb5e99ad949d2",
+          "sys/kern/sys_select.c": "d3acf564acfd23f38ba32214e6e708dc28246e25b682969dafb730d92dd290b1",
+          "sys/arch/mips/mips/mips_fpu.c": "1b80f251be637c321548e84f09b5a7013168a91e5983c39aa39e7af9c3194596",
+          "sys/kern/kern_lwp.c": "dcf9c71f79e2bfcd0e07be1c78abbca975a7de3620b8529d7e9bdbc99ed912f8",
+          "sys/kern/kern_sig.c": "353ab6c2148892e30d7616cf4f75cd5317705ce65bf226fb3c2e753e940e212d",
+          "sys/kern/kern_exit.c": "a7eb4781b329d0c09d96910ace54b53be8b5f32997e8617a14fa3a72a059374b",
+          "sys/sys/proc.h": "c2670d380979e7a7c5309150e3239bcbb3985ac76761f7cca3171838b38d8b09",
+          "sys/uvm/uvm_pglist.c": "47f62159d99df61870b39a071af57a781493553f6a0c8415610cae0bc4489c39",
+          "sys/uvm/uvm_pdaemon.c": "a8913c43039c551c0fcd487abafa7b686f37c4037424cc367dca63e9eca55e28",
+          "sys/uvm/uvm_swap.c": "5fd06622bdc25006103b2754b810b97eca870be5d8759fda7d7133b4a7dbf459",
+          "sys/compat/netbsd32/netbsd32.h": "d02736ef3f4f6add134bfef9f5459c7250af24e43cf0dfe84e7ff2a74b283f0d",
+          "sys/compat/netbsd32/netbsd32_fs.c": "a1325ab7cedf522a64177e50e45a7b7698bf87080fa8a41f8ef48deb3112a59b"
+        },
+        "artifacts": {
+          "compat_irix_o32.kmod": {
+            "path": "obj/sys/modules/compat_irix_o32/compat_irix_o32.kmod",
+            "sha256": "8e97285b0a2185c0b2b5a2ed6e4202dd9ec568a9ba1514ea45a569a8c4c1b366"
+          },
+          "netbsd": {
+            "path": "kernel-media/netbsd",
+            "sha256": "b10460f040acdfbf7db584acb1ccba1aa69d40b24ed5d2e036a6e781d3f33dc1"
+          },
+          "netbsd.boot": {
+            "path": "tftp/netbsd-XIRI_INDY",
+            "sha256": "5233b0f9ed8343b0885684b37d1c2a955ce706dce975104637cbf7066d3aa200"
+          }
+        },
+        "build_manifest_sha256": "adf0f84d7cf0f8620a30379e1a03f906422ccf8a5b6de82b0effc47c93320008"
+      },
+      "evidence": {
+        "guest-evidence.tgz": "047be92e49867d2107ec4487bbe80efaf3b6b6b29856a094078b21d51e6a405b"
+      }
+    },
+    {
+      "status": "passed",
+      "clean_shutdown": true,
+      "source_unchanged": true,
+      "parameters": {
+        "kernel_build": ".work/netbsd-paging-latency-v3-build",
+        "seed": null,
+        "runs": 1,
+        "sessions": 2,
+        "input_iterations": 100,
+        "child_iterations": 20,
+        "fairness_iterations": 0,
+        "debug_failure": false,
+        "trace_native": false,
+        "halt_active": true,
+        "pressure_mib": 96,
+        "require_cd9660": true,
+        "acrobat_replay": 0
+      },
+      "phases": [
+        {
+          "kind": "input",
+          "label": "greeter",
+          "user": "root",
+          "display": ":0",
+          "iterations": 100,
+          "events": 200,
+          "host_seconds": 44.718,
+          "log_file": "greeter-unix.log",
+          "log_sha256": "2c422fd4e074e8249d2ca61e6306fe9a58633a864ff26162ea7b36a0018011c7"
+        },
+        {
+          "kind": "input",
+          "label": "greeter",
+          "user": "root",
+          "display": "127.0.0.1:0",
+          "iterations": 100,
+          "events": 200,
+          "host_seconds": 45.986,
+          "log_file": "greeter-tcp.log",
+          "log_sha256": "a4b5e1879c9f44b4867550772a728900bcde50b7298d57d920089a506a421c17"
+        },
+        {
+          "kind": "children",
+          "label": "greeter",
+          "iterations": 20,
+          "launches": 40,
+          "adversarial": true,
+          "host_seconds": 104.256
+        },
+        {
+          "kind": "input",
+          "label": "irix-1",
+          "user": "xiritest",
+          "display": ":0",
+          "iterations": 100,
+          "events": 200,
+          "host_seconds": 46.46,
+          "log_file": "irix-1-unix.log",
+          "log_sha256": "2c446605526adaaa42410393381c581cdfaf391c14093b6f5660d3d99532a047"
+        },
+        {
+          "kind": "input",
+          "label": "irix-1",
+          "user": "xiritest",
+          "display": "127.0.0.1:0",
+          "iterations": 100,
+          "events": 200,
+          "host_seconds": 47.438,
+          "log_file": "irix-1-tcp.log",
+          "log_sha256": "c752330e17ec8df83ce22eef1ff5a9638be2ad9024154b534b40f567e2737a05"
+        },
+        {
+          "kind": "children",
+          "label": "irix-1",
+          "iterations": 20,
+          "launches": 40,
+          "adversarial": true,
+          "host_seconds": 141.698
+        },
+        {
+          "kind": "input",
+          "label": "irix-2",
+          "user": "xiritest",
+          "display": ":0",
+          "iterations": 100,
+          "events": 200,
+          "host_seconds": 46.358,
+          "log_file": "irix-2-unix.log",
+          "log_sha256": "82d58fea35c89024c3d5234f465a9cb42087e4acad15eb3571f03395f018da68"
+        },
+        {
+          "kind": "input",
+          "label": "irix-2",
+          "user": "xiritest",
+          "display": "127.0.0.1:0",
+          "iterations": 100,
+          "events": 200,
+          "host_seconds": 47.474,
+          "log_file": "irix-2-tcp.log",
+          "log_sha256": "55490991ad61c7cc24d6d06ab024d1d434df551fbcfcaea5d96f789b0beb33f2"
+        },
+        {
+          "kind": "children",
+          "label": "irix-2",
+          "iterations": 20,
+          "launches": 40,
+          "adversarial": true,
+          "host_seconds": 95.62
+        },
+        {
+          "kind": "input",
+          "label": "native-ctwm",
+          "user": "netbsdtest",
+          "display": ":0",
+          "iterations": 100,
+          "events": 200,
+          "host_seconds": 46.195,
+          "log_file": "native-ctwm-unix.log",
+          "log_sha256": "852e186b84167818a9df417553b4230dbaaabd162df1812dfaae3cd37ff4f245"
+        },
+        {
+          "kind": "input",
+          "label": "native-ctwm",
+          "user": "netbsdtest",
+          "display": "127.0.0.1:0",
+          "iterations": 100,
+          "events": 200,
+          "host_seconds": 47.333,
+          "log_file": "native-ctwm-tcp.log",
+          "log_sha256": "bdab1b2cdca77d8acbd5c7ab6f718458c4dc2b3f691bb5dc135f3aa0626187a8"
+        }
+      ],
+      "sessions": [
+        {
+          "user": "xiritest",
+          "guard": "OWN pid=3047 parent=1889\nOWN pid=1455 parent=3047\nOWN pid=1440 parent=3047\nOWN pid=1478 parent=3047\nOWN pid=1263 parent=3047\nOWN pid=4563 parent=3047\nOWN pid=1431 parent=1263\nOWN pid=4414 parent=3047\nOWN pid=3933 parent=3047\nOWN pid=3886 parent=3047\nOWN pid=1444 parent=3047\nOWN pid=1526 parent=3047\nOWN pid=1062 parent=3047\nOWN pid=3827 parent=3047\nOWN pid=4848 parent=3047\nOWN pid=3635 parent=3827\nOWN pid=3357 parent=3047\nOWN pid=4529 parent=3357\nOWN pid=1330 parent=3047\nOWN pid=4397 parent=3047\nOWN pid=4450 parent=3047\nOWN pid=4329 parent=4397\nOWN pid=1450 parent=4450\nOWN pid=1503 parent=1330\nOWN pid=4502 parent=4848\nOWN pid=1493 parent=4529\nOWN pid=1502 parent=4529\nOWN pid=1489 parent=4529\nOWN pid=4827 parent=4502\nOWN pid=1488 parent=4529\nOWN pid=1490 parent=4529\nOWN pid=4205 parent=4529\nOWN pid=1479 parent=4529\nOWN pid=4700 parent=4529\nOWN pid=1527 parent=4529\nOWN pid=1688 parent=4529\nOWN pid=4478 parent=4529\nOWN pid=1725 parent=4529\nOWN pid=4725 parent=1725\nOWN pid=1530 parent=3635\nGUARD pid=3047 exit=-1 signal=15 stopped=1 absent=1 valid=1 tracked=40 remaining=0 reason=logout uid=1234 gid=1234 elapsed=392424\n"
+        },
+        {
+          "user": "xiritest",
+          "guard": "OWN pid=2759 parent=5666\nOWN pid=2410 parent=2759\nOWN pid=2985 parent=2759\nOWN pid=2132 parent=2759\nOWN pid=5595 parent=2759\nOWN pid=4263 parent=2759\nOWN pid=5977 parent=5595\nOWN pid=2723 parent=2759\nOWN pid=2411 parent=2759\nOWN pid=5341 parent=2759\nOWN pid=5971 parent=2759\nOWN pid=2934 parent=2759\nOWN pid=2848 parent=2759\nOWN pid=2859 parent=2759\nOWN pid=2892 parent=2859\nOWN pid=3496 parent=2759\nOWN pid=3012 parent=2759\nOWN pid=6044 parent=2759\nOWN pid=5294 parent=2759\nOWN pid=2910 parent=2759\nOWN pid=2852 parent=3012\nOWN pid=3018 parent=6044\nOWN pid=2898 parent=3496\nOWN pid=3021 parent=5294\nOWN pid=2896 parent=2910\nOWN pid=3013 parent=2852\nOWN pid=5822 parent=2898\nOWN pid=2936 parent=2852\nOWN pid=2853 parent=2852\nOWN pid=5758 parent=2852\nOWN pid=2886 parent=2852\nOWN pid=4095 parent=2852\nOWN pid=2769 parent=2852\nOWN pid=6069 parent=2852\nOWN pid=2812 parent=2852\nOWN pid=5401 parent=2852\nOWN pid=2499 parent=2852\nOWN pid=5980 parent=2852\nOWN pid=5485 parent=5980\nOWN pid=5104 parent=2892\nGUARD pid=2759 exit=-1 signal=15 stopped=1 absent=1 valid=1 tracked=40 remaining=0 reason=logout uid=1234 gid=1234 elapsed=242231\n"
+        },
+        {
+          "user": "netbsdtest",
+          "returned_to_greeter": true
+        }
+      ],
+      "installed_kernel": {
+        "native_kernel_sha256": "3cd6c8da5c9263b116927978b25b4b6a901dc66216aede41be1e3edb680eede6",
+        "boot_kernel_sha256": "5526f57cc6297c2b788b3eb1d15336fc0a863045645024866c0f05a4b68107a6",
+        "build_manifest_sha256": "0c5d1ce29e711f38b7b9c5787877e8e560b9c2f97b0510e0f465bf57dc2bbc47"
+      },
+      "installed_module": {
+        "path": "/stand/sgimips/11.99.9/modules/compat_irix_o32/compat_irix_o32.kmod",
+        "sha256": "8e97285b0a2185c0b2b5a2ed6e4202dd9ec568a9ba1514ea45a569a8c4c1b366",
+        "build_manifest_sha256": "0c5d1ce29e711f38b7b9c5787877e8e560b9c2f97b0510e0f465bf57dc2bbc47"
+      },
+      "swap_config": "vm.swap_encrypt = 1\nDevice      1K-blocks     Used    Avail Capacity  Priority\n/dev/sd0b       32736        0    32736     0%    0\n",
+      "cd9660_regression": {
+        "checks": 158,
+        "failures": 0,
+        "expected_fixed": true
+      },
+      "guard_sha256": "e33ee6bd22afc26aa5f16d7f4e6a78eed966a301a7ee9233b33556a39e735aa7",
+      "native_libc_sha256": "1b51fa3410950e25f3b17f70cf6f4eeba684191643d69afa25efda4f5d9ecb66",
+      "xorg_sha256": "48a4a07110209f604e75bd03f82494be838a80d51d12492769b323f3a1595ee4",
+      "shutdown_state": "active-irix-desktop",
+      "run": ".work/system-stability/boot-wtpd08jl",
+      "result_sha256": "c607730052270e59e43ac08ab62e23554099b8917664a09164f251be50530a87",
+      "candidate_kernel": {
+        "source_revision": "e9ff76a58affee773b767d334f98075bf86daf7e",
+        "source_status": " M sys/uvm/uvm_pdaemon.c\n M sys/uvm/uvm_swap.c\n",
+        "source_files": {
+          "sys/compat/irix_o32/irix_errno.h": "36c93897342fe90413b9252209cf300c4d63657e175a2e8e7d547826b9b9be1a",
+          "sys/compat/irix_o32/irix_errno_map.h": "e3adecc6040d14afa371eff3d6e17f126b7d074201b8e98cf842ec650a86f64f",
+          "sys/compat/irix_o32/irix_o32.c": "51359c0eb8f45f5baa9da037e47ac247cf7aaf5821a67ea0535f1b897a82b0ad",
+          "sys/compat/irix_o32/irix_signal.c": "a990e1ea3f2ceea2978407a6916cc2e4790e357fa53c8f3a63520d5f8108a40a",
+          "sys/compat/irix_o32/irix_signal.h": "8b0a98ffee639ce755cf5b7f84f79c6295f563cee015cab25afe5a0dd870e373",
+          "sys/compat/irix_o32/irix_sproc.c": "97144d2f8897cbba77dd6f00a877330bd4e5ee11efda652ca6b26d72d8af0844",
+          "sys/compat/irix_o32/irix_sproc.h": "b7ffc50caad3f78984218cf7601fc5ea1a4042dd25bdf4ab1ac6cd9b15994414",
+          "sys/compat/irix_o32/irix_stat.h": "45a7cad87190acb37732421ac589b6b287f9454dfccb874cf163622b233e1f23",
+          "sys/compat/irix_o32/irix_tty.c": "27c2a3086e38dc5b2c87d12885bc15d770e789507cf3d9375b5cf89d116d576e",
+          "sys/compat/irix_o32/irix_tty.h": "80fef54a11cd6240a384c061fe36d32c8ec81c721c2864c5033d9b489196e39b",
+          "sys/modules/compat_irix_o32/Makefile": "f021b21445210b3e1d3b758b64513e149e380e32c1e431d18b3927cd8b616c45",
+          "sys/modules/Makefile": "cc44af13029e3272dc5c80b0356bc66c396a32ff1d2ce9bda7fb7e749c091797",
+          "sys/arch/mips/conf/files.mips": "4c64715f586ccdbf7f503f0ab9f28178d45a0c5aa2da4e3b9954d2fde9dbc8a4",
+          "sys/arch/mips/mips/kobj_machdep.c": "75af7317121c508d23ca3b2c757130ecd31a77a4d7d786683d6bb5e99ad949d2",
+          "sys/kern/sys_select.c": "d3acf564acfd23f38ba32214e6e708dc28246e25b682969dafb730d92dd290b1",
+          "sys/arch/mips/mips/mips_fpu.c": "1b80f251be637c321548e84f09b5a7013168a91e5983c39aa39e7af9c3194596",
+          "sys/kern/kern_lwp.c": "dcf9c71f79e2bfcd0e07be1c78abbca975a7de3620b8529d7e9bdbc99ed912f8",
+          "sys/kern/kern_sig.c": "353ab6c2148892e30d7616cf4f75cd5317705ce65bf226fb3c2e753e940e212d",
+          "sys/kern/kern_exit.c": "a7eb4781b329d0c09d96910ace54b53be8b5f32997e8617a14fa3a72a059374b",
+          "sys/sys/proc.h": "c2670d380979e7a7c5309150e3239bcbb3985ac76761f7cca3171838b38d8b09",
+          "sys/uvm/uvm_pglist.c": "47f62159d99df61870b39a071af57a781493553f6a0c8415610cae0bc4489c39",
+          "sys/uvm/uvm_pdaemon.c": "3258680120a00055d72d2341af65b6b768032192aaec04feefcd1d508e06f27d",
+          "sys/uvm/uvm_swap.c": "5fd06622bdc25006103b2754b810b97eca870be5d8759fda7d7133b4a7dbf459",
+          "sys/compat/netbsd32/netbsd32.h": "d02736ef3f4f6add134bfef9f5459c7250af24e43cf0dfe84e7ff2a74b283f0d",
+          "sys/compat/netbsd32/netbsd32_fs.c": "a1325ab7cedf522a64177e50e45a7b7698bf87080fa8a41f8ef48deb3112a59b"
+        },
+        "artifacts": {
+          "compat_irix_o32.kmod": {
+            "path": "obj/sys/modules/compat_irix_o32/compat_irix_o32.kmod",
+            "sha256": "8e97285b0a2185c0b2b5a2ed6e4202dd9ec568a9ba1514ea45a569a8c4c1b366"
+          },
+          "netbsd": {
+            "path": "kernel-media/netbsd",
+            "sha256": "3cd6c8da5c9263b116927978b25b4b6a901dc66216aede41be1e3edb680eede6"
+          },
+          "netbsd.boot": {
+            "path": "tftp/netbsd-XIRI_INDY",
+            "sha256": "5526f57cc6297c2b788b3eb1d15336fc0a863045645024866c0f05a4b68107a6"
+          }
+        },
+        "build_manifest_sha256": "0c5d1ce29e711f38b7b9c5787877e8e560b9c2f97b0510e0f465bf57dc2bbc47"
+      },
+      "evidence": {
+        "guest-evidence.tgz": "fccb328335bb8e470de17d7d6ce6dae5cd1c36b27f4b86bc11fac7e3ebb4729b"
+      }
+    },
+    {
+      "status": "passed",
+      "clean_shutdown": true,
+      "source_unchanged": true,
+      "parameters": {
+        "kernel_build": null,
+        "seed": null,
+        "runs": 1,
+        "sessions": 1,
+        "input_iterations": 10,
+        "child_iterations": 5,
+        "fairness_iterations": 0,
+        "debug_failure": false,
+        "trace_native": false,
+        "halt_active": true,
+        "pressure_mib": 96,
+        "require_cd9660": true,
+        "acrobat_replay": 0
+      },
+      "phases": [
+        {
+          "kind": "input",
+          "label": "greeter",
+          "user": "root",
+          "display": ":0",
+          "iterations": 10,
+          "events": 20,
+          "host_seconds": 14.364,
+          "log_file": "greeter-unix.log",
+          "log_sha256": "d5d619cb572c59ec625444d8740c8f638fdb0ce754c207ad7f7dc20aa8d95eac"
+        },
+        {
+          "kind": "input",
+          "label": "greeter",
+          "user": "root",
+          "display": "127.0.0.1:0",
+          "iterations": 10,
+          "events": 20,
+          "host_seconds": 14.636,
+          "log_file": "greeter-tcp.log",
+          "log_sha256": "6f6504d2ed1381cfd5774a1e41e0bd6ef47a59c26aa4c5933ea2f3fa8d7b7619"
+        },
+        {
+          "kind": "children",
+          "label": "greeter",
+          "iterations": 5,
+          "launches": 10,
+          "adversarial": true,
+          "host_seconds": 55.662
+        },
+        {
+          "kind": "input",
+          "label": "irix-1",
+          "user": "xiritest",
+          "display": ":0",
+          "iterations": 10,
+          "events": 20,
+          "host_seconds": 33.198,
+          "log_file": "irix-1-unix.log",
+          "log_sha256": "040f9aafee485340b9787e3bfe28109901e4c55a7bb297dea4f26a57a0c1b6f1"
+        },
+        {
+          "kind": "input",
+          "label": "irix-1",
+          "user": "xiritest",
+          "display": "127.0.0.1:0",
+          "iterations": 10,
+          "events": 20,
+          "host_seconds": 15.876,
+          "log_file": "irix-1-tcp.log",
+          "log_sha256": "e773a5b668a356b801ebca8c75a8d6d9edd13a108967229eaa04380f10094f70"
+        },
+        {
+          "kind": "children",
+          "label": "irix-1",
+          "iterations": 5,
+          "launches": 10,
+          "adversarial": true,
+          "host_seconds": 58.55
+        },
+        {
+          "kind": "input",
+          "label": "native-ctwm",
+          "user": "netbsdtest",
+          "display": ":0",
+          "iterations": 10,
+          "events": 20,
+          "host_seconds": 16.042,
+          "log_file": "native-ctwm-unix.log",
+          "log_sha256": "0813cc1fe92e31cf23c284f8498d56aee95a55f1a16d0e67cc33304912b0347d"
+        },
+        {
+          "kind": "input",
+          "label": "native-ctwm",
+          "user": "netbsdtest",
+          "display": "127.0.0.1:0",
+          "iterations": 10,
+          "events": 20,
+          "host_seconds": 16.268,
+          "log_file": "native-ctwm-tcp.log",
+          "log_sha256": "f02d72ca36ac529dc8898f5f40f4863129e88a392fcd1203af5a7e531faa962f"
+        }
+      ],
+      "sessions": [
+        {
+          "user": "xiritest",
+          "guard": "OWN pid=1220 parent=875\nOWN pid=1062 parent=1220\nOWN pid=1146 parent=1220\nOWN pid=1067 parent=1220\nOWN pid=4206 parent=1220\nOWN pid=2611 parent=1220\nOWN pid=4508 parent=4206\nOWN pid=1790 parent=1220\nOWN pid=1148 parent=1220\nOWN pid=3990 parent=1220\nOWN pid=1007 parent=1220\nOWN pid=3879 parent=1220\nOWN pid=4200 parent=1220\nOWN pid=1224 parent=1220\nOWN pid=4142 parent=1220\nOWN pid=863 parent=1220\nOWN pid=3177 parent=1220\nOWN pid=1223 parent=3177\nOWN pid=3609 parent=1220\nOWN pid=1231 parent=1220\nOWN pid=1222 parent=863\nOWN pid=1230 parent=3609\nOWN pid=1306 parent=1220\nOWN pid=2209 parent=1220\nOWN pid=4213 parent=2209\nOWN pid=2675 parent=1306\nOWN pid=3741 parent=1231\nOWN pid=4080 parent=1230\nOWN pid=1330 parent=1230\nOWN pid=1227 parent=1230\nOWN pid=1002 parent=1230\nOWN pid=1060 parent=1223\nOWN pid=1232 parent=1230\nOWN pid=1236 parent=1230\nOWN pid=4182 parent=1230\nOWN pid=1237 parent=1230\nOWN pid=1175 parent=1230\nOWN pid=1432 parent=1230\nOWN pid=1246 parent=1230\nOWN pid=1184 parent=1230\nOWN pid=1225 parent=1184\nOWN pid=3967 parent=1222\nGUARD pid=1220 exit=-1 signal=15 stopped=1 absent=1 valid=1 tracked=42 remaining=0 reason=logout uid=1234 gid=1234 elapsed=240403\n"
+        },
+        {
+          "user": "netbsdtest",
+          "returned_to_greeter": true
+        }
+      ],
+      "swap_config": "vm.swap_encrypt = 1\nDevice      1K-blocks     Used    Avail Capacity  Priority\n/dev/sd0b       32736        0    32736     0%    0\n",
+      "cd9660_regression": {
+        "checks": 158,
+        "failures": 0,
+        "expected_fixed": true
+      },
+      "guard_sha256": "e33ee6bd22afc26aa5f16d7f4e6a78eed966a301a7ee9233b33556a39e735aa7",
+      "native_libc_sha256": "1b51fa3410950e25f3b17f70cf6f4eeba684191643d69afa25efda4f5d9ecb66",
+      "xorg_sha256": "48a4a07110209f604e75bd03f82494be838a80d51d12492769b323f3a1595ee4",
+      "shutdown_state": "active-irix-desktop",
+      "evidence_transfer": {
+        "transport": "loopback-nat-tcp",
+        "sha256": "52bde9bcafb822e64f12e2f793d69b98d89ca271077fbd4cb31a223c005779b5",
+        "bytes": 71680,
+        "guest_hash_verified": true
+      },
+      "run": ".work/system-stability/boot-8x8dm2rw",
+      "result_sha256": "92cba241e5d2581d4bb5dbce31dcaa36cfbe38a685e2c38d341840802c6767bb",
+      "candidate_kernel": null,
+      "evidence": {
+        "guest-evidence.tgz": "52bde9bcafb822e64f12e2f793d69b98d89ca271077fbd4cb31a223c005779b5"
+      }
+    }
+  ],
+  "notes": {
+    "native-_qotjx9b": "Old observer treated normal exit-query ESRCH as failure in two completed cases. Original serial archive timed out; TCP recovery verified. Clean halt was not verified; recovery timecounter warning retained.",
+    "native-iqlyn9vr": "Corrected observer reproduces original-kernel desktop stall; original collector timeout remains error. TCP recovery and three independent eight-scenario guard replays retained. Clean halt verified.",
+    "native-9uqmmdmy": "Method-order and monitor-sampling diagnostic. First desktop nanosleep fails. Monitor pauses perturb timing; clean halt verified.",
+    "native-rt8bq751": "Invalid plaintext comparison: actual kernel flag remained enabled despite sysctl zero. Explicitly interrupted, clean halt verified.",
+    "native-tt_jha6x": "Superseded first candidate before test execution; interrupted preparation did not verify a clean halt.",
+    "native-p4ctkvmw": "Baseline swap-control regression. Missing header corrected on media before guest compilation; original source/hash and media-replacement record retained.",
+    "native-7oqpzrvn": "First candidate with boolean correction: all 900 sleeps and all four swap settings pass. Resident-only data readback fails the major-fault requirement. Same precompile media correction as baseline; identical final control source and ELF.",
+    "boot-p_s6tcc_": "Original-kernel full traced input failure. Serial archive collection timed out; raw overlay and logs retained; not a complete archive or passing workload.",
+    "boot-osm2yg4q": "Reduced original-kernel trace identifies the two-query cleanup assertion after valid 25-descendant cleanup; later ps finds no PID. A later independent control forces the race.",
+    "boot-hyqc8uvm": "First pageout-only candidate still times out during the first desktop input round; it is not a full pressure pass.",
+    "native-nhofgfl6": "Final candidate: all 900 sleeps and four swap-control cases pass. Whole run remains error because the first readback control did not prove swap-in; clean halt verified.",
+    "native-0enmhxsy": "Packaged-image native matrix passes 600 greeter sleeps, then kernel address-error crash in native sh during desktop startup. No clean halt. Stack, MMU, kernel ring, screenshot, snapshot/RAM store and disk-overlay copy preserved; promotion blocked.",
+    "native-2ilns0iv": "Bounded encrypted comparison with external conditional trap breakpoint: all 900 timing cases and four swap settings pass; clean halt. Instrumented diagnostic, not unmodified qualification; it does not explain the earlier crash.",
+    "native-651yeudy": "Bounded plaintext comparison with external conditional trap breakpoint: all 900 timing cases and four swap settings pass; clean halt. Plaintext applies only to this disposable guest; deployment retains encryption.",
+    "native-esih3j6l": "Revised forced readback passes: 752 nonresident primary pages, 752 additional major faults and 24,576 matching written bytes; extra pressure released before readback; clean halt.",
+    "native-42m0jeju": "Forced readback reaches 214 nonresident primary pages but lacks final verification; launcher zero does not establish completion. Complete archive and clean halt retained; revised control releases extra pressure and records inner status and traces.",
+    "native-zsqysjp7": "Final candidate: all 900 sleeps and four swap-control cases pass. DONTNEED plus 32 MiB readback still resident; whole run remains error; clean halt verified.",
+    "boot-wbz2fp4t": "Earlier boolean-corrected candidate passes the complete 800-input, two-IRIX-session 96 MiB workload and clean halt.",
+    "boot-wtpd08jl": "Final candidate passes the complete 800-input, two-IRIX-session 96 MiB workload and clean halt; original serial collector completed successfully."
+  },
+  "host_checks": {
+    "host-tests-qualified.log": "5c477283e370f9018dc5c820a1e88c0389a938123a9366ed85e2d61840c4ae26",
+    "host-tests-final.log": "73747cece6bda23934f28cff07e2fc290592ce15cbce319f173a70ea6e55d4de",
+    "host-tests-release.log": "34c63796d47408e9afad26ad6e87d981d2fea60c45277b83adaf06c77ab9538e",
+    "host-tests-completion.log": "d62d029be5d6dcf1366ca424840aa6945764b682ae7a763e10ac666821b9b605",
+    "host-tests-checkpoint.log": "fd1661b33e9a6beeea3be4f27cc31430cdef2f8e6b72b5aebf30e91581f089f9"
+  },
+  "host_check_note": "The final suite includes completion-marker rejection when a launcher masks signal termination. Earlier restricted run had socket PermissionError in transfer controls; retained as an environment failure.",
+  "source_equivalence": {
+    "path": "lab/native-paging/source-equivalence.json",
+    "sha256": "59e92809d8f4be8557b02fac4ca55574dab25453376c4aaf3c3bbd074ccd2f75"
+  },
+  "cleanup": {
+    "path": "docs/results/2026-11-05-workspace-cleanup.json",
+    "sha256": "b57051610bb03a11192464e2900842f7e33c8a483a01f5e86014375e1b94de60"
+  },
+  "cold_desktop": {
+    "path": "docs/results/2026-11-05-native-paging-cold.json",
+    "sha256": "a1de2dbc023c751f69e6b837f260d4cccd1c03ee756feeb0f230ffe8f5ec8f72",
+    "promoted": false
+  },
+  "final_process_check": {
+    "checked_utc": "2026-11-05T22:25:09.785849+00:00",
+    "processes": []
+  },
+  "generator_sha256": "2d5e9a2998fd71e94a12c165765924e8158bab509906b1a6c723bcbca2aa1d84"
+}

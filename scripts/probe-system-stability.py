@@ -126,6 +126,7 @@ def run_once(args, number):
     if candidate: result['candidate_kernel'] = candidate
     if seed_record: result['seed'] = seed_record
     result['sources']['scripts/xiri_lab/kernel_log.py'] = sha256(ROOT/'scripts/xiri_lab/kernel_log.py')
+    result['sources']['scripts/xiri_lab/transfer.py'] = sha256(ROOT/'scripts/xiri_lab/transfer.py')
     result['sources']['runtime/libexec/session-guard.c'] = sha256(ROOT/'runtime/libexec/session-guard.c')
     if args.acrobat_replay:
         result['sources']['scripts/xiri_lab/image_apps.py'] = sha256(d/'image-apps.py')
@@ -138,6 +139,12 @@ def run_once(args, number):
         guest.monitor('screen shot '+str(d/(name+'.png')))
         assert (d/(name+'.png')).read_bytes()[:8] == b'\x89PNG\r\n\x1a\n'
         result.setdefault('screenshots', {})[name] = sha256(d/(name+'.png'))
+        if args.trace_native:
+            # Retain the original frame, then compare the cold probe's
+            # explicit wait path without silently replacing a black capture.
+            guest.monitor('screen wait 500 10000')
+            guest.monitor('screen shot '+str(d/(name+'-wait.png')))
+            result['screenshots'][name+'-wait'] = sha256(d/(name+'-wait.png'))
 
     def greeter():
         cmd('export DISPLAY=:0; XAUTHORITY=$(ps -axww -o args= | '
@@ -166,6 +173,10 @@ def run_once(args, number):
         for display, transport in [(':0', 'unix'), ('127.0.0.1:0', 'tcp')]:
             path = base+'/'+label+'-'+transport+'.log'
             call = shlex.join([base+'/xinput', display, str(args.input_iterations), '10'])
+            if args.trace_native:
+                trace = path+'.ktrace'
+                cmd('install -m 600 -o '+(user or 'root')+' /dev/null '+trace)
+                call = 'ktrace -t csw -f '+trace+' '+call
             if user:
                 call = 'su -l '+user+' -c '+shlex.quote('XAUTHORITY='+shlex.quote(authority)+' '+call)
             began = time.monotonic()
@@ -217,7 +228,8 @@ def run_once(args, number):
         output = get('cat '+directory+'/loop.log')
         (d/(label+'-children.log')).write_text(output)
         assert f'CHILD_PASS iterations={args.child_iterations} launches={args.child_iterations*2}' in output
-        cmd('su -l xiritest -c '+shlex.quote('/bin/sh '+base+'/guard-tests.sh '+directory)+
+        shell = '/bin/sh -x ' if args.trace_native else '/bin/sh '
+        cmd('su -l xiritest -c '+shlex.quote(shell+base+'/guard-tests.sh '+directory)+
             ' >'+directory+'/adversarial.log 2>&1', 120)
         output = get('cat '+directory+'/adversarial.log')
         (d/(label+'-adversarial.log')).write_text(output)
@@ -230,9 +242,12 @@ def run_once(args, number):
         # Logs include the last BEGIN/OWN even when the successful transfer path
         # was never reached. Do not infer native process health from a PID alone.
         cmd('ps -axlww >'+base+'/processes.txt; cp /var/log/Xorg.0.log '+base+'/Xorg.log; '
-            'cp /var/log/xdm.log '+base+'/xdm.log', 20)
-        archive = guest.read('tar -C '+base+' -czf - .', 300)
-        (d/'guest-evidence.tgz').write_bytes(archive)
+            'cp /var/log/xdm.log '+base+'/xdm.log; vmstat -s >'+base+'/vmstat-final.txt', 30)
+        from xiri_lab.transfer import archive as transfer_archive
+        digest = transfer_archive(guest,'tar -C '+base+' -czf - .',d/'guest-evidence.tgz')
+        archive = (d/'guest-evidence.tgz').read_bytes()
+        result['evidence_transfer'] = dict(transport='loopback-nat-tcp',
+            sha256=digest, bytes=len(archive), guest_hash_verified=True)
         # Transfer detailed input logs once. Keep them locally with the same
         # names and verify against the digest taken immediately after the test.
         with tarfile.open(fileobj=io.BytesIO(archive), mode='r:gz') as stream:
@@ -309,6 +324,7 @@ def run_once(args, number):
         assert get('sha256 -q '+shlex.quote(module['path'])).strip() == module['sha256']
         cmd('/etc/rc.d/xdm status && /etc/rc.d/xiri_famd status && /etc/rc.d/rpcbind status')
         result['boot_services'] = get('modstat; cat /var/run/xiri_famd.pid /var/run/rpcbind.pid /var/run/xdm.pid')
+        result['swap_config'] = get('sysctl vm.swap_encrypt; swapctl -l')
         result['service_pids'] = get('cat /var/run/xiri_famd.pid /var/run/rpcbind.pid /var/run/xdm.pid').split()
         assert len(result['service_pids']) == 3 and all(x.isdigit() for x in result['service_pids'])
         if args.seed: cmd('rm -rf '+base)
@@ -467,6 +483,8 @@ def main():
     parser.add_argument('--fairness-iterations', type=int, default=0,
                         help='repeat native pointer-query/delayed-release controls on each desktop and transport')
     parser.add_argument('--debug-failure', action='store_true')
+    parser.add_argument('--trace-native', action='store_true',
+                        help='retain native syscall/context-switch traces, shell assertions and paired capture diagnostics')
     parser.add_argument('--halt-active', action='store_true', help='finish with shutdown during an active IRIX desktop')
     parser.add_argument('--pressure-mib', type=int, default=0, help='hold this many dirty native MiB during the checks (maximum 192)')
     parser.add_argument('--require-cd9660', action='store_true', help='require the CD regression to pass on the installed image too')

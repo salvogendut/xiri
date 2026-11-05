@@ -46,7 +46,8 @@ def main():
               'sys/arch/mips/mips/kobj_machdep.c', 'sys/kern/sys_select.c',
               'sys/arch/mips/mips/mips_fpu.c',
               'sys/kern/kern_lwp.c', 'sys/kern/kern_sig.c', 'sys/kern/kern_exit.c',
-              'sys/sys/proc.h', 'sys/uvm/uvm_pglist.c',
+              'sys/sys/proc.h', 'sys/uvm/uvm_pglist.c', 'sys/uvm/uvm_pdaemon.c',
+              'sys/uvm/uvm_swap.c',
               'sys/compat/netbsd32/netbsd32.h', 'sys/compat/netbsd32/netbsd32_fs.c']
     result = dict(schema=1, status='built', source=str(source),
                   source_revision=output('git', '-C', str(source), 'rev-parse', 'HEAD').strip(),

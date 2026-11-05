@@ -214,13 +214,20 @@ It remains unselected because the added 96 MiB pressure gate fails. Native
 sleep timeouts occur on both candidate and preceding images; the latter
 captures the correct 200 ms request at native libc's nanosleep return.
 A separate candidate run reports valid 25-descendant cleanup, then fails
-an unidentified shell postcheck. All failed runs are retained and halt
-cleanly; partial passes do not qualify the whole workload. Next trace native
-sleep/wakeup and the exact postcheck under load, retaining the watchdog and
-ownership requirements. Investigate the pressure runner's black captures
-separately from the passing cold desktop visuals.
+a shell postcheck. The [native paging investigation](results/2026-11-05-native-paging.md)
+now traces that assertion, controls its exit/reap race, and locates long
+software-encrypted pageout batches in the native page daemon. A separate
+big-endian swap-encryption sysctl defect is corrected and tested before/after.
+The final candidate passes the full pressure workload and forced encrypted
+swap readback with the original watchdog and exact ownership requirements.
+A separate startup kernel crash keeps its CHD unselected; evidence is retained
+and further investigation is deferred at the user's request. A traced capture also reproduces
+a stale greeter frame that an explicit frame wait refreshes to the actual
+desktop; the separate cold-image visual gate remains required.
+That cold gate now passes from the packaged candidate, including fonts,
+native ctwm, IRIX sessions, shell jobs, catalog launch and clean shutdown.
 
-After these system failures are understood, remove FAM's single configured
+The next planned system feature is to remove FAM's single configured
 IRIX-user restriction, with two ordinary IRIX accounts and isolated
 homes/session state, while retaining a separate native ctwm login.
 Individual application fixes and native IRIX clogin integration remain later

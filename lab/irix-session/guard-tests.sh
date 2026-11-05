@@ -15,10 +15,9 @@ check()
     grep 'absent=1 valid=1' "$1.log"
     if test -f "$1.pids"; then
         while read pid; do
-            if kill -0 "$pid" 2>/dev/null; then
-                # Orphans can briefly be init-owned zombies, already dead.
-                ps -p "$pid" -o stat= | grep '^Z' >/dev/null || exit 1
-            fi
+            # Accept only absence or a terminal process state from one
+            # kernel snapshot.  Query errors and live processes both fail.
+            ./descendants check-dead "$pid"
         done <"$1.pids"
     fi
 }
@@ -36,6 +35,10 @@ cleanup()
     wait "$sentinel" 2>/dev/null || :
 }
 trap cleanup EXIT
+"$guard" 30000 ./descendants postcheck-control unused >postcheck-control.log 2>&1
+check postcheck-control
+grep 'PID_POSTCHECK_CONTROL .*valid=1' postcheck-control.log
+kill -0 "$sentinel"
 for mode in hold escape; do
     "$guard" 1200 ./descendants "$mode" "$mode.pids" >"$mode.log" 2>&1
     check "$mode"; kill -0 "$sentinel"

@@ -253,3 +253,27 @@ core. `qualify-type1-scaler.py` revalidates the retained comparison and
 original-IRIX/winterm controls. Its source-equivalence ledger preserves the
 actual pre-commit build revision and patch. Use `lab/type1-scaler/baseline.json`
 with `.work/netbsd-fpu-build` when preparing that kernel's replacement image.
+
+The [native paging lab](../lab/native-paging/README.md) separates native
+sleep/observer timing, swap-encryption settings and paged-data readback from
+the complete desktop workload. Preserve failed whole-run results even when
+their individual controls pass: a resident memory readback does not prove
+swap-in, and a narrower sleep pass does not qualify the X input sequence.
+`probe-native-sleep.py` retains the input bundle pin, replacement artifact
+hashes, exact media/harness, native traces and clean-halt evidence. Large
+diagnostic archives use a bounded loopback transfer with a guest/host digest
+check. Use `--trace-native` on the system runner only for diagnosis; keep
+the normal watchdog and exact process counts for the final pressure gate.
+
+Check filesystem headroom before another image/build cycle. Rust `debug/incremental`
+caches can grow by several GiB across the emulator targets; they are regenerable
+when no compiler is using them. Preserve final executables, kernel/module/debug
+artifacts, guest evidence and manual overlays. The native-paging packaging record
+documents independent CHD decoding in temporary memory storage and a verified
+reflink for the persistent raw cache, avoiding another fully allocated 8 GiB copy.
+Cargo's `debug/build` and `release/build` directories are also regenerable
+dependency build caches. Old `verification/roundtrip.raw` files can be removed
+after checking their hashes and the retained CHD against the bundle manifest;
+`prepare-xiri-seed.py` automatically decodes the CHD when this cache is absent.
+The [cleanup ledger](results/2026-11-05-workspace-cleanup.json) lists the exact
+removed caches, retained CHDs and restoration commands.

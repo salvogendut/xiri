@@ -17,6 +17,12 @@ limitations, separate candidate launcher and outstanding system investigation.
 `netbsd-xiri.chd` is an 8 GiB NetBSD disk compressed to 496,151,497 bytes
 (about 473 MiB). Its SHA256 is
 `90ca82ecdfbe184a96990515938f7856eb6983f77719d487fb7c6b34ba73eece`.
+The [native paging follow-up](results/2026-11-05-native-paging.md) records the
+kernel and cleanup-fixture changes. Full pressure, encrypted readback and cold desktop
+checks pass, but a separate startup kernel crash keeps the replacement
+CHD unselected. Its [packaging record](results/2026-11-05-native-paging-image.md)
+preserves the candidate and its limitations for later work.
+
 The [job-control/native-wait update](results/2026-11-05-native-wait-image.md)
 adds IRIX sleep, child-state and process-group support, plus a generic NetBSD
 multi-child wait-accounting fix. Compared with the Type1 image, only

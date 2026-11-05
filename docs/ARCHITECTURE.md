@@ -151,6 +151,14 @@ covered by [native before/after tests](results/2026-11-05-native-wait.json).
 It adds no module interface; native and foreign parents use the corrected
 common wait machinery.
 
+The [paging investigation](results/2026-11-05-native-paging.md) concerns shared
+native UVM code as well: software-encrypted pageout can monopolize the CPU
+on this non-preemptible MIPS kernel. Its candidate adds bounded scan pauses
+after the free-memory target is covered and fixes the big-endian boolean
+sysctl used to control swap encryption. The IRIX module remains byte-identical;
+these changes add no personality interface. Full deployment qualification
+is recorded separately from the native timing and sysctl controls.
+
 The [native stability cycle](results/2026-11-04-system-stability.md) also fixes
 CD9660 mount translation for native NetBSD o32 programs in `compat_netbsd32`.
 It translates ownership and permission masks in modern mount arguments and

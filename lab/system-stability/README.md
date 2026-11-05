@@ -90,9 +90,14 @@ the interrupted instruction. The
 retains four failed 96 MiB pressure runs. The previous-image comparison
 captures a correct 200 ms native sleep request at the same libc instruction
 as the candidate timeout. Another candidate run reports valid cleanup for
-all 25 live-burst descendants, then fails an unidentified shell postcheck;
-the later process snapshot cannot establish its cause. Trace that assertion
-and native sleep/wakeup before accepting another full pressure gate.
+all 25 live-burst descendants, then fails a shell postcheck. The
+[native paging investigation](../../docs/results/2026-11-05-native-paging.md)
+subsequently traces that assertion and identifies long encrypted pageout
+batches. The revised postcheck uses one process-state query, with live,
+zombie and already-reaped child controls. The revised kernel passes the full
+pressure workload and forced encrypted swap readback. Its replacement image
+remains unselected after a separate startup kernel crash; further crash
+investigation is deferred at the user's request.
 Black pressure captures are excluded from visual qualification; the
 independent cold desktop gate passes readable greeter and desktop checks.
 
@@ -145,6 +150,91 @@ failed result and archive; a later successful click is diagnostic only.
 The [subsequent scheduler image](../../docs/results/2026-11-04-xorg-scheduling.md)
 passes fresh application, query-loop, both-user session and clean-halt gates
 and is selected independently of those failed runs.
+
+## Native sleep and scheduler diagnostics
+
+`--trace-native` adds native syscall/context-switch traces to the input
+fixture and shell tracing to the cleanup suite. It preserves the input
+iterations, watchdog and cleanup assertions. Large archives travel through
+the existing local NAT gateway, with matching guest/host SHA256 checks;
+the listener binds only to host loopback and serves no files. The untraced
+runner uses the same verified transfer for its final archive, after the
+workload finishes; individual command responses still use the serial console.
+
+The independent fixture removes Xlib from the sleeping process:
+
+```sh
+python3 scripts/probe-native-sleep.py \
+  --bundle .work/images/xiri-netbsd-desktop-20261105-cleanup \
+  --kernel-build .work/netbsd-paging-latency-v3-build \
+  --check-swap-control --verify-memory \
+  --iterations 100 --pressure-mib 96
+```
+
+A native child repeatedly requests 200 ms through `usleep`, `nanosleep` or
+`select`, with a separate ten-second alarm. Its parent records both clocks,
+LWP state, VM counters and CPU ticks every 100 ms. The matrix runs at the
+unloaded greeter, the greeter with a held allocation, and the loaded IRIX
+desktop. All processes are native NetBSD. Requesting 96 MiB does not itself
+prove paging; the recorded VM counters establish whether it occurred.
+`--kernel-build` installs hash-verified artifacts into a disposable disk,
+halts, and reboots before observation. The input bundle pin and installed
+kernel hashes remain separate. `--seed HALTED_RUN` reuses a verified matching
+kernel overlay in a new clone, preserving the original overlay and its result.
+After the matrix, `--verify-memory` releases the held allocation and runs a
+separate anonymous swap-in control. `--swap-readback-only` runs that control
+alone. It adds a temporary 128 MiB swap file on the disposable disk, keeps
+encryption enabled, and grows pressure in 8 MiB steps (160 MiB maximum)
+until `mincore` proves at least 128 pages of its 96 MiB primary mapping are
+nonresident. NetBSD's data-preserving `MADV_DONTNEED` makes the primary mapping
+reclaimable. After eviction it releases the extra pressure mappings, verifies
+that at least 128 primary pages remain nonresident, reads every primary byte
+it wrote (one per 4096 bytes), and requires its own major-fault count to
+increase. The extra mappings are pressure only, not part of the checked data.
+It then removes the temporary swap device and file. These steps
+are separate from the timing matrix's unchanged 96 MiB workload; resident-only
+readback is explicitly insufficient. No untouched bytes are claimed checked.
+The readback keeps phase timestamps, an explicit alarm marker and native
+syscall/signal traces. An inner shell records the control's exit status as
+well as the outer launcher's status: the inspected native PAM `su` source
+uses `WEXITSTATUS` without first checking for a signalled child, so a launcher
+zero by itself is insufficient. The final data-verification marker is mandatory.
+`--methods nanosleep usleep select` changes the order to distinguish an API
+failure from the first test encountering a paging episode.
+
+`--check-swap-control` verifies false/true/false/true readback with no swap
+device configured, then restores configured swap and requires encryption on
+for the matrix. `--swap-control-only` runs only that regression on an older
+kernel. The baseline big-endian handler incorrectly reports zero while the
+actual encryption flag is one. Consequently an ordinary matrix on that old
+kernel now fails the initial setting check; the retained historical harness
+records its earlier timing observations. `--plaintext-swap` is diagnostic
+only and must first pass the control, so that broken readback cannot silently
+turn an encrypted run into a claimed plaintext comparison.
+
+Only `waitpid` decides whether the child finished. A disappearing LWP can
+legitimately return ESRCH/EAGAIN between the parent's nonblocking wait and
+its sysctl query. Such a query is a missing sample, not a successful exit or
+an observer failure. Acceptance requires a successful `SLEEP_RESULT` completion
+record as well as launcher status zero. The explicit `exit-control` retains a real child zombie
+with WNOWAIT, checks this case, and then reaps its expected status 37.
+
+`--sample-kernel` additionally pauses the diagnostic emulator briefly once
+per host second for CPU registers and stack words. Those samples can locate
+kernel work but are not an unmodified timing qualification. Their pause
+durations and raw addresses are retained. Resolve addresses against the
+exact pinned `netbsd.gdb`; apparent stack code addresses alone are not an
+unwound call stack. Non-root KERN_LWP pointer fields are obscured by NetBSD
+and must not be treated as kernel addresses.
+
+`read-ktrace.py TRACE --output REPORT` reads the pinned LP64, big-endian
+version-2 kernel trace format. Its 56-byte header and 64-bit nanosecond
+field were checked against the matching kernel DWARF; the guest's o32
+`kdump` misdecodes that timestamp layout. `--self-test` checks a known
+200 ms interval and rejects malformed controls. The observer and worker
+both make nanosleep calls, so the report separates counts by PID. Raw
+traces remain authoritative; context-switch records are emitted when an
+LWP resumes and are not globally time-ordered across different LWPs.
 
 ## Pointer-query scheduling control
 

@@ -1,0 +1,78 @@
+{
+  "schema": 1,
+  "status": "verified",
+  "bundle": ".work/images/xiri-netbsd-desktop-20261105-paging",
+  "build_staging": "/tmp/xiri-native-paging-20261105/bundle",
+  "manifest_sha256": "af33482da9361667388ec5f5b7222acceb8995572265fa587d8bb8e9578a0120",
+  "chd_sha256": "921ec9e53f1061b9763ae4ec307d12d9b1f5b3b759734832921c8df7154a8d10",
+  "chd_bytes": 496159017,
+  "raw_sha256": "4d163a2ad99831f1e0ebf7aa06d39c4b571932a00a33b5c47590b7f404d0bcf4",
+  "independently_decoded_raw_sha256": "4d163a2ad99831f1e0ebf7aa06d39c4b571932a00a33b5c47590b7f404d0bcf4",
+  "copied_files_verified": 29,
+  "copied_files": {
+    "README.txt": "865a7809b8da7e6849fb159b6f2a1b43785dc6fc03e3187aa0c3ca913aa5d27d",
+    "acrobat-resources.json": "2930c571921718b54abacf8898eab41433ddaa908c865378fa4ef3d686ba3331",
+    "bitmap-copy-ledger.json": "113bff97f1476f6d8eb2af27fdccd7e5560d7a36eb47b55af272acabd8e9430e",
+    "copy-ledger.json": "204c32fd3f41e512a5121aeba7403ea5a821a4e5be22e2c60d4e19ab70bab19a",
+    "desktop-behavior-resources.json": "9126f132039416f8f37ecca2ef7ad4a51f5bdedf9f9c7482dc3d0bb5a9fcddfa",
+    "emulator/iris": "3dd9299d71f1899ff5a8c9b76f6a24752d19e4f9a0bcfe0edf3a29001dc9c49e",
+    "emulator/iris-ci": "2543b1fae0b442516c40c9d9155eebc9f9569561146b4f62948171fe7eb5c7f3",
+    "gimp-resources.json": "f78342cf63ec66073445b620cba81f4faddfcc60e0102d05bca470f42b7ee8c4",
+    "gnome-resources.json": "c0693d31f7ef2cebf06d14ed31a16f2901520f72fc5df2514834ee4b871422d1",
+    "iris.toml": "77c252ecac0b780d32570af5793b99320a59edbd3b8ef8a9bb9b5129a4277ea9",
+    "irix-module-build.json": "0c5d1ce29e711f38b7b9c5787877e8e560b9c2f97b0510e0f465bf57dc2bbc47",
+    "manifest.json": "af33482da9361667388ec5f5b7222acceb8995572265fa587d8bb8e9578a0120",
+    "native-fam-source.json": "9c8c18bc5f5418a4fa6ba1f906e05bb4905bc205fc3a82d440a886a86eda6d7d",
+    "native-rpcbind-source.json": "5a10cb70ecde9df771239d4a65083b3bed25abf205acde5be98d31d96bf664c5",
+    "netbsd-xiri.chd": "921ec9e53f1061b9763ae4ec307d12d9b1f5b3b759734832921c8df7154a8d10",
+    "nvram-graphics.bin": "57d6b43ae10b58a081219995bd2fe348e6cea1864b02470ddb27b70253f2b5cc",
+    "nvram.bin": "529bd9ae33bfb37eb184bac322f70970a023b75d8c22a17f4d70b58359a961a0",
+    "permissions.json": "e65633848c258eeecc0a211636c1e5fb5e7f11d23b73db336e643b7d8494044c",
+    "prismatic-state/nvram.bin": "57d6b43ae10b58a081219995bd2fe348e6cea1864b02470ddb27b70253f2b5cc",
+    "prismatic.cfg": "ae1388486f7bfe74a78d27fb6e86b5a5e37c51bd6dbd365463a08c6457d875de",
+    "run-iris.sh": "86cf47bb79b0eb980e40a566ff64f795b358a94f753015ae9460bb1e6e8d9680",
+    "seed-result.json": "5f598b2c79b83f633b13e37ab0736bd6be6c4178d64f6079df0a5d669c9716eb",
+    "terminal-resources.json": "55f7843650161b7f9e9cc715361d0929e7b8b723cd82565a45ca18853e901d54",
+    "tftp/netbsd-XIRI_INDY": "5526f57cc6297c2b788b3eb1d15336fc0a863045645024866c0f05a4b68107a6",
+    "verification/create.log": "85c32f2ea3c49fbf62990f60867bbb73023d4ac97c78d1c119317a6a45bf577d",
+    "verification/extract.log": "16c040f03c5ade1d778e559ec1086b10f08262cc50ad72c0feff13a36b0cf719",
+    "verification/graphics-boot-nvram.bin": "57d6b43ae10b58a081219995bd2fe348e6cea1864b02470ddb27b70253f2b5cc",
+    "verification/verify.log": "9b059263ccd77ca901733d67b33950a9db3dbc553ec0b766905961b107f8de14",
+    "xdm-preparation.json": "5f598b2c79b83f633b13e37ab0736bd6be6c4178d64f6079df0a5d669c9716eb"
+  },
+  "raw_cache": "Reflink of halted preparation disk after independent CHD decode and byte-hash comparison",
+  "reason": "Use temporary memory filesystem for independent 8 GiB decode; preserve qualified artifacts",
+  "installed_inventory": {
+    "from": ".work/images/xiri-netbsd-desktop-20261105-cleanup/seed-result.json",
+    "to": ".work/xdm-image/prepare/ordinary-8yqldiep/result.json",
+    "changed": {
+      "/netbsd": {
+        "before": "c92f0b2fcc182836393a87ca41a0315a0681e93ed3e904fad925d3c370e4dd98",
+        "after": "3cd6c8da5c9263b116927978b25b4b6a901dc66216aede41be1e3edb680eede6"
+      },
+      "/netbsd.boot": {
+        "before": "5fd2dd05d1549e0e6e29a02c2d6d8c6bae2b8443edad272f12e878f24eb06e54",
+        "after": "5526f57cc6297c2b788b3eb1d15336fc0a863045645024866c0f05a4b68107a6"
+      }
+    },
+    "unchanged_files": 1281,
+    "selected_wait_comparison": {
+      "changed": {
+        "/netbsd": {
+          "before": "c92f0b2fcc182836393a87ca41a0315a0681e93ed3e904fad925d3c370e4dd98",
+          "after": "3cd6c8da5c9263b116927978b25b4b6a901dc66216aede41be1e3edb680eede6"
+        },
+        "/netbsd.boot": {
+          "before": "5fd2dd05d1549e0e6e29a02c2d6d8c6bae2b8443edad272f12e878f24eb06e54",
+          "after": "5526f57cc6297c2b788b3eb1d15336fc0a863045645024866c0f05a4b68107a6"
+        },
+        "/usr/local/libexec/xiri/session-guard": {
+          "before": "b4970e085ebc533cc6d286151f8b93056493be399beeffc5f84d8d77985d8d09",
+          "after": "e33ee6bd22afc26aa5f16d7f4e6a78eed966a301a7ee9233b33556a39e735aa7"
+        }
+      },
+      "unchanged_files": 1280
+    }
+  },
+  "temporary_staging_removed_after_verified_copy": true
+}

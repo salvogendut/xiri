@@ -71,8 +71,14 @@ of a genuinely live child. This does not establish the old compview cause.
 The [cleanup candidate CHD](docs/results/2026-11-05-cleanup-image.md) passes
 cold desktop, font, shell-job and logout checks, but remains unselected:
 96 MiB pressure testing exposes native sleep timeouts on both candidate and
-previous images, plus an unresolved test postcheck. Investigating these
-system failures is next; the existing manual bundle remains available.
+previous images. The [native paging investigation](docs/results/2026-11-05-native-paging.md)
+locates long encrypted pageout batches, corrects a big-endian swap-control
+sysctl defect, and replaces a racy cleanup postcheck with a single process
+query. The full pressure workload, forced encrypted swap readback and cold
+desktop checks pass.
+The replacement CHD remains unselected after a separate startup kernel crash;
+that intermittent fault is recorded for later investigation. The existing
+manual bundle remains selected.
 
 The [preference cycle](docs/results/2026-11-04-irix-preferences.md) implements
 measured IRIX `rename` behavior. GNOME Terminal and gedit settings survive

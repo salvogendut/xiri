@@ -1,0 +1,159 @@
+{
+  "schema": 1,
+  "status": "completed",
+  "scope": "Regenerable build caches and redundant decoded CHD caches within Xiri .work",
+  "records": {
+    "rust-cache-reclamation.json": {
+      "reason": "Reclaim regenerable Rust incremental compiler caches after user reported low /var space; keep executables, CHDs, overlays, source and evidence",
+      "started_utc": "2026-11-05T21:42:04Z",
+      "free_before": 343130112,
+      "removed": [
+        {
+          "path": ".work/target/debug/incremental",
+          "files": 5490,
+          "logical_bytes": 11233957542,
+          "allocated_bytes_including_shared": 11245105152
+        },
+        {
+          "path": ".work/target-iris-streamline/debug/incremental",
+          "files": 3095,
+          "logical_bytes": 4743510479,
+          "allocated_bytes_including_shared": 4749836288
+        },
+        {
+          "path": ".work/iris-terminal-target/debug/incremental",
+          "files": 576,
+          "logical_bytes": 1359400881,
+          "allocated_bytes_including_shared": 1360596992
+        }
+      ],
+      "free_after": 9475874816
+    },
+    "cargo-build-cache-reclamation.json": {
+      "started_utc": "2026-11-05T22:09:35.837848+00:00",
+      "reason": "User requested /var cleanup; remove regenerable Cargo build-script and native dependency caches; no compiler active",
+      "free_before": 9310085120,
+      "protected_executables": {
+        ".work/target/debug/jitv2-analyze": "52bbf45fceaa7b2241e2be08f7c41e2b1b22132ea8e6448a4e031c67f5a2ebf6",
+        ".work/target/debug/mkvh": "13b9139e37a6e206c096c72198e55db5499beb6edb49e3f815286d2a1c0ab8d6",
+        ".work/target/debug/jitv2-verify": "e4d34af302769fa86f9b3fe423dce29b5ddd466e59c40ef0775e67a9a5390532",
+        ".work/target/debug/coffdump": "47589644f5eaefa24abe2e42e4712449981012b0deeddb15b900217c2ad55385",
+        ".work/target/debug/iris-ci": "105459fb946c81c59d97e8f3c57bb8b5c172423928ec361fc32a3b4d0611745b",
+        ".work/target/debug/chd-extract": "c8ddeaf162c5de599206ab0d33613880c7fc126297417111b18a93b154a162bc",
+        ".work/target/debug/iris-bench": "8705f0bb8218c988ae24dd745c3569f2bb9eb5547c6c2ee20638b22d57575dfd",
+        ".work/target/debug/iris": "b5fa76f220c382521d096677aacf20497c5aeef9c4a20fa2ea05954c568c7bfd",
+        ".work/target/release/iris-ci": "c0492793d79caeb488c93b2e74f9ba0d5877e7935d3526f6794f3d4d58029159",
+        ".work/target/release/iris": "cc6561d0bdfec6ce30d656caf4a6eaee6ffbf622e5348c3b77b73810d5293f56",
+        ".work/target/release/chd-extract": "fd006b5e75d7a7c5698fc23fe17a904093364debd8ce682ffc433dbd137c86a2",
+        ".work/target-iris-streamline/debug/mkvh": "d03d7e6acf16e6842d0cdc755396690805652c28c3ed6df1bd6e01b2ed7f41b1",
+        ".work/target-iris-streamline/debug/iris-bench": "ce2fa9e171e102b95602a6d8e1d8b739e9f974fa67e30669d661bb939088c169",
+        ".work/target-iris-streamline/debug/coffdump": "4302a22d696101547322349fa28935defffb129b90fb30051121230a804a3e05",
+        ".work/target-iris-streamline/debug/chd-extract": "9a024e762ab2d814f4743bd472661007a2c6ac7ca324e5a105a6765390623f56",
+        ".work/target-iris-streamline/debug/iris-ci": "321edb11527070829aeb12332f83152c73aa9acc711ab56b1a622a3906de2fb0",
+        ".work/target-iris-streamline/debug/iris": "495d63ce917f272632fac94f545c35036d76bf3f6c45ab821b8486b999f5c2bb",
+        ".work/target-netbsd64/release/chd-extract": "fd006b5e75d7a7c5698fc23fe17a904093364debd8ce682ffc433dbd137c86a2",
+        ".work/target-netbsd64/release/iris-ci": "8711321aa6eaae440da3c7920b00ae4cf1c7f2abbdb15a9919f58485500ffb6c",
+        ".work/target-netbsd64/release/iris": "1b3f7702ba7f43b5c4fca8ba8884243559f46371d8d67a36ce5e6fee1e595eba",
+        ".work/target-newport-accel/release/iris-ci": "2543b1fae0b442516c40c9d9155eebc9f9569561146b4f62948171fe7eb5c7f3",
+        ".work/target-newport-accel/release/iris": "3dd9299d71f1899ff5a8c9b76f6a24752d19e4f9a0bcfe0edf3a29001dc9c49e"
+      },
+      "removed": [
+        {
+          "path": ".work/target/debug/build",
+          "files": 6361,
+          "logical_bytes": 12743338126
+        },
+        {
+          "path": ".work/target/release/build",
+          "files": 4273,
+          "logical_bytes": 1592755954
+        },
+        {
+          "path": ".work/target-iris-streamline/debug/build",
+          "files": 3911,
+          "logical_bytes": 6884018246
+        },
+        {
+          "path": ".work/iris-terminal-target/debug/build",
+          "files": 2778,
+          "logical_bytes": 1632645915
+        },
+        {
+          "path": ".work/target-netbsd64/release/build",
+          "files": 4273,
+          "logical_bytes": 1592800396
+        },
+        {
+          "path": ".work/target-newport-accel/release/build",
+          "files": 4650,
+          "logical_bytes": 1859158232
+        }
+      ],
+      "protected_executables_unchanged": true,
+      "free_after": 22352396288,
+      "finished_utc": "2026-11-05T22:09:39.741336+00:00"
+    },
+    "decoded-cache-reclamation.json": {
+      "started_utc": "2026-11-05T22:11:53.168474+00:00",
+      "reason": "User requested cleanup of Xiri scratch data; redundant decoded CHD caches, all retained CHDs and source ledgers verified",
+      "free_before": 22723510272,
+      "removed": [
+        {
+          "path": ".work/images/xiri-netbsd-desktop-20261102-framed-accel/verification/roundtrip.raw",
+          "bytes": 8589934592,
+          "raw_sha256": "e4cb1f1b9fb6f8465434524aaacf33c848731f54da7f03416f1150897fb3e220",
+          "retained_chd": ".work/images/xiri-netbsd-desktop-20261102-framed-accel/netbsd-xiri.chd",
+          "chd_sha256": "483560d87b3002a0a8fdae3d170caebcf4fed47c0d6bf87c9de69d1d50d71826",
+          "manifest_sha256": "8a1fe138eb15ab1efd4fd16b6486a47a3e7e426b71ee8b7b2810a816682eec1c",
+          "restore": "chdman extracthd -i .work/images/xiri-netbsd-desktop-20261102-framed-accel/netbsd-xiri.chd -o .work/images/xiri-netbsd-desktop-20261102-framed-accel/verification/roundtrip.raw"
+        },
+        {
+          "path": ".work/images/xiri-netbsd-desktop-20261103-winterm/verification/roundtrip.raw",
+          "bytes": 8589934592,
+          "raw_sha256": "228161ab264dd15caf0c59e821eb1d2e1f354640a570beb5e5bdd311f1df5982",
+          "retained_chd": ".work/images/xiri-netbsd-desktop-20261103-winterm/netbsd-xiri.chd",
+          "chd_sha256": "f9a09a4fc470ca0041bfc2ea2a1670de012910e76499ecd075c2d7db75da355b",
+          "manifest_sha256": "dfa67f59de72955d090344bdafbdc63ec3b11b705ffbf76d2bc8386f32c6a006",
+          "restore": "chdman extracthd -i .work/images/xiri-netbsd-desktop-20261103-winterm/netbsd-xiri.chd -o .work/images/xiri-netbsd-desktop-20261103-winterm/verification/roundtrip.raw"
+        },
+        {
+          "path": ".work/images/xiri-netbsd-desktop-20261103-xdm/verification/roundtrip.raw",
+          "bytes": 8589934592,
+          "raw_sha256": "8f1dba840a11828bac8fec8a2a5556130a81690b8ce7a63ccbd18b00095bcc5d",
+          "retained_chd": ".work/images/xiri-netbsd-desktop-20261103-xdm/netbsd-xiri.chd",
+          "chd_sha256": "d0587d346242aea1482c9fffebec8c4b807aaacb129ef05ef064a34f6d4655a5",
+          "manifest_sha256": "568aca7fd169aa1a93e35aa20f7be06b83f06d2287f727181da0f9d43807e553",
+          "restore": "chdman extracthd -i .work/images/xiri-netbsd-desktop-20261103-xdm/netbsd-xiri.chd -o .work/images/xiri-netbsd-desktop-20261103-xdm/verification/roundtrip.raw"
+        },
+        {
+          "path": ".work/images/xiri-netbsd-desktop-20261103-xdm-wheel/verification/roundtrip.raw",
+          "bytes": 8589934592,
+          "raw_sha256": "c712ef8733ae3697157c4ec3c0c6e4a73d6c481809694d582fa405345d435371",
+          "retained_chd": ".work/images/xiri-netbsd-desktop-20261103-xdm-wheel/netbsd-xiri.chd",
+          "chd_sha256": "1eb35a78f36aab9b67592fc32fa79604e4ddb244dcc7561b56b976e7b24cce83",
+          "manifest_sha256": "2a66dab8e64a7a6d184d3e4a71866b2fbf14bd7c6c305b700445146da1bc8e1c",
+          "restore": "chdman extracthd -i .work/images/xiri-netbsd-desktop-20261103-xdm-wheel/netbsd-xiri.chd -o .work/images/xiri-netbsd-desktop-20261103-xdm-wheel/verification/roundtrip.raw"
+        }
+      ],
+      "free_after": 48492924928,
+      "finished_utc": "2026-11-05T22:12:15.828780+00:00"
+    },
+    "object-cache-reclamation.json": {
+      "reason": "Reclaim regenerable old compiler object caches for replacement CHD; final kernels, debug symbols, modules, source trees, images and evidence retained",
+      "files": 4961,
+      "exclusive_allocated_bytes": 402702336,
+      "by_build": {
+        ".work/netbsd-irix-build": {
+          "files": 4961,
+          "logical_bytes": 392720004,
+          "exclusive_allocated_bytes": 402702336
+        }
+      },
+      "detailed_local_ledger": ".work/native-sleep/object-cache-reclamation.json",
+      "detailed_ledger_sha256": "38bce77dfbef44a2ae2998ccc57ec3f6abecac2d2b794f918f2d6cf8fcfb88c7"
+    }
+  },
+  "checked_utc": "2026-11-05T22:12:56.907104+00:00",
+  "free_bytes_after": 57083387904,
+  "note": "No compilers were active. Final executables, compressed CHDs, manual overlays, NVRAM, source, debug symbols and test evidence retained. Four deleted decoded caches matched both retained CHDs and recorded raw hashes. Shared Btrfs extents make apparent file totals larger than actual reclaimed space."
+}

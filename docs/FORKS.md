@@ -42,6 +42,13 @@ not repin qualified kernels, emulator binaries, runtime resources or guest disks
 
 ## IRIS upstream updates
 
+The 2026-11-05 native-sleep investigation fetched upstream at 19:40 UTC.
+`c382cdcc25389769b5ae3a436ae1ff73ae42e964` was already included in IRIS
+`xiri` at `fb24628e1bf97a4f379309c79e808d82929672b7`; no additional
+integration or emulator rebuild was needed. Diagnostic guests retain
+the qualified `819c682` emulator and their original kernel/module hashes.
+The local check ledger is `.work/native-sleep/setup.json`.
+
 The 2026-11-05 cleanup-deadline cycle fetched upstream at 17:00:05 UTC through
 `c382cdcc25389769b5ae3a436ae1ff73ae42e964`. Merge
 `fb24628e1bf97a4f379309c79e808d82929672b7` is pushed on IRIS `xiri`.

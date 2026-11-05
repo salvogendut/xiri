@@ -5,6 +5,17 @@ status statements describe individual checkpoints and may be superseded by
 later entries. Use the [current README](../README.md), [development guide](DEVELOPMENT.md)
 and [selected image](../lab/irix-installed-desktop/image.json) for current work.
 
+The [2026-11-05 native paging investigation](results/2026-11-05-native-paging.md)
+reproduces the pressure stall without Xlib, observes synchronous swap
+encryption in the page daemon, and controls a separate big-endian
+`vm.swap_encrypt` read/write defect. A traced cleanup assertion also exposes
+the two-query exit/reap race; the replacement single-state query rejects live
+children and accepts terminal/absent children. The final kernel passes the
+full pressure workload, forced encrypted swap readback and cold desktop checks
+with unchanged input deadlines and ownership counts. A separate startup kernel crash keeps
+the packaged image unselected. Its evidence is preserved; further crash
+investigation is deferred at the user's request.
+
 The [2026-11-05 tracking follow-up](results/2026-11-05-process-tracking.md)
 passes independent native child-event checks and paired compview cleanup
 replays without explaining its historical failure. The subsequent
