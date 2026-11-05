@@ -1,0 +1,687 @@
+{
+  "schema": 1,
+  "status": "retained-failures-not-qualified",
+  "promoted": false,
+  "selected_image_unchanged": "lab/irix-installed-desktop/image.json",
+  "runs": [
+    {
+      "run": ".work/system-stability/boot-1xdrdili",
+      "status": "error",
+      "result": {
+        "path": ".work/system-stability/boot-1xdrdili/result.json",
+        "sha256": "556b7bc2328b77878574854e987c4c1428c4534c7e4e225463193c9efb601735"
+      },
+      "archive": {
+        "path": ".work/system-stability/boot-1xdrdili/guest-evidence.tgz",
+        "sha256": "d65be93da84e2d146c8cacb6da72de4d4ad0bedb1b17b78da87b680c0478a990"
+      },
+      "harness": {
+        "path": ".work/system-stability/boot-1xdrdili/harness.py",
+        "sha256": "73147959a0e871728cbe1abe362b1a9f26ab712ad3645890ef620d8ea757cabf"
+      },
+      "bundle": ".work/images/xiri-netbsd-desktop-20261105-cleanup",
+      "manifest_sha256": "233a765adc3b3781a61cbff860df80ec1c93fefbc39ac20564d3cf4480a0c662",
+      "chd_sha256": "f05c3ac69dcc3edde811528c7f4fe9668b13b28e28117dda3f8ff218e15aaa7a",
+      "guard_sha256": "e33ee6bd22afc26aa5f16d7f4e6a78eed966a301a7ee9233b33556a39e735aa7",
+      "native_libc_sha256": null,
+      "xorg_command": "/usr/X11R7/bin/Xorg :0 -config /usr/local/share/xiri/xorg.conf -dumbSched -noretro -auth /var/db/xdm/authdir/authfiles/A:0-hbI85D",
+      "xorg_sha256": "48a4a07110209f604e75bd03f82494be838a80d51d12492769b323f3a1595ee4",
+      "parameters": {
+        "kernel_build": null,
+        "seed": null,
+        "runs": 1,
+        "sessions": 2,
+        "input_iterations": 100,
+        "child_iterations": 20,
+        "fairness_iterations": 0,
+        "debug_failure": false,
+        "halt_active": true,
+        "pressure_mib": 96,
+        "require_cd9660": true,
+        "acrobat_replay": 0
+      },
+      "media": {
+        "xinput.c": "d3ef710e37079cc0950ec1a0b1eb6f546c185b3dfc8cb792514e75ffc3c64fdc",
+        "memory.c": "007da6640e7fc352ae66fd76421b5aecc3af65269e5a3bff587459ed5bbbc138",
+        "guard-loop.sh": "eb1d89df546ac393033e7ec26e27526dcc70042ede1c2ece969280694386a870",
+        "cd9660.c": "644e78e957a942fa83ff0d2e8f9862e2ec7ac3b457e916611580d1cb3858a26f",
+        "cd9660_mount.h": "0f8acc433fb11ae84ffbb83e5ffffb7416090296fdec6d79c9b2a2e2b4ec8269",
+        "guard-control.c": "cc71ccc39b2f75caf44f2afc9f97a2073373c36b40016a214b0345300724bcb0",
+        "query-control.c": "4a8d8ef99a8fe72b3f984dc3d1e695687c225e7ab5dd23406ad5ffe5804a3c3a",
+        "descendants.c": "02c35bc4d7d5d27f72e5ce43694718c14c85068d4800d609dd730411de849c80",
+        "guard-tests.sh": "31cae7f38047bcaf57c862e070f1b48d880e4e3bd77be1537606563e98eadf11",
+        "app-guard.c": "5e2899bd627b25828f91881dd2c9b3be6cf798572360c51383fa69f39779dd44"
+      },
+      "successful_phases": [
+        {
+          "kind": "input",
+          "label": "greeter",
+          "user": "root",
+          "display": ":0",
+          "iterations": 100,
+          "events": 200,
+          "host_seconds": 44.102,
+          "log_file": "greeter-unix.log",
+          "log_sha256": "99642aa93f504f155a2d3e423db84f0280b825ee752e7cebf53dc048f1eda02b"
+        },
+        {
+          "kind": "input",
+          "label": "greeter",
+          "user": "root",
+          "display": "127.0.0.1:0",
+          "iterations": 100,
+          "events": 200,
+          "host_seconds": 45.098,
+          "log_file": "greeter-tcp.log",
+          "log_sha256": "81521377bf9755e01714c500758b5c4feaa677e748b7828ffdaeca9105fbabf4"
+        },
+        {
+          "kind": "children",
+          "label": "greeter",
+          "iterations": 20,
+          "launches": 40,
+          "adversarial": true,
+          "host_seconds": 98.681
+        },
+        {
+          "kind": "input",
+          "label": "irix-1",
+          "user": "xiritest",
+          "display": ":0",
+          "iterations": 100,
+          "events": 200,
+          "host_seconds": 45.656,
+          "log_file": "irix-1-unix.log",
+          "log_sha256": "46379aaf29becf820ebd790c2f8400316bfbf7c6a06326edc3ea1252c7249d41"
+        }
+      ],
+      "error": "guest command failed (1): su -l xiritest -c 'XAUTHORITY=/tmp/.XauthamPEGH /tmp/xiri-stability/xinput 127.0.0.1:0 100 10' >/tmp/xiri-stability/irix-1-tcp.log 2>&1; rc=$?; echo \"$rc\" >/tmp/xiri-stability/irix-1-tcp.log.status; test \"$rc\" = 0\nsu -l xiritest -c 'XAUTHORITY=/tmp/.XauthamPEGH /tmp/xiri-stability/x \binput 127.0.0.1:0 100 10' >/tmp/xiri-stability/irix-1-tcp.log 2>&1; rc=$?; echo  \b\"$rc\" >/tmp/xiri-stability/irix-1-tcp.log.status; test \"$rc\" = 0; xiri_rc=$?; pr \bintf '\\nXIRI_a3f1589237f643fa874ee8c2601b88d3_RC=%s\\n' \"$xiri_rc\"\n\nXIRI_a3f1589237f643fa874ee8c2601b88d3_RC=1\nxiri-indy# ",
+      "clean_shutdown": true,
+      "source_unchanged": true,
+      "cd9660": {
+        "checks": 158,
+        "failures": 0,
+        "expected_fixed": true
+      },
+      "input_logs": [
+        {
+          "member": "./greeter-unix.log",
+          "sha256": "99642aa93f504f155a2d3e423db84f0280b825ee752e7cebf53dc048f1eda02b",
+          "completed_iterations": 100,
+          "exit_status": "0"
+        },
+        {
+          "member": "./greeter-tcp.log",
+          "sha256": "81521377bf9755e01714c500758b5c4feaa677e748b7828ffdaeca9105fbabf4",
+          "completed_iterations": 100,
+          "exit_status": "0"
+        },
+        {
+          "member": "./irix-1-unix.log",
+          "sha256": "46379aaf29becf820ebd790c2f8400316bfbf7c6a06326edc3ea1252c7249d41",
+          "completed_iterations": 100,
+          "exit_status": "0"
+        },
+        {
+          "member": "./irix-1-tcp.log",
+          "sha256": "4b8cc27f9e154a09fd96f4bcd9b795cee7945afe7c27f1cf92bf903192b5287a",
+          "completed_iterations": 76,
+          "exit_status": "124",
+          "tail": "XINPUT END iteration=76 display=127.0.0.1:0 stage=button-sync mono=765.531444754\nXINPUT BEGIN iteration=76 display=127.0.0.1:0 stage=receive mono=765.531650936\nXINPUT END iteration=76 display=127.0.0.1:0 stage=receive mono=765.532028906\nXINPUT BEGIN iteration=76 display=127.0.0.1:0 stage=sender-close mono=765.532192573\nXINPUT END iteration=76 display=127.0.0.1:0 stage=sender-close mono=765.534933694\nXINPUT BEGIN iteration=77 display=127.0.0.1:0 stage=sender-open mono=765.535155179\nXINPUT END iteration=77 display=127.0.0.1:0 stage=sender-open mono=765.556021906\nXINPUT BEGIN iteration=77 display=127.0.0.1:0 stage=extension mono=765.556208754\nXINPUT END iteration=77 display=127.0.0.1:0 stage=extension mono=765.561189270\nXINPUT BEGIN iteration=77 display=127.0.0.1:0 stage=motion-sync mono=765.561361724\nXINPUT END iteration=77 display=127.0.0.1:0 stage=motion-sync mono=765.562811754\nXINPUT_TIMEOUT see last BEGIN stage\n"
+        }
+      ],
+      "child_logs": [
+        {
+          "member": "./greeter-children/loop.log",
+          "sha256": "0614ede6b1204bd1a73bc6022372c4feca396137dc2a32980576dd2db8a5c6c8",
+          "summary": [
+            "CHILD_PASS iterations=20 launches=40"
+          ]
+        },
+        {
+          "member": "./greeter-children/adversarial.log",
+          "sha256": "e86b3cd36e450e7a7e9b79098b0d9ffdfd6abc06b181f1ce6ee729ba73e24719",
+          "summary": [
+            "SESSION_GUARD_TESTS_OK"
+          ],
+          "text": "GUARD pid=943 exit=-1 signal=9 stopped=1 absent=1 valid=1 tracked=1 remaining=0 reason=timeout uid=1234 gid=1234 elapsed=2278\nGUARD pid=1202 exit=-1 signal=9 stopped=1 absent=1 valid=1 tracked=3 remaining=0 reason=timeout uid=1234 gid=1234 elapsed=2255\nGUARD pid=1016 exit=-1 signal=9 stopped=1 absent=1 valid=1 tracked=25 remaining=0 reason=signal uid=1234 gid=1234 elapsed=11903\nGUARD pid=1016 exit=-1 signal=9 stopped=1 absent=1 valid=1 tracked=25 remaining=0 reason=signal uid=1234 gid=1234 elapsed=11903\nGUARD pid=1109 exit=0 signal=0 stopped=1 absent=1 valid=1 tracked=49 remaining=0 reason=leader-exit uid=1234 gid=1234 elapsed=483\nGUARD pid=1109 exit=0 signal=0 stopped=1 absent=1 valid=1 tracked=49 remaining=0 reason=leader-exit uid=1234 gid=1234 elapsed=483\nGUARD pid=1007 exit=7 signal=0 stopped=1 absent=1 valid=1 tracked=3 remaining=0 reason=leader-exit uid=1234 gid=1234 elapsed=1142\nGUARD pid=4019 exit=126 signal=0 stopped=0 absent=1 valid=1 tracked=1 remaining=0 reason=leader-exit uid=1234 gid=1234 elapsed=36\nGUARD pid=1230 exit=-1 signal=9 stopped=1 absent=1 valid=1 tracked=3 remaining=0 reason=logout uid=1234 gid=1234 elapsed=2231\nGUARD pid=1276 exit=-1 signal=9 stopped=1 absent=1 valid=1 tracked=3 remaining=0 reason=signal uid=1234 gid=1234 elapsed=2133\nSESSION_GUARD_TESTS_OK\n"
+        }
+      ],
+      "xinput_binary_sha256": "ce1477dee622398879e827af3bf4aca0b4e06e398b19d6450662d7f2d38ed22c",
+      "completed_input_roundtrips": 376
+    },
+    {
+      "run": ".work/system-stability/boot-lsv96cfd",
+      "status": "error",
+      "result": {
+        "path": ".work/system-stability/boot-lsv96cfd/result.json",
+        "sha256": "f4d9dc7f6b15031e84635439b478e5df9ddfeb53b67f349b6b8e3af583dbe52a"
+      },
+      "archive": {
+        "path": ".work/system-stability/boot-lsv96cfd/guest-evidence.tgz",
+        "sha256": "d13d5685f3aacdcae9b13874a5db2ab775d77f7aefb7b165faf6b56985f626df"
+      },
+      "harness": {
+        "path": ".work/system-stability/boot-lsv96cfd/harness.py",
+        "sha256": "73147959a0e871728cbe1abe362b1a9f26ab712ad3645890ef620d8ea757cabf"
+      },
+      "bundle": ".work/images/xiri-netbsd-desktop-20261105-cleanup",
+      "manifest_sha256": "233a765adc3b3781a61cbff860df80ec1c93fefbc39ac20564d3cf4480a0c662",
+      "chd_sha256": "f05c3ac69dcc3edde811528c7f4fe9668b13b28e28117dda3f8ff218e15aaa7a",
+      "guard_sha256": "e33ee6bd22afc26aa5f16d7f4e6a78eed966a301a7ee9233b33556a39e735aa7",
+      "native_libc_sha256": null,
+      "xorg_command": "/usr/X11R7/bin/Xorg :0 -config /usr/local/share/xiri/xorg.conf -dumbSched -noretro -auth /var/db/xdm/authdir/authfiles/A:0-1qDsiJ",
+      "xorg_sha256": "48a4a07110209f604e75bd03f82494be838a80d51d12492769b323f3a1595ee4",
+      "parameters": {
+        "kernel_build": null,
+        "seed": null,
+        "runs": 1,
+        "sessions": 2,
+        "input_iterations": 100,
+        "child_iterations": 20,
+        "fairness_iterations": 0,
+        "debug_failure": false,
+        "halt_active": true,
+        "pressure_mib": 96,
+        "require_cd9660": true,
+        "acrobat_replay": 0
+      },
+      "media": {
+        "xinput.c": "34192bc8550840e5e2ed16d8a5169bed60870103e838828c71de41a1030a8fb8",
+        "memory.c": "007da6640e7fc352ae66fd76421b5aecc3af65269e5a3bff587459ed5bbbc138",
+        "guard-loop.sh": "eb1d89df546ac393033e7ec26e27526dcc70042ede1c2ece969280694386a870",
+        "cd9660.c": "644e78e957a942fa83ff0d2e8f9862e2ec7ac3b457e916611580d1cb3858a26f",
+        "cd9660_mount.h": "0f8acc433fb11ae84ffbb83e5ffffb7416090296fdec6d79c9b2a2e2b4ec8269",
+        "guard-control.c": "cc71ccc39b2f75caf44f2afc9f97a2073373c36b40016a214b0345300724bcb0",
+        "query-control.c": "4a8d8ef99a8fe72b3f984dc3d1e695687c225e7ab5dd23406ad5ffe5804a3c3a",
+        "descendants.c": "02c35bc4d7d5d27f72e5ce43694718c14c85068d4800d609dd730411de849c80",
+        "guard-tests.sh": "31cae7f38047bcaf57c862e070f1b48d880e4e3bd77be1537606563e98eadf11",
+        "app-guard.c": "5e2899bd627b25828f91881dd2c9b3be6cf798572360c51383fa69f39779dd44"
+      },
+      "successful_phases": [
+        {
+          "kind": "input",
+          "label": "greeter",
+          "user": "root",
+          "display": ":0",
+          "iterations": 100,
+          "events": 200,
+          "host_seconds": 44.224,
+          "log_file": "greeter-unix.log",
+          "log_sha256": "0343d26fd6d98b186d366efdc0fa186e447db8ca893abbc3672fc7d9aa40b862"
+        },
+        {
+          "kind": "input",
+          "label": "greeter",
+          "user": "root",
+          "display": "127.0.0.1:0",
+          "iterations": 100,
+          "events": 200,
+          "host_seconds": 45.21,
+          "log_file": "greeter-tcp.log",
+          "log_sha256": "4d24aba3115d4c60c3119dfc08b5de6273c955443cfa440bd245eeede96d25ba"
+        },
+        {
+          "kind": "children",
+          "label": "greeter",
+          "iterations": 20,
+          "launches": 40,
+          "adversarial": true,
+          "host_seconds": 99.137
+        }
+      ],
+      "error": "guest command failed (1): su -l xiritest -c 'XAUTHORITY=/tmp/.Xauthw8Lue5 /tmp/xiri-stability/xinput :0 100 10' >/tmp/xiri-stability/irix-1-unix.log 2>&1; rc=$?; echo \"$rc\" >/tmp/xiri-stability/irix-1-unix.log.status; test \"$rc\" = 0\nsu -l xiritest -c 'XAUTHORITY=/tmp/.Xauthw8Lue5 /tmp/xiri-stability/x \binput :0 100 10' >/tmp/xiri-stability/irix-1-unix.log 2>&1; rc=$?; echo \"$rc\" >/ \btmp/xiri-stability/irix-1-unix.log.status; test \"$rc\" = 0; xiri_rc=$?; printf '\\ \bnXIRI_dce0e22f873e48dca18525372c7e520e_RC=%s\\n' \"$xiri_rc\"\n\nXIRI_dce0e22f873e48dca18525372c7e520e_RC=1\nxiri-indy# ",
+      "clean_shutdown": true,
+      "source_unchanged": true,
+      "cd9660": {
+        "checks": 158,
+        "failures": 0,
+        "expected_fixed": true
+      },
+      "input_logs": [
+        {
+          "member": "./greeter-unix.log",
+          "sha256": "0343d26fd6d98b186d366efdc0fa186e447db8ca893abbc3672fc7d9aa40b862",
+          "completed_iterations": 100,
+          "exit_status": "0"
+        },
+        {
+          "member": "./greeter-tcp.log",
+          "sha256": "4d24aba3115d4c60c3119dfc08b5de6273c955443cfa440bd245eeede96d25ba",
+          "completed_iterations": 100,
+          "exit_status": "0"
+        },
+        {
+          "member": "./irix-1-unix.log",
+          "sha256": "adb14e0a311a10e1522ccd97e60845602d5da0858509ec3985410dbc0ff9ffcd",
+          "completed_iterations": 34,
+          "exit_status": "124",
+          "tail": "XINPUT END iteration=34 display=:0 stage=receive mono=702.039832755\nXINPUT BEGIN iteration=34 display=:0 stage=sender-close mono=702.039979330\nXINPUT END iteration=34 display=:0 stage=sender-close mono=702.041138543\nXINPUT BEGIN iteration=35 display=:0 stage=sender-open mono=702.041351755\nXINPUT END iteration=35 display=:0 stage=sender-open mono=702.048772088\nXINPUT BEGIN iteration=35 display=:0 stage=extension mono=702.048947058\nXINPUT END iteration=35 display=:0 stage=extension mono=702.051792179\nXINPUT BEGIN iteration=35 display=:0 stage=motion-sync mono=702.051948967\nXINPUT END iteration=35 display=:0 stage=motion-sync mono=702.052940724\nXINPUT BEGIN iteration=35 display=:0 stage=delay mono=702.053096573\nXINPUT_TIMEOUT see last BEGIN stage\nXINPUT_ALARM mono_sec=00000000000002cc mono_nsec=0000000030fabf42 clock_error=0000000000000000 pc=00000000782d1fb4 ra=00000000784535e4 sp=000000007fff78b8\n",
+          "signal_context": {
+            "mono_sec": 716,
+            "mono_nsec": 821739330,
+            "clock_error": 0,
+            "pc": 2016223156,
+            "ra": 2017801700,
+            "sp": 2147449016
+          }
+        }
+      ],
+      "child_logs": [
+        {
+          "member": "./greeter-children/loop.log",
+          "sha256": "39cbacb9b8d3e08202203e8abf92091714096fa15a76a3a1313d8316da17c353",
+          "summary": [
+            "CHILD_PASS iterations=20 launches=40"
+          ]
+        },
+        {
+          "member": "./greeter-children/adversarial.log",
+          "sha256": "556cd586b33e6a0603f1977b4041a65003a2a47e0ed6b41e8b3d22f508436b30",
+          "summary": [
+            "SESSION_GUARD_TESTS_OK"
+          ],
+          "text": "GUARD pid=981 exit=-1 signal=9 stopped=1 absent=1 valid=1 tracked=1 remaining=0 reason=timeout uid=1234 gid=1234 elapsed=2258\nGUARD pid=4019 exit=-1 signal=9 stopped=1 absent=1 valid=1 tracked=3 remaining=0 reason=timeout uid=1234 gid=1234 elapsed=2277\nGUARD pid=3304 exit=-1 signal=9 stopped=1 absent=1 valid=1 tracked=25 remaining=0 reason=signal uid=1234 gid=1234 elapsed=11741\nGUARD pid=3304 exit=-1 signal=9 stopped=1 absent=1 valid=1 tracked=25 remaining=0 reason=signal uid=1234 gid=1234 elapsed=11741\nGUARD pid=1108 exit=0 signal=0 stopped=1 absent=1 valid=1 tracked=49 remaining=0 reason=leader-exit uid=1234 gid=1234 elapsed=535\nGUARD pid=1108 exit=0 signal=0 stopped=1 absent=1 valid=1 tracked=49 remaining=0 reason=leader-exit uid=1234 gid=1234 elapsed=535\nGUARD pid=1002 exit=7 signal=0 stopped=1 absent=1 valid=1 tracked=3 remaining=0 reason=leader-exit uid=1234 gid=1234 elapsed=1140\nGUARD pid=3517 exit=126 signal=0 stopped=0 absent=1 valid=1 tracked=1 remaining=0 reason=leader-exit uid=1234 gid=1234 elapsed=30\nGUARD pid=1433 exit=-1 signal=9 stopped=1 absent=1 valid=1 tracked=3 remaining=0 reason=logout uid=1234 gid=1234 elapsed=2221\nGUARD pid=4460 exit=-1 signal=9 stopped=1 absent=1 valid=1 tracked=3 remaining=0 reason=signal uid=1234 gid=1234 elapsed=2141\nSESSION_GUARD_TESTS_OK\n"
+        }
+      ],
+      "xinput_binary_sha256": "a5d9c5409f8fbd13ba8bfe6f0cf8adc02ded0c5a49c07fd42852d46a28b7bf70",
+      "completed_input_roundtrips": 234
+    },
+    {
+      "run": ".work/system-stability/boot-r2cygbks",
+      "status": "error",
+      "result": {
+        "path": ".work/system-stability/boot-r2cygbks/result.json",
+        "sha256": "f98f316abcd6330d631e7e19da5c1d19a603636901a59518c4d2e382aa6cf5c7"
+      },
+      "archive": {
+        "path": ".work/system-stability/boot-r2cygbks/guest-evidence.tgz",
+        "sha256": "63713a55b01466feb72ca78e54a1de7defd0b1e06b64a3161044123c0c2ff34b"
+      },
+      "harness": {
+        "path": ".work/system-stability/boot-r2cygbks/harness.py",
+        "sha256": "9c967e53b504181429236ad7d3a5cb5e15128b8d5c6fad6f61049253b3ff5e5d"
+      },
+      "bundle": ".work/images/xiri-netbsd-desktop-20261105-cleanup",
+      "manifest_sha256": "233a765adc3b3781a61cbff860df80ec1c93fefbc39ac20564d3cf4480a0c662",
+      "chd_sha256": "f05c3ac69dcc3edde811528c7f4fe9668b13b28e28117dda3f8ff218e15aaa7a",
+      "guard_sha256": "e33ee6bd22afc26aa5f16d7f4e6a78eed966a301a7ee9233b33556a39e735aa7",
+      "native_libc_sha256": "1b51fa3410950e25f3b17f70cf6f4eeba684191643d69afa25efda4f5d9ecb66",
+      "xorg_command": "/usr/X11R7/bin/Xorg :0 -config /usr/local/share/xiri/xorg.conf -dumbSched -noretro -auth /var/db/xdm/authdir/authfiles/A:0-rzedsy",
+      "xorg_sha256": "48a4a07110209f604e75bd03f82494be838a80d51d12492769b323f3a1595ee4",
+      "parameters": {
+        "kernel_build": null,
+        "seed": null,
+        "runs": 1,
+        "sessions": 2,
+        "input_iterations": 100,
+        "child_iterations": 20,
+        "fairness_iterations": 0,
+        "debug_failure": false,
+        "halt_active": true,
+        "pressure_mib": 96,
+        "require_cd9660": true,
+        "acrobat_replay": 0
+      },
+      "media": {
+        "xinput.c": "3c73618c17d7a032a63c8e1ba86f46804e59f881ba6cefdbf05213dde7e5ba4d",
+        "memory.c": "007da6640e7fc352ae66fd76421b5aecc3af65269e5a3bff587459ed5bbbc138",
+        "guard-loop.sh": "eb1d89df546ac393033e7ec26e27526dcc70042ede1c2ece969280694386a870",
+        "cd9660.c": "644e78e957a942fa83ff0d2e8f9862e2ec7ac3b457e916611580d1cb3858a26f",
+        "cd9660_mount.h": "0f8acc433fb11ae84ffbb83e5ffffb7416090296fdec6d79c9b2a2e2b4ec8269",
+        "guard-control.c": "cc71ccc39b2f75caf44f2afc9f97a2073373c36b40016a214b0345300724bcb0",
+        "query-control.c": "4a8d8ef99a8fe72b3f984dc3d1e695687c225e7ab5dd23406ad5ffe5804a3c3a",
+        "descendants.c": "02c35bc4d7d5d27f72e5ce43694718c14c85068d4800d609dd730411de849c80",
+        "guard-tests.sh": "31cae7f38047bcaf57c862e070f1b48d880e4e3bd77be1537606563e98eadf11",
+        "app-guard.c": "5e2899bd627b25828f91881dd2c9b3be6cf798572360c51383fa69f39779dd44"
+      },
+      "successful_phases": [
+        {
+          "kind": "input",
+          "label": "greeter",
+          "user": "root",
+          "display": ":0",
+          "iterations": 100,
+          "events": 200,
+          "host_seconds": 44.312,
+          "log_file": "greeter-unix.log",
+          "log_sha256": "6c0948f8e0e154b6367c87d3421a45f9b5478807673436d3bb18c596838fd421"
+        },
+        {
+          "kind": "input",
+          "label": "greeter",
+          "user": "root",
+          "display": "127.0.0.1:0",
+          "iterations": 100,
+          "events": 200,
+          "host_seconds": 45.134,
+          "log_file": "greeter-tcp.log",
+          "log_sha256": "67f123c6cc47ae3fa3b38022c379444366ccf42cbb432de0b8f9079d8be39c98"
+        },
+        {
+          "kind": "children",
+          "label": "greeter",
+          "iterations": 20,
+          "launches": 40,
+          "adversarial": true,
+          "host_seconds": 101.117
+        },
+        {
+          "kind": "input",
+          "label": "irix-1",
+          "user": "xiritest",
+          "display": ":0",
+          "iterations": 100,
+          "events": 200,
+          "host_seconds": 45.703,
+          "log_file": "irix-1-unix.log",
+          "log_sha256": "1b632dd889ae128af8b561697b1ccee7d3a53e103277d2b5cdffc0dc7a9cc794"
+        },
+        {
+          "kind": "input",
+          "label": "irix-1",
+          "user": "xiritest",
+          "display": "127.0.0.1:0",
+          "iterations": 100,
+          "events": 200,
+          "host_seconds": 46.844,
+          "log_file": "irix-1-tcp.log",
+          "log_sha256": "bd56c7a159cf4018d480b62b07b176a49774ac9f1d4b1d6f0f1040da1b37f8ee"
+        }
+      ],
+      "error": "guest command failed (1): su -l xiritest -c '/bin/sh /tmp/xiri-stability/guard-tests.sh /tmp/xiri-stability/irix-1-children' >/tmp/xiri-stability/irix-1-children/adversarial.log 2>&1\nsu -l xiritest -c '/bin/sh /tmp/xiri-stability/guard-tests.sh /tmp/xi \bri-stability/irix-1-children' >/tmp/xiri-stability/irix-1-children/adversarial.l \bog 2>&1; xiri_rc=$?; printf '\\nXIRI_54ae48713f8d4184a6992f4569295030_RC=%s\\n' \"$ \bxiri_rc\"\n\nXIRI_54ae48713f8d4184a6992f4569295030_RC=1\nxiri-indy# ",
+      "clean_shutdown": true,
+      "source_unchanged": true,
+      "cd9660": {
+        "checks": 158,
+        "failures": 0,
+        "expected_fixed": true
+      },
+      "input_logs": [
+        {
+          "member": "./greeter-unix.log",
+          "sha256": "6c0948f8e0e154b6367c87d3421a45f9b5478807673436d3bb18c596838fd421",
+          "completed_iterations": 100,
+          "exit_status": "0"
+        },
+        {
+          "member": "./greeter-tcp.log",
+          "sha256": "67f123c6cc47ae3fa3b38022c379444366ccf42cbb432de0b8f9079d8be39c98",
+          "completed_iterations": 100,
+          "exit_status": "0"
+        },
+        {
+          "member": "./irix-1-unix.log",
+          "sha256": "1b632dd889ae128af8b561697b1ccee7d3a53e103277d2b5cdffc0dc7a9cc794",
+          "completed_iterations": 100,
+          "exit_status": "0"
+        },
+        {
+          "member": "./irix-1-tcp.log",
+          "sha256": "bd56c7a159cf4018d480b62b07b176a49774ac9f1d4b1d6f0f1040da1b37f8ee",
+          "completed_iterations": 100,
+          "exit_status": "0"
+        }
+      ],
+      "child_logs": [
+        {
+          "member": "./irix-1-children/loop.log",
+          "sha256": "b99029b253881eea4aa96e0d5d9667491d24540711354e8bfaa55924bfece3a0",
+          "summary": [
+            "CHILD_PASS iterations=20 launches=40"
+          ]
+        },
+        {
+          "member": "./irix-1-children/adversarial.log",
+          "sha256": "660f43c61785b0dff7b0e53a78f7e1d5726159af4b94a4ef63594947832f5980",
+          "summary": [],
+          "text": "GUARD pid=2014 exit=-1 signal=9 stopped=1 absent=1 valid=1 tracked=1 remaining=0 reason=timeout uid=1234 gid=1234 elapsed=14578\nGUARD pid=1967 exit=-1 signal=9 stopped=1 absent=1 valid=1 tracked=3 remaining=0 reason=timeout uid=1234 gid=1234 elapsed=2251\nGUARD pid=5014 exit=-1 signal=9 stopped=1 absent=1 valid=1 tracked=25 remaining=0 reason=signal uid=1234 gid=1234 elapsed=23842\n"
+        },
+        {
+          "member": "./greeter-children/loop.log",
+          "sha256": "d2de5d405f0a76c1c065d18e0ad3472d526a3057bee8be28fb7572a34caee527",
+          "summary": [
+            "CHILD_PASS iterations=20 launches=40"
+          ]
+        },
+        {
+          "member": "./greeter-children/adversarial.log",
+          "sha256": "1974fbb01bf3cefcd5de8c8dbd1edc60e5386d66591e9facb7b7071a1cefb2d4",
+          "summary": [
+            "SESSION_GUARD_TESTS_OK"
+          ],
+          "text": "GUARD pid=943 exit=-1 signal=9 stopped=1 absent=1 valid=1 tracked=1 remaining=0 reason=timeout uid=1234 gid=1234 elapsed=2252\nGUARD pid=4083 exit=-1 signal=9 stopped=1 absent=1 valid=1 tracked=3 remaining=0 reason=timeout uid=1234 gid=1234 elapsed=2261\nGUARD pid=3965 exit=-1 signal=9 stopped=1 absent=1 valid=1 tracked=25 remaining=0 reason=signal uid=1234 gid=1234 elapsed=14037\nGUARD pid=3965 exit=-1 signal=9 stopped=1 absent=1 valid=1 tracked=25 remaining=0 reason=signal uid=1234 gid=1234 elapsed=14037\nGUARD pid=1118 exit=0 signal=0 stopped=1 absent=1 valid=1 tracked=49 remaining=0 reason=leader-exit uid=1234 gid=1234 elapsed=558\nGUARD pid=1118 exit=0 signal=0 stopped=1 absent=1 valid=1 tracked=49 remaining=0 reason=leader-exit uid=1234 gid=1234 elapsed=558\nGUARD pid=1147 exit=7 signal=0 stopped=1 absent=1 valid=1 tracked=3 remaining=0 reason=leader-exit uid=1234 gid=1234 elapsed=1137\nGUARD pid=4521 exit=126 signal=0 stopped=0 absent=1 valid=1 tracked=1 remaining=0 reason=leader-exit uid=1234 gid=1234 elapsed=34\nGUARD pid=1432 exit=-1 signal=9 stopped=1 absent=1 valid=1 tracked=3 remaining=0 reason=logout uid=1234 gid=1234 elapsed=2202\nGUARD pid=1229 exit=-1 signal=9 stopped=1 absent=1 valid=1 tracked=3 remaining=0 reason=signal uid=1234 gid=1234 elapsed=2132\nSESSION_GUARD_TESTS_OK\n"
+        }
+      ],
+      "xinput_binary_sha256": "51fa61dd2013c520172b474796aa1e7507e04c2a352b2c949ed6079a4b9b10f2",
+      "completed_input_roundtrips": 400,
+      "partial_adversarial": {
+        "pids": [
+          2133,
+          5346,
+          2356,
+          2091,
+          2125,
+          2845,
+          3425,
+          2260,
+          2245,
+          5045,
+          2751,
+          5609,
+          2086,
+          4435,
+          5356,
+          5467,
+          2170,
+          2244,
+          2241,
+          4776,
+          5014,
+          2354,
+          2250,
+          2172,
+          4529
+        ],
+        "pid_file_sha256": "4f310d302047ed4944acd3218ff59906eb587330a05b30e13c84da305a6c1516",
+        "guard_log": "OWN pid=5014 parent=2080\nOWN pid=2133 parent=5014\nOWN pid=5346 parent=5014\nOWN pid=2125 parent=5014\nOWN pid=2845 parent=5014\nOWN pid=2356 parent=5014\nOWN pid=2091 parent=5014\nOWN pid=3425 parent=5014\nOWN pid=5356 parent=5014\nOWN pid=4435 parent=5014\nOWN pid=2086 parent=5014\nOWN pid=5609 parent=5014\nOWN pid=2751 parent=5014\nOWN pid=2241 parent=5014\nOWN pid=5045 parent=5014\nOWN pid=2244 parent=5014\nOWN pid=2245 parent=5014\nOWN pid=2260 parent=5014\nOWN pid=2354 parent=5014\nOWN pid=5467 parent=5014\nOWN pid=2170 parent=5014\nOWN pid=4776 parent=5014\nOWN pid=4529 parent=5014\nOWN pid=2250 parent=5014\nOWN pid=2172 parent=5014\nGUARD pid=5014 exit=-1 signal=9 stopped=1 absent=1 valid=1 tracked=25 remaining=0 reason=signal uid=1234 gid=1234 elapsed=23842\n",
+        "exact_failed_postcheck_unknown": true,
+        "later_snapshot": {
+          "path": ".work/system-stability/boot-r2cygbks/guest-evidence.tgz",
+          "sha256": "63713a55b01466feb72ca78e54a1de7defd0b1e06b64a3161044123c0c2ff34b"
+        },
+        "limitation": "The later process snapshot does not identify which shell assertion failed or prove a PID/ps race."
+      }
+    },
+    {
+      "run": ".work/system-stability/boot-a8zs9zn5",
+      "status": "error",
+      "result": {
+        "path": ".work/system-stability/boot-a8zs9zn5/result.json",
+        "sha256": "d1171ce33b14e0f6098ec6df37612e96e47667ef8dfb45b452339f21baddc662"
+      },
+      "archive": {
+        "path": ".work/system-stability/boot-a8zs9zn5/guest-evidence.tgz",
+        "sha256": "b1c0774ffce3c4a9bfd193efc493e158024ea97f9fe04081f6b38950a4e0a641"
+      },
+      "harness": {
+        "path": ".work/system-stability/boot-a8zs9zn5/harness.py",
+        "sha256": "9c967e53b504181429236ad7d3a5cb5e15128b8d5c6fad6f61049253b3ff5e5d"
+      },
+      "bundle": ".work/images/xiri-netbsd-desktop-20261105-wait",
+      "manifest_sha256": "5859bd4e434eb410dae72a6f8b3d7df5b20b88f1ab4ec41e801a3a58ef330d88",
+      "chd_sha256": "90ca82ecdfbe184a96990515938f7856eb6983f77719d487fb7c6b34ba73eece",
+      "guard_sha256": "b4970e085ebc533cc6d286151f8b93056493be399beeffc5f84d8d77985d8d09",
+      "native_libc_sha256": "1b51fa3410950e25f3b17f70cf6f4eeba684191643d69afa25efda4f5d9ecb66",
+      "xorg_command": "/usr/X11R7/bin/Xorg :0 -config /usr/local/share/xiri/xorg.conf -dumbSched -noretro -auth /var/db/xdm/authdir/authfiles/A:0-OVfcxl",
+      "xorg_sha256": "48a4a07110209f604e75bd03f82494be838a80d51d12492769b323f3a1595ee4",
+      "parameters": {
+        "kernel_build": null,
+        "seed": null,
+        "runs": 1,
+        "sessions": 2,
+        "input_iterations": 100,
+        "child_iterations": 20,
+        "fairness_iterations": 0,
+        "debug_failure": false,
+        "halt_active": true,
+        "pressure_mib": 96,
+        "require_cd9660": true,
+        "acrobat_replay": 0
+      },
+      "media": {
+        "xinput.c": "3c73618c17d7a032a63c8e1ba86f46804e59f881ba6cefdbf05213dde7e5ba4d",
+        "memory.c": "007da6640e7fc352ae66fd76421b5aecc3af65269e5a3bff587459ed5bbbc138",
+        "guard-loop.sh": "eb1d89df546ac393033e7ec26e27526dcc70042ede1c2ece969280694386a870",
+        "cd9660.c": "644e78e957a942fa83ff0d2e8f9862e2ec7ac3b457e916611580d1cb3858a26f",
+        "cd9660_mount.h": "0f8acc433fb11ae84ffbb83e5ffffb7416090296fdec6d79c9b2a2e2b4ec8269",
+        "guard-control.c": "cc71ccc39b2f75caf44f2afc9f97a2073373c36b40016a214b0345300724bcb0",
+        "query-control.c": "4a8d8ef99a8fe72b3f984dc3d1e695687c225e7ab5dd23406ad5ffe5804a3c3a",
+        "descendants.c": "02c35bc4d7d5d27f72e5ce43694718c14c85068d4800d609dd730411de849c80",
+        "guard-tests.sh": "31cae7f38047bcaf57c862e070f1b48d880e4e3bd77be1537606563e98eadf11",
+        "app-guard.c": "5e2899bd627b25828f91881dd2c9b3be6cf798572360c51383fa69f39779dd44"
+      },
+      "successful_phases": [
+        {
+          "kind": "input",
+          "label": "greeter",
+          "user": "root",
+          "display": ":0",
+          "iterations": 100,
+          "events": 200,
+          "host_seconds": 44.119,
+          "log_file": "greeter-unix.log",
+          "log_sha256": "593652b545134e69cc6e61678d788f85dffc6aa104f26f01adddd2088fa209ef"
+        },
+        {
+          "kind": "input",
+          "label": "greeter",
+          "user": "root",
+          "display": "127.0.0.1:0",
+          "iterations": 100,
+          "events": 200,
+          "host_seconds": 45.227,
+          "log_file": "greeter-tcp.log",
+          "log_sha256": "94c149b620c919eb8ccc8fb523c34a073cb9936e92da2e8af8805263b600abd2"
+        },
+        {
+          "kind": "children",
+          "label": "greeter",
+          "iterations": 20,
+          "launches": 40,
+          "adversarial": true,
+          "host_seconds": 101.011
+        }
+      ],
+      "error": "guest command failed (1): su -l xiritest -c 'XAUTHORITY=/tmp/.XauthUqxAGy /tmp/xiri-stability/xinput :0 100 10' >/tmp/xiri-stability/irix-1-unix.log 2>&1; rc=$?; echo \"$rc\" >/tmp/xiri-stability/irix-1-unix.log.status; test \"$rc\" = 0\nsu -l xiritest -c 'XAUTHORITY=/tmp/.XauthUqxAGy /tmp/xiri-stability/x \binput :0 100 10' >/tmp/xiri-stability/irix-1-unix.log 2>&1; rc=$?; echo \"$rc\" >/ \btmp/xiri-stability/irix-1-unix.log.status; test \"$rc\" = 0; xiri_rc=$?; printf '\\ \bnXIRI_cd06a23f0f524ee6b697ef60fd7f0715_RC=%s\\n' \"$xiri_rc\"\n\nXIRI_cd06a23f0f524ee6b697ef60fd7f0715_RC=1\nxiri-indy# ",
+      "clean_shutdown": true,
+      "source_unchanged": true,
+      "cd9660": {
+        "checks": 158,
+        "failures": 0,
+        "expected_fixed": true
+      },
+      "input_logs": [
+        {
+          "member": "./greeter-unix.log",
+          "sha256": "593652b545134e69cc6e61678d788f85dffc6aa104f26f01adddd2088fa209ef",
+          "completed_iterations": 100,
+          "exit_status": "0"
+        },
+        {
+          "member": "./greeter-tcp.log",
+          "sha256": "94c149b620c919eb8ccc8fb523c34a073cb9936e92da2e8af8805263b600abd2",
+          "completed_iterations": 100,
+          "exit_status": "0"
+        },
+        {
+          "member": "./irix-1-unix.log",
+          "sha256": "5e06a60900ffed58f376411d0125191f27e3c5183f14265ae566491590db2d0a",
+          "completed_iterations": 1,
+          "exit_status": "124",
+          "tail": "XINPUT END iteration=1 display=:0 stage=receive mono=700.001599149\nXINPUT BEGIN iteration=1 display=:0 stage=sender-close mono=700.001793815\nXINPUT END iteration=1 display=:0 stage=sender-close mono=700.007328785\nXINPUT BEGIN iteration=2 display=:0 stage=sender-open mono=700.007552967\nXINPUT END iteration=2 display=:0 stage=sender-open mono=700.014948815\nXINPUT BEGIN iteration=2 display=:0 stage=extension mono=700.015131452\nXINPUT END iteration=2 display=:0 stage=extension mono=700.018366573\nXINPUT BEGIN iteration=2 display=:0 stage=motion-sync mono=700.018532542\nXINPUT END iteration=2 display=:0 stage=motion-sync mono=700.019641815\nXINPUT BEGIN iteration=2 display=:0 stage=delay mono=700.019813330\nXINPUT_TIMEOUT see last BEGIN stage\nXINPUT_ALARM mono_sec=00000000000002cb mono_nsec=0000000021136bca clock_error=0000000000000000 pc=00000000782d1fb4 ra=00000000784535e4 sp=000000007fff78b8 a0=000000007fff78d0 request_captured=0000000000000001 request0=0000000000000000 request1=0bebc20000400fac\n",
+          "signal_context": {
+            "mono_sec": 715,
+            "mono_nsec": 554920906,
+            "clock_error": 0,
+            "pc": 2016223156,
+            "ra": 2017801700,
+            "sp": 2147449016,
+            "a0": 2147449040,
+            "request_captured": 1,
+            "request0": 0,
+            "request1": 858993459204198316
+          },
+          "o32_timespec": {
+            "seconds": 0,
+            "nanoseconds": 200000000,
+            "padding_ignored": true
+          },
+          "runtime_symbols": {
+            "usleep": "0x78453570",
+            "nanosleep": "0x782d1fa0"
+          }
+        }
+      ],
+      "child_logs": [
+        {
+          "member": "./greeter-children/loop.log",
+          "sha256": "8f5e5723137ab5820798e32ca092ea9b2da43508a65fd833048ec5370b550705",
+          "summary": [
+            "CHILD_PASS iterations=20 launches=40"
+          ]
+        },
+        {
+          "member": "./greeter-children/adversarial.log",
+          "sha256": "95a6ec8dc117cf195ffb7d952e9df6b5d0953e5fa844cfd6464c06f8919a7fbc",
+          "summary": [
+            "SESSION_GUARD_TESTS_OK"
+          ],
+          "text": "GUARD pid=972 exit=-1 signal=9 stopped=1 absent=1 valid=1 tracked=1 remaining=0 reason=timeout uid=1234 gid=1234 elapsed=2252\nGUARD pid=3745 exit=-1 signal=9 stopped=1 absent=1 valid=1 tracked=3 remaining=0 reason=timeout uid=1234 gid=1234 elapsed=2263\nGUARD pid=1016 exit=-1 signal=9 stopped=1 absent=1 valid=1 tracked=25 remaining=0 reason=signal uid=1234 gid=1234 elapsed=13977\nGUARD pid=1016 exit=-1 signal=9 stopped=1 absent=1 valid=1 tracked=25 remaining=0 reason=signal uid=1234 gid=1234 elapsed=13977\nGUARD pid=1105 exit=0 signal=0 stopped=0 absent=1 valid=1 tracked=49 remaining=0 reason=leader-exit uid=1234 gid=1234 elapsed=499\nGUARD pid=1105 exit=0 signal=0 stopped=0 absent=1 valid=1 tracked=49 remaining=0 reason=leader-exit uid=1234 gid=1234 elapsed=499\nGUARD pid=1007 exit=7 signal=0 stopped=1 absent=1 valid=1 tracked=3 remaining=0 reason=leader-exit uid=1234 gid=1234 elapsed=1154\nGUARD pid=1145 exit=126 signal=0 stopped=0 absent=1 valid=1 tracked=1 remaining=0 reason=leader-exit uid=1234 gid=1234 elapsed=30\nGUARD pid=1432 exit=-1 signal=9 stopped=1 absent=1 valid=1 tracked=3 remaining=0 reason=logout uid=1234 gid=1234 elapsed=2222\nGUARD pid=1194 exit=-1 signal=9 stopped=1 absent=1 valid=1 tracked=3 remaining=0 reason=signal uid=1234 gid=1234 elapsed=2165\nSESSION_GUARD_TESTS_OK\n"
+        }
+      ],
+      "xinput_binary_sha256": "51fa61dd2013c520172b474796aa1e7507e04c2a352b2c949ed6079a4b9b10f2",
+      "completed_input_roundtrips": 201
+    }
+  ],
+  "comparison": {
+    "candidate": "boot-r2cygbks",
+    "previous_image": "boot-a8zs9zn5",
+    "same_kernel_module_emulator": true,
+    "same_native_libc": true,
+    "same_xorg": true,
+    "same_harness_media_and_xinput_binary": true,
+    "same_parameters": true,
+    "native_timeout_reproduced_on_previous_image": true,
+    "kernel_sha256": "c92f0b2fcc182836393a87ca41a0315a0681e93ed3e904fad925d3c370e4dd98",
+    "module_sha256": "8e97285b0a2185c0b2b5a2ed6e4202dd9ec568a9ba1514ea45a569a8c4c1b366",
+    "emulator_sha256": "3dd9299d71f1899ff5a8c9b76f6a24752d19e4f9a0bcfe0edf3a29001dc9c49e",
+    "xorg_sha256": "48a4a07110209f604e75bd03f82494be838a80d51d12492769b323f3a1595ee4"
+  },
+  "native_libc": {
+    "path": ".work/cleanup-deadline/libc.so.12.224",
+    "sha256": "1b51fa3410950e25f3b17f70cf6f4eeba684191643d69afa25efda4f5d9ecb66",
+    "source_iso": ".work/indy-netbsd/sets.iso",
+    "member": "base.tgz:./lib/libc.so.12.224",
+    "format": "ELF32 MSB MIPS-I o32",
+    "symbols": {
+      "usleep": "0x1b3570",
+      "__nanosleep50": "0x31fa0"
+    },
+    "load_base": "0x782a0000",
+    "objdump": {
+      "path": ".work/netbsd-wait-accounting-build/tools/bin/mips64--netbsd-objdump",
+      "sha256": "f9fa5538efad11792443dd07c40611032d95f7eb4d5ff27e56ba422fdcdb8ef8"
+    },
+    "disassembly": "\n/var/home/salvogendut/Dev/xiri/.work/cleanup-deadline/libc.so.12.224:     file format elf32-tradbigmips\n\n\nDisassembly of section .text:\n\n00031fa0 <_sys___nanosleep50>:\n   31fa0:\t3c1c0023 \tlui\tgp,0x23\n   31fa4:\t279c4130 \taddiu\tgp,gp,16688\n   31fa8:\t0399e021 \taddu\tgp,gp,t9\n   31fac:\t240201ae \tli\tv0,430\n   31fb0:\t0000000c \tsyscall\n   31fb4:\t14e00003 \tbnez\ta3,31fc4 <err>\n   31fb8:\t00000000 \tnop\n   31fbc:\t03e00008 \tjr\tra\n\n\n/var/home/salvogendut/Dev/xiri/.work/cleanup-deadline/libc.so.12.224:     file format elf32-tradbigmips\n\n\nDisassembly of section .text:\n\n001b3570 <_usleep>:\n  1b3570:\t3c1c000b \tlui\tgp,0xb\n  1b3574:\t279c2b60 \taddiu\tgp,gp,11104\n  1b3578:\t0399e021 \taddu\tgp,gp,t9\n  1b357c:\t14800003 \tbnez\ta0,1b358c <_usleep+0x1c>\n  1b3580:\t00001025 \tmove\tv0,zero\n  1b3584:\t03e00008 \tjr\tra\n  1b3588:\t00000000 \tnop\n  1b358c:\t3c02000f \tlui\tv0,0xf\n  1b3590:\t24424240 \taddiu\tv0,v0,16960\n  1b3594:\t14400002 \tbnez\tv0,1b35a0 <_usleep+0x30>\n  1b3598:\t0082001b \tdivu\tzero,a0,v0\n  1b359c:\t0007000d \tbreak\t0x7\n  1b35a0:\t27bdffd0 \taddiu\tsp,sp,-48\n  1b35a4:\t8f998f78 \tlw\tt9,-28808(gp)\n  1b35a8:\t27a40018 \taddiu\ta0,sp,24\n  1b35ac:\tafbf002c \tsw\tra,44(sp)\n  1b35b0:\tafbc0010 \tsw\tgp,16(sp)\n  1b35b4:\t00002825 \tmove\ta1,zero\n  1b35b8:\tafa00018 \tsw\tzero,24(sp)\n  1b35bc:\t00001010 \tmfhi\tv0\n  1b35c0:\t00021940 \tsll\tv1,v0,0x5\n  1b35c4:\t00621823 \tsubu\tv1,v1,v0\n  1b35c8:\t00031880 \tsll\tv1,v1,0x2\n  1b35cc:\t00621021 \taddu\tv0,v1,v0\n  1b35d0:\t000210c0 \tsll\tv0,v0,0x3\n  1b35d4:\t00001812 \tmflo\tv1\n  1b35d8:\tafa3001c \tsw\tv1,28(sp)\n  1b35dc:\t0320f809 \tjalr\tt9\n  1b35e0:\tafa20020 \tsw\tv0,32(sp)\n  1b35e4:\t8fbf002c \tlw\tra,44(sp)\n  1b35e8:\t00001025 \tmove\tv0,zero\n  1b35ec:\t03e00008 \tjr\tra\n  1b35f0:\t27bd0030 \taddiu\tsp,sp,48\n"
+  },
+  "limitations": [
+    "No full 96 MiB pressure run passed; later phases not reached are not covered.",
+    "The signal PC locates native nanosleep return handling, not time spent inside any single kernel function.",
+    "The logged alarm clock is sampled after a warning write; it is not the exact signal-entry timestamp.",
+    "Correct saved sleep arguments do not establish a timer, paging, scheduling or emulator cause.",
+    "The partial adversarial run has successful guard verdicts but an unidentified subsequent shell-check failure.",
+    "Black stress-run captures are excluded from visual qualification; the separate cold desktop images pass.",
+    "The historical compview/bootstrap/shutdown failures remain unexplained."
+  ]
+}

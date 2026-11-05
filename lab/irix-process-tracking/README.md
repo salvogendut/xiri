@@ -56,3 +56,53 @@ python3 scripts/probe-irix-catalog.py --bundle BUNDLE \
 That is a bounded cleanup experiment, not an application functionality test.
 Its X-query status and final PID snapshots must be retained alongside the
 guard's result; a window-query timeout is not evidence of a leaked process.
+
+## Cleanup deadline experiment
+
+`--deadline-tests` adds seven native scenarios: immediate TERM cleanup,
+delayed return after TERM, delayed return after KILL, an intentionally live
+child, a stop signal, a logout request, and leader exit with a surviving
+descendant. The independent controller publishes the worker PID through a
+pipe and checks its native process state after the supervisor finishes. A
+same-user sentinel outside the supervised tree must survive every scenario.
+
+The guest-only `delay.so` delays the supervisor for seven seconds after the
+selected real signal call. It reads NetBSD's kqueue event count with `fstat`
+before returning, without consuming events. After the supervisor prints its
+verdict, the library audits real pending events immediately before closing
+the queue. It never fabricates a child or exit notification. The deliberately
+live control suppresses signals inside the test library; it must still be
+reported as incomplete cleanup. The controller then releases that worker
+through a private pipe. Alarms and pipe lifetimes bound all fixture children.
+
+```sh
+python3 scripts/probe-process-tracking.py \
+  --bundle .work/images/xiri-netbsd-desktop-20261105-wait \
+  --rounds 1 --deadline-tests
+```
+
+The test requires correct outcomes, so an incorrect supervisor verdict makes
+the run fail while retaining every scenario, its pending events, process
+state and clean-shutdown evidence. An injected delay establishes the tested
+ordering; it does not establish why an earlier catalog run failed.
+
+To compare a runtime correction, add `--candidate-guard --guard-tests`. This
+builds the maintained guard and installs it only in the disposable guest,
+after verifying and preserving the original installed binary. The candidate
+source and executable hashes are recorded. The injection library and fixture
+are never installed in the reusable desktop image.
+
+The [deadline qualification](../../docs/results/2026-11-05-cleanup-deadline.md)
+records five measured false failures and the corrected replay. Verify its
+retained archives, exact binaries and independent observations with:
+
+```sh
+python3 lab/irix-process-tracking/qualify-deadline.py \
+  --before .work/process-tracking/native-krgzvjab \
+  --after .work/process-tracking/native-qjdjzyr_ \
+  --output docs/results/2026-11-05-cleanup-deadline.json --self-test
+```
+
+The self-test rejects corrupted completion, pending-event, live-worker and
+leader-status evidence. Passing this experiment does not resolve the retained
+historical compview failure.

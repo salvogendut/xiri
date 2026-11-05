@@ -24,6 +24,15 @@ seconds for exit events. It waits for fork initialization before recording proce
 drains intervening exit events, and checks identity again before signaling.
 Dying processes are retired by exit events rather than invalid start-time
 comparisons.
+At the cleanup deadline it drains queued exits and checks the leader's wait
+status once more before declaring failure. This catches an exit that arrived
+while signaling or scheduling consumed the remaining grace period; it adds
+no sleep, signal retry or extension of the deadline. If cleanup is still
+incomplete, stderr records the remaining identities, native process states
+and queue count for diagnosis. The guest-only
+[deadline fixtures](../lab/irix-process-tracking/README.md#cleanup-deadline-experiment)
+exercise delayed TERM/KILL, logout, signal and leader-exit cleanup, plus a
+genuinely live child that must continue to fail.
 It does not scan or kill an entire UID. Failed tracking or incomplete cleanup
 returns an error; there is no UID-wide fallback. The guard's log records its
 owned PIDs and final cleanup result. A client launcher that exits also ends

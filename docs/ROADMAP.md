@@ -197,6 +197,35 @@ by these passes. Keep the historical tracking/bootstrap/shutdown observations
 open; a recurrence needs simultaneous notification, identity and teardown
 evidence. Individual application fixes remain deferred.
 
+The [cleanup-deadline cycle](results/2026-11-05-cleanup-deadline.md) now
+reproduces a separate runtime defect: a delayed signal return can leave a
+real child-exit notification queued when the guard declares failure. A final
+nonblocking event/reap check corrects five measured false failures without
+extending the grace period. Seven deadline scenarios, 1,536 native child
+lifecycles and eight existing supervisor scenarios pass. A deliberately live
+child still fails cleanup, and unrelated same-user processes survive.
+Remaining-identity, queue and native-state diagnostics are now recorded on
+deadline failure. The historical compview/bootstrap/halt observations remain
+unexplained; this injection does not establish their cause.
+
+The [cleanup candidate image](results/2026-11-05-cleanup-image.md) passes
+cold desktop, font, job-control, both-user logout and clean-halt checks.
+It remains unselected because the added 96 MiB pressure gate fails. Native
+sleep timeouts occur on both candidate and preceding images; the latter
+captures the correct 200 ms request at native libc's nanosleep return.
+A separate candidate run reports valid 25-descendant cleanup, then fails
+an unidentified shell postcheck. All failed runs are retained and halt
+cleanly; partial passes do not qualify the whole workload. Next trace native
+sleep/wakeup and the exact postcheck under load, retaining the watchdog and
+ownership requirements. Investigate the pressure runner's black captures
+separately from the passing cold desktop visuals.
+
+After these system failures are understood, remove FAM's single configured
+IRIX-user restriction, with two ordinary IRIX accounts and isolated
+homes/session state, while retaining a separate native ctwm login.
+Individual application fixes and native IRIX clogin integration remain later
+work.
+
 ## Next packaging phase
 
 The user requested these deployment changes on 2026-11-03. The implementation

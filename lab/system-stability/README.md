@@ -73,6 +73,29 @@ are retained in `.work/system-stability/boot-*`. `--debug-failure` exposes the
 same bounded request-file diagnostic interface as the catalog probe before
 cleanup. All owned emulators are stopped even on failure.
 
+The native input fixture labels the delay between pointer motion and button
+requests explicitly. Its watchdog logs the monotonic clock and, on NetBSD
+MIPS, the interrupted PC/RA/SP/A0 from the signal context, without calling
+Xlib or stdio in the handler. It records runtime libc symbol addresses before
+arming the alarm. During the explicit delay only, a bounded read inside the
+pinned o32 libc's live 48-byte stack frame records the raw sleep-request
+bytes. Interpret those bytes only with the matching PC, symbol offsets and
+libc layout; the o32 padding word is not a request field. The harness also
+hashes installed native libc. The alarm clock is sampled after the warning
+write, so it is not the exact signal-entry time.
+Keep the ten-second bound and original event checks
+when investigating a timeout; the last logged X request alone does not locate
+the interrupted instruction. The
+[cleanup-image follow-up](../../docs/results/2026-11-05-cleanup-image.md)
+retains four failed 96 MiB pressure runs. The previous-image comparison
+captures a correct 200 ms native sleep request at the same libc instruction
+as the candidate timeout. Another candidate run reports valid cleanup for
+all 25 live-burst descendants, then fails an unidentified shell postcheck;
+the later process snapshot cannot establish its cause. Trace that assertion
+and native sleep/wakeup before accepting another full pressure gate.
+Black pressure captures are excluded from visual qualification; the
+independent cold desktop gate passes readable greeter and desktop checks.
+
 The [first cycle report](../../docs/results/2026-11-04-system-stability.md)
 separates primary qualification, diagnostic failures and manual continuations.
 Each run retains its exact harness and media. The maintained runner's installed

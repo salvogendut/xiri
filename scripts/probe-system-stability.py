@@ -336,6 +336,7 @@ def run_once(args, number):
         if require_cd9660: assert int(cd_result[2]) == 0, 'Required CD mount ABI regression failed'
         result['guard_sha256'] = get('sha256 -q /usr/local/libexec/xiri/session-guard').strip()
         assert result['guard_sha256'] == previous['installed_files']['/usr/local/libexec/xiri/session-guard']
+        result['native_libc_sha256'] = get('sha256 -q /lib/libc.so.12').strip()
         result['greeter_dimensions'] = greeter(); capture('greeter')
         result['xorg_command'] = get("ps -axww -o args= | awk '$1 == \"/usr/X11R7/bin/Xorg\"'").strip()
         result['xorg_sha256'] = get('sha256 -q /usr/X11R7/bin/Xorg').strip()

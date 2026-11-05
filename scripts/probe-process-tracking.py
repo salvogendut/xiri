@@ -19,6 +19,10 @@ def main():
     parser.add_argument('--bundle', type=Path, required=True)
     parser.add_argument('--rounds', type=int, default=16, choices=range(1, 65))
     parser.add_argument('--guard-tests', action='store_true')
+    parser.add_argument('--deadline-tests', action='store_true',
+                        help='Test delayed supervisor signals with real queue/state observations')
+    parser.add_argument('--candidate-guard', action='store_true',
+                        help='Build the maintained guard and install only in this disposable guest')
     args = parser.parse_args()
     bundle = args.bundle.resolve()
     manifest = json.loads((bundle/'manifest.json').read_text())
@@ -38,6 +42,12 @@ def main():
     sources = ['lab/irix-process-tracking/events.c']
     if args.guard_tests:
         sources += ['lab/irix-session/descendants.c', 'lab/irix-session/guard-tests.sh']
+    if args.deadline_tests:
+        sources += ['lab/irix-process-tracking/delay.c',
+                    'lab/irix-process-tracking/deadline-case.c',
+                    'lab/irix-process-tracking/deadline-tests.sh']
+    if args.candidate_guard:
+        sources += ['runtime/libexec/session-guard.c']
     for source in sources:
         shutil.copyfile(ROOT/source, media/Path(source).name)
     p.run(['genisoimage', '-quiet', '-R', '-J', '-o', d/'probe.iso', media])
@@ -84,6 +94,11 @@ def main():
         seed = json.loads((bundle/'seed-result.json').read_text())
         guard_hash = seed['installed_files']['/usr/local/libexec/xiri/session-guard']
         assert guard_hash in record['guest_hashes']
+        if args.candidate_guard:
+            cmd('cp /usr/local/libexec/xiri/session-guard session-guard-installed; '
+                'cc -O2 -Wall -Wextra -Werror session-guard.c -o session-guard && '
+                'install -m 555 session-guard /usr/local/libexec/xiri/session-guard', 120)
+            record['candidate_guard_sha256'] = get('sha256 -q /usr/local/libexec/xiri/session-guard').strip()
         for uid, user in [(0, 'root'), (1234, 'xiritest')]:
             for batch in (1, 64):
                 name = f'events-{uid}-{batch}'
@@ -111,6 +126,21 @@ def main():
             assert 'SESSION_GUARD_TESTS_OK' in record['guard_tests']
             assert len(re.findall(r'^GUARD .*absent=1 valid=1 .*remaining=0 ', record['guard_tests'], re.M)) == 10
             print('Installed session guard adversarial controls passed', flush=True)
+        if args.deadline_tests:
+            cmd('cc -O2 -Wall -Wextra -Werror -fPIC -shared delay.c -o delay.so && '
+                'cc -O2 -Wall -Wextra -Werror deadline-case.c -o deadline-case && '
+                'mkdir deadline && cp deadline-case delay.so deadline/ && '
+                'chown xiritest:xiritest deadline', 120)
+            record['deadline_hashes'] = get('sha256 delay.so deadline-case')
+            cmd("su -l xiritest -c '/bin/sh /tmp/xiri-tracking/deadline-tests.sh "
+                "/tmp/xiri-tracking/deadline /usr/local/libexec/xiri/session-guard' "
+                '>deadline-tests.log 2>&1; status=$?; echo "$status" >deadline-tests.status', 300)
+            record['deadline_tests'] = get('cat deadline-tests.log')
+            record['deadline_status'] = get('cat deadline-tests.status').strip()
+            assert record['deadline_status'] == '0', record['deadline_tests']
+            cases = re.findall(r'^DEADLINE case=(\S+) uid=1234 ', record['deadline_tests'], re.M)
+            assert cases == ['fast', 'term', 'kill', 'live', 'signal', 'logout', 'leader'], cases
+            print('Seven delayed-cleanup scenarios passed', flush=True)
         record['status'] = 'passed'
     except Exception as error:
         record['error'] = str(error)

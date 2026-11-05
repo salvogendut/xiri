@@ -5,6 +5,12 @@ round trip, [cold desktop checks](2026-11-05-native-wait-image.json), and
 [22-target catalog replay](2026-11-05-irix-catalog-replay.json) pass.
 Run it from the repository with `./xiri run`.
 
+The later [cleanup-image pressure investigation](2026-11-05-cleanup-image.md)
+also reproduces a native sleep watchdog timeout on this unchanged image
+under a 96 MiB load. The cold desktop and catalog results below remain valid;
+they do not qualify that additional pressure workload. The cleanup candidate
+has not replaced this selected image.
+
 ![Qualified Xiri desktop](images/2026-11-05-native-wait-image.png)
 
 The bundle is `.work/images/xiri-netbsd-desktop-20261105-wait/`.

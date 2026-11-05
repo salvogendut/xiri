@@ -1,0 +1,73 @@
+{
+  "schema": 1,
+  "status": "passed",
+  "upstream_checked_utc": "2026-11-05 17:00:05 UTC",
+  "upstream_revision": "c382cdcc25389769b5ae3a436ae1ff73ae42e964",
+  "iris_integration_revision": "fb24628e1bf97a4f379309c79e808d82929672b7",
+  "netbsd_revision": "e9ff76a58affee773b767d334f98075bf86daf7e",
+  "build": {
+    "path": ".work/workflows/build-xyih1ztn/build.json",
+    "sha256": "8d627624e33fad685bab79779d54528deb8660e92acf67a25fd6960fb2c66205"
+  },
+  "logs": [
+    {
+      "path": ".work/cleanup-deadline/iris-build.log",
+      "sha256": "46dd744d83f0e78919b8cd3096c6010422da59d5f48dbe403d2d9a02f68c958f"
+    },
+    {
+      "path": ".work/cleanup-deadline/iris-test-block_node-.log",
+      "sha256": "b0a49dc9a98e77aeb016188b9fb512233b78c2b72b44545b3b02190e0f0fe795"
+    },
+    {
+      "path": ".work/cleanup-deadline/iris-test-chd_disk-.log",
+      "sha256": "d5b118d685db027377d92624b0a8dae0b197443986c242da732269733a90050d"
+    },
+    {
+      "path": ".work/cleanup-deadline/iris-test-cow_disk-.log",
+      "sha256": "5a8b319e6d260c4d25a8f554c7043938392c19ceca6132ac37e2b64f4b6789f1"
+    },
+    {
+      "path": ".work/cleanup-deadline/iris-test-dev-gl::.log",
+      "sha256": "836165fe4c3cef0bf8bfd7b2dd078c0ee71b7dc6fae42c9f3c37923e08b59eec"
+    },
+    {
+      "path": ".work/cleanup-deadline/iris-test-dev-odyssey::.log",
+      "sha256": "6c3a498f0699ed92b34a12e575f86b32ac66fac10780c557120716d58a0ae902"
+    }
+  ],
+  "passed_tests": {
+    "odyssey": 358,
+    "gl": 16,
+    "cow_disk": 6,
+    "chd_disk": 4,
+    "block_node": 47
+  },
+  "ignored_tests": {
+    "odyssey": 4
+  },
+  "windows_execution_tested": false,
+  "host_tests": {
+    "passed": 48,
+    "log": {
+      "path": ".work/cleanup-deadline/host-tests.log",
+      "sha256": "acb99466ad59bb554aa6c3e66e61d8c82dfd51749e868c11cfd6e857f3302291"
+    },
+    "final_log": {
+      "path": ".work/cleanup-deadline/host-tests-final.log",
+      "sha256": "b83161ada608d759a757808b04b3c6c4b41366864c96a780e0fd0e91940ee598"
+    },
+    "python_compile": [
+      "scripts/probe-process-tracking.py",
+      "scripts/probe-system-stability.py",
+      "lab/irix-process-tracking/qualify-deadline.py"
+    ]
+  },
+  "selected_image_doctor": {
+    "path": ".work/cleanup-deadline/doctor.log",
+    "sha256": "c663c4351d0d43e69912805ad46fa73fd9645c699b27bbb81afd27eeb4f04df2"
+  },
+  "emulator_cleanup": {
+    "path": ".work/cleanup-deadline/final-cleanup.json",
+    "sha256": "7bc1136278fc54ffbf31c0b5b266ebf313de6c44aee09c8ddf26559de6a1da3a"
+  }
+}

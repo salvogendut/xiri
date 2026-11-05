@@ -5,6 +5,23 @@ status statements describe individual checkpoints and may be superseded by
 later entries. Use the [current README](../README.md), [development guide](DEVELOPMENT.md)
 and [selected image](../lab/irix-installed-desktop/image.json) for current work.
 
+The [2026-11-05 tracking follow-up](results/2026-11-05-process-tracking.md)
+passes independent native child-event checks and paired compview cleanup
+replays without explaining its historical failure. The subsequent
+[deadline experiment](results/2026-11-05-cleanup-deadline.md) reproduces five
+false supervisor failures with real exit notifications already queued.
+A final nonblocking event/reap check corrects them without extending the
+deadline. Seven scenarios pass, including a live child that must still fail;
+1,536 native child lifecycles and eight existing supervisor cases also pass.
+The historical compview/bootstrap/halt observations remain open.
+The [cleanup CHD](results/2026-11-05-cleanup-image.md) passes the full cold
+desktop/font/job/logout qualification but is not promoted. Its separate
+96 MiB stress gate records native sleep timeouts, also reproduced on the
+preceding native-wait image with a correct saved sleep request, and an
+unidentified adversarial shell postcheck failure after valid cleanup.
+All four failed stress runs halt cleanly and retain their evidence. Native
+timing and the exact test postcheck now precede multi-user FAM work.
+
 The [2026-11-05 process/job-control cycle](results/2026-11-05-irix-job-control.md)
 implements measured IRIX sleep, child-state and process-group interfaces,
 then qualifies native and original IRIX shell jobs with active-job logout.

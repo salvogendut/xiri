@@ -62,8 +62,17 @@ multi-child tests; the same test binary fails before the fix and passes after it
 The [tracking follow-up](docs/results/2026-11-05-process-tracking.md) verifies
 3,072 native child lifecycles and 16 supervisor cleanup scenarios on old/current
 images. Compview cleanup passes in both replays, while its first X query still
-times out. The historical tracking failure remains open; the selected CHD is
-unchanged.
+times out. The historical tracking failure remains open.
+The [deadline investigation](docs/results/2026-11-05-cleanup-deadline.md)
+then reproduces five false cleanup failures caused by declaring a timeout
+with exit notifications already queued. A final nonblocking event/reap check
+corrects them; seven deliberate-delay scenarios pass, including rejection
+of a genuinely live child. This does not establish the old compview cause.
+The [cleanup candidate CHD](docs/results/2026-11-05-cleanup-image.md) passes
+cold desktop, font, shell-job and logout checks, but remains unselected:
+96 MiB pressure testing exposes native sleep timeouts on both candidate and
+previous images, plus an unresolved test postcheck. Investigating these
+system failures is next; the existing manual bundle remains available.
 
 The [preference cycle](docs/results/2026-11-04-irix-preferences.md) implements
 measured IRIX `rename` behavior. GNOME Terminal and gedit settings survive
@@ -72,8 +81,9 @@ The [Acrobat cycle](docs/results/2026-11-04-irix-acrobat.md) imports the complet
 original Reader package and supports its older ELF layout. Reader opens PDFs,
 changes page and zoom, reopens a document and exits normally. It also launches
 from Icon Catalog, although its icon does not change to the running shape.
-These cumulative module, runtime and resource updates are packaged in the
-current manual image; earlier images and their manual state are retained.
+These application, module and resource updates are packaged in the current
+manual image. The cleanup guard correction remains in the candidate described
+above; earlier images and their manual state are retained.
 
 Individual application repairs are paused for the
 [system-stability cycle](docs/results/2026-11-04-system-stability.md). It adds

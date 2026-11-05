@@ -42,6 +42,25 @@ not repin qualified kernels, emulator binaries, runtime resources or guest disks
 
 ## IRIS upstream updates
 
+The 2026-11-05 cleanup-deadline cycle fetched upstream at 17:00:05 UTC through
+`c382cdcc25389769b5ae3a436ae1ff73ae42e964`. Merge
+`fb24628e1bf97a4f379309c79e808d82929672b7` is pushed on IRIS `xiri`.
+The seven commits cover pixel transfer scale/bias, sphere-map coordinates,
+separate specular lighting, graphics tests/constants/documentation, and
+Windows directory-fsync handling. The sole source conflict in `cow_disk.rs`
+preserves our Windows `MoveFileExW` replacement with write-through while
+adding upstream's contextual I/O errors; Unix rename and directory fsync
+remain in place.
+The isolated Linux release build passes, as do 358 Odyssey, 16 GL, six COW,
+four CHD and 47 block-node tests (431 total; four Odyssey tests ignored).
+Windows execution was not tested. Local logs are under
+`.work/cleanup-deadline/iris-{build,test-*}.log`; build provenance is
+`.work/workflows/build-xyih1ztn/build.json`.
+The [runtime correction](results/2026-11-05-cleanup-deadline.md) changes no
+NetBSD source. NetBSD remains at `e9ff76a58affee773b767d334f98075bf86daf7e`;
+the replacement image and diagnostic guests retain qualified emulator
+`819c682`, and all pinned reproduction worktrees remain unchanged.
+
 The 2026-11-05 process-tracking cycle fetched upstream through
 `54ea8c05afa2996c192768cc72bbe6fcb3c01f5f`. Merge
 `e67e3cc3731c17de1a0c226dbd2d4448d07ec80f` is pushed on IRIS `xiri`.

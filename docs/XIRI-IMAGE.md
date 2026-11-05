@@ -9,6 +9,11 @@ or replace the manual bundle's NVRAM/overlay state.
 
 The current accelerated xdm bundle is
 `.work/images/xiri-netbsd-desktop-20261105-wait/`.
+The [cleanup candidate](results/2026-11-05-cleanup-image.md) has a qualified
+guard correction and passes cold desktop/font/job/logout checks, but remains
+unselected after the added 96 MiB pressure gate failed. The same native
+sleep symptom also occurs on the current image. Its report records the
+limitations, separate candidate launcher and outstanding system investigation.
 `netbsd-xiri.chd` is an 8 GiB NetBSD disk compressed to 496,151,497 bytes
 (about 473 MiB). Its SHA256 is
 `90ca82ecdfbe184a96990515938f7856eb6983f77719d487fb7c6b34ba73eece`.

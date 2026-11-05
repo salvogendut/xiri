@@ -4,6 +4,7 @@
 #include <sys/types.h>
 #include <sys/event.h>
 #include <sys/proc.h>
+#include <sys/stat.h>
 #include <sys/sysctl.h>
 #include <sys/wait.h>
 #include <errno.h>
@@ -125,6 +126,24 @@ static int signal_members(int sig)
     return failed;
 }
 
+static void report_remaining(int kq, pid_t leader, int finished)
+{
+    struct stat st;
+    long long queued = fstat(kq, &st) == 0 ? (long long)st.st_size : -1;
+    fprintf(stderr, "cleanup deadline leader=%d reaped=%d remaining=%zu queued=%lld\n",
+        leader, finished, alive, queued);
+    for (size_t i = 0; i < capacity; ++i) {
+        struct member *m = &members[i];
+        if (!m->live) continue;
+        struct kinfo_proc2 p;
+        int present = info(m->pid, &p);
+        fprintf(stderr, "remaining pid=%d generation=%zu identity=%d start=%u.%06u sent=%d present=%d state=%u uvalid=%u current_start=%u.%06u\n",
+            m->pid, m->generation, m->identity, m->sec, m->usec, m->sent,
+            present, (unsigned)p.p_realstat, (unsigned)p.p_uvalid,
+            p.p_ustart_sec, p.p_ustart_usec);
+    }
+}
+
 int main(int argc, char **argv)
 {
     char *end;
@@ -154,19 +173,24 @@ int main(int argc, char **argv)
         execvp(argv[2], argv + 2);
         perror("session exec"); _exit(126);
     }
-    int status = 0, finished = 0, failed = 0, phase = 0;
+    int status = 0, finished = 0, failed = 0, phase = 0, final_check = 0;
     long long start = now(), deadline = duration ? start + duration : LLONG_MAX;
     long long stopping = 0;
     const char *reason = "leader-exit";
     for (;;) {
         failed |= events(kq);
-        failed |= identify(kq);
+        if (!final_check) failed |= identify(kq);
         if (!finished) {
             pid_t done = waitpid(leader, &status, WNOHANG);
             if (done == leader) finished = 1;
             else if (done < 0 && errno != EINTR) failed = 1;
         }
         if (finished && alive == 0) break;
+        if (final_check) {
+            report_remaining(kq, leader, finished);
+            failed = 1;
+            break;
+        }
         if (!phase && (failed || requested || finished || now() >= deadline ||
                       (stop_file && access(stop_file, F_OK) == 0))) {
             reason = failed ? "tracking-error" : requested ? "signal" : finished ? "leader-exit" :
@@ -176,7 +200,14 @@ int main(int argc, char **argv)
         if (phase) {
             if (now() - stopping >= 1000) phase = 2;
             failed |= signal_members(phase == 1 ? SIGTERM : SIGKILL);
-            if (now() - stopping >= 6000) { failed = 1; break; }
+            if (now() - stopping >= 6000) {
+                /* Signals/sysctls or scheduling can consume the remaining
+                 * grace period after this iteration's event drain. Check
+                 * already queued exits and reap once more before declaring
+                 * failure. This adds neither a wait nor another signal. */
+                final_check = 1;
+                continue;
+            }
         }
         struct timespec pause = {0, 20000000};
         nanosleep(&pause, NULL);

@@ -1,0 +1,702 @@
+{
+  "schema": 1,
+  "status": "qualified",
+  "before": {
+    "run": ".work/process-tracking/native-krgzvjab",
+    "result_sha256": "17fd25a157ee773cda249625bc79400e403e9edc71fe455badf1ea22009e712a",
+    "archive_sha256": "be71c9188a83c4a44dbb5cf8d991cb14993c151d36097256bbaa4a974659892b",
+    "harness_sha256": "e29bbd1c0b2a5e6d457f0d544990fbcfbdf346b854591c9ab23cbb74f9196673",
+    "chd_sha256": "90ca82ecdfbe184a96990515938f7856eb6983f77719d487fb7c6b34ba73eece",
+    "manifest_sha256": "5859bd4e434eb410dae72a6f8b3d7df5b20b88f1ab4ec41e801a3a58ef330d88",
+    "kernel_sha256": "c92f0b2fcc182836393a87ca41a0315a0681e93ed3e904fad925d3c370e4dd98",
+    "module_sha256": "8e97285b0a2185c0b2b5a2ed6e4202dd9ec568a9ba1514ea45a569a8c4c1b366",
+    "emulator_sha256": "3dd9299d71f1899ff5a8c9b76f6a24752d19e4f9a0bcfe0edf3a29001dc9c49e",
+    "source_sha256": {
+      "lab/irix-process-tracking/events.c": "a9ee2ef6ce8315a325667c7e2501f903016beeccc24485574aaace05822737f9",
+      "lab/irix-process-tracking/delay.c": "d256946a0464db80158a9f3bb4656165e4a428c6ed8aa99beb6d786e8d202396",
+      "lab/irix-process-tracking/deadline-case.c": "e05b939fe29f43298768b636d2e7f3e6e5b2354f50be6aa1802fc4a1d769d710",
+      "lab/irix-process-tracking/deadline-tests.sh": "4fb5c8f638fbe1be21ee37a7b717c9f0970fbcc30b1ac099c861c1e976f74fcf"
+    },
+    "native_lifecycles": 96,
+    "guest_hashes": "SHA256 (/netbsd) = c92f0b2fcc182836393a87ca41a0315a0681e93ed3e904fad925d3c370e4dd98\nSHA256 (/netbsd.boot) = 5fd2dd05d1549e0e6e29a02c2d6d8c6bae2b8443edad272f12e878f24eb06e54\nSHA256 (/stand/sgimips/11.99.9/modules/compat_irix_o32/compat_irix_o32.kmod) = 8e97285b0a2185c0b2b5a2ed6e4202dd9ec568a9ba1514ea45a569a8c4c1b366\nSHA256 (/usr/local/libexec/xiri/session-guard) = b4970e085ebc533cc6d286151f8b93056493be399beeffc5f84d8d77985d8d09\nSHA256 (events) = 235375d54f3d73fa089fd553b8c23fe421ee44207aff331b75d793be9b066059\nSHA256 (events.c) = a9ee2ef6ce8315a325667c7e2501f903016beeccc24485574aaace05822737f9\n",
+    "binaries": {
+      "delay.so": "5b4b091eb34bab3a25b043ac0d8e0898031868b4bc483f9463bf1ed066551eeb",
+      "deadline-case": "5c44518fd0545f4941dfe6502b384869185b0ef03bbc01601f62c16149b99093"
+    },
+    "cases": {
+      "fast": {
+        "case": {
+          "case": "fast",
+          "uid": "1234",
+          "guard": "3625",
+          "worker": "3821",
+          "rc": "0",
+          "expected": "0",
+          "live": "0",
+          "expected_live": "0",
+          "sentinel": "1",
+          "sentinel_rc": "0",
+          "safe_cleanup": "1"
+        },
+        "guard": {
+          "pid": "3821",
+          "exit": "-1",
+          "signal": "15",
+          "stopped": "1",
+          "absent": "1",
+          "valid": "1",
+          "tracked": "1",
+          "remaining": "0",
+          "reason": "timeout",
+          "uid": "1234",
+          "gid": "1234",
+          "elapsed": "2037"
+        },
+        "before": {
+          "pending": "1"
+        },
+        "close": {
+          "pending": "0",
+          "error": "0",
+          "injected": "1"
+        },
+        "return": {
+          "pid": "3821",
+          "elapsed": "2",
+          "present": "1",
+          "state": "5",
+          "uvalid": "0"
+        },
+        "trace": "INJECT pid=3821 signal=15 suppress=0 result=0 delay=0\nDELAY_RETURN pid=3821 elapsed=2 present=1 state=5 uvalid=0\nQUEUE_BEFORE_RETURN pending=1\nQUEUE_CLOSE pending=0 error=0 injected=1\n"
+      },
+      "term": {
+        "case": {
+          "case": "term",
+          "uid": "1234",
+          "guard": "549",
+          "worker": "591",
+          "rc": "2",
+          "expected": "0",
+          "live": "0",
+          "expected_live": "0",
+          "sentinel": "1",
+          "sentinel_rc": "0",
+          "safe_cleanup": "1"
+        },
+        "guard": {
+          "pid": "591",
+          "exit": "-1",
+          "signal": "0",
+          "stopped": "1",
+          "absent": "0",
+          "valid": "0",
+          "tracked": "1",
+          "remaining": "1",
+          "reason": "timeout",
+          "uid": "1234",
+          "gid": "1234",
+          "elapsed": "9034"
+        },
+        "before": {
+          "pending": "1"
+        },
+        "close": {
+          "pending": "1",
+          "error": "0",
+          "injected": "1"
+        },
+        "return": {
+          "pid": "591",
+          "elapsed": "7018",
+          "present": "1",
+          "state": "5",
+          "uvalid": "0"
+        },
+        "trace": "INJECT pid=591 signal=15 suppress=0 result=0 delay=7000\nDELAY_RETURN pid=591 elapsed=7018 present=1 state=5 uvalid=0\nQUEUE_BEFORE_RETURN pending=1\nPENDING pid=591 filter=4 flags=8035 fflags=80000000 data=15\nQUEUE_CLOSE pending=1 error=0 injected=1\n"
+      },
+      "kill": {
+        "case": {
+          "case": "kill",
+          "uid": "1234",
+          "guard": "555",
+          "worker": "559",
+          "rc": "2",
+          "expected": "0",
+          "live": "0",
+          "expected_live": "0",
+          "sentinel": "1",
+          "sentinel_rc": "0",
+          "safe_cleanup": "1"
+        },
+        "guard": {
+          "pid": "559",
+          "exit": "-1",
+          "signal": "0",
+          "stopped": "1",
+          "absent": "0",
+          "valid": "0",
+          "tracked": "1",
+          "remaining": "1",
+          "reason": "timeout",
+          "uid": "1234",
+          "gid": "1234",
+          "elapsed": "10053"
+        },
+        "before": {
+          "pending": "1"
+        },
+        "close": {
+          "pending": "1",
+          "error": "0",
+          "injected": "1"
+        },
+        "return": {
+          "pid": "559",
+          "elapsed": "7018",
+          "present": "1",
+          "state": "5",
+          "uvalid": "0"
+        },
+        "trace": "INJECT pid=559 signal=9 suppress=0 result=0 delay=7000\nDELAY_RETURN pid=559 elapsed=7018 present=1 state=5 uvalid=0\nQUEUE_BEFORE_RETURN pending=1\nPENDING pid=559 filter=4 flags=8035 fflags=80000000 data=9\nQUEUE_CLOSE pending=1 error=0 injected=1\n"
+      },
+      "live": {
+        "case": {
+          "case": "live",
+          "uid": "1234",
+          "guard": "792",
+          "worker": "3568",
+          "rc": "2",
+          "expected": "2",
+          "live": "1",
+          "expected_live": "1",
+          "sentinel": "1",
+          "sentinel_rc": "0",
+          "safe_cleanup": "1"
+        },
+        "guard": {
+          "pid": "3568",
+          "exit": "-1",
+          "signal": "0",
+          "stopped": "1",
+          "absent": "0",
+          "valid": "0",
+          "tracked": "1",
+          "remaining": "1",
+          "reason": "timeout",
+          "uid": "1234",
+          "gid": "1234",
+          "elapsed": "9034"
+        },
+        "before": {
+          "pending": "0"
+        },
+        "close": {
+          "pending": "0",
+          "error": "0",
+          "injected": "1"
+        },
+        "return": {
+          "pid": "3568",
+          "elapsed": "7020",
+          "present": "1",
+          "state": "2",
+          "uvalid": "1"
+        },
+        "trace": "INJECT pid=3568 signal=15 suppress=1 result=0 delay=7000\nDELAY_RETURN pid=3568 elapsed=7020 present=1 state=2 uvalid=1\nQUEUE_BEFORE_RETURN pending=0\nQUEUE_CLOSE pending=0 error=0 injected=1\n"
+      },
+      "signal": {
+        "case": {
+          "case": "signal",
+          "uid": "1234",
+          "guard": "1885",
+          "worker": "4014",
+          "rc": "2",
+          "expected": "0",
+          "live": "0",
+          "expected_live": "0",
+          "sentinel": "1",
+          "sentinel_rc": "0",
+          "safe_cleanup": "1"
+        },
+        "guard": {
+          "pid": "4014",
+          "exit": "-1",
+          "signal": "0",
+          "stopped": "1",
+          "absent": "0",
+          "valid": "0",
+          "tracked": "1",
+          "remaining": "1",
+          "reason": "signal",
+          "uid": "1234",
+          "gid": "1234",
+          "elapsed": "7057"
+        },
+        "before": {
+          "pending": "1"
+        },
+        "close": {
+          "pending": "1",
+          "error": "0",
+          "injected": "1"
+        },
+        "return": {
+          "pid": "4014",
+          "elapsed": "7013",
+          "present": "1",
+          "state": "5",
+          "uvalid": "0"
+        },
+        "trace": "INJECT pid=4014 signal=15 suppress=0 result=0 delay=7000\nDELAY_RETURN pid=4014 elapsed=7013 present=1 state=5 uvalid=0\nQUEUE_BEFORE_RETURN pending=1\nPENDING pid=4014 filter=4 flags=8035 fflags=80000000 data=15\nQUEUE_CLOSE pending=1 error=0 injected=1\n"
+      },
+      "logout": {
+        "case": {
+          "case": "logout",
+          "uid": "1234",
+          "guard": "634",
+          "worker": "632",
+          "rc": "2",
+          "expected": "0",
+          "live": "0",
+          "expected_live": "0",
+          "sentinel": "1",
+          "sentinel_rc": "0",
+          "safe_cleanup": "1"
+        },
+        "guard": {
+          "pid": "632",
+          "exit": "-1",
+          "signal": "0",
+          "stopped": "1",
+          "absent": "0",
+          "valid": "0",
+          "tracked": "1",
+          "remaining": "1",
+          "reason": "logout",
+          "uid": "1234",
+          "gid": "1234",
+          "elapsed": "7066"
+        },
+        "before": {
+          "pending": "1"
+        },
+        "close": {
+          "pending": "1",
+          "error": "0",
+          "injected": "1"
+        },
+        "return": {
+          "pid": "632",
+          "elapsed": "7007",
+          "present": "1",
+          "state": "5",
+          "uvalid": "0"
+        },
+        "trace": "INJECT pid=632 signal=15 suppress=0 result=0 delay=7000\nDELAY_RETURN pid=632 elapsed=7007 present=1 state=5 uvalid=0\nQUEUE_BEFORE_RETURN pending=1\nPENDING pid=632 filter=4 flags=8035 fflags=80000000 data=15\nQUEUE_CLOSE pending=1 error=0 injected=1\n"
+      },
+      "leader": {
+        "case": {
+          "case": "leader",
+          "uid": "1234",
+          "guard": "705",
+          "worker": "713",
+          "rc": "2",
+          "expected": "37",
+          "live": "0",
+          "expected_live": "0",
+          "sentinel": "1",
+          "sentinel_rc": "0",
+          "safe_cleanup": "1"
+        },
+        "guard": {
+          "pid": "707",
+          "exit": "37",
+          "signal": "0",
+          "stopped": "1",
+          "absent": "0",
+          "valid": "0",
+          "tracked": "2",
+          "remaining": "1",
+          "reason": "leader-exit",
+          "uid": "1234",
+          "gid": "1234",
+          "elapsed": "7075"
+        },
+        "before": {
+          "pending": "1"
+        },
+        "close": {
+          "pending": "1",
+          "error": "0",
+          "injected": "1"
+        },
+        "return": {
+          "pid": "713",
+          "elapsed": "7016",
+          "present": "0",
+          "state": "0",
+          "uvalid": "0"
+        },
+        "trace": "INJECT pid=713 signal=15 suppress=0 result=0 delay=7000\nDELAY_RETURN pid=713 elapsed=7016 present=0 state=0 uvalid=0\nQUEUE_BEFORE_RETURN pending=1\nPENDING pid=713 filter=4 flags=8035 fflags=80000000 data=15\nQUEUE_CLOSE pending=1 error=0 injected=1\n"
+      }
+    },
+    "clean_shutdown": true,
+    "source_unchanged": true
+  },
+  "after": {
+    "run": ".work/process-tracking/native-qjdjzyr_",
+    "result_sha256": "47876007fa47874c64757574878ad85777ac48b3d29b255b53f1fcbec1d2a678",
+    "archive_sha256": "781908c67db39c82ca6f8531eb1a0f29f523571083f963ff00037dcb231fe359",
+    "harness_sha256": "e29bbd1c0b2a5e6d457f0d544990fbcfbdf346b854591c9ab23cbb74f9196673",
+    "chd_sha256": "90ca82ecdfbe184a96990515938f7856eb6983f77719d487fb7c6b34ba73eece",
+    "manifest_sha256": "5859bd4e434eb410dae72a6f8b3d7df5b20b88f1ab4ec41e801a3a58ef330d88",
+    "kernel_sha256": "c92f0b2fcc182836393a87ca41a0315a0681e93ed3e904fad925d3c370e4dd98",
+    "module_sha256": "8e97285b0a2185c0b2b5a2ed6e4202dd9ec568a9ba1514ea45a569a8c4c1b366",
+    "emulator_sha256": "3dd9299d71f1899ff5a8c9b76f6a24752d19e4f9a0bcfe0edf3a29001dc9c49e",
+    "source_sha256": {
+      "lab/irix-process-tracking/events.c": "a9ee2ef6ce8315a325667c7e2501f903016beeccc24485574aaace05822737f9",
+      "lab/irix-session/descendants.c": "02c35bc4d7d5d27f72e5ce43694718c14c85068d4800d609dd730411de849c80",
+      "lab/irix-session/guard-tests.sh": "31cae7f38047bcaf57c862e070f1b48d880e4e3bd77be1537606563e98eadf11",
+      "lab/irix-process-tracking/delay.c": "d256946a0464db80158a9f3bb4656165e4a428c6ed8aa99beb6d786e8d202396",
+      "lab/irix-process-tracking/deadline-case.c": "e05b939fe29f43298768b636d2e7f3e6e5b2354f50be6aa1802fc4a1d769d710",
+      "lab/irix-process-tracking/deadline-tests.sh": "4fb5c8f638fbe1be21ee37a7b717c9f0970fbcc30b1ac099c861c1e976f74fcf",
+      "runtime/libexec/session-guard.c": "ea05b1977b773cad9f48f1886b4f6c08a660bc109ae95be5d5e4792b54e3c206"
+    },
+    "native_lifecycles": 1536,
+    "guest_hashes": "SHA256 (/netbsd) = c92f0b2fcc182836393a87ca41a0315a0681e93ed3e904fad925d3c370e4dd98\nSHA256 (/netbsd.boot) = 5fd2dd05d1549e0e6e29a02c2d6d8c6bae2b8443edad272f12e878f24eb06e54\nSHA256 (/stand/sgimips/11.99.9/modules/compat_irix_o32/compat_irix_o32.kmod) = 8e97285b0a2185c0b2b5a2ed6e4202dd9ec568a9ba1514ea45a569a8c4c1b366\nSHA256 (/usr/local/libexec/xiri/session-guard) = b4970e085ebc533cc6d286151f8b93056493be399beeffc5f84d8d77985d8d09\nSHA256 (events) = 235375d54f3d73fa089fd553b8c23fe421ee44207aff331b75d793be9b066059\nSHA256 (events.c) = a9ee2ef6ce8315a325667c7e2501f903016beeccc24485574aaace05822737f9\n",
+    "binaries": {
+      "delay.so": "5b4b091eb34bab3a25b043ac0d8e0898031868b4bc483f9463bf1ed066551eeb",
+      "deadline-case": "5c44518fd0545f4941dfe6502b384869185b0ef03bbc01601f62c16149b99093",
+      "session-guard": "e33ee6bd22afc26aa5f16d7f4e6a78eed966a301a7ee9233b33556a39e735aa7",
+      "session-guard-installed": "b4970e085ebc533cc6d286151f8b93056493be399beeffc5f84d8d77985d8d09"
+    },
+    "cases": {
+      "fast": {
+        "case": {
+          "case": "fast",
+          "uid": "1234",
+          "guard": "3737",
+          "worker": "3479",
+          "rc": "0",
+          "expected": "0",
+          "live": "0",
+          "expected_live": "0",
+          "sentinel": "1",
+          "sentinel_rc": "0",
+          "safe_cleanup": "1"
+        },
+        "guard": {
+          "pid": "3479",
+          "exit": "-1",
+          "signal": "15",
+          "stopped": "1",
+          "absent": "1",
+          "valid": "1",
+          "tracked": "1",
+          "remaining": "0",
+          "reason": "timeout",
+          "uid": "1234",
+          "gid": "1234",
+          "elapsed": "2036"
+        },
+        "before": {
+          "pending": "1"
+        },
+        "close": {
+          "pending": "0",
+          "error": "0",
+          "injected": "1"
+        },
+        "return": {
+          "pid": "3479",
+          "elapsed": "1",
+          "present": "1",
+          "state": "5",
+          "uvalid": "0"
+        },
+        "trace": "INJECT pid=3479 signal=15 suppress=0 result=0 delay=0\nDELAY_RETURN pid=3479 elapsed=1 present=1 state=5 uvalid=0\nQUEUE_BEFORE_RETURN pending=1\nQUEUE_CLOSE pending=0 error=0 injected=1\n"
+      },
+      "term": {
+        "case": {
+          "case": "term",
+          "uid": "1234",
+          "guard": "3537",
+          "worker": "6620",
+          "rc": "0",
+          "expected": "0",
+          "live": "0",
+          "expected_live": "0",
+          "sentinel": "1",
+          "sentinel_rc": "0",
+          "safe_cleanup": "1"
+        },
+        "guard": {
+          "pid": "6620",
+          "exit": "-1",
+          "signal": "15",
+          "stopped": "1",
+          "absent": "1",
+          "valid": "1",
+          "tracked": "1",
+          "remaining": "0",
+          "reason": "timeout",
+          "uid": "1234",
+          "gid": "1234",
+          "elapsed": "9032"
+        },
+        "before": {
+          "pending": "1"
+        },
+        "close": {
+          "pending": "0",
+          "error": "0",
+          "injected": "1"
+        },
+        "return": {
+          "pid": "6620",
+          "elapsed": "7017",
+          "present": "1",
+          "state": "5",
+          "uvalid": "0"
+        },
+        "trace": "INJECT pid=6620 signal=15 suppress=0 result=0 delay=7000\nDELAY_RETURN pid=6620 elapsed=7017 present=1 state=5 uvalid=0\nQUEUE_BEFORE_RETURN pending=1\nQUEUE_CLOSE pending=0 error=0 injected=1\n"
+      },
+      "kill": {
+        "case": {
+          "case": "kill",
+          "uid": "1234",
+          "guard": "5937",
+          "worker": "6749",
+          "rc": "0",
+          "expected": "0",
+          "live": "0",
+          "expected_live": "0",
+          "sentinel": "1",
+          "sentinel_rc": "0",
+          "safe_cleanup": "1"
+        },
+        "guard": {
+          "pid": "6749",
+          "exit": "-1",
+          "signal": "9",
+          "stopped": "1",
+          "absent": "1",
+          "valid": "1",
+          "tracked": "1",
+          "remaining": "0",
+          "reason": "timeout",
+          "uid": "1234",
+          "gid": "1234",
+          "elapsed": "10039"
+        },
+        "before": {
+          "pending": "1"
+        },
+        "close": {
+          "pending": "0",
+          "error": "0",
+          "injected": "1"
+        },
+        "return": {
+          "pid": "6749",
+          "elapsed": "7008",
+          "present": "1",
+          "state": "5",
+          "uvalid": "0"
+        },
+        "trace": "INJECT pid=6749 signal=9 suppress=0 result=0 delay=7000\nDELAY_RETURN pid=6749 elapsed=7008 present=1 state=5 uvalid=0\nQUEUE_BEFORE_RETURN pending=1\nQUEUE_CLOSE pending=0 error=0 injected=1\n"
+      },
+      "live": {
+        "case": {
+          "case": "live",
+          "uid": "1234",
+          "guard": "3498",
+          "worker": "3499",
+          "rc": "2",
+          "expected": "2",
+          "live": "1",
+          "expected_live": "1",
+          "sentinel": "1",
+          "sentinel_rc": "0",
+          "safe_cleanup": "1"
+        },
+        "guard": {
+          "pid": "3499",
+          "exit": "-1",
+          "signal": "0",
+          "stopped": "1",
+          "absent": "0",
+          "valid": "0",
+          "tracked": "1",
+          "remaining": "1",
+          "reason": "timeout",
+          "uid": "1234",
+          "gid": "1234",
+          "elapsed": "9035"
+        },
+        "before": {
+          "pending": "0"
+        },
+        "close": {
+          "pending": "0",
+          "error": "0",
+          "injected": "1"
+        },
+        "return": {
+          "pid": "3499",
+          "elapsed": "7020",
+          "present": "1",
+          "state": "2",
+          "uvalid": "1"
+        },
+        "trace": "INJECT pid=3499 signal=15 suppress=1 result=0 delay=7000\nDELAY_RETURN pid=3499 elapsed=7020 present=1 state=2 uvalid=1\nQUEUE_BEFORE_RETURN pending=0\ncleanup deadline leader=3499 reaped=0 remaining=1 queued=0\nremaining pid=3499 generation=1 identity=1 start=1793899388.749572 sent=15 present=1 state=2 uvalid=1 current_start=1793899388.749572\nQUEUE_CLOSE pending=0 error=0 injected=1\n"
+      },
+      "signal": {
+        "case": {
+          "case": "signal",
+          "uid": "1234",
+          "guard": "6427",
+          "worker": "3551",
+          "rc": "0",
+          "expected": "0",
+          "live": "0",
+          "expected_live": "0",
+          "sentinel": "1",
+          "sentinel_rc": "0",
+          "safe_cleanup": "1"
+        },
+        "guard": {
+          "pid": "3551",
+          "exit": "-1",
+          "signal": "15",
+          "stopped": "1",
+          "absent": "1",
+          "valid": "1",
+          "tracked": "1",
+          "remaining": "0",
+          "reason": "signal",
+          "uid": "1234",
+          "gid": "1234",
+          "elapsed": "7060"
+        },
+        "before": {
+          "pending": "1"
+        },
+        "close": {
+          "pending": "0",
+          "error": "0",
+          "injected": "1"
+        },
+        "return": {
+          "pid": "3551",
+          "elapsed": "7017",
+          "present": "1",
+          "state": "5",
+          "uvalid": "0"
+        },
+        "trace": "INJECT pid=3551 signal=15 suppress=0 result=0 delay=7000\nDELAY_RETURN pid=3551 elapsed=7017 present=1 state=5 uvalid=0\nQUEUE_BEFORE_RETURN pending=1\nQUEUE_CLOSE pending=0 error=0 injected=1\n"
+      },
+      "logout": {
+        "case": {
+          "case": "logout",
+          "uid": "1234",
+          "guard": "3535",
+          "worker": "3492",
+          "rc": "0",
+          "expected": "0",
+          "live": "0",
+          "expected_live": "0",
+          "sentinel": "1",
+          "sentinel_rc": "0",
+          "safe_cleanup": "1"
+        },
+        "guard": {
+          "pid": "3492",
+          "exit": "-1",
+          "signal": "15",
+          "stopped": "1",
+          "absent": "1",
+          "valid": "1",
+          "tracked": "1",
+          "remaining": "0",
+          "reason": "logout",
+          "uid": "1234",
+          "gid": "1234",
+          "elapsed": "7084"
+        },
+        "before": {
+          "pending": "1"
+        },
+        "close": {
+          "pending": "0",
+          "error": "0",
+          "injected": "1"
+        },
+        "return": {
+          "pid": "3492",
+          "elapsed": "7016",
+          "present": "1",
+          "state": "5",
+          "uvalid": "0"
+        },
+        "trace": "INJECT pid=3492 signal=15 suppress=0 result=0 delay=7000\nDELAY_RETURN pid=3492 elapsed=7016 present=1 state=5 uvalid=0\nQUEUE_BEFORE_RETURN pending=1\nQUEUE_CLOSE pending=0 error=0 injected=1\n"
+      },
+      "leader": {
+        "case": {
+          "case": "leader",
+          "uid": "1234",
+          "guard": "3534",
+          "worker": "3503",
+          "rc": "37",
+          "expected": "37",
+          "live": "0",
+          "expected_live": "0",
+          "sentinel": "1",
+          "sentinel_rc": "0",
+          "safe_cleanup": "1"
+        },
+        "guard": {
+          "pid": "6829",
+          "exit": "37",
+          "signal": "0",
+          "stopped": "1",
+          "absent": "1",
+          "valid": "1",
+          "tracked": "2",
+          "remaining": "0",
+          "reason": "leader-exit",
+          "uid": "1234",
+          "gid": "1234",
+          "elapsed": "7076"
+        },
+        "before": {
+          "pending": "1"
+        },
+        "close": {
+          "pending": "0",
+          "error": "0",
+          "injected": "1"
+        },
+        "return": {
+          "pid": "3503",
+          "elapsed": "7013",
+          "present": "0",
+          "state": "0",
+          "uvalid": "0"
+        },
+        "trace": "INJECT pid=3503 signal=15 suppress=0 result=0 delay=7000\nDELAY_RETURN pid=3503 elapsed=7013 present=0 state=0 uvalid=0\nQUEUE_BEFORE_RETURN pending=1\nQUEUE_CLOSE pending=0 error=0 injected=1\n"
+      }
+    },
+    "clean_shutdown": true,
+    "source_unchanged": true
+  },
+  "measured_false_failures": 5,
+  "corrected_scenarios": 7,
+  "negative_controls_rejected": [
+    "term.guard.valid",
+    "term.close.pending",
+    "live.case.live",
+    "leader.case.rc"
+  ],
+  "historical_compview_cause_resolved": false
+}
