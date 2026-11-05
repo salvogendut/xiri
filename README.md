@@ -12,7 +12,7 @@ catalog launches and running-icon feedback. Native NetBSD Xorg drives a
 1280×1024 accelerated Newport display. It retains the xmahjongg texture
 correction qualified by the earlier [rendering and interaction checks](docs/results/2026-11-03-newport-xmahjongg.md).
 
-The [current manual CHD](docs/results/2026-11-05-newport-text.md) boots into
+The [current manual CHD](docs/results/2026-11-05-type1-image.md) boots into
 native NetBSD xdm. Log in as **xiritest** with password **xiritest** for the
 IRIX desktop, or **netbsdtest** / **netbsdtest** for standard NetBSD ctwm.
 `netbsdtest` belongs to `wheel` and can run `su -` for a root login shell;
@@ -20,15 +20,15 @@ root's password is empty in this development image.
 These are public development-image credentials. The IRIX session uses UID
 1234 and HOME/cwd `/usr/people/xiritest`; system services start at boot. NetBSD
 loads `compat_irix_o32.kmod` during boot and runs the desktop on a kernel
-without built-in IRIX support. The retained [core kernel](lab/irix-xdm/README.md)
-also fixes a native memory-allocation fault found during CHD qualification.
+without built-in IRIX support. The [core kernel](lab/type1-scaler/README.md)
+retains the native memory-allocation and CD9660 corrections found during
+earlier qualification.
 It still requires our NetBSD fork’s core hooks. The [winterm module and shell
 handoff](lab/irix-winterm-reliability/README.md) preserve terminal dimensions,
 deliver resize notifications to foreground jobs and let winterm close normally
 when its shell exits.
-Terminal defaults now select NetBSD's existing bitmap Courier, restoring
-larger winterm text close to IRIX's original appearance while avoiding the
-intermittent collapsed metrics from Xorg's scalable IBM Courier face.
+Terminal defaults select NetBSD's existing bitmap Courier, restoring
+larger winterm text close to IRIX's original appearance.
 The [GIMP checkpoint](docs/results/2026-11-03-irix-gimp.md) now demonstrates
 original GIMP 1.2.5 editing, XCF/PNG save and reopen, normal exit and catalog
 launching as xiritest. Its additional resources and signal-mask module update
@@ -81,13 +81,21 @@ child-control stalls and catalog-batch halt remain separate open observations.
 
 The [font/menu cycle](docs/results/2026-11-05-newport-text.md) fixes Newport's
 software-fallback refresh, restoring disabled Toolchest labels and native
-Xft/Render text while preserving acceleration. The new selected CHD passes
+Xft/Render text while preserving acceleration. That image passes
 345 text comparisons across the greeter and both desktops, three winterm
 starts/resizes, both logout routes, catalog launching and clean shutdown.
-All six Toolchest menus and four cascades have readable labels. `./xiri run`
-selects this image, retaining the scheduler and CD9660 corrections; previous
-images and their manual state remain intact. The separate Type1 scaler issue
-remains open; explicit bitmap Courier avoids it for winterm.
+A separate replay shows readable labels in all six Toolchest menus and four
+cascades. These driver and font settings are retained in the Type1 image below.
+
+The [Type1 follow-up](docs/results/2026-11-05-type1-scaler.md) fixes native
+NetBSD MIPS floating-point state loss on signal return, which could turn a
+font size into zero. The corrected core passes all 24 native register cases,
+200,000 conversions under signals, 560 font operations and 24 IRIX FPU
+records. An explicit Type1 winterm passes input, resize and normal exit.
+The IRIX module, font libraries and bitmap desktop default are unchanged.
+The new selected CHD passes its own cold xdm/4Dwm/ctwm, 345 text comparisons,
+winterm, catalog, logout/recovery and clean-shutdown checks. `./xiri run` opens
+that image; the earlier fonts bundle and manual state are preserved.
 
 ## Related repositories
 
@@ -145,8 +153,8 @@ Use the `xiri` integration branches for both forks, following the
 
 ## Remaining work
 
-Compatibility is incomplete. The underlying Type1 font-metric failure remains
-open; winterm's default now uses a verified SGI bitmap face. Broader graphics operations,
+Compatibility is incomplete. The reproduced Type1 collapse is corrected;
+winterm keeps the verified NetBSD bitmap Courier default. Broader graphics operations,
 Dumpster actions, preferences and session persistence need work. The
 [GIMP checkpoint](docs/results/2026-11-03-irix-gimp.md) covers basic editing
 and XCF/PNG round trips; large images and the wider

@@ -62,7 +62,9 @@ preserve administrator configuration and write `.example` files.
 
 The explicit 20-pixel Courier bitmap gives winterm 11×20 cells and avoids the
 wildcard choosing scalable IBM Courier. This does not repair the separate,
-intermittent Type1 metric collapse. The imported SGI Screen face remains
+intermittent Type1 metric collapse. The later
+[native FPU correction](../../docs/results/2026-11-05-type1-scaler.md) addresses
+that cause while retaining this appearance profile. The imported SGI Screen face remains
 available. No additional IRIX font is installed: `compare-courier.py` compares
 the decompressed reference/native PCFs and records 188 identical glyphs,
 three punctuation differences and one additional native glyph. Its Latin-1

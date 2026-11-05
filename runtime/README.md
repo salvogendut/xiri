@@ -99,11 +99,13 @@ limit). Both original logout menus call the native request helper.
 NetBSD's existing 100dpi Adobe Courier Bold bitmap (11×20 winterm cells).
 This closely matches IRIX's XWsh request and avoids the wildcard resolving to
 scalable IBM Courier, whose intermittent 12×2 result was observed by both
-native and IRIX Xlib. The underlying Type1 issue remains open. The session merges
-these defaults below existing display resources, preserving an explicit user
-font choice. `xiri_xresources` in `session.conf` can select another resource
-file. Reinstallation preserves the administrator's file and updates its
-`.example`, just like the other configuration files.
+native and IRIX Xlib. The
+[native MIPS FPU correction](../docs/results/2026-11-05-type1-scaler.md)
+repairs that collapse; the bitmap remains the default for its closer IRIX
+appearance. The session merges these defaults below existing display resources,
+preserving an explicit user font choice. `xiri_xresources` in `session.conf`
+can select another resource file. Reinstallation preserves the administrator's
+file and updates its `.example`, just like the other configuration files.
 
 The native shell handoff preserves initialized PTY dimensions. The compatibility
 module translates the measured window-size ioctls, so foreground native jobs

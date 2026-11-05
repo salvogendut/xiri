@@ -42,6 +42,24 @@ not repin qualified kernels, emulator binaries, runtime resources or guest disks
 
 ## IRIS upstream updates
 
+The 2026-11-05 Type1 scaler investigation fetched upstream again at 07:08 UTC.
+Revision `3bcde9f702f0b52fdb296eeda4fe10b26555f3da` remains contained in
+IRIS `xiri` at `bd67e65ff159748635dd484adf7fac94a591f84b`.
+There are no new commits to integrate or affected emulator changes to build.
+Diagnostics use private copies of the qualified fonts image and the preserved
+2026-11-03 failure snapshot, retaining each artifact's pinned emulator.
+NetBSD `xiri` commit `3b25e6cf2251f180c89027d00b33ee1c29933517` corrects
+native MIPS FPU validity across signal/context restoration. The
+[Type1 qualification](results/2026-11-05-type1-scaler.md) passes native
+register/arithmetic/font controls, original IRIX FPU records and Type1
+winterm input/resize/exit. The independent system run passes CD, native
+input, both desktops, cleanup and active-desktop halt. The IRIX module is
+unchanged; [source equivalence](../lab/type1-scaler/source-equivalence.json)
+ties the exact pre-commit build and patch to the clean fork commit. The
+[new CHD](results/2026-11-05-type1-image.md) passes cold xdm/4Dwm/ctwm,
+winterm, fonts, catalog and clean shutdown before selection; older images
+and pinned worktrees remain intact.
+
 The 2026-11-05 fonts/Toolchest cycle fetched upstream again at 23:33 UTC
 on 2026-11-04. Revision `3bcde9f702f0b52fdb296eeda4fe10b26555f3da`
 remains contained in IRIS `xiri` at

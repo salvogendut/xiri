@@ -76,5 +76,9 @@ current fixture fails and reaps its child when the delay is unsupported.
 Its original-system observations used the archived pre-guard source. The
 qualified raw signal controls cover child exit handling, not full stop/continue
 parity. The font collapse later reproduced in both native and original Xlib
-on Xorg's scalable IBM Courier face. The existing SGI Screen bitmap stays
-at 8×15 in that same session and is now the configurable terminal default.
+on Xorg's scalable IBM Courier face. SGI Screen stayed at 8×15 in that failing
+session; the later appearance cycle selected NetBSD bitmap Courier at 11×20.
+The [Type1 follow-up](../../docs/results/2026-11-05-type1-scaler.md) now fixes
+native MIPS signal-return FPU state loss. Explicit scalable Courier then
+passes 12×21 metrics, input, foreground resize and normal exit; the desktop
+keeps its bitmap default for its closer IRIX appearance.

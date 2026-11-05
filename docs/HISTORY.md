@@ -5,6 +5,17 @@ status statements describe individual checkpoints and may be superseded by
 later entries. Use the [current README](../README.md), [development guide](DEVELOPMENT.md)
 and [selected image](../lab/irix-installed-desktop/image.json) for current work.
 
+The [2026-11-05 Type1 cycle](results/2026-11-05-type1-scaler.md) isolates the
+remaining collapsed Courier metrics to native MIPS FPU validity loss during
+signal return. The core correction passes 24 register cases, 200,000
+conversions under signals, 560 font operations, 24 IRIX FPU records and an
+explicit Type1 winterm input/resize/exit check. The unchanged IRIX module,
+font libraries and bitmap desktop default remain in place. This supersedes
+the Type1 limitation in the preceding font/menu checkpoint below. The
+[replacement image](results/2026-11-05-type1-image.md) passes cold desktop,
+winterm, native text, catalog and shutdown checks and becomes the selected
+manual bundle; earlier images and their manual state remain available.
+
 The [2026-11-05 font/menu cycle](results/2026-11-05-newport-text.md) reproduces
 blank disabled Toolchest labels and native Xft/Render text as missing Newport
 shadow-buffer refresh in XAA software fallbacks. The corrected xsrc driver

@@ -1,6 +1,6 @@
 # Xiri proposed architecture
 
-Status: updated 2026-11-04. The original IRIX 6.5.22m desktop runs on
+Status: updated 2026-11-05. The original IRIX 6.5.22m desktop runs on
 native accelerated Newport Xorg, including winterm with a native shell,
 catalog launches, running-icon feedback, backdrop and desktop icons. The
 IRIX personality now boot-loads as a module on our NetBSD fork. Native
@@ -16,6 +16,11 @@ discipline. A foreign session leader can acquire its native PTY slave on
 open, subject to native ownership checks and `O_NOCTTY`. Serial hardware,
 other line disciplines and general STREAMS support remain incomplete;
 these changes require no new core-kernel hook.
+The [Type1 finding](results/2026-11-05-type1-scaler.md) adds a native MIPS
+FPU signal-return correction to the core kernel. It preserves supplied
+floating-point state across lazy reload and repairs zero-size font requests
+from native X servers. The IRIX module, fonts and X libraries are unchanged;
+this platform correction cannot be supplied by the IRIX module alone.
 The [execution roadmap](ROADMAP.md) tracks remaining application, desktop
 and deployment work.
 
@@ -320,9 +325,11 @@ Terminal font defaults belong to the native session resources. Both native
 and IRIX Xlib observed Xorg's scalable IBM Courier face collapse to 12×2
 metrics, while bitmap faces remain stable. The session now selects NetBSD's
 100dpi Adobe Courier Bold bitmap explicitly (11×20 winterm cells), loading
-`/etc/xiri/Xresources` below the login's existing resource values. This avoids
-the scalable face without changing the foreign binary; the Type1 defect
-remains open. No additional vendor font is imported.
+`/etc/xiri/Xresources` below the login's existing resource values. The
+[native FPU correction](results/2026-11-05-type1-scaler.md) repairs the
+scalable face's signal-induced collapse without changing the foreign binary
+or font libraries. The bitmap remains the default for its closer IRIX
+appearance. No additional vendor font is imported.
 
 The separate [Newport text correction](results/2026-11-05-newport-text.md)
 belongs to the native Xorg userspace driver in NetBSD xsrc. `ShadowFBInit2`

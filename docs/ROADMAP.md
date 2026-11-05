@@ -31,8 +31,9 @@ original-IRIX/NetBSD checks pass 248 ioctl observations and 24 child-exit
 signal/frame controls. Foreground resize and normal terminal exit now work;
 the intermittent font collapse now reproduces in both native and IRIX Xlib
 against Xorg's scalable IBM Courier face. A session resource default selects
-the existing SGI Screen bitmap font. Follow-ups are the native Type1 metric
-failure, continued-child notification parity, IRIX nanosleep, broader job control and
+the existing SGI Screen bitmap font; later font cycles below select bitmap
+Courier and fix the native Type1 cause. Follow-ups are continued-child
+notification parity, IRIX nanosleep, broader job control and
 broader terminal workloads. The extended font
 diagnostic also captured repeated characters during XTest input; investigate
 that separately without attributing it to concurrency before a controlled
@@ -120,25 +121,37 @@ The selected replacement passes 60 native query-loop controls, six complete
 Acrobat sequences, GNOME Terminal, CD9660 and both-user session/shutdown gates;
 a separate reduced replay passes 60 capture/focus cycles. Keep the original
 failures, fixture exclusions and normal shell-zombie observation distinct.
-Native child-control stalls, the earlier catalog halt and Type1 metrics
-remain open system work.
+Native child-control stalls and the earlier catalog halt remain open system
+work. The Type1 cause is addressed by the later cycle below.
 
 The [2026-11-05 font/menu cycle](results/2026-11-05-newport-text.md) reproduces
 blank disabled Toolchest labels and native Xft/Render glyphs as a Newport
 software-fallback refresh failure. The corrected xsrc driver passes all
 69 native text cases and the existing texture regression with XAA enabled.
 Explicit NetBSD bitmap Courier restores larger winterm text close to IRIX's
-original appearance, without importing another font. The separate scalable
-Type1 metric collapse remains open. The new selected image passes cold xdm,
+original appearance, without importing another font. That cycle retained the
+separate scalable Type1 failure. Its image passes cold xdm,
 both users, three winterm starts/resizes, 345 text comparisons, catalog launch
 and clean halt. A separate menu replay shows all 93 labels in the six top
 menus and four cascades, including 41 disabled labels. The preceding scheduler
 image and manual state remain preserved.
 
+The [Type1 follow-up](results/2026-11-05-type1-scaler.md) now fixes native
+MIPS signal-return FPU state loss. All sixteen signal cases fail on the old
+core and pass with the correction, alongside eight no-signal controls.
+The corrected core also passes 200,000 arithmetic conversions, 560 font
+operations, 24 original IRIX FPU records and an explicit Type1 winterm
+input/resize/exit check. The IRIX module, font libraries and bitmap desktop
+default remain unchanged. Other scalable faces, native n64 and physical
+hardware remain separate qualification work. The
+[replacement CHD](results/2026-11-05-type1-image.md) now passes cold xdm,
+both desktops, 345 text comparisons, winterm, catalog and clean halt, and is
+selected for manual testing. The preceding fonts image and state are retained.
+
 Other shared-system candidates are common IRIX filesystem/timing/job-control
 interfaces and general
 deployment beyond the current test account and custom core hooks. Select the
-following cycle from measured impact after the font/menu results. Keep NEdit file
+following cycle from measured impact after the font/menu and FPU results. Keep NEdit file
 creation and the missing Lynx/Midnight Commander payloads queued for the later
 application pass. Keep Acrobat's
 wrapper execution feedback, broader PDF use and print/browser integration
@@ -326,7 +339,8 @@ Decision gate: if the display or desktop exposes a major feasibility obstacle, d
 - [x] Measure and implement the [bounded process subset](results/2026-11-01-irix-process.md): fork/getpid, traditional signal masks and positive-child exit waits, with independent native identity/mask/COW/file-offset and process-group cleanup checks. Original xwsh reaches child execve after opening its slave.
 - [x] Run a native interactive shell through [original winterm/xwsh](results/2026-11-01-irix-shell.md), with paired descriptor/session/exec probes, real keyboard input, a PNG and bounded descendant cleanup.
 - [x] Qualify [winterm resize and normal terminal exit](results/2026-11-03-winterm-reliability.md), including measured NOCLDSTOP child-exit handlers, preserved nondefault dimensions and foreground SIGWINCH delivery.
-- [ ] Complete broader shell/job-control behavior, continued-child notification parity and IRIX nanosleep. Investigate the native Type1 font-metric failure; terminal defaults now use the verified SGI bitmap face. General layered-tty revoke remains open.
+- [x] Correct the reproduced [native Type1 collapse](results/2026-11-05-type1-scaler.md) through MIPS FPU signal-return preservation, with independent register, font and original winterm controls.
+- [ ] Complete broader shell/job-control behavior, continued-child notification parity and IRIX nanosleep. General layered-tty revoke remains open; terminal defaults retain the verified NetBSD bitmap Courier face.
 - [x] Qualify the [4 KiB data mapping extension](results/2026-11-01-irix-elfmap-subpage.md): 750 mapping/limit checks; original 4Dwm passes its previous library boundary.
 - [x] Resolve [4Dwm’s fixed/local GL mapping](results/2026-11-01-irix-mmap-local.md): 660 cases, 30 controls and 32 native page-zero checks.
 - [x] Provide [measured PRDA process data](results/2026-11-01-irix-prda.md): 80 executions / 180 records, fork COW/PID updates, exec reset, damaged-state policy and native-exec controls.

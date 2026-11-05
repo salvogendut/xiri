@@ -1,0 +1,18 @@
+diff --git a/sys/arch/mips/mips/mips_fpu.c b/sys/arch/mips/mips/mips_fpu.c
+index 37f980304cb..533ba46434c 100644
+--- a/sys/arch/mips/mips/mips_fpu.c
++++ b/sys/arch/mips/mips/mips_fpu.c
+@@ -58,7 +58,12 @@ const pcu_ops_t mips_fpu_ops = {
+ void
+ fpu_discard(lwp_t *l)
+ {
+-	pcu_discard(&mips_fpu_ops, l, false);
++	/*
++	 * Callers replace pcb_fpregs after discarding the live register state.
++	 * Keep that replacement valid: otherwise the next COP1 trap zeros
++	 * it as a first-use context instead of restoring the supplied state.
++	 */
++	pcu_discard(&mips_fpu_ops, l, true);
+ }
+ 
+ void

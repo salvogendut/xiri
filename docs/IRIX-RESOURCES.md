@@ -70,8 +70,11 @@ IBM Courier face. Native and original Xlib both observe its intermittent
 collapse from 12×21 to 12×2 logical extents. The imported SGI Screen bitmap
 face stays at 8×15 on that same failing X server. The native session's
 `/etc/xiri/Xresources` initially selected that exact face for terminal text;
-the Courier update above supersedes it while preserving user choices. The underlying Type1 failure
-remains open; it is not an absent IRIX font or a foreign-only metric failure.
+the Courier update above supersedes it while preserving user choices. The
+[Type1 follow-up](results/2026-11-05-type1-scaler.md) traces the collapse to
+native MIPS FPU state loss on signal return and fixes it in the core kernel.
+It requires no additional fonts or replacement X libraries; the bitmap
+appearance profile remains unchanged.
 
 The immediate application path now imports already installed software from
 the supplied disk image. The [installed-desktop inventory](results/2026-11-01-irix-installed-desktop.md)

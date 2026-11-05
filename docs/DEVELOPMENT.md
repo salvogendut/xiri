@@ -237,3 +237,13 @@ The font gate checks native core/Xft pixels and Courier metrics at the greeter,
 three IRIX logins and native ctwm. Review the saved Toolchest menus separately
 for visual completeness; a capture alone does not establish a working action.
 `./xiri check` selects these additional checks from the new font-profile metadata.
+
+The [Type1/FPU fixtures](../lab/type1-scaler/README.md) exercise the native
+kernel separately from bitmap desktop acceptance. They compare all native
+o32 floating-point registers across signals, run arithmetic under SIGALRM,
+trace fresh Type1 sizes in Xvfb and measure actual pixmap glyphs. The known
+baseline register failure must be observed before accepting the corrected
+core. `qualify-type1-scaler.py` revalidates the retained comparison and
+original-IRIX/winterm controls. Its source-equivalence ledger preserves the
+actual pre-commit build revision and patch. Use `lab/type1-scaler/baseline.json`
+with `.work/netbsd-fpu-build` when preparing that kernel's replacement image.

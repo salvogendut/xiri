@@ -144,7 +144,7 @@ def qualify(a, verify_irix_module):
             dimensions=[1282,1024],method='IRIS ordinary GL scanout',byte_identical=True)
         if 'terminal_font' in r:
             report['terminal_font'] = r['terminal_font']
-            report['limitations'][0] = 'The explicit Courier bitmap avoids the reproduced scalable Type1 metric collapse; the Type1 defect remains open.'
+            report['limitations'][0] = 'Winterm uses explicit bitmap Courier; these desktop checks do not qualify scalable Type1 metrics. See the matching kernel qualification.'
             report['limitations'][3] = 'Native core and Xft/Render text pass with the Newport software-fallback correction; arbitrary Render operators and physical hardware are unqualified.'
         elif '/etc/xiri/Xresources' in r['installed_files']:
             report['terminal_font']=dict(resource='/etc/xiri/Xresources',

@@ -1,0 +1,112 @@
+/* Native o32 signal-return control; preserve the C caller's saved FPRs. */
+#include <sys/syscall.h>
+.set noreorder
+.set mips3
+.text
+.globl native_fpu_roundtrip
+.ent native_fpu_roundtrip
+native_fpu_roundtrip:
+    .frame $sp,80,$ra
+    addiu $sp,$sp,-80
+    sw $s0,64($sp)
+    move $s0,$a1
+    cfc1 $t0,$31
+    cfc1 $t0,$31
+    sw $t0,68($sp)
+    sdc1 $f20,16($sp)
+    sdc1 $f22,24($sp)
+    sdc1 $f24,32($sp)
+    sdc1 $f26,40($sp)
+    sdc1 $f28,48($sp)
+    sdc1 $f30,56($sp)
+    lwc1 $f0,0($a0)
+    lwc1 $f1,4($a0)
+    lwc1 $f2,8($a0)
+    lwc1 $f3,12($a0)
+    lwc1 $f4,16($a0)
+    lwc1 $f5,20($a0)
+    lwc1 $f6,24($a0)
+    lwc1 $f7,28($a0)
+    lwc1 $f8,32($a0)
+    lwc1 $f9,36($a0)
+    lwc1 $f10,40($a0)
+    lwc1 $f11,44($a0)
+    lwc1 $f12,48($a0)
+    lwc1 $f13,52($a0)
+    lwc1 $f14,56($a0)
+    lwc1 $f15,60($a0)
+    lwc1 $f16,64($a0)
+    lwc1 $f17,68($a0)
+    lwc1 $f18,72($a0)
+    lwc1 $f19,76($a0)
+    lwc1 $f20,80($a0)
+    lwc1 $f21,84($a0)
+    lwc1 $f22,88($a0)
+    lwc1 $f23,92($a0)
+    lwc1 $f24,96($a0)
+    lwc1 $f25,100($a0)
+    lwc1 $f26,104($a0)
+    lwc1 $f27,108($a0)
+    lwc1 $f28,112($a0)
+    lwc1 $f29,116($a0)
+    lwc1 $f30,120($a0)
+    lwc1 $f31,124($a0)
+    ctc1 $a3,$31
+    nop
+    nop
+    bltz $a2,1f
+    li $v0,SYS_getpid
+    move $a0,$a2
+    lw $a1,96($sp)
+    li $v0,SYS_kill
+1:
+    syscall
+    nop
+    swc1 $f0,0($s0)
+    swc1 $f1,4($s0)
+    swc1 $f2,8($s0)
+    swc1 $f3,12($s0)
+    swc1 $f4,16($s0)
+    swc1 $f5,20($s0)
+    swc1 $f6,24($s0)
+    swc1 $f7,28($s0)
+    swc1 $f8,32($s0)
+    swc1 $f9,36($s0)
+    swc1 $f10,40($s0)
+    swc1 $f11,44($s0)
+    swc1 $f12,48($s0)
+    swc1 $f13,52($s0)
+    swc1 $f14,56($s0)
+    swc1 $f15,60($s0)
+    swc1 $f16,64($s0)
+    swc1 $f17,68($s0)
+    swc1 $f18,72($s0)
+    swc1 $f19,76($s0)
+    swc1 $f20,80($s0)
+    swc1 $f21,84($s0)
+    swc1 $f22,88($s0)
+    swc1 $f23,92($s0)
+    swc1 $f24,96($s0)
+    swc1 $f25,100($s0)
+    swc1 $f26,104($s0)
+    swc1 $f27,108($s0)
+    swc1 $f28,112($s0)
+    swc1 $f29,116($s0)
+    swc1 $f30,120($s0)
+    swc1 $f31,124($s0)
+    cfc1 $t0,$31
+    cfc1 $t0,$31
+    sw $t0,128($s0)
+    ldc1 $f20,16($sp)
+    ldc1 $f22,24($sp)
+    ldc1 $f24,32($sp)
+    ldc1 $f26,40($sp)
+    ldc1 $f28,48($sp)
+    ldc1 $f30,56($sp)
+    lw $t0,68($sp)
+    lw $s0,64($sp)
+    ctc1 $t0,$31
+    move $v0,$a3
+    jr $ra
+    addiu $sp,$sp,80
+.end native_fpu_roundtrip

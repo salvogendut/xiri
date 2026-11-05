@@ -57,8 +57,9 @@ Suggested manual checks:
 Terminal defaults use NetBSD's existing 100dpi Adobe Courier Bold bitmap
 font (11x20 winterm cells), selected explicitly to match the IRIX XWsh request.
 /etc/xiri/Xresources supplies these defaults below existing display resources.
-Known limits: Xorg's scalable IBM Courier face can return collapsed 12x2
-metrics to native and IRIX clients; that underlying Type1 failure remains open.
+Scalable IBM Courier has separate native FPU/Type1 qualification; the bitmap
+desktop checks alone do not establish scalable-font correctness. Consult the
+matching kernel report, especially when running an older image.
 Window resizing and normal shell exit are covered by the new checks.
 Winterm uses NetBSD /bin/sh; original IRIX /bin/sh
 handles catalog command launches. Application support depends on the module

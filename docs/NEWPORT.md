@@ -99,10 +99,12 @@ previously measured 12×21. The imported SGI Screen bitmap remained 8×15 on
 that failing server. The new default explicitly selects NetBSD's existing
 100dpi Adobe Courier Bold bitmap, giving winterm 11×20 cells close to IRIX's
 original appearance. Of 191 reference glyphs, 188 match bitmap/metrics exactly;
-three punctuation glyphs differ. No additional vendor font is imported. The precise
-Type1/scaling/cache cause remains unlocalized; this is not evidence that the
-Newport drawing driver caused it. Retain native/foreign client controls and
-keep that intermittent Type1 defect separate from the corrected drawing path.
+three punctuation glyphs differ. No additional vendor font is imported. The
+[Type1 follow-up](results/2026-11-05-type1-scaler.md) now traces the collapse to
+native MIPS signal return discarding floating-point register validity. The
+corrected core passes native register, font-churn and original winterm checks
+with the same font libraries and Newport driver. The bitmap default remains
+for its closer IRIX appearance; the scaler fix belongs in the native kernel.
 
 Xdm explicitly uses the same `1280x1024` mode and `Virtual 1280 1024` as the
 qualified manual launcher. The pinned IRIS scanout captures are 1282×1024
@@ -125,8 +127,8 @@ root such as 1024×768 must fail xdm qualification. Do not rely on bare
    elapsed time and explicit X synchronization. Record CPU use and display
    configuration; use equivalent hardware/frontend settings for IRIX.
 5. Extend accelerated coverage to other Render operators and the remaining
-   depth-32 plane-mask failure. Isolate the native Type1 font-metric failure,
-   then profile remaining compatibility or frontend costs. Do not assume
+   depth-32 plane-mask failure. With the reproduced Type1 cause corrected,
+   profile remaining compatibility or frontend costs. Do not assume
    every delay originates in the kernel driver.
 
 Continue desktop behavior work alongside measured graphics performance. Icon

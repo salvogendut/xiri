@@ -8,18 +8,25 @@ older reproduction checkpoints. Automated checks never promote their result
 or replace the manual bundle's NVRAM/overlay state.
 
 The current accelerated xdm bundle is
-`.work/images/xiri-netbsd-desktop-20261105-fonts/`.
-`netbsd-xiri.chd` is an 8 GiB NetBSD disk compressed to 496,147,337 bytes
+`.work/images/xiri-netbsd-desktop-20261105-type1/`.
+`netbsd-xiri.chd` is an 8 GiB NetBSD disk compressed to 496,147,647 bytes
 (about 473 MiB). Its SHA256 is
-`f8572195a17a2cb6f67e7d77d9b5334226a1f0900a0f2159a2c8a8805f2ae4d5`.
-The [font/menu update](results/2026-11-05-newport-text.md) restores disabled
-Toolchest labels and native Xft/Render glyphs with a corrected Newport driver,
-while keeping XAA enabled. Winterm uses the existing NetBSD bitmap Courier
-with 11×20 cells. Cold qualification covers 345 text comparisons, both users,
-three untouched winterm starts/resizes, both logout routes, recovery, catalog
-launch and clean halt. A separate replay verifies all six top menus and four
-cascades. The earlier `20261104-scheduler` bundle and its manual state remain
-intact; its kernel, module, emulator and imported payload are retained.
+`bedf6db0e46559817366a5e5ba6b9886d5aaf197cc63e3da06cc590d6d0d5350`.
+The [Type1 update](results/2026-11-05-type1-image.md) replaces the native
+kernel to preserve MIPS floating-point registers across signal return.
+Only `/netbsd` and `/netbsd.boot` change in the installed-file inventory.
+The IRIX module, fonts, libraries, resources, service helpers, account layout
+and accelerated Newport driver are retained. Cold CHD qualification covers
+345 text comparisons, both users, three untouched winterm starts/resizes,
+both logout routes, recovery, catalog launch and clean halt. The focused
+[scalable-font qualification](results/2026-11-05-type1-scaler.md) separately
+checks native FPU restoration, Type1 size requests and original winterm.
+
+The preceding [font/menu update](results/2026-11-05-newport-text.md) restores
+disabled Toolchest labels and native Xft/Render glyphs with the corrected
+Newport fallback path, keeping XAA enabled. Its visual replay verifies six
+top menus and four cascades. The `20261105-fonts` and `20261104-scheduler`
+bundles, including their manual overlays and NVRAM, remain available.
 The [scheduling update](results/2026-11-04-xorg-scheduling.md) includes the
 qualified native CD9660 core correction and selects Xorg's round-robin
 scheduler in xdm and the manual launcher. It passes disk round-trip,
@@ -91,18 +98,21 @@ directory views. Full Dumpster operations and launch animation remain open.
 
 ## Current xdm image
 
-The core kernel remains byte-identical to NetBSD `xiri` commit
-`9390bc04900`, including the [UVM allocation fix](results/2026-11-03-uvm-pglist.md)
-found during CHD qualification. The replacement module's sources match commit
-`2ca3d76a4384`; it is built against that same kernel. The personality boot-loads
-as `exec / filesys` at normal securelevel 1. The [Acrobat build pins](../lab/irix-acrobat/build.json)
-retain the original build provenance and committed-source equivalence;
-the Xiri fork hooks are still required.
+The core kernel matches NetBSD `xiri` commit
+`3b25e6cf2251f180c89027d00b33ee1c29933517`. It retains the
+[UVM allocation](results/2026-11-03-uvm-pglist.md) and
+[CD9660 ABI](results/2026-11-04-system-stability.md) corrections and adds
+[native FPU signal restoration](results/2026-11-05-type1-scaler.md).
+The unchanged IRIX personality boot-loads as `exec / filesys` at normal
+securelevel 1. The [build ledger](../lab/type1-scaler/build.json) retains its
+actual pre-commit provenance; the
+[source-equivalence record](../lab/type1-scaler/source-equivalence.json)
+verifies the later committed inputs. The Xiri fork hooks are still required.
 
 Launch the qualified bundle directly:
 
 ```sh
-/var/home/salvogendut/Dev/xiri/.work/images/xiri-netbsd-desktop-20261105-fonts/run-iris.sh
+/var/home/salvogendut/Dev/xiri/.work/images/xiri-netbsd-desktop-20261105-type1/run-iris.sh
 ```
 
 It boots automatically to native NetBSD xdm. Use these public development
@@ -123,19 +133,20 @@ selected only by xiritest's `.xsession`; FAM still serves that one configured
 IRIX account. Root has no password and remains available on serial B for
 administration. The ttyE0 getty is disabled so xdm owns the graphical keyboard.
 
-The fresh [image qualification](results/2026-11-05-newport-text-image.json) covers three IRIX
+The fresh [image qualification](results/2026-11-05-type1-image.json) covers three IRIX
 logins, a separate native ctwm login, both IRIX logout routes, failed-startup
 recovery, catalog launch, full-screen acceleration and clean halt. PNGs show
-[4Dwm](results/images/2026-11-05-newport-text-image.png),
-[ctwm](results/images/2026-11-05-newport-text-image-native.png), the
-[greeter](results/images/2026-11-05-newport-text-image-greeter.png) and
-[winterm before any test resize](results/images/2026-11-05-newport-text-image-winterm.png).
+[4Dwm](results/images/2026-11-05-type1-image.png),
+[ctwm](results/images/2026-11-05-type1-image-native.png), the
+[greeter](results/images/2026-11-05-type1-image-greeter.png) and
+[winterm before any test resize](results/images/2026-11-05-type1-image-winterm.png).
 Each IRIX login checks untouched terminal geometry and foreground SIGWINCH
 delivery; an extra 100×30 terminal preserves its size and closes on typed
 `exit`. Terminal defaults explicitly select NetBSD's 100dpi Adobe Courier
-Bold bitmap with 11×20 winterm cells. The intermittent Type1 metric failure
-remains open; the bitmap avoids it. The greeter now uses normal Xft settings
-with the corrected Newport fallback path. Native core/Xft text and Courier
+Bold bitmap with 11×20 winterm cells. The Type1 collapse is fixed by the
+native FPU correction; the bitmap remains for its closer IRIX appearance.
+The greeter now uses normal Xft settings with the corrected Newport fallback
+path. Native core/Xft text and Courier
 metrics pass in all five test contexts: greeter, three IRIX logins and ctwm.
 The [menu record](results/2026-11-05-newport-menus.json) and its PNGs verify
 label rendering separately from individual command functionality.
@@ -146,7 +157,7 @@ it does not qualify its Quit menu.
 bundle. The explicit command is:
 
 ```sh
-python3 scripts/probe-xiri-xdm.py --bundle .work/images/xiri-netbsd-desktop-20261105-fonts --winterm --fonts
+python3 scripts/probe-xiri-xdm.py --bundle .work/images/xiri-netbsd-desktop-20261105-type1 --winterm --fonts
 ```
 
 For root's manual fallback, stop xdm with `/etc/rc.d/xdm stop`, then run
@@ -520,9 +531,9 @@ warning while reaching the native shell prompt. The winterm cycle fixes the
 observed window left open after typed `exit` and propagates terminal resize
 to foreground jobs. An earlier repeated desktop start captured an intermittent
 xwsh SIGFPE before its window appeared; that failed run and core are retained
-in the icon result. The unusually short terminal is now reproduced as a native
-Xorg Type1 font-metric failure. Terminal defaults explicitly select NetBSD's
-100dpi Adobe Courier bitmap; the Type1 root cause remains open. Session supervision removes
+in the icon result. The unusually short Type1 terminal was traced to native
+MIPS FPU state loss and is corrected by the current kernel. Terminal defaults
+retain NetBSD's 100dpi Adobe Courier bitmap. Session supervision removes
 remaining clients at logout.
 
 
