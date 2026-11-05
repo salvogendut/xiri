@@ -1,5 +1,4 @@
 ! Keep NetBSD's greeter layout, translations and branding.
 #include "/etc/X11/xdm/Xresources"
-! The current accelerated Newport Render text path drops Xft glyphs.
-! Software Xft text restores labels without disabling XAA or X Render.
-Xft.render: false
+! Accelerated Newport needs the software-fallback fix in lab/newport-text.
+! With that driver, use NetBSD's normal Xft/Render selection.

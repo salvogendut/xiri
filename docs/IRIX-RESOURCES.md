@@ -55,14 +55,22 @@ helpers. Locate and hash the relevant package trees before copying them.
 Missing XSGIvc/ReadDisplay interfaces and audio/video prerequisites remain
 interface or hardware work; additional files alone do not qualify those tools.
 
+The [2026-11-05 font/menu cycle](results/2026-11-05-newport-text.md) imports
+no additional vendor resources. Toolchest's original menu and app-defaults
+match the supplied IRIX 6.5.22m image byte for byte; its missing disabled
+labels are a native Newport drawing failure. Winterm now explicitly requests
+the existing NetBSD 100dpi Adobe Courier Bold bitmap. Read-only comparison
+with IRIX's `courB14.pcf.Z` finds 188 identical glyphs and three punctuation
+differences; the reference file is retained only as local comparison evidence.
+
 The [winterm reliability cycle](results/2026-11-03-winterm-reliability.md)
 reuses the existing libraries, locale data and fonts; it imports no new desktop
 resources. The supplied XWsh wildcard default can select NetBSD's scalable
 IBM Courier face. Native and original Xlib both observe its intermittent
 collapse from 12×21 to 12×2 logical extents. The imported SGI Screen bitmap
 face stays at 8×15 on that same failing X server. The native session's
-`/etc/xiri/Xresources` now selects that exact face for terminal text, while
-preserving existing display resource choices. The underlying Type1 failure
+`/etc/xiri/Xresources` initially selected that exact face for terminal text;
+the Courier update above supersedes it while preserving user choices. The underlying Type1 failure
 remains open; it is not an absent IRIX font or a foreign-only metric failure.
 
 The immediate application path now imports already installed software from

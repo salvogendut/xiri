@@ -6,6 +6,7 @@ import struct
 
 from . import ROOT, sha256
 from .xdm_image import support_files
+from .fonts import verify as verify_fonts
 
 
 def verify_sessions(r):
@@ -61,11 +62,24 @@ def verify_sessions(r):
                 'RESIZED rows=21 cols=66 SIGWINCH=1']
             assert re.search(r'rows=24 cols=(78|80)\b',entry['handoff'])
             if '/etc/xiri/Xresources' in r['installed_files']:
-                assert 'resize increment: 8 by 15' in entry['initial_hints']
+                cell = r.get('terminal_font', {}).get('cell', [8, 15])
+                assert f'resize increment: {cell[0]} by {cell[1]}' in entry['initial_hints']
         extra=r['winterm'][0]
         assert re.search(r'rows=30 cols=(98|100)\b',extra['extra_handoff'])
         assert extra['normal_exit']['process_gone'] and extra['normal_exit']['window_gone']
         assert not extra['exit_stderr']
+    if 'terminal_font' in r:
+        profile = json.loads((ROOT/'lab/newport-text/font-profile.json').read_text())
+        assert r['terminal_font'] == profile
+        for path, digest in [(profile['resource'], profile['resource_sha256']),
+                             (profile['greeter_resource'], profile['greeter_resource_sha256']),
+                             (profile['native_file'], profile['native_file_sha256']),
+                             ('/usr/X11R7/lib/modules/drivers/newport_drv.so', profile['newport_module_sha256'])]:
+            assert r['installed_files'][path] == digest
+        assert len(r.get('winterm', [])) == 3
+        assert set(r.get('font_checks', {})) == {'greeter', 'irix-1', 'irix-2', 'irix-3', 'native'}
+    for entry in r.get('font_checks', {}).values():
+        verify_fonts(entry)
 
 
 def qualify(a, verify_irix_module):
@@ -128,12 +142,27 @@ def qualify(a, verify_irix_module):
         shutil.copyfile(frame,target)
         report['screenshots']['winterm-untouched']=dict(path=str(target),sha256=sha256(target),source=str(frame),
             dimensions=[1282,1024],method='IRIS ordinary GL scanout',byte_identical=True)
-        if '/etc/xiri/Xresources' in r['installed_files']:
+        if 'terminal_font' in r:
+            report['terminal_font'] = r['terminal_font']
+            report['limitations'][0] = 'The explicit Courier bitmap avoids the reproduced scalable Type1 metric collapse; the Type1 defect remains open.'
+            report['limitations'][3] = 'Native core and Xft/Render text pass with the Newport software-fallback correction; arbitrary Render operators and physical hardware are unqualified.'
+        elif '/etc/xiri/Xresources' in r['installed_files']:
             report['terminal_font']=dict(resource='/etc/xiri/Xresources',
                 face='-sgi-screen-medium-r-normal--15-150-72-72-m-80-iso8859-1',cell=[8,15])
             report['limitations'][0]='The SGI Screen bitmap default avoids the reproduced Type1 font collapse; the native Type1 metric defect remains open.'
         else:
             report['limitations'][0]='Three untouched winterm starts, resizing and normal exit pass; this image retains the wildcard font choice and its intermittent collapse remains possible.'
+    if 'menu_captures' in r:
+        assert set(r['menu_captures']) == {'desktop', 'selected', 'internet', 'find',
+            'system', 'help', 'access-files', 'shared-resources', 'customize', 'utilities'}
+        report['menu_captures'] = {}
+        for name, entry in r['menu_captures'].items():
+            frame = a.run/entry['path']
+            assert sha256(frame) == entry['sha256']
+            assert struct.unpack('>II', frame.read_bytes()[16:24]) == (720, 620)
+            report['menu_captures'][name] = dict(path=str(frame), sha256=sha256(frame),
+                dimensions=[720, 620],
+                method='IRIS ordinary GL scanout; capture integrity only; visual review is separate')
     a.output.parent.mkdir(parents=True,exist_ok=True)
     a.output.write_text(json.dumps(report,indent=2)+'\n')
     if a.promote or a.record_bundle:

@@ -1,5 +1,5 @@
-! Use the imported SGI bitmap face for terminal text. The wildcard Courier
-! default can select a Type1 face that intermittently returns 12x2 metrics
-! from the current Xorg server. Existing display resources take precedence.
-winterm*font: -sgi-screen-medium-r-normal--15-150-72-72-m-80-iso8859-1
-XWsh*font: -sgi-screen-medium-r-normal--15-150-72-72-m-80-iso8859-1
+! Select NetBSD's 100dpi bitmap Courier explicitly. It matches the original
+! XWsh request without the earlier wildcard selecting a scalable Type1 face
+! with intermittent collapsed metrics. Existing display resources win.
+winterm*font: -adobe-courier-bold-r-normal--20-140-100-100-m-110-iso8859-1
+XWsh*font: -adobe-courier-bold-r-normal--20-140-100-100-m-110-iso8859-1

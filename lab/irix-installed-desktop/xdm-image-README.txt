@@ -20,8 +20,9 @@ Root has no password in this development image.
 Only xiritest selects the Xiri .xsession; the system Xsession/PAM stay native.
 FAM still supports one configured IRIX desktop account, not multiple users.
 Xorg uses the full 1280x1024 accelerated Newport configuration. The pinned
-emulator scanout adds two right-hand columns. A greeter-only Xft resource
-workaround restores text while preserving XAA and the Render extension.
+emulator scanout adds two right-hand columns. The Newport driver refreshes
+software text fallbacks while preserving XAA and the Render extension;
+xdm uses NetBSD's normal Xft settings.
 
 IRIX Log Out through Toolchest or the desktop right-click menu returns to xdm.
 For the root menu, hold the right button, move to Log Out and release.
@@ -43,6 +44,8 @@ Keep the included kernel and module together; they still require our fork.
 Suggested manual checks:
 - Log in as xiritest. In winterm run id -un, echo "$HOME" and pwd.
 - Open Unix Shell from Toolchest and try a second terminal.
+- Inspect the grey disabled labels in Toolchest menus and the Courier font
+  in winterm. A readable menu entry does not certify its application.
 - Run stty size, resize the terminal, and run stty size again. Dimensions
   should follow the visible character grid. Type exit in the extra terminal;
   its window should close without ending the desktop.
@@ -51,7 +54,8 @@ Suggested manual checks:
 - Log out through both IRIX menus, logging in again between checks.
 - Log in as netbsdtest, use the native terminal/ctwm, then return to xiritest.
 
-Terminal defaults use the imported SGI Screen bitmap font (8x15 cells).
+Terminal defaults use NetBSD's existing 100dpi Adobe Courier Bold bitmap
+font (11x20 winterm cells), selected explicitly to match the IRIX XWsh request.
 /etc/xiri/Xresources supplies these defaults below existing display resources.
 Known limits: Xorg's scalable IBM Courier face can return collapsed 12x2
 metrics to native and IRIX clients; that underlying Type1 failure remains open.

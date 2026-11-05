@@ -318,10 +318,18 @@ notification parity and the observed n32 libc nanosleep call remain open.
 
 Terminal font defaults belong to the native session resources. Both native
 and IRIX Xlib observed Xorg's scalable IBM Courier face collapse to 12×2
-metrics, while the imported SGI Screen bitmap remained 8×15. The session
-loads `/etc/xiri/Xresources` below the login's existing resource values.
-This avoids that face for default terminal text without changing the foreign
-binary or treating the native Type1 failure as a compatibility-module defect.
+metrics, while bitmap faces remain stable. The session now selects NetBSD's
+100dpi Adobe Courier Bold bitmap explicitly (11×20 winterm cells), loading
+`/etc/xiri/Xresources` below the login's existing resource values. This avoids
+the scalable face without changing the foreign binary; the Type1 defect
+remains open. No additional vendor font is imported.
+
+The separate [Newport text correction](results/2026-11-05-newport-text.md)
+belongs to the native Xorg userspace driver in NetBSD xsrc. `ShadowFBInit2`
+below XAA synchronizes software fallbacks with hardware, restoring disabled
+Toolchest labels and native Xft/Render glyphs. The pinned source and patch
+live in `lab/newport-text`; the kernel, compatibility module and IRIS are
+unchanged by this repair.
 
 Keep the IRIX runtime in a distinct tree while making selected user files available consistently to native and compatible processes. The path policy must cover absolute library paths, executable lookup, temporary files, user identities, and desktop configuration.
 

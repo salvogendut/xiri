@@ -8,10 +8,18 @@ older reproduction checkpoints. Automated checks never promote their result
 or replace the manual bundle's NVRAM/overlay state.
 
 The current accelerated xdm bundle is
-`.work/images/xiri-netbsd-desktop-20261104-scheduler/`.
-`netbsd-xiri.chd` is an 8 GiB NetBSD disk compressed to 496,124,430 bytes
+`.work/images/xiri-netbsd-desktop-20261105-fonts/`.
+`netbsd-xiri.chd` is an 8 GiB NetBSD disk compressed to 496,147,337 bytes
 (about 473 MiB). Its SHA256 is
-`b6e5c89ef897f441e0c8cfbb5f174a23f082383414c8fb64105500c971992d36`.
+`f8572195a17a2cb6f67e7d77d9b5334226a1f0900a0f2159a2c8a8805f2ae4d5`.
+The [font/menu update](results/2026-11-05-newport-text.md) restores disabled
+Toolchest labels and native Xft/Render glyphs with a corrected Newport driver,
+while keeping XAA enabled. Winterm uses the existing NetBSD bitmap Courier
+with 11×20 cells. Cold qualification covers 345 text comparisons, both users,
+three untouched winterm starts/resizes, both logout routes, recovery, catalog
+launch and clean halt. A separate replay verifies all six top menus and four
+cascades. The earlier `20261104-scheduler` bundle and its manual state remain
+intact; its kernel, module, emulator and imported payload are retained.
 The [scheduling update](results/2026-11-04-xorg-scheduling.md) includes the
 qualified native CD9660 core correction and selects Xorg's round-robin
 scheduler in xdm and the manual launcher. It passes disk round-trip,
@@ -94,7 +102,7 @@ the Xiri fork hooks are still required.
 Launch the qualified bundle directly:
 
 ```sh
-/var/home/salvogendut/Dev/xiri/.work/images/xiri-netbsd-desktop-20261104-scheduler/run-iris.sh
+/var/home/salvogendut/Dev/xiri/.work/images/xiri-netbsd-desktop-20261105-fonts/run-iris.sh
 ```
 
 It boots automatically to native NetBSD xdm. Use these public development
@@ -115,26 +123,30 @@ selected only by xiritest's `.xsession`; FAM still serves that one configured
 IRIX account. Root has no password and remains available on serial B for
 administration. The ttyE0 getty is disabled so xdm owns the graphical keyboard.
 
-The fresh [image qualification](results/2026-11-04-irix-acrobat-image.json) covers three IRIX
+The fresh [image qualification](results/2026-11-05-newport-text-image.json) covers three IRIX
 logins, a separate native ctwm login, both IRIX logout routes, failed-startup
 recovery, catalog launch, full-screen acceleration and clean halt. PNGs show
-[4Dwm](results/images/2026-11-04-irix-acrobat-image.png),
-[ctwm](results/images/2026-11-04-irix-acrobat-image-native.png), the
-[greeter](results/images/2026-11-04-irix-acrobat-image-greeter.png) and
-[winterm before any test resize](results/images/2026-11-04-irix-acrobat-image-winterm.png).
+[4Dwm](results/images/2026-11-05-newport-text-image.png),
+[ctwm](results/images/2026-11-05-newport-text-image-native.png), the
+[greeter](results/images/2026-11-05-newport-text-image-greeter.png) and
+[winterm before any test resize](results/images/2026-11-05-newport-text-image-winterm.png).
 Each IRIX login checks untouched terminal geometry and foreground SIGWINCH
 delivery; an extra 100×30 terminal preserves its size and closes on typed
-`exit`. Terminal defaults select the imported SGI Screen bitmap font with
-8×15 cells. The underlying intermittent Type1 font-metric failure remains
-open, as does the greeter's Xft Render workaround.
+`exit`. Terminal defaults explicitly select NetBSD's 100dpi Adobe Courier
+Bold bitmap with 11×20 winterm cells. The intermittent Type1 metric failure
+remains open; the bitmap avoids it. The greeter now uses normal Xft settings
+with the corrected Newport fallback path. Native core/Xft text and Courier
+metrics pass in all five test contexts: greeter, three IRIX logins and ctwm.
+The [menu record](results/2026-11-05-newport-menus.json) and its PNGs verify
+label rendering separately from individual command functionality.
 The native logout test ends ctwm from its own terminal;
 it does not qualify its Quit menu.
 
-`./xiri check` automatically includes these winterm checks for the selected
+`./xiri check` automatically includes these winterm and font checks for the selected
 bundle. The explicit command is:
 
 ```sh
-python3 scripts/probe-xiri-xdm.py --bundle .work/images/xiri-netbsd-desktop-20261104-scheduler --winterm
+python3 scripts/probe-xiri-xdm.py --bundle .work/images/xiri-netbsd-desktop-20261105-fonts --winterm --fonts
 ```
 
 For root's manual fallback, stop xdm with `/etc/rc.d/xdm stop`, then run
@@ -509,8 +521,8 @@ observed window left open after typed `exit` and propagates terminal resize
 to foreground jobs. An earlier repeated desktop start captured an intermittent
 xwsh SIGFPE before its window appeared; that failed run and core are retained
 in the icon result. The unusually short terminal is now reproduced as a native
-Xorg Type1 font-metric failure. Terminal defaults select the existing SGI Screen
-bitmap face; the Type1 root cause remains open. Session supervision removes
+Xorg Type1 font-metric failure. Terminal defaults explicitly select NetBSD's
+100dpi Adobe Courier bitmap; the Type1 root cause remains open. Session supervision removes
 remaining clients at logout.
 
 

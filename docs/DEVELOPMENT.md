@@ -224,3 +224,16 @@ passwords. The native account must already exist. A frozen profile under
 xdm record and requires both login paths. The bundle's build PROM profiles and
 manual overlays remain intact. `./xiri check` performs the same dispatch from
 the selected manifest and never promotes an observation by itself.
+
+For the [font/menu driver update](../lab/newport-text/README.md), prepare
+the pinned xsrc source and build the driver natively against the image's Xorg
+SDK. Pass `--newport-driver PATH --refresh-font-resources --keep-accounts`
+to image preparation. It verifies the existing payload, stops Xorg before
+installing the driver and explicitly adopts the matching Courier/xdm resources;
+normal runtime installation still preserves administrator files. This imports
+no additional IRIX fonts. Build into a new bundle and run
+`probe-xiri-xdm.py --bundle NEW_BUNDLE --winterm --fonts` before promotion.
+The font gate checks native core/Xft pixels and Courier metrics at the greeter,
+three IRIX logins and native ctwm. Review the saved Toolchest menus separately
+for visual completeness; a capture alone does not establish a working action.
+`./xiri check` selects these additional checks from the new font-profile metadata.

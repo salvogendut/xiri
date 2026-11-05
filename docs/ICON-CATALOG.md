@@ -13,6 +13,13 @@ Click the stacked page edges at the bottom-right of Icon Catalog to open the
 [menu of all pages](results/images/2026-11-03-irix-catalog-pages.png), including
 those whose tabs do not fit along the bottom.
 
+The [2026-11-05 shared text repair](results/2026-11-05-newport-text.md)
+restores native Newport software-fallback drawing, including disabled labels
+and Xft/Render glyphs. Repeat previously blank UI observations on that driver
+when application work resumes; this repair alone does not upgrade any entry
+below to a functional pass. Missing Fontconfig or GNOME print resources remain
+separate from Xorg's drawing path.
+
 The original GIMP CHD survey ran as **xiritest**, UID/GID 1234, HOME and cwd
 `/usr/people/xiritest`, with accelerated 1280×1024 NetBSD Xorg. There were
 **124 distinct direct program-target attempts**; repeated targets share the

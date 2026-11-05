@@ -42,6 +42,18 @@ not repin qualified kernels, emulator binaries, runtime resources or guest disks
 
 ## IRIS upstream updates
 
+The 2026-11-05 fonts/Toolchest cycle fetched upstream again at 23:33 UTC
+on 2026-11-04. Revision `3bcde9f702f0b52fdb296eeda4fe10b26555f3da`
+remains contained in IRIS `xiri` at
+`bd67e65ff159748635dd484adf7fac94a591f84b`; no integration or affected
+emulator rebuild is required. Diagnostics start from a disposable clone of
+the qualified scheduler image, retaining its `819c682` emulator and NetBSD
+`xiri` source `0cd56e7a286c4cd3d67ab7cc971b233a83ac1655`.
+The [qualified replacement image](results/2026-11-05-newport-text.md) retains
+those kernel/module and emulator pins. Its change is in the xsrc userspace
+Newport driver, tracked under `lab/newport-text`; no fork source was changed.
+Native controls, cold xdm/4Dwm/ctwm, menu review and clean shutdown pass.
+
 The 2026-11-04 XTest investigation fetched
 `https://github.com/techomancer/iris.git` at 21:45 UTC. Upstream remains
 `3bcde9f702f0b52fdb296eeda4fe10b26555f3da`, already contained in IRIS `xiri`

@@ -1,0 +1,194 @@
+{
+  "schema": 1,
+  "status": "menu-labels-visually-reviewed",
+  "run": ".work/fonts-menus/ordinary-8eb62sxl",
+  "bundle": ".work/images/xiri-netbsd-desktop-20261105-fonts",
+  "chd_sha256": "f8572195a17a2cb6f67e7d77d9b5334226a1f0900a0f2159a2c8a8805f2ae4d5",
+  "driver_sha256": "0fcd56d2ce8785a4c702afa58bf8921862d8307b737e293430c95b9113f7a08f",
+  "pin": {
+    "schema": 1,
+    "description": "Native NetBSD32 CD9660 ownership/mask correction with the unchanged cumulative IRIX desktop module",
+    "ident": "XIRI_IRIX_MODULE_20261103",
+    "source_revision": "0cd56e7a286c4cd3d67ab7cc971b233a83ac1655",
+    "source_branch": "xiri",
+    "build_arch": "mips64eb",
+    "page_bytes": 8192,
+    "boot_kernel_sha256": "61a6f8dd16ec8ac092f54ddafbd895d45086e1b905310ae28136bbadb3f1984b",
+    "native_kernel_sha256": "5cbf43d2656fb6eefce3f487e0ba9c994e5104e7ae9908d7e158f49bb732c8b4",
+    "debug_kernel_sha256": "d24bbcbcb3af2b1e68c49e2e8a6b1fcdcda2323675bd87ab0463e7b577b2467f",
+    "native_o32_sha256": "c294fbb1f2110445be31c096481ea54ab561c7e59ca5b9fc7171310098d755d4",
+    "source_dirty": false,
+    "emulator_revision": "819c6825504d40ad9f9aa00554249affd2da9446",
+    "emulator_branch": "xiri",
+    "emulator_sha256": "3dd9299d71f1899ff5a8c9b76f6a24752d19e4f9a0bcfe0edf3a29001dc9c49e",
+    "ci_client_sha256": "2543b1fae0b442516c40c9d9155eebc9f9569561146b4f62948171fe7eb5c7f3",
+    "base_disk_sha256": "2d19c840bcc5d5e5d424a5f12b4def72b9e8681e6b9e172b22bd51943bf7bb82",
+    "nvram_sha256": "025e170feb9adcfbfa55a745ba2d976fd0ba0f3d39967d7f52622d6ad54c2ef5",
+    "config_sha256": "b4b1d27b1d8e80ec31b07f9f98e0ca1da8a1793cb90880bbc1e65a4b169c8fe2",
+    "runtimes": [
+      {
+        "name": "vendor-o32-libc",
+        "path": "/usr/lib/libc.so.1",
+        "sha256": "ea766492103a193e9d404942705e4e28987545e37f699ede232b6c0f8c97c954"
+      },
+      {
+        "name": "vendor-o32-rld",
+        "path": "/lib/rld",
+        "sha256": "30228b54c1e5585b365514eb7c9895b03cc0f61cb898e05e3ddafece87863439"
+      },
+      {
+        "name": "vendor-n32-libc",
+        "path": "/lib32/libc.so.1",
+        "sha256": "38c7424498abda279fb6a9e0c68bb76e41442bcc16e8d86a299506595feb5e1e"
+      },
+      {
+        "name": "vendor-n32-rld",
+        "path": "/lib32/rld",
+        "sha256": "836db794ddabbcb7f05f81c4feca51bcea0ab3526ceedc67511b6b2f3689cc0b"
+      }
+    ],
+    "config_path": "lab/irix-module/XIRI_IRIX_MODULE",
+    "committed_source_revision": "0cd56e7a286c4cd3d67ab7cc971b233a83ac1655",
+    "module_build_manifest": "lab/system-stability/build.json",
+    "module_build_manifest_sha256": "c5cc652089ea785bb81ad3a2455fa6f35d7680f2af02eb70467e55140e9035c1",
+    "module_source_equivalent_commit": "0cd56e7a286c4cd3d67ab7cc971b233a83ac1655"
+  },
+  "input_result_sha256": "27790c5453f8853d37031fb4118e998ef1e55617e21e9dda41e339efff002e01",
+  "menu_check_sha256": "5d3c6e6f5e0f9f49d18e6801831af31a9ce295b7d4e0037f6c6d40c60d1dd4fc",
+  "harness_sha256": "3d0580499e09a79b482d1d15f74df5131270a76d9a054c17b01b626bcdb644ca",
+  "display": "  dimensions:    1280x1024 pixels (339x271 millimeters)\n",
+  "source": {
+    "path": "scripts/xiri_lab/fonts.py",
+    "sha256": "1fb8635293ebf4ec0dc113638e9fe9de0f2a896ba50e1364e25d6f7f21444476"
+  },
+  "cold_probe_source_snapshot": {
+    "path": "scripts/xiri_lab/fonts.py",
+    "sha256": "b3ae3b24a54cd5273d7d6773f1523bdb6cde08bc94561cfaca5668d1cb0f7ba2",
+    "text": "\"\"\"Pixel and metric controls for native text on the accelerated desktop.\"\"\"\nfrom collections import Counter\nimport itertools\nimport re\nimport shlex\nimport time\n\nfrom . import sha256\n\nFACE = '-adobe-courier-bold-r-normal--20-140-100-100-m-110-iso8859-1'\n\n\ndef verify(entry):\n    output = entry['output']\n    text = re.findall(r'^TEXT clip=(\\d) style=(\\d) ascent=(\\d+) descent=(\\d+) '\n                      r'window_ink=(\\d+) pixmap_ink=(\\d+) mismatch=(\\d+)$', output, re.M)\n    assert len(text) == 45\n    expected = Counter((clip, style, ascent, descent)\n        for clip, style, (ascent, descent) in itertools.product(\n            range(3), range(5), [(11, 2), (13, 3), (13, 5)]))\n    assert Counter(tuple(map(int, row[:4])) for row in text) == expected\n    assert all(int(row[4]) > 0 and row[4] == row[5] and row[6] == '0' for row in text)\n    xft = re.findall(r'^XFT clip=(\\d) render=(\\d) aa=(\\d) color=(\\d) actual=(\\d),(\\d) '\n                     r'ascent=\\d+ descent=\\d+ window_ink=(\\d+) pixmap_ink=(\\d+) '\n                     r'mismatch=(\\d+) max_delta=(\\d+) file=.+$', output, re.M)\n    assert len(xft) == 24\n    assert {tuple(map(int, row[:4])) for row in xft} == set(itertools.product(range(3), range(2), range(2), range(2)))\n    assert all(row[1:3] == row[4:6] and int(row[6]) > 0 and row[6] == row[7]\n               and row[8:] == ('0', '0') for row in xft)\n    assert output.count('TEXT_PASS mismatches=0') == 3 and output.count('XFT_PASS failures=0') == 1\n    metrics = entry['metrics']\n    assert re.findall(r'^SET repeat=(\\d) count=1 missing=0 width=44 ', metrics, re.M) == list('012345')\n    assert metrics.count('FONT '+FACE+' ascent=13 descent=5 width=11,11 glyph=15,5') == 6\n\n\ndef compile(guest):\n    guest.command('for name in text-pixels font-metrics; do '\n        'cc -O2 -Wall -Wextra -Werror -I/usr/X11R7/include \"$name.c\" '\n        '-L/usr/X11R7/lib -Wl,-rpath,/usr/X11R7/lib -lX11 -o \"$name\" || exit; done; '\n        'cc -O2 -Wall -Wextra -Werror -I/usr/X11R7/include -I/usr/X11R7/include/freetype2 '\n        'xft-pixels.c -L/usr/X11R7/lib -Wl,-rpath,/usr/X11R7/lib -lXft -lX11 -lfontconfig -o xft-pixels', 180)\n\n\ndef check(guest, directory, record, label):\n    log = 'fonts-'+label+'.log'\n    guest.command('{ ./text-pixels && ./text-pixels \"-adobe-helvetica-bold-o-normal--14-*\" '\n        '&& ./text-pixels '+shlex.quote(FACE)+' && ./xft-pixels; } >'+log+' 2>&1', 120)\n    entry = dict(output=guest.read_text('cat '+log),\n                 metrics=guest.read_text('./font-metrics '+shlex.quote(FACE)),\n                 pixel_checks=69*300*60)\n    (directory/log).write_text(entry['output'])\n    verify(entry)\n    record.setdefault('font_checks', {})[label] = entry\n    print(label+': 69 native text cases and six Courier metric cycles passed', flush=True)\n\n\ndef capture_menus(guest, directory, record):\n    if 'menu_captures' in record:\n        return\n    # Keep the terminal away from Help and drive real pointer motion. A\n    # screenshot of an obscured main button is not evidence of its menu.\n    guest.command('./place winterm 350 280 903 480')\n    captures = {}\n    cases = [('desktop', 40, None), ('selected', 66, None),\n             ('internet', 92, None), ('find', 118, None),\n             ('system', 144, None), ('help', 170, None),\n             ('access-files', 40, 42), ('shared-resources', 40, 64),\n             ('customize', 40, 86), ('utilities', 144, 324)]\n    for name, top, row in cases:\n        guest.monitor('ptr click 55 '+str(top))\n        time.sleep(1)\n        if row is not None:\n            guest.monitor('ptr move 250 '+str(row))\n            time.sleep(2)\n        path = directory/('toolchest-'+name+'.png')\n        guest.monitor('screen shot '+str(path)+' 0 0 720 620')\n        captures[name] = dict(path=path.name, sha256=sha256(path))\n        guest.monitor('key Escape')\n        if row is not None:\n            guest.monitor('key Escape')\n    record['menu_captures'] = captures\n    print('Toolchest menu captures saved for visual review', flush=True)\n"
+  },
+  "observations": {
+    "top_menus": 6,
+    "cascades": 4,
+    "visible_labels": 93,
+    "disabled_labels": 41,
+    "reference": "Original IRIX 6.5.22m system.chestrc; Selected and catalog page entries are dynamic",
+    "review": "All ten menu captures reviewed; eight final menu rectangles also match the earlier visually reviewed frames pixel for pixel"
+  },
+  "screenshots": {
+    "desktop": {
+      "path": "docs/results/images/2026-11-05-newport-menu-desktop.png",
+      "sha256": "c232e24031655b080d4c64e2c62f127695350154b4b69434312b5bfebc02704e",
+      "source": ".work/fonts-menus/ordinary-8eb62sxl/toolchest-desktop.png",
+      "byte_identical": true,
+      "visible_labels": 10,
+      "disabled_labels": 5,
+      "menu_open": true,
+      "review": "Visual review; no unlabeled command rows observed; separators excluded"
+    },
+    "selected": {
+      "path": "docs/results/images/2026-11-05-newport-menu-selected.png",
+      "sha256": "a570e3cb151de6cf6e3633b64d5ca41069bb20dda6d5c0d4d8175b2c401d638d",
+      "source": ".work/fonts-menus/ordinary-8eb62sxl/toolchest-selected.png",
+      "byte_identical": true,
+      "visible_labels": 13,
+      "disabled_labels": 9,
+      "menu_open": true,
+      "review": "Visual review; no unlabeled command rows observed; separators excluded"
+    },
+    "internet": {
+      "path": "docs/results/images/2026-11-05-newport-menu-internet.png",
+      "sha256": "a778f29506366455b2bd4fa5d307ea2e5098e05ccc55c50c1be0d59767e68d13",
+      "source": ".work/fonts-menus/ordinary-8eb62sxl/toolchest-internet.png",
+      "byte_identical": true,
+      "visible_labels": 5,
+      "disabled_labels": 2,
+      "menu_open": true,
+      "review": "Visual review; no unlabeled command rows observed; separators excluded"
+    },
+    "find": {
+      "path": "docs/results/images/2026-11-05-newport-menu-find.png",
+      "sha256": "64d10474ce8709995abdbe62cf15e9737e72e3e0601cd962fb526809bc814f76",
+      "source": ".work/fonts-menus/ordinary-8eb62sxl/toolchest-find.png",
+      "byte_identical": true,
+      "visible_labels": 23,
+      "disabled_labels": 4,
+      "menu_open": true,
+      "review": "Visual review; no unlabeled command rows observed; separators excluded"
+    },
+    "system": {
+      "path": "docs/results/images/2026-11-05-newport-menu-system.png",
+      "sha256": "5b388b8a9e85f7cde00dafc386b2628af24a267901b0e1e00990d3fc69b9a0c1",
+      "source": ".work/fonts-menus/ordinary-8eb62sxl/toolchest-system.png",
+      "byte_identical": true,
+      "visible_labels": 11,
+      "disabled_labels": 5,
+      "menu_open": true,
+      "review": "Visual review; no unlabeled command rows observed; separators excluded"
+    },
+    "help": {
+      "path": "docs/results/images/2026-11-05-newport-menu-help.png",
+      "sha256": "fc091dc680b80825e63c3a5c525304b5a96615ff90e5ed46c3f88fdc0fc7cbc5",
+      "source": ".work/fonts-menus/ordinary-8eb62sxl/toolchest-help.png",
+      "byte_identical": true,
+      "visible_labels": 7,
+      "disabled_labels": 4,
+      "menu_open": true,
+      "review": "Visual review; no unlabeled command rows observed; separators excluded"
+    },
+    "access-files": {
+      "path": "docs/results/images/2026-11-05-newport-menu-access-files.png",
+      "sha256": "ab68e3641344c8276ed80915b5d704071bf9ee0aa1fde385802fd3811788dd9c",
+      "source": ".work/fonts-menus/ordinary-8eb62sxl/toolchest-access-files.png",
+      "byte_identical": true,
+      "visible_labels": 4,
+      "disabled_labels": 3,
+      "menu_open": true,
+      "review": "Visual review; no unlabeled command rows observed; separators excluded"
+    },
+    "shared-resources": {
+      "path": "docs/results/images/2026-11-05-newport-menu-shared-resources.png",
+      "sha256": "27076d73dff4748274ab82629c53e96a018b72bf334c4f316f5007ffcde958ad",
+      "source": ".work/fonts-menus/ordinary-8eb62sxl/toolchest-shared-resources.png",
+      "byte_identical": true,
+      "visible_labels": 2,
+      "disabled_labels": 2,
+      "menu_open": true,
+      "review": "Visual review; no unlabeled command rows observed; separators excluded"
+    },
+    "customize": {
+      "path": "docs/results/images/2026-11-05-newport-menu-customize.png",
+      "sha256": "31350c0a4267e760d1bd8258ed666744afceecaec22c1eb74dae5e0836a029cb",
+      "source": ".work/fonts-menus/ordinary-8eb62sxl/toolchest-customize.png",
+      "byte_identical": true,
+      "visible_labels": 14,
+      "disabled_labels": 3,
+      "menu_open": true,
+      "review": "Visual review; no unlabeled command rows observed; separators excluded"
+    },
+    "utilities": {
+      "path": "docs/results/images/2026-11-05-newport-menu-utilities.png",
+      "sha256": "1096a8b6089db3ef9c094ac3b8139bfb3c82392533cef2fb3fbaab9ceec71059",
+      "source": ".work/fonts-menus/ordinary-8eb62sxl/toolchest-utilities.png",
+      "byte_identical": true,
+      "visible_labels": 4,
+      "disabled_labels": 4,
+      "menu_open": true,
+      "review": "Visual review; no unlabeled command rows observed; separators excluded"
+    }
+  },
+  "clean_shutdown": true,
+  "source_unchanged": true,
+  "shutdown_log": "[   1.0000000] Copyright (c) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,\n[   1.0000000]     2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013,\n[   1.0000000]     2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023,\n[   1.0000000]     2024, 2025, 2026\n[   1.0000000]     The NetBSD Foundation, Inc.  All rights reserved.\n[   1.0000000] Copyright (c) 1982, 1986, 1989, 1991, 1993\n[   1.0000000]     The Regents of the University of California.  All rights reserved.\n\n[   1.0000000] NetBSD 11.99.9 (XIRI_IRIX_MODULE_20261103) #1: Wed Nov  4 18:42:42 UTC 2026\n[   1.0000000] \tsalvogendut@toolbx:/var/home/salvogendut/Dev/xiri/.work/netbsd-stability-build/obj/sys/arch/sgimips/compile/XIRI_IRIX_MODULE\n[   1.0000000] total memory = 255 MB\n[   1.0000000] (768 KB reserved for ARCS)\n[   1.0000000] avail memory = 244 MB\n[   1.0000000] timecounter: Timecounters tick every 10.000 msec\n[   1.0000000] mainbus0 (root): SGI-IP22 [SGI, 69123457], 1 processor\n[   1.0000000] cpu0 at mainbus0: MIPS R4400 CPU (0x440) Rev. 4.0 with MIPS R4010 FPC Rev. 0.0\n[   1.0000000] cpu0: 48 TLB entries, 1TB (40-bit) VAs, 4KB (12-bit) PAs, 16MB max page size\n[   1.0000000] cpu0: 16KB/16B direct-mapped L1 instruction cache\n[   1.0000000] cpu0: 16KB/16B direct-mapped write-back L1 data cache\n[   1.0000000] cpu0: 1024KB/128B direct-mapped write-back L2 unified cache\n[   1.0000000] int0 at mainbus0 addr 0x1fbd9880\n[   1.0000000] int0: bus 33MHz, CPU 66MHz\n[   1.0000000] imc0 at mainbus0 addr 0x1fa00000: revision 3\n[   1.0000000] gio0 at imc0\n[   1.0000000] newport0 at gio0: SGI NG1 (board revision 0, cmap revision 2, xmap revision 3, vc2 revision 0), depth 24, monitor ID 10 (1280x1024 60Hz)\n[   1.0000000] newport0: 13W3 Monitor ID 10, PROM ID -1, determined monitor ID 10 (1280x1024 60Hz)\n[   1.0000000] wsdisplay0 at newport0 kbdmux 1: console (default, vt100 emulation)\n[   1.0000000] wsmux1: connecting to wsdisplay0\n[   1.0000000] hpc0 at gio0: SGI HPC3 (onboard)\n[   1.0000000] zsc0 at hpc0 offset 0x59830\n[   1.0000000] zstty0 at zsc0 channel 1\n[   1.0000000] zstty1 at zsc0 channel 0\n[   1.0000000] pckbc0 at hpc0 offset 0x59840\n[   1.0000000] pckbd0 at pckbc0 (kbd slot)\n[   1.0000000] wskbd0 at pckbd0: console keyboard, using wsdisplay0\n[   1.0000000] pms0 at pckbc0 (aux slot)\n[   1.0000000] wsmouse0 at pms0 mux 0\n[   1.0000000] sq0 at hpc0 offset 0x54000: SGI Seeq 80c03\n[   1.0000000] sq0: Ethernet address 08:00:69:12:34:57\n[   1.0000000] wdsc0 at hpc0 offset 0x44000: WD33C93A (20.0 MHz clock, BURST DMA, SCSI ID 0)\n[   1.0000000] scsibus0 at wdsc0: 8 targets, 8 luns per target\n[   1.0000000] haltwo at hpc0 offset 0x58000 not configured\n[   1.0000000] pi1ppc0 at hpc0 offset 0x59800\n[   1.0000000] pi1ppc0: capabilities=0x8<PS2>\n[   1.0000000] ppbus0 at pi1ppc0\n[   1.0000000] ppbus0: No IEEE1284 device found.\n[   1.0000000] button0 at hpc0 offset 0x59850\n[   1.0000000] hpc1 at gio0: SGI HPC3 (IOPLUS mezzanine)\n[   1.0000000] hpc1: using EXP0's DMA channel\n[   1.0000000] sq at hpc1 offset 0x54000 not configured\n[   1.0000000] hpc2 at gio0: SGI HPC1.5 (GIO slot)\n[   1.0000000] dsclock0 at mainbus0 addr 0x1fbe0000\n[   1.0000000] ioc0 at mainbus0 addr 0x1fbd9800: rev 0, machine Indy (Guinness), board rev 0\n[   1.0000000] WARNING: system needs entropy for security; see entropy(7)\n[   1.0000000] timecounter: Timecounter \"mips3_cp0_counter\" frequency 33000000 Hz quality 100\n[   1.0000030] timecounter: Timecounter \"clockinterrupt\" frequency 100 Hz quality 0\n[   1.0000030] scsibus0: waiting 2 seconds for devices to settle...\n[   3.0637502] sd0 at scsibus0 target 1 lun 0: <SGI, IRIS EMUL DISK, 1.0> disk fixed\n[   3.1148202] sd0: 8192 MB, 16645 cyl, 16 head, 62 sec, 512 bytes/sect x 16777216 sectors\n[   3.2346945] sd0: async, 8-bit transfers\n[   3.2977283] cd0 at scsibus0 target 4 lun 0: <Sony, CDU-76S, 1.0> cdrom removable\n[   3.3604806] cd0: async, 8-bit transfers\n[   3.4263419] boot device: sd0\n[   3.4919365] root on sd0a dumps on sd0b\n[   3.5660488] kern.module.path=/stand/sgimips/11.99.9/modules\n[   4.8109547] entropy: best effort\n[ 511.7463945] syncing disks... done\n[ 511.8250620] unmounting file systems...\n[ 511.8836291] unmounted /dev/cd0a on /cdrom type cd9660\n[ 511.8836291] unmounted ptyfs on /dev/pts type ptyfs\n[ 511.8836291] unmounted procfs on /proc type procfs\n[ 511.8836291] unmounted kernfs on /kern type kernfs\n[ 512.8436348] unmounted /dev/sd0a on / type ffs\n[ 512.8436348] unmounting done\n[ 512.8974843] halting...\n\n",
+  "exclusions": [
+    "Exploratory Help capture was obscured by winterm; it was not Help-menu evidence.",
+    "Hover-only cascade captures in the exploratory and cold xdm runs show parent menus, not opened cascades.",
+    "The first click replay captured Selected before Internet/Find had updated; attempt-1 is retained locally and excluded.",
+    "Final replay clicks cascade entries, allows redraw time and waits for the framebuffer before capture."
+  ],
+  "limitations": [
+    "Readability and navigation do not qualify menu actions or enable unavailable applications.",
+    "No exhaustive original-IRIX enabled/disabled-state parity is claimed.",
+    "Window placement was adjusted to keep Help visible during the menu checks."
+  ],
+  "native_pixel_metric_code_unchanged": true
+}

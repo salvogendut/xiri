@@ -12,7 +12,7 @@ catalog launches and running-icon feedback. Native NetBSD Xorg drives a
 1280×1024 accelerated Newport display. It retains the xmahjongg texture
 correction qualified by the earlier [rendering and interaction checks](docs/results/2026-11-03-newport-xmahjongg.md).
 
-The [current manual CHD](docs/results/2026-11-04-xorg-scheduling.md) boots into
+The [current manual CHD](docs/results/2026-11-05-newport-text.md) boots into
 native NetBSD xdm. Log in as **xiritest** with password **xiritest** for the
 IRIX desktop, or **netbsdtest** / **netbsdtest** for standard NetBSD ctwm.
 `netbsdtest` belongs to `wheel` and can run `su -` for a root login shell;
@@ -26,8 +26,9 @@ It still requires our NetBSD fork’s core hooks. The [winterm module and shell
 handoff](lab/irix-winterm-reliability/README.md) preserve terminal dimensions,
 deliver resize notifications to foreground jobs and let winterm close normally
 when its shell exits.
-Terminal defaults now select the imported SGI Screen bitmap font, avoiding
-the reproduced collapsed metrics from Xorg's scalable IBM Courier face.
+Terminal defaults now select NetBSD's existing bitmap Courier, restoring
+larger winterm text close to IRIX's original appearance while avoiding the
+intermittent collapsed metrics from Xorg's scalable IBM Courier face.
 The [GIMP checkpoint](docs/results/2026-11-03-irix-gimp.md) now demonstrates
 original GIMP 1.2.5 editing, XCF/PNG save and reopen, normal exit and catalog
 launching as xiritest. Its additional resources and signal-mask module update
@@ -72,14 +73,21 @@ ordinary users. The corrected core passes 158 CD ABI checks; the IRIX module
 is unchanged. The [Xorg scheduling investigation](docs/results/2026-11-04-xorg-scheduling.md)
 then identifies a ready delayed-button release starved by a higher-priority
 pointer-query client. Both desktop launchers select the legacy server's
-round-robin scheduler while retaining XAA. The new selected CHD passes 60
+round-robin scheduler while retaining XAA. The scheduler CHD passes 60
 native query-loop controls, six complete Acrobat launch/PDF/focus/exit cycles,
 GNOME Terminal checks, full-screen xdm, both desktops and clean shutdown.
-The separate reduced replay passes 60 capture/focus cycles. `./xiri run`
-now selects this image, including the CD9660 correction; previous images and
-their manual state remain intact. The earlier child-control stalls and
-catalog-batch halt remain separate open observations. Native fonts and blank
-Toolchest menu entries are the next system work.
+The separate reduced replay passes 60 capture/focus cycles. The earlier
+child-control stalls and catalog-batch halt remain separate open observations.
+
+The [font/menu cycle](docs/results/2026-11-05-newport-text.md) fixes Newport's
+software-fallback refresh, restoring disabled Toolchest labels and native
+Xft/Render text while preserving acceleration. The new selected CHD passes
+345 text comparisons across the greeter and both desktops, three winterm
+starts/resizes, both logout routes, catalog launching and clean shutdown.
+All six Toolchest menus and four cascades have readable labels. `./xiri run`
+selects this image, retaining the scheduler and CD9660 corrections; previous
+images and their manual state remain intact. The separate Type1 scaler issue
+remains open; explicit bitmap Courier avoids it for winterm.
 
 ## Related repositories
 

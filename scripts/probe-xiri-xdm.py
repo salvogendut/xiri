@@ -26,6 +26,7 @@ def main():
     parser.add_argument('--bundle', type=Path, help='cold-boot this CHD and test its installed xdm runtime')
     parser.add_argument('--debug-failure', action='store_true')
     parser.add_argument('--winterm', action='store_true', help='check untouched startup, foreground resize and normal terminal exit')
+    parser.add_argument('--fonts', action='store_true', help='compare native core/Xft pixels and Courier metrics in both desktops')
     args = parser.parse_args()
     seed = args.seed.resolve()
     if args.bundle:
@@ -66,6 +67,12 @@ def main():
     sources['scripts/xiri_lab/xdm_image.py'] = sha256(ROOT/'scripts/xiri_lab/xdm_image.py')
     sources['scripts/xiri_lab/kernel_log.py'] = sha256(ROOT/'scripts/xiri_lab/kernel_log.py')
     sources['scripts/xiri_lab/winterm.py'] = sha256(ROOT/'scripts/xiri_lab/winterm.py')
+    if args.fonts:
+        for source in ['lab/newport-text/text-pixels.c', 'lab/newport-text/xft-pixels.c',
+                       'lab/irix-winterm-reliability/font-metrics.c']:
+            shutil.copyfile(ROOT/source, media/Path(source).name)
+            sources[source] = sha256(ROOT/source)
+        sources['scripts/xiri_lab/fonts.py'] = sha256(ROOT/'scripts/xiri_lab/fonts.py')
     if args.bundle:
         support = support_files(bundle,previous)
         (media/'SUPPORT').write_text(''.join(f'SHA256 ({path}) = {digest}\n' for path,digest in sorted(support.items())))
@@ -95,6 +102,8 @@ def main():
     cmd, get, wait = guest.command, guest.read_text, guest.wait_for
     r = dict(schema=1,status='error',clean_shutdown=False,seed=origin,pin=previous['pin'],
              sources={**source_hashes(),**sources},sessions=[],screenshots={})
+    if 'terminal_font' in previous:
+        r['terminal_font'] = previous['terminal_font']
     if args.bundle:
         r.update(scope='xdm-direct-chd',bundle=str(bundle.relative_to(ROOT)),
                  input_manifest_sha256=sha256(bundle/'manifest.json'),chd_sha256=manifest['chd_sha256'])
@@ -161,6 +170,11 @@ def main():
         if args.winterm:
             from xiri_lab.winterm import check
             check(guest, d, r, extra=not r.get('winterm'))
+        if args.fonts:
+            from xiri_lab.fonts import check as check_fonts, capture_menus
+            count = sum(key.startswith('irix-') for key in r.get('font_checks', {}))
+            check_fonts(guest, d, r, 'irix-'+str(count+1))
+            capture_menus(guest, d, r)
         cmd('./place winterm 10 180 983 504')
         cmd(shlex.join(['./type','127.0.0.1:0','winterm',
             '(id -un; echo "$HOME"; pwd; id -G; echo "${XAUTHORITY:-$HOME/.Xauthority}") > "$XIRI_SESSION_DIR/shell-proof"\n']))
@@ -230,6 +244,9 @@ def main():
         cmd('export DISPLAY=:0; XAUTHORITY=$(ps -axww -o args= | '
             'awk \'$1 == "/usr/X11R7/bin/Xorg" {for (i=1;i<NF;i++) if ($i == "-auth") print $(i+1)}\'); export XAUTHORITY')
         wait("xwininfo -root -tree | grep '\"UXTerm\"' >/dev/null",120)
+        if args.fonts:
+            from xiri_lab.fonts import check as check_fonts
+            check_fonts(guest, d, r, 'native')
         tree = get('xwininfo -root -tree')
         terminal = re.search(r'"([^"\n]+)": \("[^"\n]*" "UXTerm"\)',tree)
         assert terminal,tree
@@ -306,6 +323,9 @@ def main():
             '-L/usr/X11R7/lib -Wl,-rpath,/usr/X11R7/lib -lXrender -lX11 -o render-probe',300)
         if args.winterm:
             cmd('cc -O2 -Wall -Wextra -Werror resize-watch.c -o /tmp/xiri-resize-watch')
+        if args.fonts:
+            from xiri_lab.fonts import compile as compile_fonts
+            compile_fonts(guest)
         if not args.bundle:
             # Account selection is explicit, outside the runtime installer.
             cmd('groupadd -g 1235 xiritest-extra && usermod -G xiritest-extra -p "$(pwhash -b 6 xiritest)" xiritest && '
@@ -322,6 +342,9 @@ def main():
         r['boot_services'] = cmd('/etc/rc.d/xdm status && /etc/rc.d/rpcbind status && /etc/rc.d/xiri_famd status && '
             'test -f /var/run/xiri-pty-ready && modstat | grep -E "^compat_irix_o32[[:space:]]+exec[[:space:]]+filesys"')
         r['initial_greeter'] = greeter(); capture('xdm-greeter')
+        if args.fonts:
+            from xiri_lab.fonts import check as check_fonts
+            check_fonts(guest, d, r, 'greeter')
         greeter_text('xdm-greeter',r['initial_greeter'])
         r['greeter_dimensions'] = get('xdpyinfo | grep dimensions:').strip()
         assert re.search(r'dimensions:\s+1280x1024 pixels',r['greeter_dimensions'])
@@ -382,6 +405,9 @@ def main():
         paths += ['/etc/rc.conf.d/'+x for x in ['xiri_devices','xiri_famd','rpcbind','xdm']]
         if not args.bundle or '/etc/xiri/Xresources' in previous['installed_files']:
             paths.append('/etc/xiri/Xresources')
+        if 'terminal_font' in r:
+            paths += [r['terminal_font']['native_file'],
+                      '/usr/X11R7/lib/modules/drivers/newport_drv.so']
         listing = get('sha256 '+shlex.join(paths))
         r['installed_files'] = dict(re.findall(r'^SHA256 \((.+)\) = ([0-9a-f]{64})$',listing,re.M))
         assert len(r['installed_files']) == len(paths)

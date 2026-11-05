@@ -260,6 +260,8 @@ tftp_dir = "tftp"
         report['session_manager'] = 'xdm'
         report['xdm'] = r['xdm']
         report['runtime_sources'] = r['runtime_sources']
+        if 'terminal_font' in r:
+            report['terminal_font'] = r['terminal_font']
         report['qualification_nvram'] = 'verification/graphics-boot-nvram.bin'
         report['qualification_nvram_sha256'] = sha(manual_nvram)
         report['kernel_msgbuf_symbol'] = r['kernel_msgbuf_symbol']

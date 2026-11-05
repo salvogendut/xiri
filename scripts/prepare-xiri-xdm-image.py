@@ -26,6 +26,10 @@ def main():
     parser.add_argument('--keep-accounts',action='store_true',help='refresh an existing xdm image without changing accounts or passwords')
     parser.add_argument('--refresh-xservers', action='store_true',
                         help='install the maintained Xorg command in this disposable image')
+    parser.add_argument('--newport-driver', type=Path,
+                        help='install the module pinned by lab/newport-text/build.json')
+    parser.add_argument('--refresh-font-resources', action='store_true',
+                        help='adopt the qualified Courier bitmap and greeter resources')
     parser.add_argument('--gimp-resources', type=Path, help='verified output directory from stage-irix-gimp.py')
     for name in PACKAGES:
         parser.add_argument('--'+name+'-resources', type=Path,
@@ -35,6 +39,17 @@ def main():
     origin = json.loads((seed/'image-source.json').read_text())
     previous = json.loads((seed/'result.json').read_text())
     assert previous['status'] == 'observed' and previous['clean_shutdown']
+    newport_build = None
+    if args.newport_driver:
+        newport_build = json.loads((ROOT/'lab/newport-text/build.json').read_text())
+        assert sha256(args.newport_driver) == newport_build['module_sha256']
+    font_profile = None
+    if args.refresh_font_resources:
+        font_profile = json.loads((ROOT/'lab/newport-text/font-profile.json').read_text())
+        assert sha256(ROOT/'runtime/etc/Xresources') == font_profile['resource_sha256']
+        assert sha256(ROOT/'runtime/etc/xdm-Xresources') == font_profile['greeter_resource_sha256']
+        driver_sha = newport_build['module_sha256'] if newport_build else previous['newport_driver']['sha256']
+        assert driver_sha == font_profile['newport_module_sha256']
     pin=json.loads(args.baseline.read_text()) if args.baseline else previous['pin']
     symbols=args.kernel_build/'obj/sys/arch/sgimips/compile'/Path(pin['config_path']).name/'netbsd.gdb'
     assert sha256(symbols)==pin['debug_kernel_sha256']
@@ -78,11 +93,14 @@ def main():
         assert sha256(media/'netbsd')==pin['native_kernel_sha256']
         assert sha256(media/'netbsd.boot')==pin['boot_kernel_sha256']
     shutil.copytree(ROOT/'runtime',media/'runtime',ignore=shutil.ignore_patterns('build'))
+    if newport_build:
+        shutil.copyfile(args.newport_driver, media/'newport_drv.so')
     support = support_files(bundle,previous)
     (media/'SUPPORT').write_text(''.join(f'SHA256 ({path}) = {digest}\n' for path,digest in sorted(support.items())))
     # Send a file list on the CD instead of a growing serial command line.
     installed_paths = sorted(set(previous['installed_files']) | set(runtime_files()) |
-                             {'/emul/irix/etc/passwd'})
+                             {'/emul/irix/etc/passwd'} |
+                             ({font_profile['native_file']} if font_profile else set()))
     (media/'INSTALLED-PATHS').write_bytes(b''.join(path.encode()+b'\0' for path in installed_paths))
     (media/'motd').write_text('Xiri development image: native NetBSD xdm + original IRIX desktop\n'
         'Graphical login: xiritest / xiritest (IRIX); netbsdtest / netbsdtest (ctwm).\n'
@@ -106,6 +124,8 @@ def main():
     for key in ('gimp_resources', 'application_resources'):
         if key in previous:
             r[key] = previous[key]
+    if 'terminal_font' in previous:
+        r['terminal_font'] = previous['terminal_font']
     r['pin']=pin
     r.update(status='error',clean_shutdown=False,base_image=origin,
              base_seed_result_sha256=sha256(seed/'result.json'),
@@ -127,6 +147,18 @@ def main():
             'sha256 -c SHA256 >/root/xdm-media.log && sha256 -c SUPPORT >/root/xdm-payload.log',1800)
         r['support_files_verified_before'] = support
         print('Base kernel, module and imported payload verified',flush=True)
+        if newport_build:
+            cmd('/etc/rc.d/xdm stop', 90)
+            guest.wait_for('! pgrep -x Xorg >/dev/null', 90)
+            cmd('install -m 755 /cdrom/newport_drv.so /usr/X11R7/lib/modules/drivers/newport_drv.so')
+            r['newport_driver'] = dict(previous['newport_driver'],
+                source=str(args.newport_driver.resolve()), sha256=newport_build['module_sha256'],
+                fallback_build=newport_build,
+                fallback_build_manifest='lab/newport-text/build.json',
+                fallback_build_manifest_sha256=sha256(ROOT/'lab/newport-text/build.json'))
+            driver_path = '/usr/X11R7/lib/modules/drivers/newport_drv.so'
+            if driver_path in r['staged']:
+                r['staged'] = dict(r['staged'], **{driver_path: newport_build['module_sha256']})
         if replacement:
             path=previous['irix_module']['path']
             cmd('install -m 444 /cdrom/netbsd /netbsd && install -m 444 /cdrom/netbsd.boot /netbsd.boot && '
@@ -153,6 +185,19 @@ def main():
             after = get('sha256 -q /etc/xiri/xdm/Xservers').strip()
             assert after == sha256(media/'runtime/etc/xdm-Xservers')
             r['xserver_configuration_update'] = dict(before_sha256=before, after_sha256=after)
+        if font_profile:
+            updates = {}
+            for source, destination, digest in [
+                ('Xresources', font_profile['resource'], font_profile['resource_sha256']),
+                ('xdm-Xresources', font_profile['greeter_resource'], font_profile['greeter_resource_sha256'])]:
+                before = get('sha256 -q '+shlex.quote(destination)).strip()
+                cmd('install -m 644 /cdrom/runtime/etc/'+source+' '+shlex.quote(destination))
+                after = get('sha256 -q '+shlex.quote(destination)).strip()
+                assert after == digest
+                updates[destination] = dict(before_sha256=before, after_sha256=after)
+            assert get('sha256 -q '+shlex.quote(font_profile['native_file'])).strip() == font_profile['native_file_sha256']
+            r['font_configuration_update'] = updates
+            r['terminal_font'] = font_profile
         if gimp:
             cmd('test "$(readlink /usr/freeware)" = /emul/irix/usr/freeware')
         if 'acrobat' in applications:

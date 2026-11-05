@@ -95,10 +95,11 @@ wrapper uses `/var/tmp/xiri-desktop/session.*` and labels the user explicitly.
 An optional `XIRI_SESSION_MS` duration is in milliseconds (zero means no time
 limit). Both original logout menus call the native request helper.
 
-`/etc/xiri/Xresources` supplies terminal font defaults. It selects the existing
-SGI Screen bitmap font (8×15 cells), avoiding an intermittent 12×2 result from
-Xorg's scalable IBM Courier face. Both native and IRIX Xlib observe that bad
-Type1 result; the underlying scaler issue remains open. The session merges
+`/etc/xiri/Xresources` supplies terminal font defaults. It explicitly selects
+NetBSD's existing 100dpi Adobe Courier Bold bitmap (11×20 winterm cells).
+This closely matches IRIX's XWsh request and avoids the wildcard resolving to
+scalable IBM Courier, whose intermittent 12×2 result was observed by both
+native and IRIX Xlib. The underlying Type1 issue remains open. The session merges
 these defaults below existing display resources, preserving an explicit user
 font choice. `xiri_xresources` in `session.conf` can select another resource
 file. Reinstallation preserves the administrator's file and updates its
@@ -113,10 +114,11 @@ receive SIGWINCH and updated dimensions when original winterm is resized.
 The prepared system includes NetBSD's native xdm and PAM configuration.
 The optional configuration uses those standard files and selects the qualified
 Newport server command via `xdm -server /etc/xiri/xdm/Xservers`. The greeter
-resource overlay includes NetBSD's layout and selects `Xft.render: false`:
-the current accelerated Render text path otherwise loses its glyphs. This
-uses Xft's software text path while retaining XAA and the Render extension.
-It retains
+resource overlay includes NetBSD's layout and normal Xft selection. This
+requires the [corrected Newport driver](../lab/newport-text/README.md):
+its software-fallback refresh restores Xft/Render glyphs and grey Toolchest
+labels while keeping XAA enabled. Older images retain their `Xft.render:false`
+workaround until explicitly upgraded with the matching driver. It retains
 native X authorization, local-only display management and the standard
 `/etc/X11/xdm/Xsession` dispatch to `$HOME/.xsession`.
 

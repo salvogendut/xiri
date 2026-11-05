@@ -18,6 +18,11 @@ partial-alpha blending or qualify every Render operator. `source.json` pins
 NetBSD xsrc, each original file, and the matching public xmahjongg source.
 Vendor IRIX binaries/data are unchanged and remain outside Git.
 
+The later [text-fallback correction](../newport-text/README.md) builds on
+this patch. Use its preparation script when reproducing the driver that also
+restores disabled Toolchest labels and native Xft/Render text. This directory
+retains the texture-only baseline and its original build inputs.
+
 ## Rebuild
 
 Prepare the source on the host (Python 3 and Git required):

@@ -80,24 +80,29 @@ IRIX APIs in the examples must be translated into NetBSD equivalents.
 
 ## Next performance cycle
 
-The native xdm integration exposed another text case on 2026-11-03: the
-standard Xft greeter painted its frame and logo but no greeting, prompts or
-typed username. Installed fonts resolve correctly (`Sans` selects Luxi Sans),
-and disabling antialiasing alone did not restore the labels. `Xft.render:
-false` restores them using software text, with XAA still enabled. The
-opt-in xdm resource overlay contains this workaround. Isolate the native
-Render glyph path with a focused client and accelerated/software server
-controls before assigning the underlying fault to the driver or emulator.
-The earlier texture/pixel checks do not cover this glyph workload.
+The [2026-11-05 text cycle](results/2026-11-05-newport-text.md) isolates the
+missing xdm Xft glyphs and grey Toolchest labels to the native Newport driver.
+XAA software fallbacks draw into its shadow buffer without updating hardware.
+Installing `ShadowFBInit2` below XAA synchronizes those rectangles while
+accelerated requests keep their existing path. The previous accelerated
+driver fails native core/Xft window-versus-pixmap controls; software rendering
+and the corrected accelerated driver both pass all 69 cases (1,242,000 pixels).
+The existing 8,536-pixel texture regression also passes. The patch and native
+build are pinned in [lab/newport-text](../lab/newport-text/README.md); the
+new driver allows removal of the older greeter-only `Xft.render:false`
+workaround. This is an xsrc userspace driver repair, not a kernel or IRIS change.
 
 The [winterm investigation](results/2026-11-03-winterm-reliability.md) also
 captures incorrect core-font metrics for Xorg's scalable IBM Courier face:
 both native and original IRIX Xlib receive 12×2 logical cells instead of the
-previously measured 12×21. The imported SGI Screen bitmap remains 8×15 on
-that same failing server and is now the terminal default. The precise
+previously measured 12×21. The imported SGI Screen bitmap remained 8×15 on
+that failing server. The new default explicitly selects NetBSD's existing
+100dpi Adobe Courier Bold bitmap, giving winterm 11×20 cells close to IRIX's
+original appearance. Of 191 reference glyphs, 188 match bitmap/metrics exactly;
+three punctuation glyphs differ. No additional vendor font is imported. The precise
 Type1/scaling/cache cause remains unlocalized; this is not evidence that the
-Newport drawing driver caused it. Investigate it separately from the Xft
-Render greeter issue and retain native/foreign client controls.
+Newport drawing driver caused it. Retain native/foreign client controls and
+keep that intermittent Type1 defect separate from the corrected drawing path.
 
 Xdm explicitly uses the same `1280x1024` mode and `Virtual 1280 1024` as the
 qualified manual launcher. The pinned IRIS scanout captures are 1282×1024

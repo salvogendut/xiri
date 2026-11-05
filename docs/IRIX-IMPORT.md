@@ -162,6 +162,14 @@ Typing `exit` can end the native shell while leaving its xwsh window open;
 automatic terminal closure is a separate remaining issue. Session cleanup
 removes these clients along with the other reserved-UID processes.
 
+The [2026-11-05 font update](results/2026-11-05-newport-text.md) needs no new
+vendor import. Winterm selects NetBSD's existing
+`/usr/X11R7/lib/X11/fonts/100dpi/courB14-ISO8859-1.pcf.gz` through
+`/etc/xiri/Xresources`. Its exact file/resource hashes are in
+[`font-profile.json`](../lab/newport-text/font-profile.json). IRIX's original
+`courB14.pcf.Z` was extracted read-only for a glyph comparison; it is not
+installed in the new image. The earlier imported SGI Screen fonts remain available.
+
 The fonts and helpers are persistent. They must not depend on `/tmp`
 surviving a reboot: NetBSD clears it during startup. The initial diagnostics
 exposed that mistake and a missing empty input file in the native test runner;

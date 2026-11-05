@@ -10,6 +10,7 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'scripts'))
 from xiri_lab.xdm_qualification import verify_sessions
 from xiri_lab.xdm_image import support_files
+from xiri_lab.fonts import verify as verify_fonts
 
 
 class XdmPromotionTests(unittest.TestCase):
@@ -63,6 +64,29 @@ class XdmPromotionTests(unittest.TestCase):
         with self.assertRaises(AssertionError):verify_sessions(r)
         self.r['rpcbind_warning_events']='XIRI_RPC_WATCH_START\nrpcbind: cannot bind\nXIRI_RPC_WATCH_END'
         with self.assertRaises(AssertionError):verify_sessions(self.r)
+
+
+class TextEvidenceTests(unittest.TestCase):
+    def setUp(self):
+        self.record=json.loads((ROOT/'docs/results/2026-11-05-newport-text-controls.json').read_text())
+
+    def entry(self, name):
+        return dict(output=self.record['controls'][name]['output'], metrics=self.record['font_metrics'])
+
+    def test_reproduced_failure_rejected_and_controls_accepted(self):
+        with self.assertRaises(AssertionError):verify_fonts(self.entry('original-expanded'))
+        verify_fonts(self.entry('software-expanded'))
+        verify_fonts(self.entry('shadow-expanded'))
+
+    def test_incomplete_pixels_and_collapsed_font_rejected(self):
+        good=self.entry('shadow-expanded')
+        incomplete=dict(good, output='\n'.join(good['output'].splitlines()[1:]))
+        with self.assertRaises(AssertionError):verify_fonts(incomplete)
+        blank=dict(good, output=good['output'].replace('window_ink=425', 'window_ink=0', 1))
+        self.assertNotEqual(blank['output'],good['output'])
+        with self.assertRaises(AssertionError):verify_fonts(blank)
+        collapsed=dict(good, metrics=good['metrics'].replace('ascent=13 descent=5', 'ascent=1 descent=1'))
+        with self.assertRaises(AssertionError):verify_fonts(collapsed)
 
 
 if __name__=='__main__':unittest.main()

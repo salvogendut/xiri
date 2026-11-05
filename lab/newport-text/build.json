@@ -1,0 +1,44 @@
+{
+  "module_sha256": "0fcd56d2ce8785a4c702afa58bf8921862d8307b737e293430c95b9113f7a08f",
+  "module_bytes": 49188,
+  "compiler": "cc (nb3 20260326) 12.5.0",
+  "xorg_version": "1.10.6",
+  "video_driver_abi": "10.0",
+  "source": {
+    "schema": 1,
+    "base_source": "lab/newport-xaa/source.json",
+    "patches": [
+      "lab/newport-xaa/texture-coordinates.patch",
+      "lab/newport-text/shadow-fallback.patch"
+    ],
+    "inputs_sha256": {
+      "lab/newport-xaa/source.json": "75dca9c03076ec929b6f4cf93541789759999ef06f0cb191e4676358c87cea2b",
+      "lab/newport-xaa/prepare-source.py": "aa4d240cd552e6fd079ab7c13b12f650755d3c460bc687d5cb97978b509dec28",
+      "lab/newport-xaa/texture-coordinates.patch": "65a0a51fcfea0440d5cf9e234ecdc1afb80ed58712263fb36c99eb68202371fe",
+      "lab/newport-xaa/config.h": "6dfa9054a34ed4f76d4416c47d2f4198c66c4fe105467b63bee5d3b4d6c98038",
+      "lab/newport-xaa/build-driver.sh": "07981c5fa9d87ee567bbb7f980ea3879313b5125cd5cf8df5c7d1c027c5845cf",
+      "lab/newport-text/shadow-fallback.patch": "ab415707d8ac4078027622a40eae9d8b3d7cc8918e6f97aa6d66fc765ff6cbc6"
+    }
+  },
+  "source_manifest_sha256": "dcc8c28a1e601a495b47aca4c49ee5c1148a40976f0c7ac59be24531ddabf3fd",
+  "prepared_files_sha256": {
+    "Makefile.am": "feddb6eb4d7eb2b3226e8fd8e71ea1edbf4b320a266eb20e2d2e90a821d22863",
+    "config.h": "6dfa9054a34ed4f76d4416c47d2f4198c66c4fe105467b63bee5d3b4d6c98038",
+    "newport.h": "4fa915abd4f623c814790b0f62179f20f6d04d1146f3e015c4f2ec27b7a168cb",
+    "newport_accel.c": "061aee91f846ff89ded827b9cee3545031ee1e07fcdc001620cf4250ad659e5f",
+    "newport_cmap.c": "f5e24ea22f69605bfd2dc85099a069bec6525a9b964ce07bad75f6c4df531df1",
+    "newport_cursor.c": "f867774e1c6dfbfa64e5df4e4be670f9b51b218f6b8a47281ec93c5abc369003",
+    "newport_driver.c": "fdd7a1cf49d25f14dea32dafb69c3b929a3e9b05f77c176644f3fe505a57cd91",
+    "newport_regs.c": "79faf58b05f514a2d39edd80aa136a54c062301f85be4f3bca6fe94255ed4833",
+    "newport_regs.h": "00fd740ac34b1a7d2e979e3259be765123d08bd38a87fc81923e4986cbc47720",
+    "newport_shadow.c": "1c7c7aa70d5c5a8540c12c13c9068633e9d654cb36676a76c17c9e1020060d8e"
+  },
+  "native_build_run": ".work/fonts-menus/ordinary-s6m03a12",
+  "build_exit_status": 0,
+  "previous_module_sha256": "ce4f780398641bf90cc8ebe517dd03617df7bb447ba89da22c28357d4d898a74",
+  "sdk_sha256": {
+    "/usr/X11R7/include/xorg/xorg-server.h": "9bac1071590d5c43f7307c25fa990d0f14c929c12efd56759079e5734150fcdd",
+    "/usr/X11R7/include/xorg/xaa.h": "dbc9c30cb0f8a9e74fbfa0d4ad69a3720defe488615858004952c90040ce576d",
+    "/usr/X11R7/include/xorg/xf86.h": "136023cd5c1501ec97a69c0ad1f7377d55f4d07354ae814ddf421a3dcea0df66"
+  }
+}

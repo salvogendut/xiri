@@ -1,6 +1,6 @@
 # Xiri execution roadmap
 
-Status: updated 2026-11-04. The current image runs the original 4Dwm desktop,
+Status: updated 2026-11-05. The current image runs the original 4Dwm desktop,
 Toolchest, Icon Catalog, File Manager, winterm and xclock on NetBSD/Xorg with
 accelerated Newport. Catalog launching, running-icon feedback, backdrop,
 desktop icons and logout pass bounded checks; the latest xmahjongg texture
@@ -120,17 +120,20 @@ The selected replacement passes 60 native query-loop controls, six complete
 Acrobat sequences, GNOME Terminal, CD9660 and both-user session/shutdown gates;
 a separate reduced replay passes 60 capture/focus cycles. Keep the original
 failures, fixture exclusions and normal shell-zombie observation distinct.
-Native child-control stalls, the earlier catalog halt, Type1 metrics and
-Xft/Render remain open system work.
+Native child-control stalls, the earlier catalog halt and Type1 metrics
+remain open system work.
 
-The user's 2026-11-05 follow-up selects native fonts as the next cycle now
-that the scheduling image passes: investigate the Type1/Courier metric collapse
-and accelerated Xft/Render text, retaining the SGI Screen bitmap fallback
-until a replacement is qualified. Compare winterm with its earlier Courier
-appearance. Also compare Toolchest menus against IRIX 6.5.22: some entries
-appear entirely blank. Distinguish absent labels/resources from clipping or
-rendering before assigning a cause; do not assume every blank row is the
-same font defect.
+The [2026-11-05 font/menu cycle](results/2026-11-05-newport-text.md) reproduces
+blank disabled Toolchest labels and native Xft/Render glyphs as a Newport
+software-fallback refresh failure. The corrected xsrc driver passes all
+69 native text cases and the existing texture regression with XAA enabled.
+Explicit NetBSD bitmap Courier restores larger winterm text close to IRIX's
+original appearance, without importing another font. The separate scalable
+Type1 metric collapse remains open. The new selected image passes cold xdm,
+both users, three winterm starts/resizes, 345 text comparisons, catalog launch
+and clean halt. A separate menu replay shows all 93 labels in the six top
+menus and four cascades, including 41 disabled labels. The preceding scheduler
+image and manual state remain preserved.
 
 Other shared-system candidates are common IRIX filesystem/timing/job-control
 interfaces and general
@@ -178,8 +181,8 @@ order was updated to prioritize the kernel module at the user’s request:
    independent same-user shell survival and a separate native ctwm login pass.
    Xorg uses the explicit 1280×1024 accelerated Newport configuration.
    Native xdm owns the display; the client session leaves system services alive.
-   A greeter resource workaround restores missing Xft text; the underlying
-   glyph-rendering issue remains in [Newport work](NEWPORT.md).
+   The [Newport text correction](NEWPORT.md) now restores Xft glyphs with
+   normal greeter resources, superseding the earlier rendering workaround.
 4. **Original IRIX clogin later.** Once the xdm/session boundary is established,
    investigate clogin's authentication and service interfaces against original
    IRIX. Reuse the qualified session startup; do not assume the login binary is

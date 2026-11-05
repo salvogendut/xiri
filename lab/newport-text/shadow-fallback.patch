@@ -1,0 +1,69 @@
+--- a/newport_accel.c
++++ b/newport_accel.c
+@@ -16,6 +16,7 @@
+ #ifdef NEWPORT_ACCEL
+ 
+ #include "mi.h"
++#include "shadowfb.h"
+ #include "mizerarc.h"
+ 
+ #define BARF(a) xf86DrvMsg(0, X_INFO, (a))
+@@ -1598,6 +1599,48 @@
+ /*******************************************************************************
+ 
+ *******************************************************************************/
++/* XAA's software fallbacks operate on ShadowPtr.  Newport has no linear
++ * framebuffer: synchronize only the affected rectangle before/after fb.
++ * Install this layer below XAA so accelerated operations bypass it. */
++static void
++NewportFallbackRead(ScrnInfoPtr pScrn, int count, BoxPtr boxes)
++{
++    NewportPtr pNewport = NEWPORTPTR(pScrn);
++    int sx = pNewport->clipsx, sy = pNewport->clipsy;
++    int ex = pNewport->clipex, ey = pNewport->clipey;
++    NewportXAADisableClipping(pScrn);
++    while (count--) {
++        int w = boxes->x2 - boxes->x1, h = boxes->y2 - boxes->y1;
++        unsigned char *dst = (unsigned char *)pNewport->ShadowPtr
++            + boxes->y1 * pNewport->ShadowPitch + boxes->x1 * pNewport->Bpp;
++        if (w > 0 && h > 0)
++            NewportXAAReadPixmap(pScrn, boxes->x1, boxes->y1, w, h,
++                dst, pNewport->ShadowPitch, pScrn->bitsPerPixel, pScrn->depth);
++        boxes++;
++    }
++    NewportXAASetClippingRectangle(pScrn, sx, sy, ex, ey);
++}
++
++static void
++NewportFallbackWrite(ScrnInfoPtr pScrn, int count, BoxPtr boxes)
++{
++    NewportPtr pNewport = NEWPORTPTR(pScrn);
++    int sx = pNewport->clipsx, sy = pNewport->clipsy;
++    int ex = pNewport->clipex, ey = pNewport->clipey;
++    NewportXAADisableClipping(pScrn);
++    while (count--) {
++        int w = boxes->x2 - boxes->x1, h = boxes->y2 - boxes->y1;
++        unsigned char *src = (unsigned char *)pNewport->ShadowPtr
++            + boxes->y1 * pNewport->ShadowPitch + boxes->x1 * pNewport->Bpp;
++        if (w > 0 && h > 0)
++            pNewport->pXAAInfoRec->WritePixmap(pScrn, boxes->x1, boxes->y1, w, h,
++                src, pNewport->ShadowPitch, GXcopy, ~0U, -1,
++                pScrn->bitsPerPixel, pScrn->depth);
++        boxes++;
++    }
++    NewportXAASetClippingRectangle(pScrn, sx, sy, ex, ey);
++}
++
+ Bool
+ NewportXAAScreenInit(ScreenPtr pScreen)
+ {
+@@ -1742,6 +1785,9 @@
+ 	    pNewport->Color2Planes = NewportColor2Planes8;
+ 	}
+ 
++	if (!ShadowFBInit2(pScreen, NewportFallbackRead, NewportFallbackWrite))
++	    return FALSE;
++
+ 	if (!XAAInit(pScreen, pXAAInfoRec))
+ 	{
+ 	    xf86DrvMsg(pScrn->scrnIndex, X_ERROR, "XAAInit Failed!\n"); 

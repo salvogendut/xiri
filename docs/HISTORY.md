@@ -5,14 +5,27 @@ status statements describe individual checkpoints and may be superseded by
 later entries. Use the [current README](../README.md), [development guide](DEVELOPMENT.md)
 and [selected image](../lab/irix-installed-desktop/image.json) for current work.
 
+The [2026-11-05 font/menu cycle](results/2026-11-05-newport-text.md) reproduces
+blank disabled Toolchest labels and native Xft/Render text as missing Newport
+shadow-buffer refresh in XAA software fallbacks. The corrected xsrc driver
+passes 69 native text cases and the existing texture regression; the previous
+accelerated driver fails the text controls, while software rendering passes.
+An explicit existing NetBSD bitmap Courier face restores larger winterm text
+close to the supplied IRIX reference without importing another vendor font.
+The intermittent native Type1 metric collapse remains open. The new selected
+CHD passes 345 text comparisons, both users, three winterm starts/resizes,
+logout/recovery, catalog and clean-halt checks. Separate visual review confirms
+93 readable labels across six top menus and four cascades. The scheduler
+image and its manual state remain available.
+
 The [Xorg scheduling cycle](results/2026-11-04-xorg-scheduling.md), completed
 on 2026-11-05 local time, captures the native input timeout at its alarm.
 A ready delayed release waits behind a higher-priority pointer-query client.
 The runtime selects round-robin dispatch; the new manual CHD passes native
 input/query controls, six complete Acrobat sequences, GNOME Terminal,
 both-user xdm, rendering, catalog and clean-halt checks. It also includes the
-previously qualified CD9660 core correction. The user selects native fonts
-and comparison of blank Toolchest entries with IRIX as the next system work.
+previously qualified CD9660 core correction. The user then selected native
+fonts and comparison of blank Toolchest entries with IRIX for the cycle above.
 
 The [2026-11-04 stability cycle](results/2026-11-04-system-stability.md)
 corrects native NetBSD32 CD9660 ownership/mask translation and qualifies the

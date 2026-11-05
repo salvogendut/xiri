@@ -182,17 +182,20 @@ class ArtifactTests(unittest.TestCase):
         (self.root/'config').mkdir()
         (self.root/'config/development.json').write_text(json.dumps(dict(
             schema=1,build_jobs=2,image_pointer='pointer.json')))
-        for manager,probe,winterm in [('xdm','probe-xiri-xdm.py --bundle',False),
-                                     ('xdm','probe-xiri-xdm.py --bundle',True),
-                                     ('manual','probe-xiri-image.py',False)]:
+        for manager,probe,winterm,fonts in [('xdm','probe-xiri-xdm.py --bundle',False,False),
+                                           ('xdm','probe-xiri-xdm.py --bundle',True,False),
+                                           ('xdm','probe-xiri-xdm.py --bundle',False,True),
+                                           ('manual','probe-xiri-image.py',False,False)]:
             self.manifest['session_manager']=manager
             self.manifest['winterm_checks']=winterm
+            self.manifest['terminal_font']={'cell':[11,20]} if fonts else None
             (self.bundle/'manifest.json').write_text(json.dumps(self.manifest))
             output=io.StringIO()
             with patch('xiri_lab.workflow.ROOT',self.root),redirect_stdout(output):
                 self.assertEqual(main(['check','--dry-run']),0)
             self.assertIn(probe,output.getvalue())
-            self.assertEqual('--winterm' in output.getvalue(),winterm)
+            self.assertEqual('--winterm' in output.getvalue(),winterm or fonts)
+            self.assertEqual('--fonts' in output.getvalue(),fonts)
 
     def test_build_finds_branch_owner_without_switching_shared_checkout(self):
         repo = self.root/'shared'; owner = self.root/'branch owner'
