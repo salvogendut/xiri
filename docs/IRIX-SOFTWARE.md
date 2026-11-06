@@ -161,6 +161,59 @@ loads, helper execution and installation behavior are separate checks. Start
 with `inst` distribution reading, then qualify Software Manager's graphical
 workflow. See the [installer lab](../lab/irix-installer/README.md).
 
+## Selecting the IRIX desktop for a user
+
+These instructions run inside NetBSD with Xiri already installed and its
+boot services enabled, as in the prepared development image. Any ordinary
+native account can select the desktop; the username does not have to be
+`xiritest`. For system installation requirements, see the
+[runtime guide](../runtime/README.md#existing-prerequisites).
+
+As the desktop user, save any existing `~/.xsession`, then run:
+
+```sh
+cp /usr/local/share/xiri/xdm.xsession "$HOME/.xsession"
+chmod 700 "$HOME/.xsession"
+```
+
+Log out and log back in through xdm with that account's native password.
+The startup chain is:
+
+```text
+xdm -> ~/.xsession -> /usr/local/bin/xiri-session -> 4Dwm and desktop clients
+```
+
+Native xdm authenticates the user and supplies HOME, groups, DISPLAY and X
+authority. The [session template](../runtime/etc/xdm.xsession) adjusts the
+local display address for IRIX clients and invokes
+[xiri-session](../runtime/bin/xiri-session). That script starts and supervises
+the desktop under the logged-in user's identity, using xdm's existing X
+server. FAM and the other system services are shared across user sessions.
+
+The desktop starts in the user's own HOME. An existing home such as
+`/home/alice` works; `/usr/people/alice` is our preferred IRIX-style convention.
+Desktop links, Dumpster, preferences and session logs live beneath that home.
+Startup errors are in `~/.xsession-errors`; session logs are in
+`~/.xiri/sessions/`.
+
+After creating an account or changing group membership, run this as root:
+
+```sh
+/usr/local/sbin/xiri-sync-users
+```
+
+This refreshes IRIX's password-free account/group lookup tables from native
+NetBSD accounts. It also runs automatically at boot. Log in again after group
+changes so the session and its FAM connections acquire the updated groups.
+
+`/etc/xiri/session.conf` supplies shared locale, timezone and font settings.
+Its `xiri_user` setting selects the account for the root-run `xiri-desktop`
+convenience launcher only. Leave it alone when enabling normal xdm users;
+their sessions use the account that logged in.
+
+To return to a previous desktop, restore that user's saved `.xsession`.
+With no custom `.xsession`, the prepared image selects standard NetBSD ctwm.
+
 ## Native accounts with the IRIX home layout
 
 Ordinary Xiri users use **`/usr/people/<username>`** as their native NetBSD
@@ -188,13 +241,10 @@ These native commands are available in the manual image. When the repository
 helper is present in the guest, `sh scripts/setup-xiri-user.sh alice` can replace
 the first two commands and adds the existing-account checks described above.
 
-With the multi-user native FAM build installed, each ordinary account can
-select the IRIX desktop by copying `/usr/local/share/xiri/xdm.xsession` to its
-own `$HOME/.xsession` and making it executable. Leave `.xsession` unset for
-native NetBSD ctwm. `xiri-sync-users` refreshes IRIX passwd/group lookup names
-without copying passwords or changing native login databases. Boot refreshes
-these maps automatically; run it again after account/group changes. See the
-[runtime guide](../runtime/README.md) for the service and session requirements.
+After creating the account, follow the
+[per-user desktop setup](#selecting-the-irix-desktop-for-a-user) above as that
+user. Each account selects its own `.xsession`; accounts without one retain
+the native NetBSD desktop.
 
 Native and IRIX applications must see the same home. Do not create a second
 home under `/emul/irix/usr/people`. IRIX clients should generate their own

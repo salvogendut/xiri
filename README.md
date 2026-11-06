@@ -17,11 +17,13 @@ NetBSD xdm. Use **xiritest** / **xiritest** or **xiritest2** / **xiritest2** for
 separate IRIX desktops, or **netbsdtest** / **netbsdtest** for standard NetBSD ctwm.
 `netbsdtest` belongs to `wheel` and can run `su -` for a root login shell;
 root's password is empty in this development image.
-These are public development-image credentials. Each IRIX login uses its own
-native identity and HOME/cwd under `/usr/people/<username>`. Native FAM now
+These are public development-image credentials. The image's IRIX accounts use
+their native identities and HOME/cwd under `/usr/people/<username>`. Native FAM now
 identifies each client's native UID and groups; desktop state and session logs
-remain private to that user. The [account setup guide](docs/IRIX-SOFTWARE.md)
-explains how to add more users. System services start at boot. NetBSD
+remain private to that user. The
+[per-user desktop setup guide](docs/IRIX-SOFTWARE.md#selecting-the-irix-desktop-for-a-user)
+explains how any normal account selects the IRIX desktop and how to add users.
+System services start at boot. NetBSD
 loads `compat_irix_o32.kmod` during boot and runs the desktop on a kernel
 without built-in IRIX support. The [core kernel](lab/native-wait/README.md)
 retains the native memory-allocation and CD9660 corrections found during
@@ -124,12 +126,12 @@ font size into zero. The corrected core passes all 24 native register cases,
 records. An explicit Type1 winterm passes input, resize and normal exit.
 The IRIX module, font libraries and bitmap desktop default are unchanged.
 That checkpoint passes its own cold desktop/font qualification and remains
-available. The [current job-control image](docs/results/2026-11-05-native-wait-image.md)
+available. The [earlier job-control image](docs/results/2026-11-05-native-wait-image.md)
 adds the measured IRIX interfaces and native wait fix, then repeats cold
 xdm/4Dwm/ctwm, 345 text comparisons, shell jobs, winterm, catalog launch,
 logout/recovery and clean halt. Its separate 22-target replay also completes
-with verified cleanup. `./xiri run` opens this image; earlier bundles and
-manual state are preserved.
+with verified cleanup. The current multi-user image retains its kernel and
+module; earlier bundles and manual state are preserved.
 
 ## Related repositories
 
@@ -157,8 +159,11 @@ With the local image bundle and development dependencies already prepared:
 ./xiri run
 ```
 
-Log in at xdm as `xiritest`. Log out through Toolchest or 4Dwm to return to
-the greeter. Root serial login remains available for administration.
+Log in at xdm as `xiritest` or `xiritest2`. Log out through Toolchest or 4Dwm
+to return to the greeter. To enable the IRIX desktop for another native user,
+follow the [per-user desktop setup](docs/IRIX-SOFTWARE.md#selecting-the-irix-desktop-for-a-user):
+install the supplied `~/.xsession` template as that user, then log in through
+xdm. Root serial login remains available for administration.
 The [manual image guide](docs/XIRI-IMAGE.md) covers PROM settings, Prismatic,
 boot troubleshooting and the exact image provenance. `./xiri run` uses the
 selected bundle's tested emulator and preserves manual overlays and NVRAM.
