@@ -32,6 +32,14 @@ for prefix in freeware adobe; do
         ln -s "/emul/irix/usr/$prefix" "$stage/usr/$prefix"
     fi
 done
+# The installed-image import resolves colorscheme to the original schemebr
+# executable, but Toolchest uses its canonical name. Expose both names without
+# replacing either an existing installation or the imported program bytes.
+browser="$stage/emul/irix/usr/sbin/schemebr"
+if test -f "$stage/emul/irix/usr/sbin/colorscheme" &&
+    ! test -e "$browser" && ! test -L "$browser"; then
+    ln -s colorscheme "$browser"
+fi
 for name in xiri_devices xiri_famd; do install -m 555 "rc.d/$name" "$stage/etc/rc.d/$name"; done
 for name in session.conf fam.conf Xresources; do
     install -m 444 "etc/$name" "$stage/etc/xiri/$name.example"

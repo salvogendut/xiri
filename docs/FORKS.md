@@ -42,6 +42,21 @@ not repin qualified kernels, emulator binaries, runtime resources or guest disks
 
 ## IRIS upstream updates
 
+The desktop-preferences cycle fetched upstream on 2026-11-06 through
+`280f3eb22e74057d506fed082f527b92320fabd7`. Merge
+`b23f674c235b37c3ac83808085d28ac128bb79c4` is pushed on IRIS `xiri`.
+The five commits add opt-in Newport partial framebuffer uploads and their
+documentation, correct Perfetto event references, and document MIPSpro
+installation. The merge needs no conflict resolution. The default Linux
+release build passes; regression results are 123 default Newport tests,
+132 with `rex-dirty-upload,gputrace`, ten upload-planner tests, five display
+tests and five UI tests. Four Newport tests remain ignored in each build.
+The compositor filter selects no tests and is not counted as validation.
+Logs and build provenance are under `.work/desktop-preferences/iris-*` and
+`.work/workflows/build-x39ei456`. The optional upload feature stays disabled
+by default. Desktop tests retain the qualified `819c682` emulator and the
+existing kernel/module; no NetBSD source changes are needed for preferences.
+
 The multi-user desktop cycle fetched upstream at its start on 2026-11-05
 and again after midnight on 2026-11-06 (23:00 UTC on November 5).
 `c382cdcc25389769b5ae3a436ae1ff73ae42e964` is already an ancestor of IRIS

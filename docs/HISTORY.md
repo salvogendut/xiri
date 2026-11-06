@@ -5,6 +5,14 @@ status statements describe individual checkpoints and may be superseded by
 later entries. Use the [current README](../README.md), [development guide](DEVELOPMENT.md)
 and [selected image](../lab/irix-installed-desktop/image.json) for current work.
 
+The [November 6 desktop-preferences cycle](results/2026-11-06-desktop-preferences.md)
+loads the original panels' per-user resource files at login and removes forced
+backdrop/window colours. Two distinct profiles survive logout/login and reboot;
+native pointer events verify focus and opaque/outline movement. Xmahjongg's
+test autostart is removed. Toolchest's canonical colour-browser name is exposed
+as an alias to the imported executable, without additional vendor bytes.
+Application-session saving/restoration remains disabled.
+
 The [November 5–6 multi-user cycle](results/2026-11-05-multiuser.md) replaces
 FAM's fixed xiritest mapping with native TCP socket ownership and native groups.
 Two concurrent clients pass private-directory and shared-group checks; native

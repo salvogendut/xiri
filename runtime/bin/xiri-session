@@ -33,6 +33,10 @@ export ACRO_CONFIG=mipsirix
 export MWMSHELL=/usr/local/libexec/xiri/command-shell
 export WINTERM='/emul/irix/usr/sbin/xwsh -name winterm'
 export PS1="$user@xiri\$ "
+# Match the vendor desktop's per-host application resource lookup. The panels
+# save files such as 4DWm here; Xt must find them again at the next login.
+desktop="$HOME/.desktop-$(hostname)"
+export XUSERFILESEARCHPATH="$desktop/%N:$HOME/%N:$desktop/0.0/%N${XUSERFILESEARCHPATH:+:$XUSERFILESEARCHPATH}"
 cd "$HOME"
 printf 'SESSION user=%s uid=%s groups=%s home=%s cwd=%s display=%s authority=%s\n' \
     "$user" "$(id -u)" "$(id -G)" "$HOME" "$PWD" "$DISPLAY" "${XAUTHORITY:-default}" >"$job/identity"
@@ -43,6 +47,11 @@ resources=${xiri_xresources:-/etc/xiri/Xresources}
 test -r "$resources"
 xrdb -query >"$job/Xresources.previous"
 cat "$resources" "$job/Xresources.previous" | xrdb -merge
+# Xdm can already have loaded .Xresources. Loading it here also covers manual
+# sessions, and the panels' .Sgiresources must work without an .Xresources file.
+for resources in "$HOME/.Xresources" "$HOME/.Sgiresources"; do
+    if test -r "$resources"; then xrdb -merge "$resources"; fi
+done
 xset s off
 xset -dpms
 xset s reset

@@ -1,0 +1,207 @@
+{
+  "schema": 1,
+  "status": "built-roundtrip-and-desktop-verified",
+  "cycle": {
+    "name": "desktop preferences",
+    "upstream_revision": "280f3eb22e74057d506fed082f527b92320fabd7",
+    "iris_xiri": "b23f674c235b37c3ac83808085d28ac128bb79c4",
+    "upstream_merged_and_pushed": true,
+    "iris_regression_tests_passed": 275,
+    "default_release_build_passed": true,
+    "new_upstream_commits": 5,
+    "netbsd_xiri": "0febc6eb24ad889d12a3b2afaa12558c9781859d",
+    "guest_kernel_changed": false,
+    "guest_emulator_changed": false,
+    "new_vendor_bytes": false
+  },
+  "preparation": {
+    "directory": ".work/xdm-image/prepare/ordinary-2njhn1pq",
+    "result_sha256": "ab3356e26c6a13cef459581ebe0541f827585281c0a7dc803980a350b5782051",
+    "harness_sha256": "0ea12c21b9137bda47719c91570a71465be11c43ff9d2dc95ff4522269be4452",
+    "status": "observed",
+    "clean_shutdown": true,
+    "base_raw_unchanged": true,
+    "graphics_boot": true,
+    "native_databases_unchanged": true
+  },
+  "bundle": {
+    "directory": ".work/images/xiri-netbsd-desktop-20261106-preferences-v2",
+    "chd_sha256": "9442ee066e567c587b0f88a5fac262c50ab7983f464dd5e6c0967867a2159e68",
+    "chd_bytes": 496280059,
+    "logical_bytes": 8589934592,
+    "source_raw_sha256": "d678a1787a4ba576477340ac62e36fcd4b01fc0887b7516a0f7bacccf2e0f7aa",
+    "decoded_raw_sha256": "d678a1787a4ba576477340ac62e36fcd4b01fc0887b7516a0f7bacccf2e0f7aa",
+    "manual_readme_sha256": "f05b92c4c030088d2fab3ebbcd8bc724cad1a8f6ed6713c3cbb544d4cd04d6ed",
+    "manual_readme_note": "Preference instructions and current kernel capabilities clarified after packaging; guest bytes unchanged"
+  },
+  "desktop_qualification": {
+    "path": "docs/results/2026-11-06-desktop-preferences-image.json",
+    "sha256": "81cff873d45f86d3903cee221128fb3b3c1e27cdc858471a22f04c0b7eda920e",
+    "run": ".work/irix-xdm/runs/ordinary-xvgk2esa",
+    "status": "disk-boot-and-xdm-desktops-verified"
+  },
+  "preference_qualification": {
+    "path": "docs/results/2026-11-06-desktop-preferences.json",
+    "sha256": "b2f82e047c969b1ab324105951be58e377ae12d63f9f9a8af9413b2d8c6794f7"
+  },
+  "menu_visual_review": {
+    "status": "visually-reviewed",
+    "scope": "All six top menus and four cascades have readable enabled and disabled labels; individual actions are not generally qualified by this review.",
+    "captures": {
+      "desktop": {
+        "path": ".work/irix-xdm/runs/ordinary-xvgk2esa/toolchest-desktop.png",
+        "sha256": "ac0f9d2c7074a7abe510b587b5b2be9f9eaa582cfb46b597680f98339fa0f51b"
+      },
+      "selected": {
+        "path": ".work/irix-xdm/runs/ordinary-xvgk2esa/toolchest-selected.png",
+        "sha256": "9270559d9552834b49711ccdbc7a9259a18def3716e2eb2fd733d4cce6407f9e"
+      },
+      "internet": {
+        "path": ".work/irix-xdm/runs/ordinary-xvgk2esa/toolchest-internet.png",
+        "sha256": "2c0dffd0415b83fa844efde600c7c7c74fab6a4cd00a56e4dab40d3f55f36007"
+      },
+      "find": {
+        "path": ".work/irix-xdm/runs/ordinary-xvgk2esa/toolchest-find.png",
+        "sha256": "37816b369b99658d47baf39df47cd7de31a72c9f3a53f0379d3135037b9d469c"
+      },
+      "system": {
+        "path": ".work/irix-xdm/runs/ordinary-xvgk2esa/toolchest-system.png",
+        "sha256": "637b4ff7e029bad596e8386ff4e1a1ba76d662be3e04ee4d63e0b432a53949bf"
+      },
+      "help": {
+        "path": ".work/irix-xdm/runs/ordinary-xvgk2esa/toolchest-help.png",
+        "sha256": "6a6fe9f0e7ee337724686fa55a031ca43e5ebfecf430e673e79f298bf55d7022"
+      },
+      "access-files": {
+        "path": ".work/irix-xdm/runs/ordinary-xvgk2esa/toolchest-access-files.png",
+        "sha256": "0845fdcbac740778843fbff3bc695fcacfe3a114bbddd7909f23724195c2ece7"
+      },
+      "shared-resources": {
+        "path": ".work/irix-xdm/runs/ordinary-xvgk2esa/toolchest-shared-resources.png",
+        "sha256": "10a90ffa63237da6ca3dd15fcc3101b5c51170424d2450b2567eee1e031638fd"
+      },
+      "customize": {
+        "path": ".work/irix-xdm/runs/ordinary-xvgk2esa/toolchest-customize.png",
+        "sha256": "c8aeddb572658b4cb5cc33464f183b12b855587c7dc0144015d71332a7ad22cf"
+      },
+      "utilities": {
+        "path": ".work/irix-xdm/runs/ordinary-xvgk2esa/toolchest-utilities.png",
+        "sha256": "87585c2622b5202a6d7bf5d692e5b643fbfcfd9b1098928d38659175690f0cee"
+      }
+    }
+  },
+  "host_checks": {
+    "tests": 55,
+    "status": "passed",
+    "log": ".work/desktop-preferences/host-tests-solid-final.log",
+    "log_sha256": "feb0dbf8334e1e943cb3001e0e6adba5fcfe3f35c0803b93b8930b2f1f0dc6ff",
+    "shell_and_python_syntax": "passed"
+  },
+  "cache_cleanup": [
+    {
+      "reason": "Preparation stopped before installation to include Color Schemes canonical alias",
+      "clean_shutdown": true,
+      "path": ".work/xdm-image/prepare/ordinary-d2zbmp3q/disk.raw",
+      "bytes": 8589934592
+    },
+    {
+      "path": ".work/images/xiri-netbsd-desktop-20261106-preferences/verification/roundtrip.raw",
+      "bytes": 8589934592,
+      "verified_sha256": "967f92dc69d195ca4514a8719d852e12989ec50376ba56f83d0810b27c2a0fe2",
+      "reason": "Verified packaging roundtrip cache; original prepared raw and CHD retained"
+    },
+    {
+      "path": ".work/desktop-preferences/ordinary-bculflrl/disk.chd",
+      "bytes": 496273073,
+      "allocated_bytes": 496275456,
+      "sha256": "a800307d5b8a7ad7e47327115406a06814fd932bf26df1b5131e524e97cb0c12",
+      "restore_from": ".work/images/xiri-netbsd-desktop-20261105-multiuser/netbsd-xiri.chd",
+      "overlay_retained": ".work/desktop-preferences/ordinary-bculflrl/disk.chd.diff.chd",
+      "clean_shutdown": true,
+      "reason": "Completed preference guest; clean halt and unchanged base verified"
+    },
+    {
+      "path": ".work/irix-xdm/runs/ordinary-_ug9cmer/disk.chd",
+      "bytes": 496278664,
+      "allocated_bytes": 496279552,
+      "sha256": "c3b56ced22f0a77de093d604d3c1ab9f1c557229115df5c323dc5a386e22c0c6",
+      "restore_from": ".work/images/xiri-netbsd-desktop-20261106-preferences/netbsd-xiri.chd",
+      "overlay_retained": ".work/irix-xdm/runs/ordinary-_ug9cmer/disk.chd.diff.chd",
+      "clean_shutdown": false,
+      "reason": "Superseded candidate test interrupted before login; diagnostic overlay retained"
+    },
+    {
+      "path": ".work/xdm-image/prepare/ordinary-wehkjrk5/disk.raw",
+      "bytes": 8589934592,
+      "allocated_bytes": 8589934592,
+      "sha256": "967f92dc69d195ca4514a8719d852e12989ec50376ba56f83d0810b27c2a0fe2",
+      "restore_from_chd": ".work/images/xiri-netbsd-desktop-20261106-preferences/netbsd-xiri.chd",
+      "reason": "Superseded preparation; exact roundtrip CHD and build evidence retained, final preparation passed"
+    },
+    {
+      "path": ".work/images/xiri-netbsd-desktop-20261106-preferences-v2/verification/roundtrip.raw",
+      "bytes": 8589934592,
+      "allocated_bytes": 8589934592,
+      "verified_sha256": "d678a1787a4ba576477340ac62e36fcd4b01fc0887b7516a0f7bacccf2e0f7aa",
+      "reason": "Verified final-image roundtrip cache; exact source raw and CHD retained"
+    },
+    {
+      "path": ".work/irix-xdm/runs/ordinary-886sb5_i/disk.chd",
+      "bytes": 496280059,
+      "allocated_bytes": 496283648,
+      "sha256": "9442ee066e567c587b0f88a5fac262c50ab7983f464dd5e6c0967867a2159e68",
+      "restore_from": ".work/images/xiri-netbsd-desktop-20261106-preferences-v2/netbsd-xiri.chd",
+      "overlay_retained": ".work/irix-xdm/runs/ordinary-886sb5_i/disk.chd.diff.chd",
+      "clean_shutdown": true,
+      "reason": "Interrupted host supervisor; guest recovered and halted; retain diagnostic overlay and canonical image"
+    },
+    {
+      "path": ".work/irix-xdm/runs/ordinary-xvgk2esa/disk.chd",
+      "bytes": 496280059,
+      "allocated_bytes": 496283648,
+      "sha256": "9442ee066e567c587b0f88a5fac262c50ab7983f464dd5e6c0967867a2159e68",
+      "restore_from": ".work/images/xiri-netbsd-desktop-20261106-preferences-v2/netbsd-xiri.chd",
+      "overlay_retained": ".work/irix-xdm/runs/ordinary-xvgk2esa/disk.chd.diff.chd",
+      "clean_shutdown": true,
+      "qualified": true,
+      "reason": "Completed qualified cold run; canonical CHD and test overlay retained"
+    }
+  ],
+  "excluded_attempts": [
+    {
+      "directory": ".work/irix-xdm/runs/ordinary-886sb5_i",
+      "reason": "Host supervisor returned 143 and probe process disappeared during file verification; emulator recovered and halted cleanly",
+      "clean_shutdown": true,
+      "base_chd_unchanged": true,
+      "recovery_sha256": "d37656b63471dbd4e5b1d8582f710835e48a853950e8ef4d95495b53e5785bd0"
+    },
+    {
+      "directory": ".work/xdm-image/prepare/ordinary-d2zbmp3q",
+      "reason": "Stopped before installation to add the canonical Color Schemes alias",
+      "clean_shutdown": true
+    },
+    {
+      "directory": ".work/xdm-image/prepare/ordinary-wehkjrk5",
+      "reason": "Superseded by the solid-background readiness fix",
+      "clean_shutdown": true
+    },
+    {
+      "directory": ".work/irix-xdm/runs/ordinary-_ug9cmer",
+      "reason": "Qualification deliberately interrupted before login to include solid-background support; not used for acceptance",
+      "status": "error",
+      "clean_shutdown": false,
+      "base_chd_unchanged": true,
+      "result_sha256": "3b4309651c8694a18197f33b804d7fe511b914e18ee3ab2579bd84f35c52e0bb"
+    }
+  ],
+  "selected_image_doctor": {
+    "status": "passed",
+    "immutable_artifacts": 16,
+    "log": ".work/desktop-preferences/doctor-final.log",
+    "log_sha256": "c663c4351d0d43e69912805ad46fa73fd9645c699b27bbb81afd27eeb4f04df2"
+  },
+  "final_process_check": {
+    "owned_iris_running": [],
+    "other_iris_count": 0
+  }
+}

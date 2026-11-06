@@ -328,6 +328,14 @@ Perform the first reference and compatibility experiments in the emulated Indy e
 
 Desktop acceptance includes reliable window management, menus, file navigation, application launch, preferences, and session restart. Validate file changes made by native applications appearing in the desktop, and the ability to launch a host-native program from it.
 
+Desktop preferences use the original IRIX resource mechanism. The native
+session loads each user's `.Xresources` and `.Sgiresources`, and sets Xt's
+application resource search path to that user's per-host desktop directories.
+The original panels write those files; Xiri supplies no replacement settings
+daemon or schema. Backdrop and colour command-line overrides have been removed
+so saved settings can take effect. This is separate from 4Dwm's still-disabled
+application-session saving and restoration.
+
 Provide explicit adapters for system integration. An IRIX control panel that changes networking, accounts, storage, or power state cannot be assumed to control the new host correctly. Implement and test the relevant operation against host services before enabling it.
 
 ## Shared files and application launch

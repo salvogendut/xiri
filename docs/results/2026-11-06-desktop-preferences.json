@@ -1,0 +1,195 @@
+{
+  "schema": 1,
+  "status": "preferences-verified",
+  "run": ".work/desktop-preferences/ordinary-bculflrl",
+  "base_bundle": ".work/images/xiri-netbsd-desktop-20261105-multiuser",
+  "base_chd_sha256": "a800307d5b8a7ad7e47327115406a06814fd932bf26df1b5131e524e97cb0c12",
+  "reference": "IRIX 6.5.22m original panels and supplied Xsession.dt",
+  "persistence_runtime": {
+    "runtime/bin/xiri-session": "1dc33923ce7119a112b86c6cb3702c67fc62e3809ff17d452580a4ff1361911e",
+    "runtime/libexec/desktop-clients.sh": "a15fe72b6613c6b9b0ec42e508654eb177f810c3f2171466f7147190a48b713c"
+  },
+  "persistence": {
+    "status": "passed",
+    "checks": [
+      {
+        "user": "xiritest2",
+        "phase": "logout-login",
+        "resources": "*scheme:\tKeyWest\n4DWm*Desk 1.backgroundDescription:\t-xpm /usr/include/X11/bitmaps/sgidesktop/bg03.xpm -colors #b6b67a #baba7d #bebe83 #cece9a \n4DWm*curNewBackground:\t1\nXWsh*font:\t-adobe-courier-bold-r-normal--20-140-100-100-m-110-iso8859-1\nwinterm*font:\t-adobe-courier-bold-r-normal--20-140-100-100-m-110-iso8859-1\n",
+        "backdrop": "_SGI_DESKS_BACKGROUND_DESCRIPTION(STRING) = \"-xpm /usr/include/X11/bitmaps/sgidesktop/bg03.xpm -colors #b6b67a #baba7d #bebe83 #cece9a \"\n_SGI_DESKS_BACKGROUND(PIXMAP): pixmap id # 0x200051\n",
+        "files": {
+          "/usr/people/xiritest2/.Sgiresources": "4DWm*curNewBackground:\t1\n4DWm*Desk 1.backgroundDescription:\t-xpm /usr/include/X11/bitmaps/sgidesktop/bg03.xpm -colors #b6b67a #baba7d #bebe83 #cece9a \n*scheme:\tKeyWest\n"
+        },
+        "ownership": "xiritest2 xiritest2 600 /usr/people/xiritest2/.Sgiresources\n",
+        "behavior": "PREFERENCES_PASS focus=pointer clicked=1 follows=1 remains=0 move=outline before=500,200 held=500,200 released=580,250\n",
+        "identity": "SESSION user=xiritest2 uid=1237 groups=1237 1235 home=/usr/people/xiritest2 cwd=/usr/people/xiritest2 display=127.0.0.1:0 authority=default\n",
+        "background_pixels": "933d8c62bde1c36ede0f9f205bd60c0dfffde48e6be8c0588fb8277477d3847e",
+        "no_autostart_game": true
+      },
+      {
+        "user": "xiritest",
+        "phase": "logout-login",
+        "resources": "*scheme:\tInverness\n4Dwm*keyboardFocusPolicy:\texplicit\n4Dwm*moveOpaque:\tTrue\nXWsh*font:\t-adobe-courier-bold-r-normal--20-140-100-100-m-110-iso8859-1\nwinterm*font:\t-adobe-courier-bold-r-normal--20-140-100-100-m-110-iso8859-1\n",
+        "backdrop": "_SGI_DESKS_BACKGROUND_DESCRIPTION(STRING) = \"-xpm /usr/include/X11/bitmaps/sgidesktop/bg03.xpm -colors #467a7a #4b7e7e #518483 #669a9a \"\n_SGI_DESKS_BACKGROUND(PIXMAP): pixmap id # 0x400051\n",
+        "files": {
+          "/usr/people/xiritest/.Sgiresources": "4Dwm*keyboardFocusPolicy:\texplicit\n4Dwm*moveOpaque:\tTrue\n*scheme:\tInverness\n",
+          "/usr/people/xiritest/.desktop-xiri-indy/4DWm": "*curNewBackground:\t1\n*Desk 1.backgroundDescription:\t-xpm /usr/include/X11/bitmaps/sgidesktop/bg03.xpm -colors #467a7a #4b7e7e #518483 #669a9a \n"
+        },
+        "ownership": "xiritest xiritest 600 /usr/people/xiritest/.Sgiresources\nxiritest xiritest 600 /usr/people/xiritest/.desktop-xiri-indy/4DWm\n",
+        "behavior": "PREFERENCES_PASS focus=explicit clicked=1 follows=0 remains=1 move=opaque before=500,200 held=580,250 released=580,250\n",
+        "identity": "SESSION user=xiritest uid=1234 groups=1234 1235 home=/usr/people/xiritest cwd=/usr/people/xiritest display=127.0.0.1:0 authority=default\n",
+        "background_pixels": "b8221ae0db59d37d110a8394bdeade1dbffbe141106723aebbe4ce4f2f1c53ab",
+        "no_autostart_game": true
+      },
+      {
+        "user": "xiritest2",
+        "phase": "reboot",
+        "resources": "*scheme:\tKeyWest\n4DWm*Desk 1.backgroundDescription:\t-xpm /usr/include/X11/bitmaps/sgidesktop/bg03.xpm -colors #b6b67a #baba7d #bebe83 #cece9a \n4DWm*curNewBackground:\t1\nXWsh*font:\t-adobe-courier-bold-r-normal--20-140-100-100-m-110-iso8859-1\nwinterm*font:\t-adobe-courier-bold-r-normal--20-140-100-100-m-110-iso8859-1\n",
+        "backdrop": "_SGI_DESKS_BACKGROUND_DESCRIPTION(STRING) = \"-xpm /usr/include/X11/bitmaps/sgidesktop/bg03.xpm -colors #b6b67a #baba7d #bebe83 #cece9a \"\n_SGI_DESKS_BACKGROUND(PIXMAP): pixmap id # 0x400051\n",
+        "files": {
+          "/usr/people/xiritest2/.Sgiresources": "4DWm*curNewBackground:\t1\n4DWm*Desk 1.backgroundDescription:\t-xpm /usr/include/X11/bitmaps/sgidesktop/bg03.xpm -colors #b6b67a #baba7d #bebe83 #cece9a \n*scheme:\tKeyWest\n"
+        },
+        "ownership": "xiritest2 xiritest2 600 /usr/people/xiritest2/.Sgiresources\n",
+        "behavior": "PREFERENCES_PASS focus=pointer clicked=1 follows=1 remains=0 move=outline before=500,200 held=500,200 released=580,250\n",
+        "identity": "SESSION user=xiritest2 uid=1237 groups=1237 1235 home=/usr/people/xiritest2 cwd=/usr/people/xiritest2 display=127.0.0.1:0 authority=default\n",
+        "background_pixels": "933d8c62bde1c36ede0f9f205bd60c0dfffde48e6be8c0588fb8277477d3847e",
+        "no_autostart_game": true
+      },
+      {
+        "user": "xiritest",
+        "phase": "reboot",
+        "resources": "*scheme:\tInverness\n4Dwm*keyboardFocusPolicy:\texplicit\n4Dwm*moveOpaque:\tTrue\nXWsh*font:\t-adobe-courier-bold-r-normal--20-140-100-100-m-110-iso8859-1\nwinterm*font:\t-adobe-courier-bold-r-normal--20-140-100-100-m-110-iso8859-1\n",
+        "backdrop": "_SGI_DESKS_BACKGROUND_DESCRIPTION(STRING) = \"-xpm /usr/include/X11/bitmaps/sgidesktop/bg03.xpm -colors #467a7a #4b7e7e #518483 #669a9a \"\n_SGI_DESKS_BACKGROUND(PIXMAP): pixmap id # 0x400051\n",
+        "files": {
+          "/usr/people/xiritest/.Sgiresources": "4Dwm*keyboardFocusPolicy:\texplicit\n4Dwm*moveOpaque:\tTrue\n*scheme:\tInverness\n",
+          "/usr/people/xiritest/.desktop-xiri-indy/4DWm": "*curNewBackground:\t1\n*Desk 1.backgroundDescription:\t-xpm /usr/include/X11/bitmaps/sgidesktop/bg03.xpm -colors #467a7a #4b7e7e #518483 #669a9a \n"
+        },
+        "ownership": "xiritest xiritest 600 /usr/people/xiritest/.Sgiresources\nxiritest xiritest 600 /usr/people/xiritest/.desktop-xiri-indy/4DWm\n",
+        "behavior": "PREFERENCES_PASS focus=explicit clicked=1 follows=0 remains=1 move=opaque before=500,200 held=580,250 released=580,250\n",
+        "identity": "SESSION user=xiritest uid=1234 groups=1234 1235 home=/usr/people/xiritest cwd=/usr/people/xiritest display=127.0.0.1:0 authority=default\n",
+        "background_pixels": "b8221ae0db59d37d110a8394bdeade1dbffbe141106723aebbe4ce4f2f1c53ab",
+        "no_autostart_game": true
+      }
+    ],
+    "second_saved": "4DWm*curNewBackground:\t1\n4DWm*Desk 1.backgroundDescription:\t-xpm /usr/include/X11/bitmaps/sgidesktop/bg03.xpm -colors #b6b67a #baba7d #bebe83 #cece9a \n*scheme:\tKeyWest\n",
+    "boot_before": "kern.boottime = Fri Nov  6 06:34:39 2026\n",
+    "boot_after": "kern.boottime = Fri Nov  6 06:58:57 2026\n"
+  },
+  "final_runtime_controls": {
+    "status": "passed",
+    "runtime": {
+      "runtime/bin/xiri-session": "1dc33923ce7119a112b86c6cb3702c67fc62e3809ff17d452580a4ff1361911e",
+      "runtime/libexec/desktop-clients.sh": "debc6b50bb6dfcbf02fd34c3459a802b21e1dd5fd16ee7968187d749dabe666c"
+    },
+    "checks": [
+      {
+        "user": "xiritest",
+        "resources": "*scheme:\tInverness\n4Dwm*keyboardFocusPolicy:\texplicit\n4Dwm*moveOpaque:\tTrue\nXWsh*font:\t-adobe-courier-bold-r-normal--20-140-100-100-m-110-iso8859-1\nwinterm*font:\t-adobe-courier-bold-r-normal--20-140-100-100-m-110-iso8859-1\n",
+        "background": "_SGI_DESKS_BACKGROUND_DESCRIPTION(STRING) = \"-xpm /usr/include/X11/bitmaps/sgidesktop/bg03.xpm -colors #467a7a #4b7e7e #518483 #669a9a \"\n",
+        "behavior": "PREFERENCES_PASS focus=explicit clicked=1 follows=0 remains=1 move=opaque before=500,200 held=580,250 released=580,250\n",
+        "no_autostart_game": true
+      },
+      {
+        "user": "xiritest2",
+        "resources": "*scheme:\tKeyWest\n4DWm*Desk 1.backgroundDescription:\t-xpm /usr/include/X11/bitmaps/sgidesktop/bg03.xpm -colors #b6b67a #baba7d #bebe83 #cece9a \n4DWm*curNewBackground:\t1\nXWsh*font:\t-adobe-courier-bold-r-normal--20-140-100-100-m-110-iso8859-1\nwinterm*font:\t-adobe-courier-bold-r-normal--20-140-100-100-m-110-iso8859-1\n",
+        "background": "_SGI_DESKS_BACKGROUND_DESCRIPTION(STRING) = \"-xpm /usr/include/X11/bitmaps/sgidesktop/bg03.xpm -colors #b6b67a #baba7d #bebe83 #cece9a \"\n",
+        "behavior": "PREFERENCES_PASS focus=pointer clicked=1 follows=1 remains=0 move=outline before=500,200 held=500,200 released=580,250\n",
+        "no_autostart_game": true
+      }
+    ],
+    "solid": {
+      "status": "passed",
+      "numeric_color": "#7d9ec0",
+      "observed_pixel": "7c9cbe",
+      "evidence": "_SGI_DESKS_BACKGROUND_DESCRIPTION(STRING) = \"-solid #7d9ec0\"\n_SGI_DESKS_BACKGROUND(PIXEL) = 0xbe9c7c\nSESSION user=xiritest uid=1234 groups=1234 1235 home=/usr/people/xiritest cwd=/usr/people/xiritest display=127.0.0.1:0 authority=default\n_SGI_DESKS_BACKGROUND(PIXEL) = 0xbe9c7c\n_SGI_DESKS_BACKGROUND_DESCRIPTION(STRING) = \"-solid #7d9ec0\"\n",
+      "source": "saved panel choice with only the unsupported colour name replaced for the control",
+      "colour_fidelity": "Observed #7c9cbe for requested #7d9ec0; exact colour fidelity is not claimed"
+    }
+  },
+  "solid": {
+    "status": "passed",
+    "named_solid": {
+      "selected_through_original_panel": true,
+      "relogin_ready": true,
+      "colour": "black: unsupported sgiLightBlue name"
+    },
+    "numeric_control": {
+      "saved_description": "-solid #7d9ec0",
+      "observed_pixel": "#7c9cbe",
+      "relogin_ready": true
+    },
+    "no_xmahjongg_autostart": true,
+    "scope": "solid startup and visible fill only; colour-name support and exact colour fidelity remain open"
+  },
+  "native_pointer_fixture": {
+    "path": "lab/irix-desktop-behavior/preferences-probe.c",
+    "sha256": "09011d19bee99a6332e1ba2f096b3fa4418f7b4ed21a266e393109b19ec68eae"
+  },
+  "menu_alias": {
+    "source": "original Toolchest Desktop/Customize/Color Schemes",
+    "link": "/emul/irix/usr/sbin/schemebr",
+    "target": "colorscheme",
+    "executing_uid": 1234,
+    "visible_window": "Color Scheme Browser",
+    "binary_sha256": "e1682a562b047a813c10006549202c09b1b6d2ad1d3a7900fd7424bc9a3c4fe7"
+  },
+  "screenshots": {
+    "reboot-xiritest": {
+      "path": "docs/results/images/2026-11-06-preferences-reef.png",
+      "sha256": "1c817547ab64cb0b866c11da770af09ae8e048019b26614fbc982ec8704842cb",
+      "source": ".work/desktop-preferences/ordinary-bculflrl/reboot-xiritest.png"
+    },
+    "reboot-xiritest2": {
+      "path": "docs/results/images/2026-11-06-preferences-sand.png",
+      "sha256": "08a553bb437aa5f28ba36df05f23d547cdc61d7249ec77ebac5d92f72e5ead21",
+      "source": ".work/desktop-preferences/ordinary-bculflrl/reboot-xiritest2.png"
+    },
+    "toolchest-color-schemes": {
+      "path": "docs/results/images/2026-11-06-preferences-color-schemes.png",
+      "sha256": "33a9876021a56d364a35bf48f6b354e86be50f53facceb8449be2b14bd480c19",
+      "source": ".work/desktop-preferences/ordinary-bculflrl/toolchest-color-schemes.png"
+    },
+    "numeric-solid": {
+      "path": "docs/results/images/2026-11-06-preferences-solid.png",
+      "sha256": "bdb0702ba027b78ca2dbdeeb19be3089f49ba6a1f6e02360c87b33987a05d47f",
+      "source": ".work/desktop-preferences/ordinary-bculflrl/numeric-solid.png"
+    }
+  },
+  "evidence": {
+    ".work/desktop-preferences/ordinary-bculflrl/baseline-relogin.txt": "fe2e82debf10f904dbdb6873b5f9902ac2003db850c713ba4361b84fc911cffc",
+    ".work/desktop-preferences/ordinary-bculflrl/all-preferences-saved.txt": "b1105e71ece8078bcc4ad1d191de864aac49cf431d7028498a9740e1ee45714b",
+    ".work/desktop-preferences/ordinary-bculflrl/persistence.json": "16ead43d49d74ba4098d907253dab087f31efd07bb37cd7cfbe24e78f901fa07",
+    ".work/desktop-preferences/ordinary-bculflrl/final-preference-check.json": "8793e5fea0c29c3b419a1d86ef5d744b773e994ac775f9ca26543508d19ee3af",
+    ".work/desktop-preferences/ordinary-bculflrl/solid-result.json": "c0bee14b4cab0eedd99ea2936481fd29e995898de43e495064dd3bc72b701909",
+    ".work/desktop-preferences/ordinary-bculflrl/solid-startup-baseline.txt": "799ab0607edb4efffd8b3eed197abfd9bff9b1cd840a5367a9ac08ac6b01738b",
+    ".work/desktop-preferences/ordinary-bculflrl/solid-baseline-guard.txt": "537d5eba08606278fb0e624b007106d94e5064dc26c8abd4402f1083d1a7ee83",
+    ".work/desktop-preferences/ordinary-bculflrl/solid-fixed-login.txt": "e6d8dbf2aa387d76da23d8a63f6a96198cc086fa16d29ef02001635b4eeb4818",
+    ".work/desktop-preferences/ordinary-bculflrl/numeric-solid.txt": "7643c6a400b137cea836a061b39b9ca6d246e4fe859d32cc82b719d2bbe05adf",
+    ".work/desktop-preferences/ordinary-bculflrl/background-window-identity.txt": "6f44c5585775e0dbb3ebb0ccf5d7744ee1f768e3e2ec90503a37429ff3897f03",
+    ".work/desktop-preferences/ordinary-bculflrl/toolchest-color-schemes.txt": "b7bcd33b650111aa2907590dee94ffa20b442fb144bb8b492b0aac74914dbc11",
+    ".work/desktop-preferences/ordinary-bculflrl/schemebr-after.txt": "ed8c886737a9715717b33597c46cf1ed76970de348884548bada0f1723342c5d",
+    ".work/desktop-preferences/ordinary-bculflrl/candidate-files.txt": "5b9712d9f0868a3c185180744ae65bfd101618b740be6d0711c535137851c306",
+    ".work/desktop-preferences/ordinary-bculflrl/final-files.txt": "2918f5f8787dec17bb1ebb338e09d5dac0d6fd90fa524b87fe0f059ac5f7a776",
+    ".work/desktop-preferences/ordinary-bculflrl/result.json": "76f0dd9360c5798c5dfb2227ed84b1449bd556b0c7ead874d42b8e91f055757d"
+  },
+  "clean_shutdown": true,
+  "base_unchanged": true,
+  "limitations": [
+    "Application-session saving and restoration remain disabled.",
+    "Window Settings restart prompt deferred with Cancel; settings applied on the next login.",
+    "Solid default sgiLightBlue is unresolved and renders black; its colour picker needs follow-up. Numeric #7d9ec0 gives observed #7c9cbe, so exact colour fidelity is not claimed.",
+    "Other preference panels, formats and custom colour schemes remain unqualified."
+  ],
+  "fixture_corrections": [
+    "Background creates hidden 1x1 helpers sharing the panel title. The initial name-only mapped-state check was invalid; querying the large panel ID verifies it is viewable.",
+    "A numeric solid check initially assumed byte-exact colour matching. It now records the actual value and qualifies visible fill/startup only."
+  ],
+  "host_checks": {
+    "command": "python3 -m unittest discover -s tests -v",
+    "tests": 55,
+    "status": "passed",
+    "log": ".work/desktop-preferences/host-tests-solid-final.log",
+    "sha256": "feb0dbf8334e1e943cb3001e0e6adba5fcfe3f35c0803b93b8930b2f1f0dc6ff"
+  },
+  "profile_note": "Both backdrop/scheme choices and the primary user explicit-focus/opaque-move override were saved through the original panels. The second user retains default pointer-focus/outline-move behavior, checking that the first user overrides do not leak across logins."
+}

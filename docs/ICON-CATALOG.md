@@ -141,8 +141,8 @@ retained; untested behavior is not promoted to a pass.
 | --- | --- | --- |
 | `accessibility` | `/usr/sbin/accessx` | **Error dialog.** Cannot save the active AccessX profile; xmodmap helper is also absent. |
 | `audiopanel` | `/usr/sbin/audiopanel` | **Error dialog.** Reports that this machine has no audio driver. |
-| `background` | `/usr/sbin/background` | **Main window opens.** Background Setting renders its pattern list and preview; Apply and persistence are untested. |
-| `colorscheme` | `/usr/sbin/colorscheme` | **Window observed.** Color Scheme Browser. Use and normal exit remain untested. |
+| `background` | `/usr/sbin/background` | **Apply and persistence pass.** Original Reef and Sand choices survive logout/login and reboot for two users, with matching saved files and backdrop pixels. [Desktop preferences](results/2026-11-06-desktop-preferences.md). |
+| `colorscheme` | `/usr/sbin/colorscheme` | **Apply and persistence pass.** Inverness and KeyWest remain distinct for two users across logout/login and reboot. [Desktop preferences](results/2026-11-06-desktop-preferences.md). |
 | `desktop` | `/usr/sbin/desktop` | **Main window opens.** Desktop Settings renders its controls; changing settings and persistence are untested. |
 | `display` | `/usr/bin/X11/xsetmon` | **Error dialog.** Reports that the X display lacks the XSGIvc extension required by xsetmon. |
 | `iconviews` | `/usr/sbin/fmprefs` | **Window observed.** Default Layout for Icon Views. Use and normal exit remain untested. |
@@ -156,7 +156,7 @@ retained; untested behavior is not promoted to a pass.
 | `utilities` | `/usr/sbin/dtUtilities` | **Window observed.** Default Viewer & Editor Utilities. Use and normal exit remain untested. |
 | `videopanel` | `/usr/sbin/videopanel` | **Window observed.** vcp. Use and normal exit remain untested. |
 | `webcontrol` | `/root/usr/sbin/webcontrol` | Unresolved target in the original source inventory; no launch attempted. |
-| `windows` | `/usr/sbin/windows` | **Window observed.** Window Settings. Use and normal exit remain untested. |
+| `windows` | `/usr/sbin/windows` | **Focus/movement preferences pass.** Click-to-focus with opaque dragging and point-to-focus with outline dragging survive logout/login and reboot. Native pointer events verify actual behavior. Application-session saving/restoration remains disabled. [Desktop preferences](results/2026-11-06-desktop-preferences.md). |
 
 ## Demos (2)
 

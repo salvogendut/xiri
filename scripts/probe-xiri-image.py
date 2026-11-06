@@ -175,6 +175,14 @@ def main():
                 result['native_null_device'] = cmd('test -c /emul/irix/dev/null && '
                     'test "$(stat -f %Hr /emul/irix/dev/null)" = "$(stat -f %Hr /dev/null)" && '
                     'test "$(stat -f %Lr /emul/irix/dev/null)" = "$(stat -f %Lr /dev/null)"')
+                # Older images include this test workload in startup. New images
+                # leave it to the user, so start it explicitly when absent.
+                cmd(shlex.join(['./image-type', '127.0.0.1:0', 'winterm',
+                    'if test ! -s "$XIRI_SESSION_DIR/xmahjongg.pid"; then '
+                    '/emul/irix/usr/freeware/bin/xmahjongg >"$XIRI_SESSION_DIR/xmahjongg.out" '
+                    '2>"$XIRI_SESSION_DIR/xmahjongg.err" & echo $! >"$XIRI_SESSION_DIR/xmahjongg.pid"; fi\n']))
+                cmd('(n=0; until test -s "$job/xmahjongg.pid" && xwininfo -name xmahjongg >/dev/null; do '
+                    'n=$((n+1)); test "$n" -lt 60 || exit 1; sleep 1; done)')
                 old_pid = get('cat "$job/xmahjongg.pid"').decode().strip()
                 assert old_pid.isdigit()
                 cmd('kill '+old_pid+'; (n=0; while pgrep -x xmahjongg >/dev/null; do '

@@ -9,6 +9,13 @@ Compatibility and desktop behavior remain incomplete. See the
 [current overview](../README.md), [rendering evidence](results/2026-11-03-newport-xmahjongg.md)
 and [historical checkpoints](HISTORY.md).
 
+The [desktop-preferences cycle](results/2026-11-06-desktop-preferences.md)
+restores each user's backdrop, colour scheme, focus policy and window movement
+settings. Two distinct profiles pass logout/login and reboot checks, including
+native pointer tests and matching backdrop pixels. Xmahjongg now launches on
+demand. Next qualify saved application sessions and File Manager/Dumpster
+behavior; other control panels and backdrop formats remain separate.
+
 The agreed target remains the full original IRIX desktop on NetBSD and X.org,
 with modern software running natively. The [repository/workflow cleanup](results/2026-11-03-workflow-cleanup.md) is
 complete: the maintained `./xiri` commands and both desktop checks are qualified.
@@ -492,11 +499,13 @@ dependency candidates; a visible window alone does not complete these checks.
 - [x] Package the shell kernel, native null device and winterm HOME fix in a [new manual CHD](results/2026-11-02-irix-shell-image.md); verify graphical boot/logout and a fresh catalog launch from the CHD.
 - [ ] Qualify a complete xmahjongg game, later-login persistence, Dumpster operations and transient launch animation. Bounded accelerated hint/take, undo and resize/restore now pass. The **Freeware** double-click launch and opened/closed artwork cycle now pass. Evaluate the located original `launcheffect`/`waitmap` helpers separately; keep unresolved links and additional application runtime data explicit.
 - [ ] Later resume original IRIX `inst`, then Software Manager, to install **xmahjongg 3.6.1** from distribution media. Its original hooks must create the **Freeware** entry and icon/type rules; qualify installation history, upgrade and removal separately from file import. See the [software plan](IRIX-SOFTWARE.md).
-- [ ] Qualify persistent native accounts under `/usr/people/<username>` with shared native/IRIX access, generated desktop state and logout/login persistence. Original root sessions use `HOME=/`; avoid a second emulation-root copy of user homes.
+- [x] Qualify persistent native accounts under `/usr/people/<username>` with shared native/IRIX access, generated desktop state and logout/login persistence. The [multi-user result](results/2026-11-05-multiuser.md) covers two accounts. Original root sessions use `HOME=/`; avoid a second emulation-root copy of user homes.
 - [ ] Implement required service adapters, including the measured file-notification and launch behavior.
 - [x] Exercise native X test windows under original 4Dwm in the same native Xvfb session used by Toolchest and winterm.
 - [ ] Show a maintained host-native graphical application and an IRIX application in the same local session; qualify physical display output separately.
-- [ ] Verify normal window operations, file navigation, desktop updates, and saved preferences.
+- [x] Restore separate users' backdrop, colour scheme, focus and window-movement preferences across logout/login and reboot. [Preference result](results/2026-11-06-desktop-preferences.md).
+- [ ] Resolve SGI colour names under Xorg and qualify the Solid backdrop colour picker; its default `sgiLightBlue` currently renders black.
+- [ ] Complete file navigation, desktop updates, remaining window operations and other preference panels.
 - [ ] Repeat logout and login, checking process cleanup and restoration of expected state.
 - [x] Qualify the development session's graphical console login, repeated desktop start, both logout menus and client/service cleanup. [Usability result](results/2026-11-02-desktop-usability.md); IRIX session saving/restoration remains open.
 - [ ] Compare behavior with the reference installation and list component-level differences.

@@ -214,6 +214,36 @@ their sessions use the account that logged in.
 To return to a previous desktop, restore that user's saved `.xsession`.
 With no custom `.xsession`, the prepared image selects standard NetBSD ctwm.
 
+## Desktop preferences
+
+Each user changes their desktop through **Desktop → Customize** in Toolchest:
+**Background**, **Color Schemes**, and **Windows**. The same programs are in
+Icon Catalog's **ControlPanels** page. From winterm, their imported paths are
+`/emul/irix/usr/sbin/background`, `/emul/irix/usr/sbin/colorscheme`, and
+`/emul/irix/usr/sbin/windows`.
+
+The original panels save preferences in the current user's home. Xiri loads
+`~/.Xresources`, then `~/.Sgiresources`, and searches for application settings
+under `~/.desktop-<hostname>/`, `~/`, and
+`~/.desktop-<hostname>/0.0/`. A backdrop can be stored in that directory's
+`4DWm` file or as `4DWm*…` resources in `.Sgiresources`; preserve both when
+backing up a profile. No root-owned copy of a user's preferences is needed.
+Existing files take precedence over the desktop's initial appearance.
+
+Reef and Sand patterns are qualified. Solid fills also allow login, but the
+vendor's default `sgiLightBlue` name currently renders black under Xorg.
+SGI colour-name coverage and the Solid colour-picker display need follow-up;
+use one of the qualified patterns for now.
+
+If Window Settings asks to restart the window manager, choosing **Cancel**
+keeps the saved choice for the next login. Log out normally and log back in
+to apply it. **Save Windows & Desks** is still outside the supported scope:
+automatic application-session saving/restoration remains disabled. Preference
+restoration does not restore the previous collection of open applications.
+
+Xmahjongg is available from **Freeware** or winterm; it is no longer part of
+automatic desktop startup.
+
 ## Native accounts with the IRIX home layout
 
 Ordinary Xiri users use **`/usr/people/<username>`** as their native NetBSD

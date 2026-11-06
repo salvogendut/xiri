@@ -139,6 +139,18 @@ shutdown polling retains its last observation in `shutdown-dmesg.txt` and
 allows 300 seconds with ten-second intervals between reads, since each read
 pauses the guest.
 
+## Desktop preference checks
+
+Desktop preference changes have a separate
+[two-user check](../lab/irix-desktop-behavior/README.md#desktop-preference-checks):
+select settings in the original panels, log out/in, reboot, then compare
+saved files, visible backdrops and actual focus/drag behavior. The fixture
+checks both click/opaque and pointer/outline policies. Keep those test profiles
+in disposable overlays. The normal desktop no longer autostarts xmahjongg;
+catalog regression probes start their own initial instance explicitly.
+The [preference evidence](results/2026-11-06-desktop-preferences.md) records
+the original resource mechanism and remaining Solid colour-name limitation.
+
 ## IRIX module development
 
 The [module lab](../lab/irix-module/README.md) provides the separate

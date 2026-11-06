@@ -219,6 +219,30 @@ For the root manual fallback, stop xdm with `/etc/rc.d/xdm stop`, then run
 set `xdm=NO`, restore ttyE0 to `on`, and reboot. Do not run both display owners
 at the same time.
 
+## Per-user preferences
+
+`xiri-session` restores the original panels' settings before starting clients.
+It merges the configured default resources, the display's existing resources,
+`$HOME/.Xresources`, then `$HOME/.Sgiresources`. It sets
+`XUSERFILESEARCHPATH` to `$HOME/.desktop-$(hostname)/%N`, `$HOME/%N`, and
+`$HOME/.desktop-$(hostname)/0.0/%N`, followed by any inherited search path.
+The saved `4DWm` file and the global panel resources therefore survive xdm's
+display reset. Startup no longer overrides the chosen backdrop or window and
+Toolchest background colours. The numeric SGIDarkGray decal fallback remains
+because native Xorg lacks that vendor colour name.
+Startup accepts a published solid-background description as well as a
+backdrop pixmap; solid fills do not create a pixmap.
+
+The installer exposes `schemebr -> colorscheme` inside the imported
+`/emul/irix/usr/sbin` directory when the canonical name is absent. Toolchest
+uses `schemebr`; Icon Catalog uses `colorscheme`. Both run the same imported
+executable, without modifying its bytes or replacing an existing path.
+
+The session starts 4Dwm, the desktop file manager, Toolchest, winterm, xclock
+and Icon Catalog. Xmahjongg is launched on demand; the regression harness
+starts it explicitly for catalog checks. IRIX application-session saving is
+still disabled. See the [user instructions](../docs/IRIX-SOFTWARE.md#desktop-preferences).
+
 ## Existing prerequisites
 
 The installer supplies integration files only. The prepared image must
@@ -236,7 +260,7 @@ already contain:
 See the [copy ledger](../docs/IRIX-IMPORT.md),
 [service integration](../docs/results/2026-11-02-desktop-services.md) and
 [module image](../docs/results/2026-11-03-irix-module-image.md). Application
-compatibility, saved-session restoration, preferences and physical-hardware
+compatibility, saved-session restoration, additional preferences and physical-hardware
 acceptance remain independent work.
 
 ## Qualification

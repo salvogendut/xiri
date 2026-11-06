@@ -180,7 +180,11 @@ def main():
             if route == 'toolchest':
                 # An overlapping session must fail without touching the live one.
                 cmd("if su -l xiritest -c \"env DISPLAY='$DISPLAY' XAUTHORITY='$XAUTHORITY' /usr/local/bin/xiri-session\" >overlap.log 2>&1; then exit 1; fi; grep -q 'already has a window manager' overlap.log")
-                # Close the demonstration game and launch a new one from Freeware.
+                # Start the game explicitly for the launch/relaunch regression.
+                cmd(shlex.join(['./type', '127.0.0.1:0', 'winterm',
+                    '/emul/irix/usr/freeware/bin/xmahjongg >"$XIRI_SESSION_DIR/xmahjongg.out" '
+                    '2>"$XIRI_SESSION_DIR/xmahjongg.err" & echo $! >"$XIRI_SESSION_DIR/xmahjongg.pid"\n']))
+                wait_for('test -s "$job/xmahjongg.pid" && xwininfo -name xmahjongg >/dev/null',60)
                 old_pid = get('cat "$job/xmahjongg.pid"').strip()
                 cmd('kill '+old_pid)
                 wait_for('! pgrep -x xmahjongg >/dev/null',30)

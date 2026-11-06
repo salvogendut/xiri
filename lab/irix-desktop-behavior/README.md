@@ -62,3 +62,39 @@ commands in [the image guide](../../docs/XIRI-IMAGE.md#reuse-in-automated-work).
 The [current image report](../../docs/results/2026-11-02-desktop-behavior-image.md)
 records the concrete runs and checksums. Keep the previous qualified bundle
 until its replacement has passed.
+## Desktop preference checks
+
+The [preference result](../../docs/results/2026-11-06-desktop-preferences.md)
+covers two original-panel profiles across logout/login and reboot. Use
+Toolchest's **Desktop → Customize** or the **ControlPanels** catalog page to
+select a backdrop, scheme, keyboard focus policy and opaque/outline movement.
+Defer a window-manager restart prompt with Cancel, then log out and back in.
+Check the actual display and the files under that user's HOME; repeat after
+reboot and with another user to detect cross-user resource leakage.
+
+Build the native behavioral fixture inside NetBSD and run it in the target
+desktop's authenticated environment:
+
+```sh
+cc -O2 -Wall -Wextra -Werror -I/usr/X11R7/include preferences-probe.c \
+    -L/usr/X11R7/lib -Wl,-rpath,/usr/X11R7/lib -lX11 -lXtst -o preferences-probe
+./preferences-probe explicit opaque
+```
+
+For point-to-type and outline movement, use `./preferences-probe pointer outline`.
+The probe creates two temporary windows, uses real pointer/button events and
+checks focus plus window coordinates before, during and after a drag. It
+returns nonzero on a mismatch and removes its windows. Its two opposing
+profiles pass in the recorded session; saved strings alone are insufficient.
+
+Also check a Solid choice across login: unlike a pattern it has no pixmap.
+Read `_SGI_DESKS_BACKGROUND_DESCRIPTION` and check actual desktop readiness.
+The original `sgiLightBlue` name renders black in Xorg; a numeric-colour
+control isolates that gap from session startup. Exact colour fidelity and
+the Solid colour picker are not yet qualified.
+
+Background creates several windows with the same title, including hidden
+1×1 helpers. Identify the large, viewable window in `xwininfo -root -tree`
+and query its ID; `xwininfo -name` alone can falsely report an invisible panel.
+
+The earlier sections above preserve the original desktop-behavior experiment.

@@ -12,7 +12,7 @@ catalog launches and running-icon feedback. Native NetBSD Xorg drives a
 1280×1024 accelerated Newport display. It retains the xmahjongg texture
 correction qualified by the earlier [rendering and interaction checks](docs/results/2026-11-03-newport-xmahjongg.md).
 
-The [current manual CHD](docs/results/2026-11-05-multiuser.md) boots into native
+The [current manual CHD](docs/results/2026-11-06-desktop-preferences.md#manual-image) boots into native
 NetBSD xdm. Use **xiritest** / **xiritest** or **xiritest2** / **xiritest2** for
 separate IRIX desktops, or **netbsdtest** / **netbsdtest** for standard NetBSD ctwm.
 `netbsdtest` belongs to `wheel` and can run `su -` for a root login shell;
@@ -23,6 +23,10 @@ identifies each client's native UID and groups; desktop state and session logs
 remain private to that user. The
 [per-user desktop setup guide](docs/IRIX-SOFTWARE.md#selecting-the-irix-desktop-for-a-user)
 explains how any normal account selects the IRIX desktop and how to add users.
+The [desktop preferences guide](docs/IRIX-SOFTWARE.md#desktop-preferences)
+describes the original Background, Color Schemes and Windows panels and where
+each user keeps their settings. Backdrops, colour schemes, focus and window
+movement now persist across login and reboot. Xmahjongg starts only when launched.
 System services start at boot. NetBSD
 loads `compat_irix_o32.kmod` during boot and runs the desktop on a kernel
 without built-in IRIX support. The [core kernel](lab/native-wait/README.md)
@@ -83,7 +87,7 @@ query. The full pressure workload, forced encrypted swap readback and cold
 desktop checks pass.
 The replacement CHD remains unselected after a separate startup kernel crash;
 that intermittent fault is recorded for later investigation. The current
-multi-user bundle retains the preceding native-wait kernel and module.
+bundle retains the preceding native-wait kernel and module.
 
 The [preference cycle](docs/results/2026-11-04-irix-preferences.md) implements
 measured IRIX `rename` behavior. GNOME Terminal and gedit settings survive
@@ -130,7 +134,7 @@ available. The [earlier job-control image](docs/results/2026-11-05-native-wait-i
 adds the measured IRIX interfaces and native wait fix, then repeats cold
 xdm/4Dwm/ctwm, 345 text comparisons, shell jobs, winterm, catalog launch,
 logout/recovery and clean halt. Its separate 22-target replay also completes
-with verified cleanup. The current multi-user image retains its kernel and
+with verified cleanup. The current image retains its kernel and
 module; earlier bundles and manual state are preserved.
 
 ## Related repositories
@@ -194,7 +198,10 @@ Use the `xiri` integration branches for both forks, following the
 
 Compatibility is incomplete. The reproduced Type1 collapse is corrected;
 winterm keeps the verified NetBSD bitmap Courier default. Broader graphics operations,
-Dumpster actions, preferences and session persistence need work. The
+Dumpster actions, other preference panels and application-session restoration
+need work. Backdrop, colour scheme, focus and movement preferences now survive
+logout/login and reboot for two users; see the
+[desktop-preferences result](docs/results/2026-11-06-desktop-preferences.md). The
 [GIMP checkpoint](docs/results/2026-11-03-irix-gimp.md) covers basic editing
 and XCF/PNG round trips; large images and the wider
 plug-in collection remain open. xosview

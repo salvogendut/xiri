@@ -49,7 +49,7 @@ Suggested manual checks:
 - Run stty size, resize the terminal, and run stty size again. Dimensions
   should follow the visible character grid. Type exit in the extra terminal;
   its window should close without ending the desktop.
-- Close the initial xmahjongg, then double-click its Freeware catalog entry.
+- Double-click xmahjongg in Freeware; close any existing instance first.
 - Check running-icon feedback, granite, filesystem/home and Dumpster icons.
 - Log out through both IRIX menus, logging in again between checks.
 - Log in as netbsdtest, use the native terminal/ctwm, then return to xiritest.

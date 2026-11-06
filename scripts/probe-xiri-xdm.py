@@ -230,6 +230,13 @@ def main():
             after_logout(guest, d, r)
 
     def catalog_launch():
+        # The game is a test workload, not part of ordinary desktop startup.
+        # Retained older images may already have started that first instance.
+        cmd(shlex.join(['./type', '127.0.0.1:0', 'winterm',
+            'if test ! -s "$XIRI_SESSION_DIR/xmahjongg.pid"; then '
+            '/emul/irix/usr/freeware/bin/xmahjongg >"$XIRI_SESSION_DIR/xmahjongg.out" '
+            '2>"$XIRI_SESSION_DIR/xmahjongg.err" & echo $! >"$XIRI_SESSION_DIR/xmahjongg.pid"; fi\n']))
+        wait('test -s "$job/xmahjongg.pid" && xwininfo -name xmahjongg >/dev/null',60)
         old_pid=get('cat "$job/xmahjongg.pid"').strip();assert old_pid.isdigit()
         cmd('kill '+old_pid)
         wait("! pgrep -u 1234 -f '^/emul/irix/usr/freeware/bin/xmahjongg( |$)'",30)
@@ -344,6 +351,9 @@ def main():
             cmd('cd /cdrom && sha256 -c SUPPORT >/root/xdm-support.log && cd /root/xdm-test',1800)
             r['support_files_verified']=support
             cmd('test -f /usr/people/xiritest/.xsession && test ! -e /home/netbsdtest/.xsession && id netbsdtest')
+            if '/emul/irix/usr/sbin/schemebr' in previous['installed_files']:
+                cmd('test "$(readlink /emul/irix/usr/sbin/schemebr)" = colorscheme')
+                r['color_scheme_alias'] = 'colorscheme'
             r['native_control']=cmd('/root/irix-desktop/native-o32; test "$?" = 37')
         else:
             cmd('cp -R /cdrom/runtime . && cd runtime && make && sh install.sh --enable-xdm && cd ..',300)
@@ -408,8 +418,9 @@ def main():
         for route in ['toolchest','root-menu']:
             login(); entry = ready(); survivors('during-'+route); capture('xdm-desktop-'+route)
             if route == 'toolchest':
-                cmd('kill $(cat "$job/xmahjongg.pid")')
-                wait("! pgrep -u 1234 -f '^/emul/irix/usr/freeware/bin/xmahjongg( |$)'",30)
+                # Keep this probe usable with retained images that autostarted
+                # the demonstration game over the Toolchest.
+                cmd('if test -s "$job/xmahjongg.pid"; then kill "$(cat "$job/xmahjongg.pid")"; fi')
                 guest.monitor('ptr click 14 39'); time.sleep(2); guest.monitor('ptr click 189 243')
             else:
                 guest.monitor('ptr move 1150 250'); guest.monitor('ptr down right'); time.sleep(2)
@@ -454,6 +465,8 @@ def main():
         paths += ['/etc/rc.conf.d/'+x for x in ['xiri_devices','xiri_famd','rpcbind','xdm']]
         if not args.bundle or '/etc/xiri/Xresources' in previous['installed_files']:
             paths.append('/etc/xiri/Xresources')
+        if 'color_scheme_alias' in r:
+            paths.append('/emul/irix/usr/sbin/schemebr')
         if 'terminal_font' in r:
             paths += [r['terminal_font']['native_file'],
                       '/usr/X11R7/lib/modules/drivers/newport_drv.so']

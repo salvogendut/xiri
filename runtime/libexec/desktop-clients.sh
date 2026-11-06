@@ -28,10 +28,7 @@ observe()
 observe wm /emul/irix/usr/bin/X11/4Dwm -display "$DISPLAY" \
     -xrm "*configFile: $job/4Dwmrc" \
     -xrm '*SG_useBackgrounds: true' \
-    -xrm '*Global*backgroundDescription: -bitmap /usr/include/X11/bitmaps/granite -bg #69b5b5 -fg #868686' \
-    -xrm '*defaultBackgroundDescription: -bitmap /usr/include/X11/bitmaps/granite -bg #69b5b5 -fg #868686' \
-    -xrm '*SG_manageSession: false' -xrm '*SG_autoSave: false' \
-    -xrm '*background: #aaaaaa' -xrm '*activeBackground: #c5c1aa' &
+    -xrm '*SG_manageSession: false' -xrm '*SG_autoSave: false' &
 tries=0
 until /usr/local/libexec/xiri/x11-check ready; do
     tries=$((tries+1))
@@ -43,19 +40,21 @@ until /usr/local/libexec/xiri/x11-check ready; do
     sleep 1
 done
 tries=0
-until xprop -display "$DISPLAY" -root _SGI_DESKS_BACKGROUND >"$job/backdrop-ready.txt" 2>&1 &&
-    grep -Eq 'pixmap id # 0x[1-9a-f][0-9a-f]*' "$job/backdrop-ready.txt"; do
+# A solid background publishes its description but has no backdrop pixmap.
+until xprop -display "$DISPLAY" -root _SGI_DESKS_BACKGROUND _SGI_DESKS_BACKGROUND_DESCRIPTION >"$job/backdrop-ready.txt" 2>&1 &&
+    grep -Eq 'pixmap id # 0x[1-9a-f][0-9a-f]*|_SGI_DESKS_BACKGROUND_DESCRIPTION\(STRING\) = "-solid ' "$job/backdrop-ready.txt"; do
     tries=$((tries+1))
     if test "$tries" -ge 60 || test -f "$job/wm.exit"; then
-        echo '4Dwm did not publish its backdrop pixmap; check the granite resource.' >&2
+        echo '4Dwm did not publish its background; check the saved background and its resources.' >&2
         touch "$job/logout"
         exit 1
     fi
     sleep 1
 done
 observe background /emul/irix/usr/sbin/fm -b &
+# Xorg lacks the vendor's SGIDarkGray name; this is its numeric equivalent.
 observe toolchest /emul/irix/usr/bin/X11/toolchest -display "$DISPLAY" \
-    -geometry +10+10 -xrm '*background: #c1c1c1' -xrm '*decalForeground: #555555' \
+    -geometry +10+10 -xrm '*decalForeground: #555555' \
     /usr/local/share/xiri/toolchest.chestrc &
 observe winterm /bin/sh /emul/irix/usr/sbin/winterm -name winterm \
     -title winterm -geometry 80x24+10+180 \
@@ -63,5 +62,4 @@ observe winterm /bin/sh /emul/irix/usr/sbin/winterm -name winterm \
 observe xclock /emul/irix/usr/bin/X11/xclock -display "$DISPLAY" \
     -update 1 -geometry 180x180+820+20 -bg gray -fg black -bd black -hd black -hl black &
 observe iconcatalog /emul/irix/usr/sbin/iconcatalog -geometry 600x300+400+450 &
-observe xmahjongg /emul/irix/usr/freeware/bin/xmahjongg &
 wait
