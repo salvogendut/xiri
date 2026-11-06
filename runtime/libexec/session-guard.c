@@ -155,6 +155,11 @@ int main(int argc, char **argv)
     long duration = strtol(argv[1], &end, 10);
     if (errno || *end || duration < 0 || duration > 86400000) return 2;
     const char *stop_file = getenv("XIRI_SESSION_STOP_FILE");
+    const char *save_env = getenv("XIRI_SESSION_SAVE");
+    char *save_program = save_env ? strdup(save_env) : NULL;
+    if ((save_env && !save_program) || unsetenv("XIRI_SESSION_SAVE")) return 2;
+    /* Only this desktop guard owns the save hook. A nested guard used for
+     * one terminal/application must not end or save the entire desktop. */
     struct sigaction sa;
     memset(&sa, 0, sizeof(sa));
     sa.sa_handler = stop; sigemptyset(&sa.sa_mask);
@@ -176,6 +181,8 @@ int main(int argc, char **argv)
     int status = 0, finished = 0, failed = 0, phase = 0, final_check = 0;
     long long start = now(), deadline = duration ? start + duration : LLONG_MAX;
     long long stopping = 0;
+    pid_t saver = -1;
+    long long saving_since = 0;
     const char *reason = "leader-exit";
     for (;;) {
         failed |= events(kq);
@@ -196,8 +203,33 @@ int main(int argc, char **argv)
             reason = failed ? "tracking-error" : requested ? "signal" : finished ? "leader-exit" :
                      now() >= deadline ? "timeout" : "logout";
             phase = 1; stopping = now();
+            /* Let the window manager save while its clients still exist.
+             * The helper and its descendants are tracked by this same guard.
+             * Keep draining events, and retain a bounded cleanup path even
+             * when the X server or an application does not respond. */
+            if (!failed && !finished && save_program && *save_program == '/') {
+                saver = fork();
+                if (saver == 0) {
+                    close(kq);
+                    execl(save_program, save_program, (char *)NULL);
+                    perror("session save exec"); _exit(126);
+                }
+                if (saver > 0) { phase = -1; saving_since = now(); }
+                else perror("session save fork");
+            }
         }
-        if (phase) {
+        if (phase == -1) {
+            int saved_status = 0;
+            pid_t done = waitpid(saver, &saved_status, WNOHANG);
+            if (done == saver || (done < 0 && errno != EINTR) || failed ||
+                now() - saving_since >= 15000) {
+                printf("SESSION_SAVE completed=%d exit=%d elapsed=%lld\n", done == saver,
+                    done == saver && WIFEXITED(saved_status) ? WEXITSTATUS(saved_status) : -1,
+                    now() - saving_since);
+                phase = 1; stopping = now();
+            }
+        }
+        if (phase > 0) {
             if (now() - stopping >= 1000) phase = 2;
             failed |= signal_members(phase == 1 ? SIGTERM : SIGKILL);
             if (now() - stopping >= 6000) {
@@ -216,7 +248,7 @@ int main(int argc, char **argv)
         leader, finished && WIFEXITED(status) ? WEXITSTATUS(status) : -1,
         finished && WIFSIGNALED(status) ? WTERMSIG(status) : 0, phase != 0,
         alive == 0, !failed, total, alive, reason, (unsigned)getuid(), (unsigned)getgid(), now()-start);
-    close(kq); free(members);
+    close(kq); free(members); free(save_program);
     if (failed || alive) return 2;
     if (strcmp(reason, "leader-exit")) return 0;
     return WIFEXITED(status) ? WEXITSTATUS(status) : 128 + WTERMSIG(status);

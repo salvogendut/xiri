@@ -333,8 +333,12 @@ session loads each user's `.Xresources` and `.Sgiresources`, and sets Xt's
 application resource search path to that user's per-host desktop directories.
 The original panels write those files; Xiri supplies no replacement settings
 daemon or schema. Backdrop and colour command-line overrides have been removed
-so saved settings can take effect. This is separate from 4Dwm's still-disabled
-application-session saving and restoration.
+so saved settings can take effect. Original `4Dwm -launch` also owns saved
+application sessions. The native supervisor requests `end_session` through
+the imported `tellwm` and waits for 4Dwm's `_SGI_SESSION_PROPERTY` deletion
+before cleanup. A bounded helper preserves logout if saving fails. Each
+restored winterm obtains its native shell handoff from the current session
+environment, rather than retaining a previous login's temporary pathname.
 
 SGI colour names use Xlib's existing Xcms mechanism. Each Xiri session derives
 a private database from the imported `rgb.txt`, exports `XCMSDB`, and leaves
@@ -424,7 +428,7 @@ Repeat key milestones on the physical Indy before claiming hardware support. Phy
 
 Publish support by machine configuration, desktop component, and application version. Keep the kernel changes small enough to rebase regularly, and pursue upstreamable driver fixes to reduce the project's maintenance burden.
 
-The [4Dwm loader checkpoint](results/2026-11-01-irix-elfmap-subpage.md) now handles the two 4 KiB data boundaries and passes 750 mapping/limit checks. The [fixed/local mmap checkpoint](results/2026-11-01-irix-mmap-local.md) now also clears GL initialization, with 660 mapping cases and native page-zero controls. The [measured PRDA checkpoint](results/2026-11-01-irix-prda.md) now clears that libc fault, with 80 executions / 180 records plus fork and native-exec controls. The [4Dwm session](results/2026-11-01-irix-4dwm.md) now passes reparenting, pointer focus, key delivery and dragging alongside Toolchest and a working winterm shell. Session saving is explicitly disabled; desks, restoration and complete desktop services remain open.
+The [4Dwm loader checkpoint](results/2026-11-01-irix-elfmap-subpage.md) now handles the two 4 KiB data boundaries and passes 750 mapping/limit checks. The [fixed/local mmap checkpoint](results/2026-11-01-irix-mmap-local.md) now also clears GL initialization, with 660 mapping cases and native page-zero controls. The [measured PRDA checkpoint](results/2026-11-01-irix-prda.md) now clears that libc fault, with 80 executions / 180 records plus fork and native-exec controls. The [4Dwm session](results/2026-11-01-irix-4dwm.md) now passes reparenting, pointer focus, key delivery and dragging alongside Toolchest and a working winterm shell. That initial checkpoint disabled session saving. The later [saved-session cycle](results/2026-11-06-desktop-sessions.md) enables original continuous/explicit saves and tested client/layout restoration; additional desks and complete desktop services remain open.
 
 The current development runtime is also packaged as a [reusable NetBSD CHD](XIRI-IMAGE.md).
 It persists the compatibility tree, native font directory and session helpers.

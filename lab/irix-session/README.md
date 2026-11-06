@@ -11,6 +11,12 @@ and signal shutdown, while an unrelated same-user shell stays alive. All
 recorded fixture processes must be gone (or already-dead zombies), and the
 guard must report successful tracking with no live descendants.
 
+The saved-session extension also checks that a save hook sees live clients,
+that a stalled hook reaches bounded cleanup, and that a nested supervisor
+does not inherit the desktop's save hook. The unrelated shell must survive
+all three cases. `resources.json` records the original `tellwm` import used
+by the real desktop; it is not needed for the synthetic guard fixtures.
+
 Run from the repository root:
 
 ```sh

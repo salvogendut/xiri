@@ -1,0 +1,254 @@
+{
+  "schema": 1,
+  "status": "qualified",
+  "bundle": ".work/images/xiri-netbsd-desktop-20261106-sessions",
+  "preparation": {
+    "directory": ".work/xdm-image/prepare/ordinary-oenwgr3g",
+    "result_sha256": "3f13d287632e6c37d09802ad506714c4a2270c6ddf9121b02a6abbca29385c7d",
+    "clean_shutdown": true,
+    "base_raw_unchanged": true
+  },
+  "image": {
+    "chd_sha256": "3abb7d0813577dfba369579a8f18da7577239b0ec10c28967c8145b74133cbd6",
+    "chd_bytes": 496286081,
+    "raw_sha256": "c3360f949ea93064a9b16575b0c47ff5fa5fbbccc6104eaf7d0023a7b69229af",
+    "roundtrip_verified": true,
+    "manifest_sha256": "a6c027f305ee48f72ffa5d1f7a98d72852625b9262d738fac38f32be61c87965"
+  },
+  "qualification": {
+    "directory": ".work/irix-xdm/runs/ordinary-g7k3iay5",
+    "report": "docs/results/2026-11-06-desktop-sessions-image.json",
+    "report_sha256": "ec9b2025b0b301f08fa50bb9783d60a91596e81bc7a754a43dc79f45714d972e",
+    "result_sha256": "9a8b53e70445d6707ca0270c371fbd5a6dc18be348bf566d0a65b54793c24cae",
+    "clean_shutdown": true,
+    "base_unchanged": true,
+    "saved_sessions": [
+      {
+        "user": "xiritest",
+        "restore": "mode=no file=/usr/people/xiritest/.desktop-127.0.0.1/0.0/4Dwmsession",
+        "counts": {
+          "winterm": 1,
+          "xclock": 1,
+          "catalog": 1
+        },
+        "restart_command": "WM_COMMAND(STRING) = { \"/emul/irix/usr/sbin/xwsh\", \"-name\", \"winterm\", \"-name\", \"winterm\", \"-title\", \"winterm\", \"-name\", \"winterm\", \"-geometry\", \"80x24+10+180\", \"-e\", \"/usr/libexec/xiri-shell\" }\n"
+      },
+      {
+        "user": "xiritest",
+        "restore": "mode=yes file=/usr/people/xiritest/.desktop-127.0.0.1/0.0/4Dwmsession",
+        "counts": {
+          "winterm": 1,
+          "xclock": 1,
+          "catalog": 1
+        },
+        "restart_command": "WM_COMMAND(STRING) = { \"/emul/irix/usr/sbin/xwsh\", \"-name\", \"winterm\", \"-name\", \"winterm\", \"-title\", \"winterm\", \"-name\", \"winterm\", \"-geometry\", \"80x24+10+180\", \"-e\", \"/usr/libexec/xiri-shell\" }\n"
+      },
+      {
+        "user": "xiritest2",
+        "restore": "mode=no file=/usr/people/xiritest2/.desktop-127.0.0.1/0.0/4Dwmsession",
+        "counts": {
+          "winterm": 1,
+          "xclock": 1,
+          "catalog": 1
+        },
+        "restart_command": "WM_COMMAND(STRING) = { \"/emul/irix/usr/sbin/xwsh\", \"-name\", \"winterm\", \"-name\", \"winterm\", \"-title\", \"winterm\", \"-name\", \"winterm\", \"-geometry\", \"80x24+10+180\", \"-e\", \"/usr/libexec/xiri-shell\" }\n"
+      },
+      {
+        "user": "xiritest",
+        "restore": "mode=yes file=/usr/people/xiritest/.desktop-127.0.0.1/0.0/4Dwmsession",
+        "counts": {
+          "winterm": 1,
+          "xclock": 1,
+          "catalog": 1
+        },
+        "restart_command": "WM_COMMAND(STRING) = { \"/emul/irix/usr/sbin/xwsh\", \"-name\", \"winterm\", \"-name\", \"winterm\", \"-title\", \"winterm\", \"-name\", \"winterm\", \"-geometry\", \"80x24+10+180\", \"-e\", \"/usr/libexec/xiri-shell\" }\n"
+      }
+    ]
+  },
+  "installed_changes": {
+    "/emul/irix/usr/bin/X11/tellwm": {
+      "before": null,
+      "after": "37c390c8fa1594d060ee70ed2bc9e53b4f85594440e24ac1732f930e97f991f5"
+    },
+    "/usr/libexec/xiri-shell": {
+      "before": "cea28f5592845d4c79532918c8928952670263dc453274a1766f482ae2971175",
+      "after": "5147e3a8e8e29f003a0351b57bdb07fe6e3119532dea04d17def2aaea865dbdb"
+    },
+    "/usr/local/bin/xiri-launch": {
+      "before": "e93699b941b709291e8b6f7be5a5ee58bd9faf4286776cbb5ae7c6f4a90a1b96",
+      "after": "07c666dda4f503eee2355317e8ad8467428b56c7ee03b7acc3a2abc6f9992f74"
+    },
+    "/usr/local/bin/xiri-session": {
+      "before": "1c01bfb9ab7de9fddaf4e9dac328f81c1fa5be6b004e1833f2d0b03b6c67740b",
+      "after": "07ce1d2845ca706ce4abd77fd554eaf48f38a3a82f3d73cf80860628b5843139"
+    },
+    "/usr/local/libexec/xiri/desktop-clients.sh": {
+      "before": "1da1587130ab82dcb21d61cdeeae1d2de6006f2d46ff20401e86e9e409c270dd",
+      "after": "85c504d6557abe69f3ab009e397e456a009ed55f0ac49092ef9d71eab08312bf"
+    },
+    "/usr/local/libexec/xiri/save-session": {
+      "before": null,
+      "after": "4cab6046ae8ecb1696d38ee55a3b0d4033fc6b70222c797c7495bb5efdffdadd"
+    },
+    "/usr/local/libexec/xiri/session-guard": {
+      "before": "e33ee6bd22afc26aa5f16d7f4e6a78eed966a301a7ee9233b33556a39e735aa7",
+      "after": "8b641c63377365c3aeb92a0b64af784158cf4362a15a95a04e7da8b202aae8f3"
+    }
+  },
+  "reusable_seed": {
+    "directory": ".work/xiri-image/seed-3abb7d081357",
+    "raw_sha256": "c3360f949ea93064a9b16575b0c47ff5fa5fbbccc6104eaf7d0023a7b69229af",
+    "storage": "symlink to the retained final preparation disk; no duplicate extraction"
+  },
+  "unchanged_components": [
+    "kernel/module pin",
+    "emulator pin",
+    "Newport driver",
+    "Xorg configuration",
+    "native FAM"
+  ],
+  "preparation_attempts": {
+    "ordinary-uoul77ws": "Canceled cleanly to include the final nested-guard hook-isolation fix; not a guest failure.",
+    "ordinary-oenwgr3g": "Final preparation and graphical disk autoboot passed."
+  },
+  "packaging_attempts": {
+    "first": "Round-trip passed; a host resource allowlist omitted the new session package. Failed candidate was not promoted.",
+    "final": "Builder uses the shared package registry; new round-trip and cold qualification passed.",
+    "doctor": "The final doctor check exposed the same duplicated allowlist in the host workflow. It now uses the shared registry; acceptance and tampered-ledger rejection are covered by a host regression."
+  },
+  "cleanup": {
+    "removed": [
+      {
+        "path": ".work/images/xiri-netbsd-desktop-20261106-sessions/verification/roundtrip.raw",
+        "logical_bytes": 8589934592,
+        "sha256": "c3360f949ea93064a9b16575b0c47ff5fa5fbbccc6104eaf7d0023a7b69229af",
+        "purpose": "disposable CHD round-trip verification cache",
+        "restore_from": ".work/images/xiri-netbsd-desktop-20261106-sessions/netbsd-xiri.chd",
+        "restore_method": "chdman extracthd",
+        "removed": true
+      },
+      {
+        "path": ".work/desktop-sessions/ordinary-9pz8djbm/disk.chd",
+        "logical_bytes": 496280482,
+        "removed": true,
+        "sha256": "aec2fbdb39bb732a62fa92775e7303855993dd6ec8ab246a1b5d6d34b7b9acb5",
+        "purpose": "unchanged disposable test CHD copy",
+        "restore_from": ".work/images/xiri-netbsd-desktop-20261106-colours/netbsd-xiri.chd",
+        "restore_method": "copy canonical CHD; retain recorded overlay and NVRAM"
+      },
+      {
+        "path": ".work/irix-xdm/runs/ordinary-g7k3iay5/disk.chd",
+        "logical_bytes": 496286081,
+        "removed": true,
+        "sha256": "3abb7d0813577dfba369579a8f18da7577239b0ec10c28967c8145b74133cbd6",
+        "purpose": "unchanged disposable test CHD copy",
+        "restore_from": ".work/images/xiri-netbsd-desktop-20261106-sessions/netbsd-xiri.chd",
+        "restore_method": "copy canonical CHD; retain recorded overlay and NVRAM"
+      },
+      {
+        "path": ".work/desktop-sessions/reference-09ynz4wp/disk.raw",
+        "logical_bytes": 100663296000,
+        "removed": true,
+        "purpose": "read-only source clone; guest writes are in the retained overlay",
+        "verification": "Intake-pinned sparse raw; size and firmware checked; isolated reflink and overlay",
+        "restore_from": ".work/irix-reference/media/irix65.raw",
+        "restore_method": "sparse reflink copy; retain overlay, dirty map and NVRAM"
+      },
+      {
+        "path": ".work/desktop-sessions/reference-6ta0rgh8/disk.raw",
+        "logical_bytes": 100663296000,
+        "removed": true,
+        "purpose": "read-only source clone; guest writes are in the retained overlay",
+        "verification": "Intake-pinned sparse raw; size and firmware checked; isolated reflink and overlay",
+        "restore_from": ".work/irix-reference/media/irix65.raw",
+        "restore_method": "sparse reflink copy; retain overlay, dirty map and NVRAM"
+      },
+      {
+        "path": ".work/xdm-image/prepare/ordinary-uoul77ws/disk.raw",
+        "logical_bytes": 8589934592,
+        "removed": true,
+        "purpose": "canceled intermediate preparation superseded by the qualified final image",
+        "restore_method": "Re-run the archived preparation with its recorded source snapshot; intermediate disk is not needed for the final image."
+      }
+    ],
+    "owned_iris_remaining": 0,
+    "process_check": {
+      "checked_utc": "2026-11-06T14:39:54.270966+00:00",
+      "owned_iris_remaining": 0,
+      "other_iris": []
+    },
+    "preserved": "Canonical CHDs, original source media, manual state, diagnostic overlays/NVRAM and evidence"
+  },
+  "upstream": {
+    "started_utc": "2026-11-06T12:33:56.025191+00:00",
+    "root_commit": "44c0e8fe7b941f076f214484200f8bd0d5144080",
+    "iris_xiri": "b23f674c235b37c3ac83808085d28ac128bb79c4",
+    "netbsd_xiri": "0febc6eb24ad889d12a3b2afaa12558c9781859d",
+    "upstream": "280f3eb22e74057d506fed082f527b92320fabd7",
+    "incoming_commits": 0,
+    "upstream_result": "already contained; no merge or rebuild required"
+  },
+  "host_checks": {
+    "tests": 58,
+    "status": "passed",
+    "log_sha256": "192755de14f677df2529acc2f1ec51fd0c453758c5bce12d120da11c0ce462fe",
+    "shell_python_syntax": "passed"
+  },
+  "runtime_sources": {
+    "runtime/Makefile": "a5d19bb1dcc11a4f0c83777613212b5b9bc95dd70a3f5b9bb55ae4766a51b589",
+    "runtime/install.sh": "b69bb4445e8600a998a778afa84b8aa8a851c45b857f31dff08c8a8702d4a844",
+    "runtime/README.md": "9605c513dcc03d123a6e1cba4559b0eb183a06e297c21a3027b174c94a181cea",
+    "runtime/bin/xiri-launch": "07c666dda4f503eee2355317e8ad8467428b56c7ee03b7acc3a2abc6f9992f74",
+    "runtime/bin/xiri-logout": "06be5189a07f2f13f8d699ce8f5c7e7f28034027e5b76a119e4a136b84eb790c",
+    "runtime/bin/xiri-session": "07ce1d2845ca706ce4abd77fd554eaf48f38a3a82f3d73cf80860628b5843139",
+    "runtime/bin/xiri-desktop": "4ef799a9db30e8bfe98f5a979359413a5956524a6eb66592b0e5be05b9862790",
+    "runtime/libexec/desktop-clients.sh": "85c504d6557abe69f3ab009e397e456a009ed55f0ac49092ef9d71eab08312bf",
+    "runtime/libexec/setup-pty.sh": "6e01ef7e67f16235a41108c604898a95e0058661f44c9c6d0460d681f7a5635a",
+    "runtime/libexec/shell-handoff.c": "c6e6fc869496f7a306d03dacabadcacfab3b48ba5d7e285102f2f8a11761050f",
+    "runtime/libexec/session-guard.c": "fac05e3dccb89979f91c108021d646d7b07e22c1676b34cddce74af1d85ac61c",
+    "runtime/libexec/x11-check.c": "5774f7fd2669390f8ab600f98711fba216735ad6d2bae6254e8b244a17ac51b8",
+    "runtime/libexec/account-map.awk": "ba5da838ef64bd55dcf3cb6b7dfd68ed47ee578413c26358e2a4332cbdf48e3d",
+    "runtime/libexec/sgi-colours.awk": "caed0d2aa8cbd258ea3c4dd3fd08c3306e503e75fcc60b935694bf3468b1e3ae",
+    "runtime/libexec/save-session.c": "044c43b2b53a48d31b509410a27a3de735a9c25ee4c9b121db4c3adfd2fec987",
+    "runtime/rc.d/xiri_devices": "d9015c83dabc84a60b6a3cd09074825d5a63582b715b96131c719ad1a328e2a1",
+    "runtime/rc.d/xiri_famd": "6669ab48614713237fd740a533274fea00ea5acb3ac61ab0b7c21295a12bbcf1",
+    "runtime/etc/fam.conf": "d55999f5390d6453f84710fc6880bec8a0bead660a862326452f88bfd91b6dc6",
+    "runtime/etc/session.conf": "6b59dd5b8fe2507ebb4723d972ee535f3892ff6d4cdf5fbd0ad47307d8af1cea",
+    "runtime/etc/xdm.xsession": "983ecc9eaa9763d5198b99c9a55b86a1a9dd785e851370144dcd8d9ec98233f3",
+    "runtime/etc/xdm-Xservers": "4648da4a67a83e16bd630d55708862188aaa755798b8afcf34205cbfabcc7104",
+    "runtime/etc/xdm-Xresources": "21b104d6a6b310a1633cf8e44b6088f170865593cb5b7e235c861ef6545d1919",
+    "runtime/etc/Xresources": "a0b2255961f4cd008f8e21c970a8960845919b84074a4ccb636c1eb8cea773cc",
+    "runtime/etc/desktop-Xresources": "561f52352a205ee6299e1f12dc58eabbd6bc4c87d244b57a6390cf2e794a94bd",
+    "runtime/sbin/xiri-sync-users": "471e229f2e863a1d634ca6fe85a117cba4536a8bb42f58b1dc2b96e79acf5b62"
+  },
+  "visual_menu_review": {
+    "status": "readable",
+    "scope": "Desktop and Customize labels, including disabled entries; broader command behavior is separate",
+    "screenshots": {
+      "toolchest-desktop.png": "11252623d221373a51c9703fbc306ad082c4c62c6abcd09bdc5f96adec73f4b8",
+      "toolchest-customize.png": "6e3f5cf6d3bdc9272dbbeeb5ab2e42542371a75d45ac9aff5407c0f758c7ab40"
+    }
+  },
+  "limits": [
+    "Log out before shutdown/reboot.",
+    "Only tested application restart commands and one desk; additional applications/desks need qualification."
+  ],
+  "host_workflow_sources": {
+    "scripts/xiri_lab/workflow.py": "947e6929dfe94203c31658c4861b005f8f7a90fb209cfe43ad74b7e89e968ee1",
+    "tests/test_workflow.py": "3fe5ef4ae3ffc3fadaa9db2e0d9e3de5caff02e9b3e47ba1ae5a73da46baa36c"
+  },
+  "final_checks": {
+    "doctor": "/usr/bin/chdman\n/usr/bin/Xvfb\nVerified 17 immutable artifacts; host tools and Toolbox available.\nNVRAM and manual overlays are preserved as mutable user state.",
+    "doctor_log_sha256": "06971063fb90b9efd89b2a78591af72fd9d8f2be9f06cd5edbe847b2dad40470",
+    "check_dry_run": [
+      "--winterm",
+      "--fonts",
+      "--multiuser",
+      "--colours"
+    ],
+    "local_documentation_links": 707,
+    "json_syntax": "passed",
+    "diff_whitespace": "passed",
+    "iris_processes_remaining": 0
+  }
+}

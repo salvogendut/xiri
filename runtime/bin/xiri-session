@@ -1,7 +1,7 @@
 #!/bin/sh
 # Client session on an existing display, under the authenticated native account.
 set -eu
-export PATH=/bin:/usr/bin:/usr/X11R7/bin:/emul/irix/usr/bin:/emul/irix/usr/bin/X11:/emul/irix/usr/sbin:/emul/irix/usr/freeware/bin
+export PATH=/bin:/usr/bin:/usr/local/bin:/usr/X11R7/bin:/emul/irix/usr/bin:/emul/irix/usr/bin/X11:/emul/irix/usr/sbin:/emul/irix/usr/freeware/bin
 base=/usr/local/libexec/xiri
 . /etc/xiri/session.conf
 user=$(id -un)
@@ -66,4 +66,5 @@ xset s reset
 xsetroot -solid '#69b5b5'
 echo "Xiri client session as $user. Logs: $job"
 export XIRI_SESSION_STOP_FILE="$job/logout"
+export XIRI_SESSION_SAVE="$base/save-session"
 exec "$base/session-guard" "$duration" /bin/sh "$base/desktop-clients.sh" "$job" >"$job/guard.log" 2>&1

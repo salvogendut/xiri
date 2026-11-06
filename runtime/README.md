@@ -249,10 +249,42 @@ The installer exposes `schemebr -> colorscheme` inside the imported
 uses `schemebr`; Icon Catalog uses `colorscheme`. Both run the same imported
 executable, without modifying its bytes or replacing an existing path.
 
-The session starts 4Dwm, the desktop file manager, Toolchest, winterm, xclock
-and Icon Catalog. Xmahjongg is launched on demand; the regression harness
-starts it explicitly for catalog checks. IRIX application-session saving is
-still disabled. See the [user instructions](../docs/IRIX-SOFTWARE.md#desktop-preferences).
+The first session starts 4Dwm, the desktop file manager, Toolchest, winterm,
+xclock and Icon Catalog. Later logins use 4Dwm's saved application list;
+Toolchest and the desktop file manager always start as desktop services.
+Xmahjongg is launched on demand. See the
+[user instructions](../docs/IRIX-SOFTWARE.md#saved-desktop-sessions).
+
+### Saved application sessions
+
+The original `4Dwm -launch` owns the application list, geometry and desk files.
+The runtime no longer forces `SG_manageSession` or `SG_autoSave` off. The
+original Window Settings panel selects **Continuously** or **Explicitly**;
+**Set Home Session** records the explicit choice. The current TCP display
+`127.0.0.1:0` stores these files under
+`$HOME/.desktop-127.0.0.1/0.0/`, while the panels' per-host application resources
+continue to use `.desktop-<hostname>`. Startup checks the saved-session file
+before 4Dwm starts and does not launch a second set of default applications.
+
+`session-guard` runs the native `save-session` helper before signaling its
+descendants on logout, timeout or a termination request. The helper publishes
+`_SGI_SESSION_PROPERTY`, calls the original imported `tellwm end_session`, and
+waits for 4Dwm to remove the property. This lets 4Dwm honor its current save
+mode. The helper has a 12-second alarm; the supervisor allows at most 15 seconds
+before starting its existing bounded cleanup. A failed save is logged and does
+not prevent logout. A startup/leader failure still proceeds directly to cleanup.
+The guard consumes `XIRI_SESSION_SAVE` before launching clients, so an
+application's nested supervisor cannot inherit the desktop-wide save action.
+An active xdm shutdown can close X before the acknowledgment; log out before
+rebooting to preserve the latest session. Coordinated system shutdown remains
+a separate integration follow-up.
+
+Winterm's restart command invokes `/usr/libexec/xiri-shell` without a temporary
+pathname. The helper uses the current `XIRI_SESSION_DIR`, creates a private
+`terminal.XXXXXX` report per terminal, and links the first completed report as
+`handoff` for readiness checks. Explicit report paths remain supported for
+standalone probes. Restoring opens new shells; it does not resume shell jobs,
+unsaved documents or arbitrary process memory.
 
 ## Existing prerequisites
 
@@ -271,7 +303,7 @@ already contain:
 See the [copy ledger](../docs/IRIX-IMPORT.md),
 [service integration](../docs/results/2026-11-02-desktop-services.md) and
 [module image](../docs/results/2026-11-03-irix-module-image.md). Application
-compatibility, saved-session restoration, additional preferences and physical-hardware
+compatibility, broader application restoration, additional preferences and physical-hardware
 acceptance remain independent work.
 
 ## Qualification

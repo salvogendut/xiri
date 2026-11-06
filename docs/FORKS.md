@@ -42,6 +42,14 @@ not repin qualified kernels, emulator binaries, runtime resources or guest disks
 
 ## IRIS upstream updates
 
+The saved-desktop-session cycle checked upstream on 2026-11-06 at 12:31 UTC.
+`280f3eb22e74057d506fed082f527b92320fabd7` is still an ancestor of IRIS `xiri`
+at `b23f674c235b37c3ac83808085d28ac128bb79c4`, with no incoming commits.
+No merge or rebuild was required. Both fork worktrees were clean; NetBSD
+remains on `xiri` at `0febc6eb24ad889d12a3b2afaa12558c9781859d`.
+This cycle changes the native session runtime and imports the original
+`tellwm` helper, retaining the qualified kernel/module and emulator pins.
+
 The desktop-colour cycle fetched `https://github.com/techomancer/iris.git`
 on 2026-11-06 at 10:42 UTC. Upstream remains
 `280f3eb22e74057d506fed082f527b92320fabd7`, already contained in IRIS `xiri`

@@ -12,6 +12,7 @@ import tempfile
 import time
 
 from . import ROOT, sha256
+from .application_resources import PACKAGES
 
 
 def read_json(path):
@@ -57,7 +58,7 @@ def verify_image(root, pointer, bundle, manifest):
     if manifest.get('gimp_resources'):
         files['gimp-resources.json'] = manifest['gimp_resources']['manifest_sha256']
     for name, resources in manifest.get('application_resources', {}).items():
-        if name not in ('gnome', 'terminal', 'acrobat'):
+        if name not in PACKAGES:
             raise ValueError('Unknown application resource ledger: '+name)
         files[name+'-resources.json'] = resources['manifest_sha256']
     if manifest.get('qualification_nvram'):

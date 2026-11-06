@@ -1,0 +1,295 @@
+{
+  "schema": 1,
+  "status": "qualified-for-normal-logout",
+  "scope": "original 4Dwm saved applications and one-desk layout on NetBSD/Xorg",
+  "upstream": {
+    "started_utc": "2026-11-06T12:33:56.025191+00:00",
+    "root_commit": "44c0e8fe7b941f076f214484200f8bd0d5144080",
+    "iris_xiri": "b23f674c235b37c3ac83808085d28ac128bb79c4",
+    "netbsd_xiri": "0febc6eb24ad889d12a3b2afaa12558c9781859d",
+    "upstream": "280f3eb22e74057d506fed082f527b92320fabd7",
+    "incoming_commits": 0,
+    "upstream_result": "already contained; no merge or rebuild required"
+  },
+  "native_run": ".work/desktop-sessions/ordinary-9pz8djbm",
+  "base_bundle": "/var/home/salvogendut/Dev/xiri/.work/images/xiri-netbsd-desktop-20261106-colours",
+  "base_chd_sha256": "aec2fbdb39bb732a62fa92775e7303855993dd6ec8ab246a1b5d6d34b7b9acb5",
+  "base_unchanged": true,
+  "clean_shutdown": true,
+  "original_reference": {
+    "run": ".work/desktop-sessions/reference-09ynz4wp",
+    "release": "6.5.22m",
+    "clean_shutdown": true,
+    "explicit_list_preserved": true,
+    "continuous_closed_clock_removed": true,
+    "manual_manager_restart": "No client windows observed; not counted as a restore pass."
+  },
+  "checks": {
+    "fresh_restore_one_each": true,
+    "two_winterms_no_duplicates": true,
+    "closed_catalog_stays_closed": true,
+    "explicit_list_and_layout_unchanged": true,
+    "explicit_closed_clock_restored": true,
+    "geometry": {
+      "layout-before": [
+        [
+          "winterm",
+          "749x400",
+          "+70+300"
+        ],
+        [
+          "winterm",
+          "903x480",
+          "+32+32"
+        ],
+        [
+          "xclock",
+          "160x160",
+          "+960+100"
+        ]
+      ],
+      "layout-after": [
+        [
+          "winterm",
+          "749x400",
+          "+70+300"
+        ],
+        [
+          "winterm",
+          "903x480",
+          "+32+32"
+        ],
+        [
+          "xclock",
+          "160x160",
+          "+960+100"
+        ]
+      ],
+      "first-user-restored-after-reboot": [
+        [
+          "winterm",
+          "749x400",
+          "+70+300"
+        ],
+        [
+          "winterm",
+          "903x480",
+          "+32+32"
+        ],
+        [
+          "xclock",
+          "160x160",
+          "+960+100"
+        ]
+      ]
+    },
+    "distinct_user_profiles_after_clean_reboot": true,
+    "first_user_file_hashes_unchanged": [
+      "SHA256 (/usr/people/xiritest/.desktop-127.0.0.1/0.0/4Dwmdeskname) = 0231c0aca722083c6e30d68e628e7bdf7a810df6fe41cd84b895b951bd6df45a",
+      "SHA256 (/usr/people/xiritest/.desktop-127.0.0.1/0.0/4Dwmdesks) = 835a8e138fb5e84cb1a115d39a813978b98bb473187fe12c53f653fb2ea64152",
+      "SHA256 (/usr/people/xiritest/.desktop-127.0.0.1/0.0/4Dwmsession) = cda0c3bfa3802d30f218cdeebcb749f8cfd555126583c7f76fec06ae694f144d"
+    ],
+    "private_profiles_and_cross_user_read_denials": true,
+    "fresh_native_shell_after_reboot": true,
+    "save_before_cleanup": true,
+    "stalled_save_cleanup": true,
+    "nested_guard_hook_isolation": true,
+    "unrelated_same_user_shell_survives": true
+  },
+  "direct_reboot": {
+    "status": "known-limitation",
+    "save_exit": 2,
+    "result": "X closed before acknowledgment; previous snapshot retained, latest closed-clock change lost.",
+    "workaround": "Log out normally before shutdown/reboot."
+  },
+  "host_tests": {
+    "count": 58,
+    "status": "passed",
+    "log_sha256": "192755de14f677df2529acc2f1ec51fd0c453758c5bce12d120da11c0ce462fe"
+  },
+  "resource_ledger": {
+    "path": "lab/irix-session/resources.json",
+    "sha256": "6d4c5e03e4fd7f056ac7dacf58e50a7d175e4a1121f750dc26d48c5c67a6af6c"
+  },
+  "source_variants": {
+    "focused_lifecycle_guard": "3a77eb2e243fd1df40561dff549b40c96171b67165dda70136620f58f3f7c33b",
+    "final_scoped_guard": "fac05e3dccb89979f91c108021d646d7b07e22c1676b34cddce74af1d85ac61c",
+    "final_guard_tests": "85f9675bec9e1f3fd50e0f9831a83e0ed4a4fa1b1d6976c2d4014d1fb9792afe"
+  },
+  "harnesses": {
+    ".work/desktop-sessions/owner.py": "05c4d9bec116d8b4773a97b15264189d4c3ebdbd865a2608fe4e632da75dfbac",
+    ".work/desktop-sessions/session.py": "77d3155db21faab2e888243d1feb2c09d5100c0fb4b7eb7fe34b10a1e3983d4d",
+    ".work/desktop-sessions/reference-owner.py": "336dbecb7f7c36585ec601fc0264e31b842ad9658367c105542145676336f68e",
+    ".work/desktop-sessions/initial.py": "cd6c0a866a7d01e484008395293cf88fb9529fa31ab5ba359f303d3fe21afcd1",
+    ".work/desktop-sessions/relaunch.py": "6614a5e00882afd9223e7720982be1b07771bd8c45b7ec9c5e8d66c97296be10",
+    ".work/desktop-sessions/end-session.py": "a5eeaa5b8dde70da4bc5c953bb145e2f1addef7cb556d57f1f03d23b1bc21687",
+    ".work/desktop-sessions/handshake.py": "56a84a0ed16d025c0285a52d3bf4729b9bfce8c8272396be802c40b59d80825d",
+    ".work/desktop-sessions/reference-session.py": "15c0df7e5bb2e36a634f37ba6a910d6ab9e029b3008a221114574612b4ee2b0c",
+    ".work/desktop-sessions/restore-only.py": "282ff1f988594af1cf6f722c0a09f9bc02681093774ed407cdcf2fe5357fad28",
+    ".work/desktop-sessions/inspect-restored.py": "305fbad0d7127842aa002ed67b7a4337b5b039d5422508e471ea8d13b03a7102",
+    ".work/desktop-sessions/reference-compare.py": "e7891f816766b9ed5ddd3f86fa29d46e03fe2f637b6ca27226e25fbd6a14bf86",
+    ".work/desktop-sessions/install-v1.py": "13a53f825acd7002318605d59d214249fc4192fdff1bbb3be521a281c94bf2eb",
+    ".work/desktop-sessions/reference-restore.py": "e7385c89b6d6855b724f62cd6b71c4b013eaff74c18527c1588445a1150f373f",
+    ".work/desktop-sessions/v1-continue.py": "975835105722d105e6e08aaf08bba04a0d8166b136e74b9f5bbe31fbc44dc3f0",
+    ".work/desktop-sessions/layout.py": "8a3de49966937bd3d9588431d954d8a742c052cc9a0fbdfef9cf185105b5f72b",
+    ".work/desktop-sessions/explicit.py": "fb7878f5bc39d349c3698a7520a032c43e26e60d54cd5bc421d7dde4df447634",
+    ".work/desktop-sessions/users-reboot.py": "ce218cad62f3b8550f664650c9522f752fea2e7c4c1f1c3a4bfc25df6bccebb7",
+    ".work/desktop-sessions/guard-v2.py": "bc5961e56db75e8d1df056b78ef96cf848f7b88df2b1dd65112f0820c51afbe8",
+    ".work/desktop-sessions/users-reboot-continue.py": "2f73e88b16adede8a6aa3cca35fa7f75e5bbb5d004fd687a6582ef9e905ded57",
+    ".work/desktop-sessions/publish-evidence.py": "4194f29e5691d181bf8b8c3e5b52a798b2f120afc0007f1f263d62b9acc0c00a",
+    ".work/desktop-sessions/cold-after-build.py": "d2b2571b7c886dd21d56a1a8dacbe342ae07d7086f1717757511ae5a008b73e2",
+    ".work/desktop-sessions/publish-image.py": "bc08fdcf4a139d9efc8b9a25042a8493ec80d750c5268a9ddf10077ad07dc025",
+    ".work/desktop-sessions/cleanup-disposables.py": "3cccb128a236a4ad204a538e63e3d3a8d248169f39b0dda2fad8b8ddeaf7b489"
+  },
+  "final_sources": {
+    "runtime/Makefile": "a5d19bb1dcc11a4f0c83777613212b5b9bc95dd70a3f5b9bb55ae4766a51b589",
+    "runtime/install.sh": "b69bb4445e8600a998a778afa84b8aa8a851c45b857f31dff08c8a8702d4a844",
+    "runtime/README.md": "6a4365714e0d085dd375947faa3f5669c841c5dab23061372a63188cf8657ded",
+    "runtime/bin/xiri-launch": "07c666dda4f503eee2355317e8ad8467428b56c7ee03b7acc3a2abc6f9992f74",
+    "runtime/bin/xiri-logout": "06be5189a07f2f13f8d699ce8f5c7e7f28034027e5b76a119e4a136b84eb790c",
+    "runtime/bin/xiri-session": "07ce1d2845ca706ce4abd77fd554eaf48f38a3a82f3d73cf80860628b5843139",
+    "runtime/bin/xiri-desktop": "4ef799a9db30e8bfe98f5a979359413a5956524a6eb66592b0e5be05b9862790",
+    "runtime/libexec/desktop-clients.sh": "85c504d6557abe69f3ab009e397e456a009ed55f0ac49092ef9d71eab08312bf",
+    "runtime/libexec/setup-pty.sh": "6e01ef7e67f16235a41108c604898a95e0058661f44c9c6d0460d681f7a5635a",
+    "runtime/libexec/shell-handoff.c": "c6e6fc869496f7a306d03dacabadcacfab3b48ba5d7e285102f2f8a11761050f",
+    "runtime/libexec/session-guard.c": "fac05e3dccb89979f91c108021d646d7b07e22c1676b34cddce74af1d85ac61c",
+    "runtime/libexec/x11-check.c": "5774f7fd2669390f8ab600f98711fba216735ad6d2bae6254e8b244a17ac51b8",
+    "runtime/libexec/account-map.awk": "ba5da838ef64bd55dcf3cb6b7dfd68ed47ee578413c26358e2a4332cbdf48e3d",
+    "runtime/libexec/sgi-colours.awk": "caed0d2aa8cbd258ea3c4dd3fd08c3306e503e75fcc60b935694bf3468b1e3ae",
+    "runtime/libexec/save-session.c": "044c43b2b53a48d31b509410a27a3de735a9c25ee4c9b121db4c3adfd2fec987",
+    "runtime/rc.d/xiri_devices": "d9015c83dabc84a60b6a3cd09074825d5a63582b715b96131c719ad1a328e2a1",
+    "runtime/rc.d/xiri_famd": "6669ab48614713237fd740a533274fea00ea5acb3ac61ab0b7c21295a12bbcf1",
+    "runtime/etc/fam.conf": "d55999f5390d6453f84710fc6880bec8a0bead660a862326452f88bfd91b6dc6",
+    "runtime/etc/session.conf": "6b59dd5b8fe2507ebb4723d972ee535f3892ff6d4cdf5fbd0ad47307d8af1cea",
+    "runtime/etc/xdm.xsession": "983ecc9eaa9763d5198b99c9a55b86a1a9dd785e851370144dcd8d9ec98233f3",
+    "runtime/etc/xdm-Xservers": "4648da4a67a83e16bd630d55708862188aaa755798b8afcf34205cbfabcc7104",
+    "runtime/etc/xdm-Xresources": "21b104d6a6b310a1633cf8e44b6088f170865593cb5b7e235c861ef6545d1919",
+    "runtime/etc/Xresources": "a0b2255961f4cd008f8e21c970a8960845919b84074a4ccb636c1eb8cea773cc",
+    "runtime/etc/desktop-Xresources": "561f52352a205ee6299e1f12dc58eabbd6bc4c87d244b57a6390cf2e794a94bd",
+    "runtime/sbin/xiri-sync-users": "471e229f2e863a1d634ca6fe85a117cba4536a8bb42f58b1dc2b96e79acf5b62"
+  },
+  "records": {
+    "v1-logout": {
+      "path": ".work/desktop-sessions/ordinary-9pz8djbm/v1-logout.txt",
+      "sha256": "1464198372612cca5876da56912422865235ed8e93e6a8cfbcb87cd00c96cbeb",
+      "text": "OWN pid=1739 parent=4059\nOWN pid=1088 parent=4059\nOWN pid=1583 parent=4059\nOWN pid=1687 parent=4059\nOWN pid=1732 parent=1687\nOWN pid=4016 parent=4021\nOWN pid=1787 parent=1732\nOWN pid=5169 parent=2093\nOWN pid=2001 parent=5169\nSESSION_SAVE acknowledged by 4Dwm\nSESSION_SAVE completed=1 exit=0 elapsed=173\nGUARD pid=5021 exit=-1 signal=15 stopped=1 absent=1 valid=1 tracked=39 remaining=0 reason=logout uid=1234 gid=1234 elapsed=169074\napplication \"IconCatalog_IconCatalog-Desk 1\" {\n   command          \"/usr/sbin/iconcatalog Alias \"\n   launchTime       \"login\"\n   screen           \"0\"\n}\napplication \"winterm_XWsh-Desk 1\" {\n   command          \"/emul/irix/usr/sbin/xwsh -name winterm -name winterm -title winterm -name winterm -geometry 80x24+10+180 -e /usr/libexec/xiri-shell \"\n   launchTime       \"login\"\n   screen           \"0\"\n}\napplication \"xconsole_XConsole-Desk 1\" {\n   command          \"xconsole -geometry 480x130-0-0 -daemon -notify -verbose -fn fixed -exitOnFail \"\n   launchTime       \"login\"\n   screen           \"0\"\n   iconx            \"10\"\n   icony            \"10\"\n}\napplication \"xclock_XClock-Desk 1\" {\n   command          \"/emul/irix/usr/bin/X11/xclock -display 127.0.0.1:0 -update 1 -geometry 180x180+820+20 -bg gray -fg black -bd black -hd black -hl black \"\n   launchTime       \"login\"\n   screen           \"0\"\n}\napplication \"toolchest_Toolchest-Desk 1\" {\n   launchTime       \"login\"\n   wmClass          \"Toolchest\"\n   screen           \"0\"\n}\n"
+    },
+    "v1-restored": {
+      "path": ".work/desktop-sessions/ordinary-9pz8djbm/v1-restored.txt",
+      "sha256": "e5f46fb06f62082c78542830f4f8e637785d0c1da37defb8deaca7c033a36d9e",
+      "text": "mode=yes file=/usr/people/xiritest/.desktop-127.0.0.1/0.0/4Dwmsession\nNATIVE_HANDOFF pid=5218 sid=5218 pgid=5218 tpgid=5218 uid=1234 euid=1234 gid=1234 egid=1234 groups=2 tty=/dev/pts/1 rows=24 cols=80\nWM_COMMAND(STRING) = { \"/emul/irix/usr/sbin/xwsh\", \"-name\", \"winterm\", \"-name\", \"winterm\", \"-title\", \"winterm\", \"-name\", \"winterm\", \"-geometry\", \"80x24+10+180\", \"-e\", \"/usr/libexec/xiri-shell\" }\nxiritest 1785 4528 /emul/irix/usr/bin/X11/4Dwm -launch \nxiritest 2090    1 /emul/irix/usr/sbin/xwsh -e /usr/libexec/xiri-shell \nxiritest 2457    1 /usr/sbin/iconcatalog Alias \nxiritest 2482    1 /emul/irix/usr/bin/X11/xclock \nroot     2155 2389 grep -E 4Dwm|xclock|xwsh|iconcatalog \n"
+    },
+    "v1-restored-shell": {
+      "path": ".work/desktop-sessions/ordinary-9pz8djbm/v1-restored-shell.txt",
+      "sha256": "d3a840f3bdb95e27cafa02b912fec5370513187045ba012c82e46cb84e9d4abe",
+      "text": "/usr/people/xiritest\n"
+    },
+    "layout-before": {
+      "path": ".work/desktop-sessions/ordinary-9pz8djbm/layout-before.txt",
+      "sha256": "bab80a7f82b2a295d872a16440d34f85c38e5687ac0432743c60f5c8c5c927fb",
+      "text": "           0x1600005 \"winterm\": (\"winterm\" \"XWsh\")  903x480+0+0  +32+32\n           0xc00005 \"winterm\": (\"winterm\" \"XWsh\")  749x400+0+0  +70+300\n           0xe00009 \"xclock\": (\"xclock\" \"XClock\")  160x160+0+0  +960+100\n-rw-------  1 xiritest  xiritest  132 Nov  6 13:14 /usr/people/xiritest/.xiri/sessions/session.6nnGgv/terminal.Y8YYQ3\n-rw-------  2 xiritest  xiritest  132 Nov  6 13:12 /usr/people/xiritest/.xiri/sessions/session.6nnGgv/terminal.plfWiJ\nNATIVE_HANDOFF pid=1997 sid=1997 pgid=1997 tpgid=1997 uid=1234 euid=1234 gid=1234 egid=1234 groups=2 tty=/dev/pts/2 rows=24 cols=80\nNATIVE_HANDOFF pid=5218 sid=5218 pgid=5218 tpgid=5218 uid=1234 euid=1234 gid=1234 egid=1234 groups=2 tty=/dev/pts/1 rows=24 cols=80\n"
+    },
+    "layout-logout": {
+      "path": ".work/desktop-sessions/ordinary-9pz8djbm/layout-logout.txt",
+      "sha256": "5634ebefaf8cf07f5e2b53ea8a6026bed5e41ff0877a2cf62bb32023a894fd5d",
+      "text": "OWN pid=4712 parent=5437\nOWN pid=5501 parent=4712\nSESSION_SAVE acknowledged by 4Dwm\nSESSION_SAVE completed=1 exit=0 elapsed=207\nGUARD pid=1600 exit=-1 signal=15 stopped=1 absent=1 valid=1 tracked=30 remaining=0 reason=logout uid=1234 gid=1234 elapsed=150910\napplication \"winterm_XWsh-Desk 1\" {\n   command          \"/emul/irix/usr/sbin/xwsh -name winterm -name winterm -title winterm -name winterm -geometry 80x24+10+180 -e /usr/libexec/xiri-shell \"\n   launchTime       \"login\"\n   screen           \"0\"\n}\napplication \"xconsole_XConsole-Desk 1\" {\n   command          \"xconsole -geometry 480x130-0-0 -daemon -notify -verbose -fn fixed -exitOnFail \"\n   launchTime       \"login\"\n   screen           \"0\"\n   iconx            \"10\"\n   icony            \"10\"\n}\napplication \"xclock_XClock-Desk 1\" {\n   command          \"/emul/irix/usr/bin/X11/xclock -display 127.0.0.1:0 -update 1 -geometry 180x180+820+20 -bg gray -fg black -bd black -hd black -hl black \"\n   launchTime       \"login\"\n   screen           \"0\"\n}\napplication \"winterm_XWsh-Desk 1+1\" {\n   command          \"/emul/irix/usr/sbin/xwsh -name winterm -title winterm -geometry 80x24 -e /usr/libexec/xiri-shell \"\n   launchTime       \"login\"\n   screen           \"0\"\n}\napplication \"toolchest_Toolchest-Desk 1\" {\n   launchTime       \"login\"\n   screen           \"0\"\n}\napplication  \"xconsole_XConsole-Desk 1\" [ hidden  =480x130+792+886         ]\napplication  \"xclock_XClock-Desk 1\" [ hidden  =180x180+820+32          ]\napplication  \"toolchest_Toolchest-Desk 1\" [ open    =103x158+10+26           ] InAllRooms\napplication  \"winterm_XWsh-Desk 1\" [ hidden  =903x480+10+180          ]\napplication  \"winterm_XWsh-Desk 1+1\" [ hidden  =903x480+32+32           ]\nroom         \"Global\"          visible\nroom         \"Desk 1\"          visible {\n             \"xconsole_XConsole-Desk 1\" [ iconic  =480x130+792+886         ]\n             \"xclock_XClock-Desk 1\" [ open    =160x160+960+100         ]\n             \"winterm_XWsh-Desk 1\" [ open    =749x400+70+300          ]\n             \"winterm_XWsh-Desk 1+1\" [ open    =903x480+32+32           ]\n}\n"
+    },
+    "layout-after": {
+      "path": ".work/desktop-sessions/ordinary-9pz8djbm/layout-after.txt",
+      "sha256": "ddbdfe57df9f5188007570cdeab32a2bdcc8ece0ceabb97affa699d9ad788f3e",
+      "text": "           0xe00009 \"xclock\": (\"xclock\" \"XClock\")  160x160+0+0  +960+100\n           0xc00005 \"winterm\": (\"winterm\" \"XWsh\")  749x400+0+0  +70+300\n           0xa00005 \"winterm\": (\"winterm\" \"XWsh\")  903x480+0+0  +32+32\nNATIVE_HANDOFF pid=2467 sid=2467 pgid=2467 tpgid=2467 uid=1234 euid=1234 gid=1234 egid=1234 groups=2 tty=/dev/pts/2 rows=24 cols=78\nNATIVE_HANDOFF pid=2415 sid=2415 pgid=2415 tpgid=2415 uid=1234 euid=1234 gid=1234 egid=1234 groups=2 tty=/dev/pts/1 rows=24 cols=80\nmode=yes file=/usr/people/xiritest/.desktop-127.0.0.1/0.0/4Dwmsession\n"
+    },
+    "explicit-before-logout": {
+      "path": ".work/desktop-sessions/ordinary-9pz8djbm/explicit-before-logout.txt",
+      "sha256": "32b4ffcb211f621fa1eaffa8e274f481266b66896d0a1a9a84326c3df52e24cf",
+      "text": "application \"winterm_XWsh-Desk 1\" {\n   command          \"/emul/irix/usr/sbin/xwsh -name winterm -name winterm -title winterm -name winterm -geometry 80x24+10+180 -e /usr/libexec/xiri-shell \"\n   launchTime       \"login\"\n   screen           \"0\"\n}\napplication \"winterm_XWsh-Desk 1+1\" {\n   command          \"/emul/irix/usr/sbin/xwsh -name winterm -title winterm -geometry 80x24 -e /usr/libexec/xiri-shell \"\n   launchTime       \"login\"\n   screen           \"0\"\n}\napplication \"xconsole_XConsole-Desk 1\" {\n   command          \"xconsole -geometry 480x130-0-0 -daemon -notify -verbose -fn fixed -exitOnFail \"\n   launchTime       \"login\"\n   screen           \"0\"\n   iconx            \"10\"\n   icony            \"10\"\n}\napplication \"xclock_XClock-Desk 1\" {\n   command          \"/emul/irix/usr/bin/X11/xclock -display 127.0.0.1:0 -update 1 -geometry 180x180+820+20 -bg gray -fg black -bd black -hd black -hl black \"\n   launchTime       \"login\"\n   screen           \"0\"\n}\napplication \"Windows_Windows-Desk 1\" {\n   launchTime       \"login\"\n   screen           \"0\"\n}\napplication \"toolchest_Toolchest-Desk 1\" {\n   launchTime       \"login\"\n   screen           \"0\"\n}\n4DWm*curNewBackground:\t1\n4DWm*Desk 1.backgroundDescription:\t-bitmap /usr/include/X11/bitmaps/granite -bg #868686 -fg #69b5b5 \n4Dwm*SG_autoSave:\tFalse\n24 80\n20 66\n"
+    },
+    "explicit-after-logout": {
+      "path": ".work/desktop-sessions/ordinary-9pz8djbm/explicit-after-logout.txt",
+      "sha256": "d935983cb34fb18fa1e18867ea059d1fc6a686f374de1c7b4d466ad14b40eeb7",
+      "text": "OWN pid=5358 parent=2249\nOWN pid=5530 parent=5358\nSESSION_SAVE acknowledged by 4Dwm\nSESSION_SAVE completed=1 exit=0 elapsed=181\nGUARD pid=4571 exit=-1 signal=15 stopped=1 absent=1 valid=1 tracked=32 remaining=0 reason=logout uid=1234 gid=1234 elapsed=161441\napp_list_unchanged=0\ndesks_unchanged=0\n"
+    },
+    "explicit-restored": {
+      "path": ".work/desktop-sessions/ordinary-9pz8djbm/explicit-restored.txt",
+      "sha256": "d6086bf3a39df96b8ace46cbab77d48cee4e0d8ef6201b0c3b91064ed2076e87",
+      "text": "           0xc00005 \"winterm\": (\"winterm\" \"XWsh\")  749x400+0+0  +70+300\n           0xa00005 \"winterm\": (\"winterm\" \"XWsh\")  903x480+0+0  +32+32\n           0xe00009 \"xclock\": (\"xclock\" \"XClock\")  160x160+0+0  +960+100\nmode=yes file=/usr/people/xiritest/.desktop-127.0.0.1/0.0/4Dwmsession\n"
+    },
+    "first-user-state": {
+      "path": ".work/desktop-sessions/ordinary-9pz8djbm/first-user-state.txt",
+      "sha256": "6921e1e2ab14704cfff8f6e83c1358e2e58ce96ac2aba5c82a611fe3fac57738",
+      "text": "SHA256 (/usr/people/xiritest/.desktop-127.0.0.1/0.0/4Dwmdeskname) = 0231c0aca722083c6e30d68e628e7bdf7a810df6fe41cd84b895b951bd6df45a\nSHA256 (/usr/people/xiritest/.desktop-127.0.0.1/0.0/4Dwmdesks) = 835a8e138fb5e84cb1a115d39a813978b98bb473187fe12c53f653fb2ea64152\nSHA256 (/usr/people/xiritest/.desktop-127.0.0.1/0.0/4Dwmsession) = cda0c3bfa3802d30f218cdeebcb749f8cfd555126583c7f76fec06ae694f144d\nGUARD pid=2605 exit=0 signal=0 stopped=0 absent=1 valid=1 tracked=2 remaining=0 reason=leader-exit uid=1234 gid=1234 elapsed=569\nPID_POSTCHECK_CONTROL live_rejected=1 zombie_accepted=1 absent_accepted=1 old_reaped_failed=1 valid=1\nGUARD pid=5853 exit=-1 signal=9 stopped=1 absent=1 valid=1 tracked=1 remaining=0 reason=timeout uid=1234 gid=1234 elapsed=2253\nGUARD pid=2684 exit=-1 signal=9 stopped=1 absent=1 valid=1 tracked=3 remaining=0 reason=timeout uid=1234 gid=1234 elapsed=2275\nGUARD pid=2841 exit=-1 signal=9 stopped=1 absent=1 valid=1 tracked=25 remaining=0 reason=signal uid=1234 gid=1234 elapsed=2330\nGUARD pid=2841 exit=-1 signal=9 stopped=1 absent=1 valid=1 tracked=25 remaining=0 reason=signal uid=1234 gid=1234 elapsed=2330\nGUARD pid=2214 exit=0 signal=0 stopped=1 absent=1 valid=1 tracked=49 remaining=0 reason=leader-exit uid=1234 gid=1234 elapsed=703\nGUARD pid=2214 exit=0 signal=0 stopped=1 absent=1 valid=1 tracked=49 remaining=0 reason=leader-exit uid=1234 gid=1234 elapsed=703\nGUARD pid=3097 exit=7 signal=0 stopped=1 absent=1 valid=1 tracked=3 remaining=0 reason=leader-exit uid=1234 gid=1234 elapsed=1148\nGUARD pid=5934 exit=126 signal=0 stopped=0 absent=1 valid=1 tracked=1 remaining=0 reason=leader-exit uid=1234 gid=1234 elapsed=27\nGUARD pid=6077 exit=-1 signal=9 stopped=1 absent=1 valid=1 tracked=3 remaining=0 reason=logout uid=1234 gid=1234 elapsed=2283\nGUARD pid=3122 exit=-1 signal=9 stopped=1 absent=1 valid=1 tracked=3 remaining=0 reason=signal uid=1234 gid=1234 elapsed=2024\nSESSION_SAVE completed=1 exit=0 elapsed=82\nGUARD pid=5917 exit=-1 signal=9 stopped=1 absent=1 valid=1 tracked=4 remaining=0 reason=signal uid=1234 gid=1234 elapsed=2308\nSESSION_SAVE completed=0 exit=-1 elapsed=15014\nGUARD pid=6062 exit=-1 signal=9 stopped=1 absent=1 valid=1 tracked=19 remaining=0 reason=signal uid=1234 gid=1234 elapsed=17200\nSESSION_GUARD_TESTS_OK\n"
+    },
+    "reboot-save": {
+      "path": ".work/desktop-sessions/ordinary-9pz8djbm/reboot-save.txt",
+      "sha256": "bf82a3cdb9c9ac15d77d389db17d709d46db4ba2d9ed32a2e0cc0b7c442dca86",
+      "text": "OWN pid=3268 parent=6705\nOWN pid=3370 parent=3782\nOWN pid=5338 parent=3268\nOWN pid=5870 parent=5338\nOWN pid=3063 parent=5338\nOWN pid=3109 parent=2166\nSESSION_SAVE completed=1 exit=2 elapsed=1581\nGUARD pid=3006 exit=0 signal=0 stopped=1 absent=1 valid=1 tracked=48 remaining=0 reason=signal uid=1237 gid=1237 elapsed=65165\napplication \"IconCatalog_IconCatalog-Desk 1\" {\n   command          \"/usr/sbin/iconcatalog Alias \"\n   launchTime       \"login\"\n   screen           \"0\"\n}\napplication \"winterm_XWsh-Desk 1\" {\n   command          \"/emul/irix/usr/sbin/xwsh -name winterm -name winterm -title winterm -name winterm -geometry 80x24+10+180 -e /usr/libexec/xiri-shell \"\n   launchTime       \"login\"\n   screen           \"0\"\n}\napplication \"xconsole_XConsole-Desk 1\" {\n   command          \"xconsole -geometry 480x130-0-0 -daemon -notify -verbose -fn fixed -exitOnFail \"\n   launchTime       \"login\"\n   screen           \"0\"\n   iconx            \"10\"\n   icony            \"10\"\n}\napplication \"xclock_XClock-Desk 1\" {\n   command          \"/emul/irix/usr/bin/X11/xclock -display 127.0.0.1:0 -update 1 -geometry 180x180+820+20 -bg gray -fg black -bd black -hd black -hl black \"\n   launchTime       \"login\"\n   screen           \"0\"\n}\napplication \"toolchest_Toolchest-Desk 1\" {\n   launchTime       \"login\"\n   wmClass          \"Toolchest\"\n   screen           \"0\"\n}\nSHA256 (/usr/people/xiritest/.desktop-127.0.0.1/0.0/4Dwmdeskname) = 0231c0aca722083c6e30d68e628e7bdf7a810df6fe41cd84b895b951bd6df45a\nSHA256 (/usr/people/xiritest/.desktop-127.0.0.1/0.0/4Dwmdesks) = 835a8e138fb5e84cb1a115d39a813978b98bb473187fe12c53f653fb2ea64152\nSHA256 (/usr/people/xiritest/.desktop-127.0.0.1/0.0/4Dwmsession) = cda0c3bfa3802d30f218cdeebcb749f8cfd555126583c7f76fec06ae694f144d\n"
+    },
+    "second-clean-logout": {
+      "path": ".work/desktop-sessions/ordinary-9pz8djbm/second-clean-logout.txt",
+      "sha256": "044a643d5de7c7fcecb628de61e54233f9efdccf26eb2bfd9c0a86c5e9afdd73",
+      "text": "OWN pid=422 parent=459\nOWN pid=420 parent=419\nOWN pid=421 parent=2845\nOWN pid=508 parent=3815\nOWN pid=3568 parent=508\nSESSION_SAVE acknowledged by 4Dwm\nSESSION_SAVE completed=1 exit=0 elapsed=204\nGUARD pid=459 exit=-1 signal=15 stopped=1 absent=1 valid=1 tracked=30 remaining=0 reason=logout uid=1237 gid=1237 elapsed=37996\napplication \"winterm_XWsh-Desk 1\" {\n   command          \"/emul/irix/usr/sbin/xwsh -name winterm -name winterm -title winterm -name winterm -geometry 80x24+10+180 -e /usr/libexec/xiri-shell \"\n   launchTime       \"login\"\n   screen           \"0\"\n}\napplication \"xconsole_XConsole-Desk 1\" {\n   command          \"xconsole -geometry 480x130-0-0 -daemon -notify -verbose -fn fixed -exitOnFail \"\n   launchTime       \"login\"\n   screen           \"0\"\n   iconx            \"10\"\n   icony            \"10\"\n}\napplication \"toolchest_Toolchest-Desk 1\" {\n   launchTime       \"login\"\n   screen           \"0\"\n}\napplication \"IconCatalog_IconCatalog-Desk 1\" {\n   command          \"/usr/sbin/iconcatalog Alias \"\n   launchTime       \"login\"\n   screen           \"0\"\n}\nSHA256 (/usr/people/xiritest/.desktop-127.0.0.1/0.0/4Dwmdeskname) = 0231c0aca722083c6e30d68e628e7bdf7a810df6fe41cd84b895b951bd6df45a\nSHA256 (/usr/people/xiritest/.desktop-127.0.0.1/0.0/4Dwmdesks) = 835a8e138fb5e84cb1a115d39a813978b98bb473187fe12c53f653fb2ea64152\nSHA256 (/usr/people/xiritest/.desktop-127.0.0.1/0.0/4Dwmsession) = cda0c3bfa3802d30f218cdeebcb749f8cfd555126583c7f76fec06ae694f144d\n"
+    },
+    "second-user-restored": {
+      "path": ".work/desktop-sessions/ordinary-9pz8djbm/second-user-restored.txt",
+      "sha256": "f0febad0460255b7880f929ef25e543e725e5fc1c11d5d19c52fe55e3e5f75d4",
+      "text": "SESSION user=xiritest2 uid=1237 groups=1237 1235 home=/usr/people/xiritest2 cwd=/usr/people/xiritest2 display=127.0.0.1:0 authority=default\nNATIVE_HANDOFF pid=664 sid=664 pgid=664 tpgid=664 uid=1237 euid=1237 gid=1237 egid=1237 groups=2 tty=/dev/pts/1 rows=15 cols=56\n           0x100006b \"Icon Catalog: Alias (Page 1 of 17)\": (\"IconCatalog\" \"IconCatalog\")  900x500+0+0  +372+450\n     0x1000006 \"Icon Catalog\": (\"iconcatalog\" \"IconCatalog\")  1x1+640+512  +640+512\n     0x1000001 \"Icon Catalog\": (\"iconcatalog\" \"IconCatalog\")  1x1+0+0  +0+0\n           0xa00005 \"winterm\": (\"winterm\" \"XWsh\")  639x300+0+0  +430+520\n/usr/people/xiritest2/.desktop-127.0.0.1/0.0/4Dwmdeskname 1237 1237 600\n/usr/people/xiritest2/.desktop-127.0.0.1/0.0/4Dwmdesks 1237 1237 600\n/usr/people/xiritest2/.desktop-127.0.0.1/0.0/4Dwmsession 1237 1237 600\n"
+    },
+    "first-user-restored-after-reboot": {
+      "path": ".work/desktop-sessions/ordinary-9pz8djbm/first-user-restored-after-reboot.txt",
+      "sha256": "611e84e6c6a512a192023497164af4faa0aa8407f58b77a6b6ed5e93e03afe5b",
+      "text": "SESSION user=xiritest uid=1234 groups=1234 1235 home=/usr/people/xiritest cwd=/usr/people/xiritest display=127.0.0.1:0 authority=default\nNATIVE_HANDOFF pid=830 sid=830 pgid=830 tpgid=830 uid=1234 euid=1234 gid=1234 egid=1234 groups=2 tty=/dev/pts/1 rows=24 cols=80\nNATIVE_HANDOFF pid=631 sid=631 pgid=631 tpgid=631 uid=1234 euid=1234 gid=1234 egid=1234 groups=2 tty=/dev/pts/2 rows=24 cols=80\n           0xa00005 \"winterm\": (\"winterm\" \"XWsh\")  749x400+0+0  +70+300\n           0xe00009 \"xclock\": (\"xclock\" \"XClock\")  160x160+0+0  +960+100\n           0xc00005 \"winterm\": (\"winterm\" \"XWsh\")  903x480+0+0  +32+32\nSHA256 (/usr/people/xiritest/.desktop-127.0.0.1/0.0/4Dwmdeskname) = 0231c0aca722083c6e30d68e628e7bdf7a810df6fe41cd84b895b951bd6df45a\nSHA256 (/usr/people/xiritest/.desktop-127.0.0.1/0.0/4Dwmdesks) = 835a8e138fb5e84cb1a115d39a813978b98bb473187fe12c53f653fb2ea64152\nSHA256 (/usr/people/xiritest/.desktop-127.0.0.1/0.0/4Dwmsession) = cda0c3bfa3802d30f218cdeebcb749f8cfd555126583c7f76fec06ae694f144d\n/usr/people/xiritest/.desktop-127.0.0.1/0.0/4Dwmdeskname 1234 1234 600\n/usr/people/xiritest/.desktop-127.0.0.1/0.0/4Dwmdesks 1234 1234 600\n/usr/people/xiritest/.desktop-127.0.0.1/0.0/4Dwmsession 1234 1234 600\n"
+    },
+    "reboot-shell": {
+      "path": ".work/desktop-sessions/ordinary-9pz8djbm/reboot-shell.txt",
+      "sha256": "f4fdc20ac0650cca887cab9726adf9e9e6ad3132d4a631abd422ef65764e614a",
+      "text": "xiritest\n/usr/people/xiritest\n"
+    },
+    "final-cleanup": {
+      "path": ".work/desktop-sessions/ordinary-9pz8djbm/final-cleanup.txt",
+      "sha256": "50c80a8b192f4cb3fb7bbfe7e6cc431f9d8d78b467de04d279553d903b23134b",
+      "text": "OWN pid=3756 parent=3994\nOWN pid=3945 parent=830\nOWN pid=683 parent=582\nOWN pid=4078 parent=683\nSESSION_SAVE acknowledged by 4Dwm\nSESSION_SAVE completed=1 exit=0 elapsed=177\nGUARD pid=3042 exit=-1 signal=15 stopped=1 absent=1 valid=1 tracked=32 remaining=0 reason=logout uid=1234 gid=1234 elapsed=54116\nroot     836 3362 grep -E 4Dwm|xwsh|xclock|iconcatalog (sh)\n"
+    },
+    "saved-profile-permissions": {
+      "path": ".work/desktop-sessions/ordinary-9pz8djbm/saved-profile-permissions.txt",
+      "sha256": "48176ede1ae784b14af9c7b55f303938bc36a57ecf527da4f0db3c13bd149c31",
+      "text": "/usr/people/xiritest 1234 1234 700\n/usr/people/xiritest2 1237 1237 700\ncross_user_reads_denied\n"
+    },
+    "guard-tests-v2": {
+      "path": ".work/desktop-sessions/ordinary-9pz8djbm/guard-tests-v2.txt",
+      "sha256": "6ae606e6407c6201224fd00f18f757ab2d8ee2444f3a8e8c06b6315e5e976c89",
+      "text": "GUARD pid=805 exit=0 signal=0 stopped=0 absent=1 valid=1 tracked=2 remaining=0 reason=leader-exit uid=1234 gid=1234 elapsed=297\nPID_POSTCHECK_CONTROL live_rejected=1 zombie_accepted=1 absent_accepted=1 old_reaped_failed=1 valid=1\nGUARD pid=758 exit=-1 signal=9 stopped=1 absent=1 valid=1 tracked=1 remaining=0 reason=timeout uid=1234 gid=1234 elapsed=2251\nGUARD pid=762 exit=-1 signal=9 stopped=1 absent=1 valid=1 tracked=3 remaining=0 reason=timeout uid=1234 gid=1234 elapsed=2257\nGUARD pid=844 exit=-1 signal=9 stopped=1 absent=1 valid=1 tracked=25 remaining=0 reason=signal uid=1234 gid=1234 elapsed=2216\nGUARD pid=844 exit=-1 signal=9 stopped=1 absent=1 valid=1 tracked=25 remaining=0 reason=signal uid=1234 gid=1234 elapsed=2216\nGUARD pid=890 exit=0 signal=0 stopped=0 absent=1 valid=1 tracked=49 remaining=0 reason=leader-exit uid=1234 gid=1234 elapsed=471\nGUARD pid=890 exit=0 signal=0 stopped=0 absent=1 valid=1 tracked=49 remaining=0 reason=leader-exit uid=1234 gid=1234 elapsed=471\nGUARD pid=4462 exit=7 signal=0 stopped=1 absent=1 valid=1 tracked=3 remaining=0 reason=leader-exit uid=1234 gid=1234 elapsed=1107\nGUARD pid=1204 exit=126 signal=0 stopped=0 absent=1 valid=1 tracked=1 remaining=0 reason=leader-exit uid=1234 gid=1234 elapsed=83\nGUARD pid=4378 exit=-1 signal=9 stopped=1 absent=1 valid=1 tracked=3 remaining=0 reason=logout uid=1234 gid=1234 elapsed=2246\nGUARD pid=832 exit=-1 signal=9 stopped=1 absent=1 valid=1 tracked=3 remaining=0 reason=signal uid=1234 gid=1234 elapsed=2121\nSESSION_SAVE completed=1 exit=0 elapsed=84\nGUARD pid=2485 exit=-1 signal=9 stopped=1 absent=1 valid=1 tracked=4 remaining=0 reason=signal uid=1234 gid=1234 elapsed=2220\nSESSION_SAVE completed=0 exit=-1 elapsed=15029\nGUARD pid=1047 exit=-1 signal=9 stopped=1 absent=1 valid=1 tracked=19 remaining=0 reason=signal uid=1234 gid=1234 elapsed=17200\nGUARD pid=4251 exit=-1 signal=9 stopped=1 absent=1 valid=1 tracked=1 remaining=0 reason=timeout uid=1234 gid=1234 elapsed=1475\nGUARD pid=960 exit=-1 signal=15 stopped=1 absent=1 valid=1 tracked=4 remaining=0 reason=signal uid=1234 gid=1234 elapsed=2660\nSESSION_GUARD_TESTS_OK\n"
+    },
+    "guard-v2-session": {
+      "path": ".work/desktop-sessions/ordinary-9pz8djbm/guard-v2-session.txt",
+      "sha256": "0b2a7907390fc14870afcadbf2d0646e5ed17920aabd886cbb67cad315634f63",
+      "text": "scoped\nmode=yes file=/usr/people/xiritest/.desktop-127.0.0.1/0.0/4Dwmsession\n"
+    },
+    "guard-v2-logout": {
+      "path": ".work/desktop-sessions/ordinary-9pz8djbm/guard-v2-logout.txt",
+      "sha256": "5e809c0d5dbebe2815f5e873f0b09060b3605149b1a33363e6439f97de510644",
+      "text": "OWN pid=4083 parent=1473\nOWN pid=1365 parent=1683\nOWN pid=4636 parent=4442\nOWN pid=1445 parent=1218\nOWN pid=1440 parent=1445\nSESSION_SAVE acknowledged by 4Dwm\nSESSION_SAVE completed=1 exit=0 elapsed=209\nGUARD pid=4379 exit=-1 signal=15 stopped=1 absent=1 valid=1 tracked=28 remaining=0 reason=logout uid=1234 gid=1234 elapsed=38497\n"
+    }
+  },
+  "screenshots": {
+    "controls": {
+      "path": "docs/results/images/2026-11-06-sessions-controls.png",
+      "sha256": "eda85e00e88d050f49b508a18f5caa3595a31aee3ba50f337ce841f082c5a112",
+      "source": ".work/desktop-sessions/ordinary-9pz8djbm/explicit-selected.png"
+    },
+    "restored": {
+      "path": "docs/results/images/2026-11-06-sessions-restored.png",
+      "sha256": "a85dfbd127a4caee79988c4dde3f7aa5bbeed074d6a482773d9c65db113c5bd2",
+      "source": ".work/desktop-sessions/ordinary-9pz8djbm/first-user-restored-after-reboot.png"
+    },
+    "second-user": {
+      "path": "docs/results/images/2026-11-06-sessions-second-user.png",
+      "sha256": "a885b20c77216ae3ac45c0f790192b252ea2ce86ac148aa06912fe4fa652f75b",
+      "source": ".work/desktop-sessions/ordinary-9pz8djbm/second-user-restored.png"
+    }
+  },
+  "limits": [
+    "Only the tested programs and one desk; arbitrary applications and additional desks remain unqualified.",
+    "New shells are launched; process memory, jobs and unsaved documents are not resumed.",
+    "Real hardware and alternate displays remain unqualified."
+  ]
+}

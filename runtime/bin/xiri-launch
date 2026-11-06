@@ -16,7 +16,7 @@ case "$app" in
         # xwsh is the IRIX terminal selected by the vendor winterm script.
         # Each terminal needs its own native controlling-tty handoff report.
         exec /emul/irix/usr/sbin/xwsh -name winterm -title winterm \
-            -geometry 80x24 -e /usr/libexec/xiri-shell "$launch/handoff";;
+            -geometry 80x24 -e /usr/libexec/xiri-shell;;
     xclock)
         exec /emul/irix/usr/bin/X11/xclock -update 1 -geometry 180x180 \
             -bg gray -fg black -bd black -hd black -hl black;;

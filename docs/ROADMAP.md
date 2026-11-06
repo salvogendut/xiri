@@ -15,9 +15,12 @@ settings. Two distinct profiles pass logout/login and reboot checks, including
 native pointer tests and matching backdrop pixels. Xmahjongg now launches on
 demand. The [colour follow-up](results/2026-11-06-desktop-colours.md) resolves
 SGI names and qualifies the original Solid picker in its X11 mode, including
-two users' saved colours across logout and reboot. Next qualify saved
-application sessions and File Manager/Dumpster behavior; other control panels
-and backdrop formats remain separate.
+two users' saved colours across logout and reboot. The
+[saved-session cycle](results/2026-11-06-desktop-sessions.md) enables original
+continuous/explicit saves and restores supported windows and layouts. Log out
+before rebooting: coordinating an active desktop with system shutdown remains
+open. File Manager/Dumpster behavior, broader application restoration, other
+control panels and backdrop formats remain separate.
 
 The agreed target remains the full original IRIX desktop on NetBSD and X.org,
 with modern software running natively. The [repository/workflow cleanup](results/2026-11-03-workflow-cleanup.md) is
@@ -428,7 +431,7 @@ Decision gate: if the display or desktop exposes a major feasibility obstacle, d
 - [x] Qualify the [4 KiB data mapping extension](results/2026-11-01-irix-elfmap-subpage.md): 750 mapping/limit checks; original 4Dwm passes its previous library boundary.
 - [x] Resolve [4Dwm’s fixed/local GL mapping](results/2026-11-01-irix-mmap-local.md): 660 cases, 30 controls and 32 native page-zero checks.
 - [x] Provide [measured PRDA process data](results/2026-11-01-irix-prda.md): 80 executions / 180 records, fork COW/PID updates, exec reset, damaged-state policy and native-exec controls.
-- [x] Demonstrate [4Dwm window interaction and a combined shell session](results/2026-11-01-irix-4dwm.md): real reparenting, pointer focus, key delivery, dragging and typed winterm commands alongside Toolchest. Session saving is explicitly disabled.
+- [x] Demonstrate [4Dwm window interaction and a combined shell session](results/2026-11-01-irix-4dwm.md): real reparenting, pointer focus, key delivery, dragging and typed winterm commands alongside Toolchest. Session saving was disabled at that checkpoint; the November 6 cycle enables it.
 - [ ] Resolve remaining 4Dwm session file/service dependencies and feature queries, then qualify broader menus, minimize/maximize, desks and restoration. Preserve the qualified terminal resize/exit and both desktop logout routes.
 - [x] Capture the [actual libXmu mapping failure](results/2026-10-31-irix-xclock-elfmap.md): unchanged libXmu headers request two addresses already occupied by libXaw text, and the mapper returns ENOMEM. Native breakpoint controls and clean shutdown pass.
 - [x] Add [bounded collision relocation](results/2026-10-31-irix-elfmap-relocation.md): 576 mapper/limit checks, both ABIs, unchanged headers, alignment/gap/sentinel checks, and eight original analog/digital xclock windows. The later subpage checkpoint separately qualifies 4Dwm's 4 KiB data boundaries.
@@ -479,7 +482,9 @@ dependency candidates; a visible window alone does not complete these checks.
 - [x] Implement [measured mkdir support](results/2026-11-01-irix-mkdir.md): 3,200 records, 1,540 independently verified directory creations and 44 controls pass. Native group ownership remains explicit policy.
 - [x] Record the [user-supplied original desktop reference](IRIX-DESKTOP-REFERENCE.md), with a pixel-preserving PNG and explicit appearance/content targets.
 - [x] Implement [measured pipe support](results/2026-11-01-irix-pipe.md): 220 exact records and 44 native/vendor controls, including descriptor exhaustion/rollback and forked writers.
-- [ ] Complete usable file/icon clients. The [desktop service repair](results/2026-11-02-desktop-services.md) supersedes the earlier empty catalog/select startup boundary: system pages and entry labels now appear, FileManager lists native files, and FAM delivers changes. The [icon repair](results/2026-11-02-desktop-icons.md) qualifies Freeware artwork and FileManager folder/document icons. The [xdm CHD](results/2026-11-03-xiri-xdm-image.md) also qualifies catalog double-click launching. Broader file operations and intermittent terminal geometry/startup failures remain. Session saving remains disabled.
+- [ ] Complete usable file/icon clients. The [desktop service repair](results/2026-11-02-desktop-services.md) supersedes the earlier empty catalog/select startup boundary: system pages and entry labels now appear, FileManager lists native files, and FAM delivers changes. The [icon repair](results/2026-11-02-desktop-icons.md) qualifies Freeware artwork and FileManager folder/document icons. The [xdm CHD](results/2026-11-03-xiri-xdm-image.md) also qualifies catalog double-click launching. Broader file operations and intermittent terminal geometry/startup failures remain. Saved application sessions are covered by the November 6 cycle; broader File Manager/Dumpster operations remain open.
+- [x] Enable [saved desktop sessions](results/2026-11-06-desktop-sessions.md) through original 4Dwm: continuous and explicit modes, multiple winterms, xclock, Catalog, layout restoration and per-user state.
+- [ ] Coordinate saving before xdm closes an active display during system shutdown/reboot. For now, log out normally first; failed saves must still allow bounded cleanup.
 - [x] Inventory the supplied [May 2004 freeware sets](results/2026-11-01-irix-freeware.md): four CDs, 489 distinct packages; record zero-filled ncurses/nedit metadata separately.
 - [x] Establish [native /usr/people account creation and shared-file access](results/2026-11-01-irix-installer.md), including cold-boot persistence.
 - [x] Measure and implement the installer's [shared zero-device mapping](results/2026-11-01-irix-mmap-shared.md): 472 original records, 1,180 native records/backing files and 44 controls. Regular-file AUTOGROW remains separate.
@@ -510,8 +515,8 @@ dependency candidates; a visible window alone does not complete these checks.
 - [x] Resolve SGI-prefixed colour names through Xlib's per-session database and qualify the original Solid backdrop picker in X11 mode. [Colour result](results/2026-11-06-desktop-colours.md): 142 aliases and two users' saved colours across logout/login and reboot.
 - [ ] Compare the reopened Background chooser's initial swatch with original IRIX; the capture starts from template blue while the desktop correctly restores its custom colour. Qualify GL mode and exact native RGB allocation/display fidelity separately; Background currently uses its X11 controls.
 - [ ] Complete file navigation, desktop updates, remaining window operations and other preference panels.
-- [ ] Repeat logout and login, checking process cleanup and restoration of expected state.
-- [x] Qualify the development session's graphical console login, repeated desktop start, both logout menus and client/service cleanup. [Usability result](results/2026-11-02-desktop-usability.md); IRIX session saving/restoration remains open.
+- [x] Repeat logout and login, checking process cleanup and restoration of tested clients and layout. The [saved-session cycle](results/2026-11-06-desktop-sessions.md) covers continuous/explicit modes and separate users; arbitrary applications and additional desks remain open.
+- [x] Qualify the development session's graphical console login, repeated desktop start, both logout menus and client/service cleanup. [Usability result](results/2026-11-02-desktop-usability.md); saved-session support follows in the November 6 cycle.
 - [ ] Compare behavior with the reference installation and list component-level differences.
 - [ ] Qualify later IRIX releases separately from the current **6.5.22 / 6.5.22m** reference. Retain release-specific image/resource pins and behavior results; record differences as they are encountered.
 

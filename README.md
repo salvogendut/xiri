@@ -12,7 +12,7 @@ catalog launches and running-icon feedback. Native NetBSD Xorg drives a
 1280×1024 accelerated Newport display. It retains the xmahjongg texture
 correction qualified by the earlier [rendering and interaction checks](docs/results/2026-11-03-newport-xmahjongg.md).
 
-The [current manual CHD](docs/results/2026-11-06-desktop-colours.md#manual-image) boots into native
+The [current manual CHD](docs/results/2026-11-06-desktop-sessions.md#manual-image) boots into native
 NetBSD xdm. Use **xiritest** / **xiritest** or **xiritest2** / **xiritest2** for
 separate IRIX desktops, or **netbsdtest** / **netbsdtest** for standard NetBSD ctwm.
 `netbsdtest` belongs to `wheel` and can run `su -` for a root login shell;
@@ -28,7 +28,9 @@ describes the original Background, Color Schemes and Windows panels and where
 each user keeps their settings. Backdrops, colour schemes, focus and window
 movement now persist across login and reboot. The [Solid colour picker](docs/results/2026-11-06-desktop-colours.md)
 uses its original X11 controls, and SGI colour names resolve through a private
-session database. Xmahjongg starts only when launched.
+session database. The [saved-session guide](docs/IRIX-SOFTWARE.md#saved-desktop-sessions)
+explains **Save Windows & Desks**, automatic and explicit saves, and profile
+backups. Xmahjongg has no default autostart entry.
 System services start at boot. NetBSD
 loads `compat_irix_o32.kmod` during boot and runs the desktop on a kernel
 without built-in IRIX support. The [core kernel](lab/native-wait/README.md)
@@ -200,8 +202,10 @@ Use the `xiri` integration branches for both forks, following the
 
 Compatibility is incomplete. The reproduced Type1 collapse is corrected;
 winterm keeps the verified NetBSD bitmap Courier default. Broader graphics operations,
-Dumpster actions, other preference panels and application-session restoration
-need work. Backdrop, colour scheme, focus and movement preferences now survive
+Dumpster actions, other preference panels and broader application restoration
+need work. Saved sessions require normal logout before shutdown/reboot;
+coordinating an active desktop with system shutdown remains open.
+Backdrop, colour scheme, focus and movement preferences now survive
 logout/login and reboot for two users; see the
 [desktop-preferences result](docs/results/2026-11-06-desktop-preferences.md). The
 [GIMP checkpoint](docs/results/2026-11-03-irix-gimp.md) covers basic editing

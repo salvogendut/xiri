@@ -138,6 +138,16 @@ class ArtifactTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'emulator hashes disagree'):
             verify_image(self.root, self.pointer, self.bundle, self.manifest)
 
+    def test_session_resource_ledger_is_verified(self):
+        path = self.bundle/'session-resources.json'
+        path.write_text('original session helper provenance')
+        self.manifest['application_resources'] = {
+            'session': {'manifest_sha256': sha256(path)}}
+        verify_image(self.root, self.pointer, self.bundle, self.manifest)
+        path.write_text('different resource provenance')
+        with self.assertRaisesRegex(ValueError, 'Artifact hash mismatch'):
+            verify_image(self.root, self.pointer, self.bundle, self.manifest)
+
     def test_missing_artifact_rejected(self):
         (self.bundle/'emulator/iris-ci').unlink()
         with self.assertRaises(FileNotFoundError):

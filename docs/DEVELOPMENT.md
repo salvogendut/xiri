@@ -155,6 +155,18 @@ adds SGI name lookup and the Solid picker in X11 mode. `./xiri check` selects
 users' winterm environments and compares every SGI alias with its original
 RGB value and a numeric allocation control.
 
+Saved-session changes also require the [session checks](results/2026-11-06-desktop-sessions.md):
+use the original Windows panel to exercise continuous and explicit saves,
+close an application, restore multiple terminals and their geometry, then
+repeat with another native user and a normal logout before reboot. Keep the
+users' saved files and before/after screenshots in the disposable run.
+For images containing `save-session`, the maintained xdm probe automatically
+checks fresh versus restored launches, duplicate clients, stable winterm
+restart commands and the save acknowledgment at logout. The native
+[supervisor suite](../lab/irix-session/README.md) also checks stalled saves and
+isolation of the desktop save hook from nested application supervisors.
+Direct reboot while logged in remains a recorded shutdown-ordering limit.
+
 ## IRIX module development
 
 The [module lab](../lab/irix-module/README.md) provides the separate

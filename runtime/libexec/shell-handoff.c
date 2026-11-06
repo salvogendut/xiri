@@ -6,6 +6,7 @@
 #include <sys/stat.h>
 #include <errno.h>
 #include <fcntl.h>
+#include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -14,7 +15,7 @@
 extern char **environ;
 int main(int argc, char **argv)
 {
-    if (argc != 2 || !isatty(0) || !isatty(1) || !isatty(2)) return 125;
+    if ((argc != 1 && argc != 2) || !isatty(0) || !isatty(1) || !isatty(2)) return 125;
     /* Native session teardown must own the native ptyfs vnode. A controlling
      * tty through the nullfs compatibility view can panic on revoke. Reopen
      * the same native device while the inherited descriptors still hold it,
@@ -45,12 +46,32 @@ int main(int argc, char **argv)
         if (!ws.ws_col) ws.ws_col = 80;
         if (ioctl(0, TIOCSWINSZ, &ws)) { perror("native window size"); return 125; }
     }
-    FILE *out = fopen(argv[1], "wx");
+    /* WM_COMMAND is saved by 4Dwm. Keep the normal invocation independent of
+     * an old login's temporary directory, and give each restored terminal a
+     * separate report in the current session. Explicit paths remain useful
+     * for standalone terminal probes. */
+    char report[PATH_MAX], first[PATH_MAX];
+    FILE *out;
+    if (argc == 2) {
+        out = fopen(argv[1], "wx");
+    } else {
+        const char *job = getenv("XIRI_SESSION_DIR");
+        if (!job || *job != '/' ||
+            snprintf(report, sizeof(report), "%s/terminal.XXXXXX", job) >= (int)sizeof(report) ||
+            snprintf(first, sizeof(first), "%s/handoff", job) >= (int)sizeof(first)) return 125;
+        int report_fd = mkstemp(report);
+        if (report_fd < 0) { perror("native handoff report"); return 125; }
+        out = fdopen(report_fd, "w");
+        if (!out) { close(report_fd); unlink(report); return 125; }
+    }
     if (!out) { perror("native handoff report"); return 125; }
     fprintf(out, "NATIVE_HANDOFF pid=%d sid=%d pgid=%d tpgid=%d uid=%d euid=%d gid=%d egid=%d groups=%d tty=%s rows=%d cols=%d\n",
         getpid(), getsid(0), getpgrp(), tcgetpgrp(0), getuid(), geteuid(),
         getgid(), getegid(), getgroups(0, NULL), ttyname(0), ws.ws_row, ws.ws_col);
     if (fclose(out)) return 125;
+    if (argc == 1 && link(report, first) && errno != EEXIST) {
+        perror("first native handoff report"); return 125;
+    }
     char *const av[] = {"sh", "-i", NULL};
     execve("/bin/sh", av, environ);
     perror("native shell exec");

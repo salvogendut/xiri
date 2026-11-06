@@ -10,6 +10,7 @@ from . import ROOT, sha256
 
 
 PACKAGES = {
+    'session': ('scripts/stage-irix-session.py', 'payload.tgz'),
     'gnome': ('scripts/stage-irix-gnome.py', 'payload.tgz'),
     'terminal': ('scripts/stage-irix-terminal.py', 'terminal-resources.tgz'),
     'acrobat': ('scripts/stage-irix-acrobat.py', 'payload.tgz'),

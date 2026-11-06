@@ -25,10 +25,19 @@ observe()
     if wait "$child"; then status=0; else status=$?; fi
     printf '%s\n' "$status" >"$job/$name.exit"
 }
-observe wm /emul/irix/usr/bin/X11/4Dwm -display "$DISPLAY" \
+# 4Dwm derives this directory from the display host, display and screen.
+# Under xdm our TCP display is normally 127.0.0.1:0, not hostname:0.
+display_host=${DISPLAY%%:*}
+test -n "$display_host" || display_host=$(hostname)
+display_screen=${DISPLAY#*:}
+case "$display_screen" in *.*) ;; *) display_screen=$display_screen.0;; esac
+saved="$HOME/.desktop-$display_host/$display_screen/4Dwmsession"
+restore=no
+test ! -f "$saved" || restore=yes
+printf 'mode=%s file=%s\n' "$restore" "$saved" >"$job/restore"
+observe wm /emul/irix/usr/bin/X11/4Dwm -launch -display "$DISPLAY" \
     -xrm "*configFile: $job/4Dwmrc" \
-    -xrm '*SG_useBackgrounds: true' \
-    -xrm '*SG_manageSession: false' -xrm '*SG_autoSave: false' &
+    -xrm '*SG_useBackgrounds: true' &
 tries=0
 until /usr/local/libexec/xiri/x11-check ready; do
     tries=$((tries+1))
@@ -55,10 +64,14 @@ observe background /emul/irix/usr/sbin/fm -b &
 observe toolchest /emul/irix/usr/bin/X11/toolchest -display "$DISPLAY" \
     -geometry +10+10 \
     /usr/local/share/xiri/toolchest.chestrc &
-observe winterm /bin/sh /emul/irix/usr/sbin/winterm -name winterm \
+# Toolchest and fm -b are desktop services, not restorable applications.
+# Seed application windows only when there is no managed saved session.
+if test "$restore" = no || ! /emul/irix/usr/bin/X11/tellwm -t end_session; then
+    observe winterm /bin/sh /emul/irix/usr/sbin/winterm -name winterm \
     -title winterm -geometry 80x24+10+180 \
-    -e /usr/libexec/xiri-shell "$job/handoff" &
-observe xclock /emul/irix/usr/bin/X11/xclock -display "$DISPLAY" \
+    -e /usr/libexec/xiri-shell &
+    observe xclock /emul/irix/usr/bin/X11/xclock -display "$DISPLAY" \
     -update 1 -geometry 180x180+820+20 -bg gray -fg black -bd black -hd black -hl black &
-observe iconcatalog /emul/irix/usr/sbin/iconcatalog -geometry 600x300+400+450 &
+    observe iconcatalog /emul/irix/usr/sbin/iconcatalog -geometry 600x300+400+450 &
+fi
 wait

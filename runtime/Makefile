@@ -3,7 +3,7 @@ CC?=cc
 CFLAGS?=-O2
 WARN=-Wall -Wextra -Werror
 BUILDDIR?=build
-PROGRAMS=$(BUILDDIR)/session-guard $(BUILDDIR)/x11-check $(BUILDDIR)/shell-handoff
+PROGRAMS=$(BUILDDIR)/session-guard $(BUILDDIR)/x11-check $(BUILDDIR)/shell-handoff $(BUILDDIR)/save-session
 all: $(PROGRAMS)
 $(BUILDDIR):
 	mkdir -p $(BUILDDIR)
@@ -16,6 +16,9 @@ $(BUILDDIR)/x11-check: libexec/x11-check.c
 $(BUILDDIR)/shell-handoff: libexec/shell-handoff.c
 	mkdir -p $(BUILDDIR)
 	$(CC) $(CFLAGS) $(WARN) libexec/shell-handoff.c -o $@
+$(BUILDDIR)/save-session: libexec/save-session.c
+	mkdir -p $(BUILDDIR)
+	$(CC) $(CFLAGS) $(WARN) -I/usr/X11R7/include libexec/save-session.c -L/usr/X11R7/lib -Wl,-rpath,/usr/X11R7/lib -lX11 -o $@
 install: all
 	BUILDDIR=$(BUILDDIR) sh ./install.sh
 clean:

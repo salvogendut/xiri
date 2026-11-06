@@ -200,7 +200,10 @@ def main():
             count = sum(key.startswith('irix-') for key in r.get('font_checks', {}))
             check_fonts(guest, d, r, 'irix-'+str(count+1))
             capture_menus(guest, d, r)
-        cmd('./place winterm 10 180 983 504')
+        # Arrangement must not change the terminal size saved at logout.
+        # Later logins now restore that real user state through 4Dwm.
+        cmd('eval "$(xwininfo -name winterm | awk \'/Width:/ {print "w="$2} /Height:/ {print "h="$2}\')"; '
+            './place winterm 10 180 "$w" "$h"')
         cmd(shlex.join(['./type','127.0.0.1:0','winterm',
             '(id -un; echo "$HOME"; pwd; id -G; echo "${XAUTHORITY:-$HOME/.Xauthority}") > "$XIRI_SESSION_DIR/shell-proof"\n']))
         wait('test -s "$job/shell-proof"')
@@ -230,6 +233,23 @@ def main():
         if args.multiuser:
             from xiri_lab.multiuser import check_home
             r['multiuser'].setdefault('homes', []).append(check_home(guest, user))
+        if '/usr/local/libexec/xiri/save-session' in previous['installed_files']:
+            # These repeated logins must use 4Dwm's saved list without adding
+            # another copy of each seeded application. Check real processes
+            # and the restart command, not just the launcher configuration.
+            counts = {}
+            for app, pattern in {
+                'winterm': r'^/emul/irix/usr/sbin/xwsh( |$)',
+                'xclock': r'^/emul/irix/usr/bin/X11/xclock( |$)',
+                'catalog': r'^(/emul/irix)?/usr/sbin/iconcatalog( |$)',
+            }.items():
+                pids = get(shlex.join(['pgrep', '-u', user, '-f', pattern])).split()
+                assert len(pids) == 1, (user, app, pids)
+                counts[app] = len(pids)
+            restart = get('xprop -name winterm WM_COMMAND')
+            assert '"/usr/libexec/xiri-shell" }' in restart and '/session.' not in restart, restart
+            r.setdefault('saved_sessions', []).append(dict(user=user,
+                restore=get('cat "$job/restore"').strip(), counts=counts, restart_command=restart))
         return dict(user=user, catalog_pages=catalog_pages, identity=get('cat "$job/identity"'),shell=proof,render=render,
                     dimensions=dimensions, framebuffer=guest.monitor('screen info'),
                     tree=get('xwininfo -root -tree'),job=get('printf "%s" "$job"'))
@@ -475,6 +495,8 @@ def main():
         r['xdm_log'] = get('cat /var/log/xdm.log')
         paths = ['/usr/local/bin/'+x for x in ['xiri-desktop','xiri-session','xiri-launch','xiri-logout']]
         paths += ['/usr/local/libexec/xiri/'+x for x in ['session-guard','x11-check','desktop-clients.sh','setup-pty.sh']]
+        if '/usr/local/libexec/xiri/save-session' in previous['installed_files'] or not args.bundle:
+            paths.append('/usr/local/libexec/xiri/save-session')
         paths += ['/usr/libexec/xiri-shell','/etc/xiri/session.conf','/etc/xiri/fam.conf',
                   '/etc/xiri/xdm/Xservers','/etc/xiri/xdm/Xresources','/usr/people/xiritest/.xsession']
         if args.multiuser:

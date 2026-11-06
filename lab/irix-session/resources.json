@@ -1,0 +1,69 @@
+{
+  "schema": 1,
+  "status": "staged-unqualified",
+  "extraction": "guestfish --ro; mount ro,norecovery",
+  "source_image_manifest_sha256": "79b464ad3856eca2d034f418445860b3d262437f0347ccadedc67e60c8330521",
+  "script_sha256": "ca277284e05e337111c4da1625104d0c4021a13d645f146d0b1081a2ea28c714",
+  "payload_sha256": "e9490582ae608f46f8b137502b385a757ca5ccf6c9ee739319bacecd8964fc37",
+  "paths": {
+    "/usr/bin/X11/tellwm": {
+      "irix_source": "/usr/bin/X11/tellwm",
+      "canonical_source": "/usr/bin/X11/tellwm",
+      "netbsd_destination": "/emul/irix/usr/bin/X11/tellwm",
+      "type": "file",
+      "original_mode": "0o755",
+      "mode": "0o555",
+      "uid": 0,
+      "gid": 0,
+      "bytes": 22848,
+      "sha256": "37c390c8fa1594d060ee70ed2bc9e53b4f85594440e24ac1732f930e97f991f5",
+      "elf": {
+        "class": 32,
+        "endian": "big",
+        "machine": 8,
+        "abi": "n32",
+        "type": 2,
+        "flags": "0x20000024",
+        "entry": "0x10001794",
+        "interpreter": [
+          "/usr/lib32/libc.so.1"
+        ],
+        "needed": [
+          "libX11.so.1",
+          "libc.so.1"
+        ],
+        "rpath": [],
+        "soname": [],
+        "loads": [
+          {
+            "offset": 0,
+            "address": 268435456,
+            "file_bytes": 16384,
+            "memory_bytes": 16384,
+            "flags": 5,
+            "alignment": 8192
+          },
+          {
+            "offset": 16384,
+            "address": 268517376,
+            "file_bytes": 4096,
+            "memory_bytes": 4096,
+            "flags": 6,
+            "alignment": 4096
+          }
+        ],
+        "load_boundaries_8k": false,
+        "liblist": [
+          "libX11.so.1",
+          "libc.so.1"
+        ],
+        "mips_rld_version": 1,
+        "mips_flags": "0x6c11"
+      }
+    }
+  },
+  "limitations": [
+    "Resource presence does not qualify saving or restoring an application.",
+    "No original user session or home directory is imported."
+  ]
+}

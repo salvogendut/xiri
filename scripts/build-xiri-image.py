@@ -7,6 +7,8 @@ from pathlib import Path
 import shutil
 import subprocess
 
+from xiri_lab.application_resources import PACKAGES
+
 ROOT = Path(__file__).resolve().parent.parent
 TOOL = ['toolbox', 'run', '-c', 'xiri-iris', 'chdman']
 
@@ -162,6 +164,16 @@ def main():
                 'xosview statistics, complete Dumpster actions, other preference\n'
                 'panels and saved application sessions remain unfinished.')
             readme += (ROOT/'lab/irix-desktop-behavior/colours-image-README.txt').read_text()
+        if '/usr/local/libexec/xiri/save-session' in r['installed_files']:
+            readme = readme.replace('Saved IRIX sessions are not restored.',
+                'Saved IRIX application lists and window layouts are restored at login.')
+            readme = readme.replace('panels and saved application sessions remain unfinished.',
+                'panels and broader application restoration remain unfinished.')
+            readme = readme.replace('Other preference panels and saved application sessions need testing.',
+                'Other preference panels and broader application restoration need testing.')
+            readme = readme.replace('Xmahjongg starts only when launched from Freeware or winterm.',
+                'Xmahjongg has no default autostart; it can be included in a saved session.')
+            readme += (ROOT/'lab/irix-session/image-README.txt').read_text()
     if r.get('gimp_resources'):
         readme += (ROOT/'lab/irix-gimp/image-README.txt').read_text()
     if 'acrobat' in r.get('application_resources', {}):
@@ -263,7 +275,7 @@ tftp_dir = "tftp"
         report['gimp_resources'] = r['gimp_resources']
     if r.get('application_resources'):
         for name, resources in r['application_resources'].items():
-            assert name in ('gnome', 'terminal', 'acrobat')
+            assert name in PACKAGES
             ledger = seed/'media'/(name+'-resources.json')
             assert sha(ledger) == resources['manifest_sha256']
             shutil.copyfile(ledger, out/ledger.name)

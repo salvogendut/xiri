@@ -250,12 +250,47 @@ is derived state; keep the original RGB resource, not a previous session's
 
 If Window Settings asks to restart the window manager, choosing **Cancel**
 keeps the saved choice for the next login. Log out normally and log back in
-to apply it. **Save Windows & Desks** is still outside the supported scope:
-automatic application-session saving/restoration remains disabled. Preference
-restoration does not restore the previous collection of open applications.
+to apply it. Saved application windows are controlled separately through
+**Save Windows & Desks**, described below.
 
 Xmahjongg is available from **Freeware** or winterm; it is no longer part of
-automatic desktop startup.
+the default desktop startup. A saved session can include it.
+
+## Saved desktop sessions
+
+Open **Toolchest → Desktop → Customize → Windows**. Under **Save Windows &
+Desks**, choose:
+
+- **Continuously** to restore the running application windows from the last
+  normal logout. Closing an application removes it from the next saved session.
+- **Explicitly**, then **Set Home Session**, to keep a chosen starting desktop.
+  Later changes do not replace that application list until you save again.
+
+Log out through Toolchest or the desktop menu. Xiri waits for 4Dwm to finish
+its save before terminating the session. **Log out before rebooting or shutting
+down.** A direct reboot while logged in can close X before the save completes;
+the latest window changes may be lost even if an older saved session remains.
+Applications must publish a usable X11 restart command; support for one application does not establish support
+for every catalog entry. Winterm restores fresh native shells in the user's
+home. Save documents and finish shell jobs separately.
+
+The current xdm display stores `4Dwmsession`, `4Dwmdesks` and `4Dwmdeskname` in
+`~/.desktop-127.0.0.1/0.0/`. These files belong to the native desktop user, so
+`xiritest` and `xiritest2` have independent saved sessions. A different display
+host/number selects a different directory. Keep these files with the existing
+`.Sgiresources` and `.desktop-<hostname>` preferences when backing up a profile.
+
+Toolchest and the desktop file manager always start. The default winterm,
+xclock and Icon Catalog are seeded only when no managed session has been
+saved. A closed Catalog or terminal therefore stays closed on the next
+continuous-mode login; use Toolchest to open it again. Xmahjongg can return if
+you deliberately leave it in a saved session, but is not a default startup app.
+
+To reset the saved windows, log out first and rename `4Dwmsession` in the above
+directory from another login. Keep the old file as a backup. To also reset
+the layout and desks, back up and rename `4Dwmdesks` and `4Dwmdeskname`.
+The next login seeds the normal default windows. Do not edit these files while
+4Dwm is running, since it may write them again.
 
 ## Native accounts with the IRIX home layout
 

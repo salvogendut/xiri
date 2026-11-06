@@ -5,6 +5,13 @@ status statements describe individual checkpoints and may be superseded by
 later entries. Use the [current README](../README.md), [development guide](DEVELOPMENT.md)
 and [selected image](../lab/irix-installed-desktop/image.json) for current work.
 
+The [November 6 saved-session cycle](results/2026-11-06-desktop-sessions.md)
+uses original 4Dwm application and layout files, fixes winterm's stale restart
+path, and saves before normal logout cleanup. Continuous and explicit modes
+retain their original semantics. The native supervisor bounds a failed save
+and does not pass its desktop save hook into nested application supervisors.
+A direct system reboot can close X too early; normal logout is required first.
+
 The [November 6 desktop-preferences cycle](results/2026-11-06-desktop-preferences.md)
 loads the original panels' per-user resource files at login and removes forced
 backdrop/window colours. Two distinct profiles survive logout/login and reboot;

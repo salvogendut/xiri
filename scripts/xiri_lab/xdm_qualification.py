@@ -58,6 +58,9 @@ def verify_sessions(r):
         assert '1280x1024 pixels' in entry['dimensions']
         assert 'RENDER_PASS pixels=8536 mismatches=0' in entry['render']
         assert re.search(r'GUARD .*absent=1 valid=1 .*remaining=0 ',entry['guard'])
+        if '/usr/local/libexec/xiri/save-session' in r['installed_files']:
+            assert 'SESSION_SAVE acknowledged by 4Dwm' in entry['guard']
+            assert 'SESSION_SAVE completed=1 exit=0 ' in entry['guard']
         assert '"xlogin"' in entry['greeter_after']
     failed=r['failed_startup']
     assert re.search(r'GUARD .*exit=7 .*absent=1 valid=1 .*remaining=0 ',failed['guard'])
@@ -145,6 +148,16 @@ def verify_sessions(r):
         for home in multi['homes']:
             assert home['private_state'] and home['owner_verified'] and home['desktop_links']
         assert {'during-second-user', 'after-second-user'} <= set(r['survivors'])
+    if '/usr/local/libexec/xiri/save-session' in r['installed_files']:
+        saved = r['saved_sessions']
+        primary = [entry for entry in saved if entry['user'] == 'xiritest']
+        assert len(primary) == 3
+        assert primary[0]['restore'].startswith('mode=no ')
+        assert all(entry['restore'].startswith('mode=yes ') for entry in primary[1:])
+        for entry in saved:
+            assert entry['counts'] == dict(winterm=1, xclock=1, catalog=1)
+            assert '"/usr/libexec/xiri-shell" }' in entry['restart_command']
+            assert '/session.' not in entry['restart_command']
 
 
 def qualify(a, verify_irix_module):
@@ -274,6 +287,10 @@ def qualify(a, verify_irix_module):
         shutil.copyfile(frame, target)
         report['screenshots']['second-user'] = dict(path=str(target), sha256=sha256(target),
             source=str(frame), dimensions=[1282, 1024], method='IRIS ordinary GL scanout', byte_identical=True)
+    if 'saved_sessions' in r:
+        report['limitations'][2] = ('Original clogin and simultaneous graphical seats remain unqualified. '
+            'The tested applications restore after normal logout; arbitrary applications and additional desks need separate checks.')
+        report['limitations'].append('Log out before shutdown/reboot: xdm can close an active X display before 4Dwm completes its save.')
     a.output.parent.mkdir(parents=True,exist_ok=True)
     a.output.write_text(json.dumps(report,indent=2)+'\n')
     if a.promote or a.record_bundle:
@@ -288,6 +305,8 @@ def qualify(a, verify_irix_module):
                       qualification_sha256=sha256(a.output),qualification_run=str(a.run))
         if 'winterm' in r:
             promoted['winterm_checks']=True
+        if 'saved_sessions' in r:
+            promoted['saved_session_checks']=True
         if 'job_control' in r:
             promoted['job_control_checks']=True
         if 'multiuser' in r:
