@@ -178,8 +178,23 @@ with native NetBSD administration.
 
 ```sh
 # Inside the NetBSD target, as its administrator:
-sh scripts/setup-xiri-user.sh alice
+useradd -m -d /usr/people/alice -s /bin/ksh alice
+chmod 700 /usr/people/alice
+passwd alice
+/usr/local/sbin/xiri-sync-users
 ```
+
+These native commands are available in the manual image. When the repository
+helper is present in the guest, `sh scripts/setup-xiri-user.sh alice` can replace
+the first two commands and adds the existing-account checks described above.
+
+With the multi-user native FAM build installed, each ordinary account can
+select the IRIX desktop by copying `/usr/local/share/xiri/xdm.xsession` to its
+own `$HOME/.xsession` and making it executable. Leave `.xsession` unset for
+native NetBSD ctwm. `xiri-sync-users` refreshes IRIX passwd/group lookup names
+without copying passwords or changing native login databases. Boot refreshes
+these maps automatically; run it again after account/group changes. See the
+[runtime guide](../runtime/README.md) for the service and session requirements.
 
 Native and IRIX applications must see the same home. Do not create a second
 home under `/emul/irix/usr/people`. IRIX clients should generate their own

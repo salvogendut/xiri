@@ -12,7 +12,7 @@ The entry point covers routine work against the selected image; the older
 | `./xiri status [--json]` | Show the selected image, its kernel/emulator pins and current integration worktree revisions/status. Source tips can be newer than the tested image. |
 | `./xiri doctor` | Hash-check immutable image inputs and the qualification record; check host tools and Toolbox. It does not boot a guest. |
 | `./xiri run` | Open the bundle's pinned IRIS launcher for manual testing. NVRAM, overlays and snapshots retain normal manual-session behavior. |
-| `./xiri check` | Boot a disposable CHD copy and select checks for its manifest: xdm login/4Dwm/ctwm for xdm images, or the manual launcher for older images. Check rendering, home directory, catalog launching and cleanup, then write qualification JSON and PNGs. |
+| `./xiri check` | Boot a disposable CHD copy and select checks for its manifest: xdm login/4Dwm/ctwm, including both IRIX accounts when present, or the manual launcher for older images. Check rendering, home directory, catalog launching and cleanup, then write qualification JSON and PNGs. |
 | `./xiri seed [--output PATH]` | Extract or reuse a raw automation seed without repeating the import. A mismatched existing disk is rejected. Changed manual graphical NVRAM is preserved and excluded from a new frozen seed. |
 | `./xiri build kernel` | Build tools and the configured modular mips64eb kernel from the NetBSD `xiri` worktree, with at most two build jobs. Build its matching personality with the command below. |
 | `./xiri build iris` | Build the IRIS `xiri` worktree with the pinned Rust toolchain, locked offline dependencies and two jobs. |
@@ -205,6 +205,12 @@ and acceptance, full-screen X geometry, readable greeter text, desktop input,
 both logout menus, failed startup/retry and unrelated-login/service survival.
 A separate native account without `.xsession` must retain NetBSD's standard
 ctwm desktop, then permit another xiritest/4Dwm login.
+For the current image prepared with `--multiuser`, run the cold probe with
+`--bundle BUNDLE --multiuser --winterm --fonts`. It adds concurrent per-user FAM watches, credential and
+home isolation, and an xdm login as `xiritest2`. `./xiri check` selects this
+additional gate automatically when the image manifest contains that account.
+Prepare this image with `--fam-build .work/native-fam-multiuser --multiuser`
+after building the [multi-user native FAM](../lab/native-fam/README.md).
 Results, the frozen harness/runtime and GL scanout PNGs stay under
 `.work/irix-xdm/runs/ordinary-*`. `--debug-failure` provides the same bounded
 command queue; SIGTERM requests cleanup instead of leaving the guest running.

@@ -42,6 +42,18 @@ not repin qualified kernels, emulator binaries, runtime resources or guest disks
 
 ## IRIS upstream updates
 
+The multi-user desktop cycle fetched upstream at its start on 2026-11-05
+and again after midnight on 2026-11-06 (23:00 UTC on November 5).
+`c382cdcc25389769b5ae3a436ae1ff73ae42e964` is already an ancestor of IRIS
+`xiri` at `fb24628e1bf97a4f379309c79e808d82929672b7`; the incoming commit
+list is empty. No integration or emulator rebuild is needed. NetBSD remains
+on `xiri` at `0febc6eb24ad889d12a3b2afaa12558c9781859d` without source
+changes for this feature. Multi-user FAM uses the existing native TCP owner
+lookup. Tests retain the selected wait image's kernel/module and pinned
+`819c6825504d40ad9f9aa00554249affd2da9446` emulator. The
+[multi-user qualification](results/2026-11-05-multiuser.md) passes with these
+unchanged pins; only the lab/runtime repository needs a feature commit.
+
 The 2026-11-05 native-sleep investigation fetched upstream at 19:40 UTC.
 `c382cdcc25389769b5ae3a436ae1ff73ae42e964` was already included in IRIS
 `xiri` at `fb24628e1bf97a4f379309c79e808d82929672b7`; no additional

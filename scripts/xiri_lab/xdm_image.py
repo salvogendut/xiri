@@ -18,12 +18,18 @@ def support_files(bundle, seed):
     # Native rc.d regenerates the kernel-version prefix at each boot. The
     # preparation record retains its initial hash, not an immutable contract.
     files.pop('/etc/motd', None)
+    # Native account administration is reflected at boot by xiri-sync-users.
+    # These are generated lookup tables, not imported immutable payload.
+    if '/usr/local/sbin/xiri-sync-users' in seed['installed_files']:
+        files.pop('/emul/irix/etc/passwd', None)
+        files.pop('/emul/irix/etc/group', None)
     return files
 
 
 def runtime_files():
     paths = ['/usr/local/bin/'+s for s in ('xiri-desktop','xiri-session','xiri-launch','xiri-logout')]
     paths += ['/usr/local/libexec/xiri/'+s for s in ('session-guard','x11-check','desktop-clients.sh','setup-pty.sh')]
+    paths += ['/usr/local/sbin/xiri-sync-users', '/usr/local/libexec/xiri/account-map.awk']
     paths += ['/usr/libexec/xiri-shell','/etc/xiri/session.conf','/etc/xiri/fam.conf',
               '/etc/xiri/Xresources',
               '/etc/xiri/xdm/Xservers','/etc/xiri/xdm/Xresources',

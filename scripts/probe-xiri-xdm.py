@@ -28,7 +28,10 @@ def main():
     parser.add_argument('--winterm', action='store_true', help='check untouched startup, foreground resize and normal terminal exit')
     parser.add_argument('--fonts', action='store_true', help='compare native core/Xft pixels and Courier metrics in both desktops')
     parser.add_argument('--jobs', action='store_true', help='exercise native and original IRIX shell job control, then logout with active jobs')
+    parser.add_argument('--multiuser', action='store_true', help='check concurrent FAM clients and a second IRIX account in the prepared CHD')
     args = parser.parse_args()
+    if args.multiuser:
+        assert args.bundle, 'multi-user accounts must be provisioned in the input CHD'
     seed = args.seed.resolve()
     if args.bundle:
         bundle = args.bundle.resolve()
@@ -82,6 +85,10 @@ def main():
             shutil.copyfile(ROOT/source, media/Path(source).name)
             sources[source] = sha256(ROOT/source)
         sources['scripts/xiri_lab/fonts.py'] = sha256(ROOT/'scripts/xiri_lab/fonts.py')
+    if args.multiuser:
+        for source in ['lab/native-fam/multiuser-test.c', 'scripts/xiri_lab/multiuser.py']:
+            sources[source] = sha256(ROOT/source)
+        shutil.copyfile(ROOT/'lab/native-fam/multiuser-test.c', media/'multiuser-test.c')
     if args.bundle:
         support = support_files(bundle,previous)
         (media/'SUPPORT').write_text(''.join(f'SHA256 ({path}) = {digest}\n' for path,digest in sorted(support.items())))
@@ -151,7 +158,7 @@ def main():
 
     def login(password='xiritest', user='xiritest'):
         # Public disposable lab password; do not use a personal credential here.
-        home = {'xiritest':'/usr/people/xiritest','netbsdtest':'/home/netbsdtest'}[user]
+        home = {'xiritest':'/usr/people/xiritest','xiritest2':'/usr/people/xiritest2','netbsdtest':'/home/netbsdtest'}[user]
         cmd('rm -f '+home+'/.xsession-errors')
         guest.monitor('key type '+user); guest.monitor('key Return')
         guest.monitor('key type '+password); guest.monitor('key Return')
@@ -166,20 +173,24 @@ def main():
         assert get('cat /tmp/xiri-side-shell/'+label).strip() == label
         r.setdefault('survivors',[]).append(label)
 
-    def ready():
-        wait('grep -q "Logs: " /usr/people/xiritest/.xsession-errors',120)
-        cmd('job=$(sed -n "s/.*Logs: //p" /usr/people/xiritest/.xsession-errors | head -1); '
+    def ready(user='xiritest'):
+        home = '/usr/people/'+user
+        wait('grep -q "Logs: " '+home+'/.xsession-errors',120)
+        cmd('job=$(sed -n "s/.*Logs: //p" '+home+'/.xsession-errors | head -1); '
             'test -d "$job"; XAUTHORITY=$(sed -n "s/.* authority=//p" "$job/identity"); '
-            'test "$XAUTHORITY" != default || XAUTHORITY=/usr/people/xiritest/.Xauthority; '
+            'test "$XAUTHORITY" != default || XAUTHORITY='+home+'/.Xauthority; '
             'export XAUTHORITY DISPLAY=127.0.0.1:0; test -r "$XAUTHORITY"')
         wait('test -s "$job/handoff" && /usr/local/libexec/xiri/x11-check ready',180)
-        wait("xwininfo -root -tree | grep 'of 18)' >/dev/null",180)
+        # The seed's xiritest has a personal Blank page. A fresh account has
+        # only the 17 imported system pages; that is a complete catalog too.
+        catalog_pages = 17 if user == 'xiritest2' else 18
+        wait("xwininfo -root -tree | grep 'of "+str(catalog_pages)+")' >/dev/null",180)
         cmd("shell_pid=$(sed -n 's/^NATIVE_HANDOFF pid=\\([0-9][0-9]*\\).*/\\1/p' \"$job/handoff\")")
         wait('ps -p "$shell_pid" -o comm= | grep -Eq \'^[[:space:]]*sh[[:space:]]*$\'')
-        if args.winterm:
+        if args.winterm and user == 'xiritest':
             from xiri_lab.winterm import check
             check(guest, d, r, extra=not r.get('winterm'))
-        if args.fonts:
+        if args.fonts and user == 'xiritest':
             from xiri_lab.fonts import check as check_fonts, capture_menus
             count = sum(key.startswith('irix-') for key in r.get('font_checks', {}))
             check_fonts(guest, d, r, 'irix-'+str(count+1))
@@ -189,7 +200,7 @@ def main():
             '(id -un; echo "$HOME"; pwd; id -G; echo "${XAUTHORITY:-$HOME/.Xauthority}") > "$XIRI_SESSION_DIR/shell-proof"\n']))
         wait('test -s "$job/shell-proof"')
         proof = get('cat "$job/shell-proof"').splitlines()
-        assert proof[:3] == ['xiritest','/usr/people/xiritest','/usr/people/xiritest'], proof
+        assert proof[:3] == [user, home, home], proof
         assert '1235' in proof[3].split(), proof
         assert proof[4] == get('printf "%s" "$XAUTHORITY"'), proof
         cmd('if XAUTHORITY=/dev/null xdpyinfo >auth-rejected.log 2>&1; then exit 1; fi')
@@ -200,7 +211,10 @@ def main():
         if args.jobs and 'job_control' not in r:
             from xiri_lab.job_control import check as check_jobs
             check_jobs(guest, d, r)
-        return dict(identity=get('cat "$job/identity"'),shell=proof,render=render,
+        if args.multiuser:
+            from xiri_lab.multiuser import check_home
+            r['multiuser'].setdefault('homes', []).append(check_home(guest, user))
+        return dict(user=user, catalog_pages=catalog_pages, identity=get('cat "$job/identity"'),shell=proof,render=render,
                     dimensions=dimensions, framebuffer=guest.monitor('screen info'),
                     tree=get('xwininfo -root -tree'),job=get('printf "%s" "$job"'))
 
@@ -209,7 +223,8 @@ def main():
         assert re.search(r'GUARD .*absent=1 valid=1 .*remaining=0 ',entry['guard'])
         owners = {int(x) for x in re.findall(r'^OWN pid=(\d+) ',entry['guard'],re.M)}
         assert not owners.intersection(r['service_and_side_pids'].values())
-        cmd("! pgrep -u 1234 -f '^/emul/irix/usr/(bin/X11/4Dwm|sbin/xwsh|sbin/iconcatalog)( |$)'")
+        user = entry.get('user', 'xiritest')
+        cmd("! pgrep -u "+user+" -f '^/emul/irix/usr/(bin/X11/4Dwm|sbin/xwsh|sbin/iconcatalog)( |$)'")
         if args.jobs:
             from xiri_lab.job_control import after_logout
             after_logout(guest, d, r)
@@ -360,6 +375,10 @@ def main():
         cmd('cd /root/xdm-test; export PATH=/usr/local/bin:/usr/X11R7/bin:/bin:/sbin:/usr/bin:/usr/sbin; ulimit -c 0')
         r['boot_services'] = cmd('/etc/rc.d/xdm status && /etc/rc.d/rpcbind status && /etc/rc.d/xiri_famd status && '
             'test -f /var/run/xiri-pty-ready && modstat | grep -E "^compat_irix_o32[[:space:]]+exec[[:space:]]+filesys"')
+        if args.multiuser:
+            from xiri_lab.multiuser import check_fam
+            r['multiuser'] = dict(fam=check_fam(guest))
+            print('Concurrent FAM clients use their own identities and private homes', flush=True)
         r['initial_greeter'] = greeter(); capture('xdm-greeter')
         if args.fonts:
             from xiri_lab.fonts import check as check_fonts
@@ -400,6 +419,14 @@ def main():
             capture('xdm-after-'+route)
             greeter_text('xdm-after-'+route,entry['greeter_after'])
             print(route+' logout returned to greeter and preserved services/other login',flush=True)
+        if args.multiuser:
+            login('xiritest2', user='xiritest2')
+            second = ready('xiritest2'); capture('xdm-desktop-xiritest2')
+            survivors('during-second-user')
+            cmd('touch "$job/logout"')
+            second['greeter_after'] = greeter(); guard(second); survivors('after-second-user')
+            r['multiuser']['second_session'] = second
+            print('Second IRIX user reached 4Dwm and returned to xdm with private session state', flush=True)
         # A failing desktop must return to authentication, then allow retry.
         cmd("cp /usr/local/libexec/xiri/desktop-clients.sh clients.good; printf '#!/bin/sh\\nexit 7\\n' >/usr/local/libexec/xiri/desktop-clients.sh; rm /usr/people/xiritest/.xsession-errors")
         login()
@@ -420,6 +447,9 @@ def main():
         paths += ['/usr/local/libexec/xiri/'+x for x in ['session-guard','x11-check','desktop-clients.sh','setup-pty.sh']]
         paths += ['/usr/libexec/xiri-shell','/etc/xiri/session.conf','/etc/xiri/fam.conf',
                   '/etc/xiri/xdm/Xservers','/etc/xiri/xdm/Xresources','/usr/people/xiritest/.xsession']
+        if args.multiuser:
+            paths += ['/usr/people/xiritest2/.xsession', '/usr/local/sbin/xiri-sync-users',
+                      '/usr/local/libexec/xiri/account-map.awk', '/usr/local/sbin/famd']
         paths += ['/etc/rc.d/'+x for x in ['xiri_devices','xiri_famd']]
         paths += ['/etc/rc.conf.d/'+x for x in ['xiri_devices','xiri_famd','rpcbind','xdm']]
         if not args.bundle or '/etc/xiri/Xresources' in previous['installed_files']:

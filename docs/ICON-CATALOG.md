@@ -8,7 +8,9 @@ and the [GNOME](results/2026-11-04-irix-gnome.md),
 This is the requested list to use when returning to failures one by one.
 It preserves all **166 registered entries in 17 system tabs** from the supplied
 IRIX 6.5.22 installation, including unresolved source links that the running
-catalog may omit. The eighteenth page is the user's empty **Blank** page.
+catalog may omit. The eighteenth page is xiritest's personal empty **Blank**
+page. A fresh account such as xiritest2 starts with the 17 system pages;
+the personal page count is not a system-catalog completeness check.
 Click the stacked page edges at the bottom-right of Icon Catalog to open the
 [menu of all pages](results/images/2026-11-03-irix-catalog-pages.png), including
 those whose tabs do not fit along the bottom.

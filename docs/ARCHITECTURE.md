@@ -78,6 +78,15 @@ children, without terminating unrelated processes of the same user. The
 manual `xiri-desktop` wrapper starts an authenticated X server, enters the
 configured account with `su -l`, and stops only its own X server after logout.
 
+Multi-user sessions share the native FAM service. For each original v1 TCP
+connection, FAM obtains the connecting socket's UID from NetBSD's existing
+`TCPCTL_IDENT` interface and uses that account's native groups. It does not
+trust UID/GID fields in the client protocol. Each session retains its own HOME,
+Desktop/Dumpster and private logs; `xiri_user` configures only the manual
+wrapper's default user. `xiri-sync-users` generates password-free IRIX libc
+lookup tables from native NSS at boot and after account changes. Authentication
+continues through native xdm/PAM. These changes require no new kernel hooks.
+
 The 2026-11-03 deployment request prioritizes a boot-loaded personality,
 configured native services and then normal xiritest login through xdm.
 Original IRIX clogin follows later. The [module cycle](results/2026-11-03-irix-module.md)
@@ -105,9 +114,8 @@ standalone module loading on a stock kernel has not been established.
 The [FAM integration](results/2026-11-02-desktop-services.md) is native
 userspace code. Its filesystem watches require a shared native alias for
 the imported desktop resource tree; the kernel's foreign pathname lookup
-does not apply to the native daemon. The current service maps loopback
-clients to the dedicated test account and is explicitly a single-user
-development configuration, pending broader account/session design.
+does not apply to the native daemon. The multi-user patch replaces the earlier
+dedicated-test-account mapping with the native socket owner's credentials.
 
 The [desktop usability work](results/2026-11-02-desktop-usability.md) routes
 Toolchest and 4Dwm logout through a native request-file helper. That interface

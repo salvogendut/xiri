@@ -1,9 +1,19 @@
-# Development history through 2026-11-05
+# Development history through 2026-11-06
 
 This is the former README, retained as a chronological evidence index. Its
 status statements describe individual checkpoints and may be superseded by
 later entries. Use the [current README](../README.md), [development guide](DEVELOPMENT.md)
 and [selected image](../lab/irix-installed-desktop/image.json) for current work.
+
+The [November 5–6 multi-user cycle](results/2026-11-05-multiuser.md) replaces
+FAM's fixed xiritest mapping with native TCP socket ownership and native groups.
+Two concurrent clients pass private-directory and shared-group checks; native
+xdm switches between two original IRIX desktops and the standard ctwm account.
+Each IRIX account has its own HOME and session state. IRIX passwd/group lookup
+tables now follow native accounts without copying passwords. The selected
+manual CHD includes this runtime and the maintained guard, using the preceding
+native-wait kernel/module and emulator. No new kernel hooks or vendor resources
+are needed. Earlier images and manual state remain available.
 
 The [2026-11-05 native paging investigation](results/2026-11-05-native-paging.md)
 reproduces the pressure stall without Xlib, observes synchronous swap

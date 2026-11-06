@@ -1,12 +1,12 @@
 {
-  "chd_sha256": "90ca82ecdfbe184a96990515938f7856eb6983f77719d487fb7c6b34ba73eece",
-  "chd_bytes": 496151497,
+  "chd_sha256": "a800307d5b8a7ad7e47327115406a06814fd932bf26df1b5131e524e97cb0c12",
+  "chd_bytes": 496273073,
   "logical_bytes": 8589934592,
-  "nvram_sha256": "14a62e3ac884b9c57046f63153dc4469c22982706dad200103457e4b5f56cffc",
+  "nvram_sha256": "7d0a0ae284d75f2072fb293cb201b0c4a0010c7753566806d72de5f0d069ee54",
   "config_sha256": "77c252ecac0b780d32570af5793b99320a59edbd3b8ef8a9bb9b5129a4277ea9",
   "copy_ledger_sha256": "204c32fd3f41e512a5121aeba7403ea5a821a4e5be22e2c60d4e19ab70bab19a",
   "permission_manifest_sha256": "e65633848c258eeecc0a211636c1e5fb5e7f11d23b73db336e643b7d8494044c",
-  "manual_nvram_sha256": "841764ccb962845b839b68ac47d0ee5e3bf06eed4aa01f35197f82a96a9d463f",
+  "manual_nvram_sha256": "1fc0eac5390482c9734c22d88ea12a8a8bda6168dcb139978b9aee08bce375e4",
   "manual_console": "graphics; AutoLoad Yes; serial B diagnostic login",
   "emulator_files": {
     "emulator/iris": "3dd9299d71f1899ff5a8c9b76f6a24752d19e4f9a0bcfe0edf3a29001dc9c49e",
@@ -14,14 +14,14 @@
     "run-iris.sh": "86cf47bb79b0eb980e40a566ff64f795b358a94f753015ae9460bb1e6e8d9680"
   },
   "schema": 1,
-  "bundle": ".work/images/xiri-netbsd-desktop-20261105-wait",
-  "image": ".work/images/xiri-netbsd-desktop-20261105-wait/netbsd-xiri.chd",
-  "raw_sha256": "7f6d2a446b026171b9cb9965f47fab303555ef82a727f5e1b97f509af1c2b42c",
+  "bundle": ".work/images/xiri-netbsd-desktop-20261105-multiuser",
+  "image": ".work/images/xiri-netbsd-desktop-20261105-multiuser/netbsd-xiri.chd",
+  "raw_sha256": "f7346e8d4268ec4cd6cf372d9ca62f02e805c2bc95ebd5bd411d5dfdab578337",
   "kernel_source": "ded40d74024a79922c33f56c4b7c342cc39aa9f9",
   "kernel_source_equivalent_commit": "e9ff76a58affee773b767d334f98075bf86daf7e",
   "emulator_revision": "819c6825504d40ad9f9aa00554249affd2da9446",
-  "qualification": "docs/results/2026-11-05-native-wait-image.json",
-  "qualification_sha256": "3db47e6f144bd3b1369efaa9768a68a21382a28998533ba4994470c9d4f6f934",
+  "qualification": "docs/results/2026-11-05-multiuser.json",
+  "qualification_sha256": "0147e8e8dbb5572fbe845c19bd25a5da276c6900910af7e48a2885173962f2ed",
   "session_manager": "xdm",
   "xdm": {
     "greeter_boot_verified": true,
@@ -37,6 +37,14 @@
         "desktop": "ctwm",
         "supplementary_groups": [
           "wheel"
+        ]
+      },
+      "xiritest2": {
+        "uid": 1237,
+        "home": "/usr/people/xiritest2",
+        "desktop": "4Dwm",
+        "supplementary_groups": [
+          "xiritest-extra"
         ]
       }
     },
@@ -55,5 +63,5 @@
   "newport_driver_sha256": "0fcd56d2ce8785a4c702afa58bf8921862d8307b737e293430c95b9113f7a08f",
   "xaa_enabled": true,
   "desktop_behavior_resource_ledger_sha256": "9126f132039416f8f37ecca2ef7ad4a51f5bdedf9f9c7482dc3d0bb5a9fcddfa",
-  "native_fam_source_manifest_sha256": "9c8c18bc5f5418a4fa6ba1f906e05bb4905bc205fc3a82d440a886a86eda6d7d"
+  "native_fam_source_manifest_sha256": "64aaa0f782e75cccd5b7642f93be2c061e9b409a7201265a3bd080b97eaf6f70"
 }

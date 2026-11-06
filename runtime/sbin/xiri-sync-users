@@ -1,0 +1,30 @@
+#!/bin/sh
+# Refresh IRIX lookup tables after native account/group administration.
+set -eu
+PATH=/bin:/usr/bin:/sbin:/usr/sbin
+export PATH
+test "$(uname -s)" = NetBSD && test "$(id -u)" = 0 || {
+    echo 'Run xiri-sync-users as root on NetBSD.' >&2; exit 1;
+}
+test "$#" = 0 || { echo 'Usage: xiri-sync-users' >&2; exit 2; }
+base=/emul/irix/etc
+test -d "$base" && test ! -L "$base"
+lock=$base/.xiri-users.lock
+mkdir -m 700 "$lock" || { echo 'Another account refresh is active.' >&2; exit 1; }
+trap 'rm -rf "$lock"' EXIT
+trap 'exit 1' HUP INT TERM
+umask 077
+for table in passwd group; do
+    getent "$table" >"$lock/native-$table"
+    awk -v database="$table" -f /usr/local/libexec/xiri/account-map.awk \
+        "$lock/native-$table" >"$lock/$table"
+done
+for table in passwd group; do
+    # Retain the original imported lookup data once, for manual rollback.
+    if test -e "$base/$table" && test ! -e "$base/$table.before-xiri-users"; then
+        cp -p "$base/$table" "$base/$table.before-xiri-users"
+    fi
+    chmod 644 "$lock/$table"
+    mv -f "$lock/$table" "$base/$table"
+done
+echo 'IRIX account lookups refreshed from native NetBSD users and groups.'

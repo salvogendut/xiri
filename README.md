@@ -12,13 +12,16 @@ catalog launches and running-icon feedback. Native NetBSD Xorg drives a
 1280×1024 accelerated Newport display. It retains the xmahjongg texture
 correction qualified by the earlier [rendering and interaction checks](docs/results/2026-11-03-newport-xmahjongg.md).
 
-The [current manual CHD](docs/results/2026-11-05-native-wait-image.md) boots into
-native NetBSD xdm. Log in as **xiritest** with password **xiritest** for the
-IRIX desktop, or **netbsdtest** / **netbsdtest** for standard NetBSD ctwm.
+The [current manual CHD](docs/results/2026-11-05-multiuser.md) boots into native
+NetBSD xdm. Use **xiritest** / **xiritest** or **xiritest2** / **xiritest2** for
+separate IRIX desktops, or **netbsdtest** / **netbsdtest** for standard NetBSD ctwm.
 `netbsdtest` belongs to `wheel` and can run `su -` for a root login shell;
 root's password is empty in this development image.
-These are public development-image credentials. The IRIX session uses UID
-1234 and HOME/cwd `/usr/people/xiritest`; system services start at boot. NetBSD
+These are public development-image credentials. Each IRIX login uses its own
+native identity and HOME/cwd under `/usr/people/<username>`. Native FAM now
+identifies each client's native UID and groups; desktop state and session logs
+remain private to that user. The [account setup guide](docs/IRIX-SOFTWARE.md)
+explains how to add more users. System services start at boot. NetBSD
 loads `compat_irix_o32.kmod` during boot and runs the desktop on a kernel
 without built-in IRIX support. The [core kernel](lab/native-wait/README.md)
 retains the native memory-allocation and CD9660 corrections found during
@@ -77,8 +80,8 @@ sysctl defect, and replaces a racy cleanup postcheck with a single process
 query. The full pressure workload, forced encrypted swap readback and cold
 desktop checks pass.
 The replacement CHD remains unselected after a separate startup kernel crash;
-that intermittent fault is recorded for later investigation. The existing
-manual bundle remains selected.
+that intermittent fault is recorded for later investigation. The current
+multi-user bundle retains the preceding native-wait kernel and module.
 
 The [preference cycle](docs/results/2026-11-04-irix-preferences.md) implements
 measured IRIX `rename` behavior. GNOME Terminal and gedit settings survive
@@ -88,8 +91,9 @@ original Reader package and supports its older ELF layout. Reader opens PDFs,
 changes page and zoom, reopens a document and exits normally. It also launches
 from Icon Catalog, although its icon does not change to the running shape.
 These application, module and resource updates are packaged in the current
-manual image. The cleanup guard correction remains in the candidate described
-above; earlier images and their manual state are retained.
+manual image. The multi-user image also includes the maintained cleanup guard;
+the paging-kernel candidate remains separate. Earlier images and their manual
+state are retained.
 
 Individual application repairs are paused for the
 [system-stability cycle](docs/results/2026-11-04-system-stability.md). It adds

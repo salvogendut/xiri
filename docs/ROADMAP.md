@@ -1,6 +1,6 @@
 # Xiri execution roadmap
 
-Status: updated 2026-11-05. The current image runs the original 4Dwm desktop,
+Status: updated 2026-11-06. The current image runs the original 4Dwm desktop,
 Toolchest, Icon Catalog, File Manager, winterm and xclock on NetBSD/Xorg with
 accelerated Newport. Catalog launching, running-icon feedback, backdrop,
 desktop icons and logout pass bounded checks; the latest xmahjongg texture
@@ -227,9 +227,13 @@ desktop; the separate cold-image visual gate remains required.
 That cold gate now passes from the packaged candidate, including fonts,
 native ctwm, IRIX sessions, shell jobs, catalog launch and clean shutdown.
 
-The next planned system feature is to remove FAM's single configured
-IRIX-user restriction, with two ordinary IRIX accounts and isolated
-homes/session state, while retaining a separate native ctwm login.
+The [multi-user cycle](results/2026-11-05-multiuser.md) now removes FAM's single
+configured IRIX-user restriction. Two ordinary IRIX accounts pass xdm login
+switching with private homes/session state, while a separate native account
+retains ctwm. Concurrent FAM clients use their own native UID and groups,
+including supplementary groups. Boot-generated IRIX lookup tables follow
+native account administration without copying passwords. The selected CHD
+retains the native-wait core/module and needs no new kernel hooks.
 Individual application fixes and native IRIX clogin integration remain later
 work.
 
@@ -253,9 +257,10 @@ order was updated to prioritize the kernel module at the user’s request:
    both menu logouts, existing-X-server reuse, independent shell survival,
    groups/X authority, failed startup and service restart pass the
    [cycle checks](results/2026-11-03-xiri-session.md).
-   FAM remains a single-configured-account service. The [current image](results/2026-11-03-xiri-xdm-image.md)
-   packages these services; the earlier module image retains its old launcher.
-3. **Normal xiritest login through native xdm: runtime and image qualified.** The
+   The [multi-user extension](results/2026-11-05-multiuser.md) now replaces the
+   original one-account FAM mapping with native client identities. The current
+   image packages that extension; the earlier module image retains its old launcher.
+3. **Ordinary-user login through native xdm: runtime and image qualified.** The
    [xdm checks](results/2026-11-03-xiri-xdm.md) preserve the authenticated UID,
    groups, HOME `/usr/people/xiritest`, working directory and native X authority.
    Three successful IRIX sessions, both logout menus, failed startup recovery,

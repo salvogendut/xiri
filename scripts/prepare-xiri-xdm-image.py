@@ -24,6 +24,8 @@ def main():
     parser.add_argument('--kernel-build',type=Path,default=ROOT/'.work/netbsd-module-build')
     parser.add_argument('--baseline',type=Path,help='install a replacement kernel/module pair from --kernel-build')
     parser.add_argument('--keep-accounts',action='store_true',help='refresh an existing xdm image without changing accounts or passwords')
+    parser.add_argument('--fam-build', type=Path, help='install a verified native FAM build')
+    parser.add_argument('--multiuser', action='store_true', help='add the second disposable IRIX desktop account xiritest2')
     parser.add_argument('--refresh-xservers', action='store_true',
                         help='install the maintained Xorg command in this disposable image')
     parser.add_argument('--newport-driver', type=Path,
@@ -39,6 +41,8 @@ def main():
     origin = json.loads((seed/'image-source.json').read_text())
     previous = json.loads((seed/'result.json').read_text())
     assert previous['status'] == 'observed' and previous['clean_shutdown']
+    multiuser = args.multiuser or (args.keep_accounts and
+        'xiritest2' in previous.get('xdm', {}).get('accounts', {}))
     newport_build = None
     if args.newport_driver:
         newport_build = json.loads((ROOT/'lab/newport-text/build.json').read_text())
@@ -66,6 +70,14 @@ def main():
     (d/'harness.py').write_bytes(Path(__file__).read_bytes())
     print('Results: '+str(d.relative_to(ROOT)),flush=True)
     media = d/'media'; media.mkdir()
+    fam_build = None
+    if args.fam_build:
+        fam_build = json.loads((args.fam_build/'result.json').read_text())
+        assert fam_build['status'] == 'built'
+        assert fam_build['source_manifest_sha256'] == sha256(ROOT/'lab/native-fam/source.json')
+        source = args.fam_build/'fam-2.7.0/src/famd'
+        assert sha256(source) == fam_build['files']['src/famd']
+        shutil.copyfile(source, media/'famd')
     gimp = prepare_gimp_resources(args.gimp_resources.resolve(), media) if args.gimp_resources else None
     applications = {}
     for name in PACKAGES:
@@ -99,13 +111,15 @@ def main():
     (media/'SUPPORT').write_text(''.join(f'SHA256 ({path}) = {digest}\n' for path,digest in sorted(support.items())))
     # Send a file list on the CD instead of a growing serial command line.
     installed_paths = sorted(set(previous['installed_files']) | set(runtime_files()) |
-                             {'/emul/irix/etc/passwd'} |
+                             {'/emul/irix/etc/passwd', '/emul/irix/etc/group'} |
+                             ({'/usr/people/xiritest2/.xsession'} if multiuser else set()) |
                              ({font_profile['native_file']} if font_profile else set()))
     (media/'INSTALLED-PATHS').write_bytes(b''.join(path.encode()+b'\0' for path in installed_paths))
     (media/'motd').write_text('Xiri development image: native NetBSD xdm + original IRIX desktop\n'
         'Graphical login: xiritest / xiritest (IRIX); netbsdtest / netbsdtest (ctwm).\n'
-        'These are public lab passwords. Root serial login is for administration.\n'
-        'Desktop HOME: /usr/people/xiritest. Logs: ~/.xiri/sessions/.\n'
+        'These are public lab passwords. Root serial login is for administration.\n' +
+        ('Second IRIX login: xiritest2 / xiritest2.\n' if multiuser else '') +
+        'IRIX HOME: /usr/people/<username>. Logs: ~/.xiri/sessions/.\n'
         'Use shutdown -h now and wait for the PROM before closing IRIS.\n')
     (media/'SHA256').write_text(''.join(f'SHA256 ({f.relative_to(media)}) = {sha256(f)}\n'
         for f in sorted(media.rglob('*')) if f.is_file()))
@@ -147,6 +161,9 @@ def main():
             'sha256 -c SHA256 >/root/xdm-media.log && sha256 -c SUPPORT >/root/xdm-payload.log',1800)
         r['support_files_verified_before'] = support
         print('Base kernel, module and imported payload verified',flush=True)
+        if fam_build:
+            cmd('/etc/rc.d/xiri_famd stop && install -m 755 /cdrom/famd /usr/local/sbin/famd')
+            r['native_fam_build'] = fam_build
         if newport_build:
             cmd('/etc/rc.d/xdm stop', 90)
             guest.wait_for('! pgrep -x Xorg >/dev/null', 90)
@@ -176,6 +193,9 @@ def main():
                 key: value for key, value in resources.items() if key != 'files'}
         cmd('mkdir -p /root/xdm-image-build && cp -R /cdrom/runtime /root/xdm-image-build/ && '
             'cd /root/xdm-image-build/runtime && make && sh install.sh --enable-xdm',300)
+        if fam_build:
+            cmd('install -m 644 /cdrom/runtime/etc/fam.conf /etc/xiri/fam.conf && '
+                '/etc/rc.d/xiri_famd start')
         if args.refresh_xservers:
             # The general installer preserves administrator configuration.
             # Image preparation can explicitly adopt the new server command
@@ -211,15 +231,17 @@ def main():
                 '-p "$(pwhash -b 6 xiritest)" xiritest && groupadd -g 1236 netbsdtest && '
                 'useradd -m -u 1236 -g netbsdtest -G wheel -d /home/netbsdtest -s /bin/sh '
                 '-p "$(pwhash -b 6 netbsdtest)" netbsdtest')
-        # Migrate the synthetic IRIX lookup data left by early /tmp-home probes.
-        # Native login accounts and their password database remain independent.
+        if multiuser:
+            cmd('if ! id xiritest2 >/dev/null 2>&1; then '
+                'groupadd -g 1237 xiritest2 && useradd -m -u 1237 -g xiritest2 -G xiritest-extra '
+                '-d /usr/people/xiritest2 -s /bin/ksh -p "$(pwhash -b 6 xiritest2)" xiritest2 || exit; fi; '
+                'test "$(id -u xiritest2)" = 1237 && test "$(id -g xiritest2)" = 1237 && '
+                'chmod 700 /usr/people/xiritest2 && '
+                'install -o xiritest2 -g xiritest2 -m 700 /usr/local/share/xiri/xdm.xsession /usr/people/xiritest2/.xsession')
+        # IRIX libc lookup data follows native users; authentication stays native.
         native_accounts = get('sha256 /etc/passwd /etc/master.passwd')
         before_accounts = get('cat /emul/irix/etc/passwd')
-        cmd("awk -F: 'BEGIN {OFS=\":\"} "
-            "$1 == \"root\" && $3 == 0 {$6=\"/\"} "
-            "$1 == \"xiritest\" && $3 == 1234 {$6=\"/usr/people/xiritest\"} "
-            "{print}' /emul/irix/etc/passwd >/root/xdm-image-build/emul-passwd && "
-            'install -m 644 /root/xdm-image-build/emul-passwd /emul/irix/etc/passwd')
+        cmd('/usr/local/sbin/xiri-sync-users')
         after_accounts = get('cat /emul/irix/etc/passwd')
         assert re.search(r'^xiritest:[^:]*:1234:1234:[^:]*:/usr/people/xiritest:/bin/sh$', after_accounts, re.M)
         assert re.search(r'^root:[^:]*:0:0:[^:]*:/:/bin/sh$', after_accounts, re.M)
@@ -282,6 +304,11 @@ def main():
                     'runtime_qualification':'docs/results/2026-11-03-xiri-xdm.json',
                     'runtime_qualification_sha256':sha256(ROOT/'docs/results/2026-11-03-xiri-xdm.json'),
                     'image_login_qualification':'pending direct CHD check'})
+        if args.keep_accounts:
+            r['xdm']['accounts'].update(previous.get('xdm', {}).get('accounts', {}))
+        if multiuser:
+            r['xdm']['accounts']['xiritest2'] = dict(uid=1237, home='/usr/people/xiritest2',
+                desktop='4Dwm', supplementary_groups=['xiritest-extra'])
         print('Graphical disk autoboot reached full-screen xdm; ready to package',flush=True)
     finally:
         if lab.logged_in and 'graphics_console' in r:

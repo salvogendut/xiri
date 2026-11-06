@@ -6,7 +6,6 @@ base=/usr/local/libexec/xiri
 . /etc/xiri/session.conf
 user=$(id -un)
 test "$(id -u)" != 0 || { echo 'Run xiri-session as the desktop user.' >&2; exit 1; }
-test "$user" = "$xiri_user" || { echo "FAM is configured for $xiri_user; this account is $user." >&2; exit 1; }
 : "${HOME:?A login HOME is required.}" "${DISPLAY:?An existing X display is required.}"
 test -d "$HOME" && test -w "$HOME"
 test -f /var/run/xiri-pty-ready || { echo 'Start xiri_devices before logging in.' >&2; exit 1; }

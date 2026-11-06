@@ -1,0 +1,163 @@
+{
+  "status": "built-and-roundtrip-verified",
+  "cycle": {
+    "cycle": "multi-user IRIX desktop",
+    "upstream_revision": "c382cdcc25389769b5ae3a436ae1ff73ae42e964",
+    "iris_xiri": "fb24628e1bf97a4f379309c79e808d82929672b7",
+    "upstream_included": true,
+    "new_upstream_commits": [],
+    "netbsd_xiri": "0febc6eb24ad889d12a3b2afaa12558c9781859d",
+    "selected_seed": ".work/images/xiri-netbsd-desktop-20261105-wait",
+    "kernel_change": false,
+    "emulator_change": false,
+    "new_fam_build": ".work/native-fam-multiuser",
+    "preparation": ".work/xdm-image/prepare/ordinary-vnu_c06q",
+    "daily_recheck": {
+      "local_date": "2026-11-06",
+      "utc_time": "2026-11-05T23:00Z",
+      "upstream_revision": "c382cdcc25389769b5ae3a436ae1ff73ae42e964",
+      "new_commits": [],
+      "integration_needed": false
+    },
+    "qualification_run": ".work/irix-xdm/runs/ordinary-ul7xpkl5",
+    "excluded_attempts": [
+      {
+        "directory": ".work/irix-xdm/runs/ordinary-i8ah5k_3",
+        "reason": "Harness waited for parent shell jobs in the transfer pipeline child; both native FAM clients passed."
+      },
+      {
+        "directory": ".work/irix-xdm/runs/ordinary-wj92nya8",
+        "reason": "Readiness check assumed 18 pages for a fresh user with 17 system pages; direct typed-shell and home checks passed afterward."
+      }
+    ]
+  },
+  "native_fam_build": {
+    "status": "built",
+    "source_manifest_sha256": "64aaa0f782e75cccd5b7642f93be2c061e9b409a7201265a3bd080b97eaf6f70",
+    "builder_sha256": "f53b8e81a234fffc1ed2412fbe888ae978010ccf57bd2652fe7ba438a04aa78c",
+    "btree_test_sha256": "0f04e353f74574f36839f53ed6f83c3e8ef2d8e307a0f2bdc88a4d947f552240",
+    "btree_host_passed": true,
+    "btree_native_sha256": "2f6bcaeabb9b0a574bf8c19d20444ca9b8add3e2a5d15cab8f0b0f5edb9afa71",
+    "emul_path_host_passed": true,
+    "emul_path_native_sha256": "87ee9555f2722959fc7b39a0b61f42d73b45ffcda00439cd1fc9e21416c0173d",
+    "emul_path_test_sha256": "875fa4c06e3d82b4a99f28a284696ec3fda69bfc65e0adc29fc188d4b92c2e4f",
+    "files": {
+      "src/famd": "c3e6ebe5e8db7feecce6267a487174a5a3baa7eb6fb9cf1cb93ace44bf234889",
+      "test/test": "a7519dfea569ef6cfcf39eedc2f774f53cadb6deaa12f0ca0a7e5be870c92e27",
+      "lib/.libs/libfam.a": "841e0cf0ee1c5fbb1ce63c6c8d33b18542ff42d32262fc794cd919e2f99efe06"
+    },
+    "logs": {
+      "configure.log": "8a0d38e85c7064acf2ea8f4dd0f9bc9b7e51dabb8cd332d9b097bf50799c7e58",
+      "build.log": "e43fe6b446541f5352b4499105abb3a9bf4ddaa801c2cf63b489170ac15333d2"
+    }
+  },
+  "preparation": {
+    "directory": ".work/xdm-image/prepare/ordinary-vnu_c06q",
+    "result_sha256": "0920108fcee2425c0acfef2100d863534bc866a57a905a620dfbfafc42f80d1f",
+    "frozen_harness_sha256": "5f7d4cfe6480105b22c95012746ef9c80ac3c07240fff3a3411d25e61b730b64",
+    "status": "observed",
+    "clean_shutdown": true,
+    "base_raw_unchanged": true,
+    "graphics_boot": true,
+    "native_databases_unchanged": true
+  },
+  "bundle": {
+    "directory": ".work/images/xiri-netbsd-desktop-20261105-multiuser",
+    "chd_sha256": "a800307d5b8a7ad7e47327115406a06814fd932bf26df1b5131e524e97cb0c12",
+    "chd_bytes": 496273073,
+    "logical_bytes": 8589934592,
+    "source_raw_sha256": "f7346e8d4268ec4cd6cf372d9ca62f02e805c2bc95ebd5bd411d5dfdab578337",
+    "decoded_raw_sha256": "f7346e8d4268ec4cd6cf372d9ca62f02e805c2bc95ebd5bd411d5dfdab578337",
+    "manual_readme_sha256": "81afdd9507962e5b2a38bfa81749713d0ed9033ad5eabc58fd154f3ab36d7114",
+    "manual_readme_note": "Account instructions clarified after packaging; CHD and manifest unchanged."
+  },
+  "host_checks": {
+    "command": "python3 -m unittest discover -s tests -v",
+    "tests": 55,
+    "status": "passed",
+    "log": ".work/multiuser/host-tests-final.log",
+    "log_sha256": "9ff71e36910d886e2b150fa9f7214860d367524607ccde7858e65b7b8518c3be",
+    "changed_python_and_shell_syntax": "passed"
+  },
+  "cache_cleanup": {
+    "removed_cache": ".work/images/xiri-netbsd-desktop-20261105-multiuser/verification/roundtrip.raw",
+    "sha256": "f7346e8d4268ec4cd6cf372d9ca62f02e805c2bc95ebd5bd411d5dfdab578337",
+    "logical_bytes": 8589934592,
+    "allocated_bytes": 8589934592,
+    "retained_chd": ".work/images/xiri-netbsd-desktop-20261105-multiuser/netbsd-xiri.chd",
+    "retained_source_disk": ".work/xdm-image/prepare/ordinary-vnu_c06q/disk.raw",
+    "reason": "Verified redundant extraction cache; cold checks use a CHD copy.",
+    "redundant_cold_base_copies": [
+      {
+        "path": ".work/irix-xdm/runs/ordinary-i8ah5k_3/disk.chd",
+        "sha256": "a800307d5b8a7ad7e47327115406a06814fd932bf26df1b5131e524e97cb0c12",
+        "bytes": 496273073,
+        "allocated_bytes": 496275456,
+        "retained_overlay": ".work/irix-xdm/runs/ordinary-i8ah5k_3/disk.chd.diff.chd",
+        "restore_from": ".work/images/xiri-netbsd-desktop-20261105-multiuser/netbsd-xiri.chd"
+      },
+      {
+        "path": ".work/irix-xdm/runs/ordinary-wj92nya8/disk.chd",
+        "sha256": "a800307d5b8a7ad7e47327115406a06814fd932bf26df1b5131e524e97cb0c12",
+        "bytes": 496273073,
+        "allocated_bytes": 496275456,
+        "retained_overlay": ".work/irix-xdm/runs/ordinary-wj92nya8/disk.chd.diff.chd",
+        "restore_from": ".work/images/xiri-netbsd-desktop-20261105-multiuser/netbsd-xiri.chd"
+      },
+      {
+        "path": ".work/irix-xdm/runs/ordinary-ul7xpkl5/disk.chd",
+        "sha256": "a800307d5b8a7ad7e47327115406a06814fd932bf26df1b5131e524e97cb0c12",
+        "bytes": 496273073,
+        "allocated_bytes": 496275456,
+        "qualified": true,
+        "retained_overlay": ".work/irix-xdm/runs/ordinary-ul7xpkl5/disk.chd.diff.chd",
+        "restore_from": ".work/images/xiri-netbsd-desktop-20261105-multiuser/netbsd-xiri.chd"
+      }
+    ]
+  },
+  "desktop_qualification": {
+    "path": "docs/results/2026-11-05-multiuser.json",
+    "sha256": "0147e8e8dbb5572fbe845c19bd25a5da276c6900910af7e48a2885173962f2ed",
+    "run": ".work/irix-xdm/runs/ordinary-ul7xpkl5",
+    "status": "disk-boot-and-xdm-desktops-verified"
+  },
+  "excluded_attempts": [
+    {
+      "directory": ".work/irix-xdm/runs/ordinary-i8ah5k_3",
+      "reason": "Harness waited for parent shell jobs in the transfer pipeline child; both native FAM clients passed.",
+      "status": "error",
+      "clean_shutdown": true,
+      "base_chd_unchanged": true,
+      "result_sha256": "abc5f0fe5dc8687bcfcc5ba93c0fa3946bce0b69d9e1cd03bb3e1ef3b6aa8448",
+      "frozen_harness_sha256": "3620912cc4e2e750465cdf6fe54657743747adb079502889f01b356596097826"
+    },
+    {
+      "directory": ".work/irix-xdm/runs/ordinary-wj92nya8",
+      "reason": "Readiness check assumed 18 pages for a fresh user with 17 system pages; direct typed-shell and home checks passed afterward.",
+      "status": "error",
+      "clean_shutdown": true,
+      "base_chd_unchanged": true,
+      "result_sha256": "1fe4e91058deb91f90892ad457536961d105ad9929ee56550533b22d2504a47f",
+      "frozen_harness_sha256": "3620912cc4e2e750465cdf6fe54657743747adb079502889f01b356596097826",
+      "second_user_observation": {
+        "status": "observed-after-fixture-failure",
+        "shell": [
+          "xiritest2",
+          "/usr/people/xiritest2",
+          "/usr/people/xiritest2",
+          "1237 1235"
+        ],
+        "home": {
+          "user": "xiritest2",
+          "uid": 1237,
+          "home": "/usr/people/xiritest2",
+          "private_state": true,
+          "owner_verified": true,
+          "desktop_links": true,
+          "state_listing": "total 30\ndrwx------  7 xiritest2  xiritest2   512 Nov  5 23:47 .\ndrwxr-xr-x  4 root       wheel       512 Nov  5 22:49 ..\n-rw-------  1 xiritest2  xiritest2     0 Nov  5 23:47 .Xauthority-n\n-rw-r--r--  1 xiritest2  xiritest2  2195 Jul 30 15:23 .cshrc\ndrwx------  5 xiritest2  xiritest2   512 Nov  5 23:47 .desktop-xiri-indy\ndrwxr-xr-x  3 xiritest2  xiritest2   512 Nov  5 23:47 .desktophost\n-rw-r--r--  1 xiritest2  xiritest2   431 Jul 30 15:23 .login\n-rw-r--r--  1 xiritest2  xiritest2   265 Jul 30 15:23 .logout\n-rw-r--r--  1 xiritest2  xiritest2  1852 Jul 30 15:23 .profile\n-rw-r--r--  1 xiritest2  xiritest2   166 Jul 30 15:23 .shrc\ndrwx------  4 xiritest2  xiritest2   512 Nov  5 23:53 .xiri\n-rwx------  1 xiritest2  xiritest2   407 Nov  5 22:49 .xsession\n-rw-------  1 xiritest2  xiritest2    92 Nov  5 23:47 .xsession-errors\ndrwx------  2 xiritest2  xiritest2   512 Nov  5 23:47 Desktop\ndrwx------  2 xiritest2  xiritest2   512 Nov  5 23:47 dumpster\n"
+        },
+        "tree": "\nxwininfo: Window id: 0x34e (the root window) (has no name)\n\n  Root window id: 0x34e (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     35 children:\n     0x400084 (has no name): ()  919x520+2+148  +2+148\n        10 children:\n        0x40008e (has no name): ()  903x480+8+32  +10+180\n           1 child:\n           0x1200005 \"winterm\": (\"winterm\" \"XWsh\")  903x480+0+0  +10+180\n              2 children:\n              0x1200012 (has no name): ()  885x480+18+0  +28+180\n                 2 children:\n                 0x120001b (has no name): ()  885x480+0+0  +28+180\n                 0x1200023 (has no name): ()  885x480+0+0  +28+180\n              0x1200006 (has no name): ()  18x480+0+0  +10+180\n                 1 child:\n                 0x1200024 (has no name): ()  16x30+1+18  +11+198\n        0x40008d (has no name): ()  905x25+7+7  +9+155\n        0x40008c (has no name): ()  8x456+0+32  +2+180\n        0x40008b (has no name): ()  32x32+0+488  +2+636\n        0x40008a (has no name): ()  855x8+32+512  +34+660\n        0x400089 (has no name): ()  32x32+887+488  +889+636\n        0x400088 (has no name): ()  8x456+911+32  +913+180\n        0x400087 (has no name): ()  32x32+887+0  +889+148\n        0x400086 (has no name): ()  855x7+32+0  +34+148\n        0x400085 (has no name): ()  32x32+0+0  +2+148\n     0x400090 (has no name): ()  916x540+364+418  +364+418\n        10 children:\n        0x40009a (has no name): ()  900x500+8+32  +372+450\n           1 child:\n           0x140006b \"Icon Catalog: Alias (Page 1 of 17)\": (\"IconCatalog\" \"IconCatalog\")  900x500+0+0  +372+450\n              2 children:\n              0x140009f (has no name): ()  1280x1024+0+0  +372+450\n              0x140006c (has no name): ()  900x500+0+0  +372+450\n                 2 children:\n                 0x1400095 (has no name): ()  900x26+0+0  +372+450\n                    5 children:\n                    0x140009a (has no name): ()  52x22+5+2  +377+452\n                    0x1400099 (has no name): ()  78x22+64+2  +436+452\n                    0x1400098 (has no name): ()  47x22+149+2  +521+452\n                    0x1400097 (has no name): ()  50x22+203+2  +575+452\n                    0x1400096 (has no name): ()  48x22+847+2  +1219+452\n                 0x140006d (has no name): ()  900x474+0+26  +372+476\n                    4 children:\n                    0x1400088 (has no name): ()  870x424+30+0  +402+476\n                       4 children:\n                       0x1400094 (has no name): ()  845x18+3+403  +405+879\n                       0x1400093 (has no name): ()  18x399+849+3  +1251+479\n                       0x1400092 (has no name): ()  18x18+849+403  +1251+879\n                       0x1400089 (has no name): ()  845x399+3+3  +405+479\n                    0x140007d (has no name): ()  30x424+0+0  +372+476\n                       5 children:\n                       0x1400084 (has no name): ()  30x78+0+0  +372+476\n                          3 children:\n                          0x1400087 (has no name): ()  24x24+3+0  +375+476\n                          0x1400086 (has no name): ()  24x24+3+27  +375+503\n                          0x1400085 (has no name): ()  24x24+3+54  +375+530\n                       0x1400083 (has no name): ()  30x12+0+78  +372+554\n                       0x1400080 (has no name): ()  30x24+0+90  +372+566\n                          2 children:\n                          0x1400082 (has no name): ()  24x24+3+0  +375+566\n                          0x1400081 (has no name): ()  77x26+0+0  +372+566\n                       0x140007f (has no name): ()  30x12+0+114  +372+590\n                       0x140007e (has no name): ()  30x148+0+126  +372+602\n                    0x1400070 (has no name): ()  900x30+0+424  +372+900\n                       3 children:\n                       0x140007b (has no name): ()  888x25+6+0  +378+900\n                          1 child:\n                          0x140007c (has no name): ()  57x22+0+0  +378+900\n                       0x1400076 (has no name): ()  6x30+0+0  +372+900\n                          4 children:\n                          0x140007a (has no name): ()  6x1+0+0  +372+900\n                          0x1400079 (has no name): ()  6x1+0+1  +372+901\n                          0x1400078 (has no name): ()  1x28+0+2  +372+902\n                          0x1400077 (has no name): ()  5x28+1+2  +373+902\n                       0x1400071 (has no name): ()  6x30+894+0  +1266+900\n                          4 children:\n                          0x1400075 (has no name): ()  6x1+0+0  +1266+900\n                          0x1400074 (has no name): ()  6x1+0+1  +1266+901\n                          0x1400073 (has no name): ()  1x29+5+1  +1271+901\n                          0x1400072 (has no name): ()  6x29+0+1  +1266+901\n                    0x140006e (has no name): ()  900x20+0+454  +372+930\n                       1 child:\n                       0x140006f (has no name): ()  900x20+0+0  +372+930\n        0x400099 (has no name): ()  902x25+7+7  +371+425\n        0x400098 (has no name): ()  8x476+0+32  +364+450\n        0x400097 (has no name): ()  32x32+0+508  +364+926\n        0x400096 (has no name): ()  852x8+32+532  +396+950\n        0x400095 (has no name): ()  32x32+884+508  +1248+926\n        0x400094 (has no name): ()  8x476+908+32  +1272+450\n        0x400093 (has no name): ()  32x32+884+0  +1248+418\n        0x400092 (has no name): ()  852x7+32+0  +396+418\n        0x400091 (has no name): ()  32x32+0+0  +364+418\n     0x1400032 (has no name): ()  5x5+0+0  +0+0\n        1 child:\n        0x1400033 (has no name): ()  191x178+0+0  +0+0\n     0x1600001 (has no name): ()  10x10+-100+-100  +-100+-100\n     0x140000c (has no name): ()  159x154+0+0  +0+0\n        5 children:\n        0x1400019 (has no name): ()  225x130+0+0  +0+0\n        0x1400018 (has no name): ()  178x152+0+0  +0+0\n        0x1400017 (has no name): ()  78x102+0+0  +0+0\n        0x1400016 (has no name): ()  189x176+0+0  +0+0\n        0x140000d (has no name): ()  159x154+0+0  +0+0\n     0x1400006 \"Icon Catalog\": (\"iconcatalog\" \"IconCatalog\")  1x1+640+512  +640+512\n     0x1400001 \"Icon Catalog\": (\"iconcatalog\" \"IconCatalog\")  600x300+400+450  +400+450\n     0x1000006 \"fm-4456\": (\"FmBackground\" \"FileManager\")  1x1+640+512  +640+512\n     0x1200011 (has no name): ()  1x1+0+0  +0+0\n     0x1200010 (has no name): ()  1x1+0+0  +0+0\n     0x1000001 \"fm-4456\": (\"fm-4456\" \"FileManager\")  1x1+0+0  +0+0\n     0x120000b (has no name): ()  1x1+0+0  +0+0\n     0x400078 (has no name): ()  1022x654+24+0  +24+0\n        10 children:\n        0x400082 (has no name): ()  1006x614+8+32  +32+32\n           1 child:\n           0xe00004 \"xmahjongg\": (\"xmahjongg\" \"XMahjongg\")  1006x614+0+0  +32+32\n        0x400081 (has no name): ()  1008x25+7+7  +31+7\n        0x400080 (has no name): ()  8x590+0+32  +24+32\n        0x40007f (has no name): ()  32x32+0+622  +24+622\n        0x40007e (has no name): ()  958x8+32+646  +56+646\n        0x40007d (has no name): ()  32x32+990+622  +1014+622\n        0x40007c (has no name): ()  8x590+1014+32  +1038+32\n        0x40007b (has no name): ()  32x32+990+0  +1014+0\n        0x40007a (has no name): ()  958x7+32+0  +56+0\n        0x400079 (has no name): ()  32x32+0+0  +24+0\n     0x400075 (has no name): ()  105x185+9+0  +9+0\n        2 children:\n        0x400077 (has no name): ()  105x160+0+25  +9+25\n           1 child:\n           0xa0002c \"Toolchest\": (\"toolchest\" \"Toolchest\")  103x158+0+0  +9+25\n              1 child:\n              0xa0002d (has no name): ()  103x158+0+0  +10+26\n                 6 children:\n                 0xa00033 (has no name): ()  99x24+2+2  +12+28\n                 0xa00032 (has no name): ()  99x24+2+28  +12+54\n                 0xa00031 (has no name): ()  99x24+2+54  +12+80\n                 0xa00030 (has no name): ()  99x24+2+80  +12+106\n                 0xa0002f (has no name): ()  99x24+2+106  +12+132\n                 0xa0002e (has no name): ()  99x24+2+132  +12+158\n        0x400076 (has no name): ()  105x25+0+0  +9+0\n     0x400069 (has no name): ()  196x220+812+0  +812+0\n        10 children:\n        0x400073 (has no name): ()  180x180+8+32  +820+32\n           1 child:\n           0xc00009 \"xclock\": (\"xclock\" \"XClock\")  180x180+0+0  +820+32\n              1 child:\n              0xc0000a (has no name): ()  180x180+0+0  +820+32\n        0x400072 (has no name): ()  182x25+7+7  +819+7\n        0x400071 (has no name): ()  8x156+0+32  +812+32\n        0x400070 (has no name): ()  32x32+0+188  +812+188\n        0x40006f (has no name): ()  132x8+32+212  +844+212\n        0x40006e (has no name): ()  32x32+164+188  +976+188\n        0x40006d (has no name): ()  8x156+188+32  +1000+32\n        0x40006c (has no name): ()  32x32+164+0  +976+0\n        0x40006b (has no name): ()  132x7+32+0  +844+0\n        0x40006a (has no name): ()  32x32+0+0  +812+0\n     0xa0001b (has no name): ()  195x96+10+35  +10+35\n        4 children:\n        0xa00029 (has no name): ()  194x96+0+0  +10+35\n        0xa00023 (has no name): ()  151x318+0+0  +10+35\n        0xa00021 (has no name): ()  194x50+0+0  +10+35\n        0xa0001c (has no name): ()  195x96+0+0  +10+35\n     0xa00013 (has no name): ()  5x5+10+35  +10+35\n        6 children:\n        0xa0002b (has no name): ()  142x166+0+0  +10+35\n        0xa00028 (has no name): ()  171x252+0+0  +10+35\n           1 child:\n           0xa0002a (has no name): ()  165x22+3+181  +13+216\n        0xa00027 (has no name): ()  144x494+0+0  +10+35\n        0xa00026 (has no name): ()  184x120+0+0  +10+35\n        0xa00025 (has no name): ()  174x316+0+0  +10+35\n        0xa00014 (has no name): ()  161x230+0+0  +10+35\n           3 children:\n           0xa00024 (has no name): ()  155x22+3+47  +13+82\n           0xa00022 (has no name): ()  155x22+3+25  +13+60\n           0xa00020 (has no name): ()  155x22+3+3  +13+38\n     0x400059 (has no name): ()  496x170+784+854  +784+854\n        10 children:\n        0x400063 (has no name): ()  480x130+8+32  +792+886\n           1 child:\n           0x600011 \"xconsole\": (\"xconsole\" \"XConsole\")  480x130+0+0  +792+886\n              1 child:\n              0x600012 (has no name): ()  480x130+0+0  +792+886\n                 1 child:\n                 0x600013 (has no name): ()  14x130+-1+-1  +791+885\n        0x400062 (has no name): ()  482x25+7+7  +791+861\n        0x400061 (has no name): ()  8x106+0+32  +784+886\n        0x400060 (has no name): ()  32x32+0+138  +784+992\n        0x40005f (has no name): ()  432x8+32+162  +816+1016\n        0x40005e (has no name): ()  32x32+464+138  +1248+992\n        0x40005d (has no name): ()  8x106+488+32  +1272+886\n        0x40005c (has no name): ()  32x32+464+0  +1248+854\n        0x40005b (has no name): ()  432x7+32+0  +816+854\n        0x40005a (has no name): ()  32x32+0+0  +784+854\n     0x400064 (has no name): ()  97x99+10+10  +10+10\n     0x400074 (has no name): ()  97x99+0+0  +0+0\n     0x400083 (has no name): ()  97x99+0+0  +0+0\n     0x40008f (has no name): ()  97x99+0+0  +0+0\n     0x40009b (has no name): ()  97x99+0+0  +0+0\n     0xa00001 \"toolchest\": (\"toolchest\" \"Toolchest\")  1x1+10+10  +10+10\n     0x400057 (has no name): ()  5x5+0+0  +0+0\n        1 child:\n        0x400058 (has no name): ()  146x224+0+0  +0+0\n     0x400050 (has no name): ()  1x1+0+0  +0+0\n     0x40004d (has no name): ()  1x1+0+0  +0+0\n     0x40004c \"4Dwm\": (\"4Dwm\" \"4DWm\")  10x10+10000+0  +10000+0\n     0x800001 (has no name): ()  1x1+-2+-2  +-2+-2\n     0x40004a (has no name): ()  5x5+0+0  +0+0\n        1 child:\n        0x40004b (has no name): ()  176x379+0+0  +0+0\n     0x40003f (has no name): ()  5x5+0+0  +0+0\n        1 child:\n        0x400041 (has no name): ()  159x59+0+0  +0+0\n     0x40002a (has no name): ()  10x10+-100+-100  +-100+-100\n     0x40000b (has no name): ()  10x10+10000+10000  +10000+10000\n     0x400001 \"4Dwm\": (\"4Dwm\" \"4DWm\")  1x1+0+0  +0+0\n     0x1000008 (has no name): ()  1280x1024+0+0  +0+0\n        1 child:\n        0x100000d (has no name): ()  1280x1024+0+0  +0+0\n           2 children:\n           0x1000021 (has no name): ()  1280x1024+0+0  +0+0\n           0x100001b (has no name): ()  1280x1024+0+0  +0+0\n\n"
+      }
+    }
+  ]
+}

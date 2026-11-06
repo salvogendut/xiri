@@ -182,13 +182,15 @@ class ArtifactTests(unittest.TestCase):
         (self.root/'config').mkdir()
         (self.root/'config/development.json').write_text(json.dumps(dict(
             schema=1,build_jobs=2,image_pointer='pointer.json')))
-        for manager,probe,winterm,fonts in [('xdm','probe-xiri-xdm.py --bundle',False,False),
-                                           ('xdm','probe-xiri-xdm.py --bundle',True,False),
-                                           ('xdm','probe-xiri-xdm.py --bundle',False,True),
-                                           ('manual','probe-xiri-image.py',False,False)]:
+        for manager,probe,winterm,fonts,multiuser in [('xdm','probe-xiri-xdm.py --bundle',False,False,False),
+                                           ('xdm','probe-xiri-xdm.py --bundle',True,False,False),
+                                           ('xdm','probe-xiri-xdm.py --bundle',False,True,False),
+                                           ('xdm','probe-xiri-xdm.py --bundle',False,True,True),
+                                           ('manual','probe-xiri-image.py',False,False,False)]:
             self.manifest['session_manager']=manager
             self.manifest['winterm_checks']=winterm
             self.manifest['terminal_font']={'cell':[11,20]} if fonts else None
+            self.manifest['xdm'] = {'accounts': {'xiritest2': {}} if multiuser else {}}
             (self.bundle/'manifest.json').write_text(json.dumps(self.manifest))
             output=io.StringIO()
             with patch('xiri_lab.workflow.ROOT',self.root),redirect_stdout(output):
@@ -196,6 +198,7 @@ class ArtifactTests(unittest.TestCase):
             self.assertIn(probe,output.getvalue())
             self.assertEqual('--winterm' in output.getvalue(),winterm or fonts)
             self.assertEqual('--fonts' in output.getvalue(),fonts)
+            self.assertEqual('--multiuser' in output.getvalue(),multiuser)
 
     def test_build_finds_branch_owner_without_switching_shared_checkout(self):
         repo = self.root/'shared'; owner = self.root/'branch owner'

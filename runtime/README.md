@@ -10,7 +10,7 @@ change the kernel or selected CHD. Native xdm configuration is opt-in.
 | Entry point | Owner and lifetime |
 | --- | --- |
 | Native `rpcbind` rc.d service | System portmapper; survives desktop logout |
-| `xiri_devices` rc.d service | Prepares native/IRIX PTY aliases once per boot, before LOGIN |
+| `xiri_devices` rc.d service | Refreshes IRIX account lookup tables and prepares native/IRIX PTY aliases before LOGIN |
 | `xiri_famd` rc.d service | Owns one native FAM v1 daemon and its PID file; survives logout |
 | Native `xdm` rc.d service (opt-in) | Starts Xorg, authenticates the native account, supplies X authority and resets the display after logout |
 | `xiri-session` | Runs clients as the current native user on an existing authenticated X display; leaves X and system services running |
@@ -43,11 +43,15 @@ XAUTHORITY are preserved. The manual wrapper creates an MIT-MAGIC-COOKIE-1
 file for its X server. The direct user entry accepts the login's existing
 authority file. Neither entry starts an X server with `-ac`.
 
-FAM still maps local IRIX v1 clients to **one configured account**, currently
-`xiritest`. This split does not implement authenticated multiuser FAM. Keep
-`xiri_user` in `/etc/xiri/session.conf` and `untrusted_user` in
-`/etc/xiri/fam.conf` consistent. Native xdm uses the same configured account;
-original IRIX clogin remains a later integration step.
+The patched native FAM identifies each loopback TCP client through NetBSD's
+`TCPCTL_IDENT`, then uses that native user's primary and supplementary groups.
+It ignores the UID/GID fields supplied by the legacy IRIX protocol and rejects
+connections whose owner cannot be resolved. `untrusted_user = nobody` remains
+an unused legacy fallback; `insecure_compatibility` stays off. Install the
+[multi-user FAM build](../lab/native-fam/README.md) before enabling more users.
+`xiri_user` in `session.conf` selects only the root convenience launcher's
+default account. An xdm session uses whichever native user logged in.
+Original IRIX clogin remains a later integration step.
 
 ## Build and install
 
@@ -80,7 +84,7 @@ xiri_famd=YES
 
 Reboot after initial deployment so PTY setup precedes login/PTY allocation.
 `xiri_devices` uses `/var/run/xiri-pty-ready` to prevent repeated remounts in
-the same boot. Re-running it during a desktop restart is a no-op. FAM logs to
+the same boot. Re-running it refreshes account names without remounting PTYs. FAM logs to
 `/var/log/xiri-fam.log`; its service PID is `/var/run/xiri_famd.pid`. Stopping the owned FAM daemon also unregisters its RPC program/version, so
 `/etc/rc.d/xiri_famd restart` can register a new listener. Startup refuses a
 daemon outside its PID file. Native rpcbind retains its own standard PID
@@ -157,7 +161,7 @@ preserved; compare their `.example` files on upgrades.
 The installer does not change an account's password,
 home, `.xsession`, native xdm/PAM files or console gettys.
 
-As `xiritest`, select the desktop (review any existing `.xsession` first):
+As each desktop user, select the desktop (review any existing `.xsession` first):
 
 ```sh
 cp /usr/local/share/xiri/xdm.xsession "$HOME/.xsession"
@@ -166,14 +170,37 @@ chmod 700 "$HOME/.xsession"
 
 Other native users who leave `.xsession` unset retain NetBSD's standard
 Xsession desktop (ctwm, terminal and clock). Xiri is a per-user selection;
-the installer does not replace the system-wide Xsession. This does not extend
-FAM beyond its one configured IRIX desktop account.
+the installer does not replace the system-wide Xsession.
+
+Create additional users through normal NetBSD account administration. For an
+IRIX-style home, the repository helper runs as root inside NetBSD:
+
+```sh
+sh scripts/setup-xiri-user.sh alice
+passwd alice
+/usr/local/sbin/xiri-sync-users
+```
+
+Then log in as that user and install the `.xsession` template above. Existing
+ordinary accounts with owned homes under `/home` can select Xiri as well;
+`/usr/people` is a convention, not a session restriction. Do not share HOME
+between users. Desktop links, Dumpster, application settings and session logs
+are created under the authenticated user's HOME.
+
+`xiri-sync-users` refreshes `/emul/irix/etc/passwd` and `/emul/irix/etc/group`
+from native NSS, with password fields replaced by `*`. It writes lookup data
+only: native account databases, passwords and authentication remain unchanged.
+The IRIX root entry keeps HOME `/`, while ordinary users retain their native
+homes; the IRIX lookup shell is `/bin/sh`. Original lookup files are retained
+once as `*.before-xiri-users`. Boot refreshes these tables automatically;
+run the command after adding/removing users or changing groups during a boot.
+Reconnect FAM clients after group changes so they acquire the updated groups.
 
 On the Indy, set **ttyE0** to `off` in `/etc/ttys` before rebooting; a getty
 must not read the same graphical keyboard as xdm. Keep **ttyZ0** enabled for
 serial administration. Reboot to run PTY preparation before any desktop login.
-Log in at the graphical prompt as `xiritest` with the native account's password.
-The session starts in `/usr/people/xiritest`, with the account's supplementary
+Log in at the graphical prompt with the native account's password.
+The session starts in that user's HOME, with the account's supplementary
 groups and xdm's authority file. The `.xsession` entry maps local `:0` to
 `127.0.0.1:0` because the current IRIX personality supports IPv4 TCP sockets;
 xdm's existing authority entries authenticate this connection. It does not
@@ -199,7 +226,7 @@ already contain:
 
 - The matching Xiri kernel/module and imported `/emul/irix` runtime, programs,
   fonts, backdrop, filetype rules, desktop resources and catalog links.
-- The native `xiritest` account and owned home at `/usr/people/xiritest`.
+- At least one ordinary native account with its own writable home.
 - Native Xorg/Newport, X11 utilities and fonts under
   `/usr/local/share/xiri/fonts`, plus the qualified `xorg.conf` and
   `toolchest.chestrc` under `/usr/local/share/xiri`.

@@ -8,22 +8,23 @@ older reproduction checkpoints. Automated checks never promote their result
 or replace the manual bundle's NVRAM/overlay state.
 
 The current accelerated xdm bundle is
-`.work/images/xiri-netbsd-desktop-20261105-wait/`.
-The [cleanup candidate](results/2026-11-05-cleanup-image.md) has a qualified
-guard correction and passes cold desktop/font/job/logout checks, but remains
-unselected after the added 96 MiB pressure gate failed. The same native
-sleep symptom also occurs on the current image. Its report records the
-limitations, separate candidate launcher and outstanding system investigation.
-`netbsd-xiri.chd` is an 8 GiB NetBSD disk compressed to 496,151,497 bytes
+`.work/images/xiri-netbsd-desktop-20261105-multiuser/`.
+The [multi-user cycle](results/2026-11-05-multiuser.md) adds a second ordinary
+IRIX desktop account, native FAM client identities and generated IRIX account
+lookups. It retains the qualified native-wait kernel/module and emulator, and
+includes the maintained session guard. Earlier bundles and manual state remain.
+`netbsd-xiri.chd` is an 8 GiB NetBSD disk compressed to 496,273,073 bytes
 (about 473 MiB). Its SHA256 is
-`90ca82ecdfbe184a96990515938f7856eb6983f77719d487fb7c6b34ba73eece`.
+`a800307d5b8a7ad7e47327115406a06814fd932bf26df1b5131e524e97cb0c12`.
+The earlier [cleanup candidate](results/2026-11-05-cleanup-image.md) and its
+96 MiB pressure observations remain recorded separately.
 The [native paging follow-up](results/2026-11-05-native-paging.md) records the
 kernel and cleanup-fixture changes. Full pressure, encrypted readback and cold desktop
 checks pass, but a separate startup kernel crash keeps the replacement
 CHD unselected. Its [packaging record](results/2026-11-05-native-paging-image.md)
 preserves the candidate and its limitations for later work.
 
-The [job-control/native-wait update](results/2026-11-05-native-wait-image.md)
+The preceding [job-control/native-wait update](results/2026-11-05-native-wait-image.md)
 adds IRIX sleep, child-state and process-group support, plus a generic NetBSD
 multi-child wait-accounting fix. Compared with the Type1 image, only
 `/netbsd`, `/netbsd.boot` and the IRIX module change in the installed-file
@@ -32,7 +33,8 @@ accelerated Newport are retained. Cold CHD qualification covers 345 text
 comparisons, both users, three winterm starts/resizes, native and original
 IRIX shell jobs, both logout routes, recovery, catalog launch and clean halt.
 The final 22-target catalog replay also verifies cleanup and shutdown.
-`./xiri check` now repeats the shell-job checks automatically.
+That checkpoint includes the separate shell-job qualification; its matching
+core and module are retained in the multi-user image.
 
 The earlier [Type1 update](results/2026-11-05-type1-image.md) preserves MIPS
 floating-point registers across signal return. Its fix remains included;
@@ -103,9 +105,10 @@ remains fresh in this image. Launch `acroread` from Applications and open
 `/usr/adobe/Acrobat4.0/Reader/Acrobat.pdf` for its bundled sample. Reader's
 catalog launch works, but its icon stays unchanged while running.
 
-The compatibility account file now uses `/usr/people/xiritest` for xiritest
-and `/` for the IRIX root convention. Native NetBSD accounts/passwords remain
-unchanged, including root's `/root` home and netbsdtest's wheel membership.
+The compatibility account and group files now follow native NSS, with password
+fields replaced by `*`. Ordinary users retain their native homes; IRIX root's
+lookup entry uses `/`. Native NetBSD accounts/passwords stay authoritative,
+including root's `/root` home and netbsdtest's wheel membership.
 
 The [desktop behavior image](results/2026-11-02-desktop-behavior-image.md)
 adds native FAM execution feedback, the granite backdrop and filesystem/home/
@@ -133,7 +136,7 @@ The Xiri fork hooks are still required.
 Launch the qualified bundle directly:
 
 ```sh
-/var/home/salvogendut/Dev/xiri/.work/images/xiri-netbsd-desktop-20261105-wait/run-iris.sh
+/var/home/salvogendut/Dev/xiri/.work/images/xiri-netbsd-desktop-20261105-multiuser/run-iris.sh
 ```
 
 It boots automatically to native NetBSD xdm. Use these public development
@@ -142,6 +145,7 @@ credentials:
 | User | Password | Desktop | HOME |
 | --- | --- | --- | --- |
 | `xiritest` | `xiritest` | Original IRIX 4Dwm | `/usr/people/xiritest` |
+| `xiritest2` | `xiritest2` | Original IRIX 4Dwm | `/usr/people/xiritest2` |
 | `netbsdtest` | `netbsdtest` | Standard native NetBSD ctwm | `/home/netbsdtest` |
 
 `netbsdtest` belongs to `wheel`. Run `su -` in its terminal to open a root
@@ -150,19 +154,23 @@ login shell; root's password remains empty in this development image.
 Xorg explicitly selects the qualified 1280×1024 Newport configuration with
 XAA enabled. Original IRIX logout menus return to xdm; system services survive.
 Native xdm/PAM and the system Xsession remain unchanged. The IRIX session is
-selected only by xiritest's `.xsession`; FAM still serves that one configured
-IRIX account. Root has no password and remains available on serial B for
-administration. The ttyE0 getty is disabled so xdm owns the graphical keyboard.
+selected by each user's `.xsession`; FAM uses the connecting account's native
+UID and groups. Each user has separate HOME, Desktop, Dumpster and session logs.
+Root has no password and remains available on serial B for administration.
+The ttyE0 getty is disabled so xdm owns the graphical keyboard.
 
-The fresh [image qualification](results/2026-11-05-native-wait-image.json) covers three IRIX
-logins, a separate native ctwm login, both IRIX logout routes, failed-startup
-recovery, catalog launch, full-screen acceleration and clean halt. PNGs show
-[4Dwm](results/images/2026-11-05-native-wait-image.png),
-[ctwm](results/images/2026-11-05-native-wait-image-native.png), the
-[greeter](results/images/2026-11-05-native-wait-image-greeter.png) and
-[winterm before any test resize](results/images/2026-11-05-native-wait-image-winterm.png).
-Each IRIX login checks untouched terminal geometry and foreground SIGWINCH
-delivery; an extra 100×30 terminal preserves its size and closes on typed
+The fresh [image qualification](results/2026-11-05-multiuser.json) covers three
+xiritest logins, a separate xiritest2/4Dwm login, native ctwm, both IRIX logout
+routes, failed-startup recovery, catalog launch, full-screen acceleration and
+clean halt. Concurrent FAM clients verify private-directory isolation and
+supplementary groups. PNGs show
+[4Dwm](results/images/2026-11-05-multiuser.png),
+[the second IRIX user](results/images/2026-11-05-multiuser-second-user.png),
+[ctwm](results/images/2026-11-05-multiuser-native.png), the
+[greeter](results/images/2026-11-05-multiuser-greeter.png) and
+[winterm before any test resize](results/images/2026-11-05-multiuser-winterm.png).
+Each of the three xiritest logins checks untouched terminal geometry and
+foreground SIGWINCH delivery; an extra 100×30 terminal preserves its size and closes on typed
 `exit`. Terminal defaults explicitly select NetBSD's 100dpi Adobe Courier
 Bold bitmap with 11×20 winterm cells. The Type1 collapse is fixed by the
 native FPU correction; the bitmap remains for its closer IRIX appearance.
@@ -174,14 +182,15 @@ label rendering separately from individual command functionality.
 The native logout test ends ctwm from its own terminal;
 it does not qualify its Quit menu.
 
-The shell-job checks cover winterm's native shell and the original IRIX shell
-in GNOME Terminal: Ctrl-Z, bg/fg, Ctrl-C, background reads, explicit waits,
-terminal exit and logout with running/stopped jobs. `./xiri check`
-automatically includes these job, winterm and font checks for the selected
-bundle. The explicit command is:
+The unchanged core/module retain the earlier shell-job qualification for
+winterm's native shell and the original IRIX shell in GNOME Terminal: Ctrl-Z,
+bg/fg, Ctrl-C, background reads, explicit waits, terminal exit and logout with
+active jobs. This cycle repeats the desktop, winterm, font and multi-user gates;
+the separate shell-job sequences were not repeated. Add `--jobs` to include
+them in a later run. `./xiri check` selects the current image's gates automatically:
 
 ```sh
-python3 scripts/probe-xiri-xdm.py --bundle .work/images/xiri-netbsd-desktop-20261105-wait --winterm --fonts --jobs
+python3 scripts/probe-xiri-xdm.py --bundle .work/images/xiri-netbsd-desktop-20261105-multiuser --multiuser --winterm --fonts
 ```
 
 For root's manual fallback, stop xdm with `/etc/rc.d/xdm stop`, then run
@@ -535,13 +544,15 @@ same `prepare-xiri-seed.py` command above.
 
 ## Current scope
 
-The complete desktop is still under development. Icon Catalog discovers 18
-pages and lists application names, including all 21 Freeware entries. Native
+The complete desktop is still under development. Icon Catalog has 17 system
+pages; xiritest also has a personal Blank page, making 18. It lists application
+names, including all 21 Freeware entries. Native
 FAM supplies real directory notifications; FileManager lists native files and
 folders. The imported toolbar glyphs render, and the Trusted Path panel is gone.
 Boot rc.d owns FAM and rpcbind; they remain running across desktop logouts.
-FAM serves the configured IRIX account at UID/GID 1234. Other native accounts
-can use the standard NetBSD session.
+FAM serves each local client's native UID and groups. Ordinary accounts can
+select the IRIX desktop independently; accounts without a custom `.xsession`
+retain the standard NetBSD session.
 
 The [icon repair](results/2026-11-02-desktop-icons.md) restores application-specific
 Freeware artwork and FileManager folder/document icons through measured

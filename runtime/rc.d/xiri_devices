@@ -9,6 +9,7 @@ start_cmd=xiri_devices_start
 stop_cmd=:
 xiri_devices_start()
 {
+    /usr/local/sbin/xiri-sync-users || return 1
     # Run before login/PTY allocation. A service restart must not remount PTYs.
     test ! -f /var/run/xiri-pty-ready || return 0
     /bin/sh /usr/local/libexec/xiri/setup-pty.sh || return 1

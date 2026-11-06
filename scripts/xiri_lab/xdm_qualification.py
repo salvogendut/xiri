@@ -115,6 +115,27 @@ def verify_sessions(r):
         verify_fonts(entry)
     if 'job_control' in r or 'scripts/xiri_lab/job_control.py' in r.get('sources', {}):
         verify_job_control(r['job_control'])
+    if 'scripts/xiri_lab/multiuser.py' in r.get('sources', {}):
+        multi = r['multiuser']
+        fam = multi['fam']
+        assert fam['status'] == 'passed' and fam['native_databases_unchanged']
+        for user, uid in [('xiritest', 1234), ('xiritest2', 1237)]:
+            assert (f'FAM_MULTIUSER_PASS uid={uid} own=1 supplementary=1 '
+                    'other=0 forged_root=0 created=1 deleted=1') in fam['concurrent_clients'][user]
+        second = multi['second_session']
+        assert second['catalog_pages'] == 17
+        assert re.search(r'Icon Catalog:.*\(Page [0-9]+ of 17\)', second['tree'])
+        assert second['shell'][:3] == ['xiritest2', '/usr/people/xiritest2', '/usr/people/xiritest2']
+        assert '1235' in second['shell'][3].split()
+        assert '1280x1024 pixels' in second['dimensions']
+        assert 'RENDER_PASS pixels=8536 mismatches=0' in second['render']
+        assert re.search(r'GUARD .*absent=1 valid=1 .*remaining=0 ', second['guard'])
+        assert '"xlogin"' in second['greeter_after']
+        assert {home['user'] for home in multi['homes']} == {'xiritest', 'xiritest2'}
+        assert sum(home['user'] == 'xiritest' for home in multi['homes']) == 3
+        for home in multi['homes']:
+            assert home['private_state'] and home['owner_verified'] and home['desktop_links']
+        assert {'during-second-user', 'after-second-user'} <= set(r['survivors'])
 
 
 def qualify(a, verify_irix_module):
@@ -125,6 +146,8 @@ def qualify(a, verify_irix_module):
              *sorted((bundle/'verification').glob('manifest-*.json'))]
     source=next(p for p in sources if p.exists() and sha256(p)==r['input_manifest_sha256'])
     m=json.loads(source.read_text())
+    if m.get('multiuser_checks') or 'xiritest2' in m.get('xdm', {}).get('accounts', {}):
+        assert 'scripts/xiri_lab/multiuser.py' in r['sources'] and 'multiuser' in r
     if m.get('job_control_checks'):
         verify_job_control(r['job_control'])
     assert m['status']=='chd-roundtrip-verified' and m['session_manager']=='xdm'
@@ -230,6 +253,16 @@ def qualify(a, verify_irix_module):
             report['menu_captures'][name] = dict(path=str(frame), sha256=sha256(frame),
                 dimensions=[720, 620],
                 method='IRIS ordinary GL scanout; capture integrity only; visual review is separate')
+    if 'multiuser' in r:
+        report['limitations'][2] = ('Two IRIX accounts pass xdm login switching and concurrent FAM access; '
+            'simultaneous graphical seats, original clogin and saved sessions remain unqualified.')
+        frame = a.run/'xdm-desktop-xiritest2.png'
+        assert sha256(frame) == r['screenshots']['xdm-desktop-xiritest2']
+        assert struct.unpack('>II', frame.read_bytes()[16:24]) == (1282, 1024)
+        target = a.png.with_stem(a.png.stem+'-second-user')
+        shutil.copyfile(frame, target)
+        report['screenshots']['second-user'] = dict(path=str(target), sha256=sha256(target),
+            source=str(frame), dimensions=[1282, 1024], method='IRIS ordinary GL scanout', byte_identical=True)
     a.output.parent.mkdir(parents=True,exist_ok=True)
     a.output.write_text(json.dumps(report,indent=2)+'\n')
     if a.promote or a.record_bundle:
@@ -246,6 +279,8 @@ def qualify(a, verify_irix_module):
             promoted['winterm_checks']=True
         if 'job_control' in r:
             promoted['job_control_checks']=True
+        if 'multiuser' in r:
+            promoted['multiuser_checks'] = True
         (bundle/'manifest.json').write_text(json.dumps(promoted,indent=2)+'\n')
     if a.promote:
         public={key:m[key] for key in ('chd_sha256','chd_bytes','logical_bytes','nvram_sha256',

@@ -138,6 +138,21 @@ def main():
             'Toolchest launches have not been qualified for it.\n') + readme[end:]
     if xdm:
         readme = (ROOT/'lab/irix-installed-desktop/xdm-image-README.txt').read_text()
+        if 'xiritest2' in r['xdm']['accounts']:
+            readme = readme.replace(
+                'Only xiritest selects the Xiri .xsession; the system Xsession/PAM stay native.\n'
+                'FAM still supports one configured IRIX desktop account, not multiple users.\n',
+                'Both IRIX users select Xiri with their own .xsession; system Xsession/PAM stay native.\n'
+                'FAM identifies each local client through native TCP socket ownership.\n'
+                'Log out and switch between the two IRIX accounts to check their separate homes.\n')
+            readme = readme.replace(
+                '  xiritest / xiritest   Original IRIX 4Dwm desktop\n',
+                '  xiritest / xiritest   Original IRIX 4Dwm desktop\n'
+                '  xiritest2 / xiritest2 Original IRIX 4Dwm desktop\n')
+            readme = readme.replace(
+                'The IRIX session uses UID 1234 and HOME/cwd /usr/people/xiritest.\n',
+                'IRIX users: xiritest is UID 1234; xiritest2 is UID 1237.\n'
+                'Each uses its own HOME/cwd at /usr/people/<username> and private session state.\n')
         shutil.copyfile(seed/'result.json',out/'xdm-preparation.json')
     if r.get('gimp_resources'):
         readme += (ROOT/'lab/irix-gimp/image-README.txt').read_text()
