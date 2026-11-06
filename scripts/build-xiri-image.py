@@ -154,6 +154,14 @@ def main():
                 'IRIX users: xiritest is UID 1234; xiritest2 is UID 1237.\n'
                 'Each uses its own HOME/cwd at /usr/people/<username> and private session state.\n')
         shutil.copyfile(seed/'result.json',out/'xdm-preparation.json')
+        if 'runtime/libexec/sgi-colours.awk' in r['runtime_sources']:
+            readme = readme.replace(
+                'Continued-child notifications, IRIX nanosleep, xosview statistics,\n'
+                'complete Dumpster actions, preferences and\n'
+                'saved-session behavior remain unfinished.',
+                'xosview statistics, complete Dumpster actions, other preference\n'
+                'panels and saved application sessions remain unfinished.')
+            readme += (ROOT/'lab/irix-desktop-behavior/colours-image-README.txt').read_text()
     if r.get('gimp_resources'):
         readme += (ROOT/'lab/irix-gimp/image-README.txt').read_text()
     if 'acrobat' in r.get('application_resources', {}):

@@ -149,7 +149,11 @@ checks both click/opaque and pointer/outline policies. Keep those test profiles
 in disposable overlays. The normal desktop no longer autostarts xmahjongg;
 catalog regression probes start their own initial instance explicitly.
 The [preference evidence](results/2026-11-06-desktop-preferences.md) records
-the original resource mechanism and remaining Solid colour-name limitation.
+the original resource mechanism. The [colour follow-up](results/2026-11-06-desktop-colours.md)
+adds SGI name lookup and the Solid picker in X11 mode. `./xiri check` selects
+`--colours` for images containing this support; the probe runs from the actual
+users' winterm environments and compares every SGI alias with its original
+RGB value and a numeric allocation control.
 
 ## IRIX module development
 
@@ -218,7 +222,7 @@ both logout menus, failed startup/retry and unrelated-login/service survival.
 A separate native account without `.xsession` must retain NetBSD's standard
 ctwm desktop, then permit another xiritest/4Dwm login.
 For the current image prepared with `--multiuser`, run the cold probe with
-`--bundle BUNDLE --multiuser --winterm --fonts`. It adds concurrent per-user FAM watches, credential and
+`--bundle BUNDLE --multiuser --winterm --fonts --colours`. It adds concurrent per-user FAM watches, credential and
 home isolation, and an xdm login as `xiritest2`. `./xiri check` selects this
 additional gate automatically when the image manifest contains that account.
 Prepare this image with `--fam-build .work/native-fam-multiuser --multiuser`

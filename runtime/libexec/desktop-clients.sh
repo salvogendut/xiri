@@ -52,9 +52,8 @@ until xprop -display "$DISPLAY" -root _SGI_DESKS_BACKGROUND _SGI_DESKS_BACKGROUN
     sleep 1
 done
 observe background /emul/irix/usr/sbin/fm -b &
-# Xorg lacks the vendor's SGIDarkGray name; this is its numeric equivalent.
 observe toolchest /emul/irix/usr/bin/X11/toolchest -display "$DISPLAY" \
-    -geometry +10+10 -xrm '*decalForeground: #555555' \
+    -geometry +10+10 \
     /usr/local/share/xiri/toolchest.chestrc &
 observe winterm /bin/sh /emul/irix/usr/sbin/winterm -name winterm \
     -title winterm -geometry 80x24+10+180 \

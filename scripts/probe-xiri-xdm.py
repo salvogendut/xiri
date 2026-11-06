@@ -29,6 +29,7 @@ def main():
     parser.add_argument('--fonts', action='store_true', help='compare native core/Xft pixels and Courier metrics in both desktops')
     parser.add_argument('--jobs', action='store_true', help='exercise native and original IRIX shell job control, then logout with active jobs')
     parser.add_argument('--multiuser', action='store_true', help='check concurrent FAM clients and a second IRIX account in the prepared CHD')
+    parser.add_argument('--colours', action='store_true', help='check SGI colour aliases from each authenticated desktop shell')
     args = parser.parse_args()
     if args.multiuser:
         assert args.bundle, 'multi-user accounts must be provisioned in the input CHD'
@@ -71,6 +72,10 @@ def main():
     sources['scripts/xiri_lab/xdm_image.py'] = sha256(ROOT/'scripts/xiri_lab/xdm_image.py')
     sources['scripts/xiri_lab/kernel_log.py'] = sha256(ROOT/'scripts/xiri_lab/kernel_log.py')
     sources['scripts/xiri_lab/winterm.py'] = sha256(ROOT/'scripts/xiri_lab/winterm.py')
+    if args.colours:
+        source = 'lab/irix-desktop-behavior/colour-names.c'
+        shutil.copyfile(ROOT/source, media/'colour-names.c')
+        sources[source] = sha256(ROOT/source)
     if args.jobs:
         from xiri_lab.job_control import SOURCES
         for source, name in SOURCES.items():
@@ -203,6 +208,17 @@ def main():
         assert proof[:3] == [user, home, home], proof
         assert '1235' in proof[3].split(), proof
         assert proof[4] == get('printf "%s" "$XAUTHORITY"'), proof
+        if args.colours:
+            cmd(shlex.join(['./type', '127.0.0.1:0', 'winterm',
+                '/tmp/colour-names /emul/irix/usr/lib/X11/rgb.txt > "$XIRI_SESSION_DIR/colour-names"; '
+                'echo $? > "$XIRI_SESSION_DIR/colour-status"\n']))
+            wait('test -s "$job/colour-status"')
+            cmd('test "$(cat "$job/colour-status")" = 0')
+            colours = get('cat "$job/colour-names"')
+            assert 'COLOUR_NAMES entries=142 failures=0' in colours, colours
+            resources = get('xrdb -query | grep useGl')
+            assert re.search(r'^Background\*useGl:\s+False$', resources, re.M), resources
+            r.setdefault('colour_checks', []).append(dict(user=user, output=colours, resources=resources))
         cmd('if XAUTHORITY=/dev/null xdpyinfo >auth-rejected.log 2>&1; then exit 1; fi')
         render = cmd('./render-probe',120)
         assert 'RENDER_PASS pixels=8536 mismatches=0' in render
@@ -363,6 +379,9 @@ def main():
             '-L/usr/X11R7/lib -Wl,-rpath,/usr/X11R7/lib -lXrender -lX11 -o render-probe',300)
         if args.winterm:
             cmd('cc -O2 -Wall -Wextra -Werror resize-watch.c -o /tmp/xiri-resize-watch')
+        if args.colours:
+            cmd('cc -O2 -Wall -Wextra -Werror -I/usr/X11R7/include colour-names.c '
+                '-L/usr/X11R7/lib -Wl,-rpath,/usr/X11R7/lib -lX11 -o /tmp/colour-names')
         if args.jobs:
             cmd('mkdir -p /tmp/xiri-job-ui && cc -O2 -Wall -Wextra -Werror job-worker.c '
                 '-o /tmp/xiri-job-ui/job-worker && install -m 755 type place /tmp/xiri-job-ui/ && '

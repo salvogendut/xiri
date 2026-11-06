@@ -336,6 +336,14 @@ daemon or schema. Backdrop and colour command-line overrides have been removed
 so saved settings can take effect. This is separate from 4Dwm's still-disabled
 application-session saving and restoration.
 
+SGI colour names use Xlib's existing Xcms mechanism. Each Xiri session derives
+a private database from the imported `rgb.txt`, exports `XCMSDB`, and leaves
+native Xorg's built-in colour table intact. The maintained desktop resources
+select the original Background chooser's X11 mode with `Background*useGl:
+False`; its GL mode faults in the bundled Mesa software renderer. This is
+userspace session integration, with no kernel or vendor binary changes.
+See the [colour qualification](results/2026-11-06-desktop-colours.md).
+
 Provide explicit adapters for system integration. An IRIX control panel that changes networking, accounts, storage, or power state cannot be assumed to control the new host correctly. Implement and test the relevant operation against host services before enabling it.
 
 ## Shared files and application launch

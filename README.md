@@ -12,7 +12,7 @@ catalog launches and running-icon feedback. Native NetBSD Xorg drives a
 1280×1024 accelerated Newport display. It retains the xmahjongg texture
 correction qualified by the earlier [rendering and interaction checks](docs/results/2026-11-03-newport-xmahjongg.md).
 
-The [current manual CHD](docs/results/2026-11-06-desktop-preferences.md#manual-image) boots into native
+The [current manual CHD](docs/results/2026-11-06-desktop-colours.md#manual-image) boots into native
 NetBSD xdm. Use **xiritest** / **xiritest** or **xiritest2** / **xiritest2** for
 separate IRIX desktops, or **netbsdtest** / **netbsdtest** for standard NetBSD ctwm.
 `netbsdtest` belongs to `wheel` and can run `su -` for a root login shell;
@@ -26,7 +26,9 @@ explains how any normal account selects the IRIX desktop and how to add users.
 The [desktop preferences guide](docs/IRIX-SOFTWARE.md#desktop-preferences)
 describes the original Background, Color Schemes and Windows panels and where
 each user keeps their settings. Backdrops, colour schemes, focus and window
-movement now persist across login and reboot. Xmahjongg starts only when launched.
+movement now persist across login and reboot. The [Solid colour picker](docs/results/2026-11-06-desktop-colours.md)
+uses its original X11 controls, and SGI colour names resolve through a private
+session database. Xmahjongg starts only when launched.
 System services start at boot. NetBSD
 loads `compat_irix_o32.kmod` during boot and runs the desktop on a kernel
 without built-in IRIX support. The [core kernel](lab/native-wait/README.md)

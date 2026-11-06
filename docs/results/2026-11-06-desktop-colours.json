@@ -1,0 +1,145 @@
+{
+  "schema": 1,
+  "status": "desktop-colours-verified",
+  "reference": "IRIX 6.5.22m original rgb.txt, Background and libSgm",
+  "run": ".work/desktop-colours/ordinary-e8nl3fq6",
+  "base_bundle": "/var/home/salvogendut/Dev/xiri/.work/images/xiri-netbsd-desktop-20261106-preferences-v2",
+  "base_chd_sha256": "9442ee066e567c587b0f88a5fac262c50ab7983f464dd5e6c0967867a2159e68",
+  "sources": {
+    "runtime/bin/xiri-session": "1c01bfb9ab7de9fddaf4e9dac328f81c1fa5be6b004e1833f2d0b03b6c67740b",
+    "runtime/libexec/desktop-clients.sh": "1da1587130ab82dcb21d61cdeeae1d2de6006f2d46ff20401e86e9e409c270dd",
+    "runtime/libexec/sgi-colours.awk": "caed0d2aa8cbd258ea3c4dd3fd08c3306e503e75fcc60b935694bf3468b1e3ae",
+    "runtime/etc/desktop-Xresources": "561f52352a205ee6299e1f12dc58eabbd6bc4c87d244b57a6390cf2e794a94bd",
+    "runtime/install.sh": "7d7c97732c64e988f79d9c4313c3c32097d74ef88791444a1f99798a696309b5",
+    "lab/irix-desktop-behavior/colour-names.c": "8befd18f8d4288d5a9d16f692260c6e59bda7fe2deca88d384504acbb3705d5a"
+  },
+  "lookup_before": "VISUAL depth=24 class=4 bits=8 masks=ff,ff00,ff0000\nLOOKUP name=sgiLightBlue ok=0 exact=0000/0000/0000 screen=0000/0000/0000 parse=0 parsed=0000/0000/0000\nALLOC name=sgiLightBlue ok=0 pixel=0 rgb=0000/0000/0000 queried=0000/0000/0000\nLOOKUP name=sgi light blue ok=0 exact=0000/0000/0000 screen=0000/0000/0000 parse=0 parsed=0000/0000/0000\nALLOC name=sgi light blue ok=0 pixel=0 rgb=0000/0000/0000 queried=0000/0000/0000\nLOOKUP name=SGIDarkGray ok=0 exact=0000/0000/0000 screen=0000/0000/0000 parse=0 parsed=0000/0000/0000\nALLOC name=SGIDarkGray ok=0 pixel=0 rgb=0000/0000/0000 queried=0000/0000/0000\nLOOKUP name=white ok=1 exact=ffff/ffff/ffff screen=ffff/ffff/ffff parse=1 parsed=ffff/ffff/ffff\nALLOC name=white ok=1 pixel=fefefe rgb=ffff/ffff/ffff queried=ffff/ffff/ffff\nLOOKUP name=#7d9ec0 ok=1 exact=7d00/9e00/c000 screen=7d00/9e00/c000 parse=1 parsed=7d00/9e00/c000\nALLOC name=#7d9ec0 ok=1 pixel=be9c7c rgb=7c7c/9d9d/bfbf queried=7c7c/9d9d/bfbf\nROOT_PIXEL 0\n",
+  "lookup_with_xcms": "VISUAL depth=24 class=4 bits=8 masks=ff,ff00,ff0000\nLOOKUP name=sgiLightBlue ok=1 exact=7d7d/9e9e/c0c0 screen=7d00/9e00/c000 parse=1 parsed=7d7d/9e9e/c0c0\nALLOC name=sgiLightBlue ok=1 pixel=be9c7c rgb=7c7c/9d9d/bfbf queried=7c7c/9d9d/bfbf\nLOOKUP name=sgi light blue ok=1 exact=7d7d/9e9e/c0c0 screen=7d00/9e00/c000 parse=1 parsed=7d7d/9e9e/c0c0\nALLOC name=sgi light blue ok=1 pixel=be9c7c rgb=7c7c/9d9d/bfbf queried=7c7c/9d9d/bfbf\nLOOKUP name=SGIDarkGray ok=1 exact=5555/5555/5555 screen=5500/5500/5500 parse=1 parsed=5555/5555/5555\nALLOC name=SGIDarkGray ok=1 pixel=545454 rgb=5454/5454/5454 queried=5454/5454/5454\nLOOKUP name=white ok=1 exact=ffff/ffff/ffff screen=ffff/ffff/ffff parse=1 parsed=ffff/ffff/ffff\nALLOC name=white ok=1 pixel=fefefe rgb=ffff/ffff/ffff queried=ffff/ffff/ffff\nLOOKUP name=#7d9ec0 ok=1 exact=7d00/9e00/c000 screen=7d00/9e00/c000 parse=1 parsed=7d00/9e00/c000\nALLOC name=#7d9ec0 ok=1 pixel=be9c7c rgb=7c7c/9d9d/bfbf queried=7c7c/9d9d/bfbf\nROOT_PIXEL 0\n",
+  "all_aliases": "PASS name=sgi gray 0 rgb=0000/0000/0000 pixel=0 numeric=0\nPASS name=SGIGray0 rgb=0000/0000/0000 pixel=0 numeric=0\nPASS name=sgi grey 0 rgb=0000/0000/0000 pixel=0 numeric=0\nPASS name=SGIGrey0 rgb=0000/0000/0000 pixel=0 numeric=0\nPASS name=sgi gray 4 rgb=0a0a/0a0a/0a0a pixel=a0a0a numeric=a0a0a\nPASS name=SGIGray4 rgb=0a0a/0a0a/0a0a pixel=a0a0a numeric=a0a0a\nPASS name=sgi grey 4 rgb=0a0a/0a0a/0a0a pixel=a0a0a numeric=a0a0a\nPASS name=SGIGrey4 rgb=0a0a/0a0a/0a0a pixel=a0a0a numeric=a0a0a\nPASS name=sgi gray 8 rgb=1414/1414/1414 pixel=141414 numeric=141414\nPASS name=SGIGray8 rgb=1414/1414/1414 pixel=141414 numeric=141414\nPASS name=sgi grey 8 rgb=1414/1414/1414 pixel=141414 numeric=141414\nPASS name=SGIGrey8 rgb=1414/1414/1414 pixel=141414 numeric=141414\nPASS name=sgi gray 12 rgb=1e1e/1e1e/1e1e pixel=1e1e1e numeric=1e1e1e\nPASS name=SGIGray12 rgb=1e1e/1e1e/1e1e pixel=1e1e1e numeric=1e1e1e\nPASS name=sgi grey 12 rgb=1e1e/1e1e/1e1e pixel=1e1e1e numeric=1e1e1e\nPASS name=SGIGrey12 rgb=1e1e/1e1e/1e1e pixel=1e1e1e numeric=1e1e1e\nPASS name=sgi gray 16 rgb=2828/2828/2828 pixel=282828 numeric=282828\nPASS name=SGIGray16 rgb=2828/2828/2828 pixel=282828 numeric=282828\nPASS name=sgi grey 16 rgb=2828/2828/2828 pixel=282828 numeric=282828\nPASS name=SGIGrey16 rgb=2828/2828/2828 pixel=282828 numeric=282828\nPASS name=sgi gray 20 rgb=3333/3333/3333 pixel=323232 numeric=323232\nPASS name=SGIGray20 rgb=3333/3333/3333 pixel=323232 numeric=323232\nPASS name=sgi grey 20 rgb=3333/3333/3333 pixel=323232 numeric=323232\nPASS name=SGIGrey20 rgb=3333/3333/3333 pixel=323232 numeric=323232\nPASS name=sgi gray 24 rgb=3d3d/3d3d/3d3d pixel=3c3c3c numeric=3c3c3c\nPASS name=SGIGray24 rgb=3d3d/3d3d/3d3d pixel=3c3c3c numeric=3c3c3c\nPASS name=sgi grey 24 rgb=3d3d/3d3d/3d3d pixel=3c3c3c numeric=3c3c3c\nPASS name=SGIGrey24 rgb=3d3d/3d3d/3d3d pixel=3c3c3c numeric=3c3c3c\nPASS name=sgi gray 28 rgb=4747/4747/4747 pixel=464646 numeric=464646\nPASS name=SGIGray28 rgb=4747/4747/4747 pixel=464646 numeric=464646\nPASS name=sgi grey 28 rgb=4747/4747/4747 pixel=464646 numeric=464646\nPASS name=SGIGrey28 rgb=4747/4747/4747 pixel=464646 numeric=464646\nPASS name=sgi gray 32 rgb=5151/5151/5151 pixel=505050 numeric=505050\nPASS name=SGIGray32 rgb=5151/5151/5151 pixel=505050 numeric=505050\nPASS name=sgi grey 32 rgb=5151/5151/5151 pixel=505050 numeric=505050\nPASS name=SGIGrey32 rgb=5151/5151/5151 pixel=505050 numeric=505050\nPASS name=sgi gray 36 rgb=5b5b/5b5b/5b5b pixel=5a5a5a numeric=5a5a5a\nPASS name=SGIGray36 rgb=5b5b/5b5b/5b5b pixel=5a5a5a numeric=5a5a5a\nPASS name=sgi grey 36 rgb=5b5b/5b5b/5b5b pixel=5a5a5a numeric=5a5a5a\nPASS name=SGIGrey36 rgb=5b5b/5b5b/5b5b pixel=5a5a5a numeric=5a5a5a\nPASS name=sgi gray 40 rgb=6666/6666/6666 pixel=666666 numeric=666666\nPASS name=SGIGray40 rgb=6666/6666/6666 pixel=666666 numeric=666666\nPASS name=sgi grey 40 rgb=6666/6666/6666 pixel=666666 numeric=666666\nPASS name=SGIGrey40 rgb=6666/6666/6666 pixel=666666 numeric=666666\nPASS name=sgi gray 44 rgb=7070/7070/7070 pixel=707070 numeric=707070\nPASS name=SGIGray44 rgb=7070/7070/7070 pixel=707070 numeric=707070\nPASS name=sgi grey 44 rgb=7070/7070/7070 pixel=707070 numeric=707070\nPASS name=SGIGrey44 rgb=7070/7070/7070 pixel=707070 numeric=707070\nPASS name=sgi gray 48 rgb=7a7a/7a7a/7a7a pixel=7a7a7a numeric=7a7a7a\nPASS name=SGIGray48 rgb=7a7a/7a7a/7a7a pixel=7a7a7a numeric=7a7a7a\nPASS name=sgi grey 48 rgb=7a7a/7a7a/7a7a pixel=7a7a7a numeric=7a7a7a\nPASS name=SGIGrey48 rgb=7a7a/7a7a/7a7a pixel=7a7a7a numeric=7a7a7a\nPASS name=sgi gray 52 rgb=8484/8484/8484 pixel=828282 numeric=828282\nPASS name=SGIGray52 rgb=8484/8484/8484 pixel=828282 numeric=828282\nPASS name=sgi grey 52 rgb=8484/8484/8484 pixel=828282 numeric=828282\nPASS name=SGIGrey52 rgb=8484/8484/8484 pixel=828282 numeric=828282\nPASS name=sgi gray 56 rgb=8e8e/8e8e/8e8e pixel=8c8c8c numeric=8c8c8c\nPASS name=SGIGray56 rgb=8e8e/8e8e/8e8e pixel=8c8c8c numeric=8c8c8c\nPASS name=sgi grey 56 rgb=8e8e/8e8e/8e8e pixel=8c8c8c numeric=8c8c8c\nPASS name=SGIGrey56 rgb=8e8e/8e8e/8e8e pixel=8c8c8c numeric=8c8c8c\nPASS name=sgi gray 60 rgb=9999/9999/9999 pixel=989898 numeric=989898\nPASS name=SGIGray60 rgb=9999/9999/9999 pixel=989898 numeric=989898\nPASS name=sgi grey 60 rgb=9999/9999/9999 pixel=989898 numeric=989898\nPASS name=SGIGrey60 rgb=9999/9999/9999 pixel=989898 numeric=989898\nPASS name=sgi gray 64 rgb=a3a3/a3a3/a3a3 pixel=a2a2a2 numeric=a2a2a2\nPASS name=SGIGray64 rgb=a3a3/a3a3/a3a3 pixel=a2a2a2 numeric=a2a2a2\nPASS name=sgi grey 64 rgb=a3a3/a3a3/a3a3 pixel=a2a2a2 numeric=a2a2a2\nPASS name=SGIGrey64 rgb=a3a3/a3a3/a3a3 pixel=a2a2a2 numeric=a2a2a2\nPASS name=sgi gray 68 rgb=adad/adad/adad pixel=acacac numeric=acacac\nPASS name=SGIGray68 rgb=adad/adad/adad pixel=acacac numeric=acacac\nPASS name=sgi grey 68 rgb=adad/adad/adad pixel=acacac numeric=acacac\nPASS name=SGIGrey68 rgb=adad/adad/adad pixel=acacac numeric=acacac\nPASS name=sgi gray 72 rgb=b7b7/b7b7/b7b7 pixel=b6b6b6 numeric=b6b6b6\nPASS name=SGIGray72 rgb=b7b7/b7b7/b7b7 pixel=b6b6b6 numeric=b6b6b6\nPASS name=sgi grey 72 rgb=b7b7/b7b7/b7b7 pixel=b6b6b6 numeric=b6b6b6\nPASS name=SGIGrey72 rgb=b7b7/b7b7/b7b7 pixel=b6b6b6 numeric=b6b6b6\nPASS name=sgi gray 76 rgb=c1c1/c1c1/c1c1 pixel=c0c0c0 numeric=c0c0c0\nPASS name=SGIGray76 rgb=c1c1/c1c1/c1c1 pixel=c0c0c0 numeric=c0c0c0\nPASS name=sgi grey 76 rgb=c1c1/c1c1/c1c1 pixel=c0c0c0 numeric=c0c0c0\nPASS name=SGIGrey76 rgb=c1c1/c1c1/c1c1 pixel=c0c0c0 numeric=c0c0c0\nPASS name=sgi gray 80 rgb=cccc/cccc/cccc pixel=cacaca numeric=cacaca\nPASS name=SGIGray80 rgb=cccc/cccc/cccc pixel=cacaca numeric=cacaca\nPASS name=sgi grey 80 rgb=cccc/cccc/cccc pixel=cacaca numeric=cacaca\nPASS name=SGIGrey80 rgb=cccc/cccc/cccc pixel=cacaca numeric=cacaca\nPASS name=sgi gray 84 rgb=d6d6/d6d6/d6d6 pixel=d4d4d4 numeric=d4d4d4\nPASS name=SGIGray84 rgb=d6d6/d6d6/d6d6 pixel=d4d4d4 numeric=d4d4d4\nPASS name=sgi grey 84 rgb=d6d6/d6d6/d6d6 pixel=d4d4d4 numeric=d4d4d4\nPASS name=SGIGrey84 rgb=d6d6/d6d6/d6d6 pixel=d4d4d4 numeric=d4d4d4\nPASS name=sgi gray 88 rgb=e0e0/e0e0/e0e0 pixel=dedede numeric=dedede\nPASS name=SGIGray88 rgb=e0e0/e0e0/e0e0 pixel=dedede numeric=dedede\nPASS name=sgi grey 88 rgb=e0e0/e0e0/e0e0 pixel=dedede numeric=dedede\nPASS name=SGIGrey88 rgb=e0e0/e0e0/e0e0 pixel=dedede numeric=dedede\nPASS name=sgi gray 92 rgb=eaea/eaea/eaea pixel=e8e8e8 numeric=e8e8e8\nPASS name=SGIGray92 rgb=eaea/eaea/eaea pixel=e8e8e8 numeric=e8e8e8\nPASS name=sgi grey 92 rgb=eaea/eaea/eaea pixel=e8e8e8 numeric=e8e8e8\nPASS name=SGIGrey92 rgb=eaea/eaea/eaea pixel=e8e8e8 numeric=e8e8e8\nPASS name=sgi gray 96 rgb=f4f4/f4f4/f4f4 pixel=f2f2f2 numeric=f2f2f2\nPASS name=SGIGray96 rgb=f4f4/f4f4/f4f4 pixel=f2f2f2 numeric=f2f2f2\nPASS name=sgi grey 96 rgb=f4f4/f4f4/f4f4 pixel=f2f2f2 numeric=f2f2f2\nPASS name=SGIGrey96 rgb=f4f4/f4f4/f4f4 pixel=f2f2f2 numeric=f2f2f2\nPASS name=sgi gray 100 rgb=ffff/ffff/ffff pixel=fefefe numeric=fefefe\nPASS name=SGIGray100 rgb=ffff/ffff/ffff pixel=fefefe numeric=fefefe\nPASS name=sgi grey 100 rgb=ffff/ffff/ffff pixel=fefefe numeric=fefefe\nPASS name=SGIGrey100 rgb=ffff/ffff/ffff pixel=fefefe numeric=fefefe\nPASS name=sgi light blue rgb=7d7d/9e9e/c0c0 pixel=be9c7c numeric=be9c7c\nPASS name=SGILightBlue rgb=7d7d/9e9e/c0c0 pixel=be9c7c numeric=be9c7c\nPASS name=sgi dark gray rgb=5555/5555/5555 pixel=545454 numeric=545454\nPASS name=SGIDarkGray rgb=5555/5555/5555 pixel=545454 numeric=545454\nPASS name=sgi dark grey rgb=5555/5555/5555 pixel=545454 numeric=545454\nPASS name=SGIDarkGrey rgb=5555/5555/5555 pixel=545454 numeric=545454\nPASS name=sgi salmon rgb=c6c6/7171/7171 pixel=7070c4 numeric=7070c4\nPASS name=SGISalmon rgb=c6c6/7171/7171 pixel=7070c4 numeric=7070c4\nPASS name=sgi chartreuse rgb=7171/c6c6/7171 pixel=70c470 numeric=70c470\nPASS name=SGIChartreuse rgb=7171/c6c6/7171 pixel=70c470 numeric=70c470\nPASS name=sgi olive drab rgb=8e8e/8e8e/3838 pixel=388c8c numeric=388c8c\nPASS name=SGIOliveDrab rgb=8e8e/8e8e/3838 pixel=388c8c numeric=388c8c\nPASS name=sgi slate blue rgb=7171/7171/c6c6 pixel=c47070 numeric=c47070\nPASS name=SGISlateBlue rgb=7171/7171/c6c6 pixel=c47070 numeric=c47070\nPASS name=sgi beet rgb=8e8e/3838/8e8e pixel=8c388c numeric=8c388c\nPASS name=SGIBeet rgb=8e8e/3838/8e8e pixel=8c388c numeric=8c388c\nPASS name=sgi teal rgb=3838/8e8e/8e8e pixel=8c8c38 numeric=8c8c38\nPASS name=SGITeal rgb=3838/8e8e/8e8e pixel=8c8c38 numeric=8c8c38\nPASS name=sgi light gray rgb=aaaa/aaaa/aaaa pixel=a8a8a8 numeric=a8a8a8\nPASS name=SGILightGray rgb=aaaa/aaaa/aaaa pixel=a8a8a8 numeric=a8a8a8\nPASS name=sgi light grey rgb=aaaa/aaaa/aaaa pixel=a8a8a8 numeric=a8a8a8\nPASS name=SGILightGrey rgb=aaaa/aaaa/aaaa pixel=a8a8a8 numeric=a8a8a8\nPASS name=sgi very light gray rgb=d6d6/d6d6/d6d6 pixel=d4d4d4 numeric=d4d4d4\nPASS name=SGIVeryLightGray rgb=d6d6/d6d6/d6d6 pixel=d4d4d4 numeric=d4d4d4\nPASS name=sgi very light grey rgb=d6d6/d6d6/d6d6 pixel=d4d4d4 numeric=d4d4d4\nPASS name=SGIVeryLightGrey rgb=d6d6/d6d6/d6d6 pixel=d4d4d4 numeric=d4d4d4\nPASS name=sgi medium gray rgb=8484/8484/8484 pixel=828282 numeric=828282\nPASS name=SGIMediumGray rgb=8484/8484/8484 pixel=828282 numeric=828282\nPASS name=sgi medium grey rgb=8484/8484/8484 pixel=828282 numeric=828282\nPASS name=SGIMediumGrey rgb=8484/8484/8484 pixel=828282 numeric=828282\nPASS name=sgi very dark gray rgb=2828/2828/2828 pixel=282828 numeric=282828\nPASS name=SGIVeryDarkGray rgb=2828/2828/2828 pixel=282828 numeric=282828\nPASS name=sgi very dark grey rgb=2828/2828/2828 pixel=282828 numeric=282828\nPASS name=SGIVeryDarkGrey rgb=2828/2828/2828 pixel=282828 numeric=282828\nPASS name=sgi bright gray rgb=c5c5/c1c1/aaaa pixel=a8c0c4 numeric=a8c0c4\nPASS name=SGIBrightGray rgb=c5c5/c1c1/aaaa pixel=a8c0c4 numeric=a8c0c4\nPASS name=sgi bright grey rgb=c5c5/c1c1/aaaa pixel=a8c0c4 numeric=a8c0c4\nPASS name=SGIBrightGrey rgb=c5c5/c1c1/aaaa pixel=a8c0c4 numeric=a8c0c4\nCOLOUR_NAMES entries=142 failures=0\n",
+  "database": {
+    "source": ".work/irix-toolchest-input/root/usr/lib/X11/rgb.txt",
+    "source_sha256": "233c6af69e8242286fe6ef11cd8c729916e1209aa689a01d2aa3b6138e7e494f",
+    "sgi_aliases": 142,
+    "normalized_names": 71,
+    "generated_sha256": "43c0ac8937d793dbe2a2633844904e9549949d13e6638a1f858b42d9233ca651"
+  },
+  "named_solid_relogin": "_SGI_DESKS_BACKGROUND_DESCRIPTION(STRING) = \"-solid sgiLightBlue\"\n_SGI_DESKS_BACKGROUND(PIXEL) = 0xbe9c7c\nBackground*useGl:\tFalse\n 495 /usr/X11R7/bin/Xorg \n",
+  "picker": {
+    "resource": "Background*useGl: False",
+    "mode": "original X11 controls",
+    "gl_failure": "Backtrace:\n[   414.696] 0: /usr/X11R7/bin/Xorg (xorg_backtrace+0x60) [0x1e8530]\n[   414.697] 1: /usr/X11R7/bin/Xorg (xstrtokenize+0x208) [0x1f0f5c]\n[   414.698] 2: /usr/lib/libc.so.12 (__sigtramp_siginfo_2+0x0) [0x77d93714]\n[   414.698] 3: /usr/X11R7/lib/modules/dri/swrast_dri.so (__driDriverGetExtensions_kms_swrast+0x435f20) [0x7635bb40]\n[   414.699] 4: /usr/X11R7/bin/Xorg (__glXDrawableRelease+0x1a1c) [0x2296e0]\n[   414.700] 5: /usr/X11R7/bin/Xorg (__glXTypeSize+0x21f4) [0x222494]\n[   414.701] 6: /usr/X11R7/bin/Xorg (Dispatch+0x3fc) [0x7eab4]\n[   414.702] 7: /usr/X11R7/bin/Xorg (main+0x618) [0x271a44]\n[   414.702] 8: /usr/X11R7/bin/Xorg (__start+0x218) [0x47cf8]\n[   415.447] Segmentation fault at address 0x64a4\n[   415.450] \nFatal server error:\n[   415.450] Caught signal 11 (Segmentation fault). Server aborting\n[   415.451] \n[   415.453] \n",
+    "recovered_without_kernel_or_server_changes": true
+  },
+  "persistence": {
+    "status": "passed",
+    "checks": [
+      {
+        "user": "xiritest2",
+        "phase": "logout-login",
+        "evidence": "SESSION user=xiritest2 uid=1237 groups=1237 1235 home=/usr/people/xiritest2 cwd=/usr/people/xiritest2 display=127.0.0.1:0 authority=default\n_SGI_DESKS_BACKGROUND_DESCRIPTION(STRING) = \"-solid #9ddb9d\"\n_SGI_DESKS_BACKGROUND(PIXEL) = 0x9cda9c\nBackground*useGl:\tFalse\n4DWm*curNewBackground:\t1\n4DWm*Desk 1.backgroundDescription:\t-solid #9ddb9d\nxiritest2 xiritest2 600\nCOLOUR_NAMES entries=142 failures=0\n",
+        "visible_rgb": "9cda9c",
+        "pixel_sha256": "c7c3633b3a699e901aa94f9e723f9ccc396bffc1a21c206e2befb1037f0d1d87",
+        "profile": "4DWm*curNewBackground:\t1\n4DWm*Desk 1.backgroundDescription:\t-solid #9ddb9d\n"
+      },
+      {
+        "user": "xiritest",
+        "phase": "logout-login",
+        "evidence": "SESSION user=xiritest uid=1234 groups=1234 1235 home=/usr/people/xiritest cwd=/usr/people/xiritest display=127.0.0.1:0 authority=default\n_SGI_DESKS_BACKGROUND_DESCRIPTION(STRING) = \"-solid #db9d9d\"\n_SGI_DESKS_BACKGROUND(PIXEL) = 0x9c9cda\nBackground*useGl:\tFalse\n4DWm*curNewBackground:\t1\n4DWm*Desk 1.backgroundDescription:\t-solid #db9d9d\nxiritest xiritest 600\nCOLOUR_NAMES entries=142 failures=0\n",
+        "visible_rgb": "da9c9c",
+        "pixel_sha256": "b33289d9e353c165e8b7683a7257022bbc31f7cd6705053e0f226ec0bf4081c7",
+        "profile": "4DWm*curNewBackground:\t1\n4DWm*Desk 1.backgroundDescription:\t-solid #db9d9d\n"
+      },
+      {
+        "user": "xiritest2",
+        "phase": "reboot",
+        "evidence": "SESSION user=xiritest2 uid=1237 groups=1237 1235 home=/usr/people/xiritest2 cwd=/usr/people/xiritest2 display=127.0.0.1:0 authority=default\n_SGI_DESKS_BACKGROUND_DESCRIPTION(STRING) = \"-solid #9ddb9d\"\n_SGI_DESKS_BACKGROUND(PIXEL) = 0x9cda9c\nBackground*useGl:\tFalse\n4DWm*curNewBackground:\t1\n4DWm*Desk 1.backgroundDescription:\t-solid #9ddb9d\nxiritest2 xiritest2 600\nCOLOUR_NAMES entries=142 failures=0\n",
+        "visible_rgb": "9cda9c",
+        "pixel_sha256": "c7c3633b3a699e901aa94f9e723f9ccc396bffc1a21c206e2befb1037f0d1d87",
+        "profile": "4DWm*curNewBackground:\t1\n4DWm*Desk 1.backgroundDescription:\t-solid #9ddb9d\n"
+      },
+      {
+        "user": "xiritest",
+        "phase": "reboot",
+        "evidence": "SESSION user=xiritest uid=1234 groups=1234 1235 home=/usr/people/xiritest cwd=/usr/people/xiritest display=127.0.0.1:0 authority=default\n_SGI_DESKS_BACKGROUND_DESCRIPTION(STRING) = \"-solid #db9d9d\"\n_SGI_DESKS_BACKGROUND(PIXEL) = 0x9c9cda\nBackground*useGl:\tFalse\n4DWm*curNewBackground:\t1\n4DWm*Desk 1.backgroundDescription:\t-solid #db9d9d\nxiritest xiritest 600\nCOLOUR_NAMES entries=142 failures=0\n",
+        "visible_rgb": "da9c9c",
+        "pixel_sha256": "b33289d9e353c165e8b7683a7257022bbc31f7cd6705053e0f226ec0bf4081c7",
+        "profile": "4DWm*curNewBackground:\t1\n4DWm*Desk 1.backgroundDescription:\t-solid #db9d9d\n"
+      }
+    ],
+    "profiles": {
+      "xiritest": "#db9d9d",
+      "xiritest2": "#9ddb9d"
+    },
+    "boot_before": "kern.boottime = Fri Nov  6 10:47:22 2026\n",
+    "boot_after": "kern.boottime = Fri Nov  6 11:11:10 2026\n",
+    "picker_reopened": "           0x160008b \"Backgrounds: Color Browser\": (\"ColorCDialog_popup\" \"Background\")  277x429+0+0  +61+34\n           0x1600050 \"Background Setting\": (\"Background\" \"Background\")  335x433+0+0  +32+32\n     0x1600006 \"Background Setting\": (\"background\" \"Background\")  1x1+640+512  +640+512\n     0x1600001 \"Background Setting\": (\"background\" \"Background\")  1x1+0+0  +0+0\n"
+  },
+  "slider_control": {
+    "status": "passed",
+    "action": "click hue slider, observe current swatch change, then cancel",
+    "before_sha256": "c76ce0ca1c70d7ddd0ad0128fd3dec08a34a71c42e469926d12c064a9576bc65",
+    "after_sha256": "161584372e4cd8e4d8073343501e7cfeb6a9f0250b8c11940a0c707b4d48e985",
+    "saved_profile_unchanged": true
+  },
+  "screenshots": {
+    "picker-x11": {
+      "path": "docs/results/images/2026-11-06-colours-picker.png",
+      "sha256": "f1de2558ae6085cc9f92ac2fa5ded6e3d2455a87b42564457ebe440bdbb8ac73",
+      "source": ".work/desktop-colours/ordinary-e8nl3fq6/picker-x11.png"
+    },
+    "named-solid-relogin": {
+      "path": "docs/results/images/2026-11-06-colours-named-solid.png",
+      "sha256": "e4f7ac7403298d514412da68e43c714f4258351803532f71e6f70444d19f32b8",
+      "source": ".work/desktop-colours/ordinary-e8nl3fq6/named-solid-relogin.png"
+    },
+    "reboot-xiritest": {
+      "path": "docs/results/images/2026-11-06-colours-pink.png",
+      "sha256": "af880121f6a818b93fab369183ab41f64b27815d9c89250a9463eaab752107b4",
+      "source": ".work/desktop-colours/ordinary-e8nl3fq6/reboot-xiritest.png"
+    },
+    "reboot-xiritest2": {
+      "path": "docs/results/images/2026-11-06-colours-green.png",
+      "sha256": "fb536d248d3c1eddea8b01652fb5fe99fbfc189a8ff441e815910a16da087687",
+      "source": ".work/desktop-colours/ordinary-e8nl3fq6/reboot-xiritest2.png"
+    },
+    "custom-solid-picker-reboot": {
+      "path": "docs/results/images/2026-11-06-colours-reopened-picker.png",
+      "sha256": "60b6d61873400b801ada90a58e757eb9fb35a32c223fbab0dbd759a9a9df5656",
+      "source": ".work/desktop-colours/ordinary-e8nl3fq6/custom-solid-picker-reboot.png"
+    }
+  },
+  "evidence": {
+    ".work/desktop-colours/ordinary-e8nl3fq6/colours-before.txt": "ca955ad758bb7317f960759327ffb2d0c772092059afda4de4db68f3e850171f",
+    ".work/desktop-colours/ordinary-e8nl3fq6/colours-xcms.txt": "5529f53e2bfc1b70745107319aae36cde71ad1467c1c7413ded0fa5165a93ac8",
+    ".work/desktop-colours/ordinary-e8nl3fq6/all-colours.txt": "a021c6d09d58a661569a90760ec8adff17b99f3a0f9b56ce91d4e5d22ea59706",
+    ".work/desktop-colours/ordinary-e8nl3fq6/runtime-colours.txt": "119f1bacf87f47f6318e40155234a4b995598085fa19e3f1991e48c7a7f89623",
+    ".work/desktop-colours/ordinary-e8nl3fq6/final-runtime-files.txt": "ca86343dca50d710560211802e1f0a3c43cfc21143f76149a3e3a769c3109bd3",
+    ".work/desktop-colours/ordinary-e8nl3fq6/named-solid-applied.txt": "a82f31358ffaffd77593f96193582356bb74846eddfa870c2c4d3061acd9e09e",
+    ".work/desktop-colours/ordinary-e8nl3fq6/named-solid-relogin.txt": "47291a1d6f9c56328bb9a6717299464f6842a70a8f093976f5c2f65022f5182d",
+    ".work/desktop-colours/ordinary-e8nl3fq6/solid-reopened.txt": "d681dac5d2bb729f3a6d43589780d019d4c85e7226a4a2471d777b23f9abf6ac",
+    ".work/desktop-colours/ordinary-e8nl3fq6/picker-x11-state.txt": "51d31cc6200c64cee35d5232bd0e2ae3b930843b52450626cc69ba600890723f",
+    ".work/desktop-colours/ordinary-e8nl3fq6/picker-diagnosis.txt": "fb94c6ce146214f0cb9117e990a1e049c484de811fe4965901191b116f3f7b03",
+    ".work/desktop-colours/ordinary-e8nl3fq6/persistence.json": "06f94ce7b6edf595ab268ae3b9060c7f49ed54b6e50fd66e1cb44abd2623a3fd",
+    ".work/desktop-colours/ordinary-e8nl3fq6/slider-control.json": "30103b6dd5e23581218896fc19f25190410e6fa7439a1b8b1bb00bec12bfb4a7",
+    ".work/desktop-colours/ordinary-e8nl3fq6/slider-cancel.txt": "0a651613f0999bcc79329a303ef630f7ebb699dd46922c79abaf89ababb805d3",
+    ".work/desktop-colours/ordinary-e8nl3fq6/final-cleanup.txt": "115653fa88375d84a1d9a0032dd78e7dd08ac457eae7292a02739bfe5a3b75a0",
+    ".work/desktop-colours/ordinary-e8nl3fq6/result.json": "27719b6806c6d31e48ca6764ebe94719fa07118ef893e9530317d38d5a1a882d",
+    ".work/desktop-colours/ordinary-e8nl3fq6/serial.log": "e143509c5a78a0af33e973e57ccfe6fbd4b8af81cb42e0057ebb66e56f77e4c9",
+    ".work/desktop-colours/ordinary-e8nl3fq6/owner.py": "1bd093bdc1e0733e85e6e0afb7a8c9829b6c3d81932ae21a3956c13e9906a51c"
+  },
+  "clean_shutdown": true,
+  "base_unchanged": true,
+  "host_checks": {
+    "command": "python3 -m unittest discover -s tests -v",
+    "tests": 57,
+    "status": "passed",
+    "log_sha256": "d6f3746df0997c2fd21951840cb8a2b6691cc99d141c493190ed804f12ce0303"
+  },
+  "limitations": [
+    "Background GL rendering remains unsupported by the current Xorg/Mesa path; only this picker is configured for X11.",
+    "Numeric and named colours share native allocation quantization. Visible values are recorded, not claimed byte-exact to requested RGBs.",
+    "The palette, hue slider, cancel, apply and reopen paths are qualified; exhaustive slider combinations and other colour editors are not.",
+    "Reopened chooser swatches start from the template blue in this capture; matching them to the saved custom Solid needs comparison with original IRIX. The actual saved desktop colour persists.",
+    "Application-session restoration, additional preference panels and physical hardware remain separate."
+  ]
+}

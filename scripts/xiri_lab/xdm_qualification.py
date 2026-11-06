@@ -115,6 +115,15 @@ def verify_sessions(r):
         verify_fonts(entry)
     if 'job_control' in r or 'scripts/xiri_lab/job_control.py' in r.get('sources', {}):
         verify_job_control(r['job_control'])
+    if 'lab/irix-desktop-behavior/colour-names.c' in r.get('sources', {}):
+        checks = r['colour_checks']
+        assert sum(c['user'] == 'xiritest' for c in checks) == 3
+        if 'multiuser' in r:
+            assert sum(c['user'] == 'xiritest2' for c in checks) == 1
+        for check in checks:
+            assert 'COLOUR_NAMES entries=142 failures=0' in check['output']
+            assert len(re.findall(r'^PASS name=', check['output'], re.M)) == 142
+            assert re.search(r'^Background\*useGl:\s+False$', check['resources'], re.M)
     if 'scripts/xiri_lab/multiuser.py' in r.get('sources', {}):
         multi = r['multiuser']
         fam = multi['fam']
@@ -150,6 +159,8 @@ def qualify(a, verify_irix_module):
         assert 'scripts/xiri_lab/multiuser.py' in r['sources'] and 'multiuser' in r
     if m.get('job_control_checks'):
         verify_job_control(r['job_control'])
+    if m.get('colour_checks') or 'runtime/libexec/sgi-colours.awk' in m.get('runtime_sources', {}):
+        assert 'lab/irix-desktop-behavior/colour-names.c' in r['sources'] and r['colour_checks']
     assert m['status']=='chd-roundtrip-verified' and m['session_manager']=='xdm'
     assert m['source_raw_sha256']==m['decoded_raw_sha256'] and m['logical_bytes']==8589934592
     assert sha256(bundle/'netbsd-xiri.chd')==m['chd_sha256']==r['chd_sha256']
@@ -281,6 +292,8 @@ def qualify(a, verify_irix_module):
             promoted['job_control_checks']=True
         if 'multiuser' in r:
             promoted['multiuser_checks'] = True
+        if 'colour_checks' in r:
+            promoted['colour_checks'] = True
         (bundle/'manifest.json').write_text(json.dumps(promoted,indent=2)+'\n')
     if a.promote:
         public={key:m[key] for key in ('chd_sha256','chd_bytes','logical_bytes','nvram_sha256',

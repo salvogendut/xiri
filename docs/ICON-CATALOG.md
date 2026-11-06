@@ -141,7 +141,7 @@ retained; untested behavior is not promoted to a pass.
 | --- | --- | --- |
 | `accessibility` | `/usr/sbin/accessx` | **Error dialog.** Cannot save the active AccessX profile; xmodmap helper is also absent. |
 | `audiopanel` | `/usr/sbin/audiopanel` | **Error dialog.** Reports that this machine has no audio driver. |
-| `background` | `/usr/sbin/background` | **Apply and persistence pass.** Original Reef and Sand choices survive logout/login and reboot for two users, with matching saved files and backdrop pixels. [Desktop preferences](results/2026-11-06-desktop-preferences.md). |
+| `background` | `/usr/sbin/background` | **Apply and persistence pass.** Reef/Sand patterns and separate Solid colours survive logout/login and reboot for two users. SGI names resolve, and the original picker uses its X11 controls. GL mode remains unsupported. [Patterns](results/2026-11-06-desktop-preferences.md), [colours](results/2026-11-06-desktop-colours.md). |
 | `colorscheme` | `/usr/sbin/colorscheme` | **Apply and persistence pass.** Inverness and KeyWest remain distinct for two users across logout/login and reboot. [Desktop preferences](results/2026-11-06-desktop-preferences.md). |
 | `desktop` | `/usr/sbin/desktop` | **Main window opens.** Desktop Settings renders its controls; changing settings and persistence are untested. |
 | `display` | `/usr/bin/X11/xsetmon` | **Error dialog.** Reports that the X display lacks the XSGIvc extension required by xsetmon. |

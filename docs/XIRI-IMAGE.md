@@ -8,16 +8,17 @@ older reproduction checkpoints. Automated checks never promote their result
 or replace the manual bundle's NVRAM/overlay state.
 
 The current accelerated xdm bundle is
-`.work/images/xiri-netbsd-desktop-20261106-preferences-v2/`.
-The [desktop-preferences cycle](results/2026-11-06-desktop-preferences.md)
-restores each user's backdrop, colour scheme, focus and window movement,
-fixes Toolchest's Color Schemes command and removes xmahjongg's test autostart.
-It retains the [multi-user support](results/2026-11-05-multiuser.md), native-wait
-kernel/module, emulator and maintained session guard. Earlier bundles and
-manual state remain available.
-`netbsd-xiri.chd` is an 8 GiB NetBSD disk compressed to 496,280,059 bytes
+`.work/images/xiri-netbsd-desktop-20261106-colours/`.
+The [Solid colour update](results/2026-11-06-desktop-colours.md) resolves SGI
+colour names and enables the original Background colour browser in X11 mode.
+Separate users' chosen colours survive logout/login and reboot. It retains
+the [desktop preferences](results/2026-11-06-desktop-preferences.md),
+[multi-user support](results/2026-11-05-multiuser.md), native-wait kernel/module,
+emulator and maintained session guard. Xmahjongg starts only on demand.
+The preceding preferences-v2 bundle and its manual state remain available.
+`netbsd-xiri.chd` is an 8 GiB NetBSD disk compressed to 496,280,482 bytes
 (about 473 MiB). Its SHA256 is
-`9442ee066e567c587b0f88a5fac262c50ab7983f464dd5e6c0967867a2159e68`.
+`aec2fbdb39bb732a62fa92775e7303855993dd6ec8ab246a1b5d6d34b7b9acb5`.
 The earlier [cleanup candidate](results/2026-11-05-cleanup-image.md) and its
 96 MiB pressure observations remain recorded separately.
 The [native paging follow-up](results/2026-11-05-native-paging.md) records the
@@ -138,7 +139,7 @@ The Xiri fork hooks are still required.
 Launch the qualified bundle directly:
 
 ```sh
-/var/home/salvogendut/Dev/xiri/.work/images/xiri-netbsd-desktop-20261106-preferences-v2/run-iris.sh
+/var/home/salvogendut/Dev/xiri/.work/images/xiri-netbsd-desktop-20261106-colours/run-iris.sh
 ```
 
 It boots automatically to native NetBSD xdm. Use these public development
@@ -156,7 +157,9 @@ login shell; root's password remains empty in this development image.
 Xorg explicitly selects the qualified 1280×1024 Newport configuration with
 XAA enabled. Use **Desktop → Customize** for per-user preferences; see the
 [preference guide](IRIX-SOFTWARE.md#desktop-preferences) for supported settings
-and the remaining Solid colour limitation. Xmahjongg opens on demand from
+and the original Solid colour picker. Its X11 controls are qualified;
+GL mode, exact RGB display fidelity and comparison of the reopened
+preview with original IRIX remain follow-ups. Xmahjongg opens on demand from
 Freeware or winterm. The catalog-test screenshot shows an explicit test launch.
 Original IRIX logout menus return to xdm; system services survive.
 Native xdm/PAM and the system Xsession remain unchanged. The IRIX session is
@@ -165,16 +168,19 @@ UID and groups. Each user has separate HOME, Desktop, Dumpster and session logs.
 Root has no password and remains available on serial B for administration.
 The ttyE0 getty is disabled so xdm owns the graphical keyboard.
 
-The fresh [image qualification](results/2026-11-06-desktop-preferences-image.json) covers three
+The fresh [image qualification](results/2026-11-06-desktop-colours-image.json) covers three
 xiritest logins, a separate xiritest2/4Dwm login, native ctwm, both IRIX logout
 routes, failed-startup recovery, catalog launch, full-screen acceleration and
 clean halt. Concurrent FAM clients verify private-directory isolation and
-supplementary groups. PNGs show
-[4Dwm](results/images/2026-11-06-preferences-desktop.png),
-[the second IRIX user](results/images/2026-11-06-preferences-desktop-second-user.png),
-[ctwm](results/images/2026-11-06-preferences-desktop-native.png), the
-[greeter](results/images/2026-11-06-preferences-desktop-greeter.png) and
-[winterm before any test resize](results/images/2026-11-06-preferences-desktop-winterm.png).
+supplementary groups. All 142 SGI colour aliases pass in each of the four
+IRIX login sessions. The [focused preference checks](results/2026-11-06-desktop-colours.md)
+separately verify original-picker interaction and saved colours through
+relogin and reboot. PNGs show
+[4Dwm](results/images/2026-11-06-colours-desktop.png),
+[the second IRIX user](results/images/2026-11-06-colours-desktop-second-user.png),
+[ctwm](results/images/2026-11-06-colours-desktop-native.png), the
+[greeter](results/images/2026-11-06-colours-desktop-greeter.png) and
+[winterm before any test resize](results/images/2026-11-06-colours-desktop-winterm.png).
 Each of the three xiritest logins checks untouched terminal geometry and
 foreground SIGWINCH delivery; an extra 100×30 terminal preserves its size and closes on typed
 `exit`. Terminal defaults explicitly select NetBSD's 100dpi Adobe Courier
@@ -191,12 +197,13 @@ it does not qualify its Quit menu.
 The unchanged core/module retain the earlier shell-job qualification for
 winterm's native shell and the original IRIX shell in GNOME Terminal: Ctrl-Z,
 bg/fg, Ctrl-C, background reads, explicit waits, terminal exit and logout with
-active jobs. This cycle repeats the desktop, winterm, font and multi-user gates;
-the separate shell-job sequences were not repeated. Add `--jobs` to include
+active jobs. This cycle repeats the desktop, winterm, font and multi-user gates
+and adds named-colour checks. The separate shell-job sequences were not
+repeated. Add `--jobs` to include
 them in a later run. `./xiri check` selects the current image's gates automatically:
 
 ```sh
-python3 scripts/probe-xiri-xdm.py --bundle .work/images/xiri-netbsd-desktop-20261106-preferences-v2 --multiuser --winterm --fonts
+python3 scripts/probe-xiri-xdm.py --bundle .work/images/xiri-netbsd-desktop-20261106-colours --multiuser --winterm --fonts --colours
 ```
 
 For root's manual fallback, stop xdm with `/etc/rc.d/xdm stop`, then run

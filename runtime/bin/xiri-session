@@ -33,6 +33,14 @@ export ACRO_CONFIG=mipsirix
 export MWMSHELL=/usr/local/libexec/xiri/command-shell
 export WINTERM='/emul/irix/usr/sbin/xwsh -name winterm'
 export PS1="$user@xiri\$ "
+# Xorg's built-in table omits SGI names. Both native and IRIX Xlib can
+# resolve them locally, using the original imported RGB values. Keep an
+# explicitly supplied XCMSDB, and leave other users' X sessions untouched.
+if test -z "${XCMSDB:-}"; then
+    awk -f "$base/sgi-colours.awk" /emul/irix/usr/lib/X11/rgb.txt >"$job/Xcms.txt"
+    XCMSDB="$job/Xcms.txt"
+fi
+export XCMSDB
 # Match the vendor desktop's per-host application resource lookup. The panels
 # save files such as 4DWm here; Xt must find them again at the next login.
 desktop="$HOME/.desktop-$(hostname)"
@@ -46,7 +54,7 @@ xset fp rehash
 resources=${xiri_xresources:-/etc/xiri/Xresources}
 test -r "$resources"
 xrdb -query >"$job/Xresources.previous"
-cat "$resources" "$job/Xresources.previous" | xrdb -merge
+cat /usr/local/share/xiri/desktop-Xresources "$resources" "$job/Xresources.previous" | xrdb -merge
 # Xdm can already have loaded .Xresources. Loading it here also covers manual
 # sessions, and the panels' .Sgiresources must work without an .Xresources file.
 for resources in "$HOME/.Xresources" "$HOME/.Sgiresources"; do

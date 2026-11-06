@@ -13,8 +13,11 @@ The [desktop-preferences cycle](results/2026-11-06-desktop-preferences.md)
 restores each user's backdrop, colour scheme, focus policy and window movement
 settings. Two distinct profiles pass logout/login and reboot checks, including
 native pointer tests and matching backdrop pixels. Xmahjongg now launches on
-demand. Next qualify saved application sessions and File Manager/Dumpster
-behavior; other control panels and backdrop formats remain separate.
+demand. The [colour follow-up](results/2026-11-06-desktop-colours.md) resolves
+SGI names and qualifies the original Solid picker in its X11 mode, including
+two users' saved colours across logout and reboot. Next qualify saved
+application sessions and File Manager/Dumpster behavior; other control panels
+and backdrop formats remain separate.
 
 The agreed target remains the full original IRIX desktop on NetBSD and X.org,
 with modern software running natively. The [repository/workflow cleanup](results/2026-11-03-workflow-cleanup.md) is
@@ -504,7 +507,8 @@ dependency candidates; a visible window alone does not complete these checks.
 - [x] Exercise native X test windows under original 4Dwm in the same native Xvfb session used by Toolchest and winterm.
 - [ ] Show a maintained host-native graphical application and an IRIX application in the same local session; qualify physical display output separately.
 - [x] Restore separate users' backdrop, colour scheme, focus and window-movement preferences across logout/login and reboot. [Preference result](results/2026-11-06-desktop-preferences.md).
-- [ ] Resolve SGI colour names under Xorg and qualify the Solid backdrop colour picker; its default `sgiLightBlue` currently renders black.
+- [x] Resolve SGI-prefixed colour names through Xlib's per-session database and qualify the original Solid backdrop picker in X11 mode. [Colour result](results/2026-11-06-desktop-colours.md): 142 aliases and two users' saved colours across logout/login and reboot.
+- [ ] Compare the reopened Background chooser's initial swatch with original IRIX; the capture starts from template blue while the desktop correctly restores its custom colour. Qualify GL mode and exact native RGB allocation/display fidelity separately; Background currently uses its X11 controls.
 - [ ] Complete file navigation, desktop updates, remaining window operations and other preference panels.
 - [ ] Repeat logout and login, checking process cleanup and restoration of expected state.
 - [x] Qualify the development session's graphical console login, repeated desktop start, both logout menus and client/service cleanup. [Usability result](results/2026-11-02-desktop-usability.md); IRIX session saving/restoration remains open.

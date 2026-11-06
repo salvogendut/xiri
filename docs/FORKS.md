@@ -42,6 +42,16 @@ not repin qualified kernels, emulator binaries, runtime resources or guest disks
 
 ## IRIS upstream updates
 
+The desktop-colour cycle fetched `https://github.com/techomancer/iris.git`
+on 2026-11-06 at 10:42 UTC. Upstream remains
+`280f3eb22e74057d506fed082f527b92320fabd7`, already contained in IRIS `xiri`
+at `b23f674c235b37c3ac83808085d28ac128bb79c4`; the incoming log is empty and
+`merge-base --is-ancestor` passes. No merge or rebuild is needed. Both fork
+worktrees are clean; NetBSD remains on `xiri` at
+`0febc6eb24ad889d12a3b2afaa12558c9781859d`. Colour fixes use session resources;
+the previously qualified emulator, kernel, module and Newport driver remain
+pinned. See the [colour result](results/2026-11-06-desktop-colours.md).
+
 The desktop-preferences cycle fetched upstream on 2026-11-06 through
 `280f3eb22e74057d506fed082f527b92320fabd7`. Merge
 `b23f674c235b37c3ac83808085d28ac128bb79c4` is pushed on IRIS `xiri`.

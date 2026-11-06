@@ -230,10 +230,23 @@ under `~/.desktop-<hostname>/`, `~/`, and
 backing up a profile. No root-owned copy of a user's preferences is needed.
 Existing files take precedence over the desktop's initial appearance.
 
-Reef and Sand patterns are qualified. Solid fills also allow login, but the
-vendor's default `sgiLightBlue` name currently renders black under Xorg.
-SGI colour-name coverage and the Solid colour-picker display need follow-up;
-use one of the qualified patterns for now.
+Reef and Sand patterns and Solid colours are qualified. For a solid colour,
+select **Solid**, click its small colour square below the preview, choose a
+colour in **Backgrounds: Color Browser**, press **OK**, then **Apply** in the
+Background panel. Log out and back in to check the restored desktop colour.
+The captured reopened chooser starts from the template blue, even though the
+desktop retains its custom colour; check its preview before applying again.
+That initialization still needs comparison with original IRIX.
+The original picker uses its ordinary X11 controls under Xiri; its GL mode
+crashes the bundled software renderer. This setting affects Background only.
+The [colour result](results/2026-11-06-desktop-colours.md) records the tests.
+
+Xiri generates a private `Xcms.txt` in each session's log directory from the
+SGI entries in `/emul/irix/usr/lib/X11/rgb.txt`, then exports `XCMSDB` to clients.
+This resolves names such as `sgiLightBlue` without replacing Xorg's standard
+colour table. An explicitly supplied `XCMSDB` takes precedence. The database
+is derived state; keep the original RGB resource, not a previous session's
+`Xcms.txt`, when moving an installation.
 
 If Window Settings asks to restart the window manager, choosing **Cancel**
 keeps the saved choice for the next login. Log out normally and log back in

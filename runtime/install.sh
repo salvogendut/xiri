@@ -10,8 +10,10 @@ for dir in /usr/local/bin /usr/local/sbin /usr/local/libexec/xiri /usr/local/sha
     install -d -m 755 "$stage$dir"
 done
 install -m 444 etc/xdm.xsession "$stage/usr/local/share/xiri/xdm.xsession"
+install -m 444 etc/desktop-Xresources "$stage/usr/local/share/xiri/desktop-Xresources"
 install -m 555 sbin/xiri-sync-users "$stage/usr/local/sbin/xiri-sync-users"
 install -m 444 libexec/account-map.awk "$stage/usr/local/libexec/xiri/account-map.awk"
+install -m 444 libexec/sgi-colours.awk "$stage/usr/local/libexec/xiri/sgi-colours.awk"
 for name in Xservers Xresources; do
     install -m 444 "etc/xdm-$name" "$stage/etc/xiri/xdm/$name.example"
     test -e "$stage/etc/xiri/xdm/$name" || install -m 644 "etc/xdm-$name" "$stage/etc/xiri/xdm/$name"

@@ -222,14 +222,25 @@ at the same time.
 ## Per-user preferences
 
 `xiri-session` restores the original panels' settings before starting clients.
-It merges the configured default resources, the display's existing resources,
+It merges the maintained `/usr/local/share/xiri/desktop-Xresources`, the
+configured default resources, the display's existing resources,
 `$HOME/.Xresources`, then `$HOME/.Sgiresources`. It sets
 `XUSERFILESEARCHPATH` to `$HOME/.desktop-$(hostname)/%N`, `$HOME/%N`, and
 `$HOME/.desktop-$(hostname)/0.0/%N`, followed by any inherited search path.
 The saved `4DWm` file and the global panel resources therefore survive xdm's
 display reset. Startup no longer overrides the chosen backdrop or window and
-Toolchest background colours. The numeric SGIDarkGray decal fallback remains
-because native Xorg lacks that vendor colour name.
+Toolchest background colours. `sgi-colours.awk` converts the imported SGI RGB
+entries to a private `$XIRI_SESSION_DIR/Xcms.txt`; `XCMSDB` makes them available
+to native and IRIX Xlib clients. An existing `XCMSDB` is preserved. Standard
+Xorg colour names are left to the server. Toolchest no longer needs its numeric
+SGIDarkGray workaround.
+
+The maintained desktop resources set `Background*useGl: False`, selecting the
+original colour chooser's X11 controls. The GL picker crashes the bundled Mesa
+software renderer. This does not disable GLX globally. Local and user resources
+remain later in the merge order; the installer preserves `/etc/xiri/Xresources`.
+The generated Xcms database is rebuilt for every login and is not a user
+preference file.
 Startup accepts a published solid-background description as well as a
 backdrop pixmap; solid fills do not create a pixmap.
 

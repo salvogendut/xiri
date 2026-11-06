@@ -29,12 +29,14 @@ def support_files(bundle, seed):
 def runtime_files():
     paths = ['/usr/local/bin/'+s for s in ('xiri-desktop','xiri-session','xiri-launch','xiri-logout')]
     paths += ['/usr/local/libexec/xiri/'+s for s in ('session-guard','x11-check','desktop-clients.sh','setup-pty.sh')]
-    paths += ['/usr/local/sbin/xiri-sync-users', '/usr/local/libexec/xiri/account-map.awk']
+    paths += ['/usr/local/sbin/xiri-sync-users', '/usr/local/libexec/xiri/account-map.awk',
+              '/usr/local/libexec/xiri/sgi-colours.awk']
     paths += ['/emul/irix/usr/sbin/schemebr']
     paths += ['/usr/libexec/xiri-shell','/etc/xiri/session.conf','/etc/xiri/fam.conf',
               '/etc/xiri/Xresources',
               '/etc/xiri/xdm/Xservers','/etc/xiri/xdm/Xresources',
-              '/usr/local/share/xiri/xdm.xsession','/usr/people/xiritest/.xsession',
+              '/usr/local/share/xiri/xdm.xsession', '/usr/local/share/xiri/desktop-Xresources',
+              '/usr/people/xiritest/.xsession',
               '/etc/ttys','/etc/motd']
     paths += ['/etc/rc.d/'+s for s in ('xiri_devices','xiri_famd')]
     paths += ['/etc/rc.conf.d/'+s for s in ('xiri_devices','xiri_famd','rpcbind','xdm')]

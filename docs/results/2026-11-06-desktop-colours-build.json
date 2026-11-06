@@ -1,0 +1,134 @@
+{
+  "schema": 1,
+  "status": "qualified",
+  "bundle": ".work/images/xiri-netbsd-desktop-20261106-colours",
+  "preparation": {
+    "directory": ".work/xdm-image/prepare/ordinary-n99pctaw",
+    "result_sha256": "1b5e94508f69fda9b568a078e214e3ced7fc7679658eaf41785b12df3dd31efe",
+    "clean_shutdown": true,
+    "base_raw_unchanged": true
+  },
+  "image": {
+    "chd_sha256": "aec2fbdb39bb732a62fa92775e7303855993dd6ec8ab246a1b5d6d34b7b9acb5",
+    "chd_bytes": 496280482,
+    "raw_sha256": "0c1d8260ba87be57dbec8be263a395ed088ce78959dd05a7b82f1e006179af5f",
+    "roundtrip_verified": true,
+    "manifest_sha256": "e010f52d05ba10bc19ce181aafd8200e854966dabf7d291213caffabb281f196"
+  },
+  "qualification": {
+    "directory": ".work/irix-xdm/runs/ordinary-mpakqpn1",
+    "report": "docs/results/2026-11-06-desktop-colours-image.json",
+    "report_sha256": "5dfd2f47b0bbec43969914e8477ec1e9f3497c3bdf054d5ae5141f184cfa7606",
+    "result_sha256": "a180ef74b41f64df4f22fccc93f35c862e80273f310045b49f2db5142211c7e2",
+    "clean_shutdown": true,
+    "base_unchanged": true,
+    "colour_checks": 4
+  },
+  "installed_changes": {
+    "/usr/local/bin/xiri-session": {
+      "before": "1dc33923ce7119a112b86c6cb3702c67fc62e3809ff17d452580a4ff1361911e",
+      "after": "1c01bfb9ab7de9fddaf4e9dac328f81c1fa5be6b004e1833f2d0b03b6c67740b"
+    },
+    "/usr/local/libexec/xiri/desktop-clients.sh": {
+      "before": "debc6b50bb6dfcbf02fd34c3459a802b21e1dd5fd16ee7968187d749dabe666c",
+      "after": "1da1587130ab82dcb21d61cdeeae1d2de6006f2d46ff20401e86e9e409c270dd"
+    },
+    "/usr/local/libexec/xiri/sgi-colours.awk": {
+      "before": null,
+      "after": "caed0d2aa8cbd258ea3c4dd3fd08c3306e503e75fcc60b935694bf3468b1e3ae"
+    },
+    "/usr/local/share/xiri/desktop-Xresources": {
+      "before": null,
+      "after": "561f52352a205ee6299e1f12dc58eabbd6bc4c87d244b57a6390cf2e794a94bd"
+    }
+  },
+  "cleanup": {
+    "removed": [
+      {
+        "path": ".work/images/xiri-netbsd-desktop-20261106-colours/verification/roundtrip.raw",
+        "sha256": "0c1d8260ba87be57dbec8be263a395ed088ce78959dd05a7b82f1e006179af5f",
+        "logical_bytes": 8589934592,
+        "restore": "Extract netbsd-xiri.chd from .work/images/xiri-netbsd-desktop-20261106-colours"
+      },
+      {
+        "path": ".work/desktop-colours/ordinary-e8nl3fq6/disk.chd",
+        "sha256": "9442ee066e567c587b0f88a5fac262c50ab7983f464dd5e6c0967867a2159e68",
+        "logical_bytes": 496280059,
+        "restore": "Copy .work/images/xiri-netbsd-desktop-20261106-preferences-v2/netbsd-xiri.chd here; retain the overlay"
+      },
+      {
+        "path": ".work/irix-xdm/runs/ordinary-mpakqpn1/disk.chd",
+        "sha256": "aec2fbdb39bb732a62fa92775e7303855993dd6ec8ab246a1b5d6d34b7b9acb5",
+        "logical_bytes": 496280482,
+        "restore": "Copy .work/images/xiri-netbsd-desktop-20261106-colours/netbsd-xiri.chd here; retain the overlay"
+      }
+    ],
+    "preserved": "Canonical CHDs, manual overlays/NVRAM, final prepared raw, diagnostic overlays and evidence",
+    "owned_iris_remaining": 0,
+    "final_cleanup_utc": "2026-11-06T12:17:32.126418+00:00"
+  },
+  "visual_menu_review": {
+    "status": "readable",
+    "scope": "Desktop, System and Customize labels, including disabled entries; command behavior not tested here",
+    "screenshots": {
+      "toolchest-desktop.png": "263d20d531c3676ee7aca097fb54b016026f5981e9e1c862b922f3bad9b8a2c0",
+      "toolchest-system.png": "1f11df9e0b105b6977eefdf3672843cf7474db700bc79e798e0e6b2d689a4c67",
+      "toolchest-customize.png": "2a06ee35570274c0ca9eb8116e59086dc0397fd5219406082116dad3d04eb458"
+    }
+  },
+  "upstream": {
+    "checked_utc": "2026-11-06 10:42",
+    "url": "https://github.com/techomancer/iris.git",
+    "revision": "280f3eb22e74057d506fed082f527b92320fabd7",
+    "iris_xiri": "b23f674c235b37c3ac83808085d28ac128bb79c4",
+    "incoming_commits": 0,
+    "ancestor_check": "passed",
+    "integration": "already integrated; no changes/rebuild required",
+    "netbsd_xiri": "0febc6eb24ad889d12a3b2afaa12558c9781859d"
+  },
+  "host_checks": {
+    "tests": 57,
+    "status": "passed",
+    "log_sha256": "d6f3746df0997c2fd21951840cb8a2b6691cc99d141c493190ed804f12ce0303",
+    "shell_python_syntax": "passed"
+  },
+  "runtime_sources": {
+    "runtime/Makefile": "6c90346ed45fed80c8e1e40c7691eaec0b4cb22290728e6ea1079a756bd848bb",
+    "runtime/install.sh": "7d7c97732c64e988f79d9c4313c3c32097d74ef88791444a1f99798a696309b5",
+    "runtime/README.md": "0dd727a1d3cc9099bd7d53f470c99faf01d7435f8534aaeec74d381cbda40953",
+    "runtime/bin/xiri-launch": "e93699b941b709291e8b6f7be5a5ee58bd9faf4286776cbb5ae7c6f4a90a1b96",
+    "runtime/bin/xiri-logout": "06be5189a07f2f13f8d699ce8f5c7e7f28034027e5b76a119e4a136b84eb790c",
+    "runtime/bin/xiri-session": "1c01bfb9ab7de9fddaf4e9dac328f81c1fa5be6b004e1833f2d0b03b6c67740b",
+    "runtime/bin/xiri-desktop": "4ef799a9db30e8bfe98f5a979359413a5956524a6eb66592b0e5be05b9862790",
+    "runtime/libexec/desktop-clients.sh": "1da1587130ab82dcb21d61cdeeae1d2de6006f2d46ff20401e86e9e409c270dd",
+    "runtime/libexec/setup-pty.sh": "6e01ef7e67f16235a41108c604898a95e0058661f44c9c6d0460d681f7a5635a",
+    "runtime/libexec/shell-handoff.c": "b97fa8dc530e2722a1c43527897857a27229b8a0c4e53f9d66eebc01f0adad3c",
+    "runtime/libexec/session-guard.c": "ea05b1977b773cad9f48f1886b4f6c08a660bc109ae95be5d5e4792b54e3c206",
+    "runtime/libexec/x11-check.c": "5774f7fd2669390f8ab600f98711fba216735ad6d2bae6254e8b244a17ac51b8",
+    "runtime/libexec/account-map.awk": "ba5da838ef64bd55dcf3cb6b7dfd68ed47ee578413c26358e2a4332cbdf48e3d",
+    "runtime/libexec/sgi-colours.awk": "caed0d2aa8cbd258ea3c4dd3fd08c3306e503e75fcc60b935694bf3468b1e3ae",
+    "runtime/rc.d/xiri_devices": "d9015c83dabc84a60b6a3cd09074825d5a63582b715b96131c719ad1a328e2a1",
+    "runtime/rc.d/xiri_famd": "6669ab48614713237fd740a533274fea00ea5acb3ac61ab0b7c21295a12bbcf1",
+    "runtime/etc/fam.conf": "d55999f5390d6453f84710fc6880bec8a0bead660a862326452f88bfd91b6dc6",
+    "runtime/etc/session.conf": "6b59dd5b8fe2507ebb4723d972ee535f3892ff6d4cdf5fbd0ad47307d8af1cea",
+    "runtime/etc/xdm.xsession": "983ecc9eaa9763d5198b99c9a55b86a1a9dd785e851370144dcd8d9ec98233f3",
+    "runtime/etc/xdm-Xservers": "4648da4a67a83e16bd630d55708862188aaa755798b8afcf34205cbfabcc7104",
+    "runtime/etc/xdm-Xresources": "21b104d6a6b310a1633cf8e44b6088f170865593cb5b7e235c861ef6545d1919",
+    "runtime/etc/Xresources": "a0b2255961f4cd008f8e21c970a8960845919b84074a4ccb636c1eb8cea773cc",
+    "runtime/etc/desktop-Xresources": "561f52352a205ee6299e1f12dc58eabbd6bc4c87d244b57a6390cf2e794a94bd",
+    "runtime/sbin/xiri-sync-users": "471e229f2e863a1d634ca6fe85a117cba4536a8bb42f58b1dc2b96e79acf5b62"
+  },
+  "final_checks": {
+    "doctor": "passed: 16 immutable artifacts; host tools and Toolbox available",
+    "check_dry_run": [
+      "--winterm",
+      "--fonts",
+      "--multiuser",
+      "--colours"
+    ],
+    "local_documentation_links": 589,
+    "json_syntax": "passed",
+    "diff_whitespace": "passed",
+    "iris_processes_remaining": 0
+  }
+}

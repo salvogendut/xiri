@@ -230,6 +230,8 @@ def main(argv=None):
                     command.append('--jobs')
                 if manifest.get('multiuser_checks') or 'xiritest2' in manifest.get('xdm', {}).get('accounts', {}):
                     command.append('--multiuser')
+                if manifest.get('colour_checks') or 'runtime/libexec/sgi-colours.awk' in manifest.get('runtime_sources', {}):
+                    command.append('--colours')
             else:
                 command = [sys.executable, root/'scripts/probe-xiri-image.py', bundle,
                            '--iris-bin-dir', bundle/'emulator', '--arrange-winterm']

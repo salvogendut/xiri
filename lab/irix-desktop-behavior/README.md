@@ -89,12 +89,37 @@ profiles pass in the recorded session; saved strings alone are insufficient.
 
 Also check a Solid choice across login: unlike a pattern it has no pixmap.
 Read `_SGI_DESKS_BACKGROUND_DESCRIPTION` and check actual desktop readiness.
-The original `sgiLightBlue` name renders black in Xorg; a numeric-colour
-control isolates that gap from session startup. Exact colour fidelity and
-the Solid colour picker are not yet qualified.
+The initial preference cycle found `sgiLightBlue` rendered black. The colour
+follow-up below resolves the name and qualifies the picker. Exact display
+RGB fidelity remains separate: the native allocation path also quantizes
+numeric colours, and the tests compare against that same numeric control.
 
 Background creates several windows with the same title, including hidden
 1×1 helpers. Identify the large, viewable window in `xwininfo -root -tree`
 and query its ID; `xwininfo -name` alone can falsely report an invisible panel.
 
 The earlier sections above preserve the original desktop-behavior experiment.
+
+## Solid colour checks
+
+The [colour follow-up](../../docs/results/2026-11-06-desktop-colours.md) covers
+SGI names and the original Background chooser in its X11 mode. In a Xiri
+winterm, compile `colour-names.c` using the same X11 include/library flags
+above, without `-lXtst`, then run:
+
+```sh
+./colour-names /emul/irix/usr/lib/X11/rgb.txt
+```
+
+It reads expected values from the original RGB file independently of the
+generated Xcms database, checks named lookup/parse/allocation against numeric
+controls, and checks standard/unknown-name handling. All 142 SGI aliases must
+pass for the pinned 6.5.22m import. Use the session's inherited `XCMSDB`.
+`probe-xiri-xdm.py --colours` repeats this from each authenticated winterm.
+
+In Background, apply the default Solid, relogin and reopen its panel. Click
+the colour square, select a colour, press OK and then the parent's Apply.
+Repeat with a different user/colour; compare the actual backdrop pixels and
+owned `.Sgiresources` after logout/login and reboot. Reopen the picker after
+reboot too. The small same-title helper windows are not the actual panel;
+check the large mapped window.
