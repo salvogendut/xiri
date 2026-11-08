@@ -1,0 +1,361 @@
+{
+  "schema": 1,
+  "status": "completed",
+  "started_utc": "2026-11-08T08:20:33Z",
+  "completed_utc": "2026-11-08T08:35:23Z",
+  "scope": "User-requested cleanup of obsolete automated guest disks, redundant media and regenerable caches under Xiri .work",
+  "space": {
+    "measured_utc": "2026-11-08T08:34:46Z",
+    "filesystem": "/var",
+    "filesystem_bytes": 1997604388864,
+    "available_bytes_before": 14049632256,
+    "available_bytes_after": 283098009600,
+    "recovered_available_bytes": 269048377344,
+    "work_du_bytes_before": 2942182584320,
+    "work_du_bytes_after": 108850753536,
+    "largest_directories": [
+      {
+        "path": ".work/images",
+        "allocated_bytes_including_shared": 19053965312
+      },
+      {
+        "path": ".work/xdm-image",
+        "allocated_bytes_including_shared": 8818941952
+      },
+      {
+        "path": ".work/irix-reference",
+        "allocated_bytes_including_shared": 6212509696
+      },
+      {
+        "path": ".work/netbsd-11.0",
+        "allocated_bytes_including_shared": 4827922432
+      },
+      {
+        "path": ".work/netbsd-module-src",
+        "allocated_bytes_including_shared": 3897356288
+      },
+      {
+        "path": ".work/netbsd-newport-frame-src",
+        "allocated_bytes_including_shared": 3897208832
+      },
+      {
+        "path": ".work/netbsd-vendor-shell-src",
+        "allocated_bytes_including_shared": 3897118720
+      },
+      {
+        "path": ".work/netbsd-irix64-src",
+        "allocated_bytes_including_shared": 3894923264
+      },
+      {
+        "path": ".work/netbsd64-src",
+        "allocated_bytes_including_shared": 3894849536
+      },
+      {
+        "path": ".work/netbsd-irix-src",
+        "allocated_bytes_including_shared": 3894845440
+      },
+      {
+        "path": ".work/target",
+        "allocated_bytes_including_shared": 2692431872
+      },
+      {
+        "path": ".work/indy-netbsd",
+        "allocated_bytes_including_shared": 2128777216
+      },
+      {
+        "path": ".work/prismatic-xiri",
+        "allocated_bytes_including_shared": 1967910912
+      },
+      {
+        "path": ".work/target-iris-streamline",
+        "allocated_bytes_including_shared": 1511555072
+      },
+      {
+        "path": ".work/netbsd-irix-build",
+        "allocated_bytes_including_shared": 1451130880
+      },
+      {
+        "path": ".work/cargo",
+        "allocated_bytes_including_shared": 1121759232
+      },
+      {
+        "path": ".work/netbsd64-build",
+        "allocated_bytes_including_shared": 971567104
+      },
+      {
+        "path": ".work/indy-netbsd-kernel",
+        "allocated_bytes_including_shared": 960425984
+      },
+      {
+        "path": ".work/irix-recvmsg",
+        "allocated_bytes_including_shared": 750342144
+      },
+      {
+        "path": ".work/netbsd-build",
+        "allocated_bytes_including_shared": 719257600
+      },
+      {
+        "path": ".work/rustup",
+        "allocated_bytes_including_shared": 655716352
+      },
+      {
+        "path": ".work/netbsd-irix-shell-build",
+        "allocated_bytes_including_shared": 596197376
+      },
+      {
+        "path": ".work/netbsd-irix-shell-o32-build",
+        "allocated_bytes_including_shared": 534650880
+      },
+      {
+        "path": ".work/netbsd-irix-process-build",
+        "allocated_bytes_including_shared": 501080064
+      },
+      {
+        "path": ".work/irix-installed-desktop",
+        "allocated_bytes_including_shared": 466194432
+      }
+    ]
+  },
+  "measurement_note": "Physical recovery is the observed increase in available bytes on /var. du and per-file allocation totals count shared Btrfs extents repeatedly and are not exclusive physical usage. Other host activity can cause small changes between measurements.",
+  "removed": {
+    "disks_and_aliases": {
+      "disk.raw": {
+        "paths": 683,
+        "allocated_bytes_including_shared": 2468221571072
+      },
+      "*.overlay": {
+        "paths": 15,
+        "allocated_bytes_including_shared": 48031539200
+      },
+      "disk.chd": {
+        "paths": 140,
+        "allocated_bytes_including_shared": 73746317312
+      },
+      "disk.chd.diff.chd": {
+        "paths": 151,
+        "allocated_bytes_including_shared": 4938878976
+      },
+      "roundtrip.raw": {
+        "paths": 22,
+        "allocated_bytes_including_shared": 182063755264
+      },
+      "alias": {
+        "paths": 17,
+        "allocated_bytes_including_shared": 0
+      }
+    },
+    "cache_categories": {
+      "Cargo dependency build cache": {
+        "files": 4338,
+        "allocated_bytes_including_shared": 2192564224
+      },
+      "libguestfs appliance cache": {
+        "files": 4,
+        "allocated_bytes_including_shared": 689389568
+      },
+      "retired emulator snapshot memory cache": {
+        "files": 11358,
+        "allocated_bytes_including_shared": 744357888
+      },
+      "NetBSD compiler objects and dependency cache": {
+        "files": 427365,
+        "allocated_bytes_including_shared": 14479974400
+      },
+      "generated probe ISO; source media directory retained": {
+        "files": 436,
+        "allocated_bytes_including_shared": 7379329024
+      },
+      "retired automated transfer disk; extracted test evidence retained": {
+        "files": 109,
+        "allocated_bytes_including_shared": 6669631488
+      },
+      "retired recovery disk; recovered trace and stderr retained": {
+        "files": 1,
+        "allocated_bytes_including_shared": 1585446912
+      },
+      "decoded freeware inspection cache; verified original CHD retained": {
+        "files": 1,
+        "allocated_bytes_including_shared": 8503951360
+      }
+    },
+    "disk_paths": 1028,
+    "cache_paths": 443612,
+    "duplicate_media_files": 2,
+    "all_removed_paths_absent": true
+  },
+  "source_media_links": [
+    {
+      "copy": ".work/irix-reference/media/irix65.chd",
+      "source": "/var/home/salvogendut/Downloads/irix65_chd/irix65.chd",
+      "sha256": "f0615ce71308026c1366c289be8de8a640a0ca83ca7b808139acb71f3482a659",
+      "size": 5664440320,
+      "allocated": 5664440320,
+      "inode": 25997502,
+      "device": 62,
+      "mtime_ns": 1793368190403805336,
+      "action": "replaced verified duplicate with link to untouched original source media",
+      "replaced_utc": "2026-11-08T08:29:41Z"
+    },
+    {
+      "copy": ".work/irix-freeware/media/base.chd",
+      "source": "/var/home/salvogendut/Downloads/irix-sgi-freeware-cdroms-chd/irix-sgi-freeware-cdroms.chd",
+      "sha256": "6da9a2efe74eccedf4ba1a75e21849099e650460b75f14bac635f8409d19edb8",
+      "size": 8577503232,
+      "allocated": 8577503232,
+      "inode": 27359446,
+      "device": 62,
+      "mtime_ns": 1793548559924249126,
+      "action": "replaced verified duplicate with link to untouched original source media",
+      "replaced_utc": "2026-11-08T08:29:41Z"
+    }
+  ],
+  "preserved": {
+    "selected_bundle": ".work/images/xiri-netbsd-desktop-20261106-sessions",
+    "selected_chd_sha256": "3abb7d0813577dfba369579a8f18da7577239b0ec10c28967c8145b74133cbd6",
+    "current_seed": ".work/xiri-image/seed-3abb7d081357",
+    "current_raw": ".work/xdm-image/prepare/ordinary-oenwgr3g/disk.raw",
+    "current_raw_sha256": "c3360f949ea93064a9b16575b0c47ff5fa5fbbccc6104eaf7d0023a7b69229af",
+    "canonical_chds": {
+      ".work/images/xiri-netbsd-desktop-20261101/netbsd-xiri.chd": "ddbbc6360afd5aa3712bd34258f0daaad4573292fae63d915157d3db0027f7b3",
+      ".work/images/xiri-netbsd-desktop-20261102/netbsd-xiri.chd": "d8ad6f45e3e8c50b0f532366ecddf5e887df76752927bd0ae80cfd74f67333f2",
+      ".work/images/xiri-netbsd-desktop-20261102-behavior/netbsd-xiri.chd": "2d18cd7c2c3b940a41c790e7d7710cf56834e7319f1be7bcc0c4717649c5467b",
+      ".work/images/xiri-netbsd-desktop-20261102-framed-accel/netbsd-xiri.chd": "483560d87b3002a0a8fdae3d170caebcf4fed47c0d6bf87c9de69d1d50d71826",
+      ".work/images/xiri-netbsd-desktop-20261102-graphical/netbsd-xiri.chd": "b9d29c5e7b71bffc14c6d8115103ba51d4051a1d7a9432ae2be86c189280bd46",
+      ".work/images/xiri-netbsd-desktop-20261102-icons/netbsd-xiri.chd": "2c700a5cec553d283a076f86769ecffcba929186e2af6252baafe3614e8cbe93",
+      ".work/images/xiri-netbsd-desktop-20261102-services/netbsd-xiri.chd": "fb0b8f3146a54800950e573ef204fd49f707aba9e0107c2b37e6eecab012ee48",
+      ".work/images/xiri-netbsd-desktop-20261102-shell/netbsd-xiri.chd": "c98f88ee9709f721ddbc54fbec8067aea7b9b66433ad14ab737c47280fb3ad64",
+      ".work/images/xiri-netbsd-desktop-20261103-gimp/netbsd-xiri.chd": "20b328a070537255c8c0aa4771aefd83cbaa8027208b93bf997302c426ef83b7",
+      ".work/images/xiri-netbsd-desktop-20261103-module/netbsd-xiri.chd": "0d15ff1cb41eb28d5f411cc296f249fb30fa9f356b2f6e84d46f2ef86ba68629",
+      ".work/images/xiri-netbsd-desktop-20261103-newport-xmahjongg/netbsd-xiri.chd": "1fa5c92ffac3706680e16acd1270df4707928106529cf94084152f9dfac14ab5",
+      ".work/images/xiri-netbsd-desktop-20261103-winterm/netbsd-xiri.chd": "f9a09a4fc470ca0041bfc2ea2a1670de012910e76499ecd075c2d7db75da355b",
+      ".work/images/xiri-netbsd-desktop-20261103-winterm-v2/netbsd-xiri.chd": "ebecbb0d0c87ae9a58bb58bdc008011cbe1bcea8d4a062a0649f1d7ddf796a65",
+      ".work/images/xiri-netbsd-desktop-20261103-xdm/netbsd-xiri.chd": "d0587d346242aea1482c9fffebec8c4b807aaacb129ef05ef064a34f6d4655a5",
+      ".work/images/xiri-netbsd-desktop-20261103-xdm-v2/netbsd-xiri.chd": "1eb35a78f36aab9b67592fc32fa79604e4ddb244dcc7561b56b976e7b24cce83",
+      ".work/images/xiri-netbsd-desktop-20261103-xdm-wheel/netbsd-xiri.chd": "1eb35a78f36aab9b67592fc32fa79604e4ddb244dcc7561b56b976e7b24cce83",
+      ".work/images/xiri-netbsd-desktop-20261103-xdm-wheel-v2/netbsd-xiri.chd": "95eeecc4195dc63e80352b28a522b93da06495ebe95bcb4ce79f0b48b7572693",
+      ".work/images/xiri-netbsd-desktop-20261104-acrobat/netbsd-xiri.chd": "c10185ffd95a08a1db31d325ad6fe6ee537e9f18de230347f435960858388b6d",
+      ".work/images/xiri-netbsd-desktop-20261104-scheduler/netbsd-xiri.chd": "b6e5c89ef897f441e0c8cfbb5f174a23f082383414c8fb64105500c971992d36",
+      ".work/images/xiri-netbsd-desktop-20261104-stability/netbsd-xiri.chd": "068e7ed67451cf664deafd8695d3825e141bcd41af0e0e02e701d18e43c450ff",
+      ".work/images/xiri-netbsd-desktop-20261105-cleanup/netbsd-xiri.chd": "f05c3ac69dcc3edde811528c7f4fe9668b13b28e28117dda3f8ff218e15aaa7a",
+      ".work/images/xiri-netbsd-desktop-20261105-fonts/netbsd-xiri.chd": "f8572195a17a2cb6f67e7d77d9b5334226a1f0900a0f2159a2c8a8805f2ae4d5",
+      ".work/images/xiri-netbsd-desktop-20261105-jobs/netbsd-xiri.chd": "3651c2ad5afc66873e2c9b4ccb68d91a0601399d9c7a7675f6ea9b75e887aa1f",
+      ".work/images/xiri-netbsd-desktop-20261105-multiuser/netbsd-xiri.chd": "a800307d5b8a7ad7e47327115406a06814fd932bf26df1b5131e524e97cb0c12",
+      ".work/images/xiri-netbsd-desktop-20261105-paging/netbsd-xiri.chd": "921ec9e53f1061b9763ae4ec307d12d9b1f5b3b759734832921c8df7154a8d10",
+      ".work/images/xiri-netbsd-desktop-20261105-type1/netbsd-xiri.chd": "bedf6db0e46559817366a5e5ba6b9886d5aaf197cc63e3da06cc590d6d0d5350",
+      ".work/images/xiri-netbsd-desktop-20261105-wait/netbsd-xiri.chd": "90ca82ecdfbe184a96990515938f7856eb6983f77719d487fb7c6b34ba73eece",
+      ".work/images/xiri-netbsd-desktop-20261106-colours/netbsd-xiri.chd": "aec2fbdb39bb732a62fa92775e7303855993dd6ec8ab246a1b5d6d34b7b9acb5",
+      ".work/images/xiri-netbsd-desktop-20261106-preferences/netbsd-xiri.chd": "c3b56ced22f0a77de093d604d3c1ab9f1c557229115df5c323dc5a386e22c0c6",
+      ".work/images/xiri-netbsd-desktop-20261106-preferences-v2/netbsd-xiri.chd": "9442ee066e567c587b0f88a5fac262c50ab7983f464dd5e6c0967867a2159e68",
+      ".work/images/xiri-netbsd-desktop-20261106-sessions/netbsd-xiri.chd": "3abb7d0813577dfba369579a8f18da7577239b0ec10c28967c8145b74133cbd6"
+    },
+    "source_worktree_heads": {
+      ".work/iris": "484452d963d2da4e2a7559e88bcc33da0f2a0c01",
+      ".work/netbsd-irix-src": "6abdd05eca298e29af07d6176ea453e696de90a3",
+      ".work/netbsd64-src": "40d3a490765b8babc8c9cd2aa03a80fa26567320",
+      ".work/iris-netbsd64": "9df1df14334838a989253efefe26f0547e6da592",
+      ".work/netbsd-irix64-src": "6761f8e288701cec1a5760e3d3606ff6bbe67a90",
+      ".work/iris-upstream-sproc": "26771f9602522e2fd38229e41614d41e1154e520",
+      ".work/netbsd-vendor-shell-src": "849755450135c6734bb61c4973d687d0c8060739",
+      ".work/netbsd-newport-frame-src": "314c8c32e84e41a0eda05366d3004bb10a68c86e",
+      ".work/netbsd-module-src": "d1ce7a9661530ebbf4f55d47a34642e9429421e7"
+    },
+    "manual_state_note": "All 153 recorded mutable image/NVRAM/manual-overlay/state files are hash-identical to their pre-cleanup values; this includes the current xiritest2 desktop changes.",
+    "other": "Bootstrap disks, imported resources, pinned offline toolchain/dependency cache, final build tools, archived harnesses, reports, logs, extracted traces, core diagnostics and screenshots retained."
+  },
+  "verification": {
+    "status": "passed",
+    "verified_utc": "2026-11-08T08:32:57Z",
+    "counts": {
+      "qualified_chds": 31,
+      "manual_state": 153,
+      "build_artifacts": 719,
+      "current_seed": 1,
+      "source_worktree_heads": 9,
+      "original_media_links": 2
+    },
+    "current_raw_sha256": "c3360f949ea93064a9b16575b0c47ff5fa5fbbccc6104eaf7d0023a7b69229af"
+  },
+  "doctor": {
+    "exit_status": 0,
+    "immutable_artifacts": 17,
+    "host_and_toolbox_tools": "passed"
+  },
+  "final_activity": {
+    "checked_utc": "2026-11-08T08:33:34Z",
+    "active_emulators_or_compilers": []
+  },
+  "integration_forks": {
+    "iris": {
+      "branch": "xiri",
+      "revision": "b23f674c235b37c3ac83808085d28ac128bb79c4",
+      "worktree_clean": true
+    },
+    "netbsd": {
+      "branch": "xiri",
+      "revision": "0febc6eb24ad889d12a3b2afaa12558c9781859d",
+      "worktree_clean": true
+    }
+  },
+  "local_ledgers": {
+    ".work/cleanup-20261108/disk-removals.jsonl": {
+      "sha256": "9d468b9c9d121f129a98d665fd2000b1887c67675f12de1ffccacaceffbc2516",
+      "bytes": 341180
+    },
+    ".work/cleanup-20261108/cache-removals.jsonl.gz": {
+      "sha256": "674452d9b799eca5f721d2f21660af696e5746f3525d93d8d7ab765e7dd1580a",
+      "bytes": 8397885
+    },
+    ".work/cleanup-20261108/media-reclamation.json": {
+      "sha256": "3389a9d3bb7178c2deb1fd8a7610a29058005a03e1ca2eea03bbf3a66c11934a",
+      "bytes": 994
+    },
+    ".work/cleanup-20261108/protected.json": {
+      "sha256": "da31d256fb44c0af4443797e6c647a2c00c1010e0c386152a672db93d538ece4",
+      "bytes": 35707
+    },
+    ".work/cleanup-20261108/protected-builds.json": {
+      "sha256": "01f5a87cce8b4454dd11e938abc9180825959872b8f34094d010fcc3722db26c",
+      "bytes": 121112
+    },
+    ".work/cleanup-20261108/retained-verification.json": {
+      "sha256": "90148c0dde015e13e4efe6edab5bffe3dac488fed44e7e2af9857c91998ac8d8",
+      "bytes": 342
+    },
+    ".work/cleanup-20261108/cache-completion.json": {
+      "sha256": "33721add03e3d09b7e78e45775b1348c304f170395f37aa5c64f2fb912a9d052",
+      "bytes": 137
+    },
+    ".work/cleanup-20261108/cache-plan-retirement.json": {
+      "sha256": "3ca130de633a9e4a2a5169533a8ce8f1bdf50dac6434227a2b857eaa181cecb3",
+      "bytes": 247
+    },
+    ".work/cleanup-20261108/space-measurement.json": {
+      "sha256": "19fde861cad180a103a6df8d137046678cc724c3bb4e0665b2ca4c0c1a5e3d61",
+      "bytes": 2968
+    },
+    ".work/cleanup-20261108/final-activity.json": {
+      "sha256": "3d41e9fcd4ee83347c56ad4d3ff6b09b4fac362cab5bf798aef34572a3281e4d",
+      "bytes": 83
+    },
+    ".work/cleanup-20261108/doctor.log": {
+      "sha256": "06971063fb90b9efd89b2a78591af72fd9d8f2be9f06cd5edbe847b2dad40470",
+      "bytes": 160
+    },
+    ".work/cleanup-20261108/du-before.txt": {
+      "sha256": "1196b6c3ef9c58c3f1b9ab368ef3fcc9e3464dde306360344d2f03d8ab3e7b95",
+      "bytes": 20
+    },
+    ".work/cleanup-20261108/du-after.txt": {
+      "sha256": "00301be685744731e74d91f7da377aff809b97c1a36e0e0f6ab39d3250e03b14",
+      "bytes": 10202
+    }
+  },
+  "recovery": {
+    "current_seed": "./xiri seed",
+    "historical_seed": "python3 scripts/prepare-xiri-seed.py .work/images/BUNDLE --output-directory .work/xiri-image/SEED",
+    "probe_iso": "In the run directory: genisoimage -quiet -R -J -o probe.iso media",
+    "compiler_caches": "Re-run the matching build using retained source and tools; final binaries and symbols remain.",
+    "freeware_raw_sha256": "4854f25ccca842e36ad2626f750a3a5f9cb57db4d0e6b9f331b48c91515feb18",
+    "transient_state": "Retired run disks cannot be reconstructed byte-for-byte from a pristine image. Use retained results as historical evidence and rerun the archived harness when new guest state is needed."
+  }
+}

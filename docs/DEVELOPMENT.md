@@ -311,3 +311,28 @@ after checking their hashes and the retained CHD against the bundle manifest;
 `prepare-xiri-seed.py` automatically decodes the CHD when this cache is absent.
 The [cleanup ledger](results/2026-11-05-workspace-cleanup.json) lists the exact
 removed caches, retained CHDs and restoration commands.
+
+The [November 8 cleanup report](results/2026-11-08-workspace-cleanup.md)
+records the retirement of historical automated guest disks, overlays and
+build caches. Keep compressed, qualified image bundles and their manifests,
+manual overlays/NVRAM, source worktrees, final build artifacts and extracted
+test evidence. Keep one raw seed for the selected image; after qualification
+and packaging, retire redundant decoded copies and disposable run disks.
+Preserve failed-run reports, logs and traces before retiring their disks.
+Directory sizes can count shared Btrfs extents repeatedly; use the change in
+filesystem available space to report actual recovery.
+
+Historical result paths describe the original run and may now name retired
+disk caches. Use `./xiri seed` for the selected image, or materialize an older
+qualified bundle only when needed:
+
+```sh
+python3 scripts/prepare-xiri-seed.py .work/images/BUNDLE --output-directory .work/xiri-image/SEED
+```
+
+This restores the bundle's frozen disk, not a retired test's transient guest
+state. Rerun that experiment with its retained harness when that state is
+needed. Remove the extra seed after the investigation. Original IRIX media
+paths and the deferred freeware inspection cache are documented in the
+cleanup report; the workspace CHD paths now link to the verified originals
+in `~/Downloads`.
