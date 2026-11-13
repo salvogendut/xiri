@@ -8,7 +8,13 @@ older reproduction checkpoints. Automated checks never promote their result
 or replace the manual bundle's NVRAM/overlay state.
 
 The current accelerated xdm bundle is
-`.work/images/xiri-netbsd-desktop-20261113-filemanager/`.
+`.work/images/xiri-netbsd-desktop-20261113-dragdrop/`.
+The [document update](results/2026-11-13-documents.md) restores per-user
+editor/viewer choices and native application-icon actions. The
+[drag-and-drop update](results/2026-11-13-dragdrop.md) fixes gedit's icon
+action and bridges local file drops into running gedit and GIMP. GIMP's
+older URI reader still needs its icon or File → Open for escaped filenames.
+See the [document guide](IRIX-DOCUMENTS.md) for the tested gestures.
 The [shutdown-saving update](results/2026-11-13-shutdown-sessions.md) saves
 active 4Dwm desktops before xdm stops. Use `shutdown -r now` or
 `shutdown -h now` from an administrative terminal; `shutdown -p now` also
@@ -26,10 +32,10 @@ helper and local hostname resolution.
 The [full IRIS upstream merge](FORKS.md#iris-upstream-updates) is separately
 qualified; this image still includes its pinned `819c682` emulator.
 Xmahjongg has no default autostart; a saved session can include it.
-The preceding shutdown-saving bundle and its manual state remain available.
-`netbsd-xiri.chd` is an 8 GiB NetBSD disk compressed to 496,307,636 bytes
-(about 473 MiB). Its SHA256 is
-`ac2e0702746448da893a623045cee06d359bbe6b8dc0f96668d66d3b8e9ec06e`.
+The preceding qualified bundles and their manual state remain available.
+`netbsd-xiri.chd` is an 8 GiB NetBSD disk compressed to 497,914,935 bytes
+(about 475 MiB). Its SHA256 is
+`8899510d4a5dcced6365cf3a827de30f80805ee85e210b6c5a9e5d408f68f654`.
 The earlier [cleanup candidate](results/2026-11-05-cleanup-image.md) and its
 96 MiB pressure observations remain recorded separately.
 The [native paging follow-up](results/2026-11-05-native-paging.md) records the
@@ -154,7 +160,7 @@ The Xiri fork hooks are still required.
 Launch the qualified bundle directly:
 
 ```sh
-/var/home/salvogendut/Dev/xiri/.work/images/xiri-netbsd-desktop-20261113-filemanager/run-iris.sh
+/var/home/salvogendut/Dev/xiri/.work/images/xiri-netbsd-desktop-20261113-dragdrop/run-iris.sh
 ```
 
 It boots automatically to native NetBSD xdm. Use these public development
@@ -183,7 +189,7 @@ UID and groups. Each user has separate HOME, Desktop, Dumpster and session logs.
 Root has no password and remains available on serial B for administration.
 The ttyE0 getty is disabled so xdm owns the graphical keyboard.
 
-The fresh [image qualification](results/2026-11-13-file-manager-image.json) covers three
+The fresh [image qualification](results/2026-11-13-dragdrop-image.json) covers three
 xiritest logins, a separate xiritest2/4Dwm login, native ctwm, both IRIX logout
 routes, failed-startup recovery, catalog launch, full-screen acceleration and
 clean halt. Restored logins contain one copy of each default application,
@@ -193,11 +199,11 @@ supplementary groups. All 142 SGI colour aliases pass in each of the four
 IRIX login sessions. The [focused preference checks](results/2026-11-06-desktop-colours.md)
 separately verify original-picker interaction and saved colours through
 relogin and reboot. PNGs show
-[4Dwm](results/images/2026-11-13-file-manager-desktop.png),
-[the second IRIX user](results/images/2026-11-13-file-manager-desktop-second-user.png),
-[ctwm](results/images/2026-11-13-file-manager-desktop-native.png), the
-[greeter](results/images/2026-11-13-file-manager-desktop-greeter.png) and
-[winterm before any test resize](results/images/2026-11-13-file-manager-desktop-winterm.png).
+[4Dwm](results/images/2026-11-13-dragdrop-desktop.png),
+[the second IRIX user](results/images/2026-11-13-dragdrop-desktop-second-user.png),
+[ctwm](results/images/2026-11-13-dragdrop-desktop-native.png), the
+[greeter](results/images/2026-11-13-dragdrop-desktop-greeter.png) and
+[winterm before any test resize](results/images/2026-11-13-dragdrop-desktop-winterm.png).
 Each of the three xiritest logins checks untouched terminal geometry and
 foreground SIGWINCH delivery; an extra 100×30 terminal preserves its size and closes on typed
 `exit`. Terminal defaults explicitly select NetBSD's 100dpi Adobe Courier
@@ -220,7 +226,7 @@ repeated. Add `--jobs` to include
 them in a later run. `./xiri check` selects the current image's gates automatically:
 
 ```sh
-python3 scripts/probe-xiri-xdm.py --bundle .work/images/xiri-netbsd-desktop-20261113-filemanager --multiuser --winterm --fonts --colours
+python3 scripts/probe-xiri-xdm.py --bundle .work/images/xiri-netbsd-desktop-20261113-dragdrop --multiuser --winterm --fonts --colours
 ```
 
 For root's manual fallback, stop xdm with `/etc/rc.d/xdm stop`, then run
@@ -521,7 +527,7 @@ For the current bundle, the explicit command is:
 
 ```sh
 python3 scripts/probe-xiri-xdm.py \
-  --bundle .work/images/xiri-netbsd-desktop-20261113-filemanager \
+  --bundle .work/images/xiri-netbsd-desktop-20261113-dragdrop \
   --multiuser --winterm --fonts --colours
 ```
 
@@ -540,9 +546,12 @@ PYTHONDONTWRITEBYTECODE=1 python3 scripts/prepare-xiri-seed.py \
 
 This produces `.work/xiri-image/prepared-seed-20261103-module/`. Clone its `disk.raw` for
 runs; preserve that seed. Repeating preparation checks its hash and does
-not reimport files. Use it with harnesses whose kernel and payload pins match. Keep the older
-prepared seeds for historical regression tests; do not substitute a newer
-kernel into their pinned runs.
+not reimport files. Use it with harnesses whose kernel and payload pins match.
+Retain qualified CHDs, build pins and ledgers for historical reproduction;
+decode an older raw seed again when needed. After a replacement passes,
+unchanged, stopped raw seeds recoverable from retained CHDs can be removed.
+Preserve manual overlays and any modified seed. Do not substitute a newer
+kernel into pinned historical runs.
 
 To construct a replacement after qualifying a changed raw seed:
 

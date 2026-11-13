@@ -41,9 +41,11 @@ document Open, application-icon Drop and running-window protocols. The
 [drag-and-drop follow-up](results/2026-11-13-dragdrop.md) adds a per-user
 SGI-to-XDND adapter and corrects gedit's stale `-f` action. GIMP's URI reader
 still needs separate application work for escaped filenames. Broader handlers
-and printing remain deferred. The document CHD passes separate
-cold document and full desktop qualification, including per-user editor
-settings, native icon drops, 345 text comparisons and three winterm checks.
+and printing remain deferred. The new drag-and-drop CHD passes cold gedit
+checks under both users, a running GIMP PNG drop, cancellation and source
+preservation, plus full desktop qualification with 345 text comparisons and
+three winterm checks. The preceding document cycle separately qualifies
+per-user editor settings and native application-icon drops.
 
 The agreed target remains the full original IRIX desktop on NetBSD and X.org,
 with modern software running natively. The [repository/workflow cleanup](results/2026-11-03-workflow-cleanup.md) is
@@ -536,7 +538,7 @@ dependency candidates; a visible window alone does not complete these checks.
 - [x] Exercise native X test windows under original 4Dwm in the same native Xvfb session used by Toolchest and winterm.
 - [ ] Show a maintained host-native graphical application and an IRIX application in the same local session; qualify physical display output separately.
 - [x] Restore per-user editor/viewer choices at login and qualify document Open and native application-icon Drop. See the [document cycle](results/2026-11-13-documents.md).
-- [ ] Qualify the running-window adapter and gedit icon correction on the replacement CHD. See the [drag-and-drop cycle](results/2026-11-13-dragdrop.md).
+- [x] Qualify the running-window adapter and gedit icon correction on the replacement CHD: both users' gedit drops, a GIMP PNG with an unescaped URI, cancellation and unchanged source files. See the [drag-and-drop cycle](results/2026-11-13-dragdrop.md).
 - [ ] Extend remaining document/print handlers and application-specific drop support, including GIMP 1.2's URI escape decoding.
 - [x] Qualify text clipboard interoperability between native NetBSD and original IRIX clients. The [clipboard checks](results/2026-11-13-clipboard.md) cover both selection paths, incremental transfer, source exit and reset between users; the [guide](IRIX-CLIPBOARD.md) records tested gestures and encoding/lifetime limits.
 - [x] Restore separate users' backdrop, colour scheme, focus and window-movement preferences across logout/login and reboot. [Preference result](results/2026-11-06-desktop-preferences.md).

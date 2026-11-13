@@ -57,10 +57,16 @@ session client translates local file-icon drops for XDND receivers, retaining
 quoted filenames, spaces, literal backslashes and multiple-file boundaries.
 It runs as the authenticated desktop user and exits with that user's session.
 
-Drag a document from File Manager onto an accepting area of the running
-application. Escape cancels the gesture. The bridge requests a copy/open
-action; it does not move or delete the source files. The application still
-decides whether it accepts that document and where its drop regions are.
+Drag a document with the left mouse button from File Manager onto an accepting
+area of the running application. Escape cancels the gesture. The bridge
+requests a copy/open action; it does not move or delete the source files.
+The application still decides whether it accepts that document and where
+its drop regions are.
+
+The [cold-image checks](results/2026-11-13-dragdrop.md#cold-drag-and-drop-qualification)
+open exact text in gedit under both IRIX accounts, including a spaced filename,
+and open a PNG by dropping it onto GIMP's toolbox. Cancellation and unchanged
+source contents are checked separately.
 
 GIMP 1.2 has an application-specific limit: its Unix URI reader removes
 `file:` but does not decode percent escapes. A name such as `colour.png`

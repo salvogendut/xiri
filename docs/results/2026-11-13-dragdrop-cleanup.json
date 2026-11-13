@@ -1,0 +1,120 @@
+{
+  "status": "cleaned",
+  "files": [
+    {
+      "path": ".work/irix-xdm/runs/ordinary-zf8ztp25/disk.chd",
+      "logical_bytes": 497914935,
+      "allocated_bytes": 497917952
+    },
+    {
+      "path": ".work/irix-xdm/runs/ordinary-zf8ztp25/disk.chd.diff.chd",
+      "logical_bytes": 15204352,
+      "allocated_bytes": 15204352
+    },
+    {
+      "path": ".work/irix-xdm/runs/ordinary-zf8ztp25/probe.iso",
+      "logical_bytes": 985088,
+      "allocated_bytes": 987136
+    },
+    {
+      "path": ".work/xdm-image/prepare/ordinary-nqvkgvlj/probe.iso",
+      "logical_bytes": 2023424,
+      "allocated_bytes": 2023424
+    },
+    {
+      "path": ".work/xdm-image/prepare/ordinary-jc5nmalf/disk.raw",
+      "logical_bytes": 8589934592,
+      "allocated_bytes": 8589934592
+    },
+    {
+      "path": ".work/drag-drop/protocol-pnxtem_m/bridge",
+      "logical_bytes": 28160,
+      "allocated_bytes": 28672
+    },
+    {
+      "path": ".work/drag-drop/protocol-pnxtem_m/protocol",
+      "logical_bytes": 23808,
+      "allocated_bytes": 24576
+    },
+    {
+      "path": ".work/drag-drop/protocol-qzz120_q/bridge",
+      "logical_bytes": 28160,
+      "allocated_bytes": 28672
+    },
+    {
+      "path": ".work/drag-drop/protocol-qzz120_q/protocol",
+      "logical_bytes": 23840,
+      "allocated_bytes": 24576
+    },
+    {
+      "path": ".work/drag-drop/host-display/authority",
+      "logical_bytes": 120,
+      "allocated_bytes": 4096
+    },
+    {
+      "path": ".work/drag-drop/ordinary-zztvvowg/disk.chd",
+      "logical_bytes": 497358910,
+      "allocated_bytes": 497360896
+    },
+    {
+      "path": ".work/drag-drop/ordinary-zztvvowg/disk.chd.diff.chd",
+      "logical_bytes": 45318144,
+      "allocated_bytes": 45318144
+    },
+    {
+      "path": ".work/drag-drop/ordinary-zztvvowg/probe.iso",
+      "logical_bytes": 395264,
+      "allocated_bytes": 397312
+    },
+    {
+      "path": ".work/drag-drop/qualified-mqr8n1e7/disk.chd",
+      "logical_bytes": 497914935,
+      "allocated_bytes": 497917952
+    },
+    {
+      "path": ".work/drag-drop/qualified-mqr8n1e7/disk.chd.diff.chd",
+      "logical_bytes": 10747904,
+      "allocated_bytes": 10747904
+    },
+    {
+      "path": ".work/drag-drop/qualified-mqr8n1e7/probe.iso",
+      "logical_bytes": 393216,
+      "allocated_bytes": 393216
+    },
+    {
+      "path": ".work/images/xiri-netbsd-desktop-20261113-dragdrop/verification/roundtrip.raw",
+      "logical_bytes": 8589934592,
+      "allocated_bytes": 8589934592
+    },
+    {
+      "path": ".work/drag-drop/reference-jrhr2xbc/disk.raw",
+      "logical_bytes": 100663296000,
+      "allocated_bytes": 5604638720
+    },
+    {
+      "path": ".work/drag-drop/reference-jrhr2xbc/scratch.raw",
+      "logical_bytes": 67108864,
+      "allocated_bytes": 8192
+    }
+  ],
+  "logical_bytes": 119478634308,
+  "allocated_bytes": 24352894976,
+  "filesystem_available_before": 498180931584,
+  "filesystem_available_after": 498204794880,
+  "filesystem_available_delta": 23863296,
+  "note": "Allocated file sizes can include shared reflink blocks. Filesystem delta also includes unrelated concurrent activity.",
+  "preserved": [
+    "qualified dragdrop CHD",
+    "previous qualified CHDs and manual overlays/NVRAM",
+    "one current raw seed",
+    "build pins, source, logs, PNGs and reports"
+  ],
+  "earlier_cleanup_interval": {
+    "allocated_bytes": 9642070016,
+    "logical_bytes": 9642062965,
+    "filesystem_available_before": 490006003712,
+    "filesystem_available_after": 490006003712,
+    "filesystem_available_delta": 0,
+    "note": "Shared reflinks mean allocated file sizes are not physical free-space gains."
+  }
+}

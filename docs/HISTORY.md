@@ -11,6 +11,10 @@ gedit's obsolete `-f` icon action. Real gedit drops preserve exact text and
 GIMP opens a PNG. GIMP's older Unix URI parser still needs separate work for
 escaped filenames. Protocol, parser, cancellation and filetype-update checks
 are retained with the implementation; no kernel or emulator change is needed.
+The replacement CHD passes cold drops under both users and full xdm/4Dwm/ctwm
+qualification, including 345 text comparisons, three winterm checks, catalog
+launch and clean halt. It is selected for manual testing; disposable media
+and the superseded raw seed are removed after qualification.
 
 The [November 13 document cycle](results/2026-11-13-documents.md) loads the
 original Utilities panel's saved environment at login and adds a native
