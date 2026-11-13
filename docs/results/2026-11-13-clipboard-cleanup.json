@@ -2,7 +2,7 @@
   "schema": 1,
   "date": "2026-11-13",
   "cycle": "Clipboard interoperability",
-  "status": "qualification-saved; final private disk pending publication checkpoint",
+  "status": "complete",
   "removed": [
     {
       "target": ".work/clipboard-iris-build",
@@ -46,12 +46,37 @@
     {
       "path": ".work/clipboard/qualified-sgzo_fh8/probe.iso",
       "allocated_bytes": 532480
+    },
+    {
+      "path": ".work/clipboard/qualified-2c9sszr0/disk.chd",
+      "allocated_bytes": 496308224
+    },
+    {
+      "path": ".work/clipboard/qualified-2c9sszr0/disk.chd.diff.chd",
+      "allocated_bytes": 10420224
+    },
+    {
+      "path": ".work/clipboard/qualified-2c9sszr0/probe.iso",
+      "allocated_bytes": 532480
+    },
+    {
+      "path": ".work/clipboard/rex-jit-profile.bin",
+      "allocated_bytes": 8192
+    },
+    {
+      "path": "scripts/__pycache__/probe-xiri-clipboard.cpython-314.pyc",
+      "allocated_bytes": 40960
+    },
+    {
+      "path": ".work/clipboard/__pycache__",
+      "allocated_bytes": 32768
     }
   ],
-  "allocated_bytes_removed": 3079757824,
+  "allocated_bytes_removed": 3587100672,
   "allocation_note": "File allocations include shared reflink blocks; this is not a measurement of physical bytes freed.",
   "retained": "Logs, source/fixture inputs, PNGs, result manifests and the selected manual image/state.",
-  "remaining_private_disk": ".work/clipboard/qualified-2c9sszr0/disk.chd",
-  "available_bytes": 501537533952,
-  "owned_iris_guests_remaining": []
+  "available_bytes": 501472911360,
+  "owned_iris_guests_remaining": [],
+  "qualified_result_commit": "d86609a",
+  "base_chd_sha256": "ac2e0702746448da893a623045cee06d359bbe6b8dc0f96668d66d3b8e9ec06e"
 }

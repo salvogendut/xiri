@@ -91,3 +91,8 @@ Completed private disks, media and build output are removed after their
 evidence is saved. Logs, source fixtures, results, screenshots and the current
 manual image/state remain available; see the
 [cleanup ledger](2026-11-13-clipboard-cleanup.json).
+
+Cleanup removed 3.34 GiB of file allocations.
+Shared reflink blocks mean this is not a physical-space savings measurement.
+The filesystem has 467.0 GiB available. All owned test IRIS instances
+are stopped; the selected manual image and saved emulator state are retained.
