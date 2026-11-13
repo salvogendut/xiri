@@ -324,6 +324,13 @@ manual overlays/NVRAM, source worktrees, final build artifacts and extracted
 test evidence. Keep one raw seed for the selected image; after qualification
 and packaging, retire redundant decoded copies and disposable run disks.
 Preserve failed-run reports, logs and traces before retiring their disks.
+
+Stop a guest through its owning harness, wait for the final result, then
+verify that its recorded process group has exited before removing disks.
+A shutdown log from before a reset does not establish that the current guest
+is halted. Read process state in the same host/container namespace as the
+owner; a sandboxed `ps` may not see an escalated emulator. Keep an interrupted
+run's status explicit and use a fresh run for final qualification.
 Directory sizes can count shared Btrfs extents repeatedly; use the change in
 filesystem available space to report actual recovery.
 The [November 13 cycle cleanup](results/2026-11-13-shutdown-sessions.md#cleanup)

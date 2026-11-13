@@ -1,0 +1,73 @@
+{
+  "schema": 1,
+  "status": "observed",
+  "scope": "GUI actions before a confirmed clean halt, plus filesystem persistence after reboot; not a complete owning-run qualification",
+  "run": ".work/file-manager/ordinary-la0p63oa",
+  "module_sha256": "d0ad3bd0efd300fbd1d8a93388fc9d27143e72d8f4f33ca83f805f31facf15bc",
+  "users": {
+    "xiritest": 1234,
+    "xiritest2": 1237
+  },
+  "actions": [
+    "create-directory",
+    "rename",
+    "make-copy",
+    "middle-drag-move",
+    "discard-file",
+    "recover-file",
+    "empty-file",
+    "discard-nonempty-directory",
+    "empty-nonempty-directory"
+  ],
+  "file_state": "/usr/people/xiritest/FileManagerCheck/Destination|40700|1234|1234|512\n/usr/people/xiritest/FileManagerCheck/Source/renamed.txt|100640|1234|1234|14\n/usr/people/xiritest/FileManagerCheck/Source/space name.txt|100600|1234|1234|14\n/usr/people/xiritest/FileManagerCheck/Source|40700|1234|1234|512\n/usr/people/xiritest/FileManagerCheck|40700|1234|1234|512\n/usr/people/xiritest/dumpster/.dumpster|100644|1234|1234|0\n/usr/people/xiritest/dumpster|40755|1234|1234|512\n/usr/people/xiritest2/FileManagerCheck/Destination|40700|1237|1237|512\n/usr/people/xiritest2/FileManagerCheck/Source/renamed.txt|100640|1237|1237|14\n/usr/people/xiritest2/FileManagerCheck/Source/space name.txt|100600|1237|1237|14\n/usr/people/xiritest2/FileManagerCheck/Source|40700|1237|1237|512\n/usr/people/xiritest2/FileManagerCheck|40700|1237|1237|512\n/usr/people/xiritest2/dumpster/.dumpster|100600|1237|1237|0\n/usr/people/xiritest2/dumpster|40700|1237|1237|512\n",
+  "checks": {
+    "recovered_contents_equal_original": true,
+    "surviving_contents_checked": true,
+    "ownership_and_modes": true,
+    "pre_halt_logout_cleanup": true,
+    "post_reboot_files_unchanged": true,
+    "isolation_before_after_reboot": true
+  },
+  "limits": [
+    "The extra post-reboot GUI sequence was interrupted by host cleanup during the first user logout. The second post-reboot GUI login was not attempted.",
+    "The owning run has clean_shutdown=false and is excluded from final ABI qualification. Fresh ABI and cold-image runs are recorded separately.",
+    "The initial drag targeted a window border; the driver was corrected to use the visible Dumpster icon.",
+    "Local files only; cross-filesystem moves, collisions and remote filesystems remain unqualified."
+  ],
+  "interruption": {
+    "status": "harness-interrupted",
+    "scope": "In-process reset after successful ABI and GUI checks and confirmed clean halt",
+    "observation": "Reset completed: response-filemanager-persistence-v1-3 and subsequent commands prove successful login. A cleanup decision used stale shutdown/display evidence and stopped the live guest during the first post-reboot logout. Both users file metadata and isolation had already been rechecked successfully. Final ABI qualification will use a fresh guest; this whole-run result must not be qualified.",
+    "shutdown_sha256": "bf73393831e88c912eb82a7870e1f598e727fffc798146827a879a35ca18f1b7"
+  },
+  "owner_result_sha256": "439d85d40b566d3e49e9077169421defbaf0283b6d5cc525c417bcef7afec4ee",
+  "artifacts": {
+    "xiritest-create-rename-copy.png": "706d0dc5dd2377a85fc39d2df0db1c0fe842f9977b60c9541722fc4731643768",
+    "xiritest-move-inspect.png": "0c6df9f0baac2dae1a86877acf7acceda7cd701436aa1f8f69ec159eccf83b56",
+    "xiritest-move-inspect.txt": "c736168dd333e38c6150faa680c717abf3a44d9fe0d97147780a150e5ae52b73",
+    "xiritest-dumpster-full.png": "7ce73010700115ac561b0cc2d881aef30a15f5ae2ce344e5f88feb221f52d857",
+    "xiritest-dumpster-recovered.png": "aa31d44e2fdc416ea8b948e767fac9fd90ce7b012bf7986db74bdc2252caa19c",
+    "xiritest-empty-dialog.png": "b4077caf2e22b3db0defb9baa54af86f34cc699dbd2d112fd0b647372e880431",
+    "xiritest-empty-pending.txt": "4cbf66adf03db838876258a6d90f6aaa6919b7cd2b506e66b0dbdb385884deb9",
+    "xiritest-source-folders.png": "30f9d891810dc78e11ca34aeceeb1c336c9bbd3e7f2983fbd08ad05fcc1e4646",
+    "xiritest-discarded-folder.png": "6cb19a3aa9090aa32665efe07ace75962794bb147013867b6218e02784f5bdd9",
+    "xiritest-final-files.txt": "c75a6db58201bb7fb5af1f386dfb06a5b2a9334e7ae2b01594537802fc95749b",
+    "xiritest-empty-complete.png": "40316b0889885664ba1d8d359c90d7385e70a84936b9360b7e69a4a6ff5bc806",
+    "xiritest-logout-guard.txt": "37d0fbb0b186b0a9c5cfa7427121dbe529a8e15fba6555aa4952ee0c1f9f8f96",
+    "xiritest2-create-rename-copy.png": "ee8abe11df396020977c80a28b462042a06571e6b12d66d95c0a324dacf87cd5",
+    "xiritest2-dumpster-full.png": "13a523f93c6c606f558f239cf1036ec8c6f42fd211947b65cca9ec5ac092f4b5",
+    "xiritest2-dumpster-recovered.png": "7ad54fcf3f6e79f409ac4dcfc228b2ae0313412e2e9ad10a7ea0f348f7649a87",
+    "xiritest2-empty-dialog.png": "fbf9394d4a1b328fcddd9e27d535f347ceef741c0aab00de3c4db4098d8ef98e",
+    "xiritest2-empty-pending.txt": "33d4f9cfb9d157cdaecc76fe727d99b42c8f6cec4d3792a9c79672a676e94949",
+    "xiritest2-discarded-folder.png": "946a9308a0b7502a30c0d1a529690584691fa5b30cafa6ff232c6e642330bdf0",
+    "xiritest2-final-files.txt": "4b169382b0e011a2fd1225a2c03b7d46efb7d6561fa08c6b20d9ba4174fcca8e",
+    "xiritest2-empty-complete.png": "c054e5e0f17eb1b3de460d94bf89a1a4a729652cb52eb2d179e04e998adf333e",
+    "xiritest2-logout-guard.txt": "585460ba819173240aad62a89b7098e7db7ba41fce43ae8f80497285adf25abb",
+    "persistent-before.txt": "ef15d27aa1156aad93a232e9323c52aa1448b44434f298024d6c87285c89ff56",
+    "isolation-before.txt": "45090b05b0c2f8bd7d0a812b9e3c9f2d72d39f7e0fe1a8eaca1f5486ec61fa1c",
+    "persistent-after.txt": "ef15d27aa1156aad93a232e9323c52aa1448b44434f298024d6c87285c89ff56",
+    "isolation-after.txt": "45090b05b0c2f8bd7d0a812b9e3c9f2d72d39f7e0fe1a8eaca1f5486ec61fa1c",
+    "xiritest-reboot-identity.txt": "5ea67a0185196e01354cd805f6183d225f624f3e95c8c6a1d56c5c0e12b28d56",
+    "xiritest-reboot-files.png": "fdf5537727fbf1d463f20fbd32589c8e08be78267955a5dade8a99770933eaa0"
+  }
+}

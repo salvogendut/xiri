@@ -46,7 +46,7 @@ def main():
                 # Assign the fixture identity without following symbolic links or touching
                 # the protected parent fixtures (their root ownership is intentional).
                 lines+=['chown '+str(uid)+':'+str(uid)+' . keep',
-                                                'if test ! -L target && test -e target; then chown '+str(uid)+':'+str(uid)+' target; fi']
+                        'if test ! -L target && test -e target; then chown '+str(uid)+':'+str(uid)+' target; fi']
                 if c['name'].endswith('sticky-other'):lines+=['chown 0:0 . target']
                 if c['name'].endswith('nonempty'):lines+=['chown '+str(uid)+':'+str(uid)+' target/item']
                 command='cd '+shlex.quote(cwd)+' && '+shlex.join(['/tmp/irix-remove/'+abi,c['op'],str(c['mode']),c['path']])

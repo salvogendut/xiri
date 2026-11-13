@@ -100,3 +100,14 @@ Both qualifiers reject recovered diagnostic owners for final qualification
 and require an observed clean halt. `--diagnostic` can inspect a live run
 without making a qualification claim. See the
 [File Manager guide](../../docs/IRIX-FILEMANAGER.md) for the GUI workflow.
+
+With both fixture packages prepared, collect fresh native observations from
+a disposable copy of a packaged image with:
+
+```sh
+python3 scripts/probe-irix-filemanager-abi.py --bundle IMAGE_BUNDLE
+```
+
+This checks that the uploaded executables match the IRIX reference, records
+the loaded module, runs both suites and the native control, then halts. Use
+its printed run directory as `HALTED_NATIVE` for the qualifiers above.
