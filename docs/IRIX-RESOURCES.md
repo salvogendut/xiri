@@ -1,5 +1,11 @@
 # IRIX resource checklist
 
+The [windows/desks package](../lab/irix-desks/README.md) adds original
+`/usr/sbin/ov` at `/emul/irix/usr/sbin/ov` (212,216 bytes, root-owned,
+mode 0555). Existing Overview defaults, schemes and libraries are reused.
+Its [ledger](../lab/irix-desks/resources.json) separates resource provenance
+from desktop acceptance. See the [controls guide](IRIX-WINDOWS.md).
+
 The [document cycle](IRIX-DOCUMENTS.md) additionally imports the original
 file-type compiler `fftr`; its [ledger](../lab/documents/resource-ledger.json)
 records the source/destination, hash and dependencies. Existing artwork and

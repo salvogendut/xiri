@@ -10,6 +10,7 @@ from . import ROOT, sha256
 
 
 PACKAGES = {
+    'desks': ('scripts/stage-irix-desks.py', 'payload.tgz'),
     'documents': ('scripts/stage-irix-documents.py', 'payload.tgz'),
     'filemanager': ('scripts/stage-irix-filemanager.py', 'payload.tgz'),
     'session': ('scripts/stage-irix-session.py', 'payload.tgz'),

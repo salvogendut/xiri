@@ -262,6 +262,9 @@ the default desktop startup. A saved session can include it.
 
 ## Saved desktop sessions
 
+The [window and desk guide](IRIX-WINDOWS.md) explains title-bar/keyboard
+controls and **Desktop → Extra Desks** for arranging windows across desks.
+
 Open **Toolchest → Desktop → Customize → Windows**. Under **Save Windows &
 Desks**, choose:
 

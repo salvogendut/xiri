@@ -2,6 +2,7 @@
 """Qualify document actions and per-user editor preferences on a disposable CHD."""
 import argparse
 import hashlib
+import inspect
 import json
 import os
 from pathlib import Path
@@ -60,7 +61,7 @@ class Suite:
         self.server_auth()
         self.g.wait_for('xwininfo -root -tree | grep \'"xlogin"\' >/dev/null', 120)
 
-    def login(self, user):
+    def login(self, user, *, wait_catalog=True):
         self.greeter()
         home = '/home/netbsdtest' if user == 'netbsdtest' else '/usr/people/'+user
         self.cmd('rm -f '+home+'/.xsession-errors')
@@ -82,7 +83,8 @@ class Suite:
             'test "$XAUTHORITY" != default || XAUTHORITY='+home+'/.Xauthority; '
             'export XAUTHORITY DISPLAY=127.0.0.1:0; test -r "$XAUTHORITY"')
         self.g.wait_for('test -s "$job/handoff" && /usr/local/libexec/xiri/x11-check ready', 180)
-        self.g.wait_for('xwininfo -root -tree | grep \'"Icon Catalog:\' >/dev/null', 120)
+        if wait_catalog:
+            self.g.wait_for('xwininfo -root -tree | grep \'"Icon Catalog:\' >/dev/null', 120)
         self.r.setdefault('identities', {})[user] = self.read('cat "$job/identity"')
 
     def logout(self, label):
@@ -192,7 +194,7 @@ class Suite:
         self.logout('first-user-recheck')
 
 
-def main(suite_class=Suite, lab_name='documents'):
+def main(suite_class=Suite, lab_name='documents', extra_sources=()):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--bundle', type=Path, required=True)
     parser.add_argument('--local-processes', action='store_true',
@@ -205,11 +207,15 @@ def main(suite_class=Suite, lab_name='documents'):
     directory = Path(tempfile.mkdtemp(prefix='qualified-', dir=runs))
     print('Results: '+str(directory.relative_to(ROOT)), flush=True)
     (directory/'owner.pid').write_text(str(os.getpid())+'\n')
-    shutil.copyfile(__file__, directory/'probe-source.py')
+    suite_source = Path(inspect.getsourcefile(suite_class))
+    shutil.copyfile(suite_source, directory/'probe-source.py')
+    if suite_source.resolve() != Path(__file__).resolve():
+        shutil.copyfile(__file__, directory/'shared-probe-source.py')
     media = directory/'media'; media.mkdir()
     sources = [('lab/clipboard/selection.c', 'clip-selection.c'),
         ('lab/documents/input.c', 'doc-input.c'),
         ('lab/irix-4dwm/type-ready.c', 'type.c')]
+    sources += list(extra_sources)
     for source, name in sources:
         shutil.copyfile(ROOT/source, media/name)
     probe = load_probe()
@@ -248,7 +254,8 @@ def main(suite_class=Suite, lab_name='documents'):
     guest = Guest(lab)
     result = dict(schema=1, status='running', bundle=str(bundle.relative_to(ROOT)),
         base_chd_sha256=manifest['chd_sha256'], module_sha256=manifest['irix_module']['sha256'],
-        emulator_sha256=sha256(probe.IRIS), probe_sha256=sha256(Path(__file__)),
+        emulator_sha256=sha256(probe.IRIS), probe_sha256=sha256(suite_source),
+        shared_probe_sha256=sha256(Path(__file__)),
         media_inputs={p.name:sha256(p) for p in sorted(media.iterdir())})
     suite = suite_class(guest, directory, result)
     def interrupted(*unused):
@@ -258,7 +265,8 @@ def main(suite_class=Suite, lab_name='documents'):
         lab.start(boot=False); lab.wait('login: ', 600); lab.send('root'); lab.wait('xiri-indy# ', 30); lab.logged_in = True
         suite.cmd('export PATH=/usr/local/bin:/usr/X11R7/bin:/bin:/sbin:/usr/bin:/usr/sbin; ulimit -c 0; '
             'mount -t cd9660 -o ro /dev/cd0a /cdrom; mkdir /root/documents; cp /cdrom/*.c /root/documents/; cd /root/documents')
-        suite.cmd('for n in clip-selection doc-input type; do cc -O2 -Wall -Wextra -Werror -I/usr/X11R7/include '
+        names = shlex.join([Path(name).stem for _, name in sources])
+        suite.cmd('for n in '+names+'; do cc -O2 -Wall -Wextra -Werror -I/usr/X11R7/include '
             '"$n.c" -L/usr/X11R7/lib -Wl,-rpath,/usr/X11R7/lib -lX11 -lXtst -o /tmp/"$n" || exit; done', 240)
         result['loaded_module'] = suite.read('modstat | grep compat_irix_o32; sha256 '+manifest['irix_module']['path'])
         assert result['module_sha256'] in result['loaded_module']

@@ -1,0 +1,85 @@
+{
+  "schema": 1,
+  "status": "staged-unqualified",
+  "extraction": "guestfish --ro; mount ro,norecovery",
+  "source_image_manifest_sha256": "79b464ad3856eca2d034f418445860b3d262437f0347ccadedc67e60c8330521",
+  "script_sha256": "e294c61f87d1f244e3cb8809c614c489c20b074bf20ba944e73467be0a691372",
+  "payload_sha256": "738de144719bf3f3324e0dc7ec9494a587965d14753586c2686a91c3f265be68",
+  "paths": {
+    "/usr/sbin/ov": {
+      "irix_source": "/usr/sbin/ov",
+      "canonical_source": "/usr/sbin/ov",
+      "netbsd_destination": "/emul/irix/usr/sbin/ov",
+      "type": "file",
+      "original_mode": "0o755",
+      "mode": "0o555",
+      "uid": 0,
+      "gid": 0,
+      "bytes": 212216,
+      "sha256": "c830e5332562b610c611625d07b793b19c184ea74c1e02564d683decfe1d3207",
+      "elf": {
+        "class": 32,
+        "endian": "big",
+        "machine": 8,
+        "abi": "n32",
+        "type": 2,
+        "flags": "0x20000024",
+        "entry": "0x1001484c",
+        "interpreter": [
+          "/usr/lib32/libc.so.1"
+        ],
+        "needed": [
+          "libimdXutil.so",
+          "libimdUtil.so",
+          "libvk.so.1",
+          "libSgm.so.1",
+          "libXm.so.1",
+          "libXt.so",
+          "libX11.so.1",
+          "libC.so.2",
+          "libCsup.so",
+          "libc.so.1"
+        ],
+        "rpath": [],
+        "soname": [],
+        "loads": [
+          {
+            "offset": 0,
+            "address": 268435456,
+            "file_bytes": 167936,
+            "memory_bytes": 167936,
+            "flags": 5,
+            "alignment": 16384
+          },
+          {
+            "offset": 180224,
+            "address": 268615680,
+            "file_bytes": 16384,
+            "memory_bytes": 16384,
+            "flags": 6,
+            "alignment": 16384
+          }
+        ],
+        "load_boundaries_8k": true,
+        "liblist": [
+          "libimdXutil.so",
+          "libimdUtil.so",
+          "libvk.so.1",
+          "libSgm.so.1",
+          "libXm.so.1",
+          "libXt.so",
+          "libX11.so.1",
+          "libC.so.2",
+          "libCsup.so",
+          "libc.so.1"
+        ],
+        "mips_rld_version": 1,
+        "mips_flags": "0x6410"
+      }
+    }
+  },
+  "limitations": [
+    "Resource presence does not qualify desk switching or saved layouts.",
+    "The existing imported Overview defaults, schemes and libraries remain prerequisites."
+  ]
+}

@@ -31,6 +31,8 @@ uses its original X11 controls, and SGI colour names resolve through a private
 session database. The [saved-session guide](docs/IRIX-SOFTWARE.md#saved-desktop-sessions)
 explains **Save Windows & Desks**, automatic and explicit saves, and profile
 backups. Xmahjongg has no default autostart entry.
+The [window and desk guide](docs/IRIX-WINDOWS.md) covers original window
+controls, click-to-focus keyboard navigation and **Desktop → Extra Desks**.
 The [File Manager cycle](docs/results/2026-11-13-file-manager.md) adds local
 create, rename, copy, move, discard, recovery and emptying under both users.
 Its module passes 720 paired filesystem checks against IRIX. The

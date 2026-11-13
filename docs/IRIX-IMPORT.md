@@ -1,5 +1,13 @@
 # Imported IRIX files and reusable NetBSD image
 
+The [windows/desks guide](IRIX-WINDOWS.md) adds the original
+`/usr/sbin/ov` at `/emul/irix/usr/sbin/ov`, owned by root, mode 0555.
+The [resource ledger](../lab/irix-desks/resources.json) pins its 212,216 bytes,
+source-image manifest and n32 library dependencies. Overview defaults and
+schemes were already imported, but the executable behind Toolchest's
+**Extra Desks** entry was missing. Extraction uses the source XFS filesystem
+read-only with recovery disabled; no original account or desk state is copied.
+
 The [document integration guide](IRIX-DOCUMENTS.md) adds the original
 `/usr/sbin/fftr` compiler at `/emul/irix/usr/sbin/fftr`. The
 [document resource ledger](../lab/documents/resource-ledger.json) pins its

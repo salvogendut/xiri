@@ -42,6 +42,15 @@ not repin qualified kernels, emulator binaries, runtime resources or guest disks
 
 ## IRIS upstream updates
 
+The windows/desks cycle checked upstream at 2026-11-13 22:30 UTC.
+Revision `9605704cf2a0b204fddc920e6236a3b8050f9e38` is already contained in
+IRIS `xiri` at `84125cacb985f974c8f9d81150560150267fb194`. Fetch and ancestor
+checks pass; there are no incoming commits or affected emulator rebuilds.
+NetBSD `xiri` remains `8bf86afce2afede752c0eae37852e2f2472d91cb`.
+The [check ledger](results/2026-11-13-desks-upstream.json) records the pins.
+This cycle adds the original Overview resource and desktop acceptance cases;
+both fork sources and the image's qualified emulator remain unchanged.
+
 The drag-and-drop cycle checked upstream at 2026-11-13 20:11 UTC.
 Revision `9605704cf2a0b204fddc920e6236a3b8050f9e38` is already contained in
 IRIS `xiri` at `84125cacb985f974c8f9d81150560150267fb194`; fetch and ancestor
