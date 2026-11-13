@@ -1,0 +1,290 @@
+{
+  "schema": 1,
+  "status": "qualified",
+  "bundle": ".work/images/xiri-netbsd-desktop-20261113-shutdown",
+  "preparation": {
+    "directory": ".work/xdm-image/prepare/ordinary-0m1o77be",
+    "result_sha256": "d099f7e663ab3836cc7e78f9d29ec08325988daf88d7837016a97a5a4f9a08b9",
+    "clean_shutdown": true,
+    "base_raw_unchanged": true
+  },
+  "image": {
+    "chd_sha256": "8c7ebd8f62808ad55fe59066bcc3dbe5037dd0de04b74eeafe4bd7b42e565122",
+    "chd_bytes": 496311538,
+    "raw_sha256": "18ef2088c92389dd9fd57cb6f27db6cc15d44f7c775274dfed124ea2d1057873",
+    "roundtrip_verified": true,
+    "manifest_sha256": "dfc0a64f412228ef99c8188bf880a9d89a5e3892e1b477f9ba2102476cbb49e4"
+  },
+  "qualification": {
+    "directory": ".work/irix-xdm/runs/ordinary-b1owp3vg",
+    "report": "docs/results/2026-11-13-shutdown-sessions-image.json",
+    "report_sha256": "242476416d37929748f0c8c97620973fddf566fcf25f3c9385aa8f87b3ee642b",
+    "result_sha256": "0964e3af241032fb7ed3732d1fd6189b651ba10a760738529097d310bbdbbdcc",
+    "clean_shutdown": true,
+    "base_unchanged": true
+  },
+  "installed_changes": {
+    "/etc/rc.conf.d/xiri_sessions": {
+      "before": null,
+      "after": "052e6a93b4903bb1b5fd31af64bc841a765f21deac414997838b7cbab9c75ce0"
+    },
+    "/etc/rc.d/xiri_sessions": {
+      "before": null,
+      "after": "4e65d17aec4f7695e147dfec16d489952d038fcc57290c2dea27896d647ed0ec"
+    },
+    "/usr/local/bin/xiri-session": {
+      "before": "07ce1d2845ca706ce4abd77fd554eaf48f38a3a82f3d73cf80860628b5843139",
+      "after": "dd16c9537c2f1c34a1092f93ef9bd7f34ea9e34128fd3051dc51d26bbf1ec391"
+    },
+    "/usr/local/libexec/xiri/session-guard": {
+      "before": "8b641c63377365c3aeb92a0b64af784158cf4362a15a95a04e7da8b202aae8f3",
+      "after": "82a5b3e296e27c2dd7564b48ed87ed6eec3581652587525e511d2eccabd46f64"
+    },
+    "/usr/local/libexec/xiri/stop-sessions": {
+      "before": null,
+      "after": "912aeb75e6d9169bd14b7f3060dacd8365956b4d8b00334d115fb5513edc5213"
+    }
+  },
+  "reusable_seed": {
+    "directory": ".work/xiri-image/seed-8c7ebd8f6280",
+    "raw_sha256": "18ef2088c92389dd9fd57cb6f27db6cc15d44f7c775274dfed124ea2d1057873",
+    "storage": "symlink to final preparation disk"
+  },
+  "unchanged_components": [
+    "kernel/module pin",
+    "bundled emulator pin",
+    "Newport driver",
+    "Xorg configuration",
+    "native FAM"
+  ],
+  "runtime_sources": {
+    "runtime/Makefile": "8fb5b910d94d20f4d11222b8ac2abad34de3e2abac4815b08c0a10b0af44ccc9",
+    "runtime/install.sh": "249d01974f424244ff3295c25e6977370db05dc70524161ac2370a82729bbd23",
+    "runtime/README.md": "71cf958c5619cff15a46504360f88551a9f6f44b0e0ea03387fe00bad3be499f",
+    "runtime/bin/xiri-launch": "07c666dda4f503eee2355317e8ad8467428b56c7ee03b7acc3a2abc6f9992f74",
+    "runtime/bin/xiri-logout": "06be5189a07f2f13f8d699ce8f5c7e7f28034027e5b76a119e4a136b84eb790c",
+    "runtime/bin/xiri-session": "dd16c9537c2f1c34a1092f93ef9bd7f34ea9e34128fd3051dc51d26bbf1ec391",
+    "runtime/bin/xiri-desktop": "4ef799a9db30e8bfe98f5a979359413a5956524a6eb66592b0e5be05b9862790",
+    "runtime/libexec/desktop-clients.sh": "85c504d6557abe69f3ab009e397e456a009ed55f0ac49092ef9d71eab08312bf",
+    "runtime/libexec/setup-pty.sh": "6e01ef7e67f16235a41108c604898a95e0058661f44c9c6d0460d681f7a5635a",
+    "runtime/libexec/shell-handoff.c": "c6e6fc869496f7a306d03dacabadcacfab3b48ba5d7e285102f2f8a11761050f",
+    "runtime/libexec/session-guard.c": "a460ca6b5d871ba4894ad1d69169e5757920a8574cd7f08b381aa2b0e2f0adf3",
+    "runtime/libexec/x11-check.c": "5774f7fd2669390f8ab600f98711fba216735ad6d2bae6254e8b244a17ac51b8",
+    "runtime/libexec/account-map.awk": "ba5da838ef64bd55dcf3cb6b7dfd68ed47ee578413c26358e2a4332cbdf48e3d",
+    "runtime/libexec/sgi-colours.awk": "caed0d2aa8cbd258ea3c4dd3fd08c3306e503e75fcc60b935694bf3468b1e3ae",
+    "runtime/libexec/save-session.c": "044c43b2b53a48d31b509410a27a3de735a9c25ee4c9b121db4c3adfd2fec987",
+    "runtime/libexec/stop-sessions.c": "76992a677a7f2f38ca5fe09817f7bbf5ad67c1fb12682a33030272bbf1114d47",
+    "runtime/rc.d/xiri_devices": "d9015c83dabc84a60b6a3cd09074825d5a63582b715b96131c719ad1a328e2a1",
+    "runtime/rc.d/xiri_famd": "6669ab48614713237fd740a533274fea00ea5acb3ac61ab0b7c21295a12bbcf1",
+    "runtime/rc.d/xiri_sessions": "4e65d17aec4f7695e147dfec16d489952d038fcc57290c2dea27896d647ed0ec",
+    "runtime/etc/fam.conf": "d55999f5390d6453f84710fc6880bec8a0bead660a862326452f88bfd91b6dc6",
+    "runtime/etc/session.conf": "6b59dd5b8fe2507ebb4723d972ee535f3892ff6d4cdf5fbd0ad47307d8af1cea",
+    "runtime/etc/xdm.xsession": "983ecc9eaa9763d5198b99c9a55b86a1a9dd785e851370144dcd8d9ec98233f3",
+    "runtime/etc/xdm-Xservers": "4648da4a67a83e16bd630d55708862188aaa755798b8afcf34205cbfabcc7104",
+    "runtime/etc/xdm-Xresources": "21b104d6a6b310a1633cf8e44b6088f170865593cb5b7e235c861ef6545d1919",
+    "runtime/etc/Xresources": "a0b2255961f4cd008f8e21c970a8960845919b84074a4ccb636c1eb8cea773cc",
+    "runtime/etc/desktop-Xresources": "561f52352a205ee6299e1f12dc58eabbd6bc4c87d244b57a6390cf2e794a94bd",
+    "runtime/sbin/xiri-sync-users": "471e229f2e863a1d634ca6fe85a117cba4536a8bb42f58b1dc2b96e79acf5b62"
+  },
+  "host_checks": {
+    "tests": 58,
+    "status": "passed",
+    "log_sha256": "92c3375b18233a54220f6199124b41b6f75717ea91c81b1fa56314f17cde5f41",
+    "image_doctor": "Passed: 17 immutable artifacts, with the documented local Toolbox adapter"
+  },
+  "shutdown_checks": {
+    "continuous_reboot": "passed",
+    "explicit_cold_boot": "passed",
+    "user_isolation": "passed",
+    "stalled_save": "bounded cleanup in 17 seconds",
+    "evidence": ".work/shutdown-sessions"
+  },
+  "visual_menu_review": {
+    "status": "readable",
+    "scope": "Desktop and Customize labels, including disabled entries; broader command behavior remains separate",
+    "screenshots": {
+      "toolchest-desktop.png": "93e57affb9a211795227e2c3801a7eef468e5335a304041777c6f6b408031fed",
+      "toolchest-customize.png": "d9cf02d8175d96a8c00ea18489c9d96245476ffa49c03af266810e387f891c5e"
+    }
+  },
+  "visual_desktop_review": {
+    "status": "passed",
+    "scope": "Full-screen native ctwm and second-user 4Dwm; readable text, backdrop and icons; catalog-launched xmahjongg tiles",
+    "screenshots": {
+      "xdm-native-ctwm.png": "9cb6338c76941334f37852d24466ef9303df3a005183a3f7b04e83655ce87638",
+      "xdm-desktop-xiritest2.png": "9eb47d43a76e5fcd7f7fbdf70324932fc1d28d779d0a1eb64d05087c590068d1",
+      "xdm-catalog-launch.png": "0ff0f717a6568ddfed47968de3120fbdd378007862c6e65956d6f22082e490d4"
+    }
+  },
+  "upstream": "docs/results/2026-11-13-iris-upstream.json",
+  "limits": [
+    "Direct reboot/halt/poweroff bypass rc.shutdown.",
+    "Only tested restart commands and one desk; additional applications/desks need qualification."
+  ],
+  "cleanup": {
+    "batches": [
+      {
+        "phase": "completed upstream checks",
+        "paths": [
+          {
+            "path": ".work/upstream-main-compat",
+            "allocated_bytes": 148344832,
+            "removed": true
+          },
+          {
+            "path": ".work/iris-upstream-20261113",
+            "allocated_bytes": 151109632,
+            "removed": true
+          },
+          {
+            "path": ".work/upstream-frontends",
+            "allocated_bytes": 9117696,
+            "removed": true
+          },
+          {
+            "path": ".work/iris-upstream-build",
+            "allocated_bytes": 14336299008,
+            "removed": true
+          },
+          {
+            "path": ".work/prismatic-main-build",
+            "allocated_bytes": 958566400,
+            "removed": true
+          }
+        ]
+      },
+      {
+        "phase": "retained final executables; completed guest and CHD round-trip artifacts",
+        "paths": [
+          {
+            "path": ".work/prismatic-upstream-build",
+            "allocated_bytes": 4559114240,
+            "removed": true
+          },
+          {
+            "path": ".work/images/xiri-netbsd-desktop-20261113-shutdown/verification/roundtrip.raw",
+            "allocated_bytes": 8589934592,
+            "removed": true
+          },
+          {
+            "path": ".work/shutdown-sessions/ordinary-a2ly6d92/disk.chd",
+            "allocated_bytes": 496287744,
+            "removed": true
+          },
+          {
+            "path": ".work/shutdown-sessions/ordinary-a2ly6d92/disk.chd.diff.chd",
+            "allocated_bytes": 6455296,
+            "removed": true
+          },
+          {
+            "path": ".work/shutdown-sessions/ordinary-a2ly6d92/probe.iso",
+            "allocated_bytes": 512000,
+            "removed": true
+          },
+          {
+            "path": ".work/shutdown-sessions/ordinary-79gmn0_6/disk.chd",
+            "allocated_bytes": 496287744,
+            "removed": true
+          },
+          {
+            "path": ".work/shutdown-sessions/ordinary-79gmn0_6/disk.chd.diff.chd",
+            "allocated_bytes": 6602752,
+            "removed": true
+          },
+          {
+            "path": ".work/shutdown-sessions/ordinary-79gmn0_6/probe.iso",
+            "allocated_bytes": 512000,
+            "removed": true
+          },
+          {
+            "path": ".work/shutdown-sessions/ordinary-knogj9me/disk.chd",
+            "allocated_bytes": 496287744,
+            "removed": true
+          },
+          {
+            "path": ".work/shutdown-sessions/ordinary-knogj9me/disk.chd.diff.chd",
+            "allocated_bytes": 6062080,
+            "removed": true
+          },
+          {
+            "path": ".work/shutdown-sessions/ordinary-knogj9me/probe.iso",
+            "allocated_bytes": 512000,
+            "removed": true
+          }
+        ],
+        "available_bytes_change_during_batch": 0
+      },
+      {
+        "phase": "exact-manifest upstream-main verification",
+        "paths": [
+          {
+            "path": ".work/upstream-main-final",
+            "allocated_bytes": 148344832,
+            "removed": true
+          },
+          {
+            "path": ".work/prismatic-main-final-build",
+            "allocated_bytes": 953679872,
+            "removed": true
+          }
+        ]
+      },
+      {
+        "phase": "completed Newport fixture",
+        "paths": [
+          {
+            "path": "/tmp/xiri-merge-rex.bin",
+            "allocated_bytes": 8192,
+            "removed": true
+          }
+        ]
+      },
+      {
+        "phase": "qualified replacement image and retired raw seed",
+        "paths": [
+          {
+            "path": ".work/xdm-image/prepare/ordinary-oenwgr3g/disk.raw",
+            "allocated_bytes": 8589934592,
+            "removed": true
+          },
+          {
+            "path": ".work/xiri-image/seed-3abb7d081357/disk.raw",
+            "allocated_bytes": 4096,
+            "removed": true
+          },
+          {
+            "path": ".work/irix-xdm/runs/ordinary-b1owp3vg/disk.chd",
+            "allocated_bytes": 496312320,
+            "removed": true
+          },
+          {
+            "path": ".work/irix-xdm/runs/ordinary-b1owp3vg/disk.chd.diff.chd",
+            "allocated_bytes": 15466496,
+            "removed": true
+          },
+          {
+            "path": ".work/irix-xdm/runs/ordinary-b1owp3vg/probe.iso",
+            "allocated_bytes": 937984,
+            "removed": true
+          },
+          {
+            "path": ".work/xdm-image/prepare/ordinary-0m1o77be/probe.iso",
+            "allocated_bytes": 1970176,
+            "removed": true
+          }
+        ]
+      }
+    ],
+    "allocated_bytes_removed": 40468664320,
+    "available_bytes_after": 503400910848,
+    "accounting_note": "Allocated file blocks removed; Btrfs compression, reflinks and delayed reclaim mean this is not an exact physical-space recovery measurement.",
+    "retained": [
+      "canonical CHDs and manual state",
+      "pinned lab worktrees",
+      "qualification logs and screenshots",
+      "current reusable raw seed",
+      "qualified IRIS/Prismatic/Instigator binaries"
+    ],
+    "process_audit": "No iris, iris-ci or Xvfb processes remain."
+  }
+}

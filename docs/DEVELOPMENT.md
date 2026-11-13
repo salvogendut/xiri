@@ -160,6 +160,11 @@ use the original Windows panel to exercise continuous and explicit saves,
 close an application, restore multiple terminals and their geometry, then
 repeat with another native user and a normal logout before reboot. Keep the
 users' saved files and before/after screenshots in the disposable run.
+The [shutdown extension](results/2026-11-13-shutdown-sessions.md) also checks
+an active continuous session with `shutdown -r now`, and an explicit snapshot
+with `shutdown -h now` followed by a cold boot. Verify the save acknowledgment
+before xdm stops, restored geometry, separate users' state and bounded cleanup
+when a save stalls. Direct `reboot`, `halt` and `poweroff` bypass rc.shutdown.
 For images containing `save-session`, the maintained xdm probe automatically
 checks fresh versus restored launches, duplicate clients, stable winterm
 restart commands and the save acknowledgment at logout. The native
@@ -321,6 +326,9 @@ and packaging, retire redundant decoded copies and disposable run disks.
 Preserve failed-run reports, logs and traces before retiring their disks.
 Directory sizes can count shared Btrfs extents repeatedly; use the change in
 filesystem available space to report actual recovery.
+The [November 13 cycle cleanup](results/2026-11-13-shutdown-sessions.md#cleanup)
+retired its temporary emulator/frontend builds and completed guest disks,
+then replaced the raw seed only after the new CHD passed qualification.
 
 Historical result paths describe the original run and may now name retired
 disk caches. Use `./xiri seed` for the selected image, or materialize an older

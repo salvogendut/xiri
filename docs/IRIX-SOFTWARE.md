@@ -262,14 +262,19 @@ Open **Toolchest → Desktop → Customize → Windows**. Under **Save Windows &
 Desks**, choose:
 
 - **Continuously** to restore the running application windows from the last
-  normal logout. Closing an application removes it from the next saved session.
+  normal logout or orderly shutdown. Closing an application removes it from
+  the next saved session.
 - **Explicitly**, then **Set Home Session**, to keep a chosen starting desktop.
   Later changes do not replace that application list until you save again.
 
 Log out through Toolchest or the desktop menu. Xiri waits for 4Dwm to finish
-its save before terminating the session. **Log out before rebooting or shutting
-down.** A direct reboot while logged in can close X before the save completes;
-the latest window changes may be lost even if an older saved session remains.
+its save before terminating the session. With the `xiri_sessions` service
+enabled, NetBSD `shutdown -r now` (reboot) and `shutdown -h now` (halt) also
+save an active desktop before xdm closes X; `shutdown -p now` uses the same
+shutdown hooks. Use these commands from an administrative terminal. Direct
+`reboot`, `halt` and `poweroff` bypass NetBSD's rc shutdown hooks. Emulator
+termination and power loss cannot save the current windows. Older images
+without `xiri_sessions` still require logging out first.
 Applications must publish a usable X11 restart command; support for one application does not establish support
 for every catalog entry. Winterm restores fresh native shells in the user's
 home. Save documents and finish shell jobs separately.

@@ -38,6 +38,7 @@ def runtime_files():
               '/usr/local/share/xiri/xdm.xsession', '/usr/local/share/xiri/desktop-Xresources',
               '/usr/people/xiritest/.xsession',
               '/etc/ttys','/etc/motd']
-    paths += ['/etc/rc.d/'+s for s in ('xiri_devices','xiri_famd')]
-    paths += ['/etc/rc.conf.d/'+s for s in ('xiri_devices','xiri_famd','rpcbind','xdm')]
+    paths += ['/usr/local/libexec/xiri/stop-sessions']
+    paths += ['/etc/rc.d/'+s for s in ('xiri_devices','xiri_famd','xiri_sessions')]
+    paths += ['/etc/rc.conf.d/'+s for s in ('xiri_devices','xiri_famd','xiri_sessions','rpcbind','xdm')]
     return paths

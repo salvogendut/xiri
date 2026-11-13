@@ -1,6 +1,6 @@
 # Xiri execution roadmap
 
-Status: updated 2026-11-06. The current image runs the original 4Dwm desktop,
+Status: updated 2026-11-13. The current image runs the original 4Dwm desktop,
 Toolchest, Icon Catalog, File Manager, winterm and xclock on NetBSD/Xorg with
 accelerated Newport. Catalog launching, running-icon feedback, backdrop,
 desktop icons and logout pass bounded checks; the latest xmahjongg texture
@@ -17,9 +17,11 @@ demand. The [colour follow-up](results/2026-11-06-desktop-colours.md) resolves
 SGI names and qualifies the original Solid picker in its X11 mode, including
 two users' saved colours across logout and reboot. The
 [saved-session cycle](results/2026-11-06-desktop-sessions.md) enables original
-continuous/explicit saves and restores supported windows and layouts. Log out
-before rebooting: coordinating an active desktop with system shutdown remains
-open. File Manager/Dumpster behavior, broader application restoration, other
+continuous/explicit saves and restores supported windows and layouts. The
+[shutdown follow-up](results/2026-11-13-shutdown-sessions.md) saves active
+desktops before xdm stops for `shutdown -r now` or `shutdown -h now`. Direct
+`reboot`, `halt` and `poweroff` bypass the shutdown hooks; log out first when
+using those commands. File Manager/Dumpster behavior, broader application restoration, other
 control panels and backdrop formats remain separate.
 
 The agreed target remains the full original IRIX desktop on NetBSD and X.org,
@@ -484,7 +486,7 @@ dependency candidates; a visible window alone does not complete these checks.
 - [x] Implement [measured pipe support](results/2026-11-01-irix-pipe.md): 220 exact records and 44 native/vendor controls, including descriptor exhaustion/rollback and forked writers.
 - [ ] Complete usable file/icon clients. The [desktop service repair](results/2026-11-02-desktop-services.md) supersedes the earlier empty catalog/select startup boundary: system pages and entry labels now appear, FileManager lists native files, and FAM delivers changes. The [icon repair](results/2026-11-02-desktop-icons.md) qualifies Freeware artwork and FileManager folder/document icons. The [xdm CHD](results/2026-11-03-xiri-xdm-image.md) also qualifies catalog double-click launching. Broader file operations and intermittent terminal geometry/startup failures remain. Saved application sessions are covered by the November 6 cycle; broader File Manager/Dumpster operations remain open.
 - [x] Enable [saved desktop sessions](results/2026-11-06-desktop-sessions.md) through original 4Dwm: continuous and explicit modes, multiple winterms, xclock, Catalog, layout restoration and per-user state.
-- [ ] Coordinate saving before xdm closes an active display during system shutdown/reboot. For now, log out normally first; failed saves must still allow bounded cleanup.
+- [x] Coordinate saving before xdm closes an active display during orderly system shutdown/reboot. The [shutdown service](results/2026-11-13-shutdown-sessions.md) passes continuous reboot, explicit cold-boot restoration, user isolation and stalled-save cleanup checks. Direct reboot/halt/poweroff bypass rc.shutdown.
 - [x] Inventory the supplied [May 2004 freeware sets](results/2026-11-01-irix-freeware.md): four CDs, 489 distinct packages; record zero-filled ncurses/nedit metadata separately.
 - [x] Establish [native /usr/people account creation and shared-file access](results/2026-11-01-irix-installer.md), including cold-boot persistence.
 - [x] Measure and implement the installer's [shared zero-device mapping](results/2026-11-01-irix-mmap-shared.md): 472 original records, 1,180 native records/backing files and 44 controls. Regular-file AUTOGROW remains separate.

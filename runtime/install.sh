@@ -19,7 +19,7 @@ for name in Xservers Xresources; do
     test -e "$stage/etc/xiri/xdm/$name" || install -m 644 "etc/xdm-$name" "$stage/etc/xiri/xdm/$name"
 done
 for name in xiri-desktop xiri-session xiri-launch xiri-logout; do install -m 555 "bin/$name" "$stage/usr/local/bin/$name"; done
-for name in session-guard x11-check save-session; do install -m 555 "$build/$name" "$stage/usr/local/libexec/xiri/$name"; done
+for name in session-guard x11-check save-session stop-sessions; do install -m 555 "$build/$name" "$stage/usr/local/libexec/xiri/$name"; done
 install -m 555 "$build/shell-handoff" "$stage/usr/libexec/xiri-shell"
 for name in desktop-clients.sh setup-pty.sh; do install -m 555 "libexec/$name" "$stage/usr/local/libexec/xiri/$name"; done
 ln -snf /bin/sh "$stage/usr/local/libexec/xiri/command-shell"
@@ -42,13 +42,13 @@ if test -f "$stage/emul/irix/usr/sbin/colorscheme" &&
     ! test -e "$browser" && ! test -L "$browser"; then
     ln -s colorscheme "$browser"
 fi
-for name in xiri_devices xiri_famd; do install -m 555 "rc.d/$name" "$stage/etc/rc.d/$name"; done
+for name in xiri_devices xiri_famd xiri_sessions; do install -m 555 "rc.d/$name" "$stage/etc/rc.d/$name"; done
 for name in session.conf fam.conf Xresources; do
     install -m 444 "etc/$name" "$stage/etc/xiri/$name.example"
     test -e "$stage/etc/xiri/$name" || install -m 644 "etc/$name" "$stage/etc/xiri/$name"
 done
 if test "$enable" = yes; then
-    for name in xiri_devices xiri_famd; do
+    for name in xiri_devices xiri_famd xiri_sessions; do
         if test ! -e "$stage/etc/rc.conf.d/$name"; then
             printf '%s=YES\n' "$name" >"$stage/etc/rc.conf.d/$name"
             chmod 644 "$stage/etc/rc.conf.d/$name"

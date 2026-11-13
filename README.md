@@ -12,7 +12,7 @@ catalog launches and running-icon feedback. Native NetBSD Xorg drives a
 1280×1024 accelerated Newport display. It retains the xmahjongg texture
 correction qualified by the earlier [rendering and interaction checks](docs/results/2026-11-03-newport-xmahjongg.md).
 
-The [current manual CHD](docs/results/2026-11-06-desktop-sessions.md#manual-image) boots into native
+The [current manual CHD](docs/results/2026-11-13-shutdown-sessions.md#manual-image) boots into native
 NetBSD xdm. Use **xiritest** / **xiritest** or **xiritest2** / **xiritest2** for
 separate IRIX desktops, or **netbsdtest** / **netbsdtest** for standard NetBSD ctwm.
 `netbsdtest` belongs to `wheel` and can run `su -` for a root login shell;
@@ -203,8 +203,9 @@ Use the `xiri` integration branches for both forks, following the
 Compatibility is incomplete. The reproduced Type1 collapse is corrected;
 winterm keeps the verified NetBSD bitmap Courier default. Broader graphics operations,
 Dumpster actions, other preference panels and broader application restoration
-need work. Saved sessions require normal logout before shutdown/reboot;
-coordinating an active desktop with system shutdown remains open.
+need work. Active sessions now save before X stops when using NetBSD
+`shutdown -r now` or `shutdown -h now`; see the
+[shutdown-saving result](docs/results/2026-11-13-shutdown-sessions.md).
 Backdrop, colour scheme, focus and movement preferences now survive
 logout/login and reboot for two users; see the
 [desktop-preferences result](docs/results/2026-11-06-desktop-preferences.md). The

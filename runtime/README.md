@@ -275,9 +275,21 @@ before starting its existing bounded cleanup. A failed save is logged and does
 not prevent logout. A startup/leader failure still proceeds directly to cleanup.
 The guard consumes `XIRI_SESSION_SAVE` before launching clients, so an
 application's nested supervisor cannot inherit the desktop-wide save action.
-An active xdm shutdown can close X before the acknowledgment; log out before
-rebooting to preserve the latest session. Coordinated system shutdown remains
-a separate integration follow-up.
+`xiri-session` marks its desktop supervisor with `--desktop`. The
+`xiri_sessions` rc.d shutdown hook runs before xdm and FAM stop. Its native
+`stop-sessions` helper discovers these supervisors through libkvm, verifies
+their UID and process start time, requests termination, and waits for their
+exit. Each supervisor saves using its own user's credentials while X is still
+available. Generic application supervisors are excluded. One 30-second
+deadline covers all desktops; a failed save cannot hold up shutdown forever.
+`install.sh --enable-services` (also `--enable-xdm`) enables the hook while
+preserving an existing `/etc/rc.conf.d/xiri_sessions` configuration.
+
+Use NetBSD `shutdown -r now` to reboot or `shutdown -h now` to halt with an
+active desktop. `shutdown -p now` also runs the shutdown hooks. Direct
+`reboot`, `halt` and `poweroff` commands bypass `/etc/rc.shutdown` and therefore
+do not provide this save ordering. Power loss and emulator termination cannot
+save the active desktop. Normal graphical logout remains supported.
 
 Winterm's restart command invokes `/usr/libexec/xiri-shell` without a temporary
 pathname. The helper uses the current `XIRI_SESSION_DIR`, creates a private

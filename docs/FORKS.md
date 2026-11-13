@@ -42,6 +42,29 @@ not repin qualified kernels, emulator binaries, runtime resources or guest disks
 
 ## IRIS upstream updates
 
+The shutdown/session cycle fetched `https://github.com/techomancer/iris.git`
+on 2026-11-13 through `f0914a0b73d086f4b7a58cb8e362e2ce8973617a` and
+integrated all 645 incoming commits. Merge
+`36858ff4e8694756502fa1e84b1190e6997d6e0d` is pushed on IRIS `xiri`.
+CPU part models, packed firmware and network ownership use the new
+upstream APIs; the fork retains NetBSD TLB matching, Newport RGB24 planes,
+frontend embedding hooks and opt-in GPR/RTC caching. Prismatic adaptation
+`3a5e48d7269f2145b5c571da1c3c78b82d88e827` is pushed on its `main` branch.
+
+Validation passes the full IRIS workspace suite (5,482 library tests), the
+R4400 bare-metal named-failure baseline, 180 Prismatic tests, formatter/clippy,
+isolated upstream-main compilation/clippy, dummy SDL and graphical PROM
+smokes, and the rebuilt Instigator's BOOTP/TFTP over Unix and TCP streams.
+The merged core also boots NetBSD/Xorg and restores two winterms and xclock
+at their saved positions after an active-desktop reboot; clean halt and the
+base-image hash pass. The [integration ledger](results/2026-11-13-iris-upstream.json)
+records exact sources, binaries and local evidence.
+
+NetBSD source is unchanged on `xiri`. The new shutdown-saving image retains
+its independently qualified `819c682` emulator, kernel/module and Newport
+driver pins. The merged emulator is separately qualified; pinned lab worktrees
+and existing manual images/state are preserved.
+
 The saved-desktop-session cycle checked upstream on 2026-11-06 at 12:31 UTC.
 `280f3eb22e74057d506fed082f527b92320fabd7` is still an ancestor of IRIS `xiri`
 at `b23f674c235b37c3ac83808085d28ac128bb79c4`, with no incoming commits.

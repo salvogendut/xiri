@@ -290,7 +290,13 @@ def qualify(a, verify_irix_module):
     if 'saved_sessions' in r:
         report['limitations'][2] = ('Original clogin and simultaneous graphical seats remain unqualified. '
             'The tested applications restore after normal logout; arbitrary applications and additional desks need separate checks.')
-        report['limitations'].append('Log out before shutdown/reboot: xdm can close an active X display before 4Dwm completes its save.')
+        if '/usr/local/libexec/xiri/stop-sessions' in seed['installed_files']:
+            report['shutdown_session_service'] = True
+            report['limitations'].append(
+                'Use shutdown -r/-h/-p now for ordered session saving. Direct reboot/halt/poweroff '
+                'bypass rc.shutdown; emulator termination and power loss cannot save an active desktop.')
+        else:
+            report['limitations'].append('Log out before shutdown/reboot: xdm can close an active X display before 4Dwm completes its save.')
     a.output.parent.mkdir(parents=True,exist_ok=True)
     a.output.write_text(json.dumps(report,indent=2)+'\n')
     if a.promote or a.record_bundle:

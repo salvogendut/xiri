@@ -1,0 +1,131 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "status": "qualified-and-pushed",
+  "iris": {
+    "branch": "xiri",
+    "commit": "36858ff4e8694756502fa1e84b1190e6997d6e0d",
+    "upstream": "f0914a0b73d086f4b7a58cb8e362e2ce8973617a",
+    "incoming_commits": 645,
+    "build": {
+      "upstream": "f0914a0b73d086f4b7a58cb8e362e2ce8973617a",
+      "fork_parent": "b23f674c235b37c3ac83808085d28ac128bb79c4",
+      "profile": "developer",
+      "features": [
+        "pcap",
+        "idle-pause",
+        "perfetto",
+        "jitv2",
+        "rex-jit"
+      ],
+      "binaries": {
+        "iris": "4a12d84448da9394499520490b39e76f3d0544ad60e8e12653dbec9991946345",
+        "iris-ci": "7018936052ca8d51ce9c6a6d15a33af03366eec812d996b3f588ed71eb300d0b"
+      },
+      "source_commit": "36858ff4e8694756502fa1e84b1190e6997d6e0d"
+    }
+  },
+  "prismatic": {
+    "branch": "main",
+    "commit": "3a5e48d7269f2145b5c571da1c3c78b82d88e827",
+    "tests_passed": 180,
+    "ignored": 4,
+    "main_compatibility": "Unmodified upstream f0914a0b, exact committed frontend manifest/lock with standard generated workspace stanza; clippy --locked --all-targets --no-deps -D warnings passed.",
+    "smokes": [
+      "dummy SDL",
+      "diskless graphical PROM"
+    ],
+    "instigator_revision": "2db7231aa2572222c13b7db626b145ad42c66a45",
+    "instigator_transport": [
+      "BOOTP/TFTP Unix stream",
+      "BOOTP/TFTP TCP stream"
+    ],
+    "retained_build": {
+      "built_utc": "2026-11-13T08:18:23.182480+00:00",
+      "prismatic_revision": "3a5e48d7269f2145b5c571da1c3c78b82d88e827",
+      "iris_repository": "https://github.com/salvogendut/iris.git",
+      "iris_branch": "xiri",
+      "iris_revision": "36858ff4e8694756502fa1e84b1190e6997d6e0d",
+      "iris_source": "/var/home/salvogendut/Dev/iris",
+      "features": "pcap,idle-pause,jitv2",
+      "profile": "dev (iris dependency opt-level 2)",
+      "instigator_repository": "https://github.com/jamesbraid/instigator.git",
+      "instigator_branch": "main",
+      "instigator_revision": "2db7231aa2572222c13b7db626b145ad42c66a45",
+      "instigator_go_version": "1.27.1",
+      "binaries": {
+        "prismatic": "6dc22dccf5595e513f976080db3ee79701a8fe86a08a6298de02ce88d74306c8",
+        "instigator": "ee6227feae11594d08757ad243372b14743fbe8383563638e056e9240a109a39"
+      }
+    },
+    "artifact_directory": ".work/upstream-qualified"
+  },
+  "checks": {
+    "host-tests-final.log": "92c3375b18233a54220f6199124b41b6f75717ea91c81b1fa56314f17cde5f41",
+    "iris-tests-final.log": "d0e8d6695bf7c567890892955780280e3558edbeebe007af1c03a669307d31e2",
+    "prismatic-tests-final.log": "1bfe0c4efc7e2cdf5ffc3900bbbaf439a880b2cb1a9ae12f6f56a68661cad9c8",
+    "prismatic-clippy-final.log": "340c0649242b9bb76014a372f5e64a6addf89ca90bcde36e8cc388f1e2b31b9c",
+    "prismatic-main-clippy.log": "b354039ed92a313b6e507172fa59c5976b6930fb8310454221e4340092069d99",
+    "prismatic-main-check.log": "7ec1112c64cff9dfb7ce5b5c25a96063d3e761ba6351a3721a810e00d56fef55",
+    "instigator-transport.log": "d2b5c4f990586eea097aea9d481486565b397b284bfde67ddbb5c6b2e5ef030c",
+    "prismatic-ui.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "prismatic-prom.log": "d35ad56af65aaf051d2672a22d46afae59021d76e14b12226a9d0023fe1eb22f",
+    "cpu-r4400.log": "69cc237e3e600d001d8141de286da981d4649f46e5822946f381447d6247928e",
+    "prismatic-main-exact.log": "f9591a637273dcd14b95f2240a3a8960d0d463380b2451c305791a4c80a3f263"
+  },
+  "cpu_baseline": {
+    "reported": 277,
+    "expected_failed_tests": [
+      "cache/hit_inv_discards",
+      "excep/cop2_unusable",
+      "fpu/cvt_s_d_rounds",
+      "fpu/inexact_flag",
+      "fpu/trap_disabled_control",
+      "fpu/trap_inexact",
+      "fpu/vec_arith_double",
+      "fpu/vec_arith_single",
+      "fpu/vec_cvt_from_l",
+      "fpu/vec_sqrt",
+      "mem/lwr_all_offsets",
+      "mips4/fp_cond_move_d",
+      "mips4/fp_cond_move_s",
+      "mips4/recip_rsqrt",
+      "mips4/recip_rsqrt_d"
+    ],
+    "actual_failed_tests": [
+      "cache/hit_inv_discards",
+      "excep/cop2_unusable",
+      "fpu/cvt_s_d_rounds",
+      "fpu/inexact_flag",
+      "fpu/trap_disabled_control",
+      "fpu/trap_inexact",
+      "fpu/vec_arith_double",
+      "fpu/vec_arith_single",
+      "fpu/vec_cvt_from_l",
+      "fpu/vec_sqrt",
+      "mem/lwr_all_offsets",
+      "mips4/fp_cond_move_d",
+      "mips4/fp_cond_move_s",
+      "mips4/recip_rsqrt",
+      "mips4/recip_rsqrt_d"
+    ],
+    "unexpected": [],
+    "now_passing": [],
+    "complete": true
+  },
+  "cpu_guest_compiler": "NetBSD GCC 14.4.0; correctness baseline only, not CI benchmark parity",
+  "desktop": {
+    "directory": ".work/shutdown-sessions/ordinary-knogj9me",
+    "result_sha256": "429b3ccae21e3650776cb7bea0ba185544277ca87e268f6467f1be598142c441",
+    "test_log_sha256": "3e85a490f3e0a9a9eeaf3f517ffc4b73f1194ee10c07a6591df742c9aeb8566f",
+    "reboot_restore": "passed, two winterms and xclock, saved geometry and correct native user/home",
+    "clean_shutdown": true,
+    "base_unchanged": true
+  },
+  "image_emulator_unchanged": "819c6825504d40ad9f9aa00554249affd2da9446",
+  "limits": [
+    "The bare-metal comparison covers R4400 JIT; other CPU models retain unit-test coverage only in this cycle.",
+    "Fresh Octane release firmware requires a Keep existing boot before offline boot presets.",
+    "New platform/graphics additions and full IRIX installations on O2/Octane were not qualified in this cycle."
+  ]
+}

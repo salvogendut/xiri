@@ -174,6 +174,10 @@ def main():
             readme = readme.replace('Xmahjongg starts only when launched from Freeware or winterm.',
                 'Xmahjongg has no default autostart; it can be included in a saved session.')
             readme += (ROOT/'lab/irix-session/image-README.txt').read_text()
+        if '/usr/local/libexec/xiri/stop-sessions' in r['installed_files']:
+            readme = readme.replace(
+                'Log out before rebooting or shutting down. Rebooting with an active desktop\ncan close X before its save completes, losing the latest layout changes.',
+                'Use shutdown -r now or shutdown -h now from an administrative terminal.\nThe xiri_sessions shutdown service saves active desktops before stopping X.\nshutdown -p now also uses these hooks. Direct reboot/halt/poweroff commands\nbypass rc.shutdown; log out first when using those commands. Emulator\ntermination and power loss cannot save an active session.')
     if r.get('gimp_resources'):
         readme += (ROOT/'lab/irix-gimp/image-README.txt').read_text()
     if 'acrobat' in r.get('application_resources', {}):

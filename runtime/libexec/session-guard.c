@@ -147,8 +147,11 @@ static void report_remaining(int kq, pid_t leader, int finished)
 int main(int argc, char **argv)
 {
     char *end;
+    /* A kernel-visible marker lets shutdown select desktop supervisors,
+     * leaving nested/application guards and unrelated same-user work alone. */
+    if (argc > 1 && !strcmp(argv[1], "--desktop")) { --argc; ++argv; }
     if (argc < 3 || !*argv[1] || getuid() == 0 || getuid() != geteuid() || getgid() != getegid()) {
-        fprintf(stderr, "Usage (as the session user): session-guard milliseconds program [args...]\n");
+        fprintf(stderr, "Usage (as the session user): session-guard [--desktop] milliseconds program [args...]\n");
         return 2;
     }
     errno = 0;

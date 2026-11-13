@@ -1,0 +1,16 @@
+#!/bin/sh
+# PROVIDE: xiri_sessions
+# REQUIRE: xdm xiri_famd
+# KEYWORD: shutdown
+# rc.shutdown reverses startup order: save/end desktops while X and FAM live.
+. /etc/rc.subr
+name=xiri_sessions
+rcvar=$name
+start_cmd=:
+stop_cmd=xiri_sessions_stop
+xiri_sessions_stop()
+{
+    /usr/local/libexec/xiri/stop-sessions
+}
+load_rc_config "$name"
+run_rc_command "$1"
