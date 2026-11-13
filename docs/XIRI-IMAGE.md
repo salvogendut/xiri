@@ -8,7 +8,7 @@ older reproduction checkpoints. Automated checks never promote their result
 or replace the manual bundle's NVRAM/overlay state.
 
 The current accelerated xdm bundle is
-`.work/images/xiri-netbsd-desktop-20261113-shutdown/`.
+`.work/images/xiri-netbsd-desktop-20261113-filemanager/`.
 The [shutdown-saving update](results/2026-11-13-shutdown-sessions.md) saves
 active 4Dwm desktops before xdm stops. Use `shutdown -r now` or
 `shutdown -h now` from an administrative terminal; `shutdown -p now` also
@@ -19,14 +19,17 @@ The [saved-session update](results/2026-11-06-desktop-sessions.md),
 [Solid colours](results/2026-11-06-desktop-colours.md),
 [preferences](results/2026-11-06-desktop-preferences.md) and
 [multi-user support](results/2026-11-05-multiuser.md) are retained. The
-kernel/module, accelerated Newport driver and bundled emulator are unchanged.
+core kernel, accelerated Newport driver and bundled emulator are retained.
+The [File Manager update](results/2026-11-13-file-manager.md) adds measured
+filesystem statistics/removal to the module, the original `telldesktop`
+helper and local hostname resolution.
 The [full IRIS upstream merge](FORKS.md#iris-upstream-updates) is separately
 qualified; this image still includes its pinned `819c682` emulator.
 Xmahjongg has no default autostart; a saved session can include it.
-The preceding saved-session bundle and its manual state remain available.
-`netbsd-xiri.chd` is an 8 GiB NetBSD disk compressed to 496,311,538 bytes
+The preceding shutdown-saving bundle and its manual state remain available.
+`netbsd-xiri.chd` is an 8 GiB NetBSD disk compressed to 496,307,636 bytes
 (about 473 MiB). Its SHA256 is
-`8c7ebd8f62808ad55fe59066bcc3dbe5037dd0de04b74eeafe4bd7b42e565122`.
+`ac2e0702746448da893a623045cee06d359bbe6b8dc0f96668d66d3b8e9ec06e`.
 The earlier [cleanup candidate](results/2026-11-05-cleanup-image.md) and its
 96 MiB pressure observations remain recorded separately.
 The [native paging follow-up](results/2026-11-05-native-paging.md) records the
@@ -126,19 +129,23 @@ adds native FAM execution feedback, the granite backdrop and filesystem/home/
 Dumpster desktop icons. The source-disk probe verifies xmahjongg changing to
 its opened icon while running and returning to the exact closed pixels after
 exit. It also verifies filesystem and Dumpster double-clicks opening their
-directory views. Full Dumpster operations and launch animation remain open.
+directory views. The [File Manager cycle](results/2026-11-13-file-manager.md)
+adds local discard, recovery and emptying; transient launch animation remains open.
 
 ## Current xdm image
 
-The core kernel and module match NetBSD `xiri` commit
-`e9ff76a58affee773b767d334f98075bf86daf7e`. They retain the
+The core kernel matches NetBSD `xiri` commit
+`e9ff76a58affee773b767d334f98075bf86daf7e`. The filesystem module matches
+`8bf86afce2afede752c0eae37852e2f2472d91cb`; its
+[build ledger](../lab/irix-pathops/filemanager-build.json) records the reused
+core separately. They retain the
 [UVM allocation](results/2026-11-03-uvm-pglist.md),
 [CD9660 ABI](results/2026-11-04-system-stability.md) and
 [native FPU signal restoration](results/2026-11-05-type1-scaler.md)
 corrections, and add the measured IRIX sleep/child-state/group interfaces
 and native multi-child wait fix. The IRIX personality boot-loads as
 `exec / filesys` at normal securelevel 1. The
-[build ledger](../lab/native-wait/build.json) retains its actual pre-commit
+[core build ledger](../lab/native-wait/build.json) retains its actual pre-commit
 provenance; the [source-equivalence record](../lab/native-wait/source-equivalence.json)
 verifies the later committed inputs. The matching core and module are
 required, including the opt-in continued-child notification policy.
@@ -147,7 +154,7 @@ The Xiri fork hooks are still required.
 Launch the qualified bundle directly:
 
 ```sh
-/var/home/salvogendut/Dev/xiri/.work/images/xiri-netbsd-desktop-20261113-shutdown/run-iris.sh
+/var/home/salvogendut/Dev/xiri/.work/images/xiri-netbsd-desktop-20261113-filemanager/run-iris.sh
 ```
 
 It boots automatically to native NetBSD xdm. Use these public development
@@ -176,7 +183,7 @@ UID and groups. Each user has separate HOME, Desktop, Dumpster and session logs.
 Root has no password and remains available on serial B for administration.
 The ttyE0 getty is disabled so xdm owns the graphical keyboard.
 
-The fresh [image qualification](results/2026-11-13-shutdown-sessions-image.json) covers three
+The fresh [image qualification](results/2026-11-13-file-manager-image.json) covers three
 xiritest logins, a separate xiritest2/4Dwm login, native ctwm, both IRIX logout
 routes, failed-startup recovery, catalog launch, full-screen acceleration and
 clean halt. Restored logins contain one copy of each default application,
@@ -186,11 +193,11 @@ supplementary groups. All 142 SGI colour aliases pass in each of the four
 IRIX login sessions. The [focused preference checks](results/2026-11-06-desktop-colours.md)
 separately verify original-picker interaction and saved colours through
 relogin and reboot. PNGs show
-[4Dwm](results/images/2026-11-13-shutdown-desktop.png),
-[the second IRIX user](results/images/2026-11-13-shutdown-desktop-second-user.png),
-[ctwm](results/images/2026-11-13-shutdown-desktop-native.png), the
-[greeter](results/images/2026-11-13-shutdown-desktop-greeter.png) and
-[winterm before any test resize](results/images/2026-11-13-shutdown-desktop-winterm.png).
+[4Dwm](results/images/2026-11-13-file-manager-desktop.png),
+[the second IRIX user](results/images/2026-11-13-file-manager-desktop-second-user.png),
+[ctwm](results/images/2026-11-13-file-manager-desktop-native.png), the
+[greeter](results/images/2026-11-13-file-manager-desktop-greeter.png) and
+[winterm before any test resize](results/images/2026-11-13-file-manager-desktop-winterm.png).
 Each of the three xiritest logins checks untouched terminal geometry and
 foreground SIGWINCH delivery; an extra 100×30 terminal preserves its size and closes on typed
 `exit`. Terminal defaults explicitly select NetBSD's 100dpi Adobe Courier
@@ -204,7 +211,7 @@ label rendering separately from individual command functionality.
 The native logout test ends ctwm from its own terminal;
 it does not qualify its Quit menu.
 
-The unchanged core/module retain the earlier shell-job qualification for
+The core and existing shell-job code are unchanged; earlier checks cover
 winterm's native shell and the original IRIX shell in GNOME Terminal: Ctrl-Z,
 bg/fg, Ctrl-C, background reads, explicit waits, terminal exit and logout with
 active jobs. This cycle repeats the desktop, winterm, font and multi-user gates
@@ -213,7 +220,7 @@ repeated. Add `--jobs` to include
 them in a later run. `./xiri check` selects the current image's gates automatically:
 
 ```sh
-python3 scripts/probe-xiri-xdm.py --bundle .work/images/xiri-netbsd-desktop-20261113-shutdown --multiuser --winterm --fonts --colours
+python3 scripts/probe-xiri-xdm.py --bundle .work/images/xiri-netbsd-desktop-20261113-filemanager --multiuser --winterm --fonts --colours
 ```
 
 For root's manual fallback, stop xdm with `/etc/rc.d/xdm stop`, then run
@@ -375,7 +382,8 @@ from the older base image to it.
 Choose **Desktop → Log Out** in Toolchest to return to xdm.
 For the desktop menu, hold the right mouse button over empty background,
 move to **Log Out**, then release. Both routes stop the session's clients;
-FAM, rpcbind and xdm remain running. They do not save an IRIX session.
+FAM, rpcbind and xdm remain running. The current runtime saves the 4Dwm
+session before stopping its clients.
 For shutdown, log in as root on serial B and halt NetBSD before stopping IRIS:
 
 ```sh
@@ -513,10 +521,11 @@ For the current bundle, the explicit command is:
 
 ```sh
 python3 scripts/probe-xiri-xdm.py \
-  --bundle .work/images/xiri-netbsd-desktop-20261103-xdm
+  --bundle .work/images/xiri-netbsd-desktop-20261113-filemanager \
+  --multiuser --winterm --fonts --colours
 ```
 
-This clones the CHD and frozen graphical boot profile under `verification/`,
+This clones the CHD and frozen graphical boot profile into a disposable run,
 boots from disk without a TFTP kernel and checks the installed runtime.
 Manual NVRAM/overlays remain untouched. Imported payload is reused.
 
@@ -581,9 +590,11 @@ The [icon repair](results/2026-11-02-desktop-icons.md) restores application-spec
 Freeware artwork and FileManager folder/document icons through measured
 locks, seek offsets and native FAM pathname mapping. The shell update adds
 xmahjongg catalog launches; the behavior update adds opened/closed icon
-feedback. Full file operations, broad application compatibility and package
-installation remain open. Only
-xmahjongg's application-specific data tree was collected completely.
+feedback. Local file creation, rename, copy, move and Dumpster operations
+are covered by the [File Manager cycle](results/2026-11-13-file-manager.md).
+Cross-filesystem operations, broader application compatibility and package
+installation remain open. The [import ledger](IRIX-IMPORT.md) records
+application resources and their qualification.
 The current runtime enables original 4Dwm session saving; see the
 [saved-session guide](IRIX-SOFTWARE.md#saved-desktop-sessions). Use
 `shutdown -r now` or `shutdown -h now` to save the active session
@@ -608,15 +619,15 @@ It is broad manual feedback, not an application-by-application qualification;
 specific application names, actions and failures have not yet been recorded.
 
 Start with the **Freeware** page and inspect the icons, then use Toolchest's
-**Open Unix Shell** twice and type commands in each terminal. Close the
-xmahjongg launched at desktop startup before trying its catalog entry, so a
-new launch can be distinguished from the existing window. Try other catalog
-entries individually and record the exact entry/action and any error dialog.
+**Open Unix Shell** twice and type commands in each terminal. If a saved
+session already restored xmahjongg, close it before trying its catalog entry
+so a new launch can be distinguished from the existing window. Try other
+catalog entries individually and record the exact entry/action and any error dialog.
 Their presence and artwork do not imply that each application can run.
 
 FileManager can inspect the native test folder
 `/usr/people/xiritest/XiriTest`, which contains a directory and text document.
 Finish with Toolchest logout, restart the desktop, and try desktop-menu logout.
-Keep the overlay and `/var/tmp/xiri-desktop/session.*` logs when reporting a
-failure. This lets the next compatibility cycle start from the actual action
-and its logs rather than inferring support from the screenshot.
+Keep the overlay, `~/.xsession-errors` and `~/.xiri/sessions/` logs when
+reporting a failure. This lets the next compatibility cycle start from the
+actual action and its logs rather than inferring support from the screenshot.

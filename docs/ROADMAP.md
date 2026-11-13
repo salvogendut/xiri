@@ -21,8 +21,10 @@ continuous/explicit saves and restores supported windows and layouts. The
 [shutdown follow-up](results/2026-11-13-shutdown-sessions.md) saves active
 desktops before xdm stops for `shutdown -r now` or `shutdown -h now`. Direct
 `reboot`, `halt` and `poweroff` bypass the shutdown hooks; log out first when
-using those commands. File Manager/Dumpster behavior, broader application restoration, other
-control panels and backdrop formats remain separate.
+using those commands. The [File Manager cycle](results/2026-11-13-file-manager.md)
+adds local create/rename/copy/move, discard/recover and emptying for both users,
+with 720 paired filesystem records. Cross-filesystem moves, collisions, broader
+application restoration, other control panels and backdrop formats remain separate.
 
 The agreed target remains the full original IRIX desktop on NetBSD and X.org,
 with modern software running natively. The [repository/workflow cleanup](results/2026-11-03-workflow-cleanup.md) is
@@ -320,8 +322,8 @@ The [original-shell checkpoint](results/2026-11-02-irix-vendor-shell.md) and
 catalog command path and start winterm in HOME. The
 [desktop behavior cycle](results/2026-11-02-irix-desktop-behavior.md) addresses
 running-icon feedback, granite and filesystem/home/Dumpster icons before
-xdm integration. Next desktop work includes Dumpster actions, launch animation,
-preferences and persistence; broader GIMP behavior and xosview statistics
+xdm integration. Later cycles cover preferences, saved sessions and local
+Dumpster operations; transient launch animation, broader GIMP behavior and xosview statistics
 remain application-specific work. The
 [new manual CHD](results/2026-11-02-desktop-behavior-image.md) packages the
 session/FAM changes and clearly labels xiritest as the desktop user, with
@@ -484,7 +486,8 @@ dependency candidates; a visible window alone does not complete these checks.
 - [x] Implement [measured mkdir support](results/2026-11-01-irix-mkdir.md): 3,200 records, 1,540 independently verified directory creations and 44 controls pass. Native group ownership remains explicit policy.
 - [x] Record the [user-supplied original desktop reference](IRIX-DESKTOP-REFERENCE.md), with a pixel-preserving PNG and explicit appearance/content targets.
 - [x] Implement [measured pipe support](results/2026-11-01-irix-pipe.md): 220 exact records and 44 native/vendor controls, including descriptor exhaustion/rollback and forked writers.
-- [ ] Complete usable file/icon clients. The [desktop service repair](results/2026-11-02-desktop-services.md) supersedes the earlier empty catalog/select startup boundary: system pages and entry labels now appear, FileManager lists native files, and FAM delivers changes. The [icon repair](results/2026-11-02-desktop-icons.md) qualifies Freeware artwork and FileManager folder/document icons. The [xdm CHD](results/2026-11-03-xiri-xdm-image.md) also qualifies catalog double-click launching. Broader file operations and intermittent terminal geometry/startup failures remain. Saved application sessions are covered by the November 6 cycle; broader File Manager/Dumpster operations remain open.
+- [ ] Complete usable file/icon clients. The [desktop service repair](results/2026-11-02-desktop-services.md) supersedes the earlier empty catalog/select startup boundary: system pages and entry labels now appear, FileManager lists native files, and FAM delivers changes. The [icon repair](results/2026-11-02-desktop-icons.md) qualifies Freeware artwork and FileManager folder/document icons. The [xdm CHD](results/2026-11-03-xiri-xdm-image.md) also qualifies catalog double-click launching. Saved application sessions are covered by the November 6 cycle. The November 13 File Manager cycle covers local operations; cross-filesystem moves, collisions and remote file behavior remain open.
+- [x] Exercise local File Manager folder creation, rename, copy, move, discard, recovery and emptying under two users. The [filesystem cycle](results/2026-11-13-file-manager.md) records ownership/isolation, post-reboot metadata and 720 paired ABI checks; its GUI-run interruption is explicit.
 - [x] Enable [saved desktop sessions](results/2026-11-06-desktop-sessions.md) through original 4Dwm: continuous and explicit modes, multiple winterms, xclock, Catalog, layout restoration and per-user state.
 - [x] Coordinate saving before xdm closes an active display during orderly system shutdown/reboot. The [shutdown service](results/2026-11-13-shutdown-sessions.md) passes continuous reboot, explicit cold-boot restoration, user isolation and stalled-save cleanup checks. Direct reboot/halt/poweroff bypass rc.shutdown.
 - [x] Inventory the supplied [May 2004 freeware sets](results/2026-11-01-irix-freeware.md): four CDs, 489 distinct packages; record zero-filled ncurses/nedit metadata separately.
@@ -507,7 +510,7 @@ dependency candidates; a visible window alone does not complete these checks.
 - [x] Connect original Icon Catalog and FileManager to native FAM v1, fix the daemon's optimized tree-iterator crash, and expose the imported desktop paths to its native namespace. Observe 18 catalog pages, 21 Freeware entries, native files/folders and live file notifications.
 - [x] Prioritize original IRIX `/bin/sh`: [bounded static n32 admission, directory/process-group adapters and shell execution](results/2026-11-02-irix-vendor-shell.md), with 772 checks and two xmahjongg launches through the catalog's original action.
 - [x] Package the shell kernel, native null device and winterm HOME fix in a [new manual CHD](results/2026-11-02-irix-shell-image.md); verify graphical boot/logout and a fresh catalog launch from the CHD.
-- [ ] Qualify a complete xmahjongg game, later-login persistence, Dumpster operations and transient launch animation. Bounded accelerated hint/take, undo and resize/restore now pass. The **Freeware** double-click launch and opened/closed artwork cycle now pass. Evaluate the located original `launcheffect`/`waitmap` helpers separately; keep unresolved links and additional application runtime data explicit.
+- [ ] Qualify a complete xmahjongg game, later-login persistence and transient launch animation. Local Dumpster operations are covered by the November 13 filesystem cycle. Bounded accelerated hint/take, undo and resize/restore now pass. The **Freeware** double-click launch and opened/closed artwork cycle now pass. Evaluate the located original `launcheffect`/`waitmap` helpers separately; keep unresolved links and additional application runtime data explicit.
 - [ ] Later resume original IRIX `inst`, then Software Manager, to install **xmahjongg 3.6.1** from distribution media. Its original hooks must create the **Freeware** entry and icon/type rules; qualify installation history, upgrade and removal separately from file import. See the [software plan](IRIX-SOFTWARE.md).
 - [x] Qualify persistent native accounts under `/usr/people/<username>` with shared native/IRIX access, generated desktop state and logout/login persistence. The [multi-user result](results/2026-11-05-multiuser.md) covers two accounts. Original root sessions use `HOME=/`; avoid a second emulation-root copy of user homes.
 - [ ] Implement required service adapters, including the measured file-notification and launch behavior.

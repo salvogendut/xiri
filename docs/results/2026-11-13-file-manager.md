@@ -42,7 +42,12 @@ The fresh packaged-image ABI run passes all
 [336 removal records](2026-11-13-file-manager-remove.json), with no mismatches.
 Its [owning run](2026-11-13-file-manager-abi.json) verifies the loaded module,
 passes the native control, halts cleanly and leaves the source CHD unchanged.
-Cold-desktop qualification is pending. The first cold-check supervisor was
+The separate [cold-desktop qualification](2026-11-13-file-manager-image.json)
+passes both IRIX accounts, native ctwm, full-screen XAA, 345 native text
+comparisons, winterm sizing/resize/exit, catalogue launch, logout/recovery and
+clean halt. Both successful fresh runs leave the source CHD unchanged.
+
+The first cold-check supervisor was
 [interrupted](2026-11-13-file-manager-cold-interruption.json) before its final
 result; the orphaned guest was halted cleanly. That run is not used for
 promotion. Its replacement retains partial checkpoints as well as the final
@@ -80,9 +85,18 @@ The host regression suite passes all 58 tests.
 
 ## Manual image
 
-The candidate is `.work/images/xiri-netbsd-desktop-20261113-filemanager/`.
-It has passed CHD verification and an exact raw-disk round trip; selection
-awaits the cold-desktop qualification.
+The selected bundle is `.work/images/xiri-netbsd-desktop-20261113-filemanager/`.
+It passes CHD verification, an exact raw-disk round trip and the fresh
+cold-desktop gate. Run `./xiri run`, or directly:
+
+```sh
+.work/images/xiri-netbsd-desktop-20261113-filemanager/run-iris.sh
+```
+
+Use `xiritest` / `xiritest` or `xiritest2` / `xiritest2` for IRIX desktops,
+and `netbsdtest` / `netbsdtest` for native ctwm. These remain public lab credentials.
+The [packaged desktop PNG](images/2026-11-13-file-manager-desktop.png) shows
+the catalog-launched game on the accelerated desktop.
 
 CHD SHA-256:
 `ac2e0702746448da893a623045cee06d359bbe6b8dc0f96668d66d3b8e9ec06e`.

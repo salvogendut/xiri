@@ -1,9 +1,17 @@
-# Development history through 2026-11-06
+# Development history through 2026-11-13
 
 This is the former README, retained as a chronological evidence index. Its
 status statements describe individual checkpoints and may be superseded by
 later entries. Use the [current README](../README.md), [development guide](DEVELOPMENT.md)
 and [selected image](../lab/irix-installed-desktop/image.json) for current work.
+
+The [November 13 File Manager cycle](results/2026-11-13-file-manager.md)
+adds measured filesystem statistics and removal in the module, fixes the
+image hostname lookup and imports original `telldesktop`. Local file and
+Dumpster actions are observed under both users; the fresh CHD passes 720 ABI
+records and separate cold desktop checks. The earlier
+[shutdown cycle](results/2026-11-13-shutdown-sessions.md) also saves active
+sessions before xdm stops for orderly shutdown/reboot.
 
 The [November 6 saved-session cycle](results/2026-11-06-desktop-sessions.md)
 uses original 4Dwm application and layout files, fixes winterm's stale restart

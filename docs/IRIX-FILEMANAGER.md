@@ -67,6 +67,10 @@ Each user's Dumpster should retain its hidden `.dumpster` marker and no
 discarded test content. Do not empty a Dumpster containing files you intend
 to keep.
 
+The [November 13 result](results/2026-11-13-file-manager.md) records the
+measured ABI, two-user GUI observations, their limits, screenshots and the
+qualified manual CHD.
+
 ## Compatibility boundary
 
 Filesystem statistics, deletion, directory removal and rename use native

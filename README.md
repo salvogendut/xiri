@@ -12,7 +12,7 @@ catalog launches and running-icon feedback. Native NetBSD Xorg drives a
 1280×1024 accelerated Newport display. It retains the xmahjongg texture
 correction qualified by the earlier [rendering and interaction checks](docs/results/2026-11-03-newport-xmahjongg.md).
 
-The [current manual CHD](docs/results/2026-11-13-shutdown-sessions.md#manual-image) boots into native
+The [current manual CHD](docs/results/2026-11-13-file-manager.md#manual-image) boots into native
 NetBSD xdm. Use **xiritest** / **xiritest** or **xiritest2** / **xiritest2** for
 separate IRIX desktops, or **netbsdtest** / **netbsdtest** for standard NetBSD ctwm.
 `netbsdtest` belongs to `wheel` and can run `su -` for a root login shell;
@@ -31,8 +31,11 @@ uses its original X11 controls, and SGI colour names resolve through a private
 session database. The [saved-session guide](docs/IRIX-SOFTWARE.md#saved-desktop-sessions)
 explains **Save Windows & Desks**, automatic and explicit saves, and profile
 backups. Xmahjongg has no default autostart entry.
-The [File Manager and Dumpster guide](docs/IRIX-FILEMANAGER.md) describes
-original file actions, the required hostname setup and per-user storage.
+The [File Manager cycle](docs/results/2026-11-13-file-manager.md) adds local
+create, rename, copy, move, discard, recovery and emptying under both users.
+Its module passes 720 paired filesystem checks against IRIX. The
+[File Manager and Dumpster guide](docs/IRIX-FILEMANAGER.md) explains the
+original actions, hostname setup and per-user storage.
 System services start at boot. NetBSD
 loads `compat_irix_o32.kmod` during boot and runs the desktop on a kernel
 without built-in IRIX support. The [core kernel](lab/native-wait/README.md)
@@ -52,7 +55,8 @@ are recorded separately. The [catalog startup survey](docs/results/2026-11-03-ir
 now records 124 distinct launch attempts in the
 [166-entry, tab-by-tab checklist](docs/ICON-CATALOG.md). It distinguishes
 windows, errors and busy processes without a window; useful operation still
-needs individual checks. Freeware NEdit accepts text but cannot save.
+needs individual checks. Freeware NEdit could not save in that survey;
+it has not been retested with the later filesystem module.
 
 The [GNOME follow-up](docs/results/2026-11-04-irix-gnome.md) now resolves
 gedit's busy ORBit startup with pathname Unix stream sockets in the module.
@@ -93,7 +97,7 @@ query. The full pressure workload, forced encrypted swap readback and cold
 desktop checks pass.
 The replacement CHD remains unselected after a separate startup kernel crash;
 that intermittent fault is recorded for later investigation. The current
-bundle retains the preceding native-wait kernel and module.
+bundle retains the preceding native-wait kernel, with the later filesystem module.
 
 The [preference cycle](docs/results/2026-11-04-irix-preferences.md) implements
 measured IRIX `rename` behavior. GNOME Terminal and gedit settings survive
@@ -140,8 +144,8 @@ available. The [earlier job-control image](docs/results/2026-11-05-native-wait-i
 adds the measured IRIX interfaces and native wait fix, then repeats cold
 xdm/4Dwm/ctwm, 345 text comparisons, shell jobs, winterm, catalog launch,
 logout/recovery and clean halt. Its separate 22-target replay also completes
-with verified cleanup. The current image retains its kernel and
-module; earlier bundles and manual state are preserved.
+with verified cleanup. The current image retains that core kernel and updates
+the filesystem module; earlier bundles and manual state are preserved.
 
 ## Related repositories
 
@@ -204,8 +208,8 @@ Use the `xiri` integration branches for both forks, following the
 
 Compatibility is incomplete. The reproduced Type1 collapse is corrected;
 winterm keeps the verified NetBSD bitmap Courier default. Broader graphics operations,
-Dumpster actions, other preference panels and broader application restoration
-need work. Active sessions now save before X stops when using NetBSD
+cross-filesystem moves, collision handling, other preference panels and broader
+application restoration need work. Active sessions now save before X stops when using NetBSD
 `shutdown -r now` or `shutdown -h now`; see the
 [shutdown-saving result](docs/results/2026-11-13-shutdown-sessions.md).
 Backdrop, colour scheme, focus and movement preferences now survive
