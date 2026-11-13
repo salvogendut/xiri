@@ -1,0 +1,86 @@
+{
+  "schema": 1,
+  "checked_at_utc": "2026-11-13T14:55:39.482059+00:00",
+  "remote": "https://github.com/techomancer/iris.git",
+  "previous_xiri": "2dc6fa9132233d3aa9fd96bdaa1c5c556675cf6b",
+  "previous_upstream": "74e265540ae1baf247608e0044defacca6b475c9",
+  "upstream": "9605704cf2a0b204fddc920e6236a3b8050f9e38",
+  "integrated_xiri": "84125cacb985f974c8f9d81150560150267fb194",
+  "incoming": [
+    "9605704cf2a0b204fddc920e6236a3b8050f9e38 idle-park: kick the other cpus when a cpu parks after an interrupt or work",
+    "4191577f40b1bfe33fb0ef168ed5fbd9cf8795fc ip34, ip35, ip53: free a dropped machine's cpus under jitv2",
+    "71ff5ccdf9e185ecc47e8e62e60d8cd2fa83fa98 vpro: compose the display straight into the screen",
+    "985facdb4ee4660269dd10270144d0bf2c65e789 kona, tests: build without warnings",
+    "030a00eeea6c7b349d5a68447e11d33663de5ded vpro: compose the display a tile row at a time from prepared readers",
+    "6ecfd8c9041d2476f81b228bb095a5c9d70984ed cpu: end held r10000 cache lines on invalidate and write back dirty ones (#708)",
+    "eaa4c1ae5343359112418585e22d4339a6eff8ef idle-park: park under jitv2 by probing compiled loops with interpreted batches"
+  ],
+  "resolution": "Only clanker/INDEX.md conflicted; retained both fork entries and the upstream CPU ownership note. Source merged without conflicts.",
+  "toolchain": "nightly-2026-10-28",
+  "cargo_lock_sha256": "5b858bcd6a92a9acded12f04c24becaecb246b40466dbd547fc97ea6772d70bb",
+  "validation": {
+    "workspace_features": {
+      "features": [
+        "jitv2",
+        "rex-jit",
+        "gputrace"
+      ],
+      "passed": 5539,
+      "ignored": 60,
+      "detail": "5536 iris library tests and 3 vmem library tests"
+    },
+    "default_library": {
+      "passed": 4852,
+      "ignored": 51
+    },
+    "idle_parking": {
+      "features": [
+        "jitv2",
+        "rex-jit",
+        "gputrace",
+        "idle-pause"
+      ],
+      "filter": "cpu::idle_park::",
+      "passed": 32,
+      "ignored": 0
+    },
+    "default_cli_build": [
+      "iris",
+      "iris-ci"
+    ],
+    "max_build_jobs": 2,
+    "test_threads": 2
+  },
+  "commands_files": [
+    ".work/documents/upstream-check.sh",
+    ".work/documents/upstream-idle.sh"
+  ],
+  "logs": {
+    ".work/documents/upstream-features.log": {
+      "sha256": "9aa6b479b742f3f89a86a83cb63b4301f62b4c0af4c915bd2085417a1fe81f61",
+      "bytes": 557454
+    },
+    ".work/documents/upstream-default.log": {
+      "sha256": "4e20fc98cf055d7b5523df69587d720fefb9ebb5c4c30c595418d82c968f9a78",
+      "bytes": 442807
+    },
+    ".work/documents/upstream-build.log": {
+      "sha256": "32979901919eef98191edd2937fdd3fa1a29a7157481541f0ff465f514dedab5",
+      "bytes": 3452
+    },
+    ".work/documents/upstream-idle.log": {
+      "sha256": "f3f6969353e73deb817230b378689a18eb9723e4f00b869d72ae7b4067f581a3",
+      "bytes": 7952
+    },
+    ".work/documents/upstream-check.sh": {
+      "sha256": "b8c51caa8727e39871ba538d2dc8c94b65670c209eb0e14b71171d8d37dd315a",
+      "bytes": 956
+    },
+    ".work/documents/upstream-idle.sh": {
+      "sha256": "408aadd5380ad5f34a36e43b4e56af391849eaa17457ae135d8d4fa0782ecffd",
+      "bytes": 696
+    }
+  },
+  "netbsd_xiri": "8bf86afce2afede752c0eae37852e2f2472d91cb",
+  "artifact_policy": "Selected CHD, frontend bundle and detached lab worktrees retain their qualified pins. These are source integration checks, not a promotion of this debug emulator into the manual image."
+}

@@ -42,6 +42,17 @@ not repin qualified kernels, emulator binaries, runtime resources or guest disks
 
 ## IRIS upstream updates
 
+The document-launching cycle fetched upstream on 2026-11-13 through
+`9605704cf2a0b204fddc920e6236a3b8050f9e38` and integrated seven commits as
+`84125cacb985f974c8f9d81150560150267fb194` on IRIS `xiri`.
+The sole conflict was the documentation index; all fork and upstream entries
+are retained. The feature workspace passes 5,539 library tests (60 ignored),
+the default library passes 4,852 (51 ignored), both normal CLI binaries build,
+and all 32 optional idle-parking tests pass with `jitv2` enabled.
+The [integration ledger](results/2026-11-13-documents-upstream.json) retains
+exact inputs and log hashes. NetBSD and the qualified manual-image emulator
+remain unchanged; pinned detached worktrees are preserved.
+
 The clipboard cycle fetched upstream on 2026-11-13 through
 `74e265540ae1baf247608e0044defacca6b475c9` and integrated 15 commits.
 IRIS `xiri` is pushed at `2dc6fa9132233d3aa9fd96bdaa1c5c556675cf6b`.
