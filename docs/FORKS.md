@@ -42,6 +42,17 @@ not repin qualified kernels, emulator binaries, runtime resources or guest disks
 
 ## IRIS upstream updates
 
+The clipboard cycle fetched upstream on 2026-11-13 through
+`74e265540ae1baf247608e0044defacca6b475c9` and integrated 15 commits.
+IRIS `xiri` is pushed at `2dc6fa9132233d3aa9fd96bdaa1c5c556675cf6b`.
+The documentation index retains both sides' entries; the frontend serial
+extension uses upstream's new constructor and refused-byte tracking.
+The feature-enabled workspace passes 5,530 library tests (59 ignored), the
+default library passes 4,843 (50 ignored), and both normal CLI binaries build.
+The [integration ledger](results/2026-11-13-clipboard-upstream.json) records
+commands, hashes and scope. The selected CHD and frontend bundle retain their
+qualified emulator pins. NetBSD remains unchanged at `8bf86af`.
+
 The same November 13 File Manager cycle adds filesystem statistics and
 removal to NetBSD `xiri` at `8bf86afce2afede752c0eae37852e2f2472d91cb`, pushed
 to origin. The module passes 384 statvfs-family and 336 unlink/rmdir records

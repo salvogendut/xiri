@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "cycle": "Clipboard interoperability",
+  "branch": "xiri",
+  "upstream": "74e265540ae1baf247608e0044defacca6b475c9",
+  "previous": "993d8400f50c81edd8b853323458c0484908c866",
+  "merge": "4b9ed5685fc0af7973d995ee2ac6e198938762d1",
+  "integration": "2dc6fa9132233d3aa9fd96bdaa1c5c556675cf6b",
+  "incoming_commits": 15,
+  "conflicts": [
+    "clanker/INDEX.md: retained both fork notes and the upstream held-CPU note"
+  ],
+  "adaptation": "Frontend serial override now calls FanoutBackend::new, preserving upstream refused-byte tracking; the first compile identified the old tuple constructor.",
+  "validation": {
+    "workspace_library": {
+      "features": "jitv2,rex-jit,gputrace",
+      "passed": 5530,
+      "failed": 0,
+      "ignored": 59,
+      "iris_passed": 5527,
+      "vmem_passed": 3
+    },
+    "default_library": {
+      "passed": 4843,
+      "failed": 0,
+      "ignored": 50
+    },
+    "binaries": {
+      "command": "cargo +nightly-2026-10-28 build --bin iris --bin iris-ci -j 2",
+      "status": "passed"
+    }
+  },
+  "logs": {
+    ".work/clipboard/upstream-features.log": "2f50ec3bc3f660ddd14f4478e80d963483cc30d4883c5324cb8e7338a7d33c6a",
+    ".work/clipboard/upstream-default.log": "b1f787bafb9fa95c73153ec35555e976e568af1ae313cba9e94037c2c3ab9300",
+    ".work/clipboard/upstream-build.log": "06379ec8bbdb541c6aabb9733d1657dbb6ff104d6bbd3380f0e54c0a23ace891"
+  },
+  "build_inputs": {
+    ".work/clipboard/upstream-check.sh": "e79965943947edcc421cf3d5cd8a3e957667819b58444c404a28faf52faba8d5",
+    ".work/clipboard/upstream-build.sh": "1a5848b82c3608cb8dc3454b39abfd8be76fdde8210eafdb3402b52d012b03e8"
+  },
+  "binary_hashes": {
+    "iris": "00da9cd5c2b6535ecd72ab48bd3324d9397b9d38c4f1e62e031cc6dae270fc0a",
+    "iris-ci": "26a3e7d8250d0562ae696922c0f591897885568bde83b86dc3eb02c4d654d5ef"
+  },
+  "limits": [
+    "Unit/library and normal CLI builds; no promotion of this build into the manual desktop image.",
+    "An initial feature run was stopped to isolate its generated REX profile, then restarted and completed.",
+    "Existing deprecation/unused warnings remain; no functional test failures in the completed runs."
+  ],
+  "image_emulator_unchanged": "819c6825504d40ad9f9aa00554249affd2da9446",
+  "qualified_frontend_bundle_unchanged": ".work/upstream-qualified",
+  "status": "qualified-and-pushed"
+}
