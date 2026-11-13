@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "cycle": "File Manager and Dumpster",
+  "upstream": "a6503d006c6dee03878919d58b52470f0a855125",
+  "merge": "993d8400f50c81edd8b853323458c0484908c866",
+  "branch": "xiri",
+  "incoming_commits": 2,
+  "conflicts": [],
+  "changes": [
+    "ci-nextest uses jitv2,rex-jit,gputrace; GPU tests retain their separate gate",
+    "wgpu wait reports the original refused-submission validation error"
+  ],
+  "validation": {
+    "wgpu_refused_submission": {
+      "passed": 1,
+      "adapter": "Mesa Lavapipe Vulkan; test executed, not skipped",
+      "features": "jitv2,rex-jit,gputrace,wgpu"
+    },
+    "rex3_corpus": {
+      "passed": 14,
+      "ignored": 2,
+      "failed": 0,
+      "features": "jitv2,rex-jit,gputrace"
+    }
+  },
+  "logs": {
+    ".work/file-manager/upstream-wgpu.log": "457af36cf8cae000938648ba8d3922951204e10dd8d76bff83eb20b42aae97c8",
+    ".work/file-manager/upstream-corpus.log": "b8f7f089400ec2f306dda67414f6fcd258a3eae8b934a9737ddafb57b3c2b441"
+  },
+  "image_emulator_unchanged": "819c6825504d40ad9f9aa00554249affd2da9446",
+  "qualified_frontend_bundle_unchanged": ".work/upstream-qualified",
+  "local_lockfile": "Regenerated ignored Cargo.lock to resolve the new feature graph; no tracked source edits.",
+  "cleanup": {
+    "target": ".work/file-manager-iris-build",
+    "allocated_bytes": 1297866752,
+    "status": "removed",
+    "available_bytes_after": 502012055552
+  },
+  "status": "qualified-and-pushed"
+}

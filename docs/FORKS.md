@@ -42,6 +42,17 @@ not repin qualified kernels, emulator binaries, runtime resources or guest disks
 
 ## IRIS upstream updates
 
+The File Manager/Dumpster cycle fetched upstream on 2026-11-13 through
+`a6503d006c6dee03878919d58b52470f0a855125`. The two incoming commits merge
+cleanly as `993d8400f50c81edd8b853323458c0484908c866`, pushed on IRIS `xiri`.
+The updated CI feature set passes all 14 REX replay corpus tests (two ignored).
+The refused-GPU-submission regression also passes with real Mesa Lavapipe
+Vulkan execution. The changes concern CI features and optional GPU error
+reporting; the desktop image and retained frontend binaries keep their
+previously qualified pins. The isolated 1.3 GiB build directory was removed
+once the merge and logs were saved; the [check ledger](results/2026-11-13-file-manager-upstream.json)
+retains exact revisions, feature sets, log hashes and cleanup size.
+
 The shutdown/session cycle fetched `https://github.com/techomancer/iris.git`
 on 2026-11-13 through `f0914a0b73d086f4b7a58cb8e362e2ce8973617a` and
 integrated all 645 incoming commits. Merge
