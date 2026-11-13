@@ -16,6 +16,7 @@ change the kernel or selected CHD. Native xdm configuration is opt-in.
 | `xiri-session` | Runs clients as the current native user on an existing authenticated X display; leaves X and system services running |
 | `xiri-desktop` | Root convenience wrapper: ensures services are available, starts an authenticated X server, uses `su -l` for the configured user, and stops its own X server after logout |
 | `xiri-launch`, `xiri-logout` | Native menu helpers; launched applications belong to the session's descendant tree; logout requests cleanup through its private directory |
+| `drop-bridge` | Native per-user X client; translates local SGI file drops for XDND receivers and exits with the supervised desktop |
 
 `session-guard` uses NetBSD `EVFILT_PROC`/`NOTE_TRACK`, registered before the
 first fork, to follow descendants across fork, setsid and double-fork. It
@@ -43,6 +44,9 @@ user at login. See the [document guide](../docs/IRIX-DOCUMENTS.md) for saved
 editor/viewer choices and the additive native application file-type rule. A
 live runtime install updates that rule when the imported `fftr` compiler is
 available; staged installs require a later `xiri-update-filetypes` invocation.
+The same updater adds the gedit Drop correction from `applications.ftr`.
+`xiri_drop_bridge=yes` enables running-window translation by default. See the
+document guide for tested gestures, application limits and disabling it.
 
 The native account's HOME, working directory, supplementary groups and
 XAUTHORITY are preserved. The manual wrapper creates an MIT-MAGIC-COOKIE-1

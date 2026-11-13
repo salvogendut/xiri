@@ -1,0 +1,60 @@
+{
+  "status": "observed",
+  "reference": {
+    "status": "observed",
+    "reference": "IRIX 6.5.22m",
+    "emulator_sha256": "cc6561d0bdfec6ce30d656caf4a6eaee6ffbf622e5348c3b77b73810d5293f56",
+    "identity": "6.5 6.5.22m\nuid=0(root) gid=0(sys)\n",
+    "clean_shutdown": true
+  },
+  "gedit_original_irix": "Error on option -f: unknown option.\nRun '/usr/freeware/bin/gedit --help' to see a full list of available command line options.\nGEDIT_RC=1\n562154726 202884 /usr/freeware/bin/gedit\n2774229057 312468 /usr/sbin/fm\ncksum: /usr/freeware/lib32/libgdk-1.2.so.3: No such file or directory\n",
+  "reference_ui_drop": "Not qualified: reference guest could not establish the external X connection; attempt stopped cleanly.",
+  "measured_sgi_payload": "Original IRIX 6.5.22m File Manager running under NetBSD",
+  "gimp_public_source": {
+    "url": "https://github.com/GNOME/gimp/blob/GIMP_1_2_5/app/gimpdnd.c",
+    "commit": "5915e7f23060b8e848dfb97892916119d0ed8d48",
+    "sha256": "411dd4e99533a43083b1d176ee0981dc0bc1f404d2fb20771bd83bc582ce920a",
+    "finding": "Non-Windows file reader strips file: without percent decoding."
+  },
+  "host_tests": {
+    "count": 63,
+    "result": "passed",
+    "log_sha256": "02580d3fb8db1930319ac63964242b177b714767b8e91a13f3e36b4592e41f10"
+  },
+  "filetype_update": "SHA256 (/emul/irix/usr/lib/filetype/desktop.otr) = 0ed671b4ab3c34dd01f3c34f475a6f97012491a4c604345b92dfc0140de21e1e\nFiletype rules and database unchanged; no rebuild needed.\n",
+  "invalid_update": "/emul/irix/usr/sbin/fftr error 70, file /usr/local/share/xiri/applications.ftr, line 1: Unrecognized rule.\nFiletype rules and database unchanged; no rebuild needed.\nSHA256 (/usr/local/libexec/xiri/drop-bridge) = cbb5eddd94833721ae23f4fc333803ac7dec6db9c83a90e2d888cbeb80d21a06\nSHA256 (/usr/local/share/xiri/applications.ftr) = 5cd4d964f292e59f690d31ecf1cea730010fdba22d7789590faa8c89639caf1f\n",
+  "upgraded_desktop": {
+    "status": "observed",
+    "exact_text": {
+      "gedit-icon-final": {
+        "bytes": 54,
+        "sha256": "79ce0b1e8c4d74b7d700520b4ff501115d30eb4cdbddcffb891804787237f656"
+      },
+      "gedit-window-final": {
+        "bytes": 54,
+        "sha256": "79ce0b1e8c4d74b7d700520b4ff501115d30eb4cdbddcffb891804787237f656"
+      }
+    },
+    "screenshots": {
+      "gedit-icon-final.png": "39d27f6da31eae33689305041061d028a18c8e4f89ce4df932fc99c93ba7b7d8",
+      "gedit-window-final.png": "65196819508fc06fe549f451f9b16ee7b3472a369ac1c39a5d1b3c8372f406d3",
+      "gimp-running-window-drop.png": "af25c1b9ce93d7cbe31696c0dcd3bebff4b9b50addd3c2a8004bc1b47ee6625a"
+    },
+    "source_unchanged": {
+      "gedit-icon-final": "79ce0b1e8c4d74b7d700520b4ff501115d30eb4cdbddcffb891804787237f656",
+      "gedit-cancel-final": "79ce0b1e8c4d74b7d700520b4ff501115d30eb4cdbddcffb891804787237f656",
+      "gedit-window-final": "79ce0b1e8c4d74b7d700520b4ff501115d30eb4cdbddcffb891804787237f656"
+    },
+    "gimp_image_window": "           0x180023c \"colour.png-0.0 (RGB) 100%\": (\"image_window\" \"Gimp\")  177x127+0+0  +224+224\n",
+    "gimp_source_unchanged": "b98fe8f345e051a7628c7f174fc246a9c4215f246f98ab19dd4d68ebe7eda4ce",
+    "helper": "Ready: local SGI file icons to XDND URI lists.\ndrop files=1 transfer=complete\ndrop files=1 transfer=complete\n UID  PID COMMAND\n1234 3317 /usr/local/libexec/xiri/drop-bridge \n"
+  },
+  "filetype_classification": "DB loaded errno=89\nNAMED XMahjonggExecutable\nSTAT /usr/freeware/bin/gedit mode=100555 size=202884\nTYPE /usr/freeware/bin/gedit XiriGEditExecutable errno=89\nFDTYPE /usr/freeware/bin/gedit XiriGEditExecutable errno=89\nSTAT /usr/freeware/bin/gimp mode=100555 size=2517576\nTYPE /usr/freeware/bin/gimp GimpExecutable errno=0\nFDTYPE /usr/freeware/bin/gimp GimpExecutable errno=0\nSTAT /usr/X11R7/bin/xedit mode=100555 size=923024\nTYPE /usr/X11R7/bin/xedit XiriNetBSDExecutable errno=0\nFDTYPE /usr/X11R7/bin/xedit XiriNetBSDExecutable errno=0\n",
+  "helper_logout": "OWN pid=2868 parent=6125\nOWN pid=2678 parent=2868\nOWN pid=2841 parent=2868\nOWN pid=3441 parent=2868\nOWN pid=320 parent=2868\nOWN pid=3317 parent=320\nOWN pid=4349 parent=2868\nOWN pid=2538 parent=4349\nOWN pid=5685 parent=2868\nOWN pid=2764 parent=2868\nOWN pid=2241 parent=2868\nOWN pid=5735 parent=2868\nOWN pid=2712 parent=2868\nOWN pid=2866 parent=2868\nOWN pid=1375 parent=2868\nOWN pid=2760 parent=2868\nOWN pid=5683 parent=2866\nOWN pid=5804 parent=1375\nOWN pid=2762 parent=5804\nOWN pid=2261 parent=2538\nOWN pid=2602 parent=2261\nOWN pid=2755 parent=2538\nOWN pid=5851 parent=2755\nOWN pid=2543 parent=2538\nOWN pid=3357 parent=2543\nOWN pid=2767 parent=2538\nOWN pid=5526 parent=2767\nOWN pid=2735 parent=2538\nOWN pid=5537 parent=2735\nOWN pid=2808 parent=2538\nOWN pid=5937 parent=2808\nOWN pid=2807 parent=5526\nOWN pid=3502 parent=5683\nOWN pid=6189 parent=2807\nOWN pid=2886 parent=2807\nOWN pid=663 parent=2807\nOWN pid=3304 parent=2807\nOWN pid=6050 parent=5683\nOWN pid=5660 parent=6050\nOWN pid=6079 parent=6050\nOWN pid=3152 parent=2807\nOWN pid=3394 parent=2807\nOWN pid=3247 parent=2807\nOWN pid=1187 parent=3247\nOWN pid=3396 parent=2807\nOWN pid=3360 parent=3247\nOWN pid=3284 parent=6125\nOWN pid=3609 parent=3284\nSESSION_SAVE acknowledged by 4Dwm\nSESSION_SAVE completed=1 exit=0 elapsed=206\nGUARD pid=2868 exit=-1 signal=15 stopped=1 absent=1 valid=1 tracked=48 remaining=0 reason=logout uid=1234 gid=1234 elapsed=708835\n",
+  "diagnostic_shutdown": {
+    "clean_shutdown": true,
+    "base_unchanged": true,
+    "base_chd_sha256": "ebe05509864ec21564602939f0c997e40af0752028d2912de1788ee19d04e4e7",
+    "emulator_group_stopped": true
+  }
+}

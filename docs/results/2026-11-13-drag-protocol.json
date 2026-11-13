@@ -1,0 +1,68 @@
+{
+  "status": "passed",
+  "sources": {
+    "runtime/libexec/drop-bridge.c": "04eeabc8ed079d74ed88e46872e7ff827409de94123dfb1535d96b0228348dfa",
+    "runtime/libexec/drop-files.h": "585e2239c7c49dafb9b702886d67f9d42f943c7c362513af8c6ece17247db7aa",
+    "lab/drag-drop/protocol.c": "27bbf0061151c60a7bfabd4cc750ea461c2f4d2a8cd3e82c3886db0482b34a29",
+    "scripts/probe-xiri-drag-protocol.py": "3e8d376f1d67419cd21354d9523087859519fe2c0510fb80dc0d72b301727b3b"
+  },
+  "cases": {
+    "v5-big": {
+      "exit": 0,
+      "stdout": "PASS v5-big\n",
+      "stderr": ""
+    },
+    "v3-little": {
+      "exit": 0,
+      "stdout": "PASS v3-little\n",
+      "stderr": ""
+    },
+    "native": {
+      "exit": 0,
+      "stdout": "PASS native\n",
+      "stderr": ""
+    },
+    "cancel": {
+      "exit": 0,
+      "stdout": "PASS cancel\n",
+      "stderr": ""
+    },
+    "cancel-drop": {
+      "exit": 0,
+      "stdout": "PASS cancel-drop\n",
+      "stderr": ""
+    },
+    "drop-help": {
+      "exit": 0,
+      "stdout": "PASS drop-help\n",
+      "stderr": ""
+    },
+    "reject": {
+      "exit": 0,
+      "stdout": "PASS reject\n",
+      "stderr": ""
+    },
+    "target-gone": {
+      "exit": 0,
+      "stdout": "PASS target-gone\n",
+      "stderr": ""
+    },
+    "passthrough": {
+      "exit": 0,
+      "stdout": "PASS passthrough\n",
+      "stderr": ""
+    },
+    "drop-only": {
+      "exit": 0,
+      "stdout": "PASS drop-only\n",
+      "stderr": ""
+    },
+    "restore": {
+      "exit": 0,
+      "stdout": "PASS restore\n",
+      "stderr": ""
+    }
+  },
+  "singleton": "passed",
+  "processes_stopped": true
+}

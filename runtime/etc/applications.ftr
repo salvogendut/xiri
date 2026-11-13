@@ -1,0 +1,17 @@
+# The installed gedit accepts positional documents, without the older -f flag.
+TYPE XiriGEditExecutable
+    SUPERTYPE Executable
+    MATCH tag == 0x00010F65;
+    LEGEND gEdit the GNOME Notepad
+    CMD OPEN $LEADER $REST
+    CMD DROP $TARGET $SELECTED
+    CMD ALTOPEN launch -c $LEADER $REST
+    ICON {
+        if (opened) {
+            include("/emul/irix/usr/lib/filetype/iconlib/generic.exec.open.fti");
+            include("/emul/irix/usr/lib/filetype/install/iconlib/gedit.open.fti");
+        } else {
+            include("/emul/irix/usr/lib/filetype/iconlib/generic.exec.closed.fti");
+            include("/emul/irix/usr/lib/filetype/install/iconlib/gedit.closed.fti");
+        }
+    }

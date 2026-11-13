@@ -25,6 +25,9 @@ observe()
     if wait "$child"; then status=0; else status=$?; fi
     printf '%s\n' "$status" >"$job/$name.exit"
 }
+if test "${XIRI_DROP_BRIDGE:-yes}" = yes; then
+    observe drop-bridge /usr/local/libexec/xiri/drop-bridge &
+fi
 # 4Dwm derives this directory from the display host, display and screen.
 # Under xdm our TCP display is normally 127.0.0.1:0, not hostname:0.
 display_host=${DISPLAY%%:*}

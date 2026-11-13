@@ -42,6 +42,14 @@ not repin qualified kernels, emulator binaries, runtime resources or guest disks
 
 ## IRIS upstream updates
 
+The drag-and-drop cycle checked upstream at 2026-11-13 20:11 UTC.
+Revision `9605704cf2a0b204fddc920e6236a3b8050f9e38` is already contained in
+IRIS `xiri` at `84125cacb985f974c8f9d81150560150267fb194`; fetch and ancestor
+checks passed, with no incoming commits or affected emulator rebuild.
+NetBSD stays at `8bf86afce2afede752c0eae37852e2f2472d91cb`. This cycle changes
+the native desktop runtime, retaining both fork sources and the qualified
+emulator pin used by the manual image.
+
 The document-launching cycle fetched upstream on 2026-11-13 through
 `9605704cf2a0b204fddc920e6236a3b8050f9e38` and integrated seven commits as
 `84125cacb985f974c8f9d81150560150267fb194` on IRIS `xiri`.

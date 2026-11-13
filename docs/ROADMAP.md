@@ -37,9 +37,11 @@ formats and host-machine clipboard integration remain separate work.
 The [document integration cycle](results/2026-11-13-documents.md) restores
 the original Utilities panel's saved environment at login and adds native
 NetBSD application Open/Drop rules. The [guide](IRIX-DOCUMENTS.md) separates
-document Open, application-icon Drop and running-window protocols. Remaining
-work includes running-window drops and gedit's stale `-f` Drop action; broader
-application repairs remain deferred. The replacement CHD passes separate
+document Open, application-icon Drop and running-window protocols. The
+[drag-and-drop follow-up](results/2026-11-13-dragdrop.md) adds a per-user
+SGI-to-XDND adapter and corrects gedit's stale `-f` action. GIMP's URI reader
+still needs separate application work for escaped filenames. Broader handlers
+and printing remain deferred. The document CHD passes separate
 cold document and full desktop qualification, including per-user editor
 settings, native icon drops, 345 text comparisons and three winterm checks.
 
@@ -534,7 +536,8 @@ dependency candidates; a visible window alone does not complete these checks.
 - [x] Exercise native X test windows under original 4Dwm in the same native Xvfb session used by Toolchest and winterm.
 - [ ] Show a maintained host-native graphical application and an IRIX application in the same local session; qualify physical display output separately.
 - [x] Restore per-user editor/viewer choices at login and qualify document Open and native application-icon Drop. See the [document cycle](results/2026-11-13-documents.md).
-- [ ] Qualify drops into running applications, repair stale application-specific Drop rules, and extend document/print handlers.
+- [ ] Qualify the running-window adapter and gedit icon correction on the replacement CHD. See the [drag-and-drop cycle](results/2026-11-13-dragdrop.md).
+- [ ] Extend remaining document/print handlers and application-specific drop support, including GIMP 1.2's URI escape decoding.
 - [x] Qualify text clipboard interoperability between native NetBSD and original IRIX clients. The [clipboard checks](results/2026-11-13-clipboard.md) cover both selection paths, incremental transfer, source exit and reset between users; the [guide](IRIX-CLIPBOARD.md) records tested gestures and encoding/lifetime limits.
 - [x] Restore separate users' backdrop, colour scheme, focus and window-movement preferences across logout/login and reboot. [Preference result](results/2026-11-06-desktop-preferences.md).
 - [x] Resolve SGI-prefixed colour names through Xlib's per-session database and qualify the original Solid backdrop picker in X11 mode. [Colour result](results/2026-11-06-desktop-colours.md): 142 aliases and two users' saved colours across logout/login and reboot.

@@ -5,6 +5,13 @@ status statements describe individual checkpoints and may be superseded by
 later entries. Use the [current README](../README.md), [development guide](DEVELOPMENT.md)
 and [selected image](../lab/irix-installed-desktop/image.json) for current work.
 
+The [November 13 drag-and-drop cycle](results/2026-11-13-dragdrop.md) adds a
+native per-user adapter between SGI file icons and XDND URI lists, and fixes
+gedit's obsolete `-f` icon action. Real gedit drops preserve exact text and
+GIMP opens a PNG. GIMP's older Unix URI parser still needs separate work for
+escaped filenames. Protocol, parser, cancellation and filetype-update checks
+are retained with the implementation; no kernel or emulator change is needed.
+
 The [November 13 document cycle](results/2026-11-13-documents.md) loads the
 original Utilities panel's saved environment at login and adds a native
 NetBSD executable type through the original `fftr` compiler. It distinguishes

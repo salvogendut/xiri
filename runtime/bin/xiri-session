@@ -73,4 +73,5 @@ xsetroot -solid '#69b5b5'
 echo "Xiri client session as $user. Logs: $job"
 export XIRI_SESSION_STOP_FILE="$job/logout"
 export XIRI_SESSION_SAVE="$base/save-session"
+export XIRI_DROP_BRIDGE=${xiri_drop_bridge:-yes}
 exec "$base/session-guard" --desktop "$duration" /bin/sh "$base/desktop-clients.sh" "$job" >"$job/guard.log" 2>&1

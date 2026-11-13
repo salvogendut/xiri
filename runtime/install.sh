@@ -12,6 +12,7 @@ done
 install -m 444 etc/xdm.xsession "$stage/usr/local/share/xiri/xdm.xsession"
 install -m 444 etc/desktop-Xresources "$stage/usr/local/share/xiri/desktop-Xresources"
 install -m 444 etc/netbsd.ftr "$stage/usr/local/share/xiri/netbsd.ftr"
+install -m 444 etc/applications.ftr "$stage/usr/local/share/xiri/applications.ftr"
 install -m 555 sbin/xiri-update-filetypes "$stage/usr/local/sbin/xiri-update-filetypes"
 install -m 555 sbin/xiri-sync-users "$stage/usr/local/sbin/xiri-sync-users"
 install -m 444 libexec/account-map.awk "$stage/usr/local/libexec/xiri/account-map.awk"
@@ -21,7 +22,7 @@ for name in Xservers Xresources; do
     test -e "$stage/etc/xiri/xdm/$name" || install -m 644 "etc/xdm-$name" "$stage/etc/xiri/xdm/$name"
 done
 for name in xiri-desktop xiri-session xiri-launch xiri-logout; do install -m 555 "bin/$name" "$stage/usr/local/bin/$name"; done
-for name in session-guard x11-check save-session stop-sessions; do install -m 555 "$build/$name" "$stage/usr/local/libexec/xiri/$name"; done
+for name in session-guard x11-check save-session stop-sessions drop-bridge; do install -m 555 "$build/$name" "$stage/usr/local/libexec/xiri/$name"; done
 install -m 555 "$build/shell-handoff" "$stage/usr/libexec/xiri-shell"
 for name in desktop-clients.sh setup-pty.sh; do install -m 555 "libexec/$name" "$stage/usr/local/libexec/xiri/$name"; done
 ln -snf /bin/sh "$stage/usr/local/libexec/xiri/command-shell"

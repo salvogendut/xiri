@@ -197,7 +197,8 @@ def main():
             r['document_filetypes'] = dict(
                 hashes=get('sha256 /emul/irix/usr/lib/filetype/desktop.otr '
                            '/emul/irix/usr/lib/filetype/desktop.otr.before-xiri '
-                           '/usr/local/share/xiri/netbsd.ftr /emul/irix/usr/sbin/fftr'),
+                           '/usr/local/share/xiri/netbsd.ftr /usr/local/share/xiri/applications.ftr '
+                           '/emul/irix/usr/sbin/fftr'),
                 state=get('cat /emul/irix/usr/lib/filetype/desktop.otr.xiri-state').strip(),
                 nawk_alias=get('readlink /usr/bin/nawk').strip())
         # The original File Manager resolves gethostname() before operating on

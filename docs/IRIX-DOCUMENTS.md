@@ -43,15 +43,44 @@ The new rule recognizes the native ELF interpreter, retains the original
 executable artwork, and supplies Open/Drop actions. Native xedit opens the
 text fixture from its icon without moving the source document.
 
-The installed gedit icon has a separate stale rule: its Drop action adds
-`-f`, but this gedit version exits with “unknown option.” Double-clicking a
-text document with gedit chosen in Utilities works. The original rule is
-retained for the later application-association pass.
+The installed gedit's old Drop rule adds an unsupported `-f` option. Xiri's
+additive `applications.ftr` rule passes document arguments directly and keeps
+the original gedit artwork. The imported binary and vendor rule files are
+unchanged. The same `-f` failure was reproduced on the original IRIX 6.5.22m
+installation.
 
-Running-window drops depend on the receiving application's drag protocol
-and accepted data types. They are tracked separately in the
-[document results](results/2026-11-13-documents.md); icon launching does not
-imply universal drag-and-drop support.
+## Dropping into running applications
+
+IRIX File Manager sends Motif drag messages and `_SGI_ICON` records. The
+imported GTK applications expect `text/uri-list`. The native `drop-bridge`
+session client translates local file-icon drops for XDND receivers, retaining
+quoted filenames, spaces, literal backslashes and multiple-file boundaries.
+It runs as the authenticated desktop user and exits with that user's session.
+
+Drag a document from File Manager onto an accepting area of the running
+application. Escape cancels the gesture. The bridge requests a copy/open
+action; it does not move or delete the source files. The application still
+decides whether it accepts that document and where its drop regions are.
+
+GIMP 1.2 has an application-specific limit: its Unix URI reader removes
+`file:` but does not decode percent escapes. A name such as `colour.png`
+can be used for a running-window drop; `colour sample.png` reaches GIMP but
+fails to open. Use its application icon or File → Open for those names.
+The public [GIMP 1.2.5 implementation](https://github.com/GNOME/gimp/blob/GIMP_1_2_5/app/gimpdnd.c#L1215)
+matches this observed behavior. The bridge retains standard URI encoding
+for other receivers.
+
+This is a bounded adapter for local files. Remote-host icons, non-file icons,
+payloads above 64 KiB and batches above 256 records are rejected. Existing
+Motif drop sites with registered regions or another proxy remain untouched;
+other Motif source types are forwarded unchanged. Arbitrary image/text
+selection conversion, remote file fetching, and application-specific document
+handlers are separate work.
+
+The helper starts automatically in Xiri sessions; native ctwm sessions do not
+start it. Set `xiri_drop_bridge=no` in `/etc/xiri/session.conf` and log out/back
+in to disable it. It restores receiver properties on an orderly exit. Its
+logs are `drop-bridge.err` in the user's session log directory.
 
 ## Installing or refreshing native file types
 
@@ -70,7 +99,8 @@ A live runtime installation then invokes:
 ```
 
 Run it as root after importing the compiler, or after installing new native
-rules. It merges `/usr/local/share/xiri/netbsd.ftr` ahead of the current
+rules. It merges `/usr/local/share/xiri/netbsd.ftr` and
+`/usr/local/share/xiri/applications.ftr` ahead of the current
 database, keeps the first database as `desktop.otr.before-xiri`, and replaces
 the active table only after successful compilation. The updater serializes
 its own runs and skips a rebuild when the rules and database hashes match
@@ -96,6 +126,13 @@ customization and printing remain later work.
   describes document drops and the target-icon feedback.
 - The installed IRIX 6.5.22m `fftr(1)` manual and `Xsession.dt` provide the
   compiler grammar and saved-environment behavior used here.
+- SGI's [ViewKit Cut and Paste](https://techpubs.jurassic.nl/library/manuals/2000/007-2124-005/sgi_html/ch10.html)
+  describes the SGI icon target and file ownership during transfers.
+- The [XDND specification](https://wiki.freedesktop.org/www/Specifications/XDND/)
+  and public [GTK 1.2.10 drag protocol implementation](https://github.com/GNOME/gtk/blob/GTK_1_2_10/gdk/gdkdnd.c)
+  define the protocol messages used by the adapter.
+- The [drag-and-drop lab](../lab/drag-drop/README.md) covers the adapter and
+  real-application checks.
 - The [document lab](../lab/documents/README.md) records repeatable checks;
   [results](results/2026-11-13-documents.md) distinguish passes from remaining
   application and protocol limits.

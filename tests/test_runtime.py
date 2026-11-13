@@ -15,7 +15,7 @@ class RuntimeInstallTests(unittest.TestCase):
         self.root = Path(self.temporary.name)
         self.build = self.root/'build'
         self.build.mkdir()
-        for name in ['session-guard', 'x11-check', 'shell-handoff', 'save-session', 'stop-sessions']:
+        for name in ['session-guard', 'x11-check', 'shell-handoff', 'save-session', 'stop-sessions', 'drop-bridge']:
             (self.build/name).write_bytes(b'fixture executable\n')
         self.stage = self.root/'stage'
 

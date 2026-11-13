@@ -141,6 +141,7 @@ class Suite:
     def run(self):
         self.r['runtime_hashes']=self.read('sha256 /usr/local/bin/xiri-session '+
             '/usr/local/sbin/xiri-update-filetypes /usr/local/share/xiri/netbsd.ftr '+
+            '/usr/local/share/xiri/applications.ftr '+
             '/emul/irix/usr/lib/filetype/desktop.otr /emul/irix/usr/sbin/fftr')
         for user,uid,editor in [('xiritest',1234,'/usr/freeware/bin/gedit'),
                                 ('xiritest2',1237,'/usr/X11R7/bin/xedit')]:
@@ -191,7 +192,7 @@ class Suite:
         self.logout('first-user-recheck')
 
 
-def main():
+def main(suite_class=Suite, lab_name='documents'):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--bundle', type=Path, required=True)
     parser.add_argument('--local-processes', action='store_true',
@@ -200,7 +201,7 @@ def main():
     bundle = args.bundle.resolve()
     manifest = json.loads((bundle/'manifest.json').read_text())
     assert sha256(bundle/'netbsd-xiri.chd') == manifest['chd_sha256']
-    runs = ROOT/'.work/documents'; runs.mkdir(exist_ok=True)
+    runs = ROOT/'.work'/lab_name; runs.mkdir(exist_ok=True)
     directory = Path(tempfile.mkdtemp(prefix='qualified-', dir=runs))
     print('Results: '+str(directory.relative_to(ROOT)), flush=True)
     (directory/'owner.pid').write_text(str(os.getpid())+'\n')
@@ -249,7 +250,7 @@ def main():
         base_chd_sha256=manifest['chd_sha256'], module_sha256=manifest['irix_module']['sha256'],
         emulator_sha256=sha256(probe.IRIS), probe_sha256=sha256(Path(__file__)),
         media_inputs={p.name:sha256(p) for p in sorted(media.iterdir())})
-    suite = Suite(guest, directory, result)
+    suite = suite_class(guest, directory, result)
     def interrupted(*unused):
         raise RuntimeError('Document probe interrupted')
     signal.signal(signal.SIGTERM, interrupted)
