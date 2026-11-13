@@ -11,7 +11,9 @@ NetBSD executable type through the original `fftr` compiler. It distinguishes
 document opening, icon drops and running-window protocols, and retains the
 stale gedit Drop action as a separate application follow-up. IRIS upstream
 through `9605704c` is integrated on `xiri` with affected build/regression checks;
-the manual image retains its existing qualified emulator pin.
+the manual image retains its existing qualified emulator pin. The new
+document CHD passes both users' document actions and the complete xdm gate,
+including 345 native text comparisons and three winterm checks.
 
 The [November 13 clipboard cycle](results/2026-11-13-clipboard.md) qualifies
 text selection and Copy/Paste between native xterm, original winterm and

@@ -39,7 +39,9 @@ the original Utilities panel's saved environment at login and adds native
 NetBSD application Open/Drop rules. The [guide](IRIX-DOCUMENTS.md) separates
 document Open, application-icon Drop and running-window protocols. Remaining
 work includes running-window drops and gedit's stale `-f` Drop action; broader
-application repairs remain deferred.
+application repairs remain deferred. The replacement CHD passes separate
+cold document and full desktop qualification, including per-user editor
+settings, native icon drops, 345 text comparisons and three winterm checks.
 
 The agreed target remains the full original IRIX desktop on NetBSD and X.org,
 with modern software running natively. The [repository/workflow cleanup](results/2026-11-03-workflow-cleanup.md) is

@@ -1,0 +1,261 @@
+{
+  "status": "completed",
+  "utc": "2026-11-13T17:42:43.302106+00:00",
+  "active_test_processes": [],
+  "phases": {
+    "cleanup-cold-checkpoints.json": {
+      "checkpoints": [
+        "docs/results/2026-11-13-documents-cold.json",
+        "docs/results/2026-11-13-documents-desktop-incomplete.json"
+      ],
+      "removed": [
+        {
+          "path": ".work/documents/qualified-49_xdp6v/disk.chd",
+          "allocated_bytes": 497360896,
+          "logical_bytes": 497358910
+        },
+        {
+          "path": ".work/documents/qualified-49_xdp6v/disk.chd.diff.chd",
+          "allocated_bytes": 8585216,
+          "logical_bytes": 8585216
+        },
+        {
+          "path": ".work/documents/qualified-49_xdp6v/probe.iso",
+          "allocated_bytes": 393216,
+          "logical_bytes": 393216
+        },
+        {
+          "path": ".work/irix-xdm/runs/ordinary-r22t599o/disk.chd",
+          "allocated_bytes": 497360896,
+          "logical_bytes": 497358910
+        },
+        {
+          "path": ".work/irix-xdm/runs/ordinary-r22t599o/disk.chd.diff.chd",
+          "allocated_bytes": 12075008,
+          "logical_bytes": 12075008
+        },
+        {
+          "path": ".work/irix-xdm/runs/ordinary-r22t599o/probe.iso",
+          "allocated_bytes": 946176,
+          "logical_bytes": 946176
+        }
+      ]
+    },
+    "cleanup-development.json": {
+      "checkpoint": "docs/results/2026-11-13-documents.json",
+      "removed": [
+        {
+          "path": ".work/documents/ordinary-206upatu/disk.chd",
+          "allocated_bytes": 496308224,
+          "logical_bytes": 496307636
+        },
+        {
+          "path": ".work/documents/ordinary-206upatu/probe.iso",
+          "allocated_bytes": 389120,
+          "logical_bytes": 387072
+        },
+        {
+          "path": ".work/documents/ordinary-206upatu/disk.chd.diff.chd",
+          "allocated_bytes": 69435392,
+          "logical_bytes": 69435392
+        }
+      ],
+      "available_bytes_before": 500721065984,
+      "available_bytes_after": 500721065984,
+      "note": "Allocated sizes can include reflink-shared extents; the available-space delta is observed separately."
+    },
+    "cleanup-final.json": {
+      "checkpoint": "docs/results/2026-11-13-documents-image.json",
+      "utc": "2026-11-13T17:42:43.302106+00:00",
+      "stopped_test_groups": {
+        "3095251": ".work/documents/ordinary-206upatu/emulator.pid",
+        "3207802": ".work/documents/qualified-zjkf14fa/emulator.pid",
+        "3212046": ".work/documents/qualified-7is3of9k/emulator.pid",
+        "3216025": ".work/documents/qualified-stl6givi/emulator.pid",
+        "3220830": ".work/documents/qualified-49_xdp6v/emulator.pid",
+        "3232240": ".work/irix-xdm/runs/ordinary-xycou6ql/emulator.pid",
+        "3207789": ".work/irix-xdm/runs/ordinary-r22t599o/emulator.pid",
+        "3192219": ".work/xdm-image/prepare/ordinary-jc5nmalf/emulator.pid"
+      },
+      "active_test_processes": [],
+      "removed": [
+        {
+          "path": ".work/irix-xdm/runs/ordinary-xycou6ql/disk.chd",
+          "allocated_bytes": 497360896,
+          "logical_bytes": 497358910,
+          "symlink": false
+        },
+        {
+          "path": ".work/irix-xdm/runs/ordinary-xycou6ql/disk.chd.diff.chd",
+          "allocated_bytes": 15187968,
+          "logical_bytes": 15187968,
+          "symlink": false
+        },
+        {
+          "path": ".work/irix-xdm/runs/ordinary-xycou6ql/probe.iso",
+          "allocated_bytes": 958464,
+          "logical_bytes": 956416,
+          "symlink": false
+        },
+        {
+          "path": ".work/xiri-image/seed-ac2e07027464/disk.raw",
+          "allocated_bytes": 4096,
+          "logical_bytes": 50,
+          "symlink": true
+        },
+        {
+          "path": ".work/xdm-image/prepare/ordinary-sgf10vf1/disk.raw",
+          "allocated_bytes": 8589934592,
+          "logical_bytes": 8589934592,
+          "symlink": false
+        }
+      ],
+      "available_bytes_before": 499101089792,
+      "available_bytes_after": 499100872704,
+      "preserved": [
+        ".work/images/xiri-netbsd-desktop-20261113-documents",
+        ".work/xiri-image/seed-ebe05509864e",
+        ".work/xdm-image/prepare/ordinary-jc5nmalf/disk.raw",
+        ".work/images/xiri-netbsd-desktop-20261113-filemanager",
+        "Other qualified images, user manual state, pinned worktrees, original media, logs and evidence"
+      ]
+    },
+    "cleanup-first-cold-attempt.json": {
+      "failed_run": ".work/documents/qualified-zjkf14fa",
+      "reason": "Fixed menu coordinates did not save the chosen editor; excluded from document acceptance.",
+      "clean_shutdown": true,
+      "base_unchanged": true,
+      "removed": [
+        {
+          "path": ".work/documents/qualified-zjkf14fa/disk.chd",
+          "allocated_bytes": 497360896,
+          "logical_bytes": 497358910
+        },
+        {
+          "path": ".work/documents/qualified-zjkf14fa/disk.chd.diff.chd",
+          "allocated_bytes": 5554176,
+          "logical_bytes": 5554176
+        },
+        {
+          "path": ".work/documents/qualified-zjkf14fa/probe.iso",
+          "allocated_bytes": 397312,
+          "logical_bytes": 397312
+        }
+      ]
+    },
+    "cleanup-packaging.json": {
+      "checkpoint": ".work/images/xiri-netbsd-desktop-20261113-documents/manifest.json",
+      "removed": [
+        {
+          "path": ".work/images/xiri-netbsd-desktop-20261113-documents/verification/roundtrip.raw",
+          "allocated_bytes": 8589934592,
+          "logical_bytes": 8589934592
+        },
+        {
+          "path": ".work/irix-reference/guestfs-cache",
+          "allocated_bytes": 389341184,
+          "logical_bytes": 4319006568
+        }
+      ],
+      "available_bytes_before": 491697242112,
+      "available_bytes_after": 491697242112,
+      "note": "Raw round trip was verified before removal. The qualified candidate CHD and prepared raw seed remain."
+    },
+    "cleanup-preparation.json": {
+      "checkpoint": ".work/images/xiri-netbsd-desktop-20261113-documents/manifest.json",
+      "removed": [
+        {
+          "path": ".work/xdm-image/prepare/ordinary-jc5nmalf/probe.iso",
+          "allocated_bytes": 2056192,
+          "logical_bytes": 2054144
+        },
+        {
+          "path": ".work/xdm-image/prepare/ordinary-1nehji8o/media",
+          "allocated_bytes": 1732608,
+          "logical_bytes": 1603593
+        },
+        {
+          "path": "lab/documents/__pycache__",
+          "allocated_bytes": 4096,
+          "logical_bytes": 3901
+        }
+      ]
+    },
+    "cleanup-second-cold-attempt.json": {
+      "status": "excluded-harness-failure",
+      "reason": "The named-window helper selected an unmapped 4Dwm icon window. The owner exited 143 before saving result.json; serial records completed shutdown hooks, but clean unmount/halt was not captured. Recorded emulator group stopped explicitly.",
+      "clean_shutdown": false,
+      "base_unchanged": true,
+      "owner_absent": true,
+      "emulator_group_stopped": 3212046,
+      "removed": [
+        {
+          "path": ".work/documents/qualified-7is3of9k/disk.chd",
+          "allocated_bytes": 497360896,
+          "logical_bytes": 497358910
+        },
+        {
+          "path": ".work/documents/qualified-7is3of9k/disk.chd.diff.chd",
+          "allocated_bytes": 5210112,
+          "logical_bytes": 5210112
+        },
+        {
+          "path": ".work/documents/qualified-7is3of9k/probe.iso",
+          "allocated_bytes": 397312,
+          "logical_bytes": 397312
+        }
+      ]
+    },
+    "cleanup-third-cold-attempt.json": {
+      "failed_run": ".work/documents/qualified-stl6givi",
+      "reason": "End/Return on the original option menu did not open Other Command; excluded from acceptance. Saved-setting setup is separated from the observed Utilities GUI workflow.",
+      "clean_shutdown": true,
+      "base_unchanged": true,
+      "removed": [
+        {
+          "path": ".work/documents/qualified-stl6givi/disk.chd",
+          "allocated_bytes": 497360896,
+          "logical_bytes": 497358910
+        },
+        {
+          "path": ".work/documents/qualified-stl6givi/disk.chd.diff.chd",
+          "allocated_bytes": 5505024,
+          "logical_bytes": 5505024
+        },
+        {
+          "path": ".work/documents/qualified-stl6givi/probe.iso",
+          "allocated_bytes": 397312,
+          "logical_bytes": 395264
+        }
+      ]
+    },
+    "cleanup-upstream.json": {
+      "saved_checkpoint": "222472d",
+      "removed": [
+        {
+          "path": ".work/documents-iris-build",
+          "file_allocated_bytes": 1784631296
+        },
+        {
+          "path": ".work/documents/rex-jit-profile.bin",
+          "file_allocated_bytes": 8192
+        }
+      ],
+      "free_before": 499704877056,
+      "free_after": 499704877056,
+      "note": "File allocations are not guaranteed physical space freed; logs, command scripts and Cargo.lock are retained."
+    }
+  },
+  "removed_file_allocations_bytes": 22963552256,
+  "accounting": "Sum of removed file allocations; reflink-shared extents may overlap. This is not a measurement of physical free space gained. Per-phase available-space observations are recorded separately.",
+  "preserved": [
+    ".work/images/xiri-netbsd-desktop-20261113-documents",
+    ".work/xiri-image/seed-ebe05509864e",
+    ".work/xdm-image/prepare/ordinary-jc5nmalf/disk.raw",
+    ".work/images/xiri-netbsd-desktop-20261113-filemanager",
+    "Other qualified images, user manual state, pinned worktrees, original media, logs and evidence"
+  ],
+  "settled_available_bytes": 499121172480,
+  "observed_final_interval_available_delta_bytes": 20082688,
+  "available_space_note": "Observed after sync of the workspace filesystem. Other host activity and shared/snapshotted extents prevent attributing the net free-space change solely to these deletions."
+}

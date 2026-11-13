@@ -12,7 +12,7 @@ catalog launches and running-icon feedback. Native NetBSD Xorg drives a
 1280×1024 accelerated Newport display. It retains the xmahjongg texture
 correction qualified by the earlier [rendering and interaction checks](docs/results/2026-11-03-newport-xmahjongg.md).
 
-The [current manual CHD](docs/results/2026-11-13-file-manager.md#manual-image) boots into native
+The [current manual CHD](docs/results/2026-11-13-documents.md#manual-image) boots into native
 NetBSD xdm. Use **xiritest** / **xiritest** or **xiritest2** / **xiritest2** for
 separate IRIX desktops, or **netbsdtest** / **netbsdtest** for standard NetBSD ctwm.
 `netbsdtest` belongs to `wheel` and can run `su -` for a root login shell;
@@ -43,6 +43,9 @@ The [cold-image checks](docs/results/2026-11-13-clipboard.md) pass 19 exact
 payload comparisons and clipboard reset across both IRIX users and native ctwm.
 The [document guide](docs/IRIX-DOCUMENTS.md) explains per-user editor/viewer
 choices, native application icons and the separate document/drop paths.
+The [current document/image checks](docs/results/2026-11-13-documents.md) pass
+saved editor isolation and native icon drops under both IRIX accounts, plus
+345 native text comparisons and three winterm checks on the new CHD.
 System services start at boot. NetBSD
 loads `compat_irix_o32.kmod` during boot and runs the desktop on a kernel
 without built-in IRIX support. The [core kernel](lab/native-wait/README.md)

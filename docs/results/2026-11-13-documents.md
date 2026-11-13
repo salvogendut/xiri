@@ -113,20 +113,45 @@ python3 scripts/probe-xiri-xdm.py --bundle .work/images/xiri-netbsd-desktop-2026
     --multiuser --colours --winterm --fonts
 ```
 
-Both completed host wrappers reported 143 during cleanup, although their
+Two earlier completed host wrappers reported 143 during cleanup, although their
 final guest results were saved and clean halt was verified. Recorded owner
 and emulator PIDs were absent before retiring the private disks. The host
-exit status is retained separately from the guest checks.
+exit status is retained separately from the guest checks. The final complete
+image run exits 0, passes qualification and records a clean halt.
 
-## Replacement image
+## Manual image
 
-The candidate bundle is `.work/images/xiri-netbsd-desktop-20261113-documents/`.
-CHD verification and the exact raw-disk round trip pass. Its SHA-256 is
-`ebe05509864ec21564602939f0c997e40af0752028d2912de1788ee19d04e4e7`;
-the prepared raw-disk hash is
+The selected bundle is `.work/images/xiri-netbsd-desktop-20261113-documents/`.
+CHD verification, the exact raw-disk round trip, the cold document regression
+and the [complete desktop qualification](2026-11-13-documents-image.json) pass.
+The full image check includes both IRIX accounts, native ctwm, full-screen
+1280×1024 XAA, 345 native text comparisons, three winterm geometry/resize
+checks, normal terminal exit, colour aliases, catalog launch, logout/recovery,
+saved sessions and clean halt. The source CHD remains unchanged.
+
+Run `./xiri run`, or directly:
+
+```sh
+.work/images/xiri-netbsd-desktop-20261113-documents/run-iris.sh
+```
+
+Use `xiritest` / `xiritest` or `xiritest2` / `xiritest2` for separate IRIX
+desktops, and `netbsdtest` / `netbsdtest` for native ctwm. These remain public
+lab credentials. The image does not include the probe documents or its
+chosen editor settings. Select your own editor/viewer through Utilities.
+
+The screenshots show the [catalog-launched game](images/2026-11-13-documents-desktop.png),
+[untouched winterm](images/2026-11-13-documents-desktop-winterm.png), and
+[native ctwm](images/2026-11-13-documents-desktop-native.png).
+CHD SHA-256:
+`ebe05509864ec21564602939f0c997e40af0752028d2912de1788ee19d04e4e7`.
+Prepared raw-disk SHA-256:
 `b029a3bb5a07dcd8c8556470b9f6fbf43d6540f8de597edc9ba6a2a7d45fb984`.
-Cold document and desktop qualification are recorded separately before selection.
-The preceding File Manager image and manual state are retained.
+
+The preceding File Manager CHD and manual state are retained. The
+[runtime source comparison](2026-11-13-documents-runtime-source.json) matches
+all 29 prepared runtime inputs to pushed commit `a499748`, preserving the
+original build metadata rather than rewriting its revision.
 
 ## Reproduction and remaining work
 
@@ -151,3 +176,21 @@ retains the exact configuration and ignored counts. Desktop/image checks use
 the existing qualified emulator `819c682`, with NetBSD's native-wait core and
 `8bf86af` compatibility module; the upstream merge is not a new manual-emulator
 qualification.
+
+## Cleanup and host checks
+
+The [cleanup ledger](2026-11-13-documents-cleanup.json) records removal of
+21.39 GiB of allocated temporary-file sizes: the upstream test build,
+redundant disk decode, extraction cache, completed/failed test disks and
+media, and the superseded raw seed. Shared extents mean that total is not
+physical space freed. After filesystem sync, available space rose by
+20,082,688 bytes (19.15 MiB) over the final cleanup interval; other host
+activity prevents attributing that net change solely to this task.
+
+All eight recorded test emulator groups have no active processes. The new
+verified raw seed remains at `.work/xiri-image/seed-ebe05509864e/`; the previous
+CHD can recreate its retired raw seed if needed. Both manual CHDs, user
+overlays/NVRAM, original media, pinned worktrees, logs and screenshots remain.
+The 58 host regressions pass. `./xiri doctor`, using the existing direct
+Distrobox adapter in this agent environment, verifies 19 immutable artifacts
+for the newly selected bundle. Both fork checkouts remain clean on `xiri`.
