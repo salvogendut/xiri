@@ -5,6 +5,14 @@ status statements describe individual checkpoints and may be superseded by
 later entries. Use the [current README](../README.md), [development guide](DEVELOPMENT.md)
 and [selected image](../lab/irix-installed-desktop/image.json) for current work.
 
+The [November 13 clipboard cycle](results/2026-11-13-clipboard.md) qualifies
+text selection and Copy/Paste between native xterm, original winterm and
+gedit. Nineteen exact payload checks pass, including Latin-1 and incremental
+transfers, followed by both IRIX users, native ctwm, empty selections after
+logout and clean halt. The current manual image is reused without kernel or
+runtime changes. A maintained probe and [user guide](IRIX-CLIPBOARD.md) retain
+the workflows and their limits.
+
 The [November 13 File Manager cycle](results/2026-11-13-file-manager.md)
 adds measured filesystem statistics and removal in the module, fixes the
 image hostname lookup and imports original `telldesktop`. Local file and

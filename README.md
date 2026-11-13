@@ -36,6 +36,11 @@ create, rename, copy, move, discard, recovery and emptying under both users.
 Its module passes 720 paired filesystem checks against IRIX. The
 [File Manager and Dumpster guide](docs/IRIX-FILEMANAGER.md) explains the
 original actions, hostname setup and per-user storage.
+The [clipboard guide](docs/IRIX-CLIPBOARD.md) explains mouse-selection paste
+between native and IRIX terminals, gedit Copy/Paste, native xterm's CLIPBOARD
+mode and the current encoding/lifetime limits.
+The [cold-image checks](docs/results/2026-11-13-clipboard.md) pass 19 exact
+payload comparisons and clipboard reset across both IRIX users and native ctwm.
 System services start at boot. NetBSD
 loads `compat_irix_o32.kmod` during boot and runs the desktop on a kernel
 without built-in IRIX support. The [core kernel](lab/native-wait/README.md)

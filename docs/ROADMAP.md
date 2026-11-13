@@ -26,6 +26,14 @@ adds local create/rename/copy/move, discard/recover and emptying for both users,
 with 720 paired filesystem records. Cross-filesystem moves, collisions, broader
 application restoration, other control panels and backdrop formats remain separate.
 
+The [clipboard cycle](results/2026-11-13-clipboard.md) qualifies text exchange
+between native xterm, original winterm and original gedit on the current CHD.
+All 19 exact payload checks pass, including multiline/Latin-1 text, INCR in
+both directions and separate PRIMARY/CLIPBOARD ownership. Two IRIX accounts
+and native ctwm pass fresh-selection and logout-reset checks. No kernel or
+runtime change is needed. Full Unicode, clipboard history, image/rich-text
+formats and host-machine clipboard integration remain separate work.
+
 The agreed target remains the full original IRIX desktop on NetBSD and X.org,
 with modern software running natively. The [repository/workflow cleanup](results/2026-11-03-workflow-cleanup.md) is
 complete: the maintained `./xiri` commands and both desktop checks are qualified.
@@ -516,6 +524,7 @@ dependency candidates; a visible window alone does not complete these checks.
 - [ ] Implement required service adapters, including the measured file-notification and launch behavior.
 - [x] Exercise native X test windows under original 4Dwm in the same native Xvfb session used by Toolchest and winterm.
 - [ ] Show a maintained host-native graphical application and an IRIX application in the same local session; qualify physical display output separately.
+- [x] Qualify text clipboard interoperability between native NetBSD and original IRIX clients. The [clipboard checks](results/2026-11-13-clipboard.md) cover both selection paths, incremental transfer, source exit and reset between users; the [guide](IRIX-CLIPBOARD.md) records tested gestures and encoding/lifetime limits.
 - [x] Restore separate users' backdrop, colour scheme, focus and window-movement preferences across logout/login and reboot. [Preference result](results/2026-11-06-desktop-preferences.md).
 - [x] Resolve SGI-prefixed colour names through Xlib's per-session database and qualify the original Solid backdrop picker in X11 mode. [Colour result](results/2026-11-06-desktop-colours.md): 142 aliases and two users' saved colours across logout/login and reboot.
 - [ ] Compare the reopened Background chooser's initial swatch with original IRIX; the capture starts from template blue while the desktop correctly restores its custom colour. Qualify GL mode and exact native RGB allocation/display fidelity separately; Background currently uses its X11 controls.

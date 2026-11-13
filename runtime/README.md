@@ -211,6 +211,13 @@ Startup diagnostics are in
 `$HOME/.xsession-errors`; client logs remain in `$HOME/.xiri/sessions/`.
 Xdm diagnostics are `/var/log/xdm.log`.
 
+Native and IRIX clients on this display exchange text through X11 PRIMARY
+and CLIPBOARD selections. The [clipboard guide](../docs/IRIX-CLIPBOARD.md)
+describes winterm/xterm mouse paste, gedit Copy/Paste and the native terminal's
+optional CLIPBOARD mode. Clipboard data is not part of saved desktop sessions;
+xdm resets selections and cut buffers at logout. No clipboard manager is
+started by this runtime.
+
 Both original logout menus end the client session and return to xdm. System
 FAM/rpcbind remain running. A failed session also returns to authentication;
 inspect `.xsession-errors` and the newest guard/client logs from serial login.

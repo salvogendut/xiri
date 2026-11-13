@@ -1,0 +1,503 @@
+{
+  "schema": 1,
+  "status": "qualified",
+  "bundle": ".work/images/xiri-netbsd-desktop-20261113-filemanager",
+  "base_chd_sha256": "ac2e0702746448da893a623045cee06d359bbe6b8dc0f96668d66d3b8e9ec06e",
+  "module_sha256": "d0ad3bd0efd300fbd1d8a93388fc9d27143e72d8f4f33ca83f805f31facf15bc",
+  "emulator_sha256": "3dd9299d71f1899ff5a8c9b76f6a24752d19e4f9a0bcfe0edf3a29001dc9c49e",
+  "probe_sha256": "6fa3ad3c504badd58f43642aa2d365cf466a9b38b8903253acb51863ac5118db",
+  "media_inputs": {
+    "clip-input.c": "4d903a332c4bb648955ba45e800fd418688135eb296952c782afc4aaec794d21",
+    "clip-selection.c": "05629a4f20f1dd384c12dfe9f4e8eff1c6b37725ecabe7c2a49f2070c07c1621",
+    "clipboard-line.txt": "2a9b253f7b8cc7b93c94f37e694746dd9eaa21ade306506be0cc379914ddf963",
+    "editor.txt": "61816fd8f4c76f466a74f85a52612639c60c4f7791cf35ce790668ad232715de",
+    "irix-line.txt": "3b475ffcdc27a25366d5838836c0d0e2bab2d71a7f9f81ad2af5a6b04673226f",
+    "large.txt": "29dfb17aa8b12770f2f123e24527b72cf719b4e37e1b41e0c11ae0b4debbccdd",
+    "latin1.txt": "6e2d0f70683ea36798323de2768b87615dc28b1bf4eb8696604e612810b3b170",
+    "native-clipboard.sh": "40018f0ded62cdf12638844c108e12d1a4c79d2d5df4bf0f74fd3a1f22e15b47",
+    "native-line.txt": "fb4763ca67faffa8d0222c4e921cf5b411ce3c858ab733ece275fe50ef58e3e6",
+    "native-sink.sh": "30079a0fb918ec9f88bc52bfb54183cb86e27b6438f73351b341dc9d0e4051aa",
+    "native-source.sh": "1ca3adb07adacbdb43fdd0858d155c2a50126a115551c469421197289675a870",
+    "native-user.sh": "44437b675dc5bb911fa0c9e63c48bfeb20ec2623dad74b6703fad08687ecef37",
+    "native-user.txt": "ceaaa5e88dcb20f9dee35b2040ede61385a4dec071d7092071c1091dc0170832",
+    "second-user.txt": "e7e8920019ee38f2dc5ac2bc08cfb74014f4db52b08e536343f19b448bc31faf",
+    "short.txt": "1cc2f5a54a3a9a9537220f4ad17b36c4386bb119a915e295404de1c779b7d572",
+    "type.c": "61ce22cbda6c66ccaf53cbcffab5f3080be95004bcd3e5c6893dc54a8a9db838"
+  },
+  "loaded_module": "compat_irix_o32            exec     filesys  -        0       - exec_elf32,compat_netbsd32\nSHA256 (/stand/sgimips/11.99.9/modules/compat_irix_o32/compat_irix_o32.kmod) = d0ad3bd0efd300fbd1d8a93388fc9d27143e72d8f4f33ca83f805f31facf15bc\n",
+  "identities": {
+    "xiritest": "SESSION user=xiritest uid=1234 groups=1234 1235 home=/usr/people/xiritest cwd=/usr/people/xiritest display=127.0.0.1:0 authority=/tmp/.Xauthz9Gph2\n",
+    "xiritest2": "SESSION user=xiritest2 uid=1237 groups=1237 1235 home=/usr/people/xiritest2 cwd=/usr/people/xiritest2 display=127.0.0.1:0 authority=/tmp/.XauthJDdaQs\n",
+    "netbsdtest": [
+      "netbsdtest",
+      "1236",
+      "/home/netbsdtest",
+      "/home/netbsdtest"
+    ]
+  },
+  "states": {
+    "first-login": {
+      "owners": {
+        "PRIMARY": 0,
+        "CLIPBOARD": 0,
+        "CLIPBOARD_MANAGER": 0
+      },
+      "cut_buffer_bytes": {
+        "CUT_BUFFER0": 0,
+        "CUT_BUFFER1": 0,
+        "CUT_BUFFER2": 0,
+        "CUT_BUFFER3": 0,
+        "CUT_BUFFER4": 0,
+        "CUT_BUFFER5": 0,
+        "CUT_BUFFER6": 0,
+        "CUT_BUFFER7": 0
+      }
+    },
+    "source-closed": {
+      "owners": {
+        "PRIMARY": 0,
+        "CLIPBOARD": 0,
+        "CLIPBOARD_MANAGER": 0
+      },
+      "cut_buffer_bytes": {
+        "CUT_BUFFER0": 21,
+        "CUT_BUFFER1": 0,
+        "CUT_BUFFER2": 0,
+        "CUT_BUFFER3": 0,
+        "CUT_BUFFER4": 0,
+        "CUT_BUFFER5": 0,
+        "CUT_BUFFER6": 0,
+        "CUT_BUFFER7": 0
+      }
+    },
+    "before-logout": {
+      "owners": {
+        "PRIMARY": 0,
+        "CLIPBOARD": 31457281,
+        "CLIPBOARD_MANAGER": 0
+      },
+      "cut_buffer_bytes": {
+        "CUT_BUFFER0": 21,
+        "CUT_BUFFER1": 0,
+        "CUT_BUFFER2": 0,
+        "CUT_BUFFER3": 0,
+        "CUT_BUFFER4": 0,
+        "CUT_BUFFER5": 0,
+        "CUT_BUFFER6": 0,
+        "CUT_BUFFER7": 0
+      }
+    },
+    "first-user-logout": {
+      "owners": {
+        "PRIMARY": 0,
+        "CLIPBOARD": 0,
+        "CLIPBOARD_MANAGER": 0
+      },
+      "cut_buffer_bytes": {
+        "CUT_BUFFER0": 0,
+        "CUT_BUFFER1": 0,
+        "CUT_BUFFER2": 0,
+        "CUT_BUFFER3": 0,
+        "CUT_BUFFER4": 0,
+        "CUT_BUFFER5": 0,
+        "CUT_BUFFER6": 0,
+        "CUT_BUFFER7": 0
+      }
+    },
+    "second-user-login": {
+      "owners": {
+        "PRIMARY": 0,
+        "CLIPBOARD": 0,
+        "CLIPBOARD_MANAGER": 0
+      },
+      "cut_buffer_bytes": {
+        "CUT_BUFFER0": 0,
+        "CUT_BUFFER1": 0,
+        "CUT_BUFFER2": 0,
+        "CUT_BUFFER3": 0,
+        "CUT_BUFFER4": 0,
+        "CUT_BUFFER5": 0,
+        "CUT_BUFFER6": 0,
+        "CUT_BUFFER7": 0
+      }
+    },
+    "second-user-logout": {
+      "owners": {
+        "PRIMARY": 0,
+        "CLIPBOARD": 0,
+        "CLIPBOARD_MANAGER": 0
+      },
+      "cut_buffer_bytes": {
+        "CUT_BUFFER0": 0,
+        "CUT_BUFFER1": 0,
+        "CUT_BUFFER2": 0,
+        "CUT_BUFFER3": 0,
+        "CUT_BUFFER4": 0,
+        "CUT_BUFFER5": 0,
+        "CUT_BUFFER6": 0,
+        "CUT_BUFFER7": 0
+      }
+    },
+    "native-user-login": {
+      "owners": {
+        "PRIMARY": 0,
+        "CLIPBOARD": 0,
+        "CLIPBOARD_MANAGER": 0
+      },
+      "cut_buffer_bytes": {
+        "CUT_BUFFER0": 0,
+        "CUT_BUFFER1": 0,
+        "CUT_BUFFER2": 0,
+        "CUT_BUFFER3": 0,
+        "CUT_BUFFER4": 0,
+        "CUT_BUFFER5": 0,
+        "CUT_BUFFER6": 0,
+        "CUT_BUFFER7": 0
+      }
+    },
+    "native-user-logout": {
+      "owners": {
+        "PRIMARY": 0,
+        "CLIPBOARD": 0,
+        "CLIPBOARD_MANAGER": 0
+      },
+      "cut_buffer_bytes": {
+        "CUT_BUFFER0": 0,
+        "CUT_BUFFER1": 0,
+        "CUT_BUFFER2": 0,
+        "CUT_BUFFER3": 0,
+        "CUT_BUFFER4": 0,
+        "CUT_BUFFER5": 0,
+        "CUT_BUFFER6": 0,
+        "CUT_BUFFER7": 0
+      }
+    }
+  },
+  "display": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+  "versions": "XTerm(397)\ncc (nb3 20260326) 12.5.0\n",
+  "conversions": {
+    "native-primary": {
+      "selection": "PRIMARY",
+      "requested": "STRING",
+      "returned": "STRING",
+      "format": 8,
+      "items": 20,
+      "chunks": 1,
+      "incremental": false
+    },
+    "native-targets": {
+      "selection": "PRIMARY",
+      "requested": "TARGETS",
+      "returned": "ATOM",
+      "format": 32,
+      "items": 12,
+      "chunks": 1,
+      "incremental": false
+    },
+    "irix-primary": {
+      "selection": "PRIMARY",
+      "requested": "STRING",
+      "returned": "STRING",
+      "format": 8,
+      "items": 20,
+      "chunks": 1,
+      "incremental": false
+    },
+    "irix-targets": {
+      "selection": "PRIMARY",
+      "requested": "TARGETS",
+      "returned": "TARGETS",
+      "format": 32,
+      "items": 4,
+      "chunks": 1,
+      "incremental": false
+    },
+    "gedit-original-copy": {
+      "selection": "CLIPBOARD",
+      "requested": "STRING",
+      "returned": "STRING",
+      "format": 8,
+      "items": 53,
+      "chunks": 1,
+      "incremental": false
+    },
+    "gedit-targets": {
+      "selection": "CLIPBOARD",
+      "requested": "TARGETS",
+      "returned": "ATOM",
+      "format": 32,
+      "items": 6,
+      "chunks": 1,
+      "incremental": false
+    },
+    "short-irix-to-native": {
+      "selection": "CLIPBOARD",
+      "requested": "STRING",
+      "returned": "STRING",
+      "format": 8,
+      "items": 44,
+      "chunks": 1,
+      "incremental": false
+    },
+    "large-irix-to-native": {
+      "selection": "CLIPBOARD",
+      "requested": "STRING",
+      "returned": "STRING",
+      "format": 8,
+      "items": 113664,
+      "chunks": 30,
+      "incremental": true
+    },
+    "latin1-irix-to-native": {
+      "selection": "CLIPBOARD",
+      "requested": "STRING",
+      "returned": "STRING",
+      "format": 8,
+      "items": 26,
+      "chunks": 1,
+      "incremental": false
+    },
+    "xterm-clipboard": {
+      "selection": "CLIPBOARD",
+      "requested": "STRING",
+      "returned": "STRING",
+      "format": 8,
+      "items": 21,
+      "chunks": 1,
+      "incremental": false
+    },
+    "independent-primary": {
+      "selection": "PRIMARY",
+      "requested": "STRING",
+      "returned": "STRING",
+      "format": 8,
+      "items": 20,
+      "chunks": 1,
+      "incremental": false
+    },
+    "independent-clipboard": {
+      "selection": "CLIPBOARD",
+      "requested": "STRING",
+      "returned": "STRING",
+      "format": 8,
+      "items": 21,
+      "chunks": 1,
+      "incremental": false
+    },
+    "gedit-copy-for-xterm": {
+      "selection": "CLIPBOARD",
+      "requested": "STRING",
+      "returned": "STRING",
+      "format": 8,
+      "items": 21,
+      "chunks": 1,
+      "incremental": false
+    },
+    "second-user-primary": {
+      "selection": "PRIMARY",
+      "requested": "STRING",
+      "returned": "STRING",
+      "format": 8,
+      "items": 21,
+      "chunks": 1,
+      "incremental": false
+    },
+    "native-user-primary": {
+      "selection": "PRIMARY",
+      "requested": "STRING",
+      "returned": "STRING",
+      "format": 8,
+      "items": 21,
+      "chunks": 1,
+      "incremental": false
+    }
+  },
+  "transfers": {
+    "native-primary": {
+      "bytes": 20,
+      "sha256": "fb4763ca67faffa8d0222c4e921cf5b411ce3c858ab733ece275fe50ef58e3e6",
+      "matched": true
+    },
+    "native-to-winterm": {
+      "bytes": 20,
+      "sha256": "fb4763ca67faffa8d0222c4e921cf5b411ce3c858ab733ece275fe50ef58e3e6",
+      "matched": true
+    },
+    "irix-primary": {
+      "bytes": 20,
+      "sha256": "3b475ffcdc27a25366d5838836c0d0e2bab2d71a7f9f81ad2af5a6b04673226f",
+      "matched": true
+    },
+    "winterm-to-native": {
+      "bytes": 20,
+      "sha256": "3b475ffcdc27a25366d5838836c0d0e2bab2d71a7f9f81ad2af5a6b04673226f",
+      "matched": true
+    },
+    "gedit-original-copy": {
+      "bytes": 53,
+      "sha256": "61816fd8f4c76f466a74f85a52612639c60c4f7791cf35ce790668ad232715de",
+      "matched": true
+    },
+    "short-native-to-irix": {
+      "bytes": 44,
+      "sha256": "1cc2f5a54a3a9a9537220f4ad17b36c4386bb119a915e295404de1c779b7d572",
+      "matched": true
+    },
+    "short-irix-to-native": {
+      "bytes": 44,
+      "sha256": "1cc2f5a54a3a9a9537220f4ad17b36c4386bb119a915e295404de1c779b7d572",
+      "matched": true
+    },
+    "large-native-to-irix": {
+      "bytes": 113664,
+      "sha256": "29dfb17aa8b12770f2f123e24527b72cf719b4e37e1b41e0c11ae0b4debbccdd",
+      "matched": true
+    },
+    "large-irix-to-native": {
+      "bytes": 113664,
+      "sha256": "29dfb17aa8b12770f2f123e24527b72cf719b4e37e1b41e0c11ae0b4debbccdd",
+      "matched": true
+    },
+    "latin1-native-to-irix": {
+      "bytes": 26,
+      "sha256": "6e2d0f70683ea36798323de2768b87615dc28b1bf4eb8696604e612810b3b170",
+      "matched": true
+    },
+    "latin1-irix-to-native": {
+      "bytes": 26,
+      "sha256": "6e2d0f70683ea36798323de2768b87615dc28b1bf4eb8696604e612810b3b170",
+      "matched": true
+    },
+    "native-xterm-clipboard": {
+      "bytes": 21,
+      "sha256": "2a9b253f7b8cc7b93c94f37e694746dd9eaa21ade306506be0cc379914ddf963",
+      "matched": true
+    },
+    "independent-primary": {
+      "bytes": 20,
+      "sha256": "3b475ffcdc27a25366d5838836c0d0e2bab2d71a7f9f81ad2af5a6b04673226f",
+      "matched": true
+    },
+    "independent-clipboard": {
+      "bytes": 21,
+      "sha256": "2a9b253f7b8cc7b93c94f37e694746dd9eaa21ade306506be0cc379914ddf963",
+      "matched": true
+    },
+    "xterm-clipboard-to-gedit": {
+      "bytes": 21,
+      "sha256": "2a9b253f7b8cc7b93c94f37e694746dd9eaa21ade306506be0cc379914ddf963",
+      "matched": true
+    },
+    "gedit-copy-for-xterm": {
+      "bytes": 21,
+      "sha256": "2a9b253f7b8cc7b93c94f37e694746dd9eaa21ade306506be0cc379914ddf963",
+      "matched": true
+    },
+    "gedit-clipboard-to-xterm": {
+      "bytes": 21,
+      "sha256": "2a9b253f7b8cc7b93c94f37e694746dd9eaa21ade306506be0cc379914ddf963",
+      "matched": true
+    },
+    "second-user-primary": {
+      "bytes": 21,
+      "sha256": "e7e8920019ee38f2dc5ac2bc08cfb74014f4db52b08e536343f19b448bc31faf",
+      "matched": true
+    },
+    "native-user-primary": {
+      "bytes": 21,
+      "sha256": "ceaaa5e88dcb20f9dee35b2040ede61385a4dec071d7092071c1091dc0170832",
+      "matched": true
+    }
+  },
+  "targets": {
+    "xterm": [
+      "UTF8_STRING",
+      "TEXT",
+      "COMPOUND_TEXT",
+      "STRING",
+      "LENGTH",
+      "LIST_LENGTH",
+      "TIMESTAMP",
+      "HOSTNAME",
+      "USER",
+      "CLASS",
+      "NAME",
+      "CLIENT_WINDOW"
+    ],
+    "winterm": [
+      "STRING",
+      "TARGETS",
+      "MULTIPLE",
+      "TIMESTAMP"
+    ],
+    "gedit": [
+      "TIMESTAMP",
+      "TARGETS",
+      "MULTIPLE",
+      "STRING",
+      "TEXT",
+      "COMPOUND_TEXT"
+    ]
+  },
+  "checkpoint": "all-users-and-logouts",
+  "modified_titles": {
+    "short-native-to-irix": "WM_NAME(STRING) = \"gedit - [/usr/people/xiritest/xiri-clipboard-probe/editor.txt] (modified)\"",
+    "large-native-to-irix": "WM_NAME(STRING) = \"gedit - [/usr/people/xiritest/xiri-clipboard-probe/editor.txt] (modified)\"",
+    "latin1-native-to-irix": "WM_NAME(STRING) = \"gedit - [/usr/people/xiritest/xiri-clipboard-probe/editor.txt] (modified)\"",
+    "xterm-clipboard-to-gedit": "WM_NAME(STRING) = \"gedit - [/usr/people/xiritest/xiri-clipboard-probe/editor.txt] (modified)\""
+  },
+  "owner_logs": {
+    "short": "owner=0x1e00001 bytes=44 chunk=4096\nrequest target=COMPOUND_TEXT\nrequest target=STRING\nselection replaced\n",
+    "large": "owner=0x1e00001 bytes=113664 chunk=1024\nrequest target=COMPOUND_TEXT\nrequest target=STRING\nINCR complete\nselection replaced\n",
+    "latin1": "owner=0x1c00001 bytes=26 chunk=4096\nrequest target=COMPOUND_TEXT\nrequest target=STRING\nselection replaced\n"
+  },
+  "gedit_utf8_string": "refused (no conversion advertised)",
+  "screenshots": {
+    "clipboard-native-irix.png": "77fbef8a1ee1c2d2ab030c6ddd9c5b54074d307f085586e2679b3959ccf49444",
+    "clipboard-native-user.png": "63369e735b3a47660c3fdcd1fd2eb17f98d2299480edba555b74d387f1394412"
+  },
+  "logout_logs": {
+    "first-user-logout": "OWN pid=462 parent=337\nOWN pid=469 parent=462\nOWN pid=3539 parent=462\nOWN pid=2941 parent=462\nOWN pid=664 parent=462\nOWN pid=665 parent=462\nOWN pid=3803 parent=664\nOWN pid=407 parent=462\nOWN pid=2650 parent=462\nOWN pid=478 parent=462\nOWN pid=1052 parent=462\nOWN pid=416 parent=462\nOWN pid=3809 parent=462\nOWN pid=419 parent=462\nOWN pid=479 parent=462\nOWN pid=422 parent=479\nOWN pid=3751 parent=462\nOWN pid=2978 parent=419\nOWN pid=421 parent=3751\nOWN pid=420 parent=462\nOWN pid=426 parent=462\nOWN pid=3689 parent=426\nOWN pid=2024 parent=420\nOWN pid=3309 parent=421\nOWN pid=3350 parent=421\nOWN pid=3692 parent=422\nOWN pid=3886 parent=421\nOWN pid=3568 parent=421\nOWN pid=427 parent=421\nOWN pid=690 parent=421\nOWN pid=3123 parent=421\nOWN pid=431 parent=421\nOWN pid=1077 parent=421\nOWN pid=3569 parent=421\nOWN pid=504 parent=421\nOWN pid=502 parent=421\nOWN pid=2914 parent=502\nOWN pid=508 parent=2978\nOWN pid=367 parent=2914\nOWN pid=3497 parent=2914\nOWN pid=597 parent=2914\nOWN pid=3069 parent=2914\nOWN pid=793 parent=3069\nOWN pid=362 parent=793\nOWN pid=3101 parent=793\nOWN pid=4014 parent=2914\nOWN pid=3696 parent=2914\nOWN pid=3261 parent=2914\nOWN pid=708 parent=2914\nOWN pid=710 parent=708\nOWN pid=706 parent=710\nOWN pid=715 parent=710\nOWN pid=3943 parent=710\nOWN pid=3633 parent=2914\nOWN pid=763 parent=2914\nOWN pid=3923 parent=2914\nOWN pid=963 parent=2914\nOWN pid=4204 parent=2914\nOWN pid=4398 parent=4204\nOWN pid=939 parent=4398\nOWN pid=3862 parent=4398\nOWN pid=1202 parent=4398\nOWN pid=4081 parent=4398\nOWN pid=3645 parent=2914\nOWN pid=4115 parent=2914\nOWN pid=1227 parent=337\nOWN pid=4145 parent=1227\nSESSION_SAVE acknowledged by 4Dwm\nSESSION_SAVE completed=1 exit=0 elapsed=289\nOWN pid=1234 parent=3069\nOWN pid=1221 parent=708\nOWN pid=1232 parent=4204\nGUARD pid=462 exit=-1 signal=15 stopped=1 absent=1 valid=1 tracked=70 remaining=0 reason=logout uid=1234 gid=1234 elapsed=648764\n",
+    "second-user-logout": "OWN pid=1704 parent=4519\nOWN pid=3248 parent=1704\nOWN pid=1130 parent=1704\nOWN pid=1357 parent=1704\nOWN pid=1364 parent=1704\nOWN pid=1135 parent=1704\nOWN pid=1275 parent=1704\nOWN pid=1303 parent=1704\nOWN pid=4583 parent=1704\nOWN pid=3869 parent=1704\nOWN pid=1312 parent=1704\nOWN pid=3546 parent=1704\nOWN pid=1347 parent=1312\nOWN pid=1374 parent=1704\nOWN pid=4246 parent=1704\nOWN pid=4705 parent=1704\nOWN pid=1323 parent=1704\nOWN pid=1400 parent=1704\nOWN pid=4337 parent=1704\nOWN pid=1586 parent=1400\nOWN pid=1973 parent=1704\nOWN pid=1327 parent=1704\nOWN pid=4019 parent=1704\nOWN pid=1317 parent=1973\nOWN pid=1401 parent=4019\nOWN pid=3805 parent=1327\nOWN pid=4464 parent=4337\nOWN pid=4029 parent=1317\nOWN pid=1588 parent=1317\nOWN pid=1598 parent=1317\nOWN pid=4641 parent=4464\nOWN pid=853 parent=1317\nOWN pid=4141 parent=1317\nOWN pid=2815 parent=1317\nOWN pid=1474 parent=1317\nOWN pid=1473 parent=1317\nOWN pid=1479 parent=1317\nOWN pid=1483 parent=1317\nOWN pid=4401 parent=1317\nOWN pid=1482 parent=1317\nOWN pid=4435 parent=1482\nOWN pid=920 parent=1586\nOWN pid=964 parent=4435\nOWN pid=448 parent=4519\nOWN pid=3376 parent=448\nSESSION_SAVE acknowledged by 4Dwm\nSESSION_SAVE completed=1 exit=0 elapsed=206\nGUARD pid=1704 exit=-1 signal=15 stopped=1 absent=1 valid=1 tracked=45 remaining=0 reason=logout uid=1237 gid=1237 elapsed=56702\n"
+  },
+  "halt": "[   1.0000000] Copyright (c) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,\n[   1.0000000]     2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013,\n[   1.0000000]     2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023,\n[   1.0000000]     2024, 2025, 2026\n[   1.0000000]     The NetBSD Foundation, Inc.  All rights reserved.\n[   1.0000000] Copyright (c) 1982, 1986, 1989, 1991, 1993\n[   1.0000000]     The Regents of the University of California.  All rights reserved.\n\n[   1.0000000] NetBSD 11.99.9 (XIRI_IRIX_MODULE_20261103) #4: Thu Nov  5 12:34:13 UTC 2026\n[   1.0000000] \tsalvogendut@toolbx:/var/home/salvogendut/Dev/xiri/.work/netbsd-wait-accounting-build/obj/sys/arch/sgimips/compile/XIRI_IRIX_MODULE\n[   1.0000000] total memory = 255 MB\n[   1.0000000] (768 KB reserved for ARCS)\n[   1.0000000] avail memory = 244 MB\n[   1.0000000] timecounter: Timecounters tick every 10.000 msec\n[   1.0000000] mainbus0 (root): SGI-IP22 [SGI, 69123457], 1 processor\n[   1.0000000] cpu0 at mainbus0: MIPS R4400 CPU (0x440) Rev. 4.0 with MIPS R4010 FPC Rev. 0.0\n[   1.0000000] cpu0: 48 TLB entries, 1TB (40-bit) VAs, 4KB (12-bit) PAs, 16MB max page size\n[   1.0000000] cpu0: 16KB/16B direct-mapped L1 instruction cache\n[   1.0000000] cpu0: 16KB/16B direct-mapped write-back L1 data cache\n[   1.0000000] cpu0: 1024KB/128B direct-mapped write-back L2 unified cache\n[   1.0000000] int0 at mainbus0 addr 0x1fbd9880\n[   1.0000000] int0: bus 33MHz, CPU 66MHz\n[   1.0000000] imc0 at mainbus0 addr 0x1fa00000: revision 3\n[   1.0000000] gio0 at imc0\n[   1.0000000] newport0 at gio0: SGI NG1 (board revision 0, cmap revision 2, xmap revision 3, vc2 revision 0), depth 24, monitor ID 10 (1280x1024 60Hz)\n[   1.0000000] newport0: 13W3 Monitor ID 10, PROM ID -1, determined monitor ID 10 (1280x1024 60Hz)\n[   1.0000000] wsdisplay0 at newport0 kbdmux 1: console (default, vt100 emulation)\n[   1.0000000] wsmux1: connecting to wsdisplay0\n[   1.0000000] hpc0 at gio0: SGI HPC3 (onboard)\n[   1.0000000] zsc0 at hpc0 offset 0x59830\n[   1.0000000] zstty0 at zsc0 channel 1\n[   1.0000000] zstty1 at zsc0 channel 0\n[   1.0000000] pckbc0 at hpc0 offset 0x59840\n[   1.0000000] pckbd0 at pckbc0 (kbd slot)\n[   1.0000000] wskbd0 at pckbd0: console keyboard, using wsdisplay0\n[   1.0000000] pms0 at pckbc0 (aux slot)\n[   1.0000000] wsmouse0 at pms0 mux 0\n[   1.0000000] sq0 at hpc0 offset 0x54000: SGI Seeq 80c03\n[   1.0000000] sq0: Ethernet address 08:00:69:12:34:57\n[   1.0000000] wdsc0 at hpc0 offset 0x44000: WD33C93A (20.0 MHz clock, BURST DMA, SCSI ID 0)\n[   1.0000000] scsibus0 at wdsc0: 8 targets, 8 luns per target\n[   1.0000000] haltwo at hpc0 offset 0x58000 not configured\n[   1.0000000] pi1ppc0 at hpc0 offset 0x59800\n[   1.0000000] pi1ppc0: capabilities=0x8<PS2>\n[   1.0000000] ppbus0 at pi1ppc0\n[   1.0000000] ppbus0: No IEEE1284 device found.\n[   1.0000000] button0 at hpc0 offset 0x59850\n[   1.0000000] hpc1 at gio0: SGI HPC3 (IOPLUS mezzanine)\n[   1.0000000] hpc1: using EXP0's DMA channel\n[   1.0000000] sq at hpc1 offset 0x54000 not configured\n[   1.0000000] hpc2 at gio0: SGI HPC1.5 (GIO slot)\n[   1.0000000] dsclock0 at mainbus0 addr 0x1fbe0000\n[   1.0000000] ioc0 at mainbus0 addr 0x1fbd9800: rev 0, machine Indy (Guinness), board rev 0\n[   1.0000000] WARNING: system needs entropy for security; see entropy(7)\n[   1.0000000] timecounter: Timecounter \"mips3_cp0_counter\" frequency 33000000 Hz quality 100\n[   1.0000030] timecounter: Timecounter \"clockinterrupt\" frequency 100 Hz quality 0\n[   1.0000030] scsibus0: waiting 2 seconds for devices to settle...\n[   3.0589324] sd0 at scsibus0 target 1 lun 0: <SGI, IRIS EMUL DISK, 1.0> disk fixed\n[   3.1168106] sd0: 8192 MB, 16645 cyl, 16 head, 62 sec, 512 bytes/sect x 16777216 sectors\n[   3.2464978] sd0: async, 8-bit transfers\n[   3.3038343] cd0 at scsibus0 target 4 lun 0: <Sony, CDU-76S, 1.0> cdrom removable\n[   3.3724625] cd0: async, 8-bit transfers\n[   3.4369898] boot device: sd0\n[   3.4982954] root on sd0a dumps on sd0b\n[   3.5747159] kern.module.path=/stand/sgimips/11.99.9/modules\n[   4.7574806] entropy: best effort\n[ 1104.4436625] syncing disks... done\n[ 1104.5217673] unmounting file systems...\n[ 1104.5772604] unmounted /dev/cd0a on /cdrom type cd9660\n[ 1104.5772604] unmounted ptyfs on /dev/pts type ptyfs\n[ 1104.5772604] unmounted procfs on /proc type procfs\n[ 1104.5772604] unmounted kernfs on /kern type kernfs\n[ 1105.4672827] unmounted /dev/sd0a on / type ffs\n[ 1105.4672827] unmounting done\n[ 1105.5202708] halting...\n\n",
+  "clean_shutdown": true,
+  "base_unchanged": true,
+  "run": ".work/clipboard/qualified-2c9sszr0",
+  "date": "2026-11-13",
+  "host_regressions": {
+    "passed": 58,
+    "log": ".work/clipboard/host-tests.log",
+    "sha256": "58d32e6bfcecd3aa1f9b622e1b8269178baae4f67c5224fc012a881ea1d478a2"
+  },
+  "evidence_hashes": {
+    ".work/clipboard/qualified-2c9sszr0/serial.log": "8c6b2d823868603a579beec78c848ba62c3166b561b7611f8e5ab90031704190",
+    ".work/clipboard/qualified-2c9sszr0/monitor.log": "69885e84fb3359a53bc5f7aa53d6922913162aae3f2901ce8c6aed5f6ea45e94",
+    ".work/clipboard/qualified-2c9sszr0/commands.log": "4848ae2cd2ff93c32b543dd7ba445366c857c699349b1b9a70d114c1d199eb73",
+    ".work/clipboard/qualified-2c9sszr0/probe-source.py": "6fa3ad3c504badd58f43642aa2d365cf466a9b38b8903253acb51863ac5118db"
+  },
+  "published_screenshots": {
+    "docs/results/images/2026-11-13-clipboard.png": "77fbef8a1ee1c2d2ab030c6ddd9c5b54074d307f085586e2679b3959ccf49444",
+    "docs/results/images/2026-11-13-clipboard-native.png": "63369e735b3a47660c3fdcd1fd2eb17f98d2299480edba555b74d387f1394412"
+  },
+  "earlier_runs": [
+    {
+      "run": ".work/clipboard/ordinary-g_v_n11v",
+      "scope": "Exploratory observations; corrected selection endpoints and window-title/target-format assumptions before final qualification.",
+      "clean_shutdown": true,
+      "base_unchanged": true
+    },
+    {
+      "run": ".work/clipboard/qualified-hfykilll",
+      "scope": "Stopped before completing checks to fix native window-title lookup; excluded from qualification.",
+      "clean_shutdown": true,
+      "base_unchanged": true
+    },
+    {
+      "run": ".work/clipboard/qualified-sgzo_fh8",
+      "scope": "Checker assumed an asterisk in the edited title. Corrected to observe title changes and saved bytes; this failed checker run is excluded.",
+      "clean_shutdown": true,
+      "base_unchanged": true
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 # Xiri proposed architecture
 
-Status: updated 2026-11-05. The original IRIX 6.5.22m desktop runs on
+Status: updated 2026-11-13. The original IRIX 6.5.22m desktop runs on
 native accelerated Newport Xorg, including winterm with a native shell,
 catalog launches, running-icon feedback, backdrop and desktop icons. The
 IRIX personality now boot-loads as a module on our NetBSD fork. Native
@@ -351,6 +351,15 @@ See the [colour qualification](results/2026-11-06-desktop-colours.md).
 Provide explicit adapters for system integration. An IRIX control panel that changes networking, accounts, storage, or power state cannot be assumed to control the new host correctly. Implement and test the relevant operation against host services before enabling it.
 
 ## Shared files and application launch
+
+Text exchange between native and IRIX applications uses the shared Xorg
+server's PRIMARY and CLIPBOARD selections. The bounded
+[clipboard checks](results/2026-11-13-clipboard.md) exercise both terminals,
+the original gedit, incremental transfer and display reset between users.
+This path needs no additional kernel hook or userspace bridge. Source clients
+own their selection data; the runtime does not provide clipboard history or
+automatic persistence after the source closes. See the
+[clipboard guide](IRIX-CLIPBOARD.md) for gestures and encoding limits.
 
 The [installer helper trace](results/2026-11-01-irix-installer-helpers.md)
 separates native utility lookup from foreign child completion. Its embedded
