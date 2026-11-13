@@ -25,14 +25,15 @@
     "surviving_contents_checked": true,
     "ownership_and_modes": true,
     "pre_halt_logout_cleanup": true,
-    "post_reboot_files_unchanged": true,
-    "isolation_before_after_reboot": true
+    "isolation_before_after_reboot": true,
+    "post_reboot_metadata_unchanged": true
   },
   "limits": [
     "The extra post-reboot GUI sequence was interrupted by host cleanup during the first user logout. The second post-reboot GUI login was not attempted.",
     "The owning run has clean_shutdown=false and is excluded from final ABI qualification. Fresh ABI and cold-image runs are recorded separately.",
     "The initial drag targeted a window border; the driver was corrected to use the visible Dumpster icon.",
-    "Local files only; cross-filesystem moves, collisions and remote filesystems remain unqualified."
+    "Local files only; cross-filesystem moves, collisions and remote filesystems remain unqualified.",
+    "The post-reboot comparison covered paths, modes, owners and sizes; file bytes were checked during the pre-halt GUI workflow, not reread after reboot."
   ],
   "interruption": {
     "status": "harness-interrupted",

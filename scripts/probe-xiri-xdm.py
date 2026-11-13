@@ -129,6 +129,13 @@ def main():
         r.update(scope='xdm-direct-chd',bundle=str(bundle.relative_to(ROOT)),
                  input_manifest_sha256=sha256(bundle/'manifest.json'),chd_sha256=manifest['chd_sha256'])
 
+    def checkpoint(stage):
+        # Preserve completed observations if the host supervisor disappears.
+        # Only result.json, written after cleanup, can qualify an image.
+        pending = d/'checkpoint.json.tmp'
+        pending.write_text(json.dumps(dict(r, checkpoint=stage),indent=2)+'\n')
+        pending.replace(d/'checkpoint.json')
+
     def capture(name):
         # Capture the ordinary GL scanout, including the graphical greeter.
         guest.monitor('disp compositor gl')
@@ -137,6 +144,7 @@ def main():
         # This pinned IRIS exposes two extra scanout columns; active X is 1280.
         assert struct.unpack('>II', (d/(name+'.png')).read_bytes()[16:24]) == (1282,1024)
         r['screenshots'][name] = sha256(d/(name+'.png'))
+        checkpoint(name)
 
     def greeter_text(name, tree):
         # Exclude the logo, frame and cursor: a missing-glyph greeter must fail.
@@ -357,11 +365,13 @@ def main():
         survivors('after-native-login')
         capture('xdm-after-native-login')
         greeter_text('xdm-after-native-login',r['native_login']['greeter_after'])
+        checkpoint('native-logout')
         print('Separate native user reached standard ctwm and returned to xdm',flush=True)
 
     def interrupted(signum, frame):
         r['interrupted'] = signum
         signal.signal(signum, signal.SIG_IGN)
+        checkpoint('interrupted')
         raise RuntimeError('Test supervisor interrupted by signal '+str(signum))
 
     signal.signal(signal.SIGTERM, interrupted)
@@ -468,6 +478,7 @@ def main():
             entry['logout_route'] = route; r['sessions'].append(entry)
             capture('xdm-after-'+route)
             greeter_text('xdm-after-'+route,entry['greeter_after'])
+            checkpoint(route+'-logout')
             print(route+' logout returned to greeter and preserved services/other login',flush=True)
         if args.multiuser:
             login('xiritest2', user='xiritest2')
@@ -476,6 +487,7 @@ def main():
             cmd('touch "$job/logout"')
             second['greeter_after'] = greeter(); guard(second); survivors('after-second-user')
             r['multiuser']['second_session'] = second
+            checkpoint('second-user-logout')
             print('Second IRIX user reached 4Dwm and returned to xdm with private session state', flush=True)
         # A failing desktop must return to authentication, then allow retry.
         cmd("cp /usr/local/libexec/xiri/desktop-clients.sh clients.good; printf '#!/bin/sh\\nexit 7\\n' >/usr/local/libexec/xiri/desktop-clients.sh; rm /usr/people/xiritest/.xsession-errors")
@@ -491,6 +503,7 @@ def main():
         if args.bundle: catalog_launch()
         cmd('touch "$job/logout"')
         entry['greeter_after'] = greeter(); guard(entry); survivors('after-retry'); r['retry'] = entry
+        checkpoint('retry-logout')
         cmd('printf "exit\\n" >&9; exec 9>&-; wait "$side_su"')
         r['xdm_log'] = get('cat /var/log/xdm.log')
         paths = ['/usr/local/bin/'+x for x in ['xiri-desktop','xiri-session','xiri-launch','xiri-logout']]
@@ -521,6 +534,7 @@ def main():
         r['rpcbind_warning_events']=get('cat rpc-watch.log')
         assert 'rpcbind: cannot bind' not in r['rpcbind_warning_events']
         r['status'] = 'passed'
+        checkpoint('checks-complete-awaiting-cleanup')
     except Exception as error:
         r['error'] = str(error); print('Failed: '+str(error),flush=True)
         if args.bundle:
@@ -551,6 +565,7 @@ def main():
         if args.bundle and lab.logged_in:
             try:r['shutdown_log']=KernelLog(lab,int(manifest['kernel_msgbuf_symbol'],16)).halt()
             except Exception as error:r['cleanup_error']=str(error)
+        checkpoint('guest-halt-complete-awaiting-owner-cleanup')
         lab.close(); r['clean_shutdown'] = lab.clean_shutdown
         unchanged = sha256(bundle/'netbsd-xiri.chd')==manifest['chd_sha256'] if args.bundle else sha256(seed/'disk.raw')==origin['raw_sha256']
         r['base_chd_unchanged' if args.bundle else 'base_raw_unchanged'] = unchanged

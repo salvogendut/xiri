@@ -88,6 +88,11 @@ UART writes paced at 20 ms per byte, compressed output, monitor captures and bou
 the established `probe-netbsd.py` still owns boot and teardown. Result files
 record hashes for these shared sources as well as each probe.
 
+The xdm probe also saves `checkpoint.json` after each captured screen and
+completed login/logout phase. This preserves partial observations if the
+host supervisor disappears. A checkpoint cannot qualify an image: promotion
+still requires the final `result.json`, verified halt and unchanged base CHD.
+
 For changes to graphical console login, both logout routes, or xmahjongg
 interaction, also run the explicit prepared-disk probe documented in the
 [xmahjongg evidence](results/2026-11-03-newport-xmahjongg.md#full-desktop-replay).

@@ -42,7 +42,11 @@ The fresh packaged-image ABI run passes all
 [336 removal records](2026-11-13-file-manager-remove.json), with no mismatches.
 Its [owning run](2026-11-13-file-manager-abi.json) verifies the loaded module,
 passes the native control, halts cleanly and leaves the source CHD unchanged.
-Cold-desktop qualification is pending.
+Cold-desktop qualification is pending. The first cold-check supervisor was
+[interrupted](2026-11-13-file-manager-cold-interruption.json) before its final
+result; the orphaned guest was halted cleanly. That run is not used for
+promotion. Its replacement retains partial checkpoints as well as the final
+result, with the acceptance checks unchanged.
 
 The independent [pathname observers](../../lab/irix-pathops/README.md) use
 the same executable bytes on IRIX 6.5.22m and NetBSD. They cover 384
