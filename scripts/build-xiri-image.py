@@ -193,6 +193,13 @@ def main():
         readme += (ROOT/'lab/irix-filemanager/image-README.txt').read_text()
     if a.experimental_note:
         readme = 'EXPERIMENTAL IMAGE\n'+a.experimental_note+'\n\n'+readme
+    if r.get('document_filetypes'):
+        readme += ('\nDocument integration: Desktop > Customize > Utilities selects each user\'s\n'
+            'editor/viewer. Choices are loaded again at login. Native NetBSD dynamic\n'
+            'application icons have Open/Drop actions; xedit is the native text control.\n'
+            'Original GIMP and Acrobat remain available for images and PDFs.\n'
+            'Drops into running applications need separate protocol support.\n')
+
     (out/'README.txt').write_text(readme)
     (out/'prismatic-state').mkdir()
     manual_nvram = seed/'nvram.bin'

@@ -5,6 +5,14 @@ status statements describe individual checkpoints and may be superseded by
 later entries. Use the [current README](../README.md), [development guide](DEVELOPMENT.md)
 and [selected image](../lab/irix-installed-desktop/image.json) for current work.
 
+The [November 13 document cycle](results/2026-11-13-documents.md) loads the
+original Utilities panel's saved environment at login and adds a native
+NetBSD executable type through the original `fftr` compiler. It distinguishes
+document opening, icon drops and running-window protocols, and retains the
+stale gedit Drop action as a separate application follow-up. IRIS upstream
+through `9605704c` is integrated on `xiri` with affected build/regression checks;
+the manual image retains its existing qualified emulator pin.
+
 The [November 13 clipboard cycle](results/2026-11-13-clipboard.md) qualifies
 text selection and Copy/Paste between native xterm, original winterm and
 gedit. Nineteen exact payload checks pass, including Latin-1 and incremental

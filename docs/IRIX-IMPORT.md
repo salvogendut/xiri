@@ -1,5 +1,13 @@
 # Imported IRIX files and reusable NetBSD image
 
+The [document integration guide](IRIX-DOCUMENTS.md) adds the original
+`/usr/sbin/fftr` compiler at `/emul/irix/usr/sbin/fftr`. The
+[document resource ledger](../lab/documents/resource-ledger.json) pins its
+142,476 bytes and existing-library dependencies. Its source image is mounted
+read-only; no account state is imported. The maintained runtime adds its own
+native NetBSD application rule and compiles it alongside the imported table.
+The original table is kept for rollback.
+
 The prepared image contains NetBSD, the matching Xiri kernel and boot-loaded
 compatibility module, and the IRIX runtime/application payload. It is a development baseline for cloning and
 manual IRIS testing. Routine runs should reuse it; importing from the IRIX

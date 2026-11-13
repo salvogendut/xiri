@@ -33,6 +33,13 @@ export ACRO_CONFIG=mipsirix
 export MWMSHELL=/usr/local/libexec/xiri/command-shell
 export WINTERM='/emul/irix/usr/sbin/xwsh -name winterm'
 export PS1="$user@xiri\$ "
+# The original Utilities panel saves Bourne-shell settings here. Restore
+# them as the authenticated user, as SGI's Xsession.dt does, so new clients
+# inherit the selected editor and viewers as well as the desktop's own apps.
+desktop="$HOME/.desktop-$(hostname)"
+if test -r "$desktop/desktopenv"; then
+    . "$desktop/desktopenv"
+fi
 # Xorg's built-in table omits SGI names. Both native and IRIX Xlib can
 # resolve them locally, using the original imported RGB values. Keep an
 # explicitly supplied XCMSDB, and leave other users' X sessions untouched.
@@ -43,7 +50,6 @@ fi
 export XCMSDB
 # Match the vendor desktop's per-host application resource lookup. The panels
 # save files such as 4DWm here; Xt must find them again at the next login.
-desktop="$HOME/.desktop-$(hostname)"
 export XUSERFILESEARCHPATH="$desktop/%N:$HOME/%N:$desktop/0.0/%N${XUSERFILESEARCHPATH:+:$XUSERFILESEARCHPATH}"
 cd "$HOME"
 printf 'SESSION user=%s uid=%s groups=%s home=%s cwd=%s display=%s authority=%s\n' \

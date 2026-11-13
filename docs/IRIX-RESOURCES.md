@@ -1,5 +1,11 @@
 # IRIX resource checklist
 
+The [document cycle](IRIX-DOCUMENTS.md) additionally imports the original
+file-type compiler `fftr`; its [ledger](../lab/documents/resource-ledger.json)
+records the source/destination, hash and dependencies. Existing artwork and
+rules are reused. Xiri's native executable rule and the native `nawk` alias
+are generated integration resources, not additional imported IRIX files.
+
 The File Manager/Dumpster cycle adds original `telldesktop` at
 `/emul/irix/usr/lib/desktop/telldesktop` (14,252 bytes, mode 0555).
 Its [ledger](../lab/irix-filemanager/resources.json) records the exact source

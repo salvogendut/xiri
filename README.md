@@ -41,6 +41,8 @@ between native and IRIX terminals, gedit Copy/Paste, native xterm's CLIPBOARD
 mode and the current encoding/lifetime limits.
 The [cold-image checks](docs/results/2026-11-13-clipboard.md) pass 19 exact
 payload comparisons and clipboard reset across both IRIX users and native ctwm.
+The [document guide](docs/IRIX-DOCUMENTS.md) explains per-user editor/viewer
+choices, native application icons and the separate document/drop paths.
 System services start at boot. NetBSD
 loads `compat_irix_o32.kmod` during boot and runs the desktop on a kernel
 without built-in IRIX support. The [core kernel](lab/native-wait/README.md)

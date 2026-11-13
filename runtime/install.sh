@@ -11,6 +11,8 @@ for dir in /usr/local/bin /usr/local/sbin /usr/local/libexec/xiri /usr/local/sha
 done
 install -m 444 etc/xdm.xsession "$stage/usr/local/share/xiri/xdm.xsession"
 install -m 444 etc/desktop-Xresources "$stage/usr/local/share/xiri/desktop-Xresources"
+install -m 444 etc/netbsd.ftr "$stage/usr/local/share/xiri/netbsd.ftr"
+install -m 555 sbin/xiri-update-filetypes "$stage/usr/local/sbin/xiri-update-filetypes"
 install -m 555 sbin/xiri-sync-users "$stage/usr/local/sbin/xiri-sync-users"
 install -m 444 libexec/account-map.awk "$stage/usr/local/libexec/xiri/account-map.awk"
 install -m 444 libexec/sgi-colours.awk "$stage/usr/local/libexec/xiri/sgi-colours.awk"
@@ -62,4 +64,10 @@ fi
 if test "$xdm" = yes && test ! -e "$stage/etc/rc.conf.d/xdm"; then
     printf 'xdm=YES\nxdm_flags="-server /etc/xiri/xdm/Xservers -resources /etc/xiri/xdm/Xresources"\n' >"$stage/etc/rc.conf.d/xdm"
     chmod 644 "$stage/etc/rc.conf.d/xdm"
+fi
+# A staged install cannot run foreign binaries. Run this explicitly after
+# importing the original compiler, or let a live runtime install refresh it.
+if test -z "$stage" && test -x /emul/irix/usr/sbin/fftr &&
+    test -s /emul/irix/usr/lib/filetype/desktop.otr; then
+    /usr/local/sbin/xiri-update-filetypes
 fi

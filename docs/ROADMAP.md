@@ -34,6 +34,13 @@ and native ctwm pass fresh-selection and logout-reset checks. No kernel or
 runtime change is needed. Full Unicode, clipboard history, image/rich-text
 formats and host-machine clipboard integration remain separate work.
 
+The [document integration cycle](results/2026-11-13-documents.md) restores
+the original Utilities panel's saved environment at login and adds native
+NetBSD application Open/Drop rules. The [guide](IRIX-DOCUMENTS.md) separates
+document Open, application-icon Drop and running-window protocols. Remaining
+work includes running-window drops and gedit's stale `-f` Drop action; broader
+application repairs remain deferred.
+
 The agreed target remains the full original IRIX desktop on NetBSD and X.org,
 with modern software running natively. The [repository/workflow cleanup](results/2026-11-03-workflow-cleanup.md) is
 complete: the maintained `./xiri` commands and both desktop checks are qualified.
@@ -524,6 +531,8 @@ dependency candidates; a visible window alone does not complete these checks.
 - [ ] Implement required service adapters, including the measured file-notification and launch behavior.
 - [x] Exercise native X test windows under original 4Dwm in the same native Xvfb session used by Toolchest and winterm.
 - [ ] Show a maintained host-native graphical application and an IRIX application in the same local session; qualify physical display output separately.
+- [x] Restore per-user editor/viewer choices at login and qualify document Open and native application-icon Drop. See the [document cycle](results/2026-11-13-documents.md).
+- [ ] Qualify drops into running applications, repair stale application-specific Drop rules, and extend document/print handlers.
 - [x] Qualify text clipboard interoperability between native NetBSD and original IRIX clients. The [clipboard checks](results/2026-11-13-clipboard.md) cover both selection paths, incremental transfer, source exit and reset between users; the [guide](IRIX-CLIPBOARD.md) records tested gestures and encoding/lifetime limits.
 - [x] Restore separate users' backdrop, colour scheme, focus and window-movement preferences across logout/login and reboot. [Preference result](results/2026-11-06-desktop-preferences.md).
 - [x] Resolve SGI-prefixed colour names through Xlib's per-session database and qualify the original Solid backdrop picker in X11 mode. [Colour result](results/2026-11-06-desktop-colours.md): 142 aliases and two users' saved colours across logout/login and reboot.

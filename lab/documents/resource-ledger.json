@@ -1,0 +1,71 @@
+{
+  "schema": 1,
+  "status": "staged-unqualified",
+  "extraction": "guestfish --ro; mount ro,norecovery",
+  "source_image_manifest_sha256": "79b464ad3856eca2d034f418445860b3d262437f0347ccadedc67e60c8330521",
+  "script_sha256": "d9a40d8e1fdc1ea5e531461de22393a6ca30e5a7db6e71b22bb71561661f5b64",
+  "payload_sha256": "de4373c4f443f6cc1ee3459fc5cc9746c2d6a027d820efe1d4f9d6e00cadee85",
+  "paths": {
+    "/usr/sbin/fftr": {
+      "irix_source": "/usr/sbin/fftr",
+      "canonical_source": "/usr/sbin/fftr",
+      "netbsd_destination": "/emul/irix/usr/sbin/fftr",
+      "type": "file",
+      "original_mode": "0o755",
+      "mode": "0o555",
+      "uid": 0,
+      "gid": 0,
+      "bytes": 142476,
+      "sha256": "d5d1b073832b7c3f5ff9265c05be4beb063c80a552c19ba79bb70d577f78bd12",
+      "elf": {
+        "class": 32,
+        "endian": "big",
+        "machine": 8,
+        "abi": "n32",
+        "type": 2,
+        "flags": "0x20000024",
+        "entry": "0x10004410",
+        "interpreter": [
+          "/usr/lib32/libc.so.1"
+        ],
+        "needed": [
+          "libCsup.so",
+          "libC.so.2",
+          "libc.so.1"
+        ],
+        "rpath": [],
+        "soname": [],
+        "loads": [
+          {
+            "offset": 0,
+            "address": 268435456,
+            "file_bytes": 81920,
+            "memory_bytes": 81920,
+            "flags": 5,
+            "alignment": 8192
+          },
+          {
+            "offset": 81920,
+            "address": 268582912,
+            "file_bytes": 53248,
+            "memory_bytes": 94004,
+            "flags": 6,
+            "alignment": 4096
+          }
+        ],
+        "load_boundaries_8k": false,
+        "liblist": [
+          "libCsup.so",
+          "libC.so.2",
+          "libc.so.1"
+        ],
+        "mips_rld_version": 1,
+        "mips_flags": "0x4c11"
+      }
+    }
+  },
+  "limitations": [
+    "Resource presence does not qualify native filetype actions.",
+    "The existing imported filetype database and artwork remain separate prerequisites."
+  ]
+}

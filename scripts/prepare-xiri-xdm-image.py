@@ -193,6 +193,13 @@ def main():
                 key: value for key, value in resources.items() if key != 'files'}
         cmd('mkdir -p /root/xdm-image-build && cp -R /cdrom/runtime /root/xdm-image-build/ && '
             'cd /root/xdm-image-build/runtime && make && sh install.sh --enable-xdm',300)
+        if 'documents' in applications or 'documents' in inherited_resources:
+            r['document_filetypes'] = dict(
+                hashes=get('sha256 /emul/irix/usr/lib/filetype/desktop.otr '
+                           '/emul/irix/usr/lib/filetype/desktop.otr.before-xiri '
+                           '/usr/local/share/xiri/netbsd.ftr /emul/irix/usr/sbin/fftr'),
+                state=get('cat /emul/irix/usr/lib/filetype/desktop.otr.xiri-state').strip(),
+                nawk_alias=get('readlink /usr/bin/nawk').strip())
         # The original File Manager resolves gethostname() before operating on
         # local files. Without an IPv4 host entry its fiHostCache is empty and
         # it misleadingly reports existing files as missing. Configure this

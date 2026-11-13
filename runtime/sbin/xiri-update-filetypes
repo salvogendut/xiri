@@ -1,0 +1,49 @@
+#!/bin/sh
+# Add native NetBSD application actions while keeping imported/admin types.
+set -eu
+export PATH=/bin:/usr/bin:/sbin:/usr/sbin
+if test "$#" != 0; then echo 'Usage: xiri-update-filetypes' >&2; exit 2; fi
+test "$(id -u)" = 0 || { echo 'Run as root.' >&2; exit 1; }
+compiler=/emul/irix/usr/sbin/fftr
+rules=/usr/local/share/xiri/netbsd.ftr
+directory=/emul/irix/usr/lib/filetype
+table="$directory/desktop.otr"
+test -x "$compiler" && test -r "$rules" && test -s "$table" || {
+    echo 'Import the original IRIX fftr compiler and desktop filetype database first.' >&2
+    exit 1
+}
+# fftr invokes this absolute name through the native shell. NetBSD supplies awk.
+# Preserve any administrator-owned path, including a dangling symlink.
+if ! test -e /usr/bin/nawk && ! test -L /usr/bin/nawk; then
+    ln -s awk /usr/bin/nawk
+fi
+lock="$directory/.xiri-update.lock"
+mkdir "$lock" || { echo 'Another filetype update is active; check the lock directory.' >&2; exit 1; }
+work=
+cleanup() { test -z "$work" || rm -rf "$work"; rmdir "$lock"; }
+trap cleanup EXIT
+trap 'exit 1' HUP INT TERM
+work=$(mktemp -d "$directory/.xiri-update.XXXXXX")
+before=$(sha256 -q "$table")
+rulehash=$(sha256 -q "$rules")
+state="$directory/desktop.otr.xiri-state"
+if test -f "$state" && test "$(cat "$state")" = "$before $rulehash"; then
+    echo 'Filetype rules and database unchanged; no rebuild needed.'
+    exit 0
+fi
+# New definitions precede the current table; unrelated installed types survive.
+"$compiler" -o "$work/desktop.otr" "$rules" "$table"
+test -s "$work/desktop.otr"
+# Keep the first table for rollback, and never truncate the live mapped database.
+if ! test -e "$directory/desktop.otr.before-xiri"; then
+    cp -p "$table" "$work/original.otr"
+    mv "$work/original.otr" "$directory/desktop.otr.before-xiri"
+fi
+chmod 444 "$work/desktop.otr"
+mv "$work/desktop.otr" "$table"
+after=$(sha256 -q "$table")
+printf '%s %s\n' "$after" "$rulehash" >"$work/state"
+chmod 444 "$work/state"
+mv "$work/state" "$state"
+printf 'Filetypes before=%s after=%s rules=%s\n' "$before" "$after" "$rulehash"
+echo 'Log out and back in to reload filetype rules.'

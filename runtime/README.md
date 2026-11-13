@@ -38,6 +38,12 @@ returns an error; there is no UID-wide fallback. The guard's log records its
 owned PIDs and final cleanup result. A client launcher that exits also ends
 its remaining descendants, including on failed startup.
 
+The original Utilities panel's `desktopenv` file is loaded as the authenticated
+user at login. See the [document guide](../docs/IRIX-DOCUMENTS.md) for saved
+editor/viewer choices and the additive native application file-type rule. A
+live runtime install updates that rule when the imported `fftr` compiler is
+available; staged installs require a later `xiri-update-filetypes` invocation.
+
 The native account's HOME, working directory, supplementary groups and
 XAUTHORITY are preserved. The manual wrapper creates an MIT-MAGIC-COOKIE-1
 file for its X server. The direct user entry accepts the login's existing

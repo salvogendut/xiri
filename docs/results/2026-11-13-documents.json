@@ -1,0 +1,148 @@
+{
+  "schema": 1,
+  "status": "bounded-development-checks-passed",
+  "run": ".work/documents/ordinary-206upatu",
+  "observations": {
+    "utilities-inheritance-before": "/usr/sbin/xwsh -name Vi -e /usr/bin/vi\nunset\nWEBEDITOR=\"/usr/sbin/CosmoCreate\"; export WEBEDITOR\t# WEBEDITOR #\nWEBBROWSER=\"/usr/bin/X11/netscape\"; export WEBBROWSER\t# WEBBROWSER #\nMAILBOXPROG=\"/usr/bin/X11/MediaMail -gui\"; export MAILBOXPROG\t# MAILBOXPROG #\nBOOKVIEWER=\"/usr/sbin/infosearch -books\"; export BOOKVIEWER\t# BOOKVIEWER #\nPSVIEWER=\"/usr/bin/X11/showps\"; export PSVIEWER\t# PSVIEWER #\nWINEDITOR=\"/usr/freeware/bin/gedit\"; export WINEDITOR\t# WINEDITOR #\nIMGVIEWER=\"/usr/freeware/bin/gimp\"; export IMGVIEWER\t# IMGVIEWER #\nSESSION user=xiritest uid=1234 groups=1234 1235 home=/usr/people/xiritest cwd=/usr/people/xiritest display=127.0.0.1:0 authority=default\n",
+    "utilities-inheritance-after": "/usr/freeware/bin/gedit\n/usr/freeware/bin/gimp\nSESSION user=xiritest uid=1234 groups=1234 1235 home=/usr/people/xiritest cwd=/usr/people/xiritest display=127.0.0.1:0 authority=default\n",
+    "document-types": "DB loaded errno=89\nNAMED XMahjonggExecutable\nSTAT /usr/freeware/bin/gedit mode=100555 size=202884\nTYPE /usr/freeware/bin/gedit GEditExecutable errno=0\nFDTYPE /usr/freeware/bin/gedit GEditExecutable errno=0\nSTAT /usr/freeware/bin/gimp mode=100555 size=2517576\nTYPE /usr/freeware/bin/gimp GimpExecutable errno=0\nFDTYPE /usr/freeware/bin/gimp GimpExecutable errno=0\nSTAT /usr/X11R7/bin/xedit mode=100555 size=923024\nTYPE /usr/X11R7/bin/xedit SharedLibraryExecutable errno=0\nFDTYPE /usr/X11R7/bin/xedit SharedLibraryExecutable errno=0\nSTAT /usr/people/xiritest/DocumentCheck/Applications/xedit mode=100555 size=923024\nTYPE /usr/people/xiritest/DocumentCheck/Applications/xedit SharedLibraryExecutable errno=0\nFDTYPE /usr/people/xiritest/DocumentCheck/Applications/xedit SharedLibraryExecutable errno=0\n                00001007                                                \n",
+    "document-types-candidate": "DB loaded errno=89\nNAMED XMahjonggExecutable\nSTAT /usr/freeware/bin/gedit mode=100555 size=202884\nTYPE /usr/freeware/bin/gedit GEditExecutable errno=0\nFDTYPE /usr/freeware/bin/gedit GEditExecutable errno=0\nSTAT /usr/freeware/bin/gimp mode=100555 size=2517576\nTYPE /usr/freeware/bin/gimp GimpExecutable errno=0\nFDTYPE /usr/freeware/bin/gimp GimpExecutable errno=0\nSTAT /usr/X11R7/bin/xedit mode=100555 size=923024\nTYPE /usr/X11R7/bin/xedit XiriNetBSDExecutable errno=0\nFDTYPE /usr/X11R7/bin/xedit XiriNetBSDExecutable errno=0\nSTAT /usr/X11R7/bin/xterm mode=100555 size=1043228\nTYPE /usr/X11R7/bin/xterm XiriNetBSDExecutable errno=0\nFDTYPE /usr/X11R7/bin/xterm XiriNetBSDExecutable errno=0\nSTAT /usr/lib/libc.so mode=100444 size=3006984\nTYPE /usr/lib/libc.so SharedLibraryExecutable errno=0\nFDTYPE /usr/lib/libc.so SharedLibraryExecutable errno=0\n",
+    "ftr-compile": "-rwxr-xr-x  1 root  wheel  2243504 Nov 13 15:29 /root/documents/candidate.otr\n",
+    "type-fixtures": "DB loaded errno=89\nNAMED XMahjonggExecutable\nSTAT /root/documents/types/elf64 mode=100555 size=4096\nTYPE /root/documents/types/elf64 Script errno=0\nFDTYPE /root/documents/types/elf64 Script errno=0\nSTAT /root/documents/types/exec mode=100555 size=4096\nTYPE /root/documents/types/exec XiriNetBSDExecutable errno=0\nFDTYPE /root/documents/types/exec XiriNetBSDExecutable errno=0\nSTAT /root/documents/types/header-table-outside-file mode=100555 size=4096\nTYPE /root/documents/types/header-table-outside-file Script errno=0\nFDTYPE /root/documents/types/header-table-outside-file Script errno=0\nSTAT /root/documents/types/irix-interpreter mode=100555 size=4096\nTYPE /root/documents/types/irix-interpreter Script errno=0\nFDTYPE /root/documents/types/irix-interpreter Script errno=0\nSTAT /root/documents/types/little-endian mode=100555 size=4096\nTYPE /root/documents/types/little-endian Script errno=0\nFDTYPE /root/documents/types/little-endian Script errno=0\nSTAT /root/documents/types/no-execute-mode mode=100444 size=4096\nTYPE /root/documents/types/no-execute-mode SharedLibraryExecutable errno=0\nFDTYPE /root/documents/types/no-execute-mode SharedLibraryExecutable errno=0\nSTAT /root/documents/types/no-interpreter mode=100555 size=4096\nTYPE /root/documents/types/no-interpreter Script errno=0\nFDTYPE /root/documents/types/no-interpreter Script errno=0\nSTAT /root/documents/types/offset-outside-file mode=100555 size=4096\nTYPE /root/documents/types/offset-outside-file Script errno=0\nFDTYPE /root/documents/types/offset-outside-file Script errno=0\nSTAT /root/documents/types/pie-slot-0 mode=100555 size=4096\nTYPE /root/documents/types/pie-slot-0 XiriNetBSDExecutable errno=0\nFDTYPE /root/documents/types/pie-slot-0 XiriNetBSDExecutable errno=0\nSTAT /root/documents/types/pie-slot-1 mode=100555 size=4096\nTYPE /root/documents/types/pie-slot-1 XiriNetBSDExecutable errno=0\nFDTYPE /root/documents/types/pie-slot-1 XiriNetBSDExecutable errno=0\nSTAT /root/documents/types/pie-slot-15 mode=100555 size=4096\nTYPE /root/documents/types/pie-slot-15 XiriNetBSDExecutable errno=0\nFDTYPE /root/documents/types/pie-slot-15 XiriNetBSDExecutable errno=0\nSTAT /root/documents/types/pie-slot-31 mode=100555 size=4096\nTYPE /root/documents/types/pie-slot-31 XiriNetBSDExecutable errno=0\nFDTYPE /root/documents/types/pie-slot-31 XiriNetBSDExecutable errno=0\nSTAT /root/documents/types/pie-slot-7 mode=100555 size=4096\nTYPE /root/documents/types/pie-slot-7 XiriNetBSDExecutable errno=0\nFDTYPE /root/documents/types/pie-slot-7 XiriNetBSDExecutable errno=0\nSTAT /root/documents/types/relocatable mode=100555 size=4096\nTYPE /root/documents/types/relocatable Script errno=0\nFDTYPE /root/documents/types/relocatable Script errno=0\nSTAT /root/documents/types/too-many-headers mode=100555 size=4096\nTYPE /root/documents/types/too-many-headers Script errno=0\nFDTYPE /root/documents/types/too-many-headers Script errno=0\nSTAT /root/documents/types/truncated-0 mode=100555 size=0\nTYPE /root/documents/types/truncated-0 EmptyFile errno=0\nFDTYPE /root/documents/types/truncated-0 EmptyFile errno=0\nSTAT /root/documents/types/truncated-100 mode=100555 size=100\nTYPE /root/documents/types/truncated-100 Script errno=0\nFDTYPE /root/documents/types/truncated-100 Script errno=0\nSTAT /root/documents/types/truncated-20 mode=100555 size=20\nTYPE /root/documents/types/truncated-20 Script errno=0\nFDTYPE /root/documents/types/truncated-20 Script errno=0\nSTAT /root/documents/types/truncated-4 mode=100555 size=4\nTYPE /root/documents/types/truncated-4 Script errno=0\nFDTYPE /root/documents/types/truncated-4 Script errno=0\nSTAT /root/documents/types/truncated-51 mode=100555 size=51\nTYPE /root/documents/types/truncated-51 Script errno=0\nFDTYPE /root/documents/types/truncated-51 Script errno=0\nSTAT /root/documents/types/truncated-60 mode=100555 size=60\nTYPE /root/documents/types/truncated-60 Script errno=0\nFDTYPE /root/documents/types/truncated-60 Script errno=0\nSTAT /root/documents/types/truncated-84 mode=100555 size=84\nTYPE /root/documents/types/truncated-84 Script errno=0\nFDTYPE /root/documents/types/truncated-84 Script errno=0\nSTAT /root/documents/types/unterminated-interpreter mode=100555 size=4096\nTYPE /root/documents/types/unterminated-interpreter Script errno=0\nFDTYPE /root/documents/types/unterminated-interpreter Script errno=0\nSTAT /root/documents/types/wrong-entry-size mode=100555 size=4096\nTYPE /root/documents/types/wrong-entry-size Script errno=0\nFDTYPE /root/documents/types/wrong-entry-size Script errno=0\nSTAT /root/documents/types/wrong-interpreter mode=100555 size=4096\nTYPE /root/documents/types/wrong-interpreter Script errno=0\nFDTYPE /root/documents/types/wrong-interpreter Script errno=0\nSTAT /root/documents/types/wrong-interpreter-size mode=100555 size=4096\nTYPE /root/documents/types/wrong-interpreter-size Script errno=0\nFDTYPE /root/documents/types/wrong-interpreter-size Script errno=0\nSTAT /root/documents/types/wrong-machine mode=100555 size=4096\nTYPE /root/documents/types/wrong-machine Script errno=0\nFDTYPE /root/documents/types/wrong-machine Script errno=0\nSTAT /root/documents/types/zero-headers mode=100555 size=4096\nTYPE /root/documents/types/zero-headers Script errno=0\nFDTYPE /root/documents/types/zero-headers Script errno=0\n",
+    "filetype-update": "Filetypes before=8bfdd23c5db50715e6c3114e486a79bf383225da144bf24495c6b7df94960efa after=d94553a0fcf77ed60e227c9bd46e4b5a2bb8740d1bd7a70353da776d95323e54 rules=d1ff45ec0e577d4fa528df05fd2a8bb94be2f5dab32072f60616366b1ba7b21d\nLog out and back in to reload filetype rules.\nFiletype rules and database unchanged; no rebuild needed.\nSHA256 (/emul/irix/usr/lib/filetype/desktop.otr) = d94553a0fcf77ed60e227c9bd46e4b5a2bb8740d1bd7a70353da776d95323e54\nSHA256 (/emul/irix/usr/lib/filetype/desktop.otr.before-xiri) = 8bfdd23c5db50715e6c3114e486a79bf383225da144bf24495c6b7df94960efa\nSHA256 (/emul/irix/usr/lib/filetype/desktop.otr.xiri-state) = ca568a47143b6357bfb6941fc4796ae31da521596d7406b2f3179639d76f418d\n",
+    "filetype-update-rejected": "/emul/irix/usr/sbin/fftr error 91, file /usr/local/share/xiri/netbsd.ftr, line 2: TYPER syntax error\nSHA256 (/emul/irix/usr/lib/filetype/desktop.otr) = d94553a0fcf77ed60e227c9bd46e4b5a2bb8740d1bd7a70353da776d95323e54\n-r--r--r--   1 root  wheel  2234496 Nov 13 15:36 desktop.otr.before-xiri\n-r--r--r--   1 root  wheel      130 Nov 13 15:45 desktop.otr.xiri-state\n",
+    "drop-native-after": "           0x1400031 \"xedit\": (\"xedit\" \"Xedit\")  590x440+0+0  +32+32\n           0x10000cf \"xiri-indy:/usr/people/xiritest/DocumentCheck/Source\": (\"FileManager\" \"FileManager\")  550x480+0+0  +20+100\n           0x1000084 \"xiri-indy:/usr/people/xiritest/DocumentCheck/Applications\": (\"FileManager\" \"FileManager\")  600x480+0+0  +640+100\n1234 5230    1 /usr/people/xiritest/DocumentCheck/Applications/xedit /usr/people/xiritest/DocumentCheck/Source/notes with spaces.txt \nSHA256 (/usr/people/xiritest/DocumentCheck/Source/colour sample.png) = b98fe8f345e051a7628c7f174fc246a9c4215f246f98ab19dd4d68ebe7eda4ce\nSHA256 (/usr/people/xiritest/DocumentCheck/Source/notes with spaces.txt) = 4abcb57ad09ea131ee0092241616675bddbc18dcb93ad55ef022954d5968677b\nSHA256 (/usr/people/xiritest/DocumentCheck/Source/reader guide.pdf) = f1bc498f742ca8f72f22cf650a43584494b41e1b2eb24b7e2d8d626eab758c9a\ntotal 0\nlrwx------  1 xiritest  xiritest  34 Nov 13 14:42 acroread -> /usr/adobe/Acrobat4.0/bin/acroread\nlrwx------  1 xiritest  xiritest  23 Nov 13 14:42 gedit -> /usr/freeware/bin/gedit\nlrwx------  1 xiritest  xiritest  22 Nov 13 14:42 gimp -> /usr/freeware/bin/gimp\nlrwxr-xr-x  1 xiritest  users     20 Nov 13 14:53 xedit -> /usr/X11R7/bin/xedit\n",
+    "drop-gimp-rendered": "           0x160021f \"colour sample.png-0.0 (RGB) 100%\": (\"image_window\" \"Gimp\")  177x127+0+0  +320+320\n1234 2125    1 /usr/people/xiritest/DocumentCheck/Applications/gimp /usr/people/xiritest/DocumentCheck/Source/colour sample.png \n1234 2128 2125 /usr/freeware/lib32/gimp/1.2/plug-ins/script-fu -gimp 9 8 -run 0 \n",
+    "preferred-text": "     0x16002bf \"gedit\": (\"gedit\" \"Gedit\")  121x22+206+242  +206+242\n           0x16001b6 \"gedit - [/usr/people/xiritest/DocumentCheck/Source/notes with spaces.txt]\": (\"gedit\" \"gedit\")  600x400+0+0  +160+160\n     0x16001d7 \"gedit\": ()  534x50+0+0  +0+0\n     0x16001cc \"gedit\": ()  379x30+0+0  +0+0\n     0x1600001 (has no name): (\"gedit\" \"Gedit\")  10x10+10+10  +10+10\n1234 4223    1 /usr/freeware/bin/gedit /usr/people/xiritest/DocumentCheck/Source/notes with spaces.txt \n/bin/sh: imgview: cannot execute\n/bin/sh[2]: test: argument expected\n\nGdk-WARNING **: shmget failed: error 89 (Function not implemented)\ngdk_imlib ERROR: Cannot load image: /usr/freeware/share/pixmaps/gedit-icon.png\nAll fallbacks failed.\n\nGnomeUI-WARNING **: Could not open help topics file NULL\n",
+    "pdf-open": "           0x1800178 \"reader guide.pdf\": (\"documentShell\" \"AcroRead\")  800x600+0+0  +96+96\n     0x18000b4 \"About Acrobat Reader 4.0\": (\"splashScreen_popup\" \"AcroRead\")  508x372+386+326  +386+326\n     0x180012a \"Acrobat Reader\": (\"eula dialog_popup\" \"AcroRead\")  699x648+290+188  +290+188\n1234  834    1 /usr/adobe/Acrobat4.0/bin/acroread.dist /usr/people/xiritest/DocumentCheck/Source/reader guide.pdf (acroread)\n1234 3869    1 /usr/sbin/xwsh -e /usr/bin/vi /usr/people/xiritest/DocumentCheck/Source/notes with spaces.txt \n1234  734 3869 /usr/bin/vi /usr/people/xiritest/DocumentCheck/Source/notes with spaces.txt \n",
+    "running-gimp-retry": "           0x18000f2 \"The GIMP\": (\"toolbox\" \"Gimp\")  226x500+0+0  +650+100\n\nGdk-WARNING **: shmget failed: error 89 (Function not implemented)\n/usr/freeware/bin/gimp: shmget() failed: Disabling shared memory tile transport.\n",
+    "running-gedit-retry": "     0x14002bb \"gedit\": ()  10x10+-100+-100  +-100+-100\n     0x14001cc \"gedit\": ()  600x330+650+650  +650+650\n           0x14001b6 \"gedit - [Untitled 1]\": (\"gedit\" \"gedit\")  600x330+0+0  +650+650\n     0x14001d7 \"gedit\": ()  534x50+0+0  +0+0\n     0x1400001 (has no name): (\"gedit\" \"Gedit\")  10x10+10+10  +10+10\n\nGdk-WARNING **: shmget failed: error 89 (Function not implemented)\ngdk_imlib ERROR: Cannot load image: /usr/freeware/share/pixmaps/gedit-icon.png\nAll fallbacks failed.\n\nGnomeUI-WARNING **: Could not open help topics file NULL\nSHA256 (/usr/people/xiritest/DocumentCheck/Source/colour sample.png) = b98fe8f345e051a7628c7f174fc246a9c4215f246f98ab19dd4d68ebe7eda4ce\nSHA256 (/usr/people/xiritest/DocumentCheck/Source/notes with spaces.txt) = 4abcb57ad09ea131ee0092241616675bddbc18dcb93ad55ef022954d5968677b\nSHA256 (/usr/people/xiritest/DocumentCheck/Source/reader guide.pdf) = f1bc498f742ca8f72f22cf650a43584494b41e1b2eb24b7e2d8d626eab758c9a\n",
+    "running-application-properties": "WM_STATE(WM_STATE):\n\t\twindow state: Normal\n\t\ticon window: 0x4000ca\n_XROOMS_APP_NAME(STRING) = \"gedit_gedit-Desk 1\"\nWM_COLORMAP_WINDOWS(WINDOW): window id # 0x14001d9, 0x14001ec, 0x14001ee, 0x14001f0, 0x14001f2, 0x14001f4, 0x14001f6, 0x14001f8, 0x14001fa, 0x14001fc, 0x14001fe, 0x1400200\nXdndAware(ATOM) = ARC\n_MOTIF_DRAG_RECEIVER_INFO(_MOTIF_DRAG_RECEIVER_INFO) = 0x42, 0x0, 0x5, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x10\nWM_CLASS(STRING) = \"gedit\", \"gedit\"\nWM_LOCALE_NAME(STRING) = \"C\"\nWM_CLIENT_MACHINE(STRING) = \"xiri-indy\"\nWM_ICON_NAME(STRING) = \"gedit - [Untitled 1]\"\nWM_NAME(STRING) = \"gedit - [Untitled 1]\"\nWM_CLIENT_LEADER(WINDOW): window id # 0x1400001\nWM_HINTS(WM_HINTS):\n\t\tClient accepts input or input focus: True\n\t\tInitial state is Normal State.\n\t\twindow id # of group leader: 0x1400001\nWM_NORMAL_HINTS(WM_SIZE_HINTS):\n\t\tprogram specified size: 600 by 400\nWM_PROTOCOLS(ATOM): protocols  WM_DELETE_WINDOW, WM_TAKE_FOCUS\nWM_STATE(WM_STATE):\n\t\twindow state: Normal\n\t\ticon window: 0x4000da\n_XROOMS_APP_NAME(STRING) = \"toolbox_Gimp-Desk 1\"\nXdndAware(ATOM) = ARC\n_MOTIF_DRAG_RECEIVER_INFO(_MOTIF_DRAG_RECEIVER_INFO) = 0x42, 0x0, 0x5, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x10\nWM_CLASS(STRING) = \"toolbox\", \"Gimp\"\nWM_LOCALE_NAME(STRING) = \"C\"\nWM_CLIENT_MACHINE(STRING) = \"xiri-indy\"\nWM_ICON_NAME(STRING) = \"The GIMP\"\nWM_NAME(STRING) = \"The GIMP\"\nWM_CLIENT_LEADER(WINDOW): window id # 0x1800001\nWM_HINTS(WM_HINTS):\n\t\tClient accepts input or input focus: True\n\t\tInitial state is Normal State.\n\t\tbitmap id # to use for icon: 0x1800017\n\t\tbitmap id # of mask for icon: 0x1800015\n\t\twindow id # of group leader: 0x1800001\nWM_NORMAL_HINTS(WM_SIZE_HINTS):\n\t\tprogram specified location: 0, 0\n\t\tprogram specified minimum size: 30 by 108\n\t\tprogram specified resize increment: 28 by 28\nWM_PROTOCOLS(ATOM): protocols  WM_DELETE_WINDOW, WM_TAKE_FOCUS\n     0x14001cc \"gedit\": ()  600x330+650+650  +650+650\n           0x18000f2 \"The GIMP\": (\"toolbox\" \"Gimp\")  226x500+0+0  +650+100\n           0x14001b6 \"gedit - [Untitled 1]\": (\"gedit\" \"gedit\")  600x330+0+0  +650+650\n           0x10000cf \"xiri-indy:/usr/people/xiritest/DocumentCheck/Source\": (\"FileManager\" \"FileManager\")  550x480+0+0  +20+100\n     0x14001d7 \"gedit\": ()  534x50+0+0  +0+0\n     0x1400001 (has no name): (\"gedit\" \"Gedit\")  10x10+10+10  +10+10\n           0x1000084 \"xiri-indy:/usr/people/xiritest/DocumentCheck/Applications\": (\"FileManager\" \"FileManager\")  600x480+0+0  +640+100\n",
+    "gedit-drop-action": "Error on option -f: unknown option.\nRun '/usr/freeware/bin/gedit --help' to see a full list of available command line options.\n1\n"
+  },
+  "classification": {
+    "status": "pass",
+    "cases": {
+      "TYPE/elf64": "Script",
+      "TYPE/exec": "XiriNetBSDExecutable",
+      "TYPE/header-table-outside-file": "Script",
+      "TYPE/irix-interpreter": "Script",
+      "TYPE/little-endian": "Script",
+      "TYPE/no-execute-mode": "SharedLibraryExecutable",
+      "TYPE/no-interpreter": "Script",
+      "TYPE/offset-outside-file": "Script",
+      "TYPE/pie-slot-0": "XiriNetBSDExecutable",
+      "TYPE/pie-slot-1": "XiriNetBSDExecutable",
+      "TYPE/pie-slot-15": "XiriNetBSDExecutable",
+      "TYPE/pie-slot-31": "XiriNetBSDExecutable",
+      "TYPE/pie-slot-7": "XiriNetBSDExecutable",
+      "TYPE/relocatable": "Script",
+      "TYPE/too-many-headers": "Script",
+      "TYPE/truncated-0": "EmptyFile",
+      "TYPE/truncated-100": "Script",
+      "TYPE/truncated-20": "Script",
+      "TYPE/truncated-4": "Script",
+      "TYPE/truncated-51": "Script",
+      "TYPE/truncated-60": "Script",
+      "TYPE/truncated-84": "Script",
+      "TYPE/unterminated-interpreter": "Script",
+      "TYPE/wrong-entry-size": "Script",
+      "TYPE/wrong-interpreter": "Script",
+      "TYPE/wrong-interpreter-size": "Script",
+      "TYPE/wrong-machine": "Script",
+      "TYPE/zero-headers": "Script",
+      "FDTYPE/elf64": "Script",
+      "FDTYPE/exec": "XiriNetBSDExecutable",
+      "FDTYPE/header-table-outside-file": "Script",
+      "FDTYPE/irix-interpreter": "Script",
+      "FDTYPE/little-endian": "Script",
+      "FDTYPE/no-execute-mode": "SharedLibraryExecutable",
+      "FDTYPE/no-interpreter": "Script",
+      "FDTYPE/offset-outside-file": "Script",
+      "FDTYPE/pie-slot-0": "XiriNetBSDExecutable",
+      "FDTYPE/pie-slot-1": "XiriNetBSDExecutable",
+      "FDTYPE/pie-slot-15": "XiriNetBSDExecutable",
+      "FDTYPE/pie-slot-31": "XiriNetBSDExecutable",
+      "FDTYPE/pie-slot-7": "XiriNetBSDExecutable",
+      "FDTYPE/relocatable": "Script",
+      "FDTYPE/too-many-headers": "Script",
+      "FDTYPE/truncated-0": "EmptyFile",
+      "FDTYPE/truncated-100": "Script",
+      "FDTYPE/truncated-20": "Script",
+      "FDTYPE/truncated-4": "Script",
+      "FDTYPE/truncated-51": "Script",
+      "FDTYPE/truncated-60": "Script",
+      "FDTYPE/truncated-84": "Script",
+      "FDTYPE/unterminated-interpreter": "Script",
+      "FDTYPE/wrong-entry-size": "Script",
+      "FDTYPE/wrong-interpreter": "Script",
+      "FDTYPE/wrong-interpreter-size": "Script",
+      "FDTYPE/wrong-machine": "Script",
+      "FDTYPE/zero-headers": "Script"
+    }
+  },
+  "limits": [
+    "Exploratory window-placement and coordinate mistakes are excluded from acceptance.",
+    "The final image and two-user regression are recorded separately.",
+    "No native or IRIX kernel changes are made in this cycle."
+  ],
+  "shutdown": {
+    "status": "observed",
+    "bundle": "/var/home/salvogendut/Dev/xiri/.work/images/xiri-netbsd-desktop-20261113-filemanager",
+    "base_chd_sha256": "ac2e0702746448da893a623045cee06d359bbe6b8dc0f96668d66d3b8e9ec06e",
+    "halt": "[   1.0000000] Copyright (c) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,\n[   1.0000000]     2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013,\n[   1.0000000]     2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023,\n[   1.0000000]     2024, 2025, 2026\n[   1.0000000]     The NetBSD Foundation, Inc.  All rights reserved.\n[   1.0000000] Copyright (c) 1982, 1986, 1989, 1991, 1993\n[   1.0000000]     The Regents of the University of California.  All rights reserved.\n\n[   1.0000000] NetBSD 11.99.9 (XIRI_IRIX_MODULE_20261103) #4: Thu Nov  5 12:34:13 UTC 2026\n[   1.0000000] \tsalvogendut@toolbx:/var/home/salvogendut/Dev/xiri/.work/netbsd-wait-accounting-build/obj/sys/arch/sgimips/compile/XIRI_IRIX_MODULE\n[   1.0000000] total memory = 255 MB\n[   1.0000000] (768 KB reserved for ARCS)\n[   1.0000000] avail memory = 244 MB\n[   1.0000000] timecounter: Timecounters tick every 10.000 msec\n[   1.0000000] mainbus0 (root): SGI-IP22 [SGI, 69123457], 1 processor\n[   1.0000000] cpu0 at mainbus0: MIPS R4400 CPU (0x440) Rev. 4.0 with MIPS R4010 FPC Rev. 0.0\n[   1.0000000] cpu0: 48 TLB entries, 1TB (40-bit) VAs, 4KB (12-bit) PAs, 16MB max page size\n[   1.0000000] cpu0: 16KB/16B direct-mapped L1 instruction cache\n[   1.0000000] cpu0: 16KB/16B direct-mapped write-back L1 data cache\n[   1.0000000] cpu0: 1024KB/128B direct-mapped write-back L2 unified cache\n[   1.0000000] int0 at mainbus0 addr 0x1fbd9880\n[   1.0000000] int0: bus 33MHz, CPU 66MHz\n[   1.0000000] imc0 at mainbus0 addr 0x1fa00000: revision 3\n[   1.0000000] gio0 at imc0\n[   1.0000000] newport0 at gio0: SGI NG1 (board revision 0, cmap revision 2, xmap revision 3, vc2 revision 0), depth 24, monitor ID 10 (1280x1024 60Hz)\n[   1.0000000] newport0: 13W3 Monitor ID 10, PROM ID -1, determined monitor ID 10 (1280x1024 60Hz)\n[   1.0000000] wsdisplay0 at newport0 kbdmux 1: console (default, vt100 emulation)\n[   1.0000000] wsmux1: connecting to wsdisplay0\n[   1.0000000] hpc0 at gio0: SGI HPC3 (onboard)\n[   1.0000000] zsc0 at hpc0 offset 0x59830\n[   1.0000000] zstty0 at zsc0 channel 1\n[   1.0000000] zstty1 at zsc0 channel 0\n[   1.0000000] pckbc0 at hpc0 offset 0x59840\n[   1.0000000] pckbd0 at pckbc0 (kbd slot)\n[   1.0000000] wskbd0 at pckbd0: console keyboard, using wsdisplay0\n[   1.0000000] pms0 at pckbc0 (aux slot)\n[   1.0000000] wsmouse0 at pms0 mux 0\n[   1.0000000] sq0 at hpc0 offset 0x54000: SGI Seeq 80c03\n[   1.0000000] sq0: Ethernet address 08:00:69:12:34:57\n[   1.0000000] wdsc0 at hpc0 offset 0x44000: WD33C93A (20.0 MHz clock, BURST DMA, SCSI ID 0)\n[   1.0000000] scsibus0 at wdsc0: 8 targets, 8 luns per target\n[   1.0000000] haltwo at hpc0 offset 0x58000 not configured\n[   1.0000000] pi1ppc0 at hpc0 offset 0x59800\n[   1.0000000] pi1ppc0: capabilities=0x8<PS2>\n[   1.0000000] ppbus0 at pi1ppc0\n[   1.0000000] ppbus0: No IEEE1284 device found.\n[   1.0000000] button0 at hpc0 offset 0x59850\n[   1.0000000] hpc1 at gio0: SGI HPC3 (IOPLUS mezzanine)\n[   1.0000000] hpc1: using EXP0's DMA channel\n[   1.0000000] sq at hpc1 offset 0x54000 not configured\n[   1.0000000] hpc2 at gio0: SGI HPC1.5 (GIO slot)\n[   1.0000000] dsclock0 at mainbus0 addr 0x1fbe0000\n[   1.0000000] ioc0 at mainbus0 addr 0x1fbd9800: rev 0, machine Indy (Guinness), board rev 0\n[   1.0000000] WARNING: system needs entropy for security; see entropy(7)\n[   1.0000000] timecounter: Timecounter \"mips3_cp0_counter\" frequency 33000000 Hz quality 100\n[   1.0000030] timecounter: Timecounter \"clockinterrupt\" frequency 100 Hz quality 0\n[   1.0000030] scsibus0: waiting 2 seconds for devices to settle...\n[   3.0569025] sd0 at scsibus0 target 1 lun 0: <SGI, IRIS EMUL DISK, 1.0> disk fixed\n[   3.1144937] sd0: 8192 MB, 16645 cyl, 16 head, 62 sec, 512 bytes/sect x 16777216 sectors\n[   3.2371983] sd0: async, 8-bit transfers\n[   3.2935153] cd0 at scsibus0 target 4 lun 0: <Sony, CDU-76S, 1.0> cdrom removable\n[   3.3606558] cd0: async, 8-bit transfers\n[   3.4218075] boot device: sd0\n[   3.4806840] root on sd0a dumps on sd0b\n[   3.5579942] kern.module.path=/stand/sgimips/11.99.9/modules\n[   4.7447084] entropy: best effort\n[ 5197.6531152] syncing disks... done\n[ 5197.7496884] unmounting file systems...\n[ 5197.8160999] unmounted /dev/cd0a on /cdrom type cd9660\n[ 5197.8160999] unmounted ptyfs on /dev/pts type ptyfs\n[ 5197.8160999] unmounted procfs on /proc type procfs\n[ 5197.8160999] unmounted kernfs on /kern type kernfs\n[ 5198.9961058] unmounted /dev/sd0a on / type ffs\n[ 5198.9961058] unmounting done\n[ 5199.0546624] halting...\n\n",
+    "clean_shutdown": true,
+    "base_unchanged": true
+  },
+  "corrected_gui": {
+    "status": "checks-passed",
+    "scope": "Corrected first-user document gestures; fresh two-user image test is separate",
+    "unchanged_documents": {
+      "corrected-cancel": "ac5f7b5ee9948e5a42dabcfc544b8fa00ecaba37b10d7beff6b2337707be3fce",
+      "corrected-native-drop": "ac5f7b5ee9948e5a42dabcfc544b8fa00ecaba37b10d7beff6b2337707be3fce",
+      "corrected-gedit-open": "ac5f7b5ee9948e5a42dabcfc544b8fa00ecaba37b10d7beff6b2337707be3fce"
+    },
+    "launches": {
+      "corrected-native-drop": "1234 5352    1 /usr/people/xiritest/DocumentProbe/Applications/xedit /usr/people/xiritest/DocumentProbe/Source/notes with spaces.txt \n"
+    },
+    "screenshots": {
+      "corrected-native-drop.png": "32f9ff16b50c4900366529f2c1c9d95e60945638045f32443dfc3073817376af",
+      "corrected-gedit-open.png": "ba93827ac89f759c72751df2193f1f0071c71ef8119d3313a3c267df563e8776"
+    },
+    "exact_gedit_content": "Xiri document opening check for xiritest\nSpaces survive.\n",
+    "logout_logs": {
+      "corrected-first-user-logout": "OWN pid=3067 parent=6877\nOWN pid=3909 parent=3067\nOWN pid=4042 parent=3067\nOWN pid=3280 parent=3067\nOWN pid=3529 parent=3067\nOWN pid=1189 parent=3067\nOWN pid=7465 parent=3529\nOWN pid=6783 parent=3067\nOWN pid=4725 parent=3067\nOWN pid=4191 parent=3067\nOWN pid=7283 parent=3067\nOWN pid=7273 parent=3067\nOWN pid=4656 parent=7465\nOWN pid=7068 parent=4656\nOWN pid=2940 parent=7465\nOWN pid=4530 parent=2940\nOWN pid=4309 parent=7465\nOWN pid=6318 parent=4309\nOWN pid=4514 parent=7465\nOWN pid=5549 parent=4514\nOWN pid=5402 parent=7465\nOWN pid=7325 parent=5402\nOWN pid=4436 parent=7465\nOWN pid=3736 parent=4436\nOWN pid=4627 parent=3067\nOWN pid=6892 parent=3067\nOWN pid=4532 parent=3067\nOWN pid=2212 parent=3067\nOWN pid=6254 parent=3067\nOWN pid=6951 parent=2212\nOWN pid=7514 parent=4532\nOWN pid=7037 parent=6951\nOWN pid=4259 parent=5549\nOWN pid=4430 parent=6318\nOWN pid=3294 parent=4259\nOWN pid=4289 parent=4259\nOWN pid=4088 parent=4259\nOWN pid=5014 parent=4259\nOWN pid=4575 parent=4259\nOWN pid=4463 parent=6318\nOWN pid=7468 parent=4463\nOWN pid=5352 parent=4463\nOWN pid=3193 parent=6318\nOWN pid=4045 parent=3193\nOWN pid=3622 parent=3193\nOWN pid=4674 parent=6877\nOWN pid=3755 parent=4674\nSESSION_SAVE acknowledged by 4Dwm\nSESSION_SAVE completed=1 exit=0 elapsed=206\nGUARD pid=3067 exit=-1 signal=15 stopped=1 absent=1 valid=1 tracked=47 remaining=0 reason=logout uid=1234 gid=1234 elapsed=553884\n"
+    },
+    "checkpoint": "corrected-first-user-logout"
+  },
+  "screenshots": {
+    "docs/results/images/2026-11-13-documents-native.png": {
+      "source": "/var/home/salvogendut/Dev/xiri/.work/documents/ordinary-206upatu/drop-native-after.png",
+      "sha256": "55c5e449547301193182be816dac3b0dd59bc10d6c55d8531fea957190645ece"
+    },
+    "docs/results/images/2026-11-13-documents-pdf.png": {
+      "source": "/var/home/salvogendut/Dev/xiri/.work/documents/ordinary-206upatu/pdf-rendered.png",
+      "sha256": "680f17af2ddaa4c20131d7ea490993ea9c24d01ed7aa27073a7ac9230057257a"
+    },
+    "docs/results/images/2026-11-13-documents-gimp.png": {
+      "source": "/var/home/salvogendut/Dev/xiri/.work/documents/ordinary-206upatu/png-rendered.png",
+      "sha256": "0e93763de44035f20e8af77abb6c54cca4ea4ddb3adaf2555020d58f2f375686"
+    }
+  },
+  "host_tests": {
+    "passed": 58,
+    "log": ".work/documents/host-tests.log"
+  },
+  "inputs": {
+    "runtime/bin/xiri-session": "98fc66def5a3799594b939ed817ef99022a78f7914c5a60424c19b5eae24278b",
+    "runtime/sbin/xiri-update-filetypes": "024cbfd1f286fa76a8cc08ab4d26308f00fe297a6c1779a0200c627ac3138acb",
+    "runtime/etc/netbsd.ftr": "d1ff45ec0e577d4fa528df05fd2a8bb94be2f5dab32072f60616366b1ba7b21d",
+    "lab/documents/input.c": "a5f057c2f8b1d09b96bfdcf53b6f98e22af38cb1d973c143cbf63a14a17df25f",
+    "lab/documents/type-fixtures.py": "f944e7c4d4df4477229286bf8580cab1687ba2bdfeb49084856616e0e122ecd8",
+    "lab/documents/resource-ledger.json": "e2f2352e12c75177e1e04e536a10e5016115b94feaaae7b7cff4ebccb2e292c7"
+  },
+  "exclusions": [
+    "The initial development regression missed the narrower icon hitbox in its new one-file folder; no file was moved. Its failed result is retained as development-documents-attempt1.json. The corrected first-user sequence passes.",
+    "The earlier deliberate invalid FTR is restored after testing; its compiler failure is expected."
+  ]
+}

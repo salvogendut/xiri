@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "reference_release": "IRIX 6.5.22m",
+  "source": "User-provided installed IRIX disk; existing private desktop extraction",
+  "rules": {
+    "/usr/lib/filetype/default/sgidefault.ftr": {
+      "sha256": "93f1e3c42149eb635b83f9e674402e9e02104d2d80dc62221edb28c3e733cc0a",
+      "types_in_scope": [
+        "AsciiTextFile",
+        "GenericExecutable",
+        "SharedLibraryExecutable"
+      ]
+    },
+    "/usr/lib/filetype/system/sgiimage.ftr": {
+      "sha256": "4aa834db6772c3eb4b2171d363d769d0fd7f534ef9062f6cc9f76e6378cdc51d",
+      "types_in_scope": [
+        "PNGImageFile"
+      ]
+    },
+    "/usr/lib/filetype/install/acroread.ftr": {
+      "sha256": "eeb62d0523b2d482fe62e617abc63b97b4bc733512ba9789726609806501e477",
+      "types_in_scope": [
+        "AcrobatReaderDocument",
+        "AcrobatReaderExecutable"
+      ]
+    },
+    "/usr/lib/filetype/install/gedit.ftr": {
+      "sha256": "8475350a1ceca0d7b5eb33f560f02e430b035b52883e85c5444c44f98e5c35c1",
+      "types_in_scope": [
+        "GEditExecutable"
+      ]
+    },
+    "/usr/lib/filetype/install/gimp.ftr": {
+      "sha256": "47af756c7075da6fbc9c64c8ce76f8d875fa85a26b72a4a09dc3f874143b43b7",
+      "types_in_scope": [
+        "GimpExecutable",
+        "GimpXCFImageFile"
+      ]
+    }
+  }
+}
