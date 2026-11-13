@@ -92,6 +92,8 @@ The xdm probe also saves `checkpoint.json` after each captured screen and
 completed login/logout phase. This preserves partial observations if the
 host supervisor disappears. A checkpoint cannot qualify an image: promotion
 still requires the final `result.json`, verified halt and unchanged base CHD.
+Writing the last checkpoint cannot prevent the owning harness from closing
+its emulator, even when the checkpoint write fails.
 
 For changes to graphical console login, both logout routes, or xmahjongg
 interaction, also run the explicit prepared-disk probe documented in the
@@ -340,7 +342,10 @@ Directory sizes can count shared Btrfs extents repeatedly; use the change in
 filesystem available space to report actual recovery.
 The [November 13 cycle cleanup](results/2026-11-13-shutdown-sessions.md#cleanup)
 retired its temporary emulator/frontend builds and completed guest disks,
-then replaced the raw seed only after the new CHD passed qualification.
+then replaced the raw seed only after the new CHD passed qualification. The
+[File Manager cleanup ledger](results/2026-11-13-file-manager-cleanup.json)
+records the same checkpoint policy for the following cycle, including
+interrupted-run evidence and replacement of the selected raw seed.
 
 Historical result paths describe the original run and may now name retired
 disk caches. Use `./xiri seed` for the selected image, or materialize an older

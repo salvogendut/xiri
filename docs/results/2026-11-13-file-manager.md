@@ -117,5 +117,9 @@ removal and remains unqualified.
 Completed and interrupted disposable disks, temporary emulator build output
 and the redundant 8 GiB round-trip decode are removed at checkpoints.
 Logs, PNGs, manifests, original media and qualified/manual image state are
-retained. Final guest cleanup and the selected raw-seed replacement are
-recorded after qualification.
+retained. The [cleanup ledger](2026-11-13-file-manager-cleanup.json) records
+58,217,484,288 bytes (54.22 GiB) of removed file allocations;
+shared reflink blocks mean this is not a measurement of physical bytes freed.
+The filesystem has 467.3 GiB available after cleanup.
+One raw seed remains for the selected image, older manual state is preserved,
+and all test emulators from this cycle are stopped.

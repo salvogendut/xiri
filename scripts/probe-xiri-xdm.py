@@ -565,8 +565,11 @@ def main():
         if args.bundle and lab.logged_in:
             try:r['shutdown_log']=KernelLog(lab,int(manifest['kernel_msgbuf_symbol'],16)).halt()
             except Exception as error:r['cleanup_error']=str(error)
-        checkpoint('guest-halt-complete-awaiting-owner-cleanup')
-        lab.close(); r['clean_shutdown'] = lab.clean_shutdown
+        try:
+            checkpoint('guest-halt-complete-awaiting-owner-cleanup')
+        finally:
+            lab.close()
+        r['clean_shutdown'] = lab.clean_shutdown
         unchanged = sha256(bundle/'netbsd-xiri.chd')==manifest['chd_sha256'] if args.bundle else sha256(seed/'disk.raw')==origin['raw_sha256']
         r['base_chd_unchanged' if args.bundle else 'base_raw_unchanged'] = unchanged
         if r['status'] == 'passed' and not (r['clean_shutdown'] and unchanged):

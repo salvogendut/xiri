@@ -1,0 +1,563 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "scope": "File Manager and Dumpster development cycle",
+  "status": "completed",
+  "allocated_bytes_retired": 58217484288,
+  "physical_bytes_recovered": null,
+  "available_bytes_after": 501755883520,
+  "owned_test_emulators_remaining": 0,
+  "checkpoints": [
+    {
+      "source": "docs/results/2026-11-13-file-manager-upstream.json",
+      "source_sha256": "aa33a911b5fd7cdc41e1c167bff55f672e5df181bad747ce89e6ff506664bb58",
+      "allocated_bytes": 1297866752,
+      "evidence": {
+        "target": ".work/file-manager-iris-build",
+        "allocated_bytes": 1297866752,
+        "status": "removed",
+        "available_bytes_after": 502012055552
+      }
+    },
+    {
+      "source": ".work/file-manager/reference-bcny207k/cleanup.json",
+      "source_sha256": "55fcccdfcfa3fe3c4d065b05ca9f69ebcec6e9896f6ec2ec6e6e65761629de65",
+      "allocated_bytes": 5660831744,
+      "evidence": {
+        "status": "removed-after-reference-halt",
+        "items": [
+          {
+            "path": ".work/file-manager/reference-bcny207k/disk.raw",
+            "logical_bytes": 100663296000,
+            "allocated_bytes": 5604638720
+          },
+          {
+            "path": ".work/file-manager/reference-bcny207k/disk.raw.overlay",
+            "logical_bytes": 99152048128,
+            "allocated_bytes": 55324672
+          },
+          {
+            "path": ".work/file-manager/reference-bcny207k/disk.raw.overlay.dirty",
+            "logical_bytes": 863200,
+            "allocated_bytes": 864256
+          },
+          {
+            "path": ".work/file-manager/reference-bcny207k/scratch.raw",
+            "logical_bytes": 67108864,
+            "allocated_bytes": 4096
+          }
+        ],
+        "allocated_bytes_removed": 5660831744,
+        "available_bytes_before": 503346233344,
+        "available_bytes_after": 503346233344,
+        "note": "Allocated totals include shared reflink blocks; the original image and collected evidence remain."
+      }
+    },
+    {
+      "source": ".work/file-manager/cleanup-checkpoint1.json",
+      "source_sha256": "09201606e3157a31d0f4a6e6732e968bb8b300b02e3476cae65d650456d17314",
+      "allocated_bytes": 26336120832,
+      "evidence": {
+        "checkpoint": "2026-11-13-filemanager-diagnostic",
+        "files": [
+          {
+            "path": ".work/file-manager/ordinary-mmhkgli8/probe.iso",
+            "logical_bytes": 382976,
+            "allocated_bytes": 385024
+          },
+          {
+            "path": ".work/file-manager/ordinary-mmhkgli8/disk.chd",
+            "logical_bytes": 496311538,
+            "allocated_bytes": 496312320
+          },
+          {
+            "path": ".work/file-manager/ordinary-mmhkgli8/disk.chd.diff.chd",
+            "logical_bytes": 35602432,
+            "allocated_bytes": 35602432
+          },
+          {
+            "path": ".work/xdm-image/prepare/ordinary-u0e3i3vq/probe.iso",
+            "logical_bytes": 17111040,
+            "allocated_bytes": 17113088
+          },
+          {
+            "path": ".work/xdm-image/prepare/ordinary-u0e3i3vq/disk.raw",
+            "logical_bytes": 8589934592,
+            "allocated_bytes": 8589934592
+          },
+          {
+            "path": ".work/irix-module/runs/ordinary-cwg82agg/probe.iso",
+            "logical_bytes": 15556608,
+            "allocated_bytes": 15556608
+          },
+          {
+            "path": ".work/irix-module/runs/ordinary-cwg82agg/disk.raw",
+            "logical_bytes": 8589934592,
+            "allocated_bytes": 8589934592
+          },
+          {
+            "path": ".work/irix-module/runs/regressions-k5_4nlyv/probe.iso",
+            "logical_bytes": 1345536,
+            "allocated_bytes": 1347584
+          },
+          {
+            "path": ".work/irix-module/runs/regressions-k5_4nlyv/disk.raw",
+            "logical_bytes": 8589934592,
+            "allocated_bytes": 8589934592
+          }
+        ],
+        "allocated_bytes": 26336120832,
+        "logical_bytes": 26336113906,
+        "note": "Per-file allocated sizes include shared reflink extents; not a claim of the physical space recovered on Btrfs. Logs, result manifests and screenshots retained."
+      }
+    },
+    {
+      "source": ".work/file-manager/reference-4ljo0vnb/cleanup.json",
+      "source_sha256": "6f2a684d8263ecec2a8db904b963aa4db72f02b91b7af937fcd9eba4aa91fb85",
+      "allocated_bytes": 5669072896,
+      "evidence": {
+        "files": [
+          {
+            "path": ".work/file-manager/reference-4ljo0vnb/disk.raw",
+            "bytes": 100663296000,
+            "allocated": 5604638720
+          },
+          {
+            "path": ".work/file-manager/reference-4ljo0vnb/disk.raw.overlay",
+            "bytes": 99260837888,
+            "allocated": 63438848
+          },
+          {
+            "path": ".work/file-manager/reference-4ljo0vnb/scratch.raw",
+            "bytes": 67108864,
+            "allocated": 4096
+          },
+          {
+            "path": ".work/file-manager/reference-4ljo0vnb/disk.raw.overlay.dirty",
+            "bytes": 990032,
+            "allocated": 991232
+          },
+          {
+            "path": ".work/file-manager/reference-4ljo0vnb/disk.raw.overlay.dirty.tmp",
+            "bytes": 0,
+            "allocated": 0
+          }
+        ],
+        "allocated_bytes": 5669072896,
+        "available_before": 503130812416,
+        "available_after": 503130812416,
+        "note": "Reflink allocations are shared; concurrent lab work also affects available space."
+      }
+    },
+    {
+      "source": ".work/file-manager/cleanup-checkpoint2.json",
+      "source_sha256": "aae4f425a77b6f49bd47527738823ebdbb1d528c7a18df742098f46deefe0f47",
+      "allocated_bytes": 16715776,
+      "evidence": {
+        "checkpoint": "pushed-NetBSD-8bf86afce2a",
+        "files": [
+          {
+            "path": ".work/xdm-image/prepare/ordinary-u0e3i3vq/media/filemanager-resources.tgz",
+            "logical_bytes": 3572,
+            "allocated_bytes": 4096
+          },
+          {
+            "path": ".work/xdm-image/prepare/ordinary-u0e3i3vq/media/filemanager-resources.json",
+            "logical_bytes": 2166,
+            "allocated_bytes": 4096
+          },
+          {
+            "path": ".work/xdm-image/prepare/ordinary-u0e3i3vq/media/FILEMANAGER-SHA256",
+            "logical_bytes": 115,
+            "allocated_bytes": 4096
+          },
+          {
+            "path": ".work/xdm-image/prepare/ordinary-u0e3i3vq/media/FILEMANAGER-PATHS",
+            "logical_bytes": 39,
+            "allocated_bytes": 4096
+          },
+          {
+            "path": ".work/xdm-image/prepare/ordinary-u0e3i3vq/media/FILEMANAGER-STAT",
+            "logical_bytes": 50,
+            "allocated_bytes": 4096
+          },
+          {
+            "path": ".work/xdm-image/prepare/ordinary-u0e3i3vq/media/filemanager-verify.sh",
+            "logical_bytes": 204,
+            "allocated_bytes": 4096
+          },
+          {
+            "path": ".work/xdm-image/prepare/ordinary-u0e3i3vq/media/gnome-resources.json",
+            "logical_bytes": 36857,
+            "allocated_bytes": 36864
+          },
+          {
+            "path": ".work/xdm-image/prepare/ordinary-u0e3i3vq/media/terminal-resources.json",
+            "logical_bytes": 2063,
+            "allocated_bytes": 4096
+          },
+          {
+            "path": ".work/xdm-image/prepare/ordinary-u0e3i3vq/media/acrobat-resources.json",
+            "logical_bytes": 59073,
+            "allocated_bytes": 61440
+          },
+          {
+            "path": ".work/xdm-image/prepare/ordinary-u0e3i3vq/media/session-resources.json",
+            "logical_bytes": 1975,
+            "allocated_bytes": 4096
+          },
+          {
+            "path": ".work/xdm-image/prepare/ordinary-u0e3i3vq/media/gimp-resources.json",
+            "logical_bytes": 878450,
+            "allocated_bytes": 880640
+          },
+          {
+            "path": ".work/xdm-image/prepare/ordinary-u0e3i3vq/media/compat_irix_o32.kmod",
+            "logical_bytes": 184976,
+            "allocated_bytes": 188416
+          },
+          {
+            "path": ".work/xdm-image/prepare/ordinary-u0e3i3vq/media/netbsd",
+            "logical_bytes": 7540072,
+            "allocated_bytes": 7507968
+          },
+          {
+            "path": ".work/xdm-image/prepare/ordinary-u0e3i3vq/media/netbsd.boot",
+            "logical_bytes": 7393912,
+            "allocated_bytes": 7364608
+          },
+          {
+            "path": ".work/xdm-image/prepare/ordinary-u0e3i3vq/media/SUPPORT",
+            "logical_bytes": 403990,
+            "allocated_bytes": 405504
+          },
+          {
+            "path": ".work/xdm-image/prepare/ordinary-u0e3i3vq/media/INSTALLED-PATHS",
+            "logical_bytes": 82290,
+            "allocated_bytes": 86016
+          },
+          {
+            "path": ".work/xdm-image/prepare/ordinary-u0e3i3vq/media/motd",
+            "logical_bytes": 381,
+            "allocated_bytes": 4096
+          },
+          {
+            "path": ".work/xdm-image/prepare/ordinary-u0e3i3vq/media/SHA256",
+            "logical_bytes": 4370,
+            "allocated_bytes": 8192
+          },
+          {
+            "path": ".work/xdm-image/prepare/ordinary-u0e3i3vq/media/runtime/Makefile",
+            "logical_bytes": 1177,
+            "allocated_bytes": 4096
+          },
+          {
+            "path": ".work/xdm-image/prepare/ordinary-u0e3i3vq/media/runtime/install.sh",
+            "logical_bytes": 3709,
+            "allocated_bytes": 4096
+          },
+          {
+            "path": ".work/xdm-image/prepare/ordinary-u0e3i3vq/media/runtime/README.md",
+            "logical_bytes": 19867,
+            "allocated_bytes": 20480
+          },
+          {
+            "path": ".work/xdm-image/prepare/ordinary-u0e3i3vq/media/runtime/bin/xiri-launch",
+            "logical_bytes": 1057,
+            "allocated_bytes": 4096
+          },
+          {
+            "path": ".work/xdm-image/prepare/ordinary-u0e3i3vq/media/runtime/bin/xiri-logout",
+            "logical_bytes": 213,
+            "allocated_bytes": 4096
+          },
+          {
+            "path": ".work/xdm-image/prepare/ordinary-u0e3i3vq/media/runtime/bin/xiri-session",
+            "logical_bytes": 3821,
+            "allocated_bytes": 4096
+          },
+          {
+            "path": ".work/xdm-image/prepare/ordinary-u0e3i3vq/media/runtime/bin/xiri-desktop",
+            "logical_bytes": 3194,
+            "allocated_bytes": 4096
+          },
+          {
+            "path": ".work/xdm-image/prepare/ordinary-u0e3i3vq/media/runtime/libexec/desktop-clients.sh",
+            "logical_bytes": 3350,
+            "allocated_bytes": 4096
+          },
+          {
+            "path": ".work/xdm-image/prepare/ordinary-u0e3i3vq/media/runtime/libexec/setup-pty.sh",
+            "logical_bytes": 2747,
+            "allocated_bytes": 4096
+          },
+          {
+            "path": ".work/xdm-image/prepare/ordinary-u0e3i3vq/media/runtime/libexec/shell-handoff.c",
+            "logical_bytes": 3740,
+            "allocated_bytes": 4096
+          },
+          {
+            "path": ".work/xdm-image/prepare/ordinary-u0e3i3vq/media/runtime/libexec/session-guard.c",
+            "logical_bytes": 11457,
+            "allocated_bytes": 12288
+          },
+          {
+            "path": ".work/xdm-image/prepare/ordinary-u0e3i3vq/media/runtime/libexec/x11-check.c",
+            "logical_bytes": 1295,
+            "allocated_bytes": 4096
+          },
+          {
+            "path": ".work/xdm-image/prepare/ordinary-u0e3i3vq/media/runtime/libexec/account-map.awk",
+            "logical_bytes": 434,
+            "allocated_bytes": 4096
+          },
+          {
+            "path": ".work/xdm-image/prepare/ordinary-u0e3i3vq/media/runtime/libexec/sgi-colours.awk",
+            "logical_bytes": 720,
+            "allocated_bytes": 4096
+          },
+          {
+            "path": ".work/xdm-image/prepare/ordinary-u0e3i3vq/media/runtime/libexec/save-session.c",
+            "logical_bytes": 2464,
+            "allocated_bytes": 4096
+          },
+          {
+            "path": ".work/xdm-image/prepare/ordinary-u0e3i3vq/media/runtime/libexec/stop-sessions.c",
+            "logical_bytes": 5027,
+            "allocated_bytes": 8192
+          },
+          {
+            "path": ".work/xdm-image/prepare/ordinary-u0e3i3vq/media/runtime/rc.d/xiri_devices",
+            "logical_bytes": 496,
+            "allocated_bytes": 4096
+          },
+          {
+            "path": ".work/xdm-image/prepare/ordinary-u0e3i3vq/media/runtime/rc.d/xiri_famd",
+            "logical_bytes": 2100,
+            "allocated_bytes": 4096
+          },
+          {
+            "path": ".work/xdm-image/prepare/ordinary-u0e3i3vq/media/runtime/rc.d/xiri_sessions",
+            "logical_bytes": 354,
+            "allocated_bytes": 4096
+          },
+          {
+            "path": ".work/xdm-image/prepare/ordinary-u0e3i3vq/media/runtime/etc/fam.conf",
+            "logical_bytes": 323,
+            "allocated_bytes": 4096
+          },
+          {
+            "path": ".work/xdm-image/prepare/ordinary-u0e3i3vq/media/runtime/etc/session.conf",
+            "logical_bytes": 266,
+            "allocated_bytes": 4096
+          },
+          {
+            "path": ".work/xdm-image/prepare/ordinary-u0e3i3vq/media/runtime/etc/xdm.xsession",
+            "logical_bytes": 407,
+            "allocated_bytes": 4096
+          },
+          {
+            "path": ".work/xdm-image/prepare/ordinary-u0e3i3vq/media/runtime/etc/xdm-Xservers",
+            "logical_bytes": 245,
+            "allocated_bytes": 4096
+          },
+          {
+            "path": ".work/xdm-image/prepare/ordinary-u0e3i3vq/media/runtime/etc/xdm-Xresources",
+            "logical_bytes": 231,
+            "allocated_bytes": 4096
+          },
+          {
+            "path": ".work/xdm-image/prepare/ordinary-u0e3i3vq/media/runtime/etc/Xresources",
+            "logical_bytes": 370,
+            "allocated_bytes": 4096
+          },
+          {
+            "path": ".work/xdm-image/prepare/ordinary-u0e3i3vq/media/runtime/etc/desktop-Xresources",
+            "logical_bytes": 160,
+            "allocated_bytes": 4096
+          },
+          {
+            "path": ".work/xdm-image/prepare/ordinary-u0e3i3vq/media/runtime/sbin/xiri-sync-users",
+            "logical_bytes": 1156,
+            "allocated_bytes": 4096
+          }
+        ],
+        "allocated_bytes": 16715776,
+        "note": "Removed media for the canceled preparation; retained manifests, input lists, logs and result. Allocated bytes can include shared extents."
+      }
+    },
+    {
+      "source": ".work/file-manager/cleanup-checkpoint3.json",
+      "source_sha256": "ffe9e561e2fd10a18a351662e173a6b90ec8643e20fe29df6d6e6e1c4c7e4b9b",
+      "allocated_bytes": 510717952,
+      "evidence": {
+        "checkpoint": "interrupted GUI evidence retained",
+        "files": [
+          {
+            "path": ".work/file-manager/ordinary-la0p63oa/disk.chd",
+            "logical_bytes": 496311538,
+            "allocated_bytes": 496312320
+          },
+          {
+            "path": ".work/file-manager/ordinary-la0p63oa/disk.chd.diff.chd",
+            "logical_bytes": 13811712,
+            "allocated_bytes": 13811712
+          },
+          {
+            "path": ".work/file-manager/ordinary-la0p63oa/probe.iso",
+            "logical_bytes": 591872,
+            "allocated_bytes": 593920
+          }
+        ],
+        "allocated_bytes": 510717952,
+        "note": "No live owner; disposed of the interrupted guest disk. Logs, observed GUI state, PNGs and failed-run result retained. Shared extents can reduce physical bytes freed."
+      }
+    },
+    {
+      "source": ".work/file-manager/cleanup-roundtrip.json",
+      "source_sha256": "2c998490b88795dd7f2540a5a961c9c90cf7e905ea7c9fa2dc1ed9e44965e2f9",
+      "allocated_bytes": 8589934592,
+      "evidence": {
+        "checkpoint": "CHD exact round trip verified",
+        "removed": ".work/images/xiri-netbsd-desktop-20261113-filemanager/verification/roundtrip.raw",
+        "logical_bytes": 8589934592,
+        "allocated_bytes": 8589934592,
+        "available_before": 493953327104,
+        "available_after": 493953327104,
+        "note": "Kept CHD, source prepared disk and verification logs. Available-space delta may include concurrent guest writes."
+      }
+    },
+    {
+      "source": ".work/file-manager/cleanup-abi-final.json",
+      "source_sha256": "38b1f3ad77bb9d7789e621ac8a6d1f1e90f8a82994c388967957db7b0d17920d",
+      "allocated_bytes": 504446976,
+      "evidence": {
+        "checkpoint": "qualified-720-records",
+        "files": [
+          {
+            "path": ".work/file-manager/abi-jl2k20ta/disk.chd",
+            "logical_bytes": 496307636,
+            "allocated_bytes": 496308224
+          },
+          {
+            "path": ".work/file-manager/abi-jl2k20ta/disk.chd.diff.chd",
+            "logical_bytes": 7749632,
+            "allocated_bytes": 7749632
+          },
+          {
+            "path": ".work/file-manager/abi-jl2k20ta/probe.iso",
+            "logical_bytes": 389120,
+            "allocated_bytes": 389120
+          }
+        ],
+        "allocated_bytes": 504446976,
+        "note": "Owning run completed with clean halt; retained results, archives, media inputs and logs."
+      }
+    },
+    {
+      "source": ".work/file-manager/cleanup-cold-interruption.json",
+      "source_sha256": "d3320ed237cc2ef9e563b7d4fa243166f6996e0a7c5691135871b2030acf90b9",
+      "allocated_bytes": 512352256,
+      "evidence": {
+        "checkpoint": "interrupted cold run saved and halted",
+        "files": [
+          {
+            "path": ".work/irix-xdm/runs/ordinary-mmbnj801/disk.chd",
+            "allocated_bytes": 496308224,
+            "logical_bytes": 496307636
+          },
+          {
+            "path": ".work/irix-xdm/runs/ordinary-mmbnj801/disk.chd.diff.chd",
+            "allocated_bytes": 15106048,
+            "logical_bytes": 15106048
+          },
+          {
+            "path": ".work/irix-xdm/runs/ordinary-mmbnj801/probe.iso",
+            "allocated_bytes": 937984,
+            "logical_bytes": 935936
+          }
+        ],
+        "allocated_bytes": 512352256,
+        "available_before": 502394814464,
+        "available_after": 502394814464,
+        "notes": [
+          "All interrupted-run logs, media inputs and screenshots are retained.",
+          "Shared reflink extents mean allocated bytes are not physical bytes freed."
+        ]
+      }
+    },
+    {
+      "source": ".work/file-manager/cleanup-final.json",
+      "source_sha256": "d1ac2d61ad00c640db5dd17286dc9c04f296d9cbf1d2128d71b177a9e60dd726",
+      "allocated_bytes": 9119424512,
+      "evidence": {
+        "schema": 1,
+        "checkpoint": "qualified File Manager image selected",
+        "removed": [
+          {
+            "path": ".work/xiri-image/seed-8c7ebd8f6280/disk.raw",
+            "logical_bytes": 50,
+            "allocated_bytes": 4096,
+            "symlink": true
+          },
+          {
+            "path": ".work/xdm-image/prepare/ordinary-0m1o77be/disk.raw",
+            "logical_bytes": 8589934592,
+            "allocated_bytes": 8589934592,
+            "symlink": false
+          },
+          {
+            "path": ".work/xdm-image/prepare/ordinary-sgf10vf1/probe.iso",
+            "logical_bytes": 17115136,
+            "allocated_bytes": 17117184,
+            "symlink": false
+          },
+          {
+            "path": ".work/irix-xdm/runs/ordinary-bv5sm8sa/probe.iso",
+            "logical_bytes": 935936,
+            "allocated_bytes": 937984,
+            "symlink": false
+          },
+          {
+            "path": ".work/irix-xdm/runs/ordinary-bv5sm8sa/disk.chd",
+            "logical_bytes": 496307636,
+            "allocated_bytes": 496308224,
+            "symlink": false
+          },
+          {
+            "path": ".work/irix-xdm/runs/ordinary-bv5sm8sa/disk.chd.diff.chd",
+            "logical_bytes": 15122432,
+            "allocated_bytes": 15122432,
+            "symlink": false
+          }
+        ],
+        "allocated_bytes": 9119424512,
+        "available_before": 501708259328,
+        "available_after": 501706743808,
+        "retained": [
+          ".work/images/xiri-netbsd-desktop-20261113-filemanager",
+          ".work/images/xiri-netbsd-desktop-20261113-shutdown",
+          ".work/xiri-image/seed-ac2e07027464",
+          ".work/xdm-image/prepare/ordinary-sgf10vf1/disk.raw",
+          "Original IRIX media, qualified core/module artifacts, logs, PNGs, manifests and older manual state"
+        ],
+        "notes": [
+          "Allocated bytes may count shared extents; they are not a measurement of physical space recovered.",
+          "No emulator is stopped by this cleanup script: owning harnesses must already have completed and exited.",
+          "The old raw seed is retired only after its replacement passes qualification; its thin metadata remains for restoration from the old CHD."
+        ]
+      }
+    }
+  ],
+  "retained": [
+    "Selected .work/images/xiri-netbsd-desktop-20261113-filemanager bundle and all older qualified/manual images and their state",
+    "One current raw seed: .work/xiri-image/seed-ac2e07027464/disk.raw links to .work/xdm-image/prepare/ordinary-sgf10vf1/disk.raw",
+    "Final kernel/module artifacts, required toolchains and pinned lab worktrees",
+    "Original IRIX media; extracted evidence, PNGs, logs and input manifests"
+  ],
+  "limits": [
+    "Allocated totals count shared reflink extents and therefore are not physical bytes freed.",
+    "Physical recovery over the full cycle cannot be isolated from concurrent filesystem activity. The report records actual available bytes after cleanup instead.",
+    "The redundant decoded round-trip raw disk, superseded raw seed and completed/interrupted private test disks have been removed; their evidence remains."
+  ]
+}
