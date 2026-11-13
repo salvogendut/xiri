@@ -218,12 +218,12 @@ def qualify(a, verify_irix_module):
                      'Kernel/module require Xiri fork hooks; physical hardware is unqualified.'])
     # A prepared disk can record dirty build inputs honestly. Establish later
     # committed equivalence separately; do not rewrite its pin or observation.
+    build = json.loads((bundle/'irix-module-build.json').read_text())
     source_commit = m['pin'].get('committed_source_revision')
     if source_commit is None:
         path = (ROOT/m['pin']['module_build_manifest']).with_name('source-equivalence.json')
         if path.exists():
             equivalent = json.loads(path.read_text())
-            build = json.loads((bundle/'irix-module-build.json').read_text())
             assert equivalent['status'] == 'source-equivalent'
             assert equivalent['build_manifest_sha256'] == m['pin']['module_build_manifest_sha256']
             assert equivalent['source_files'] == build['source_files']
@@ -234,7 +234,27 @@ def qualify(a, verify_irix_module):
                 sha256=sha256(path), commit=source_commit)
     if a.promote:
         assert source_commit, 'Commit and verify the built source before promoting this image'
-    report['kernel_source_equivalent_commit'] = source_commit
+    core_commit = source_commit
+    core_provenance = build.get('core_kernel_provenance')
+    if core_provenance:
+        # A module-only update can deliberately retain a previously qualified
+        # core. Do not describe the current module checkout as that core's
+        # source merely because both are packaged in the same image.
+        core_path = ROOT/core_provenance['manifest']
+        assert sha256(core_path) == core_provenance['manifest_sha256']
+        core_build = json.loads(core_path.read_text())
+        for name in ('netbsd', 'netbsd.boot'):
+            assert core_build['artifacts'][name]['sha256'] == build['artifacts'][name]['sha256']
+        assert core_build['debug_kernel_sha256'] == build['debug_kernel_sha256']
+        core_equivalent = json.loads(core_path.with_name('source-equivalence.json').read_text())
+        assert core_equivalent['status'] == 'source-equivalent'
+        assert core_equivalent['build_manifest_sha256'] == sha256(core_path)
+        assert core_equivalent['source_files'] == core_build['source_files']
+        core_commit = core_provenance['source_equivalent_commit']
+        assert core_commit == core_equivalent['commit']
+        report['core_kernel_provenance'] = core_provenance
+    report['kernel_source_equivalent_commit'] = core_commit
+    report['module_source_equivalent_commit'] = source_commit
     if 'job_control' in r:
         jobs = r['job_control']
         assert sha256(a.run/jobs['archive']['path']) == jobs['archive']['sha256']
@@ -326,7 +346,8 @@ def qualify(a, verify_irix_module):
                 'manual_console','emulator_files')}
         public.update(schema=1,bundle=r['bundle'],image=r['bundle']+'/netbsd-xiri.chd',
             raw_sha256=m['source_raw_sha256'],kernel_source=m['pin']['source_revision'],
-            kernel_source_equivalent_commit=source_commit,
+            kernel_source_equivalent_commit=core_commit,
+            module_source_equivalent_commit=source_commit,
             emulator_revision=m['pin']['emulator_revision'],qualification=str(a.output),
             qualification_sha256=sha256(a.output),session_manager='xdm',xdm=promoted['xdm'],
             irix_module=r['irix_module'],module_build_manifest_sha256=m['pin']['module_build_manifest_sha256'],

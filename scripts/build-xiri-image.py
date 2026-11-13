@@ -188,6 +188,9 @@ def main():
             'Preference saving, exact backup and relaunch pass the later checks.\n'
             'Known limits: shared-memory tile transport is disabled and\n')
         readme += (ROOT/'lab/irix-acrobat/image-README.txt').read_text()
+    if 'filemanager' in r.get('application_resources', {}):
+        readme = readme.replace('complete Dumpster actions', 'broader file operations')
+        readme += (ROOT/'lab/irix-filemanager/image-README.txt').read_text()
     if a.experimental_note:
         readme = 'EXPERIMENTAL IMAGE\n'+a.experimental_note+'\n\n'+readme
     (out/'README.txt').write_text(readme)

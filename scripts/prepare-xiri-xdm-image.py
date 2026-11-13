@@ -111,7 +111,7 @@ def main():
     (media/'SUPPORT').write_text(''.join(f'SHA256 ({path}) = {digest}\n' for path,digest in sorted(support.items())))
     # Send a file list on the CD instead of a growing serial command line.
     installed_paths = sorted(set(previous['installed_files']) | set(runtime_files()) |
-                             {'/emul/irix/etc/passwd', '/emul/irix/etc/group'} |
+                             {'/emul/irix/etc/passwd', '/emul/irix/etc/group', '/etc/hosts'} |
                              ({'/usr/people/xiritest2/.xsession'} if multiuser else set()) |
                              ({font_profile['native_file']} if font_profile else set()))
     (media/'INSTALLED-PATHS').write_bytes(b''.join(path.encode()+b'\0' for path in installed_paths))
@@ -193,6 +193,21 @@ def main():
                 key: value for key, value in resources.items() if key != 'files'}
         cmd('mkdir -p /root/xdm-image-build && cp -R /cdrom/runtime /root/xdm-image-build/ && '
             'cd /root/xdm-image-build/runtime && make && sh install.sh --enable-xdm',300)
+        # The original File Manager resolves gethostname() before operating on
+        # local files. Without an IPv4 host entry its fiHostCache is empty and
+        # it misleadingly reports existing files as missing. Configure this
+        # standalone lab image; the general runtime installer must not rewrite
+        # an administrator's network configuration.
+        hosts_before = get('sha256 -q /etc/hosts').strip()
+        cmd('host=$(hostname); '
+            'if ! awk -v host="$host" \'$1 ~ /^[0-9]+\\./ { '
+            'for (i=2; i<=NF && $i !~ /^#/; i++) if ($i == host) found=1 } '
+            'END { exit !found }\' /etc/hosts; then '
+            'printf "\\n127.0.0.1\\t%s\\n" "$host" >>/etc/hosts; fi; '
+            'getent hosts "$host" >/root/xdm-hostname-check.log')
+        r['local_hostname'] = dict(name=get('hostname').strip(),
+            before_sha256=hosts_before, after_sha256=get('sha256 -q /etc/hosts').strip(),
+            lookup=get('cat /root/xdm-hostname-check.log'))
         if fam_build:
             cmd('install -m 644 /cdrom/runtime/etc/fam.conf /etc/xiri/fam.conf && '
                 '/etc/rc.d/xiri_famd start')

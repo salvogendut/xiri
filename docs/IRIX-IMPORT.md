@@ -96,6 +96,17 @@ Saved application sessions additionally need the unchanged original
 `--session-resources .work/irix-session-resources` to image preparation.
 Its `libX11.so.1` and `libc.so.1` dependencies are already imported.
 
+Empty Dumpster additionally needs the unchanged original
+`/usr/lib/desktop/telldesktop` at
+`/emul/irix/usr/lib/desktop/telldesktop` (14,252 bytes, mode 0555, root:wheel;
+[resource ledger](../lab/irix-filemanager/resources.json)). Its n32 library
+dependencies are already present. Stage it with
+`scripts/stage-irix-filemanager.py`, then pass
+`--filemanager-resources .work/irix-filemanager-resources` to image preparation.
+The existing `/usr/lib/desktop` alias exposes it to native shells. The
+[File Manager guide](IRIX-FILEMANAGER.md) also documents the native hostname
+entry needed for local file operations; that configuration is not an import.
+
 ## Permissions and generated state
 
 The [module-image preparation](../lab/irix-module/README.md#prepare-a-manual-image)

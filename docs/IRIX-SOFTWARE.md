@@ -196,6 +196,10 @@ Desktop links, Dumpster, preferences and session logs live beneath that home.
 Startup errors are in `~/.xsession-errors`; session logs are in
 `~/.xiri/sessions/`.
 
+The [File Manager and Dumpster guide](IRIX-FILEMANAGER.md) covers original
+file actions, recovery, permanent removal and the local hostname entry needed
+by File Manager. It uses these native homes and credentials.
+
 After creating an account or changing group membership, run this as root:
 
 ```sh

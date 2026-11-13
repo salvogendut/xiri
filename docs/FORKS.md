@@ -42,6 +42,16 @@ not repin qualified kernels, emulator binaries, runtime resources or guest disks
 
 ## IRIS upstream updates
 
+The same November 13 File Manager cycle adds filesystem statistics and
+removal to NetBSD `xiri` at `8bf86afce2afede752c0eae37852e2f2472d91cb`, pushed
+to origin. The module passes 384 statvfs-family and 336 unlink/rmdir records
+against original IRIX 6.5.22m. Its
+[build manifest](../lab/irix-pathops/filemanager-build.json) and
+[committed equivalence](../lab/irix-pathops/source-equivalence.json) explicitly
+separate the new module from the unchanged native-wait core at
+`e9ff76a58affee773b767d334f98075bf86daf7e`. The manual image retains its
+qualified emulator `819c6825504d40ad9f9aa00554249affd2da9446`.
+
 The File Manager/Dumpster cycle fetched upstream on 2026-11-13 through
 `a6503d006c6dee03878919d58b52470f0a855125`. The two incoming commits merge
 cleanly as `993d8400f50c81edd8b853323458c0484908c866`, pushed on IRIS `xiri`.
@@ -49,7 +59,7 @@ The updated CI feature set passes all 14 REX replay corpus tests (two ignored).
 The refused-GPU-submission regression also passes with real Mesa Lavapipe
 Vulkan execution. The changes concern CI features and optional GPU error
 reporting; the desktop image and retained frontend binaries keep their
-previously qualified pins. The isolated 1.3 GiB build directory was removed
+previously qualified pins. The isolated 1.21 GiB build directory was removed
 once the merge and logs were saved; the [check ledger](results/2026-11-13-file-manager-upstream.json)
 retains exact revisions, feature sets, log hashes and cleanup size.
 

@@ -1,0 +1,4286 @@
+{
+  "schema": 1,
+  "system": "IRIX 6.5.22m",
+  "source": "Independent probes run on the user-provided installed image",
+  "archive_sha256": "af6056354e289ef48986c34228587366eb31250e37c47cad1b3c7801fbc20018",
+  "build": {
+    "schema": 1,
+    "record_bytes": 512,
+    "modes": [
+      0
+    ],
+    "sources": {
+      "scripts/build-irix-pathops.py": "efd27eb6b6d0fd41d40def8b5027fceed8b055c6232ff8871b3c8b7fab40ccfb",
+      "lab/irix-pathops/statvfs.c": "9e970c0ce90b78a1aa66779837f6566bec2438691df465a4edfe60c886ab3715",
+      "lab/irix-prda/start.S": "00aa6b1e26feba4817798e32876c2286fe60547ae8ceeacb56b3d6904e40310d",
+      "lab/irix-prda/call.S": "677d247b98c292a3a5f0c8cfae4614ab9c6995ddde00501b700db0e857986a4f",
+      "lab/irix-prda/probe.ld": "08cff42138f41bc5ef5c02a903ed16fab4db0d6a8d208f90dafd2157b30573dc"
+    },
+    "files": {
+      "o32-direct": {
+        "sha256": "b0322fcdeaa06f94662393281fc4ddb05f0a7d2731599ef2afb2ca0d9745465b",
+        "bytes": 8996
+      },
+      "o32-indirect": {
+        "sha256": "4b097d06ba7c5e00fe1b47899d296584562a6fa6244d9d10ae7aef68aa37a799",
+        "bytes": 8996
+      },
+      "n32-direct": {
+        "sha256": "9e2c3c49b109fe2766b02799ef85d7bcad2403ffd57b8eb8ec4a1d7da6116384",
+        "bytes": 8996
+      },
+      "n32-indirect": {
+        "sha256": "3211e23f9d356fb5acdf12dad1ccd21d3d11e6257422b0ae3a79f8f7600095e8",
+        "bytes": 8996
+      }
+    }
+  },
+  "records": 384,
+  "users": {
+    "root": 0,
+    "user": 1234
+  },
+  "expected": {
+    "o32-direct-root": [
+      {
+        "trap": 1174,
+        "case": 0,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 1,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 2,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 3,
+        "result": [
+          2,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 4,
+        "result": [
+          2,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 5,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 6,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 7,
+        "result": [
+          20,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 8,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 9,
+        "result": [
+          78,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 10,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 11,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 12,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 13,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 14,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 15,
+        "result": [
+          2,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1175,
+        "case": 0,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1175,
+        "case": 1,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1175,
+        "case": 2,
+        "result": [
+          9,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1175,
+        "case": 3,
+        "result": [
+          9,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1175,
+        "case": 4,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1175,
+        "case": 5,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1175,
+        "case": 6,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1175,
+        "case": 7,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 0,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 1,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 2,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 3,
+        "result": [
+          2,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 4,
+        "result": [
+          2,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 5,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 6,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 7,
+        "result": [
+          20,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 8,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 9,
+        "result": [
+          78,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 10,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 11,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 12,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 13,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 14,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 15,
+        "result": [
+          2,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1202,
+        "case": 0,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1202,
+        "case": 1,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1202,
+        "case": 2,
+        "result": [
+          9,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1202,
+        "case": 3,
+        "result": [
+          9,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1202,
+        "case": 4,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1202,
+        "case": 5,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1202,
+        "case": 6,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1202,
+        "case": 7,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      }
+    ],
+    "o32-direct-user": [
+      {
+        "trap": 1174,
+        "case": 0,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 1,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 2,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 3,
+        "result": [
+          2,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 4,
+        "result": [
+          2,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 5,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 6,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 7,
+        "result": [
+          20,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 8,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 9,
+        "result": [
+          78,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 10,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 11,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 12,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 13,
+        "result": [
+          13,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 14,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 15,
+        "result": [
+          2,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1175,
+        "case": 0,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1175,
+        "case": 1,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1175,
+        "case": 2,
+        "result": [
+          9,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1175,
+        "case": 3,
+        "result": [
+          9,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1175,
+        "case": 4,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1175,
+        "case": 5,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1175,
+        "case": 6,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1175,
+        "case": 7,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 0,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 1,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 2,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 3,
+        "result": [
+          2,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 4,
+        "result": [
+          2,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 5,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 6,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 7,
+        "result": [
+          20,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 8,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 9,
+        "result": [
+          78,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 10,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 11,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 12,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 13,
+        "result": [
+          13,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 14,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 15,
+        "result": [
+          2,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1202,
+        "case": 0,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1202,
+        "case": 1,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1202,
+        "case": 2,
+        "result": [
+          9,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1202,
+        "case": 3,
+        "result": [
+          9,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1202,
+        "case": 4,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1202,
+        "case": 5,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1202,
+        "case": 6,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1202,
+        "case": 7,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      }
+    ],
+    "o32-indirect-root": [
+      {
+        "trap": 1174,
+        "case": 0,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 1,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 2,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 3,
+        "result": [
+          2,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 4,
+        "result": [
+          2,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 5,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 6,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 7,
+        "result": [
+          20,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 8,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 9,
+        "result": [
+          78,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 10,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 11,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 12,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 13,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 14,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 15,
+        "result": [
+          2,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1175,
+        "case": 0,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1175,
+        "case": 1,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1175,
+        "case": 2,
+        "result": [
+          9,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1175,
+        "case": 3,
+        "result": [
+          9,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1175,
+        "case": 4,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1175,
+        "case": 5,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1175,
+        "case": 6,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1175,
+        "case": 7,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 0,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 1,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 2,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 3,
+        "result": [
+          2,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 4,
+        "result": [
+          2,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 5,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 6,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 7,
+        "result": [
+          20,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 8,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 9,
+        "result": [
+          78,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 10,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 11,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 12,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 13,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 14,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 15,
+        "result": [
+          2,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1202,
+        "case": 0,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1202,
+        "case": 1,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1202,
+        "case": 2,
+        "result": [
+          9,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1202,
+        "case": 3,
+        "result": [
+          9,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1202,
+        "case": 4,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1202,
+        "case": 5,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1202,
+        "case": 6,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1202,
+        "case": 7,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      }
+    ],
+    "o32-indirect-user": [
+      {
+        "trap": 1174,
+        "case": 0,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 1,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 2,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 3,
+        "result": [
+          2,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 4,
+        "result": [
+          2,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 5,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 6,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 7,
+        "result": [
+          20,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 8,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 9,
+        "result": [
+          78,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 10,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 11,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 12,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 13,
+        "result": [
+          13,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 14,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 15,
+        "result": [
+          2,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1175,
+        "case": 0,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1175,
+        "case": 1,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1175,
+        "case": 2,
+        "result": [
+          9,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1175,
+        "case": 3,
+        "result": [
+          9,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1175,
+        "case": 4,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1175,
+        "case": 5,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1175,
+        "case": 6,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1175,
+        "case": 7,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 156,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 0,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 1,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 2,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 3,
+        "result": [
+          2,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 4,
+        "result": [
+          2,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 5,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 6,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 7,
+        "result": [
+          20,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 8,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 9,
+        "result": [
+          78,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 10,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 11,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 12,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 13,
+        "result": [
+          13,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 14,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 15,
+        "result": [
+          2,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1202,
+        "case": 0,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1202,
+        "case": 1,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1202,
+        "case": 2,
+        "result": [
+          9,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1202,
+        "case": 3,
+        "result": [
+          9,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1202,
+        "case": 4,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1202,
+        "case": 5,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1202,
+        "case": 6,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1202,
+        "case": 7,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      }
+    ],
+    "n32-direct-root": [
+      {
+        "trap": 1174,
+        "case": 0,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 1,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 2,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 3,
+        "result": [
+          2,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 4,
+        "result": [
+          2,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 5,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 6,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 7,
+        "result": [
+          20,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 8,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 9,
+        "result": [
+          78,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 10,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 11,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 12,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 13,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 14,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 15,
+        "result": [
+          2,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1175,
+        "case": 0,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1175,
+        "case": 1,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1175,
+        "case": 2,
+        "result": [
+          9,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1175,
+        "case": 3,
+        "result": [
+          9,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1175,
+        "case": 4,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1175,
+        "case": 5,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1175,
+        "case": 6,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1175,
+        "case": 7,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 0,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 1,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 2,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 3,
+        "result": [
+          2,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 4,
+        "result": [
+          2,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 5,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 6,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 7,
+        "result": [
+          20,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 8,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 9,
+        "result": [
+          78,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 10,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 11,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 12,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 13,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 14,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 15,
+        "result": [
+          2,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1202,
+        "case": 0,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1202,
+        "case": 1,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1202,
+        "case": 2,
+        "result": [
+          9,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1202,
+        "case": 3,
+        "result": [
+          9,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1202,
+        "case": 4,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1202,
+        "case": 5,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1202,
+        "case": 6,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1202,
+        "case": 7,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      }
+    ],
+    "n32-direct-user": [
+      {
+        "trap": 1174,
+        "case": 0,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 1,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 2,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 3,
+        "result": [
+          2,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 4,
+        "result": [
+          2,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 5,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 6,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 7,
+        "result": [
+          20,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 8,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 9,
+        "result": [
+          78,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 10,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 11,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 12,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 13,
+        "result": [
+          13,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 14,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 15,
+        "result": [
+          2,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1175,
+        "case": 0,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1175,
+        "case": 1,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1175,
+        "case": 2,
+        "result": [
+          9,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1175,
+        "case": 3,
+        "result": [
+          9,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1175,
+        "case": 4,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1175,
+        "case": 5,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1175,
+        "case": 6,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1175,
+        "case": 7,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 0,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 1,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 2,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 3,
+        "result": [
+          2,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 4,
+        "result": [
+          2,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 5,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 6,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 7,
+        "result": [
+          20,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 8,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 9,
+        "result": [
+          78,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 10,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 11,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 12,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 13,
+        "result": [
+          13,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 14,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 15,
+        "result": [
+          2,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1202,
+        "case": 0,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1202,
+        "case": 1,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1202,
+        "case": 2,
+        "result": [
+          9,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1202,
+        "case": 3,
+        "result": [
+          9,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1202,
+        "case": 4,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1202,
+        "case": 5,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1202,
+        "case": 6,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1202,
+        "case": 7,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      }
+    ],
+    "n32-indirect-root": [
+      {
+        "trap": 1174,
+        "case": 0,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 1,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 2,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 3,
+        "result": [
+          2,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 4,
+        "result": [
+          2,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 5,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 6,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 7,
+        "result": [
+          20,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 8,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 9,
+        "result": [
+          78,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 10,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 11,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 12,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 13,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 14,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 15,
+        "result": [
+          2,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1175,
+        "case": 0,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1175,
+        "case": 1,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1175,
+        "case": 2,
+        "result": [
+          9,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1175,
+        "case": 3,
+        "result": [
+          9,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1175,
+        "case": 4,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1175,
+        "case": 5,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1175,
+        "case": 6,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1175,
+        "case": 7,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 0,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 1,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 2,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 3,
+        "result": [
+          2,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 4,
+        "result": [
+          2,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 5,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 6,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 7,
+        "result": [
+          20,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 8,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 9,
+        "result": [
+          78,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 10,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 11,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 12,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 13,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 14,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 15,
+        "result": [
+          2,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1202,
+        "case": 0,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1202,
+        "case": 1,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1202,
+        "case": 2,
+        "result": [
+          9,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1202,
+        "case": 3,
+        "result": [
+          9,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1202,
+        "case": 4,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1202,
+        "case": 5,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1202,
+        "case": 6,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1202,
+        "case": 7,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      }
+    ],
+    "n32-indirect-user": [
+      {
+        "trap": 1174,
+        "case": 0,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 1,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 2,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 3,
+        "result": [
+          2,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 4,
+        "result": [
+          2,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 5,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 6,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 7,
+        "result": [
+          20,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 8,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 9,
+        "result": [
+          78,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 10,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 11,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 12,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 13,
+        "result": [
+          13,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 14,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1174,
+        "case": 15,
+        "result": [
+          2,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1175,
+        "case": 0,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1175,
+        "case": 1,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1175,
+        "case": 2,
+        "result": [
+          9,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1175,
+        "case": 3,
+        "result": [
+          9,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1175,
+        "case": 4,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1175,
+        "case": 5,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1175,
+        "case": 6,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1175,
+        "case": 7,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 0,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 1,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 2,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 3,
+        "result": [
+          2,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 4,
+        "result": [
+          2,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 5,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 6,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 7,
+        "result": [
+          20,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 8,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 9,
+        "result": [
+          78,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 10,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 11,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 12,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 13,
+        "result": [
+          13,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 14,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1201,
+        "case": 15,
+        "result": [
+          2,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1202,
+        "case": 0,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1202,
+        "case": 1,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1202,
+        "case": 2,
+        "result": [
+          9,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1202,
+        "case": 3,
+        "result": [
+          9,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1202,
+        "case": 4,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1202,
+        "case": 5,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1202,
+        "case": 6,
+        "result": [
+          0,
+          4277009102,
+          0
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      },
+      {
+        "trap": 1202,
+        "case": 7,
+        "result": [
+          14,
+          4277009102,
+          1
+        ],
+        "layout_bytes": 184,
+        "guards": true
+      }
+    ]
+  },
+  "filesystem_note": "XFS values, IDs, labels and free counts are filesystem-specific; compare native values against NetBSD, not this reference disk."
+}

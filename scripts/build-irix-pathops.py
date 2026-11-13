@@ -15,7 +15,7 @@ base = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(base)
 
 
-SUITES = {'rename': list(range(7))}
+SUITES = {'rename': list(range(7)), 'statvfs': [0], 'remove': list(range(4))}
 
 
 def build(suite):
@@ -23,7 +23,7 @@ def build(suite):
     out.mkdir(parents=True, exist_ok=True)
     sources = ['scripts/build-irix-pathops.py', 'lab/irix-pathops/'+suite+'.c',
                'lab/irix-prda/start.S', 'lab/irix-prda/call.S', 'lab/irix-prda/probe.ld']
-    manifest = dict(schema=1, record_bytes=1024,
+    manifest = dict(schema=1, record_bytes=1024 if suite == 'rename' else 512,
                     modes=SUITES[suite],
                     sources={p: base.digest(ROOT/p) for p in sources}, files={})
     for abi in ['o32', 'n32']:

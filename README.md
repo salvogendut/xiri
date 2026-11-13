@@ -31,6 +31,8 @@ uses its original X11 controls, and SGI colour names resolve through a private
 session database. The [saved-session guide](docs/IRIX-SOFTWARE.md#saved-desktop-sessions)
 explains **Save Windows & Desks**, automatic and explicit saves, and profile
 backups. Xmahjongg has no default autostart entry.
+The [File Manager and Dumpster guide](docs/IRIX-FILEMANAGER.md) describes
+original file actions, the required hostname setup and per-user storage.
 System services start at boot. NetBSD
 loads `compat_irix_o32.kmod` during boot and runs the desktop on a kernel
 without built-in IRIX support. The [core kernel](lab/native-wait/README.md)

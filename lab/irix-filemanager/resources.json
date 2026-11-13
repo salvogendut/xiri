@@ -1,0 +1,75 @@
+{
+  "schema": 1,
+  "status": "staged-unqualified",
+  "extraction": "guestfish --ro; mount ro,norecovery",
+  "source_image_manifest_sha256": "79b464ad3856eca2d034f418445860b3d262437f0347ccadedc67e60c8330521",
+  "script_sha256": "9fe05a5bdb058ffefeb35c74ede7b4db50f56efa35d96d21158a8eaf721b0626",
+  "payload_sha256": "ff260e697b6e9e305cddb33dc051d59efacea4c0419a302abb93f06db0e4a97a",
+  "paths": {
+    "/usr/lib/desktop/telldesktop": {
+      "irix_source": "/usr/lib/desktop/telldesktop",
+      "canonical_source": "/usr/lib/desktop/telldesktop",
+      "netbsd_destination": "/emul/irix/usr/lib/desktop/telldesktop",
+      "type": "file",
+      "original_mode": "0o755",
+      "mode": "0o555",
+      "uid": 0,
+      "gid": 0,
+      "bytes": 14252,
+      "sha256": "b0389e523d3cf48e4cf4b702781ab6b2feca35bb60164b152aaac169201db8fb",
+      "elf": {
+        "class": 32,
+        "endian": "big",
+        "machine": 8,
+        "abi": "n32",
+        "type": 2,
+        "flags": "0x20000024",
+        "entry": "0x10001104",
+        "interpreter": [
+          "/usr/lib32/libc.so.1"
+        ],
+        "needed": [
+          "libimdXutil.so",
+          "libX11.so.1",
+          "libCsup.so",
+          "libC.so.2",
+          "libc.so.1"
+        ],
+        "rpath": [],
+        "soname": [],
+        "loads": [
+          {
+            "offset": 0,
+            "address": 268435456,
+            "file_bytes": 8192,
+            "memory_bytes": 8192,
+            "flags": 5,
+            "alignment": 8192
+          },
+          {
+            "offset": 8192,
+            "address": 268509184,
+            "file_bytes": 4096,
+            "memory_bytes": 4096,
+            "flags": 6,
+            "alignment": 4096
+          }
+        ],
+        "load_boundaries_8k": false,
+        "liblist": [
+          "libimdXutil.so",
+          "libX11.so.1",
+          "libCsup.so",
+          "libC.so.2",
+          "libc.so.1"
+        ],
+        "mips_rld_version": 1,
+        "mips_flags": "0x4410"
+      }
+    }
+  },
+  "limitations": [
+    "Resource presence does not qualify File Manager or Dumpster operations.",
+    "No original home, user data or Dumpster contents are imported."
+  ]
+}

@@ -1,5 +1,11 @@
 # IRIX resource checklist
 
+The File Manager/Dumpster cycle adds original `telldesktop` at
+`/emul/irix/usr/lib/desktop/telldesktop` (14,252 bytes, mode 0555).
+Its [ledger](../lab/irix-filemanager/resources.json) records the exact source
+and dependencies; the [File Manager guide](IRIX-FILEMANAGER.md) covers
+installation, hostname configuration and per-user file operations.
+
 The working reference release is **IRIX 6.5.22**, confirmed by the user on
 2026-11-02; the [installed-image baseline](results/2026-10-30-irix-vendor-baseline.md)
 identifies the maintenance release as **6.5.22m**. Resource and behavior

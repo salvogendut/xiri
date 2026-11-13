@@ -38,3 +38,65 @@ result. The reference records retain syscall status, modes, owners, links,
 contents and inode-identity relationships without comparing unrelated disk
 inode numbers or timestamps. This fixture does not claim power-loss atomicity,
 cross-filesystem moves or concurrent directory modification coverage.
+
+## Filesystem statistics and removal
+
+The `statvfs.c` observer exercises `statvfs`, `fstatvfs`, `statvfs64` and
+`fstatvfs64`: 384 records across both ABIs, dispatch forms and identities.
+It checks structure sizes, output guards, unaligned buffers, permission and
+lookup errors. The qualifier compares status with IRIX, checks native fields
+for consistency and retains the actual FFS geometry; XFS capacities and IDs
+are not expected to match.
+
+```sh
+python3 scripts/build-irix-pathops.py --suite statvfs
+python3 scripts/prepare-irix-statvfs-fixtures.py
+```
+
+In a fresh disposable guest, extract `.work/irix-statvfs/inputs.tgz` under
+`/tmp/statvfs`, make that directory and its four executables mode 755, and
+create these fixtures with umask 022:
+
+```sh
+cd /tmp/statvfs
+mkdir results denied
+chmod 777 results
+echo payload >file
+echo denied >denied/file
+chmod 000 denied
+ln -s file link
+sh run.sh root
+su PROBE_ACCOUNT -c 'sh /tmp/statvfs/run.sh user'
+```
+
+Use an account with UID/GID 1234. Archive `results` as `reference.tar` or
+`native.tar`, then use `qualify-irix-statvfs.py --reference reference.tar
+--native native.tar --native-run HALTED_NATIVE --reference-run HALTED_IRIX
+--output RESULT.json`.
+
+The `remove.c` observer checks `unlink` and `rmdir` in 42 filesystem cases,
+again across both identities/ABIs/dispatch forms: 336 records. It records
+surviving metadata and link relationships as well as return values. This
+includes final symlinks and trailing slashes, denied and sticky parents,
+nonempty directories, malformed paths and invalid pointers.
+
+```sh
+python3 scripts/build-irix-pathops.py --suite remove
+python3 scripts/prepare-irix-remove-fixtures.py
+```
+
+Extract `.work/irix-remove/inputs.tgz` into `/tmp/irix-remove` on each fresh
+guest, make the directory and executables mode 755, and run
+`sh run.sh PROBE_ACCOUNT` there as root. The script creates each case once
+and invokes its observer as root or UID 1234. Archive `results` and compare:
+
+```sh
+python3 scripts/qualify-irix-remove.py --native NATIVE_RESULTS.tar \
+  --native-run HALTED_NATIVE --reference-run HALTED_IRIX --output RESULT.json
+```
+
+The retained `remove-reference.json` comes from original IRIX 6.5.22m.
+Both qualifiers reject recovered diagnostic owners for final qualification
+and require an observed clean halt. `--diagnostic` can inspect a live run
+without making a qualification claim. See the
+[File Manager guide](../../docs/IRIX-FILEMANAGER.md) for the GUI workflow.
