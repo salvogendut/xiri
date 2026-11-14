@@ -625,6 +625,12 @@ Acceptance: another tester can install the system on the named physical Indy con
 
 ## Milestone 5 Indigo2 and Octane expansion
 
+The [November 14 Octane check](results/2026-11-14-octane-platform.md) confirms
+this remains a native board-port milestone. The current O2 kernel's ELF32
+wrapper is rejected by the Octane PROM; the ELF64 image faults during loading.
+The audited NetBSD tree lacks the Octane ARCS64/HEART/XIO/Bridge/IOC3 and
+display attachment path. This check does not qualify a 6.5.30 Xiri desktop.
+
 - [ ] Classify the available Indigo2 by CPU and graphics; identify reusable support and additional port work.
 - [ ] Map the missing NetBSD Octane board support using historical OpenBSD and current Linux implementations as references.
 - [ ] Implement and validate Octane boot, memory, interrupts, and essential I/O under NetBSD.

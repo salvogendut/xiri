@@ -174,6 +174,13 @@ application has run under NetBSD yet. Native boot, desktop/service/session
 acceptance and a separate manual Xiri CHD remain outstanding. The native IRIX
 donor CHD is usable for donor boot testing, but is not a NetBSD/Xiri image.
 
+The requested [Octane/R10000 alternative](results/2026-11-14-octane-platform.md)
+was also checked. Its firmware rejects the current ELF32 wrapper and faults
+loading the O2-linked ELF64 kernel. The source audit identifies missing native
+Octane board support, so it is not a replacement configuration for this
+6.5.30 application qualification. The earlier native IRIX Octane installation
+remains useful as a separate donor/reference, with its source images untouched.
+
 ## Existing reference and external background
 
 The [SGI installation guide](https://sgi.neocities.org/installguide) describes

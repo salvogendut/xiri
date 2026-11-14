@@ -9,6 +9,8 @@ CHD. The separate [6.5.30f donor and import](docs/results/2026-11-14-irix-6.5.30
 are reproducible; its O2/R10000 NetBSD trial currently stops during native SCSI
 initialization, before any IRIX application runs. A qualified 6.5.30 Xiri CHD
 is still pending. Physical hardware needs separate qualification.
+The [Octane alternative](docs/results/2026-11-14-octane-platform.md) was also
+checked; it requires a separate NetBSD board port before Xiri can run there.
 
 The current desktop runs original 4Dwm, Toolchest, Icon Catalog, File Manager,
 winterm, xclock and Desks Overview. It has SGI fonts, the granite backdrop,

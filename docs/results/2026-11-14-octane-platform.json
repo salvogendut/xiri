@@ -1,0 +1,154 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "status": "octane-native-platform-unavailable",
+  "scope": "Diskless boot feasibility for using Octane as the NetBSD target of the 6.5.30 Xiri line; no vendor payload executed.",
+  "source_audit": {
+    "schema": 1,
+    "checked_utc": "2026-11-14T21:56:45Z",
+    "netbsd_revision": "2a7184ec4c66b324c8c027b577a81c1e41575504",
+    "netbsd_source_files": {
+      "sys/arch/sgimips/conf/GENERIC32_IP3x": "0ff500299ada495774b34bf04f8a6ecfe97723d7b4a79bdaed85a0d3393f2f9c",
+      "sys/arch/sgimips/conf/GENERIC64_IP3x": "415d2107b5ca15e72de5e9c8c34df8546c6333531df973c9494691bcbb13419a",
+      "sys/arch/sgimips/conf/files.sgimips": "db148fee40c1e722de01fbcb574b82bef4d9de2f9cba098a0d934fd990ddf1de",
+      "sys/arch/sgimips/dev/files.dev": "0e07fcff3ae4f9e0c54e93dd9301e1a29d238060b0ef75632bb73694161f29a9",
+      "sys/arch/sgimips/mace/files.mace": "b70d605bd45c8671f855dfb1d3268788ff6f1f20bb92af7e4dc2facc9b2d5c74",
+      "sys/arch/sgimips/gio/files.gio": "fc31f43eda4b8af27d0d85bc9faee0dfbbcd4681f2e320b6b67a73d9ad230e7e",
+      "sys/arch/sgimips/sgimips/machdep.c": "e0185f6a9bc622221a33e1bcaccb539cc964c48b567c0394354d1773a1cba306",
+      "sys/arch/sgimips/sgimips/clock.c": "36cc8f492aa3e6e1029bf9c817ef1f4387f452c3b764b25e80e66075fd0f8944",
+      "sys/arch/sgimips/pci/pci_machdep.c": "bd5f05220f70b67564f6eca61cface7ce2a63083d9e7c98754a6ae8316911964",
+      "sys/dev/arcbios/arcbios.h": "4375bf8bf79bd56c6429f6f188e8910106a74f2a73860c4612ce30723da09851",
+      "sys/dev/arcbios/arcbios_calls.S": "652cb89f6c11a5be1c117da34617e16ed7702fed52b6f94f703a713336926fd8",
+      "sys/dev/pci/isp_pci.c": "2265d7f34f8630a878a83ec62323ab2d1705d71ce2ed3cb2581939e3126777b9"
+    },
+    "iris_revision": "7d46498bf1fbf3acf53f1619413e3c5eaeb5d27b",
+    "iris_upstream_revision": "5fb831ce7057a8978759ae57b151d631a448d1e7",
+    "iris_upstream_result": "already integrated; no new commits or merge required",
+    "observations": [
+      "GENERIC64_IP3x explicitly supports O2/IP32 and inherits O2 CRIME/MACE device attachments.",
+      "MACH_SGI_IP30 appears in machine/clock selection, but no Octane HEART/XIO/Bridge/IOC3 attachment is present in the sgimips configuration.",
+      "Current ARCS structures and firmware-vector dispatch describe 32-bit entries; the n64 kernel has an o32 firmware-call bridge, not an Octane ARCS64 interface.",
+      "Generic QLogic ISP1040 PCI support exists; an Octane port still needs the board PCI/DMA/interrupt path."
+    ],
+    "native_irix_octane_installation_record": "/var/home/salvogendut/Downloads/IRIX media/Installed/Octane-R10000-6.5.30/INSTALL-NOTES.txt"
+  },
+  "emulator_manifest_sha256": "0c73b64ae6f1eaca43a050df7801267c966c8f35321e6ea849ccac0b3f92bbb3",
+  "kernel_build_manifest_sha256": "17057383ec7b0e249bc71c7fd628992a933473b9ab1fb1670491e79fa0c4640a",
+  "machine": {
+    "profile": "octane_ip30",
+    "cpu": "r10000",
+    "cpus": 1,
+    "memory_mb": 512,
+    "graphics": "none",
+    "disks": []
+  },
+  "boot_wrapper": {
+    "elf_class": 32,
+    "sha256": "eb71603862bc7a42ec3378636db8c64382fe651609874e8576a40efcc97e9b39",
+    "outcome": "PROM: Can't boot 32 bit ELF; execute format error"
+  },
+  "native_kernel": {
+    "elf_class": 64,
+    "sha256": "a3d3ff463227ae1190661936c30fabc001f391354b7dcaba5ee1a9365f20daff",
+    "entry": "0xffffffff80069000",
+    "outcome": "PROM data-bus exception while loading, before any NetBSD banner",
+    "prom_exception_pc": "0xffffffff9fc87a3c"
+  },
+  "runs": {
+    "octane-platform-startup-failure": {
+      "status": "probe-failed",
+      "result_sha256": "85a4f71123f9e914e3ba3a20ad7fb0b1078b7516f80e06be3c7ae28e24ca31dd",
+      "evidence": {
+        "emulator-command.json": "7c4d5b2525845625ed233c5c4da9c5e58698e0526fff6816c00d5d5a561d7a08",
+        "emulator.log": "ea39bafc74fd22af2f622d7daa2c0a5cf6a32006bd8b6422685646c63c131d76",
+        "iris.toml": "ddb6019e5bf629f735c1a9c43ab8a8f7f09805a32801c52afe6ab2710c2f4a4d",
+        "probe-used.py": "70dc2095506e2afd917af59b665653ad6b7ee4338e9dcb8a106ba0388905940f",
+        "result.json": "85a4f71123f9e914e3ba3a20ad7fb0b1078b7516f80e06be3c7ae28e24ca31dd"
+      },
+      "emulator_stopped": true,
+      "originals_unchanged": true
+    },
+    "octane-platform-check": {
+      "status": "boot-blocked",
+      "result_sha256": "c1bc711441ce2b5947d9e1337bca98f71a32e1a895e9c426b902402da335f2a5",
+      "evidence": {
+        "emulator-command.json": "304980978116bded1100977513ff53e306b1998e8360d07cd957bf330cc58116",
+        "emulator.log": "a7e690113e5835d4122fe5b7712f4325ac075bb1cfd575314cde4e7766edf09b",
+        "iris.toml": "560ba5412048f46995f07178608905b9bb6f4dd73d00adaa899b42d8df473f93",
+        "probe-used.py": "6c2fbc45ad9209b01355c0f75206cbfd3213f8eadd9be4c39fe7c2d333430bc4",
+        "prom-diagnostic-dismissal.json": "e45e6119f413fae19519c033e0bc3433e50e9aff19d2554f0d15d273663eb011",
+        "result.json": "c1bc711441ce2b5947d9e1337bca98f71a32e1a895e9c426b902402da335f2a5",
+        "serial.log": "01d255d7d8f428e2f592e5194f84125b85f6de78e47fcf045f2fd8612df593a0",
+        "source-audit.json": "3a1d8dfceb493582f5f3242e55a1a517440454180067a22f6b60e88f6da56bf0"
+      },
+      "emulator_stopped": true,
+      "originals_unchanged": true
+    },
+    "octane-native64-check": {
+      "status": "boot-blocked",
+      "result_sha256": "2bb1ef27fa87051403acbfa71d6b7c764b4dead6442be012b5380546945c1493",
+      "evidence": {
+        "emulator-command.json": "17551cb8550a53936b13e153d1cc57952863f99992ad717e2a49b31bbbdb74d6",
+        "emulator.log": "930efaf50f3cbf30f9cb949bfa3fbcb82760eebebccd442c450f52d44e0cb488",
+        "iris.toml": "a4732fc9b1f97ba1efcccbae2c4c070dfdaa4c6b7149ca6729f6371b27e0fe02",
+        "probe-used.py": "3da51de92f677e4a04dbc6a52c71ae7513b3e2e3d951117469d63b49a8137dbd",
+        "result.json": "2bb1ef27fa87051403acbfa71d6b7c764b4dead6442be012b5380546945c1493",
+        "serial.log": "f2d7d3804c54d2471cbc9cd5cf83a4930c02e7cfbc57fcbb5844ea6be083baf1"
+      },
+      "emulator_stopped": true,
+      "originals_unchanged": true
+    }
+  },
+  "retained_evidence": ".work/platform-checks/octane-20261114",
+  "retained_firmware_inputs": {
+    "nvram.bin": "4a922474aea3361b8f1d03aefaceec9469487e07860a40cbe57ed7b2a8bb1308",
+    "flash.bin": "fbc0aa85365f560ba4d11b01a7d5aaba06b3d5be5bb1674da74ae1093e8dcc85"
+  },
+  "previous_native_irix_installation_evidence": {
+    "README.txt": {
+      "source": "/var/home/salvogendut/Downloads/IRIX media/Installed/Octane-R10000-6.5.30/README.txt",
+      "sha256": "a1cdccfbcda42d4c7d28e77e9f5e53a5ec086566f6c1004ed2d5ee46f244af10"
+    },
+    "INSTALL-NOTES.txt": {
+      "source": "/var/home/salvogendut/Downloads/IRIX media/Installed/Octane-R10000-6.5.30/INSTALL-NOTES.txt",
+      "sha256": "0b02aabfc75e0f0db4e39078a16ac397120dc82253af61786d83d4aab1c356a7"
+    },
+    "prismatic.cfg": {
+      "source": "/var/home/salvogendut/Downloads/IRIX media/Installed/Octane-R10000-6.5.30/prismatic.cfg",
+      "sha256": "d6882c81d011b3bafdcc0a867a535789c17f017dcca958d83fd9f5c80085efed"
+    }
+  },
+  "fresh_native_irix_boot": false,
+  "irix_payload_tested": false,
+  "new_xiri_chd": false,
+  "kernel_or_emulator_source_changed": false,
+  "validation": [
+    "Python compilation of the new probe passed",
+    "ELF32 and ELF64 live firmware attempts recorded",
+    "Original firmware and kernel hashes unchanged after both attempts",
+    "All owned emulator processes stopped"
+  ],
+  "cleanup": {
+    "removed": [
+      {
+        "path": ".work/octane-platform-startup-failure",
+        "removed_allocated_bytes": 1089536,
+        "retained_evidence_allocated_bytes": 32768
+      },
+      {
+        "path": ".work/octane-platform-check",
+        "removed_allocated_bytes": 1105920,
+        "retained_evidence_allocated_bytes": 49152
+      },
+      {
+        "path": ".work/octane-native64-check",
+        "removed_allocated_bytes": 1097728,
+        "retained_evidence_allocated_bytes": 40960
+      }
+    ],
+    "retained_input_allocated_bytes": 1052672,
+    "filesystem_available_before": 492581007360,
+    "filesystem_available_after": 492581007360,
+    "large_disk_copies_created": false
+  }
+}

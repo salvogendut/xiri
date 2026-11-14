@@ -51,6 +51,13 @@ not repin qualified kernels, emulator binaries, runtime resources or guest disks
 
 ## IRIS upstream updates
 
+The November 14 Octane trial fetched `5fb831ce` again; it is already
+contained in IRIS `xiri` at `7d46498b`, with no incoming commits or merge.
+The [diskless boot checks](results/2026-11-14-octane-platform.md) use that
+retained emulator and leave both fork source trees unchanged. The NetBSD
+audit confirms that the existing IP3x configuration is O2-specific; adding
+Octane requires separate native platform support.
+
 The same November 14 cycle adds IRIS `7d46498b` on `xiri`, preserving R5000's
 read-only Config cache-line fields. The failing-before executor regression,
 all 190 CPU executor tests and the optimized CLI build pass; the commit is
