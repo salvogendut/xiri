@@ -1,0 +1,719 @@
+{
+  "schema": 1,
+  "status": "qualified",
+  "bundle": ".work/images/xiri-netbsd-desktop-20261114-filemanager",
+  "base_chd_sha256": "0df71bb25749d8dc30d456c6459f0236c0f64154a640522873f6137e45bd4111",
+  "module_sha256": "89d63b8dd67b5fa062edc0a7540a38f84630a32cdeacadd7920b6534e592f19e",
+  "emulator_sha256": "3dd9299d71f1899ff5a8c9b76f6a24752d19e4f9a0bcfe0edf3a29001dc9c49e",
+  "probe_sha256": "497f3c3ee7ac8a322796988e612fcd5a5d9b8d9799ee261d072d88b6c3481c5b",
+  "shared_probe_sha256": "97c1ff82426706822b1df67afe55fd56ed2892f3043c30762de5214b58138a56",
+  "media_inputs": {
+    "clip-selection.c": "05629a4f20f1dd384c12dfe9f4e8eff1c6b37725ecabe7c2a49f2070c07c1621",
+    "doc-input.c": "64d401ac1bcfb063bd2f78d9a84bbd57f94860d6bf08b060dd04f661d3066ce3",
+    "type.c": "61ce22cbda6c66ccaf53cbcffab5f3080be95004bcd3e5c6893dc54a8a9db838",
+    "windows.c": "a2f1e7bce2f2faa43b19db9c1c40a63e816f182541362c05689c9e7671d854f6"
+  },
+  "loaded_module": "compat_irix_o32            exec     filesys  -        0       - exec_elf32,compat_netbsd32\nSHA256 (/stand/sgimips/11.99.9/modules/compat_irix_o32/compat_irix_o32.kmod) = 89d63b8dd67b5fa062edc0a7540a38f84630a32cdeacadd7920b6534e592f19e\n",
+  "filesystem_devices": {
+    "xiritest": [
+      "2560",
+      "43782"
+    ],
+    "xiritest2": [
+      "2560",
+      "43782"
+    ]
+  },
+  "identities": {
+    "xiritest": "SESSION user=xiritest uid=1234 groups=1234 1235 home=/usr/people/xiritest cwd=/usr/people/xiritest display=127.0.0.1:0 authority=/tmp/.XauthDTWhfl\n",
+    "xiritest2": "SESSION user=xiritest2 uid=1237 groups=1237 1235 home=/usr/people/xiritest2 cwd=/usr/people/xiritest2 display=127.0.0.1:0 authority=/tmp/.Xauth5NpL9h\n"
+  },
+  "checkpoint": "xiritest2-complete",
+  "screenshots": {
+    "xiritest-native-created.png": "f0a2974ed2773277f67b2e989dcbd1d2446d79e4e9e4b5bb085e40e6c3250131",
+    "xiritest-native-renamed.png": "dd6679d16e0108458aa3866c90fde7a3d627e4669a4a928f3e3e01936bd4cc25",
+    "xiritest-cross-filesystem-file.png": "8d60a9dc6cce34d10171a8505b7162a10e2585f3e79f609ed36f8dad6b5a7cba",
+    "xiritest-collision-cancel.png": "af970482c155c603bb22b6bb8691856372b160729035b63ea37b4c57ef76d54d",
+    "xiritest-collision-cancel-dismissed.png": "286de2aecae84f33c1b298147ff388ab0e2a4b9aa239d7048e8342a21b521b6e",
+    "xiritest-collision-overwrite.png": "193ed47e45e2f2e3d91b053f4b8cd870bbac93e027da16c2c3289a5d6a7f873b",
+    "xiritest-collision-overwrite-dismissed.png": "2d09be6b97f667a65a117781693e4b3a659ae024856dd2e1ca7b223b9c16fdbe",
+    "xiritest-native-deleted.png": "591a78433a8c181e0d57c8d2deb6af5cb74b79fe30a0e39a7c307924bec89089",
+    "xiritest-directory-moved.png": "c23d16d25b3e76839efdb47ed902e67127eee971dde035dd6cfcb1ce8ad518db",
+    "xiritest-permission-denied.png": "f937da8624396a54194714dd3cdf825226e29a2ea1f76d407703977e9ff6aea8",
+    "xiritest-permission-denied-dismissed.png": "09106fc6732d13bdd01c8ad51ceaee0ed92f8a25fa8a47b0a2e548d9165dd562",
+    "xiritest-permission-restored.png": "5ac7f5fc17bab58727d326b2f2abde7f9dbd8b00c4a3faddcebf8749e8609147",
+    "xiritest-readonly-filesystem.png": "b39232184ad5003599370172b089f9359ea927481600f1a27b78d49358c3597b",
+    "xiritest-readonly-filesystem-dismissed.png": "15f2f88a867c9e02774cc0b05a91be32ab957fba167aec46aeb2a1d7da03e868",
+    "xiritest2-native-created.png": "c6d4d80daa578966f0663fae9c024f19c06d1632c4acbf13807b84076c49a5ae",
+    "xiritest2-native-renamed.png": "4333715098e38476f840540d09da7d81fe07c6a51ab4a88a9f47122fdca71969",
+    "xiritest2-cross-filesystem-file.png": "b0b8dd6ca07d1ca96dd91952f98f7b9a0926f83ea16cce196df2f8e20d43d42b",
+    "xiritest2-collision-cancel.png": "7e938e8c6af5942349e79a76081842b2529aec69915f89f1d1ba69b6956da974",
+    "xiritest2-collision-cancel-dismissed.png": "515f763dc8e92180e2ca5b63939d5897e250c72544c294e1a7e14d35e2b728c9",
+    "xiritest2-collision-overwrite.png": "dc5a6ea55acaf88b2cbe7d9a6f4f74cf6d8ee4b3921d3fd13877734ed815a042",
+    "xiritest2-collision-overwrite-dismissed.png": "d8886a05659ff271cce7545009e063c54717d21f90365317a3b4906a93e5b30a",
+    "xiritest2-native-deleted.png": "7226bbd2d0bc1bd7fccb3c9cb88325bfe17e78ef210cf7d0de8b9302bcdf2d12",
+    "xiritest2-directory-moved.png": "702c5a5a46eb7b9fac780182258e0ae4604fe01833ead66e14d22a599a428133",
+    "xiritest2-permission-denied.png": "34d6702fdd36e70092ce9303b772be64c3742a0424d30a3392cededa25706be5",
+    "xiritest2-permission-denied-dismissed.png": "b2811227f243c9b1d8ddab64eedc3c0b1464d08d66d83778e57e7cfc4d5ea71e",
+    "xiritest2-permission-restored.png": "ae6f61a2302636593013c65a7d5ab009af187b7900fa217e82ed3b9a500e90e6",
+    "xiritest2-readonly-filesystem.png": "7580a91a6bce826d1691dcf822ffaecf68fdcf0abd2a4a646e0e45c0c5c3d231",
+    "xiritest2-readonly-filesystem-dismissed.png": "dc85e851334d2496a6abcf641e4027ab988344261247f1101f2c4575759151e2"
+  },
+  "files": {
+    "/tmp/XiriFileManagerFS/xiritest/moved file.txt": {
+      "sha256": "a912ad58418149f8a524a87a4b59800de0807c07bcdd926c96e9bd3302d4d450",
+      "metadata": "1234|1234|600|946684812"
+    },
+    "/usr/people/xiritest/FileManagerChecks/Source/moved file.txt": {
+      "sha256": "a912ad58418149f8a524a87a4b59800de0807c07bcdd926c96e9bd3302d4d450",
+      "metadata": "1234|1234|600|946684812"
+    },
+    "/tmp/XiriFileManagerFS/xiritest/folder/child.txt": {
+      "sha256": "67068906db70f289b9e2c7eda9416ec4b24bdbb283497bc2ff30aee0202d641d",
+      "metadata": "1234|1234|640|946684812"
+    },
+    "/usr/people/xiritest/FileManagerChecks/Source/denied.txt": {
+      "sha256": "66532b5ef93d37a7ce4ea5ec4bee9351e0a40ab13771ba7b40b9180ce9b0cd9f",
+      "metadata": "1234|1234|600|946684812"
+    },
+    "/tmp/XiriFileManagerFS/xiritest/denied.txt": {
+      "sha256": "66532b5ef93d37a7ce4ea5ec4bee9351e0a40ab13771ba7b40b9180ce9b0cd9f",
+      "metadata": "1234|1234|600|946684812"
+    },
+    "/usr/people/xiritest/FileManagerChecks/Source/readonly.txt": {
+      "sha256": "66532b5ef93d37a7ce4ea5ec4bee9351e0a40ab13771ba7b40b9180ce9b0cd9f",
+      "metadata": "1234|1234|600|946684812"
+    },
+    "/tmp/XiriFileManagerFS/xiritest2/moved file.txt": {
+      "sha256": "fc3732329bcb931c66f0793975264a945b51c5a1d82ea07cd248b32ea4505fa7",
+      "metadata": "1237|1237|600|946684812"
+    },
+    "/usr/people/xiritest2/FileManagerChecks/Source/moved file.txt": {
+      "sha256": "fc3732329bcb931c66f0793975264a945b51c5a1d82ea07cd248b32ea4505fa7",
+      "metadata": "1237|1237|600|946684812"
+    },
+    "/tmp/XiriFileManagerFS/xiritest2/folder/child.txt": {
+      "sha256": "53db2903a3fe1cb3fb90d042a4ee0769868d21b40e2e8908bdabd5cd43ae856c",
+      "metadata": "1237|1237|640|946684812"
+    },
+    "/usr/people/xiritest2/FileManagerChecks/Source/denied.txt": {
+      "sha256": "66532b5ef93d37a7ce4ea5ec4bee9351e0a40ab13771ba7b40b9180ce9b0cd9f",
+      "metadata": "1237|1237|600|946684812"
+    },
+    "/tmp/XiriFileManagerFS/xiritest2/denied.txt": {
+      "sha256": "66532b5ef93d37a7ce4ea5ec4bee9351e0a40ab13771ba7b40b9180ce9b0cd9f",
+      "metadata": "1237|1237|600|946684812"
+    },
+    "/usr/people/xiritest2/FileManagerChecks/Source/readonly.txt": {
+      "sha256": "66532b5ef93d37a7ce4ea5ec4bee9351e0a40ab13771ba7b40b9180ce9b0cd9f",
+      "metadata": "1237|1237|600|946684812"
+    }
+  },
+  "dialogs": {
+    "xiritest-collision-cancel-posted": [
+      {
+        "id": 20971888,
+        "frame": 8388776,
+        "stack": 45,
+        "state": 1,
+        "icon": 0,
+        "name": "File Manager Information",
+        "instance": "fiErrorDialog_popup",
+        "class": "FileManager",
+        "client": {
+          "x": 672,
+          "y": 319,
+          "width": 497,
+          "height": 120,
+          "map": 2
+        },
+        "frame_geometry": {
+          "x": 664,
+          "y": 287,
+          "width": 513,
+          "height": 160,
+          "map": 2
+        },
+        "icon_geometry": null
+      }
+    ],
+    "xiritest-collision-cancel-dismissed": [
+      {
+        "id": 20971888,
+        "frame": 20971888,
+        "stack": 49,
+        "state": 0,
+        "icon": 0,
+        "name": "File Manager Information",
+        "instance": "fiErrorDialog_popup",
+        "class": "FileManager",
+        "client": {
+          "x": 672,
+          "y": 319,
+          "width": 497,
+          "height": 120,
+          "map": 0
+        },
+        "frame_geometry": {
+          "x": 672,
+          "y": 319,
+          "width": 497,
+          "height": 120,
+          "map": 0
+        },
+        "icon_geometry": null
+      }
+    ],
+    "xiritest-collision-overwrite-posted": [
+      {
+        "id": 20971888,
+        "frame": 8388787,
+        "stack": 45,
+        "state": 1,
+        "icon": 0,
+        "name": "File Manager Information",
+        "instance": "fiErrorDialog_popup",
+        "class": "FileManager",
+        "client": {
+          "x": 672,
+          "y": 319,
+          "width": 497,
+          "height": 120,
+          "map": 2
+        },
+        "frame_geometry": {
+          "x": 664,
+          "y": 287,
+          "width": 513,
+          "height": 160,
+          "map": 2
+        },
+        "icon_geometry": null
+      }
+    ],
+    "xiritest-collision-overwrite-dismissed": [
+      {
+        "id": 20971888,
+        "frame": 20971888,
+        "stack": 49,
+        "state": 0,
+        "icon": 0,
+        "name": "File Manager Information",
+        "instance": "fiErrorDialog_popup",
+        "class": "FileManager",
+        "client": {
+          "x": 672,
+          "y": 319,
+          "width": 497,
+          "height": 120,
+          "map": 0
+        },
+        "frame_geometry": {
+          "x": 672,
+          "y": 319,
+          "width": 497,
+          "height": 120,
+          "map": 0
+        },
+        "icon_geometry": null
+      }
+    ],
+    "xiritest-directory-moved": [
+      {
+        "id": 20971888,
+        "frame": 20971888,
+        "stack": 47,
+        "state": 0,
+        "icon": 0,
+        "name": "File Manager Information",
+        "instance": "fiErrorDialog_popup",
+        "class": "FileManager",
+        "client": {
+          "x": 672,
+          "y": 319,
+          "width": 497,
+          "height": 120,
+          "map": 0
+        },
+        "frame_geometry": {
+          "x": 672,
+          "y": 319,
+          "width": 497,
+          "height": 120,
+          "map": 0
+        },
+        "icon_geometry": null
+      }
+    ],
+    "xiritest-permission-denied-posted": [
+      {
+        "id": 20971888,
+        "frame": 8388798,
+        "stack": 45,
+        "state": 1,
+        "icon": 0,
+        "name": "File Manager Information",
+        "instance": "fiErrorDialog_popup",
+        "class": "FileManager",
+        "client": {
+          "x": 656,
+          "y": 319,
+          "width": 529,
+          "height": 120,
+          "map": 2
+        },
+        "frame_geometry": {
+          "x": 648,
+          "y": 287,
+          "width": 545,
+          "height": 160,
+          "map": 2
+        },
+        "icon_geometry": null
+      }
+    ],
+    "xiritest-permission-denied-dismissed": [
+      {
+        "id": 20971888,
+        "frame": 20971888,
+        "stack": 49,
+        "state": 0,
+        "icon": 0,
+        "name": "File Manager Information",
+        "instance": "fiErrorDialog_popup",
+        "class": "FileManager",
+        "client": {
+          "x": 656,
+          "y": 319,
+          "width": 529,
+          "height": 120,
+          "map": 0
+        },
+        "frame_geometry": {
+          "x": 656,
+          "y": 319,
+          "width": 529,
+          "height": 120,
+          "map": 0
+        },
+        "icon_geometry": null
+      }
+    ],
+    "xiritest-readonly-filesystem-posted": [
+      {
+        "id": 20971888,
+        "frame": 20971888,
+        "stack": 47,
+        "state": 0,
+        "icon": 0,
+        "name": "File Manager Information",
+        "instance": "fiErrorDialog_popup",
+        "class": "FileManager",
+        "client": {
+          "x": 656,
+          "y": 319,
+          "width": 529,
+          "height": 120,
+          "map": 0
+        },
+        "frame_geometry": {
+          "x": 656,
+          "y": 319,
+          "width": 529,
+          "height": 120,
+          "map": 0
+        },
+        "icon_geometry": null
+      },
+      {
+        "id": 20972037,
+        "frame": 8388821,
+        "stack": 54,
+        "state": 1,
+        "icon": 0,
+        "name": "File Manager Information",
+        "instance": "fiErrorDialog_popup",
+        "class": "FileManager",
+        "client": {
+          "x": 734,
+          "y": 317,
+          "width": 373,
+          "height": 124,
+          "map": 2
+        },
+        "frame_geometry": {
+          "x": 726,
+          "y": 285,
+          "width": 389,
+          "height": 164,
+          "map": 2
+        },
+        "icon_geometry": null
+      }
+    ],
+    "xiritest-readonly-filesystem-dismissed": [
+      {
+        "id": 20971888,
+        "frame": 20971888,
+        "stack": 47,
+        "state": 0,
+        "icon": 0,
+        "name": "File Manager Information",
+        "instance": "fiErrorDialog_popup",
+        "class": "FileManager",
+        "client": {
+          "x": 656,
+          "y": 319,
+          "width": 529,
+          "height": 120,
+          "map": 0
+        },
+        "frame_geometry": {
+          "x": 656,
+          "y": 319,
+          "width": 529,
+          "height": 120,
+          "map": 0
+        },
+        "icon_geometry": null
+      },
+      {
+        "id": 20972037,
+        "frame": 20972037,
+        "stack": 57,
+        "state": 0,
+        "icon": 0,
+        "name": "File Manager Information",
+        "instance": "fiErrorDialog_popup",
+        "class": "FileManager",
+        "client": {
+          "x": 734,
+          "y": 317,
+          "width": 373,
+          "height": 124,
+          "map": 0
+        },
+        "frame_geometry": {
+          "x": 734,
+          "y": 317,
+          "width": 373,
+          "height": 124,
+          "map": 0
+        },
+        "icon_geometry": null
+      }
+    ],
+    "xiritest2-collision-cancel-posted": [
+      {
+        "id": 20971888,
+        "frame": 8388776,
+        "stack": 45,
+        "state": 1,
+        "icon": 0,
+        "name": "File Manager Information",
+        "instance": "fiErrorDialog_popup",
+        "class": "FileManager",
+        "client": {
+          "x": 668,
+          "y": 319,
+          "width": 505,
+          "height": 120,
+          "map": 2
+        },
+        "frame_geometry": {
+          "x": 660,
+          "y": 287,
+          "width": 521,
+          "height": 160,
+          "map": 2
+        },
+        "icon_geometry": null
+      }
+    ],
+    "xiritest2-collision-cancel-dismissed": [
+      {
+        "id": 20971888,
+        "frame": 20971888,
+        "stack": 49,
+        "state": 0,
+        "icon": 0,
+        "name": "File Manager Information",
+        "instance": "fiErrorDialog_popup",
+        "class": "FileManager",
+        "client": {
+          "x": 668,
+          "y": 319,
+          "width": 505,
+          "height": 120,
+          "map": 0
+        },
+        "frame_geometry": {
+          "x": 668,
+          "y": 319,
+          "width": 505,
+          "height": 120,
+          "map": 0
+        },
+        "icon_geometry": null
+      }
+    ],
+    "xiritest2-collision-overwrite-posted": [
+      {
+        "id": 20971888,
+        "frame": 8388787,
+        "stack": 45,
+        "state": 1,
+        "icon": 0,
+        "name": "File Manager Information",
+        "instance": "fiErrorDialog_popup",
+        "class": "FileManager",
+        "client": {
+          "x": 668,
+          "y": 319,
+          "width": 505,
+          "height": 120,
+          "map": 2
+        },
+        "frame_geometry": {
+          "x": 660,
+          "y": 287,
+          "width": 521,
+          "height": 160,
+          "map": 2
+        },
+        "icon_geometry": null
+      }
+    ],
+    "xiritest2-collision-overwrite-dismissed": [
+      {
+        "id": 20971888,
+        "frame": 20971888,
+        "stack": 49,
+        "state": 0,
+        "icon": 0,
+        "name": "File Manager Information",
+        "instance": "fiErrorDialog_popup",
+        "class": "FileManager",
+        "client": {
+          "x": 668,
+          "y": 319,
+          "width": 505,
+          "height": 120,
+          "map": 0
+        },
+        "frame_geometry": {
+          "x": 668,
+          "y": 319,
+          "width": 505,
+          "height": 120,
+          "map": 0
+        },
+        "icon_geometry": null
+      }
+    ],
+    "xiritest2-directory-moved": [
+      {
+        "id": 20971888,
+        "frame": 20971888,
+        "stack": 47,
+        "state": 0,
+        "icon": 0,
+        "name": "File Manager Information",
+        "instance": "fiErrorDialog_popup",
+        "class": "FileManager",
+        "client": {
+          "x": 668,
+          "y": 319,
+          "width": 505,
+          "height": 120,
+          "map": 0
+        },
+        "frame_geometry": {
+          "x": 668,
+          "y": 319,
+          "width": 505,
+          "height": 120,
+          "map": 0
+        },
+        "icon_geometry": null
+      }
+    ],
+    "xiritest2-permission-denied-posted": [
+      {
+        "id": 20971888,
+        "frame": 8388798,
+        "stack": 45,
+        "state": 1,
+        "icon": 0,
+        "name": "File Manager Information",
+        "instance": "fiErrorDialog_popup",
+        "class": "FileManager",
+        "client": {
+          "x": 652,
+          "y": 319,
+          "width": 537,
+          "height": 120,
+          "map": 2
+        },
+        "frame_geometry": {
+          "x": 644,
+          "y": 287,
+          "width": 553,
+          "height": 160,
+          "map": 2
+        },
+        "icon_geometry": null
+      }
+    ],
+    "xiritest2-permission-denied-dismissed": [
+      {
+        "id": 20971888,
+        "frame": 20971888,
+        "stack": 49,
+        "state": 0,
+        "icon": 0,
+        "name": "File Manager Information",
+        "instance": "fiErrorDialog_popup",
+        "class": "FileManager",
+        "client": {
+          "x": 652,
+          "y": 319,
+          "width": 537,
+          "height": 120,
+          "map": 0
+        },
+        "frame_geometry": {
+          "x": 652,
+          "y": 319,
+          "width": 537,
+          "height": 120,
+          "map": 0
+        },
+        "icon_geometry": null
+      }
+    ],
+    "xiritest2-readonly-filesystem-posted": [
+      {
+        "id": 20971888,
+        "frame": 20971888,
+        "stack": 47,
+        "state": 0,
+        "icon": 0,
+        "name": "File Manager Information",
+        "instance": "fiErrorDialog_popup",
+        "class": "FileManager",
+        "client": {
+          "x": 652,
+          "y": 319,
+          "width": 537,
+          "height": 120,
+          "map": 0
+        },
+        "frame_geometry": {
+          "x": 652,
+          "y": 319,
+          "width": 537,
+          "height": 120,
+          "map": 0
+        },
+        "icon_geometry": null
+      },
+      {
+        "id": 20972037,
+        "frame": 8388821,
+        "stack": 54,
+        "state": 1,
+        "icon": 0,
+        "name": "File Manager Information",
+        "instance": "fiErrorDialog_popup",
+        "class": "FileManager",
+        "client": {
+          "x": 734,
+          "y": 317,
+          "width": 373,
+          "height": 124,
+          "map": 2
+        },
+        "frame_geometry": {
+          "x": 726,
+          "y": 285,
+          "width": 389,
+          "height": 164,
+          "map": 2
+        },
+        "icon_geometry": null
+      }
+    ],
+    "xiritest2-readonly-filesystem-dismissed": [
+      {
+        "id": 20971888,
+        "frame": 20971888,
+        "stack": 47,
+        "state": 0,
+        "icon": 0,
+        "name": "File Manager Information",
+        "instance": "fiErrorDialog_popup",
+        "class": "FileManager",
+        "client": {
+          "x": 652,
+          "y": 319,
+          "width": 537,
+          "height": 120,
+          "map": 0
+        },
+        "frame_geometry": {
+          "x": 652,
+          "y": 319,
+          "width": 537,
+          "height": 120,
+          "map": 0
+        },
+        "icon_geometry": null
+      },
+      {
+        "id": 20972037,
+        "frame": 20972037,
+        "stack": 57,
+        "state": 0,
+        "icon": 0,
+        "name": "File Manager Information",
+        "instance": "fiErrorDialog_popup",
+        "class": "FileManager",
+        "client": {
+          "x": 734,
+          "y": 317,
+          "width": 373,
+          "height": 124,
+          "map": 0
+        },
+        "frame_geometry": {
+          "x": 734,
+          "y": 317,
+          "width": 373,
+          "height": 124,
+          "map": 0
+        },
+        "icon_geometry": null
+      }
+    ]
+  },
+  "directories": {
+    "xiritest": "1234|1234|750|946684812",
+    "xiritest2": "1237|1237|750|946684812"
+  },
+  "logout_logs": {
+    "xiritest-complete": "OWN pid=1052 parent=375\nOWN pid=3165 parent=1052\nOWN pid=3546 parent=1052\nOWN pid=416 parent=1052\nOWN pid=478 parent=1052\nOWN pid=3105 parent=1052\nOWN pid=479 parent=478\nOWN pid=3368 parent=3105\nOWN pid=419 parent=1052\nOWN pid=420 parent=1052\nOWN pid=3554 parent=1052\nOWN pid=426 parent=1052\nOWN pid=3497 parent=1052\nOWN pid=3751 parent=1052\nOWN pid=427 parent=1052\nOWN pid=422 parent=1052\nOWN pid=461 parent=422\nOWN pid=665 parent=1052\nOWN pid=431 parent=1052\nOWN pid=3565 parent=1052\nOWN pid=3950 parent=665\nOWN pid=690 parent=431\nOWN pid=3504 parent=1052\nOWN pid=3699 parent=3565\nOWN pid=3697 parent=3504\nOWN pid=3052 parent=690\nOWN pid=692 parent=3950\nOWN pid=3440 parent=690\nOWN pid=3189 parent=690\nOWN pid=504 parent=690\nOWN pid=507 parent=690\nOWN pid=508 parent=690\nOWN pid=506 parent=690\nOWN pid=1725 parent=690\nOWN pid=1855 parent=690\nOWN pid=702 parent=690\nOWN pid=3561 parent=690\nOWN pid=577 parent=690\nOWN pid=3633 parent=577\nOWN pid=582 parent=461\nOWN pid=1171 parent=3633\nOWN pid=596 parent=3633\nOWN pid=974 parent=3633\nOWN pid=2237 parent=375\nOWN pid=943 parent=2237\nSESSION_SAVE acknowledged by 4Dwm\nSESSION_SAVE completed=1 exit=0 elapsed=214\nGUARD pid=1052 exit=-1 signal=15 stopped=1 absent=1 valid=1 tracked=45 remaining=0 reason=logout uid=1234 gid=1234 elapsed=662503\n",
+    "xiritest2-complete": "OWN pid=1145 parent=1105\nOWN pid=1219 parent=1145\nOWN pid=1224 parent=1145\nOWN pid=1007 parent=1145\nOWN pid=1221 parent=1145\nOWN pid=4141 parent=1145\nOWN pid=1225 parent=1145\nOWN pid=3893 parent=1145\nOWN pid=1232 parent=1145\nOWN pid=1227 parent=1145\nOWN pid=1003 parent=1145\nOWN pid=852 parent=1145\nOWN pid=1427 parent=1003\nOWN pid=4438 parent=852\nOWN pid=3995 parent=1145\nOWN pid=1231 parent=1145\nOWN pid=1432 parent=1145\nOWN pid=4314 parent=1145\nOWN pid=3933 parent=1145\nOWN pid=1228 parent=1145\nOWN pid=1189 parent=1145\nOWN pid=1237 parent=1145\nOWN pid=1184 parent=1145\nOWN pid=1187 parent=1145\nOWN pid=1188 parent=1184\nOWN pid=1234 parent=1145\nOWN pid=3613 parent=1145\nOWN pid=1194 parent=1145\nOWN pid=4322 parent=3613\nOWN pid=1195 parent=1194\nOWN pid=1272 parent=1187\nOWN pid=4519 parent=1234\nOWN pid=1460 parent=4519\nOWN pid=3957 parent=4519\nOWN pid=3820 parent=4519\nOWN pid=4208 parent=4519\nOWN pid=1274 parent=1272\nOWN pid=1275 parent=4519\nOWN pid=2623 parent=4519\nOWN pid=1276 parent=4519\nOWN pid=4265 parent=4519\nOWN pid=4329 parent=4519\nOWN pid=1199 parent=4519\nOWN pid=2493 parent=4519\nOWN pid=734 parent=4519\nOWN pid=3361 parent=734\nOWN pid=3760 parent=1188\nOWN pid=1351 parent=3361\nOWN pid=4059 parent=3361\nOWN pid=1733 parent=3361\nOWN pid=1788 parent=1105\nOWN pid=5031 parent=1788\nSESSION_SAVE acknowledged by 4Dwm\nSESSION_SAVE completed=1 exit=0 elapsed=268\nGUARD pid=1145 exit=-1 signal=15 stopped=1 absent=1 valid=1 tracked=52 remaining=0 reason=logout uid=1237 gid=1237 elapsed=682303\n"
+  },
+  "scope": "Native create/rename/delete notifications; FFS to tmpfs; regular files, directory and relative symlink; collision cancel/overwrite; permission failure/retry; read-only CD; two authenticated users.",
+  "halt": "[   1.0000000] Copyright (c) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,\n[   1.0000000]     2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013,\n[   1.0000000]     2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023,\n[   1.0000000]     2024, 2025, 2026\n[   1.0000000]     The NetBSD Foundation, Inc.  All rights reserved.\n[   1.0000000] Copyright (c) 1982, 1986, 1989, 1991, 1993\n[   1.0000000]     The Regents of the University of California.  All rights reserved.\n\n[   1.0000000] NetBSD 11.99.9 (XIRI_IRIX_MODULE_20261103) #4: Thu Nov  5 12:34:13 UTC 2026\n[   1.0000000] \tsalvogendut@toolbx:/var/home/salvogendut/Dev/xiri/.work/netbsd-wait-accounting-build/obj/sys/arch/sgimips/compile/XIRI_IRIX_MODULE\n[   1.0000000] total memory = 255 MB\n[   1.0000000] (768 KB reserved for ARCS)\n[   1.0000000] avail memory = 244 MB\n[   1.0000000] timecounter: Timecounters tick every 10.000 msec\n[   1.0000000] mainbus0 (root): SGI-IP22 [SGI, 69123457], 1 processor\n[   1.0000000] cpu0 at mainbus0: MIPS R4400 CPU (0x440) Rev. 4.0 with MIPS R4010 FPC Rev. 0.0\n[   1.0000000] cpu0: 48 TLB entries, 1TB (40-bit) VAs, 4KB (12-bit) PAs, 16MB max page size\n[   1.0000000] cpu0: 16KB/16B direct-mapped L1 instruction cache\n[   1.0000000] cpu0: 16KB/16B direct-mapped write-back L1 data cache\n[   1.0000000] cpu0: 1024KB/128B direct-mapped write-back L2 unified cache\n[   1.0000000] int0 at mainbus0 addr 0x1fbd9880\n[   1.0000000] int0: bus 33MHz, CPU 66MHz\n[   1.0000000] imc0 at mainbus0 addr 0x1fa00000: revision 3\n[   1.0000000] gio0 at imc0\n[   1.0000000] newport0 at gio0: SGI NG1 (board revision 0, cmap revision 2, xmap revision 3, vc2 revision 0), depth 24, monitor ID 10 (1280x1024 60Hz)\n[   1.0000000] newport0: 13W3 Monitor ID 10, PROM ID -1, determined monitor ID 10 (1280x1024 60Hz)\n[   1.0000000] wsdisplay0 at newport0 kbdmux 1: console (default, vt100 emulation)\n[   1.0000000] wsmux1: connecting to wsdisplay0\n[   1.0000000] hpc0 at gio0: SGI HPC3 (onboard)\n[   1.0000000] zsc0 at hpc0 offset 0x59830\n[   1.0000000] zstty0 at zsc0 channel 1\n[   1.0000000] zstty1 at zsc0 channel 0\n[   1.0000000] pckbc0 at hpc0 offset 0x59840\n[   1.0000000] pckbd0 at pckbc0 (kbd slot)\n[   1.0000000] wskbd0 at pckbd0: console keyboard, using wsdisplay0\n[   1.0000000] pms0 at pckbc0 (aux slot)\n[   1.0000000] wsmouse0 at pms0 mux 0\n[   1.0000000] sq0 at hpc0 offset 0x54000: SGI Seeq 80c03\n[   1.0000000] sq0: Ethernet address 08:00:69:12:34:57\n[   1.0000000] wdsc0 at hpc0 offset 0x44000: WD33C93A (20.0 MHz clock, BURST DMA, SCSI ID 0)\n[   1.0000000] scsibus0 at wdsc0: 8 targets, 8 luns per target\n[   1.0000000] haltwo at hpc0 offset 0x58000 not configured\n[   1.0000000] pi1ppc0 at hpc0 offset 0x59800\n[   1.0000000] pi1ppc0: capabilities=0x8<PS2>\n[   1.0000000] ppbus0 at pi1ppc0\n[   1.0000000] ppbus0: No IEEE1284 device found.\n[   1.0000000] button0 at hpc0 offset 0x59850\n[   1.0000000] hpc1 at gio0: SGI HPC3 (IOPLUS mezzanine)\n[   1.0000000] hpc1: using EXP0's DMA channel\n[   1.0000000] sq at hpc1 offset 0x54000 not configured\n[   1.0000000] hpc2 at gio0: SGI HPC1.5 (GIO slot)\n[   1.0000000] dsclock0 at mainbus0 addr 0x1fbe0000\n[   1.0000000] ioc0 at mainbus0 addr 0x1fbd9800: rev 0, machine Indy (Guinness), board rev 0\n[   1.0000000] WARNING: system needs entropy for security; see entropy(7)\n[   1.0000000] timecounter: Timecounter \"mips3_cp0_counter\" frequency 33000000 Hz quality 100\n[   1.0000030] timecounter: Timecounter \"clockinterrupt\" frequency 100 Hz quality 0\n[   1.0000030] scsibus0: waiting 2 seconds for devices to settle...\n[   3.0650053] sd0 at scsibus0 target 1 lun 0: <SGI, IRIS EMUL DISK, 1.0> disk fixed\n[   3.1277302] sd0: 8192 MB, 16645 cyl, 16 head, 62 sec, 512 bytes/sect x 16777216 sectors\n[   3.2587318] sd0: async, 8-bit transfers\n[   3.3202788] cd0 at scsibus0 target 4 lun 0: <Sony, CDU-76S, 1.0> cdrom removable\n[   3.3922947] cd0: async, 8-bit transfers\n[   3.4501948] boot device: sd0\n[   3.5125145] root on sd0a dumps on sd0b\n[   3.5932929] kern.module.path=/stand/sgimips/11.99.9/modules\n[   4.8789103] entropy: best effort\n[ 1691.0053323] syncing disks... done\n[ 1691.0901818] unmounting file systems...\n[ 1691.1595899] unmounted /dev/cd0a on /cdrom type cd9660\n[ 1691.1595899] unmounted ptyfs on /dev/pts type ptyfs\n[ 1691.1595899] unmounted procfs on /proc type procfs\n[ 1691.1595899] unmounted kernfs on /kern type kernfs\n[ 1692.0786920] unmounted /dev/sd0a on / type ffs\n[ 1692.0786920] unmounting done\n[ 1692.1431893] halting...\n\n",
+  "clean_shutdown": true,
+  "base_unchanged": true,
+  "run_directory": ".work/file-manager-edges/qualified-fmvw2aai",
+  "retained_screenshots": {
+    "xiritest-collision-cancel-dismissed.png": "docs/results/images/2026-11-14-controls-xiritest-collision-cancel-dismissed.png",
+    "xiritest-collision-overwrite-dismissed.png": "docs/results/images/2026-11-14-controls-xiritest-collision-overwrite-dismissed.png",
+    "xiritest-directory-moved.png": "docs/results/images/2026-11-14-controls-xiritest-directory-moved.png",
+    "xiritest2-directory-moved.png": "docs/results/images/2026-11-14-controls-xiritest2-directory-moved.png"
+  }
+}

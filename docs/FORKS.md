@@ -42,6 +42,20 @@ not repin qualified kernels, emulator binaries, runtime resources or guest disks
 
 ## IRIS upstream updates
 
+The November 14 desktop-controls cycle integrates five more upstream commits
+through `49210388ed5559667d7859dd46103b42b07d3fed` as
+`55848d5383a5176f7292d77d06150bd174f8a426`, pushed on IRIS `xiri`.
+The shared GPU flat-fill path now applies the fork's physical RGB24 write-mask
+conversion, matching the CPU and JIT renderers. The existing comparison caught
+this mismatch before the correction. Validation passes 126 default Newport,
+226 feature-enabled Newport, both five-test display suites, ten resident GPU
+and six direct scanout tests on hardware Vulkan, and both CLI builds. The
+[integration ledger](results/2026-11-14-desktop-controls-upstream.json) records
+the initial failure and passing checks. The resident GPU path remains an
+upstream test-only development path; the manual image keeps its qualified
+`819c682` emulator. Compact binaries and logs are retained; the completed
+1.60 GiB build cache was removed.
+
 The November 14 File Manager follow-up integrates 11 upstream commits through
 `1c9d16adcf9748430e214bda5d7f7fe6aef40e85` as
 `823249bc3eaf88da7a70e2c00d8e83ed69208a49`, pushed on IRIS `xiri`.

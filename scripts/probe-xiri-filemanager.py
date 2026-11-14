@@ -2,6 +2,7 @@
 """Exercise cross-filesystem File Manager moves and failures on a fresh CHD."""
 import hashlib
 import importlib.util
+import json
 from pathlib import Path
 import shlex
 
@@ -50,11 +51,31 @@ class Suite(documents.Suite):
         self.ui(self.source, 'drag', 2, 100, 125, 1000, 350)
         self.settle()
 
-    def dialog(self, label, key):
+    def dialog(self, label, action):
         self.g.wait_for('xwininfo -root -tree | grep \'"File Manager Information"\' >/dev/null', 30)
+        client = self.dialog_state(label+'-posted', visible=True)
         self.capture(self.user+'-'+label)
-        self.ui('File Manager Information', 'key', key)
+        # The original popup's buttons are anchored to its lower right.
+        # Escape/Return can leave this reusable popup mapped: unchanged files
+        # alone never proved that Cancel was actually selected.
+        right = {'cancel': 164, 'overwrite': 266, 'ok': 112}[action]
+        assert client['width'] > right and client['height'] >= 100, client
+        self.ui('File Manager Information', 'click', 1,
+                client['width']-right, client['height']-36)
         self.settle()
+        self.dialog_state(label+'-dismissed', visible=False)
+        self.capture(self.user+'-'+label+'-dismissed')
+
+    def dialog_state(self, label, *, visible=False):
+        # Xt keeps an unmapped popup for reuse. Its name in xwininfo's tree
+        # alone does not mean a dialog is still on the screen.
+        state = json.loads(self.read('/tmp/windows list'))
+        dialogs = [w for w in state['windows']
+                   if w['name'] == 'File Manager Information']
+        self.r.setdefault('dialogs', {})[self.user+'-'+label] = dialogs
+        mapped = [w for w in dialogs if w['client']['map'] == 2]
+        assert len(mapped) == int(visible), (label, dialogs)
+        return mapped[0]['client'] if mapped else None
 
     def windows(self):
         self.source = 'xiri-indy:'+self.src
@@ -96,10 +117,10 @@ class Suite(documents.Suite):
             self.checkpoint(self.user+'-collision')
             replacement = 'Replacement for '+self.user+'\n'
             self.file(self.src+'/moved file.txt', replacement, 0o600)
-            self.settle(); self.move(); self.dialog('collision-cancel', 'Escape')
+            self.settle(); self.move(); self.dialog('collision-cancel', 'cancel')
             self.verify(self.src+'/moved file.txt', replacement, 0o600)
             self.verify(self.dst+'/moved file.txt', payload)
-            self.move(); self.dialog('collision-overwrite', 'Return')
+            self.move(); self.dialog('collision-overwrite', 'overwrite')
             self.checked('test ! -e '+shlex.quote(self.src+'/moved file.txt'))
             self.verify(self.dst+'/moved file.txt', replacement, 0o600)
             self.native('rm '+shlex.quote(self.dst+'/moved file.txt'))
@@ -116,6 +137,7 @@ class Suite(documents.Suite):
             metadata = self.read("stat -f '%u|%g|%Lp|%m' "+self.dst+'/folder').strip()
             assert metadata == f'{self.uid}|{self.uid}|750|946684812', metadata
             self.r.setdefault('directories', {})[self.user] = metadata
+            self.dialog_state('directory-moved')
             self.capture(self.user+'-directory-moved')
             self.native('rm '+self.dst+'/folder/link '+self.dst+'/folder/child.txt; rmdir '+self.dst+'/folder')
 
@@ -123,7 +145,7 @@ class Suite(documents.Suite):
             denied = 'Permission failure preserves this payload.\n'
             self.file(self.src+'/denied.txt', denied, 0o600)
             self.native('chmod 500 '+self.dst)
-            self.settle(); self.move(); self.dialog('permission-denied', 'Return')
+            self.settle(); self.move(); self.dialog('permission-denied', 'ok')
             self.verify(self.src+'/denied.txt', denied, 0o600)
             self.checked('test ! -e '+self.dst+'/denied.txt')
             self.native('chmod 700 '+self.dst)
@@ -137,7 +159,7 @@ class Suite(documents.Suite):
             self.type('/emul/irix/usr/sbin/fm /cdrom >"$XIRI_SESSION_DIR/edges-readonly.log" 2>&1 &')
             self.g.wait_for('xwininfo -root -tree | grep \'"xiri-indy:/cdrom"\' >/dev/null', 60)
             self.ui('xiri-indy:/cdrom', 'place', 640, 120, 550, 480)
-            self.settle(); self.move(); self.dialog('readonly-filesystem', 'Return')
+            self.settle(); self.move(); self.dialog('readonly-filesystem', 'ok')
             self.verify(self.src+'/readonly.txt', denied, 0o600)
             self.checked('test ! -e /cdrom/readonly.txt')
             self.logout(self.user+'-complete')
@@ -146,4 +168,5 @@ class Suite(documents.Suite):
 
 
 if __name__ == '__main__':
-    documents.main(Suite, 'file-manager-edges')
+    documents.main(Suite, 'file-manager-edges',
+                   extra_sources=[('lab/irix-desks/windows.c', 'windows.c')])

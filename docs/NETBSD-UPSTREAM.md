@@ -24,7 +24,10 @@ The audit compares NetBSD `xiri` at
 reference was refreshed to `df656f186a9c7c00fe9a9aa8b3f7325871fd008b`.
 The accompanying [audit ledger](results/2026-11-14-netbsd-upstream-audit.json)
 lists the changed paths. This cycle's additional `symlink`/`utimets` work is
-inside `sys/compat/irix_o32/irix_o32.c`; it adds no core interface.
+inside `sys/compat/irix_o32/irix_o32.c`; it adds no core interface. The subsequent
+Keyboard-panel work also stays in this file: n32 executable data on a 4 KiB
+boundary uses NetBSD's existing `vmcmd_map_readvn` implementation. It adds no
+change to the native ELF loader or to the core dependencies listed below.
 
 There are 176 changed paths in the committed fork delta, dominated by the
 separate XFS work. Among the core files discussed below, newer upstream

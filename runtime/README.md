@@ -261,6 +261,17 @@ preference file.
 Startup accepts a published solid-background description as well as a
 backdrop pixmap; solid fills do not create a pixmap.
 
+Inside the user's supervised process group, `desktop-clients.sh` also replays
+`$HOME/.desktop-$(hostname)/panelsession` after the initial X server defaults.
+The original Mouse, Screen Saver and Keyboard panels save commands there.
+The session copy translates leading `/usr/bin/X11/xset` and `xmodmap` commands
+to NetBSD's `/usr/X11R7/bin` paths. It omits the Keyboard panel's unsupported
+SGI `xset -art ... -ari ...` timing line; Xorg retains its native repeat timing.
+The original user file is unchanged. Output and errors are retained as
+`panelsession.out` and `panelsession.err` in that session's log directory.
+This restores pointer acceleration, standard screen blanking and the repeat
+toggle across xdm resets; animated savers and SGI timing controls are separate.
+
 The installer exposes `schemebr -> colorscheme` inside the imported
 `/emul/irix/usr/sbin` directory when the canonical name is absent. Toolchest
 uses `schemebr`; Icon Catalog uses `colorscheme`. Both run the same imported

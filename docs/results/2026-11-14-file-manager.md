@@ -114,6 +114,12 @@ image reflects window lifecycle or repaint/scanout has not been diagnosed.
 This is a remaining visual issue; the qualification covers the listed file
 operations and does not claim perfect dialog redraw.
 
+Follow-up: the [desktop-controls investigation](2026-11-14-desktop-controls.md)
+identifies a still-mapped collision dialog. Escape had not dismissed it, so
+the earlier source-preservation check overstated the Cancel gesture. The
+revised probe clicks **Cancel**/**Overwrite** and checks actual window mapping
+before continuing. The screenshot did not establish a Newport redraw fault.
+
 These checks cover small local files and directories. Remote filesystems,
 full-disk failures, immutable flags, concurrent pathname replacement, richer
 metadata and wider file types remain unqualified. Existing Dumpster and

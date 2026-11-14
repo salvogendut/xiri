@@ -81,7 +81,10 @@ file-change notifications in a fresh image under both users.
 Move a disposable file between views on different local filesystems. The
 tested fallback copies the data and metadata before removing the source.
 When the destination already contains the same name, **Cancel** leaves both
-files intact; **Overwrite** replaces the destination. If destination
+files intact; **Overwrite** replaces the destination. Click the dialog's
+buttons: Escape did not dismiss the collision dialog in our measured run.
+A dialog is closed only when it is no longer mapped; an unchanged source
+file alone does not establish cancellation. If destination
 permissions prevent the move, dismiss the error, correct the permissions
 and retry without restarting File Manager. A read-only destination also
 leaves the source intact in the tested sequence.
@@ -101,8 +104,10 @@ is retained without following a final symlink during removal.
 The bounded checks cover small local files and directories, including FFS
 to tmpfs. Remote filesystems, full-disk failures, immutable flags, richer
 metadata and concurrent pathname changes need separate qualification.
-A retained dialog image appears in a post-move screenshot; its redraw or
-window-lifecycle cause remains unqualified. See the November 14 report.
+The [dialog follow-up](results/2026-11-14-desktop-controls.md) identifies the
+earlier retained image as a still-mapped collision dialog. Mouse-button
+cancellation and overwrite pass with mapping checks under both users.
+The earlier screenshot alone did not establish a redraw fault.
 The timestamp adapter rejects noncanonical nanoseconds and seconds equal
 to -1 with EINVAL; IRIX accepts those values, while native vnode attributes
 reserve them. Ordinary tested timestamps are preserved.

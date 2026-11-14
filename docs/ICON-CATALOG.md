@@ -1,6 +1,7 @@
 # Icon Catalog application checklist
 
-Updated 2026-11-05 after the [startup survey](results/2026-11-03-irix-catalog.md)
+Updated 2026-11-14 after the [desktop-controls cycle](results/2026-11-14-desktop-controls.md),
+the [startup survey](results/2026-11-03-irix-catalog.md)
 and the [GNOME](results/2026-11-04-irix-gnome.md),
 [terminal](results/2026-11-04-irix-terminal.md),
 [preference](results/2026-11-04-irix-preferences.md) and
@@ -137,20 +138,23 @@ retained; untested behavior is not promoted to a pass.
 
 ## ControlPanels (18)
 
+The November 14 panel checks launch the original programs from winterm;
+they do not repeat every Catalog double-click route.
+
 | Entry | Original target | Observed result / next check |
 | --- | --- | --- |
 | `accessibility` | `/usr/sbin/accessx` | **Error dialog.** Cannot save the active AccessX profile; xmodmap helper is also absent. |
 | `audiopanel` | `/usr/sbin/audiopanel` | **Error dialog.** Reports that this machine has no audio driver. |
 | `background` | `/usr/sbin/background` | **Apply and persistence pass.** Reef/Sand patterns and separate Solid colours survive logout/login and reboot for two users. SGI names resolve, and the original picker uses its X11 controls. GL mode remains unsupported. [Patterns](results/2026-11-06-desktop-preferences.md), [colours](results/2026-11-06-desktop-colours.md). |
 | `colorscheme` | `/usr/sbin/colorscheme` | **Apply and persistence pass.** Inverness and KeyWest remain distinct for two users across logout/login and reboot. [Desktop preferences](results/2026-11-06-desktop-preferences.md). |
-| `desktop` | `/usr/sbin/desktop` | **Main window opens.** Desktop Settings renders its controls; changing settings and persistence are untested. |
+| `desktop` | `/usr/sbin/desktop` | **Grid resource and persistence pass.** Separate users retain the chosen grid resource after login. Full desktop-icon snap gestures remain separate. [Desktop controls](results/2026-11-14-desktop-controls.md). |
 | `display` | `/usr/bin/X11/xsetmon` | **Error dialog.** Reports that the X display lacks the XSGIvc extension required by xsetmon. |
-| `iconviews` | `/usr/sbin/fmprefs` | **Window observed.** Default Layout for Icon Views. Use and normal exit remain untested. |
-| `keyboard` | `/usr/sbin/keyboard` | **Exits 126 without a window.** xiri-catalog: /usr/sbin/keyboard: cannot execute |
+| `iconviews` | `/usr/sbin/fmprefs` | **Hidden-file defaults and persistence pass.** Fresh folder views and reopened panels reflect separate users’ saved choices after login. [Desktop controls](results/2026-11-14-desktop-controls.md). |
+| `keyboard` | `/usr/sbin/keyboard` | **Key Repeat and persistence pass.** The original panel now opens; its repeat toggle changes native X state and survives login. Speed/Delay remain disabled without XSGI-Misc. [Desktop controls](results/2026-11-14-desktop-controls.md). |
 | `language` | `/usr/sbin/language` | **Exits 1 without a window.** Error:            Can't get default (en) or fallback (en) dictionaries No dictionary loaded.  Messages may be very strange Fatal Error:      Couldn't load config files Exiting |
 | `monpanel` | `/usr/sbin/monpanel` | **Error dialog.** Reports that Monpanel requires a machine with the flat panel adapter. |
-| `mouse` | `/usr/sbin/mouse` | **Window observed.** Mouse Settings. Use and normal exit remain untested. |
-| `screensaver` | `/usr/sbin/screensaver` | **Window observed.** Screen Saver. Use and normal exit remain untested. |
+| `mouse` | `/usr/sbin/mouse` | **Acceleration presets and persistence pass.** Fast 1 and Slow 2 retain different native X pointer values across user logins. Handedness/click-speed remain separate. [Desktop controls](results/2026-11-14-desktop-controls.md). |
+| `screensaver` | `/usr/sbin/screensaver` | **Blanking setting and persistence pass.** Separate users retain 600 seconds or off in the native X server. Animated savers and DPMS remain separate. [Desktop controls](results/2026-11-14-desktop-controls.md). |
 | `sounds` | `/usr/sbin/dtSounds` | **Window observed.** dtSounds. Use and normal exit remain untested. |
 | `syserrpanel` | `/usr/sbin/syserrpanel` | **Exits 1 without a window.** cannot read config file: /usr/lib/sysmon/notifier.config |
 | `utilities` | `/usr/sbin/dtUtilities` | **Window observed.** Default Viewer & Editor Utilities. Use and normal exit remain untested. |

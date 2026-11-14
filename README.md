@@ -12,7 +12,7 @@ desktop icons, catalog launches and running-icon feedback. Native NetBSD Xorg dr
 1280×1024 accelerated Newport display. It retains the xmahjongg texture
 correction qualified by the earlier [rendering and interaction checks](docs/results/2026-11-03-newport-xmahjongg.md).
 
-The [current manual CHD](docs/results/2026-11-14-file-manager.md#manual-image) boots into native
+The [current manual CHD](docs/results/2026-11-14-desktop-controls.md#manual-image) boots into native
 NetBSD xdm. Use **xiritest** / **xiritest** or **xiritest2** / **xiritest2** for
 separate IRIX desktops, or **netbsdtest** / **netbsdtest** for standard NetBSD ctwm.
 `netbsdtest` belongs to `wheel` and can run `su -` for a root login shell;
@@ -24,8 +24,9 @@ remain private to that user. The
 [per-user desktop setup guide](docs/IRIX-SOFTWARE.md#selecting-the-irix-desktop-for-a-user)
 explains how any normal account selects the IRIX desktop and how to add users.
 The [desktop preferences guide](docs/IRIX-SOFTWARE.md#desktop-preferences)
-describes the original Background, Color Schemes and Windows panels and where
-each user keeps their settings. Backdrops, colour schemes, focus and window
+describes the original Background, Color Schemes, Windows, Desktop, Icon Views,
+Keyboard, Mouse and Screen Saver panels and where each user keeps their settings.
+Backdrops, colour schemes, focus and window
 movement now persist across login and reboot. The [Solid colour picker](docs/results/2026-11-06-desktop-colours.md)
 uses its original X11 controls, and SGI colour names resolve through a private
 session database. The [saved-session guide](docs/IRIX-SOFTWARE.md#saved-desktop-sessions)
@@ -35,13 +36,20 @@ The [window and desk guide](docs/IRIX-WINDOWS.md) covers original window
 controls, click-to-focus keyboard navigation and **Desktop → Extra Desks**.
 The [windows/desks checks](docs/results/2026-11-13-desks.md) pass separate users,
 saved geometry and active-desktop reboot on the new CHD.
+The [desktop controls follow-up](docs/results/2026-11-14-desktop-controls.md)
+adds desk rename/copy/delete and preference restoration through the original
+panels. Keyboard's repeat toggle works; its SGI-specific timing sliders remain
+disabled. Icon Views' hidden-file defaults are checked with fresh folders under
+both users.
 The [File Manager cycle](docs/results/2026-11-13-file-manager.md) adds local
 create, rename, copy, move, discard, recovery and emptying under both users.
 That module passed 720 paired filesystem checks against IRIX. The
 [filesystem follow-up](docs/results/2026-11-14-file-manager.md) adds symlink
 and timestamp support, with 328 further ABI checks and a fresh two-user
 GUI run covering cross-filesystem moves, collisions and permission failures. The
-[File Manager and Dumpster guide](docs/IRIX-FILEMANAGER.md) explains the
+[dialog investigation](docs/results/2026-11-14-desktop-controls.md) confirms that
+Escape left a real collision popup open; clicking Cancel/Overwrite dismisses it.
+The [File Manager and Dumpster guide](docs/IRIX-FILEMANAGER.md) explains the
 original actions, hostname setup and per-user storage.
 The [clipboard guide](docs/IRIX-CLIPBOARD.md) explains mouse-selection paste
 between native and IRIX terminals, gedit Copy/Paste, native xterm's CLIPBOARD

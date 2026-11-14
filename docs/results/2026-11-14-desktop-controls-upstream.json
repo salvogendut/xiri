@@ -1,0 +1,79 @@
+{
+  "date": "2026-11-14T09:27:00.206672+00:00",
+  "base": "823249bc3eaf88da7a70e2c00d8e83ed69208a49",
+  "upstream": "49210388ed5559667d7859dd46103b42b07d3fed",
+  "commits": [
+    "49210388 docs: describe merged M2 slice in plan",
+    "f59b860c ng1: preserve resident DID history across scanouts",
+    "4bc45cfb docs: record small-state Newport scanout",
+    "cbfcbaa1 ng1: expand resident DID state on GPU",
+    "dd17dadf docs: plan Newport GPU upstream integration"
+  ],
+  "integration": "clean merge plus RGB24 mask normalization in shared flat fills",
+  "schema": 1,
+  "status": "passed",
+  "merge": "55848d5383a5176f7292d77d06150bd174f8a426",
+  "branch": "xiri",
+  "validation": {
+    "default_newport": 126,
+    "default_display": 5,
+    "feature_newport": 226,
+    "feature_display": 5,
+    "vulkan_resident": 10,
+    "vulkan_scanout": 6,
+    "cli_build": true,
+    "hardware": "AMD Radeon 780M (RADV PHOENIX), Mesa 26.1.5"
+  },
+  "notes": [
+    "Initial feature suite detected a partial-mask mismatch with our CPU renderer. Shared GPU flat fills now decode physical RGB24 WRMASK to packed BGR, preserving the fork correction. The existing CPU/JIT comparison and all hardware tests pass afterward.",
+    "The selected desktop CHD retains its independently qualified 819c682 emulator.",
+    "Resident GPU path remains an upstream test-only development path; these checks do not enable it in the desktop image."
+  ],
+  "logs": {
+    "upstream-build.log": {
+      "path": ".work/desktop-controls/upstream-build.log",
+      "sha256": "414b84dbc2838104dc9838766dc58f2ecc7e5aa4a254ec9c1fc5d9cca4159d2b"
+    },
+    "upstream-check.log": {
+      "path": ".work/desktop-controls/upstream-check.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "upstream-continue.log": {
+      "path": ".work/desktop-controls/upstream-continue.log",
+      "sha256": "b8d8b2c0871d9ec4b3f30581d55bcd5ab2ccd32c9b69aac766cf160353eedf56"
+    },
+    "upstream-default-display.log": {
+      "path": ".work/desktop-controls/upstream-default-display.log",
+      "sha256": "3d0ad0f6e63e7cae677ffbd30f9136d258518873b06f21bbe2a98c9b07e0246a"
+    },
+    "upstream-default-ng1.log": {
+      "path": ".work/desktop-controls/upstream-default-ng1.log",
+      "sha256": "3f108c51c9a8f484269b6fea743220d9bebc1c332d1c0e2d3152abc0f9831e95"
+    },
+    "upstream-direct-gpu.log": {
+      "path": ".work/desktop-controls/upstream-direct-gpu.log",
+      "sha256": "6cd89779d51ae7d775a932fbb6b90674f6f26ff10bb3f466bfc9ff042acfc914"
+    },
+    "upstream-feature-display.log": {
+      "path": ".work/desktop-controls/upstream-feature-display.log",
+      "sha256": "9d4d2eab53168d42833db4daa710bf6d0affd77f0b378f8fc9ce20b92469f127"
+    },
+    "upstream-feature-ng1-fixed.log": {
+      "path": ".work/desktop-controls/upstream-feature-ng1-fixed.log",
+      "sha256": "bdc023a8b4a0e1ce8a9950732d6ba765edaacbaa57548d59d216b2f7548d996d"
+    },
+    "upstream-feature-ng1.log": {
+      "path": ".work/desktop-controls/upstream-feature-ng1.log",
+      "sha256": "c979f2e239177b41e160a0f787ef63e4bf68f9c9801154e94fb4e024791d37a2"
+    },
+    "upstream-resident-gpu.log": {
+      "path": ".work/desktop-controls/upstream-resident-gpu.log",
+      "sha256": "b6d59b844d91b4c7fb0ba3afc741ca55433eba10634a5edb815d355de1f2c49f"
+    }
+  },
+  "binaries": {
+    "iris": "9a5c66710b516228be79b4e78f2d95e01df88624a5da0d45faafd167f743b93a",
+    "iris-ci": "14cc444d6558a910992b837c3700d076a9c90a12572c2116afbaa9251ac635c2"
+  },
+  "pushed": true
+}

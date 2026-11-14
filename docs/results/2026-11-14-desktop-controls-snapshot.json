@@ -1,0 +1,23 @@
+{
+  "run": ".work/desktop-controls-cold/qualified-81nbh8bv",
+  "status": "test-snapshot-corrected",
+  "probe_sha256": "1a17bf8a4595ab205b79a0a9d798e9044edf855938971d1c7f94bb1035de5a6c",
+  "clean_shutdown": true,
+  "base_unchanged": true,
+  "settings": {
+    "repeat": "off",
+    "pointer": [
+      7,
+      1,
+      6
+    ],
+    "saver": [
+      600,
+      600
+    ]
+  },
+  "differences": {
+    "/usr/people/xiritest/.Sgiresources": "--- \n+++ \n@@ -1,4 +1,7 @@\n-4DWm*curNewBackground:\t1\n 4DWm*Desk 1.backgroundDescription:\t-bitmap /usr/include/X11/bitmaps/granite -bg #868686 -fg #69b5b5 \n *snapToGrid:\tFalse\n ScreenSaver*lastScreenSaverTimeout:\t600\n+4DWm*Work.backgroundDescription:\t-bitmap /usr/include/X11/bitmaps/granite -bg #c9c9c9 -fg #dc9e9e \n+Overview*Work*position:\t-1\n+4DWm*curNewBackground:\t3\n+4DWm*Copy Desk Work 1.backgroundDescription:\t-bitmap /usr/include/X11/bitmaps/granite -bg #9edc9e -fg #9e9edc \n"
+  },
+  "correction": "Take the saved profile snapshot after creating/copying desks and normal logout; those actions add background resources."
+}

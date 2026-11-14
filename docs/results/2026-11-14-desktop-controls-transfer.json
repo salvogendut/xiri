@@ -1,0 +1,242 @@
+{
+  "schema": 1,
+  "status": "error",
+  "bundle": ".work/images/xiri-netbsd-desktop-20261114-controls",
+  "base_chd_sha256": "61f9b9883303470b68877083547d203bf3b177fe4ccb93136096ee9ed770611d",
+  "module_sha256": "ad6ec8756c835bec4395c62428550a0d2877ec6c587b1ca1d793254798f6d8ea",
+  "emulator_sha256": "3dd9299d71f1899ff5a8c9b76f6a24752d19e4f9a0bcfe0edf3a29001dc9c49e",
+  "probe_sha256": "e822a8ab9625fe0d03262dbedc571a8c9d7f74c322b88a647e82ae0787ba7ec2",
+  "shared_probe_sha256": "97c1ff82426706822b1df67afe55fd56ed2892f3043c30762de5214b58138a56",
+  "media_inputs": {
+    "clip-selection.c": "05629a4f20f1dd384c12dfe9f4e8eff1c6b37725ecabe7c2a49f2070c07c1621",
+    "doc-input.c": "64d401ac1bcfb063bd2f78d9a84bbd57f94860d6bf08b060dd04f661d3066ce3",
+    "type.c": "61ce22cbda6c66ccaf53cbcffab5f3080be95004bcd3e5c6893dc54a8a9db838",
+    "windows.c": "a2f1e7bce2f2faa43b19db9c1c40a63e816f182541362c05689c9e7671d854f6"
+  },
+  "loaded_module": "compat_irix_o32            exec     filesys  -        0       - exec_elf32,compat_netbsd32\nSHA256 (/stand/sgimips/11.99.9/modules/compat_irix_o32/compat_irix_o32.kmod) = ad6ec8756c835bec4395c62428550a0d2877ec6c587b1ca1d793254798f6d8ea\n",
+  "saved_profile_input": {
+    "path": "/var/home/salvogendut/Dev/xiri/.work/desktop-controls-cold/qualified-wtt7gbg3/checkpoint-before-resume.json",
+    "sha256": "cec63e821ae1f8bd85b6ed3902db6d3e22d10476b263d986c86976e791b44255",
+    "setup": "Replay exact files saved by original panels in the recorded GUI run; panel interaction is qualified separately."
+  },
+  "checkpoint": "xiritest-restored-desk",
+  "identities": {
+    "xiritest": "SESSION user=xiritest uid=1234 groups=1234 1235 home=/usr/people/xiritest cwd=/usr/people/xiritest display=127.0.0.1:0 authority=/tmp/.Xauthb2us7J\n"
+  },
+  "settings": {
+    "xiritest-restored": {
+      "values": {
+        "repeat": "off",
+        "pointer": [
+          7,
+          1,
+          6
+        ],
+        "saver": [
+          600,
+          600
+        ]
+      },
+      "query": "Keyboard Control:\n  auto repeat:  off    key click percent:  0    LED mask:  00000000\n  XKB indicators:\n    00: Caps Lock:   off    01: Num Lock:    off    02: Scroll Lock: off\n    03: Shift Lock:  off    04: Group 2:     off    05: Mouse Keys:  off\n  auto repeat delay:  660    repeat rate:  25\n  auto repeating keys:  00feffffdffffbbf\n                        fadfffffffdfe5ef\n                        ffffffffffffffff\n                        ffffffffffffffff\n  bell percent:  50    bell pitch:  400    bell duration:  100\nPointer Control:\n  acceleration:  7/1    threshold:  6\nScreen Saver:\n  prefer blanking:  yes    allow exposures:  yes\n  timeout:  600    cycle:  600\nColors:\n  default colormap:  0x20    BlackPixel:  0x0    WhitePixel:  0xfefefe\nFont Path:\n  /usr/local/share/xiri/fonts,/usr/X11R7/lib/X11/fonts/misc/,/usr/X11R7/lib/X11/fonts/TTF/,/usr/X11R7/lib/X11/fonts/Type1/,/usr/X11R7/lib/X11/fonts/75dpi/,/usr/X11R7/lib/X11/fonts/100dpi/,built-ins\nDPMS (Display Power Management Signaling):\n  Display is not capable of DPMS\n"
+    }
+  },
+  "states": {
+    "xiritest-restored-desk": {
+      "root": 846,
+      "focus": 1,
+      "windows": [
+        {
+          "id": 12582921,
+          "frame": 8388716,
+          "stack": 18,
+          "state": 1,
+          "icon": 8388727,
+          "name": "xclock",
+          "instance": "xclock",
+          "class": "XClock",
+          "client": {
+            "x": 770,
+            "y": 332,
+            "width": 180,
+            "height": 180,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 762,
+            "y": 300,
+            "width": 196,
+            "height": 220,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 16777221,
+          "frame": 8388728,
+          "stack": 25,
+          "state": 3,
+          "icon": 8388739,
+          "name": "winterm",
+          "instance": "winterm",
+          "class": "XWsh",
+          "client": {
+            "x": 10,
+            "y": 180,
+            "width": 903,
+            "height": 480,
+            "map": 0
+          },
+          "frame_geometry": {
+            "x": 2,
+            "y": 148,
+            "width": 919,
+            "height": 520,
+            "map": 0
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 20971537,
+          "frame": 8388740,
+          "stack": 28,
+          "state": 3,
+          "icon": 8388751,
+          "name": "xconsole",
+          "instance": "xconsole",
+          "class": "XConsole",
+          "client": {
+            "x": 792,
+            "y": 886,
+            "width": 480,
+            "height": 130,
+            "map": 0
+          },
+          "frame_geometry": {
+            "x": 784,
+            "y": 854,
+            "width": 496,
+            "height": 170,
+            "map": 0
+          },
+          "icon_geometry": {
+            "x": 10,
+            "y": 10,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 14680108,
+          "frame": 8388752,
+          "stack": 29,
+          "state": 1,
+          "icon": 0,
+          "name": "Toolchest",
+          "instance": "toolchest",
+          "class": "Toolchest",
+          "client": {
+            "x": 10,
+            "y": 26,
+            "width": 103,
+            "height": 158,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 9,
+            "y": 0,
+            "width": 105,
+            "height": 185,
+            "map": 2
+          },
+          "icon_geometry": null
+        },
+        {
+          "id": 18874445,
+          "frame": 8388755,
+          "stack": 39,
+          "state": 1,
+          "icon": 8388766,
+          "name": "Desks Overview",
+          "instance": "DesksOverview",
+          "class": "Overview",
+          "client": {
+            "x": 30,
+            "y": 550,
+            "width": 501,
+            "height": 430,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 22,
+            "y": 518,
+            "width": 517,
+            "height": 470,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 25165931,
+          "frame": 8388767,
+          "stack": 45,
+          "state": 3,
+          "icon": 8388778,
+          "name": "Icon Catalog",
+          "instance": "IconCatalog",
+          "class": "IconCatalog",
+          "client": {
+            "x": 372,
+            "y": 450,
+            "width": 900,
+            "height": 500,
+            "map": 0
+          },
+          "frame_geometry": {
+            "x": 364,
+            "y": 418,
+            "width": 916,
+            "height": 540,
+            "map": 0
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        }
+      ]
+    }
+  },
+  "restored_resources": {
+    "xiritest-restored": "*snapToGrid:\tFalse\n4DWm*Copy Desk Work 1.backgroundDescription:\t-bitmap /usr/include/X11/bitmaps/granite -bg #9edc9e -fg #9e9edc \n4DWm*Desk 1.backgroundDescription:\t-bitmap /usr/include/X11/bitmaps/granite -bg #868686 -fg #69b5b5 \n4DWm*Work.backgroundDescription:\t-bitmap /usr/include/X11/bitmaps/granite -bg #c9c9c9 -fg #dc9e9e \n4DWm*curNewBackground:\t3\nBackground*useGl:\tFalse\nOverview*Work*position:\t-1\nScreenSaver*lastScreenSaverTimeout:\t600\nXWsh*font:\t-adobe-courier-bold-r-normal--20-140-100-100-m-110-iso8859-1\nwinterm*font:\t-adobe-courier-bold-r-normal--20-140-100-100-m-110-iso8859-1\n"
+  },
+  "error": "AssertionError(\"/usr/X11R7/bin/xset:  unknown option SAVER_DELAY:0.0\\n\\nusage:  /usr/X11R7/bin/xset [-display host:dpy] option ...\\n    To turn bell off:\\n\\t-b                b off               b 0\\n    To set bell volume, pitch and duration:\\n\\t b [vol [pitch [dur]]]          b on\\n    To disable bug compatibility mode:\\n\\t-bc\\n    To enable bug compatibility mode:\\n\\tbc\\n    To turn keyclick off:\\n\\t-c                c off               c 0\\n    To set keyclick volume:\\n\\t c [0-100]        c on\\n    To control Display Power Management Signaling (DPMS) features:\\n\\t-dpms      DPMS features off\\n\\t+dpms      DPMS features on\\n\\t dpms [standby [suspend [off]]]     \\n\\t      force standby \\n\\t      force suspend \\n\\t      force off \\n\\t      force on \\n\\t      (also implicitly enables DPMS features) \\n\\t      a timeout value of zero disables the mode \\n    To set the font path:\\n\\t fp= path[,path...]\\n    To restore the default font path:\\n\\t fp default\\n    To have the server reread font databases:\\n\\t fp rehash\\n    To remove elements from font path:\\n\\t-fp path[,path...]  fp- path[,path...]\\n    To prepend or append elements to font path:\\n\\t+fp path[,path...]  fp+ path[,path...]\\n    To set LED states off or on:\\n\\t-led [1-32]         led off\\n\\t led [1-32]         led on\\n\\t-led named 'name'   led off\\n\\t led named 'name'   led on\\n    To set mouse acceleration and threshold:\\n\\t m [acc_mult[/acc_div] [thr]]    m default\\n    To set pixel colors:\\n\\t p pixel_value color_name\\n    To turn auto-repeat off or on:\\n\\t-r [keycode]        r off\\n\\t r [keycode]        r on\\n\\t r rate [delay [rate]]\\n    For screen-saver control:\\n\\t s [timeout [cycle]]  s default    s on\\n\\t s blank              s noblank    s off\\n\\t s expose             s noexpose\\n\\t s activate           s reset\\n    For status information:  q\\n    To print version: -version\\n\")",
+  "screenshots": {
+    "failure.png": "24a775c99691088bf3531e84e3366c7f45dec50997298e2bfe66ba9f01a986e2"
+  },
+  "halt": "[   1.0000000] Copyright (c) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,\n[   1.0000000]     2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013,\n[   1.0000000]     2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023,\n[   1.0000000]     2024, 2025, 2026\n[   1.0000000]     The NetBSD Foundation, Inc.  All rights reserved.\n[   1.0000000] Copyright (c) 1982, 1986, 1989, 1991, 1993\n[   1.0000000]     The Regents of the University of California.  All rights reserved.\n\n[   1.0000000] NetBSD 11.99.9 (XIRI_IRIX_MODULE_20261103) #4: Thu Nov  5 12:34:13 UTC 2026\n[   1.0000000] \tsalvogendut@toolbx:/var/home/salvogendut/Dev/xiri/.work/netbsd-wait-accounting-build/obj/sys/arch/sgimips/compile/XIRI_IRIX_MODULE\n[   1.0000000] total memory = 255 MB\n[   1.0000000] (768 KB reserved for ARCS)\n[   1.0000000] avail memory = 244 MB\n[   1.0000000] timecounter: Timecounters tick every 10.000 msec\n[   1.0000000] mainbus0 (root): SGI-IP22 [SGI, 69123457], 1 processor\n[   1.0000000] cpu0 at mainbus0: MIPS R4400 CPU (0x440) Rev. 4.0 with MIPS R4010 FPC Rev. 0.0\n[   1.0000000] cpu0: 48 TLB entries, 1TB (40-bit) VAs, 4KB (12-bit) PAs, 16MB max page size\n[   1.0000000] cpu0: 16KB/16B direct-mapped L1 instruction cache\n[   1.0000000] cpu0: 16KB/16B direct-mapped write-back L1 data cache\n[   1.0000000] cpu0: 1024KB/128B direct-mapped write-back L2 unified cache\n[   1.0000000] int0 at mainbus0 addr 0x1fbd9880\n[   1.0000000] int0: bus 33MHz, CPU 66MHz\n[   1.0000000] imc0 at mainbus0 addr 0x1fa00000: revision 3\n[   1.0000000] gio0 at imc0\n[   1.0000000] newport0 at gio0: SGI NG1 (board revision 0, cmap revision 2, xmap revision 3, vc2 revision 0), depth 24, monitor ID 10 (1280x1024 60Hz)\n[   1.0000000] newport0: 13W3 Monitor ID 10, PROM ID -1, determined monitor ID 10 (1280x1024 60Hz)\n[   1.0000000] wsdisplay0 at newport0 kbdmux 1: console (default, vt100 emulation)\n[   1.0000000] wsmux1: connecting to wsdisplay0\n[   1.0000000] hpc0 at gio0: SGI HPC3 (onboard)\n[   1.0000000] zsc0 at hpc0 offset 0x59830\n[   1.0000000] zstty0 at zsc0 channel 1\n[   1.0000000] zstty1 at zsc0 channel 0\n[   1.0000000] pckbc0 at hpc0 offset 0x59840\n[   1.0000000] pckbd0 at pckbc0 (kbd slot)\n[   1.0000000] wskbd0 at pckbd0: console keyboard, using wsdisplay0\n[   1.0000000] pms0 at pckbc0 (aux slot)\n[   1.0000000] wsmouse0 at pms0 mux 0\n[   1.0000000] sq0 at hpc0 offset 0x54000: SGI Seeq 80c03\n[   1.0000000] sq0: Ethernet address 08:00:69:12:34:57\n[   1.0000000] wdsc0 at hpc0 offset 0x44000: WD33C93A (20.0 MHz clock, BURST DMA, SCSI ID 0)\n[   1.0000000] scsibus0 at wdsc0: 8 targets, 8 luns per target\n[   1.0000000] haltwo at hpc0 offset 0x58000 not configured\n[   1.0000000] pi1ppc0 at hpc0 offset 0x59800\n[   1.0000000] pi1ppc0: capabilities=0x8<PS2>\n[   1.0000000] ppbus0 at pi1ppc0\n[   1.0000000] ppbus0: No IEEE1284 device found.\n[   1.0000000] button0 at hpc0 offset 0x59850\n[   1.0000000] hpc1 at gio0: SGI HPC3 (IOPLUS mezzanine)\n[   1.0000000] hpc1: using EXP0's DMA channel\n[   1.0000000] sq at hpc1 offset 0x54000 not configured\n[   1.0000000] hpc2 at gio0: SGI HPC1.5 (GIO slot)\n[   1.0000000] dsclock0 at mainbus0 addr 0x1fbe0000\n[   1.0000000] ioc0 at mainbus0 addr 0x1fbd9800: rev 0, machine Indy (Guinness), board rev 0\n[   1.0000000] WARNING: system needs entropy for security; see entropy(7)\n[   1.0000000] timecounter: Timecounter \"mips3_cp0_counter\" frequency 33000000 Hz quality 100\n[   1.0000030] timecounter: Timecounter \"clockinterrupt\" frequency 100 Hz quality 0\n[   1.0000030] scsibus0: waiting 2 seconds for devices to settle...\n[   3.0602955] sd0 at scsibus0 target 1 lun 0: <SGI, IRIS EMUL DISK, 1.0> disk fixed\n[   3.1120791] sd0: 8192 MB, 16645 cyl, 16 head, 62 sec, 512 bytes/sect x 16777216 sectors\n[   3.2238514] sd0: async, 8-bit transfers\n[   3.2796252] cd0 at scsibus0 target 4 lun 0: <Sony, CDU-76S, 1.0> cdrom removable\n[   3.3401195] cd0: async, 8-bit transfers\n[   3.3949371] boot device: sd0\n[   3.4557433] root on sd0a dumps on sd0b\n[   3.5263277] kern.module.path=/stand/sgimips/11.99.9/modules\n[   4.6752343] entropy: best effort\n[ 506.0489050] syncing disks... done\n[ 506.1318290] unmounting file systems...\n[ 506.1893172] unmounted /dev/cd0a on /cdrom type cd9660\n[ 506.1893172] unmounted ptyfs on /dev/pts type ptyfs\n[ 506.1893172] unmounted procfs on /proc type procfs\n[ 506.1893172] unmounted kernfs on /kern type kernfs\n[ 506.9993552] unmounted /dev/sd0a on / type ffs\n[ 506.9993552] unmounting done\n[ 507.0555877] halting...\n\n",
+  "clean_shutdown": true,
+  "base_unchanged": true,
+  "scope": "Rejected test-fixture transfer: literal tabs were interpreted by the interactive serial shell. No image/runtime change."
+}

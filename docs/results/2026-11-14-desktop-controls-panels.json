@@ -1,0 +1,4385 @@
+{
+  "schema": 1,
+  "status": "partial-checks-recorded",
+  "bundle": ".work/images/xiri-netbsd-desktop-20261114-controls",
+  "base_chd_sha256": "61f9b9883303470b68877083547d203bf3b177fe4ccb93136096ee9ed770611d",
+  "module_sha256": "ad6ec8756c835bec4395c62428550a0d2877ec6c587b1ca1d793254798f6d8ea",
+  "emulator_sha256": "3dd9299d71f1899ff5a8c9b76f6a24752d19e4f9a0bcfe0edf3a29001dc9c49e",
+  "probe_sha256": "5512bedaf7c568d1a585b950540ca250bc7e15b0a68d5074de7fb6041177184f",
+  "shared_probe_sha256": "97c1ff82426706822b1df67afe55fd56ed2892f3043c30762de5214b58138a56",
+  "media_inputs": {
+    "clip-selection.c": "05629a4f20f1dd384c12dfe9f4e8eff1c6b37725ecabe7c2a49f2070c07c1621",
+    "doc-input.c": "64d401ac1bcfb063bd2f78d9a84bbd57f94860d6bf08b060dd04f661d3066ce3",
+    "type.c": "61ce22cbda6c66ccaf53cbcffab5f3080be95004bcd3e5c6893dc54a8a9db838",
+    "windows.c": "a2f1e7bce2f2faa43b19db9c1c40a63e816f182541362c05689c9e7671d854f6"
+  },
+  "loaded_module": "compat_irix_o32            exec     filesys  -        0       - exec_elf32,compat_netbsd32\nSHA256 (/stand/sgimips/11.99.9/modules/compat_irix_o32/compat_irix_o32.kmod) = ad6ec8756c835bec4395c62428550a0d2877ec6c587b1ca1d793254798f6d8ea\n",
+  "identities": {
+    "xiritest": "SESSION user=xiritest uid=1234 groups=1234 1235 home=/usr/people/xiritest cwd=/usr/people/xiritest display=127.0.0.1:0 authority=default\n",
+    "xiritest2": "SESSION user=xiritest2 uid=1237 groups=1237 1235 home=/usr/people/xiritest2 cwd=/usr/people/xiritest2 display=127.0.0.1:0 authority=default\n"
+  },
+  "settings": {
+    "xiritest-initial": {
+      "values": {
+        "repeat": "on",
+        "pointer": [
+          2,
+          1,
+          4
+        ],
+        "saver": [
+          0,
+          600
+        ]
+      },
+      "query": "Keyboard Control:\n  auto repeat:  on    key click percent:  0    LED mask:  00000000\n  XKB indicators:\n    00: Caps Lock:   off    01: Num Lock:    off    02: Scroll Lock: off\n    03: Shift Lock:  off    04: Group 2:     off    05: Mouse Keys:  off\n  auto repeat delay:  660    repeat rate:  25\n  auto repeating keys:  00feffffdffffbbf\n                        fadfffffffdfe5ef\n                        ffffffffffffffff\n                        ffffffffffffffff\n  bell percent:  50    bell pitch:  400    bell duration:  100\nPointer Control:\n  acceleration:  2/1    threshold:  4\nScreen Saver:\n  prefer blanking:  yes    allow exposures:  yes\n  timeout:  0    cycle:  600\nColors:\n  default colormap:  0x20    BlackPixel:  0x0    WhitePixel:  0xfefefe\nFont Path:\n  /usr/local/share/xiri/fonts,/usr/X11R7/lib/X11/fonts/misc/,/usr/X11R7/lib/X11/fonts/TTF/,/usr/X11R7/lib/X11/fonts/Type1/,/usr/X11R7/lib/X11/fonts/75dpi/,/usr/X11R7/lib/X11/fonts/100dpi/,built-ins\nDPMS (Display Power Management Signaling):\n  Display is not capable of DPMS\n"
+    },
+    "xiritest-changed": {
+      "values": {
+        "repeat": "off",
+        "pointer": [
+          7,
+          1,
+          6
+        ],
+        "saver": [
+          600,
+          600
+        ]
+      },
+      "query": "Keyboard Control:\n  auto repeat:  off    key click percent:  0    LED mask:  00000000\n  XKB indicators:\n    00: Caps Lock:   off    01: Num Lock:    off    02: Scroll Lock: off\n    03: Shift Lock:  off    04: Group 2:     off    05: Mouse Keys:  off\n  auto repeat delay:  660    repeat rate:  25\n  auto repeating keys:  00feffffdffffbbf\n                        fadfffffffdfe5ef\n                        ffffffffffffffff\n                        ffffffffffffffff\n  bell percent:  50    bell pitch:  400    bell duration:  100\nPointer Control:\n  acceleration:  7/1    threshold:  6\nScreen Saver:\n  prefer blanking:  yes    allow exposures:  yes\n  timeout:  600    cycle:  600\nColors:\n  default colormap:  0x20    BlackPixel:  0x0    WhitePixel:  0xfefefe\nFont Path:\n  /usr/local/share/xiri/fonts,/usr/X11R7/lib/X11/fonts/misc/,/usr/X11R7/lib/X11/fonts/TTF/,/usr/X11R7/lib/X11/fonts/Type1/,/usr/X11R7/lib/X11/fonts/75dpi/,/usr/X11R7/lib/X11/fonts/100dpi/,built-ins\nDPMS (Display Power Management Signaling):\n  Display is not capable of DPMS\n"
+    },
+    "xiritest-restored": {
+      "values": {
+        "repeat": "off",
+        "pointer": [
+          7,
+          1,
+          6
+        ],
+        "saver": [
+          600,
+          600
+        ]
+      },
+      "query": "Keyboard Control:\n  auto repeat:  off    key click percent:  0    LED mask:  00000000\n  XKB indicators:\n    00: Caps Lock:   off    01: Num Lock:    off    02: Scroll Lock: off\n    03: Shift Lock:  off    04: Group 2:     off    05: Mouse Keys:  off\n  auto repeat delay:  660    repeat rate:  25\n  auto repeating keys:  00feffffdffffbbf\n                        fadfffffffdfe5ef\n                        ffffffffffffffff\n                        ffffffffffffffff\n  bell percent:  50    bell pitch:  400    bell duration:  100\nPointer Control:\n  acceleration:  7/1    threshold:  6\nScreen Saver:\n  prefer blanking:  yes    allow exposures:  yes\n  timeout:  600    cycle:  600\nColors:\n  default colormap:  0x20    BlackPixel:  0x0    WhitePixel:  0xfefefe\nFont Path:\n  /usr/local/share/xiri/fonts,/usr/X11R7/lib/X11/fonts/misc/,/usr/X11R7/lib/X11/fonts/TTF/,/usr/X11R7/lib/X11/fonts/Type1/,/usr/X11R7/lib/X11/fonts/75dpi/,/usr/X11R7/lib/X11/fonts/100dpi/,built-ins\nDPMS (Display Power Management Signaling):\n  Display is not capable of DPMS\n"
+    },
+    "xiritest2-initial": {
+      "values": {
+        "repeat": "on",
+        "pointer": [
+          2,
+          1,
+          4
+        ],
+        "saver": [
+          0,
+          600
+        ]
+      },
+      "query": "Keyboard Control:\n  auto repeat:  on    key click percent:  0    LED mask:  00000000\n  XKB indicators:\n    00: Caps Lock:   off    01: Num Lock:    off    02: Scroll Lock: off\n    03: Shift Lock:  off    04: Group 2:     off    05: Mouse Keys:  off\n  auto repeat delay:  660    repeat rate:  25\n  auto repeating keys:  00feffffdffffbbf\n                        fadfffffffdfe5ef\n                        ffffffffffffffff\n                        ffffffffffffffff\n  bell percent:  50    bell pitch:  400    bell duration:  100\nPointer Control:\n  acceleration:  2/1    threshold:  4\nScreen Saver:\n  prefer blanking:  yes    allow exposures:  yes\n  timeout:  0    cycle:  600\nColors:\n  default colormap:  0x20    BlackPixel:  0x0    WhitePixel:  0xfefefe\nFont Path:\n  /usr/local/share/xiri/fonts,/usr/X11R7/lib/X11/fonts/misc/,/usr/X11R7/lib/X11/fonts/TTF/,/usr/X11R7/lib/X11/fonts/Type1/,/usr/X11R7/lib/X11/fonts/75dpi/,/usr/X11R7/lib/X11/fonts/100dpi/,built-ins\nDPMS (Display Power Management Signaling):\n  Display is not capable of DPMS\n"
+    },
+    "xiritest2-changed": {
+      "values": {
+        "repeat": "on",
+        "pointer": [
+          1,
+          4,
+          10
+        ],
+        "saver": [
+          0,
+          600
+        ]
+      },
+      "query": "Keyboard Control:\n  auto repeat:  on    key click percent:  0    LED mask:  00000000\n  XKB indicators:\n    00: Caps Lock:   off    01: Num Lock:    off    02: Scroll Lock: off\n    03: Shift Lock:  off    04: Group 2:     off    05: Mouse Keys:  off\n  auto repeat delay:  660    repeat rate:  25\n  auto repeating keys:  00feffffdffffbbf\n                        fadfffffffdfe5ef\n                        ffffffffffffffff\n                        ffffffffffffffff\n  bell percent:  50    bell pitch:  400    bell duration:  100\nPointer Control:\n  acceleration:  1/4    threshold:  10\nScreen Saver:\n  prefer blanking:  yes    allow exposures:  yes\n  timeout:  0    cycle:  600\nColors:\n  default colormap:  0x20    BlackPixel:  0x0    WhitePixel:  0xfefefe\nFont Path:\n  /usr/local/share/xiri/fonts,/usr/X11R7/lib/X11/fonts/misc/,/usr/X11R7/lib/X11/fonts/TTF/,/usr/X11R7/lib/X11/fonts/Type1/,/usr/X11R7/lib/X11/fonts/75dpi/,/usr/X11R7/lib/X11/fonts/100dpi/,built-ins\nDPMS (Display Power Management Signaling):\n  Display is not capable of DPMS\n"
+    },
+    "xiritest2-restored": {
+      "values": {
+        "repeat": "on",
+        "pointer": [
+          1,
+          4,
+          10
+        ],
+        "saver": [
+          0,
+          600
+        ]
+      },
+      "query": "Keyboard Control:\n  auto repeat:  on    key click percent:  0    LED mask:  00000000\n  XKB indicators:\n    00: Caps Lock:   off    01: Num Lock:    off    02: Scroll Lock: off\n    03: Shift Lock:  off    04: Group 2:     off    05: Mouse Keys:  off\n  auto repeat delay:  660    repeat rate:  25\n  auto repeating keys:  00feffffdffffbbf\n                        fadfffffffdfe5ef\n                        ffffffffffffffff\n                        ffffffffffffffff\n  bell percent:  50    bell pitch:  400    bell duration:  100\nPointer Control:\n  acceleration:  1/4    threshold:  10\nScreen Saver:\n  prefer blanking:  yes    allow exposures:  yes\n  timeout:  0    cycle:  600\nColors:\n  default colormap:  0x20    BlackPixel:  0x0    WhitePixel:  0xfefefe\nFont Path:\n  /usr/local/share/xiri/fonts,/usr/X11R7/lib/X11/fonts/misc/,/usr/X11R7/lib/X11/fonts/TTF/,/usr/X11R7/lib/X11/fonts/Type1/,/usr/X11R7/lib/X11/fonts/75dpi/,/usr/X11R7/lib/X11/fonts/100dpi/,built-ins\nDPMS (Display Power Management Signaling):\n  Display is not capable of DPMS\n"
+    }
+  },
+  "states": {
+    "xiritest-desktop-open": {
+      "root": 846,
+      "focus": 16777221,
+      "windows": [
+        {
+          "id": 6291473,
+          "frame": 8388697,
+          "stack": 17,
+          "state": 3,
+          "icon": 8388708,
+          "name": "xconsole",
+          "instance": "xconsole",
+          "class": "XConsole",
+          "client": {
+            "x": 792,
+            "y": 886,
+            "width": 480,
+            "height": 130,
+            "map": 1
+          },
+          "frame_geometry": {
+            "x": 784,
+            "y": 854,
+            "width": 496,
+            "height": 170,
+            "map": 0
+          },
+          "icon_geometry": {
+            "x": 10,
+            "y": 10,
+            "width": 97,
+            "height": 99,
+            "map": 2
+          }
+        },
+        {
+          "id": 12582921,
+          "frame": 8388713,
+          "stack": 19,
+          "state": 1,
+          "icon": 8388724,
+          "name": "xclock",
+          "instance": "xclock",
+          "class": "XClock",
+          "client": {
+            "x": 820,
+            "y": 32,
+            "width": 180,
+            "height": 180,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 812,
+            "y": 0,
+            "width": 196,
+            "height": 220,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 14680108,
+          "frame": 8388725,
+          "stack": 22,
+          "state": 1,
+          "icon": 0,
+          "name": "Toolchest",
+          "instance": "toolchest",
+          "class": "Toolchest",
+          "client": {
+            "x": 10,
+            "y": 26,
+            "width": 103,
+            "height": 158,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 9,
+            "y": 0,
+            "width": 105,
+            "height": 185,
+            "map": 2
+          },
+          "icon_geometry": null
+        },
+        {
+          "id": 20971627,
+          "frame": 8388740,
+          "stack": 33,
+          "state": 1,
+          "icon": 8388751,
+          "name": "Icon Catalog: Alias (Page 1 of 18)",
+          "instance": "IconCatalog",
+          "class": "IconCatalog",
+          "client": {
+            "x": 372,
+            "y": 450,
+            "width": 900,
+            "height": 500,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 364,
+            "y": 418,
+            "width": 916,
+            "height": 540,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 16777221,
+          "frame": 8388728,
+          "stack": 34,
+          "state": 1,
+          "icon": 8388739,
+          "name": "winterm",
+          "instance": "winterm",
+          "class": "XWsh",
+          "client": {
+            "x": 10,
+            "y": 180,
+            "width": 903,
+            "height": 480,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 2,
+            "y": 148,
+            "width": 919,
+            "height": 520,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 25165864,
+          "frame": 8388752,
+          "stack": 37,
+          "state": 1,
+          "icon": 8388755,
+          "name": "Desktop Settings",
+          "instance": "Desktop",
+          "class": "Desktop",
+          "client": {
+            "x": 32,
+            "y": 32,
+            "width": 315,
+            "height": 516,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 24,
+            "y": 0,
+            "width": 331,
+            "height": 556,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        }
+      ]
+    },
+    "xiritest-panel-before-close": {
+      "root": 846,
+      "focus": 25165879,
+      "windows": [
+        {
+          "id": 6291473,
+          "frame": 8388697,
+          "stack": 17,
+          "state": 3,
+          "icon": 8388708,
+          "name": "xconsole",
+          "instance": "xconsole",
+          "class": "XConsole",
+          "client": {
+            "x": 792,
+            "y": 886,
+            "width": 480,
+            "height": 130,
+            "map": 1
+          },
+          "frame_geometry": {
+            "x": 784,
+            "y": 854,
+            "width": 496,
+            "height": 170,
+            "map": 0
+          },
+          "icon_geometry": {
+            "x": 10,
+            "y": 10,
+            "width": 97,
+            "height": 99,
+            "map": 2
+          }
+        },
+        {
+          "id": 12582921,
+          "frame": 8388713,
+          "stack": 19,
+          "state": 1,
+          "icon": 8388724,
+          "name": "xclock",
+          "instance": "xclock",
+          "class": "XClock",
+          "client": {
+            "x": 820,
+            "y": 32,
+            "width": 180,
+            "height": 180,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 812,
+            "y": 0,
+            "width": 196,
+            "height": 220,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 14680108,
+          "frame": 8388725,
+          "stack": 22,
+          "state": 1,
+          "icon": 0,
+          "name": "Toolchest",
+          "instance": "toolchest",
+          "class": "Toolchest",
+          "client": {
+            "x": 10,
+            "y": 26,
+            "width": 103,
+            "height": 158,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 9,
+            "y": 0,
+            "width": 105,
+            "height": 185,
+            "map": 2
+          },
+          "icon_geometry": null
+        },
+        {
+          "id": 20971627,
+          "frame": 8388740,
+          "stack": 33,
+          "state": 1,
+          "icon": 8388751,
+          "name": "Icon Catalog: Alias (Page 1 of 18)",
+          "instance": "IconCatalog",
+          "class": "IconCatalog",
+          "client": {
+            "x": 372,
+            "y": 450,
+            "width": 900,
+            "height": 500,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 364,
+            "y": 418,
+            "width": 916,
+            "height": 540,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 16777221,
+          "frame": 8388728,
+          "stack": 34,
+          "state": 1,
+          "icon": 8388739,
+          "name": "winterm",
+          "instance": "winterm",
+          "class": "XWsh",
+          "client": {
+            "x": 10,
+            "y": 180,
+            "width": 903,
+            "height": 480,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 2,
+            "y": 148,
+            "width": 919,
+            "height": 520,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 25165879,
+          "frame": 8388768,
+          "stack": 37,
+          "state": 1,
+          "icon": 8388771,
+          "name": "Keyboard Settings ",
+          "instance": "keyboard",
+          "class": "Keyboard",
+          "client": {
+            "x": 100,
+            "y": 80,
+            "width": 284,
+            "height": 328,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 92,
+            "y": 48,
+            "width": 300,
+            "height": 368,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        }
+      ]
+    },
+    "xiritest-panel-closed": {
+      "root": 846,
+      "focus": 16777221,
+      "windows": [
+        {
+          "id": 6291473,
+          "frame": 8388697,
+          "stack": 16,
+          "state": 3,
+          "icon": 8388708,
+          "name": "xconsole",
+          "instance": "xconsole",
+          "class": "XConsole",
+          "client": {
+            "x": 792,
+            "y": 886,
+            "width": 480,
+            "height": 130,
+            "map": 1
+          },
+          "frame_geometry": {
+            "x": 784,
+            "y": 854,
+            "width": 496,
+            "height": 170,
+            "map": 0
+          },
+          "icon_geometry": {
+            "x": 10,
+            "y": 10,
+            "width": 97,
+            "height": 99,
+            "map": 2
+          }
+        },
+        {
+          "id": 12582921,
+          "frame": 8388713,
+          "stack": 18,
+          "state": 1,
+          "icon": 8388724,
+          "name": "xclock",
+          "instance": "xclock",
+          "class": "XClock",
+          "client": {
+            "x": 820,
+            "y": 32,
+            "width": 180,
+            "height": 180,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 812,
+            "y": 0,
+            "width": 196,
+            "height": 220,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 14680108,
+          "frame": 8388725,
+          "stack": 21,
+          "state": 1,
+          "icon": 0,
+          "name": "Toolchest",
+          "instance": "toolchest",
+          "class": "Toolchest",
+          "client": {
+            "x": 10,
+            "y": 26,
+            "width": 103,
+            "height": 158,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 9,
+            "y": 0,
+            "width": 105,
+            "height": 185,
+            "map": 2
+          },
+          "icon_geometry": null
+        },
+        {
+          "id": 20971627,
+          "frame": 8388740,
+          "stack": 32,
+          "state": 1,
+          "icon": 8388751,
+          "name": "Icon Catalog: Alias (Page 1 of 18)",
+          "instance": "IconCatalog",
+          "class": "IconCatalog",
+          "client": {
+            "x": 372,
+            "y": 450,
+            "width": 900,
+            "height": 500,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 364,
+            "y": 418,
+            "width": 916,
+            "height": 540,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 16777221,
+          "frame": 8388728,
+          "stack": 33,
+          "state": 1,
+          "icon": 8388739,
+          "name": "winterm",
+          "instance": "winterm",
+          "class": "XWsh",
+          "client": {
+            "x": 10,
+            "y": 180,
+            "width": 903,
+            "height": 480,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 2,
+            "y": 148,
+            "width": 919,
+            "height": 520,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        }
+      ]
+    },
+    "xiritest-fmprefs-open": {
+      "root": 846,
+      "focus": 16777221,
+      "windows": [
+        {
+          "id": 6291473,
+          "frame": 8388697,
+          "stack": 17,
+          "state": 3,
+          "icon": 8388708,
+          "name": "xconsole",
+          "instance": "xconsole",
+          "class": "XConsole",
+          "client": {
+            "x": 792,
+            "y": 886,
+            "width": 480,
+            "height": 130,
+            "map": 1
+          },
+          "frame_geometry": {
+            "x": 784,
+            "y": 854,
+            "width": 496,
+            "height": 170,
+            "map": 0
+          },
+          "icon_geometry": {
+            "x": 10,
+            "y": 10,
+            "width": 97,
+            "height": 99,
+            "map": 2
+          }
+        },
+        {
+          "id": 12582921,
+          "frame": 8388713,
+          "stack": 19,
+          "state": 1,
+          "icon": 8388724,
+          "name": "xclock",
+          "instance": "xclock",
+          "class": "XClock",
+          "client": {
+            "x": 820,
+            "y": 32,
+            "width": 180,
+            "height": 180,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 812,
+            "y": 0,
+            "width": 196,
+            "height": 220,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 14680108,
+          "frame": 8388725,
+          "stack": 22,
+          "state": 1,
+          "icon": 0,
+          "name": "Toolchest",
+          "instance": "toolchest",
+          "class": "Toolchest",
+          "client": {
+            "x": 10,
+            "y": 26,
+            "width": 103,
+            "height": 158,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 9,
+            "y": 0,
+            "width": 105,
+            "height": 185,
+            "map": 2
+          },
+          "icon_geometry": null
+        },
+        {
+          "id": 20971627,
+          "frame": 8388740,
+          "stack": 33,
+          "state": 1,
+          "icon": 8388751,
+          "name": "Icon Catalog: Alias (Page 1 of 18)",
+          "instance": "IconCatalog",
+          "class": "IconCatalog",
+          "client": {
+            "x": 372,
+            "y": 450,
+            "width": 900,
+            "height": 500,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 364,
+            "y": 418,
+            "width": 916,
+            "height": 540,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 16777221,
+          "frame": 8388728,
+          "stack": 34,
+          "state": 1,
+          "icon": 8388739,
+          "name": "winterm",
+          "instance": "winterm",
+          "class": "XWsh",
+          "client": {
+            "x": 10,
+            "y": 180,
+            "width": 903,
+            "height": 480,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 2,
+            "y": 148,
+            "width": 919,
+            "height": 520,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 25165878,
+          "frame": 8388756,
+          "stack": 39,
+          "state": 1,
+          "icon": 8388759,
+          "name": "Default Layout for Icon Views ",
+          "instance": "Fmprefs",
+          "class": "Fmprefs",
+          "client": {
+            "x": 64,
+            "y": 64,
+            "width": 341,
+            "height": 526,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 56,
+            "y": 32,
+            "width": 357,
+            "height": 566,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        }
+      ]
+    },
+    "xiritest-mouse-open": {
+      "root": 846,
+      "focus": 16777221,
+      "windows": [
+        {
+          "id": 6291473,
+          "frame": 8388697,
+          "stack": 17,
+          "state": 3,
+          "icon": 8388708,
+          "name": "xconsole",
+          "instance": "xconsole",
+          "class": "XConsole",
+          "client": {
+            "x": 792,
+            "y": 886,
+            "width": 480,
+            "height": 130,
+            "map": 1
+          },
+          "frame_geometry": {
+            "x": 784,
+            "y": 854,
+            "width": 496,
+            "height": 170,
+            "map": 0
+          },
+          "icon_geometry": {
+            "x": 10,
+            "y": 10,
+            "width": 97,
+            "height": 99,
+            "map": 2
+          }
+        },
+        {
+          "id": 12582921,
+          "frame": 8388713,
+          "stack": 19,
+          "state": 1,
+          "icon": 8388724,
+          "name": "xclock",
+          "instance": "xclock",
+          "class": "XClock",
+          "client": {
+            "x": 820,
+            "y": 32,
+            "width": 180,
+            "height": 180,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 812,
+            "y": 0,
+            "width": 196,
+            "height": 220,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 14680108,
+          "frame": 8388725,
+          "stack": 22,
+          "state": 1,
+          "icon": 0,
+          "name": "Toolchest",
+          "instance": "toolchest",
+          "class": "Toolchest",
+          "client": {
+            "x": 10,
+            "y": 26,
+            "width": 103,
+            "height": 158,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 9,
+            "y": 0,
+            "width": 105,
+            "height": 185,
+            "map": 2
+          },
+          "icon_geometry": null
+        },
+        {
+          "id": 20971627,
+          "frame": 8388740,
+          "stack": 33,
+          "state": 1,
+          "icon": 8388751,
+          "name": "Icon Catalog: Alias (Page 1 of 18)",
+          "instance": "IconCatalog",
+          "class": "IconCatalog",
+          "client": {
+            "x": 372,
+            "y": 450,
+            "width": 900,
+            "height": 500,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 364,
+            "y": 418,
+            "width": 916,
+            "height": 540,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 16777221,
+          "frame": 8388728,
+          "stack": 34,
+          "state": 1,
+          "icon": 8388739,
+          "name": "winterm",
+          "instance": "winterm",
+          "class": "XWsh",
+          "client": {
+            "x": 10,
+            "y": 180,
+            "width": 903,
+            "height": 480,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 2,
+            "y": 148,
+            "width": 919,
+            "height": 520,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 25165869,
+          "frame": 8388760,
+          "stack": 37,
+          "state": 1,
+          "icon": 8388763,
+          "name": "Mouse Settings",
+          "instance": "mouse",
+          "class": "Mouse",
+          "client": {
+            "x": 96,
+            "y": 96,
+            "width": 326,
+            "height": 439,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 88,
+            "y": 64,
+            "width": 342,
+            "height": 479,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        }
+      ]
+    },
+    "xiritest-screensaver-open": {
+      "root": 846,
+      "focus": 16777221,
+      "windows": [
+        {
+          "id": 6291473,
+          "frame": 8388697,
+          "stack": 17,
+          "state": 3,
+          "icon": 8388708,
+          "name": "xconsole",
+          "instance": "xconsole",
+          "class": "XConsole",
+          "client": {
+            "x": 792,
+            "y": 886,
+            "width": 480,
+            "height": 130,
+            "map": 1
+          },
+          "frame_geometry": {
+            "x": 784,
+            "y": 854,
+            "width": 496,
+            "height": 170,
+            "map": 0
+          },
+          "icon_geometry": {
+            "x": 10,
+            "y": 10,
+            "width": 97,
+            "height": 99,
+            "map": 2
+          }
+        },
+        {
+          "id": 12582921,
+          "frame": 8388713,
+          "stack": 19,
+          "state": 1,
+          "icon": 8388724,
+          "name": "xclock",
+          "instance": "xclock",
+          "class": "XClock",
+          "client": {
+            "x": 820,
+            "y": 32,
+            "width": 180,
+            "height": 180,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 812,
+            "y": 0,
+            "width": 196,
+            "height": 220,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 14680108,
+          "frame": 8388725,
+          "stack": 22,
+          "state": 1,
+          "icon": 0,
+          "name": "Toolchest",
+          "instance": "toolchest",
+          "class": "Toolchest",
+          "client": {
+            "x": 10,
+            "y": 26,
+            "width": 103,
+            "height": 158,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 9,
+            "y": 0,
+            "width": 105,
+            "height": 185,
+            "map": 2
+          },
+          "icon_geometry": null
+        },
+        {
+          "id": 20971627,
+          "frame": 8388740,
+          "stack": 33,
+          "state": 1,
+          "icon": 8388751,
+          "name": "Icon Catalog: Alias (Page 1 of 18)",
+          "instance": "IconCatalog",
+          "class": "IconCatalog",
+          "client": {
+            "x": 372,
+            "y": 450,
+            "width": 900,
+            "height": 500,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 364,
+            "y": 418,
+            "width": 916,
+            "height": 540,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 16777221,
+          "frame": 8388728,
+          "stack": 34,
+          "state": 1,
+          "icon": 8388739,
+          "name": "winterm",
+          "instance": "winterm",
+          "class": "XWsh",
+          "client": {
+            "x": 10,
+            "y": 180,
+            "width": 903,
+            "height": 480,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 2,
+            "y": 148,
+            "width": 919,
+            "height": 520,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 25165874,
+          "frame": 8388764,
+          "stack": 37,
+          "state": 1,
+          "icon": 8388767,
+          "name": "Screen Saver",
+          "instance": "screensaver",
+          "class": "ScreenSaver",
+          "client": {
+            "x": 128,
+            "y": 128,
+            "width": 300,
+            "height": 420,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 120,
+            "y": 96,
+            "width": 316,
+            "height": 460,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        }
+      ]
+    },
+    "xiritest-keyboard-open": {
+      "root": 846,
+      "focus": 16777221,
+      "windows": [
+        {
+          "id": 6291473,
+          "frame": 8388697,
+          "stack": 17,
+          "state": 3,
+          "icon": 8388708,
+          "name": "xconsole",
+          "instance": "xconsole",
+          "class": "XConsole",
+          "client": {
+            "x": 792,
+            "y": 886,
+            "width": 480,
+            "height": 130,
+            "map": 1
+          },
+          "frame_geometry": {
+            "x": 784,
+            "y": 854,
+            "width": 496,
+            "height": 170,
+            "map": 0
+          },
+          "icon_geometry": {
+            "x": 10,
+            "y": 10,
+            "width": 97,
+            "height": 99,
+            "map": 2
+          }
+        },
+        {
+          "id": 12582921,
+          "frame": 8388713,
+          "stack": 19,
+          "state": 1,
+          "icon": 8388724,
+          "name": "xclock",
+          "instance": "xclock",
+          "class": "XClock",
+          "client": {
+            "x": 820,
+            "y": 32,
+            "width": 180,
+            "height": 180,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 812,
+            "y": 0,
+            "width": 196,
+            "height": 220,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 14680108,
+          "frame": 8388725,
+          "stack": 22,
+          "state": 1,
+          "icon": 0,
+          "name": "Toolchest",
+          "instance": "toolchest",
+          "class": "Toolchest",
+          "client": {
+            "x": 10,
+            "y": 26,
+            "width": 103,
+            "height": 158,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 9,
+            "y": 0,
+            "width": 105,
+            "height": 185,
+            "map": 2
+          },
+          "icon_geometry": null
+        },
+        {
+          "id": 20971627,
+          "frame": 8388740,
+          "stack": 33,
+          "state": 1,
+          "icon": 8388751,
+          "name": "Icon Catalog: Alias (Page 1 of 18)",
+          "instance": "IconCatalog",
+          "class": "IconCatalog",
+          "client": {
+            "x": 372,
+            "y": 450,
+            "width": 900,
+            "height": 500,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 364,
+            "y": 418,
+            "width": 916,
+            "height": 540,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 16777221,
+          "frame": 8388728,
+          "stack": 34,
+          "state": 1,
+          "icon": 8388739,
+          "name": "winterm",
+          "instance": "winterm",
+          "class": "XWsh",
+          "client": {
+            "x": 10,
+            "y": 180,
+            "width": 903,
+            "height": 480,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 2,
+            "y": 148,
+            "width": 919,
+            "height": 520,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 25165879,
+          "frame": 8388768,
+          "stack": 37,
+          "state": 1,
+          "icon": 8388771,
+          "name": "Keyboard Settings ",
+          "instance": "keyboard",
+          "class": "Keyboard",
+          "client": {
+            "x": 160,
+            "y": 160,
+            "width": 284,
+            "height": 328,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 152,
+            "y": 128,
+            "width": 300,
+            "height": 368,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        }
+      ]
+    },
+    "xiritest-protected-desk": {
+      "root": 846,
+      "focus": 25166037,
+      "windows": [
+        {
+          "id": 6291473,
+          "frame": 8388697,
+          "stack": 17,
+          "state": 3,
+          "icon": 8388708,
+          "name": "xconsole",
+          "instance": "xconsole",
+          "class": "XConsole",
+          "client": {
+            "x": 792,
+            "y": 886,
+            "width": 480,
+            "height": 130,
+            "map": 1
+          },
+          "frame_geometry": {
+            "x": 784,
+            "y": 854,
+            "width": 496,
+            "height": 170,
+            "map": 0
+          },
+          "icon_geometry": {
+            "x": 10,
+            "y": 10,
+            "width": 97,
+            "height": 99,
+            "map": 2
+          }
+        },
+        {
+          "id": 12582921,
+          "frame": 8388713,
+          "stack": 19,
+          "state": 1,
+          "icon": 8388724,
+          "name": "xclock",
+          "instance": "xclock",
+          "class": "XClock",
+          "client": {
+            "x": 820,
+            "y": 32,
+            "width": 180,
+            "height": 180,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 812,
+            "y": 0,
+            "width": 196,
+            "height": 220,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 20971627,
+          "frame": 8388740,
+          "stack": 31,
+          "state": 1,
+          "icon": 8388751,
+          "name": "Icon Catalog: Alias (Page 1 of 18)",
+          "instance": "IconCatalog",
+          "class": "IconCatalog",
+          "client": {
+            "x": 372,
+            "y": 450,
+            "width": 900,
+            "height": 500,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 364,
+            "y": 418,
+            "width": 916,
+            "height": 540,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 16777221,
+          "frame": 8388728,
+          "stack": 32,
+          "state": 1,
+          "icon": 8388739,
+          "name": "winterm",
+          "instance": "winterm",
+          "class": "XWsh",
+          "client": {
+            "x": 10,
+            "y": 180,
+            "width": 903,
+            "height": 480,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 2,
+            "y": 148,
+            "width": 919,
+            "height": 520,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 14680108,
+          "frame": 8388725,
+          "stack": 33,
+          "state": 1,
+          "icon": 0,
+          "name": "Toolchest",
+          "instance": "toolchest",
+          "class": "Toolchest",
+          "client": {
+            "x": 10,
+            "y": 26,
+            "width": 103,
+            "height": 158,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 9,
+            "y": 0,
+            "width": 105,
+            "height": 185,
+            "map": 2
+          },
+          "icon_geometry": null
+        },
+        {
+          "id": 25165900,
+          "frame": 8388772,
+          "stack": 40,
+          "state": 1,
+          "icon": 8388783,
+          "name": "Desks Overview",
+          "instance": "DesksOverview",
+          "class": "Overview",
+          "client": {
+            "x": 30,
+            "y": 550,
+            "width": 500,
+            "height": 430,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 22,
+            "y": 518,
+            "width": 516,
+            "height": 470,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 25166037,
+          "frame": 8388790,
+          "stack": 47,
+          "state": 1,
+          "icon": 0,
+          "name": "Desk Overview Error",
+          "instance": "errorDialog_popup",
+          "class": "Overview",
+          "client": {
+            "x": 23,
+            "y": 663,
+            "width": 515,
+            "height": 204,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 15,
+            "y": 631,
+            "width": 531,
+            "height": 244,
+            "map": 2
+          },
+          "icon_geometry": null
+        }
+      ]
+    },
+    "xiritest-protected-dialog-closed": {
+      "root": 846,
+      "focus": 25165900,
+      "windows": [
+        {
+          "id": 6291473,
+          "frame": 8388697,
+          "stack": 17,
+          "state": 3,
+          "icon": 8388708,
+          "name": "xconsole",
+          "instance": "xconsole",
+          "class": "XConsole",
+          "client": {
+            "x": 792,
+            "y": 886,
+            "width": 480,
+            "height": 130,
+            "map": 1
+          },
+          "frame_geometry": {
+            "x": 784,
+            "y": 854,
+            "width": 496,
+            "height": 170,
+            "map": 0
+          },
+          "icon_geometry": {
+            "x": 10,
+            "y": 10,
+            "width": 97,
+            "height": 99,
+            "map": 2
+          }
+        },
+        {
+          "id": 12582921,
+          "frame": 8388713,
+          "stack": 19,
+          "state": 1,
+          "icon": 8388724,
+          "name": "xclock",
+          "instance": "xclock",
+          "class": "XClock",
+          "client": {
+            "x": 820,
+            "y": 32,
+            "width": 180,
+            "height": 180,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 812,
+            "y": 0,
+            "width": 196,
+            "height": 220,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 20971627,
+          "frame": 8388740,
+          "stack": 31,
+          "state": 1,
+          "icon": 8388751,
+          "name": "Icon Catalog: Alias (Page 1 of 18)",
+          "instance": "IconCatalog",
+          "class": "IconCatalog",
+          "client": {
+            "x": 372,
+            "y": 450,
+            "width": 900,
+            "height": 500,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 364,
+            "y": 418,
+            "width": 916,
+            "height": 540,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 16777221,
+          "frame": 8388728,
+          "stack": 32,
+          "state": 1,
+          "icon": 8388739,
+          "name": "winterm",
+          "instance": "winterm",
+          "class": "XWsh",
+          "client": {
+            "x": 10,
+            "y": 180,
+            "width": 903,
+            "height": 480,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 2,
+            "y": 148,
+            "width": 919,
+            "height": 520,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 14680108,
+          "frame": 8388725,
+          "stack": 33,
+          "state": 1,
+          "icon": 0,
+          "name": "Toolchest",
+          "instance": "toolchest",
+          "class": "Toolchest",
+          "client": {
+            "x": 10,
+            "y": 26,
+            "width": 103,
+            "height": 158,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 9,
+            "y": 0,
+            "width": 105,
+            "height": 185,
+            "map": 2
+          },
+          "icon_geometry": null
+        },
+        {
+          "id": 25165900,
+          "frame": 8388772,
+          "stack": 40,
+          "state": 1,
+          "icon": 8388783,
+          "name": "Desks Overview",
+          "instance": "DesksOverview",
+          "class": "Overview",
+          "client": {
+            "x": 30,
+            "y": 550,
+            "width": 500,
+            "height": 430,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 22,
+            "y": 518,
+            "width": 516,
+            "height": 470,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 25166037,
+          "frame": 25166037,
+          "stack": 47,
+          "state": 0,
+          "icon": 0,
+          "name": "Desk Overview Error",
+          "instance": "errorDialog_popup",
+          "class": "Overview",
+          "client": {
+            "x": 23,
+            "y": 663,
+            "width": 515,
+            "height": 204,
+            "map": 0
+          },
+          "frame_geometry": {
+            "x": 23,
+            "y": 663,
+            "width": 515,
+            "height": 204,
+            "map": 0
+          },
+          "icon_geometry": null
+        }
+      ]
+    },
+    "xiritest-renamed-desk-active": {
+      "root": 846,
+      "focus": 25165900,
+      "windows": [
+        {
+          "id": 6291473,
+          "frame": 8388697,
+          "stack": 17,
+          "state": 3,
+          "icon": 8388708,
+          "name": "xconsole",
+          "instance": "xconsole",
+          "class": "XConsole",
+          "client": {
+            "x": 792,
+            "y": 886,
+            "width": 480,
+            "height": 130,
+            "map": 1
+          },
+          "frame_geometry": {
+            "x": 784,
+            "y": 854,
+            "width": 496,
+            "height": 170,
+            "map": 0
+          },
+          "icon_geometry": {
+            "x": 10,
+            "y": 10,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 20971627,
+          "frame": 8388740,
+          "stack": 30,
+          "state": 3,
+          "icon": 8388751,
+          "name": "Icon Catalog: Alias (Page 1 of 18)",
+          "instance": "IconCatalog",
+          "class": "IconCatalog",
+          "client": {
+            "x": 372,
+            "y": 450,
+            "width": 900,
+            "height": 500,
+            "map": 0
+          },
+          "frame_geometry": {
+            "x": 364,
+            "y": 418,
+            "width": 916,
+            "height": 540,
+            "map": 0
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 16777221,
+          "frame": 8388728,
+          "stack": 31,
+          "state": 3,
+          "icon": 8388739,
+          "name": "winterm",
+          "instance": "winterm",
+          "class": "XWsh",
+          "client": {
+            "x": 10,
+            "y": 180,
+            "width": 903,
+            "height": 480,
+            "map": 0
+          },
+          "frame_geometry": {
+            "x": 2,
+            "y": 148,
+            "width": 919,
+            "height": 520,
+            "map": 0
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 25165900,
+          "frame": 8388772,
+          "stack": 37,
+          "state": 1,
+          "icon": 8388783,
+          "name": "Desks Overview",
+          "instance": "DesksOverview",
+          "class": "Overview",
+          "client": {
+            "x": 30,
+            "y": 550,
+            "width": 500,
+            "height": 430,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 22,
+            "y": 518,
+            "width": 516,
+            "height": 470,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 14680108,
+          "frame": 8388725,
+          "stack": 38,
+          "state": 1,
+          "icon": 0,
+          "name": "Toolchest",
+          "instance": "toolchest",
+          "class": "Toolchest",
+          "client": {
+            "x": 10,
+            "y": 26,
+            "width": 103,
+            "height": 158,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 9,
+            "y": 0,
+            "width": 105,
+            "height": 185,
+            "map": 2
+          },
+          "icon_geometry": null
+        },
+        {
+          "id": 12582921,
+          "frame": 8388713,
+          "stack": 39,
+          "state": 1,
+          "icon": 8388724,
+          "name": "xclock",
+          "instance": "xclock",
+          "class": "XClock",
+          "client": {
+            "x": 770,
+            "y": 332,
+            "width": 180,
+            "height": 180,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 762,
+            "y": 300,
+            "width": 196,
+            "height": 220,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 25166037,
+          "frame": 25166037,
+          "stack": 46,
+          "state": 0,
+          "icon": 0,
+          "name": "Desk Overview Error",
+          "instance": "errorDialog_popup",
+          "class": "Overview",
+          "client": {
+            "x": 23,
+            "y": 663,
+            "width": 515,
+            "height": 204,
+            "map": 0
+          },
+          "frame_geometry": {
+            "x": 23,
+            "y": 663,
+            "width": 515,
+            "height": 204,
+            "map": 0
+          },
+          "icon_geometry": null
+        }
+      ]
+    },
+    "xiritest-restored-desk": {
+      "root": 846,
+      "focus": 1,
+      "windows": [
+        {
+          "id": 14680073,
+          "frame": 8388716,
+          "stack": 19,
+          "state": 1,
+          "icon": 8388727,
+          "name": "xclock",
+          "instance": "xclock",
+          "class": "XClock",
+          "client": {
+            "x": 770,
+            "y": 332,
+            "width": 180,
+            "height": 180,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 762,
+            "y": 300,
+            "width": 196,
+            "height": 220,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 16777221,
+          "frame": 8388728,
+          "stack": 25,
+          "state": 3,
+          "icon": 8388739,
+          "name": "winterm",
+          "instance": "winterm",
+          "class": "XWsh",
+          "client": {
+            "x": 10,
+            "y": 180,
+            "width": 903,
+            "height": 480,
+            "map": 0
+          },
+          "frame_geometry": {
+            "x": 2,
+            "y": 148,
+            "width": 919,
+            "height": 520,
+            "map": 0
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 12582956,
+          "frame": 8388740,
+          "stack": 26,
+          "state": 1,
+          "icon": 0,
+          "name": "Toolchest",
+          "instance": "toolchest",
+          "class": "Toolchest",
+          "client": {
+            "x": 10,
+            "y": 26,
+            "width": 103,
+            "height": 158,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 9,
+            "y": 0,
+            "width": 105,
+            "height": 185,
+            "map": 2
+          },
+          "icon_geometry": null
+        },
+        {
+          "id": 18874385,
+          "frame": 8388743,
+          "stack": 28,
+          "state": 3,
+          "icon": 8388754,
+          "name": "xconsole",
+          "instance": "xconsole",
+          "class": "XConsole",
+          "client": {
+            "x": 792,
+            "y": 886,
+            "width": 480,
+            "height": 130,
+            "map": 0
+          },
+          "frame_geometry": {
+            "x": 784,
+            "y": 854,
+            "width": 496,
+            "height": 170,
+            "map": 0
+          },
+          "icon_geometry": {
+            "x": 10,
+            "y": 10,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 20971597,
+          "frame": 8388755,
+          "stack": 38,
+          "state": 1,
+          "icon": 8388766,
+          "name": "Desks Overview",
+          "instance": "DesksOverview",
+          "class": "Overview",
+          "client": {
+            "x": 30,
+            "y": 550,
+            "width": 501,
+            "height": 430,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 22,
+            "y": 518,
+            "width": 517,
+            "height": 470,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 6291563,
+          "frame": 8388767,
+          "stack": 45,
+          "state": 3,
+          "icon": 8388778,
+          "name": "Icon Catalog",
+          "instance": "IconCatalog",
+          "class": "IconCatalog",
+          "client": {
+            "x": 372,
+            "y": 450,
+            "width": 900,
+            "height": 500,
+            "map": 0
+          },
+          "frame_geometry": {
+            "x": 364,
+            "y": 418,
+            "width": 916,
+            "height": 540,
+            "map": 0
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        }
+      ]
+    },
+    "xiritest2-desktop-open": {
+      "root": 846,
+      "focus": 18874373,
+      "windows": [
+        {
+          "id": 6291473,
+          "frame": 4194393,
+          "stack": 17,
+          "state": 3,
+          "icon": 4194404,
+          "name": "xconsole",
+          "instance": "xconsole",
+          "class": "XConsole",
+          "client": {
+            "x": 792,
+            "y": 886,
+            "width": 480,
+            "height": 130,
+            "map": 1
+          },
+          "frame_geometry": {
+            "x": 784,
+            "y": 854,
+            "width": 496,
+            "height": 170,
+            "map": 0
+          },
+          "icon_geometry": {
+            "x": 10,
+            "y": 10,
+            "width": 97,
+            "height": 99,
+            "map": 2
+          }
+        },
+        {
+          "id": 14680073,
+          "frame": 4194409,
+          "stack": 21,
+          "state": 1,
+          "icon": 4194420,
+          "name": "xclock",
+          "instance": "xclock",
+          "class": "XClock",
+          "client": {
+            "x": 820,
+            "y": 32,
+            "width": 180,
+            "height": 180,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 812,
+            "y": 0,
+            "width": 196,
+            "height": 220,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 12582956,
+          "frame": 4194421,
+          "stack": 22,
+          "state": 1,
+          "icon": 0,
+          "name": "Toolchest",
+          "instance": "toolchest",
+          "class": "Toolchest",
+          "client": {
+            "x": 10,
+            "y": 26,
+            "width": 103,
+            "height": 158,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 9,
+            "y": 0,
+            "width": 105,
+            "height": 185,
+            "map": 2
+          },
+          "icon_geometry": null
+        },
+        {
+          "id": 20971627,
+          "frame": 4194436,
+          "stack": 33,
+          "state": 1,
+          "icon": 4194447,
+          "name": "Icon Catalog: Alias (Page 1 of 17)",
+          "instance": "IconCatalog",
+          "class": "IconCatalog",
+          "client": {
+            "x": 372,
+            "y": 450,
+            "width": 900,
+            "height": 500,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 364,
+            "y": 418,
+            "width": 916,
+            "height": 540,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 18874373,
+          "frame": 4194424,
+          "stack": 34,
+          "state": 1,
+          "icon": 4194435,
+          "name": "winterm",
+          "instance": "winterm",
+          "class": "XWsh",
+          "client": {
+            "x": 10,
+            "y": 180,
+            "width": 903,
+            "height": 480,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 2,
+            "y": 148,
+            "width": 919,
+            "height": 520,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 25165864,
+          "frame": 4194448,
+          "stack": 37,
+          "state": 1,
+          "icon": 4194451,
+          "name": "Desktop Settings",
+          "instance": "Desktop",
+          "class": "Desktop",
+          "client": {
+            "x": 32,
+            "y": 32,
+            "width": 315,
+            "height": 516,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 24,
+            "y": 0,
+            "width": 331,
+            "height": 556,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        }
+      ]
+    },
+    "xiritest2-panel-before-close": {
+      "root": 846,
+      "focus": 25165879,
+      "windows": [
+        {
+          "id": 6291473,
+          "frame": 4194393,
+          "stack": 17,
+          "state": 3,
+          "icon": 4194404,
+          "name": "xconsole",
+          "instance": "xconsole",
+          "class": "XConsole",
+          "client": {
+            "x": 792,
+            "y": 886,
+            "width": 480,
+            "height": 130,
+            "map": 1
+          },
+          "frame_geometry": {
+            "x": 784,
+            "y": 854,
+            "width": 496,
+            "height": 170,
+            "map": 0
+          },
+          "icon_geometry": {
+            "x": 10,
+            "y": 10,
+            "width": 97,
+            "height": 99,
+            "map": 2
+          }
+        },
+        {
+          "id": 14680073,
+          "frame": 4194409,
+          "stack": 21,
+          "state": 1,
+          "icon": 4194420,
+          "name": "xclock",
+          "instance": "xclock",
+          "class": "XClock",
+          "client": {
+            "x": 820,
+            "y": 32,
+            "width": 180,
+            "height": 180,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 812,
+            "y": 0,
+            "width": 196,
+            "height": 220,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 12582956,
+          "frame": 4194421,
+          "stack": 22,
+          "state": 1,
+          "icon": 0,
+          "name": "Toolchest",
+          "instance": "toolchest",
+          "class": "Toolchest",
+          "client": {
+            "x": 10,
+            "y": 26,
+            "width": 103,
+            "height": 158,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 9,
+            "y": 0,
+            "width": 105,
+            "height": 185,
+            "map": 2
+          },
+          "icon_geometry": null
+        },
+        {
+          "id": 20971627,
+          "frame": 4194436,
+          "stack": 33,
+          "state": 1,
+          "icon": 4194447,
+          "name": "Icon Catalog: Alias (Page 1 of 17)",
+          "instance": "IconCatalog",
+          "class": "IconCatalog",
+          "client": {
+            "x": 372,
+            "y": 450,
+            "width": 900,
+            "height": 500,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 364,
+            "y": 418,
+            "width": 916,
+            "height": 540,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 18874373,
+          "frame": 4194424,
+          "stack": 34,
+          "state": 1,
+          "icon": 4194435,
+          "name": "winterm",
+          "instance": "winterm",
+          "class": "XWsh",
+          "client": {
+            "x": 10,
+            "y": 180,
+            "width": 903,
+            "height": 480,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 2,
+            "y": 148,
+            "width": 919,
+            "height": 520,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 25165879,
+          "frame": 4194464,
+          "stack": 37,
+          "state": 1,
+          "icon": 4194467,
+          "name": "Keyboard Settings ",
+          "instance": "keyboard",
+          "class": "Keyboard",
+          "client": {
+            "x": 100,
+            "y": 80,
+            "width": 284,
+            "height": 328,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 92,
+            "y": 48,
+            "width": 300,
+            "height": 368,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        }
+      ]
+    },
+    "xiritest2-panel-closed": {
+      "root": 846,
+      "focus": 18874373,
+      "windows": [
+        {
+          "id": 6291473,
+          "frame": 4194393,
+          "stack": 16,
+          "state": 3,
+          "icon": 4194404,
+          "name": "xconsole",
+          "instance": "xconsole",
+          "class": "XConsole",
+          "client": {
+            "x": 792,
+            "y": 886,
+            "width": 480,
+            "height": 130,
+            "map": 1
+          },
+          "frame_geometry": {
+            "x": 784,
+            "y": 854,
+            "width": 496,
+            "height": 170,
+            "map": 0
+          },
+          "icon_geometry": {
+            "x": 10,
+            "y": 10,
+            "width": 97,
+            "height": 99,
+            "map": 2
+          }
+        },
+        {
+          "id": 14680073,
+          "frame": 4194409,
+          "stack": 20,
+          "state": 1,
+          "icon": 4194420,
+          "name": "xclock",
+          "instance": "xclock",
+          "class": "XClock",
+          "client": {
+            "x": 820,
+            "y": 32,
+            "width": 180,
+            "height": 180,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 812,
+            "y": 0,
+            "width": 196,
+            "height": 220,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 12582956,
+          "frame": 4194421,
+          "stack": 21,
+          "state": 1,
+          "icon": 0,
+          "name": "Toolchest",
+          "instance": "toolchest",
+          "class": "Toolchest",
+          "client": {
+            "x": 10,
+            "y": 26,
+            "width": 103,
+            "height": 158,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 9,
+            "y": 0,
+            "width": 105,
+            "height": 185,
+            "map": 2
+          },
+          "icon_geometry": null
+        },
+        {
+          "id": 20971627,
+          "frame": 4194436,
+          "stack": 32,
+          "state": 1,
+          "icon": 4194447,
+          "name": "Icon Catalog: Alias (Page 1 of 17)",
+          "instance": "IconCatalog",
+          "class": "IconCatalog",
+          "client": {
+            "x": 372,
+            "y": 450,
+            "width": 900,
+            "height": 500,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 364,
+            "y": 418,
+            "width": 916,
+            "height": 540,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 18874373,
+          "frame": 4194424,
+          "stack": 33,
+          "state": 1,
+          "icon": 4194435,
+          "name": "winterm",
+          "instance": "winterm",
+          "class": "XWsh",
+          "client": {
+            "x": 10,
+            "y": 180,
+            "width": 903,
+            "height": 480,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 2,
+            "y": 148,
+            "width": 919,
+            "height": 520,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        }
+      ]
+    },
+    "xiritest2-fmprefs-open": {
+      "root": 846,
+      "focus": 18874373,
+      "windows": [
+        {
+          "id": 6291473,
+          "frame": 4194393,
+          "stack": 17,
+          "state": 3,
+          "icon": 4194404,
+          "name": "xconsole",
+          "instance": "xconsole",
+          "class": "XConsole",
+          "client": {
+            "x": 792,
+            "y": 886,
+            "width": 480,
+            "height": 130,
+            "map": 1
+          },
+          "frame_geometry": {
+            "x": 784,
+            "y": 854,
+            "width": 496,
+            "height": 170,
+            "map": 0
+          },
+          "icon_geometry": {
+            "x": 10,
+            "y": 10,
+            "width": 97,
+            "height": 99,
+            "map": 2
+          }
+        },
+        {
+          "id": 14680073,
+          "frame": 4194409,
+          "stack": 21,
+          "state": 1,
+          "icon": 4194420,
+          "name": "xclock",
+          "instance": "xclock",
+          "class": "XClock",
+          "client": {
+            "x": 820,
+            "y": 32,
+            "width": 180,
+            "height": 180,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 812,
+            "y": 0,
+            "width": 196,
+            "height": 220,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 12582956,
+          "frame": 4194421,
+          "stack": 22,
+          "state": 1,
+          "icon": 0,
+          "name": "Toolchest",
+          "instance": "toolchest",
+          "class": "Toolchest",
+          "client": {
+            "x": 10,
+            "y": 26,
+            "width": 103,
+            "height": 158,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 9,
+            "y": 0,
+            "width": 105,
+            "height": 185,
+            "map": 2
+          },
+          "icon_geometry": null
+        },
+        {
+          "id": 20971627,
+          "frame": 4194436,
+          "stack": 33,
+          "state": 1,
+          "icon": 4194447,
+          "name": "Icon Catalog: Alias (Page 1 of 17)",
+          "instance": "IconCatalog",
+          "class": "IconCatalog",
+          "client": {
+            "x": 372,
+            "y": 450,
+            "width": 900,
+            "height": 500,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 364,
+            "y": 418,
+            "width": 916,
+            "height": 540,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 18874373,
+          "frame": 4194424,
+          "stack": 34,
+          "state": 1,
+          "icon": 4194435,
+          "name": "winterm",
+          "instance": "winterm",
+          "class": "XWsh",
+          "client": {
+            "x": 10,
+            "y": 180,
+            "width": 903,
+            "height": 480,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 2,
+            "y": 148,
+            "width": 919,
+            "height": 520,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 25165878,
+          "frame": 4194452,
+          "stack": 39,
+          "state": 1,
+          "icon": 4194455,
+          "name": "Default Layout for Icon Views ",
+          "instance": "Fmprefs",
+          "class": "Fmprefs",
+          "client": {
+            "x": 64,
+            "y": 64,
+            "width": 341,
+            "height": 526,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 56,
+            "y": 32,
+            "width": 357,
+            "height": 566,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        }
+      ]
+    },
+    "xiritest2-mouse-open": {
+      "root": 846,
+      "focus": 18874373,
+      "windows": [
+        {
+          "id": 6291473,
+          "frame": 4194393,
+          "stack": 17,
+          "state": 3,
+          "icon": 4194404,
+          "name": "xconsole",
+          "instance": "xconsole",
+          "class": "XConsole",
+          "client": {
+            "x": 792,
+            "y": 886,
+            "width": 480,
+            "height": 130,
+            "map": 1
+          },
+          "frame_geometry": {
+            "x": 784,
+            "y": 854,
+            "width": 496,
+            "height": 170,
+            "map": 0
+          },
+          "icon_geometry": {
+            "x": 10,
+            "y": 10,
+            "width": 97,
+            "height": 99,
+            "map": 2
+          }
+        },
+        {
+          "id": 14680073,
+          "frame": 4194409,
+          "stack": 21,
+          "state": 1,
+          "icon": 4194420,
+          "name": "xclock",
+          "instance": "xclock",
+          "class": "XClock",
+          "client": {
+            "x": 820,
+            "y": 32,
+            "width": 180,
+            "height": 180,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 812,
+            "y": 0,
+            "width": 196,
+            "height": 220,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 12582956,
+          "frame": 4194421,
+          "stack": 22,
+          "state": 1,
+          "icon": 0,
+          "name": "Toolchest",
+          "instance": "toolchest",
+          "class": "Toolchest",
+          "client": {
+            "x": 10,
+            "y": 26,
+            "width": 103,
+            "height": 158,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 9,
+            "y": 0,
+            "width": 105,
+            "height": 185,
+            "map": 2
+          },
+          "icon_geometry": null
+        },
+        {
+          "id": 20971627,
+          "frame": 4194436,
+          "stack": 33,
+          "state": 1,
+          "icon": 4194447,
+          "name": "Icon Catalog: Alias (Page 1 of 17)",
+          "instance": "IconCatalog",
+          "class": "IconCatalog",
+          "client": {
+            "x": 372,
+            "y": 450,
+            "width": 900,
+            "height": 500,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 364,
+            "y": 418,
+            "width": 916,
+            "height": 540,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 18874373,
+          "frame": 4194424,
+          "stack": 34,
+          "state": 1,
+          "icon": 4194435,
+          "name": "winterm",
+          "instance": "winterm",
+          "class": "XWsh",
+          "client": {
+            "x": 10,
+            "y": 180,
+            "width": 903,
+            "height": 480,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 2,
+            "y": 148,
+            "width": 919,
+            "height": 520,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 25165869,
+          "frame": 4194456,
+          "stack": 37,
+          "state": 1,
+          "icon": 4194459,
+          "name": "Mouse Settings",
+          "instance": "mouse",
+          "class": "Mouse",
+          "client": {
+            "x": 96,
+            "y": 96,
+            "width": 326,
+            "height": 439,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 88,
+            "y": 64,
+            "width": 342,
+            "height": 479,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        }
+      ]
+    },
+    "xiritest2-screensaver-open": {
+      "root": 846,
+      "focus": 18874373,
+      "windows": [
+        {
+          "id": 6291473,
+          "frame": 4194393,
+          "stack": 17,
+          "state": 3,
+          "icon": 4194404,
+          "name": "xconsole",
+          "instance": "xconsole",
+          "class": "XConsole",
+          "client": {
+            "x": 792,
+            "y": 886,
+            "width": 480,
+            "height": 130,
+            "map": 1
+          },
+          "frame_geometry": {
+            "x": 784,
+            "y": 854,
+            "width": 496,
+            "height": 170,
+            "map": 0
+          },
+          "icon_geometry": {
+            "x": 10,
+            "y": 10,
+            "width": 97,
+            "height": 99,
+            "map": 2
+          }
+        },
+        {
+          "id": 14680073,
+          "frame": 4194409,
+          "stack": 21,
+          "state": 1,
+          "icon": 4194420,
+          "name": "xclock",
+          "instance": "xclock",
+          "class": "XClock",
+          "client": {
+            "x": 820,
+            "y": 32,
+            "width": 180,
+            "height": 180,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 812,
+            "y": 0,
+            "width": 196,
+            "height": 220,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 12582956,
+          "frame": 4194421,
+          "stack": 22,
+          "state": 1,
+          "icon": 0,
+          "name": "Toolchest",
+          "instance": "toolchest",
+          "class": "Toolchest",
+          "client": {
+            "x": 10,
+            "y": 26,
+            "width": 103,
+            "height": 158,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 9,
+            "y": 0,
+            "width": 105,
+            "height": 185,
+            "map": 2
+          },
+          "icon_geometry": null
+        },
+        {
+          "id": 20971627,
+          "frame": 4194436,
+          "stack": 33,
+          "state": 1,
+          "icon": 4194447,
+          "name": "Icon Catalog: Alias (Page 1 of 17)",
+          "instance": "IconCatalog",
+          "class": "IconCatalog",
+          "client": {
+            "x": 372,
+            "y": 450,
+            "width": 900,
+            "height": 500,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 364,
+            "y": 418,
+            "width": 916,
+            "height": 540,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 18874373,
+          "frame": 4194424,
+          "stack": 34,
+          "state": 1,
+          "icon": 4194435,
+          "name": "winterm",
+          "instance": "winterm",
+          "class": "XWsh",
+          "client": {
+            "x": 10,
+            "y": 180,
+            "width": 903,
+            "height": 480,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 2,
+            "y": 148,
+            "width": 919,
+            "height": 520,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 25165874,
+          "frame": 4194460,
+          "stack": 37,
+          "state": 1,
+          "icon": 4194463,
+          "name": "Screen Saver",
+          "instance": "screensaver",
+          "class": "ScreenSaver",
+          "client": {
+            "x": 128,
+            "y": 128,
+            "width": 300,
+            "height": 420,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 120,
+            "y": 96,
+            "width": 316,
+            "height": 460,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        }
+      ]
+    },
+    "xiritest2-keyboard-open": {
+      "root": 846,
+      "focus": 18874373,
+      "windows": [
+        {
+          "id": 6291473,
+          "frame": 4194393,
+          "stack": 17,
+          "state": 3,
+          "icon": 4194404,
+          "name": "xconsole",
+          "instance": "xconsole",
+          "class": "XConsole",
+          "client": {
+            "x": 792,
+            "y": 886,
+            "width": 480,
+            "height": 130,
+            "map": 1
+          },
+          "frame_geometry": {
+            "x": 784,
+            "y": 854,
+            "width": 496,
+            "height": 170,
+            "map": 0
+          },
+          "icon_geometry": {
+            "x": 10,
+            "y": 10,
+            "width": 97,
+            "height": 99,
+            "map": 2
+          }
+        },
+        {
+          "id": 14680073,
+          "frame": 4194409,
+          "stack": 21,
+          "state": 1,
+          "icon": 4194420,
+          "name": "xclock",
+          "instance": "xclock",
+          "class": "XClock",
+          "client": {
+            "x": 820,
+            "y": 32,
+            "width": 180,
+            "height": 180,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 812,
+            "y": 0,
+            "width": 196,
+            "height": 220,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 12582956,
+          "frame": 4194421,
+          "stack": 22,
+          "state": 1,
+          "icon": 0,
+          "name": "Toolchest",
+          "instance": "toolchest",
+          "class": "Toolchest",
+          "client": {
+            "x": 10,
+            "y": 26,
+            "width": 103,
+            "height": 158,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 9,
+            "y": 0,
+            "width": 105,
+            "height": 185,
+            "map": 2
+          },
+          "icon_geometry": null
+        },
+        {
+          "id": 20971627,
+          "frame": 4194436,
+          "stack": 33,
+          "state": 1,
+          "icon": 4194447,
+          "name": "Icon Catalog: Alias (Page 1 of 17)",
+          "instance": "IconCatalog",
+          "class": "IconCatalog",
+          "client": {
+            "x": 372,
+            "y": 450,
+            "width": 900,
+            "height": 500,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 364,
+            "y": 418,
+            "width": 916,
+            "height": 540,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 18874373,
+          "frame": 4194424,
+          "stack": 34,
+          "state": 1,
+          "icon": 4194435,
+          "name": "winterm",
+          "instance": "winterm",
+          "class": "XWsh",
+          "client": {
+            "x": 10,
+            "y": 180,
+            "width": 903,
+            "height": 480,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 2,
+            "y": 148,
+            "width": 919,
+            "height": 520,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 25165879,
+          "frame": 4194464,
+          "stack": 37,
+          "state": 1,
+          "icon": 4194467,
+          "name": "Keyboard Settings ",
+          "instance": "keyboard",
+          "class": "Keyboard",
+          "client": {
+            "x": 160,
+            "y": 160,
+            "width": 284,
+            "height": 328,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 152,
+            "y": 128,
+            "width": 300,
+            "height": 368,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        }
+      ]
+    },
+    "xiritest2-protected-desk": {
+      "root": 846,
+      "focus": 25166037,
+      "windows": [
+        {
+          "id": 6291473,
+          "frame": 4194393,
+          "stack": 17,
+          "state": 3,
+          "icon": 4194404,
+          "name": "xconsole",
+          "instance": "xconsole",
+          "class": "XConsole",
+          "client": {
+            "x": 792,
+            "y": 886,
+            "width": 480,
+            "height": 130,
+            "map": 1
+          },
+          "frame_geometry": {
+            "x": 784,
+            "y": 854,
+            "width": 496,
+            "height": 170,
+            "map": 0
+          },
+          "icon_geometry": {
+            "x": 10,
+            "y": 10,
+            "width": 97,
+            "height": 99,
+            "map": 2
+          }
+        },
+        {
+          "id": 14680073,
+          "frame": 4194409,
+          "stack": 20,
+          "state": 1,
+          "icon": 4194420,
+          "name": "xclock",
+          "instance": "xclock",
+          "class": "XClock",
+          "client": {
+            "x": 820,
+            "y": 32,
+            "width": 180,
+            "height": 180,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 812,
+            "y": 0,
+            "width": 196,
+            "height": 220,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 20971627,
+          "frame": 4194436,
+          "stack": 31,
+          "state": 1,
+          "icon": 4194447,
+          "name": "Icon Catalog: Alias (Page 1 of 17)",
+          "instance": "IconCatalog",
+          "class": "IconCatalog",
+          "client": {
+            "x": 372,
+            "y": 450,
+            "width": 900,
+            "height": 500,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 364,
+            "y": 418,
+            "width": 916,
+            "height": 540,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 18874373,
+          "frame": 4194424,
+          "stack": 32,
+          "state": 1,
+          "icon": 4194435,
+          "name": "winterm",
+          "instance": "winterm",
+          "class": "XWsh",
+          "client": {
+            "x": 10,
+            "y": 180,
+            "width": 903,
+            "height": 480,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 2,
+            "y": 148,
+            "width": 919,
+            "height": 520,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 12582956,
+          "frame": 4194421,
+          "stack": 33,
+          "state": 1,
+          "icon": 0,
+          "name": "Toolchest",
+          "instance": "toolchest",
+          "class": "Toolchest",
+          "client": {
+            "x": 10,
+            "y": 26,
+            "width": 103,
+            "height": 158,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 9,
+            "y": 0,
+            "width": 105,
+            "height": 185,
+            "map": 2
+          },
+          "icon_geometry": null
+        },
+        {
+          "id": 25165900,
+          "frame": 4194468,
+          "stack": 40,
+          "state": 1,
+          "icon": 4194479,
+          "name": "Desks Overview",
+          "instance": "DesksOverview",
+          "class": "Overview",
+          "client": {
+            "x": 30,
+            "y": 550,
+            "width": 500,
+            "height": 430,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 22,
+            "y": 518,
+            "width": 516,
+            "height": 470,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 25166037,
+          "frame": 4194486,
+          "stack": 47,
+          "state": 1,
+          "icon": 0,
+          "name": "Desk Overview Error",
+          "instance": "errorDialog_popup",
+          "class": "Overview",
+          "client": {
+            "x": 23,
+            "y": 663,
+            "width": 515,
+            "height": 204,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 15,
+            "y": 631,
+            "width": 531,
+            "height": 244,
+            "map": 2
+          },
+          "icon_geometry": null
+        }
+      ]
+    },
+    "xiritest2-protected-dialog-closed": {
+      "root": 846,
+      "focus": 25165900,
+      "windows": [
+        {
+          "id": 6291473,
+          "frame": 4194393,
+          "stack": 17,
+          "state": 3,
+          "icon": 4194404,
+          "name": "xconsole",
+          "instance": "xconsole",
+          "class": "XConsole",
+          "client": {
+            "x": 792,
+            "y": 886,
+            "width": 480,
+            "height": 130,
+            "map": 1
+          },
+          "frame_geometry": {
+            "x": 784,
+            "y": 854,
+            "width": 496,
+            "height": 170,
+            "map": 0
+          },
+          "icon_geometry": {
+            "x": 10,
+            "y": 10,
+            "width": 97,
+            "height": 99,
+            "map": 2
+          }
+        },
+        {
+          "id": 14680073,
+          "frame": 4194409,
+          "stack": 20,
+          "state": 1,
+          "icon": 4194420,
+          "name": "xclock",
+          "instance": "xclock",
+          "class": "XClock",
+          "client": {
+            "x": 820,
+            "y": 32,
+            "width": 180,
+            "height": 180,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 812,
+            "y": 0,
+            "width": 196,
+            "height": 220,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 20971627,
+          "frame": 4194436,
+          "stack": 31,
+          "state": 1,
+          "icon": 4194447,
+          "name": "Icon Catalog: Alias (Page 1 of 17)",
+          "instance": "IconCatalog",
+          "class": "IconCatalog",
+          "client": {
+            "x": 372,
+            "y": 450,
+            "width": 900,
+            "height": 500,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 364,
+            "y": 418,
+            "width": 916,
+            "height": 540,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 18874373,
+          "frame": 4194424,
+          "stack": 32,
+          "state": 1,
+          "icon": 4194435,
+          "name": "winterm",
+          "instance": "winterm",
+          "class": "XWsh",
+          "client": {
+            "x": 10,
+            "y": 180,
+            "width": 903,
+            "height": 480,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 2,
+            "y": 148,
+            "width": 919,
+            "height": 520,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 12582956,
+          "frame": 4194421,
+          "stack": 33,
+          "state": 1,
+          "icon": 0,
+          "name": "Toolchest",
+          "instance": "toolchest",
+          "class": "Toolchest",
+          "client": {
+            "x": 10,
+            "y": 26,
+            "width": 103,
+            "height": 158,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 9,
+            "y": 0,
+            "width": 105,
+            "height": 185,
+            "map": 2
+          },
+          "icon_geometry": null
+        },
+        {
+          "id": 25165900,
+          "frame": 4194468,
+          "stack": 40,
+          "state": 1,
+          "icon": 4194479,
+          "name": "Desks Overview",
+          "instance": "DesksOverview",
+          "class": "Overview",
+          "client": {
+            "x": 30,
+            "y": 550,
+            "width": 500,
+            "height": 430,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 22,
+            "y": 518,
+            "width": 516,
+            "height": 470,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 25166037,
+          "frame": 25166037,
+          "stack": 47,
+          "state": 0,
+          "icon": 0,
+          "name": "Desk Overview Error",
+          "instance": "errorDialog_popup",
+          "class": "Overview",
+          "client": {
+            "x": 23,
+            "y": 663,
+            "width": 515,
+            "height": 204,
+            "map": 0
+          },
+          "frame_geometry": {
+            "x": 23,
+            "y": 663,
+            "width": 515,
+            "height": 204,
+            "map": 0
+          },
+          "icon_geometry": null
+        }
+      ]
+    },
+    "xiritest2-renamed-desk-active": {
+      "root": 846,
+      "focus": 25165900,
+      "windows": [
+        {
+          "id": 6291473,
+          "frame": 4194393,
+          "stack": 17,
+          "state": 3,
+          "icon": 4194404,
+          "name": "xconsole",
+          "instance": "xconsole",
+          "class": "XConsole",
+          "client": {
+            "x": 792,
+            "y": 886,
+            "width": 480,
+            "height": 130,
+            "map": 1
+          },
+          "frame_geometry": {
+            "x": 784,
+            "y": 854,
+            "width": 496,
+            "height": 170,
+            "map": 0
+          },
+          "icon_geometry": {
+            "x": 10,
+            "y": 10,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 20971627,
+          "frame": 4194436,
+          "stack": 30,
+          "state": 3,
+          "icon": 4194447,
+          "name": "Icon Catalog: Alias (Page 1 of 17)",
+          "instance": "IconCatalog",
+          "class": "IconCatalog",
+          "client": {
+            "x": 372,
+            "y": 450,
+            "width": 900,
+            "height": 500,
+            "map": 0
+          },
+          "frame_geometry": {
+            "x": 364,
+            "y": 418,
+            "width": 916,
+            "height": 540,
+            "map": 0
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 18874373,
+          "frame": 4194424,
+          "stack": 31,
+          "state": 3,
+          "icon": 4194435,
+          "name": "winterm",
+          "instance": "winterm",
+          "class": "XWsh",
+          "client": {
+            "x": 10,
+            "y": 180,
+            "width": 903,
+            "height": 480,
+            "map": 0
+          },
+          "frame_geometry": {
+            "x": 2,
+            "y": 148,
+            "width": 919,
+            "height": 520,
+            "map": 0
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 25165900,
+          "frame": 4194468,
+          "stack": 37,
+          "state": 1,
+          "icon": 4194479,
+          "name": "Desks Overview",
+          "instance": "DesksOverview",
+          "class": "Overview",
+          "client": {
+            "x": 30,
+            "y": 550,
+            "width": 500,
+            "height": 430,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 22,
+            "y": 518,
+            "width": 516,
+            "height": 470,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 12582956,
+          "frame": 4194421,
+          "stack": 38,
+          "state": 1,
+          "icon": 0,
+          "name": "Toolchest",
+          "instance": "toolchest",
+          "class": "Toolchest",
+          "client": {
+            "x": 10,
+            "y": 26,
+            "width": 103,
+            "height": 158,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 9,
+            "y": 0,
+            "width": 105,
+            "height": 185,
+            "map": 2
+          },
+          "icon_geometry": null
+        },
+        {
+          "id": 14680073,
+          "frame": 4194409,
+          "stack": 39,
+          "state": 1,
+          "icon": 4194420,
+          "name": "xclock",
+          "instance": "xclock",
+          "class": "XClock",
+          "client": {
+            "x": 770,
+            "y": 332,
+            "width": 180,
+            "height": 180,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 762,
+            "y": 300,
+            "width": 196,
+            "height": 220,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 25166037,
+          "frame": 25166037,
+          "stack": 46,
+          "state": 0,
+          "icon": 0,
+          "name": "Desk Overview Error",
+          "instance": "errorDialog_popup",
+          "class": "Overview",
+          "client": {
+            "x": 23,
+            "y": 663,
+            "width": 515,
+            "height": 204,
+            "map": 0
+          },
+          "frame_geometry": {
+            "x": 23,
+            "y": 663,
+            "width": 515,
+            "height": 204,
+            "map": 0
+          },
+          "icon_geometry": null
+        }
+      ]
+    },
+    "xiritest2-restored-desk": {
+      "root": 846,
+      "focus": 1,
+      "windows": [
+        {
+          "id": 16777225,
+          "frame": 4194412,
+          "stack": 21,
+          "state": 1,
+          "icon": 4194423,
+          "name": "xclock",
+          "instance": "xclock",
+          "class": "XClock",
+          "client": {
+            "x": 770,
+            "y": 332,
+            "width": 180,
+            "height": 180,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 762,
+            "y": 300,
+            "width": 196,
+            "height": 220,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 12582917,
+          "frame": 4194424,
+          "stack": 25,
+          "state": 3,
+          "icon": 4194435,
+          "name": "winterm",
+          "instance": "winterm",
+          "class": "XWsh",
+          "client": {
+            "x": 10,
+            "y": 180,
+            "width": 903,
+            "height": 480,
+            "map": 0
+          },
+          "frame_geometry": {
+            "x": 2,
+            "y": 148,
+            "width": 919,
+            "height": 520,
+            "map": 0
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 14680108,
+          "frame": 4194436,
+          "stack": 30,
+          "state": 1,
+          "icon": 0,
+          "name": "Toolchest",
+          "instance": "toolchest",
+          "class": "Toolchest",
+          "client": {
+            "x": 10,
+            "y": 26,
+            "width": 103,
+            "height": 158,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 9,
+            "y": 0,
+            "width": 105,
+            "height": 185,
+            "map": 2
+          },
+          "icon_geometry": null
+        },
+        {
+          "id": 18874385,
+          "frame": 4194439,
+          "stack": 31,
+          "state": 3,
+          "icon": 4194450,
+          "name": "xconsole",
+          "instance": "xconsole",
+          "class": "XConsole",
+          "client": {
+            "x": 792,
+            "y": 886,
+            "width": 480,
+            "height": 130,
+            "map": 0
+          },
+          "frame_geometry": {
+            "x": 784,
+            "y": 854,
+            "width": 496,
+            "height": 170,
+            "map": 0
+          },
+          "icon_geometry": {
+            "x": 10,
+            "y": 10,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 20971597,
+          "frame": 4194451,
+          "stack": 35,
+          "state": 1,
+          "icon": 4194462,
+          "name": "Desks Overview",
+          "instance": "DesksOverview",
+          "class": "Overview",
+          "client": {
+            "x": 30,
+            "y": 550,
+            "width": 501,
+            "height": 430,
+            "map": 2
+          },
+          "frame_geometry": {
+            "x": 22,
+            "y": 518,
+            "width": 517,
+            "height": 470,
+            "map": 2
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        },
+        {
+          "id": 23068779,
+          "frame": 4194463,
+          "stack": 45,
+          "state": 3,
+          "icon": 4194474,
+          "name": "Icon Catalog",
+          "instance": "IconCatalog",
+          "class": "IconCatalog",
+          "client": {
+            "x": 372,
+            "y": 450,
+            "width": 900,
+            "height": 500,
+            "map": 0
+          },
+          "frame_geometry": {
+            "x": 364,
+            "y": 418,
+            "width": 916,
+            "height": 540,
+            "map": 0
+          },
+          "icon_geometry": {
+            "x": 0,
+            "y": 0,
+            "width": 97,
+            "height": 99,
+            "map": 0
+          }
+        }
+      ]
+    }
+  },
+  "checkpoint": "xiritest2-restored-desk",
+  "screenshots": {
+    "xiritest-icon-preferences.png": "dc5985c4b6ba25809f983dc4a87beb7b3e641f269e9e2280c8f021679bef945e",
+    "xiritest-mouse.png": "2d899cbf7612b7e4750687ac253aafd2bb7034749bde8d66b945a8f0a450ddd2",
+    "xiritest-keyboard.png": "6513c2061ad09daa9ef7268db2960e0c99721b03d1a8b5010b156eb8a33d219c",
+    "xiritest-copied-desk.png": "c4da10676b9a912513e70e49ebf4e7a153a06990ae35e7bb5433cd4ec0ca902b",
+    "xiritest-deleted-copy.png": "a02e4d16002cb83d1ca6f442d0d71d500917f2fba43c7dbdf098b3b7ec590348",
+    "xiritest-protected-desk.png": "13e27b935e4937a0924867a58fd037ab91a9876e3988d97e013c67884824feed",
+    "xiritest-renamed-desk.png": "0dfaa43bc77bf59c01908e00a85dde12ca8d2fd4dc24491a6db11ee9be75205d",
+    "xiritest2-icon-preferences.png": "7ee3ce9ca21c852b86360a64bc5a5938fd178c5da9b932f1cb5b0a33ba7245db",
+    "xiritest2-mouse.png": "bb95d0e410213547795e57a42a0faa9d918e1543091fc2ffc3a3d77917bf5cae",
+    "xiritest2-keyboard.png": "ef779f4f1a32c9c99cd88fdb96045c1e91c8189d50e1b1353d5da25d510f03de",
+    "xiritest2-copied-desk.png": "09975ce025b1014236ec2201c74a1ba0c7fc2410804270be79200dbd9e7556d0",
+    "xiritest2-deleted-copy.png": "4fdf441de17bc4cec91a428ff6873a251c680fbacf7efd29915faa91d7f4d9a0",
+    "xiritest2-protected-desk.png": "e7d3a4955e27bccb163d1a1dbeb656ac0a7b81e19bf8be6726b2389e1cb857fe",
+    "xiritest2-renamed-desk.png": "4b414ed4719480eedf6f5c157801accf7e79d5749169b1f281d0826096d56649"
+  },
+  "logout_logs": {
+    "xiritest-saved": "OWN pid=3667 parent=2972\nOWN pid=3677 parent=3667\nOWN pid=3354 parent=3667\nOWN pid=3292 parent=3667\nOWN pid=3105 parent=3667\nOWN pid=3106 parent=3667\nOWN pid=479 parent=3106\nOWN pid=421 parent=3667\nOWN pid=419 parent=421\nOWN pid=422 parent=3667\nOWN pid=420 parent=3667\nOWN pid=426 parent=3667\nOWN pid=427 parent=3667\nOWN pid=3688 parent=3667\nOWN pid=3817 parent=3667\nOWN pid=2151 parent=3667\nOWN pid=3309 parent=3667\nOWN pid=431 parent=3309\nOWN pid=3820 parent=3667\nOWN pid=3246 parent=3667\nOWN pid=465 parent=3820\nOWN pid=690 parent=3667\nOWN pid=3504 parent=3667\nOWN pid=692 parent=3246\nOWN pid=3637 parent=690\nOWN pid=478 parent=3504\nOWN pid=3571 parent=692\nOWN pid=3313 parent=692\nOWN pid=503 parent=692\nOWN pid=504 parent=692\nOWN pid=3117 parent=692\nOWN pid=3042 parent=692\nOWN pid=505 parent=465\nOWN pid=1853 parent=692\nOWN pid=702 parent=692\nOWN pid=508 parent=692\nOWN pid=3603 parent=692\nOWN pid=3756 parent=692\nOWN pid=2087 parent=692\nOWN pid=578 parent=2087\nOWN pid=580 parent=431\nOWN pid=596 parent=578\nOWN pid=2279 parent=578\nOWN pid=707 parent=578\nOWN pid=3310 parent=578\nOWN pid=4073 parent=578\nOWN pid=839 parent=465\nOWN pid=837 parent=839\nOWN pid=4072 parent=2972\nOWN pid=3438 parent=4072\nSESSION_SAVE acknowledged by 4Dwm\nSESSION_SAVE completed=1 exit=0 elapsed=239\nGUARD pid=3667 exit=-1 signal=15 stopped=1 absent=1 valid=1 tracked=50 remaining=0 reason=logout uid=1234 gid=1234 elapsed=385670\n",
+    "xiritest-restoration-checked": "OWN pid=1056 parent=708\nOWN pid=1305 parent=1056\nOWN pid=879 parent=1056\nOWN pid=874 parent=1056\nOWN pid=3745 parent=1056\nOWN pid=1067 parent=1056\nOWN pid=1060 parent=1056\nOWN pid=3932 parent=1056\nOWN pid=3694 parent=1056\nOWN pid=1062 parent=1056\nOWN pid=3362 parent=1062\nOWN pid=677 parent=1056\nOWN pid=4328 parent=1056\nOWN pid=4076 parent=677\nOWN pid=721 parent=1056\nOWN pid=3565 parent=1056\nOWN pid=946 parent=1056\nOWN pid=3893 parent=1056\nOWN pid=3760 parent=1056\nOWN pid=734 parent=1056\nOWN pid=1095 parent=1056\nOWN pid=735 parent=1056\nOWN pid=834 parent=1056\nOWN pid=4211 parent=1056\nOWN pid=3379 parent=834\nOWN pid=1108 parent=4211\nOWN pid=1143 parent=1056\nOWN pid=4329 parent=4076\nOWN pid=3228 parent=4329\nOWN pid=1789 parent=4076\nOWN pid=448 parent=1789\nOWN pid=3757 parent=4076\nOWN pid=1145 parent=3757\nOWN pid=3682 parent=4076\nOWN pid=4243 parent=3682\nOWN pid=1342 parent=4076\nOWN pid=1142 parent=1342\nOWN pid=4396 parent=1108\nOWN pid=4264 parent=4243\nOWN pid=2493 parent=1142\nOWN pid=4208 parent=3379\nOWN pid=4021 parent=708\nOWN pid=3888 parent=4021\nSESSION_SAVE acknowledged by 4Dwm\nSESSION_SAVE completed=1 exit=0 elapsed=240\nGUARD pid=1056 exit=-1 signal=15 stopped=1 absent=1 valid=1 tracked=43 remaining=0 reason=logout uid=1234 gid=1234 elapsed=94657\n",
+    "xiritest2-saved": "OWN pid=1983 parent=1316\nOWN pid=1484 parent=1983\nOWN pid=1483 parent=1983\nOWN pid=4652 parent=1983\nOWN pid=1478 parent=1983\nOWN pid=1482 parent=1983\nOWN pid=1402 parent=1983\nOWN pid=1490 parent=1983\nOWN pid=4597 parent=1983\nOWN pid=1488 parent=1983\nOWN pid=1688 parent=1983\nOWN pid=1475 parent=1983\nOWN pid=1259 parent=1983\nOWN pid=1819 parent=1983\nOWN pid=1486 parent=1475\nOWN pid=4378 parent=1259\nOWN pid=1431 parent=1983\nOWN pid=3990 parent=1983\nOWN pid=1263 parent=1983\nOWN pid=4701 parent=1983\nOWN pid=1689 parent=1983\nOWN pid=1485 parent=1983\nOWN pid=1258 parent=1983\nOWN pid=4129 parent=1983\nOWN pid=943 parent=1983\nOWN pid=1450 parent=1983\nOWN pid=1451 parent=1450\nOWN pid=4078 parent=4129\nOWN pid=3949 parent=1983\nOWN pid=4712 parent=1983\nOWN pid=1105 parent=4712\nOWN pid=4144 parent=943\nOWN pid=4277 parent=3949\nOWN pid=1330 parent=1451\nOWN pid=933 parent=4144\nOWN pid=3618 parent=1451\nOWN pid=1090 parent=1451\nOWN pid=1318 parent=1451\nOWN pid=4316 parent=1451\nOWN pid=4467 parent=1451\nOWN pid=1364 parent=1451\nOWN pid=4520 parent=1451\nOWN pid=4499 parent=1451\nOWN pid=3938 parent=1451\nOWN pid=1401 parent=1451\nOWN pid=4013 parent=1451\nOWN pid=1598 parent=4013\nOWN pid=4464 parent=4078\nOWN pid=4780 parent=1598\nOWN pid=1061 parent=1598\nOWN pid=3763 parent=1598\nOWN pid=1658 parent=1598\nOWN pid=1346 parent=1598\nOWN pid=1374 parent=4144\nOWN pid=4209 parent=1374\nOWN pid=4700 parent=1316\nOWN pid=4851 parent=4700\nSESSION_SAVE acknowledged by 4Dwm\nSESSION_SAVE completed=1 exit=0 elapsed=1398\nGUARD pid=1983 exit=-1 signal=15 stopped=1 absent=1 valid=1 tracked=57 remaining=0 reason=logout uid=1237 gid=1237 elapsed=424553\n"
+  },
+  "preferences": {
+    "xiritest-saved": {
+      "files": {
+        "/usr/people/xiritest/.Sgiresources": "4DWm*Desk 1.backgroundDescription:\t-bitmap /usr/include/X11/bitmaps/granite -bg #868686 -fg #69b5b5 \n*snapToGrid:\tFalse\nScreenSaver*lastScreenSaverTimeout:\t600\n4DWm*Work.backgroundDescription:\t-bitmap /usr/include/X11/bitmaps/granite -bg #c9c9c9 -fg #dc9e9e \nOverview*Work*position:\t-1\n4DWm*curNewBackground:\t3\n4DWm*Copy Desk Work 1.backgroundDescription:\t-bitmap /usr/include/X11/bitmaps/granite -bg #9edc9e -fg #9e9edc \n",
+        "/usr/people/xiritest/.desktop-xiri-indy/panelsession": "/usr/bin/X11/xset s 600 600\t# SAVER_DELAY:0.0 #\n/usr/bin/X11/xset m 7 6 &\t# ACCEL_THRESH:0.0 #\n/usr/bin/X11/xset r off &\t# KEY_REPEAT:0.0 #\n/usr/bin/X11/xset -art 0 -ari 0 &\t# DELAY_AND_SPEED:0.0 #\n",
+        "/usr/people/xiritest/.desktop-xiri-indy/layouts/Default": "Version = A\nIconScale = 2\nShowShelf = False\nShowAsGallery = False\nShowHidden = True\nShowContent = False\nShowFilter = False\nSnapToGrid = False\nTunnel = False\nQuickHelp = True\nShowFinder = True\nControlBoard = True\nTruncate = False\nPreserveLayout = False\nLayoutStyle = iconicLayout\nArrangeBy = Name\n"
+      },
+      "metadata": "/usr/people/xiritest|1234|1234|700\n/usr/people/xiritest/.Sgiresources|1234|1234|600\n/usr/people/xiritest/.desktop-xiri-indy/panelsession|1234|1234|600\n/usr/people/xiritest/.desktop-xiri-indy/layouts/Default|1234|1234|600\n"
+    },
+    "xiritest-restored": {
+      "files": {
+        "/usr/people/xiritest/.Sgiresources": "4DWm*Desk 1.backgroundDescription:\t-bitmap /usr/include/X11/bitmaps/granite -bg #868686 -fg #69b5b5 \n*snapToGrid:\tFalse\nScreenSaver*lastScreenSaverTimeout:\t600\n4DWm*Work.backgroundDescription:\t-bitmap /usr/include/X11/bitmaps/granite -bg #c9c9c9 -fg #dc9e9e \nOverview*Work*position:\t-1\n4DWm*curNewBackground:\t3\n4DWm*Copy Desk Work 1.backgroundDescription:\t-bitmap /usr/include/X11/bitmaps/granite -bg #9edc9e -fg #9e9edc \n",
+        "/usr/people/xiritest/.desktop-xiri-indy/panelsession": "/usr/bin/X11/xset s 600 600\t# SAVER_DELAY:0.0 #\n/usr/bin/X11/xset m 7 6 &\t# ACCEL_THRESH:0.0 #\n/usr/bin/X11/xset r off &\t# KEY_REPEAT:0.0 #\n/usr/bin/X11/xset -art 0 -ari 0 &\t# DELAY_AND_SPEED:0.0 #\n",
+        "/usr/people/xiritest/.desktop-xiri-indy/layouts/Default": "Version = A\nIconScale = 2\nShowShelf = False\nShowAsGallery = False\nShowHidden = True\nShowContent = False\nShowFilter = False\nSnapToGrid = False\nTunnel = False\nQuickHelp = True\nShowFinder = True\nControlBoard = True\nTruncate = False\nPreserveLayout = False\nLayoutStyle = iconicLayout\nArrangeBy = Name\n"
+      },
+      "metadata": "/usr/people/xiritest|1234|1234|700\n/usr/people/xiritest/.Sgiresources|1234|1234|600\n/usr/people/xiritest/.desktop-xiri-indy/panelsession|1234|1234|600\n/usr/people/xiritest/.desktop-xiri-indy/layouts/Default|1234|1234|600\n"
+    },
+    "xiritest2-saved": {
+      "files": {
+        "/usr/people/xiritest2/.Sgiresources": "4DWm*Desk 1.backgroundDescription:\t-bitmap /usr/include/X11/bitmaps/granite -bg #868686 -fg #69b5b5 \n*snapToGrid:\tTrue\nScreenSaver*lastScreenSaverTimeout:\t600\n4DWm*Reading.backgroundDescription:\t-bitmap /usr/include/X11/bitmaps/granite -bg #c9c9c9 -fg #dc9e9e \nOverview*Reading*position:\t-1\n4DWm*curNewBackground:\t3\n4DWm*Copy Desk Reading 1.backgroundDescription:\t-bitmap /usr/include/X11/bitmaps/granite -bg #9edc9e -fg #9e9edc \n",
+        "/usr/people/xiritest2/.desktop-xiri-indy/panelsession": "/usr/bin/X11/xset s off\t# SAVER_ON:0.0 #\n/usr/bin/X11/xset m 1/4 10 &\t# ACCEL_THRESH:0.0 #\n/usr/bin/X11/xset r on &\t# KEY_REPEAT:0.0 #\n/usr/bin/X11/xset -art 0 -ari 0 &\t# DELAY_AND_SPEED:0.0 #\n",
+        "/usr/people/xiritest2/.desktop-xiri-indy/layouts/Default": "Version = A\nIconScale = 2\nShowShelf = False\nShowAsGallery = False\nShowHidden = False\nShowContent = False\nShowFilter = False\nSnapToGrid = False\nTunnel = False\nQuickHelp = True\nShowFinder = True\nControlBoard = True\nTruncate = False\nPreserveLayout = False\nLayoutStyle = iconicLayout\nArrangeBy = Name\n"
+      },
+      "metadata": "/usr/people/xiritest2|1237|1237|700\n/usr/people/xiritest2/.Sgiresources|1237|1237|600\n/usr/people/xiritest2/.desktop-xiri-indy/panelsession|1237|1237|600\n/usr/people/xiritest2/.desktop-xiri-indy/layouts/Default|1237|1237|600\n"
+    }
+  },
+  "profiles": {
+    "xiritest-saved": {
+      "user": "xiritest",
+      "files": {
+        "4Dwmsession": "application \"IconCatalog_IconCatalog-Desk 1\" {\n   command          \"/usr/sbin/iconcatalog Alias \"\n   launchTime       \"login\"\n   screen           \"0\"\n}\napplication \"DesksOverview_Overview-Desk 1\" {\n   command          \"/usr/sbin/ov \"\n   launchTime       \"login\"\n   screen           \"0\"\n}\napplication \"winterm_XWsh-Desk 1\" {\n   command          \"/emul/irix/usr/sbin/xwsh -name winterm -name winterm -title winterm -name winterm -geometry 80x24+10+180 -e /usr/libexec/xiri-shell \"\n   launchTime       \"login\"\n   screen           \"0\"\n}\napplication \"xconsole_XConsole-Desk 1\" {\n   command          \"xconsole -geometry 480x130-0-0 -daemon -notify -verbose -fn fixed -exitOnFail \"\n   launchTime       \"login\"\n   screen           \"0\"\n   iconx            \"10\"\n   icony            \"10\"\n}\napplication \"xclock_XClock-Desk 1\" {\n   command          \"/emul/irix/usr/bin/X11/xclock -display 127.0.0.1:0 -update 1 -geometry 180x180+820+20 -bg gray -fg black -bd black -hd black -hl black \"\n   launchTime       \"login\"\n   screen           \"0\"\n}\napplication \"toolchest_Toolchest-Desk 1\" {\n   launchTime       \"login\"\n   wmClass          \"Toolchest\"\n   screen           \"0\"\n}\n",
+        "4Dwmdesks": "application  \"xconsole_XConsole-Desk 1\" [ hidden  =480x130+792+886         ]\napplication  \"xclock_XClock-Desk 1\" [ hidden  =180x180+820+32          ]\napplication  \"toolchest_Toolchest-Desk 1\" [ open    =103x158+10+26           ] InAllRooms\napplication  \"winterm_XWsh-Desk 1\" [ hidden  =903x480+10+180          ]\napplication  \"IconCatalog_IconCatalog-Desk 1\" [ hidden  =900x500+372+450         ]\napplication  \"DesksOverview_Overview-Desk 1\" [ open    =500x430+30+550          ] InAllRooms\nroom         \"Global\"          visible\nroom         \"Desk 1\"          visible {\n             \"IconCatalog_IconCatalog-Desk 1\" [ open    =900x500+372+450         ]\n             \"xconsole_XConsole-Desk 1\" [ iconic  =480x130+792+886         ]\n             \"winterm_XWsh-Desk 1\" [ open    =903x480+10+180          ]\n}\nroom         \"Work\"            visible {\n             \"xclock_XClock-Desk 1\" [ open    =180x180+770+332         ]\n}\n",
+        "4Dwmdeskname": "\"Work\"\n"
+      },
+      "metadata": "/usr/people/xiritest|1234|1234|700\n/usr/people/xiritest/.desktop-127.0.0.1/0.0/4Dwmdeskname|1234|1234|600\n/usr/people/xiritest/.desktop-127.0.0.1/0.0/4Dwmdesks|1234|1234|600\n/usr/people/xiritest/.desktop-127.0.0.1/0.0/4Dwmsession|1234|1234|600\n"
+    },
+    "xiritest-restoration-checked": {
+      "user": "xiritest",
+      "files": {
+        "4Dwmsession": "application \"winterm_XWsh-Desk 1\" {\n   command          \"/emul/irix/usr/sbin/xwsh -name winterm -name winterm -title winterm -name winterm -geometry 80x24+10+180 -e /usr/libexec/xiri-shell \"\n   launchTime       \"login\"\n   screen           \"0\"\n}\napplication \"xconsole_XConsole-Desk 1\" {\n   command          \"xconsole -geometry 480x130-0-0 -daemon -notify -verbose -fn fixed -exitOnFail \"\n   launchTime       \"login\"\n   screen           \"0\"\n   iconx            \"10\"\n   icony            \"10\"\n}\napplication \"xclock_XClock-Desk 1\" {\n   command          \"/emul/irix/usr/bin/X11/xclock -display 127.0.0.1:0 -update 1 -geometry 180x180+820+20 -bg gray -fg black -bd black -hd black -hl black \"\n   launchTime       \"login\"\n   screen           \"0\"\n}\napplication \"toolchest_Toolchest-Desk 1\" {\n   launchTime       \"login\"\n   screen           \"0\"\n}\napplication \"IconCatalog_IconCatalog-Desk 1\" {\n   command          \"/usr/sbin/iconcatalog Alias \"\n   launchTime       \"login\"\n   screen           \"0\"\n}\napplication \"DesksOverview_Overview-Desk 1\" {\n   command          \"/usr/sbin/ov \"\n   launchTime       \"login\"\n   screen           \"0\"\n}\n",
+        "4Dwmdesks": "application  \"xconsole_XConsole-Desk 1\" [ hidden  =480x130+792+886         ]\napplication  \"xclock_XClock-Desk 1\" [ hidden  =180x180+820+32          ]\napplication  \"toolchest_Toolchest-Desk 1\" [ open    =103x158+10+26           ] InAllRooms\napplication  \"winterm_XWsh-Desk 1\" [ hidden  =903x480+10+180          ]\napplication  \"IconCatalog_IconCatalog-Desk 1\" [ hidden  =900x500+372+450         ]\napplication  \"DesksOverview_Overview-Desk 1\" [ open    =501x430+30+550          ] InAllRooms\nroom         \"Global\"          visible\nroom         \"Desk 1\"          visible {\n             \"xconsole_XConsole-Desk 1\" [ iconic  =480x130+792+886         ]\n             \"winterm_XWsh-Desk 1\" [ open    =903x480+10+180          ]\n             \"IconCatalog_IconCatalog-Desk 1\" [ open    =900x500+372+450         ]\n}\nroom         \"Work\"            visible {\n             \"xclock_XClock-Desk 1\" [ open    =180x180+770+332         ]\n}\n",
+        "4Dwmdeskname": "\"Work\"\n"
+      },
+      "metadata": "/usr/people/xiritest|1234|1234|700\n/usr/people/xiritest/.desktop-127.0.0.1/0.0/4Dwmdeskname|1234|1234|600\n/usr/people/xiritest/.desktop-127.0.0.1/0.0/4Dwmdesks|1234|1234|600\n/usr/people/xiritest/.desktop-127.0.0.1/0.0/4Dwmsession|1234|1234|600\n"
+    },
+    "xiritest2-saved": {
+      "user": "xiritest2",
+      "files": {
+        "4Dwmsession": "application \"IconCatalog_IconCatalog-Desk 1\" {\n   command          \"/usr/sbin/iconcatalog Alias \"\n   launchTime       \"login\"\n   screen           \"0\"\n}\napplication \"DesksOverview_Overview-Desk 1\" {\n   command          \"/usr/sbin/ov \"\n   launchTime       \"login\"\n   screen           \"0\"\n}\napplication \"winterm_XWsh-Desk 1\" {\n   command          \"/emul/irix/usr/sbin/xwsh -name winterm -name winterm -title winterm -name winterm -geometry 80x24+10+180 -e /usr/libexec/xiri-shell \"\n   launchTime       \"login\"\n   screen           \"0\"\n}\napplication \"xconsole_XConsole-Desk 1\" {\n   command          \"xconsole -geometry 480x130-0-0 -daemon -notify -verbose -fn fixed -exitOnFail \"\n   launchTime       \"login\"\n   screen           \"0\"\n   iconx            \"10\"\n   icony            \"10\"\n}\napplication \"xclock_XClock-Desk 1\" {\n   command          \"/emul/irix/usr/bin/X11/xclock -display 127.0.0.1:0 -update 1 -geometry 180x180+820+20 -bg gray -fg black -bd black -hd black -hl black \"\n   launchTime       \"login\"\n   screen           \"0\"\n}\napplication \"toolchest_Toolchest-Desk 1\" {\n   launchTime       \"login\"\n   wmClass          \"Toolchest\"\n   screen           \"0\"\n}\n",
+        "4Dwmdesks": "application  \"xconsole_XConsole-Desk 1\" [ hidden  =480x130+792+886         ]\napplication  \"xclock_XClock-Desk 1\" [ hidden  =180x180+820+32          ]\napplication  \"toolchest_Toolchest-Desk 1\" [ open    =103x158+10+26           ] InAllRooms\napplication  \"winterm_XWsh-Desk 1\" [ hidden  =903x480+10+180          ]\napplication  \"IconCatalog_IconCatalog-Desk 1\" [ hidden  =900x500+372+450         ]\napplication  \"DesksOverview_Overview-Desk 1\" [ open    =500x430+30+550          ] InAllRooms\nroom         \"Global\"          visible\nroom         \"Desk 1\"          visible {\n             \"IconCatalog_IconCatalog-Desk 1\" [ open    =900x500+372+450         ]\n             \"xconsole_XConsole-Desk 1\" [ iconic  =480x130+792+886         ]\n             \"winterm_XWsh-Desk 1\" [ open    =903x480+10+180          ]\n}\nroom         \"Reading\"         visible {\n             \"xclock_XClock-Desk 1\" [ open    =180x180+770+332         ]\n}\n",
+        "4Dwmdeskname": "\"Reading\"\n"
+      },
+      "metadata": "/usr/people/xiritest2|1237|1237|700\n/usr/people/xiritest2/.desktop-127.0.0.1/0.0/4Dwmdeskname|1237|1237|600\n/usr/people/xiritest2/.desktop-127.0.0.1/0.0/4Dwmdesks|1237|1237|600\n/usr/people/xiritest2/.desktop-127.0.0.1/0.0/4Dwmsession|1237|1237|600\n"
+    }
+  },
+  "restored_resources": {
+    "xiritest-restored": "*snapToGrid:\tFalse\n4DWm*Copy Desk Work 1.backgroundDescription:\t-bitmap /usr/include/X11/bitmaps/granite -bg #9edc9e -fg #9e9edc \n4DWm*Desk 1.backgroundDescription:\t-bitmap /usr/include/X11/bitmaps/granite -bg #868686 -fg #69b5b5 \n4DWm*Work.backgroundDescription:\t-bitmap /usr/include/X11/bitmaps/granite -bg #c9c9c9 -fg #dc9e9e \n4DWm*curNewBackground:\t3\nBackground*useGl:\tFalse\nOverview*Work*position:\t-1\nScreenSaver*lastScreenSaverTimeout:\t600\nXWsh*font:\t-adobe-courier-bold-r-normal--20-140-100-100-m-110-iso8859-1\nwinterm*font:\t-adobe-courier-bold-r-normal--20-140-100-100-m-110-iso8859-1\n"
+  },
+  "panel_replays": {
+    "xiritest-restored": "/usr/X11R7/bin/xset s 600 600\t# SAVER_DELAY:0.0 #\n/usr/X11R7/bin/xset m 7 6 &\t# ACCEL_THRESH:0.0 #\n/usr/X11R7/bin/xset r off &\t# KEY_REPEAT:0.0 #\n# Xiri: SGI repeat timing requires XSGI-Misc.\n"
+  },
+  "run_directory": ".work/desktop-controls-cold/qualified-wtt7gbg3",
+  "limitation": "Host owner interrupted after both users saved their panel/desk choices. Saved-disk controller recovery did not complete; independent fresh-image restoration/reboot follows.",
+  "recovery_results": {
+    "result.json": "760d8511e51976b2402d1521245586978897c84c635852b733c5976e3eaf447f",
+    "second-recovery-result.json": "d7ad9443d940fa3405a61e9ae9ec79de254515c69f4a0c4fc89152778001c692",
+    "third-recovery-result.json": "bc3c3555f8dfc8fb61c1e69ae9791429cbacfba504db0d6febb1f98e833614d9"
+  }
+}

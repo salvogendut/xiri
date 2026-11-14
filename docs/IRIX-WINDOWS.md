@@ -43,9 +43,18 @@ This is the original policy distinction, also described in SGI's
 4. Toolchest and Overview stay visible across desks. **Global** holds windows
    that appear on every desk.
 
-The original [Overview manual](https://techpubs.jurassic.nl/manpages_0530/cat1/ov.html)
-describes its other commands. Rename, delete and more complex arrangements
-need their own checks; availability in a menu is not a functional pass.
+Select a desk, then use **Desk → Rename Selected** (`Ctrl+R`), type its name
+and press Return. **Copy Selected** (`Ctrl+C`) makes another desk. Use
+**Desk → Delete Selected** to remove the selected extra desk. In the measured
+occupied-desk case, its xclock window returns to the remaining desk without
+closing the application.
+
+The desk where the session starts is protected. Overview displays **Desk
+Overview Error** with instructions: in continuous-save mode switch to another
+desk first; in explicit-save mode set a new home session from Windows settings.
+Dismiss that message with **OK**. The original
+[Overview manual](https://techpubs.jurassic.nl/manpages_0530/cat1/ov.html) describes
+the wider command set; complex arrangements remain separate checks.
 
 ## Saving an arrangement
 

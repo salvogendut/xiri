@@ -2,6 +2,23 @@
 set -eu
 job=$(cd "$1" && pwd)
 cd "${HOME:?Desktop session needs a home directory.}"
+# Original control panels save X server settings as commands, independently
+# of Xt resources and 4Dwm's saved windows. Replay them after the session's
+# initial xset defaults, inside the user's supervised process group.
+panels="$HOME/.desktop-$(hostname)/panelsession"
+if test -r "$panels"; then
+    # Keyboard also writes SGI repeat timing when its unavailable controls
+    # report zero. Xorg has no -art/-ari options; retain its native timing.
+    sed -e 's|^/usr/bin/X11/xset -art[[:space:]].*|# Xiri: SGI repeat timing requires XSGI-Misc.|' \
+        -e 's|^/usr/bin/X11/xset\([[:space:]]\)|/usr/X11R7/bin/xset\1|' \
+        -e 's|^/usr/bin/X11/xmodmap\([[:space:]]\)|/usr/X11R7/bin/xmodmap\1|' \
+        "$panels" >"$job/panelsession"
+    if . "$job/panelsession" >"$job/panelsession.out" 2>"$job/panelsession.err"; then
+        :
+    else
+        echo 'Some saved panel commands failed; see panelsession.err.' >&2
+    fi
+fi
 # The vendor workspace reads Desktop links; the marker selects Dumpster's FTR.
 # Seed a new desktop once, preserving later user additions and removals.
 if test ! -d "$HOME/Desktop"; then

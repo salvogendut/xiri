@@ -260,6 +260,31 @@ to apply it. Saved application windows are controlled separately through
 Xmahjongg is available from **Freeware** or winterm; it is no longer part of
 the default desktop startup. A saved session can include it.
 
+The original **Desktop**, **Icon Views**, **Mouse**, **Screen Saver** and
+**Keyboard** panels are also available under **Desktop → Customize** and in
+the Catalog's **ControlPanels** page. From winterm their executable names are
+`desktop`, `fmprefs`, `mouse`, `screensaver` and `keyboard`, under
+`/emul/irix/usr/sbin/`.
+
+Desktop's **Align to Grid** choice is saved in `.Sgiresources`; Icon Views
+saves its default layout, including **Hidden Files**, in
+`~/.desktop-<hostname>/layouts/Default`. Mouse acceleration, screen blanking
+and keyboard repeat are X server settings. Their panels save commands in
+`~/.desktop-<hostname>/panelsession`. Xiri replays those commands as the
+desktop user after applying the session's initial X defaults. It translates
+the original `xset` and `xmodmap` paths in a private session copy and leaves
+the user's original file intact. Include `panelsession` and `layouts` in
+profile backups.
+
+**Key Repeat** works, but **Repeat Speed** and **Repeat Delay** remain disabled:
+Xorg does not provide the SGI `XSGI-Misc` extension. Xiri omits the unsupported
+`-art`/`-ari` timing command when replaying this panel's saved settings, keeping
+Xorg's native repeat timing. The [two-user visual check](results/2026-11-14-desktop-controls-iconviews.json)
+confirms different hidden-file visibility in new File Manager windows after
+login, with the matching checkbox retained in the reopened panel.
+Screen Saver currently covers standard X screen
+blanking; its animated saver list and DPMS support are separate work.
+
 ## Saved desktop sessions
 
 The [window and desk guide](IRIX-WINDOWS.md) explains title-bar/keyboard

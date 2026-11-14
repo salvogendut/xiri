@@ -70,6 +70,41 @@
       "label": "Cleanup passes in paired replays; functionality unqualified",
       "note": "The old GIMP and current native-wait images each track and clean up both descendants, confirm absent PIDs and halt cleanly. The first bounded X query still times out; subsequent queries recover. The original absent=0/valid=0 tracking failure remains unexplained. Useful interaction and normal application exit remain untested.",
       "report": "results/2026-11-05-process-tracking.md"
+    },
+    "app-034": {
+      "target": "/usr/sbin/desktop",
+      "label": "Grid resource and persistence pass",
+      "note": "The original panel saves independent grid choices for two users; the saved resource is loaded after login. Full desktop-icon snap gestures remain separate. Panels were launched from winterm; catalog double-click was not repeated for each panel.",
+      "report": "results/2026-11-14-desktop-controls.md",
+      "candidate_module_sha256": "ad6ec8756c835bec4395c62428550a0d2877ec6c587b1ca1d793254798f6d8ea"
+    },
+    "app-036": {
+      "target": "/usr/sbin/fmprefs",
+      "label": "Hidden-file defaults and persistence pass",
+      "note": "The original panel saves opposite Hidden Files choices for two users. After login, fresh File Manager folders show both files for xiritest and only the visible file for xiritest2; reopened checkboxes agree. Other layout controls remain separate. Panels were launched from winterm; catalog double-click was not repeated for each panel.",
+      "report": "results/2026-11-14-desktop-controls.md",
+      "candidate_module_sha256": "ad6ec8756c835bec4395c62428550a0d2877ec6c587b1ca1d793254798f6d8ea"
+    },
+    "app-037": {
+      "target": "/usr/sbin/keyboard",
+      "label": "Key Repeat and persistence pass",
+      "note": "The unchanged original panel opens after admitting its initialized n32 half-page data layout. Key Repeat changes native X state and survives login. Repeat Speed/Delay remain disabled without XSGI-Misc; unsupported saved SGI timing options are omitted during replay. Panels were launched from winterm; catalog double-click was not repeated for each panel.",
+      "report": "results/2026-11-14-desktop-controls.md",
+      "candidate_module_sha256": "ad6ec8756c835bec4395c62428550a0d2877ec6c587b1ca1d793254798f6d8ea"
+    },
+    "app-040": {
+      "target": "/usr/sbin/mouse",
+      "label": "Acceleration presets and persistence pass",
+      "note": "Fast 1 (7/1, threshold 6) and Slow 2 (1/4, threshold 10) change native X pointer settings and survive separate-user logins. Handedness and click-speed behavior remain separate. Panels were launched from winterm; catalog double-click was not repeated for each panel.",
+      "report": "results/2026-11-14-desktop-controls.md",
+      "candidate_module_sha256": "ad6ec8756c835bec4395c62428550a0d2877ec6c587b1ca1d793254798f6d8ea"
+    },
+    "app-041": {
+      "target": "/usr/sbin/screensaver",
+      "label": "Blanking setting and persistence pass",
+      "note": "The original panel saves standard X blanking at 600 seconds or off for separate users. The native server setting is restored after login; animated savers and DPMS remain outside this check. Panels were launched from winterm; catalog double-click was not repeated for each panel.",
+      "report": "results/2026-11-14-desktop-controls.md",
+      "candidate_module_sha256": "ad6ec8756c835bec4395c62428550a0d2877ec6c587b1ca1d793254798f6d8ea"
     }
   }
 }
