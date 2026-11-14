@@ -1,5 +1,12 @@
 # IRIX import profiles
 
+Maintain separate **6.5.22** and **6.5.30** deliverables. Each version has its
+own donor pin, import profile, qualification and CHD. The current qualified
+profile is 6.5.22f; the original-media 6.5.30f donor is the next qualification
+target. The shared [native package profile](../docs/NATIVE-PACKAGE.md) describes
+NetBSD components and does not establish compatibility with an untested vendor
+release.
+
 `./xiri import` builds a vendor payload without reading a previous NetBSD image,
 historical staging directories or the selected manual-image pointer. Run it on
 the host with Python 3, `guestfish`/libguestfs and `chdman` installed:

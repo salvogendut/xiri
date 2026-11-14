@@ -135,6 +135,13 @@ installer or IRIX 6.5.30 qualification is implied by this import step.
 
 ## Separate IRIX 6.5.30 workflow
 
+**Release policy:** always maintain two deliverables, one for IRIX 6.5.22 and
+one for IRIX 6.5.30. Each has its own donor, import profile, qualification record
+and manual-test CHD; neither replaces the other. Native NetBSD components may
+be shared only where validated with both releases. Qualify the first 6.5.30
+payload after the native-package milestone; a planned second version is not
+yet a qualified image.
+
 Maintain a separate original-media installation and Xiri qualification process
 for **IRIX 6.5.30**, as requested on November 14. Reuse common tooling, with
 release-specific media manifests, installation recipes, import profiles, donor
@@ -227,9 +234,9 @@ test passwords and probe histories must not be installation prerequisites.
 | Read-only donor access | `./xiri import` takes explicit source/output paths, pins the donor, mounts XFS with `ro,norecovery`, reports missing files and cleans temporary extraction state. | Broader release/partition discovery and separately audited donor profiles. |
 | Resource provenance | Versioned 6.5.22f desktop/fonts/Acrobat profile, dependency closure, conflict checks and missing-component errors. | Separate sources and profiles for GIMP, GNOME and freeware absent from this donor. |
 | Payload archive | Normalized modes and metadata; two builds produce identical archives/manifests. NetBSD pax extraction passes all file hashes. | Managed installation with target-side type/mode/link verification, backup and retry semantics. |
-| Native runtime | `runtime/Makefile`, `runtime/install.sh`, services and account synchronization. | Package its prerequisites as well as integration files; add complete preflight and managed-install records. |
-| Kernel/module | Qualified builds and matching artifact manifests. | Package or identify the exact compatible pair; separate kernel installation/reboot from desktop activation. |
-| Display and native services | Qualified Newport driver, Xorg configuration and patched FAM. | Reproducible build/package inputs independent of a populated desktop seed. |
+| Native runtime | [Native packager](NATIVE-PACKAGE.md) cross-builds helpers from pinned sets, assembles maintained integration files and records the native ELF closure. [6.5.22f qualification](results/2026-11-14-native-package.md) passes repeat installation, preserved configuration and desktop/native-user checks. | Complete managed-install preflight, backups, recovery and owned-file records. |
+| Kernel/module | The native profile pins and packages the qualified kernel/boot/module pair with original provenance. | Keep kernel installation/reboot separate from desktop activation; qualify it on a clean target. |
+| Display and native services | Native package includes the pinned Newport driver, Xorg configuration and patched FAM/rpcbind; stock X libraries and tools are explicit prerequisites. | Rebuild changed artifacts through audited profiles; qualify complete clean-target deployment. |
 | Desktop validation | Imported 6.5.22f desktop/shell/File Manager, logout/relogin and native ctwm smoke checks on a qualified native base. | Run the broader image/multi-user/preferences checks on a clean installation, including reinstall and failure recovery. |
 | Reusable CHD | Current `build-xiri-image.py` verifies a prepared guest and its CHD round trip. | Make CHD production consume the same installation workflow rather than a chain of previously modified desktop images. |
 

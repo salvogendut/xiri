@@ -1,0 +1,131 @@
+{
+  "schema": 1,
+  "status": "qualified-6.5.22f",
+  "profile": "profiles/netbsd-sgimips-native-v1.json",
+  "profile_sha256": "892b7dede0b44404c2b4400581bf12add71918328fe10c7f82f1f33c2a0943ab",
+  "package": {
+    "retained_bundle": ".work/packages/netbsd-sgimips-native-v1",
+    "archive_sha256": "e28c1f08eb0ace50c38e87b13b9a1e70cd486b87895fe30518ec306950a1d354",
+    "manifest_sha256": "65d8bdf461952584713eb2079ea3257f0f1b7b76fd58b67ead3d96ea4dcedbb7",
+    "archive_bytes": 6074650,
+    "payload_entries": 47,
+    "native_prerequisites": 80,
+    "library_edges": 281
+  },
+  "target": {
+    "kernel_arch": "mips64eb",
+    "kernel_release": "11.99.9",
+    "kernel_sha256": "c92f0b2fcc182836393a87ca41a0315a0681e93ed3e904fad925d3c370e4dd98",
+    "kernel_version_sha256": "adfb3e50a966c4e330e1e870a3973feb55f5b541580b5aa63a5d81cba4d65d63",
+    "machine": "sgimips",
+    "system": "NetBSD",
+    "userland_abi": "o32",
+    "userland_release": "11.0"
+  },
+  "reproducibility": {
+    "native.tar.gz": {
+      "sha256": "e28c1f08eb0ace50c38e87b13b9a1e70cd486b87895fe30518ec306950a1d354",
+      "bytes": 6074650,
+      "independent_rebuild_identical": true
+    },
+    "manifest.json": {
+      "sha256": "65d8bdf461952584713eb2079ea3257f0f1b7b76fd58b67ead3d96ea4dcedbb7",
+      "bytes": 74358,
+      "independent_rebuild_identical": true
+    }
+  },
+  "host_tests": {
+    "full_suite_passed": 83,
+    "new_native_tests": 5,
+    "native_tests_rerun_after_build_fingerprint_change": true
+  },
+  "upstream_record": "docs/results/2026-11-14-native-package-upstream.json",
+  "release_policy": {
+    "maintained_lines": [
+      "6.5.22",
+      "6.5.30"
+    ],
+    "separate": [
+      "donor",
+      "import profile",
+      "qualification",
+      "CHD"
+    ],
+    "native_sharing": "only after qualification with both versions"
+  },
+  "limits": [
+    "Assembly and read-only preflight; managed installation/recovery and clean-target boot qualification are separate.",
+    "Pinned kernel, module and patched service/driver artifacts are supplied explicitly, not rebuilt by this packager.",
+    "No IRIX files, accounts, passwords, homes or machine-wide configuration are copied from a prepared image.",
+    "The native package fixture inherits native base configuration and user homes.",
+    "The current manual image remains selected and unchanged.",
+    "6.5.30 qualification follows this native-package milestone."
+  ],
+  "guest": {
+    "status": "passed",
+    "profile": "irix-6.5.22f-v1",
+    "evidence": ".work/packages/netbsd-sgimips-native-v1/verification",
+    "result_sha256": "643427ec4a1c1eb14f41f462b9867ac3727a01a7eca7ba7ec85438cc4c1fe651",
+    "probe_sha256": "150ab839a99d4643cccd655ca318bb5f56753287db31a6770c5b8aef44abfaaf",
+    "base_chd_sha256": "61f9b9883303470b68877083547d203bf3b177fe4ccb93136096ee9ed770611d",
+    "native_package": {
+      "archive_sha256": "e28c1f08eb0ace50c38e87b13b9a1e70cd486b87895fe30518ec306950a1d354",
+      "manifest_sha256": "65d8bdf461952584713eb2079ea3257f0f1b7b76fd58b67ead3d96ea4dcedbb7",
+      "installer_fixture_sha256": "99bfa8abb849ee551dc0b3626b9d01651bb7caa6e143c40bb074817e98ff15c9",
+      "preflight": "Xiri native preflight passed. No target files or service settings were changed.\n",
+      "wrong_kernel_rejected": "Xiri native preflight: target kernel differs from the supplied kernel/module pair\n",
+      "missing_prerequisite_rejected": "Xiri native preflight: missing native prerequisite: /bin/chmod\n",
+      "install_and_repeat": "Xiri native preflight passed. No target files or service settings were changed.\n"
+    },
+    "sessions": [
+      {
+        "label": "desktop-first",
+        "shell": [
+          "xiritest",
+          "/usr/people/xiritest",
+          "/usr/people/xiritest",
+          "IRIX_SHELL_OK"
+        ],
+        "dimensions": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+        "identity": "SESSION user=xiritest uid=1234 groups=1234 1235 home=/usr/people/xiritest cwd=/usr/people/xiritest display=127.0.0.1:0 authority=/tmp/.XauthRdpnUM\n"
+      },
+      {
+        "label": "desktop-relogin",
+        "shell": [
+          "xiritest",
+          "/usr/people/xiritest",
+          "/usr/people/xiritest",
+          "IRIX_SHELL_OK"
+        ],
+        "dimensions": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+        "identity": "SESSION user=xiritest uid=1234 groups=1234 1235 home=/usr/people/xiritest cwd=/usr/people/xiritest display=127.0.0.1:0 authority=default\n"
+      }
+    ],
+    "file_manager_window": true,
+    "native_ctwm_with_visible_uxterm": true,
+    "screenshots": {
+      "greeter": "5571cddf81515041f021a3636402bb746e432e60c7d356b93ea3241f21f9b0a5",
+      "desktop-first": "afa74c3003091f9cc4c7bde5c4b39eef2a1bd01c61b73009cdeea034475db586",
+      "desktop-filemanager": "56dcba33d5542777b332941fc047f541fe964f092a3373cbf31ca3b3f0f83540",
+      "desktop-relogin": "cb95625453adc429754ea42846fb59ae22eca857e0a4ab73022b0cc775d8ba6f",
+      "native-ctwm": "6dec8f45c5b7a384c10e3d4f63319eeb809ba0e10233badc6b797983308baca0"
+    },
+    "clean_shutdown": true,
+    "base_unchanged": true
+  },
+  "cleanup": {
+    "removed": ".work/native-package-check2",
+    "allocated_file_bytes_removed": 873533440,
+    "available_bytes_before": 490238177280,
+    "available_bytes_after": 490238177280,
+    "owned_pgid_stopped": 440247,
+    "disk_readers_absent": true,
+    "result": "passed",
+    "base_unchanged": true,
+    "scope": "Allocation sum is not physical space freed when reflinks share extents."
+  },
+  "visual_checks": [
+    "desktop-first.png: full display, winterm, xclock, Toolchest, catalog icons and desktop icons",
+    "native-ctwm.png: visible UXTerm and native ctwm menu"
+  ]
+}

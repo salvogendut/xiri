@@ -3,7 +3,9 @@
 Xiri runs original IRIX applications and desktop components on NetBSD and
 X.org. The long-term target is a maintained operating system for real SGI
 workstations; current development uses an R4400 Indy in the IRIS emulator.
-Our reference is **IRIX 6.5.22m**. Other releases and physical hardware need
+Our current manual reference is **IRIX 6.5.22m**. We maintain separate release
+lines for **6.5.22 and 6.5.30**, each with its own profiles, qualification and
+CHD; 6.5.30 qualification is next after native packaging. Physical hardware needs
 separate qualification.
 
 The current desktop runs original 4Dwm, Toolchest, Icon Catalog, File Manager,
@@ -241,9 +243,12 @@ payload from our own original-media IRIX 6.5.22f installation. Its
 [NetBSD desktop checks](docs/results/2026-11-14-irix-import.md) cover full-screen
 xdm, the IRIX desktop and shell, File Manager, logout/relogin and native ctwm.
 The existing manual-test CHD remains the 6.5.22m reference, with its additional
-applications. The next [installation stage](docs/XIRI-INSTALLATION.md) packages
-the matching NetBSD module, native services and desktop configuration, then
-qualifies a clean target without inheriting a prepared Xiri image.
+applications. The [native package](docs/NATIVE-PACKAGE.md) now assembles the
+matching kernel/module, native services, display driver and cross-built session
+runtime without reading a prepared image. Its [6.5.22f qualification](docs/results/2026-11-14-native-package.md)
+passes installation/reinstallation, desktop/shell, logout/relogin and native ctwm.
+Next comes the separate 6.5.30 version, followed by managed installation and a
+clean target without inherited desktop configuration or user homes.
 
 Compatibility is incomplete. The reproduced Type1 collapse is corrected;
 winterm keeps the verified NetBSD bitmap Courier default. Broader graphics operations,

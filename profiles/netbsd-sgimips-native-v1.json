@@ -1,0 +1,140 @@
+{
+  "schema": 1,
+  "id": "netbsd-sgimips-native-v1",
+  "target": {
+    "system": "NetBSD",
+    "machine": "sgimips",
+    "userland_abi": "o32",
+    "userland_release": "11.0",
+    "kernel_release": "11.99.9",
+    "kernel_arch": "mips64eb",
+    "kernel_version_sha256": "adfb3e50a966c4e330e1e870a3973feb55f5b541580b5aa63a5d81cba4d65d63"
+  },
+  "release_lines": [
+    "6.5.22",
+    "6.5.30"
+  ],
+  "release_note": "Native package is shared in design; each vendor release requires separate desktop qualification.",
+  "compiler_sha256": "f5c7cd285f843a9112b6bf2b883f5d5aa036c4e68c7f4bb58ed3e8f9cdccfcf4",
+  "sets_manifest": {
+    "path": "lab/netbsd-11.0/SHA512SUMS",
+    "sha256": "c46508bd2f7dbe29e7b16595e31c74e37dbd30342e39c61eeae32f472090fabb"
+  },
+  "target_sets": [
+    "base.tgz",
+    "etc.tgz",
+    "xbase.tgz",
+    "xetc.tgz",
+    "xfont.tgz",
+    "xserver.tgz"
+  ],
+  "build_sets": [
+    "comp.tgz",
+    "xcomp.tgz"
+  ],
+  "artifacts": {
+    "kernel": {
+      "sha256": "c92f0b2fcc182836393a87ca41a0315a0681e93ed3e904fad925d3c370e4dd98",
+      "destination": "/netbsd",
+      "component": "kernel",
+      "provenance": {
+        "lab/native-wait/build.json": "3a0042397ae75d05a5af15a407f305afe284cc0dd830a2733fc3dd27960f4615",
+        "lab/native-wait/source-equivalence.json": "441313ecf95d59d87c085a228e70a2af24946bd7fb63b8ed5758418c48ef3c9c"
+      }
+    },
+    "boot": {
+      "sha256": "5fd2dd05d1549e0e6e29a02c2d6d8c6bae2b8443edad272f12e878f24eb06e54",
+      "destination": "/netbsd.boot",
+      "component": "kernel",
+      "provenance": {
+        "lab/native-wait/build.json": "3a0042397ae75d05a5af15a407f305afe284cc0dd830a2733fc3dd27960f4615"
+      }
+    },
+    "module": {
+      "sha256": "ad6ec8756c835bec4395c62428550a0d2877ec6c587b1ca1d793254798f6d8ea",
+      "destination": "/stand/sgimips/11.99.9/modules/compat_irix_o32/compat_irix_o32.kmod",
+      "component": "module",
+      "provenance": {
+        "lab/irix-desktop-controls/module-build.json": "a9628502ee77ca6ff5152a3400bb797916b097b53685a253521cd94b68a475e6"
+      }
+    },
+    "famd": {
+      "sha256": "c3e6ebe5e8db7feecce6267a487174a5a3baa7eb6fb9cf1cb93ace44bf234889",
+      "destination": "/usr/local/sbin/famd",
+      "component": "services",
+      "provenance": {
+        "lab/native-fam/source.json": "64aaa0f782e75cccd5b7642f93be2c061e9b409a7201265a3bd080b97eaf6f70"
+      }
+    },
+    "rpcbind": {
+      "sha256": "1905df69b5a20e3c229627355604cb1276b1ed9fabcff843f8abc51ba4cd7354",
+      "destination": "/usr/sbin/rpcbind",
+      "component": "services",
+      "provenance": {
+        "lab/native-rpcbind/source.json": "5a10cb70ecde9df771239d4a65083b3bed25abf205acde5be98d31d96bf664c5"
+      }
+    },
+    "newport": {
+      "sha256": "0fcd56d2ce8785a4c702afa58bf8921862d8307b737e293430c95b9113f7a08f",
+      "destination": "/usr/X11R7/lib/modules/drivers/newport_drv.so",
+      "component": "display",
+      "provenance": {
+        "lab/newport-xaa/source.json": "75dca9c03076ec929b6f4cf93541789759999ef06f0cb191e4676358c87cea2b",
+        "lab/newport-text/source.json": "dcc8c28a1e601a495b47aca4c49ee5c1148a40976f0c7ac59be24531ddabf3fd"
+      }
+    }
+  },
+  "native_programs": [
+    "/bin/sh",
+    "/bin/cp",
+    "/bin/mkdir",
+    "/bin/pax",
+    "/bin/ps",
+    "/bin/chmod",
+    "/bin/kill",
+    "/usr/bin/awk",
+    "/usr/bin/grep",
+    "/usr/bin/sed",
+    "/usr/bin/su",
+    "/usr/bin/stat",
+    "/usr/bin/sha256",
+    "/usr/bin/pgrep",
+    "/usr/bin/getent",
+    "/usr/bin/id",
+    "/usr/sbin/pwd_mkdb",
+    "/sbin/modload",
+    "/sbin/modstat",
+    "/usr/X11R7/bin/Xorg",
+    "/usr/X11R7/bin/xdm",
+    "/usr/X11R7/bin/ctwm",
+    "/usr/X11R7/bin/xterm",
+    "/usr/X11R7/bin/xauth",
+    "/usr/X11R7/bin/xrdb",
+    "/usr/X11R7/bin/xset",
+    "/usr/X11R7/bin/xwininfo",
+    "/usr/X11R7/bin/mkfontdir"
+  ],
+  "native_resources": [
+    "/usr/X11R7/lib/X11/fonts/100dpi/courB14-ISO8859-1.pcf.gz",
+    "/etc/X11/xdm/Xsession",
+    "/etc/pam.d/xdm"
+  ],
+  "configuration_sources": {
+    "/usr/local/share/xiri/xorg.conf": "lab/irix-installed-desktop/xorg.conf"
+  },
+  "required_aliases": {
+    "/usr/lib/desktop": "/emul/irix/usr/lib/desktop"
+  },
+  "generated_state": [
+    "IRIX account tables",
+    "PTY aliases",
+    "font indexes",
+    "filetype database",
+    "per-user .xsession selection"
+  ],
+  "preserve": [
+    "native accounts and passwords",
+    "user homes and preferences",
+    "administrator rc.conf/ttys/modules.conf policy"
+  ]
+}

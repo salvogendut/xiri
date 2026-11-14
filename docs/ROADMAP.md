@@ -299,8 +299,11 @@ produces byte-identical payloads and manifests in independent builds. Its
 desktop, shell, File Manager, logout/relogin and a native ctwm account. The
 current 6.5.22m manual-test CHD remains selected; its extra freeware applications
 are not present in the original-media donor.
-Package the native prerequisites next, then qualify a clean target install and
-repeat installation without relying on prepared desktop seeds or user homes.
+The [native package](NATIVE-PACKAGE.md) now builds independently of those images;
+[6.5.22f guest qualification](results/2026-11-14-native-package.md) passes,
+including repeat installation and preserved configuration. Try the separate
+6.5.30 version next, then qualify managed installation and repeat
+installation on a clean target without prepared desktop seeds or user homes.
 The linked MAME guide documents donor preparation; its IRIX formatting and Xsgi
 steps are not NetBSD installation instructions. Vendor import is qualified;
 the complete clean-target installer remains unfinished.
@@ -309,6 +312,9 @@ the complete clean-target installer remains unfinished.
   process, with its own media pins, donor CHD, resource profile and Xiri acceptance
   results. Start from Prismatic's recorded O2/Octane 6.5.30f installations; retain
   6.5.22 independently. See the [separate workflow](XIRI-INSTALLATION.md#separate-irix-6530-workflow).
+  Always produce both 6.5.22 and 6.5.30 versions, with separate profiles,
+  qualification records and test CHDs. Try 6.5.30 immediately after qualifying
+  the native package; share native artifacts only after checking both versions.
 
 The user requested these deployment changes on 2026-11-03. The implementation
 order was updated to prioritize the kernel module at the user’s request:

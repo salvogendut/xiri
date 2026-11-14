@@ -51,6 +51,14 @@ not repin qualified kernels, emulator binaries, runtime resources or guest disks
 
 ## IRIS upstream updates
 
+The November 14 native-package cycle integrates six upstream commits through
+`5fb831ce` as `a986a0a1` on `xiri`, with a clean merge. The affected rendering
+changes add test-only presenter observation; both CLI builds, 226 Newport
+tests, five display tests and the new real-window Vulkan presenter comparison
+pass. The [integration record](results/2026-11-14-native-package-upstream.json)
+retains commands and log hashes. The NetBSD package check keeps the manual
+image's independently qualified `819c6825` emulator.
+
 The November 14 vendor-import cycle fetched upstream `49210388` again; it is
 already included in IRIS `xiri` at `7c4552a6`, with no incoming commits. No
 emulator merge or rebuild was needed. The import check uses the selected

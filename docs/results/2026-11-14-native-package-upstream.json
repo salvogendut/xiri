@@ -1,0 +1,99 @@
+{
+  "upstream": "5fb831ce7057a8978759ae57b151d631a448d1e7",
+  "merged": "a986a0a15f463d34c35758cfaf24d36bc9f24d4f",
+  "checks": [
+    {
+      "name": "default-build",
+      "command": [
+        "/var/home/salvogendut/Dev/xiri/.work/cargo/bin/cargo",
+        "+nightly-2026-10-28",
+        "build",
+        "--locked",
+        "--offline",
+        "--bin",
+        "iris",
+        "--bin",
+        "iris-ci"
+      ],
+      "returncode": 0,
+      "log_sha256": "a5876f8484388efcfaf91792fcc6464a7ab34179facca9000949923b1f406495",
+      "result": [
+        "    Finished `dev` profile [unoptimized] target(s) in 3m 01s"
+      ]
+    },
+    {
+      "name": "newport-tests",
+      "command": [
+        "/var/home/salvogendut/Dev/xiri/.work/cargo/bin/cargo",
+        "+nightly-2026-10-28",
+        "test",
+        "--locked",
+        "--offline",
+        "--lib",
+        "--features",
+        "wgpu,rex-jit,rexdiag",
+        "dev::ng1",
+        "--",
+        "--test-threads=2"
+      ],
+      "returncode": 0,
+      "log_sha256": "a55b28545ceb9098ae93a3b02f86e6cb074b588ae23e9463c0a9f1c71ec69bbf",
+      "result": [
+        "test result: ok. 226 passed; 0 failed; 22 ignored; 0 measured; 4809 filtered out; finished in 15.93s"
+      ]
+    },
+    {
+      "name": "display-tests",
+      "command": [
+        "/var/home/salvogendut/Dev/xiri/.work/cargo/bin/cargo",
+        "+nightly-2026-10-28",
+        "test",
+        "--locked",
+        "--offline",
+        "--lib",
+        "--features",
+        "wgpu,rex-jit,rexdiag",
+        "disp::",
+        "--",
+        "--test-threads=2"
+      ],
+      "returncode": 0,
+      "log_sha256": "b6bdc267520ffe8ca5146eddfbb39bfac69f64e78c676c85158c7ecd65b09a29",
+      "result": [
+        "test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 5052 filtered out; finished in 0.00s"
+      ]
+    },
+    {
+      "name": "presenter-gpu",
+      "command": [
+        "xvfb-run",
+        "-a",
+        "/var/home/salvogendut/Dev/xiri/.work/cargo/bin/cargo",
+        "+nightly-2026-10-28",
+        "test",
+        "--locked",
+        "--offline",
+        "--lib",
+        "--features",
+        "wgpu,rex-jit,rexdiag",
+        "resident_frame_gpu_common_presenter_pixels_without_routine_readback",
+        "--",
+        "--ignored",
+        "--nocapture",
+        "--test-threads=1"
+      ],
+      "returncode": 0,
+      "log_sha256": "92fa9801004d0ac34c0ecec5ef223cefeb531284d57cf8dd6b6be96db6c2b1dc",
+      "result": [
+        "test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 5056 filtered out; finished in 0.25s"
+      ]
+    }
+  ],
+  "status": "passed",
+  "previous_xiri": "7c4552a6aacf5915b7e951c6c60228216b342215",
+  "incoming_commits": 6,
+  "integration": "clean merge; upstream changes to rendering code are test-only; native-window GPU check passed",
+  "manual_emulator_unchanged": "819c6825504d40ad9f9aa00554249affd2da9446",
+  "pushed": true,
+  "removed_build_cache_allocated_bytes": 1574166528
+}

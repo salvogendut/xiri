@@ -1,9 +1,12 @@
 # Native services and desktop sessions
 
 This is the maintained NetBSD userspace integration for the imported IRIX
-6.5.22m desktop. Historical `lab/` launchers remain for reproducing their
+6.5.22 desktop. Historical `lab/` launchers remain for reproducing their
 original images. Installing this runtime does not import applications or
 change the kernel or selected CHD. Native xdm configuration is opt-in.
+The [native package](../docs/NATIVE-PACKAGE.md) cross-builds this runtime with
+explicit X11 sysroot flags and assembles its pinned prerequisites. The two
+6.5.22/6.5.30 release lines retain separate vendor qualification.
 
 ## Ownership
 
@@ -111,8 +114,8 @@ unmounted. The existing native winterm shell handoff remains in place.
 
 Run `xiri-desktop` as root for the existing manual workflow. On a display
 already owned by a login session, run `/usr/local/bin/xiri-session` as
-`xiritest`. The user entry refuses an inaccessible display, a root caller,
-a different configured account, missing services, or an existing window
+the ordinary native user. The user entry refuses an inaccessible display,
+a root caller, an unusable HOME, missing services, or an existing window
 manager. Session logs are under `$HOME/.xiri/sessions/session.*`; the manual
 wrapper uses `/var/tmp/xiri-desktop/session.*` and labels the user explicitly.
 An optional `XIRI_SESSION_MS` duration is in milliseconds (zero means no time

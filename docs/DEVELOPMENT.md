@@ -10,6 +10,7 @@ The entry point covers routine work against the selected image; the older
 | Command | Effect |
 | --- | --- |
 | `./xiri import --source DONOR --output NEW_BUNDLE [--component acrobat]` | Build a deterministic vendor archive and provenance manifest from the pinned original-media IRIX donor. Independent of the selected NetBSD image; see the [profile guide](../profiles/README.md). |
+| `./xiri package-native --artifacts INPUTS.json --compiler CC --sets SETS --output NEW_BUNDLE` | Assemble pinned native components and cross-build the session runtime from verified distribution sets. See the [native package guide](NATIVE-PACKAGE.md). |
 | `./xiri status [--json]` | Show the selected image, its kernel/emulator pins and current integration worktree revisions/status. Source tips can be newer than the tested image. |
 | `./xiri doctor` | Hash-check immutable image inputs and the qualification record; check host tools and Toolbox. It does not boot a guest. |
 | `./xiri run` | Open the bundle's pinned IRIS launcher for manual testing. NVRAM, overlays and snapshots retain normal manual-session behavior. |

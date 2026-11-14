@@ -23,3 +23,10 @@ Keep existing detached lab worktrees at their pinned commits for reproduction.
 Do new development in the fork checkout or a topic worktree, and preserve
 qualified artifacts until the replacement has been tested. See
 [fork development](docs/FORKS.md) for the layout and reproduction instructions.
+
+# Release lines
+
+Always maintain both IRIX 6.5.22 and IRIX 6.5.30 versions. Keep their donor
+images, import profiles, qualification records and test CHDs separate. Shared
+native components require validation with both vendor releases. Never replace
+the last qualified artifact for either release with an untested candidate.

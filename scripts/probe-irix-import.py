@@ -27,6 +27,7 @@ def main():
     parser.add_argument('--bundle', required=True, type=Path)
     parser.add_argument('--payload', required=True, type=Path)
     parser.add_argument('--output', required=True, type=Path)
+    parser.add_argument('--native-package', type=Path, help='also qualify the assembled native package and its cross-built runtime')
     parser.add_argument('--resume-import', type=Path, help='copy a cleanly halted import run and verify its persisted files')
     parser.add_argument('--debug-failure', action='store_true', help='allow bounded local diagnostic requests after a checksum failure')
     args = parser.parse_args()
@@ -50,6 +51,15 @@ def main():
         (media/'expected-rld').write_bytes(archive.extractfile('emul/irix/lib/rld').read())
     shutil.copyfile(ROOT/'lab/irix-4dwm/type-ready.c', media/'type.c')
     shutil.copyfile(ROOT/'lab/irix-filelocks/place-window.c', media/'place.c')
+    native_package = None
+    if args.native_package:
+        package = args.native_package.resolve()
+        native_package = json.loads((package/'manifest.json').read_text())
+        assert native_package['status'] == 'native-package-built'
+        assert sha256(package/'native.tar.gz') == native_package['archive_sha256']
+        assert native_package['target']['kernel_sha256'] == base['pin']['native_kernel_sha256']
+        shutil.copyfile(package/'native.tar.gz',media/'native.tgz')
+        shutil.copyfile(ROOT/'lab/native-package/install-fixture.sh',media/'install-native.sh')
     native = {p:h for p,h in support_files(bundle,seed).items()
               if not p.startswith('/emul/') and not p.startswith('/usr/local/share/xiri/fonts/')}
     (media/'NATIVE').write_text(''.join(f'SHA256 ({p}) = {h}\n' for p,h in sorted(native.items())))
@@ -104,6 +114,10 @@ def main():
                       'lab/irix-filelocks/place-window.c')}},
                   native_files_verified=native,screenshots={},sessions=[])
     result['resumed_import'] = resumed
+    if native_package:
+        result['native_package'] = dict(archive_sha256=native_package['archive_sha256'],
+                                       manifest_sha256=sha256(args.native_package/'manifest.json'),
+                                       installer_fixture_sha256=sha256(ROOT/'lab/native-package/install-fixture.sh'))
 
     def checkpoint(stage):
         (out/'checkpoint.json').write_text(json.dumps(dict(result,stage=stage),indent=2)+'\n')
@@ -180,6 +194,30 @@ def main():
         checkpoint('native-base-verified')
         cmd('/etc/rc.d/xdm stop && /etc/rc.d/xiri_famd stop',120)
         wait('! pgrep -x Xorg >/dev/null',90)
+        if native_package:
+            cmd('mkdir /root/native-package && cd /root/native-package && '
+                'pax -rz -pe -f /cdrom/native.tgz && sh preflight.sh > /root/native-preflight.log',300)
+            result['native_package']['preflight'] = get('cat /root/native-preflight.log')
+            # Verify concrete failures, before changing any target program.
+            cmd('mkdir /root/native-negative && printf wrong > /root/native-negative/netbsd; '
+                'if sh preflight.sh --root /root/native-negative > /root/native-negative.log 2>&1; then exit 1; fi; '
+                'grep -q "target kernel differs" /root/native-negative.log')
+            result['native_package']['wrong_kernel_rejected'] = get('cat /root/native-negative.log')
+            cmd('cp /netbsd /root/native-negative/netbsd; '
+                'if sh preflight.sh --root /root/native-negative > /root/native-negative.log 2>&1; then exit 1; fi; '
+                'grep -q "missing native prerequisite" /root/native-negative.log')
+            result['native_package']['missing_prerequisite_rejected'] = get('cat /root/native-negative.log')
+            cmd('printf "\\n# Native package preservation witness\\n" >> /etc/xiri/session.conf; '
+                'sha256 /etc/passwd /etc/group /etc/hosts /etc/rc.conf /etc/ttys /etc/modules.conf '
+                '/etc/xiri/session.conf /etc/rc.conf.d/xdm > /root/native-preserve.sha256; '
+                '/etc/rc.d/rpcbind stop',90)
+            for attempt in range(2):
+                cmd('sh /cdrom/install-native.sh /root/native-package && '
+                    'sh preflight.sh --verify-installed > /root/native-installed.log && '
+                    'sha256 -c /root/native-preserve.sha256 > /root/native-preserved.log',300)
+            result['native_package']['install_and_repeat'] = get('cat /root/native-installed.log /root/native-preserved.log')
+            cmd('/etc/rc.d/rpcbind start && cd /root',90)
+            checkpoint('native-package-qualified')
         # Only this disposable guest is changed. Delete the old vendor tree so
         # absolute IRIX fallback paths cannot pick up its libraries/resources.
         if not resumed:
@@ -245,7 +283,9 @@ def main():
         logout()
         login('netbsdtest')
         wait("pgrep -u netbsdtest -f '^/usr/X11R7/bin/ctwm( |$)' >/dev/null",120)
+        wait("xwininfo -root -tree | grep '\"UXTerm\"' >/dev/null",120)
         result['native_session'] = get('ps -u netbsdtest -o pid,comm')
+        result['native_tree'] = get('xwininfo -root -tree')
         capture('native-ctwm')
         cmd('/etc/rc.d/xdm stop',90)
         result['status'] = 'passed'
