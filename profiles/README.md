@@ -2,8 +2,10 @@
 
 Maintain separate **6.5.22** and **6.5.30** deliverables. Each version has its
 own donor pin, import profile, qualification and CHD. The current qualified
-profile is 6.5.22f; the original-media 6.5.30f donor is the next qualification
-target. The shared [native package profile](../docs/NATIVE-PACKAGE.md) describes
+desktop profile is 6.5.22f. The separate original-media
+[6.5.30f profile](irix-6.5.30f-v1.json) now produces reproducible payloads;
+its O2/R10000 target still needs native boot and desktop qualification.
+The [native package profiles](../docs/NATIVE-PACKAGE.md) describe
 NetBSD components and does not establish compatibility with an untested vendor
 release.
 
@@ -91,6 +93,15 @@ nonzero data. The archive itself, `tar` streaming to stdout, direct copying,
 and a `pax` extraction all produced the expected bytes. Keep the full checksum
 gate: this observation does not identify a general libarchive or kernel cause.
 
+For 6.5.30, use `--profile profiles/irix-6.5.30f-v1.json` and
+`.work/donors/irix-6.5.30f-original-media/irix-donor.chd`, with a separate
+output directory. The payload has 1,424 files, 72 directories and 94 links;
+its own resources and libraries supply the desktop/fonts. Acrobat, GIMP,
+GNOME and xmahjongg are absent and rejected as missing components. Fourteen
+ELFs declare MIPS IV, so the R4400 test command above is unsuitable. The
+[O2/R10000 trial](../docs/results/2026-11-14-irix-6.5.30.md) currently stops
+during native SCSI initialization, before any vendor program runs.
+
 See the [installation plan](../docs/XIRI-INSTALLATION.md) for the remaining
-native packaging and clean-install stages. IRIX 6.5.30 needs a separate donor,
-profile and qualification; do not relabel or reuse the 6.5.22f source pin.
+clean-install stages. Do not relabel or reuse either release's source pin or
+treat a reproducible payload as a qualified desktop image.

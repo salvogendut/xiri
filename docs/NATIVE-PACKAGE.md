@@ -78,7 +78,11 @@ The [6.5.22f guest qualification](results/2026-11-14-native-package.md) passes
 installation and repeat installation, configuration/account preservation,
 full-screen desktop and shell, File Manager, logout/relogin, native ctwm and
 clean shutdown. The package also rejects wrong kernels and missing native
-prerequisites. The 6.5.30 release still requires its separate acceptance run.
+prerequisites. The 6.5.30 release still requires its separate acceptance run. Its
+[O2/R10000 candidate](../lab/irix-o2/README.md) uses a separate IP32 kernel/module
+and native profile, the stock `crime` driver and `ip3xboot`; it does not use the
+Indy's patched Newport driver. Package construction passes, but native boot
+currently stops during SCSI initialization before package installation.
 
 ## Installation boundary
 

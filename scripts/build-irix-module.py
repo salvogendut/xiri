@@ -4,6 +4,7 @@ import argparse
 import json
 from pathlib import Path
 import re
+import shutil
 import subprocess
 
 from xiri_lab import ROOT, sha256
@@ -17,15 +18,19 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--build', type=Path, default=ROOT/'.work/netbsd-module-build')
     parser.add_argument('--jobs', type=int, default=2, choices=(1, 2))
+    parser.add_argument('--config', type=Path, default=ROOT/'lab/irix-module/XIRI_IRIX_MODULE')
+    parser.add_argument('--boot-kernel', type=Path,
+                        help='boot wrapper inside the build directory; defaults to tftp/netbsd-XIRI_INDY')
     args = parser.parse_args()
     build = args.build.resolve()
     source = Path((build/'source-path').read_text().strip())
     assert (build/'build-arch').read_text().strip() == 'mips64eb'
     make = build/'tools/bin/nbmake-sgimips'
     directory = source/'sys/modules/compat_irix_o32'
+    runner = ['toolbox', 'run', '-c', 'xiri-iris'] if shutil.which('toolbox') else []
     with (build/'module-build.log').open('w') as log:
         for targets in [('obj',), ('-j', str(args.jobs), 'all')]:
-            subprocess.run(['toolbox', 'run', '-c', 'xiri-iris', str(make), '-C', str(directory), *targets],
+            subprocess.run([*runner, str(make), '-C', str(directory), *targets],
                            stdout=log, stderr=subprocess.STDOUT, check=True)
     module = build/'obj/sys/modules/compat_irix_o32/compat_irix_o32.kmod'
     kernel = build/'kernel-media/netbsd'
@@ -36,7 +41,7 @@ def main():
     relocations = sorted(set(re.findall(r'R_MIPS_\w+', output('readelf', '-rW', str(module)))))
     supported = {'R_MIPS_'+name for name in ('NONE', '32', '26', 'HI16', 'LO16', '64', 'HIGHER', 'HIGHEST')}
     assert set(relocations) <= supported, relocations
-    config = ROOT/'lab/irix-module/XIRI_IRIX_MODULE'
+    config = args.config.resolve()
     config_dir = build/'obj/sys/arch/sgimips/compile'/config.name
     assert not re.search(r'^#define\s+COMPAT_IRIX_O32\b', (config_dir/'opt_compat_irix_o32.h').read_text(), re.M)
     assert re.search(r'^#define\s+MODULAR\b', (config_dir/'opt_modular.h').read_text(), re.M)
@@ -45,6 +50,7 @@ def main():
               'sys/arch/mips/conf/files.mips',
               'sys/arch/mips/mips/kobj_machdep.c', 'sys/kern/sys_select.c',
               'sys/arch/mips/mips/mips_fpu.c',
+              'sys/arch/mips/mips/cache_r10k.c',
               'sys/kern/kern_lwp.c', 'sys/kern/kern_sig.c', 'sys/kern/kern_exit.c',
               'sys/sys/proc.h', 'sys/uvm/uvm_pglist.c', 'sys/uvm/uvm_pdaemon.c',
               'sys/uvm/uvm_swap.c',
@@ -59,7 +65,7 @@ def main():
                   core_hooks=['selcommon_kern', 'emul.e_sigmask',
                               'emul.e_flags:EMUL_NOCLDSTOP_CONT'], artifacts={})
     for name, path in [('compat_irix_o32.kmod', module), ('netbsd', kernel),
-                       ('netbsd.boot', build/'tftp/netbsd-XIRI_INDY')]:
+                       ('netbsd.boot', args.boot_kernel.resolve() if args.boot_kernel else build/'tftp/netbsd-XIRI_INDY')]:
         result['artifacts'][name] = dict(path=str(path.relative_to(build)), sha256=sha256(path))
     result['debug_kernel_sha256'] = sha256(config_dir/'netbsd.gdb')
     (build/'module.json').write_text(json.dumps(result, indent=2)+'\n')

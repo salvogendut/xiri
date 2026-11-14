@@ -28,6 +28,10 @@ def main():
     parser.add_argument('--payload', required=True, type=Path)
     parser.add_argument('--output', required=True, type=Path)
     parser.add_argument('--native-package', type=Path, help='also qualify the assembled native package and its cross-built runtime')
+    parser.add_argument('--cpu', choices=('r4400', 'r5000'),
+                        help='explicit Indy CPU model; 6.5.30 donor libraries require MIPS IV/R5000')
+    parser.add_argument('--emulator-bundle', type=Path,
+                        help='explicit iris/iris-ci pair with a hash-pinned manifest.json for a new emulator qualification')
     parser.add_argument('--resume-import', type=Path, help='copy a cleanly halted import run and verify its persisted files')
     parser.add_argument('--debug-failure', action='store_true', help='allow bounded local diagnostic requests after a checksum failure')
     args = parser.parse_args()
@@ -83,15 +87,27 @@ def main():
         resumed = dict(run=str(prior),delta_sha256=sha256(delta))
         subprocess.run(['cp','--reflink=auto',delta,out/delta.name],check=True)
     config = (bundle/'iris.toml').read_text().replace('tftp_dir = "tftp"','tftp_dir = '+json.dumps(str(out/'no-tftp')))
+    if args.cpu:
+        config, changed = re.subn(r'^cpu = "[^"]+"$', 'cpu = "'+args.cpu+'"', config, flags=re.M)
+        assert changed == 1, 'Expected one machine CPU setting'
     config += '\n[scsi.4]\npath = '+json.dumps(str(out/'probe.iso'))+'\ncdrom = true\n'
     probe = load_probe()
     # This command may already be running inside the development Toolbox.
     # The same process-group owner works directly when no host wrapper exists.
     if not shutil.which('toolbox'):
         probe.TOOLBOX = []
-    probe.IRIS, probe.CI = bundle/'emulator/iris', bundle/'emulator/iris-ci'
-    assert sha256(probe.IRIS) == base['pin']['emulator_sha256']
-    assert sha256(probe.CI) == base['pin']['ci_client_sha256']
+    emulator_dir = (args.emulator_bundle.resolve() if args.emulator_bundle else bundle/'emulator')
+    if args.emulator_bundle:
+        emulator = json.loads((emulator_dir/'manifest.json').read_text())
+        assert emulator['schema'] == 1 and emulator['source_revision']
+        emulator = dict(emulator, manifest_sha256=sha256(emulator_dir/'manifest.json'))
+    else:
+        emulator = dict(schema=1, source_revision=base['pin']['emulator_revision'],
+                        iris_sha256=base['pin']['emulator_sha256'],
+                        ci_sha256=base['pin']['ci_client_sha256'])
+    probe.IRIS, probe.CI = emulator_dir/'iris', emulator_dir/'iris-ci'
+    assert sha256(probe.IRIS) == emulator['iris_sha256']
+    assert sha256(probe.CI) == emulator['ci_sha256']
     lab = probe.Lab(SimpleNamespace(mode='ordinary',debugger=False,boot_timeout=600),out,config_text=config)
     original_launch = lab.launch
 
@@ -114,6 +130,8 @@ def main():
                       'lab/irix-filelocks/place-window.c')}},
                   native_files_verified=native,screenshots={},sessions=[])
     result['resumed_import'] = resumed
+    result['emulated_cpu'] = re.search(r'^cpu = "([^"]+)"$', config, re.M)[1]
+    result['effective_emulator'] = emulator
     if native_package:
         result['native_package'] = dict(archive_sha256=native_package['archive_sha256'],
                                        manifest_sha256=sha256(args.native_package/'manifest.json'),

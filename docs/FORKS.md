@@ -51,6 +51,16 @@ not repin qualified kernels, emulator binaries, runtime resources or guest disks
 
 ## IRIS upstream updates
 
+The same November 14 cycle adds IRIS `7d46498b` on `xiri`, preserving R5000's
+read-only Config cache-line fields. The failing-before executor regression,
+all 190 CPU executor tests and the optimized CLI build pass; the commit is
+pushed. NetBSD `xiri` adds `2a7184ec4c6`, widening R10000 secondary-cache
+alignment masks before complementing them. Source-macro checks cover 32/64-bit
+addresses and 64/128-byte lines; the O2/N64 kernel builds and advances past the
+original framebuffer fault, then stops at native SCSI initialization. The
+[6.5.30 trial](results/2026-11-14-irix-6.5.30.md) records that remaining blocker.
+No qualified 6.5.22 kernel, emulator or manual image is repinned.
+
 The November 14 native-package cycle integrates six upstream commits through
 `5fb831ce` as `a986a0a1` on `xiri`, with a clean merge. The affected rendering
 changes add test-only presenter observation; both CLI builds, 226 Newport

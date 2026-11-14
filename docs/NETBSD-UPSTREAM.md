@@ -29,6 +29,14 @@ Keyboard-panel work also stays in this file: n32 executable data on a 4 KiB
 boundary uses NetBSD's existing `vmcmd_map_readvn` implementation. It adds no
 change to the native ELF loader or to the core dependencies listed below.
 
+The subsequent O2/R10000 trial adds native commit `2a7184ec4c6` in
+`sys/arch/mips/mips/cache_r10k.c`: widen the secondary-cache alignment mask
+before complementing it, preserving 64-bit kernel addresses. This is an
+independent native correctness fix, not another IRIX core interface. The
+[O2 result](results/2026-11-14-irix-6.5.30.md) records a failing-before arithmetic
+regression and boot past the framebuffer fault; a later SCSI-stage native
+trap remains. The 176-path audit below predates this additional file.
+
 There are 176 changed paths in the committed fork delta, dominated by the
 separate XFS work. Among the core files discussed below, newer upstream
 changes also move `p_pgrp` within `struct proc` in `sys/sys/proc.h`.

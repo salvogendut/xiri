@@ -1,0 +1,234 @@
+{
+  "schema": 1,
+  "status": "vendor-payload-reproducible-native-o2-boot-blocked",
+  "release": "6.5.30f",
+  "native_target": {
+    "machine": "o2_ip32",
+    "cpu": "r10000",
+    "memory_mb": 256,
+    "kernel_abi": "n64",
+    "userland_abi": "o32"
+  },
+  "donor": {
+    "path": "lab/irix-donor/6.5.30f.json",
+    "sha256": "e94b7ac5867e06a07811d5405f66097846067904b1d06f97e2bdd21b8b52298e"
+  },
+  "payload": {
+    "archive": {
+      "path": ".work/imports/irix-6.5.30f-v1/payload.tar.gz",
+      "sha256": "21060cf7415e730d6efb3d690e51d08aafb15d689ecb0f2fdd9c8638a33bfde7"
+    },
+    "manifest": {
+      "path": ".work/imports/irix-6.5.30f-v1/manifest.json",
+      "sha256": "976f3b8cad96e4562657f7a28624ad82dee5506989e9408c8d8daddc3298d220"
+    },
+    "reproducibility": {
+      "payload.tar.gz": {
+        "sha256": "21060cf7415e730d6efb3d690e51d08aafb15d689ecb0f2fdd9c8638a33bfde7",
+        "bytes": 51225463,
+        "independent_rebuild_identical": true
+      },
+      "manifest.json": {
+        "sha256": "976f3b8cad96e4562657f7a28624ad82dee5506989e9408c8d8daddc3298d220",
+        "bytes": 982826,
+        "independent_rebuild_identical": true
+      }
+    },
+    "file_count": 1424,
+    "missing_optional_components": [
+      "acrobat",
+      "gimp",
+      "gnome",
+      "xmahjongg"
+    ]
+  },
+  "emulator": {
+    "path": ".work/emulators/iris-xiri-20261114-r5k-config/manifest.json",
+    "sha256": "0c73b64ae6f1eaca43a050df7801267c966c8f35321e6ea849ccac0b3f92bbb3",
+    "revision": "7d46498bf1fbf3acf53f1619413e3c5eaeb5d27b",
+    "upstream_checked": "5fb831ce7057a8978759ae57b151d631a448d1e7",
+    "executor_tests_passed": 190,
+    "r5000_native_boot_after_fix": "not rerun; user selected O2/R10000"
+  },
+  "native_build": {
+    "path": "lab/irix-o2/build.json",
+    "sha256": "17057383ec7b0e249bc71c7fd628992a933473b9ab1fb1670491e79fa0c4640a",
+    "built_from": "a4a7095680588b1f0533a83153a77930b0f339ca",
+    "source_status_at_build": " M sys/arch/mips/mips/cache_r10k.c\n",
+    "patch": {
+      "path": ".work/netbsd-o2-build/verification/source.patch",
+      "sha256": "4b2ab41bd25e8756f7d7ebb90bf829cdb6176bba9fce3eb0cad8aa2c0146f7b9"
+    },
+    "cache_source": {
+      "path": ".work/netbsd-o2-build/verification/cache_r10k-after.c",
+      "sha256": "e91aceac79a5eecb4ecf8ad758be9d53b3ba7496eea67aa4844c4a29ebcbcf4b"
+    },
+    "equivalent_committed_revision": "2a7184ec4c66b324c8c027b577a81c1e41575504",
+    "kernel": {
+      "path": "kernel-media/netbsd",
+      "sha256": "a3d3ff463227ae1190661936c30fabc001f391354b7dcaba5ee1a9365f20daff"
+    },
+    "module": {
+      "path": "obj/sys/modules/compat_irix_o32/compat_irix_o32.kmod",
+      "sha256": "ad6ec8756c835bec4395c62428550a0d2877ec6c587b1ca1d793254798f6d8ea"
+    },
+    "archive": {
+      "path": ".work/packages/netbsd-sgimips-o2-native-v1/native.tar.gz",
+      "sha256": "9175544b88f1c94ae45435070a6ceb6b2a5d3465b1ca2b684d8b759ae7e0e125"
+    },
+    "manifest": {
+      "path": ".work/packages/netbsd-sgimips-o2-native-v1/manifest.json",
+      "sha256": "cd28c5edc9b374b2a20442f7196107a8d554233aa539ee48fb3fd30720cba2ce"
+    },
+    "guest_qualified": false
+  },
+  "cache_regression": {
+    "test": {
+      "path": "lab/irix-o2/check-cache-alignment.py",
+      "sha256": "c1629e66d8d70d1714a6c6293e4b48cbb02be6df6c3ca35696ea4f1b552cf8f7"
+    },
+    "before": {
+      "path": ".work/netbsd-o2-build/verification/before-cache-fix/alignment.log",
+      "sha256": "09f77def29fb5306af760f7ca0f4358cc82ff1c300779d7220354e3287748465"
+    },
+    "after": {
+      "path": ".work/netbsd-o2-build/verification/alignment-after.log",
+      "sha256": "09272502936d946fbabc8bcee5d1c67a9abb521b604569fd11e7ecf092b64612"
+    },
+    "before_result": "32-bit arithmetic passes, 64-bit arithmetic fails",
+    "after_result": "32-bit and 64-bit address alignment pass with 64/128-byte lines",
+    "before_disassembly": {
+      "path": ".work/netbsd-o2-build/verification/before-cache-fix/r10k-sdcache-wb-range.dis",
+      "sha256": "a58610909719981cd0b883cb55a9aa2116406beb249dad760641b61e0817a15e"
+    },
+    "after_disassembly": {
+      "path": ".work/netbsd-o2-build/verification/r10k-sdcache-wb-range-after.dis",
+      "sha256": "5bbed083d6f61137362622e376cb91ef2c485bb516a0ee560cc734c509f573e2"
+    },
+    "boot_result": "CRIME framebuffer allocation/attachment now passes"
+  },
+  "host_tests": {
+    "passed": 83,
+    "path": ".work/netbsd-o2-build/verification/host-tests.log",
+    "sha256": "d882ca5cdf4c458bebb17834ab63c3b8123f31b4e3c27ac0fa9990abec3e7182"
+  },
+  "boot_attempts": {
+    "o2-6.5.30-prepare": {
+      "path": ".work/netbsd-o2-build/verification/failures/o2-6.5.30-prepare/result.json",
+      "sha256": "f7577ec035c0ed5a0a11f11e647eae520c51f30d80f248a445c304d821e3714b",
+      "error": "timed out after 30s waiting for '>> '",
+      "base_unchanged": true,
+      "donor_nvram_unchanged": true,
+      "clean_shutdown": false,
+      "evidence": {
+        "emulator-command.json": "d1a284ed62f58a2986173f45f40a1caea2c39cb7913a5f314d11f905e919dee5",
+        "emulator.log": "bf69529c284e372fc2209d0de21fc52c23bbf0f88d540cb7c9cbf50de57d3519",
+        "failure.png": "867ed5c448d51478ff3e4f3501465fc6dcc53cc72b3e82f4aeef15b6991fecd3",
+        "iris.toml": "f654154f713b9f3ff00597ac01067507703a9e8fa822358dd53a356b51ad607f",
+        "probe-used.py": "b53c8c28b234cd712f5f67e5f15303b71f1ea46f77d2acebe7b520d77326ba09",
+        "result.json": "f7577ec035c0ed5a0a11f11e647eae520c51f30d80f248a445c304d821e3714b",
+        "serial.log": "e4aa11d7f37ed9bdd23a3a1a7fa98f91ab46d71aa04ce3f0c8d574dc3769b968"
+      }
+    },
+    "o2-6.5.30-prepare2": {
+      "path": ".work/netbsd-o2-build/verification/failures/o2-6.5.30-prepare2/result.json",
+      "sha256": "149bf900a2057991dbb87c983e662fccd94b9e7b2a0a2868d570437ede2c0637",
+      "error": "emulator exited with 0",
+      "base_unchanged": true,
+      "donor_nvram_unchanged": true,
+      "clean_shutdown": false,
+      "evidence": {
+        "boot-command-correction.json": "6b33c76d652c47e672235f5fdbe97410e2731a97690d7961350566c438f12dd0",
+        "checkpoint.json": "155c7e5e948a1cb69c3f5b5fd9e81cf6635311a10c8a46bb81c3ef264876c1f2",
+        "emulator-command.json": "49db95b516ab6994a513e1b00ee69c379c8ae18ec9df6cb793a5780762ab4719",
+        "emulator.log": "f5c5dfe23eb48f60b0cd121d80a38e5ceda550f1db568e022a56331ca709090c",
+        "framebuffer-fault-monitor.json": "49f34c843e1641ad6ead05e4d3ca2911a699a077a060b09b9e840543a498c863",
+        "iris.toml": "7747339af55c74ed6474f8eb262646a95a90485b8bb127212a7ed8d8e155c3f1",
+        "probe-used.py": "1af4261b84c598d691705733a1b695280f7d56fd59aebd993870df39455cc5be",
+        "result.json": "149bf900a2057991dbb87c983e662fccd94b9e7b2a0a2868d570437ede2c0637",
+        "serial.log": "7a3975271ced3e0bb957838064544fa821a7cd59af8c49d6879c198e5641e49c"
+      }
+    },
+    "o2-6.5.30-prepare3": {
+      "path": ".work/netbsd-o2-build/verification/failures/o2-6.5.30-prepare3/result.json",
+      "sha256": "4fd25d3fe87449eb30e60d8c5041bb97eb2219abff6a8ff6cb049b325b6db02a",
+      "error": "Native O2 kernel stopped before single-user login: Stopped in pid",
+      "base_unchanged": true,
+      "donor_nvram_unchanged": true,
+      "clean_shutdown": false,
+      "evidence": {
+        "checkpoint.json": "de54e33a3848fa760eb2dfe92eae04f66e40221ae404de5f6cba9381fdc3aace",
+        "emulator-command.json": "a1075002457cc89d7c679ff5e4c371754fb1cf2c64b6036948224f0f3bdda5ec",
+        "emulator.log": "9124520250da08b232c9ca52b280e973034b25632109c65e17bb2d982b8407db",
+        "failure.png": "867ed5c448d51478ff3e4f3501465fc6dcc53cc72b3e82f4aeef15b6991fecd3",
+        "iris.toml": "cffbba7cf76552a8dbc7f499d1ce75a78f6f58eb852f5ff0a6ab04085c3164fa",
+        "probe-used.py": "af8fa3a68902b37494c4a734d4c94d61c4cad902950cd8c4d2bd5c317741b3d6",
+        "result.json": "4fd25d3fe87449eb30e60d8c5041bb97eb2219abff6a8ff6cb049b325b6db02a",
+        "serial.log": "aa878f31d041958955ff40a5567549cf3d60aa84bbfa424fa07052b668ba68ee"
+      }
+    }
+  },
+  "remaining_blocker": {
+    "stage": "ahc0 attachment before single-user login",
+    "trap": "reserved instruction",
+    "symbol": "memset+0x4c",
+    "epc": "0xffffffff8064bacc",
+    "linked_instruction": "sd a3,0(v1)",
+    "cause": "unresolved",
+    "disassembly": {
+      "path": ".work/netbsd-o2-build/verification/scsi-stage-memset.dis",
+      "sha256": "d61b7bd09f305728b3fc77d14e650f54558a76130912b2f2b236fa9e04a9f94b"
+    }
+  },
+  "vendor_program_executed_on_netbsd": false,
+  "graphical_qualification": false,
+  "manual_xiri_chd_produced": false,
+  "cleanup": {
+    "schema": 1,
+    "completed_utc": "2026-11-14T20:12:37Z",
+    "removed": [
+      {
+        "path": ".work/o2-6.5.30-prepare",
+        "allocated_file_bytes": 622280704
+      },
+      {
+        "path": ".work/o2-6.5.30-prepare2",
+        "allocated_file_bytes": 622297088
+      },
+      {
+        "path": ".work/o2-6.5.30-prepare3",
+        "allocated_file_bytes": 622317568
+      },
+      {
+        "path": ".work/irix-6.5.30-cpu",
+        "allocated_file_bytes": 4734996480
+      },
+      {
+        "path": ".work/irix-6.5.30-profile",
+        "allocated_file_bytes": 53248
+      },
+      {
+        "path": ".work/native-package",
+        "allocated_file_bytes": 409600
+      },
+      {
+        "path": ".work/packages/netbsd-sgimips-o2-native-v1",
+        "allocated_file_bytes": 9281536
+      },
+      {
+        "path": ".work/netbsd-o2-build/obj",
+        "allocated_file_bytes": 313290752
+      },
+      {
+        "path": ".work/netbsd-o2-build/tools",
+        "allocated_file_bytes": 306745344
+      }
+    ],
+    "retained_obj_artifact_allocated_bytes": 68943872,
+    "net_removed_allocated_file_bytes": 7162728448,
+    "filesystem_available_before": 486946717696,
+    "filesystem_available_after": 492005130240,
+    "note": "File allocation includes shared reflinks; filesystem available-space change is reported separately. Qualified inputs and retained O2 artifacts re-hashed after cleanup.",
+    "all_test_emulators_stopped": true
+  }
+}

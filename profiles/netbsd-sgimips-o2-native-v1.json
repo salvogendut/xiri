@@ -1,0 +1,133 @@
+{
+  "schema": 1,
+  "id": "netbsd-sgimips-o2-native-v1",
+  "target": {
+    "system": "NetBSD",
+    "machine": "sgimips",
+    "userland_abi": "o32",
+    "userland_release": "11.0",
+    "kernel_release": "11.99.9",
+    "kernel_arch": "mips64eb",
+    "kernel_version_sha256": "a593fffb475b6d95f35fdfb0208fe59782920c72837f22c35d9b30d8eae6521e"
+  },
+  "release_lines": [
+    "6.5.22",
+    "6.5.30"
+  ],
+  "release_note": "Native package is shared in design; each vendor release requires separate desktop qualification.",
+  "compiler_sha256": "f5c7cd285f843a9112b6bf2b883f5d5aa036c4e68c7f4bb58ed3e8f9cdccfcf4",
+  "sets_manifest": {
+    "path": "lab/netbsd-11.0/SHA512SUMS",
+    "sha256": "c46508bd2f7dbe29e7b16595e31c74e37dbd30342e39c61eeae32f472090fabb"
+  },
+  "target_sets": [
+    "base.tgz",
+    "etc.tgz",
+    "xbase.tgz",
+    "xetc.tgz",
+    "xfont.tgz",
+    "xserver.tgz"
+  ],
+  "build_sets": [
+    "comp.tgz",
+    "xcomp.tgz"
+  ],
+  "artifacts": {
+    "kernel": {
+      "sha256": "a3d3ff463227ae1190661936c30fabc001f391354b7dcaba5ee1a9365f20daff",
+      "destination": "/netbsd",
+      "component": "kernel",
+      "provenance": {
+        "lab/irix-o2/build.json": "17057383ec7b0e249bc71c7fd628992a933473b9ab1fb1670491e79fa0c4640a"
+      }
+    },
+    "boot": {
+      "sha256": "eb71603862bc7a42ec3378636db8c64382fe651609874e8576a40efcc97e9b39",
+      "destination": "/netbsd.boot",
+      "component": "kernel",
+      "provenance": {
+        "lab/irix-o2/build.json": "17057383ec7b0e249bc71c7fd628992a933473b9ab1fb1670491e79fa0c4640a"
+      }
+    },
+    "module": {
+      "sha256": "ad6ec8756c835bec4395c62428550a0d2877ec6c587b1ca1d793254798f6d8ea",
+      "destination": "/stand/sgimips/11.99.9/modules/compat_irix_o32/compat_irix_o32.kmod",
+      "component": "module",
+      "provenance": {
+        "lab/irix-o2/build.json": "17057383ec7b0e249bc71c7fd628992a933473b9ab1fb1670491e79fa0c4640a"
+      }
+    },
+    "famd": {
+      "sha256": "c3e6ebe5e8db7feecce6267a487174a5a3baa7eb6fb9cf1cb93ace44bf234889",
+      "destination": "/usr/local/sbin/famd",
+      "component": "services",
+      "provenance": {
+        "lab/native-fam/source.json": "64aaa0f782e75cccd5b7642f93be2c061e9b409a7201265a3bd080b97eaf6f70"
+      }
+    },
+    "rpcbind": {
+      "sha256": "1905df69b5a20e3c229627355604cb1276b1ed9fabcff843f8abc51ba4cd7354",
+      "destination": "/usr/sbin/rpcbind",
+      "component": "services",
+      "provenance": {
+        "lab/native-rpcbind/source.json": "5a10cb70ecde9df771239d4a65083b3bed25abf205acde5be98d31d96bf664c5"
+      }
+    }
+  },
+  "native_programs": [
+    "/bin/sh",
+    "/bin/cp",
+    "/bin/mkdir",
+    "/bin/pax",
+    "/bin/ps",
+    "/bin/chmod",
+    "/bin/kill",
+    "/usr/bin/awk",
+    "/usr/bin/grep",
+    "/usr/bin/sed",
+    "/usr/bin/su",
+    "/usr/bin/stat",
+    "/usr/bin/sha256",
+    "/usr/bin/pgrep",
+    "/usr/bin/getent",
+    "/usr/bin/id",
+    "/usr/sbin/pwd_mkdb",
+    "/sbin/modload",
+    "/sbin/modstat",
+    "/usr/X11R7/bin/Xorg",
+    "/usr/X11R7/bin/xdm",
+    "/usr/X11R7/bin/ctwm",
+    "/usr/X11R7/bin/xterm",
+    "/usr/X11R7/bin/xauth",
+    "/usr/X11R7/bin/xrdb",
+    "/usr/X11R7/bin/xset",
+    "/usr/X11R7/bin/xwininfo",
+    "/usr/X11R7/bin/mkfontdir",
+    "/usr/X11R7/lib/modules/drivers/crime_drv.so"
+  ],
+  "native_resources": [
+    "/usr/X11R7/lib/X11/fonts/100dpi/courB14-ISO8859-1.pcf.gz",
+    "/etc/X11/xdm/Xsession",
+    "/etc/pam.d/xdm",
+    "/usr/mdec/ip3xboot"
+  ],
+  "configuration_sources": {
+    "/usr/local/share/xiri/xorg.conf": "lab/irix-o2/xorg.conf"
+  },
+  "required_aliases": {
+    "/usr/lib/desktop": "/emul/irix/usr/lib/desktop"
+  },
+  "generated_state": [
+    "IRIX account tables",
+    "PTY aliases",
+    "font indexes",
+    "filetype database",
+    "per-user .xsession selection"
+  ],
+  "preserve": [
+    "native accounts and passwords",
+    "user homes and preferences",
+    "administrator rc.conf/ttys/modules.conf policy"
+  ],
+  "description": "O2/R10000 native package candidate for the separate 6.5.30 trial; qualification required."
+}

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Cold-boot a disposable Indy donor CHD copy, capture 4Dwm, and halt IRIX."""
+"""Cold-boot a disposable donor CHD copy, verify IRIX, and power it off."""
 import argparse
 import json
 import os
@@ -29,14 +29,20 @@ def main():
     parser.add_argument('--nvram', required=True, type=Path)
     parser.add_argument('--iris', required=True, type=Path)
     parser.add_argument('--ci', required=True, type=Path)
-    parser.add_argument('--login-golden', required=True, type=Path,
+    parser.add_argument('--login-golden', type=Path,
                         help='visually checked screenshot of this donor\'s graphical login')
+    parser.add_argument('--serial-only', action='store_true',
+                        help='qualify native boot/release/shutdown without a graphical-login claim')
+    parser.add_argument('--machine', choices=('indy_ip24', 'o2_ip32'), default='indy_ip24')
+    parser.add_argument('--expected-release', choices=('6.5.22f', '6.5.30f'), default='6.5.22f')
     parser.add_argument('--output-directory', required=True, type=Path)
     parser.add_argument('--timeout', type=int, default=1200,
                         help='maximum seconds to wait for IRIX login')
     parser.add_argument('--start-system-after', type=float,
                         help='select Start System after this many seconds for a seed that stops at PROM')
     args = parser.parse_args()
+    if not args.serial_only and not args.login_golden:
+        parser.error('--login-golden is required unless --serial-only is selected')
     out = args.output_directory.resolve()
     out.mkdir(parents=True, exist_ok=False)
     iris, client = args.iris.resolve(), args.ci.resolve()
@@ -44,8 +50,11 @@ def main():
               'chd_sha256': sha256(args.chd), 'nvram_source_sha256': sha256(args.nvram),
               'iris': str(iris), 'iris_sha256': sha256(iris),
               'ci': str(client), 'ci_sha256': sha256(client),
-              'login_golden_sha256': sha256(args.login_golden),
+              'login_golden_sha256': sha256(args.login_golden) if args.login_golden else None,
+              'machine': args.machine, 'expected_release': args.expected_release,
+              'serial_only': args.serial_only,
               'script_sha256': sha256(__file__), 'commands': []}
+    shutil.copyfile(__file__, out/'probe-used.py')
     subprocess.run(['cp', '--reflink=auto', '--sparse=always', '--', str(args.chd.resolve()),
                     str(out/'boot.chd')], check=True)
     shutil.copyfile(args.nvram, out/'nvram.bin')
@@ -56,9 +65,11 @@ def main():
     for stream in sockets:
         stream.close()
     control_dir = Path(tempfile.mkdtemp(prefix='xiri-donor-ci-'))
+    o2 = args.machine == 'o2_ip32'
+    graphics = '' if o2 else '[graphics]\nboard = "newport"\n'
     config = f'''nvram = {json.dumps(str(out/'nvram.bin'))}
-banks = [128, 0, 0, 0]
-headless = false
+banks = [{256 if o2 else 128}, 0, 0, 0]
+headless = {str(args.serial_only).lower()}
 no_audio = true
 ci = true
 ci_socket = {json.dumps(str(control_dir/'iris.sock'))}
@@ -69,10 +80,9 @@ serial_port_b = {ports[2]}
 scsi_deferred_int = true
 nat_subnet = "192.168.0.0/24"
 [machine]
-profile = "indy_ip24"
-cpu = "r4400"
-[graphics]
-board = "newport"
+profile = "{args.machine}"
+cpu = "{'r5000' if o2 else 'r4400'}"
+{graphics}
 [scsi.1]
 path = {json.dumps(str(out/'boot.chd'))}
 cdrom = false
@@ -111,6 +121,10 @@ mac = "08:00:69:12:34:56"
             log.write(text+'\n'+text_out+'\n')
         return text_out
 
+    previous_term = signal.getsignal(signal.SIGTERM)
+    def interrupted(signum, frame):
+        raise KeyboardInterrupt('Donor probe terminated; stopping its owned emulator')
+    signal.signal(signal.SIGTERM, interrupted)
     try:
         with (out/'emulator.log').open('wb') as log:
             process = subprocess.Popen([str(iris), '--config', str(out/'iris.toml')],
@@ -130,9 +144,12 @@ mac = "08:00:69:12:34:56"
         print('Cold boot started; emulator PID', process.pid, flush=True)
         if args.start_system_after is not None:
             time.sleep(args.start_system_after)
-            ci('screenshot', str(out/'prom.png'))
-            command('key type 1')
-            command('key Return')
+            if args.serial_only:
+                ci('serial-send', '1')
+            else:
+                ci('screenshot', str(out/'prom.png'))
+                command('key type 1')
+                command('key Return')
             result['prom_start_system'] = True
         logged_prompt = False
         for attempt in range(max(1, (args.timeout+29)//30)):
@@ -146,33 +163,34 @@ mac = "08:00:69:12:34:56"
         ci('login', 'root', timeout=90)
         identity = ci('run', 'uname -R; hinv; nvram console; df -k /', '--timeout', '30').stdout
         result['identity'] = identity
-        if '6.5 6.5.22f' not in identity:
+        if '6.5 '+args.expected_release not in identity:
             raise RuntimeError('unexpected donor release')
-        print('IRIX 6.5.22f serial login passed', flush=True)
-        ci('screen-wait', str(args.login_golden.resolve()), '--timeout', '180',
-           '--actual', str(out/'login.png'), '--diff', str(out/'login-diff.png'),
-           '--max-pixels', '512', timeout=200)
-        result['graphical_login_verified'] = True
-        # The native IRIX graphical login starts with the login-name field active.
-        command('key type root')
-        command('key Return')
-        for _ in range(30):
-            running = ci('run', 'ps -ef | grep -E "4Dwm|toolchest|fmserv|Xsgi"', '--timeout', '30').stdout
-            if re.search(r'\s(?:/usr/bin/X11/)?4Dwm(?:\s|$)', running):
-                result['desktop_processes'] = running
-                break
-            time.sleep(3)
-        else:
-            raise RuntimeError('graphical root login did not start 4Dwm')
-        time.sleep(10)
-        command('disp compositor gl')
-        command('disp compositor sw')
-        command('screen wait 500 10000')
-        ci('screenshot', str(out/'desktop.png'))
-        result['desktop_png_sha256'] = sha256(out/'desktop.png')
-        print('4Dwm running; desktop PNG saved', flush=True)
+        print('IRIX '+args.expected_release+' serial login passed', flush=True)
+        if not args.serial_only:
+            ci('screen-wait', str(args.login_golden.resolve()), '--timeout', '180',
+               '--actual', str(out/'login.png'), '--diff', str(out/'login-diff.png'),
+               '--max-pixels', '512', timeout=200)
+            result['graphical_login_verified'] = True
+            # The native IRIX graphical login starts with the login-name field active.
+            command('key type root')
+            command('key Return')
+            for _ in range(30):
+                running = ci('run', 'ps -ef | grep -E "4Dwm|toolchest|fmserv|Xsgi"', '--timeout', '30').stdout
+                if re.search(r'\s(?:/usr/bin/X11/)?4Dwm(?:\s|$)', running):
+                    result['desktop_processes'] = running
+                    break
+                time.sleep(3)
+            else:
+                raise RuntimeError('graphical root login did not start 4Dwm')
+            time.sleep(10)
+            command('disp compositor gl')
+            command('disp compositor sw')
+            command('screen wait 500 10000')
+            ci('screenshot', str(out/'desktop.png'))
+            result['desktop_png_sha256'] = sha256(out/'desktop.png')
+            print('4Dwm running; desktop PNG saved', flush=True)
         ci('serial-send', 'sync; shutdown -p -g0 -y')
-        for _ in range(12):
+        for _ in range(24):
             text = (out/'serial.log').read_text(errors='replace')
             if shutdown_observed(text, (out/'emulator.log').read_text(errors='replace'),
                                  process.poll()):
@@ -205,10 +223,17 @@ mac = "08:00:69:12:34:56"
                     process.wait(timeout=10)
         result['emulator_stopped'] = process is None or process.poll() is not None
         result['emulator_exit'] = None if process is None else process.returncode
+        # Power-off can complete between the final poll and process.wait().
+        # Require the guest shutdown marker and natural soft-power exit too.
+        if process and shutdown_observed(
+                (out/'serial.log').read_text(errors='replace') if (out/'serial.log').exists() else '',
+                (out/'emulator.log').read_text(errors='replace'), process.returncode):
+            result['clean_shutdown'] = True
         result['source_chd_unchanged'] = sha256(args.chd) == result['chd_sha256']
         result['source_nvram_unchanged'] = sha256(args.nvram) == result['nvram_source_sha256']
         (out/'result.json').write_text(json.dumps(result, indent=2)+'\n')
         shutil.rmtree(control_dir)
+        signal.signal(signal.SIGTERM, previous_term)
 
 
 if __name__ == '__main__':

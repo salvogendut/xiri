@@ -1,0 +1,135 @@
+{
+  "schema": 1,
+  "release": "6.5.30f",
+  "kind": "original-media IRIX donor",
+  "bundle": ".work/donors/irix-6.5.30f-original-media",
+  "chd": "irix-donor.chd",
+  "chd_sha256": "339f74457dfbb06813681ab5db2ccfdd29d394e8a02dfcdcd6c6ac7c22a836db",
+  "raw_sha256": "3f9975efc92a03dd2ba23af4861cd073a87a24b1898cbeadc5b913b26f4d88e5",
+  "logical_bytes": 8589934592,
+  "source_files": [
+    {
+      "path": "/var/home/salvogendut/Downloads/IRIX media/Installed/O2-R5000-6.5.30/irix6530.img",
+      "bytes": 8589934592,
+      "sha256": "ebfb4ef19ae410f190327b5ebd312711263bc7579970e87d9c1e2d84e06b3c25"
+    },
+    {
+      "path": "/var/home/salvogendut/Downloads/IRIX media/Installed/O2-R5000-6.5.30/irix6530.img.overlay",
+      "bytes": 8589934592,
+      "sha256": "3f9975efc92a03dd2ba23af4861cd073a87a24b1898cbeadc5b913b26f4d88e5"
+    },
+    {
+      "path": "/var/home/salvogendut/Downloads/IRIX media/Installed/O2-R5000-6.5.30/irix6530.img.overlay.dirty",
+      "bytes": 22391616,
+      "sha256": "4037837ec4b495b436c3c6511057e92521b2ab1031d900bf1647e84520129875"
+    }
+  ],
+  "source_media_audit": "docs/results/2026-11-14-irix-6.5.30-audit.json",
+  "source_media_audit_sha256": "3e3b9fc648692c48458c3fda0eaa1a88a2efb360a8590e29d875eea1d9580629",
+  "export": {
+    "status": "verified",
+    "schema": 1,
+    "source_files": [
+      {
+        "path": "/var/home/salvogendut/Downloads/IRIX media/Installed/O2-R5000-6.5.30/irix6530.img",
+        "bytes": 8589934592,
+        "sha256": "ebfb4ef19ae410f190327b5ebd312711263bc7579970e87d9c1e2d84e06b3c25"
+      },
+      {
+        "path": "/var/home/salvogendut/Downloads/IRIX media/Installed/O2-R5000-6.5.30/irix6530.img.overlay",
+        "bytes": 8589934592,
+        "sha256": "3f9975efc92a03dd2ba23af4861cd073a87a24b1898cbeadc5b913b26f4d88e5"
+      },
+      {
+        "path": "/var/home/salvogendut/Downloads/IRIX media/Installed/O2-R5000-6.5.30/irix6530.img.overlay.dirty",
+        "bytes": 22391616,
+        "sha256": "4037837ec4b495b436c3c6511057e92521b2ab1031d900bf1647e84520129875"
+      }
+    ],
+    "source_unchanged": true,
+    "locks": [
+      "/var/home/salvogendut/Downloads/IRIX media/Installed/O2-R5000-6.5.30/irix6530.img.prismatic-lock"
+    ],
+    "logical_bytes": 8589934592,
+    "sector_bytes": 512,
+    "dirty_header_count": 2798951,
+    "dirty_entries": 2798951,
+    "unique_dirty_sectors": 2798951,
+    "raw_sha256": "3f9975efc92a03dd2ba23af4861cd073a87a24b1898cbeadc5b913b26f4d88e5",
+    "exporter_sha256": "d39ef666f835551cb4b0235020cfbfb7739bffdf597233fcc1ccaaf869f732d7",
+    "overlay_reader_sha256": "c3888586631ad15baea1fbf1a3ec4cdd58baf8fd35d303b7d7438ed5da5bd82f",
+    "chdman": {
+      "path": "/usr/bin/chdman",
+      "sha256": "dd041d352df804717aa24d881bcba644d69e20de0d7dbdf0458547c0901551e9"
+    },
+    "commands": [
+      [
+        "/usr/bin/chdman",
+        "createhd",
+        "-i",
+        "/var/home/salvogendut/Dev/xiri/.work/donors/irix-6.5.30f-original-media/disk.raw",
+        "-o",
+        "/var/home/salvogendut/Dev/xiri/.work/donors/irix-6.5.30f-original-media/irix-donor.chd",
+        "-ss",
+        "512",
+        "-hs",
+        "16384",
+        "-c",
+        "zlib",
+        "-np",
+        "2"
+      ],
+      [
+        "/usr/bin/chdman",
+        "verify",
+        "-i",
+        "/var/home/salvogendut/Dev/xiri/.work/donors/irix-6.5.30f-original-media/irix-donor.chd"
+      ],
+      [
+        "/usr/bin/chdman",
+        "extracthd",
+        "-i",
+        "/var/home/salvogendut/Dev/xiri/.work/donors/irix-6.5.30f-original-media/irix-donor.chd",
+        "-o",
+        "/var/home/salvogendut/Dev/xiri/.work/donors/irix-6.5.30f-original-media/roundtrip.raw"
+      ],
+      [
+        "/usr/bin/chdman",
+        "info",
+        "-i",
+        "/var/home/salvogendut/Dev/xiri/.work/donors/irix-6.5.30f-original-media/irix-donor.chd"
+      ]
+    ],
+    "chd_bytes": 600161944,
+    "chd_sha256": "339f74457dfbb06813681ab5db2ccfdd29d394e8a02dfcdcd6c6ac7c22a836db",
+    "roundtrip_verified": true,
+    "raw_retained": true
+  },
+  "native_boot": {
+    "machine": "o2_ip32",
+    "cpu": "r5000",
+    "memory_mb": 256,
+    "identity": "6.5 6.5.30f\nCPU: MIPS R5000 Processor Chip Revision: 2.1\nFPU: MIPS R5000 Floating Point Coprocessor Revision: 0.0\n1 180 MHZ IP32 Processor\nMain memory size: 256 Mbytes\nInstruction cache size: 32 Kbytes\nData cache size: 32 Kbytes\nFLASH PROM version 4.18\nIntegral SCSI controller 0: Version ADAPTEC 7880\n  Disk drive: unit 1 on SCSI controller 0\nIntegral SCSI controller 1: Version ADAPTEC 7880\nOn-board serial ports: tty1\nOn-board serial ports: tty2\nOn-board EPP/ECP parallel port\nCRM graphics installed\nIntegral Ethernet: ec0, version 0\nIris Audio Processor: version A3 revision 0\nVideo: MVP unit 0 version 0.4\nAV: AV1 Card version 1, O2Cam type 1 version 0 connected.\ng\nFilesystem             Type  kbytes     use     avail  %use Mounted on\n/dev/root               xfs  8250688  1285776  6964912  16  /\n",
+    "emulator_revision": "819c6825504d40ad9f9aa00554249affd2da9446",
+    "iris_sha256": "3dd9299d71f1899ff5a8c9b76f6a24752d19e4f9a0bcfe0edf3a29001dc9c49e",
+    "ci_sha256": "2543b1fae0b442516c40c9d9155eebc9f9569561146b4f62948171fe7eb5c7f3",
+    "source_nvram_sha256": "7be8898587b0c45a8de4bbe7fd392c30329f000d32eea5de4f32af94134493b2",
+    "clean_shutdown": true,
+    "shutdown_review": ".work/donors/irix-6.5.30f-original-media/verification/irix-6.5.30-donor-serial/shutdown-review.json",
+    "result_sha256": "7a07a7f19b78a9252b2af21c03d6bd22b8f4f69c3c14471466ebbd2ecdba790c",
+    "shutdown_review_sha256": "128d3425eb10be19c9ca6cb8f3cdc303255026a325df46914ad8c2138d9edfcb",
+    "emulator_stopped": true,
+    "source_chd_unchanged": true,
+    "source_nvram_unchanged": true,
+    "graphical_login_qualified": false
+  },
+  "comparison": "lab/irix-donor/6.5.30f-comparison.json",
+  "comparison_sha256": "52b8d6ff95d8cd69cf33bfe506d9f58cdef841d61230218cf1caa2b90483d606",
+  "resources": "lab/irix-donor/6.5.30f-resources.json",
+  "resources_sha256": "706202f76fc325c8456e073a488f9fb802cf36ad4c3a7440e6e3fb4d5e93a675",
+  "limits": [
+    "Native donor boot/release/power-off is separate from NetBSD desktop compatibility.",
+    "6.5.22 donors, import profiles and selected manual CHD remain unchanged.",
+    "Original donor filesystem is exported read-only; native boot writes are confined to the disposable overlay."
+  ]
+}

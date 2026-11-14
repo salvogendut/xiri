@@ -157,12 +157,22 @@ miniroot and graphics settings; 6.5.30 does not support the Indy donor machine.
 
 The separate process must pin and check its media, package selection, release
 stream, tool revisions and exported disk contents, then inventory its required
-desktop resources. Validate imported ELF ABI/instruction-set requirements
-against the NetBSD target and run the desktop/service/session acceptance checks
-with the corresponding profile. Xiri support for 6.5.30 remains unqualified;
-the existing IRIX boots are donor-installation evidence only. This is follow-up
-work alongside the initial 6.5.22 packaging effort, not an additional completed
-installer.
+desktop resources. This stage is now complete for the O2 donor: the
+[6.5.30 result](results/2026-11-14-irix-6.5.30.md) records media pins, verified
+CHD/raw round trip, fresh native IRIX serial boot/shutdown, resource/ELF
+inventory and two byte-identical imports. Use
+[`profiles/irix-6.5.30f-v1.json`](../profiles/irix-6.5.30f-v1.json) explicitly.
+This donor includes desktop/fonts but no Acrobat, GIMP, GNOME or xmahjongg.
+Its n32 libraries include MIPS IV code; retain the R4400/6.5.22 reference and
+use the separately selected O2/R10000 platform for this qualification.
+
+The [O2 lab](../lab/irix-o2/README.md) builds an IP32 N64 kernel, matching
+module and native package with the `crime` Xorg driver and `ip3xboot`. A
+NetBSD cache-alignment correction advances boot past the framebuffer; a later
+native trap during SCSI initialization still prevents login. No 6.5.30
+application has run under NetBSD yet. Native boot, desktop/service/session
+acceptance and a separate manual Xiri CHD remain outstanding. The native IRIX
+donor CHD is usable for donor boot testing, but is not a NetBSD/Xiri image.
 
 ## Existing reference and external background
 

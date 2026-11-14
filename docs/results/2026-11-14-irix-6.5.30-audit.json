@@ -1,0 +1,88 @@
+{
+  "schema": 1,
+  "scope": "Read-only audit of saved original-media installation records; no new export or boot in this record.",
+  "release_line": "6.5.30",
+  "recorded_release": "6.5.30f",
+  "installation_machine": "O2 IP32 / R5000 / 256 MB / CRM / 8 GiB XFS",
+  "source_directory": "/var/home/salvogendut/Downloads/IRIX media/Installed/O2-R5000-6.5.30",
+  "installation_notes": "Network-only Instigator installation; graphical cold boot and shutdown -p -g0 -y were recorded on 2026-11-06.",
+  "current_configuration_note": "The saved normal prismatic.cfg now selects r10000, whereas installation.cfg and the installation records specify r5000. Source overlay writes postdate the saved shutdown record; a new export/qualification must not assume those records prove the current filesystem is clean.",
+  "source_media": {
+    "foundation1": {
+      "path": "/var/home/salvogendut/Downloads/IRIX media/common/IRIX 6.5 Foundation 1.iso",
+      "bytes": 574840832,
+      "sha256": "bf9776fedf9bb2ef58949f6d9b9c2b1bea5c083dc8861527482788f3be9ecc01"
+    },
+    "foundation2": {
+      "path": "/var/home/salvogendut/Downloads/IRIX media/common/IRIX 6.5 Foundation 2.iso",
+      "bytes": 270929920,
+      "sha256": "45370c175bfccab1675366c147e22dea490047c41aa40757f09ba5500bbab1d0"
+    },
+    "nfs": {
+      "path": "/var/home/salvogendut/Downloads/IRIX media/common/ONC3 NFS Version 3.iso",
+      "bytes": 82698240,
+      "sha256": "c366c5ddc47344ca22d84c260752b4ccaade284c8519386672b390ae583cd5b4"
+    },
+    "overlay1": {
+      "path": "/var/home/salvogendut/Downloads/IRIX media/6.5.30/IRIX 6.5.30 Installation Tools and Overlays (1 of 3).iso",
+      "bytes": 475160576,
+      "sha256": "6450dbd77d4519fa40ac5fef5bf07a0be6b8b3c6717bb23cc50811c173154dbe"
+    },
+    "overlay2": {
+      "path": "/var/home/salvogendut/Downloads/IRIX media/6.5.30/IRIX 6.5.30 Overlays (2 of 3).iso",
+      "bytes": 407363584,
+      "sha256": "c5342430a58532800cea918b02af07d30d4c6d395c6b9d8e536d8869683f2b0b"
+    },
+    "overlay3": {
+      "path": "/var/home/salvogendut/Downloads/IRIX media/6.5.30/IRIX 6.5.30 Overlays (3 of 3).iso",
+      "bytes": 614719488,
+      "sha256": "785edd7c7c249e352ca36212894da8796d6ea28a30d495cf215d21e4e4a0cbf6"
+    },
+    "applications": {
+      "path": "/var/home/salvogendut/Downloads/IRIX media/6.5.30/IRIX 6.5 Applications August 2006.iso",
+      "bytes": 600285184,
+      "sha256": "a4e6d5f5c812f399bd560aef9baa1dfedb8555ea098e7f4ba82c6678b2e04798"
+    }
+  },
+  "evidence": {
+    "README.txt": {
+      "bytes": 2429,
+      "sha256": "6a80dfa0d99836d54f63100bb71d385b46f0b216a3a95be182a543356bacc4f1"
+    },
+    "INSTALL-NOTES.txt": {
+      "bytes": 3246,
+      "sha256": "eeacc4821e5242b130dab26da3cd51166e593f41f53fd74285540cb219f2f219"
+    },
+    "installation.cfg": {
+      "bytes": 611,
+      "sha256": "dccfe42ede73e3971312dd51969e4ed2e2387614758099df9d18fb88258aa0eb"
+    },
+    "prismatic.cfg": {
+      "bytes": 1457,
+      "sha256": "a4b87481d67ae0322a823e13a1c65f250036426f6b2d68b69b864cec543a2732"
+    },
+    "console.log": {
+      "bytes": 54806,
+      "sha256": "11d60233fcde2d92d09245963fdd50a732b8c614bb970a15f427b122fbe113be"
+    },
+    "frontend.log": {
+      "bytes": 6246,
+      "sha256": "a9b2d9bf7b07b759e627094012e0b1471e3aadaa8d69a39136de71a1704d9065"
+    },
+    "desktop.png": {
+      "bytes": 69698,
+      "sha256": "c5ba61a70441c0220cf2f01a0b054d06ef1bb303476f6bcd8678322e17d5ddef"
+    },
+    "powered-off.png": {
+      "bytes": 3273,
+      "sha256": "b12042e4be5358a6211044f4d2074f8fdeba1abb60a7347281b3bdf3b37fcfe6"
+    }
+  },
+  "installation_tools": {
+    "prismatic_implementation": "99914900be7af8975671676ac6836a25bbde302d",
+    "iris": "fb24628e1bf97a4f379309c79e808d82929672b7",
+    "instigator_version": "0.5.1",
+    "instigator_commit": null
+  },
+  "policy": "Keep 6.5.22 and 6.5.30 donors, profiles, qualification and CHDs separate; shared native components require checks with both."
+}

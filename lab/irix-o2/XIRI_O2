@@ -1,0 +1,8 @@
+# O2 / R10000 platform trial; retain the separately qualified Indy kernel.
+include "arch/sgimips/conf/GENERIC64_IP3x"
+ident "XIRI_O2_20261114"
+makeoptions DEBUG="-g"
+makeoptions COPY_SYMTAB=1
+options MODULAR
+no config netbsd
+config netbsd root on sd0a type ffs
