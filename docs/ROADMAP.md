@@ -289,7 +289,10 @@ work.
 ## Next packaging phase
 
 The next deployment cycle is [reproducible installation](XIRI-INSTALLATION.md).
-The user selected an installed IRIX 6.5.22 donor image as the initial source.
+The initial source is an installed IRIX 6.5.22 donor built from original media.
+The existing Prismatic/Instigator installation supplies a tested recipe and a
+6.5.22f candidate. Export its combined disk/overlay contents and qualify its
+desktop resources separately before replacing the current 6.5.22m reference.
 Consolidate the resource profiles and native prerequisites, then qualify a clean
 target install and repeat installation without relying on prepared desktop seeds.
 The linked MAME guide documents donor preparation; its IRIX formatting and Xsgi

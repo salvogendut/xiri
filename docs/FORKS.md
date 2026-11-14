@@ -51,6 +51,14 @@ not repin qualified kernels, emulator binaries, runtime resources or guest disks
 
 ## IRIS upstream updates
 
+The November 14 installation-profile/donor audit fetched upstream and checked
+`49210388ed5559667d7859dd46103b42b07d3fed` against IRIS `xiri` at
+`7c4552a6aacf5915b7e951c6c60228216b342215`. There are no incoming commits;
+no integration or emulator rebuild was required. The
+[donor audit](results/2026-11-14-irix-donor-audit.json) records the check alongside
+the original-media installation evidence. Existing qualified artifacts remain
+pinned.
+
 The November 14 delta-cleanup cycle checks upstream `49210388`, already included
 in `xiri`, and removes redundant NFS changes, a duplicate JIT queue regression,
 obsolete PROM-array tooling and historical integration notes. The remaining

@@ -237,8 +237,11 @@ Use the `xiri` integration branches for both forks, following the
 ## Remaining work
 
 The next packaging work is the [reproducible installation plan](docs/XIRI-INSTALLATION.md):
-import from an installed IRIX 6.5.22 image and install the matching NetBSD module,
-native services and desktop configuration without inheriting a prepared Xiri image.
+import from our own original-media IRIX 6.5.22 installation and install the
+matching NetBSD module, native services and desktop configuration without
+inheriting a prepared Xiri image. The existing Prismatic/Instigator installation
+is a 6.5.22f candidate; the qualified reference remains 6.5.22m until comparison
+and testing are complete.
 
 Compatibility is incomplete. The reproduced Type1 collapse is corrected;
 winterm keeps the verified NetBSD bitmap Courier default. Broader graphics operations,

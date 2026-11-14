@@ -1,0 +1,200 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "scope": "Read-only audit of existing installation records and local source media; no new guest boot, disk export or Xiri donor qualification.",
+  "candidate_release": "6.5.22f",
+  "current_qualified_reference": "6.5.22m",
+  "machine": {
+    "model": "Indy IP24",
+    "cpu": "R4400",
+    "ram_mb": 128,
+    "graphics": "Newport 24-bit",
+    "disk_scsi_id": 1,
+    "disk_logical_bytes": 4294967296,
+    "filesystem": "XFS",
+    "filesystem_block_bytes": 4096
+  },
+  "installation_tools": {
+    "prismatic_revision": "99914900be7af8975671676ac6836a25bbde302d",
+    "iris_revision": "fb24628e1bf97a4f379309c79e808d82929672b7",
+    "instigator_version": "0.5.1",
+    "instigator_revision": null,
+    "instigator_revision_note": "Saved installation notes identify the version, not the exact commit; current build-info describes a later build."
+  },
+  "installation_method": "Overlay 1 CD miniroot copy, followed by private-network kernel/package installation through native Instigator (BOOTP, TFTP, RSH). A separate fresh disk verified network-only miniroot bootstrap through the filesystem prompt, without repeating the full install.",
+  "package_selection": {
+    "stream": "feature",
+    "initial_selection": [
+      "keep *",
+      "install standard"
+    ],
+    "excluded_optional_subsystems": [
+      "java2_plugin.sw32.mozilla_freeware",
+      "inventor_dev.sw.base",
+      "inventor_dev.sw.lib"
+    ],
+    "final_conflicts": "No conflicts"
+  },
+  "recorded_validation": [
+    "Installations and removals were successful.",
+    "uname -R: 6.5 6.5.22f",
+    "Cold disk boot with no CD and helper disabled reached graphical login and 4Dwm desktop."
+  ],
+  "source_media": [
+    {
+      "relative_path": "common/IRIX 6.5 Foundation 1.iso",
+      "original": {
+        "path": "/var/home/salvogendut/Downloads/IRIX media/common/IRIX 6.5 Foundation 1.iso",
+        "bytes": 574840832,
+        "sha256": "bf9776fedf9bb2ef58949f6d9b9c2b1bea5c083dc8861527482788f3be9ecc01"
+      },
+      "staged": {
+        "path": "/var/home/salvogendut/Dev/prismatic/target/install-server/irix6522/setup/media/common/IRIX 6.5 Foundation 1.iso",
+        "bytes": 574840832,
+        "sha256": "bf9776fedf9bb2ef58949f6d9b9c2b1bea5c083dc8861527482788f3be9ecc01"
+      },
+      "matches": true
+    },
+    {
+      "relative_path": "common/IRIX 6.5 Foundation 2.iso",
+      "original": {
+        "path": "/var/home/salvogendut/Downloads/IRIX media/common/IRIX 6.5 Foundation 2.iso",
+        "bytes": 270929920,
+        "sha256": "45370c175bfccab1675366c147e22dea490047c41aa40757f09ba5500bbab1d0"
+      },
+      "staged": {
+        "path": "/var/home/salvogendut/Dev/prismatic/target/install-server/irix6522/setup/media/common/IRIX 6.5 Foundation 2.iso",
+        "bytes": 270929920,
+        "sha256": "45370c175bfccab1675366c147e22dea490047c41aa40757f09ba5500bbab1d0"
+      },
+      "matches": true
+    },
+    {
+      "relative_path": "6.5.22/IRIX 6.5.22 Overlay 1 of 3.iso",
+      "original": {
+        "path": "/var/home/salvogendut/Downloads/IRIX media/6.5.22/IRIX 6.5.22 Overlay 1 of 3.iso",
+        "bytes": 681861120,
+        "sha256": "c36d43431569902a9bdf868cb9f98ea44519a9a99e2bb68dbf1be76be0eec299"
+      },
+      "staged": {
+        "path": "/var/home/salvogendut/Dev/prismatic/target/install-server/irix6522/setup/media/6.5.22/IRIX 6.5.22 Overlay 1 of 3.iso",
+        "bytes": 681861120,
+        "sha256": "c36d43431569902a9bdf868cb9f98ea44519a9a99e2bb68dbf1be76be0eec299"
+      },
+      "matches": true
+    },
+    {
+      "relative_path": "6.5.22/IRIX 6.5.22 Overlay 2 of 3.iso",
+      "original": {
+        "path": "/var/home/salvogendut/Downloads/IRIX media/6.5.22/IRIX 6.5.22 Overlay 2 of 3.iso",
+        "bytes": 437952512,
+        "sha256": "9064b95ef1c4589c9799a58bbcd7b9f99577d6516555ddc8ed02b703655b58cc"
+      },
+      "staged": {
+        "path": "/var/home/salvogendut/Dev/prismatic/target/install-server/irix6522/setup/media/6.5.22/IRIX 6.5.22 Overlay 2 of 3.iso",
+        "bytes": 437952512,
+        "sha256": "9064b95ef1c4589c9799a58bbcd7b9f99577d6516555ddc8ed02b703655b58cc"
+      },
+      "matches": true
+    },
+    {
+      "relative_path": "6.5.22/IRIX 6.5.22 Overlay 3 of 3.iso",
+      "original": {
+        "path": "/var/home/salvogendut/Downloads/IRIX media/6.5.22/IRIX 6.5.22 Overlay 3 of 3.iso",
+        "bytes": 413851648,
+        "sha256": "d2899e9aac3f6f62a446d881ccc2f214afc181c195272ab0e658ca974528557f"
+      },
+      "staged": {
+        "path": "/var/home/salvogendut/Dev/prismatic/target/install-server/irix6522/setup/media/6.5.22/IRIX 6.5.22 Overlay 3 of 3.iso",
+        "bytes": 413851648,
+        "sha256": "d2899e9aac3f6f62a446d881ccc2f214afc181c195272ab0e658ca974528557f"
+      },
+      "matches": true
+    },
+    {
+      "relative_path": "6.5.22/IRIX 6.5.22 Applications November-2003.iso",
+      "original": {
+        "path": "/var/home/salvogendut/Downloads/IRIX media/6.5.22/IRIX 6.5.22 Applications November-2003.iso",
+        "bytes": 645668864,
+        "sha256": "86c8436199f8487a716c17587c67b99f2fe164f51e07144e16761bbae0adca10"
+      },
+      "staged": {
+        "path": "/var/home/salvogendut/Dev/prismatic/target/install-server/irix6522/setup/media/6.5.22/IRIX 6.5.22 Applications November-2003.iso",
+        "bytes": 645668864,
+        "sha256": "86c8436199f8487a716c17587c67b99f2fe164f51e07144e16761bbae0adca10"
+      },
+      "matches": true
+    }
+  ],
+  "evidence": [
+    {
+      "path": "/var/home/salvogendut/Downloads/IRIX media/Installed/Indy-R4400-6.5.22/README.txt",
+      "bytes": 1965,
+      "sha256": "7bed9570819754650a8a5b7331a358bff2a98a03a734546aa53becda8d38553a"
+    },
+    {
+      "path": "/var/home/salvogendut/Downloads/IRIX media/Installed/Indy-R4400-6.5.22/INSTALL-NOTES.txt",
+      "bytes": 3055,
+      "sha256": "7d0d029c3dec5341fe98800807ab3c57027993b2edc60d1c6aa2433bf45895ba"
+    },
+    {
+      "path": "/var/home/salvogendut/Downloads/IRIX media/Installed/Indy-R4400-6.5.22/installation.cfg",
+      "bytes": 792,
+      "sha256": "9fa16d7b77caa0a6b769e71095e0e50af0882749d089e702386232d5e814c0cd"
+    },
+    {
+      "path": "/var/home/salvogendut/Downloads/IRIX media/Installed/Indy-R4400-6.5.22/prismatic.cfg",
+      "bytes": 1463,
+      "sha256": "394530f4afc512c9c4fb9e4635ca3206eae11a81004e9c827acf614b82709b3b"
+    },
+    {
+      "path": "/var/home/salvogendut/Downloads/IRIX media/Installed/Indy-R4400-6.5.22/console.log",
+      "bytes": 59788,
+      "sha256": "021abfe6fbe2801558d32259a164e046958063c8289d26f2b724d19ceddd7b5e"
+    },
+    {
+      "path": "/var/home/salvogendut/Downloads/IRIX media/Installed/Indy-R4400-6.5.22/state/serial.log",
+      "bytes": 59753,
+      "sha256": "21d4368bea9dd7d084c6707e157094d7fa63a14118b5aee86ed2bdf4bf19326c"
+    },
+    {
+      "path": "/var/home/salvogendut/Downloads/IRIX media/Installed/Indy-R4400-6.5.22/desktop.png",
+      "bytes": 62928,
+      "sha256": "c4db589eb00e72e668577c292751122cf75a164f017cfcf9f63580a5710fcf8d"
+    },
+    {
+      "path": "/var/home/salvogendut/Dev/prismatic/target/install-server/irix6522/setup/instigator.yaml",
+      "bytes": 929,
+      "sha256": "016d44b7cd1d69e6c518b69f05682c3f2c62b2836ed06fb9726a3a614006a68f"
+    }
+  ],
+  "disk_files": [
+    {
+      "path": "/var/home/salvogendut/Downloads/IRIX media/Installed/Indy-R4400-6.5.22/irix6522.img",
+      "logical_bytes": 4294967296,
+      "allocated_bytes": 0
+    },
+    {
+      "path": "/var/home/salvogendut/Downloads/IRIX media/Installed/Indy-R4400-6.5.22/irix6522.img.overlay",
+      "logical_bytes": 4294967296,
+      "allocated_bytes": 1294778368
+    },
+    {
+      "path": "/var/home/salvogendut/Downloads/IRIX media/Installed/Indy-R4400-6.5.22/irix6522.img.overlay.dirty",
+      "logical_bytes": 20230608,
+      "allocated_bytes": 20234240
+    }
+  ],
+  "disk_note": "The base is an empty sparse disk; the overlay and its dirty-sector map contain the installation. No image content hashes or fresh filesystem checks were taken in this audit. Preserve all three originals; export only from a stopped, consistent copy.",
+  "iris_upstream_check": {
+    "revision": "49210388ed5559667d7859dd46103b42b07d3fed",
+    "integration_revision": "7c4552a6aacf5915b7e951c6c60228216b342215",
+    "incoming_commits": 0,
+    "validation": "Fetch performed at cycle start; log HEAD..upstream/main remains empty. No emulator changes or rebuild."
+  },
+  "cleanup": {
+    "test_instances_started": 0,
+    "disk_images_created": 0,
+    "media_modified": false
+  }
+}

@@ -1,9 +1,11 @@
 # Reproducible Xiri installation
 
-Status: implementation plan, 2026-11-14. The user selected an **already-installed
-IRIX 6.5.22 image** as the first import source. The supported end-to-end installer
-described here does not exist yet. Existing import, runtime-install and CHD
-preparation tools provide its components.
+Status: implementation plan, 2026-11-14. The first import source is an
+**installed IRIX 6.5.22 image built from the user's original installation media**.
+Our existing Prismatic installation provides a candidate and a tested recipe;
+the importer need not depend on a website hosting a preinstalled disk. The
+supported end-to-end Xiri installer described here does not exist yet. Existing
+import, runtime-install and CHD preparation tools provide its components.
 
 The first target is the tested NetBSD/sgimips configuration on IRIS, with our
 matching MIPS64 kernel and `compat_irix_o32` module, native Xorg and accelerated
@@ -11,7 +13,95 @@ Newport. Stock-kernel installation remains dependent on the three interfaces
 described in [NetBSD upstreaming](NETBSD-UPSTREAM.md). Physical hardware is a
 separate qualification target.
 
-## Source image and the supplied guide
+## Our original-media installation
+
+The November 14 audit found a completed installation in
+`~/Downloads/IRIX media/Installed/Indy-R4400-6.5.22/`. Its `README.txt`,
+`INSTALL-NOTES.txt`, `installation.cfg`, console log and `desktop.png` record:
+
+| Input or result | Recorded value |
+| --- | --- |
+| Frontend and emulator | Prismatic `99914900`, IRIS `xiri` at `fb24628e` |
+| Installation server | Native Instigator v0.5.1, private BOOTP/TFTP/RSH network |
+| Machine | Indy IP24, R4400, 128 MB, Newport 24-bit |
+| Target disk | New 4 GiB raw disk at SCSI ID 1, XFS with 4096-byte blocks |
+| Software selection | Feature stream, `keep *`, `install standard` |
+| Installed release | `uname -R` reports **6.5 6.5.22f** |
+| Recorded validation | Successful installation, then graphical login and 4Dwm after a cold disk boot with no CD and the helper disabled |
+
+The original media remain under `~/Downloads/IRIX media/`:
+
+```text
+common/IRIX 6.5 Foundation 1.iso
+common/IRIX 6.5 Foundation 2.iso
+6.5.22/IRIX 6.5.22 Overlay 1 of 3.iso
+6.5.22/IRIX 6.5.22 Overlay 2 of 3.iso
+6.5.22/IRIX 6.5.22 Overlay 3 of 3.iso
+6.5.22/IRIX 6.5.22 Applications November-2003.iso
+```
+
+All six match the installation server's staged copies by size and SHA256.
+The [audit ledger](results/2026-11-14-irix-donor-audit.json) records those hashes,
+full emulator/frontend revisions and hashes of the saved evidence. The saved
+notes identify Instigator's version, but not its exact commit; the frontend's
+current build metadata describes a later build. This audit did not boot the
+guest again or qualify its files under Xiri.
+
+### Reuse the existing installation workflow
+
+Prismatic's [installation guide](../../prismatic/docs/installing-irix.md) and
+[6.5.22 Instigator template](../../prismatic/packaging/install-server/instigator-6.5.22.example.yaml)
+describe the maintained procedure. Instigator reads the original CD images and
+serves five distributions: Overlay 1, Overlay 2, Overlay 3, merged Foundations,
+and Applications. The saved setup is
+`../prismatic/target/install-server/irix6522/setup/instigator.yaml`; a reproducible
+setup should live outside `target/` so build cleanup cannot remove it.
+
+The completed install used Overlay 1 CD to copy the miniroot, then the private
+network for the kernel and packages. A separate fresh-disk check verified a
+fully network-based bootstrap through the filesystem-creation prompt:
+
+```text
+setenv tapedevice bootp():/6.5.22/dist/sa
+boot -f $tapedevice(sashARCS) --m
+```
+
+Follow the guide's preceding `fx` partitioning and PROM environment setup;
+these two commands alone are not a complete install recipe. Clear installed-OS
+boot overrides while installing, retain graphics hardware even when using the
+serial console, and keep idle parking disabled for the recorded serial `fx`
+workaround. The saved full install resolved optional Java/Inventor dependency
+conflicts and reached **No conflicts** before `go`.
+
+IRIS also supplies a direct CD-changer workflow in
+[its installation guide](../../iris/clanker/irix/irix-install.md), with
+[`iris-irix65.toml`](../../iris/iris-irix65.toml) and `iris-ci` helpers. That
+is a separate route using an empty CHD and the same six CD roles. The older
+`irix-install/iris-install.toml` is a Windows/June-1998-media example; it is not
+the configuration used for our Prismatic 6.5.22 installation.
+
+### Export and qualify a donor CHD
+
+The saved installation consists of **all three** files:
+`irix6522.img`, `irix6522.img.overlay`, and `irix6522.img.overlay.dirty`.
+The base is an empty sparse disk; installation writes are in the overlay and
+its sector map. Converting the base alone would produce an empty donor.
+
+The next donor step is to take a consistent, stopped copy of those files,
+merge that copy's overlay, and compress the resulting complete raw disk to
+CHD. Preserve the originals and their PROM state. Verify the CHD and an exact
+raw round trip, then check the filesystem read-only and cold-boot a disposable
+copy. Record the media, tool revisions, package selections, release and exported
+image hashes. No donor export has been performed by this audit.
+
+This candidate is **6.5.22f**; Xiri's qualified reference remains **6.5.22m**.
+Compare required desktop programs, libraries and resources, then qualify a
+separate import profile before replacing the reference. A standard CD install
+does not establish the presence of the old donor's additional GIMP, Acrobat,
+GNOME or freeware payloads. Keep those components optional with their own
+provenance and missing-component checks.
+
+## Existing reference and external background
 
 The [SGI installation guide](https://sgi.neocities.org/installguide) describes
 installing IRIX 6.5.22 into a MAME disk from Foundations, Overlays and Applications
@@ -22,7 +112,8 @@ Its [home page](https://sgi.neocities.org/) links to
 [irix-6.5.22m-MAME.tar.xz](http://usftp.irixnet.org/sgi-mame/irix-6.5.22m-MAME.tar.xz)
 as an installed IRIX disk and describes using `irix65.chd`. The page was checked;
 the download host was inaccessible through the browsing tool, and this archive
-has not been downloaded or inspected. Its filename is not a qualification pin.
+has not been downloaded or inspected. It is background information, not a
+required download for the original-media workflow.
 
 Our existing donor is separately identified in
 [the reference manifest](../lab/irix-reference/manifest.json): IRIX 6.5.22m,
@@ -44,7 +135,8 @@ import files from a readable donor image.
    producing an installation package. Mount the donor read-only with XFS recovery
    disabled. Record hashes and available components, and report missing inputs.
    An archive is first unpacked to obtain the disk; archive recognition must not
-   depend on a particular filename.
+   depend on a particular filename. A base with outstanding emulator overlays
+   requires a verified merged export; never silently inventory the base alone.
 2. **Build the import payload.** Consolidate the current copy ledgers and later
    resource additions into one versioned profile. Preserve required library,
    catalog and resource relationships, with explicit file modes and symlinks.
