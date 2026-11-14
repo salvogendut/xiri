@@ -51,6 +51,12 @@ not repin qualified kernels, emulator binaries, runtime resources or guest disks
 
 ## IRIS upstream updates
 
+The November 14 donor-export cycle again fetched upstream `49210388`, already
+included in IRIS `xiri` at `7c4552a6`. No merge or rebuild was required. The
+[donor boot check](results/2026-11-14-irix-donor.md) used the retained, pinned
+JIT-enabled `xiri` build `36858ff4`; existing fork checkouts and qualified NetBSD
+artifacts were unchanged.
+
 The November 14 installation-profile/donor audit fetched upstream and checked
 `49210388ed5559667d7859dd46103b42b07d3fed` against IRIS `xiri` at
 `7c4552a6aacf5915b7e951c6c60228216b342215`. There are no incoming commits;

@@ -2,7 +2,8 @@
 
 Status: implementation plan, 2026-11-14. The first import source is an
 **installed IRIX 6.5.22 image built from the user's original installation media**.
-Our existing Prismatic installation provides a candidate and a tested recipe;
+Our existing Prismatic installation now provides a
+[verified donor CHD](results/2026-11-14-irix-donor.md) and a tested recipe;
 the importer need not depend on a website hosting a preinstalled disk. The
 supported end-to-end Xiri installer described here does not exist yet. Existing
 import, runtime-install and CHD preparation tools provide its components.
@@ -87,12 +88,11 @@ The saved installation consists of **all three** files:
 The base is an empty sparse disk; installation writes are in the overlay and
 its sector map. Converting the base alone would produce an empty donor.
 
-The next donor step is to take a consistent, stopped copy of those files,
-merge that copy's overlay, and compress the resulting complete raw disk to
-CHD. Preserve the originals and their PROM state. Verify the CHD and an exact
-raw round trip, then check the filesystem read-only and cold-boot a disposable
-copy. Record the media, tool revisions, package selections, release and exported
-image hashes. No donor export has been performed by this audit.
+This export is now complete: the [donor qualification](results/2026-11-14-irix-donor.md)
+records the read-only merged export, verified CHD/raw round trip, filesystem
+inventory, graphical cold boot and clean guest power-off. Original disk files
+and PROM state are preserved. The 505.4 MiB CHD, source hashes, launcher and PNG
+are retained in `.work/donors/irix-6.5.22f-original-media/`.
 
 This candidate is **6.5.22f**; Xiri's qualified reference remains **6.5.22m**.
 Compare required desktop programs, libraries and resources, then qualify a
@@ -100,6 +100,12 @@ separate import profile before replacing the reference. A standard CD install
 does not establish the presence of the old donor's additional GIMP, Acrobat,
 GNOME or freeware payloads. Keep those components optional with their own
 provenance and missing-component checks.
+
+The completed static comparison finds all 42 selected core paths: 20 have
+identical full-file hashes, and the 22 differing core ELFs have identical code
+sections. The imported 55-path bitmap set and granite backdrop match. Acrobat
+resources are present; GIMP, GNOME and xmahjongg need additional payloads.
+The new import profile and NetBSD runtime checks remain the next step.
 
 ## Separate IRIX 6.5.30 workflow
 

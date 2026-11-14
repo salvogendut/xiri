@@ -1,0 +1,111 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "status": "passed",
+  "scope": "Original-media donor export, cold boot under IRIX, and static resource comparison; no replacement of the qualified Xiri runtime.",
+  "manifest": "lab/irix-donor/6.5.22f.json",
+  "manifest_sha256": "4bcb8cbef4fcb4691dd9a25a589530d9f4408fcd957a8016920aafde30263e21",
+  "export_roundtrip": true,
+  "source_unchanged": true,
+  "graphical_login": true,
+  "desktop_processes": "    root       1214       1206  0 07:20:31 ?       0:01 /usr/bin/X11/Xsgi -bs -nobitscale -c -pseudomap 4sight -solidroot sgilightblue \n    root       1287       1260  0 07:20:38 ?       0:01 /usr/bin/X11/4Dwm -launch -xrm *SG_UseBackgrounds: True\n    root       1300       1260  0 07:20:39 ?       0:00 /usr/bin/X11/toolchest -name ToolChest\n",
+  "identity": "6.5 6.5.22f\nCPU: MIPS R4400 Processor Chip Revision: 5.0\nFPU: MIPS R4000 Floating Point Coprocessor Revision: 0.0\n1 150 MHZ IP22 Processor\nMain memory size: 128 Mbytes\nSecondary unified instruction/data cache size: 128 Kbytes on Processor 0\nInstruction cache size: 16 Kbytes\nData cache size: 16 Kbytes\nIntegral SCSI controller 0: Version WD33C93A\n  Disk drive: unit 1 on SCSI controller 0\nOn-board serial ports: 2\nOn-board bi-directional parallel port\nGraphics board: Indy 24-bit\nIntegral Ethernet: ec0, version 1\nIntegral ISDN: Basic Rate Interface unit 0, revision 1.0\nVino video: unit 0, revision 0, IndyCam connected\ng\nFilesystem             Type  kbytes     use     avail  %use Mounted on\n/dev/root               xfs  4056384  1175332  2881052  29  /\n",
+  "clean_shutdown": true,
+  "shutdown_evidence": {
+    "guest_command": "sync; shutdown -p -g0 -y",
+    "serial_marker": "Shutdown started.",
+    "emulator_marker": "Machine: soft power-off",
+    "emulator_exit": 0,
+    "forced_quit": false,
+    "raw_probe_clean_shutdown": false,
+    "note": "Initial harness looked only for serial power-off text. Guest soft power-off exited IRIS normally; the classifier is corrected and checked against these logs plus rejection cases."
+  },
+  "emulator_stopped": true,
+  "source_chd_unchanged": true,
+  "source_nvram_unchanged": true,
+  "comparison_summary": {
+    "same_bytes": 1351,
+    "missing": 1706,
+    "same_type": 91,
+    "different_bytes": 135,
+    "same_type_and_link": 124
+  },
+  "essential_summary": {
+    "same_bytes": 20,
+    "different_bytes": 22
+  },
+  "changed_core_elf_text_identical": 22,
+  "bitmap_ledger_all_present": true,
+  "granite_backdrop_same_bytes": true,
+  "optional_components": {
+    "acrobat": "All 86 resource-ledger paths present; six file hashes differ. Not newly runtime-tested on Xiri.",
+    "gimp": "1,216 of 1,217 resource-ledger paths absent; shared original core library matches.",
+    "gnome": "All 53 preference/resource-ledger paths absent.",
+    "xmahjongg": "Absent from this standard CD installation."
+  },
+  "checks": {
+    "exporter_tests": 7,
+    "shutdown_classifier_recorded_pass": true,
+    "shutdown_classifier_rejection_cases": 3
+  },
+  "upstream": {
+    "revision": "49210388ed5559667d7859dd46103b42b07d3fed",
+    "xiri_revision": "7c4552a6aacf5915b7e951c6c60228216b342215",
+    "incoming_commits": 0,
+    "integration": "not needed"
+  },
+  "attempts": [
+    {
+      "name": "interpreter",
+      "result": "Reached X startup but exceeded serial login timeout; emulator stopped, source preserved."
+    },
+    {
+      "name": "jit-early-keys",
+      "result": "Serial login and graphical greeter reached; keystrokes preceded greeter mapping. Emulator stopped, source preserved."
+    },
+    {
+      "name": "jit-screen-wait",
+      "result": "Waited for validated greeter; root 4Dwm desktop captured; guest soft power-off and exit 0."
+    }
+  ],
+  "evidence": {
+    ".work/donors/irix-6.5.22f-original-media/desktop.png": "6e2c2fe0beee466c8614586d82e985d7b81644827ef11f73d88681b789b096ce",
+    ".work/donors/irix-6.5.22f-original-media/login-golden.png": "138f52dfdaf6ff63929f347a051593164fb75466486011d802777337248ea5ca",
+    ".work/donors/irix-6.5.22f-original-media/verification/serial.log": "d4d7f54359ce732f2d2ba0d2fd4b2c86baacaf522910865a53714c3ef68abb9a",
+    ".work/donors/irix-6.5.22f-original-media/verification/emulator.log": "90d161f8f3fd9560ff19baf8900a8eacaa4dc6abd63914e8a5a9187da450434f",
+    ".work/donors/irix-6.5.22f-original-media/verification/monitor.log": "bcf771518eee71b189a16965ad09dbfb4740568131757c4e5edc844fea10e4b8",
+    ".work/donors/irix-6.5.22f-original-media/verification/result.json": "a8452e7909cffc2b3e76da0357cf2c0459b60a487ab8112e215f54a44bec7521",
+    ".work/donors/irix-6.5.22f-original-media/verification/probe-used.py": "eca69cc02e8c9e1c695f9b598ce8de4cc947bfc1637b2bbc5b854516a1e6a227"
+  },
+  "cleanup": {
+    "status": "complete",
+    "removed": [
+      "boot",
+      "boot-jit",
+      "boot-qualified",
+      "comparison",
+      "comparison-v2",
+      "comparison-v3",
+      "comparison-final",
+      "comparison-qualified",
+      "guestfs-cache",
+      "guestfs-tmp",
+      "disk.raw",
+      "guestfish-listener.log",
+      "guestfish.json"
+    ],
+    "allocated_file_bytes_before": 5465124864,
+    "allocated_file_bytes_after": 530309120,
+    "removed_allocated_file_bytes": 4934815744,
+    "allocation_note": "Sum of st_blocks; reflink-shared extents can be counted in more than one file, so this is not an exact exclusive-space delta.",
+    "owned_emulator_pids_stopped": [
+      181696,
+      204886,
+      215745
+    ],
+    "raw_disk_readers_before_removal": 0,
+    "source_files_rehashed_unchanged": true,
+    "final_chd_rehashed": true,
+    "retained_bundle": ".work/donors/irix-6.5.22f-original-media"
+  }
+}

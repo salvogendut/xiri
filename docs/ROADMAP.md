@@ -290,9 +290,11 @@ work.
 
 The next deployment cycle is [reproducible installation](XIRI-INSTALLATION.md).
 The initial source is an installed IRIX 6.5.22 donor built from original media.
-The existing Prismatic/Instigator installation supplies a tested recipe and a
-6.5.22f candidate. Export its combined disk/overlay contents and qualify its
-desktop resources separately before replacing the current 6.5.22m reference.
+The existing Prismatic/Instigator installation now supplies a
+[verified 6.5.22f donor CHD](results/2026-11-14-irix-donor.md): combined disk/overlay
+export, exact raw round trip, graphical cold boot, clean power-off and resource
+comparison pass. Qualify a separate import profile on NetBSD before replacing
+the current 6.5.22m runtime reference.
 Consolidate the resource profiles and native prerequisites, then qualify a clean
 target install and repeat installation without relying on prepared desktop seeds.
 The linked MAME guide documents donor preparation; its IRIX formatting and Xsgi

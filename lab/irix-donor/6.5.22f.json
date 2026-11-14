@@ -1,0 +1,117 @@
+{
+  "schema": 1,
+  "release": "6.5.22f",
+  "kind": "original-media IRIX donor",
+  "bundle": ".work/donors/irix-6.5.22f-original-media",
+  "chd": "irix-donor.chd",
+  "chd_sha256": "b4fff76ffa0ca00c0a90da1c94a3eb41f5f6ba4cb13c0af258b4acca4ad95c41",
+  "raw_sha256": "fc70f353f53244eaa2707609b348e4a2b22aae3de6ce41398bdd8d6c3f4bda56",
+  "logical_bytes": 4294967296,
+  "source_media_audit": "docs/results/2026-11-14-irix-donor-audit.json",
+  "source_media_audit_sha256": "143a73239bc02c365e12ef6817b209734d641dfe1c66eac7500fc182a5e2044d",
+  "source_files": [
+    {
+      "path": "/var/home/salvogendut/Downloads/IRIX media/Installed/Indy-R4400-6.5.22/irix6522.img",
+      "bytes": 4294967296,
+      "sha256": "8479e43911dc45e89f934fe48d01297e16f51d17aa561d4d1c216b1ae0fcddca"
+    },
+    {
+      "path": "/var/home/salvogendut/Downloads/IRIX media/Installed/Indy-R4400-6.5.22/irix6522.img.overlay",
+      "bytes": 4294967296,
+      "sha256": "fc70f353f53244eaa2707609b348e4a2b22aae3de6ce41398bdd8d6c3f4bda56"
+    },
+    {
+      "path": "/var/home/salvogendut/Downloads/IRIX media/Installed/Indy-R4400-6.5.22/irix6522.img.overlay.dirty",
+      "bytes": 20230608,
+      "sha256": "3b0688ef7abf94b392560509abd57f921208fa64fb99d7bc6b4f43bc15ab48a0"
+    }
+  ],
+  "export": {
+    "status": "verified",
+    "schema": 1,
+    "source_files": [
+      {
+        "path": "/var/home/salvogendut/Downloads/IRIX media/Installed/Indy-R4400-6.5.22/irix6522.img",
+        "bytes": 4294967296,
+        "sha256": "8479e43911dc45e89f934fe48d01297e16f51d17aa561d4d1c216b1ae0fcddca"
+      },
+      {
+        "path": "/var/home/salvogendut/Downloads/IRIX media/Installed/Indy-R4400-6.5.22/irix6522.img.overlay",
+        "bytes": 4294967296,
+        "sha256": "fc70f353f53244eaa2707609b348e4a2b22aae3de6ce41398bdd8d6c3f4bda56"
+      },
+      {
+        "path": "/var/home/salvogendut/Downloads/IRIX media/Installed/Indy-R4400-6.5.22/irix6522.img.overlay.dirty",
+        "bytes": 20230608,
+        "sha256": "3b0688ef7abf94b392560509abd57f921208fa64fb99d7bc6b4f43bc15ab48a0"
+      }
+    ],
+    "source_unchanged": true,
+    "locks": [
+      "/var/home/salvogendut/Downloads/IRIX media/Installed/Indy-R4400-6.5.22/irix6522.img.prismatic-lock"
+    ],
+    "logical_bytes": 4294967296,
+    "sector_bytes": 512,
+    "dirty_header_count": 2528825,
+    "dirty_entries": 2528825,
+    "unique_dirty_sectors": 2528825,
+    "raw_sha256": "fc70f353f53244eaa2707609b348e4a2b22aae3de6ce41398bdd8d6c3f4bda56",
+    "exporter_sha256": "d39ef666f835551cb4b0235020cfbfb7739bffdf597233fcc1ccaaf869f732d7",
+    "overlay_reader_sha256": "c3888586631ad15baea1fbf1a3ec4cdd58baf8fd35d303b7d7438ed5da5bd82f",
+    "chdman": {
+      "path": "/usr/bin/chdman",
+      "sha256": "dd041d352df804717aa24d881bcba644d69e20de0d7dbdf0458547c0901551e9"
+    },
+    "commands": [
+      [
+        "/usr/bin/chdman",
+        "createhd",
+        "-i",
+        "/var/home/salvogendut/Dev/xiri/.work/donors/irix-6.5.22f-original-media/disk.raw",
+        "-o",
+        "/var/home/salvogendut/Dev/xiri/.work/donors/irix-6.5.22f-original-media/irix-donor.chd",
+        "-ss",
+        "512",
+        "-hs",
+        "16384",
+        "-c",
+        "zlib",
+        "-np",
+        "2"
+      ],
+      [
+        "/usr/bin/chdman",
+        "verify",
+        "-i",
+        "/var/home/salvogendut/Dev/xiri/.work/donors/irix-6.5.22f-original-media/irix-donor.chd"
+      ],
+      [
+        "/usr/bin/chdman",
+        "extracthd",
+        "-i",
+        "/var/home/salvogendut/Dev/xiri/.work/donors/irix-6.5.22f-original-media/irix-donor.chd",
+        "-o",
+        "/var/home/salvogendut/Dev/xiri/.work/donors/irix-6.5.22f-original-media/roundtrip.raw"
+      ],
+      [
+        "/usr/bin/chdman",
+        "info",
+        "-i",
+        "/var/home/salvogendut/Dev/xiri/.work/donors/irix-6.5.22f-original-media/irix-donor.chd"
+      ]
+    ],
+    "chd_bytes": 530002747,
+    "chd_sha256": "b4fff76ffa0ca00c0a90da1c94a3eb41f5f6ba4cb13c0af258b4acca4ad95c41",
+    "roundtrip_verified": true,
+    "raw_retained": true
+  },
+  "emulator_revision": "36858ff4e8694756502fa1e84b1190e6997d6e0d",
+  "emulator_sha256": "4a12d84448da9394499520490b39e76f3d0544ad60e8e12653dbec9991946345",
+  "ci_sha256": "7018936052ca8d51ce9c6a6d15a33af03366eec812d996b3f588ed71eb300d0b",
+  "comparison": "lab/irix-donor/6.5.22f-comparison.json",
+  "comparison_sha256": "b3f81cfb0195ea0d9aec17e9635be2cf057b05a84a47124993e99887df204b2d",
+  "section_comparison": "lab/irix-donor/6.5.22f-sections.json",
+  "section_comparison_sha256": "e5eb5d5130a011019537c5c5a53d1bd057b4a1bec6eea5f269b093322c931bc6",
+  "qualified_reference_unchanged": "6.5.22m",
+  "xiri_runtime_qualified": false
+}
