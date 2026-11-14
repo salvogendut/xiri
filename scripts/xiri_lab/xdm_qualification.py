@@ -220,8 +220,10 @@ def qualify(a, verify_irix_module):
     # committed equivalence separately; do not rewrite its pin or observation.
     build = json.loads((bundle/'irix-module-build.json').read_text())
     source_commit = m['pin'].get('committed_source_revision')
+    equivalent = {}
     if source_commit is None:
-        path = (ROOT/m['pin']['module_build_manifest']).with_name('source-equivalence.json')
+        path = a.source_equivalence or (ROOT/m['pin']['module_build_manifest']).with_name('source-equivalence.json')
+        path = path.resolve()
         if path.exists():
             equivalent = json.loads(path.read_text())
             assert equivalent['status'] == 'source-equivalent'
@@ -235,7 +237,9 @@ def qualify(a, verify_irix_module):
     if a.promote:
         assert source_commit, 'Commit and verify the built source before promoting this image'
     core_commit = source_commit
-    core_provenance = build.get('core_kernel_provenance')
+    # A later committed-source record can identify the reused core without
+    # rewriting the frozen build manifest or the cold-boot observation.
+    core_provenance = build.get('core_kernel_provenance') or equivalent.get('core_kernel_provenance')
     if core_provenance:
         # A module-only update can deliberately retain a previously qualified
         # core. Do not describe the current module checkout as that core's

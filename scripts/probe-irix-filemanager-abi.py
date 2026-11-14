@@ -3,9 +3,11 @@
 import argparse
 import hashlib
 import json
+import os
 from pathlib import Path
 import shutil
 import signal
+import subprocess
 import tarfile
 import tempfile
 from types import SimpleNamespace
@@ -18,6 +20,10 @@ from xiri_lab.transfer import archive
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--bundle', type=Path, required=True)
+    parser.add_argument('--suite', choices=('statvfs', 'remove', 'filemeta'), action='append',
+                        help='Repeat to select suites; defaults to statvfs and remove.')
+    parser.add_argument('--local-processes', action='store_true',
+                        help='Terminate recorded local session groups with the direct Distrobox adapter.')
     args = parser.parse_args()
     bundle = args.bundle.resolve()
     manifest = json.loads((bundle/'manifest.json').read_text())
@@ -30,7 +36,9 @@ def main():
     media = directory/'media'
     media.mkdir()
     inputs = {}
-    for suite in ('statvfs', 'remove'):
+    suites = args.suite or ['statvfs', 'remove']
+    assert len(set(suites)) == len(suites)
+    for suite in suites:
         path = ROOT/('.work/irix-'+suite)/'inputs.tgz'
         reference = json.loads((ROOT/'lab/irix-pathops'/(suite+'-reference.json')).read_text())
         fixtures = reference['build' if suite == 'statvfs' else 'manifest']['files']
@@ -63,6 +71,24 @@ def main():
         raise RuntimeError('Interrupted')
 
     lab.launch = launch_chd
+    if args.local_processes:
+        def terminate(process, name):
+            pid = int((directory/(name+'.pid')).read_text())
+            try:
+                assert pid > 1 and os.getpgid(pid) == pid
+                os.killpg(pid, signal.SIGTERM)
+            except ProcessLookupError:
+                pass
+            try:
+                process.wait(timeout=5)
+            except subprocess.TimeoutExpired:
+                try:
+                    os.killpg(pid, signal.SIGKILL)
+                except ProcessLookupError:
+                    pass
+                process.wait(timeout=5)
+        lab.terminate = terminate
+    (directory/'owner.pid').write_text(str(os.getpid())+'\n')
     signal.signal(signal.SIGTERM, interrupted)
     guest = Guest(lab)
     result = dict(schema=1, status='error', bundle=str(bundle.relative_to(ROOT)),
@@ -81,17 +107,30 @@ def main():
         assert result['module_sha256'] in result['module']
         assert 'exec' in result['module'] and 'filesys' in result['module']
         assert 'kern.securelevel = 1' in result['module']
-        guest.command('mkdir /tmp/statvfs; cd /tmp/statvfs; tar xzf /cdrom/statvfs.tgz; '
+        if 'statvfs' in suites:
+            guest.command('mkdir /tmp/statvfs; cd /tmp/statvfs; tar xzf /cdrom/statvfs.tgz; '
             'chmod 755 . o32-* n32-*; mkdir results denied; chmod 777 results; '
             'echo payload >file; echo denied >denied/file; chmod 000 denied; '
             'ln -s file link; sh run.sh root; su -m xiritest -c "sh /tmp/statvfs/run.sh user"')
-        archive(guest, 'cd /tmp/statvfs && tar cf - results', directory/'statvfs.tar')
-        guest.command('mkdir /tmp/irix-remove; cd /tmp/irix-remove; tar xzf /cdrom/remove.tgz; '
-            'chmod 755 . o32-* n32-*; sh run.sh xiritest >run.log 2>&1', 900)
-        archive(guest, 'cd /tmp/irix-remove && tar cf - results', directory/'remove.tar')
+            archive(guest, 'cd /tmp/statvfs && tar cf - results', directory/'statvfs.tar')
+        for suite in suites:
+            if suite not in ('remove', 'filemeta'):
+                continue
+            guest.command('(set -e; mkdir /tmp/irix-'+suite+'; cd /tmp/irix-'+suite+
+                '; tar xzf /cdrom/'+suite+'.tgz; chmod 755 . o32-* n32-*; '
+                'sh run.sh xiritest >run.log 2>&1)', 900)
+            archive(guest, 'cd /tmp/irix-'+suite+' && tar cf - results', directory/(suite+'.tar'))
+        if 'filemeta' in suites:
+            result['native_filemeta_control'] = guest.command('(set -e; '
+                'for f in /tmp/irix-filemeta/work/*-t-file/node; do '
+                'test "$(stat -f "%a|%m" "$f")" = "946684800|946684812"; '
+                'stat -f "%N|%u|%g|%Lp|%a|%m" "$f"; done; '
+                'for f in /tmp/irix-filemeta/work/*/file; do test "$(cat "$f")" = payload; done; '
+                'for f in /tmp/irix-filemeta/work/*-s-existing-file/node; '
+                'do test "$(cat "$f")" = existing; done)')
         result['native_control'] = guest.command('/root/irix-desktop/native-o32; test "$?" = 37')
         assert 'XIRI_ABI_PROBE' in result['native_control']
-        result['archives'] = {name:sha256(directory/name) for name in ('statvfs.tar', 'remove.tar')}
+        result['archives'] = {suite+'.tar':sha256(directory/(suite+'.tar')) for suite in suites}
         result['status'] = 'observed'
     except Exception as error:
         result['error'] = repr(error)

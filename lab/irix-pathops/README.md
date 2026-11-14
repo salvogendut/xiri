@@ -111,3 +111,50 @@ python3 scripts/probe-irix-filemanager-abi.py --bundle IMAGE_BUNDLE
 This checks that the uploaded executables match the IRIX reference, records
 the loaded module, runs both suites and the native control, then halts. Use
 its printed run directory as `HALTED_NATIVE` for the qualifiers above.
+
+## Symlinks and nanosecond timestamps
+
+`filemeta.c` observes `symlink` (1115) and `utimets` (1235), including the
+indirect syscall form used by File Manager. Both supported ABIs pass two
+32-bit seconds/nanoseconds pairs. The 41 cases run under both identities and
+both dispatch forms: 328 records. They retain return registers, pathname
+errors, ownership, modes, symlink target bytes and before/after timestamps.
+Null timestamp pointers are checked against the surrounding guest clock.
+
+```sh
+python3 scripts/build-irix-pathops.py --suite filemeta
+python3 scripts/prepare-irix-filemeta-fixtures.py
+python3 scripts/probe-irix-filemanager-abi.py --bundle IMAGE_BUNDLE --suite filemeta
+python3 scripts/qualify-irix-filemeta.py --native HALTED_NATIVE/filemeta.tar \
+  --native-run HALTED_NATIVE --output RESULT.json
+```
+
+To repeat the reference measurement, extract `.work/irix-filemeta/inputs.tgz`
+into a fresh `/tmp/irix-filemeta` on original IRIX 6.5.22m, make the directory
+and four executables mode 755, and run `sh run.sh PROBE_ACCOUNT` as root. The
+account must have UID/GID 1234. Archive `results` and retain the build manifest,
+input hash, guest identity and clean shutdown. Fixture directories are
+single-use. Version-3 stat timestamps start at word 17, after the padding
+word; the retained reference uses that corrected observer.
+
+The qualifier requires exact reference records except for 24 explicitly
+listed timestamp cases. Noncanonical nanoseconds and seconds equal to -1
+must return EINVAL with unchanged metadata. IRIX accepts these values, but
+NetBSD uses negative nanosecond sentinels and reserves -1 seconds as VNOVAL
+in vnode attributes. This bounded difference avoids accidental native
+sentinel interpretation or a successful no-op. It is not full timestamp
+parity. A native control separately checks file contents and epoch seconds.
+
+The GUI companion is `scripts/probe-xiri-filemanager.py --bundle IMAGE_BUNDLE`.
+It uses original menus and mouse drags under two xdm users, asserts different
+filesystem device IDs, and checks exact contents, modes, owners and mtime.
+Native create/rename/delete screenshots precede the Sort by Name action used
+to stabilize drag coordinates. A renamed icon can occupy a new slot; a drag
+at its old position is a fixture error, not a failed file operation.
+
+`filemeta-build.json` preserves the actual build inputs. The later
+`filemeta-source-equivalence.json` binds them to the committed module source
+and identifies the unchanged native-wait core by matching artifact hashes.
+Use `qualify-xiri-image.py --source-equivalence
+lab/irix-pathops/filemeta-source-equivalence.json` when qualifying this image.
+The older `source-equivalence.json` remains available for earlier bundles.

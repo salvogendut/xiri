@@ -60,6 +60,8 @@ def main():
     p.add_argument('--output', required=True, type=Path)
     p.add_argument('--png', required=True, type=Path)
     p.add_argument('--promote', action='store_true')
+    p.add_argument('--source-equivalence', type=Path,
+                   help='Committed-source record for this module build; preserves older records in the same lab.')
     p.add_argument('--record-bundle', action='store_true',
                    help='save verification in this bundle without changing the default image')
     a = p.parse_args()

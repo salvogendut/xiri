@@ -42,6 +42,25 @@ not repin qualified kernels, emulator binaries, runtime resources or guest disks
 
 ## IRIS upstream updates
 
+The November 14 File Manager follow-up integrates 11 upstream commits through
+`1c9d16adcf9748430e214bda5d7f7fe6aef40e85` as
+`823249bc3eaf88da7a70e2c00d8e83ed69208a49`, pushed on IRIS `xiri`.
+The upstream audio renderer now uses `iris-audio`; the fork preserves the
+per-machine frontend factory with a bounded stereo backend and no fallback
+after a frontend refusal. The default/feature engine suites pass 4,845/5,532
+tests, the audio crate passes 38, and all three affected frontend backend
+tests pass after the final channel-constructor adjustment. CLI builds pass.
+
+Prismatic's PCM fixtures and Cargo lockfile are updated on
+`topic/xiri-audio-renderer` at `e6398928442a87f2dd4af9a262e6e50b18f96e17`;
+[draft PR 1](https://github.com/salvogendut/prismatic/pull/1) leaves its default
+branch unchanged. Formatting, clippy, 179 default and 180 feature tests,
+dummy SDL, isolated upstream-main clippy, and rebuilt Instigator BOOTP/TFTP
+over Unix/TCP streams pass. Earlier audible captures predate the new renderer.
+The [integration ledger](results/2026-11-14-file-manager-upstream.json) records
+exact commits, logs, limits and compact retained binaries. The manual image
+continues to use its independently qualified `819c682` emulator.
+
 The windows/desks cycle checked upstream at 2026-11-13 22:30 UTC.
 Revision `9605704cf2a0b204fddc920e6236a3b8050f9e38` is already contained in
 IRIS `xiri` at `84125cacb985f974c8f9d81150560150267fb194`. Fetch and ancestor

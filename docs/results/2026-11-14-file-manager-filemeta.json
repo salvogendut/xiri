@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "status": "passed",
+  "records": 328,
+  "native_sha256": "4d28a05e34104c1092d0829a7f0490b22917b94d7a499970663f4985e522f9e7",
+  "reference_sha256": "4637e347d9548b5a5327bce53b9a25cc218cc493579c88fe5eb3c9847fc100f2",
+  "qualifier_sha256": "913aab9e2333594768df4ea88338e2d80534e5b91867152a8d181d6fe7ba3753",
+  "native_run": {
+    "directory": ".work/file-manager/abi-5zuhisiw",
+    "result_sha256": "c7f6defbd2b241b975a2a3163693428de51db8815c628d2592bd936850872b11",
+    "module_sha256": "89d63b8dd67b5fa062edc0a7540a38f84630a32cdeacadd7920b6534e592f19e"
+  },
+  "mismatches": [],
+  "deliberate_difference": "24 cases require EINVAL and unchanged metadata: noncanonical nanoseconds or native-vattr reserved seconds == -1. IRIX accepts these values.",
+  "limits": [
+    "Local filesystem, root and UID 1234, o32/n32 direct and indirect traps.",
+    "No claim for remote filesystems, concurrent pathname replacement, immutable flags, or 64-bit time extensions."
+  ]
+}

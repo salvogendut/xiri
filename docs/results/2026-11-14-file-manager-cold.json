@@ -1,0 +1,124 @@
+{
+  "schema": 1,
+  "status": "qualified",
+  "bundle": ".work/images/xiri-netbsd-desktop-20261114-filemanager",
+  "base_chd_sha256": "0df71bb25749d8dc30d456c6459f0236c0f64154a640522873f6137e45bd4111",
+  "module_sha256": "89d63b8dd67b5fa062edc0a7540a38f84630a32cdeacadd7920b6534e592f19e",
+  "emulator_sha256": "3dd9299d71f1899ff5a8c9b76f6a24752d19e4f9a0bcfe0edf3a29001dc9c49e",
+  "probe_sha256": "273536dd183e54752f03a56a7407a43d1a1fa75b582094fd78c3c9bc13742927",
+  "shared_probe_sha256": "97c1ff82426706822b1df67afe55fd56ed2892f3043c30762de5214b58138a56",
+  "media_inputs": {
+    "clip-selection.c": "05629a4f20f1dd384c12dfe9f4e8eff1c6b37725ecabe7c2a49f2070c07c1621",
+    "doc-input.c": "64d401ac1bcfb063bd2f78d9a84bbd57f94860d6bf08b060dd04f661d3066ce3",
+    "type.c": "61ce22cbda6c66ccaf53cbcffab5f3080be95004bcd3e5c6893dc54a8a9db838"
+  },
+  "loaded_module": "compat_irix_o32            exec     filesys  -        0       - exec_elf32,compat_netbsd32\nSHA256 (/stand/sgimips/11.99.9/modules/compat_irix_o32/compat_irix_o32.kmod) = 89d63b8dd67b5fa062edc0a7540a38f84630a32cdeacadd7920b6534e592f19e\n",
+  "filesystem_devices": {
+    "xiritest": [
+      "2560",
+      "43782"
+    ],
+    "xiritest2": [
+      "2560",
+      "43782"
+    ]
+  },
+  "identities": {
+    "xiritest": "SESSION user=xiritest uid=1234 groups=1234 1235 home=/usr/people/xiritest cwd=/usr/people/xiritest display=127.0.0.1:0 authority=/tmp/.XauthYUeJbV\n",
+    "xiritest2": "SESSION user=xiritest2 uid=1237 groups=1237 1235 home=/usr/people/xiritest2 cwd=/usr/people/xiritest2 display=127.0.0.1:0 authority=/tmp/.XauthZNTHs0\n"
+  },
+  "checkpoint": "xiritest2-complete",
+  "screenshots": {
+    "xiritest-native-created.png": "33774d4818a9db9313f9ad59b7f300e426d5e433952c6198569aaa6e893a3fa0",
+    "xiritest-native-renamed.png": "7d2436e4ec08cbcd96659aa840570fdf0a2e489c729a03a4e3a1d0980a299bf5",
+    "xiritest-cross-filesystem-file.png": "9498d4df5b0e4575d9510e065364e95ff1778484ba36503927da32e005a7edb0",
+    "xiritest-collision-cancel.png": "030e073b48e1289aa90d0ed4a1d3af2c60371129d219203a67c339e9306f1a2f",
+    "xiritest-collision-overwrite.png": "a2508dad436e8b7cb9808db1e1fe5f0724efd9961dbad93a5cf63500eac3a358",
+    "xiritest-native-deleted.png": "c87d338945c961b0beea175626a546d12c5f3a0b92ad293b84c0b8380a992107",
+    "xiritest-directory-moved.png": "1d2ba6fbdd8b82ee62a8e074b5be65568368e2314087f7413330922d9875edbc",
+    "xiritest-permission-denied.png": "98d549beb2c0742f165b5ac31f009c6d14c5e77fc82c0d1c6637afd78a38c1d0",
+    "xiritest-permission-restored.png": "d72773805d72ecd1d311af6a321ac15260c5c9501872fb3c82f5d86ffd6cfb54",
+    "xiritest-readonly-filesystem.png": "27bc63d6e2004acde28e037d3bd3161c1351b1e5376e45f82e3b2372ea91ab39",
+    "xiritest2-native-created.png": "cc3cd4000b017a432c51f4748511c2a1557ede8b5eabc2c0021ed0fb86ee5f1a",
+    "xiritest2-native-renamed.png": "086600cc7b0dfe79a3cda441551177fb936f8ebaa8252590556a23fcc146f92f",
+    "xiritest2-cross-filesystem-file.png": "c418024bbfd37ae8454dc101950ce3182214518bc03932608ff17c97098159e6",
+    "xiritest2-collision-cancel.png": "f1c1288ff8dc2c0dc1a1e90eb947290fed89058c3e2cd5b93cf2c3d0136eadda",
+    "xiritest2-collision-overwrite.png": "f1c1288ff8dc2c0dc1a1e90eb947290fed89058c3e2cd5b93cf2c3d0136eadda",
+    "xiritest2-native-deleted.png": "cac655b943b2b335101209e1a33971900daf55cdb916af04dd6ed62569ec1ee9",
+    "xiritest2-directory-moved.png": "9f0d3374a93002d5da1ef6ae5405227cea269d30d42a69d16c64274acca8f05e",
+    "xiritest2-permission-denied.png": "5728d63a5ab921548a19ab17dc65f2eafba67a466f543afdd196566276bdb54e",
+    "xiritest2-permission-restored.png": "32ccd4f0cab7c029192427277d8c3f6f8f1ca2aeb0e36fbc13d86aa798f411a4",
+    "xiritest2-readonly-filesystem.png": "c972809cdb6b73cb5cf130ea4a215853b5f4af26a2ff6baefd2f23eb9eb60d8a"
+  },
+  "files": {
+    "/tmp/XiriFileManagerFS/xiritest/moved file.txt": {
+      "sha256": "a912ad58418149f8a524a87a4b59800de0807c07bcdd926c96e9bd3302d4d450",
+      "metadata": "1234|1234|600|946684812"
+    },
+    "/usr/people/xiritest/FileManagerChecks/Source/moved file.txt": {
+      "sha256": "a912ad58418149f8a524a87a4b59800de0807c07bcdd926c96e9bd3302d4d450",
+      "metadata": "1234|1234|600|946684812"
+    },
+    "/tmp/XiriFileManagerFS/xiritest/folder/child.txt": {
+      "sha256": "67068906db70f289b9e2c7eda9416ec4b24bdbb283497bc2ff30aee0202d641d",
+      "metadata": "1234|1234|640|946684812"
+    },
+    "/usr/people/xiritest/FileManagerChecks/Source/denied.txt": {
+      "sha256": "66532b5ef93d37a7ce4ea5ec4bee9351e0a40ab13771ba7b40b9180ce9b0cd9f",
+      "metadata": "1234|1234|600|946684812"
+    },
+    "/tmp/XiriFileManagerFS/xiritest/denied.txt": {
+      "sha256": "66532b5ef93d37a7ce4ea5ec4bee9351e0a40ab13771ba7b40b9180ce9b0cd9f",
+      "metadata": "1234|1234|600|946684812"
+    },
+    "/usr/people/xiritest/FileManagerChecks/Source/readonly.txt": {
+      "sha256": "66532b5ef93d37a7ce4ea5ec4bee9351e0a40ab13771ba7b40b9180ce9b0cd9f",
+      "metadata": "1234|1234|600|946684812"
+    },
+    "/tmp/XiriFileManagerFS/xiritest2/moved file.txt": {
+      "sha256": "fc3732329bcb931c66f0793975264a945b51c5a1d82ea07cd248b32ea4505fa7",
+      "metadata": "1237|1237|600|946684812"
+    },
+    "/usr/people/xiritest2/FileManagerChecks/Source/moved file.txt": {
+      "sha256": "fc3732329bcb931c66f0793975264a945b51c5a1d82ea07cd248b32ea4505fa7",
+      "metadata": "1237|1237|600|946684812"
+    },
+    "/tmp/XiriFileManagerFS/xiritest2/folder/child.txt": {
+      "sha256": "53db2903a3fe1cb3fb90d042a4ee0769868d21b40e2e8908bdabd5cd43ae856c",
+      "metadata": "1237|1237|640|946684812"
+    },
+    "/usr/people/xiritest2/FileManagerChecks/Source/denied.txt": {
+      "sha256": "66532b5ef93d37a7ce4ea5ec4bee9351e0a40ab13771ba7b40b9180ce9b0cd9f",
+      "metadata": "1237|1237|600|946684812"
+    },
+    "/tmp/XiriFileManagerFS/xiritest2/denied.txt": {
+      "sha256": "66532b5ef93d37a7ce4ea5ec4bee9351e0a40ab13771ba7b40b9180ce9b0cd9f",
+      "metadata": "1237|1237|600|946684812"
+    },
+    "/usr/people/xiritest2/FileManagerChecks/Source/readonly.txt": {
+      "sha256": "66532b5ef93d37a7ce4ea5ec4bee9351e0a40ab13771ba7b40b9180ce9b0cd9f",
+      "metadata": "1237|1237|600|946684812"
+    }
+  },
+  "directories": {
+    "xiritest": "1234|1234|750|946684812",
+    "xiritest2": "1237|1237|750|946684812"
+  },
+  "logout_logs": {
+    "xiritest-complete": "OWN pid=2966 parent=3445\nOWN pid=666 parent=2966\nOWN pid=407 parent=2966\nOWN pid=1052 parent=2966\nOWN pid=3421 parent=2966\nOWN pid=479 parent=3421\nOWN pid=3163 parent=2966\nOWN pid=3618 parent=2966\nOWN pid=419 parent=3163\nOWN pid=478 parent=2966\nOWN pid=461 parent=2966\nOWN pid=421 parent=2966\nOWN pid=420 parent=2966\nOWN pid=1255 parent=2966\nOWN pid=3817 parent=2966\nOWN pid=422 parent=2966\nOWN pid=426 parent=2966\nOWN pid=3368 parent=2966\nOWN pid=3500 parent=2966\nOWN pid=427 parent=2966\nOWN pid=3950 parent=426\nOWN pid=2785 parent=3500\nOWN pid=462 parent=427\nOWN pid=3825 parent=3368\nOWN pid=431 parent=422\nOWN pid=3248 parent=3825\nOWN pid=3571 parent=3825\nOWN pid=692 parent=3825\nOWN pid=3501 parent=3950\nOWN pid=3224 parent=3825\nOWN pid=504 parent=3825\nOWN pid=505 parent=3825\nOWN pid=503 parent=3825\nOWN pid=507 parent=3825\nOWN pid=508 parent=3825\nOWN pid=506 parent=3825\nOWN pid=2173 parent=3825\nOWN pid=3761 parent=3825\nOWN pid=690 parent=3761\nOWN pid=577 parent=431\nOWN pid=591 parent=690\nOWN pid=594 parent=690\nOWN pid=891 parent=690\nOWN pid=980 parent=3445\nOWN pid=3355 parent=980\nSESSION_SAVE acknowledged by 4Dwm\nSESSION_SAVE completed=1 exit=0 elapsed=237\nGUARD pid=2966 exit=-1 signal=15 stopped=1 absent=1 valid=1 tracked=45 remaining=0 reason=logout uid=1234 gid=1234 elapsed=593794\n",
+    "xiritest2-complete": "OWN pid=1306 parent=3869\nOWN pid=1692 parent=1306\nOWN pid=1105 parent=1306\nOWN pid=1118 parent=1306\nOWN pid=1101 parent=1306\nOWN pid=3949 parent=1306\nOWN pid=1060 parent=1306\nOWN pid=4258 parent=1306\nOWN pid=4141 parent=1306\nOWN pid=4211 parent=1306\nOWN pid=1056 parent=1306\nOWN pid=3864 parent=1056\nOWN pid=1144 parent=1306\nOWN pid=1895 parent=1144\nOWN pid=1332 parent=1306\nOWN pid=3888 parent=1306\nOWN pid=1145 parent=1306\nOWN pid=847 parent=1306\nOWN pid=1148 parent=1306\nOWN pid=850 parent=1306\nOWN pid=1146 parent=1306\nOWN pid=2813 parent=1306\nOWN pid=4465 parent=1306\nOWN pid=4222 parent=1306\nOWN pid=4008 parent=1306\nOWN pid=4030 parent=1306\nOWN pid=4526 parent=1306\nOWN pid=4322 parent=4222\nOWN pid=1220 parent=4008\nOWN pid=1221 parent=4465\nOWN pid=1225 parent=4030\nOWN pid=1218 parent=4526\nOWN pid=1223 parent=1220\nOWN pid=1224 parent=1220\nOWN pid=4149 parent=1220\nOWN pid=1007 parent=1220\nOWN pid=4393 parent=4322\nOWN pid=1228 parent=1220\nOWN pid=1226 parent=1220\nOWN pid=1003 parent=1220\nOWN pid=1219 parent=1220\nOWN pid=1002 parent=1220\nOWN pid=3611 parent=1220\nOWN pid=1236 parent=1220\nOWN pid=3677 parent=1220\nOWN pid=3419 parent=3677\nOWN pid=4206 parent=1221\nOWN pid=1237 parent=3419\nOWN pid=1175 parent=3419\nOWN pid=1603 parent=3419\nOWN pid=1630 parent=3869\nOWN pid=2365 parent=1630\nSESSION_SAVE acknowledged by 4Dwm\nSESSION_SAVE completed=1 exit=0 elapsed=209\nGUARD pid=1306 exit=-1 signal=15 stopped=1 absent=1 valid=1 tracked=52 remaining=0 reason=logout uid=1237 gid=1237 elapsed=594192\n"
+  },
+  "scope": "Native create/rename/delete notifications; FFS to tmpfs; regular files, directory and relative symlink; collision cancel/overwrite; permission failure/retry; read-only CD; two authenticated users.",
+  "halt": "[   1.0000000] Copyright (c) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,\n[   1.0000000]     2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013,\n[   1.0000000]     2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023,\n[   1.0000000]     2024, 2025, 2026\n[   1.0000000]     The NetBSD Foundation, Inc.  All rights reserved.\n[   1.0000000] Copyright (c) 1982, 1986, 1989, 1991, 1993\n[   1.0000000]     The Regents of the University of California.  All rights reserved.\n\n[   1.0000000] NetBSD 11.99.9 (XIRI_IRIX_MODULE_20261103) #4: Thu Nov  5 12:34:13 UTC 2026\n[   1.0000000] \tsalvogendut@toolbx:/var/home/salvogendut/Dev/xiri/.work/netbsd-wait-accounting-build/obj/sys/arch/sgimips/compile/XIRI_IRIX_MODULE\n[   1.0000000] total memory = 255 MB\n[   1.0000000] (768 KB reserved for ARCS)\n[   1.0000000] avail memory = 244 MB\n[   1.0000000] timecounter: Timecounters tick every 10.000 msec\n[   1.0000000] mainbus0 (root): SGI-IP22 [SGI, 69123457], 1 processor\n[   1.0000000] cpu0 at mainbus0: MIPS R4400 CPU (0x440) Rev. 4.0 with MIPS R4010 FPC Rev. 0.0\n[   1.0000000] cpu0: 48 TLB entries, 1TB (40-bit) VAs, 4KB (12-bit) PAs, 16MB max page size\n[   1.0000000] cpu0: 16KB/16B direct-mapped L1 instruction cache\n[   1.0000000] cpu0: 16KB/16B direct-mapped write-back L1 data cache\n[   1.0000000] cpu0: 1024KB/128B direct-mapped write-back L2 unified cache\n[   1.0000000] int0 at mainbus0 addr 0x1fbd9880\n[   1.0000000] int0: bus 33MHz, CPU 66MHz\n[   1.0000000] imc0 at mainbus0 addr 0x1fa00000: revision 3\n[   1.0000000] gio0 at imc0\n[   1.0000000] newport0 at gio0: SGI NG1 (board revision 0, cmap revision 2, xmap revision 3, vc2 revision 0), depth 24, monitor ID 10 (1280x1024 60Hz)\n[   1.0000000] newport0: 13W3 Monitor ID 10, PROM ID -1, determined monitor ID 10 (1280x1024 60Hz)\n[   1.0000000] wsdisplay0 at newport0 kbdmux 1: console (default, vt100 emulation)\n[   1.0000000] wsmux1: connecting to wsdisplay0\n[   1.0000000] hpc0 at gio0: SGI HPC3 (onboard)\n[   1.0000000] zsc0 at hpc0 offset 0x59830\n[   1.0000000] zstty0 at zsc0 channel 1\n[   1.0000000] zstty1 at zsc0 channel 0\n[   1.0000000] pckbc0 at hpc0 offset 0x59840\n[   1.0000000] pckbd0 at pckbc0 (kbd slot)\n[   1.0000000] wskbd0 at pckbd0: console keyboard, using wsdisplay0\n[   1.0000000] pms0 at pckbc0 (aux slot)\n[   1.0000000] wsmouse0 at pms0 mux 0\n[   1.0000000] sq0 at hpc0 offset 0x54000: SGI Seeq 80c03\n[   1.0000000] sq0: Ethernet address 08:00:69:12:34:57\n[   1.0000000] wdsc0 at hpc0 offset 0x44000: WD33C93A (20.0 MHz clock, BURST DMA, SCSI ID 0)\n[   1.0000000] scsibus0 at wdsc0: 8 targets, 8 luns per target\n[   1.0000000] haltwo at hpc0 offset 0x58000 not configured\n[   1.0000000] pi1ppc0 at hpc0 offset 0x59800\n[   1.0000000] pi1ppc0: capabilities=0x8<PS2>\n[   1.0000000] ppbus0 at pi1ppc0\n[   1.0000000] ppbus0: No IEEE1284 device found.\n[   1.0000000] button0 at hpc0 offset 0x59850\n[   1.0000000] hpc1 at gio0: SGI HPC3 (IOPLUS mezzanine)\n[   1.0000000] hpc1: using EXP0's DMA channel\n[   1.0000000] sq at hpc1 offset 0x54000 not configured\n[   1.0000000] hpc2 at gio0: SGI HPC1.5 (GIO slot)\n[   1.0000000] dsclock0 at mainbus0 addr 0x1fbe0000\n[   1.0000000] ioc0 at mainbus0 addr 0x1fbd9800: rev 0, machine Indy (Guinness), board rev 0\n[   1.0000000] WARNING: system needs entropy for security; see entropy(7)\n[   1.0000000] timecounter: Timecounter \"mips3_cp0_counter\" frequency 33000000 Hz quality 100\n[   1.0000030] timecounter: Timecounter \"clockinterrupt\" frequency 100 Hz quality 0\n[   1.0000030] scsibus0: waiting 2 seconds for devices to settle...\n[   3.0597035] sd0 at scsibus0 target 1 lun 0: <SGI, IRIS EMUL DISK, 1.0> disk fixed\n[   3.1154715] sd0: 8192 MB, 16645 cyl, 16 head, 62 sec, 512 bytes/sect x 16777216 sectors\n[   3.2398973] sd0: async, 8-bit transfers\n[   3.3034017] cd0 at scsibus0 target 4 lun 0: <Sony, CDU-76S, 1.0> cdrom removable\n[   3.3682788] cd0: async, 8-bit transfers\n[   3.4339047] boot device: sd0\n[   3.4916321] root on sd0a dumps on sd0b\n[   3.5813343] kern.module.path=/stand/sgimips/11.99.9/modules\n[   4.8969782] entropy: best effort\n[ 1507.1136418] syncing disks... done\n[ 1507.1982741] unmounting file systems...\n[ 1507.2571160] unmounted /dev/cd0a on /cdrom type cd9660\n[ 1507.2571160] unmounted ptyfs on /dev/pts type ptyfs\n[ 1507.2571160] unmounted procfs on /proc type procfs\n[ 1507.2571160] unmounted kernfs on /kern type kernfs\n[ 1508.1570948] unmounted /dev/sd0a on / type ffs\n[ 1508.1570948] unmounting done\n[ 1508.2114632] halting...\n\n",
+  "clean_shutdown": true,
+  "base_unchanged": true,
+  "run_directory": ".work/file-manager-edges/qualified-3dtqq5dv",
+  "retained_screenshots": {
+    "xiritest-native-renamed.png": "docs/results/images/2026-11-14-file-manager-xiritest-native-renamed.png",
+    "xiritest-cross-filesystem-file.png": "docs/results/images/2026-11-14-file-manager-xiritest-cross-filesystem-file.png",
+    "xiritest-collision-overwrite.png": "docs/results/images/2026-11-14-file-manager-xiritest-collision-overwrite.png",
+    "xiritest-directory-moved.png": "docs/results/images/2026-11-14-file-manager-xiritest-directory-moved.png",
+    "xiritest-permission-denied.png": "docs/results/images/2026-11-14-file-manager-xiritest-permission-denied.png",
+    "xiritest2-directory-moved.png": "docs/results/images/2026-11-14-file-manager-xiritest2-directory-moved.png"
+  }
+}

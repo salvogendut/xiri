@@ -1,0 +1,145 @@
+{
+  "schema": 1,
+  "status": "passed",
+  "date": "2026-11-14",
+  "upstream": "1c9d16adcf9748430e214bda5d7f7fe6aef40e85",
+  "previous": "84125cacb985f974c8f9d81150560150267fb194",
+  "merge": "823249bc3eaf88da7a70e2c00d8e83ed69208a49",
+  "merge_tree": "a1b3707b2f5be7bd298598721b069cfa388b4c43",
+  "branch": "xiri",
+  "pushed": true,
+  "incoming_commits": [
+    "1c9d16adcf9748430e214bda5d7f7fe6aef40e85 clanker: note that decode-cache conflicts change interpreter speed per boot (#720)",
+    "382da01d71374d1c88aad6ca43866ae3fccf9416 ip35: test that a power cycle restarts and only a shutdown powers off (#719)",
+    "16ebba145477978a69c6fb2b671c4b284d1f135b parts: put the fuel's 500 mhz r14000 on the bench rig (#718)",
+    "ce788dfee5e2678917606c5c6a0a368552d266a9 clanker: record how the ip35 prom reads the board's cpu configuration",
+    "c274e26f6c408362ac4b66613ff242c1b043aa4f pci: keep a page a sub-page bar shares off another bar's run (#727)",
+    "0b2c06d8d311e212351de120e37ceef7aa9278cb clanker: note how a ppmem remap stays safe on a multiprocessor",
+    "8c9b254f2cbf2c8ebf45a573823091c55af0d1ce audio: iris-audio replaces cpal for every sound device",
+    "be8b3522d333139b8d12f2d1c0070c498793233d cpu: a fused load/store retries on a busy device instead of faulting",
+    "eb09d07f80e0277a841bd87db0e45cc9d2fa51e5 ci: boot-test the IRIX 6.5.22 Indy disk that has the audio driver",
+    "a3c72deb588b1cab801de48798a11c9ac46f853a iris-ci: keep the serial output and CPU state of a stuck phase A",
+    "e013d1e010e4921ed66128fbc8e4dec2adf2eff0 o2: hold a status read until every queued MTE transfer is done"
+  ],
+  "validation": {
+    "default_library_passed": 4845,
+    "default_ignored": 51,
+    "feature_workspace_passed": 5532,
+    "feature_ignored": 60,
+    "audio_library_passed": 38,
+    "final_frontend_backend_passed": 3,
+    "prismatic_default_passed": 179,
+    "prismatic_feature_passed": 180,
+    "prismatic_ignored": 4,
+    "instigator_transport_passed": 2,
+    "fmt": true,
+    "clippy": true,
+    "upstream_main_clippy": true,
+    "dummy_sdl": true,
+    "cli_build": true
+  },
+  "logs": {
+    "upstream-external2": {
+      "path": ".work/file-manager-edges/upstream-external2.log",
+      "sha256": "d5913b5fcb439d94b661387cccdb1abddb45c19d06290b30e5e6377b3aaacf5b"
+    },
+    "upstream-audio": {
+      "path": ".work/file-manager-edges/upstream-audio.log",
+      "sha256": "b86a5e02a8cb0d5be4da900484e229614e2b04819e2062879313f4467c9db0e7"
+    },
+    "upstream-features": {
+      "path": ".work/file-manager-edges/upstream-features.log",
+      "sha256": "6cc498224ed9ce7c1e4014a1156d1f2508e21e4d1ea70ee95b66789611ac6e62"
+    },
+    "upstream-default": {
+      "path": ".work/file-manager-edges/upstream-default.log",
+      "sha256": "d7fddee0f0e58b224ab0ab84dbff5cd4a89654ec91b3c2eb05865aae3fcd2481"
+    },
+    "upstream-build2": {
+      "path": ".work/file-manager-edges/upstream-build2.log",
+      "sha256": "1b508f138cebe03cdf8b86424a29086963c00c6fdaafe1c70c92e34b9d5a986a"
+    },
+    "upstream-frontend2": {
+      "path": ".work/file-manager-edges/upstream-frontend2.log",
+      "sha256": "f29d6dd7d284ed7b37eaf9c264dfab171080987d0c3e919cd1e5d684ea310cb7"
+    },
+    "frontend-fmt": {
+      "path": ".work/file-manager-edges/frontend-fmt.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "frontend-clippy": {
+      "path": ".work/file-manager-edges/frontend-clippy.log",
+      "sha256": "7dc3f427c7adb45fb63f62d1c6fb7bf52f332c8accf0e5c66092d464ad438086"
+    },
+    "frontend-default": {
+      "path": ".work/file-manager-edges/frontend-default.log",
+      "sha256": "db6c84c3c0d641af83960d8a529ed4fa0a75a21406a1b9c4999154658f458bc3"
+    },
+    "frontend-smoke": {
+      "path": ".work/file-manager-edges/frontend-smoke.log",
+      "sha256": "bb4072709664e030d4f0e3cb1504663e190ddaa150ca3d399ef2c0e0869dfba5"
+    },
+    "frontend-main": {
+      "path": ".work/file-manager-edges/frontend-main.log",
+      "sha256": "bc68f803cd17a8323da610399def13d257a9d3af89c40d75b41fa6151173103d"
+    },
+    "frontend-helper": {
+      "path": ".work/file-manager-edges/frontend-helper.log",
+      "sha256": "5c976c11d6ff1e8b846bba15c2341c7a78f6598e886a223b6de0ea1b623ad2af"
+    },
+    "frontend-helper-transport": {
+      "path": ".work/file-manager-edges/frontend-helper-transport.log",
+      "sha256": "ca8b0c6823f9e1f788c073e4010ae4b5d7129a101f73b490e6431debe5e1952d"
+    }
+  },
+  "commands": {
+    "upstream-check.sh": "b7a1e7a6842a46ed1afb455dac0c2edbd54b128cc94d6287e295c8fb7b1d0283",
+    "frontend-check.sh": "993882307a07d4f74b9c3ee1a1b3c2ba0cdebabc46e0a05615ce59fef36ab78c",
+    "final-upstream-check.sh": "8695dd0dd6cbbd4167b8b7c947a0e3fdff274ae4e263e97444292f29a43d274b"
+  },
+  "frontend": {
+    "commit": "e6398928442a87f2dd4af9a262e6e50b18f96e17",
+    "branch": "topic/xiri-audio-renderer",
+    "pull_request": "https://github.com/salvogendut/prismatic/pull/1",
+    "draft": true,
+    "default_branch_unchanged": true
+  },
+  "build_info": {
+    "instigator_repository": "https://github.com/jamesbraid/instigator.git",
+    "instigator_branch": "main",
+    "instigator_revision": "b3edb39e30a7862d9a9d289bba4b21e4a577342a",
+    "instigator_go_version": "1.27.1",
+    "iris_revision": "823249bc3eaf88da7a70e2c00d8e83ed69208a49",
+    "iris_upstream_revision": "1c9d16adcf9748430e214bda5d7f7fe6aef40e85",
+    "iris_source": "/var/home/salvogendut/Dev/iris",
+    "frontend_source": "/var/home/salvogendut/Dev/prismatic",
+    "profile": "dev",
+    "features": "pcap,idle-pause,jitv2",
+    "action": "isolated-validation",
+    "cargo_target_dir": "/var/home/salvogendut/Dev/xiri/.work/file-manager-edges-iris-build",
+    "frontend_revision": "e6398928442a87f2dd4af9a262e6e50b18f96e17",
+    "frontend_features": [],
+    "tested_feature_sets": [
+      [],
+      [
+        "pcap",
+        "idle-pause",
+        "jitv2"
+      ]
+    ],
+    "artifacts": {
+      "iris": "6c5c4e4561729796c3d51a3a52ad3ea73a33b85c265906680482576bb59de977",
+      "iris-ci": "5c0ecb3948f9c42e9dbf4736ca01a3f2242e3257158b34551b8ff5108ddabd88",
+      "prismatic": "4c58c8aea31116e70d0db596fa5aef7ef855e54ad2183932463d4e18cdaa5034",
+      "instigator": "3b2b96e335f3c2c682e54ea31cc286d0d23c79093db9c3bd2d009b8759ccf841"
+    }
+  },
+  "retained_artifacts": ".work/file-manager-edges/integration-bin",
+  "notes": [
+    "Upstream iris-audio replaces CPAL. The per-machine frontend factory remains bounded and refuses fallback.",
+    "The initial frontend tests used removed HostOut APIs; their failed compilation is retained, and the updated tests pass.",
+    "The full engine suites preceded a small channel-constructor extraction; the three affected backend tests and final CLI rebuild pass afterward.",
+    "Earlier audible SDL recordings predate this renderer migration. No new audible guest playback claim.",
+    "The manual desktop image continues to use its independently qualified 819c682 emulator."
+  ]
+}

@@ -15,7 +15,8 @@ base = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(base)
 
 
-SUITES = {'rename': list(range(7)), 'statvfs': [0], 'remove': list(range(4))}
+SUITES = {'rename': list(range(7)), 'statvfs': [0], 'remove': list(range(4)),
+          'filemeta': list(range(10))}
 
 
 def build(suite):
