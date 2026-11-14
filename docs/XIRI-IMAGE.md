@@ -8,7 +8,12 @@ older reproduction checkpoints. Automated checks never promote their result
 or replace the manual bundle's NVRAM/overlay state.
 
 The current accelerated xdm bundle is
-`.work/images/xiri-netbsd-desktop-20261113-desks/`.
+`.work/images/xiri-netbsd-desktop-20261114-filemanager/`.
+The [filesystem follow-up](results/2026-11-14-file-manager.md) changes only
+the installed compatibility module. Both users pass FFS-to-tmpfs moves,
+symlinks/timestamps, collisions, access failures and native file notifications.
+The new image also passes 328 ABI records and the full xdm/4Dwm/ctwm, text
+and winterm gate. Earlier qualified images and manual state are preserved.
 The [windows/desks update](results/2026-11-13-desks.md) adds original Desks
 Overview behind **Desktop → Extra Desks**. Window controls, desk transfer,
 two users' separate layouts and restoration after login/reboot pass focused
@@ -38,9 +43,9 @@ The [full IRIS upstream merge](FORKS.md#iris-upstream-updates) is separately
 qualified; this image still includes its pinned `819c682` emulator.
 Xmahjongg has no default autostart; a saved session can include it.
 The preceding qualified bundles and their manual state remain available.
-`netbsd-xiri.chd` is an 8 GiB NetBSD disk compressed to 497,999,132 bytes
+`netbsd-xiri.chd` is an 8 GiB NetBSD disk compressed to 497,999,684 bytes
 (about 475 MiB). Its SHA256 is
-`a07487e5b02db4c2ba9b657d81feb46b659c1b9ffa10e5da1410b2f8f733e084`.
+`0df71bb25749d8dc30d456c6459f0236c0f64154a640522873f6137e45bd4111`.
 The earlier [cleanup candidate](results/2026-11-05-cleanup-image.md) and its
 96 MiB pressure observations remain recorded separately.
 The [native paging follow-up](results/2026-11-05-native-paging.md) records the
@@ -147,9 +152,10 @@ adds local discard, recovery and emptying; transient launch animation remains op
 
 The core kernel matches NetBSD `xiri` commit
 `e9ff76a58affee773b767d334f98075bf86daf7e`. The filesystem module matches
-`8bf86afce2afede752c0eae37852e2f2472d91cb`; its
-[build ledger](../lab/irix-pathops/filemanager-build.json) records the reused
-core separately. They retain the
+`633a79f257a92ff89437f7e17b0b42b49cee3e99`; its
+[build ledger](../lab/irix-pathops/filemeta-build.json) and
+[source-equivalence record](../lab/irix-pathops/filemeta-source-equivalence.json)
+record the module inputs and reused core separately. They retain the
 [UVM allocation](results/2026-11-03-uvm-pglist.md),
 [CD9660 ABI](results/2026-11-04-system-stability.md) and
 [native FPU signal restoration](results/2026-11-05-type1-scaler.md)
@@ -165,7 +171,7 @@ The Xiri fork hooks are still required.
 Launch the qualified bundle directly:
 
 ```sh
-/var/home/salvogendut/Dev/xiri/.work/images/xiri-netbsd-desktop-20261113-desks/run-iris.sh
+/var/home/salvogendut/Dev/xiri/.work/images/xiri-netbsd-desktop-20261114-filemanager/run-iris.sh
 ```
 
 It boots automatically to native NetBSD xdm. Use these public development
@@ -194,7 +200,7 @@ UID and groups. Each user has separate HOME, Desktop, Dumpster and session logs.
 Root has no password and remains available on serial B for administration.
 The ttyE0 getty is disabled so xdm owns the graphical keyboard.
 
-The fresh [image qualification](results/2026-11-13-dragdrop-image.json) covers three
+The fresh [image qualification](results/2026-11-14-file-manager-image.json) covers three
 xiritest logins, a separate xiritest2/4Dwm login, native ctwm, both IRIX logout
 routes, failed-startup recovery, catalog launch, full-screen acceleration and
 clean halt. Restored logins contain one copy of each default application,
@@ -204,11 +210,11 @@ supplementary groups. All 142 SGI colour aliases pass in each of the four
 IRIX login sessions. The [focused preference checks](results/2026-11-06-desktop-colours.md)
 separately verify original-picker interaction and saved colours through
 relogin and reboot. PNGs show
-[4Dwm](results/images/2026-11-13-dragdrop-desktop.png),
-[the second IRIX user](results/images/2026-11-13-dragdrop-desktop-second-user.png),
-[ctwm](results/images/2026-11-13-dragdrop-desktop-native.png), the
-[greeter](results/images/2026-11-13-dragdrop-desktop-greeter.png) and
-[winterm before any test resize](results/images/2026-11-13-dragdrop-desktop-winterm.png).
+[4Dwm](results/images/2026-11-14-file-manager-desktop.png),
+[the second IRIX user](results/images/2026-11-14-file-manager-desktop-second-user.png),
+[ctwm](results/images/2026-11-14-file-manager-desktop-native.png), the
+[greeter](results/images/2026-11-14-file-manager-desktop-greeter.png) and
+[winterm before any test resize](results/images/2026-11-14-file-manager-desktop-winterm.png).
 Each of the three xiritest logins checks untouched terminal geometry and
 foreground SIGWINCH delivery; an extra 100×30 terminal preserves its size and closes on typed
 `exit`. Terminal defaults explicitly select NetBSD's 100dpi Adobe Courier
@@ -231,7 +237,7 @@ repeated. Add `--jobs` to include
 them in a later run. `./xiri check` selects the current image's gates automatically:
 
 ```sh
-python3 scripts/probe-xiri-xdm.py --bundle .work/images/xiri-netbsd-desktop-20261113-desks --multiuser --winterm --fonts --colours
+python3 scripts/probe-xiri-xdm.py --bundle .work/images/xiri-netbsd-desktop-20261114-filemanager --multiuser --winterm --fonts --colours
 ```
 
 For root's manual fallback, stop xdm with `/etc/rc.d/xdm stop`, then run
@@ -532,7 +538,7 @@ For the current bundle, the explicit command is:
 
 ```sh
 python3 scripts/probe-xiri-xdm.py \
-  --bundle .work/images/xiri-netbsd-desktop-20261113-desks \
+  --bundle .work/images/xiri-netbsd-desktop-20261114-filemanager \
   --multiuser --winterm --fonts --colours
 ```
 
@@ -606,8 +612,10 @@ locks, seek offsets and native FAM pathname mapping. The shell update adds
 xmahjongg catalog launches; the behavior update adds opened/closed icon
 feedback. Local file creation, rename, copy, move and Dumpster operations
 are covered by the [File Manager cycle](results/2026-11-13-file-manager.md).
-Cross-filesystem operations, broader application compatibility and package
-installation remain open. The [import ledger](IRIX-IMPORT.md) records
+The [filesystem follow-up](results/2026-11-14-file-manager.md) also covers
+FFS-to-tmpfs moves, collisions, access failures and native notifications.
+Remote filesystems, full-disk failures, broader application compatibility
+and package installation remain open. The [import ledger](IRIX-IMPORT.md) records
 application resources and their qualification.
 The current runtime enables original 4Dwm session saving; see the
 [saved-session guide](IRIX-SOFTWARE.md#saved-desktop-sessions). Use

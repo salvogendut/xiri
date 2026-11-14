@@ -5,6 +5,17 @@ status statements describe individual checkpoints and may be superseded by
 later entries. Use the [current README](../README.md), [development guide](DEVELOPMENT.md)
 and [selected image](../lab/irix-installed-desktop/image.json) for current work.
 
+The [November 14 filesystem follow-up](results/2026-11-14-file-manager.md)
+implements symlink and utimets in the module. A fresh CHD passes 328 ABI
+records and both users' cross-filesystem moves, directory symlinks, saved
+times, collision Cancel/Overwrite, access failure/retry and live native
+notifications. The full desktop/font/winterm gate passes. The first GUI
+run's serial input failure is excluded and documented. The core and
+imported resources are unchanged. IRIS upstream is integrated separately;
+the manual image retains its qualified emulator. The requested
+[upstreaming guide](NETBSD-UPSTREAM.md) maps the remaining NetBSD core
+dependencies, packaging and submission work.
+
 The [November 13 windows/desks cycle](results/2026-11-13-desks.md) restores
 original Desks Overview by importing its missing executable. Title-bar and
 keyboard controls, desk creation/transfer, separate users and layout/focus

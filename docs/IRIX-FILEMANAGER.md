@@ -33,7 +33,8 @@ it, since the vendor client caches its local host during startup.
 - **Selected → Make Copy** (`Ctrl+C`) creates `copy_of_<name>` in the same
   directory.
 - Drag an icon with the middle mouse button between File Manager windows
-  to move it on the same filesystem.
+  to move it. FFS-to-tmpfs moves are also qualified for small files and
+directories, including relative symlinks and saved modification times.
 - Drag onto the desktop Dumpster icon to discard a file. Double-click
   Dumpster to see its contents, then drag the file out to recover it.
 - **Toolchest → Desktop → Empty Dumpster** invokes the original
@@ -71,16 +72,40 @@ The [November 13 result](results/2026-11-13-file-manager.md) records the
 measured ABI, two-user GUI observations, their limits, screenshots and the
 qualified manual CHD.
 
+The [November 14 follow-up](results/2026-11-14-file-manager.md) qualifies
+cross-filesystem moves, collision handling, permission failures and native
+file-change notifications in a fresh image under both users.
+
+## Cross-filesystem moves and errors
+
+Move a disposable file between views on different local filesystems. The
+tested fallback copies the data and metadata before removing the source.
+When the destination already contains the same name, **Cancel** leaves both
+files intact; **Overwrite** replaces the destination. If destination
+permissions prevent the move, dismiss the error, correct the permissions
+and retry without restarting File Manager. A read-only destination also
+leaves the source intact in the tested sequence.
+
+Files created, renamed or deleted with native shell commands should update
+the open directory view automatically through FAM. Renaming can place an
+icon in a different slot; **Sort → by Name** gives a stable layout.
+
 ## Compatibility boundary
 
-Filesystem statistics, deletion, directory removal and rename use native
+Filesystem statistics, deletion, directory removal, rename, symlinks and
+timestamp changes use native
 NetBSD filesystem ownership and permissions. They do not make one user's
 home or Dumpster accessible to another user. IRIX's trailing-slash handling
 is retained without following a final symlink during removal.
 
-The bounded checks cover local files and directories. Cross-filesystem moves,
-remote filesystems, collisions, immutable flags, and concurrent pathname
-changes need separate qualification.
+The bounded checks cover small local files and directories, including FFS
+to tmpfs. Remote filesystems, full-disk failures, immutable flags, richer
+metadata and concurrent pathname changes need separate qualification.
+A retained dialog image appears in a post-move screenshot; its redraw or
+window-lifecycle cause remains unqualified. See the November 14 report.
+The timestamp adapter rejects noncanonical nanoseconds and seconds equal
+to -1 with EINVAL; IRIX accepts those values, while native vnode attributes
+reserve them. Ordinary tested timestamps are preserved.
 
 Original behavior references:
 [IRIX file management guide](https://irix7.com/techpubs/007-1342-180.pdf) and

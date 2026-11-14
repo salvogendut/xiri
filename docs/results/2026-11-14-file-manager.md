@@ -1,6 +1,9 @@
 # File Manager across filesystems
 
-Date: 2026-11-14. Cold-image qualification is in progress.
+Date: 2026-11-14. The fresh [two-user GUI run](2026-11-14-file-manager-cold.json),
+[328-record ABI check](2026-11-14-file-manager-filemeta.json) and
+[full desktop gate](2026-11-14-file-manager-image.json) pass. The new CHD
+is selected for manual testing.
 
 The module now implements IRIX `symlink` (1115) and `utimets` (1235),
 including File Manager's indirect syscall form. These complete the measured
@@ -69,8 +72,8 @@ argument, before any File Manager action. It was cancelled, its shell input
 reset and its guest stopped. The cancellation interrupted halt verification,
 so this run does not claim a clean shutdown and is excluded from acceptance. The focused
 probe now types the terminal command without an embedded serial newline and
-delivers Return as a separate XTest key event. Its fresh rerun must complete
-the whole sequence without manual recovery.
+delivers Return as a separate XTest key event. Its fresh rerun completes
+the whole sequence without manual recovery and shuts down cleanly.
 
 ## Source and image provenance
 
@@ -117,3 +120,43 @@ metadata and wider file types remain unqualified. Existing Dumpster and
 same-filesystem checks are recorded in the [preceding cycle](2026-11-13-file-manager.md).
 This cycle does not repeat every application survey, shell-job sequence or
 earlier ABI suite.
+
+
+## Manual image
+
+The full image gate passes full-screen xdm, both IRIX users, native ctwm,
+both logout menus, startup recovery, catalog launching, 345 native text
+comparisons, three winterm checks and clean shutdown. The 63 repository
+tests also pass. The installed-file comparison finds only the module changed;
+the [inventory delta](2026-11-14-file-manager-inventory.json) records both hashes.
+
+Run the selected image from the repository:
+
+```sh
+./xiri run
+```
+
+Or run `.work/images/xiri-netbsd-desktop-20261114-filemanager/run-iris.sh`.
+Log in as `xiritest` / `xiritest` or `xiritest2` / `xiritest2`. Native ctwm
+remains available as `netbsdtest` / `netbsdtest`, with wheel membership.
+The CHD SHA256 is `0df71bb25749d8dc30d456c6459f0236c0f64154a640522873f6137e45bd4111`.
+
+PNGs show the [moved directory](images/2026-11-14-file-manager-xiritest-directory-moved.png),
+[second user's directory](images/2026-11-14-file-manager-xiritest2-directory-moved.png),
+[collision](images/2026-11-14-file-manager-xiritest-collision-overwrite.png),
+[permission failure](images/2026-11-14-file-manager-xiritest-permission-denied.png)
+and [full desktop](images/2026-11-14-file-manager-desktop.png).
+
+## Cleanup
+
+The [cleanup ledger](2026-11-14-file-manager-cleanup.json) records stopped
+owned guests and removed disposable media, redundant raw seeds and temporary
+emulator/frontend builds. Qualified CHDs and manual state remain intact, with
+one reusable raw seed for the selected image. Logs, source/build pins and PNGs
+remain available. Allocated sizes include shared reflink extents and are not
+the same as physical filesystem space recovered.
+
+The removed files account for **26.9 GiB of allocated space**. Filesystem
+free space increased by **8.06 GiB during the final cleanup**, measured after
+syncing; the earlier build/reference cleanup did not retain a full before/after
+measurement. All seven recorded owned guest process groups are absent.

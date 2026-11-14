@@ -23,8 +23,12 @@ desktops before xdm stops for `shutdown -r now` or `shutdown -h now`. Direct
 `reboot`, `halt` and `poweroff` bypass the shutdown hooks; log out first when
 using those commands. The [File Manager cycle](results/2026-11-13-file-manager.md)
 adds local create/rename/copy/move, discard/recover and emptying for both users,
-with 720 paired filesystem records. Cross-filesystem moves, collisions, broader
-application restoration, other control panels and backdrop formats remain separate.
+with 720 paired filesystem records. The
+[filesystem follow-up](results/2026-11-14-file-manager.md) adds symlink and
+timestamp adapters, 328 ABI records and a fresh two-user GUI qualification
+for cross-filesystem moves, collisions, permissions and native file changes.
+Remote filesystems, full-disk failures, broader application restoration,
+other control panels and backdrop formats remain separate.
 
 The [clipboard cycle](results/2026-11-13-clipboard.md) qualifies text exchange
 between native xterm, original winterm and original gedit on the current CHD.
@@ -516,8 +520,10 @@ dependency candidates; a visible window alone does not complete these checks.
 - [x] Implement [measured mkdir support](results/2026-11-01-irix-mkdir.md): 3,200 records, 1,540 independently verified directory creations and 44 controls pass. Native group ownership remains explicit policy.
 - [x] Record the [user-supplied original desktop reference](IRIX-DESKTOP-REFERENCE.md), with a pixel-preserving PNG and explicit appearance/content targets.
 - [x] Implement [measured pipe support](results/2026-11-01-irix-pipe.md): 220 exact records and 44 native/vendor controls, including descriptor exhaustion/rollback and forked writers.
-- [ ] Complete usable file/icon clients. The [desktop service repair](results/2026-11-02-desktop-services.md) supersedes the earlier empty catalog/select startup boundary: system pages and entry labels now appear, FileManager lists native files, and FAM delivers changes. The [icon repair](results/2026-11-02-desktop-icons.md) qualifies Freeware artwork and FileManager folder/document icons. The [xdm CHD](results/2026-11-03-xiri-xdm-image.md) also qualifies catalog double-click launching. Saved application sessions are covered by the November 6 cycle. The November 13 File Manager cycle covers local operations; cross-filesystem moves, collisions and remote file behavior remain open.
+- [ ] Complete usable file/icon clients. The [desktop service repair](results/2026-11-02-desktop-services.md) supersedes the earlier empty catalog/select startup boundary: system pages and entry labels now appear, FileManager lists native files, and FAM delivers changes. The [icon repair](results/2026-11-02-desktop-icons.md) qualifies Freeware artwork and FileManager folder/document icons. The [xdm CHD](results/2026-11-03-xiri-xdm-image.md) also qualifies catalog double-click launching. Saved application sessions are covered by the November 6 cycle. The November 13 File Manager cycle covers local operations; the November 14 follow-up covers FFS-to-tmpfs moves, collisions, permissions and native notifications. Remote filesystems and full-disk failures remain open.
 - [x] Exercise local File Manager folder creation, rename, copy, move, discard, recovery and emptying under two users. The [filesystem cycle](results/2026-11-13-file-manager.md) records ownership/isolation, post-reboot metadata and 720 paired ABI checks; its GUI-run interruption is explicit.
+- [x] Qualify File Manager FFS-to-tmpfs moves, directory symlinks, saved timestamps, collision Cancel/Overwrite, permission failure/retry, a read-only destination and native file notifications under both users. See the [filesystem follow-up](results/2026-11-14-file-manager.md), including its timestamp-policy limits.
+- [ ] Diagnose the retained File Manager dialog image observed after a completed move; separate window lifecycle from repaint/scanout. See the [filesystem follow-up](results/2026-11-14-file-manager.md#limits-and-follow-up).
 - [x] Enable [saved desktop sessions](results/2026-11-06-desktop-sessions.md) through original 4Dwm: continuous and explicit modes, multiple winterms, xclock, Catalog, layout restoration and per-user state.
 - [x] Coordinate saving before xdm closes an active display during orderly system shutdown/reboot. The [shutdown service](results/2026-11-13-shutdown-sessions.md) passes continuous reboot, explicit cold-boot restoration, user isolation and stalled-save cleanup checks. Direct reboot/halt/poweroff bypass rc.shutdown.
 - [x] Inventory the supplied [May 2004 freeware sets](results/2026-11-01-irix-freeware.md): four CDs, 489 distinct packages; record zero-filled ncurses/nedit metadata separately.

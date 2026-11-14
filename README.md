@@ -12,7 +12,7 @@ desktop icons, catalog launches and running-icon feedback. Native NetBSD Xorg dr
 1280×1024 accelerated Newport display. It retains the xmahjongg texture
 correction qualified by the earlier [rendering and interaction checks](docs/results/2026-11-03-newport-xmahjongg.md).
 
-The [current manual CHD](docs/results/2026-11-13-desks.md#manual-image) boots into native
+The [current manual CHD](docs/results/2026-11-14-file-manager.md#manual-image) boots into native
 NetBSD xdm. Use **xiritest** / **xiritest** or **xiritest2** / **xiritest2** for
 separate IRIX desktops, or **netbsdtest** / **netbsdtest** for standard NetBSD ctwm.
 `netbsdtest` belongs to `wheel` and can run `su -` for a root login shell;
@@ -37,7 +37,10 @@ The [windows/desks checks](docs/results/2026-11-13-desks.md) pass separate users
 saved geometry and active-desktop reboot on the new CHD.
 The [File Manager cycle](docs/results/2026-11-13-file-manager.md) adds local
 create, rename, copy, move, discard, recovery and emptying under both users.
-Its module passes 720 paired filesystem checks against IRIX. The
+That module passed 720 paired filesystem checks against IRIX. The
+[filesystem follow-up](docs/results/2026-11-14-file-manager.md) adds symlink
+and timestamp support, with 328 further ABI checks and a fresh two-user
+GUI run covering cross-filesystem moves, collisions and permission failures. The
 [File Manager and Dumpster guide](docs/IRIX-FILEMANAGER.md) explains the
 original actions, hostname setup and per-user storage.
 The [clipboard guide](docs/IRIX-CLIPBOARD.md) explains mouse-selection paste
@@ -226,7 +229,7 @@ Use the `xiri` integration branches for both forks, following the
 
 Compatibility is incomplete. The reproduced Type1 collapse is corrected;
 winterm keeps the verified NetBSD bitmap Courier default. Broader graphics operations,
-cross-filesystem moves, collision handling, other preference panels and broader
+remote filesystems, full-disk failures, other preference panels and broader
 application restoration need work. Active sessions now save before X stops when using NetBSD
 `shutdown -r now` or `shutdown -h now`; see the
 [shutdown-saving result](docs/results/2026-11-13-shutdown-sessions.md).
