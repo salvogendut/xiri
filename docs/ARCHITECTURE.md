@@ -110,6 +110,9 @@ manual image [boot-loads the personality](results/2026-11-03-xiri-xdm-image.md)
 from `compat_irix_o32.kmod` at normal securelevel. The
 [loadable-module build](../lab/irix-module/README.md) targets the Xiri fork;
 standalone module loading on a stock kernel has not been established.
+The [NetBSD upstreaming guide](NETBSD-UPSTREAM.md) maps the three required
+core interfaces and the independent native/platform fixes to their exact
+source files, and records the remaining submission and validation work.
 
 The [FAM integration](results/2026-11-02-desktop-services.md) is native
 userspace code. Its filesystem watches require a shared native alias for

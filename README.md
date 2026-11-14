@@ -254,6 +254,7 @@ catalog launching. Original IRIX clogin remains later work. The
 [roadmap](docs/ROADMAP.md) defines the dependency and acceptance work.
 
 - [Architecture](docs/ARCHITECTURE.md): kernel, imported runtime, native services and desktop boundaries.
+- [NetBSD upstreaming](docs/NETBSD-UPSTREAM.md): required core interfaces, exact source files, native fixes, module packaging and upstream acceptance work.
 - [IRIX resources](docs/IRIX-RESOURCES.md) and [software/home layout](docs/IRIX-SOFTWARE.md).
 - [Newport graphics](docs/NEWPORT.md) and [desktop reference](docs/IRIX-DESKTOP-REFERENCE.md).
 - [Emulation setup](docs/EMULATION.md) and [platform feasibility](docs/FEASIBILITY.md).

@@ -293,7 +293,9 @@ order was updated to prioritize the kernel module at the user’s request:
    refusal, unload/reload, the desktop and o32/n32 regressions pass on a
    kernel without the built-in personality. The export/relocation audit
    passes. Stock-kernel delivery still needs upstreaming or replacing
-   `selcommon_kern`, `emul.e_sigmask` and `EMUL_NOCLDSTOP_CONT`. Newport and
+   `selcommon_kern`, `emul.e_sigmask` and `EMUL_NOCLDSTOP_CONT`. The
+   [upstreaming guide](NETBSD-UPSTREAM.md) records the source audit, required
+   core files, separate native fixes and submission/validation steps. Newport and
    other native platform drivers remain separate NetBSD components.
 2. **Service/session ownership: qualified.** The maintained
    [`runtime/`](../runtime/README.md) packages boot services with rc.d and
