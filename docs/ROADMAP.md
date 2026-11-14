@@ -299,6 +299,11 @@ The linked MAME guide documents donor preparation; its IRIX formatting and Xsgi
 steps are not NetBSD installation instructions. This workflow is planned, not yet
 an additional completed packaging milestone.
 
+- [ ] Maintain a separate original-media **IRIX 6.5.30** installation/import
+  process, with its own media pins, donor CHD, resource profile and Xiri acceptance
+  results. Start from Prismatic's recorded O2/Octane 6.5.30f installations; retain
+  6.5.22 independently. See the [separate workflow](XIRI-INSTALLATION.md#separate-irix-6530-workflow).
+
 The user requested these deployment changes on 2026-11-03. The implementation
 order was updated to prioritize the kernel module at the user’s request:
 

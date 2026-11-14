@@ -101,6 +101,30 @@ does not establish the presence of the old donor's additional GIMP, Acrobat,
 GNOME or freeware payloads. Keep those components optional with their own
 provenance and missing-component checks.
 
+## Separate IRIX 6.5.30 workflow
+
+Maintain a separate original-media installation and Xiri qualification process
+for **IRIX 6.5.30**, as requested on November 14. Reuse common tooling, with
+release-specific media manifests, installation recipes, import profiles, donor
+CHDs and test results. Keep the 6.5.22 workflow available independently.
+
+Prismatic already records successful **6.5.30f** installations and graphical
+disk boots on O2 R5000 and Octane R10000. Use those
+[installation records](../../prismatic/docs/installation.md) and the
+[6.5.30 Instigator template](../../prismatic/packaging/install-server/instigator.example.yaml)
+as the starting point. That setup uses the 6.5.30 overlays, Applications August
+2006, and Foundation 1 and 2. The O2 and Octane recipes retain their own PROM,
+miniroot and graphics settings; 6.5.30 does not support the Indy donor machine.
+
+The separate process must pin and check its media, package selection, release
+stream, tool revisions and exported disk contents, then inventory its required
+desktop resources. Validate imported ELF ABI/instruction-set requirements
+against the NetBSD target and run the desktop/service/session acceptance checks
+with the corresponding profile. Xiri support for 6.5.30 remains unqualified;
+the existing IRIX boots are donor-installation evidence only. This is follow-up
+work alongside the initial 6.5.22 packaging effort, not an additional completed
+installer.
+
 ## Existing reference and external background
 
 The [SGI installation guide](https://sgi.neocities.org/installguide) describes
