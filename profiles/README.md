@@ -4,7 +4,9 @@ Maintain separate **6.5.22** and **6.5.30** deliverables. Each version has its
 own donor pin, import profile, qualification and CHD. The current qualified
 desktop profile is 6.5.22f. The separate original-media
 [6.5.30f profile](irix-6.5.30f-v1.json) now produces reproducible payloads;
-its O2/R10000 target still needs native boot and desktop qualification.
+its core desktop checks now pass on Indy/R5000 with shadow cache mode and the
+MIPS IV-aware module. Broader acceptance and a separate manual 6.5.30 image
+remain pending; the shared module also passes the 6.5.22f regression.
 The [native package profiles](../docs/NATIVE-PACKAGE.md) describe
 NetBSD components and does not establish compatibility with an untested vendor
 release.
@@ -99,8 +101,12 @@ output directory. The payload has 1,424 files, 72 directories and 94 links;
 its own resources and libraries supply the desktop/fonts. Acrobat, GIMP,
 GNOME and xmahjongg are absent and rejected as missing components. Fourteen
 ELFs declare MIPS IV, so the R4400 test command above is unsuitable. The
-[O2/R10000 trial](../docs/results/2026-11-14-irix-6.5.30.md) currently stops
-during native SCSI initialization, before any vendor program runs.
+[Indy/R5000 retry](../docs/results/2026-11-14-r5000-6.5.30.md) boots the existing
+native kernel and verifies all imported files with IRIS shadow cache mode.
+It also qualifies the MIPS IV interpreter module change and core desktop,
+shell, File Manager, logout/relogin and native ctwm checks. The
+[O2/R10000 trial](../docs/results/2026-11-14-irix-6.5.30.md)
+still stops during native SCSI initialization; it is separate platform work.
 
 See the [installation plan](../docs/XIRI-INSTALLATION.md) for the remaining
 clean-install stages. Do not relabel or reuse either release's source pin or

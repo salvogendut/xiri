@@ -164,14 +164,27 @@ inventory and two byte-identical imports. Use
 [`profiles/irix-6.5.30f-v1.json`](../profiles/irix-6.5.30f-v1.json) explicitly.
 This donor includes desktop/fonts but no Acrobat, GIMP, GNOME or xmahjongg.
 Its n32 libraries include MIPS IV code; retain the R4400/6.5.22 reference and
-use the separately selected O2/R10000 platform for this qualification.
+use a MIPS IV CPU for this qualification. The
+[Indy/R5000 retry](results/2026-11-14-r5000-6.5.30.md) now boots the existing
+NetBSD kernel through native login and full-screen xdm. Its core desktop,
+shell, File Manager, logout/relogin and native ctwm checks now pass with shadow
+cache mode and the MIPS IV-aware compatibility module. This runs imported 6.5.30 applications on
+NetBSD, not a 6.5.30 IRIX kernel on unsupported Indy hardware.
+
+**O2 and Octane deployment first requires working native NetBSD on those
+machines.** Repairing O2 boot/drivers and completing Octane board support are
+separate prerequisites, not vendor import or compatibility-module tasks.
+Qualify native boot/login, essential I/O and full-screen Xorg before the Xiri
+desktop; the [platform roadmap](ROADMAP.md#milestone-5-indigo2-and-octane-expansion)
+records this gate explicitly.
 
 The [O2 lab](../lab/irix-o2/README.md) builds an IP32 N64 kernel, matching
 module and native package with the `crime` Xorg driver and `ip3xboot`. A
 NetBSD cache-alignment correction advances boot past the framebuffer; a later
 native trap during SCSI initialization still prevents login. No 6.5.30
-application has run under NetBSD yet. Native boot, desktop/service/session
-acceptance and a separate manual Xiri CHD remain outstanding. The native IRIX
+application ran in that O2 experiment. Its native boot remains a separate
+platform task. Broader desktop acceptance, native-package promotion and a
+separate manual Xiri CHD remain outstanding on the active R5000 path. The native IRIX
 donor CHD is usable for donor boot testing, but is not a NetBSD/Xiri image.
 
 The requested [Octane/R10000 alternative](results/2026-11-14-octane-platform.md)

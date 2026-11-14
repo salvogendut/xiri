@@ -28,13 +28,27 @@ def main():
     parser.add_argument('--payload', required=True, type=Path)
     parser.add_argument('--output', required=True, type=Path)
     parser.add_argument('--native-package', type=Path, help='also qualify the assembled native package and its cross-built runtime')
+    parser.add_argument('--module-build', type=Path,
+                        help='install a candidate compat module for the same kernel, then cold boot before qualification')
     parser.add_argument('--cpu', choices=('r4400', 'r5000'),
                         help='explicit Indy CPU model; 6.5.30 donor libraries require MIPS IV/R5000')
+    parser.add_argument('--cache', choices=('auto', 'full', 'shadow'),
+                        help='explicit IRIS cache model for a controlled comparison')
     parser.add_argument('--emulator-bundle', type=Path,
                         help='explicit iris/iris-ci pair with a hash-pinned manifest.json for a new emulator qualification')
     parser.add_argument('--resume-import', type=Path, help='copy a cleanly halted import run and verify its persisted files')
-    parser.add_argument('--debug-failure', action='store_true', help='allow bounded local diagnostic requests after a checksum failure')
+    parser.add_argument('--reset-filetypes', action='store_true',
+                        help='on a resumed private disk, restore the hash-verified original table before repeating activation')
+    parser.add_argument('--desktop-only', action='store_true',
+                        help='cold-boot desktop follow-up of an import that already verified all files and opened a desktop')
+    parser.add_argument('--debug-failure', action='store_true', help='pause after extraction for bounded local diagnostic requests')
     args = parser.parse_args()
+    if args.module_build and args.native_package:
+        parser.error('qualify a candidate module separately from a native package that supplies its own module')
+    if args.reset_filetypes and not args.resume_import:
+        parser.error('--reset-filetypes requires --resume-import')
+    if args.desktop_only and (not args.resume_import or args.reset_filetypes or args.native_package or args.debug_failure):
+        parser.error('--desktop-only requires --resume-import without import/reset/package/diagnostic options')
     bundle, payload, out = (p.resolve() for p in (args.bundle, args.payload, args.output))
     base = json.loads((bundle/'manifest.json').read_text())
     seed = json.loads((bundle/'seed-result.json').read_text())
@@ -50,7 +64,8 @@ def main():
     shutil.copyfile(__file__, out/'probe-used.py')
     media = out/'media'
     media.mkdir()
-    shutil.copyfile(payload/'payload.tar.gz', media/'payload.tgz')
+    if not args.desktop_only:
+        shutil.copyfile(payload/'payload.tar.gz', media/'payload.tgz')
     with tarfile.open(payload/'payload.tar.gz') as archive:
         (media/'expected-rld').write_bytes(archive.extractfile('emul/irix/lib/rld').read())
     shutil.copyfile(ROOT/'lab/irix-4dwm/type-ready.c', media/'type.c')
@@ -66,9 +81,37 @@ def main():
         shutil.copyfile(ROOT/'lab/native-package/install-fixture.sh',media/'install-native.sh')
     native = {p:h for p,h in support_files(bundle,seed).items()
               if not p.startswith('/emul/') and not p.startswith('/usr/local/share/xiri/fonts/')}
+    candidate = None
+    if args.module_build:
+        build = args.module_build.resolve()
+        candidate = json.loads((build/'module.json').read_text())
+        assert candidate['status'] == 'built'
+        assert candidate['artifacts']['netbsd']['sha256'] == base['pin']['native_kernel_sha256']
+        assert candidate['artifacts']['netbsd.boot']['sha256'] == base['pin']['boot_kernel_sha256']
+        artifact = candidate['artifacts']['compat_irix_o32.kmod']
+        assert sha256(build/artifact['path']) == artifact['sha256']
+        shutil.copyfile(build/artifact['path'],media/'compat_irix_o32.kmod')
+    if args.resume_import:
+        saved = json.loads((args.resume_import/'result.json').read_text())
+        if args.desktop_only:
+            assert saved['sessions'] and not saved.get('desktop_only'), 'Need a prior complete vendor check and desktop startup'
+        if saved.get('effective_module'):
+            assert candidate, 'Resuming a candidate module requires --module-build for its provenance'
+            module = saved['effective_module']
+            assert module['path'] == base['irix_module']['path']
+            native[module['path']] = module['sha256']
     (media/'NATIVE').write_text(''.join(f'SHA256 ({p}) = {h}\n' for p,h in sorted(native.items())))
-    (media/'VENDOR').write_text(''.join(f'SHA256 ({p}) = {r["sha256"]}\n'
-                                      for p,r in sorted(imported['files'].items()) if r['type']=='file'))
+    effective_native = dict(native)
+    if candidate:
+        effective_native[base['irix_module']['path']] = candidate['artifacts']['compat_irix_o32.kmod']['sha256']
+    (media/'NATIVE-AFTER').write_text(''.join(f'SHA256 ({p}) = {h}\n' for p,h in sorted(effective_native.items())))
+    vendor = {p:r['sha256'] for p,r in imported['files'].items() if r['type']=='file'}
+    if args.desktop_only:
+        core = ['bin/sh','lib/rld','usr/lib32/libc.so.1','usr/bin/X11/4Dwm',
+                'usr/bin/X11/xclock','usr/sbin/fftr','usr/sbin/fm',
+                'usr/sbin/iconcatalog','usr/bin/X11/toolchest','usr/sbin/xwsh']
+        vendor = {'/emul/irix/'+p:vendor['/emul/irix/'+p] for p in core}
+    (media/'VENDOR').write_text(''.join(f'SHA256 ({p}) = {h}\n' for p,h in sorted(vendor.items())))
     (media/'SHA256').write_text(''.join(f'SHA256 ({p.name}) = {sha256(p)}\n' for p in sorted(media.iterdir())))
     iso_tool = shutil.which('genisoimage') or shutil.which('mkisofs')
     if not iso_tool:
@@ -90,6 +133,11 @@ def main():
     if args.cpu:
         config, changed = re.subn(r'^cpu = "[^"]+"$', 'cpu = "'+args.cpu+'"', config, flags=re.M)
         assert changed == 1, 'Expected one machine CPU setting'
+    if args.cache:
+        assert not re.search(r'^cache\s*=', config, re.M), 'Base already selects a cache model'
+        config, changed = re.subn(r'^(cpu = "[^"]+")$',
+                                 r'\1\ncache = "'+args.cache+'"', config, flags=re.M)
+        assert changed == 1, 'Expected one machine CPU setting'
     config += '\n[scsi.4]\npath = '+json.dumps(str(out/'probe.iso'))+'\ncdrom = true\n'
     probe = load_probe()
     # This command may already be running inside the development Toolbox.
@@ -108,16 +156,18 @@ def main():
     probe.IRIS, probe.CI = emulator_dir/'iris', emulator_dir/'iris-ci'
     assert sha256(probe.IRIS) == emulator['iris_sha256']
     assert sha256(probe.CI) == emulator['ci_sha256']
-    lab = probe.Lab(SimpleNamespace(mode='ordinary',debugger=False,boot_timeout=600),out,config_text=config)
-    original_launch = lab.launch
+    def new_lab(directory):
+        instance = probe.Lab(SimpleNamespace(mode='ordinary',debugger=False,boot_timeout=600),directory,config_text=config)
+        original_launch = instance.launch
+        def launch(command,name):
+            if name == 'emulator':
+                command = list(command)
+                command[command.index('--scsi1')+1] = str(out/'disk.chd')
+            return original_launch(command,name)
+        instance.launch = launch
+        return instance
 
-    def launch(command,name):
-        if name == 'emulator':
-            command = list(command)
-            command[command.index('--scsi1')+1] = str(out/'disk.chd')
-        return original_launch(command,name)
-
-    lab.launch = launch
+    lab = new_lab(out)
     guest = Guest(lab)
     cmd, get, wait = guest.command, guest.read_text, guest.wait_for
     result = dict(schema=1,status='incomplete',scope=__doc__.strip(),
@@ -130,8 +180,19 @@ def main():
                       'lab/irix-filelocks/place-window.c')}},
                   native_files_verified=native,screenshots={},sessions=[])
     result['resumed_import'] = resumed
+    result['desktop_only'] = args.desktop_only
+    result['vendor_files_checked'] = len(vendor)
+    if args.desktop_only:
+        result['scope'] = 'Cold-boot desktop follow-up; full vendor integrity comes from the separately recorded import run.'
+        result['prior_vendor_check'] = dict(run=str(args.resume_import.resolve()),
+            result_sha256=sha256(args.resume_import/'result.json'),
+            checkpoint_sha256=sha256(args.resume_import/'checkpoint.json'))
     result['emulated_cpu'] = re.search(r'^cpu = "([^"]+)"$', config, re.M)[1]
+    result['emulated_cache'] = args.cache or 'auto'
     result['effective_emulator'] = emulator
+    if candidate:
+        result['candidate_module'] = candidate
+        result['candidate_manifest_sha256'] = sha256(args.module_build/'module.json')
     if native_package:
         result['native_package'] = dict(archive_sha256=native_package['archive_sha256'],
                                        manifest_sha256=sha256(args.native_package/'manifest.json'),
@@ -187,6 +248,7 @@ def main():
             'test ! -e /emul/irix/usr/freeware/bin/gimp && test ! -e /emul/irix/usr/freeware/bin/xmahjongg')
         result['sessions'].append(dict(label=label,shell=proof,dimensions=dimensions,tree=tree,
                                        identity=get('cat "$job/identity"')))
+        cmd('/root/import-test/place winterm 140 50 640 300')
         capture(label)
         checkpoint(label)
 
@@ -212,6 +274,42 @@ def main():
         checkpoint('native-base-verified')
         cmd('/etc/rc.d/xdm stop && /etc/rc.d/xiri_famd stop',120)
         wait('! pgrep -x Xorg >/dev/null',90)
+        if candidate:
+            path = base['irix_module']['path']
+            digest = candidate['artifacts']['compat_irix_o32.kmod']['sha256']
+            # A resumed disk can already contain the candidate. Its initial
+            # cold boot and NATIVE check then supply the same load boundary.
+            result['module_already_installed'] = native[path] == digest
+            if not result['module_already_installed']:
+                cmd('install -m 444 /cdrom/compat_irix_o32.kmod '+shlex.quote(path)+
+                    ' && test "$(sha256 -q '+shlex.quote(path)+')" = '+digest)
+                KernelLog(lab,int(base['kernel_msgbuf_symbol'],16)).halt()
+                result['module_install_clean_shutdown'] = lab.clean_shutdown
+                lab.close()
+                reboot = out/'boot-after-install'
+                reboot.mkdir()
+                shutil.copyfile(out/'nvram.bin',reboot/'nvram.bin')
+                lab = new_lab(reboot)
+                guest = Guest(lab)
+                cmd, get, wait = guest.command, guest.read_text, guest.wait_for
+                lab.start(boot=False)
+                lab.wait('login: ',600)
+                lab.send('root')
+                lab.wait('xiri-indy# ',30)
+                lab.logged_in = True
+                cmd('mount -t cd9660 -o ro /dev/cd0a /cdrom && cd /root && '
+                    'sha256 -c /cdrom/NATIVE-AFTER >/root/import-native-after.log',300)
+            modstat = get('modstat | grep compat_irix_o32')
+            assert re.search(r'^compat_irix_o32\s+exec\s+filesys\b',modstat,re.M),modstat
+            securelevel = get('sysctl -n kern.securelevel').strip()
+            assert securelevel == '1',securelevel
+            cmd('test "$(sha256 -q /netbsd)" = '+base['pin']['native_kernel_sha256'])
+            result['effective_module'] = dict(path=path,sha256=digest,modstat=modstat,securelevel=1)
+            result['native_files_verified'] = effective_native
+            checkpoint('candidate-module-cold-booted')
+            if not result['module_already_installed']:
+                cmd('/etc/rc.d/xdm stop && /etc/rc.d/xiri_famd stop',120)
+                wait('! pgrep -x Xorg >/dev/null',90)
         if native_package:
             cmd('mkdir /root/native-package && cd /root/native-package && '
                 'pax -rz -pe -f /cdrom/native.tgz && sh preflight.sh > /root/native-preflight.log',300)
@@ -242,12 +340,19 @@ def main():
             cmd('test "$(mount | grep -c "on /emul/irix/")" = 0 && '
                 'rm -rf /emul/irix /usr/local/share/xiri/fonts && cd / && '
                 'pax -rz -pe -f /cdrom/payload.tgz && cd /root',1200)
-        checkpoint('new-vendor-tree-extracted')
+        if args.reset_filetypes:
+            table = '/emul/irix/usr/lib/filetype/desktop.otr'
+            original_hash = imported['files'][table]['sha256']
+            cmd('test "$(sha256 -q '+table+'.before-xiri)" = '+original_hash+
+                ' && cp -p '+table+'.before-xiri '+table+'.reset && mv '+table+'.reset '+table+
+                ' && rm -f '+table+'.xiri-state')
+            result['restored_original_filetypes_sha256'] = original_hash
+        checkpoint('preserved-vendor-tree' if args.desktop_only else 'new-vendor-tree-extracted')
         if args.debug_failure:
             result['rld_check'] = get('sha256 /emul/irix/lib/rld /cdrom/expected-rld; '
                                      'stat -f "%z %Lp %N" /emul/irix/lib/rld; '
                                      'cmp -l /emul/irix/lib/rld /cdrom/expected-rld | head -20; '
-                                     'cat /root/import-vendor.log')
+                                     'grep -a FAILED /root/import-vendor.log')
             print(result['rld_check'],flush=True)
             checkpoint('diagnostic-requests-ready')
             deadline = time.monotonic()+600
@@ -271,7 +376,7 @@ def main():
             else:
                 raise TimeoutError('Diagnostic request window expired')
         cmd('sha256 -c /cdrom/VENDOR >/root/import-vendor.log',1200)
-        checkpoint('new-vendor-file-hashes-verified')
+        checkpoint('desktop-vendor-files-verified' if args.desktop_only else 'new-vendor-file-hashes-verified')
         cmd('mkdir -p /emul/irix/etc && /usr/local/sbin/xiri-sync-users && '
             'rm -f /var/run/xiri-pty-ready && /etc/rc.d/xiri_devices start && '
             '/usr/X11R7/bin/mkfontdir /usr/local/share/xiri/fonts && '
@@ -302,7 +407,7 @@ def main():
         login('netbsdtest')
         wait("pgrep -u netbsdtest -f '^/usr/X11R7/bin/ctwm( |$)' >/dev/null",120)
         wait("xwininfo -root -tree | grep '\"UXTerm\"' >/dev/null",120)
-        result['native_session'] = get('ps -u netbsdtest -o pid,comm')
+        result['native_session'] = get('ps -U netbsdtest -o pid,comm')
         result['native_tree'] = get('xwininfo -root -tree')
         capture('native-ctwm')
         cmd('/etc/rc.d/xdm stop',90)
@@ -311,10 +416,16 @@ def main():
         result.update(status='failed',error=str(error))
         if lab.logged_in:
             try:
+                # A signal may interrupt paced input inside a quoted command.
+                # Cancel it before diagnostic commands or shutdown are sent.
+                lab.offset = len(lab.serial_text())
+                lab.send('\x03',newline=False)
+                lab.send('')
+                lab.wait('xiri-indy# ',10)
                 cmd('cd /root')
                 result['failure_logs'] = get('cat /usr/people/xiritest/.xsession-errors; '
                     'test -z "$job" || tail -50 "$job"/*.err')
-                result['failed_checksums'] = get('grep FAILED /root/import-vendor.log; '
+                result['failed_checksums'] = get('grep -a FAILED /root/import-vendor.log; '
                                                 'sha256 /emul/irix/lib/rld')
                 print(result['failed_checksums'],flush=True)
                 capture('failure')

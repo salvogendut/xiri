@@ -1,0 +1,116 @@
+{
+  "schema": 1,
+  "cycle_dates": [
+    "2026-11-14",
+    "2026-11-15"
+  ],
+  "status": "qualified-with-shadow-cache",
+  "scope": "Indy/R5000 native boot and separate 6.5.30f vendor import plus desktop acceptance; 6.5.22f shared-module regression.",
+  "netbsd_commit": "93a258077244ea6e6a1a43a9d2e8b8fa41aa6555",
+  "iris_upstream_checked": "5fb831ce7057a8978759ae57b151d631a448d1e7",
+  "native_kernel_sha256": "c92f0b2fcc182836393a87ca41a0315a0681e93ed3e904fad925d3c370e4dd98",
+  "module_sha256": "76fb780ab2639b2f43bdba8162a890a73b5e6384ab72a36e84d59572197b44a3",
+  "module_build": {
+    "path": "lab/irix-mips4/module-build.json",
+    "sha256": "1d36795f3b51c839173f299a7545af7ef8824be83a8f54f83a3f0f554f718b4a"
+  },
+  "source_equivalence": {
+    "path": "lab/irix-mips4/source-equivalence.json",
+    "sha256": "5ef41cc77c78e81027059032a79ab22493f29c1d778dbde416a52ec0c471bad7"
+  },
+  "admission_regression": {
+    "cases": 20,
+    "before_failures": 1,
+    "after_failures": 0,
+    "after": {
+      "path": "lab/irix-mips4/admission-after.log",
+      "sha256": "509283cba41ec605c8d09eb4272e606ac233b9ddad1cae2f7f660381b1f5e85a"
+    }
+  },
+  "host_tests": {
+    "passed": 83,
+    "log": {
+      "path": ".work/irix-mips4-module/verification/host-tests-final.log",
+      "sha256": "40dba9c4a9457642e427cc0ead595d011afa5c8a4e72aa71f9cee4e87d76dbe8"
+    }
+  },
+  "native_boot": {
+    "cpu": "r5000",
+    "machine": "indy_ip24",
+    "memory_mb": 256,
+    "graphics": "newport",
+    "status": "passed",
+    "l1_line_bytes": 32
+  },
+  "releases": {
+    "6.5.22f": {
+      "cpu": "r4400",
+      "cache": "auto/full interpreter",
+      "status": "passed",
+      "result": {
+        "path": "docs/results/2026-11-14-mips4-6.5.22.json",
+        "sha256": "630f0964903db660e433b2837b2c37d7dce491b43083bdd7c4383c8dfa365479"
+      },
+      "native_files_checked": 55,
+      "full_vendor_files_checked": 1534,
+      "screenshot": {
+        "path": "docs/results/images/2026-11-15-irix-6.5.22-r4400.png",
+        "sha256": "525ea6f9207c854a06544040f789d03078b07ce5595eb54c3960639c591acc1f"
+      }
+    },
+    "6.5.30f": {
+      "cpu": "r5000",
+      "cache": "shadow",
+      "status": "passed as full import plus focused cold desktop follow-up",
+      "full_import": {
+        "path": "docs/results/2026-11-14-r5000-import.json",
+        "sha256": "ac743a62ce756e4ff8025b815b347c6e456eb7c89d782c28792455eeb63b9b38"
+      },
+      "desktop_result": {
+        "path": "docs/results/2026-11-14-mips4-6.5.30.json",
+        "sha256": "9d6d73046a833058fa65b73b174e5373049d73435d11066e88a69fcca2d4976c"
+      },
+      "full_vendor_files_checked": 1424,
+      "desktop_followup_vendor_files_checked": 10,
+      "native_files_checked": 55,
+      "screenshot": {
+        "path": "docs/results/images/2026-11-15-irix-6.5.30-r5000.png",
+        "sha256": "ccb70942c1bec6ab68d9e51d8277b72e2caead28bcb02d30fa304da2daea5604"
+      }
+    }
+  },
+  "known_limits": [
+    "Full-cache R5000 extraction produced persistent zeroed blocks; root cause is not localized.",
+    "Interrupted imports retain failed status; the focused passing desktop run references the complete vendor-check evidence.",
+    "Prepared native base and user homes are reused; clean-target installation and broader 6.5.30 desktop/application acceptance remain.",
+    "Separate updated manual CHDs and native-package promotion remain pending; the selected 6.5.22m image is unchanged.",
+    "O2 and Octane require native NetBSD platform work before Xiri qualification."
+  ],
+  "cleanup": {
+    "temporary_allocated_file_footprint_removed_bytes": 4851466240,
+    "physical_space_recovered_not_measured": true,
+    "note": "Reflink sharing prevents equating summed file allocations with exclusive physical space freed.",
+    "records": [
+      {
+        "path": ".work/imports/irix-6.5.30f-v1/verification/r5000/cleanup-full.json",
+        "sha256": "c981e9e27bb514064ec190d9109739df1c9dc52151564884840f252be6e82d84"
+      },
+      {
+        "path": ".work/irix-mips4-module/verification/cleanup-interrupted.json",
+        "sha256": "e4600a4e68fa892c3cb574508ece408f0122abae1afdf6350fc151eb494a4ab0"
+      },
+      {
+        "path": ".work/irix-mips4-module/verification/cleanup-final.json",
+        "sha256": "db83bf82c4420b1266774348b308b8800f87582df0ee60c0794e42f10131b4b7"
+      }
+    ],
+    "processes": {
+      "checked_utc": "2026-11-14T23:33:03.621503+00:00",
+      "live": []
+    },
+    "retained_disk_states": [
+      ".work/irix-6.5.22-r4400-final",
+      ".work/irix-6.5.30-r5000-desktop"
+    ]
+  }
+}

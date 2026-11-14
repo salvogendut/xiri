@@ -6,9 +6,12 @@ workstations; the qualified reference uses an R4400 Indy in the IRIS emulator.
 Our current manual reference is **IRIX 6.5.22m**. We maintain separate release
 lines for **6.5.22 and 6.5.30**, each with its own profiles, qualification and
 CHD. The separate [6.5.30f donor and import](docs/results/2026-11-14-irix-6.5.30.md)
-are reproducible; its O2/R10000 NetBSD trial currently stops during native SCSI
-initialization, before any IRIX application runs. A qualified 6.5.30 Xiri CHD
-is still pending. Physical hardware needs separate qualification.
+are reproducible. The [Indy/R5000 retry](docs/results/2026-11-14-r5000-6.5.30.md)
+now passes native boot and the 6.5.30f core desktop, shell, File Manager and
+login/logout checks with IRIS shadow cache mode. The shared module also passes
+6.5.22f regression checks. A packaged 6.5.30 Xiri test CHD is still pending.
+The O2/R10000 native SCSI trap remains separate work. Physical hardware needs
+separate qualification.
 The [Octane alternative](docs/results/2026-11-14-octane-platform.md) was also
 checked; it requires a separate NetBSD board port before Xiri can run there.
 
@@ -252,9 +255,10 @@ matching kernel/module, native services, display driver and cross-built session
 runtime without reading a prepared image. Its [6.5.22f qualification](docs/results/2026-11-14-native-package.md)
 passes installation/reinstallation, desktop/shell, logout/relogin and native ctwm.
 The separate 6.5.30 version now has a verified donor and reproducible payload.
-Resolve its O2/N64 native boot blocker before desktop qualification, then test
-managed installation on a clean target without inherited desktop configuration
-or user homes.
+Its core desktop checks now pass on Indy/R5000 with shadow cache mode and a
+MIPS IV-aware module. Next, promote the matching native package and produce
+separate test CHDs, then qualify managed installation without inherited
+desktop configuration or user homes. O2 native boot is a separate milestone.
 
 Compatibility is incomplete. The reproduced Type1 collapse is corrected;
 winterm keeps the verified NetBSD bitmap Courier default. Broader graphics operations,

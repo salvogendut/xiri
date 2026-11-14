@@ -84,10 +84,11 @@ wrapper. The probe owns and stops its emulator, preserves an exact executed
 script, and checks that both firmware source files and the kernel are
 unchanged. It has a five-minute bound on the network boot phase.
 
-For the immediate 6.5.30 application goal, the smallest next experiment is
-the existing Indy/R5000 path with IRIS's corrected Config register handling;
-that native boot has not been rerun since the correction. Octane requires
-its own NetBSD board-port cycle. Keep both 6.5.22 and 6.5.30 deliverables
+The subsequent [Indy/R5000 retry](2026-11-14-r5000-6.5.30.md) boots NetBSD
+through native login and full-screen xdm with the corrected Config handling;
+it is the active 6.5.30 application test path. Octane requires its own NetBSD
+board-port cycle, and O2 requires native boot/driver repair before either can
+host Xiri. Keep both 6.5.22 and 6.5.30 deliverables
 separate and retain the qualified 6.5.22 manual image.
 
 IRIS upstream was fetched for this cycle: `5fb831ce` is already contained in

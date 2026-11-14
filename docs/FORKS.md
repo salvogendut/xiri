@@ -51,6 +51,21 @@ not repin qualified kernels, emulator binaries, runtime resources or guest disks
 
 ## IRIS upstream updates
 
+The November 14–15 Indy/R5000 retry fetched `5fb831ce` on both active days; it is already
+included in `xiri` at `7d46498b`. The retained emulator now boots the existing
+NetBSD Indy kernel through native login and full-screen xdm on R5000, with
+32-byte primary cache lines. The [R5000 result](results/2026-11-14-r5000-6.5.30.md)
+records the separate 6.5.30 payload experiment. No new fork source change or
+repin of the qualified 6.5.22 image is needed for this native boot.
+
+NetBSD `xiri` now adds `93a25807724`, admitting the 6.5.30 n32 interpreter only
+on MIPS IV CPUs. The actual-validator regression passes 20 cases, the module
+build/export audit passes, and separate 6.5.22f/R4400 and 6.5.30f/R5000 desktop
+checks pass. The latter uses shadow cache mode after a full-cache extraction
+data discrepancy. The [build/equivalence records](../lab/irix-mips4/README.md)
+preserve exact inputs; the native kernel and selected manual image retain
+their existing pins. Both forks are still on their `xiri` integration branches.
+
 The November 14 Octane trial fetched `5fb831ce` again; it is already
 contained in IRIS `xiri` at `7d46498b`, with no incoming commits or merge.
 The [diskless boot checks](results/2026-11-14-octane-platform.md) use that

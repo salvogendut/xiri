@@ -305,8 +305,11 @@ including repeat installation and preserved configuration. The separate
 [6.5.30f donor and payload](results/2026-11-14-irix-6.5.30.md) now pass export,
 native IRIX serial boot and reproducibility checks. The requested O2/R10000
 NetBSD trial needed a corrected 64-bit cache alignment mask and now reaches a
-later native SCSI-stage trap. Resolve that bounded platform blocker before
-6.5.30 desktop qualification, then qualify managed installation and repeat
+later native SCSI-stage trap. The [Indy/R5000 retry](results/2026-11-14-r5000-6.5.30.md)
+now passes native login, xdm and the 6.5.30f core desktop with shadow cache
+mode. The shared MIPS IV interpreter module also passes 6.5.22f regression
+checks. Promote the updated native package and package separate test CHDs,
+then qualify managed installation and repeat
 installation on a clean target without prepared desktop seeds or user homes.
 The linked MAME guide documents donor preparation; its IRIX formatting and Xsgi
 steps are not NetBSD installation instructions. Vendor import is qualified;
@@ -318,7 +321,9 @@ the complete clean-target installer remains unfinished.
   6.5.22 independently. See the [separate workflow](XIRI-INSTALLATION.md#separate-irix-6530-workflow).
   Always produce both 6.5.22 and 6.5.30 versions, with separate profiles,
   qualification records and test CHDs. Donor/export/profile/reproducibility are
-  complete; O2/N64 boot, desktop qualification and a manual 6.5.30 CHD remain.
+  complete; Indy/R5000 native boot and core desktop acceptance now pass with
+  shadow cache mode. Broader 6.5.30 acceptance, native-package promotion and
+  separate updated manual CHDs remain; O2/N64 boot is a separate platform task.
   Share native artifacts only after checking both versions.
 
 The user requested these deployment changes on 2026-11-03. The implementation
@@ -444,7 +449,7 @@ Parallel hardware preparation: inventory each physical machine's CPU, memory, gr
 
 The NetBSD boot and desktop experiments can be performed independently as their inputs become available. Both determine the implementation work needed on the first platform. Use the [emulator qualification gate](EMULATION.md#qualification-gate) to record each result.
 
-- [x] Boot the NetBSD installation kernel in IRIS, install to a disposable disk, and cold-boot to multiuser. Passed with R4400 and CI enabled; R5000 panicked during cache initialization.
+- [x] Boot the NetBSD installation kernel in IRIS, install to a disposable disk, and cold-boot to multiuser. Passed with R4400 and CI enabled. The [R5000 retry](results/2026-11-14-r5000-6.5.30.md) now reaches native login and graphical xdm after correcting the emulator's Config cache-line fields.
 - [x] Capture serial logs and verify persistent storage, network transfer and reboot integrity. Repeated 96 MiB disk writes, 32 MiB cold-read verification, and 96 MiB of NFS/HTTP/TCP transfers passed in CI and ordinary execution. The [I/O record](results/2026-10-30-netbsd-io.md) documents those runs. Later snapshot stress found intermittent corruption with fragmented NFS; current work uses HTTP or 1024-byte NFS requests. The installer HTTP stall is also unresolved.
 - [x] Cross-build a modified kernel on the modern host and verify its build identifier in a fresh guest boot. `XIRI_INDY_20261030` reached multiuser over TFTP with SCSI root; see the [build and boot record](results/2026-10-30-netbsd-kernel.md).
 - [x] Demonstrate debugger attachment, a breakpoint, and continued execution. Cross-GDB stopped at `main` and `cpu_rootconf`; the guest resumed to multiuser. See the [debugger record](results/2026-10-30-netbsd-debugger-probe.md).
@@ -625,6 +630,15 @@ Acceptance: another tester can install the system on the named physical Indy con
 
 ## Milestone 5 Indigo2 and Octane expansion
 
+**Native NetBSD support is a prerequisite for Xiri on both O2 and Octane.**
+As recorded at the user's request on November 14, these targets need a native
+NetBSD platform cycle before compatibility/desktop qualification: repair the
+existing O2 port's boot and driver issues, and implement the missing Octane
+board support. Require repeatable native boot/login, storage, cache/DMA,
+networking, input and a usable full-screen Xorg display before treating either
+machine as a Xiri target. Keep this work separate from IRIX ABI fixes and from
+the current Indy/R5000 6.5.30 application tests.
+
 The [November 14 Octane check](results/2026-11-14-octane-platform.md) confirms
 this remains a native board-port milestone. The current O2 kernel's ELF32
 wrapper is rejected by the Octane PROM; the ELF64 image faults during loading.
@@ -632,6 +646,7 @@ The audited NetBSD tree lacks the Octane ARCS64/HEART/XIO/Bridge/IOC3 and
 display attachment path. This check does not qualify a 6.5.30 Xiri desktop.
 
 - [ ] Classify the available Indigo2 by CPU and graphics; identify reusable support and additional port work.
+- [ ] Repair and qualify native NetBSD on O2, starting with the remaining SCSI-stage boot trap, then storage/cache/DMA, input and the `crime` Xorg path.
 - [ ] Map the missing NetBSD Octane board support using historical OpenBSD and current Linux implementations as references.
 - [ ] Implement and validate Octane boot, memory, interrupts, and essential I/O under NetBSD.
 - [ ] Add the available Octane's display and input support, keeping graphics acceleration separately scoped.
