@@ -51,6 +51,14 @@ not repin qualified kernels, emulator binaries, runtime resources or guest disks
 
 ## IRIS upstream updates
 
+The November 14 vendor-import cycle fetched upstream `49210388` again; it is
+already included in IRIS `xiri` at `7c4552a6`, with no incoming commits. No
+emulator merge or rebuild was needed. The import check uses the selected
+NetBSD image's pinned `819c6825` emulator to keep the native base fixed while
+changing the vendor payload. Fork branches and detached lab worktrees remain
+unchanged. The [import result](results/2026-11-14-irix-import.md) records passing
+host/reproducibility checks and the imported desktop/native-session validation.
+
 The November 14 donor-export cycle again fetched upstream `49210388`, already
 included in IRIS `xiri` at `7c4552a6`. No merge or rebuild was required. The
 [donor boot check](results/2026-11-14-irix-donor.md) used the retained, pinned

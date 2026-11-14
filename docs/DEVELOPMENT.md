@@ -9,6 +9,7 @@ The entry point covers routine work against the selected image; the older
 
 | Command | Effect |
 | --- | --- |
+| `./xiri import --source DONOR --output NEW_BUNDLE [--component acrobat]` | Build a deterministic vendor archive and provenance manifest from the pinned original-media IRIX donor. Independent of the selected NetBSD image; see the [profile guide](../profiles/README.md). |
 | `./xiri status [--json]` | Show the selected image, its kernel/emulator pins and current integration worktree revisions/status. Source tips can be newer than the tested image. |
 | `./xiri doctor` | Hash-check immutable image inputs and the qualification record; check host tools and Toolbox. It does not boot a guest. |
 | `./xiri run` | Open the bundle's pinned IRIS launcher for manual testing. NVRAM, overlays and snapshots retain normal manual-session behavior. |
@@ -18,7 +19,9 @@ The entry point covers routine work against the selected image; the older
 | `./xiri build iris` | Build the IRIS `xiri` worktree with the pinned Rust toolchain, locked offline dependencies and two jobs. |
 | `./xiri image --seed-run RUN --output NEW_BUNDLE` | Package a halted, qualified raw run as a new CHD bundle. Uses selected-image pins unless matching replacements are explicitly supplied. |
 
-`run`, `check`, `seed`, `build` and `image` accept `--dry-run`. Commands that
+`import`, `run`, `check`, `seed`, `build` and `image` accept `--dry-run`. Import
+validates the profile and selection without opening media in this mode; its
+normal output and extraction log live in the requested new bundle. Commands that
 execute helpers record their arguments, exit status and output under
 `.work/workflows/`. `check` writes `qualification.json` and `desktop.png`
 there. It never promotes the new observation or overwrites the selected

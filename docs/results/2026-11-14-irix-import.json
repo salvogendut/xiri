@@ -1,0 +1,287 @@
+{
+  "schema": 1,
+  "status": "vendor-payload-and-desktop-smoke-qualified",
+  "profile": "profiles/irix-6.5.22f-v1.json",
+  "profile_sha256": "55bef2e631f8b28c15e0e9f533294c7834e8d0b5a4f3ec95125f4f5fd74b6658",
+  "donor": {
+    "chd_sha256": "b4fff76ffa0ca00c0a90da1c94a3eb41f5f6ba4cb13c0af258b4acca4ad95c41",
+    "logical_bytes": 4294967296,
+    "raw_sha256": "fc70f353f53244eaa2707609b348e4a2b22aae3de6ce41398bdd8d6c3f4bda56"
+  },
+  "components": [
+    "acrobat",
+    "desktop",
+    "fonts"
+  ],
+  "payload": {
+    "bundle": ".work/imports/irix-6.5.22f-v1",
+    "archive_sha256": "6feb87643a47b0128fe635b7d06903ef2e78da0317ba29c5a88a700c85403dec",
+    "manifest_sha256": "61614b1dc24ed332641a20630603c012f69268b787ff6c5aebd85db756eca071",
+    "archive_bytes": 62109118,
+    "file_bytes": 196463615,
+    "types": {
+      "file": 1534,
+      "directory": 91,
+      "symlink": 113
+    },
+    "library_edges": 1636,
+    "omitted_catalog_entries": [
+      {
+        "reason": "target not included",
+        "source": "/usr/lib/desktop/iconcatalog/pages/C/Applications/MediaMail",
+        "target": "../../../../../../../usr/bin/X11/MediaMail"
+      },
+      {
+        "reason": "target not included",
+        "source": "/usr/lib/desktop/iconcatalog/pages/C/Applications/Wingz",
+        "target": "../../../../../../../usr/bin/X11/Wingz"
+      },
+      {
+        "reason": "target not included",
+        "source": "/usr/lib/desktop/iconcatalog/pages/C/Applications/maker",
+        "target": "../../../../../../../usr/frame/bin/maker"
+      },
+      {
+        "reason": "target not included",
+        "source": "/usr/lib/desktop/iconcatalog/pages/C/Collaboration/MediaMail",
+        "target": "../../../../../../../usr/bin/X11/MediaMail"
+      },
+      {
+        "reason": "target not included",
+        "source": "/usr/lib/desktop/iconcatalog/pages/C/Collaboration/inperson",
+        "target": "../../../../../../../usr/sbin/inperson"
+      },
+      {
+        "reason": "target not included",
+        "source": "/usr/lib/desktop/iconcatalog/pages/C/ControlPanels/webcontrol",
+        "target": "/root/usr/sbin/webcontrol"
+      },
+      {
+        "reason": "target not included",
+        "source": "/usr/lib/desktop/iconcatalog/pages/C/DesktopTools/notepad",
+        "target": "../../../../../../../usr/sbin/notepad"
+      },
+      {
+        "reason": "target not included",
+        "source": "/usr/lib/desktop/iconcatalog/pages/C/DesktopTools/snoop",
+        "target": "../../../../../../../usr/bin/snoop"
+      },
+      {
+        "reason": "target not included",
+        "source": "/usr/lib/desktop/iconcatalog/pages/C/MediaTools/macromedia",
+        "target": "/usr/sbin/macromedia"
+      },
+      {
+        "reason": "target not included",
+        "source": "/usr/lib/desktop/iconcatalog/pages/C/WebTools/WebSetup",
+        "target": "/var/www/htdocs/webface/WebSetup"
+      },
+      {
+        "reason": "target not included",
+        "source": "/usr/lib/desktop/iconcatalog/pages/C/WhatsNew/WebSetup",
+        "target": "/var/www/htdocs/webface/WebSetup"
+      }
+    ]
+  },
+  "reproducibility": {
+    "independent_builds": 2,
+    "archives_identical": true,
+    "manifests_identical": true,
+    "all_archive_member_hashes_verified": true
+  },
+  "host_tests": {
+    "command": "python3 -m unittest discover -s tests",
+    "passed": 78,
+    "import_tests": 8,
+    "local_sockets_required": true
+  },
+  "iris_upstream": {
+    "upstream_main": "49210388ed5559667d7859dd46103b42b07d3fed",
+    "xiri_head": "7c4552a6aacf5915b7e951c6c60228216b342215",
+    "incoming_commits": 0,
+    "integration": "already included; no merge or rebuild"
+  },
+  "extraction": {
+    "qualified_command": "pax -rz -pe -f payload.tar.gz",
+    "bsdtar_disk_extraction_failures": 2,
+    "affected_path": "/emul/irix/lib/rld",
+    "expected_sha256": "30228b54c1e5585b365514eb7c9895b03cc0f61cb898e05e3ddafece87863439",
+    "observed_bad_sha256": "52195d2c442abc1eebf9a941b0dc09c185b08ee8a97c43800d46f57ea35a1e14",
+    "nonzero_region_expected_zero": {
+      "offset": 475136,
+      "bytes": 16384
+    },
+    "passing_controls": [
+      "direct copy",
+      "tar extraction to stdout",
+      "pax extraction"
+    ],
+    "cause": "Not isolated beyond the extraction-to-disk path on this pinned base."
+  },
+  "gettxt": {
+    "status": "nonfatal SIGSEGV observed in vendor winterm wrapper; fallback starts working terminal/shell",
+    "sha256": "5b8a23f80ecad56f4e27c0cdfddcf18af481260232fc04cbeffaae8cb3089d9d",
+    "matches_earlier_6_5_22m_reference": true,
+    "interpreter": "/usr/lib32/libc.so.1"
+  },
+  "limits": [
+    "Native base and existing user homes inherited; not a clean stock-NetBSD install.",
+    "Current manual CHD remains selected and unchanged.",
+    "Not all catalog applications or Acrobat functions qualified.",
+    "GIMP, GNOME and xmahjongg require separate source profiles.",
+    "IRIX 6.5.30 remains a separate workflow."
+  ],
+  "qualification": {
+    "method": "Completed main desktop checks plus a passing focused native-session follow-up; no claim of one uninterrupted passing full run.",
+    "base_chd_sha256": "61f9b9883303470b68877083547d203bf3b177fe4ccb93136096ee9ed770611d",
+    "base_manifest_sha256": "9d7d69808f1a15f30d05c7678924abcb731610d5d0f59603836b5eb2115b79d5",
+    "native_kernel_sha256": "c92f0b2fcc182836393a87ca41a0315a0681e93ed3e904fad925d3c370e4dd98",
+    "emulator_sha256": "3dd9299d71f1899ff5a8c9b76f6a24752d19e4f9a0bcfe0edf3a29001dc9c49e",
+    "emulator_revision": "819c6825504d40ad9f9aa00554249affd2da9446",
+    "main_run": {
+      "evidence": "verification/desktop/result.json",
+      "sha256": "25883b0badaa957c0d06364f8f91c6707d7adbaf3bca984f6acb9284021c3521",
+      "original_status": "failed",
+      "inherited_native_files_verified": 55,
+      "vendor_file_hashes_verified": 1534,
+      "sessions": [
+        {
+          "label": "desktop-first",
+          "shell": [
+            "xiritest",
+            "/usr/people/xiritest",
+            "/usr/people/xiritest",
+            "IRIX_SHELL_OK"
+          ],
+          "dimensions": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+          "identity": "SESSION user=xiritest uid=1234 groups=1234 1235 home=/usr/people/xiritest cwd=/usr/people/xiritest display=127.0.0.1:0 authority=/tmp/.Xauthog1amr\n"
+        },
+        {
+          "label": "desktop-relogin",
+          "shell": [
+            "xiritest",
+            "/usr/people/xiritest",
+            "/usr/people/xiritest",
+            "IRIX_SHELL_OK"
+          ],
+          "dimensions": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+          "identity": "SESSION user=xiritest uid=1234 groups=1234 1235 home=/usr/people/xiritest cwd=/usr/people/xiritest display=127.0.0.1:0 authority=default\n"
+        }
+      ],
+      "filemanager_window": true,
+      "logout_relogin": true,
+      "second_logout": true,
+      "native_assertion_failure": "pgrep -x ctwm did not match the full launch path; native desktop was visible.",
+      "clean_shutdown": true,
+      "base_unchanged": true
+    },
+    "native_followup": {
+      "evidence": "verification/native/result.json",
+      "sha256": "f2be68e456d1dfe7a685e11794524e6cf15618a434db01a29b640b0af357e8bf",
+      "status": "passed",
+      "source_result_sha256": "25883b0badaa957c0d06364f8f91c6707d7adbaf3bca984f6acb9284021c3521",
+      "source_delta_sha256": "0b1a694308a458cff00620a70c738866765b57d16d838bee6d1524756ca67c01",
+      "process": "PID RUID STAT COMMAND COMMAND\n350 1236 Ss   /usr/X1 /usr/X11R7/bin/ctwm -W \n",
+      "display": "  dimensions:    1280x1024 pixels (339x271 millimeters)\n",
+      "uxterm_visible": true,
+      "clean_shutdown": true,
+      "source_unchanged": true
+    },
+    "evidence_sha256": {
+      "desktop/NATIVE": "093a5ec509a73abf93a3dbd1012dbc3a0f9e9460b403d0815c521dccd141bddd",
+      "desktop/SHA256": "066ce40bb9122a772580a43b5bfa23629e86a40b12446534e8990b2b3b2bb9a7",
+      "desktop/VENDOR": "206006b5949bc8b1e50f929c3753f04ae86773c8f8cbe2a7911045fd91be67cc",
+      "desktop/desktop-filemanager.png": "741a64cccb7fa4b7b5d5cc1c6953d58f097a28ef5ed2ff07630c785a452265ee",
+      "desktop/desktop-first.png": "0c4fae66b1513278bf6d773dc8a90122f4cef7fda29587d8503e037b7639e849",
+      "desktop/desktop-relogin.png": "da92aaf1146f63d7de1451ddafd36aa4be002ce9871486be621eed7f6a796e20",
+      "desktop/emulator-command.json": "dbe1a89effe1ee02b3b462bc214747525be990bf3adeedbc3af5ced0fa53dfa6",
+      "desktop/emulator.log": "36a9964fcdaa0c8a38aab087068c8d56b00d06be12b71cfc1fe0240243def894",
+      "desktop/failure.png": "ccffac6e2124e6c15964d5acbd0653e3fbf26ebd4f887efea6ed6ad9b5aa39c6",
+      "desktop/greeter.png": "5571cddf81515041f021a3636402bb746e432e60c7d356b93ea3241f21f9b0a5",
+      "desktop/iris.toml": "2521a48c76ac59901553744b8534dd852d72ad901bd4d01e8a7b34f85c98dc3e",
+      "desktop/monitor.log": "515fe75fac955901a88e41ae20e4a173b1ac15244fde5e8ad8d3482457ffbedb",
+      "desktop/probe-used.py": "66b26bb18d2dc53aae20e9e803072fd56ca01a6bcb6e384c7cd45989b29e3aab",
+      "desktop/result.json": "25883b0badaa957c0d06364f8f91c6707d7adbaf3bca984f6acb9284021c3521",
+      "desktop/serial.log": "0a600dc9746d2cc15f06cbfe66b68a72f4866cd95b67c64e9009c307e89de4e1",
+      "desktop/shutdown-dmesg.txt": "13c4dbabc8d96d693ba8318481eb1928c019fbb0f725e9ce1b7dc96eb96a3cbd",
+      "failures/extraction-controls/emulator-command.json": "43e53721db5eab73ec665af91ec97c242a9c913007d2b132589e527b1a8a6ad2",
+      "failures/extraction-controls/emulator.log": "c47facfee0f51bf15daf7066f43a52fba8a115db8eda7669982fa00f2e6502eb",
+      "failures/extraction-controls/iris.toml": "99aceccf39fe093aaf8613cf17046c91f9e02ed9848f9d9db807f55ed705d38d",
+      "failures/extraction-controls/monitor.log": "f59300aebfdc1e4f5f64e6bbd7bdb19912a1900f5f033578bcc212d9f13e25b0",
+      "failures/extraction-controls/probe-used.py": "9631e985c0ea89b5413eee2eee44e142252f7b324ee1a01f699b1de203a49748",
+      "failures/extraction-controls/response.json": "b6673cb011ef86891a1d7a8e33362314bdc14d77f6261abfbc3eaf5b69040e5e",
+      "failures/extraction-controls/result.json": "775612117f13255f27cf7d7f589b28a89bcf41fb0af3212092ef2425d6120c84",
+      "failures/extraction-controls/serial.log": "7aef9dfa9578782912bf0ed3f54dd554641f1925bd56626815553cd9d6b1841a",
+      "failures/extraction-controls/shutdown-dmesg.txt": "abfb60ec5d0413cac96489a114d776d293cfba26e368a0dfde9052352dc3440c",
+      "failures/raw-inspection/base-checksum-sector.bin": "076a27c79e5ace2a3d47f9dd2e83e4ff6ea8872b3c2218f66c92b89b55f36560",
+      "failures/raw-inspection/base-sector.log": "ef5d75badbc708cad0c385dedc121368e42b38ade378275b53d32a5c181dff75",
+      "failures/raw-inspection/cleanup.json": "cda0899e9e855a922a5cb49b5166de2202d84e2d92fedc3aa80592fdf27c418a",
+      "failures/raw-inspection/extract.log": "32e79441205b3186e2ef287d78058d8ada3a7897b7877a15669fe4b64ecc5c80",
+      "failures/tar-first/checksum-record.json": "901b5e8b9092c9ed241c3251388c66d01fa476ccd343beba867b372e2b0e2cbd",
+      "failures/tar-first/checksum-record.txt": "cbc1565014031efde1c4111f1675ac4786c5068a8c73c6efc9ae3362bf4e56af",
+      "failures/tar-first/emulator-command.json": "40bc65fd6690c96663250c53424bffdb02a616698098abe96b8ea8a14a648fbf",
+      "failures/tar-first/emulator.log": "11b122f64335a0ff1f07942942ca215914d52bb9369b940c6404fc801e539bd7",
+      "failures/tar-first/iris.toml": "2264e3eaca8f018b19228663ebc85c69f2535059eafa9183c53621737b8ac7b8",
+      "failures/tar-first/probe-used.py": "b6aabb1130712a3194d6bdaaefc7183c79531cdee5c3468700382f0f9f2efeaa",
+      "failures/tar-first/result.json": "e39563dd73ddaee6b564ee65349d904a4478e1166e228b9abe8cd73bde381dca",
+      "failures/tar-first/serial.log": "4867dc47eaa87ae2b1fb9a1638d6a7691f569a111f0199e0e7b51ef9a2228e5a",
+      "failures/tar-first/shutdown-dmesg.txt": "1ee4c9fb09c3a29502ef1eab3bdce1bc1b60334cf558ef7ed1d94ac2aadb786c",
+      "failures/tar-repeat/emulator-command.json": "432e5aff424b4ba73a156faf390e3322d9284e424bde1586f19165c4386167d3",
+      "failures/tar-repeat/emulator.log": "ed0bd65552550f5fc8673f1a8aea26f4f39875ebe9176c0322b629fd93879b7e",
+      "failures/tar-repeat/iris.toml": "6b624e1a8e9fb35d486c800a1b07f2790d0d4d3878a4c95edf352b0f53b5bf5a",
+      "failures/tar-repeat/probe-used.py": "ea9e9fda5a0946534dacf7c6fc5f4c746209d634f0bfd1c0fba1adba3d28c255",
+      "failures/tar-repeat/result.json": "738e6eb873c3540e8b67e5bb417d063a80b17a933fa72cd169d9d9b74989d268",
+      "failures/tar-repeat/serial.log": "906775be2ce69f8ef12ebbc6c3b295ec64f36d3aaa89584aecad9aaefe2861a2",
+      "failures/tar-repeat/shutdown-dmesg.txt": "54719e271c59ab8c6465f11dbeb83a361c81944e2a75050cb6dd3b87a1ad8be7",
+      "native/emulator-command.json": "742e6076392180c39ff6974e83061f1f31bdd716400ac3548a1d90c918268dd9",
+      "native/emulator.log": "8581d51413ab86f6fad978006d87d8447f36fa4639d90909f898c05ebd6352ab",
+      "native/iris.toml": "1df2fa02fec2f44e97be761949bdd3276afb9cbbd0dbdb42999eb9a60eb6c719",
+      "native/monitor.log": "f85b7e772b6e0bcd81584b7c2f22a9442ff1be3681791abd854d5fb91a19b011",
+      "native/native-ctwm.png": "ccffac6e2124e6c15964d5acbd0653e3fbf26ebd4f887efea6ed6ad9b5aa39c6",
+      "native/probe.py": "b430cc8e5e4892288986579c3c0154c27130dc04b3764562b079396a13618530",
+      "native/result.json": "f2be68e456d1dfe7a685e11794524e6cf15618a434db01a29b640b0af357e8bf",
+      "native/serial.log": "d3cafe94a756aeddcb73fe81b5d30e58929af3ad3920e7a8b484923c155230ee",
+      "native/shutdown-dmesg.txt": "27ddc8894e15d0dfdedc81a7b2b3281924af996904bdb786e58d5cec7acd26b3"
+    },
+    "current_sources_sha256": {
+      "scripts/import-irix.py": "57d7cf36a303be4ac7a60c8635f8a2444991ed20399124b5c4123454ed7aa7b8",
+      "scripts/xiri_lab/irix_import.py": "b05b52a52922f82f7b6747fd443202f44024474bc35b662e633f62face918e86",
+      "scripts/probe-irix-import.py": "02f725dbdbcdaa2bb16f47fec65fe00c8491bf1f4ab6a5ed19feaa65a5202140",
+      "scripts/xiri_lab/workflow.py": "b6db068dfeb78a150913eac37b23316c38cfffc24b8fc0dc93f6a85134c17e2b",
+      "tests/test_irix_import.py": "a7a2ed3129a0e53a6a8835373210f0e1ca9cb3a62336720b78da79847263b1a3"
+    }
+  },
+  "cleanup": {
+    "completed_utc": "2026-11-14T17:11:59Z",
+    "stopped_process_groups": [
+      265594,
+      294039,
+      312444,
+      328642,
+      353330
+    ],
+    "no_temporary_disk_readers": true,
+    "removed_paths_allocated_bytes": {
+      ".work/irix-import-check": 623058944,
+      ".work/irix-import-check2": 831676416,
+      ".work/irix-import-check3": 831647744,
+      ".work/irix-import-check4": 838819840,
+      ".work/irix-import-check5": 837337088,
+      ".work/irix-import-native-check": 710807552,
+      ".work/irix-import-inspect": 16384,
+      ".work/imports/irix-6.5.22f-v1-build2": 4096,
+      ".work/imports/irix-6.5.22f-v1-repeat": 63172608
+    },
+    "earlier_inspection_allocated_bytes": 8979275776,
+    "total_removed_allocated_bytes": 13715816448,
+    "final_cleanup_filesystem_available_before": 491803078656,
+    "final_cleanup_filesystem_available_after": 493048766464,
+    "final_cleanup_observed_available_increase": 1245687808,
+    "accounting_note": "Allocated-byte totals count reflink copies separately; they are not exclusive physical bytes freed. The availability delta covers only this final cleanup and may include concurrent filesystem activity.",
+    "retained": [
+      ".work/donors/irix-6.5.22f-original-media",
+      ".work/imports/irix-6.5.22f-v1",
+      ".work/images/xiri-netbsd-desktop-20261114-controls"
+    ]
+  }
+}

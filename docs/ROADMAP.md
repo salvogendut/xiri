@@ -293,13 +293,17 @@ The initial source is an installed IRIX 6.5.22 donor built from original media.
 The existing Prismatic/Instigator installation now supplies a
 [verified 6.5.22f donor CHD](results/2026-11-14-irix-donor.md): combined disk/overlay
 export, exact raw round trip, graphical cold boot, clean power-off and resource
-comparison pass. Qualify a separate import profile on NetBSD before replacing
-the current 6.5.22m runtime reference.
-Consolidate the resource profiles and native prerequisites, then qualify a clean
-target install and repeat installation without relying on prepared desktop seeds.
+comparison pass. The [versioned import profile](../profiles/README.md) now
+produces byte-identical payloads and manifests in independent builds. Its
+[NetBSD qualification](results/2026-11-14-irix-import.md) covers the imported
+desktop, shell, File Manager, logout/relogin and a native ctwm account. The
+current 6.5.22m manual-test CHD remains selected; its extra freeware applications
+are not present in the original-media donor.
+Package the native prerequisites next, then qualify a clean target install and
+repeat installation without relying on prepared desktop seeds or user homes.
 The linked MAME guide documents donor preparation; its IRIX formatting and Xsgi
-steps are not NetBSD installation instructions. This workflow is planned, not yet
-an additional completed packaging milestone.
+steps are not NetBSD installation instructions. Vendor import is qualified;
+the complete clean-target installer remains unfinished.
 
 - [ ] Maintain a separate original-media **IRIX 6.5.30** installation/import
   process, with its own media pins, donor CHD, resource profile and Xiri acceptance

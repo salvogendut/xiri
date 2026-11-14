@@ -152,6 +152,8 @@ def build_command(root, config, target):
 def parser():
     p = argparse.ArgumentParser(description=__doc__)
     sub = p.add_subparsers(dest='action', required=True)
+    from .irix_import import add_arguments
+    add_arguments(sub.add_parser('import', help='build a versioned vendor payload from an IRIX donor'))
     status = sub.add_parser('status', help='show selected artifacts and current source branches')
     status.add_argument('--json', action='store_true')
     sub.add_parser('doctor', help='verify selected immutable artifacts and host prerequisites')
@@ -174,6 +176,9 @@ def parser():
 
 def main(argv=None):
     args = parser().parse_args(argv)
+    if args.action == 'import':
+        from .irix_import import run
+        return run(args)
     root = ROOT
     config = read_json(root/'config/development.json')
     if config['schema'] != 1:

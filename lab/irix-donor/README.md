@@ -7,3 +7,5 @@ ELFs. These are donor metadata, not a replacement runtime import profile.
 
 See the [qualification and reproduction record](../../docs/results/2026-11-14-irix-donor.md).
 The image and original bytes stay in ignored `.work/donors/`.
+The separate [versioned import profile](../../profiles/README.md) builds a
+reproducible vendor payload from this donor and records its NetBSD prerequisites.

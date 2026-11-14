@@ -236,13 +236,14 @@ Use the `xiri` integration branches for both forks, following the
 
 ## Remaining work
 
-The next packaging work is the [reproducible installation plan](docs/XIRI-INSTALLATION.md):
-import from our own original-media IRIX 6.5.22 installation and install the
-matching NetBSD module, native services and desktop configuration without
-inheriting a prepared Xiri image. Our
-[6.5.22f donor CHD](docs/results/2026-11-14-irix-donor.md) passes export verification,
-graphical cold boot, clean power-off and resource comparison. The qualified
-Xiri runtime remains 6.5.22m until the new import profile passes NetBSD testing.
+The [versioned importer](profiles/README.md) now builds a reproducible vendor
+payload from our own original-media IRIX 6.5.22f installation. Its
+[NetBSD desktop checks](docs/results/2026-11-14-irix-import.md) cover full-screen
+xdm, the IRIX desktop and shell, File Manager, logout/relogin and native ctwm.
+The existing manual-test CHD remains the 6.5.22m reference, with its additional
+applications. The next [installation stage](docs/XIRI-INSTALLATION.md) packages
+the matching NetBSD module, native services and desktop configuration, then
+qualifies a clean target without inheriting a prepared Xiri image.
 
 Compatibility is incomplete. The reproduced Type1 collapse is corrected;
 winterm keeps the verified NetBSD bitmap Courier default. Broader graphics operations,

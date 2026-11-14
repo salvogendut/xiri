@@ -1,6 +1,6 @@
 # Reproducible Xiri installation
 
-Status: implementation plan, 2026-11-14. The first import source is an
+Status: vendor import and desktop smoke checks qualified, 2026-11-14. The first import source is an
 **installed IRIX 6.5.22 image built from the user's original installation media**.
 Our existing Prismatic installation now provides a
 [verified donor CHD](results/2026-11-14-irix-donor.md) and a tested recipe;
@@ -94,9 +94,9 @@ inventory, graphical cold boot and clean guest power-off. Original disk files
 and PROM state are preserved. The 505.4 MiB CHD, source hashes, launcher and PNG
 are retained in `.work/donors/irix-6.5.22f-original-media/`.
 
-This candidate is **6.5.22f**; Xiri's qualified reference remains **6.5.22m**.
-Compare required desktop programs, libraries and resources, then qualify a
-separate import profile before replacing the reference. A standard CD install
+This donor is **6.5.22f**; Xiri's selected manual-test CHD remains **6.5.22m**.
+The separate import profile now passes resource comparison and NetBSD desktop
+checks, without replacing that reference. A standard CD install
 does not establish the presence of the old donor's additional GIMP, Acrobat,
 GNOME or freeware payloads. Keep those components optional with their own
 provenance and missing-component checks.
@@ -105,7 +105,33 @@ The completed static comparison finds all 42 selected core paths: 20 have
 identical full-file hashes, and the 22 differing core ELFs have identical code
 sections. The imported 55-path bitmap set and granite backdrop match. Acrobat
 resources are present; GIMP, GNOME and xmahjongg need additional payloads.
-The new import profile and NetBSD runtime checks remain the next step.
+The versioned [6.5.22f import profile](../profiles/README.md) now builds the
+vendor payload independently of our prepared NetBSD image. Its
+[qualification record](results/2026-11-14-irix-import.md) covers reproducibility,
+imported file hashes, the desktop, shell, File Manager, logout/relogin and native
+ctwm. Native packaging and clean-target installation remain separate stages.
+
+### Build the vendor payload
+
+```sh
+./xiri import \
+  --source .work/donors/irix-6.5.22f-original-media/irix-donor.chd \
+  --output .work/imports/irix-6.5.22f-v1 \
+  --component acrobat
+```
+
+The default profile pins the qualified donor's exact CHD/raw hashes. Desktop
+and fonts are included by default; Acrobat is optional. GIMP, GNOME and
+xmahjongg report missing source components before extraction. An independent
+installation needs its own audited source pin, even if its release matches.
+
+`payload.tar.gz` contains the vendor files and screen fonts; `manifest.json`
+records every source/destination, source type, canonical path, mode, hash,
+dependency and omitted catalog link. Two independent donor builds produced
+identical payloads and manifests. The [profile guide](../profiles/README.md)
+documents reproducibility, the read-only extraction boundary, required native
+components and disposable NetBSD qualification. No complete stock-NetBSD
+installer or IRIX 6.5.30 qualification is implied by this import step.
 
 ## Separate IRIX 6.5.30 workflow
 
@@ -198,24 +224,24 @@ test passwords and probe histories must not be installation prerequisites.
 
 | Component | Available now | Work for the supported installer |
 | --- | --- | --- |
-| Read-only donor access | `inventory-irix-installed-desktop.py` and later resource stagers use guestfish with `ro,norecovery`. | Explicit source/output arguments, shared source ownership and cleanup, release/partition discovery, useful missing-file errors. |
-| Resource provenance | Initial copy ledger plus font, bitmap, backdrop, GIMP, GNOME, shell, document, session, File Manager and Overview ledgers. | One consolidated profile, conflict checks and explicit optional components. |
-| Payload archive | `stage-irix-installed-desktop.py` preserves file hashes and catalog link text. | Reproducible archive metadata, final installed permission rules and inclusion of later additions. |
+| Read-only donor access | `./xiri import` takes explicit source/output paths, pins the donor, mounts XFS with `ro,norecovery`, reports missing files and cleans temporary extraction state. | Broader release/partition discovery and separately audited donor profiles. |
+| Resource provenance | Versioned 6.5.22f desktop/fonts/Acrobat profile, dependency closure, conflict checks and missing-component errors. | Separate sources and profiles for GIMP, GNOME and freeware absent from this donor. |
+| Payload archive | Normalized modes and metadata; two builds produce identical archives/manifests. NetBSD pax extraction passes all file hashes. | Managed installation with target-side type/mode/link verification, backup and retry semantics. |
 | Native runtime | `runtime/Makefile`, `runtime/install.sh`, services and account synchronization. | Package its prerequisites as well as integration files; add complete preflight and managed-install records. |
 | Kernel/module | Qualified builds and matching artifact manifests. | Package or identify the exact compatible pair; separate kernel installation/reboot from desktop activation. |
 | Display and native services | Qualified Newport driver, Xorg configuration and patched FAM. | Reproducible build/package inputs independent of a populated desktop seed. |
-| Desktop validation | Existing image, xdm, multi-user, session, font and application checks. | Run them against an installation created by the new workflow, including reinstall and failure recovery. |
+| Desktop validation | Imported 6.5.22f desktop/shell/File Manager, logout/relogin and native ctwm smoke checks on a qualified native base. | Run the broader image/multi-user/preferences checks on a clean installation, including reinstall and failure recovery. |
 | Reusable CHD | Current `build-xiri-image.py` verifies a prepared guest and its CHD round trip. | Make CHD production consume the same installation workflow rather than a chain of previously modified desktop images. |
 
-The initial 1,990-record ledger alone is insufficient. Later qualified cycles
-added resources and native fixes, and the current image builder starts from a
-prepared seed. Merely exposing its existing command line would preserve that
-hidden dependency instead of producing a fresh installation.
+The initial 1,990-record ledger alone was insufficient. The new profile includes
+later vendor resources available in this donor. Native fixes and configuration
+are still inherited by the qualification image, so a fresh installation also
+requires the native packaging and managed-install stages.
 
 ## Acceptance for the first supported workflow
 
 - Build the same payload twice from the same source/profile and obtain matching
-  file inventories and archive hashes.
+  file inventories and archive hashes. **Passed for the 6.5.22f profile.**
 - Complete an installation on a clean, compatible NetBSD target without copying
   a prepared Xiri desktop filesystem or relying on historical probe directories.
 - Verify required bytes, types, modes and symlinks, and demonstrate useful errors
