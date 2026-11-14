@@ -236,6 +236,10 @@ Use the `xiri` integration branches for both forks, following the
 
 ## Remaining work
 
+The next packaging work is the [reproducible installation plan](docs/XIRI-INSTALLATION.md):
+import from an installed IRIX 6.5.22 image and install the matching NetBSD module,
+native services and desktop configuration without inheriting a prepared Xiri image.
+
 Compatibility is incomplete. The reproduced Type1 collapse is corrected;
 winterm keeps the verified NetBSD bitmap Courier default. Broader graphics operations,
 remote filesystems, full-disk failures, other preference panels and broader

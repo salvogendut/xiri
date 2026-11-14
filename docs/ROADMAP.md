@@ -288,6 +288,14 @@ work.
 
 ## Next packaging phase
 
+The next deployment cycle is [reproducible installation](XIRI-INSTALLATION.md).
+The user selected an installed IRIX 6.5.22 donor image as the initial source.
+Consolidate the resource profiles and native prerequisites, then qualify a clean
+target install and repeat installation without relying on prepared desktop seeds.
+The linked MAME guide documents donor preparation; its IRIX formatting and Xsgi
+steps are not NetBSD installation instructions. This workflow is planned, not yet
+an additional completed packaging milestone.
+
 The user requested these deployment changes on 2026-11-03. The implementation
 order was updated to prioritize the kernel module at the user’s request:
 
