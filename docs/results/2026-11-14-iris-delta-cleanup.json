@@ -1,0 +1,614 @@
+{
+  "date": "2026-11-14",
+  "upstream": "49210388ed5559667d7859dd46103b42b07d3fed",
+  "upstream_fetch_url": "https://github.com/techomancer/iris.git",
+  "upstream_included": true,
+  "upstream_incoming_commits": 0,
+  "fork_before": "f6be6154eb9928597dfaffdd435c32db751cf681",
+  "fork_after": "7c4552a6aacf5915b7e951c6c60228216b342215",
+  "integration_branch": "xiri",
+  "topic_branch": "topic/upstream-delta-cleanup",
+  "netbsd_unchanged": "a4a70956805",
+  "manual_image_emulator_unchanged": "819c6825504d40ad9f9aa00554249affd2da9446",
+  "delta": {
+    "before": {
+      "paths": 104,
+      "source_paths": 60,
+      "added_lines": 4954,
+      "deleted_lines": 373,
+      "changed_lines": 5327
+    },
+    "after": {
+      "paths": 96,
+      "source_paths": 57,
+      "added_lines": 4549,
+      "deleted_lines": 365,
+      "changed_lines": 4914
+    },
+    "remaining_paths": [
+      {
+        "added": 89,
+        "deleted": 0,
+        "path": "CHANGELOG.md"
+      },
+      {
+        "added": 1,
+        "deleted": 1,
+        "path": "Cargo.toml"
+      },
+      {
+        "added": 24,
+        "deleted": 1,
+        "path": "FEATURES.md"
+      },
+      {
+        "added": 152,
+        "deleted": 3,
+        "path": "HACKING.md"
+      },
+      {
+        "added": 91,
+        "deleted": 1,
+        "path": "HELP.md"
+      },
+      {
+        "added": 27,
+        "deleted": 1,
+        "path": "STORAGE.md"
+      },
+      {
+        "added": 13,
+        "deleted": 0,
+        "path": "TESTING.md"
+      },
+      {
+        "added": 22,
+        "deleted": 1,
+        "path": "clanker/INDEX.md"
+      },
+      {
+        "added": 28,
+        "deleted": 0,
+        "path": "clanker/cpu/tlb-tags-survive-address-mode-changes.md"
+      },
+      {
+        "added": 3,
+        "deleted": 1,
+        "path": "clanker/cpu/xtlb-vector-follows-mode-not-address.md"
+      },
+      {
+        "added": 21,
+        "deleted": 0,
+        "path": "clanker/devices/embedded-flash-prom-selection.md"
+      },
+      {
+        "added": 38,
+        "deleted": 0,
+        "path": "clanker/devices/embedded-serial-transports.md"
+      },
+      {
+        "added": 38,
+        "deleted": 0,
+        "path": "clanker/devices/frontend-pcm-output.md"
+      },
+      {
+        "added": 29,
+        "deleted": 0,
+        "path": "clanker/devices/ip28-prom-bank-layouts.md"
+      },
+      {
+        "added": 39,
+        "deleted": 0,
+        "path": "clanker/devices/prom-boot-presets.md"
+      },
+      {
+        "added": 21,
+        "deleted": 0,
+        "path": "clanker/devices/ps2-controller-translation-for-netbsd.md"
+      },
+      {
+        "added": 31,
+        "deleted": 0,
+        "path": "clanker/gui/embedded-guest-poweroff-state.md"
+      },
+      {
+        "added": 19,
+        "deleted": 0,
+        "path": "clanker/gui/frontend-platform-ports-and-counters.md"
+      },
+      {
+        "added": 33,
+        "deleted": 0,
+        "path": "clanker/gui/owned-expert-services.md"
+      },
+      {
+        "added": 22,
+        "deleted": 0,
+        "path": "clanker/gui/prismatic-paused-reset.md"
+      },
+      {
+        "added": 21,
+        "deleted": 0,
+        "path": "clanker/jitv2/compile-queues-belong-to-the-pool.md"
+      },
+      {
+        "added": 20,
+        "deleted": 0,
+        "path": "clanker/net/netbsd-fragmented-nfs-upload-corruption.md"
+      },
+      {
+        "added": 27,
+        "deleted": 0,
+        "path": "clanker/net/release-forward-listeners-before-rebind.md"
+      },
+      {
+        "added": 57,
+        "deleted": 0,
+        "path": "clanker/perf/sgiemu-policy-belongs-to-the-machine.md"
+      },
+      {
+        "added": 64,
+        "deleted": 0,
+        "path": "clanker/rex3/netbsd-xaa-fastclear-colors.md"
+      },
+      {
+        "added": 22,
+        "deleted": 0,
+        "path": "clanker/scsi/hashless-chd-cow.md"
+      },
+      {
+        "added": 23,
+        "deleted": 0,
+        "path": "clanker/scsi/windows-sidecar-publication.md"
+      },
+      {
+        "added": 18,
+        "deleted": 0,
+        "path": "clanker/snapshot/mc-restore-must-republish-bank-map.md"
+      },
+      {
+        "added": 25,
+        "deleted": 0,
+        "path": "clanker/video/embedded-device-lifetime.md"
+      },
+      {
+        "added": 12,
+        "deleted": 4,
+        "path": "debug.md"
+      },
+      {
+        "added": 2,
+        "deleted": 1,
+        "path": "docs/dev/hal2.md"
+      },
+      {
+        "added": 13,
+        "deleted": 0,
+        "path": "docs/dev/rex3.md"
+      },
+      {
+        "added": 4,
+        "deleted": 3,
+        "path": "docs/o2-ip32.md"
+      },
+      {
+        "added": 18,
+        "deleted": 6,
+        "path": "docs/octane-ip30.md"
+      },
+      {
+        "added": 155,
+        "deleted": 0,
+        "path": "examples/odyssey-prom-smoke.rs"
+      },
+      {
+        "added": 4,
+        "deleted": 1,
+        "path": "iris-gui-README.md"
+      },
+      {
+        "added": 5,
+        "deleted": 3,
+        "path": "iris-gui/locales/en/config.ftl"
+      },
+      {
+        "added": 1,
+        "deleted": 1,
+        "path": "iris-gui/locales/en/dialogs.ftl"
+      },
+      {
+        "added": 7,
+        "deleted": 6,
+        "path": "iris-gui/src/config_ui.rs"
+      },
+      {
+        "added": 29,
+        "deleted": 12,
+        "path": "src/block_node.rs"
+      },
+      {
+        "added": 209,
+        "deleted": 0,
+        "path": "src/block_node/chd_cow.rs"
+      },
+      {
+        "added": 59,
+        "deleted": 2,
+        "path": "src/config.rs"
+      },
+      {
+        "added": 61,
+        "deleted": 3,
+        "path": "src/cow_disk.rs"
+      },
+      {
+        "added": 8,
+        "deleted": 3,
+        "path": "src/cpu/jitv2/codegen.rs"
+      },
+      {
+        "added": 60,
+        "deleted": 48,
+        "path": "src/cpu/jitv2/equiv_test.rs"
+      },
+      {
+        "added": 105,
+        "deleted": 1,
+        "path": "src/cpu/jitv2/jitv2.rs"
+      },
+      {
+        "added": 86,
+        "deleted": 6,
+        "path": "src/cpu/jitv2/pcache.rs"
+      },
+      {
+        "added": 20,
+        "deleted": 0,
+        "path": "src/cpu/mips_cache_shadow.rs"
+      },
+      {
+        "added": 21,
+        "deleted": 18,
+        "path": "src/cpu/mips_exec.rs"
+      },
+      {
+        "added": 29,
+        "deleted": 2,
+        "path": "src/cpu/mips_exec_test.rs"
+      },
+      {
+        "added": 10,
+        "deleted": 10,
+        "path": "src/cpu/mips_tlb.rs"
+      },
+      {
+        "added": 59,
+        "deleted": 9,
+        "path": "src/cpu/mips_tlb_test.rs"
+      },
+      {
+        "added": 23,
+        "deleted": 2,
+        "path": "src/dev/camera_v4l.rs"
+      },
+      {
+        "added": 128,
+        "deleted": 2,
+        "path": "src/dev/ds1x86.rs"
+      },
+      {
+        "added": 33,
+        "deleted": 1,
+        "path": "src/dev/hal2.rs"
+      },
+      {
+        "added": 40,
+        "deleted": 4,
+        "path": "src/dev/mc.rs"
+      },
+      {
+        "added": 2,
+        "deleted": 2,
+        "path": "src/dev/ng1/bt445.rs"
+      },
+      {
+        "added": 4,
+        "deleted": 4,
+        "path": "src/dev/ng1/rex3.rs"
+      },
+      {
+        "added": 12,
+        "deleted": 4,
+        "path": "src/dev/ng1/rex3_flat_fill.rs"
+      },
+      {
+        "added": 27,
+        "deleted": 1,
+        "path": "src/dev/ng1/rex3_generic.rs"
+      },
+      {
+        "added": 36,
+        "deleted": 0,
+        "path": "src/dev/ng1/rex3_jit/compiler.rs"
+      },
+      {
+        "added": 2,
+        "deleted": 2,
+        "path": "src/dev/ng1/rex3_profile.rs"
+      },
+      {
+        "added": 72,
+        "deleted": 0,
+        "path": "src/dev/ng1/rex3_tests.rs"
+      },
+      {
+        "added": 3,
+        "deleted": 3,
+        "path": "src/dev/prom_image.rs"
+      },
+      {
+        "added": 54,
+        "deleted": 2,
+        "path": "src/dev/ps2.rs"
+      },
+      {
+        "added": 100,
+        "deleted": 2,
+        "path": "src/dev/serial_host.rs"
+      },
+      {
+        "added": 97,
+        "deleted": 9,
+        "path": "src/dev/ultra64.rs"
+      },
+      {
+        "added": 54,
+        "deleted": 17,
+        "path": "src/dev/vino.rs"
+      },
+      {
+        "added": 121,
+        "deleted": 0,
+        "path": "src/diagnostics.rs"
+      },
+      {
+        "added": 1,
+        "deleted": 1,
+        "path": "src/disp.rs"
+      },
+      {
+        "added": 54,
+        "deleted": 0,
+        "path": "src/exit_persistence_tests.rs"
+      },
+      {
+        "added": 65,
+        "deleted": 55,
+        "path": "src/gdb_stub.rs"
+      },
+      {
+        "added": 8,
+        "deleted": 1,
+        "path": "src/host_audio.rs"
+      },
+      {
+        "added": 272,
+        "deleted": 0,
+        "path": "src/host_audio/external.rs"
+      },
+      {
+        "added": 2,
+        "deleted": 2,
+        "path": "src/ip22_bus.rs"
+      },
+      {
+        "added": 7,
+        "deleted": 0,
+        "path": "src/ip27_machine.rs"
+      },
+      {
+        "added": 88,
+        "deleted": 11,
+        "path": "src/ip30_machine.rs"
+      },
+      {
+        "added": 7,
+        "deleted": 6,
+        "path": "src/ip32_machine.rs"
+      },
+      {
+        "added": 7,
+        "deleted": 0,
+        "path": "src/ip34_machine.rs"
+      },
+      {
+        "added": 57,
+        "deleted": 1,
+        "path": "src/ip35/serial.rs"
+      },
+      {
+        "added": 8,
+        "deleted": 0,
+        "path": "src/ip35_machine.rs"
+      },
+      {
+        "added": 4,
+        "deleted": 0,
+        "path": "src/ip53_machine.rs"
+      },
+      {
+        "added": 2,
+        "deleted": 0,
+        "path": "src/lib.rs"
+      },
+      {
+        "added": 65,
+        "deleted": 34,
+        "path": "src/machine.rs"
+      },
+      {
+        "added": 31,
+        "deleted": 2,
+        "path": "src/machine_state.rs"
+      },
+      {
+        "added": 2,
+        "deleted": 3,
+        "path": "src/monitor.rs"
+      },
+      {
+        "added": 5,
+        "deleted": 0,
+        "path": "src/net/fwd.rs"
+      },
+      {
+        "added": 49,
+        "deleted": 1,
+        "path": "src/net/link.rs"
+      },
+      {
+        "added": 26,
+        "deleted": 0,
+        "path": "src/net/mod.rs"
+      },
+      {
+        "added": 43,
+        "deleted": 0,
+        "path": "src/net/testnet.rs"
+      },
+      {
+        "added": 16,
+        "deleted": 8,
+        "path": "src/perfetto/mod.rs"
+      },
+      {
+        "added": 699,
+        "deleted": 0,
+        "path": "src/prom_env.rs"
+      },
+      {
+        "added": 56,
+        "deleted": 7,
+        "path": "src/thread_affinity.rs"
+      },
+      {
+        "added": 18,
+        "deleted": 0,
+        "path": "src/validate_config.rs"
+      },
+      {
+        "added": 105,
+        "deleted": 22,
+        "path": "src/vnc/mod.rs"
+      },
+      {
+        "added": 49,
+        "deleted": 8,
+        "path": "src/workstation.rs"
+      }
+    ]
+  },
+  "cleanup_decisions": {
+    "restored_to_upstream": [
+      "src/net/nfsudp.rs",
+      "src/dev/odyssey/pixel_dma.rs",
+      "src/platform_profile_tests.rs"
+    ],
+    "removed": [
+      "tools/embed-prom.py",
+      "clanker/net/nfs-mount-advertise-auth-sys.md"
+    ],
+    "archived": [
+      "clanker/build/xiri-upstream-integration.md",
+      "clanker/build/xiri-upstream-20261113.md",
+      "clanker/perf/sgiemu-register-and-rtc-cache.md"
+    ],
+    "removed_test": "stopping_one_pool_preserves_another_pools_hot_requests",
+    "replacement_test": "a_hot_request_stays_with_its_own_pool",
+    "retained_extra_test": "compile_worker_cannot_take_another_pools_hot_request",
+    "cargo_lock_sha256": "2d1604dcb774aaab799166dee7fb87c259cc118febb559b16dcec4476e1899c4"
+  },
+  "static_checks": {
+    "upstream_exact_files": 3,
+    "jit_change_is_only_duplicate_test_removal": true,
+    "remaining_delta_whitespace_check": "pass",
+    "relative_document_links": "pass",
+    "documents_checked": 10
+  },
+  "validation": {
+    "toolchain": "nightly-2026-10-28",
+    "features": "jitv2",
+    "command_template": "cargo +nightly-2026-10-28 test --locked --offline -p iris --lib --features jitv2 GROUP -- --test-threads=2",
+    "tests": [
+      {
+        "group": "net-nfsudp-tests",
+        "passed": 22,
+        "failed": 0,
+        "ignored": 0,
+        "log": ".work/iris-delta-cleanup/net-nfsudp-tests.log",
+        "sha256": "4840ab4dc740652322af2278908c617ae3138b2f4770de7ff460af39eefc8dc1"
+      },
+      {
+        "group": "cpu-jitv2-jitv2-tests",
+        "passed": 69,
+        "failed": 0,
+        "ignored": 0,
+        "log": ".work/iris-delta-cleanup/cpu-jitv2-jitv2-tests.log",
+        "sha256": "e66d2143519e5e296f68b403e423a1f031e107b35721b20a910b877efb8ab0f5"
+      },
+      {
+        "group": "dev-prom_image-tests",
+        "passed": 11,
+        "failed": 0,
+        "ignored": 0,
+        "log": ".work/iris-delta-cleanup/dev-prom_image-tests.log",
+        "sha256": "0814062e27699f26afc23ac32a3e8d49e8579127f686e508b501c5c58a6da9cc"
+      },
+      {
+        "group": "dev-embedded_prom-tests",
+        "passed": 2,
+        "failed": 0,
+        "ignored": 0,
+        "log": ".work/iris-delta-cleanup/dev-embedded_prom-tests.log",
+        "sha256": "0e9c681fec512ef63badf117880cae988a44e1b4dd3468241b7e0c51db91c82f"
+      },
+      {
+        "group": "platform_profile_tests",
+        "passed": 22,
+        "failed": 0,
+        "ignored": 0,
+        "log": ".work/iris-delta-cleanup/platform_profile_tests.log",
+        "sha256": "1841adc87920cf329acb67c1fadbbebd28e729063a0b6246cf18d77fb1d5a8ed"
+      },
+      {
+        "group": "validate_config-tests",
+        "passed": 8,
+        "failed": 0,
+        "ignored": 0,
+        "log": ".work/iris-delta-cleanup/validate_config-tests.log",
+        "sha256": "4bcd4234a93aa48c46006df6bfb9b586766b87ba3fabf54d1dc6fe5c7a001852"
+      }
+    ],
+    "total_passed": 134,
+    "test_script_sha256": "2519426fe3215768af3dc34edbfdb36a8ecdc6d7383a90c74ba70c3ddeb7c2c0",
+    "guest_os_boots": 0,
+    "api_changes": false
+  },
+  "cleanup": {
+    "status": "complete",
+    "removed_paths": [
+      ".work/iris-delta-cleanup/iris",
+      ".work/iris-delta-cleanup/target",
+      ".work/iris-delta-cleanup/tmp"
+    ],
+    "removed_allocated_bytes": 1002233856,
+    "removed_gib": 0.933,
+    "retained_evidence_allocated_bytes": 110592,
+    "temporary_branch_removed": true,
+    "active_owned_processes": 0,
+    "guest_os_instances_started": 0,
+    "pinned_worktrees_preserved": true,
+    "manual_chd_unchanged": true
+  },
+  "pushed_to": "origin/xiri"
+}

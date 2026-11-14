@@ -36,11 +36,30 @@ Within these two forks, the default branches are not development targets for
 Xiri changes. The separate `salvogendut/xiri` lab/documentation repository
 continues on `main`; it is not one of the two forks in this table.
 
+When upstream supplies an equivalent feature, use its implementation and remove
+the redundant fork code, tooling and documentation. Compare behavior and tests
+before removal: a frontend adapter or an additional regression may still be
+needed even after the underlying feature is upstream. Keep integration journals
+in this repository, and keep the remaining IRIS patches small enough to propose
+individually upstream. Use forward cleanup commits without rewriting shared
+history. The [first delta audit](results/2026-11-14-iris-delta-cleanup.md) records
+the replacements and the remaining patch groups.
+
 Use separate build output paths for a new source tree or architecture, and
 keep kernel builds sequential with at most two jobs. Branch consolidation does
 not repin qualified kernels, emulator binaries, runtime resources or guest disks.
 
 ## IRIS upstream updates
+
+The November 14 delta-cleanup cycle checks upstream `49210388`, already included
+in `xiri`, and removes redundant NFS changes, a duplicate JIT queue regression,
+obsolete PROM-array tooling and historical integration notes. The remaining
+NetBSD fixes and Prismatic interfaces are retained. Cleanup `7c4552a6` is pushed
+on IRIS `xiri`: 134 focused tests pass, the diff falls from 104 paths to 96,
+and 0.93 GiB of temporary worktree/build output is removed. See the
+[cleanup result](results/2026-11-14-iris-delta-cleanup.md) and
+[validation ledger](results/2026-11-14-iris-delta-cleanup.json) for final pins,
+size comparisons and cleanup. The manual image retains qualified IRIS `819c682`.
 
 The November 14 desktop-controls cycle integrates five more upstream commits
 through `49210388ed5559667d7859dd46103b42b07d3fed` as

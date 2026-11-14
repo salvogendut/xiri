@@ -190,7 +190,8 @@ This repository holds the native [service/session runtime](runtime/README.md),
 Xiri workflow, probes, resource manifests and
 documentation. See the [fork workflow](docs/FORKS.md) for integration rules
 and the [image guide](docs/XIRI-IMAGE.md) for matching Prismatic's IRIS backend
-to a qualified desktop image.
+to a qualified desktop image. The [IRIS delta audit](docs/results/2026-11-14-iris-delta-cleanup.md)
+tracks upstream replacements and the remaining candidates for focused upstream PRs.
 
 ## Run the current image
 
