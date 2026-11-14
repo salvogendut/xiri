@@ -7,12 +7,12 @@ Our reference is **IRIX 6.5.22m**. Other releases and physical hardware need
 separate qualification.
 
 The current desktop runs original 4Dwm, Toolchest, Icon Catalog, File Manager,
-winterm and xclock. It has SGI fonts, the granite backdrop, desktop icons,
-catalog launches and running-icon feedback. Native NetBSD Xorg drives a
+winterm, xclock and Desks Overview. It has SGI fonts, the granite backdrop,
+desktop icons, catalog launches and running-icon feedback. Native NetBSD Xorg drives a
 1280×1024 accelerated Newport display. It retains the xmahjongg texture
 correction qualified by the earlier [rendering and interaction checks](docs/results/2026-11-03-newport-xmahjongg.md).
 
-The [current manual CHD](docs/results/2026-11-13-dragdrop.md#manual-image) boots into native
+The [current manual CHD](docs/results/2026-11-13-desks.md#manual-image) boots into native
 NetBSD xdm. Use **xiritest** / **xiritest** or **xiritest2** / **xiritest2** for
 separate IRIX desktops, or **netbsdtest** / **netbsdtest** for standard NetBSD ctwm.
 `netbsdtest` belongs to `wheel` and can run `su -` for a root login shell;
@@ -33,6 +33,8 @@ explains **Save Windows & Desks**, automatic and explicit saves, and profile
 backups. Xmahjongg has no default autostart entry.
 The [window and desk guide](docs/IRIX-WINDOWS.md) covers original window
 controls, click-to-focus keyboard navigation and **Desktop → Extra Desks**.
+The [windows/desks checks](docs/results/2026-11-13-desks.md) pass separate users,
+saved geometry and active-desktop reboot on the new CHD.
 The [File Manager cycle](docs/results/2026-11-13-file-manager.md) adds local
 create, rename, copy, move, discard, recovery and emptying under both users.
 Its module passes 720 paired filesystem checks against IRIX. The

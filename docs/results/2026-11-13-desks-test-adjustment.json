@@ -1,0 +1,19 @@
+{
+  "status": "probe-assertion-corrected",
+  "run_directory": ".work/windows-desks/qualified-3_k7xprf",
+  "error": "AssertionError()",
+  "checkpoint": "first-layout-saved",
+  "cause": "The reader expected one space after room; the original file uses aligned columns. The saved Desk 2 block is present.",
+  "saved_profile": {
+    "user": "xiritest",
+    "files": {
+      "4Dwmsession": "application \"IconCatalog_IconCatalog-Desk 1\" {\n   command          \"/usr/sbin/iconcatalog Alias \"\n   launchTime       \"login\"\n   screen           \"0\"\n}\napplication \"DesksOverview_Overview-Desk 1\" {\n   command          \"/usr/sbin/ov \"\n   launchTime       \"login\"\n   screen           \"0\"\n}\napplication \"winterm_XWsh-Desk 1\" {\n   command          \"/emul/irix/usr/sbin/xwsh -name winterm -name winterm -title winterm -name winterm -geometry 80x24+10+180 -e /usr/libexec/xiri-shell \"\n   launchTime       \"login\"\n   screen           \"0\"\n   iconx            \"204\"\n   icony            \"10\"\n}\napplication \"xconsole_XConsole-Desk 1\" {\n   command          \"xconsole -geometry 480x130-0-0 -daemon -notify -verbose -fn fixed -exitOnFail \"\n   launchTime       \"login\"\n   screen           \"0\"\n   iconx            \"10\"\n   icony            \"10\"\n}\napplication \"xclock_XClock-Desk 1\" {\n   command          \"/emul/irix/usr/bin/X11/xclock -display 127.0.0.1:0 -update 1 -geometry 180x180+820+20 -bg gray -fg black -bd black -hd black -hl black \"\n   launchTime       \"login\"\n   screen           \"0\"\n}\napplication \"toolchest_Toolchest-Desk 1\" {\n   launchTime       \"login\"\n   wmClass          \"Toolchest\"\n   screen           \"0\"\n}\n",
+      "4Dwmdesks": "application  \"xconsole_XConsole-Desk 1\" [ hidden  =480x130+792+886         ]\napplication  \"xclock_XClock-Desk 1\" [ hidden  =180x180+820+32          ]\napplication  \"toolchest_Toolchest-Desk 1\" [ open    =103x158+10+26           ] InAllRooms\napplication  \"winterm_XWsh-Desk 1\" [ hidden  =903x480+10+180          ]\napplication  \"IconCatalog_IconCatalog-Desk 1\" [ hidden  =900x500+372+450         ]\napplication  \"DesksOverview_Overview-Desk 1\" [ open    =501x260+30+700          ] InAllRooms\nroom         \"Global\"          visible\nroom         \"Desk 1\"          visible {\n             \"IconCatalog_IconCatalog-Desk 1\" [ open    =900x500+372+450         ]\n             \"xconsole_XConsole-Desk 1\" [ iconic  =480x130+792+886         ]\n             \"winterm_XWsh-Desk 1\" [ open    =914x500+11+181          ]\n}\nroom         \"Desk 2\"          visible {\n             \"xclock_XClock-Desk 1\" [ open    =180x180+770+332         ]\n}\n",
+      "4Dwmdeskname": "\"Desk 2\"\n"
+    },
+    "metadata": "/usr/people/xiritest|1234|1234|700\n/usr/people/xiritest/.desktop-127.0.0.1/0.0/4Dwmdeskname|1234|1234|600\n/usr/people/xiritest/.desktop-127.0.0.1/0.0/4Dwmdesks|1234|1234|600\n/usr/people/xiritest/.desktop-127.0.0.1/0.0/4Dwmsession|1234|1234|600\n"
+  },
+  "clean_shutdown": true,
+  "base_unchanged": true,
+  "probe_sha256": "b8401197bb646fda6e5a59b737b6fd193cc56738253f34e04ad21babdc166f04"
+}

@@ -1,9 +1,19 @@
-# Development history through 2026-11-13
+# Development history through 2026-11-14
 
 This is the former README, retained as a chronological evidence index. Its
 status statements describe individual checkpoints and may be superseded by
 later entries. Use the [current README](../README.md), [development guide](DEVELOPMENT.md)
 and [selected image](../lab/irix-installed-desktop/image.json) for current work.
+
+The [November 13 windows/desks cycle](results/2026-11-13-desks.md) restores
+original Desks Overview by importing its missing executable. Title-bar and
+keyboard controls, desk creation/transfer, separate users and layout/focus
+restoration after login and orderly reboot pass on the fresh CHD. The full
+xdm/4Dwm/ctwm gate also passes, including 345 text comparisons and three
+winterm checks. The image is selected for manual testing; all existing
+installed-file hashes are unchanged. Both fork sources and the qualified
+emulator remain unchanged. Failed probe/preparation attempts are recorded
+separately, and disposable media are retired after the replacement passes.
 
 The [November 13 drag-and-drop cycle](results/2026-11-13-dragdrop.md) adds a
 native per-user adapter between SGI file icons and XDND URI lists, and fixes

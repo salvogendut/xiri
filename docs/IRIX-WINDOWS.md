@@ -5,6 +5,10 @@ Overview**. The older images omitted its executable even though the menu,
 resources and libraries were present. The new resource package adds
 `/usr/sbin/ov` at `/emul/irix/usr/sbin/ov`; it does not replace 4Dwm or its menus.
 
+The [cold-image checks](results/2026-11-13-desks.md) cover the controls below,
+two users' separate desks, saved window geometry and restoration after logout
+and orderly reboot. Additional Overview commands remain outside that check.
+
 ## Window controls
 
 The small title-bar button minimizes a window; click its minimized icon to

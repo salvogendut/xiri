@@ -1,6 +1,6 @@
 # Xiri execution roadmap
 
-Status: updated 2026-11-13. The current image runs the original 4Dwm desktop,
+Status: updated 2026-11-14. The current image runs the original 4Dwm desktop,
 Toolchest, Icon Catalog, File Manager, winterm and xclock on NetBSD/Xorg with
 accelerated Newport. Catalog launching, running-icon feedback, backdrop,
 desktop icons and logout pass bounded checks; the latest xmahjongg texture
@@ -46,6 +46,13 @@ checks under both users, a running GIMP PNG drop, cancellation and source
 preservation, plus full desktop qualification with 345 text comparisons and
 three winterm checks. The preceding document cycle separately qualifies
 per-user editor settings and native application-icon drops.
+
+The [windows/desks cycle](results/2026-11-13-desks.md) adds the missing original
+Desks Overview executable behind **Desktop → Extra Desks**. Fresh-CHD checks
+pass title-bar and keyboard controls, desk creation and window transfer,
+separate users, saved geometry, and active-desktop reboot. Click-to-focus
+enables forward/reverse keyboard navigation; pointer focus retains its
+original behavior. See the [window and desk guide](IRIX-WINDOWS.md).
 
 The agreed target remains the full original IRIX desktop on NetBSD and X.org,
 with modern software running natively. The [repository/workflow cleanup](results/2026-11-03-workflow-cleanup.md) is
@@ -457,7 +464,7 @@ Decision gate: if the display or desktop exposes a major feasibility obstacle, d
 - [x] Resolve [4Dwm’s fixed/local GL mapping](results/2026-11-01-irix-mmap-local.md): 660 cases, 30 controls and 32 native page-zero checks.
 - [x] Provide [measured PRDA process data](results/2026-11-01-irix-prda.md): 80 executions / 180 records, fork COW/PID updates, exec reset, damaged-state policy and native-exec controls.
 - [x] Demonstrate [4Dwm window interaction and a combined shell session](results/2026-11-01-irix-4dwm.md): real reparenting, pointer focus, key delivery, dragging and typed winterm commands alongside Toolchest. Session saving was disabled at that checkpoint; the November 6 cycle enables it.
-- [ ] Resolve remaining 4Dwm session file/service dependencies and feature queries, then qualify broader menus, minimize/maximize, desks and restoration. Preserve the qualified terminal resize/exit and both desktop logout routes.
+- [ ] Resolve remaining 4Dwm feature queries and qualify broader menus, desk rename/delete and additional window states. The [windows/desks cycle](results/2026-11-13-desks.md) covers minimize/maximize, keyboard controls, desk transfer and restoration across login/reboot. Preserve the qualified terminal resize/exit and both desktop logout routes.
 - [x] Capture the [actual libXmu mapping failure](results/2026-10-31-irix-xclock-elfmap.md): unchanged libXmu headers request two addresses already occupied by libXaw text, and the mapper returns ENOMEM. Native breakpoint controls and clean shutdown pass.
 - [x] Add [bounded collision relocation](results/2026-10-31-irix-elfmap-relocation.md): 576 mapper/limit checks, both ABIs, unchanged headers, alignment/gap/sentinel checks, and eight original analog/digital xclock windows. The later subpage checkpoint separately qualifies 4Dwm's 4 KiB data boundaries.
 - [x] Measure and implement [time/gettimeofday](results/2026-11-01-irix-time.md): 192 original records, 480 native records and 44 controls. Eight bounded original analog/digital xclock launches show current UTC time, advance and redraw; PNGs are retained. Longer sessions and timezone/DST remain follow-ups.
@@ -544,8 +551,9 @@ dependency candidates; a visible window alone does not complete these checks.
 - [x] Restore separate users' backdrop, colour scheme, focus and window-movement preferences across logout/login and reboot. [Preference result](results/2026-11-06-desktop-preferences.md).
 - [x] Resolve SGI-prefixed colour names through Xlib's per-session database and qualify the original Solid backdrop picker in X11 mode. [Colour result](results/2026-11-06-desktop-colours.md): 142 aliases and two users' saved colours across logout/login and reboot.
 - [ ] Compare the reopened Background chooser's initial swatch with original IRIX; the capture starts from template blue while the desktop correctly restores its custom colour. Qualify GL mode and exact native RGB allocation/display fidelity separately; Background currently uses its X11 controls.
-- [ ] Complete file navigation, desktop updates, remaining window operations and other preference panels.
-- [x] Repeat logout and login, checking process cleanup and restoration of tested clients and layout. The [saved-session cycle](results/2026-11-06-desktop-sessions.md) covers continuous/explicit modes and separate users; arbitrary applications and additional desks remain open.
+- [x] Qualify minimize/maximize/restore, keyboard move/resize/cancel and focus navigation, desk creation/switching/window transfer, and two users' layouts across login and orderly reboot. See the [windows/desks cycle](results/2026-11-13-desks.md).
+- [ ] Complete file-operation edge cases, desktop updates, other preference panels, desk rename/delete and additional window-state combinations.
+- [x] Repeat logout and login, checking process cleanup and restoration of tested clients and layout. The [saved-session cycle](results/2026-11-06-desktop-sessions.md) covers continuous/explicit modes and separate users; the [windows/desks cycle](results/2026-11-13-desks.md) adds two-desk layouts and reboot. Arbitrary application restoration remains open.
 - [x] Qualify the development session's graphical console login, repeated desktop start, both logout menus and client/service cleanup. [Usability result](results/2026-11-02-desktop-usability.md); saved-session support follows in the November 6 cycle.
 - [ ] Compare behavior with the reference installation and list component-level differences.
 - [ ] Qualify later IRIX releases separately from the current **6.5.22 / 6.5.22m** reference. Retain release-specific image/resource pins and behavior results; record differences as they are encountered.

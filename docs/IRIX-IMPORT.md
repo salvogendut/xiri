@@ -98,9 +98,10 @@ part of the installed payload or the successful catalog-launch demonstration.
 | `/usr/freeware/share/xmahjongg` | `/emul/irix/usr/freeware/share/xmahjongg` | Its 33 game-data files |
 | xmahjongg's catalog link, installed `.ftr`, two `.fti` icons and `/usr/lib/images/XMahjongg.icon` | Corresponding paths beneath `/emul/irix` | Existing Freeware integration, copied with the program |
 
-The current copied payload contains 1,951 unique paths and 238,745,814
+The original installed-application payload contains 1,951 unique paths and 238,745,814
 regular-file bytes, in addition to earlier runtime resources and native font
-copies. The ledger describes the combined baseline, not just this new tar.
+copies. The ledger describes that combined baseline; the supplementary ledgers above
+record later additions.
 Original absolute catalog links are retained: foreign pathname lookup
 resolves them through the emulation root. Host extraction records these
 links as metadata and never follows them into the host filesystem.

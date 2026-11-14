@@ -156,7 +156,7 @@ retained; untested behavior is not promoted to a pass.
 | `utilities` | `/usr/sbin/dtUtilities` | **Window observed.** Default Viewer & Editor Utilities. Use and normal exit remain untested. |
 | `videopanel` | `/usr/sbin/videopanel` | **Window observed.** vcp. Use and normal exit remain untested. |
 | `webcontrol` | `/root/usr/sbin/webcontrol` | Unresolved target in the original source inventory; no launch attempted. |
-| `windows` | `/usr/sbin/windows` | **Focus/movement preferences pass.** Click-to-focus with opaque dragging and point-to-focus with outline dragging survive logout/login and reboot. Native pointer events verify actual behavior. Application-session saving/restoration remains disabled. [Desktop preferences](results/2026-11-06-desktop-preferences.md). |
+| `windows` | `/usr/sbin/windows` | **Focus/movement preferences pass.** Click-to-focus with opaque dragging and point-to-focus with outline dragging survive logout/login and reboot. Native pointer events verify actual behavior. Continuous and explicit application-session saves are qualified separately; the [windows/desks cycle](results/2026-11-13-desks.md) also checks focus navigation and two-desk restoration. [Desktop preferences](results/2026-11-06-desktop-preferences.md), [saved sessions](results/2026-11-06-desktop-sessions.md). |
 
 ## Demos (2)
 

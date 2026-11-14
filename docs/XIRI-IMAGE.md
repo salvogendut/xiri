@@ -8,7 +8,12 @@ older reproduction checkpoints. Automated checks never promote their result
 or replace the manual bundle's NVRAM/overlay state.
 
 The current accelerated xdm bundle is
-`.work/images/xiri-netbsd-desktop-20261113-dragdrop/`.
+`.work/images/xiri-netbsd-desktop-20261113-desks/`.
+The [windows/desks update](results/2026-11-13-desks.md) adds original Desks
+Overview behind **Desktop → Extra Desks**. Window controls, desk transfer,
+two users' separate layouts and restoration after login/reboot pass focused
+cold-image checks. The full xdm/4Dwm/ctwm gate also passes. See the
+[window and desk guide](IRIX-WINDOWS.md) for controls and focus policy.
 The [document update](results/2026-11-13-documents.md) restores per-user
 editor/viewer choices and native application-icon actions. The
 [drag-and-drop update](results/2026-11-13-dragdrop.md) fixes gedit's icon
@@ -33,9 +38,9 @@ The [full IRIS upstream merge](FORKS.md#iris-upstream-updates) is separately
 qualified; this image still includes its pinned `819c682` emulator.
 Xmahjongg has no default autostart; a saved session can include it.
 The preceding qualified bundles and their manual state remain available.
-`netbsd-xiri.chd` is an 8 GiB NetBSD disk compressed to 497,914,935 bytes
+`netbsd-xiri.chd` is an 8 GiB NetBSD disk compressed to 497,999,132 bytes
 (about 475 MiB). Its SHA256 is
-`8899510d4a5dcced6365cf3a827de30f80805ee85e210b6c5a9e5d408f68f654`.
+`a07487e5b02db4c2ba9b657d81feb46b659c1b9ffa10e5da1410b2f8f733e084`.
 The earlier [cleanup candidate](results/2026-11-05-cleanup-image.md) and its
 96 MiB pressure observations remain recorded separately.
 The [native paging follow-up](results/2026-11-05-native-paging.md) records the
@@ -160,7 +165,7 @@ The Xiri fork hooks are still required.
 Launch the qualified bundle directly:
 
 ```sh
-/var/home/salvogendut/Dev/xiri/.work/images/xiri-netbsd-desktop-20261113-dragdrop/run-iris.sh
+/var/home/salvogendut/Dev/xiri/.work/images/xiri-netbsd-desktop-20261113-desks/run-iris.sh
 ```
 
 It boots automatically to native NetBSD xdm. Use these public development
@@ -226,7 +231,7 @@ repeated. Add `--jobs` to include
 them in a later run. `./xiri check` selects the current image's gates automatically:
 
 ```sh
-python3 scripts/probe-xiri-xdm.py --bundle .work/images/xiri-netbsd-desktop-20261113-dragdrop --multiuser --winterm --fonts --colours
+python3 scripts/probe-xiri-xdm.py --bundle .work/images/xiri-netbsd-desktop-20261113-desks --multiuser --winterm --fonts --colours
 ```
 
 For root's manual fallback, stop xdm with `/etc/rc.d/xdm stop`, then run
@@ -527,7 +532,7 @@ For the current bundle, the explicit command is:
 
 ```sh
 python3 scripts/probe-xiri-xdm.py \
-  --bundle .work/images/xiri-netbsd-desktop-20261113-dragdrop \
+  --bundle .work/images/xiri-netbsd-desktop-20261113-desks \
   --multiuser --winterm --fonts --colours
 ```
 

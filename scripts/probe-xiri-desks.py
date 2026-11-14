@@ -20,7 +20,8 @@ class Suite(documents.Suite):
         self.g.wait_for('xwininfo -root -tree | grep \'"winterm"\' >/dev/null',120)
 
     def snapshot(self, label, actions=''):
-        command = (actions+'; sleep 1; ' if actions else '')+'/tmp/windows list'
+        # A failed gesture must not be hidden by the succeeding observation.
+        command = '(set -e; '+(actions+'; sleep 1; ' if actions else '')+'/tmp/windows list)'
         text = self.read(command)
         state = json.loads(text)
         self.r.setdefault('states', {})[label] = state
@@ -170,7 +171,7 @@ class Suite(documents.Suite):
         self.logout('first-layout-saved')
         saved=self.profile('xiritest','first-logout')
         assert saved['4Dwmdeskname'].strip()=='"Desk 2"'
-        assert 'room "Desk 2"' in saved['4Dwmdesks']
+        assert re.search(r'^room\s+"Desk 2"\s+visible\s*\{',saved['4Dwmdesks'],re.M)
         self.login('xiritest')
         assert self.layout('restored-after-login',True)==original
         self.switch(False)

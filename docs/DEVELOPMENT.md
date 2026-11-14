@@ -346,6 +346,9 @@ then replaced the raw seed only after the new CHD passed qualification. The
 [File Manager cleanup ledger](results/2026-11-13-file-manager-cleanup.json)
 records the same checkpoint policy for the following cycle, including
 interrupted-run evidence and replacement of the selected raw seed.
+The [windows/desks cleanup ledger](results/2026-11-13-desks-cleanup.json)
+records the latest stopped guest groups and retired media after both focused
+and full xdm checks passed. The selected image keeps one verified raw seed.
 
 Historical result paths describe the original run and may now name retired
 disk caches. Use `./xiri seed` for the selected image, or materialize an older

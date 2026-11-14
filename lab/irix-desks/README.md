@@ -36,3 +36,5 @@ host namespace. The normal harness owns and terminates its own guests.
 
 The [user guide](../../docs/IRIX-WINDOWS.md) describes controls and limits.
 An ordinary launch or visible window alone is not a functional pass.
+The [qualification](../../docs/results/2026-11-13-desks.md) retains the
+diagnostic and cold-CHD evidence, including the corrected whitespace assertion.

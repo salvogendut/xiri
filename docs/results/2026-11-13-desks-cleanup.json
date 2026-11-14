@@ -1,0 +1,129 @@
+{
+  "status": "cleaned",
+  "stopped_groups": [
+    {
+      "directory": ".work/windows-desks/qualified-5mszqmun",
+      "process_group": 3489291,
+      "stopped": true
+    },
+    {
+      "directory": ".work/irix-xdm/runs/ordinary-ns_fb_3q",
+      "process_group": 3484596,
+      "stopped": true
+    },
+    {
+      "directory": ".work/xdm-image/prepare/ordinary-dnr1b2r3",
+      "process_group": 3473382,
+      "stopped": true
+    },
+    {
+      "directory": ".work/windows-desks/qualified-3_k7xprf",
+      "process_group": 3484626,
+      "stopped": true
+    }
+  ],
+  "files": [
+    {
+      "path": ".work/windows-desks/qualified-5mszqmun/disk.chd",
+      "logical_bytes": 497999132,
+      "allocated_bytes": 497999872
+    },
+    {
+      "path": ".work/windows-desks/qualified-5mszqmun/disk.chd.diff.chd",
+      "logical_bytes": 8994816,
+      "allocated_bytes": 8994816
+    },
+    {
+      "path": ".work/windows-desks/qualified-5mszqmun/probe.iso",
+      "logical_bytes": 399360,
+      "allocated_bytes": 401408
+    },
+    {
+      "path": ".work/irix-xdm/runs/ordinary-ns_fb_3q/disk.chd",
+      "logical_bytes": 497999132,
+      "allocated_bytes": 497999872
+    },
+    {
+      "path": ".work/irix-xdm/runs/ordinary-ns_fb_3q/disk.chd.diff.chd",
+      "logical_bytes": 15171584,
+      "allocated_bytes": 15171584
+    },
+    {
+      "path": ".work/irix-xdm/runs/ordinary-ns_fb_3q/probe.iso",
+      "logical_bytes": 985088,
+      "allocated_bytes": 987136
+    },
+    {
+      "path": ".work/xdm-image/prepare/ordinary-dnr1b2r3/probe.iso",
+      "logical_bytes": 2115584,
+      "allocated_bytes": 2117632
+    },
+    {
+      "path": ".work/windows-desks/qualified-3_k7xprf/disk.chd",
+      "logical_bytes": 497999132,
+      "allocated_bytes": 497999872
+    },
+    {
+      "path": ".work/windows-desks/qualified-3_k7xprf/disk.chd.diff.chd",
+      "logical_bytes": 6668288,
+      "allocated_bytes": 6668288
+    },
+    {
+      "path": ".work/windows-desks/qualified-3_k7xprf/probe.iso",
+      "logical_bytes": 399360,
+      "allocated_bytes": 401408
+    },
+    {
+      "path": ".work/images/xiri-netbsd-desktop-20261113-desks/verification/roundtrip.raw",
+      "logical_bytes": 8589934592,
+      "allocated_bytes": 8589934592
+    },
+    {
+      "path": ".work/xdm-image/prepare/ordinary-nqvkgvlj/disk.raw",
+      "logical_bytes": 8589934592,
+      "allocated_bytes": 8589934592
+    },
+    {
+      "path": ".work/windows-desks/ordinary-a2a5njnn/disk.chd",
+      "logical_bytes": 497914935,
+      "allocated_bytes": 497917952
+    },
+    {
+      "path": ".work/windows-desks/ordinary-a2a5njnn/disk.chd.diff.chd",
+      "logical_bytes": 16842752,
+      "allocated_bytes": 16842752
+    },
+    {
+      "path": ".work/windows-desks/ordinary-a2a5njnn/probe.iso",
+      "logical_bytes": 385024,
+      "allocated_bytes": 385024
+    },
+    {
+      "path": ".work/xdm-image/prepare/ordinary-n_wounm3/disk.raw",
+      "logical_bytes": 8589934592,
+      "allocated_bytes": 8589934592
+    },
+    {
+      "path": ".work/xdm-image/prepare/ordinary-n_wounm3/probe.iso",
+      "logical_bytes": 2115584,
+      "allocated_bytes": 2117632
+    }
+  ],
+  "logical_bytes": 27815793547,
+  "allocated_bytes": 27815809024,
+  "filesystem_available_before": 488651513856,
+  "filesystem_available_after": 488689926144,
+  "filesystem_available_delta": 38412288,
+  "earlier_cleanup_interval": {
+    "phase": "stopped diagnostic and interrupted preparation",
+    "note": "Allocated file bytes can include reflink-shared extents. Concurrent preparation also affects free-space delta.",
+    "filesystem_available_delta_bytes": 19709952
+  },
+  "note": "Allocated bytes may include reflink-shared extents; filesystem deltas also reflect concurrent activity.",
+  "preserved": [
+    "qualified desks CHD",
+    "previous qualified CHDs and their manual overlays/NVRAM",
+    "one current raw seed",
+    "build pins, source, logs, reports and PNG evidence"
+  ]
+}
