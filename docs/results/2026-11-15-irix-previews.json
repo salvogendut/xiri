@@ -1,0 +1,150 @@
+{
+  "schema": 1,
+  "date": "2026-11-15",
+  "validation": "CHD integrity, input/output pins, source preservation, TOML configuration, launcher syntax; no new emulator boot",
+  "bundles": [
+    {
+      "bundle": ".work/images/xiri-irix-6.5.22f-r4400-20261115",
+      "manifest": {
+        "schema": 1,
+        "status": "packaged-from-qualified-state",
+        "profile": "irix-6.5.22f-v1",
+        "source_result_sha256": "630f0964903db660e433b2837b2c37d7dce491b43083bdd7c4383c8dfa365479",
+        "source_inputs": {
+          "/var/home/salvogendut/Dev/xiri/.work/irix-6.5.22-r4400-final/disk.chd": "61f9b9883303470b68877083547d203bf3b177fe4ccb93136096ee9ed770611d",
+          "/var/home/salvogendut/Dev/xiri/.work/irix-6.5.22-r4400-final/disk.chd.diff.chd": "bd0fba76f607fc90b1a2c3cd0f3a5bbd5ab11b48938a430b96ef0f8d0ad40800",
+          "/var/home/salvogendut/Dev/xiri/.work/irix-6.5.22-r4400-final/result.json": "630f0964903db660e433b2837b2c37d7dce491b43083bdd7c4383c8dfa365479"
+        },
+        "chd_sha256": "d596318f1f84c6628b6e46e58b8e7669349b8db504bde8c2b3ff7cc11c4cb7fe",
+        "chd_bytes": 458355467,
+        "emulated_cpu": "r4400",
+        "emulated_cache": "auto",
+        "effective_emulator": {
+          "schema": 1,
+          "source_revision": "819c6825504d40ad9f9aa00554249affd2da9446",
+          "iris_sha256": "3dd9299d71f1899ff5a8c9b76f6a24752d19e4f9a0bcfe0edf3a29001dc9c49e",
+          "ci_sha256": "2543b1fae0b442516c40c9d9155eebc9f9569561146b4f62948171fe7eb5c7f3"
+        },
+        "effective_module": {
+          "path": "/stand/sgimips/11.99.9/modules/compat_irix_o32/compat_irix_o32.kmod",
+          "sha256": "76fb780ab2639b2f43bdba8162a890a73b5e6384ab72a36e84d59572197b44a3",
+          "modstat": "compat_irix_o32            exec     filesys  -        0       - exec_elf32,compat_netbsd32\n",
+          "securelevel": 1
+        },
+        "nvram_sha256": "1e8ed23eff95eba9f3502377579ad2001fffd9d0214680720bcb2fd2d904b3d7",
+        "config_sha256": "079e7b0117aa858bbb932bfb28f14a19d041118d0d219d9582d21e601b11dff1",
+        "launcher_sha256": "43a356b8ac7a36494729d316f6cfe75a5dc334cb77ec16fab3ccf68f6fdeef9d",
+        "packager_sha256": "66c23e76b788fbc86a82890d319f3715e21ed030d282119a2020cfba6a29c162",
+        "chdman_sha256": "dd041d352df804717aa24d881bcba644d69e20de0d7dbdf0458547c0901551e9",
+        "commands": [
+          [
+            "/usr/bin/chdman",
+            "copy",
+            "-i",
+            "/var/home/salvogendut/Dev/xiri/.work/irix-6.5.22-r4400-final/disk.chd.diff.chd",
+            "-ip",
+            "/var/home/salvogendut/Dev/xiri/.work/irix-6.5.22-r4400-final/disk.chd",
+            "-o",
+            "/var/home/salvogendut/Dev/xiri/.work/images/xiri-irix-6.5.22f-r4400-20261115/netbsd-xiri.chd",
+            "-c",
+            "zlib",
+            "-np",
+            "2"
+          ],
+          [
+            "/usr/bin/chdman",
+            "verify",
+            "-i",
+            "/var/home/salvogendut/Dev/xiri/.work/images/xiri-irix-6.5.22f-r4400-20261115/netbsd-xiri.chd"
+          ],
+          [
+            "/usr/bin/chdman",
+            "info",
+            "-i",
+            "/var/home/salvogendut/Dev/xiri/.work/images/xiri-irix-6.5.22f-r4400-20261115/netbsd-xiri.chd"
+          ]
+        ],
+        "validation": "CHD merge and integrity verification; desktop acceptance is the copied source result, not a new boot of this bundle."
+      }
+    },
+    {
+      "bundle": ".work/images/xiri-irix-6.5.30f-r5000-20261115",
+      "manifest": {
+        "schema": 1,
+        "status": "packaged-from-qualified-state",
+        "profile": "irix-6.5.30f-v1",
+        "source_result_sha256": "9d6d73046a833058fa65b73b174e5373049d73435d11066e88a69fcca2d4976c",
+        "source_inputs": {
+          "/var/home/salvogendut/Dev/xiri/.work/irix-6.5.30-r5000-desktop/disk.chd": "61f9b9883303470b68877083547d203bf3b177fe4ccb93136096ee9ed770611d",
+          "/var/home/salvogendut/Dev/xiri/.work/irix-6.5.30-r5000-desktop/disk.chd.diff.chd": "3a7f22a899dd1873444529cbc3c71b9cbe1f774e918f05632df07d24a8a23397",
+          "/var/home/salvogendut/Dev/xiri/.work/irix-6.5.30-r5000-desktop/result.json": "9d6d73046a833058fa65b73b174e5373049d73435d11066e88a69fcca2d4976c"
+        },
+        "chd_sha256": "b1bf09e4281d9666359b40c9ded755a07675bdd9fb38dbe0843740d44e38b6c7",
+        "chd_bytes": 485226829,
+        "emulated_cpu": "r5000",
+        "emulated_cache": "shadow",
+        "effective_emulator": {
+          "schema": 1,
+          "source_revision": "7d46498bf1fbf3acf53f1619413e3c5eaeb5d27b",
+          "source_status": "",
+          "iris_sha256": "fdfa909b39c33009a4a4b1669caa4160b5d6bcef317f088c650fa61ccdab9cc9",
+          "ci_sha256": "917e04f7b3fbf163906dcf19a7dde14d10eb5ee6ff95e4779571b4142ffa9253",
+          "toolchain": "nightly-2026-10-28",
+          "features": "default (tlbvmap)",
+          "profile": "release; lto=false, codegen-units=16, debug=0",
+          "source_files": {
+            "src/cpu/mips_core.rs": "f277a968e463b5a9f4728ed44ca47fab218fe66fa58e6bd410c7a7625e96dc93",
+            "src/cpu/mips_exec_test.rs": "385a09a546d1b7efd262d90e4d3b2775be7c98a3066476554586e67acf885a42",
+            "Cargo.lock": "2d1604dcb774aaab799166dee7fb87c259cc118febb559b16dcec4476e1899c4"
+          },
+          "regressions": {
+            "before": "new Config write test fails: cleared IB/DB",
+            "after": "190 executor tests pass"
+          },
+          "native_r5000_boot_after_fix": "not run; user selected O2/R10000 trial",
+          "manifest_sha256": "0c73b64ae6f1eaca43a050df7801267c966c8f35321e6ea849ccac0b3f92bbb3"
+        },
+        "effective_module": {
+          "path": "/stand/sgimips/11.99.9/modules/compat_irix_o32/compat_irix_o32.kmod",
+          "sha256": "76fb780ab2639b2f43bdba8162a890a73b5e6384ab72a36e84d59572197b44a3",
+          "modstat": "compat_irix_o32            exec     filesys  -        0       - exec_elf32,compat_netbsd32\n",
+          "securelevel": 1
+        },
+        "nvram_sha256": "1e8ed23eff95eba9f3502377579ad2001fffd9d0214680720bcb2fd2d904b3d7",
+        "config_sha256": "f323738a2eeb70da2da3a301e4f342a1e8ed94d014838c39e99988c1c73060cb",
+        "launcher_sha256": "43a356b8ac7a36494729d316f6cfe75a5dc334cb77ec16fab3ccf68f6fdeef9d",
+        "packager_sha256": "66c23e76b788fbc86a82890d319f3715e21ed030d282119a2020cfba6a29c162",
+        "chdman_sha256": "dd041d352df804717aa24d881bcba644d69e20de0d7dbdf0458547c0901551e9",
+        "commands": [
+          [
+            "/usr/bin/chdman",
+            "copy",
+            "-i",
+            "/var/home/salvogendut/Dev/xiri/.work/irix-6.5.30-r5000-desktop/disk.chd.diff.chd",
+            "-ip",
+            "/var/home/salvogendut/Dev/xiri/.work/irix-6.5.30-r5000-desktop/disk.chd",
+            "-o",
+            "/var/home/salvogendut/Dev/xiri/.work/images/xiri-irix-6.5.30f-r5000-20261115/netbsd-xiri.chd",
+            "-c",
+            "zlib",
+            "-np",
+            "2"
+          ],
+          [
+            "/usr/bin/chdman",
+            "verify",
+            "-i",
+            "/var/home/salvogendut/Dev/xiri/.work/images/xiri-irix-6.5.30f-r5000-20261115/netbsd-xiri.chd"
+          ],
+          [
+            "/usr/bin/chdman",
+            "info",
+            "-i",
+            "/var/home/salvogendut/Dev/xiri/.work/images/xiri-irix-6.5.30f-r5000-20261115/netbsd-xiri.chd"
+          ]
+        ],
+        "validation": "CHD merge and integrity verification; desktop acceptance is the copied source result, not a new boot of this bundle."
+      }
+    }
+  ]
+}

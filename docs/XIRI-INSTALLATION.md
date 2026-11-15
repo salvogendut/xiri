@@ -183,8 +183,10 @@ module and native package with the `crime` Xorg driver and `ip3xboot`. A
 NetBSD cache-alignment correction advances boot past the framebuffer; a later
 native trap during SCSI initialization still prevents login. No 6.5.30
 application ran in that O2 experiment. Its native boot remains a separate
-platform task. Broader desktop acceptance, native-package promotion and a
-separate manual Xiri CHD remain outstanding on the active R5000 path. The native IRIX
+platform task. Separate [manual Xiri preview CHDs](results/2026-11-15-irix-previews.md)
+now package the qualified 6.5.30f/R5000 and 6.5.22f/R4400 states. Their CHD
+integrity checks pass; a fresh boot of each packaged bundle, broader desktop
+acceptance and native-package promotion remain outstanding. The native IRIX
 donor CHD is usable for donor boot testing, but is not a NetBSD/Xiri image.
 
 The requested [Octane/R10000 alternative](results/2026-11-14-octane-platform.md)

@@ -5,8 +5,9 @@ own donor pin, import profile, qualification and CHD. The current qualified
 desktop profile is 6.5.22f. The separate original-media
 [6.5.30f profile](irix-6.5.30f-v1.json) now produces reproducible payloads;
 its core desktop checks now pass on Indy/R5000 with shadow cache mode and the
-MIPS IV-aware module. Broader acceptance and a separate manual 6.5.30 image
-remain pending; the shared module also passes the 6.5.22f regression.
+MIPS IV-aware module. Separate [manual previews](../docs/results/2026-11-15-irix-previews.md)
+now package both qualified disk states; broader acceptance remains pending.
+The shared module also passes the 6.5.22f regression.
 The [native package profiles](../docs/NATIVE-PACKAGE.md) describe
 NetBSD components and does not establish compatibility with an untested vendor
 release.

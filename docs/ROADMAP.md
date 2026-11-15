@@ -1,6 +1,6 @@
 # Xiri execution roadmap
 
-Status: updated 2026-11-14. The current image runs the original 4Dwm desktop,
+Status: updated 2026-11-15. The current image runs the original 4Dwm desktop,
 Toolchest, Icon Catalog, File Manager, winterm and xclock on NetBSD/Xorg with
 accelerated Newport. Catalog launching, running-icon feedback, backdrop,
 desktop icons and logout pass bounded checks; the latest xmahjongg texture
@@ -308,8 +308,10 @@ NetBSD trial needed a corrected 64-bit cache alignment mask and now reaches a
 later native SCSI-stage trap. The [Indy/R5000 retry](results/2026-11-14-r5000-6.5.30.md)
 now passes native login, xdm and the 6.5.30f core desktop with shadow cache
 mode. The shared MIPS IV interpreter module also passes 6.5.22f regression
-checks. Promote the updated native package and package separate test CHDs,
-then qualify managed installation and repeat
+checks. Separate [manual preview CHDs](results/2026-11-15-irix-previews.md)
+now package both tested disk states; their merged CHDs pass integrity checks,
+with fresh boots of the packaged bundles still to check. Promote the updated
+native package, then qualify managed installation and repeat
 installation on a clean target without prepared desktop seeds or user homes.
 The linked MAME guide documents donor preparation; its IRIX formatting and Xsgi
 steps are not NetBSD installation instructions. Vendor import is qualified;
@@ -322,8 +324,9 @@ the complete clean-target installer remains unfinished.
   Always produce both 6.5.22 and 6.5.30 versions, with separate profiles,
   qualification records and test CHDs. Donor/export/profile/reproducibility are
   complete; Indy/R5000 native boot and core desktop acceptance now pass with
-  shadow cache mode. Broader 6.5.30 acceptance, native-package promotion and
-  separate updated manual CHDs remain; O2/N64 boot is a separate platform task.
+  shadow cache mode. Separate manual preview CHDs are packaged. Broader 6.5.30
+  acceptance, native-package promotion and fresh checks of those bundles remain;
+  O2/N64 boot is a separate platform task.
   Share native artifacts only after checking both versions.
 
 The user requested these deployment changes on 2026-11-03. The implementation

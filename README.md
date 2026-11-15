@@ -9,7 +9,8 @@ CHD. The separate [6.5.30f donor and import](docs/results/2026-11-14-irix-6.5.30
 are reproducible. The [Indy/R5000 retry](docs/results/2026-11-14-r5000-6.5.30.md)
 now passes native boot and the 6.5.30f core desktop, shell, File Manager and
 login/logout checks with IRIS shadow cache mode. The shared module also passes
-6.5.22f regression checks. A packaged 6.5.30 Xiri test CHD is still pending.
+6.5.22f regression checks. Separate [6.5.30f and 6.5.22f manual previews](docs/results/2026-11-15-irix-previews.md)
+now package those tested disk states as standalone CHDs with pinned launchers.
 The O2/R10000 native SCSI trap remains separate work. Physical hardware needs
 separate qualification.
 The [Octane alternative](docs/results/2026-11-14-octane-platform.md) was also

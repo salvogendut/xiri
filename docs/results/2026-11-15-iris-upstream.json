@@ -1,0 +1,68 @@
+{
+  "schema": 1,
+  "date": "2026-11-15",
+  "upstream": "83c8dddc00e16c2698984af19ebb2000c0ae4451",
+  "previous": "7d46498bf1fbf3acf53f1619413e3c5eaeb5d27b",
+  "integrated": "444e35eb1c0b272cc924ccbeb73a5070dba7dc09",
+  "merge": "clean",
+  "scope": "One upstream audio test robustness commit; no production changes; pinned preview emulators unchanged.",
+  "validation": {
+    "toolchain": "nightly-2026-10-28",
+    "features": "default,jitv2,rex-jit,pcap,perfetto,rexdiag,tcache,idle-pause",
+    "cargo": [
+      "test",
+      "--offline",
+      "--lib",
+      "--features",
+      "jitv2,rex-jit,pcap,perfetto,rexdiag,tcache,idle-pause",
+      "FILTER",
+      "--",
+      "--test-threads=1"
+    ],
+    "tests": [
+      {
+        "filter": "host_audio",
+        "reported_passed": 10,
+        "real_device_checks_skipped": 1,
+        "log": ".work/iris-upstream-20261115/host-audio.log",
+        "log_sha256": "0874a219163f10a8ed031cf7d51d91e4ca2a8de5fe87e6682df7b1c2aa708cdf"
+      },
+      {
+        "filter": "dev::mace_audio::",
+        "reported_passed": 11,
+        "real_device_checks_skipped": 1,
+        "log": ".work/iris-upstream-20261115/mace_audio.log",
+        "log_sha256": "74efa2a4d9cb323099121d1afcbc97244107b15d10f5679482cfd10757a52608"
+      },
+      {
+        "filter": "dev::rad1::",
+        "reported_passed": 70,
+        "real_device_checks_skipped": 1,
+        "log": ".work/iris-upstream-20261115/rad1.log",
+        "log_sha256": "137bef3c27ce0161fe43df865db4db1a7bcfab6be4a7f38acb0d6e1ae9f938ec"
+      },
+      {
+        "filter": "dev::hal2::",
+        "reported_passed": 11,
+        "real_device_checks_skipped": 1,
+        "log": ".work/iris-upstream-20261115/hal2.log",
+        "log_sha256": "fce524d717bb2bd90c193b289d6e16ec5da1277ad69afdd22ac6131a4075b567"
+      }
+    ],
+    "reported_passed": 102,
+    "real_device_checks_skipped": 4,
+    "exercised_checks": 98,
+    "real_device_note": "IRIS_AUDIO_LOOPBACK unset. Four real-device tests return early rather than exercising loopback; file-backed device and frontend tests run.",
+    "skip_confirmation_sha256": "5a3f745223a334685bcd5fad5b67e4483541c0d5283b59a7c9c135e0bce69a65",
+    "test_binary_sha256": "3b2e28ccc27113eb5eb38dd6fdb2caf4318aecc1b4c9225f10a603e566efeed3",
+    "device_filters_use_nocapture": true
+  },
+  "cleanup": {
+    "removed_new_cache_files": 4168,
+    "apparent_bytes": 4585791689,
+    "allocated_file_footprint_bytes": 4598091776,
+    "skipped_changed_paths": [],
+    "preserved": "Every path present in the pre-build inventory; qualified binaries, disks and unrelated running Octane guest.",
+    "measurement": "File footprint, not exclusive physical disk space recovered."
+  }
+}

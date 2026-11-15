@@ -51,6 +51,16 @@ not repin qualified kernels, emulator binaries, runtime resources or guest disks
 
 ## IRIS upstream updates
 
+The November 15 preview-packaging cycle integrates upstream `83c8dddc` as
+`444e35eb` on `xiri`, with a clean merge. The one incoming commit improves
+real-clock audio tests; it changes no production code. The affected test
+build and host-audio, MACE, RAD1 and HAL2 checks report 102 passes. Four
+real-device tests return early because `IRIS_AUDIO_LOOPBACK` is unset, so
+98 checks are exercised and physical loopback audio is not qualified.
+The [integration ledger](results/2026-11-15-iris-upstream.json) records that
+scope. The [manual previews](results/2026-11-15-irix-previews.md) retain their
+independently qualified emulator binaries.
+
 The November 14–15 Indy/R5000 retry fetched `5fb831ce` on both active days; it is already
 included in `xiri` at `7d46498b`. The retained emulator now boots the existing
 NetBSD Indy kernel through native login and full-screen xdm on R5000, with
