@@ -53,6 +53,11 @@ files, `chdman verify`, TOML paths and launcher shell syntax. **No new boot of
 these merged bundles was performed during packaging**; the manifests label
 them `packaged-from-qualified-state` rather than claiming a fresh boot pass.
 
+On November 15, the user tried the 6.5.30 preview and reported that it
+"looks ok for now." This records positive initial visual feedback on the
+packaged desktop. Broader application and session testing remains open;
+the packaging manifests retain their original validation scope.
+
 The original-media imports do not include the enriched reference image's
 extra freeware, such as GIMP, GNOME, Acrobat or xmahjongg. Prepared user homes
 and saved catalog/session state are inherited; an existing catalog entry does
