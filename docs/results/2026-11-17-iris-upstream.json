@@ -1,0 +1,235 @@
+{
+  "schema": 1,
+  "date": "2026-11-17",
+  "upstream": "878bc6dadc6523c53aceeeeb9c8f30f827acfd11",
+  "previous": "707912ddf39ad5b768b433f08369214f0205643e",
+  "integrated": "6420c255fdce877251555ce2fc640cc1dfcd4794",
+  "tree": "a1a3cfa22cd92a89cb5ee0a2db25916dbb1ad66d",
+  "incoming_commits": 125,
+  "origin_xiri": "6420c255fdce877251555ce2fc640cc1dfcd4794",
+  "merge": "conflicts resolved on topic/upstream-20261117; fast-forwarded and pushed to xiri",
+  "scope": "Source integration. Both vendor-release desktop previews and pinned emulators are unchanged.",
+  "validation": {
+    "toolchain": "nightly-2026-10-28",
+    "environment": "Existing xiri-iris Podman container; two build jobs; incremental and debug info disabled; offline locked dependencies.",
+    "commands": [
+      "cargo test --locked --offline --workspace --no-fail-fast --features jitv2,gpujit,gputrace,wgpu -- --test-threads=2 --skip block_node::tests::cow_failed_import_reads_the_base --skip dev::virtio::p9::tests::passthrough_reports_and_sets_owners_through_the_maps",
+      "Repeat the core test executable with --test-threads=1 and the same two skips.",
+      "cargo test --locked --offline --lib --features jitv2,gpujit,gputrace,wgpu -- dev::ng1::rex3_flat_fill::tests dev::ng1::wgpu::command::tests machine::frontend_snapshot_tests ip35_machine::tests::the_configuration_refuses_what_the_onyx_does_not_hold --test-threads=1",
+      "cargo test --locked --offline --lib -- cpu:: dev::ds1x86:: --test-threads=2",
+      "cargo test --locked --offline --lib --features jitv2,gpujit,gputrace,ci_clock,idle-pause -- ci_clock_ dev::ds1x86:: --test-threads=2",
+      "IRIS_TEST_SGIEMU=1 <core test executable> cpu::jitv2::equiv_test --test-threads=2",
+      "Run the two skipped permission tests as container user 1001:1001.",
+      "REX3_RESIDENT_BACKEND=vulkan <core test executable> --ignored --nocapture --test-threads=1 resident_gpu_linear_fills_match_complete_cpu_planes resident_gpu_pixel_formats_logic_and_yflip_match_complete_cpu_planes resident_gpu_host_fills_match_complete_cpu_planes resident_gpu_screen_copies_match_complete_cpu_planes resident_gpu_lines_match_complete_cpu_planes production_newport_wgpu_tests resident_frame_gpu_common_presenter_pixels_without_routine_readback",
+      "Repeat resident_frame_gpu_common_presenter_pixels_without_routine_readback on the real display (Xvfb lacks DRI3).",
+      "cargo check --locked --offline --manifest-path ../prismatic/Cargo.toml --features jitv2,gpujit,wgpu,iris/gputrace --config profile.dev.package.iris.opt-level=0",
+      "In pristine upstream 878bc6da: cargo test --locked --offline --lib --features jitv2,gpujit,gputrace,wgpu dev::mgras::wgpu::tests::transfer_reads_see_the_drawing -- --exact --nocapture --test-threads=1"
+    ],
+    "workspace": {
+      "log": ".work/iris-upstream-20261117/test-workspace-final.log",
+      "sha256": "d9dbc69f527661841ed6806e008efc8562f88b664b731c685ef72b47ec673543",
+      "exit_code": 101,
+      "core_outcome": "SIGSEGV in host libvulkan loader during parallel IMPACT tests",
+      "other_workspace": {
+        "targets": 19,
+        "passed": 195,
+        "failed": 0,
+        "ignored": 17
+      }
+    },
+    "core_serial": {
+      "log": ".work/iris-upstream-20261117/test-core-serial.log",
+      "sha256": "e6d89d83a543f37dd766f6c138e65df664206a916fee93c147318c402be4063c",
+      "exit_code": 101,
+      "last_reported_result": {
+        "status": "FAILED",
+        "passed": 5705,
+        "failed": 2,
+        "ignored": 102,
+        "measured": 0,
+        "filtered": 2
+      },
+      "failures": [
+        "reverse_blocks_and_fast_clears_match_cpu: expected RGB24 value corrected and passed in final integration checks",
+        "transfer_reads_see_the_drawing: identical failure on pristine upstream"
+      ]
+    },
+    "integration_final": {
+      "log": ".work/iris-upstream-20261117/test-integration-final.log",
+      "sha256": "e53c059201259beb02457378aac2475573368546f5bc4ed40d11d600734b241e",
+      "exit_code": 0,
+      "last_reported_result": {
+        "status": "ok",
+        "passed": 10,
+        "failed": 0,
+        "ignored": 0,
+        "measured": 0,
+        "filtered": 5801
+      }
+    },
+    "default_cpu_rtc": {
+      "log": ".work/iris-upstream-20261117/test-default.log",
+      "sha256": "5e860a9cb423cef86b9dc18ec6c98a5e84c1c52cdbb8a46f53769663e6723b85",
+      "exit_code": 0,
+      "last_reported_result": {
+        "status": "ok",
+        "passed": 393,
+        "failed": 0,
+        "ignored": 0,
+        "measured": 0,
+        "filtered": 4575
+      }
+    },
+    "instruction_clock_rtc": {
+      "log": ".work/iris-upstream-20261117/test-clock.log",
+      "sha256": "212eb85beeac5a8e2e3bff3da9b1e319e3f1d4a91f7cee13f245c7037bbd1988",
+      "exit_code": 0,
+      "last_reported_result": {
+        "status": "ok",
+        "passed": 19,
+        "failed": 0,
+        "ignored": 0,
+        "measured": 0,
+        "filtered": 5683
+      }
+    },
+    "sgi_optimizations": {
+      "log": ".work/iris-upstream-20261117/test-sgiemu.log",
+      "sha256": "906c275ea9b5b28a1541ef991f3742547e631103378d820d2f3fca10496475e0",
+      "exit_code": 0,
+      "last_reported_result": {
+        "status": "ok",
+        "passed": 283,
+        "failed": 0,
+        "ignored": 2,
+        "measured": 0,
+        "filtered": 5526
+      }
+    },
+    "unprivileged_permissions": {
+      "log": ".work/iris-upstream-20261117/test-permissions-final.log",
+      "sha256": "e446d1f6d788a538ff5a2581980f0c60fbe68729ccbfacf666cb33a8132bdbe0",
+      "exit_code": 0,
+      "last_reported_result": {
+        "status": "ok",
+        "passed": 2,
+        "failed": 0,
+        "ignored": 0,
+        "measured": 0,
+        "filtered": 5809
+      }
+    },
+    "newport_hardware": {
+      "log": ".work/iris-upstream-20261117/test-newport-vulkan.log",
+      "sha256": "1dad2b827a60320384d4ba1eb0a27e54be60718d1d21461b5277f02a408ce82d",
+      "exit_code": 101,
+      "last_reported_result": {
+        "status": "FAILED",
+        "passed": 7,
+        "failed": 1,
+        "ignored": 0,
+        "measured": 0,
+        "filtered": 5803
+      },
+      "resolved_failure": "Presenter requires DRI3, absent from Xvfb; seven raster/lifecycle tests passed."
+    },
+    "newport_presenter": {
+      "log": ".work/iris-upstream-20261117/test-newport-presenter.log",
+      "sha256": "1992a82b69d0fc4b3499eab0b21f59889cdaa36f3705795d4d322f37e9302fcc",
+      "exit_code": 0,
+      "last_reported_result": {
+        "status": "ok",
+        "passed": 1,
+        "failed": 0,
+        "ignored": 0,
+        "measured": 0,
+        "filtered": 5810
+      }
+    },
+    "adapter": "Vulkan AMD Radeon 780M Graphics (RADV PHOENIX), Mesa 26.2.5",
+    "prismatic": {
+      "log": ".work/iris-upstream-20261117/check-prismatic.log",
+      "sha256": "b084a7dda376f068fd479829862509a769095d0f22beb99f59d3456cb6ddfdf7",
+      "exit_code": 0,
+      "revision": "63b6cc860c9aecf2dfdaafdbe3d7c036827b3fb9",
+      "scope": "Compile check of disposable source snapshot; actual checkout unchanged."
+    },
+    "upstream_impact_control": {
+      "log": ".work/iris-upstream-20261117/test-upstream-impact-control.log",
+      "sha256": "3c06ad39639838a99adb65ff779ec07e4989e30d715277c50fb6001973a1481f",
+      "exit_code": 101,
+      "last_reported_result": {
+        "status": "FAILED",
+        "passed": 0,
+        "failed": 1,
+        "ignored": 0,
+        "measured": 0,
+        "filtered": 5748
+      },
+      "revision": "878bc6dadc6523c53aceeeeb9c8f30f827acfd11",
+      "failure": "step 64, line 4: identical expected and actual byte arrays to the merged fork"
+    },
+    "merged_impact_isolated": {
+      "log": ".work/iris-upstream-20261117/test-impact-transfer-isolated.log",
+      "sha256": "0fb50ba133968d200dd7466f5d2ab07e94fe02bbe1e6cc6bb5bbc5f2fdffbe3e",
+      "exit_code": 101,
+      "last_reported_result": {
+        "status": "FAILED",
+        "passed": 0,
+        "failed": 1,
+        "ignored": 0,
+        "measured": 0,
+        "filtered": 5810
+      }
+    },
+    "audio_skip_confirmation": {
+      "log": ".work/iris-upstream-20261117/test-audio-skip-confirmation.log",
+      "sha256": "7fe495b8709d7f98e81f789753d783a44ae08277a6e2016faa9b1f976607b679",
+      "exit_code": 0,
+      "last_reported_result": {
+        "status": "ok",
+        "passed": 5,
+        "failed": 0,
+        "ignored": 0,
+        "measured": 0,
+        "filtered": 5806
+      },
+      "real_device_tests_skipped": 5,
+      "note": "These five tests return early when IRIS_AUDIO_LOOPBACK is unset; reported pass counts do not prove real-device audio coverage."
+    },
+    "final_integration_test_binary_sha256": "ea487bcf26f6a10b9b2cd6c111ceb097915060d60b2493cf16e33822b9935ec6"
+  },
+  "limits": [
+    "Optional IMPACT GPU readback failure confirmed on pristine upstream; left for a separate graphics cycle.",
+    "Parallel core suite crash in the host Vulkan loader remains recorded; serial core run completed.",
+    "No live vendor desktop or fresh CHD qualification in this source-integration cycle.",
+    "Prismatic build.rs still probes the old IP27 location for an ignored CPU-counter test; runtime API compiles."
+  ],
+  "preserved_preexisting_local_edits": {
+    "docs/FORKS.md": "716136c5764b186f72527cadb2185bcef5a3ca78bde49412018797576551d92b",
+    "docs/ROADMAP.md": "c021d030f6a74b4f961c0e2b049ac63f89565871687fb4d118ac1d48c723db7e",
+    "docs/results/2026-11-14-octane-platform.md": "3e96ce71f5f993df7dc6304bd693552fd7cccb296944dc5cec51f5c67bfc8806",
+    "lab/irix-o2/README.md": "13809bf46a466e14f797917f63ba212119d484798914306149ad4236178bf294",
+    "docs/results/2026-11-15-native-platforms.json": "b1ea3f1e22fc03eddf9c66ff9aa893862cbd485bace8f6f072b6df9b0ceb9c29"
+  },
+  "cleanup": {
+    "status": "completed_except_root_owned_system_core",
+    "remove_allocated_file_footprint_bytes": {
+      "target": 4890161152,
+      "topic_worktree": 150663168,
+      "upstream_control_worktree": 150335488,
+      "prismatic_snapshot": 9285632
+    },
+    "measurement": "Allocated file footprint (du -B1); not exclusive physical disk space recovered.",
+    "system_core_left": {
+      "path": "/var/lib/systemd/coredump/core.iris-b7aa503925.589824.03901678364d4b22abe01d06884bdc42.538795.1794952982000000.zst",
+      "size_bytes": 301887712,
+      "allocated_bytes": 301891584,
+      "reason": "Root-owned system directory; sudo -n requires a password. Exact removal command is in the Markdown report."
+    },
+    "removed_allocated_file_footprint_bytes": 5200445440,
+    "removed_topic_branch": "topic/upstream-20261117",
+    "owned_build_or_emulator_processes_remaining": [],
+    "retained_record_allocated_bytes": 1777664
+  }
+}
