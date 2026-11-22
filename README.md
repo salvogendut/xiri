@@ -226,6 +226,8 @@ manual test images for both releases.
 The [framed IP28 console](docs/results/2026-11-22-ip28-frame.md) uses the Indy's
 artwork for boot messages and debugger output. The report includes screenshots
 and launch commands for the 6.5.22 and 6.5.30 images.
+The [desktop latency measurements](docs/results/2026-11-22-desktop-latency.md)
+compare held 4Dwm window moves and winterm scrolling on Indy and Indigo2.
 
 ## Run the current image
 

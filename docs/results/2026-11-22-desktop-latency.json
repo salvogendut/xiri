@@ -1,0 +1,633 @@
+{
+  "date": "2026-11-22",
+  "emulator": {
+    "sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+    "source_revision": "0bc52567a87349a5f521c702f9d8dec1dc0f79c6",
+    "ci_sha256": "8f15b694e3b28193124ae1a91ee9dba5025b0637ed30521ecfe73ea8fb019628"
+  },
+  "upstream_check": {
+    "upstream": "6b6c8cea2fda749b6a12aa2a7b661b12ada4ffb6",
+    "fork_merge": "775be6ce936401989004d1652f4e717663b59364",
+    "qualified_tests": {
+      "ip7_ticket_tests": 17,
+      "perfetto": 8,
+      "perfetto_ignored": 2,
+      "low_water": 8,
+      "bedrock_pi": 9
+    }
+  },
+  "fixture_iso_sha256": "65412a587f4364a87d049fb1047ee27f782dee9d4327ba0ba92d63979fb807e8",
+  "fixture_files": {
+    "SHA256": "75cf5972340a2536bd9a5e41292a6234d2a63b961dc38f2ca63dbf90ebb3257c",
+    "desktop-latency.c": "ffa2a55a2cfd30a78634951de7e5b3922d4d257a42f388fa34c87a53837c53b2",
+    "place-window.c": "af51ade704c9df4d589c3ae01e571da6a7d6f43de2fd51e3a1766935f04d3ddb",
+    "start-latency.sh": "80bccb60a2767960ed645b300187b5142555e9c7b7375f0789321631525736f3"
+  },
+  "command_to_visible_fraction": 0.98,
+  "runs": {
+    "6.5.22": {
+      "indy": {
+        "machine": "indy-r4400",
+        "driver": "newport",
+        "base_chd": ".work/images/xiri-irix-6.5.22f-r4400-20261115/netbsd-xiri.chd",
+        "chd_sha256": "d596318f1f84c6628b6e46e58b8e7669349b8db504bde8c2b3ff7cc11c4cb7fe",
+        "guest_kernel_sha256": "c92f0b2fcc182836393a87ca41a0315a0681e93ed3e904fad925d3c370e4dd98",
+        "base_unchanged": true,
+        "clean_shutdown": true,
+        "duration_s": 164.22,
+        "result_sha256": "1157425afd105afbabb90994f19bdb70c737b731b4d3a7718fbd299af8c05b8d",
+        "client": [
+          170,
+          160,
+          639,
+          300
+        ],
+        "terminal": [
+          56,
+          15
+        ],
+        "window_positions": [
+          [
+            170,
+            160
+          ],
+          [
+            282,
+            160
+          ],
+          [
+            170,
+            160
+          ],
+          [
+            282,
+            160
+          ],
+          [
+            282,
+            160
+          ]
+        ],
+        "drag_translated_pixels": {
+          "compared": 56740,
+          "fraction": 1.0
+        },
+        "scroll_shift": {
+          "pixels": 160,
+          "compared": 19859,
+          "fraction": 1.0
+        },
+        "drag": {
+          "samples_ms": [
+            90.71,
+            133.27,
+            74.8,
+            83.63,
+            90.12,
+            81.29,
+            74.73,
+            80.67
+          ],
+          "median_ms": 82.46000000000001,
+          "changed_pixels": 91838,
+          "scanout_fraction": 0.98,
+          "crop": [
+            170,
+            170,
+            751,
+            268
+          ],
+          "polls": [
+            1,
+            2,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "median_read_ms": 77.98,
+          "last_miss_request_ms": [
+            0.0,
+            0.32,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "scroll": {
+          "samples_ms": [
+            135.38,
+            137.53,
+            197.21,
+            135.92,
+            137.28,
+            132.49,
+            169.7,
+            135.26
+          ],
+          "median_ms": 136.6,
+          "changed_pixels": 53352,
+          "scanout_fraction": 0.98,
+          "crop": [
+            292,
+            170,
+            607,
+            264
+          ],
+          "polls": [
+            2,
+            2,
+            3,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "median_read_ms": 59.43,
+          "last_miss_request_ms": [
+            0.35,
+            0.25,
+            72.57,
+            0.24,
+            0.31,
+            0.23,
+            0.35,
+            0.33
+          ]
+        }
+      },
+      "ip28": {
+        "machine": "ip28",
+        "driver": "wsfb",
+        "base_chd": ".work/native/xiri-ip28-frame-6.5.22-20261122/netbsd-xiri.chd",
+        "chd_sha256": "5946044ffcac961653648e52f33a040690b43f68879ef020209f44dc060f442f",
+        "guest_kernel_sha256": "807ef8844822b87270b35283fcf4ee90be7e9c0471a9b6c4295f2863000effcf",
+        "base_unchanged": true,
+        "clean_shutdown": true,
+        "duration_s": 205.16,
+        "result_sha256": "952e6bf0f84e52f23661335a8a863d38b7fa16060f2a86f10f69fde9f0f77ecb",
+        "client": [
+          170,
+          160,
+          639,
+          300
+        ],
+        "terminal": [
+          56,
+          15
+        ],
+        "window_positions": [
+          [
+            170,
+            160
+          ],
+          [
+            282,
+            160
+          ],
+          [
+            170,
+            160
+          ],
+          [
+            282,
+            160
+          ],
+          [
+            282,
+            160
+          ]
+        ],
+        "drag_translated_pixels": {
+          "compared": 56740,
+          "fraction": 1.0
+        },
+        "scroll_shift": {
+          "pixels": 160,
+          "compared": 19859,
+          "fraction": 1.0
+        },
+        "drag": {
+          "samples_ms": [
+            221.52,
+            228.78,
+            307.69,
+            234.65,
+            239.78,
+            232.29,
+            286.95,
+            280.3
+          ],
+          "median_ms": 237.215,
+          "changed_pixels": 91836,
+          "scanout_fraction": 0.98,
+          "crop": [
+            170,
+            170,
+            751,
+            268
+          ],
+          "polls": [
+            3,
+            3,
+            4,
+            3,
+            3,
+            3,
+            4,
+            4
+          ],
+          "median_read_ms": 60.63,
+          "last_miss_request_ms": [
+            94.96,
+            104.72,
+            171.89,
+            110.24,
+            106.62,
+            109.64,
+            157.63,
+            158.83
+          ],
+          "impact_counts": {
+            "hq3_words": 2247370,
+            "raster_writes": 1123685,
+            "pio_dwords": 498848,
+            "fast_fills": 0,
+            "dma_bytes": 0
+          },
+          "idle_counts_1s": {
+            "hq3_words": 1988,
+            "raster_writes": 994,
+            "pio_dwords": 448,
+            "fast_fills": 0,
+            "dma_bytes": 0
+          }
+        },
+        "scroll": {
+          "samples_ms": [
+            219.92,
+            220.44,
+            168.8,
+            220.97,
+            233.49,
+            171.71,
+            220.89,
+            170.35
+          ],
+          "median_ms": 220.18,
+          "changed_pixels": 53352,
+          "scanout_fraction": 0.98,
+          "crop": [
+            292,
+            170,
+            607,
+            264
+          ],
+          "polls": [
+            3,
+            3,
+            2,
+            3,
+            3,
+            2,
+            3,
+            2
+          ],
+          "median_read_ms": 60.62,
+          "last_miss_request_ms": [
+            91.13,
+            92.33,
+            0.24,
+            91.73,
+            110.69,
+            0.29,
+            94.3,
+            0.25
+          ],
+          "impact_counts": {
+            "hq3_words": 1256468,
+            "raster_writes": 628234,
+            "pio_dwords": 277696,
+            "fast_fills": 0,
+            "dma_bytes": 0
+          },
+          "idle_counts_1s": {
+            "hq3_words": 0,
+            "raster_writes": 0,
+            "pio_dwords": 0,
+            "fast_fills": 0,
+            "dma_bytes": 0
+          }
+        }
+      }
+    },
+    "6.5.30": {
+      "indy": {
+        "machine": "indy-r5000",
+        "driver": "newport",
+        "base_chd": ".work/images/xiri-irix-6.5.30f-r5000-20261115/netbsd-xiri.chd",
+        "chd_sha256": "b1bf09e4281d9666359b40c9ded755a07675bdd9fb38dbe0843740d44e38b6c7",
+        "guest_kernel_sha256": "c92f0b2fcc182836393a87ca41a0315a0681e93ed3e904fad925d3c370e4dd98",
+        "base_unchanged": true,
+        "clean_shutdown": true,
+        "duration_s": 165.44,
+        "result_sha256": "6686377d5304cddb1207fbfe560c45d4c0f221f75399819a9524abe087aee380",
+        "client": [
+          170,
+          160,
+          639,
+          300
+        ],
+        "terminal": [
+          56,
+          15
+        ],
+        "window_positions": [
+          [
+            170,
+            160
+          ],
+          [
+            282,
+            160
+          ],
+          [
+            170,
+            160
+          ],
+          [
+            282,
+            160
+          ],
+          [
+            282,
+            160
+          ]
+        ],
+        "drag_translated_pixels": {
+          "compared": 56740,
+          "fraction": 1.0
+        },
+        "scroll_shift": {
+          "pixels": 160,
+          "compared": 19859,
+          "fraction": 1.0
+        },
+        "drag": {
+          "samples_ms": [
+            138.11,
+            135.84,
+            134.89,
+            134.04,
+            137.5,
+            71.53,
+            134.85,
+            73.95
+          ],
+          "median_ms": 134.87,
+          "changed_pixels": 91838,
+          "scanout_fraction": 0.98,
+          "crop": [
+            170,
+            170,
+            751,
+            268
+          ],
+          "polls": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            1,
+            2,
+            1
+          ],
+          "median_read_ms": 65.89,
+          "last_miss_request_ms": [
+            0.27,
+            0.28,
+            0.29,
+            0.26,
+            0.26,
+            0.0,
+            0.23,
+            0.0
+          ]
+        },
+        "scroll": {
+          "samples_ms": [
+            132.97,
+            135.78,
+            135.41,
+            136.48,
+            131.49,
+            142.41,
+            135.87,
+            135.67
+          ],
+          "median_ms": 135.725,
+          "changed_pixels": 53352,
+          "scanout_fraction": 0.98,
+          "crop": [
+            292,
+            170,
+            607,
+            264
+          ],
+          "polls": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "median_read_ms": 64.77,
+          "last_miss_request_ms": [
+            0.29,
+            0.24,
+            0.27,
+            0.22,
+            0.21,
+            0.22,
+            0.25,
+            0.37
+          ]
+        }
+      },
+      "ip28": {
+        "machine": "ip28",
+        "driver": "wsfb",
+        "base_chd": ".work/native/xiri-ip28-frame-6.5.30-20261122/netbsd-xiri.chd",
+        "chd_sha256": "88d851b62bb410d3acff64938352b1dbe3ccd2bd338934f52c3c694c3c96e8f9",
+        "guest_kernel_sha256": "807ef8844822b87270b35283fcf4ee90be7e9c0471a9b6c4295f2863000effcf",
+        "base_unchanged": true,
+        "clean_shutdown": true,
+        "duration_s": 232.37,
+        "result_sha256": "647de5699620a811311953e2dbed9e52a46a61e2182abf34d47d736d2a9dff4c",
+        "client": [
+          170,
+          160,
+          639,
+          300
+        ],
+        "terminal": [
+          56,
+          15
+        ],
+        "window_positions": [
+          [
+            170,
+            160
+          ],
+          [
+            282,
+            160
+          ],
+          [
+            170,
+            160
+          ],
+          [
+            282,
+            160
+          ],
+          [
+            282,
+            160
+          ]
+        ],
+        "drag_translated_pixels": {
+          "compared": 56740,
+          "fraction": 1.0
+        },
+        "scroll_shift": {
+          "pixels": 160,
+          "compared": 19859,
+          "fraction": 1.0
+        },
+        "drag": {
+          "samples_ms": [
+            372.31,
+            238.76,
+            234.56,
+            229.07,
+            238.26,
+            230.32,
+            286.68,
+            231.84
+          ],
+          "median_ms": 236.41,
+          "changed_pixels": 91836,
+          "scanout_fraction": 0.98,
+          "crop": [
+            170,
+            170,
+            751,
+            268
+          ],
+          "polls": [
+            5,
+            3,
+            3,
+            3,
+            3,
+            3,
+            4,
+            3
+          ],
+          "median_read_ms": 60.1,
+          "last_miss_request_ms": [
+            242.91,
+            111.27,
+            107.56,
+            104.72,
+            108.53,
+            107.03,
+            158.13,
+            110.85
+          ],
+          "impact_counts": {
+            "hq3_words": 2280988,
+            "raster_writes": 1140494,
+            "pio_dwords": 506624,
+            "fast_fills": 0,
+            "dma_bytes": 0
+          },
+          "idle_counts_1s": {
+            "hq3_words": 4118,
+            "raster_writes": 2059,
+            "pio_dwords": 928,
+            "fast_fills": 0,
+            "dma_bytes": 0
+          }
+        },
+        "scroll": {
+          "samples_ms": [
+            298.86,
+            237.2,
+            235.24,
+            235.34,
+            235.22,
+            233.47,
+            167.48,
+            215.39
+          ],
+          "median_ms": 235.23000000000002,
+          "changed_pixels": 53352,
+          "scanout_fraction": 0.98,
+          "crop": [
+            292,
+            170,
+            607,
+            264
+          ],
+          "polls": [
+            4,
+            3,
+            3,
+            3,
+            3,
+            3,
+            2,
+            3
+          ],
+          "median_read_ms": 59.73,
+          "last_miss_request_ms": [
+            175.12,
+            111.29,
+            107.2,
+            113.35,
+            108.56,
+            109.01,
+            0.25,
+            89.09
+          ],
+          "impact_counts": {
+            "hq3_words": 1233004,
+            "raster_writes": 616502,
+            "pio_dwords": 272384,
+            "fast_fills": 0,
+            "dma_bytes": 0
+          },
+          "idle_counts_1s": {
+            "hq3_words": 0,
+            "raster_writes": 0,
+            "pio_dwords": 0,
+            "fast_fills": 0,
+            "dma_bytes": 0
+          }
+        }
+      }
+    }
+  }
+}

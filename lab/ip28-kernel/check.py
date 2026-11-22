@@ -40,7 +40,7 @@ def main():
     parser.add_argument("--desktop", action="store_true",
                         help="Run the installed Xiri user desktop on IMPACT after the native checks")
     parser.add_argument("--multiuser", action="store_true", help="Boot through rc.d and log in on serial B")
-    parser.add_argument("--xdm", choices=("full", "greeter"), help="Qualify boot-started xdm and optionally both user desktops")
+    parser.add_argument("--xdm", choices=("full", "greeter", "latency"), help="Check xdm, both user desktops or interactive display latency")
     parser.add_argument("--autoboot", action="store_true", help="Use saved firmware's automatic disk boot without PROM commands")
     parser.add_argument("--graphical-console", action="store_true", help="Use console=g with saved automatic-boot firmware; retain serial B login")
     parser.add_argument("--console-check", action="store_true", help="Exercise graphical text and debugger input before xdm checks")
@@ -66,13 +66,16 @@ def main():
     media = args.media or args.fixture_media
     if args.xdm == "full" and not media:
         parser.error("--xdm full requires fixture media containing type-ready.c")
+    if args.xdm == "latency" and not (args.fixture_media and args.graphical_console):
+        parser.error("--xdm latency requires --fixture-media and --graphical-console")
     if args.autoboot and args.tftp:
         parser.error("--autoboot qualifies disk boot, without TFTP")
     out = args.output.resolve()
     out.mkdir(parents=True, exist_ok=False)
     shutil.copyfile(__file__, out / "probe-used.py")
     if args.xdm:
-        shutil.copyfile(Path(__file__).with_name("xdm.py"), out / "xdm-used.py")
+        helper = "desktop_latency" if args.xdm == "latency" else "xdm"
+        shutil.copyfile(Path(__file__).with_name(helper + ".py"), out / (helper + "-used.py"))
     def sha(path):
         with path.open("rb") as stream:
             return hashlib.file_digest(stream, "sha256").hexdigest()
@@ -154,6 +157,8 @@ mac = "08:00:69:12:34:56"
         cfg = cfg.replace('cpu = "r10000"', 'cpu = ' + json.dumps(args.machine.split('-')[1]))
         cfg = cfg.replace('board = "highimpact"', 'board = "newport"')
         cfg = cfg.replace('raster = "wgpu"\n', '').replace('gpu_backend = "vulkan"\n', '')
+        if args.machine == "indy-r5000" and args.xdm == "latency":
+            cfg = cfg.replace('cpu = "r5000"', 'cpu = "r5000"\ncache = "shadow"')
     if media:
         cfg += f'[scsi.4]\npath = {json.dumps(str(media.resolve()))}\ncdrom = true\n'
     # tftp_dir belongs to the network table, not the optional CD-ROM.
@@ -337,7 +342,11 @@ mac = "08:00:69:12:34:56"
                 from console import qualify_console
                 result["console"] = {}
                 qualify_console(shell, monitor, capture, result["console"], args.frame_reference)
-            if args.xdm:
+            if args.xdm == "latency":
+                from desktop_latency import qualify
+                result["desktop_latency"] = {}
+                qualify(shell, monitor, rpc, out, result["desktop_latency"])
+            elif args.xdm:
                 from xdm import qualify
                 result["xdm"] = {}
                 qualify(shell, monitor, capture, args.xdm, result["xdm"])

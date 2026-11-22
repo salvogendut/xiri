@@ -34,6 +34,44 @@ all 307,200 displayed pixels in the final frame of each workload and retains
 the samples, medians and PNGs. Use `scanout.py RUN_DIRECTORY/xorg.png` to check
 the independent colour swatches and odd-width atlas from the Xorg probe.
 
+## Measuring 4Dwm and winterm
+
+Use the qualified framed IP28 disks and the two Indy preview base CHDs.
+Run one guest at a time with the same accelerated IRIS binary. Each run
+creates a private disk overlay and firmware copy. The probe logs in through
+xdm, enables opaque moves for the disposable `xiritest` session, and first
+checks that the actual winterm follows a held title bar across 112 pixels.
+The second workload sends eight lines through that terminal's existing
+PTY. It verifies that glyphs moved up eight rows. Both workloads compare
+the visible scanout against two repeatable reference positions or text
+patterns. Host checks require Python, Pillow and NumPy.
+
+Build a small Rock Ridge ISO with `desktop-latency.c`, `start-latency.sh`,
+`lab/irix-filelocks/place-window.c` and a NetBSD-format `SHA256` manifest
+covering those three files. The following command uses the image bundle in
+`SOURCE` and the saved firmware directory in `FIRMWARE`.
+
+```sh
+python3 -B lab/ip28-kernel/check.py --iris "$IRIS" --machine ip28 \
+  --disk "$SOURCE/netbsd-xiri.chd" --firmware-dir "$FIRMWARE" \
+  --autoboot --graphical-console --xdm latency --fixture-media "$ISO" \
+  --command-timeout 260 --output "$RUN"
+```
+
+For the Indy previews select `--machine indy-r4400` for 6.5.22f or
+`indy-r5000` for 6.5.30f. For these two images only, copy
+`verification/initial-nvram.bin` into a new firmware directory as
+`nvram.bin` and extract its embedded 256-byte EEPROM with `dd`.
+
+```sh
+dd if="$FIRMWARE/nvram.bin" of="$FIRMWARE/nveeprom.bin" bs=1 skip=64 count=256
+```
+
+The R5000 benchmark uses its qualified shadow-cache setting. The output
+includes eight timings per workload, two repeated reference captures per
+state and the sampling cost. IP28 runs also record the emulated IMPACT
+transfer counters around those samples.
+
 ## Graphical boot console
 
 The console kernel selects native IMPACT text output when the PROM uses
