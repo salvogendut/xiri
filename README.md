@@ -202,6 +202,8 @@ documentation. See the [fork workflow](docs/FORKS.md) for integration rules
 and the [image guide](docs/XIRI-IMAGE.md) for matching Prismatic's IRIS backend
 to a qualified desktop image. The [IRIS delta audit](docs/results/2026-11-14-iris-delta-cleanup.md)
 tracks upstream replacements and the remaining candidates for focused upstream PRs.
+The [2026-11-22 IRIS refresh](docs/results/2026-11-22-iris-upstream.md)
+records the current integration, fresh binaries, desktop checks and launch commands.
 
 ## Run the current image
 

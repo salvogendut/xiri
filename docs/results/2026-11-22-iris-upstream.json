@@ -1,0 +1,809 @@
+{
+  "schema": 1,
+  "date": "2026-11-22",
+  "status": "integrated and published; Indy desktop qualification passed with known optional IMPACT GPU unit-test failure",
+  "iris": {
+    "repository": "https://github.com/salvogendut/iris.git",
+    "branch": "xiri",
+    "starting_revision": "6420c255fdce877251555ce2fc640cc1dfcd4794",
+    "upstream_repository": "https://github.com/techomancer/iris.git",
+    "upstream_revision": "6ec1ebf379228d572026a9ae8d291511ed28af74",
+    "incoming_commits": 101,
+    "merge_revision": "e54410de48cca5915a9e1c1f421a0b7ba910adb5",
+    "revision": "0bc52567a87349a5f521c702f9d8dec1dc0f79c6",
+    "pushed": true,
+    "fork_delta": {
+      "files": 113,
+      "insertions": 4840,
+      "deletions": 445
+    }
+  },
+  "build": {
+    "directory": ".work/emulators/iris-xiri-20261122",
+    "toolchain": [
+      "rustc 1.101.0-nightly (41089d07a 2026-10-27)",
+      "binary: rustc",
+      "commit-hash: 41089d07a0a2afc16adfe28a760d94d73d7298a4",
+      "commit-date: 2026-10-27",
+      "host: x86_64-unknown-linux-gnu",
+      "release: 1.101.0-nightly",
+      "LLVM version: 23.1.4"
+    ],
+    "jobs": 2,
+    "offline": true,
+    "locked": true,
+    "incremental": false,
+    "manifests": {
+      "interpreter": {
+        "schema": 1,
+        "source_revision": "0bc52567a87349a5f521c702f9d8dec1dc0f79c6",
+        "upstream_revision": "6ec1ebf379228d572026a9ae8d291511ed28af74",
+        "toolchain": "nightly-2026-10-28",
+        "target": "x86_64-unknown-linux-gnu",
+        "features": "default (interpreter)",
+        "profile": {
+          "name": "release",
+          "lto": false,
+          "codegen_units": 16,
+          "debug": 0
+        },
+        "iris_sha256": "b4790d76005cb2b9523d8e82554515a1abd2b66cc12e0477c9be46655517219b",
+        "ci_sha256": "fff907c470d6444767332e29fee5ebb8854154063ef9bc3daddfca663643ff75",
+        "qualification": "passed both IRIX desktop previews; final rebuild is byte-identical",
+        "initial_source_revision": "e54410de48cca5915a9e1c1f421a0b7ba910adb5",
+        "desktop_results": [
+          ".work/iris-upstream-20261122/desktop-interpreter-6.5.22/result.json",
+          ".work/iris-upstream-20261122/desktop-interpreter-6.5.30/result.json"
+        ]
+      },
+      "accelerated": {
+        "schema": 1,
+        "source_revision": "0bc52567a87349a5f521c702f9d8dec1dc0f79c6",
+        "upstream_revision": "6ec1ebf379228d572026a9ae8d291511ed28af74",
+        "toolchain": "nightly-2026-10-28",
+        "target": "x86_64-unknown-linux-gnu",
+        "features": "default,jitv2,gpujit,idle-pause,wgpu,gputrace; GUI bundled",
+        "profile": {
+          "name": "release",
+          "lto": false,
+          "codegen_units": 16,
+          "debug": 0
+        },
+        "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+        "ci_sha256": "8f15b694e3b28193124ae1a91ee9dba5025b0637ed30521ecfe73ea8fb019628",
+        "gui_sha256": "6eeb401d61d9cf538d4c8f41b2fe67ac88a86cbf5453e96bf3b89a6f5f62c403",
+        "qualification": "passed both IRIX desktop previews and GUI smoke; known upstream IMPACT GPU unit-test failure remains",
+        "desktop_results": [
+          ".work/iris-upstream-20261122/desktop-accelerated-paced-6.5.22/result.json",
+          ".work/iris-upstream-20261122/desktop-accelerated-paced-6.5.30/result.json"
+        ],
+        "gui_result": ".work/iris-upstream-20261122/gui-smoke.json",
+        "known_test_failure": "dev::mgras::wgpu::tests::transfer_reads_see_the_drawing (unchanged upstream baseline)"
+      }
+    }
+  },
+  "validation": {
+    "core": {
+      "test-default.log": {
+        "result": "ok",
+        "passed": 4983,
+        "failed": 0,
+        "ignored": 55,
+        "filtered": 2
+      },
+      "test-jit-core.log": {
+        "result": "FAILED",
+        "passed": 5818,
+        "failed": 1,
+        "ignored": 104,
+        "filtered": 2
+      },
+      "test-permissions.log": {
+        "result": "ok",
+        "passed": 2,
+        "failed": 0,
+        "ignored": 0,
+        "filtered": 5038
+      }
+    },
+    "remaining_workspace": {
+      "passed": 209,
+      "failed": 0,
+      "ignored": 14
+    },
+    "gui_unit_tests": {
+      "passed": 120,
+      "failed": 0
+    },
+    "documentation_tests": {
+      "passed": 0,
+      "failed": 0,
+      "ignored": 3
+    },
+    "gui_smoke": {
+      "status": "passed",
+      "pid": 1154368,
+      "window_titles": [
+        "IRIS"
+      ],
+      "exit_status": 0
+    },
+    "known_failure": {
+      "test": "dev::mgras::wgpu::tests::transfer_reads_see_the_drawing",
+      "location": "step 64, line 4",
+      "same_expected_and_actual_as_prior_pristine_upstream": true,
+      "prior_control_upstream": "878bc6dadc6523c53aceeeeb9c8f30f827acfd11",
+      "gpu_backend_changed_upstream": false
+    },
+    "desktop_previews": [
+      {
+        "status": "failed",
+        "profile": "irix-6.5.22f-v1",
+        "chd_sha256": "d596318f1f84c6628b6e46e58b8e7669349b8db504bde8c2b3ff7cc11c4cb7fe",
+        "clean_shutdown": true,
+        "base_unchanged": true,
+        "screenshots": {
+          "greeter": {
+            "sha256": "066ba28a4d1cf71a4d96737a4ae9571e56d2832d6acf5da7533b2a54e264b0a1",
+            "size": [
+              1282,
+              1024
+            ]
+          }
+        },
+        "evidence": ".work/iris-upstream-20261122/desktop-accelerated-6.5.22",
+        "result_sha256": "c69e820de0b7c3bd90164c232c83f5851919b10728cf878e693be7a6b9562ad9",
+        "probe_sha256": "7b3d29a8574f59941941654da916a0ed8b4ac9b030dc07ee16d242ec54b29bff",
+        "emulator_revision": "0bc52567a87349a5f521c702f9d8dec1dc0f79c6",
+        "native_ctwm_check": "not reached",
+        "shell_input": "PS/2, one unpaced string (proof timeout)"
+      },
+      {
+        "status": "failed",
+        "profile": "irix-6.5.30f-v1",
+        "chd_sha256": "b1bf09e4281d9666359b40c9ded755a07675bdd9fb38dbe0843740d44e38b6c7",
+        "clean_shutdown": true,
+        "base_unchanged": true,
+        "screenshots": {
+          "greeter": {
+            "sha256": "a5bd17c3d6f05648736dcd1855a2da390d37dd2273683c91e77e0b1bcc640a7d",
+            "size": [
+              1282,
+              1024
+            ]
+          }
+        },
+        "evidence": ".work/iris-upstream-20261122/desktop-accelerated-6.5.30",
+        "result_sha256": "88bf8bb5279d2e38a27b897a7d499b065d2650239fc65b87ad02a5fefb07d357",
+        "probe_sha256": "7b3d29a8574f59941941654da916a0ed8b4ac9b030dc07ee16d242ec54b29bff",
+        "emulator_revision": "0bc52567a87349a5f521c702f9d8dec1dc0f79c6",
+        "native_ctwm_check": "not reached",
+        "shell_input": "PS/2, one unpaced string (proof timeout)"
+      },
+      {
+        "status": "passed",
+        "profile": "irix-6.5.22f-v1",
+        "chd_sha256": "d596318f1f84c6628b6e46e58b8e7669349b8db504bde8c2b3ff7cc11c4cb7fe",
+        "clean_shutdown": true,
+        "base_unchanged": true,
+        "logout": true,
+        "shell": [
+          "xiritest",
+          "/usr/people/xiritest",
+          "/usr/people/xiritest",
+          "IRIX_SHELL_OK"
+        ],
+        "dimensions": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+        "screenshots": {
+          "greeter": {
+            "sha256": "2fdb3d55764e7443d04182298377c2a94ada567dc2a1fe1ac5f9b1f6d0f99e28",
+            "size": [
+              1282,
+              1024
+            ]
+          },
+          "keyboard-input": {
+            "sha256": "efe62873d4d797334d4e3ced672fbec351aa7c61dea0842aa961645de104308a",
+            "size": [
+              1282,
+              1024
+            ]
+          },
+          "irix-desktop": {
+            "sha256": "d25ccbffbcfe9b3b6f15181b1764ed2a91d58bfa4189aff30f1f45de6b970f19",
+            "size": [
+              1282,
+              1024
+            ]
+          },
+          "native-ctwm": {
+            "sha256": "ccffac6e2124e6c15964d5acbd0653e3fbf26ebd4f887efea6ed6ad9b5aa39c6",
+            "size": [
+              1282,
+              1024
+            ]
+          }
+        },
+        "evidence": ".work/iris-upstream-20261122/desktop-accelerated-paced-6.5.22",
+        "result_sha256": "cc747c883f37cd61512581b08d2f4303b62ed807982298bc10aef58c16c0085b",
+        "probe_sha256": "f6e1ded011505faac98b09d0a7708a583bc9cc80963afabea3c3b91c420ae821",
+        "emulator_revision": "0bc52567a87349a5f521c702f9d8dec1dc0f79c6",
+        "native_ctwm_check": "passed",
+        "shell_input": "PS/2, 25 ms between characters"
+      },
+      {
+        "status": "passed",
+        "profile": "irix-6.5.30f-v1",
+        "chd_sha256": "b1bf09e4281d9666359b40c9ded755a07675bdd9fb38dbe0843740d44e38b6c7",
+        "clean_shutdown": true,
+        "base_unchanged": true,
+        "logout": true,
+        "shell": [
+          "xiritest",
+          "/usr/people/xiritest",
+          "/usr/people/xiritest",
+          "IRIX_SHELL_OK"
+        ],
+        "dimensions": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+        "screenshots": {
+          "greeter": {
+            "sha256": "958df0854e554eb3fcb7e50180bbfc6d68c95b5d86b0587a73dfb748b35f43ee",
+            "size": [
+              1282,
+              1024
+            ]
+          },
+          "keyboard-input": {
+            "sha256": "8659051ed4c92ee64e5629d912ef86721d90ba31796179e71f946f15b2d56980",
+            "size": [
+              1282,
+              1024
+            ]
+          },
+          "irix-desktop": {
+            "sha256": "827c8334916a4f55dbb42ada9435384ac4f51e8d85c1bbacc7ec974672300658",
+            "size": [
+              1282,
+              1024
+            ]
+          },
+          "native-ctwm": {
+            "sha256": "ccffac6e2124e6c15964d5acbd0653e3fbf26ebd4f887efea6ed6ad9b5aa39c6",
+            "size": [
+              1282,
+              1024
+            ]
+          }
+        },
+        "evidence": ".work/iris-upstream-20261122/desktop-accelerated-paced-6.5.30",
+        "result_sha256": "d6acb15e4e49f516ff1ffd28c8b30a5bff64015dd9ac4e9aca3d6ed03248d4cb",
+        "probe_sha256": "f6e1ded011505faac98b09d0a7708a583bc9cc80963afabea3c3b91c420ae821",
+        "emulator_revision": "0bc52567a87349a5f521c702f9d8dec1dc0f79c6",
+        "native_ctwm_check": "passed",
+        "shell_input": "PS/2, 25 ms between characters"
+      },
+      {
+        "status": "passed",
+        "profile": "irix-6.5.22f-v1",
+        "chd_sha256": "d596318f1f84c6628b6e46e58b8e7669349b8db504bde8c2b3ff7cc11c4cb7fe",
+        "clean_shutdown": true,
+        "base_unchanged": true,
+        "logout": true,
+        "shell": [
+          "xiritest",
+          "/usr/people/xiritest",
+          "/usr/people/xiritest",
+          "IRIX_SHELL_OK"
+        ],
+        "dimensions": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+        "screenshots": {
+          "greeter": {
+            "sha256": "6b8a0cf32b4cdaa81236a0f6e072bb4f315d2c9aceb5021f15648f2b7da087fc",
+            "size": [
+              1282,
+              1024
+            ]
+          },
+          "irix-desktop": {
+            "sha256": "b76e79520b1547267a995fd374ac4603ac5d8a9004a3f904cf4840b99f66ac60",
+            "size": [
+              1282,
+              1024
+            ]
+          },
+          "native-ctwm": {
+            "sha256": "ccffac6e2124e6c15964d5acbd0653e3fbf26ebd4f887efea6ed6ad9b5aa39c6",
+            "size": [
+              1282,
+              1024
+            ]
+          }
+        },
+        "evidence": ".work/iris-upstream-20261122/desktop-interpreter-6.5.22",
+        "result_sha256": "c44ea895056c6532bb5bc6f74b0854045b291a3ee66cc730985c32a19d722be3",
+        "probe_sha256": "8278fd5e8bdb880d68fdfce01bcd8f0c4d5e5a45e62d9b3f981e523d6f98e64c",
+        "emulator_revision": "e54410de48cca5915a9e1c1f421a0b7ba910adb5",
+        "native_ctwm_check": "passed",
+        "shell_input": "guest XTEST helper"
+      },
+      {
+        "status": "passed",
+        "profile": "irix-6.5.30f-v1",
+        "chd_sha256": "b1bf09e4281d9666359b40c9ded755a07675bdd9fb38dbe0843740d44e38b6c7",
+        "clean_shutdown": true,
+        "base_unchanged": true,
+        "logout": true,
+        "shell": [
+          "xiritest",
+          "/usr/people/xiritest",
+          "/usr/people/xiritest",
+          "IRIX_SHELL_OK"
+        ],
+        "dimensions": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+        "screenshots": {
+          "greeter": {
+            "sha256": "df3a54fe7f5fbffe4e80974472cee9a062bc0183a41f776932635798db028073",
+            "size": [
+              1282,
+              1024
+            ]
+          },
+          "irix-desktop": {
+            "sha256": "3d08f5f0c0eb81a3636b0a4ab0a21a7d848b3f3d3672dff3e55a3d5a76cf4c3a",
+            "size": [
+              1282,
+              1024
+            ]
+          },
+          "native-ctwm": {
+            "sha256": "ccffac6e2124e6c15964d5acbd0653e3fbf26ebd4f887efea6ed6ad9b5aa39c6",
+            "size": [
+              1282,
+              1024
+            ]
+          }
+        },
+        "evidence": ".work/iris-upstream-20261122/desktop-interpreter-6.5.30",
+        "result_sha256": "9ecd719de3dc01a6145b6b3b92adc08030e82df4d01aa393715f95745f6aa1ca",
+        "probe_sha256": "8278fd5e8bdb880d68fdfce01bcd8f0c4d5e5a45e62d9b3f981e523d6f98e64c",
+        "emulator_revision": "e54410de48cca5915a9e1c1f421a0b7ba910adb5",
+        "native_ctwm_check": "passed",
+        "shell_input": "guest XTEST helper"
+      }
+    ],
+    "limits": [
+      "Real-device audio loopback not qualified.",
+      "Initial unpaced PS/2 command bursts failed; both paced PS/2 desktop runs passed.",
+      "Guest checks cover the Indy/Newport previews; O2 and Octane guest qualification was not rerun."
+    ]
+  },
+  "prismatic": {
+    "repository": "prismatic",
+    "revision": "63b6cc860c9aecf2dfdaafdbe3d7c036827b3fb9",
+    "scope": "Read-only consumer snapshot; actual frontend checkout and installed binary unchanged.",
+    "unmodified_snapshot_check": "failed: origin3200.c_bricks changed from u8 to Option<u8>",
+    "disposable_adaptation": "config.origin3200.c_bricks = self.nodes.into();",
+    "adapted_snapshot_check": "passed",
+    "checkout_changed": false,
+    "new_frontend_binary_built": false,
+    "follow_up": "Apply the compatible field assignment and qualify the normal frontend/helper rebuild separately."
+  },
+  "reproduction": {
+    "source": "git -C ../iris worktree add --detach /var/home/salvogendut/Dev/xiri/.work/iris-upstream-20261122/src 0bc52567a87349a5f521c702f9d8dec1dc0f79c6",
+    "lockfile": "Restore the retained Cargo.lock into the recreated source worktree.",
+    "cargo_wrapper": ".work/iris-upstream-20261122/cargo.sh",
+    "builds": [
+      "cargo.sh build --locked --offline --release -p iris --bin iris --bin iris-ci",
+      "cargo.sh build --locked --offline --release -p iris -p iris-gui --features jitv2,gpujit,idle-pause,wgpu,gputrace,iris-gui/bundled --bin iris --bin iris-ci --bin iris-gui"
+    ],
+    "tests": [
+      "cargo.sh test --locked --offline -p iris --lib --no-run",
+      "cargo.sh test --locked --offline --workspace --features jitv2,gpujit,idle-pause,wgpu,gputrace --no-run",
+      "Run the resulting core executable with --test-threads=1, skipping the two permission cases; run those cases as unprivileged uid 1001.",
+      "Run the other workspace executables serially; exact commands are in workspace-summary.json.",
+      "cargo.sh test --locked --offline --doc --workspace --features jitv2,gpujit,idle-pause,wgpu,gputrace"
+    ],
+    "guest_example": "python3 scripts/probe-iris-desktop.py --preview .work/images/xiri-irix-6.5.30f-r5000-20261115 --emulator .work/emulators/iris-xiri-20261122/accelerated --kernel-manifest .work/images/xiri-netbsd-desktop-20261114-controls/manifest.json --output .work/iris-upstream-20261122/desktop-repeat-6.5.30",
+    "guest_environment": "Run inside the existing xiri-iris build container. Output must not exist; private disk copies and overlays are created. Historical probes are retained per run; the committed version differs from the last run only in a comment."
+  },
+  "cleanup": {
+    "measurement": "Sum of allocated blocks of removed paths; includes reflink-shared extents, not an exclusive physical-free estimate.",
+    "paths": [
+      {
+        "path": "target",
+        "allocated_bytes": 5002842112
+      },
+      {
+        "path": "src",
+        "allocated_bytes": 151302144
+      },
+      {
+        "path": "consumer",
+        "allocated_bytes": 9289728
+      },
+      {
+        "path": "gui-state",
+        "allocated_bytes": 2158592
+      },
+      {
+        "path": "__pycache__",
+        "allocated_bytes": 8192
+      },
+      {
+        "path": "desktop-accelerated-6.5.22/disk.chd",
+        "allocated_bytes": 458358784
+      },
+      {
+        "path": "desktop-accelerated-6.5.22/emulator.pid",
+        "allocated_bytes": 4096
+      },
+      {
+        "path": "desktop-accelerated-6.5.22/disk.chd.diff.chd",
+        "allocated_bytes": 5111808
+      },
+      {
+        "path": "desktop-accelerated-6.5.22/nvram.bin.1154483.1.tmp",
+        "allocated_bytes": 0
+      },
+      {
+        "path": "desktop-accelerated-6.5.30/disk.chd",
+        "allocated_bytes": 485228544
+      },
+      {
+        "path": "desktop-accelerated-6.5.30/emulator.pid",
+        "allocated_bytes": 4096
+      },
+      {
+        "path": "desktop-accelerated-6.5.30/disk.chd.diff.chd",
+        "allocated_bytes": 5062656
+      },
+      {
+        "path": "desktop-accelerated-6.5.30/nvram.bin.1154490.1.tmp",
+        "allocated_bytes": 8192
+      },
+      {
+        "path": "desktop-accelerated-paced-6.5.22/disk.chd",
+        "allocated_bytes": 458358784
+      },
+      {
+        "path": "desktop-accelerated-paced-6.5.22/emulator.pid",
+        "allocated_bytes": 4096
+      },
+      {
+        "path": "desktop-accelerated-paced-6.5.22/disk.chd.diff.chd",
+        "allocated_bytes": 5079040
+      },
+      {
+        "path": "desktop-accelerated-paced-6.5.22/nvram.bin.1170370.1.tmp",
+        "allocated_bytes": 8192
+      },
+      {
+        "path": "desktop-accelerated-paced-6.5.30/disk.chd",
+        "allocated_bytes": 485228544
+      },
+      {
+        "path": "desktop-accelerated-paced-6.5.30/emulator.pid",
+        "allocated_bytes": 4096
+      },
+      {
+        "path": "desktop-accelerated-paced-6.5.30/disk.chd.diff.chd",
+        "allocated_bytes": 5029888
+      },
+      {
+        "path": "desktop-accelerated-paced-6.5.30/nvram.bin.1170451.1.tmp",
+        "allocated_bytes": 8192
+      },
+      {
+        "path": "desktop-interpreter-6.5.22/disk.chd",
+        "allocated_bytes": 458358784
+      },
+      {
+        "path": "desktop-interpreter-6.5.22/emulator.pid",
+        "allocated_bytes": 4096
+      },
+      {
+        "path": "desktop-interpreter-6.5.22/disk.chd.diff.chd",
+        "allocated_bytes": 5029888
+      },
+      {
+        "path": "desktop-interpreter-6.5.30/disk.chd",
+        "allocated_bytes": 485228544
+      },
+      {
+        "path": "desktop-interpreter-6.5.30/emulator.pid",
+        "allocated_bytes": 4096
+      },
+      {
+        "path": "desktop-interpreter-6.5.30/disk.chd.diff.chd",
+        "allocated_bytes": 4964352
+      },
+      {
+        "path": "desktop-interpreter-6.5.30/nvram.bin.1129194.1.tmp",
+        "allocated_bytes": 8192
+      }
+    ],
+    "status": "completed",
+    "allocated_bytes_removed": 8026697728,
+    "after_disk_available_bytes": 461160980480,
+    "all_test_instances_stopped": true,
+    "before_disk_available_bytes": 458648416256,
+    "observed_available_bytes_increase": 2512564224,
+    "build_container_stopped": true,
+    "temporary_branch_deleted": true,
+    "retained_evidence_allocated_bytes": 3522560,
+    "retained_binary_bundle_allocated_bytes": 141586432
+  },
+  "preexisting_changes_preserved": {
+    "docs/FORKS.md": "716136c5764b186f72527cadb2185bcef5a3ca78bde49412018797576551d92b",
+    "docs/ROADMAP.md": "c021d030f6a74b4f961c0e2b049ac63f89565871687fb4d118ac1d48c723db7e",
+    "docs/results/2026-11-14-octane-platform.md": "3e96ce71f5f993df7dc6304bd693552fd7cccb296944dc5cec51f5c67bfc8806",
+    "lab/irix-o2/README.md": "13809bf46a466e14f797917f63ba212119d484798914306149ad4236178bf294",
+    "docs/results/2026-11-15-native-platforms.json": "b1ea3f1e22fc03eddf9c66ff9aa893862cbd485bace8f6f072b6df9b0ceb9c29"
+  },
+  "evidence": [
+    {
+      "path": ".work/iris-upstream-20261122/Cargo.lock",
+      "sha256": "2d1604dcb774aaab799166dee7fb87c259cc118febb559b16dcec4476e1899c4"
+    },
+    {
+      "path": ".work/iris-upstream-20261122/accelerated-help.txt",
+      "sha256": "eeb85abdecd32cde5b0d2b4e5e8ca6da448bcd404ea494f34eb06cacd969ccab"
+    },
+    {
+      "path": ".work/iris-upstream-20261122/build-binaries.sh",
+      "sha256": "72adc358f93af4bf20672f0a49cbf7b455791078daa73970e67cc86da72171f8"
+    },
+    {
+      "path": ".work/iris-upstream-20261122/build-release-accelerated.log",
+      "sha256": "5c51a2a9376821841fa92ccb8b8d17d43feed180873be6eb300a7547297775f2"
+    },
+    {
+      "path": ".work/iris-upstream-20261122/build-release-default-final.log",
+      "sha256": "8d50789733fab1e38eed555befbc74e4e0d458e657a5382e3c9f7621b863ce5f"
+    },
+    {
+      "path": ".work/iris-upstream-20261122/build-release-default.log",
+      "sha256": "840ca97c5f2d346444b5354dc0fef717209a924487e80767ded8775cca12efa2"
+    },
+    {
+      "path": ".work/iris-upstream-20261122/build-test-default.log",
+      "sha256": "c86a5c745988ac3e1bb0b827709e03a83198c50954198191ac8fdae677f27abe"
+    },
+    {
+      "path": ".work/iris-upstream-20261122/build-test-jit-final.log",
+      "sha256": "a6026698d37bbe2c880bfd450eea71a1a8fb005115bec40b8498854e873aae06"
+    },
+    {
+      "path": ".work/iris-upstream-20261122/build-test-jit.log",
+      "sha256": "3cb8e5f37799d2969084166f0d522f25b02906303168f06596b3ac72039a88a4"
+    },
+    {
+      "path": ".work/iris-upstream-20261122/cargo.sh",
+      "sha256": "b00e5266e8608604566825046d64c31a7c32ca936435844513eeaa3d1bafc231"
+    },
+    {
+      "path": ".work/iris-upstream-20261122/check-prismatic-adapted.log",
+      "sha256": "8946bf78a6da79cd08f49312d233786f3a404688de217a77515f173301d87c4c"
+    },
+    {
+      "path": ".work/iris-upstream-20261122/check-prismatic.log",
+      "sha256": "fe6169e4c98e16cb2761f4cc2dc477a403e5642ccc7ee5c2b2953afd99b3b31a"
+    },
+    {
+      "path": ".work/iris-upstream-20261122/cleanup.json",
+      "sha256": "33f2955808cb1d4f2b8521051e464bda4ddf7448d7c1bf3e0390c08c0a831fce"
+    },
+    {
+      "path": ".work/iris-upstream-20261122/cli-help.txt",
+      "sha256": "cbe14cc4c20c97861d2cd082f0e448988c0be423457a8a55d9042beaf7fb064f"
+    },
+    {
+      "path": ".work/iris-upstream-20261122/consumer.json",
+      "sha256": "de48264357b5903c3485675c56bad956fab51fbaeacae11f3663870bb35bde8f"
+    },
+    {
+      "path": ".work/iris-upstream-20261122/core-summary.json",
+      "sha256": "f898d45c394d113578f8539400e0ec797a5c0078483aa24ef57aeab68863033f"
+    },
+    {
+      "path": ".work/iris-upstream-20261122/desktop-accelerated-6.5.22.log",
+      "sha256": "4539658955e364a222c68a1629ada5b77f318d7db49fd638a0c2040f5074702e"
+    },
+    {
+      "path": ".work/iris-upstream-20261122/desktop-accelerated-6.5.30.log",
+      "sha256": "bbfa7a49e525f425df944cd95a2bc28e4b565e39274733c1d659b2148917fab7"
+    },
+    {
+      "path": ".work/iris-upstream-20261122/desktop-accelerated-paced-6.5.22.log",
+      "sha256": "b380584942f2f64d5991c259e20110f4feb80b87391fad6e00b10a72cfa6d279"
+    },
+    {
+      "path": ".work/iris-upstream-20261122/desktop-accelerated-paced-6.5.30.log",
+      "sha256": "1408f0b362453e9b7b8d54d7243a20faecaca62a8c953d267bc439e3713d68d6"
+    },
+    {
+      "path": ".work/iris-upstream-20261122/desktop-interpreter-6.5.22.log",
+      "sha256": "820ddafe3ca6479883064c5ccf2dc83c584fda1409830999b11055a953fa9e0c"
+    },
+    {
+      "path": ".work/iris-upstream-20261122/desktop-interpreter-6.5.30.log",
+      "sha256": "0db3cdeb5995234eaf7d83d166ec5fba911355e584eccdccaceed592384920a7"
+    },
+    {
+      "path": ".work/iris-upstream-20261122/gui-ldd.txt",
+      "sha256": "0ded1081e258d7021b76371bb39595d6b18c248c6b19ed94bcc2be70e0ddcc67"
+    },
+    {
+      "path": ".work/iris-upstream-20261122/gui-smoke-run.log",
+      "sha256": "f82c25e170cf0fbf79606f4bc3a4623ae9822d965eb55cf9b0226ac1481cd06e"
+    },
+    {
+      "path": ".work/iris-upstream-20261122/gui-smoke.json",
+      "sha256": "3c65f5fd34b15025ecc65e9d9bcb5ae5fa417be8981a84fb4004cac0a450bd52"
+    },
+    {
+      "path": ".work/iris-upstream-20261122/gui-smoke.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".work/iris-upstream-20261122/gui-smoke.py",
+      "sha256": "028146f13ef0bd249dcc439489ea27d1066372613fe67bb98268f97bed818564"
+    },
+    {
+      "path": ".work/iris-upstream-20261122/impact-baseline-comparison.json",
+      "sha256": "418477b83f96e81a815324130e192880dc55be5decc9a9c24ff87321ed4dc1ec"
+    },
+    {
+      "path": ".work/iris-upstream-20261122/incoming-commits.txt",
+      "sha256": "dec45430552c0276522e22da695e7f68cb7dfe50fb4841c35abddec6b033d316"
+    },
+    {
+      "path": ".work/iris-upstream-20261122/incoming-stat.txt",
+      "sha256": "157eb1db932fb33600a96fb7ff414323f7ac75670cf9da5fb4e77dccdcb8edc9"
+    },
+    {
+      "path": ".work/iris-upstream-20261122/inputs.json",
+      "sha256": "21cef7e6b0f35214e8914a4616be00aaf2b7112ea134a74eb94f15103f1fe59c"
+    },
+    {
+      "path": ".work/iris-upstream-20261122/merge.log",
+      "sha256": "01b0c241f984329c4c15464105b757489218c418a09cff674fb920114b63c5c0"
+    },
+    {
+      "path": ".work/iris-upstream-20261122/prismatic-adaptation.patch",
+      "sha256": "91af20074d4d5708ea383b7be843a2a1cf848062909a6905a9df0804c762a05b"
+    },
+    {
+      "path": ".work/iris-upstream-20261122/process-check-before-jit.txt",
+      "sha256": "406ee4469032ae0cdf18602ed7b983da9ca9f13b2fda752c9dcb4bea97799709"
+    },
+    {
+      "path": ".work/iris-upstream-20261122/record-refresh.py",
+      "sha256": "bc6dd7d2f57c3f2676f65a59499e469b1ad00b7c8c074cc6ea3f299c89a6b31e"
+    },
+    {
+      "path": ".work/iris-upstream-20261122/resolve.py",
+      "sha256": "6178a46a886dec359d70bdb9065f542a3ed9c1fae8ec67411ab054ff3bb0a621"
+    },
+    {
+      "path": ".work/iris-upstream-20261122/run-remaining-tests.py",
+      "sha256": "f7dce0c382619cfaf33dda3e0de10fc450b11d94e158c39e99e713dcfaed5d08"
+    },
+    {
+      "path": ".work/iris-upstream-20261122/test-default.log",
+      "sha256": "70f8ff781fec93d06121fbdd51388aecfa3298292e3d6497e9d3b2c698fe7a1d"
+    },
+    {
+      "path": ".work/iris-upstream-20261122/test-doc.log",
+      "sha256": "f6100edbca78ff09a800a8ff95a0c0051b2ccc89f89851821ffebbb536a7d632"
+    },
+    {
+      "path": ".work/iris-upstream-20261122/test-jit-core.log",
+      "sha256": "5557a0b8e56771132a5e249c6d2c5426d88555ce39de7ccbb4b25f3b7c7c0c86"
+    },
+    {
+      "path": ".work/iris-upstream-20261122/test-permissions.log",
+      "sha256": "76479da01da1a9d0af6fb021cb3b4fce1397f67499b6f34e1606a0f8716e0244"
+    },
+    {
+      "path": ".work/iris-upstream-20261122/test-workspace-bench_accuracy-e1b41fba7db9f22e.log",
+      "sha256": "f9ff068901af4216f27a64932c7d1858c65df7a63e58df67d5fbf3d098a8cdcf"
+    },
+    {
+      "path": ".work/iris-upstream-20261122/test-workspace-chd_extract-09faa5c0a17fc34e.log",
+      "sha256": "df166913f47ff1f04202cae9b31df67ed272d692d99a0023a8117dc3029100dd"
+    },
+    {
+      "path": ".work/iris-upstream-20261122/test-workspace-coffdump-68d325d9cc4875e3.log",
+      "sha256": "df166913f47ff1f04202cae9b31df67ed272d692d99a0023a8117dc3029100dd"
+    },
+    {
+      "path": ".work/iris-upstream-20261122/test-workspace-cpu_tests-8bb254a5af8bb8f5.log",
+      "sha256": "3e5b8708c4786055eeb31ec1426636665ae2d3ca7830705d2fe24e38a3c6e9e5"
+    },
+    {
+      "path": ".work/iris-upstream-20261122/test-workspace-hot_paths-16b06d2a59b2b297.log",
+      "sha256": "c2d56b462f09598b3397d3349a557b5d9492aeb34bb9e1ad02f28c866c9a4626"
+    },
+    {
+      "path": ".work/iris-upstream-20261122/test-workspace-iris-35670213a6eea7f2.log",
+      "sha256": "df166913f47ff1f04202cae9b31df67ed272d692d99a0023a8117dc3029100dd"
+    },
+    {
+      "path": ".work/iris-upstream-20261122/test-workspace-iris_bench-e6b1d44f4e76c7a7.log",
+      "sha256": "72305db8d0d26d1d0c957c3628ac547a366f7c17b38b66755325c93a69192b28"
+    },
+    {
+      "path": ".work/iris-upstream-20261122/test-workspace-iris_ci-672eae0f3217da98.log",
+      "sha256": "763965c79c174ae49afdfdf0f4f61f94d23e0b0720b67b24880f342c6ca945a0"
+    },
+    {
+      "path": ".work/iris-upstream-20261122/test-workspace-iris_gui-4daa322898f1d96a.log",
+      "sha256": "43278f7451be96d4129f560062137725a6271a7cce707d3bbf73ae63a3ae8eb7"
+    },
+    {
+      "path": ".work/iris-upstream-20261122/test-workspace-iris_hostcall-22e1bb81c1fc16cb.log",
+      "sha256": "ef30ca7e7ea87f3e463de6db857620ae160fe47dff76454318e486db256ed6be"
+    },
+    {
+      "path": ".work/iris-upstream-20261122/test-workspace-iris_prom-ef97642b748e252c.log",
+      "sha256": "41c3972e22f660cd9f5f6025827bcf07e65719ea4cec3ace7904f72783d6af9f"
+    },
+    {
+      "path": ".work/iris-upstream-20261122/test-workspace-jitv2_analyze-34c66eeb6c0ac980.log",
+      "sha256": "df166913f47ff1f04202cae9b31df67ed272d692d99a0023a8117dc3029100dd"
+    },
+    {
+      "path": ".work/iris-upstream-20261122/test-workspace-jitv2_verify-da1c8af4564ffd99.log",
+      "sha256": "2c695c80fc111f3f4a67de01d59ce62ce44d028afb7c52089b33bf916d9730d0"
+    },
+    {
+      "path": ".work/iris-upstream-20261122/test-workspace-mkvh-facc86734d935ed7.log",
+      "sha256": "df166913f47ff1f04202cae9b31df67ed272d692d99a0023a8117dc3029100dd"
+    },
+    {
+      "path": ".work/iris-upstream-20261122/test-workspace-monitor_ready-66758c156309b68a.log",
+      "sha256": "1086f7494581c220e5743de54c84cd1a89940df0f8e4e88b9ea0fc436e46cf6e"
+    },
+    {
+      "path": ".work/iris-upstream-20261122/test-workspace-rex3_dirty-601870ad18b1ffe3.log",
+      "sha256": "df166913f47ff1f04202cae9b31df67ed272d692d99a0023a8117dc3029100dd"
+    },
+    {
+      "path": ".work/iris-upstream-20261122/test-workspace-snapshot_schemas-4a0cc5cc56646bd3.log",
+      "sha256": "821dc45053f502ce737d9b5c69e25875f12ccd96c525f6f7554fe4d40032b138"
+    },
+    {
+      "path": ".work/iris-upstream-20261122/test-workspace.log",
+      "sha256": "a50669f0b8da7ef163c9537d69ca9a00f57a2ed4c98833550e6612be58d62308"
+    },
+    {
+      "path": ".work/iris-upstream-20261122/toolchain.txt",
+      "sha256": "0fa77ae7001a0b472c98d9f1367fa1695928f24c0d310aa9cb051bbefcd91f49"
+    },
+    {
+      "path": ".work/iris-upstream-20261122/workspace-summary.json",
+      "sha256": "1181af05391803b9398f644892fcc8a8cafb9e5c15dbc6a1775cd17d04bb00d0"
+    },
+    {
+      "path": ".work/iris-upstream-20261122/workspace-tests.json",
+      "sha256": "e55fe9a419715ec48d546b8292c0dacb74209ea5b70493051d1529589a90fdbc"
+    },
+    {
+      "path": ".work/emulators/iris-xiri-20261122/accelerated/manifest.json",
+      "sha256": "ac031d4949289aeffbe39ae1ded80fca1987f8afbf54a74eedf16cb5618f2bf8"
+    },
+    {
+      "path": ".work/emulators/iris-xiri-20261122/interpreter/manifest.json",
+      "sha256": "a9c4bb396420dffecc04b5cdd7bea81751143a0b5da1860e4cf62e21fde23ca7"
+    },
+    {
+      "path": "docs/results/2026-11-22-irix-6.5.22.png",
+      "sha256": "d25ccbffbcfe9b3b6f15181b1764ed2a91d58bfa4189aff30f1f45de6b970f19"
+    },
+    {
+      "path": "docs/results/2026-11-22-irix-6.5.30.png",
+      "sha256": "827c8334916a4f55dbb42ada9435384ac4f51e8d85c1bbacc7ec974672300658"
+    }
+  ]
+}
