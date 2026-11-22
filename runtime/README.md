@@ -212,6 +212,14 @@ Reconnect FAM clients after group changes so they acquire the updated groups.
 On the Indy, set **ttyE0** to `off` in `/etc/ttys` before rebooting; a getty
 must not read the same graphical keyboard as xdm. Keep **ttyZ0** enabled for
 serial administration. Reboot to run PTY preparation before any desktop login.
+
+For IP28 with IMPACT, use the native `wsfb` Xorg configuration and enable
+`wscons=YES` with `screen 0 - vt100` in `/etc/wscons.conf`. Serial-console
+boot does not create that graphical screen; `wscons` must provide it before
+xdm starts. Keep ttyE0 disabled and ttyZ0 enabled as above. The
+[IP28 fixture guide](../lab/ip28-kernel/README.md#native-xdm-startup) gives
+the image preparation and normal-boot checks.
+
 Log in at the graphical prompt with the native account's password.
 The session starts in that user's HOME, with the account's supplementary
 groups and xdm's authority file. The `.xsession` entry maps local `:0` to

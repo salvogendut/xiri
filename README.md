@@ -214,6 +214,9 @@ The [IP28 module and IMPACT/Xorg checkpoint](docs/results/2026-11-22-ip28-impact
 adds a matching loadable IRIX personality, native 1280×1024 `wsfb` graphics
 and PS/2 input. Both vendor desktops pass shell/logout checks, with separate
 bootable CHDs and [manual instructions](lab/ip28-kernel/README.md#manual-impact-desktop).
+The [IP28 xdm checkpoint](docs/results/2026-11-22-ip28-xdm.md) adds normal
+boot into a full-screen greeter, authenticated IRIX and native ctwm sessions,
+and separate automatic-boot images for both release lines.
 
 ## Run the current image
 

@@ -26,7 +26,9 @@ def main():
     parser.add_argument("--kernel", default="netbsd")
     parser.add_argument("--kernel-sha256", help="Expected installed /netbsd.ip28 checksum on a disk boot")
     parser.add_argument("--tftp", type=Path, help="Direct PROM kernel TFTP directory; otherwise boot the disk header")
-    parser.add_argument("--media", type=Path, help="Read-only ISO with netbsd and ip28boot for installation")
+    media_group = parser.add_mutually_exclusive_group()
+    media_group.add_argument("--media", type=Path, help="Read-only ISO with netbsd and ip28boot for installation")
+    media_group.add_argument("--fixture-media", type=Path, help="Mount/check this test ISO without reinstalling the kernel/loader")
     parser.add_argument("--firmware-dir", type=Path, help="Use saved nvram/nveeprom and boot without resetting PROM variables")
     parser.add_argument("--overlay-dir", type=Path, help="Reuse a prepared private disk overlay")
     parser.add_argument("--machine", choices=("ip28", "indy-r4400", "indy-r5000"), default="ip28")
@@ -37,11 +39,27 @@ def main():
                         help="Run check-xorg.sh from mounted media and qualify PS/2 input/scanout")
     parser.add_argument("--desktop", action="store_true",
                         help="Run the installed Xiri user desktop on IMPACT after the native checks")
+    parser.add_argument("--multiuser", action="store_true", help="Boot through rc.d and log in on serial B")
+    parser.add_argument("--xdm", choices=("full", "greeter"), help="Qualify boot-started xdm and optionally both user desktops")
+    parser.add_argument("--autoboot", action="store_true", help="Use saved firmware's automatic disk boot without PROM commands")
     parser.add_argument("--command-timeout", type=int, default=120)
     args = parser.parse_args()
+    if args.xdm:
+        args.multiuser = True
+        if args.desktop or args.xorg:
+            parser.error("xdm owns Xorg; do not combine it with manual display checks")
+    if args.autoboot and (not args.firmware_dir or not args.multiuser):
+        parser.error("--autoboot requires --firmware-dir and a multiuser boot")
+    media = args.media or args.fixture_media
+    if args.xdm == "full" and not media:
+        parser.error("--xdm full requires fixture media containing type-ready.c")
+    if args.autoboot and args.tftp:
+        parser.error("--autoboot qualifies disk boot, without TFTP")
     out = args.output.resolve()
     out.mkdir(parents=True, exist_ok=False)
     shutil.copyfile(__file__, out / "probe-used.py")
+    if args.xdm:
+        shutil.copyfile(Path(__file__).with_name("xdm.py"), out / "xdm-used.py")
     def sha(path):
         with path.open("rb") as stream:
             return hashlib.file_digest(stream, "sha256").hexdigest()
@@ -111,8 +129,8 @@ mac = "08:00:69:12:34:56"
         cfg = cfg.replace('cpu = "r10000"', 'cpu = ' + json.dumps(args.machine.split('-')[1]))
         cfg = cfg.replace('board = "highimpact"', 'board = "newport"')
         cfg = cfg.replace('raster = "wgpu"\n', '').replace('gpu_backend = "vulkan"\n', '')
-    if args.media:
-        cfg += f'[scsi.4]\npath = {json.dumps(str(args.media.resolve()))}\ncdrom = true\n'
+    if media:
+        cfg += f'[scsi.4]\npath = {json.dumps(str(media.resolve()))}\ncdrom = true\n'
     # tftp_dir belongs to the network table, not the optional CD-ROM.
     if args.tftp:
         cfg = cfg.replace('[network]\n', '[network]\ntftp_dir = ' + json.dumps(str(args.tftp.resolve())) + '\n')
@@ -173,6 +191,7 @@ mac = "08:00:69:12:34:56"
     env = dict(os.environ, IRIS_NO_IDLE="1", IRIS_CHD_DIFF_DIR=str((args.overlay_dir or out).resolve()))
     result = {"disk": str(args.disk.resolve()), "kernel": args.kernel,
               "loader_transport": "tftp" if args.tftp else "scsi-volume-header",
+              "multiuser": args.multiuser, "firmware_autoboot": args.autoboot,
               "machine": args.machine, "disk_sha256": disk_sha256,
               "script_sha256": sha(Path(__file__)), "passed": False}
     def interrupted(signum, frame):
@@ -193,41 +212,51 @@ mac = "08:00:69:12:34:56"
                     raise RuntimeError("IRIS control socket unavailable")
                 time.sleep(0.2)
             rpc("start")
-            wait("Enter Command Monitor")
-            command("5")
-            if not args.firmware_dir:
-                command("setenv SystemPartition dksc(0,1,8)")
-                command("setenv OSLoader boot")
-                command("setenv OSLoadPartition dksc(0,1,0)")
-                command("setenv OSLoadFilename " + args.kernel)
-                command("setenv OSLoadOptions single")
-                command("setenv netaddr 192.168.0.2")
             start = len(transcript)
-            boot_command = "boot -f bootp():" + args.kernel if args.tftp else "boot"
-            rpc("serial-send", data=boot_command + "\r")
-            wait(r"Enter pathname of shell|panic:|Exception:|Stopped in pid|root device(?: \([^\r\n]+\))?:", start)
+            if not args.autoboot:
+                wait("Enter Command Monitor")
+                command("5")
+                if not args.firmware_dir:
+                    command("setenv SystemPartition dksc(0,1,8)")
+                    command("setenv OSLoader boot")
+                    command("setenv OSLoadPartition dksc(0,1,0)")
+                    command("setenv OSLoadFilename " + args.kernel)
+                    command("setenv OSLoadOptions " + ("auto" if args.multiuser else "single"))
+                    if args.multiuser:
+                        command("setenv AutoLoad Yes")
+                    command("setenv netaddr 192.168.0.2")
+                start = len(transcript)
+                boot_command = "boot -f bootp():" + args.kernel if args.tftp else "boot"
+                rpc("serial-send", data=boot_command + "\r")
+            wait(r"login: |Enter pathname of shell|(?<![\w.])panic:|Exception:|Stopped in pid|root device(?: \([^\r\n]+\))?:", start, timeout=180)
             if "root device" in transcript[start:]:
                 for answer, prompt in (("sd0a", "dump device"), ("none", "file system"), ("ffs", "init path")):
                     step = len(transcript)
                     rpc("serial-send", data=answer + "\r")
-                    wait(prompt + r"|panic:|Exception:|Stopped in pid", step)
+                    wait(prompt + r"|(?<![\w.])panic:|Exception:|Stopped in pid", step)
                     if prompt not in transcript[step:]:
                         raise RuntimeError(transcript[step:])
                 step = len(transcript)
                 rpc("serial-send", data="\r")
-                wait(r"Enter pathname of shell|panic:|Exception:|Stopped in pid", step)
+                wait(r"Enter pathname of shell|(?<![\w.])panic:|Exception:|Stopped in pid", step)
             body = transcript[start:]
-            if "Enter pathname of shell" not in body:
-                raise RuntimeError(body[-4000:])
-            rpc("serial-send", data="\r")
-            wait(r"(?:^|[\r\n])# ", start)
+            if args.multiuser:
+                if "login: " not in body:
+                    raise RuntimeError(body[-4000:])
+                rpc("serial-send", data="root\r")
+                wait(r"(?:^|[\r\n])[^\r\n]*# ", len(transcript))
+            else:
+                if "Enter pathname of shell" not in body:
+                    raise RuntimeError(body[-4000:])
+                rpc("serial-send", data="\r")
+                wait(r"(?:^|[\r\n])# ", start)
             start_cmd = len(transcript)
             rpc("serial-send", data="uname -a; sysctl hw.model hw.ncpu; mount; /bin/echo XIRI_IP28_NATIVE_SHELL\r")
             wait(r"(?:^|[\r\n])XIRI_IP28_NATIVE_SHELL\r?\n", start_cmd)
             def shell(command, check=True):
                 step = len(transcript)
                 rpc("serial-send", data=command + "; printf '\\nXIRI_RC_%s\\n' \"$?\"\r")
-                wait(r"(?:^|[\r\n])XIRI_RC_[0-9]+\r?\n|panic:|Stopped in pid", step,
+                wait(r"(?:^|[\r\n])XIRI_RC_[0-9]+\r?\n|(?<![\w.])panic:|Stopped in pid", step,
                      timeout=args.command_timeout)
                 body = transcript[step:]
                 if check and not re.search(r"(?:^|[\r\n])XIRI_RC_0\r?\n", body):
@@ -247,15 +276,26 @@ mac = "08:00:69:12:34:56"
             result["processes"] = shell("/bin/sh -c 'i=0; while [ $i -lt 32 ]; do /bin/echo IP28_EXEC >/dev/null || exit; i=$((i+1)); done'")
             result["network"] = shell("/sbin/ifconfig sq0 inet 192.168.0.2 netmask 255.255.255.0 up && /sbin/ifconfig -w 20 && /sbin/ping -n -c 3 -w 5 192.168.0.1")
             result["network_state"] = shell("/sbin/ifconfig sq0; /usr/bin/netstat -in; /usr/sbin/arp -an")
-            if args.media:
+            if media:
                 shell("mkdir -p /cdrom && mount -t cd9660 -o ro /dev/cd0a /cdrom")
                 shell("cd /cdrom && sha256 -c SHA256 && cd /")
+            if args.media:
                 result["installation"] = shell("install -m 444 /cdrom/netbsd /netbsd.ip28 && install -m 444 /cdrom/ip28boot /usr/mdec/ip28boot && /usr/mdec/sgivol -q -w boot /usr/mdec/ip28boot /dev/rsd0c && sha256 /netbsd.ip28 /usr/mdec/ip28boot && umount /cdrom && sync")
             if args.irix_module:
                 import shlex
                 shell("/sbin/modload " + shlex.quote(args.irix_module))
                 result["irix_shell"] = shell("/emul/irix/bin/sh -c '/bin/echo XIRI_IRIX_SHELL_OK'")
             result["checks"] = [shell(command) for command in args.check_command]
+            if args.xdm:
+                from xdm import qualify
+                def capture(name):
+                    path = out / (name + ".png")
+                    subprocess.run([str(args.iris.resolve().with_name("iris-ci")),
+                                    "--socket", str(sock), "screenshot", str(path)],
+                                   check=True, timeout=30)
+                    return path
+                result["xdm"] = {}
+                qualify(shell, monitor, capture, args.xdm, result["xdm"])
             if args.xorg:
                 result["xorg"] = shell("sh /cdrom/check-xorg.sh")
                 # The Xlib probe has keyboard focus; exercise the actual PS/2 path.
@@ -283,19 +323,25 @@ mac = "08:00:69:12:34:56"
                                 str(out / "desktop.png")], check=True, timeout=30)
                 result["desktop_shutdown"] = shell("touch $(cat /var/tmp/ip28-desktop/job)/logout; i=0; while pgrep -x Xorg >/dev/null; do i=$((i+1)); test $i -lt 60 || break; sleep 1; done; ! pgrep -x Xorg")
             result["dmesg"] = shell("dmesg")
-            if re.search(r"command FIFO timeout|panic:|WARNING: module error", result["dmesg"]):
+            if re.search(r"command FIFO timeout|(?<![\w.])panic:|WARNING: module error", result["dmesg"]):
                 raise RuntimeError("Driver or module error in kernel log")
             halt_start = len(transcript)
-            rpc("serial-send", data="/sbin/halt\r")
-            wait(r"System Maintenance Menu|panic:|Stopped in pid", halt_start)
+            rpc("serial-send", data=("/sbin/shutdown -h now" if args.multiuser else "/sbin/halt") + "\r")
+            wait(r"System Maintenance Menu|(?<![\w.])panic:|Stopped in pid", halt_start, timeout=180)
             result["shutdown"] = transcript[halt_start:]
             if "System Maintenance Menu" not in result["shutdown"] or "halting..." not in result["shutdown"]:
                 raise RuntimeError(result["shutdown"])
             result.update(passed=True, evidence=transcript[start:])
         except Exception as error:
             result["error"] = str(error)
+            if args.xdm:
+                try:
+                    args.command_timeout = 10
+                    result["failure_diagnostics"] = shell("tail -60 /var/log/xdm.log; ps -ax -o pid,ppid,uid,comm; dmesg", check=False)
+                except Exception:
+                    pass
         finally:
-            if not result["passed"] and (args.xorg or args.desktop):
+            if not result["passed"] and (args.xorg or args.desktop or args.xdm):
                 try:
                     subprocess.run([str(args.iris.resolve().with_name("iris-ci")),
                                     "--socket", str(sock), "screenshot",

@@ -1,0 +1,412 @@
+{
+  "date": "2026-11-22",
+  "scope": "Native xdm login on IP28/High IMPACT for both vendor release lines",
+  "netbsd_commit": "f45f1b8d816de739d2eea2d14dca453878360b11",
+  "netbsd_branch": "xiri",
+  "iris_upstream_checked": "6ec1ebf379228d572026a9ae8d291511ed28af74",
+  "iris_integration": "eb21c6ecec510e3bee2582b42a48a3af6b0726a8",
+  "iris_merge_required": false,
+  "kernel_sha256": "65556ba7a2a80eb0a07d817c2b24da78d0df66c5c48d75e6a1d7c059040a0a30",
+  "module_sha256": "68fd4cda80886b288384e2018c5c25528b8493e1c09b0ed0e9b7291d51427d05",
+  "iris_binary_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+  "releases": {
+    "6.5.22": {
+      "source_chd": "/var/home/salvogendut/Dev/xiri/.work/native/xiri-ip28-impact-6.5.22-20261122/netbsd-xiri.chd",
+      "source_chd_sha256": "eb382b5e5d790fe26af7442770347f2ab87d943ddda6ca29b89664e709f04d14",
+      "preparation": {
+        "directory": ".work/ip28-xdm-20261122/prepared2-6.5.22",
+        "result_sha256": "149e060fb466de0fd8f51898e0fcf641f5fc50ff9f72dd02a6232e70b02130a2",
+        "configuration_sha256": {
+          "/etc/wscons.conf": "756e14be1221a85f1fd934124fd2462ea9767385b3fe4c99da42b418fd5066ad",
+          "/etc/ttys": "010ec0f3c5ab7357e3dda09ae1a6b72972b121872a2d3d07eceb7325fa7a9d6b",
+          "/usr/local/share/xiri/xorg.conf": "18f435de431d808b22fea03670b7f61e57be9a38ec2dbedff805a1d4e395547d"
+        }
+      },
+      "qualification": {
+        "directory": ".work/ip28-xdm-20261122/qualify2-6.5.22",
+        "passed": true,
+        "result_sha256": "635eae6ec3ed728c51c54a9b79ac46d548f621e1f85c656d01ed36b4148f457b",
+        "elapsed_seconds": 256.73,
+        "base_unchanged": true,
+        "clean_shutdown": true,
+        "session_shutdown_before_xdm": true,
+        "xdm": {
+          "passed": true,
+          "mode": "full",
+          "screenshots": {
+            "xdm-greeter": {
+              "sha256": "6b63267d8a7c63c151f9b9a65379d15674ae1fb1fb0d4b3d01830863eb3bf874",
+              "size": [
+                1280,
+                1024
+              ],
+              "greeter_dark_pixels": 1790,
+              "greeter_light_pixels": 91098
+            },
+            "xdm-irix": {
+              "sha256": "1598e6e5093e1fcb66d5d64b4643e1ceb2e69f86696aa1bc8ffc8f3e4a26df7c",
+              "size": [
+                1280,
+                1024
+              ]
+            },
+            "xdm-native": {
+              "sha256": "d762345888ca0f6eb951050921980e4e059ad88cc62e7b1628fd8b059d2beca5",
+              "size": [
+                1280,
+                1024
+              ]
+            },
+            "xdm-irix-retry": {
+              "sha256": "ad8bb979ea4c9dcc8b40a78858ac5e016e6b21baefdf7209caa913e0ee55e00f",
+              "size": [
+                1280,
+                1024
+              ]
+            },
+            "xdm-after-logout": {
+              "sha256": "eb693b0fc393ff4594ae135f3c204373b9a9f6e3124cf5c5bc1c91bff6558d6f",
+              "size": [
+                1280,
+                1024
+              ],
+              "greeter_dark_pixels": 1790,
+              "greeter_light_pixels": 91098
+            }
+          },
+          "sessions": [
+            {
+              "user": "xiritest",
+              "proof": [
+                "xiritest",
+                "1234",
+                "/usr/people/xiritest",
+                "/usr/people/xiritest",
+                "1234 1235",
+                "/usr/people/xiritest/.Xauthority"
+              ],
+              "dimensions": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+              "label": "xdm-irix",
+              "identity": "SESSION user=xiritest uid=1234 groups=1234 1235 home=/usr/people/xiritest cwd=/usr/people/xiritest display=127.0.0.1:0 authority=default",
+              "unauthenticated_x_rejected": true,
+              "logout_returned_to_greeter": true
+            },
+            {
+              "user": "netbsdtest",
+              "proof": [
+                "netbsdtest",
+                "1236",
+                "/home/netbsdtest",
+                "/home/netbsdtest"
+              ],
+              "groups": [
+                "netbsdtest",
+                "wheel"
+              ],
+              "dimensions": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+              "wm": "ctwm",
+              "logout_returned_to_greeter": true
+            },
+            {
+              "user": "xiritest",
+              "proof": [
+                "xiritest",
+                "1234",
+                "/usr/people/xiritest",
+                "/usr/people/xiritest",
+                "1234 1235",
+                "/usr/people/xiritest/.Xauthority"
+              ],
+              "dimensions": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+              "label": "xdm-irix-retry",
+              "identity": "SESSION user=xiritest uid=1234 groups=1234 1235 home=/usr/people/xiritest cwd=/usr/people/xiritest display=127.0.0.1:0 authority=default",
+              "unauthenticated_x_rejected": true,
+              "logout_returned_to_greeter": true
+            }
+          ],
+          "boot_services": "xdm is running as pid 1110.\nxiri_famd is running as pid 1559.\nrpcbind is running as pid 689.\ncompat_irix_o32            exec     filesys  -        0       - exec_elf32,compat_netbsd32",
+          "service_pids": [
+            "1110",
+            "1559",
+            "689"
+          ],
+          "greeter": "xwininfo: Window id: 0x34d (the root window) (has no name)\n\n  Root window id: 0x34d (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     2 children:\n     0x600011 \"xconsole\": (\"xconsole\" \"XConsole\")  480x130+798+892  +798+892\n        1 child:\n        0x600012 (has no name): ()  480x130+0+0  +799+893\n           1 child:\n           0x600013 (has no name): ()  14x130+-1+-1  +798+892\n     0x40000b \"xlogin\": (\"xlogin\" \"Xlogin\")  690x304+295+240  +295+240\n        1 child:\n        0x40000c (has no name): ()  690x304+0+0  +297+242\n           1 child:\n           0x40000f (has no name): ()  185x150+491+77  +788+319"
+        },
+        "check_script_sha256": "50f073a9f4b2024c1a42b6754e25655b66f69238b1c915d4c492fa785be48796",
+        "xdm_script_sha256": "80f5dc992abfef24a8fde6ea3bc90263b26c4e22084dbc4107f7706752e81c1f"
+      },
+      "screenshots": {
+        "xdm-greeter": "docs/results/2026-11-22-ip28-xdm-greeter-6.5.22.png",
+        "xdm-irix": "docs/results/2026-11-22-ip28-xdm-irix-6.5.22.png",
+        "xdm-native": "docs/results/2026-11-22-ip28-xdm-native-6.5.22.png"
+      },
+      "packaged_boot": {
+        "passed": true,
+        "directory": ".work/ip28-xdm-20261122/packaged-6.5.22",
+        "result_sha256": "b18cb64d0faffecdba254976568a37e618aaac1846017a45c31bd34761b6879a",
+        "elapsed_seconds": 132.03,
+        "firmware_autoboot": true,
+        "prom_commands_issued": false,
+        "test_media_attached": false,
+        "base_unchanged": true,
+        "clean_shutdown": true,
+        "xdm": {
+          "passed": true,
+          "mode": "greeter",
+          "screenshots": {
+            "xdm-greeter": {
+              "sha256": "eb693b0fc393ff4594ae135f3c204373b9a9f6e3124cf5c5bc1c91bff6558d6f",
+              "size": [
+                1280,
+                1024
+              ],
+              "greeter_dark_pixels": 1790,
+              "greeter_light_pixels": 91098
+            }
+          },
+          "sessions": [],
+          "boot_services": "xdm is running as pid 2531.\nxiri_famd is running as pid 2326.\nrpcbind is running as pid 689.\ncompat_irix_o32            exec     filesys  -        0       - exec_elf32,compat_netbsd32",
+          "boot_order": [
+            "/etc/rc.d/modules",
+            "/etc/rc.d/wscons",
+            "/etc/rc.d/xiri_devices",
+            "/etc/rc.d/xiri_famd",
+            "/etc/rc.d/xdm"
+          ],
+          "service_pids": [
+            "2531",
+            "2326",
+            "689"
+          ],
+          "greeter": "xwininfo: Window id: 0x34d (the root window) (has no name)\n\n  Root window id: 0x34d (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     2 children:\n     0x600011 \"xconsole\": (\"xconsole\" \"XConsole\")  480x130+798+892  +798+892\n        1 child:\n        0x600012 (has no name): ()  480x130+0+0  +799+893\n           1 child:\n           0x600013 (has no name): ()  14x130+-1+-1  +798+892\n     0x40000b \"xlogin\": (\"xlogin\" \"Xlogin\")  690x304+295+240  +295+240\n        1 child:\n        0x40000c (has no name): ()  690x304+0+0  +297+242\n           1 child:\n           0x40000f (has no name): ()  185x150+491+77  +788+319"
+        },
+        "greeter_png": ".work/native/xiri-ip28-xdm-6.5.22-20261122/greeter.png",
+        "check_script_sha256": "9a2f805d49f3e6a9dc683ab3e7d015659e2d41bae11919ca7e66c39770e122b7",
+        "xdm_script_sha256": "857f6379bc1f75e97c683cccca44c06b0ed93e068e82fe85edfcc3f6824a45bc"
+      },
+      "artifact": {
+        "bundle": ".work/native/xiri-ip28-xdm-6.5.22-20261122",
+        "chd_sha256": "8004bc4d5a36d2a395678d7c9ae6cc7e11a29b61273da8f833d1908904a4baec",
+        "chd_bytes": 461549117,
+        "chd_verify_passed": true,
+        "bundle_files_sha256": {
+          "iris.toml": "213234674b06361a799e31f5e6078c70ecea048b2db67ec3316566a1d1b8895c",
+          "run-iris.sh": "368a440062b887c6001270066e9a7b5eba891d158f98e4feb5a784393ed9b368",
+          "README.txt": "a700720a5916e921d65d9ababa9981df3137ddc189f380c7d954f3b581db3590",
+          "nvram.bin": "5297ebceaeda9e13c0d081e851abaf589752015b2df81fc18d71d38e285c5cc6",
+          "nveeprom.bin": "be3ecc2c1c6fd5577048774125c621adcf46ae24cae50b0a2c4c40364d89fb73",
+          "greeter.png": "eb693b0fc393ff4594ae135f3c204373b9a9f6e3124cf5c5bc1c91bff6558d6f"
+        }
+      }
+    },
+    "6.5.30": {
+      "source_chd": "/var/home/salvogendut/Dev/xiri/.work/native/xiri-ip28-impact-6.5.30-20261122/netbsd-xiri.chd",
+      "source_chd_sha256": "29eaa5529d5ad1466867a67a33a45f69f1992cea22756527aa26bdcfae589c7a",
+      "preparation": {
+        "directory": ".work/ip28-xdm-20261122/prepared2-6.5.30",
+        "result_sha256": "d18cfc61df4f0cd95ec9d82124cf6cbdb8beb41a8426a57bf721f7352a39cb1a",
+        "configuration_sha256": {
+          "/etc/wscons.conf": "756e14be1221a85f1fd934124fd2462ea9767385b3fe4c99da42b418fd5066ad",
+          "/etc/ttys": "010ec0f3c5ab7357e3dda09ae1a6b72972b121872a2d3d07eceb7325fa7a9d6b",
+          "/usr/local/share/xiri/xorg.conf": "18f435de431d808b22fea03670b7f61e57be9a38ec2dbedff805a1d4e395547d"
+        }
+      },
+      "qualification": {
+        "directory": ".work/ip28-xdm-20261122/qualify2-6.5.30",
+        "passed": true,
+        "result_sha256": "113486a3d909f8c096c2476e93b7dc708e045aa67645a55d2fee03f7598705c5",
+        "elapsed_seconds": 287.36,
+        "base_unchanged": true,
+        "clean_shutdown": true,
+        "session_shutdown_before_xdm": true,
+        "xdm": {
+          "passed": true,
+          "mode": "full",
+          "screenshots": {
+            "xdm-greeter": {
+              "sha256": "f5d3163e22d2b9a73f78285095f487c11159c412d41f4fa5a23f3d04439be4d2",
+              "size": [
+                1280,
+                1024
+              ],
+              "greeter_dark_pixels": 1790,
+              "greeter_light_pixels": 91098
+            },
+            "xdm-irix": {
+              "sha256": "3da9011cede609b41d2e0b8dc31525a136a1b67c5c9f7f2c3800eac681e84e29",
+              "size": [
+                1280,
+                1024
+              ]
+            },
+            "xdm-native": {
+              "sha256": "6f9d25e508beeb7a9b4517b8547011391446cf56d09e0bc73d52eeb042fe97a3",
+              "size": [
+                1280,
+                1024
+              ]
+            },
+            "xdm-irix-retry": {
+              "sha256": "0af26735131d6ce155980cf316aa0e38804d1318bb5701ce62387d15f705ddd6",
+              "size": [
+                1280,
+                1024
+              ]
+            },
+            "xdm-after-logout": {
+              "sha256": "eb693b0fc393ff4594ae135f3c204373b9a9f6e3124cf5c5bc1c91bff6558d6f",
+              "size": [
+                1280,
+                1024
+              ],
+              "greeter_dark_pixels": 1790,
+              "greeter_light_pixels": 91098
+            }
+          },
+          "sessions": [
+            {
+              "user": "xiritest",
+              "proof": [
+                "xiritest",
+                "1234",
+                "/usr/people/xiritest",
+                "/usr/people/xiritest",
+                "1234 1235",
+                "/usr/people/xiritest/.Xauthority"
+              ],
+              "dimensions": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+              "label": "xdm-irix",
+              "identity": "SESSION user=xiritest uid=1234 groups=1234 1235 home=/usr/people/xiritest cwd=/usr/people/xiritest display=127.0.0.1:0 authority=default",
+              "unauthenticated_x_rejected": true,
+              "logout_returned_to_greeter": true
+            },
+            {
+              "user": "netbsdtest",
+              "proof": [
+                "netbsdtest",
+                "1236",
+                "/home/netbsdtest",
+                "/home/netbsdtest"
+              ],
+              "groups": [
+                "netbsdtest",
+                "wheel"
+              ],
+              "dimensions": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+              "wm": "ctwm",
+              "logout_returned_to_greeter": true
+            },
+            {
+              "user": "xiritest",
+              "proof": [
+                "xiritest",
+                "1234",
+                "/usr/people/xiritest",
+                "/usr/people/xiritest",
+                "1234 1235",
+                "/usr/people/xiritest/.Xauthority"
+              ],
+              "dimensions": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+              "label": "xdm-irix-retry",
+              "identity": "SESSION user=xiritest uid=1234 groups=1234 1235 home=/usr/people/xiritest cwd=/usr/people/xiritest display=127.0.0.1:0 authority=default",
+              "unauthenticated_x_rejected": true,
+              "logout_returned_to_greeter": true
+            }
+          ],
+          "boot_services": "xdm is running as pid 2141.\nxiri_famd is running as pid 2288.\nrpcbind is running as pid 662.\ncompat_irix_o32            exec     filesys  -        0       - exec_elf32,compat_netbsd32",
+          "service_pids": [
+            "2141",
+            "2288",
+            "662"
+          ],
+          "greeter": "xwininfo: Window id: 0x34d (the root window) (has no name)\n\n  Root window id: 0x34d (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     2 children:\n     0x600011 \"xconsole\": (\"xconsole\" \"XConsole\")  480x130+798+892  +798+892\n        1 child:\n        0x600012 (has no name): ()  480x130+0+0  +799+893\n           1 child:\n           0x600013 (has no name): ()  14x130+-1+-1  +798+892\n     0x40000b \"xlogin\": (\"xlogin\" \"Xlogin\")  690x304+295+240  +295+240\n        1 child:\n        0x40000c (has no name): ()  690x304+0+0  +297+242\n           1 child:\n           0x40000f (has no name): ()  185x150+491+77  +788+319"
+        },
+        "check_script_sha256": "50f073a9f4b2024c1a42b6754e25655b66f69238b1c915d4c492fa785be48796",
+        "xdm_script_sha256": "80f5dc992abfef24a8fde6ea3bc90263b26c4e22084dbc4107f7706752e81c1f"
+      },
+      "screenshots": {
+        "xdm-greeter": "docs/results/2026-11-22-ip28-xdm-greeter-6.5.30.png",
+        "xdm-irix": "docs/results/2026-11-22-ip28-xdm-irix-6.5.30.png",
+        "xdm-native": "docs/results/2026-11-22-ip28-xdm-native-6.5.30.png"
+      },
+      "packaged_boot": {
+        "passed": true,
+        "directory": ".work/ip28-xdm-20261122/packaged-6.5.30",
+        "result_sha256": "008d4e456269733231cfb1b5e68306d8fef5f6329b3c63b03094385755fc97af",
+        "elapsed_seconds": 131.77,
+        "firmware_autoboot": true,
+        "prom_commands_issued": false,
+        "test_media_attached": false,
+        "base_unchanged": true,
+        "clean_shutdown": true,
+        "xdm": {
+          "passed": true,
+          "mode": "greeter",
+          "screenshots": {
+            "xdm-greeter": {
+              "sha256": "e66b215efea901a3581deba076f63dff496edf9c62cad1f69d44ed53d96e3ada",
+              "size": [
+                1280,
+                1024
+              ],
+              "greeter_dark_pixels": 1736,
+              "greeter_light_pixels": 91152
+            }
+          },
+          "sessions": [],
+          "boot_services": "xdm is running as pid 2664.\nxiri_famd is running as pid 2300.\nrpcbind is running as pid 689.\ncompat_irix_o32            exec     filesys  -        0       - exec_elf32,compat_netbsd32",
+          "boot_order": [
+            "/etc/rc.d/modules",
+            "/etc/rc.d/wscons",
+            "/etc/rc.d/xiri_devices",
+            "/etc/rc.d/xiri_famd",
+            "/etc/rc.d/xdm"
+          ],
+          "service_pids": [
+            "2664",
+            "2300",
+            "689"
+          ],
+          "greeter": "xwininfo: Window id: 0x34d (the root window) (has no name)\n\n  Root window id: 0x34d (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     2 children:\n     0x600011 \"xconsole\": (\"xconsole\" \"XConsole\")  480x130+798+892  +798+892\n        1 child:\n        0x600012 (has no name): ()  480x130+0+0  +799+893\n           1 child:\n           0x600013 (has no name): ()  14x130+-1+-1  +798+892\n     0x40000b \"xlogin\": (\"xlogin\" \"Xlogin\")  690x304+295+240  +295+240\n        1 child:\n        0x40000c (has no name): ()  690x304+0+0  +297+242\n           1 child:\n           0x40000f (has no name): ()  185x150+491+77  +788+319"
+        },
+        "greeter_png": ".work/native/xiri-ip28-xdm-6.5.30-20261122/greeter.png",
+        "check_script_sha256": "9a2f805d49f3e6a9dc683ab3e7d015659e2d41bae11919ca7e66c39770e122b7",
+        "xdm_script_sha256": "857f6379bc1f75e97c683cccca44c06b0ed93e068e82fe85edfcc3f6824a45bc"
+      },
+      "artifact": {
+        "bundle": ".work/native/xiri-ip28-xdm-6.5.30-20261122",
+        "chd_sha256": "83e49d090a718f5075edb8a204cbe8e171024d73cab47b61026cd8cee8028497",
+        "chd_bytes": 488451057,
+        "chd_verify_passed": true,
+        "bundle_files_sha256": {
+          "iris.toml": "4c269ef415933fd632207ba00d19c59629acc5638d63bdc8205c547c6f516145",
+          "run-iris.sh": "368a440062b887c6001270066e9a7b5eba891d158f98e4feb5a784393ed9b368",
+          "README.txt": "431da421fe84e1059907ad808d5682079a07f635b371645b64bd20550d75838f",
+          "nvram.bin": "af42310bcb3d902e76a1dbee471a1266fc3fe07345eb6da9af501e45067d4d18",
+          "nveeprom.bin": "be3ecc2c1c6fd5577048774125c621adcf46ae24cae50b0a2c4c40364d89fb73",
+          "greeter.png": "e66b215efea901a3581deba076f63dff496edf9c62cad1f69d44ed53d96e3ada"
+        }
+      }
+    }
+  },
+  "source_files": {
+    "lab/ip28-kernel/check.py": "9a2f805d49f3e6a9dc683ab3e7d015659e2d41bae11919ca7e66c39770e122b7",
+    "lab/ip28-kernel/xdm.py": "857f6379bc1f75e97c683cccca44c06b0ed93e068e82fe85edfcc3f6824a45bc",
+    "lab/ip28-kernel/prepare-xdm.sh": "4d06fccd8fc2923cffa8e957748698b90c1a171e7cf335b5e0e06cb7224562cc",
+    "lab/irix-4dwm/type-ready.c": "ee4c29f94291ee8b8346bc399851d9d52ff60eb0690461cdd6660c96c96220ab"
+  },
+  "limits": [
+    "Serial boot/debug console",
+    "Software-rendered wsfb, no IMPACT DMA/copy/3D acceleration",
+    "Emulated High IMPACT at 1280x1024 only",
+    "Native logout checked by ending ctwm from its own terminal, not its Quit menu",
+    "Application compatibility inherited; no broad app qualification in this cycle"
+  ],
+  "passed": true,
+  "cleanup": {
+    "removed_allocated_bytes": 29663232,
+    "test_instances_stopped": true,
+    "packaging_container_stopped": true,
+    "retained": "Qualified CHDs and firmware, selected PNGs, compact logs/results/source snapshots, prior qualified images"
+  }
+}

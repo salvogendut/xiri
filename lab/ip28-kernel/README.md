@@ -65,6 +65,7 @@ with the existing fonts/resources and `wsfb` replacing `newport` in the private
 image's Xorg configuration. It types into winterm, checks home/UID, captures
 the desktop and requests supervised logout. These single-user fixtures do not
 qualify xdm login, early graphics-console boot or physical R10000 DMA caches.
+The separate xdm checks below cover normal authenticated login.
 
 The desktop test waits for the native shell handoff before typing and tolerates
 windows disappearing during XQueryTree/XFetchName. It also initializes loopback
@@ -88,7 +89,60 @@ This starts a full-screen native Xorg server and the existing desktop runtime
 as `xiritest` with home `/usr/people/xiritest`. It loads the matching module and
 prepares the services skipped by single-user boot. Log out through Toolchest,
 then `/sbin/halt` before closing IRIS. Early boot stays on serial B; normal
-xdm boot is a subsequent qualification step.
+xdm boot uses the separate bundles and checks below.
+
+## Native xdm startup
+
+The existing runtime also supports normal IP28 boot into native NetBSD xdm.
+The platform-specific requirement is a wsdisplay screen before Xorg starts:
+with serial B as the console, the kernel does not allocate screen 0. The
+manual desktop wrapper creates it itself; xdm needs `wscons=YES` and
+`screen 0 - vt100` in `/etc/wscons.conf`. Native `wscons` runs before LOGIN.
+
+`prepare-xdm.sh` applies that configuration to a private copy of a qualified
+IP28 IMPACT image. It retains the serial getty, disables the ttyE0 getty,
+uses the existing `wsfb` Xorg configuration, and checks that the matching
+module and existing per-user sessions are installed. It does not set passwords
+or replace native PAM/Xsession. Preserve the original image while qualifying
+the candidate.
+
+For reproducible checks, create a Rock Ridge ISO containing `prepare-xdm.sh`,
+`lab/irix-4dwm/type-ready.c` and a NetBSD-format `SHA256` manifest. Prepare a
+private overlay, then boot it through the normal rc.d sequence:
+
+```sh
+python3 lab/ip28-kernel/check.py \
+  --iris IRIS_BINARY --disk QUALIFIED_IP28_CHD --kernel netbsd.ip28 \
+  --fixture-media XDM_FIXTURE_ISO --output PREPARATION_DIRECTORY \
+  --check-command 'sh /cdrom/prepare-xdm.sh'
+python3 lab/ip28-kernel/check.py \
+  --iris IRIS_BINARY --disk QUALIFIED_IP28_CHD --kernel netbsd.ip28 \
+  --fixture-media XDM_FIXTURE_ISO --overlay-dir PREPARATION_DIRECTORY \
+  --output XDM_RUN_DIRECTORY --xdm full --command-timeout 300
+```
+
+`--fixture-media` mounts and verifies test files without replacing the kernel
+or bootloader. `--xdm full` checks automatic module/service startup at
+securelevel 1, the full-size greeter, authenticated IRIX and native desktops,
+home/UID/groups/X authority, logout/relogin, stable system services and orderly
+`shutdown -h now`. Native ctwm logout is exercised by ending the user's window
+manager from its terminal. These tests use the image's public lab credentials.
+
+After flattening a halted overlay and verifying its CHD, copy the successful
+run's `nvram.bin` and `nveeprom.bin` into the candidate bundle. Run a separate
+cold boot with `--xdm greeter --autoboot --firmware-dir CANDIDATE_BUNDLE`.
+That check issues no PROM boot commands and needs no qualification CD. The
+saved values are `OSLoader=boot`, `OSLoadFilename=netbsd.ip28`,
+`OSLoadOptions=auto`, `AutoLoad=Yes`, with serial `console=d`.
+
+The xdm bundles are `.work/native/xiri-ip28-xdm-6.5.22-20261122/` and
+`.work/native/xiri-ip28-xdm-6.5.30-20261122/`. Run either `run-iris.sh`; if
+paused, press Ctrl-P. Firmware boots NetBSD automatically and the graphical
+greeter appears when startup finishes. Log in as `xiritest` / `xiritest` for
+4Dwm, or `netbsdtest` / `netbsdtest` for native ctwm. These are the existing
+public development-image credentials. The native user retains wheel membership.
+Each bundle's `README.txt` gives serial administration and recovery settings.
+Use `shutdown -h now` and wait for the PROM before closing IRIS.
 
 ## Build
 
