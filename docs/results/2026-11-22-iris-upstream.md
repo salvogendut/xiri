@@ -80,12 +80,16 @@ Desktop captures: [6.5.22](2026-11-22-irix-6.5.22.png) and
 the emulator PNG includes two additional pixels at the frame edge.
 
 The optional IMPACT GPU test
-`dev::mgras::wgpu::tests::transfer_reads_see_the_drawing` still fails at
+`dev::mgras::wgpu::tests::transfer_reads_see_the_drawing` failed during this refresh at
 step 64, line 4. Its expected/actual arrays exactly match the pristine-upstream
 control from the [November 17 integration](2026-11-17-iris-upstream.md), and
-the upstream IMPACT GPU source is unchanged across this range. No workaround
-or unrelated crash investigation is added. Real-device audio loopback is not
-qualified by these tests.
+the upstream IMPACT GPU source was unchanged across this range. The subsequent
+[Indigo2 investigation](2026-11-22-indigo2-impact.md) identified an out-of-range
+test read: it requested a fifth row from a three-row transfer. IRIS `eb21c6ec`
+corrects the test; all 13 IMPACT GPU tests pass, with additional hardware and
+software Vulkan checks. Production renderer code and these binaries are unchanged.
+The table above retains the original refresh's results. Real-device audio
+loopback is not qualified by these tests.
 
 ## Prismatic consumer check
 

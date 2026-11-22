@@ -204,6 +204,8 @@ to a qualified desktop image. The [IRIS delta audit](docs/results/2026-11-14-iri
 tracks upstream replacements and the remaining candidates for focused upstream PRs.
 The [2026-11-22 IRIS refresh](docs/results/2026-11-22-iris-upstream.md)
 records the current integration, fresh binaries, desktop checks and launch commands.
+The [Indigo2 R10000 / High IMPACT investigation](docs/results/2026-11-22-indigo2-impact.md)
+explains the corrected GPU regression test and records the native IP28 checks.
 
 ## Run the current image
 
