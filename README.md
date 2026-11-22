@@ -207,7 +207,9 @@ records the current integration, fresh binaries, desktop checks and launch comma
 The [Indigo2 R10000 / High IMPACT investigation](docs/results/2026-11-22-indigo2-impact.md)
 explains the corrected GPU regression test and records the native IP28 checks.
 The [IP28 BSD bootloader checkpoint](docs/results/2026-11-22-ip28-boot64.md)
-provides a tested 64-bit loader and records the remaining native kernel work.
+provides a tested 64-bit loader. The [native IP28 kernel result](docs/results/2026-11-22-ip28-kernel.md)
+records working serial boot, storage and Ethernet on both release-line disks,
+with [build and manual-test instructions](lab/ip28-kernel/README.md).
 
 ## Run the current image
 

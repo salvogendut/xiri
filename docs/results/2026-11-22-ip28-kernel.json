@@ -1,0 +1,474 @@
+{
+  "schema": 1,
+  "date": "2026-11-22",
+  "status": "native-serial-ip28-qualified-in-iris",
+  "scope": "Native boot, serial, FFS, Ethernet and clean halt; no IP28 IRIX module, IMPACT desktop or physical hardware qualification",
+  "netbsd": {
+    "base_revision": "b84b5316b3a4c55d8fbc986aecac24601a0e7f2d",
+    "source_revision": "68d928aee10b7fde88fcb3f05d98fee041d02c3c",
+    "integration_branch": "xiri",
+    "pushed": true,
+    "configuration": "sys/arch/sgimips/conf/GENERIC64_IP28",
+    "jobs": 2,
+    "toolchain": "GCC 14.4.0 NetBSD nb4 20260926",
+    "build_log": ".work/ip28-kernel-20261122/build-05.log"
+  },
+  "iris": {
+    "iris_upstream": "6ec1ebf379228d572026a9ae8d291511ed28af74",
+    "iris_upstream_incoming": 0,
+    "iris_head": "eb21c6ecec510e3bee2582b42a48a3af6b0726a8",
+    "binary": {
+      "schema": 1,
+      "source_revision": "0bc52567a87349a5f521c702f9d8dec1dc0f79c6",
+      "upstream_revision": "6ec1ebf379228d572026a9ae8d291511ed28af74",
+      "toolchain": "nightly-2026-10-28",
+      "target": "x86_64-unknown-linux-gnu",
+      "features": "default,jitv2,gpujit,idle-pause,wgpu,gputrace; GUI bundled",
+      "profile": {
+        "name": "release",
+        "lto": false,
+        "codegen_units": 16,
+        "debug": 0
+      },
+      "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+      "ci_sha256": "8f15b694e3b28193124ae1a91ee9dba5025b0637ed30521ecfe73ea8fb019628",
+      "gui_sha256": "6eeb401d61d9cf538d4c8f41b2fe67ac88a86cbf5453e96bf3b89a6f5f62c403",
+      "qualification": "passed both IRIX desktop previews and GUI smoke; known upstream IMPACT GPU unit-test failure remains",
+      "desktop_results": [
+        ".work/iris-upstream-20261122/desktop-accelerated-paced-6.5.22/result.json",
+        ".work/iris-upstream-20261122/desktop-accelerated-paced-6.5.30/result.json"
+      ],
+      "gui_result": ".work/iris-upstream-20261122/gui-smoke.json",
+      "known_test_failure": "dev::mgras::wgpu::tests::transfer_reads_see_the_drawing (unchanged upstream baseline)"
+    }
+  },
+  "checks": {
+    "loader-regression": {
+      "kernel": "xiri-ip28-probe",
+      "loader_transport": "scsi-volume-header",
+      "passed": true,
+      "elapsed_seconds": 4.01,
+      "result_path": ".work/ip28-kernel-20261122/loader-regression/result.json",
+      "result_sha256": "e24fa7d0ccf913081266bece18d3cd474bbe9acd1366fa093726d4adeae58243",
+      "serial_log_sha256": "93ff037eb34f12f8b32a7dff719fd10aa4afcb0c3c93d529728a8bd7019b70af"
+    },
+    "disk-6522": {
+      "kernel": "netbsd.ip28",
+      "loader_transport": "scsi-volume-header",
+      "passed": true,
+      "elapsed_seconds": 30.65,
+      "identity": "uname -a; sysctl hw.model hw.ncpu hw.physmem64; mount; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\nNetBSD  11.99.9 NetBSD 11.99.9 (GENERIC64_IP28) #4: Sun Nov 22 16:34:57 UTC 2026  root@toolbx:/var/home/salvogendut/Dev/xiri/.work/ip28-kernel-20261122/build/kernel sgimips\r\nhw.model = SGI-IP28\r\nhw.ncpu = 1\r\nhw.physmem64 = 1073725440\r\nroot_device on / type ffs (read-only, local)\r\n\r\nXIRI_RC_0\r\n# ",
+      "storage": "/bin/dd if=/bin/sh of=/ip28-test.tmp bs=64k && /usr/bin/cmp /bin/sh /ip28-test.tmp && /usr/bin/sha256 /ip28-test.tmp && /bin/rm /ip28-test.tmp && /bin/sync; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\n4+1 records in\r\n4+1 records out\r\n327456 bytes transferred in 0.041 secs (7986731 bytes/sec)\r\nSHA256 (/ip28-test.tmp) = 943c7be2c8b534a84b628cd77d841f638af8884b5a587beb02b1932b70a0ac98\r\n\r\nXIRI_RC_0\r\n# ",
+      "timers": "/bin/date -u; /bin/sleep 2; /bin/date -u; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\nSun Nov 22 16:39:02 UTC 2026\r\nSun Nov 22 16:39:04 UTC 2026\r\n\r\nXIRI_RC_0\r\n# ",
+      "processes": "/bin/sh -c 'i=0; while [ $i -lt 32 ]; do /bin/echo IP28_EXEC >/dev/null || exit; i=$((i+1)); done'; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\n\r\nXIRI_RC_0\r\n# ",
+      "network": "/sbin/ifconfig sq0 inet 192.168.0.2 netmask 255.255.255.0 up && /sbin/ifconfig -w 20 && /sbin/ping -n -c 3 -w 5 192.168.0.1; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\nPING 192.168.0.1 (192.168.0.1): 56 data bytes\r\n64 bytes from 192.168.0.1: icmp_seq=0 ttl=64 time=2.150698 ms\r\n64 bytes from 192.168.0.1: icmp_seq=1 ttl=64 time=0.830030 ms\r\n64 bytes from 192.168.0.1: icmp_seq=2 ttl=64 time=1.321580 ms\r\n\r\n----192.168.0.1 PING Statistics----\r\n3 packets transmitted, 3 packets received, 0.0% packet loss\r\nround-trip min/avg/max/stddev = 0.830030/1.434103/2.150698/0.667486 ms\r\n\r\nXIRI_RC_0\r\n# ",
+      "shutdown": "/sbin/halt\r\nhalt: halted by root\r\r\n[  24.0699778] syncing disks... done\n\r[  24.0808870] unmounting file systems...\n\r[  24.1200124] unmounting done\n\r[  24.1200124] halting...\n\r\n\r\r\n\r\nSystem Maintenance Menu\r\n\r\n1) Start System\r\n2) Install System Software\r\n3) Run Diagnostics\r\n4) Recover System\r\n5) Enter Command Monitor\r\n\n\rOption? ",
+      "result_path": ".work/ip28-kernel-20261122/disk-6522/result.json",
+      "result_sha256": "a3f1884cf2519cbb4bff551869ff68c6e972f265a2fe46f4d6855d018985c5dc",
+      "serial_log_sha256": "dda81265e33b9c58d8415e6cde4cb55a73dcb9543bea8db3d002b58ca1d5c269"
+    },
+    "disk-6530": {
+      "machine": "ip28",
+      "kernel": "netbsd.ip28",
+      "loader_transport": "scsi-volume-header",
+      "passed": true,
+      "elapsed_seconds": 29.91,
+      "identity": "uname -a; sysctl hw.model hw.ncpu hw.physmem64; mount; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\nNetBSD  11.99.9 NetBSD 11.99.9 (GENERIC64_IP28) #4: Sun Nov 22 16:34:57 UTC 2026  root@toolbx:/var/home/salvogendut/Dev/xiri/.work/ip28-kernel-20261122/build/kernel sgimips\r\nhw.model = SGI-IP28\r\nhw.ncpu = 1\r\nhw.physmem64 = 1073725440\r\nroot_device on / type ffs (read-only, local)\r\n\r\nXIRI_RC_0\r\n# ",
+      "storage": "/bin/dd if=/bin/sh of=/ip28-test.tmp bs=64k && /usr/bin/cmp /bin/sh /ip28-test.tmp && /usr/bin/sha256 /ip28-test.tmp && /bin/rm /ip28-test.tmp && /bin/sync; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\n4+1 records in\r\n4+1 records out\r\n327456 bytes transferred in 0.036 secs (9096000 bytes/sec)\r\nSHA256 (/ip28-test.tmp) = 943c7be2c8b534a84b628cd77d841f638af8884b5a587beb02b1932b70a0ac98\r\n\r\nXIRI_RC_0\r\n# ",
+      "timers": "/bin/date -u; /bin/sleep 2; /bin/date -u; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\nSun Nov 22 16:40:07 UTC 2026\r\nSun Nov 22 16:40:10 UTC 2026\r\n\r\nXIRI_RC_0\r\n# ",
+      "processes": "/bin/sh -c 'i=0; while [ $i -lt 32 ]; do /bin/echo IP28_EXEC >/dev/null || exit; i=$((i+1)); done'; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\n\r\nXIRI_RC_0\r\n# ",
+      "network": "/sbin/ifconfig sq0 inet 192.168.0.2 netmask 255.255.255.0 up && /sbin/ifconfig -w 20 && /sbin/ping -n -c 3 -w 5 192.168.0.1; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\nPING 192.168.0.1 (192.168.0.1): 56 data bytes\r\n64 bytes from 192.168.0.1: icmp_seq=0 ttl=64 time=1.382821 ms\r\n64 bytes from 192.168.0.1: icmp_seq=1 ttl=64 time=0.728728 ms\r\n64 bytes from 192.168.0.1: icmp_seq=2 ttl=64 time=0.748892 ms\r\n\r\n----192.168.0.1 PING Statistics----\r\n3 packets transmitted, 3 packets received, 0.0% packet loss\r\nround-trip min/avg/max/stddev = 0.728728/0.953480/1.382821/0.371957 ms\r\n\r\nXIRI_RC_0\r\n# ",
+      "shutdown": "/sbin/halt\r\nhalt: halted by root\r\r\n[  23.5401639] syncing disks... done\n\r[  23.5509796] unmounting file systems...\n\r[  23.5901750] unmounting done\n\r[  23.5901750] halting...\n\r\n\r\r\n\r\nSystem Maintenance Menu\r\n\r\n1) Start System\r\n2) Install System Software\r\n3) Run Diagnostics\r\n4) Recover System\r\n5) Enter Command Monitor\r\n\n\rOption? ",
+      "result_path": ".work/ip28-kernel-20261122/disk-6530/result.json",
+      "result_sha256": "b08fe540995d561325e572f4db7a1f4b5e6e0f22e490f84917fa162eb7722583",
+      "serial_log_sha256": "cb30c411ff9af62cdfac79121ff7ec32b38cdc3d4ef0e6c080c40741cc0af791"
+    },
+    "indy-6522-v2": {
+      "machine": "indy-r4400",
+      "kernel": "netbsd.elf32",
+      "loader_transport": "tftp",
+      "passed": true,
+      "elapsed_seconds": 36.99,
+      "identity": "uname -a; sysctl hw.model hw.ncpu hw.physmem64; mount; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\nNetBSD  11.99.9 NetBSD 11.99.9 (XIRI_IRIX_MODULE_20261103) #0: Sun Nov 22 16:37:18 UTC 2026  root@toolbx:/var/home/salvogendut/Dev/xiri/.work/ip28-kernel-20261122/indy/kernel sgimips\r\nhw.model = SGI-IP22\r\nhw.ncpu = 1\r\nhw.physmem64 = 268427264\r\nroot_device on / type ffs (read-only, local)\r\n\r\nXIRI_RC_0\r\n# ",
+      "storage": "/bin/dd if=/bin/sh of=/ip28-test.tmp bs=64k && /usr/bin/cmp /bin/sh /ip28-test.tmp && /usr/bin/sha256 /ip28-test.tmp && /bin/rm /ip28-test.tmp && /bin/sync; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\n4+1 records in\r\n4+1 records out\r\n327456 bytes transferred in 0.019 secs (17234526 bytes/sec)\r\nSHA256 (/ip28-test.tmp) = 943c7be2c8b534a84b628cd77d841f638af8884b5a587beb02b1932b70a0ac98\r\n\r\nXIRI_RC_0\r\n# ",
+      "timers": "/bin/date -u; /bin/sleep 2; /bin/date -u; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\nSun Nov 22 16:40:45 UTC 2026\r\nSun Nov 22 16:40:47 UTC 2026\r\n\r\nXIRI_RC_0\r\n# ",
+      "processes": "/bin/sh -c 'i=0; while [ $i -lt 32 ]; do /bin/echo IP28_EXEC >/dev/null || exit; i=$((i+1)); done'; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\n\r\nXIRI_RC_0\r\n# ",
+      "network": "/sbin/ifconfig sq0 inet 192.168.0.2 netmask 255.255.255.0 up && /sbin/ifconfig -w 20 && /sbin/ping -n -c 3 -w 5 192.168.0.1; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\nPING 192.168.0.1 (192.168.0.1): 56 data bytes\r\n64 bytes from 192.168.0.1: icmp_seq=0 ttl=64 time=0.993534 ms\r\n64 bytes from 192.168.0.1: icmp_seq=1 ttl=64 time=0.606667 ms\r\n64 bytes from 192.168.0.1: icmp_seq=2 ttl=64 time=0.630694 ms\r\n\r\n----192.168.0.1 PING Statistics----\r\n3 packets transmitted, 3 packets received, 0.0% packet loss\r\nround-trip min/avg/max/stddev = 0.606667/0.743632/0.993534/0.216755 ms\r\n\r\nXIRI_RC_0\r\n# ",
+      "irix_shell": "/emul/irix/bin/sh -c '/bin/echo XIRI_IRIX_SHELL_OK'; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\nXIRI_IRIX_SHELL_OK\r\n\r\nXIRI_RC_0\r\n# ",
+      "shutdown": "/sbin/halt\r\nhalt: halted by root\r\r\n[  24.6236623] syncing disks... done\n\r[  24.6343979] unmounting file systems...\n\r[  24.6636982] unmounting done\n\r[  24.6636982] halting...\n\r\n\r\r\n\r\nSystem Maintenance Menu\r\n\r\n1) Start System\r\n2) Install System Software\r\n3) Run Diagnostics\r\n4) Recover System\r\n5) Enter Command Monitor\r\n\n\rOption? ",
+      "result_path": ".work/ip28-kernel-20261122/indy-6522-v2/result.json",
+      "result_sha256": "00ce16a06b6e26dcbdf01d97000aaac6068b3251e5351efee9f4f21325436ea6",
+      "serial_log_sha256": "2446c649696663fa5a33b16d203561bb3a35fd7f56c51a72be019f098263dd72"
+    },
+    "indy-6530": {
+      "machine": "indy-r5000",
+      "kernel": "netbsd.elf32",
+      "loader_transport": "tftp",
+      "passed": true,
+      "elapsed_seconds": 36.77,
+      "identity": "uname -a; sysctl hw.model hw.ncpu hw.physmem64; mount; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\nNetBSD  11.99.9 NetBSD 11.99.9 (XIRI_IRIX_MODULE_20261103) #0: Sun Nov 22 16:37:18 UTC 2026  root@toolbx:/var/home/salvogendut/Dev/xiri/.work/ip28-kernel-20261122/indy/kernel sgimips\r\nhw.model = SGI-IP22\r\nhw.ncpu = 1\r\nhw.physmem64 = 268427264\r\nroot_device on / type ffs (read-only, local)\r\n\r\nXIRI_RC_0\r\n# ",
+      "storage": "/bin/dd if=/bin/sh of=/ip28-test.tmp bs=64k && /usr/bin/cmp /bin/sh /ip28-test.tmp && /usr/bin/sha256 /ip28-test.tmp && /bin/rm /ip28-test.tmp && /bin/sync; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\n4+1 records in\r\n4+1 records out\r\n327456 bytes transferred in 0.020 secs (16372800 bytes/sec)\r\nSHA256 (/ip28-test.tmp) = 943c7be2c8b534a84b628cd77d841f638af8884b5a587beb02b1932b70a0ac98\r\n\r\nXIRI_RC_0\r\n# ",
+      "timers": "/bin/date -u; /bin/sleep 2; /bin/date -u; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\nSun Nov 22 16:41:22 UTC 2026\r\nSun Nov 22 16:41:24 UTC 2026\r\n\r\nXIRI_RC_0\r\n# ",
+      "processes": "/bin/sh -c 'i=0; while [ $i -lt 32 ]; do /bin/echo IP28_EXEC >/dev/null || exit; i=$((i+1)); done'; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\n\r\nXIRI_RC_0\r\n# ",
+      "network": "/sbin/ifconfig sq0 inet 192.168.0.2 netmask 255.255.255.0 up && /sbin/ifconfig -w 20 && /sbin/ping -n -c 3 -w 5 192.168.0.1; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\nPING 192.168.0.1 (192.168.0.1): 56 data bytes\r\n64 bytes from 192.168.0.1: icmp_seq=0 ttl=64 time=1.348289 ms\r\n64 bytes from 192.168.0.1: icmp_seq=1 ttl=64 time=0.718800 ms\r\n64 bytes from 192.168.0.1: icmp_seq=2 ttl=64 time=2.062078 ms\r\n\r\n----192.168.0.1 PING Statistics----\r\n3 packets transmitted, 3 packets received, 0.0% packet loss\r\nround-trip min/avg/max/stddev = 0.718800/1.376389/2.062078/0.672080 ms\r\n\r\nXIRI_RC_0\r\n# ",
+      "irix_shell": "/emul/irix/bin/sh -c '/bin/echo XIRI_IRIX_SHELL_OK'; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\nXIRI_IRIX_SHELL_OK\r\n\r\nXIRI_RC_0\r\n# ",
+      "shutdown": "/sbin/halt\r\nhalt: halted by root\r\r\n[  23.8737709] syncing disks... done\n\r[  23.8845106] unmounting file systems...\n\r[  23.9137634] unmounting done\n\r[  23.9137634] halting...\n\r\n\r\r\n\r\nSystem Maintenance Menu\r\n\r\n1) Start System\r\n2) Install System Software\r\n3) Run Diagnostics\r\n4) Recover System\r\n5) Enter Command Monitor\r\n\n\rOption? ",
+      "result_path": ".work/ip28-kernel-20261122/indy-6530/result.json",
+      "result_sha256": "faf54e280b64418326cd77087eb51084dedfbbf340d3395e3c185abceb1b64e8",
+      "serial_log_sha256": "8390c60c19c727b680d080d300de61cd154ebf326549ec8565d9b0f25404d263"
+    },
+    "packaged-6522": {
+      "machine": "ip28",
+      "kernel": "netbsd.ip28",
+      "loader_transport": "scsi-volume-header",
+      "passed": true,
+      "base_unchanged": true,
+      "elapsed_seconds": 40.95,
+      "identity": "uname -a; sysctl hw.model hw.ncpu hw.physmem64; mount; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\nNetBSD  11.99.9 NetBSD 11.99.9 (GENERIC64_IP28) #4: Sun Nov 22 16:34:57 UTC 2026  root@toolbx:/var/home/salvogendut/Dev/xiri/.work/ip28-kernel-20261122/build/kernel sgimips\r\nhw.model = SGI-IP28\r\nhw.ncpu = 1\r\nhw.physmem64 = 1073725440\r\nroot_device on / type ffs (read-only, local)\r\n\r\nXIRI_RC_0\r\n# ",
+      "storage": "/bin/dd if=/bin/sh of=/ip28-test.tmp bs=64k && /usr/bin/cmp /bin/sh /ip28-test.tmp && /usr/bin/sha256 /ip28-test.tmp && /bin/rm /ip28-test.tmp && /bin/sync; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\n4+1 records in\r\n4+1 records out\r\n327456 bytes transferred in 0.019 secs (17234526 bytes/sec)\r\nSHA256 (/ip28-test.tmp) = 943c7be2c8b534a84b628cd77d841f638af8884b5a587beb02b1932b70a0ac98\r\n\r\nXIRI_RC_0\r\n# ",
+      "timers": "/bin/date -u; /bin/sleep 2; /bin/date -u; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\nSun Nov 22 16:45:10 UTC 2026\r\nSun Nov 22 16:45:12 UTC 2026\r\n\r\nXIRI_RC_0\r\n# ",
+      "processes": "/bin/sh -c 'i=0; while [ $i -lt 32 ]; do /bin/echo IP28_EXEC >/dev/null || exit; i=$((i+1)); done'; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\n\r\nXIRI_RC_0\r\n# ",
+      "network": "/sbin/ifconfig sq0 inet 192.168.0.2 netmask 255.255.255.0 up && /sbin/ifconfig -w 20 && /sbin/ping -n -c 3 -w 5 192.168.0.1; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\nPING 192.168.0.1 (192.168.0.1): 56 data bytes\r\n64 bytes from 192.168.0.1: icmp_seq=0 ttl=64 time=1.599918 ms\r\n64 bytes from 192.168.0.1: icmp_seq=1 ttl=64 time=0.744328 ms\r\n64 bytes from 192.168.0.1: icmp_seq=2 ttl=64 time=0.674830 ms\r\n\r\n----192.168.0.1 PING Statistics----\r\n3 packets transmitted, 3 packets received, 0.0% packet loss\r\nround-trip min/avg/max/stddev = 0.674830/1.006359/1.599918/0.515211 ms\r\n\r\nXIRI_RC_0\r\n# ",
+      "installed_kernel": "/usr/bin/sha256 /netbsd.ip28; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\nSHA256 (/netbsd.ip28) = 02297b3d80dac23c86af839a4a7b82acf9d3aa7d7220ec4cd65116bdec419fde\r\n\r\nXIRI_RC_0\r\n# ",
+      "shutdown": "/sbin/halt\r\nhalt: halted by root\r\r\n[  34.0101207] syncing disks... done\n\r[  34.0209401] unmounting file systems...\n\r[  34.0600991] unmounting done\n\r[  34.0600991] halting...\n\r\n\r\r\n\r\nSystem Maintenance Menu\r\n\r\n1) Start System\r\n2) Install System Software\r\n3) Run Diagnostics\r\n4) Recover System\r\n5) Enter Command Monitor\r\n\n\rOption? ",
+      "result_path": ".work/ip28-kernel-20261122/packaged-6522/result.json",
+      "result_sha256": "a9de05fe85767f555663d76d6f05535e945550537b1f10fd20ff3d458fe43dc3",
+      "serial_log_sha256": "25ac62f378ce851f16eb05495584eb0d55020fb3cc04872dbc51ef336c215610"
+    },
+    "packaged-6530": {
+      "machine": "ip28",
+      "kernel": "netbsd.ip28",
+      "loader_transport": "scsi-volume-header",
+      "passed": true,
+      "base_unchanged": true,
+      "elapsed_seconds": 115.44,
+      "identity": "uname -a; sysctl hw.model hw.ncpu hw.physmem64; mount; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\nNetBSD  11.99.9 NetBSD 11.99.9 (GENERIC64_IP28) #4: Sun Nov 22 16:34:57 UTC 2026  root@toolbx:/var/home/salvogendut/Dev/xiri/.work/ip28-kernel-20261122/build/kernel sgimips\r\nhw.model = SGI-IP28\r\nhw.ncpu = 1\r\nhw.physmem64 = 1073725440\r\nroot_device on / type ffs (read-only, local)\r\n\r\nXIRI_RC_0\r\n# ",
+      "storage": "/bin/dd if=/bin/sh of=/ip28-test.tmp bs=64k && /usr/bin/cmp /bin/sh /ip28-test.tmp && /usr/bin/sha256 /ip28-test.tmp && /bin/rm /ip28-test.tmp && /bin/sync; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\n4+1 records in\r\n4+1 records out\r\n327456 bytes transferred in 0.021 secs (15593142 bytes/sec)\r\nSHA256 (/ip28-test.tmp) = 943c7be2c8b534a84b628cd77d841f638af8884b5a587beb02b1932b70a0ac98\r\n\r\nXIRI_RC_0\r\n# ",
+      "timers": "/bin/date -u; /bin/sleep 2; /bin/date -u; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\nSun Nov 22 16:48:13 UTC 2026\r\nSun Nov 22 16:48:15 UTC 2026\r\n\r\nXIRI_RC_0\r\n# ",
+      "processes": "/bin/sh -c 'i=0; while [ $i -lt 32 ]; do /bin/echo IP28_EXEC >/dev/null || exit; i=$((i+1)); done'; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\n\r\nXIRI_RC_0\r\n# ",
+      "network": "/sbin/ifconfig sq0 inet 192.168.0.2 netmask 255.255.255.0 up && /sbin/ifconfig -w 20 && /sbin/ping -n -c 3 -w 5 192.168.0.1; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\nPING 192.168.0.1 (192.168.0.1): 56 data bytes\r\n64 bytes from 192.168.0.1: icmp_seq=0 ttl=64 time=1.468554 ms\r\n64 bytes from 192.168.0.1: icmp_seq=1 ttl=64 time=0.766021 ms\r\n64 bytes from 192.168.0.1: icmp_seq=2 ttl=64 time=0.792831 ms\r\n\r\n----192.168.0.1 PING Statistics----\r\n3 packets transmitted, 3 packets received, 0.0% packet loss\r\nround-trip min/avg/max/stddev = 0.766021/1.009135/1.468554/0.398094 ms\r\n\r\nXIRI_RC_0\r\n# ",
+      "installed_kernel": "/usr/bin/sha256 /netbsd.ip28; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\nSHA256 (/netbsd.ip28) = 02297b3d80dac23c86af839a4a7b82acf9d3aa7d7220ec4cd65116bdec419fde\r\n\r\nXIRI_RC_0\r\n# ",
+      "shutdown": "/sbin/halt\r\nhalt: halted by root\r\r\n[ 108.1604481] syncing disks... done\n\r[ 108.1712523] unmounting file systems...\n\r[ 108.2104722] unmounting done\n\r[ 108.2104722] halting...\n\r\n\r\r\n\r\nSystem Maintenance Menu\r\n\r\n1) Start System\r\n2) Install System Software\r\n3) Run Diagnostics\r\n4) Recover System\r\n5) Enter Command Monitor\r\n\n\rOption? ",
+      "result_path": ".work/ip28-kernel-20261122/packaged-6530/result.json",
+      "result_sha256": "35ca5f184b736a086dec5fc22a8dd8e31f7490222be87d108a6e6b0db438f22e",
+      "serial_log_sha256": "3be9f67dee82aa3bc11b87825f2c61e3aebdd7a839e299964226f68da43c40d1"
+    },
+    "saved-prom-6522": {
+      "machine": "ip28",
+      "kernel": "netbsd.ip28",
+      "loader_transport": "scsi-volume-header",
+      "passed": true,
+      "base_unchanged": true,
+      "elapsed_seconds": 40.17,
+      "identity": "uname -a; sysctl hw.model hw.ncpu hw.physmem64; mount; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\nNetBSD  11.99.9 NetBSD 11.99.9 (GENERIC64_IP28) #4: Sun Nov 22 16:34:57 UTC 2026  root@toolbx:/var/home/salvogendut/Dev/xiri/.work/ip28-kernel-20261122/build/kernel sgimips\r\nhw.model = SGI-IP28\r\nhw.ncpu = 1\r\nhw.physmem64 = 1073725440\r\nroot_device on / type ffs (read-only, local)\r\n\r\nXIRI_RC_0\r\n# ",
+      "storage": "/bin/dd if=/bin/sh of=/ip28-test.tmp bs=64k && /usr/bin/cmp /bin/sh /ip28-test.tmp && /usr/bin/sha256 /ip28-test.tmp && /bin/rm /ip28-test.tmp && /bin/sync; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\n4+1 records in\r\n4+1 records out\r\n327456 bytes transferred in 0.020 secs (16372800 bytes/sec)\r\nSHA256 (/ip28-test.tmp) = 943c7be2c8b534a84b628cd77d841f638af8884b5a587beb02b1932b70a0ac98\r\n\r\nXIRI_RC_0\r\n# ",
+      "timers": "/bin/date -u; /bin/sleep 2; /bin/date -u; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\nSun Nov 22 16:48:45 UTC 2026\r\nSun Nov 22 16:48:47 UTC 2026\r\n\r\nXIRI_RC_0\r\n# ",
+      "processes": "/bin/sh -c 'i=0; while [ $i -lt 32 ]; do /bin/echo IP28_EXEC >/dev/null || exit; i=$((i+1)); done'; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\n\r\nXIRI_RC_0\r\n# ",
+      "network": "/sbin/ifconfig sq0 inet 192.168.0.2 netmask 255.255.255.0 up && /sbin/ifconfig -w 20 && /sbin/ping -n -c 3 -w 5 192.168.0.1; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\nPING 192.168.0.1 (192.168.0.1): 56 data bytes\r\n64 bytes from 192.168.0.1: icmp_seq=0 ttl=64 time=2.049774 ms\r\n64 bytes from 192.168.0.1: icmp_seq=1 ttl=64 time=0.679652 ms\r\n64 bytes from 192.168.0.1: icmp_seq=2 ttl=64 time=0.573866 ms\r\n\r\n----192.168.0.1 PING Statistics----\r\n3 packets transmitted, 3 packets received, 0.0% packet loss\r\nround-trip min/avg/max/stddev = 0.573866/1.101097/2.049774/0.823279 ms\r\n\r\nXIRI_RC_0\r\n# ",
+      "installed_kernel": "/usr/bin/sha256 /netbsd.ip28; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\nSHA256 (/netbsd.ip28) = 02297b3d80dac23c86af839a4a7b82acf9d3aa7d7220ec4cd65116bdec419fde\r\n\r\nXIRI_RC_0\r\n# ",
+      "shutdown": "/sbin/halt\r\nhalt: halted by root\r\r\n[  34.4200418] syncing disks... done\n\r[  34.4308792] unmounting file systems...\n\r[  34.4600571] unmounting done\n\r[  34.4600571] halting...\n\r\n\r\r\n\r\nSystem Maintenance Menu\r\n\r\n1) Start System\r\n2) Install System Software\r\n3) Run Diagnostics\r\n4) Recover System\r\n5) Enter Command Monitor\r\n\n\rOption? ",
+      "result_path": ".work/ip28-kernel-20261122/saved-prom-6522/result.json",
+      "result_sha256": "63f9a6f2e49f8e58576620f62d3d73b270033b58d5c9d88a57ed791ec3910dca",
+      "serial_log_sha256": "73c140d4023c913b3cc4aa9d183d3e75abdf59f090877d40275c79720a8d87e3"
+    },
+    "saved-prom-6530": {
+      "machine": "ip28",
+      "kernel": "netbsd.ip28",
+      "loader_transport": "scsi-volume-header",
+      "passed": true,
+      "base_unchanged": true,
+      "elapsed_seconds": 38.59,
+      "identity": "uname -a; sysctl hw.model hw.ncpu hw.physmem64; mount; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\nNetBSD  11.99.9 NetBSD 11.99.9 (GENERIC64_IP28) #4: Sun Nov 22 16:34:57 UTC 2026  root@toolbx:/var/home/salvogendut/Dev/xiri/.work/ip28-kernel-20261122/build/kernel sgimips\r\nhw.model = SGI-IP28\r\nhw.ncpu = 1\r\nhw.physmem64 = 1073725440\r\nroot_device on / type ffs (read-only, local)\r\n\r\nXIRI_RC_0\r\n# ",
+      "storage": "/bin/dd if=/bin/sh of=/ip28-test.tmp bs=64k && /usr/bin/cmp /bin/sh /ip28-test.tmp && /usr/bin/sha256 /ip28-test.tmp && /bin/rm /ip28-test.tmp && /bin/sync; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\n4+1 records in\r\n4+1 records out\r\n327456 bytes transferred in 0.018 secs (18192000 bytes/sec)\r\nSHA256 (/ip28-test.tmp) = 943c7be2c8b534a84b628cd77d841f638af8884b5a587beb02b1932b70a0ac98\r\n\r\nXIRI_RC_0\r\n# ",
+      "timers": "/bin/date -u; /bin/sleep 2; /bin/date -u; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\nSun Nov 22 16:49:36 UTC 2026\r\nSun Nov 22 16:49:38 UTC 2026\r\n\r\nXIRI_RC_0\r\n# ",
+      "processes": "/bin/sh -c 'i=0; while [ $i -lt 32 ]; do /bin/echo IP28_EXEC >/dev/null || exit; i=$((i+1)); done'; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\n\r\nXIRI_RC_0\r\n# ",
+      "network": "/sbin/ifconfig sq0 inet 192.168.0.2 netmask 255.255.255.0 up && /sbin/ifconfig -w 20 && /sbin/ping -n -c 3 -w 5 192.168.0.1; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\nPING 192.168.0.1 (192.168.0.1): 56 data bytes\r\n64 bytes from 192.168.0.1: icmp_seq=0 ttl=64 time=1.348174 ms\r\n64 bytes from 192.168.0.1: icmp_seq=1 ttl=64 time=0.687928 ms\r\n64 bytes from 192.168.0.1: icmp_seq=2 ttl=64 time=0.648707 ms\r\n\r\n----192.168.0.1 PING Statistics----\r\n3 packets transmitted, 3 packets received, 0.0% packet loss\r\nround-trip min/avg/max/stddev = 0.648707/0.894936/1.348174/0.393005 ms\r\n\r\nXIRI_RC_0\r\n# ",
+      "installed_kernel": "/usr/bin/sha256 /netbsd.ip28; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\nSHA256 (/netbsd.ip28) = 02297b3d80dac23c86af839a4a7b82acf9d3aa7d7220ec4cd65116bdec419fde\r\n\r\nXIRI_RC_0\r\n# ",
+      "shutdown": "/sbin/halt\r\nhalt: halted by root\r\r\n[  33.0602115] syncing disks... done\n\r[  33.0710032] unmounting file systems...\n\r[  33.1102270] unmounting done\n\r[  33.1102270] halting...\n\r\n\r\r\n\r\nSystem Maintenance Menu\r\n\r\n1) Start System\r\n2) Install System Software\r\n3) Run Diagnostics\r\n4) Recover System\r\n5) Enter Command Monitor\r\n\n\rOption? ",
+      "result_path": ".work/ip28-kernel-20261122/saved-prom-6530/result.json",
+      "result_sha256": "0d59d330f040e6c337737e63c96bbfb7ffb1de1cbabf34639dda034d3645cfbf",
+      "serial_log_sha256": "b9de3326a9dc99e4bec11b7f69319afe19776be49f39cf8ba08b8fc3a3184b76"
+    }
+  },
+  "artifacts": {
+    "6.5.22": {
+      "release_line": "6.5.22",
+      "source_revision": "68d928aee10b7fde88fcb3f05d98fee041d02c3c",
+      "scope": "Native boot, serial, FFS, Ethernet and clean halt; no IP28 IRIX module, IMPACT desktop or physical hardware qualification",
+      "path": ".work/native/xiri-ip28-6.5.22-20261122",
+      "files": {
+        "nveeprom.bin": {
+          "sha256": "befddc26d40ad908750e122b2c9422a9b6ae3c2068efea96f734b64672dee1de",
+          "bytes": 256
+        },
+        "nvram.bin": {
+          "sha256": "fcc84d3573ffd5c750f5731c63d31e95906b20efe4f2c2823890e0d6ab7acc10",
+          "bytes": 8192
+        },
+        "netbsd-xiri.chd": {
+          "sha256": "fb7d44b2e161e30be7977f27e7b202ea8aafd18313fc4860ebf7dec3b78ed780",
+          "bytes": 461296700
+        },
+        "iris.toml": {
+          "sha256": "b3e142580e77cacdae5e03fbd09a279df8f1c6c1940c3e535ae5b4c5d8c15a35",
+          "bytes": 622
+        },
+        "run-iris.sh": {
+          "sha256": "368a440062b887c6001270066e9a7b5eba891d158f98e4feb5a784393ed9b368",
+          "bytes": 279
+        },
+        "README.txt": {
+          "sha256": "b534f0d40864f981af43eb9d31d6c7dec35b76392fcf161250d02f2f8aae74b1",
+          "bytes": 1661
+        }
+      },
+      "chd_integrity_verified": true,
+      "cold_boot_check": {
+        "machine": "ip28",
+        "kernel": "netbsd.ip28",
+        "loader_transport": "scsi-volume-header",
+        "passed": true,
+        "base_unchanged": true,
+        "elapsed_seconds": 40.95,
+        "identity": "uname -a; sysctl hw.model hw.ncpu hw.physmem64; mount; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\nNetBSD  11.99.9 NetBSD 11.99.9 (GENERIC64_IP28) #4: Sun Nov 22 16:34:57 UTC 2026  root@toolbx:/var/home/salvogendut/Dev/xiri/.work/ip28-kernel-20261122/build/kernel sgimips\r\nhw.model = SGI-IP28\r\nhw.ncpu = 1\r\nhw.physmem64 = 1073725440\r\nroot_device on / type ffs (read-only, local)\r\n\r\nXIRI_RC_0\r\n# ",
+        "storage": "/bin/dd if=/bin/sh of=/ip28-test.tmp bs=64k && /usr/bin/cmp /bin/sh /ip28-test.tmp && /usr/bin/sha256 /ip28-test.tmp && /bin/rm /ip28-test.tmp && /bin/sync; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\n4+1 records in\r\n4+1 records out\r\n327456 bytes transferred in 0.019 secs (17234526 bytes/sec)\r\nSHA256 (/ip28-test.tmp) = 943c7be2c8b534a84b628cd77d841f638af8884b5a587beb02b1932b70a0ac98\r\n\r\nXIRI_RC_0\r\n# ",
+        "timers": "/bin/date -u; /bin/sleep 2; /bin/date -u; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\nSun Nov 22 16:45:10 UTC 2026\r\nSun Nov 22 16:45:12 UTC 2026\r\n\r\nXIRI_RC_0\r\n# ",
+        "processes": "/bin/sh -c 'i=0; while [ $i -lt 32 ]; do /bin/echo IP28_EXEC >/dev/null || exit; i=$((i+1)); done'; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\n\r\nXIRI_RC_0\r\n# ",
+        "network": "/sbin/ifconfig sq0 inet 192.168.0.2 netmask 255.255.255.0 up && /sbin/ifconfig -w 20 && /sbin/ping -n -c 3 -w 5 192.168.0.1; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\nPING 192.168.0.1 (192.168.0.1): 56 data bytes\r\n64 bytes from 192.168.0.1: icmp_seq=0 ttl=64 time=1.599918 ms\r\n64 bytes from 192.168.0.1: icmp_seq=1 ttl=64 time=0.744328 ms\r\n64 bytes from 192.168.0.1: icmp_seq=2 ttl=64 time=0.674830 ms\r\n\r\n----192.168.0.1 PING Statistics----\r\n3 packets transmitted, 3 packets received, 0.0% packet loss\r\nround-trip min/avg/max/stddev = 0.674830/1.006359/1.599918/0.515211 ms\r\n\r\nXIRI_RC_0\r\n# ",
+        "installed_kernel": "/usr/bin/sha256 /netbsd.ip28; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\nSHA256 (/netbsd.ip28) = 02297b3d80dac23c86af839a4a7b82acf9d3aa7d7220ec4cd65116bdec419fde\r\n\r\nXIRI_RC_0\r\n# ",
+        "shutdown": "/sbin/halt\r\nhalt: halted by root\r\r\n[  34.0101207] syncing disks... done\n\r[  34.0209401] unmounting file systems...\n\r[  34.0600991] unmounting done\n\r[  34.0600991] halting...\n\r\n\r\r\n\r\nSystem Maintenance Menu\r\n\r\n1) Start System\r\n2) Install System Software\r\n3) Run Diagnostics\r\n4) Recover System\r\n5) Enter Command Monitor\r\n\n\rOption? ",
+        "result_path": ".work/ip28-kernel-20261122/packaged-6522/result.json",
+        "result_sha256": "a9de05fe85767f555663d76d6f05535e945550537b1f10fd20ff3d458fe43dc3",
+        "serial_log_sha256": "25ac62f378ce851f16eb05495584eb0d55020fb3cc04872dbc51ef336c215610"
+      },
+      "saved_firmware_check": {
+        "machine": "ip28",
+        "kernel": "netbsd.ip28",
+        "loader_transport": "scsi-volume-header",
+        "passed": true,
+        "base_unchanged": true,
+        "elapsed_seconds": 40.17,
+        "identity": "uname -a; sysctl hw.model hw.ncpu hw.physmem64; mount; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\nNetBSD  11.99.9 NetBSD 11.99.9 (GENERIC64_IP28) #4: Sun Nov 22 16:34:57 UTC 2026  root@toolbx:/var/home/salvogendut/Dev/xiri/.work/ip28-kernel-20261122/build/kernel sgimips\r\nhw.model = SGI-IP28\r\nhw.ncpu = 1\r\nhw.physmem64 = 1073725440\r\nroot_device on / type ffs (read-only, local)\r\n\r\nXIRI_RC_0\r\n# ",
+        "storage": "/bin/dd if=/bin/sh of=/ip28-test.tmp bs=64k && /usr/bin/cmp /bin/sh /ip28-test.tmp && /usr/bin/sha256 /ip28-test.tmp && /bin/rm /ip28-test.tmp && /bin/sync; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\n4+1 records in\r\n4+1 records out\r\n327456 bytes transferred in 0.020 secs (16372800 bytes/sec)\r\nSHA256 (/ip28-test.tmp) = 943c7be2c8b534a84b628cd77d841f638af8884b5a587beb02b1932b70a0ac98\r\n\r\nXIRI_RC_0\r\n# ",
+        "timers": "/bin/date -u; /bin/sleep 2; /bin/date -u; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\nSun Nov 22 16:48:45 UTC 2026\r\nSun Nov 22 16:48:47 UTC 2026\r\n\r\nXIRI_RC_0\r\n# ",
+        "processes": "/bin/sh -c 'i=0; while [ $i -lt 32 ]; do /bin/echo IP28_EXEC >/dev/null || exit; i=$((i+1)); done'; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\n\r\nXIRI_RC_0\r\n# ",
+        "network": "/sbin/ifconfig sq0 inet 192.168.0.2 netmask 255.255.255.0 up && /sbin/ifconfig -w 20 && /sbin/ping -n -c 3 -w 5 192.168.0.1; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\nPING 192.168.0.1 (192.168.0.1): 56 data bytes\r\n64 bytes from 192.168.0.1: icmp_seq=0 ttl=64 time=2.049774 ms\r\n64 bytes from 192.168.0.1: icmp_seq=1 ttl=64 time=0.679652 ms\r\n64 bytes from 192.168.0.1: icmp_seq=2 ttl=64 time=0.573866 ms\r\n\r\n----192.168.0.1 PING Statistics----\r\n3 packets transmitted, 3 packets received, 0.0% packet loss\r\nround-trip min/avg/max/stddev = 0.573866/1.101097/2.049774/0.823279 ms\r\n\r\nXIRI_RC_0\r\n# ",
+        "installed_kernel": "/usr/bin/sha256 /netbsd.ip28; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\nSHA256 (/netbsd.ip28) = 02297b3d80dac23c86af839a4a7b82acf9d3aa7d7220ec4cd65116bdec419fde\r\n\r\nXIRI_RC_0\r\n# ",
+        "shutdown": "/sbin/halt\r\nhalt: halted by root\r\r\n[  34.4200418] syncing disks... done\n\r[  34.4308792] unmounting file systems...\n\r[  34.4600571] unmounting done\n\r[  34.4600571] halting...\n\r\n\r\r\n\r\nSystem Maintenance Menu\r\n\r\n1) Start System\r\n2) Install System Software\r\n3) Run Diagnostics\r\n4) Recover System\r\n5) Enter Command Monitor\r\n\n\rOption? ",
+        "result_path": ".work/ip28-kernel-20261122/saved-prom-6522/result.json",
+        "result_sha256": "63f9a6f2e49f8e58576620f62d3d73b270033b58d5c9d88a57ed791ec3910dca",
+        "serial_log_sha256": "73c140d4023c913b3cc4aa9d183d3e75abdf59f090877d40275c79720a8d87e3"
+      }
+    },
+    "6.5.30": {
+      "release_line": "6.5.30",
+      "source_revision": "68d928aee10b7fde88fcb3f05d98fee041d02c3c",
+      "scope": "Native boot, serial, FFS, Ethernet and clean halt; no IP28 IRIX module, IMPACT desktop or physical hardware qualification",
+      "path": ".work/native/xiri-ip28-6.5.30-20261122",
+      "files": {
+        "nveeprom.bin": {
+          "sha256": "befddc26d40ad908750e122b2c9422a9b6ae3c2068efea96f734b64672dee1de",
+          "bytes": 256
+        },
+        "nvram.bin": {
+          "sha256": "26ecf03b6c5b468d3a29028883e0b8cc9f08d984850ff542d70c87ffc228286d",
+          "bytes": 8192
+        },
+        "netbsd-xiri.chd": {
+          "sha256": "9cea759d5e380b9a88adeca0afc5dff781ca434b215da5cee57d4b9886939594",
+          "bytes": 488179055
+        },
+        "iris.toml": {
+          "sha256": "a1d07fa77cfd41b54fb927e0d38e7bdf47cb47db1c75675d2415ba8c97f098f1",
+          "bytes": 622
+        },
+        "run-iris.sh": {
+          "sha256": "368a440062b887c6001270066e9a7b5eba891d158f98e4feb5a784393ed9b368",
+          "bytes": 279
+        },
+        "README.txt": {
+          "sha256": "9d41db86757746acd0e4a97789d552a3be909ab716de9130b8fec8757c9030a6",
+          "bytes": 1661
+        }
+      },
+      "chd_integrity_verified": true,
+      "cold_boot_check": {
+        "machine": "ip28",
+        "kernel": "netbsd.ip28",
+        "loader_transport": "scsi-volume-header",
+        "passed": true,
+        "base_unchanged": true,
+        "elapsed_seconds": 115.44,
+        "identity": "uname -a; sysctl hw.model hw.ncpu hw.physmem64; mount; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\nNetBSD  11.99.9 NetBSD 11.99.9 (GENERIC64_IP28) #4: Sun Nov 22 16:34:57 UTC 2026  root@toolbx:/var/home/salvogendut/Dev/xiri/.work/ip28-kernel-20261122/build/kernel sgimips\r\nhw.model = SGI-IP28\r\nhw.ncpu = 1\r\nhw.physmem64 = 1073725440\r\nroot_device on / type ffs (read-only, local)\r\n\r\nXIRI_RC_0\r\n# ",
+        "storage": "/bin/dd if=/bin/sh of=/ip28-test.tmp bs=64k && /usr/bin/cmp /bin/sh /ip28-test.tmp && /usr/bin/sha256 /ip28-test.tmp && /bin/rm /ip28-test.tmp && /bin/sync; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\n4+1 records in\r\n4+1 records out\r\n327456 bytes transferred in 0.021 secs (15593142 bytes/sec)\r\nSHA256 (/ip28-test.tmp) = 943c7be2c8b534a84b628cd77d841f638af8884b5a587beb02b1932b70a0ac98\r\n\r\nXIRI_RC_0\r\n# ",
+        "timers": "/bin/date -u; /bin/sleep 2; /bin/date -u; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\nSun Nov 22 16:48:13 UTC 2026\r\nSun Nov 22 16:48:15 UTC 2026\r\n\r\nXIRI_RC_0\r\n# ",
+        "processes": "/bin/sh -c 'i=0; while [ $i -lt 32 ]; do /bin/echo IP28_EXEC >/dev/null || exit; i=$((i+1)); done'; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\n\r\nXIRI_RC_0\r\n# ",
+        "network": "/sbin/ifconfig sq0 inet 192.168.0.2 netmask 255.255.255.0 up && /sbin/ifconfig -w 20 && /sbin/ping -n -c 3 -w 5 192.168.0.1; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\nPING 192.168.0.1 (192.168.0.1): 56 data bytes\r\n64 bytes from 192.168.0.1: icmp_seq=0 ttl=64 time=1.468554 ms\r\n64 bytes from 192.168.0.1: icmp_seq=1 ttl=64 time=0.766021 ms\r\n64 bytes from 192.168.0.1: icmp_seq=2 ttl=64 time=0.792831 ms\r\n\r\n----192.168.0.1 PING Statistics----\r\n3 packets transmitted, 3 packets received, 0.0% packet loss\r\nround-trip min/avg/max/stddev = 0.766021/1.009135/1.468554/0.398094 ms\r\n\r\nXIRI_RC_0\r\n# ",
+        "installed_kernel": "/usr/bin/sha256 /netbsd.ip28; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\nSHA256 (/netbsd.ip28) = 02297b3d80dac23c86af839a4a7b82acf9d3aa7d7220ec4cd65116bdec419fde\r\n\r\nXIRI_RC_0\r\n# ",
+        "shutdown": "/sbin/halt\r\nhalt: halted by root\r\r\n[ 108.1604481] syncing disks... done\n\r[ 108.1712523] unmounting file systems...\n\r[ 108.2104722] unmounting done\n\r[ 108.2104722] halting...\n\r\n\r\r\n\r\nSystem Maintenance Menu\r\n\r\n1) Start System\r\n2) Install System Software\r\n3) Run Diagnostics\r\n4) Recover System\r\n5) Enter Command Monitor\r\n\n\rOption? ",
+        "result_path": ".work/ip28-kernel-20261122/packaged-6530/result.json",
+        "result_sha256": "35ca5f184b736a086dec5fc22a8dd8e31f7490222be87d108a6e6b0db438f22e",
+        "serial_log_sha256": "3be9f67dee82aa3bc11b87825f2c61e3aebdd7a839e299964226f68da43c40d1"
+      },
+      "saved_firmware_check": {
+        "machine": "ip28",
+        "kernel": "netbsd.ip28",
+        "loader_transport": "scsi-volume-header",
+        "passed": true,
+        "base_unchanged": true,
+        "elapsed_seconds": 38.59,
+        "identity": "uname -a; sysctl hw.model hw.ncpu hw.physmem64; mount; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\nNetBSD  11.99.9 NetBSD 11.99.9 (GENERIC64_IP28) #4: Sun Nov 22 16:34:57 UTC 2026  root@toolbx:/var/home/salvogendut/Dev/xiri/.work/ip28-kernel-20261122/build/kernel sgimips\r\nhw.model = SGI-IP28\r\nhw.ncpu = 1\r\nhw.physmem64 = 1073725440\r\nroot_device on / type ffs (read-only, local)\r\n\r\nXIRI_RC_0\r\n# ",
+        "storage": "/bin/dd if=/bin/sh of=/ip28-test.tmp bs=64k && /usr/bin/cmp /bin/sh /ip28-test.tmp && /usr/bin/sha256 /ip28-test.tmp && /bin/rm /ip28-test.tmp && /bin/sync; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\n4+1 records in\r\n4+1 records out\r\n327456 bytes transferred in 0.018 secs (18192000 bytes/sec)\r\nSHA256 (/ip28-test.tmp) = 943c7be2c8b534a84b628cd77d841f638af8884b5a587beb02b1932b70a0ac98\r\n\r\nXIRI_RC_0\r\n# ",
+        "timers": "/bin/date -u; /bin/sleep 2; /bin/date -u; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\nSun Nov 22 16:49:36 UTC 2026\r\nSun Nov 22 16:49:38 UTC 2026\r\n\r\nXIRI_RC_0\r\n# ",
+        "processes": "/bin/sh -c 'i=0; while [ $i -lt 32 ]; do /bin/echo IP28_EXEC >/dev/null || exit; i=$((i+1)); done'; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\n\r\nXIRI_RC_0\r\n# ",
+        "network": "/sbin/ifconfig sq0 inet 192.168.0.2 netmask 255.255.255.0 up && /sbin/ifconfig -w 20 && /sbin/ping -n -c 3 -w 5 192.168.0.1; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\nPING 192.168.0.1 (192.168.0.1): 56 data bytes\r\n64 bytes from 192.168.0.1: icmp_seq=0 ttl=64 time=1.348174 ms\r\n64 bytes from 192.168.0.1: icmp_seq=1 ttl=64 time=0.687928 ms\r\n64 bytes from 192.168.0.1: icmp_seq=2 ttl=64 time=0.648707 ms\r\n\r\n----192.168.0.1 PING Statistics----\r\n3 packets transmitted, 3 packets received, 0.0% packet loss\r\nround-trip min/avg/max/stddev = 0.648707/0.894936/1.348174/0.393005 ms\r\n\r\nXIRI_RC_0\r\n# ",
+        "installed_kernel": "/usr/bin/sha256 /netbsd.ip28; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\nSHA256 (/netbsd.ip28) = 02297b3d80dac23c86af839a4a7b82acf9d3aa7d7220ec4cd65116bdec419fde\r\n\r\nXIRI_RC_0\r\n# ",
+        "shutdown": "/sbin/halt\r\nhalt: halted by root\r\r\n[  33.0602115] syncing disks... done\n\r[  33.0710032] unmounting file systems...\n\r[  33.1102270] unmounting done\n\r[  33.1102270] halting...\n\r\n\r\r\n\r\nSystem Maintenance Menu\r\n\r\n1) Start System\r\n2) Install System Software\r\n3) Run Diagnostics\r\n4) Recover System\r\n5) Enter Command Monitor\r\n\n\rOption? ",
+        "result_path": ".work/ip28-kernel-20261122/saved-prom-6530/result.json",
+        "result_sha256": "0d59d330f040e6c337737e63c96bbfb7ffb1de1cbabf34639dda034d3645cfbf",
+        "serial_log_sha256": "b9de3326a9dc99e4bec11b7f69319afe19776be49f39cf8ba08b8fc3a3184b76"
+      }
+    }
+  },
+  "original_bases": {
+    "6.5.22": {
+      "path": ".work/images/xiri-irix-6.5.22f-r4400-20261115/netbsd-xiri.chd",
+      "sha256": "d596318f1f84c6628b6e46e58b8e7669349b8db504bde8c2b3ff7cc11c4cb7fe",
+      "unchanged": true
+    },
+    "6.5.30": {
+      "path": ".work/images/xiri-irix-6.5.30f-r5000-20261115/netbsd-xiri.chd",
+      "sha256": "b1bf09e4281d9666359b40c9ded755a07675bdd9fb38dbe0843740d44e38b6c7",
+      "unchanged": true
+    }
+  },
+  "native_artifacts": {
+    "netbsd": {
+      "sha256": "02297b3d80dac23c86af839a4a7b82acf9d3aa7d7220ec4cd65116bdec419fde",
+      "bytes": 7501256
+    },
+    "netbsd.gdb": {
+      "sha256": "489005abc3ce4fa1a1535d0cb3bb5eca61966a69bb988a5564b07fa70a390008",
+      "bytes": 40205464
+    },
+    "netbsd.map": {
+      "sha256": "9c40b047b3e044f90a6c33a4804cda174e2771c918a31e30a54207ac5d840671",
+      "bytes": 3820437
+    },
+    "ip28boot": {
+      "sha256": "8ca708961921510268bb0cbc718aed4e4e112ebdb7f558b764c6c2a0b1e220da",
+      "bytes": 70312
+    },
+    "GENERIC64_IP28": {
+      "sha256": "b14faaf538df500d0140e876eee49980829420ff22317fc41b20957e26014238",
+      "bytes": 1266
+    },
+    "netbsd-indy-regression.elf32": {
+      "sha256": "7776728eddcdc312e792261408232abbecafa94e76612d89642eda54d8ccee23",
+      "bytes": 7394976
+    }
+  },
+  "cleanup": {
+    "targets": [
+      {
+        "path": "/var/home/salvogendut/Dev/xiri/.work/netbsd-ip28-src",
+        "allocated_bytes": 647708672
+      },
+      {
+        "path": "/var/home/salvogendut/Dev/xiri/.work/ip28-kernel-20261122/build",
+        "allocated_bytes": 187838464
+      },
+      {
+        "path": "/var/home/salvogendut/Dev/xiri/.work/ip28-kernel-20261122/indy",
+        "allocated_bytes": 228757504
+      },
+      {
+        "path": "/var/home/salvogendut/Dev/xiri/.work/ip28-kernel-20261122/loaders",
+        "allocated_bytes": 45760512
+      },
+      {
+        "path": "/var/home/salvogendut/Dev/xiri/.work/ip28-kernel-20261122/media",
+        "allocated_bytes": 7520256
+      },
+      {
+        "path": "/var/home/salvogendut/Dev/xiri/.work/ip28-kernel-20261122/install.iso",
+        "allocated_bytes": 7933952
+      },
+      {
+        "path": "/var/home/salvogendut/Dev/xiri/lab/ip28-kernel/__pycache__",
+        "allocated_bytes": 24576
+      },
+      {
+        "path": "/var/home/salvogendut/Dev/xiri/.work/ip28-kernel-20261122/__pycache__",
+        "allocated_bytes": 20480
+      },
+      {
+        "path": "/var/home/salvogendut/Dev/xiri/.work/ip28-kernel-20261122/boot-01/netbsd-xiri.abde8b9bb7a84dbc.diff.chd",
+        "allocated_bytes": 2101248
+      },
+      {
+        "path": "/var/home/salvogendut/Dev/xiri/.work/ip28-kernel-20261122/boot-02/netbsd-xiri.abde8b9bb7a84dbc.diff.chd",
+        "allocated_bytes": 2101248
+      },
+      {
+        "path": "/var/home/salvogendut/Dev/xiri/.work/ip28-kernel-20261122/boot-03/netbsd-xiri.abde8b9bb7a84dbc.diff.chd",
+        "allocated_bytes": 2101248
+      },
+      {
+        "path": "/var/home/salvogendut/Dev/xiri/.work/ip28-kernel-20261122/boot-05/netbsd-xiri.abde8b9bb7a84dbc.diff.chd",
+        "allocated_bytes": 2101248
+      },
+      {
+        "path": "/var/home/salvogendut/Dev/xiri/.work/ip28-kernel-20261122/prepare-6522/netbsd-xiri.abde8b9bb7a84dbc.diff.chd",
+        "allocated_bytes": 9764864
+      },
+      {
+        "path": "/var/home/salvogendut/Dev/xiri/.work/ip28-kernel-20261122/prepare-6522-v2/netbsd-xiri.abde8b9bb7a84dbc.diff.chd",
+        "allocated_bytes": 2637824
+      },
+      {
+        "path": "/var/home/salvogendut/Dev/xiri/.work/ip28-kernel-20261122/prepare-6522-v3/netbsd-xiri.abde8b9bb7a84dbc.diff.chd",
+        "allocated_bytes": 10502144
+      },
+      {
+        "path": "/var/home/salvogendut/Dev/xiri/.work/ip28-kernel-20261122/prepare-6530/netbsd-xiri.d2d4cf025c16ec29.diff.chd",
+        "allocated_bytes": 10502144
+      },
+      {
+        "path": "/var/home/salvogendut/Dev/xiri/.work/ip28-kernel-20261122/indy-6522-v2/netbsd-xiri.abde8b9bb7a84dbc.diff.chd",
+        "allocated_bytes": 2818048
+      },
+      {
+        "path": "/var/home/salvogendut/Dev/xiri/.work/ip28-kernel-20261122/indy-6530/netbsd-xiri.d2d4cf025c16ec29.diff.chd",
+        "allocated_bytes": 2818048
+      },
+      {
+        "path": "/var/home/salvogendut/Dev/xiri/.work/ip28-kernel-20261122/packaged-6522/netbsd-xiri.f9d1d1e0753af86b.diff.chd",
+        "allocated_bytes": 2768896
+      },
+      {
+        "path": "/var/home/salvogendut/Dev/xiri/.work/ip28-kernel-20261122/packaged-6530/netbsd-xiri.cfae5da47f2cc1d8.diff.chd",
+        "allocated_bytes": 2768896
+      },
+      {
+        "path": "/var/home/salvogendut/Dev/xiri/.work/ip28-kernel-20261122/saved-prom-6522/netbsd-xiri.f9d1d1e0753af86b.diff.chd",
+        "allocated_bytes": 2768896
+      },
+      {
+        "path": "/var/home/salvogendut/Dev/xiri/.work/ip28-kernel-20261122/saved-prom-6530/netbsd-xiri.cfae5da47f2cc1d8.diff.chd",
+        "allocated_bytes": 2768896
+      }
+    ],
+    "allocated_bytes_to_remove": 1184088064,
+    "filesystem_available_before": 460360327168,
+    "status": "complete",
+    "filesystem_available_after": 461435621376,
+    "allocated_bytes_removed": 1184088064,
+    "filesystem_available_delta": 1075294208,
+    "topic_branch_removed": true,
+    "topic_worktree_removed": true,
+    "temporary_builds_removed": true,
+    "emulator_instances_remaining": 0,
+    "build_container_stopped": true
+  }
+}

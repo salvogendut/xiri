@@ -648,7 +648,9 @@ wrapper is rejected by the Octane PROM; the ELF64 image faults during loading.
 The audited NetBSD tree lacks the Octane ARCS64/HEART/XIO/Bridge/IOC3 and
 display attachment path. This check does not qualify a 6.5.30 Xiri desktop.
 
-- [ ] Classify the available Indigo2 by CPU and graphics; identify reusable support and additional port work.
+- [ ] Classify the available physical Indigo2 by CPU and graphics; identify reusable support and additional port work.
+- [x] Boot native NetBSD on emulated IP28/R10000 with 1 GiB RAM, serial console, SCSI/FFS, Ethernet and clean halt. Both release-line disks pass; see the [November 22 result](results/2026-11-22-ip28-kernel.md).
+- [ ] Extend IP28 from native serial boot to a matching modular Xiri kernel, keyboard/mouse, IMPACT framebuffer and Xorg; then qualify both IRIX desktop releases. Physical cache/DMA and sustained I/O validation remain separate.
 - [ ] Repair and qualify native NetBSD on O2, starting with the remaining SCSI-stage boot trap, then storage/cache/DMA, input and the `crime` Xorg path.
 - [ ] Map the missing NetBSD Octane board support using historical OpenBSD and current Linux implementations as references.
 - [ ] Implement and validate Octane boot, memory, interrupts, and essential I/O under NetBSD.
