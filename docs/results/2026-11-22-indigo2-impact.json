@@ -145,12 +145,12 @@
         "files_sha256": {
           "iris.toml": "249ed7bdae3bb3eab9eb4d8adf03cb1c1b8dda3d14747db58ec6b68d9e46b14b",
           "run-iris.sh": "368a440062b887c6001270066e9a7b5eba891d158f98e4feb5a784393ed9b368",
-          "nvram.bin": "55831c027cdbb197b4edfcce1192b8afefa0c80aee6c2e251e8cb2c4578c7e73",
-          "nveeprom.bin": "c0285b2152320973f292563612e925127f791e2ab3139effe6f64d42f11a7386",
-          "README.txt": "5e29b75fc53617f446c8a36b834c022708fb53679944a59521067f009691bbde"
+          "nvram.bin": "9cad15f61d680ae401ea9804cade008069f49353f09b7273e05d78114453c7a1",
+          "nveeprom.bin": "cbb7b2c9fb498f7f651d3236ec63a0755ab05532238af83e6a928781822914f1",
+          "README.txt": "eb341557fab7c77eb0b167f6ddc364ed35eb0d45b070788969cffe00d441b47a"
         },
         "launcher": "./.work/native/indigo2-ip28-6.5.22f-20261122/run-iris.sh",
-        "firmware_console": "serial",
+        "firmware_console": "graphics",
         "root_autologin": false,
         "normal_graphical_login": true,
         "manual_test_overlay_removed": true,
@@ -162,7 +162,39 @@
           "sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7"
         }
       },
-      "scope": "Native IRIX reference and focused graphics tests; not complete OpenGL coverage or NetBSD/Xiri IP28 qualification."
+      "scope": "Native IRIX reference and focused graphics tests; not complete OpenGL coverage or NetBSD/Xiri IP28 qualification.",
+      "ordinary_window_check": {
+        "mode": "ordinary visible host window; no CI flags",
+        "serial_login_seconds": 77.949,
+        "desktop_capture_seconds": 122.0,
+        "desktop_present": true,
+        "clean_shutdown": true,
+        "exit": {
+          "returncode": 0,
+          "elapsed_seconds": 214.35420511101256
+        },
+        "screenshot": "login.png"
+      },
+      "graphical_console_followup": {
+        "mode": "ordinary visible host window, no CI flags",
+        "console": "g",
+        "visible_startup_screen": true,
+        "boot_capture_seconds": 24.8,
+        "normal_graphical_login": true,
+        "login_capture_seconds": 85.2,
+        "clean_shutdown": true,
+        "exit": {
+          "returncode": 0,
+          "elapsed_seconds": 151.5176521060057
+        },
+        "changed_eeprom_offsets": [
+          0,
+          2
+        ],
+        "firmware_checksum_valid": true,
+        "base_chd_unchanged": true,
+        "user_disk_overlay_unchanged": true
+      }
     },
     "6.5.30": {
       "release": "6.5.30",
@@ -216,7 +248,16 @@
     "6.5.22-install.log": "27589bb2541e26d29945cf2704a73173ce38805d53db5dfea84a9023db33f7fd",
     "6.5.22-chd-verify.log": "a7ae8c1cdf8a277cf1ebafbda3b6013c985b075f05bcef00fc6a16f3fee5d37d",
     "6.5.30-result.json": "eb8c4cb1827cb9f477d8ed7c84106fc0562342dc3b29bcb4972e1f9b4f4493d3",
-    "impact-test.patch": "d7f3cd583035ee4b8e451496eae72542d28b3527c1f71436bb3d9bab219e64d1"
+    "impact-test.patch": "d7f3cd583035ee4b8e451496eae72542d28b3527c1f71436bb3d9bab219e64d1",
+    "normal-window-check/inputs.json": "b17a0de9877e2ceabe330e19fb5544e07bb34b76f7b67992061efb89d2be8ec2",
+    "normal-window-check/result.json": "bcaf03604894acd598780b1d5f1e8a0479d7ca704cc31f0b966bba2a2f122f22",
+    "normal-window-check/manual-serial.log": "45f00dd8085ef4b1e406205e969ef78f03a178c684100fe65b5ecc6c141a3a49",
+    "normal-window-check/login.png": "77593704a00cdf1faab8a7d0028a0fa27b50016c13be3dca00f886320d4553f0",
+    "graphics-console-check/inputs.json": "d10388d79a31cd2f18c85d096bb517abafa053e61c065d115615be1d3f167742",
+    "graphics-console-check/result.json": "b2bcbd30473566724464972cd739816d6aaee9ba59534ae1890c66e7b6852bca",
+    "graphics-console-check/boot-early.png": "b05377c5126c10cad9e7c9cb54759e9245950861357418100f61bd6e96cff83c",
+    "graphics-console-check/login.png": "eaea9b0e7c340d9d8626099b97685516dab1ce5dfb33fe7d693368fef6fa5e90",
+    "graphics-console-check/emulator.log": "b82e9dcbdfb0f04c13f3c196319a987c073eda2be7624bbf08ed86cd9723d533"
   },
   "final_cleanup": {
     "before_available_bytes": 460648640512,

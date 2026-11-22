@@ -206,6 +206,8 @@ The [2026-11-22 IRIS refresh](docs/results/2026-11-22-iris-upstream.md)
 records the current integration, fresh binaries, desktop checks and launch commands.
 The [Indigo2 R10000 / High IMPACT investigation](docs/results/2026-11-22-indigo2-impact.md)
 explains the corrected GPU regression test and records the native IP28 checks.
+The [IP28 BSD bootloader checkpoint](docs/results/2026-11-22-ip28-boot64.md)
+provides a tested 64-bit loader and records the remaining native kernel work.
 
 ## Run the current image
 

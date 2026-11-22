@@ -114,8 +114,9 @@ The separate native image bundle is
 ./.work/native/indigo2-ip28-6.5.22f-20261122/run-iris.sh
 ```
 
-The PROM boots the disk automatically. Firmware output remains on serial;
-the visible display appears when Xsgi starts. Select `root` at the normal
+The PROM boots the disk automatically with the graphical console enabled
+(`console=g`). IRIX shows its native startup screens before Xsgi starts;
+allow roughly one to two minutes on this host. Select `root` at the normal
 graphical login and use the fresh installation's empty password. The image
 does not enable root autologin. Shut down through IRIX when finished.
 
@@ -125,10 +126,20 @@ The launcher uses a private write overlay, the existing accelerated IRIS
 binary, and the bundle's independent PROM state. Keep the overlay to retain
 manual-test changes. The probe executables and scratch disk are excluded.
 
-The final packaged configuration was tested without entering any PROM commands:
-it booted automatically, reached the normal graphical login with zero pixels
-differing from the reference capture, and shut down cleanly. The bundle includes
-`qualification.json` with its configuration and firmware hashes.
+The initial packaging check used `--ci --ci-display`: it booted automatically,
+reached the normal graphical login with zero pixels differing from the reference
+capture, and shut down cleanly. The bundle includes `qualification.json` with
+its configuration and firmware hashes.
+
+The subsequent ordinary-window check, without CI flags, reached serial login
+after 78 seconds and displayed the desktop. It confirmed that the original
+`console=d` setting hid boot progress from the window. The manual bundle now
+uses `console=g`; a second ordinary-window boot displayed the native
+[startup screen](2026-11-22-indigo2-boot.png) at 25 seconds and `clogin` at
+85 seconds, then powered off cleanly. Only the console byte and EEPROM checksum
+changed; the base CHD and the user's disk overlay are preserved. The memory/GIO
+probe messages quoted during the black-screen report also occur on the passing
+boots and did not prevent this system from starting.
 
 ### Installation sequence
 

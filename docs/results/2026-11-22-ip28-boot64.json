@@ -1,0 +1,254 @@
+{
+  "schema": 1,
+  "date": "2026-11-22",
+  "scope": "IP28 standalone NetBSD loader; not an IP28 NetBSD kernel or Xiri desktop qualification",
+  "source": {
+    "netbsd_base": "93a258077244ea6e6a1a43a9d2e8b8fa41aa6555",
+    "netbsd_revision": "b84b5316b3a4c55d8fbc986aecac24601a0e7f2d",
+    "integration_branch": "xiri",
+    "iris_revision": "eb21c6ecec510e3bee2582b42a48a3af6b0726a8",
+    "iris_binary_source": "0bc52567a87349a5f521c702f9d8dec1dc0f79c6",
+    "iris_upstream_checked": "6ec1ebf379228d572026a9ae8d291511ed28af74",
+    "iris_upstream_incoming": 0,
+    "pushed_branch": "origin/xiri"
+  },
+  "machine": {
+    "profile": "indigo2_ip28",
+    "cpu": "r10000",
+    "memory_mib": 1024,
+    "graphics": "highimpact",
+    "console": "serial d for automated loader checks"
+  },
+  "build": {
+    "architecture": "n64 big-endian MIPS III",
+    "entry": "0xa800000020003000",
+    "ip28boot": "passed",
+    "ip30boot": "build passed, runtime unqualified",
+    "ip2xboot": "build passed, no runtime test this cycle",
+    "ip3xboot": "build passed, no runtime test this cycle",
+    "toolchain": ".work/netbsd-octane-build/tools",
+    "compiler": "GCC 14.4.0 (NetBSD nb4)",
+    "script": "lab/ip28-boot64/build.sh"
+  },
+  "checks": {
+    "check-tftp": {
+      "disk": "/var/home/salvogendut/Dev/xiri/.work/indigo2-netbsd-20261122/fixture/disk.raw",
+      "kernel": "xiri-ip28-probe",
+      "loader_transport": "tftp",
+      "expected": "handoff",
+      "passed": true,
+      "pid": 1378409,
+      "returned_to_prom": true,
+      "evidence": "boot -f bootp():ip28boot\r\nSetting $netaddr to 192.168.0.2 (from server iris)\n\rObtaining ip28boot from server iris\n\r   \b\b\b   \b\b\b   \b\b\b56880   \b|\b/\b-\b\b\b+1544 entry: 0xa800000020003000\n\r\r\nNetBSD/sgimips 11.99.9 Bootstrap, Revision 1.1 (Sun Nov 22 15:41:32 UTC 2026)\r\n\r\ndevopen: scsi(0)disk(1)rdisk(0)partition(0) type scsi file xiri-ip28-probe\r\n|\b/\b-\b\\\b|\bdevopen: scsi(0)disk(1)rdisk(0)partition(0) type scsi file xiri-ip28-probe\r\n/\b-\b\\\b|\b/\b816+8192 [576+99]=0x29c8\r\nXIRI_IP28_LOADER_HANDOFF_PASS: data BSS argv bootinfo\r\nKernel returned!  Halting...\r\n\r\n\r\nSystem Maintenance Menu\r\n\r\n1) Start System\r\n2) Install System Software\r\n3) Run Diagnost",
+      "exit_code": 0,
+      "elapsed_seconds": 4.25
+    },
+    "check-disk": {
+      "disk": "/var/home/salvogendut/Dev/xiri/.work/indigo2-netbsd-20261122/build/fixture/disk.raw",
+      "kernel": "xiri-ip28-probe",
+      "loader_transport": "scsi-volume-header",
+      "expected": "handoff",
+      "passed": true,
+      "pid": 1378593,
+      "returned_to_prom": true,
+      "evidence": "boot -f scsi(0)disk(1)rdisk(0)partition(8)boot\r\n56880+1544 entry: 0xa800000020003000\n\r\r\nNetBSD/sgimips 11.99.9 Bootstrap, Revision 1.1 (Sun Nov 22 15:41:32 UTC 2026)\r\n\r\ndevopen: scsi(0)disk(1)rdisk(0)partition(0) type scsi file xiri-ip28-probe\r\n|\b/\b-\b\\\b|\bdevopen: scsi(0)disk(1)rdisk(0)partition(0) type scsi file xiri-ip28-probe\r\n/\b-\b\\\b|\b/\b816+8192 [576+99]=0x29c8\r\nXIRI_IP28_LOADER_HANDOFF_PASS: data BSS argv bootinfo\r\nKernel returned!  Halting...\r\n\r\n\r\nSystem Maintenance Menu\r\n\r\n1) Start System\r\n2) Install System Software\r\n3) Run Diagnostics\r\n4) Recover System\r\n5) Enter Command Monitor\r\n\n\rOption? ",
+      "exit_code": 0,
+      "elapsed_seconds": 4.06
+    },
+    "check-packaged-chd": {
+      "disk": "/var/home/salvogendut/Dev/xiri/.work/native/netbsd-ip28-loader-20261122/loader-test.chd",
+      "kernel": "xiri-ip28-probe",
+      "loader_transport": "scsi-volume-header",
+      "expected": "handoff",
+      "passed": true,
+      "pid": 1380123,
+      "returned_to_prom": true,
+      "evidence": "boot -f scsi(0)disk(1)rdisk(0)partition(8)boot\r\n56880+1544 entry: 0xa800000020003000\n\r\r\nNetBSD/sgimips 11.99.9 Bootstrap, Revision 1.1 (Sun Nov 22 15:41:32 UTC 2026)\r\n\r\ndevopen: scsi(0)disk(1)rdisk(0)partition(0) type scsi file xiri-ip28-probe\r\n|\b/\b-\b\\\b|\bdevopen: scsi(0)disk(1)rdisk(0)partition(0) type scsi file xiri-ip28-probe\r\n/\b-\b\\\b|\b/\b816+8192 [576+99]=0x29c8\r\nXIRI_IP28_LOADER_HANDOFF_PASS: data BSS argv bootinfo\r\nKernel returned!  Halting...\r\n\r\n\r\nSystem Maintenance Menu\r\n\r\n1) Start System\r\n2) Install System Software\r\n3) Run Diagnostics\r\n4) Recover System\r\n5) Enter Command Monitor\r\n\n\rOption? ",
+      "exit_code": 0,
+      "elapsed_seconds": 4.03
+    },
+    "check-6.5.22": {
+      "disk": "/var/home/salvogendut/Dev/xiri/.work/indigo2-netbsd-20261122/6.5.22/netbsd-xiri.chd",
+      "kernel": "netbsd",
+      "loader_transport": "tftp",
+      "expected": "wrong-address",
+      "passed": true,
+      "pid": 1378814,
+      "returned_to_prom": true,
+      "evidence": "boot -f bootp():ip28boot\r\nSetting $netaddr to 192.168.0.2 (from server iris)\n\rObtaining ip28boot from server iris\n\r   \b\b\b   \b\b\b   \b\b\b56880   \b|\b/\b-\b\b\b+1544 entry: 0xa800000020003000\n\r\r\nNetBSD/sgimips 11.99.9 Bootstrap, Revision 1.1 (Sun Nov 22 15:41:32 UTC 2026)\r\n\r\ndevopen: scsi(0)disk(1)rdisk(0)partition(0) type scsi file netbsd\r\n|\b/\b-\b\\\b|\b/\b-\bKernel address range 0xffffffff88060000..0xffffffff8874e838 is outside usable firmware RAM.\r\nUse a kernel linked for this machine.\r\nBoot failed!  Halting...\r\n\r\n\r\nSystem Maintenance Menu\r\n\r\n1) Start System\r\n2) Install System Software\r\n3) Run Diagnostics\r\n4) Recover System\r\n5) Enter Command Monitor\r\n\n\rOption? ",
+      "exit_code": 0,
+      "elapsed_seconds": 4.24
+    },
+    "check-6.5.30": {
+      "disk": "/var/home/salvogendut/Dev/xiri/.work/indigo2-netbsd-20261122/6.5.30/netbsd-xiri.chd",
+      "kernel": "netbsd",
+      "loader_transport": "tftp",
+      "expected": "wrong-address",
+      "passed": true,
+      "pid": 1378916,
+      "returned_to_prom": true,
+      "evidence": "boot -f bootp():ip28boot\r\nSetting $netaddr to 192.168.0.2 (from server iris)\n\rObtaining ip28boot from server iris\n\r   \b\b\b   \b\b\b   \b\b\b56880   \b|\b/\b-\b\b\b+1544 entry: 0xa800000020003000\n\r\r\nNetBSD/sgimips 11.99.9 Bootstrap, Revision 1.1 (Sun Nov 22 15:41:32 UTC 2026)\r\n\r\ndevopen: scsi(0)disk(1)rdisk(0)partition(0) type scsi file netbsd\r\n|\b/\b-\b\\\b|\b/\b-\bKernel address range 0xffffffff88060000..0xffffffff8874e838 is outside usable firmware RAM.\r\nUse a kernel linked for this machine.\r\nBoot failed!  Halting...\r\n\r\n\r\nSystem Maintenance Menu\r\n\r\n1) Start System\r\n2) Install System Software\r\n3) Run Diagnostics\r\n4) Recover System\r\n5) Enter Command Monitor\r\n\n\rOption? ",
+      "exit_code": 0,
+      "elapsed_seconds": 4.62
+    }
+  },
+  "artifact": {
+    "directory": ".work/native/netbsd-ip28-loader-20261122",
+    "files": {
+      "ip28boot": {
+        "bytes": 70312,
+        "sha256": "8ca708961921510268bb0cbc718aed4e4e112ebdb7f558b764c6c2a0b1e220da"
+      },
+      "xiri-ip28-probe": {
+        "bytes": 2736,
+        "sha256": "384059524a3af2d46190b22573ca782d4807b2b5e47300909628ac48ad7d7071"
+      },
+      "loader-test.chd": {
+        "bytes": 33862,
+        "sha256": "9c3022a9abdcf12fcdf5b0b0cced3c7a3b0b2eeb967c05ff55843af67a98635c"
+      },
+      "README.txt": {
+        "bytes": 496,
+        "sha256": "e3582f00f137fafcde053a34cbc55cdbf27ff51181a65a74b2fd309ee10dbbd7"
+      },
+      "NETBSD-COPYRIGHT.txt": {
+        "bytes": 6380,
+        "sha256": "8ba21cf583d28d7342eb3186f86d8a0ea6c0a89e11ed2d677b5172e724bc7da3"
+      }
+    },
+    "chd_logical_bytes": 33554432,
+    "chd_verify": "passed",
+    "contains_vendor_files": false
+  },
+  "kernel_blocker": {
+    "both_xiri_releases": "Indy-linked kernel range 0xffffffff88060000..0xffffffff8874e838, outside IP28 usable RAM",
+    "indigo2_ram_base": "0x20000000",
+    "needed": "IP28 native kernel port: ARCS64 handoff, memory/CPU/platform initialization, interrupts, storage and console; IMPACT/Xorg after native boot",
+    "qualified_xiri_images_replaced": false
+  },
+  "evidence_directory": ".work/indigo2-netbsd-20261122",
+  "cleanup": {
+    "available_bytes_before": 462271737856,
+    "paths": [
+      {
+        "path": ".work/indigo2-netbsd-20261122/build",
+        "allocated_bytes": 45899776
+      },
+      {
+        "path": ".work/indigo2-netbsd-20261122/fixture",
+        "allocated_bytes": 33640448
+      },
+      {
+        "path": ".work/indigo2-netbsd-20261122/tftp",
+        "allocated_bytes": 73728
+      },
+      {
+        "path": ".work/netbsd-ip28-boot-src",
+        "allocated_bytes": 115466240
+      },
+      {
+        "path": ".work/indigo2-netbsd-20261122/6.5.22/netbsd-xiri.chd",
+        "allocated_bytes": 458358784
+      },
+      {
+        "path": ".work/indigo2-netbsd-20261122/6.5.22/netbsd-xiri.chd.diff.chd",
+        "allocated_bytes": 2101248
+      },
+      {
+        "path": ".work/indigo2-netbsd-20261122/6.5.30/netbsd-xiri.chd",
+        "allocated_bytes": 485228544
+      },
+      {
+        "path": ".work/indigo2-netbsd-20261122/check-6.5.22/netbsd-xiri.b8a0d17e74109423.diff.chd",
+        "allocated_bytes": 2101248
+      },
+      {
+        "path": ".work/indigo2-netbsd-20261122/check-6.5.30/netbsd-xiri.63b3fc70d74a0362.diff.chd",
+        "allocated_bytes": 2101248
+      },
+      {
+        "path": ".work/indigo2-netbsd-20261122/check-packaged-chd/loader-test.f8d30b4d9abe8bb4.diff.chd",
+        "allocated_bytes": 36864
+      }
+    ],
+    "unrelated_work_unchanged": true,
+    "all_listed_paths_removed": true,
+    "allocated_bytes_removed": 1145008128,
+    "available_bytes_after": 462492143616,
+    "measured_free_space_gain_bytes": 220405760,
+    "measurement_note": "Allocated totals include reflink-shared blocks; filesystem free-space changes also reflect compression and concurrent activity.",
+    "completed_topic_removed": true,
+    "qualified_release_artifacts_preserved": true,
+    "all_owned_iris_instances_stopped": true,
+    "build_container": "xiri-iris: stopped; initially stopped"
+  },
+  "evidence_sha256": {
+    "6.5.22/emulator.log": "205b893e0ce43e2cd04824223bc1890d1134104945325fa6c5666361ede596af",
+    "6.5.22/exit.json": "1c661c2127468129dda4970e0fd5142f732e639473c020d996413afc3ae8e723",
+    "6.5.22/input.json": "7fd4f0941050af29d70c4edddf423d6079e1e2e1a70f2d446278325a0e9d1689",
+    "6.5.22/process.json": "3f2d9c874edbdead277d41c87d0b683f3cf927c63ae3dfda3a3c31bcfa1fb154",
+    "6.5.22/serial.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "6.5.30/input.json": "dfa1d7a9abba940676e4629e21aa99a8cb631e6f0e6c80b58eadd3998f359dc3",
+    "build-boot64.log": "fccaa07f5d717d4842c9c5a653efe85371b00ace564423e27f2a6ac231e2585d",
+    "build-diagnostic.log": "6eb8b7d17160e7b2baadaf803cc23cd0ce076cd1bc1e7d94594ec18cf98ceff9",
+    "build-final.log": "425c883ce6ec3e90181890440bf98d475c0fe65a3fa04d2c54ba03503474dfb0",
+    "build-fixture.log": "4dec6a39630250604d3f172f3a718d13137898ab4493753ec08ff38ad1142b54",
+    "build-qualification.log": "89c1cd1681011db792c8ec7a85db8d5011aa7ef4024628a379e5deb764001056",
+    "build-seek-diagnostic.log": "4f5f609598e3945ccbce30b8b6cf6d0e412eadeb1ca8b88b571778666ffcef15",
+    "check-6.5.22/driver.log": "6218867a132df7a8fded494f4eab81ab81a9727a284b97619bf4eeae3f4fc311",
+    "check-6.5.22/emulator.log": "5696056b60adf4c8fa927b1646233e543a700e0014cce57db744b6ac963671c7",
+    "check-6.5.22/result.json": "3882e7026110b3c4fdab4f4c1652d6a6cb67e8eeaad9f224e53f372031e1e5e3",
+    "check-6.5.22/serial.log": "6218867a132df7a8fded494f4eab81ab81a9727a284b97619bf4eeae3f4fc311",
+    "check-6.5.22.log": "3882e7026110b3c4fdab4f4c1652d6a6cb67e8eeaad9f224e53f372031e1e5e3",
+    "check-6.5.30/driver.log": "6218867a132df7a8fded494f4eab81ab81a9727a284b97619bf4eeae3f4fc311",
+    "check-6.5.30/emulator.log": "f94ebc1c793c40903208cc7113b5dfa6a1a69d1bd941ccb421da29773d877c64",
+    "check-6.5.30/result.json": "8ba90394ce3e7ff53814942d308353b5381d1d0c370525a90c409105f5fb38e2",
+    "check-6.5.30/serial.log": "6218867a132df7a8fded494f4eab81ab81a9727a284b97619bf4eeae3f4fc311",
+    "check-6.5.30.log": "8ba90394ce3e7ff53814942d308353b5381d1d0c370525a90c409105f5fb38e2",
+    "check-disk/driver.log": "0f0dd03125b1ff7b9a423899f867ecaf9acfbf78f250861c09b9ec579d0df9d4",
+    "check-disk/emulator.log": "2383ce4ab33b62b792fbaafeb21e7c530d22e7a10f4cdbe904f58139be77bc5a",
+    "check-disk/result.json": "34627e3c63791ac955654bf9a76f2e2faa637589c2a2df66274b219a300767b6",
+    "check-disk/serial.log": "0f0dd03125b1ff7b9a423899f867ecaf9acfbf78f250861c09b9ec579d0df9d4",
+    "check-disk.log": "34627e3c63791ac955654bf9a76f2e2faa637589c2a2df66274b219a300767b6",
+    "check-packaged-chd/driver.log": "0f0dd03125b1ff7b9a423899f867ecaf9acfbf78f250861c09b9ec579d0df9d4",
+    "check-packaged-chd/emulator.log": "1751d439f5eba31cfff1ccd4e7f9882c53dbb6c042342ddd04462dd66923e3b8",
+    "check-packaged-chd/result.json": "e86c1c530d9a7290c15e5c3af7d4f93babf8e3c0a67b1d529d8835e3737ad176",
+    "check-packaged-chd/serial.log": "0f0dd03125b1ff7b9a423899f867ecaf9acfbf78f250861c09b9ec579d0df9d4",
+    "check-packaged-chd.log": "e86c1c530d9a7290c15e5c3af7d4f93babf8e3c0a67b1d529d8835e3737ad176",
+    "check-tftp/driver.log": "0b3b14977b790fd4f5756971dd3e2595aa5ea25e6f153c4ab927e63a26dc1b27",
+    "check-tftp/emulator.log": "d7e78125dfaaf64cb0038107b1b11df3365d41eb765c57fe1b34d37061e087df",
+    "check-tftp/result.json": "a9f1e5c3389dc268e3e28a833d8f15d7a016c5da406b658c0265cd688aa6369c",
+    "check-tftp/serial.log": "12024af427f06500f88f572d4b0d45a28875d36eb0f4d8f6cd39d05b526ab0d4",
+    "check-tftp.log": "a9f1e5c3389dc268e3e28a833d8f15d7a016c5da406b658c0265cd688aa6369c",
+    "cleanup.json": "81210723af126066a5c8ff516a38553de6305bd43884cb44acbdad35197e685b",
+    "compiler.txt": "f68a2a7439262499ec2714a51a6c2a75e310c669b6bf2d685bef0b7c5f469b92",
+    "final-fixture-test.log": "de11772d87f3856c03aa55fd338b7c7af028bbc82c6cdce27e59ea08954300ef",
+    "fixture-seek128-positive.log": "7af2a4af7e346f76a182b444ec098740b50266b49aaadda110153f39612196fb",
+    "fixture-seek64-negative.log": "40577f396a9f13883cfac00864b7613853379be6976d8e354196b22ab9592f95",
+    "ip28boot-elf.txt": "e6a45909307884b55ab5d28c5278ded5441de5917c5a624a4f601233ca6039d9",
+    "loader-ffscall-diagnostic/driver.log": "40577f396a9f13883cfac00864b7613853379be6976d8e354196b22ab9592f95",
+    "loader-ffscall-diagnostic/emulator.log": "31e6787502a0ff94d4fa6c7a180758cd9c3c379ffeec16767c7d2921a781c013",
+    "loader-ffscall-diagnostic/process.json": "1a6f61967b5d28c7b792e608818fcddf9c529548b5fa5eace41fbc5d2e84a0de",
+    "loader-ffscall-diagnostic/serial.log": "11fe3a4e98aa3ebe09e89386162deddf92d0181d23c948a37d0a680365689bb9",
+    "loader-first-firmware-calls/driver.log": "d558c999583fb319435070f33ff30077541ae0e502c262e8293b00656bdee608",
+    "loader-first-firmware-calls/emulator.log": "ba5b2e6941e55419b41f37d648559b3f022505b8b3c42169f4b91f37b78502f7",
+    "loader-first-firmware-calls/process.json": "cb869f398174e9bab245a29bcba7742bca7c959abffcde4e64bcaa838b1f1d43",
+    "loader-first-firmware-calls/serial.log": "aa5666d14393e78ba5d59687bf193f26beafed00d31def35a808018911bbc4a8",
+    "loader-first-firmware-calls/test-loader.log": "1c5dbafd922b856b7e5d383454b5a0edbee9c8d342a1c6f1f0952844c2cd74e9",
+    "loader-load-segment-failure/driver.log": "85c47e98c1b2ad87e6334dc1dfa53834acf8a93f1eb0b4d968634617ca0d0fca",
+    "loader-load-segment-failure/emulator.log": "bda1e9ee12d77cc52c3632b7f35268e8b405284779a3b6ef757d98d3f7957e71",
+    "loader-load-segment-failure/process.json": "60c0922bb4a8b7ae4c05c5a3c93324591a5fe9e1f2befe0c318ed3be5cdd664c",
+    "loader-load-segment-failure/serial.log": "3ee85bce596f9eda3a5cf95c0a4350292d2a1f70fcb279e604052b8271b60885",
+    "loader-load-segment-failure/test-loader.log": "009246322350df4dda8232ad024751c35ffc26c03dd41fa232885ae431e97e9c",
+    "loader-serial/driver.log": "c0ca56e9c2e5ac75e3f7b74d7ac7fe28e74f44011c1b0cbe216d897df54755f8",
+    "loader-serial/emulator.log": "48e4bcc0ca4928111dcc924b5783da81712d8e14b8130cab2b4d0a7d53870d52",
+    "loader-serial/process.json": "2c01d378a7104c231157ddd887685a9e0c2176c79ae873d85a72cd7d8bd017b5",
+    "loader-serial/serial.log": "cebbca81ac1460e457879def431d39cea97762f384c6988489c75f7b63ad87d5",
+    "netbsd-ip28-boot64.patch": "8bca2c37bd8ec9b38f9471c9630beb33b2b57518d4d07ac4ba097787cfee53a8",
+    "package-fixture.log": "cc1955eaaa07f94b4773fb2d3c965138e621b691275a76d2f4a79ec9b4b39d21",
+    "printf-diagnostic.log": "3b3b41c581b8fdd0c36341bc7a09997ebab8652f987242a0e6d6c321c3116867",
+    "relink.log": "d7c5451f8ae71aaa4172076619d292de0a1e985d4c7603a2954d06fd71733aae",
+    "test-loader.log": "5efd8e6dc8f93851b86d388b7f1fef49ba6f6c4323d92371c7d1e897b7df3189",
+    "verify-fixture.log": "47461746e7d5266b9197b8bf9ea9f27eb654c0f89edec01666bc3fe9109ad4d9"
+  }
+}
