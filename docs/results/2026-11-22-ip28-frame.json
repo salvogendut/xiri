@@ -1,0 +1,204 @@
+{
+  "netbsd_commit": "22a150d9cba5ea52c6dfe4d8fea54d036f8015e0",
+  "iris_upstream": "ec3dcec36a6d561aca8b306d2f95cd49d5a65eaf",
+  "iris_fork": "a90c5a484180c41c41098fcb38ee964e4346baad",
+  "iris_binary_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+  "artwork_sha256": "ca2c66527060e53d5e2ce09e613b7283ac224abafc15e4747ba24272e1ffa610",
+  "display": [
+    1280,
+    1024
+  ],
+  "text_origin": [
+    288,
+    176
+  ],
+  "grid": [
+    88,
+    42
+  ],
+  "font": [
+    8,
+    16
+  ],
+  "module_audit": {
+    "passed": true,
+    "imports": 172,
+    "relocations": [
+      "R_MIPS_32",
+      "R_MIPS_64",
+      "R_MIPS_HI16",
+      "R_MIPS_HIGHER",
+      "R_MIPS_HIGHEST",
+      "R_MIPS_LO16",
+      "R_MIPS_NONE"
+    ],
+    "kernel_sha256": "807ef8844822b87270b35283fcf4ee90be7e9c0471a9b6c4295f2863000effcf",
+    "module_sha256": "19a8fbd3451ea3bb1febffabc21d27f2a5654fa51173315eb1753dceffe8bcc6"
+  },
+  "releases": {
+    "6.5.22": {
+      "bundle": ".work/native/xiri-ip28-frame-6.5.22-20261122",
+      "previous_chd_sha256": "c148643e846f2cd3d2df60438b806f1f07c929471365dfd06e13f8a9a5fcbaec",
+      "chd_sha256": "5946044ffcac961653648e52f33a040690b43f68879ef020209f44dc060f442f",
+      "chd_verified": true,
+      "base_unchanged": true,
+      "full_result_sha256": "2f59e2e8b9985231527f300d6e07ef454b7d36c0baec54de2e8ea7417d89653c",
+      "installed_kernel_sha256": "807ef8844822b87270b35283fcf4ee90be7e9c0471a9b6c4295f2863000effcf",
+      "boot": {
+        "image": "boot-025.png",
+        "outside_pixels": 837632,
+        "outside_mismatches": 0,
+        "changed_panel_pixels": 57464,
+        "passed": true
+      },
+      "console": {
+        "after_xorg": {
+          "image": "native-console.png",
+          "outside_pixels": 837632,
+          "outside_mismatches": 0,
+          "changed_panel_pixels": 32717,
+          "passed": true
+        },
+        "scroll": {
+          "marker_moved": true,
+          "captures": [
+            {
+              "image": "frame-before-scroll.png",
+              "outside_pixels": 837632,
+              "outside_mismatches": 0,
+              "changed_panel_pixels": 531,
+              "passed": true
+            },
+            {
+              "image": "frame-after-scroll.png",
+              "outside_pixels": 837632,
+              "outside_mismatches": 0,
+              "changed_panel_pixels": 531,
+              "passed": true
+            }
+          ],
+          "passed": true
+        },
+        "ddb": {
+          "image": "console-ddb.png",
+          "outside_pixels": 837632,
+          "outside_mismatches": 0,
+          "changed_panel_pixels": 29413,
+          "passed": true
+        }
+      },
+      "keyboard_login": true,
+      "debugger_evaluation": true,
+      "returned_to_prom": true,
+      "xdm_sessions": [
+        {
+          "user": "xiritest",
+          "dimensions": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+          "logout_to_greeter": true
+        },
+        {
+          "user": "netbsdtest",
+          "dimensions": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+          "logout_to_greeter": true
+        },
+        {
+          "user": "xiritest",
+          "dimensions": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+          "logout_to_greeter": true
+        }
+      ],
+      "screenshots": {
+        "boot": {
+          "file": "2026-11-22-ip28-frame-boot-6.5.22.png",
+          "sha256": "a1ef4b22a3c618f97e217ead8748b03ba0e7548fd15d7365d9b6fdf752623e7f"
+        },
+        "ddb": {
+          "file": "2026-11-22-ip28-frame-ddb-6.5.22.png",
+          "sha256": "e68d80e7dbd1cdf9fbb8eab5a22dc882297abe72dd89bac95a07d68f4b04b06d"
+        }
+      }
+    },
+    "6.5.30": {
+      "bundle": ".work/native/xiri-ip28-frame-6.5.30-20261122",
+      "previous_chd_sha256": "e7c62a439556278b5e2911ac2f36364bac54cb9f553df5742164d3ce684a9902",
+      "chd_sha256": "88d851b62bb410d3acff64938352b1dbe3ccd2bd338934f52c3c694c3c96e8f9",
+      "chd_verified": true,
+      "base_unchanged": true,
+      "full_result_sha256": "6c8f5ffdc5db7ed7b7a36543ed3db24b8f057b9483aa2b0dc10261d532cab42f",
+      "installed_kernel_sha256": "807ef8844822b87270b35283fcf4ee90be7e9c0471a9b6c4295f2863000effcf",
+      "boot": {
+        "image": "boot-025.png",
+        "outside_pixels": 837632,
+        "outside_mismatches": 0,
+        "changed_panel_pixels": 57464,
+        "passed": true
+      },
+      "console": {
+        "after_xorg": {
+          "image": "native-console.png",
+          "outside_pixels": 837632,
+          "outside_mismatches": 0,
+          "changed_panel_pixels": 32377,
+          "passed": true
+        },
+        "scroll": {
+          "marker_moved": true,
+          "captures": [
+            {
+              "image": "frame-before-scroll.png",
+              "outside_pixels": 837632,
+              "outside_mismatches": 0,
+              "changed_panel_pixels": 531,
+              "passed": true
+            },
+            {
+              "image": "frame-after-scroll.png",
+              "outside_pixels": 837632,
+              "outside_mismatches": 0,
+              "changed_panel_pixels": 531,
+              "passed": true
+            }
+          ],
+          "passed": true
+        },
+        "ddb": {
+          "image": "console-ddb.png",
+          "outside_pixels": 837632,
+          "outside_mismatches": 0,
+          "changed_panel_pixels": 29393,
+          "passed": true
+        }
+      },
+      "keyboard_login": true,
+      "debugger_evaluation": true,
+      "returned_to_prom": true,
+      "xdm_sessions": [
+        {
+          "user": "xiritest",
+          "dimensions": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+          "logout_to_greeter": true
+        },
+        {
+          "user": "netbsdtest",
+          "dimensions": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+          "logout_to_greeter": true
+        },
+        {
+          "user": "xiritest",
+          "dimensions": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+          "logout_to_greeter": true
+        }
+      ],
+      "screenshots": {
+        "boot": {
+          "file": "2026-11-22-ip28-frame-boot-6.5.30.png",
+          "sha256": "a1ef4b22a3c618f97e217ead8748b03ba0e7548fd15d7365d9b6fdf752623e7f"
+        },
+        "ddb": {
+          "file": "2026-11-22-ip28-frame-ddb-6.5.30.png",
+          "sha256": "e21ab12f069f3ff5ae7d8f0929eb20a9e8fc498a6d4f7c6fba1e50b3ee678b7f"
+        }
+      }
+    }
+  }
+}

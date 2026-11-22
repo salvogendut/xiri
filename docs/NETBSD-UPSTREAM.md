@@ -164,6 +164,9 @@ Before proposing inclusion:
   interface with the native IMPACT patch series, separately from compat_irix. The
   [2D display update](results/2026-11-22-ip28-2d.md) changes only the native
   driver in `sys/arch/sgimips/gio/impact.c`. It uses the existing wsfb mapping.
+  The [decorated console](results/2026-11-22-ip28-frame.md) adds the optional
+  `IMPACT_FRAME` setting in `files.gio` and enables it in `XIRI_IP28`.
+  It reuses the existing Newport artwork and the native IMPACT screen callback.
 - **Newport Xorg acceleration/text fixes:**
   `xsrc/external/mit/xf86-video-newport/dist/src/newport_accel.c`.
   Our [texture patch](../lab/newport-xaa/texture-coordinates.patch) and

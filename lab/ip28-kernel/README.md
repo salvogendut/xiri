@@ -72,6 +72,20 @@ IRIX/native/IRIX xdm session checks. It stops its own IRIS instance afterward.
 For graphical shutdown, it checks sustained return to PROM code and retains
 the PROM-menu PNG; boot/shutdown text is no longer expected on serial B.
 
+For an `XIRI_IP28` kernel with `IMPACT_FRAME`, add
+`--frame-reference ../NetBSD-xiri/xiri/graphics/sgiconsole.png` using the
+artwork from the matching NetBSD revision. The probe checks the 8×16 console
+after Xorg stops, scrolls a known line from row two to row one, and compares
+the border in DDB. To check a retained boot screenshot separately:
+
+```sh
+python3 lab/ip28-kernel/frame.py ../NetBSD-xiri/xiri/graphics/sgiconsole.png RUN_DIRECTORY/boot-025.png
+```
+
+Choose a capture showing NetBSD text. The firmware owns the screen until
+kernel console attachment. See the [framed console qualification and
+launchers](../../docs/results/2026-11-22-ip28-frame.md).
+
 For serial recovery, select `console=d` and reset. If Xorg is needed in that
 mode, create its screen from the serial root shell with `wsconscfg 0` before
 starting xdm. Restore `console=g` for normal graphical boot. No extra X server

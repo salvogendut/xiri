@@ -44,6 +44,7 @@ def main():
     parser.add_argument("--autoboot", action="store_true", help="Use saved firmware's automatic disk boot without PROM commands")
     parser.add_argument("--graphical-console", action="store_true", help="Use console=g with saved automatic-boot firmware; retain serial B login")
     parser.add_argument("--console-check", action="store_true", help="Exercise graphical text and debugger input before xdm checks")
+    parser.add_argument("--frame-reference", type=Path, help="Check the framed 8x16 console against sgiconsole.png")
     parser.add_argument("--command-timeout", type=int, default=120)
     parser.add_argument("--display-bench", action="store_true",
                         help="Time visible fills and pixmap copies during the --xorg probe")
@@ -60,6 +61,8 @@ def main():
         parser.error("--graphical-console requires --autoboot and saved firmware")
     if args.console_check and not args.graphical_console:
         parser.error("--console-check requires --graphical-console")
+    if args.frame_reference and not args.console_check:
+        parser.error("--frame-reference requires --console-check")
     media = args.media or args.fixture_media
     if args.xdm == "full" and not media:
         parser.error("--xdm full requires fixture media containing type-ready.c")
@@ -333,7 +336,7 @@ mac = "08:00:69:12:34:56"
                 shutil.copyfile(Path(__file__).with_name("console.py"), out / "console-used.py")
                 from console import qualify_console
                 result["console"] = {}
-                qualify_console(shell, monitor, capture, result["console"])
+                qualify_console(shell, monitor, capture, result["console"], args.frame_reference)
             if args.xdm:
                 from xdm import qualify
                 result["xdm"] = {}

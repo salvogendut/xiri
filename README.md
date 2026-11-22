@@ -223,6 +223,9 @@ with separate graphical-console images and serial recovery instructions.
 The [High IMPACT 2D update](docs/results/2026-11-22-ip28-2d.md) adds hardware
 rectangle fills and batched pixel uploads, with measured display latency and
 manual test images for both releases.
+The [framed IP28 console](docs/results/2026-11-22-ip28-frame.md) uses the Indy's
+artwork for boot messages and debugger output. The report includes screenshots
+and launch commands for the 6.5.22 and 6.5.30 images.
 
 ## Run the current image
 

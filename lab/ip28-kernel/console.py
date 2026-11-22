@@ -2,9 +2,10 @@
 import hashlib
 import re
 import time
+from pathlib import Path
 
 
-def qualify_console(shell, monitor, capture, result):
+def qualify_console(shell, monitor, capture, result, frame_reference=None):
     result.update(passed=False)
 
     def settled_capture(name):
@@ -28,6 +29,11 @@ def qualify_console(shell, monitor, capture, result):
         raise RuntimeError("Native IMPACT console was not attached")
     shell("printf '\\nXIRI IMPACT console: text before Xorg\\n' >/dev/console")
     result["text_png"] = str(capture("native-console"))
+    if frame_reference:
+        from frame import load_reference, check, check_scroll
+        reference = load_reference(frame_reference)
+        result["frame"] = {"after_xorg": check(reference, Path(result["text_png"]))}
+        result["frame"]["scroll"] = check_scroll(shell, capture, reference)
     shell("set +m; rm -f /var/tmp/ip28-console-proof; /usr/libexec/getty Pc ttyE0 >/var/tmp/ip28-console-getty.log 2>&1 & echo $! >/var/tmp/ip28-console-getty.pid; sleep 2")
     monitor(["key type root", "key Return"])
     shell("(n=0; until pgrep -t ttyE0 -x '(-)?sh' >/dev/null; do n=$((n+1)); test $n -lt 30 || exit 1; sleep 1; done) && sleep 2")
@@ -42,6 +48,11 @@ def qualify_console(shell, monitor, capture, result):
     monitor(["key type continue", "key Return"])
     # DDB must really have executed the command, not just echoed shell input.
     result["ddb"] = shell("sleep 2; dmesg | grep -E '^(db>|[[:space:]]*1234abcd)' ; dmesg | grep -Eq '^(db>[[:space:]]*)?[[:space:]]*1234abcd[[:space:]]*$'")
+    if frame_reference:
+        checks = result["frame"]
+        checks["ddb"] = check(reference, Path(result["ddb_png"]))
+        if not all(item["passed"] for item in checks.values()):
+            raise RuntimeError(f"Framed console mismatch: {checks}")
     monitor(["key type exit", "key Return"])
     shell("(n=0; while kill -0 $(cat /var/tmp/ip28-console-getty.pid) 2>/dev/null; do n=$((n+1)); test $n -lt 30 || exit 1; sleep 1; done) && rm -f /var/tmp/ip28-console-proof /var/tmp/ip28-console-getty.pid /var/tmp/ip28-console-getty.log")
     shell("set -m; sed 's/^xdm=.*/xdm=YES/' /etc/rc.conf.d/xdm >/etc/rc.conf.d/xdm.ip28-new && mv /etc/rc.conf.d/xdm.ip28-new /etc/rc.conf.d/xdm; /etc/rc.d/xdm start")
