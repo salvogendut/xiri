@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Qualify a native IP28 kernel on a private overlay, then halt and stop IRIS.
 
-The disk is read through a private copy-on-write overlay. A serial PROM console
-is intentional: this qualifies native boot and I/O, not an IMPACT desktop.
+The disk is read through a private copy-on-write overlay. Serial B is the boot
+console; optional checks qualify the matching module and native IMPACT desktop.
 """
 import argparse
 import hashlib
@@ -30,7 +30,14 @@ def main():
     parser.add_argument("--firmware-dir", type=Path, help="Use saved nvram/nveeprom and boot without resetting PROM variables")
     parser.add_argument("--overlay-dir", type=Path, help="Reuse a prepared private disk overlay")
     parser.add_argument("--machine", choices=("ip28", "indy-r4400", "indy-r5000"), default="ip28")
-    parser.add_argument("--irix-module", help="Indy regression only: load this existing module and run IRIX sh")
+    parser.add_argument("--irix-module", help="Load this matching module and run the installed IRIX sh")
+    parser.add_argument("--check-command", action="append", default=[],
+                        help="Additional bounded guest shell check before shutdown (repeatable)")
+    parser.add_argument("--xorg", action="store_true",
+                        help="Run check-xorg.sh from mounted media and qualify PS/2 input/scanout")
+    parser.add_argument("--desktop", action="store_true",
+                        help="Run the installed Xiri user desktop on IMPACT after the native checks")
+    parser.add_argument("--command-timeout", type=int, default=120)
     args = parser.parse_args()
     out = args.output.resolve()
     out.mkdir(parents=True, exist_ok=False)
@@ -123,6 +130,24 @@ mac = "08:00:69:12:34:56"
             raise RuntimeError(result)
         return result.get("data")
 
+    def monitor(commands):
+        port = int(re.search(r"monitor_port = (\d+)", cfg)[1])
+        with socket.create_connection(("127.0.0.1", port), timeout=15) as mon:
+            def receive():
+                data = b""
+                while not re.search(rb"(^|\n)> $", data):
+                    part = mon.recv(65536)
+                    if not part:
+                        break
+                    data += part
+                return data.decode("latin1")
+            receive()
+            result = {}
+            for cmd in commands:
+                mon.sendall((cmd + "\n").encode())
+                result[cmd] = receive()
+            return result
+
     transcript = ""
 
     def wait(pattern, start=0, timeout=120):
@@ -195,14 +220,15 @@ mac = "08:00:69:12:34:56"
             if "Enter pathname of shell" not in body:
                 raise RuntimeError(body[-4000:])
             rpc("serial-send", data="\r")
-            wait(r"(?:^|\n)# ", start)
+            wait(r"(?:^|[\r\n])# ", start)
             start_cmd = len(transcript)
             rpc("serial-send", data="uname -a; sysctl hw.model hw.ncpu; mount; /bin/echo XIRI_IP28_NATIVE_SHELL\r")
             wait(r"(?:^|[\r\n])XIRI_IP28_NATIVE_SHELL\r?\n", start_cmd)
             def shell(command, check=True):
                 step = len(transcript)
                 rpc("serial-send", data=command + "; printf '\\nXIRI_RC_%s\\n' \"$?\"\r")
-                wait(r"(?:^|[\r\n])XIRI_RC_[0-9]+\r?\n|panic:|Stopped in pid", step)
+                wait(r"(?:^|[\r\n])XIRI_RC_[0-9]+\r?\n|panic:|Stopped in pid", step,
+                     timeout=args.command_timeout)
                 body = transcript[step:]
                 if check and not re.search(r"(?:^|[\r\n])XIRI_RC_0\r?\n", body):
                     raise RuntimeError(body[-4000:])
@@ -229,6 +255,36 @@ mac = "08:00:69:12:34:56"
                 import shlex
                 shell("/sbin/modload " + shlex.quote(args.irix_module))
                 result["irix_shell"] = shell("/emul/irix/bin/sh -c '/bin/echo XIRI_IRIX_SHELL_OK'")
+            result["checks"] = [shell(command) for command in args.check_command]
+            if args.xorg:
+                result["xorg"] = shell("sh /cdrom/check-xorg.sh")
+                # The Xlib probe has keyboard focus; exercise the actual PS/2 path.
+                result["input_commands"] = monitor(["key type Xiri_123", "key Return",
+                    "ps2 mouse 10 5 0", "ps2 mouse 0 0 1", "ps2 mouse 0 0 0",
+                    "ps2 mouse 0 0 4", "ps2 mouse 0 0 0",
+                    "ps2 mouse 0 0 2", "ps2 mouse 0 0 0"])
+                result["input"] = shell("sleep 2; cat /var/tmp/ip28-xorg/probe.log; (set -e; grep -q TEXT_PASS /var/tmp/ip28-xorg/probe.log; grep -q 'KEY_UP Return' /var/tmp/ip28-xorg/probe.log; grep -q MOTION /var/tmp/ip28-xorg/probe.log; for b in 1 2 3; do grep -q \"BUTTON_DOWN $b \" /var/tmp/ip28-xorg/probe.log; grep -q \"BUTTON_UP $b \" /var/tmp/ip28-xorg/probe.log; done)")
+                ci = args.iris.resolve().with_name("iris-ci")
+                subprocess.run([str(ci), "--socket", str(sock), "screenshot",
+                                str(out / "xorg.png")], check=True, timeout=30)
+                result["scanout"] = monitor(["screen info"] +
+                    [f"screen pix {100 + 120 * i} 160" for i in range(4)])
+                # This image's Xorg allocates 0xfe components, as on Newport.
+                for i, color in enumerate(("fe0000", "00fe00", "0000fe", "fefefe")):
+                    pixel = result["scanout"][f"screen pix {100 + 120 * i} 160"]
+                    got = re.search(r"= ([0-9a-fA-F]{6})", pixel)
+                    if not got or got[1].lower() != color:
+                        raise RuntimeError("Incorrect IMPACT scanout: " + pixel)
+                result["xorg_shutdown"] = shell("kill $(cat /var/tmp/ip28-xorg/probe-pid); kill $(cat /var/tmp/ip28-xorg/xpid); sleep 2; ! pgrep -x Xorg")
+            if args.desktop:
+                result["desktop"] = shell("sh /cdrom/check-desktop.sh")
+                ci = args.iris.resolve().with_name("iris-ci")
+                subprocess.run([str(ci), "--socket", str(sock), "screenshot",
+                                str(out / "desktop.png")], check=True, timeout=30)
+                result["desktop_shutdown"] = shell("touch $(cat /var/tmp/ip28-desktop/job)/logout; i=0; while pgrep -x Xorg >/dev/null; do i=$((i+1)); test $i -lt 60 || break; sleep 1; done; ! pgrep -x Xorg")
+            result["dmesg"] = shell("dmesg")
+            if re.search(r"command FIFO timeout|panic:|WARNING: module error", result["dmesg"]):
+                raise RuntimeError("Driver or module error in kernel log")
             halt_start = len(transcript)
             rpc("serial-send", data="/sbin/halt\r")
             wait(r"System Maintenance Menu|panic:|Stopped in pid", halt_start)
@@ -239,6 +295,13 @@ mac = "08:00:69:12:34:56"
         except Exception as error:
             result["error"] = str(error)
         finally:
+            if not result["passed"] and (args.xorg or args.desktop):
+                try:
+                    subprocess.run([str(args.iris.resolve().with_name("iris-ci")),
+                                    "--socket", str(sock), "screenshot",
+                                    str(out / "failure.png")], check=True, timeout=30)
+                except (OSError, subprocess.SubprocessError):
+                    pass
             try:
                 port = int(re.search(r"monitor_port = (\d+)", cfg)[1])
                 with socket.create_connection(("127.0.0.1", port), timeout=8) as mon:

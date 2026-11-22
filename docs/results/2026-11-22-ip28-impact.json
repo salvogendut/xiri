@@ -1,0 +1,198 @@
+{
+  "date": "2026-11-22",
+  "scope": "Native IP28 modular Xiri, High IMPACT wsfb, PS/2 and both vendor desktops",
+  "netbsd_commit": "f45f1b8d816de739d2eea2d14dca453878360b11",
+  "netbsd_branch": "xiri",
+  "iris_upstream_checked": "6ec1ebf379228d572026a9ae8d291511ed28af74",
+  "iris_integration": "eb21c6ecec510e3bee2582b42a48a3af6b0726a8",
+  "iris_merge_required": false,
+  "iris_binary_source": "0bc52567a87349a5f521c702f9d8dec1dc0f79c6",
+  "iris_binary_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+  "kernel_sha256": "65556ba7a2a80eb0a07d817c2b24da78d0df66c5c48d75e6a1d7c059040a0a30",
+  "module_sha256": "68fd4cda80886b288384e2018c5c25528b8493e1c09b0ed0e9b7291d51427d05",
+  "loader_sha256": "8ca708961921510268bb0cbc718aed4e4e112ebdb7f558b764c6c2a0b1e220da",
+  "module_audit": {
+    "passed": true,
+    "imports_resolved": 172,
+    "missing_symbols": [],
+    "builtin_irix": [],
+    "relocations": [
+      "R_MIPS_32",
+      "R_MIPS_64",
+      "R_MIPS_HI16",
+      "R_MIPS_HIGHER",
+      "R_MIPS_HIGHEST",
+      "R_MIPS_LO16",
+      "R_MIPS_NONE"
+    ]
+  },
+  "source_files": {
+    "sys/arch/sgimips/conf/XIRI_IP28": "6777584b9c1905ee340f2d5e7c0189aba2c32e71f6c515eb19b158da7b1a2fe9",
+    "sys/arch/sgimips/conf/GENERIC64_IP28": "b14faaf538df500d0140e876eee49980829420ff22317fc41b20957e26014238",
+    "sys/arch/sgimips/gio/impact.c": "3afe3e2c74d2c2060b5c1fb7b9f22ad825402cad657af4f5ac3a352895246870",
+    "sys/arch/sgimips/gio/impactreg.h": "d2761291099b90ab9031e7297fa4e7b7b18e30ad856e432b9fb513cf3b127318",
+    "sys/arch/sgimips/gio/gio.c": "46498cbe7aaac6490833dc5f1d43fee0974cc6ce6f01ab40716b8ea04581e3cd",
+    "sys/arch/sgimips/gio/files.gio": "304f3e778f90b6f64c1bf05a6e115398c09340d22c597319d9a71fb2fcf712bf"
+  },
+  "releases": {
+    "6.5.22": {
+      "native_checks": {
+        "directory": ".work/ip28-desktop-20261122/qualify-6.5.22",
+        "passed": false,
+        "elapsed_seconds": 178.61,
+        "base_unchanged": true,
+        "kernel_transport": "tftp",
+        "result_sha256": "15b8bdae26fd4a06f8b17cc40a839860f560525145e2294e1799360c4e1d7960",
+        "module_phase_passed": true,
+        "xorg_phase_passed": true,
+        "ps2_phase_passed": true,
+        "remaining_failure": "Subsequent desktop FAM startup: single-user loopback was down; fixed in the final desktop test.",
+        "scanout": {
+          "passed": true,
+          "size": [
+            1280,
+            1024
+          ],
+          "checked_pixels": 8944,
+          "mismatches": 0,
+          "examples": [],
+          "png_sha256": "5972c61d7999c1afbba7336e4a4158403c89614c0cf4de302da250d7a61a5381"
+        }
+      },
+      "desktop": {
+        "directory": ".work/ip28-desktop-20261122/desktop-6.5.22-r6",
+        "passed": true,
+        "elapsed_seconds": 161.85,
+        "base_unchanged": true,
+        "kernel_transport": "tftp",
+        "result_sha256": "92ce134eadffd65923e3e9bd59901036463ed70ac06704392c67d30fb558050e",
+        "user": "xiritest",
+        "uid": 1234,
+        "home": "/usr/people/xiritest",
+        "shell_typing_passed": true,
+        "supervised_logout_passed": true,
+        "clean_halt_passed": true,
+        "screenshot": "docs/results/2026-11-22-ip28-6.5.22.png",
+        "screenshot_sha256": "b2de3d95687de1cb434a092fe5482191c6619033b422044e400b48d93e8decb6"
+      },
+      "prepared_boot": {
+        "directory": ".work/ip28-desktop-20261122/prepared-6.5.22",
+        "passed": true,
+        "elapsed_seconds": 41.41,
+        "base_unchanged": true,
+        "kernel_transport": "scsi-volume-header",
+        "result_sha256": "25afc15ad190141455a9fa4fdc9ff998c6cade2211700f087f8540e3824cd075"
+      },
+      "packaged_boot": {
+        "passed": true,
+        "directory": ".work/ip28-desktop-20261122/packaged-6.5.22",
+        "result_sha256": "e2ce6c5d8136a17b85fd12604ac9ec6fa9ce5275863bf299a0ebbf0769494639",
+        "elapsed_seconds": 39.8,
+        "loader_transport": "scsi-volume-header",
+        "saved_firmware_without_setenv": true,
+        "base_unchanged": true,
+        "clean_halt_passed": true
+      },
+      "artifact": {
+        "bundle": ".work/native/xiri-ip28-impact-6.5.22-20261122",
+        "chd_sha256": "eb382b5e5d790fe26af7442770347f2ab87d943ddda6ca29b89664e709f04d14",
+        "chd_bytes": 461531151,
+        "chd_verify_passed": true,
+        "firmware": {
+          "nvram.bin": "2aee0b83000eaeca45cd309d07cd6452d488adcbd629c206a433c63ab80ca371",
+          "nveeprom.bin": "befddc26d40ad908750e122b2c9422a9b6ae3c2068efea96f734b64672dee1de"
+        },
+        "source_chd": "/var/home/salvogendut/Dev/xiri/.work/native/xiri-ip28-6.5.22-20261122/netbsd-xiri.chd",
+        "source_chd_sha256": "fb7d44b2e161e30be7977f27e7b202ea8aafd18313fc4860ebf7dec3b78ed780"
+      }
+    },
+    "6.5.30": {
+      "native_checks": {
+        "directory": ".work/ip28-desktop-20261122/qualify-6.5.30",
+        "passed": false,
+        "elapsed_seconds": 178.64,
+        "base_unchanged": true,
+        "kernel_transport": "tftp",
+        "result_sha256": "46aef5d80728f61b1bc6d0124f4f63138597c2128a468b1cb67d9ec2e002ad4b",
+        "module_phase_passed": true,
+        "xorg_phase_passed": true,
+        "ps2_phase_passed": true,
+        "remaining_failure": "Subsequent desktop FAM startup: single-user loopback was down; fixed in the final desktop test.",
+        "scanout": {
+          "passed": true,
+          "size": [
+            1280,
+            1024
+          ],
+          "checked_pixels": 8944,
+          "mismatches": 0,
+          "examples": [],
+          "png_sha256": "5972c61d7999c1afbba7336e4a4158403c89614c0cf4de302da250d7a61a5381"
+        }
+      },
+      "desktop": {
+        "directory": ".work/ip28-desktop-20261122/desktop-6.5.30-r3",
+        "passed": true,
+        "elapsed_seconds": 165.63,
+        "base_unchanged": true,
+        "kernel_transport": "tftp",
+        "result_sha256": "1bc11fd8018c14444d5c236f7e0eb0036c0c910fdfa519b214bd0919499c9cfd",
+        "user": "xiritest",
+        "uid": 1234,
+        "home": "/usr/people/xiritest",
+        "shell_typing_passed": true,
+        "supervised_logout_passed": true,
+        "clean_halt_passed": true,
+        "screenshot": "docs/results/2026-11-22-ip28-6.5.30.png",
+        "screenshot_sha256": "101c45b740681592fb7dbc4d9dad450dd30a386876b7b057372acc08277a57e0"
+      },
+      "prepared_boot": {
+        "directory": ".work/ip28-desktop-20261122/prepared-6.5.30",
+        "passed": true,
+        "elapsed_seconds": 41.8,
+        "base_unchanged": true,
+        "kernel_transport": "scsi-volume-header",
+        "result_sha256": "80c089e91a38e073c8681f851871e354f90b31d8ce7ef25150149c20c4d29f25"
+      },
+      "packaged_boot": {
+        "passed": true,
+        "directory": ".work/ip28-desktop-20261122/packaged-6.5.30",
+        "result_sha256": "42bafa87bd36e1a8f26da5614298b4c426df53155df57dc3fee5b3c766d8ec50",
+        "elapsed_seconds": 41.0,
+        "loader_transport": "scsi-volume-header",
+        "saved_firmware_without_setenv": true,
+        "base_unchanged": true,
+        "clean_halt_passed": true
+      },
+      "artifact": {
+        "bundle": ".work/native/xiri-ip28-impact-6.5.30-20261122",
+        "chd_sha256": "29eaa5529d5ad1466867a67a33a45f69f1992cea22756527aa26bdcfae589c7a",
+        "chd_bytes": 488413878,
+        "chd_verify_passed": true,
+        "firmware": {
+          "nvram.bin": "bec6bce0f39ed2034c4e31474f526b4b03bafa1c49431fa4de64108430a24c59",
+          "nveeprom.bin": "befddc26d40ad908750e122b2c9422a9b6ae3c2068efea96f734b64672dee1de"
+        },
+        "source_chd": "/var/home/salvogendut/Dev/xiri/.work/native/xiri-ip28-6.5.30-20261122/netbsd-xiri.chd",
+        "source_chd_sha256": "9cea759d5e380b9a88adeca0afc5dff781ca434b215da5cee57d4b9886939594"
+      }
+    }
+  },
+  "limits": [
+    "High IMPACT at firmware-initialized 1280x1024 only",
+    "Boot/debug console stays on serial B",
+    "No xdm boot qualification on IP28 yet",
+    "No Xorg hardware copy, DMA or 3D acceleration",
+    "Physical R10000 cache/DMA and sustained I/O unqualified",
+    "No claim of broad per-application qualification"
+  ],
+  "passed": true,
+  "cleanup": {
+    "approx_removed_mib": 1097.6,
+    "method": "Allocated file sizes; source worktree size was rounded by du. Actual filesystem free space can differ with compression/shared extents and other concurrent activity.",
+    "retained": "Both new standalone CHDs and kernel/module bundle; previous qualified images; compact logs/results; screenshots in docs/results",
+    "temporary_source_worktree_and_topic_removed": true,
+    "test_instances_stopped": true,
+    "build_container_stopped": true
+  }
+}

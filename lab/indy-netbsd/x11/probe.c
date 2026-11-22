@@ -204,7 +204,7 @@ check_atlas(void)
 static void
 draw(void)
 {
-    const char *title = "Xiri / NetBSD Newport: fill, copy, image upload, input";
+    const char *title = "Xiri / NetBSD Xorg: fill, copy, image upload, input";
     XSetForeground(d, gc, colors[3]);
     XDrawString(d, w, gc, 20, 35, title, strlen(title));
     for (int i = 0; i < 4; i++) {
@@ -309,13 +309,17 @@ main(void)
     w = XCreateWindow(d, RootWindow(d, screen), 40, 40, 640, 480, 0,
         test_depth, InputOutput, test_visual,
         CWColormap | CWBackPixel | CWBorderPixel, &attrs);
-    XStoreName(d, w, "Xiri Newport probe");
+    XStoreName(d, w, "Xiri Xorg probe");
     XSelectInput(d, w, ExposureMask | KeyPressMask | KeyReleaseMask |
         ButtonPressMask | ButtonReleaseMask | PointerMotionMask);
     gc = XCreateGC(d, w, 0, NULL);
     XMapWindow(d, w);
     XSync(d, False);
     XSetInputFocus(d, w, RevertToParent, CurrentTime);
+    /* Known starting point also permits relative PS/2 tests on displays
+     * whose software cursor cannot be located by the emulator monitor. */
+    XWarpPointer(d, None, w, 0, 0, 0, 0, 100, 360);
+    XSync(d, False);
     printf("READY depth=%d size=%dx%d window=0x%lx\n", test_depth,
         DisplayWidth(d, screen), DisplayHeight(d, screen), w);
     for (;;) {

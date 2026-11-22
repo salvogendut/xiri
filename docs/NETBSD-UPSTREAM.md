@@ -146,6 +146,18 @@ Before proposing inclusion:
 
 ## Display, XFS and session work have separate destinations
 
+- **Native IP28/IMPACT:** the [November 22 platform checkpoint](results/2026-11-22-ip28-kernel.md)
+  adds ARCS64 and high-address N64 startup; the subsequent
+  [module/IMPACT work](results/2026-11-22-ip28-impact.md) adds
+  `sys/arch/sgimips/conf/XIRI_IP28`, `sys/arch/sgimips/gio/impact.c`,
+  `impactreg.h`, the `files.gio` attachment and an IP28 graphics-slot probe in
+  `gio.c`. These are native platform/display changes, separate from the IRIX
+  personality. The IMPACT adapter uses existing `genfb`/`wsdisplay` interfaces
+  and the standard Xorg `wsfb` driver; it introduces no new MI ioctl or IRIX
+  core hook. Hardware initialization derives from the permissively licensed
+  OpenBSD driver, with its notices retained. Initial coverage is emulated
+  High IMPACT at 1280×1024; real hardware, other display modes/board variants,
+  early graphical console, DMA and 3D need their own qualification.
 - **Newport Xorg acceleration/text fixes:**
   `xsrc/external/mit/xf86-video-newport/dist/src/newport_accel.c`.
   Our [texture patch](../lab/newport-xaa/texture-coordinates.patch) and

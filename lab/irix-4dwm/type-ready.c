@@ -6,6 +6,14 @@
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
+static XErrorHandler previous_error;
+static int search_error(Display *d, XErrorEvent *event)
+{
+    /* A desktop client can destroy a child between XQueryTree and
+     * XFetchName. Ignore only that normal search race, before typing. */
+    if (event->error_code == BadWindow) return 0;
+    return previous_error(d, event);
+}
 static Window find(Display *d, Window w, const char *name)
 {
     char *s = NULL;
@@ -29,7 +37,10 @@ int main(int argc, char **argv)
     if (!d) return 2;
     int a,b,c,e;
     if (!XTestQueryExtension(d,&a,&b,&c,&e)) return 2;
+    previous_error = XSetErrorHandler(search_error);
     Window w = find(d, DefaultRootWindow(d), argv[2]);
+    XSync(d, False);
+    XSetErrorHandler(previous_error);
     if (!w) return 3;
     XWindowAttributes attrs;
     int ready = 0;
@@ -44,9 +55,16 @@ int main(int argc, char **argv)
     printf("TYPE_WINDOW width=%d height=%d viewable=1\n", attrs.width, attrs.height);
     XRaiseWindow(d,w);
     XWarpPointer(d,None,w,0,0,0,0,100,100);
+    XSync(d,False);
+    /* Let the window manager finish processing the raise/pointer events
+     * before selecting the recipient of the synthetic keyboard events. */
+    usleep(200000);
     XSetInputFocus(d,w,RevertToParent,CurrentTime);
     XSync(d,False);
-    usleep(200000);
+    Window focused;
+    int revert;
+    XGetInputFocus(d, &focused, &revert);
+    if (focused != w) { fprintf(stderr, "terminal did not receive focus\n"); return 6; }
     int low,high,width;
     XDisplayKeycodes(d,&low,&high);
     KeySym *map = XGetKeyboardMapping(d,low,high-low+1,&width);

@@ -1,9 +1,94 @@
 # Native NetBSD on Indigo2 IP28
 
-This fixture qualifies the first native IP28/R10000 kernel: ARCS64 startup,
+The original fixture qualifies the first native IP28/R10000 kernel: ARCS64 startup,
 1 GiB RAM, serial console, interrupts/timers, HPC3 SCSI/FFS, Ethernet and
 clean halt. It does not qualify an IMPACT framebuffer, Xorg or an IP28 IRIX
 compatibility module. See the [result](../../docs/results/2026-11-22-ip28-kernel.md).
+
+The subsequent `XIRI_IP28` configuration adds `MODULAR`, IMPACT `genfb`/Xorg
+`wsfb`, and PS/2 keyboard/mouse. Keep the original `GENERIC64_IP28` checkpoint
+separate. This is firmware-initialized **High IMPACT at 1280×1024**, using a
+24-bit RGB shadow in 32-bit RAM pixels and programmed transfers. It does not
+add DMA/3D acceleration or an early graphical/debug console; use serial B.
+See the [module/IMPACT result](../../docs/results/2026-11-22-ip28-impact.md).
+
+## Matching module and IMPACT checks
+
+Build the kernel and module from the same NetBSD source checkout, using the
+same tools and an isolated output directory:
+
+```sh
+sh lab/ip28-kernel/build.sh NETBSD_SOURCE NETBSD_TOOLS BUILD_DIRECTORY \
+  NETBSD_SOURCE/sys/arch/sgimips/conf/XIRI_IP28
+sh lab/ip28-kernel/build-module.sh NETBSD_SOURCE NETBSD_TOOLS BUILD_DIRECTORY
+```
+
+The module is `BUILD_DIRECTORY/module/compat_irix_o32.kmod`. Dependency
+generation explicitly selects the N64 ABI; module compilation uses NetBSD's
+full-width addresses and long calls. Neither script changes shared toolchain
+wrappers. `XIRI_IP28` selects `sd0a` even when bootstrapped by TFTP.
+
+For qualification, add these files to the read-only installation ISO:
+
+- `compat_irix_o32.kmod` from the matching build;
+- `check-module.sh`, `check-xorg.sh`, `check-desktop.sh`, `xiri-ip28-desktop`, `framebuffer.c`,
+  and `xorg.conf` from this directory;
+- `runner.c` from `lab/irix-lp64/`, `lifecycle.c` from `lab/irix-module/`,
+  `probe.c` from `lab/indy-netbsd/x11/`, and `type-ready.c` from `lab/irix-4dwm/`;
+- the locally retained, manifest-verified IRIX `asa` fixture as `vendor-asa`.
+
+Regenerate the ISO's `SHA256` manifest. Run separately for each vendor line:
+
+```sh
+python3 lab/ip28-kernel/check.py \
+  --iris IRIS_BINARY --disk RELEASE_BASE_CHD \
+  --tftp BUILD_DIRECTORY/kernel --media QUALIFICATION_ISO --output RUN_DIRECTORY \
+  --check-command 'mount -t cd9660 -o ro /dev/cd0a /cdrom && sh /cdrom/check-module.sh' \
+  --xorg --desktop --command-timeout 300
+python3 lab/ip28-kernel/scanout.py RUN_DIRECTORY/xorg.png
+```
+
+The module test checks rejected foreign exec before/after loading, exact
+fixture output, the release image's vendor shell/echo, busy-unload `EBUSY`,
+unload and reload. The common o32 `asa` fixture comes from 6.5.22; each guest
+uses its own release's interpreters/libraries and installed shell/echo.
+
+The graphics checks cover framebuffer dimensions and mapping bounds, Xlib
+fills/copies/masks/odd-width images, actual PS/2 keyboard/release events and all
+three mouse buttons, full-size PNG capture, and clean Xorg termination.
+`scanout.py` requires Pillow and compares 8,944 displayed pixels, including the
+whole 96×93 final atlas, independently of Xorg's shadow-buffer readback.
+The test image's Xorg allocates `0xfe` primary-colour components.
+
+`--desktop` exercises the installed service/session runtime as `xiritest`,
+with the existing fonts/resources and `wsfb` replacing `newport` in the private
+image's Xorg configuration. It types into winterm, checks home/UID, captures
+the desktop and requests supervised logout. These single-user fixtures do not
+qualify xdm login, early graphics-console boot or physical R10000 DMA caches.
+
+The desktop test waits for the native shell handoff before typing and tolerates
+windows disappearing during XQueryTree/XFetchName. It also initializes loopback
+and the PTY namespace omitted by a single-user boot. These are test/startup
+preconditions, not changes to the IRIX ABI.
+
+## Manual IMPACT desktop
+
+The separate graphical bundles are
+`.work/native/xiri-ip28-impact-6.5.22-20261122/` and
+`.work/native/xiri-ip28-impact-6.5.30-20261122/`. Each has a standalone CHD,
+saved PROM state, `run-iris.sh`, and complete serial/boot instructions in
+`README.txt`. Run the launcher, connect to serial B, choose PROM option 5,
+enter `boot`, and press Return for the root shell. Then run:
+
+```sh
+/usr/local/sbin/xiri-ip28-desktop
+```
+
+This starts a full-screen native Xorg server and the existing desktop runtime
+as `xiritest` with home `/usr/people/xiritest`. It loads the matching module and
+prepares the services skipped by single-user boot. Log out through Toolchest,
+then `/sbin/halt` before closing IRIS. Early boot stays on serial B; normal
+xdm boot is a subsequent qualification step.
 
 ## Build
 
@@ -113,7 +198,7 @@ boot
 ```
 
 Use `mount -u -w /` for writes and `/sbin/halt` before closing IRIS. The
-bundles keep manual changes in their own overlays. They intentionally start
-in single-user mode: an IP28 desktop still needs its display/input support and
-a matching modular Xiri kernel. The native IRIX IMPACT disk and the qualified
+bundles keep manual changes in their own overlays. These original serial-only
+bundles intentionally remain at their earlier kernel checkpoint; use the
+separate IMPACT desktop bundles above for graphics. The native IRIX IMPACT disk and the qualified
 Indy desktop bundles are separate and unchanged.

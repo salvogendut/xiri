@@ -650,7 +650,10 @@ display attachment path. This check does not qualify a 6.5.30 Xiri desktop.
 
 - [ ] Classify the available physical Indigo2 by CPU and graphics; identify reusable support and additional port work.
 - [x] Boot native NetBSD on emulated IP28/R10000 with 1 GiB RAM, serial console, SCSI/FFS, Ethernet and clean halt. Both release-line disks pass; see the [November 22 result](results/2026-11-22-ip28-kernel.md).
-- [ ] Extend IP28 from native serial boot to a matching modular Xiri kernel, keyboard/mouse, IMPACT framebuffer and Xorg; then qualify both IRIX desktop releases. Physical cache/DMA and sustained I/O validation remain separate.
+- [x] Build a matching modular IP28 Xiri kernel/module pair and validate load, foreign execution, busy unload, unload and reload against both release lines.
+- [x] Add native High IMPACT framebuffer, PS/2 input and full-screen Xorg on IP28. Both release lines pass drawing/input and 8,944 displayed-pixel checks; see the [module/IMPACT checkpoint](results/2026-11-22-ip28-impact.md).
+- [x] Qualify both IRIX desktop releases on IP28, including winterm shell/home/UID and supervised logout, and retain separate bootable test CHDs.
+- [ ] Qualify normal xdm startup on IP28. Early graphical/debug console, physical cache/DMA, sustained I/O and display acceleration remain separate.
 - [ ] Repair and qualify native NetBSD on O2, starting with the remaining SCSI-stage boot trap, then storage/cache/DMA, input and the `crime` Xorg path.
 - [ ] Map the missing NetBSD Octane board support using historical OpenBSD and current Linux implementations as references.
 - [ ] Implement and validate Octane boot, memory, interrupts, and essential I/O under NetBSD.

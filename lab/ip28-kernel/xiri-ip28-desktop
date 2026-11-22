@@ -1,0 +1,17 @@
+#!/bin/sh
+# Convenience entry for the IP28 single-user qualification image.
+set -eu
+export PATH=/usr/local/bin:/usr/X11R7/bin:/bin:/sbin:/usr/bin:/usr/sbin
+test "$(id -u)" = 0 || { echo 'Use xiri-session on an existing user display.' >&2; exit 1; }
+mount -u -w /
+if ! mount | awk '$1 == "ptyfs" && $3 == "/dev/pts" { found=1 } END { exit !found }'; then
+    rm -f /var/run/xiri-pty-ready
+fi
+mount -a
+ifconfig lo0 inet 127.0.0.1 up
+ifconfig -w 20
+( . /etc/rc.conf; hostname "${hostname:-xiri-ip28}" )
+if ! modstat | grep '^compat_irix_o32 ' >/dev/null; then
+    modload "$(sysctl -n kern.module.path)/compat_irix_o32/compat_irix_o32.kmod"
+fi
+exec /usr/local/bin/xiri-desktop

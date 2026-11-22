@@ -210,6 +210,10 @@ The [IP28 BSD bootloader checkpoint](docs/results/2026-11-22-ip28-boot64.md)
 provides a tested 64-bit loader. The [native IP28 kernel result](docs/results/2026-11-22-ip28-kernel.md)
 records working serial boot, storage and Ethernet on both release-line disks,
 with [build and manual-test instructions](lab/ip28-kernel/README.md).
+The [IP28 module and IMPACT/Xorg checkpoint](docs/results/2026-11-22-ip28-impact.md)
+adds a matching loadable IRIX personality, native 1280×1024 `wsfb` graphics
+and PS/2 input. Both vendor desktops pass shell/logout checks, with separate
+bootable CHDs and [manual instructions](lab/ip28-kernel/README.md#manual-impact-desktop).
 
 ## Run the current image
 
