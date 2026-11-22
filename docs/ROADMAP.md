@@ -657,7 +657,7 @@ display attachment path. This check does not qualify a 6.5.30 Xiri desktop.
 - [x] Qualify an early graphical/debug console on IP28, including PS/2 console input, DDB evaluation/continue, xdm handover and graphical PROM shutdown on both release lines; see the [console checkpoint](results/2026-11-22-ip28-console.md).
 - [x] Measure visible IMPACT solid fills and patterned pixmap copies on both release lines. Coalesce uniform pixels into hardware rectangles and batch mixed-pixel FIFO uploads. See the [2D display measurements](results/2026-11-22-ip28-2d.md).
 - [x] Measure 4Dwm window dragging and winterm scrolling on Indy and Indigo2 for both release lines. See the [visible timings and IMPACT transfer counts](results/2026-11-22-desktop-latency.md).
-- [ ] Prototype an overlap-safe IMPACT rectangle copy, verify the RAM shadow and scanout, then compare Xorg window moves and terminal scrolls against the wsfb baseline.
+- [x] Trace native Xsgi window copies and qualify overlap, clipping, RAM readback and scanout on both IP28 release lines. The [High IMPACT copy investigation](results/2026-11-22-impact-window-copy.md) records the host-staged DMA sequence and the NetBSD destination-upload prototype.
 - [x] Adapt the Indy's decorated console to High IMPACT. Both release lines pass the [boot, scroll, debugger and full-screen xdm checks](results/2026-11-22-ip28-frame.md).
 - [ ] Extend IP28 qualification to physical cache/DMA behavior and sustained I/O; other IMPACT variants, display timings and 3D remain separate work.
 - [ ] Repair and qualify native NetBSD on O2, starting with the remaining SCSI-stage boot trap, then storage/cache/DMA, input and the `crime` Xorg path.

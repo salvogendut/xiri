@@ -1,0 +1,1366 @@
+{
+  "iris_upstream": "6b6c8cea2fda749b6a12aa2a7b661b12ada4ffb6",
+  "iris_fork": "775be6ce936401989004d1652f4e717663b59364",
+  "tested_iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+  "parent_kernel_commit": "22a150d9cba5ea52c6dfe4d8fea54d036f8015e0",
+  "native_xsgi": {
+    "release": "6.5.22f",
+    "trace_sha256": "bc107696facdd430f82614d256e313ad3ff48092f1fc3264fecee856f1315e7b",
+    "passed": true,
+    "idle_1s": {
+      "dma_writes": 0,
+      "dma_reads": 0,
+      "dma_bytes": 0,
+      "pio_written": 0,
+      "pio_read": 0
+    },
+    "cases": [
+      {
+        "rect": [
+          8,
+          11,
+          37,
+          11,
+          144,
+          95
+        ],
+        "scanout_errors": 0,
+        "transfers": {
+          "dma_writes": 1,
+          "dma_reads": 2,
+          "dma_bytes": 109440,
+          "pio_written": 0,
+          "pio_read": 0
+        },
+        "ximage": "XIMAGE 0"
+      },
+      {
+        "rect": [
+          37,
+          11,
+          8,
+          11,
+          144,
+          95
+        ],
+        "scanout_errors": 0,
+        "transfers": {
+          "dma_writes": 1,
+          "dma_reads": 2,
+          "dma_bytes": 109440,
+          "pio_written": 0,
+          "pio_read": 0
+        },
+        "ximage": "XIMAGE 0"
+      },
+      {
+        "rect": [
+          17,
+          4,
+          17,
+          23,
+          151,
+          99
+        ],
+        "scanout_errors": 0,
+        "transfers": {
+          "dma_writes": 1,
+          "dma_reads": 2,
+          "dma_bytes": 119592,
+          "pio_written": 0,
+          "pio_read": 0
+        },
+        "ximage": "XIMAGE 0"
+      },
+      {
+        "rect": [
+          17,
+          23,
+          17,
+          4,
+          151,
+          99
+        ],
+        "scanout_errors": 0,
+        "transfers": {
+          "dma_writes": 1,
+          "dma_reads": 2,
+          "dma_bytes": 119592,
+          "pio_written": 0,
+          "pio_read": 0
+        },
+        "ximage": "XIMAGE 0"
+      },
+      {
+        "rect": [
+          8,
+          9,
+          31,
+          28,
+          150,
+          91
+        ],
+        "scanout_errors": 0,
+        "transfers": {
+          "dma_writes": 1,
+          "dma_reads": 2,
+          "dma_bytes": 109200,
+          "pio_written": 0,
+          "pio_read": 0
+        },
+        "ximage": "XIMAGE 0"
+      },
+      {
+        "rect": [
+          31,
+          28,
+          8,
+          9,
+          150,
+          91
+        ],
+        "scanout_errors": 0,
+        "transfers": {
+          "dma_writes": 1,
+          "dma_reads": 2,
+          "dma_bytes": 109200,
+          "pio_written": 0,
+          "pio_read": 0
+        },
+        "ximage": "XIMAGE 0"
+      },
+      {
+        "rect": [
+          0,
+          0,
+          -7,
+          3,
+          85,
+          65
+        ],
+        "scanout_errors": 0,
+        "transfers": {
+          "dma_writes": 1,
+          "dma_reads": 2,
+          "dma_bytes": 40560,
+          "pio_written": 0,
+          "pio_read": 0
+        },
+        "ximage": "XIMAGE 0"
+      },
+      {
+        "rect": [
+          1,
+          2,
+          130,
+          89,
+          82,
+          61
+        ],
+        "scanout_errors": 0,
+        "transfers": {
+          "dma_writes": 1,
+          "dma_reads": 2,
+          "dma_bytes": 19344,
+          "pio_written": 0,
+          "pio_read": 0
+        },
+        "ximage": "XIMAGE 0"
+      },
+      {
+        "rect": [
+          2,
+          3,
+          191,
+          127,
+          1,
+          1
+        ],
+        "scanout_errors": 0,
+        "transfers": {
+          "dma_writes": 1,
+          "dma_reads": 1,
+          "dma_bytes": 8,
+          "pio_written": 0,
+          "pio_read": 0
+        },
+        "ximage": "XIMAGE 0"
+      },
+      {
+        "rect": [
+          3,
+          2,
+          3,
+          2,
+          159,
+          109
+        ],
+        "scanout_errors": 0,
+        "transfers": {
+          "dma_writes": 1,
+          "dma_reads": 2,
+          "dma_bytes": 138648,
+          "pio_written": 0,
+          "pio_read": 0
+        },
+        "ximage": "XIMAGE 0"
+      }
+    ],
+    "verified_pixels_per_case": 24576
+  },
+  "releases": {
+    "6.5.22": {
+      "wsfb": {
+        "machine": "ip28",
+        "passed": true,
+        "base_unchanged": true,
+        "disk_sha256": "5946044ffcac961653648e52f33a040690b43f68879ef020209f44dc060f442f",
+        "final_identity_rgb_errors": 0,
+        "cases": [
+          {
+            "rect": [
+              8,
+              11,
+              37,
+              11,
+              144,
+              95
+            ],
+            "scanout_errors": 0,
+            "transfers": {
+              "dma_writes": 0,
+              "dma_reads": 0,
+              "dma_bytes": 0,
+              "pio_written": 9120,
+              "pio_read": 0
+            },
+            "ximage": "XIMAGE 0",
+            "framebuffer": "RAM 0"
+          },
+          {
+            "rect": [
+              37,
+              11,
+              8,
+              11,
+              144,
+              95
+            ],
+            "scanout_errors": 0,
+            "transfers": {
+              "dma_writes": 0,
+              "dma_reads": 0,
+              "dma_bytes": 0,
+              "pio_written": 9120,
+              "pio_read": 0
+            },
+            "ximage": "XIMAGE 0",
+            "framebuffer": "RAM 0"
+          },
+          {
+            "rect": [
+              17,
+              4,
+              17,
+              23,
+              151,
+              99
+            ],
+            "scanout_errors": 0,
+            "transfers": {
+              "dma_writes": 0,
+              "dma_reads": 0,
+              "dma_bytes": 0,
+              "pio_written": 9504,
+              "pio_read": 0
+            },
+            "ximage": "XIMAGE 0",
+            "framebuffer": "RAM 0"
+          },
+          {
+            "rect": [
+              17,
+              23,
+              17,
+              4,
+              151,
+              99
+            ],
+            "scanout_errors": 0,
+            "transfers": {
+              "dma_writes": 0,
+              "dma_reads": 0,
+              "dma_bytes": 0,
+              "pio_written": 9504,
+              "pio_read": 0
+            },
+            "ximage": "XIMAGE 0",
+            "framebuffer": "RAM 0"
+          },
+          {
+            "rect": [
+              8,
+              9,
+              31,
+              28,
+              150,
+              91
+            ],
+            "scanout_errors": 0,
+            "transfers": {
+              "dma_writes": 0,
+              "dma_reads": 0,
+              "dma_bytes": 0,
+              "pio_written": 8736,
+              "pio_read": 0
+            },
+            "ximage": "XIMAGE 0",
+            "framebuffer": "RAM 0"
+          },
+          {
+            "rect": [
+              31,
+              28,
+              8,
+              9,
+              150,
+              91
+            ],
+            "scanout_errors": 0,
+            "transfers": {
+              "dma_writes": 0,
+              "dma_reads": 0,
+              "dma_bytes": 0,
+              "pio_written": 8736,
+              "pio_read": 0
+            },
+            "ximage": "XIMAGE 0",
+            "framebuffer": "RAM 0"
+          },
+          {
+            "rect": [
+              0,
+              0,
+              -7,
+              3,
+              85,
+              65
+            ],
+            "scanout_errors": 0,
+            "transfers": {
+              "dma_writes": 0,
+              "dma_reads": 0,
+              "dma_bytes": 0,
+              "pio_written": 4160,
+              "pio_read": 0
+            },
+            "ximage": "XIMAGE 0",
+            "framebuffer": "RAM 0"
+          },
+          {
+            "rect": [
+              1,
+              2,
+              130,
+              89,
+              82,
+              61
+            ],
+            "scanout_errors": 0,
+            "transfers": {
+              "dma_writes": 0,
+              "dma_reads": 0,
+              "dma_bytes": 0,
+              "pio_written": 1248,
+              "pio_read": 0
+            },
+            "ximage": "XIMAGE 0",
+            "framebuffer": "RAM 0"
+          },
+          {
+            "rect": [
+              2,
+              3,
+              191,
+              127,
+              1,
+              1
+            ],
+            "scanout_errors": 0,
+            "transfers": {
+              "dma_writes": 0,
+              "dma_reads": 0,
+              "dma_bytes": 0,
+              "pio_written": 32,
+              "pio_read": 0
+            },
+            "ximage": "XIMAGE 0",
+            "framebuffer": "RAM 0"
+          },
+          {
+            "rect": [
+              3,
+              2,
+              3,
+              2,
+              159,
+              109
+            ],
+            "scanout_errors": 0,
+            "transfers": {
+              "dma_writes": 0,
+              "dma_reads": 0,
+              "dma_bytes": 0,
+              "pio_written": 0,
+              "pio_read": 0
+            },
+            "ximage": "XIMAGE 0",
+            "framebuffer": "RAM 0"
+          }
+        ],
+        "idle_1s": {
+          "dma_writes": 0,
+          "dma_reads": 0,
+          "dma_bytes": 0,
+          "pio_written": 0,
+          "pio_read": 0
+        },
+        "verified_pixels_per_case": 24576
+      },
+      "upload": {
+        "machine": "ip28",
+        "passed": true,
+        "base_unchanged": true,
+        "disk_sha256": "5946044ffcac961653648e52f33a040690b43f68879ef020209f44dc060f442f",
+        "final_identity_rgb_errors": 0,
+        "cases": [
+          {
+            "rect": [
+              8,
+              11,
+              37,
+              11,
+              144,
+              95
+            ],
+            "scanout_errors": 0,
+            "transfers": {
+              "dma_writes": 13,
+              "dma_reads": 0,
+              "dma_bytes": 79872,
+              "pio_written": 0,
+              "pio_read": 0
+            },
+            "ximage": "XIMAGE 0",
+            "framebuffer": "RAM 0"
+          },
+          {
+            "rect": [
+              37,
+              11,
+              8,
+              11,
+              144,
+              95
+            ],
+            "scanout_errors": 0,
+            "transfers": {
+              "dma_writes": 13,
+              "dma_reads": 0,
+              "dma_bytes": 79872,
+              "pio_written": 0,
+              "pio_read": 0
+            },
+            "ximage": "XIMAGE 0",
+            "framebuffer": "RAM 0"
+          },
+          {
+            "rect": [
+              17,
+              4,
+              17,
+              23,
+              151,
+              99
+            ],
+            "scanout_errors": 0,
+            "transfers": {
+              "dma_writes": 14,
+              "dma_reads": 0,
+              "dma_bytes": 86016,
+              "pio_written": 0,
+              "pio_read": 0
+            },
+            "ximage": "XIMAGE 0",
+            "framebuffer": "RAM 0"
+          },
+          {
+            "rect": [
+              17,
+              23,
+              17,
+              4,
+              151,
+              99
+            ],
+            "scanout_errors": 0,
+            "transfers": {
+              "dma_writes": 13,
+              "dma_reads": 0,
+              "dma_bytes": 79872,
+              "pio_written": 0,
+              "pio_read": 0
+            },
+            "ximage": "XIMAGE 0",
+            "framebuffer": "RAM 0"
+          },
+          {
+            "rect": [
+              8,
+              9,
+              31,
+              28,
+              150,
+              91
+            ],
+            "scanout_errors": 0,
+            "transfers": {
+              "dma_writes": 12,
+              "dma_reads": 0,
+              "dma_bytes": 73728,
+              "pio_written": 0,
+              "pio_read": 0
+            },
+            "ximage": "XIMAGE 0",
+            "framebuffer": "RAM 0"
+          },
+          {
+            "rect": [
+              31,
+              28,
+              8,
+              9,
+              150,
+              91
+            ],
+            "scanout_errors": 0,
+            "transfers": {
+              "dma_writes": 12,
+              "dma_reads": 0,
+              "dma_bytes": 73728,
+              "pio_written": 0,
+              "pio_read": 0
+            },
+            "ximage": "XIMAGE 0",
+            "framebuffer": "RAM 0"
+          },
+          {
+            "rect": [
+              0,
+              0,
+              -7,
+              3,
+              85,
+              65
+            ],
+            "scanout_errors": 0,
+            "transfers": {
+              "dma_writes": 9,
+              "dma_reads": 0,
+              "dma_bytes": 36864,
+              "pio_written": 0,
+              "pio_read": 0
+            },
+            "ximage": "XIMAGE 0",
+            "framebuffer": "RAM 0"
+          },
+          {
+            "rect": [
+              1,
+              2,
+              130,
+              89,
+              82,
+              61
+            ],
+            "scanout_errors": 0,
+            "transfers": {
+              "dma_writes": 0,
+              "dma_reads": 0,
+              "dma_bytes": 0,
+              "pio_written": 1248,
+              "pio_read": 0
+            },
+            "ximage": "XIMAGE 0",
+            "framebuffer": "RAM 0"
+          },
+          {
+            "rect": [
+              2,
+              3,
+              191,
+              127,
+              1,
+              1
+            ],
+            "scanout_errors": 0,
+            "transfers": {
+              "dma_writes": 0,
+              "dma_reads": 0,
+              "dma_bytes": 0,
+              "pio_written": 32,
+              "pio_read": 0
+            },
+            "ximage": "XIMAGE 0",
+            "framebuffer": "RAM 0"
+          },
+          {
+            "rect": [
+              3,
+              2,
+              3,
+              2,
+              159,
+              109
+            ],
+            "scanout_errors": 0,
+            "transfers": {
+              "dma_writes": 0,
+              "dma_reads": 0,
+              "dma_bytes": 0,
+              "pio_written": 0,
+              "pio_read": 0
+            },
+            "ximage": "XIMAGE 0",
+            "framebuffer": "RAM 0"
+          }
+        ],
+        "idle_1s": {
+          "dma_writes": 0,
+          "dma_reads": 0,
+          "dma_bytes": 0,
+          "pio_written": 0,
+          "pio_read": 0
+        },
+        "verified_pixels_per_case": 24576
+      },
+      "latency": {
+        "machine": "ip28",
+        "passed": true,
+        "base_unchanged": true,
+        "disk_sha256": "5946044ffcac961653648e52f33a040690b43f68879ef020209f44dc060f442f",
+        "drag": {
+          "samples_ms": [
+            151.16,
+            166.86,
+            206.83,
+            164.03,
+            220.62,
+            163.64,
+            226.52,
+            147.19
+          ],
+          "median_ms": 165.445,
+          "changed_pixels": 91836,
+          "scanout_fraction": 0.98,
+          "crop": [
+            170,
+            170,
+            751,
+            268
+          ],
+          "polls": [
+            2,
+            2,
+            3,
+            2,
+            3,
+            2,
+            3,
+            2
+          ],
+          "median_read_ms": 62.19,
+          "last_miss_request_ms": [
+            0.35,
+            0.22,
+            77.91,
+            0.35,
+            90.11,
+            0.35,
+            92.56,
+            0.36
+          ],
+          "impact_counts": {
+            "hq3_words": 528410,
+            "raster_writes": 261510,
+            "pio_dwords": 114304,
+            "fast_fills": 0,
+            "dma_bytes": 5404672
+          },
+          "idle_counts_1s": {
+            "hq3_words": 84,
+            "raster_writes": 20,
+            "pio_dwords": 0,
+            "fast_fills": 0,
+            "dma_bytes": 8192
+          }
+        },
+        "scroll": {
+          "samples_ms": [
+            164.01,
+            169.74,
+            165.99,
+            104.02,
+            150.8,
+            104.59,
+            170.03,
+            101.98
+          ],
+          "median_ms": 157.405,
+          "changed_pixels": 53352,
+          "scanout_fraction": 0.98,
+          "crop": [
+            292,
+            170,
+            607,
+            264
+          ],
+          "polls": [
+            2,
+            2,
+            2,
+            1,
+            2,
+            1,
+            2,
+            1
+          ],
+          "median_read_ms": 96.39,
+          "last_miss_request_ms": [
+            0.27,
+            0.34,
+            0.3,
+            0.0,
+            0.32,
+            0.0,
+            0.32,
+            0.0
+          ],
+          "impact_counts": {
+            "hq3_words": 34968,
+            "raster_writes": 15020,
+            "pio_dwords": 5760,
+            "fast_fills": 0,
+            "dma_bytes": 5046272
+          },
+          "idle_counts_1s": {
+            "hq3_words": 0,
+            "raster_writes": 0,
+            "pio_dwords": 0,
+            "fast_fills": 0,
+            "dma_bytes": 0
+          }
+        },
+        "scroll_shift": {
+          "pixels": 160,
+          "compared": 19859,
+          "fraction": 1.0
+        }
+      },
+      "packaged": {
+        "machine": "ip28",
+        "passed": true,
+        "base_unchanged": true,
+        "disk_sha256": "c45156e4c1d252a8b31a91d9337467c1325153907ed78c73b98c1d275f0e104c",
+        "chd_sha256": "c45156e4c1d252a8b31a91d9337467c1325153907ed78c73b98c1d275f0e104c",
+        "chd_verified": true,
+        "frame": true,
+        "xdm": true,
+        "prom_samples": 3
+      }
+    },
+    "6.5.30": {
+      "wsfb": {
+        "machine": "ip28",
+        "passed": true,
+        "base_unchanged": true,
+        "disk_sha256": "88d851b62bb410d3acff64938352b1dbe3ccd2bd338934f52c3c694c3c96e8f9",
+        "final_identity_rgb_errors": 0,
+        "cases": [
+          {
+            "rect": [
+              8,
+              11,
+              37,
+              11,
+              144,
+              95
+            ],
+            "scanout_errors": 0,
+            "transfers": {
+              "dma_writes": 0,
+              "dma_reads": 0,
+              "dma_bytes": 0,
+              "pio_written": 9120,
+              "pio_read": 0
+            },
+            "ximage": "XIMAGE 0",
+            "framebuffer": "RAM 0"
+          },
+          {
+            "rect": [
+              37,
+              11,
+              8,
+              11,
+              144,
+              95
+            ],
+            "scanout_errors": 0,
+            "transfers": {
+              "dma_writes": 0,
+              "dma_reads": 0,
+              "dma_bytes": 0,
+              "pio_written": 9120,
+              "pio_read": 0
+            },
+            "ximage": "XIMAGE 0",
+            "framebuffer": "RAM 0"
+          },
+          {
+            "rect": [
+              17,
+              4,
+              17,
+              23,
+              151,
+              99
+            ],
+            "scanout_errors": 0,
+            "transfers": {
+              "dma_writes": 0,
+              "dma_reads": 0,
+              "dma_bytes": 0,
+              "pio_written": 9504,
+              "pio_read": 0
+            },
+            "ximage": "XIMAGE 0",
+            "framebuffer": "RAM 0"
+          },
+          {
+            "rect": [
+              17,
+              23,
+              17,
+              4,
+              151,
+              99
+            ],
+            "scanout_errors": 0,
+            "transfers": {
+              "dma_writes": 0,
+              "dma_reads": 0,
+              "dma_bytes": 0,
+              "pio_written": 9504,
+              "pio_read": 0
+            },
+            "ximage": "XIMAGE 0",
+            "framebuffer": "RAM 0"
+          },
+          {
+            "rect": [
+              8,
+              9,
+              31,
+              28,
+              150,
+              91
+            ],
+            "scanout_errors": 0,
+            "transfers": {
+              "dma_writes": 0,
+              "dma_reads": 0,
+              "dma_bytes": 0,
+              "pio_written": 8736,
+              "pio_read": 0
+            },
+            "ximage": "XIMAGE 0",
+            "framebuffer": "RAM 0"
+          },
+          {
+            "rect": [
+              31,
+              28,
+              8,
+              9,
+              150,
+              91
+            ],
+            "scanout_errors": 0,
+            "transfers": {
+              "dma_writes": 0,
+              "dma_reads": 0,
+              "dma_bytes": 0,
+              "pio_written": 8736,
+              "pio_read": 0
+            },
+            "ximage": "XIMAGE 0",
+            "framebuffer": "RAM 0"
+          },
+          {
+            "rect": [
+              0,
+              0,
+              -7,
+              3,
+              85,
+              65
+            ],
+            "scanout_errors": 0,
+            "transfers": {
+              "dma_writes": 0,
+              "dma_reads": 0,
+              "dma_bytes": 0,
+              "pio_written": 4160,
+              "pio_read": 0
+            },
+            "ximage": "XIMAGE 0",
+            "framebuffer": "RAM 0"
+          },
+          {
+            "rect": [
+              1,
+              2,
+              130,
+              89,
+              82,
+              61
+            ],
+            "scanout_errors": 0,
+            "transfers": {
+              "dma_writes": 0,
+              "dma_reads": 0,
+              "dma_bytes": 0,
+              "pio_written": 1248,
+              "pio_read": 0
+            },
+            "ximage": "XIMAGE 0",
+            "framebuffer": "RAM 0"
+          },
+          {
+            "rect": [
+              2,
+              3,
+              191,
+              127,
+              1,
+              1
+            ],
+            "scanout_errors": 0,
+            "transfers": {
+              "dma_writes": 0,
+              "dma_reads": 0,
+              "dma_bytes": 0,
+              "pio_written": 32,
+              "pio_read": 0
+            },
+            "ximage": "XIMAGE 0",
+            "framebuffer": "RAM 0"
+          },
+          {
+            "rect": [
+              3,
+              2,
+              3,
+              2,
+              159,
+              109
+            ],
+            "scanout_errors": 0,
+            "transfers": {
+              "dma_writes": 0,
+              "dma_reads": 0,
+              "dma_bytes": 0,
+              "pio_written": 0,
+              "pio_read": 0
+            },
+            "ximage": "XIMAGE 0",
+            "framebuffer": "RAM 0"
+          }
+        ],
+        "idle_1s": {
+          "dma_writes": 0,
+          "dma_reads": 0,
+          "dma_bytes": 0,
+          "pio_written": 0,
+          "pio_read": 0
+        },
+        "verified_pixels_per_case": 24576
+      },
+      "upload": {
+        "machine": "ip28",
+        "passed": true,
+        "base_unchanged": true,
+        "disk_sha256": "88d851b62bb410d3acff64938352b1dbe3ccd2bd338934f52c3c694c3c96e8f9",
+        "final_identity_rgb_errors": 0,
+        "cases": [
+          {
+            "rect": [
+              8,
+              11,
+              37,
+              11,
+              144,
+              95
+            ],
+            "scanout_errors": 0,
+            "transfers": {
+              "dma_writes": 13,
+              "dma_reads": 0,
+              "dma_bytes": 79872,
+              "pio_written": 0,
+              "pio_read": 0
+            },
+            "ximage": "XIMAGE 0",
+            "framebuffer": "RAM 0"
+          },
+          {
+            "rect": [
+              37,
+              11,
+              8,
+              11,
+              144,
+              95
+            ],
+            "scanout_errors": 0,
+            "transfers": {
+              "dma_writes": 14,
+              "dma_reads": 0,
+              "dma_bytes": 86016,
+              "pio_written": 0,
+              "pio_read": 0
+            },
+            "ximage": "XIMAGE 0",
+            "framebuffer": "RAM 0"
+          },
+          {
+            "rect": [
+              17,
+              4,
+              17,
+              23,
+              151,
+              99
+            ],
+            "scanout_errors": 0,
+            "transfers": {
+              "dma_writes": 14,
+              "dma_reads": 0,
+              "dma_bytes": 86016,
+              "pio_written": 0,
+              "pio_read": 0
+            },
+            "ximage": "XIMAGE 0",
+            "framebuffer": "RAM 0"
+          },
+          {
+            "rect": [
+              17,
+              23,
+              17,
+              4,
+              151,
+              99
+            ],
+            "scanout_errors": 0,
+            "transfers": {
+              "dma_writes": 13,
+              "dma_reads": 0,
+              "dma_bytes": 79872,
+              "pio_written": 0,
+              "pio_read": 0
+            },
+            "ximage": "XIMAGE 0",
+            "framebuffer": "RAM 0"
+          },
+          {
+            "rect": [
+              8,
+              9,
+              31,
+              28,
+              150,
+              91
+            ],
+            "scanout_errors": 0,
+            "transfers": {
+              "dma_writes": 12,
+              "dma_reads": 0,
+              "dma_bytes": 73728,
+              "pio_written": 0,
+              "pio_read": 0
+            },
+            "ximage": "XIMAGE 0",
+            "framebuffer": "RAM 0"
+          },
+          {
+            "rect": [
+              31,
+              28,
+              8,
+              9,
+              150,
+              91
+            ],
+            "scanout_errors": 0,
+            "transfers": {
+              "dma_writes": 12,
+              "dma_reads": 0,
+              "dma_bytes": 73728,
+              "pio_written": 0,
+              "pio_read": 0
+            },
+            "ximage": "XIMAGE 0",
+            "framebuffer": "RAM 0"
+          },
+          {
+            "rect": [
+              0,
+              0,
+              -7,
+              3,
+              85,
+              65
+            ],
+            "scanout_errors": 0,
+            "transfers": {
+              "dma_writes": 9,
+              "dma_reads": 0,
+              "dma_bytes": 36864,
+              "pio_written": 0,
+              "pio_read": 0
+            },
+            "ximage": "XIMAGE 0",
+            "framebuffer": "RAM 0"
+          },
+          {
+            "rect": [
+              1,
+              2,
+              130,
+              89,
+              82,
+              61
+            ],
+            "scanout_errors": 0,
+            "transfers": {
+              "dma_writes": 0,
+              "dma_reads": 0,
+              "dma_bytes": 0,
+              "pio_written": 1248,
+              "pio_read": 0
+            },
+            "ximage": "XIMAGE 0",
+            "framebuffer": "RAM 0"
+          },
+          {
+            "rect": [
+              2,
+              3,
+              191,
+              127,
+              1,
+              1
+            ],
+            "scanout_errors": 0,
+            "transfers": {
+              "dma_writes": 0,
+              "dma_reads": 0,
+              "dma_bytes": 0,
+              "pio_written": 32,
+              "pio_read": 0
+            },
+            "ximage": "XIMAGE 0",
+            "framebuffer": "RAM 0"
+          },
+          {
+            "rect": [
+              3,
+              2,
+              3,
+              2,
+              159,
+              109
+            ],
+            "scanout_errors": 0,
+            "transfers": {
+              "dma_writes": 0,
+              "dma_reads": 0,
+              "dma_bytes": 0,
+              "pio_written": 0,
+              "pio_read": 0
+            },
+            "ximage": "XIMAGE 0",
+            "framebuffer": "RAM 0"
+          }
+        ],
+        "idle_1s": {
+          "dma_writes": 0,
+          "dma_reads": 0,
+          "dma_bytes": 0,
+          "pio_written": 0,
+          "pio_read": 0
+        },
+        "verified_pixels_per_case": 24576
+      },
+      "latency": {
+        "machine": "ip28",
+        "passed": true,
+        "base_unchanged": true,
+        "disk_sha256": "88d851b62bb410d3acff64938352b1dbe3ccd2bd338934f52c3c694c3c96e8f9",
+        "drag": {
+          "samples_ms": [
+            137.3,
+            213.06,
+            174.76,
+            148.83,
+            220.77,
+            170.3,
+            173.28,
+            242.84
+          ],
+          "median_ms": 174.01999999999998,
+          "changed_pixels": 91836,
+          "scanout_fraction": 0.98,
+          "crop": [
+            170,
+            170,
+            751,
+            268
+          ],
+          "polls": [
+            2,
+            3,
+            2,
+            2,
+            3,
+            2,
+            2,
+            3
+          ],
+          "median_read_ms": 61.71,
+          "last_miss_request_ms": [
+            0.67,
+            89.95,
+            0.32,
+            0.26,
+            89.96,
+            0.35,
+            0.25,
+            87.23
+          ],
+          "impact_counts": {
+            "hq3_words": 537910,
+            "raster_writes": 266425,
+            "pio_dwords": 116576,
+            "fast_fills": 0,
+            "dma_bytes": 5320704
+          },
+          "idle_counts_1s": {
+            "hq3_words": 1846,
+            "raster_writes": 923,
+            "pio_dwords": 416,
+            "fast_fills": 0,
+            "dma_bytes": 0
+          }
+        },
+        "scroll": {
+          "samples_ms": [
+            320.39,
+            165.57,
+            169.02,
+            173.33,
+            245.18,
+            170.01,
+            167.46,
+            170.08
+          ],
+          "median_ms": 170.04500000000002,
+          "changed_pixels": 53352,
+          "scanout_fraction": 0.98,
+          "crop": [
+            292,
+            170,
+            607,
+            264
+          ],
+          "polls": [
+            4,
+            2,
+            2,
+            2,
+            3,
+            2,
+            2,
+            2
+          ],
+          "median_read_ms": 67.4,
+          "last_miss_request_ms": [
+            182.25,
+            0.24,
+            0.3,
+            0.25,
+            101.89,
+            0.25,
+            0.25,
+            0.44
+          ],
+          "impact_counts": {
+            "hq3_words": 48600,
+            "raster_writes": 21836,
+            "pio_dwords": 8832,
+            "fast_fills": 0,
+            "dma_bytes": 5046272
+          },
+          "idle_counts_1s": {
+            "hq3_words": 2130,
+            "raster_writes": 1065,
+            "pio_dwords": 480,
+            "fast_fills": 0,
+            "dma_bytes": 0
+          }
+        },
+        "scroll_shift": {
+          "pixels": 160,
+          "compared": 19859,
+          "fraction": 1.0
+        }
+      },
+      "packaged": {
+        "machine": "ip28",
+        "passed": true,
+        "base_unchanged": true,
+        "disk_sha256": "187a516e9f3d2b29236fcd53d95467415e18fdd6ae2a90d1c407ba96f0af9e58",
+        "chd_sha256": "187a516e9f3d2b29236fcd53d95467415e18fdd6ae2a90d1c407ba96f0af9e58",
+        "chd_verified": true,
+        "frame": true,
+        "xdm": true,
+        "prom_samples": 3
+      }
+    }
+  },
+  "netbsd_commit": "60dd809ab7a712baf4f93358670ada76ac13a397",
+  "host_regressions_passed": 83,
+  "module_audit": {
+    "passed": true,
+    "kernel_sha256": "2a6dac5254f810df5b1be6e12369d9b10bb423c201898b207619e96487d3f656",
+    "module_sha256": "19a8fbd3451ea3bb1febffabc21d27f2a5654fa51173315eb1753dceffe8bcc6",
+    "resolved_imports": 172
+  },
+  "first_prototype": {
+    "kernel_sha256": "790de7eabd6d0c8d3e4a51c1664504758f68a7234e4c441e427f54d262ba7fb6",
+    "release": "6.5.22",
+    "observed": "Incorrect RGB values on scanout: 24384 pixels"
+  }
+}

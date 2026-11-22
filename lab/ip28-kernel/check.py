@@ -40,7 +40,7 @@ def main():
     parser.add_argument("--desktop", action="store_true",
                         help="Run the installed Xiri user desktop on IMPACT after the native checks")
     parser.add_argument("--multiuser", action="store_true", help="Boot through rc.d and log in on serial B")
-    parser.add_argument("--xdm", choices=("full", "greeter", "latency"), help="Check xdm, both user desktops or interactive display latency")
+    parser.add_argument("--xdm", choices=("full", "greeter", "latency", "copy"), help="Check xdm, user desktops, desktop latency or overlap-safe window copies")
     parser.add_argument("--autoboot", action="store_true", help="Use saved firmware's automatic disk boot without PROM commands")
     parser.add_argument("--graphical-console", action="store_true", help="Use console=g with saved automatic-boot firmware; retain serial B login")
     parser.add_argument("--console-check", action="store_true", help="Exercise graphical text and debugger input before xdm checks")
@@ -63,6 +63,8 @@ def main():
         parser.error("--console-check requires --graphical-console")
     if args.frame_reference and not args.console_check:
         parser.error("--frame-reference requires --console-check")
+    if args.xdm == "copy" and (args.machine != "ip28" or not args.fixture_media):
+        parser.error("--xdm copy requires IP28 and --fixture-media")
     media = args.media or args.fixture_media
     if args.xdm == "full" and not media:
         parser.error("--xdm full requires fixture media containing type-ready.c")
@@ -74,7 +76,7 @@ def main():
     out.mkdir(parents=True, exist_ok=False)
     shutil.copyfile(__file__, out / "probe-used.py")
     if args.xdm:
-        helper = "desktop_latency" if args.xdm == "latency" else "xdm"
+        helper = {"latency": "desktop_latency", "copy": "window_copy"}.get(args.xdm, "xdm")
         shutil.copyfile(Path(__file__).with_name(helper + ".py"), out / (helper + "-used.py"))
     def sha(path):
         with path.open("rb") as stream:
@@ -346,6 +348,10 @@ mac = "08:00:69:12:34:56"
                 from desktop_latency import qualify
                 result["desktop_latency"] = {}
                 qualify(shell, monitor, rpc, out, result["desktop_latency"])
+            elif args.xdm == "copy":
+                from window_copy import qualify
+                result["window_copy"] = {}
+                qualify(shell, monitor, out, result["window_copy"])
             elif args.xdm:
                 from xdm import qualify
                 result["xdm"] = {}

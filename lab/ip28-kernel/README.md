@@ -34,6 +34,38 @@ all 307,200 displayed pixels in the final frame of each workload and retains
 the samples, medians and PNGs. Use `scanout.py RUN_DIRECTORY/xorg.png` to check
 the independent colour swatches and odd-width atlas from the Xorg probe.
 
+## Checking overlapping window copies
+
+Put `window-copy.c` and its NetBSD-format `SHA256` manifest on a Rock Ridge
+ISO. Use the saved firmware from the matching IP28 image and a fresh output
+directory for each release.
+
+```sh
+python3 -B lab/ip28-kernel/check.py --iris "$IRIS" \
+  --disk "$BUNDLE/netbsd-xiri.chd" --firmware-dir "$BUNDLE" \
+  --autoboot --graphical-console --xdm copy --fixture-media "$ISO" \
+  --output "$RUN"
+```
+
+The Xlib client paints a 192×128 TrueColor window, then calls `XCopyArea` on
+the window itself. Ten cases cover horizontal, vertical and diagonal overlap,
+clipped destinations, the bottom-right pixel and a copy to the same position.
+For each case, the host compares the entire displayed rectangle against the
+previously captured source, including pixels outside the destination. The
+client separately verifies XGetImage and, on NetBSD, a read-only mapping of
+the wsdisplay framebuffer. The host samples IMPACT transfer counters before
+XGetImage so its readback traffic does not enter the copy measurement.
+Results are in `window_copy` in the run's `result.json`.
+
+To observe native Xsgi, compile `window-copy.c` as an X11 client on the host
+(`cc -O2 window-copy.c -lX11 -o window-copy`). Use a loopback IRIS port
+forward to the private guest's X server and its normal X authorization.
+The program reads one command per line. Send `seed`, then `copy 0` through
+`copy 9`, reseeding before every case. Use `check` after sampling the transfer
+counters and `quit` to close the client. In the monitor, bracket a single
+`copy` request with `mgras trace FILE hq,rss` and `mgras trace off` to
+record the raster and host DMA commands.
+
 ## Measuring 4Dwm and winterm
 
 Use the qualified framed IP28 disks and the two Indy preview base CHDs.

@@ -228,6 +228,8 @@ artwork for boot messages and debugger output. The report includes screenshots
 and launch commands for the 6.5.22 and 6.5.30 images.
 The [desktop latency measurements](docs/results/2026-11-22-desktop-latency.md)
 compare held 4Dwm window moves and winterm scrolling on Indy and Indigo2.
+The [High IMPACT window-copy investigation](docs/results/2026-11-22-impact-window-copy.md)
+traces native Xsgi and compares Xorg readback, framebuffer RAM and scanout.
 
 ## Run the current image
 
