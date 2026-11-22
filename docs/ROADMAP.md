@@ -655,7 +655,8 @@ display attachment path. This check does not qualify a 6.5.30 Xiri desktop.
 - [x] Qualify both IRIX desktop releases on IP28, including winterm shell/home/UID and supervised logout, and retain separate bootable test CHDs.
 - [x] Qualify normal xdm startup on IP28 for both release lines, with IRIX/native logins, logout/relogin and standalone automatic-boot CHDs; see the [xdm checkpoint](results/2026-11-22-ip28-xdm.md).
 - [x] Qualify an early graphical/debug console on IP28, including PS/2 console input, DDB evaluation/continue, xdm handover and graphical PROM shutdown on both release lines; see the [console checkpoint](results/2026-11-22-ip28-console.md).
-- [ ] Prioritize IMPACT 2D acceleration: measure drawing/scrolling and framebuffer-transfer costs, then add hardware fills/copies and faster uploads while retaining the qualified wsfb fallback. Validate both release lines.
+- [x] Measure visible IMPACT solid fills and patterned pixmap copies on both release lines. Coalesce uniform pixels into hardware rectangles and batch mixed-pixel FIFO uploads. See the [2D display measurements](results/2026-11-22-ip28-2d.md).
+- [ ] Measure window dragging and terminal scrolling on the IP28 desktop. Evaluate native screen-to-screen copies and Xorg drawing acceleration against the qualified wsfb path.
 - [ ] After acceleration, adapt the Indy's decorated console frame to IMPACT, preserving early text, debugger readability and Xorg transitions.
 - [ ] Extend IP28 qualification to physical cache/DMA behavior and sustained I/O; other IMPACT variants, display timings and 3D remain separate work.
 - [ ] Repair and qualify native NetBSD on O2, starting with the remaining SCSI-stage boot trap, then storage/cache/DMA, input and the `crime` Xorg path.

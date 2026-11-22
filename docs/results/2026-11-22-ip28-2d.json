@@ -1,0 +1,272 @@
+{
+  "date": "2026-11-22",
+  "machine": "IP28 / R10000 / 1 GiB / High IMPACT, 1280x1024",
+  "iris_binary_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+  "iris_upstream_checked": "ec3dcec36a6d561aca8b306d2f95cd49d5a65eaf",
+  "iris_xiri": "a90c5a484180c41c41098fcb38ee964e4346baad",
+  "netbsd_base": "b2c431a3b18f9fd3aded411e92bd020e463a4a90",
+  "netbsd_xiri": "a5911e2b56307d769283e1d75f38749d3b788749",
+  "module_audit": {
+    "passed": true,
+    "imports": 172,
+    "relocations": [
+      "R_MIPS_32",
+      "R_MIPS_64",
+      "R_MIPS_HI16",
+      "R_MIPS_HIGHER",
+      "R_MIPS_HIGHEST",
+      "R_MIPS_LO16",
+      "R_MIPS_NONE"
+    ],
+    "kernel_sha256": "673f24d16bc2fbbd202d38d2505a2e359dcd64d77e95350e5fe07f2e79ecdffa",
+    "module_sha256": "19a8fbd3451ea3bb1febffabc21d27f2a5654fa51173315eb1753dceffe8bcc6"
+  },
+  "timing": "Wall clock milliseconds from serial trigger to visible pixel (637,477). Five alternating frames after warm-up. Last frame fully compared against expected RGB. Includes guest, monitor and host time.",
+  "releases": {
+    "6.5.22": {
+      "bundle": ".work/native/xiri-ip28-2d-6.5.22-20261122",
+      "previous_chd_sha256": "da76a484db1ee3e42c550ed8c54e93f5d0795a674ea57de6a845174464638b29",
+      "chd_sha256": "c148643e846f2cd3d2df60438b806f1f07c929471365dfd06e13f8a9a5fcbaec",
+      "baseline": {
+        "result_sha256": "b19992e7294c49475eb0defcab4664db00a0d7ee4ab6bf439d46d0caca71838b",
+        "display_bench": {
+          "solid_fill": {
+            "samples_ms": [
+              418.02,
+              403.0,
+              380.0,
+              417.95,
+              417.03
+            ],
+            "median_ms": 417.03,
+            "verified_pixels": 307200
+          },
+          "pixmap_copy": {
+            "samples_ms": [
+              620.96,
+              631.02,
+              636.01,
+              683.95,
+              581.04
+            ],
+            "median_ms": 631.02,
+            "verified_pixels": 307200
+          },
+          "passed": true
+        },
+        "scanout": {
+          "passed": true,
+          "size": [
+            1280,
+            1024
+          ],
+          "checked_pixels": 8944,
+          "mismatches": 0,
+          "examples": [],
+          "png_sha256": "5972c61d7999c1afbba7336e4a4158403c89614c0cf4de302da250d7a61a5381"
+        }
+      },
+      "candidate": {
+        "result_sha256": "ba140aa23c6ff0d0e3ddc6c04ecaea43a896d076b01f3c2324fa31de648aee75",
+        "display_bench": {
+          "solid_fill": {
+            "samples_ms": [
+              170.09,
+              165.89,
+              182.03,
+              183.94,
+              181.99
+            ],
+            "median_ms": 181.99,
+            "verified_pixels": 307200
+          },
+          "pixmap_copy": {
+            "samples_ms": [
+              399.1,
+              419.91,
+              400.0,
+              381.92,
+              399.96
+            ],
+            "median_ms": 399.96,
+            "verified_pixels": 307200
+          },
+          "passed": true
+        },
+        "scanout": {
+          "passed": true,
+          "size": [
+            1280,
+            1024
+          ],
+          "checked_pixels": 8944,
+          "mismatches": 0,
+          "examples": [],
+          "png_sha256": "5972c61d7999c1afbba7336e4a4158403c89614c0cf4de302da250d7a61a5381"
+        }
+      },
+      "full_disk_boot": {
+        "passed": true,
+        "elapsed_seconds": 329.5,
+        "base_unchanged": true,
+        "firmware_seed_matches": true,
+        "kernel_verified": true,
+        "console_login": true,
+        "ddb": true,
+        "returned_to_prom": true,
+        "sessions": [
+          {
+            "user": "xiritest",
+            "dimensions": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+            "logout_to_greeter": true
+          },
+          {
+            "user": "netbsdtest",
+            "dimensions": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+            "logout_to_greeter": true
+          },
+          {
+            "user": "xiritest",
+            "dimensions": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+            "logout_to_greeter": true
+          }
+        ]
+      },
+      "chd_verified": true,
+      "full_result_sha256": "201560f7417dea24dfc4366b8cfbb9f2b64aa0474a57f85c62a97469e8e673ff",
+      "bench_fixture_sha256": "3f209a9f276b586fade27e52a4d8a161ecfa336d76077e0a15b71358fb8b31d5",
+      "session_fixture_sha256": "3b699c09527e86d209be79519d4471969fbac53141a83546f08c96c7fd5f9d1e",
+      "files_sha256": {
+        "nvram.bin": "6878bd814e73ea8a21755e3b2a7393a30b5af772b240d338d607c57845199553",
+        "nveeprom.bin": "e3a65cb0440f5ccdf1b639aea218880c8bded5d96d97e2c16e761424b4c0a566",
+        "iris.toml": "7bb6c58fe5b9d48e3efb2fffea0e47481be10e63d1f4001bf405826b8955c29f",
+        "run-iris.sh": "368a440062b887c6001270066e9a7b5eba891d158f98e4feb5a784393ed9b368",
+        "README.txt": "9e0a2431fcd7c262e2e006f810ec452b9b1c6568a592089713e2f7d1cf808955"
+      },
+      "local_runs": ".work/ip28-2d"
+    },
+    "6.5.30": {
+      "bundle": ".work/native/xiri-ip28-2d-6.5.30-20261122",
+      "previous_chd_sha256": "7b05f003891704652cde9d237d45999110ae24a21cc4e320fd723dd6cdfa598b",
+      "chd_sha256": "e7c62a439556278b5e2911ac2f36364bac54cb9f553df5742164d3ce684a9902",
+      "baseline": {
+        "result_sha256": "3b4275787852a6ed549ddf8d4bf4ba4af88e7b94f61195e5487f539b9dc871f1",
+        "display_bench": {
+          "solid_fill": {
+            "samples_ms": [
+              381.94,
+              414.0,
+              415.94,
+              400.06,
+              385.0
+            ],
+            "median_ms": 400.06,
+            "verified_pixels": 307200
+          },
+          "pixmap_copy": {
+            "samples_ms": [
+              1533.99,
+              1538.98,
+              1564.0,
+              1601.06,
+              1551.92
+            ],
+            "median_ms": 1551.92,
+            "verified_pixels": 307200
+          },
+          "passed": true
+        },
+        "scanout": {
+          "passed": true,
+          "size": [
+            1280,
+            1024
+          ],
+          "checked_pixels": 8944,
+          "mismatches": 0,
+          "examples": [],
+          "png_sha256": "5972c61d7999c1afbba7336e4a4158403c89614c0cf4de302da250d7a61a5381"
+        }
+      },
+      "candidate": {
+        "result_sha256": "bbf161171309ea8c41bb654a484617033dd2df1f1145a9c5560381666ed8cabc",
+        "display_bench": {
+          "solid_fill": {
+            "samples_ms": [
+              250.0,
+              169.0,
+              164.95,
+              166.0,
+              182.02
+            ],
+            "median_ms": 169.0,
+            "verified_pixels": 307200
+          },
+          "pixmap_copy": {
+            "samples_ms": [
+              583.98,
+              570.19,
+              481.8,
+              413.98,
+              402.02
+            ],
+            "median_ms": 481.8,
+            "verified_pixels": 307200
+          },
+          "passed": true
+        },
+        "scanout": {
+          "passed": true,
+          "size": [
+            1280,
+            1024
+          ],
+          "checked_pixels": 8944,
+          "mismatches": 0,
+          "examples": [],
+          "png_sha256": "b1229fa8b143e411b6666786726f5a74b5f34a7c48e3b5952674d5d714a8d7b7"
+        }
+      },
+      "full_disk_boot": {
+        "passed": true,
+        "elapsed_seconds": 353.45,
+        "base_unchanged": true,
+        "firmware_seed_matches": true,
+        "kernel_verified": true,
+        "console_login": true,
+        "ddb": true,
+        "returned_to_prom": true,
+        "sessions": [
+          {
+            "user": "xiritest",
+            "dimensions": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+            "logout_to_greeter": true
+          },
+          {
+            "user": "netbsdtest",
+            "dimensions": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+            "logout_to_greeter": true
+          },
+          {
+            "user": "xiritest",
+            "dimensions": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+            "logout_to_greeter": true
+          }
+        ]
+      },
+      "chd_verified": true,
+      "full_result_sha256": "08d133247d7eb55225141ed19c9b90683642c0cef845b49d923174110cc48546",
+      "bench_fixture_sha256": "3f209a9f276b586fade27e52a4d8a161ecfa336d76077e0a15b71358fb8b31d5",
+      "session_fixture_sha256": "3b699c09527e86d209be79519d4471969fbac53141a83546f08c96c7fd5f9d1e",
+      "files_sha256": {
+        "nvram.bin": "b9496bf25991fff61f4ace2d048842875dce7d57875b1d0a2abdad546aaa5d36",
+        "nveeprom.bin": "e3a65cb0440f5ccdf1b639aea218880c8bded5d96d97e2c16e761424b4c0a566",
+        "iris.toml": "50604d635d9f2a22f0a7782d42d572672e724617efdf576e7d825c78e62270dd",
+        "run-iris.sh": "368a440062b887c6001270066e9a7b5eba891d158f98e4feb5a784393ed9b368",
+        "README.txt": "80708a41fcb235cf315347b4d714a714902b07d6d42af21273707028bc057902"
+      },
+      "local_runs": ".work/ip28-2d"
+    }
+  },
+  "interrupted_runs": "Host coordinator terminated during the first full login runs. Both guests returned to PROM under supervised shutdown. Full sequence repeated on fresh overlays."
+}

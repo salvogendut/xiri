@@ -161,7 +161,9 @@ Before proposing inclusion:
   [graphical-console checkpoint](results/2026-11-22-ip28-console.md) adds
   early/polled IMPACT text and one optional `genfb_ops.genfb_init_screen`
   callback in `sys/dev/wsfb/genfb.c` and `genfbvar.h`. Review that generic display
-  interface with the native IMPACT patch series, separately from compat_irix.
+  interface with the native IMPACT patch series, separately from compat_irix. The
+  [2D display update](results/2026-11-22-ip28-2d.md) changes only the native
+  driver in `sys/arch/sgimips/gio/impact.c`. It uses the existing wsfb mapping.
 - **Newport Xorg acceleration/text fixes:**
   `xsrc/external/mit/xf86-video-newport/dist/src/newport_accel.c`.
   Our [texture patch](../lab/newport-xaa/texture-coordinates.patch) and

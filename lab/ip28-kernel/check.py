@@ -45,7 +45,11 @@ def main():
     parser.add_argument("--graphical-console", action="store_true", help="Use console=g with saved automatic-boot firmware; retain serial B login")
     parser.add_argument("--console-check", action="store_true", help="Exercise graphical text and debugger input before xdm checks")
     parser.add_argument("--command-timeout", type=int, default=120)
+    parser.add_argument("--display-bench", action="store_true",
+                        help="Time visible fills and pixmap copies during the --xorg probe")
     args = parser.parse_args()
+    if args.display_bench and (not args.xorg or not args.fixture_media):
+        parser.error("--display-bench requires --xorg and --fixture-media")
     if args.xdm:
         args.multiuser = True
         if args.desktop or args.xorg:
@@ -353,6 +357,11 @@ mac = "08:00:69:12:34:56"
                     got = re.search(r"= ([0-9a-fA-F]{6})", pixel)
                     if not got or got[1].lower() != color:
                         raise RuntimeError("Incorrect IMPACT scanout: " + pixel)
+                if args.display_bench:
+                    shutil.copyfile(Path(__file__).with_name("display_bench.py"), out / "display-bench-used.py")
+                    from display_bench import qualify as qualify_display
+                    result["display_bench"] = {}
+                    qualify_display(shell, monitor, rpc, capture, result["display_bench"])
                 result["xorg_shutdown"] = shell("kill $(cat /var/tmp/ip28-xorg/probe-pid); kill $(cat /var/tmp/ip28-xorg/xpid); sleep 2; ! pgrep -x Xorg")
             if args.desktop:
                 result["desktop"] = shell("sh /cdrom/check-desktop.sh")
@@ -413,7 +422,9 @@ mac = "08:00:69:12:34:56"
                     pass
             if not result["passed"] and "shell" in locals():
                 try:
-                    rpc("serial-send", data="\x03/sbin/shutdown -h now\r")
+                    rpc("serial-send", data="\x03")
+                    time.sleep(0.5)
+                    rpc("serial-send", data=("/sbin/shutdown -h now" if args.multiuser else "/sbin/halt") + "\r")
                     deadline = time.monotonic() + 45
                     while time.monotonic() < deadline:
                         regs = monitor(["regs"])["regs"]

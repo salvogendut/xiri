@@ -13,6 +13,27 @@ add DMA/3D acceleration. The original checkpoint uses serial B; the graphical
 console work below adds visible boot and debugger output.
 See the [module/IMPACT result](../../docs/results/2026-11-22-ip28-impact.md).
 
+## Measuring IMPACT display updates
+
+Add `display-bench.c` to the Xorg fixture ISO and regenerate its SHA256
+manifest. Run `check.py` with `--xorg --display-bench --fixture-media ISO`.
+Use a new output directory and private overlay for each run. For a disk
+baseline select `--kernel netbsd.ip28`. For a candidate add
+`--tftp BUILD_DIRECTORY/kernel --kernel netbsd`. Run the same pair
+sequentially on each release. The kernel and module installation and full
+graphical-console/xdm checks are separate from the timed single-user runs.
+
+The Xlib client alternates two colours in a 640×480 X window. The first
+workload fills the window. The second copies a checkerboard from a prepared
+pixmap, exercising patterned uploads through wsfb. After a warm-up frame,
+the host times five updates from the serial drawing request until a pixel
+near the bottom right changes on the emulator display. This includes serial
+delivery, guest scheduling, Xorg, the framebuffer worker and monitor polling.
+The client moves the mouse clear of the sampled region. The test compares
+all 307,200 displayed pixels in the final frame of each workload and retains
+the samples, medians and PNGs. Use `scanout.py RUN_DIRECTORY/xorg.png` to check
+the independent colour swatches and odd-width atlas from the Xorg probe.
+
 ## Graphical boot console
 
 The console kernel selects native IMPACT text output when the PROM uses
