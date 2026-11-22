@@ -9,8 +9,52 @@ The subsequent `XIRI_IP28` configuration adds `MODULAR`, IMPACT `genfb`/Xorg
 `wsfb`, and PS/2 keyboard/mouse. Keep the original `GENERIC64_IP28` checkpoint
 separate. This is firmware-initialized **High IMPACT at 1280×1024**, using a
 24-bit RGB shadow in 32-bit RAM pixels and programmed transfers. It does not
-add DMA/3D acceleration or an early graphical/debug console; use serial B.
+add DMA/3D acceleration. The original checkpoint uses serial B; the graphical
+console work below adds visible boot and debugger output.
 See the [module/IMPACT result](../../docs/results/2026-11-22-ip28-impact.md).
+
+## Graphical boot console
+
+The console kernel selects native IMPACT text output when the PROM uses
+`console=g`. Firmware displays the loader, then a static RAM framebuffer and
+synchronous transfers provide early NetBSD text. `genfb` takes over at device
+attachment; Xorg continues to use the standard 1280×1024 `wsfb` interface.
+Console text and DDB output do not depend on the framebuffer update thread.
+Serial B remains available for a root login once the system reaches multiuser.
+
+Build the matching kernel/module pair as below. On a private overlay, boot
+single-user through serial and run `prepare-console.sh` from verified media
+containing `netbsd`, `compat_irix_o32.kmod` and `SHA256`. This removes the
+explicit screen-0 allocation from `/etc/wscons.conf`: the graphical console
+already supplies it. It retains the existing xdm accounts and serial getty.
+
+Set the PROM to `console=g`, `OSLoadFilename=netbsd.ip28`,
+`OSLoadOptions=auto` and `AutoLoad=Yes`, then reset for the console selection
+to take effect. The new bundles retain those settings. Both the kernel and
+firmware must match the graphical-console setup; older serial-only kernels
+are not a substitute.
+
+The qualification command uses a prepared overlay and saved firmware:
+
+```sh
+python3 lab/ip28-kernel/check.py --iris IRIS_BINARY --disk RELEASE_BASE_CHD \
+  --overlay-dir PREPARED_OVERLAY --output RUN_DIRECTORY \
+  --firmware-dir SAVED_FIRMWARE --kernel netbsd.ip28 \
+  --autoboot --graphical-console --console-check --xdm full \
+  --fixture-media TEST_ISO --command-timeout 300
+```
+
+`TEST_ISO` contains `type-ready.c` and a `SHA256` manifest. The probe captures
+boot text, exercises a temporary root console login with PS/2 keys, enters
+DDB with Ctrl-Alt-Esc, evaluates a constant and continues, then runs the normal
+IRIX/native/IRIX xdm session checks. It stops its own IRIS instance afterward.
+For graphical shutdown, it checks sustained return to PROM code and retains
+the PROM-menu PNG; boot/shutdown text is no longer expected on serial B.
+
+For serial recovery, select `console=d` and reset. If Xorg is needed in that
+mode, create its screen from the serial root shell with `wsconscfg 0` before
+starting xdm. Restore `console=g` for normal graphical boot. No extra X server
+should run while xdm owns the display.
 
 ## Matching module and IMPACT checks
 

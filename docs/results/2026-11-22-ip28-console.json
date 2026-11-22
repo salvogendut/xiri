@@ -1,0 +1,492 @@
+{
+  "date": "2026-11-22",
+  "scope": "IP28 native IMPACT early/polled graphical console and xdm handover",
+  "netbsd_commit": "b2c431a3b18f9fd3aded411e92bd020e463a4a90",
+  "netbsd_branch": "xiri",
+  "iris_upstream_checked": "ec3dcec36a6d561aca8b306d2f95cd49d5a65eaf",
+  "iris_integration": "a90c5a484180c41c41098fcb38ee964e4346baad",
+  "iris_merge_required": true,
+  "iris_upstream_validation": {
+    "jit_flush_regression": 1,
+    "loom_models": 9,
+    "passed": true
+  },
+  "iris_binary_commit": "0bc52567a87349a5f521c702f9d8dec1dc0f79c6",
+  "iris_binary_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+  "iris_binary_note": "Subsequent fork commits affect tests/documentation only; retained production binary used for both release lines.",
+  "kernel_sha256": "5b64583bef7f2d875f52a902037fba5b6f5a8e1fcade415b973ae0c89a75263c",
+  "module_sha256": "6a82e8eff7aef7ffd5ecdb48545be2194d5dd3605abf5a8c46dc07620925f94c",
+  "module_audit": {
+    "passed": true,
+    "resolved_imports": 172,
+    "missing_symbols": [],
+    "builtin_irix": [],
+    "relocations": [
+      "R_MIPS_32",
+      "R_MIPS_64",
+      "R_MIPS_HI16",
+      "R_MIPS_HIGHER",
+      "R_MIPS_HIGHEST",
+      "R_MIPS_LO16",
+      "R_MIPS_NONE"
+    ]
+  },
+  "releases": {
+    "6.5.22": {
+      "source_chd": "/var/home/salvogendut/Dev/xiri/.work/native/xiri-ip28-xdm-6.5.22-20261122/netbsd-xiri.chd",
+      "source_chd_sha256": "8004bc4d5a36d2a395678d7c9ae6cc7e11a29b61273da8f833d1908904a4baec",
+      "qualification": {
+        "passed": true,
+        "elapsed_seconds": 384.96,
+        "base_unchanged": true,
+        "firmware_autoboot": true,
+        "graphical_console": true,
+        "directory": ".work/ip28-console-20261122/graphics10-6.5.22",
+        "result_sha256": "b5481cdda5676875c0270ad11486c1ddd20839c2b98bbfac05dfe4e069308ed8",
+        "clean_shutdown": true,
+        "shutdown_prom_samples": 3,
+        "script_sha256": "5ed0d39fb32eb3108cf56c4837b95db9469928527f93494eb3bf4ec6fb710b09",
+        "xdm_script_sha256": "857f6379bc1f75e97c683cccca44c06b0ed93e068e82fe85edfcc3f6824a45bc",
+        "xdm": {
+          "passed": true,
+          "mode": "full",
+          "screenshots": {
+            "xdm-greeter": {
+              "sha256": "eb693b0fc393ff4594ae135f3c204373b9a9f6e3124cf5c5bc1c91bff6558d6f",
+              "size": [
+                1280,
+                1024
+              ],
+              "greeter_dark_pixels": 1790,
+              "greeter_light_pixels": 91098
+            },
+            "xdm-irix": {
+              "sha256": "d86302144b9a342c5b1b20ebf4bb6edea91215f757b3fcb10f3a1c74dfaa6c43",
+              "size": [
+                1280,
+                1024
+              ]
+            },
+            "xdm-native": {
+              "sha256": "d762345888ca0f6eb951050921980e4e059ad88cc62e7b1628fd8b059d2beca5",
+              "size": [
+                1280,
+                1024
+              ]
+            },
+            "xdm-irix-retry": {
+              "sha256": "73e1654c501551e06df739330e8aea866efcf8e823e82dee53ec4bc0e56be802",
+              "size": [
+                1280,
+                1024
+              ]
+            },
+            "xdm-after-logout": {
+              "sha256": "eb693b0fc393ff4594ae135f3c204373b9a9f6e3124cf5c5bc1c91bff6558d6f",
+              "size": [
+                1280,
+                1024
+              ],
+              "greeter_dark_pixels": 1790,
+              "greeter_light_pixels": 91098
+            }
+          },
+          "sessions": [
+            {
+              "user": "xiritest",
+              "proof": [
+                "xiritest",
+                "1234",
+                "/usr/people/xiritest",
+                "/usr/people/xiritest",
+                "1234 1235",
+                "/usr/people/xiritest/.Xauthority"
+              ],
+              "dimensions": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+              "label": "xdm-irix",
+              "identity": "SESSION user=xiritest uid=1234 groups=1234 1235 home=/usr/people/xiritest cwd=/usr/people/xiritest display=127.0.0.1:0 authority=default",
+              "unauthenticated_x_rejected": true,
+              "logout_returned_to_greeter": true
+            },
+            {
+              "user": "netbsdtest",
+              "proof": [
+                "netbsdtest",
+                "1236",
+                "/home/netbsdtest",
+                "/home/netbsdtest"
+              ],
+              "groups": [
+                "netbsdtest",
+                "wheel"
+              ],
+              "dimensions": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+              "wm": "ctwm",
+              "logout_returned_to_greeter": true
+            },
+            {
+              "user": "xiritest",
+              "proof": [
+                "xiritest",
+                "1234",
+                "/usr/people/xiritest",
+                "/usr/people/xiritest",
+                "1234 1235",
+                "/usr/people/xiritest/.Xauthority"
+              ],
+              "dimensions": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+              "label": "xdm-irix-retry",
+              "identity": "SESSION user=xiritest uid=1234 groups=1234 1235 home=/usr/people/xiritest cwd=/usr/people/xiritest display=127.0.0.1:0 authority=default",
+              "unauthenticated_x_rejected": true,
+              "logout_returned_to_greeter": true
+            }
+          ],
+          "boot_services": "xdm is running as pid 1007.\nxiri_famd is running as pid 2284.\nrpcbind is running as pid 687.\ncompat_irix_o32            exec     filesys  -        0       - exec_elf32,compat_netbsd32",
+          "boot_order": [
+            "/etc/rc.d/modules",
+            "/etc/rc.d/wscons",
+            "/etc/rc.d/xiri_devices",
+            "/etc/rc.d/xiri_famd",
+            "/etc/rc.d/xdm"
+          ],
+          "service_pids": [
+            "1007",
+            "2284",
+            "687"
+          ],
+          "greeter": "xwininfo: Window id: 0x34d (the root window) (has no name)\n\n  Root window id: 0x34d (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     2 children:\n     0x600011 \"xconsole\": (\"xconsole\" \"XConsole\")  480x130+798+892  +798+892\n        1 child:\n        0x600012 (has no name): ()  480x130+0+0  +799+893\n           1 child:\n           0x600013 (has no name): ()  14x130+-1+-1  +798+892\n     0x20000b \"xlogin\": (\"xlogin\" \"Xlogin\")  690x304+295+240  +295+240\n        1 child:\n        0x20000c (has no name): ()  690x304+0+0  +297+242\n           1 child:\n           0x20000f (has no name): ()  185x150+491+77  +788+319"
+        },
+        "console": {
+          "passed": true,
+          "keyboard": "(n=0; until test -s /var/tmp/ip28-console-proof; do n=$((n+1)); test  \b$n -lt 15 || exit 1; sleep 1; done) && cat /var/tmp/ip28-console-proof; grep -q  \b'uid=0(root)' /var/tmp/ip28-console-proof; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\nuid=0(root) gid=0(wheel) groups=0(wheel),2(kmem),3(sys),4(tty),5(operator),20(staff),31(guest),34(nvmm)\r\n\r\nXIRI_RC_0\r\nxiri-indy# ",
+          "ddb": "sleep 2; dmesg | grep -E '^(db>|[[:space:]]*1234abcd)' ; dmesg | grep \b -Eq '^(db>[[:space:]]*)?[[:space:]]*1234abcd[[:space:]]*$'; printf '\\nXIRI_RC_% \bs\\n' \"$?\"\r\ndb>         1234abcd\r\ndb> \r\n\r\nXIRI_RC_0\r\nxiri-indy# "
+        },
+        "console_script_sha256": "c16ec60516dd7711da416353cad0335cfff937f6f6635d8ea3d6f7ec54f8bf3b"
+      },
+      "packaged_boot": {
+        "passed": true,
+        "elapsed_seconds": 146.97,
+        "base_unchanged": true,
+        "firmware_autoboot": true,
+        "graphical_console": true,
+        "directory": ".work/ip28-console-20261122/packaged-6.5.22",
+        "result_sha256": "68b0a58c97cfe344541ce19c627a73b734174e266c169c143e2982a8b486dd88",
+        "clean_shutdown": true,
+        "shutdown_prom_samples": 3,
+        "script_sha256": "7be8e098761b75bbee2aaeb3c19514399a8b9a58f0215ec5e65cc7dbb065f91f",
+        "xdm_script_sha256": "857f6379bc1f75e97c683cccca44c06b0ed93e068e82fe85edfcc3f6824a45bc",
+        "xdm": {
+          "passed": true,
+          "mode": "greeter",
+          "screenshots": {
+            "xdm-greeter": {
+              "sha256": "f0437ba65eb3936d3d1dcd177e8685f472afdb8e945e30dfbfbe4838994c007b",
+              "size": [
+                1280,
+                1024
+              ],
+              "greeter_dark_pixels": 1790,
+              "greeter_light_pixels": 91098
+            }
+          },
+          "sessions": [],
+          "boot_services": "xdm is running as pid 2476.\nxiri_famd is running as pid 2293.\nrpcbind is running as pid 665.\ncompat_irix_o32            exec     filesys  -        0       - exec_elf32,compat_netbsd32",
+          "boot_order": [
+            "/etc/rc.d/modules",
+            "/etc/rc.d/wscons",
+            "/etc/rc.d/xiri_devices",
+            "/etc/rc.d/xiri_famd",
+            "/etc/rc.d/xdm"
+          ],
+          "service_pids": [
+            "2476",
+            "2293",
+            "665"
+          ],
+          "greeter": "xwininfo: Window id: 0x34d (the root window) (has no name)\n\n  Root window id: 0x34d (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     2 children:\n     0x600011 \"xconsole\": (\"xconsole\" \"XConsole\")  480x130+798+892  +798+892\n        1 child:\n        0x600012 (has no name): ()  480x130+0+0  +799+893\n           1 child:\n           0x600013 (has no name): ()  14x130+-1+-1  +798+892\n     0x40000b \"xlogin\": (\"xlogin\" \"Xlogin\")  690x304+295+240  +295+240\n        1 child:\n        0x40000c (has no name): ()  690x304+0+0  +297+242\n           1 child:\n           0x40000f (has no name): ()  185x150+491+77  +788+319"
+        },
+        "firmware_seed_matches": true,
+        "prom_commands_issued": false,
+        "test_media_attached": false
+      },
+      "serial_recovery": {
+        "passed": true,
+        "directory": ".work/ip28-console-20261122/repair-xdm-6.5.22",
+        "result_sha256": "0cb9a610a6cb560b8aad64f58c7d27ddc70e7826017961ec3a63280a44d0edda",
+        "elapsed_seconds": 36.83
+      },
+      "screenshots": {
+        "boot": "docs/results/2026-11-22-ip28-console-boot-6.5.22.png",
+        "ddb": "docs/results/2026-11-22-ip28-console-ddb-6.5.22.png",
+        "irix": "docs/results/2026-11-22-ip28-console-irix-6.5.22.png"
+      },
+      "artifact": {
+        "bundle": ".work/native/xiri-ip28-console-6.5.22-20261122",
+        "chd_sha256": "da76a484db1ee3e42c550ed8c54e93f5d0795a674ea57de6a845174464638b29",
+        "chd_bytes": 461588252,
+        "chd_verify_passed": true,
+        "bundle_files_sha256": {
+          "iris.toml": "3f835049a8e282f136e930a3a2bf6a05c60d68ba0514716f3fabe3fa94091708",
+          "run-iris.sh": "368a440062b887c6001270066e9a7b5eba891d158f98e4feb5a784393ed9b368",
+          "README.txt": "06c95a2bfc04625ec115c58c1ee152c657c6d65fdd916a514d8f9073b22d16bf",
+          "nvram.bin": "6878bd814e73ea8a21755e3b2a7393a30b5af772b240d338d607c57845199553",
+          "nveeprom.bin": "e3a65cb0440f5ccdf1b639aea218880c8bded5d96d97e2c16e761424b4c0a566",
+          "boot-console.png": "303189b36bf87956ccd89b8ef83f0e1f605647c7ea9d7aa0ea6fcc45b7a4dde6",
+          "debugger.png": "f59dad4e9e2f2a2f5461c1e55958778ed8fc1e2436fec0de8ab8007f5c2e43a2",
+          "greeter.png": "f0437ba65eb3936d3d1dcd177e8685f472afdb8e945e30dfbfbe4838994c007b"
+        }
+      }
+    },
+    "6.5.30": {
+      "source_chd": "/var/home/salvogendut/Dev/xiri/.work/native/xiri-ip28-xdm-6.5.30-20261122/netbsd-xiri.chd",
+      "source_chd_sha256": "83e49d090a718f5075edb8a204cbe8e171024d73cab47b61026cd8cee8028497",
+      "qualification": {
+        "passed": true,
+        "elapsed_seconds": 394.18,
+        "base_unchanged": true,
+        "firmware_autoboot": true,
+        "graphical_console": true,
+        "directory": ".work/ip28-console-20261122/graphics9-6.5.30",
+        "result_sha256": "c89dc4c390fd93d14ec305b7b280c97bb7d178a7a2667aa549cb98b2142a9615",
+        "clean_shutdown": true,
+        "shutdown_prom_samples": 3,
+        "script_sha256": "5ed0d39fb32eb3108cf56c4837b95db9469928527f93494eb3bf4ec6fb710b09",
+        "xdm_script_sha256": "857f6379bc1f75e97c683cccca44c06b0ed93e068e82fe85edfcc3f6824a45bc",
+        "xdm": {
+          "passed": true,
+          "mode": "full",
+          "screenshots": {
+            "xdm-greeter": {
+              "sha256": "eb693b0fc393ff4594ae135f3c204373b9a9f6e3124cf5c5bc1c91bff6558d6f",
+              "size": [
+                1280,
+                1024
+              ],
+              "greeter_dark_pixels": 1790,
+              "greeter_light_pixels": 91098
+            },
+            "xdm-irix": {
+              "sha256": "f731126957b5028dc96bfa05afc3eb650c20cf2c1cca62f899a2da0c93a580ed",
+              "size": [
+                1280,
+                1024
+              ]
+            },
+            "xdm-native": {
+              "sha256": "97013094524f61684d75b4c089e47cd38b68e2020e32529aa39bbd043f6a8f35",
+              "size": [
+                1280,
+                1024
+              ]
+            },
+            "xdm-irix-retry": {
+              "sha256": "4d4ae31823b9484756bd2bb3fa3f8f879320f8d1290513b9540cc62c74f43ceb",
+              "size": [
+                1280,
+                1024
+              ]
+            },
+            "xdm-after-logout": {
+              "sha256": "eb693b0fc393ff4594ae135f3c204373b9a9f6e3124cf5c5bc1c91bff6558d6f",
+              "size": [
+                1280,
+                1024
+              ],
+              "greeter_dark_pixels": 1790,
+              "greeter_light_pixels": 91098
+            }
+          },
+          "sessions": [
+            {
+              "user": "xiritest",
+              "proof": [
+                "xiritest",
+                "1234",
+                "/usr/people/xiritest",
+                "/usr/people/xiritest",
+                "1234 1235",
+                "/usr/people/xiritest/.Xauthority"
+              ],
+              "dimensions": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+              "label": "xdm-irix",
+              "identity": "SESSION user=xiritest uid=1234 groups=1234 1235 home=/usr/people/xiritest cwd=/usr/people/xiritest display=127.0.0.1:0 authority=default",
+              "unauthenticated_x_rejected": true,
+              "logout_returned_to_greeter": true
+            },
+            {
+              "user": "netbsdtest",
+              "proof": [
+                "netbsdtest",
+                "1236",
+                "/home/netbsdtest",
+                "/home/netbsdtest"
+              ],
+              "groups": [
+                "netbsdtest",
+                "wheel"
+              ],
+              "dimensions": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+              "wm": "ctwm",
+              "logout_returned_to_greeter": true
+            },
+            {
+              "user": "xiritest",
+              "proof": [
+                "xiritest",
+                "1234",
+                "/usr/people/xiritest",
+                "/usr/people/xiritest",
+                "1234 1235",
+                "/usr/people/xiritest/.Xauthority"
+              ],
+              "dimensions": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+              "label": "xdm-irix-retry",
+              "identity": "SESSION user=xiritest uid=1234 groups=1234 1235 home=/usr/people/xiritest cwd=/usr/people/xiritest display=127.0.0.1:0 authority=default",
+              "unauthenticated_x_rejected": true,
+              "logout_returned_to_greeter": true
+            }
+          ],
+          "boot_services": "xdm is running as pid 623.\nxiri_famd is running as pid 2353.\nrpcbind is running as pid 667.\ncompat_irix_o32            exec     filesys  -        0       - exec_elf32,compat_netbsd32",
+          "boot_order": [
+            "/etc/rc.d/modules",
+            "/etc/rc.d/wscons",
+            "/etc/rc.d/xiri_devices",
+            "/etc/rc.d/xiri_famd",
+            "/etc/rc.d/xdm"
+          ],
+          "service_pids": [
+            "623",
+            "2353",
+            "667"
+          ],
+          "greeter": "xwininfo: Window id: 0x34d (the root window) (has no name)\n\n  Root window id: 0x34d (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     2 children:\n     0x800011 \"xconsole\": (\"xconsole\" \"XConsole\")  480x130+798+892  +798+892\n        1 child:\n        0x800012 (has no name): ()  480x130+0+0  +799+893\n           1 child:\n           0x800013 (has no name): ()  14x130+-1+-1  +798+892\n     0x20000b \"xlogin\": (\"xlogin\" \"Xlogin\")  690x304+295+240  +295+240\n        1 child:\n        0x20000c (has no name): ()  690x304+0+0  +297+242\n           1 child:\n           0x20000f (has no name): ()  185x150+491+77  +788+319"
+        },
+        "console": {
+          "passed": true,
+          "keyboard": "(n=0; until test -s /var/tmp/ip28-console-proof; do n=$((n+1)); test  \b$n -lt 15 || exit 1; sleep 1; done) && cat /var/tmp/ip28-console-proof; grep -q  \b'uid=0(root)' /var/tmp/ip28-console-proof; printf '\\nXIRI_RC_%s\\n' \"$?\"\r\nuid=0(root) gid=0(wheel) groups=0(wheel),2(kmem),3(sys),4(tty),5(operator),20(staff),31(guest),34(nvmm)\r\n\r\nXIRI_RC_0\r\nxiri-indy# ",
+          "ddb": "sleep 2; dmesg | grep -E '^(db>|[[:space:]]*1234abcd)' ; dmesg | grep \b -Eq '^(db>[[:space:]]*)?[[:space:]]*1234abcd[[:space:]]*$'; printf '\\nXIRI_RC_% \bs\\n' \"$?\"\r\ndb>         1234abcd\r\ndb> \r\n\r\nXIRI_RC_0\r\nxiri-indy# "
+        },
+        "console_script_sha256": "c16ec60516dd7711da416353cad0335cfff937f6f6635d8ea3d6f7ec54f8bf3b"
+      },
+      "packaged_boot": {
+        "passed": true,
+        "elapsed_seconds": 169.6,
+        "base_unchanged": true,
+        "firmware_autoboot": true,
+        "graphical_console": true,
+        "directory": ".work/ip28-console-20261122/packaged-6.5.30",
+        "result_sha256": "80d0627fdcba29beb5c49d01da77ca8babde84d828af8743499a9a83af4704b5",
+        "clean_shutdown": true,
+        "shutdown_prom_samples": 3,
+        "script_sha256": "7be8e098761b75bbee2aaeb3c19514399a8b9a58f0215ec5e65cc7dbb065f91f",
+        "xdm_script_sha256": "857f6379bc1f75e97c683cccca44c06b0ed93e068e82fe85edfcc3f6824a45bc",
+        "xdm": {
+          "passed": true,
+          "mode": "greeter",
+          "screenshots": {
+            "xdm-greeter": {
+              "sha256": "85c1e32d3199b0b457ace67a6d9dcee540d7de9c420aa8b2c1910cbcdfdcf267",
+              "size": [
+                1280,
+                1024
+              ],
+              "greeter_dark_pixels": 1790,
+              "greeter_light_pixels": 91098
+            }
+          },
+          "sessions": [],
+          "boot_services": "xdm is running as pid 1130.\nxiri_famd is running as pid 2351.\nrpcbind is running as pid 688.\ncompat_irix_o32            exec     filesys  -        0       - exec_elf32,compat_netbsd32",
+          "boot_order": [
+            "/etc/rc.d/modules",
+            "/etc/rc.d/wscons",
+            "/etc/rc.d/xiri_devices",
+            "/etc/rc.d/xiri_famd",
+            "/etc/rc.d/xdm"
+          ],
+          "service_pids": [
+            "1130",
+            "2351",
+            "688"
+          ],
+          "greeter": "xwininfo: Window id: 0x34d (the root window) (has no name)\n\n  Root window id: 0x34d (the root window) (has no name)\n  Parent window id: 0x0 (none)\n     2 children:\n     0x600011 \"xconsole\": (\"xconsole\" \"XConsole\")  480x130+798+892  +798+892\n        1 child:\n        0x600012 (has no name): ()  480x130+0+0  +799+893\n           1 child:\n           0x600013 (has no name): ()  14x130+-1+-1  +798+892\n     0x40000b \"xlogin\": (\"xlogin\" \"Xlogin\")  690x304+295+240  +295+240\n        1 child:\n        0x40000c (has no name): ()  690x304+0+0  +297+242\n           1 child:\n           0x40000f (has no name): ()  185x150+491+77  +788+319"
+        },
+        "firmware_seed_matches": true,
+        "prom_commands_issued": false,
+        "test_media_attached": false
+      },
+      "serial_recovery": {
+        "passed": true,
+        "directory": ".work/ip28-console-20261122/repair-xdm-6.5.30",
+        "result_sha256": "5c269d6052f0f295fb27d632ba19d801709de556796db9591884cdfea034d1ca",
+        "elapsed_seconds": 37.61
+      },
+      "screenshots": {
+        "boot": "docs/results/2026-11-22-ip28-console-boot-6.5.30.png",
+        "ddb": "docs/results/2026-11-22-ip28-console-ddb-6.5.30.png",
+        "irix": "docs/results/2026-11-22-ip28-console-irix-6.5.30.png"
+      },
+      "artifact": {
+        "bundle": ".work/native/xiri-ip28-console-6.5.30-20261122",
+        "chd_sha256": "7b05f003891704652cde9d237d45999110ae24a21cc4e320fd723dd6cdfa598b",
+        "chd_bytes": 488493057,
+        "chd_verify_passed": true,
+        "bundle_files_sha256": {
+          "iris.toml": "a407d721967847f3953a80c55c63e42ee1b8d7fadf3c3eab0ef15ee816e204b3",
+          "run-iris.sh": "368a440062b887c6001270066e9a7b5eba891d158f98e4feb5a784393ed9b368",
+          "README.txt": "8d6c4946a1611e49f2cd811e753496a7564df045d5202e6107eebfea08ef9a18",
+          "nvram.bin": "b9496bf25991fff61f4ace2d048842875dce7d57875b1d0a2abdad546aaa5d36",
+          "nveeprom.bin": "e3a65cb0440f5ccdf1b639aea218880c8bded5d96d97e2c16e761424b4c0a566",
+          "boot-console.png": "7c4d68e9d9ca6df85c5e64190139167efa983228894c2c1a286c877c3cbe4a83",
+          "debugger.png": "e63464263c702dd36cdbe28c8540aea7603400a70efcb3cb0cecfadccdd62774",
+          "greeter.png": "85c1e32d3199b0b457ace67a6d9dcee540d7de9c420aa8b2c1910cbcdfdcf267"
+        }
+      }
+    }
+  },
+  "source_files": {
+    "lab/ip28-kernel/check.py": "7be8e098761b75bbee2aaeb3c19514399a8b9a58f0215ec5e65cc7dbb065f91f",
+    "lab/ip28-kernel/console.py": "c16ec60516dd7711da416353cad0335cfff937f6f6635d8ea3d6f7ec54f8bf3b",
+    "lab/ip28-kernel/xdm.py": "857f6379bc1f75e97c683cccca44c06b0ed93e068e82fe85edfcc3f6824a45bc",
+    "lab/ip28-kernel/prepare-console.sh": "8c925002daf27798601d6391032089d43ef3beb00a5d1fbdcadc30bc807f7092",
+    "lab/irix-4dwm/type-ready.c": "ee4c29f94291ee8b8346bc399851d9d52ff60eb0690461cdd6660c96c96220ab"
+  },
+  "limits": [
+    "Emulated IP28/R10000, 1 GiB, High IMPACT at 1280x1024 only",
+    "DDB evaluation/continue with Xorg stopped; no qualification of arbitrary debugger entry during Xorg rendering",
+    "Generic genfb callback reviewed at source level; no runtime coverage on other ports",
+    "Xorg uses RAM wsfb and programmed uploads; 2D acceleration and decorative frame remain next work",
+    "Physical cache/DMA, other board variants/timings and 3D not qualified",
+    "Native logout ends ctwm from its terminal; no new Quit-menu or broad application qualification",
+    "Inherited savecore namelist warning: /netbsd differs from booted /netbsd.ip28"
+  ],
+  "development_interruptions": [
+    {
+      "run": ".work/ip28-console-20261122/graphics9-6.5.22",
+      "observation": "IRIS soft power-off during login; exit 0; full console and DDB checks had passed",
+      "followup": "One bounded repeat passed the full session sequence; no emulator fix claimed"
+    }
+  ],
+  "kernel_artifact": {
+    "bundle": ".work/native/netbsd-ip28-console-20261122",
+    "files_sha256": {
+      "netbsd": "5b64583bef7f2d875f52a902037fba5b6f5a8e1fcade415b973ae0c89a75263c",
+      "netbsd.gdb": "7d630ddfaf3c3f751cc73ca0d1b22df5853a3a6ae4083a918e9b9f33d5ed4a48",
+      "netbsd.map": "d2c0b19ccb62c789edb2cc4530c04d9ba6aaab86432cd6899345aa7f8bd23a8c",
+      "compat_irix_o32.kmod": "6a82e8eff7aef7ffd5ecdb48545be2194d5dd3605abf5a8c46dc07620925f94c",
+      "module-audit.json": "6e77f04ad2e122d298a7b1c6c2e6759e2f8025fd1c65cf92ba0b3d6e72d789dc",
+      "ip28boot": "8ca708961921510268bb0cbc718aed4e4e112ebdb7f558b764c6c2a0b1e220da",
+      "XIRI_IP28": "1ad544658a5e61dd743f135932a7c893e2f9be98d72d41cf9589052bcf0714a1",
+      "GENERIC64_IP28": "b14faaf538df500d0140e876eee49980829420ff22317fc41b20957e26014238"
+    }
+  },
+  "passed": true,
+  "cleanup": {
+    "removed_allocated_bytes": 10353455104,
+    "retained": "Both new standalone CHDs, matching kernel/module/debug symbols, previous qualified images, compact logs/results/source snapshots, selected PNGs",
+    "measurement": "Allocated sizes from du; filesystem compression/shared extents can affect free-space change",
+    "test_instances_stopped": true,
+    "build_container_stopped": true,
+    "temporary_topic_branch_removed": true,
+    "detail_record": ".work/ip28-console-20261122/cleanup.json"
+  }
+}

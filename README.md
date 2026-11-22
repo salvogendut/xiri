@@ -217,6 +217,9 @@ bootable CHDs and [manual instructions](lab/ip28-kernel/README.md#manual-impact-
 The [IP28 xdm checkpoint](docs/results/2026-11-22-ip28-xdm.md) adds normal
 boot into a full-screen greeter, authenticated IRIX and native ctwm sessions,
 and separate automatic-boot images for both release lines.
+The [IP28 graphical-console checkpoint](docs/results/2026-11-22-ip28-console.md)
+adds visible boot text and a native debugger console before Xorg starts,
+with separate graphical-console images and serial recovery instructions.
 
 ## Run the current image
 

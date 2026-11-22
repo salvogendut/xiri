@@ -157,7 +157,11 @@ Before proposing inclusion:
   core hook. Hardware initialization derives from the permissively licensed
   OpenBSD driver, with its notices retained. Initial coverage is emulated
   High IMPACT at 1280×1024; real hardware, other display modes/board variants,
-  early graphical console, DMA and 3D need their own qualification.
+  DMA and 3D need their own qualification. The subsequent
+  [graphical-console checkpoint](results/2026-11-22-ip28-console.md) adds
+  early/polled IMPACT text and one optional `genfb_ops.genfb_init_screen`
+  callback in `sys/dev/wsfb/genfb.c` and `genfbvar.h`. Review that generic display
+  interface with the native IMPACT patch series, separately from compat_irix.
 - **Newport Xorg acceleration/text fixes:**
   `xsrc/external/mit/xf86-video-newport/dist/src/newport_accel.c`.
   Our [texture patch](../lab/newport-xaa/texture-coordinates.patch) and
