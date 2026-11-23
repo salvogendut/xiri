@@ -13,6 +13,7 @@ IP28 = ROOT/'lab/ip28-kernel'
 def prepare(out):
     media = out/'xorg.iso'
     files = [('xorg.sh', Path(__file__).with_name('xorg.sh')),
+             ('frame.sh', Path(__file__).with_name('frame.sh')),
              ('xorg.conf', IP28/'xorg.conf'), ('framebuffer.c', IP28/'framebuffer.c'),
              ('probe.c', ROOT/'lab/indy-netbsd/x11/probe.c')]
     subprocess.run(['genisoimage', '-quiet', '-R', '-o', media, '-graft-points',

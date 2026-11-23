@@ -2,6 +2,9 @@
 
 ## Manual testing
 
+For the current images with the framed boot console, see the
+[Octane launch commands and screenshots](2026-11-23-octane-frame.md).
+
 The two local bundles contain separate NetBSD disks with the corresponding
 IRIX desktop, an Octane flash file and saved NVRAM. From the Xiri checkout,
 run the launcher for the desired release.

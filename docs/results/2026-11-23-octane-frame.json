@@ -1,0 +1,280 @@
+{
+  "netbsd": "0e208f614c3b735ba296974defd8c641faabdafd",
+  "iris": "08e53ba7e183cbfd3b2e7e6d25ce65e2d497323f",
+  "iris_upstream": "a05289efc808ee1320195481f6cab4cfee16bef9",
+  "kernel_sha256": "91dcb1b1f18d509d2adeccac506a07aada7e271e61c578b01b598b9fcf6fa3f9",
+  "module_sha256": "76fb780ab2639b2f43bdba8162a890a73b5e6384ab72a36e84d59572197b44a3",
+  "emulator_sha256": "ac761ad92d140b029e18c498d5c275662433c5c255c0fd08a8f240ae979ae0f2",
+  "loader_sha256": "8a9b881a6fb9100261c45c69aa060dd45ef629227713bbf6a25e4fe2b8518115",
+  "artwork_sha256": "ca2c66527060e53d5e2ce09e613b7283ac224abafc15e4747ba24272e1ffa610",
+  "releases": [
+    {
+      "release": "6.5.22",
+      "board": "solidimpact",
+      "source_chd_sha256": "2cd3c3d3e75a18bb108025c3da0e7adf0077922e0d4f79a2b000da23ccac8972",
+      "chd_sha256": "cfd4f44b0b3b137d497e926f47e46e73788755c5bcea5bb0159c2048e93953d4",
+      "flash_sha256": "9cc810faa44fb96050108fe23d8d1a2c03e76138310535e63076c5353fdf9431",
+      "nvram_sha256": "14d0d3d9bce37c7a1747297024699832a53d83636043286316f461a0196e7561",
+      "serial_sha256": "28ad5e609c7cee2197b9b8c2ac0ec0ff5432ddbacbffbe6bd7b072f593218dd3",
+      "kernel_sha256": "91dcb1b1f18d509d2adeccac506a07aada7e271e61c578b01b598b9fcf6fa3f9",
+      "module_sha256": "76fb780ab2639b2f43bdba8162a890a73b5e6384ab72a36e84d59572197b44a3",
+      "chdman_verified": true,
+      "cold_disk_boot": true,
+      "clean_halt": true,
+      "emulator_stopped": true,
+      "securelevel": 1,
+      "module": "compat_irix_o32            exec     filesys  -        0       - exec_elf32,compat_netbsd32",
+      "sessions": [
+        {
+          "user": "xiritest",
+          "uid": 1234,
+          "home": "/usr/people/xiritest",
+          "wm": "4Dwm",
+          "proof": [
+            "xiritest",
+            "1234",
+            "/usr/people/xiritest",
+            "/usr/people/xiritest",
+            "xiritest xiritest-extra",
+            "2352 /emul/irix/usr/bin/X11/4Dwm -launch",
+            "  dimensions:    1280x1024 pixels (339x271 millimeters)"
+          ],
+          "logout_returned_to_greeter": true
+        },
+        {
+          "user": "netbsdtest",
+          "uid": 1236,
+          "home": "/home/netbsdtest",
+          "wm": "ctwm",
+          "proof": [
+            "netbsdtest",
+            "1236",
+            "/home/netbsdtest",
+            "/home/netbsdtest",
+            "netbsdtest wheel",
+            "2346 /usr/X11R7/bin/ctwm -W",
+            "  dimensions:    1280x1024 pixels (339x271 millimeters)"
+          ],
+          "logout_returned_to_greeter": true
+        }
+      ],
+      "screenshots": {
+        "xdm-greeter": {
+          "size": [
+            1280,
+            1024
+          ],
+          "sha256": "eb693b0fc393ff4594ae135f3c204373b9a9f6e3124cf5c5bc1c91bff6558d6f"
+        },
+        "xdm-irix": {
+          "size": [
+            1280,
+            1024
+          ],
+          "sha256": "d82f6c373b3b7277a88c9279c9751f89709b64528aea6d2efcb92f1f14c652c6"
+        },
+        "xdm-native": {
+          "size": [
+            1280,
+            1024
+          ],
+          "sha256": "9853aaab69a75ee843ce0e006ce313428c34e00090f2d4dc8f05349b5bd47193"
+        },
+        "xdm-after-logout": {
+          "size": [
+            1280,
+            1024
+          ],
+          "sha256": "eb693b0fc393ff4594ae135f3c204373b9a9f6e3124cf5c5bc1c91bff6558d6f"
+        }
+      },
+      "boot_frame": {
+        "image": "2026-11-23-octane-frame-6.5.22.png",
+        "outside_pixels": 837632,
+        "outside_mismatches": 0,
+        "changed_panel_pixels": 60240,
+        "passed": true,
+        "visible_text": [
+          "root on sd0a",
+          "Starting root file system check"
+        ],
+        "sha256": "9edfedeb564ba8ace03e1d5f33d3cf6d653105bf97b98f8f967e261b41b66ed2"
+      },
+      "restored_console": {
+        "image": "after-xorg.png",
+        "outside_pixels": 837632,
+        "outside_mismatches": 0,
+        "changed_panel_pixels": 21629,
+        "passed": true,
+        "visible_text": [
+          "Octane console restored"
+        ]
+      },
+      "scroll": {
+        "marker_moved": true,
+        "captures": [
+          {
+            "image": "frame-before-scroll.png",
+            "outside_pixels": 837632,
+            "outside_mismatches": 0,
+            "changed_panel_pixels": 560,
+            "passed": true
+          },
+          {
+            "image": "frame-after-scroll.png",
+            "outside_pixels": 837632,
+            "outside_mismatches": 0,
+            "changed_panel_pixels": 560,
+            "passed": true
+          }
+        ],
+        "passed": true
+      },
+      "xorg_scanout": {
+        "passed": true,
+        "size": [
+          1280,
+          1024
+        ],
+        "checked_pixels": 8944,
+        "mismatches": 0,
+        "examples": [],
+        "png_sha256": "3f7e287ffbceb0d88b4a04205ed5eb4c408d742475c20deb3bcd599db8b816e6"
+      }
+    },
+    {
+      "release": "6.5.30",
+      "board": "highimpact",
+      "source_chd_sha256": "b5aaa4002f1ec2aa5c59b0c344533d7af3769d5b55062d039314acc06b4cf172",
+      "chd_sha256": "73e37cf3bb784864f29d89dff4369120ad9e9a3028e48e409fd10238967ea50f",
+      "flash_sha256": "9cc810faa44fb96050108fe23d8d1a2c03e76138310535e63076c5353fdf9431",
+      "nvram_sha256": "6d7879624a1df4ba92f399a5aeb01843a71178f832518045e5cf9ff288771edb",
+      "serial_sha256": "37cd2dde6f46bc95a50ed4318baa21d926c07448f2211ffff00249fa3cbf17da",
+      "kernel_sha256": "91dcb1b1f18d509d2adeccac506a07aada7e271e61c578b01b598b9fcf6fa3f9",
+      "module_sha256": "76fb780ab2639b2f43bdba8162a890a73b5e6384ab72a36e84d59572197b44a3",
+      "chdman_verified": true,
+      "cold_disk_boot": true,
+      "clean_halt": true,
+      "emulator_stopped": true,
+      "securelevel": 1,
+      "module": "compat_irix_o32            exec     filesys  -        0       - exec_elf32,compat_netbsd32",
+      "sessions": [
+        {
+          "user": "xiritest",
+          "uid": 1234,
+          "home": "/usr/people/xiritest",
+          "wm": "4Dwm",
+          "proof": [
+            "xiritest",
+            "1234",
+            "/usr/people/xiritest",
+            "/usr/people/xiritest",
+            "xiritest xiritest-extra",
+            "2922 /emul/irix/usr/bin/X11/4Dwm -launch",
+            "  dimensions:    1280x1024 pixels (339x271 millimeters)"
+          ],
+          "logout_returned_to_greeter": true
+        },
+        {
+          "user": "netbsdtest",
+          "uid": 1236,
+          "home": "/home/netbsdtest",
+          "wm": "ctwm",
+          "proof": [
+            "netbsdtest",
+            "1236",
+            "/home/netbsdtest",
+            "/home/netbsdtest",
+            "netbsdtest wheel",
+            "2109 /usr/X11R7/bin/ctwm -W",
+            "  dimensions:    1280x1024 pixels (339x271 millimeters)"
+          ],
+          "logout_returned_to_greeter": true
+        }
+      ],
+      "screenshots": {
+        "xdm-greeter": {
+          "size": [
+            1280,
+            1024
+          ],
+          "sha256": "eb693b0fc393ff4594ae135f3c204373b9a9f6e3124cf5c5bc1c91bff6558d6f"
+        },
+        "xdm-irix": {
+          "size": [
+            1280,
+            1024
+          ],
+          "sha256": "7872db6fc2751b6219d2b7ea7e81a0cc1d2593197a1fb58411ab8f0a0d6cc988"
+        },
+        "xdm-native": {
+          "size": [
+            1280,
+            1024
+          ],
+          "sha256": "50345a05e9bfd8b5953ddfa9f81a514d9410dc0a975618dc47759259bb6dbe82"
+        },
+        "xdm-after-logout": {
+          "size": [
+            1280,
+            1024
+          ],
+          "sha256": "eb693b0fc393ff4594ae135f3c204373b9a9f6e3124cf5c5bc1c91bff6558d6f"
+        }
+      },
+      "boot_frame": {
+        "image": "2026-11-23-octane-frame-6.5.30.png",
+        "outside_pixels": 837632,
+        "outside_mismatches": 0,
+        "changed_panel_pixels": 59522,
+        "passed": true,
+        "visible_text": [
+          "root on sd0a",
+          "Starting root file system check"
+        ],
+        "sha256": "ef38e887a246db88d6cc91b7776b2d2b95d4fe06deba9172648031aeafd47889"
+      },
+      "restored_console": {
+        "image": "after-xorg.png",
+        "outside_pixels": 837632,
+        "outside_mismatches": 0,
+        "changed_panel_pixels": 21629,
+        "passed": true,
+        "visible_text": [
+          "Octane console restored"
+        ]
+      },
+      "scroll": {
+        "marker_moved": true,
+        "captures": [
+          {
+            "image": "frame-before-scroll.png",
+            "outside_pixels": 837632,
+            "outside_mismatches": 0,
+            "changed_panel_pixels": 560,
+            "passed": true
+          },
+          {
+            "image": "frame-after-scroll.png",
+            "outside_pixels": 837632,
+            "outside_mismatches": 0,
+            "changed_panel_pixels": 560,
+            "passed": true
+          }
+        ],
+        "passed": true
+      },
+      "xorg_scanout": {
+        "passed": true,
+        "size": [
+          1280,
+          1024
+        ],
+        "checked_pixels": 8944,
+        "mismatches": 0,
+        "examples": [],
+        "png_sha256": "3f7e287ffbceb0d88b4a04205ed5eb4c408d742475c20deb3bcd599db8b816e6"
+      }
+    }
+  ]
+}

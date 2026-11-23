@@ -8,7 +8,7 @@ import signal
 import subprocess
 from types import SimpleNamespace
 
-from wsconsole import load_probe, sha256
+from wsconsole import framed_capture, load_probe, sha256
 
 from xdm_login import qualify
 
@@ -30,9 +30,13 @@ def main():
     parser.add_argument('--board', choices=('solidimpact', 'highimpact'), required=True)
     parser.add_argument('--measure-redraw', action='store_true',
                         help='time visible 4Dwm window raises on a qualification boot')
+    parser.add_argument('--frame-netbsd', type=Path, metavar='NETBSD_SRC',
+                        help='verify live boot text against the original Indy artwork')
     args = parser.parse_args()
     if args.measure_redraw and args.mode != 'qualify':
         parser.error('--measure-redraw requires qualify')
+    if args.frame_netbsd and args.mode != 'qualify':
+        parser.error('--frame-netbsd requires qualify')
     out = args.output.resolve()
     out.mkdir(parents=True, exist_ok=False)
     paths = [args.disk, args.kernel, args.module, args.loader]
@@ -101,6 +105,11 @@ overlay = true
             lab.wait('Bootstrap, Revision', 150)
             lab.wait(r'file /netbsd\.ip30', 150)
             lab.wait(r'NetBSD [^\n]+\(XIRI_IP30_DESKTOP\)', 150)
+            if args.frame_netbsd:
+                lab.wait('Starting root file system check', 180)
+                result['boot_frame'] = framed_capture(
+                    lab, probe.CI, out, args.frame_netbsd, 'boot-frame',
+                    ['root on sd0a', 'Starting root file system check'])
             result['xdm'] = qualify(lab, out, measure_redraw=args.measure_redraw)
         lab.wait('unmounting done', 150)
         lab.wait(r'Option\?', 90)

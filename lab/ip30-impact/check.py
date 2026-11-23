@@ -39,12 +39,16 @@ def main():
     mode = parser.add_mutually_exclusive_group()
     mode.add_argument('--wsdisplay', action='store_true', help='verify kernel and shell text on wsdisplay')
     mode.add_argument('--xorg', action='store_true', help='check IOC3 input and full-screen wsfb')
+    parser.add_argument('--check-frame', action='store_true',
+                        help='check restored console artwork and scrolling after --xorg')
     mode.add_argument('--desktop', type=Path, metavar='MODULE',
                       help='qualify the IRIX module and 4Dwm with this matching kmod')
     parser.add_argument('--vendor-asa', type=Path, help='local IRIX asa fixture for --desktop')
     mode.add_argument('--rectangle', action='store_true',
                       help='capture the PIO test kernel scanout before shutdown')
     args = parser.parse_args()
+    if args.check_frame and not args.xorg:
+        parser.error('--check-frame requires --xorg')
     capture = args.rectangle and args.board != 'none'
     if capture:
         from scanout import check as check_scanout

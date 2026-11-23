@@ -43,6 +43,10 @@ def check_scroll(shell, capture, reference):
     before = capture("frame-before-scroll")
     shell(r"printf '\n' > /dev/ttyE0")
     after = capture("frame-after-scroll")
+    return check_scroll_captures(reference, before, after)
+
+
+def check_scroll_captures(reference, before, after):
     left, top, right, _ = PANEL
     row1 = (left, top, right, top + 16)
     row2 = (left, top + 16, right, top + 32)
