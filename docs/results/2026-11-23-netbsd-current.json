@@ -1,0 +1,185 @@
+{
+  "netbsd": {
+    "previous_xiri": "298f35fa454b20f0529af8940b390610e0936700",
+    "fork_trunk": "030cc2c5e48cb11e69adc43d59052f486b78d5d2",
+    "fork_trunk_merge": "557d64ae335fd722238a8cbf4248f9f10f184c20",
+    "upstream_trunk": "ceb0f3e0badaaebc3de8b8525e45adec0e30ae28",
+    "xiri": "c096ddb347d6babc60e611de433a3ba016b103ec",
+    "kernel_release": "11.99.11"
+  },
+  "iris": {
+    "upstream_main": "a05289efc808ee1320195481f6cab4cfee16bef9",
+    "xiri": "08e53ba7e183cbfd3b2e7e6d25ce65e2d497323f",
+    "indy_and_indigo2": "0bc52567a87349a5f521c702f9d8dec1dc0f79c6"
+  },
+  "build": {
+    "architecture": "sgimips/mips64eb",
+    "toolchain": "GCC 14.4.0",
+    "module_sha256": "44ce8e5aafd5b7bf1e20ee37b0ab71fcfd964067d81b288fbc6d2bd4310583b8",
+    "kernel_sha256": {
+      "XIRI_IP30_DESKTOP": "a4d4c6063bdfff458c7309a40a5141d6827e11a5e5c0d65619de2b3b78d23f76",
+      "XIRI_IRIX_MODULE": "6a03b86ae641ef1fc1bef7c8e999c1a9f349580ae405c85c0da30451fb7c58a1",
+      "XIRI_IP28": "a6f483d81fa83e806c23cc8ae137a3876c01d1b5c08d1eb6eed90acdf982bbad",
+      "XIRI_IP32_DESKTOP": "4267509bfd389cd0f9d3e9b1729a01a0f8ca4efd8297eeb47d3778c50c1c423e"
+    },
+    "elf32_boot_sha256": {
+      "XIRI_IRIX_MODULE": "a1367bb88f95edaf7bf84fe466636b1e4b129ad12f30c7d787588d88b8f21c0c",
+      "XIRI_IP32_DESKTOP": "2db121e50a3d173ba77bbf99d81889da5e467b8d8cd4d46417554dd10d21bf33"
+    },
+    "resolved_module_imports_per_kernel": 172
+  },
+  "host_tests": {
+    "xiri": 83,
+    "netbsd_platforms": 17
+  },
+  "releases": {
+    "6.5.22": {
+      "indy": {
+        "passed": true,
+        "machine": "indy-r4400",
+        "disk_sha256": "d596318f1f84c6628b6e46e58b8e7669349b8db504bde8c2b3ff7cc11c4cb7fe",
+        "disk_readback_sha256": "943c7be2c8b534a84b628cd77d841f638af8884b5a587beb02b1932b70a0ac98",
+        "ethernet_echo_replies": 3,
+        "irix_shell": true,
+        "clean_halt": true,
+        "emulator_exit_code": 0,
+        "base_unchanged": true
+      },
+      "indigo2": {
+        "passed": true,
+        "machine": "ip28",
+        "disk_sha256": "5946044ffcac961653648e52f33a040690b43f68879ef020209f44dc060f442f",
+        "disk_readback_sha256": "943c7be2c8b534a84b628cd77d841f638af8884b5a587beb02b1932b70a0ac98",
+        "ethernet_echo_replies": 3,
+        "irix_shell": true,
+        "clean_halt": true,
+        "emulator_exit_code": 0,
+        "base_unchanged": true
+      },
+      "octane": {
+        "passed": true,
+        "board": "solidimpact",
+        "disk_sha256": "c45156e4c1d252a8b31a91d9337467c1325153907ed78c73b98c1d275f0e104c",
+        "desktop": {
+          "module_lifecycle": true,
+          "wm": "4Dwm",
+          "clients": [
+            "Toolchest",
+            "Icon Catalog",
+            "winterm"
+          ],
+          "uid": 1234,
+          "home": "/usr/people/xiritest",
+          "size": [
+            1280,
+            1024
+          ],
+          "png_sha256": "aa2c8e3bc24f3aa6ddf6f358e6dad3f5ae8d992863b20898022a818a4992000a",
+          "logout": true
+        },
+        "clean_shutdown": true,
+        "emulator_stopped": true,
+        "originals_unchanged": true
+      },
+      "o2": {
+        "passed": true,
+        "disk_sha256": "ff12d95379d272bec0790d626f61d42e8ba65868e95b1575b783f98b266b5f83",
+        "securelevel": 1,
+        "irix_shell": true,
+        "png_sha256": "14c3f2b1e08501b4f2622200b8f7176094990827c3558c639fcc65f98c851236",
+        "cold_root_clean": true,
+        "modstat": "compat_irix_o32            exec     filesys  -        0       - exec_elf32,compat_netbsd32",
+        "display": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+        "desktop": "4Dwm with Icon Catalog",
+        "logout": true,
+        "boots": [
+          {
+            "phase": "install",
+            "halted": true,
+            "stopped": true
+          },
+          {
+            "phase": "cold",
+            "halted": true,
+            "stopped": true
+          }
+        ],
+        "inputs_unchanged": true
+      }
+    },
+    "6.5.30": {
+      "indy": {
+        "passed": true,
+        "machine": "indy-r5000",
+        "disk_sha256": "b1bf09e4281d9666359b40c9ded755a07675bdd9fb38dbe0843740d44e38b6c7",
+        "disk_readback_sha256": "943c7be2c8b534a84b628cd77d841f638af8884b5a587beb02b1932b70a0ac98",
+        "ethernet_echo_replies": 3,
+        "irix_shell": true,
+        "clean_halt": true,
+        "emulator_exit_code": 0,
+        "base_unchanged": true
+      },
+      "indigo2": {
+        "passed": true,
+        "machine": "ip28",
+        "disk_sha256": "88d851b62bb410d3acff64938352b1dbe3ccd2bd338934f52c3c694c3c96e8f9",
+        "disk_readback_sha256": "943c7be2c8b534a84b628cd77d841f638af8884b5a587beb02b1932b70a0ac98",
+        "ethernet_echo_replies": 3,
+        "irix_shell": true,
+        "clean_halt": true,
+        "emulator_exit_code": 0,
+        "base_unchanged": true
+      },
+      "octane": {
+        "passed": true,
+        "board": "highimpact",
+        "disk_sha256": "187a516e9f3d2b29236fcd53d95467415e18fdd6ae2a90d1c407ba96f0af9e58",
+        "desktop": {
+          "module_lifecycle": true,
+          "wm": "4Dwm",
+          "clients": [
+            "Toolchest",
+            "Icon Catalog",
+            "winterm"
+          ],
+          "uid": 1234,
+          "home": "/usr/people/xiritest",
+          "size": [
+            1280,
+            1024
+          ],
+          "png_sha256": "697184f874f7d6162d11a2649666cf936adea195596017fd9ffab06fe18506e8",
+          "logout": true
+        },
+        "clean_shutdown": true,
+        "emulator_stopped": true,
+        "originals_unchanged": true
+      },
+      "o2": {
+        "passed": true,
+        "disk_sha256": "a87130f13daf76f53452b212af87490c17f36f028b0a8b3d96c4910630d59d51",
+        "securelevel": 1,
+        "irix_shell": true,
+        "png_sha256": "4abcb5337ed15611b54b50fae5753d91a176232609436e0a2c420521e839683f",
+        "cold_root_clean": true,
+        "modstat": "compat_irix_o32            exec     filesys  -        0       - exec_elf32,compat_netbsd32",
+        "display": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+        "desktop": "4Dwm with Icon Catalog",
+        "logout": true,
+        "boots": [
+          {
+            "phase": "install",
+            "halted": true,
+            "stopped": true
+          },
+          {
+            "phase": "cold",
+            "halted": true,
+            "stopped": true
+          }
+        ],
+        "inputs_unchanged": true
+      }
+    }
+  }
+}

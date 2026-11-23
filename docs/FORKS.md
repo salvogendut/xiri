@@ -49,6 +49,15 @@ Use separate build output paths for a new source tree or architecture, and
 keep kernel builds sequential with at most two jobs. Branch consolidation does
 not repin qualified kernels, emulator binaries, runtime resources or guest disks.
 
+## NetBSD-current integration
+
+On November 23 the NetBSD `xiri` branch merged the fork's `origin/trunk`
+at `030cc2c5e48`, followed by official NetBSD `upstream/trunk` at
+`ceb0f3e0bad`. The integrated kernel is **11.99.11**. Build the kernel and
+`compat_irix_o32.kmod` together. When updating a guest from 11.99.9, stage
+the new module in `/stand/sgimips/11.99.11/modules/compat_irix_o32/`
+before booting the new kernel. [Builds and guest checks](results/2026-11-23-netbsd-current.md)
+
 ## Octane integration
 
 NetBSD `xiri` merges the Octane topic at `58fa1421606` and carries the
