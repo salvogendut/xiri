@@ -672,6 +672,7 @@ Native IOC3 Ethernet, HQ4 acceleration and physical Octane validation remain ope
 - [ ] Extend IP28 qualification to physical cache/DMA behavior and sustained I/O; other IMPACT variants, display timings and 3D remain separate work.
 - [x] Cold-boot the emulated O2/R10000 from SCSI and log into 4Dwm and ctwm through full-screen xdm on both release lines. [O2 boot and graphics results](results/2026-11-23-o2-r10000-boot.md)
 - [x] Restore readable xdm prompts and typed usernames on the accelerated O2 display. [O2 greeter and release images](results/2026-11-23-o2-greeter.md)
+- [x] Show NetBSD boot messages in the Indy frame on the emulated O2 and restore its scrolling console after Xorg exits on both release lines. [O2 console and launchers](results/2026-11-23-o2-frame.md)
 - [ ] Qualify sustained O2 storage writes, cache/DMA, networking and physical hardware.
 - [x] Map Octane board support for the emulated configuration, including HEART, Bridge, IOC3 and both QLogic controllers.
 - [x] Boot emulated Octane through native memory, HEART interrupts, Bridge and QLogic SCSI to a NetBSD shell. Physical hardware and IOC3 Ethernet remain open.

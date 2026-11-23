@@ -46,13 +46,17 @@ def screen_lines(path, font):
             for start in range(0, len(bitmap), 16 * stride)]
 
 
-def capture(lab, ci, path, font, expected, *, reference=None, marker_row=None):
-    deadline = time.monotonic() + 20
+def capture(lab, ci, path, font, expected, *, reference=None, marker_row=None, timeout=20):
+    deadline = time.monotonic() + timeout
     while time.monotonic() < deadline:
         reply = subprocess.run([ci, '--json', '--socket', lab.socket_path,
                                 'screenshot', path], capture_output=True, text=True,
                                check=True, timeout=10)
         if json.loads(reply.stdout).get('fresh') is True:
+            with Image.open(path) as image:
+                if image.size != console_frame.DISPLAY:
+                    time.sleep(.15)
+                    continue
             lines = screen_lines(path, font)
             if (all(any(s in line for line in lines) for s in expected)
                     and (marker_row is None or expected[0] in lines[marker_row])

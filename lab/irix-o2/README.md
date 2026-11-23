@@ -1,7 +1,7 @@
 # O2/R10000 qualification fixture
 
 The emulated O2 boots from its own SCSI disk on both the 6.5.22 and 6.5.30
-Xiri lines with the R10000 JIT. [Current launchers and greeter build](../../docs/results/2026-11-23-o2-greeter.md) · [November 23 disk boot check](../../docs/results/2026-11-23-o2-r10000-boot.md)
+Xiri lines with the R10000 JIT. [Current launchers and framed console](../../docs/results/2026-11-23-o2-frame.md) · [Greeter build](../../docs/results/2026-11-23-o2-greeter.md) · [November 23 disk boot check](../../docs/results/2026-11-23-o2-r10000-boot.md)
 
 The original November 14 run stopped during AIC-7880 attachment. On
 November 15 the IRIS fix for the wide MACE PCI address window let the same
@@ -13,7 +13,7 @@ native userland/X sets are NetBSD 11.0 o32. `xorg.conf` selects the stock
 `crime` driver at 1280×1024. O2 requires `ip3xboot` in the SGI volume header,
 `mec0` Ethernet and `ttyC0` for the first serial port.
 
-The final November 23 disks use the newer `compat_irix_o32.kmod` from
+The November 23 greeter disks use the newer `compat_irix_o32.kmod` from
 `.work/octane-frame/qualified/` with the retained IP32 kernel. The original
 O2 module below predates the 6.5.30 n32 interpreter fix.
 

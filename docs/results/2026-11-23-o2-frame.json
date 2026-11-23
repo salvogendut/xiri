@@ -1,0 +1,179 @@
+{
+  "machine": "O2 IP32, R10000, 256 MiB, CRIME/GBE",
+  "netbsd": "298f35fa454b20f0529af8940b390610e0936700",
+  "iris": "08e53ba7e183cbfd3b2e7e6d25ce65e2d497323f",
+  "iris_upstream": "a05289efc808ee1320195481f6cab4cfee16bef9",
+  "kernel_sha256": "2df0fe8ce4517aabb89b36ec5bab815d3b10d1ab50704ddbe3c1de5e0ab1a7f9",
+  "boot_wrapper_sha256": "d4945695a6cb16f885bfceb513c973a25d3469796eec89e018b34c83e3f8ce2c",
+  "module_sha256": "76fb780ab2639b2f43bdba8162a890a73b5e6384ab72a36e84d59572197b44a3",
+  "releases": [
+    {
+      "release": "6.5.22",
+      "source_chd_sha256": "dabd8943bbb231e1e755a32b872305882ed892e9bc5928550bbecff75b6ce0e8",
+      "chd_sha256": "ff12d95379d272bec0790d626f61d42e8ba65868e95b1575b783f98b266b5f83",
+      "firmware_sha256": "f6b7bfc79ecc3ffda683340b86415e9e6b600810a0ca3fe1b3ae97c7ab802d9c",
+      "chdman_verified": true,
+      "serial_log_sha256": "d87ca968089732389b10da743b5ffb710306f57c73bddcc65930880dc6dd6178",
+      "boot_frame": {
+        "image": "boot-console.png",
+        "outside_pixels": 837632,
+        "outside_mismatches": 0,
+        "changed_panel_pixels": 57867,
+        "passed": true,
+        "visible_text": [
+          "root on sd0a",
+          "Starting root file system check:"
+        ],
+        "kernel_foreground_rgb": [
+          199,
+          199,
+          199
+        ]
+      },
+      "restored_frame": {
+        "image": "console-after-xorg.png",
+        "outside_pixels": 837632,
+        "outside_mismatches": 0,
+        "changed_panel_pixels": 34061,
+        "passed": true,
+        "visible_text": [
+          "O2 console restored"
+        ]
+      },
+      "scroll": {
+        "marker_moved": true,
+        "captures": [
+          {
+            "image": "before-scroll.png",
+            "outside_pixels": 837632,
+            "outside_mismatches": 0,
+            "changed_panel_pixels": 560,
+            "passed": true
+          },
+          {
+            "image": "after-scroll.png",
+            "outside_pixels": 837632,
+            "outside_mismatches": 0,
+            "changed_panel_pixels": 560,
+            "passed": true
+          }
+        ],
+        "passed": true
+      },
+      "serial_recovery": "/dev/ttyC0",
+      "vendor_shell": "O2_VENDOR_SHELL_OK",
+      "display": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+      "sessions": [
+        {
+          "user": "xiritest",
+          "wm": "4Dwm",
+          "screen": "4dwm.png"
+        },
+        {
+          "user": "netbsdtest",
+          "wm": "ctwm",
+          "screen": "ctwm.png"
+        }
+      ],
+      "greeter_glyphs": [
+        "Welcome",
+        "Login",
+        "xiritest",
+        "Password"
+      ],
+      "irix_logout": true,
+      "native_logout": true,
+      "rejected_login": true,
+      "clean_root_on_reboot": true,
+      "clean_halt": true,
+      "originals_unchanged": true,
+      "stopped": true,
+      "reboot_serial_log_sha256": "ea1075b47d105f4d3eb4e4f4aefe1985377d077e997c2c8223b90337e52d0f27",
+      "root_clean_png_sha256": "b45c33040eaa1f30040d1cf07fd6e5089e0c4d088c68e321aaa040058a9bd041"
+    },
+    {
+      "release": "6.5.30",
+      "source_chd_sha256": "fe831a30129661d57d95d84bf53000e2d7006cc66e0f58c8c7e329d26cc2bf79",
+      "chd_sha256": "a87130f13daf76f53452b212af87490c17f36f028b0a8b3d96c4910630d59d51",
+      "firmware_sha256": "f6b7bfc79ecc3ffda683340b86415e9e6b600810a0ca3fe1b3ae97c7ab802d9c",
+      "chdman_verified": true,
+      "serial_log_sha256": "de10f7c6520f26d13bde2ee0b47bcf46fa8d67be8f49d90eef3c3d95dd053a3b",
+      "boot_frame": {
+        "image": "boot-console.png",
+        "outside_pixels": 837632,
+        "outside_mismatches": 0,
+        "changed_panel_pixels": 59670,
+        "passed": true,
+        "visible_text": [
+          "root on sd0a",
+          "Starting root file system check:"
+        ],
+        "kernel_foreground_rgb": [
+          199,
+          199,
+          199
+        ]
+      },
+      "restored_frame": {
+        "image": "console-after-xorg.png",
+        "outside_pixels": 837632,
+        "outside_mismatches": 0,
+        "changed_panel_pixels": 33987,
+        "passed": true,
+        "visible_text": [
+          "O2 console restored"
+        ]
+      },
+      "scroll": {
+        "marker_moved": true,
+        "captures": [
+          {
+            "image": "before-scroll.png",
+            "outside_pixels": 837632,
+            "outside_mismatches": 0,
+            "changed_panel_pixels": 560,
+            "passed": true
+          },
+          {
+            "image": "after-scroll.png",
+            "outside_pixels": 837632,
+            "outside_mismatches": 0,
+            "changed_panel_pixels": 560,
+            "passed": true
+          }
+        ],
+        "passed": true
+      },
+      "serial_recovery": "/dev/ttyC0",
+      "vendor_shell": "O2_VENDOR_SHELL_OK",
+      "display": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+      "sessions": [
+        {
+          "user": "xiritest",
+          "wm": "4Dwm",
+          "screen": "4dwm.png"
+        },
+        {
+          "user": "netbsdtest",
+          "wm": "ctwm",
+          "screen": "ctwm.png"
+        }
+      ],
+      "greeter_glyphs": [
+        "Welcome",
+        "Login",
+        "xiritest",
+        "Password"
+      ],
+      "irix_logout": true,
+      "native_logout": true,
+      "rejected_login": true,
+      "clean_root_on_reboot": true,
+      "clean_halt": true,
+      "originals_unchanged": true,
+      "stopped": true,
+      "reboot_serial_log_sha256": "970e3dcbb2857a8ca5f98d964562f41a766cec6b73a2f0460bf48511d5ea3c54",
+      "root_clean_png_sha256": "634c24a74a291bab04e5bc32656a96550fd36f1485c1bf56d74661f1d306ec3c"
+    }
+  ]
+}

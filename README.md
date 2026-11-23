@@ -11,9 +11,10 @@ now passes native boot and the 6.5.30f core desktop, shell, File Manager and
 login/logout checks with IRIS shadow cache mode. The shared module also passes
 6.5.22f regression checks. Separate [6.5.30f and 6.5.22f manual previews](docs/results/2026-11-15-irix-previews.md)
 now package those tested disk states as standalone CHDs with pinned launchers.
-The emulated O2/R10000 boots native NetBSD from SCSI into full-screen xdm.
+The emulated O2/R10000 shows NetBSD boot messages in the Indy console frame before opening full-screen xdm.
 Both the IRIX 6.5.22 and 6.5.30 disks run 4Dwm and native ctwm.
-[O2 launchers, greeter and redraw timings](docs/results/2026-11-23-o2-greeter.md) ·
+[Current O2 launchers and boot screenshots](docs/results/2026-11-23-o2-frame.md) ·
+[O2 greeter and redraw timings](docs/results/2026-11-23-o2-greeter.md) ·
 [O2 SCSI boot results](docs/results/2026-11-23-o2-r10000-boot.md)
 Physical hardware needs separate qualification.
 The emulated Octane boots from its own SCSI disk, shows NetBSD startup

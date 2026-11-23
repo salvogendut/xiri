@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Cold-boot a standalone O2 disk and check the graphical sessions on a private overlay."""
 import argparse
+import hashlib
 import json
 import shutil
 import signal
@@ -22,6 +23,9 @@ def main():
         parser.add_argument('--' + name, type=Path, required=True)
     parser.add_argument('--check-greeter', action='store_true',
                         help='compare the bitmap greeting, prompts and typed username with the O2 reference')
+    parser.add_argument('--frame-kernel', type=Path,
+                        help='NetBSD kernel installed in the framed graphics console bundle')
+    parser.add_argument('--netbsd', type=Path, default=ROOT.parent / 'NetBSD-xiri')
     args = parser.parse_args()
     bundle, emulator, out = (p.resolve() for p in (args.bundle, args.emulator, args.output))
     out.mkdir(parents=True, exist_ok=False)
@@ -39,6 +43,18 @@ def main():
     guest = Guest(lab)
     result = {'sessions': [], 'inputs': {p.name: digest for p, digest in inputs.items()}}
 
+    if args.frame_kernel:
+        sys.path.insert(0, str(ROOT / 'lab/ip30-impact'))
+        import wsconsole
+        font = wsconsole.glyphs(args.netbsd)
+        reference = wsconsole.console_frame.load_reference(args.netbsd / 'xiri/graphics/sgiconsole.png')
+
+    def console(name, expected, timeout=20, row=None):
+        path = out / (name + '.png')
+        wsconsole.capture(lab, probe.CI, path, font, expected, reference=reference,
+                          marker_row=row, timeout=timeout)
+        return dict(wsconsole.console_frame.check(reference, path), visible_text=expected)
+
     def screenshot(name):
         path = out / (name + '.png')
         reply = subprocess.run([probe.CI, '--json', '--socket', lab.socket_path, 'screenshot', path],
@@ -46,6 +62,26 @@ def main():
         if json.loads(reply.stdout).get('fresh') is not True:
             raise RuntimeError('could not obtain fresh GBE scanout')
         return path.name
+
+    def halt_to_prom():
+        lab.send('shutdown -h now')
+        lab.wait(r'Done running shutdown hooks', 150)
+        deadline = time.monotonic() + 90
+        while time.monotonic() < deadline:
+            path = lab.directory / 'halted.png'
+            lab.ci('screenshot', str(path))
+            # Fingerprint the six labels on the O2 PROM maintenance menu.
+            # Exclude the mouse pointer, clock, graphics logo and surrounding artwork.
+            with Image.open(path) as screen:
+                labels = screen.convert('L').crop((205, 132, 550, 548))
+                mask = labels.point(lambda v: 255 if v < 60 else 0, '1')
+                if hashlib.sha256(mask.tobytes()).hexdigest() == (
+                        '257b68448a88071e06e748b50cb979cf3063c1b0233ba03d9f6594469dd8fd76'):
+                    lab.logged_in = False
+                    lab.clean_shutdown = True
+                    return
+            time.sleep(.25)
+        raise ValueError('O2 did not return to the graphical PROM after shutdown')
 
     def check_glyphs(name, regions):
         reference = ROOT / 'docs/results/2026-11-23-o2-xdm-password.png'
@@ -110,15 +146,33 @@ def main():
     signal.signal(signal.SIGTERM, interrupt)
     try:
         lab.start(boot=False)
-        lab.wait(r'file netbsd\.boot', 150)
-        lab.wait(r'boot device: sd0', 180)
-        lab.wait(r'root on sd0a', 30)
+        if args.frame_kernel:
+            result['boot_frame'] = console('boot-console', ['root on sd0a', 'Starting root file system check:'],
+                                           timeout=180)
+            path = out / 'boot-console.png'
+            lines = wsconsole.screen_lines(path, font)
+            row = next(i for i, line in enumerate(lines) if 'root on sd0a' in line)
+            left, top, right, _ = wsconsole.console_frame.PANEL
+            with Image.open(path) as image:
+                ink = image.convert('RGB').crop((left, top + 16*row, right, top + 16*(row+1)))
+                if (199, 199, 199) not in {rgb for _, rgb in ink.getcolors(ink.width * ink.height)}:
+                    raise ValueError('kernel text did not render in the framed console foreground')
+            result['boot_frame']['kernel_foreground_rgb'] = [199, 199, 199]
+        else:
+            lab.wait(r'file netbsd\.boot', 150)
+            lab.wait(r'boot device: sd0', 180)
+            lab.wait(r'root on sd0a', 30)
         lab.wait(r'login: ', 360)
         lab.send('root')
         lab.wait(r'xiri-indy# ', 30)
         lab.logged_in = True
         guest.command('export PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/X11R7/bin:/usr/local/bin; '
                       'test "$(sysctl -n hw.model)" = SGI-IP32 && modstat | grep "^compat_irix_o32 "')
+        if args.frame_kernel:
+            guest.command('test "$(sha256 -q /netbsd)" = ' + sha256(args.frame_kernel))
+            result['serial_recovery'] = guest.read_text('tty').strip()
+            if result['serial_recovery'] != '/dev/ttyC0':
+                raise ValueError(result['serial_recovery'])
         result['vendor_shell'] = guest.read_text("/emul/irix/bin/sh -c 'echo O2_VENDOR_SHELL_OK'").strip()
         if result['vendor_shell'] != 'O2_VENDOR_SHELL_OK':
             raise ValueError('IRIX shell did not return the expected output')
@@ -153,6 +207,37 @@ def main():
         guest.command('pkill -u netbsdtest -x /usr/X11R7/bin/ctwm')
         greeter()
         result['native_logout'] = True
+        if args.frame_kernel:
+            guest.command('/etc/rc.d/xdm stop')
+            guest.wait_for('! pgrep -x Xorg >/dev/null', 60)
+            guest.command("echo 'O2 console restored' > /dev/ttyE0")
+            result['restored_frame'] = console('console-after-xorg', ['O2 console restored'])
+            guest.command(r"printf '\033[2J\033[2;1HXiri scroll marker\033[42;1H' > /dev/ttyE0")
+            console('before-scroll', ['Xiri scroll marker'], row=1)
+            guest.command(r"printf '\n' > /dev/ttyE0")
+            console('after-scroll', ['Xiri scroll marker'], row=0)
+            result['scroll'] = wsconsole.console_frame.check_scroll_captures(
+                reference, out/'before-scroll.png', out/'after-scroll.png')
+            if not result['scroll']['passed']:
+                raise ValueError('console scroll did not preserve the border')
+            halt_to_prom()
+            lab.close()
+            # Cold-boot the overlay just exercised, including its saved filesystem state.
+            reboot = out / 'reboot'
+            reboot.mkdir()
+            shutil.copyfile(out/'nvram.bin', reboot/'nvram.bin')
+            lab = probe.Lab(SimpleNamespace(mode='ci', debugger=False), reboot,
+                            config_text=config, working_directory=out, scsi1_from_config=True)
+            lab.start(boot=False)
+            phrase = '/dev/rsd0a: file system is clean; not checking'
+            wsconsole.capture(lab, probe.CI, reboot/'root-clean.png', font, [phrase],
+                              reference=reference, timeout=180)
+            result['clean_root_on_reboot'] = True
+            lab.wait(r'login: ', 360)
+            lab.send('root')
+            lab.wait(r'xiri-indy# ', 30)
+            lab.logged_in = True
+            halt_to_prom()
     except BaseException as error:
         result['error'] = f'{type(error).__name__}: {error}'
         if lab.process and lab.process.poll() is None:
@@ -166,8 +251,10 @@ def main():
         result['stopped'] = lab.process is None or lab.process.poll() is not None
         result['clean_halt'] = lab.clean_shutdown
         result['originals_unchanged'] = all(sha256(p) == digest for p, digest in inputs.items())
-        result['passed'] = all(result.get(k) for k in
-                               ('native_logout', 'irix_logout', 'stopped', 'clean_halt', 'originals_unchanged'))
+        required = ['native_logout', 'irix_logout', 'stopped', 'clean_halt', 'originals_unchanged']
+        if args.frame_kernel:
+            required.append('clean_root_on_reboot')
+        result['passed'] = 'error' not in result and all(result.get(k) for k in required)
         (out/'result.json').write_text(json.dumps(result, indent=2) + '\n')
     if not result['passed']:
         raise RuntimeError('O2 qualification incomplete')
