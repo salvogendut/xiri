@@ -51,11 +51,12 @@ def free_ports(count):
 
 class Lab:
     def __init__(self, args, directory, *, extra_iris_args=(), config_text=None,
-                 working_directory=ROOT):
+                 working_directory=ROOT, scsi1_from_config=False):
         self.args = args
         self.directory = directory
         self.extra_iris_args = list(extra_iris_args)
         self.config_text = config_text
+        self.scsi1_from_config = scsi1_from_config
         self.working_directory = working_directory
         self.serial_log = directory / 'serial.log'
         self.socket_path = directory / 'iris.sock'
@@ -177,9 +178,10 @@ class Lab:
             command += ['env', '-u', 'WAYLAND_DISPLAY', '-u', 'WAYLAND_SOCKET', 'xvfb-run', '-a',
                         '-s', '-screen 0 1280x1024x24']
         command += [str(IRIS), '--config', str(self.directory / 'iris.toml'),
-                    '--nvram', str(self.directory / 'nvram.bin'),
-                    '--scsi1', str(self.directory / 'disk.raw'),
-                    '--ci-socket', str(self.socket_path),
+                    '--nvram', str(self.directory / 'nvram.bin')]
+        if not self.scsi1_from_config:
+            command += ['--scsi1', str(self.directory / 'disk.raw')]
+        command += ['--ci-socket', str(self.socket_path),
                     '--monitor-port', str(monitor_port),
                     '--serial-port-a', str(serial_a), '--serial-port-b', str(serial_b),
                     '--serial-log', str(self.serial_log)]

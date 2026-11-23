@@ -13,8 +13,10 @@ login/logout checks with IRIS shadow cache mode. The shared module also passes
 now package those tested disk states as standalone CHDs with pinned launchers.
 The O2/R10000 native SCSI trap remains separate work. Physical hardware needs
 separate qualification.
-The [Octane alternative](docs/results/2026-11-14-octane-platform.md) was also
-checked; it requires a separate NetBSD board port before Xiri can run there.
+On the emulated Octane, the native NetBSD kernel now shows boot messages and
+the single-user shell on both Solid and High IMPACT. The console works with
+both release-line disks. Octane Xorg and desktop qualification are still ahead.
+[Octane console screenshot and test instructions](docs/results/2026-11-23-octane-wsdisplay.md)
 
 The current desktop runs original 4Dwm, Toolchest, Icon Catalog, File Manager,
 winterm, xclock and Desks Overview. It has SGI fonts, the granite backdrop,

@@ -1,0 +1,147 @@
+{
+  "netbsd_topic": "8f744b33e95b4ef132ed5ffd9f8e7d96c38e2134",
+  "register_header": "60dd809ab7a712baf4f93358670ada76ac13a397",
+  "iris_upstream": "a05289efc808ee1320195481f6cab4cfee16bef9",
+  "iris_xiri": "08e53ba7e183cbfd3b2e7e6d25ce65e2d497323f",
+  "kernel_sha256": "3ca799ca0e7ce16b81c7633f3500ff13fe1292153b2ce4cd8e1743f6f9879537",
+  "iris_sha256": "9257e6ab997b6ff68e1b4b1b5a775aa6fedd0349db7eff787a8a6612be36b682",
+  "runs": [
+    {
+      "board": "solidimpact",
+      "root_release_line": "6.5.22",
+      "disk_sha256": "c45156e4c1d252a8b31a91d9337467c1325153907ed78c73b98c1d275f0e104c",
+      "serial_sha256": "fc8bf72ba72b31698cf4b202b4fc1d224784e2515bfbd215c94f0dd6c5e45f18",
+      "read_only_root": true,
+      "scsi_ready": true,
+      "clean_halt": true,
+      "emulator_stopped": true,
+      "originals_unchanged": true,
+      "boot_scanout": {
+        "fresh": true,
+        "visible": [
+          "root on sd0a",
+          "Enter pathname of shell"
+        ],
+        "png_sha256": "dead7f44ae4548d86af555cd4a24b05212b29fe3224e72b79cf8b156b03faf5e"
+      },
+      "shell_scanout": {
+        "fresh": true,
+        "visible": [
+          "Octane console ready",
+          "on / type ffs (read-only"
+        ],
+        "png_sha256": "04696b8135d05cdb5d8581b0454b4d5d59ec5a31e689509d597886ed5244ec21"
+      }
+    },
+    {
+      "board": "highimpact",
+      "root_release_line": "6.5.22",
+      "disk_sha256": "c45156e4c1d252a8b31a91d9337467c1325153907ed78c73b98c1d275f0e104c",
+      "serial_sha256": "bce9cc146dd6c85b4365256dcc5f8154e50fa9759d0c56b03a187761673176e5",
+      "read_only_root": true,
+      "scsi_ready": true,
+      "clean_halt": true,
+      "emulator_stopped": true,
+      "originals_unchanged": true,
+      "boot_scanout": {
+        "fresh": true,
+        "visible": [
+          "root on sd0a",
+          "Enter pathname of shell"
+        ],
+        "png_sha256": "2b6fd1a5fa314fb24398ac09bc9f488a68a5d48fb231619babdce906904f7d7c"
+      },
+      "shell_scanout": {
+        "fresh": true,
+        "visible": [
+          "Octane console ready",
+          "on / type ffs (read-only"
+        ],
+        "png_sha256": "8835480904928c45c4f0a8981b0021f4d3f78a139f56ced293378f32e865f162"
+      }
+    },
+    {
+      "board": "solidimpact",
+      "root_release_line": "6.5.30",
+      "disk_sha256": "187a516e9f3d2b29236fcd53d95467415e18fdd6ae2a90d1c407ba96f0af9e58",
+      "serial_sha256": "848657991105814cbb6755765d8845bb2e51c3415c58ed386dfd90d5b3e6d436",
+      "read_only_root": true,
+      "scsi_ready": true,
+      "clean_halt": true,
+      "emulator_stopped": true,
+      "originals_unchanged": true,
+      "boot_scanout": {
+        "fresh": true,
+        "visible": [
+          "root on sd0a",
+          "Enter pathname of shell"
+        ],
+        "png_sha256": "fbe22123a7293a8fc6235d6b9dbe45b51d3a642345fe0dbdc37bb03032f770c1"
+      },
+      "shell_scanout": {
+        "fresh": true,
+        "visible": [
+          "Octane console ready",
+          "on / type ffs (read-only"
+        ],
+        "png_sha256": "a866b1d3b861950cc874053b8530cebfa9675f197261a1213125b7db6b1822be"
+      }
+    },
+    {
+      "board": "highimpact",
+      "root_release_line": "6.5.30",
+      "disk_sha256": "187a516e9f3d2b29236fcd53d95467415e18fdd6ae2a90d1c407ba96f0af9e58",
+      "serial_sha256": "09c35eaad80e3043aa54ec27500b2e0e6fae3c52e7a4da4f151fa75186735b7d",
+      "read_only_root": true,
+      "scsi_ready": true,
+      "clean_halt": true,
+      "emulator_stopped": true,
+      "originals_unchanged": true,
+      "boot_scanout": {
+        "fresh": true,
+        "visible": [
+          "root on sd0a",
+          "Enter pathname of shell"
+        ],
+        "png_sha256": "4140319cdacb6d7eb93b7c82165c19cdd5725c39094d7760aae00a5cadf24178"
+      },
+      "shell_scanout": {
+        "fresh": true,
+        "visible": [
+          "Octane console ready",
+          "on / type ffs (read-only"
+        ],
+        "png_sha256": "d90cf17d57a52d65052b823c3bbba43ab5ff075ac2130ce08a803ccde6f11d61"
+      }
+    },
+    {
+      "board": "none",
+      "root_release_line": null,
+      "disk_sha256": "61f9b9883303470b68877083547d203bf3b177fe4ccb93136096ee9ed770611d",
+      "serial_sha256": "7fb3ef655777ca16e27c455ad0f07a0958527ec7e7db22fa1c3f1edc86e6503f",
+      "read_only_root": true,
+      "scsi_ready": true,
+      "clean_halt": true,
+      "emulator_stopped": true,
+      "originals_unchanged": true
+    }
+  ],
+  "regressions": {
+    "regress-fill": {
+      "board": "solidimpact",
+      "native_shell_and_halt": true,
+      "pixel_errors": 0
+    },
+    "regress-inventory": {
+      "board": "highimpact",
+      "native_shell_and_halt": true,
+      "widgets": [
+        [
+          "11",
+          "0xc003555"
+        ]
+      ]
+    }
+  },
+  "host_tests_passed": 83
+}

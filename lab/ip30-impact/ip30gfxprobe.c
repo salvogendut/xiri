@@ -1,5 +1,6 @@
 /* XIO graphics inventory for the Xiri Octane lab kernel. */
 #include "opt_ip30gfx.h"
+#include "hq4fb.h"
 #include <sys/param.h>
 #include <sys/bus.h>
 #include <sys/device.h>
@@ -12,6 +13,10 @@
 #define XIO_SHORT_WINDOW_SIZE 0x01000000
 #define HQ4_WIDGET_PART 0xc003
 #define HQ4_WIDGET_MFG  0x2aa
+
+#if NHQ4FB > 0
+#include "hq4_pio.h"
+#endif
 
 #ifdef IP30_HQ4_FILL
 bool ip30gfx_fill(bus_space_tag_t, bus_addr_t);
@@ -68,6 +73,10 @@ ip30gfxprobe_attach(device_t parent, device_t self, void *aux)
 			aprint_normal_dev(self, "IMPACT HQ4 at widget %u, id %#x\n",
 			    port, id);
 			boards++;
+#if NHQ4FB > 0
+			struct hq4_attach_args ha = { st, base };
+			config_found(self, &ha, NULL, CFARGS(.iattr = "ip30hq4bus"));
+#endif
 #ifdef IP30_HQ4_FILL
 			if (ip30gfx_fill(st, base))
 				aprint_normal_dev(self, "HQ4 rectangle submitted\n");

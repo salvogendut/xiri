@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Boot the IP30 inventory or rectangle test with an explicit IRIS graphics board."""
+"""Boot an IP30 inventory, rectangle or wsdisplay test with an explicit graphics board."""
 import argparse
 import hashlib
 import json
@@ -36,8 +36,10 @@ def main():
     for arg in ('emulator', 'kernel', 'firmware', 'disk', 'output'):
         parser.add_argument('--' + arg, type=Path, required=True)
     parser.add_argument('--board', choices=('solidimpact', 'highimpact', 'none'), required=True)
-    parser.add_argument('--rectangle', action='store_true',
-                        help='capture the PIO test kernel scanout before shutdown')
+    mode = parser.add_mutually_exclusive_group()
+    mode.add_argument('--wsdisplay', action='store_true', help='verify kernel and shell text on wsdisplay')
+    mode.add_argument('--rectangle', action='store_true',
+                      help='capture the PIO test kernel scanout before shutdown')
     args = parser.parse_args()
     capture = args.rectangle and args.board != 'none'
     if capture:
@@ -47,6 +49,10 @@ def main():
     # and console=g. This harness sends boot commands over IOC3 serial.
     if args.board != 'none' and nvram.read_bytes()[0x11:0x13] != b'd\0':
         parser.error("use an Octane NVRAM saved after 'setenv console d'")
+    if args.wsdisplay:
+        from wsconsole import run
+        run(args)
+        return
     emulator = args.emulator.resolve()
     binary = emulator / 'iris'
     out = args.output.resolve()
