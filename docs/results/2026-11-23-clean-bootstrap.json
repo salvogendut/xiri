@@ -1,0 +1,52 @@
+{
+  "platform": "Emulated Indy R4400/IP24, clean NetBSD 11.0 install",
+  "iris_revision": "7d46498bf1fbf3acf53f1619413e3c5eaeb5d27b",
+  "stock": {
+    "disk.raw": "8f896ab101a1cb27e29bfe87cc4048cc61c17f2a148f58d24bba0fb1d0c21926",
+    "nvram.bin": "602d954b2e8f076887c54ed301dff7dbd9cc0c6be138e537e5bc732c948d344e"
+  },
+  "xsets": [
+    "xbase.tgz",
+    "xetc.tgz",
+    "xfont.tgz",
+    "xserver.tgz"
+  ],
+  "boots": [
+    {
+      "phase": "stock",
+      "halted": true,
+      "stopped": true
+    },
+    {
+      "phase": "modular",
+      "halted": true,
+      "stopped": true
+    }
+  ],
+  "iris_sha256": "fdfa909b39c33009a4a4b1669caa4160b5d6bcef317f088c650fa61ccdab9cc9",
+  "native_sha256": {
+    "compat_irix_o32.kmod": "76fb780ab2639b2f43bdba8162a890a73b5e6384ab72a36e84d59572197b44a3",
+    "netbsd": "c92f0b2fcc182836393a87ca41a0315a0681e93ed3e904fad925d3c370e4dd98",
+    "netbsd.boot": "5fd2dd05d1549e0e6e29a02c2d6d8c6bae2b8443edad272f12e878f24eb06e54"
+  },
+  "stock_kernel": "NetBSD 11.0 (GENERIC32_IP2x) #0: Thu Jul 30 15:23:12 UTC 2026  mkrepro@mkrepro.NetBSD.org:/usr/src/sys/arch/sgimips/compile/GENERIC32_IP2x",
+  "modular_kernel": "NetBSD 11.99.9 (XIRI_IRIX_MODULE_20261103) #4: Thu Nov  5 12:34:13 UTC 2026  salvogendut@toolbx:/var/home/salvogendut/Dev/xiri/.work/netbsd-wait-accounting-build/obj/sys/arch/sgimips/compile/XIRI_IRIX_MODULE",
+  "module": "compat_irix_o32            exec     filesys  -        0       - exec_elf32,compat_netbsd32",
+  "securelevel": 1,
+  "originals_unchanged": true,
+  "passed": true,
+  "modular_boot_warning": "savecore: (null): kvm_nlist: bad namelist; _dumpdev not in namelist",
+  "installer_inputs_verified_on_host": {
+    "existing_native_package_sha256": "e28c1f08eb0ace50c38e87b13b9a1e70cd486b87895fe30518ec306950a1d354",
+    "imports": {
+      "6.5.22f": {
+        "archive_sha256": "6feb87643a47b0128fe635b7d06903ef2e78da0317ba29c5a88a700c85403dec",
+        "manifest_sha256": "61614b1dc24ed332641a20630603c012f69268b787ff6c5aebd85db756eca071"
+      },
+      "6.5.30f": {
+        "archive_sha256": "21060cf7415e730d6efb3d690e51d08aafb15d689ecb0f2fdd9c8638a33bfde7",
+        "manifest_sha256": "976f3b8cad96e4562657f7a28624ad82dee5506989e9408c8d8daddc3298d220"
+      }
+    }
+  }
+}

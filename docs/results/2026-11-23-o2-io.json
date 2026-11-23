@@ -1,0 +1,113 @@
+{
+  "platform": "Emulated SGI O2/R10000 (IP32), framed-console disks, IPv4 DHCP on mec0",
+  "iris_revision": "08e53ba7e183cbfd3b2e7e6d25ce65e2d497323f",
+  "iris_upstream_main": "a05289efc808ee1320195481f6cab4cfee16bef9",
+  "releases": {
+    "6.5.22": {
+      "passed": true,
+      "inputs": {
+        "netbsd-xiri.chd": "ff12d95379d272bec0790d626f61d42e8ba65868e95b1575b783f98b266b5f83",
+        "nvram.bin": "f6b7bfc79ecc3ffda683340b86415e9e6b600810a0ca3fe1b3ae97c7ab802d9c",
+        "iris.toml": "3516dca70cfce86df9930d5a0385e512e328eed02ef97851e81f7678cc4e54eb",
+        "iris": "ac761ad92d140b029e18c498d5c275662433c5c255c0fd08a8f240ae979ae0f2",
+        "iris-ci": "a20758bdf110c7ce7850030ee0fff5547bc19d75c32334f3f7a474cc470b6a78"
+      },
+      "size_mib": 32,
+      "rounds": 3,
+      "bytes_written": 201326592,
+      "write_and_verify_seconds": 22.04,
+      "cold_root_clean": true,
+      "cold_sha256": [
+        "4ecedc515457e4dd9689c230e3db61a85f576ebe56cc2a144e61082b33161a04",
+        "b7b9643e12b0e5cedb109835b84f07c416cbf2c3dda884c29821f9363c1c7388"
+      ],
+      "payload_sha256": [
+        "4ecedc515457e4dd9689c230e3db61a85f576ebe56cc2a144e61082b33161a04",
+        "b7b9643e12b0e5cedb109835b84f07c416cbf2c3dda884c29821f9363c1c7388"
+      ],
+      "download_sha256": "b7b9643e12b0e5cedb109835b84f07c416cbf2c3dda884c29821f9363c1c7388",
+      "upload_sha256": "4ecedc515457e4dd9689c230e3db61a85f576ebe56cc2a144e61082b33161a04",
+      "bytes_each_direction": 33554432,
+      "download_seconds": 9.85,
+      "upload_seconds": 8.84,
+      "mec_before_setup": "mec0: flags=0x8802<BROADCAST,SIMPLEX,MULTICAST> mtu 1500\n\tcapabilities=0x1400<TCP4CSUM_Rx,UDP4CSUM_Rx>\n\tenabled=0\n\tec_capabilities=0x1<VLAN_MTU>\n\tec_enabled=0\n\taddress: 08:00:69:12:34:56\n\tmedia: Ethernet autoselect (100baseTX full-duplex)\n\tstatus: active",
+      "mec_at_boot": "mec0: flags=0x8843<UP,BROADCAST,RUNNING,SIMPLEX,MULTICAST> mtu 1500\n\tcapabilities=0x1400<TCP4CSUM_Rx,UDP4CSUM_Rx>\n\tenabled=0\n\tec_capabilities=0x1<VLAN_MTU>\n\tec_enabled=0\n\taddress: 08:00:69:12:34:56\n\tmedia: Ethernet autoselect (100baseTX full-duplex)\n\tstatus: active\n\tinet6 fe80::a00:69ff:fe12:3456%mec0/64 flags 0 scopeid 0x1\n\tinet 192.168.0.2/24 broadcast 192.168.0.255 flags 0",
+      "default_route": "route to: default\ndestination: default\n       mask: default\n    gateway: 192.168.0.1\n local addr: 192.168.0.2\n  interface: mec0\n      flags: 0x43<UP,GATEWAY,DONE>\n recvpipe  sendpipe  ssthresh  rtt,msec    rttvar  hopcount      mtu     expire\n       0         0         0         0         0         0         0         0",
+      "mec_delta": {
+        "ipackets": 47724,
+        "ierrors": 0,
+        "opackets": 36895,
+        "oerrors": 0,
+        "collisions": 0,
+        "ibytes": 36277035,
+        "obytes": 35546910
+      },
+      "boots": [
+        {
+          "phase": "write",
+          "halted": true,
+          "stopped": true
+        },
+        {
+          "phase": "cold",
+          "halted": true,
+          "stopped": true
+        }
+      ],
+      "inputs_unchanged": true
+    },
+    "6.5.30": {
+      "passed": true,
+      "inputs": {
+        "netbsd-xiri.chd": "a87130f13daf76f53452b212af87490c17f36f028b0a8b3d96c4910630d59d51",
+        "nvram.bin": "f6b7bfc79ecc3ffda683340b86415e9e6b600810a0ca3fe1b3ae97c7ab802d9c",
+        "iris.toml": "b6282c8f6aa299d0a1cf21f2bf424a92dc873a8d77480bc66c6d3f1742bbf5ad",
+        "iris": "ac761ad92d140b029e18c498d5c275662433c5c255c0fd08a8f240ae979ae0f2",
+        "iris-ci": "a20758bdf110c7ce7850030ee0fff5547bc19d75c32334f3f7a474cc470b6a78"
+      },
+      "size_mib": 32,
+      "rounds": 3,
+      "bytes_written": 201326592,
+      "write_and_verify_seconds": 23.4,
+      "cold_root_clean": true,
+      "cold_sha256": [
+        "4ecedc515457e4dd9689c230e3db61a85f576ebe56cc2a144e61082b33161a04",
+        "b7b9643e12b0e5cedb109835b84f07c416cbf2c3dda884c29821f9363c1c7388"
+      ],
+      "payload_sha256": [
+        "4ecedc515457e4dd9689c230e3db61a85f576ebe56cc2a144e61082b33161a04",
+        "b7b9643e12b0e5cedb109835b84f07c416cbf2c3dda884c29821f9363c1c7388"
+      ],
+      "download_sha256": "b7b9643e12b0e5cedb109835b84f07c416cbf2c3dda884c29821f9363c1c7388",
+      "upload_sha256": "4ecedc515457e4dd9689c230e3db61a85f576ebe56cc2a144e61082b33161a04",
+      "bytes_each_direction": 33554432,
+      "download_seconds": 10.6,
+      "upload_seconds": 8.84,
+      "mec_before_setup": "mec0: flags=0x8802<BROADCAST,SIMPLEX,MULTICAST> mtu 1500\n\tcapabilities=0x1400<TCP4CSUM_Rx,UDP4CSUM_Rx>\n\tenabled=0\n\tec_capabilities=0x1<VLAN_MTU>\n\tec_enabled=0\n\taddress: 08:00:69:12:34:56\n\tmedia: Ethernet autoselect (100baseTX full-duplex)\n\tstatus: active",
+      "mec_at_boot": "mec0: flags=0x8843<UP,BROADCAST,RUNNING,SIMPLEX,MULTICAST> mtu 1500\n\tcapabilities=0x1400<TCP4CSUM_Rx,UDP4CSUM_Rx>\n\tenabled=0\n\tec_capabilities=0x1<VLAN_MTU>\n\tec_enabled=0\n\taddress: 08:00:69:12:34:56\n\tmedia: Ethernet autoselect (100baseTX full-duplex)\n\tstatus: active\n\tinet6 fe80::a00:69ff:fe12:3456%mec0/64 flags 0 scopeid 0x1\n\tinet 192.168.0.2/24 broadcast 192.168.0.255 flags 0",
+      "default_route": "route to: default\ndestination: default\n       mask: default\n    gateway: 192.168.0.1\n local addr: 192.168.0.2\n  interface: mec0\n      flags: 0x43<UP,GATEWAY,DONE>\n recvpipe  sendpipe  ssthresh  rtt,msec    rttvar  hopcount      mtu     expire\n       0         0         0         0         0         0         0         0",
+      "mec_delta": {
+        "ipackets": 47752,
+        "ierrors": 0,
+        "opackets": 36904,
+        "oerrors": 0,
+        "collisions": 0,
+        "ibytes": 36278665,
+        "obytes": 35547396
+      },
+      "boots": [
+        {
+          "phase": "write",
+          "halted": true,
+          "stopped": true
+        },
+        {
+          "phase": "cold",
+          "halted": true,
+          "stopped": true
+        }
+      ],
+      "inputs_unchanged": true
+    }
+  }
+}

@@ -30,3 +30,25 @@ the kernel. Its existing file mode is preserved while its exact bytes and
 running version are checked. This cycle does not establish a fresh install,
 new kernel activation, recovery after interruption or application-wide
 compatibility. IRIX 6.5.30 requires a separate donor/import and guest run.
+
+## Bootstrapping a stock target
+
+`check-clean-bootstrap.py` starts from the pinned NetBSD 11.0 R4400/Indy
+installation with no Xorg, vendor tree or Xiri desktop account. It installs the
+four X runtime sets, kernel, boot wrapper and compatibility module on a
+temporary copy, selects the new kernel in the PROM and boots from disk again.
+The second boot verifies the installed hashes and the loaded module. Use the
+November 14 Indy build and a fresh output directory.
+
+```sh
+IRIS_NO_IDLE=1 python3 lab/native-package/check-clean-bootstrap.py \
+  --base .work/indy-netbsd/base \
+  --sets .work/netbsd-11.0/sgimips/binary/sets \
+  --build .work/irix-mips4-module \
+  --emulator .work/emulators/iris-xiri-20261114-r5k-config \
+  --output .work/clean-indy-bootstrap
+```
+
+The remaining installer stages are native service setup, per-release vendor
+import and graphical login. [Stock installation](../../docs/results/2026-10-29-indy-netbsd-install.md) ·
+[Kernel and module build](../irix-mips4/module-build.json)

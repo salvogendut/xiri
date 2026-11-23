@@ -304,15 +304,17 @@ The [native package](NATIVE-PACKAGE.md) now builds independently of those images
 including repeat installation and preserved configuration. The separate
 [6.5.30f donor and payload](results/2026-11-14-irix-6.5.30.md) now pass export,
 native IRIX serial boot and reproducibility checks. The requested O2/R10000
-NetBSD trial needed a corrected 64-bit cache alignment mask and now reaches a
-later native SCSI-stage trap. The [Indy/R5000 retry](results/2026-11-14-r5000-6.5.30.md)
+NetBSD trial needed a corrected 64-bit cache alignment mask. The emulated O2
+now boots from SCSI and passes the [disk and Ethernet checks](results/2026-11-23-o2-io.md). The [Indy/R5000 retry](results/2026-11-14-r5000-6.5.30.md)
 now passes native login, xdm and the 6.5.30f core desktop with shadow cache
 mode. The shared MIPS IV interpreter module also passes 6.5.22f regression
 checks. Separate [manual preview CHDs](results/2026-11-15-irix-previews.md)
 now package both tested disk states; their merged CHDs pass integrity checks,
 with fresh boots of the packaged bundles still to check. Promote the updated
-native package, then qualify managed installation and repeat
-installation on a clean target without prepared desktop seeds or user homes.
+native package and qualify managed installation and repeat installation on a
+clean target without prepared desktop seeds or user homes. The [stock Indy
+bootstrap](XIRI-INSTALLATION.md#starting-from-stock-netbsd) covers the X sets,
+kernel switch and module load. Native services and vendor deployment are next.
 The linked MAME guide documents donor preparation; its IRIX formatting and Xsgi
 steps are not NetBSD installation instructions. Vendor import is qualified;
 the complete clean-target installer remains unfinished.
@@ -326,7 +328,7 @@ the complete clean-target installer remains unfinished.
   complete; Indy/R5000 native boot and core desktop acceptance now pass with
   shadow cache mode. Separate manual preview CHDs are packaged. Broader 6.5.30
   acceptance, native-package promotion and fresh checks of those bundles remain;
-  O2/N64 boot is a separate platform task.
+  see the [O2 boot record](results/2026-11-23-o2-r10000-boot.md) for IP32/N64.
   Share native artifacts only after checking both versions.
 
 The user requested these deployment changes on 2026-11-03. The implementation
@@ -673,7 +675,8 @@ Native IOC3 Ethernet, HQ4 acceleration and physical Octane validation remain ope
 - [x] Cold-boot the emulated O2/R10000 from SCSI and log into 4Dwm and ctwm through full-screen xdm on both release lines. [O2 boot and graphics results](results/2026-11-23-o2-r10000-boot.md)
 - [x] Restore readable xdm prompts and typed usernames on the accelerated O2 display. [O2 greeter and release images](results/2026-11-23-o2-greeter.md)
 - [x] Show NetBSD boot messages in the Indy frame on the emulated O2 and restore its scrolling console after Xorg exits on both release lines. [O2 console and launchers](results/2026-11-23-o2-frame.md)
-- [ ] Qualify sustained O2 storage writes, cache/DMA, networking and physical hardware.
+- [x] Verify 192 MiB of writes per emulated O2 release, cold file persistence, DHCP and 32 MiB transfers each way on MEC Ethernet. [Results and manual network setup](results/2026-11-23-o2-io.md)
+- [ ] Exercise O2 cache/DMA coherency separately and repeat storage and Ethernet checks on physical hardware.
 - [x] Map Octane board support for the emulated configuration, including HEART, Bridge, IOC3 and both QLogic controllers.
 - [x] Boot emulated Octane through native memory, HEART interrupts, Bridge and QLogic SCSI to a NetBSD shell. Physical hardware and IOC3 Ethernet remain open.
 - [x] Drive full-screen native Xorg on emulated Solid and High IMPACT with IOC3 input and run both IRIX desktop release lines.

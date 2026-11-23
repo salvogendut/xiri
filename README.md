@@ -15,7 +15,8 @@ The emulated O2/R10000 shows NetBSD boot messages in the Indy console frame befo
 Both the IRIX 6.5.22 and 6.5.30 disks run 4Dwm and native ctwm.
 [Current O2 launchers and boot screenshots](docs/results/2026-11-23-o2-frame.md) ·
 [O2 greeter and redraw timings](docs/results/2026-11-23-o2-greeter.md) ·
-[O2 SCSI boot results](docs/results/2026-11-23-o2-r10000-boot.md)
+[O2 SCSI boot results](docs/results/2026-11-23-o2-r10000-boot.md) ·
+[O2 disk persistence, Ethernet and DHCP setup](docs/results/2026-11-23-o2-io.md)
 Physical hardware needs separate qualification.
 The emulated Octane boots from its own SCSI disk, shows NetBSD startup
 messages in the Indy console frame and opens a 1280×1024 xdm greeter.

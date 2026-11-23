@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """Cold-boot a standalone O2 disk and check the graphical sessions on a private overlay."""
 import argparse
-import hashlib
 import json
 import shutil
 import signal
@@ -11,6 +10,8 @@ import time
 from pathlib import Path
 from types import SimpleNamespace
 from PIL import Image, ImageChops
+
+from o2_console import halt_to_prom
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / 'scripts'))
@@ -62,26 +63,6 @@ def main():
         if json.loads(reply.stdout).get('fresh') is not True:
             raise RuntimeError('could not obtain fresh GBE scanout')
         return path.name
-
-    def halt_to_prom():
-        lab.send('shutdown -h now')
-        lab.wait(r'Done running shutdown hooks', 150)
-        deadline = time.monotonic() + 90
-        while time.monotonic() < deadline:
-            path = lab.directory / 'halted.png'
-            lab.ci('screenshot', str(path))
-            # Fingerprint the six labels on the O2 PROM maintenance menu.
-            # Exclude the mouse pointer, clock, graphics logo and surrounding artwork.
-            with Image.open(path) as screen:
-                labels = screen.convert('L').crop((205, 132, 550, 548))
-                mask = labels.point(lambda v: 255 if v < 60 else 0, '1')
-                if hashlib.sha256(mask.tobytes()).hexdigest() == (
-                        '257b68448a88071e06e748b50cb979cf3063c1b0233ba03d9f6594469dd8fd76'):
-                    lab.logged_in = False
-                    lab.clean_shutdown = True
-                    return
-            time.sleep(.25)
-        raise ValueError('O2 did not return to the graphical PROM after shutdown')
 
     def check_glyphs(name, regions):
         reference = ROOT / 'docs/results/2026-11-23-o2-xdm-password.png'
@@ -220,7 +201,7 @@ def main():
                 reference, out/'before-scroll.png', out/'after-scroll.png')
             if not result['scroll']['passed']:
                 raise ValueError('console scroll did not preserve the border')
-            halt_to_prom()
+            halt_to_prom(lab)
             lab.close()
             # Cold-boot the overlay just exercised, including its saved filesystem state.
             reboot = out / 'reboot'
@@ -237,7 +218,7 @@ def main():
             lab.send('root')
             lab.wait(r'xiri-indy# ', 30)
             lab.logged_in = True
-            halt_to_prom()
+            halt_to_prom(lab)
     except BaseException as error:
         result['error'] = f'{type(error).__name__}: {error}'
         if lab.process and lab.process.poll() is None:

@@ -3,6 +3,11 @@
 The emulated O2 boots from its own SCSI disk on both the 6.5.22 and 6.5.30
 Xiri lines with the R10000 JIT. [Current launchers and framed console](../../docs/results/2026-11-23-o2-frame.md) · [Greeter build](../../docs/results/2026-11-23-o2-greeter.md) · [November 23 disk boot check](../../docs/results/2026-11-23-o2-r10000-boot.md)
 
+Use `check-io.py` to verify the disk across a cold power cycle, then transfer
+a file in each direction through `mec0`. The fixture copies the base CHD to
+a temporary directory and creates its own overlay. It can run alongside a
+manual session. [Qualification, DHCP setup and commands](../../docs/results/2026-11-23-o2-io.md)
+
 The original November 14 run stopped during AIC-7880 attachment. On
 November 15 the IRIS fix for the wide MACE PCI address window let the same
 kernel reach single-user NetBSD in the interpreter. [Original result](../../docs/results/2026-11-14-irix-6.5.30.md) · [November 15 record](https://github.com/salvogendut/NetBSD-xiri/blob/33b5dda6a45/xiri/platforms/2026-11-15-results.json)
