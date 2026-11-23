@@ -1,0 +1,97 @@
+{
+  "netbsd_topic": "8f744b33e95b4ef132ed5ffd9f8e7d96c38e2134",
+  "iris_upstream": "c13ec795bb5b6a269972423574bb379129e70113",
+  "iris_merge": "592df2439619f121a767f1ad5e45f8f80a3b4260",
+  "machine": "Octane IP30, one R10000, 512 MiB",
+  "kernel_sha256": "00b5565a7661b4853e57200013d2ecb60244cbe37bdb097b3d09e40ced8ed9f1",
+  "disk_sha256": "61f9b9883303470b68877083547d203bf3b177fe4ccb93136096ee9ed770611d",
+  "runs": [
+    {
+      "board": "solidimpact",
+      "run": "solid-serial",
+      "iris_sha256": "b4790d76005cb2b9523d8e82554515a1abd2b66cc12e0477c9be46655517219b",
+      "widgets": [
+        {
+          "port": 11,
+          "id": "0xc003555"
+        }
+      ],
+      "shell": {
+        "marker": "XIRI_IP30_M4A_SHELL_OK",
+        "read_only_ffs": true,
+        "console_char_device": true,
+        "console_write": true,
+        "rx_interrupts": 8,
+        "tx_interrupts": 294
+      },
+      "clean_shutdown": true,
+      "emulator_stopped": true,
+      "originals_unchanged": true,
+      "serial_sha256": "cfb701644ac487dfe9729788f7b70955fa423fa2f2eb6d54f3c147286e96c47b"
+    },
+    {
+      "board": "solidimpact",
+      "run": "solidimpact",
+      "iris_sha256": "be317adba2a7fd241dcc58317fbd7c17ed37a58ead30d873c901adb1b6e00ba8",
+      "widgets": [
+        {
+          "port": 11,
+          "id": "0xc003555"
+        }
+      ],
+      "shell": {
+        "marker": "XIRI_IP30_M4A_SHELL_OK",
+        "read_only_ffs": true,
+        "console_char_device": true,
+        "console_write": true,
+        "rx_interrupts": 8,
+        "tx_interrupts": 294
+      },
+      "clean_shutdown": true,
+      "emulator_stopped": true,
+      "originals_unchanged": true,
+      "serial_sha256": "65489490a15119f2766c28734c05e24f77dc10313c586005a13d47ab4bbd19e5"
+    },
+    {
+      "board": "highimpact",
+      "run": "highimpact",
+      "iris_sha256": "be317adba2a7fd241dcc58317fbd7c17ed37a58ead30d873c901adb1b6e00ba8",
+      "widgets": [
+        {
+          "port": 11,
+          "id": "0xc003555"
+        }
+      ],
+      "shell": {
+        "marker": "XIRI_IP30_M4A_SHELL_OK",
+        "read_only_ffs": true,
+        "console_char_device": true,
+        "console_write": true,
+        "rx_interrupts": 8,
+        "tx_interrupts": 294
+      },
+      "clean_shutdown": true,
+      "emulator_stopped": true,
+      "originals_unchanged": true,
+      "serial_sha256": "0a443eab4928ffc7168e08e9c18f97f22455f68e6e0ececd8eae0d17cdb271ec"
+    },
+    {
+      "board": "none",
+      "run": "none",
+      "iris_sha256": "be317adba2a7fd241dcc58317fbd7c17ed37a58ead30d873c901adb1b6e00ba8",
+      "widgets": [],
+      "shell": {
+        "marker": "XIRI_IP30_M4A_SHELL_OK",
+        "read_only_ffs": true,
+        "console_char_device": true,
+        "console_write": true,
+        "rx_interrupts": 8,
+        "tx_interrupts": 294
+      },
+      "clean_shutdown": true,
+      "emulator_stopped": true,
+      "originals_unchanged": true,
+      "serial_sha256": "890a93f3f0a5cbcd1f297d9d07d3639916356359d8496866cb93fb05d6faad09"
+    }
+  ]
+}

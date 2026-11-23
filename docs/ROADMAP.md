@@ -642,11 +642,13 @@ networking, input and a usable full-screen Xorg display before treating either
 machine as a Xiri target. Keep this work separate from IRIX ABI fixes and from
 the current Indy/R5000 6.5.30 application tests.
 
-The [November 14 Octane check](results/2026-11-14-octane-platform.md) confirms
-this remains a native board-port milestone. The current O2 kernel's ELF32
-wrapper is rejected by the Octane PROM; the ELF64 image faults during loading.
-The audited NetBSD tree lacks the Octane ARCS64/HEART/XIO/Bridge/IOC3 and
-display attachment path. This check does not qualify a 6.5.30 Xiri desktop.
+The [November 14 Octane check](results/2026-11-14-octane-platform.md) used an
+O2 kernel. The subsequent Octane topic branch boots its own NetBSD kernel
+to multi-user serial login through HEART, Bridge, IOC3 and QLogic SCSI. The
+[November 23 graphics probe](results/2026-11-23-octane-impact.md) detects
+Solid and High IMPACT on XIO. Next, verify a rectangle on HQ4 scanout,
+then attach the framebuffer to wsdisplay. The branch still needs integration
+with NetBSD `xiri` and validation of both IRIX desktop release lines.
 
 - [ ] Classify the available physical Indigo2 by CPU and graphics; identify reusable support and additional port work.
 - [x] Boot native NetBSD on emulated IP28/R10000 with 1 GiB RAM, serial console, SCSI/FFS, Ethernet and clean halt. Both release-line disks pass; see the [November 22 result](results/2026-11-22-ip28-kernel.md).
