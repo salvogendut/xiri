@@ -51,6 +51,18 @@ not repin qualified kernels, emulator binaries, runtime resources or guest disks
 
 ## IRIS upstream updates
 
+On November 23 the IRIS fork merged 13 upstream commits through `0303cde8` into
+`xiri` at `305cea41`. Newport adopts the shared display refresh thread. The
+merge also preserves embedded listener shutdown and headless Onyx 3000 support.
+The accelerated build passed 425 targeted core tests (44 ignored), 119 GUI
+tests, 30 `iris-ci` tests and one monitor integration test. A separate run
+confirmed that the IMPACT transfer readback test exercised its graphics path.
+
+The [6.5.22 and 6.5.30 Indigo2 images](results/2026-11-22-impact-window-copy.md)
+remain pinned to their qualified emulator. Before building Prismatic against
+this merge, its renderer needs to accept the new status-bar pixel slice in
+`Renderer::present` and obtain CPU activity separately.
+
 The November 15 preview-packaging cycle integrates upstream `83c8dddc` as
 `444e35eb` on `xiri`, with a clean merge. The one incoming commit improves
 real-clock audio tests; it changes no production code. The affected test
