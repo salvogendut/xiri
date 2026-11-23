@@ -646,8 +646,9 @@ The [November 14 Octane check](results/2026-11-14-octane-platform.md) used an
 O2 kernel. The subsequent Octane topic branch boots its own NetBSD kernel
 to multi-user serial login through HEART, Bridge, IOC3 and QLogic SCSI. The
 [November 23 graphics probe](results/2026-11-23-octane-impact.md) detects
-Solid and High IMPACT on XIO. Next, verify a rectangle on HQ4 scanout,
-then attach the framebuffer to wsdisplay. The branch still needs integration
+Solid and High IMPACT on XIO. The [HQ4 drawing test](results/2026-11-23-octane-rectangle.md)
+checks a native PIO rectangle against every pixel of guest scanout. Next,
+attach the Octane framebuffer to wsdisplay. The branch still needs integration
 with NetBSD `xiri` and validation of both IRIX desktop release lines.
 
 - [ ] Classify the available physical Indigo2 by CPU and graphics; identify reusable support and additional port work.

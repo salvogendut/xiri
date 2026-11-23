@@ -36,9 +36,9 @@ Both machines use the IMPACT raster command set. On Indigo2, commands enter
 through HQ3 on GIO. On Octane, HQ4 exposes the command FIFO at a different
 offset in an XIO widget. HQ4 also has a separate DMA page-table port and sends
 interrupts to HEART. The existing Indigo2 `genfb` shadow, changed-span
-detection and drawing commands are candidates for reuse. The next drawing
-test is a programmed-I/O rectangle through the HQ4 FIFO with its colour and
-bounds checked on scanout. DMA can follow that proof.
+detection and drawing commands are candidates for reuse. The subsequent
+[programmed-I/O rectangle test](2026-11-23-octane-rectangle.md) checks
+the colour and bounds on HQ4 scanout. DMA remains a separate milestone.
 [IRIS HQ4 register map](https://github.com/salvogendut/iris/blob/592df243/src/dev/mgras/hq4.rs)
 and [OpenBSD IMPACT attachments](https://man.openbsd.org/OpenBSD-6.6/impact.4).
 

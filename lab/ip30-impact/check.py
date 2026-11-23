@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Boot the IP30 inventory kernel with an explicit IRIS graphics board."""
+"""Boot the IP30 inventory or rectangle test with an explicit IRIS graphics board."""
 import argparse
 import hashlib
 import json
@@ -9,8 +9,25 @@ import shlex
 import subprocess
 import sys
 import tempfile
+import time
 
 ROOT = Path(__file__).resolve().parents[2]
+
+
+def capture_at_shell(boot, out, ci):
+    """Sample after autoconfiguration and before the serial harness halts the guest."""
+    serial = out / 'serial.log'
+    while boot.poll() is None:
+        if serial.exists() and 'Enter pathname of shell' in serial.read_text(errors='replace'):
+            run = subprocess.run([str(ci), '--json', '--socket', str(out / 'iris.sock'),
+                                  'screenshot', str(out / 'rectangle.png')],
+                                 check=True, timeout=10, text=True, capture_output=True)
+            info = json.loads(run.stdout)
+            if info.get('fresh') is not True:
+                raise ValueError('guest display did not publish a fresh frame')
+            return
+        time.sleep(0.2)
+    raise ValueError('guest exited before the serial shell prompt')
 
 
 def main():
@@ -19,7 +36,12 @@ def main():
     for arg in ('emulator', 'kernel', 'firmware', 'disk', 'output'):
         parser.add_argument('--' + arg, type=Path, required=True)
     parser.add_argument('--board', choices=('solidimpact', 'highimpact', 'none'), required=True)
+    parser.add_argument('--rectangle', action='store_true',
+                        help='capture the PIO test kernel scanout before shutdown')
     args = parser.parse_args()
+    capture = args.rectangle and args.board != 'none'
+    if capture:
+        from scanout import check as check_scanout
     nvram = args.firmware / 'nvram.bin'
     # The Octane PROM uses the graphics console when a board is installed
     # and console=g. This harness sends boot commands over IOC3 serial.
@@ -41,12 +63,21 @@ def main():
         launcher.chmod(0o755)
         (launchers / 'iris-ci').symlink_to(emulator / 'iris-ci')
         probe = args.netbsd / 'xiri/platforms/probe.py'
-        subprocess.run([sys.executable, str(probe), '--xiri', str(ROOT),
-                        '--machine', 'octane', '--single-user', '--expect',
-                        'XIRI_IP30_M3D2_READY', '--image', str(args.kernel),
-                        '--disk', str(args.disk), '--flash', str(args.firmware / 'flash.bin'),
-                        '--nvram', str(nvram), '--emulator',
-                        str(launchers), '--output', str(out)], check=True)
+        command = [sys.executable, str(probe), '--xiri', str(ROOT),
+                   '--machine', 'octane', '--single-user', '--expect',
+                   'XIRI_IP30_M3D2_READY', '--image', str(args.kernel),
+                   '--disk', str(args.disk), '--flash', str(args.firmware / 'flash.bin'),
+                   '--nvram', str(nvram), '--emulator',
+                   str(launchers), '--output', str(out)]
+        capture_error = None
+        with subprocess.Popen(command) as boot:
+            if capture:
+                try:
+                    capture_at_shell(boot, out, emulator / 'iris-ci')
+                except (OSError, ValueError, subprocess.SubprocessError) as exc:
+                    capture_error = str(exc)
+            if boot.wait() != 0:
+                sys.exit(f'{args.board}: native boot failed; see {out / "result.json"}')
 
     serial = (out / 'serial.log').read_text(errors='replace')
     pattern = r'ip30gfxprobe0: IMPACT HQ4 at widget (\d+), id (0x[0-9a-f]+)'
@@ -60,6 +91,23 @@ def main():
     if widgets != expected or counts != [str(len(expected))]:
         result.update(status='inventory-failed',
                       error=f'unexpected inventory: widgets={widgets}, counts={counts}')
+    if args.rectangle:
+        submitted = serial.count('ip30gfxprobe0: HQ4 rectangle submitted')
+        if '(XIRI_IP30_HQ4_FILL)' not in serial:
+            result.update(status='draw-failed', error='expected the HQ4 fill kernel')
+        elif submitted != int(capture) or 'HQ4 rectangle submission failed' in serial:
+            result.update(status='draw-failed', error=f'rectangles submitted: {submitted}')
+        elif capture:
+            try:
+                if capture_error:
+                    raise ValueError(capture_error)
+                metrics = check_scanout(out / 'rectangle.png')
+                metrics['fresh'] = True
+                result['scanout'] = metrics
+                if metrics['inside_errors'] or metrics['outside_errors']:
+                    raise ValueError(f'pixel mismatches: {metrics}')
+            except (ValueError, OSError) as exc:
+                result.update(status='scanout-failed', error=str(exc))
     (out / 'result.json').write_text(json.dumps(result, indent=2) + '\n')
     if result['status'] != 'passed':
         sys.exit(f"{args.board}: {result['error']}")

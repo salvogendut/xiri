@@ -6,3 +6,5 @@ device ip30gfxprobe
 attach ip30gfxprobe at mainbus
 file ../../xiri/lab/ip30-impact/ip30gfxprobe.c ip30gfxprobe
 ip30gfxprobe0 at mainbus0 addr 0x10000000
+
+defflag opt_ip30gfx.h IP30_HQ4_FILL
