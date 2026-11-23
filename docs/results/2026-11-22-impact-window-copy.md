@@ -85,4 +85,6 @@ Each standalone CHD was verified with chdman and cold-booted through the saved g
 - **6.5.22** — `.work/native/xiri-ip28-dma-6.5.22-20261122/run-iris.sh`. [4Dwm screenshot](2026-11-22-impact-dma-6.5.22.png)
 - **6.5.30** — `.work/native/xiri-ip28-dma-6.5.30-20261122/run-iris.sh`. [4Dwm screenshot](2026-11-22-impact-dma-6.5.30.png)
 
+On November 23 the user tried the accelerated Indigo2 desktop in IRIS and reported that it looked good.
+
 The retained native kernel, debug symbols, loader, module and kernel configurations are in `.work/native/netbsd-ip28-dma-20261122/`. Both launchers select the Indigo2 R10000 with one High IMPACT display. The qualification used the emulator. Physical High IMPACT hardware still needs a separate test.
