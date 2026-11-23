@@ -296,9 +296,12 @@ runtime without reading a prepared image. Its [6.5.22f qualification](docs/resul
 passes installation/reinstallation, desktop/shell, logout/relogin and native ctwm.
 The separate 6.5.30 version now has a verified donor and reproducible payload.
 Its core desktop checks now pass on Indy/R5000 with shadow cache mode and a
-MIPS IV-aware module. Next, promote the matching native package and produce
-separate test CHDs, then qualify managed installation without inherited
-desktop configuration or user homes.
+MIPS IV-aware module. Both original-media release lines now have
+[clean Indy test CHDs and screenshots](docs/results/2026-11-23-clean-indy-desktops.md).
+They start from stock NetBSD 11.0 userland, boot the 11.99.11 modular kernel,
+and run accelerated 4Dwm or native ctwm according to the user's xdm session.
+The [installer guide](docs/NATIVE-PACKAGE.md#clean-installation-on-an-emulated-indy)
+covers building per-release media, installation and repeat installation.
 
 Compatibility is incomplete. The reproduced Type1 collapse is corrected;
 winterm keeps the verified NetBSD bitmap Courier default. Broader graphics operations,

@@ -49,6 +49,35 @@ IRIS_NO_IDLE=1 python3 lab/native-package/check-clean-bootstrap.py \
   --output .work/clean-indy-bootstrap
 ```
 
-The remaining installer stages are native service setup, per-release vendor
-import and graphical login. [Stock installation](../../docs/results/2026-10-29-indy-netbsd-install.md) ·
+This bootstrap ends at native multi-user login. The per-release installer
+and xdm qualification are described below. [Stock installation](../../docs/results/2026-10-29-indy-netbsd-install.md) ·
 [Kernel and module build](../irix-mips4/module-build.json)
+
+For 11.99.11 use `--native-package DIR --keep-target` in place of `--build`.
+This extracts and verifies the matching Indy kernel, wrapper and module from
+the native package. It retains the halted raw disk and serial PROM alongside
+the result JSON. Use these only as a common **pre-desktop** starting point
+for the independent release installations. The stock image remains available
+for another run. Build the two install CDs as described in the
+[native installation guide](../../docs/NATIVE-PACKAGE.md#clean-installation-on-an-emulated-indy).
+
+```sh
+python3 lab/native-package/check-clean-desktop.py install \
+  --base "$bootstrap" --media "$iso" --emulator "$emulator" \
+  --output "$run" --release "$release"
+python3 lab/native-package/package-clean-desktop.py \
+  --installation "$run" --emulator "$emulator" --output "$bundle"
+python3 lab/native-package/check-clean-desktop.py desktop \
+  --base "$bootstrap" --media "$iso" --emulator "$emulator" \
+  --output "$run" --release "$release" --bundle "$bundle" --kernel "$kernel"
+```
+
+Set `release` to `6.5.22f` or `6.5.30f`, use distinct run/bundle paths,
+and supply the exact unstripped Indy kernel as `kernel`. The guest fixture
+creates disposable xiritest and netbsdtest accounts, sends TERM to the installer
+during its first transaction, tests a conflicting administrator file and checks
+preservation on resume and repeat. Production installation creates no login
+accounts. Packaging verifies the CHD data SHA-1 against the halted raw disk.
+The desktop phase uses a private copy of the packaged CHD and the bundle's
+graphical PROM. Check the corresponding result JSON and desktop PNG before
+publishing a manual image.

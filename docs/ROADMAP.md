@@ -310,25 +310,24 @@ now passes native login, xdm and the 6.5.30f core desktop with shadow cache
 mode. The shared MIPS IV interpreter module also passes 6.5.22f regression
 checks. Separate [manual preview CHDs](results/2026-11-15-irix-previews.md)
 now package both tested disk states; their merged CHDs pass integrity checks,
-with fresh boots of the packaged bundles still to check. Promote the updated
-native package and qualify managed installation and repeat installation on a
-clean target without prepared desktop seeds or user homes. The [stock Indy
-bootstrap](XIRI-INSTALLATION.md#starting-from-stock-netbsd) covers the X sets,
-kernel switch and module load. Native services and vendor deployment are next.
-The linked MAME guide documents donor preparation; its IRIX formatting and Xsgi
-steps are not NetBSD installation instructions. Vendor import is qualified;
-the complete clean-target installer remains unfinished.
+as recorded in that earlier cycle. The [clean Indy installer and CHDs](results/2026-11-23-clean-indy-desktops.md)
+now cover stock 11.0 userland, the 11.99.11 kernel/module, accelerated
+Newport, native services and separate original-media 6.5.22f and 6.5.30f
+payloads. Both targets pass interruption/resume and reinstall, then a cold
+boot from the packaged CHD to full-screen 4Dwm and native ctwm through xdm.
+The next installer work is stock-kernel rollback, upgrades/removal and
+physical Indy qualification.
 
-- [ ] Maintain a separate original-media **IRIX 6.5.30** installation/import
+- [x] Maintain a separate original-media **IRIX 6.5.30** installation/import
   process, with its own media pins, donor CHD, resource profile and Xiri acceptance
   results. Start from Prismatic's recorded O2/Octane 6.5.30f installations; retain
   6.5.22 independently. See the [separate workflow](XIRI-INSTALLATION.md#separate-irix-6530-workflow).
   Always produce both 6.5.22 and 6.5.30 versions, with separate profiles,
   qualification records and test CHDs. Donor/export/profile/reproducibility are
   complete; Indy/R5000 native boot and core desktop acceptance now pass with
-  shadow cache mode. Separate manual preview CHDs are packaged. Broader 6.5.30
-  acceptance, native-package promotion and fresh checks of those bundles remain;
-  see the [O2 boot record](results/2026-11-23-o2-r10000-boot.md) for IP32/N64.
+  shadow cache mode. The shared Indy native package passes on both release
+  lines, including fresh graphical boots of the clean CHDs. Broader 6.5.30
+  application coverage remains open. See the [O2 boot record](results/2026-11-23-o2-r10000-boot.md) for IP32/N64.
   Share native artifacts only after checking both versions.
 
 The user requested these deployment changes on 2026-11-03. The implementation

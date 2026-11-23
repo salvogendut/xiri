@@ -9,6 +9,7 @@ import shutil
 import signal
 import subprocess
 import sys
+import tarfile
 import tempfile
 from types import SimpleNamespace
 
@@ -21,12 +22,27 @@ STOCK = {'disk.raw': '8f896ab101a1cb27e29bfe87cc4048cc61c17f2a148f58d24bba0fb1d0
 XSETS = ('xbase.tgz', 'xetc.tgz', 'xfont.tgz', 'xserver.tgz')
 
 
-def media(work, sets, build):
+def media(work, sets, build, native):
     signed = {}
     for line in (ROOT/'lab/netbsd-11.0/SHA512SUMS').read_text().splitlines():
         digest, relative_path = line.split()
         signed[relative_path] = digest
-    pins = json.loads((ROOT/'lab/irix-mips4/module-build.json').read_text())['artifacts']
+    release = '11.99.9'
+    if native:
+        profile = json.loads((ROOT/'profiles/netbsd-sgimips-indy-11.99.11-v1.json').read_text())
+        release = profile['target']['kernel_release']
+        pins = {}
+        with tarfile.open(native/'native.tar.gz') as archive:
+            for key in ('kernel', 'boot', 'module'):
+                row = profile['artifacts'][key]
+                name = Path(row['destination']).name
+                member = ('root' if key == 'module' else 'kernel') + row['destination']
+                with archive.extractfile(member) as stream:
+                    (work/name).write_bytes(stream.read())
+                pins[name] = dict(path=name, sha256=row['sha256'])
+        build = work
+    else:
+        pins = json.loads((ROOT/'lab/irix-mips4/module-build.json').read_text())['artifacts']
     files = {}
     for name in XSETS:
         path = sets/name
@@ -44,16 +60,20 @@ def media(work, sets, build):
     manifest.write_text(''.join(f'SHA256 ({k}) = {sha256(p)}\n' for k, p in files.items()))
     subprocess.run(['genisoimage', '-quiet', '-R', '-o', work/'bootstrap.iso', '-graft-points',
                     f'SHA256={manifest}', *(f'{k}={p}' for k, p in files.items())], check=True)
-    return {k: v['sha256'] for k, v in pins.items()}
+    return release, {k: v['sha256'] for k, v in pins.items()}
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    for name in ('base', 'sets', 'build', 'emulator', 'output'):
+    for name in ('base', 'sets', 'emulator', 'output'):
         parser.add_argument('--' + name, required=True, type=Path)
+    source = parser.add_mutually_exclusive_group(required=True)
+    source.add_argument('--build', type=Path, help='original 11.99.9 build directory')
+    source.add_argument('--native-package', type=Path, help='11.99.11 Indy native package')
+    parser.add_argument('--keep-target', action='store_true', help='retain the clean stopped disk and PROM in the output')
     args = parser.parse_args()
-    base, sets, build, emulator, out = (p.resolve() for p in (args.base, args.sets, args.build,
-                                                               args.emulator, args.output))
+    base, sets, emulator, out = (p.resolve() for p in
+                                 (args.base, args.sets, args.emulator, args.output))
     out.mkdir(parents=True, exist_ok=False)
     probe = load_probe()
     probe.TOOLBOX = []
@@ -66,7 +86,8 @@ def main():
             raise ValueError('original stock NetBSD checkpoint differs from its recorded hashes')
         with tempfile.TemporaryDirectory(dir=out) as scratch:
             work = Path(scratch)
-            pins = result['native_sha256'] = media(work, sets, build)
+            release, pins = media(work, sets, args.build, args.native_package)
+            result['native_sha256'] = pins
             subprocess.run(['cp', '--reflink=auto', '--sparse=always', base/'disk.raw', work/'disk.raw'], check=True)
             firmware = base/'nvram.bin'
             for phase in ('stock', 'modular'):
@@ -100,13 +121,13 @@ def main():
                             g.command(f'cd / && pax -rzpe -f /cdrom/{name}', 420)
                         g.command('test ! -e /netbsd.stock && cp -p /netbsd /netbsd.stock && '
                                   'install -m 444 /cdrom/netbsd /netbsd && install -m 444 /cdrom/netbsd.boot /netbsd.boot')
-                        g.command('m=/stand/sgimips/11.99.9/modules/compat_irix_o32; mkdir -p "$m" && '
+                        g.command(f'm=/stand/sgimips/{release}/modules/compat_irix_o32; mkdir -p "$m" && '
                                   'install -m 444 /cdrom/compat_irix_o32.kmod "$m/compat_irix_o32.kmod"')
                         g.command('grep -qx compat_irix_o32 /etc/modules.conf 2>/dev/null || '
                                   'echo compat_irix_o32 >> /etc/modules.conf')
                         g.command('sync')
                     else:
-                        g.command('test "$(uname -r)" = 11.99.9 && test -x /usr/X11R7/bin/Xorg && '
+                        g.command(f'test "$(uname -r)" = {release} && test -x /usr/X11R7/bin/Xorg && '
                                   'test -x /usr/X11R7/bin/xdm && test -f /netbsd.stock')
                         g.command('test "$(sha256 -q /netbsd)" = ' + pins['netbsd'])
                         g.command('test "$(sha256 -q /netbsd.boot)" = ' + pins['netbsd.boot'])
@@ -133,6 +154,9 @@ def main():
                     lab.close()
                     result['boots'].append(dict(phase=phase, halted=lab.clean_shutdown,
                                                 stopped=lab.process is None or lab.process.poll() is not None))
+            if args.keep_target:
+                (work/'disk.raw').rename(out/'disk.raw')
+                shutil.copyfile(firmware, out/'nvram.bin')
     except BaseException as error:
         result['error'] = f'{type(error).__name__}: {error}'
         raise

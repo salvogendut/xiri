@@ -58,6 +58,10 @@ at `030cc2c5e48`, followed by official NetBSD `upstream/trunk` at
 the new module in `/stand/sgimips/11.99.11/modules/compat_irix_o32/`
 before booting the new kernel. [Builds and guest checks](results/2026-11-23-netbsd-current.md)
 
+The clean Indy installer cycle rechecked IRIS upstream at `a05289ef`. The
+`xiri` branch at `08e53ba7` already contains it. The stock bootstrap and
+desktop tests use the pinned accelerated Newport build at `0bc52567`.
+
 ## Octane integration
 
 NetBSD `xiri` merges the Octane topic at `58fa1421606` and carries the

@@ -78,8 +78,7 @@ The [6.5.22f guest qualification](results/2026-11-14-native-package.md) passes
 installation and repeat installation, configuration/account preservation,
 full-screen desktop and shell, File Manager, logout/relogin, native ctwm and
 clean shutdown. The package also rejects wrong kernels and missing native
-prerequisites. Native-package promotion for 6.5.30 still requires its separate
-installation/reinstallation acceptance run.
+prerequisites. That result applies to the original 11.99.9 profile.
 The [Indy/R5000 application trial](results/2026-11-14-r5000-6.5.30.md) now
 passes core desktop/shell, logout/relogin and native ctwm checks with a newer
 module that admits the donor's MIPS IV n32 interpreter. That module also passes
@@ -87,16 +86,16 @@ module that admits the donor's MIPS IV n32 interpreter. That module also passes
 module pin; it is not silently repinned by that trial. The separate
 [O2/R10000 candidate](../lab/irix-o2/README.md) uses a separate IP32 kernel/module
 and native profile, the stock `crime` driver and `ip3xboot`; it does not use the
-Indy's patched Newport driver. Package construction passes, but native boot
-currently stops during SCSI initialization before package installation.
+Indy's patched Newport driver. The subsequent [O2 disk and Ethernet qualification](results/2026-11-23-o2-io.md)
+covers both release lines.
 
 ## Installation boundary
 
-This is the native **package and preflight** milestone. A managed installer
-with complete preflight for free space, backups, interrupted-install recovery,
-upgrades and removal remains separate. The qualification fixture copies only
-the known payload in a disposable guest; it is not the supported installer.
-Kernel/boot activation remains a separate operation before module loading.
+The historical native fixture qualified package assembly and preflight. The
+11.99.11 clean Indy installer below adds target space checks, original-file
+backups, conflict recovery and repeat installation. Version upgrades, removal
+and kernel rollback still need their own procedures and tests. Boot the
+matching kernel before installing its userspace.
 
 Defaults under `/etc/xiri` must be installed only if absent. Update `.example`
 files for review. Service/module examples are opt-in: preserve `rc.conf`,
@@ -110,3 +109,62 @@ own donor, profile, qualification and CHD. A common native package may serve
 both after separate desktop checks; neither version replaces the other.
 See the [complete installation plan](XIRI-INSTALLATION.md) for clean-target
 installation and the separate original-media donor processes.
+
+## Clean installation on an emulated Indy
+
+Use the [11.99.11 Indy profile](../profiles/netbsd-sgimips-indy-11.99.11-v1.json)
+with `./xiri package-native`. Supply the three Indy kernel artifacts from the
+[NetBSD integration build](results/2026-11-23-netbsd-current.json) and the
+three service/display artifacts listed above. This profile selects accelerated
+Newport at 1280×1024. Start with NetBSD 11.0/sgimips userland, the four X
+runtime sets, and the matching 11.99.11 kernel and boot-loaded module. The
+[stock bootstrap procedure](../lab/native-package/README.md#bootstrapping-a-stock-target)
+prepares this target from the recorded NetBSD installation.
+
+Build a local CD for each imported release. Replace the example paths with
+your local native package and previously generated donor imports.
+
+```sh
+for release in 6.5.22f 6.5.30f; do
+    ./xiri install-media --native-package .work/packages/indy-11.99.11 \
+        --vendor-payload ".work/imports/irix-${release}-v1" \
+        --output ".work/xiri-installer-${release}.iso" || exit 1
+done
+```
+
+Attach one ISO as a SCSI CD-ROM. On the corresponding booted Indy, log in as
+root on the console and run the following commands. Use a separate target
+disk for each release. The 6.5.22f medium includes the optional Acrobat import.
+The 6.5.30f medium uses the desktop and fonts import.
+
+```sh
+mkdir -p /cdrom
+mount -t cd9660 -o ro /dev/cd0a /cdrom
+sh /cdrom/install.sh
+```
+
+The installer verifies the media and running kernel, checks available space,
+stages and verifies the vendor files and catalog links, and installs the native
+runtime. It saves replaced native files under `/var/db/xiri-install/original`.
+On a stock NetBSD X installation this includes the original Newport driver
+symlink. It generates IRIX account mappings, font indexes and filetypes. It
+installs missing rc.conf.d defaults for rpcbind, PTYs, FAM, sessions and xdm.
+Existing service settings and files under `/etc/xiri` take precedence. An
+existing unmanaged vendor tree or conflicting `/usr/lib/desktop` requires
+administrator review. Correct the reported conflict and repeat
+`sh /cdrom/install.sh` with the same release and native build. A finished
+installation has a receipt at `/var/db/xiri-install/installed`.
+
+Create desktop users through normal NetBSD account administration. An IRIX-style
+home is `/usr/people/USERNAME`. Select the desktop by running the following
+command **as that user** after reviewing any existing `~/.xsession`:
+
+```sh
+install -m 700 /usr/local/share/xiri/xdm.xsession "$HOME/.xsession"
+```
+
+Keep the stock Xsession selection for users who want NetBSD ctwm. Ensure the
+local hostname resolves. On the Indy, use graphics console `g` in the PROM,
+reserve `ttyE0` for X and enable serial `ttyZ0` for recovery. Reboot to start
+services in rc order. See [user session configuration](../runtime/README.md)
+for additional accounts and existing xdm configurations.

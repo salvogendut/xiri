@@ -1,0 +1,196 @@
+{
+  "platform": "Emulated Indy IP24, 256 MiB, accelerated Newport, stock NetBSD 11.0 userland/X sets",
+  "bootstrap": {
+    "stock": {
+      "disk.raw": "8f896ab101a1cb27e29bfe87cc4048cc61c17f2a148f58d24bba0fb1d0c21926",
+      "nvram.bin": "602d954b2e8f076887c54ed301dff7dbd9cc0c6be138e537e5bc732c948d344e"
+    },
+    "xsets": [
+      "xbase.tgz",
+      "xetc.tgz",
+      "xfont.tgz",
+      "xserver.tgz"
+    ],
+    "boots": [
+      {
+        "phase": "stock",
+        "halted": true,
+        "stopped": true
+      },
+      {
+        "phase": "modular",
+        "halted": true,
+        "stopped": true
+      }
+    ],
+    "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+    "native_sha256": {
+      "netbsd": "6a03b86ae641ef1fc1bef7c8e999c1a9f349580ae405c85c0da30451fb7c58a1",
+      "netbsd.boot": "a1367bb88f95edaf7bf84fe466636b1e4b129ad12f30c7d787588d88b8f21c0c",
+      "compat_irix_o32.kmod": "44ce8e5aafd5b7bf1e20ee37b0ab71fcfd964067d81b288fbc6d2bd4310583b8"
+    },
+    "stock_kernel": "NetBSD 11.0 (GENERIC32_IP2x) #0: Thu Jul 30 15:23:12 UTC 2026  mkrepro@mkrepro.NetBSD.org:/usr/src/sys/arch/sgimips/compile/GENERIC32_IP2x",
+    "modular_kernel": "NetBSD 11.99.11 (XIRI_IRIX_MODULE_20261103) #0: Mon Nov 23 18:09:22 UTC 2026  salvogendut@minisforum.golgota.lan:/var/home/salvogendut/Dev/xiri/.work/netbsd-sync-20261123/indy/kernel",
+    "module": "compat_irix_o32            exec     filesys  -        0       - exec_elf32,compat_netbsd32",
+    "securelevel": 1,
+    "originals_unchanged": true,
+    "passed": true
+  },
+  "kernel_source": "c096ddb347d",
+  "iris": "0bc52567a87349a5f521c702f9d8dec1dc0f79c6",
+  "iris_upstream_checked": "a05289ef",
+  "iris_integration": "08e53ba7",
+  "native_profile": "netbsd-sgimips-indy-11.99.11-v1",
+  "native_package_sha256": "8fe4ab367981937353616eb82e6cc0fdd073458103151d101001f7e039379859",
+  "native_manifest_sha256": "258ef362a3542623a35249412a114dd5ca04aaddefc6c1996e1e215ab31bd110",
+  "native_files": 48,
+  "native_prerequisites": 80,
+  "installer_sha256": "aa95e22f5d2f7eaf85b4c0e943b98603e778116c878d817ca16d4839c4b944d9",
+  "releases": {
+    "6.5.22f": {
+      "installation": {
+        "release": "6.5.22f",
+        "cpu": "r4400",
+        "iso_sha256": "34297d33d7b4e204edeb46c57a11304fbb26d239942d2476a183554cac439ea2",
+        "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+        "checks": {
+          "release": "6.5.22f",
+          "receipts": "6.5.22f 8fe4ab367981937353616eb82e6cc0fdd073458103151d101001f7e039379859 6feb87643a47b0128fe635b7d06903ef2e78da0317ba29c5a88a700c85403dec",
+          "preserved": [
+            "SHA256 (/etc/passwd) = 98347a3131d039b1575858c5f045546bf46334b9b87678906f3a08a4263350b7",
+            "SHA256 (/etc/master.passwd) = d5f299d17397c0a9e2811809d672fe77d528fa8362d18eef8b63261deb650b3a",
+            "SHA256 (/etc/group) = 92ebfe8f5c1463deafc6b351153328f9ca5c1dd9076ecdd801959fc2d99cfb76",
+            "SHA256 (/etc/ttys) = ecd4840652ef37a24427726e51933bc7bc6e52b54ac75e5afff97e45bcf7ede6",
+            "SHA256 (/etc/hosts) = 3b71103eb3dca3fc0c569618dfbc745ea2a94055e16980c96ff00e834c7a0552",
+            "SHA256 (/etc/modules.conf) = 40e82147f94b657426abd62f7ef614185161672d782176c2588868fb34cece28",
+            "SHA256 (/etc/rc.conf) = ee8acc5add3b1cca5c7aeeaf2e308d9cae1dddc5576b58bc1400132938c2e9d1",
+            "SHA256 (/usr/people/xiritest/.Xresources) = 5922cc30b11108c7bc07b9038bcbd4f9b5f389864984c92785cdd0a2600004d5",
+            "SHA256 (/etc/xiri/session.conf) = befefeae4db308c8dbd77f83522a95f0d8d672e800e69426cd6dca718c4db95f",
+            "SHA256 (/usr/people/xiritest/.xsession) = 983ecc9eaa9763d5198b99c9a55b86a1a9dd785e851370144dcd8d9ec98233f3",
+            "SHA256 (/etc/rc.conf.d/xdm) = 7d5dd700ab908e38815502cf00d4cd354ed4a7602abaa174c59a63e6b801a4f5"
+          ],
+          "terminated_mid_install": true,
+          "original_conflict_preserved": true,
+          "resumed": true,
+          "repeated": true
+        },
+        "halted": true,
+        "stopped": true
+      },
+      "desktop": {
+        "release": "6.5.22f",
+        "cpu": "r4400",
+        "iso_sha256": "34297d33d7b4e204edeb46c57a11304fbb26d239942d2476a183554cac439ea2",
+        "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+        "chd_sha256": "bd4bcc59c1845a3d9a50e0245d0c705ff9dea022ce2f96c6e5afcf58794fe328",
+        "checks": {
+          "identity": "SESSION user=xiritest uid=1234 groups=1234 home=/usr/people/xiritest cwd=/usr/people/xiritest display=127.0.0.1:0 authority=/tmp/.Xauthi6Xmne",
+          "winterm_handoff": "NATIVE_HANDOFF pid=363 sid=363 pgid=363 tpgid=363 uid=1234 euid=1234 gid=1234 egid=1234 groups=1 tty=/dev/pts/1 rows=24 cols=78",
+          "dimensions": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+          "newport_log": "[    35.505] (**) NEWPORT(0): Option \"NoAccel\" \"false\"\n[    35.661] (II) NEWPORT(0): Using XFree86 Acceleration Architecture (XAA)",
+          "windows": [
+            "Toolchest",
+            "Icon Catalog",
+            "winterm",
+            "xclock"
+          ],
+          "original_shell": true,
+          "native_session": "ctwm + xterm",
+          "native_processes": "PID COMMAND\n675 /usr/X11R7/bin/xterm",
+          "both_logouts": true,
+          "desktop_png_sha256": "ac210787458ecc53a28528b6c3824b92ad1094476b17d431a4652dcc43993cac",
+          "ctwm_png_sha256": "ccffac6e2124e6c15964d5acbd0653e3fbf26ebd4f887efea6ed6ad9b5aa39c6"
+        },
+        "halted": true,
+        "stopped": true
+      },
+      "bundle": ".work/images/xiri-clean-indy-6.5.22f-20261123",
+      "image": {
+        "release": "6.5.22f",
+        "raw_sha1": "fb38f1bda589dd4d20cec6e4f36a5e0a8e34858d",
+        "chd_sha256": "bd4bcc59c1845a3d9a50e0245d0c705ff9dea022ce2f96c6e5afcf58794fe328",
+        "nvram_sha256": "f032c2d18e41f6a9fd6f456d7a0ad60ab18844c1303f8f81ea19154c5a2861ea",
+        "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+        "install_result_sha256": "40ea9464d09122042fe1341c7ea6af75335b92a2941847136cb44f0465f23a8d"
+      },
+      "import_manifest_sha256": "61614b1dc24ed332641a20630603c012f69268b787ff6c5aebd85db756eca071",
+      "screenshots": {
+        "desktop": "docs/results/2026-11-23-clean-indy-6.5.22f-desktop.png",
+        "ctwm": "docs/results/2026-11-23-clean-indy-6.5.22f-ctwm.png"
+      }
+    },
+    "6.5.30f": {
+      "installation": {
+        "release": "6.5.30f",
+        "cpu": "r5000",
+        "iso_sha256": "0ac5b24ec3103ccbe671b5a108d7f05d41fe612a487c84b872f1dd2d67ce19a3",
+        "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+        "checks": {
+          "release": "6.5.30f",
+          "receipts": "6.5.30f 8fe4ab367981937353616eb82e6cc0fdd073458103151d101001f7e039379859 21060cf7415e730d6efb3d690e51d08aafb15d689ecb0f2fdd9c8638a33bfde7",
+          "preserved": [
+            "SHA256 (/etc/passwd) = 98347a3131d039b1575858c5f045546bf46334b9b87678906f3a08a4263350b7",
+            "SHA256 (/etc/master.passwd) = 780e9e52f725cb116830009214ff20a0cee968999619fd770ec7697d93bfd0bd",
+            "SHA256 (/etc/group) = 92ebfe8f5c1463deafc6b351153328f9ca5c1dd9076ecdd801959fc2d99cfb76",
+            "SHA256 (/etc/ttys) = ecd4840652ef37a24427726e51933bc7bc6e52b54ac75e5afff97e45bcf7ede6",
+            "SHA256 (/etc/hosts) = 3b71103eb3dca3fc0c569618dfbc745ea2a94055e16980c96ff00e834c7a0552",
+            "SHA256 (/etc/modules.conf) = 40e82147f94b657426abd62f7ef614185161672d782176c2588868fb34cece28",
+            "SHA256 (/etc/rc.conf) = ee8acc5add3b1cca5c7aeeaf2e308d9cae1dddc5576b58bc1400132938c2e9d1",
+            "SHA256 (/usr/people/xiritest/.Xresources) = 5922cc30b11108c7bc07b9038bcbd4f9b5f389864984c92785cdd0a2600004d5",
+            "SHA256 (/etc/xiri/session.conf) = befefeae4db308c8dbd77f83522a95f0d8d672e800e69426cd6dca718c4db95f",
+            "SHA256 (/usr/people/xiritest/.xsession) = 983ecc9eaa9763d5198b99c9a55b86a1a9dd785e851370144dcd8d9ec98233f3",
+            "SHA256 (/etc/rc.conf.d/xdm) = 7d5dd700ab908e38815502cf00d4cd354ed4a7602abaa174c59a63e6b801a4f5"
+          ],
+          "terminated_mid_install": true,
+          "original_conflict_preserved": true,
+          "resumed": true,
+          "repeated": true
+        },
+        "halted": true,
+        "stopped": true
+      },
+      "desktop": {
+        "release": "6.5.30f",
+        "cpu": "r5000",
+        "iso_sha256": "0ac5b24ec3103ccbe671b5a108d7f05d41fe612a487c84b872f1dd2d67ce19a3",
+        "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+        "chd_sha256": "31c56a34c934d8151517b2745138e5756aaf6ecac8df1c828a3208ed4510e39a",
+        "checks": {
+          "identity": "SESSION user=xiritest uid=1234 groups=1234 home=/usr/people/xiritest cwd=/usr/people/xiritest display=127.0.0.1:0 authority=/tmp/.XauthYsAVz7",
+          "winterm_handoff": "NATIVE_HANDOFF pid=507 sid=507 pgid=507 tpgid=507 uid=1234 euid=1234 gid=1234 egid=1234 groups=1 tty=/dev/pts/1 rows=24 cols=78",
+          "dimensions": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+          "newport_log": "[    36.166] (**) NEWPORT(0): Option \"NoAccel\" \"false\"\n[    37.741] (II) NEWPORT(0): Using XFree86 Acceleration Architecture (XAA)",
+          "windows": [
+            "Toolchest",
+            "Icon Catalog",
+            "winterm",
+            "xclock"
+          ],
+          "original_shell": true,
+          "native_session": "ctwm + xterm",
+          "native_processes": "PID COMMAND\n921 sh",
+          "both_logouts": true,
+          "desktop_png_sha256": "ae2e2228c936501f67ffc1507a5b5c28f1f278a2ad575d12b97b442b0383c2c4",
+          "ctwm_png_sha256": "ccffac6e2124e6c15964d5acbd0653e3fbf26ebd4f887efea6ed6ad9b5aa39c6"
+        },
+        "halted": true,
+        "stopped": true
+      },
+      "bundle": ".work/images/xiri-clean-indy-6.5.30f-20261123",
+      "image": {
+        "release": "6.5.30f",
+        "raw_sha1": "bef0d4ad1e1db51b4d774e334fbc0463aff330a9",
+        "chd_sha256": "31c56a34c934d8151517b2745138e5756aaf6ecac8df1c828a3208ed4510e39a",
+        "nvram_sha256": "9eb0b17e62c09a86629543470f821fe7b0323cd0a0e707c226c35c60afafe3e8",
+        "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+        "install_result_sha256": "08740c83f4e5b43fcdb6d99c6476bda537b40059214894644fdaec2a9ea156e6"
+      },
+      "import_manifest_sha256": "976f3b8cad96e4562657f7a28624ad82dee5506989e9408c8d8daddc3298d220",
+      "screenshots": {
+        "desktop": "docs/results/2026-11-23-clean-indy-6.5.30f-desktop.png",
+        "ctwm": "docs/results/2026-11-23-clean-indy-6.5.30f-ctwm.png"
+      }
+    }
+  },
+  "host_tests": 84
+}

@@ -156,6 +156,9 @@ def parser():
     add_arguments(sub.add_parser('import', help='build a versioned vendor payload from an IRIX donor'))
     from .native_package import add_arguments as native_arguments
     native_arguments(sub.add_parser('package-native', help='assemble pinned native artifacts and build the session runtime'))
+    medium = sub.add_parser('install-media', help='combine a local native package and one verified desktop import into an ISO')
+    for name in ('native-package', 'vendor-payload', 'output'):
+        medium.add_argument('--'+name, required=True, type=Path)
     status = sub.add_parser('status', help='show selected artifacts and current source branches')
     status.add_argument('--json', action='store_true')
     sub.add_parser('doctor', help='verify selected immutable artifacts and host prerequisites')
@@ -178,6 +181,9 @@ def parser():
 
 def main(argv=None):
     args = parser().parse_args(argv)
+    if args.action == 'install-media':
+        from .install_media import run
+        return run(args)
     if args.action == 'import':
         from .irix_import import run
         return run(args)

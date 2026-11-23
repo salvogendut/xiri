@@ -39,3 +39,9 @@ the next installation stage; preflight success alone is not a working desktop.
 Maintain both IRIX 6.5.22 and 6.5.30 deliverables. Native components can be shared,
 but each vendor release requires its own import profile, desktop qualification
 and CHD. A passing 6.5.22 session does not qualify 6.5.30.
+
+The clean Indy profile targets the 11.99.11 kernel with stock 11.0 userland.
+`./xiri install-media` puts `install-desktop.sh`, that native package, and
+one verified local donor payload on a CD. Run the installer from the mounted
+CD on the matching bootstrapped target. See the [clean installation
+instructions](../../docs/NATIVE-PACKAGE.md#clean-installation-on-an-emulated-indy).

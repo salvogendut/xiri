@@ -119,9 +119,11 @@ the stock kernel, and installs the matching Xiri kernel, boot wrapper and
 module on a private disk. The PROM boots `netbsd.boot` and NetBSD loads
 `compat_irix_o32` through `/etc/modules.conf`. The [bootstrap
 record](results/2026-11-23-clean-bootstrap.json) identifies the exact disk,
-kernels, module and emulator. The next stage on this base is to install the
-native services and each release's vendor payload, then test xdm login and
-repeat installation while preserving the user's home. The modular boot
+kernels, module and emulator for that first 11.99.9 run. The
+[11.99.11 installer](NATIVE-PACKAGE.md#clean-installation-on-an-emulated-indy)
+combines a new native package with each release's verified vendor payload. It
+installs on a fresh clone of the stock bootstrap and preserves existing user
+and site configuration across a repeat installation. The modular boot
 reproduces the earlier `savecore` warning about the missing `_dumpdev` symbol.
 Crash-dump collection remains open. [Earlier modular boot](results/2026-11-03-irix-module-image.md)
 
@@ -144,8 +146,8 @@ records every source/destination, source type, canonical path, mode, hash,
 dependency and omitted catalog link. Two independent donor builds produced
 identical payloads and manifests. The [profile guide](../profiles/README.md)
 documents reproducibility, the read-only extraction boundary, required native
-components and disposable NetBSD qualification. No complete stock-NetBSD
-installer or IRIX 6.5.30 qualification is implied by this import step.
+components and disposable NetBSD qualification. The separate clean installation
+procedure above consumes this payload.
 
 ## Separate IRIX 6.5.30 workflow
 
@@ -272,17 +274,16 @@ test passwords and probe histories must not be installation prerequisites.
 | --- | --- | --- |
 | Read-only donor access | `./xiri import` takes explicit source/output paths, pins the donor, mounts XFS with `ro,norecovery`, reports missing files and cleans temporary extraction state. | Broader release/partition discovery and separately audited donor profiles. |
 | Resource provenance | Versioned 6.5.22f desktop/fonts/Acrobat profile, dependency closure, conflict checks and missing-component errors. | Separate sources and profiles for GIMP, GNOME and freeware absent from this donor. |
-| Payload archive | Normalized modes and metadata; two builds produce identical archives/manifests. NetBSD pax extraction passes all file hashes. | Managed installation with target-side type/mode/link verification, backup and retry semantics. |
-| Native runtime | [Native packager](NATIVE-PACKAGE.md) cross-builds helpers from pinned sets, assembles maintained integration files and records the native ELF closure. [6.5.22f qualification](results/2026-11-14-native-package.md) passes repeat installation, preserved configuration and desktop/native-user checks. | Complete managed-install preflight, backups, recovery and owned-file records. |
-| Kernel/module | A stock NetBSD 11.0 Indy cold-boots the pinned kernel and loads the matching module after the X sets are installed. | Integrate that stage with managed installation and qualify rollback to the saved kernel. |
-| Display and native services | Native package includes the pinned Newport driver, Xorg configuration and patched FAM/rpcbind; stock X libraries and tools are explicit prerequisites. | Rebuild changed artifacts through audited profiles; qualify complete clean-target deployment. |
-| Desktop validation | Imported 6.5.22f desktop/shell/File Manager, logout/relogin and native ctwm smoke checks on a qualified native base. | Run the broader image/multi-user/preferences checks on a clean installation, including reinstall and failure recovery. |
-| Reusable CHD | Current `build-xiri-image.py` verifies a prepared guest and its CHD round trip. | Make CHD production consume the same installation workflow rather than a chain of previously modified desktop images. |
+| Payload archive | Normalized modes and metadata; two builds produce identical archives/manifests. NetBSD pax extraction passes all file hashes. | Exercise additional component selections and disk-full recovery. |
+| Native runtime | [Native packager](NATIVE-PACKAGE.md) cross-builds helpers from pinned sets, assembles maintained integration files and records the native ELF closure. [6.5.22f qualification](results/2026-11-14-native-package.md) passes repeat installation, preserved configuration and desktop/native-user checks. | Qualify version upgrades and removal using the installer receipts and native backups. |
+| Kernel/module | A stock NetBSD 11.0 Indy cold-boots the pinned kernel and loads the matching module after the X sets are installed. | Qualify rollback to the saved stock kernel. |
+| Display and native services | Native package includes the pinned Newport driver, Xorg configuration and patched FAM/rpcbind; stock X libraries and tools are explicit prerequisites. | Repeat deployment on physical Indy hardware. |
+| Desktop validation | Both clean Indy releases cold-boot to xdm, run 4Dwm with the original shell and native ctwm with UXTerm, and return to xdm. | Extend clean-target coverage to preferences and additional applications. |
+| Reusable CHD | [Clean Indy bundles](results/2026-11-23-clean-indy-desktops.md) are built directly from the halted per-release installations, verified against raw bytes and booted from private overlays. | Repeat this installer qualification on additional platforms. |
 
 The initial 1,990-record ledger alone was insufficient. The new profile includes
-later vendor resources available in this donor. Native fixes and configuration
-are still inherited by the qualification image, so a fresh installation also
-requires the native packaging and managed-install stages.
+later vendor resources available in this donor. The original qualification used a prepared native image. The clean Indy test
+now exercises native installation and both vendor releases on stock userland.
 
 ## Acceptance for the first supported workflow
 
@@ -290,6 +291,7 @@ requires the native packaging and managed-install stages.
   file inventories and archive hashes. **Passed for the 6.5.22f profile.**
 - Complete an installation on a clean, compatible NetBSD target without copying
   a prepared Xiri desktop filesystem or relying on historical probe directories.
+  **Passed on both emulated Indy targets.** [Results and screenshots](results/2026-11-23-clean-indy-desktops.md)
 - Verify required bytes, types, modes and symlinks, and demonstrate useful errors
   for a missing component, wrong kernel/module pair or insufficient space.
 - Repeat installation without overwriting user preferences or administrator

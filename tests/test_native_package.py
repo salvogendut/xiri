@@ -10,11 +10,19 @@ import unittest
 from unittest.mock import patch
 
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
-from xiri_lab import sha256
+from xiri_lab import ROOT, sha256
 from xiri_lab.native_package import archive_tree, build, ledger, pins, prerequisites, rooted
 
 
 class NativePackageTests(unittest.TestCase):
+    def test_clean_indy_supplies_toolchest_menu(self):
+        profile = json.loads((ROOT/'profiles/netbsd-sgimips-indy-11.99.11-v1.json').read_text())
+        menu = '/usr/local/share/xiri/toolchest.chestrc'
+        self.assertIn(menu, (ROOT/'runtime/libexec/desktop-clients.sh').read_text())
+        contents = (ROOT/profile['configuration_sources'][menu]).read_text()
+        self.assertIn('include /usr/lib/X11/system.chestrc', contents)
+        self.assertIn('/usr/local/bin/xiri-logout', contents)
+
     def setUp(self):
         temp=tempfile.TemporaryDirectory()
         self.addCleanup(temp.cleanup)
