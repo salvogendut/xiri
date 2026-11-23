@@ -89,6 +89,10 @@ overlay = true
 mode = "nat"
 tftp_dir = {json.dumps(str(args.kernel.resolve().parent))}
 '''
+    if args.xorg:
+        import xorg
+        media = xorg.prepare(out)
+        config += '[scsi.4]\ncdrom = true\npath = ' + json.dumps(str(media)) + '\n'
     lab = probe.Lab(SimpleNamespace(mode='ci', debugger=False), out, config_text=config,
                     working_directory=out, scsi1_from_config=True)
     result = dict(board=args.board, inputs=inputs, status='incomplete')
@@ -109,11 +113,14 @@ tftp_dir = {json.dumps(str(args.kernel.resolve().parent))}
                 r'XIRI_IP30_\w+_FAILED|panic:|HQ4 FIFO timeout', serial):
             raise ValueError('native platform check failed before the shell')
         result['scsi_ready'] = True
-        if '(XIRI_IP30_HQ4_WSDISPLAY)' not in serial:
+        kernels = ['XIRI_IP30_HQ4_XORG']
+        if not args.xorg:
+            kernels.append('XIRI_IP30_HQ4_WSDISPLAY')
+        if not any(f'({ident})' in serial for ident in kernels):
             raise ValueError('unexpected kernel identity')
         boards = re.findall(r'ip30gfxprobe0: (\d+) IMPACT board\(s\)', serial)
-        display = 'wsdisplay0 at hq4fb0: console'
-        if boards != [str(int(graphics))] or (display in serial) != graphics:
+        display = re.search(r'wsdisplay0 at hq4fb0(?: kbdmux \d+)?: console', serial)
+        if boards != [str(int(graphics))] or bool(display) != graphics:
             raise ValueError('unexpected graphics attachment')
         if graphics:
             result['boot_scanout'] = capture(lab, probe.CI, out/'boot.png', font,
@@ -129,6 +136,8 @@ tftp_dir = {json.dumps(str(args.kernel.resolve().parent))}
         if graphics:
             result['shell_scanout'] = capture(lab, probe.CI, out/'shell.png', font,
                                               ['Octane console ready', 'on / type ffs (read-only'])
+        if args.xorg:
+            result['xorg'] = xorg.run(lab, probe.CI, out)
         lab.send('shutdown -h now')
         lab.wait('unmounting done', 90)
         lab.wait(r'Option\?', 30)

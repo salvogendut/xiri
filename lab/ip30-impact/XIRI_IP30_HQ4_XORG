@@ -1,0 +1,17 @@
+# Octane native wscons input and Xorg/wsfb.
+include "../../xiri/lab/ip30-impact/XIRI_IP30_HQ4_WSDISPLAY"
+ident "XIRI_IP30_HQ4_XORG"
+
+device iockbc: pckbport
+attach iockbc at mainbus
+file ../../xiri/lab/ip30-impact/iockbc.c iockbc
+iockbc0 at mainbus0 addr 0x1f60009c
+pckbd* at iockbc? slot 0
+pms* at iockbc? slot 1
+wskbd* at pckbd? console ?
+wsmouse* at pms? mux 0
+pseudo-device wsmux
+options WSDISPLAY_COMPAT_USL
+options WSDISPLAY_COMPAT_RAWKBD
+options SYSVSHM
+cd* at scsibus? target ? lun ?

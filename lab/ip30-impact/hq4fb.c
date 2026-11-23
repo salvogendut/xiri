@@ -119,12 +119,29 @@ hq4fb_ioctl(void *v, void *vs, u_long cmd, void *data, int flag, struct lwp *l)
 	return EPASSTHROUGH;
 }
 
+static paddr_t
+hq4fb_mmap(void *v, void *vs, off_t off, int prot)
+{
+	struct hq4fb_softc *sc = v;
+	paddr_t pa;
+
+	if (off < 0 || off >= FB_BYTES || (off & PAGE_MASK) != 0 ||
+	    (prot & VM_PROT_EXECUTE) != 0)
+		return -1;
+	if (!pmap_extract(pmap_kernel(), (vaddr_t)sc->pixels + off, &pa))
+		return -1;
+	return mips_btop(pa);
+}
+
 static int
 hq4fb_finalize(device_t self)
 {
 	struct hq4fb_softc *sc = device_private(self);
 	prop_dictionary_t props = device_properties(self);
-	struct genfb_ops ops = { .genfb_ioctl = hq4fb_ioctl };
+	struct genfb_ops ops = {
+		.genfb_ioctl = hq4fb_ioctl,
+		.genfb_mmap = hq4fb_mmap,
+	};
 	int error;
 
 	if (sc->initialized)

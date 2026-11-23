@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Boot an IP30 inventory, rectangle or wsdisplay test with an explicit graphics board."""
+"""Boot an IP30 graphics or input test with an explicit IRIS board."""
 import argparse
 import hashlib
 import json
@@ -38,6 +38,7 @@ def main():
     parser.add_argument('--board', choices=('solidimpact', 'highimpact', 'none'), required=True)
     mode = parser.add_mutually_exclusive_group()
     mode.add_argument('--wsdisplay', action='store_true', help='verify kernel and shell text on wsdisplay')
+    mode.add_argument('--xorg', action='store_true', help='check IOC3 input and full-screen wsfb')
     mode.add_argument('--rectangle', action='store_true',
                       help='capture the PIO test kernel scanout before shutdown')
     args = parser.parse_args()
@@ -49,7 +50,9 @@ def main():
     # and console=g. This harness sends boot commands over IOC3 serial.
     if args.board != 'none' and nvram.read_bytes()[0x11:0x13] != b'd\0':
         parser.error("use an Octane NVRAM saved after 'setenv console d'")
-    if args.wsdisplay:
+    if args.xorg and args.board == 'none':
+        parser.error('--xorg requires an IMPACT board')
+    if args.wsdisplay or args.xorg:
         from wsconsole import run
         run(args)
         return

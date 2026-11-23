@@ -649,9 +649,10 @@ to multi-user serial login through HEART, Bridge, IOC3 and QLogic SCSI. The
 Solid and High IMPACT on XIO. The [HQ4 drawing test](results/2026-11-23-octane-rectangle.md)
 checks a native PIO rectangle against every pixel of guest scanout. The
 [Octane wsdisplay console](results/2026-11-23-octane-wsdisplay.md) shows kernel
-messages and native shell output on both boards. Next, bring up IOC3 keyboard
-and mouse input and the wsfb Xorg path. The Octane topic still needs integration
-with NetBSD `xiri` and qualification of both IRIX desktops.
+messages and native shell output on both boards. [Full-screen Xorg and IOC3
+input](results/2026-11-23-octane-xorg.md) pass with a native Xlib client on
+both release disks. Next, integrate the Octane topic with NetBSD `xiri`,
+build a matching IRIX compatibility module and qualify both desktops.
 
 - [ ] Classify the available physical Indigo2 by CPU and graphics; identify reusable support and additional port work.
 - [x] Boot native NetBSD on emulated IP28/R10000 with 1 GiB RAM, serial console, SCSI/FFS, Ethernet and clean halt. Both release-line disks pass; see the [November 22 result](results/2026-11-22-ip28-kernel.md).

@@ -15,8 +15,9 @@ The O2/R10000 native SCSI trap remains separate work. Physical hardware needs
 separate qualification.
 On the emulated Octane, the native NetBSD kernel now shows boot messages and
 the single-user shell on both Solid and High IMPACT. The console works with
-both release-line disks. Octane Xorg and desktop qualification are still ahead.
-[Octane console screenshot and test instructions](docs/results/2026-11-23-octane-wsdisplay.md)
+both release-line disks. Native Xorg now fills the 1280×1024 screen and
+accepts IOC3 keyboard and mouse input. The Octane IRIX module and desktop
+qualification are next. [Octane Xorg screenshot and test instructions](docs/results/2026-11-23-octane-xorg.md)
 
 The current desktop runs original 4Dwm, Toolchest, Icon Catalog, File Manager,
 winterm, xclock and Desks Overview. It has SGI fonts, the granite backdrop,
