@@ -38,6 +38,10 @@ capture also passed on the previously qualified interpreter at `592df243`.
 
 ## Reproduction
 
+For these historical commands use Xiri lab revision `b367bec` with the
+Octane topic revision recorded here. Current NetBSD `xiri` contains the
+drivers and kernel configurations in-tree.
+
 Start in the Xiri checkout with the Octane NetBSD topic at `8f744b33e95`,
 the sgimips cross tools and a new build directory. The opt-in drawing kernel
 uses the IMPACT register definitions from the NetBSD integration branch.

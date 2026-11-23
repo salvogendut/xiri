@@ -1,16 +1,2 @@
-# Native Octane graphics discovery, using the existing serial console and root.
-include "arch/sgimips/conf/XIRI_IP30_M4A_PHYS"
-ident "XIRI_IP30_HQ4"
-
-define ip30hq4bus {}
-device ip30gfxprobe: ip30hq4bus
-attach ip30gfxprobe at mainbus
-file ../../xiri/lab/ip30-impact/ip30gfxprobe.c ip30gfxprobe
-ip30gfxprobe0 at mainbus0 addr 0x10000000
-
-defflag opt_ip30gfx.h IP30_HQ4_FILL
-
-device hq4fb: genfb, wsemuldisplaydev
-attach hq4fb at ip30hq4bus
-file ../../xiri/lab/ip30-impact/hq4fb.c hq4fb needs-flag
-file ../../xiri/lab/ip30-impact/hq4_pio.c hq4fb | ip30_hq4_fill
+# Compatibility entry point for existing lab commands.
+include "arch/sgimips/conf/XIRI_IP30_HQ4"

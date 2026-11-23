@@ -1,0 +1,87 @@
+{
+  "netbsd": "fbb11636cc40bfeab24f055be133801c919c702e",
+  "netbsd_topic_merge": "58fa1421606b723baac45e08dbf4366266eb4980",
+  "iris_upstream": "a05289efc808ee1320195481f6cab4cfee16bef9",
+  "iris_xiri": "08e53ba7e183cbfd3b2e7e6d25ce65e2d497323f",
+  "kernel_sha256": "5e1b20da9a0c9c6e5153c48debdeef601802c81d00d711fc8686644553137e8a",
+  "module_sha256": "76fb780ab2639b2f43bdba8162a890a73b5e6384ab72a36e84d59572197b44a3",
+  "resolved_module_imports": 172,
+  "host_tests": 83,
+  "regressions": [
+    {
+      "machine": "Indy R4400",
+      "kernel_sha256": "e7aa0f8a35945b3ec0f107e5f296941263180e1bcae773b50f8df0c66e37b2a7",
+      "serial_sha256": "ce005c35fd72023cad6b5a014c89e1aa62c9786e633a7c39c221728807a69b4d",
+      "clean_shutdown": true
+    },
+    {
+      "machine": "Indigo2 R10000",
+      "kernel_sha256": "f5d72b39b3ba636b8960259dfda8ac3ac5e895fb77f8b76019696fb1630001bf",
+      "serial_sha256": "790bc61e575745ebad3a5f6dcdde199f47b5d4dffd057a2bf2fb65c3b3a30757",
+      "clean_shutdown": true
+    },
+    {
+      "machine": "O2 R10000",
+      "kernel_sha256": "d696cb0882b777950ff72506ad6ef7db4b6a46422b44174c57747502f171d6a8",
+      "serial_sha256": "d7f196b61afa4d21d6208b4a0e8f2aadb31059cc683a61d861993f4b054af285",
+      "clean_shutdown": true
+    },
+    {
+      "machine": "Octane R10000, graphics removed",
+      "kernel_sha256": "5e1b20da9a0c9c6e5153c48debdeef601802c81d00d711fc8686644553137e8a",
+      "serial_sha256": "e0cc3b9e9b77cee3e8aa727056cf40f4c14877a200a8630771a6958c4da8a6c2",
+      "clean_shutdown": true
+    }
+  ],
+  "desktops": [
+    {
+      "release": "6.5.22",
+      "board": "solidimpact",
+      "disk_sha256": "c45156e4c1d252a8b31a91d9337467c1325153907ed78c73b98c1d275f0e104c",
+      "iris_sha256": "9257e6ab997b6ff68e1b4b1b5a775aa6fedd0349db7eff787a8a6612be36b682",
+      "serial_sha256": "4d01b0bbcb6682be57474927ff5b0389e3beca7ef9e4d6938677b6d8cad49f18",
+      "clean_shutdown": true,
+      "originals_unchanged": true,
+      "module_lifecycle": true,
+      "wm": "4Dwm",
+      "clients": [
+        "Toolchest",
+        "Icon Catalog",
+        "winterm"
+      ],
+      "uid": 1234,
+      "home": "/usr/people/xiritest",
+      "size": [
+        1280,
+        1024
+      ],
+      "png_sha256": "2b3b192ecc89addf66b504e58c4d3487a5f1778aeb9d98640915460251298783",
+      "logout": true
+    },
+    {
+      "release": "6.5.30",
+      "board": "highimpact",
+      "disk_sha256": "187a516e9f3d2b29236fcd53d95467415e18fdd6ae2a90d1c407ba96f0af9e58",
+      "iris_sha256": "9257e6ab997b6ff68e1b4b1b5a775aa6fedd0349db7eff787a8a6612be36b682",
+      "serial_sha256": "5f7ee685b3a68b7cdb8637ac46db2ef293cd7f274b8d5b3e08d8dc750a7ac7b9",
+      "clean_shutdown": true,
+      "originals_unchanged": true,
+      "module_lifecycle": true,
+      "wm": "4Dwm",
+      "clients": [
+        "Toolchest",
+        "Icon Catalog",
+        "winterm"
+      ],
+      "uid": 1234,
+      "home": "/usr/people/xiritest",
+      "size": [
+        1280,
+        1024
+      ],
+      "png_sha256": "22499a458677850b04c9b22cb650e56a594f76b263d1d17872edda4980a4cbe1",
+      "logout": true
+    }
+  ],
+  "netbsd_platform_host_tests": 17
+}

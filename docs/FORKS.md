@@ -49,6 +49,14 @@ Use separate build output paths for a new source tree or architecture, and
 keep kernel builds sequential with at most two jobs. Branch consolidation does
 not repin qualified kernels, emulator binaries, runtime resources or guest disks.
 
+## Octane integration
+
+NetBSD `xiri` merges the Octane topic at `58fa1421606` and carries the
+native display, input and modular desktop configuration at `fbb11636cc4`.
+Use `sys/arch/sgimips/conf/XIRI_IP30_DESKTOP` for a current build. The
+November 23 cycle checked IRIS upstream at `a05289ef`, already integrated
+in `08e53ba7`. [Octane build and qualification](results/2026-11-23-octane-desktop.md)
+
 ## IRIS upstream updates
 
 On November 23 the IRIS fork merged 13 upstream commits through `0303cde8` into

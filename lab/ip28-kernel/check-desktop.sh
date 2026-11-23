@@ -28,7 +28,7 @@ echo $! >desktop-pid
 tries=0
 until grep -q 'Logs: ' desktop.log 2>/dev/null; do
     kill -0 "$(cat desktop-pid)" || { cat desktop.log; exit 1; }
-    tries=$((tries + 1)); test "$tries" -lt 30 || { cat desktop.log; exit 1; }
+    tries=$((tries + 1)); test "$tries" -lt "${XIRI_DESKTOP_START_TIMEOUT:-30}" || { cat desktop.log; ps -ax -o pid,ppid,comm,args; exit 1; }
     sleep 1
 done
 job=$(sed -n 's/.*Logs: //p' desktop.log | head -1)

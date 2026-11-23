@@ -55,6 +55,10 @@ topic at `8f744b33e95`, with the Xiri lab kernel configuration below.
 
 ## Reproduction
 
+For these historical commands use Xiri lab revision `b367bec` with the
+Octane topic revision recorded here. Current NetBSD `xiri` contains the
+drivers and kernel configurations in-tree.
+
 Build with the [Octane console cross-build instructions](2026-11-23-octane-wsdisplay.md#reproduce),
 selecting `lab/ip30-impact/XIRI_IP30_HQ4_XORG` in the `nbconfig` command.
 The host needs Python 3, Pillow, `genisoimage`, and the IRIS runtime. Use a

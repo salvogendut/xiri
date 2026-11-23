@@ -2,9 +2,9 @@
 
 The IP30 topic branch at `8f744b33e95` already boots NetBSD 11.99.9 on an
 emulated R10000 Octane. Its earlier tests reached a multi-user serial login,
-preserved a file across a reboot and checked filesystem recovery. The Octane
-code is still on `topic/sgimips-octane` in the NetBSD fork. The Indigo2
-graphics driver is on `xiri`. [IP30 handover](https://github.com/salvogendut/NetBSD-xiri/blob/8f744b33e95b4ef132ed5ffd9f8e7d96c38e2134/xiri/platforms/ip30/HANDOVER)
+preserved a file across a reboot and checked filesystem recovery. At the time of this test the Octane code was on
+`topic/sgimips-octane`. The subsequent desktop milestone merged it into the
+NetBSD fork’s `xiri` branch alongside the Indigo2 graphics driver. [IP30 handover](https://github.com/salvogendut/NetBSD-xiri/blob/8f744b33e95b4ef132ed5ffd9f8e7d96c38e2134/xiri/platforms/ip30/HANDOVER)
 
 ## Native boot results
 
@@ -43,6 +43,10 @@ the colour and bounds on HQ4 scanout. DMA remains a separate milestone.
 and [OpenBSD IMPACT attachments](https://man.openbsd.org/OpenBSD-6.6/impact.4).
 
 ## Reproduce the discovery kernel
+
+For these historical commands use Xiri lab revision `b367bec` with the
+Octane topic revision recorded here. Current NetBSD `xiri` contains the
+drivers and kernel configurations in-tree.
 
 The [lab kernel configuration](../../lab/ip30-impact/XIRI_IP30_HQ4) extends
 the Octane read-only-root configuration. Its probe reads the Crossbow identity,

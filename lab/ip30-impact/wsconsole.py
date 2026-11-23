@@ -64,6 +64,9 @@ def run(args):
     nvram = args.firmware / 'nvram.bin'
     inputs = {str(p.resolve()): sha256(p) for p in
               (probe.IRIS, probe.CI, args.kernel, args.disk, flash, nvram)}
+    if args.desktop:
+        for item in (args.desktop, args.vendor_asa):
+            inputs[str(item.resolve())] = sha256(item)
     shutil.copyfile(flash, out / 'flash.bin')
     shutil.copyfile(nvram, out / 'nvram.bin')
     disk = out / ('disk' + args.disk.suffix)
@@ -89,9 +92,13 @@ overlay = true
 mode = "nat"
 tftp_dir = {json.dumps(str(args.kernel.resolve().parent))}
 '''
-    if args.xorg:
-        import xorg
-        media = xorg.prepare(out)
+    if args.xorg or args.desktop:
+        if args.desktop:
+            import desktop
+            media = desktop.prepare(out, args.desktop, args.vendor_asa)
+        else:
+            import xorg
+            media = xorg.prepare(out)
         config += '[scsi.4]\ncdrom = true\npath = ' + json.dumps(str(media)) + '\n'
     lab = probe.Lab(SimpleNamespace(mode='ci', debugger=False), out, config_text=config,
                     working_directory=out, scsi1_from_config=True)
@@ -113,9 +120,11 @@ tftp_dir = {json.dumps(str(args.kernel.resolve().parent))}
                 r'XIRI_IP30_\w+_FAILED|panic:|HQ4 FIFO timeout', serial):
             raise ValueError('native platform check failed before the shell')
         result['scsi_ready'] = True
-        kernels = ['XIRI_IP30_HQ4_XORG']
-        if not args.xorg:
-            kernels.append('XIRI_IP30_HQ4_WSDISPLAY')
+        kernels = ['XIRI_IP30_DESKTOP']
+        if not args.desktop:
+            kernels.append('XIRI_IP30_HQ4_XORG')
+            if not args.xorg:
+                kernels.append('XIRI_IP30_HQ4_WSDISPLAY')
         if not any(f'({ident})' in serial for ident in kernels):
             raise ValueError('unexpected kernel identity')
         boards = re.findall(r'ip30gfxprobe0: (\d+) IMPACT board\(s\)', serial)
@@ -138,6 +147,8 @@ tftp_dir = {json.dumps(str(args.kernel.resolve().parent))}
                                               ['Octane console ready', 'on / type ffs (read-only'])
         if args.xorg:
             result['xorg'] = xorg.run(lab, probe.CI, out)
+        if args.desktop:
+            result['desktop'] = desktop.run(lab, probe.CI, out)
         lab.send('shutdown -h now')
         lab.wait('unmounting done', 90)
         lab.wait(r'Option\?', 30)
@@ -160,4 +171,5 @@ tftp_dir = {json.dumps(str(args.kernel.resolve().parent))}
             (out/'result.json').write_text(json.dumps(result, indent=2) + '\n')
     if result['status'] != 'passed':
         raise RuntimeError(result['status'])
-    print(f'{args.board}: console, native shell and clean halt passed')
+    checks = '4Dwm, winterm, logout' if args.desktop else 'console, native shell'
+    print(f'{args.board}: {checks} and clean halt passed')

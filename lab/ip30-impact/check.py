@@ -39,6 +39,9 @@ def main():
     mode = parser.add_mutually_exclusive_group()
     mode.add_argument('--wsdisplay', action='store_true', help='verify kernel and shell text on wsdisplay')
     mode.add_argument('--xorg', action='store_true', help='check IOC3 input and full-screen wsfb')
+    mode.add_argument('--desktop', type=Path, metavar='MODULE',
+                      help='qualify the IRIX module and 4Dwm with this matching kmod')
+    parser.add_argument('--vendor-asa', type=Path, help='local IRIX asa fixture for --desktop')
     mode.add_argument('--rectangle', action='store_true',
                       help='capture the PIO test kernel scanout before shutdown')
     args = parser.parse_args()
@@ -50,9 +53,11 @@ def main():
     # and console=g. This harness sends boot commands over IOC3 serial.
     if args.board != 'none' and nvram.read_bytes()[0x11:0x13] != b'd\0':
         parser.error("use an Octane NVRAM saved after 'setenv console d'")
-    if args.xorg and args.board == 'none':
-        parser.error('--xorg requires an IMPACT board')
-    if args.wsdisplay or args.xorg:
+    if bool(args.desktop) != bool(args.vendor_asa):
+        parser.error('--desktop and --vendor-asa must be used together')
+    if (args.xorg or args.desktop) and args.board == 'none':
+        parser.error('Xorg and 4Dwm require an IMPACT board')
+    if args.wsdisplay or args.xorg or args.desktop:
         from wsconsole import run
         run(args)
         return

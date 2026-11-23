@@ -51,6 +51,10 @@ The runs used the qualified emulator from the earlier
 
 ## Reproduce
 
+For these historical commands use Xiri lab revision `b367bec` with the
+Octane topic revision recorded here. Current NetBSD `xiri` contains the
+drivers and kernel configurations in-tree.
+
 Start in Xiri with the NetBSD Octane topic at `8f744b33e95` and the
 sgimips cross tools. The shared register header comes from the NetBSD
 integration branch. Use an empty build directory.

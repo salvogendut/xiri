@@ -651,8 +651,10 @@ checks a native PIO rectangle against every pixel of guest scanout. The
 [Octane wsdisplay console](results/2026-11-23-octane-wsdisplay.md) shows kernel
 messages and native shell output on both boards. [Full-screen Xorg and IOC3
 input](results/2026-11-23-octane-xorg.md) pass with a native Xlib client on
-both release disks. Next, integrate the Octane topic with NetBSD `xiri`,
-build a matching IRIX compatibility module and qualify both desktops.
+both release disks. The merged NetBSD `xiri` branch now builds the
+[modular Octane 4Dwm desktop](results/2026-11-23-octane-desktop.md).
+Both vendor releases pass the module lifecycle, user shell and logout checks.
+Next, qualify a standalone Octane disk boot and authenticated xdm sessions.
 
 - [ ] Classify the available physical Indigo2 by CPU and graphics; identify reusable support and additional port work.
 - [x] Boot native NetBSD on emulated IP28/R10000 with 1 GiB RAM, serial console, SCSI/FFS, Ethernet and clean halt. Both release-line disks pass; see the [November 22 result](results/2026-11-22-ip28-kernel.md).
@@ -667,9 +669,9 @@ build a matching IRIX compatibility module and qualify both desktops.
 - [x] Adapt the Indy's decorated console to High IMPACT. Both release lines pass the [boot, scroll, debugger and full-screen xdm checks](results/2026-11-22-ip28-frame.md).
 - [ ] Extend IP28 qualification to physical cache/DMA behavior and sustained I/O; other IMPACT variants, display timings and 3D remain separate work.
 - [ ] Repair and qualify native NetBSD on O2, starting with the remaining SCSI-stage boot trap, then storage/cache/DMA, input and the `crime` Xorg path.
-- [ ] Map the missing NetBSD Octane board support using historical OpenBSD and current Linux implementations as references.
-- [ ] Implement and validate Octane boot, memory, interrupts, and essential I/O under NetBSD.
-- [ ] Add the available Octane's display and input support, keeping graphics acceleration separately scoped.
+- [x] Map Octane board support for the emulated configuration, including HEART, Bridge, IOC3 and both QLogic controllers.
+- [x] Boot emulated Octane through native memory, HEART interrupts, Bridge and QLogic SCSI to a NetBSD shell. Physical hardware and IOC3 Ethernet remain open.
+- [x] Drive full-screen native Xorg on emulated Solid and High IMPACT with IOC3 input and run both IRIX desktop release lines.
 - [ ] Qualify each added configuration through boot, I/O, X display, desktop, and applications.
 - [ ] Investigate one graphics family for acceleration only after basic desktop operation is stable.
 - [ ] Apply the [reverse-engineering workflow](ARCHITECTURE.md#reverse-engineering-workflow) to missing graphics initialization, command submission and synchronization behavior; retain probes and physical observations for each implemented interface.
