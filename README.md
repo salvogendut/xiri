@@ -16,6 +16,8 @@ separate qualification.
 The emulated Octane boots from its own SCSI disk to a 1280×1024 xdm greeter.
 Log in as `xiritest` for the IRIX 4Dwm desktop or `netbsdtest` for NetBSD
 ctwm. The 6.5.22 disk uses Solid IMPACT and the 6.5.30 disk uses High IMPACT.
+The Octane launchers use the IRIS R10000 JIT for faster window redraws.
+[Octane redraw measurements](docs/results/2026-11-23-octane-redraw.md) ·
 [Octane manual launchers, screenshots and build instructions](docs/results/2026-11-23-octane-xdm.md)
 
 The current desktop runs original 4Dwm, Toolchest, Icon Catalog, File Manager,

@@ -17,7 +17,7 @@ def focus_terminal(lab, wm):
         time.sleep(.4)
 
 
-def qualify(lab, out):
+def qualify(lab, out, *, measure_redraw=False):
     screen = out / 'current.png'
     results = {'sessions': [], 'screenshots': {}}
 
@@ -111,6 +111,9 @@ def qualify(lab, out):
         key('clear; cat "$HOME/.ip30-proof"; /sbin/sysctl hw.model')
         time.sleep(3)
         save(shot)
+        if measure_redraw and wm == '4Dwm':
+            from redraw import measure
+            results['redraw'] = measure(lab, out)
         key('/usr/local/bin/xiri-logout' if wm == '4Dwm'
             else 'pkill -u $(id -u) -x /usr/X11R7/bin/ctwm')
         wait_screen('greeter')

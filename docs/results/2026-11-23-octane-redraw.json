@@ -1,0 +1,322 @@
+{
+  "iris": "08e53ba7e183cbfd3b2e7e6d25ce65e2d497323f",
+  "upstream": "a05289efc808ee1320195481f6cab4cfee16bef9",
+  "netbsd": "47c9acf14a4eee31bf6a1dafea11e255f7dd9695",
+  "kernel": "5e1b20da9a0c9c6e5153c48debdeef601802c81d00d711fc8686644553137e8a",
+  "interpreter": "9257e6ab997b6ff68e1b4b1b5a775aa6fedd0349db7eff787a8a6612be36b682",
+  "jit": "ac761ad92d140b029e18c498d5c275662433c5c255c0fd08a8f240ae979ae0f2",
+  "jit_ci": "a20758bdf110c7ce7850030ee0fff5547bc19d75c32334f3f7a474cc470b6a78",
+  "build_features": "default,jitv2",
+  "releases": [
+    {
+      "release": "6.5.22",
+      "board": "solidimpact",
+      "chd_sha256": "2cd3c3d3e75a18bb108025c3da0e7adf0077922e0d4f79a2b000da23ccac8972",
+      "timing_mode": "headless",
+      "interpreter": {
+        "crop": [
+          248,
+          282,
+          304,
+          40
+        ],
+        "minimum_coverage": 0.99,
+        "samples_ms": {
+          "file_manager": [
+            529.08,
+            425.98,
+            440.75,
+            379.98,
+            372.98,
+            441.87,
+            545.99
+          ],
+          "winterm": [
+            377.33,
+            508.59,
+            857.85,
+            571.22,
+            675.42,
+            569.86,
+            844.25
+          ]
+        },
+        "median_ms": {
+          "file_manager": 440.75,
+          "winterm": 571.22
+        }
+      },
+      "jit": {
+        "crop": [
+          248,
+          282,
+          304,
+          40
+        ],
+        "minimum_coverage": 0.99,
+        "samples_ms": {
+          "file_manager": [
+            290.33,
+            208.0,
+            273.91,
+            291.96,
+            292.28,
+            289.16,
+            208.92
+          ],
+          "winterm": [
+            212.66,
+            310.03,
+            212.76,
+            210.76,
+            212.79,
+            273.37,
+            274.15
+          ]
+        },
+        "median_ms": {
+          "file_manager": 289.16,
+          "winterm": 212.79
+        }
+      },
+      "cold_boot_to_greeter_seconds": {
+        "interpreter": 196,
+        "jit": 87
+      },
+      "windowed_jit": {
+        "booted_from_scsi": true,
+        "securelevel": 1,
+        "sessions": [
+          {
+            "user": "xiritest",
+            "uid": 1234,
+            "home": "/usr/people/xiritest",
+            "wm": "4Dwm",
+            "proof": [
+              "xiritest",
+              "1234",
+              "/usr/people/xiritest",
+              "/usr/people/xiritest",
+              "xiritest xiritest-extra",
+              "2864 /emul/irix/usr/bin/X11/4Dwm -launch",
+              "  dimensions:    1280x1024 pixels (339x271 millimeters)"
+            ],
+            "logout_returned_to_greeter": true
+          },
+          {
+            "user": "netbsdtest",
+            "uid": 1236,
+            "home": "/home/netbsdtest",
+            "wm": "ctwm",
+            "proof": [
+              "netbsdtest",
+              "1236",
+              "/home/netbsdtest",
+              "/home/netbsdtest",
+              "netbsdtest wheel",
+              "3196 /usr/X11R7/bin/ctwm -W",
+              "  dimensions:    1280x1024 pixels (339x271 millimeters)"
+            ],
+            "logout_returned_to_greeter": true
+          }
+        ],
+        "clean_halt": true,
+        "stopped": true,
+        "serial_sha256": "53ecda956733f85ec36b58fe76c009b6809a9ea6c439a7404d33e41210387fc0"
+      },
+      "windowed_jit_redraw": {
+        "crop": [
+          248,
+          282,
+          304,
+          40
+        ],
+        "minimum_coverage": 0.99,
+        "samples_ms": {
+          "file_manager": [
+            290.45,
+            212.07,
+            208.02,
+            301.81,
+            207.83,
+            209.27,
+            207.85
+          ],
+          "winterm": [
+            273.41,
+            273.3,
+            277.88,
+            211.02,
+            273.83,
+            273.95,
+            271.91
+          ]
+        },
+        "median_ms": {
+          "file_manager": 209.27,
+          "winterm": 273.41
+        }
+      },
+      "screenshot": "2026-11-23-octane-redraw-6.5.22.png",
+      "screenshot_source": "Xvfb host window",
+      "screenshot_sha256": "2dee895c8ffd24c5ec6d11d93ec348deef24553074fc312b50cccab05bcee2a1"
+    },
+    {
+      "release": "6.5.30",
+      "board": "highimpact",
+      "chd_sha256": "b5aaa4002f1ec2aa5c59b0c344533d7af3769d5b55062d039314acc06b4cf172",
+      "timing_mode": "windowed",
+      "interpreter": {
+        "crop": [
+          248,
+          282,
+          304,
+          40
+        ],
+        "minimum_coverage": 0.99,
+        "samples_ms": {
+          "file_manager": [
+            433.84,
+            445.56,
+            377.86,
+            375.59,
+            406.99,
+            376.21,
+            548.42
+          ],
+          "winterm": [
+            673.21,
+            661.39,
+            573.94,
+            465.6,
+            567.59,
+            676.83,
+            571.33
+          ]
+        },
+        "median_ms": {
+          "file_manager": 406.99,
+          "winterm": 573.94
+        }
+      },
+      "jit": {
+        "crop": [
+          248,
+          282,
+          304,
+          40
+        ],
+        "minimum_coverage": 0.99,
+        "samples_ms": {
+          "file_manager": [
+            290.76,
+            274.84,
+            292.17,
+            207.75,
+            208.92,
+            212.48,
+            211.17
+          ],
+          "winterm": [
+            205.98,
+            207.63,
+            274.01,
+            273.49,
+            272.19,
+            275.55,
+            273.67
+          ]
+        },
+        "median_ms": {
+          "file_manager": 212.48,
+          "winterm": 273.49
+        }
+      },
+      "cold_boot_to_greeter_seconds": {
+        "interpreter": 198,
+        "jit": 87
+      },
+      "windowed_jit": {
+        "booted_from_scsi": true,
+        "securelevel": 1,
+        "sessions": [
+          {
+            "user": "xiritest",
+            "uid": 1234,
+            "home": "/usr/people/xiritest",
+            "wm": "4Dwm",
+            "proof": [
+              "xiritest",
+              "1234",
+              "/usr/people/xiritest",
+              "/usr/people/xiritest",
+              "xiritest xiritest-extra",
+              "2518 /emul/irix/usr/bin/X11/4Dwm -launch",
+              "  dimensions:    1280x1024 pixels (339x271 millimeters)"
+            ],
+            "logout_returned_to_greeter": true
+          },
+          {
+            "user": "netbsdtest",
+            "uid": 1236,
+            "home": "/home/netbsdtest",
+            "wm": "ctwm",
+            "proof": [
+              "netbsdtest",
+              "1236",
+              "/home/netbsdtest",
+              "/home/netbsdtest",
+              "netbsdtest wheel",
+              "2878 /usr/X11R7/bin/ctwm -W",
+              "  dimensions:    1280x1024 pixels (339x271 millimeters)"
+            ],
+            "logout_returned_to_greeter": true
+          }
+        ],
+        "clean_halt": true,
+        "stopped": true,
+        "serial_sha256": "4a4f07ed2c11b69a6d2fb2aea4626b433b39e6c7e39a551d0b17667aa38b74e3"
+      },
+      "windowed_jit_redraw": {
+        "crop": [
+          248,
+          282,
+          304,
+          40
+        ],
+        "minimum_coverage": 0.99,
+        "samples_ms": {
+          "file_manager": [
+            290.76,
+            274.84,
+            292.17,
+            207.75,
+            208.92,
+            212.48,
+            211.17
+          ],
+          "winterm": [
+            205.98,
+            207.63,
+            274.01,
+            273.49,
+            272.19,
+            275.55,
+            273.67
+          ]
+        },
+        "median_ms": {
+          "file_manager": 212.48,
+          "winterm": 273.49
+        }
+      },
+      "screenshot": "2026-11-23-octane-redraw-6.5.30.png",
+      "screenshot_source": "IRIS scanout in windowed mode",
+      "screenshot_sha256": "69e36d21c889a25a3d266a169d7696c0c137c65cd25ad8f99ae82eb3ef25065c"
+    }
+  ],
+  "incomplete_trials": {
+    "headless_jit_6.5.22": "Observer interrupted after timings. Windowed repeat completed both logins and shutdown.",
+    "headless_interpreter_6.5.30": "One synthetic title-bar click did not raise winterm before timeout. Used the windowed comparison."
+  }
+}

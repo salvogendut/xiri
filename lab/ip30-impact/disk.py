@@ -28,7 +28,11 @@ def main():
     for key in ('emulator', 'firmware', 'disk', 'output', 'kernel', 'module', 'loader'):
         parser.add_argument('--' + key, type=Path, required=True)
     parser.add_argument('--board', choices=('solidimpact', 'highimpact'), required=True)
+    parser.add_argument('--measure-redraw', action='store_true',
+                        help='time visible 4Dwm window raises on a qualification boot')
     args = parser.parse_args()
+    if args.measure_redraw and args.mode != 'qualify':
+        parser.error('--measure-redraw requires qualify')
     out = args.output.resolve()
     out.mkdir(parents=True, exist_ok=False)
     paths = [args.disk, args.kernel, args.module, args.loader]
@@ -97,7 +101,7 @@ overlay = true
             lab.wait('Bootstrap, Revision', 150)
             lab.wait(r'file /netbsd\.ip30', 150)
             lab.wait(r'NetBSD [^\n]+\(XIRI_IP30_DESKTOP\)', 150)
-            result['xdm'] = qualify(lab, out)
+            result['xdm'] = qualify(lab, out, measure_redraw=args.measure_redraw)
         lab.wait('unmounting done', 150)
         lab.wait(r'Option\?', 90)
         result['clean_halt'] = True

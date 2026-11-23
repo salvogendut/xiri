@@ -14,6 +14,9 @@ run the launcher for the desired release.
 .work/native/xiri-ip30-xdm-6.5.30-20261123/run-iris.sh
 ```
 
+The launchers now select the qualified R10000 JIT build.
+[Redraw timings and interpreter comparison](2026-11-23-octane-redraw.md)
+
 The launchers open an IRIS window with an R10000, 512 MiB, and a disk at
 internal SCSI ID 1. The 6.5.22 bundle selects Solid IMPACT and the 6.5.30
 bundle selects High IMPACT. If using a developer build that starts paused,

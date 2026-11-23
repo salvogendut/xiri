@@ -3,9 +3,13 @@
 set -eu
 ulimit -c 0
 cd "$(dirname "$0")"
-local_iris=../../octane-fill/emulator/iris
-if [ -z "${XIRI_IRIS:-}" ] && [ -x "$local_iris" ]; then
-    XIRI_IRIS=$local_iris
+if [ -z "${XIRI_IRIS:-}" ]; then
+    for binary in ../../emulators/iris-ip30-jit-08e53ba7/iris ../../octane-fill/emulator/iris; do
+        if [ -x "$binary" ]; then
+            XIRI_IRIS=$binary
+            break
+        fi
+    done
 fi
 unset IRIS_CHD_DIFF_DIR
 export IRIS_NO_IDLE=1
