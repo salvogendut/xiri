@@ -13,11 +13,10 @@ login/logout checks with IRIS shadow cache mode. The shared module also passes
 now package those tested disk states as standalone CHDs with pinned launchers.
 The O2/R10000 native SCSI trap remains separate work. Physical hardware needs
 separate qualification.
-On the emulated Octane, NetBSD runs the original IRIX 4Dwm desktop at
-1280×1024. The modular kernel passed the 6.5.22 desktop check on Solid IMPACT
-and 6.5.30 on High IMPACT, including a working winterm as `xiritest` and
-supervised logout. These runs boot the kernel via BOOTP.
-[Octane screenshots and build instructions](docs/results/2026-11-23-octane-desktop.md)
+The emulated Octane boots from its own SCSI disk to a 1280×1024 xdm greeter.
+Log in as `xiritest` for the IRIX 4Dwm desktop or `netbsdtest` for NetBSD
+ctwm. The 6.5.22 disk uses Solid IMPACT and the 6.5.30 disk uses High IMPACT.
+[Octane manual launchers, screenshots and build instructions](docs/results/2026-11-23-octane-xdm.md)
 
 The current desktop runs original 4Dwm, Toolchest, Icon Catalog, File Manager,
 winterm, xclock and Desks Overview. It has SGI fonts, the granite backdrop,

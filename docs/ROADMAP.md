@@ -654,7 +654,9 @@ input](results/2026-11-23-octane-xorg.md) pass with a native Xlib client on
 both release disks. The merged NetBSD `xiri` branch now builds the
 [modular Octane 4Dwm desktop](results/2026-11-23-octane-desktop.md).
 Both vendor releases pass the module lifecycle, user shell and logout checks.
-Next, qualify a standalone Octane disk boot and authenticated xdm sessions.
+Both [standalone Octane CHDs](results/2026-11-23-octane-xdm.md) now boot from
+SCSI into native xdm and pass authenticated IRIX and NetBSD desktop sessions.
+Native IOC3 Ethernet, HQ4 acceleration and physical Octane validation remain open.
 
 - [ ] Classify the available physical Indigo2 by CPU and graphics; identify reusable support and additional port work.
 - [x] Boot native NetBSD on emulated IP28/R10000 with 1 GiB RAM, serial console, SCSI/FFS, Ethernet and clean halt. Both release-line disks pass; see the [November 22 result](results/2026-11-22-ip28-kernel.md).

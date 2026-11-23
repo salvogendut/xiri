@@ -47,9 +47,9 @@ after logout. Some transcript markers retain the names of the shared IP28
 module and desktop fixtures. The boot banner identifies `XIRI_IP30_DESKTOP`.
 
 The tests cover a BOOTP-loaded kernel, local display and loopback services.
-A standalone Octane disk boot and authenticated xdm login are the next
-qualification steps. Physical hardware, native IOC3 Ethernet and HQ4 DMA
-also need their own tests.
+The subsequent [standalone Octane CHD check](2026-11-23-octane-xdm.md)
+qualifies disk boot and authenticated xdm login on both release lines.
+Physical hardware, native IOC3 Ethernet and HQ4 DMA still need their own tests.
 
 ## Reproduce
 

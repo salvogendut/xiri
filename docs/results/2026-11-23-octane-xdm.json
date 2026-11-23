@@ -1,0 +1,179 @@
+{
+  "netbsd": "47c9acf14a4eee31bf6a1dafea11e255f7dd9695",
+  "iris_xiri": "08e53ba7e183cbfd3b2e7e6d25ce65e2d497323f",
+  "iris_upstream": "a05289efc808ee1320195481f6cab4cfee16bef9",
+  "emulator_sha256": "9257e6ab997b6ff68e1b4b1b5a775aa6fedd0349db7eff787a8a6612be36b682",
+  "host_tests": 83,
+  "loader_sha256": "8a9b881a6fb9100261c45c69aa060dd45ef629227713bbf6a25e4fe2b8518115",
+  "kernel_sha256": "5e1b20da9a0c9c6e5153c48debdeef601802c81d00d711fc8686644553137e8a",
+  "module_sha256": "76fb780ab2639b2f43bdba8162a890a73b5e6384ab72a36e84d59572197b44a3",
+  "releases": [
+    {
+      "release": "6.5.22",
+      "board": "solidimpact",
+      "source_chd_sha256": "c45156e4c1d252a8b31a91d9337467c1325153907ed78c73b98c1d275f0e104c",
+      "chd_sha256": "2cd3c3d3e75a18bb108025c3da0e7adf0077922e0d4f79a2b000da23ccac8972",
+      "flash_sha256": "9cc810faa44fb96050108fe23d8d1a2c03e76138310535e63076c5353fdf9431",
+      "nvram_sha256": "b88a2d677e61a86c53a4801bb8de55dd524a43e7ef04eba34d709fe7e50ab125",
+      "serial_sha256": "c4371fe1043a850ff730be2aea2ac453d7b5b63b0af339034e2eae65a4d16117",
+      "chdman_verified": true,
+      "cold_disk_boot": true,
+      "clean_halt": true,
+      "emulator_stopped": true,
+      "observer_reconnected": true,
+      "securelevel": 1,
+      "module": "compat_irix_o32            exec     filesys  -        0       - exec_elf32,compat_netbsd32",
+      "sessions": [
+        {
+          "user": "xiritest",
+          "uid": 1234,
+          "home": "/usr/people/xiritest",
+          "wm": "4Dwm",
+          "proof": [
+            "xiritest",
+            "1234",
+            "/usr/people/xiritest",
+            "/usr/people/xiritest",
+            "xiritest xiritest-extra",
+            "2789 /emul/irix/usr/bin/X11/4Dwm -launch",
+            "  dimensions:    1280x1024 pixels (339x271 millimeters)"
+          ],
+          "logout_returned_to_greeter": true
+        },
+        {
+          "user": "netbsdtest",
+          "uid": 1236,
+          "home": "/home/netbsdtest",
+          "wm": "ctwm",
+          "proof": [
+            "netbsdtest",
+            "1236",
+            "/home/netbsdtest",
+            "/home/netbsdtest",
+            "netbsdtest wheel",
+            "3283 /usr/X11R7/bin/ctwm -W",
+            "  dimensions:    1280x1024 pixels (339x271 millimeters)"
+          ],
+          "logout_returned_to_greeter": true
+        }
+      ],
+      "screenshots": {
+        "xdm-greeter": {
+          "sha256": "f487e94b6ee736828957dd5c412516d6bea934492e8303d5e05f61a1b23a0ebe",
+          "size": [
+            1280,
+            1024
+          ]
+        },
+        "xdm-irix": {
+          "sha256": "df3cdd2a11d2a28c43ea44976bd7f50a5ee7b85c5baac30db72c3e612f88370d",
+          "size": [
+            1280,
+            1024
+          ]
+        },
+        "xdm-native": {
+          "sha256": "4a04de0546d5405a499153d923cb074a5efc7646e16e542c29f3f4668de247e1",
+          "size": [
+            1280,
+            1024
+          ]
+        },
+        "xdm-after-logout": {
+          "sha256": "be705c5b2e0ef25d6c2832167e7051f71df877f6d2ead1dc729e3631eff22cf4",
+          "size": [
+            1280,
+            1024
+          ]
+        }
+      }
+    },
+    {
+      "release": "6.5.30",
+      "board": "highimpact",
+      "source_chd_sha256": "187a516e9f3d2b29236fcd53d95467415e18fdd6ae2a90d1c407ba96f0af9e58",
+      "chd_sha256": "b5aaa4002f1ec2aa5c59b0c344533d7af3769d5b55062d039314acc06b4cf172",
+      "flash_sha256": "9cc810faa44fb96050108fe23d8d1a2c03e76138310535e63076c5353fdf9431",
+      "nvram_sha256": "5e7047b90327258bb859d517be09a20c2a622406d92afe86b35ac33cb02535f2",
+      "serial_sha256": "32ee9aba2a8fbefefe7366b39198af6a328d939277b691fc504af127e61cce60",
+      "chdman_verified": true,
+      "cold_disk_boot": true,
+      "clean_halt": true,
+      "emulator_stopped": true,
+      "observer_reconnected": true,
+      "securelevel": 1,
+      "module": "compat_irix_o32            exec     filesys  -        0       - exec_elf32,compat_netbsd32",
+      "sessions": [
+        {
+          "user": "xiritest",
+          "uid": 1234,
+          "home": "/usr/people/xiritest",
+          "wm": "4Dwm",
+          "proof": [
+            "xiritest",
+            "1234",
+            "/usr/people/xiritest",
+            "/usr/people/xiritest",
+            "xiritest xiritest-extra",
+            "2730 /emul/irix/usr/bin/X11/4Dwm -launch",
+            "  dimensions:    1280x1024 pixels (339x271 millimeters)"
+          ],
+          "logout_returned_to_greeter": true
+        },
+        {
+          "user": "netbsdtest",
+          "uid": 1236,
+          "home": "/home/netbsdtest",
+          "wm": "ctwm",
+          "proof": [
+            "netbsdtest",
+            "1236",
+            "/home/netbsdtest",
+            "/home/netbsdtest",
+            "netbsdtest wheel",
+            "464 /usr/X11R7/bin/ctwm -W",
+            "  dimensions:    1280x1024 pixels (339x271 millimeters)"
+          ],
+          "logout_returned_to_greeter": true
+        }
+      ],
+      "screenshots": {
+        "xdm-native": {
+          "sha256": "df77903f5a4747e580ca4fb5032fcba5856e3580b903ee7be07b50a7f5388211",
+          "size": [
+            1280,
+            1024
+          ]
+        },
+        "xdm-after-logout": {
+          "sha256": "eb693b0fc393ff4594ae135f3c204373b9a9f6e3124cf5c5bc1c91bff6558d6f",
+          "size": [
+            1280,
+            1024
+          ]
+        },
+        "xdm-greeter": {
+          "sha256": "eb693b0fc393ff4594ae135f3c204373b9a9f6e3124cf5c5bc1c91bff6558d6f",
+          "size": [
+            1280,
+            1024
+          ]
+        },
+        "xdm-irix": {
+          "sha256": "af58750e2be8a924d90b0c9b0888edd64147821ea9f117c99c0be0cd8368f08e",
+          "size": [
+            1280,
+            1024
+          ]
+        }
+      }
+    }
+  ],
+  "platform_tests": 17,
+  "repack_6.5.22_bit_identical": true,
+  "windowed_solidimpact": {
+    "serial_sha256": "fa6139cd368c2395ca26c70b141dfb3567b775e1b2676be5164f992aa9bb88ad",
+    "host_display": "Xvfb",
+    "clean_halt": true
+  }
+}
