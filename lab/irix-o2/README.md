@@ -1,16 +1,21 @@
 # O2/R10000 qualification fixture
 
-This is the separate NetBSD/IRIX 6.5.30 platform trial. It is **not yet a
-working desktop image**. The N64 kernel now gets through CRIME framebuffer
-initialization, then traps during AIC-7880 SCSI attachment before login.
-See the [result](../../docs/results/2026-11-14-irix-6.5.30.md).
+The emulated O2 boots from its own SCSI disk on both the 6.5.22 and 6.5.30
+Xiri lines with the R10000 JIT. See the [November 23 disk boot check](../../docs/results/2026-11-23-o2-r10000-boot.md) for launchers, screenshots and the graphical results.
+
+The original November 14 run stopped during AIC-7880 attachment. On
+November 15 the IRIS fix for the wide MACE PCI address window let the same
+kernel reach single-user NetBSD in the interpreter. [Original result](../../docs/results/2026-11-14-irix-6.5.30.md) · [November 15 record](https://github.com/salvogendut/NetBSD-xiri/blob/33b5dda6a45/xiri/platforms/2026-11-15-results.json)
 
 `XIRI_O2` includes NetBSD's `GENERIC64_IP3x`, `MODULAR`, a symbol table and an
 `sd0a` root. The compatibility personality remains a loadable module. The
 native userland/X sets are NetBSD 11.0 o32. `xorg.conf` selects the stock
-accelerated `crime` driver at 1280×1024; its graphical behavior has not yet
-been tested with this kernel. O2 requires `ip3xboot` in the SGI volume header,
+`crime` driver at 1280×1024. O2 requires `ip3xboot` in the SGI volume header,
 `mec0` Ethernet and `ttyC0` for the first serial port.
+
+The final November 23 disks use the newer `compat_irix_o32.kmod` from
+`.work/octane-frame/qualified/` with the retained IP32 kernel. The original
+O2 module below predates the 6.5.30 n32 interpreter fix.
 
 The retained build is `.work/netbsd-o2-build/`; [build.json](build.json) pins
 the kernel, boot wrapper and module. It was built from NetBSD `xiri`
@@ -72,10 +77,7 @@ python3 scripts/prepare-o2-platform.py \
 The output directory must be new. This fixture intentionally uses serial
 single-user boot while preparing a private image and flash copy. It network
 boots the matching kernel with `boot -f bootp():netbsd-XIRI_O2 --s` and fails
-early if the kernel traps. Stages after native boot remain unqualified.
-A successful preparation would still need a graphical cold boot with the
-keyboard, full-screen xdm and both IRIX/native user sessions before promotion
-to a manual-test CHD. The 6.5.22 reference remains the selected manual image.
+early if the kernel traps. The November 23 cold-boot check starts from a separately prepared disk for each vendor release. The 6.5.22 reference remains the selected manual image.
 
 Temporary compiler outputs and failed guest disks are removed after retaining
 the build artifacts, logs, exact executed probes and failure evidence. Rebuild

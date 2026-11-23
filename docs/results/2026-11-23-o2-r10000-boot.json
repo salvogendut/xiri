@@ -1,0 +1,158 @@
+{
+  "date": "2026-11-23",
+  "machine": "o2_ip32",
+  "cpu": "r10000",
+  "memory_mib": 256,
+  "hardware_tested": false,
+  "iris": "08e53ba7e183cbfd3b2e7e6d25ce65e2d497323f",
+  "iris_upstream": "a05289efc808ee1320195481f6cab4cfee16bef9",
+  "kernel_build_record": "lab/irix-o2/build.json",
+  "kernel_sha256": "a3d3ff463227ae1190661936c30fabc001f391354b7dcaba5ee1a9365f20daff",
+  "wrapped_kernel_sha256": "eb71603862bc7a42ec3378636db8c64382fe651609874e8576a40efcc97e9b39",
+  "initial_o2_module_sha256": "ad6ec8756c835bec4395c62428550a0d2877ec6c587b1ca1d793254798f6d8ea",
+  "module_sha256": "76fb780ab2639b2f43bdba8162a890a73b5e6384ab72a36e84d59572197b44a3",
+  "ip3xboot_sha256": "ca48becf2d072449eba7876e736dda931d27471da2a8a96bd4cdf47c1bc51dc6",
+  "jit_sha256": "ac761ad92d140b029e18c498d5c275662433c5c255c0fd08a8f240ae979ae0f2",
+  "interpreter_sha256": "9257e6ab997b6ff68e1b4b1b5a775aa6fedd0349db7eff787a8a6612be36b682",
+  "network_loaded_single_user": {
+    "jit-22": {
+      "elapsed_seconds": 70.94,
+      "passed": true,
+      "serial_sha256": "7bb532012bdd102a188b0757ceff8cfdd6e9e90540c71f83261647582ad3e85d"
+    },
+    "jit-30": {
+      "elapsed_seconds": 70.99,
+      "passed": true,
+      "serial_sha256": "d76428b38a75316ddc6a9ec195ee58f27faea172bad22409ac6698a54a5d02b1"
+    },
+    "interp-30": {
+      "elapsed_seconds": 84.15,
+      "passed": true,
+      "serial_sha256": "2414d51d6ad749a31282d4a9a12b211ab5d6b15905b6c01fa743de8f1e83ba65"
+    }
+  },
+  "disk_boots": {
+    "6.5.22": {
+      "release": "6.5.22",
+      "source_chd_sha256": "cfd4f44b0b3b137d497e926f47e46e73788755c5bcea5bb0159c2048e93953d4",
+      "chd_sha256": "651cc40b400dbed0f37411e4894c2ae9424c3ec46d830aff142c70f381b808ec",
+      "flash_sha256": "10d61f53f025e8b8848a0ec1d3643eb9ad59ef268fad8234e3ae5e343d47b61a",
+      "chdman_verified": true,
+      "disk_boot_device": "sd0",
+      "root": "sd0a",
+      "serial_sha256": "c31c64e429e7eee92a2a0f76379edab602c0d0b9d3f1b9a1347ee9e0c2c6da15",
+      "guest_model": "SGI-IP32",
+      "vendor_shell": "O2_VENDOR_SHELL_OK",
+      "display": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+      "cold_disk_multiuser": true,
+      "sessions": [
+        {
+          "user": "xiritest",
+          "wm": "4Dwm",
+          "screen": "4dwm.png"
+        },
+        {
+          "user": "netbsdtest",
+          "wm": "ctwm",
+          "screen": "ctwm.png"
+        }
+      ],
+      "irix_logout": true,
+      "native_logout": true,
+      "desktop_checks_passed": true,
+      "clean_halt": true,
+      "stopped": true,
+      "originals_unchanged": true,
+      "screenshots": {
+        "xdm": {
+          "file": "2026-11-23-o2-r10000-boot-6.5.22-xdm.png",
+          "sha256": "e896917a4bc52a267903dfaea243fda09fc096e1293f0c80824c525b77c7561f"
+        },
+        "4dwm": {
+          "file": "2026-11-23-o2-r10000-boot-6.5.22-4dwm.png",
+          "sha256": "f9d93a83c918d3c8c67ecc79c5589f86e4a1f37880142cf0169c6fef85731294"
+        },
+        "ctwm": {
+          "file": "2026-11-23-o2-r10000-boot-6.5.22-ctwm.png",
+          "sha256": "1fc79d7c33c616f8ea570e800e87903f32bce2f5a74ede4ac2fb01b2c29d06f9"
+        }
+      },
+      "mapped_windows": [
+        "Toolchest",
+        "winterm",
+        "xclock",
+        "Icon Catalog: Applications (Page 1 of 16)"
+      ],
+      "xdm_labels_readable": false,
+      "module_sha256": "76fb780ab2639b2f43bdba8162a890a73b5e6384ab72a36e84d59572197b44a3",
+      "kernel_sha256": "a3d3ff463227ae1190661936c30fabc001f391354b7dcaba5ee1a9365f20daff",
+      "compatibility_comparison": {
+        "before": "4Dwm reached display open",
+        "after": "4Dwm reached display open",
+        "unchanged_kernel_and_vendor": true,
+        "serial_sha256": "7cf864446c51ad3607cf38d3acbb4629ca195992e1a209a6cb599240e7ba3b75"
+      }
+    },
+    "6.5.30": {
+      "release": "6.5.30",
+      "source_chd_sha256": "73e37cf3bb784864f29d89dff4369120ad9e9a3028e48e409fd10238967ea50f",
+      "chd_sha256": "aabafa37b9c80e17ef2239a61860b81a55c54c0270c882fa97ed0a10836ee6be",
+      "flash_sha256": "10d61f53f025e8b8848a0ec1d3643eb9ad59ef268fad8234e3ae5e343d47b61a",
+      "chdman_verified": true,
+      "disk_boot_device": "sd0",
+      "root": "sd0a",
+      "serial_sha256": "2dbe915fa26434432a43fc1874c371e66e804e1eaf032ec5bdf946660b2b9fd1",
+      "guest_model": "SGI-IP32",
+      "vendor_shell": "O2_VENDOR_SHELL_OK",
+      "display": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+      "cold_disk_multiuser": true,
+      "sessions": [
+        {
+          "user": "xiritest",
+          "wm": "4Dwm",
+          "screen": "4dwm.png"
+        },
+        {
+          "user": "netbsdtest",
+          "wm": "ctwm",
+          "screen": "ctwm.png"
+        }
+      ],
+      "irix_logout": true,
+      "native_logout": true,
+      "desktop_checks_passed": true,
+      "clean_halt": true,
+      "stopped": true,
+      "originals_unchanged": true,
+      "screenshots": {
+        "xdm": {
+          "file": "2026-11-23-o2-r10000-boot-6.5.30-xdm.png",
+          "sha256": "6eaa8be16e91743e999054146657ef892c79213b2b60859abd3f7edda0d8dff9"
+        },
+        "4dwm": {
+          "file": "2026-11-23-o2-r10000-boot-6.5.30-4dwm.png",
+          "sha256": "d109e64f1fb8f0dc394d4e3b6eff2bd36d8b5efbb3fab8489958c6cb32a975b7"
+        },
+        "ctwm": {
+          "file": "2026-11-23-o2-r10000-boot-6.5.30-ctwm.png",
+          "sha256": "1fc79d7c33c616f8ea570e800e87903f32bce2f5a74ede4ac2fb01b2c29d06f9"
+        }
+      },
+      "mapped_windows": [
+        "Toolchest",
+        "winterm",
+        "xclock",
+        "Icon Catalog: Applications (Page 1 of 16)"
+      ],
+      "xdm_labels_readable": false,
+      "module_sha256": "76fb780ab2639b2f43bdba8162a890a73b5e6384ab72a36e84d59572197b44a3",
+      "kernel_sha256": "a3d3ff463227ae1190661936c30fabc001f391354b7dcaba5ee1a9365f20daff",
+      "compatibility_comparison": {
+        "before": "ELF rejected",
+        "after": "4Dwm reached display open",
+        "unchanged_kernel_and_vendor": true,
+        "serial_sha256": "9fc24d1be8b220996d61d00f043e4a96d81365b46403ebbc0144412262fdfd3b"
+      }
+    }
+  }
+}

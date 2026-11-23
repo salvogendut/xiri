@@ -670,7 +670,8 @@ Native IOC3 Ethernet, HQ4 acceleration and physical Octane validation remain ope
 - [x] Trace native Xsgi window copies and qualify overlap, clipping, RAM readback and scanout on both IP28 release lines. The [High IMPACT copy investigation](results/2026-11-22-impact-window-copy.md) records the host-staged DMA sequence and the NetBSD destination-upload prototype.
 - [x] Adapt the Indy's decorated console to High IMPACT. Both release lines pass the [boot, scroll, debugger and full-screen xdm checks](results/2026-11-22-ip28-frame.md).
 - [ ] Extend IP28 qualification to physical cache/DMA behavior and sustained I/O; other IMPACT variants, display timings and 3D remain separate work.
-- [ ] Repair and qualify native NetBSD on O2, starting with the remaining SCSI-stage boot trap, then storage/cache/DMA, input and the `crime` Xorg path.
+- [x] Cold-boot the emulated O2/R10000 from SCSI and log into 4Dwm and ctwm through full-screen xdm on both release lines. [O2 boot and graphics results](results/2026-11-23-o2-r10000-boot.md)
+- [ ] Fix unreadable xdm labels on the O2 CRIME display. Sustained storage writes, cache/DMA, networking and physical O2 hardware also need qualification.
 - [x] Map Octane board support for the emulated configuration, including HEART, Bridge, IOC3 and both QLogic controllers.
 - [x] Boot emulated Octane through native memory, HEART interrupts, Bridge and QLogic SCSI to a NetBSD shell. Physical hardware and IOC3 Ethernet remain open.
 - [x] Drive full-screen native Xorg on emulated Solid and High IMPACT with IOC3 input and run both IRIX desktop release lines.

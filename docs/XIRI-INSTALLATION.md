@@ -171,30 +171,21 @@ shell, File Manager, logout/relogin and native ctwm checks now pass with shadow
 cache mode and the MIPS IV-aware compatibility module. This runs imported 6.5.30 applications on
 NetBSD, not a 6.5.30 IRIX kernel on unsupported Indy hardware.
 
-**O2 and Octane deployment first requires working native NetBSD on those
-machines.** Repairing O2 boot/drivers and completing Octane board support are
-separate prerequisites, not vendor import or compatibility-module tasks.
-Qualify native boot/login, essential I/O and full-screen Xorg before the Xiri
-desktop; the [platform roadmap](ROADMAP.md#milestone-5-indigo2-and-octane-expansion)
-records this gate explicitly.
+On the emulated O2/R10000, the IP32 N64 kernel boots from an 8 GiB SCSI disk
+using NetBSD's `ip3xboot` in the SGI volume header and the ELF32-wrapped
+kernel in FFS. Both Xiri release disks run the vendor shell and open full-screen
+xdm on the CRIME display. Log in as `xiritest` for 4Dwm or `netbsdtest` for ctwm.
+[O2 boot results and launchers](results/2026-11-23-o2-r10000-boot.md)
 
-The [O2 lab](../lab/irix-o2/README.md) builds an IP32 N64 kernel, matching
-module and native package with the `crime` Xorg driver and `ip3xboot`. A
-NetBSD cache-alignment correction advances boot past the framebuffer; a later
-native trap during SCSI initialization still prevents login. No 6.5.30
-application ran in that O2 experiment. Its native boot remains a separate
-platform task. Separate [manual Xiri preview CHDs](results/2026-11-15-irix-previews.md)
+Separate [manual Xiri preview CHDs](results/2026-11-15-irix-previews.md)
 now package the qualified 6.5.30f/R5000 and 6.5.22f/R4400 states. Their CHD
 integrity checks pass; a fresh boot of each packaged bundle, broader desktop
 acceptance and native-package promotion remain outstanding. The native IRIX
 donor CHD is usable for donor boot testing, but is not a NetBSD/Xiri image.
 
-The requested [Octane/R10000 alternative](results/2026-11-14-octane-platform.md)
-was also checked. Its firmware rejects the current ELF32 wrapper and faults
-loading the O2-linked ELF64 kernel. The source audit identifies missing native
-Octane board support, so it is not a replacement configuration for this
-6.5.30 application qualification. The earlier native IRIX Octane installation
-remains useful as a separate donor/reference, with its source images untouched.
+The emulated Octane/R10000 boots its IP30 kernel and brings up full-screen
+xdm and 4Dwm on Solid IMPACT and High IMPACT. Its disk layout requires the
+ELF64 `ip30boot` loader. [Octane boot results and launchers](results/2026-11-23-octane-frame.md)
 
 ## Existing reference and external background
 

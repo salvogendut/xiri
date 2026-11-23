@@ -11,8 +11,10 @@ now passes native boot and the 6.5.30f core desktop, shell, File Manager and
 login/logout checks with IRIS shadow cache mode. The shared module also passes
 6.5.22f regression checks. Separate [6.5.30f and 6.5.22f manual previews](docs/results/2026-11-15-irix-previews.md)
 now package those tested disk states as standalone CHDs with pinned launchers.
-The O2/R10000 native SCSI trap remains separate work. Physical hardware needs
-separate qualification.
+The emulated O2/R10000 boots native NetBSD from SCSI into full-screen xdm.
+Both the IRIX 6.5.22 and 6.5.30 disks run 4Dwm and native ctwm.
+[O2 boot results, screenshots and launchers](docs/results/2026-11-23-o2-r10000-boot.md)
+Physical hardware needs separate qualification.
 The emulated Octane boots from its own SCSI disk, shows NetBSD startup
 messages in the Indy console frame and opens a 1280×1024 xdm greeter.
 Log in as `xiritest` for the IRIX 4Dwm desktop or `netbsdtest` for NetBSD
@@ -293,7 +295,7 @@ The separate 6.5.30 version now has a verified donor and reproducible payload.
 Its core desktop checks now pass on Indy/R5000 with shadow cache mode and a
 MIPS IV-aware module. Next, promote the matching native package and produce
 separate test CHDs, then qualify managed installation without inherited
-desktop configuration or user homes. O2 native boot is a separate milestone.
+desktop configuration or user homes.
 
 Compatibility is incomplete. The reproduced Type1 collapse is corrected;
 winterm keeps the verified NetBSD bitmap Courier default. Broader graphics operations,
