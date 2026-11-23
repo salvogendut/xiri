@@ -72,6 +72,13 @@ in `08e53ba7`. [Octane build and qualification](results/2026-11-23-octane-deskto
 
 ## IRIS upstream updates
 
+The Indy rollback cycle on November 23 merged upstream `750ae737` into
+`xiri` at `0393c0e4`. The two incoming changes cover the monitor's watch
+timeout and the JIT fallback for a page without compiled code. The JIT,
+monitor and Telnet library selection passed 541 tests with two ignored.
+The separate monitor-ready integration test also passed. Both desktop CHDs
+retain their qualified emulator at `0bc52567`.
+
 On November 23 the IRIS fork merged 13 upstream commits through `0303cde8` into
 `xiri` at `305cea41`. Newport adopts the shared display refresh thread. The
 merge also preserves embedded listener shutdown and headless Onyx 3000 support.

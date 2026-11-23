@@ -81,3 +81,28 @@ accounts. Packaging verifies the CHD data SHA-1 against the halted raw disk.
 The desktop phase uses a private copy of the packaged CHD and the bundle's
 graphical PROM. Check the corresponding result JSON and desktop PNG before
 publishing a manual image.
+
+## Stock kernel round trip
+
+Use the clean desktop bundle, its qualified emulator and the pinned serial
+PROM from the original Indy installation. The probe uses the serial PROM to
+set the two boot filenames and exports two private graphical PROM settings.
+All three operating-system boots use the normal graphics console and a
+separate serial login. Each release gets its own copy of the CHD and writable
+overlay. The same overlay carries user files through the three boots.
+
+```sh
+python3 lab/native-package/check-kernel-rollback.py \
+  --bundle "$bundle" --emulator .work/emulators/iris-xiri-20261122/accelerated \
+  --serial-prom .work/indy-netbsd/base/nvram.bin \
+  --sets .work/netbsd-11.0/sgimips/binary/sets \
+  --kernel "$kernel" --output "$run"
+```
+
+Supply the unstripped 11.99.11 Indy kernel as `kernel` (member `kernel/netbsd`
+of the native package), and choose a new output directory for each run. The
+probe verifies the saved kernel against the distribution kernel set, compares
+both running build strings, and checks user data and policy across the round
+trip. The final X session checks the saved preference against the X resource
+database. Inspect the result JSON and the per-boot shutdown logs before
+removing the private CHD and overlay.

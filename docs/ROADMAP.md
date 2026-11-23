@@ -315,8 +315,10 @@ now cover stock 11.0 userland, the 11.99.11 kernel/module, accelerated
 Newport, native services and separate original-media 6.5.22f and 6.5.30f
 payloads. Both targets pass interruption/resume and reinstall, then a cold
 boot from the packaged CHD to full-screen 4Dwm and native ctwm through xdm.
-The next installer work is stock-kernel rollback, upgrades/removal and
-physical Indy qualification.
+Both Indy release lines also pass the [stock-kernel rollback test](results/2026-11-23-indy-kernel-rollback.md),
+including a native-user write under 11.0 and a restored 4Dwm session that
+loads the user's saved winterm colour. Installer upgrades, removal and
+physical Indy qualification remain open.
 
 - [x] Maintain a separate original-media **IRIX 6.5.30** installation/import
   process, with its own media pins, donor CHD, resource profile and Xiri acceptance

@@ -301,7 +301,9 @@ MIPS IV-aware module. Both original-media release lines now have
 They start from stock NetBSD 11.0 userland, boot the 11.99.11 modular kernel,
 and run accelerated 4Dwm or native ctwm according to the user's xdm session.
 The [installer guide](docs/NATIVE-PACKAGE.md#clean-installation-on-an-emulated-indy)
-covers building per-release media, installation and repeat installation.
+covers building per-release media and repeat installation. It also explains
+how to [boot the saved stock kernel and return to Xiri](docs/NATIVE-PACKAGE.md#switching-between-the-stock-and-xiri-kernels)
+on the same disk.
 
 Compatibility is incomplete. The reproduced Type1 collapse is corrected;
 winterm keeps the verified NetBSD bitmap Courier default. Broader graphics operations,

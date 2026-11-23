@@ -1,6 +1,5 @@
 """Read NetBSD's message ring and verify halt when the console is graphical.
 
-This is the established desktop-usability probe's LP64 message-ring reader.
 The address must come from the matching, hash-verified kernel symbols.
 """
 import re
@@ -8,15 +7,22 @@ import time
 
 
 class KernelLog:
-    def __init__(self, lab, address):
+    def __init__(self, lab, address, word_bytes=8):
+        if word_bytes not in (4, 8):
+            raise ValueError('unsupported kernel long size')
         self.lab=lab
         self.address=address
+        self.word_bytes=word_bytes
 
     def read(self):
         self.lab.monitor_command('stop')
         try:
             def words(address,count):
-                out=self.lab.monitor_command(f'mem 0x{address:x} {count} d')
+                if self.word_bytes == 4:
+                    # Indy kernel pointers are sign-extended KSEG addresses.
+                    address |= 0xffffffff00000000
+                unit='w' if self.word_bytes == 4 else 'd'
+                out=self.lab.monitor_command(f'mem 0x{address:x} {count} {unit}')
                 values=[int(v,16) for v in re.findall(r'^0x[0-9a-f]+: (0x[0-9a-f]+)',out,re.M)]
                 if len(values)!=count:raise RuntimeError('Short kernel memory read: '+out[:300])
                 return values
@@ -30,8 +36,9 @@ class KernelLog:
             assert magic==0x63061 and 0<=write<size<=131072
             data=b''
             for offset in range(0,size,2048):
-                values=words(address+32+offset,(min(2048,size-offset)+7)//8)
-                data+=b''.join(value.to_bytes(8,'big') for value in values)
+                width=self.word_bytes
+                values=words(address+4*width+offset,(min(2048,size-offset)+width-1)//width)
+                data+=b''.join(value.to_bytes(width,'big') for value in values)
             data=data[:size]
             return (data[write:]+data[:write]).replace(b'\0',b'').decode(errors='backslashreplace')
         finally:

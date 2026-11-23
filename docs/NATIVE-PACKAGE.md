@@ -93,8 +93,8 @@ covers both release lines.
 
 The historical native fixture qualified package assembly and preflight. The
 11.99.11 clean Indy installer below adds target space checks, original-file
-backups, conflict recovery and repeat installation. Version upgrades, removal
-and kernel rollback still need their own procedures and tests. Boot the
+backups, conflict recovery and repeat installation. Version upgrades and
+removal still need their own procedures and tests. Boot the
 matching kernel before installing its userspace.
 
 Defaults under `/etc/xiri` must be installed only if absent. Update `.example`
@@ -168,3 +168,33 @@ local hostname resolves. On the Indy, use graphics console `g` in the PROM,
 reserve `ttyE0` for X and enable serial `ttyZ0` for recovery. Reboot to start
 services in rc order. See [user session configuration](../runtime/README.md)
 for additional accounts and existing xdm configurations.
+
+### Switching between the stock and Xiri kernels
+
+On either clean Indy image, shut down as root with `shutdown -h now`. At the
+Indy System Maintenance menu choose **5. Enter Command Monitor**. If starting
+from power-on, press Esc at the PROM countdown to reach that menu. Keep the
+graphical console selected. Select the original NetBSD kernel at the PROM.
+
+```text
+setenv OSLoadFilename netbsd.stock
+boot
+```
+
+Run `uname -r` in the guest. The stock kernel reports `11.0`. Use a native
+NetBSD account such as `netbsdtest` during recovery. Stock 11.0 logs
+`modload: compat_irix_o32: Function not implemented` and continues to xdm.
+The installed Xiri module requires the matching Xiri kernel.
+
+To return, shut down cleanly again and select the Xiri boot wrapper at the PROM.
+
+```text
+setenv OSLoadFilename netbsd.boot
+boot
+```
+
+`uname -r` now reports `11.99.11`, and `modstat | grep compat_irix_o32`
+shows the module loaded from the filesystem. Log in at xdm with the
+usual Xiri desktop account. The PROM remembers the selected filename. Both
+kernels use the same root filesystem, user homes and configuration. See the
+[dual-release rollback test](results/2026-11-23-indy-kernel-rollback.md).

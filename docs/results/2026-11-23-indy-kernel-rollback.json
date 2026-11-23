@@ -1,0 +1,161 @@
+{
+  "platform": "Emulated Indy IP24, 256 MiB, accelerated Newport, stock NetBSD 11.0 userland/X sets",
+  "kernel_source": "c096ddb347d",
+  "kernel_sha256": {
+    "netbsd": "6a03b86ae641ef1fc1bef7c8e999c1a9f349580ae405c85c0da30451fb7c58a1",
+    "netbsd.boot": "a1367bb88f95edaf7bf84fe466636b1e4b129ad12f30c7d787588d88b8f21c0c",
+    "compat_irix_o32.kmod": "44ce8e5aafd5b7bf1e20ee37b0ab71fcfd964067d81b288fbc6d2bd4310583b8"
+  },
+  "stock_set": "kern-GENERIC32_IP2x.tgz",
+  "stock_set_sha512": "cbd9a72f5b97fb2eae0c3773d5b9d077513dd6e00aed36e9733d0630099446bb02a5201e8603fafead4535aae8891e372ea288fedfae0b6713bb7f358d1acd79",
+  "serial_prom_sha256": "602d954b2e8f076887c54ed301dff7dbd9cc0c6be138e537e5bc732c948d344e",
+  "guest_iris": "0bc52567a87349a5f521c702f9d8dec1dc0f79c6",
+  "guest_iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+  "iris_upstream": "750ae73795a67ac892ee42a63fc68dfb0b010692",
+  "iris_merge": "0393c0e4e23478f04b8122c5d67b9efcefd2f720",
+  "host_tests": 85,
+  "releases": {
+    "6.5.22f": {
+      "release": "6.5.22f",
+      "chd_sha256": "bd4bcc59c1845a3d9a50e0245d0c705ff9dea022ce2f96c6e5afcf58794fe328",
+      "stock_sha256": "cc9f51a1fcdef2c61ce3335761d6cb61e17ae9c56f2d85c9f382365efbbdf0ad",
+      "boots": [
+        {
+          "phase": "baseline",
+          "kernel": "NetBSD 11.99.11 (XIRI_IRIX_MODULE_20261103) #0: Mon Nov 23 18:09:22 UTC 2026  salvogendut@minisforum.golgota.lan:/var/home/salvogendut/Dev/xiri/.work/netbsd-sync-20261123/indy/kernel",
+          "prom_filename": "netbsd.boot",
+          "preserved_paths": [
+            "/usr/people/xiritest/.Xresources",
+            "/usr/people/xiritest/rollback-note",
+            "/usr/people/xiritest/.xsession",
+            "/etc/master.passwd",
+            "/etc/group",
+            "/etc/modules.conf",
+            "/etc/rc.conf.d/xdm",
+            "/etc/xiri/session.conf",
+            "/var/db/xiri-install/installed"
+          ],
+          "halted": true,
+          "stopped": true
+        },
+        {
+          "phase": "stock",
+          "kernel": "NetBSD 11.0 (GENERIC32_IP2x) #0: Thu Jul 30 15:23:12 UTC 2026  mkrepro@mkrepro.NetBSD.org:/usr/src/sys/arch/sgimips/compile/GENERIC32_IP2x",
+          "prom_filename": "netbsd.stock",
+          "xdm_status": "xdm is running as pid 2672.",
+          "messages": "modload: compat_irix_o32: Function not implemented\n[running /etc/rc.d/savecore]\nsavecore: no core dump",
+          "native_login": "netbsdtest\n/home/netbsdtest",
+          "greeter_png_sha256": "11ede035f7264e11f3b3eaa390eced3b630eec10e2a254d130732e937510d340",
+          "halted": true,
+          "stopped": true,
+          "emulator_png_pixels": [
+            1282,
+            1024
+          ],
+          "listed_modules": 104,
+          "compat_irix_o32_loaded": false,
+          "screenshot": "2026-11-23-indy-rollback-6.5.22f-stock.png"
+        },
+        {
+          "phase": "restored",
+          "kernel": "NetBSD 11.99.11 (XIRI_IRIX_MODULE_20261103) #0: Mon Nov 23 18:09:22 UTC 2026  salvogendut@minisforum.golgota.lan:/var/home/salvogendut/Dev/xiri/.work/netbsd-sync-20261123/indy/kernel",
+          "prom_filename": "netbsd.boot",
+          "desktop": {
+            "dimensions": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+            "applied_resource": "winterm*foreground: #c9ecc9",
+            "clients": [
+              "4Dwm",
+              "Toolchest",
+              "Icon Catalog",
+              "winterm",
+              "xclock"
+            ],
+            "vendor_shell": true,
+            "logout_to_xdm": true,
+            "png_sha256": "f5baf0c9f8f1ac6e6b2ffbcf9740a09ba876abf00e0e3c2afeffa41ff2a29590",
+            "screenshot": "2026-11-23-indy-rollback-6.5.22f-restored.png"
+          },
+          "halted": true,
+          "stopped": true,
+          "emulator_png_pixels": [
+            1282,
+            1024
+          ]
+        }
+      ],
+      "base_unchanged": true,
+      "passed": true
+    },
+    "6.5.30f": {
+      "release": "6.5.30f",
+      "chd_sha256": "31c56a34c934d8151517b2745138e5756aaf6ecac8df1c828a3208ed4510e39a",
+      "stock_sha256": "cc9f51a1fcdef2c61ce3335761d6cb61e17ae9c56f2d85c9f382365efbbdf0ad",
+      "boots": [
+        {
+          "phase": "baseline",
+          "kernel": "NetBSD 11.99.11 (XIRI_IRIX_MODULE_20261103) #0: Mon Nov 23 18:09:22 UTC 2026  salvogendut@minisforum.golgota.lan:/var/home/salvogendut/Dev/xiri/.work/netbsd-sync-20261123/indy/kernel",
+          "prom_filename": "netbsd.boot",
+          "preserved_paths": [
+            "/usr/people/xiritest/.Xresources",
+            "/usr/people/xiritest/rollback-note",
+            "/usr/people/xiritest/.xsession",
+            "/etc/master.passwd",
+            "/etc/group",
+            "/etc/modules.conf",
+            "/etc/rc.conf.d/xdm",
+            "/etc/xiri/session.conf",
+            "/var/db/xiri-install/installed"
+          ],
+          "halted": true,
+          "stopped": true
+        },
+        {
+          "phase": "stock",
+          "kernel": "NetBSD 11.0 (GENERIC32_IP2x) #0: Thu Jul 30 15:23:12 UTC 2026  mkrepro@mkrepro.NetBSD.org:/usr/src/sys/arch/sgimips/compile/GENERIC32_IP2x",
+          "prom_filename": "netbsd.stock",
+          "xdm_status": "xdm is running as pid 2582.",
+          "messages": "modload: compat_irix_o32: Function not implemented\n[running /etc/rc.d/savecore]\nsavecore: no core dump",
+          "native_login": "netbsdtest\n/home/netbsdtest",
+          "halted": true,
+          "stopped": true,
+          "emulator_png_pixels": [
+            1282,
+            1024
+          ],
+          "listed_modules": 104,
+          "compat_irix_o32_loaded": false,
+          "greeter_png_sha256": "f2bb6131153f083b1553c12635a7912bf9ecd04df7238b29d71e2486fe2a45f2",
+          "screenshot": "2026-11-23-indy-rollback-6.5.30f-stock.png"
+        },
+        {
+          "phase": "restored",
+          "kernel": "NetBSD 11.99.11 (XIRI_IRIX_MODULE_20261103) #0: Mon Nov 23 18:09:22 UTC 2026  salvogendut@minisforum.golgota.lan:/var/home/salvogendut/Dev/xiri/.work/netbsd-sync-20261123/indy/kernel",
+          "prom_filename": "netbsd.boot",
+          "desktop": {
+            "dimensions": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+            "applied_resource": "winterm*foreground: #c9d9ec",
+            "clients": [
+              "4Dwm",
+              "Toolchest",
+              "Icon Catalog",
+              "winterm",
+              "xclock"
+            ],
+            "vendor_shell": true,
+            "logout_to_xdm": true,
+            "png_sha256": "f39464e35e9a846fb2724354b334a2ad7082afbfa673cae85e9b720e52084bfa",
+            "screenshot": "2026-11-23-indy-rollback-6.5.30f-restored.png"
+          },
+          "halted": true,
+          "stopped": true,
+          "emulator_png_pixels": [
+            1282,
+            1024
+          ]
+        }
+      ],
+      "base_unchanged": true,
+      "passed": true
+    }
+  }
+}

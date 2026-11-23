@@ -66,5 +66,6 @@ The two local installer CDs and compressed qualification logs are in
 `.work/installers/indy-11.99.11`. See the [install
 instructions](../NATIVE-PACKAGE.md#clean-installation-on-an-emulated-indy) and
 [reproduction commands](../../lab/native-package/README.md#bootstrapping-a-stock-target).
-Physical Indy hardware, rollback to the saved stock kernel, cross-version
-upgrades, removal and recovery from a power cut during writes remain open.
+The subsequent [stock kernel round trip](2026-11-23-indy-kernel-rollback.md)
+covers both Indy images. Physical Indy hardware, cross-version upgrades,
+removal and recovery from a power cut during writes remain open.
