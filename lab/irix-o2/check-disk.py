@@ -9,6 +9,7 @@ import sys
 import time
 from pathlib import Path
 from types import SimpleNamespace
+from PIL import Image, ImageChops
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / 'scripts'))
@@ -19,6 +20,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     for name in ('bundle', 'emulator', 'output'):
         parser.add_argument('--' + name, type=Path, required=True)
+    parser.add_argument('--check-greeter', action='store_true',
+                        help='compare the bitmap greeting, prompts and typed username with the O2 reference')
     args = parser.parse_args()
     bundle, emulator, out = (p.resolve() for p in (args.bundle, args.emulator, args.output))
     out.mkdir(parents=True, exist_ok=False)
@@ -44,16 +47,56 @@ def main():
             raise RuntimeError('could not obtain fresh GBE scanout')
         return path.name
 
+    def check_glyphs(name, regions):
+        reference = ROOT / 'docs/results/2026-11-23-o2-xdm-password.png'
+        with Image.open(reference) as expected, Image.open(out / name) as actual:
+            for label, box in regions.items():
+                # Exclude the blinking caret and compare the ink in each letter.
+                def ink(frame):
+                    return frame.crop(box).convert('L').point(lambda value: 255 if value < 80 else 0)
+                if ImageChops.difference(ink(expected), ink(actual)).getbbox():
+                    raise ValueError(f'{label} glyphs differ in {name}')
+                result.setdefault('greeter_glyphs', []).append(label)
+
+    def press(key):
+        for event in ('keydown', 'keyup'):
+            if 'ok' not in guest.monitor(f'o2 {event} {key}'):
+                raise ValueError('O2 keyboard did not accept ' + key)
+            time.sleep(.18)
+
+    def check_failed_login():
+        for field in ('xiriunknown', 'invalid'):
+            for ch in field:
+                press('Key' + ch.upper())
+            press('Enter')
+            time.sleep(.5)
+        deadline = time.monotonic() + 15
+        while time.monotonic() < deadline:
+            path = out / screenshot('xdm-rejected')
+            with Image.open(path) as frame:
+                # The stock greeter draws its failure message in dark red.
+                area = frame.crop((335, 425, 740, 540)).convert('RGB')
+                colors = area.getcolors(area.width * area.height)
+                if sum(n for n, (r, g, b) in colors if r > 70 and max(g, b) < 30) >= 50:
+                    result['rejected_login'] = True
+                    return
+            time.sleep(.25)
+        raise ValueError('xdm did not display its failed-login message')
+
     def login(user):
         # Give xdm time to map the widget and take its keyboard grab.
         time.sleep(3)
-        for field in (user, user):
-            for key in [*('Key' + ch.upper() for ch in field), 'Enter']:
-                for event in ('keydown', 'keyup'):
-                    if 'ok' not in guest.monitor(f'o2 {event} {key}'):
-                        raise ValueError('O2 keyboard did not accept ' + key)
-                    time.sleep(.18)
+        for field in ('username', 'password'):
+            for ch in user:
+                press('Key' + ch.upper())
+            inspect = args.check_greeter and user == 'xiritest' and field == 'username'
+            if inspect:
+                time.sleep(.5)
+                check_glyphs(screenshot('xdm-username'), {'xiritest': (480, 384, 548, 403)})
+            press('Enter')
             time.sleep(2)
+            if inspect:
+                check_glyphs(screenshot('xdm-password'), {'Password': (350, 405, 460, 434)})
 
     def greeter():
         guest.wait_for('test -s /tmp/.X0-lock', 90)
@@ -84,6 +127,10 @@ def main():
         if '1280x1024' not in result['display']:
             raise ValueError(result['display'])
         result['greeter'] = screenshot('xdm')
+        if args.check_greeter:
+            check_glyphs(result['greeter'], {'Welcome': (350, 283, 730, 343),
+                                             'Login': (404, 377, 467, 405)})
+            check_failed_login()
         login('xiritest')
         guest.wait_for("pgrep -u xiritest -f '^/emul/irix/usr/bin/X11/4Dwm( |$)' >/dev/null", 150)
         guest.wait_for("grep -q 'Logs: ' /usr/people/xiritest/.xsession-errors", 60)

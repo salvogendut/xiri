@@ -1,0 +1,82 @@
+{
+  "machine": "SGI-IP32 O2, R10000, 256 MiB, CRIME",
+  "date": "2026-11-23",
+  "iris_xiri": "08e53ba7e183cbfd3b2e7e6d25ce65e2d497323f",
+  "iris_upstream": "a05289efc808ee1320195481f6cab4cfee16bef9",
+  "xsrc_netbsd_11": "b3e9d7e64782fe61c36450dae1c24116598fef89",
+  "libXiriO2Greet_sha256": "2f8d0b4fcb6eb5701f2f6a9fddef85b5c09f4195ac502950d139b4565d35d189",
+  "update_iso_sha256": "f944b17bec6310a0030637087854a1371ed821637a80c7f9d7414cf77504c109",
+  "netbsd_11_authentication_objects": {
+    "greet.o": "0d88746e10816588310b0b5a55e0ba42b523214ef0bfcbb85377b7ee49bfc612",
+    "verify.o": "5d768cb842921b74775ec7b71c5de6c8968a02328c34c5981b89b28760283f87"
+  },
+  "sources_sha256": {
+    "Login.c": "3a4f532c6990c55a71fa20c16b734b099a17b72b777ef42688b7e3692125985e",
+    "Login.h": "51ab92c071f9ef42dfca6e325c21008deb444dc4c9fc69f8d24af6ba09d5a75a",
+    "LoginP.h": "ecc88869a6a74ddd0323ada5dc19096a9f5199217f44fc6b23a95daa10203da7",
+    "dm.h": "89b708ab4ff4031f56a8a9127606e3d17159491fb6b4687c0f5e1200690dfc33",
+    "greet.h": "3c02961ea8a43b4b7432a04ed518ac82200686235a6f4c53f23e9426da601257",
+    "dm_error.h": "f71bb854601cb29b32b311f57ab4be6719b920b462f79ef92ae4476fa5b8fb15"
+  },
+  "build_script_sha256": "050e5443e9a0b7c9b843d8423dd47fe6273f6dd793411598b09162ccb1191bc1",
+  "install_script_sha256": "32ffd8e2bca0fb63b0a360adb0193f3c717480cef6cc8ea5bd60ba7626385793",
+  "host_tests_passed": 83,
+  "releases": {
+    "6.5.22": {
+      "release": "6.5.22",
+      "chd_sha256": "dabd8943bbb231e1e755a32b872305882ed892e9bc5928550bbecff75b6ce0e8",
+      "source_chd_sha256": "651cc40b400dbed0f37411e4894c2ae9424c3ec46d830aff142c70f381b808ec",
+      "firmware_sha256": "10d61f53f025e8b8848a0ec1d3643eb9ad59ef268fad8234e3ae5e343d47b61a",
+      "chdman_verified": true,
+      "greeter_glyphs_verified": [
+        "Welcome",
+        "Login",
+        "xiritest",
+        "Password"
+      ],
+      "invalid_login_rejected": true,
+      "window_managers": [
+        "4Dwm",
+        "ctwm"
+      ],
+      "returned_to_xdm": [
+        true,
+        true
+      ],
+      "clean_halt": true,
+      "verified_inputs_unchanged": true,
+      "emulator_stopped": true,
+      "serial_log_sha256": "b94c9bc811ff3b2afe4750554a54fac8c8a8669f9bdb347d539caa1bbe94424d"
+    },
+    "6.5.30": {
+      "release": "6.5.30",
+      "chd_sha256": "fe831a30129661d57d95d84bf53000e2d7006cc66e0f58c8c7e329d26cc2bf79",
+      "source_chd_sha256": "aabafa37b9c80e17ef2239a61860b81a55c54c0270c882fa97ed0a10836ee6be",
+      "firmware_sha256": "10d61f53f025e8b8848a0ec1d3643eb9ad59ef268fad8234e3ae5e343d47b61a",
+      "chdman_verified": true,
+      "greeter_glyphs_verified": [
+        "Welcome",
+        "Login",
+        "xiritest",
+        "Password"
+      ],
+      "invalid_login_rejected": true,
+      "window_managers": [
+        "4Dwm",
+        "ctwm"
+      ],
+      "returned_to_xdm": [
+        true,
+        true
+      ],
+      "clean_halt": true,
+      "verified_inputs_unchanged": true,
+      "emulator_stopped": true,
+      "serial_log_sha256": "e7a115ceef0edc78d0eeaf6a75ac79a1199096baa8656a8150925e0d5b669e4b"
+    }
+  },
+  "screenshots": {
+    "2026-11-23-o2-xdm-password.png": "abec7af113e15af71a77cac22518949e3c197b4c0150ef19f5e551f173cbd3e2",
+    "2026-11-23-o2-xdm-rejected.png": "42fb06000f666ef5cd7f90ac200da250b7a62fa343c815fd3520e69349142382"
+  }
+}

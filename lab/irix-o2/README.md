@@ -1,7 +1,7 @@
 # O2/R10000 qualification fixture
 
 The emulated O2 boots from its own SCSI disk on both the 6.5.22 and 6.5.30
-Xiri lines with the R10000 JIT. See the [November 23 disk boot check](../../docs/results/2026-11-23-o2-r10000-boot.md) for launchers, screenshots and the graphical results.
+Xiri lines with the R10000 JIT. [Current launchers and greeter build](../../docs/results/2026-11-23-o2-greeter.md) · [November 23 disk boot check](../../docs/results/2026-11-23-o2-r10000-boot.md)
 
 The original November 14 run stopped during AIC-7880 attachment. On
 November 15 the IRIS fix for the wide MACE PCI address window let the same

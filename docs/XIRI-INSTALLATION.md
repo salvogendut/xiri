@@ -175,7 +175,8 @@ On the emulated O2/R10000, the IP32 N64 kernel boots from an 8 GiB SCSI disk
 using NetBSD's `ip3xboot` in the SGI volume header and the ELF32-wrapped
 kernel in FFS. Both Xiri release disks run the vendor shell and open full-screen
 xdm on the CRIME display. Log in as `xiritest` for 4Dwm or `netbsdtest` for ctwm.
-[O2 boot results and launchers](results/2026-11-23-o2-r10000-boot.md)
+[O2 launchers and greeter update](results/2026-11-23-o2-greeter.md) ·
+[O2 boot results](results/2026-11-23-o2-r10000-boot.md)
 
 Separate [manual Xiri preview CHDs](results/2026-11-15-irix-previews.md)
 now package the qualified 6.5.30f/R5000 and 6.5.22f/R4400 states. Their CHD
