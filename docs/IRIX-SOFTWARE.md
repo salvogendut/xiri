@@ -74,10 +74,14 @@ The earlier [shell image](results/2026-11-02-irix-shell-image.md) packages
 the original-shell and high-address mapping fixes and verifies xmahjongg's
 existing catalog action after a direct CHD boot.
 
-Original IRIX `inst` installed and removed CD 4 software on both Indy lines
-with the updated NetBSD fork. On private alternate roots, both versions
-recorded the xmahjongg subsystem and removed its executable. SGI's
-base installation still stops at its IRIX device setup hook. The
+SGI's original `inst` installed and removed xmahjongg from CD 4 on both
+Indy release lines. With the updated NetBSD fork, its exit-command hook
+created the original Freeware page on a private package root. After
+exporting that page and the installed software to the desktop, xiritest
+launched the game through Icon Catalog on two successive xdm logins.
+Removal cleared the catalog link and the game from the target's own
+installation history. SGI's base installation still stops at its IRIX
+device setup hook. The
 [dual-release installer results](results/2026-11-24-indy-inst.md) and
 [reproduction procedure](../lab/irix-installer/README.md#repeat-the-clean-indy-installer-check)
 describe the current boundary. Software Manager and upgrades remain later work.

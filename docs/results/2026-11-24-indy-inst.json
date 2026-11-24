@@ -1,6 +1,6 @@
 {
   "netbsd_branch": "xiri",
-  "netbsd_commit": "c7e2ed055caf57bc0fe354818e9a1d2f14160f37",
+  "netbsd_commit": "6e9a69e852f6d5576d76743ee4556333eca54937",
   "host_tests": 94,
   "releases": {
     "6.5.22f": {
@@ -70,12 +70,56 @@
         "sha256": "35253008a6d31ad6c4589c622146bcd0ae781488bc5d7872a4114b888e1edb59",
         "target": "disposable alternate root",
         "registered_by": "original inst, verified with original versions",
-        "removal": "original inst using CD 4, versions rows and executable absent",
+        "removal": "SGI remove from CD 4; original catalog link, executable, type rule and artwork removed; versions empty for game; FreewareRelnotes retained",
         "base_complete": false,
         "blocked_command": "cd $rbase/dev; ENV= ./MAKEDEV > /dev/null",
         "missing_interpreter": "/sbin/make",
-        "original_make_sha256": "3fcc9ae441684fcca2d5e5ef5a78cc742fbb46ef48f206d9c5e86afb2d524b09"
-      }
+        "original_make_sha256": "3fcc9ae441684fcca2d5e5ef5a78cc742fbb46ef48f206d9c5e86afb2d524b09",
+        "catalog_link": "/var/tmp/xiri-pkg/usr/freeware/bin/xmahjongg",
+        "created_by": "SGI inst recovery running the original outstanding exit commands",
+        "catalog_page": "Freeware",
+        "launch": {
+          "method": "XTEST double click on original Icon Catalog entry",
+          "user": "xiritest",
+          "uid": 1234,
+          "window_class": "XMahjongg",
+          "geometry": "1006x614",
+          "window_and_process": [
+            "           0x1800004 \"xmahjongg\": (\"xmahjongg\" \"XMahjongg\")  1006x614+0+0  +32+32",
+            "4831 /usr/lib/desktop/iconcatalog/pages/C/Freeware/xmahjongg"
+          ]
+        },
+        "screenshots": [
+          "2026-11-24-indy-inst-6.5.22f-catalog.png",
+          "2026-11-24-indy-inst-6.5.22f-game.png"
+        ],
+        "interaction": {
+          "window_sha256": {
+            "before": "179fa67f872b2a54d618b4f411405012073d202ec6fc9e34337a5a59cd05162e",
+            "hint": "b0b80f10b397d19a099da61e6a4b952cca76dcf0f9112fcbd6a9f0f4f9052340",
+            "take": "179fa67f872b2a54d618b4f411405012073d202ec6fc9e34337a5a59cd05162e",
+            "undo": "179fa67f872b2a54d618b4f411405012073d202ec6fc9e34337a5a59cd05162e"
+          },
+          "quit": "game exited"
+        },
+        "second_login": "7766 /usr/lib/desktop/iconcatalog/pages/C/Freeware/xmahjongg",
+        "filetype_files_sha256": {
+          "xmahjongg.closed.fti": "bde5a7304fb657aef0fe0a029de83caa25858508abbcf76bdb6c84a0b93f809b",
+          "xmahjongg.open.fti": "654fe7c78706a178f4e7588a9d67f26fb60f8f1efb9e53fc2b4cfb7a31b299ce",
+          "xmahjongg.ftr": "eb07af31cd6227cc570c638aac0e9fce19be3eb19332a030d863ddd7fa637f22"
+        }
+      },
+      "catalog_helper": {
+        "signal_before_fix": "SIGSEGV",
+        "requested_break": "0x10016000",
+        "fault_address": "0x10014000",
+        "fault_pc": "0x0fa539ac",
+        "trace_sha256": "d119384c3ec619e7ade35f64cd94db5beb076f54d531f4f9a6288c7d10f7bbd2",
+        "help_after_fix": "SGI usage in native and chroot invocation",
+        "loader_checks": 200,
+        "loader_log_archive_sha256": "125d8964e382fec3f7c854ecfd7a8fe3753dddfc90fe7d149b0bb4fb3839b076"
+      },
+      "base_ownership_errors_after_lchown": 0
     },
     "6.5.30f": {
       "donor_sha256": "339f74457dfbb06813681ab5db2ccfdd29d394e8a02dfcdcd6c6ac7c22a836db",
@@ -144,15 +188,60 @@
         "sha256": "35253008a6d31ad6c4589c622146bcd0ae781488bc5d7872a4114b888e1edb59",
         "target": "disposable alternate root",
         "registered_by": "original inst, verified with original versions",
-        "removal": "original inst using CD 4, versions rows and executable absent",
+        "removal": "SGI remove from CD 4; original catalog link, executable, type rule and artwork removed; versions empty for game; FreewareRelnotes retained",
         "base_complete": false,
         "blocked_command": "cd $rbase/dev; ENV= ./MAKEDEV > /dev/null",
         "missing_interpreter": "/sbin/make",
-        "original_make_sha256": "a8964e34798d89914a733fc5dd77f22ea3e139b9ae1cb3e1b82721cde7480329"
-      }
+        "original_make_sha256": "a8964e34798d89914a733fc5dd77f22ea3e139b9ae1cb3e1b82721cde7480329",
+        "catalog_link": "/var/tmp/xiri-pkg/usr/freeware/bin/xmahjongg",
+        "created_by": "SGI inst recovery running the original outstanding exit commands",
+        "catalog_page": "Freeware",
+        "launch": {
+          "method": "XTEST double click on original Icon Catalog entry",
+          "user": "xiritest",
+          "uid": 1234,
+          "window_class": "XMahjongg",
+          "geometry": "1006x614",
+          "window_and_process": [
+            "           0x1800004 \"xmahjongg\": (\"xmahjongg\" \"XMahjongg\")  1006x614+0+0  +32+32",
+            "7452 /usr/lib/desktop/iconcatalog/pages/C/Freeware/xmahjongg"
+          ]
+        },
+        "screenshots": [
+          "2026-11-24-indy-inst-6.5.30f-catalog.png",
+          "2026-11-24-indy-inst-6.5.30f-game.png"
+        ],
+        "interaction": {
+          "window_sha256": {
+            "before": "69f48d01e4105b3c54deaa0cace728d27f668a006a9bd66a71e99b64d4d9b923",
+            "hint": "0ff7c9e263b47e5e77844b21a4dd55ae733fe3c2e4560a669a7c9278f1200fcc",
+            "take": "fd00267594c2bc4f176909d202d349528c08542775af924b4391c1c51ad8145e",
+            "undo": "69f48d01e4105b3c54deaa0cace728d27f668a006a9bd66a71e99b64d4d9b923"
+          },
+          "quit": "game exited"
+        },
+        "second_login": "5202 /usr/lib/desktop/iconcatalog/pages/C/Freeware/xmahjongg",
+        "filetype_files_sha256": {
+          "xmahjongg.closed.fti": "bde5a7304fb657aef0fe0a029de83caa25858508abbcf76bdb6c84a0b93f809b",
+          "xmahjongg.open.fti": "654fe7c78706a178f4e7588a9d67f26fb60f8f1efb9e53fc2b4cfb7a31b299ce",
+          "xmahjongg.ftr": "eb07af31cd6227cc570c638aac0e9fce19be3eb19332a030d863ddd7fa637f22"
+        }
+      },
+      "catalog_helper": {
+        "signal_before_fix": "SIGSEGV",
+        "requested_break": "0x10016000",
+        "fault_address": "0x10014000",
+        "fault_pc": "0x0fa46d30",
+        "trace_sha256": "bd3c8d516b70a95df39f07cd9cd4c22af84dc0eab07d30653bfd38276dc1becb",
+        "help_after_fix": "SGI usage in native and chroot invocation",
+        "loader_checks": 200,
+        "loader_log_archive_sha256": "4ed762a4eacff6c70cb008f7390408fe5d5290102f5844524ac60e5b3aa064d5"
+      },
+      "base_ownership_errors_after_lchown": 0
     }
   },
   "kernel_sha256": "81f5240ad7fdd66041e57ca96c3abbc53fe6c8acecfa72a1a3b27b54c3aebb54",
   "history_fix_module_sha256": "e9dea4dc75c6515c3f78ea232621ef829b09b56dff138a4364b0617782f459f4",
-  "link_fix_module_sha256": "cbca2487b924db31131a0b0cb154ce01baf88bc850ace6bc3d060dac9704b3ce"
+  "link_fix_module_sha256": "cbca2487b924db31131a0b0cb154ce01baf88bc850ace6bc3d060dac9704b3ce",
+  "heap_fix_module_sha256": "2664a87a32ec60d65756ca2af9517668806159a79c89c946665941888a0dc4d1"
 }

@@ -113,6 +113,34 @@ The expected report is `No conflicts`. The independent `go` trial on a
 private guest reached an IRIX device-creation hook. Its results and the
 observed game install and removal are in the [installer report](../../docs/results/2026-11-24-indy-inst.md).
 
+### Reproduce the catalog launch on a disposable Indy
+
+The graphical test used NetBSD fork commit `6e9a69e852f` and an initially
+empty target at `/var/tmp/xiri-pkg`. From the release-matched `/emul/irix`,
+copy `lib`, `lib32`, `sbin`, `usr/lib32`, `usr/lib/desktop`,
+`usr/lib/filetype`, `usr/sbin/iconcatalogedit`, `etc/passwd` and `etc/group`
+to the same paths in the target. Preserve modes and links. The only initial
+file under `var/inst` is `machfile`. Inside the target create `dev/null`
+and `dev/zero` with the major/minor numbers of those devices on the
+running NetBSD guest. This lets the SGI loader run inside `chroot`.
+
+Insert `go` after `conflicts` in the command file above. After the base
+device hook stops, verify the game with `versions -r "$target" fw_xmahjongg`.
+Reopen `inst` on that target with CD 4 as its distribution. Choose
+**Ignore the previous installation session**, then **Execute them now**
+at the outstanding exit-commands prompt. Check the resulting Freeware
+directory on disk. Both the game and its catalog link came from this
+transaction.
+
+The test guests exposed the package's `usr/freeware` and SGI-created
+Freeware page with read-only NetBSD null mounts. Native `/usr/freeware`
+pointed to the package tree. The desktop and its native file monitor could
+then see the same files. Log in through xdm, select **Freeware** in Icon
+Catalog, and double-click **xmahjongg**. The release report records the
+observed window, user, and remaining OS installation issue. For removal,
+close the game and use CD 4 as the source with `remove fw_xmahjongg.sw.xmahjongg`,
+`conflicts` and `go` in the same alternate root.
+
 To rebuild the conversion checks, run
 `python3 lab/irix-installer/build-cvt-probes.py TOOLDIR NEW_OUTPUT`.
 Copy the two binaries into the disposable guest and run each one. Exit zero

@@ -50,7 +50,25 @@ def main():
     bne $12, $13, failed
     nop
 '''
-    for suffix, extra in [('plain',''),('prefix',prefix),('alias',prefix+alias)]:
+    # The RW segment starts at 0x10005000 and has 0x2010 bytes of memory.
+    # Its first heap page therefore spans 0x10008000 through 0x10009fff.
+    heap='''    li $a0, 0x1000a000
+    li $v0, 1017
+    syscall
+    bnez $a3, failed
+    nop
+    li $s0, 0x10008000
+    li $12, 0x12345678
+    sw $12, 0($s0)
+    sw $12, 8188($s0)
+    lw $13, 0($s0)
+    bne $12, $13, failed
+    nop
+    lw $13, 8188($s0)
+    bne $12, $13, failed
+    nop
+'''
+    for suffix, extra in [('plain',''),('prefix',prefix),('alias',prefix+alias),('heap',heap)]:
         asm=OUT/('interpreter-'+suffix+'.S');asm.write_text(source.replace('    /* Initialized data,',extra+'\n    /* Initialized data,',1))
         text=rt.code(asm,0x0f901000,'interpreter-'+suffix)
         data=rt.image(text,True)
@@ -90,6 +108,9 @@ def main():
         name='n32-subpage-'+suffix;save(name,data)
         result['cases'].append(dict(name=name,abi='n32',program=name,
             interpreter='subpage-interpreter-'+('alias' if suffix=='shared-file-page' else 'prefix'),expect=expected))
+    result['cases'].append(dict(name='n32-subpage-first-heap-page', abi='n32',
+                                program='n32-subpage-prefix',
+                                interpreter='subpage-interpreter-heap', expect='output'))
     lines=['set -eu','cd /tmp/xiri-exec-subpage','ulimit -c 0',
            'mkdir -p root/emul/irix/usr/lib root/emul/irix/lib32',': >input.txt']
     for case in result['cases']:
