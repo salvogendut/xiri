@@ -307,6 +307,8 @@ on the same disk. The [desktop removal and reinstall guide](docs/NATIVE-PACKAGE.
 covers native ctwm recovery, the stock Newport driver and preservation of
 user homes and local configuration. [Test results and screenshots for both releases](docs/results/2026-11-24-indy-desktop-removal.md)
 
+The [native helper update guide](docs/NATIVE-PACKAGE.md#upgrade-native-helpers-on-an-installed-indy) covers updating an installed Indy and rolling back from the same release-specific CD.
+
 Compatibility is incomplete. The reproduced Type1 collapse is corrected;
 winterm keeps the verified NetBSD bitmap Courier default. Broader graphics operations,
 remote filesystems, full-disk failures, other preference panels and broader

@@ -161,7 +161,9 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     for arg in ('bundle', 'serial-prom', 'emulator', 'sets', 'kernel', 'output'):
         parser.add_argument('--' + arg, type=Path, required=True)
-    parser.add_argument('--install-media', type=Path, help='qualify removing and reinstalling this release')
+    media = parser.add_mutually_exclusive_group()
+    media.add_argument('--upgrade-media', type=Path, help='qualify native helper upgrade and rollback')
+    media.add_argument('--install-media', type=Path, help='qualify removing and reinstalling this release')
     args = parser.parse_args()
     bundle, firmware, emulator, sets, kernel, out = [
         p.resolve()
@@ -183,11 +185,15 @@ def main():
     config = (bundle / 'iris.toml').read_text()
     if 'overlay = true' not in config or 'path = "netbsd-xiri.chd"' not in config:
         raise ValueError('Expected the Indy overlay configuration')
-    removal = None
+    removal = upgrade = None
     phases = ('baseline', 'stock', 'restored')
-    if args.install_media:
-        medium = args.install_media.resolve(strict=True)
+    if args.install_media or args.upgrade_media:
+        medium = (args.install_media or args.upgrade_media).resolve(strict=True)
         config += '\n[scsi.4]\ncdrom = true\npath = ' + json.dumps(str(medium)) + '\n'
+    if args.upgrade_media:
+        upgrade = runpy.run_path(str(HERE / 'check-native-upgrade.py'))
+        phases = ('upgrade', 'upgraded', 'downgraded')
+    elif args.install_media:
         removal = runpy.run_path(str(HERE / 'check-desktop-removal.py'))
         phases = ('remove', 'stock', 'reinstall', 'restored')
     os.environ.pop('IRIS_CHD_DIFF_DIR', None)
@@ -199,7 +205,7 @@ def main():
     toolbox = probe.TOOLBOX
     colour = {'6.5.22f': '#c9ecc9', '6.5.30f': '#c9d9ec'}[release]
     result = dict(release=release, chd_sha256=pin['chd_sha256'], stock_sha256=stock, boots=[])
-    if removal:
+    if removal or upgrade:
         result['media_sha256'] = sha256(medium)
     try:
         prepare_prom(probe, config.replace('ci = false', 'ci = true'), out, firmware)
@@ -247,7 +253,9 @@ def main():
                     g.command('grep -q "^' + re.escape(release) + ' " ' + RECEIPT)
                 if phase != 'stock':
                     g.command("modstat | grep -Eq '^compat_irix_o32[[:space:]]+exec[[:space:]]+filesys'")
-                if removal and phase == 'remove':
+                if upgrade:
+                    evidence.update(upgrade['check'](g, phase, release, colour, run, xdm))
+                elif removal and phase == 'remove':
                     evidence['uninstall'] = removal['remove'](g, release, colour)
                 elif removal and phase == 'stock':
                     evidence['native'] = removal['native'](g, run, xdm, screenshot)
@@ -294,11 +302,11 @@ def main():
                 console = KernelLog(lab, stock_msgbuf if stock_boot else msgbuf, 4 if stock_boot else 8)
                 console.halt()
             except Exception:
-                if removal and lab.logged_in:
+                if (removal or upgrade) and lab.logged_in:
                     try:
                         (run / 'diagnostic.txt').write_text(g.read_text(
                             'ps -axww -o args=; tail -70 /var/log/Xorg.0.log; tail -45 /var/log/xdm.log; '
-                            'tail -30 /root/install-cycle.log /root/uninstall-cycle.log'
+                            'tail -30 /root/*-cycle.log /root/conflict.log /root/interrupted.log'
                         ))
                         screenshot(g, run / 'failure.png')
                         KernelLog(lab, stock_msgbuf if stock_boot else msgbuf, 4 if stock_boot else 8).halt()

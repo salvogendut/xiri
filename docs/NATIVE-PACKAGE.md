@@ -94,7 +94,8 @@ covers both release lines.
 The historical native fixture qualified package assembly and preflight. The
 11.99.11 clean Indy installer below adds target space checks, original-file
 backups, conflict recovery and repeat installation. The desktop removal
-procedure below uses the same input archives. Version upgrades remain open. Boot the
+procedure below uses the same input archives. A [native helper upgrade](#upgrade-native-helpers-on-an-installed-indy)
+uses media built from the installed and candidate native packages. Boot the
 matching kernel before installing its userspace.
 
 Defaults under `/etc/xiri` must be installed only if absent. Update `.example`
@@ -269,3 +270,64 @@ After booting `netbsd.stock`, log in as `netbsdtest` for ctwm. To reinstall, boo
 `netbsd.boot`, mount the same CD, run `sh /cdrom/install.sh` and reboot.
 The existing `xiritest` session selector and home preferences apply at xdm.
 See the [dual-release results and screenshots](results/2026-11-24-indy-desktop-removal.md).
+
+### Upgrade native helpers on an installed Indy
+
+Use the upgrade CD for the IRIX release already installed. On the host, the
+following launches the November 23 clean Indy with its matching update CD.
+Set `release=6.5.30f` for the R5000 image.
+
+```sh
+release=6.5.22f
+.work/images/xiri-clean-indy-${release}-20261123/run-iris.sh \
+    --cdrom4 "$PWD/.work/installers/indy-11.99.11/upgrade/xiri-${release}.iso"
+```
+
+Log out to the xdm greeter. At the NetBSD root console, mount the CD, update
+the installed helpers and reboot.
+
+```sh
+mkdir -p /cdrom
+mount -t cd9660 -o ro /dev/cd0a /cdrom
+sh /cdrom/upgrade.sh
+shutdown -r now
+```
+
+To restore the previous native helpers, mount the same CD again, run
+`sh /cdrom/upgrade.sh --rollback` and reboot. If either operation is
+interrupted, repeat it from the same CD with the same option. A successful
+repeat reports that the requested package is already installed. The two
+archives and release in `/var/db/xiri-install/installed` identify the
+current installation. To remove the desktop later, use uninstall media
+whose native and vendor archives match that receipt.
+
+The update replaces only helpers listed as changed between the packages.
+It preserves installed IRIX programs, fonts, user homes, active configuration
+and the kernel/module pair. If a changed helper also has a local edit or
+different permissions, the command identifies its path before starting the
+update. Save the local version elsewhere and restore the exact source bytes,
+owner, group and mode before retrying. The CD's `delta.tgz` contains both
+versions under `old/root/` and `new/root/`. Reapply any edits that are still
+needed after the transaction completes.
+The first update changes `/usr/local/sbin/xiri-sync-users`. An account refresh
+now leaves each correct IRIX lookup file in place when its contents,
+permissions and ownership already match.
+
+To build media, supply both native package directories and one vendor
+payload. Repeat for the other IRIX release, choosing a separate output ISO.
+
+```sh
+./xiri install-media \
+    --upgrade-from .work/packages/netbsd-sgimips-indy-11.99.11-v1 \
+    --native-package .work/packages/netbsd-sgimips-indy-11.99.11-sync-users-v2 \
+    --vendor-payload ".work/imports/irix-${release}-v1" \
+    --output "/tmp/xiri-upgrade-${release}.iso"
+```
+
+Both packages must use the same qualified Indy profile, kernel, prerequisites
+and installed path inventory. The media builder accepts content or mode
+changes to existing Xiri commands in `/usr/local/bin` and `/usr/local/sbin`,
+and helpers in `/usr/local/libexec/xiri`. Changes to service definitions,
+configuration defaults, links, drivers or package inventory require a separate
+migration. The verified vendor archive is included for fresh installation.
+See the [two Indy upgrade runs and screenshots](results/2026-11-24-indy-native-upgrade.md).

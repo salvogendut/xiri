@@ -275,7 +275,7 @@ test passwords and probe histories must not be installation prerequisites.
 | Read-only donor access | `./xiri import` takes explicit source/output paths, pins the donor, mounts XFS with `ro,norecovery`, reports missing files and cleans temporary extraction state. | Broader release/partition discovery and separately audited donor profiles. |
 | Resource provenance | Versioned 6.5.22f desktop/fonts/Acrobat profile, dependency closure, conflict checks and missing-component errors. | Separate sources and profiles for GIMP, GNOME and freeware absent from this donor. |
 | Payload archive | Normalized modes and metadata; two builds produce identical archives/manifests. NetBSD pax extraction passes all file hashes. | Exercise additional component selections and disk-full recovery. |
-| Native runtime | The [native packager](NATIVE-PACKAGE.md) builds from pinned sets. The [desktop removal procedure](NATIVE-PACKAGE.md#remove-the-desktop-and-return-to-native-netbsd) uses per-path ownership and original-file backups, preserves homes and supports same-release reinstall. | Qualify in-place version upgrades using the installer receipts and native backups. |
+| Native runtime | The [native packager](NATIVE-PACKAGE.md) builds from pinned sets. The [desktop removal procedure](NATIVE-PACKAGE.md#remove-the-desktop-and-return-to-native-netbsd) uses per-path ownership and original-file backups, preserves homes and supports same-release reinstall. The [native helper update](NATIVE-PACKAGE.md#upgrade-native-helpers-on-an-installed-indy) adds per-release upgrade media and reversible changes to existing commands. | Extend migration coverage to added or retired files, service definitions and configuration defaults. |
 | Kernel/module | Both Indy images can boot the saved NetBSD 11.0 kernel and return to 11.99.11 with the matching Xiri module and user homes intact. [Rollback procedure](NATIVE-PACKAGE.md#switching-between-the-stock-and-xiri-kernels) | Repeat the boot and rollback checks on physical Indy hardware. |
 | Display and native services | Native package includes the pinned Newport driver, Xorg configuration and patched FAM/rpcbind; stock X libraries and tools are explicit prerequisites. | Repeat deployment on physical Indy hardware. |
 | Desktop validation | Both clean Indy releases cold-boot to xdm, run 4Dwm with the original shell and native ctwm with UXTerm, and return to xdm. | Extend clean-target coverage to preferences and additional applications. |
@@ -300,6 +300,8 @@ now exercises native installation and both vendor releases on stock userland.
   reinstall the same release with saved preferences. The [dual-release
   recovery test](results/2026-11-24-indy-desktop-removal.md) also interrupts
   removal and checks that pre-existing native files and links survive.
+- Upgrade an installed native helper, resume an interrupted change and roll back
+  with the same release-specific CD. [Dual-release checks](results/2026-11-24-indy-native-upgrade.md)
 - Boot to full-screen xdm, enter an ordinary IRIX desktop, exercise catalog launch,
   winterm and File Manager, save preferences, log out/in and reboot. Check a second
   IRIX account and a separate native desktop account.

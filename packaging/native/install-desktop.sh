@@ -18,6 +18,7 @@ scratch=
 cleanup() { test -z "$scratch" || rm -rf "$scratch"; rm -f "$state/lock"; }
 trap cleanup EXIT
 trap 'exit 1' HUP INT TERM
+test ! -e "$state/upgrading" || fail 'resume the pending native upgrade first'
 test ! -e "$state/removing" || fail 'finish the interrupted uninstall first'
 remember_missing() {
     if test -d "$state/created" && test ! -e "$1" && test ! -L "$1"; then

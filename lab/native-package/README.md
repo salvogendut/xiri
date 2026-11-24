@@ -124,3 +124,15 @@ The final login checks the saved winterm colour in the running X server and
 executes the vendor shell. The JSON, screenshots and kernel shutdown logs
 are local to the test's output directory. See the
 [operator procedure](../../docs/NATIVE-PACKAGE.md#remove-the-desktop-and-return-to-native-netbsd).
+
+## In-place native helper update
+
+Build a release-specific CD with the [upgrade procedure](../../docs/NATIVE-PACKAGE.md#upgrade-native-helpers-on-an-installed-indy).
+Use `--upgrade-media "$iso"` with the kernel round-trip runner above, and give
+each release its own output directory. Its three boots exercise the update,
+the upgraded desktop, and the desktop after rollback. The probe sends TERM
+to the installer after a helper has been replaced and before the completed
+receipt changes. It also tries a conflicting local edit before the update.
+The two graphical boots each exercise both xdm logins, check a saved winterm
+colour on the X server and run the vendor shell. See `result.json` in the
+run directory for the receipts and per-boot screenshots' hashes.

@@ -1,0 +1,255 @@
+{
+  "target": {
+    "kernel_arch": "mips64eb",
+    "kernel_release": "11.99.11",
+    "kernel_sha256": "6a03b86ae641ef1fc1bef7c8e999c1a9f349580ae405c85c0da30451fb7c58a1",
+    "kernel_version_sha256": "b70bd6ff147c2008260b6f09c3df1e18a9437fb20169299b678251ebc100ab20",
+    "machine": "sgimips",
+    "system": "NetBSD",
+    "userland_abi": "o32",
+    "userland_release": "11.0"
+  },
+  "native": {
+    "before": "8fe4ab367981937353616eb82e6cc0fdd073458103151d101001f7e039379859",
+    "after": "b0a4a09321a146714588dc4eebedf793cb4f8099135d3711fba00b35ab341f8a",
+    "candidate_reproducible": true,
+    "changed": {
+      "root/usr/local/sbin/xiri-sync-users": {
+        "before": {
+          "bytes": 1156,
+          "destination": "/usr/local/sbin/xiri-sync-users",
+          "mode": "0555",
+          "policy": "replace-owned-file",
+          "sha256": "471e229f2e863a1d634ca6fe85a117cba4536a8bb42f58b1dc2b96e79acf5b62",
+          "type": "file"
+        },
+        "after": {
+          "bytes": 1390,
+          "destination": "/usr/local/sbin/xiri-sync-users",
+          "mode": "0555",
+          "policy": "replace-owned-file",
+          "sha256": "820ca1ab65826a127f58983e40a8df63ba9f9c074c56a947b2fc81f577a59628",
+          "type": "file"
+        }
+      }
+    }
+  },
+  "host_tests": 88,
+  "iris_upstream": "b316bb037c9634607077bde0cdbe514b68900e8f",
+  "iris_merge": "a58b41a63b23c357328d99eed0845a03a3dfe6d1",
+  "iris_affected_tests": 252,
+  "releases": {
+    "6.5.22f": {
+      "release": "6.5.22f",
+      "chd_sha256": "bd4bcc59c1845a3d9a50e0245d0c705ff9dea022ce2f96c6e5afcf58794fe328",
+      "stock_sha256": "cc9f51a1fcdef2c61ce3335761d6cb61e17ae9c56f2d85c9f382365efbbdf0ad",
+      "boots": [
+        {
+          "phase": "upgrade",
+          "kernel": "NetBSD 11.99.11 (XIRI_IRIX_MODULE_20261103) #0: Mon Nov 23 18:09:22 UTC 2026  salvogendut@minisforum.golgota.lan:/var/home/salvogendut/Dev/xiri/.work/netbsd-sync-20261123/indy/kernel",
+          "prom_filename": "netbsd.boot",
+          "local_edit_refused": true,
+          "interrupted_after_helper_replaced": true,
+          "resumed": true,
+          "original_receipt": "6.5.22f 8fe4ab367981937353616eb82e6cc0fdd073458103151d101001f7e039379859 6feb87643a47b0128fe635b7d06903ef2e78da0317ba29c5a88a700c85403dec",
+          "upgraded_receipt": "6.5.22f b0a4a09321a146714588dc4eebedf793cb4f8099135d3711fba00b35ab341f8a 6feb87643a47b0128fe635b7d06903ef2e78da0317ba29c5a88a700c85403dec",
+          "halted": true,
+          "stopped": true
+        },
+        {
+          "phase": "upgraded",
+          "kernel": "NetBSD 11.99.11 (XIRI_IRIX_MODULE_20261103) #0: Mon Nov 23 18:09:22 UTC 2026  salvogendut@minisforum.golgota.lan:/var/home/salvogendut/Dev/xiri/.work/netbsd-sync-20261123/indy/kernel",
+          "prom_filename": "netbsd.boot",
+          "desktop": {
+            "identity": "SESSION user=xiritest uid=1234 groups=1234 home=/usr/people/xiritest cwd=/usr/people/xiritest display=127.0.0.1:0 authority=/tmp/.XauthUVsehv",
+            "winterm_handoff": "NATIVE_HANDOFF pid=724 sid=724 pgid=724 tpgid=724 uid=1234 euid=1234 gid=1234 egid=1234 groups=1 tty=/dev/pts/1 rows=24 cols=78",
+            "dimensions": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+            "newport_log": "[    32.198] (**) NEWPORT(0): Option \"NoAccel\" \"false\"\n[    32.321] (II) NEWPORT(0): Using XFree86 Acceleration Architecture (XAA)",
+            "windows": [
+              "Toolchest",
+              "Icon Catalog",
+              "winterm",
+              "xclock"
+            ],
+            "original_shell": true,
+            "native_session": "ctwm + xterm",
+            "native_processes": "PID COMMAND\n973 sh",
+            "both_logouts": true,
+            "desktop_png_sha256": "0c11cb8fa5d5632cf5b06cd064072049d1a3a2d88df4b279163b6d5bbdf65227",
+            "ctwm_png_sha256": "ccffac6e2124e6c15964d5acbd0653e3fbf26ebd4f887efea6ed6ad9b5aa39c6"
+          },
+          "unchanged_account_inodes": true,
+          "applied_colour": "#c9ecc9",
+          "preserved": [
+            "/etc/master.passwd",
+            "/etc/passwd",
+            "/etc/group",
+            "/etc/modules.conf",
+            "/etc/rc.conf.d/xdm",
+            "/etc/xiri/session.conf",
+            "/usr/people/xiritest/.Xresources",
+            "/usr/people/xiritest/.xsession",
+            "/home/netbsdtest/upgrade-note",
+            "/emul/irix/site-note",
+            "/emul/irix/bin/sh",
+            "/usr/local/share/xiri/fonts/site-note",
+            "/var/db/xiri-install/original/usr/sbin/rpcbind"
+          ],
+          "halted": true,
+          "stopped": true
+        },
+        {
+          "phase": "downgraded",
+          "kernel": "NetBSD 11.99.11 (XIRI_IRIX_MODULE_20261103) #0: Mon Nov 23 18:09:22 UTC 2026  salvogendut@minisforum.golgota.lan:/var/home/salvogendut/Dev/xiri/.work/netbsd-sync-20261123/indy/kernel",
+          "prom_filename": "netbsd.boot",
+          "desktop": {
+            "identity": "SESSION user=xiritest uid=1234 groups=1234 home=/usr/people/xiritest cwd=/usr/people/xiritest display=127.0.0.1:0 authority=default",
+            "winterm_handoff": "NATIVE_HANDOFF pid=3037 sid=3037 pgid=3037 tpgid=3037 uid=1234 euid=1234 gid=1234 egid=1234 groups=1 tty=/dev/pts/1 rows=24 cols=78",
+            "dimensions": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+            "newport_log": "[    32.121] (**) NEWPORT(0): Option \"NoAccel\" \"false\"\n[    32.306] (II) NEWPORT(0): Using XFree86 Acceleration Architecture (XAA)",
+            "windows": [
+              "Toolchest",
+              "Icon Catalog",
+              "winterm",
+              "xclock"
+            ],
+            "original_shell": true,
+            "native_session": "ctwm + xterm",
+            "native_processes": "PID COMMAND\n834 sh",
+            "both_logouts": true,
+            "desktop_png_sha256": "3700d0aea4e24655e89dd0706c9218b79ea64bd2c4bc29021d3ae7f2cff6e2aa",
+            "ctwm_png_sha256": "ccffac6e2124e6c15964d5acbd0653e3fbf26ebd4f887efea6ed6ad9b5aa39c6"
+          },
+          "unchanged_account_inodes": false,
+          "applied_colour": "#c9ecc9",
+          "preserved": [
+            "/etc/master.passwd",
+            "/etc/passwd",
+            "/etc/group",
+            "/etc/modules.conf",
+            "/etc/rc.conf.d/xdm",
+            "/etc/xiri/session.conf",
+            "/usr/people/xiritest/.Xresources",
+            "/usr/people/xiritest/.xsession",
+            "/home/netbsdtest/upgrade-note",
+            "/emul/irix/site-note",
+            "/emul/irix/bin/sh",
+            "/usr/local/share/xiri/fonts/site-note",
+            "/var/db/xiri-install/original/usr/sbin/rpcbind"
+          ],
+          "halted": true,
+          "stopped": true
+        }
+      ],
+      "media_sha256": "1ed4cc5d0310222c49f41b6c7f15918d9e2e592f0737bc8dc5d7dd590a08652f",
+      "base_unchanged": true,
+      "passed": true
+    },
+    "6.5.30f": {
+      "release": "6.5.30f",
+      "chd_sha256": "31c56a34c934d8151517b2745138e5756aaf6ecac8df1c828a3208ed4510e39a",
+      "stock_sha256": "cc9f51a1fcdef2c61ce3335761d6cb61e17ae9c56f2d85c9f382365efbbdf0ad",
+      "boots": [
+        {
+          "phase": "upgrade",
+          "kernel": "NetBSD 11.99.11 (XIRI_IRIX_MODULE_20261103) #0: Mon Nov 23 18:09:22 UTC 2026  salvogendut@minisforum.golgota.lan:/var/home/salvogendut/Dev/xiri/.work/netbsd-sync-20261123/indy/kernel",
+          "prom_filename": "netbsd.boot",
+          "local_edit_refused": true,
+          "interrupted_after_helper_replaced": true,
+          "resumed": true,
+          "original_receipt": "6.5.30f 8fe4ab367981937353616eb82e6cc0fdd073458103151d101001f7e039379859 21060cf7415e730d6efb3d690e51d08aafb15d689ecb0f2fdd9c8638a33bfde7",
+          "upgraded_receipt": "6.5.30f b0a4a09321a146714588dc4eebedf793cb4f8099135d3711fba00b35ab341f8a 21060cf7415e730d6efb3d690e51d08aafb15d689ecb0f2fdd9c8638a33bfde7",
+          "halted": true,
+          "stopped": true
+        },
+        {
+          "phase": "upgraded",
+          "kernel": "NetBSD 11.99.11 (XIRI_IRIX_MODULE_20261103) #0: Mon Nov 23 18:09:22 UTC 2026  salvogendut@minisforum.golgota.lan:/var/home/salvogendut/Dev/xiri/.work/netbsd-sync-20261123/indy/kernel",
+          "prom_filename": "netbsd.boot",
+          "desktop": {
+            "identity": "SESSION user=xiritest uid=1234 groups=1234 home=/usr/people/xiritest cwd=/usr/people/xiritest display=127.0.0.1:0 authority=/tmp/.XauthIrqSoV",
+            "winterm_handoff": "NATIVE_HANDOFF pid=706 sid=706 pgid=706 tpgid=706 uid=1234 euid=1234 gid=1234 egid=1234 groups=1 tty=/dev/pts/1 rows=24 cols=80",
+            "dimensions": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+            "newport_log": "[    34.858] (**) NEWPORT(0): Option \"NoAccel\" \"false\"\n[    34.984] (II) NEWPORT(0): Using XFree86 Acceleration Architecture (XAA)",
+            "windows": [
+              "Toolchest",
+              "Icon Catalog",
+              "winterm",
+              "xclock"
+            ],
+            "original_shell": true,
+            "native_session": "ctwm + xterm",
+            "native_processes": "PID COMMAND\n3694 sh",
+            "both_logouts": true,
+            "desktop_png_sha256": "16fd044b89737e13fc807a8a7e9f86cd16178f15a5a94c00217467d7ded634c2",
+            "ctwm_png_sha256": "ccffac6e2124e6c15964d5acbd0653e3fbf26ebd4f887efea6ed6ad9b5aa39c6"
+          },
+          "unchanged_account_inodes": true,
+          "applied_colour": "#c9d9ec",
+          "preserved": [
+            "/etc/master.passwd",
+            "/etc/passwd",
+            "/etc/group",
+            "/etc/modules.conf",
+            "/etc/rc.conf.d/xdm",
+            "/etc/xiri/session.conf",
+            "/usr/people/xiritest/.Xresources",
+            "/usr/people/xiritest/.xsession",
+            "/home/netbsdtest/upgrade-note",
+            "/emul/irix/site-note",
+            "/emul/irix/bin/sh",
+            "/usr/local/share/xiri/fonts/site-note",
+            "/var/db/xiri-install/original/usr/sbin/rpcbind"
+          ],
+          "halted": true,
+          "stopped": true
+        },
+        {
+          "phase": "downgraded",
+          "kernel": "NetBSD 11.99.11 (XIRI_IRIX_MODULE_20261103) #0: Mon Nov 23 18:09:22 UTC 2026  salvogendut@minisforum.golgota.lan:/var/home/salvogendut/Dev/xiri/.work/netbsd-sync-20261123/indy/kernel",
+          "prom_filename": "netbsd.boot",
+          "desktop": {
+            "identity": "SESSION user=xiritest uid=1234 groups=1234 home=/usr/people/xiritest cwd=/usr/people/xiritest display=127.0.0.1:0 authority=default",
+            "winterm_handoff": "NATIVE_HANDOFF pid=547 sid=547 pgid=547 tpgid=547 uid=1234 euid=1234 gid=1234 egid=1234 groups=1 tty=/dev/pts/1 rows=24 cols=80",
+            "dimensions": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+            "newport_log": "[    34.328] (**) NEWPORT(0): Option \"NoAccel\" \"false\"\n[    34.458] (II) NEWPORT(0): Using XFree86 Acceleration Architecture (XAA)",
+            "windows": [
+              "Toolchest",
+              "Icon Catalog",
+              "winterm",
+              "xclock"
+            ],
+            "original_shell": true,
+            "native_session": "ctwm + xterm",
+            "native_processes": "PID COMMAND\n619 sh",
+            "both_logouts": true,
+            "desktop_png_sha256": "2a6c74aff58453dc70376237468d6dc8b6e90abcd2e2121256fea397895bb31c",
+            "ctwm_png_sha256": "ccffac6e2124e6c15964d5acbd0653e3fbf26ebd4f887efea6ed6ad9b5aa39c6"
+          },
+          "unchanged_account_inodes": false,
+          "applied_colour": "#c9d9ec",
+          "preserved": [
+            "/etc/master.passwd",
+            "/etc/passwd",
+            "/etc/group",
+            "/etc/modules.conf",
+            "/etc/rc.conf.d/xdm",
+            "/etc/xiri/session.conf",
+            "/usr/people/xiritest/.Xresources",
+            "/usr/people/xiritest/.xsession",
+            "/home/netbsdtest/upgrade-note",
+            "/emul/irix/site-note",
+            "/emul/irix/bin/sh",
+            "/usr/local/share/xiri/fonts/site-note",
+            "/var/db/xiri-install/original/usr/sbin/rpcbind"
+          ],
+          "halted": true,
+          "stopped": true
+        }
+      ],
+      "media_sha256": "7257e7a7ed34e37b24f0c4825f7c50dc8ffb9211b7017d7aae785743c3bac6c9",
+      "base_unchanged": true,
+      "passed": true
+    }
+  }
+}

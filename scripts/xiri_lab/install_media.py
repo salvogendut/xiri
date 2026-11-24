@@ -3,20 +3,16 @@
 import json
 import os
 from pathlib import Path
+import re
 import subprocess
 import tarfile
 import tempfile
 
 from . import ROOT, sha256
+from .native_package import archive_tree
 
 
-def run(args):
-    native = args.native_package.resolve()
-    vendor = args.vendor_payload.resolve()
-    output = args.output.resolve()
-    output.parent.mkdir(parents=True, exist_ok=True)
-    if output.exists():
-        raise ValueError(f'Output already exists: {output}')
+def validate_native(native):
     native_manifest = json.loads((native / 'manifest.json').read_text())
     profile = ROOT / 'profiles/netbsd-sgimips-indy-11.99.11-v1.json'
     if (
@@ -26,6 +22,61 @@ def run(args):
         or sha256(native / 'native.tar.gz') != native_manifest['archive_sha256']
     ):
         raise ValueError('Native package differs from its Indy build profile or manifest')
+    return native_manifest['archive_sha256']
+
+
+def upgrade_delta(before, after, work):
+    previous = validate_native(before)
+    delta = work / 'delta'
+    delta.mkdir()
+    (delta / 'previous').write_text(previous + '\n')
+    rows = []
+    with tarfile.open(before / 'native.tar.gz') as old, tarfile.open(after / 'native.tar.gz') as new:
+        for metadata in ('target.conf', 'prerequisites.tsv'):
+            content = new.extractfile(metadata).read()
+            if old.extractfile(metadata).read() != content:
+                raise ValueError('Native upgrade changes ' + metadata)
+            (delta / metadata).write_bytes(content)
+
+        def inventory(archive):
+            return dict(line.split('|', 1) for line in archive.extractfile('files.tsv').read().decode().splitlines())
+
+        a, b = inventory(old), inventory(new)
+        if a.keys() != b.keys():
+            raise ValueError('Native upgrade adds or removes package paths')
+        for name in sorted(a):
+            if a[name] == b[name]:
+                continue
+            if not re.fullmatch(r'root/usr/local/(?:s?bin/xiri-|libexec/xiri/)[a-zA-Z0-9_][a-zA-Z0-9_.-]*', name):
+                raise ValueError('Unsupported upgrade destination: ' + name)
+            row = [name.removeprefix('root')]
+            for side, archive, entry in [('old', old, a[name]), ('new', new, b[name])]:
+                kind, mode, digest, policy = entry.split('|')
+                if kind != 'file' or policy != 'replace-owned-file' or not re.fullmatch('0[0-7]{3}', mode):
+                    raise ValueError('Expected a managed regular file: ' + name)
+                dest = delta / side / name
+                dest.parent.mkdir(parents=True, exist_ok=True)
+                dest.write_bytes(archive.extractfile(name).read())
+                if sha256(dest) != digest:
+                    raise ValueError('Package ledger differs from helper: ' + name)
+                row.extend([mode, digest])
+            rows.append('|'.join(row))
+    if not rows:
+        raise ValueError('Native packages contain identical helpers')
+    (delta / 'changes').write_text('\n'.join(rows) + '\n')
+    path = work / 'delta.tgz'
+    archive_tree(delta, path)
+    return path
+
+
+def run(args):
+    native = args.native_package.resolve()
+    vendor = args.vendor_payload.resolve()
+    output = args.output.resolve()
+    output.parent.mkdir(parents=True, exist_ok=True)
+    if output.exists():
+        raise ValueError(f'Output already exists: {output}')
+    validate_native(native)
     imported = json.loads((vendor / 'manifest.json').read_text())
     release = imported['release']
     record = json.loads((ROOT / 'docs/results/2026-11-23-clean-bootstrap.json').read_text())
@@ -44,6 +95,9 @@ def run(args):
             'install.sh': ROOT / 'packaging/native/install-desktop.sh',
             'uninstall.sh': ROOT / 'packaging/native/uninstall-desktop.sh',
         }
+        if args.upgrade_from:
+            inputs['delta.tgz'] = upgrade_delta(args.upgrade_from, native, work)
+            inputs['upgrade.sh'] = ROOT / 'packaging/native/upgrade-desktop.sh'
         table = '/emul/irix/usr/lib/filetype/desktop.otr'
         files = imported['files']
         (work / 'VENDOR').write_text(

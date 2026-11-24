@@ -319,9 +319,13 @@ Both Indy release lines also pass the [stock-kernel rollback test](results/2026-
 including a native-user write under 11.0 and a restored 4Dwm session that
 loads the user's saved winterm colour. The [desktop removal and reinstall
 procedure](NATIVE-PACKAGE.md#remove-the-desktop-and-return-to-native-netbsd) covers
-stock native files, xdm, user homes and administrator edits. In-place package
-upgrades and physical Indy qualification follow this emulated recovery work.
-[Dual-release test results](results/2026-11-24-indy-desktop-removal.md)
+stock native files, xdm, user homes and administrator edits.
+[Dual-release removal results](results/2026-11-24-indy-desktop-removal.md)
+
+The [in-place native helper update](NATIVE-PACKAGE.md#upgrade-native-helpers-on-an-installed-indy)
+covers changes to existing commands on the installed Indy. Broader package
+migrations that add or retire files, service changes and physical Indy
+qualification remain open. [Indy upgrade results](results/2026-11-24-indy-native-upgrade.md)
 
 - [x] Maintain a separate original-media **IRIX 6.5.30** installation/import
   process, with its own media pins, donor CHD, resource profile and Xiri acceptance

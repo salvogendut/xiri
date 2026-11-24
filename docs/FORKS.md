@@ -72,6 +72,14 @@ in `08e53ba7`. [Octane build and qualification](results/2026-11-23-octane-deskto
 
 ## IRIS upstream updates
 
+The November 24 native-upgrade cycle integrated upstream `b316bb03` at
+`a58b41a6` on IRIS `xiri`. The update adapts tests and atomic operations
+to current Rust nightly and reduces memory used by Tezro fixtures. The merge
+retains the fork's IP35 interleaving test. The affected IP35, Hub, Tezro,
+display, MGRAS, OHCI, CPU cache and physical-memory test selections passed
+252 tests under nightly 2026-10-28 with `jitv2,idle-pause,wgpu`. The clean
+Indy images continue to use their qualified accelerated emulator, `0bc52567`.
+
 On November 24 the desktop removal cycle merged 23 upstream commits through
 `c00f6524` into `xiri` at `ca4fb4d9`. The changes include Newport GPU
 raster work, serial consoles, machine clocks and memory-bank restore.

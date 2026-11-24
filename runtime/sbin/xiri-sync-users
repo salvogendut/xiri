@@ -25,6 +25,11 @@ for table in passwd group; do
         cp -p "$base/$table" "$base/$table.before-xiri-users"
     fi
     chmod 644 "$lock/$table"
+    if test -f "$base/$table" && test ! -L "$base/$table" &&
+        test "$(stat -f '%u:%g:%Lp' "$base/$table")" = "$(stat -f '%u:%g:%Lp' "$lock/$table")" &&
+        cmp -s "$lock/$table" "$base/$table"; then
+        continue
+    fi
     mv -f "$lock/$table" "$base/$table"
 done
 echo 'IRIX account lookups refreshed from native NetBSD users and groups.'

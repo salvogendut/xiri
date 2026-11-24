@@ -105,7 +105,7 @@ def login(guest, user):
         guest.monitor(command)
 
 
-def desktop(guest, out):
+def desktop(guest, out, colour=None):
     greeter(guest)
     guest.command('grep -Fq \'Option "NoAccel" "false"\' /usr/local/share/xiri/xorg.conf')
     acceleration = guest.read_text("grep -Ei 'NEWPORT.*(NoAccel|accel)|using.*XAA' /var/log/Xorg.0.log").strip()
@@ -113,10 +113,12 @@ def desktop(guest, out):
         'sysctl -n kern.consdev | grep ttyE0 && tty | grep ttyZ0 && /etc/rc.d/xiri_famd status && '
         '/etc/rc.d/rpcbind status && test -f /var/run/xiri-pty-ready'
     )
+    session_dir = 'sed -n "s/.*Logs: //p" /usr/people/xiritest/.xsession-errors 2>/dev/null | tail -1'
+    guest.command('prior_job=$(' + session_dir + ')')
     login(guest, 'xiritest')
-    guest.wait_for("grep -q 'Logs: ' /usr/people/xiritest/.xsession-errors", 240)
+    guest.wait_for('job=$(' + session_dir + ') && test -n "$job" && test "$job" != "$prior_job" && test -s "$job/identity"', 240)
     guest.command(
-        'job=$(sed -n "s/.*Logs: //p" /usr/people/xiritest/.xsession-errors | tail -1); '
+        'job=$(' + session_dir + '); '
         'XAUTHORITY=$(sed -n "s/.* authority=//p" "$job/identity"); '
         'test "$XAUTHORITY" != default || XAUTHORITY=/usr/people/xiritest/.Xauthority; export DISPLAY=127.0.0.1:0 XAUTHORITY'
     )
@@ -129,6 +131,8 @@ def desktop(guest, out):
     dimensions = guest.read_text('xdpyinfo | grep dimensions:').strip()
     if '1280x1024 pixels' not in dimensions:
         raise RuntimeError(dimensions)
+    if colour:
+        guest.command("xrdb -query | awk '$1 == \"winterm*foreground:\" && $2 == \"" + colour + "\" {ok=1} END {exit !ok}'")
     identity = guest.read_text('cat "$job/identity"').strip()
     if 'user=xiritest ' not in identity or 'home=/usr/people/xiritest cwd=/usr/people/xiritest ' not in identity:
         raise RuntimeError('unexpected desktop identity: ' + identity)

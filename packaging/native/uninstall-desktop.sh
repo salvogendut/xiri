@@ -23,6 +23,7 @@ scratch=
 cleanup() { test -z "$scratch" || rm -rf "$scratch"; rm -f "$state/lock"; }
 trap cleanup EXIT
 trap 'exit 1' HUP INT TERM
+test ! -e "$state/upgrading" || fail 'resume the pending native upgrade first'
 identity="$(cat release) $(awk '$2=="(native.tgz)" {print $4}' SHA256) $(awk '$2=="(payload.tgz)" {print $4}' SHA256)"
 if test -f "$state/removing"; then
     trx=$(cat "$state/removing")
