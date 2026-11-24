@@ -74,13 +74,12 @@ The earlier [shell image](results/2026-11-02-irix-shell-image.md) packages
 the original-shell and high-address mapping fixes and verifies xmahjongg's
 existing catalog action after a direct CHD boot.
 
-Original IRIX `inst` and Software Manager (`swmgr`) remain the later target
-for adding, upgrading and removing software with correct dependency handling,
-installation history and package hooks. This work is deferred while we
-establish the imported desktop. Copying installed files does not qualify a
-package installation or justify copying the old installation database.
-Both paths use Xiri's IRIX ABI; the desired kernel deployment remains a
-module modeled on `compat_linux`.
+Original IRIX `inst` now reads the May 2004 Freeware inventories on both
+clean Indy release lines with the updated NetBSD fork. The installer reports
+the SGI prerequisites and uses the target's own history. The
+[dual-release installer results](results/2026-11-24-indy-inst.md) and
+[reproduction procedure](../lab/irix-installer/README.md#repeat-the-clean-indy-installer-check)
+describe the current boundary. Software Manager and upgrades remain later work.
 
 The [shared-mapping checkpoint](results/2026-11-01-irix-mmap-shared.md) clears
 the initial installer crash. The [bounded sproc adapter](results/2026-11-01-irix-sproc.md)

@@ -11,6 +11,57 @@ their 37-path static n32 closure and the original shell templates/manuals.
 original generic `/var/inst/machfile`. Extracted bytes remain private in
 `.work/irix-freeware/installed` and `.work/irix-freeware/package`.
 
+## Repeat the clean Indy installer check
+
+Use the release that matches the private guest. From the Xiri repository
+root, with the matching desktop import already built, prepare the
+installer supplement from the original-media donor and May 2004 CD 4.
+
+```sh
+release=6.5.22f  # or 6.5.30f
+mkdir -p .work/inst-media
+python3 lab/irix-installer/prepare-media.py --release "$release" \
+  --donor ".work/donors/irix-$release-original-media/irix-donor.chd" \
+  --desktop-manifest ".work/imports/irix-$release-v1/manifest.json" \
+  --dist .work/irix-freeware/package/cds/cd-4/dist \
+  --output ".work/inst-media/$release.iso"
+```
+
+The builder verifies the donor and CD hashes, checks shared library
+digests against the desktop manifest, and records the selected files in
+`vendor.json`. It creates a new ISO. The installer supplement includes the
+original `/sbin/stat` used during bootstrap. The input history database
+comes from the target itself.
+
+Boot a **disposable** Indy target with the matching supplementary ISO at
+SCSI ID 4. As root, mount it, unpack the supplement and ask the original
+installer to select the software and report conflicts. Clearing selections
+before quitting produces an unattended return to the shell.
+
+```sh
+mkdir -p /cdrom
+mount -r -t cd9660 /dev/cd0a /cdrom
+(cd / && pax -rzpe -f /cdrom/installer.tgz)
+export HOME=/ USER=root LOGNAME=root SHELL=/bin/sh TERM=vt100 LANG=C TZ=UTC
+export PATH=/usr/local/bin:/usr/X11R7/bin:/bin:/sbin:/usr/bin:/usr/sbin
+printf '%s\n' 'keep *' 'install fw_xmahjongg.sw.xmahjongg fw_common.sw.index' \
+  'conflicts' 'keep *' quit >/var/tmp/xiri-inst-plan
+/emul/irix/usr/sbin/inst -M -r /emul/irix -f /cdrom/dist -c /var/tmp/xiri-inst-plan
+/emul/irix/usr/sbin/versions -r /emul/irix fw_xmahjongg
+```
+
+The clean v4 kernel predates the MIPS conversion and IRIX file-operation
+fixes. See the [dual-release results](../../docs/results/2026-11-24-indy-inst.md)
+for the tested kernel and the prerequisites reported by SGI.
+
+To rebuild the conversion checks, run
+`python3 lab/irix-installer/build-cvt-probes.py TOOLDIR NEW_OUTPUT`.
+Copy the two binaries into the disposable guest and run each one. Exit zero
+means all 52 conversions matched the expected binary64 bits and inexact
+status. The o32 observer uses paired registers and n32 uses odd wide registers.
+
+## Earlier installer checkpoints
+
 The observer clones the clean ordinary desktop/pipe checkpoint, checks all
 inherited and staged hashes, and uses the unchanged qualified pipe kernel.
 It creates an ordinary native account under `/usr/people`, checks repeated

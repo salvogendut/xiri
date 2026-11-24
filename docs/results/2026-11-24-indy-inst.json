@@ -1,0 +1,103 @@
+{
+  "netbsd_branch": "xiri",
+  "netbsd_commit": "5071d8c701851c35adf5a167a8b9f3aadf6e04de",
+  "host_tests": 94,
+  "releases": {
+    "6.5.22f": {
+      "donor_sha256": "b4fff76ffa0ca00c0a90da1c94a3eb41f5f6ba4cb13c0af258b4acca4ad95c41",
+      "supplement_sha256": "0b2d21181226986f19b8b749af998cbff0bf74eb7706a603207574be49240b55",
+      "additional_paths": [
+        "/emul/irix/sbin/stat",
+        "/emul/irix/usr/sbin/iconcatalogedit",
+        "/emul/irix/usr/sbin/inst",
+        "/emul/irix/usr/sbin/showfiles",
+        "/emul/irix/usr/sbin/showprods",
+        "/emul/irix/usr/sbin/versions",
+        "/emul/irix/var/inst/machfile"
+      ],
+      "vendor_inst_sha256": "75512d2a0286d4c9a8a399e415145689f45dd6272cf9e030eae329e515e3b89d",
+      "vendor_libinst_sha256": "e6028d5368ff5df9f06c3e826adb47749c5999c5e908851daf660d5444868ed1",
+      "baseline_trace_sha256": "4ae9eefff36aadbb6e37420cc19d779a0769970645f4ba09171a4b80abb4c583",
+      "fault_pc": "0x040d48ac",
+      "fault_instruction": "0x46a00021",
+      "f0": "0x7fffffffffffffff",
+      "probe_results": [
+        "32 cvt 0",
+        "32 except 136",
+        "32 ops 0",
+        "32 cause 0",
+        "n32 cvt 0",
+        "n32 except 136",
+        "n32 ops 0",
+        "n32 cause 0",
+        "created-32 750 0",
+        "created-n32 750 0"
+      ],
+      "conflict_check_exit": 0,
+      "freeware_conflicts": [
+        "c++_eoe.sw.lib",
+        "eoe.sw.base",
+        "x_eoe.sw.eoe"
+      ],
+      "foundation_conflicts": [
+        "eoe.sw.efs",
+        "compiler_eoe.sw.cpp"
+      ],
+      "control_package": "fw_common.sw.selections",
+      "control_payload_sha256": "0f82722b11f22c7c3880b0c2b715d4b80f4c9b3136051421c668b7627f13fbf4",
+      "control_history": "failed",
+      "graphical_logins": [
+        "4Dwm",
+        "ctwm"
+      ]
+    },
+    "6.5.30f": {
+      "donor_sha256": "339f74457dfbb06813681ab5db2ccfdd29d394e8a02dfcdcd6c6ac7c22a836db",
+      "supplement_sha256": "f8a56a2526d630e1cf3a9c42aef4da51fe572d71567d10fcaecf90ff028a2649",
+      "additional_paths": [
+        "/emul/irix/sbin/stat",
+        "/emul/irix/usr/sbin/iconcatalogedit",
+        "/emul/irix/usr/sbin/inst",
+        "/emul/irix/usr/sbin/showfiles",
+        "/emul/irix/usr/sbin/showprods",
+        "/emul/irix/usr/sbin/versions",
+        "/emul/irix/var/inst/machfile"
+      ],
+      "vendor_inst_sha256": "d5276175a653e5498a955e79dd1688bf7ffff4c1cb93b28aeb87ec75fd2798fc",
+      "vendor_libinst_sha256": "2622b3d3e1d26e6c7691b59ca57b277c730caca3e9cfbe8c875028571b142385",
+      "baseline_trace_sha256": "79e2f5016d468bf80c6a48c5aa59f4993d43be6e9204ff1cf2d08c82dcb7afb6",
+      "fault_pc": "0x044b490c",
+      "fault_instruction": "0x46a00021",
+      "f0": "0x7fffffffffffffff",
+      "probe_results": [
+        "32 cvt 0",
+        "32 except 136",
+        "32 ops 0",
+        "32 cause 0",
+        "n32 cvt 0",
+        "n32 except 136",
+        "n32 ops 0",
+        "n32 cause 0",
+        "created-32 750 0",
+        "created-n32 750 0"
+      ],
+      "conflict_check_exit": 0,
+      "freeware_conflicts": [
+        "c++_eoe.sw.lib",
+        "eoe.sw.base",
+        "x_eoe.sw.eoe"
+      ],
+      "foundation_conflicts": [
+        "eoe.sw.efs",
+        "compiler_eoe.sw.cpp"
+      ],
+      "control_package": "fw_common.sw.selections",
+      "control_payload_sha256": "0f82722b11f22c7c3880b0c2b715d4b80f4c9b3136051421c668b7627f13fbf4",
+      "control_history": "failed",
+      "graphical_logins": [
+        "4Dwm",
+        "ctwm"
+      ]
+    }
+  }
+}
