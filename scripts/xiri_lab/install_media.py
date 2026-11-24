@@ -42,6 +42,7 @@ def run(args):
             'native.tgz': native / 'native.tar.gz',
             'payload.tgz': vendor / 'payload.tar.gz',
             'install.sh': ROOT / 'packaging/native/install-desktop.sh',
+            'uninstall.sh': ROOT / 'packaging/native/uninstall-desktop.sh',
         }
         table = '/emul/irix/usr/lib/filetype/desktop.otr'
         files = imported['files']

@@ -93,10 +93,10 @@ def install(guest, release):
 def greeter(guest):
     guest.command('export PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/X11R7/bin DISPLAY=:0')
     guest.wait_for('test -s /tmp/.X0-lock', 180)
-    guest.command(
-        'XAUTHORITY=$(ps -axww -o args= | awk \'$1 == "/usr/X11R7/bin/Xorg" {for(i=1;i<NF;i++) if($i=="-auth") print $(i+1)}\'); '
-        'export XAUTHORITY; test -s "$XAUTHORITY"'
-    )
+    # Native NetBSD Xservers invokes the X symlink; the Xiri configuration names Xorg.
+    authority = """$(ps -axww -o args= | awk '$1 ~ /^\\/usr\\/X11R7\\/bin\\/X(org)?$/ && $2 == ":0" {for(i=1;i<NF;i++) if($i=="-auth") print $(i+1)}')"""
+    guest.wait_for('test -s "' + authority + '"', 90)
+    guest.command('export XAUTHORITY=' + authority + '; test -s "$XAUTHORITY"')
     guest.wait_for("xwininfo -root -tree | grep -q '\"xlogin\"'", 150)
 
 

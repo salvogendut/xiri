@@ -303,7 +303,9 @@ and run accelerated 4Dwm or native ctwm according to the user's xdm session.
 The [installer guide](docs/NATIVE-PACKAGE.md#clean-installation-on-an-emulated-indy)
 covers building per-release media and repeat installation. It also explains
 how to [boot the saved stock kernel and return to Xiri](docs/NATIVE-PACKAGE.md#switching-between-the-stock-and-xiri-kernels)
-on the same disk.
+on the same disk. The [desktop removal and reinstall guide](docs/NATIVE-PACKAGE.md#remove-the-desktop-and-return-to-native-netbsd)
+covers native ctwm recovery, the stock Newport driver and preservation of
+user homes and local configuration. [Test results and screenshots for both releases](docs/results/2026-11-24-indy-desktop-removal.md)
 
 Compatibility is incomplete. The reproduced Type1 collapse is corrected;
 winterm keeps the verified NetBSD bitmap Courier default. Broader graphics operations,

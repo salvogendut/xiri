@@ -93,8 +93,8 @@ covers both release lines.
 
 The historical native fixture qualified package assembly and preflight. The
 11.99.11 clean Indy installer below adds target space checks, original-file
-backups, conflict recovery and repeat installation. Version upgrades and
-removal still need their own procedures and tests. Boot the
+backups, conflict recovery and repeat installation. The desktop removal
+procedure below uses the same input archives. Version upgrades remain open. Boot the
 matching kernel before installing its userspace.
 
 Defaults under `/etc/xiri` must be installed only if absent. Update `.example`
@@ -126,7 +126,7 @@ your local native package and previously generated donor imports.
 
 ```sh
 for release in 6.5.22f 6.5.30f; do
-    ./xiri install-media --native-package .work/packages/indy-11.99.11 \
+    ./xiri install-media --native-package .work/packages/netbsd-sgimips-indy-11.99.11-v1 \
         --vendor-payload ".work/imports/irix-${release}-v1" \
         --output ".work/xiri-installer-${release}.iso" || exit 1
 done
@@ -198,3 +198,74 @@ shows the module loaded from the filesystem. Log in at xdm with the
 usual Xiri desktop account. The PROM remembers the selected filename. Both
 kernels use the same root filesystem, user homes and configuration. See the
 [dual-release rollback test](results/2026-11-23-indy-kernel-rollback.md).
+
+### Remove the desktop and return to native NetBSD
+
+Use the CD built for the installed IRIX release and native package. The
+November 24 installer media include `uninstall.sh`. To use an older clean
+Indy image, build or attach the newer CD with the same native and vendor
+archives. Log out of all desktop sessions, log in on the serial console as
+root, mount the CD read-only and stop xdm and the Xiri FAM daemon.
+
+From the repository root, the manual Indy launcher accepts a CD at SCSI ID 4.
+Choose the release that matches the CHD.
+
+```sh
+release=6.5.22f
+.work/images/xiri-clean-indy-${release}-20261123/run-iris.sh \
+    --cdrom4 "$PWD/.work/installers/indy-11.99.11/removal/xiri-${release}.iso"
+```
+
+**Native graphical login on the clean Indy.** Enable `xdm=YES` in the
+site's `/etc/rc.conf` if native graphical login is desired. For an Indy with
+no site Xorg configuration, before removal copy the Newport configuration
+to the native Xorg location with stock acceleration disabled.
+
+```sh
+test ! -e /etc/X11/xorg.conf && test ! -L /etc/X11/xorg.conf &&
+    sed 's/"NoAccel" "false"/"NoAccel" "true"/' \
+        /usr/local/share/xiri/xorg.conf > /etc/X11/xorg.conf
+```
+
+An existing site configuration takes precedence. Review any locally edited
+`/etc/rc.conf.d/xdm` for Xiri-specific server paths.
+
+Inside the guest, run the following commands from the root console.
+
+```sh
+mkdir -p /cdrom
+mount -t cd9660 -o ro /dev/cd0a /cdrom
+/etc/rc.d/xdm stop
+/etc/rc.d/xiri_famd stop
+sh /cdrom/uninstall.sh
+```
+
+The November 23 clean Indy CHDs predate per-file ownership records. **On
+those images only**, use `sh /cdrom/uninstall.sh --legacy-clean-indy`
+for the first removal. This tells the uninstaller that package paths with
+matching contents came from the documented clean installation. An older
+receipt alone cannot establish that on an independently configured machine.
+Subsequent installations from the new media record which files and links
+they created and use the ordinary command.
+
+The uninstaller restores replaced native files, including the original
+Newport driver link and rpcbind. It compares native files against the package
+before deleting them. Site configuration, accounts, home directories and
+session selectors stay under local administration. Modified replacements for
+which an original must be restored are saved in the transaction's `edits/`
+directory. The bootstrapped kernel, module and module-loading configuration
+have their own lifecycle. Select `netbsd.stock` and later `netbsd.boot`
+using the [kernel switching procedure](#switching-between-the-stock-and-xiri-kernels).
+
+The final message gives a private history directory under
+`/var/db/xiri-install`. Its `trees` file lists the detached vendor and font
+directories. They retain extra software, locally edited vendor files and
+generated data on their original filesystems, so removal does not reclaim
+their disk space. Reinstallation publishes fresh trees from the CD. Review
+any additions you want to copy back before discarding a detached tree.
+After an interrupted removal, rerun the same command from the same CD.
+
+After booting `netbsd.stock`, log in as `netbsdtest` for ctwm. To reinstall, boot
+`netbsd.boot`, mount the same CD, run `sh /cdrom/install.sh` and reboot.
+The existing `xiritest` session selector and home preferences apply at xdm.
+See the [dual-release results and screenshots](results/2026-11-24-indy-desktop-removal.md).

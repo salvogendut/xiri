@@ -161,6 +161,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     for arg in ('bundle', 'serial-prom', 'emulator', 'sets', 'kernel', 'output'):
         parser.add_argument('--' + arg, type=Path, required=True)
+    parser.add_argument('--install-media', type=Path, help='qualify removing and reinstalling this release')
     args = parser.parse_args()
     bundle, firmware, emulator, sets, kernel, out = [
         p.resolve()
@@ -182,6 +183,13 @@ def main():
     config = (bundle / 'iris.toml').read_text()
     if 'overlay = true' not in config or 'path = "netbsd-xiri.chd"' not in config:
         raise ValueError('Expected the Indy overlay configuration')
+    removal = None
+    phases = ('baseline', 'stock', 'restored')
+    if args.install_media:
+        medium = args.install_media.resolve(strict=True)
+        config += '\n[scsi.4]\ncdrom = true\npath = ' + json.dumps(str(medium)) + '\n'
+        removal = runpy.run_path(str(HERE / 'check-desktop-removal.py'))
+        phases = ('remove', 'stock', 'reinstall', 'restored')
     os.environ.pop('IRIS_CHD_DIFF_DIR', None)
     signal.signal(signal.SIGTERM, signal.default_int_handler)
     out.mkdir(parents=True, exist_ok=False)
@@ -191,10 +199,12 @@ def main():
     toolbox = probe.TOOLBOX
     colour = {'6.5.22f': '#c9ecc9', '6.5.30f': '#c9d9ec'}[release]
     result = dict(release=release, chd_sha256=pin['chd_sha256'], stock_sha256=stock, boots=[])
+    if removal:
+        result['media_sha256'] = sha256(medium)
     try:
         prepare_prom(probe, config.replace('ci = false', 'ci = true'), out, firmware)
         probe.TOOLBOX = toolbox
-        for phase in ('baseline', 'stock', 'restored'):
+        for phase in phases:
             print(f'{release}: {phase}', flush=True)
             stock_boot = phase == 'stock'
             filename = 'netbsd.stock' if stock_boot else 'netbsd.boot'
@@ -230,15 +240,24 @@ def main():
                 )
                 evidence['prom_filename'] = filename
                 g.command('sysctl -n kern.consdev | grep -q ttyE0 && tty | grep -q ttyZ0')
-                g.command(
-                    'test "$(sysctl -n kern.securelevel)" = 1 && grep -q "^'
-                    + re.escape(release)
-                    + ' " '
-                    + RECEIPT
-                )
+                g.command('test "$(sysctl -n kern.securelevel)" = 1')
+                if removal and phase in ('stock', 'reinstall'):
+                    g.command('test ! -e ' + RECEIPT)
+                else:
+                    g.command('grep -q "^' + re.escape(release) + ' " ' + RECEIPT)
                 if phase != 'stock':
                     g.command("modstat | grep -Eq '^compat_irix_o32[[:space:]]+exec[[:space:]]+filesys'")
-                if phase == 'baseline':
+                if removal and phase == 'remove':
+                    evidence['uninstall'] = removal['remove'](g, release, colour)
+                elif removal and phase == 'stock':
+                    evidence['native'] = removal['native'](g, run, xdm, screenshot)
+                elif removal and phase == 'reinstall':
+                    evidence['install'] = removal['reinstall'](g, release)
+                elif removal and phase == 'restored':
+                    removal['preserved'](g)
+                    evidence['desktop'] = restored_desktop(g, run, colour)
+                    removal['preserved'](g)
+                elif phase == 'baseline':
                     seed(g, release, colour)
                     evidence['preserved_paths'] = list(POLICY)
                 elif phase == 'stock':
@@ -274,6 +293,18 @@ def main():
                     check_files(g)
                 console = KernelLog(lab, stock_msgbuf if stock_boot else msgbuf, 4 if stock_boot else 8)
                 console.halt()
+            except Exception:
+                if removal and lab.logged_in:
+                    try:
+                        (run / 'diagnostic.txt').write_text(g.read_text(
+                            'ps -axww -o args=; tail -70 /var/log/Xorg.0.log; tail -45 /var/log/xdm.log; '
+                            'tail -30 /root/install-cycle.log /root/uninstall-cycle.log'
+                        ))
+                        screenshot(g, run / 'failure.png')
+                        KernelLog(lab, stock_msgbuf if stock_boot else msgbuf, 4 if stock_boot else 8).halt()
+                    except Exception as diagnostic_error:
+                        evidence['diagnostic_error'] = str(diagnostic_error)
+                raise
             finally:
                 lab.close()
                 evidence.update(
@@ -281,14 +312,14 @@ def main():
                 )
                 result['boots'].append(evidence)
     except BaseException as error:
-        result['error'] = str(error)
+        result['error'] = str(error) or type(error).__name__
         raise
     finally:
         result['base_unchanged'] = sha256(original) == pin['chd_sha256']
         result['passed'] = (
             'error' not in result
             and result['base_unchanged']
-            and len(result['boots']) == 3
+            and len(result['boots']) == len(phases)
             and all(b['halted'] and b['stopped'] for b in result['boots'])
         )
         (out / 'result.json').write_text(json.dumps(result, indent=2) + '\n')

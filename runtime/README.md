@@ -7,6 +7,9 @@ change the kernel or selected CHD. Native xdm configuration is opt-in.
 The [native package](../docs/NATIVE-PACKAGE.md) cross-builds this runtime with
 explicit X11 sysroot flags and assembles its pinned prerequisites. The two
 6.5.22/6.5.30 release lines retain separate vendor qualification.
+The [desktop removal guide](../docs/NATIVE-PACKAGE.md#remove-the-desktop-and-return-to-native-netbsd)
+describes how service ownership, existing xdm policy and user session
+selectors are handled when returning to native NetBSD.
 
 ## Ownership
 

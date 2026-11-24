@@ -106,3 +106,21 @@ both running build strings, and checks user data and policy across the round
 trip. The final X session checks the saved preference against the X resource
 database. Inspect the result JSON and the per-boot shutdown logs before
 removing the private CHD and overlay.
+
+## Desktop removal and reinstall
+
+Build a fresh installer CD with `./xiri install-media` for the matching
+clean Indy bundle. Add `--install-media "$iso"` to the stock kernel round-trip
+command above, using a fresh output directory. Repeat with the other release's
+CHD and CD. The guest runs from a private overlay through four cold boots.
+
+The first boot removes the original November 23 installation. The probe
+supplies native NetBSD xdm policy and a Newport Xorg configuration before
+removal, seeds user and administrator edits, and checks the saved stock
+driver and rpcbind. The stock boot logs a native user into ctwm and checks
+for a mapped UXTerm. The third boot reinstalls Xiri, exercises the new
+ownership records with an interrupted removal, resumes it and installs the same release again.
+The final login checks the saved winterm colour in the running X server and
+executes the vendor shell. The JSON, screenshots and kernel shutdown logs
+are local to the test's output directory. See the
+[operator procedure](../../docs/NATIVE-PACKAGE.md#remove-the-desktop-and-return-to-native-netbsd).

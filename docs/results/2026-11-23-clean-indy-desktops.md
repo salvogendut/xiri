@@ -67,5 +67,7 @@ The two local installer CDs and compressed qualification logs are in
 instructions](../NATIVE-PACKAGE.md#clean-installation-on-an-emulated-indy) and
 [reproduction commands](../../lab/native-package/README.md#bootstrapping-a-stock-target).
 The subsequent [stock kernel round trip](2026-11-23-indy-kernel-rollback.md)
-covers both Indy images. Physical Indy hardware, cross-version upgrades,
-removal and recovery from a power cut during writes remain open.
+covers both Indy images. These images use the older receipts described in
+the [desktop removal and reinstall procedure](../NATIVE-PACKAGE.md#remove-the-desktop-and-return-to-native-netbsd).
+Physical Indy hardware, cross-version upgrades and recovery from a power
+cut during writes remain open.

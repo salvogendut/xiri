@@ -72,6 +72,19 @@ in `08e53ba7`. [Octane build and qualification](results/2026-11-23-octane-deskto
 
 ## IRIS upstream updates
 
+On November 24 the desktop removal cycle merged 23 upstream commits through
+`c00f6524` into `xiri` at `ca4fb4d9`. The changes include Newport GPU
+raster work, serial consoles, machine clocks and memory-bank restore.
+The merge adopts upstream's bank placement and releases the MC state lock
+before invoking the board callback. The IP35 presence and Hub timer tests
+now exercise their original interleavings using the current clock API.
+
+All 5,887 enabled library tests passed serially with the software Vulkan
+driver (104 ignored). A prior parallel GPU run exited with SIGSEGV. The CI
+binary, monitor readiness and GUI suites passed 30, 1 and 119 tests
+respectively. The [Indy installer qualification](results/2026-11-24-indy-desktop-removal.md)
+uses the clean CHDs' pinned emulator at `0bc52567`.
+
 The Indy rollback cycle on November 23 merged upstream `750ae737` into
 `xiri` at `0393c0e4`. The two incoming changes cover the monitor's watch
 timeout and the JIT fallback for a page without compiled code. The JIT,

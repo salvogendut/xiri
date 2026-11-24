@@ -1,0 +1,203 @@
+{
+  "platform": "Emulated Indy IP24, 256 MiB, accelerated Newport, stock NetBSD 11.0 userland/X sets",
+  "installer": "desktop userspace",
+  "native_package_sha256": "8fe4ab367981937353616eb82e6cc0fdd073458103151d101001f7e039379859",
+  "native_source": "c096ddb347d",
+  "guest_emulator": "0bc52567a87349a5f521c702f9d8dec1dc0f79c6",
+  "guest_emulator_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+  "iris_upstream": "c00f6524de1c83fabaa6c38921c4f71591c51150",
+  "iris_merge": "ca4fb4d988293baad61431f684c5605e74a30e6a",
+  "iris_frontend_passed_ignored": [
+    [
+      30,
+      0
+    ],
+    [
+      1,
+      0
+    ],
+    [
+      119,
+      0
+    ]
+  ],
+  "host_tests": 85,
+  "releases": {
+    "6.5.22f": {
+      "release": "6.5.22f",
+      "chd_sha256": "bd4bcc59c1845a3d9a50e0245d0c705ff9dea022ce2f96c6e5afcf58794fe328",
+      "stock_sha256": "cc9f51a1fcdef2c61ce3335761d6cb61e17ae9c56f2d85c9f382365efbbdf0ad",
+      "boots": [
+        {
+          "phase": "remove",
+          "kernel": "NetBSD 11.99.11 (XIRI_IRIX_MODULE_20261103) #0: Mon Nov 23 18:09:22 UTC 2026  salvogendut@minisforum.golgota.lan:/var/home/salvogendut/Dev/xiri/.work/netbsd-sync-20261123/indy/kernel",
+          "prom_filename": "netbsd.boot",
+          "uninstall": {
+            "restored_driver": "newport_drv.so.0",
+            "rpcbind_backup_and_edit_verified": true,
+            "vendor_and_font_additions_retained": true,
+            "repeat_removal": true
+          },
+          "halted": true,
+          "stopped": true
+        },
+        {
+          "phase": "stock",
+          "kernel": "NetBSD 11.0 (GENERIC32_IP2x) #0: Thu Jul 30 15:23:12 UTC 2026  mkrepro@mkrepro.NetBSD.org:/usr/src/sys/arch/sgimips/compile/GENERIC32_IP2x",
+          "prom_filename": "netbsd.stock",
+          "native": {
+            "login": "netbsdtest",
+            "window_manager": "ctwm",
+            "mapped_terminal": "UXTerm",
+            "logout_to_xdm": true,
+            "png_sha256": "f624f7811de856e0a82c76e8d32cbcd2e4b3756c34bc43966ad1ef63d0829cbb",
+            "screenshot": "2026-11-24-indy-6.5.22f-ctwm.png"
+          },
+          "halted": true,
+          "stopped": true
+        },
+        {
+          "phase": "reinstall",
+          "kernel": "NetBSD 11.99.11 (XIRI_IRIX_MODULE_20261103) #0: Mon Nov 23 18:09:22 UTC 2026  salvogendut@minisforum.golgota.lan:/var/home/salvogendut/Dev/xiri/.work/netbsd-sync-20261123/indy/kernel",
+          "prom_filename": "netbsd.boot",
+          "install": {
+            "reinstalled": "6.5.22f",
+            "tracked_removal": true,
+            "interrupted_removal_resumed": true,
+            "preexisting_alias_and_service_preserved": true
+          },
+          "halted": true,
+          "stopped": true
+        },
+        {
+          "phase": "restored",
+          "kernel": "NetBSD 11.99.11 (XIRI_IRIX_MODULE_20261103) #0: Mon Nov 23 18:09:22 UTC 2026  salvogendut@minisforum.golgota.lan:/var/home/salvogendut/Dev/xiri/.work/netbsd-sync-20261123/indy/kernel",
+          "prom_filename": "netbsd.boot",
+          "desktop": {
+            "dimensions": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+            "applied_resource": "winterm*foreground: #c9ecc9",
+            "clients": [
+              "4Dwm",
+              "Toolchest",
+              "Icon Catalog",
+              "winterm",
+              "xclock"
+            ],
+            "vendor_shell": true,
+            "logout_to_xdm": true,
+            "png_sha256": "2aa2c212bc069771c1f6bed9fb325e21ea732ee4285d0be513db14b597174e67",
+            "screenshot": "2026-11-24-indy-6.5.22f-restored.png"
+          },
+          "halted": true,
+          "stopped": true
+        }
+      ],
+      "media_sha256": "531a5619a2759ccf001b0997e9b56c9d1a2547afb686b29d158c3e28065875af",
+      "base_unchanged": true,
+      "passed": true,
+      "media_contents_sha256": {
+        "native.tgz": "8fe4ab367981937353616eb82e6cc0fdd073458103151d101001f7e039379859",
+        "payload.tgz": "6feb87643a47b0128fe635b7d06903ef2e78da0317ba29c5a88a700c85403dec",
+        "install.sh": "eac248cff73cf647875907935cc9a49aed15e1d6c86e14b314268e7b5c041fc3",
+        "uninstall.sh": "b13d6d7469cc0b17ba7dc4aa0fc454f8ff852baee1d3352c5464149560c02563",
+        "VENDOR": "725eaa002b28075a04a4b83786d71d359bffdce7ec2f823dc1604eac57d091b0",
+        "links": "523aef54c212c649ec3a52ae7c2b0d92d203934cb6b55cea7fde2d66f1653f92",
+        "release": "b136aacf54704fed46ef243a5341f9be641598c78a7cebfde7a837d8a3161387",
+        "table.sha": "f9150283f4514368a9f300ed55cc4da773917e4a01aa6d5bcdcd67b527b3bfeb",
+        "space": "56fa36b36f3994bff432843e89e3e9299ea26640d90e5b77dae0ab6e5dc7e6b4"
+      },
+      "media_file": "xiri-6.5.22f.iso"
+    },
+    "6.5.30f": {
+      "release": "6.5.30f",
+      "chd_sha256": "31c56a34c934d8151517b2745138e5756aaf6ecac8df1c828a3208ed4510e39a",
+      "stock_sha256": "cc9f51a1fcdef2c61ce3335761d6cb61e17ae9c56f2d85c9f382365efbbdf0ad",
+      "boots": [
+        {
+          "phase": "remove",
+          "kernel": "NetBSD 11.99.11 (XIRI_IRIX_MODULE_20261103) #0: Mon Nov 23 18:09:22 UTC 2026  salvogendut@minisforum.golgota.lan:/var/home/salvogendut/Dev/xiri/.work/netbsd-sync-20261123/indy/kernel",
+          "prom_filename": "netbsd.boot",
+          "uninstall": {
+            "restored_driver": "newport_drv.so.0",
+            "rpcbind_backup_and_edit_verified": true,
+            "vendor_and_font_additions_retained": true,
+            "repeat_removal": true
+          },
+          "halted": true,
+          "stopped": true
+        },
+        {
+          "phase": "stock",
+          "kernel": "NetBSD 11.0 (GENERIC32_IP2x) #0: Thu Jul 30 15:23:12 UTC 2026  mkrepro@mkrepro.NetBSD.org:/usr/src/sys/arch/sgimips/compile/GENERIC32_IP2x",
+          "prom_filename": "netbsd.stock",
+          "native": {
+            "login": "netbsdtest",
+            "window_manager": "ctwm",
+            "mapped_terminal": "UXTerm",
+            "logout_to_xdm": true,
+            "png_sha256": "f7fdeee59a5720b7a01df14779ecb4062725c6d899b3b545efb6ed1fa5c4623a",
+            "screenshot": "2026-11-24-indy-6.5.30f-ctwm.png"
+          },
+          "halted": true,
+          "stopped": true
+        },
+        {
+          "phase": "reinstall",
+          "kernel": "NetBSD 11.99.11 (XIRI_IRIX_MODULE_20261103) #0: Mon Nov 23 18:09:22 UTC 2026  salvogendut@minisforum.golgota.lan:/var/home/salvogendut/Dev/xiri/.work/netbsd-sync-20261123/indy/kernel",
+          "prom_filename": "netbsd.boot",
+          "install": {
+            "reinstalled": "6.5.30f",
+            "tracked_removal": true,
+            "interrupted_removal_resumed": true,
+            "preexisting_alias_and_service_preserved": true
+          },
+          "halted": true,
+          "stopped": true
+        },
+        {
+          "phase": "restored",
+          "kernel": "NetBSD 11.99.11 (XIRI_IRIX_MODULE_20261103) #0: Mon Nov 23 18:09:22 UTC 2026  salvogendut@minisforum.golgota.lan:/var/home/salvogendut/Dev/xiri/.work/netbsd-sync-20261123/indy/kernel",
+          "prom_filename": "netbsd.boot",
+          "desktop": {
+            "dimensions": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+            "applied_resource": "winterm*foreground: #c9d9ec",
+            "clients": [
+              "4Dwm",
+              "Toolchest",
+              "Icon Catalog",
+              "winterm",
+              "xclock"
+            ],
+            "vendor_shell": true,
+            "logout_to_xdm": true,
+            "png_sha256": "6f61e0fad0b33f94ea17b4a643f24d428a33dffb71b1eed99a0ce2a2c8b7a415",
+            "screenshot": "2026-11-24-indy-6.5.30f-restored.png"
+          },
+          "halted": true,
+          "stopped": true
+        }
+      ],
+      "media_sha256": "d588b2009dc4edf0cc69bdb6c324872a81435f8e41552f882615eea12ccbfe68",
+      "base_unchanged": true,
+      "passed": true,
+      "media_contents_sha256": {
+        "native.tgz": "8fe4ab367981937353616eb82e6cc0fdd073458103151d101001f7e039379859",
+        "payload.tgz": "21060cf7415e730d6efb3d690e51d08aafb15d689ecb0f2fdd9c8638a33bfde7",
+        "install.sh": "eac248cff73cf647875907935cc9a49aed15e1d6c86e14b314268e7b5c041fc3",
+        "uninstall.sh": "b13d6d7469cc0b17ba7dc4aa0fc454f8ff852baee1d3352c5464149560c02563",
+        "VENDOR": "dbe49343a23c6c572866921b8cc309f970dc4043d065ae11c79c42ad64a0e617",
+        "links": "51263a72d8c8ba87a8e565d4e632e1fcdefde88f853d58a14ba6501d0b1510a6",
+        "release": "5fe85b8d75eb82ea8ba734b9135afecbc6534a919b4826dbc46f62a51d766806",
+        "table.sha": "4466d813c67ecb3a1816446c4a433952d3c630e08c409b5f8a886f3eca18bc02",
+        "space": "44b29db3b5950104c27d8bee42c247a8111ccc22772717cbaa4ff7996c1dc2fd"
+      },
+      "media_file": "xiri-6.5.30f.iso"
+    }
+  },
+  "iris_library_passed_ignored": [
+    5887,
+    104
+  ],
+  "stock_rpcbind_sha256": "b4fc8ff25fd1864fbac90806d03a6a723147c229937ceffa2bf71ce57df55d5b",
+  "original_newport_driver_sha256": "92e051790627caf3b3f2d2f09487cc6454d9f7a1ff6b4a5c34231d3df0053b85"
+}

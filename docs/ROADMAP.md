@@ -1,6 +1,6 @@
 # Xiri execution roadmap
 
-Status: updated 2026-11-15. The current image runs the original 4Dwm desktop,
+Updated 2026-11-24. The current image runs the original 4Dwm desktop,
 Toolchest, Icon Catalog, File Manager, winterm and xclock on NetBSD/Xorg with
 accelerated Newport. Catalog launching, running-icon feedback, backdrop,
 desktop icons and logout pass bounded checks; the latest xmahjongg texture
@@ -317,8 +317,11 @@ payloads. Both targets pass interruption/resume and reinstall, then a cold
 boot from the packaged CHD to full-screen 4Dwm and native ctwm through xdm.
 Both Indy release lines also pass the [stock-kernel rollback test](results/2026-11-23-indy-kernel-rollback.md),
 including a native-user write under 11.0 and a restored 4Dwm session that
-loads the user's saved winterm colour. Installer upgrades, removal and
-physical Indy qualification remain open.
+loads the user's saved winterm colour. The [desktop removal and reinstall
+procedure](NATIVE-PACKAGE.md#remove-the-desktop-and-return-to-native-netbsd) covers
+stock native files, xdm, user homes and administrator edits. In-place package
+upgrades and physical Indy qualification follow this emulated recovery work.
+[Dual-release test results](results/2026-11-24-indy-desktop-removal.md)
 
 - [x] Maintain a separate original-media **IRIX 6.5.30** installation/import
   process, with its own media pins, donor CHD, resource profile and Xiri acceptance
