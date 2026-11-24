@@ -3,7 +3,11 @@
 For the current original-media Indy desktops, see the [Applications tab
 test on both releases](results/2026-11-24-indy-applications.md). It covers
 all eight visible 6.5.22f entries and all four 6.5.30f entries.
-
+On private copies with the [optional browser imports](results/2026-11-24-indy-mozilla.md),
+both Mozilla icons start the vendor binary. Both releases wait for an
+unimplemented IRIX thread call before showing a browser window. On 6.5.22f
+the two Messenger shortcuts reach Netscape. The local document and mailbox
+are still unusable.
 
 Updated 2026-11-14 after the [desktop-controls cycle](results/2026-11-14-desktop-controls.md),
 the [startup survey](results/2026-11-03-irix-catalog.md)

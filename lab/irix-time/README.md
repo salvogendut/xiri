@@ -81,3 +81,33 @@ installer process is not evidence of successful installation.
 
 Keep at most four IRIS guests active, shut each down afterward, and retain
 large images, vendor files, traces and raw frames under `.work`.
+
+## Interval timers
+
+The separate interval fixture exercises raw traps 1125 and 1126. The
+[reference output](interval.expected) was identical on original 6.5.22f
+and 6.5.30f for both o32 and n32. It covers real, virtual and profiling
+timers, disarming, previous-value copyout, error ordering and signal
+delivery. Selector 3 returns IRIX `EINVAL`. A null new timer returns
+`EFAULT`. A bad old-value pointer leaves the timer disarmed.
+
+Build on the host with the NetBSD sgimips cross tools:
+
+```sh
+sh lab/irix-time/build-interval.sh /path/to/netbsd-tools /tmp/xiri-interval
+```
+
+Copy `timer-32`, `timer-n32` and `interval.expected` to a writable directory
+on the guest. Run this in a shell there:
+
+```sh
+for abi in 32 n32; do
+    ./timer-"$abi" > "result-$abi"
+    ./timer-"$abi" alarm >> "result-$abi"
+    rc=$?
+    test "$rc" = 142 && diff interval.expected "result-$abi" || exit 1
+done
+```
+
+The shell reports an alarm for the second invocation. Status 142 records
+delivery of SIGALRM to the foreign process. [Netscape application result](../../docs/results/2026-11-24-indy-mozilla.md).

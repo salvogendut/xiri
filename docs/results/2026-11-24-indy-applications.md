@@ -18,11 +18,10 @@ same authenticated display.
 
 There were eight visible entries on 6.5.22f and four on 6.5.30f.
 The two editors sharing a window title and the two Mozilla launchers sharing
-a failure account for much of the apparent duplication. The browser import
-is the first shared repair to try. It needs its release-matched directory
-tree, followed by a local-page rendering test. The WebJumper mail action
-also needs a working handler for its URI. Showcase needs a separate IRIS GL
-investigation.
+a failure account for much of the apparent duplication. A subsequent
+[browser test on private v5 copies](2026-11-24-indy-mozilla.md) restored
+the release-matched imports and traced the next startup failures. Showcase
+still needs a separate IRIS GL investigation.
 
 [6.5.22f Acrobat first-run dialog](2026-11-24-applications-acrobat.png)
 · [6.5.30f saved editor document](2026-11-24-applications-nedit.png)

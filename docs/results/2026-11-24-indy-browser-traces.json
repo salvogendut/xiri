@@ -1,0 +1,126 @@
+{
+  "netbsd_commit": "524cb15e140",
+  "module_sha256": "17d5046d257de769a619963cf7282454ce33dcd5e3f597eb999e917be651ef3c",
+  "iris_upstream": "057ba095",
+  "iris_fork": "39ef6dff",
+  "guests": {
+    "6.5.22f": {
+      "cpu": "R4400",
+      "image_sha256": "a0b232a777a4206a2cc3c93c99bf3277458105cc5d5945d190f8a0ab6d54710f",
+      "nvram_sha256": "c864b965f082ac9b0adca243a20c7d2d321fe8c88722a2eb3980a999d486850d",
+      "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+      "mozilla": "1.0.1",
+      "browser_payload_sha256": "1a817f69d2f07f47baddf596574c78dced9beddffdd6a81e11282470063f9a8d",
+      "installed_paths": 481,
+      "graphical_session": "xdm xiritest",
+      "icons": {
+        "Mozilla": {
+          "first_blocking_call": [
+            "syscall=1204 pc=0xfa75038 a0=0xfa750a8 a1=0x20000ff a2=0x7fff6e10 a3=0",
+            "syscall=1204 v0=0x59 a3=1",
+            "syscall=1082 pc=0xfa76d9c a0=0x6a4 a1=0xffffffff a2=0 a3=0x10059128"
+          ],
+          "local_page_rendered": false
+        },
+        "mozilla": {
+          "first_blocking_call": [
+            "syscall=1204 pc=0xfa75038 a0=0xfa750a8 a1=0x20000ff a2=0x7fff6e10 a3=0",
+            "syscall=1204 v0=0x59 a3=1",
+            "syscall=1082 pc=0xfa76d9c a0=0x76c a1=0xffffffff a2=0 a3=0x10059128"
+          ],
+          "local_page_rendered": false
+        }
+      }
+    },
+    "6.5.30f": {
+      "cpu": "R5000",
+      "image_sha256": "45255c741c7fbfce754f63dab478f501fad4070c71b9071f559dc43ec1395e76",
+      "nvram_sha256": "322ec195f7b5eb8474d6e84bc0de607eca2d146697bad3dd7a4898a879816e7f",
+      "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+      "mozilla": "1.7.12",
+      "browser_payload_sha256": "9221f292a68240ea863e6176dfa06b148ddea3973439d47b5ce464266a28593f",
+      "installed_paths": 535,
+      "graphical_session": "xdm xiritest",
+      "icons": {
+        "Mozilla": {
+          "first_blocking_call": [
+            "syscall=1204 pc=0xfa68718 a0=0xfa68790 a1=0x20000ff a2=0x7fff4c60 a3=0",
+            "syscall=1204 v0=0x59 a3=1",
+            "syscall=1082 pc=0xfa6a484 a0=0x76c a1=0xffffffff a2=0 a3=0x1004aa20"
+          ],
+          "local_page_rendered": false
+        },
+        "mozilla": {
+          "first_blocking_call": [
+            "syscall=1204 pc=0xfa68718 a0=0xfa68790 a1=0x20000ff a2=0x7fff4c60 a3=0",
+            "syscall=1204 v0=0x59 a3=1",
+            "syscall=1082 pc=0xfa6a484 a0=0x76c a1=0xffffffff a2=0 a3=0x1004aa20"
+          ],
+          "local_page_rendered": false
+        }
+      }
+    }
+  },
+  "interval_timers": {
+    "netbsd_commit": "1d7a8b42efb",
+    "module_sha256": "f759f450b9a8fdab95b25f1e915764e3ae3d88b317a940b8347c80c8382f8b9b",
+    "reference": "../../lab/irix-time/interval.expected",
+    "reference_sha256": "bd3b8559a83ad14d2837f2deddca91630d0893068d7c4479e30b199fe2d477e7",
+    "runs": {
+      "6.5.22f": {
+        "native_model": "indy_ip24",
+        "native_disk_sha256": "b4fff76ffa0ca00c0a90da1c94a3eb41f5f6ba4cb13c0af258b4acca4ad95c41",
+        "xiri_cpu": "R4400",
+        "abis": [
+          "o32",
+          "n32"
+        ],
+        "matching_rows_per_abi": 57,
+        "sigalrm_exit_status": 142
+      },
+      "6.5.30f": {
+        "native_model": "o2_ip32",
+        "native_disk_sha256": "339f74457dfbb06813681ab5db2ccfdd29d394e8a02dfcdcd6c6ac7c22a836db",
+        "xiri_cpu": "R5000",
+        "abis": [
+          "o32",
+          "n32"
+        ],
+        "matching_rows_per_abi": 57,
+        "sigalrm_exit_status": 142
+      }
+    }
+  },
+  "communicator": {
+    "release": "6.5.22f",
+    "payload_sha256": "51cf388abbaccc997fa4a0b140887365e817ac0cc991a74250cd66f462265452",
+    "installed_paths": 69,
+    "about_argument": "file:/var/netscape/communicator/docs/AboutNetscapeMessenger.html",
+    "mail_argument": "mailbox:",
+    "original_irix_about_window": "Netscape: About Netscape Messenger, Navigator, 720x892",
+    "xiri_release_module_sha256": "f759f450b9a8fdab95b25f1e915764e3ae3d88b317a940b8347c80c8382f8b9b",
+    "xiri_about_document_rendered": false,
+    "xiri_mail_window": "Netscape Message Center, MailFolder, 475x600",
+    "xiri_mailbox_usable": false,
+    "direct_no_async_dns": {
+      "setitimer": [
+        "syscall=1126 pc=0xfa751fc a0=0 a1=0x7fff67e0 a2=0 a3=0",
+        "syscall=1126 v0=0 a3=0"
+      ],
+      "later_trace": [
+        "syscall=1037 pc=0xfa611fc a0=0xaf5 a1=0xa a2=0x110c65b8 a3=0",
+        "syscall=1037 v0=0 a3=0",
+        "syscall=1020 pc=0xfa529c0 a0=0xa37d a1=0x110ddc00 a2=0x110c65b8 a3=0x110c65b8",
+        "syscall=1020 v0=0xaf5 a3=0"
+      ],
+      "signal": "IRIX SIGBUS (10)"
+    },
+    "catalog_about": {
+      "observation_guest_seconds": 96,
+      "sampled_browser_pc": "0x0fafd878 (_sigtramp)",
+      "sampled_dns_helper_pc": "0x10ca42cc (_PR_PutOnSleepQ)",
+      "sampled_return_address": "0x10ca7fc4 (_PR_CondWait)",
+      "signal_sample": "SIGALRM deliveries and IRIX sigreturn (1088)"
+    }
+  }
+}

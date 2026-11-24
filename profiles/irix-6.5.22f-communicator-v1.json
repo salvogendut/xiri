@@ -1,0 +1,67 @@
+{
+  "schema": 1,
+  "id": "irix-6.5.22f-communicator-v1",
+  "release": "6.5.22f",
+  "donor": {
+    "chd_sha256": "b4fff76ffa0ca00c0a90da1c94a3eb41f5f6ba4cb13c0af258b4acca4ad95c41",
+    "raw_sha256": "fc70f353f53244eaa2707609b348e4a2b22aae3de6ce41398bdd8d6c3f4bda56",
+    "logical_bytes": 4294967296
+  },
+  "default_components": [
+    "communicator"
+  ],
+  "components": {
+    "communicator": {
+      "available": true,
+      "description": "SGI WebJumper and Netscape Communicator for the two Messenger shortcuts"
+    }
+  },
+  "native_prerequisites": [
+    "Installed Xiri 6.5.22f desktop"
+  ],
+  "paths": {
+    "/usr/bin/X11/netscape": {"component": "communicator", "type": "file", "sha256": "6dc982d083f28de4c71590d09907e195303c42ba9edc1204500b0e0a73049f6e"},
+    "/usr/bsd/head": {"component": "communicator", "type": "file", "destination": "/emul/irix/usr/bin/head"},
+    "/usr/sbin/launchWebJumper": {"component": "communicator", "type": "file", "sha256": "9b1719aeff6ed74f326a8971c2829ce7a87e0bffc2d5bf9b9b7dc2b4d38e9f70"},
+    "/var/netscape/communicator/AboutNetscapeMessenger": {"component": "communicator", "type": "file", "sha256": "f3604159af777b8ea2c0274ca847ddd1399966024e1ea76530fa981033945dfc"},
+    "/var/netscape/communicator/NetscapeMail": {"component": "communicator", "type": "file", "sha256": "edbdbf1805c4f2fd192cbf645f5f5713bff57111e484b00ace8eacc453f5689d"},
+    "/var/netscape/communicator/anim_color.dat": {"component": "communicator", "type": "file", "sha256": "512f96d83c748166ae6ff8bdd4fd8ccd408a1c780801e23a10618cbf5ac6fe50"},
+    "/var/netscape/communicator/anim_cube.dat": {"component": "communicator", "type": "file", "sha256": "dabae2928274b72f8b4fe3f9e07ae879003185ecd9443662154f98cc0c6a9f54"},
+    "/var/netscape/communicator/anim_popup.dat": {"component": "communicator", "type": "file", "sha256": "dd40c782ac7cf3feaf13422033fe827bb0e2d38c72e5b8d2085be07b289768ae"},
+    "/var/netscape/communicator/anim_popup_wide.dat": {"component": "communicator", "type": "file", "sha256": "9e1bad721f052b6cbc3bdf33d33f07f44a696ad03c778f7bea203400af108718"},
+    "/var/netscape/communicator/anim_pulse.dat": {"component": "communicator", "type": "file", "sha256": "777f3e7305421c74aa5cb46b9a29f969fdd7a003fd09bcc2d0da2c8fbaabb453"},
+    "/var/netscape/communicator/anim_spin_color.dat": {"component": "communicator", "type": "file", "sha256": "3d7aab0c964165ed7d531bd660954d6a53c16ce8e0bff9c04840c5974238e1cd"},
+    "/var/netscape/communicator/animation.dat": {"component": "communicator", "type": "file", "sha256": "bccb1f74fc6c46f7b052d9b3d9015924be523456a7b47d50482fca2c91b593ce"},
+    "/var/netscape/communicator/bookmark.htm": {"component": "communicator", "type": "file", "sha256": "f96e17dff781709df4643e7c0b634179bbb1bee720fad1c00b2a73d5cb3a446a"},
+    "/var/netscape/communicator/docs/AboutNetscapeMessenger.html": {"component": "communicator", "type": "file", "sha256": "fcfdd41aa1ce67bb5855e47749822c1367aaff570a0c4b5650d3340556f5d86a"},
+    "/var/netscape/communicator/docs/IMAP_FAQ.html": {"component": "communicator", "type": "file", "sha256": "d169af4912a23fdb2b70631ccc51c66b73a1e84fb0fc27e4542db5034287e702"},
+    "/var/netscape/communicator/docs/IMAP_UofW.html": {"component": "communicator", "type": "file", "sha256": "ed718c219e3a4b8cac0071d911f6c683c2ff7ce042d5f40cfc287e9c6323a4f4"},
+    "/var/netscape/communicator/docs/IMAP_config.html": {"component": "communicator", "type": "file", "sha256": "91126b6c8ebfae87529e3134c913bbe864162df1168199a7ae092a88cc299519"},
+    "/var/netscape/communicator/docs/Welcome.html": {"component": "communicator", "type": "file", "sha256": "ac6dc2eb6424dcfcfcbdcf60b2fdb3e2bdba3002f447c795815c4e508f3a3655"},
+    "/var/netscape/communicator/docs/WelcomeToBrowse.html": {"component": "communicator", "type": "file", "sha256": "5b350eabea583216ff265b593acb6531f014dba08b4b5a93651ee6ae21d670cb"},
+    "/var/netscape/communicator/docs/aboutsetup.html": {"component": "communicator", "type": "file", "sha256": "7ea3d34a685279580744bc1c4b6aae8283437ae9d927f44ef7e81191fa4e5f33"},
+    "/var/netscape/communicator/docs/aboutstep1.html": {"component": "communicator", "type": "file", "sha256": "ead7ea66ef4ee623978c12a897c3465c9f045270e07ab2276d27ca21019cf8ad"},
+    "/var/netscape/communicator/docs/aboutstep2.html": {"component": "communicator", "type": "file", "sha256": "936868738f67c32aeb7229151759b3593071fab9889bfc12825b6e910bdd44ce"},
+    "/var/netscape/communicator/docs/aboutswitching.html": {"component": "communicator", "type": "file", "sha256": "63c36387bc51ccb98bc38979faf6eda7535fb8c83e0fda1a270c5ace4bceb2b2"},
+    "/var/netscape/communicator/docs/abouttips.html": {"component": "communicator", "type": "file", "sha256": "fdbb8dbf01e7ff480c2767a9e3161cc054d766732da5b67ff9ad9089d725f204"},
+    "/var/netscape/communicator/docs/ban5.gif": {"component": "communicator", "type": "file", "sha256": "abb565727260d8af3cd2dd3e31b00b7cc4b55299e459434f8eff10406922ade3"},
+    "/var/netscape/communicator/docs/faq_browser_ext.html": {"component": "communicator", "type": "file", "sha256": "bb9ff373cab2a1c3659f46032b4c9513a5d7a7f28d563216663ba5e3a36b9bd9"},
+    "/var/netscape/communicator/docs/faq_mail_ext.html": {"component": "communicator", "type": "file", "sha256": "b4ac0767c8a91746c407ca5228d50e49ebe26c7a40b7ddd57d1d1ea4bb4f42c8"},
+    "/var/netscape/communicator/docs/home_igloo.jpg": {"component": "communicator", "type": "file", "sha256": "53488630460539c00888c1b887c019eb4423e3d3aebee46650a9dc92cceef1b8"},
+    "/var/netscape/communicator/docs/images/CorpID.gif": {"component": "communicator", "type": "file", "sha256": "bc2f49d70316def789abfad3aa07a73fb0a2328d1608049773d8a64eeead80c6"},
+    "/var/netscape/communicator/docs/images/backbutton.gif": {"component": "communicator", "type": "file", "sha256": "76bf3824bc411d3145d55ba0adea10f94a6ebf5cb9f1b8319f011a6d4faa32b5"},
+    "/var/netscape/communicator/docs/images/continuebutton.gif": {"component": "communicator", "type": "file", "sha256": "8412adeb6f046d00a811d37cfb81a7eb42c3a53e6298ade556322d1b62049d66"},
+    "/var/netscape/communicator/docs/images/done.gif": {"component": "communicator", "type": "file", "sha256": "5cd1711f0b6cc8945342e5c303a60cfdd444f499c1dfd8498b6ef6f2aafd640d"},
+    "/var/netscape/communicator/docs/images/mediamail.gif": {"component": "communicator", "type": "file", "sha256": "b174636fa4bd47fcea0cf77f557838a828e12736c7499ec1e9a3415dfec39f58"},
+    "/var/netscape/communicator/docs/images/nsmail.gif": {"component": "communicator", "type": "file", "sha256": "830b79bea6cb859be2ffc5de9b3d33cf17344d5e79f0a635948af9493654efa6"},
+    "/var/netscape/communicator/docs/images/step1.gif": {"component": "communicator", "type": "file", "sha256": "eeb7b02819bce61e692a7dbfe6cd7a173fa3ecee13546833b5e4c6c70066829c"},
+    "/var/netscape/communicator/docs/images/step2.gif": {"component": "communicator", "type": "file", "sha256": "2d255b2d220b2fe3b87289a05f78b28bf6cc0dcaee149c8aa16ea091a95ea1cc"},
+    "/var/netscape/communicator/docs/known_problems_ext.html": {"component": "communicator", "type": "file", "sha256": "031582722980925558878aca0e7e03e9dccfb26f8d2346bd3b330dda401c3d9f"},
+    "/var/netscape/communicator/docs/tips.html": {"component": "communicator", "type": "file", "sha256": "5f1840a340c3cfbdb7bb1bb2008af5fae1a585f3af7bc7d05ea71511e00f2f41"},
+    "/var/netscape/communicator/mailcap": {"component": "communicator", "type": "file", "sha256": "08ed4505f00c4f0e19bfadba9275c5db624620d5d87156360c26a2fdd3cb80a4"},
+    "/var/netscape/communicator/mime.types": {"component": "communicator", "type": "file", "sha256": "ea27631b56768e2586f37beb200a08340f0285e7f0d303988aed208a653b5fb7"},
+    "/var/netscape/communicator/mime.types.full": {"component": "communicator", "type": "file", "sha256": "5fd61bcf6b5a3b23f7ae0822aadc781ebcaace1697cc8d632e15367355066998"},
+    "/var/netscape/communicator/netscape": {"component": "communicator", "type": "file", "sha256": "ce16604f99e003ec3ed94d683d7e3616a0a89273250ee2a117d0a51ca9880d0d"},
+    "/var/netscape/communicator/registry": {"component": "communicator", "type": "file", "sha256": "63368f1fdac4d66b3f2077a192050f84800339a156e832b84b98572901c4cd24"}
+  }
+}

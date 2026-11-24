@@ -76,6 +76,12 @@ The November 24 xosview and Applications checks fetched IRIS upstream
 `057ba095`. IRIS `xiri` at `39ef6dff` already contained it. The
 [guest runs](results/2026-11-24-indy-xosview.md) used the pinned v5 Indy
 emulator and the original-media donors for the two IRIX releases.
+The browser follow-up fetched the same upstream revision on November 24
+and 25. NetBSD `xiri`
+commit `524cb15e140` admits the 6.5.30f Mozilla executable on the R5000.
+The R4400 rejection and both catalog launch paths were checked in private
+v5 copies. Commit `1d7a8b42efb` adds IRIX interval timers, checked against
+both original releases with o32 and n32 programs. [Loader and browser results](results/2026-11-24-indy-mozilla.md).
 
 The November 24 clean-desktop, software-installation, installer follow-up, Xorg rendering, Indy v5 packaging and live Freeware installation cycles fetched
 `upstream/main` at `057ba095` and verified that IRIS `xiri` at `39ef6dff`

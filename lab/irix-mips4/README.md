@@ -1,10 +1,23 @@
-# IRIX 6.5.30 n32 interpreter admission
+# IRIX n32 MIPS IV executable and interpreter admission
 
 The original-media 6.5.30f n32 libc is an ELF interpreter declaring MIPS IV
 (`e_flags=0x30000022`). Its fftr and 4Dwm main programs declare MIPS III.
 The compatibility module's previous exact flag whitelist rejected this libc
 even on R5000. NetBSD `xiri` commit `93a25807724` admits that interpreter only on a MIPS IV CPU.
 It preserves MIPS III rejection and the existing ELF/segment constraints.
+
+The 6.5.30f Mozilla 1.7.12 main executable also declares MIPS IV, with
+the executable flags `0x30000024`. The browser payload options exercise
+this executable and 6.5.22f's MIPS III Mozilla on both CPU classes:
+
+```sh
+python3 lab/irix-mips4/check-admission.py \
+  ../NetBSD-xiri/sys/compat/irix_o32/irix_o32.c \
+  --payload-22 .work/imports/irix-6.5.22f-v1/payload.tar.gz \
+  --payload-30 .work/imports/irix-6.5.30f-v1/payload.tar.gz \
+  --mozilla-22 .work/imports/irix-6.5.22f-mozilla-v1/payload.tar.gz \
+  --mozilla-30 .work/imports/irix-6.5.30f-mozilla-v1/payload.tar.gz
+```
 
 Run the source-level regression against the actual validator and separate
 private donor payloads:

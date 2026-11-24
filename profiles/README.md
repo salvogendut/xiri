@@ -11,6 +11,17 @@ the matching original Overlay 1 disc. The supplement profiles identify the
 donor and disc separately for each release. [6.5.22f](irix-6.5.22f-indy-glx-v1.json)
 · [6.5.30f](irix-6.5.30f-indy-glx-v1.json) · [Build instructions](../docs/NATIVE-PACKAGE.md#clean-installation-on-an-emulated-indy)
 
+The two Mozilla profiles build optional browser payloads for an installed
+desktop. Each pins its own donor, browser components, chrome and private
+libraries. Both preserve the vendor launcher symlink. See the
+[Mozilla install and test procedure](../docs/results/2026-11-24-indy-mozilla.md).
+[6.5.22f profile](irix-6.5.22f-mozilla-v1.json) ·
+[6.5.30f profile](irix-6.5.30f-mozilla-v1.json)
+
+Only the 6.5.22f Applications page has the two Netscape Messenger shortcuts.
+Their [Communicator profile](irix-6.5.22f-communicator-v1.json) supplies SGI's
+WebJumper helper, Netscape launcher, executable and local documents.
+
 The native package profiles identify the NetBSD kernel, module, services and
 display components used with each vendor payload. [Native packaging](../docs/NATIVE-PACKAGE.md)
 

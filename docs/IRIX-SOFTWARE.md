@@ -3,7 +3,8 @@
 The [Applications tab survey](results/2026-11-24-indy-applications.md)
 lists the working editors and Reader, the missing Netscape and Mozilla
 runtime files, and the graphics failure in Showcase on the current Indy pair.
-
+The [browser import and test procedure](results/2026-11-24-indy-mozilla.md)
+records the optional payloads and the remaining startup failures.
 
 The current reusable baseline and manual IRIS procedure are in
 [XIRI-IMAGE.md](XIRI-IMAGE.md). [IRIX-IMPORT.md](IRIX-IMPORT.md) records exact

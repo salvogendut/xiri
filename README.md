@@ -342,6 +342,9 @@ meters run on both Indys with the updated compatibility module.
 [Meter measurements and screenshots](docs/results/2026-11-24-indy-xosview.md).
 The [Applications tab survey](docs/results/2026-11-24-indy-applications.md)
 covers every visible launcher on the two original-media Indy desktops.
+The [browser follow-up](docs/results/2026-11-24-indy-mozilla.md) gives the
+matching imports and traces the missing IRIX thread call that prevents both
+versions of Mozilla from opening a page.
 General nested pipelines and layered-terminal revoke remain open; the
 qualified job-control subset and its explicit wait-policy differences are
 recorded in the [cycle report](docs/results/2026-11-05-irix-job-control.md).

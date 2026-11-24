@@ -13,6 +13,8 @@ def main():
     parser.add_argument('source', type=Path)
     parser.add_argument('--payload-22', required=True, type=Path)
     parser.add_argument('--payload-30', required=True, type=Path)
+    parser.add_argument('--mozilla-22', type=Path, help='optional 6.5.22f Mozilla payload')
+    parser.add_argument('--mozilla-30', type=Path, help='optional 6.5.30f Mozilla payload')
     args = parser.parse_args()
     source = args.source.read_text()
     start = source.index('enum irix_o32_image_kind {')
@@ -48,11 +50,17 @@ static int exec_read(struct lwp *l, struct vnode *v, off_t off,
 }
 '''
     cases = []
-    for release, path in [('22', args.payload_22), ('30', args.payload_30)]:
+    desktop = [('bin/sh', 'STATIC'), ('usr/sbin/fftr', 'DYNAMIC'),
+               ('usr/bin/X11/4Dwm', 'DYNAMIC'), ('usr/lib32/libc.so.1', 'INTERPRETER')]
+    browser = [('var/netscape/mozilla/mozilla-bin', 'DYNAMIC')]
+    for release, path, programs in [('22', args.payload_22, desktop),
+                                    ('30', args.payload_30, desktop),
+                                    ('22', args.mozilla_22, browser),
+                                    ('30', args.mozilla_30, browser)]:
+        if path is None:
+            continue
         with tarfile.open(path) as archive:
-            for name, kind in [('bin/sh', 'STATIC'), ('usr/sbin/fftr', 'DYNAMIC'),
-                               ('usr/bin/X11/4Dwm', 'DYNAMIC'),
-                               ('usr/lib32/libc.so.1', 'INTERPRETER')]:
+            for name, kind in programs:
                 data = archive.extractfile('emul/irix/' + name).read()
                 values = struct.unpack_from('>16sHHIIIIIHHHHHH', data)
                 ident, *header = values
