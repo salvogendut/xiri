@@ -3,11 +3,11 @@
 [Back to README](../README.md) · [Architecture](ARCHITECTURE.md) ·
 [Fork workflow](FORKS.md) · [Module build](../lab/irix-module/README.md)
 
-Audit date: 2026-11-14. **The loadable module works on our fork, but it still
-depends on three changes to the core kernel.** Upstreaming those interfaces,
-the relevant native fixes and the module would make a standard compatible
-NetBSD/MIPS kernel a realistic delivery target. It would not make IRIX MIPS
-binaries run directly on an x86 or ARM NetBSD machine.
+Xiri releases use the kernel and matching boot-loaded module from
+`NetBSD-xiri` on branch `xiri`. Work on running Xiri on an unmodified
+NetBSD/MIPS kernel is deferred. This November 14 source audit records the
+three required core interfaces, native fixes and module changes for anyone
+revisiting that option. [Deployment decision](ROADMAP.md#milestone-4-usable-first-release)
 
 NetBSD's development branch is `trunk`/NetBSD-current. Its GitHub `src`
 repository is a CVS mirror and directs patches to GNATS. We should prepare
@@ -232,7 +232,7 @@ hardware acceptance or upstream approval. Existing lab tests should become
 repeatable upstream tests where possible; native tests must not require
 proprietary IRIX installation media.
 
-The first concrete upstream deliverable should be a small native-fix series
-plus an interface proposal for the three hooks. The desired end state remains
-a boot-loaded IRIX module, separately installed userland services/runtime,
-and an ordinary authenticated X session on a compatible standard NetBSD system.
+If upstream work resumes, start with a small native-fix series and an
+interface proposal for the three hooks. A later acceptance test would run
+the boot-loaded IRIX module, userland services and authenticated X session
+on a compatible upstream NetBSD/MIPS kernel.

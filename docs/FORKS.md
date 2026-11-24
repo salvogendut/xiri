@@ -72,6 +72,11 @@ in `08e53ba7`. [Octane build and qualification](results/2026-11-23-octane-deskto
 
 ## IRIS upstream updates
 
+The November 24 clean-desktop and software-installation cycle fetched
+`upstream/main` at `057ba095` and verified that IRIS `xiri` at `39ef6dff`
+already contains it. The two release checks use the emulator pinned in each
+v4 Indy bundle.
+
 The November 24 disk-space recovery cycle merged upstream `057ba095` into
 IRIS `xiri` at `39ef6dff`. Upstream adds JIT code arena rotation and page
 slot recycling. The merge preserves the fork's optimization switch and its

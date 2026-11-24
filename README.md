@@ -1,8 +1,10 @@
 # Xiri
 
 Xiri runs original IRIX applications and desktop components on NetBSD and
-X.org. The long-term target is a maintained operating system for real SGI
-workstations; the qualified reference uses an R4400 Indy in the IRIS emulator.
+X.org. Both release lines use the kernel and matching boot-loaded IRIX module
+from the `xiri` branch of our NetBSD-xiri fork. The long-term target is a
+maintained operating system for real SGI workstations. The qualified reference
+uses an R4400 Indy in the IRIS emulator.
 Our current manual reference is **IRIX 6.5.22m**. We maintain separate release
 lines for **6.5.22 and 6.5.30**, each with its own profiles, qualification and
 CHD. The separate [6.5.30f donor and import](docs/results/2026-11-14-irix-6.5.30.md)

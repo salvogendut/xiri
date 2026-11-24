@@ -358,10 +358,9 @@ order was updated to prioritize the kernel module at the user’s request:
    for registration, dependencies and lifecycle. Boot loading, busy-unload
    refusal, unload/reload, the desktop and o32/n32 regressions pass on a
    kernel without the built-in personality. The export/relocation audit
-   passes. Stock-kernel delivery still needs upstreaming or replacing
-   `selcommon_kern`, `emul.e_sigmask` and `EMUL_NOCLDSTOP_CONT`. The
-   [upstreaming guide](NETBSD-UPSTREAM.md) records the source audit, required
-   core files, separate native fixes and submission/validation steps. Newport and
+   passes. The fork supplies `selcommon_kern`, `emul.e_sigmask` and
+   `EMUL_NOCLDSTOP_CONT`. The [source audit](NETBSD-UPSTREAM.md) records
+   these dependencies and the work a future upstream port would entail. Newport and
    other native platform drivers remain separate NetBSD components.
 2. **Service/session ownership: qualified.** The maintained
    [`runtime/`](../runtime/README.md) packages boot services with rc.d and
@@ -406,9 +405,9 @@ NetBSD's Linux compatibility module as the reference for module structure,
 registration, dependency handling, load/unload lifecycle and separation from
 the foreign runtime. Xiri's runtime importer and desktop/session packages
 remain separate user-space components. Both built-in and module builds now
-have qualification on our fork. Aim to work with an otherwise standard,
-compatible NetBSD/MIPS kernel by upstreaming or removing required core changes;
-that stock-kernel deployment is not yet demonstrated. See the
+have qualification on our fork. The November 24 deployment decision adopts the
+`xiri` branch of NetBSD-xiri as the release kernel for both IRIX lines.
+Running Xiri on an unmodified NetBSD kernel is deferred. See the
 [module deployment boundary](ARCHITECTURE.md#components-and-deployment).
 
 The user-reported display responsiveness gap is tracked in [Newport performance](NEWPORT.md). The IRIS RGB24 plane correction and Xorg texture correction now pass bounded accelerated rendering checks. The user reports a more responsive desktop; controlled performance measurements and broader graphics coverage remain open.
@@ -635,8 +634,7 @@ Acceptance: an original desktop session executing inside the emulated Indy on Ne
 
 ## Milestone 4 Usable first release
 
-- [x] Package the IRIX personality as a loadable kernel module modeled after `compat_linux`, with a reproducible build/install path and explicit kernel-version/architecture dependencies. [First milestone on our fork](results/2026-11-03-irix-module.md); stock-kernel delivery remains below.
-- [ ] Audit core dependencies, including `selcommon_kern`, the pthread-initialization `emul.e_sigmask` hook and the opt-in `EMUL_NOCLDSTOP_CONT` policy; upstream or remove them to enable deployment on a compatible standard NetBSD kernel.
+- [x] Package the IRIX personality as a loadable kernel module modeled after `compat_linux`, with a reproducible build/install path and explicit kernel-version/architecture dependencies. [Module qualification on NetBSD-xiri](results/2026-11-03-irix-module.md)
 - [x] Qualify module load, dependency resolution, refusal to unload while in use, unload/reload after exit, and the application regressions on a kernel without the built-in IRIX personality. Normal boot and the desktop also pass in the [module cycle](results/2026-11-03-irix-module.md).
 - [x] Deliver a reusable [module-based manual CHD](results/2026-11-03-irix-module-image.md), with matching kernel/module hashes, boot configuration, graphical login/logout and direct-CHD desktop qualification.
 - [ ] Boot the qualified build on the physical Indy and repeat ABI and desktop acceptance there.

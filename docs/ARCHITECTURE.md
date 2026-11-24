@@ -108,8 +108,8 @@ modeled after `compat_linux` is the desired final delivery target**, agreed on
 [release roadmap](ROADMAP.md#milestone-4-usable-first-release). The current
 manual image [boot-loads the personality](results/2026-11-03-xiri-xdm-image.md)
 from `compat_irix_o32.kmod` at normal securelevel. The
-[loadable-module build](../lab/irix-module/README.md) targets the Xiri fork;
-standalone module loading on a stock kernel has not been established.
+[loadable-module build](../lab/irix-module/README.md) pairs the module with a
+kernel built from the `xiri` branch of NetBSD-xiri for both IRIX releases.
 The [NetBSD upstreaming guide](NETBSD-UPSTREAM.md) maps the three required
 core interfaces and the independent native/platform fixes to their exact
 source files, and records the remaining submission and validation work.
@@ -206,8 +206,7 @@ for the corresponding ABI). Follow its module structure, registration,
 dependency handling and load/unload lifecycle, with the IRIX runtime under
 `/emul/irix` and desktop/session services packaged separately. IRIX ABI behavior
 still comes from IRIX reference measurements; the Linux module supplies the
-integration model. The module milestone qualifies these dependencies on the Xiri fork;
-a stock-kernel build remains a separate target.
+integration model. NetBSD-xiri supplies the required core interfaces for deployment.
 
 The intended packaging combines the loadable personality, an importer/runtime
 tree, and session/service packages. Upstreaming or removing required core

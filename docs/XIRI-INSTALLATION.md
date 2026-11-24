@@ -8,11 +8,11 @@ the importer need not depend on a website hosting a preinstalled disk. The
 supported end-to-end Xiri installer described here does not exist yet. Existing
 import, runtime-install and CHD preparation tools provide its components.
 
-The first target is the tested NetBSD/sgimips configuration on IRIS, with our
-matching MIPS64 kernel and `compat_irix_o32` module, native Xorg and accelerated
-Newport. Stock-kernel installation remains dependent on the three interfaces
-described in [NetBSD upstreaming](NETBSD-UPSTREAM.md). Physical hardware is a
-separate qualification target.
+Both Indy releases use stock NetBSD/sgimips userland with a MIPS64 kernel and
+matching `compat_irix_o32` module built from the `xiri` branch of NetBSD-xiri.
+The tested configuration uses native Xorg and accelerated Newport on IRIS.
+The installer saves the stock kernel for native NetBSD recovery.
+[Installation and rollback instructions](NATIVE-PACKAGE.md#switching-between-the-stock-and-xiri-kernels)
 
 ## Our original-media installation
 
