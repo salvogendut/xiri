@@ -419,7 +419,7 @@ catalog command path and start winterm in HOME. The
 [desktop behavior cycle](results/2026-11-02-irix-desktop-behavior.md) addresses
 running-icon feedback, granite and filesystem/home/Dumpster icons before
 xdm integration. Later cycles cover preferences, saved sessions and local
-Dumpster operations; transient launch animation, broader GIMP behavior and xosview statistics
+Dumpster operations; transient launch animation, broader GIMP behavior and the xosview RPC load average
 remain application-specific work. The
 [new manual CHD](results/2026-11-02-desktop-behavior-image.md) packages the
 session/FAM changes and clearly labels xiritest as the desktop user, with
@@ -613,6 +613,9 @@ dependency candidates; a visible window alone does not complete these checks.
 - [x] Test SGI's `-X /dev` on both alternate-root Indy installations and compile the CD 4 game rule with the release's original `fftr`. [Device and filetype checks](results/2026-11-24-indy-inst-followup.md).
 - [x] Install and remove CD 4's xmahjongg directly in each live Indy desktop with SGI `inst`, automatic package artwork, original catalog registration and a normal-user launch. [Dual-release results](results/2026-11-24-live-inst.md).
 - [ ] Extend the restricted base installation to other software, qualify product upgrades and test Software Manager. [Software plan](IRIX-SOFTWARE.md).
+- [x] Qualify xosview CPU and memory meters under load on both Indys. [Measurements](results/2026-11-24-indy-xosview.md).
+- [x] Double-click every Applications icon on both v5 Indy images and locate the missing browser runtime and WebJumper files on the release-matched donors. [Launcher results](results/2026-11-24-indy-applications.md).
+- [ ] Import the release-matched Mozilla runtime and verify opening a local HTML page from both Mozilla launchers. On 6.5.22f also qualify the WebJumper document and mail handlers. Investigate Showcase’s legacy IRIS GL startup separately.
 - [x] Implement IRIX hard links and verify the original timezone compiler creates working aliases on both Indy release lines. [Hard-link and desktop application checks](results/2026-11-24-indy-link-clock-xosview.md).
 - [x] Correct the sgimips Xorg GL context and extension dispatch, and verify native indirect rendering and the original SGI Clock on both Indy release lines. [Results and screenshots](results/2026-11-24-indy-glx.md).
 - [x] Deliver Xorg and GLX through the v5 installer and upgrade media, import Clock fonts from each release’s Overlay 1 and cold-boot both replacement Indy CHDs. [Images, screenshots and rollback checks](results/2026-11-24-indy-v5-clock.md).

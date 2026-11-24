@@ -1,0 +1,277 @@
+{
+  "kernel_module_sha256": "208c49020f3eff2427e302f4a65c455b5fc1f06be74fba864eb6655a629bb4b6",
+  "vendor_xosview_sha256": "b86f6539cbcfeadcc72e7293a79c352e8f2413055b2adf583922097702e84592",
+  "releases": {
+    "6.5.22f": {
+      "abis": [
+        "o32",
+        "n32"
+      ],
+      "native_irix_machine": "Indy R4400",
+      "xiri_machine": "Indy R4400",
+      "native_inventory_bytes": 408,
+      "cpu_user_percent_idle_busy": [
+        2.7,
+        91.9
+      ],
+      "MiB_free_drop_recovery": [
+        24.7,
+        23.8
+      ],
+      "changed_bar_pixels_idle_to_busy_and_busy_to_released": {
+        "CPU": [
+          5120,
+          5246
+        ],
+        "MEM": [
+          816,
+          744
+        ]
+      },
+      "samples": {
+        "idle1": {
+          "idle": 7804,
+          "user": 4471,
+          "kernel": 4621,
+          "wait": 0,
+          "sxbrk": 0,
+          "interrupt": 998,
+          "free_pages": 14051
+        },
+        "idle2": {
+          "idle": 8392,
+          "user": 4489,
+          "kernel": 4662,
+          "wait": 0,
+          "sxbrk": 0,
+          "interrupt": 1010,
+          "free_pages": 14005
+        },
+        "busy1": {
+          "idle": 8393,
+          "user": 4978,
+          "kernel": 4717,
+          "wait": 0,
+          "sxbrk": 0,
+          "interrupt": 1019,
+          "free_pages": 10841
+        },
+        "busy2": {
+          "idle": 8393,
+          "user": 5576,
+          "kernel": 4761,
+          "wait": 0,
+          "sxbrk": 0,
+          "interrupt": 1028,
+          "free_pages": 10805
+        },
+        "released": {
+          "idle": 8849,
+          "user": 8325,
+          "kernel": 4890,
+          "wait": 0,
+          "sxbrk": 0,
+          "interrupt": 1059,
+          "free_pages": 13850
+        }
+      },
+      "native_irix_reference": {
+        "32": [
+          "1 0 0 0 = 1",
+          "2 0 0 0 = 1",
+          "14 0 0 0 = 4096",
+          "9 1 0 0 = 280",
+          "9 8 0 0 = 48",
+          "10 1 280 0 = 0 711 5765 3626 6 0 453 6 0 0 0 0",
+          "15 1 280 0 = 0 711 5765 3626 6 0 454 6 0 0 0 0",
+          "10 8 48 0 = 0 20718 54552 29478 735 32768 91 229 10 5008 0 9610 29375",
+          "10 1 4 0 = 0 711 1431655765",
+          "10 8 52 0 = 0 20718 54552 29478 735 32768 91 229 10 5008 0 9610 29375 1431655765",
+          "10 1 0 0 = 0 1431655765",
+          "15 1 280 99 = -22 1431655765",
+          "15 8 48 0 = -22 1431655765",
+          "15 8 48 99 = -22 1431655765",
+          "10 1 -1 0 = -14 1431655765",
+          "inventory stride 24",
+          "inventory bytes 0 = 0 1431655765",
+          "inventory bytes 12 = 0 1431655765",
+          "inventory bytes 24 = 24 -2008148792",
+          "inventory used 408",
+          "main memory MiB 128"
+        ],
+        "n32": [
+          "1 0 0 0 = 1",
+          "2 0 0 0 = 1",
+          "14 0 0 0 = 4096",
+          "9 1 0 0 = 280",
+          "9 8 0 0 = 48",
+          "10 1 280 0 = 0 711 5737 3609 6 0 445 6 0 0 0 0",
+          "15 1 280 0 = 0 711 5739 3610 6 0 446 6 0 0 0 0",
+          "10 8 48 0 = 0 20718 54552 29478 735 32768 91 229 10 5008 0 9610 29375",
+          "10 1 4 0 = 0 711 1431655765",
+          "10 8 52 0 = 0 20718 54552 29478 735 32768 91 229 10 5008 0 9610 29375 1431655765",
+          "10 1 0 0 = 0 1431655765",
+          "15 1 280 99 = -22 1431655765",
+          "15 8 48 0 = -22 1431655765",
+          "15 8 48 99 = -22 1431655765",
+          "10 1 -1 0 = -14 1431655765",
+          "inventory stride 24",
+          "inventory bytes 0 = 0 1431655765",
+          "inventory bytes 12 = 0 1431655765",
+          "inventory bytes 24 = 24 -2008148792",
+          "inventory used 408",
+          "main memory MiB 128"
+        ]
+      },
+      "image_sha256": "a0b232a777a4206a2cc3c93c99bf3277458105cc5d5945d190f8a0ab6d54710f",
+      "xiri_page_bytes": 8192,
+      "inventory_MiB": 256,
+      "default_window": "400x140",
+      "default_load_error": "rstat: Socket type not supported",
+      "cpu_memory_window": "420x100",
+      "final_cold_boot_halt": [
+        "[  98.3430677] unmounting done",
+        "[  98.4447151] halting..."
+      ],
+      "donor_chd_sha256": "b4fff76ffa0ca00c0a90da1c94a3eb41f5f6ba4cb13c0af258b4acca4ad95c41"
+    },
+    "6.5.30f": {
+      "abis": [
+        "o32",
+        "n32"
+      ],
+      "native_irix_machine": "O2 R5000",
+      "xiri_machine": "Indy R5000",
+      "native_inventory_bytes": 552,
+      "cpu_user_percent_idle_busy": [
+        2.5,
+        93.7
+      ],
+      "MiB_free_drop_recovery": [
+        24.7,
+        23.9
+      ],
+      "changed_bar_pixels_idle_to_busy_and_busy_to_released": {
+        "CPU": [
+          5162,
+          5325
+        ],
+        "MEM": [
+          816,
+          744
+        ]
+      },
+      "samples": {
+        "idle1": {
+          "idle": 7382,
+          "user": 4631,
+          "kernel": 4219,
+          "wait": 0,
+          "sxbrk": 0,
+          "interrupt": 648,
+          "free_pages": 14006
+        },
+        "idle2": {
+          "idle": 7973,
+          "user": 4647,
+          "kernel": 4254,
+          "wait": 0,
+          "sxbrk": 0,
+          "interrupt": 653,
+          "free_pages": 13951
+        },
+        "busy1": {
+          "idle": 7975,
+          "user": 5141,
+          "kernel": 4299,
+          "wait": 0,
+          "sxbrk": 0,
+          "interrupt": 661,
+          "free_pages": 10787
+        },
+        "busy2": {
+          "idle": 7975,
+          "user": 5746,
+          "kernel": 4332,
+          "wait": 0,
+          "sxbrk": 0,
+          "interrupt": 669,
+          "free_pages": 10753
+        },
+        "released": {
+          "idle": 8463,
+          "user": 8517,
+          "kernel": 4426,
+          "wait": 0,
+          "sxbrk": 0,
+          "interrupt": 688,
+          "free_pages": 13808
+        }
+      },
+      "native_irix_reference": {
+        "32": [
+          "1 0 0 0 = 1",
+          "2 0 0 0 = 1",
+          "14 0 0 0 = 4096",
+          "9 1 0 0 = 280",
+          "9 8 0 0 = 48",
+          "10 1 280 0 = 0 1390 1383 2399 101 0 55 101 0 0 0 0",
+          "15 1 280 0 = 0 1390 1385 2401 101 0 55 101 0 0 0 0",
+          "10 8 48 0 = 0 46374 80928 58955 839 65536 70 318 8 9299 0 44637 58822",
+          "10 1 4 0 = 0 1390 1431655765",
+          "10 8 52 0 = 0 46374 80928 58955 839 65536 70 318 8 9299 0 44637 58822 1431655765",
+          "10 1 0 0 = 0 1431655765",
+          "15 1 280 99 = -22 1431655765",
+          "15 8 48 0 = -22 1431655765",
+          "15 8 48 99 = -22 1431655765",
+          "10 1 -1 0 = -14 1431655765",
+          "inventory stride 24",
+          "inventory bytes 0 = 0 1431655765",
+          "inventory bytes 12 = 0 1431655765",
+          "inventory bytes 24 = 24 -2140118128",
+          "inventory used 552",
+          "main memory MiB 256"
+        ],
+        "n32": [
+          "1 0 0 0 = 1",
+          "2 0 0 0 = 1",
+          "14 0 0 0 = 4096",
+          "9 1 0 0 = 280",
+          "9 8 0 0 = 48",
+          "10 1 280 0 = 0 1390 1363 2378 100 0 54 100 0 0 0 0",
+          "15 1 280 0 = 0 1390 1363 2380 100 0 54 100 0 0 0 0",
+          "10 8 48 0 = 0 46374 80928 58955 839 65536 70 318 8 9299 0 44637 58822",
+          "10 1 4 0 = 0 1390 1431655765",
+          "10 8 52 0 = 0 46374 80928 58955 839 65536 70 318 8 9299 0 44637 58822 1431655765",
+          "10 1 0 0 = 0 1431655765",
+          "15 1 280 99 = -22 1431655765",
+          "15 8 48 0 = -22 1431655765",
+          "15 8 48 99 = -22 1431655765",
+          "10 1 -1 0 = -14 1431655765",
+          "inventory stride 24",
+          "inventory bytes 0 = 0 1431655765",
+          "inventory bytes 12 = 0 1431655765",
+          "inventory bytes 24 = 24 -2140118128",
+          "inventory used 552",
+          "main memory MiB 256"
+        ]
+      },
+      "image_sha256": "45255c741c7fbfce754f63dab478f501fad4070c71b9071f559dc43ec1395e76",
+      "xiri_page_bytes": 8192,
+      "inventory_MiB": 256,
+      "default_window": "400x140",
+      "default_load_error": "rstat: Socket type not supported",
+      "cpu_memory_window": "420x100",
+      "final_cold_boot_halt": [
+        "[  99.6475995] unmounting done",
+        "[  99.7073273] halting..."
+      ],
+      "donor_chd_sha256": "339f74457dfbb06813681ab5db2ccfdd29d394e8a02dfcdcd6c6ac7c22a836db"
+    }
+  },
+  "module_commit": "a38466f4ead2",
+  "probe_sha256": {
+    "32": "70f75b411cb9c4880bf3ac1a3fd2e42f3a3a237311ab41160884579d5c05e449",
+    "n32": "754e2f88813f8019c263d97a20e13e58c5cd303e081eb7d6dda3c54a5f0a64dc"
+  }
+}

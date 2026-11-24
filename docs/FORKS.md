@@ -72,6 +72,11 @@ in `08e53ba7`. [Octane build and qualification](results/2026-11-23-octane-deskto
 
 ## IRIS upstream updates
 
+The November 24 xosview and Applications checks fetched IRIS upstream
+`057ba095`. IRIS `xiri` at `39ef6dff` already contained it. The
+[guest runs](results/2026-11-24-indy-xosview.md) used the pinned v5 Indy
+emulator and the original-media donors for the two IRIX releases.
+
 The November 24 clean-desktop, software-installation, installer follow-up, Xorg rendering, Indy v5 packaging and live Freeware installation cycles fetched
 `upstream/main` at `057ba095` and verified that IRIS `xiri` at `39ef6dff`
 already contains it. The two release checks use the emulator pinned in each

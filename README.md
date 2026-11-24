@@ -337,8 +337,11 @@ logout/login and reboot for two users; see the
 [desktop-preferences result](docs/results/2026-11-06-desktop-preferences.md). The
 [GIMP checkpoint](docs/results/2026-11-03-irix-gimp.md) covers basic editing
 and XCF/PNG round trips; large images and the wider
-plug-in collection remain open. xosview
-still needs IRIX statistics interfaces.
+plug-in collection remain open. The SGI Freeware xosview CPU and memory
+meters run on both Indys with the updated compatibility module.
+[Meter measurements and screenshots](docs/results/2026-11-24-indy-xosview.md).
+The [Applications tab survey](docs/results/2026-11-24-indy-applications.md)
+covers every visible launcher on the two original-media Indy desktops.
 General nested pipelines and layered-terminal revoke remain open; the
 qualified job-control subset and its explicit wait-policy differences are
 recorded in the [cycle report](docs/results/2026-11-05-irix-job-control.md).

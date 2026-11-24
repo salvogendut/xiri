@@ -1,5 +1,10 @@
 # Icon Catalog application checklist
 
+For the current original-media Indy desktops, see the [Applications tab
+test on both releases](results/2026-11-24-indy-applications.md). It covers
+all eight visible 6.5.22f entries and all four 6.5.30f entries.
+
+
 Updated 2026-11-14 after the [desktop-controls cycle](results/2026-11-14-desktop-controls.md),
 the [startup survey](results/2026-11-03-irix-catalog.md)
 and the [GNOME](results/2026-11-04-irix-gnome.md),
@@ -120,7 +125,7 @@ retained; untested behavior is not promoted to a pass.
 | `xearth` | `/usr/freeware/bin/xearth` | **Exits 126 without a window.** xiri-catalog: /usr/freeware/bin/xearth: cannot execute |
 | `xfig` | `/usr/freeware/bin/xfig` | **Main window opens.** Xfig and its error window open; CompKeyDB is missing, disabling multi-key sequences. Drawing, save and normal exit remain untested. |
 | `xmms` | `/usr/freeware/bin/xmms` | **Launch fails.** Exits 0 without a window after its control socket fails with Address family not supported by protocol family. |
-| `xosview` | `/usr/freeware/bin/xosview` | **Launch fails.** Its CPU meter needs the IRIX system activity interface, starting with `sysmp(MP_SASZ, MPSA_SINFO)`. The Freeware binary exits 0 without a window on both Indy releases. [Diagnosis](results/2026-11-24-indy-link-clock-xosview.md) |
+| `xosview` | `/usr/freeware/bin/xosview` | **CPU and memory meters verified.** The original Freeware binary opened on both updated Indys and its bars responded to a controlled workload. The default load-average meter reports an RPC error. The clean v5 images require the updated module and the Freeware binary. [Measurements and screenshots](results/2026-11-24-indy-xosview.md) |
 | `xpat2` | `/usr/freeware/bin/xpat2` | **Exits 1 without a window.** FAILED to open keyboard file "keys" xpat2: WARNING, cannot load configuration file /usr/freeware/lib/xpat/default/Cards.conf xpat2: cannot read suits |
 | `xscreensaver-demo` | `/usr/freeware/bin/xscreensaver-demo` | **Window observed.** XScreenSaver 4.01, 24-Feb-2002, XScreenSaver. Use and normal exit remain untested. |
 | `zsh` | `/usr/freeware/bin/zsh` | **Exits 0 without a new window.** |

@@ -1,5 +1,10 @@
 # IRIX application import and installation
 
+The [Applications tab survey](results/2026-11-24-indy-applications.md)
+lists the working editors and Reader, the missing Netscape and Mozilla
+runtime files, and the graphics failure in Showcase on the current Indy pair.
+
+
 The current reusable baseline and manual IRIS procedure are in
 [XIRI-IMAGE.md](XIRI-IMAGE.md). [IRIX-IMPORT.md](IRIX-IMPORT.md) records exact
 source/destination mappings, permission adjustments and the SGI catalog
@@ -66,7 +71,9 @@ launches of xmahjongg from its existing Freeware entry. The later
 its opened-state feedback; broader application behavior remains unqualified. The
 [application follow-up](results/2026-11-02-irix-elfmap-high.md)
 records the earlier boundary, the high-address mapping fix for GIMP, its subsequent
-signal registration failure, and xosview's unsupported statistics queries.
+signal registration failure, and xosview's original statistics error. The
+[updated module](results/2026-11-24-indy-xosview.md) now supports its CPU
+and memory meters on both releases.
 No further library copying was needed for GIMP's observed loader failure.
 The [winterm cycle](results/2026-11-03-winterm-reliability.md) now adds SIGCHLD
 NOCLDSTOP registration, terminal resize and normal shell exit. The subsequent
