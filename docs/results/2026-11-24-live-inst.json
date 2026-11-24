@@ -1,0 +1,198 @@
+{
+  "netbsd_revision": "df8a46a636f0d95bf73b9b45a9312bcb112ec105",
+  "iris_revision": "39ef6dff7d86f4c7bb0ccd2c936b916e147c0fff",
+  "iris_upstream": "057ba0952a6b6c992cd23e3233ac202891a5fc81",
+  "host_tests": 96,
+  "kernel_sha256": "3c49b4de7c8809f84c68027be2f55c0fe540b5991a82c399be7786a38310e5a5",
+  "boot_kernel_sha256": "4dbb5ec5a848f96944de9c35df71458db6af284cde685cc95f582bed71ee2520",
+  "module_sha256": "ad182dbb2bb0e36eca636dc2f2989ed1bc79eae0c313bb5fbb61a9b60d9830b8",
+  "game_artwork_sha256": "06cc29d04e6f59b675100a1956084858ec3a897493aa7ed3981a25f29232b86a",
+  "releases": {
+    "6.5.22f": {
+      "cpu": "R4400",
+      "manual_bundle": {
+        "release": "6.5.22f",
+        "parent_v5_sha256": "2897c94b3e33c19d1cb95e8ff305dd209ba7ad7bbfd5a0735683e5577a5a6ce1",
+        "chd_sha256": "a0b232a777a4206a2cc3c93c99bf3277458105cc5d5945d190f8a0ab6d54710f",
+        "iso_sha256": "b7cb0262fd2b6d2b2c777e2b04b9d8a53e97c9ec85ab721e8074903dfbc65edb",
+        "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+        "nvram_sha256": "c864b965f082ac9b0adca243a20c7d2d321fe8c88722a2eb3980a999d486850d",
+        "cold_greeter": "dimensions:    1280x1024 pixels (339x271 millimeters)\n     0x40000b \"xlogin\": (\"xlogin\" \"Xlogin\")  690x304+295+240  +295+240\n6.5.22f 0021ca29ec292b066ae00d8b28adfa9ab48f3474950b61c5c0352de35813bf58 85191d9fb7fa2c16a11c58a2889fb891200d87cf43691a797446cba3c35aeac3",
+        "cold_game": "SESSION user=xiritest uid=1234 groups=1234 home=/usr/people/xiritest cwd=/usr/people/xiritest display=127.0.0.1:0 authority=default\n           0x1800004 \"xmahjongg\": (\"xmahjongg\" \"XMahjongg\")  1006x614+0+0  +32+32\n1234 2963 /usr/lib/desktop/iconcatalog/pages/C/Freeware/xmahjongg",
+        "cold_halt": true,
+        "stopped": true
+      },
+      "fresh_transaction": {
+        "install": "No conflicts",
+        "remove": "No conflicts",
+        "matching_restored_table": true,
+        "halts": 2
+      },
+      "history": [
+        "fw_xmahjongg",
+        "fw_xmahjongg.sw",
+        "fw_xmahjongg.sw.xmahjongg"
+      ],
+      "screen": "0x1800004 \"xmahjongg\": (\"xmahjongg\" \"XMahjongg\")  1006x614+0+0  +32+32",
+      "process": "1234 1824 /usr/lib/desktop/iconcatalog/pages/C/Freeware/xmahjongg",
+      "game_sha256": "35253008a6d31ad6c4589c622146bcd0ae781488bc5d7872a4114b888e1edb59",
+      "relnotes_index_sha256": "bca40c4e3e55791c4a5f6fa6ad80e20e04f6367fcab77cdd00e225b38389b5e0",
+      "original_and_restored_table": "c4d7d3a172fb372b1c307b95b2e30d2eb62045c40d517b9f866eac7de29c22db",
+      "installed_and_reinstalled_table": "6381dd289e77a64f87846226bbff3989e97c89946d06e09d6c75f6f7ccf4175d",
+      "filetype_lookups": [
+        [
+          "TYPE",
+          "/usr/freeware/bin/xmahjongg",
+          "XMahjonggExecutable"
+        ],
+        [
+          "FDTYPE",
+          "/usr/freeware/bin/xmahjongg",
+          "XMahjonggExecutable"
+        ],
+        [
+          "TYPE",
+          "/usr/lib/desktop/iconcatalog/pages/C/Freeware/xmahjongg",
+          "XMahjonggExecutable"
+        ],
+        [
+          "FDTYPE",
+          "/usr/lib/desktop/iconcatalog/pages/C/Freeware/xmahjongg",
+          "XMahjonggExecutable"
+        ],
+        [
+          "TYPE",
+          "/usr/bin/X11/xclock",
+          "XClock"
+        ],
+        [
+          "FDTYPE",
+          "/usr/bin/X11/xclock",
+          "XClock"
+        ]
+      ],
+      "removed_named_type": "NULL",
+      "removed_xclock_control": [
+        [
+          "TYPE",
+          "/usr/bin/X11/xclock",
+          "XClock"
+        ],
+        [
+          "FDTYPE",
+          "/usr/bin/X11/xclock",
+          "XClock"
+        ]
+      ],
+      "checked_unchanged_files": {
+        "/etc/master.passwd": "0ca6cd8965e096b27ea97efcb81283688dd93087af60dbc54455fc2eb489ea03",
+        "/etc/group": "92ebfe8f5c1463deafc6b351153328f9ca5c1dd9076ecdd801959fc2d99cfb76",
+        "/emul/irix/etc/passwd": "aa3179318a1db8f18976ffcc0a1a0fb4daf1ac3474304972c3c1cd8b2752829d",
+        "/emul/irix/etc/group": "92ebfe8f5c1463deafc6b351153328f9ca5c1dd9076ecdd801959fc2d99cfb76",
+        "/usr/local/share/xiri/xorg.conf": "39bec2cb8e6c8c56ea2a1535bef28eccadf6204393fce17fd9c98befcf621a61"
+      },
+      "native_devices": [
+        "/dev/null 801932 20:2",
+        "/dev/zero 801934 20:12"
+      ],
+      "screenshot_sha256": {
+        "2026-11-24-live-inst-6.5.22f-closed.png": "b40eef19a9541c79835567e71169808cba2860a8644cd1c680f14da6e4626095",
+        "2026-11-24-live-inst-6.5.22f-open.png": "ccbcb98ae26d9597f60ca6510e141a56796facb4ea60f71306ff78aac39fa09f"
+      },
+      "site_makefile_refusal": true
+    },
+    "6.5.30f": {
+      "cpu": "R5000",
+      "manual_bundle": {
+        "release": "6.5.30f",
+        "parent_v5_sha256": "527a60fefc68ad9fab6ff2eafb421f6aae8c330df581120fb958d55505b417a0",
+        "chd_sha256": "45255c741c7fbfce754f63dab478f501fad4070c71b9071f559dc43ec1395e76",
+        "iso_sha256": "80f4bfbe30d968d991bbabfe3c0eb8e17584deb067f7deccd71a374b9d888413",
+        "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+        "nvram_sha256": "322ec195f7b5eb8474d6e84bc0de607eca2d146697bad3dd7a4898a879816e7f",
+        "cold_greeter": "dimensions:    1280x1024 pixels (339x271 millimeters)\n     0x40000b \"xlogin\": (\"xlogin\" \"Xlogin\")  690x304+295+240  +295+240\n6.5.30f 0021ca29ec292b066ae00d8b28adfa9ab48f3474950b61c5c0352de35813bf58 b290452e839bd7e7fb073735e382c517f672e964074a03cc1390dd34c2286288",
+        "cold_game": "SESSION user=xiritest uid=1234 groups=1234 home=/usr/people/xiritest cwd=/usr/people/xiritest display=127.0.0.1:0 authority=default\n           0x1800004 \"xmahjongg\": (\"xmahjongg\" \"XMahjongg\")  1006x614+0+0  +32+32\n1234  690 /usr/lib/desktop/iconcatalog/pages/C/Freeware/xmahjongg",
+        "cold_halt": true,
+        "stopped": true
+      },
+      "fresh_transaction": {
+        "install": "No conflicts",
+        "remove": "No conflicts",
+        "matching_restored_table": true,
+        "halts": 2
+      },
+      "history": [
+        "fw_xmahjongg",
+        "fw_xmahjongg.sw",
+        "fw_xmahjongg.sw.xmahjongg"
+      ],
+      "screen": "0x1800004 \"xmahjongg\": (\"xmahjongg\" \"XMahjongg\")  1006x614+0+0  +32+32",
+      "process": "1234 1886 /usr/lib/desktop/iconcatalog/pages/C/Freeware/xmahjongg",
+      "game_sha256": "35253008a6d31ad6c4589c622146bcd0ae781488bc5d7872a4114b888e1edb59",
+      "relnotes_index_sha256": "bca40c4e3e55791c4a5f6fa6ad80e20e04f6367fcab77cdd00e225b38389b5e0",
+      "original_and_restored_table": "0985392f9d5f3efe64ed6fa8e2c729f2cb26f5a6e7df51f6cd2c9d834fe76897",
+      "installed_and_reinstalled_table": "310c6bb2e460421ca459124d83943d9a6f2388e93cc971fcd434e9c632e9ab98",
+      "filetype_lookups": [
+        [
+          "TYPE",
+          "/usr/freeware/bin/xmahjongg",
+          "XMahjonggExecutable"
+        ],
+        [
+          "FDTYPE",
+          "/usr/freeware/bin/xmahjongg",
+          "XMahjonggExecutable"
+        ],
+        [
+          "TYPE",
+          "/usr/lib/desktop/iconcatalog/pages/C/Freeware/xmahjongg",
+          "XMahjonggExecutable"
+        ],
+        [
+          "FDTYPE",
+          "/usr/lib/desktop/iconcatalog/pages/C/Freeware/xmahjongg",
+          "XMahjonggExecutable"
+        ],
+        [
+          "TYPE",
+          "/usr/bin/X11/xclock",
+          "XClock"
+        ],
+        [
+          "FDTYPE",
+          "/usr/bin/X11/xclock",
+          "XClock"
+        ]
+      ],
+      "removed_named_type": "NULL",
+      "removed_xclock_control": [
+        [
+          "TYPE",
+          "/usr/bin/X11/xclock",
+          "XClock"
+        ],
+        [
+          "FDTYPE",
+          "/usr/bin/X11/xclock",
+          "XClock"
+        ]
+      ],
+      "checked_unchanged_files": {
+        "/etc/master.passwd": "1bf780db8f744fa1f48d15de97b44bfd079d73b26cfa036b8d83f313da926f92",
+        "/etc/group": "92ebfe8f5c1463deafc6b351153328f9ca5c1dd9076ecdd801959fc2d99cfb76",
+        "/emul/irix/etc/passwd": "aa3179318a1db8f18976ffcc0a1a0fb4daf1ac3474304972c3c1cd8b2752829d",
+        "/emul/irix/etc/group": "92ebfe8f5c1463deafc6b351153328f9ca5c1dd9076ecdd801959fc2d99cfb76",
+        "/usr/local/share/xiri/xorg.conf": "39bec2cb8e6c8c56ea2a1535bef28eccadf6204393fce17fd9c98befcf621a61"
+      },
+      "native_devices": [
+        "/dev/null 801932 20:2",
+        "/dev/zero 801934 20:12"
+      ],
+      "screenshot_sha256": {
+        "2026-11-24-live-inst-6.5.30f-closed.png": "cbbb3fbe8bd8360c348049ba281eb7284eec636bd095b1ff736d81009e2d492c",
+        "2026-11-24-live-inst-6.5.30f-open.png": "b7cd2883844f74db7fc1c7e742203bcd15033c0eeacc7e91007e39c93406478f"
+      },
+      "site_makefile_refusal": true
+    }
+  }
+}

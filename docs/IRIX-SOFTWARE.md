@@ -6,6 +6,15 @@ source/destination mappings, permission adjustments and the SGI catalog
 reference check. Historical installer observations below retain their
 original scope; the installed-image payload is now a separate working path.
 
+The live Indy installer supports the May 2004 Freeware CD 4 xmahjongg
+subsystem on both 6.5.22f and 6.5.30f. SGI `inst` owns the installed files,
+history and Freeware link. Its artwork hook runs SGI make and fftr, and the
+NetBSD parent preserves the desktop's existing type database across install
+and removal. The release-specific procedure starts with a private v5 image
+and the installer-capable kernel.
+[Guest commands](../lab/irix-installer/README.md#install-cd-4s-xmahjongg-into-the-live-indy-desktop)
+· [Results and desktop captures](results/2026-11-24-live-inst.md)
+
 The immediate path is to copy already installed applications, their resources
 and existing Icon Catalog registration from the user's IRIX image. The
 [installed-image inventory](results/2026-11-01-irix-installed-desktop.md) finds
@@ -86,10 +95,11 @@ and the compiled game artwork are covered in the
 [follow-up](results/2026-11-24-indy-inst-followup.md). The original
 `zic` now creates timezone hard links on both Indys with the updated
 module. [Timezone and application checks](results/2026-11-24-indy-link-clock-xosview.md).
-The
+The earlier
 [dual-release installer results](results/2026-11-24-indy-inst.md) and
 [reproduction procedure](../lab/irix-installer/README.md#repeat-the-clean-indy-installer-check)
-describe the current boundary. Software Manager and upgrades remain later work.
+describe the alternate-root experiments. The live CD 4 workflow is documented
+at the top of this page. Software Manager and upgrades remain later work.
 
 The [shared-mapping checkpoint](results/2026-11-01-irix-mmap-shared.md) clears
 the initial installer crash. The [bounded sproc adapter](results/2026-11-01-irix-sproc.md)
@@ -160,9 +170,9 @@ lifecycle remains a separate acceptance sequence:
 The installed `inst(1M)` manual documents `-r` for an alternate installation
 root, `-n` for dry runs and `-c` for command files. Even a dry run may write
 configuration under the target's `var/inst`, so initial experiments use
-disposable guests. The initial candidate is `-r /emul/irix`. Its path handling,
-hook `chroot`, shell execution, helper programs and database operations all
-need measurement before this is a supported installation command.
+disposable guests. The live xmahjongg workflow uses `-r /emul/irix` with
+release-matched prerequisites and a scoped artwork rule. Other products
+need their own dependency and hook checks.
 
 Original `inst`, `swmgr`, `SoftwareManager` and `iconcatalogedit` have been
 inventoried with a complete static n32 library closure. GUI resources, delayed

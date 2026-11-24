@@ -11,6 +11,60 @@ their 37-path static n32 closure and the original shell templates/manuals.
 original generic `/var/inst/machfile`. Extracted bytes remain private in
 `.work/irix-freeware/installed` and `.work/irix-freeware/package`.
 
+## Install CD 4's xmahjongg into the live Indy desktop
+
+Use a private copy of the v5 CHD for the matching vendor release. Boot the
+Indy kernel and matching module from NetBSD `xiri` revision `df8a46a636f`.
+The packaged v5 kernel predates the installer fixes. Build the private CD
+from the matching original-media donor, Foundation, overlays and the Freeware
+distribution. Run this from the Xiri checkout.
+
+```sh
+release=6.5.22f  # use 6.5.30f for the R5000 image
+mkdir -p .work/inst-media
+python3 lab/irix-installer/prepare-media.py --release "$release" \
+  --donor ".work/donors/irix-$release-original-media/irix-donor.chd" \
+  --desktop-manifest ".work/imports/irix-$release-v1/manifest.json" \
+  --dist .work/irix-freeware/package/cds/cd-4/dist \
+  --base-media-root "$HOME/Downloads/IRIX media" \
+  --instigator ../prismatic/target/release/instigator \
+  --output ".work/inst-media/$release.iso"
+```
+
+Attach the CD at SCSI ID 4. At the xdm greeter, use the NetBSD root console
+for package maintenance. On a fresh target the following installs the base
+prerequisites and then the game.
+
+```sh
+mkdir -p /cdrom
+mount -r -t cd9660 /dev/cd0a /cdrom
+sh /cdrom/prepare-live-base.sh /cdrom
+sh /cdrom/xmahjongg.sh install /cdrom
+```
+
+The first command script uses SGI's `-Y` file selection across eight
+prerequisite subsystems. Their entries in `versions` describe a partial
+installation. The setup installs SGI make and nawk, supplies NetBSD device
+numbers for the chroot and sets executable modes on the three libraries
+mapped by the catalog helper. The game transaction runs in `/emul/irix`.
+SGI creates the history and Freeware symlink there. Log in as `xiritest`,
+open **Icon Catalog → Freeware** and double-click **xmahjongg**.
+
+Close the game and log out before removal. At the root console run
+`sh /cdrom/xmahjongg.sh remove /cdrom`. The Freeware release notes have
+their own subsystem and stay installed. The two transaction logs and current
+game history are under `/emul/irix/var/inst/xiri-xmahjongg/`.
+
+During installation the package's own exit command invokes SGI make in the
+filetype directory. A temporary lowercase `makefile` compiles the new artwork
+using SGI fftr. The installer merges it ahead of the saved desktop table
+and publishes the result by rename. Removal restores that saved table. An
+existing lowercase site makefile or an independently changed desktop table
+requires review. The Freeware release-note script uses NetBSD utilities and
+IRIX shell redirections on the same scratch filenames. The installer shares
+native `/tmp` with the chroot for the transaction and checks that the mount
+point is empty first.
+
 ## Repeat the clean Indy installer check
 
 To check the timezone exit command independently, copy `usr/bin/zic` from

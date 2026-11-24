@@ -304,9 +304,10 @@ They start from stock NetBSD 11.0 userland, boot the 11.99.11 modular kernel,
 and run accelerated 4Dwm or native ctwm according to the user's xdm session.
 The [everyday desktop checks](docs/results/2026-11-24-indy-v4-use.md) cover Catalog launches,
 File Manager moves and per-user session restoration after a cold boot.
-The [SGI installer follow-up](docs/results/2026-11-24-indy-inst-followup.md)
-records how both Indy releases preserve NetBSD devices and compile the
-original CD 4 xmahjongg artwork.
+On a private v5 Indy with the installer-capable kernel, SGI's original
+`inst` can register CD 4's xmahjongg in the live Freeware page. The
+package's open and closed artwork is compiled from the CD.
+[Installer procedure](lab/irix-installer/README.md#install-cd-4s-xmahjongg-into-the-live-indy-desktop)
 Both vendor timezone compilers can now create hard-linked aliases with the
 updated module. The same two Indys were used to trace SGI Clock and
 Freeware xosview. [Hard-link and application results](docs/results/2026-11-24-indy-link-clock-xosview.md)
