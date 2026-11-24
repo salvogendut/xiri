@@ -60,6 +60,8 @@ def main():
         media = work / 'cd'
         dist = media / 'dist'
         dist.mkdir(parents=True)
+        shutil.copyfile(ROOT / 'lab/irix-installer-helpers/setup-native-paths.sh',
+                        media / 'setup-native-paths.sh')
         if args.base_media_root:
             stage_base_media(media, args.release, args.base_media_root, args.instigator)
         for path, row in inputs.items():

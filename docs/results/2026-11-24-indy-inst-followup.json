@@ -1,0 +1,79 @@
+{
+  "netbsd_revision": "6e9a69e852f6d5576d76743ee4556333eca54937",
+  "kernel_sha256": "507397e674682fc2a9400e1836fc3bd3ec9d8c9fbad402b7b4ea91e42c4bb36c",
+  "module_sha256": "2664a87a32ec60d65756ca2af9517668806159a79c89c946665941888a0dc4d1",
+  "pty_setup_sha256": "e9f471846fe7218fe54ac61e177d7f84b4a8f66d7ab2b7bdc06cd39ef43a435b",
+  "host_tests_passed": 94,
+  "releases": {
+    "6.5.22f": {
+      "cpu": "R4400",
+      "v4_chd_sha256": "6911f66e4093c52b675d7254a15baff291d70468b07cc20fa734a8798f3407dd",
+      "overlay_makedev_sha256": "a03c40e06d71baacba48a5a7d0db96e452b2d9c5df0e01da0093a68be79407e8",
+      "identical_device_stat_before_and_after": [
+        "/dev/null 20,2 801932",
+        "/dev/zero 20,12 801934",
+        "/var/tmp/xiri-pkg/dev/null 20,2 804486",
+        "/var/tmp/xiri-pkg/dev/zero 20,12 804487"
+      ],
+      "catalog_lookup_before": "GenericExecutable",
+      "catalog_lookup_compiled": "XMahjonggExecutable",
+      "catalog_lookup_restored": "GenericExecutable",
+      "xclock_control": "XClock",
+      "filetype_sha256": {
+        "baseline.otr": "c4d7d3a172fb372b1c307b95b2e30d2eb62045c40d517b9f866eac7de29c22db",
+        "game.otr": "06cc29d04e6f59b675100a1956084858ec3a897493aa7ed3981a25f29232b86a",
+        "/emul/irix/usr/lib/filetype/desktop.otr": "6381dd289e77a64f87846226bbff3989e97c89946d06e09d6c75f6f7ccf4175d"
+      },
+      "catalog_process": "1234 4586 /usr/lib/desktop/iconcatalog/pages/C/Freeware/xmahjongg",
+      "timezone_link_failure": {
+        "returncode": 1,
+        "syscall": 1009,
+        "pc": "0xfabf068",
+        "irix_errno": 89,
+        "primary_created": true,
+        "alias_created": false
+      },
+      "cold_boot_device_service": true,
+      "clean_halt": true,
+      "screenshots_sha256": {
+        "2026-11-24-indy-6.5.22f-catalog-closed.png": "2eac976c473f4a64ecd78459686f182b9dc004eb55f45f67b58fbd53fad0d052",
+        "2026-11-24-indy-6.5.22f-catalog-open.png": "3061f4a3a1213b4bbeb65dc8eba91816bfa1ced1df1cb2377adb47d00994c0cf"
+      }
+    },
+    "6.5.30f": {
+      "cpu": "R5000",
+      "v4_chd_sha256": "aa31ca53b1dbb0e6fc5ec7b63973e0a55655cb599df2c3eca92bfc5abcc28082",
+      "overlay_makedev_sha256": "4abc9d9a235a44233c482bdb87a6d72f4611ab9127307f8f68651dea5a0ccd69",
+      "identical_device_stat_before_and_after": [
+        "/dev/null 20,2 801932",
+        "/dev/zero 20,12 801934",
+        "/var/tmp/xiri-pkg/dev/null 20,2 779903",
+        "/var/tmp/xiri-pkg/dev/zero 20,12 779904"
+      ],
+      "catalog_lookup_before": "GenericExecutable",
+      "catalog_lookup_compiled": "XMahjonggExecutable",
+      "catalog_lookup_restored": "GenericExecutable",
+      "xclock_control": "XClock",
+      "filetype_sha256": {
+        "baseline.otr": "0985392f9d5f3efe64ed6fa8e2c729f2cb26f5a6e7df51f6cd2c9d834fe76897",
+        "game.otr": "06cc29d04e6f59b675100a1956084858ec3a897493aa7ed3981a25f29232b86a",
+        "/emul/irix/usr/lib/filetype/desktop.otr": "310c6bb2e460421ca459124d83943d9a6f2388e93cc971fcd434e9c632e9ab98"
+      },
+      "catalog_process": "1234 3965 /usr/lib/desktop/iconcatalog/pages/C/Freeware/xmahjongg",
+      "timezone_link_failure": {
+        "returncode": 1,
+        "syscall": 1009,
+        "pc": "0xfab2754",
+        "irix_errno": 89,
+        "primary_created": true,
+        "alias_created": false
+      },
+      "cold_boot_device_service": true,
+      "clean_halt": true,
+      "screenshots_sha256": {
+        "2026-11-24-indy-6.5.30f-catalog-closed.png": "d50e544ddca9022ae89c13ad57007e1ce1d27b82a88a2c21ef0580ed5cce808d",
+        "2026-11-24-indy-6.5.30f-catalog-open.png": "ad5397f83923ebe75b6de7a507dc211cd59a1a1ecfc1e4b258cd0c8ac6239730"
+      }
+    }
+  }
+}

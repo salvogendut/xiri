@@ -33,6 +33,15 @@ digests against the desktop manifest, and records the selected files in
 original `/sbin/stat` used during bootstrap. The input history database
 comes from the target itself.
 
+The clean v4 NetBSD images keep `mkdir`, `ls`, `mv` and `ln` in `/bin`.
+SGI's bootstrap resets PATH and searches `/usr/bin` for them. The media
+builder includes the [native utility setup](../irix-installer-helpers/setup-native-paths.sh).
+It preserves existing paths and reports conflicts.
+If you keep the native `/sbin/stat` alias across boots on a private v4
+image, also install the [updated PTY setup](../../runtime/libexec/setup-pty.sh)
+as `/usr/local/libexec/xiri/setup-pty.sh`, mode 0555. The v4 boot
+service can otherwise select SGI's stat and leave xdm login without PTYs.
+
 Boot a **disposable** Indy target with the matching supplementary ISO at
 SCSI ID 4. As root, mount it, unpack the supplement and ask the original
 installer to select the software and report conflicts. Clearing selections
@@ -42,6 +51,10 @@ before quitting produces an unattended return to the shell.
 mkdir -p /cdrom
 mount -r -t cd9660 /dev/cd0a /cdrom
 (cd / && pax -rzpe -f /cdrom/installer.tgz)
+sh /cdrom/setup-native-paths.sh
+if test ! -e /sbin/stat && test ! -L /sbin/stat; then
+    ln -s /emul/irix/sbin/stat /sbin/stat
+fi
 export HOME=/ USER=root LOGNAME=root SHELL=/bin/sh TERM=vt100 LANG=C TZ=UTC
 export PATH=/usr/local/bin:/usr/X11R7/bin:/bin:/sbin:/usr/bin:/usr/sbin
 printf '%s\n' 'keep *' 'install fw_xmahjongg.sw.xmahjongg fw_common.sw.index' \
@@ -122,7 +135,10 @@ copy `lib`, `lib32`, `sbin`, `usr/lib32`, `usr/lib/desktop`,
 to the same paths in the target. Preserve modes and links. The only initial
 file under `var/inst` is `machfile`. Inside the target create `dev/null`
 and `dev/zero` with the major/minor numbers of those devices on the
-running NetBSD guest. This lets the SGI loader run inside `chroot`.
+running NetBSD guest. Use `/usr/bin/stat -f %Hr /dev/null` for the major
+and `/usr/bin/stat -f %Lr /dev/null` for the minor, then repeat for zero.
+The absolute name selects NetBSD's format syntax even when SGI's
+`/sbin/stat` is on PATH. This lets the SGI loader run inside `chroot`.
 
 Insert `go` after `conflicts` in the command file above. After the base
 device hook stops, verify the game with `versions -r "$target" fw_xmahjongg`.
@@ -140,6 +156,51 @@ Catalog, and double-click **xmahjongg**. The release report records the
 observed window, user, and remaining OS installation issue. For removal,
 close the game and use CD 4 as the source with `remove fw_xmahjongg.sw.xmahjongg`,
 `conflicts` and `go` in the same alternate root.
+
+### Test the device exclusion and game artwork
+
+On a fresh private target, use the same ten selections with `go`. Add
+`-X /dev` to the original `inst -M -r "$target"` invocation. Record
+`/usr/bin/stat -f '%N %Hr,%Lr %i' "$target/dev/null" "$target/dev/zero"`
+and the same values for the native nodes before and after. Check the
+full installer output for exit-command errors as well as the installed
+subsystem rows from `versions -r "$target" eoe.sw.base fw_xmahjongg`.
+
+The base install writes three of the catalog helper's libraries with mode
+0444. On the tested alternate roots these are ordinary files under
+`$target/usr/lib32`. Set `libgen.so`, `libCsup.so` and `libC.so.2` there to
+0555 and verify their digests against the files from that installation.
+The original hook can then run inside that root. Record both the return
+status and the resulting link.
+
+```sh
+chroot "$target" /usr/sbin/iconcatalogedit -add \
+    "$target/usr/freeware/bin/xmahjongg" -syspage Freeware
+readlink "$target/usr/lib/desktop/iconcatalog/pages/C/Freeware/xmahjongg"
+```
+
+To compile the artwork outside the partially installed base, use the
+matching desktop's original SGI compiler. The following builds a
+candidate table in a fresh work directory on the guest.
+
+```sh
+types=/emul/irix/usr/lib/filetype
+fftr=/emul/irix/usr/sbin/fftr
+work=$(mktemp -d /var/tmp/xiri-art.XXXXXX)
+cp -p "$types/desktop.otr" "$work/baseline.otr"
+(cd "$target/usr/lib/filetype/install" &&
+    "$fftr" -o "$work/game.otr" xmahjongg.ftr) &&
+    "$fftr" -o "$work/desktop.otr" "$work/game.otr" "$work/baseline.otr"
+sha256 "$work/game.otr" "$work/desktop.otr"
+```
+
+The public v4 desktop already supplies the compiler's `/usr/bin/nawk`
+alias and the generic executable drawings in the parent `iconlib` directory.
+On the disposable test desktop, replace the active table by renaming
+a complete candidate on the same filesystem. Log in to start a new
+catalog process. Retain the original table for the rollback control.
+The [follow-up results](../../docs/results/2026-11-24-indy-inst-followup.md)
+give the checks against SGI's filetype library.
 
 To rebuild the conversion checks, run
 `python3 lab/irix-installer/build-cvt-probes.py TOOLDIR NEW_OUTPUT`.

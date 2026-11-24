@@ -1,6 +1,8 @@
 #!/bin/sh
 # Native devices and IRIX namespace aliases; run once at boot before LOGIN.
 set -eu
+# Use NetBSD stat for the major/minor format even when SGI /sbin/stat exists.
+export PATH=/bin:/usr/bin:/sbin:/usr/sbin
 # Run before opening any PTYs. Preserve an already configured native mount;
 # ptyfs does not support mount updates, and an in-use mount cannot be replaced.
 if mount | awk '$2 == "on" && $3 == "/emul/irix/dev/pts" { found=1 } END { exit !found }'; then

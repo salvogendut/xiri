@@ -80,8 +80,10 @@ created the original Freeware page on a private package root. After
 exporting that page and the installed software to the desktop, xiritest
 launched the game through Icon Catalog on two successive xdm logins.
 Removal cleared the catalog link and the game from the target's own
-installation history. SGI's base installation still stops at its IRIX
-device setup hook. The
+installation history. On a fresh alternate root, SGI's `-X /dev` option
+lets both installers pass device setup. Remaining exit-command failures
+and the compiled game artwork are covered in the
+[follow-up](results/2026-11-24-indy-inst-followup.md). The
 [dual-release installer results](results/2026-11-24-indy-inst.md) and
 [reproduction procedure](../lab/irix-installer/README.md#repeat-the-clean-indy-installer-check)
 describe the current boundary. Software Manager and upgrades remain later work.
