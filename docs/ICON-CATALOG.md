@@ -145,7 +145,7 @@ they do not repeat every Catalog double-click route.
 | --- | --- | --- |
 | `accessibility` | `/usr/sbin/accessx` | **Error dialog.** Cannot save the active AccessX profile; xmodmap helper is also absent. |
 | `audiopanel` | `/usr/sbin/audiopanel` | **Error dialog.** Reports that this machine has no audio driver. |
-| `background` | `/usr/sbin/background` | **Apply and persistence pass.** Reef/Sand patterns and separate Solid colours survive logout/login and reboot for two users. SGI names resolve, and the original picker uses its X11 controls. GL mode remains unsupported. [Patterns](results/2026-11-06-desktop-preferences.md), [colours](results/2026-11-06-desktop-colours.md). |
+| `background` | `/usr/sbin/background` | **Apply and persistence pass.** Reef/Sand patterns and separate Solid colours survive logout/login and reboot for two users. SGI names resolve, and the original picker uses its X11 controls. GL mode remains limited by renderer memory on the 256 MB Indy. [GLX tests](results/2026-11-24-indy-glx.md), [patterns](results/2026-11-06-desktop-preferences.md), [colours](results/2026-11-06-desktop-colours.md). |
 | `colorscheme` | `/usr/sbin/colorscheme` | **Apply and persistence pass.** Inverness and KeyWest remain distinct for two users across logout/login and reboot. [Desktop preferences](results/2026-11-06-desktop-preferences.md). |
 | `desktop` | `/usr/sbin/desktop` | **Grid resource and persistence pass.** Separate users retain the chosen grid resource after login. Full desktop-icon snap gestures remain separate. [Desktop controls](results/2026-11-14-desktop-controls.md). |
 | `display` | `/usr/bin/X11/xsetmon` | **Error dialog.** Reports that the X display lacks the XSGIvc extension required by xsetmon. |
@@ -173,7 +173,7 @@ they do not repeat every Catalog double-click route.
 
 | Entry | Original target | Observed result / next check |
 | --- | --- | --- |
-| `clock` | `/usr/sbin/clock` | **Launch fails.** The child exits 255 when the SGI Font Manager cannot find the `Iris` face. Supplying the indexed bitmaps exposes a native Xorg failure. [Two-release font and display tests](results/2026-11-24-indy-link-clock-xosview.md) |
+| `clock` | `/usr/sbin/clock` | **Works on both Indy test desktops with the rebuilt Xorg/GLX pair and indexed Iris fonts.** The face draws, resizes and advances. The published v4 images still need both additions. [Screenshots](results/2026-11-24-indy-glx.md) · [Font diagnosis](results/2026-11-24-indy-link-clock-xosview.md) |
 | `colorview` | `/usr/sbin/colorview` | **Exits 1 without a window.** cannot open rgb database "/usr/lib/X11/rgb" |
 | `desktophelp` | `/usr/sbin/desktophelp` | **Exits 0 without a new window.** sh: /usr/bin/X11/xconfirm:  not found |
 | `enterlicense` | `/usr/etc/enterlicense` | **Window observed.** License Manager 3.4 - Privileges Required. Use and normal exit remain untested. |

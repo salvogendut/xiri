@@ -72,7 +72,7 @@ in `08e53ba7`. [Octane build and qualification](results/2026-11-23-octane-deskto
 
 ## IRIS upstream updates
 
-The November 24 clean-desktop, software-installation and installer follow-up cycles fetched
+The November 24 clean-desktop, software-installation, installer follow-up and Xorg rendering cycles fetched
 `upstream/main` at `057ba095` and verified that IRIS `xiri` at `39ef6dff`
 already contains it. The two release checks use the emulator pinned in each
 v4 Indy bundle.

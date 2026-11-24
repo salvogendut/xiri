@@ -310,6 +310,8 @@ original CD 4 xmahjongg artwork.
 Both vendor timezone compilers can now create hard-linked aliases with the
 updated module. The same two Indys were used to trace SGI Clock and
 Freeware xosview. [Hard-link and application results](docs/results/2026-11-24-indy-link-clock-xosview.md)
+The original SGI Clock now draws and advances on both Indys with a rebuilt
+NetBSD Xorg/GLX pair and the indexed Iris fonts. [Rendering results and screenshots](docs/results/2026-11-24-indy-glx.md)
 The [installer guide](docs/NATIVE-PACKAGE.md#clean-installation-on-an-emulated-indy)
 covers building per-release media and repeat installation. It also explains
 how to [boot the saved stock kernel and return to Xiri](docs/NATIVE-PACKAGE.md#switching-between-the-stock-and-xiri-kernels)

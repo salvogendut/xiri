@@ -45,6 +45,9 @@ The font additions were confined to the private test disks. The [Background
 panel check](2026-11-06-desktop-colours.md) previously encountered this
 rendering path in another SGI client.
 
+The [Xorg follow-up](2026-11-24-indy-glx.md) shows Clock rendering and
+advancing on both releases with the corrected server and GLX module.
+
 During teardown both guest session supervisors reported zero sessions left.
 Both shutdowns then waited at `Stopping xdm`. The two disposable emulator
 process groups were stopped from the host.

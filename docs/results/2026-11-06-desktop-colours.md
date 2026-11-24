@@ -33,6 +33,9 @@ The server, kernel, IRIX module, Newport driver and vendor binaries are unchange
 
 ![Original colour picker in X11 mode](images/2026-11-06-colours-picker.png)
 
+The [November 24 Xorg tests](2026-11-24-indy-glx.md) traced the earlier
+GLX failure and measured the memory cost of using the GL picker on Indy.
+
 The pinned public [Xorg colour lookup](https://github.com/NetBSD/xsrc/blob/b2f7e3892002986f53e61cb0540e281fcbfab335/external/mit/xorg-server.old/dist/os/oscolor.c)
 and [Xlib database loader](https://github.com/NetBSD/xsrc/blob/b2f7e3892002986f53e61cb0540e281fcbfab335/external/mit/libX11/dist/src/xcms/cmsColNm.c)
 explain the two lookup paths. Local source SHA256 values are respectively
