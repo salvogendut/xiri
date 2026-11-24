@@ -302,6 +302,8 @@ MIPS IV-aware module. Both original-media release lines now have
 [clean v4 Indy test CHDs, launch commands and screenshots](docs/results/2026-11-24-indy-v4-recovery.md).
 They start from stock NetBSD 11.0 userland, boot the 11.99.11 modular kernel,
 and run accelerated 4Dwm or native ctwm according to the user's xdm session.
+The [everyday desktop checks](docs/results/2026-11-24-indy-v4-use.md) cover Catalog launches,
+File Manager moves and per-user session restoration after a cold boot.
 The [installer guide](docs/NATIVE-PACKAGE.md#clean-installation-on-an-emulated-indy)
 covers building per-release media and repeat installation. It also explains
 how to [boot the saved stock kernel and return to Xiri](docs/NATIVE-PACKAGE.md#switching-between-the-stock-and-xiri-kernels)

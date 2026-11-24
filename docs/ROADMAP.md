@@ -336,7 +336,8 @@ The [v4 Indy images and recovery checks](results/2026-11-24-indy-v4-recovery.md)
 cover a full filesystem during fresh font installation, service setup and
 the v3-to-v4 update on both releases. Each clean v4 CHD has its own test
 launcher. Additional payload selections, wider application coverage and
-physical Indy testing remain open.
+physical Indy testing remain open. The [v4 everyday-use checks](results/2026-11-24-indy-v4-use.md)
+cover both clean Indy releases, a second IRIX desktop user and native ctwm.
 
 - [x] Maintain a separate original-media **IRIX 6.5.30** installation/import
   process, with its own media pins, donor CHD, resource profile and Xiri acceptance
