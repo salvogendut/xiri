@@ -45,6 +45,10 @@ The font additions were confined to the private test disks. The [Background
 panel check](2026-11-06-desktop-colours.md) previously encountered this
 rendering path in another SGI client.
 
+During teardown both guest session supervisors reported zero sessions left.
+Both shutdowns then waited at `Stopping xdm`. The two disposable emulator
+process groups were stopped from the host.
+
 ## SGI Freeware xosview
 
 The clean original-media profiles omit xosview. For this check we staged
