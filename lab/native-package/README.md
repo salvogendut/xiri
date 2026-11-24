@@ -171,3 +171,36 @@ v4 CD. The live file should contain only `xiri_famd=YES` and a newline at
 mode 0644, owned by root and wheel. The example should document
 `xiri_famd_logfile`. Run the tracked uninstall and verify the live enable
 file is gone and the saved edit is intact.
+
+## Disk-full recovery and fresh v4 images
+
+Build a v3-to-v4 CD from the current media scripts for each release, then
+prepare the halted 11.99.11 bootstrap as above. Run each release on its
+own disposable disk.
+
+```sh
+python3 lab/native-package/check-clean-desktop.py disk-full \
+  --base "$bootstrap" --media "$iso" --emulator "$emulator" \
+  --output "$fault_run" --release "$release"
+```
+
+The runner mounts the lab fixture at SCSI ID 5. Inside the guest it uses two
+1 MiB tmpfs mounts, one for the live service settings and one for the
+packaged examples. It fills each mount at the target write, checks the
+write's ENOSPC diagnostic and the state of the transaction, removes the
+filler and retries on the same mount. The release ISO supplies all installer
+and updater code. The output includes the guest diagnostics in
+`disk-full/space.log`. These disposable disks are used only for fault testing.
+
+Repeat the command with `--full-target payload` and a fresh output directory.
+This fills a separate filesystem under `/usr/local/share/xiri` as pax copies
+the fonts, after the installer has published `/emul/irix`. The probe checks
+the IRIX tree receipt, removal of the partial font staging directory and
+the recovered font contents against the vendor manifest. It excludes the
+generated `fonts.dir` from the byte comparison.
+
+For the manual bundle, use a separate `install` run against a fresh copy
+of the bootstrap, followed by `package-clean-desktop.py` and the `desktop`
+run described above. New bundle manifests include the installed package
+receipt and the installer ISO digest. The cold-boot check compares the
+guest receipt with the manifest and exercises both xdm sessions.

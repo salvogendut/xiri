@@ -195,11 +195,12 @@ xdm on the CRIME display. Log in as `xiritest` for 4Dwm or `netbsdtest` for ctwm
 [O2 boot results](results/2026-11-23-o2-r10000-boot.md) ·
 [O2 disk and Ethernet checks](results/2026-11-23-o2-io.md)
 
-Separate [manual Xiri preview CHDs](results/2026-11-15-irix-previews.md)
-now package the qualified 6.5.30f/R5000 and 6.5.22f/R4400 states. Their CHD
-integrity checks pass; a fresh boot of each packaged bundle, broader desktop
-acceptance and native-package promotion remain outstanding. The native IRIX
-donor CHD is usable for donor boot testing, but is not a NetBSD/Xiri image.
+For manual Indy testing, use the [clean v4 Xiri CHDs and launch
+commands](results/2026-11-24-indy-v4-recovery.md). Each release has its own
+NetBSD installation and writable overlay. The [November 15 preview
+images](results/2026-11-15-irix-previews.md) document the earlier prepared
+disks. The separate native IRIX donor CHDs remain available for donor boot
+testing.
 
 The emulated Octane/R10000 boots its IP30 kernel and brings up full-screen
 xdm and 4Dwm on Solid IMPACT and High IMPACT. Its disk layout requires the
@@ -274,12 +275,12 @@ test passwords and probe histories must not be installation prerequisites.
 | --- | --- | --- |
 | Read-only donor access | `./xiri import` takes explicit source/output paths, pins the donor, mounts XFS with `ro,norecovery`, reports missing files and cleans temporary extraction state. | Broader release/partition discovery and separately audited donor profiles. |
 | Resource provenance | Versioned 6.5.22f desktop/fonts/Acrobat profile, dependency closure, conflict checks and missing-component errors. | Separate sources and profiles for GIMP, GNOME and freeware absent from this donor. |
-| Payload archive | Normalized modes and metadata; two builds produce identical archives/manifests. NetBSD pax extraction passes all file hashes. | Exercise additional component selections and disk-full recovery. |
+| Payload archive | Independent builds produce identical archives and manifests. NetBSD pax extraction passes all file hashes. The installer can resume after a full font target on a separate filesystem. [Recovery procedure](NATIVE-PACKAGE.md#recover-from-a-full-target-filesystem) | Exercise additional component selections. |
 | Native runtime | The [native packager](NATIVE-PACKAGE.md) builds from pinned sets. The [desktop removal procedure](NATIVE-PACKAGE.md#remove-the-desktop-and-return-to-native-netbsd) preserves homes and supports same-release reinstall. The [helper update](NATIVE-PACKAGE.md#upgrade-native-helpers-on-an-installed-indy) handles replacements, additions and retirements. The [v4 update](NATIVE-PACKAGE.md#configure-the-fam-service-log-with-v4) replaces the FAM startup script and its example while preserving active configuration. | Extend migration coverage to other services and defaults as they change. |
 | Kernel/module | Both Indy images can boot the saved NetBSD 11.0 kernel and return to 11.99.11 with the matching Xiri module and user homes intact. [Rollback procedure](NATIVE-PACKAGE.md#switching-between-the-stock-and-xiri-kernels) | Repeat the boot and rollback checks on physical Indy hardware. |
 | Display and native services | Native package includes the pinned Newport driver, Xorg configuration and patched FAM/rpcbind; stock X libraries and tools are explicit prerequisites. | Repeat deployment on physical Indy hardware. |
 | Desktop validation | Both clean Indy releases cold-boot to xdm, run 4Dwm with the original shell and native ctwm with UXTerm, and return to xdm. | Extend clean-target coverage to preferences and additional applications. |
-| Reusable CHD | [Clean Indy bundles](results/2026-11-23-clean-indy-desktops.md) are built directly from the halted per-release installations, verified against raw bytes and booted from private overlays. | Repeat this installer qualification on additional platforms. |
+| Reusable CHD | [Clean v4 Indy bundles](results/2026-11-24-indy-v4-recovery.md) are built from the halted per-release installations, verified against raw bytes and booted from private overlays. | Repeat this installer qualification on additional platforms. |
 
 The initial 1,990-record ledger alone was insufficient. The new profile includes
 later vendor resources available in this donor. The original qualification used a prepared native image. The clean Indy test
@@ -293,7 +294,9 @@ now exercises native installation and both vendor releases on stock userland.
   a prepared Xiri desktop filesystem or relying on historical probe directories.
   **Passed on both emulated Indy targets.** [Results and screenshots](results/2026-11-23-clean-indy-desktops.md)
 - Verify required bytes, types, modes and symlinks, and demonstrate useful errors
-  for a missing component, wrong kernel/module pair or insufficient space.
+  for a missing component, wrong kernel/module pair or insufficient space. The
+  [v4 recovery checks](results/2026-11-24-indy-v4-recovery.md) cover actual
+  failed writes during payload copy, service configuration and native update.
 - Repeat installation without overwriting user preferences or administrator
   configuration; recover from an interrupted install using its recorded state.
 - Remove the desktop, verify native ctwm through xdm on the stock kernel and

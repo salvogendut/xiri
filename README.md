@@ -297,7 +297,7 @@ passes installation/reinstallation, desktop/shell, logout/relogin and native ctw
 The separate 6.5.30 version now has a verified donor and reproducible payload.
 Its core desktop checks now pass on Indy/R5000 with shadow cache mode and a
 MIPS IV-aware module. Both original-media release lines now have
-[clean Indy test CHDs and screenshots](docs/results/2026-11-23-clean-indy-desktops.md).
+[clean v4 Indy test CHDs, launch commands and screenshots](docs/results/2026-11-24-indy-v4-recovery.md).
 They start from stock NetBSD 11.0 userland, boot the 11.99.11 modular kernel,
 and run accelerated 4Dwm or native ctwm according to the user's xdm session.
 The [installer guide](docs/NATIVE-PACKAGE.md#clean-installation-on-an-emulated-indy)
@@ -310,6 +310,8 @@ user homes and local configuration. [Test results and screenshots for both relea
 The [native helper update guide](docs/NATIVE-PACKAGE.md#upgrade-native-helpers-on-an-installed-indy) covers updating an installed Indy and rolling back from the same release-specific CD. The [v3 account update](docs/NATIVE-PACKAGE.md#add-or-retire-helpers-with-the-v3-account-update) also handles added and retired commands.
 The [v4 FAM service update](docs/NATIVE-PACKAGE.md#configure-the-fam-service-log-with-v4)
 lets administrators choose the file-monitor log in `/etc/rc.conf.d/xiri_famd`.
+The [disk-full recovery guide](docs/NATIVE-PACKAGE.md#recover-from-a-full-target-filesystem)
+explains how to resume an install or update after freeing space.
 
 Compatibility is incomplete. The reproduced Type1 collapse is corrected;
 winterm keeps the verified NetBSD bitmap Courier default. Broader graphics operations,

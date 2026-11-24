@@ -16,7 +16,7 @@ sys.path.insert(0, str(ROOT / 'scripts'))
 from xiri_lab import Guest, load_probe, sha256
 
 
-def install(guest, release):
+def prepare_install(guest, release):
     cmd = guest.command
     cmd(
         'mkdir -p /cdrom && mount -t cd9660 -o ro /dev/cd0a /cdrom && test "$(cat /cdrom/release)" = '
@@ -34,6 +34,10 @@ def install(guest, release):
         "sed '/^ttyE0[[:space:]]/s/[[:space:]]on[[:space:]]/ off /; "
         "/^ttyZ0[[:space:]]/s/[[:space:]]off[[:space:]]/ on /' /etc/ttys > /etc/ttys.xiri && mv /etc/ttys.xiri /etc/ttys"
     )
+
+
+def install(guest, release):
+    cmd = guest.command
     # Force a real activation failure after both trees have been published.
     # Creating a conflicting regular file must preserve that file and allow recovery.
     cmd(
@@ -88,6 +92,18 @@ def install(guest, release):
         resumed=True,
         repeated=True,
     )
+
+
+def disk_full(guest, run, target):
+    guest.command('mkdir /fixture && mount -t cd9660 -o ro /dev/cd1a /fixture')
+    try:
+        guest.command(f'sh /fixture/disk-full.sh {target} >/root/space-result.log 2>&1; status=$?; '
+                      'tail -12 /root/space-result.log; test "$status" = 0', 3600)
+    finally:
+        (run / 'space.log').write_text(guest.read_text(
+            'cat /root/space-result.log; for f in /root/space-check/*.log; do echo "$f"; tail -12 "$f"; done'))
+    return dict(recovered=['payload'] if target == 'payload' else ['install', 'upgrade'],
+                receipt=guest.read_text('cat /var/db/xiri-install/installed').strip())
 
 
 def greeter(guest):
@@ -173,13 +189,16 @@ def desktop(guest, out, colour=None, while_logged_in=None):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('phase', choices=('install', 'desktop'))
+    parser.add_argument('phase', choices=('install', 'disk-full', 'desktop'))
     for name in ('base', 'media', 'emulator', 'output'):
         parser.add_argument('--' + name, type=Path, required=True)
     parser.add_argument('--release', choices=('6.5.22f', '6.5.30f'), required=True)
     parser.add_argument('--bundle', type=Path, help='test a copy of a packaged CHD and its graphical PROM')
     parser.add_argument('--kernel', type=Path, help='matching unstripped kernel for the graphical halt check')
+    parser.add_argument('--full-target', choices=('services', 'payload'), help='filesystem to fill during disk-full qualification')
     args = parser.parse_args()
+    if args.full_target and args.phase != 'disk-full':
+        parser.error('--full-target requires the disk-full phase')
     base, medium, emu, out = (p.resolve() for p in (args.base, args.media, args.emulator, args.output))
     os.environ.pop('IRIS_CHD_DIFF_DIR', None)
     signal.signal(signal.SIGTERM, signal.default_int_handler)
@@ -187,7 +206,7 @@ def main():
     run = out / args.phase
     run.mkdir()
     disk = out / 'disk.raw'
-    install_phase = args.phase == 'install'
+    install_phase = args.phase != 'desktop'
     if install_phase:
         if disk.exists() or not json.loads((base / 'result.json').read_text())['passed']:
             raise ValueError('expected a new target and a qualified bootstrap')
@@ -223,6 +242,10 @@ def main():
         config = config.replace('overlay = false', 'overlay = true')
     if install_phase:
         config += '[scsi.4]\ncdrom = true\npath = ' + json.dumps(str(medium)) + '\n'
+    if args.phase == 'disk-full':
+        fixture = run / 'fixture.iso'
+        subprocess.run(['genisoimage', '-quiet', '-R', '-o', fixture, Path(__file__).with_name('disk-full.sh')], check=True)
+        config += '[scsi.5]\ncdrom = true\npath = ' + json.dumps(str(fixture)) + '\n'
     probe = load_probe()
     if install_phase:
         probe.TOOLBOX = []
@@ -249,7 +272,21 @@ def main():
         lab.send('root')
         lab.wait('xiri-indy# ', 40)
         lab.logged_in = True
-        result['checks'] = install(guest, args.release) if install_phase else desktop(guest, run)
+        if install_phase:
+            prepare_install(guest, args.release)
+            if args.phase == 'disk-full':
+                result['checks'] = disk_full(guest, run, args.full_target or 'services')
+            else:
+                result['checks'] = install(guest, args.release)
+        else:
+            if 'receipt' in package:
+                if result['iso_sha256'] != package['iso_sha256']:
+                    raise ValueError('installer CD differs from the packaged installation')
+                receipt = guest.read_text('cat /var/db/xiri-install/installed').strip()
+                if receipt != package['receipt']:
+                    raise ValueError('unexpected installed package on cold boot: ' + receipt)
+                result['receipt'] = receipt
+            result['checks'] = desktop(guest, run)
         if install_phase:
             lab.send('shutdown -h now')
             lab.wait('unmounting done', 120)

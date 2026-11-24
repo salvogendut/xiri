@@ -72,6 +72,15 @@ in `08e53ba7`. [Octane build and qualification](results/2026-11-23-octane-deskto
 
 ## IRIS upstream updates
 
+The November 24 disk-space recovery cycle merged upstream `057ba095` into
+IRIS `xiri` at `39ef6dff`. Upstream adds JIT code arena rotation and page
+slot recycling. The merge preserves the fork's optimization switch and its
+test for isolation between two machines' compile queues, with the page
+generation supplied on each test request. The JIT, MIPS executor, SMP and
+IP35 selections passed 803 tests with `jitv2,idle-pause,wgpu` (two ignored).
+The default `iris` and `iris-ci` CLI build checks also passed. The v4 Indy
+CHDs use the same pinned accelerated emulator as the November 23 clean images.
+
 The November 24 helper inventory and FAM service cycles each fetched IRIS `upstream/main` at
 `b316bb03` and verified it is an ancestor of the fork's `xiri` at `a58b41a6`.
 There were no incoming commits. The Indy guest checks use their pinned emulator.

@@ -123,11 +123,14 @@ runtime sets, and the matching 11.99.11 kernel and boot-loaded module. The
 prepares this target from the recorded NetBSD installation.
 
 Build a local CD for each imported release. Replace the example paths with
-your local native package and previously generated donor imports.
+your local native package and previously generated donor imports. Including
+`--upgrade-from` puts the v3-to-v4 updater on the same CD. For a fresh
+installation alone, the v4 native package and vendor payload suffice.
 
 ```sh
 for release in 6.5.22f 6.5.30f; do
-    ./xiri install-media --native-package .work/packages/netbsd-sgimips-indy-11.99.11-v1 \
+    ./xiri install-media --native-package .work/packages/netbsd-sgimips-indy-11.99.11-fam-service-v4 \
+        --upgrade-from .work/packages/netbsd-sgimips-indy-11.99.11-account-map-v3 \
         --vendor-payload ".work/imports/irix-${release}-v1" \
         --output ".work/xiri-installer-${release}.iso" || exit 1
 done
@@ -155,6 +158,36 @@ existing unmanaged vendor tree or conflicting `/usr/lib/desktop` requires
 administrator review. Correct the reported conflict and repeat
 `sh /cdrom/install.sh` with the same release and native build. A finished
 installation has a receipt at `/var/db/xiri-install/installed`.
+
+### Recover from a full target filesystem
+
+Use the corrected v4 media in `.work/installers/indy-11.99.11/space-recovery/`.
+Choose the ISO matching the installed IRIX release. These CDs contain the
+same v4 native archive and vendor payloads as the earlier FAM update.
+
+If an operation reports `No space left on device`, use `df -k` on the
+reported path or its parent directory to identify the full filesystem. Use
+`df -i` to check for exhausted inodes. Free space on that filesystem and
+repeat the original command from the same CD as root.
+
+| Interrupted operation | Command to resume |
+| --- | --- |
+| Fresh installation | `sh /cdrom/install.sh` |
+| v3 to v4 update | `sh /cdrom/upgrade.sh` |
+| v4 to v3 rollback | `sh /cdrom/upgrade.sh --rollback` |
+
+Keep `/var/db/xiri-install` and both installed payload trees in place.
+During a fresh installation the `inputs` file can exist before the
+`installed` receipt. During an update, `upgrading` records the direction
+and package identities. A mix of old and new files can already be on disk
+at this point. Finish the retry before restarting services or logging into
+the desktop. On success, `inputs` and `installed` match and the update
+journal is gone.
+
+The [Indy recovery results and manual images](results/2026-11-24-indy-v4-recovery.md)
+include the two release-specific launch commands and the paths exercised.
+
+### Select the desktop after installation
 
 Create desktop users through normal NetBSD account administration. An IRIX-style
 home is `/usr/people/USERNAME`. Select the desktop by running the following
@@ -213,8 +246,8 @@ Choose the release that matches the CHD.
 
 ```sh
 release=6.5.22f
-.work/images/xiri-clean-indy-${release}-20261123/run-iris.sh \
-    --cdrom4 "$PWD/.work/installers/indy-11.99.11/removal/xiri-${release}.iso"
+.work/images/xiri-clean-indy-${release}-v4-20261124/run-iris.sh \
+    --cdrom4 "$PWD/.work/installers/indy-11.99.11/space-recovery/xiri-${release}.iso"
 ```
 
 **Native graphical login on the clean Indy.** Enable `xdm=YES` in the
@@ -241,7 +274,9 @@ mount -t cd9660 -o ro /dev/cd0a /cdrom
 sh /cdrom/uninstall.sh
 ```
 
-The November 23 clean Indy CHDs predate per-file ownership records. **On
+The November 23 clean Indy CHDs predate per-file ownership records. For
+an original v1 installation on one of those images, attach
+`.work/installers/indy-11.99.11/removal/xiri-${release}.iso`. **On
 those images only**, use `sh /cdrom/uninstall.sh --legacy-clean-indy`
 for the first removal. This tells the uninstaller that package paths with
 matching contents came from the documented clean installation. An older
@@ -391,7 +426,7 @@ Attach the update CD for the installed IRIX release when starting the emulator.
 
 ```sh
 release=6.5.22f
-.work/images/xiri-clean-indy-${release}-20261123/run-iris.sh --cdrom4 "$PWD/.work/installers/indy-11.99.11/fam-service/xiri-${release}.iso"
+.work/images/xiri-clean-indy-${release}-20261123/run-iris.sh --cdrom4 "$PWD/.work/installers/indy-11.99.11/space-recovery/xiri-${release}.iso"
 ```
 
 Log out to xdm, mount the CD as above, and run `sh /cdrom/upgrade.sh` as
@@ -400,6 +435,8 @@ root. V4 replaces `/etc/rc.d/xiri_famd` and the reference copy at
 continues serving clients until its next restart. An edit to either packaged
 file stops the update and identifies the path. Save the edit and reconcile
 the reported file before retrying.
+
+For a new v3-to-v4 update, use the [space-recovery media](#recover-from-a-full-target-filesystem).
 
 To choose a log destination, add a line like the following to the live
 `/etc/rc.conf.d/xiri_famd`. Keep the existing `xiri_famd=YES` setting.

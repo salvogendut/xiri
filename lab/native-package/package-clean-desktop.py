@@ -67,6 +67,8 @@ def main():
         json.dumps(
             dict(
                 release=release,
+                receipt=report['checks']['receipts'],
+                iso_sha256=report['iso_sha256'],
                 raw_sha1=raw_hash,
                 chd_sha256=sha256(chd),
                 nvram_sha256=sha256(out / 'nvram.bin'),

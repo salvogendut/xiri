@@ -1,0 +1,265 @@
+{
+  "native_archive_sha256": "76ef195a43928029fc84731cc054fba5269f8cad3e18f3b9cff179dbf6f0d21c",
+  "source_native_sha256": "ab50f980d87d635bbf5ad2cce7c1d070f87b2599131a666da1ba504420bf2bac",
+  "stock_bootstrap": {
+    "stock": {
+      "disk.raw": "8f896ab101a1cb27e29bfe87cc4048cc61c17f2a148f58d24bba0fb1d0c21926",
+      "nvram.bin": "602d954b2e8f076887c54ed301dff7dbd9cc0c6be138e537e5bc732c948d344e"
+    },
+    "xsets": [
+      "xbase.tgz",
+      "xetc.tgz",
+      "xfont.tgz",
+      "xserver.tgz"
+    ],
+    "boots": [
+      {
+        "phase": "stock",
+        "halted": true,
+        "stopped": true
+      },
+      {
+        "phase": "modular",
+        "halted": true,
+        "stopped": true
+      }
+    ],
+    "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+    "native_sha256": {
+      "netbsd": "6a03b86ae641ef1fc1bef7c8e999c1a9f349580ae405c85c0da30451fb7c58a1",
+      "netbsd.boot": "a1367bb88f95edaf7bf84fe466636b1e4b129ad12f30c7d787588d88b8f21c0c",
+      "compat_irix_o32.kmod": "44ce8e5aafd5b7bf1e20ee37b0ab71fcfd964067d81b288fbc6d2bd4310583b8"
+    },
+    "stock_kernel": "NetBSD 11.0 (GENERIC32_IP2x) #0: Thu Jul 30 15:23:12 UTC 2026  mkrepro@mkrepro.NetBSD.org:/usr/src/sys/arch/sgimips/compile/GENERIC32_IP2x",
+    "modular_kernel": "NetBSD 11.99.11 (XIRI_IRIX_MODULE_20261103) #0: Mon Nov 23 18:09:22 UTC 2026  salvogendut@minisforum.golgota.lan:/var/home/salvogendut/Dev/xiri/.work/netbsd-sync-20261123/indy/kernel",
+    "module": "compat_irix_o32            exec     filesys  -        0       - exec_elf32,compat_netbsd32",
+    "securelevel": 1,
+    "originals_unchanged": true,
+    "passed": true
+  },
+  "host_tests": 94,
+  "iris": {
+    "upstream": "057ba095",
+    "integration": "39ef6dff",
+    "jit": 525,
+    "mips_executor": 238,
+    "smp": 14,
+    "ip35": 26,
+    "ignored": 2
+  },
+  "releases": {
+    "6.5.22f": {
+      "bundle": ".work/images/xiri-clean-indy-6.5.22f-v4-20261124",
+      "bytes": 455856338,
+      "image": {
+        "release": "6.5.22f",
+        "receipt": "6.5.22f 76ef195a43928029fc84731cc054fba5269f8cad3e18f3b9cff179dbf6f0d21c 6feb87643a47b0128fe635b7d06903ef2e78da0317ba29c5a88a700c85403dec",
+        "iso_sha256": "b61c15660a89f13e69a51fe277bbc7dae7eac349f626c268e1dd0862633a4d77",
+        "raw_sha1": "5e66e0053162ca11bb6c256ed1c64509a275b6f7",
+        "chd_sha256": "6911f66e4093c52b675d7254a15baff291d70468b07cc20fa734a8798f3407dd",
+        "nvram_sha256": "0d0226cd868f1d27a56c24575a24cf29cc872a79fe8ce75e90506e900eaa6e0c",
+        "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+        "install_result_sha256": "f9bb70c191ee4fdfb71670aa41d68f97531631b013fbaff2c77fbe6b6a1bd73c"
+      },
+      "iso": ".work/installers/indy-11.99.11/space-recovery/xiri-6.5.22f.iso",
+      "install": {
+        "release": "6.5.22f",
+        "cpu": "r4400",
+        "iso_sha256": "b61c15660a89f13e69a51fe277bbc7dae7eac349f626c268e1dd0862633a4d77",
+        "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+        "checks": {
+          "release": "6.5.22f",
+          "receipts": "6.5.22f 76ef195a43928029fc84731cc054fba5269f8cad3e18f3b9cff179dbf6f0d21c 6feb87643a47b0128fe635b7d06903ef2e78da0317ba29c5a88a700c85403dec",
+          "preserved": [
+            "SHA256 (/etc/passwd) = 98347a3131d039b1575858c5f045546bf46334b9b87678906f3a08a4263350b7",
+            "SHA256 (/etc/master.passwd) = 056259c2069fdd2e392c1df5e021d15b44ff96ec0f4292c4ff7884e438146e98",
+            "SHA256 (/etc/group) = 92ebfe8f5c1463deafc6b351153328f9ca5c1dd9076ecdd801959fc2d99cfb76",
+            "SHA256 (/etc/ttys) = ecd4840652ef37a24427726e51933bc7bc6e52b54ac75e5afff97e45bcf7ede6",
+            "SHA256 (/etc/hosts) = 3b71103eb3dca3fc0c569618dfbc745ea2a94055e16980c96ff00e834c7a0552",
+            "SHA256 (/etc/modules.conf) = 40e82147f94b657426abd62f7ef614185161672d782176c2588868fb34cece28",
+            "SHA256 (/etc/rc.conf) = ee8acc5add3b1cca5c7aeeaf2e308d9cae1dddc5576b58bc1400132938c2e9d1",
+            "SHA256 (/usr/people/xiritest/.Xresources) = 5922cc30b11108c7bc07b9038bcbd4f9b5f389864984c92785cdd0a2600004d5",
+            "SHA256 (/etc/xiri/session.conf) = befefeae4db308c8dbd77f83522a95f0d8d672e800e69426cd6dca718c4db95f",
+            "SHA256 (/usr/people/xiritest/.xsession) = 983ecc9eaa9763d5198b99c9a55b86a1a9dd785e851370144dcd8d9ec98233f3",
+            "SHA256 (/etc/rc.conf.d/xdm) = 7d5dd700ab908e38815502cf00d4cd354ed4a7602abaa174c59a63e6b801a4f5"
+          ],
+          "terminated_mid_install": true,
+          "original_conflict_preserved": true,
+          "resumed": true,
+          "repeated": true
+        },
+        "halted": true,
+        "stopped": true
+      },
+      "desktop": {
+        "release": "6.5.22f",
+        "cpu": "r4400",
+        "iso_sha256": "b61c15660a89f13e69a51fe277bbc7dae7eac349f626c268e1dd0862633a4d77",
+        "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+        "chd_sha256": "6911f66e4093c52b675d7254a15baff291d70468b07cc20fa734a8798f3407dd",
+        "receipt": "6.5.22f 76ef195a43928029fc84731cc054fba5269f8cad3e18f3b9cff179dbf6f0d21c 6feb87643a47b0128fe635b7d06903ef2e78da0317ba29c5a88a700c85403dec",
+        "checks": {
+          "identity": "SESSION user=xiritest uid=1234 groups=1234 home=/usr/people/xiritest cwd=/usr/people/xiritest display=127.0.0.1:0 authority=/tmp/.Xauth2876TL",
+          "winterm_handoff": "NATIVE_HANDOFF pid=588 sid=588 pgid=588 tpgid=588 uid=1234 euid=1234 gid=1234 egid=1234 groups=1 tty=/dev/pts/1 rows=24 cols=78",
+          "dimensions": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+          "newport_log": "[    33.020] (**) NEWPORT(0): Option \"NoAccel\" \"false\"\n[    33.197] (II) NEWPORT(0): Using XFree86 Acceleration Architecture (XAA)",
+          "windows": [
+            "Toolchest",
+            "Icon Catalog",
+            "winterm",
+            "xclock"
+          ],
+          "original_shell": true,
+          "native_session": "ctwm + xterm",
+          "native_processes": "PID COMMAND\n713 sh",
+          "both_logouts": true,
+          "desktop_png_sha256": "08ad97cb08a901abd144d474930eae988d083634ce24b0fbea8bfda8ef6d558d",
+          "ctwm_png_sha256": "ccffac6e2124e6c15964d5acbd0653e3fbf26ebd4f887efea6ed6ad9b5aa39c6"
+        },
+        "halted": true,
+        "stopped": true
+      },
+      "disk_full": {
+        "release": "6.5.22f",
+        "cpu": "r4400",
+        "iso_sha256": "b61c15660a89f13e69a51fe277bbc7dae7eac349f626c268e1dd0862633a4d77",
+        "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+        "checks": {
+          "recovered": [
+            "install",
+            "upgrade"
+          ],
+          "receipt": "6.5.22f 76ef195a43928029fc84731cc054fba5269f8cad3e18f3b9cff179dbf6f0d21c 6feb87643a47b0128fe635b7d06903ef2e78da0317ba29c5a88a700c85403dec"
+        },
+        "halted": true,
+        "stopped": true
+      },
+      "payload_recovery": {
+        "release": "6.5.22f",
+        "cpu": "r4400",
+        "iso_sha256": "b61c15660a89f13e69a51fe277bbc7dae7eac349f626c268e1dd0862633a4d77",
+        "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+        "checks": {
+          "recovered": [
+            "payload"
+          ],
+          "receipt": "6.5.22f 76ef195a43928029fc84731cc054fba5269f8cad3e18f3b9cff179dbf6f0d21c 6feb87643a47b0128fe635b7d06903ef2e78da0317ba29c5a88a700c85403dec"
+        },
+        "halted": true,
+        "stopped": true
+      },
+      "write_errors": {
+        "font_copy": "pax: Failed write during copy of ./Scr10.pcf.Z to /usr/local/share/xiri/.xiri-stage.Zk5Wpf/./Scr10.pcf.Z (No space left on device)",
+        "service_config": "sed: stdout: No space left on device",
+        "upgrade_example": "install: /usr/local/share/xiri/examples/rc.conf.d/.xiri-upgrade.FUcUEF: write: No space left on device"
+      }
+    },
+    "6.5.30f": {
+      "bundle": ".work/images/xiri-clean-indy-6.5.30f-v4-20261124",
+      "bytes": 443044689,
+      "image": {
+        "release": "6.5.30f",
+        "receipt": "6.5.30f 76ef195a43928029fc84731cc054fba5269f8cad3e18f3b9cff179dbf6f0d21c 21060cf7415e730d6efb3d690e51d08aafb15d689ecb0f2fdd9c8638a33bfde7",
+        "iso_sha256": "a2afca3a6f7a336f2a554ac0ca62d1ac328fb11a8ada85523576e582411185d7",
+        "raw_sha1": "b3e2f13654fd671da32070b1ca17c0363fdf29e0",
+        "chd_sha256": "aa31ca53b1dbb0e6fc5ec7b63973e0a55655cb599df2c3eca92bfc5abcc28082",
+        "nvram_sha256": "56fa7abc2015097dac7dba0b3b1a1f80ac0b81e0261683e536c2c6eb8c5b94ed",
+        "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+        "install_result_sha256": "0e246d1ca1697a667b014e4495493a3fc846f8a7e6a9c1983769aabf5394f4b4"
+      },
+      "iso": ".work/installers/indy-11.99.11/space-recovery/xiri-6.5.30f.iso",
+      "install": {
+        "release": "6.5.30f",
+        "cpu": "r5000",
+        "iso_sha256": "a2afca3a6f7a336f2a554ac0ca62d1ac328fb11a8ada85523576e582411185d7",
+        "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+        "checks": {
+          "release": "6.5.30f",
+          "receipts": "6.5.30f 76ef195a43928029fc84731cc054fba5269f8cad3e18f3b9cff179dbf6f0d21c 21060cf7415e730d6efb3d690e51d08aafb15d689ecb0f2fdd9c8638a33bfde7",
+          "preserved": [
+            "SHA256 (/etc/passwd) = 98347a3131d039b1575858c5f045546bf46334b9b87678906f3a08a4263350b7",
+            "SHA256 (/etc/master.passwd) = 3a8ac8ef78d5deafe44d40186fa84f47622ed0d5bcbb630dc2a54b33787bd946",
+            "SHA256 (/etc/group) = 92ebfe8f5c1463deafc6b351153328f9ca5c1dd9076ecdd801959fc2d99cfb76",
+            "SHA256 (/etc/ttys) = ecd4840652ef37a24427726e51933bc7bc6e52b54ac75e5afff97e45bcf7ede6",
+            "SHA256 (/etc/hosts) = 3b71103eb3dca3fc0c569618dfbc745ea2a94055e16980c96ff00e834c7a0552",
+            "SHA256 (/etc/modules.conf) = 40e82147f94b657426abd62f7ef614185161672d782176c2588868fb34cece28",
+            "SHA256 (/etc/rc.conf) = ee8acc5add3b1cca5c7aeeaf2e308d9cae1dddc5576b58bc1400132938c2e9d1",
+            "SHA256 (/usr/people/xiritest/.Xresources) = 5922cc30b11108c7bc07b9038bcbd4f9b5f389864984c92785cdd0a2600004d5",
+            "SHA256 (/etc/xiri/session.conf) = befefeae4db308c8dbd77f83522a95f0d8d672e800e69426cd6dca718c4db95f",
+            "SHA256 (/usr/people/xiritest/.xsession) = 983ecc9eaa9763d5198b99c9a55b86a1a9dd785e851370144dcd8d9ec98233f3",
+            "SHA256 (/etc/rc.conf.d/xdm) = 7d5dd700ab908e38815502cf00d4cd354ed4a7602abaa174c59a63e6b801a4f5"
+          ],
+          "terminated_mid_install": true,
+          "original_conflict_preserved": true,
+          "resumed": true,
+          "repeated": true
+        },
+        "halted": true,
+        "stopped": true
+      },
+      "desktop": {
+        "release": "6.5.30f",
+        "cpu": "r5000",
+        "iso_sha256": "a2afca3a6f7a336f2a554ac0ca62d1ac328fb11a8ada85523576e582411185d7",
+        "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+        "chd_sha256": "aa31ca53b1dbb0e6fc5ec7b63973e0a55655cb599df2c3eca92bfc5abcc28082",
+        "receipt": "6.5.30f 76ef195a43928029fc84731cc054fba5269f8cad3e18f3b9cff179dbf6f0d21c 21060cf7415e730d6efb3d690e51d08aafb15d689ecb0f2fdd9c8638a33bfde7",
+        "checks": {
+          "identity": "SESSION user=xiritest uid=1234 groups=1234 home=/usr/people/xiritest cwd=/usr/people/xiritest display=127.0.0.1:0 authority=/tmp/.XauthFV0cFc",
+          "winterm_handoff": "NATIVE_HANDOFF pid=367 sid=367 pgid=367 tpgid=367 uid=1234 euid=1234 gid=1234 egid=1234 groups=1 tty=/dev/pts/1 rows=24 cols=80",
+          "dimensions": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+          "newport_log": "[    32.312] (**) NEWPORT(0): Option \"NoAccel\" \"false\"\n[    32.436] (II) NEWPORT(0): Using XFree86 Acceleration Architecture (XAA)",
+          "windows": [
+            "Toolchest",
+            "Icon Catalog",
+            "winterm",
+            "xclock"
+          ],
+          "original_shell": true,
+          "native_session": "ctwm + xterm",
+          "native_processes": "PID COMMAND\n3817 sh",
+          "both_logouts": true,
+          "desktop_png_sha256": "c32a01532cc54fa7449646e437cec5e85137efbaae4ef541e35b2c843aa490d6",
+          "ctwm_png_sha256": "ccffac6e2124e6c15964d5acbd0653e3fbf26ebd4f887efea6ed6ad9b5aa39c6"
+        },
+        "halted": true,
+        "stopped": true
+      },
+      "disk_full": {
+        "release": "6.5.30f",
+        "cpu": "r5000",
+        "iso_sha256": "a2afca3a6f7a336f2a554ac0ca62d1ac328fb11a8ada85523576e582411185d7",
+        "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+        "checks": {
+          "recovered": [
+            "install",
+            "upgrade"
+          ],
+          "receipt": "6.5.30f 76ef195a43928029fc84731cc054fba5269f8cad3e18f3b9cff179dbf6f0d21c 21060cf7415e730d6efb3d690e51d08aafb15d689ecb0f2fdd9c8638a33bfde7"
+        },
+        "halted": true,
+        "stopped": true
+      },
+      "payload_recovery": {
+        "release": "6.5.30f",
+        "cpu": "r5000",
+        "iso_sha256": "a2afca3a6f7a336f2a554ac0ca62d1ac328fb11a8ada85523576e582411185d7",
+        "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+        "checks": {
+          "recovered": [
+            "payload"
+          ],
+          "receipt": "6.5.30f 76ef195a43928029fc84731cc054fba5269f8cad3e18f3b9cff179dbf6f0d21c 21060cf7415e730d6efb3d690e51d08aafb15d689ecb0f2fdd9c8638a33bfde7"
+        },
+        "halted": true,
+        "stopped": true
+      },
+      "write_errors": {
+        "font_copy": "pax: Failed write during copy of ./Scr10.pcf.Z to /usr/local/share/xiri/.xiri-stage.aeNJrv/./Scr10.pcf.Z (No space left on device)",
+        "service_config": "sed: stdout: No space left on device",
+        "upgrade_example": "install: /usr/local/share/xiri/examples/rc.conf.d/.xiri-upgrade.xB02SD: write: No space left on device"
+      }
+    }
+  },
+  "qualification_archive_sha256": "6687fbf45f53870eba486a615da67677d79b0beaef743210fecf9f79d6743d71"
+}

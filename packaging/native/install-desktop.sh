@@ -14,8 +14,13 @@ state=/var/db/xiri-install
 if test ! -d "$state"; then mkdir -m 700 "$state"; fi
 test ! -L "$state" && test "$(stat -f '%u:%Lp' "$state")" = 0:700 || fail "unexpected owner or mode on $state"
 shlock -f "$state/lock" -p $$ || fail 'another installation is running'
-scratch=
-cleanup() { test -z "$scratch" || rm -rf "$scratch"; rm -f "$state/lock"; }
+scratch= staging= stage_dir=
+cleanup() {
+    test -z "$staging" || rm -f "$staging"
+    test -z "$stage_dir" || rm -rf "$stage_dir"
+    test -z "$scratch" || rm -rf "$scratch"
+    rm -f "$state/lock"
+}
 trap cleanup EXIT
 trap 'exit 1' HUP INT TERM
 test ! -e "$state/upgrading" || fail 'resume the pending native upgrade first'
@@ -81,11 +86,12 @@ if ! owned /emul/irix || ! owned /usr/local/share/xiri/fonts; then
         cp "$state/inputs" "$tree/.xiri-install-inputs"
         # Publish by rename. For a separate /usr, finish copying on that filesystem first.
         if test "$(stat -f %d "$parent")" != "$(stat -f %d "$tree")"; then
-            stage=$(mktemp -d "$parent/.xiri-stage.XXXXXX")
-            (cd "$tree" && pax -rw -pe . "$stage") || { rm -rf "$stage"; exit 1; }
-            tree=$stage
+            stage_dir=$(mktemp -d "$parent/.xiri-stage.XXXXXX")
+            (cd "$tree" && pax -rw -pe . "$stage_dir")
+            tree=$stage_dir
         fi
         mv "$tree" "$dest"
+        stage_dir=
     done
 else
     verify_vendor /
@@ -114,11 +120,14 @@ while IFS='|' read -r path kind mode value policy; do
         saved="$state/original$dest"
         if test ! -e "$saved" && test ! -L "$saved" && test ! -d "$state/created$dest"; then
             mkdir -p "$(dirname "$saved")"
-            cp -p "$dest" "$saved.tmp" && mv "$saved.tmp" "$saved"
+            cp -p "$dest" "$scratch/original"
+            mv "$scratch/original" "$saved"
         fi
     fi
-    new=$(mktemp "$(dirname "$dest")/.xiri-file.XXXXXX")
-    install -m "$mode" "$path" "$new" && mv -f "$new" "$dest"
+    staging=$(mktemp "$(dirname "$dest")/.xiri-file.XXXXXX")
+    install -m "$mode" "$path" "$staging"
+    mv -f "$staging" "$dest"
+    staging=
 done <files.tsv
 sh preflight.sh --verify-installed
 if test -L /usr/lib/desktop; then
@@ -144,12 +153,16 @@ for service in rpcbind xiri_devices xiri_famd xiri_sessions xdm; do
     dest=/etc/rc.conf.d/$service
     if test ! -e "$dest" && test ! -L "$dest"; then
         remember_missing "$dest"
-        new=$(mktemp /etc/rc.conf.d/.xiri-service.XXXXXX)
+        staging=$(mktemp /etc/rc.conf.d/.xiri-service.XXXXXX)
         # Only the enabled settings seed the live configuration. Comments
         # document optional settings in the example across package versions.
-        sed '/^#/d' "/usr/local/share/xiri/examples/rc.conf.d/$service" >"$new" &&
-            chmod 644 "$new" && mv "$new" "$dest"
+        sed '/^#/d' "/usr/local/share/xiri/examples/rc.conf.d/$service" >"$staging" ||
+            fail "could not write $dest"
+        chmod 644 "$staging"
+        mv "$staging" "$dest"
+        staging=
     fi
 done
-cp "$state/inputs" "$scratch/installed" && mv "$scratch/installed" "$state/installed"
+cp "$state/inputs" "$scratch/installed"
+mv "$scratch/installed" "$state/installed"
 echo "Installed IRIX $release. Select the Xiri .xsession for participating users and reboot."

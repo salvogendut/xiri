@@ -145,7 +145,8 @@ helpers() {
             ! exists "$saved"; then
             # Same bytes could have predated the initial tracked installation.
             mkdir -p "$(dirname "$saved")"
-            cp -p "$dest" "$scratch/original" && mv "$scratch/original" "$saved"
+            cp -p "$dest" "$scratch/original"
+            mv "$scratch/original" "$saved"
             sync
         fi
         if test "$mode" = -; then
@@ -153,7 +154,8 @@ helpers() {
             if ! unpackaged; then
                 if exists "$saved"; then
                     staging=$(mktemp "$(dirname "$dest")/.xiri-upgrade.XXXXXX")
-                    cp -p "$saved" "$staging" && mv -f "$staging" "$dest"
+                    cp -p "$saved" "$staging"
+                    mv -f "$staging" "$dest"
                     staging=
                 else
                     rm "$dest"
