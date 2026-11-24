@@ -120,7 +120,7 @@ retained; untested behavior is not promoted to a pass.
 | `xearth` | `/usr/freeware/bin/xearth` | **Exits 126 without a window.** xiri-catalog: /usr/freeware/bin/xearth: cannot execute |
 | `xfig` | `/usr/freeware/bin/xfig` | **Main window opens.** Xfig and its error window open; CompKeyDB is missing, disabling multi-key sequences. Drawing, save and normal exit remain untested. |
 | `xmms` | `/usr/freeware/bin/xmms` | **Launch fails.** Exits 0 without a window after its control socket fails with Address family not supported by protocol family. |
-| `xosview` | `/usr/freeware/bin/xosview` | **Launch fails.** Exits 0 without a window and reports sysinfo scall interface not supported. |
+| `xosview` | `/usr/freeware/bin/xosview` | **Launch fails.** Its CPU meter needs the IRIX system activity interface, starting with `sysmp(MP_SASZ, MPSA_SINFO)`. The Freeware binary exits 0 without a window on both Indy releases. [Diagnosis](results/2026-11-24-indy-link-clock-xosview.md) |
 | `xpat2` | `/usr/freeware/bin/xpat2` | **Exits 1 without a window.** FAILED to open keyboard file "keys" xpat2: WARNING, cannot load configuration file /usr/freeware/lib/xpat/default/Cards.conf xpat2: cannot read suits |
 | `xscreensaver-demo` | `/usr/freeware/bin/xscreensaver-demo` | **Window observed.** XScreenSaver 4.01, 24-Feb-2002, XScreenSaver. Use and normal exit remain untested. |
 | `zsh` | `/usr/freeware/bin/zsh` | **Exits 0 without a new window.** |
@@ -173,7 +173,7 @@ they do not repeat every Catalog double-click route.
 
 | Entry | Original target | Observed result / next check |
 | --- | --- | --- |
-| `clock` | `/usr/sbin/clock` | **Exits 0 without a new window.** |
+| `clock` | `/usr/sbin/clock` | **Launch fails.** The child exits 255 when the SGI Font Manager cannot find the `Iris` face. Supplying the indexed bitmaps exposes a native Xorg failure. [Two-release font and display tests](results/2026-11-24-indy-link-clock-xosview.md) |
 | `colorview` | `/usr/sbin/colorview` | **Exits 1 without a window.** cannot open rgb database "/usr/lib/X11/rgb" |
 | `desktophelp` | `/usr/sbin/desktophelp` | **Exits 0 without a new window.** sh: /usr/bin/X11/xconfirm:  not found |
 | `enterlicense` | `/usr/etc/enterlicense` | **Window observed.** License Manager 3.4 - Privileges Required. Use and normal exit remain untested. |

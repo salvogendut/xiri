@@ -94,6 +94,7 @@ part of the installed payload or the successful catalog-launch demonstration.
 | Selected `/usr/lib/X11/system.*` and XDM default icon/device lists | Same path beneath `/emul/irix` | Window-manager and desktop defaults; exact selection is in the ledger |
 | `/usr/lib/X11/XKeysymDB`, `rgb.txt` and selected C/ISO8859-1 locale files | Same path beneath `/emul/irix` | Key names, source color data and locale lookup |
 | 22 `/usr/lib/X11/fonts/misc/Scr*.pcf[.Z]` files | `/usr/local/share/xiri/fonts/` | Native X font directory; run native `mkfontdir` and add it with `xset +fp` |
+| Experimental SGI Clock resources: `/usr/lib/X11/fonts/ps2xlfd_map` and `misc/iris{10,12,13}.pcf.Z` beneath that font directory | Corresponding paths under `/emul/irix`, with a generated `misc/fonts.dir` | Private diagnosis only. Enabling the font exposes a failure in the graphics server. [Clock test](results/2026-11-24-indy-link-clock-xosview.md) |
 | `/usr/freeware/bin/xmahjongg` | `/emul/irix/usr/freeware/bin/xmahjongg` | Installed n32 game executable, version string 3.6.1 |
 | `/usr/freeware/share/xmahjongg` | `/emul/irix/usr/freeware/share/xmahjongg` | Its 33 game-data files |
 | xmahjongg's catalog link, installed `.ftr`, two `.fti` icons and `/usr/lib/images/XMahjongg.icon` | Corresponding paths beneath `/emul/irix` | Existing Freeware integration, copied with the program |

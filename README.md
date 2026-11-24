@@ -307,6 +307,9 @@ File Manager moves and per-user session restoration after a cold boot.
 The [SGI installer follow-up](docs/results/2026-11-24-indy-inst-followup.md)
 records how both Indy releases preserve NetBSD devices and compile the
 original CD 4 xmahjongg artwork.
+Both vendor timezone compilers can now create hard-linked aliases with the
+updated module. The same two Indys were used to trace SGI Clock and
+Freeware xosview. [Hard-link and application results](docs/results/2026-11-24-indy-link-clock-xosview.md)
 The [installer guide](docs/NATIVE-PACKAGE.md#clean-installation-on-an-emulated-indy)
 covers building per-release media and repeat installation. It also explains
 how to [boot the saved stock kernel and return to Xiri](docs/NATIVE-PACKAGE.md#switching-between-the-stock-and-xiri-kernels)

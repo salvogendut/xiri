@@ -1,0 +1,93 @@
+{
+  "netbsd_commit": "344706654ba",
+  "iris_commit": "39ef6dff",
+  "iris_upstream": "057ba095",
+  "module_sha256": "ad182dbb2bb0e36eca636dc2f2989ed1bc79eae0c313bb5fbb61a9b60d9830b8",
+  "kernel_sha256": "1fa508173ff440183287ef0f9a338a0094afb29fd3cbfabaae309f07f0414e08",
+  "foundation_font_files": {
+    "usr/lib/X11/fonts/misc/iris10.pcf.Z": "80511f387b1409779c52a1f7a6c10cc0addac88df6fa5735244aebe0bd6e0b11",
+    "usr/lib/X11/fonts/misc/iris12.pcf.Z": "d8e4d171f962cef09114c2d661e45abd42c4a2c221cba26449db36879fec78e5",
+    "usr/lib/X11/fonts/misc/iris13.pcf.Z": "575cf3cfecdf3034aa2f8672cb81b24fd9dbd4f5b9cc13b74da51f7ad48acbb2",
+    "usr/lib/X11/fonts/ps2xlfd_map": "46273dde720fafebcc875f087c254329f2fc1433e1d82550861e83fde5d03758"
+  },
+  "releases": {
+    "6.5.22f": {
+      "cpu": "R4400",
+      "base_chd_sha256": "6911f66e4093c52b675d7254a15baff291d70468b07cc20fa734a8798f3407dd",
+      "binaries_sha256": {
+        "clock": "b91a88663ae7cd51317fa7805ab842289b5e1aa41a8e91e78b469031f90155ce",
+        "zic": "27ff961b46eea0109db5cfbe3495abc19612e656e294a2075fb91a615d5beb55",
+        "xosview": "b86f6539cbcfeadcc72e7293a79c352e8f2413055b2adf583922097702e84592"
+      },
+      "zic": {
+        "exit_status": 0,
+        "alias_and_primary_inode": 297866,
+        "link_count": 2,
+        "after_primary_removed": 1
+      },
+      "direct_abi_controls": [
+        "o32",
+        "n32"
+      ],
+      "runtime_user": "xiritest (1234)",
+      "xclock_control": "164x164 managed XClock window",
+      "clock": {
+        "parent_status": 0,
+        "child_exit_argument": "0xffffffff",
+        "catalog_target": "/usr/sbin/clock",
+        "font_map_only_child_exit_argument": "0xffffffff",
+        "map_and_indexed_iris_bitmaps": "Xorg aborted (signal 11)",
+        "xorg_stack": [
+          "swrast_dri.so",
+          "Xorg GLX",
+          "Dispatch"
+        ]
+      },
+      "xosview": {
+        "source": "supplement from installed IRIX Freeware donor",
+        "status": 0,
+        "window": false,
+        "diagnostic": "sysinfo scall interface not supported"
+      }
+    },
+    "6.5.30f": {
+      "cpu": "R5000",
+      "base_chd_sha256": "aa31ca53b1dbb0e6fc5ec7b63973e0a55655cb599df2c3eca92bfc5abcc28082",
+      "binaries_sha256": {
+        "clock": "c4e04c2dab168f7db6e6b1acd4c88de87c33e0dd7fe4f6401acb65f78a55b3ea",
+        "zic": "0556f2cbd5b2fd202bc5d0a32b0e8b64f77e16aa2060514ad464458b24539973",
+        "xosview": "b86f6539cbcfeadcc72e7293a79c352e8f2413055b2adf583922097702e84592"
+      },
+      "zic": {
+        "exit_status": 0,
+        "alias_and_primary_inode": 297866,
+        "link_count": 2,
+        "after_primary_removed": 1
+      },
+      "direct_abi_controls": [
+        "o32",
+        "n32"
+      ],
+      "runtime_user": "xiritest (1234)",
+      "xclock_control": "164x164 managed XClock window",
+      "clock": {
+        "parent_status": 0,
+        "child_exit_argument": "0xffffffff",
+        "catalog_target": "/usr/sbin/clock",
+        "font_map_only_child_exit_argument": "0xffffffff",
+        "map_and_indexed_iris_bitmaps": "Xorg aborted (signal 11)",
+        "xorg_stack": [
+          "swrast_dri.so",
+          "Xorg GLX",
+          "Dispatch"
+        ]
+      },
+      "xosview": {
+        "source": "supplement from installed IRIX Freeware donor",
+        "status": 0,
+        "window": false,
+        "diagnostic": "sysinfo scall interface not supported"
+      }
+    }
+  }
+}

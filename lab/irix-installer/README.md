@@ -13,6 +13,12 @@ original generic `/var/inst/machfile`. Extracted bytes remain private in
 
 ## Repeat the clean Indy installer check
 
+To check the timezone exit command independently, copy `usr/bin/zic` from
+the matching IRIX overlay into the guest and make it executable. On NetBSD,
+run `sh check-zic-links.sh /absolute/path/to/zic`. The check compiles a
+zone and alias, compares their device, inode and link count, then removes
+the primary and verifies the surviving alias is nonempty.
+
 Use the release that matches the private guest. From the Xiri repository
 root, with the matching desktop import already built, prepare the
 installer supplement from the original-media donor and May 2004 CD 4.
