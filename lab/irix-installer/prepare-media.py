@@ -18,12 +18,32 @@ TOOLS = ('/sbin/stat', '/usr/sbin/inst', '/usr/sbin/versions',
          '/var/inst/machfile')
 
 
+def stage_base_media(media, release, source, instigator):
+    discs = json.loads(Path(__file__).with_name('base-media.json').read_text())
+    for path, disc in discs.items():
+        if release not in disc['releases']:
+            continue
+        image = source / path
+        if sha256(image) != disc['sha256']:
+            raise ValueError(f'Installation disc hash mismatch: {image}')
+        directory = media / disc['directory']
+        directory.mkdir(exist_ok=True)
+        for product in disc['products']:
+            for suffix in ('', '.idb', '.sw'):
+                name = product + suffix
+                subprocess.run([instigator, 'dump', image, 'dist/' + name, directory],
+                               stdout=subprocess.DEVNULL, check=True)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--release', required=True, choices=('6.5.22f', '6.5.30f'))
     parser.add_argument('--donor', type=Path, required=True, help='standalone original-media CHD or raw disk')
     parser.add_argument('--desktop-manifest', type=Path, required=True)
     parser.add_argument('--dist', type=Path, required=True, help='May 2004 CD 4 dist directory')
+    parser.add_argument('--base-media-root', type=Path,
+                        help='include the tested Foundation 1 and matching overlay distributions')
+    parser.add_argument('--instigator', default='instigator', help='Instigator media reader executable')
     parser.add_argument('--output', type=Path, required=True, help='new private ISO')
     args = parser.parse_args()
     profile = json.loads((ROOT / 'profiles' / f'irix-{args.release}-v1.json').read_text())
@@ -40,6 +60,8 @@ def main():
         media = work / 'cd'
         dist = media / 'dist'
         dist.mkdir(parents=True)
+        if args.base_media_root:
+            stage_base_media(media, args.release, args.base_media_root, args.instigator)
         for path, row in inputs.items():
             if row['source'] == 'media':
                 name = Path(path).name

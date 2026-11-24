@@ -54,6 +54,65 @@ The clean v4 kernel predates the MIPS conversion and IRIX file-operation
 fixes. See the [dual-release results](../../docs/results/2026-11-24-indy-inst.md)
 for the tested kernel and the prerequisites reported by SGI.
 
+To check that SGI can write and read its own installation history, use an
+empty alternate root on a disposable guest with module `da98b7d4268` or
+later. The Freeware CD's selection files have no base-package prerequisites.
+
+```sh
+target=$(mktemp -d /var/tmp/xiri-inst.XXXXXX)
+mkdir -p "$target/var/inst"
+cp /emul/irix/var/inst/machfile "$target/var/inst/"
+inst=/emul/irix/usr/sbin/inst
+versions=/emul/irix/usr/sbin/versions
+for action in install remove; do
+    printf '%s\n' 'keep *' "$action fw_common.sw.selections" conflicts go 'keep *' quit >"$target.commands"
+    "$inst" -M -r "$target" -f /cdrom/dist -c "$target.commands" </dev/null
+    "$versions" -r "$target" fw_common
+    ls -l "$target/var/inst/hist"
+    if test "$action" = install; then
+        sha256 "$target/usr/freeware/relnotes/selections/gimp"
+    else
+        test ! -e "$target/usr/freeware/relnotes/selections/gimp" || exit 1
+    fi
+done
+```
+
+After installation, look for the installed product in `versions` and the
+sample file digest in the release results. After removal the product row and
+sample file disappear. The target retains its own history database.
+
+To reproduce the xmahjongg prerequisite check, add the following two options
+to the host's media-builder command above and choose a new output filename.
+
+```sh
+--base-media-root "$HOME/Downloads/IRIX media" \
+--instigator ../prismatic/target/install-server/instigator
+```
+
+The builder checks the [original disc hashes](base-media.json) and copies
+the product descriptors, inventories and software archives from Foundation 1
+and overlays 1 and 2 for the chosen release. Both overlay discs are needed.
+On the guest, use a new alternate root and request the complete selection.
+
+```sh
+target=$(mktemp -d /var/tmp/xiri-base.XXXXXX)
+mkdir -p "$target/var/inst"
+cp /emul/irix/var/inst/machfile "$target/var/inst/"
+cat >"$target.commands" <<'EOF'
+keep *
+install c++_eoe.sw.lib eoe.sw.base eoe.sw.efs compiler_eoe.sw.cpp compiler_eoe.sw.lboot compiler_eoe.sw.lib compiler_eoe.sw.unix x_eoe.sw.eoe fw_common.sw.index fw_xmahjongg.sw.xmahjongg
+conflicts
+keep *
+quit
+EOF
+/emul/irix/usr/sbin/inst -M -r "$target" \
+    -f /cdrom/foundation -f /cdrom/overlay -f /cdrom/dist -c "$target.commands"
+```
+
+The expected report is `No conflicts`. The independent `go` trial on a
+private guest reached an IRIX device-creation hook. Its results and the
+observed game install and removal are in the [installer report](../../docs/results/2026-11-24-indy-inst.md).
+
 To rebuild the conversion checks, run
 `python3 lab/irix-installer/build-cvt-probes.py TOOLDIR NEW_OUTPUT`.
 Copy the two binaries into the disposable guest and run each one. Exit zero

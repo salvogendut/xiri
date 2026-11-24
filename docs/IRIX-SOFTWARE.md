@@ -74,9 +74,10 @@ The earlier [shell image](results/2026-11-02-irix-shell-image.md) packages
 the original-shell and high-address mapping fixes and verifies xmahjongg's
 existing catalog action after a direct CHD boot.
 
-Original IRIX `inst` now reads the May 2004 Freeware inventories on both
-clean Indy release lines with the updated NetBSD fork. The installer reports
-the SGI prerequisites and uses the target's own history. The
+Original IRIX `inst` installed and removed CD 4 software on both Indy lines
+with the updated NetBSD fork. On private alternate roots, both versions
+recorded the xmahjongg subsystem and removed its executable. SGI's
+base installation still stops at its IRIX device setup hook. The
 [dual-release installer results](results/2026-11-24-indy-inst.md) and
 [reproduction procedure](../lab/irix-installer/README.md#repeat-the-clean-indy-installer-check)
 describe the current boundary. Software Manager and upgrades remain later work.

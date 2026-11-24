@@ -73,6 +73,12 @@ restriction is why module delivery currently targets `mips64eb`. A 32-bit
 kernel uses the built-in personality; 32-bit module loading would be a
 separate loader project.
 
+SGI's installer also uses ordinary file operations in the personality.
+`sys/compat/irix_o32/irix_o32.c` translates the IRIX open flags, `creat`,
+`umask`, `fsync` and `lchown` to existing NetBSD interfaces. The
+[dual-release installer checks](results/2026-11-24-indy-inst.md) exercise
+history writes, symlink ownership and the unprivileged ownership check.
+
 ## Native fixes and platform support
 
 These are ordinary NetBSD changes exposed by the workloads. They belong in

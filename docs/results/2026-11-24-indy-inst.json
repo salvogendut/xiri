@@ -1,6 +1,6 @@
 {
   "netbsd_branch": "xiri",
-  "netbsd_commit": "5071d8c701851c35adf5a167a8b9f3aadf6e04de",
+  "netbsd_commit": "c7e2ed055caf57bc0fe354818e9a1d2f14160f37",
   "host_tests": 94,
   "releases": {
     "6.5.22f": {
@@ -45,11 +45,37 @@
       ],
       "control_package": "fw_common.sw.selections",
       "control_payload_sha256": "0f82722b11f22c7c3880b0c2b715d4b80f4c9b3136051421c668b7627f13fbf4",
-      "control_history": "failed",
       "graphical_logins": [
         "4Dwm",
         "ctwm"
-      ]
+      ],
+      "control_history_before_fsync": "failed",
+      "control_history_after_fsync": "vendor product listed on install, absent after removal; sample digest matched on install, absent after removal",
+      "history_trace_before_fsync": "03cac5e5204a1a7c54c6190876b6bdf2fa732d3148fd2e6f59c5426fd6192cc7",
+      "symlink_ownership_trace_before_lchown": "93f4f180acdcc662411a432dbd0e48ff456572cb3a9cfd492fc774ddbf7515ea",
+      "symlink_ownership_after_lchown": "link and dangling link uid/gid 1234, target 0:0; ordinary user denied change to root",
+      "accepted_base_subsystems": [
+        "c++_eoe.sw.lib",
+        "compiler_eoe.sw.cpp",
+        "compiler_eoe.sw.lboot",
+        "compiler_eoe.sw.lib",
+        "compiler_eoe.sw.unix",
+        "eoe.sw.base",
+        "eoe.sw.efs",
+        "x_eoe.sw.eoe"
+      ],
+      "game": {
+        "subsystem": "fw_xmahjongg.sw.xmahjongg",
+        "bytes": 252672,
+        "sha256": "35253008a6d31ad6c4589c622146bcd0ae781488bc5d7872a4114b888e1edb59",
+        "target": "disposable alternate root",
+        "registered_by": "original inst, verified with original versions",
+        "removal": "original inst using CD 4, versions rows and executable absent",
+        "base_complete": false,
+        "blocked_command": "cd $rbase/dev; ENV= ./MAKEDEV > /dev/null",
+        "missing_interpreter": "/sbin/make",
+        "original_make_sha256": "3fcc9ae441684fcca2d5e5ef5a78cc742fbb46ef48f206d9c5e86afb2d524b09"
+      }
     },
     "6.5.30f": {
       "donor_sha256": "339f74457dfbb06813681ab5db2ccfdd29d394e8a02dfcdcd6c6ac7c22a836db",
@@ -93,11 +119,40 @@
       ],
       "control_package": "fw_common.sw.selections",
       "control_payload_sha256": "0f82722b11f22c7c3880b0c2b715d4b80f4c9b3136051421c668b7627f13fbf4",
-      "control_history": "failed",
       "graphical_logins": [
         "4Dwm",
         "ctwm"
-      ]
+      ],
+      "control_history_before_fsync": "failed",
+      "control_history_after_fsync": "vendor product listed on install, absent after removal; sample digest matched on install, absent after removal",
+      "history_trace_before_fsync": "1dde5dcd61ca546be553c4334b0cecac758f8b205935440be26a55085c1a307e",
+      "symlink_ownership_trace_before_lchown": "ffb343bb71d75631c24f168c8ef889dc6cb6dd404aa29e46fea3634eff60d5dd",
+      "symlink_ownership_after_lchown": "link and dangling link uid/gid 1234, target 0:0; ordinary user denied change to root",
+      "accepted_base_subsystems": [
+        "c++_eoe.sw.lib",
+        "compiler_eoe.sw.cpp",
+        "compiler_eoe.sw.lboot",
+        "compiler_eoe.sw.lib",
+        "compiler_eoe.sw.unix",
+        "eoe.sw.base",
+        "eoe.sw.efs",
+        "x_eoe.sw.eoe"
+      ],
+      "game": {
+        "subsystem": "fw_xmahjongg.sw.xmahjongg",
+        "bytes": 252672,
+        "sha256": "35253008a6d31ad6c4589c622146bcd0ae781488bc5d7872a4114b888e1edb59",
+        "target": "disposable alternate root",
+        "registered_by": "original inst, verified with original versions",
+        "removal": "original inst using CD 4, versions rows and executable absent",
+        "base_complete": false,
+        "blocked_command": "cd $rbase/dev; ENV= ./MAKEDEV > /dev/null",
+        "missing_interpreter": "/sbin/make",
+        "original_make_sha256": "a8964e34798d89914a733fc5dd77f22ea3e139b9ae1cb3e1b82721cde7480329"
+      }
     }
-  }
+  },
+  "kernel_sha256": "81f5240ad7fdd66041e57ca96c3abbc53fe6c8acecfa72a1a3b27b54c3aebb54",
+  "history_fix_module_sha256": "e9dea4dc75c6515c3f78ea232621ef829b09b56dff138a4364b0617782f459f4",
+  "link_fix_module_sha256": "cbca2487b924db31131a0b0cb154ce01baf88bc850ace6bc3d060dac9704b3ce"
 }
