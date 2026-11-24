@@ -203,6 +203,12 @@ ordinary accounts with owned homes under `/home` can select Xiri as well;
 between users. Desktop links, Dumpster, application settings and session logs
 are created under the authenticated user's HOME.
 
+To preview the IRIX lookup rows for either table with the v3 runtime, run
+`getent passwd | /usr/local/bin/xiri-account-map passwd` or
+`getent group | /usr/local/bin/xiri-account-map group`. The filter reads
+native records on standard input and writes password-free IRIX records to
+standard output. A malformed row or empty input produces a failing exit status.
+
 `xiri-sync-users` refreshes `/emul/irix/etc/passwd` and `/emul/irix/etc/group`
 from native NSS, with password fields replaced by `*`. It writes lookup data
 only: native account databases, passwords and authentication remain unchanged.

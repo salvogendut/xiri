@@ -29,9 +29,10 @@ class UpgradeMediaTests(unittest.TestCase):
             dest = tree / path
             dest.parent.mkdir(parents=True, exist_ok=True)
             dest.write_bytes(value)
+            dest.chmod(0o555)
             digest = hashlib.sha256(value).hexdigest()
             rows.append(f'{path}|file|0555|{digest}|replace-owned-file')
-        (tree / 'files.tsv').write_text('\n'.join(rows) + '\n')
+        (tree / 'files.tsv').write_text(''.join(row + '\n' for row in rows))
         (tree / 'target.conf').write_text('machine=sgimips\n')
         (tree / 'prerequisites.tsv').touch()
         archive_tree(tree, package / 'native.tar.gz')
@@ -63,8 +64,50 @@ class UpgradeMediaTests(unittest.TestCase):
                 with self.assertRaisesRegex(ValueError, 'Unsupported upgrade destination'):
                     upgrade_delta(old, new, work)
 
-    def test_reject_inventory_changes(self):
-        old = self.package('a', {self.changed: b'original'})
-        new = self.package('b', {self.changed: b'updated', 'root/usr/local/bin/xiri-extra': b'extra'})
-        with self.assertRaisesRegex(ValueError, 'adds or removes'):
+    def test_add_and_retire_use_absent_sides_and_include_only_available_bytes(self):
+        retired = 'root/usr/local/libexec/xiri/old-map'
+        added = 'root/usr/local/bin/xiri-account-map'
+        old = self.package('a', {retired: b'original'})
+        new = self.package('b', {added: b'updated'})
+        with tarfile.open(upgrade_delta(old, new, self.root)) as delta:
+            rows = [line.split('|') for line in delta.extractfile('changes').read().decode().splitlines()]
+            self.assertEqual(rows, [
+                [added[4:], '-', '-', '0555', hashlib.sha256(b'updated').hexdigest()],
+                [retired[4:], '0555', hashlib.sha256(b'original').hexdigest(), '-', '-'],
+            ])
+            self.assertEqual(delta.extractfile('old/' + retired).read(), b'original')
+            self.assertEqual(delta.extractfile('new/' + added).read(), b'updated')
+            self.assertNotIn('new/' + retired, delta.getnames())
+            self.assertNotIn('old/' + added, delta.getnames())
+
+    def test_inventory_changes_still_reject_other_destinations(self):
+        for added in (True, False):
+            with self.subTest(added=added), tempfile.TemporaryDirectory(dir=self.root) as d:
+                w = Path(d)
+                a, b = self.package(w / 'a', {}), self.package(w / 'b', {'root/etc/rc.d/xiri': b'service'})
+                with self.assertRaisesRegex(ValueError, 'Unsupported upgrade destination'):
+                    upgrade_delta(a if added else b, b if added else a, w)
+
+    def test_refuse_adding_a_link_declared_as_a_regular_file(self):
+        old = self.package('a', {})
+        new = self.package('b', {self.changed: b'helper'})
+        member = new / 'tree' / self.changed
+        member.rename(member.with_name('other'))
+        member.symlink_to('other')
+        tar = new / 'native.tar.gz'
+        tar.unlink()
+        archive_tree(new / 'tree', tar)
+        with self.assertRaisesRegex(ValueError, 'type or mode differs'):
+            upgrade_delta(old, new, self.root)
+
+    def test_refuse_retirement_if_new_archive_still_contains_the_helper(self):
+        old = self.package('a', {self.changed: b'old'})
+        new = self.package('b', {})
+        hidden = new / 'tree' / self.changed
+        hidden.parent.mkdir(parents=True)
+        hidden.write_bytes(b'still installed by this archive')
+        tar = new / 'native.tar.gz'
+        tar.unlink()
+        archive_tree(new / 'tree', tar)
+        with self.assertRaisesRegex(ValueError, 'Unlisted upgrade member'):
             upgrade_delta(old, new, self.root)

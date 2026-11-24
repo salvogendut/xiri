@@ -121,7 +121,7 @@ if test ! -f "$history/complete"; then
     done <"$scratch/files.tsv"
     touch "$history/complete"
 fi
-for name in original created installed inputs; do
+for name in original created upgrade-progress installed inputs; do
     if exists "$state/$name"; then mv "$state/$name" "$history/$name"; fi
 done
 rm "$state/removing"

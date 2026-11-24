@@ -513,8 +513,11 @@ def main():
         paths += ['/usr/libexec/xiri-shell','/etc/xiri/session.conf','/etc/xiri/fam.conf',
                   '/etc/xiri/xdm/Xservers','/etc/xiri/xdm/Xresources','/usr/people/xiritest/.xsession']
         if args.multiuser:
+            mapper = '/usr/local/bin/xiri-account-map'
+            if args.bundle and mapper not in previous['installed_files']:
+                mapper = '/usr/local/libexec/xiri/account-map.awk'
             paths += ['/usr/people/xiritest2/.xsession', '/usr/local/sbin/xiri-sync-users',
-                      '/usr/local/libexec/xiri/account-map.awk', '/usr/local/sbin/famd']
+                      mapper, '/usr/local/sbin/famd']
         paths += ['/etc/rc.d/'+x for x in ['xiri_devices','xiri_famd']]
         paths += ['/etc/rc.conf.d/'+x for x in ['xiri_devices','xiri_famd','rpcbind','xdm']]
         if not args.bundle or '/etc/xiri/Xresources' in previous['installed_files']:

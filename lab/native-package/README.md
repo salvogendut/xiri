@@ -136,3 +136,13 @@ receipt changes. It also tries a conflicting local edit before the update.
 The two graphical boots each exercise both xdm logins, check a saved winterm
 colour on the X server and run the vendor shell. See `result.json` in the
 run directory for the receipts and per-boot screenshots' hashes.
+
+For the helper inventory migration use the same runner with
+`--upgrade-media .work/installers/indy-11.99.11/helper-layout/xiri-${release}.iso`
+and `--inventory-base-media .work/installers/indy-11.99.11/upgrade/xiri-${release}.iso`.
+The previous CD is at SCSI ID 5. Both tests begin by upgrading the published
+clean image to v2. The R4400 exercises its legacy receipt. The R5000 also
+removes and reinstalls v2 over a site-owned mapper to exercise recorded file
+ownership. Both tests interrupt forward and reverse migration between the
+caller switch and final retirement, verify local collisions, and check both
+xdm sessions after each reboot.

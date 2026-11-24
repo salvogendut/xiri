@@ -16,8 +16,7 @@ trap 'exit 1' HUP INT TERM
 umask 077
 for table in passwd group; do
     getent "$table" >"$lock/native-$table"
-    awk -v database="$table" -f /usr/local/libexec/xiri/account-map.awk \
-        "$lock/native-$table" >"$lock/$table"
+    /usr/local/bin/xiri-account-map "$table" <"$lock/native-$table" >"$lock/$table"
 done
 for table in passwd group; do
     # Retain the original imported lookup data once, for manual rollback.

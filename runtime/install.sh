@@ -15,7 +15,7 @@ install -m 444 etc/netbsd.ftr "$stage/usr/local/share/xiri/netbsd.ftr"
 install -m 444 etc/applications.ftr "$stage/usr/local/share/xiri/applications.ftr"
 install -m 555 sbin/xiri-update-filetypes "$stage/usr/local/sbin/xiri-update-filetypes"
 install -m 555 sbin/xiri-sync-users "$stage/usr/local/sbin/xiri-sync-users"
-install -m 444 libexec/account-map.awk "$stage/usr/local/libexec/xiri/account-map.awk"
+install -m 555 bin/xiri-account-map "$stage/usr/local/bin/xiri-account-map"
 install -m 444 libexec/sgi-colours.awk "$stage/usr/local/libexec/xiri/sgi-colours.awk"
 for name in Xservers Xresources; do
     install -m 444 "etc/xdm-$name" "$stage/etc/xiri/xdm/$name.example"

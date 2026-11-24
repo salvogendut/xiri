@@ -301,7 +301,7 @@ archives and release in `/var/db/xiri-install/installed` identify the
 current installation. To remove the desktop later, use uninstall media
 whose native and vendor archives match that receipt.
 
-The update replaces only helpers listed as changed between the packages.
+The update touches only the native helper paths listed in the package delta.
 It preserves installed IRIX programs, fonts, user homes, active configuration
 and the kernel/module pair. If a changed helper also has a local edit or
 different permissions, the command identifies its path before starting the
@@ -324,10 +324,60 @@ payload. Repeat for the other IRIX release, choosing a separate output ISO.
     --output "/tmp/xiri-upgrade-${release}.iso"
 ```
 
-Both packages must use the same qualified Indy profile, kernel, prerequisites
-and installed path inventory. The media builder accepts content or mode
-changes to existing Xiri commands in `/usr/local/bin` and `/usr/local/sbin`,
-and helpers in `/usr/local/libexec/xiri`. Changes to service definitions,
-configuration defaults, links, drivers or package inventory require a separate
-migration. The verified vendor archive is included for fresh installation.
-See the [two Indy upgrade runs and screenshots](results/2026-11-24-indy-native-upgrade.md).
+Both packages must use the same qualified Indy profile, kernel and native
+prerequisites. The media builder accepts regular Xiri commands in
+`/usr/local/bin` and `/usr/local/sbin`, and helpers in `/usr/local/libexec/xiri`.
+Service definitions, configuration defaults, links and drivers require separate
+migration support. [First helper update and screenshots](results/2026-11-24-indy-native-upgrade.md)
+
+### Add or retire helpers with the v3 account update
+
+The next CD upgrades **v2 to v3** on the same installed vendor release.
+Check `cat /var/db/xiri-install/installed` at the root console. Its second
+field identifies the native package. The v2 digest begins with `b0a4a093`.
+On a November 23 clean Indy still at v1 (`8fe4ab36`), apply the v2 CD
+above first. The v3 digest begins with `ab50f980`. To boot the installed
+system with the v3 CD attached, set `release` to the matching vendor release.
+
+```sh
+release=6.5.22f
+.work/images/xiri-clean-indy-${release}-20261123/run-iris.sh --cdrom4 "$PWD/.work/installers/indy-11.99.11/helper-layout/xiri-${release}.iso"
+```
+
+Mount the matching CD and log out to the xdm greeter. For an installation
+with a `/var/db/xiri-install/created` directory, run the update as root.
+
+```sh
+sh /cdrom/upgrade.sh
+shutdown -r now
+```
+
+The original clean Indy images have older receipts. Applying the v2 update
+to one of those images retains its older ownership information.
+**Only on a documented clean Indy with that older receipt**, use
+`sh /cdrom/upgrade.sh --legacy-clean-indy`. That option authorizes retiring
+an unchanged helper whose original ownership was never recorded. To reverse
+the update, mount the same v3 CD and add `--rollback` to the command used
+for the upgrade. Resume an interrupted operation with the same direction
+and options.
+
+The updater adds new helpers before switching their callers and retires old
+helpers last. The v3 package adds `/usr/local/bin/xiri-account-map`, updates
+`xiri-sync-users` and retires `/usr/local/libexec/xiri/account-map.awk`.
+A new name occupied by a local file, directory or dangling link stops the
+transaction before any helper changes, even when the file matches the new
+package byte for byte. Move the local entry to a name of your choosing before
+retrying. An edit to a retiring helper also stops the update. Save the edit
+and restore the packaged bytes and mode before retrying.
+
+On a tracked installation, retirement restores a file displaced by the
+original install with its saved ownership and permissions. A file already
+identical when first installed stays in place. Rollback checks any restored
+site file before switching the name back into package use.
+
+To reproduce the source package, build the Indy profile from Xiri commit
+`22981cd` for v2. Build the same profile from the v3 sources for the target.
+To assemble this release-specific CD, run the media command above with
+`--upgrade-from .work/packages/netbsd-sgimips-indy-11.99.11-sync-users-v2`
+and `--native-package .work/packages/netbsd-sgimips-indy-11.99.11-account-map-v3`.
+Use a new output filename. [Dual-release qualification](results/2026-11-24-indy-helper-inventory.md)

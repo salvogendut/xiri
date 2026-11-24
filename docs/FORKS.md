@@ -72,6 +72,10 @@ in `08e53ba7`. [Octane build and qualification](results/2026-11-23-octane-deskto
 
 ## IRIS upstream updates
 
+The November 24 helper inventory cycle fetched IRIS `upstream/main` at
+`b316bb03` and verified it is an ancestor of the fork's `xiri` at `a58b41a6`.
+There were no incoming commits. The Indy guest checks use their pinned emulator.
+
 The November 24 native-upgrade cycle integrated upstream `b316bb03` at
 `a58b41a6` on IRIS `xiri`. The update adapts tests and atomic operations
 to current Rust nightly and reduces memory used by Tezro fixtures. The merge

@@ -42,18 +42,24 @@ def upgrade_delta(before, after, work):
             return dict(line.split('|', 1) for line in archive.extractfile('files.tsv').read().decode().splitlines())
 
         a, b = inventory(old), inventory(new)
-        if a.keys() != b.keys():
-            raise ValueError('Native upgrade adds or removes package paths')
-        for name in sorted(a):
-            if a[name] == b[name]:
+        for name in sorted(a.keys() | b.keys()):
+            if a.get(name) == b.get(name):
                 continue
             if not re.fullmatch(r'root/usr/local/(?:s?bin/xiri-|libexec/xiri/)[a-zA-Z0-9_][a-zA-Z0-9_.-]*', name):
                 raise ValueError('Unsupported upgrade destination: ' + name)
             row = [name.removeprefix('root')]
-            for side, archive, entry in [('old', old, a[name]), ('new', new, b[name])]:
+            for side, archive, entry in [('old', old, a.get(name)), ('new', new, b.get(name))]:
+                if entry is None:
+                    if name in archive.getnames():
+                        raise ValueError('Unlisted upgrade member in package: ' + name)
+                    row.extend(['-', '-'])
+                    continue
                 kind, mode, digest, policy = entry.split('|')
                 if kind != 'file' or policy != 'replace-owned-file' or not re.fullmatch('0[0-7]{3}', mode):
                     raise ValueError('Expected a managed regular file: ' + name)
+                member = archive.getmember(name)
+                if not member.isreg() or member.mode != int(mode, 8):
+                    raise ValueError('Package member type or mode differs from helper: ' + name)
                 dest = delta / side / name
                 dest.parent.mkdir(parents=True, exist_ok=True)
                 dest.write_bytes(archive.extractfile(name).read())

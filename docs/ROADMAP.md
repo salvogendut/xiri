@@ -323,9 +323,10 @@ stock native files, xdm, user homes and administrator edits.
 [Dual-release removal results](results/2026-11-24-indy-desktop-removal.md)
 
 The [in-place native helper update](NATIVE-PACKAGE.md#upgrade-native-helpers-on-an-installed-indy)
-covers changes to existing commands on the installed Indy. Broader package
-migrations that add or retire files, service changes and physical Indy
-qualification remain open. [Indy upgrade results](results/2026-11-24-indy-native-upgrade.md)
+covers updates to existing commands. The [helper inventory migration](NATIVE-PACKAGE.md#add-or-retire-helpers-with-the-v3-account-update)
+adds and retires commands while preserving site files. Service definitions,
+configuration defaults and physical Indy qualification remain open.
+[Indy helper migration results](results/2026-11-24-indy-helper-inventory.md)
 
 - [x] Maintain a separate original-media **IRIX 6.5.30** installation/import
   process, with its own media pins, donor CHD, resource profile and Xiri acceptance

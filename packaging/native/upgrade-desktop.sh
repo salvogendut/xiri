@@ -5,7 +5,14 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin
 export PATH
 umask 077
 fail() { echo "Xiri upgrade: $*" >&2; exit 1; }
-case "$#:$*" in 0:) side=new;; 1:--rollback) side=old;; *) fail 'usage: sh upgrade.sh [--rollback]';; esac
+side=new legacy=no
+for option do
+    case "$option" in
+        --rollback) side=old;;
+        --legacy-clean-indy) legacy=yes;;
+        *) fail 'usage: sh upgrade.sh [--rollback] [--legacy-clean-indy]';;
+    esac
+done
 test "$(id -u)" = 0 && test "$(uname -s)" = NetBSD || fail 'run as root on NetBSD'
 cd "$(dirname "$0")"
 media=$(pwd -P)
@@ -73,31 +80,105 @@ matches() {
     test -f "$dest" && test ! -L "$dest" && test "$(stat -f '%u:%g:%Lp' "$dest")" = "0:0:${1#0}" &&
         test "$(sha256 -q "$dest")" = "$2"
 }
-# Validate the entire change set before writing any file.
+# Install newly required helpers before switching their callers. Retire old
+# helpers last. Recompute order in each direction, including rollback.
+awk -F'|' -v side="$side" 'BEGIN {OFS="|"} {
+    if (side=="new") {fm=$2; fh=$3; tm=$4; th=$5}
+    else             {fm=$4; fh=$5; tm=$2; th=$3}
+    print (fm=="-" ? 1 : tm=="-" ? 3 : 2),$1,fm,fh,tm,th
+}' changes > unordered
+LC_ALL=C sort unordered > plan
+progress=$state/upgrade-progress
+created=$state/created
+exists() { test -e "$1" || test -L "$1"; }
+# The unpackaged state is either a vacant name or the original local file
+# displaced by installation. A dangling link is also an occupied name.
+unpackaged() {
+    if ! exists "$saved"; then ! exists "$dest"; return; fi
+    test -f "$saved" && test ! -L "$saved" && test -f "$dest" && test ! -L "$dest" &&
+        cmp -s "$dest" "$saved" && test "$(stat -f '%u:%g:%Lp' "$dest")" = "$(stat -f '%u:%g:%Lp' "$saved")"
+}
+applied() {
+    test "$resume" = yes || return 1
+    if test "$frommode" != - && test "$mode" != -; then matches "$mode" "$digest"; return; fi
+    test -f "$started" || return 1
+    if test "$mode" = -; then unpackaged; return; fi
+    matches "$mode" "$digest" && test "$(stat -f '%d:%i' "$dest")" = "$(cat "$started")"
+}
+ownership() {
+    test -d "$created" || return 0
+    if test "$frommode" = - && ! exists "$saved"; then
+        mkdir -p "$created$dest"
+    elif test "$mode" = - && test -d "$created$dest"; then
+        sync
+        rmdir "$created$dest"
+    fi
+}
+start_path() {
+    mkdir -p "$(dirname "$started")"
+    printf '%s\n' "$1" > "$scratch/started"
+    mv -f "$scratch/started" "$started"
+    sync
+}
 helpers() {
-    while IFS='|' read -r dest oldmode oldsha newmode newsha; do
-        if test "$side" = new; then
-            mode=$newmode digest=$newsha frommode=$oldmode fromsha=$oldsha
-        else
-            mode=$oldmode digest=$oldsha frommode=$newmode fromsha=$newsha
-        fi
-        if test "$resume" = yes && matches "$mode" "$digest"; then continue; fi
-        matches "$frommode" "$fromsha" || fail "local change at $dest; save or reconcile it first"
-        test "$1" = apply || continue
-        # A file identical to the old package may have predated a tracked install.
+    while IFS='|' read -r order dest frommode fromsha mode digest; do
         saved=$state/original$dest
-        if test -d "$state/created" && test ! -d "$state/created$dest" &&
-            test ! -e "$saved" && test ! -L "$saved"; then
+        started=$progress$dest
+        if exists "$saved" && { test ! -f "$saved" || test -L "$saved"; }; then
+            fail "unexpected original helper type at $saved"
+        fi
+        if applied; then
+            if test "$1" = apply; then ownership; fi
+            continue
+        fi
+        if test "$frommode" = -; then
+            unpackaged || fail "occupied helper path $dest; save or reconcile it first"
+        else
+            matches "$frommode" "$fromsha" || fail "local change at $dest; save or reconcile it first"
+            if test "$mode" = - && test ! -d "$created" &&
+                ! exists "$saved" && test "$legacy" != yes; then
+                fail "unknown ownership of $dest; use --legacy-clean-indy only on a documented clean Indy installation"
+            fi
+        fi
+        test "$1" = apply || continue
+        if test "$frommode" != - && test -d "$state/created" && test ! -d "$created$dest" &&
+            ! exists "$saved"; then
+            # Same bytes could have predated the initial tracked installation.
             mkdir -p "$(dirname "$saved")"
             cp -p "$dest" "$scratch/original" && mv "$scratch/original" "$saved"
             sync
         fi
-        staging=$(mktemp "$(dirname "$dest")/.xiri-upgrade.XXXXXX")
-        install -m "$mode" "$side/root$dest" "$staging"
-        test "$(sha256 -q "$staging")" = "$digest" || fail "bad staged helper $dest"
-        mv -f "$staging" "$dest"
-        staging=
-    done < changes
+        if test "$mode" = -; then
+            start_path retire
+            if ! unpackaged; then
+                if exists "$saved"; then
+                    staging=$(mktemp "$(dirname "$dest")/.xiri-upgrade.XXXXXX")
+                    cp -p "$saved" "$staging" && mv -f "$staging" "$dest"
+                    staging=
+                else
+                    rm "$dest"
+                fi
+            fi
+        elif test "$frommode" = - && exists "$saved" && matches "$mode" "$digest"; then
+            # The site's original file was also the packaged version.
+            start_path "$(stat -f '%d:%i' "$dest")"
+        else
+            staging=$(mktemp "$(dirname "$dest")/.xiri-upgrade.XXXXXX")
+            install -m "$mode" "$side/root$dest" "$staging"
+            test "$(sha256 -q "$staging")" = "$digest" || fail "bad staged helper $dest"
+            if test "$frommode" = -; then
+                start_path "$(stat -f '%d:%i' "$staging")"
+            fi
+            if test "$frommode" = - && ! exists "$saved"; then
+                # link(2) cannot overwrite a racing local file or follow a directory.
+                /usr/sbin/link "$staging" "$dest" && rm "$staging" || fail "cannot publish new helper $dest"
+            else
+                mv -f "$staging" "$dest"
+            fi
+            staging=
+        fi
+        ownership
+    done < plan
 }
 write_receipt() {
     staging=$(mktemp "$(dirname "$1")/.xiri-upgrade.XXXXXX")
@@ -108,6 +189,8 @@ write_receipt() {
 }
 helpers check
 if test "$resume" = no; then
+    rm -rf "$progress"
+    mkdir "$progress"
     printf '%s\n' "$transaction" > "$scratch/pending"
     mv "$scratch/pending" "$pending"
     sync
@@ -119,4 +202,6 @@ sync
 for receipt in $trees "$inputs" "$installed"; do write_receipt "$receipt" "$target"; done
 sync
 rm "$pending"
+sync
+rm -rf "$progress"
 echo "Installed native package $target"

@@ -32,7 +32,7 @@ def runtime_files():
     paths += ['/usr/local/sbin/xiri-update-filetypes', '/usr/local/share/xiri/netbsd.ftr',
               '/usr/local/share/xiri/applications.ftr',
               '/emul/irix/usr/lib/filetype/desktop.otr']
-    paths += ['/usr/local/sbin/xiri-sync-users', '/usr/local/libexec/xiri/account-map.awk',
+    paths += ['/usr/local/sbin/xiri-sync-users', '/usr/local/bin/xiri-account-map',
               '/usr/local/libexec/xiri/sgi-colours.awk']
     paths += ['/emul/irix/usr/sbin/schemebr']
     paths += ['/usr/libexec/xiri-shell','/etc/xiri/session.conf','/etc/xiri/fam.conf',

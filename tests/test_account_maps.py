@@ -3,12 +3,12 @@ from pathlib import Path
 import subprocess
 import unittest
 
-MAP = Path(__file__).resolve().parents[1]/'runtime/libexec/account-map.awk'
+MAP = Path(__file__).resolve().parents[1]/'runtime/bin/xiri-account-map'
 
 
 class AccountMapTests(unittest.TestCase):
     def project(self, table, text):
-        return subprocess.run(['awk', '-v', 'database='+table, '-f', str(MAP)],
+        return subprocess.run([str(MAP), table],
                               input=text, text=True, capture_output=True)
 
     def test_passwd_preserves_homes_and_ids_and_irix_root_convention(self):
