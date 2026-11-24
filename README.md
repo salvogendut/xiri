@@ -308,6 +308,8 @@ covers native ctwm recovery, the stock Newport driver and preservation of
 user homes and local configuration. [Test results and screenshots for both releases](docs/results/2026-11-24-indy-desktop-removal.md)
 
 The [native helper update guide](docs/NATIVE-PACKAGE.md#upgrade-native-helpers-on-an-installed-indy) covers updating an installed Indy and rolling back from the same release-specific CD. The [v3 account update](docs/NATIVE-PACKAGE.md#add-or-retire-helpers-with-the-v3-account-update) also handles added and retired commands.
+The [v4 FAM service update](docs/NATIVE-PACKAGE.md#configure-the-fam-service-log-with-v4)
+lets administrators choose the file-monitor log in `/etc/rc.conf.d/xiri_famd`.
 
 Compatibility is incomplete. The reproduced Type1 collapse is corrected;
 winterm keeps the verified NetBSD bitmap Courier default. Broader graphics operations,

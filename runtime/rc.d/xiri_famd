@@ -37,7 +37,7 @@ xiri_famd_start()
     umask 022
     (exec env XIRI_FAM_EXEC=1 XIRI_FAM_ROOT=/emul/irix \
         "$command" -d -c /etc/xiri/fam.conf -p 391002.1) \
-        </dev/null >>/var/log/xiri-fam.log 2>&1 &
+        </dev/null >>"$xiri_famd_logfile" 2>&1 &
     service_pid=$!
     echo "$service_pid" >"$pidfile"
     tries=0
@@ -47,11 +47,12 @@ xiri_famd_start()
             kill "$service_pid" 2>/dev/null || :
             wait "$service_pid" 2>/dev/null || :
             rm -f "$pidfile"
-            echo 'FAM did not register; see /var/log/xiri-fam.log.' >&2
+            echo "FAM did not register; see $xiri_famd_logfile." >&2
             return 1
         fi
         sleep 1
     done
 }
 load_rc_config "$name"
+: "${xiri_famd_logfile:=/var/log/xiri-fam.log}"
 run_rc_command "$1"

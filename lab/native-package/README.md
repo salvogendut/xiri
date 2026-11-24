@@ -146,3 +146,28 @@ removes and reinstalls v2 over a site-owned mapper to exercise recorded file
 ownership. Both tests interrupt forward and reverse migration between the
 caller switch and final retirement, verify local collisions, and check both
 xdm sessions after each reboot.
+
+## FAM service update
+
+Use the same kernel round-trip runner and a fresh output directory per release.
+Pass `--upgrade-media .work/installers/indy-11.99.11/fam-service/xiri-${release}.iso`
+and `--service-base-media /tmp/base-${release}.iso`. Build the latter with
+`./xiri install-media` using v1 as `--upgrade-from`, v3 as `--native-package`
+and the release's vendor payload. The runner applies it to a private copy of
+the clean v1 CHD before testing v4.
+
+The test interrupts the updater between the service script and example in
+each direction. It checks new startup log messages from FAM's current PID, local file hashes,
+ownership, modes and inodes. While logged into 4Dwm it launches SGI File
+Manager on a fresh directory. It traces that process's reads and matches
+both FAM messages to its directory subscription while NetBSD creates and
+deletes a file. Each graphical boot also exercises the native ctwm login.
+
+For the rc.conf.d removal check, use another disposable v4 installation.
+Save its edited `/etc/rc.conf.d/xiri_famd`, stop xdm and FAM, and remove the
+desktop using that installation's ownership mode. Compare the live file
+with the saved edit and move it aside on the test disk. Reinstall from the
+v4 CD. The live file should contain only `xiri_famd=YES` and a newline at
+mode 0644, owned by root and wheel. The example should document
+`xiri_famd_logfile`. Run the tracked uninstall and verify the live enable
+file is gone and the saved edit is intact.

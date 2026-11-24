@@ -327,8 +327,9 @@ payload. Repeat for the other IRIX release, choosing a separate output ISO.
 Both packages must use the same qualified Indy profile, kernel and native
 prerequisites. The media builder accepts regular Xiri commands in
 `/usr/local/bin` and `/usr/local/sbin`, and helpers in `/usr/local/libexec/xiri`.
-Service definitions, configuration defaults, links and drivers require separate
-migration support. [First helper update and screenshots](results/2026-11-24-indy-native-upgrade.md)
+The [v4 FAM update](#configure-the-fam-service-log-with-v4) also supports
+replacement of its startup script and packaged example.
+[First helper update and screenshots](results/2026-11-24-indy-native-upgrade.md)
 
 ### Add or retire helpers with the v3 account update
 
@@ -381,3 +382,40 @@ To assemble this release-specific CD, run the media command above with
 `--upgrade-from .work/packages/netbsd-sgimips-indy-11.99.11-sync-users-v2`
 and `--native-package .work/packages/netbsd-sgimips-indy-11.99.11-account-map-v3`.
 Use a new output filename. [Dual-release qualification](results/2026-11-24-indy-helper-inventory.md)
+
+### Configure the FAM service log with v4
+
+Start with an installed v3 Indy desktop. The native archive digest in the
+second field of `/var/db/xiri-install/installed` begins with `ab50f980`.
+Attach the update CD for the installed IRIX release when starting the emulator.
+
+```sh
+release=6.5.22f
+.work/images/xiri-clean-indy-${release}-20261123/run-iris.sh --cdrom4 "$PWD/.work/installers/indy-11.99.11/fam-service/xiri-${release}.iso"
+```
+
+Log out to xdm, mount the CD as above, and run `sh /cdrom/upgrade.sh` as
+root. V4 replaces `/etc/rc.d/xiri_famd` and the reference copy at
+`/usr/local/share/xiri/examples/rc.conf.d/xiri_famd`. The running daemon
+continues serving clients until its next restart. An edit to either packaged
+file stops the update and identifies the path. Save the edit and reconcile
+the reported file before retrying.
+
+To choose a log destination, add a line like the following to the live
+`/etc/rc.conf.d/xiri_famd`. Keep the existing `xiri_famd=YES` setting.
+
+```sh
+xiri_famd_logfile="/var/log/xiri fam site.log"
+```
+
+Reboot or run `/etc/rc.d/xiri_famd restart` from the greeter. FAM appends
+to the chosen file. With the setting omitted or empty it appends to
+`/var/log/xiri-fam.log`. To roll back, mount the same CD, run
+`sh /cdrom/upgrade.sh --rollback` and reboot. V3 uses the default log again.
+The administrator's rc.conf.d setting and `/etc/xiri/fam.conf` survive both
+directions. If interrupted, repeat the same command with the same CD.
+
+Build the CDs with the preceding media command, using the v3 package as
+`--upgrade-from` and `.work/packages/netbsd-sgimips-indy-11.99.11-fam-service-v4`
+as `--native-package`. Select the matching vendor payload for each output.
+[Indy test results and screenshots](results/2026-11-24-indy-fam-service.md)

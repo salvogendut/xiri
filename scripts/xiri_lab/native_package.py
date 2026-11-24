@@ -227,7 +227,8 @@ def build(profile_path, inputs_path, compiler, sets, output):
                 shutil.copyfile(ROOT/src,target);target.chmod(0o444)
             examples=stage/'usr/local/share/xiri/examples';(examples/'rc.conf.d').mkdir(parents=True)
             for name,text in {'rpcbind':'rpcbind=YES\nrpcbind_flags="-h 127.0.0.1"\n',
-                              'xiri_devices':'xiri_devices=YES\n','xiri_famd':'xiri_famd=YES\n',
+                              'xiri_devices':'xiri_devices=YES\n',
+                              'xiri_famd':'xiri_famd=YES\n#xiri_famd_logfile="/var/log/xiri-fam.log"\n',
                               'xiri_sessions':'xiri_sessions=YES\n',
                               'xdm':'xdm=YES\nxdm_flags="-server /etc/xiri/xdm/Xservers -resources /etc/xiri/xdm/Xresources"\n'}.items():
                 (examples/'rc.conf.d'/name).write_text(text);(examples/'rc.conf.d'/name).chmod(0o444)

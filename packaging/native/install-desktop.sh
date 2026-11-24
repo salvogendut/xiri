@@ -145,7 +145,10 @@ for service in rpcbind xiri_devices xiri_famd xiri_sessions xdm; do
     if test ! -e "$dest" && test ! -L "$dest"; then
         remember_missing "$dest"
         new=$(mktemp /etc/rc.conf.d/.xiri-service.XXXXXX)
-        install -m 644 "/usr/local/share/xiri/examples/rc.conf.d/$service" "$new" && mv "$new" "$dest"
+        # Only the enabled settings seed the live configuration. Comments
+        # document optional settings in the example across package versions.
+        sed '/^#/d' "/usr/local/share/xiri/examples/rc.conf.d/$service" >"$new" &&
+            chmod 644 "$new" && mv "$new" "$dest"
     fi
 done
 cp "$state/inputs" "$scratch/installed" && mv "$scratch/installed" "$state/installed"

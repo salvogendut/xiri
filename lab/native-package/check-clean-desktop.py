@@ -105,7 +105,7 @@ def login(guest, user):
         guest.monitor(command)
 
 
-def desktop(guest, out, colour=None):
+def desktop(guest, out, colour=None, while_logged_in=None):
     greeter(guest)
     guest.command('grep -Fq \'Option "NoAccel" "false"\' /usr/local/share/xiri/xorg.conf')
     acceleration = guest.read_text("grep -Ei 'NEWPORT.*(NoAccel|accel)|using.*XAA' /var/log/Xorg.0.log").strip()
@@ -143,6 +143,8 @@ def desktop(guest, out, colour=None):
     guest.monitor('disp compositor gl')
     guest.monitor('screen wait 500 10000')
     guest.monitor('screen shot ' + str(out / 'desktop.png'))
+    if while_logged_in:
+        while_logged_in(guest)
     guest.command('su -m xiritest -c "env XIRI_SESSION_DIR=\'$job\' /usr/local/bin/xiri-logout"')
     greeter(guest)
     login(guest, 'netbsdtest')

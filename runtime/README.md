@@ -96,12 +96,17 @@ rpcbind_flags="-h 127.0.0.1"
 xiri_devices=YES
 # /etc/rc.conf.d/xiri_famd
 xiri_famd=YES
+# Optional on v4 and later
+#xiri_famd_logfile="/var/log/xiri-fam.log"
 ```
 
 Reboot after initial deployment so PTY setup precedes login/PTY allocation.
 `xiri_devices` uses `/var/run/xiri-pty-ready` to prevent repeated remounts in
-the same boot. Re-running it refreshes account names without remounting PTYs. FAM logs to
-`/var/log/xiri-fam.log`; its service PID is `/var/run/xiri_famd.pid`. Stopping the owned FAM daemon also unregisters its RPC program/version, so
+the same boot. Re-running it refreshes account names without remounting PTYs.
+FAM appends to `/var/log/xiri-fam.log` by default. Set `xiri_famd_logfile`
+in `/etc/rc.conf.d/xiri_famd` to use another file at the next service start.
+Its parent directory must exist and be writable by the service launcher.
+The service PID is in `/var/run/xiri_famd.pid`. Stopping the owned FAM daemon also unregisters its RPC program/version, so
 `/etc/rc.d/xiri_famd restart` can register a new listener. Startup refuses a
 daemon outside its PID file. Native rpcbind retains its own standard PID
 file and rc.d lifecycle.

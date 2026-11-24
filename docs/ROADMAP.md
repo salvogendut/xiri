@@ -324,9 +324,13 @@ stock native files, xdm, user homes and administrator edits.
 
 The [in-place native helper update](NATIVE-PACKAGE.md#upgrade-native-helpers-on-an-installed-indy)
 covers updates to existing commands. The [helper inventory migration](NATIVE-PACKAGE.md#add-or-retire-helpers-with-the-v3-account-update)
-adds and retires commands while preserving site files. Service definitions,
-configuration defaults and physical Indy qualification remain open.
+adds and retires commands while preserving site files. The
+[v4 FAM update](NATIVE-PACKAGE.md#configure-the-fam-service-log-with-v4)
+replaces the FAM startup script and packaged example while retaining
+the site's active configuration. Other service migrations and physical
+Indy qualification remain open.
 [Indy helper migration results](results/2026-11-24-indy-helper-inventory.md)
+and [FAM service results](results/2026-11-24-indy-fam-service.md).
 
 - [x] Maintain a separate original-media **IRIX 6.5.30** installation/import
   process, with its own media pins, donor CHD, resource profile and Xiri acceptance

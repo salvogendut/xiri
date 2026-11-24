@@ -109,10 +109,10 @@ if test ! -f "$history/complete"; then
     mv "$scratch/trees" "$history/trees"
     for alias in /usr/lib/desktop /usr/adobe /usr/freeware; do undo "$alias" symlink 0 "/emul/irix$alias" managed; done
     undo /usr/bin/nawk symlink 0 awk managed
-    (cd "$scratch" && pax -rz -f "$media/native.tgz" files.tsv)
+    (cd "$scratch" && pax -rz -f "$media/native.tgz" files.tsv root/usr/local/share/xiri/examples/rc.conf.d)
     for service in rpcbind xdm xiri_devices xiri_famd xiri_sessions; do
-        hash=$(awk -F'|' -v p="root/usr/local/share/xiri/examples/rc.conf.d/$service" '$1==p {print $4}' "$scratch/files.tsv")
-        test -n "$hash" || fail "missing service default $service"
+        sed '/^#/d' "$scratch/root/usr/local/share/xiri/examples/rc.conf.d/$service" >"$scratch/rc-default"
+        hash=$(sha256 -q "$scratch/rc-default")
         undo "/etc/rc.conf.d/$service" file 0644 "$hash" managed
     done
     while IFS='|' read -r path kind mode value policy; do

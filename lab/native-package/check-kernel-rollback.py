@@ -164,11 +164,15 @@ def main():
     media = parser.add_mutually_exclusive_group()
     media.add_argument('--upgrade-media', type=Path, help='qualify native helper upgrade and rollback')
     media.add_argument('--install-media', type=Path, help='qualify removing and reinstalling this release')
-    parser.add_argument('--inventory-base-media', type=Path,
+    base = parser.add_mutually_exclusive_group()
+    base.add_argument('--inventory-base-media', type=Path,
                         help='also mount the v2 CD and qualify the v2-to-v3 helper inventory migration')
+    base.add_argument('--service-base-media', type=Path,
+                      help='mount a v1-to-v3 CD and qualify the v3-to-v4 FAM service update')
     args = parser.parse_args()
-    if args.inventory_base_media and not args.upgrade_media:
-        parser.error('--inventory-base-media requires --upgrade-media')
+    base_medium = args.inventory_base_media or args.service_base_media
+    if base_medium and not args.upgrade_media:
+        parser.error('a base CD requires --upgrade-media')
     bundle, firmware, emulator, sets, kernel, out = [
         p.resolve()
         for p in (args.bundle, args.serial_prom, args.emulator, args.sets, args.kernel, args.output)
@@ -195,10 +199,12 @@ def main():
         medium = (args.install_media or args.upgrade_media).resolve(strict=True)
         config += '\n[scsi.4]\ncdrom = true\npath = ' + json.dumps(str(medium)) + '\n'
     if args.upgrade_media:
-        if args.inventory_base_media:
-            previous_cd = args.inventory_base_media.resolve(strict=True)
+        if base_medium:
+            previous_cd = base_medium.resolve(strict=True)
             config += '\n[scsi.5]\ncdrom = true\npath = ' + json.dumps(str(previous_cd)) + '\n'
         check = 'check-helper-inventory.py' if args.inventory_base_media else 'check-native-upgrade.py'
+        if args.service_base_media:
+            check = 'check-fam-service.py'
         upgrade = runpy.run_path(str(HERE / check))
         phases = ('upgrade', 'upgraded', 'downgraded')
     elif args.install_media:
@@ -215,7 +221,7 @@ def main():
     result = dict(release=release, chd_sha256=pin['chd_sha256'], stock_sha256=stock, boots=[])
     if removal or upgrade:
         result['media_sha256'] = sha256(medium)
-    if args.inventory_base_media:
+    if base_medium:
         result['base_media_sha256'] = sha256(previous_cd)
     try:
         prepare_prom(probe, config.replace('ci = false', 'ci = true'), out, firmware)

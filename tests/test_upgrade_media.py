@@ -56,13 +56,33 @@ class UpgradeMediaTests(unittest.TestCase):
             self.assertFalse(any('session.conf' in item.name for item in delta))
 
     def test_reject_unhandled_migrations(self):
-        for path in ('kernel/netbsd', 'root/etc/xiri/session.conf', 'root/usr/sbin/rpcbind'):
+        for path in ('kernel/netbsd', 'root/etc/xiri/session.conf', 'root/usr/sbin/rpcbind',
+                     'root/etc/rc.conf', 'root/etc/rc.conf.d/xiri_famd', 'root/etc/xiri/fam.conf',
+                     'root/etc/rc.d/xdm', 'root/usr/local/share/xiri/examples/rc.conf.d/rpcbind'):
             with self.subTest(path=path), tempfile.TemporaryDirectory(dir=self.root) as d:
                 work = Path(d)
                 old = self.package(work / 'a', {path: b'old'})
                 new = self.package(work / 'b', {path: b'new'})
                 with self.assertRaisesRegex(ValueError, 'Unsupported upgrade destination'):
                     upgrade_delta(old, new, work)
+
+    def test_fam_service_and_example_are_replacements_only(self):
+        paths = ('root/etc/rc.d/xiri_famd', 'root/usr/local/share/xiri/examples/rc.conf.d/xiri_famd')
+        old = self.package('old', dict.fromkeys(paths, b'previous'))
+        new = self.package('new', dict.fromkeys(paths, b'candidate'))
+        with tarfile.open(upgrade_delta(old, new, self.root)) as delta:
+            for path in paths:
+                self.assertEqual(delta.extractfile('old/' + path).read(), b'previous')
+                self.assertEqual(delta.extractfile('new/' + path).read(), b'candidate')
+        for path in paths:
+            with self.subTest(path=path), tempfile.TemporaryDirectory(dir=self.root) as d:
+                w = Path(d)
+                missing = self.package(w / 'missing', {})
+                present = self.package(w / 'present', {path: b'service'})
+                for source, target in ((missing, present), (present, missing)):
+                    with tempfile.TemporaryDirectory(dir=w) as work:
+                        with self.assertRaisesRegex(ValueError, 'Unsupported service addition or retirement'):
+                            upgrade_delta(source, target, Path(work))
 
     def test_add_and_retire_use_absent_sides_and_include_only_available_bytes(self):
         retired = 'root/usr/local/libexec/xiri/old-map'

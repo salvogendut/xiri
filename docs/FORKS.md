@@ -72,7 +72,7 @@ in `08e53ba7`. [Octane build and qualification](results/2026-11-23-octane-deskto
 
 ## IRIS upstream updates
 
-The November 24 helper inventory cycle fetched IRIS `upstream/main` at
+The November 24 helper inventory and FAM service cycles each fetched IRIS `upstream/main` at
 `b316bb03` and verified it is an ancestor of the fork's `xiri` at `a58b41a6`.
 There were no incoming commits. The Indy guest checks use their pinned emulator.
 
