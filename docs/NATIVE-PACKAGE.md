@@ -113,26 +113,45 @@ installation and the separate original-media donor processes.
 
 ## Clean installation on an emulated Indy
 
-Use the [11.99.11 Indy profile](../profiles/netbsd-sgimips-indy-11.99.11-v1.json)
-with `./xiri package-native`. Supply the three Indy kernel artifacts from the
-[NetBSD integration build](results/2026-11-23-netbsd-current.json) and the
-three service/display artifacts listed above. This profile selects accelerated
-Newport at 1280×1024. Start with NetBSD 11.0/sgimips userland, the four X
-runtime sets, and the matching 11.99.11 kernel and boot-loaded module. The
-[stock bootstrap procedure](../lab/native-package/README.md#bootstrapping-a-stock-target)
-prepares this target from the recorded NetBSD installation.
+The Indy v5 package targets NetBSD 11.0/sgimips userland and X sets with
+the 11.99.11 kernel and boot-loaded Xiri module. It uses accelerated Newport
+at 1280×1024. The stock bootstrap prepares this target from the recorded
+NetBSD installation. [Bootstrap procedure](../lab/native-package/README.md#bootstrapping-a-stock-target)
 
-Build a local CD for each imported release. Replace the example paths with
-your local native package and previously generated donor imports. Including
-`--upgrade-from` puts the v3-to-v4 updater on the same CD. For a fresh
-installation alone, the v4 native package and vendor payload suffice.
+Build the native archive using the GLX profile. Supply the six Indy artifacts
+listed above and two additional entries in your artifact path JSON. The
+`xorg` entry points to the qualified Xorg executable and `glx` points to
+its matching `libglx.so.0`. The builder takes the original display files
+from the verified NetBSD X server set for rollback.
+[Indy GLX profile](../profiles/netbsd-sgimips-indy-11.99.11-glx-v1.json) ·
+[Display build and hashes](results/2026-11-24-indy-glx.md)
+
+```sh
+./xiri package-native --profile profiles/netbsd-sgimips-indy-11.99.11-glx-v1.json \
+    --artifacts native-inputs.json \
+    --compiler .work/netbsd-irix-build/tools/bin/mipseb--netbsd-gcc \
+    --sets .work/netbsd-11.0/sgimips/binary/sets \
+    --output .work/packages/netbsd-sgimips-indy-11.99.11-glx-v5
+```
+
+Build one CD per vendor release from the existing verified donor import and
+the same release's original Overlay 1. The builder checks the disc SHA256,
+extracts four files using Instigator, and runs the host's `mkfontdir` to
+index the three bitmap fonts. The updater is optional for fresh installs.
 
 ```sh
 for release in 6.5.22f 6.5.30f; do
-    ./xiri install-media --native-package .work/packages/netbsd-sgimips-indy-11.99.11-fam-service-v4 \
-        --upgrade-from .work/packages/netbsd-sgimips-indy-11.99.11-account-map-v3 \
+    case "$release" in
+        6.5.22f) disc="6.5.22/IRIX 6.5.22 Overlay 1 of 3.iso" ;;
+        6.5.30f) disc="6.5.30/IRIX 6.5.30 Installation Tools and Overlays (1 of 3).iso" ;;
+    esac
+    ./xiri install-media \
+        --native-package .work/packages/netbsd-sgimips-indy-11.99.11-glx-v5 \
+        --upgrade-from .work/packages/netbsd-sgimips-indy-11.99.11-fam-service-v4 \
         --vendor-payload ".work/imports/irix-${release}-v1" \
-        --output ".work/xiri-installer-${release}.iso" || exit 1
+        --clock-overlay "$HOME/Downloads/IRIX media/$disc" \
+        --instigator ../prismatic/target/release/instigator \
+        --output ".work/installers/indy-11.99.11/glx-v5/xiri-${release}.iso" || exit 1
 done
 ```
 
@@ -158,6 +177,26 @@ existing unmanaged vendor tree or conflicting `/usr/lib/desktop` requires
 administrator review. Correct the reported conflict and repeat
 `sh /cdrom/install.sh` with the same release and native build. A finished
 installation has a receipt at `/var/db/xiri-install/installed`.
+
+### Upgrade or roll back the Indy display package
+
+Log out of the graphical session. From a root text console, mount the v5 CD
+for the installed IRIX release and run the following commands.
+
+```sh
+/etc/rc.d/xdm stop
+sh /cdrom/upgrade.sh && /etc/rc.d/xdm start
+```
+
+For rollback, stop xdm again and run `sh /cdrom/upgrade.sh --rollback`, then
+restart xdm. Both directions check the installed file hashes and permissions,
+including the setuid mode on Xorg. The update installs the original release's
+font map, three Iris bitmaps and their index under `/emul/irix/usr/lib/X11/fonts`.
+The package also includes the PTY setup fix for installing original IRIX
+software. Rollback restores the stock Xorg and GLX files, the v4 helper
+and the previous installation receipt. An interrupted update resumes with the
+same CD and direction. If a local file conflicts, the command reports its
+path before applying the update. Save the local change before retrying.
 
 ### Recover from a full target filesystem
 

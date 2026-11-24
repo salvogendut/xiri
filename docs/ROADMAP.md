@@ -614,7 +614,7 @@ dependency candidates; a visible window alone does not complete these checks.
 - [ ] Finish base exit commands on a supported installer target and make package artwork updates automatic on install and removal. Upgrades and Software Manager remain open. [Software plan](IRIX-SOFTWARE.md).
 - [x] Implement IRIX hard links and verify the original timezone compiler creates working aliases on both Indy release lines. [Hard-link and desktop application checks](results/2026-11-24-indy-link-clock-xosview.md).
 - [x] Correct the sgimips Xorg GL context and extension dispatch, and verify native indirect rendering and the original SGI Clock on both Indy release lines. [Results and screenshots](results/2026-11-24-indy-glx.md).
-- [ ] Deliver the matching Xorg server and GLX module through the installer and update media, add each release’s Clock fonts to its import profile, and qualify replacement CHDs.
+- [x] Deliver Xorg and GLX through the v5 installer and upgrade media, import Clock fonts from each release’s Overlay 1 and cold-boot both replacement Indy CHDs. [Images, screenshots and rollback checks](results/2026-11-24-indy-v5-clock.md).
 - [x] Qualify persistent native accounts under `/usr/people/<username>` with shared native/IRIX access, generated desktop state and logout/login persistence. The [multi-user result](results/2026-11-05-multiuser.md) covers two accounts. Original root sessions use `HOME=/`; avoid a second emulation-root copy of user homes.
 - [ ] Implement required service adapters, including the measured file-notification and launch behavior.
 - [x] Exercise native X test windows under original 4Dwm in the same native Xvfb session used by Toolchest and winterm.

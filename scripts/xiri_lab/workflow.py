@@ -159,7 +159,9 @@ def parser():
     medium = sub.add_parser('install-media', help='combine a local native package and one verified desktop import into an ISO')
     for name in ('native-package', 'vendor-payload', 'output'):
         medium.add_argument('--'+name, required=True, type=Path)
-    medium.add_argument('--upgrade-from', type=Path, help='include a reversible native helper update from this package')
+    medium.add_argument('--upgrade-from', type=Path, help='include a reversible update from this installed native package')
+    medium.add_argument('--clock-overlay', type=Path, help='matching SGI Overlay 1 ISO for the Indy GLX profile')
+    medium.add_argument('--instigator', default='instigator', help='path to the Instigator media extractor')
     status = sub.add_parser('status', help='show selected artifacts and current source branches')
     status.add_argument('--json', action='store_true')
     sub.add_parser('doctor', help='verify selected immutable artifacts and host prerequisites')

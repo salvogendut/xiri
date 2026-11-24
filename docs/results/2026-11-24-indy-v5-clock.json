@@ -1,0 +1,174 @@
+{
+  "iris_upstream": "057ba095",
+  "iris_xiri": "39ef6dff",
+  "netbsd_xorg_source": "df8a46a636f",
+  "native_sha256": "0021ca29ec292b066ae00d8b28adfa9ab48f3474950b61c5c0352de35813bf58",
+  "host_tests": 96,
+  "bootstrap": {
+    "netbsd": "6a03b86ae641ef1fc1bef7c8e999c1a9f349580ae405c85c0da30451fb7c58a1",
+    "netbsd.boot": "a1367bb88f95edaf7bf84fe466636b1e4b129ad12f30c7d787588d88b8f21c0c",
+    "compat_irix_o32.kmod": "44ce8e5aafd5b7bf1e20ee37b0ab71fcfd964067d81b288fbc6d2bd4310583b8"
+  },
+  "releases": {
+    "6.5.22f": {
+      "image": {
+        "release": "6.5.22f",
+        "receipt": "6.5.22f 0021ca29ec292b066ae00d8b28adfa9ab48f3474950b61c5c0352de35813bf58 85191d9fb7fa2c16a11c58a2889fb891200d87cf43691a797446cba3c35aeac3",
+        "iso_sha256": "bc29ee876ffe5b5592a5e12283d0b8e874e1e7958429c132635007f3caf891ec",
+        "raw_sha1": "857f6d661ec0d51261e4035d81c13d34d2509207",
+        "chd_sha256": "2897c94b3e33c19d1cb95e8ff305dd209ba7ad7bbfd5a0735683e5577a5a6ce1",
+        "nvram_sha256": "f5c8bbe5caa69b2ba890828e295f861326bb66659b78077a82eb58c9f1b7e367",
+        "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+        "install_result_sha256": "5989b4c404a8f35ba67ed974489eb1594d8a82b8628fd6fecfd260ee90b5caca"
+      },
+      "installer_members": {
+        "native.tgz": "0021ca29ec292b066ae00d8b28adfa9ab48f3474950b61c5c0352de35813bf58",
+        "payload.tgz": "85191d9fb7fa2c16a11c58a2889fb891200d87cf43691a797446cba3c35aeac3",
+        "install.sh": "9ffac439d0d95be634a1e7cba0e9c0d3fda6d065a52cadf5c12764c04e6771c1",
+        "uninstall.sh": "6c5840a4eaf041033f4738746b08ed3b2591beb322ede6749007a7cb4a7fec97",
+        "display-update": "1e31327337648c1452efbd19b6e0237fc08e842755c9b228fba92d07849d16c3",
+        "delta.tgz": "716e06a0b6f6a8c56c2b8ba87ff213d57f9990cef7d24b8cf7fe04b44055572e",
+        "upgrade.sh": "1eca844fd02ce83bfa81466df42940f4cfede80d6c0e9b9782c2001468e06ad0",
+        "VENDOR": "98b6f429f4dec9fd6610ec114bf347dc04df8bbd07bff7a34ac55bc342c306a2",
+        "links": "523aef54c212c649ec3a52ae7c2b0d92d203934cb6b55cea7fde2d66f1653f92",
+        "release": "b136aacf54704fed46ef243a5341f9be641598c78a7cebfde7a837d8a3161387",
+        "table.sha": "f9150283f4514368a9f300ed55cc4da773917e4a01aa6d5bcdcd67b527b3bfeb",
+        "space": "1de48dda22c7de41dd56cbb0e34eb92ca1a34af1326f8a0f015062bca9850945"
+      },
+      "clean_install": {
+        "release": "6.5.22f",
+        "receipts": "6.5.22f 0021ca29ec292b066ae00d8b28adfa9ab48f3474950b61c5c0352de35813bf58 85191d9fb7fa2c16a11c58a2889fb891200d87cf43691a797446cba3c35aeac3",
+        "preserved": [
+          "SHA256 (/etc/passwd) = 98347a3131d039b1575858c5f045546bf46334b9b87678906f3a08a4263350b7",
+          "SHA256 (/etc/master.passwd) = 0ca6cd8965e096b27ea97efcb81283688dd93087af60dbc54455fc2eb489ea03",
+          "SHA256 (/etc/group) = 92ebfe8f5c1463deafc6b351153328f9ca5c1dd9076ecdd801959fc2d99cfb76",
+          "SHA256 (/etc/ttys) = ecd4840652ef37a24427726e51933bc7bc6e52b54ac75e5afff97e45bcf7ede6",
+          "SHA256 (/etc/hosts) = 3b71103eb3dca3fc0c569618dfbc745ea2a94055e16980c96ff00e834c7a0552",
+          "SHA256 (/etc/modules.conf) = 40e82147f94b657426abd62f7ef614185161672d782176c2588868fb34cece28",
+          "SHA256 (/etc/rc.conf) = ee8acc5add3b1cca5c7aeeaf2e308d9cae1dddc5576b58bc1400132938c2e9d1",
+          "SHA256 (/usr/people/xiritest/.Xresources) = 5922cc30b11108c7bc07b9038bcbd4f9b5f389864984c92785cdd0a2600004d5",
+          "SHA256 (/etc/xiri/session.conf) = befefeae4db308c8dbd77f83522a95f0d8d672e800e69426cd6dca718c4db95f",
+          "SHA256 (/usr/people/xiritest/.xsession) = 983ecc9eaa9763d5198b99c9a55b86a1a9dd785e851370144dcd8d9ec98233f3",
+          "SHA256 (/etc/rc.conf.d/xdm) = 7d5dd700ab908e38815502cf00d4cd354ed4a7602abaa174c59a63e6b801a4f5"
+        ],
+        "terminated_mid_install": true,
+        "original_conflict_preserved": true,
+        "resumed": true,
+        "repeated": true
+      },
+      "display_upgrade": {
+        "upgraded": "6.5.22f 0021ca29ec292b066ae00d8b28adfa9ab48f3474950b61c5c0352de35813bf58 85191d9fb7fa2c16a11c58a2889fb891200d87cf43691a797446cba3c35aeac3",
+        "restored": "6.5.22f 76ef195a43928029fc84731cc054fba5269f8cad3e18f3b9cff179dbf6f0d21c 6feb87643a47b0128fe635b7d06903ef2e78da0317ba29c5a88a700c85403dec",
+        "repeat": true,
+        "legacy_ownership": false,
+        "site_files_preserved": true
+      },
+      "desktop": {
+        "identity": "SESSION user=xiritest uid=1234 groups=1234 home=/usr/people/xiritest cwd=/usr/people/xiritest display=127.0.0.1:0 authority=/tmp/.Xauth3Xd8vM",
+        "winterm_handoff": "NATIVE_HANDOFF pid=3440 sid=3440 pgid=3440 tpgid=3440 uid=1234 euid=1234 gid=1234 egid=1234 groups=1 tty=/dev/pts/1 rows=24 cols=80",
+        "dimensions": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+        "newport_log": "[    33.956] (**) NEWPORT(0): Option \"NoAccel\" \"false\"\n[    34.095] (II) NEWPORT(0): Using XFree86 Acceleration Architecture (XAA)",
+        "windows": [
+          "Toolchest",
+          "Icon Catalog",
+          "winterm",
+          "xclock"
+        ],
+        "original_shell": true,
+        "native_session": "ctwm + xterm",
+        "native_processes": "PID COMMAND\n3606 sh",
+        "both_logouts": true,
+        "desktop_png_sha256": "92966db1bfbad6a91dbdde30e5d8a94eece33dcaa2f822d43f0b3deac05d98c0",
+        "ctwm_png_sha256": "ccffac6e2124e6c15964d5acbd0653e3fbf26ebd4f887efea6ed6ad9b5aa39c6",
+        "sgi_clock": {
+          "window": "WM_CLASS(STRING) = \"clock\", \"Clock\"",
+          "samples": [
+            "2170563076 43178 /tmp/clock-first.xwd",
+            "1853671310 43178 /tmp/clock-second.xwd"
+          ],
+          "png_sha256": "9cf66d769f2992ae70b0420b4facae4befafb5886eedfc58abd545ffc91e61f8"
+        }
+      }
+    },
+    "6.5.30f": {
+      "image": {
+        "release": "6.5.30f",
+        "receipt": "6.5.30f 0021ca29ec292b066ae00d8b28adfa9ab48f3474950b61c5c0352de35813bf58 b290452e839bd7e7fb073735e382c517f672e964074a03cc1390dd34c2286288",
+        "iso_sha256": "4f7548057fdb4eccec3a4a47458664aad649f9a0f22f74a0f86ff10bd98f45d7",
+        "raw_sha1": "6368817063378ca99925d5b79f8eb8a900373480",
+        "chd_sha256": "527a60fefc68ad9fab6ff2eafb421f6aae8c330df581120fb958d55505b417a0",
+        "nvram_sha256": "c69bc8fc448ab2b5714f7e21a99c9c71994dd6819dcb383cd2501985704c2fdf",
+        "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+        "install_result_sha256": "dbdeec9edf1d7e11f8f37c1a6212a3cda66694761002678d286db912483b98ac"
+      },
+      "installer_members": {
+        "native.tgz": "0021ca29ec292b066ae00d8b28adfa9ab48f3474950b61c5c0352de35813bf58",
+        "payload.tgz": "b290452e839bd7e7fb073735e382c517f672e964074a03cc1390dd34c2286288",
+        "install.sh": "9ffac439d0d95be634a1e7cba0e9c0d3fda6d065a52cadf5c12764c04e6771c1",
+        "uninstall.sh": "6c5840a4eaf041033f4738746b08ed3b2591beb322ede6749007a7cb4a7fec97",
+        "display-update": "1e31327337648c1452efbd19b6e0237fc08e842755c9b228fba92d07849d16c3",
+        "delta.tgz": "1fe22eba15ebdf8f4c8965d35e44ba4de8881966815c8ec24a5a15fc7a85b906",
+        "upgrade.sh": "1eca844fd02ce83bfa81466df42940f4cfede80d6c0e9b9782c2001468e06ad0",
+        "VENDOR": "5f262d83932c4e2bef8c343c8cae36ec6aaef93dae316c3ce19a385d686ab932",
+        "links": "51263a72d8c8ba87a8e565d4e632e1fcdefde88f853d58a14ba6501d0b1510a6",
+        "release": "5fe85b8d75eb82ea8ba734b9135afecbc6534a919b4826dbc46f62a51d766806",
+        "table.sha": "4466d813c67ecb3a1816446c4a433952d3c630e08c409b5f8a886f3eca18bc02",
+        "space": "609cb9a7b78fbf341b6bb969ce3455a3683c7b5f706f3064607988fde9b49ca1"
+      },
+      "clean_install": {
+        "release": "6.5.30f",
+        "receipts": "6.5.30f 0021ca29ec292b066ae00d8b28adfa9ab48f3474950b61c5c0352de35813bf58 b290452e839bd7e7fb073735e382c517f672e964074a03cc1390dd34c2286288",
+        "preserved": [
+          "SHA256 (/etc/passwd) = 98347a3131d039b1575858c5f045546bf46334b9b87678906f3a08a4263350b7",
+          "SHA256 (/etc/master.passwd) = 1bf780db8f744fa1f48d15de97b44bfd079d73b26cfa036b8d83f313da926f92",
+          "SHA256 (/etc/group) = 92ebfe8f5c1463deafc6b351153328f9ca5c1dd9076ecdd801959fc2d99cfb76",
+          "SHA256 (/etc/ttys) = ecd4840652ef37a24427726e51933bc7bc6e52b54ac75e5afff97e45bcf7ede6",
+          "SHA256 (/etc/hosts) = 3b71103eb3dca3fc0c569618dfbc745ea2a94055e16980c96ff00e834c7a0552",
+          "SHA256 (/etc/modules.conf) = 40e82147f94b657426abd62f7ef614185161672d782176c2588868fb34cece28",
+          "SHA256 (/etc/rc.conf) = ee8acc5add3b1cca5c7aeeaf2e308d9cae1dddc5576b58bc1400132938c2e9d1",
+          "SHA256 (/usr/people/xiritest/.Xresources) = 5922cc30b11108c7bc07b9038bcbd4f9b5f389864984c92785cdd0a2600004d5",
+          "SHA256 (/etc/xiri/session.conf) = befefeae4db308c8dbd77f83522a95f0d8d672e800e69426cd6dca718c4db95f",
+          "SHA256 (/usr/people/xiritest/.xsession) = 983ecc9eaa9763d5198b99c9a55b86a1a9dd785e851370144dcd8d9ec98233f3",
+          "SHA256 (/etc/rc.conf.d/xdm) = 7d5dd700ab908e38815502cf00d4cd354ed4a7602abaa174c59a63e6b801a4f5"
+        ],
+        "terminated_mid_install": true,
+        "original_conflict_preserved": true,
+        "resumed": true,
+        "repeated": true
+      },
+      "display_upgrade": {
+        "upgraded": "6.5.30f 0021ca29ec292b066ae00d8b28adfa9ab48f3474950b61c5c0352de35813bf58 b290452e839bd7e7fb073735e382c517f672e964074a03cc1390dd34c2286288",
+        "restored": "6.5.30f 76ef195a43928029fc84731cc054fba5269f8cad3e18f3b9cff179dbf6f0d21c 21060cf7415e730d6efb3d690e51d08aafb15d689ecb0f2fdd9c8638a33bfde7",
+        "repeat": true,
+        "legacy_ownership": true,
+        "site_files_preserved": true
+      },
+      "desktop": {
+        "identity": "SESSION user=xiritest uid=1234 groups=1234 home=/usr/people/xiritest cwd=/usr/people/xiritest display=127.0.0.1:0 authority=/tmp/.XauthnkTCq8",
+        "winterm_handoff": "NATIVE_HANDOFF pid=367 sid=367 pgid=367 tpgid=367 uid=1234 euid=1234 gid=1234 egid=1234 groups=1 tty=/dev/pts/1 rows=24 cols=80",
+        "dimensions": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+        "newport_log": "[    33.582] (**) NEWPORT(0): Option \"NoAccel\" \"false\"\n[    33.832] (II) NEWPORT(0): Using XFree86 Acceleration Architecture (XAA)",
+        "windows": [
+          "Toolchest",
+          "Icon Catalog",
+          "winterm",
+          "xclock"
+        ],
+        "original_shell": true,
+        "native_session": "ctwm + xterm",
+        "native_processes": "PID COMMAND\n3561 sh",
+        "both_logouts": true,
+        "desktop_png_sha256": "e45e1a3403992719521e78bc02a1377471e6fab8dd95ee26fc622e6d090b8188",
+        "ctwm_png_sha256": "ccffac6e2124e6c15964d5acbd0653e3fbf26ebd4f887efea6ed6ad9b5aa39c6",
+        "sgi_clock": {
+          "window": "WM_CLASS(STRING) = \"clock\", \"Clock\"",
+          "samples": [
+            "1830691735 43178 /tmp/clock-first.xwd",
+            "558240563 43178 /tmp/clock-second.xwd"
+          ],
+          "png_sha256": "d42133265c249bbf0204ac920541572257d83823407a3469897f1e773ed865a9"
+        }
+      }
+    }
+  }
+}

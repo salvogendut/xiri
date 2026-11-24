@@ -218,7 +218,7 @@ def build(profile_path, inputs_path, compiler, sets, output):
                 relative = 'kernel/'+Path(row['destination']).name if row['component']=='kernel' else 'root'+row['destination']
                 target=tree/relative;target.parent.mkdir(parents=True,exist_ok=True)
                 shutil.copyfile(artifacts[key],target)
-                target.chmod(0o444 if key=='module' else 0o555)
+                target.chmod(int(row['mode'], 8) if 'mode' in row else (0o444 if key=='module' else 0o555))
                 if sha256(target)!=row['sha256']:
                     raise ValueError('Native artifact changed while packaging: '+key)
             for dest,src in profile['configuration_sources'].items():
@@ -237,6 +237,16 @@ def build(profile_path, inputs_path, compiler, sets, output):
                       and not str(p.relative_to(stage)).startswith('stand/') }
             required,edges=prerequisites(sysroot,payload,profile['native_programs'],profile['native_resources'])
             files=ledger(tree)
+            # Keep stock replacements outside the install ledger for CD rollback.
+            for row in profile['artifacts'].values():
+                if 'stock_sha256' in row:
+                    original = rooted(sysroot, row['destination'])
+                    if sha256(original) != row['stock_sha256']:
+                        raise ValueError('Stock display artifact differs: ' + row['destination'])
+                    backup = tree / ('stock' + row['destination'])
+                    backup.parent.mkdir(parents=True, exist_ok=True)
+                    shutil.copyfile(original, backup)
+                    backup.chmod(0o444)
             (tree/'files.tsv').write_text(''.join('|'.join([name,row['type'],row['mode'],row.get('sha256',row.get('target','')),row['policy']])+'\n' for name,row in files.items()))
             (tree/'prerequisites.tsv').write_text(''.join(name+'|'+row['sha256']+'\n' for name,row in required.items()))
             target=dict(profile['target'],kernel_sha256=profile['artifacts']['kernel']['sha256'])

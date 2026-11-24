@@ -46,7 +46,7 @@ while IFS='|' read -r path kind mode value policy; do
                 # Kernel activation is separate. Existing bootable kernels
                 # need readable bytes, not a userspace executable-file mode.
                 if test "$installed" != yes || test "$policy" != separate-kernel-activation; then
-                    test "$(stat -f %Lp "$target")" = "${mode#0}" || fail "mode mismatch: $target"
+                    test "$(stat -f %Mp%03Lp "$target")" = "$mode" || fail "mode mismatch: $target"
                 fi
             fi;;
         *) fail "unsupported member type: $kind";;

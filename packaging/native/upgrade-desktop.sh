@@ -44,7 +44,9 @@ modstat | grep -Eq '^compat_irix_o32[[:space:]]+exec[[:space:]]+filesys' || fail
 release=$(cat "$media/release")
 native=$(awk '$2=="(native.tgz)" {print $4}' "$media/SHA256")
 vendor=$(awk '$2=="(payload.tgz)" {print $4}' "$media/SHA256")
-a="$release $(cat previous) $vendor"
+previous_vendor=$vendor
+if test -f previous-vendor; then previous_vendor=$(cat previous-vendor); fi
+a="$release $(cat previous) $previous_vendor"
 b="$release $native $vendor"
 if test "$side" = new; then source=$a target=$b; else source=$b target=$a; fi
 transaction="$side $source $target"
@@ -76,8 +78,14 @@ if test "$resume" = no && test "$identity" = "$target"; then
     exit 0
 fi
 if pgrep -x 4Dwm >/dev/null; then fail 'log out of the IRIX desktop first'; fi
+if test -f "$media/display-update"; then
+    if pgrep '(^|/)(Xorg|X|xdm)$' >/dev/null; then fail 'stop xdm and Xorg before updating the display server'; fi
+    while IFS='|' read -r path expected; do
+        test "$(sha256 -q "$path")" = "$expected" || fail "native prerequisite differs: $path"
+    done < prerequisites.tsv
+fi
 matches() {
-    test -f "$dest" && test ! -L "$dest" && test "$(stat -f '%u:%g:%Lp' "$dest")" = "0:0:${1#0}" &&
+    test -f "$dest" && test ! -L "$dest" && test "$(stat -f '%u:%g:%Mp%03Lp' "$dest")" = "0:0:$1" &&
         test "$(sha256 -q "$dest")" = "$2"
 }
 # Install newly required helpers before switching their callers. Retire old
@@ -96,7 +104,7 @@ exists() { test -e "$1" || test -L "$1"; }
 unpackaged() {
     if ! exists "$saved"; then ! exists "$dest"; return; fi
     test -f "$saved" && test ! -L "$saved" && test -f "$dest" && test ! -L "$dest" &&
-        cmp -s "$dest" "$saved" && test "$(stat -f '%u:%g:%Lp' "$dest")" = "$(stat -f '%u:%g:%Lp' "$saved")"
+        cmp -s "$dest" "$saved" && test "$(stat -f '%u:%g:%Mp%03Lp' "$dest")" = "$(stat -f '%u:%g:%Mp%03Lp' "$saved")"
 }
 applied() {
     test "$resume" = yes || return 1
@@ -106,6 +114,7 @@ applied() {
     matches "$mode" "$digest" && test "$(stat -f '%d:%i' "$dest")" = "$(cat "$started")"
 }
 ownership() {
+    test "$font" = no || return 0
     test -d "$created" || return 0
     if test "$frommode" = - && ! exists "$saved"; then
         mkdir -p "$created$dest"
@@ -124,6 +133,17 @@ helpers() {
     while IFS='|' read -r order dest frommode fromsha mode digest; do
         saved=$state/original$dest
         started=$progress$dest
+        font=no
+        stock=no
+        case "$dest" in
+        /usr/X11R7/bin/Xorg|/usr/X11R7/lib/modules/extensions/libglx.so.0) stock=yes;;
+        /emul/irix/usr/lib/X11/fonts/*)
+            font=yes
+            for dir in /emul/irix/usr/lib/X11 /emul/irix/usr/lib/X11/fonts /emul/irix/usr/lib/X11/fonts/misc; do
+                if exists "$dir"; then test -d "$dir" && test ! -L "$dir" || fail "unexpected font directory $dir"; fi
+            done
+            if exists "$saved"; then fail "unexpected vendor backup $saved"; fi
+        esac
         if exists "$saved" && { test ! -f "$saved" || test -L "$saved"; }; then
             fail "unexpected original helper type at $saved"
         fi
@@ -135,15 +155,17 @@ helpers() {
             unpackaged || fail "occupied helper path $dest; save or reconcile it first"
         else
             matches "$frommode" "$fromsha" || fail "local change at $dest; save or reconcile it first"
-            if test "$mode" = - && test ! -d "$created" &&
+            if test "$font" = no && test "$mode" = - && test ! -d "$created" &&
                 ! exists "$saved" && test "$legacy" != yes; then
                 fail "unknown ownership of $dest; use --legacy-clean-indy only on a documented clean Indy installation"
             fi
         fi
         test "$1" = apply || continue
-        if test "$frommode" != - && test -d "$state/created" && test ! -d "$created$dest" &&
-            ! exists "$saved"; then
-            # Same bytes could have predated the initial tracked installation.
+        if test "$font" = no && test "$frommode" != - && ! exists "$saved" &&
+            { { test "$stock" = yes && test "$side" = new; } ||
+              { test -d "$created" && test ! -d "$created$dest"; }; }; then
+            # The display pair predates Xiri, including on older installations
+            # without a created-file ledger. Other tracked files may predate it.
             mkdir -p "$(dirname "$saved")"
             cp -p "$dest" "$scratch/original"
             mv "$scratch/original" "$saved"
@@ -165,6 +187,7 @@ helpers() {
             # The site's original file was also the packaged version.
             start_path "$(stat -f '%d:%i' "$dest")"
         else
+            if test "$font" = yes; then (umask 022 && mkdir -p "$(dirname "$dest")"); fi
             staging=$(mktemp "$(dirname "$dest")/.xiri-upgrade.XXXXXX")
             install -m "$mode" "$side/root$dest" "$staging"
             test "$(sha256 -q "$staging")" = "$digest" || fail "bad staged helper $dest"

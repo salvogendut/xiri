@@ -82,6 +82,23 @@ The desktop phase uses a private copy of the packaged CHD and the bundle's
 graphical PROM. Check the corresponding result JSON and desktop PNG before
 publishing a manual image.
 
+For Indy v5, add `--sgi-clock` to the desktop phase. It launches the
+original SGI Clock under the authenticated 4Dwm user, checks its window
+class and compares two window dumps before returning to xdm. The screenshot
+is saved as `desktop/sgi-clock.png`.
+
+Use the v4 bundle and the matching v5 ISO to test a live upgrade on a
+private overlay. The runner checks refusal at the active greeter, stops xdm,
+applies the upgrade twice, rolls back twice and verifies file hashes, modes
+and the original receipt. Add `--legacy-ownership` to exercise an older
+installation without the created-file ledger.
+
+```sh
+python3 lab/native-package/check-clean-desktop.py display-upgrade \
+  --base "$bootstrap" --media "$iso" --emulator "$emulator" \
+  --output "$run" --release "$release" --bundle "$v4_bundle" --kernel "$kernel"
+```
+
 ## Stock kernel round trip
 
 Use the clean desktop bundle, its qualified emulator and the pinned serial

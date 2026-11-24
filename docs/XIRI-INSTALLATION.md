@@ -195,8 +195,8 @@ xdm on the CRIME display. Log in as `xiritest` for 4Dwm or `netbsdtest` for ctwm
 [O2 boot results](results/2026-11-23-o2-r10000-boot.md) ·
 [O2 disk and Ethernet checks](results/2026-11-23-o2-io.md)
 
-For manual Indy testing, use the [clean v4 Xiri CHDs and launch
-commands](results/2026-11-24-indy-v4-recovery.md). Each release has its own
+For manual Indy testing, use the [clean v5 Xiri CHDs and launch
+commands](results/2026-11-24-indy-v5-clock.md). Each release has its own
 NetBSD installation and writable overlay. The [November 15 preview
 images](results/2026-11-15-irix-previews.md) document the earlier prepared
 disks. The separate native IRIX donor CHDs remain available for donor boot
@@ -278,9 +278,9 @@ test passwords and probe histories must not be installation prerequisites.
 | Payload archive | Independent builds produce identical archives and manifests. NetBSD pax extraction passes all file hashes. The installer can resume after a full font target on a separate filesystem. [Recovery procedure](NATIVE-PACKAGE.md#recover-from-a-full-target-filesystem) | Exercise additional component selections. |
 | Native runtime | The [native packager](NATIVE-PACKAGE.md) builds from pinned sets. The [desktop removal procedure](NATIVE-PACKAGE.md#remove-the-desktop-and-return-to-native-netbsd) preserves homes and supports same-release reinstall. The [helper update](NATIVE-PACKAGE.md#upgrade-native-helpers-on-an-installed-indy) handles replacements, additions and retirements. The [v4 update](NATIVE-PACKAGE.md#configure-the-fam-service-log-with-v4) replaces the FAM startup script and its example while preserving active configuration. | Extend migration coverage to other services and defaults as they change. |
 | Kernel/module | Both Indy images can boot the saved NetBSD 11.0 kernel and return to 11.99.11 with the matching Xiri module and user homes intact. [Rollback procedure](NATIVE-PACKAGE.md#switching-between-the-stock-and-xiri-kernels) | Repeat the boot and rollback checks on physical Indy hardware. |
-| Display and native services | Native package includes the pinned Newport driver, Xorg configuration and patched FAM/rpcbind; stock X libraries and tools are explicit prerequisites. | Repeat deployment on physical Indy hardware. |
+| Display and native services | Native package includes the pinned Newport driver, corrected Xorg/GLX pair, Xorg configuration and patched FAM/rpcbind; stock X libraries and tools are explicit prerequisites. | Repeat deployment on physical Indy hardware. |
 | Desktop validation | Both clean Indy releases cold-boot to xdm, run 4Dwm with the original shell and native ctwm with UXTerm, and return to xdm. | Extend clean-target coverage to preferences and additional applications. |
-| Reusable CHD | [Clean v4 Indy bundles](results/2026-11-24-indy-v4-recovery.md) are built from the halted per-release installations, verified against raw bytes and booted from private overlays. | Repeat this installer qualification on additional platforms. |
+| Reusable CHD | [Clean v5 Indy bundles](results/2026-11-24-indy-v5-clock.md) are built from the halted per-release installations, verified against raw bytes and booted from private overlays. | Repeat this installer qualification on additional platforms. |
 
 The initial 1,990-record ledger alone was insufficient. The new profile includes
 later vendor resources available in this donor. The original qualification used a prepared native image. The clean Indy test

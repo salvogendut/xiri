@@ -121,7 +121,60 @@ def login(guest, user):
         guest.monitor(command)
 
 
-def desktop(guest, out, colour=None, while_logged_in=None):
+def sgi_clock(guest, out):
+    guest.command("su -m xiritest -c 'export HOME=/usr/people/xiritest; test \"$(id -un)\" = xiritest && "
+                  "cd \"$HOME\" && exec /emul/irix/usr/sbin/clock' >/tmp/test-sgi-clock.log 2>&1")
+    window = r"""xwininfo -root -tree | awk '/\("clock" "Clock"\)/ {print $1; exit}'"""
+    guest.wait_for('test -n "$(' + window + ')"', 120)
+    guest.command('clock_id=$(' + window + '); test -n "$clock_id" && xprop -id "$clock_id" WM_CLASS')
+    guest.command('xwd -silent -id "$clock_id" -out /tmp/clock-first.xwd && sleep 3 && '
+                  'xwd -silent -id "$clock_id" -out /tmp/clock-second.xwd && '
+                  'test -s /tmp/clock-first.xwd && test "$(wc -c </tmp/clock-first.xwd)" -eq "$(wc -c </tmp/clock-second.xwd)" && '
+                  '! cmp -s /tmp/clock-first.xwd /tmp/clock-second.xwd')
+    evidence = guest.read_text('xprop -id "$clock_id" WM_CLASS; cksum /tmp/clock-first.xwd /tmp/clock-second.xwd').splitlines()
+    guest.capture(out / 'sgi-clock.png')
+    guest.command('xkill -id "$clock_id" && rm /tmp/clock-first.xwd /tmp/clock-second.xwd && xdpyinfo >/dev/null')
+    return dict(window=evidence[0], samples=evidence[1:], png_sha256=sha256(out / 'sgi-clock.png'))
+
+
+def display_upgrade(guest, original, legacy):
+    from xiri_lab.clock_fonts import FONT_DIR, FONT_HASHES, INDEX, INDEX_SHA
+    pins = json.loads((ROOT / 'profiles/netbsd-sgimips-indy-11.99.11-glx-v1.json').read_text())['artifacts']
+    cmd = guest.command
+    greeter(guest)
+    cmd('mount -r -t cd9660 /dev/cd0a /cdrom && test -f /cdrom/display-update')
+    if guest.read_text('cat /var/db/xiri-install/installed').strip() != original:
+        raise ValueError('unexpected receipt before display upgrade')
+    cmd('sha256 /etc/master.passwd /usr/people/xiritest/.Xresources /etc/rc.conf.d/xdm >/tmp/site.sha')
+    cmd('sh /cdrom/upgrade.sh >/tmp/display.log 2>&1; rc=$?; cat /tmp/display.log; '
+        'test "$rc" != 0 && grep -q "stop xdm" /tmp/display.log', 360)
+    cmd('/etc/rc.d/xdm stop')
+    guest.wait_for("! pgrep '(^|/)(Xorg|X|xdm)$'")
+    if legacy:
+        cmd('mv /var/db/xiri-install/created /var/db/xiri-install/test-saved-ledger')
+    receipts = []
+    for side, flag in [('sha256', ''), ('stock_sha256', ' --rollback')]:
+        for _ in range(2):
+            cmd('sh /cdrom/upgrade.sh' + flag + ' >/tmp/display.log 2>&1 || { tail /tmp/display.log; false; }', 420)
+        for key in ('xorg', 'glx'):
+            row = pins[key]
+            cmd(f'test "$(sha256 -q {row["destination"]})" = {row[side]} && '
+                f'test "$(stat -f %u:%g:%Mp%03Lp {row["destination"]})" = 0:0:{row["mode"]}')
+            cmd(f'test "$(sha256 -q /var/db/xiri-install/original{row["destination"]})" = {row["stock_sha256"]}')
+        for name, digest in {**FONT_HASHES, INDEX: INDEX_SHA}.items():
+            path = '/emul/irix/' + FONT_DIR + name
+            cmd(f'test "$(sha256 -q {path})" = {digest}' if not flag else f'test ! -e {path}')
+        cmd('sha256 -c /tmp/site.sha && cmp /var/db/xiri-install/inputs /var/db/xiri-install/installed')
+        receipts.append(guest.read_text('cat /var/db/xiri-install/installed').strip())
+    if receipts[0] == original or receipts[1] != original:
+        raise ValueError('unexpected graphics upgrade receipts')
+    if legacy:
+        cmd('mv /var/db/xiri-install/test-saved-ledger /var/db/xiri-install/created')
+    return dict(upgraded=receipts[0], restored=receipts[1], repeat=True,
+                legacy_ownership=legacy, site_files_preserved=True)
+
+
+def desktop(guest, out, colour=None, while_logged_in=None, check_clock=False):
     greeter(guest)
     guest.command('grep -Fq \'Option "NoAccel" "false"\' /usr/local/share/xiri/xorg.conf')
     acceleration = guest.read_text("grep -Ei 'NEWPORT.*(NoAccel|accel)|using.*XAA' /var/log/Xorg.0.log").strip()
@@ -161,6 +214,7 @@ def desktop(guest, out, colour=None, while_logged_in=None):
     guest.monitor('screen shot ' + str(out / 'desktop.png'))
     if while_logged_in:
         while_logged_in(guest)
+    clock = sgi_clock(guest, out) if check_clock else None
     guest.command('su -m xiritest -c "env XIRI_SESSION_DIR=\'$job\' /usr/local/bin/xiri-logout"')
     greeter(guest)
     login(guest, 'netbsdtest')
@@ -172,7 +226,7 @@ def desktop(guest, out, colour=None, while_logged_in=None):
     guest.monitor('screen shot ' + str(out / 'ctwm.png'))
     guest.command('kill -TERM "$(' + ctwm + ')"')
     greeter(guest)
-    return dict(
+    checks = dict(
         identity=identity,
         winterm_handoff=handoff,
         dimensions=dimensions,
@@ -185,18 +239,27 @@ def desktop(guest, out, colour=None, while_logged_in=None):
         desktop_png_sha256=sha256(out / 'desktop.png'),
         ctwm_png_sha256=sha256(out / 'ctwm.png'),
     )
+    if check_clock:
+        checks['sgi_clock'] = clock
+    return checks
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('phase', choices=('install', 'disk-full', 'desktop'))
+    parser.add_argument('phase', choices=('install', 'disk-full', 'desktop', 'display-upgrade'))
     for name in ('base', 'media', 'emulator', 'output'):
         parser.add_argument('--' + name, type=Path, required=True)
     parser.add_argument('--release', choices=('6.5.22f', '6.5.30f'), required=True)
     parser.add_argument('--bundle', type=Path, help='test a copy of a packaged CHD and its graphical PROM')
     parser.add_argument('--kernel', type=Path, help='matching unstripped kernel for the graphical halt check')
+    parser.add_argument('--sgi-clock', action='store_true', help='verify original SGI Clock redraws in the Xiri session')
+    parser.add_argument('--legacy-ownership', action='store_true', help='exercise a v4 install without the created-file ledger')
     parser.add_argument('--full-target', choices=('services', 'payload'), help='filesystem to fill during disk-full qualification')
     args = parser.parse_args()
+    if args.sgi_clock and args.phase != 'desktop':
+        parser.error('--sgi-clock requires the desktop phase')
+    if args.legacy_ownership and args.phase != 'display-upgrade':
+        parser.error('--legacy-ownership requires the display-upgrade phase')
     if args.full_target and args.phase != 'disk-full':
         parser.error('--full-target requires the disk-full phase')
     base, medium, emu, out = (p.resolve() for p in (args.base, args.media, args.emulator, args.output))
@@ -206,13 +269,13 @@ def main():
     run = out / args.phase
     run.mkdir()
     disk = out / 'disk.raw'
-    install_phase = args.phase != 'desktop'
+    install_phase = args.phase in ('install', 'disk-full')
     if install_phase:
         if disk.exists() or not json.loads((base / 'result.json').read_text())['passed']:
             raise ValueError('expected a new target and a qualified bootstrap')
         subprocess.run(['cp', '--reflink=auto', '--sparse=always', base / 'disk.raw', disk], check=True)
     if not install_phase and (not args.bundle or not args.kernel):
-        parser.error('desktop requires --bundle and --kernel')
+        parser.error(f'{args.phase} requires --bundle and --kernel')
     bundle = args.bundle.resolve() if args.bundle else None
     if not install_phase:
         package = json.loads((bundle / 'manifest.json').read_text())
@@ -240,7 +303,7 @@ def main():
     )
     if not install_phase:
         config = config.replace('overlay = false', 'overlay = true')
-    if install_phase:
+    if args.phase != 'desktop':
         config += '[scsi.4]\ncdrom = true\npath = ' + json.dumps(str(medium)) + '\n'
     if args.phase == 'disk-full':
         fixture = run / 'fixture.iso'
@@ -278,6 +341,8 @@ def main():
                 result['checks'] = disk_full(guest, run, args.full_target or 'services')
             else:
                 result['checks'] = install(guest, args.release)
+        elif args.phase == 'display-upgrade':
+            result['checks'] = display_upgrade(guest, package['receipt'], args.legacy_ownership)
         else:
             if 'receipt' in package:
                 if result['iso_sha256'] != package['iso_sha256']:
@@ -286,7 +351,7 @@ def main():
                 if receipt != package['receipt']:
                     raise ValueError('unexpected installed package on cold boot: ' + receipt)
                 result['receipt'] = receipt
-            result['checks'] = desktop(guest, run)
+            result['checks'] = desktop(guest, run, check_clock=args.sgi_clock)
         if install_phase:
             lab.send('shutdown -h now')
             lab.wait('unmounting done', 120)

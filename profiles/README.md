@@ -1,16 +1,18 @@
 # IRIX import profiles
 
 Maintain separate **6.5.22** and **6.5.30** deliverables. Each version has its
-own donor pin, import profile, qualification and CHD. The current qualified
-desktop profile is 6.5.22f. The separate original-media
-[6.5.30f profile](irix-6.5.30f-v1.json) now produces reproducible payloads;
-its core desktop checks now pass on Indy/R5000 with shadow cache mode and the
-MIPS IV-aware module. Separate [manual previews](../docs/results/2026-11-15-irix-previews.md)
-now package both qualified disk states; broader acceptance remains pending.
-The shared module also passes the 6.5.22f regression.
-The [native package profiles](../docs/NATIVE-PACKAGE.md) describe
-NetBSD components and does not establish compatibility with an untested vendor
-release.
+own donor pin, import profile, qualification and CHD. Both original-media
+profiles produce reproducible desktop payloads. Indy testing uses the R4400
+for 6.5.22f and the R5000 with shadow cache mode for 6.5.30f.
+[6.5.22f donor profile](irix-6.5.22f-v1.json) · [6.5.30f donor profile](irix-6.5.30f-v1.json)
+
+The Indy GLX installer combines the recorded donor import with fonts from
+the matching original Overlay 1 disc. The supplement profiles identify the
+donor and disc separately for each release. [6.5.22f](irix-6.5.22f-indy-glx-v1.json)
+· [6.5.30f](irix-6.5.30f-indy-glx-v1.json) · [Build instructions](../docs/NATIVE-PACKAGE.md#clean-installation-on-an-emulated-indy)
+
+The native package profiles identify the NetBSD kernel, module, services and
+display components used with each vendor payload. [Native packaging](../docs/NATIVE-PACKAGE.md)
 
 `./xiri import` builds a vendor payload without reading a previous NetBSD image,
 historical staging directories or the selected manual-image pointer. Run it on

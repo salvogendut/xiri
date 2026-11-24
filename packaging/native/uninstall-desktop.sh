@@ -24,6 +24,7 @@ cleanup() { test -z "$scratch" || rm -rf "$scratch"; rm -f "$state/lock"; }
 trap cleanup EXIT
 trap 'exit 1' HUP INT TERM
 test ! -e "$state/upgrading" || fail 'resume the pending native upgrade first'
+if test -f "$media/display-update" && pgrep '(^|/)(Xorg|X|xdm)$' >/dev/null; then fail 'stop xdm and Xorg before restoring the display server'; fi
 identity="$(cat release) $(awk '$2=="(native.tgz)" {print $4}' SHA256) $(awk '$2=="(payload.tgz)" {print $4}' SHA256)"
 if test -f "$state/removing"; then
     trx=$(cat "$state/removing")
@@ -60,7 +61,7 @@ copy_entry() {
 matches() {
     case "$2" in
     symlink) test -L "$1" && test "$(readlink "$1")" = "$4";;
-    file) test ! -L "$1" && test -f "$1" && test "$(stat -f '%u:%g:%Lp' "$1")" = "0:0:${3#0}" &&
+    file) test ! -L "$1" && test -f "$1" && test "$(stat -f '%u:%g:%Mp%03Lp' "$1")" = "0:0:$3" &&
         test "$(sha256 -q "$1")" = "$4";;
     *) return 1;;
     esac
@@ -73,7 +74,7 @@ undo() {
         if test -L "$original"; then
             matches "$dest" symlink 0 "$(readlink "$original")" && return 0
         elif test -f "$dest" && test ! -L "$dest" && cmp -s "$dest" "$original" &&
-            test "$(stat -f '%u:%g:%Lp' "$dest")" = "$(stat -f '%u:%g:%Lp' "$original")"; then return 0
+            test "$(stat -f '%u:%g:%Mp%03Lp' "$dest")" = "$(stat -f '%u:%g:%Mp%03Lp' "$original")"; then return 0
         fi
         if exists "$dest" && ! matches "$dest" "$kind" "$mode" "$value"; then
             backup=$history/edits$dest

@@ -55,6 +55,18 @@ scratch=$(mktemp -d "$state/work.XXXXXX")
 mkdir "$scratch/native"
 (cd "$scratch/native" && pax -rzpe -f "$media/native.tgz" && sh preflight.sh)
 modstat | grep -Eq '^compat_irix_o32[[:space:]]+exec[[:space:]]+filesys' || fail 'load the matching module at boot'
+if test -f "$media/display-update"; then
+    while IFS='|' read -r path kind mode value policy; do
+        case "$path" in root/usr/X11R7/bin/Xorg|root/usr/X11R7/lib/modules/extensions/libglx.so.0)
+            dest=/${path#root/}
+            test -f "$dest" && test ! -L "$dest" || fail "unexpected display server file $dest"
+            if test "$(sha256 -q "$dest")" = "$value" && test "$(stat -f '%u:%g:%Mp%03Lp' "$dest")" = "0:0:$mode"; then continue; fi
+            if pgrep '(^|/)(Xorg|X|xdm)$' >/dev/null; then fail 'stop xdm and Xorg before installing the display server'; fi
+            cmp -s "$dest" "$scratch/native/stock$dest" && test "$(stat -f '%u:%g:%Mp%03Lp' "$dest")" = "0:0:$mode" ||
+                fail "expected stock display server file $dest";;
+        esac
+    done < "$scratch/native/files.tsv"
+fi
 if test ! -f "$state/inputs"; then
     for dest in /emul/irix /usr/local/share/xiri/fonts; do
         test ! -e "$dest" && test ! -L "$dest" || fail "existing unmanaged $dest"
@@ -116,7 +128,7 @@ while IFS='|' read -r path kind mode value policy; do
     elif test -e "$dest"; then
         test -f "$dest" || fail "unexpected type $dest"
         if test "$policy" = preserve-config; then continue; fi
-        if test "$(sha256 -q "$dest")" = "$value" && test "$(stat -f %Lp "$dest")" = "${mode#0}"; then continue; fi
+        if test "$(sha256 -q "$dest")" = "$value" && test "$(stat -f %Mp%03Lp "$dest")" = "$mode"; then continue; fi
         saved="$state/original$dest"
         if test ! -e "$saved" && test ! -L "$saved" && test ! -d "$state/created$dest"; then
             mkdir -p "$(dirname "$saved")"
