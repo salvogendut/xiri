@@ -72,6 +72,12 @@ in `08e53ba7`. [Octane build and qualification](results/2026-11-23-octane-deskto
 
 ## IRIS upstream updates
 
+The November 25 Mozilla HTTP cycle fetched upstream `main` at `c8e8f17b`,
+already integrated in IRIS `xiri` at `6a6b1aca`. The pinned emulator ran
+the original IRIX comparison and both Xiri Indys. NetBSD `xiri` commit
+`5f6d833d936` adds the connected socket calls used by the browsers.
+[Network qualification](results/2026-11-25-mozilla-http.md).
+
 The November 25 Mozilla CHD build rechecked upstream `main` at `c8e8f17b`.
 IRIS `xiri` at `6a6b1aca` already included that revision. Both images use
 the pinned Indy emulator from their catalog bundle. [Image qualification](results/2026-11-25-mozilla-input.md#ready-to-boot-indy-images).

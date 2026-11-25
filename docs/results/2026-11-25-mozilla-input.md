@@ -59,6 +59,9 @@ connections, TLS and long browsing sessions remain untested.
 [6.5.22f menu and document](2026-11-25-mozilla-repaired-6.5.22f.png) ·
 [6.5.30f menu and document](2026-11-25-mozilla-repaired-6.5.30f.png).
 
+The subsequent HTTP update qualifies external IPv4 pages in both browsers.
+[Updated images and in-place installation](2026-11-25-mozilla-http.md).
+
 ## Ready-to-boot Indy images
 
 Both CHDs include the qualified module and the release-matched Mozilla

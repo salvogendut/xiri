@@ -1,0 +1,46 @@
+#!/bin/sh
+#
+# PROVIDE: xiri_hosts
+# REQUIRE: mountcritlocal NETWORKING
+# BEFORE: LOGIN xdm
+# KEYWORD: shutdown
+
+. /etc/rc.subr
+name=xiri_hosts
+rcvar=$name
+mountpoint=/emul/irix/ns/.local/hosts.byname
+helper=/usr/local/libexec/xiri/mount_xiri_hosts
+pidfile=/var/run/xiri_hosts.pid
+procname=$helper
+start_cmd=xiri_hosts_start
+stop_cmd=xiri_hosts_stop
+status_cmd=xiri_hosts_status
+extra_commands=status
+
+xiri_hosts_status()
+{
+	mount | awk -v dest="$mountpoint" '$1 == "xiri-hosts" && $3 == dest {found=1} END {exit !found}'
+}
+
+xiri_hosts_start()
+{
+	xiri_hosts_status && return 0
+	mkdir -p "$mountpoint" || return 1
+	mount | awk -v dest="$mountpoint" '$3 == dest {found=1} END {exit !found}' && {
+		warn "mountpoint already occupied: $mountpoint"
+		return 1
+	}
+	"$helper" "$mountpoint" > "$pidfile"
+}
+
+xiri_hosts_stop()
+{
+	xiri_hosts_status || return 0
+	pid=$(check_pidfile "$pidfile" "$procname")
+	umount "$mountpoint" || return 1
+	[ -z "$pid" ] || kill "$pid"
+	rm -f "$pidfile"
+}
+
+load_rc_config "$name"
+run_rc_command "$1"

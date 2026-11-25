@@ -3,6 +3,9 @@
 For the current original-media Indy desktops, see the [Applications tab
 test on both releases](results/2026-11-24-indy-applications.md). It covers
 all eight visible 6.5.22f entries and all four 6.5.30f entries.
+On the November 25 HTTP images, the **Applications → Mozilla** icon opens a
+browser that loads FrogFind and CERN over public HTTP. [Images, upgrade and screenshots](results/2026-11-25-mozilla-http.md).
+
 On the November 25 catalog images, both Mozilla versions paint a local homepage.
 The Mozilla input test CHDs include the updated module on both releases.
 [Launch commands and browser checks](results/2026-11-25-mozilla-input.md#ready-to-boot-indy-images).

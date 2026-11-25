@@ -343,6 +343,10 @@ meters run on both Indys with the updated compatibility module.
 The [Applications tab survey](docs/results/2026-11-24-indy-applications.md)
 covers every visible launcher on the two original-media Indy desktops.
 The [stock-profile startup retest](docs/results/2026-11-25-applications-recheck.md) lists each icon on the two Mozilla test images.
+IRIX Mozilla can browse public HTTP pages on both Indys. The November 25 HTTP
+images and the in-place upgrade for the earlier input disks include the IRIX
+socket and hostname fixes. [Launch commands, screenshots and upgrade instructions](docs/results/2026-11-25-mozilla-http.md).
+
 The Mozilla test CHDs for the 6.5.22f R4400 and 6.5.30f R5000 include the
 event-worker fix. Launch either Indy and test the File menu and address bar
 from the Applications tab. [Ready-to-boot images and login](docs/results/2026-11-25-mozilla-input.md#ready-to-boot-indy-images).
