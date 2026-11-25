@@ -1,0 +1,167 @@
+{
+  "host_clock": "Seconds after double-click command returned; first matching observation is an upper bound.",
+  "account": "xiritest",
+  "images": {
+    "6.5.22f": {
+      "chd_sha256": "bf5f2b80472c5a0e9bebe8cbb3238022e03535acd588aae206c672fd84658361",
+      "bundled_iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+      "applications": {
+        "AboutNetscapeMessenger": {
+          "outcome": "no window or surviving process",
+          "last_sample_s": 47.5,
+          "final_new_user_processes": [],
+          "path_lookups": [
+            "/emul/irix/usr/sbin/launchWebJumper",
+            "/usr/sbin/launchWebJumper"
+          ]
+        },
+        "Mozilla": {
+          "outcome": "browser and stock homepage DNS alert",
+          "last_sample_s": 77.3,
+          "first_matching_window_s": 77.3,
+          "pid": 1109,
+          "process": "mozilla-bin",
+          "window": "Mozilla {Build ID: 0000000000}",
+          "size": [
+            610,
+            450
+          ]
+        },
+        "NetscapeMail": {
+          "outcome": "no window or surviving process",
+          "last_sample_s": 46.5,
+          "final_new_user_processes": [],
+          "path_lookups": [
+            "/emul/irix/usr/sbin/launchWebJumper",
+            "/usr/sbin/launchWebJumper"
+          ]
+        },
+        "acroread": {
+          "outcome": "first-run license dialog",
+          "last_sample_s": 111.8,
+          "first_matching_window_s": 14.3,
+          "pid": 706,
+          "process": "acroread",
+          "window": "Acrobat Reader",
+          "size": [
+            699,
+            648
+          ]
+        },
+        "jot": {
+          "outcome": "editor document",
+          "last_sample_s": 5.9,
+          "first_matching_window_s": 5.9,
+          "pid": 3560,
+          "process": "nedit",
+          "window": "Untitled",
+          "size": [
+            594,
+            564
+          ]
+        },
+        "mozilla": {
+          "outcome": "browser and stock homepage DNS alert",
+          "last_sample_s": 66.1,
+          "first_matching_window_s": 66.1,
+          "pid": 4253,
+          "process": "mozilla-bin",
+          "window": "Mozilla {Build ID: 0000000000}",
+          "size": [
+            610,
+            450
+          ]
+        },
+        "nedit": {
+          "outcome": "editor document",
+          "last_sample_s": 6.0,
+          "first_matching_window_s": 6.0,
+          "pid": 1386,
+          "process": "nedit",
+          "window": "Untitled",
+          "size": [
+            594,
+            564
+          ]
+        },
+        "showcase": {
+          "outcome": "no window or surviving process",
+          "last_sample_s": 47.8,
+          "final_new_user_processes": [],
+          "path_lookups": [
+            "/emul/irix/usr/lib/desktop/iconcatalog/pages/C/Applications/showcase",
+            "/emul/irix/usr/people/xiritest/.desktop-xiri-indy/Showcase3D",
+            "/usr/people/xiritest/.desktop-xiri-indy/Showcase3D",
+            "/emul/irix/usr/people/xiritest/Showcase3D",
+            "/usr/people/xiritest/Showcase3D",
+            "/emul/irix/usr/people/xiritest/.desktop-xiri-indy/0.0/Showcase3D",
+            "/usr/people/xiritest/.desktop-xiri-indy/0.0/Showcase3D",
+            "/emul/irix/usr/lib/X11/C/app-defaults/Showcase3D",
+            "/usr/lib/X11/C/app-defaults/Showcase3D",
+            "/emul/irix/usr/lib/X11/app-defaults/Showcase3D",
+            "/emul/irix/dev/graphics",
+            "/dev/graphics"
+          ],
+          "direct_launch": [
+            "SHOWCASE_EXIT=0",
+            "ERROR #114  _GLgetfd : Cannot Open Graphics: ERR_NOGRAPHICS"
+          ]
+        }
+      }
+    },
+    "6.5.30f": {
+      "chd_sha256": "c19db82b001022241c30edbebf52ff4de9fd89e9b8dc7bb8121058acdf244fb5",
+      "bundled_iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+      "applications": {
+        "Mozilla": {
+          "outcome": "browser and stock homepage DNS alert",
+          "last_sample_s": 53.6,
+          "first_matching_window_s": 53.6,
+          "pid": 4115,
+          "process": "mozilla-bin",
+          "window": "Mozilla",
+          "size": [
+            610,
+            450
+          ]
+        },
+        "jot": {
+          "outcome": "editor document",
+          "last_sample_s": 14.2,
+          "first_matching_window_s": 14.2,
+          "pid": 1762,
+          "process": "nedit",
+          "window": "Untitled",
+          "size": [
+            594,
+            564
+          ]
+        },
+        "mozilla": {
+          "outcome": "browser and stock homepage DNS alert",
+          "last_sample_s": 52.5,
+          "first_matching_window_s": 52.5,
+          "pid": 1177,
+          "process": "mozilla-bin",
+          "window": "Mozilla",
+          "size": [
+            610,
+            450
+          ]
+        },
+        "nedit": {
+          "outcome": "editor document",
+          "last_sample_s": 5.8,
+          "first_matching_window_s": 5.8,
+          "pid": 555,
+          "process": "nedit",
+          "window": "Untitled",
+          "size": [
+            594,
+            564
+          ]
+        }
+      }
+    }
+  }
+}

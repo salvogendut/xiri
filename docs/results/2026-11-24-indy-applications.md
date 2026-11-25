@@ -1,5 +1,7 @@
 # Applications in the v5 Indy Icon Catalog
 
+For the current Mozilla test images, see the [November 25 startup retest of every Applications icon](2026-11-25-applications-recheck.md).
+
 Each test used a private copy of the CD 4 Indy image, its matching 6.5.22f
 or 6.5.30f import, and an xdm login as `xiritest`. We selected Applications
 and double-clicked every visible entry. We compared the X window tree and

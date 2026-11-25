@@ -342,6 +342,7 @@ meters run on both Indys with the updated compatibility module.
 [Meter measurements and screenshots](docs/results/2026-11-24-indy-xosview.md).
 The [Applications tab survey](docs/results/2026-11-24-indy-applications.md)
 covers every visible launcher on the two original-media Indy desktops.
+The [stock-profile startup retest](docs/results/2026-11-25-applications-recheck.md) lists each icon on the two Mozilla test images.
 Both Indy releases can create and join a worker using SGI's n32 libpthread
 on the matching development kernel and module. Both vendor Mozilla
 versions can render a local page from the Applications catalog on the

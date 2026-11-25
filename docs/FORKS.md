@@ -129,6 +129,16 @@ The Mozilla diagnosis fetched IRIS upstream `057ba095`. IRIS `xiri` at
 original IRIX browsers and both Xiri Indy desktop comparisons.
 [Mozilla diagnosis](results/2026-11-25-mozilla-event-diagnosis.md).
 
+The November 25 Applications retest fetched 11 upstream commits through
+`c8e8f17b`. IRIS `xiri` merged them at `2195831b`, then set the fork's
+page generation in four new JIT test requests at `6a6b1aca`. Both
+`iris` and `iris-ci` built with `jitv2,idle-pause,wgpu`. A combined
+four-thread library run exited on SIGSEGV during Odyssey GPU tests.
+Rerunning the library tests serially in separate component processes and
+a final exact-name selection accounted for all 5,881 cases (5,786 passed,
+95 ignored). The [Applications retest](results/2026-11-25-applications-recheck.md)
+used the emulator shipped in the two test bundles.
+
 The November 25 signal-wait cycle fetched IRIS upstream
 `057ba0952a6b6c992cd23e3233ac202891a5fc81`. IRIS `xiri` at
 `39ef6dff` contained every upstream commit. NetBSD `xiri` commit
