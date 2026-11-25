@@ -114,6 +114,11 @@ confirmed zero upstream-only commits against IRIS `xiri` at `39ef6dff`.
 The pinned IRIS binaries ran all three probes on both original IRIX
 donors and both Xiri Indys. [Comparison results](results/2026-11-25-irix-event-workers.md).
 
+The private lock implementation cycle fetched upstream `057ba095` and
+found zero upstream-only commits against IRIS `xiri` at `39ef6dff`. The
+pinned emulator ran the two-waiter control on both original donors and the
+candidate module on both Xiri Indys. [Lock qualification](results/2026-11-25-irix-usync.md).
+
 The November 24 disk-space recovery cycle merged upstream `057ba095` into
 IRIS `xiri` at `39ef6dff`. Upstream adds JIT code arena rotation and page
 slot recycling. The merge preserves the fork's optimization switch and its

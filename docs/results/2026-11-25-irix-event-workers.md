@@ -43,3 +43,7 @@ isolation and counted early wakes. Event-worker creation and stack-guard
 protection can then be tested independently. Keep the visible local
 document as the browser acceptance check on each release.
 [Release pins and guest results](2026-11-25-irix-event-workers.json).
+
+The subsequent module implements the two private lock operations and passes
+both the address-isolation probe and a two-waiter check on each Indy.
+[Implementation and browser retest](2026-11-25-irix-usync.md).

@@ -47,7 +47,7 @@ number(const char *label, int value)
 
 static char stack[4][1280] __attribute__((aligned(16)));
 static word ready[4], release[4];
-#ifdef WAIT_WAKE
+#if defined(WAIT_WAKE) || defined(WAIT_PAIR)
 static word key[2];
 static int results[4];
 
@@ -93,6 +93,9 @@ worker(word i)
 			__atomic_store_n(&ready[i], step + 2, __ATOMIC_RELEASE);
 		}
 	}
+#elif defined(WAIT_PAIR)
+	results[i] = sync_call(USYNC_INTR_BLOCK, i);
+	__atomic_store_n(&ready[i], 2, __ATOMIC_RELEASE);
 #endif
 	while (!__atomic_load_n(&release[i], __ATOMIC_ACQUIRE))
 		call(1082, 1, 0, 0, 0);
@@ -111,17 +114,31 @@ void
 _start(void)
 {
 	int status = 1;
-#ifdef WAIT_WAKE
+#if defined(WAIT_WAKE) || defined(WAIT_PAIR)
 	for (unsigned i = 0; i < 2; i++) {
 		wait_req[i].version = wake_req[i].version = 1002;
 		wait_req[i].policy = wake_req[i].policy = 1;
 		wait_req[i].address = wake_req[i].address = PTR(&key[i]);
 	}
 #endif
+#ifdef WAIT_PAIR
+	/* The two workers pass different records for the same lock. */
+	wait_req[1].address = wait_req[0].address;
+	/* libpthread initializes the policy only on its blocking path. */
+	wake_req[0].policy = 0xffff;
+#endif
 	int init = call(1130, 20, 0, 0, 0);
 	number("init", init);
 	if (init != 0)
 		goto done;
+#ifdef WAIT_PAIR
+	/* A wake can precede the first nsproc as well as the first wait. */
+	int prepost = sync_call(USYNC_UNBLOCK, 0);
+	number("prepost", prepost);
+	if (prepost != 0 || sync_call(USYNC_INTR_BLOCK, 0) != 0)
+		goto done;
+	wake_req[0].policy = 0;
+#endif
 	int first = spawn(0, THREAD_FLAGS);
 	number("ordinary", first);
 	if (first < 0 || !wait_flag(&ready[0], 1))
@@ -152,6 +169,32 @@ _start(void)
 	number("final_wait_return", results[3]);
 	status = early1 || early2 || wake || last || before != 1 ||
 	    observed != 4 || results[0] || results[1] || results[2] || results[3];
+#elif defined(WAIT_PAIR)
+	int second = spawn(1, THREAD_FLAGS);
+	number("second", second);
+	if (second < 0 || !wait_flag(&ready[1], 1))
+		goto done;
+	call(1082, 4, 0, 0, 0);
+	if (sync_call(USYNC_UNBLOCK, 0) != 0)
+		goto done;
+	/* Either worker may win. Exactly one may return per wake. */
+	for (int i = 0; i < 150; i++) {
+		if (__atomic_load_n(&ready[0], __ATOMIC_ACQUIRE) == 2 ||
+		    __atomic_load_n(&ready[1], __ATOMIC_ACQUIRE) == 2)
+			break;
+		call(1082, 1, 0, 0, 0);
+	}
+	call(1082, 4, 0, 0, 0);
+	word count = (__atomic_load_n(&ready[0], __ATOMIC_ACQUIRE) == 2) +
+	    (__atomic_load_n(&ready[1], __ATOMIC_ACQUIRE) == 2);
+	number("returned_after_one_wake", count);
+	if (count != 1 || sync_call(USYNC_UNBLOCK, 0) != 0 ||
+	    !wait_flag(&ready[0], 2) || !wait_flag(&ready[1], 2))
+		goto done;
+	number("first_return", results[0]);
+	number("second_return", results[1]);
+	__atomic_store_n(&release[1], 1, __ATOMIC_RELEASE);
+	status = results[0] != 0 || results[1] != 0;
 #elif defined(STACK_GUARD)
 	int fd = call(1005, PTR("/dev/zero"), 2, 0, 0);
 	int addr = irix_call(1134, 0, 8192, 3, 2, fd);

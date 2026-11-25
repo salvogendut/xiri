@@ -294,8 +294,11 @@ pages down to the break captured at first worker creation, preserving
 earlier fixed mappings. [Threaded ELF mapping](results/2026-11-25-threaded-elfmap.md) ·
 [Heap qualification](results/2026-11-25-threaded-break.md).
 The n32 worker adapter still rejects `PR_EVENT` creation and protection changes
-on a private mapping with a live worker. IRIX libc's address-based waits and
-wakes return ENOSYS on both Xiri lines. [Original IRIX comparison](results/2026-11-25-irix-event-workers.md).
+on a private mapping with a live worker. The module implements n32 libc's
+interruptible wait and wake for private lock words. Waiters and pending wake
+counts belong to one process image. Each wake releases one matching waiter
+or increments the count for that address. [Original IRIX comparison](results/2026-11-25-irix-event-workers.md) ·
+[Lock qualification](results/2026-11-25-irix-usync.md).
 General sproc sharing and foreign signal handlers remain separate. These adapters are now also built into the
 [loadable personality](results/2026-11-03-irix-module.md), following the
 compat_linux module model. The [F_DUPFD adapter](results/2026-11-01-irix-dupfd.md)

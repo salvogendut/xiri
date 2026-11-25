@@ -1,0 +1,323 @@
+{
+  "netbsd_revision": "1cf737772c649b4478c74e0c02a5a090248024c7",
+  "baseline_netbsd_revision": "aeb037b58654b42f9b1bd9f51a46586237471496",
+  "iris_upstream": "057ba0952a6b6c992cd23e3233ac202891a5fc81",
+  "iris_integration": "39ef6dff7d86f4c7bb0ccd2c936b916e147c0fff",
+  "module_imports_resolved": 212,
+  "host_tests": 96,
+  "artifact_sha256": {
+    "netbsd": "e989c42d3469f5d59e2ec759fdb3d7f54d7a893acdc326f6f3a3c4487f19fd22",
+    "netbsd.boot": "a4af41c6d0c83f11f0180fce5cb0424a7a5ea7c3aa898bda9bfaf9f3f7b6f5c9",
+    "compat_irix_o32.kmod": "7ec636ef4ad11c9a2572e9382665a2ec11655da1ef1dba5b18150d7309214c4d"
+  },
+  "probe_sha256": {
+    "waitpair": "7c891a2630e7753d79ac420bac011a2df6fd9193b2e796bd6ba467b78d428985",
+    "waitwake": "d0f1da178c1c7a2e16a174e3f8b3bd47fe75e298d5ebc408070bb6892031325c",
+    "guard": "28ea516089b449d60ef9e7a35fdfd5d8758933174b238cbd8e17456a59b3d056",
+    "event": "2d496baec5fb7b10313e6d40a763c60809c84d737e0581fb7b538c82bcf97c12",
+    "create-join": "5c69c9fa26afe563440ff78f412951f30d3fc36dc600f5d91289c9b3fa9d554a"
+  },
+  "first_candidate_6522_wake_trace": [
+    "op=2 version=1002 addr=0:0x1005bdc8 policy=1 flags=0",
+    "op=4 version=1002 addr=0:0x1005bdc8 policy=4021 flags=0",
+    "syscall=1223 v0=0x7a a3=1",
+    "op=2 version=1002 addr=0:0x1005bdc8 policy=1 flags=0"
+  ],
+  "releases": {
+    "6.5.22f": {
+      "longer_lowercase_samples": [
+        [
+          "1234 3810 R    -       /var/netscape/mozilla/mozilla-bin -splash dummy_arg ",
+          "tree_status=0"
+        ],
+        [
+          "1234 3810 R    biowait /var/netscape/mozilla/mozilla-bin -splash dummy_arg ",
+          "tree_status=0"
+        ],
+        [
+          "1234 3810 Rl   -       /var/netscape/mozilla/mozilla-bin -splash dummy_arg ",
+          "tree_status=0"
+        ]
+      ],
+      "longer_observation": "The next process/window query stalled. The disposable emulator was closed after attempting guest shutdown.",
+      "original_irix": {
+        "profile": "indy_ip24",
+        "chd_sha256": "b4fff76ffa0ca00c0a90da1c94a3eb41f5f6ba4cb13c0af258b4acca4ad95c41",
+        "nvram_sha256": "276522469736c2363da6b6e279a847857f861cc253cc49fcd31d07c6dd247987",
+        "source_hashes_rechecked": true,
+        "waitpair": {
+          "init": 0,
+          "prepost": 0,
+          "ordinary": 1,
+          "second": 2,
+          "returned_after_one_wake": 1,
+          "first_return": 0,
+          "second_return": 0
+        },
+        "exit_status": 0,
+        "clean_shutdown": true
+      },
+      "xiri": {
+        "module_at_securelevel_1": true,
+        "baseline_hashes_rechecked": {
+          "chd_sha256": "a0b232a777a4206a2cc3c93c99bf3277458105cc5d5945d190f8a0ab6d54710f",
+          "nvram_sha256": "c864b965f082ac9b0adca243a20c7d2d321fe8c88722a2eb3980a999d486850d",
+          "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+          "browser_payload_sha256": "1a817f69d2f07f47baddf596574c78dced9beddffdd6a81e11282470063f9a8d"
+        },
+        "probes": {
+          "waitwake": {
+            "init": 0,
+            "ordinary": 1,
+            "early_other_wake1": 0,
+            "early_other_wake2": 0,
+            "before_wake": 1,
+            "wake": 0,
+            "after_two_early_wakes": 4,
+            "final_wake": 0,
+            "blocked_return": 0,
+            "credit1_return": 0,
+            "credit2_return": 0,
+            "final_wait_return": 0,
+            "status": 0
+          },
+          "waitpair": {
+            "init": 0,
+            "prepost": 0,
+            "ordinary": 1,
+            "second": 2,
+            "returned_after_one_wake": 1,
+            "first_return": 0,
+            "second_return": 0,
+            "status": 0
+          },
+          "create-join": {
+            "status": 0,
+            "observations": [
+              "scope default",
+              "before create",
+              "create 0",
+              "worker ran",
+              "join 0",
+              "same_pid 1 distinct_thread 1 value 42 returned_pointer 1",
+              "status=0"
+            ]
+          },
+          "event": {
+            "init": 0,
+            "ordinary": 1,
+            "event": -122,
+            "status": 1
+          },
+          "guard": {
+            "init": 0,
+            "ordinary": 1,
+            "guard_none": -122,
+            "guard_rw": -122,
+            "status": 1
+          }
+        },
+        "extra_passing_pairs": 5,
+        "system_scope": [
+          "scope system",
+          "before create",
+          "worker ran",
+          "create 0",
+          "join 0",
+          "same_pid 1 distinct_thread 1 value 42 returned_pointer 1",
+          "status=0"
+        ],
+        "browser": {
+          "Mozilla": {
+            "observation": "double-click issued in Applications; no attributable browser PID captured"
+          },
+          "mozilla": {
+            "exec_pid": 3810,
+            "user": "xiritest",
+            "observation": "identified in longer catalog launch"
+          },
+          "direct": {
+            "samples": [
+              "1234  846 R+   -       /var/netscape/mozilla/mozilla-bin ",
+              "1234  846 R+   -       /var/netscape/mozilla/mozilla-bin ",
+              "1234  846 R+   -       /var/netscape/mozilla/mozilla-bin ",
+              "1234  846 R+   biowait /var/netscape/mozilla/mozilla-bin ",
+              "tree_status=0",
+              "tree_status=0",
+              "tree_status=0",
+              "tree_status=0"
+            ],
+            "local_page_seen": false
+          }
+        },
+        "direct_trace_sample": [],
+        "direct_log_counts": [
+          "USYNC_INTR_BLOCK 0",
+          "USYNC_UNBLOCK 0",
+          "mprotect stack guard 2"
+        ],
+        "clean_stage_halts": true,
+        "clean_entry_halt": true,
+        "clean_direct_run_halt": true,
+        "direct_log_messages": [
+          "Gdk-WARNING **: shmget failed: error 89 (Function not implemented)",
+          "nsNativeComponentLoader: SelfRegisterDll(/var/netscape/mozilla/components/libucvibm.so) Load FAILED with error:   846:/var/netscape/mozilla/mozilla-bin: rld: Fatal Error: Cannot Successfully map soname '/var/netscape/mozilla/components/libucvibm.so' under any of the filenames /var/netscape/mozilla/components/libucvibm.so",
+          "nsNativeComponentLoader: SelfRegisterDll(/var/netscape/mozilla/components/libucvko.so) Load FAILED with error:   846:/var/netscape/mozilla/mozilla-bin: rld: Fatal Error: Cannot Successfully map soname '/var/netscape/mozilla/components/libucvko.so' under any of the filenames /var/netscape/mozilla/components/libucvko.so",
+          "PANIC stk_alloc()() couldn't mprotect stack guard - {0x10059128, 0x78598000}",
+          "PANIC stk_alloc()() couldn't mprotect stack guard - {0x101709d8, 0x78598420}"
+        ]
+      }
+    },
+    "6.5.30f": {
+      "longer_lowercase_samples": [
+        [
+          "1234  848 R    -       /var/netscape/mozilla/mozilla-bin ",
+          "tree_status=0",
+          "     0x1800001 (has no name): (\"mozilla-bin\" \"Mozilla-bin\")  10x10+10+10  +10+10"
+        ],
+        [
+          "1234  848 Rl   -       /var/netscape/mozilla/mozilla-bin ",
+          "tree_status=0",
+          "     0x1800017 \"mozilla-bin\": (\"mozilla-bin\" \"Mozilla-bin\")  200x200+0+0  +0+0",
+          "     0x1800003 \"mozilla-bin\": ()  10x10+-100+-100  +-100+-100",
+          "     0x1800001 (has no name): (\"mozilla-bin\" \"Mozilla-bin\")  10x10+10+10  +10+10"
+        ]
+      ],
+      "longer_observation": "The next process/window query stalled. The disposable emulator was closed after attempting guest shutdown.",
+      "original_irix": {
+        "profile": "o2_ip32",
+        "chd_sha256": "339f74457dfbb06813681ab5db2ccfdd29d394e8a02dfcdcd6c6ac7c22a836db",
+        "nvram_sha256": "7be8898587b0c45a8de4bbe7fd392c30329f000d32eea5de4f32af94134493b2",
+        "source_hashes_rechecked": true,
+        "waitpair": {
+          "init": 0,
+          "prepost": 0,
+          "ordinary": 1,
+          "second": 2,
+          "returned_after_one_wake": 1,
+          "first_return": 0,
+          "second_return": 0
+        },
+        "exit_status": 0,
+        "clean_shutdown": true
+      },
+      "xiri": {
+        "module_at_securelevel_1": true,
+        "baseline_hashes_rechecked": {
+          "chd_sha256": "45255c741c7fbfce754f63dab478f501fad4070c71b9071f559dc43ec1395e76",
+          "nvram_sha256": "322ec195f7b5eb8474d6e84bc0de607eca2d146697bad3dd7a4898a879816e7f",
+          "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+          "browser_payload_sha256": "9221f292a68240ea863e6176dfa06b148ddea3973439d47b5ce464266a28593f"
+        },
+        "probes": {
+          "waitwake": {
+            "init": 0,
+            "ordinary": 1,
+            "early_other_wake1": 0,
+            "early_other_wake2": 0,
+            "before_wake": 1,
+            "wake": 0,
+            "after_two_early_wakes": 4,
+            "final_wake": 0,
+            "blocked_return": 0,
+            "credit1_return": 0,
+            "credit2_return": 0,
+            "final_wait_return": 0,
+            "status": 0
+          },
+          "waitpair": {
+            "init": 0,
+            "prepost": 0,
+            "ordinary": 1,
+            "second": 2,
+            "returned_after_one_wake": 1,
+            "first_return": 0,
+            "second_return": 0,
+            "status": 0
+          },
+          "create-join": {
+            "status": 0,
+            "observations": [
+              "scope default",
+              "before create",
+              "create 0",
+              "worker ran",
+              "join 0",
+              "same_pid 1 distinct_thread 1 value 42 returned_pointer 1",
+              "status=0"
+            ]
+          },
+          "event": {
+            "init": 0,
+            "ordinary": 1,
+            "event": -122,
+            "status": 1
+          },
+          "guard": {
+            "init": 0,
+            "ordinary": 1,
+            "guard_none": -122,
+            "guard_rw": -122,
+            "status": 1
+          }
+        },
+        "extra_passing_pairs": 5,
+        "system_scope": [
+          "scope system",
+          "before create",
+          "worker ran",
+          "create 0",
+          "join 0",
+          "same_pid 1 distinct_thread 1 value 42 returned_pointer 1",
+          "status=0"
+        ],
+        "browser": {
+          "Mozilla": {
+            "observation": "double-click issued in Applications; no attributable browser PID captured"
+          },
+          "mozilla": {
+            "exec_pid": 848,
+            "user": "xiritest",
+            "observation": "identified in longer catalog launch"
+          },
+          "direct": {
+            "samples": [
+              "1234  848 R+   biowait /var/netscape/mozilla/mozilla-bin ",
+              "1234  848 Rl+  biowait /var/netscape/mozilla/mozilla-bin ",
+              "1234  848 Rl+  -       /var/netscape/mozilla/mozilla-bin ",
+              "tree_status=0",
+              "     0x1800001 (has no name): (\"mozilla-bin\" \"Mozilla-bin\")  10x10+10+10  +10+10",
+              "tree_status=0",
+              "     0x1800001 (has no name): (\"mozilla-bin\" \"Mozilla-bin\")  10x10+10+10  +10+10",
+              "tree_status=0",
+              "     0x1800001 (has no name): (\"mozilla-bin\" \"Mozilla-bin\")  10x10+10+10  +10+10",
+              "tree_status=124"
+            ],
+            "local_page_seen": false
+          }
+        },
+        "direct_trace_sample": [
+          "op=2 version=1002 addr=0:0x1004d6c0 policy=1 flags=0",
+          "op=4 version=1002 addr=0:0x1004d6c0 policy=4021 flags=0",
+          "syscall=1223 v0=0 a3=0",
+          "syscall=1223 v0=0 a3=0",
+          "op=2 version=1002 addr=0:0x1004d6c0 policy=1 flags=0"
+        ],
+        "direct_log_counts": [
+          "USYNC_INTR_BLOCK 0",
+          "USYNC_UNBLOCK 0",
+          "mprotect stack guard 3"
+        ],
+        "clean_stage_halts": true,
+        "clean_entry_halt": true,
+        "clean_direct_run_halt": false,
+        "direct_log_messages": [
+          "Gdk-WARNING **: shmget failed: error 89 (Function not implemented)",
+          "PANIC stk_alloc()() couldn't mprotect stack guard - {0x1004aa20, 0x78598000}",
+          "PANIC stk_alloc()() couldn't mprotect stack guard - {0x1022a458, 0x785982c0}"
+        ]
+      }
+    }
+  },
+  "kernel_module_archive_sha256": "923b25994acddff03ca55ce35363f903b88ce94b16069e01e22bebbc4c311f06"
+}

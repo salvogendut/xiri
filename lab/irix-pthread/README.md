@@ -105,7 +105,7 @@ marker or entry through the wrong trampoline fails the check.
 
 ## Event workers, address-based waits and stack guards
 
-[event.c](event.c) builds three independent n32 executables. Each runs as
+[event.c](event.c) builds four independent n32 executables. Each runs as
 an ordinary user and prints the actual syscall results. A negative number
 is the IRIX errno from that call. From the project root, build the tests
 into a private directory with the NetBSD sgimips cross tools on `PATH`.
@@ -113,10 +113,11 @@ into a private directory with the NetBSD sgimips cross tools on `PATH`.
 ```sh
 out=.work/event-probes
 mkdir -p "$out"
-for name in event waitwake guard; do
+for name in event waitwake waitpair guard; do
     case "$name" in
         event) flag= ;;
         waitwake) flag=-DWAIT_WAKE ;;
+        waitpair) flag=-DWAIT_PAIR ;;
         guard) flag=-DSTACK_GUARD ;;
     esac
     mips64--netbsd-gcc -O2 -Wall -Wextra -Werror -EB -march=mips3 \
@@ -135,16 +136,22 @@ It checks for distinct IDs among live workers and records the replacement
 ID. `waitwake` blocks on one lock word while the parent posts two early
 wakeups to another word on the same page. The waiter and waker use different
 request structures for each word. After consuming both early wakeups, the
-worker must still wait for a third. `guard` maps a private writable region
+worker must still wait for a third. `waitpair` first posts and consumes a
+wake before creating any workers. It then starts two workers on the same
+lock word and checks that each wake releases exactly one. It supplies
+wake policy 65535 for the early wake and 0 for the later wakes, matching
+the vendor calling convention in which only the wait initializes policy.
+`guard` maps a private writable region
 after creating a worker, toggles its first 8 KiB to `PROT_NONE` and back to
 read/write, then checks its marker.
 
-All three exit zero on both original donors. To see the blocking and waking
-threads separately on IRIX, run `par` as root after the ordinary-user checks.
+To see the blocking and waking threads separately on IRIX, run `par` as
+root after the ordinary-user checks.
 
 ```sh
 /usr/sbin/par -s -i -SS -T -o /tmp/waitwake.par ./waitwake
 grep usync_cntl /tmp/waitwake.par
 ```
 
-[Original IRIX and Xiri comparison](../../docs/results/2026-11-25-irix-event-workers.md).
+[Original IRIX and Xiri comparison](../../docs/results/2026-11-25-irix-event-workers.md) ·
+[Private lock implementation and retest](../../docs/results/2026-11-25-irix-usync.md).
