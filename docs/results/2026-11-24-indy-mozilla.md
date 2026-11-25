@@ -54,7 +54,7 @@ Install `module/compat_irix_o32.kmod` from that build in the guest at
 and reboot. The 6.5.22f browser is n32 MIPS III. The executable admission
 change is NetBSD `xiri` commit `524cb15e140`.
 
-The [worker qualification](2026-11-25-nsproc.md) retests these icons on the kernel that implements thread creation.
+The [worker qualification](2026-11-25-nsproc.md) and [threaded mapping follow-up](2026-11-25-threaded-elfmap.md) retest both launchers.
 
 ## Results before worker support
 

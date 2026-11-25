@@ -1,0 +1,188 @@
+{
+  "netbsd_revision": "8ace81118ab2d603cd0f8284138f567d2dd4303f",
+  "baseline_revision": "6fd0cea0f775a7a0b054b2c277951eac421218f6",
+  "iris_upstream": "057ba0952a6b6c992cd23e3233ac202891a5fc81",
+  "iris_integration": "39ef6dff7d86f4c7bb0ccd2c936b916e147c0fff",
+  "sha256": {
+    "netbsd": "e989c42d3469f5d59e2ec759fdb3d7f54d7a893acdc326f6f3a3c4487f19fd22",
+    "netbsd.boot": "a4af41c6d0c83f11f0180fce5cb0424a7a5ea7c3aa898bda9bfaf9f3f7b6f5c9",
+    "baseline_module": "b0348baeaf1dd7b2234d3a61cedbd8267b7d2a1c0f203f2e725f1da3cc1a9e3f",
+    "production_module": "ff86a8a3debb7ce1c2d992b7c0fa0c807c9fa7564e4e4594df6dc32c4b3d13fb",
+    "qualification_only_module": "1facd152622663efbc7fe641a998ce4bff4f7655b8d5a50193e2f7b956452c25",
+    "worker_probe": "fae42387c9f4e4c2296b9af8e2f4807fb34ed858dd2484d692cb370a05eb0fae",
+    "read_error_probe": "db8e3a32dd6c69ccce13b66a9435df3be8a71aa5c45956447150a61a47ac5429",
+    "synthetic_library": "f646f33e7a966bfcad69ca78d902b47bd9029b946c1dcc566862a70e05051769"
+  },
+  "resolved_module_imports": 210,
+  "host_tests_passed": 96,
+  "releases": {
+    "6.5.22f": {
+      "v5_source": {
+        "chd_sha256": "a0b232a777a4206a2cc3c93c99bf3277458105cc5d5945d190f8a0ab6d54710f",
+        "nvram_sha256": "c864b965f082ac9b0adca243a20c7d2d321fe8c88722a2eb3980a999d486850d",
+        "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7"
+      },
+      "browser_payload_sha256": "1a817f69d2f07f47baddf596574c78dced9beddffdd6a81e11282470063f9a8d",
+      "baseline_rejected_calls": 8,
+      "candidate_traced": [
+        "8 maps, executable text, private data, zero BSS and preserved markers passed",
+        "rc=0",
+        "syscall=1204 v0=0x1 a3=0",
+        "syscall=1040 v0=0xe000000 a3=0",
+        "syscall=1040 v0=0x4000000 a3=0",
+        "syscall=1040 v0=0x4024000 a3=0",
+        "syscall=1040 v0=0x4048000 a3=0",
+        "syscall=1040 v0=0x406c000 a3=0",
+        "syscall=1040 v0=0x4090000 a3=0",
+        "syscall=1040 v0=0x40b4000 a3=0",
+        "syscall=1040 v0=0x40d8000 a3=0",
+        "syscall=1040 v0=0x8 a3=1"
+      ],
+      "additional_untraced_passes": 5,
+      "pthread_joins": [
+        "ordinary/default",
+        "root/system"
+      ],
+      "rollback_test": [
+        "8 maps, executable text, private data, zero BSS and preserved markers passed",
+        "rc=0",
+        "syscall=1040 v0=0x40d8000 a3=0",
+        "syscall=1040 v0=0x8 a3=1",
+        "syscall=1040 v0=0x5 a3=1",
+        "syscall=1040 v0=0x1e000000 a3=0"
+      ],
+      "legacy_layout_cases": {
+        "o32": [
+          "partial",
+          "repeat",
+          "occupied-gap",
+          "occupied-rw"
+        ],
+        "n32": [
+          "partial",
+          "repeat",
+          "occupied-gap",
+          "occupied-rw"
+        ]
+      },
+      "browsers": {
+        "Mozilla": {
+          "successful_elfmaps_after_first_worker": 0,
+          "selected_loader_returns": [
+            "/emul/irix/var/netscape/mozilla/components/libnsappshell.so syscall=1040 v0=0x6120000 a3=0",
+            "/emul/irix/var/netscape/mozilla/components/libucvibm.so syscall=1040 v0=0x8 a3=1",
+            "/emul/irix/var/netscape/mozilla/components/libucvko.so syscall=1040 v0=0x8 a3=1"
+          ],
+          "local_page_displayed": false
+        },
+        "mozilla": {
+          "successful_elfmaps_after_first_worker": 0,
+          "selected_loader_returns": [
+            "/emul/irix/var/netscape/mozilla/components/libnsappshell.so syscall=1040 v0=0x6120000 a3=0",
+            "/emul/irix/var/netscape/mozilla/components/libucvibm.so syscall=1040 v0=0x8 a3=1",
+            "/emul/irix/var/netscape/mozilla/components/libucvko.so syscall=1040 v0=0x8 a3=1"
+          ],
+          "local_page_displayed": false
+        },
+        "local_url": {
+          "successful_elfmaps_after_first_worker": 0,
+          "selected_loader_returns": [
+            "/emul/irix/var/netscape/mozilla/components/libnsappshell.so syscall=1040 v0=0x6120000 a3=0",
+            "/emul/irix/var/netscape/mozilla/components/libucvibm.so syscall=1040 v0=0x8 a3=1",
+            "/emul/irix/var/netscape/mozilla/components/libucvko.so syscall=1040 v0=0x8 a3=1"
+          ],
+          "local_page_displayed": false,
+          "status": 139,
+          "rejected_break_calls": 16
+        }
+      },
+      "all_four_boots_halted": true,
+      "catalog_core": {
+        "signal": 11,
+        "pc": "0x5ffe293c",
+        "badvaddr": "0x0"
+      }
+    },
+    "6.5.30f": {
+      "v5_source": {
+        "chd_sha256": "45255c741c7fbfce754f63dab478f501fad4070c71b9071f559dc43ec1395e76",
+        "nvram_sha256": "322ec195f7b5eb8474d6e84bc0de607eca2d146697bad3dd7a4898a879816e7f",
+        "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7"
+      },
+      "browser_payload_sha256": "9221f292a68240ea863e6176dfa06b148ddea3973439d47b5ce464266a28593f",
+      "baseline_rejected_calls": 8,
+      "candidate_traced": [
+        "8 maps, executable text, private data, zero BSS and preserved markers passed",
+        "rc=0",
+        "syscall=1204 v0=0x1 a3=0",
+        "syscall=1040 v0=0xe000000 a3=0",
+        "syscall=1040 v0=0x4000000 a3=0",
+        "syscall=1040 v0=0x4024000 a3=0",
+        "syscall=1040 v0=0x4048000 a3=0",
+        "syscall=1040 v0=0x406c000 a3=0",
+        "syscall=1040 v0=0x4090000 a3=0",
+        "syscall=1040 v0=0x40b4000 a3=0",
+        "syscall=1040 v0=0x40d8000 a3=0",
+        "syscall=1040 v0=0x8 a3=1"
+      ],
+      "additional_untraced_passes": 5,
+      "pthread_joins": [
+        "ordinary/default",
+        "root/system"
+      ],
+      "rollback_test": [
+        "8 maps, executable text, private data, zero BSS and preserved markers passed",
+        "rc=0",
+        "syscall=1040 v0=0x40d8000 a3=0",
+        "syscall=1040 v0=0x8 a3=1",
+        "syscall=1040 v0=0x5 a3=1",
+        "syscall=1040 v0=0x1e000000 a3=0"
+      ],
+      "legacy_layout_cases": {
+        "o32": [
+          "partial",
+          "repeat",
+          "occupied-gap",
+          "occupied-rw"
+        ],
+        "n32": [
+          "partial",
+          "repeat",
+          "occupied-gap",
+          "occupied-rw"
+        ]
+      },
+      "browsers": {
+        "Mozilla": {
+          "successful_elfmaps_after_first_worker": 6,
+          "selected_loader_returns": [
+            "/emul/irix/var/netscape/mozilla/components/libnsappshell.so syscall=1040 v0=0x4758000 a3=0"
+          ],
+          "local_page_displayed": false
+        },
+        "mozilla": {
+          "successful_elfmaps_after_first_worker": 7,
+          "selected_loader_returns": [
+            "/emul/irix/var/netscape/mozilla/components/libnsappshell.so syscall=1040 v0=0x4758000 a3=0"
+          ],
+          "local_page_displayed": false
+        },
+        "local_url": {
+          "successful_elfmaps_after_first_worker": 6,
+          "selected_loader_returns": [
+            "/emul/irix/var/netscape/mozilla/components/libnsappshell.so syscall=1040 v0=0x4758000 a3=0"
+          ],
+          "local_page_displayed": false,
+          "status": 139,
+          "rejected_break_calls": 11
+        }
+      },
+      "all_four_boots_halted": true,
+      "catalog_core": {
+        "signal": 11,
+        "pc": "0x425d3e8",
+        "badvaddr": "0x8"
+      }
+    }
+  }
+}

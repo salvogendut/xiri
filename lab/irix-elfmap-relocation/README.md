@@ -58,6 +58,39 @@ Keep at most four IRIS instances and stop all owned instances afterward. No
 leaked IRIX source is used: the evidence comes from original binaries and original
 synthetic fixtures, plus the licensed historical NetBSD mapper and current UVM.
 
+## Mapping while an n32 worker runs
+
+[threaded.c](threaded.c) creates a worker through the IRIX ABI. Parent and
+worker each load the same synthetic library four times at the same preferred
+address. The parent calls the mapped code, examines the data and BSS, and
+sets a different marker in each mapping. All eight markers must survive a
+rejected request whose file offset is past EOF.
+
+Build the probe from the Xiri checkout with the NetBSD sgimips cross tools.
+
+```sh
+tc="$tools/bin/mips64--netbsd"
+"$tc-gcc" -std=c11 -O2 -Wall -Wextra -Werror -EB -march=mips3 -mabi=n32 \
+    -mno-abicalls -fno-pic -G0 -ffreestanding -fno-stack-protector \
+    -c lab/irix-elfmap-relocation/threaded.c -o threaded.o
+"$tc-ld" -EB -m elf32btsmipn32 --build-id=none -z max-page-size=8192 \
+    -T lab/irix-prda/probe.ld threaded.o -o thread-map
+```
+
+Copy `thread-map` and the executable `elfmap-full-and-tail` from the existing
+fixture builder into the same guest directory. From that directory run
+`timeout -k 2 20 ./thread-map` as an ordinary user. A pass prints the
+eight-map result and exits zero. Exit 5 means at least one map failed. Exit
+9 means a previous mapping lost its marker.
+
+The optional `-DTEST_READ_ERROR` build also checks rollback after the text
+and anonymous data tail have already been mapped. It needs a separate test
+module. In a private build of `irix_o32_elfmap`, return `EIO` in place of
+the `vmcmd_readvn` call when `cmd->ev_len == 0x1003`. The fixture first
+requests this tail and checks the error, then requests the full 0x1004-byte
+tail at the same preferred address. If either extent leaked, the second
+request relocates and the test exits 11.
+
 
 Qualification: [576 checks and original xclock windows](../../docs/results/2026-10-31-irix-elfmap-relocation.md).
 The checked runs include both NetBSD kernel ABIs, eight original clock windows,

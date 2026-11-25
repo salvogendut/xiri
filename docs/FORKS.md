@@ -100,6 +100,11 @@ and confirmed IRIS `xiri` at `39ef6dff` already contained it. Both original
 IRIX controls and both NetBSD Indy checks used the pinned accelerated IRIS
 build. [Worker and browser qualification](results/2026-11-25-nsproc.md).
 
+The November 25 threaded ELF mapping cycle fetched IRIS upstream at
+`057ba095` and verified that IRIS `xiri` at `39ef6dff` contains it.
+The module and both browser launches were exercised using the pinned v5
+emulator on each Indy. [Two-release qualification](results/2026-11-25-threaded-elfmap.md).
+
 The November 24 disk-space recovery cycle merged upstream `057ba095` into
 IRIS `xiri` at `39ef6dff`. Upstream adds JIT code arena rotation and page
 slot recycling. The merge preserves the fork's optimization switch and its
