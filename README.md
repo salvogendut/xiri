@@ -348,7 +348,8 @@ the latest results for each Mozilla launcher are recorded separately.
 [Mozilla imports](docs/results/2026-11-24-indy-mozilla.md) ·
 [Worker qualification](docs/results/2026-11-25-nsproc.md) ·
 [Threaded library loading](docs/results/2026-11-25-threaded-elfmap.md) ·
-[Threaded heap and current Mozilla results](docs/results/2026-11-25-threaded-break.md).
+[Threaded heap](docs/results/2026-11-25-threaded-break.md) ·
+[Mozilla event workers, locks and stack guards](docs/results/2026-11-25-irix-event-workers.md).
 General nested pipelines and layered-terminal revoke remain open; the
 qualified job-control subset and its explicit wait-policy differences are
 recorded in the [cycle report](docs/results/2026-11-05-irix-job-control.md).

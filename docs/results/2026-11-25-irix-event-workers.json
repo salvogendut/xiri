@@ -1,0 +1,176 @@
+{
+  "netbsd_revision": "aeb037b58654b42f9b1bd9f51a46586237471496",
+  "iris_upstream": "057ba0952a6b6c992cd23e3233ac202891a5fc81",
+  "iris_integration": "39ef6dff7d86f4c7bb0ccd2c936b916e147c0fff",
+  "host_tests_passed": 96,
+  "probes_sha256": {
+    "event": "2d496baec5fb7b10313e6d40a763c60809c84d737e0581fb7b538c82bcf97c12",
+    "waitwake": "d0f1da178c1c7a2e16a174e3f8b3bd47fe75e298d5ebc408070bb6892031325c",
+    "guard": "28ea516089b449d60ef9e7a35fdfd5d8758933174b238cbd8e17456a59b3d056"
+  },
+  "module_sha256": "7145f1f33d3daee878fc2d525a4fbca3272ba10de47143a838fbcd0cb1583adf",
+  "releases": {
+    "6.5.22f": {
+      "original_irix": {
+        "profile": "indy_ip24",
+        "user": "guest",
+        "successful_probe_sets": 3,
+        "sample": {
+          "init": 0,
+          "ordinary": 1,
+          "event": 2,
+          "event_started": 1,
+          "second_event": 3,
+          "second_started": 1,
+          "replacement": 2,
+          "replacement_started": 1,
+          "early_other_wake1": 0,
+          "early_other_wake2": 0,
+          "before_wake": 1,
+          "wake": 0,
+          "after_two_early_wakes": 4,
+          "final_wake": 0,
+          "blocked_return": 0,
+          "credit1_return": 0,
+          "credit2_return": 0,
+          "final_wait_return": 0,
+          "guard_none": 0,
+          "guard_rw": 0,
+          "marker": 37
+        },
+        "par_intr_block_calls": 4,
+        "par_unblock_calls": 4,
+        "source_chd_sha256": "b4fff76ffa0ca00c0a90da1c94a3eb41f5f6ba4cb13c0af258b4acca4ad95c41",
+        "source_nvram_sha256": "276522469736c2363da6b6e279a847857f861cc253cc49fcd31d07c6dd247987",
+        "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+        "source_hashes_rechecked": true,
+        "clean_shutdown": true
+      },
+      "xiri": {
+        "profile": "indy_ip24",
+        "cpu": "r4400",
+        "user": "xiritest",
+        "sample": {
+          "init": 0,
+          "ordinary": 1,
+          "event": -122,
+          "early_other_wake1": -89,
+          "early_other_wake2": -89,
+          "before_wake": 5,
+          "wake": -89,
+          "after_two_early_wakes": 5,
+          "final_wake": -89,
+          "blocked_return": -89,
+          "credit1_return": -89,
+          "credit2_return": -89,
+          "final_wait_return": -89,
+          "guard_none": -122,
+          "guard_rw": -122
+        },
+        "probe_exit_status": {
+          "event": 1,
+          "waitwake": 1,
+          "guard": 1
+        },
+        "source_hashes_rechecked": {
+          "chd_sha256": "a0b232a777a4206a2cc3c93c99bf3277458105cc5d5945d190f8a0ab6d54710f",
+          "nvram_sha256": "c864b965f082ac9b0adca243a20c7d2d321fe8c88722a2eb3980a999d486850d",
+          "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+          "browser_payload_sha256": "1a817f69d2f07f47baddf596574c78dced9beddffdd6a81e11282470063f9a8d"
+        },
+        "catalog_browser_pids": {
+          "Mozilla": 1761,
+          "mozilla": 852
+        },
+        "direct_launch_diagnostics": [
+          "mprotect stack guard",
+          "USYNC_INTR_BLOCK",
+          "USYNC_UNBLOCK"
+        ],
+        "document_observed": false,
+        "clean_shutdown": true
+      }
+    },
+    "6.5.30f": {
+      "original_irix": {
+        "profile": "o2_ip32",
+        "user": "guest",
+        "successful_probe_sets": 3,
+        "sample": {
+          "init": 0,
+          "ordinary": 1,
+          "event": 2,
+          "event_started": 1,
+          "second_event": 3,
+          "second_started": 1,
+          "replacement": 2,
+          "replacement_started": 1,
+          "early_other_wake1": 0,
+          "early_other_wake2": 0,
+          "before_wake": 1,
+          "wake": 0,
+          "after_two_early_wakes": 4,
+          "final_wake": 0,
+          "blocked_return": 0,
+          "credit1_return": 0,
+          "credit2_return": 0,
+          "final_wait_return": 0,
+          "guard_none": 0,
+          "guard_rw": 0,
+          "marker": 37
+        },
+        "par_intr_block_calls": 4,
+        "par_unblock_calls": 4,
+        "source_chd_sha256": "339f74457dfbb06813681ab5db2ccfdd29d394e8a02dfcdcd6c6ac7c22a836db",
+        "source_nvram_sha256": "7be8898587b0c45a8de4bbe7fd392c30329f000d32eea5de4f32af94134493b2",
+        "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+        "source_hashes_rechecked": true,
+        "clean_shutdown": true
+      },
+      "xiri": {
+        "profile": "indy_ip24",
+        "cpu": "r5000",
+        "user": "xiritest",
+        "sample": {
+          "init": 0,
+          "ordinary": 1,
+          "event": -122,
+          "early_other_wake1": -89,
+          "early_other_wake2": -89,
+          "before_wake": 5,
+          "wake": -89,
+          "after_two_early_wakes": 5,
+          "final_wake": -89,
+          "blocked_return": -89,
+          "credit1_return": -89,
+          "credit2_return": -89,
+          "final_wait_return": -89,
+          "guard_none": -122,
+          "guard_rw": -122
+        },
+        "probe_exit_status": {
+          "event": 1,
+          "waitwake": 1,
+          "guard": 1
+        },
+        "source_hashes_rechecked": {
+          "chd_sha256": "45255c741c7fbfce754f63dab478f501fad4070c71b9071f559dc43ec1395e76",
+          "nvram_sha256": "322ec195f7b5eb8474d6e84bc0de607eca2d146697bad3dd7a4898a879816e7f",
+          "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+          "browser_payload_sha256": "9221f292a68240ea863e6176dfa06b148ddea3973439d47b5ce464266a28593f"
+        },
+        "catalog_browser_pids": {
+          "Mozilla": 677,
+          "mozilla": 849
+        },
+        "direct_launch_diagnostics": [
+          "mprotect stack guard",
+          "USYNC_INTR_BLOCK",
+          "USYNC_UNBLOCK"
+        ],
+        "document_observed": false,
+        "clean_shutdown": true
+      }
+    }
+  }
+}

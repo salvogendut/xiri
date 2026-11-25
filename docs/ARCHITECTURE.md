@@ -293,6 +293,9 @@ heap resizing. An occupied page stops heap growth. A worker can release
 pages down to the break captured at first worker creation, preserving
 earlier fixed mappings. [Threaded ELF mapping](results/2026-11-25-threaded-elfmap.md) ·
 [Heap qualification](results/2026-11-25-threaded-break.md).
+The n32 worker adapter still rejects `PR_EVENT` creation and protection changes
+on a private mapping with a live worker. IRIX libc's address-based waits and
+wakes return ENOSYS on both Xiri lines. [Original IRIX comparison](results/2026-11-25-irix-event-workers.md).
 General sproc sharing and foreign signal handlers remain separate. These adapters are now also built into the
 [loadable personality](results/2026-11-03-irix-module.md), following the
 compat_linux module model. The [F_DUPFD adapter](results/2026-11-01-irix-dupfd.md)

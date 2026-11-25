@@ -102,3 +102,49 @@ the host and run `python3 lab/irix-pthread/check-entry.py < entry.bin`.
 The checker accepts the guest's process ID and verifies the stack pointer
 relative to the supplied stack top. Timeout, partial output, a shared PRDA
 marker or entry through the wrong trampoline fails the check.
+
+## Event workers, address-based waits and stack guards
+
+[event.c](event.c) builds three independent n32 executables. Each runs as
+an ordinary user and prints the actual syscall results. A negative number
+is the IRIX errno from that call. From the project root, build the tests
+into a private directory with the NetBSD sgimips cross tools on `PATH`.
+
+```sh
+out=.work/event-probes
+mkdir -p "$out"
+for name in event waitwake guard; do
+    case "$name" in
+        event) flag= ;;
+        waitwake) flag=-DWAIT_WAKE ;;
+        guard) flag=-DSTACK_GUARD ;;
+    esac
+    mips64--netbsd-gcc -O2 -Wall -Wextra -Werror -EB -march=mips3 \
+        -mabi=n32 -mno-abicalls -fno-pic -G0 -ffreestanding \
+        -fno-stack-protector $flag -c lab/irix-pthread/event.c -o "$out/$name.o"
+    mips64--netbsd-ld -EB -m elf32btsmipn32 --build-id=none \
+        -z max-page-size=8192 -T lab/irix-prda/probe.ld \
+        -o "$out/$name" "$out/$name.o"
+done
+```
+
+Copy the binaries to a writable guest directory, make them executable and
+run each separately. `event` keeps an ordinary worker alive, starts two
+event workers together, then starts a replacement after releasing both.
+It checks for distinct IDs among live workers and records the replacement
+ID. `waitwake` blocks on one lock word while the parent posts two early
+wakeups to another word on the same page. The waiter and waker use different
+request structures for each word. After consuming both early wakeups, the
+worker must still wait for a third. `guard` maps a private writable region
+after creating a worker, toggles its first 8 KiB to `PROT_NONE` and back to
+read/write, then checks its marker.
+
+All three exit zero on both original donors. To see the blocking and waking
+threads separately on IRIX, run `par` as root after the ordinary-user checks.
+
+```sh
+/usr/sbin/par -s -i -SS -T -o /tmp/waitwake.par ./waitwake
+grep usync_cntl /tmp/waitwake.par
+```
+
+[Original IRIX and Xiri comparison](../../docs/results/2026-11-25-irix-event-workers.md).

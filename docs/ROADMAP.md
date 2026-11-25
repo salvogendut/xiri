@@ -1,6 +1,6 @@
 # Xiri execution roadmap
 
-Updated 2026-11-24. The current image runs the original 4Dwm desktop,
+Updated 2026-11-25. The current image runs the original 4Dwm desktop,
 Toolchest, Icon Catalog, File Manager, winterm and xclock on NetBSD/Xorg with
 accelerated Newport. Catalog launching, running-icon feedback, backdrop,
 desktop icons and logout pass bounded checks; the latest xmahjongg texture
@@ -620,7 +620,8 @@ dependency candidates; a visible window alone does not complete these checks.
 - [x] Start a real n32 worker with a private PRDA, verify vendor pthread create/join and retry both Mozilla icons on each Indy. See the [worker and browser qualification](results/2026-11-25-nsproc.md).
 - [x] Load libraries with an active n32 worker and verify rollback on both release lines. Both 6.5.30f Mozilla icons now load `libnsappshell.so`. [Threaded ELF mapping](results/2026-11-25-threaded-elfmap.md).
 - [x] Grow and shrink the IRIX heap with a live worker. Both Indy releases pass the resource-limit and mapping-preservation controls. Both Mozilla direct-launch traces now show successful threaded heap requests. [Heap and browser qualification](results/2026-11-25-threaded-break.md).
-- [ ] Compare the `nsproc(0x060000ff)` worker and its stack-guard and lock block/wake calls on original IRIX. Both Mozilla builds retry worker operations and log synchronization errors. Retest both catalog entries and a visible local page on each line. The reversed converter layouts on 6.5.22f remain a separate loader case.
+- [x] Compare Mozilla's event-worker creation, contended lock and stack-guard calls on both original IRIX releases and both Xiri Indys. Each operation has an independent reproducer. Both Applications launchers start Mozilla on each Indy. [Four-guest comparison](results/2026-11-25-irix-event-workers.md).
+- [ ] Implement private `usync_cntl` block/wake by lock address, including counted early wakes. Verify with `waitwake` on both lines. Qualify `PR_EVENT` workers and private stack guards separately, then require a visible local document from each Mozilla launcher. The 6.5.22f converter layouts remain a separate loader case.
 - [x] Implement IRIX process interval timers for Netscape Communicator. Both Xiri releases match the original o32 and n32 timer probes, including SIGALRM delivery. [Timer qualification](../lab/irix-time/README.md#interval-timers).
 - [ ] Trace the first SIGBUS during 6.5.22f Communicator startup and qualify its document and mailbox windows. Both catalog entries now pass their original URLs. Investigate Showcase’s legacy IRIS GL startup separately.
 - [x] Implement IRIX hard links and verify the original timezone compiler creates working aliases on both Indy release lines. [Hard-link and desktop application checks](results/2026-11-24-indy-link-clock-xosview.md).

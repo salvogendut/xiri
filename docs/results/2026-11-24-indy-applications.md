@@ -7,7 +7,7 @@ the user's process list before and after each launch. For silent exits we
 also traced the launch or captured the program's own diagnostic on the
 same authenticated display.
 
-For current Mozilla results on private copies with the optional browser payload and matching kernel, see [both launcher checks](2026-11-25-threaded-break.md).
+For Mozilla on private copies with the optional browser payload and matching kernel, see the [threaded heap checks](2026-11-25-threaded-break.md) and the [latest Applications launch and lock comparison](2026-11-25-irix-event-workers.md).
 
 | Catalog entry | 6.5.22f | 6.5.30f | Observed result |
 | --- | --- | --- | --- |

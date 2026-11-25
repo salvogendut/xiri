@@ -60,10 +60,10 @@ failure to block or wake a libc lock. The uppercase traces on both guests
 contain the supported `nsproc` flags `0x020000ff` and a second request
 using `0x060000ff`. The current adapter rejects the latter. The 6.5.22f
 trace recorded 5,027 unsupported `nsproc` returns and 112,114 unimplemented
-trap 1223 returns. On 6.5.30f those counts were 100,125 and 82. The next
-comparison is one contended worker pair on original IRIX using the second
-flag combination and the observed block/wake operations. That will let us
-test the contract independently of Mozilla's retry loop.
+trap 1223 returns. On 6.5.30f those counts were 100,125 and 82.
+A subsequent comparison reproduced event-worker creation, lock waits and
+stack guards independently of Mozilla on all four guests.
+[Original IRIX and Xiri results](2026-11-25-irix-event-workers.md).
 
 [Release hashes, observed windows and trace counts](2026-11-25-threaded-break.json).
 
