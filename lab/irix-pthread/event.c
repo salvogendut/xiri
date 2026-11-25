@@ -94,6 +94,17 @@ static word event_mask[4] = {
 static word sent_to_worker;
 static word event_info[32];
 static int event_result, event_again;
+#ifdef EVENT_CAUGHT
+/* This test blocks SIGPTINTR and receives it through __sigpoll. An
+ * asynchronous handler entry is a separate outcome and fails the test. */
+static void
+unexpected_handler(void)
+{
+	number("unexpected_handler", 1);
+	call(1001, 91, 0, 0, 0);
+	for (;;) {}
+}
+#endif
 #endif
 
 static void
@@ -104,7 +115,9 @@ worker(word i)
 		word limit[2] = {0, 500000000}, zero[2] = {0, 0};
 		number("worker_block", call(1164, 1, PTR(event_mask), 0, 0));
 		__atomic_store_n(&ready[i], 1, __ATOMIC_RELEASE);
+#ifndef EVENT_WAITING
 		wait_flag(&sent_to_worker, 1);
+#endif
 		event_result = call(1166, PTR(event_mask), PTR(event_info), PTR(limit), 0);
 		event_again = call(1166, PTR(event_mask), 0, PTR(zero), 0);
 		__atomic_store_n(&ready[i], 2, __ATOMIC_RELEASE);
@@ -139,6 +152,13 @@ void
 _start(void)
 {
 	int status = 1;
+#ifdef EVENT_CAUGHT
+	word action[8] = {8, PTR(unexpected_handler), ~0U, ~0U, 0, 0, 0, 0};
+	int installed = call(1162, EVENT_SIGNO, PTR(action), 0, PTR(unexpected_handler));
+	number("handler", installed);
+	if (installed != 0)
+		goto done;
+#endif
 #ifdef SIGNAL_POLL
 	/* Exercise the event worker's wait independently of worker creation. */
 	const word sigusr1 = 16;
@@ -222,6 +242,10 @@ _start(void)
 	number("event", event);
 	if (event < 0 || !wait_flag(&ready[1], 1))
 		goto done;
+#ifdef EVENT_WAITING
+	/* Give the receiver time to enter its 500 ms wait. */
+	call(1082, 10, 0, 0, 0);
+#endif
 	int sent = call(1130, 21, 4, event, EVENT_SIGNO);
 	__atomic_store_n(&sent_to_worker, 1, __ATOMIC_RELEASE);
 	number("send", sent);
@@ -232,7 +256,7 @@ _start(void)
 	number("code", event_info[1]);
 	number("again", event_again);
 	__atomic_store_n(&release[1], 1, __ATOMIC_RELEASE);
-#ifdef EVENT_PRIVATE
+#if defined(EVENT_PRIVATE) && !defined(EVENT_CAUGHT)
 	/* Both donors accept the request but omit 47 from this wait. */
 	status = sent != 0 || event_result != -11 || event_info[0] != 0 ||
 	    event_again != -11;

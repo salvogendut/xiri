@@ -72,6 +72,11 @@ in `08e53ba7`. [Octane build and qualification](results/2026-11-23-octane-deskto
 
 ## IRIS upstream updates
 
+The November 25 Mozilla input cycle fetched upstream `main` at `c8e8f17b`.
+IRIS `xiri` at `6a6b1aca` already contained it. We ran the original IRIX
+6.5.22f Indy and both Xiri Indy releases. NetBSD `xiri` commit `18746c8d997`
+implements the event-worker wakeup. [Diagnosis and validation](results/2026-11-25-mozilla-input.md).
+
 The November 25 saved-session check fetched upstream `main` at `c8e8f17b`.
 IRIS `xiri` at `6a6b1aca` contained all upstream commits. The pinned Indys
 ran the [browser, clock and system-meter checks](results/2026-11-25-indy-interaction.md).

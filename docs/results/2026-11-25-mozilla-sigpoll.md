@@ -26,7 +26,10 @@ The worker blocks its signal before the parent sends. It starts polling
 after the send returns. Each SIGUSR1 wait wrote IRIX signal number 16 into
 the 128-byte result structure. Both native donors accepted the private
 send but did not return signal 47 through this wait. Asynchronous handling
-of this private signal and thread-control operation 8 remain open.
+of this private signal and thread-control operation 8 remained open at this
+checkpoint. A later test reproduced delivery through a blocked worker's wait
+when Mozilla installed a handler before creating threads. [Native trace, module
+update and browser retest](2026-11-25-mozilla-input.md).
 
 Event-worker creation now accepts the vendor `PR_EVENT` flags and reserves
 the lowest available positive thread ID. With ordinary worker 1 still live,

@@ -113,7 +113,8 @@ into a private directory with the NetBSD sgimips cross tools on `PATH`.
 ```sh
 out=.work/event-probes
 mkdir -p "$out"
-for name in event waitwake waitpair guard bounds sigpoll ordered16 ordered47; do
+for name in event waitwake waitpair guard bounds sigpoll ordered16 ordered47 \
+    waiting47 caughtwait47 caughtearly47; do
     case "$name" in
         event) flag= ;;
         waitwake) flag=-DWAIT_WAKE ;;
@@ -123,6 +124,9 @@ for name in event waitwake waitpair guard bounds sigpoll ordered16 ordered47; do
         sigpoll) flag=-DSIGNAL_POLL ;;
         ordered16) flag=-DEVENT_SIGNAL ;;
         ordered47) flag="-DEVENT_SIGNAL -DEVENT_PRIVATE" ;;
+        waiting47) flag="-DEVENT_SIGNAL -DEVENT_PRIVATE -DEVENT_WAITING" ;;
+        caughtwait47) flag="-DEVENT_SIGNAL -DEVENT_PRIVATE -DEVENT_CAUGHT -DEVENT_WAITING" ;;
+        caughtearly47) flag="-DEVENT_SIGNAL -DEVENT_PRIVATE -DEVENT_CAUGHT" ;;
     esac
     mips64--netbsd-gcc -O2 -Wall -Wextra -Werror -EB -march=mips3 \
         -mabi=n32 -mno-abicalls -fno-pic -G0 -ffreestanding \
@@ -165,10 +169,24 @@ checks that a nanosecond field of one billion returns EINVAL.
 
 `ordered16` blocks SIGUSR1 in the event worker. The parent sends it to that
 worker by its IRIX thread ID. Once the send returns, the worker reads its
-signal and polls again to check consumption. `ordered47` repeats the same
-sequence for the private signal used by Mozilla. Both original releases
-accepted the send and the worker timed out. Xiri returns EOPNOTSUPP on the
-send, so this probe reports a known difference on Xiri.
+signal and polls again to check consumption. The other four variants block
+SGI's private pthread signal 47 in the worker. Each expects the targeted
+send to succeed. The receiver's result depends on the disposition.
+
+| Probe | Disposition | Sender timing | First wait | Immediate second wait |
+| --- | --- | --- | --- | --- |
+| `ordered47` | Default | Before wait | EAGAIN | EAGAIN |
+| `waiting47` | Default | Delayed sender | EAGAIN | EAGAIN |
+| `caughtearly47` | SA_SIGINFO handler | Before wait | 47, reported signo 47 | EAGAIN |
+| `caughtwait47` | SA_SIGINFO handler | Delayed sender | 47, reported signo 47 | EAGAIN |
+
+The early-send worker waits for an acknowledgement from the sender before
+calling `__sigpoll`. In the delayed-send variants the worker publishes that it
+has blocked the signal, then starts a 500 ms timed wait while the sender
+sleeps ten ticks. The caught variants install the handler before creating
+workers. An unexpected asynchronous invocation fails the test. See the
+[Mozilla investigation](../../docs/results/2026-11-25-mozilla-input.md) for
+the syscall sequence measured in the native browser.
 
 To see the blocking and waking threads separately on IRIX, run `par` as
 root after the ordinary-user checks.

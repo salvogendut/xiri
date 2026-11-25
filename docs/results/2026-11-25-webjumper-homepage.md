@@ -10,7 +10,7 @@ From the Xiri checkout, launch the 6.5.22f Indy to try both Messenger shortcuts.
 .work/images/xiri-indy-6.5.22f-catalog-20261125/run-iris.sh
 ```
 
-At xdm use `xiritest` for both username and password. Select **Applications** at the bottom left of the Icon Catalog and double-click **Mozilla**, **AboutNetscapeMessenger** or **NetscapeMail**. The expected windows are **Welcome to Xiri**, SGI’s illustrated About page and Mozilla’s **Mail & Newsgroups** account wizard. Allow up to two minutes for a cold browser launch. The catalog remembers its last page. A subsequent 6.5.22f test reproduced Navigator freezing after the welcome page painted. [Menu and keyboard retest](2026-11-25-indy-interaction.md).
+At xdm use `xiritest` for both username and password. Select **Applications** at the bottom left of the Icon Catalog and double-click **Mozilla**, **AboutNetscapeMessenger** or **NetscapeMail**. The expected windows are **Welcome to Xiri**, SGI’s illustrated About page and Mozilla’s **Mail & Newsgroups** account wizard. Allow up to two minutes for a cold browser launch. The catalog remembers its last page. A subsequent 6.5.22f test reproduced Navigator freezing after the welcome page painted. Install the updated compatibility module to restore menu and keyboard input. [Update instructions and screenshot](2026-11-25-mozilla-input.md).
 
 To try the offline homepage on the 6.5.30f Indy, use the same login and double-click **Mozilla**.
 

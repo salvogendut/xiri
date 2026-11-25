@@ -26,9 +26,9 @@ On 6.5.22f the main thread was sleeping on `irixth` before the keystrokes.
 The trace recorded activity on one worker and no system calls on the main
 thread during input. On 6.5.30f the main thread was in `poll` and read 192
 bytes during input. In the NetBSD fork, `sys/compat/irix_o32/irix_thread.c`
-uses that condition variable for `PR_THREAD_BLOCK`. The next comparison is
-the last block and its matching wake on original 6.5.22f. This run does not
-identify a missed wake or qualify Internet browsing.
+uses that condition variable for `PR_THREAD_BLOCK`. The follow-up traced that wakeup to
+SGI's private pthread signal and verified menu and keyboard input after
+updating the module. [Diagnosis, update and screenshot](2026-11-25-mozilla-input.md).
 
 ## Install Freeware xosview
 
