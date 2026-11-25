@@ -18,7 +18,7 @@ def position(guest, title):
     return tuple(int(re.search('Absolute upper-left ' + axis + r':\s*(-?\d+)', info)[1]) for axis in 'XY')
 
 
-def browser(guest, out, greeter, login, stage, release):
+def login_catalog(guest, greeter, login):
     greeter(guest)
     session = 'sed -n "s/.*Logs: //p" /usr/people/xiritest/.xsession-errors 2>/dev/null | tail -1'
     guest.command('previous=$(' + session + ')')
@@ -28,14 +28,31 @@ def browser(guest, out, greeter, login, stage, release):
                   'test "$XAUTHORITY" != default || XAUTHORITY=/usr/people/xiritest/.Xauthority; '
                   'export DISPLAY=127.0.0.1:0 XAUTHORITY')
     guest.wait_for('test -s "$XAUTHORITY" && xwininfo -root -tree 2>/dev/null | grep -q "Icon Catalog:"', 240)
-    windows = 'xwininfo -root -tree'
+    guest.wait_for('test -s "$job/handoff" && xwininfo -root -tree | grep -q \'"winterm"\'', 180)
+
+
+def raise_catalog(guest):
     x, y = position(guest, 'Icon Catalog:')
+    # A restored winterm overlaps the icons but leaves the right title bar exposed.
+    guest.monitor(f'ptr click {x + 760} {y - 14} left')
+    return x, y
+
+
+def open_browser(guest, release, title):
+    windows = 'xwininfo -root -tree'
+    x, y = raise_catalog(guest)
     guest.monitor(f'ptr click {x + 65} {y + 461} left')
     guest.wait_for(windows + ' | grep -q "Icon Catalog: Applications"', 45)
     # The 6.5.22f donor places About Netscape Messenger before Mozilla.
     icon = 278 if release == '6.5.22f' else 100
     guest.monitor(f'ptr click {x + icon} {y + 70} left 2')
-    guest.wait_for(windows + ' | grep -q "Welcome to Xiri"', 240)
+    guest.wait_for(windows + ' | grep -Fq "' + title + '"', 240)
+
+
+def browser(guest, out, greeter, login, stage, release):
+    login_catalog(guest, greeter, login)
+    open_browser(guest, release, 'Welcome to Xiri')
+    windows = 'xwininfo -root -tree'
     x, y = position(guest, 'Welcome to Xiri')
     guest.monitor(f'ptr click {x + 240} {y + 200} left')
     guest.monitor('key ctrl+l')

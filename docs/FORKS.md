@@ -72,6 +72,10 @@ in `08e53ba7`. [Octane build and qualification](results/2026-11-23-octane-deskto
 
 ## IRIS upstream updates
 
+The November 25 Freeware check fetched `upstream/main` at `c8e8f17b`.
+IRIS `xiri` at `6a6b1aca` already included it. Both clean Mozilla Indys
+used their packaged IRIS executable for the [CD 4 qualification](results/2026-11-25-clean-freeware.md).
+
 The November 25 Mozilla installer cycle fetched upstream `main` at
 `c8e8f17b6297d0d7793bc2ad638a415faa61be1a`. IRIS `xiri` at `6a6b1aca`
 already contained it. The installer uses the pinned Indy emulator and the

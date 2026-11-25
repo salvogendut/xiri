@@ -11,6 +11,44 @@ their 37-path static n32 closure and the original shell templates/manuals.
 original generic `/var/inst/machfile`. Extracted bytes remain private in
 `.work/irix-freeware/installed` and `.work/irix-freeware/package`.
 
+## Use the complete Freeware CD 4 with a clean Mozilla Indy
+
+Use the clean Mozilla CHD for your release and the matching installer
+supplement. The supplement supplies SGI's installer tools and the Foundation
+and overlay prerequisites. The second drive supplies the packages from your
+own May 2004 Freeware CD 4. The test workstation has a local ISO of the
+complete CD 4 tree from the [four-disc archive](../../docs/results/2026-11-01-irix-freeware.md).
+To make one from an extracted disc, run `genisoimage -R -o may2004-cd4.iso /path/to/cd-4`
+with the directory containing both `dist` and `relnotes`.
+
+From the Xiri checkout, select the matching release and launch the Indy.
+The launcher writes changes to its disk overlay across boots.
+
+```sh
+release=6.5.22f  # or 6.5.30f
+.work/images/xiri-clean-indy-${release}-mozilla-20261125/run-iris.sh \
+  --cdrom4 "$PWD/.work/images/xiri-cd4-indy-${release}-v5-20261124/freeware-cd4.iso" \
+  --cdrom5 "$PWD/.work/irix-freeware/may2004-cd4.iso"
+```
+
+At the xdm greeter, run these commands on the NetBSD root console. Run
+`prepare-live-base.sh` once on a fresh desktop with empty SGI history.
+
+```sh
+mkdir -p /cdrom /mnt/freeware
+mount -rt cd9660 /dev/cd0a /cdrom
+mount -rt cd9660 /dev/cd1a /mnt/freeware
+sh /cdrom/prepare-live-base.sh /cdrom
+sh /cdrom/xmahjongg.sh install /mnt/freeware
+/emul/irix/usr/sbin/versions -r /emul/irix fw_xmahjongg
+shutdown -r now
+```
+
+Log in as `xiritest`, select **Freeware** in Icon Catalog and double-click
+**xmahjongg**. To remove it, log out, mount the two CDs again on the root
+console and run `sh /cdrom/xmahjongg.sh remove /mnt/freeware`. On the
+next login the Freeware page should retain **FreewareRelnotes**.
+
 ## Build the xosview supplement
 
 From the checkout, set `dist` to the `dist` directory on an owned May 2004

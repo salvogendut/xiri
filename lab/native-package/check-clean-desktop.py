@@ -259,17 +259,23 @@ def desktop(guest, out, colour=None, while_logged_in=None, check_clock=False):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('phase', choices=('install', 'disk-full', 'desktop', 'display-upgrade', 'mozilla'))
-    for name in ('base', 'media', 'emulator', 'output'):
+    parser.add_argument('phase', choices=('install', 'disk-full', 'desktop', 'display-upgrade', 'mozilla', 'freeware'))
+    for name in ('media', 'emulator', 'output'):
         parser.add_argument('--' + name, type=Path, required=True)
+    parser.add_argument('--base', type=Path, help='qualified bootstrap, required except for the clean Freeware check')
     parser.add_argument('--release', choices=('6.5.22f', '6.5.30f'), required=True)
     parser.add_argument('--bundle', type=Path, help='test a copy of a packaged CHD and its graphical PROM')
     parser.add_argument('--kernel', type=Path, help='matching unstripped kernel for the graphical halt check')
     parser.add_argument('--sgi-clock', action='store_true', help='verify original SGI Clock redraws in the Xiri session')
     parser.add_argument('--mozilla', action='store_true', help='select Mozilla on a fresh installation')
+    parser.add_argument('--cd4', type=Path, help='complete May 2004 Freeware CD 4 ISO for the freeware phase')
     parser.add_argument('--legacy-ownership', action='store_true', help='exercise a v4 install without the created-file ledger')
     parser.add_argument('--full-target', choices=('services', 'payload'), help='filesystem to fill during disk-full qualification')
     args = parser.parse_args()
+    if args.phase != 'freeware' and not args.base:
+        parser.error(f'{args.phase} requires --base')
+    if bool(args.cd4) != (args.phase == 'freeware'):
+        parser.error('the freeware phase requires --cd4 and uses --media for the release-specific installer supplement')
     if args.mozilla and args.phase != 'install':
         parser.error('--mozilla requires the install phase')
     if args.sgi_clock and args.phase != 'desktop':
@@ -278,7 +284,8 @@ def main():
         parser.error('--legacy-ownership requires the display-upgrade phase')
     if args.full_target and args.phase != 'disk-full':
         parser.error('--full-target requires the disk-full phase')
-    base, medium, emu, out = (p.resolve() for p in (args.base, args.media, args.emulator, args.output))
+    base = args.base.resolve() if args.base else None
+    medium, emu, out = (p.resolve() for p in (args.media, args.emulator, args.output))
     os.environ.pop('IRIS_CHD_DIFF_DIR', None)
     signal.signal(signal.SIGTERM, signal.default_int_handler)
     out.mkdir(parents=True, exist_ok=True)
@@ -295,10 +302,13 @@ def main():
     bundle = args.bundle.resolve() if args.bundle else None
     if not install_phase:
         package = json.loads((bundle / 'manifest.json').read_text())
-        kernel_digest = json.loads((base / 'result.json').read_text())['native_sha256']['netbsd']
+        if args.phase == 'freeware' and not package.get('mozilla_receipt'):
+            raise ValueError('expected a clean desktop with Mozilla installed')
         if package.get('mozilla_receipt'):
             pins = json.loads((ROOT / 'docs/results/2026-11-25-mozilla-sigpoll.json').read_text())
             kernel_digest = pins['releases'][args.release]['image']['kernel_sha256']
+        else:
+            kernel_digest = json.loads((base / 'result.json').read_text())['native_sha256']['netbsd']
         if args.phase == 'mozilla' and (
             not package.get('mozilla_receipt') or sha256(medium) != package['iso_sha256']
         ):
@@ -332,6 +342,8 @@ def main():
         fixture = run / 'fixture.iso'
         subprocess.run(['genisoimage', '-quiet', '-R', '-o', fixture, Path(__file__).with_name('disk-full.sh')], check=True)
         config += '[scsi.5]\ncdrom = true\npath = ' + json.dumps(str(fixture)) + '\n'
+    if args.cd4:
+        config += '[scsi.5]\ncdrom = true\npath = ' + json.dumps(str(args.cd4.resolve())) + '\n'
     probe = load_probe()
     if install_phase:
         probe.TOOLBOX = []
@@ -372,6 +384,10 @@ def main():
             from mozilla_lifecycle import check
             result['checks'] = check(guest, run, package, greeter, login,
                                      json.loads((base / 'result.json').read_text())['native_sha256'])
+        elif args.phase == 'freeware':
+            from freeware_lifecycle import check
+            result['cd4_sha256'] = sha256(args.cd4)
+            result['checks'] = check(guest, run, package, greeter, login)
         else:
             if 'receipt' in package:
                 if result['iso_sha256'] != package['iso_sha256']:

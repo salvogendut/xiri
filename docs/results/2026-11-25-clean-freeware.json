@@ -1,0 +1,151 @@
+{
+  "source": {
+    "source_chd_sha256": "6da9a2efe74eccedf4ba1a75e21849099e650460b75f14bac635f8409d19edb8",
+    "iso_sha256": "a652a89c416487bf40f3029ef6cc50c1b93953370e9a9b8364a53efb9d426d8d",
+    "dist_files": 730,
+    "inventories": 144,
+    "iso_bytes": 592111616
+  },
+  "iris_upstream": "c8e8f17b6297d0d7793bc2ad638a415faa61be1a",
+  "iris_integration": "6a6b1aca",
+  "netbsd_revision": "5f6d833d936",
+  "host_tests": 99,
+  "releases": {
+    "6.5.22f": {
+      "initial_history": [
+        "fw_common",
+        "fw_common.sw",
+        "fw_common.sw.index",
+        "fw_xmahjongg",
+        "fw_xmahjongg.sw",
+        "fw_xmahjongg.sw.xmahjongg"
+      ],
+      "game": {
+        "window": "0x1800004 \"xmahjongg\": (\"xmahjongg\" \"XMahjongg\")  1006x614+0+0  +32+32",
+        "process": "1234  363 /usr/lib/desktop/iconcatalog/pages/C/Freeware/xmahjongg"
+      },
+      "removed_history": [
+        "fw_common",
+        "fw_common.sw",
+        "fw_common.sw.index"
+      ],
+      "user_files": [
+        "SHA256 (/usr/people/xiritest/.mozilla/default/1s3cg90j.slt/prefs.js) = a0f40d80d855603b0b2a6b5dd2584d55de5abe7b0279ca8d9a13d09c2e1f930e",
+        "SHA256 (/usr/people/xiritest/.mozilla/default/1s3cg90j.slt/bookmarks.html) = d403220a749fcf766dde5034de88f1f5beeccce9e0e06358d196a1d59cebeb95",
+        "SHA256 (/usr/people/xiritest/freeware-home.html) = 05da4573f697d0c3aec8466bcec533c461e3a0a3b431af7d1f72c30f9e4f911f",
+        "SHA256 (/usr/people/xiritest/.xsession) = 983ecc9eaa9763d5198b99c9a55b86a1a9dd785e851370144dcd8d9ec98233f3"
+      ],
+      "system_files": [
+        "SHA256 (/netbsd) = e989c42d3469f5d59e2ec759fdb3d7f54d7a893acdc326f6f3a3c4487f19fd22",
+        "SHA256 (/netbsd.boot) = a4af41c6d0c83f11f0180fce5cb0424a7a5ea7c3aa898bda9bfaf9f3f7b6f5c9",
+        "SHA256 (/stand/sgimips/11.99.11/modules/compat_irix_o32/compat_irix_o32.kmod) = 8be760a6e36bb163c83d5038654841b86572bc49645ebdcfbd997f9377dcb7fc",
+        "SHA256 (/etc/rc.d/xiri_hosts) = 82c77d51e49db104f9eb9ab1ff5d862ba14006257949d970caa50ea19aab148e",
+        "SHA256 (/etc/master.passwd) = 3c2647af476b75eaa76bdebb52b221cd888b8e145c0d0152504fd7cec76bdab9",
+        "SHA256 (/var/db/xiri-install/installed) = dca89775099580bff6e90fbede8878da43e4f784c28e2b96085b61b4a8be3f0e",
+        "SHA256 (/var/db/xiri-install/mozilla/identity) = af6a85a34ec2e4326e9e597153790c129cbebb4a219f775b2e31b9f091b59ac6"
+      ],
+      "browser": "0x180002c \"My Freeware Desktop - Mozilla {Build ID: 0000000000}\": (\"<unknown>\" \"<unknown>\")  610x450+0+0  +32+32",
+      "receipt": "6.5.22f 0021ca29ec292b066ae00d8b28adfa9ab48f3474950b61c5c0352de35813bf58 85191d9fb7fa2c16a11c58a2889fb891200d87cf43691a797446cba3c35aeac3 0e1d3b7126b5b396e674807a367a4bb1a2f1688e62b47090d87795af3d273595",
+      "cpu": "R4400",
+      "chd_sha256": "9579b90a523755966f799d2847b639f40903f34f9e2842b82f5a7f5846b5e95d",
+      "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+      "supplement_sha256": "b7cb0262fd2b6d2b2c777e2b04b9d8a53e97c9ec85ab721e8074903dfbc65edb",
+      "installed_desktop_otr": "6381dd289e77a64f87846226bbff3989e97c89946d06e09d6c75f6f7ccf4175d",
+      "restored_desktop_otr": "c4d7d3a172fb372b1c307b95b2e30d2eb62045c40d517b9f866eac7de29c22db",
+      "game_sha256": "35253008a6d31ad6c4589c622146bcd0ae781488bc5d7872a4114b888e1edb59",
+      "inst_conflicts": 0,
+      "inst_exit_errors": 0,
+      "clean_halt": true,
+      "swmgr": {
+        "version": "4.1",
+        "mode": "dry run",
+        "full_cd_default_conflicts": 99,
+        "single_product_conflicts": 1,
+        "omitted": "fw_xmahjongg.man.relnotes",
+        "required_by_omitted": "fw_common.man.legal",
+        "status": "Installations and removals were successful.",
+        "game_absent_after_dry_run": true,
+        "history_after_dry_run": [
+          "fw_common",
+          "fw_common.sw",
+          "fw_common.sw.index"
+        ]
+      },
+      "screenshots": {
+        "2026-11-25-clean-freeware-6.5.22f-browser.png": "60411f0620b8e6f9481903a4e6e6e0249b69b1e16182a952defbd35c399d9c89",
+        "2026-11-25-clean-freeware-6.5.22f-dry-run.png": "5e28e204154e5119c46bc7bcd7ec051cbb0023314c405be40c33e7ed37cbe6bf",
+        "2026-11-25-clean-freeware-6.5.22f-game.png": "8ed781394838aba7ad0dade5defa5a08272b0dd611b265feff51b49b15913999",
+        "2026-11-25-clean-freeware-6.5.22f-removed.png": "f7b174d4dc9fa6b165176e55647a249792249c3cd596d4b6fb8aa4de9e65e246",
+        "2026-11-25-clean-freeware-6.5.22f-swmgr.png": "30674ad7a06d8daf9c7a91e2a82b21b975ee7382bb1adfa60e1efc3884c7df99"
+      }
+    },
+    "6.5.30f": {
+      "initial_history": [
+        "fw_common",
+        "fw_common.sw",
+        "fw_common.sw.index",
+        "fw_xmahjongg",
+        "fw_xmahjongg.sw",
+        "fw_xmahjongg.sw.xmahjongg"
+      ],
+      "game": {
+        "window": "0x1800004 \"xmahjongg\": (\"xmahjongg\" \"XMahjongg\")  1006x614+0+0  +32+32",
+        "process": "1234  559 /usr/lib/desktop/iconcatalog/pages/C/Freeware/xmahjongg"
+      },
+      "removed_history": [
+        "fw_common",
+        "fw_common.sw",
+        "fw_common.sw.index"
+      ],
+      "user_files": [
+        "SHA256 (/usr/people/xiritest/.mozilla/default/2m66o8sg.slt/prefs.js) = 0c78c3617d7246a3ccdda5294e81442d3e928969a8c02f8a0a16cf0a785ea9e0",
+        "SHA256 (/usr/people/xiritest/.mozilla/default/2m66o8sg.slt/bookmarks.html) = de6e315fc1f977d676b1df6a11048a91e8ff8d3ba924313cb37e50bd527a03fc",
+        "SHA256 (/usr/people/xiritest/freeware-home.html) = 05da4573f697d0c3aec8466bcec533c461e3a0a3b431af7d1f72c30f9e4f911f",
+        "SHA256 (/usr/people/xiritest/.xsession) = 983ecc9eaa9763d5198b99c9a55b86a1a9dd785e851370144dcd8d9ec98233f3"
+      ],
+      "system_files": [
+        "SHA256 (/netbsd) = e989c42d3469f5d59e2ec759fdb3d7f54d7a893acdc326f6f3a3c4487f19fd22",
+        "SHA256 (/netbsd.boot) = a4af41c6d0c83f11f0180fce5cb0424a7a5ea7c3aa898bda9bfaf9f3f7b6f5c9",
+        "SHA256 (/stand/sgimips/11.99.11/modules/compat_irix_o32/compat_irix_o32.kmod) = 8be760a6e36bb163c83d5038654841b86572bc49645ebdcfbd997f9377dcb7fc",
+        "SHA256 (/etc/rc.d/xiri_hosts) = 82c77d51e49db104f9eb9ab1ff5d862ba14006257949d970caa50ea19aab148e",
+        "SHA256 (/etc/master.passwd) = 4b950c4c7083b12ff25f51be26ff871b48f5eaccf539bd094415793b5195b4ab",
+        "SHA256 (/var/db/xiri-install/installed) = 11104e6ef3b53f7ff2bbdd85470ba1518c583c2174ebf2dc7c3885fbee1b5af3",
+        "SHA256 (/var/db/xiri-install/mozilla/identity) = 36cf3f1f6d5078a1ff9936d1d39f44dfcd7888ac3468fcdf1c297701192955a3"
+      ],
+      "browser": "0x1800021 \"My Freeware Desktop - Mozilla\": (\"Mozilla\" \"navigator:browser\")  610x450+0+0  +32+32",
+      "receipt": "6.5.30f 0021ca29ec292b066ae00d8b28adfa9ab48f3474950b61c5c0352de35813bf58 b290452e839bd7e7fb073735e382c517f672e964074a03cc1390dd34c2286288 2da90eb7f32733666de109a18b5081c4fa79ee4719489435e844aa39265f770a",
+      "cpu": "R5000",
+      "chd_sha256": "1d3dd1de7d690dd4cdc563176e2093094592191144782f206f178470d38d3e12",
+      "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+      "supplement_sha256": "80f4bfbe30d968d991bbabfe3c0eb8e17584deb067f7deccd71a374b9d888413",
+      "installed_desktop_otr": "310c6bb2e460421ca459124d83943d9a6f2388e93cc971fcd434e9c632e9ab98",
+      "restored_desktop_otr": "0985392f9d5f3efe64ed6fa8e2c729f2cb26f5a6e7df51f6cd2c9d834fe76897",
+      "game_sha256": "35253008a6d31ad6c4589c622146bcd0ae781488bc5d7872a4114b888e1edb59",
+      "inst_conflicts": 0,
+      "inst_exit_errors": 0,
+      "clean_halt": true,
+      "swmgr": {
+        "version": "4.1",
+        "mode": "dry run",
+        "full_cd_default_conflicts": 99,
+        "single_product_conflicts": 1,
+        "omitted": "fw_xmahjongg.man.relnotes",
+        "required_by_omitted": "fw_common.man.legal",
+        "status": "Installations and removals were successful.",
+        "game_absent_after_dry_run": true,
+        "history_after_dry_run": [
+          "fw_common",
+          "fw_common.sw",
+          "fw_common.sw.index"
+        ]
+      },
+      "screenshots": {
+        "2026-11-25-clean-freeware-6.5.30f-browser.png": "5963219400d6e7043ffd8e0ab9eabc47f1054f22883f4f93a19339523b0f6130",
+        "2026-11-25-clean-freeware-6.5.30f-dry-run.png": "e4c64de5ae0fc280c7ee8cb4c890842b4e74f4363894377b9282bc4f4136f70b",
+        "2026-11-25-clean-freeware-6.5.30f-game.png": "cade5d9e513c70bf6d81b41365aa2060eeddf867e4b49b1b5a7084a6bc10468e",
+        "2026-11-25-clean-freeware-6.5.30f-removed.png": "833aaf2d0dc825086ae3a56f58891be4b3779e011dcbcaf46b24a9f675e63faf",
+        "2026-11-25-clean-freeware-6.5.30f-swmgr.png": "6df30c80e20335706df8ec822c2f114b746ede5f5e0e671125976ae538c7b86a"
+      }
+    }
+  }
+}

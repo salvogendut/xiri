@@ -104,6 +104,23 @@ component, boots the v5 kernel, adds Mozilla again and boots the browser
 kernel. It checks profile and site-file hashes across the changes and saves
 both browser screenshots. The guest needs outbound DNS and HTTP.
 
+To exercise the original SGI installer against the complete Freeware CD 4,
+use the clean Mozilla bundle, its unstripped browser kernel and the
+[two installation discs](../irix-installer/README.md#use-the-complete-freeware-cd-4-with-a-clean-mozilla-indy).
+Use a fresh output directory for each release.
+
+```sh
+IRIS_NO_IDLE=1 python3 lab/native-package/check-clean-desktop.py freeware \
+  --release "$release" --bundle "$bundle" --emulator "$bundle" --kernel "$browser_kernel" \
+  --media "$supplement" --cd4 "$cd4" --output "$run"
+```
+
+The test creates a private overlay, sets a homepage in a real browser
+profile, installs xmahjongg and reboots. It double-clicks the game in the
+Freeware tab, removes it through SGI's installer and reopens the saved
+homepage from Applications. The output includes both catalog states,
+the browser, SGI package history and profile checksums.
+
 Use the v4 bundle and the matching v5 ISO to test a live upgrade on a
 private overlay. The runner checks refusal at the active greeter, stops xdm,
 applies the upgrade twice, rolls back twice and verifies file hashes, modes

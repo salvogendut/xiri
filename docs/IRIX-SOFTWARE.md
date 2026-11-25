@@ -16,10 +16,11 @@ The live Indy installer supports the May 2004 Freeware CD 4 xmahjongg
 subsystem on both 6.5.22f and 6.5.30f. SGI `inst` owns the installed files,
 history and Freeware link. Its artwork hook runs SGI make and fftr, and the
 NetBSD parent preserves the desktop's existing type database across install
-and removal. The release-specific procedure starts with a private v5 image
-and the installer-capable kernel.
-[Guest commands](../lab/irix-installer/README.md#install-cd-4s-xmahjongg-into-the-live-indy-desktop)
-· [Results and desktop captures](results/2026-11-24-live-inst.md)
+and removal. The clean Mozilla images already have the installer-capable
+kernel. Attach the matching prerequisite disc and a complete CD 4 to
+install into an existing desktop. [Guest commands](../lab/irix-installer/README.md#use-the-complete-freeware-cd-4-with-a-clean-mozilla-indy)
+· [Clean Mozilla test results](results/2026-11-25-clean-freeware.md)
+· [Earlier v5 artwork qualification](results/2026-11-24-live-inst.md).
 
 The immediate path is to copy already installed applications, their resources
 and existing Icon Catalog registration from the user's IRIX image. The
