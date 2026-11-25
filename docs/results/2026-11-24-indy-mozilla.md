@@ -19,7 +19,9 @@ release=6.5.22f
 
 Use `release=6.5.30f` for the other donor. The importer checks the source
 and computes the ELF dependency closure. It emits a normalized
-`payload.tar.gz` and a manifest of guest paths and hashes. The browser
+`payload.tar.gz` and a manifest of guest paths and hashes. The import also emits a guest setup script for an offline first-run homepage.
+On 6.5.22f it includes an optional per-user WebJumper handler for Mozilla Mail.
+[Guest setup and screenshots](2026-11-25-webjumper-homepage.md). The browser
 data goes under `/emul/irix/var/netscape/mozilla`, and the vendor private
 libraries go under `/emul/irix/usr/lib32/internal/mozilla`.
 The import includes `libsocket.so` on both lines and `libz.so` on 6.5.30f.

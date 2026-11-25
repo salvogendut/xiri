@@ -46,6 +46,8 @@ Both guests loaded the filesystem module at securelevel 1. All 96 host
 tests passed. The IRIS fork at `39ef6dff` already contained the checked
 upstream revision `057ba095`.
 
+For an offline first launch on either release, the [new-profile installer](2026-11-25-webjumper-homepage.md#install-the-offline-homepage) seeds the local homepage.
+
 ## Launch and idle CPU checks
 
 On each release, the stock vendor launcher opened Navigator under the

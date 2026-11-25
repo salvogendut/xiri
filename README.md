@@ -346,8 +346,11 @@ The [stock-profile startup retest](docs/results/2026-11-25-applications-recheck.
 Both Indy releases can create and join a worker using SGI's n32 libpthread
 on the matching development kernel and module. Both vendor Mozilla
 versions can render a local page from the Applications catalog on the
-separate Mozilla test images. The offline homepage setting depends on
-the vendor release. [Test images, screenshots and setup](docs/results/2026-11-25-mozilla-sigpoll.md).
+separate Mozilla test images. The optional browser imports now include an offline
+homepage installer for new profiles. On 6.5.22f a per-user WebJumper setting opens
+the original About document and the Mozilla Mail account wizard from the catalog. [Setup and screenshots](docs/results/2026-11-25-webjumper-homepage.md) ·
+[Showcase graphics requirements](docs/results/2026-11-25-showcase-graphics.md) ·
+[Test images](docs/results/2026-11-25-mozilla-sigpoll.md#launch-the-test-images).
 [Mozilla imports](docs/results/2026-11-24-indy-mozilla.md) ·
 [Worker qualification](docs/results/2026-11-25-nsproc.md) ·
 [Threaded library loading](docs/results/2026-11-25-threaded-elfmap.md) ·

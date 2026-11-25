@@ -1,0 +1,5 @@
+#!/emul/irix/bin/sh
+case "${1-}" in
+    mailbox:) exec /var/netscape/mozilla/mozilla-xremote-client.sh -mail ;;
+    *) exec /usr/bin/X11/mozilla "$@" ;;
+esac

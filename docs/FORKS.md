@@ -72,6 +72,12 @@ in `08e53ba7`. [Octane build and qualification](results/2026-11-23-octane-deskto
 
 ## IRIS upstream updates
 
+The November 25 WebJumper and Showcase cycle fetched upstream `main` at
+`c8e8f17b6297d0d7793bc2ad638a415faa61be1a`. IRIS `xiri` at `6a6b1aca`
+already contained it. Validation used the pinned emulator for both Xiri
+Indy releases and original 6.5.22f Indy graphics for the Showcase comparison.
+[Browser runs](results/2026-11-25-webjumper-homepage.md) · [Showcase trace](results/2026-11-25-showcase-graphics.md).
+
 The November 25 pthread cycle fetched upstream `main` at `057ba095`.
 IRIS `xiri` at `39ef6dff` contained all upstream commits. The
 [four-guest comparison](results/2026-11-25-irix-pthread.md) used the

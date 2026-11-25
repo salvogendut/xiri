@@ -155,6 +155,32 @@ class ImportTests(unittest.TestCase):
             self.assertEqual(main(['import','--profile',str(profile),'--source','donor.chd',
                                    '--output','new','--dry-run']),0)
 
+    def test_browser_setup_is_separate_from_donor_payload(self):
+        raw = self.root/'donor.raw'
+        raw.write_bytes(b'original')
+        self.profile['donor'] = {'raw_sha256': sha256(raw)}
+        self.profile['components']['mozilla'] = {'available': True}
+        profile = self.root/'profile.json'
+        profile.write_text(json.dumps(self.profile))
+        donor = FakeDonor({'/bin/sh': b'vendor bytes'})
+        with patch('xiri_lab.irix_import.Donor.__enter__', return_value=donor):
+            base = build(profile, raw, self.root/'base')
+            self.assertNotIn('guest_setup', base)
+            for release in ('6.5.22f', '6.5.30f'):
+                self.profile['release'] = release
+                profile.write_text(json.dumps(self.profile))
+                output = self.root/release
+                browser = build(profile, raw, output, ['mozilla'])
+                self.assertEqual(base['payload_sha256'], browser['payload_sha256'])
+                setup = browser['guest_setup']
+                self.assertEqual(sha256(output/setup['file']), setup['sha256'])
+                self.assertEqual((output/'xiri-webjumper').exists(), release == '6.5.22f')
+                if release == '6.5.22f':
+                    handler = browser['webjumper_browser']
+                    self.assertEqual(sha256(output/handler['file']), handler['sha256'])
+                else:
+                    self.assertNotIn('webjumper_browser', browser)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -2,6 +2,8 @@
 
 Five of eight icons opened windows on 6.5.22f, including Acrobat’s first-run dialog. All four opened windows on 6.5.30f. The two editor icons start the same editor, and the two browser icons start the same browser.
 
+A follow-up tested both Netscape icons with the optional Communicator files installed, qualified a local Mozilla homepage for new users, and traced Showcase on the original IRIX donor. [Browser results](2026-11-25-webjumper-homepage.md) · [Showcase graphics calls](2026-11-25-showcase-graphics.md).
+
 We logged in through xdm as `xiritest` and double-clicked every visible icon on the Applications page of each Mozilla test image. Each launch used the vendor's stock preferences. We compared the user's process list and mapped X windows before and after each click, and closed each application before testing the next launcher. The two CHDs and their bundled IRIS executables matched their recorded SHA-256 hashes. All guest writes went to disposable copies. [Image details and launch commands](2026-11-25-mozilla-sigpoll.md#launch-the-test-images).
 
 | Catalog icon | IRIX 6.5.22f import | IRIX 6.5.30f import |

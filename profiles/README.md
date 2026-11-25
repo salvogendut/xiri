@@ -15,7 +15,7 @@ The two Mozilla profiles build optional browser payloads for an installed
 desktop. Each pins its own donor, browser components, chrome and private
 libraries. Both preserve the vendor launcher symlink. See the
 [Mozilla installation procedure](../docs/results/2026-11-24-indy-mozilla.md) and
-[offline browser and Catalog checks](../docs/results/2026-11-25-mozilla-sigpoll.md).
+[offline homepage installer and per-user WebJumper setup](../docs/results/2026-11-25-webjumper-homepage.md).
 [6.5.22f profile](irix-6.5.22f-mozilla-v1.json) ·
 [6.5.30f profile](irix-6.5.30f-mozilla-v1.json)
 

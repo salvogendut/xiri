@@ -293,6 +293,11 @@ def build(profile_path, source, output, components=(), chdman='chdman'):
     source, kind, digest = check_source(source, profile)
     output = output.absolute()
     output.mkdir(parents=True, exist_ok=False)
+    companions = {}
+    if 'mozilla' in selected:
+        companions['guest_setup'] = 'install-mozilla-defaults.sh'
+        if profile['release'] == '6.5.22f':
+            companions['webjumper_browser'] = 'xiri-webjumper'
     try:
         with tempfile.TemporaryDirectory(prefix='.import-', dir=output) as temp:
             work = Path(temp)
@@ -320,12 +325,16 @@ def build(profile_path, source, output, components=(), chdman='chdman'):
                           files={p:{k:v for k,v in row.items() if k != '_local'} for p,row in sorted(complete.items())},
                           dependencies=dependencies, omitted_catalog_entries=omitted,
                           native_prerequisites=profile['native_prerequisites'])
+            for key, name in companions.items():
+                file = output/name
+                file.write_bytes((ROOT/'packaging/mozilla'/name).read_bytes())
+                ledger[key] = {'file': name, 'sha256': sha256(file)}
             (output/'manifest.json').write_text(json.dumps(ledger, indent=2, sort_keys=True)+'\n')
             print('Payload:', archive, '\nSHA256:', ledger['payload_sha256'], flush=True)
             return ledger
     except BaseException:
         # Keep diagnostics, but never leave a failed package looking installable.
-        for name in ('manifest.json', 'payload.tar.gz'):
+        for name in ('manifest.json', 'payload.tar.gz', *companions.values()):
             (output/name).unlink(missing_ok=True)
         raise
 
