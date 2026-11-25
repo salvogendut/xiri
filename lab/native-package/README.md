@@ -129,6 +129,21 @@ helper, opens Software Manager on the logged-in user's display, clicks
 **Start** and exits through SGI’s completion dialog. It saves the selection
 and completion screenshots for both transactions.
 
+For xosview and the UnZip 5.40 to 5.50 upgrade, build the small third CD
+from the original 5.40 tardist. Use the same complete CD 4, release-specific
+supplement and clean Mozilla bundle as above. [Prepare the third CD](../irix-installer/README.md#install-xosview-and-upgrade-unzip-in-software-manager).
+
+```sh
+IRIS_NO_IDLE=1 python3 lab/native-package/check-clean-desktop.py freeware-upgrade \
+  --release "$release" --bundle "$bundle" --emulator "$bundle" --kernel "$browser_kernel" \
+  --media "$supplement" --cd4 "$cd4" --old-unzip "$previous_iso" --output "$run"
+```
+
+The check drives Software Manager, opens xosview as `xiritest` and extracts
+the same ZIP with both versions. It verifies 5.50 again after reboot, then
+removes the two products and compares SGI history and the desktop table
+with their pre-install values.
+
 ### In-place display upgrade
 
 Use the v4 bundle and the matching v5 ISO to test a live upgrade on a

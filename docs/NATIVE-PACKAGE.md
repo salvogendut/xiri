@@ -214,6 +214,10 @@ the root console or use the graphical installer in the active Xiri desktop.
 [Terminal installation](../lab/irix-installer/README.md#use-the-complete-freeware-cd-4-with-a-clean-mozilla-indy)
 · [Graphical Software Manager](../lab/irix-installer/README.md#install-with-graphical-software-manager).
 
+For xosview and an in-place Freeware UnZip upgrade, keep the release
+supplement and CD 4 attached. Add the older UnZip runtime at SCSI ID 6.
+[Installation, upgrade and removal](../lab/irix-installer/README.md#install-xosview-and-upgrade-unzip-in-software-manager).
+
 To return to the previous v5 desktop, quit Mozilla, mount the same CD again
 and run:
 

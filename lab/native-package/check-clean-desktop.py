@@ -259,7 +259,7 @@ def desktop(guest, out, colour=None, while_logged_in=None, check_clock=False):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('phase', choices=('install', 'disk-full', 'desktop', 'display-upgrade', 'mozilla', 'freeware'))
+    parser.add_argument('phase', choices=('install', 'disk-full', 'desktop', 'display-upgrade', 'mozilla', 'freeware', 'freeware-upgrade'))
     for name in ('media', 'emulator', 'output'):
         parser.add_argument('--' + name, type=Path, required=True)
     parser.add_argument('--base', type=Path, help='qualified bootstrap, required except for the clean Freeware check')
@@ -269,14 +269,18 @@ def main():
     parser.add_argument('--sgi-clock', action='store_true', help='verify original SGI Clock redraws in the Xiri session')
     parser.add_argument('--mozilla', action='store_true', help='select Mozilla on a fresh installation')
     parser.add_argument('--cd4', type=Path, help='complete May 2004 Freeware CD 4 ISO for the freeware phase')
+    parser.add_argument('--old-unzip', type=Path, help='UnZip 5.40 helper ISO for the freeware-upgrade phase')
     parser.add_argument('--software-manager', action='store_true', help='use the original graphical installer for the Freeware transaction')
     parser.add_argument('--legacy-ownership', action='store_true', help='exercise a v4 install without the created-file ledger')
     parser.add_argument('--full-target', choices=('services', 'payload'), help='filesystem to fill during disk-full qualification')
     args = parser.parse_args()
-    if args.phase != 'freeware' and not args.base:
+    freeware = args.phase in ('freeware', 'freeware-upgrade')
+    if bool(args.old_unzip) != (args.phase == 'freeware-upgrade'):
+        parser.error('supply --old-unzip for the freeware-upgrade phase')
+    if not freeware and not args.base:
         parser.error(f'{args.phase} requires --base')
-    if bool(args.cd4) != (args.phase == 'freeware'):
-        parser.error('the freeware phase requires --cd4 and uses --media for the release-specific installer supplement')
+    if bool(args.cd4) != freeware:
+        parser.error('Freeware qualification requires --cd4 and uses --media for the release-specific installer supplement')
     if args.software_manager and args.phase != 'freeware':
         parser.error('--software-manager requires the freeware phase')
     if args.mozilla and args.phase != 'install':
@@ -305,7 +309,7 @@ def main():
     bundle = args.bundle.resolve() if args.bundle else None
     if not install_phase:
         package = json.loads((bundle / 'manifest.json').read_text())
-        if args.phase == 'freeware' and not package.get('mozilla_receipt'):
+        if freeware and not package.get('mozilla_receipt'):
             raise ValueError('expected a clean desktop with Mozilla installed')
         if package.get('mozilla_receipt'):
             pins = json.loads((ROOT / 'docs/results/2026-11-25-mozilla-sigpoll.json').read_text())
@@ -353,6 +357,10 @@ def main():
         subprocess.run(['genisoimage', '-quiet', '-R', '-o', fixture,
                         source / 'xmahjongg.sh', source / 'package-filetypes.mk'], check=True)
         config += '[scsi.6]\ncdrom = true\npath = ' + json.dumps(str(fixture)) + '\n'
+    if args.old_unzip:
+        from freeware_upgrade import verify_media
+        verify_media(args.old_unzip)
+        config += '[scsi.6]\ncdrom = true\npath = ' + json.dumps(str(args.old_unzip.resolve())) + '\n'
     probe = load_probe()
     if install_phase:
         probe.TOOLBOX = []
@@ -366,6 +374,13 @@ def main():
     )
     guest = Guest(lab)
     result = dict(release=args.release, cpu=cpu, iso_sha256=sha256(medium), iris_sha256=sha256(emu / 'iris'))
+    if args.old_unzip:
+        pins = json.loads((ROOT / 'docs/results/2026-11-25-swmgr.json').read_text())
+        result['cd4_sha256'] = sha256(args.cd4)
+        result['old_unzip_iso_sha256'] = sha256(args.old_unzip)
+        if (result['cd4_sha256'] != pins['full_cd4_sha256']
+                or result['iso_sha256'] != pins['releases'][args.release]['supplement_sha256']):
+            raise ValueError('expected the qualified CD 4 and release-specific supplement')
     if not install_phase:
         result['chd_sha256'] = package['chd_sha256']
         from xiri_lab.kernel_log import KernelLog
@@ -393,6 +408,9 @@ def main():
             from mozilla_lifecycle import check
             result['checks'] = check(guest, run, package, greeter, login,
                                      json.loads((base / 'result.json').read_text())['native_sha256'])
+        elif args.phase == 'freeware-upgrade':
+            from freeware_upgrade import check
+            result['checks'] = check(guest, run, greeter, login)
         elif args.phase == 'freeware':
             from freeware_lifecycle import check
             result['cd4_sha256'] = sha256(args.cd4)

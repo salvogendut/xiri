@@ -310,6 +310,9 @@ reboot, double-click the game in Icon Catalog’s **Freeware** tab.
 [Graphical instructions](lab/irix-installer/README.md#install-with-graphical-software-manager)
 · [Terminal instructions](lab/irix-installer/README.md#use-the-complete-freeware-cd-4-with-a-clean-mozilla-indy)
 · [Screenshots from both Indys](docs/results/2026-11-25-swmgr.md).
+The same installer can add xosview’s CPU and memory meters and upgrade
+SGI Freeware UnZip 5.40 to 5.50 in place. [Manual instructions](lab/irix-installer/README.md#install-xosview-and-upgrade-unzip-in-software-manager)
+· [Upgrade results](docs/results/2026-11-26-freeware-upgrade.md).
 Both vendor timezone compilers can now create hard-linked aliases with the
 updated module. The same two Indys were used to trace SGI Clock and
 Freeware xosview. [Hard-link and application results](docs/results/2026-11-24-indy-link-clock-xosview.md)

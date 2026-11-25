@@ -72,6 +72,11 @@ in `08e53ba7`. [Octane build and qualification](results/2026-11-23-octane-deskto
 
 ## IRIS upstream updates
 
+The xosview and UnZip cycle fetched `upstream/main` on November 25 and
+again on November 26. Both checks found `c8e8f17b` already integrated
+in IRIS `xiri` at `6a6b1aca`. The two Indy tests used their packaged
+Newport emulator. [Package test procedure](../lab/irix-installer/README.md#install-xosview-and-upgrade-unzip-in-software-manager).
+
 The live Software Manager cycle rechecked `upstream/main` at `c8e8f17b`.
 IRIS `xiri` at `6a6b1aca` already contained it. Both Indy guests used the
 emulator bundled with their respective clean Mozilla images for the

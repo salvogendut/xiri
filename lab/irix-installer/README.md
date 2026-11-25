@@ -115,6 +115,76 @@ Attach it as the second CD on a November 25 catalog Indy. The guest script
 checks the distribution hashes, invokes the original `inst` and verifies the
 installed subsystem and both runtime files. [Guest commands and screenshots](../../docs/results/2026-11-25-indy-interaction.md#install-freeware-xosview).
 
+## Install xosview and upgrade UnZip in Software Manager
+
+Use a clean Mozilla Indy and the release-matched installer supplement from
+the [CD 4 instructions](#use-the-complete-freeware-cd-4-with-a-clean-mozilla-indy).
+Mount the supplement at `/cdrom`, the complete May 2004 Freeware CD 4 at
+`/mnt/freeware`, and prepare the base once. Log in to xdm as `xiritest`.
+On the NetBSD root console, open xosview’s product from the disc.
+
+```sh
+export DISPLAY=127.0.0.1:0 XAUTHORITY=/usr/people/xiritest/.Xauthority
+swmgr=/emul/irix/usr/sbin/swmgr
+"$swmgr" -V background:off -r /emul/irix -f /mnt/freeware/dist/fw_xosview -K '*' -I fw_xosview.sw.xosview
+```
+
+Choose **Customize Installation**, keep the selected subsystem, click
+**Start**, then choose **Exit, installations completed** and **OK**.
+The SGI distribution supplies an executable and X resources. Open the CPU
+and memory meters from the ordinary user's winterm.
+
+```sh
+/usr/freeware/bin/xosview -xrm 'xosview*load: False' -xrm 'xosview*gfx: False'
+```
+
+For the upgrade, use the older SGI UnZip 5.40 distribution together with
+the 5.50 product on CD 4. The tested third ISO is at
+`.work/irix-freeware/unzip-5.40.iso` in this workspace. To rebuild it,
+use the recipe below with a fresh output path. It packages the older
+runtime and a ZIP archive for checking extraction. The builder
+verifies the original tardist digest before reading the three distribution
+files. [Archived SGI 5.40 tardist](https://ftp.zx.net.nz/pub/archive/sgi-freeware/fw-6.2/Dist/fw_unzip-5.40.tardist).
+
+```sh
+python3 lab/irix-installer/prepare-unzip-media.py /path/to/fw_unzip-5.40.tardist /path/to/new-unzip-5.40.iso
+```
+
+Attach `--cdrom6 "$PWD/.work/irix-freeware/unzip-5.40.iso"` to the Indy
+launcher alongside the two discs. In the active Xiri session, run these
+commands on the root console with the same display and authority as above.
+
+```sh
+test -b /dev/cd2a || (cd /dev && sh MAKEDEV cd2)
+mkdir -p /mnt/previous
+mount -rt cd9660 /dev/cd2a /mnt/previous
+"$swmgr" -V background:off -r /emul/irix -f /mnt/previous/dist/fw_unzip -K '*' -I fw_unzip.sw.unzip
+/emul/irix/usr/sbin/versions -r /emul/irix fw_unzip
+sh /mnt/previous/unzip-upgrade.sh upgrade /mnt/freeware
+/emul/irix/usr/sbin/versions -r /emul/irix fw_unzip
+```
+
+Apply each transaction in Software Manager. Leave 5.40 installed when
+opening 5.50. The upgrade adds SGI’s ZIP filetype and saves the previous
+desktop table. To check either version from winterm, run the following.
+
+```sh
+/usr/freeware/bin/unzip -v | head -1
+/usr/freeware/bin/unzip -p /mnt/previous/sample.zip sample.txt
+```
+
+The second command should print `Xiri Freeware upgrade`. When extracting
+to disk, both versions can warn about restoring timestamps. The qualification
+compares the extracted file contents with the original. To remove both
+products, close xosview and run the commands below on the root console.
+After a reboot, mount the discs again and set the display and authority
+for the current login first.
+
+```sh
+sh /mnt/previous/unzip-upgrade.sh remove /mnt/freeware
+"$swmgr" -V background:off -r /emul/irix -f /mnt/freeware/dist/fw_xosview -K '*' -R fw_xosview.sw.xosview
+```
+
 ## Install CD 4's xmahjongg into the live Indy desktop
 
 Use a private copy of the v5 CHD for the matching vendor release. Boot the

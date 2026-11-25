@@ -82,8 +82,15 @@ def graphical_package(guest, action, out, greeter, login):
     guest.command('(test -b /dev/cd2a || (cd /dev && sh MAKEDEV cd2)) && '
                   'mkdir -p /mnt/gui && mount -rt cd9660 /dev/cd2a /mnt/gui')
     login_catalog(guest, greeter, login)
+    software_manager(guest, f'sh /mnt/gui/xmahjongg.sh --gui {action} /mnt/freeware', action, out)
+    guest.command('umount /mnt/gui')
+    logout(guest)
+    greeter(guest)
+
+
+def software_manager(guest, command, action, out):
     log = '/root/freeware-' + action
-    guest.command(f'(sh /mnt/gui/xmahjongg.sh --gui {action} /mnt/freeware >{log}.log 2>&1; '
+    guest.command(f'({command} >{log}.log 2>&1; '
                   f'echo $? >{log}.rc) </dev/null & :')
     main = 'Software Manager 4.1 -'
     guest.wait_for(f'test -s {log}.rc || {WINDOWS} | grep -q "{main}"', 150)
@@ -102,9 +109,7 @@ def graphical_package(guest, action, out, greeter, login):
     guest.monitor(f'ptr click {x + 25} {y + 155} left')
     guest.monitor(f'ptr click {x + 508} {y + 209} left')
     guest.wait_for(f'test -s {log}.rc', 120)
-    guest.command(f'cat {log}.log; test "$(cat {log}.rc)" = 0 && umount /mnt/gui')
-    logout(guest)
-    greeter(guest)
+    guest.command(f'cat {log}.log; test "$(cat {log}.rc)" = 0')
 
 
 def install(guest, expected, run_package):

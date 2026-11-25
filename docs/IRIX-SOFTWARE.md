@@ -26,6 +26,13 @@ the same installation and removal from a logged-in Xiri desktop.
 · [Clean Mozilla test results](results/2026-11-25-clean-freeware.md)
 · [Earlier v5 artwork qualification](results/2026-11-24-live-inst.md).
 
+CD 4 also supplies xosview and UnZip 5.50. Install xosview and start its CPU
+and memory meters from winterm. To exercise an in-place upgrade, install
+the older SGI UnZip 5.40 runtime, then select the 5.50 distribution in
+Software Manager. The newer package adds the desktop ZIP filetype.
+[Manual procedure](../lab/irix-installer/README.md#install-xosview-and-upgrade-unzip-in-software-manager)
+· [Release checks](results/2026-11-26-freeware-upgrade.md).
+
 The immediate path is to copy already installed applications, their resources
 and existing Icon Catalog registration from the user's IRIX image. The
 [installed-image inventory](results/2026-11-01-irix-installed-desktop.md) finds
@@ -112,7 +119,8 @@ The earlier
 [dual-release installer results](results/2026-11-24-indy-inst.md) and
 [reproduction procedure](../lab/irix-installer/README.md#repeat-the-clean-indy-installer-check)
 describe the alternate-root experiments. The live CD 4 workflow is documented
-at the top of this page. Product upgrades remain open.
+at the top of this page. The [UnZip 5.40 to 5.50 check](results/2026-11-26-freeware-upgrade.md)
+covers an in-place product upgrade.
 
 The [shared-mapping checkpoint](results/2026-11-01-irix-mmap-shared.md) clears
 the initial installer crash. The [bounded sproc adapter](results/2026-11-01-irix-sproc.md)
@@ -178,7 +186,9 @@ lifecycle remains a separate acceptance sequence:
 4. In an ordinary user's desktop, open the **Freeware** tab and launch
    xmahjongg from its entry; capture a PNG and check interaction.
 5. Repeat after logout/login, then remove the package through the original
-   installer and verify removal of its catalog entry. Qualify upgrades next.
+   installer and verify removal of its catalog entry.
+6. For a versioned product, install the earlier runtime, upgrade it in place
+   and verify the executable and SGI history again after reboot.
 
 The installed `inst(1M)` manual documents `-r` for an alternate installation
 root, `-n` for dry runs and `-c` for command files. Even a dry run may write

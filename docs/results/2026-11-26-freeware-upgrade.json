@@ -1,0 +1,178 @@
+{
+  "iris_upstream": "c8e8f17b6297d0d7793bc2ad638a415faa61be1a",
+  "iris_integration": "6a6b1aca",
+  "netbsd_revision": "5f6d833d936",
+  "host_tests": 99,
+  "full_cd4_sha256": "a652a89c416487bf40f3029ef6cc50c1b93953370e9a9b8364a53efb9d426d8d",
+  "tardist_sha256": "48fea0e915d9d4a41227f3034503e6553aae7dfe31617bd469ede355fc56eda3",
+  "previous_media_sha256": "caa135afcd4aa6c930e62e617eae28bf5e000ebbf00f5fd796131bfe8f61f51c",
+  "helper_sha256": "f0c75ef0e696dfff067423b4f348a80b6f24254a781fe1c2e4d10e7fcff0d09b",
+  "releases": {
+    "6.5.22f": {
+      "cpu": "r4400",
+      "chd_sha256": "9579b90a523755966f799d2847b639f40903f34f9e2842b82f5a7f5846b5e95d",
+      "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+      "iso_sha256": "b7cb0262fd2b6d2b2c777e2b04b9d8a53e97c9ec85ab721e8074903dfbc65edb",
+      "halted": true,
+      "stopped": true,
+      "xosview": {
+        "window": "0x1800002 \"xosview@xiri-indy\": (\"xosview\" \"XOsview\")  203x62+0+0  +64+64",
+        "process": "1234  969 /emul/irix/usr/freeware/bin/xosview"
+      },
+      "xosview_sha256": "0fd6a1f98b7dfdfeba2780d483edbe14eff930d8a936f1c4565bb8bc29434a22",
+      "xosview_history": [
+        "Target: /emul/irix/",
+        "I = Installed, R = Removed",
+        "",
+        "   Name                 Date        Description",
+        "",
+        "I  fw_xosview           11/25/2026  xosview.24.04.2003 X11 based system status meter",
+        "I  fw_xosview.sw        11/25/2026  xosview.24.04.2003 execution only env",
+        "I  fw_xosview.sw.xosview  11/25/2026  xosview.24.04.2003 execution only env"
+      ],
+      "old": {
+        "history": [
+          "Target: /emul/irix/",
+          "I = Installed, R = Removed",
+          "",
+          "   Name                 Date        Description",
+          "",
+          "I  fw_unzip             11/25/2026  unzip-5.40 Info-ZIP UnZip Archive Extraction Utilities",
+          "I  fw_unzip.sw          11/25/2026  unzip-5.40 execution only env",
+          "I  fw_unzip.sw.unzip    11/25/2026  unzip-5.40 execution only env"
+        ],
+        "binary_sha256": "0f198a50f346a1154501ac2da96e611378f23a29d3c54ec69222c812efaee0da",
+        "extraction_user": "xiritest"
+      },
+      "new": {
+        "history": [
+          "Target: /emul/irix/",
+          "I = Installed, R = Removed",
+          "",
+          "   Name                 Date        Description",
+          "",
+          "I  fw_unzip             11/25/2026  unzip-5.50 Info-ZIP UnZip Archive Extraction Utilities",
+          "I  fw_unzip.sw          11/25/2026  unzip-5.50 execution only env",
+          "I  fw_unzip.sw.unzip    11/25/2026  unzip-5.50 execution only env"
+        ],
+        "binary_sha256": "208ba0c7ecd5a032156be45263a982e77815e6f887ed7b2774219ff6f2685eb9",
+        "extraction_user": "xiritest"
+      },
+      "upgraded_table_sha256": "5960ce490affef478791f292c9a7eb7c659d194edfb44db2c8161b4c6f393a09",
+      "restored_table_sha256": "c4d7d3a172fb372b1c307b95b2e30d2eb62045c40d517b9f866eac7de29c22db",
+      "xosview_log": "",
+      "history_restored": true,
+      "zip_extractions": [
+        {
+          "stage": "installed",
+          "version": "5.40",
+          "cmp_exit": 0,
+          "diagnostic": "(warning) cannot set times"
+        },
+        {
+          "stage": "upgraded",
+          "version": "5.50",
+          "cmp_exit": 0,
+          "diagnostic": "(warning) cannot set times"
+        },
+        {
+          "stage": "rebooted",
+          "version": "5.50",
+          "cmp_exit": 0,
+          "diagnostic": "(warning) cannot set times"
+        }
+      ],
+      "screenshots": {
+        "2026-11-26-freeware-upgrade-6.5.22f-xosview.png": "14a6c4ddc7248d27470e216d0dc64ebe8bbcb2ce8ae8625ebd9444c3298a9c40",
+        "2026-11-26-freeware-upgrade-6.5.22f-selection.png": "4eeaa5692dc67034bd6e79e58d0b7f6b7a44dd8fe2c287927dacae5fb883c87a",
+        "2026-11-26-freeware-upgrade-6.5.22f-upgraded.png": "1c75d6617936e51dd2b67f05e7deb6f199ba914d70e0d93e8b4bb921c75a265a"
+      }
+    },
+    "6.5.30f": {
+      "cpu": "r5000",
+      "chd_sha256": "1d3dd1de7d690dd4cdc563176e2093094592191144782f206f178470d38d3e12",
+      "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+      "iso_sha256": "80f4bfbe30d968d991bbabfe3c0eb8e17584deb067f7deccd71a374b9d888413",
+      "halted": true,
+      "stopped": true,
+      "xosview": {
+        "window": "0x1800002 \"xosview@xiri-indy\": (\"xosview\" \"XOsview\")  203x62+0+0  +64+64",
+        "process": "1234  974 /emul/irix/usr/freeware/bin/xosview"
+      },
+      "xosview_sha256": "0fd6a1f98b7dfdfeba2780d483edbe14eff930d8a936f1c4565bb8bc29434a22",
+      "xosview_history": [
+        "Target: /emul/irix/",
+        "I = Installed, R = Removed",
+        "",
+        "   Name                 Date        Description",
+        "",
+        "I  fw_xosview           11/25/2026  xosview.24.04.2003 X11 based system status meter",
+        "I  fw_xosview.sw        11/25/2026  xosview.24.04.2003 execution only env",
+        "I  fw_xosview.sw.xosview  11/25/2026  xosview.24.04.2003 execution only env"
+      ],
+      "old": {
+        "history": [
+          "Target: /emul/irix/",
+          "I = Installed, R = Removed",
+          "",
+          "   Name                 Date        Description",
+          "",
+          "I  fw_unzip             11/25/2026  unzip-5.40 Info-ZIP UnZip Archive Extraction Utilities",
+          "I  fw_unzip.sw          11/25/2026  unzip-5.40 execution only env",
+          "I  fw_unzip.sw.unzip    11/25/2026  unzip-5.40 execution only env"
+        ],
+        "binary_sha256": "0f198a50f346a1154501ac2da96e611378f23a29d3c54ec69222c812efaee0da",
+        "extraction_user": "xiritest"
+      },
+      "new": {
+        "history": [
+          "Target: /emul/irix/",
+          "I = Installed, R = Removed",
+          "",
+          "   Name                 Date        Description",
+          "",
+          "I  fw_unzip             11/25/2026  unzip-5.50 Info-ZIP UnZip Archive Extraction Utilities",
+          "I  fw_unzip.sw          11/25/2026  unzip-5.50 execution only env",
+          "I  fw_unzip.sw.unzip    11/25/2026  unzip-5.50 execution only env"
+        ],
+        "binary_sha256": "208ba0c7ecd5a032156be45263a982e77815e6f887ed7b2774219ff6f2685eb9",
+        "extraction_user": "xiritest"
+      },
+      "upgraded_table_sha256": "fd51f77619ef072b70e9024f976df09585f2d8943ed3bdbf084e552e468526a7",
+      "restored_table_sha256": "0985392f9d5f3efe64ed6fa8e2c729f2cb26f5a6e7df51f6cd2c9d834fe76897",
+      "xosview_log": "",
+      "history_restored": true,
+      "zip_extractions": [
+        {
+          "stage": "installed",
+          "version": "5.40",
+          "cmp_exit": 0,
+          "diagnostic": "(warning) cannot set times"
+        },
+        {
+          "stage": "upgraded",
+          "version": "5.50",
+          "cmp_exit": 0,
+          "diagnostic": "(warning) cannot set times"
+        },
+        {
+          "stage": "rebooted",
+          "version": "5.50",
+          "cmp_exit": 0,
+          "diagnostic": "(warning) cannot set times"
+        }
+      ],
+      "screenshots": {
+        "2026-11-26-freeware-upgrade-6.5.30f-xosview.png": "6adba43a2d3dc1d0962e620d4b4647518d27e9bd6ff59d56fe61c1c8a334ef6e",
+        "2026-11-26-freeware-upgrade-6.5.30f-selection.png": "81bb8b294bba9bced1f0c94619731ebc8c960588377a46c74f52fb838655abee",
+        "2026-11-26-freeware-upgrade-6.5.30f-upgraded.png": "8c7320302e11b1445f3e6e17507582308d08f9f60b76a9be3562c423610d18bc"
+      }
+    }
+  },
+  "unzip_5_50_ftr_sha256": "49d88838b2c9c8d3690628b60f0229c869cd916be08513c2f887f1b0d707e276",
+  "xosview_distribution_sha256": {
+    "fw_xosview": "834ad4f31ece781fb1becc18a864dab3960d6b1ef6d5f3b0843854652a0c23b0",
+    "fw_xosview.idb": "05adc72c218a28f4ec2815d95de8facf5b90bf7cfcd7158ddf6282993d9d240f",
+    "fw_xosview.sw": "9e1912f31c55948833278c90d6fe4b9ffe0b0e521a4a7131bd28ecc6388716a6"
+  }
+}
