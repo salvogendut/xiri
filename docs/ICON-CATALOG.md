@@ -3,11 +3,12 @@
 For the current original-media Indy desktops, see the [Applications tab
 test on both releases](results/2026-11-24-indy-applications.md). It covers
 all eight visible 6.5.22f entries and all four 6.5.30f entries.
-On private copies with the [optional browser imports](results/2026-11-24-indy-mozilla.md),
-both Mozilla icons start the vendor binary. Both releases wait for an
-unimplemented IRIX thread call before showing a browser window. On 6.5.22f
-the two Messenger shortcuts reach Netscape. The local document and mailbox
-are still unusable.
+On the November 25 catalog images, both Mozilla versions paint a local homepage.
+In the saved 6.5.22f session Navigator then stopped responding. On 6.5.30f
+the File menu opened and typing a second local URL loaded that document.
+The two 6.5.22f Messenger entries can use Mozilla through WebJumper.
+[Browser input checks](results/2026-11-25-indy-interaction.md) ·
+[Messenger handler and startup tests](results/2026-11-25-webjumper-homepage.md).
 
 Updated 2026-11-14 after the [desktop-controls cycle](results/2026-11-14-desktop-controls.md),
 the [startup survey](results/2026-11-03-irix-catalog.md)
@@ -129,7 +130,7 @@ retained; untested behavior is not promoted to a pass.
 | `xearth` | `/usr/freeware/bin/xearth` | **Exits 126 without a window.** xiri-catalog: /usr/freeware/bin/xearth: cannot execute |
 | `xfig` | `/usr/freeware/bin/xfig` | **Main window opens.** Xfig and its error window open; CompKeyDB is missing, disabling multi-key sequences. Drawing, save and normal exit remain untested. |
 | `xmms` | `/usr/freeware/bin/xmms` | **Launch fails.** Exits 0 without a window after its control socket fails with Address family not supported by protocol family. |
-| `xosview` | `/usr/freeware/bin/xosview` | **CPU and memory meters verified.** The original Freeware binary opened on both updated Indys and its bars responded to a controlled workload. The default load-average meter reports an RPC error. The clean v5 images require the updated module and the Freeware binary. [Measurements and screenshots](results/2026-11-24-indy-xosview.md) |
+| `xosview` | `/usr/freeware/bin/xosview` | **Optional Freeware package.** The November 25 catalog disks omit it. Install from May 2004 CD 4 and launch in winterm with the load and graphics meters disabled. [Installation](results/2026-11-25-indy-interaction.md#install-freeware-xosview) · [CPU and memory measurements](results/2026-11-24-indy-xosview.md) |
 | `xpat2` | `/usr/freeware/bin/xpat2` | **Exits 1 without a window.** FAILED to open keyboard file "keys" xpat2: WARNING, cannot load configuration file /usr/freeware/lib/xpat/default/Cards.conf xpat2: cannot read suits |
 | `xscreensaver-demo` | `/usr/freeware/bin/xscreensaver-demo` | **Window observed.** XScreenSaver 4.01, 24-Feb-2002, XScreenSaver. Use and normal exit remain untested. |
 | `zsh` | `/usr/freeware/bin/zsh` | **Exits 0 without a new window.** |

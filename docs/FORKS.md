@@ -72,6 +72,10 @@ in `08e53ba7`. [Octane build and qualification](results/2026-11-23-octane-deskto
 
 ## IRIS upstream updates
 
+The November 25 saved-session check fetched upstream `main` at `c8e8f17b`.
+IRIS `xiri` at `6a6b1aca` contained all upstream commits. The pinned Indys
+ran the [browser, clock and system-meter checks](results/2026-11-25-indy-interaction.md).
+
 The November 25 WebJumper and Showcase cycle fetched upstream `main` at
 `c8e8f17b6297d0d7793bc2ad638a415faa61be1a`. IRIS `xiri` at `6a6b1aca`
 already contained it. Validation used the pinned emulator for both Xiri

@@ -11,6 +11,27 @@ their 37-path static n32 closure and the original shell templates/manuals.
 original generic `/var/inst/machfile`. Extracted bytes remain private in
 `.work/irix-freeware/installed` and `.work/irix-freeware/package`.
 
+## Build the xosview supplement
+
+From the checkout, set `dist` to the `dist` directory on an owned May 2004
+SGI Freeware CD 4. The ISO includes SGI's product files and the guest setup
+script. The same Freeware product installs against either release's own
+initialized SGI package history.
+
+```sh
+dist=/path/to/full-cd4/dist
+mkdir -p .work/irix-freeware
+genisoimage -quiet -R -V XIRI_XOSVIEW -graft-points \
+  -o .work/irix-freeware/xosview-cd4.iso \
+  xosview.sh=lab/irix-installer/xosview.sh \
+  "dist/fw_xosview=$dist/fw_xosview" "dist/fw_xosview.idb=$dist/fw_xosview.idb" \
+  "dist/fw_xosview.sw=$dist/fw_xosview.sw" "dist/fw_xosview.man=$dist/fw_xosview.man"
+```
+
+Attach it as the second CD on a November 25 catalog Indy. The guest script
+checks the distribution hashes, invokes the original `inst` and verifies the
+installed subsystem and both runtime files. [Guest commands and screenshots](../../docs/results/2026-11-25-indy-interaction.md#install-freeware-xosview).
+
 ## Install CD 4's xmahjongg into the live Indy desktop
 
 Use a private copy of the v5 CHD for the matching vendor release. Boot the
