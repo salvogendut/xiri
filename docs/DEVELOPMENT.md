@@ -92,6 +92,13 @@ UART writes paced at 20 ms per byte, compressed output, monitor captures and bou
 the established `probe-netbsd.py` still owns boot and teardown. Result files
 record hashes for these shared sources as well as each probe.
 
+Ordinary IRIS probes in the test Toolbox let Xvfb choose its own display
+number. Two simultaneous launches previously selected the same display
+with `xvfb-run -a`, so stopping one disconnected the other. The probe uses
+`-d` when the installed wrapper advertises it and keeps `-a` for older
+wrappers. Two simultaneous Indy PROMs received separate displays, and
+the second still produced a framebuffer after the first exited.
+
 The xdm probe also saves `checkpoint.json` after each captured screen and
 completed login/logout phase. This preserves partial observations if the
 host supervisor disappears. A checkpoint cannot qualify an image: promotion

@@ -174,8 +174,10 @@ class Lab:
         (self.directory / 'iris.toml').write_text(config)
         command = []
         if self.args.mode == 'ordinary':
-            # A host virtual display preserves Newport and ordinary execution.
-            command += ['env', '-u', 'WAYLAND_DISPLAY', '-u', 'WAYLAND_SOCKET', 'xvfb-run', '-a',
+            # Let Xvfb reserve the display atomically when the wrapper supports it.
+            help_text = run(TOOLBOX + ['xvfb-run', '--help'], capture_output=True, text=True).stdout
+            display_option = '-d' if '--auto-display' in help_text else '-a'
+            command += ['env', '-u', 'WAYLAND_DISPLAY', '-u', 'WAYLAND_SOCKET', 'xvfb-run', display_option,
                         '-s', '-screen 0 1280x1024x24']
         command += [str(IRIS), '--config', str(self.directory / 'iris.toml'),
                     '--nvram', str(self.directory / 'nvram.bin')]
