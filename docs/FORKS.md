@@ -95,6 +95,11 @@ v4 Indy bundle. The v5 package uses the same emulator for direct comparison.
 The [live Freeware checks](results/2026-11-24-live-inst.md) used the v5
 emulator and NetBSD `xiri` at `df8a46a636f` on both Indys.
 
+The November 25 n32 worker cycle fetched IRIS upstream at `057ba095`
+and confirmed IRIS `xiri` at `39ef6dff` already contained it. Both original
+IRIX controls and both NetBSD Indy checks used the pinned accelerated IRIS
+build. [Worker and browser qualification](results/2026-11-25-nsproc.md).
+
 The November 24 disk-space recovery cycle merged upstream `057ba095` into
 IRIS `xiri` at `39ef6dff`. Upstream adds JIT code arena rotation and page
 slot recycling. The merge preserves the fork's optimization switch and its

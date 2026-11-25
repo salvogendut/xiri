@@ -285,8 +285,10 @@ LOCAL intervals in personality-owned state. Separate vmspaces share their
 non-LOCAL backing; group-aware guards reject unimplemented map changes.
 Exec/exit hooks detach members and release owned stacks, with retained vmspace
 references protecting peers during exec. It uses existing fork/UVM interfaces
-and adds no core hook. General sharing, pthread creation and foreign signal
-handlers remain separate. These adapters are now also built into the
+and adds no core hook. The separate n32 pthread implementation creates a
+NetBSD LWP per IRIX kernel worker. A uniprocessor scheduler callback restores
+the incoming worker's 4 KiB PRDA at its fixed user address. [Worker qualification](results/2026-11-25-nsproc.md).
+General sproc sharing and foreign signal handlers remain separate. These adapters are now also built into the
 [loadable personality](results/2026-11-03-irix-module.md), following the
 compat_linux module model. The [F_DUPFD adapter](results/2026-11-01-irix-dupfd.md)
 now adds the installer's descriptor allocation through native sys_fcntl, with

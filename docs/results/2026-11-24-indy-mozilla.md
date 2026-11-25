@@ -54,7 +54,9 @@ Install `module/compat_irix_o32.kmod` from that build in the guest at
 and reboot. The 6.5.22f browser is n32 MIPS III. The executable admission
 change is NetBSD `xiri` commit `524cb15e140`.
 
-## What the two Mozilla icons do now
+The [worker qualification](2026-11-25-nsproc.md) retests these icons on the kernel that implements thread creation.
+
+## Results before worker support
 
 With the release-matched payload, both the uppercase and lowercase launchers
 reach the real browser process under xdm as `xiritest`. The 6.5.30f browser

@@ -23,6 +23,8 @@ NetBSD 11.99.11 and the module from `1d7a8b42efb`. Each Xiri case ran
 with and without tracing. The executable was identical across all four guests.
 [Probe and build instructions](../../lab/irix-pthread/README.md) · [Release pins and measured traces](2026-11-25-irix-pthread.json)
 
+The [kernel follow-up](2026-11-25-nsproc.md) records the same checks with real worker support and the subsequent Mozilla launches.
+
 ## What the kernel must supply
 
 SGI's `par` showed one successful `nsproc` call in each traced original

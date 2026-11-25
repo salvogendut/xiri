@@ -6,7 +6,7 @@
 Xiri releases use the kernel and matching boot-loaded module from
 `NetBSD-xiri` on branch `xiri`. Work on running Xiri on an unmodified
 NetBSD/MIPS kernel is deferred. This November 14 source audit records the
-three required core interfaces, native fixes and module changes for anyone
+three core interfaces then required, native fixes and module changes for anyone
 revisiting that option. [Deployment decision](ROADMAP.md#milestone-4-usable-first-release)
 
 NetBSD's development branch is `trunk`/NetBSD-current. Its GitHub `src`
@@ -49,7 +49,7 @@ tree. The [current image pointer](../lab/irix-installed-desktop/image.json)
 distinguishes the installed core, module and emulator: a module's newer
 source revision does not mean every core change in that branch is installed.
 
-## The three required core interfaces
+## Required core interfaces
 
 These are the direct dependencies of the present personality implementation.
 Each needs upstream acceptance or an alternative implementation before the
@@ -60,6 +60,7 @@ module can be delivered for an otherwise standard kernel.
 | Select over kernel-owned masks | `sys/kern/sys_select.c`: `selcommon_kern()`; declaration in `sys/sys/select.h` | IRIX has different fd-set copyout, timeout and ready-descriptor counting rules. The module prepares its own masks, uses the native scan/wait protocol, then applies IRIX result semantics. | Review the helper's ownership, sizing and timeout contract; test native select regressions and foreign alias/error cases. Keep IRIX ABI translation in the module. |
 | Refresh an emulation-managed signal mask before returning to userspace | `sys/sys/proc.h`: `struct emul.e_sigmask`; `sys/kern/kern_lwp.c`: `lwp_userret()` | IRIX pthread initialization lets libc update its hold mask in the user PRDA without a syscall. The callback `irix_prda_sigmask()` copies and translates that mask before native pending-signal delivery. | Review callback placement, locking, user-memory faults and cost. This changes `struct emul` layout: rebuild affected modules and test other emulations and minimal-emulation configurations. Agree the API with kernel maintainers. |
 | Personality-specific continued-child notification policy | `sys/sys/proc.h`: `EMUL_NOCLDSTOP_CONT`; `sys/kern/kern_sig.c`: `child_psignal()` | For IRIX, `SA_NOCLDSTOP` suppresses continued-child notifications as well as stops. The flag applies this before queuing a signal; discarding it later would still cause wakeups or overwrite pending status. | Review the opt-in policy and test stop/continue/exit combinations. Preserve native NetBSD behavior for personalities without the flag. |
+| Restore a foreign thread's private data at its fixed virtual address | `sys/sys/lwp.h` adds a callback per LWP, `sys/kern/kern_lwp.c` exports `lwp_setswitchin()`, and `sys/kern/kern_synch.c` invokes it before `cpu_switchto()`. | The November 25 n32 worker implementation switches a wired PRDA window shared at one address by threads of the same process. | Review the scheduler hot path, callback lifetime and wiring cost. The current implementation requires a uniprocessor kernel. Multiprocessor support needs a different mapping strategy. |
 
 The module already uses existing `exec_add()`/`exec_remove()`, `execsw`,
 `e_syscall_intern` and native VFS/socket/VM interfaces. Its syscall table,
@@ -218,7 +219,7 @@ Then prepare small series in this order:
 1. Native bug fixes with self-contained failing/passing tests: FPU state,
    child waits, CD arguments, allocator bounds, rpcbind and the sysctl fix.
    Keep pageout scheduling policy in its own discussion.
-2. The three emulation interfaces and the required sgimips firmware support,
+2. The emulation interfaces and the required sgimips firmware support,
    reviewed with the relevant kernel/port maintainers.
 3. The personality, build/sets integration, manual page and independent tests.
 4. Xsrc driver fixes and userland packaging; optional console/XFS series can
@@ -240,6 +241,6 @@ repeatable upstream tests where possible; native tests must not require
 proprietary IRIX installation media.
 
 If upstream work resumes, start with a small native-fix series and an
-interface proposal for the three hooks. A later acceptance test would run
+proposal for the emulation interfaces. A later acceptance test would run
 the boot-loaded IRIX module, userland services and authenticated X session
 on a compatible upstream NetBSD/MIPS kernel.

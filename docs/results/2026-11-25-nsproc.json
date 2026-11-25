@@ -1,0 +1,259 @@
+{
+  "netbsd_commit": "6fd0cea0f775a7a0b054b2c277951eac421218f6",
+  "iris_upstream": "057ba0952a6b6c992cd23e3233ac202891a5fc81",
+  "iris_fork": "39ef6dff7d86f4c7bb0ccd2c936b916e147c0fff",
+  "sha256": {
+    "netbsd": "e989c42d3469f5d59e2ec759fdb3d7f54d7a893acdc326f6f3a3c4487f19fd22",
+    "netbsd.boot": "a4af41c6d0c83f11f0180fce5cb0424a7a5ea7c3aa898bda9bfaf9f3f7b6f5c9",
+    "compat_irix_o32.kmod": "b0348baeaf1dd7b2234d3a61cedbd8267b7d2a1c0f203f2e725f1da3cc1a9e3f",
+    "entry": "12436cd611b2c47a2e5297b286dd5a57285a299284a35c345486a39654bcca65",
+    "create-join": "5c69c9fa26afe563440ff78f412951f30d3fc36dc600f5d91289c9b3fa9d554a"
+  },
+  "host_tests_passed": 96,
+  "resolved_module_imports": 206,
+  "releases": {
+    "6.5.22f": {
+      "base": {
+        "chd_sha256": "a0b232a777a4206a2cc3c93c99bf3277458105cc5d5945d190f8a0ab6d54710f",
+        "nvram_sha256": "c864b965f082ac9b0adca243a20c7d2d321fe8c88722a2eb3980a999d486850d",
+        "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7"
+      },
+      "donor": {
+        "machine": "indy_ip24",
+        "sha256": "b4fff76ffa0ca00c0a90da1c94a3eb41f5f6ba4cb13c0af258b4acca4ad95c41",
+        "nvram_sha256": "276522469736c2363da6b6e279a847857f861cc253cc49fcd31d07c6dd247987",
+        "clean_shutdown": true,
+        "source_digests_rechecked": true
+      },
+      "raw_original": [
+        "00000001",
+        "00000000",
+        "00000001",
+        "00556677",
+        "00000000",
+        "00000000",
+        "00000000",
+        "00000000",
+        "00000001",
+        "00801040",
+        "00000000",
+        "00005510",
+        "00005511",
+        "00005512",
+        "00005513",
+        "00001357",
+        "000004f9",
+        "00000001",
+        "00000001",
+        "00000000",
+        "00000000",
+        "00001357",
+        "000004f9",
+        "00000000",
+        "00801080"
+      ],
+      "raw_xiri": [
+        "00000001",
+        "00000000",
+        "00000001",
+        "00556677",
+        "00000000",
+        "00000000",
+        "00000000",
+        "00000000",
+        "00000001",
+        "00801040",
+        "00000000",
+        "00005510",
+        "00005511",
+        "00005512",
+        "00005513",
+        "00001357",
+        "00000d5c",
+        "00000001",
+        "00000001",
+        "00000000",
+        "00000000",
+        "00001357",
+        "00000d5c",
+        "00000000",
+        "00801080"
+      ],
+      "create_join": {
+        "default_xiritest": "passed",
+        "repeat_xiritest_untraced": 5,
+        "default_root": "passed",
+        "system_root": "passed",
+        "system_xiritest": "EPERM at attr_setscope",
+        "system_root_sched": {
+          "policy": 2,
+          "priority": 0
+        }
+      },
+      "browser": {
+        "version": "1.0.1",
+        "payload_sha256": "1a817f69d2f07f47baddf596574c78dced9beddffdd6a81e11282470063f9a8d",
+        "icons": {
+          "Mozilla": {
+            "pid": 4209,
+            "trace": [
+              "syscall=1204 pc=0xfa75038 a0=0xfa750a8 a1=0x20000ff a2=0x7fff6e10 a3=0",
+              "syscall=1204 v0=0x1 a3=0",
+              "syscall=1204 pc=0xfa75038 a0=0xfa750a8 a1=0x20000ff a2=0x101f1b30 a3=0",
+              "syscall=1204 v0=0x2 a3=0"
+            ],
+            "displayed_local_page": false
+          },
+          "mozilla": {
+            "pid": 4374,
+            "trace": [
+              "syscall=1204 pc=0xfa75038 a0=0xfa750a8 a1=0x20000ff a2=0x7fff6e10 a3=0",
+              "syscall=1204 v0=0x1 a3=0",
+              "syscall=1204 pc=0xfa75038 a0=0xfa750a8 a1=0x20000ff a2=0x7fff6810 a3=0",
+              "syscall=1204 v0=0x2 a3=0"
+            ],
+            "displayed_local_page": false
+          }
+        },
+        "direct_exit": 124,
+        "direct_elfmap_counts": [
+          "elfmap_success before/after 126 0",
+          "0 syscall=1040 v0=0x8 a3=1 2"
+        ],
+        "catalog_elfmap_errors": [
+          "Mozilla",
+          "0 /emul/irix/var/netscape/mozilla/components/libucvibm.so syscall=1040 v0=0x8 a3=1",
+          "0 /emul/irix/var/netscape/mozilla/components/libucvko.so syscall=1040 v0=0x8 a3=1",
+          "mozilla",
+          "0 /emul/irix/var/netscape/mozilla/components/libucvibm.so syscall=1040 v0=0x8 a3=1",
+          "0 /emul/irix/var/netscape/mozilla/components/libucvko.so syscall=1040 v0=0x8 a3=1"
+        ],
+        "converter_program_headers": [
+          "libucvibm.so",
+          "  LOAD           0x00c000 0x09b8c000 0x09b8c000 0x06000 0x06000 RW  0x4000",
+          "  LOAD           0x000000 0x09c50000 0x09c50000 0x0c000 0x0c000 R E 0x4000",
+          "libucvko.so",
+          "  LOAD           0x010000 0x09b80000 0x09b80000 0x1a000 0x1a000 RW  0x4000",
+          "  LOAD           0x000000 0x09c50000 0x09c50000 0x0f000 0x0f000 R E 0x4000"
+        ]
+      },
+      "clean_shutdown": true
+    },
+    "6.5.30f": {
+      "base": {
+        "chd_sha256": "45255c741c7fbfce754f63dab478f501fad4070c71b9071f559dc43ec1395e76",
+        "nvram_sha256": "322ec195f7b5eb8474d6e84bc0de607eca2d146697bad3dd7a4898a879816e7f",
+        "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7"
+      },
+      "donor": {
+        "machine": "o2_ip32",
+        "sha256": "339f74457dfbb06813681ab5db2ccfdd29d394e8a02dfcdcd6c6ac7c22a836db",
+        "nvram_sha256": "7be8898587b0c45a8de4bbe7fd392c30329f000d32eea5de4f32af94134493b2",
+        "clean_shutdown": true,
+        "source_digests_rechecked": true
+      },
+      "raw_original": [
+        "00000001",
+        "00000000",
+        "00000001",
+        "00556677",
+        "00000000",
+        "00000000",
+        "00000000",
+        "00000000",
+        "00000001",
+        "00801040",
+        "00000000",
+        "00005510",
+        "00005511",
+        "00005512",
+        "00005513",
+        "00001357",
+        "00000479",
+        "00000001",
+        "00000001",
+        "00000000",
+        "00000000",
+        "00001357",
+        "00000479",
+        "00000000",
+        "00801080"
+      ],
+      "raw_xiri": [
+        "00000001",
+        "00000000",
+        "00000001",
+        "00556677",
+        "00000000",
+        "00000000",
+        "00000000",
+        "00000000",
+        "00000001",
+        "00801040",
+        "00000000",
+        "00005510",
+        "00005511",
+        "00005512",
+        "00005513",
+        "00001357",
+        "0000015e",
+        "00000001",
+        "00000001",
+        "00000000",
+        "00000000",
+        "00001357",
+        "0000015e",
+        "00000000",
+        "00801080"
+      ],
+      "create_join": {
+        "default_xiritest": "passed",
+        "repeat_xiritest_untraced": 5,
+        "default_root": "passed",
+        "system_root": "passed",
+        "system_xiritest": "EPERM at attr_setscope",
+        "system_root_sched": {
+          "policy": 2,
+          "priority": 0
+        }
+      },
+      "browser": {
+        "version": "1.7.12",
+        "payload_sha256": "9221f292a68240ea863e6176dfa06b148ddea3973439d47b5ce464266a28593f",
+        "icons": {
+          "Mozilla": {
+            "pid": 4533,
+            "trace": [
+              "syscall=1204 pc=0xfa68718 a0=0xfa68790 a1=0x20000ff a2=0x7fff4c60 a3=0",
+              "syscall=1204 v0=0x1 a3=0",
+              "syscall=1001 pc=0xfa4aa90 a0=0x1 a1=0 a2=0x200000 a3=0"
+            ],
+            "displayed_local_page": false
+          },
+          "mozilla": {
+            "pid": 1734,
+            "trace": [
+              "syscall=1204 pc=0xfa68718 a0=0xfa68790 a1=0x20000ff a2=0x7fff4c60 a3=0",
+              "syscall=1204 v0=0x1 a3=0",
+              "syscall=1001 pc=0xfa4aa90 a0=0x1 a1=0 a2=0x200000 a3=0"
+            ],
+            "displayed_local_page": false
+          }
+        },
+        "direct_exit": 1,
+        "direct_elfmap_counts": [
+          "elfmap_success before/after 33 0",
+          "1 syscall=1040 v0=0x7a a3=1 1"
+        ],
+        "catalog_elfmap_errors": [
+          "Mozilla",
+          "1 /emul/irix/var/netscape/mozilla/components/libnsappshell.so syscall=1040 v0=0x7a a3=1",
+          "mozilla",
+          "1 /emul/irix/var/netscape/mozilla/components/libnsappshell.so syscall=1040 v0=0x7a a3=1"
+        ],
+        "repeat_exit": 1
+      },
+      "clean_shutdown": true
+    }
+  }
+}

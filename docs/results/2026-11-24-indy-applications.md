@@ -7,6 +7,8 @@ the user's process list before and after each launch. For silent exits we
 also traced the launch or captured the program's own diagnostic on the
 same authenticated display.
 
+For current Mozilla results on private copies with the optional browser payload and matching kernel, see [both launcher checks](2026-11-25-nsproc.md).
+
 | Catalog entry | 6.5.22f | 6.5.30f | Observed result |
 | --- | --- | --- | --- |
 | `acroread` | Opens | Absent | The initial two 1×1 X windows were followed by the Reader 4.0 splash and a 699×648 first-run license dialog. Earlier testing covered opening and displaying a PDF. |

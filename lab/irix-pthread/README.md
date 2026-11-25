@@ -82,3 +82,23 @@ The SGI-assembled executable has ELF flags `0x20000024` and requests
 `EF_MIPS_NOREORDER` (`0x20000025`). Both donors ran it, and both Xiri
 loaders rejected it before `main`. The [four-guest results](../../docs/results/2026-11-25-irix-pthread.md)
 use the SGI-assembled file on every guest.
+
+## Raw worker entry
+
+The independent [n32 assembly probe](entry.S) supplies different addresses
+for the syscall trampoline and the descriptor entry. It records which one
+runs, the registers on entry, and the fixed-address PRDA as seen by each
+thread. Build it from the project root with the sgimips toolchain.
+
+```sh
+mips64--netbsd-gcc -EB -march=mips3 -mabi=n32 -mno-abicalls -fno-pic -G0 \
+    -c lab/irix-pthread/entry.S -o entry.o
+mips64--netbsd-ld -EB -m elf32btsmipn32 --build-id=none \
+    -z max-page-size=8192 -T lab/irix-prda/probe.ld entry.o -o entry
+```
+
+Run `./entry > entry.bin` in the guest, then copy the 100-byte file to
+the host and run `python3 lab/irix-pthread/check-entry.py < entry.bin`.
+The checker accepts the guest's process ID and verifies the stack pointer
+relative to the supplied stack top. Timeout, partial output, a shared PRDA
+marker or entry through the wrong trampoline fails the check.
