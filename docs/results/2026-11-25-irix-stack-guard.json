@@ -1,0 +1,350 @@
+{
+  "netbsd_revision": "e380016ff914a4010bfeb5b3736fd1223c3ad29b",
+  "baseline_netbsd_revision": "1cf737772c649b4478c74e0c02a5a090248024c7",
+  "iris_upstream": "057ba0952a6b6c992cd23e3233ac202891a5fc81",
+  "iris_integration": "39ef6dff7d86f4c7bb0ccd2c936b916e147c0fff",
+  "host_tests_passed": 96,
+  "module_imports_resolved": 212,
+  "artifacts_sha256": {
+    "compat_irix_o32.kmod": "27605fa08139278086a4196cf2fb5d5b3d691e4ed231db22554b1aa70b73acba",
+    "netbsd": "e989c42d3469f5d59e2ec759fdb3d7f54d7a893acdc326f6f3a3c4487f19fd22",
+    "netbsd.boot": "a4af41c6d0c83f11f0180fce5cb0424a7a5ea7c3aa898bda9bfaf9f3f7b6f5c9"
+  },
+  "probe_sha256": {
+    "bounds": "fddff6cedcd171def43ca20b33202e338403e3ea4e27ed63d9ab860f1bdad5e4",
+    "guard": "28ea516089b449d60ef9e7a35fdfd5d8758933174b238cbd8e17456a59b3d056",
+    "waitwake": "d0f1da178c1c7a2e16a174e3f8b3bd47fe75e298d5ebc408070bb6892031325c",
+    "waitpair": "7c891a2630e7753d79ac420bac011a2df6fd9193b2e796bd6ba467b78d428985",
+    "event": "2d496baec5fb7b10313e6d40a763c60809c84d737e0581fb7b538c82bcf97c12",
+    "create-join": "5c69c9fa26afe563440ff78f412951f30d3fc36dc600f5d91289c9b3fa9d554a"
+  },
+  "archive_sha256": "3954c851da04e2be11aa36c5eefbe8a4de067cc5db5c92fde2f0a6723a93c41a",
+  "releases": {
+    "6.5.22f": {
+      "qualified_v5_hashes_rechecked": {
+        "chd_sha256": "a0b232a777a4206a2cc3c93c99bf3277458105cc5d5945d190f8a0ab6d54710f",
+        "nvram_sha256": "c864b965f082ac9b0adca243a20c7d2d321fe8c88722a2eb3980a999d486850d",
+        "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+        "browser_payload_sha256": "1a817f69d2f07f47baddf596574c78dced9beddffdd6a81e11282470063f9a8d"
+      },
+      "loaded_at_securelevel": 1,
+      "original_reference": "2026-11-25-irix-event-workers.json",
+      "probes": {
+        "guard": {
+          "init": 0,
+          "ordinary": 1,
+          "guard_none": 0,
+          "guard_rw": 0,
+          "marker": 37,
+          "status": 0
+        },
+        "bounds": {
+          "init": 0,
+          "ordinary": 1,
+          "protect": 0,
+          "guard_copy": -14,
+          "neighbour_copy": 1,
+          "restore": 0,
+          "restored_copy": 1,
+          "mixed_range": -122,
+          "private_copy": 1,
+          "shared_copy": 1,
+          "prda": -122,
+          "status": 0
+        },
+        "waitwake": {
+          "init": 0,
+          "ordinary": 1,
+          "early_other_wake1": 0,
+          "early_other_wake2": 0,
+          "before_wake": 1,
+          "wake": 0,
+          "after_two_early_wakes": 4,
+          "final_wake": 0,
+          "blocked_return": 0,
+          "credit1_return": 0,
+          "credit2_return": 0,
+          "final_wait_return": 0,
+          "status": 0
+        },
+        "waitpair": {
+          "init": 0,
+          "prepost": 0,
+          "ordinary": 1,
+          "second": 2,
+          "returned_after_one_wake": 1,
+          "first_return": 0,
+          "second_return": 0,
+          "status": 0
+        },
+        "create-join": {
+          "status": 0
+        },
+        "event": {
+          "init": 0,
+          "ordinary": 1,
+          "event": -122,
+          "status": 1
+        }
+      },
+      "extra_passing_guard_and_bounds_runs": 5,
+      "default_pthread": [
+        "scope default",
+        "before create",
+        "create 0",
+        "worker ran",
+        "join 0",
+        "same_pid 1 distinct_thread 1 value 42 returned_pointer 1",
+        "status=0"
+      ],
+      "system_pthread": [
+        "scope system",
+        "before create",
+        "worker ran",
+        "create 0",
+        "join 0",
+        "same_pid 1 distinct_thread 1 value 42 returned_pointer 1",
+        "status=0"
+      ],
+      "browser_22_guest_seconds": {
+        "process_samples": [
+          "1234  717 R    mozilla-bin   /var/netscape/mozilla/mozilla-bin -splash dummy_ar",
+          "1234  717 R    mozilla-bin   (mozilla-bin)"
+        ],
+        "observed_windows": [],
+        "window_query_statuses": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "timeout_status": 124,
+        "trace_summary": [
+          "mprotect_ok=0 mprotect_failed=0 nsproc_unsupported=0"
+        ],
+        "trace_order": [],
+        "diagnostics": [
+          "Gdk-WARNING **: shmget failed: error 89 (Function not implemented)"
+        ],
+        "titled_page_observed": false,
+        "clean_halt": true,
+        "stopped": true
+      },
+      "browser_75_guest_seconds": {
+        "process_samples": [
+          "1234  592 R    mozilla-bin   /var/netscape/mozilla/mozilla-bin -splash dummy_arg file:///usr/people/xiritest/guard.html",
+          "1234  592 Rl   mozilla-bin   /var/netscape/mozilla/mozilla-bin -splash dummy_arg file:///usr/people/xiritest/guard.html"
+        ],
+        "observed_windows": [],
+        "window_query_statuses": [
+          0,
+          0,
+          0,
+          124,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "timeout_status": 124,
+        "trace_summary": [
+          "syscall=1136 pc=0xfac9988 a0=0x101e0000 a1=0x2000 a2=0 a3=0",
+          "syscall=1136 v0=0 a3=0",
+          "syscall=1136 pc=0xfac9988 a0=0x101f6000 a1=0x2000 a2=0 a3=0",
+          "syscall=1136 v0=0 a3=0",
+          "syscall=1136 pc=0xfac9988 a0=0x100ea000 a1=0x2000 a2=0 a3=0",
+          "syscall=1136 v0=0 a3=0",
+          "syscall=1136 pc=0xfac9988 a0=0x1043e000 a1=0x2000 a2=0 a3=0",
+          "syscall=1136 v0=0 a3=0",
+          "mprotect_ok=4 mprotect_failed=0 nsproc_unsupported=20847"
+        ],
+        "trace_order": [
+          "syscall=1136 v0=0 a3=0",
+          "syscall=1136 v0=0 a3=0",
+          "syscall=1204 v0=0x1 a3=0",
+          "syscall=1204 v0=0x2 a3=0",
+          "syscall=1136 v0=0 a3=0",
+          "syscall=1136 v0=0 a3=0",
+          "worker_returns=2 guards_ok=4 guards_ok_after_worker=2 guards_rejected=0"
+        ],
+        "diagnostics": [
+          "Gdk-WARNING **: shmget failed: error 89 (Function not implemented)",
+          "nsNativeComponentLoader: SelfRegisterDll(/var/netscape/mozilla/components/libucvibm.so) Load FAILED with error:   592:/var/netscape/mozilla/mozilla-bin: rld: Fatal Error: Cannot Successfully map soname '/var/netscape/mozilla/components/libucvibm.so' under any of the filenames /var/netscape/mozilla/components/libucvibm.so ",
+          "nsNativeComponentLoader: SelfRegisterDll(/var/netscape/mozilla/components/libucvko.so) Load FAILED with error:   592:/var/netscape/mozilla/mozilla-bin: rld: Fatal Error: Cannot Successfully map soname '/var/netscape/mozilla/components/libucvko.so' under any of the filenames /var/netscape/mozilla/components/libucvko.so "
+        ],
+        "titled_page_observed": false,
+        "clean_halt": true,
+        "stopped": true
+      }
+    },
+    "6.5.30f": {
+      "qualified_v5_hashes_rechecked": {
+        "chd_sha256": "45255c741c7fbfce754f63dab478f501fad4070c71b9071f559dc43ec1395e76",
+        "nvram_sha256": "322ec195f7b5eb8474d6e84bc0de607eca2d146697bad3dd7a4898a879816e7f",
+        "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+        "browser_payload_sha256": "9221f292a68240ea863e6176dfa06b148ddea3973439d47b5ce464266a28593f"
+      },
+      "loaded_at_securelevel": 1,
+      "original_reference": "2026-11-25-irix-event-workers.json",
+      "probes": {
+        "guard": {
+          "init": 0,
+          "ordinary": 1,
+          "guard_none": 0,
+          "guard_rw": 0,
+          "marker": 37,
+          "status": 0
+        },
+        "bounds": {
+          "init": 0,
+          "ordinary": 1,
+          "protect": 0,
+          "guard_copy": -14,
+          "neighbour_copy": 1,
+          "restore": 0,
+          "restored_copy": 1,
+          "mixed_range": -122,
+          "private_copy": 1,
+          "shared_copy": 1,
+          "prda": -122,
+          "status": 0
+        },
+        "waitwake": {
+          "init": 0,
+          "ordinary": 1,
+          "early_other_wake1": 0,
+          "early_other_wake2": 0,
+          "before_wake": 1,
+          "wake": 0,
+          "after_two_early_wakes": 4,
+          "final_wake": 0,
+          "blocked_return": 0,
+          "credit1_return": 0,
+          "credit2_return": 0,
+          "final_wait_return": 0,
+          "status": 0
+        },
+        "waitpair": {
+          "init": 0,
+          "prepost": 0,
+          "ordinary": 1,
+          "second": 2,
+          "returned_after_one_wake": 1,
+          "first_return": 0,
+          "second_return": 0,
+          "status": 0
+        },
+        "create-join": {
+          "status": 0
+        },
+        "event": {
+          "init": 0,
+          "ordinary": 1,
+          "event": -122,
+          "status": 1
+        }
+      },
+      "extra_passing_guard_and_bounds_runs": 5,
+      "default_pthread": [
+        "scope default",
+        "before create",
+        "create 0",
+        "worker ran",
+        "join 0",
+        "same_pid 1 distinct_thread 1 value 42 returned_pointer 1",
+        "status=0"
+      ],
+      "system_pthread": [
+        "scope system",
+        "before create",
+        "worker ran",
+        "create 0",
+        "join 0",
+        "same_pid 1 distinct_thread 1 value 42 returned_pointer 1",
+        "status=0"
+      ],
+      "browser_22_guest_seconds": {
+        "process_samples": [
+          "1234  920 R    mozilla-bin   /var/netscape/mozilla/mozilla-bin file:///usr/peop",
+          "1234  920 Rl   mozilla-bin   /var/netscape/mozilla/mozilla-bin file:///usr/peop"
+        ],
+        "observed_windows": [
+          "0x1a00001 (has no name): (\"mozilla-bin\" \"Mozilla-bin\")  10x10+10+10  +10+10"
+        ],
+        "window_query_statuses": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "timeout_status": 124,
+        "trace_summary": [
+          "syscall=1136 pc=0xfabd014 a0=0x10154000 a1=0x2000 a2=0 a3=0x1",
+          "syscall=1136 v0=0 a3=0",
+          "mprotect_ok=1 mprotect_failed=0 nsproc_unsupported=0"
+        ],
+        "trace_order": [],
+        "diagnostics": [
+          "Gdk-WARNING **: shmget failed: error 89 (Function not implemented)"
+        ],
+        "titled_page_observed": false,
+        "clean_halt": true,
+        "stopped": true
+      },
+      "browser_75_guest_seconds": {
+        "process_samples": [
+          "1234  589 R    mozilla-bin   /var/netscape/mozilla/mozilla-bin file:///usr/people/xiritest/guard.html",
+          "1234  589 Rl   mozilla-bin   /var/netscape/mozilla/mozilla-bin file:///usr/people/xiritest/guard.html",
+          "1234  589 Rl   mozilla-bin   (mozilla-bin)"
+        ],
+        "observed_windows": [
+          "0x1800001 (has no name): (\"mozilla-bin\" \"Mozilla-bin\")  10x10+10+10  +10+10",
+          "0x1800017 \"mozilla-bin\": (\"mozilla-bin\" \"Mozilla-bin\")  200x200+0+0  +0+0",
+          "0x1800003 \"mozilla-bin\": ()  10x10+-100+-100  +-100+-100",
+          "0x1800021 \"mozilla-bin\": (\"mozilla-bin\" \"Mozilla-bin\")  200x200+0+0  +0+0"
+        ],
+        "window_query_statuses": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "timeout_status": 124,
+        "trace_summary": [
+          "syscall=1136 pc=0xfabd014 a0=0x10154000 a1=0x2000 a2=0 a3=0x1",
+          "syscall=1136 v0=0 a3=0",
+          "syscall=1136 pc=0xfabd014 a0=0x1025e000 a1=0x2000 a2=0 a3=0x1004d6c0",
+          "syscall=1136 v0=0 a3=0",
+          "syscall=1136 pc=0xfabd014 a0=0x10274000 a1=0x2000 a2=0 a3=0x1004d6c0",
+          "syscall=1136 v0=0 a3=0",
+          "syscall=1136 pc=0xfabd014 a0=0x1028a000 a1=0x2000 a2=0 a3=0x1004d6c0",
+          "syscall=1136 v0=0 a3=0",
+          "mprotect_ok=4 mprotect_failed=0 nsproc_unsupported=31320"
+        ],
+        "trace_order": [],
+        "diagnostics": [
+          "Gdk-WARNING **: shmget failed: error 89 (Function not implemented)"
+        ],
+        "titled_page_observed": false,
+        "clean_halt": true,
+        "stopped": true
+      }
+    }
+  }
+}

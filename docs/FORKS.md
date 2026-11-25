@@ -119,6 +119,11 @@ found zero upstream-only commits against IRIS `xiri` at `39ef6dff`. The
 pinned emulator ran the two-waiter control on both original donors and the
 candidate module on both Xiri Indys. [Lock qualification](results/2026-11-25-irix-usync.md).
 
+The stack-guard cycle fetched IRIS upstream at `057ba095`. The fork's
+`xiri` branch at `39ef6dff` already contained that revision. Both Indy
+tests used the emulator pinned with their respective v5 image.
+[Stack-guard qualification](results/2026-11-25-irix-stack-guard.md).
+
 The November 24 disk-space recovery cycle merged upstream `057ba095` into
 IRIS `xiri` at `39ef6dff`. Upstream adds JIT code arena rotation and page
 slot recycling. The merge preserves the fork's optimization switch and its

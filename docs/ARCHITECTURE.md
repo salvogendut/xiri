@@ -293,8 +293,12 @@ heap resizing. An occupied page stops heap growth. A worker can release
 pages down to the break captured at first worker creation, preserving
 earlier fixed mappings. [Threaded ELF mapping](results/2026-11-25-threaded-elfmap.md) ·
 [Heap qualification](results/2026-11-25-threaded-break.md).
-The n32 worker adapter still rejects `PR_EVENT` creation and protection changes
-on a private mapping with a live worker. The module implements n32 libc's
+The n32 worker adapter supports changing protections on private anonymous
+pages while a worker is live. It checks the complete range under the same
+per-process lock as heap resizing and ELF loading, excludes the fixed PRDA
+page, and delegates the protection change to native UVM. `PR_EVENT` worker
+creation remains open. [Stack-guard results](results/2026-11-25-irix-stack-guard.md).
+The module implements n32 libc's
 interruptible wait and wake for private lock words. Waiters and pending wake
 counts belong to one process image. Each wake releases one matching waiter
 or increments the count for that address. [Original IRIX comparison](results/2026-11-25-irix-event-workers.md) ·

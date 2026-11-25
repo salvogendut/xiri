@@ -70,6 +70,9 @@ operation passed on both original donors and is the next compatibility
 change to test. The separate `PR_EVENT` worker probe still returns
 EOPNOTSUPP on both Indys.
 
+The [stack-guard follow-up](2026-11-25-irix-stack-guard.md) records the
+private-page fix and the subsequent browser tests.
+
 ## Reproducing the browser test
 
 Use a private overlay of the corresponding v5 Indy CHD for a browser test.

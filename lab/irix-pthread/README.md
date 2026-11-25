@@ -105,7 +105,7 @@ marker or entry through the wrong trampoline fails the check.
 
 ## Event workers, address-based waits and stack guards
 
-[event.c](event.c) builds four independent n32 executables. Each runs as
+[event.c](event.c) builds the following independent n32 executables. Each runs as
 an ordinary user and prints the actual syscall results. A negative number
 is the IRIX errno from that call. From the project root, build the tests
 into a private directory with the NetBSD sgimips cross tools on `PATH`.
@@ -113,12 +113,13 @@ into a private directory with the NetBSD sgimips cross tools on `PATH`.
 ```sh
 out=.work/event-probes
 mkdir -p "$out"
-for name in event waitwake waitpair guard; do
+for name in event waitwake waitpair guard bounds; do
     case "$name" in
         event) flag= ;;
         waitwake) flag=-DWAIT_WAKE ;;
         waitpair) flag=-DWAIT_PAIR ;;
         guard) flag=-DSTACK_GUARD ;;
+        bounds) flag=-DSTACK_GUARD_BOUNDS ;;
     esac
     mips64--netbsd-gcc -O2 -Wall -Wextra -Werror -EB -march=mips3 \
         -mabi=n32 -mno-abicalls -fno-pic -G0 -ffreestanding \
@@ -145,6 +146,14 @@ the vendor calling convention in which only the wait initializes policy.
 after creating a worker, toggles its first 8 KiB to `PROT_NONE` and back to
 read/write, then checks its marker.
 
+`bounds` checks Xiri's threaded range restrictions. It creates two private
+pages beside a shared page, starts a worker, then protects one byte of the
+first page. A one-byte read from `/dev/zero` into that page must return
+EFAULT while the neighbouring page accepts the same read. After restoring
+read/write access, both pages must accept it. The probe also checks that a
+request spanning the private/shared boundary fails before changing either
+page, and that the per-thread PRDA page rejects a protection change.
+
 To see the blocking and waking threads separately on IRIX, run `par` as
 root after the ordinary-user checks.
 
@@ -154,4 +163,5 @@ grep usync_cntl /tmp/waitwake.par
 ```
 
 [Original IRIX and Xiri comparison](../../docs/results/2026-11-25-irix-event-workers.md) ·
-[Private lock implementation and retest](../../docs/results/2026-11-25-irix-usync.md).
+[Private lock implementation and retest](../../docs/results/2026-11-25-irix-usync.md) ·
+[Private stack-guard implementation and retest](../../docs/results/2026-11-25-irix-stack-guard.md).

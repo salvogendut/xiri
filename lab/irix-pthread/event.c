@@ -131,6 +131,16 @@ _start(void)
 	number("init", init);
 	if (init != 0)
 		goto done;
+#ifdef STACK_GUARD_BOUNDS
+	/* Reserve adjacent private and shared pages before starting a worker. */
+	const word base = 0x30000000, page = 8192;
+	int zero = call(1005, PTR("/dev/zero"), 2, 0, 0);
+	if (zero < 0 ||
+	    irix_call(1134, base, page * 2, 3, 0x12, zero) != (int)base ||
+	    irix_call(1134, base + page * 2, page, 3, 0x11, zero) !=
+	    (int)(base + page * 2))
+		goto done;
+#endif
 #ifdef WAIT_PAIR
 	/* A wake can precede the first nsproc as well as the first wait. */
 	int prepost = sync_call(USYNC_UNBLOCK, 0);
@@ -195,6 +205,31 @@ _start(void)
 	number("second_return", results[1]);
 	__atomic_store_n(&release[1], 1, __ATOMIC_RELEASE);
 	status = results[0] != 0 || results[1] != 0;
+#elif defined(STACK_GUARD_BOUNDS)
+	/* A copy into the guard must fail while its neighbour stays writable.
+	 * Reading from /dev/zero tests this without terminating the worker. */
+	int protect = call(1136, base, 1, 0, 0);
+	int blocked = call(1003, zero, base, 1, 0);
+	int neighbour = call(1003, zero, base + page, 1, 0);
+	int restore = call(1136, base, page, 3, 0);
+	int writable = call(1003, zero, base, 1, 0);
+	number("protect", protect);
+	number("guard_copy", blocked);
+	number("neighbour_copy", neighbour);
+	number("restore", restore);
+	number("restored_copy", writable);
+	/* Crossing into a shared page must leave both pages writable. */
+	int mixed = call(1136, base + page, page * 2, 0, 0);
+	int private_copy = call(1003, zero, base + page, 1, 0);
+	int shared_copy = call(1003, zero, base + 2 * page, 1, 0);
+	int prda = call(1136, 0x00200000, page, 0, 0);
+	number("mixed_range", mixed);
+	number("private_copy", private_copy);
+	number("shared_copy", shared_copy);
+	number("prda", prda);
+	status = protect || blocked != -14 || neighbour != 1 || restore ||
+	    writable != 1 || mixed != -122 || private_copy != 1 ||
+	    shared_copy != 1 || prda != -122;
 #elif defined(STACK_GUARD)
 	int fd = call(1005, PTR("/dev/zero"), 2, 0, 0);
 	int addr = irix_call(1134, 0, 8192, 3, 2, fd);
