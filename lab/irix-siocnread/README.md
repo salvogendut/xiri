@@ -15,7 +15,8 @@ stream socket pair, queues three bytes and reads them in two steps. Both
 original IRIX releases and both Indys with the diagnostic patch reported
 counts of 0, 3, 2 and 0. After closing the peer and reading EOF, each
 returned ECONNRESET and left the output word untouched.
-[Mozilla comparison](../../docs/results/2026-11-25-mozilla-event-diagnosis.md).
+[Mozilla comparison](../../docs/results/2026-11-25-mozilla-event-diagnosis.md) ·
+[Repeat on both production modules](../../docs/results/2026-11-25-mozilla-sigpoll.md).
 
 From the project root, build this standalone fixture with the sgimips
 cross tools on `PATH`.

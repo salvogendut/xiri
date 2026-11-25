@@ -129,6 +129,12 @@ The Mozilla diagnosis fetched IRIS upstream `057ba095`. IRIS `xiri` at
 original IRIX browsers and both Xiri Indy desktop comparisons.
 [Mozilla diagnosis](results/2026-11-25-mozilla-event-diagnosis.md).
 
+The November 25 signal-wait cycle fetched IRIS upstream
+`057ba0952a6b6c992cd23e3233ac202891a5fc81`. IRIS `xiri` at
+`39ef6dff` contained every upstream commit. NetBSD `xiri` commit
+`547482bf0e2` passed the worker, signal-wait and socket checks on both
+Indys with the pinned v5 emulator. [Signal and browser results](results/2026-11-25-mozilla-sigpoll.md).
+
 The November 24 disk-space recovery cycle merged upstream `057ba095` into
 IRIS `xiri` at `39ef6dff`. Upstream adds JIT code arena rotation and page
 slot recycling. The merge preserves the fork's optimization switch and its

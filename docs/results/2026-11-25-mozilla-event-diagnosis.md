@@ -98,6 +98,9 @@ launches called the vendor launcher directly as `xiritest`. Qualifying
 the two catalog clicks and CPU use after the page loads remains open.
 [xdm session configuration](../../runtime/etc/xdm.xsession).
 
+The [subsequent production-module check](2026-11-25-mozilla-sigpoll.md) records
+worker ID reuse, directed signals, timed waits and the two catalog launchers.
+
 ## Reproducing the comparison
 
 Start from NetBSD `e380016ff914a4010bfeb5b3736fd1223c3ad29b` and the

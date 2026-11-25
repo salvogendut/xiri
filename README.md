@@ -344,8 +344,9 @@ The [Applications tab survey](docs/results/2026-11-24-indy-applications.md)
 covers every visible launcher on the two original-media Indy desktops.
 Both Indy releases can create and join a worker using SGI's n32 libpthread
 on the matching development kernel and module. Both vendor Mozilla
-versions also render a local page with the event-worker and local X socket
-diagnostic patches. The release images still use their qualified modules.
+versions can render a local page from the Applications catalog on the
+separate Mozilla test images. The offline homepage setting depends on
+the vendor release. [Test images, screenshots and setup](docs/results/2026-11-25-mozilla-sigpoll.md).
 [Mozilla imports](docs/results/2026-11-24-indy-mozilla.md) ·
 [Worker qualification](docs/results/2026-11-25-nsproc.md) ·
 [Threaded library loading](docs/results/2026-11-25-threaded-elfmap.md) ·

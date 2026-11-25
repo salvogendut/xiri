@@ -113,7 +113,7 @@ into a private directory with the NetBSD sgimips cross tools on `PATH`.
 ```sh
 out=.work/event-probes
 mkdir -p "$out"
-for name in event waitwake waitpair guard bounds sigpoll; do
+for name in event waitwake waitpair guard bounds sigpoll ordered16 ordered47; do
     case "$name" in
         event) flag= ;;
         waitwake) flag=-DWAIT_WAKE ;;
@@ -121,6 +121,8 @@ for name in event waitwake waitpair guard bounds sigpoll; do
         guard) flag=-DSTACK_GUARD ;;
         bounds) flag=-DSTACK_GUARD_BOUNDS ;;
         sigpoll) flag=-DSIGNAL_POLL ;;
+        ordered16) flag=-DEVENT_SIGNAL ;;
+        ordered47) flag="-DEVENT_SIGNAL -DEVENT_PRIVATE" ;;
     esac
     mips64--netbsd-gcc -O2 -Wall -Wextra -Werror -EB -march=mips3 \
         -mabi=n32 -mno-abicalls -fno-pic -G0 -ffreestanding \
@@ -158,8 +160,15 @@ page, and that the per-thread PRDA page rejects a protection change.
 `sigpoll` isolates n32 syscall 1166 in a single thread. It blocks SIGUSR1,
 waits up to 10 ms with no pending signal, sends SIGUSR1 to itself and polls
 twice with a zero timeout. Both original releases returned `-11, 16, -11`,
-with signal 16 in the result structure. The executable checks all three
-returns and the signal number.
+with signal 16 in the result structure. The executable also times a 200 ms wait with a null info pointer and
+checks that a nanosecond field of one billion returns EINVAL.
+
+`ordered16` blocks SIGUSR1 in the event worker. The parent sends it to that
+worker by its IRIX thread ID. Once the send returns, the worker reads its
+signal and polls again to check consumption. `ordered47` repeats the same
+sequence for the private signal used by Mozilla. Both original releases
+accepted the send and the worker timed out. Xiri returns EOPNOTSUPP on the
+send, so this probe reports a known difference on Xiri.
 
 To see the blocking and waking threads separately on IRIX, run `par` as
 root after the ordinary-user checks.
@@ -172,4 +181,5 @@ grep usync_cntl /tmp/waitwake.par
 [Original IRIX and Xiri comparison](../../docs/results/2026-11-25-irix-event-workers.md) ·
 [Private lock implementation and retest](../../docs/results/2026-11-25-irix-usync.md) ·
 [Private stack-guard implementation and retest](../../docs/results/2026-11-25-irix-stack-guard.md) ·
-[Mozilla signal waits and local X connections](../../docs/results/2026-11-25-mozilla-event-diagnosis.md).
+[Mozilla signal waits and local X connections](../../docs/results/2026-11-25-mozilla-event-diagnosis.md) ·
+[Timed and directed signal results](../../docs/results/2026-11-25-mozilla-sigpoll.md).

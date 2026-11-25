@@ -1,4 +1,4 @@
-/* Freestanding n32 comparison for nsproc(PR_EVENT) and libc's wait/wake pair and a private stack guard. */
+/* Freestanding n32 probes for worker, signal, lock and stack-guard behavior. */
 typedef unsigned int word;
 #define PTR(x) ((word)(x))
 #define THREAD_FLAGS 0x020000ff
@@ -82,10 +82,35 @@ wait_flag(word *flag, word value)
 	return 0;
 }
 
+#ifdef EVENT_SIGNAL
+#ifdef EVENT_PRIVATE
+#define EVENT_SIGNO 47
+#else
+#define EVENT_SIGNO 16
+#endif
+static word event_mask[4] = {
+	[(EVENT_SIGNO - 1) / 32] = 1U << ((EVENT_SIGNO - 1) % 32)
+};
+static word sent_to_worker;
+static word event_info[32];
+static int event_result, event_again;
+#endif
+
 static void
 worker(word i)
 {
-	__atomic_store_n(&ready[i], 1, __ATOMIC_RELEASE);
+#ifdef EVENT_SIGNAL
+	if (i == 1) {
+		word limit[2] = {0, 500000000}, zero[2] = {0, 0};
+		number("worker_block", call(1164, 1, PTR(event_mask), 0, 0));
+		__atomic_store_n(&ready[i], 1, __ATOMIC_RELEASE);
+		wait_flag(&sent_to_worker, 1);
+		event_result = call(1166, PTR(event_mask), PTR(event_info), PTR(limit), 0);
+		event_again = call(1166, PTR(event_mask), 0, PTR(zero), 0);
+		__atomic_store_n(&ready[i], 2, __ATOMIC_RELEASE);
+	} else
+#endif
+		__atomic_store_n(&ready[i], 1, __ATOMIC_RELEASE);
 #ifdef WAIT_WAKE
 	if (i == 0) {
 		for (unsigned step = 0; step < 4; step++) {
@@ -135,8 +160,22 @@ _start(void)
 	number("signal_number", signo);
 	int consumed = call(1166, PTR(set), PTR(info), PTR(zero), 0);
 	number("after_consume", consumed);
+	/* A returned EAGAIN alone cannot distinguish sleeping from a spin. */
+	int before[2], after[2];
+	interval[1] = 200000000;
+	if (call(1128, PTR(before), 0, 0, 0) != 0)
+		goto done;
+	int timed = call(1166, PTR(set), 0, PTR(interval), 0);
+	if (call(1128, PTR(after), 0, 0, 0) != 0)
+		goto done;
+	int ms = (after[0] - before[0]) * 1000 + (after[1] - before[1]) / 1000;
+	number("timed_wait", timed);
+	number("elapsed_ms", ms);
+	interval[1] = 1000000000;
+	int invalid = call(1166, PTR(set), 0, PTR(interval), 0);
+	number("invalid_timeout", invalid);
 	status = empty != -11 || pending != (int)sigusr1 || signo != sigusr1 ||
-	    consumed != -11;
+	    consumed != -11 || timed != -11 || ms < 180 || invalid != -22;
 	goto done;
 #endif
 #if defined(WAIT_WAKE) || defined(WAIT_PAIR)
@@ -178,7 +217,30 @@ _start(void)
 	number("ordinary", first);
 	if (first < 0 || !wait_flag(&ready[0], 1))
 		goto done;
-#ifdef WAIT_WAKE
+#ifdef EVENT_SIGNAL
+	int event = spawn(1, THREAD_FLAGS | PR_EVENT);
+	number("event", event);
+	if (event < 0 || !wait_flag(&ready[1], 1))
+		goto done;
+	int sent = call(1130, 21, 4, event, EVENT_SIGNO);
+	__atomic_store_n(&sent_to_worker, 1, __ATOMIC_RELEASE);
+	number("send", sent);
+	if (!wait_flag(&ready[1], 2))
+		goto done;
+	number("received", event_result);
+	number("signo", event_info[0]);
+	number("code", event_info[1]);
+	number("again", event_again);
+	__atomic_store_n(&release[1], 1, __ATOMIC_RELEASE);
+#ifdef EVENT_PRIVATE
+	/* Both donors accept the request but omit 47 from this wait. */
+	status = sent != 0 || event_result != -11 || event_info[0] != 0 ||
+	    event_again != -11;
+#else
+	status = sent != 0 || event_result != EVENT_SIGNO ||
+	    event_info[0] != EVENT_SIGNO || event_again != -11;
+#endif
+#elif defined(WAIT_WAKE)
 	int early1 = sync_call(USYNC_UNBLOCK, 1);
 	int early2 = sync_call(USYNC_UNBLOCK, 1);
 	number("early_other_wake1", early1);

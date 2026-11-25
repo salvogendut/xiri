@@ -1,0 +1,360 @@
+{
+  "netbsd_revision": "547482bf0e21f7bb44c1417b119a12a4da687a4e",
+  "iris_upstream": "057ba0952a6b6c992cd23e3233ac202891a5fc81",
+  "iris_xiri": "39ef6dff7d86f4c7bb0ccd2c936b916e147c0fff",
+  "module_imports_resolved": 215,
+  "host_tests_passed": 96,
+  "probe_sha256": {
+    "sigpoll": "0a52313e057d90347ff48fe7103114923d08ec4ebcc09adc1f9220e9635d59fe",
+    "ordered16": "42c6bb4ec819ff25adf630c089e03f7bf864151709857f9d53bd0ba353f9fc02",
+    "ordered47": "7e32808b07612b19f46159eced63ce012a49dc845cf3118aed2dc42e3a9df12a",
+    "ids": "2d496baec5fb7b10313e6d40a763c60809c84d737e0581fb7b538c82bcf97c12",
+    "guard": "28ea516089b449d60ef9e7a35fdfd5d8758933174b238cbd8e17456a59b3d056",
+    "waitpair": "7c891a2630e7753d79ac420bac011a2df6fd9193b2e796bd6ba467b78d428985",
+    "create-join": "5c69c9fa26afe563440ff78f412951f30d3fc36dc600f5d91289c9b3fa9d554a",
+    "local-stream": "968894c3cd79fea0ea748c033540394a4278a60aa3c8b47179c02b0368710337"
+  },
+  "releases": {
+    "6.5.22f": {
+      "image": {
+        "release": "6.5.22f",
+        "parent_v5_sha256": "a0b232a777a4206a2cc3c93c99bf3277458105cc5d5945d190f8a0ab6d54710f",
+        "chd_sha256": "bf5f2b80472c5a0e9bebe8cbb3238022e03535acd588aae206c672fd84658361",
+        "netbsd_revision": "547482bf0e21f7bb44c1417b119a12a4da687a4e",
+        "kernel_sha256": "e989c42d3469f5d59e2ec759fdb3d7f54d7a893acdc326f6f3a3c4487f19fd22",
+        "boot_sha256": "a4af41c6d0c83f11f0180fce5cb0424a7a5ea7c3aa898bda9bfaf9f3f7b6f5c9",
+        "module_sha256": "13438ab684435093bcd1f7fe0dbf46f0e09f86cb3a17335e67471c2106da8ae4",
+        "browser_payload_sha256": "1a817f69d2f07f47baddf596574c78dced9beddffdd6a81e11282470063f9a8d",
+        "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+        "nvram_sha256": "c864b965f082ac9b0adca243a20c7d2d321fe8c88722a2eb3980a999d486850d",
+        "freeware_iso_sha256": "b7cb0262fd2b6d2b2c777e2b04b9d8a53e97c9ec85ab721e8074903dfbc65edb",
+        "qualification": "docs/results/2026-11-25-mozilla-sigpoll.json",
+        "launchers": {
+          "Mozilla": 2839,
+          "mozilla": 3992
+        }
+      },
+      "donor_machine": "indy_ip24",
+      "donor_sha256": "b4fff76ffa0ca00c0a90da1c94a3eb41f5f6ba4cb13c0af258b4acca4ad95c41",
+      "donor_results": {
+        "ordered47": {
+          "init": 0,
+          "ordinary": 1,
+          "worker_block": 0,
+          "event": 2,
+          "send": 0,
+          "received": -11,
+          "signo": 0,
+          "code": 0,
+          "again": -11
+        },
+        "ordered16": {
+          "init": 0,
+          "ordinary": 1,
+          "worker_block": 0,
+          "event": 2,
+          "send": 0,
+          "received": 16,
+          "signo": 16,
+          "code": 0,
+          "again": -11
+        },
+        "sigpoll": {
+          "block": 0,
+          "empty_wait": -11,
+          "pending_wait": 16,
+          "signal_number": 16,
+          "after_consume": -11,
+          "timed_wait": -11,
+          "elapsed_ms": 207,
+          "invalid_timeout": -22
+        }
+      },
+      "cold_signal_fixtures": {
+        "sigpoll": "block=0\nempty_wait=-11\npending_wait=16\nsignal_number=16\nafter_consume=-11\ntimed_wait=-11\nelapsed_ms=219\ninvalid_timeout=-22\nstatus=0\n",
+        "ids": "init=0\nordinary=1\nevent=2\nevent_started=1\nsecond_event=3\nsecond_started=1\nreplacement=2\nreplacement_started=1\nstatus=0\n",
+        "guard": "init=0\nordinary=1\nguard_none=0\nguard_rw=0\nmarker=37\nstatus=0\n",
+        "waitpair": "init=0\nprepost=0\nordinary=1\nsecond=2\nreturned_after_one_wake=1\nfirst_return=0\nsecond_return=0\nstatus=0\n",
+        "create-join": "scope default\nbefore create\ncreate 0\nworker ran\njoin 0\nsame_pid 1 distinct_thread 1 value 42 returned_pointer 1\nstatus=0\n",
+        "ordered47": "init=0\nordinary=1\nevent=2\nworker_block=0\nsend=-122\nreceived=-11\nsigno=0\ncode=0\nagain=-11\nstatus=1\n",
+        "ordered16": "init=0\nordinary=1\nevent=2\nworker_block=0\nsend=0\nreceived=16\nsigno=16\ncode=0\nagain=-11\nstatus=0\n"
+      },
+      "local_stream": "queued=0,3,2,0\neof=ECONNRESET\nstatus=0\n",
+      "loaded": "kern.securelevel = 1\ncompat_irix_o32            exec     filesys  -        0       - exec_elf32,compat_netbsd32\n13438ab684435093bcd1f7fe0dbf46f0e09f86cb3a17335e67471c2106da8ae4\n",
+      "cold_halted": true,
+      "emulator_stopped": true,
+      "catalog_window": "0x160006b \"Icon Catalog: Applications (Page 1 of 11)\": (\"IconCatalog\" \"IconCatalog\")  900x500+0+0  +372+450",
+      "launches": {
+        "Mozilla": {
+          "pid": 2839,
+          "matches": [
+            "2839"
+          ],
+          "launcher": [
+            "/usr/lib/desktop/iconcatalog/pages/C/Applications/Mozilla ",
+            "LAUNCH_EVENT_XY=648:524"
+          ],
+          "document_window": [
+            "0x180002c \"Xiri Mozilla catalog test - Mozilla {Build ID: 0000000000}\": (\"<unknown>\" \"<unknown>\")  610x450+0+0  +160+160"
+          ],
+          "screenshot": "2026-11-25-mozilla-sigpoll-6.5.22f-upper.png",
+          "screenshot_sha256": "666e991407c174a5c56c09eaf9e87b1f315568f22c16dcac967923e3c997bafc",
+          "samples": [
+            {
+              "epoch": 1795607502,
+              "cpu_time": "0:23.84",
+              "pcpu": 12.1,
+              "nlwp": 6,
+              "state": "Sl"
+            },
+            {
+              "epoch": 1795607514,
+              "cpu_time": "0:23.84",
+              "pcpu": 6.4,
+              "nlwp": 6,
+              "state": "Il"
+            },
+            {
+              "epoch": 1795607526,
+              "cpu_time": "0:23.84",
+              "pcpu": 3.2,
+              "nlwp": 6,
+              "state": "Il"
+            }
+          ],
+          "elapsed_seconds": 24,
+          "cpu_seconds": 0.0,
+          "cpu_percent": 0.0,
+          "wait_channels": [
+            "irixth",
+            "poll",
+            "sigwait"
+          ]
+        },
+        "mozilla": {
+          "pid": 3992,
+          "matches": [
+            "3992"
+          ],
+          "launcher": [
+            "/usr/lib/desktop/iconcatalog/pages/C/Applications/mozilla ",
+            "LAUNCH_EVENT_XY=1128:524"
+          ],
+          "document_window": [
+            "0x180002c \"Xiri Mozilla catalog test - Mozilla {Build ID: 0000000000}\": (\"<unknown>\" \"<unknown>\")  610x450+0+0  +192+192"
+          ],
+          "screenshot": "2026-11-25-mozilla-sigpoll-6.5.22f-lower.png",
+          "screenshot_sha256": "7eda843352c758e7401b966791e73fb2226bfa3b5a8477042690062efaca06eb",
+          "samples": [
+            {
+              "epoch": 1795607658,
+              "cpu_time": "0:27.24",
+              "pcpu": 13.9,
+              "nlwp": 6,
+              "state": "Sl"
+            },
+            {
+              "epoch": 1795607670,
+              "cpu_time": "0:27.24",
+              "pcpu": 7.3,
+              "nlwp": 6,
+              "state": "Il"
+            },
+            {
+              "epoch": 1795607682,
+              "cpu_time": "0:27.24",
+              "pcpu": 3.8,
+              "nlwp": 6,
+              "state": "Il"
+            }
+          ],
+          "elapsed_seconds": 24,
+          "cpu_seconds": 0.0,
+          "cpu_percent": 0.0,
+          "wait_channels": [
+            "irixth",
+            "poll",
+            "sigwait"
+          ]
+        }
+      },
+      "manual_explicit_file_url": true,
+      "offline_user_preferences": [
+        "user_pref(\"browser.startup.homepage\", \"file:///usr/people/xiritest/ok.html\");",
+        "user_pref(\"browser.startup.page\", 1);",
+        "user_pref(\"browser.startup.homepage_override.mstone\", \"ignore\");",
+        "user_pref(\"browser.startup.homepage_override.mstone\", \"rv:1.0.2\");"
+      ]
+    },
+    "6.5.30f": {
+      "image": {
+        "release": "6.5.30f",
+        "parent_v5_sha256": "45255c741c7fbfce754f63dab478f501fad4070c71b9071f559dc43ec1395e76",
+        "chd_sha256": "c19db82b001022241c30edbebf52ff4de9fd89e9b8dc7bb8121058acdf244fb5",
+        "netbsd_revision": "547482bf0e21f7bb44c1417b119a12a4da687a4e",
+        "kernel_sha256": "e989c42d3469f5d59e2ec759fdb3d7f54d7a893acdc326f6f3a3c4487f19fd22",
+        "boot_sha256": "a4af41c6d0c83f11f0180fce5cb0424a7a5ea7c3aa898bda9bfaf9f3f7b6f5c9",
+        "module_sha256": "13438ab684435093bcd1f7fe0dbf46f0e09f86cb3a17335e67471c2106da8ae4",
+        "browser_payload_sha256": "9221f292a68240ea863e6176dfa06b148ddea3973439d47b5ce464266a28593f",
+        "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+        "nvram_sha256": "322ec195f7b5eb8474d6e84bc0de607eca2d146697bad3dd7a4898a879816e7f",
+        "freeware_iso_sha256": "80f4bfbe30d968d991bbabfe3c0eb8e17584deb067f7deccd71a374b9d888413",
+        "qualification": "docs/results/2026-11-25-mozilla-sigpoll.json",
+        "launchers": {
+          "Mozilla": 2456,
+          "mozilla": 3156
+        }
+      },
+      "donor_machine": "o2_ip32",
+      "donor_sha256": "339f74457dfbb06813681ab5db2ccfdd29d394e8a02dfcdcd6c6ac7c22a836db",
+      "donor_results": {
+        "ordered47": {
+          "init": 0,
+          "ordinary": 1,
+          "worker_block": 0,
+          "event": 2,
+          "send": 0,
+          "received": -11,
+          "signo": 0,
+          "code": 0,
+          "again": -11
+        },
+        "ordered16": {
+          "init": 0,
+          "ordinary": 1,
+          "worker_block": 0,
+          "event": 2,
+          "send": 0,
+          "received": 16,
+          "signo": 16,
+          "code": 0,
+          "again": -11
+        },
+        "sigpoll": {
+          "block": 0,
+          "empty_wait": -11,
+          "pending_wait": 16,
+          "signal_number": 16,
+          "after_consume": -11,
+          "timed_wait": -11,
+          "elapsed_ms": 216,
+          "invalid_timeout": -22
+        }
+      },
+      "cold_signal_fixtures": {
+        "sigpoll": "block=0\nempty_wait=-11\npending_wait=16\nsignal_number=16\nafter_consume=-11\ntimed_wait=-11\nelapsed_ms=209\ninvalid_timeout=-22\nstatus=0\n",
+        "ids": "init=0\nordinary=1\nevent=2\nevent_started=1\nsecond_event=3\nsecond_started=1\nreplacement=2\nreplacement_started=1\nstatus=0\n",
+        "guard": "init=0\nordinary=1\nguard_none=0\nguard_rw=0\nmarker=37\nstatus=0\n",
+        "waitpair": "init=0\nprepost=0\nordinary=1\nsecond=2\nreturned_after_one_wake=1\nfirst_return=0\nsecond_return=0\nstatus=0\n",
+        "create-join": "scope default\nbefore create\ncreate 0\nworker ran\njoin 0\nsame_pid 1 distinct_thread 1 value 42 returned_pointer 1\nstatus=0\n",
+        "ordered47": "init=0\nordinary=1\nevent=2\nworker_block=0\nsend=-122\nreceived=-11\nsigno=0\ncode=0\nagain=-11\nstatus=1\n",
+        "ordered16": "init=0\nordinary=1\nevent=2\nworker_block=0\nsend=0\nreceived=16\nsigno=16\ncode=0\nagain=-11\nstatus=0\n"
+      },
+      "local_stream": "queued=0,3,2,0\neof=ECONNRESET\nstatus=0\n",
+      "loaded": "kern.securelevel = 1\ncompat_irix_o32            exec     filesys  -        0       - exec_elf32,compat_netbsd32\n13438ab684435093bcd1f7fe0dbf46f0e09f86cb3a17335e67471c2106da8ae4\n",
+      "cold_halted": true,
+      "emulator_stopped": true,
+      "catalog_window": "0x160006b \"Icon Catalog: Applications (Page 1 of 11)\": (\"IconCatalog\" \"IconCatalog\")  900x500+0+0  +372+450",
+      "launches": {
+        "Mozilla": {
+          "pid": 2456,
+          "matches": [
+            "2456"
+          ],
+          "launcher": [
+            "/usr/lib/desktop/iconcatalog/pages/C/Applications/Mozilla ",
+            "LAUNCH_EVENT_XY=468:529"
+          ],
+          "document_window": [
+            "0x1800021 \"Xiri Mozilla catalog test - Mozilla\": (\"Mozilla\" \"navigator:browser\")  610x450+0+0  +128+128"
+          ],
+          "screenshot": "2026-11-25-mozilla-sigpoll-6.5.30f-upper.png",
+          "screenshot_sha256": "14c9aa1ae17cf9068aab4e8122bcbe261b8c4d2e6e46ab3ad7011cc0d1374d64",
+          "samples": [
+            {
+              "epoch": 1795607128,
+              "cpu_time": "0:18.03",
+              "pcpu": 0.0,
+              "nlwp": 7,
+              "state": "Il"
+            },
+            {
+              "epoch": 1795607140,
+              "cpu_time": "0:18.03",
+              "pcpu": 0.0,
+              "nlwp": 7,
+              "state": "Il"
+            },
+            {
+              "epoch": 1795607152,
+              "cpu_time": "0:18.03",
+              "pcpu": 0.0,
+              "nlwp": 7,
+              "state": "Il"
+            }
+          ],
+          "elapsed_seconds": 24,
+          "cpu_seconds": 0.0,
+          "cpu_percent": 0.0,
+          "wait_channels": [
+            "irixth",
+            "poll",
+            "sigwait"
+          ]
+        },
+        "mozilla": {
+          "pid": 3156,
+          "matches": [
+            "3156"
+          ],
+          "launcher": [
+            "/usr/lib/desktop/iconcatalog/pages/C/Applications/mozilla ",
+            "LAUNCH_EVENT_XY=708:529"
+          ],
+          "document_window": [
+            "0x1800021 \"Xiri Mozilla catalog test - Mozilla\": (\"Mozilla\" \"navigator:browser\")  610x450+0+0  +160+160"
+          ],
+          "screenshot": "2026-11-25-mozilla-sigpoll-6.5.30f-lower.png",
+          "screenshot_sha256": "dc793bfda45a51c1248d87bdc38ac4074c37167f81b839e36c8c5dee600f275a",
+          "samples": [
+            {
+              "epoch": 1795607243,
+              "cpu_time": "0:19.35",
+              "pcpu": 20.2,
+              "nlwp": 7,
+              "state": "Sl"
+            },
+            {
+              "epoch": 1795607255,
+              "cpu_time": "0:19.35",
+              "pcpu": 10.5,
+              "nlwp": 7,
+              "state": "Il"
+            },
+            {
+              "epoch": 1795607267,
+              "cpu_time": "0:19.70",
+              "pcpu": 5.5,
+              "nlwp": 7,
+              "state": "Sl"
+            }
+          ],
+          "elapsed_seconds": 24,
+          "cpu_seconds": 0.35,
+          "cpu_percent": 1.46,
+          "wait_channels": [
+            "irixth",
+            "poll",
+            "sigwait"
+          ]
+        }
+      },
+      "manual_explicit_file_url": true,
+      "offline_user_preferences": [
+        "user_pref(\"browser.startup.homepage\", \"file:///usr/people/xiritest/ok.html\");",
+        "user_pref(\"browser.startup.page\", 1);",
+        "user_pref(\"browser.startup.homepage_override.mstone\", \"ignore\");"
+      ]
+    }
+  }
+}
