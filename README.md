@@ -343,15 +343,17 @@ meters run on both Indys with the updated compatibility module.
 The [Applications tab survey](docs/results/2026-11-24-indy-applications.md)
 covers every visible launcher on the two original-media Indy desktops.
 Both Indy releases can create and join a worker using SGI's n32 libpthread
-on the matching development kernel and module. The browser imports and
-the latest results for each Mozilla launcher are recorded separately.
+on the matching development kernel and module. Both vendor Mozilla
+versions also render a local page with the event-worker and local X socket
+diagnostic patches. The release images still use their qualified modules.
 [Mozilla imports](docs/results/2026-11-24-indy-mozilla.md) ·
 [Worker qualification](docs/results/2026-11-25-nsproc.md) ·
 [Threaded library loading](docs/results/2026-11-25-threaded-elfmap.md) ·
 [Threaded heap](docs/results/2026-11-25-threaded-break.md) ·
 [Mozilla event workers and stack guards](docs/results/2026-11-25-irix-event-workers.md) ·
 [Private libc locks](docs/results/2026-11-25-irix-usync.md) ·
-[Thread stack guards and Mozilla on both Indys](docs/results/2026-11-25-irix-stack-guard.md).
+[Thread stack guards](docs/results/2026-11-25-irix-stack-guard.md) ·
+[Mozilla startup, signal waits and local X connections on both Indys](docs/results/2026-11-25-mozilla-event-diagnosis.md).
 General nested pipelines and layered-terminal revoke remain open; the
 qualified job-control subset and its explicit wait-policy differences are
 recorded in the [cycle report](docs/results/2026-11-05-irix-job-control.md).

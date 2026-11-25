@@ -113,13 +113,14 @@ into a private directory with the NetBSD sgimips cross tools on `PATH`.
 ```sh
 out=.work/event-probes
 mkdir -p "$out"
-for name in event waitwake waitpair guard bounds; do
+for name in event waitwake waitpair guard bounds sigpoll; do
     case "$name" in
         event) flag= ;;
         waitwake) flag=-DWAIT_WAKE ;;
         waitpair) flag=-DWAIT_PAIR ;;
         guard) flag=-DSTACK_GUARD ;;
         bounds) flag=-DSTACK_GUARD_BOUNDS ;;
+        sigpoll) flag=-DSIGNAL_POLL ;;
     esac
     mips64--netbsd-gcc -O2 -Wall -Wextra -Werror -EB -march=mips3 \
         -mabi=n32 -mno-abicalls -fno-pic -G0 -ffreestanding \
@@ -154,6 +155,12 @@ read/write access, both pages must accept it. The probe also checks that a
 request spanning the private/shared boundary fails before changing either
 page, and that the per-thread PRDA page rejects a protection change.
 
+`sigpoll` isolates n32 syscall 1166 in a single thread. It blocks SIGUSR1,
+waits up to 10 ms with no pending signal, sends SIGUSR1 to itself and polls
+twice with a zero timeout. Both original releases returned `-11, 16, -11`,
+with signal 16 in the result structure. The executable checks all three
+returns and the signal number.
+
 To see the blocking and waking threads separately on IRIX, run `par` as
 root after the ordinary-user checks.
 
@@ -164,4 +171,5 @@ grep usync_cntl /tmp/waitwake.par
 
 [Original IRIX and Xiri comparison](../../docs/results/2026-11-25-irix-event-workers.md) ·
 [Private lock implementation and retest](../../docs/results/2026-11-25-irix-usync.md) ·
-[Private stack-guard implementation and retest](../../docs/results/2026-11-25-irix-stack-guard.md).
+[Private stack-guard implementation and retest](../../docs/results/2026-11-25-irix-stack-guard.md) ·
+[Mozilla signal waits and local X connections](../../docs/results/2026-11-25-mozilla-event-diagnosis.md).

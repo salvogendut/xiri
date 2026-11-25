@@ -114,6 +114,31 @@ void
 _start(void)
 {
 	int status = 1;
+#ifdef SIGNAL_POLL
+	/* Exercise the event worker's wait independently of worker creation. */
+	const word sigusr1 = 16;
+	word set[4] = {1U << (sigusr1 - 1), 0, 0, 0};
+	static word info[32];
+	word interval[2] = {0, 10000000}, zero[2] = {0, 0};
+	int blocked = call(1164, 1, PTR(set), 0, 0);
+	number("block", blocked);
+	if (blocked != 0)
+		goto done;
+	int empty = call(1166, PTR(set), PTR(info), PTR(interval), 0);
+	number("empty_wait", empty);
+	int pid = call(1020, 0, 0, 0, 0);
+	if (pid <= 0 || call(1037, pid, sigusr1, 0, 0) != 0)
+		goto done;
+	int pending = call(1166, PTR(set), PTR(info), PTR(zero), 0);
+	word signo = info[0];
+	number("pending_wait", pending);
+	number("signal_number", signo);
+	int consumed = call(1166, PTR(set), PTR(info), PTR(zero), 0);
+	number("after_consume", consumed);
+	status = empty != -11 || pending != (int)sigusr1 || signo != sigusr1 ||
+	    consumed != -11;
+	goto done;
+#endif
 #if defined(WAIT_WAKE) || defined(WAIT_PAIR)
 	for (unsigned i = 0; i < 2; i++) {
 		wait_req[i].version = wake_req[i].version = 1002;

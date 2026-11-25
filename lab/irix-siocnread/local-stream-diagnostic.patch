@@ -1,0 +1,15 @@
+--- a/sys/compat/irix_o32/irix_o32.c
++++ b/sys/compat/irix_o32/irix_o32.c
+@@ -3065,8 +3065,10 @@
+ 		goto out;
+ 	}
+ 	so = fp->f_socket;
+-	if (so->so_proto->pr_domain->dom_family != AF_INET ||
+-	    so->so_type != SOCK_STREAM || so->so_proto->pr_protocol != IPPROTO_TCP) {
++	if (so->so_type != SOCK_STREAM ||
++	    (so->so_proto->pr_domain->dom_family != AF_LOCAL &&
++	    (so->so_proto->pr_domain->dom_family != AF_INET ||
++	    so->so_proto->pr_protocol != IPPROTO_TCP))) {
+ 		error = EAFNOSUPPORT;
+ 		goto out;
+ 	}

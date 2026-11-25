@@ -71,4 +71,8 @@ request. The [original comparison](2026-11-25-irix-event-workers.md)
 records how both donors created those workers and reused their IDs.
 Event delivery needs a separate reference check.
 
+A subsequent [Mozilla startup comparison](2026-11-25-mozilla-event-diagnosis.md)
+admitted the event worker on disposable Indys and traced the signal wait
+and local X socket that both browsers use next.
+
 [Release hashes, test outputs and sampled browser windows](2026-11-25-irix-stack-guard.json).

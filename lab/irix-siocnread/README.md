@@ -7,6 +7,44 @@ Toolchest calls while polling its X connection. The preceding
 [diagnosis](../../docs/results/2026-10-31-irix-toolchest-siocnread.md) identifies
 this as the next XIO boundary after the qualified fxstat adapter.
 
+## Connected Unix streams
+
+Mozilla uses the same selector when `DISPLAY=:0` selects a local socket.
+The separate [local-stream probe](local-stream.c) creates an n32 Unix
+stream socket pair, queues three bytes and reads them in two steps. Both
+original IRIX releases and both Indys with the diagnostic patch reported
+counts of 0, 3, 2 and 0. After closing the peer and reading EOF, each
+returned ECONNRESET and left the output word untouched.
+[Mozilla comparison](../../docs/results/2026-11-25-mozilla-event-diagnosis.md).
+
+From the project root, build this standalone fixture with the sgimips
+cross tools on `PATH`.
+
+```sh
+out=.work/local-stream-probe
+mkdir -p "$out"
+flags='-EB -march=mips3 -mabi=n32 -mno-abicalls -fno-pic -G0'
+for part in start call; do
+    mips64--netbsd-gcc $flags -DN32=1 -c "lab/irix-prda/$part.S" -o "$out/$part.o"
+done
+mips64--netbsd-gcc $flags -O2 -Wall -Wextra -Werror -ffreestanding -fno-stack-protector \
+    -c lab/irix-siocnread/local-stream.c -o "$out/local-stream.o"
+mips64--netbsd-ld -EB -m elf32btsmipn32 --build-id=none -z max-page-size=8192 \
+    -T lab/irix-prda/probe.ld "$out/start.o" "$out/call.o" "$out/local-stream.o" \
+    -o "$out/local-stream"
+```
+
+Copy the executable to the guest and run it as an ordinary user. To
+require the exact queue and EOF behavior measured on both donors, check
+both its exit status and its output.
+
+```sh
+observed=$(./local-stream) &&
+    test "$observed" = "$(printf 'queued=0,3,2,0\neof=ECONNRESET')"
+```
+
+## IPv4 TCP and descriptor controls
+
 The synthetic probes cover o32/n32 and direct/indirect dispatch as root and
 uid/gid 1234. A controlled peer supplies 17 bytes and FIN, or keeps an empty
 stream open. A separate MSG_PEEK call establishes the complete payload before

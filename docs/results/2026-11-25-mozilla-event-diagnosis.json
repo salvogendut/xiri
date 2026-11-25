@@ -1,0 +1,318 @@
+{
+  "netbsd_revision": "e380016ff914a4010bfeb5b3736fd1223c3ad29b",
+  "iris_upstream": "057ba0952a6b6c992cd23e3233ac202891a5fc81",
+  "iris_integration": "39ef6dff7d86f4c7bb0ccd2c936b916e147c0fff",
+  "host_tests_passed": 96,
+  "module_imports_resolved": 212,
+  "production_module_sha256": "27605fa08139278086a4196cf2fb5d5b3d691e4ed231db22554b1aa70b73acba",
+  "diagnostic_modules_sha256": {
+    "event_creation": "ec220d601b54a2f4a2006551c8775a2323bc02b843f55fa0d988ac9678a4fb09",
+    "event_creation_and_local_stream": "2992185f1698d6baabc5fb9f2691bc610cfbdcf299c00f37f81d95a60c08472a"
+  },
+  "kernel_sha256": {
+    "netbsd": "e989c42d3469f5d59e2ec759fdb3d7f54d7a893acdc326f6f3a3c4487f19fd22",
+    "netbsd.boot": "a4af41c6d0c83f11f0180fce5cb0424a7a5ea7c3aa898bda9bfaf9f3f7b6f5c9"
+  },
+  "probe_sha256": {
+    "sigpoll": "685bd6278cf384d95357164432a663f94b9874cf8f5ca52981252f07417ecd9b",
+    "local-stream": "968894c3cd79fea0ea748c033540394a4278a60aa3c8b47179c02b0368710337"
+  },
+  "releases": {
+    "6.5.22f": {
+      "qualified_v5_hashes_rechecked": {
+        "chd_sha256": "a0b232a777a4206a2cc3c93c99bf3277458105cc5d5945d190f8a0ab6d54710f",
+        "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+        "nvram_sha256": "c864b965f082ac9b0adca243a20c7d2d321fe8c88722a2eb3980a999d486850d",
+        "browser_payload_sha256": "1a817f69d2f07f47baddf596574c78dced9beddffdd6a81e11282470063f9a8d"
+      },
+      "original_irix": {
+        "machine": "indy_ip24",
+        "chd_sha256": "b4fff76ffa0ca00c0a90da1c94a3eb41f5f6ba4cb13c0af258b4acca4ad95c41",
+        "nvram_sha256": "276522469736c2363da6b6e279a847857f861cc253cc49fcd31d07c6dd247987",
+        "sampled_window": "0x2400054 \"Xiri event worker test - Mozilla {Build ID: 0000000000}\": (\"<unknown>\" \"<unknown>\")  610x450+0+0  +32+32",
+        "screenshot_sha256": "69b13b58a7e767e563ad827e38ebb83d241836dc1655466595ca549af21255e3",
+        "observer_status": 4,
+        "signal_probe": {
+          "block": 0,
+          "empty_wait": -11,
+          "pending_wait": 16,
+          "signal_number": 16,
+          "after_consume": -11
+        },
+        "local_stream_probe": "queued=0,3,2,0\neof=ECONNRESET",
+        "clean_halts": true,
+        "source_hashes_unchanged": true
+      },
+      "event_only": {
+        "x_display": ":0",
+        "probe_status": {
+          "event": 0,
+          "waitpair": 0,
+          "guard": 0,
+          "create-join": 0
+        },
+        "worker_lifetime_probe": {
+          "init": 0,
+          "ordinary": 1,
+          "event": 2,
+          "event_started": 1,
+          "second_event": 3,
+          "second_started": 1,
+          "replacement": 4,
+          "replacement_started": 1,
+          "status": 0
+        },
+        "signal_probe": {
+          "block": 0,
+          "empty_wait": -89,
+          "pending_wait": -89,
+          "signal_number": 0,
+          "after_consume": -89,
+          "status": 1
+        },
+        "event_descriptors": {
+          "flags=0x60000ff desc=0x60000ff len=0 sched=0": 1
+        },
+        "worker_ids": {
+          "flags=0x20000ff id=1": 1,
+          "flags=0x20000ff id=2": 1,
+          "flags=0x60000ff id=3": 1
+        },
+        "syscall_1166_by_pid_lwp": {
+          "(587, 705) errno=89": 166590
+        },
+        "syscall_1166_pc": "0xfa4f8b8",
+        "pr_thread_ctl_failures": {
+          "4 errno=89": 9,
+          "2 errno=4": 1
+        },
+        "main_thread_siocnread": [
+          {
+            "pid_lwp": [
+              587,
+              587
+            ],
+            "request": "0x4004730a",
+            "fd": 3,
+            "pc": "0xfa50e44",
+            "time_ns": 1795603311482732585
+          }
+        ],
+        "socket_and_connect": [
+          {
+            "syscall": 1107,
+            "arguments": [
+              1,
+              2,
+              0
+            ],
+            "return_value": 3
+          },
+          {
+            "syscall": 1107,
+            "arguments": [
+              1,
+              2,
+              0
+            ],
+            "return_value": 3
+          },
+          {
+            "syscall": 1091,
+            "arguments": [
+              3,
+              2147445520,
+              19
+            ],
+            "return_value": 0
+          }
+        ],
+        "traces": {
+          "run": "c610647c6ddee28002b479ced56e7a25428af9eaea2f93b6388aceff83cea4b6",
+          "warm": "2e453009661c404f6518f5915a9d219b5d7c421adf199fa7eeae91d01c3a9c08"
+        },
+        "chosen_trace": "warm",
+        "first_launch_status": 124,
+        "repeat_launch_status": 124,
+        "repeat_trace_enabled": true,
+        "repeat_xorg_pid_before": "2978",
+        "repeat_xorg_pid_after": "2978",
+        "repeat_screen_before": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+        "repeat_screen_after": "dimensions:    1280x1024 pixels (339x271 millimeters)"
+      },
+      "event_and_local_stream": {
+        "local_stream_probe": "queued=0,3,2,0\neof=ECONNRESET\nstatus=0",
+        "unix_display": {
+          "titled_document_windows": [
+            "0x180002c \"Xiri event worker test - Mozilla {Build ID: 0000000000}\": (\"<unknown>\" \"<unknown>\")  610x450+0+0  +32+32"
+          ],
+          "document_visible": true,
+          "launch_status": null,
+          "browser_log": "Gdk-WARNING **: shmget failed: error 89 (Function not implemented)\n**************************************************\nnsNativeComponentLoader: SelfRegisterDll(/var/netscape/mozilla/components/libucvibm.so) Load FAILED with error:   589:/var/netscape/mozilla/mozilla-bin: rld: Fatal Error: Cannot Successfully map soname '/var/netscape/mozilla/components/libucvibm.so' under any of the filenames /var/netscape/mozilla/components/libucvibm.so \n**************************************************\n**************************************************\nnsNativeComponentLoader: SelfRegisterDll(/var/netscape/mozilla/components/libucvko.so) Load FAILED with error:   589:/var/netscape/mozilla/mozilla-bin: rld: Fatal Error: Cannot Successfully map soname '/var/netscape/mozilla/components/libucvko.so' under any of the filenames /var/netscape/mozilla/components/libucvko.so \n**************************************************",
+          "capture_sha256": "5d4ffef03a2f40c1ce48c10c51ce0db5073dfff583940ee26eba674ec3ed3140",
+          "screenshot_sha256": "5d4ffef03a2f40c1ce48c10c51ce0db5073dfff583940ee26eba674ec3ed3140"
+        },
+        "desktop_display": {
+          "titled_document_windows": [
+            "0x180002c \"Xiri event worker test - Mozilla {Build ID: 0000000000}\": (\"<unknown>\" \"<unknown>\")  610x450+0+0  +32+32"
+          ],
+          "document_visible": true,
+          "launch_status": null,
+          "browser_log": "Gdk-WARNING **: shmget failed: error 89 (Function not implemented)\n**************************************************\nnsNativeComponentLoader: SelfRegisterDll(/var/netscape/mozilla/components/libucvibm.so) Load FAILED with error:  3568:/var/netscape/mozilla/mozilla-bin: rld: Fatal Error: Cannot Successfully map soname '/var/netscape/mozilla/components/libucvibm.so' under any of the filenames /var/netscape/mozilla/components/libucvibm.so \n**************************************************\n**************************************************\nnsNativeComponentLoader: SelfRegisterDll(/var/netscape/mozilla/components/libucvko.so) Load FAILED with error:  3568:/var/netscape/mozilla/mozilla-bin: rld: Fatal Error: Cannot Successfully map soname '/var/netscape/mozilla/components/libucvko.so' under any of the filenames /var/netscape/mozilla/components/libucvko.so \n**************************************************",
+          "capture_sha256": "bd235b488fd0ca0576e63b66d1db38132232c14a54a5bebc1f7bbe9b57fdcd96"
+        },
+        "display_argument": "127.0.0.1:0",
+        "tcp_display_query": "dimensions:    1280x1024 pixels (339x271 millimeters)"
+      },
+      "all_xiri_guests_halted_and_stopped": true
+    },
+    "6.5.30f": {
+      "qualified_v5_hashes_rechecked": {
+        "chd_sha256": "45255c741c7fbfce754f63dab478f501fad4070c71b9071f559dc43ec1395e76",
+        "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+        "nvram_sha256": "322ec195f7b5eb8474d6e84bc0de607eca2d146697bad3dd7a4898a879816e7f",
+        "browser_payload_sha256": "9221f292a68240ea863e6176dfa06b148ddea3973439d47b5ce464266a28593f"
+      },
+      "original_irix": {
+        "machine": "o2_ip32",
+        "chd_sha256": "339f74457dfbb06813681ab5db2ccfdd29d394e8a02dfcdcd6c6ac7c22a836db",
+        "nvram_sha256": "7be8898587b0c45a8de4bbe7fd392c30329f000d32eea5de4f32af94134493b2",
+        "sampled_window": "0x2000034 \"Xiri event worker test - Mozilla\": (\"Mozilla\" \"navigator:browser\")  610x450+0+0  +32+32",
+        "screenshot_sha256": "4bae3232c435ecd67ea3d09c3242099e09cd57afe2eed9aa9bbbc88902f13234",
+        "observer_status": 5,
+        "signal_probe": {
+          "block": 0,
+          "empty_wait": -11,
+          "pending_wait": 16,
+          "signal_number": 16,
+          "after_consume": -11
+        },
+        "local_stream_probe": "queued=0,3,2,0\neof=ECONNRESET",
+        "clean_halts": true,
+        "source_hashes_unchanged": true
+      },
+      "event_only": {
+        "x_display": ":0",
+        "probe_status": {
+          "event": 0,
+          "waitpair": 0,
+          "guard": 0,
+          "create-join": 0
+        },
+        "worker_lifetime_probe": {
+          "init": 0,
+          "ordinary": 1,
+          "event": 2,
+          "event_started": 1,
+          "second_event": 3,
+          "second_started": 1,
+          "replacement": 4,
+          "replacement_started": 1,
+          "status": 0
+        },
+        "signal_probe": {
+          "block": 0,
+          "empty_wait": -89,
+          "pending_wait": -89,
+          "signal_number": 0,
+          "after_consume": -89,
+          "status": 1
+        },
+        "event_descriptors": {
+          "flags=0x60000ff desc=0x60000ff len=0 sched=0": 1
+        },
+        "worker_ids": {
+          "flags=0x20000ff id=1": 1,
+          "flags=0x20000ff id=2": 1,
+          "flags=0x60000ff id=3": 1
+        },
+        "syscall_1166_by_pid_lwp": {
+          "(3568, 3186) errno=89": 80588
+        },
+        "syscall_1166_pc": "0xfa426f4",
+        "pr_thread_ctl_failures": {
+          "4 errno=89": 9,
+          "8 errno=89": 7,
+          "2 errno=4": 1
+        },
+        "main_thread_siocnread": [
+          {
+            "pid_lwp": [
+              3568,
+              3568
+            ],
+            "request": "0x4004730a",
+            "fd": 3,
+            "pc": "0xfa44164",
+            "time_ns": 1795602726583542506
+          }
+        ],
+        "socket_and_connect": [
+          {
+            "syscall": 1107,
+            "arguments": [
+              1,
+              2,
+              0
+            ],
+            "return_value": 3
+          },
+          {
+            "syscall": 1107,
+            "arguments": [
+              1,
+              2,
+              0
+            ],
+            "return_value": 3
+          },
+          {
+            "syscall": 1091,
+            "arguments": [
+              3,
+              2147445472,
+              19
+            ],
+            "return_value": 0
+          }
+        ],
+        "traces": {
+          "run": "47be0600be81d4323697663f10d54af78e75316910fd9892e90e2797bd6e8162"
+        },
+        "chosen_trace": "run",
+        "first_launch_status": 1,
+        "repeat_launch_status": 1,
+        "repeat_trace_enabled": false,
+        "repeat_xorg_pid_before": "2421",
+        "repeat_xorg_pid_after": "2421",
+        "repeat_screen_before": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+        "repeat_screen_after": "dimensions:    1280x1024 pixels (339x271 millimeters)"
+      },
+      "event_and_local_stream": {
+        "local_stream_probe": "queued=0,3,2,0\neof=ECONNRESET\nstatus=0",
+        "unix_display": {
+          "titled_document_windows": [
+            "0x1800021 \"Xiri event worker test - Mozilla\": (\"Mozilla\" \"navigator:browser\")  610x450+0+0  +32+32"
+          ],
+          "document_visible": true,
+          "launch_status": null,
+          "browser_log": "Gdk-WARNING **: shmget failed: error 89 (Function not implemented)",
+          "capture_sha256": "48d9aa0882bcd3da6594dda863325f2221e42cad0d14c07c207e6f6f10a6addf",
+          "screenshot_sha256": "48d9aa0882bcd3da6594dda863325f2221e42cad0d14c07c207e6f6f10a6addf"
+        },
+        "desktop_display": {
+          "titled_document_windows": [
+            "0x1400021 \"Xiri event worker test - Mozilla\": (\"Mozilla\" \"navigator:browser\")  610x450+0+0  +32+32"
+          ],
+          "document_visible": true,
+          "launch_status": null,
+          "browser_log": "Gdk-WARNING **: shmget failed: error 89 (Function not implemented)",
+          "capture_sha256": "a9840d8aa1885793eda51e3d9cb972626c0a9d916d2c5bf5a81c5d3592f9a2f8"
+        },
+        "display_argument": "127.0.0.1:0",
+        "tcp_display_query": "dimensions:    1280x1024 pixels (339x271 millimeters)"
+      },
+      "all_xiri_guests_halted_and_stopped": true
+    }
+  }
+}

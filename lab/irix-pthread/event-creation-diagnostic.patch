@@ -1,0 +1,35 @@
+--- a/sys/compat/irix_o32/irix_thread.c
++++ b/sys/compat/irix_o32/irix_thread.c
+@@ -43,6 +43,7 @@
+ #include <compat/irix_o32/irix_sproc.h>
+ 
+ #define NS_FLAGS 0x020000ffU
++#define PR_EVENT 0x04000000U
+ #define PRDA_BYTES 4096
+ #define PRDA_TID_OFFSET 0xe40
+ #define IRIX_SCHED_RR 2
+@@ -186,15 +187,22 @@
+ 	bool initialized = ip->prda_window == 0;
+ 
+ 	if (p->p_md.md_abi != _MIPS_BSD_API_N32 || !ip->threads ||
+-	    SCARG(uap, flags) != NS_FLAGS)
++	    (SCARG(uap, flags) & ~PR_EVENT) != NS_FLAGS)
+ 		return EOPNOTSUPP;
+ 	if (SCARG(uap, desc) > INT32_MAX || SCARG(uap, sched) > INT32_MAX)
+ 		return EFAULT;
+ 	if ((error = copyin((void *)(uintptr_t)SCARG(uap, desc), &desc,
+ 	    sizeof(desc))) != 0)
+ 		return error;
++	if ((SCARG(uap, flags) & PR_EVENT) && KTRPOINT(p, KTR_USER)) {
++		char record[100];
++		int n = snprintf(record, sizeof(record),
++		    "flags=%#x desc=%#x len=%u sched=%#x", SCARG(uap, flags),
++		    desc.flags, desc.len, SCARG(uap, sched));
++		ktr_kuser("irix_event_probe", record, n);
++	}
+ 	if (pc == 0 || pc >= INT32_MAX || (pc & 3) != 0 ||
+-	    desc.sp < 80 || desc.sp > INT32_MAX || desc.flags != NS_FLAGS)
++	    desc.sp < 80 || desc.sp > INT32_MAX || (desc.flags & ~(SCARG(uap, flags) & PR_EVENT)) != NS_FLAGS)
+ 		return EINVAL;
+ 	if (desc.len != 0)
+ 		return EOPNOTSUPP;

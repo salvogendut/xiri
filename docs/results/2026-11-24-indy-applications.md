@@ -7,7 +7,7 @@ the user's process list before and after each launch. For silent exits we
 also traced the launch or captured the program's own diagnostic on the
 same authenticated display.
 
-For Mozilla on private copies with the optional browser payload and matching kernel, see the [threaded heap checks](2026-11-25-threaded-break.md), [original IRIX worker comparison](2026-11-25-irix-event-workers.md), [Applications lock retest](2026-11-25-irix-usync.md) and [stack-guard retest](2026-11-25-irix-stack-guard.md).
+For Mozilla on private copies with the optional browser payload and matching kernel, see the [threaded heap checks](2026-11-25-threaded-break.md), [original IRIX worker comparison](2026-11-25-irix-event-workers.md), [Applications lock retest](2026-11-25-irix-usync.md), [stack-guard retest](2026-11-25-irix-stack-guard.md) and [signal-wait and local X socket diagnosis](2026-11-25-mozilla-event-diagnosis.md).
 
 | Catalog entry | 6.5.22f | 6.5.30f | Observed result |
 | --- | --- | --- | --- |

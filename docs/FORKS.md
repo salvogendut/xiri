@@ -124,6 +124,11 @@ The stack-guard cycle fetched IRIS upstream at `057ba095`. The fork's
 tests used the emulator pinned with their respective v5 image.
 [Stack-guard qualification](results/2026-11-25-irix-stack-guard.md).
 
+The Mozilla diagnosis fetched IRIS upstream `057ba095`. IRIS `xiri` at
+`39ef6dff` contained all upstream commits. The pinned emulator ran both
+original IRIX browsers and both Xiri Indy desktop comparisons.
+[Mozilla diagnosis](results/2026-11-25-mozilla-event-diagnosis.md).
+
 The November 24 disk-space recovery cycle merged upstream `057ba095` into
 IRIS `xiri` at `39ef6dff`. Upstream adds JIT code arena rotation and page
 slot recycling. The merge preserves the fork's optimization switch and its
