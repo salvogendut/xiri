@@ -34,6 +34,9 @@ def main():
         raise ValueError('expected a successful clean installation and its emulator')
     release = report['release']
     port = {'6.5.22f': 20782, '6.5.30f': 20792}[release]
+    component = report['checks'].get('mozilla')
+    if component:
+        port = {'6.5.22f': 21182, '6.5.30f': 21192}[release]
     out.mkdir(parents=True, exist_ok=False)
     chd = out / 'netbsd-xiri.chd'
     tool = ['chdman'] if shutil.which('chdman') else ['toolbox', 'run', '-c', 'xiri-iris', 'chdman']
@@ -68,6 +71,7 @@ def main():
             dict(
                 release=release,
                 receipt=report['checks']['receipts'],
+                **({'mozilla_receipt': component} if component else {}),
                 iso_sha256=report['iso_sha256'],
                 raw_sha1=raw_hash,
                 chd_sha256=sha256(chd),

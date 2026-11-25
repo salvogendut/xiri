@@ -9,6 +9,9 @@ validation and JavaScript-heavy sites were outside this check.
 
 ## Try it
 
+For a clean v5 installation, the [optional Mozilla component](../NATIVE-PACKAGE.md#install-or-remove-mozilla-on-the-indy)
+includes the browser, its matching kernel and the hostname service.
+
 From the Xiri checkout, start the bundle for the release you want.
 
 | Vendor release | Machine and browser | Launcher |

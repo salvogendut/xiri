@@ -343,6 +343,10 @@ meters run on both Indys with the updated compatibility module.
 The [Applications tab survey](docs/results/2026-11-24-indy-applications.md)
 covers every visible launcher on the two original-media Indy desktops.
 The [stock-profile startup retest](docs/results/2026-11-25-applications-recheck.md) lists each icon on the two Mozilla test images.
+Both v5 Indy installers support Mozilla as an optional component. Use
+`install.sh --mozilla` at installation time or on an existing v5 desktop.
+[Clean CHDs and screenshots](docs/results/2026-11-25-mozilla-installer.md#boot-the-clean-test-images) ·
+[Installation and rollback](docs/NATIVE-PACKAGE.md#install-or-remove-mozilla-on-the-indy).
 IRIX Mozilla can browse public HTTP pages on both Indys. The November 25 HTTP
 images and the in-place upgrade for the earlier input disks include the IRIX
 socket and hostname fixes. [Launch commands, screenshots and upgrade instructions](docs/results/2026-11-25-mozilla-http.md).

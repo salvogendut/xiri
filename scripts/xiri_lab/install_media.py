@@ -151,6 +151,12 @@ def run(args):
                 files[dest] = dict(type='file', sha256=sha256(path), bytes=path.stat().st_size)
             inputs['display-update'] = work / 'display-update'
             inputs['display-update'].write_text('Xorg GLX\n')
+        browser_inputs = (args.mozilla_payload, args.mozilla_kernel, args.mozilla_network)
+        if any(browser_inputs):
+            if not all(browser_inputs) or not graphics:
+                raise ValueError('Mozilla requires the GLX Indy package and --mozilla-payload, --mozilla-kernel and --mozilla-network')
+            from .mozilla_media import add_mozilla
+            add_mozilla(args, imported, json.loads((native / 'manifest.json').read_text()), work, inputs)
         if args.upgrade_from:
             inputs['delta.tgz'] = upgrade_delta(args.upgrade_from, native, work, fonts, pin['archive_sha256'])
             inputs['upgrade.sh'] = ROOT / 'packaging/native/upgrade-desktop.sh'

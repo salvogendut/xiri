@@ -1,0 +1,96 @@
+{
+  "iris_upstream": "c8e8f17b6297d0d7793bc2ad638a415faa61be1a",
+  "host_tests": 99,
+  "releases": {
+    "6.5.22f": {
+      "machine": "r4400",
+      "manifest": {
+        "release": "6.5.22f",
+        "receipt": "6.5.22f 0021ca29ec292b066ae00d8b28adfa9ab48f3474950b61c5c0352de35813bf58 85191d9fb7fa2c16a11c58a2889fb891200d87cf43691a797446cba3c35aeac3",
+        "mozilla_receipt": "6.5.22f 0021ca29ec292b066ae00d8b28adfa9ab48f3474950b61c5c0352de35813bf58 85191d9fb7fa2c16a11c58a2889fb891200d87cf43691a797446cba3c35aeac3 0e1d3b7126b5b396e674807a367a4bb1a2f1688e62b47090d87795af3d273595",
+        "iso_sha256": "7859a508e770a9b5d5602871679801abb9b4e107e729c7a9cac0eae5f77ffbf3",
+        "raw_sha1": "c5740cc60a4af758fc529215fb58e86b4e419ecd",
+        "chd_sha256": "9579b90a523755966f799d2847b639f40903f34f9e2842b82f5a7f5846b5e95d",
+        "nvram_sha256": "81b2eaa8887614b647db1c1d319d7afe7e9547f4e3c486c7df362a248ec5274e",
+        "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+        "install_result_sha256": "e6636ea4e6ca022f27755354dc8a757ff481efda1f4e981f227845ac7eb4e1a2"
+      },
+      "clean_install_repeated": true,
+      "browser": {
+        "first_boot": "0x180002c \"The World Wide Web project - Mozilla {Build ID: 0000000000}\": (\"<unknown>\" \"<unknown>\")  610x450+0+0  +32+32",
+        "after_upgrade": "0x180002c \"The World Wide Web project - Mozilla {Build ID: 0000000000}\": (\"<unknown>\" \"<unknown>\")  610x450+0+0  +32+32",
+        "profile_files": [
+          "SHA256 (/usr/people/xiritest/.mozilla/default/x26hah7u.slt/prefs.js) = 56f1ee85ecf4af15fa6c440802baa00a297371dd2bfe91022c7ec90feda559a3",
+          "SHA256 (/usr/people/xiritest/.mozilla/default/x26hah7u.slt/bookmarks.html) = d403220a749fcf766dde5034de88f1f5beeccce9e0e06358d196a1d59cebeb95"
+        ],
+        "browser_kernel": "NetBSD 11.99.11 (XIRI_IRIX_MODULE_20261103) #1: Wed Nov 25 06:30:36 UTC 2026\n\tsalvogendut@minisforum.golgota.lan:/var/home/salvogendut/Dev/xiri/.work/nsproc-cycle/build/kernel",
+        "restored_kernel": "NetBSD 11.99.11 (XIRI_IRIX_MODULE_20261103) #0: Mon Nov 23 18:09:22 UTC 2026\n\tsalvogendut@minisforum.golgota.lan:/var/home/salvogendut/Dev/xiri/.work/netbsd-sync-20261123/indy/kernel",
+        "rollback_xdm": true,
+        "site_files_preserved": true,
+        "local_extension_preserved": true
+      },
+      "screenshots": {
+        "first-boot": "af1811ddf6520048ed08ae65f4b7c8982c96067e872827630b997671ef2ef281",
+        "after-upgrade": "978b4fc576970c56df192c8ed234ed78edb6c4c66aec6655b5237fbb4f12e523"
+      },
+      "desktop": {
+        "identity": "SESSION user=xiritest uid=1234 groups=1234 home=/usr/people/xiritest cwd=/usr/people/xiritest display=127.0.0.1:0 authority=/tmp/.XauthbwbEim",
+        "dimensions": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+        "windows": [
+          "Toolchest",
+          "Icon Catalog",
+          "winterm",
+          "xclock"
+        ],
+        "native_session": "ctwm + xterm",
+        "both_logouts": true
+      },
+      "clean_shutdown": true
+    },
+    "6.5.30f": {
+      "machine": "r5000",
+      "manifest": {
+        "release": "6.5.30f",
+        "receipt": "6.5.30f 0021ca29ec292b066ae00d8b28adfa9ab48f3474950b61c5c0352de35813bf58 b290452e839bd7e7fb073735e382c517f672e964074a03cc1390dd34c2286288",
+        "mozilla_receipt": "6.5.30f 0021ca29ec292b066ae00d8b28adfa9ab48f3474950b61c5c0352de35813bf58 b290452e839bd7e7fb073735e382c517f672e964074a03cc1390dd34c2286288 2da90eb7f32733666de109a18b5081c4fa79ee4719489435e844aa39265f770a",
+        "iso_sha256": "042f1c05127488a24b058131f734aa8b72fb1094b50dc8157d63000967979efc",
+        "raw_sha1": "371d350485a04b42269fd025da11d0bb57ebe500",
+        "chd_sha256": "1d3dd1de7d690dd4cdc563176e2093094592191144782f206f178470d38d3e12",
+        "nvram_sha256": "96df5c83814f2772124e83a680c30c0b2e9ab5cf014803282745afc7b3dda6e4",
+        "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+        "install_result_sha256": "06d92400e16b754652c6b284fc92c04d50df72751c4f670ee087ea3ed342a543"
+      },
+      "clean_install_repeated": true,
+      "browser": {
+        "first_boot": "0x1800021 \"The World Wide Web project - Mozilla\": (\"Mozilla\" \"navigator:browser\")  610x450+0+0  +32+32",
+        "after_upgrade": "0x1800021 \"The World Wide Web project - Mozilla\": (\"Mozilla\" \"navigator:browser\")  610x450+0+0  +32+32",
+        "profile_files": [
+          "SHA256 (/usr/people/xiritest/.mozilla/default/l9w0mjuw.slt/prefs.js) = 6cdfbac1ee20da516483e7e26a0e6f2d6ca3c1d6ff1f5ebe6b56baff3a8ae3db",
+          "SHA256 (/usr/people/xiritest/.mozilla/default/l9w0mjuw.slt/bookmarks.html) = d9d6ed3809c7b5bf5cd2539d4dafa884e97a4e2d1f9ced82c0e0487ff108a10d"
+        ],
+        "browser_kernel": "NetBSD 11.99.11 (XIRI_IRIX_MODULE_20261103) #1: Wed Nov 25 06:30:36 UTC 2026\n\tsalvogendut@minisforum.golgota.lan:/var/home/salvogendut/Dev/xiri/.work/nsproc-cycle/build/kernel",
+        "restored_kernel": "NetBSD 11.99.11 (XIRI_IRIX_MODULE_20261103) #0: Mon Nov 23 18:09:22 UTC 2026\n\tsalvogendut@minisforum.golgota.lan:/var/home/salvogendut/Dev/xiri/.work/netbsd-sync-20261123/indy/kernel",
+        "rollback_xdm": true,
+        "site_files_preserved": true,
+        "local_extension_preserved": true
+      },
+      "screenshots": {
+        "first-boot": "3bb533c4328d839a71394fe61fd2b98afbb4c001e5d0732e0e94d65ca0d9b70f",
+        "after-upgrade": "2e17e9cb839aaf1dbc885b1350766f5eee66f17a7fc8f7da113317351c0b38b6"
+      },
+      "desktop": {
+        "identity": "SESSION user=xiritest uid=1234 groups=1234 home=/usr/people/xiritest cwd=/usr/people/xiritest display=127.0.0.1:0 authority=/tmp/.XauthzssGvh",
+        "dimensions": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+        "windows": [
+          "Toolchest",
+          "Icon Catalog",
+          "winterm",
+          "xclock"
+        ],
+        "native_session": "ctwm + xterm",
+        "both_logouts": true
+      },
+      "clean_shutdown": true
+    }
+  }
+}

@@ -27,6 +27,7 @@ cleanup() {
 }
 trap cleanup EXIT
 trap 'exit 1' HUP INT TERM
+test ! -d "$state/mozilla" || fail 'remove the optional browser with its matching install.sh --remove-mozilla first'
 test ! -e "$state/removing" || fail 'finish the interrupted removal first'
 sha256 -c SHA256 >/dev/null || fail 'media checksum mismatch'
 for old in "$state"/upgrade-work.*; do

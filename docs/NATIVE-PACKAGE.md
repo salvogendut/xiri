@@ -178,6 +178,54 @@ administrator review. Correct the reported conflict and repeat
 `sh /cdrom/install.sh` with the same release and native build. A finished
 installation has a receipt at `/var/db/xiri-install/installed`.
 
+### Install or remove Mozilla on the Indy
+
+Use the installer CD for the guest's IRIX release. To build a browser-capable
+CD, add these three arguments to the v5 build command above and choose a new
+output path. The builder uses `isoinfo` to read the native network update.
+
+```sh
+        --mozilla-payload ".work/imports/irix-${release}-mozilla-v1" \
+        --mozilla-kernel .work/modules/irix-threaded-stack-guard-20261125/indy-kernel-module.tar.xz \
+        --mozilla-network .work/modules/irix-browser-network-20261125/browser-network.iso
+```
+
+Build the [browser import](results/2026-11-24-indy-mozilla.md#build-the-matching-payload)
+from the same installed donor as the desktop. The R4400 uses the 6.5.22f
+import and the R5000 uses 6.5.30f. An existing v4 installation needs the
+[v5 display upgrade](#upgrade-or-roll-back-the-indy-display-package) first.
+On the guest, mount the matching CD as
+above. Plain `sh /cdrom/install.sh` selects the base desktop. For a fresh
+install with Mozilla, or to add it to an existing v5 desktop, run as root:
+
+```sh
+sh /cdrom/install.sh --mozilla && shutdown -r now
+```
+
+At xdm, log in to a Xiri session and double-click **Mozilla** in
+**Icon Catalog → Applications**. A new profile opens **Welcome to Xiri**.
+Try `http://info.cern.ch/hypertext/WWW/TheProject.html` with **Ctrl+L**. Public hostname lookups use
+the guest's NetBSD resolver and the `xiri_hosts` rc.d service.
+
+To return to the previous v5 desktop, quit Mozilla, mount the same CD again
+and run:
+
+```sh
+sh /cdrom/install.sh --remove-mozilla && shutdown -r now
+```
+
+The component records ownership and saves replaced files under
+`/var/db/xiri-install/mozilla`. Removal restores the previous kernel, PROM
+boot file, module and launcher. Each user's `~/.mozilla` profile stays in
+place. If removal reports a changed application file, save that edit and
+restore the packaged contents before retrying. An edited resolver rc.conf.d
+setting stays in place. Remove the component before changing or uninstalling
+the base desktop package. [Installer qualification](results/2026-11-25-mozilla-installer.md).
+
+The earlier hand-assembled November 25 Mozilla input CHDs use a different
+module baseline. To update those images in place, use their [network update
+CD](results/2026-11-25-mozilla-http.md#update-an-existing-november-25-mozilla-input-disk).
+
 ### Upgrade or roll back the Indy display package
 
 Log out of the graphical session. From a root text console, mount the v5 CD

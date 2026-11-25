@@ -23,6 +23,7 @@ scratch=
 cleanup() { test -z "$scratch" || rm -rf "$scratch"; rm -f "$state/lock"; }
 trap cleanup EXIT
 trap 'exit 1' HUP INT TERM
+test ! -d "$state/mozilla" || fail 'remove the optional browser with its matching install.sh --remove-mozilla first'
 test ! -e "$state/upgrading" || fail 'resume the pending native upgrade first'
 if test -f "$media/display-update" && pgrep '(^|/)(Xorg|X|xdm)$' >/dev/null; then fail 'stop xdm and Xorg before restoring the display server'; fi
 identity="$(cat release) $(awk '$2=="(native.tgz)" {print $4}' SHA256) $(awk '$2=="(payload.tgz)" {print $4}' SHA256)"

@@ -9,8 +9,10 @@ Compatibility and desktop behavior remain incomplete. See the
 [current overview](../README.md), [rendering evidence](results/2026-11-03-newport-xmahjongg.md)
 and [historical checkpoints](HISTORY.md).
 
-Both Indy Mozilla releases can load public HTTP pages by hostname. Modern
-HTTPS and broader browser compatibility remain open. [Web access qualification](results/2026-11-25-mozilla-http.md).
+Both Indy installers can add the release-matched SGI Mozilla browser. The clean
+CHDs open public HTTP pages by hostname from Icon Catalog on the first login.
+Modern HTTPS and broader browser compatibility remain open.
+[Installer and images](results/2026-11-25-mozilla-installer.md) · [Web access qualification](results/2026-11-25-mozilla-http.md).
 
 The [desktop-preferences cycle](results/2026-11-06-desktop-preferences.md)
 restores each user's backdrop, colour scheme, focus policy and window movement

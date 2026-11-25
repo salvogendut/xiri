@@ -127,6 +127,10 @@ and site configuration across a repeat installation. The modular boot
 reproduces the earlier `savecore` warning about the missing `_dumpdev` symbol.
 Crash-dump collection remains open. [Earlier modular boot](results/2026-11-03-irix-module-image.md)
 
+The v5 Indy installer can also include the release-matched SGI Mozilla
+browser. Select it with `install.sh --mozilla` on a fresh or existing v5
+desktop, then reboot. [Media inputs, upgrade and removal](NATIVE-PACKAGE.md#install-or-remove-mozilla-on-the-indy).
+
 ### Build the vendor payload
 
 ```sh

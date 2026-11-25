@@ -72,6 +72,12 @@ in `08e53ba7`. [Octane build and qualification](results/2026-11-23-octane-deskto
 
 ## IRIS upstream updates
 
+The November 25 Mozilla installer cycle fetched upstream `main` at
+`c8e8f17b6297d0d7793bc2ad638a415faa61be1a`. IRIS `xiri` at `6a6b1aca`
+already contained it. The installer uses the pinned Indy emulator and the
+NetBSD networking module from `5f6d833d936`.
+[Installer checks](results/2026-11-25-mozilla-installer.md).
+
 The November 25 Mozilla HTTP cycle fetched upstream `main` at `c8e8f17b`,
 already integrated in IRIS `xiri` at `6a6b1aca`. The pinned emulator ran
 the original IRIX comparison and both Xiri Indys. NetBSD `xiri` commit

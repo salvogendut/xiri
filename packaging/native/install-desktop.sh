@@ -5,7 +5,13 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/X11R7/bin
 export PATH
 umask 022
 fail() { echo "Xiri installer: $*" >&2; exit 1; }
-test "$#" -eq 0 && test "$(id -u)" = 0 && test "$(uname -s)" = NetBSD || fail 'run as root on NetBSD'
+component=
+case $# in
+0) ;;
+1) case $1 in --mozilla) component=enable;; --remove-mozilla) component=remove;; *) fail 'use --mozilla or --remove-mozilla';; esac;;
+*) fail 'usage: install.sh [--mozilla | --remove-mozilla]';;
+esac
+test "$(id -u)" = 0 && test "$(uname -s)" = NetBSD || fail 'run as root on NetBSD'
 media=$(cd "$(dirname "$0")" && pwd -P)
 cd "$media"
 sha256 -c SHA256 || fail 'media checksum mismatch'
@@ -39,6 +45,11 @@ space() {
 }
 # Bind a partial install to its input archives. Installer fixes may use new media.
 identity="$release $(awk '$2=="(native.tgz)" {print $4}' SHA256) $(awk '$2=="(payload.tgz)" {print $4}' SHA256)"
+if test -n "$component"; then
+    test -f "$media/mozilla.tgz" || fail 'this CD does not include the Mozilla option'
+elif test -d "$state/mozilla"; then
+    fail 'use --mozilla to verify the installed component, or --remove-mozilla to restore the base desktop'
+fi
 if test -f "$state/inputs"; then
     test "$(cat "$state/inputs")" = "$identity" || fail 'this target belongs to different input archives'
 fi
@@ -46,6 +57,17 @@ fi
 for old in "$state"/work.*; do
     if test -d "$old" && test ! -L "$old"; then rm -rf "$old"; fi
 done
+manage_mozilla() {
+    sh "$media/mozilla.sh" "$component" "$media" "$scratch"
+}
+if test -n "$component" && test -f "$state/installed"; then
+    cmp -s "$state/inputs" "$state/installed" && owned /emul/irix && owned /usr/local/share/xiri/fonts ||
+        fail 'inconsistent desktop receipts'
+    scratch=$(mktemp -d "$state/work.XXXXXX")
+    manage_mozilla
+    exit 0
+fi
+test "$component" != remove || fail 'no completed desktop installation'
 read -r native_kib vendor_kib < "$media/space"
 if owned /emul/irix && owned /usr/local/share/xiri/fonts; then vendor_kib=0; fi
 space "$state" "$((native_kib * 2 + vendor_kib + 8192))"
@@ -177,4 +199,5 @@ for service in rpcbind xiri_devices xiri_famd xiri_sessions xdm; do
 done
 cp "$state/inputs" "$scratch/installed"
 mv "$scratch/installed" "$state/installed"
+if test "$component" = enable; then manage_mozilla; fi
 echo "Installed IRIX $release. Select the Xiri .xsession for participating users and reboot."

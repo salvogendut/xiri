@@ -87,6 +87,23 @@ original SGI Clock under the authenticated 4Dwm user, checks its window
 class and compares two window dumps before returning to xdm. The screenshot
 is saved as `desktop/sgi-clock.png`.
 
+For the Indy browser checks, use the matching Mozilla installer ISO. Add
+`--mozilla` to the `install` phase and package its halted result as above.
+Extract `netbsd` from the qualified browser kernel archive into a temporary
+directory for the graphical halt checks, then run:
+
+```sh
+python3 lab/native-package/check-clean-desktop.py mozilla \
+  --base "$bootstrap" --media "$iso" --emulator "$emulator" \
+  --output "$run" --release "$release" --bundle "$bundle" --kernel "$browser_kernel"
+```
+
+The test logs in through xdm, opens the SGI browser as `xiritest` and
+navigates to CERN's World Wide Web project page over HTTP. On the private overlay it removes the
+component, boots the v5 kernel, adds Mozilla again and boots the browser
+kernel. It checks profile and site-file hashes across the changes and saves
+both browser screenshots. The guest needs outbound DNS and HTTP.
+
 Use the v4 bundle and the matching v5 ISO to test a live upgrade on a
 private overlay. The runner checks refusal at the active greeter, stops xdm,
 applies the upgrade twice, rolls back twice and verifies file hashes, modes

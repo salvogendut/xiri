@@ -106,6 +106,19 @@ def disk_full(guest, run, target):
                 receipt=guest.read_text('cat /var/db/xiri-install/installed').strip())
 
 
+def install_mozilla(guest, release):
+    for _ in range(2):
+        guest.command('sh /cdrom/install.sh --mozilla >/root/mozilla-install.log 2>&1; rc=$?; '
+                      'tail -10 /root/mozilla-install.log; test "$rc" = 0', 1800)
+        guest.command('cmp /var/db/xiri-install/inputs /var/db/xiri-install/installed && '
+                      'grep -qx enabled /var/db/xiri-install/mozilla/phase && '
+                      'test -x /emul/irix/var/netscape/mozilla/mozilla-bin')
+    guest.command('install -o xiritest -g xiritest -m 700 /usr/local/share/xiri/xdm.xsession '
+                  '/usr/people/xiritest/.xsession && test ! -e /home/netbsdtest/.xsession')
+    return dict(release=release, receipts=guest.read_text('cat /var/db/xiri-install/installed').strip(),
+                mozilla=guest.read_text('cat /var/db/xiri-install/mozilla/identity').strip(), repeated=True)
+
+
 def greeter(guest):
     guest.command('export PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/X11R7/bin DISPLAY=:0')
     guest.wait_for('test -s /tmp/.X0-lock', 180)
@@ -246,16 +259,19 @@ def desktop(guest, out, colour=None, while_logged_in=None, check_clock=False):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('phase', choices=('install', 'disk-full', 'desktop', 'display-upgrade'))
+    parser.add_argument('phase', choices=('install', 'disk-full', 'desktop', 'display-upgrade', 'mozilla'))
     for name in ('base', 'media', 'emulator', 'output'):
         parser.add_argument('--' + name, type=Path, required=True)
     parser.add_argument('--release', choices=('6.5.22f', '6.5.30f'), required=True)
     parser.add_argument('--bundle', type=Path, help='test a copy of a packaged CHD and its graphical PROM')
     parser.add_argument('--kernel', type=Path, help='matching unstripped kernel for the graphical halt check')
     parser.add_argument('--sgi-clock', action='store_true', help='verify original SGI Clock redraws in the Xiri session')
+    parser.add_argument('--mozilla', action='store_true', help='select Mozilla on a fresh installation')
     parser.add_argument('--legacy-ownership', action='store_true', help='exercise a v4 install without the created-file ledger')
     parser.add_argument('--full-target', choices=('services', 'payload'), help='filesystem to fill during disk-full qualification')
     args = parser.parse_args()
+    if args.mozilla and args.phase != 'install':
+        parser.error('--mozilla requires the install phase')
     if args.sgi_clock and args.phase != 'desktop':
         parser.error('--sgi-clock requires the desktop phase')
     if args.legacy_ownership and args.phase != 'display-upgrade':
@@ -279,13 +295,20 @@ def main():
     bundle = args.bundle.resolve() if args.bundle else None
     if not install_phase:
         package = json.loads((bundle / 'manifest.json').read_text())
+        kernel_digest = json.loads((base / 'result.json').read_text())['native_sha256']['netbsd']
+        if package.get('mozilla_receipt'):
+            pins = json.loads((ROOT / 'docs/results/2026-11-25-mozilla-sigpoll.json').read_text())
+            kernel_digest = pins['releases'][args.release]['image']['kernel_sha256']
+        if args.phase == 'mozilla' and (
+            not package.get('mozilla_receipt') or sha256(medium) != package['iso_sha256']
+        ):
+            raise ValueError('expected the Mozilla image and its matching installer')
         if (
             package['release'] != args.release
             or sha256(bundle / 'netbsd-xiri.chd') != package['chd_sha256']
             or sha256(bundle / 'nvram.bin') != package['nvram_sha256']
             or sha256(emu / 'iris') != package['iris_sha256']
-            or sha256(args.kernel)
-            != json.loads((base / 'result.json').read_text())['native_sha256']['netbsd']
+            or sha256(args.kernel) != kernel_digest
         ):
             raise ValueError('desktop test inputs differ from the packaged installation')
         disk = run / 'check.chd'
@@ -339,10 +362,16 @@ def main():
             prepare_install(guest, args.release)
             if args.phase == 'disk-full':
                 result['checks'] = disk_full(guest, run, args.full_target or 'services')
+            elif args.mozilla:
+                result['checks'] = install_mozilla(guest, args.release)
             else:
                 result['checks'] = install(guest, args.release)
         elif args.phase == 'display-upgrade':
             result['checks'] = display_upgrade(guest, package['receipt'], args.legacy_ownership)
+        elif args.phase == 'mozilla':
+            from mozilla_lifecycle import check
+            result['checks'] = check(guest, run, package, greeter, login,
+                                     json.loads((base / 'result.json').read_text())['native_sha256'])
         else:
             if 'receipt' in package:
                 if result['iso_sha256'] != package['iso_sha256']:
