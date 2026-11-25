@@ -2,6 +2,29 @@
 
 On the two November 25 Mozilla Indy images, a new browser profile opened **Welcome to Xiri** offline. Reinstalling the defaults preserved a user's chosen homepage on both releases. On the 6.5.22f Applications tab, choosing Mozilla for WebJumper links opened the original **AboutNetscapeMessenger** document and launched the **NetscapeMail** icon into Mozilla's account wizard. [6.5.22f welcome page](2026-11-25-mozilla-welcome-6.5.22f.png) · [6.5.30f welcome page](2026-11-25-mozilla-welcome-6.5.30f.png) · [About Netscape Messenger](2026-11-25-webjumper-about.png).
 
+## Try the prepared images
+
+From the Xiri checkout, launch the 6.5.22f Indy to try both Messenger shortcuts.
+
+```sh
+.work/images/xiri-indy-6.5.22f-catalog-20261125/run-iris.sh
+```
+
+At xdm use `xiritest` for both username and password. The catalog starts on **Freeware**. Click **Applications** at the bottom left of the Icon Catalog and double-click **Mozilla**, **AboutNetscapeMessenger** or **NetscapeMail**. The expected windows are **Welcome to Xiri**, SGI’s illustrated About page and Mozilla’s **Mail & Newsgroups** account wizard. Allow up to two minutes for a cold browser launch. You can cancel the wizard without adding an account.
+
+To try the offline homepage on the 6.5.30f Indy, use the same login and double-click **Mozilla**.
+
+```sh
+.work/images/xiri-indy-6.5.30f-catalog-20261125/run-iris.sh
+```
+
+Each bundle has a standalone `netbsd-xiri.chd` and its matching Freeware CD 4. IRIS saves manual changes in a writable overlay on subsequent runs. Both disks passed `chdman verify` and cold-booted through xdm to the Icon Catalog as `xiritest`.
+
+| Indy release | Standalone CHD SHA-256 |
+| --- | --- |
+| 6.5.22f | `07a98da5c15feddb47d7f48115f6da63caf06bf85e74b53bb83383ffec49b844` |
+| 6.5.30f | `975dc03808d7341cbc94b07644d487a21952e976196da8d26ddb867984a44560` |
+
 ## Install the offline homepage
 
 Start with the Mozilla Indy image for your release, or install the matching Mozilla payload and compatibility module. The two release profiles produce different vendor archives. Each new Mozilla import also writes `install-mozilla-defaults.sh` next to its archive and records the script's SHA-256 in `manifest.json` under `guest_setup`. [Test images and launch commands](2026-11-25-mozilla-sigpoll.md#launch-the-test-images) · [Build a release-matched browser import](2026-11-24-indy-mozilla.md#build-the-matching-payload).
