@@ -1,0 +1,84 @@
+# One IRIX n32 pthread
+
+[create-join.c](create-join.c) starts one worker through the installed SGI
+`libpthread.so`. The worker checks its pthread identity, records its process
+ID, changes a shared integer from 35 to 42 and returns the address of that
+integer. The parent joins and checks all four results.
+
+On IRIX with the n32 C development tools installed, build and run using:
+
+```sh
+cc -n32 -mips3 -o create-join create-join.c -lpthread
+./create-join
+./create-join system
+```
+
+Run both commands as an ordinary user and as root. On both original
+releases, default scope exits zero with
+`same_pid 1 distinct_thread 1 value 42 returned_pointer 1`. The order of
+`worker ran` and `create 0` depends on scheduling. Only root passed the
+explicit system-scope case in these controls. An ordinary user got
+`attr_setscope 1` (EPERM) and fixture exit 4.
+
+To see the two returns from a successful call, run as root on original IRIX:
+
+```sh
+/usr/sbin/par -s -i -SS -T -o /tmp/thread.par ./create-join
+grep nsproc /tmp/thread.par
+```
+
+Copy the same executable to a writable directory on each Xiri guest and run
+it as the logged-in user. The timeout bounds the vendor library's retry loop.
+Use a separate trace filename for each mode and user.
+
+```sh
+/usr/bin/timeout -k 2 10 ./create-join
+/usr/bin/timeout -k 2 10 ktrace -i -t u -f thread.ktrace ./create-join
+strings thread.ktrace | grep -E 'syscall=(1204|1082) '
+```
+
+## Building with the original development CDs and a cross compiler
+
+The qualified donors have SGI cpp and the runtime libraries. The development
+CDs supplied the n32 assembler, linker, headers and startup objects. The lab
+installed those tools into a private `/tmp/pt-sdk` on its 6.5.22f donor
+overlay. The C compiler front end was unavailable, so the following three
+steps produced the measured executable. The linker used the donor's runtime
+libraries. Keep the SDK and intermediate files private.
+
+1. On the IRIX donor, preprocess the fixture using the SDK and base-system headers.
+
+   ```sh
+   /usr/lib32/cmplrs/cpp -P -I/tmp/pt-sdk/usr/include \
+       -D_LANGUAGE_C -D__sgi -D__mips=3 -D_MIPSEB -D_MIPS_ISA=3 \
+       -D_MIPS_SIM=2 -D_MIPS_SZPTR=32 -D_MIPS_SZINT=32 \
+       -D_MIPS_SZLONG=32 -D_LONGLONG create-join.c > probe.i
+   ```
+
+2. Transfer `probe.i` to the host. Emit n32 MIPS III assembly with the NetBSD
+   cross compiler. Remove GNU assembler metadata and mode directives from
+   this listing for the SGI assembler.
+
+   ```sh
+   mips64--netbsd-gcc -mabi=n32 -march=mips3 -mabicalls -fPIC -G0 -O1 \
+       -fno-stack-protector -fno-builtin -fno-asynchronous-unwind-tables \
+       -fno-unwind-tables -fno-merge-constants -fno-ident -S probe.i -o gcc.s
+   sed -E '/^[[:space:]]*\.(abicalls|section \.mdebug|previous|nan|module|type|size|set[[:space:]]+(nomips16|nomicromips)|file|ident)/d' gcc.s > probe.s
+   ```
+
+3. Return `probe.s` to the donor. The private assembler driver needs the
+   donor's cpp and acpp available under `$TOOLROOT/usr/lib32/cmplrs/`.
+
+   ```sh
+   export TOOLROOT=/tmp/pt-sdk
+   crt=$TOOLROOT/usr/lib32/mips3
+   "$TOOLROOT/usr/lib32/cmplrs/as" -n32 -mips3 -KPIC -c probe.s -o probe.o
+   "$TOOLROOT/usr/lib/ld" -s -n32 -mips3 -call_shared -o create-join \
+       "$crt/crt1.o" probe.o -L/usr/lib32 -lpthread -lc "$crt/crtn.o"
+   ```
+
+The SGI-assembled executable has ELF flags `0x20000024` and requests
+`/usr/lib32/libc.so.1`. An exploratory GNU-assembled build carried
+`EF_MIPS_NOREORDER` (`0x20000025`). Both donors ran it, and both Xiri
+loaders rejected it before `main`. The [four-guest results](../../docs/results/2026-11-25-irix-pthread.md)
+use the SGI-assembled file on every guest.

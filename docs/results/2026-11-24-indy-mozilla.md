@@ -73,8 +73,9 @@ The mask combines `PR_SALL`, `PR_THREADS` and `PR_NOLIBC`. The existing
 installer compatibility code implements a restricted two-process sproc
 share group. A browser worker needs IRIX thread creation, a private PRDA
 for each concurrent thread, and the thread lifecycle expected by libpthread.
-A useful next regression is an original n32 program that creates a worker,
-exchanges a value with it and joins it on both original IRIX and Xiri.
+The [one-worker regression](2026-11-25-irix-pthread.md) now reproduces
+this retry on both Xiri releases. Both original IRIX controls completed the
+same worker's value exchange and join.
 
 The [admission regression](../../lab/irix-mips4/README.md) passed all 24
 cases. In the live R4400 guest, the 6.5.30f MIPS IV executable continued

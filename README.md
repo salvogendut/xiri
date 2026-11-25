@@ -345,6 +345,8 @@ covers every visible launcher on the two original-media Indy desktops.
 The [browser follow-up](docs/results/2026-11-24-indy-mozilla.md) gives the
 matching imports and traces the missing IRIX thread call that prevents both
 versions of Mozilla from opening a page.
+The [one-worker pthread test](docs/results/2026-11-25-irix-pthread.md)
+reproduces that wait on both Xiri release lines and completes on both original IRIX donors.
 General nested pipelines and layered-terminal revoke remain open; the
 qualified job-control subset and its explicit wait-policy differences are
 recorded in the [cycle report](docs/results/2026-11-05-irix-job-control.md).

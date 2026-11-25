@@ -72,6 +72,11 @@ in `08e53ba7`. [Octane build and qualification](results/2026-11-23-octane-deskto
 
 ## IRIS upstream updates
 
+The November 25 pthread cycle fetched upstream `main` at `057ba095`.
+IRIS `xiri` at `39ef6dff` contained all upstream commits. The
+[four-guest comparison](results/2026-11-25-irix-pthread.md) used the
+qualified emulator and NetBSD `xiri` at `1d7a8b42efb`.
+
 The November 24 xosview and Applications checks fetched IRIS upstream
 `057ba095`. IRIS `xiri` at `39ef6dff` already contained it. The
 [guest runs](results/2026-11-24-indy-xosview.md) used the pinned v5 Indy

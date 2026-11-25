@@ -1,0 +1,158 @@
+{
+  "fixture_source_sha256": "5b617e42cba1be880252470d880ca451d05f0283e1fc63c99e94fb08ba523b56",
+  "fixture_elf_sha256": "5c69c9fa26afe563440ff78f412951f30d3fc36dc600f5d91289c9b3fa9d554a",
+  "fixture_elf_cksum": "2775837958 18932",
+  "module_sha256": "f759f450b9a8fdab95b25f1e915764e3ae3d88b317a940b8347c80c8382f8b9b",
+  "netbsd_revision": "1d7a8b42efb",
+  "xiri_timeout_seconds": 10,
+  "releases": {
+    "6.5.22f": {
+      "original_machine": "indy_ip24 r4400",
+      "donor_chd_sha256": "b4fff76ffa0ca00c0a90da1c94a3eb41f5f6ba4cb13c0af258b4acca4ad95c41",
+      "donor_nvram_sha256": "276522469736c2363da6b6e279a847857f861cc253cc49fcd31d07c6dd247987",
+      "xiri_machine": "indy_ip24 r4400",
+      "xiri_chd_sha256": "a0b232a777a4206a2cc3c93c99bf3277458105cc5d5945d190f8a0ab6d54710f",
+      "xiri_nvram_sha256": "c864b965f082ac9b0adca243a20c7d2d321fe8c88722a2eb3980a999d486850d",
+      "xiri_libpthread_sha256": "854c95faff13c1b9b78cf7f14c473813d95c2c6152e10b3e27cce9377171099f",
+      "cases": {
+        "user_default": {
+          "irix_exit": 0,
+          "xiri_exit": 124,
+          "xiri_stdout": [
+            "scope default",
+            "before create"
+          ],
+          "xiri_traced_nsproc_calls": 4,
+          "xiri_trace_sample": [
+            "syscall=1204 pc=0xfa75038 a0=0xfa750a8 a1=0x20000ff a2=0x7fff7130 a3=0",
+            "syscall=1204 v0=0x59 a3=1",
+            "syscall=1082 pc=0xfa76d9c a0=0x64 a1=0xffffffff a2=0 a3=0x100041d0"
+          ]
+        },
+        "user_system": {
+          "irix_exit": 4,
+          "xiri_exit": 4,
+          "xiri_stdout": [
+            "scope system",
+            "attr_setscope 1"
+          ],
+          "xiri_traced_nsproc_calls": 0
+        },
+        "root_default": {
+          "irix_exit": 0,
+          "xiri_exit": 124,
+          "xiri_stdout": [
+            "scope default",
+            "before create"
+          ],
+          "xiri_traced_nsproc_calls": 4,
+          "xiri_trace_sample": [
+            "syscall=1204 pc=0xfa75038 a0=0xfa750a8 a1=0x20000ff a2=0x7fff7140 a3=0",
+            "syscall=1204 v0=0x59 a3=1",
+            "syscall=1082 pc=0xfa76d9c a0=0x64 a1=0xffffffff a2=0 a3=0x100041d0"
+          ],
+          "irix_par_sample": [
+            "4mS     create-join(1687:4294968997): nsproc(0xfa750a8, PR_SPROC|PR_SFDS|PR_SDIR|PR_SUMASK|PR_SULIMIT|PR_SID|PR_SADDR|PR_NOLIBC(0x20000ff), 0x7fff2210, 0, 0x2)",
+            "4mS     create-join(1687:4294969001): END-nsproc() = 0",
+            "4mS     create-join(1687:4294969001): prctl(PR_THREAD_CTL, PR_THREAD_BLOCK, 0x200000, 0xc058d18)",
+            "4mS     create-join(1687:4294968997): END-nsproc() = 1"
+          ]
+        },
+        "root_system": {
+          "irix_exit": 0,
+          "xiri_exit": 5,
+          "xiri_stdout": [
+            "scope system",
+            "before create",
+            "create 89"
+          ],
+          "xiri_traced_nsproc_calls": 1,
+          "xiri_trace_sample": [
+            "syscall=1204 pc=0xfa75038 a0=0xfa750a8 a1=0x20000ff a2=0x7fff7d80 a3=0x7fff7d98",
+            "syscall=1204 v0=0x59 a3=1"
+          ],
+          "irix_par_sample": [
+            "4mS     create-join(1689:4294969006): nsproc(0xfa750a8, PR_SPROC|PR_SFDS|PR_SDIR|PR_SUMASK|PR_SULIMIT|PR_SID|PR_SADDR|PR_NOLIBC(0x20000ff), 0x7fff2e60, 0x7fff2e78, 0x2)",
+            "4mS     create-join(1689:4294969010): END-nsproc() = 0",
+            "4mS     create-join(1689:4294969010): prctl(PR_THREAD_CTL, PR_THREAD_EXIT, 0x200000, 0x10006e70)",
+            "5mS     create-join(1689:4294969006): END-nsproc() = 1"
+          ]
+        }
+      }
+    },
+    "6.5.30f": {
+      "original_machine": "o2_ip32 r5000",
+      "donor_chd_sha256": "339f74457dfbb06813681ab5db2ccfdd29d394e8a02dfcdcd6c6ac7c22a836db",
+      "donor_nvram_sha256": "7be8898587b0c45a8de4bbe7fd392c30329f000d32eea5de4f32af94134493b2",
+      "xiri_machine": "indy_ip24 r5000",
+      "xiri_chd_sha256": "45255c741c7fbfce754f63dab478f501fad4070c71b9071f559dc43ec1395e76",
+      "xiri_nvram_sha256": "322ec195f7b5eb8474d6e84bc0de607eca2d146697bad3dd7a4898a879816e7f",
+      "xiri_libpthread_sha256": "94ff6eb2073a02febd8c884812ca734fcc433dd182044d409a3e4f6c106467f2",
+      "cases": {
+        "user_default": {
+          "irix_exit": 0,
+          "xiri_exit": 124,
+          "xiri_stdout": [
+            "scope default",
+            "before create"
+          ],
+          "xiri_traced_nsproc_calls": 4,
+          "xiri_trace_sample": [
+            "syscall=1204 pc=0xfa68718 a0=0xfa68790 a1=0x20000ff a2=0x7fff7120 a3=0",
+            "syscall=1204 v0=0x59 a3=1",
+            "syscall=1082 pc=0xfa6a484 a0=0x64 a1=0xffffffff a2=0 a3=0x100041d0"
+          ]
+        },
+        "user_system": {
+          "irix_exit": 4,
+          "xiri_exit": 4,
+          "xiri_stdout": [
+            "scope system",
+            "attr_setscope 1"
+          ],
+          "xiri_traced_nsproc_calls": 0
+        },
+        "root_default": {
+          "irix_exit": 0,
+          "xiri_exit": 124,
+          "xiri_stdout": [
+            "scope default",
+            "before create"
+          ],
+          "xiri_traced_nsproc_calls": 4,
+          "xiri_trace_sample": [
+            "syscall=1204 pc=0xfa68718 a0=0xfa68790 a1=0x20000ff a2=0x7fff7130 a3=0",
+            "syscall=1204 v0=0x59 a3=1",
+            "syscall=1082 pc=0xfa6a484 a0=0x64 a1=0xffffffff a2=0 a3=0x100041d0"
+          ],
+          "irix_par_sample": [
+            "12mS     create-join(1404:4294968743): nsproc(0xfa68790, PR_SPROC|PR_SFDS|PR_SDIR|PR_SUMASK|PR_SULIMIT|PR_SID|PR_SADDR|PR_NOLIBC(0x20000ff), 0x7fff2200, 0, 0x2)",
+            "12mS     create-join(1404:4294968747): END-nsproc() = 0",
+            "13mS     create-join(1404:4294968747): prctl(PR_THREAD_CTL, PR_THREAD_BLOCK, 0x200000, 0xc088d58)",
+            "13mS     create-join(1404:4294968743): END-nsproc() = 1"
+          ]
+        },
+        "root_system": {
+          "irix_exit": 0,
+          "xiri_exit": 5,
+          "xiri_stdout": [
+            "scope system",
+            "before create",
+            "create 89"
+          ],
+          "xiri_traced_nsproc_calls": 1,
+          "xiri_trace_sample": [
+            "syscall=1204 pc=0xfa68718 a0=0xfa68790 a1=0x20000ff a2=0x7fff7d80 a3=0x7fff7d98",
+            "syscall=1204 v0=0x59 a3=1"
+          ],
+          "irix_par_sample": [
+            "12mS     create-join(1412:4294968752): nsproc(0xfa68790, PR_SPROC|PR_SFDS|PR_SDIR|PR_SUMASK|PR_SULIMIT|PR_SID|PR_SADDR|PR_NOLIBC(0x20000ff), 0x7fff2e60, 0x7fff2e78, 0x2)",
+            "13mS     create-join(1412:4294968756): END-nsproc() = 0",
+            "13mS     create-join(1412:4294968756): prctl(PR_THREAD_CTL, PR_THREAD_EXIT|PR_THREAD_UNBLOCK_NOLATESLP(0x1), 0x1, 0x10006e70)",
+            "13mS     create-join(1412:4294968752): END-nsproc() = 1"
+          ]
+        }
+      }
+    }
+  }
+}
