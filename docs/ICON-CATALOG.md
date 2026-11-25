@@ -4,8 +4,8 @@ For the current original-media Indy desktops, see the [Applications tab
 test on both releases](results/2026-11-24-indy-applications.md). It covers
 all eight visible 6.5.22f entries and all four 6.5.30f entries.
 On the November 25 catalog images, both Mozilla versions paint a local homepage.
-On 6.5.22f, update the compatibility module to enable Navigator's menus and
-address bar. Both updated Indys loaded a typed local URL. [Module and screenshot](results/2026-11-25-mozilla-input.md).
+The Mozilla input test CHDs include the updated module on both releases.
+[Launch commands and browser checks](results/2026-11-25-mozilla-input.md#ready-to-boot-indy-images).
 The two 6.5.22f Messenger entries can use Mozilla through WebJumper.
 [Browser input checks](results/2026-11-25-indy-interaction.md) ·
 [Messenger handler and startup tests](results/2026-11-25-webjumper-homepage.md).

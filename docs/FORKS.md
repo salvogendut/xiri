@@ -72,6 +72,10 @@ in `08e53ba7`. [Octane build and qualification](results/2026-11-23-octane-deskto
 
 ## IRIS upstream updates
 
+The November 25 Mozilla CHD build rechecked upstream `main` at `c8e8f17b`.
+IRIS `xiri` at `6a6b1aca` already included that revision. Both images use
+the pinned Indy emulator from their catalog bundle. [Image qualification](results/2026-11-25-mozilla-input.md#ready-to-boot-indy-images).
+
 The November 25 Mozilla input cycle fetched upstream `main` at `c8e8f17b`.
 IRIS `xiri` at `6a6b1aca` already contained it. We ran the original IRIX
 6.5.22f Indy and both Xiri Indy releases. NetBSD `xiri` commit `18746c8d997`

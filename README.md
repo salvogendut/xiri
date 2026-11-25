@@ -343,9 +343,9 @@ meters run on both Indys with the updated compatibility module.
 The [Applications tab survey](docs/results/2026-11-24-indy-applications.md)
 covers every visible launcher on the two original-media Indy desktops.
 The [stock-profile startup retest](docs/results/2026-11-25-applications-recheck.md) lists each icon on the two Mozilla test images.
-The November 25 catalog disks need a module update for interactive Mozilla
-on 6.5.22f. The updated R4400 Indy opens the File menu and loads typed local
-URLs. The module also passed the 6.5.30f R5000 checks. [Mozilla fix, screenshot and installation](docs/results/2026-11-25-mozilla-input.md).
+The Mozilla test CHDs for the 6.5.22f R4400 and 6.5.30f R5000 include the
+event-worker fix. Launch either Indy and test the File menu and address bar
+from the Applications tab. [Ready-to-boot images and login](docs/results/2026-11-25-mozilla-input.md#ready-to-boot-indy-images).
 Freeware xosview needs a separate installation on these images.
 [Manual test results and xosview CD instructions](docs/results/2026-11-25-indy-interaction.md).
 Both Indy releases can create and join a worker using SGI's n32 libpthread

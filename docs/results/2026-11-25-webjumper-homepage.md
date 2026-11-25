@@ -4,6 +4,10 @@ On the two November 25 Mozilla Indy images, a new browser profile opened **Welco
 
 ## Try the prepared images
 
+For manual testing with the Mozilla input fix already installed, use the
+[newer Indy bundles](2026-11-25-mozilla-input.md#ready-to-boot-indy-images).
+The commands below reproduce the earlier WebJumper tests.
+
 From the Xiri checkout, launch the 6.5.22f Indy to try both Messenger shortcuts.
 
 ```sh

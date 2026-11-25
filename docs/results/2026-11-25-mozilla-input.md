@@ -59,6 +59,47 @@ connections, TLS and long browsing sessions remain untested.
 [6.5.22f menu and document](2026-11-25-mozilla-repaired-6.5.22f.png) ·
 [6.5.30f menu and document](2026-11-25-mozilla-repaired-6.5.30f.png).
 
+## Ready-to-boot Indy images
+
+Both CHDs include the qualified module and the release-matched Mozilla
+runtime. Run **one** of the following commands from the Xiri checkout.
+
+**IRIX 6.5.22f · Indy R4400 · Mozilla 1.0.1**
+
+```sh
+.work/images/xiri-indy-6.5.22f-mozilla-input-20261125/run-iris.sh
+```
+
+**IRIX 6.5.30f · Indy R5000 · Mozilla 1.7.12**
+
+```sh
+.work/images/xiri-indy-6.5.30f-mozilla-input-20261125/run-iris.sh
+```
+
+At xdm, enter `xiritest` as both username and password. In **Icon Catalog →
+Applications**, double-click **Mozilla**. Allow up to two minutes for the
+first launch. Press **Ctrl+L**, type `about:mozilla` and press **Return**.
+Open **File** on that page to check menu input. To return to the offline
+homepage, enter `file:///var/netscape/mozilla/xiri-welcome.html`.
+
+Each bundle has a standalone `netbsd-xiri.chd`, its own NVRAM, Freeware CD,
+pinned IRIS executable, launcher and `manifest.json`. IRIS creates a new
+writable overlay on first launch. The build used the matching November 25
+catalog base with a fresh overlay for the module installation. Personal
+changes in the older manual test overlays are available in the older bundles.
+
+| Vendor release | CHD size | Standalone CHD SHA-256 | Cold-boot screenshot |
+| --- | ---: | --- | --- |
+| 6.5.22f | 501,711,815 bytes | `3c3acfe9a738d3006abb224d22a12e86072ea2eff5d0bd8e9c03271157151a7c` | [File menu on The Book of Mozilla](2026-11-25-mozilla-image-6.5.22f.png) |
+| 6.5.30f | 481,596,705 bytes | `5a481c9d966ed33fc9a27f734ad38340ca47febf857f964afa5d7c2b2a76b497` | [File menu on The Book of Mozilla](2026-11-25-mozilla-image-6.5.30f.png) |
+
+Both disks passed `chdman verify`. We cold-booted each flattened CHD with
+an empty overlay and confirmed the installed module hash and its filesystem
+load in `modstat`. At 1280×1024, each xdm login reached 4Dwm. Each browser
+opened from the Applications icon, displayed its built-in Book of Mozilla,
+opened File and navigated back to the local welcome page. Both guests
+unmounted their filesystems and halted cleanly.
+
 ## Apply the update to a November 25 catalog Indy
 
 The local update ISO contains the tested module and the five test programs.
