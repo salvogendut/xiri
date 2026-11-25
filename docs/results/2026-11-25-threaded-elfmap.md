@@ -47,7 +47,8 @@ The local page did not appear on either line. The kernel still requires a
 single, unshared mapping for IRIX `break` (trap 1017). A small worker-live
 heap-growth test can isolate that rejection and verify resource limits and
 mapping preservation. The traces establish the ordering of the rejected
-calls and the later faults. Their causal relationship remains open.
+calls and the later faults. Their causal relationship was open at this point. The subsequent
+[threaded heap qualification](2026-11-25-threaded-break.md) repeats the same launches.
 
 For an Indy lab update, use the same v5 release-specific private copy, kernel
 and optional browser payload as in the worker qualification. Build the current

@@ -1,0 +1,274 @@
+{
+  "netbsd_revision": "aeb037b58654b42f9b1bd9f51a46586237471496",
+  "baseline_revision": "8ace81118ab2d603cd0f8284138f567d2dd4303f",
+  "iris_upstream": "057ba0952a6b6c992cd23e3233ac202891a5fc81",
+  "iris_integration": "39ef6dff7d86f4c7bb0ccd2c936b916e147c0fff",
+  "host_tests_passed": 96,
+  "module_imports_resolved": 211,
+  "sha256": {
+    "netbsd": "e989c42d3469f5d59e2ec759fdb3d7f54d7a893acdc326f6f3a3c4487f19fd22",
+    "netbsd.boot": "a4af41c6d0c83f11f0180fce5cb0424a7a5ea7c3aa898bda9bfaf9f3f7b6f5c9",
+    "baseline_module": "ff86a8a3debb7ce1c2d992b7c0fa0c807c9fa7564e4e4594df6dc32c4b3d13fb",
+    "module": "7145f1f33d3daee878fc2d525a4fbca3272ba10de47143a838fbcd0cb1583adf",
+    "heap": "45f546ab7e691fb6ff2c7bf8435609064ae015b4ab560f1de2164e010df88ba2",
+    "heaplimit": "ae1da0adc2d84228f4987375516ce1616ff396703e9cb49d7bfd5f22d3ff000a",
+    "heaplimit_initial": "ae1da0adc2d84228f4987375516ce1616ff396703e9cb49d7bfd5f22d3ff000a"
+  },
+  "releases": {
+    "6.5.22f": {
+      "source_hashes_rechecked": {
+        "chd_sha256": "a0b232a777a4206a2cc3c93c99bf3277458105cc5d5945d190f8a0ab6d54710f",
+        "nvram_sha256": "c864b965f082ac9b0adca243a20c7d2d321fe8c88722a2eb3980a999d486850d",
+        "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+        "browser_payload_sha256": "1a817f69d2f07f47baddf596574c78dced9beddffdd6a81e11282470063f9a8d"
+      },
+      "baseline_trace": [
+        "rc=4",
+        "syscall=1017 v0=0 a3=0",
+        "syscall=1017 v0=0 a3=0",
+        "syscall=1204 v0=0x1 a3=0",
+        "syscall=1017 v0=0x7a a3=1"
+      ],
+      "candidate_heap_trace": [
+        "shared heap growth, shrink, zero fill and preserved mappings passed",
+        "rc=0",
+        "syscall=1017 v0=0 a3=0",
+        "syscall=1017 v0=0 a3=0",
+        "syscall=1204 v0=0x1 a3=0",
+        "syscall=1017 v0=0 a3=0",
+        "syscall=1017 v0=0 a3=0",
+        "syscall=1017 v0=0xc a3=1",
+        "syscall=1017 v0=0 a3=0",
+        "syscall=1017 v0=0 a3=0",
+        "syscall=1017 v0=0x7a a3=1",
+        "syscall=1017 v0=0xc a3=1"
+      ],
+      "untraced_repetitions_passed": 5,
+      "ordinary_controls": [
+        "collision",
+        "4 MiB RLIMIT_DATA",
+        "vendor default pthread join"
+      ],
+      "address_space_mib_exit_status": {
+        "40": "1",
+        "64": "1",
+        "112": "1",
+        "120": "1",
+        "121": "1",
+        "122": "0",
+        "123": "0",
+        "124": "0",
+        "125": "0",
+        "126": "0",
+        "128": "6",
+        "132": "6"
+      },
+      "root_system_scope_join": true,
+      "verified_resource_limit_control": [
+        "shared heap growth, shrink, zero fill and preserved mappings passed",
+        "AS=124 rc=0",
+        "AS=128 rc=6",
+        "shared heap growth, shrink, zero fill and preserved mappings passed",
+        "DATA rc=0",
+        "SHA256 (heaplimit) = ae1da0adc2d84228f4987375516ce1616ff396703e9cb49d7bfd5f22d3ff000a"
+      ],
+      "clean_halts": 5,
+      "catalog_Mozilla": {
+        "trace_bytes": 87323686,
+        "trace_records": 723144,
+        "first_worker_observed": 1,
+        "threaded_break_success": 774,
+        "threaded_break_errors": 0,
+        "threaded_elfmap_success": 1,
+        "threaded_elfmap_errors": 0,
+        "selected_returns": {
+          "1204": {
+            "0": 2,
+            "122": 5027
+          },
+          "1223": {
+            "89": 112114
+          }
+        },
+        "process_seen": true,
+        "startup_200x200_seen": false,
+        "local_page_seen": false
+      },
+      "catalog_mozilla": {
+        "trace_bytes": 1101594,
+        "trace_records": 9371,
+        "first_worker_observed": 0,
+        "threaded_break_success": 0,
+        "threaded_break_errors": 0,
+        "threaded_elfmap_success": 0,
+        "threaded_elfmap_errors": 0,
+        "sampled_seconds": [
+          6,
+          13,
+          29,
+          83,
+          88,
+          96,
+          130
+        ],
+        "process_seen": true,
+        "startup_200x200_seen": false,
+        "local_page_seen": false
+      },
+      "direct_local_url": {
+        "trace_bytes": 10163323,
+        "trace_records": 84700,
+        "first_worker_observed": 1,
+        "threaded_break_success": 495,
+        "threaded_break_errors": 0,
+        "threaded_elfmap_success": 0,
+        "threaded_elfmap_errors": 0,
+        "sampled_seconds": [
+          17,
+          21,
+          28,
+          42,
+          68,
+          96,
+          180
+        ],
+        "process_seen": true,
+        "startup_200x200_seen": false,
+        "local_page_seen": false,
+        "wrapper_status": 124,
+        "guest_diagnostics": [
+          "PANIC stk_alloc()() couldn't mprotect stack guard - {0x10059128, 0x78598000}",
+          "PANIC libc_lock_unlock() USYNC_UNBLOCK failed - {0x10059128, 0x78598000}"
+        ],
+        "vendor_log_totals": "65595 4919948 direct.log"
+      }
+    },
+    "6.5.30f": {
+      "source_hashes_rechecked": {
+        "chd_sha256": "45255c741c7fbfce754f63dab478f501fad4070c71b9071f559dc43ec1395e76",
+        "nvram_sha256": "322ec195f7b5eb8474d6e84bc0de607eca2d146697bad3dd7a4898a879816e7f",
+        "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+        "browser_payload_sha256": "9221f292a68240ea863e6176dfa06b148ddea3973439d47b5ce464266a28593f"
+      },
+      "baseline_trace": [
+        "rc=4",
+        "syscall=1017 v0=0 a3=0",
+        "syscall=1017 v0=0 a3=0",
+        "syscall=1204 v0=0x1 a3=0",
+        "syscall=1017 v0=0x7a a3=1"
+      ],
+      "candidate_heap_trace": [
+        "shared heap growth, shrink, zero fill and preserved mappings passed",
+        "rc=0",
+        "syscall=1017 v0=0 a3=0",
+        "syscall=1017 v0=0 a3=0",
+        "syscall=1204 v0=0x1 a3=0",
+        "syscall=1017 v0=0 a3=0",
+        "syscall=1017 v0=0 a3=0",
+        "syscall=1017 v0=0xc a3=1",
+        "syscall=1017 v0=0 a3=0",
+        "syscall=1017 v0=0 a3=0",
+        "syscall=1017 v0=0x7a a3=1",
+        "syscall=1017 v0=0xc a3=1"
+      ],
+      "untraced_repetitions_passed": 5,
+      "ordinary_controls": [
+        "collision",
+        "4 MiB RLIMIT_DATA",
+        "vendor default pthread join"
+      ],
+      "address_space_mib_exit_status": {
+        "40": "1",
+        "64": "1",
+        "112": "1",
+        "120": "1",
+        "121": "1",
+        "122": "0",
+        "123": "0",
+        "124": "0",
+        "125": "0",
+        "126": "0",
+        "128": "6",
+        "132": "6"
+      },
+      "root_system_scope_join": true,
+      "verified_resource_limit_control": [
+        "shared heap growth, shrink, zero fill and preserved mappings passed",
+        "AS=124 rc=0",
+        "AS=128 rc=6",
+        "shared heap growth, shrink, zero fill and preserved mappings passed",
+        "DATA rc=0",
+        "SHA256 (heaplimit) = ae1da0adc2d84228f4987375516ce1616ff396703e9cb49d7bfd5f22d3ff000a"
+      ],
+      "clean_halts": 5,
+      "catalog_Mozilla": {
+        "trace_bytes": 75661933,
+        "trace_records": 636845,
+        "first_worker_observed": 1,
+        "threaded_break_success": 12640,
+        "threaded_break_errors": 0,
+        "threaded_elfmap_success": 23,
+        "threaded_elfmap_errors": 0,
+        "selected_returns": {
+          "1204": {
+            "0": 2,
+            "122": 100125
+          },
+          "1223": {
+            "89": 82
+          }
+        },
+        "process_seen": true,
+        "startup_200x200_seen": true,
+        "local_page_seen": false
+      },
+      "catalog_mozilla": {
+        "trace_bytes": 4675358,
+        "trace_records": 39399,
+        "first_worker_observed": 1,
+        "threaded_break_success": 191,
+        "threaded_break_errors": 0,
+        "threaded_elfmap_success": 22,
+        "threaded_elfmap_errors": 0,
+        "sampled_seconds": [
+          6,
+          14,
+          24,
+          122,
+          126,
+          131,
+          135
+        ],
+        "process_seen": true,
+        "startup_200x200_seen": true,
+        "local_page_seen": false
+      },
+      "direct_local_url": {
+        "trace_bytes": 12397862,
+        "trace_records": 104643,
+        "first_worker_observed": 1,
+        "threaded_break_success": 2014,
+        "threaded_break_errors": 0,
+        "threaded_elfmap_success": 22,
+        "threaded_elfmap_errors": 0,
+        "sampled_seconds": [
+          7,
+          14,
+          27,
+          44,
+          73
+        ],
+        "process_seen": true,
+        "startup_200x200_seen": true,
+        "local_page_seen": false,
+        "wrapper_status": 137,
+        "guest_diagnostics": [
+          "[   338.182031] UVM: pid 3554.764 (mozilla-bin), uid 1234 killed: out of swap",
+          "PANIC stk_alloc()() couldn't mprotect stack guard - {0x1004aa20, 0x78598000}",
+          "PANIC libc_lock_lock_sp() USYNC_INTR_BLOCK failed - {0x1004aa20, 0x78598000}"
+        ],
+        "vendor_log_totals": "44    3182 direct.log"
+      }
+    }
+  }
+}

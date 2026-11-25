@@ -105,6 +105,10 @@ The November 25 threaded ELF mapping cycle fetched IRIS upstream at
 The module and both browser launches were exercised using the pinned v5
 emulator on each Indy. [Two-release qualification](results/2026-11-25-threaded-elfmap.md).
 
+The threaded heap cycle fetched the same upstream revision, confirmed
+zero upstream-only commits and reused the two pinned Indy emulators.
+[Heap and Mozilla qualification](results/2026-11-25-threaded-break.md).
+
 The November 24 disk-space recovery cycle merged upstream `057ba095` into
 IRIS `xiri` at `39ef6dff`. Upstream adds JIT code arena rotation and page
 slot recycling. The merge preserves the fork's optimization switch and its

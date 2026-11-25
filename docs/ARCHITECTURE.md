@@ -288,9 +288,11 @@ references protecting peers during exec. It uses existing fork/UVM interfaces
 and adds no core hook. The separate n32 pthread implementation creates a
 NetBSD LWP per IRIX kernel worker. A uniprocessor scheduler callback restores
 the incoming worker's 4 KiB PRDA at its fixed user address. [Worker qualification](results/2026-11-25-nsproc.md).
-Workers in one process serialize ELF loads and mmap insertions while the
-module selects addresses, installs segments or rolls back a failed load.
-[Threaded ELF mapping](results/2026-11-25-threaded-elfmap.md).
+Workers in one process use the same lock for ELF loads, ordinary mmap and
+heap resizing. An occupied page stops heap growth. A worker can release
+pages down to the break captured at first worker creation, preserving
+earlier fixed mappings. [Threaded ELF mapping](results/2026-11-25-threaded-elfmap.md) ·
+[Heap qualification](results/2026-11-25-threaded-break.md).
 General sproc sharing and foreign signal handlers remain separate. These adapters are now also built into the
 [loadable personality](results/2026-11-03-irix-module.md), following the
 compat_linux module model. The [F_DUPFD adapter](results/2026-11-01-irix-dupfd.md)
