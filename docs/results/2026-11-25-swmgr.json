@@ -1,0 +1,128 @@
+{
+  "iris_upstream": "c8e8f17b6297d0d7793bc2ad638a415faa61be1a",
+  "iris_integration": "6a6b1aca",
+  "netbsd_revision": "5f6d833d936",
+  "host_tests": 99,
+  "full_cd4_sha256": "a652a89c416487bf40f3029ef6cc50c1b93953370e9a9b8364a53efb9d426d8d",
+  "helper_sha256": "49e892864d50bfa23bdd68ebca8b1993d29aa197dea49fc4fe6118b44282a6ae",
+  "releases": {
+    "6.5.22f": {
+      "cpu": "r4400",
+      "chd_sha256": "9579b90a523755966f799d2847b639f40903f34f9e2842b82f5a7f5846b5e95d",
+      "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+      "supplement_sha256": "b7cb0262fd2b6d2b2c777e2b04b9d8a53e97c9ec85ab721e8074903dfbc65edb",
+      "helper_iso_sha256": "229db616e738d0e64861b985a0487f607440839cbd7821e6d8915813294456d0",
+      "installed_table_sha256": "6381dd289e77a64f87846226bbff3989e97c89946d06e09d6c75f6f7ccf4175d",
+      "restored_table_sha256": "c4d7d3a172fb372b1c307b95b2e30d2eb62045c40d517b9f866eac7de29c22db",
+      "game_sha256": "35253008a6d31ad6c4589c622146bcd0ae781488bc5d7872a4114b888e1edb59",
+      "cancelled_remove": "WARNING: Unrecognized cpu hardware type.  See the \"hardware\" help topic for details.\nWARNING: Unrecognized cpu architecture type.  See the \"hardware\" help topic for details.\nSoftware Manager closed with xmahjongg still installed.",
+      "frontend": "swmgr",
+      "installed": [
+        "fw_common",
+        "fw_common.sw",
+        "fw_common.sw.index",
+        "fw_xmahjongg",
+        "fw_xmahjongg.sw",
+        "fw_xmahjongg.sw.xmahjongg"
+      ],
+      "removed": [
+        "fw_common",
+        "fw_common.sw",
+        "fw_common.sw.index"
+      ],
+      "game": {
+        "window": "0x1800004 \"xmahjongg\": (\"xmahjongg\" \"XMahjongg\")  1006x614+0+0  +32+32",
+        "process": "1234  544 /usr/lib/desktop/iconcatalog/pages/C/Freeware/xmahjongg"
+      },
+      "user_files": [
+        "SHA256 (/usr/people/xiritest/.mozilla/default/apb64d8v.slt/prefs.js) = f230d0a137cfe82a8df1f3018054875678930d7ff358d85fb11ad733dd8f8a2f",
+        "SHA256 (/usr/people/xiritest/.mozilla/default/apb64d8v.slt/bookmarks.html) = d403220a749fcf766dde5034de88f1f5beeccce9e0e06358d196a1d59cebeb95",
+        "SHA256 (/usr/people/xiritest/freeware-home.html) = 05da4573f697d0c3aec8466bcec533c461e3a0a3b431af7d1f72c30f9e4f911f",
+        "SHA256 (/usr/people/xiritest/.xsession) = 983ecc9eaa9763d5198b99c9a55b86a1a9dd785e851370144dcd8d9ec98233f3"
+      ],
+      "system_files": [
+        "SHA256 (/netbsd) = e989c42d3469f5d59e2ec759fdb3d7f54d7a893acdc326f6f3a3c4487f19fd22",
+        "SHA256 (/netbsd.boot) = a4af41c6d0c83f11f0180fce5cb0424a7a5ea7c3aa898bda9bfaf9f3f7b6f5c9",
+        "SHA256 (/stand/sgimips/11.99.11/modules/compat_irix_o32/compat_irix_o32.kmod) = 8be760a6e36bb163c83d5038654841b86572bc49645ebdcfbd997f9377dcb7fc",
+        "SHA256 (/etc/rc.d/xiri_hosts) = 82c77d51e49db104f9eb9ab1ff5d862ba14006257949d970caa50ea19aab148e",
+        "SHA256 (/etc/master.passwd) = 3c2647af476b75eaa76bdebb52b221cd888b8e145c0d0152504fd7cec76bdab9",
+        "SHA256 (/var/db/xiri-install/installed) = dca89775099580bff6e90fbede8878da43e4f784c28e2b96085b61b4a8be3f0e",
+        "SHA256 (/var/db/xiri-install/mozilla/identity) = af6a85a34ec2e4326e9e597153790c129cbebb4a219f775b2e31b9f091b59ac6"
+      ],
+      "browser": "0x180002c \"My Freeware Desktop - Mozilla {Build ID: 0000000000}\": (\"<unknown>\" \"<unknown>\")  610x450+0+0  +32+32",
+      "interactive_halt": true,
+      "qualification_halt": true,
+      "browser_verified_after_additional_boot": true,
+      "screenshots": {
+        "2026-11-25-swmgr-6.5.22f-installed.png": "78625794f6982a6acd145b22746bdd75a3e32e61ad8e388295c85ee107315ffd",
+        "2026-11-25-swmgr-6.5.22f-game.png": "3137aad3602f9fc844ba0a55f48628fc279dfc2651820cbcafd5c94111b5e005",
+        "2026-11-25-swmgr-6.5.22f-removed.png": "edcebd506f806299754f08909d1c64673c356a3efcbb767ef1b454eaae6b4990",
+        "2026-11-25-swmgr-6.5.22f-browser.png": "b69e3e1b62e8a5dd650ecc11279b526600d75cc17afb9f1aa9f5fefe19cbd521"
+      }
+    },
+    "6.5.30f": {
+      "cpu": "r5000",
+      "chd_sha256": "1d3dd1de7d690dd4cdc563176e2093094592191144782f206f178470d38d3e12",
+      "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+      "supplement_sha256": "80f4bfbe30d968d991bbabfe3c0eb8e17584deb067f7deccd71a374b9d888413",
+      "helper_iso_sha256": "c2427f27e3e7b951f25c412664770ce835eb23c3abe2d510479f4d3b7c8767ae",
+      "installed_table_sha256": "310c6bb2e460421ca459124d83943d9a6f2388e93cc971fcd434e9c632e9ab98",
+      "restored_table_sha256": "0985392f9d5f3efe64ed6fa8e2c729f2cb26f5a6e7df51f6cd2c9d834fe76897",
+      "game_sha256": "35253008a6d31ad6c4589c622146bcd0ae781488bc5d7872a4114b888e1edb59",
+      "cancelled_remove": "WARNING: Unrecognized cpu hardware type.  See the \"hardware\" help topic for details.\nWARNING: Unrecognized cpu architecture type.  See the \"hardware\" help topic for details.\nSoftware Manager closed with xmahjongg still installed.",
+      "frontend": "swmgr",
+      "installed": [
+        "fw_common",
+        "fw_common.sw",
+        "fw_common.sw.index",
+        "fw_xmahjongg",
+        "fw_xmahjongg.sw",
+        "fw_xmahjongg.sw.xmahjongg"
+      ],
+      "removed": [
+        "fw_common",
+        "fw_common.sw",
+        "fw_common.sw.index"
+      ],
+      "game": {
+        "window": "0x1800004 \"xmahjongg\": (\"xmahjongg\" \"XMahjongg\")  1006x614+0+0  +32+32",
+        "process": "1234  790 /usr/lib/desktop/iconcatalog/pages/C/Freeware/xmahjongg"
+      },
+      "browser": "0x1800021 \"My Freeware Desktop - Mozilla\": (\"Mozilla\" \"navigator:browser\")  610x450+0+0  +32+32",
+      "user_files": [
+        "SHA256 (/usr/people/xiritest/.mozilla/default/83dnm94n.slt/prefs.js) = 0c78c3617d7246a3ccdda5294e81442d3e928969a8c02f8a0a16cf0a785ea9e0",
+        "SHA256 (/usr/people/xiritest/.mozilla/default/83dnm94n.slt/bookmarks.html) = 631b49b23256ceb4b56712a8e67e7e514aedd7ac39069867741a947036b8a279",
+        "SHA256 (/usr/people/xiritest/freeware-home.html) = 05da4573f697d0c3aec8466bcec533c461e3a0a3b431af7d1f72c30f9e4f911f",
+        "SHA256 (/usr/people/xiritest/.xsession) = 983ecc9eaa9763d5198b99c9a55b86a1a9dd785e851370144dcd8d9ec98233f3"
+      ],
+      "system_files": [
+        "SHA256 (/netbsd) = e989c42d3469f5d59e2ec759fdb3d7f54d7a893acdc326f6f3a3c4487f19fd22",
+        "SHA256 (/netbsd.boot) = a4af41c6d0c83f11f0180fce5cb0424a7a5ea7c3aa898bda9bfaf9f3f7b6f5c9",
+        "SHA256 (/stand/sgimips/11.99.11/modules/compat_irix_o32/compat_irix_o32.kmod) = 8be760a6e36bb163c83d5038654841b86572bc49645ebdcfbd997f9377dcb7fc",
+        "SHA256 (/etc/rc.d/xiri_hosts) = 82c77d51e49db104f9eb9ab1ff5d862ba14006257949d970caa50ea19aab148e",
+        "SHA256 (/etc/master.passwd) = 4b950c4c7083b12ff25f51be26ff871b48f5eaccf539bd094415793b5195b4ab",
+        "SHA256 (/var/db/xiri-install/installed) = 11104e6ef3b53f7ff2bbdd85470ba1518c583c2174ebf2dc7c3885fbee1b5af3",
+        "SHA256 (/var/db/xiri-install/mozilla/identity) = 36cf3f1f6d5078a1ff9936d1d39f44dfcd7888ac3468fcdf1c297701192955a3"
+      ],
+      "interactive_halt": true,
+      "qualification_halt": true,
+      "browser_verified_after_additional_boot": false,
+      "screenshots": {
+        "2026-11-25-swmgr-6.5.30f-installed.png": "5892612012d59ab8103a9c1ed8030e2a36a62938edeb8e299b9b6d23727e3374",
+        "2026-11-25-swmgr-6.5.30f-game.png": "358b47a415366962e76752ace553514026040fc1efd97c2cb78b9fb28f4d2675",
+        "2026-11-25-swmgr-6.5.30f-removed.png": "1dce42fb40d5471b4dfb868aeb97ff44b3001ae73eb33a0345d47bdcbba8ca36",
+        "2026-11-25-swmgr-6.5.30f-browser.png": "716f271581dfd61af516f92a827432a2e3185042ccde1434625400b0e225ea34"
+      }
+    }
+  },
+  "host_display_check": {
+    "launcher_commit": "b551984",
+    "concurrent_prom_displays": [
+      ":3",
+      ":2"
+    ],
+    "captured_after_peer_exit": true
+  },
+  "manual_helper_iso_sha256": "951ee92616a94a67257a0a0b3ba32a6547a3b05ce2fe0c43e27e4451ebc10324",
+  "exploratory_helper_sha256": "e5f5ff8f083819a3c8630330120d20fc61f60723dfc8a0e46bac37e842ba6f19"
+}

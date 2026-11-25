@@ -18,7 +18,11 @@ history and Freeware link. Its artwork hook runs SGI make and fftr, and the
 NetBSD parent preserves the desktop's existing type database across install
 and removal. The clean Mozilla images already have the installer-capable
 kernel. Attach the matching prerequisite disc and a complete CD 4 to
-install into an existing desktop. [Guest commands](../lab/irix-installer/README.md#use-the-complete-freeware-cd-4-with-a-clean-mozilla-indy)
+install into an existing desktop. SGI Software Manager 4.1 can perform
+the same installation and removal from a logged-in Xiri desktop.
+[Graphical instructions](../lab/irix-installer/README.md#install-with-graphical-software-manager)
+· [Graphical results](results/2026-11-25-swmgr.md)
+· [Terminal commands](../lab/irix-installer/README.md#use-the-complete-freeware-cd-4-with-a-clean-mozilla-indy)
 · [Clean Mozilla test results](results/2026-11-25-clean-freeware.md)
 · [Earlier v5 artwork qualification](results/2026-11-24-live-inst.md).
 
@@ -108,7 +112,7 @@ The earlier
 [dual-release installer results](results/2026-11-24-indy-inst.md) and
 [reproduction procedure](../lab/irix-installer/README.md#repeat-the-clean-indy-installer-check)
 describe the alternate-root experiments. The live CD 4 workflow is documented
-at the top of this page. Software Manager and upgrades remain later work.
+at the top of this page. Product upgrades remain open.
 
 The [shared-mapping checkpoint](results/2026-11-01-irix-mmap-shared.md) clears
 the initial installer crash. The [bounded sproc adapter](results/2026-11-01-irix-sproc.md)
@@ -185,9 +189,9 @@ need their own dependency and hook checks.
 
 Original `inst`, `swmgr`, `SoftwareManager` and `iconcatalogedit` have been
 inventoried with a complete static n32 library closure. GUI resources, delayed
-loads, helper execution and installation behavior are separate checks. Start
-with `inst` distribution reading, then qualify Software Manager's graphical
-workflow. See the [installer lab](../lab/irix-installer/README.md).
+loads and helper execution depend on the selected package. The
+[installer lab](../lab/irix-installer/README.md) covers the qualified game
+workflow using either installer.
 
 ## Selecting the IRIX desktop for a user
 

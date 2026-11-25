@@ -49,6 +49,51 @@ Log in as `xiritest`, select **Freeware** in Icon Catalog and double-click
 console and run `sh /cdrom/xmahjongg.sh remove /mnt/freeware`. On the
 next login the Freeware page should retain **FreewareRelnotes**.
 
+### Install with graphical Software Manager
+
+Use the same clean Mozilla Indy, release-matched prerequisites and Freeware
+disc. A newly built prerequisite CD includes the graphical helper.
+With a November 24 supplement, add
+`--cdrom6 "$PWD/.work/irix-freeware/swmgr-tools.iso"` to the IRIS command
+above. The helper ISO is ready on the test workstation. To recreate it
+from the checkout, run the following command.
+
+```sh
+genisoimage -quiet -R -V XIRI_SWMGR -o .work/irix-freeware/swmgr-tools.iso \
+  lab/irix-installer/xmahjongg.sh lab/irix-installer/package-filetypes.mk
+```
+
+On a fresh desktop, mount the two installation discs and run
+`sh /cdrom/prepare-live-base.sh /cdrom` once on the NetBSD root console.
+Log in to xdm as `xiritest`. Back on the root console, create the third
+drive’s device nodes on first use and mount the helper CD read-only.
+
+```sh
+test -b /dev/cd2a || (cd /dev && sh MAKEDEV cd2)
+mkdir -p /mnt/gui
+mount -rt cd9660 /dev/cd2a /mnt/gui
+export DISPLAY=127.0.0.1:0 XAUTHORITY=/usr/people/xiritest/.Xauthority
+sh /mnt/gui/xmahjongg.sh --gui install /mnt/freeware
+```
+
+When using a newly built prerequisite CD, run the helper from `/cdrom`.
+Use the authority file for the logged-in desktop if xdm uses a different
+location. The helper opens SGI Software Manager on that display and waits
+while you operate it.
+
+Choose **Customize Installation**. The inventory contains **Freeware Shared
+Utilities** and **xmahjongg-3.6.1**. Keep the preselected shared index
+and game subsystem, then click **Start**. When SGI reports success, choose
+**Exit, installations completed**, then **OK**. Wait for the root console to
+print the desktop table checksum before rebooting or logging in again.
+
+To remove the game, close it, mount the same discs and run
+`sh /mnt/gui/xmahjongg.sh --gui remove /mnt/freeware` from the root
+console with the desktop display and authority set as above. Finish the
+transaction in Software Manager and log in again to refresh the catalog.
+Closing the installer before pressing **Start** leaves the game installed.
+[Screenshots and results for both releases](../../docs/results/2026-11-25-swmgr.md).
+
 ## Build the xosview supplement
 
 From the checkout, set `dist` to the `dist` directory on an owned May 2004

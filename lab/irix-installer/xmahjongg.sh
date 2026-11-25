@@ -1,7 +1,9 @@
 #!/bin/sh
 # Install or remove CD 4's game on an installer-qualified Xiri desktop.
 set -eu
-usage() { echo "Usage: sh $0 install|remove /absolute/cd-mount" >&2; exit 2; }
+usage() { echo "Usage: sh $0 [--gui] install|remove /absolute/cd-mount" >&2; exit 2; }
+frontend=inst
+if test "${1-}" = --gui; then frontend=swmgr; shift; fi
 test "$#" = 2 || usage
 case "$1" in install|remove) action=$1 ;; *) usage ;; esac
 case "$2" in /*) media=$2 ;; *) usage ;; esac
@@ -18,6 +20,9 @@ fail() { echo "$*" >&2; exit 1; }
 test "$(id -u)" = 0 || fail 'Run as root.'
 test -f "$media/dist/fw_xmahjongg.sw" || fail 'Mount the May 2004 Freeware CD 4 distribution.'
 test -x "$root/usr/sbin/inst" && test -x "$root/usr/sbin/fftr" && test -s "$table" || fail 'Prepare the SGI installer and desktop first.'
+if test "$frontend" = swmgr; then
+    test -n "${DISPLAY-}" && test -x "$root/usr/sbin/swmgr" || fail 'Software Manager needs the desktop display and the original swmgr program.'
+fi
 mkdir -p "$state"
 chmod 700 "$state"
 mkdir "$state/lock" || fail "Check for an active installer at $state/lock."
@@ -49,6 +54,7 @@ if test "$action" = install; then
     ln "$state/lock/makefile" "$types/makefile" || fail "Cannot stage package rules alongside $types/Makefile."
 fi
 current=$(sha256 -q "$table")
+new_baseline=no
 if test -f "$state/baseline.otr"; then
     previous=$(cat "$state/published.sha256")
     base=$(sha256 -q "$state/baseline.otr")
@@ -62,24 +68,55 @@ else
     cp -p "$table" "$state/base.tmp"
     echo "$current" >"$state/published.sha256"
     mv "$state/base.tmp" "$state/baseline.otr"
+    new_baseline=yes
 fi
 case "$action" in
-    install) selections='install fw_common.sw.index fw_xmahjongg.sw.xmahjongg' ;;
-    remove) selections='remove fw_xmahjongg.sw.xmahjongg' ;;
+    install) set -- -I fw_common.sw.index -I fw_xmahjongg.sw.xmahjongg
+             selections='install fw_common.sw.index fw_xmahjongg.sw.xmahjongg' ;;
+    remove) set -- -R fw_xmahjongg.sw.xmahjongg
+            selections='remove fw_xmahjongg.sw.xmahjongg' ;;
 esac
-printf '%s\n' 'keep *' "$selections" conflicts go 'keep *' quit >"$state/commands"
-"$root/usr/sbin/inst" -M -r "$root" \
-    -f "$media/dist" -c "$state/commands" </dev/null >"$state/$action.log" 2>&1
+if test "$frontend" = swmgr; then
+    # Keep the package rules in place until the user exits Software Manager.
+    gui_status=0
+    "$root/usr/sbin/swmgr" -V background:off -r "$root" \
+        -f "$media/dist/fw_common" -f "$media/dist/fw_xmahjongg" \
+        -K '*' "$@" </dev/null >"$state/$action.log" 2>&1 || gui_status=$?
+else
+    printf '%s\n' 'keep *' "$selections" conflicts go 'keep *' quit >"$state/commands"
+    "$root/usr/sbin/inst" -M -r "$root" \
+        -f "$media/dist" -c "$state/commands" </dev/null >"$state/$action.log" 2>&1
+    grep -q 'No conflicts' "$state/$action.log" || fail "SGI reported a package conflict. See $state/$action.log."
+fi
 cat "$state/$action.log"
 "$root/usr/sbin/versions" -r "$root" fw_xmahjongg >"$state/history"
 # inst and its original Makefile can report success after an exit command failed.
-grep -q 'No conflicts' "$state/$action.log" || fail 'SGI reported a package conflict.'
 if grep -q '^ERROR:' "$state/$action.log"; then fail "SGI exit command failed. See $state/$action.log."; fi
+game_in_history() {
+    awk '$1=="I" && $2=="fw_xmahjongg.sw.xmahjongg" {found=1} END {exit !found}' "$state/history"
+}
+if test "$frontend" = swmgr; then
+    test "$(sha256 -q "$table")" = "$current" || fail 'The desktop table changed during package maintenance.'
+    if test "$action" = install && ! game_in_history && test ! -e "$game" &&
+        test ! -L "$link" && test ! -e "$rules/xmahjongg.ftr"; then
+        if test "$new_baseline" = yes; then rm "$state/baseline.otr" "$state/published.sha256"; fi
+        fail 'Software Manager closed without installing xmahjongg.'
+    fi
+    if test "$action" = remove && game_in_history; then
+        fail 'Software Manager closed with xmahjongg still installed.'
+    fi
+    test "$gui_status" = 0 || fail "Software Manager exited with status $gui_status. See $state/$action.log."
+    if test "$action" = install; then
+        "$root/usr/sbin/versions" -r "$root" fw_common >"$state/common-history"
+        awk '$1=="I" && $2=="fw_common.sw.index" {found=1} END {exit !found}' "$state/common-history" &&
+            test -L "${link%/*}/FreewareRelnotes" || fail 'Software Manager did not register the shared Freeware index.'
+    fi
+fi
 stage=$(mktemp -d "$types/.xiri-package.XXXXXX")
 tmp=$stage/desktop.otr
 case "$action" in
     install)
-        awk '$1=="I" && $2=="fw_xmahjongg.sw.xmahjongg" {found=1} END {exit !found}' "$state/history" &&
+        game_in_history &&
             test -x "$game" && test "$(readlink "$link")" = "$game" &&
             test -s "$rules/xmahjongg.ftr" || fail 'SGI installation or catalog registration failed.'
         test "$(sha256 -q "$state/lock/game.otr")" = 06cc29d04e6f59b675100a1956084858ec3a897493aa7ed3981a25f29232b86a ||
@@ -87,7 +124,7 @@ case "$action" in
         "$root/usr/sbin/fftr" -o "$tmp" "$state/lock/game.otr" "$state/baseline.otr"
         ;;
     remove)
-        if awk '$1=="I" && $2=="fw_xmahjongg.sw.xmahjongg" {found=1} END {exit !found}' "$state/history" ||
+        if game_in_history ||
             test -e "$game" || test -L "$link" || test -e "$rules/xmahjongg.ftr"; then
             fail 'SGI removal is incomplete.'
         fi

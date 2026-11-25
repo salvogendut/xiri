@@ -209,7 +209,10 @@ the guest's NetBSD resolver and the `xiri_hosts` rc.d service.
 
 The same clean installation can run SGI's original installer against
 Freeware CD 4. Use the installer supplement for the guest's release and
-attach your Freeware disc as the second CD. [Install xmahjongg and launch it from Icon Catalog](../lab/irix-installer/README.md#use-the-complete-freeware-cd-4-with-a-clean-mozilla-indy).
+attach your Freeware disc as the second CD. You can install xmahjongg from
+the root console or use the graphical installer in the active Xiri desktop.
+[Terminal installation](../lab/irix-installer/README.md#use-the-complete-freeware-cd-4-with-a-clean-mozilla-indy)
+· [Graphical Software Manager](../lab/irix-installer/README.md#install-with-graphical-software-manager).
 
 To return to the previous v5 desktop, quit Mozilla, mount the same CD again
 and run:

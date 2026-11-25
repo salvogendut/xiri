@@ -56,6 +56,5 @@ that the game executable and catalog link were still absent.
 · [R4400 dry run](2026-11-25-clean-freeware-6.5.22f-dry-run.png)
 · [R5000 dry run](2026-11-25-clean-freeware-6.5.30f-dry-run.png).
 
-A live graphical transaction still needs to stage the package's artwork
-rules, publish the merged desktop table and restore it on removal. The
-terminal helper handles those steps around SGI's own install hooks.
+The [live graphical follow-up](2026-11-25-swmgr.md) installed the same game
+on both releases, launched it after reboot and restored the artwork on removal.

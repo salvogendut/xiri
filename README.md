@@ -304,10 +304,12 @@ They start from stock NetBSD 11.0 userland, boot the 11.99.11 modular kernel,
 and run accelerated 4Dwm or native ctwm according to the user's xdm session.
 The [everyday desktop checks](docs/results/2026-11-24-indy-v4-use.md) cover Catalog launches,
 File Manager moves and per-user session restoration after a cold boot.
-On either clean Mozilla Indy, SGI's original `inst` can install xmahjongg
-from the complete May 2004 CD 4. The game appears in Icon Catalog's
-**Freeware** tab after reboot. [Install or remove the game](lab/irix-installer/README.md#use-the-complete-freeware-cd-4-with-a-clean-mozilla-indy)
-· [Screenshots and qualification](docs/results/2026-11-25-clean-freeware.md).
+On either clean Mozilla Indy, install or remove xmahjongg from May 2004
+Freeware CD 4 using SGI Software Manager or the terminal installer. After
+reboot, double-click the game in Icon Catalog’s **Freeware** tab.
+[Graphical instructions](lab/irix-installer/README.md#install-with-graphical-software-manager)
+· [Terminal instructions](lab/irix-installer/README.md#use-the-complete-freeware-cd-4-with-a-clean-mozilla-indy)
+· [Screenshots from both Indys](docs/results/2026-11-25-swmgr.md).
 Both vendor timezone compilers can now create hard-linked aliases with the
 updated module. The same two Indys were used to trace SGI Clock and
 Freeware xosview. [Hard-link and application results](docs/results/2026-11-24-indy-link-clock-xosview.md)

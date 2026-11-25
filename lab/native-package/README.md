@@ -104,6 +104,8 @@ component, boots the v5 kernel, adds Mozilla again and boots the browser
 kernel. It checks profile and site-file hashes across the changes and saves
 both browser screenshots. The guest needs outbound DNS and HTTP.
 
+### Original SGI installers and Freeware CD 4
+
 To exercise the original SGI installer against the complete Freeware CD 4,
 use the clean Mozilla bundle, its unstripped browser kernel and the
 [two installation discs](../irix-installer/README.md#use-the-complete-freeware-cd-4-with-a-clean-mozilla-indy).
@@ -120,6 +122,14 @@ profile, installs xmahjongg and reboots. It double-clicks the game in the
 Freeware tab, removes it through SGI's installer and reopens the saved
 homepage from Applications. The output includes both catalog states,
 the browser, SGI package history and profile checksums.
+
+Add `--software-manager` to run the same checks using SGI's graphical
+installer. The runner builds and attaches a small third CD with the current
+helper, opens Software Manager on the logged-in user's display, clicks
+**Start** and exits through SGI’s completion dialog. It saves the selection
+and completion screenshots for both transactions.
+
+### In-place display upgrade
 
 Use the v4 bundle and the matching v5 ISO to test a live upgrade on a
 private overlay. The runner checks refusal at the active greeter, stops xdm,

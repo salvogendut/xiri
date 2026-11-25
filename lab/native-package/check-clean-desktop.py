@@ -269,6 +269,7 @@ def main():
     parser.add_argument('--sgi-clock', action='store_true', help='verify original SGI Clock redraws in the Xiri session')
     parser.add_argument('--mozilla', action='store_true', help='select Mozilla on a fresh installation')
     parser.add_argument('--cd4', type=Path, help='complete May 2004 Freeware CD 4 ISO for the freeware phase')
+    parser.add_argument('--software-manager', action='store_true', help='use the original graphical installer for the Freeware transaction')
     parser.add_argument('--legacy-ownership', action='store_true', help='exercise a v4 install without the created-file ledger')
     parser.add_argument('--full-target', choices=('services', 'payload'), help='filesystem to fill during disk-full qualification')
     args = parser.parse_args()
@@ -276,6 +277,8 @@ def main():
         parser.error(f'{args.phase} requires --base')
     if bool(args.cd4) != (args.phase == 'freeware'):
         parser.error('the freeware phase requires --cd4 and uses --media for the release-specific installer supplement')
+    if args.software_manager and args.phase != 'freeware':
+        parser.error('--software-manager requires the freeware phase')
     if args.mozilla and args.phase != 'install':
         parser.error('--mozilla requires the install phase')
     if args.sgi_clock and args.phase != 'desktop':
@@ -344,6 +347,12 @@ def main():
         config += '[scsi.5]\ncdrom = true\npath = ' + json.dumps(str(fixture)) + '\n'
     if args.cd4:
         config += '[scsi.5]\ncdrom = true\npath = ' + json.dumps(str(args.cd4.resolve())) + '\n'
+    if args.software_manager:
+        fixture = run / 'swmgr-tools.iso'
+        source = ROOT / 'lab/irix-installer'
+        subprocess.run(['genisoimage', '-quiet', '-R', '-o', fixture,
+                        source / 'xmahjongg.sh', source / 'package-filetypes.mk'], check=True)
+        config += '[scsi.6]\ncdrom = true\npath = ' + json.dumps(str(fixture)) + '\n'
     probe = load_probe()
     if install_phase:
         probe.TOOLBOX = []
@@ -387,7 +396,7 @@ def main():
         elif args.phase == 'freeware':
             from freeware_lifecycle import check
             result['cd4_sha256'] = sha256(args.cd4)
-            result['checks'] = check(guest, run, package, greeter, login)
+            result['checks'] = check(guest, run, package, greeter, login, graphical=args.software_manager)
         else:
             if 'receipt' in package:
                 if result['iso_sha256'] != package['iso_sha256']:

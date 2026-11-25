@@ -1,6 +1,7 @@
 """Exercise an original CD 4 transaction on a clean Mozilla desktop."""
 import json
 import shlex
+from functools import partial
 from pathlib import Path
 
 from mozilla_lifecycle import login_catalog, open_browser, position, raise_catalog, reboot
@@ -73,10 +74,43 @@ def transaction(guest, command, log, timeout=1800):
                   'test "$status" -eq 0', timeout)
 
 
-def install(guest, expected):
+def command_line_package(guest, action):
+    transaction(guest, f'sh /cdrom/xmahjongg.sh {action} /mnt/freeware', 'freeware-' + action)
+
+
+def graphical_package(guest, action, out, greeter, login):
+    guest.command('(test -b /dev/cd2a || (cd /dev && sh MAKEDEV cd2)) && '
+                  'mkdir -p /mnt/gui && mount -rt cd9660 /dev/cd2a /mnt/gui')
+    login_catalog(guest, greeter, login)
+    log = '/root/freeware-' + action
+    guest.command(f'(sh /mnt/gui/xmahjongg.sh --gui {action} /mnt/freeware >{log}.log 2>&1; '
+                  f'echo $? >{log}.rc) </dev/null & :')
+    main = 'Software Manager 4.1 -'
+    guest.wait_for(f'test -s {log}.rc || {WINDOWS} | grep -q "{main}"', 150)
+    guest.command(f'test ! -e {log}.rc || (cat {log}.log; exit 1)')
+    x, y = position(guest, main)
+    guest.monitor(f'ptr click {x + 310} {y + 152} left')
+    guest.wait_for(WINDOWS + ' | grep -q "Software Manager 4.1 - Custom Installations"', 60)
+    guest.capture(out / f'swmgr-{action}-selection.png')
+    guest.monitor(f'ptr click {x + 43} {y + 513} left')
+    # SGI presents a modal completion dialog for both installation and removal.
+    dialog = 'askUser_popup.*550x244'
+    dialog_id = f"$({WINDOWS} | awk '/{dialog}/ {{print $1; exit}}')"
+    guest.wait_for(f'test -n "{dialog_id}" && xwininfo -id "{dialog_id}" | grep -q IsViewable', 240)
+    guest.capture(out / f'swmgr-{action}-complete.png')
+    x, y = position(guest, dialog)
+    guest.monitor(f'ptr click {x + 25} {y + 155} left')
+    guest.monitor(f'ptr click {x + 508} {y + 209} left')
+    guest.wait_for(f'test -s {log}.rc', 120)
+    guest.command(f'cat {log}.log; test "$(cat {log}.rc)" = 0 && umount /mnt/gui')
+    logout(guest)
+    greeter(guest)
+
+
+def install(guest, expected, run_package):
     transaction(guest, 'sh /cdrom/prepare-live-base.sh /cdrom', 'freeware-base')
     guest.command(f'test "$(sha256 -q {TABLE})" = {expected["original_and_restored_table"]}')
-    transaction(guest, 'sh /cdrom/xmahjongg.sh install /mnt/freeware', 'freeware-install')
+    run_package(guest, 'install')
     installed(guest, expected)
 
 
@@ -116,11 +150,11 @@ def game_window(guest, out):
     return dict(window=window, process=process)
 
 
-def remove(guest, expected, greeter):
+def remove(guest, expected, greeter, run_package):
     logout(guest)
     greeter(guest)
     mount_media(guest)
-    transaction(guest, 'sh /cdrom/xmahjongg.sh remove /mnt/freeware', 'freeware-remove')
+    run_package(guest, 'remove')
     guest.command(f'test ! -e {GAME} && test ! -L {PAGE}/xmahjongg && test -L {PAGE}/FreewareRelnotes && '
                   f'test "$(sha256 -q {TABLE})" = {expected["original_and_restored_table"]} && {CHECKSUMS}', 240)
     guest.command(f"{ROOT}/usr/sbin/versions -r {ROOT} | awk "
@@ -146,13 +180,17 @@ def history(guest):
                            "'$1==\"I\" && $2 ~ /^fw_/ {print $2}'").splitlines()
 
 
-def check(guest, out, package, greeter, login):
+def check(guest, out, package, greeter, login, graphical=False):
     release = package['release']
     expected = json.loads((PROJECT / 'docs/results/2026-11-24-live-inst.json').read_text())['releases'][release]
     if guest.read_text('cat /var/db/xiri-install/mozilla/identity').strip() != package['mozilla_receipt']:
         raise ValueError('Mozilla component does not match the clean CHD')
     baseline(guest, release, greeter, login)
-    install(guest, expected)
+    if graphical:
+        run_package = partial(graphical_package, out=out, greeter=greeter, login=login)
+    else:
+        run_package = command_line_package
+    install(guest, expected, run_package)
     before_reboot = history(guest)
     common = {'fw_common', 'fw_common.sw', 'fw_common.sw.index'}
     if set(before_reboot) != common.union(expected['history']):
@@ -160,7 +198,7 @@ def check(guest, out, package, greeter, login):
     played = play(guest, out, greeter, login, expected)
     if history(guest) != before_reboot:
         raise ValueError('Freeware history changed across reboot')
-    remove(guest, expected, greeter)
+    remove(guest, expected, greeter, run_package)
     after = history(guest)
     if set(after) != common:
         raise ValueError('Unexpected Freeware installation history')
@@ -169,5 +207,5 @@ def check(guest, out, package, greeter, login):
     for name in ('freeware-base', 'freeware-install', 'freeware-remove'):
         (out / (name + '.log')).write_text(guest.read_text('cat /root/' + name + '.log'))
     browser = after_removal(guest, out, release, greeter, login)
-    return dict(installed=before_reboot, removed=after, game=played, browser=browser,
-                user_files=user_files, system_files=system_files)
+    return dict(frontend='swmgr' if graphical else 'inst', installed=before_reboot, removed=after,
+                game=played, browser=browser, user_files=user_files, system_files=system_files)
