@@ -1,5 +1,5 @@
 #!/bin/sh
-# Start Software Manager with the GIMP 1.2.5 base, scripts and plug-ins selected.
+# Manage GIMP 1.2.5 with the SGI installer and the shared desktop artwork.
 set -eu
 root=/emul/irix
 types=$root/usr/lib/filetype
@@ -7,8 +7,9 @@ table=$types/desktop.otr
 package=gimp
 action=install
 fail() { echo "$*" >&2; exit 1; }
+if test "${1-}" = --remove; then action=remove; shift; fi
 test "$#" = 1 && test "$(id -u)" = 0 && test -n "${DISPLAY-}" ||
-    fail "Usage from the root console with desktop X authority: sh $0 /absolute/gimp-cd"
+    fail "Usage from the root console with desktop X authority: sh $0 [--remove] /absolute/gimp-cd"
 media=$1
 case "$media" in /*) ;; *) fail 'Use an absolute CD mount path.' ;; esac
 test -s "$root/var/inst/hist" && test -x "$root/usr/sbin/swmgr" || fail 'Prepare the matching SGI installer and base history first.'
@@ -26,6 +27,20 @@ cleanup() {
 trap cleanup EXIT
 trap 'exit 1' HUP INT TERM
 artwork_open
+link=$root/usr/lib/desktop/iconcatalog/pages/C/Freeware/gimp
+if test "$action" = remove; then
+    test -f "$art/gimp" || fail 'No managed GIMP artwork receipt was found.'
+    "$root/usr/sbin/swmgr" -V background:off -r "$root" -f "$media/dist/fw_gimp" -K '*' -R fw_gimp </dev/null
+    "$root/usr/sbin/versions" -r "$root" >"$game_state/lock/history"
+    if awk '$1=="I" && $2 ~ /^fw_gimp(\.|$)/ {found=1} END {exit !found}' "$game_state/lock/history"; then
+        fail 'Software Manager closed with GIMP still installed.'
+    fi
+    for path in "$program" "$root/usr/freeware/bin/gimp-1.2" "$rule" "$link"; do
+        test ! -e "$path" && test ! -L "$path" || fail "GIMP removal left $path in place."
+    done
+    artwork_publish
+    exit 0
+fi
 if test ! -f "$art/gimp"; then
     test ! -e "$program" && test ! -L "$program" && test ! -e "$rule" || fail 'An existing GIMP installation needs its own artwork baseline.'
     touch "$art/gimp"
@@ -45,7 +60,6 @@ while read -r sub; do
         fail "Software Manager did not install $sub."
 done <"$media/selections"
 test -x "$program" && test -s "$rule" || fail 'GIMP program or filetype is missing.'
-link=$root/usr/lib/desktop/iconcatalog/pages/C/Freeware/gimp
 test -L "$link" && test "$link" -ef "$program" || fail 'SGI did not register GIMP on the Freeware page.'
 # SGI ships these eight n32 shared objects as mode 0644. Xiri requires
 # execute permission to map their text, as it does for imported desktop DSOs.

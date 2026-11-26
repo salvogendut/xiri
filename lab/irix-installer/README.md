@@ -205,7 +205,7 @@ base prerequisites.
 release=6.5.22f  # or 6.5.30f
 .work/images/xiri-clean-indy-${release}-mozilla-20261125/run-iris.sh \
   --cdrom4 "$PWD/.work/images/xiri-cd4-indy-${release}-v5-20261124/freeware-cd4.iso" \
-  --cdrom5 "$PWD/.work/irix-freeware/gimp-1.2.5.iso"
+  --cdrom5 "$PWD/.work/irix-freeware/gimp-1.2.5-maintenance.iso"
 ```
 
 On the NetBSD root console, mount both discs. Run the base preparation
@@ -238,6 +238,33 @@ Log out and back in to refresh Icon Catalog. Open **Freeware** and
 double-click **gimp**. Accept the first-run defaults to create
 `~/.gimp-1.2` for the logged-in user. Use **File → Open** (Ctrl+O) to
 open an image. [Two-release editing and reopen checks](../../docs/results/2026-11-26-freeware-gimp.md).
+
+### Remove and reinstall GIMP
+
+Close GIMP. Use the GIMP maintenance CD at SCSI ID 5 with the matching
+release supplement at ID 4. The same CD can maintain a GIMP installation
+made with the earlier installer. With the mounts, desktop display and
+authority set as above, run the command on the NetBSD root console.
+
+```sh
+sh /mnt/gimp/gimp.sh --remove /mnt/gimp
+```
+
+In **Customize Installation**, apply the preselected GIMP removal with
+**Start**, then exit Software Manager and wait for the table checksum.
+The helper selects only the GIMP product. GTK+, gettext, wget and the
+other Freeware prerequisites stay installed. After a new xdm login the
+GIMP launcher is gone. The user's images and `~/.gimp-1.2/gimprc` stay
+in their home directory.
+
+If you select the gettext shared library for removal in Software Manager,
+open **Conflicts**. With this package set installed, the dialog lists GIMP,
+GTK+ and wget. Choose **Do not remove fw_gettext.sw.lib**, then **File → Exit**
+to leave them installed.
+
+To reinstall, run `sh /mnt/gimp/gimp.sh /mnt/gimp` from the root console
+and apply the selections. At the next login, double-click **gimp** on
+the Freeware page and open the saved image. [Removal and reinstall results](../../docs/results/2026-11-26-gimp-removal.md).
 
 ## Install xmahjongg and UnZip together
 

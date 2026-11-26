@@ -18,10 +18,15 @@ TITLE = 'gimp-cd2.ppm-'
 SPEC = PROJECT / 'lab/irix-installer/gimp-cd.json'
 
 
-def verify_media(iso):
+def verify_media(iso, *, removal=False):
+    if not removal:
+        previous = PROJECT / 'docs/results/2026-11-26-freeware-gimp.json'
+        with iso.open('rb') as stream:
+            if hashlib.file_digest(stream, 'sha256').hexdigest() == json.loads(previous.read_text())['media_sha256']:
+                return
     record = json.loads(SPEC.read_text())
     files = {'/dist/' + Path(path).name: digest for path, digest in record['files'].items()}
-    for name in ('gimp.sh', 'desktop-artwork.sh'):
+    for name in ('gimp.sh', 'desktop-artwork.sh', 'xmahjongg.sh', 'package-filetypes.mk', 'unzip-upgrade.sh'):
         files['/' + name] = hashlib.sha256(SPEC.with_name(name).read_bytes()).hexdigest()
     files['/selections'] = hashlib.sha256(('\n'.join(record['subsystems']) + '\n').encode()).hexdigest()
     for name, digest in files.items():
@@ -99,10 +104,13 @@ def quit_gimp(guest):
     guest.wait_for('! (' + WINDOWS + ' | grep -Fq \'"The GIMP"\')', 90)
 
 
-def check(guest, out, greeter, login):
+def check(guest, out, greeter, login, *, removal=False):
     guest.command('mkdir -p /cdrom /mnt/gimp && mount -rt cd9660 /dev/cd0a /cdrom && mount -rt cd9660 /dev/cd1a /mnt/gimp')
     guest.command('test ! -e /usr/freeware/bin/gimp && test ! -e /emul/irix/usr/freeware/bin/gimp && test ! -e /emul/irix/var/inst/hist')
     transaction(guest, 'sh /cdrom/prepare-live-base.sh /cdrom', 'freeware-base')
+    if removal:
+        from freeware_gimp_removal import baseline, remove_reinstall
+        baseline(guest)
     login_catalog(guest, greeter, login)
     software_manager(guest, 'sh /mnt/gimp/gimp.sh /mnt/gimp', 'gimp', out)
     inventory = history(guest)
@@ -118,6 +126,7 @@ def check(guest, out, greeter, login):
     first_launch(guest)
     saved = edit(guest, out)
     quit_gimp(guest)
+    maintenance = remove_reinstall(guest, out, inventory, greeter, login) if removal else {}
     logout(guest)
     login_catalog(guest, greeter, login)
     catalog_reopen(guest, out)
@@ -132,10 +141,13 @@ def check(guest, out, greeter, login):
     pixels = verify_canvas(saved, out / 'reopened.png', x, y)
     table = guest.read_text('sha256 -q ' + TABLE).strip()
     quit_gimp(guest)
+    if removal:
+        from freeware_gimp_removal import STATE
+        guest.command(f'sha256 -c {STATE}/user.sha')
     logout(guest)
     greeter(guest)
     return dict(reopened_window=window, saved_sha256=hashlib.sha256(saved).hexdigest(),
-                owner=owner, binary_sha256=binary, table_sha256=table, subsystems=expected, **pixels)
+                owner=owner, binary_sha256=binary, table_sha256=table, subsystems=expected, **pixels, **maintenance)
 
 
 def verify_canvas(saved, frame, x, y):

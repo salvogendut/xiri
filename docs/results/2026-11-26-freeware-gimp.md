@@ -52,5 +52,6 @@ comparison excludes the one-pixel border where GIMP draws the layer boundary.
 
 The [per-release results](2026-11-26-freeware-gimp.json) record the selected
 subsystems, executable and filetype hashes, image checks and clean shutdowns.
-Printing, GNOME plug-ins and uninstalling GIMP with shared library dependents
-remain outside this qualification.
+The [follow-up maintenance check](2026-11-26-gimp-removal.md) covers shared
+library conflicts, removal and reinstallation. Printing and GNOME plug-ins
+remain open.

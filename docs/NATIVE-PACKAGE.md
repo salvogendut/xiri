@@ -219,7 +219,8 @@ supplement and CD 4 attached. Add the older UnZip runtime at SCSI ID 6.
 [Installation, upgrade and removal](../lab/irix-installer/README.md#install-xosview-and-upgrade-unzip-in-software-manager).
 When using UnZip and xmahjongg together, attach the [shared helper ISO](../lab/irix-installer/README.md#install-xmahjongg-and-unzip-together) at ID 6.
 For GIMP, attach the four-disc package selection at ID 5 alongside the matching
-release supplement. [Build the GIMP CD and install it](../lab/irix-installer/README.md#install-gimp-125-from-the-freeware-cds).
+release supplement. Keep the maintenance CD for later removal or reinstallation.
+[Build the CD and install GIMP](../lab/irix-installer/README.md#install-gimp-125-from-the-freeware-cds) · [Remove or reinstall GIMP](../lab/irix-installer/README.md#remove-and-reinstall-gimp).
 
 To return to the previous v5 desktop, quit Mozilla, mount the same CD again
 and run:

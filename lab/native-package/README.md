@@ -164,6 +164,11 @@ IRIS_NO_IDLE=1 python3 lab/native-package/check-clean-desktop.py freeware-gimp \
   --media "$supplement" --gimp-media "$gimp_iso" --output "$run"
 ```
 
+Use the same command with the `freeware-gimp-removal` phase and a new
+output directory to exercise the gettext conflict, GIMP-only removal and
+reinstallation. Pass the GIMP maintenance ISO as `--gimp-media`. The
+original install-only medium still works with `freeware-gimp`.
+
 ### In-place display upgrade
 
 Use the v4 bundle and the matching v5 ISO to test a live upgrade on a

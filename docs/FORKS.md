@@ -72,6 +72,12 @@ in `08e53ba7`. [Octane build and qualification](results/2026-11-23-octane-deskto
 
 ## IRIS upstream updates
 
+The November 26 GIMP removal cycle merged upstream `8d21ca26` into IRIS
+`xiri` at `44856ab0`. The five commits cover PCI host commands, XBow
+link reset callbacks, monitor command dispatch and framebuffer hashes.
+The release builds of `iris` and `iris-ci` with JIT v2 passed, as did
+370 affected tests. The two Indy package tests use their pinned emulators.
+
 The November 26 GIMP installer cycle fetched upstream `5782a35d` and
 confirmed that it is already in IRIS `xiri` at `074f62f5`. Both clean
 Indys used the emulator pinned in their desktop bundles.

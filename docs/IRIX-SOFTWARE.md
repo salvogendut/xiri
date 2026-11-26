@@ -21,8 +21,10 @@ kernel. Attach the matching prerequisite disc and a complete CD 4 to
 install into an existing desktop. SGI Software Manager 4.1 can perform
 the same installation and removal from a logged-in Xiri desktop.
 GIMP 1.2.5 adds a four-disc installation with SGI-owned prerequisites, a Freeware
-catalog entry and first-run setup in the desktop user’s home.
-[Install GIMP](../lab/irix-installer/README.md#install-gimp-125-from-the-freeware-cds) · [Editing checks](results/2026-11-26-freeware-gimp.md).
+catalog entry and first-run setup in the desktop user’s home. Software Manager
+shows which packages depend on gettext before allowing removal. The GIMP
+maintenance helper selects only GIMP for removal.
+[Install GIMP](../lab/irix-installer/README.md#install-gimp-125-from-the-freeware-cds) · [Editing checks](results/2026-11-26-freeware-gimp.md) · [Dependency, removal and reinstall checks](results/2026-11-26-gimp-removal.md).
 [Graphical instructions](../lab/irix-installer/README.md#install-with-graphical-software-manager)
 · [Graphical results](results/2026-11-25-swmgr.md)
 · [Terminal commands](../lab/irix-installer/README.md#use-the-complete-freeware-cd-4-with-a-clean-mozilla-indy)
