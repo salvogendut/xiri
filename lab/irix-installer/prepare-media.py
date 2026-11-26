@@ -64,7 +64,7 @@ def main():
                         media / 'setup-native-paths.sh')
         if args.base_media_root:
             stage_base_media(media, args.release, args.base_media_root, args.instigator)
-            for name in ('prepare-live-base.sh', 'xmahjongg.sh', 'package-filetypes.mk'):
+            for name in ('prepare-live-base.sh', 'xmahjongg.sh', 'desktop-artwork.sh', 'package-filetypes.mk'):
                 shutil.copyfile(Path(__file__).with_name(name), media / name)
         for path, row in inputs.items():
             if row['source'] == 'media':

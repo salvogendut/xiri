@@ -1,0 +1,166 @@
+{
+  "iris_integration": "074f62f5",
+  "upstream": "5782a35d57c9f3d8ef3e09c3dc96ff8795f3cba3",
+  "helper_iso_sha256": "ca267adf95b0033cd87a5783f12a3f032c4070abecfce19d53f1468feccf625b",
+  "helpers": {
+    "desktop-artwork.sh": "90da95c55271a2cea1ad68ca305af0d496680425211e5c0deeb93bc2c8382085",
+    "unzip-upgrade.sh": "0b2d2c152ff4a46060f063dacff5c7821f1b18ab185b2ea7f5df69c641940c1b",
+    "xmahjongg.sh": "fafa61c8c38cd07514625ed5220d1fb62c09d9b96dbed5ba64b831412375f51d",
+    "package-filetypes.mk": "b0cf516ecd35434595579ce9c1eb1b1c292ab473e881d3d709c68eb0ec30d191"
+  },
+  "releases": {
+    "6.5.22f": {
+      "chd_sha256": "9579b90a523755966f799d2847b639f40903f34f9e2842b82f5a7f5846b5e95d",
+      "supplement_sha256": "b7cb0262fd2b6d2b2c777e2b04b9d8a53e97c9ec85ab721e8074903dfbc65edb",
+      "emulator_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+      "orders": {
+        "xmahjongg": {
+          "first_installed_and_removed": "xmahjongg",
+          "baseline": "c4d7d3a172fb372b1c307b95b2e30d2eb62045c40d517b9f866eac7de29c22db",
+          "combined": "7994de11bbb564c93e4c56867a49081453d7d77605e5ef7950d65e13fb0a8649",
+          "combined_types": [
+            "UnZipExecutable",
+            "XMahjonggExecutable",
+            "ZipArchive"
+          ],
+          "surviving_table": "5960ce490affef478791f292c9a7eb7c659d194edfb44db2c8161b4c6f393a09",
+          "surviving_unzip": {
+            "history": [
+              "Target: /emul/irix/",
+              "I = Installed, R = Removed",
+              "",
+              "   Name                 Date        Description",
+              "",
+              "I  fw_unzip             11/26/2026  unzip-5.50 Info-ZIP UnZip Archive Extraction Utilities",
+              "I  fw_unzip.sw          11/26/2026  unzip-5.50 execution only env",
+              "I  fw_unzip.sw.unzip    11/26/2026  unzip-5.50 execution only env"
+            ],
+            "binary_sha256": "208ba0c7ecd5a032156be45263a982e77815e6f887ed7b2774219ff6f2685eb9",
+            "extraction_user": "xiritest"
+          },
+          "zip_action": {
+            "owner": "xiritest",
+            "archive": "/usr/people/xiritest/ZipCheck/sample.zip",
+            "member": "/usr/people/xiritest/ZipCheck/sample_extracted/sample.txt",
+            "windows": [
+              "           0x1200085 \"xiri-indy:/usr/people/xiritest/ZipCheck\": (\"FileManager\" \"FileManager\")  575x600+0+0  +32+32"
+            ]
+          },
+          "final_freeware": [
+            "fw_common",
+            "fw_common.sw",
+            "fw_common.sw.index"
+          ],
+          "halted": true,
+          "stopped": true,
+          "screenshots": {
+            "2026-11-26-shared-artwork-6.5.22f-archive.png": "f24c04c4fc9144384b1a451f2765a552a066f3772c4167ec9443ed3200c2c652",
+            "2026-11-26-shared-artwork-6.5.22f-opened.png": "ce62bb1ae73301d2240f76361a8abe23c56248709f2b0ec75f21eac77643e6f6"
+          }
+        },
+        "unzip": {
+          "first_installed_and_removed": "unzip",
+          "baseline": "c4d7d3a172fb372b1c307b95b2e30d2eb62045c40d517b9f866eac7de29c22db",
+          "combined": "7994de11bbb564c93e4c56867a49081453d7d77605e5ef7950d65e13fb0a8649",
+          "combined_types": [
+            "UnZipExecutable",
+            "XMahjonggExecutable",
+            "ZipArchive"
+          ],
+          "surviving_table": "6381dd289e77a64f87846226bbff3989e97c89946d06e09d6c75f6f7ccf4175d",
+          "game": {
+            "window": "0x1800004 \"xmahjongg\": (\"xmahjongg\" \"XMahjongg\")  1006x614+0+0  +32+32",
+            "process": "1234 2713 /usr/lib/desktop/iconcatalog/pages/C/Freeware/xmahjongg"
+          },
+          "final_freeware": [
+            "fw_common",
+            "fw_common.sw",
+            "fw_common.sw.index"
+          ],
+          "halted": true,
+          "stopped": true,
+          "screenshots": {
+            "2026-11-26-shared-artwork-6.5.22f-game.png": "e6d000d46997a0234e623cad1767184eecb279fe20ad13a25d0b6407b6cbaf3f"
+          }
+        }
+      }
+    },
+    "6.5.30f": {
+      "chd_sha256": "1d3dd1de7d690dd4cdc563176e2093094592191144782f206f178470d38d3e12",
+      "supplement_sha256": "80f4bfbe30d968d991bbabfe3c0eb8e17584deb067f7deccd71a374b9d888413",
+      "emulator_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+      "orders": {
+        "xmahjongg": {
+          "first_installed_and_removed": "xmahjongg",
+          "baseline": "0985392f9d5f3efe64ed6fa8e2c729f2cb26f5a6e7df51f6cd2c9d834fe76897",
+          "combined": "4d4516462184419c2078ad182750c2b2699c01aa93bf6ffca500b3b3d11ac054",
+          "combined_types": [
+            "UnZipExecutable",
+            "XMahjonggExecutable",
+            "ZipArchive"
+          ],
+          "surviving_table": "fd51f77619ef072b70e9024f976df09585f2d8943ed3bdbf084e552e468526a7",
+          "surviving_unzip": {
+            "history": [
+              "Target: /emul/irix/",
+              "I = Installed, R = Removed",
+              "",
+              "   Name                 Date        Description",
+              "",
+              "I  fw_unzip             11/26/2026  unzip-5.50 Info-ZIP UnZip Archive Extraction Utilities",
+              "I  fw_unzip.sw          11/26/2026  unzip-5.50 execution only env",
+              "I  fw_unzip.sw.unzip    11/26/2026  unzip-5.50 execution only env"
+            ],
+            "binary_sha256": "208ba0c7ecd5a032156be45263a982e77815e6f887ed7b2774219ff6f2685eb9",
+            "extraction_user": "xiritest"
+          },
+          "zip_action": {
+            "owner": "xiritest",
+            "archive": "/usr/people/xiritest/ZipCheck/sample.zip",
+            "member": "/usr/people/xiritest/ZipCheck/sample_extracted/sample.txt",
+            "windows": [
+              "           0x1200085 \"xiri-indy:/usr/people/xiritest/ZipCheck\": (\"FileManager\" \"FileManager\")  575x600+0+0  +32+32"
+            ]
+          },
+          "final_freeware": [
+            "fw_common",
+            "fw_common.sw",
+            "fw_common.sw.index"
+          ],
+          "halted": true,
+          "stopped": true,
+          "screenshots": {
+            "2026-11-26-shared-artwork-6.5.30f-archive.png": "8af491f7d4f2bf8ccad2367bc2ce65c5e303fa50e58a43b1bc3bc337eded22fa",
+            "2026-11-26-shared-artwork-6.5.30f-opened.png": "c165a0877da2375f649a33dfc35624312815a900b34b8ce2aa5e7dd7c8ee83af"
+          }
+        },
+        "unzip": {
+          "first_installed_and_removed": "unzip",
+          "baseline": "0985392f9d5f3efe64ed6fa8e2c729f2cb26f5a6e7df51f6cd2c9d834fe76897",
+          "combined": "4d4516462184419c2078ad182750c2b2699c01aa93bf6ffca500b3b3d11ac054",
+          "combined_types": [
+            "UnZipExecutable",
+            "XMahjonggExecutable",
+            "ZipArchive"
+          ],
+          "surviving_table": "310c6bb2e460421ca459124d83943d9a6f2388e93cc971fcd434e9c632e9ab98",
+          "game": {
+            "window": "0x1800004 \"xmahjongg\": (\"xmahjongg\" \"XMahjongg\")  1006x614+0+0  +32+32",
+            "process": "1234 2475 /usr/lib/desktop/iconcatalog/pages/C/Freeware/xmahjongg"
+          },
+          "final_freeware": [
+            "fw_common",
+            "fw_common.sw",
+            "fw_common.sw.index"
+          ],
+          "halted": true,
+          "stopped": true,
+          "screenshots": {
+            "2026-11-26-shared-artwork-6.5.30f-game.png": "7a83b31e350a40fca9ca814ba82998cd532f3f81755420f6c8ee229561872d06"
+          }
+        }
+      }
+    }
+  },
+  "freeware_cd4_sha256": "a652a89c416487bf40f3029ef6cc50c1b93953370e9a9b8364a53efb9d426d8d"
+}

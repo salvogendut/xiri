@@ -20,18 +20,27 @@ UNZIP = {
 XOSVIEW = '0fd6a1f98b7dfdfeba2780d483edbe14eff930d8a936f1c4565bb8bc29434a22'
 
 
-def verify_media(iso):
+def verify_media(iso, require_shared=False):
     helper = Path(__file__).resolve().parents[1] / 'irix-installer/unzip-upgrade.sh'
     pins = {
-        'unzip-upgrade.sh': hashlib.sha256(helper.read_bytes()).hexdigest(),
         'dist/fw_unzip': '5b0341f1241e615b08602263a95d43eeb18bc06ebc3b1a3d2f53f4f3dd42169b',
         'dist/fw_unzip.idb': '7280d3afa520d2f64686f366e09057b4e3073bf10731eb78304f553b2a74eeca',
         'dist/fw_unzip.sw': '32d261d6c54354c8402d11d5352a2ee5675ffe719eacafcf80e1e88211f289ef',
     }
+    helper_bytes = subprocess.check_output(['isoinfo', '-R', '-i', iso, '-x', '/unzip-upgrade.sh'])
+    uses_shared = helper_bytes == helper.read_bytes()
+    if uses_shared:
+        for name in ('desktop-artwork.sh', 'xmahjongg.sh', 'package-filetypes.mk'):
+            pins[name] = hashlib.sha256(helper.with_name(name).read_bytes()).hexdigest()
+    else:
+        previous = Path(__file__).resolve().parents[2] / 'docs/results/2026-11-26-freeware-upgrade.json'
+        if require_shared or hashlib.sha256(helper_bytes).hexdigest() != json.loads(previous.read_text())['helper_sha256']:
+            raise ValueError('Unexpected UnZip upgrade helper on the mounted ISO')
     for name, expected in pins.items():
         data = subprocess.check_output(['isoinfo', '-R', '-i', iso, '-x', '/' + name])
         if hashlib.sha256(data).hexdigest() != expected:
             raise ValueError('Unexpected UnZip helper CD file: ' + name)
+    return uses_shared
 
 
 def mount(guest):
@@ -75,7 +84,7 @@ def meters(guest, out):
     return dict(window=window, process=process)
 
 
-def check(guest, out, greeter, login):
+def check(guest, out, greeter, login, shared_artwork):
     mount(guest)
     guest.command(f'test ! -e {ROOT}/var/inst/hist && test ! -e {BIN}/unzip && test ! -e {BIN}/xosview')
     transaction(guest, 'sh /cdrom/prepare-live-base.sh /cdrom', 'freeware-base')
@@ -93,7 +102,7 @@ def check(guest, out, greeter, login):
     result['old'] = unzip(guest, '5.40')
     software_manager(guest, f'sh {OLD}/unzip-upgrade.sh upgrade {CD4}', 'unzip-upgrade', out)
     result['new'] = unzip(guest, '5.50')
-    state = ROOT + '/var/inst/xiri-unzip'
+    state = ROOT + '/var/inst/' + ('xiri-filetypes' if shared_artwork else 'xiri-unzip')
     guest.command(f'test "$(sha256 -q {TABLE})" = "$(cat {state}/published.sha256)" && '
                   f'test "$(sha256 -q {TABLE})" != "$(sha256 -q {state}/baseline.otr)"')
     result['upgraded_table_sha256'] = guest.read_text(f'sha256 -q {TABLE}').strip()

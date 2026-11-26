@@ -72,6 +72,12 @@ in `08e53ba7`. [Octane build and qualification](results/2026-11-23-octane-deskto
 
 ## IRIS upstream updates
 
+On November 26 the shared Freeware artwork cycle merged upstream
+`5782a35d` into IRIS `xiri` at `074f62f5`. The merge retained the IndyCam
+and Xiri changelog entries. The emulator built with JIT v2, 29 camera
+tests and three hot-lane tests passed, and the live-camera test was
+skipped. The Xiri desktop checks use each release's pinned Indy executable.
+
 The xosview and UnZip cycle fetched `upstream/main` on November 25 and
 again on November 26. Both checks found `c8e8f17b` already integrated
 in IRIS `xiri` at `6a6b1aca`. The two Indy tests used their packaged

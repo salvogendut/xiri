@@ -31,7 +31,8 @@ def build(archive, output):
         (cd / 'sample.txt').write_bytes(b'Xiri Freeware upgrade\n')
         with zipfile.ZipFile(cd / 'sample.zip', 'w', zipfile.ZIP_DEFLATED) as sample:
             sample.write(cd / 'sample.txt', 'sample.txt')
-        shutil.copyfile(Path(__file__).with_name('unzip-upgrade.sh'), cd / 'unzip-upgrade.sh')
+        for name in ('unzip-upgrade.sh', 'desktop-artwork.sh', 'xmahjongg.sh', 'package-filetypes.mk'):
+            shutil.copyfile(Path(__file__).with_name(name), cd / name)
         iso = Path(tmp) / 'unzip.iso'
         subprocess.run(['genisoimage', '-quiet', '-R', '-V', 'XIRI_UNZIP_540', '-o', iso, cd], check=True)
         os.link(iso, output)

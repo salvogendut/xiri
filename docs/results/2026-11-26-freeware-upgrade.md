@@ -35,7 +35,8 @@ UnZip 5.50 introduces `/usr/lib/filetype/install/unzip.ftr`. Its SGI
 exit command runs make in the IRIX root. The helper compiles that rule
 with SGI's `fftr`, combines it with the release's existing desktop table,
 and restores the saved table on removal. This tests the compiled filetype
-table. Opening ZIP files in File Manager is a separate desktop check.
+table. The [shared artwork follow-up](2026-11-26-shared-artwork.md)
+tracks opening ZIP files in File Manager after another package is removed.
 
 Each release restored its own desktop table byte for byte and returned to
 the original SGI inventory after removal. The published CHD and NVRAM

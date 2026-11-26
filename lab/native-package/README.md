@@ -144,6 +144,13 @@ the same ZIP with both versions. It verifies 5.50 again after reboot, then
 removes the two products and compares SGI history and the desktop table
 with their pre-install values.
 
+For a coexistence test, use `freeware-artwork` with the shared helper ISO
+for `--old-unzip`. Run once with `--first-product xmahjongg` and once with
+`--first-product unzip` for each release, with separate output directories.
+The first product installed is also removed first. The game-first case
+starts from the original supplement's single-product receipt. The
+remaining product is exercised from the user's desktop before removal.
+
 ### In-place display upgrade
 
 Use the v4 bundle and the matching v5 ISO to test a live upgrade on a

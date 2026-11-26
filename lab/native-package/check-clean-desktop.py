@@ -259,7 +259,7 @@ def desktop(guest, out, colour=None, while_logged_in=None, check_clock=False):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('phase', choices=('install', 'disk-full', 'desktop', 'display-upgrade', 'mozilla', 'freeware', 'freeware-upgrade'))
+    parser.add_argument('phase', choices=('install', 'disk-full', 'desktop', 'display-upgrade', 'mozilla', 'freeware', 'freeware-upgrade', 'freeware-artwork'))
     for name in ('media', 'emulator', 'output'):
         parser.add_argument('--' + name, type=Path, required=True)
     parser.add_argument('--base', type=Path, help='qualified bootstrap, required except for the clean Freeware check')
@@ -269,14 +269,17 @@ def main():
     parser.add_argument('--sgi-clock', action='store_true', help='verify original SGI Clock redraws in the Xiri session')
     parser.add_argument('--mozilla', action='store_true', help='select Mozilla on a fresh installation')
     parser.add_argument('--cd4', type=Path, help='complete May 2004 Freeware CD 4 ISO for the freeware phase')
-    parser.add_argument('--old-unzip', type=Path, help='UnZip 5.40 helper ISO for the freeware-upgrade phase')
+    parser.add_argument('--old-unzip', type=Path, help='UnZip 5.40 helper ISO for upgrade or shared artwork checks')
     parser.add_argument('--software-manager', action='store_true', help='use the original graphical installer for the Freeware transaction')
     parser.add_argument('--legacy-ownership', action='store_true', help='exercise a v4 install without the created-file ledger')
     parser.add_argument('--full-target', choices=('services', 'payload'), help='filesystem to fill during disk-full qualification')
+    parser.add_argument('--first-product', choices=('xmahjongg', 'unzip'), help='first product to install and remove in the coexistence check')
     args = parser.parse_args()
-    freeware = args.phase in ('freeware', 'freeware-upgrade')
-    if bool(args.old_unzip) != (args.phase == 'freeware-upgrade'):
-        parser.error('supply --old-unzip for the freeware-upgrade phase')
+    if bool(args.first_product) != (args.phase == 'freeware-artwork'):
+        parser.error('--first-product is required for freeware-artwork only')
+    freeware = args.phase in ('freeware', 'freeware-upgrade', 'freeware-artwork')
+    if bool(args.old_unzip) != (args.phase in ('freeware-upgrade', 'freeware-artwork')):
+        parser.error('supply --old-unzip for the upgrade and artwork checks')
     if not freeware and not args.base:
         parser.error(f'{args.phase} requires --base')
     if bool(args.cd4) != freeware:
@@ -355,11 +358,11 @@ def main():
         fixture = run / 'swmgr-tools.iso'
         source = ROOT / 'lab/irix-installer'
         subprocess.run(['genisoimage', '-quiet', '-R', '-o', fixture,
-                        source / 'xmahjongg.sh', source / 'package-filetypes.mk'], check=True)
+                        source / 'xmahjongg.sh', source / 'desktop-artwork.sh', source / 'package-filetypes.mk'], check=True)
         config += '[scsi.6]\ncdrom = true\npath = ' + json.dumps(str(fixture)) + '\n'
     if args.old_unzip:
         from freeware_upgrade import verify_media
-        verify_media(args.old_unzip)
+        shared_artwork = verify_media(args.old_unzip, require_shared=args.phase == 'freeware-artwork')
         config += '[scsi.6]\ncdrom = true\npath = ' + json.dumps(str(args.old_unzip.resolve())) + '\n'
     probe = load_probe()
     if install_phase:
@@ -408,9 +411,12 @@ def main():
             from mozilla_lifecycle import check
             result['checks'] = check(guest, run, package, greeter, login,
                                      json.loads((base / 'result.json').read_text())['native_sha256'])
+        elif args.phase == 'freeware-artwork':
+            from freeware_artwork import check
+            result['checks'] = check(guest, run, args.release, args.first_product, greeter, login)
         elif args.phase == 'freeware-upgrade':
             from freeware_upgrade import check
-            result['checks'] = check(guest, run, greeter, login)
+            result['checks'] = check(guest, run, greeter, login, shared_artwork)
         elif args.phase == 'freeware':
             from freeware_lifecycle import check
             result['cd4_sha256'] = sha256(args.cd4)

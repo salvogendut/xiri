@@ -32,6 +32,8 @@ the older SGI UnZip 5.40 runtime, then select the 5.50 distribution in
 Software Manager. The newer package adds the desktop ZIP filetype.
 [Manual procedure](../lab/irix-installer/README.md#install-xosview-and-upgrade-unzip-in-software-manager)
 · [Release checks](results/2026-11-26-freeware-upgrade.md).
+When both products register artwork, use the same helper CD for each.
+[Shared desktop filetypes and removal order](results/2026-11-26-shared-artwork.md).
 
 The immediate path is to copy already installed applications, their resources
 and existing Icon Catalog registration from the user's IRIX image. The

@@ -23,20 +23,17 @@ test -x "$root/usr/sbin/inst" && test -x "$root/usr/sbin/fftr" && test -s "$tabl
 if test "$frontend" = swmgr; then
     test -n "${DISPLAY-}" && test -x "$root/usr/sbin/swmgr" || fail 'Software Manager needs the desktop display and the original swmgr program.'
 fi
-mkdir -p "$state"
-chmod 700 "$state"
-mkdir "$state/lock" || fail "Check for an active installer at $state/lock."
-stage=
+package=xmahjongg
+. "$(dirname "$0")/desktop-artwork.sh"
 mounted=no
 cleanup() {
-    if test -n "$stage"; then rm -f "$stage/desktop.otr"; rmdir "$stage"; fi
-    if test "$types/makefile" -ef "$state/lock/makefile"; then rm "$types/makefile"; fi
+    if test "$own_game_lock" = yes && test "$types/makefile" -ef "$state/lock/makefile"; then rm "$types/makefile"; fi
     if test "$mounted" = yes; then umount "$root/tmp" || exit 1; fi
-    rm -f "$state/lock/game.otr" "$state/lock/makefile" "$state/lock/next"
-    rmdir "$state/lock"
+    artwork_close
 }
 trap cleanup EXIT
 trap 'exit 1' HUP INT TERM
+artwork_open
 # SGI's shell creates /tmp/mkindex.$$; its native child utilities reopen it.
 # Share native scratch only for this transaction, without hiding existing files.
 mkdir -p "$root/tmp"
@@ -53,22 +50,12 @@ if test "$action" = install; then
     fi
     ln "$state/lock/makefile" "$types/makefile" || fail "Cannot stage package rules alongside $types/Makefile."
 fi
-current=$(sha256 -q "$table")
-new_baseline=no
-if test -f "$state/baseline.otr"; then
-    previous=$(cat "$state/published.sha256")
-    base=$(sha256 -q "$state/baseline.otr")
-    pending=
-    if test -f "$state/pending.sha256"; then pending=$(cat "$state/pending.sha256"); fi
-    test "$current" = "$previous" || test "$current" = "$base" || test "$current" = "$pending" ||
-        fail 'The desktop table changed independently. Review the saved table before continuing.'
-else
-    test "$action" = install || fail 'No package artwork baseline exists.'
+new_package=no
+if test ! -f "$art/$package"; then
+    test "$action" = install || fail 'No package artwork receipt exists.'
     test ! -e "$rules/xmahjongg.ftr" && test ! -e "$game" || fail 'An existing game needs its own artwork baseline.'
-    cp -p "$table" "$state/base.tmp"
-    echo "$current" >"$state/published.sha256"
-    mv "$state/base.tmp" "$state/baseline.otr"
-    new_baseline=yes
+    touch "$art/$package"
+    new_package=yes
 fi
 case "$action" in
     install) set -- -I fw_common.sw.index -I fw_xmahjongg.sw.xmahjongg
@@ -99,7 +86,7 @@ if test "$frontend" = swmgr; then
     test "$(sha256 -q "$table")" = "$current" || fail 'The desktop table changed during package maintenance.'
     if test "$action" = install && ! game_in_history && test ! -e "$game" &&
         test ! -L "$link" && test ! -e "$rules/xmahjongg.ftr"; then
-        if test "$new_baseline" = yes; then rm "$state/baseline.otr" "$state/published.sha256"; fi
+        if test "$new_package" = yes; then rm "$art/$package"; artwork_release_base; fi
         fail 'Software Manager closed without installing xmahjongg.'
     fi
     if test "$action" = remove && game_in_history; then
@@ -112,33 +99,22 @@ if test "$frontend" = swmgr; then
             test -L "${link%/*}/FreewareRelnotes" || fail 'Software Manager did not register the shared Freeware index.'
     fi
 fi
-stage=$(mktemp -d "$types/.xiri-package.XXXXXX")
-tmp=$stage/desktop.otr
 case "$action" in
     install)
         game_in_history &&
             test -x "$game" && test "$(readlink "$link")" = "$game" &&
             test -s "$rules/xmahjongg.ftr" || fail 'SGI installation or catalog registration failed.'
+        if test ! -f "$state/lock/game.otr" && test "$new_package" = no; then
+            (cd "$rules" && "$root/usr/sbin/fftr" -o "$state/lock/game.otr" xmahjongg.ftr)
+        fi
         test "$(sha256 -q "$state/lock/game.otr")" = 06cc29d04e6f59b675100a1956084858ec3a897493aa7ed3981a25f29232b86a ||
             fail 'SGI make did not build the expected CD 4 artwork.'
-        "$root/usr/sbin/fftr" -o "$tmp" "$state/lock/game.otr" "$state/baseline.otr"
         ;;
     remove)
         if game_in_history ||
             test -e "$game" || test -L "$link" || test -e "$rules/xmahjongg.ftr"; then
             fail 'SGI removal is incomplete.'
         fi
-        cp -p "$state/baseline.otr" "$tmp"
         ;;
 esac
-test -s "$tmp"
-chmod 444 "$tmp"
-next=$(sha256 -q "$tmp")
-echo "$next" >"$state/lock/next"
-mv "$state/lock/next" "$state/pending.sha256"
-mv -f "$tmp" "$table"
-mv "$state/pending.sha256" "$state/published.sha256"
-if test "$action" = remove; then
-    rm -f "$state/baseline.otr" "$state/published.sha256"
-fi
-echo "Desktop table $next. Log in again to load it."
+artwork_publish

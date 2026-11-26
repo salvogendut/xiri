@@ -55,12 +55,12 @@ Use the same clean Mozilla Indy, release-matched prerequisites and Freeware
 disc. A newly built prerequisite CD includes the graphical helper.
 With a November 24 supplement, add
 `--cdrom6 "$PWD/.work/irix-freeware/swmgr-tools.iso"` to the IRIS command
-above. The helper ISO is ready on the test workstation. To recreate it
-from the checkout, run the following command.
+above. The original helper ISO is ready on the test workstation. To
+build the current helper, choose a fresh ISO path and attach that at ID 6.
 
 ```sh
-genisoimage -quiet -R -V XIRI_SWMGR -o .work/irix-freeware/swmgr-tools.iso \
-  lab/irix-installer/xmahjongg.sh lab/irix-installer/package-filetypes.mk
+genisoimage -quiet -R -V XIRI_SWMGR -o /path/to/new-swmgr-tools.iso \
+  lab/irix-installer/xmahjongg.sh lab/irix-installer/desktop-artwork.sh lab/irix-installer/package-filetypes.mk
 ```
 
 On a fresh desktop, mount the two installation discs and run
@@ -184,6 +184,35 @@ for the current login first.
 sh /mnt/previous/unzip-upgrade.sh remove /mnt/freeware
 "$swmgr" -V background:off -r /emul/irix -f /mnt/freeware/dist/fw_xosview -K '*' -R fw_xosview.sw.xosview
 ```
+
+## Install xmahjongg and UnZip together
+
+Use the release-specific supplement at SCSI ID 4, Freeware CD 4 at ID 5
+and the shared helper ISO at ID 6. On each boot, mount the three discs
+at `/cdrom`, `/mnt/freeware` and `/mnt/previous` as above. Use the two
+helpers from **the same shared ISO** for subsequent changes to either product.
+It includes both package helpers, the original UnZip 5.40 runtime and a
+sample ZIP. Build it from the original tardist with `prepare-unzip-media.py`
+as described above, or attach the workspace copy at
+`.work/irix-freeware/shared-artwork.iso`.
+
+Prepare the base on a fresh guest. After login through xdm, set the
+display and X authority on the NetBSD root console. The following example
+installs the game, installs the older UnZip and upgrades it from CD 4.
+
+```sh
+sh /mnt/previous/xmahjongg.sh --gui install /mnt/freeware
+/emul/irix/usr/sbin/swmgr -V background:off -r /emul/irix -f /mnt/previous/dist/fw_unzip -K '*' -I fw_unzip.sw.unzip
+sh /mnt/previous/unzip-upgrade.sh upgrade /mnt/freeware
+```
+
+Use `sh /mnt/previous/xmahjongg.sh --gui remove /mnt/freeware` or
+`sh /mnt/previous/unzip-upgrade.sh remove /mnt/freeware` for removal.
+Log out and back in to load the updated desktop types. The helpers track
+the packages in `/emul/irix/var/inst/xiri-filetypes`, preserve the initial
+desktop table and rebuild it with the surviving SGI package rules.
+They recognize earlier single-package receipts and stop if the live table
+has an unrelated edit.
 
 ## Install CD 4's xmahjongg into the live Indy desktop
 

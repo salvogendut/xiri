@@ -20,30 +20,24 @@ new=208ba0c7ecd5a032156be45263a982e77815e6f887ed7b2774219ff6f2685eb9
  test "$(sha256 -q fw_unzip.idb)" = f827315fe81606b2869228ee5e8cbb8aa5c3de902b1b64e9c1f276c4ecbc5272 &&
  test "$(sha256 -q fw_unzip.sw)" = 4ade04a47bb0b4b82344ebcd71005ce72330db41faebf61fef6e8245c4ff0bb8) || fail 'Expected the May 2004 UnZip 5.50 distribution.'
 test -s "$table" && test -x "$root/usr/sbin/swmgr" || fail 'Prepare the installer and desktop first.'
-mkdir -p -m 700 "$state"
-mkdir "$state/lock" || fail "Check the active installer at $state/lock."
-stage=
+package=unzip
+. "$(dirname "$0")/desktop-artwork.sh"
 cleanup() {
-    if test -n "$stage"; then rm -f "$stage/desktop.otr"; rmdir "$stage"; fi
-    if test "$types/makefile" -ef "$state/lock/makefile"; then rm "$types/makefile"; fi
-    rm -f "$state/lock/makefile" "$state/lock/unzip.otr" "$state/lock/digest" "$state/lock/base"
-    rmdir "$state/lock"
+    if test "$own_zip_lock" = yes && test "$types/makefile" -ef "$state/lock/makefile"; then rm "$types/makefile"; fi
+    artwork_close
 }
 trap cleanup EXIT
 trap 'exit 1' HUP INT TERM
-current=$(sha256 -q "$table")
-if test ! -f "$state/baseline.otr"; then
+artwork_open
+new_package=no
+if test ! -f "$art/$package"; then
     test "$action" = upgrade && test -f "$bin" && test "$(sha256 -q "$bin")" = "$old" &&
         test ! -e "$rule" && test ! -L "$rule" || fail 'Install the original 5.40 runtime before upgrading.'
     "$root/usr/sbin/versions" -r "$root" fw_unzip >"$state/history"
     awk '$1=="I" && $2=="fw_unzip.sw.unzip" && /5\.40/ {ok=1} END {exit !ok}' "$state/history" ||
         fail 'Expected SGI installation history for UnZip 5.40.'
-    cp -p "$table" "$state/lock/base"
-    mv "$state/lock/base" "$state/baseline.otr"
+    new_package=yes
 fi
-base=$(sha256 -q "$state/baseline.otr")
-test "$current" = "$base" || { test -f "$state/published.sha256" &&
-    test "$current" = "$(cat "$state/published.sha256")"; } || fail 'The desktop table changed independently.'
 if test "$action" = upgrade; then
     # The original exit command runs make -u inside the IRIX root.
     test ! -e "$types/makefile" && test ! -L "$types/makefile" || fail 'A site makefile already occupies the package hook path.'
@@ -53,31 +47,23 @@ if test "$action" = upgrade; then
 else
     selection=-R
 fi
+if test "$new_package" = yes; then touch "$art/$package"; fi
 "$root/usr/sbin/swmgr" -V background:off -r "$root" -f "$dist/fw_unzip" -K '*' "$selection" fw_unzip.sw.unzip
 "$root/usr/sbin/versions" -r "$root" fw_unzip >"$state/history"
 test "$(sha256 -q "$table")" = "$current" || fail 'The artwork changed while Software Manager was open.'
-stage=$(mktemp -d "$types/.xiri-unzip.XXXXXX")
 if test "$action" = upgrade; then
     if test -f "$bin" && test "$(sha256 -q "$bin")" = "$old" && test ! -e "$rule" &&
-        test ! -f "$state/published.sha256" && test "$current" = "$base"; then
-        rm "$state/baseline.otr"
+        test "$new_package" = yes; then
+        rm "$art/$package"
+        artwork_release_base
         fail 'Software Manager closed with 5.40 still installed.'
     fi
     awk '$1=="I" && $2=="fw_unzip.sw.unzip" && /5\.50/ {ok=1} END {exit !ok}' "$state/history" &&
         test "$(sha256 -q "$bin")" = "$new" && test -s "$rule" || fail 'The 5.50 upgrade was not applied.'
-    # Rebuild from installed source if retrying after the SGI transaction completed.
-    if test ! -s "$state/lock/unzip.otr"; then
-        (cd "$types/install" && "$root/usr/sbin/fftr" -o "$state/lock/unzip.otr" unzip.ftr)
-    fi
-    "$root/usr/sbin/fftr" -o "$stage/desktop.otr" "$state/lock/unzip.otr" "$state/baseline.otr"
-    chmod 444 "$stage/desktop.otr"
-    sha256 -q "$stage/desktop.otr" >"$state/lock/digest"
-    mv "$state/lock/digest" "$state/published.sha256"
+    test "$(sha256 -q "$rule")" = 49d88838b2c9c8d3690628b60f0229c869cd916be08513c2f887f1b0d707e276 ||
+        fail 'Unexpected CD 4 ZIP filetype source.'
 else
     if awk '$1=="I" && $2 ~ /^fw_unzip(\.|$)/ {ok=1} END {exit !ok}' "$state/history" ||
         test -e "$bin" || test -e "$rule"; then fail 'UnZip is still installed.'; fi
-    cp -p "$state/baseline.otr" "$stage/desktop.otr"
 fi
-mv -f "$stage/desktop.otr" "$table"
-if test "$action" = remove; then rm -f "$state/baseline.otr" "$state/published.sha256"; fi
-sha256 "$table"
+artwork_publish

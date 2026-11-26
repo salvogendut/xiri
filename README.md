@@ -313,6 +313,8 @@ reboot, double-click the game in Icon Catalog’s **Freeware** tab.
 The same installer can add xosview’s CPU and memory meters and upgrade
 SGI Freeware UnZip 5.40 to 5.50 in place. [Manual instructions](lab/irix-installer/README.md#install-xosview-and-upgrade-unzip-in-software-manager)
 · [Upgrade results](docs/results/2026-11-26-freeware-upgrade.md).
+To use xmahjongg and UnZip on the same desktop, use the
+[shared package helpers](lab/irix-installer/README.md#install-xmahjongg-and-unzip-together).
 Both vendor timezone compilers can now create hard-linked aliases with the
 updated module. The same two Indys were used to trace SGI Clock and
 Freeware xosview. [Hard-link and application results](docs/results/2026-11-24-indy-link-clock-xosview.md)
