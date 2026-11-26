@@ -158,7 +158,7 @@ winterm launches for Display, Audio Panel, Sounds and Screen Saver on both relea
 | Entry | Original target | Observed result / next check |
 | --- | --- | --- |
 | `accessibility` | `/usr/sbin/accessx` | **Error dialog.** Cannot save the active AccessX profile; xmodmap helper is also absent. |
-| `audiopanel` | `/usr/sbin/audiopanel` | **Blocked.** The SGI audio driver warning appears even with native HAL2 playback working. The first open of `/dev/hdsp/hdsp0master` returns `ENOENT`. OK exits. |
+| `audiopanel` | `/usr/sbin/audiopanel` | **Speaker gain works with the Indy HDSP update.** Catalog double-click opens the SGI Analog Out strip. Its linked sliders drive the native HAL2 mixer, including startup at zero volume. [Results and screenshots](results/2026-11-26-indy-hdsp.md). |
 | `background` | `/usr/sbin/background` | **Apply and persistence pass.** Reef/Sand patterns and separate Solid colours survive logout/login and reboot for two users. SGI names resolve, and the original picker uses its X11 controls. GL mode remains limited by renderer memory on the 256 MB Indy. [GLX tests](results/2026-11-24-indy-glx.md), [patterns](results/2026-11-06-desktop-preferences.md), [colours](results/2026-11-06-desktop-colours.md). |
 | `colorscheme` | `/usr/sbin/colorscheme` | **Apply and persistence pass.** Inverness and KeyWest remain distinct for two users across logout/login and reboot. [Desktop preferences](results/2026-11-06-desktop-preferences.md). |
 | `desktop` | `/usr/sbin/desktop` | **Grid resource and persistence pass.** Separate users retain the chosen grid resource after login. Full desktop-icon snap gestures remain separate. [Desktop controls](results/2026-11-14-desktop-controls.md). |
@@ -169,7 +169,7 @@ winterm launches for Display, Audio Panel, Sounds and Screen Saver on both relea
 | `monpanel` | `/usr/sbin/monpanel` | **Error dialog.** Reports that Monpanel requires a machine with the flat panel adapter. |
 | `mouse` | `/usr/sbin/mouse` | **Acceleration presets and persistence pass.** Fast 1 and Slow 2 retain different native X pointer values across user logins. Handedness/click-speed remain separate. [Desktop controls](results/2026-11-14-desktop-controls.md). |
 | `screensaver` | `/usr/sbin/screensaver` | **Qix animates.** The [saver v2 CD](results/2026-11-26-sgi-screen-saver.md) enables Demo and idle activation on both Indy releases. The checkbox controls the native Xorg timeout. [Per-user persistence](results/2026-11-14-desktop-controls.md). |
-| `sounds` | `/usr/sbin/dtSounds` | **Blocked.** The visible window is an error reporting no audio output hardware. The IRIX master device open returns `ENOENT` on both Indys. OK exits. |
+| `sounds` | `/usr/sbin/dtSounds` | **Key Click works with the Indy HDSP update.** The real settings panel opens from the Catalog, changes Xorg’s keyboard setting and closes normally. IRIX sound-effect playback remains open. [Results and screenshots](results/2026-11-26-indy-hdsp.md). |
 | `syserrpanel` | `/usr/sbin/syserrpanel` | **Exits 1 without a window.** cannot read config file: /usr/lib/sysmon/notifier.config |
 | `utilities` | `/usr/sbin/dtUtilities` | **Window observed.** Default Viewer & Editor Utilities. Use and normal exit remain untested. |
 | `videopanel` | `/usr/sbin/videopanel` | **Window observed.** vcp. Use and normal exit remain untested. |

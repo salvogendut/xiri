@@ -296,7 +296,9 @@ work.
 - [x] Compare Catalog and winterm launches for Display, Sounds, Audio Panel and Screen Saver on 6.5.22f and 6.5.30f. Verify native blanking and panel dismissal. [Results](results/2026-11-26-indy-controlpanels.md).
 - [x] Enable the Indy's HAL2 board in the graphical bundle. Verify native mixer changes and writes to `/dev/audio` with both releases.
 - [x] Restore the xlock presets from each release's donor and qualify standalone Qix animation and return to winterm on both Indys.
-- [ ] Trace the IRIX HDSP master-device requests on original IRIX. Provide the resource discovery and mixer operations needed by both sound panels, then qualify a real output-level change from each panel.
+- [x] Trace the original Indy HDSP master and event devices. Qualify discovery, independent stereo gain and per-subscriber readiness on both release lines. [HDSP results](results/2026-11-26-indy-hdsp.md).
+- [x] Exercise the SGI Audio Panel speaker slider against the HAL2 mixer and the Sounds panel's Key Click control against Xorg. Qualify the MIPS software conversion at digital silence. [Release checks](results/2026-11-26-indy-hdsp.md).
+- [ ] Implement IRIX PCM playback for desktop sound effects and qualify audible output. The native HAL2 mixer also needs separate validation for IRIX master mute.
 - [ ] Trace the XSGIvc queries made by Display and qualify mode enumeration against the active Newport screen before enabling mode changes.
 - [x] Support SGI xlock start/end events in Xorg. The original Qix Demo, idle activation, Space wake, disable and logout pass on both Indys. [Update and results](results/2026-11-26-sgi-screen-saver.md).
 

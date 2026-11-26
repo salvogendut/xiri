@@ -40,6 +40,8 @@ def main():
                         help='maximum seconds to wait for IRIX login')
     parser.add_argument('--start-system-after', type=float,
                         help='select Start System after this many seconds for a seed that stops at PROM')
+    parser.add_argument('--hdsp-query', type=Path,
+                        help='run the n32 HDSP query and trace the two audio panels on the donor copy')
     args = parser.parse_args()
     if not args.serial_only and not args.login_golden:
         parser.error('--login-golden is required unless --serial-only is selected')
@@ -70,7 +72,7 @@ def main():
     config = f'''nvram = {json.dumps(str(out/'nvram.bin'))}
 banks = [{256 if o2 else 128}, 0, 0, 0]
 headless = {str(args.serial_only).lower()}
-no_audio = true
+no_audio = {str(not args.hdsp_query).lower()}
 ci = true
 ci_socket = {json.dumps(str(control_dir/'iris.sock'))}
 serial_log = {json.dumps(str(out/'serial.log'))}
@@ -91,6 +93,8 @@ overlay = true
 mode = "nat"
 mac = "08:00:69:12:34:56"
 '''
+    if args.hdsp_query:
+        config += f'\n[scsi.2]\npath = {json.dumps(str(out/"scratch.raw"))}\nscratch = true\nsize_mb = 8\n'
     (out/'iris.toml').write_text(config)
     result['config_sha256'] = sha256(out/'iris.toml')
     process = monitor = None
@@ -189,6 +193,25 @@ mac = "08:00:69:12:34:56"
             ci('screenshot', str(out/'desktop.png'))
             result['desktop_png_sha256'] = sha256(out/'desktop.png')
             print('4Dwm running; desktop PNG saved', flush=True)
+        if args.hdsp_query:
+            script = Path(__file__).resolve().parents[1] / 'lab/irix-hdsp/reference.sh'
+            ci('put', str(args.hdsp_query.resolve()), '--to', '/tmp/hdsp-query', timeout=150)
+            ci('put', str(script), '--to', '/tmp/xiri-hdsp.sh', timeout=150)
+            command_line = '/bin/sh /tmp/xiri-hdsp.sh' + (' --query-only' if args.serial_only else '')
+            ci('run', command_line, '--timeout', '180', timeout=200)
+            reference = out / 'hdsp-reference.txt'
+            # The native serial console can echo an RC marker in the middle of
+            # wc's output. Read this bounded, explicitly terminated report directly.
+            ci('scratch', 'clear')
+            ci('run', 'dd if=/tmp/xiri-hdsp-reference of=/dev/rdsk/dks0d2s0 bs=512 conv=sync,notrunc')
+            ci('scratch', 'read', str(reference), '--length', '262144')
+            data = reference.read_bytes().split(b'\0', 1)[0]
+            reference.write_bytes(data)
+            report = data.decode('ascii', errors='replace')
+            if (not re.search(r'^DEVICES 000000[0-9a-f]{2} [0-9a-f]{8}', report, re.M)
+                    or not report.endswith('HDSP reference complete\n')):
+                raise RuntimeError('incomplete HDSP report at ' + str(reference))
+            result['hdsp_reference_sha256'] = sha256(reference)
         ci('serial-send', 'sync; shutdown -p -g0 -y')
         for _ in range(24):
             text = (out/'serial.log').read_text(errors='replace')

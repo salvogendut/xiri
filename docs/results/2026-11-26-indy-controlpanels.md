@@ -1,5 +1,7 @@
 # Four SGI control panels on the Indy v6 desktop
 
+These are the stock v6 results. See the [Screen Saver update](2026-11-26-sgi-screen-saver.md) and the [HDSP audio update](2026-11-26-indy-hdsp.md) for the subsequent add-ons.
+
 The 6.5.22f R4400 and 6.5.30f R5000 give the same results when
 `xiritest` double-clicks these entries on Icon Catalog's ControlPanels page
 or starts the original binaries from winterm.
@@ -114,10 +116,7 @@ python3 lab/native-package/package-indy-savers.py \
 
 ## Remaining device interfaces
 
-The next shared audio test is to trace the first successful master-device
-requests on original IRIX, implement the matching resource and mixer
-operations, then change volume in each SGI panel and read it back through
-NetBSD. Both installed donors carry `/usr/include/sys/hdsp.h`.
+Both installed donors carry `/usr/include/sys/hdsp.h`. The [HDSP follow-up](2026-11-26-indy-hdsp.md) records the original master and event requests and their NetBSD implementations.
 
 For Display, the SDK contains `X11/extensions/XSGIvcproto.h`. Start with
 the queries that `xsetmon` issues to the original server, then map supported

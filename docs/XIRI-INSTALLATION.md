@@ -14,7 +14,7 @@ The tested configuration uses native Xorg and accelerated Newport on IRIS.
 The installer saves the stock kernel for native NetBSD recovery.
 [Installation and rollback instructions](NATIVE-PACKAGE.md#switching-between-the-stock-and-xiri-kernels)
 
-The optional [Indy Screen Saver update and rollback](results/2026-11-26-sgi-screen-saver.md#update-an-existing-v6-disk) adds the original Qix Demo to an installed v6 desktop.
+The optional [Indy Screen Saver update and rollback](results/2026-11-26-sgi-screen-saver.md#update-an-existing-v6-disk) adds the original Qix Demo to an installed v6 desktop. The separate [Indy HDSP update and rollback](results/2026-11-26-indy-hdsp.md#manual-test-on-either-indy-v6-disk) installs the Indy kernel, its PROM image, the HDSP compatibility module and its device links. Both updates work with the existing v6 disks.
 
 ## Our original-media installation
 

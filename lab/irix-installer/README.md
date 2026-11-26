@@ -578,6 +578,7 @@ give the checks against SGI's filetype library.
 
 To rebuild the conversion checks, run
 `python3 lab/irix-installer/build-cvt-probes.py TOOLDIR NEW_OUTPUT`.
+Add `--trunc` to build the reverse-direction `TRUNC.L.D` observers used by the [Indy audio checks](../irix-hdsp/README.md).
 Copy the two binaries into the disposable guest and run each one. Exit zero
 means all 52 conversions matched the expected binary64 bits and inexact
 status. The o32 observer uses paired registers and n32 uses odd wide registers.

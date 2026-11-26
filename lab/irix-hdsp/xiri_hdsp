@@ -1,0 +1,22 @@
+#!/bin/sh
+# PROVIDE: xiri_hdsp
+# REQUIRE: modules mountall
+# BEFORE: LOGIN
+# Allocate the module's current character major on each boot.
+case "${1:-}" in
+start|onestart)
+    test -c /dev/audioctl0 && test "$(audioctl -n name)" = HAL2 || exit 0
+    dir=/var/run/xiri-hdsp
+    test ! -L "$dir" || exit 1
+    mkdir -p -m 755 "$dir" || exit 1
+    /sbin/mknod -r -m 666 "$dir/events" c xirihdsp 0
+    ;;
+stop|onestop)
+    dir=/var/run/xiri-hdsp
+    test ! -L "$dir" || exit 1
+    if test -c "$dir/events" && test ! -L "$dir/events"; then
+        rm "$dir/events" && rmdir "$dir"
+    fi
+    ;;
+*) echo 'Usage: xiri_hdsp start|stop' >&2; exit 1 ;;
+esac

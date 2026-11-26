@@ -16,7 +16,7 @@ Each has a launcher, an IRIX desktop and a native NetBSD login.
 The [Indy ControlPanels results](docs/results/2026-11-26-indy-controlpanels.md)
 cover Screen Saver, Display, Sounds, Audio Panel and the native HAL2 mixer.
 The [Screen Saver update](docs/results/2026-11-26-sgi-screen-saver.md) enables
-the original Qix Demo and idle animation on both Indy desktops.
+the original Qix Demo and idle animation on both Indy desktops. The [HDSP audio update](docs/results/2026-11-26-indy-hdsp.md) connects the SGI sound controls to the native Indy mixer.
 The emulated O2/R10000 shows NetBSD boot messages in the Indy console frame before opening full-screen xdm.
 Both the IRIX 6.5.22 and 6.5.30 disks run 4Dwm and native ctwm.
 [O2 framed console and boot screenshots](docs/results/2026-11-23-o2-frame.md) ·

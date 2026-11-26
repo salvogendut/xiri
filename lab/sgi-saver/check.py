@@ -1,27 +1,18 @@
 #!/usr/bin/env python3
 """Install the saver CD on a temporary copy of an Indy v6 desktop and exercise Qix."""
-import argparse
-import importlib.util
-import json
 from pathlib import Path
-import shutil
-import subprocess
 import sys
 import time
-from types import SimpleNamespace
 
 from PIL import Image, ImageChops
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path[:0] = [str(ROOT / 'scripts'), str(ROOT / 'lab/native-package')]
-from xiri_lab import Guest, load_probe, sha256
-from xiri_lab.kernel_log import KernelLog
+from xiri_lab.indy_addon import load_desktop, run_indy_addon
 from mozilla_lifecycle import position, raise_catalog, login_catalog
 from freeware_lifecycle import logout
 
-desktop_spec = importlib.util.spec_from_file_location('desktop', ROOT / 'lab/native-package/check-clean-desktop.py')
-desktop = importlib.util.module_from_spec(desktop_spec)
-desktop_spec.loader.exec_module(desktop)
+desktop = load_desktop()
 
 
 def click(guest, x, y):
@@ -105,43 +96,7 @@ def check(guest):
 
 
 def main():
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--release', required=True, choices=('6.5.22f', '6.5.30f'))
-    for name in ('bundle', 'media', 'kernel', 'emulator', 'output'):
-        parser.add_argument('--' + name, required=True, type=Path)
-    args = parser.parse_args()
-    pins = json.loads((ROOT / f'docs/results/2026-11-26-controlpanels-{args.release}.json').read_text())
-    disk = args.bundle / 'netbsd-xiri.chd'
-    probe = load_probe()
-    probe.IRIS = (args.emulator / 'iris').resolve()
-    probe.CI = (args.emulator / 'iris-ci').resolve()
-    if (sha256(disk), sha256(args.kernel), sha256(probe.IRIS)) != tuple(
-            pins[key] for key in ('chd_sha256', 'kernel_sha256', 'iris_sha256')):
-        parser.error('expected the v6 Indy inputs for ' + args.release)
-    out = args.output.resolve()
-    out.mkdir(parents=True, exist_ok=False)
-    subprocess.run(['cp', '--reflink=auto', disk, out / 'disk.chd'], check=True)
-    shutil.copyfile(args.bundle / 'nvram.bin', out / 'nvram.bin')
-    config = (args.bundle / 'iris.toml').read_text().replace('"netbsd-xiri.chd"', json.dumps(str(out / 'disk.chd')))
-    config += '\n[scsi.4]\ncdrom = true\npath = ' + json.dumps(str(args.media.resolve())) + '\n'
-    lab = probe.Lab(SimpleNamespace(mode='ordinary', debugger=False), out, config_text=config,
-                    working_directory=out, scsi1_from_config=True)
-    guest = Guest(lab, pace_seconds=.014)
-    symbols = subprocess.check_output(['nm', '-n', args.kernel], text=True)
-    address = next(int(line.split()[0], 16) for line in symbols.splitlines() if line.endswith(' msgbufp'))
-    try:
-        lab.start(boot=False)
-        lab.wait('login: ', 600)
-        lab.send('root')
-        lab.wait('xiri-indy# ', 40)
-        lab.logged_in = True
-        result = check(guest)
-        KernelLog(lab, address).halt()
-        result.update(release=args.release, clean_halt=True, iso_sha256=sha256(args.media),
-                      nvram_input_sha256=sha256(args.bundle / 'nvram.bin'))
-        (out / 'result.json').write_text(json.dumps(result, indent=2) + '\n')
-    finally:
-        lab.close()
+    run_indy_addon(check, __doc__)
 
 
 if __name__ == '__main__':

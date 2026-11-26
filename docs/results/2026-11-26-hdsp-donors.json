@@ -1,0 +1,195 @@
+{
+  "6.5.22f": {
+    "machine": "indy_ip24",
+    "chd_sha256": "b4fff76ffa0ca00c0a90da1c94a3eb41f5f6ba4cb13c0af258b4acca4ad95c41",
+    "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+    "clean_shutdown": true,
+    "hdsp_reference_sha256": "c1e869b07b19337daa3085f094788829c43626acccc977a5434291722257e05d",
+    "hardware": "Iris Audio Processor: version A2 revision 4.1.0",
+    "devices": {
+      "5": {
+        "channels": 2,
+        "name": "A2.AnalogIn",
+        "gain_db": [
+          15.0,
+          15.0
+        ]
+      },
+      "6": {
+        "channels": 2,
+        "name": "A2.AnalogOut",
+        "gain_db": [
+          36.123599,
+          36.123599
+        ]
+      },
+      "7": {
+        "channels": 2,
+        "name": "A2.AESIn",
+        "gain_db": [
+          0.0,
+          0.0
+        ]
+      },
+      "8": {
+        "channels": 2,
+        "name": "A2.AESOut",
+        "gain_db": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "output_interfaces": {
+      "21": {
+        "channels": 2,
+        "name": "A2.LineOut",
+        "gain_db": [
+          0.0,
+          0.0
+        ]
+      },
+      "22": {
+        "channels": 2,
+        "name": "A2.Speaker",
+        "gain_db": [
+          36.123599,
+          36.123599
+        ]
+      }
+    },
+    "default_output": 6,
+    "panel_requests": {
+      "dtSounds": [
+        25,
+        26,
+        27
+      ],
+      "audiopanel": [
+        25,
+        26,
+        27,
+        28,
+        112
+      ]
+    },
+    "apanel_events_opened": true,
+    "event_reference_sha256": "e40b489d9a087ecc947086fe20ae241cb3a04deebebcacefa252d12b83484bc6",
+    "event_reference_clean_shutdown": true,
+    "gain_event": {
+      "queue": "new, analog output GAIN subscription",
+      "pending_after_set": 1,
+      "source": 21,
+      "resource": 6,
+      "parameter": "0x10000019",
+      "subsystem": 25,
+      "data_channels": 2,
+      "poll_ready": {
+        "subscribed": true,
+        "unsubscribed": false
+      }
+    },
+    "resource_paths": {
+      "A2.AnalogOut": [
+        11,
+        25,
+        6
+      ],
+      "Speaker": [
+        11,
+        25,
+        6,
+        22
+      ],
+      "Speaker under AnalogOut": [
+        6,
+        22
+      ],
+      "A3.AnalogOut": [],
+      "Analog Out": [
+        11,
+        25,
+        6
+      ],
+      "AnalogOut": [
+        11,
+        25,
+        6
+      ],
+      "A2": [
+        11,
+        25
+      ],
+      "DefaultOut": []
+    },
+    "label_reference_sha256": "5cb55063d1802387bbd13796e0501d76c25bda90433b5263de16f6eaffb53e7b",
+    "clock_reference_sha256": "20d9b9369a08c9fcbb6fd6571965184906f4b788d57949104d58e25094ec40c1",
+    "clock_reference_clean_shutdown": true,
+    "analog_output_clock": {
+      "rate_hz": 48000,
+      "current": 14,
+      "choices": [
+        {
+          "resource": 12,
+          "name": "A2.AESMclk",
+          "label": "AES Clock"
+        },
+        {
+          "resource": 13,
+          "name": "A2.Crystal441Mclk",
+          "label": "44100 Hz Internal Clock"
+        },
+        {
+          "resource": 14,
+          "name": "A2.Crystal48Mclk",
+          "label": "48 kHz Internal Clock"
+        }
+      ]
+    }
+  },
+  "6.5.30f": {
+    "machine": "o2_ip32",
+    "chd_sha256": "339f74457dfbb06813681ab5db2ccfdd29d394e8a02dfcdcd6c6ac7c22a836db",
+    "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+    "clean_shutdown": true,
+    "hdsp_reference_sha256": "d20a62ec10a98f3171baec75e30b5c53a2dd1461fb0364edda6ce9131d1bdca2",
+    "hardware": "Iris Audio Processor: version A3 revision 0",
+    "devices": {
+      "5": {
+        "channels": 2,
+        "name": "A3.AnalogIn",
+        "gain_db": [
+          0.0,
+          0.0
+        ]
+      },
+      "6": {
+        "channels": 2,
+        "name": "A3.AnalogOut",
+        "gain_db": [
+          -10.5,
+          -10.5
+        ]
+      },
+      "7": {
+        "channels": 2,
+        "name": "A3.AnalogOut2",
+        "gain_db": [
+          -10.5,
+          -10.5
+        ]
+      }
+    },
+    "output_interfaces": {
+      "20": {
+        "channels": 2,
+        "name": "A3.Speaker",
+        "gain_db": [
+          -10.5,
+          -10.5
+        ]
+      }
+    },
+    "default_output": 6
+  }
+}

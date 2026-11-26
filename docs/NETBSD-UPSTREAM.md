@@ -89,7 +89,7 @@ the IRIX module.
 | Change | Source locations | Role and current evidence |
 | --- | --- | --- |
 | MIPS FPU state after signal return | `sys/arch/mips/mips/mips_fpu.c`, `fpu_discard()` | Retain valid replacement FPU state after discarding live registers. Fixes native X server Type1 font failures. [Register, conversion and font evidence](results/2026-11-05-type1-scaler.md). |
-| MIPS hardware FPU completion of `CVT.D.L` | `sys/arch/mips/mips/fp.S`, `mips_fputrap.c`, `mips_fpu.c` | The R4400 and R5000 trap on large 64-bit integer operands. The kernel converts them in the saved register context and preserves disabled IEEE exception causes on restore. [Indy conversion and installer results](results/2026-11-24-indy-inst.md). |
+| MIPS hardware FPU completion of `CVT.D.L` and `TRUNC.L.D` | `sys/arch/mips/mips/fp.S`, `mips_fputrap.c`, `mips_fpu.c` | The R4400 and R5000 trap on large 64-bit integer operands. The kernel converts them in the saved register context and preserves disabled IEEE exception causes on restore. [Installer conversions](results/2026-11-24-indy-inst.md) · [SGI Audio Panel at zero gain](results/2026-11-26-indy-hdsp.md). |
 | Child wait accounting and scanning | `sys/kern/kern_exit.c`, `find_stopped_child()`; regressions in `tests/lib/libc/sys/t_wait.c` | Consuming continuation must not decrement the stopped-child count; scans must still find continued children when that count is zero. [Native wait evidence](results/2026-11-05-native-wait.json). This is separate from the IRIX SIGCHLD flag above. |
 | NetBSD32 CD9660 mount arguments | `sys/compat/netbsd32/netbsd32.h`, `netbsd32_fs.c`, `netbsd32___mount50()` | Translate UID/GID and file/directory masks, preserving old argument lengths and GETARGS behavior. Fixes inaccessible CD files for ordinary users. [158 CD ABI checks](results/2026-11-04-system-stability.md). |
 | Contiguous-page allocation lower bound | `sys/uvm/uvm_pglist.c`, `uvm_pglistalloc_contig_aggressive()` | Reject an alignment-rounded start below the usable lower bound. [Allocator reproduction](results/2026-11-03-uvm-pglist.md). |
@@ -112,6 +112,7 @@ The implementation is in `sys/compat/irix_o32/`:
 
 | Files | Responsibility |
 | --- | --- |
+| `irix_hdsp.c`, `irix_hdsp_events.c`, `irix_hdsp.h` | IRIX HDSP device discovery, native HAL2 mixer translation and a pollable character device for gain-change events. These use existing NetBSD audio and device APIs. [Indy measurements](results/2026-11-26-indy-hdsp.md). |
 | `irix_o32.c` | ELF/ABI admission, exec lifecycle, private syscall table and adapters, PRDA initialization, module registration |
 | `irix_signal.c`, `irix_signal.h` | Foreign signal delivery and return |
 | `irix_sproc.c`, `irix_sproc.h` | Bounded shared-process groups, fork/exit state and private PRDA behavior |

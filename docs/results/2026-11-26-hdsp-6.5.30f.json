@@ -1,0 +1,47 @@
+{
+  "release": "6.5.30f",
+  "iso_sha256": "930c6ace8f952940f2ced991d4c79dea8a635f4f39e5e7cb56273a84552da384",
+  "module_sha256": "1d42db0f2d867a8218f54773e6243fc4c1c8706bfcaf0854520e39d4f76fa716",
+  "installed_kernel_sha256": "f94d0d6fd68d861a36e2296e39710773c81b53cbbe0b2b571c92ae3cff74a971",
+  "installed_boot_sha256": "19178afcd0685fc602ee4fea590f3f67746446214d6da9d6ab74426cee07934f",
+  "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+  "chd_sha256": "2e71de99f3e51920180a8a2eae6e9d6b9380804595f15effde6702d55b05fc68",
+  "kernel_sha256": "e989c42d3469f5d59e2ec759fdb3d7f54d7a893acdc326f6f3a3c4487f19fd22",
+  "nvram_input_sha256": "3399e37f57395e3bba6fcf8974d6da426f792ff5391f3f3fa0fbf71a72b30964",
+  "conversion_probes": [
+    "cvt-32",
+    "cvt-n32",
+    "trunc-32",
+    "trunc-n32"
+  ],
+  "native_sample_rate_hz": 48000,
+  "mixer_before": "0,0",
+  "stereo_probe": "64,128",
+  "gain_event": [
+    "OPEN 00000003 ",
+    "EVENT_OPEN 00000004 ",
+    "EVENT_INIT 00000000 ",
+    "EVENT_SELECT 00000000 ",
+    "EVENT_POLL 00000001 00000001 00000000 ",
+    "EVENT_PENDING 00000000 00000001 ",
+    "EVENT_GAIN 00000000 00000016 00000006 10000019 00000019 0000001c ab605e9b 00000000 00000000 00000000 00000002 00000000 00000000 00000000 00000000 00000000 00000000 "
+  ],
+  "key_click_percent": [
+    0,
+    51,
+    0
+  ],
+  "gui_mixer_levels": [
+    "0,0",
+    "185,185",
+    "26,26"
+  ],
+  "logout_to_xdm": true,
+  "restored_v6_after_reboot": true,
+  "clean_halt": true,
+  "screenshots": {
+    "audiopanel": "742ec0e621b23da4f03331adcbbd96d35ec8c458c9f98e7d6a7c3ab8b2670b90",
+    "sounds": "7f111b33bbe867eee259ec4f2d2d844cc349054a84aa365672250dbdde317768"
+  },
+  "rollback_check": "Resumed on the same guest via its serial console after the host test controller exited during reboot."
+}
