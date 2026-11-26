@@ -54,6 +54,8 @@ def main():
     shutil.copyfile(src / 'nvram.bin', out / 'nvram.bin')
     shutil.copy2(emu / 'iris', out / 'iris')
     config = (src / 'install/iris.toml').read_text().split('[scsi.1]')[0].replace('ci = true', 'ci = false')
+    # The installer suppresses audio. On Indy that also removes HAL2 from the guest.
+    config = config.replace('no_audio = true', 'no_audio = false')
     (out / 'iris.toml').write_text(
         f'nvram = "nvram.bin"\nmonitor_port = {port}\nserial_port_a = {port+1}\n'
         f'serial_port_b = {port+2}\nheadless = false\n'

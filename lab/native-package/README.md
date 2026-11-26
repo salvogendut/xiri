@@ -72,6 +72,13 @@ python3 lab/native-package/check-clean-desktop.py desktop \
   --output "$run" --release "$release" --bundle "$bundle" --kernel "$kernel"
 ```
 
+Add `--controlpanels` to the `desktop` command to double-click Display,
+Audio Panel, Sounds and Screen Saver as `xiritest`. The check saves the
+four visible clients, dismisses the known dialogs, and reads the Xorg
+blanking timeout before and after toggling Screen Saver and restoring it.
+The graphical desktop phase enables Indy HAL2 and queries the native mixer.
+[Observed results](../../docs/results/2026-11-26-indy-controlpanels.md).
+
 Set `release` to `6.5.22f` or `6.5.30f`, use distinct run/bundle paths,
 and supply the exact unstripped Indy kernel as `kernel`. The guest fixture
 creates disposable xiritest and netbsdtest accounts, sends TERM to the installer

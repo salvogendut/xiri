@@ -118,6 +118,11 @@ Choose the installer for the IRIX release on the target. The local CDs are
 `.work/installers/indy-11.99.11/utime-v6/xiri-6.5.30f.iso`.
 The base package owns the Indy kernel, PROM boot file and IRIX module.
 Mozilla remains optional. Both browser editions use the same base module.
+
+An optional release-matched CD adds the original SGI xlock saver presets
+and configuration plug-in to an existing Indy desktop. It can be installed
+with the session running. Reopen Screen Saver to pick up the files.
+[Install the saver CD and check its Xorg limitations](results/2026-11-26-indy-controlpanels.md#the-empty-screen-saver-list).
 [Clean CHDs, launchers and test records](results/2026-11-26-indy-v6.md).
 
 **Existing v5 desktop.** Mount the matching v6 CD on the NetBSD root

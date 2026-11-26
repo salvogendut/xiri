@@ -189,7 +189,7 @@ def display_upgrade(guest, original, legacy):
                 legacy_ownership=legacy, site_files_preserved=True)
 
 
-def desktop(guest, out, colour=None, while_logged_in=None, check_clock=False):
+def desktop(guest, out, colour=None, while_logged_in=None, check_clock=False, check_panels=False):
     greeter(guest)
     guest.command('grep -Fq \'Option "NoAccel" "false"\' /usr/local/share/xiri/xorg.conf')
     acceleration = guest.read_text("grep -Ei 'NEWPORT.*(NoAccel|accel)|using.*XAA' /var/log/Xorg.0.log").strip()
@@ -229,6 +229,9 @@ def desktop(guest, out, colour=None, while_logged_in=None, check_clock=False):
     guest.monitor('screen shot ' + str(out / 'desktop.png'))
     if while_logged_in:
         while_logged_in(guest)
+    if check_panels:
+        from controlpanels import check
+        panels = check(guest, out)
     clock = sgi_clock(guest, out) if check_clock else None
     guest.command('su -m xiritest -c "env XIRI_SESSION_DIR=\'$job\' /usr/local/bin/xiri-logout"')
     greeter(guest)
@@ -272,6 +275,8 @@ def desktop(guest, out, colour=None, while_logged_in=None, check_clock=False):
     )
     if check_clock:
         checks['sgi_clock'] = clock
+    if check_panels:
+        checks['controlpanels'] = panels
     return checks
 
 
@@ -285,6 +290,7 @@ def main():
     parser.add_argument('--bundle', type=Path, help='test a copy of a packaged CHD and its graphical PROM')
     parser.add_argument('--kernel', type=Path, help='matching unstripped kernel for the graphical halt check')
     parser.add_argument('--sgi-clock', action='store_true', help='verify original SGI Clock redraws in the Xiri session')
+    parser.add_argument('--controlpanels', action='store_true', help='check Display, Audio Panel, Sounds and Screen Saver from Icon Catalog')
     parser.add_argument('--mozilla', action='store_true', help='select Mozilla on a fresh installation')
     parser.add_argument('--wget-fixture', type=Path, help='private wget test ISO for the Indy kernel checks')
     parser.add_argument('--cd4', type=Path, help='complete May 2004 Freeware CD 4 ISO for the freeware phase')
@@ -316,6 +322,8 @@ def main():
         parser.error('--mozilla requires the install phase')
     if args.sgi_clock and args.phase != 'desktop':
         parser.error('--sgi-clock requires the desktop phase')
+    if args.controlpanels and args.phase != 'desktop':
+        parser.error('--controlpanels requires the desktop phase')
     if args.legacy_ownership and args.phase != 'display-upgrade':
         parser.error('--legacy-ownership requires the display-upgrade phase')
     if args.full_target and args.phase != 'disk-full':
@@ -367,8 +375,10 @@ def main():
     shutil.copyfile((base if install_phase else bundle) / 'nvram.bin', run / 'nvram.bin')
     cpu = 'r4400' if args.release == '6.5.22f' else 'r5000'
     cache = 'cache = "shadow"\n' if cpu == 'r5000' else ''
+    # The graphical desktop check uses the same HAL2 board as the manual bundle.
+    no_audio = 'false' if args.phase == 'desktop' else 'true'
     config = (
-        'ci = true\nno_audio = true\nscsi_deferred_int = true\nbanks = [128,128,0,0]\n'
+        f'ci = true\nno_audio = {no_audio}\nscsi_deferred_int = true\nbanks = [128,128,0,0]\n'
         f'[machine]\nprofile = "indy_ip24"\ncpu = "{cpu}"\n'
         + cache
         + '[graphics]\nboard = "newport"\n[scsi.1]\noverlay = false\npath = '
@@ -479,7 +489,9 @@ def main():
                 if receipt != package['receipt']:
                     raise ValueError('unexpected installed package on cold boot: ' + receipt)
                 result['receipt'] = receipt
-            result['checks'] = desktop(guest, run, check_clock=args.sgi_clock)
+            result['checks'] = desktop(guest, run, check_clock=args.sgi_clock, check_panels=args.controlpanels)
+            guest.command('test "$(audioctl -n name)" = HAL2 && mixerctl outputs.master')
+            result['checks']['mixer'] = guest.read_text('mixerctl outputs.master').strip()
         if install_phase:
             lab.send('shutdown -h now')
             lab.wait('unmounting done', 120)

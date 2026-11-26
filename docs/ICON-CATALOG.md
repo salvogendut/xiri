@@ -151,24 +151,25 @@ retained; untested behavior is not promoted to a pass.
 
 ## ControlPanels (18)
 
-The November 14 panel checks launch the original programs from winterm;
-they do not repeat every Catalog double-click route.
+The November 14 checks launched the panels from winterm. The [November 26
+Indy v6 checks](results/2026-11-26-indy-controlpanels.md) compare Catalog and
+winterm launches for Display, Audio Panel, Sounds and Screen Saver on both releases.
 
 | Entry | Original target | Observed result / next check |
 | --- | --- | --- |
 | `accessibility` | `/usr/sbin/accessx` | **Error dialog.** Cannot save the active AccessX profile; xmodmap helper is also absent. |
-| `audiopanel` | `/usr/sbin/audiopanel` | **Error dialog.** Reports that this machine has no audio driver. |
+| `audiopanel` | `/usr/sbin/audiopanel` | **Blocked.** The SGI audio driver warning appears even with native HAL2 playback working. The first open of `/dev/hdsp/hdsp0master` returns `ENOENT`. OK exits. |
 | `background` | `/usr/sbin/background` | **Apply and persistence pass.** Reef/Sand patterns and separate Solid colours survive logout/login and reboot for two users. SGI names resolve, and the original picker uses its X11 controls. GL mode remains limited by renderer memory on the 256 MB Indy. [GLX tests](results/2026-11-24-indy-glx.md), [patterns](results/2026-11-06-desktop-preferences.md), [colours](results/2026-11-06-desktop-colours.md). |
 | `colorscheme` | `/usr/sbin/colorscheme` | **Apply and persistence pass.** Inverness and KeyWest remain distinct for two users across logout/login and reboot. [Desktop preferences](results/2026-11-06-desktop-preferences.md). |
 | `desktop` | `/usr/sbin/desktop` | **Grid resource and persistence pass.** Separate users retain the chosen grid resource after login. Full desktop-icon snap gestures remain separate. [Desktop controls](results/2026-11-14-desktop-controls.md). |
-| `display` | `/usr/bin/X11/xsetmon` | **Error dialog.** Reports that the X display lacks the XSGIvc extension required by xsetmon. |
+| `display` | `/usr/bin/X11/xsetmon` | **Blocked.** Xorg exposes RandR and XF86VidMode. The SGI panel requests XSGIvc and displays an error. OK exits. |
 | `iconviews` | `/usr/sbin/fmprefs` | **Hidden-file defaults and persistence pass.** Fresh folder views and reopened panels reflect separate users’ saved choices after login. [Desktop controls](results/2026-11-14-desktop-controls.md). |
 | `keyboard` | `/usr/sbin/keyboard` | **Key Repeat and persistence pass.** The original panel now opens; its repeat toggle changes native X state and survives login. Speed/Delay remain disabled without XSGI-Misc. [Desktop controls](results/2026-11-14-desktop-controls.md). |
 | `language` | `/usr/sbin/language` | **Exits 1 without a window.** Error:            Can't get default (en) or fallback (en) dictionaries No dictionary loaded.  Messages may be very strange Fatal Error:      Couldn't load config files Exiting |
 | `monpanel` | `/usr/sbin/monpanel` | **Error dialog.** Reports that Monpanel requires a machine with the flat panel adapter. |
 | `mouse` | `/usr/sbin/mouse` | **Acceleration presets and persistence pass.** Fast 1 and Slow 2 retain different native X pointer values across user logins. Handedness/click-speed remain separate. [Desktop controls](results/2026-11-14-desktop-controls.md). |
-| `screensaver` | `/usr/sbin/screensaver` | **Blanking setting and persistence pass.** Separate users retain 600 seconds or off in the native X server. Animated savers and DPMS remain separate. [Desktop controls](results/2026-11-14-desktop-controls.md). |
-| `sounds` | `/usr/sbin/dtSounds` | **Window observed.** dtSounds. Use and normal exit remain untested. |
+| `screensaver` | `/usr/sbin/screensaver` | **Blanking passes.** The checkbox changes the Xorg timeout from 0 to 600 seconds and back, and Close exits. The [saver CD](results/2026-11-26-indy-controlpanels.md#the-empty-screen-saver-list) populates the clean v6 list and restores Qix settings. Demo still needs the SGI saver extension. [Per-user persistence](results/2026-11-14-desktop-controls.md). |
+| `sounds` | `/usr/sbin/dtSounds` | **Blocked.** The visible window is an error reporting no audio output hardware. The IRIX master device open returns `ENOENT` on both Indys. OK exits. |
 | `syserrpanel` | `/usr/sbin/syserrpanel` | **Exits 1 without a window.** cannot read config file: /usr/lib/sysmon/notifier.config |
 | `utilities` | `/usr/sbin/dtUtilities` | **Window observed.** Default Viewer & Editor Utilities. Use and normal exit remain untested. |
 | `videopanel` | `/usr/sbin/videopanel` | **Window observed.** vcp. Use and normal exit remain untested. |

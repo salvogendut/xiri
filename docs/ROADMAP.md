@@ -291,15 +291,14 @@ retains the native-wait core/module and needs no new kernel hooks.
 Individual application fixes and native IRIX clogin integration remain later
 work.
 
-## Next ControlPanels checks
+## Indy ControlPanels
 
-After the desktop Software Manager and v6 platform updates, double-click
-`display`, `sounds`, `audiopanel` and `screensaver` in Icon Catalog on both
-IRIX release lines. Record the first visible result, a working control and
-normal exit for each. Compare the Catalog launch with the terminal route:
-earlier runs reached the Sounds window and saved a screen-blanking timeout.
-Display requested XSGIvc, and Audio Panel reported a missing audio driver.
-[Earlier panel observations](ICON-CATALOG.md#controlpanels-18).
+- [x] Compare Catalog and winterm launches for Display, Sounds, Audio Panel and Screen Saver on 6.5.22f and 6.5.30f. Verify native blanking and panel dismissal. [Results](results/2026-11-26-indy-controlpanels.md).
+- [x] Enable the Indy's HAL2 board in the graphical bundle. Verify native mixer changes and writes to `/dev/audio` with both releases.
+- [x] Restore the xlock presets from each release's donor and qualify standalone Qix animation and return to winterm on both Indys.
+- [ ] Trace the IRIX HDSP master-device requests on original IRIX. Provide the resource discovery and mixer operations needed by both sound panels, then qualify a real output-level change from each panel.
+- [ ] Trace the XSGIvc queries made by Display and qualify mode enumeration against the active Newport screen before enabling mode changes.
+- [ ] Support the original `SCREEN-SAVER` start/end events used by SGI xlock and test a full-screen animation through idle, wake and logout.
 
 ## Next packaging phase
 

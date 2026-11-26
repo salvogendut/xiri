@@ -1,0 +1,202 @@
+{
+  "release": "6.5.22f",
+  "cpu": "R4400",
+  "chd_sha256": "9faeb6cf66ad9fd20966b7f67a5284eb18476e5e1126b3043f60c82e7c567226",
+  "kernel_sha256": "e989c42d3469f5d59e2ec759fdb3d7f54d7a893acdc326f6f3a3c4487f19fd22",
+  "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+  "nvram_sha256": "be0ebf1c1d11e7b0957815e7dee0ee33a59b67663ffc316f515f6fdf0bb11b16",
+  "irix_desktop_account": "xiritest",
+  "catalog": "ControlPanels (Page 3 of 10)",
+  "catalog_items": 17,
+  "panels": {
+    "display": {
+      "catalog_on_original_launcher": "0x1800011 \"display\": (\"errorDialog_popup\" \"XSetmon\")  436x122+0+0  +423+452",
+      "winterm_with_hal2": "0x1800011 \"xsetmon\": (\"errorDialog_popup\" \"XSetmon\")  436x122+0+0  +423+452",
+      "catalog_with_hal2": {
+        "window": "0x1600011 \"display\": (\"errorDialog_popup\" \"XSetmon\")  436x122+0+0  +423+452",
+        "closed": true
+      },
+      "png": "2026-11-26-controlpanels-6.5.22f-display.png",
+      "png_sha256": "5a7f11b166d37666fd7903675e5046e109c09ae70c61998a296b23c7a30280ae"
+    },
+    "audiopanel": {
+      "catalog_on_original_launcher": "0x1800011 \"audiopanel\": (\"warningDialog_popup\" \"Apanel\")  327x118+0+0  +477+454",
+      "winterm_with_hal2": "0x1800011 \"audiopanel\": (\"warningDialog_popup\" \"Apanel\")  327x118+0+0  +477+454",
+      "catalog_with_hal2": {
+        "window": "0x1600011 \"audiopanel\": (\"warningDialog_popup\" \"Apanel\")  327x118+0+0  +477+454",
+        "closed": true
+      },
+      "png": "2026-11-26-controlpanels-6.5.22f-audiopanel.png",
+      "png_sha256": "9197e44ec1b891710301ace9d722cbf238358f1abe89bfa7f11e49b158e82f75"
+    },
+    "sounds": {
+      "catalog_on_original_launcher": "0x180001d \"sounds\": (\"errorDialog_popup\" \"DtSounds\")  370x120+0+0  +456+453",
+      "winterm_with_hal2": "0x180001d \"dtSounds\": (\"errorDialog_popup\" \"DtSounds\")  370x120+0+0  +456+453",
+      "catalog_with_hal2": {
+        "window": "0x160001d \"sounds\": (\"errorDialog_popup\" \"DtSounds\")  370x120+0+0  +456+453",
+        "closed": true
+      },
+      "png": "2026-11-26-controlpanels-6.5.22f-sounds.png",
+      "png_sha256": "e792426d75f907394a6c5fc0a9f5bb6d586886b9c7f3b2ce8fd64f07356f06af"
+    },
+    "screensaver": {
+      "catalog_on_original_launcher": "0x1800032 \"Screen Saver\": (\"screensaver\" \"ScreenSaver\")  300x420+0+0  +32+32",
+      "winterm_with_hal2": "0x1800032 \"Screen Saver\": (\"screensaver\" \"ScreenSaver\")  300x420+0+0  +32+32",
+      "catalog_with_hal2": {
+        "window": "0x1600032 \"Screen Saver\": (\"screensaver\" \"ScreenSaver\")  300x420+0+0  +32+32",
+        "timeout_seconds": [
+          0,
+          600,
+          0
+        ],
+        "closed": true
+      },
+      "png": "2026-11-26-controlpanels-6.5.22f-screensaver.png",
+      "png_sha256": "701d6ccf43675a6f3bf220a544c2f1018951aa51fa878e63737db4ba0d0a6143"
+    }
+  },
+  "audio": {
+    "with_no_audio_true": "[     1.000000] haltwo at hpc0 offset 0x58000 not configured",
+    "with_no_audio_false": [
+      "[     1.000000] haltwo0 at hpc0 offset 0x58000: HAL2 revision 4.1.0",
+      "[     1.000000] audio0 at haltwo0: playback",
+      "[     1.000000] audio0: slinear_be:16 2ch 48000Hz, blk 8192 bytes (42.6ms) for playback",
+      "[     1.000000] spkr0 at audio0: PC Speaker (synthesized)"
+    ],
+    "mixer_readback": [
+      "0,0",
+      "64,96",
+      "0,0"
+    ],
+    "native_playback_dd": [
+      "0",
+      "8+0 records in",
+      "8+0 records out",
+      "8192 bytes transferred in 3.129 secs (2618 bytes/sec)"
+    ],
+    "sgipanel_traces": [
+      "/tmp/panel-audio.trace",
+      "  1306   1306 audiopanel NAMI  \"/emul/irix/dev/hdsp/hdsp0master\"",
+      "  1306   1306 audiopanel NAMI  \"/dev/hdsp/hdsp0master\"",
+      "  1306   1306 audiopanel RET   open -1 errno 2 No such file or directory",
+      "/tmp/panel-sounds.trace",
+      "  1101   1101 dtSounds NAMI  \"/emul/irix/dev/hdsp/hdsp0master\"",
+      "  1101   1101 dtSounds NAMI  \"/dev/hdsp/hdsp0master\"",
+      "  1101   1101 dtSounds RET   open -1 errno 2 No such file or directory"
+    ]
+  },
+  "xorg": [
+    "DPMS",
+    "RANDR",
+    "XFree86-VidModeExtension",
+    "dimensions:    1280x1024 pixels (339x271 millimeters)",
+    "default connected 1280x1024+0+0 0mm x 0mm",
+    "1280x1024     75.00*   60.00"
+  ],
+  "donor": {
+    "release": "6.5.22f",
+    "raw_sha256": "fc70f353f53244eaa2707609b348e4a2b22aae3de6ce41398bdd8d6c3f4bda56",
+    "/usr/lib/X11/savers": [
+      "defaults",
+      "modules"
+    ],
+    "/usr/lib32/savers": [
+      "modules"
+    ],
+    "/usr/lib32/savers/modules": [
+      "glsavers.so",
+      "haven.so",
+      "xlock.so"
+    ],
+    "/usr/lib/X11/savers/defaults": [
+      "atlantis",
+      "blank",
+      "bongo",
+      "ep",
+      "flame",
+      "glfalls",
+      "hop",
+      "image",
+      "life",
+      "noof",
+      "pop",
+      "pyro",
+      "qix",
+      "random",
+      "rotor",
+      "swarm"
+    ],
+    "/usr/include/sys/hdsp.h": "06272b5f8a1048ae102428a948f92f93e67e223b757a259cf7b28005a7221c62",
+    "/usr/include/X11/extensions/XSGIvcproto.h": null
+  },
+  "sessions": {
+    "base": {
+      "logout": true,
+      "halted": true,
+      "stopped": true
+    },
+    "hal2": {
+      "logout": true,
+      "halted": true,
+      "stopped": true
+    },
+    "graphical_regression": {
+      "both_logouts": true,
+      "native_session": "ctwm + xterm",
+      "halted": true,
+      "stopped": true
+    }
+  },
+  "saver_addon": {
+    "media_sha256": "18ecdd4f1ffdd7422de7232ed252180332ae2d4c082f0d6529858906df85ac4a",
+    "import_sha256": "dad038c51530d3c35133d1bb6b345a4411ac04c0ce08cefb3b2e7f938044dfb0",
+    "verified_inventory": [
+      "79d57826e5feda9486ccaf8dee5df97489efaf30982152df4f73ad173bfd4c49 555 usr/bin/X11/xlock",
+      "5548e17d872d85a880a5c2f251dab831328aea0dc52e2f712e740a0790d9b318 444 usr/lib/X11/savers/defaults/blank",
+      "a8a2d6ba51d86b18bb5ec6ab7fa77e2915a230bcd260011bc39c0c9491d3356a 444 usr/lib/X11/savers/defaults/flame",
+      "46b6010f783337f6dbeebadee6582596b800310b4921e252e014c322b43ee36b 444 usr/lib/X11/savers/defaults/hop",
+      "55f32b838adb8ab4b4c13ea5e4644d6df35e97d36faf563e7a3f268bceef402c 444 usr/lib/X11/savers/defaults/image",
+      "8593851d9ed3a819446968107018d8fe9ba7708a267002e417fa21e0ceb0bbd0 444 usr/lib/X11/savers/defaults/life",
+      "d5fe0eca0fe4d5c1c0fda40d087f173bf8e923ea462ad97070434a427678e5ff 444 usr/lib/X11/savers/defaults/pop",
+      "ac90f859e660c0035885f82469406c29ff250577ed43ec9d6dada08d0b06edbb 444 usr/lib/X11/savers/defaults/pyro",
+      "a5cb0ba3dd7ef9a6bff7c0357fdb6ebbfb5314fc0483acf1205259658837d7c2 444 usr/lib/X11/savers/defaults/qix",
+      "35383730f9ebd17e9632d3b33121895044f1acbd8e28913b8f9ac554fb3bc9c4 444 usr/lib/X11/savers/defaults/random",
+      "2a9754e9889c56cdfa18b2cc9210dfadd5fccdf425ea5c46323550c11b2ede16 444 usr/lib/X11/savers/defaults/rotor",
+      "417fc4017d35bdadae060f1e8c6da755e899afefec58d9efc2d39f5875b29976 444 usr/lib/X11/savers/defaults/swarm",
+      "4c67d8b6744c970bf0da41dc8a84bee79786b1c4fa8d2beed7a17d99f1ca850a 555 usr/lib32/libpam.so",
+      "bfe4a7a1f0321ee6f976f4af15fbd88dafb350424e7c86e19b88a7b7304b41c9 555 usr/lib32/libpam_misc.so",
+      "25005ca11f92b146de0599bef4f1b758dd24b98f10b4b99b086a92f6dd7a9564 555 usr/lib32/libpamc.so",
+      "cf110c8b53f8ae0d48f767265990199e4d1b81bc29061158f1466a33262eb632 555 usr/lib32/savers/modules/xlock.so"
+    ],
+    "repeat_install": true,
+    "wrong_release_rejected": true,
+    "conflict_preserved": true,
+    "preview_log": [
+      "xlock:  screen saver extension not supported on server \"127.0.0.1:0.0\"",
+      "xlock: sorry, your server doesn't support the screen saver extension"
+    ],
+    "settings_png": "2026-11-26-controlpanels-6.5.22f-qix-panel.png",
+    "settings_png_sha256": "a281fc7972a5c8d89a54db83c48410084a1233125851953d0b9b0f8448534c72",
+    "logout": true,
+    "halted": true,
+    "stopped": true,
+    "standalone_qix": {
+      "command": "/emul/irix/usr/bin/X11/xlock -nolock -mode qix",
+      "process_poll": "Serial command timed out while the animation was running. Independent IRIS monitor screenshots show Qix and the return to the shell.",
+      "frame_sha256": [
+        "5c93ee41f98eacd65c7b3ca629341afbe3f79dff57f99fc3241b650ed66eb0bd",
+        "3d7f4a473baf46369c1beeed909cd20279ee9767e89870195b581490e8fa2fe7",
+        "57a792b5ac600cd8e69a020a963a5c3e5d536c44677d999064603af96becc342"
+      ],
+      "changed_luminance_pixels": [
+        16670,
+        23030
+      ],
+      "keyboard_exit": "Space returned to the winterm prompt",
+      "halted": true,
+      "stopped": true,
+      "png": "2026-11-26-controlpanels-6.5.22f-qix.png",
+      "returned_to_shell_png": "2026-11-26-controlpanels-6.5.22f-qix-exit.png"
+    }
+  }
+}

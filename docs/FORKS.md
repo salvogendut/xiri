@@ -72,6 +72,11 @@ in `08e53ba7`. [Octane build and qualification](results/2026-11-23-octane-deskto
 
 ## IRIS upstream updates
 
+The November 26 ControlPanels cycle fetched upstream `10ab247b`, already
+on IRIS `xiri` at `76125096`. Both clean Indy v6 disks used their pinned
+IRIS build `0bc52567` for the HAL2 comparison.
+[Guest results](results/2026-11-26-indy-controlpanels.md).
+
 On November 26 the Software Manager and platform update cycle integrated
 upstream `10ab247b` into `xiri` at `76125096`. Upstream supplies fastclear
 colour packing for 4-, 8- and 12-bit Newport modes and removes the hardware

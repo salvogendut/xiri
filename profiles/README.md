@@ -23,6 +23,12 @@ Only the 6.5.22f Applications page has the two Netscape Messenger shortcuts.
 Their [Communicator profile](irix-6.5.22f-communicator-v1.json) supplies SGI's
 WebJumper helper, Netscape launcher, executable and local documents.
 
+The optional [6.5.22f](irix-6.5.22f-xlock-savers-v1.json) and
+[6.5.30f](irix-6.5.30f-xlock-savers-v1.json) saver profiles supply the
+original xlock-based presets, configuration plug-in, executable and its
+IRIX libraries. The [Indy ControlPanels result](../docs/results/2026-11-26-indy-controlpanels.md)
+records which controls work with Xorg.
+
 The native package profiles identify the NetBSD kernel, module, services and
 display components used with each vendor payload. The v6 Indy profile pins
 the boot pair and timestamp-capable module shared by both release lines.

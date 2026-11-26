@@ -317,6 +317,14 @@ the Catalog's **ControlPanels** page. From winterm their executable names are
 `desktop`, `fmprefs`, `mouse`, `screensaver` and `keyboard`, under
 `/emul/irix/usr/sbin/`.
 
+On the two clean Indy v6 desktops, double-click **Screen Saver** and use
+its checkbox to enable ten-minute blanking or turn it off. **Display**
+requires XSGIvc. Use `/usr/X11R7/bin/xrandr -q` in winterm to query
+the modes Xorg offers. **Sounds** and **Audio Panel** need the IRIX audio
+control device. With HAL2 enabled in IRIS, NetBSD can already query and
+adjust the stereo output with `/usr/bin/mixerctl outputs.master` and
+`/usr/bin/mixerctl -w outputs.master=64,64`. [Panel results and screenshots](results/2026-11-26-indy-controlpanels.md).
+
 Desktop's **Align to Grid** choice is saved in `.Sgiresources`; Icon Views
 saves its default layout, including **Hidden Files**, in
 `~/.desktop-<hostname>/layouts/Default`. Mouse acceleration, screen blanking

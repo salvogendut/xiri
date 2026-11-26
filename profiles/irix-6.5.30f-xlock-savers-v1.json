@@ -1,0 +1,103 @@
+{
+  "schema": 1,
+  "id": "irix-6.5.30f-xlock-savers-v1",
+  "release": "6.5.30f",
+  "donor": {
+    "chd_sha256": "339f74457dfbb06813681ab5db2ccfdd29d394e8a02dfcdcd6c6ac7c22a836db",
+    "raw_sha256": "3f9975efc92a03dd2ba23af4861cd073a87a24b1898cbeadc5b913b26f4d88e5",
+    "logical_bytes": 8589934592
+  },
+  "default_components": [
+    "xlock-savers"
+  ],
+  "components": {
+    "xlock-savers": {
+      "available": true
+    }
+  },
+  "native_prerequisites": [
+    "Installed Xiri 6.5.30f desktop"
+  ],
+  "paths": {
+    "/usr/bin/X11/xlock": {
+      "type": "file",
+      "component": "xlock-savers",
+      "sha256": "d0ffbe79c9cf9ab05a4ae8f5a5a07da24df59102c7970a6490d4066b4f7053e9"
+    },
+    "/usr/lib/X11/savers/defaults/blank": {
+      "type": "file",
+      "component": "xlock-savers",
+      "sha256": "5548e17d872d85a880a5c2f251dab831328aea0dc52e2f712e740a0790d9b318"
+    },
+    "/usr/lib/X11/savers/defaults/flame": {
+      "type": "file",
+      "component": "xlock-savers",
+      "sha256": "a8a2d6ba51d86b18bb5ec6ab7fa77e2915a230bcd260011bc39c0c9491d3356a"
+    },
+    "/usr/lib/X11/savers/defaults/hop": {
+      "type": "file",
+      "component": "xlock-savers",
+      "sha256": "46b6010f783337f6dbeebadee6582596b800310b4921e252e014c322b43ee36b"
+    },
+    "/usr/lib/X11/savers/defaults/image": {
+      "type": "file",
+      "component": "xlock-savers",
+      "sha256": "55f32b838adb8ab4b4c13ea5e4644d6df35e97d36faf563e7a3f268bceef402c"
+    },
+    "/usr/lib/X11/savers/defaults/life": {
+      "type": "file",
+      "component": "xlock-savers",
+      "sha256": "8593851d9ed3a819446968107018d8fe9ba7708a267002e417fa21e0ceb0bbd0"
+    },
+    "/usr/lib/X11/savers/defaults/pop": {
+      "type": "file",
+      "component": "xlock-savers",
+      "sha256": "d5fe0eca0fe4d5c1c0fda40d087f173bf8e923ea462ad97070434a427678e5ff"
+    },
+    "/usr/lib/X11/savers/defaults/pyro": {
+      "type": "file",
+      "component": "xlock-savers",
+      "sha256": "ac90f859e660c0035885f82469406c29ff250577ed43ec9d6dada08d0b06edbb"
+    },
+    "/usr/lib/X11/savers/defaults/qix": {
+      "type": "file",
+      "component": "xlock-savers",
+      "sha256": "a5cb0ba3dd7ef9a6bff7c0357fdb6ebbfb5314fc0483acf1205259658837d7c2"
+    },
+    "/usr/lib/X11/savers/defaults/random": {
+      "type": "file",
+      "component": "xlock-savers",
+      "sha256": "35383730f9ebd17e9632d3b33121895044f1acbd8e28913b8f9ac554fb3bc9c4"
+    },
+    "/usr/lib/X11/savers/defaults/rotor": {
+      "type": "file",
+      "component": "xlock-savers",
+      "sha256": "2a9754e9889c56cdfa18b2cc9210dfadd5fccdf425ea5c46323550c11b2ede16"
+    },
+    "/usr/lib/X11/savers/defaults/swarm": {
+      "type": "file",
+      "component": "xlock-savers",
+      "sha256": "417fc4017d35bdadae060f1e8c6da755e899afefec58d9efc2d39f5875b29976"
+    },
+    "/usr/lib32/libpam.so": {
+      "type": "file",
+      "component": "xlock-savers",
+      "sha256": "100342d3dd39e418a81f70d67b57f3216a00a96709860b9e6addd6fa67484a1f"
+    },
+    "/usr/lib32/libpam_misc.so": {
+      "type": "file",
+      "component": "xlock-savers",
+      "sha256": "c296fd3128e5ba09fcbd972ed7b50560b589a8c21a716b093bd1c063ff99884b"
+    },
+    "/usr/lib32/libpamc.so": {
+      "type": "file",
+      "component": "xlock-savers",
+      "sha256": "8ed913ee4d5f3323cec87f4e051c9836846a5ef86cddf0cfc5e80d999214c33b"
+    },
+    "/usr/lib32/savers/modules/xlock.so": {
+      "type": "file",
+      "component": "xlock-savers",
+      "sha256": "f1cf8cbbe8201c6f12246dfd0385d2d15a5806faeecef968c1f4bfbb8fcb1144"
+    }
+  }
+}
