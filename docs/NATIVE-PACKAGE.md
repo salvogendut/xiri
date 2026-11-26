@@ -643,3 +643,7 @@ Build the CDs with the preceding media command, using the v3 package as
 `--upgrade-from` and `.work/packages/netbsd-sgimips-indy-11.99.11-fam-service-v4`
 as `--native-package`. Select the matching vendor payload for each output.
 [Indy test results and screenshots](results/2026-11-24-indy-fam-service.md)
+
+## Update a framed Indigo2, Octane or O2
+
+Use the board's kernel update CD with either IRIX release. The [platform update guide](results/2026-11-26-platform-v6.md) gives the SCSI attachment, guest commands, version check and rollback for each machine.

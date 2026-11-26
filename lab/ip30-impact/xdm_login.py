@@ -17,7 +17,7 @@ def focus_terminal(lab, wm):
         time.sleep(.4)
 
 
-def qualify(lab, out, *, measure_redraw=False):
+def qualify(lab, out, *, measure_redraw=False, before_shutdown=None):
     screen = out / 'current.png'
     results = {'sessions': [], 'screenshots': {}}
 
@@ -141,5 +141,7 @@ def qualify(lab, out, *, measure_redraw=False):
     key('(id -u; sysctl -n hw.model; sysctl -n kern.securelevel; modstat | grep "^compat_irix_o32 "; echo OCTANE_ADMIN_OK) >/dev/ttyC0')
     admin = lab.wait(r'(?:^|\n)0\nIP30\n1\n(compat_irix_o32[^\n]+)\nOCTANE_ADMIN_OK\n', 45)
     results['module'] = admin[1]
+    if before_shutdown is not None:
+        before_shutdown(key)
     key('shutdown -h now')
     return results

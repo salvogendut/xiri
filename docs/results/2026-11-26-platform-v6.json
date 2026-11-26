@@ -1,0 +1,586 @@
+{
+  "ip28-6.5.22": {
+    "model": "ip28",
+    "irix": "6.5.22",
+    "directory": ".work/native/xiri-ip28-v6-6.5.22-20261126",
+    "netbsd_revision": "4ed77b1dfd057cca6e50ff296291a059203c9040",
+    "emulator_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+    "inputs": {
+      "chd_sha256": "c45156e4c1d252a8b31a91d9337467c1325153907ed78c73b98c1d275f0e104c",
+      "restored_chd_sha256": "cbf13dbc00e6882009e8259f4d57f1afb9d824f1bbdb7847750ff56dbdb38d67",
+      "run-iris.sh": "368a440062b887c6001270066e9a7b5eba891d158f98e4feb5a784393ed9b368",
+      "nvram.bin": "6878bd814e73ea8a21755e3b2a7393a30b5af772b240d338d607c57845199553",
+      "nveeprom.bin": "e3a65cb0440f5ccdf1b639aea218880c8bded5d96d97e2c16e761424b4c0a566"
+    },
+    "chd_sha256": "d9d0fb248a9e5a25dcc228fe8cf1347b4831d1c6b75f1afddab2db701c7735d8",
+    "media_sha256": "1c05b21b2b8ef93fda611f6b65399a3468ddd522ed485189905e6bf68914d2ae",
+    "kernel_sha256": "d1d16c55236551d4a6b1766534be6834977922135caa2cadda51eb57a6e906b2",
+    "module_sha256": "259386c1487ec501f3345e7e677e4ec1b8a1e13b763741e5ec98af70cae77e44",
+    "checks": {
+      "restored": {
+        "phase": "restored",
+        "model": "ip28",
+        "disk_sha256": "cbf13dbc00e6882009e8259f4d57f1afb9d824f1bbdb7847750ff56dbdb38d67",
+        "media_sha256": "1c05b21b2b8ef93fda611f6b65399a3468ddd522ed485189905e6bf68914d2ae",
+        "kernel": "NetBSD 11.99.9 (XIRI_IP28) #2: Sun Nov 22 22:21:48 UTC 2026\n\tsalvogendut@minisforum.golgota.lan:/var/home/salvogendut/Dev/xiri/.work/impact-copy/build/kernel",
+        "xiritest": {
+          "wm": "4Dwm",
+          "visible": "Icon Catalog:",
+          "dimensions": "1280x1024"
+        },
+        "netbsdtest": {
+          "wm": "ctwm",
+          "visible": "UXTerm",
+          "dimensions": "1280x1024"
+        },
+        "halted": true,
+        "stopped": true,
+        "utime_probe": "00000059 00000000 00000000 6b082f53 6b082f53 32867c67 6b082f53 6b082f53"
+      },
+      "rollback": {
+        "phase": "rollback",
+        "model": "ip28",
+        "disk_sha256": "d9d0fb248a9e5a25dcc228fe8cf1347b4831d1c6b75f1afddab2db701c7735d8",
+        "media_sha256": "1c05b21b2b8ef93fda611f6b65399a3468ddd522ed485189905e6bf68914d2ae",
+        "kernel": "NetBSD 11.99.11 (XIRI_IP28) #0: Thu Nov 26 12:19:36 UTC 2026\n\tsalvogendut@minisforum.golgota.lan:/var/home/salvogendut/Dev/xiri/.work/platform-v6-cycle/ip28/kernel",
+        "xiritest": {
+          "wm": "4Dwm",
+          "visible": "Icon Catalog:",
+          "dimensions": "1280x1024"
+        },
+        "netbsdtest": {
+          "wm": "ctwm",
+          "visible": "UXTerm",
+          "dimensions": "1280x1024"
+        },
+        "halted": true,
+        "stopped": true,
+        "utime_probe": "00000000 00000000 00000000 386d4380 499602d2 00000000 6b0828b6 6b0828b6",
+        "completed_operations": 2
+      },
+      "update": {
+        "phase": "update",
+        "model": "ip28",
+        "disk_sha256": "c45156e4c1d252a8b31a91d9337467c1325153907ed78c73b98c1d275f0e104c",
+        "media_sha256": "1c05b21b2b8ef93fda611f6b65399a3468ddd522ed485189905e6bf68914d2ae",
+        "kernel": "NetBSD 11.99.9 (XIRI_IP28) #2: Sun Nov 22 22:21:48 UTC 2026\n\tsalvogendut@minisforum.golgota.lan:/var/home/salvogendut/Dev/xiri/.work/impact-copy/build/kernel",
+        "halted": true,
+        "stopped": true,
+        "utime_probe": "00000059 00000000 00000000 6b082667 6b082667 16d8b2b4 6b082667 6b082667",
+        "completed_operations": 2
+      }
+    }
+  },
+  "ip28-6.5.30": {
+    "model": "ip28",
+    "irix": "6.5.30",
+    "directory": ".work/native/xiri-ip28-v6-6.5.30-20261126",
+    "netbsd_revision": "4ed77b1dfd057cca6e50ff296291a059203c9040",
+    "emulator_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+    "inputs": {
+      "chd_sha256": "187a516e9f3d2b29236fcd53d95467415e18fdd6ae2a90d1c407ba96f0af9e58",
+      "restored_chd_sha256": "aa97bdeca251fc4dd290038a0bf88b675dc8d33a036c1789f610832fdacc3293",
+      "run-iris.sh": "368a440062b887c6001270066e9a7b5eba891d158f98e4feb5a784393ed9b368",
+      "nvram.bin": "e701effa4da617667d826f4ffa96666cdfbb12772b7a9b988d4d7d5188dd945d",
+      "nveeprom.bin": "e3a65cb0440f5ccdf1b639aea218880c8bded5d96d97e2c16e761424b4c0a566"
+    },
+    "chd_sha256": "a4e68b16bc6b29aa3abb1c9b016b573923f97d66c923706c6de93ad71fee1ced",
+    "media_sha256": "1c05b21b2b8ef93fda611f6b65399a3468ddd522ed485189905e6bf68914d2ae",
+    "kernel_sha256": "d1d16c55236551d4a6b1766534be6834977922135caa2cadda51eb57a6e906b2",
+    "module_sha256": "259386c1487ec501f3345e7e677e4ec1b8a1e13b763741e5ec98af70cae77e44",
+    "checks": {
+      "restored": {
+        "phase": "restored",
+        "model": "ip28",
+        "disk_sha256": "aa97bdeca251fc4dd290038a0bf88b675dc8d33a036c1789f610832fdacc3293",
+        "media_sha256": "1c05b21b2b8ef93fda611f6b65399a3468ddd522ed485189905e6bf68914d2ae",
+        "kernel": "NetBSD 11.99.9 (XIRI_IP28) #2: Sun Nov 22 22:21:48 UTC 2026\n\tsalvogendut@minisforum.golgota.lan:/var/home/salvogendut/Dev/xiri/.work/impact-copy/build/kernel",
+        "xiritest": {
+          "wm": "4Dwm",
+          "visible": "Icon Catalog:",
+          "dimensions": "1280x1024"
+        },
+        "netbsdtest": {
+          "wm": "ctwm",
+          "visible": "UXTerm",
+          "dimensions": "1280x1024"
+        },
+        "halted": true,
+        "stopped": true,
+        "utime_probe": "00000059 00000000 00000000 6b082c36 6b082c36 0da907fb 6b082c36 6b082c36"
+      },
+      "rollback": {
+        "phase": "rollback",
+        "model": "ip28",
+        "disk_sha256": "a4e68b16bc6b29aa3abb1c9b016b573923f97d66c923706c6de93ad71fee1ced",
+        "media_sha256": "1c05b21b2b8ef93fda611f6b65399a3468ddd522ed485189905e6bf68914d2ae",
+        "kernel": "NetBSD 11.99.11 (XIRI_IP28) #0: Thu Nov 26 12:19:36 UTC 2026\n\tsalvogendut@minisforum.golgota.lan:/var/home/salvogendut/Dev/xiri/.work/platform-v6-cycle/ip28/kernel",
+        "xiritest": {
+          "wm": "4Dwm",
+          "visible": "Icon Catalog:",
+          "dimensions": "1280x1024"
+        },
+        "netbsdtest": {
+          "wm": "ctwm",
+          "visible": "UXTerm",
+          "dimensions": "1280x1024"
+        },
+        "halted": true,
+        "stopped": true,
+        "utime_probe": "00000000 00000000 00000000 386d4380 499602d2 00000000 6b082aa7 6b082aa7",
+        "completed_operations": 2
+      },
+      "update": {
+        "phase": "update",
+        "model": "ip28",
+        "disk_sha256": "187a516e9f3d2b29236fcd53d95467415e18fdd6ae2a90d1c407ba96f0af9e58",
+        "media_sha256": "1c05b21b2b8ef93fda611f6b65399a3468ddd522ed485189905e6bf68914d2ae",
+        "kernel": "NetBSD 11.99.9 (XIRI_IP28) #2: Sun Nov 22 22:21:48 UTC 2026\n\tsalvogendut@minisforum.golgota.lan:/var/home/salvogendut/Dev/xiri/.work/impact-copy/build/kernel",
+        "halted": true,
+        "stopped": true,
+        "utime_probe": "00000059 00000000 00000000 6b08288d 6b08288d 21a7ebff 6b08288d 6b08288d",
+        "completed_operations": 2
+      }
+    }
+  },
+  "ip30-6.5.22": {
+    "model": "ip30",
+    "irix": "6.5.22",
+    "directory": ".work/native/xiri-ip30-v6-6.5.22-20261126",
+    "netbsd_revision": "4ed77b1dfd057cca6e50ff296291a059203c9040",
+    "emulator_sha256": "ac761ad92d140b029e18c498d5c275662433c5c255c0fd08a8f240ae979ae0f2",
+    "inputs": {
+      "chd_sha256": "cfd4f44b0b3b137d497e926f47e46e73788755c5bcea5bb0159c2048e93953d4",
+      "restored_chd_sha256": "016d892f18fa757784b66f1f45cd8b78253c82daddf7b3d3b93b34d623d96a4a",
+      "run-iris.sh": "ea79b51313ba57c610598226a4d3e9af74728b4bac6747d5b16a0b83fe7684ae",
+      "nvram.bin": "14d0d3d9bce37c7a1747297024699832a53d83636043286316f461a0196e7561",
+      "flash.bin": "9cc810faa44fb96050108fe23d8d1a2c03e76138310535e63076c5353fdf9431"
+    },
+    "chd_sha256": "a6d6579c5a3a787daa4c0e178c6e2bdfc064d3ebc27e40b046763cd7bd7e53f3",
+    "media_sha256": "287a35bb12b9145261909053141c912ac6570bb780a0fa68a4ae972a4812fb52",
+    "kernel_sha256": "29c704fcec8e343eeeeb5b60963aec80d1f5c78c1939c097a1a63c580ad1725a",
+    "module_sha256": "259386c1487ec501f3345e7e677e4ec1b8a1e13b763741e5ec98af70cae77e44",
+    "checks": {
+      "restored": {
+        "phase": "restored",
+        "model": "ip30",
+        "disk_sha256": "016d892f18fa757784b66f1f45cd8b78253c82daddf7b3d3b93b34d623d96a4a",
+        "media_sha256": "287a35bb12b9145261909053141c912ac6570bb780a0fa68a4ae972a4812fb52",
+        "xiritest": {
+          "user": "xiritest",
+          "uid": 1234,
+          "home": "/usr/people/xiritest",
+          "wm": "4Dwm",
+          "proof": [
+            "xiritest",
+            "1234",
+            "/usr/people/xiritest",
+            "/usr/people/xiritest",
+            "xiritest xiritest-extra",
+            "1636 /emul/irix/usr/bin/X11/4Dwm -launch",
+            "  dimensions:    1280x1024 pixels (339x271 millimeters)"
+          ],
+          "logout_returned_to_greeter": true
+        },
+        "netbsdtest": {
+          "user": "netbsdtest",
+          "uid": 1236,
+          "home": "/home/netbsdtest",
+          "wm": "ctwm",
+          "proof": [
+            "netbsdtest",
+            "1236",
+            "/home/netbsdtest",
+            "/home/netbsdtest",
+            "netbsdtest wheel",
+            "2603 /usr/X11R7/bin/ctwm -W",
+            "  dimensions:    1280x1024 pixels (339x271 millimeters)"
+          ],
+          "logout_returned_to_greeter": true
+        },
+        "kernel": "NetBSD 11.99.9 (XIRI_IP30_DESKTOP) #0: Mon Nov 23 14:55:45 UTC 2026",
+        "utime_probe": "00000059 00000000 00000000 6b036f0a 6b036f0a 0f180aaa 6b036f0a 6b036f0a",
+        "halted": true,
+        "stopped": true
+      },
+      "rollback": {
+        "phase": "rollback",
+        "model": "ip30",
+        "disk_sha256": "a6d6579c5a3a787daa4c0e178c6e2bdfc064d3ebc27e40b046763cd7bd7e53f3",
+        "media_sha256": "287a35bb12b9145261909053141c912ac6570bb780a0fa68a4ae972a4812fb52",
+        "xiritest": {
+          "user": "xiritest",
+          "uid": 1234,
+          "home": "/usr/people/xiritest",
+          "wm": "4Dwm",
+          "proof": [
+            "xiritest",
+            "1234",
+            "/usr/people/xiritest",
+            "/usr/people/xiritest",
+            "xiritest xiritest-extra",
+            "3004 /emul/irix/usr/bin/X11/4Dwm -launch",
+            "  dimensions:    1280x1024 pixels (339x271 millimeters)"
+          ],
+          "logout_returned_to_greeter": true
+        },
+        "netbsdtest": {
+          "user": "netbsdtest",
+          "uid": 1236,
+          "home": "/home/netbsdtest",
+          "wm": "ctwm",
+          "proof": [
+            "netbsdtest",
+            "1236",
+            "/home/netbsdtest",
+            "/home/netbsdtest",
+            "netbsdtest wheel",
+            "2665 /usr/X11R7/bin/ctwm -W",
+            "  dimensions:    1280x1024 pixels (339x271 millimeters)"
+          ],
+          "logout_returned_to_greeter": true
+        },
+        "kernel": "NetBSD 11.99.11 (XIRI_IP30_DESKTOP) #0: Thu Nov 26 12:20:58 UTC 2026",
+        "utime_probe": "00000000 00000000 00000000 386d4380 499602d2 00000000 6b036df9 6b036df9",
+        "completed_operations": 2,
+        "halted": true,
+        "stopped": true
+      },
+      "update": {
+        "phase": "update",
+        "model": "ip30",
+        "disk_sha256": "cfd4f44b0b3b137d497e926f47e46e73788755c5bcea5bb0159c2048e93953d4",
+        "media_sha256": "287a35bb12b9145261909053141c912ac6570bb780a0fa68a4ae972a4812fb52",
+        "xiritest": {
+          "user": "xiritest",
+          "uid": 1234,
+          "home": "/usr/people/xiritest",
+          "wm": "4Dwm",
+          "proof": [
+            "xiritest",
+            "1234",
+            "/usr/people/xiritest",
+            "/usr/people/xiritest",
+            "xiritest xiritest-extra",
+            "231 /emul/irix/usr/bin/X11/4Dwm -launch",
+            "  dimensions:    1280x1024 pixels (339x271 millimeters)"
+          ],
+          "logout_returned_to_greeter": true
+        },
+        "netbsdtest": {
+          "user": "netbsdtest",
+          "uid": 1236,
+          "home": "/home/netbsdtest",
+          "wm": "ctwm",
+          "proof": [
+            "netbsdtest",
+            "1236",
+            "/home/netbsdtest",
+            "/home/netbsdtest",
+            "netbsdtest wheel",
+            "2602 /usr/X11R7/bin/ctwm -W",
+            "  dimensions:    1280x1024 pixels (339x271 millimeters)"
+          ],
+          "logout_returned_to_greeter": true
+        },
+        "kernel": "NetBSD 11.99.9 (XIRI_IP30_DESKTOP) #0: Mon Nov 23 14:55:45 UTC 2026",
+        "halted": true,
+        "stopped": true,
+        "utime_probe": "00000059 00000000 00000000 6b036ce1 6b036ce1 01579be5 6b036ce1 6b036ce1",
+        "completed_operations": 2
+      }
+    }
+  },
+  "ip30-6.5.30": {
+    "model": "ip30",
+    "irix": "6.5.30",
+    "directory": ".work/native/xiri-ip30-v6-6.5.30-20261126",
+    "netbsd_revision": "4ed77b1dfd057cca6e50ff296291a059203c9040",
+    "emulator_sha256": "ac761ad92d140b029e18c498d5c275662433c5c255c0fd08a8f240ae979ae0f2",
+    "inputs": {
+      "chd_sha256": "73e37cf3bb784864f29d89dff4369120ad9e9a3028e48e409fd10238967ea50f",
+      "restored_chd_sha256": "3d6d22cdd5719620c36de986c4e811792912b167b959b7746a5e84da0aa51c2b",
+      "run-iris.sh": "ea79b51313ba57c610598226a4d3e9af74728b4bac6747d5b16a0b83fe7684ae",
+      "nvram.bin": "8b1a10d59589b6478a87c3705ed18b4c8b7e85df562eb6db6d0f9f891f8e0e3a",
+      "flash.bin": "9cc810faa44fb96050108fe23d8d1a2c03e76138310535e63076c5353fdf9431"
+    },
+    "chd_sha256": "371d922b60570a7e9205520ea8fc590326b4a980a14efa5c21c60adc6fc3be77",
+    "media_sha256": "287a35bb12b9145261909053141c912ac6570bb780a0fa68a4ae972a4812fb52",
+    "kernel_sha256": "29c704fcec8e343eeeeb5b60963aec80d1f5c78c1939c097a1a63c580ad1725a",
+    "module_sha256": "259386c1487ec501f3345e7e677e4ec1b8a1e13b763741e5ec98af70cae77e44",
+    "checks": {
+      "restored": {
+        "phase": "restored",
+        "model": "ip30",
+        "disk_sha256": "3d6d22cdd5719620c36de986c4e811792912b167b959b7746a5e84da0aa51c2b",
+        "media_sha256": "287a35bb12b9145261909053141c912ac6570bb780a0fa68a4ae972a4812fb52",
+        "xiritest": {
+          "user": "xiritest",
+          "uid": 1234,
+          "home": "/usr/people/xiritest",
+          "wm": "4Dwm",
+          "proof": [
+            "xiritest",
+            "1234",
+            "/usr/people/xiritest",
+            "/usr/people/xiritest",
+            "xiritest xiritest-extra",
+            "2646 /emul/irix/usr/bin/X11/4Dwm -launch",
+            "  dimensions:    1280x1024 pixels (339x271 millimeters)"
+          ],
+          "logout_returned_to_greeter": true
+        },
+        "netbsdtest": {
+          "user": "netbsdtest",
+          "uid": 1236,
+          "home": "/home/netbsdtest",
+          "wm": "ctwm",
+          "proof": [
+            "netbsdtest",
+            "1236",
+            "/home/netbsdtest",
+            "/home/netbsdtest",
+            "netbsdtest wheel",
+            "617 /usr/X11R7/bin/ctwm -W",
+            "  dimensions:    1280x1024 pixels (339x271 millimeters)"
+          ],
+          "logout_returned_to_greeter": true
+        },
+        "kernel": "NetBSD 11.99.9 (XIRI_IP30_DESKTOP) #0: Mon Nov 23 14:55:45 UTC 2026",
+        "halted": true,
+        "stopped": true,
+        "utime_probe": "00000059 00000000 00000000 6b036f20 6b036f20 3774bebd 6b036f21 6b036f21"
+      },
+      "rollback": {
+        "phase": "rollback",
+        "model": "ip30",
+        "disk_sha256": "371d922b60570a7e9205520ea8fc590326b4a980a14efa5c21c60adc6fc3be77",
+        "media_sha256": "287a35bb12b9145261909053141c912ac6570bb780a0fa68a4ae972a4812fb52",
+        "xiritest": {
+          "user": "xiritest",
+          "uid": 1234,
+          "home": "/usr/people/xiritest",
+          "wm": "4Dwm",
+          "proof": [
+            "xiritest",
+            "1234",
+            "/usr/people/xiritest",
+            "/usr/people/xiritest",
+            "xiritest xiritest-extra",
+            "1791 /emul/irix/usr/bin/X11/4Dwm -launch",
+            "  dimensions:    1280x1024 pixels (339x271 millimeters)"
+          ],
+          "logout_returned_to_greeter": true
+        },
+        "netbsdtest": {
+          "user": "netbsdtest",
+          "uid": 1236,
+          "home": "/home/netbsdtest",
+          "wm": "ctwm",
+          "proof": [
+            "netbsdtest",
+            "1236",
+            "/home/netbsdtest",
+            "/home/netbsdtest",
+            "netbsdtest wheel",
+            "2282 /usr/X11R7/bin/ctwm -W",
+            "  dimensions:    1280x1024 pixels (339x271 millimeters)"
+          ],
+          "logout_returned_to_greeter": true
+        },
+        "kernel": "NetBSD 11.99.11 (XIRI_IP30_DESKTOP) #0: Thu Nov 26 12:20:58 UTC 2026",
+        "halted": true,
+        "stopped": true,
+        "utime_probe": "00000000 00000000 00000000 386d4380 499602d2 00000000 6b036e02 6b036e02",
+        "completed_operations": 2
+      },
+      "update": {
+        "phase": "update",
+        "model": "ip30",
+        "disk_sha256": "73e37cf3bb784864f29d89dff4369120ad9e9a3028e48e409fd10238967ea50f",
+        "media_sha256": "287a35bb12b9145261909053141c912ac6570bb780a0fa68a4ae972a4812fb52",
+        "xiritest": {
+          "user": "xiritest",
+          "uid": 1234,
+          "home": "/usr/people/xiritest",
+          "wm": "4Dwm",
+          "proof": [
+            "xiritest",
+            "1234",
+            "/usr/people/xiritest",
+            "/usr/people/xiritest",
+            "xiritest xiritest-extra",
+            "2781 /emul/irix/usr/bin/X11/4Dwm -launch",
+            "  dimensions:    1280x1024 pixels (339x271 millimeters)"
+          ],
+          "logout_returned_to_greeter": true
+        },
+        "netbsdtest": {
+          "user": "netbsdtest",
+          "uid": 1236,
+          "home": "/home/netbsdtest",
+          "wm": "ctwm",
+          "proof": [
+            "netbsdtest",
+            "1236",
+            "/home/netbsdtest",
+            "/home/netbsdtest",
+            "netbsdtest wheel",
+            "242 /usr/X11R7/bin/ctwm -W",
+            "  dimensions:    1280x1024 pixels (339x271 millimeters)"
+          ],
+          "logout_returned_to_greeter": true
+        },
+        "kernel": "NetBSD 11.99.9 (XIRI_IP30_DESKTOP) #0: Mon Nov 23 14:55:45 UTC 2026",
+        "halted": true,
+        "stopped": true,
+        "utime_probe": "00000059 00000000 00000000 6b036ce4 6b036ce4 263c242d 6b036ce4 6b036ce4",
+        "completed_operations": 2
+      }
+    }
+  },
+  "o2-6.5.22": {
+    "model": "o2",
+    "irix": "6.5.22",
+    "directory": ".work/native/xiri-o2-v6-6.5.22-20261126",
+    "netbsd_revision": "4ed77b1dfd057cca6e50ff296291a059203c9040",
+    "emulator_sha256": "ac761ad92d140b029e18c498d5c275662433c5c255c0fd08a8f240ae979ae0f2",
+    "inputs": {
+      "chd_sha256": "ff12d95379d272bec0790d626f61d42e8ba65868e95b1575b783f98b266b5f83",
+      "restored_chd_sha256": "449096d28558c048384013b46e2fa8d142df57fc059ef71ad19d88c6f7299290",
+      "run-iris.sh": "7064401c432374abd0aa43d01c3e42467188d39982e98d25e218f8b3f2bc4908",
+      "nvram.bin": "f6b7bfc79ecc3ffda683340b86415e9e6b600810a0ca3fe1b3ae97c7ab802d9c"
+    },
+    "chd_sha256": "7339ee2e11cbf1e37a2e925775f73ac2879f8c80b9f99e69b4e69ffd3107552a",
+    "media_sha256": "04f39247c661aae78dadaed7bdfaecdc56d8ee1151ee7f150e8d90f28aef58d9",
+    "kernel_sha256": "00aaf10aa8bcef201dc83cfa2fd0eeca4446054dfa80f25cb704e6901f69476e",
+    "module_sha256": "259386c1487ec501f3345e7e677e4ec1b8a1e13b763741e5ec98af70cae77e44",
+    "boot_sha256": "2ce46285b4e7089fbd12c022058f8dd3ea9950114db750f7bfa15aef04cac927",
+    "checks": {
+      "restored": {
+        "phase": "restored",
+        "model": "o2",
+        "disk_sha256": "449096d28558c048384013b46e2fa8d142df57fc059ef71ad19d88c6f7299290",
+        "media_sha256": "04f39247c661aae78dadaed7bdfaecdc56d8ee1151ee7f150e8d90f28aef58d9",
+        "kernel": "NetBSD 11.99.9 (XIRI_IP32_DESKTOP) #2: Mon Nov 23 16:42:38 UTC 2026\n\tsalvogendut@minisforum.golgota.lan:/var/home/salvogendut/Dev/xiri/.work/o2-frame-20261123/bright/kernel",
+        "xiritest": {
+          "wm": "4Dwm",
+          "visible": "Icon Catalog:",
+          "dimensions": "1280x1024"
+        },
+        "netbsdtest": {
+          "wm": "ctwm",
+          "visible": "UXTerm",
+          "dimensions": "1280x1024"
+        },
+        "utime_probe": "00000059 00000000 00000000 6b08300b 6b08300b 1bc2b46c 6b08300b 6b08300b",
+        "halted": true,
+        "stopped": true
+      },
+      "rollback": {
+        "phase": "rollback",
+        "model": "o2",
+        "disk_sha256": "7339ee2e11cbf1e37a2e925775f73ac2879f8c80b9f99e69b4e69ffd3107552a",
+        "media_sha256": "04f39247c661aae78dadaed7bdfaecdc56d8ee1151ee7f150e8d90f28aef58d9",
+        "kernel": "NetBSD 11.99.11 (XIRI_IP32_DESKTOP) #0: Thu Nov 26 12:23:10 UTC 2026\n\tsalvogendut@minisforum.golgota.lan:/var/home/salvogendut/Dev/xiri/.work/platform-v6-cycle/o2/kernel",
+        "xiritest": {
+          "wm": "4Dwm",
+          "visible": "Icon Catalog:",
+          "dimensions": "1280x1024"
+        },
+        "netbsdtest": {
+          "wm": "ctwm",
+          "visible": "UXTerm",
+          "dimensions": "1280x1024"
+        },
+        "halted": true,
+        "stopped": true,
+        "utime_probe": "00000000 00000000 00000000 386d4380 499602d2 00000000 6b082d81 6b082d81",
+        "completed_operations": 2
+      },
+      "update": {
+        "phase": "update",
+        "model": "o2",
+        "disk_sha256": "ff12d95379d272bec0790d626f61d42e8ba65868e95b1575b783f98b266b5f83",
+        "media_sha256": "04f39247c661aae78dadaed7bdfaecdc56d8ee1151ee7f150e8d90f28aef58d9",
+        "kernel": "NetBSD 11.99.9 (XIRI_IP32_DESKTOP) #2: Mon Nov 23 16:42:38 UTC 2026\n\tsalvogendut@minisforum.golgota.lan:/var/home/salvogendut/Dev/xiri/.work/o2-frame-20261123/bright/kernel",
+        "halted": true,
+        "stopped": true,
+        "utime_probe": "00000059 00000000 00000000 6b082639 6b082639 2b000e4f 6b082639 6b082639",
+        "completed_operations": 2
+      }
+    }
+  },
+  "o2-6.5.30": {
+    "model": "o2",
+    "irix": "6.5.30",
+    "directory": ".work/native/xiri-o2-v6-6.5.30-20261126",
+    "netbsd_revision": "4ed77b1dfd057cca6e50ff296291a059203c9040",
+    "emulator_sha256": "ac761ad92d140b029e18c498d5c275662433c5c255c0fd08a8f240ae979ae0f2",
+    "inputs": {
+      "chd_sha256": "a87130f13daf76f53452b212af87490c17f36f028b0a8b3d96c4910630d59d51",
+      "restored_chd_sha256": "6b4896f17daa0e9d6c9210bb9ff8c9891035c5e3bce534e3455a4dfc7bbab758",
+      "run-iris.sh": "7064401c432374abd0aa43d01c3e42467188d39982e98d25e218f8b3f2bc4908",
+      "nvram.bin": "f6b7bfc79ecc3ffda683340b86415e9e6b600810a0ca3fe1b3ae97c7ab802d9c"
+    },
+    "chd_sha256": "6ed66c6f5694aff926ba412c7e26de934819ff5ef2ec710ba2006e71e57dd348",
+    "media_sha256": "04f39247c661aae78dadaed7bdfaecdc56d8ee1151ee7f150e8d90f28aef58d9",
+    "kernel_sha256": "00aaf10aa8bcef201dc83cfa2fd0eeca4446054dfa80f25cb704e6901f69476e",
+    "module_sha256": "259386c1487ec501f3345e7e677e4ec1b8a1e13b763741e5ec98af70cae77e44",
+    "boot_sha256": "2ce46285b4e7089fbd12c022058f8dd3ea9950114db750f7bfa15aef04cac927",
+    "checks": {
+      "restored": {
+        "phase": "restored",
+        "model": "o2",
+        "disk_sha256": "6b4896f17daa0e9d6c9210bb9ff8c9891035c5e3bce534e3455a4dfc7bbab758",
+        "media_sha256": "04f39247c661aae78dadaed7bdfaecdc56d8ee1151ee7f150e8d90f28aef58d9",
+        "kernel": "NetBSD 11.99.9 (XIRI_IP32_DESKTOP) #2: Mon Nov 23 16:42:38 UTC 2026\n\tsalvogendut@minisforum.golgota.lan:/var/home/salvogendut/Dev/xiri/.work/o2-frame-20261123/bright/kernel",
+        "xiritest": {
+          "wm": "4Dwm",
+          "visible": "Icon Catalog:",
+          "dimensions": "1280x1024"
+        },
+        "netbsdtest": {
+          "wm": "ctwm",
+          "visible": "UXTerm",
+          "dimensions": "1280x1024"
+        },
+        "halted": true,
+        "stopped": true,
+        "utime_probe": "00000059 00000000 00000000 6b082d59 6b082d59 0904cbae 6b082d59 6b082d59"
+      },
+      "rollback": {
+        "phase": "rollback",
+        "model": "o2",
+        "disk_sha256": "6ed66c6f5694aff926ba412c7e26de934819ff5ef2ec710ba2006e71e57dd348",
+        "media_sha256": "04f39247c661aae78dadaed7bdfaecdc56d8ee1151ee7f150e8d90f28aef58d9",
+        "kernel": "NetBSD 11.99.11 (XIRI_IP32_DESKTOP) #0: Thu Nov 26 12:23:10 UTC 2026\n\tsalvogendut@minisforum.golgota.lan:/var/home/salvogendut/Dev/xiri/.work/platform-v6-cycle/o2/kernel",
+        "xiritest": {
+          "wm": "4Dwm",
+          "visible": "Icon Catalog:",
+          "dimensions": "1280x1024"
+        },
+        "netbsdtest": {
+          "wm": "ctwm",
+          "visible": "UXTerm",
+          "dimensions": "1280x1024"
+        },
+        "halted": true,
+        "stopped": true,
+        "utime_probe": "00000000 00000000 00000000 386d4380 499602d2 00000000 6b082b5d 6b082b5d",
+        "completed_operations": 2
+      },
+      "update": {
+        "phase": "update",
+        "model": "o2",
+        "disk_sha256": "a87130f13daf76f53452b212af87490c17f36f028b0a8b3d96c4910630d59d51",
+        "media_sha256": "04f39247c661aae78dadaed7bdfaecdc56d8ee1151ee7f150e8d90f28aef58d9",
+        "kernel": "NetBSD 11.99.9 (XIRI_IP32_DESKTOP) #2: Mon Nov 23 16:42:38 UTC 2026\n\tsalvogendut@minisforum.golgota.lan:/var/home/salvogendut/Dev/xiri/.work/o2-frame-20261123/bright/kernel",
+        "halted": true,
+        "stopped": true,
+        "utime_probe": "00000059 00000000 00000000 6b082991 6b082991 0ab78a03 6b082991 6b082991",
+        "completed_operations": 2
+      }
+    }
+  }
+}

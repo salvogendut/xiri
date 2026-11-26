@@ -15,17 +15,18 @@ login/logout checks with IRIS shadow cache mode. For manual testing, use the
 Each has a launcher, an IRIX desktop and a native NetBSD login.
 The emulated O2/R10000 shows NetBSD boot messages in the Indy console frame before opening full-screen xdm.
 Both the IRIX 6.5.22 and 6.5.30 disks run 4Dwm and native ctwm.
-[Current O2 launchers and boot screenshots](docs/results/2026-11-23-o2-frame.md) ·
+[O2 framed console and boot screenshots](docs/results/2026-11-23-o2-frame.md) ·
 [O2 greeter and redraw timings](docs/results/2026-11-23-o2-greeter.md) ·
 [O2 SCSI boot results](docs/results/2026-11-23-o2-r10000-boot.md) ·
 [O2 disk persistence, Ethernet and DHCP setup](docs/results/2026-11-23-o2-io.md)
+The [Indigo2, Octane and O2 kernel update guide](docs/results/2026-11-26-platform-v6.md) includes the current standalone CHD launchers for both IRIX releases, the matching kernel and module, and rollback instructions.
 Physical hardware needs separate qualification.
 The emulated Octane boots from its own SCSI disk, shows NetBSD startup
 messages in the Indy console frame and opens a 1280×1024 xdm greeter.
 Log in as `xiritest` for the IRIX 4Dwm desktop or `netbsdtest` for NetBSD
 ctwm. The 6.5.22 disk uses Solid IMPACT and the 6.5.30 disk uses High IMPACT.
 The Octane launchers use the IRIS R10000 JIT for faster window redraws.
-[Current Octane launchers and boot screenshots](docs/results/2026-11-23-octane-frame.md) ·
+[Octane framed console and boot screenshots](docs/results/2026-11-23-octane-frame.md) ·
 [Octane redraw measurements](docs/results/2026-11-23-octane-redraw.md) ·
 [Octane disk build instructions](docs/results/2026-11-23-octane-xdm.md)
 
@@ -307,9 +308,9 @@ File Manager moves and per-user session restoration after a cold boot.
 On either clean Mozilla Indy, install or remove xmahjongg from May 2004
 Freeware CD 4 using SGI Software Manager or the terminal installer. After
 reboot, double-click the game in Icon Catalog’s **Freeware** tab.
-[Graphical instructions](lab/irix-installer/README.md#install-with-graphical-software-manager)
+[Desktop Software Manager](lab/irix-installer/README.md#open-software-manager-from-the-indy-desktop)
 · [Terminal instructions](lab/irix-installer/README.md#use-the-complete-freeware-cd-4-with-a-clean-mozilla-indy)
-· [Screenshots from both Indys](docs/results/2026-11-25-swmgr.md).
+· [Desktop install and removal on both Indys](docs/results/2026-11-26-desktop-installer.md).
 The same installer can add xosview’s CPU and memory meters and upgrade
 SGI Freeware UnZip 5.40 to 5.50 in place. [Manual instructions](lab/irix-installer/README.md#install-xosview-and-upgrade-unzip-in-software-manager)
 · [Upgrade results](docs/results/2026-11-26-freeware-upgrade.md).
