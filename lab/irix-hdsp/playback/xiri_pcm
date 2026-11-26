@@ -1,0 +1,18 @@
+#!/bin/sh
+# PROVIDE: xiri_pcm
+# REQUIRE: xiri_hdsp
+# BEFORE: LOGIN
+dir=/var/run/xiri-hdsp
+case "${1-}" in
+start|onestart)
+    test -c /dev/audio0 && test "$(audioctl -n name)" = HAL2 || exit 0
+    test -d "$dir" && test ! -L "$dir" || exit 1
+    /sbin/mknod -r -m 666 "$dir/pcm" c xirihdsp 2
+    ;;
+stop|onestop)
+    if test ! -L "$dir" && test -c "$dir/pcm" && test ! -L "$dir/pcm"; then
+        rm "$dir/pcm"
+    fi
+    ;;
+*) echo 'Usage: xiri_pcm start|stop' >&2; exit 1 ;;
+esac

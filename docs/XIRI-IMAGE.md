@@ -422,6 +422,24 @@ altering it.
 
 ## Start it in Prismatic
 
+### General IRIX audio playback on Indy
+
+These profiles include the mapped HDSP playback module, the original SGI
+`sfplay` and its release-matched converters. From the Xiri checkout, run
+the launcher for the release you want.
+
+```sh
+.work/prismatic-indy-pcm-v1/6.5.22f/run-prismatic.sh
+.work/prismatic-indy-pcm-v1/6.5.30f/run-prismatic.sh
+```
+
+Press **Ctrl+P** to boot. Log in as `xiritest` and play a local WAV or AIFF
+from winterm with `/emul/irix/usr/sbin/sfplay /path/to/file`. For a quick
+test with the supplied CD, mount `/dev/cd0a` at `/cdrom` as root, then run
+`/emul/irix/usr/sbin/sfplay /../cdrom/example.aiff` as the desktop user.
+Each profile also has a host-side `stereo-demo.wav` captured from its guest.
+[Playback checks and update instructions](../lab/irix-hdsp/playback/README.md) · [Release results](results/2026-11-26-indy-pcm.md).
+
 ### Indy Display and desktop sounds
 
 These private Prismatic profiles include the power menu, the original Display

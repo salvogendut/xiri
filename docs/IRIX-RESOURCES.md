@@ -1,5 +1,10 @@
 # IRIX resource checklist
 
+The Indy playback add-on imports the release-matched SGI `sfplay` and
+its dynamically loaded format and sample-rate converters. The donor and
+guest paths for both release lines are in the [playback resource table](../lab/irix-hdsp/playback/README.md#build-the-private-update).
+
+
 The [windows/desks package](../lab/irix-desks/README.md) adds original
 `/usr/sbin/ov` at `/emul/irix/usr/sbin/ov` (212,216 bytes, root-owned,
 mode 0555). Existing Overview defaults, schemes and libraries are reused.

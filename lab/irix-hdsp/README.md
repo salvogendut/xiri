@@ -1,5 +1,10 @@
 # Measuring the IRIX HDSP master device
 
+The [mapped playback add-on](playback/README.md) uses this HDSP baseline
+and adds ordinary SGI Audio Library playback. The qualification probe's
+`--silence-test-gain` selects negative infinity for both output channels.
+
+
 The n32 probe uses the same calls and layouts as SGI libaudio. Its ordinary
 invocation reads resource IDs, parameter descriptors, interface names and
 current gains. With `--set-test-gain` it writes two distinct levels to the

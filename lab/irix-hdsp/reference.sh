@@ -10,6 +10,15 @@ hinv -c audio
 ls -l /dev/hdsp/hdsp0master /dev/hdsp/hdsp0events
 chmod 700 /tmp/hdsp-query
 /tmp/hdsp-query || exit 1
+# Both the graphical Indy and the serial O2 donor can exercise this client.
+sample=/usr/share/data/sounds/soundscheme/soundfiles/emptyDumpster.aiff
+if test -x /usr/sbin/sfplay && test -r "$sample"; then
+    trace=/tmp/xiri-sfplay.par
+    echo 'BEGIN sfplay'
+    par -s -SS -i -t 15 /usr/sbin/sfplay "$sample" > "$trace" 2>&1
+    egrep '"/dev/hdsp/|MAP_SHARED|ioctl\([0-9]+, 0x|munmap\(|exit\(' "$trace"
+    echo 'END sfplay'
+fi
 if test "${1-}" = --query-only; then
     echo 'HDSP reference complete'
     exit 0

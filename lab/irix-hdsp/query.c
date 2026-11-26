@@ -146,7 +146,7 @@ lookup(int fd, u32 scope, const char *name)
 }
 
 static int
-set_gain(int fd)
+set_gain(int fd, int silent)
 {
     /* A2's stereo dB equivalents of native mixer levels 64 and 128. */
     u32 levels[4] __attribute__((aligned(8))) = {0x24, 0x1fa4372c, 0x2a, 0x24ea405d};
@@ -154,6 +154,10 @@ set_gain(int fd)
         { .id = 3 }, { .id = RESOURCE, .value = {DEFAULT_OUTPUT} },
         { .id = GAIN, .value = {(u32)levels}, .size = 2 }
     };
+    if (silent) {
+        levels[0] = levels[2] = 0x80000000u; /* AL negative infinity */
+        levels[1] = levels[3] = 0;
+    }
     return trap3(IRIX_IOCTL, fd, SET_PARAMS, (unsigned long)batch) == 1 ? 0 : 1;
 }
 
@@ -180,7 +184,7 @@ event_test(int master)
         return 1;
     rc = trap3(IRIX_IOCTL, fd, 112, (unsigned long)&selection);
     put("EVENT_SELECT "); word(rc); put("\n");
-    if (rc < 0 || set_gain(master))
+    if (rc < 0 || set_gain(master, 0))
         return 1;
     rc = trap3(IRIX_POLL, (unsigned long)pollfds, 2, 1000);
     put("EVENT_POLL "); word(rc); word(pollfds[0].revents); word(pollfds[1].revents); put("\n");
@@ -226,7 +230,9 @@ run(int argc, char **argv)
     if (fd < 0)
         return 1;
     if (argc == 2 && equal(argv[1], "--set-test-gain"))
-        return set_gain(fd);
+        return set_gain(fd, 0);
+    if (argc == 2 && equal(argv[1], "--silence-test-gain"))
+        return set_gain(fd, 1);
     if (argc == 2 && equal(argv[1], "--event-test"))
         return event_test(fd);
     if (argc != 1)

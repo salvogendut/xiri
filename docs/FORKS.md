@@ -72,6 +72,12 @@ in `08e53ba7`. [Octane build and qualification](results/2026-11-23-octane-deskto
 
 ## IRIS upstream updates
 
+The general audio playback cycle rechecked upstream on November 26. IRIS
+`xiri` at `7c713c13` already includes upstream `8ca2b96a`. The playback
+checks used the same Prismatic and IRIS build as the desktop sound tests.
+Both Indys passed 44.1 and 48 kHz file playback and a two-player mixing
+check. [Playback qualification](results/2026-11-26-indy-pcm.md).
+
 The November 26 Indy Display and SoundScheme cycle fetched IRIS upstream
 `8ca2b96a`, already merged at `89c27ffe`. IRIS `xiri` commit `1b4b140e`
 adds packed HAL2 playback and `7c713c13` connects its descriptor interrupt. Seven HPC3 and three HAL2 tests passed in the
