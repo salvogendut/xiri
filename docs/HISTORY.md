@@ -1,9 +1,25 @@
-# Development history through 2026-11-14
+# Xiri development history
 
-This is the former README, retained as a chronological evidence index. Its
-status statements describe individual checkpoints and may be superseded by
-later entries. Use the [current README](../README.md), [development guide](DEVELOPMENT.md)
-and [selected image](../lab/irix-installed-desktop/image.json) for current work.
+For the current installation and launch commands, see the [image guide](XIRI-IMAGE.md).
+The [roadmap](ROADMAP.md) tracks outstanding work and the [results directory](results/)
+holds measurements and screenshots for individual builds.
+
+## November 15–26, 2026
+
+- **SGI machines.** Native boot, graphics and xdm on emulated Indigo2, Octane and O2 led to release-specific desktop images. The platform guide lists their launchers, kernel updates and rollback procedures. [Indigo2 graphics](results/2026-11-22-ip28-impact.md) · [Octane graphics](results/2026-11-23-octane-xdm.md) · [O2 graphics](results/2026-11-23-o2-greeter.md) · [Platform images](results/2026-11-26-platform-v6.md)
+- **Indy desktop.** The November 26 builds added the original Screen Saver, Display and audio controls. NetBSD HAL2 playback supports IRIX sound files and desktop effects. [Control panels](results/2026-11-26-indy-controlpanels.md) · [Screen Saver](results/2026-11-26-sgi-screen-saver.md) · [Display and sound effects](results/2026-11-26-indy-display-sound.md) · [Audio installer and tests](results/2026-11-26-indy-audio-installer.md)
+- **Applications.** The Applications tab survey records which launchers open a window. Separate checks cover SGI Clock rendering, xosview meters and Mozilla input and HTTP access. [Catalog checklist](ICON-CATALOG.md) · [Applications retest](results/2026-11-25-applications-recheck.md) · [Clock](results/2026-11-24-indy-glx.md) · [xosview](results/2026-11-24-indy-xosview.md) · [Mozilla](results/2026-11-25-mozilla-http.md)
+- **Software installation.** SGI Software Manager installs Freeware packages from the original CDs. The Indy checks cover installing xmahjongg, upgrading UnZip and removing and reinstalling GIMP. [Software Manager guide](../lab/irix-installer/README.md) · [Desktop installation](results/2026-11-26-desktop-installer.md) · [Package upgrade](results/2026-11-26-freeware-upgrade.md)
+- **Development environment.** The IRIS refresh records the emulator revision, its comparison with upstream and the desktop tests used to qualify the binaries. [November 22 refresh](results/2026-11-22-iris-upstream.md) · [Fork workflow and later updates](FORKS.md)
+
+The [November 26 README snapshot](https://github.com/salvogendut/xiri/blob/a06710f/README.md)
+retains the full checkpoint notes and links to earlier test images.
+
+## Through November 14, 2026
+
+The entries below preserve the earlier README's checkpoint notes. The
+[winterm and shell handoff lab](../lab/irix-winterm-reliability/README.md)
+records how the terminal starts the user's shell and passes on window resizes.
 
 The [November 14 filesystem follow-up](results/2026-11-14-file-manager.md)
 implements symlink and utimets in the module. A fresh CHD passes 328 ABI
