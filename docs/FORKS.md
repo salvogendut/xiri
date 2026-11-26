@@ -72,6 +72,14 @@ in `08e53ba7`. [Octane build and qualification](results/2026-11-23-octane-deskto
 
 ## IRIS upstream updates
 
+The November 26 Screen Saver and HDSP cycle integrated 19 upstream commits
+through `8ca2b96a` into IRIS `xiri` at `89c27ffe`. The HAL2 merge keeps the
+fork's bounded AES loopback queue with upstream's per-timer state. The
+`jitv2,rex-jit` release builds of `iris` and `iris-ci` passed 132 selected
+HAL2, timer, IP32, cache and TLB tests. The new binaries are under
+`.work/emulators/iris-xiri-89c27ffe/`. The v6 guest checks used their
+qualified emulator. [Screen Saver results](results/2026-11-26-sgi-screen-saver.md).
+
 The November 26 ControlPanels cycle fetched upstream `10ab247b`, already
 on IRIS `xiri` at `76125096`. Both clean Indy v6 disks used their pinned
 IRIS build `0bc52567` for the HAL2 comparison.

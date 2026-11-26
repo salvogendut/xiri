@@ -14,6 +14,8 @@ The tested configuration uses native Xorg and accelerated Newport on IRIS.
 The installer saves the stock kernel for native NetBSD recovery.
 [Installation and rollback instructions](NATIVE-PACKAGE.md#switching-between-the-stock-and-xiri-kernels)
 
+The optional [Indy Screen Saver update and rollback](results/2026-11-26-sgi-screen-saver.md#update-an-existing-v6-disk) adds the original Qix Demo to an installed v6 desktop.
+
 ## Our original-media installation
 
 The November 14 audit found a completed installation in

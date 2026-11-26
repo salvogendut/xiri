@@ -49,6 +49,8 @@ results. The CHD digests matched the published release records.
 
 ## The empty Screen Saver list
 
+The [v2 saver update](2026-11-26-sgi-screen-saver.md) subsequently enabled SGI xlock through the panel and the idle timer. The following observations describe the v1 disc.
+
 Both original-media donors have 16 definitions in
 `/usr/lib/X11/savers/defaults`. Eleven use SGI xlock. The optional saver CD
 adds those definitions, the n32 `xlock.so` configuration plug-in, xlock

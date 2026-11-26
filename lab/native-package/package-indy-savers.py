@@ -18,6 +18,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--imported', required=True, type=Path)
     parser.add_argument('--output', required=True, type=Path)
+    parser.add_argument('--xorg-extmod', type=Path, help='NetBSD sgimips libextmod.so.0 with SGI saver support')
     args = parser.parse_args()
     record = json.loads((args.imported / 'manifest.json').read_text())
     release = record['release']
@@ -48,6 +49,10 @@ def main():
                 rows.append(f'{spec["sha256"]} {member.mode:o} {path.lstrip("/")}')
         (disc / 'inventory').write_text('\n'.join(rows) + '\n')
         shutil.copyfile(Path(__file__).with_name('install-indy-savers.sh'), disc / 'install.sh')
+        if args.xorg_extmod:
+            shutil.copyfile(args.xorg_extmod, disc / 'libextmod.so.0')
+            (disc / 'module.sha256').write_text(sha256(args.xorg_extmod) + '\n')
+            shutil.copyfile(ROOT / 'lab/sgi-saver/install-xorg.sh', disc / 'install-xorg.sh')
         image = stage / 'savers.iso'
         subprocess.run(['genisoimage', '-quiet', '-R', '-V', 'XIRI_SAVERS', '-o', image, disc], check=True)
         args.output.hardlink_to(image)

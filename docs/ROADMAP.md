@@ -298,7 +298,7 @@ work.
 - [x] Restore the xlock presets from each release's donor and qualify standalone Qix animation and return to winterm on both Indys.
 - [ ] Trace the IRIX HDSP master-device requests on original IRIX. Provide the resource discovery and mixer operations needed by both sound panels, then qualify a real output-level change from each panel.
 - [ ] Trace the XSGIvc queries made by Display and qualify mode enumeration against the active Newport screen before enabling mode changes.
-- [ ] Support the original `SCREEN-SAVER` start/end events used by SGI xlock and test a full-screen animation through idle, wake and logout.
+- [x] Support SGI xlock start/end events in Xorg. The original Qix Demo, idle activation, Space wake, disable and logout pass on both Indys. [Update and results](results/2026-11-26-sgi-screen-saver.md).
 
 ## Next packaging phase
 

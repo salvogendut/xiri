@@ -1,0 +1,102 @@
+--- a/Xext/saver.c
++++ b/Xext/saver.c
+@@ -201,6 +201,9 @@
+ );
+ 
+ typedef struct _ScreenSaverScreenPrivate {
++    ClientPtr               sgiClient;
++    XID                     sgiResource;
++    Bool                    sgiActive;
+     ScreenSaverEventPtr	    events;
+     ScreenSaverAttrPtr	    attr;
+     Bool		    hasWindow;
+@@ -230,7 +233,7 @@
+ 
+     if (!pPriv)
+ 	return;
+-    if (!pPriv->attr && !pPriv->events &&
++    if (!pPriv->sgiClient && !pPriv->attr && !pPriv->events &&
+ 	!pPriv->hasWindow && pPriv->installedMap == None)
+     {
+ 	free(pPriv);
+@@ -249,6 +252,9 @@
+     pPriv = New (ScreenSaverScreenPrivateRec);
+     if (!pPriv)
+ 	return 0;
++    pPriv->sgiClient = NULL;
++    pPriv->sgiResource = None;
++    pPriv->sgiActive = FALSE;
+     pPriv->events = 0;
+     pPriv->attr = 0;
+     pPriv->hasWindow = FALSE;
+@@ -258,6 +264,8 @@
+     return pPriv;
+ }
+ 
++#include "sgi-saver.inc"
++
+ static unsigned long
+ getEventMask (ScreenPtr pScreen, ClientPtr client)
+ {
+@@ -440,7 +448,7 @@
+     pPriv = GetScreenPrivate(pScreen);
+     if (!pPriv)
+ 	return;
+-    if (pPriv->attr)
++    if (pPriv->attr || pPriv->sgiClient)
+ 	kind = ScreenSaverExternal;
+     else if (ScreenSaverBlanking != DontPreferBlanking)
+ 	kind = ScreenSaverBlanked;
+@@ -641,6 +649,26 @@
+     Bool			ret = FALSE;
+     ScreenSaverScreenPrivatePtr	pPriv;
+ 
++    pPriv = GetScreenPrivate(pScreen);
++    if (pPriv && pPriv->sgiClient) {
++        switch (xstate) {
++        case SCREEN_SAVER_ON:
++            pScreen->screensaver.blanked = SCREEN_ISNT_SAVED;
++            sgiSaverNotify(pScreen, TRUE);
++            state = ScreenSaverOn;
++            break;
++        case SCREEN_SAVER_OFF:
++            sgiSaverNotify(pScreen, FALSE);
++            state = ScreenSaverOff;
++            break;
++        default:
++            state = ScreenSaverCycle;
++            break;
++        }
++        SendScreenSaverNotify(pScreen, state, force);
++        return TRUE;
++    }
++
+     switch (xstate)
+     {
+     case SCREEN_SAVER_ON:	
+@@ -742,7 +770,7 @@
+     }
+     rep.idle = lastInput;
+     rep.eventMask = getEventMask (pDraw->pScreen, client);
+-    if (pPriv && pPriv->attr)
++    if (pPriv && (pPriv->attr || pPriv->sgiClient))
+ 	rep.kind = ScreenSaverExternal;
+     else if (ScreenSaverBlanking != DontPreferBlanking)
+ 	rep.kind = ScreenSaverBlanked;
+@@ -909,6 +937,8 @@
+     /* end of errors from CreateWindow */
+ 
+     pPriv = GetScreenPrivate (pScreen);
++    if (pPriv && pPriv->sgiClient)
++        return BadAccess;
+     if (pPriv && pPriv->attr)
+     {
+ 	if (pPriv->attr->client != client)
+@@ -1506,6 +1536,7 @@
+ 				 ProcScreenSaverDispatch, SProcScreenSaverDispatch,
+ 				 NULL, StandardMinorOpcode)))
+     {
++	sgiSaverInit();
+ 	ScreenSaverEventBase = extEntry->eventBase;
+ 	EventSwapVector[ScreenSaverEventBase] = (EventSwapPtr) SScreenSaverNotifyEvent;
+     }

@@ -9,6 +9,13 @@ receipt=/var/db/xiri-install/installed
 cmp -s "$receipt" "$root/.xiri-install-inputs" || fail 'Expected an installed Xiri desktop.'
 [ "$(awk 'NR == 1 {print $1}' "$receipt")" = "$(cat release)" ] || fail 'Use the CD for the installed IRIX release.'
 
+case ${1:-install} in
+    --restore-xorg) exec sh ./install-xorg.sh restore ;;
+    install) [ "$#" -eq 0 ] || fail 'Unexpected argument.' ;;
+    *) fail 'Expected no argument or --restore-xorg.' ;;
+esac
+if [ -f ./install-xorg.sh ]; then sh ./install-xorg.sh check; fi
+
 matches() {
     [ ! -L "$1" ] && [ -f "$1" ] && [ "$(sha256 -q "$1")" = "$hash" ] &&
         [ "$(stat -f '%u:%g:%Lp' "$1")" = "0:0:$mode" ]
@@ -40,4 +47,5 @@ while read -r hash mode path; do
     ln "$stage/file" "$dest" || matches "$dest" || fail "Cannot add $dest"
     rm "$stage/file"
 done < inventory
+if [ -f ./install-xorg.sh ]; then sh ./install-xorg.sh install; fi
 echo 'Close and reopen Screen Saver from Icon Catalog.'
