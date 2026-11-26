@@ -34,7 +34,7 @@ At each of four stages, the IRIX wget binary downloaded 31 bytes from an
 HTTP server on the guest's loopback address. The bytes, wget binary and
 `libintl.so.3` matched their respective originals. Wget printed
 `utime: Function not implemented` when applying the remote timestamp,
-then exited successfully. This covers HTTP transfer and content integrity.
+then exited successfully. The [legacy utime module update](2026-11-26-irix-utime.md) subsequently verified the exact remote modification time on both Indys.
 
 The maintenance ISO contains the same 43 original Freeware distribution files
 as the earlier installation CD. It adds a GIMP-only removal option to the

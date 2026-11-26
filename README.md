@@ -318,6 +318,7 @@ To use xmahjongg and UnZip on the same desktop, use the
 Software Manager can install, remove and reinstall GIMP 1.2.5 from the May 2004
 Freeware CDs. Removing GIMP keeps shared libraries and the user's images and settings.
 [Install and launch GIMP](lab/irix-installer/README.md#install-gimp-125-from-the-freeware-cds) · [Remove or reinstall it](lab/irix-installer/README.md#remove-and-reinstall-gimp).
+Freeware wget 1.8.2 preserves HTTP modification times with the [Indy timestamp module update](docs/results/2026-11-26-irix-utime.md).
 Both vendor timezone compilers can now create hard-linked aliases with the
 updated module. The same two Indys were used to trace SGI Clock and
 Freeware xosview. [Hard-link and application results](docs/results/2026-11-24-indy-link-clock-xosview.md)

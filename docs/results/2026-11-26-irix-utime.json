@@ -1,0 +1,235 @@
+{
+  "netbsd_xiri_commit": "4ed77b1dfd057cca6e50ff296291a059203c9040",
+  "iris_upstream_checked": "8d21ca262d5e44653acfe732f5647709120e862a",
+  "iris_xiri_commit": "44856ab09204c3d9fdbaa1848cfcdba9fbbe9a5b",
+  "netbsd_kernel": "11.99.11",
+  "previous_module_sha256": "8be760a6e36bb163c83d5038654841b86572bc49645ebdcfbd997f9377dcb7fc",
+  "module_sha256": "259386c1487ec501f3345e7e677e4ec1b8a1e13b763741e5ec98af70cae77e44",
+  "module_iso_sha256": "b84c2055bbfb0bdc0cff85d8339744233ff266088879c21abfe34c6c56cb7d49",
+  "wget": {
+    "version": "1.8.2",
+    "source": "SGI Freeware CD 4",
+    "sha256": "af3f0aaca162c356f354ac8fd279dcf72fa2870edf4a2c0e0c475948c415e6b7"
+  },
+  "http": {
+    "last_modified": "Fri, 13 Feb 2009 23:31:30 GMT",
+    "epoch": 1234567890,
+    "body_bytes": 10,
+    "body_sha256": "f7099eb07d0be4e65f86cc699f1db872f413d2b635380182e150cadb52ce491a"
+  },
+  "probe_build": {
+    "schema": 1,
+    "record_bytes": 72,
+    "modes": [
+      "r",
+      "e",
+      "n",
+      "b",
+      "p",
+      "s"
+    ],
+    "sources": {
+      "scripts/build-irix-pathops.py": "8ae8a49c3d303a4d0f4b0f6de75532ae23808ee8a9c12c3b056b2bda9518df75",
+      "lab/irix-pathops/utime.c": "5f0961646b4efdd2cb2a9e85f931c97176a9fe073895fe54c9a84c7bba39e0c8",
+      "lab/irix-prda/start.S": "00aa6b1e26feba4817798e32876c2286fe60547ae8ceeacb56b3d6904e40310d",
+      "lab/irix-prda/call.S": "677d247b98c292a3a5f0c8cfae4614ab9c6995ddde00501b700db0e857986a4f",
+      "lab/irix-prda/probe.ld": "08cff42138f41bc5ef5c02a903ed16fab4db0d6a8d208f90dafd2157b30573dc"
+    },
+    "files": {
+      "o32-direct": {
+        "sha256": "faf46b220f8e4503c52a2fae4b963179c7136f5d943dc539c6301bb6b9844b43",
+        "bytes": 9120
+      },
+      "o32-indirect": {
+        "sha256": "d960270022b741370f45470c3787460ac1cb9e74186fbbe2b8a3ec2e1c49ebc8",
+        "bytes": 9120
+      },
+      "n32-direct": {
+        "sha256": "23a48ddaaccf704cfa341396e7f891cab99f00340e99f266496e1bd7933b23be",
+        "bytes": 9120
+      },
+      "n32-indirect": {
+        "sha256": "cdae311f25b1acd55a76de5801d6119adbc8bbe0f91bdc35d7eaf2a51d9d994c",
+        "bytes": 9120
+      }
+    }
+  },
+  "host_tests_passed": 102,
+  "releases": {
+    "6.5.22f": {
+      "reference": {
+        "machine": "Indy R4400",
+        "disk_sha256": "b4fff76ffa0ca00c0a90da1c94a3eb41f5f6ba4cb13c0af258b4acca4ad95c41",
+        "nvram_sha256": "276522469736c2363da6b6e279a847857f861cc253cc49fcd31d07c6dd247987",
+        "iris_sha256": "3dd9299d71f1899ff5a8c9b76f6a24752d19e4f9a0bcfe0edf3a29001dc9c49e",
+        "donor_disk_and_nvram_unchanged": true,
+        "user": "guest",
+        "guest_stat": "-rw-r--r--    1 998      998           10 Feb 13  2009 /tmp/xu/work/fetched",
+        "par_utime": "wget( 1561): utime(\"fetched\", 0x7fff2ac0) OK",
+        "mtime": 1234567890,
+        "bytes_match": true,
+        "emulator_stopped": true,
+        "qualification_guest_halted": true,
+        "utime_records": {
+          "count": 60,
+          "file": "2026-11-26-irix-utime-6.5.22f-reference.txt",
+          "sha256": "9c1a8aac2fbcb2487e273a63e8466aaa95941fe1750e9a6b24f50f8704d28f44"
+        }
+      },
+      "xiri": {
+        "machine": "Indy R4400",
+        "image": "xiri-clean-indy-6.5.22f-mozilla-20261125",
+        "disk_sha256": "9579b90a523755966f799d2847b639f40903f34f9e2842b82f5a7f5846b5e95d",
+        "nvram_sha256": "81b2eaa8887614b647db1c1d319d7afe7e9547f4e3c486c7df362a248ec5274e",
+        "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+        "image_and_nvram_rehashed": true,
+        "baseline": {
+          "ktrace": "syscall=1030 v0=0x59 a3=1",
+          "owner": "xiritest",
+          "size": 10,
+          "mtime": 1795688299,
+          "bytes_match": true,
+          "module_sha256": "8be760a6e36bb163c83d5038654841b86572bc49645ebdcfbd997f9377dcb7fc",
+          "guest_halted": true
+        },
+        "fixed": {
+          "ktrace": "syscall=1030 v0=0 a3=0",
+          "owner": "xiritest",
+          "size": 10,
+          "mtime": 1234567890,
+          "bytes_match": true,
+          "module_sha256": "259386c1487ec501f3345e7e677e4ec1b8a1e13b763741e5ec98af70cae77e44",
+          "guest_halted": true
+        },
+        "utimets_symlink_regression": {
+          "fields": [
+            "atime_sec",
+            "atime_nsec",
+            "mtime_sec",
+            "mtime_nsec"
+          ],
+          "results": {
+            "o32-direct": [
+              946684800,
+              123456789,
+              946684812,
+              987654321
+            ],
+            "o32-indirect": [
+              946684800,
+              123456789,
+              946684812,
+              987654321
+            ],
+            "n32-direct": [
+              946684800,
+              123456789,
+              946684812,
+              987654321
+            ],
+            "n32-indirect": [
+              946684800,
+              123456789,
+              946684812,
+              987654321
+            ]
+          },
+          "guest_halted": true
+        },
+        "utime_records": {
+          "count": 60,
+          "file": "2026-11-26-irix-utime-6.5.22f-xiri.txt",
+          "sha256": "9fbcd54a7c07ddb5e2a9895dfa576d58d5e3b79c66706e484691b7f7eb588f56"
+        }
+      }
+    },
+    "6.5.30f": {
+      "reference": {
+        "machine": "O2 R5000",
+        "disk_sha256": "339f74457dfbb06813681ab5db2ccfdd29d394e8a02dfcdcd6c6ac7c22a836db",
+        "nvram_sha256": "7be8898587b0c45a8de4bbe7fd392c30329f000d32eea5de4f32af94134493b2",
+        "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+        "donor_disk_and_nvram_unchanged": true,
+        "user": "guest",
+        "guest_stat": "-rw-r--r--    1 998      998           10 Feb 13  2009 /tmp/xu/work/fetched",
+        "par_utime": "wget( 1358): utime(\"fetched\", 0x7fff2ac0) OK",
+        "mtime": 1234567890,
+        "bytes_match": true,
+        "emulator_stopped": true,
+        "qualification_guest_halted": false,
+        "teardown_note": "After all measurements, the serial harness stopped the private emulator. An IRIX-initiated halt was not confirmed. A separate boot reached login but the probe under /tmp was absent, so no post-reboot readback was recorded.",
+        "utime_records": {
+          "count": 60,
+          "file": "2026-11-26-irix-utime-6.5.30f-reference.txt",
+          "sha256": "16674a7e216e9f7146da537284fd963a85a1ea5fd8e7aff6860d65e58dba418e"
+        }
+      },
+      "xiri": {
+        "machine": "Indy R5000",
+        "image": "xiri-clean-indy-6.5.30f-mozilla-20261125",
+        "disk_sha256": "1d3dd1de7d690dd4cdc563176e2093094592191144782f206f178470d38d3e12",
+        "nvram_sha256": "96df5c83814f2772124e83a680c30c0b2e9ab5cf014803282745afc7b3dda6e4",
+        "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+        "image_and_nvram_rehashed": true,
+        "baseline": {
+          "ktrace": "syscall=1030 v0=0x59 a3=1",
+          "owner": "xiritest",
+          "size": 10,
+          "mtime": 1795688297,
+          "bytes_match": true,
+          "module_sha256": "8be760a6e36bb163c83d5038654841b86572bc49645ebdcfbd997f9377dcb7fc",
+          "guest_halted": true
+        },
+        "fixed": {
+          "ktrace": "syscall=1030 v0=0 a3=0",
+          "owner": "xiritest",
+          "size": 10,
+          "mtime": 1234567890,
+          "bytes_match": true,
+          "module_sha256": "259386c1487ec501f3345e7e677e4ec1b8a1e13b763741e5ec98af70cae77e44",
+          "guest_halted": true
+        },
+        "utimets_symlink_regression": {
+          "fields": [
+            "atime_sec",
+            "atime_nsec",
+            "mtime_sec",
+            "mtime_nsec"
+          ],
+          "results": {
+            "o32-direct": [
+              946684800,
+              123456789,
+              946684812,
+              987654321
+            ],
+            "o32-indirect": [
+              946684800,
+              123456789,
+              946684812,
+              987654321
+            ],
+            "n32-direct": [
+              946684800,
+              123456789,
+              946684812,
+              987654321
+            ],
+            "n32-indirect": [
+              946684800,
+              123456789,
+              946684812,
+              987654321
+            ]
+          },
+          "guest_halted": true
+        },
+        "utime_records": {
+          "count": 60,
+          "file": "2026-11-26-irix-utime-6.5.30f-xiri.txt",
+          "sha256": "1e01b99b16b818c5ffc2a3f2672a5618406abb5709d3fee37f4c8abcd34d6e69"
+        }
+      }
+    }
+  }
+}

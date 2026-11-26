@@ -158,3 +158,30 @@ and identifies the unchanged native-wait core by matching artifact hashes.
 Use `qualify-xiri-image.py --source-equivalence
 lab/irix-pathops/filemeta-source-equivalence.json` when qualifying this image.
 The older `source-equivalence.json` remains available for earlier bundles.
+
+## Legacy utime
+
+Build the o32/n32 probes for trap 1030, including the indirect syscall
+entry. Copy the four executables from `.work/irix-utime/probes/` to an
+absolute guest directory such as `/tmp/utime-probes`. Copy
+`utime-cases.sh` alongside them.
+
+```sh
+python3 scripts/build-irix-pathops.py --suite utime
+```
+
+As root on a disposable guest, create two root-owned files, one mode
+0444 and one mode 0666. As an ordinary user, change to a fresh writable
+directory and capture the records. Use separate work directories for each run.
+
+```sh
+sh /tmp/utime-probes/utime-cases.sh /tmp/utime-probes /tmp/readonly-file /tmp/writable-file >cases.txt
+```
+
+On the workstation, check the records with
+`python3 lab/irix-pathops/check-utime.py cases.txt`. Add `--original`
+for the IRIX donors, which accept the second before the epoch. The observer
+records the utime error and success value,
+xstat error, access and modification seconds, the bitwise OR of their
+nanoseconds, and the clock seconds before and after the operation. The
+`r` mode only reads metadata. [Dual-release results and wget check](../../docs/results/2026-11-26-irix-utime.md).

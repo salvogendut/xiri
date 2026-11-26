@@ -72,6 +72,10 @@ in `08e53ba7`. [Octane build and qualification](results/2026-11-23-octane-deskto
 
 ## IRIS upstream updates
 
+The November 26 legacy timestamp check fetched upstream `8d21ca26`, already
+in IRIS `xiri` at `44856ab0`. The pinned Indy emulators ran both the old
+and updated modules. [IRIX and Xiri results](results/2026-11-26-irix-utime.md).
+
 The November 26 GIMP removal cycle merged upstream `8d21ca26` into IRIS
 `xiri` at `44856ab0`. The five commits cover PCI host commands, XBow
 link reset callbacks, monitor command dispatch and framebuffer hashes.
