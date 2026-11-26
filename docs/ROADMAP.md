@@ -291,6 +291,16 @@ retains the native-wait core/module and needs no new kernel hooks.
 Individual application fixes and native IRIX clogin integration remain later
 work.
 
+## Next ControlPanels checks
+
+After the desktop Software Manager and v6 platform updates, double-click
+`display`, `sounds`, `audiopanel` and `screensaver` in Icon Catalog on both
+IRIX release lines. Record the first visible result, a working control and
+normal exit for each. Compare the Catalog launch with the terminal route:
+earlier runs reached the Sounds window and saved a screen-blanking timeout.
+Display requested XSGIvc, and Audio Panel reported a missing audio driver.
+[Earlier panel observations](ICON-CATALOG.md#controlpanels-18).
+
 ## Next packaging phase
 
 The next deployment cycle is [reproducible installation](XIRI-INSTALLATION.md).

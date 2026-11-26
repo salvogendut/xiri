@@ -72,6 +72,13 @@ in `08e53ba7`. [Octane build and qualification](results/2026-11-23-octane-deskto
 
 ## IRIS upstream updates
 
+On November 26 the Software Manager and platform update cycle integrated
+upstream `10ab247b` into `xiri` at `76125096`. Upstream supplies fastclear
+colour packing for 4-, 8- and 12-bit Newport modes and removes the hardware
+watchpoint helper. The fork retains the physical plane ordering for 24-bit
+RGB. Both release binaries built with `jitv2,rex-jit` and the integrated
+Newport suite passed 207 tests with five skipped.
+
 The Indy v6 cycle integrated upstream `d7e3abd4` on IRIS `xiri` at
 `ae7626c1`. Upstream removed the experimental `rex-gpu` Newport backend.
 Both release binaries (`iris` and `iris-ci`) built with JIT v2 and REX JIT.
