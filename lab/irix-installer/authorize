@@ -1,0 +1,19 @@
+#!/bin/sh
+# NetBSD su reads credentials from the terminal and enforces its wheel policy.
+set -eu
+PATH=/bin:/usr/bin:/sbin:/usr/sbin
+export PATH
+admin=/usr/local/libexec/xiri-software/manage
+case " $(id -Gn) " in
+    *' wheel '*) exec /usr/bin/su - root -c "$admin" ;;
+esac
+printf 'Administrator account: '
+IFS= read -r operator || exit 1
+case "$operator" in ''|-*|*[!a-zA-Z0-9_.-]*) exit 1 ;; esac
+if ! id -Gn "$operator" | tr ' ' '\n' | grep -qx wheel; then
+    echo 'This account is not in wheel. Press Return to close.'
+    read -r unused
+    exit 1
+fi
+if test "$(id -u "$operator")" = 0; then exec /usr/bin/su - root -c "$admin"; fi
+exec /usr/bin/su - "$operator" -c "exec /usr/bin/su - root -c $admin"

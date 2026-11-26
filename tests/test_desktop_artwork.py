@@ -62,6 +62,20 @@ class ArtworkMigration(unittest.TestCase):
         self.open()
         self.assertEqual(self.table.read_bytes(), b'new site desktop')
 
+    def test_keep_dynamic_rules_and_interrupted_desktop_selection(self):
+        script = OPEN + """
+        touch "$art/rule.imageviewer" "$art/before-desktop"
+        artwork_release_base
+        test -f "$art/baseline.otr"
+        rm "$art/rule.imageviewer"
+        artwork_release_base
+        test -f "$art/baseline.otr"
+        rm "$art/before-desktop"
+        artwork_release_base
+        test ! -d "$art"
+        """
+        subprocess.run(['sh', '-c', script, 'test', self.root, HELPER], check=True)
+
     def test_preserve_independent_edit_and_active_legacy_lock(self):
         self.old_install('unzip', b'zip')
         zip_state = self.receipts / 'xiri-unzip'

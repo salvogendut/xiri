@@ -11,6 +11,36 @@ their 37-path static n32 closure and the original shell templates/manuals.
 original generic `/var/inst/machfile`. Extracted bytes remain private in
 `.work/irix-freeware/installed` and `.work/irix-freeware/package`.
 
+## Open Software Manager from the Indy desktop
+
+Start your v6 Indy with the supplement for its IRIX release and your own Freeware disc. The second CD contains the actual software. On the test workstation:
+
+```sh
+release=6.5.22f  # or 6.5.30f
+.work/images/xiri-clean-indy-${release}-v6-20261126/run-iris.sh \
+  --cdrom4 "$PWD/.work/installers/indy-11.99.11/desktop-software-20261126/${release}.iso" \
+  --cdrom5 "$PWD/.work/irix-freeware/may2004-cd4.iso"
+```
+
+At the root console, mount the release-matched supplement and register the entry once:
+
+```sh
+mkdir -p /cdrom
+mount -rt cd9660 /dev/cd0a /cdrom
+if test -s /emul/irix/var/inst/hist; then
+    sh /cdrom/install-entry.sh
+else
+    sh /cdrom/prepare-live-base.sh /cdrom
+fi
+umount /cdrom
+```
+
+Log in through xdm as your usual IRIX desktop user. Open **System → Software Manager** in Toolchest or **DesktopTools → SoftwareManager** in Icon Catalog. Users outside `wheel` enter an administrator's login and authenticate with NetBSD `su`. On the development images use `netbsdtest` and its test password. On systems with a root password, the second `su` asks for it. The user's desktop retains its own identity.
+
+The launcher offers mounted CD9660 distributions and automatically mounts the second CD at `/mnt/freeware`. For the game, enter `fw_xmahjongg`, then `install` or `remove`. Pressing Return at the product prompt opens the whole disc. In SGI Software Manager open **Customize Installation**, review the selection and any conflicts, then click **Start**. Exit Software Manager after the transaction so the launcher can compile the affected desktop filetypes. Reopen Icon Catalog or start a fresh desktop session to see the new Freeware entry.
+
+The original installer keeps its inventory under `/emul/irix/var/inst`. The desktop launcher saves the original release-specific launcher bytes under `/usr/local/libexec/xiri-software/SoftwareManager.sgi` and runs the vendor's `/emul/irix/usr/sbin/swmgr`. Requests that supply vendor command-line arguments continue to run the original program as the caller. Use the release-specific GIMP procedure below for its additional runtime libraries. [Game installation, removal and screenshots](../../docs/results/2026-11-26-desktop-installer.md).
+
 ## Use the complete Freeware CD 4 with a clean Mozilla Indy
 
 Use the clean Mozilla CHD for your release and the matching installer

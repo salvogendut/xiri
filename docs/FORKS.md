@@ -77,7 +77,9 @@ upstream `10ab247b` into `xiri` at `76125096`. Upstream supplies fastclear
 colour packing for 4-, 8- and 12-bit Newport modes and removes the hardware
 watchpoint helper. The fork retains the physical plane ordering for 24-bit
 RGB. Both release binaries built with `jitv2,rex-jit` and the integrated
-Newport suite passed 207 tests with five skipped.
+Newport suite passed 207 tests with five skipped. The local build is in
+`.work/emulators/iris-xiri-76125096/`. The desktop qualification used the
+existing emulator pins recorded with each manual bundle.
 
 The Indy v6 cycle integrated upstream `d7e3abd4` on IRIS `xiri` at
 `ae7626c1`. Upstream removed the experimental `rex-gpu` Newport backend.

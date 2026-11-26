@@ -62,6 +62,8 @@ artwork_open() {
 }
 
 artwork_release_base() {
+    test -d "$art" || return 0
+    for mark in "$art"/rule.* "$art/before-desktop"; do test ! -e "$mark" || return 0; done
     if test ! -e "$art/xmahjongg" && test ! -e "$art/unzip" && test ! -e "$art/gimp"; then
         rm -f "$art/baseline.otr" "$art/published.sha256" "$art/pending.sha256"
         rmdir "$art"
@@ -73,8 +75,9 @@ artwork_release_base() {
 # the last managed rule is removed.
 artwork_publish() {
     set --
-    for product in xmahjongg unzip gimp; do
-        test -e "$art/$product" || continue
+    for mark in "$art/xmahjongg" "$art/unzip" "$art/gimp" "$art"/rule.*; do
+        test -e "$mark" || continue
+        product=${mark##*/}; product=${product#rule.}
         if test "$package" = "$product" && test "$action" = remove; then continue; fi
         (cd "$types/install" && "$root/usr/sbin/fftr" -o "$stage/$product.otr" "$product.ftr") || fail "Cannot compile $product artwork."
         set -- "$@" "$stage/$product.otr"

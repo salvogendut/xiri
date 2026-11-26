@@ -55,3 +55,5 @@ done
 for sub in c++_eoe.sw.lib eoe.sw.base eoe.sw.efs compiler_eoe.sw.cpp compiler_eoe.sw.lboot compiler_eoe.sw.lib compiler_eoe.sw.unix x_eoe.sw.eoe; do
     awk -v subname="$sub" '$1=="I" && $2==subname {found=1} END {exit !found}' "$work/history"
 done
+
+if test -f "$media/install-entry.sh"; then sh "$media/install-entry.sh"; fi

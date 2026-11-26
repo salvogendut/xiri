@@ -202,7 +202,7 @@ they do not repeat every Catalog double-click route.
 | `rcpDevice` | `/usr/lib/desktop/rcpDevice` | **Exits 1 without a window.** /usr/lib/desktop/rcpDevice[12]: test: argument expected Invalid argument: |
 | `showmap` | `/usr/sbin/showmap` | **Exits 1 without a window.** ERROR #114  _GLgetfd : Cannot Open Graphics: ERR_NOGRAPHICS |
 | `snoop` | `/usr/bin/snoop` | **Exits 1 without a window.** Warning: sigaltstack: Function not implemented |
-| `SoftwareManager` | `/usr/sbin/SoftwareManager` | **Window observed.** SuWindow. Use and normal exit remain untested. |
+| `SoftwareManager` | `/usr/sbin/SoftwareManager` | The Indy desktop supplement opens NetBSD authorization and then SGI Software Manager. [Game install and removal on both releases](results/2026-11-26-desktop-installer.md). |
 | `xcalc` | `/usr/bin/X11/xcalc` | **Window observed.** Calculator. Use and normal exit remain untested. Warning: Color name "sgilightgray" is not defined Warning: Cannot convert string "calculator" to type Pixmap |
 | `xclock` | `/usr/bin/X11/xclock` | [Prior bounded UTC/time pass](results/2026-11-01-irix-time.md); not repeated by this survey. |
 | `xfontsel` | `/usr/bin/X11/xfontsel` | **Window observed.** xfontsel. Use and normal exit remain untested. |

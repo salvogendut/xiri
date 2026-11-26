@@ -1,0 +1,5 @@
+#!/bin/sh
+# Invoked by the original Toolchest and DesktopTools entries.
+# Preserve vendor command-line, saved-selection and drop actions as the caller.
+if test "$#" -gt 0; then exec /emul/irix/usr/sbin/swmgr "$@"; fi
+exec /usr/X11R7/bin/xterm -title 'Software Manager authorization' -e /usr/local/libexec/xiri-software/authorize
