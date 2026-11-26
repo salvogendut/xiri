@@ -36,6 +36,8 @@ def browser_archive(directory, base):
 
 
 def add_mozilla(args, base, native, work, inputs):
+    from .install_media import UTIME
+    native_owns_kernel = native['profile'] == UTIME
     archive, pins = browser_archive(args.mozilla_payload, base)
     package = work / 'mozilla'
     tree = package / 'root'
@@ -69,6 +71,8 @@ def add_mozilla(args, base, native, work, inputs):
                    env=dict(os.environ, DESTDIR=str(tree)), check=True)
     groups[BROWSER + '/xiri-welcome.html'] = 'add'
     for name, (dest, digest, mode) in NETWORK.items():
+        if native_owns_kernel and dest == MODULE:
+            continue
         path = tree / dest.lstrip('/')
         path.parent.mkdir(parents=True, exist_ok=True)
         with path.open('xb') as output:
@@ -87,17 +91,18 @@ def add_mozilla(args, base, native, work, inputs):
 
     # Install the bootable wrapper last after preparing both kernel generations.
     boot = {}
-    with tarfile.open(args.mozilla_kernel) as source:
-        for member, key in [('netbsd', 'kernel'), ('netbsd.boot', 'boot')]:
-            path = tree / member
-            with source.extractfile(member) as reader, path.open('xb') as output:
-                shutil.copyfileobj(reader, output)
-            if sha256(path) != pins[key + '_sha256']:
-                raise ValueError('Unexpected Mozilla kernel artifact: ' + member)
-            path.chmod(0o444)
-            boot['/' + member] = native['artifacts'][key]['sha256']
-    groups[MODULE] = native['artifacts']['module']['sha256']
-    groups.update(boot)
+    if not native_owns_kernel:
+        with tarfile.open(args.mozilla_kernel) as source:
+            for member, key in [('netbsd', 'kernel'), ('netbsd.boot', 'boot')]:
+                path = tree / member
+                with source.extractfile(member) as reader, path.open('xb') as output:
+                    shutil.copyfileobj(reader, output)
+                if sha256(path) != pins[key + '_sha256']:
+                    raise ValueError('Unexpected Mozilla kernel artifact: ' + member)
+                path.chmod(0o444)
+                boot['/' + member] = native['artifacts'][key]['sha256']
+        groups[MODULE] = native['artifacts']['module']['sha256']
+        groups.update(boot)
     plan = package / 'groups'
     plan.write_text(''.join(f'{policy}|{dest}\n' for dest, policy in groups.items()))
     plan.chmod(0o644)

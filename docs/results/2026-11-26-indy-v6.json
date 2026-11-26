@@ -1,0 +1,312 @@
+{
+  "date": "2026-11-26",
+  "netbsd": "4ed77b1dfd057cca6e50ff296291a059203c9040",
+  "iris_upstream": "d7e3abd4236c05371c8e03baef9d10892bc0c75e",
+  "iris_integration": "ae7626c13c9f1fcab5a12df40ba0b365c21e7086",
+  "iris_build": "release, jitv2 and rex-jit, iris and iris-ci",
+  "iris_newport_tests": {
+    "passed": 205,
+    "ignored": 5
+  },
+  "host_tests_passed": 103,
+  "bootstrap": {
+    "stock": {
+      "disk.raw": "8f896ab101a1cb27e29bfe87cc4048cc61c17f2a148f58d24bba0fb1d0c21926",
+      "nvram.bin": "602d954b2e8f076887c54ed301dff7dbd9cc0c6be138e537e5bc732c948d344e"
+    },
+    "xsets": [
+      "xbase.tgz",
+      "xetc.tgz",
+      "xfont.tgz",
+      "xserver.tgz"
+    ],
+    "boots": [
+      {
+        "phase": "stock",
+        "halted": true,
+        "stopped": true
+      },
+      {
+        "phase": "modular",
+        "halted": true,
+        "stopped": true
+      }
+    ],
+    "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+    "native_sha256": {
+      "netbsd": "e989c42d3469f5d59e2ec759fdb3d7f54d7a893acdc326f6f3a3c4487f19fd22",
+      "netbsd.boot": "a4af41c6d0c83f11f0180fce5cb0424a7a5ea7c3aa898bda9bfaf9f3f7b6f5c9",
+      "compat_irix_o32.kmod": "259386c1487ec501f3345e7e677e4ec1b8a1e13b763741e5ec98af70cae77e44"
+    },
+    "stock_kernel": "NetBSD 11.0 (GENERIC32_IP2x) #0: Thu Jul 30 15:23:12 UTC 2026  mkrepro@mkrepro.NetBSD.org:/usr/src/sys/arch/sgimips/compile/GENERIC32_IP2x",
+    "modular_kernel": "NetBSD 11.99.11 (XIRI_IRIX_MODULE_20261103) #1: Wed Nov 25 06:30:36 UTC 2026  salvogendut@minisforum.golgota.lan:/var/home/salvogendut/Dev/xiri/.work/nsproc-cycle/build/kernel",
+    "module": "compat_irix_o32            exec     filesys  -        0       - exec_elf32,compat_netbsd32",
+    "securelevel": 1,
+    "originals_unchanged": true,
+    "passed": true
+  },
+  "native_profile": "netbsd-sgimips-indy-11.99.11-utime-v1",
+  "profile_sha256": "6910d0765f139dd969c4a96f604a8c30a672052f338504d4d690ac5088d19d78",
+  "native_archive_sha256": "9378a557a287ba4fed8407ecf40680bc4edfbbe6c7287a208d0a7e5c7a97db23",
+  "wget_test_iso_sha256": "705f92f1edc6783794dca40f71897d6e231d72d1939480590e50163b20067bf2",
+  "releases": {
+    "6.5.22f": {
+      "bundle": "xiri-clean-indy-6.5.22f-v6-20261126",
+      "manifest": {
+        "release": "6.5.22f",
+        "receipt": "6.5.22f 9378a557a287ba4fed8407ecf40680bc4edfbbe6c7287a208d0a7e5c7a97db23 85191d9fb7fa2c16a11c58a2889fb891200d87cf43691a797446cba3c35aeac3",
+        "mozilla_receipt": "6.5.22f 9378a557a287ba4fed8407ecf40680bc4edfbbe6c7287a208d0a7e5c7a97db23 85191d9fb7fa2c16a11c58a2889fb891200d87cf43691a797446cba3c35aeac3 42d676e2358f63e5776b96d807fd49ee552594889bbeddc039a7f18fa608b7dc",
+        "iso_sha256": "252639f7946066a9b8ceeb01d2055c64e534362f107e1d901afd5ad0701574bc",
+        "raw_sha1": "0998c5b7ce67d469181107d9da7533c9fcf18308",
+        "chd_sha256": "9faeb6cf66ad9fd20966b7f67a5284eb18476e5e1126b3043f60c82e7c567226",
+        "nvram_sha256": "effc642f215ec435c16f0d566f1e6c2d07bb052991497c71fa7ca331cb4c1aed",
+        "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+        "install_result_sha256": "140c354b714388e1f9e1d09cb541d8f17ca0610b49fbe631d07fc50f22922320"
+      },
+      "old_bundle": "xiri-clean-indy-6.5.22f-mozilla-20261125",
+      "old_disk_sha256": "9579b90a523755966f799d2847b639f40903f34f9e2842b82f5a7f5846b5e95d",
+      "old_nvram_sha256": "81b2eaa8887614b647db1c1d319d7afe7e9547f4e3c486c7df362a248ec5274e",
+      "original_disk_and_nvram_rehashed": true,
+      "fresh_installed_twice": true,
+      "fresh_cold_boot": {
+        "module_sha256": "259386c1487ec501f3345e7e677e4ec1b8a1e13b763741e5ec98af70cae77e44",
+        "mtime": 1234567890,
+        "bytes_match": true,
+        "owner": "xiritest",
+        "wget_log": "--11:04:16--  http://127.0.0.1:18373/witness.txt\n           => `witness.txt'\nConnecting to 127.0.0.1:18373... connected.\nHTTP request sent, awaiting response... 200 OK\nLength: 10 [text/plain]\n\n    0K                                                       100%    9.77 KB/s\n\n11:04:17 (9.77 KB/s) - `witness.txt' saved [10/10]",
+        "browser_title": "0x180002c \"Xiri Indy timestamp check - Mozilla {Build ID: 0000000000}\": (\"<unknown>\" \"<unknown>\")  610x450+0+0  +32+32",
+        "desktop": {
+          "identity": "SESSION user=xiritest uid=1234 groups=1234 home=/usr/people/xiritest cwd=/usr/people/xiritest display=127.0.0.1:0 authority=/tmp/.XauthhQikiB",
+          "winterm_handoff": "NATIVE_HANDOFF pid=3303 sid=3303 pgid=3303 tpgid=3303 uid=1234 euid=1234 gid=1234 egid=1234 groups=1 tty=/dev/pts/1 rows=24 cols=80",
+          "dimensions": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+          "newport_log": "[    47.756] (**) NEWPORT(0): Option \"NoAccel\" \"false\"\n[    51.264] (II) NEWPORT(0): Using XFree86 Acceleration Architecture (XAA)",
+          "windows": [
+            "Toolchest",
+            "Icon Catalog",
+            "winterm",
+            "xclock"
+          ],
+          "original_shell": true,
+          "native_session": "ctwm + xterm",
+          "native_processes": "PID COMMAND\n4566 sh",
+          "both_logouts": true,
+          "desktop_png_sha256": "8665374e26f10d62aba1dcb9006ec3f53c00ce9fb29a782a384a56fe7cbbb83d",
+          "ctwm_png_sha256": "ccffac6e2124e6c15964d5acbd0653e3fbf26ebd4f887efea6ed6ad9b5aa39c6",
+          "ctwm_selected_by_uid_and_uxterm_window_checked": true
+        },
+        "browser_removed_and_reinstalled_with_same_boot_files": true
+      },
+      "v5_update_and_rollback": {
+        "updated": {
+          "module_sha256": "259386c1487ec501f3345e7e677e4ec1b8a1e13b763741e5ec98af70cae77e44",
+          "mtime": 1234567890,
+          "bytes_match": true,
+          "owner": "xiritest",
+          "wget_log": "--11:04:58--  http://127.0.0.1:18373/witness.txt\n           => `witness.txt'\nConnecting to 127.0.0.1:18373... connected.\nHTTP request sent, awaiting response... 200 OK\nLength: 10 [text/plain]\n\n    0K                                                       100%    9.77 KB/s\n\n11:04:59 (9.77 KB/s) - `witness.txt' saved [10/10]",
+          "browser_title": "0x180002c \"Xiri Indy timestamp check - Mozilla {Build ID: 0000000000}\": (\"<unknown>\" \"<unknown>\")  610x450+0+0  +32+32",
+          "desktop": {
+            "identity": "SESSION user=xiritest uid=1234 groups=1234 home=/usr/people/xiritest cwd=/usr/people/xiritest display=127.0.0.1:0 authority=/tmp/.Xauth4xbAgl",
+            "winterm_handoff": "NATIVE_HANDOFF pid=676 sid=676 pgid=676 tpgid=676 uid=1234 euid=1234 gid=1234 egid=1234 groups=1 tty=/dev/pts/1 rows=24 cols=80",
+            "dimensions": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+            "newport_log": "[    78.849] (**) NEWPORT(0): Option \"NoAccel\" \"false\"\n[    79.924] (II) NEWPORT(0): Using XFree86 Acceleration Architecture (XAA)",
+            "windows": [
+              "Toolchest",
+              "Icon Catalog",
+              "winterm",
+              "xclock"
+            ],
+            "original_shell": true,
+            "native_session": "ctwm + xterm",
+            "native_processes": "PID COMMAND\n1258 sh",
+            "both_logouts": true,
+            "desktop_png_sha256": "30c419dfe2db53d064a9773247cf8ad03125740cb3441215140c5365e03e9e0b",
+            "ctwm_png_sha256": "ccffac6e2124e6c15964d5acbd0653e3fbf26ebd4f887efea6ed6ad9b5aa39c6",
+            "ctwm_selected_by_uid_and_uxterm_window_checked": true
+          }
+        },
+        "rolled-back": {
+          "module_sha256": "8be760a6e36bb163c83d5038654841b86572bc49645ebdcfbd997f9377dcb7fc",
+          "mtime": 1795691806,
+          "bytes_match": true,
+          "owner": "xiritest",
+          "wget_log": "--11:16:46--  http://127.0.0.1:18373/witness.txt\n           => `witness.txt'\nConnecting to 127.0.0.1:18373... connected.\nHTTP request sent, awaiting response... 200 OK\nLength: 10 [text/plain]\n\n    0K                                                       100%    9.77 KB/s\n\nutime(witness.txt): Function not implemented\n11:16:46 (9.77 KB/s) - `witness.txt' saved [10/10]",
+          "browser_title": "0x180002c \"Xiri Indy timestamp check - Mozilla {Build ID: 0000000000}\": (\"<unknown>\" \"<unknown>\")  610x450+0+0  +32+32",
+          "desktop": {
+            "identity": "SESSION user=xiritest uid=1234 groups=1234 home=/usr/people/xiritest cwd=/usr/people/xiritest display=127.0.0.1:0 authority=default",
+            "winterm_handoff": "NATIVE_HANDOFF pid=706 sid=706 pgid=706 tpgid=706 uid=1234 euid=1234 gid=1234 egid=1234 groups=1 tty=/dev/pts/1 rows=24 cols=80",
+            "dimensions": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+            "newport_log": "[    74.824] (**) NEWPORT(0): Option \"NoAccel\" \"false\"\n[    75.704] (II) NEWPORT(0): Using XFree86 Acceleration Architecture (XAA)",
+            "windows": [
+              "Toolchest",
+              "Icon Catalog",
+              "winterm",
+              "xclock"
+            ],
+            "original_shell": true,
+            "native_session": "ctwm + xterm",
+            "native_processes": "PID COMMAND\n1689 sh",
+            "both_logouts": true,
+            "desktop_png_sha256": "fd46d71cc48e5911e244be338f0abbcb6cb50e280b89fde48fad4ba8851dc578",
+            "ctwm_png_sha256": "ccffac6e2124e6c15964d5acbd0653e3fbf26ebd4f887efea6ed6ad9b5aa39c6",
+            "ctwm_selected_by_uid_and_uxterm_window_checked": true
+          },
+          "browser_reloaded": true
+        }
+      },
+      "install_update_and_cold_boot_guests_halted": true,
+      "screenshots": {
+        "2026-11-26-indy-v6-6.5.22f-mozilla.png": "8e3145025f38eabf6aaed153ffe051526dcc0cfbe89f8eb914d8ca112d933b2b",
+        "2026-11-26-indy-v6-6.5.22f-ctwm.png": "ccffac6e2124e6c15964d5acbd0653e3fbf26ebd4f887efea6ed6ad9b5aa39c6"
+      },
+      "native_login_retry_on_first_boot": true,
+      "v5_base_only_update_and_rollback": {
+        "updated": {
+          "kernel": "NetBSD 11.99.11 (XIRI_IRIX_MODULE_20261103) #1: Wed Nov 25 06:30:36 UTC 2026\n\tsalvogendut@minisforum.golgota.lan:/var/home/salvogendut/Dev/xiri/.work/nsproc-cycle/build/kernel",
+          "module_sha256": "259386c1487ec501f3345e7e677e4ec1b8a1e13b763741e5ec98af70cae77e44",
+          "xdm": true,
+          "receipt": "6.5.22f 9378a557a287ba4fed8407ecf40680bc4edfbbe6c7287a208d0a7e5c7a97db23 85191d9fb7fa2c16a11c58a2889fb891200d87cf43691a797446cba3c35aeac3"
+        },
+        "rolled-back": {
+          "kernel": "NetBSD 11.99.11 (XIRI_IRIX_MODULE_20261103) #0: Mon Nov 23 18:09:22 UTC 2026\n\tsalvogendut@minisforum.golgota.lan:/var/home/salvogendut/Dev/xiri/.work/netbsd-sync-20261123/indy/kernel",
+          "module_sha256": "44ce8e5aafd5b7bf1e20ee37b0ab71fcfd964067d81b288fbc6d2bd4310583b8",
+          "xdm": true,
+          "receipt": "6.5.22f 0021ca29ec292b066ae00d8b28adfa9ab48f3474950b61c5c0352de35813bf58 85191d9fb7fa2c16a11c58a2889fb891200d87cf43691a797446cba3c35aeac3"
+        }
+      },
+      "base_only_input_sha256": "2897c94b3e33c19d1cb95e8ff305dd209ba7ad7bbfd5a0735683e5577a5a6ce1",
+      "base_only_nvram": {
+        "source": "xiri-clean-indy-6.5.22f-mozilla-20261125",
+        "sha256": "81b2eaa8887614b647db1c1d319d7afe7e9547f4e3c486c7df362a248ec5274e",
+        "published_v5_nvram_sha256": "f5c8bbe5caa69b2ba890828e295f861326bb66659b78077a82eb58c9f1b7e367"
+      }
+    },
+    "6.5.30f": {
+      "bundle": "xiri-clean-indy-6.5.30f-v6-20261126",
+      "manifest": {
+        "release": "6.5.30f",
+        "receipt": "6.5.30f 9378a557a287ba4fed8407ecf40680bc4edfbbe6c7287a208d0a7e5c7a97db23 b290452e839bd7e7fb073735e382c517f672e964074a03cc1390dd34c2286288",
+        "mozilla_receipt": "6.5.30f 9378a557a287ba4fed8407ecf40680bc4edfbbe6c7287a208d0a7e5c7a97db23 b290452e839bd7e7fb073735e382c517f672e964074a03cc1390dd34c2286288 e3e804ebde5c56b4084e2698ad7239315d620921545ccc215f29e77778056803",
+        "iso_sha256": "4f604ebb66b33c326fe2cfbadf403fcd1301d402fa782f5725f6a4f23ff3100f",
+        "raw_sha1": "04695b05d3feccab9c5f91519d5f4de6e80be8a9",
+        "chd_sha256": "2e71de99f3e51920180a8a2eae6e9d6b9380804595f15effde6702d55b05fc68",
+        "nvram_sha256": "3399e37f57395e3bba6fcf8974d6da426f792ff5391f3f3fa0fbf71a72b30964",
+        "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+        "install_result_sha256": "4052074b69315f9b3aa9159c2d44e84fe3ccb63ed3852031e732aa5ee848e1f1"
+      },
+      "old_bundle": "xiri-clean-indy-6.5.30f-mozilla-20261125",
+      "old_disk_sha256": "1d3dd1de7d690dd4cdc563176e2093094592191144782f206f178470d38d3e12",
+      "old_nvram_sha256": "96df5c83814f2772124e83a680c30c0b2e9ab5cf014803282745afc7b3dda6e4",
+      "original_disk_and_nvram_rehashed": true,
+      "fresh_installed_twice": true,
+      "fresh_cold_boot": {
+        "module_sha256": "259386c1487ec501f3345e7e677e4ec1b8a1e13b763741e5ec98af70cae77e44",
+        "mtime": 1234567890,
+        "bytes_match": true,
+        "owner": "xiritest",
+        "wget_log": "--11:03:52--  http://127.0.0.1:18373/witness.txt\n           => `witness.txt'\nConnecting to 127.0.0.1:18373... connected.\nHTTP request sent, awaiting response... 200 OK\nLength: 10 [text/plain]\n\n    0K                                                       100%    9.77 KB/s\n\n11:03:52 (9.77 KB/s) - `witness.txt' saved [10/10]",
+        "browser_title": "0x1800021 \"Xiri Indy timestamp check - Mozilla\": (\"Mozilla\" \"navigator:browser\")  610x450+0+0  +32+32",
+        "desktop": {
+          "identity": "SESSION user=xiritest uid=1234 groups=1234 home=/usr/people/xiritest cwd=/usr/people/xiritest display=127.0.0.1:0 authority=/tmp/.Xauthesub1W",
+          "winterm_handoff": "NATIVE_HANDOFF pid=3432 sid=3432 pgid=3432 tpgid=3432 uid=1234 euid=1234 gid=1234 egid=1234 groups=1 tty=/dev/pts/1 rows=24 cols=78",
+          "dimensions": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+          "newport_log": "[    46.325] (**) NEWPORT(0): Option \"NoAccel\" \"false\"\n[    47.425] (II) NEWPORT(0): Using XFree86 Acceleration Architecture (XAA)",
+          "windows": [
+            "Toolchest",
+            "Icon Catalog",
+            "winterm",
+            "xclock"
+          ],
+          "original_shell": true,
+          "native_session": "ctwm + xterm",
+          "native_processes": "PID COMMAND\n1258 sh",
+          "both_logouts": true,
+          "desktop_png_sha256": "08fa52798bb6a1deb9a4ec98c7e859104fa8cea2c41634ded9b058f7d8dc28c7",
+          "ctwm_png_sha256": "ccffac6e2124e6c15964d5acbd0653e3fbf26ebd4f887efea6ed6ad9b5aa39c6",
+          "ctwm_selected_by_uid_and_uxterm_window_checked": true
+        },
+        "browser_removed_and_reinstalled_with_same_boot_files": true
+      },
+      "v5_update_and_rollback": {
+        "updated": {
+          "module_sha256": "259386c1487ec501f3345e7e677e4ec1b8a1e13b763741e5ec98af70cae77e44",
+          "mtime": 1234567890,
+          "bytes_match": true,
+          "owner": "xiritest",
+          "wget_log": "--11:20:12--  http://127.0.0.1:18373/witness.txt\n           => `witness.txt'\nConnecting to 127.0.0.1:18373... connected.\nHTTP request sent, awaiting response... 200 OK\nLength: 10 [text/plain]\n\n    0K                                                       100%    9.77 KB/s\n\n11:20:12 (9.77 KB/s) - `witness.txt' saved [10/10]",
+          "browser_title": "0x1800021 \"Xiri Indy timestamp check - Mozilla\": (\"Mozilla\" \"navigator:browser\")  610x450+0+0  +32+32",
+          "desktop": {
+            "identity": "SESSION user=xiritest uid=1234 groups=1234 home=/usr/people/xiritest cwd=/usr/people/xiritest display=127.0.0.1:0 authority=/tmp/.XauthjdyWzv",
+            "winterm_handoff": "NATIVE_HANDOFF pid=3698 sid=3698 pgid=3698 tpgid=3698 uid=1234 euid=1234 gid=1234 egid=1234 groups=1 tty=/dev/pts/1 rows=24 cols=80",
+            "dimensions": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+            "newport_log": "[    63.426] (**) NEWPORT(0): Option \"NoAccel\" \"false\"\n[    63.594] (II) NEWPORT(0): Using XFree86 Acceleration Architecture (XAA)",
+            "windows": [
+              "Toolchest",
+              "Icon Catalog",
+              "winterm",
+              "xclock"
+            ],
+            "original_shell": true,
+            "native_session": "ctwm + xterm",
+            "native_processes": "PID COMMAND\n1359 sh",
+            "both_logouts": true,
+            "desktop_png_sha256": "cc5f478822df952410e0c4d346ad4e884a5f20101133839d8f77d679ca53d8aa",
+            "ctwm_png_sha256": "ccffac6e2124e6c15964d5acbd0653e3fbf26ebd4f887efea6ed6ad9b5aa39c6",
+            "ctwm_selected_by_uid_and_uxterm_window_checked": true
+          }
+        },
+        "rolled-back": {
+          "module_sha256": "8be760a6e36bb163c83d5038654841b86572bc49645ebdcfbd997f9377dcb7fc",
+          "mtime": 1795692583,
+          "bytes_match": true,
+          "owner": "xiritest",
+          "wget_log": "--11:29:42--  http://127.0.0.1:18373/witness.txt\n           => `witness.txt'\nConnecting to 127.0.0.1:18373... connected.\nHTTP request sent, awaiting response... 200 OK\nLength: 10 [text/plain]\n\n    0K                                                       100%    9.77 KB/s\n\nutime(witness.txt): Function not implemented\n11:29:43 (9.77 KB/s) - `witness.txt' saved [10/10]",
+          "browser_title": "0x1800021 \"Xiri Indy timestamp check - Mozilla\": (\"Mozilla\" \"navigator:browser\")  610x450+0+0  +32+32",
+          "desktop": {
+            "identity": "SESSION user=xiritest uid=1234 groups=1234 home=/usr/people/xiritest cwd=/usr/people/xiritest display=127.0.0.1:0 authority=default",
+            "winterm_handoff": "NATIVE_HANDOFF pid=1197 sid=1197 pgid=1197 tpgid=1197 uid=1234 euid=1234 gid=1234 egid=1234 groups=1 tty=/dev/pts/1 rows=24 cols=80",
+            "dimensions": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+            "newport_log": "[    52.583] (**) NEWPORT(0): Option \"NoAccel\" \"false\"\n[    52.746] (II) NEWPORT(0): Using XFree86 Acceleration Architecture (XAA)",
+            "windows": [
+              "Toolchest",
+              "Icon Catalog",
+              "winterm",
+              "xclock"
+            ],
+            "original_shell": true,
+            "native_session": "ctwm + xterm",
+            "native_processes": "PID COMMAND\n1221 sh",
+            "both_logouts": true,
+            "desktop_png_sha256": "ffda4b6c6b2d241a42a5632850b926d0396d5245e6a9e3705fb1115a6e61c718",
+            "ctwm_png_sha256": "ccffac6e2124e6c15964d5acbd0653e3fbf26ebd4f887efea6ed6ad9b5aa39c6",
+            "ctwm_selected_by_uid_and_uxterm_window_checked": true
+          }
+        }
+      },
+      "install_update_and_cold_boot_guests_halted": true,
+      "screenshots": {
+        "2026-11-26-indy-v6-6.5.30f-mozilla.png": "086bd79d10f99baf08339af86fafd768c8033c86290eb0af805ca532928357b3",
+        "2026-11-26-indy-v6-6.5.30f-ctwm.png": "ccffac6e2124e6c15964d5acbd0653e3fbf26ebd4f887efea6ed6ad9b5aa39c6"
+      },
+      "native_login_retry_on_first_boot": false,
+      "v5_base_only_update_and_rollback": {
+        "updated": {
+          "kernel": "NetBSD 11.99.11 (XIRI_IRIX_MODULE_20261103) #1: Wed Nov 25 06:30:36 UTC 2026\n\tsalvogendut@minisforum.golgota.lan:/var/home/salvogendut/Dev/xiri/.work/nsproc-cycle/build/kernel",
+          "module_sha256": "259386c1487ec501f3345e7e677e4ec1b8a1e13b763741e5ec98af70cae77e44",
+          "xdm": true,
+          "receipt": "6.5.30f 9378a557a287ba4fed8407ecf40680bc4edfbbe6c7287a208d0a7e5c7a97db23 b290452e839bd7e7fb073735e382c517f672e964074a03cc1390dd34c2286288"
+        },
+        "rolled-back": {
+          "kernel": "NetBSD 11.99.11 (XIRI_IRIX_MODULE_20261103) #0: Mon Nov 23 18:09:22 UTC 2026\n\tsalvogendut@minisforum.golgota.lan:/var/home/salvogendut/Dev/xiri/.work/netbsd-sync-20261123/indy/kernel",
+          "module_sha256": "44ce8e5aafd5b7bf1e20ee37b0ab71fcfd964067d81b288fbc6d2bd4310583b8",
+          "xdm": true,
+          "receipt": "6.5.30f 0021ca29ec292b066ae00d8b28adfa9ab48f3474950b61c5c0352de35813bf58 b290452e839bd7e7fb073735e382c517f672e964074a03cc1390dd34c2286288"
+        }
+      },
+      "base_only_input_sha256": "527a60fefc68ad9fab6ff2eafb421f6aae8c330df581120fb958d55505b417a0"
+    }
+  },
+  "local_qualification_archive": {
+    "path": ".work/installers/indy-11.99.11/utime-v6/qualification.tar.gz",
+    "sha256": "5cd17522dbea10170b2f12980c96ed7c635566fd3a938423768da5dd96409abd"
+  }
+}

@@ -111,6 +111,91 @@ both after separate desktop checks; neither version replaces the other.
 See the [complete installation plan](XIRI-INSTALLATION.md) for clean-target
 installation and the separate original-media donor processes.
 
+## Install or update an Indy to v6
+
+Choose the installer for the IRIX release on the target. The local CDs are
+`.work/installers/indy-11.99.11/utime-v6/xiri-6.5.22f.iso` and
+`.work/installers/indy-11.99.11/utime-v6/xiri-6.5.30f.iso`.
+The base package owns the Indy kernel, PROM boot file and IRIX module.
+Mozilla remains optional. Both browser editions use the same base module.
+[Clean CHDs, launchers and test records](results/2026-11-26-indy-v6.md).
+
+**Existing v5 desktop.** Mount the matching v6 CD on the NetBSD root
+console. Run the update and reboot after it reports completion.
+
+```sh
+mkdir -p /cdrom
+mount -rt cd9660 /dev/cd0a /cdrom
+sh /cdrom/upgrade.sh && shutdown -r now
+```
+
+The updater checks the original v5 native package, the release-specific
+desktop receipt and, when installed, the Mozilla receipt. It verifies the
+boot files before replacing them and records which package owns them. It
+preserves user homes and site settings. To roll back, mount the same v6 CD
+again and run `sh /cdrom/upgrade.sh --rollback && shutdown -r now`.
+An interrupted operation can be repeated from the native root console using
+the same CD and direction. If the updater reports an unexpected boot file,
+compare its checksum with the [release records](results/2026-11-26-indy-v6.json);
+a disk already modified with the earlier manual module-only procedure should
+first be restored to its recorded v5 module using that procedure's backup.
+
+**Fresh installation.** Prepare a clean NetBSD 11.0/sgimips target with the
+v6 native package using the stock bootstrap below. On the booted target,
+mount the release-matched installer as above, then run one of these commands:
+
+```sh
+sh /cdrom/install.sh             # base desktop
+sh /cdrom/install.sh --mozilla   # base desktop plus the original SGI browser
+```
+
+Select the Xiri session for participating users and reboot. On the ready-made
+CHDs, `xiritest` already has the Xiri session and `netbsdtest` has native
+ctwm. Both test passwords equal the username. To remove the browser later,
+use `sh /cdrom/install.sh --remove-mozilla` on the v6 CD.
+
+**Build the media locally.** Stage the five unchanged userspace artifacts
+from the v5 native package, and the verified boot pair and module from
+their local archives. From the Xiri checkout:
+
+```sh
+inputs=$(mktemp -d)
+v5=.work/packages/netbsd-sgimips-indy-11.99.11-glx-v5
+v6=.work/packages/netbsd-sgimips-indy-11.99.11-utime-v6
+profile=profiles/netbsd-sgimips-indy-11.99.11-utime-v1.json
+tar -xzf "$v5/native.tar.gz" -C "$inputs" root
+tar -xJf .work/modules/irix-threaded-stack-guard-20261125/indy-kernel-module.tar.xz \
+    -C "$inputs" netbsd netbsd.boot
+isoinfo -R -i .work/modules/irix-utime-20261126/utime.iso -x /compat_irix_o32.kmod >"$inputs/module"
+jq --arg dir "$inputs" '.artifacts | with_entries(
+    .value = ($dir + (if .key == "module" then "/module"
+                     elif .key == "boot" or .key == "kernel" then .value.destination
+                     else "/root" + .value.destination end)))' "$profile" >"$inputs/paths.json"
+./xiri package-native --profile "$profile" --artifacts "$inputs/paths.json" \
+    --compiler .work/netbsd-irix-build/tools/bin/mipseb--netbsd-gcc \
+    --sets .work/netbsd-11.0/sgimips/binary/sets --output "$v6"
+```
+
+Use a new output directory when reproducing published artifacts. For each
+release, set `release` and `disc` as in the v5 loop below and run:
+
+```sh
+./xiri install-media --native-package "$v6" --upgrade-from "$v5" \
+    --previous-media ".work/installers/indy-11.99.11/mozilla-v5/xiri-$release.iso" \
+    --vendor-payload ".work/imports/irix-$release-v1" \
+    --clock-overlay "$HOME/Downloads/IRIX media/$disc" \
+    --instigator ../prismatic/target/release/instigator \
+    --mozilla-payload ".work/imports/irix-$release-mozilla-v1" \
+    --mozilla-network .work/modules/irix-browser-network-20261125/browser-network.iso \
+    --output ".work/installers/rebuilt-v6/xiri-$release.iso"
+```
+
+The native packager checks the pins in the v6 profile. The media builder
+checks that the v5 and v6 archives agree on native userspace, Mozilla
+userspace and the release-specific desktop payload before building the
+update. For fresh target preparation, pass `--native-package "$v6"` and
+`--keep-target` to the [stock bootstrap](../lab/native-package/README.md#bootstrapping-a-stock-target).
+
 ## Clean installation on an emulated Indy
 
 The Indy v5 package targets NetBSD 11.0/sgimips userland and X sets with

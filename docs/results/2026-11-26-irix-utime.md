@@ -53,6 +53,11 @@ Both systems store −2 seconds exactly.
 
 ## Try the module on a private Indy disk
 
+The [Indy v6 installer and CHDs](2026-11-26-indy-v6.md) include the tested
+module. For an existing v5 disk, the [normal update and rollback](../NATIVE-PACKAGE.md#install-or-update-an-indy-to-v6)
+also updates its installation receipts. The procedure below reproduces the
+original module-only test.
+
 The workstation copy of the qualified, module-only ISO is
 `.work/modules/irix-utime-20261126/utime.iso`. Use a private test copy of
 either clean Mozilla Indy running NetBSD 11.99.11. Attach the ISO as the

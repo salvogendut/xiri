@@ -72,6 +72,12 @@ in `08e53ba7`. [Octane build and qualification](results/2026-11-23-octane-deskto
 
 ## IRIS upstream updates
 
+The Indy v6 cycle integrated upstream `d7e3abd4` on IRIS `xiri` at
+`ae7626c1`. Upstream removed the experimental `rex-gpu` Newport backend.
+Both release binaries (`iris` and `iris-ci`) built with JIT v2 and REX JIT.
+The Newport tests passed 205 cases and skipped five. The Indy images use
+their previously qualified emulator. [Release records](results/2026-11-26-indy-v6.md).
+
 The November 26 legacy timestamp check fetched upstream `8d21ca26`, already
 in IRIS `xiri` at `44856ab0`. The pinned Indy emulators ran both the old
 and updated modules. [IRIX and Xiri results](results/2026-11-26-irix-utime.md).

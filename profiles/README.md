@@ -24,7 +24,9 @@ Their [Communicator profile](irix-6.5.22f-communicator-v1.json) supplies SGI's
 WebJumper helper, Netscape launcher, executable and local documents.
 
 The native package profiles identify the NetBSD kernel, module, services and
-display components used with each vendor payload. [Native packaging](../docs/NATIVE-PACKAGE.md)
+display components used with each vendor payload. The v6 Indy profile pins
+the boot pair and timestamp-capable module shared by both release lines.
+[Native v6 profile](netbsd-sgimips-indy-11.99.11-utime-v1.json) · [Build and update](../docs/NATIVE-PACKAGE.md#install-or-update-an-indy-to-v6).
 
 `./xiri import` builds a vendor payload without reading a previous NetBSD image,
 historical staging directories or the selected manual-image pointer. Run it on

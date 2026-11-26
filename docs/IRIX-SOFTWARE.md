@@ -31,7 +31,7 @@ maintenance helper selects only GIMP for removal.
 · [Clean Mozilla test results](results/2026-11-25-clean-freeware.md)
 · [Earlier v5 artwork qualification](results/2026-11-24-live-inst.md).
 
-The [Indy timestamp module update](results/2026-11-26-irix-utime.md) lets CD 4’s wget preserve a downloaded file’s HTTP modification time.
+The [Indy v6 base installation](NATIVE-PACKAGE.md#install-or-update-an-indy-to-v6) includes legacy IRIX `utime`. CD 4’s wget preserves the downloaded file’s HTTP modification time. [Original IRIX comparison](results/2026-11-26-irix-utime.md).
 
 CD 4 also supplies xosview and UnZip 5.50. Install xosview and start its CPU
 and memory meters from winterm. To exercise an in-place upgrade, install

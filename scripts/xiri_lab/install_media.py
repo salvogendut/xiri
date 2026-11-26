@@ -14,11 +14,12 @@ from .native_package import archive_tree
 
 INDY = 'netbsd-sgimips-indy-11.99.11-v1'
 GLX = 'netbsd-sgimips-indy-11.99.11-glx-v1'
+UTIME = 'netbsd-sgimips-indy-11.99.11-utime-v1'
 
 
 def validate_native(native):
     native_manifest = json.loads((native / 'manifest.json').read_text())
-    if native_manifest['profile'] not in (INDY, GLX):
+    if native_manifest['profile'] not in (INDY, GLX, UTIME):
         raise ValueError('Expected an Indy native package')
     profile = ROOT / 'profiles' / (native_manifest['profile'] + '.json')
     if (
@@ -139,7 +140,10 @@ def run(args):
             'uninstall.sh': ROOT / 'packaging/native/uninstall-desktop.sh',
         }
         files = imported['files']
-        graphics = json.loads((native / 'manifest.json').read_text())['profile'] == GLX
+        profile = json.loads((native / 'manifest.json').read_text())['profile']
+        if bool(args.previous_media) != bool(profile == UTIME and args.upgrade_from):
+            raise ValueError('Use --previous-media with a v5 to v6 Indy update')
+        graphics = profile in (GLX, UTIME)
         if graphics != bool(args.clock_overlay):
             raise ValueError('The Indy GLX profile and its matching --clock-overlay must be used together')
         fonts = {}
@@ -153,13 +157,18 @@ def run(args):
             inputs['display-update'].write_text('Xorg GLX\n')
         browser_inputs = (args.mozilla_payload, args.mozilla_kernel, args.mozilla_network)
         if any(browser_inputs):
-            if not all(browser_inputs) or not graphics:
-                raise ValueError('Mozilla requires the GLX Indy package and --mozilla-payload, --mozilla-kernel and --mozilla-network')
+            if not graphics or not args.mozilla_payload or not args.mozilla_network or bool(args.mozilla_kernel) != (profile == GLX):
+                raise ValueError('Mozilla requires its release payload and network ISO. Only v5 requires a separate Mozilla kernel.')
             from .mozilla_media import add_mozilla
             add_mozilla(args, imported, json.loads((native / 'manifest.json').read_text()), work, inputs)
         if args.upgrade_from:
-            inputs['delta.tgz'] = upgrade_delta(args.upgrade_from, native, work, fonts, pin['archive_sha256'])
-            inputs['upgrade.sh'] = ROOT / 'packaging/native/upgrade-desktop.sh'
+            if profile == UTIME:
+                from .indy_kernel_update import kernel_delta
+                inputs['delta.tgz'] = kernel_delta(args.upgrade_from, native, args.previous_media, work, release, inputs)
+                inputs['upgrade.sh'] = ROOT / 'packaging/native/upgrade-indy-kernel.sh'
+            else:
+                inputs['delta.tgz'] = upgrade_delta(args.upgrade_from, native, work, fonts, pin['archive_sha256'])
+                inputs['upgrade.sh'] = ROOT / 'packaging/native/upgrade-desktop.sh'
         table = '/emul/irix/usr/lib/filetype/desktop.otr'
         (work / 'VENDOR').write_text(
             ''.join(

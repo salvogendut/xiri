@@ -29,7 +29,10 @@ def media(work, sets, build, native):
         signed[relative_path] = digest
     release = '11.99.9'
     if native:
-        profile = json.loads((ROOT/'profiles/netbsd-sgimips-indy-11.99.11-v1.json').read_text())
+        from xiri_lab.install_media import validate_native
+        validate_native(native)
+        manifest = json.loads((native/'manifest.json').read_text())
+        profile = json.loads((ROOT/'profiles'/(manifest['profile']+'.json')).read_text())
         release = profile['target']['kernel_release']
         pins = {}
         with tarfile.open(native/'native.tar.gz') as archive:

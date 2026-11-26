@@ -7,10 +7,10 @@ selected image manifest; the explicit paths below document this image and
 older reproduction checkpoints. Automated checks never promote their result
 or replace the manual bundle's NVRAM/overlay state.
 
-The clean Indy v4 images have separate [launchers for IRIX 6.5.22f and
-6.5.30f](results/2026-11-24-indy-v4-recovery.md). Use these for testing
-the current native package installed from stock NetBSD and the original-media
-donor imports. The selected 6.5.22m development image below contains
+The [clean Indy v6 launchers](results/2026-11-26-indy-v6.md) boot separate
+6.5.22f and 6.5.30f desktops built from stock NetBSD and the original-media
+donor imports. The [v4 images](results/2026-11-24-indy-v4-recovery.md) remain
+available for reproducing earlier installations. The selected 6.5.22m development image below contains
 additional freeware.
 
 The current accelerated xdm bundle is

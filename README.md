@@ -10,9 +10,9 @@ lines for **6.5.22 and 6.5.30**, each with its own profiles, qualification and
 CHD. The separate [6.5.30f donor and import](docs/results/2026-11-14-irix-6.5.30.md)
 are reproducible. The [Indy/R5000 retry](docs/results/2026-11-14-r5000-6.5.30.md)
 now passes native boot and the 6.5.30f core desktop, shell, File Manager and
-login/logout checks with IRIS shadow cache mode. The shared module also passes
-6.5.22f regression checks. Separate [6.5.30f and 6.5.22f manual previews](docs/results/2026-11-15-irix-previews.md)
-now package those tested disk states as standalone CHDs with pinned launchers.
+login/logout checks with IRIS shadow cache mode. For manual testing, use the
+[clean 6.5.22f and 6.5.30f Indy v6 CHDs](docs/results/2026-11-26-indy-v6.md).
+Each has a launcher, an IRIX desktop and a native NetBSD login.
 The emulated O2/R10000 shows NetBSD boot messages in the Indy console frame before opening full-screen xdm.
 Both the IRIX 6.5.22 and 6.5.30 disks run 4Dwm and native ctwm.
 [Current O2 launchers and boot screenshots](docs/results/2026-11-23-o2-frame.md) ·
@@ -318,7 +318,7 @@ To use xmahjongg and UnZip on the same desktop, use the
 Software Manager can install, remove and reinstall GIMP 1.2.5 from the May 2004
 Freeware CDs. Removing GIMP keeps shared libraries and the user's images and settings.
 [Install and launch GIMP](lab/irix-installer/README.md#install-gimp-125-from-the-freeware-cds) · [Remove or reinstall it](lab/irix-installer/README.md#remove-and-reinstall-gimp).
-Freeware wget 1.8.2 preserves HTTP modification times with the [Indy timestamp module update](docs/results/2026-11-26-irix-utime.md).
+Both clean Indy v6 desktops include the module that preserves HTTP timestamps for SGI Freeware wget. Boot the release-matched CHD or update an existing v5 installation in place. [6.5.22f and 6.5.30f launchers](docs/results/2026-11-26-indy-v6.md) · [Installer and rollback](docs/NATIVE-PACKAGE.md#install-or-update-an-indy-to-v6).
 Both vendor timezone compilers can now create hard-linked aliases with the
 updated module. The same two Indys were used to trace SGI Clock and
 Freeware xosview. [Hard-link and application results](docs/results/2026-11-24-indy-link-clock-xosview.md)

@@ -2,15 +2,51 @@
 import json
 from pathlib import Path
 import sys
+import tarfile
 import tempfile
 import unittest
 from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
 from xiri_lab import mozilla_media, sha256
+from xiri_lab.indy_kernel_update import component_inventory
+from xiri_lab.native_package import archive_tree
 
 
 class MozillaMediaTests(unittest.TestCase):
+    def test_kernel_transition_preserves_browser_group_policy_and_contents(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            baseline = root/'source'
+            browser = baseline/'root/browser'
+            browser.mkdir(parents=True)
+            browser.chmod(0o755)
+            addon = browser/'plugin'
+            addon.write_bytes(b'original')
+            plan = baseline/'groups'
+            plan.write_text('add|/browser\nold|/netbsd\n')
+            kernel = baseline/'root/netbsd'
+            kernel.write_bytes(b'old kernel')
+
+            def inventory(name):
+                destination = root/name
+                archive_tree(baseline, destination)
+                with tarfile.open(destination) as archive:
+                    return component_inventory(archive)
+
+            expected = inventory('old.tgz')
+            kernel.unlink()
+            plan.write_text('add|/browser\n')
+            self.assertEqual(inventory('migrated.tgz'), expected)
+            plan.write_text('config|/browser\n')
+            self.assertNotEqual(inventory('policy.tgz'), expected)
+            plan.write_text('add|/browser\n')
+            addon.write_bytes(b'different')
+            self.assertNotEqual(inventory('contents.tgz'), expected)
+            addon.write_bytes(b'original')
+            addon.chmod(0o755)
+            self.assertNotEqual(inventory('mode.tgz'), expected)
+
     def test_only_the_matched_release_and_bytes_are_accepted(self):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)

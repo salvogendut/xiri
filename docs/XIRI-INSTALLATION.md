@@ -1,12 +1,12 @@
 # Reproducible Xiri installation
 
-Status: vendor import and desktop smoke checks qualified, 2026-11-14. The first import source is an
+The first import source is an
 **installed IRIX 6.5.22 image built from the user's original installation media**.
 Our existing Prismatic installation now provides a
 [verified donor CHD](results/2026-11-14-irix-donor.md) and a tested recipe;
-the importer need not depend on a website hosting a preinstalled disk. The
-supported end-to-end Xiri installer described here does not exist yet. Existing
-import, runtime-install and CHD preparation tools provide its components.
+the importer reads the local donor. For a clean 6.5.22f or 6.5.30f Indy,
+use the [v6 installer, update and rollback procedure](NATIVE-PACKAGE.md#install-or-update-an-indy-to-v6).
+[Bootable images and qualification](results/2026-11-26-indy-v6.md).
 
 Both Indy releases use stock NetBSD/sgimips userland with a MIPS64 kernel and
 matching `compat_irix_o32` module built from the `xiri` branch of NetBSD-xiri.

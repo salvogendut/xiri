@@ -9,6 +9,7 @@ import shutil
 import signal
 import subprocess
 import sys
+import time
 from types import SimpleNamespace
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -126,7 +127,8 @@ def greeter(guest):
     authority = """$(ps -axww -o args= | awk '$1 ~ /^\\/usr\\/X11R7\\/bin\\/X(org)?$/ && $2 == ":0" {for(i=1;i<NF;i++) if($i=="-auth") print $(i+1)}')"""
     guest.wait_for('test -s "' + authority + '"', 90)
     guest.command('export XAUTHORITY=' + authority + '; test -s "$XAUTHORITY"')
-    guest.wait_for("xwininfo -root -tree | grep -q '\"xlogin\"'", 150)
+    guest.wait_for("""id=$(xwininfo -root -tree | awk '/"xlogin"/ {print $1; exit}') && """
+                   """test -n "$id" && xwininfo -id "$id" | grep -q 'Map State: IsViewable'""", 150)
 
 
 def login(guest, user):
@@ -230,11 +232,27 @@ def desktop(guest, out, colour=None, while_logged_in=None, check_clock=False):
     clock = sgi_clock(guest, out) if check_clock else None
     guest.command('su -m xiritest -c "env XIRI_SESSION_DIR=\'$job\' /usr/local/bin/xiri-logout"')
     greeter(guest)
-    login(guest, 'netbsdtest')
     ctwm = "pgrep -u netbsdtest -f '^/usr/X11R7/bin/ctwm( |$)'"
-    guest.wait_for(ctwm + ' >/dev/null', 120)
+    login(guest, 'netbsdtest')
+    # Poll from the host so a busy emulator cannot leave a guest shell loop
+    # holding the serial console when its host deadline expires.
+    start = time.monotonic()
+    retried = False
+    while time.monotonic() - start < 150:
+        state = guest.read_text(f'if {ctwm} >/dev/null; then echo session; '
+                                """elif id=$(xwininfo -root -tree | awk '/"xlogin"/ {print $1; exit}') && """
+                                """test -n "$id" && xwininfo -id "$id" | grep -q IsViewable; then echo greeter; fi""").strip()
+        if state == 'session':
+            break
+        if state == 'greeter' and not retried and time.monotonic() - start > 20:
+            guest.monitor('key ctrl+u')
+            login(guest, 'netbsdtest')
+            retried = True
+        time.sleep(1)
+    else:
+        raise RuntimeError('native xdm login did not start ctwm')
     guest.wait_for("xwininfo -root -tree | grep -q '\"UXTerm\"'", 120)
-    native_processes = guest.read_text('ps -U netbsdtest -o pid,comm').strip()
+    native_processes = guest.read_text("""ps -ax -o uid,pid,comm | awk -v uid="$(id -u netbsdtest)" 'NR==1 || $1==uid'""").strip()
     guest.monitor('screen wait 500 10000')
     guest.monitor('screen shot ' + str(out / 'ctwm.png'))
     guest.command('kill -TERM "$(' + ctwm + ')"')
@@ -259,7 +277,7 @@ def desktop(guest, out, colour=None, while_logged_in=None, check_clock=False):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('phase', choices=('install', 'disk-full', 'desktop', 'display-upgrade', 'mozilla', 'freeware', 'freeware-upgrade', 'freeware-artwork', 'freeware-gimp', 'freeware-gimp-removal'))
+    parser.add_argument('phase', choices=('install', 'disk-full', 'desktop', 'display-upgrade', 'mozilla', 'kernel-update', 'kernel-image', 'kernel-base', 'freeware', 'freeware-upgrade', 'freeware-artwork', 'freeware-gimp', 'freeware-gimp-removal'))
     for name in ('media', 'emulator', 'output'):
         parser.add_argument('--' + name, type=Path, required=True)
     parser.add_argument('--base', type=Path, help='qualified bootstrap, required except for the clean Freeware check')
@@ -268,6 +286,7 @@ def main():
     parser.add_argument('--kernel', type=Path, help='matching unstripped kernel for the graphical halt check')
     parser.add_argument('--sgi-clock', action='store_true', help='verify original SGI Clock redraws in the Xiri session')
     parser.add_argument('--mozilla', action='store_true', help='select Mozilla on a fresh installation')
+    parser.add_argument('--wget-fixture', type=Path, help='private wget test ISO for the Indy kernel checks')
     parser.add_argument('--cd4', type=Path, help='complete May 2004 Freeware CD 4 ISO for the freeware phase')
     parser.add_argument('--gimp-media', type=Path, help='May 2004 GIMP and prerequisite packages for freeware-gimp')
     parser.add_argument('--old-unzip', type=Path, help='UnZip 5.40 helper ISO for upgrade or shared artwork checks')
@@ -278,13 +297,16 @@ def main():
     args = parser.parse_args()
     if bool(args.first_product) != (args.phase == 'freeware-artwork'):
         parser.error('--first-product is required for freeware-artwork only')
+    kernel_check = args.phase in ('kernel-update', 'kernel-image')
+    if bool(args.wget_fixture) != kernel_check:
+        parser.error('supply --wget-fixture only for the Indy kernel checks')
     freeware = args.phase.startswith('freeware')
     gimp_removal = args.phase == 'freeware-gimp-removal'
     if bool(args.gimp_media) != (args.phase == 'freeware-gimp' or gimp_removal):
         parser.error('--gimp-media is required for the GIMP checks only')
     if bool(args.old_unzip) != (args.phase in ('freeware-upgrade', 'freeware-artwork')):
         parser.error('supply --old-unzip for the upgrade and artwork checks')
-    if not freeware and not args.base:
+    if not (freeware or kernel_check or args.phase == 'kernel-base') and not args.base:
         parser.error(f'{args.phase} requires --base')
     if bool(args.cd4) != (freeware and not args.gimp_media):
         parser.error('--cd4 is required only for the CD 4 Freeware checks')
@@ -316,14 +338,19 @@ def main():
     bundle = args.bundle.resolve() if args.bundle else None
     if not install_phase:
         package = json.loads((bundle / 'manifest.json').read_text())
-        if freeware and not package.get('mozilla_receipt'):
+        if (freeware or kernel_check) and not package.get('mozilla_receipt'):
             raise ValueError('expected a clean desktop with Mozilla installed')
+        if args.phase == 'kernel-base' and package.get('mozilla_receipt'):
+            raise ValueError('expected a v5 Indy without the optional Mozilla component')
         if package.get('mozilla_receipt'):
             pins = json.loads((ROOT / 'docs/results/2026-11-25-mozilla-sigpoll.json').read_text())
             kernel_digest = pins['releases'][args.release]['image']['kernel_sha256']
+        elif args.phase == 'kernel-base':
+            native = json.loads((ROOT/'profiles/netbsd-sgimips-indy-11.99.11-glx-v1.json').read_text())
+            kernel_digest = native['artifacts']['kernel']['sha256']
         else:
             kernel_digest = json.loads((base / 'result.json').read_text())['native_sha256']['netbsd']
-        if args.phase == 'mozilla' and (
+        if args.phase in ('mozilla', 'kernel-image') and (
             not package.get('mozilla_receipt') or sha256(medium) != package['iso_sha256']
         ):
             raise ValueError('expected the Mozilla image and its matching installer')
@@ -356,6 +383,8 @@ def main():
         fixture = run / 'fixture.iso'
         subprocess.run(['genisoimage', '-quiet', '-R', '-o', fixture, Path(__file__).with_name('disk-full.sh')], check=True)
         config += '[scsi.5]\ncdrom = true\npath = ' + json.dumps(str(fixture)) + '\n'
+    if kernel_check:
+        config += '[scsi.5]\ncdrom = true\npath = ' + json.dumps(str(args.wget_fixture.resolve())) + '\n'
     if args.cd4:
         config += '[scsi.5]\ncdrom = true\npath = ' + json.dumps(str(args.cd4.resolve())) + '\n'
     if args.gimp_media:
@@ -419,6 +448,12 @@ def main():
                 result['checks'] = install(guest, args.release)
         elif args.phase == 'display-upgrade':
             result['checks'] = display_upgrade(guest, package['receipt'], args.legacy_ownership)
+        elif args.phase == 'kernel-base':
+            from indy_kernel_lifecycle import check_base
+            result['checks'] = check_base(guest, package, greeter)
+        elif kernel_check:
+            from indy_kernel_lifecycle import check
+            result['checks'] = check(guest, run, package, desktop, args.phase == 'kernel-image')
         elif args.phase == 'mozilla':
             from mozilla_lifecycle import check
             result['checks'] = check(guest, run, package, greeter, login,

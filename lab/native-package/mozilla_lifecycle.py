@@ -84,6 +84,9 @@ def check(guest, out, package, greeter, login, baseline):
     if guest.read_text('cat ' + record + '/identity').strip() != package['mozilla_receipt']:
         raise ValueError('unexpected installed Mozilla component')
     kernel = guest.read_text('sysctl -n kern.version').strip()
+    base_owns_kernel = guest.read_text('sha256 -q /netbsd').strip() == baseline['netbsd']
+    browser_module = baseline['compat_irix_o32.kmod'] if base_owns_kernel else NETWORK['compat_irix_o32.kmod'][1]
+    cmd(f'test "$(sha256 -q {MODULE})" = {browser_module}')
     cmd('modstat | grep -q "^compat_irix_o32 " && /etc/rc.d/xiri_hosts status && '
         'cat /emul/irix/ns/.local/hosts.byname/info.cern.ch | grep -qi info.cern.ch')
     first = browser(guest, out, greeter, login, 'first-boot', package['release'])
@@ -108,8 +111,9 @@ def check(guest, out, package, greeter, login, baseline):
         '! mount | grep -q "^xiri-hosts " && sha256 -c /root/mozilla-profile.sha && sha256 -c /root/mozilla-site.sha')
     reboot(guest)
     restored = guest.read_text('sysctl -n kern.version').strip()
-    if kernel == restored:
-        raise ValueError('rollback booted the browser kernel again')
+    # Starting with v6 the base desktop owns the same boot set with or without Mozilla.
+    if (kernel == restored) != base_owns_kernel:
+        raise ValueError('unexpected boot generation after removing Mozilla')
     greeter(guest)
     cmd('modstat | grep -q "^compat_irix_o32 " && sha256 -c /root/mozilla-profile.sha && sha256 -c /root/mozilla-site.sha')
     cmd(mount)
@@ -119,7 +123,7 @@ def check(guest, out, package, greeter, login, baseline):
     reboot(guest)
     if guest.read_text('sysctl -n kern.version').strip() != kernel:
         raise ValueError('upgraded guest booted the wrong kernel')
-    cmd(f'test "$(sha256 -q {MODULE})" = {NETWORK["compat_irix_o32.kmod"][1]} && '
+    cmd(f'test "$(sha256 -q {MODULE})" = {browser_module} && '
         '/etc/rc.d/xiri_hosts status && sha256 -c /root/mozilla-profile.sha && sha256 -c /root/mozilla-site.sha')
     last = browser(guest, out, greeter, login, 'after-upgrade', package['release'])
     return dict(first_boot=first, after_upgrade=last, profile_files=digests,

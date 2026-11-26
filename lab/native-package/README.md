@@ -104,6 +104,35 @@ component, boots the v5 kernel, adds Mozilla again and boots the browser
 kernel. It checks profile and site-file hashes across the changes and saves
 both browser screenshots. The guest needs outbound DNS and HTTP.
 
+### Indy v6 kernel update and rollback
+
+The v6 stock bootstrap takes the native package named in the
+[installation guide](../../docs/NATIVE-PACKAGE.md#install-or-update-an-indy-to-v6).
+Pass that target to the existing `install --mozilla` and
+`package-clean-desktop.py` steps. To exercise the v5 update on an installed
+image, prepare a separate private CD for the original Freeware wget.
+
+```sh
+python3 lab/native-package/wget-fixture.py \
+    .work/irix-freeware/gimp-1.2.5-maintenance.iso \
+    ../prismatic/target/release/instigator "$run/wget.iso"
+IRIS_NO_IDLE=1 python3 lab/native-package/check-clean-desktop.py kernel-update \
+    --release "$release" --media "$v6_iso" --bundle "$v5_mozilla_bundle" \
+    --emulator "$emulator" --kernel "$browser_kernel" --wget-fixture "$run/wget.iso" \
+    --output "$run/update"
+IRIS_NO_IDLE=1 python3 lab/native-package/check-clean-desktop.py kernel-image \
+    --release "$release" --media "$v6_iso" --bundle "$new_bundle" \
+    --emulator "$emulator" --kernel "$browser_kernel" --wget-fixture "$run/wget.iso" \
+    --output "$run/cold-boot"
+```
+
+The update check applies each direction twice and reboots. It compares
+the old receipts and browser ownership plan after rollback. Both commands
+exercise the 4Dwm and ctwm logins, open a loopback HTTP document in Mozilla,
+and check the downloaded bytes, owner and modification time as `xiritest`.
+The test CD contains the five original executables/libraries needed for
+this download. [Two-release results](../../docs/results/2026-11-26-indy-v6.md).
+
 ### Original SGI installers and Freeware CD 4
 
 To exercise the original SGI installer against the complete Freeware CD 4,
