@@ -7,6 +7,12 @@ change the kernel or selected CHD. Native xdm configuration is opt-in.
 The [native package](../docs/NATIVE-PACKAGE.md) cross-builds this runtime with
 explicit X11 sysroot flags and assembles its pinned prerequisites. The two
 6.5.22/6.5.30 release lines retain separate vendor qualification.
+When the release’s optional SoundScheme assets are installed, the desktop
+session starts `desktop-sound` under the logged-in account. It receives
+named effects on the user's X display, applies the SGI scheme level and
+mute settings, and writes PCM to NetBSD audio. The native mixer controls
+the workstation volume. [Indy sound installation](../lab/indy-desktop-sound/README.md).
+
 The [desktop removal guide](../docs/NATIVE-PACKAGE.md#remove-the-desktop-and-return-to-native-netbsd)
 describes how service ownership, existing xdm policy and user session
 selectors are handled when returning to native NetBSD.

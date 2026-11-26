@@ -5,7 +5,7 @@ WARN=-Wall -Wextra -Werror
 X11_CPPFLAGS?=-I/usr/X11R7/include
 X11_LDFLAGS?=-L/usr/X11R7/lib -Wl,-rpath,/usr/X11R7/lib
 BUILDDIR?=build
-PROGRAMS=$(BUILDDIR)/session-guard $(BUILDDIR)/x11-check $(BUILDDIR)/shell-handoff $(BUILDDIR)/save-session $(BUILDDIR)/stop-sessions $(BUILDDIR)/drop-bridge
+PROGRAMS=$(BUILDDIR)/session-guard $(BUILDDIR)/x11-check $(BUILDDIR)/shell-handoff $(BUILDDIR)/save-session $(BUILDDIR)/stop-sessions $(BUILDDIR)/drop-bridge $(BUILDDIR)/desktop-sound
 all: $(PROGRAMS)
 $(BUILDDIR):
 	mkdir -p $(BUILDDIR)
@@ -27,6 +27,9 @@ $(BUILDDIR)/stop-sessions: libexec/stop-sessions.c
 $(BUILDDIR)/drop-bridge: libexec/drop-bridge.c libexec/drop-files.h
 	mkdir -p $(BUILDDIR)
 	$(CC) $(CFLAGS) $(WARN) $(X11_CPPFLAGS) libexec/drop-bridge.c $(X11_LDFLAGS) -lX11 -o $@
+$(BUILDDIR)/desktop-sound: libexec/desktop-sound.c
+	mkdir -p $(BUILDDIR)
+	$(CC) $(CFLAGS) $(WARN) $(X11_CPPFLAGS) libexec/desktop-sound.c $(X11_LDFLAGS) -lX11 -o $@
 install: all
 	BUILDDIR=$(BUILDDIR) sh ./install.sh
 clean:

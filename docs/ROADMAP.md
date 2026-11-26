@@ -1,6 +1,6 @@
 # Xiri execution roadmap
 
-Updated 2026-11-25. The current image runs the original 4Dwm desktop,
+Updated 2026-11-26. The current image runs the original 4Dwm desktop,
 Toolchest, Icon Catalog, File Manager, winterm and xclock on NetBSD/Xorg with
 accelerated Newport. Catalog launching, running-icon feedback, backdrop,
 desktop icons and logout pass bounded checks; the latest xmahjongg texture
@@ -298,8 +298,10 @@ work.
 - [x] Restore the xlock presets from each release's donor and qualify standalone Qix animation and return to winterm on both Indys.
 - [x] Trace the original Indy HDSP master and event devices. Qualify discovery, independent stereo gain and per-subscriber readiness on both release lines. [HDSP results](results/2026-11-26-indy-hdsp.md).
 - [x] Exercise the SGI Audio Panel speaker slider against the HAL2 mixer and the Sounds panel's Key Click control against Xorg. Qualify the MIPS software conversion at digital silence. [Release checks](results/2026-11-26-indy-hdsp.md).
-- [ ] Implement IRIX PCM playback for desktop sound effects and qualify audible output. The native HAL2 mixer also needs separate validation for IRIX master mute.
-- [ ] Trace the XSGIvc queries made by Display and qualify mode enumeration against the active Newport screen before enabling mode changes.
+- [x] Play named desktop effects from the original default SoundScheme on the Indy. [Display and sound qualification](results/2026-11-26-indy-display-sound.md).
+- [ ] Implement mapped HDSP PCM playback for general IRIX audio clients such as `sfplay` and verify system-wide IRIX master mute independently of SoundScheme.
+- [x] Trace XSGIvc on a donor Indy and qualify the original Display panel against the active Newport timing on both releases. [Display and sound qualification](results/2026-11-26-indy-display-sound.md).
+- [ ] Qualify changes to Newport display modes, including recovery after selecting an unusable timing.
 - [x] Support SGI xlock start/end events in Xorg. The original Qix Demo, idle activation, Space wake, disable and logout pass on both Indys. [Update and results](results/2026-11-26-sgi-screen-saver.md).
 
 ## Next packaging phase

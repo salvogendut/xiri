@@ -46,6 +46,9 @@ observe()
     if wait "$child"; then status=0; else status=$?; fi
     printf '%s\n' "$status" >"$job/$name.exit"
 }
+if test -r /usr/local/share/xiri/sounds/effects && test -x /usr/local/libexec/xiri/desktop-sound; then
+    observe desktop-sound /usr/local/libexec/xiri/desktop-sound &
+fi
 if test "${XIRI_DROP_BRIDGE:-yes}" = yes; then
     observe drop-bridge /usr/local/libexec/xiri/drop-bridge &
 fi

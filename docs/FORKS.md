@@ -72,6 +72,14 @@ in `08e53ba7`. [Octane build and qualification](results/2026-11-23-octane-deskto
 
 ## IRIS upstream updates
 
+The November 26 Indy Display and SoundScheme cycle fetched IRIS upstream
+`8ca2b96a`, already merged at `89c27ffe`. IRIS `xiri` commit `1b4b140e`
+adds packed HAL2 playback and `7c713c13` connects its descriptor interrupt. Seven HPC3 and three HAL2 tests passed in the
+release build with JIT v2 and REX JIT enabled. Prismatic `63b6cc8` still
+uses the older renderer interface, so the private frontend for these two
+profiles builds its matching IRIS `707912dd` with both HPC3 changes.
+[Display and sound results](results/2026-11-26-indy-display-sound.md).
+
 For the 4Dwm shutdown menu, a fresh fetch found no commits beyond upstream
 `8ca2b96a`, already integrated at `89c27ffe`. The two desktop checks used
 their pinned v6 emulator. [Shutdown menu checks](XIRI-IMAGE.md#power-off-from-toolchest-or-4dwm).

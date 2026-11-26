@@ -422,6 +422,35 @@ altering it.
 
 ## Start it in Prismatic
 
+### Indy Display and desktop sounds
+
+These private Prismatic profiles include the power menu, the original Display
+panel and the release’s default desktop sounds. Run one launcher from Xiri.
+
+```sh
+.work/prismatic-indy-display-sound-v1/6.5.22f/run-prismatic.sh
+.work/prismatic-indy-display-sound-v1/6.5.30f/run-prismatic.sh
+```
+
+Press **Ctrl+P** to unpause and log in as `xiritest` with password
+`xiritest`. Open **Icon Catalog → ControlPanels → Display**. On the Indy,
+**Graphics Back End Control** shows the active **1280×1024** format.
+Double-click the **xiritest** folder on the desktop to hear the original
+folder-opening sound. To play the Empty Dumpster effect on demand, enter
+this in winterm.
+
+```sh
+/emul/irix/usr/sbin/ssplay EmptyDumpster
+```
+
+Prismatic’s **F9 → General** controls host volume and mute. In the guest,
+Audio Panel controls the HAL2 speaker level. These two test copies start
+with the NetBSD mixer at 128 on each channel and use the normal NetBSD
+`mixerctl` service to restore the last level at boot. Keep the CHD, its
+writable overlay, the state directory and the supplied frontend together.
+The previous power-menu images are still available below.
+[Update media, build details and measurements](results/2026-11-26-indy-display-sound.md).
+
 ### Power off from Toolchest or 4Dwm
 
 These test copies include the Screen Saver and Audio Panel updates, and give
