@@ -7,6 +7,7 @@ import subprocess
 
 from freeware_lifecycle import ROOT, TABLE, WINDOWS, logout, mount_media, software_manager, transaction
 from mozilla_lifecycle import login_catalog, reboot
+from xiri_lab import sha256
 
 OLD = '/mnt/previous'
 CD4 = '/mnt/freeware'
@@ -32,6 +33,11 @@ def verify_media(iso, require_shared=False):
     if uses_shared:
         for name in ('desktop-artwork.sh', 'xmahjongg.sh', 'package-filetypes.mk'):
             pins[name] = hashlib.sha256(helper.with_name(name).read_bytes()).hexdigest()
+        # The original two-product medium is also a qualified test input.
+        previous = Path(__file__).resolve().parents[2] / 'docs/results/2026-11-26-shared-artwork.json'
+        record = json.loads(previous.read_text())
+        if sha256(iso) == record['helper_iso_sha256']:
+            pins.update(record['helpers'])
     else:
         previous = Path(__file__).resolve().parents[2] / 'docs/results/2026-11-26-freeware-upgrade.json'
         if require_shared or hashlib.sha256(helper_bytes).hexdigest() != json.loads(previous.read_text())['helper_sha256']:

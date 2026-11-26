@@ -72,6 +72,11 @@ in `08e53ba7`. [Octane build and qualification](results/2026-11-23-octane-deskto
 
 ## IRIS upstream updates
 
+The November 26 GIMP installer cycle fetched upstream `5782a35d` and
+confirmed that it is already in IRIS `xiri` at `074f62f5`. Both clean
+Indys used the emulator pinned in their desktop bundles.
+[Software Manager and GIMP qualification](results/2026-11-26-freeware-gimp.md).
+
 On November 26 the shared Freeware artwork cycle merged upstream
 `5782a35d` into IRIS `xiri` at `074f62f5`. The merge retained the IndyCam
 and Xiri changelog entries. The emulator built with JIT v2, 29 camera

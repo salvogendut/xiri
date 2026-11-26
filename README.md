@@ -315,6 +315,8 @@ SGI Freeware UnZip 5.40 to 5.50 in place. [Manual instructions](lab/irix-install
 · [Upgrade results](docs/results/2026-11-26-freeware-upgrade.md).
 To use xmahjongg and UnZip on the same desktop, use the
 [shared package helpers](lab/irix-installer/README.md#install-xmahjongg-and-unzip-together).
+GIMP 1.2.5 can also be installed through Software Manager from the May 2004
+Freeware CDs. [GIMP installation and manual launch](lab/irix-installer/README.md#install-gimp-125-from-the-freeware-cds).
 Both vendor timezone compilers can now create hard-linked aliases with the
 updated module. The same two Indys were used to trace SGI Clock and
 Freeware xosview. [Hard-link and application results](docs/results/2026-11-24-indy-link-clock-xosview.md)

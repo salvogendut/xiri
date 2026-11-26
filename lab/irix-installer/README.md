@@ -185,6 +185,60 @@ sh /mnt/previous/unzip-upgrade.sh remove /mnt/freeware
 "$swmgr" -V background:off -r /emul/irix -f /mnt/freeware/dist/fw_xosview -K '*' -R fw_xosview.sw.xosview
 ```
 
+## Install GIMP 1.2.5 from the Freeware CDs
+
+Use a clean Mozilla Indy for the desired IRIX release. GIMP is on May 2004
+CD 2. Its runtime, base data, scripts and base plug-ins require 19 Freeware
+subsystems across the four discs. The [package inventory](gimp-cd.json)
+records each subsystem, source disc and file checksum. With extracted
+`cd-1/dist` through `cd-4/dist` under a common directory, create a private ISO.
+
+```sh
+python3 lab/irix-installer/prepare-gimp-media.py /path/to/cds /path/to/gimp-1.2.5.iso
+```
+
+The qualified ISO on the test workstation is shared by both releases.
+Select the release to supply its matching desktop, original installer and
+base prerequisites.
+
+```sh
+release=6.5.22f  # or 6.5.30f
+.work/images/xiri-clean-indy-${release}-mozilla-20261125/run-iris.sh \
+  --cdrom4 "$PWD/.work/images/xiri-cd4-indy-${release}-v5-20261124/freeware-cd4.iso" \
+  --cdrom5 "$PWD/.work/irix-freeware/gimp-1.2.5.iso"
+```
+
+On the NetBSD root console, mount both discs. Run the base preparation
+once on a fresh desktop. If the SGI installation history is already
+initialized, skip the last command in this block.
+
+```sh
+mkdir -p /cdrom /mnt/gimp
+mount -rt cd9660 /dev/cd0a /cdrom
+mount -rt cd9660 /dev/cd1a /mnt/gimp
+sh /cdrom/prepare-live-base.sh /cdrom
+```
+
+Log in through xdm as `xiritest`. From the root console, start SGI Software
+Manager on that user's display.
+
+```sh
+export DISPLAY=127.0.0.1:0 XAUTHORITY=/usr/people/xiritest/.Xauthority
+sh /mnt/gimp/gimp.sh /mnt/gimp
+```
+
+Choose **Customize Installation**, leave the runtime selections checked,
+then click **Start**. At completion choose **Exit, installations completed**
+and **OK**. Wait for the helper to print the desktop table checksum. It
+applies the Xiri mapping permissions to eight package libraries and merges
+GIMP's SGI artwork. For later xmahjongg or UnZip changes on this desktop,
+use the helpers from the GIMP ISO, which recognize its artwork receipt.
+
+Log out and back in to refresh Icon Catalog. Open **Freeware** and
+double-click **gimp**. Accept the first-run defaults to create
+`~/.gimp-1.2` for the logged-in user. Use **File → Open** (Ctrl+O) to
+open an image. [Two-release editing and reopen checks](../../docs/results/2026-11-26-freeware-gimp.md).
+
 ## Install xmahjongg and UnZip together
 
 Use the release-specific supplement at SCSI ID 4, Freeware CD 4 at ID 5

@@ -151,6 +151,19 @@ The first product installed is also removed first. The game-first case
 starts from the original supplement's single-product receipt. The
 remaining product is exercised from the user's desktop before removal.
 
+### GIMP across two xdm logins
+
+Build the [GIMP medium](../irix-installer/README.md#install-gimp-125-from-the-freeware-cds).
+Use the matching clean Mozilla bundle, release supplement and unstripped
+kernel. The host check uses Pillow to compare the saved pixels with the
+reopened window. Choose a fresh output directory for each release.
+
+```sh
+IRIS_NO_IDLE=1 python3 lab/native-package/check-clean-desktop.py freeware-gimp \
+  --release "$release" --bundle "$bundle" --emulator "$bundle" --kernel "$kernel" \
+  --media "$supplement" --gimp-media "$gimp_iso" --output "$run"
+```
+
 ### In-place display upgrade
 
 Use the v4 bundle and the matching v5 ISO to test a live upgrade on a

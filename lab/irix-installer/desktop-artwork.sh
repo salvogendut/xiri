@@ -1,4 +1,4 @@
-# Sourced by both SGI Freeware installers. The caller sets root, types, table
+# Sourced by the SGI Freeware installers. The caller sets root, types, table
 # and package and calls artwork_close from its EXIT trap.
 art=$root/var/inst/xiri-filetypes
 game_state=$root/var/inst/xiri-xmahjongg
@@ -62,7 +62,7 @@ artwork_open() {
 }
 
 artwork_release_base() {
-    if test ! -e "$art/xmahjongg" && test ! -e "$art/unzip"; then
+    if test ! -e "$art/xmahjongg" && test ! -e "$art/unzip" && test ! -e "$art/gimp"; then
         rm -f "$art/baseline.otr" "$art/published.sha256" "$art/pending.sha256"
         rmdir "$art"
     fi
@@ -73,7 +73,7 @@ artwork_release_base() {
 # the last managed rule is removed.
 artwork_publish() {
     set --
-    for product in xmahjongg unzip; do
+    for product in xmahjongg unzip gimp; do
         test -e "$art/$product" || continue
         if test "$package" = "$product" && test "$action" = remove; then continue; fi
         (cd "$types/install" && "$root/usr/sbin/fftr" -o "$stage/$product.otr" "$product.ftr") || fail "Cannot compile $product artwork."
