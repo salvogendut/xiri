@@ -443,7 +443,8 @@ passed on both images. The matching fresh-install CDs are in
 `.work/installers/indy-11.99.11/audio-v7/`. The previous Prismatic bundles
 remain available for existing desktops with their own installed options.
 [Measurements and screenshots](results/2026-11-26-indy-audio-installer.md) ·
-[Build and install](NATIVE-PACKAGE.md#fresh-indy-installation-with-hal2-audio).
+[Build and install](NATIVE-PACKAGE.md#fresh-indy-installation-with-hal2-audio) ·
+[Upgrade an existing v6 Indy and roll back](NATIVE-PACKAGE.md#upgrade-an-installed-indy-from-v6-to-audio-v7).
 
 ### General IRIX audio playback on Indy
 

@@ -259,8 +259,62 @@ The audio kernel and IRIX module belong to the base system. The
 [audio component checks](results/2026-11-26-indy-audio-installer.md#playback-across-mozilla-installation-and-removal)
 exercise the SGI player across both operations.
 
-Existing v6 installations retain their
-qualified [audio update procedure](../lab/irix-hdsp/playback/README.md).
+## Upgrade an installed Indy from v6 to audio-v7
+
+Use the update CD for the IRIX release in `/var/db/xiri-install/installed`.
+The update starts from the tracked v6 Indy installation with its original
+kernel, PROM boot wrapper and module. It works on the existing disk and
+keeps the installed Mozilla component if present. Sites that installed the
+earlier standalone HDSP or PCM updates should check their boot files
+against the [v6 record](results/2026-11-26-indy-v6.json) first.
+
+The private update CDs are in
+`.work/installers/indy-11.99.11/v6-to-audio-v7/`. Attach
+`xiri-6.5.22f.iso` or `xiri-6.5.30f.iso` at SCSI ID 4. In Prismatic,
+use the audio-capable build from `.work/prismatic-indy-audio-v7/prismatic`
+with the configuration and saved disk overlay of the Indy you want to
+update. Log out of 4Dwm. From the NetBSD root console, run
+
+```sh
+mkdir -p /cdrom
+mount -r -t cd9660 /dev/cd0a /cdrom
+sh /cdrom/upgrade.sh
+shutdown -r now
+```
+
+After xdm returns, log in as the same desktop user and play the SGI
+sound in winterm.
+
+```sh
+/emul/irix/usr/sbin/sfplay /usr/share/data/sounds/soundscheme/soundfiles/emptyDumpster.aiff
+```
+
+The **ControlPanels → audiopanel** speaker Mute box controls the native
+HAL2 output. On the first audio-v7 boot, NetBSD restores the saved mixer
+settings or selects 64,64 when the site has configured none. Use the
+release's full audio-v7 installer CD for subsequent Mozilla operations.
+
+To return to v6, log out again, mount the same update CD, run
+`sh /cdrom/upgrade.sh --rollback` and reboot. Use the v6 installer CD
+for further Mozilla operations after rollback. If either update command
+is interrupted, rerun it with the same CD and arguments before rebooting.
+The updater checks the package receipts and changed paths. If it reports
+a conflicting file, review that path before proceeding. The update
+preserves an existing site mixer configuration. Rollback checks the
+upgrade record before changing the disk. [Per-release results and screenshots](results/2026-11-27-indy-audio-upgrade.md).
+
+To rebuild the private media locally from the two published installer
+generations, use a new output directory.
+
+```sh
+media=.work/installers/indy-11.99.11
+for release in 6.5.22f 6.5.30f; do
+    ./xiri indy-audio-update --release "$release" \
+        --previous-media "$media/utime-v6/xiri-$release.iso" \
+        --audio-media "$media/audio-v7/xiri-$release.iso" \
+        --output "$media/rebuilt-audio-updates/xiri-$release.iso"
+done
+```
 
 ## Clean installation on an emulated Indy
 

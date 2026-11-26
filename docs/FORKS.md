@@ -72,6 +72,11 @@ in `08e53ba7`. [Octane build and qualification](results/2026-11-23-octane-deskto
 
 ## IRIS upstream updates
 
+The Indy v6 audio-upgrade cycle fetched IRIS `upstream/main` on November 26
+and again on November 27. Both checks found `8ca2b96a` already in fork
+`xiri` at `7c713c13`. The update uses the existing audio-v7 Prismatic
+binary and the released NetBSD kernel/module pair. [Two-release playback and rollback checks](results/2026-11-27-indy-audio-upgrade.md).
+
 The November 26 xdm logo and audio installer checks fetched `upstream/main` at `8ca2b96a`,
 already included in IRIS `xiri` at `7c713c13`. The existing Indy emulator
 rendered the new login artwork for both vendor release images.

@@ -76,5 +76,5 @@ plays, the peak on each channel was between 4,168 and 4,180 counts.
 Both desktops returned to xdm with the XiriBSD logo after each reboot.
 At final shutdown both serial logs reached the end of the shutdown hooks
 and both Prismatic logs recorded `Machine: soft power-off`.
-These checks cover the audio-v7 component lifecycle. An in-place desktop
-upgrade from v6 to the audio-v7 base remains a separate qualification.
+The [in-place v6 upgrade and rollback](2026-11-27-indy-audio-upgrade.md)
+cover existing Indy desktops with an installed browser and saved user data.

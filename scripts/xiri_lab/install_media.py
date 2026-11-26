@@ -150,7 +150,7 @@ def run(args):
         if any(bool(cd) != (profile == AUDIO) for cd in (args.audio_playback, args.audio_effects)):
             raise ValueError('The Indy audio profile requires both --audio-playback and --audio-effects')
         if profile == AUDIO and args.upgrade_from:
-            raise ValueError('Use the Indy audio CD for fresh installation')
+            raise ValueError('Use indy-audio-update with the published v6 and audio-v7 CDs for an in-place upgrade')
         fonts = {}
         if graphics:
             fonts = extract_fonts(imported, args.clock_overlay, args.instigator, work)

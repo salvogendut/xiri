@@ -10,6 +10,7 @@ import unittest
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
 from xiri_lab import ROOT, sha256
 from xiri_lab.install_media import upgrade_delta
+from xiri_lab.indy_audio_update import vendor_changes
 from xiri_lab.native_package import archive_tree
 
 
@@ -43,6 +44,35 @@ class UpgradeMediaTests(unittest.TestCase):
             'archive_sha256': sha256(package / 'native.tar.gz'),
         }))
         return package
+
+    def test_indy_audio_vendor_delta_preserves_installed_applications(self):
+        old, new, blobs = (self.root / name for name in ('old', 'new', 'blobs'))
+        for directory in (old, new, blobs):
+            directory.mkdir()
+        app = Path('emul/irix/usr/sbin/audiopanel')
+        for tree in (old, new):
+            (tree / app).parent.mkdir(parents=True)
+            (tree / app).write_bytes(b'original panel')
+        player = new / app.with_name('sfplay')
+        player.write_bytes(b'new player')
+        player.chmod(0o555)
+        before, after = self.root / 'old.tgz', self.root / 'new.tgz'
+        archive_tree(old, before)
+        archive_tree(new, after)
+        digest = sha256(player)
+        self.assertEqual(vendor_changes(before, after, blobs), {
+            '/emul/irix/usr/sbin/sfplay': [('-', '-'), ('0555', digest)]})
+        self.assertEqual([p.name for p in blobs.iterdir()], [digest])
+        (new / app).write_bytes(b'different panel')
+        after.unlink()
+        archive_tree(new, after)
+        with self.assertRaisesRegex(ValueError, 'additive audio payload'):
+            vendor_changes(before, after, blobs)
+        (new / app).unlink()
+        after.unlink()
+        archive_tree(new, after)
+        with self.assertRaisesRegex(ValueError, 'removed vendor files'):
+            vendor_changes(before, after, blobs)
 
     def test_both_directions_and_only_changed_helpers(self):
         a = {self.changed: b'previous', 'root/etc/xiri/session.conf': b'site default'}

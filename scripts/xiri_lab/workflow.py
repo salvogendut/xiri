@@ -168,6 +168,10 @@ def parser():
     medium.add_argument('--audio-effects', type=Path, help='release-matched SGI desktop sounds CD for the Indy audio profile')
     medium.add_argument('--clock-overlay', type=Path, help='matching SGI Overlay 1 ISO for the Indy GLX profile')
     medium.add_argument('--instigator', default='instigator', help='path to the Instigator media extractor')
+    audio = sub.add_parser('indy-audio-update', help='build a reversible update from the v6 and audio-v7 Indy CDs')
+    audio.add_argument('--release', required=True, choices=('6.5.22f', '6.5.30f'))
+    for name in ('previous-media', 'audio-media', 'output'):
+        audio.add_argument('--'+name, required=True, type=Path)
     status = sub.add_parser('status', help='show selected artifacts and current source branches')
     status.add_argument('--json', action='store_true')
     sub.add_parser('doctor', help='verify selected immutable artifacts and host prerequisites')
@@ -190,6 +194,9 @@ def parser():
 
 def main(argv=None):
     args = parser().parse_args(argv)
+    if args.action == 'indy-audio-update':
+        from .indy_audio_update import run
+        return run(args)
     if args.action == 'install-media':
         from .install_media import run
         return run(args)

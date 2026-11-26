@@ -1,0 +1,209 @@
+{
+  "emulator": "Prismatic, graphical Indy with Newport and HAL2",
+  "prismatic_sha256": "15b501f37e8a5fab34b00e4f41658812ccb77f43bf799b7562005ddd473cffcb",
+  "host_tests": 106,
+  "releases": {
+    "6.5.22f": {
+      "cpu": "R4400",
+      "v6_chd_sha256": "9faeb6cf66ad9fd20966b7f67a5284eb18476e5e1126b3043f60c82e7c567226",
+      "update_iso_sha256": "16e34e28005ef2cccbb893aa4d7312fe43ef5c2ded4daf6bef8ee44f6dc520b5",
+      "update_iso_bytes": 35385344,
+      "v6_receipt": "6.5.22f 9378a557a287ba4fed8407ecf40680bc4edfbbe6c7287a208d0a7e5c7a97db23 85191d9fb7fa2c16a11c58a2889fb891200d87cf43691a797446cba3c35aeac3",
+      "v7_receipt": "6.5.22f 46b51c97b70f55edfa17e4ccc06975438db03dfe1087478dac997c807de41c77 b458213b560ea6489afd5c4d850436159220a2b685f76af1c8c5ed6398bcf123",
+      "mozilla_component_sha256": "42d676e2358f63e5776b96d807fd49ee552594889bbeddc039a7f18fa608b7dc",
+      "backdrop": "#7d9ec0",
+      "existing_executables": 200,
+      "default_level": "64,64",
+      "saved_level_on_reapply": "80,96",
+      "saved_mute_on_reapply": "on",
+      "checks": {
+        "upgrade": {
+          "module_sha256": "55c4f2eefd74b560250573d72480272878c43bf1f7df8b5b95cdd3f6f836bb51",
+          "kernel_sha256": "55e77aaacba068356984de04a20934d482eb05749e9175f3fe8bf0ba70ed9ccd",
+          "boot_wrapper_sha256": "95cca60334ff62c195276fe70d3b4ddf093689bf3ac0fa46d6717082b876e888",
+          "user_and_site_checksum_list_sha256": "5474c8a153dacad958a57adb9575592ad73a44c05967944c515289436ad4114e",
+          "existing_software_checksum_list_sha256": "47e8b4518b245ec6db1a42fff93788719823ee658beed5f915c92abbbd73db3e",
+          "pcm": {
+            "speaker": {
+              "frames": 192512,
+              "peaks": [
+                4099,
+                4099
+              ],
+              "correlation": [
+                0.9987,
+                0.9987
+              ]
+            },
+            "muted": {
+              "frames": 190464,
+              "peaks": [
+                0,
+                0
+              ]
+            },
+            "restored": {
+              "frames": 190464,
+              "peaks": [
+                4177,
+                4177
+              ],
+              "correlation": [
+                0.9981,
+                0.9981
+              ]
+            }
+          }
+        },
+        "rollback": {
+          "module_sha256": "259386c1487ec501f3345e7e677e4ec1b8a1e13b763741e5ec98af70cae77e44",
+          "kernel_sha256": "e989c42d3469f5d59e2ec759fdb3d7f54d7a893acdc326f6f3a3c4487f19fd22",
+          "boot_wrapper_sha256": "a4af41c6d0c83f11f0180fce5cb0424a7a5ea7c3aa898bda9bfaf9f3f7b6f5c9",
+          "user_and_site_checksum_list_sha256": "5474c8a153dacad958a57adb9575592ad73a44c05967944c515289436ad4114e",
+          "existing_software_checksum_list_sha256": "47e8b4518b245ec6db1a42fff93788719823ee658beed5f915c92abbbd73db3e"
+        },
+        "reapply": {
+          "module_sha256": "55c4f2eefd74b560250573d72480272878c43bf1f7df8b5b95cdd3f6f836bb51",
+          "kernel_sha256": "55e77aaacba068356984de04a20934d482eb05749e9175f3fe8bf0ba70ed9ccd",
+          "boot_wrapper_sha256": "95cca60334ff62c195276fe70d3b4ddf093689bf3ac0fa46d6717082b876e888",
+          "user_and_site_checksum_list_sha256": "5474c8a153dacad958a57adb9575592ad73a44c05967944c515289436ad4114e",
+          "existing_software_checksum_list_sha256": "47e8b4518b245ec6db1a42fff93788719823ee658beed5f915c92abbbd73db3e",
+          "pcm": {
+            "speaker": {
+              "frames": 192512,
+              "peaks": [
+                4149,
+                4149
+              ],
+              "correlation": [
+                0.9938,
+                0.9938
+              ]
+            },
+            "muted": {
+              "frames": 190464,
+              "peaks": [
+                0,
+                0
+              ]
+            },
+            "restored": {
+              "frames": 192512,
+              "peaks": [
+                4143,
+                4143
+              ],
+              "correlation": [
+                0.9973,
+                0.9973
+              ]
+            }
+          }
+        }
+      },
+      "screenshot_sha256": "b25cfe154cd8b69989d512bbd3e52db43d8c05b843120bfbed683bfdc2d6bc04",
+      "soft_power_off": true
+    },
+    "6.5.30f": {
+      "cpu": "R5000",
+      "v6_chd_sha256": "2e71de99f3e51920180a8a2eae6e9d6b9380804595f15effde6702d55b05fc68",
+      "update_iso_sha256": "5201300659fabddf895ea61d67c6ed2784d717d85106fcefd64464945c707537",
+      "update_iso_bytes": 35373056,
+      "v6_receipt": "6.5.30f 9378a557a287ba4fed8407ecf40680bc4edfbbe6c7287a208d0a7e5c7a97db23 b290452e839bd7e7fb073735e382c517f672e964074a03cc1390dd34c2286288",
+      "v7_receipt": "6.5.30f 46b51c97b70f55edfa17e4ccc06975438db03dfe1087478dac997c807de41c77 dd0653ff4197a37d13fc91131030b1f9f466f210f2d9bf2407ee45dbbe88dd8a",
+      "mozilla_component_sha256": "e3e804ebde5c56b4084e2698ad7239315d620921545ccc215f29e77778056803",
+      "backdrop": "#9ddb9d",
+      "existing_executables": 199,
+      "default_level": "64,64",
+      "saved_level_on_reapply": "96,112",
+      "saved_mute_on_reapply": "on",
+      "checks": {
+        "upgrade": {
+          "module_sha256": "55c4f2eefd74b560250573d72480272878c43bf1f7df8b5b95cdd3f6f836bb51",
+          "kernel_sha256": "55e77aaacba068356984de04a20934d482eb05749e9175f3fe8bf0ba70ed9ccd",
+          "boot_wrapper_sha256": "95cca60334ff62c195276fe70d3b4ddf093689bf3ac0fa46d6717082b876e888",
+          "user_and_site_checksum_list_sha256": "9c3efcd6520febb699c040bc58f915cf36fb3013d7451d5e4c1db79ba1ccd6bf",
+          "existing_software_checksum_list_sha256": "a162ab3fb1685f80aa523c863ee57a8070e87ac8d10d0eb727f51a7e7e024640",
+          "pcm": {
+            "speaker": {
+              "frames": 204800,
+              "peaks": [
+                4179,
+                4179
+              ],
+              "correlation": [
+                0.9972,
+                0.9972
+              ]
+            },
+            "muted": {
+              "frames": 190464,
+              "peaks": [
+                0,
+                0
+              ]
+            },
+            "restored": {
+              "frames": 190464,
+              "peaks": [
+                4167,
+                4167
+              ],
+              "correlation": [
+                0.9985,
+                0.9985
+              ]
+            }
+          }
+        },
+        "rollback": {
+          "module_sha256": "259386c1487ec501f3345e7e677e4ec1b8a1e13b763741e5ec98af70cae77e44",
+          "kernel_sha256": "e989c42d3469f5d59e2ec759fdb3d7f54d7a893acdc326f6f3a3c4487f19fd22",
+          "boot_wrapper_sha256": "a4af41c6d0c83f11f0180fce5cb0424a7a5ea7c3aa898bda9bfaf9f3f7b6f5c9",
+          "user_and_site_checksum_list_sha256": "9c3efcd6520febb699c040bc58f915cf36fb3013d7451d5e4c1db79ba1ccd6bf",
+          "existing_software_checksum_list_sha256": "a162ab3fb1685f80aa523c863ee57a8070e87ac8d10d0eb727f51a7e7e024640"
+        },
+        "reapply": {
+          "module_sha256": "55c4f2eefd74b560250573d72480272878c43bf1f7df8b5b95cdd3f6f836bb51",
+          "kernel_sha256": "55e77aaacba068356984de04a20934d482eb05749e9175f3fe8bf0ba70ed9ccd",
+          "boot_wrapper_sha256": "95cca60334ff62c195276fe70d3b4ddf093689bf3ac0fa46d6717082b876e888",
+          "user_and_site_checksum_list_sha256": "9c3efcd6520febb699c040bc58f915cf36fb3013d7451d5e4c1db79ba1ccd6bf",
+          "existing_software_checksum_list_sha256": "a162ab3fb1685f80aa523c863ee57a8070e87ac8d10d0eb727f51a7e7e024640",
+          "pcm": {
+            "speaker": {
+              "frames": 194560,
+              "peaks": [
+                4172,
+                4172
+              ],
+              "correlation": [
+                0.998,
+                0.998
+              ]
+            },
+            "muted": {
+              "frames": 190464,
+              "peaks": [
+                0,
+                0
+              ]
+            },
+            "restored": {
+              "frames": 192512,
+              "peaks": [
+                4172,
+                4172
+              ],
+              "correlation": [
+                0.9981,
+                0.9981
+              ]
+            }
+          }
+        }
+      },
+      "screenshot_sha256": "0f33c4fea67a8cf9120eee4b2e60aede6d30d826ad2dbbaecba5337f462181a2",
+      "soft_power_off": true
+    }
+  }
+}
