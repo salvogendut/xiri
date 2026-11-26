@@ -48,6 +48,33 @@ counts of 4159 and 4117 for the SGI AIFF and 2990 and 2984 for the named
 effect on 6.5.22f and 6.5.30f respectively.
 [Installation and local media build](../NATIVE-PACKAGE.md#fresh-indy-installation-with-hal2-audio).
 
-The desktop qualification used the base install on each CD. The optional
-Mozilla component was packaged on both CDs. Its install/remove cycle and
-an in-place upgrade from a previous Indy image were outside this run.
+## Playback across Mozilla installation and removal
+
+Both tests started from a copy of the published audio-v7 Indy disk and
+its matching installer CD. At each stage, the ordinary `xiritest` account
+played the installed `emptyDumpster.aiff` with the original SGI `sfplay`.
+Prismatic captured both output channels as 48 kHz signed 16-bit PCM.
+The comparison uses the loudest 512-frame passage of the donor AIFF and
+the [playback checker](../../lab/irix-hdsp/playback/verify.py).
+
+To repeat, play the file once on the base installation. Mount the matching
+CD, run `sh /cdrom/install.sh --mozilla` as root, reboot and play the file
+again. Mount the CD again, run `sh /cdrom/install.sh --remove-mozilla`,
+reboot and repeat the play. The test checked the component receipt and
+browser executable after each installer operation. It also checked the
+kernel, PROM boot wrapper, IRIX module, HDSP startup scripts, player,
+`libaudio`, desktop receipt and greeter configuration against their initial
+SHA-256 hashes.
+
+| Indy release | Base | After enabling Mozilla and rebooting | After removing Mozilla and rebooting |
+| --- | ---: | ---: | ---: |
+| 6.5.22f, waveform correlation | 0.9960 | 0.9977 | 0.9988 |
+| 6.5.30f, waveform correlation | 0.9953 | 0.9970 | 0.9959 |
+
+Left and right gave the same score for the mono source. Across all six
+plays, the peak on each channel was between 4,168 and 4,180 counts.
+Both desktops returned to xdm with the XiriBSD logo after each reboot.
+At final shutdown both serial logs reached the end of the shutdown hooks
+and both Prismatic logs recorded `Machine: soft power-off`.
+These checks cover the audio-v7 component lifecycle. An in-place desktop
+upgrade from v6 to the audio-v7 base remains a separate qualification.

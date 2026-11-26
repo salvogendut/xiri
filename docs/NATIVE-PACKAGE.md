@@ -251,7 +251,15 @@ the v6 instructions, `disc` is the matching Overlay 1 ISO.
 ```
 
 The optional Mozilla component takes the same `--mozilla-payload` and
-`--mozilla-network` arguments as v6. Existing v6 installations retain their
+`--mozilla-network` arguments as v6. On an installed audio-v7 desktop, use
+the same release's audio installer CD. From the root console, run
+`sh /cdrom/install.sh --mozilla` to add the browser or
+`sh /cdrom/install.sh --remove-mozilla` to remove it, then reboot.
+The audio kernel and IRIX module belong to the base system. The
+[audio component checks](results/2026-11-26-indy-audio-installer.md#playback-across-mozilla-installation-and-removal)
+exercise the SGI player across both operations.
+
+Existing v6 installations retain their
 qualified [audio update procedure](../lab/irix-hdsp/playback/README.md).
 
 ## Clean installation on an emulated Indy

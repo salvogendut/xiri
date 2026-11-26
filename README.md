@@ -23,11 +23,26 @@ import the SGI binaries, fonts and desktop resources from an installed copy
 of IRIX made with your own media.
 [Run an Indy image](docs/XIRI-IMAGE.md#clean-indy-audio-images) · [Prepare a donor](docs/XIRI-INSTALLATION.md) · [Install or update Xiri](docs/NATIVE-PACKAGE.md)
 
+## Platform status
+
+All results below are from **IRIS emulation**. Each machine boots NetBSD
+to full-screen xdm and runs both the IRIX 4Dwm session and native NetBSD
+ctwm with the 6.5.22 and 6.5.30 disk images. Physical testing is still ahead.
+
+| SGI workstation | Tested configuration | What works in emulation |
+| --- | --- | --- |
+| Indy | R4400 (6.5.22f) or R5000 (6.5.30f), Newport | Reference desktop with accelerated 2D graphics, SGI file playback and Audio Panel controls. [Indy images and audio](docs/XIRI-IMAGE.md#clean-indy-audio-images) |
+| Indigo2 | R10000, High IMPACT | Graphical boot console and Xorg desktop with accelerated rectangle fills. [Graphics checks](docs/results/2026-11-22-ip28-2d.md) |
+| O2 | R10000, CRIME graphics | Accelerated Xorg desktop, graphical boot console, persistent SCSI storage and MEC Ethernet. [Display](docs/results/2026-11-23-o2-frame.md) · [Disk and networking](docs/results/2026-11-23-o2-io.md) |
+| Octane | R10000, Solid IMPACT (6.5.22) or High IMPACT (6.5.30) | Boots from SCSI with a graphical console and full-screen Xorg. Desktop services use loopback. IOC3 Ethernet is still open. [Octane desktop](docs/results/2026-11-23-octane-xdm.md) |
+
+[Indigo2, O2 and Octane launchers and screenshots](docs/results/2026-11-26-platform-v6.md)
+
 ## Roadmap
 
 - **Desktop compatibility.** Complete everyday workflows in the original desktop and applications, including file operations, saved sessions and multimedia.
 - **Installation and updates.** Keep both IRIX releases reproducible and make system and SGI software upgrades recoverable.
-- **Physical workstations.** Qualify the Indy on real hardware, then extend testing to the Indigo2, Octane and O2. All four currently have emulated desktop configurations.
+- **Physical workstations.** Qualify the Indy on real hardware, then extend testing to the Indigo2, Octane and O2.
 
 [Full roadmap](docs/ROADMAP.md) · [Development history and test results](docs/HISTORY.md)
 
