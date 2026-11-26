@@ -26,7 +26,7 @@ def prepare_install(guest, release):
     cmd('test ! -e /emul/irix && test ! -e /usr/local/bin/xiri-desktop && test ! -e /usr/people/xiritest')
     cmd(
         'mkdir -p /usr/people /home && groupadd -g 1234 xiritest && '
-        'useradd -m -g xiritest -u 1234 -d /usr/people/xiritest -s /bin/ksh -p "$(pwhash -b 6 xiritest)" xiritest && '
+        'useradd -m -g xiritest -G operator -u 1234 -d /usr/people/xiritest -s /bin/ksh -p "$(pwhash -b 6 xiritest)" xiritest && '
         'groupadd -g 1236 netbsdtest && useradd -m -g netbsdtest -u 1236 -G wheel -d /home/netbsdtest '
         '-s /bin/sh -p "$(pwhash -b 6 netbsdtest)" netbsdtest'
     )

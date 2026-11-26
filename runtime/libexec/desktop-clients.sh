@@ -29,8 +29,12 @@ if test ! -d "$HOME/Desktop"; then
     ln -s ../dumpster "$HOME/Desktop/dumpster"
 fi
 /emul/irix/usr/sbin/bgicons -overlay >"$job/bgicons.out" 2>"$job/bgicons.err"
-# Preserve the vendor menus, routing their logout action through our supervisor.
-sed 's|/usr/bin/X11/endsession|/usr/local/bin/xiri-logout|g' \
+# Keep each vendor logout entry and place the workstation action alongside it.
+sed '/f\.exec.*\/usr\/bin\/X11\/endsession/ {
+    s|/usr/bin/X11/endsession|/usr/local/bin/xiri-logout|
+    a\
+        "Shut Down System"              f.exec "/usr/local/bin/xiri-poweroff"
+}' \
     /emul/irix/usr/lib/X11/system.4Dwmrc >"$job/4Dwmrc"
 observe()
 {

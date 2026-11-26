@@ -24,8 +24,26 @@ class RuntimeInstallTests(unittest.TestCase):
                        env={**os.environ, 'DESTDIR': str(self.stage), 'BUILDDIR': str(self.build)},
                        capture_output=True)
 
+    def test_power_menu_upgrade_preserves_site_entries(self):
+        menu = self.stage/'usr/local/share/xiri/toolchest.chestrc'
+        menu.parent.mkdir(parents=True)
+        menu.write_bytes((ROOT/'lab/irix-installed-desktop/toolchest.chestrc').read_bytes())
+        self.install()
+        self.assertIn('"/usr/local/bin/xiri-poweroff"', menu.read_text())
+        self.assertTrue(os.access(self.stage/'usr/local/bin/xiri-poweroff', os.X_OK))
+        menu.chmod(0o644)
+        menu.write_text('# Site menus\n')
+        self.install()
+        self.assertEqual(menu.read_text(), '# Site menus\n')
+        self.assertEqual(menu.with_suffix('.chestrc.example').read_bytes(),
+                         (ROOT/'runtime/etc/toolchest.chestrc').read_bytes())
+
     def test_install_does_not_enable_services_implicitly(self):
         self.install()
+        menu = (self.stage/'usr/local/share/xiri/toolchest.chestrc').read_text()
+        self.assertIn('include /usr/lib/X11/system.chestrc', menu)
+        self.assertIn('/usr/local/bin/xiri-logout', menu)
+        self.assertIn('/usr/local/bin/xiri-poweroff', menu)
         self.assertEqual(list((self.stage/'etc/rc.conf.d').iterdir()), [])
         self.assertEqual((self.stage/'usr/local/bin/xiri-session').stat().st_mode & 0o777, 0o555)
         self.assertEqual(os.readlink(self.stage/'usr/local/libexec/xiri/command-shell'), '/bin/sh')

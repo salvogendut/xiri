@@ -1,0 +1,19 @@
+#!/bin/sh
+# NetBSD installs shutdown root:operator, mode 4554.
+message=/usr/X11R7/bin/xmessage
+title='Shut Down System'
+if [ ! -x /sbin/shutdown ]; then
+    exec "$message" -center -title "$title" -buttons OK \
+        'This account does not have permission to shut down the workstation.'
+fi
+answer=0
+"$message" -center -title "$title" -buttons 'Cancel:0,Shut Down:42' -default Cancel \
+    'Shut down this workstation for all users?' || answer=$?
+[ "$answer" = 42 ] || exit 0
+
+# Hand the confirmed request to the desktop supervisor. Its normal logout
+# saves the windows and reaps clients before starting the shutdown daemon.
+set -eu
+job=${XIRI_SESSION_DIR:?Run within a Xiri desktop session.}
+: >"$job/poweroff"
+exec /usr/local/bin/xiri-logout

@@ -422,16 +422,91 @@ altering it.
 
 ## Start it in Prismatic
 
+### Power off from Toolchest or 4Dwm
+
+These test copies include the Screen Saver and Audio Panel updates, and give
+the development account `xiritest` membership in NetBSD's `operator` group.
+From the Xiri checkout, choose the release to boot.
+
+| IRIX desktop | Prismatic launcher |
+| --- | --- |
+| 6.5.22f | `.work/prismatic-indy-power-v1/6.5.22f/run-prismatic.sh` |
+| 6.5.30f | `.work/prismatic-indy-power-v1/6.5.30f/run-prismatic.sh` |
+
+Press **Ctrl+P** and log in with `xiritest` as username and password. Select
+**Toolchest → System → Shut Down System**, or hold the right mouse button on
+an empty part of the desktop and release over **Shut Down System**. **Cancel**
+is the default. **Shut Down** asks 4Dwm to save, closes the initiating
+desktop, and runs NetBSD's `/sbin/shutdown -p now`. The shutdown hooks
+save any other active Xiri sessions before xdm stops.
+[Confirmation dialog](results/2026-11-26-menu-shutdown-confirm.png).
+
+To update an earlier v6 disk, attach the native menu CD to a free SCSI CD
+slot, mount it as root, and run `sh /cdrom/install.sh --allow-xiritest`.
+Log out and back in for the new groups and menus. The CD is shared by both
+releases at `.work/installers/indy-11.99.11/desktop-power-v1/menu.iso`.
+Omit `--allow-xiritest` to install only the menus and keep site account
+permissions. [Build and test details](../lab/desktop-power/README.md).
+
+### Indy v6 with Screen Saver and Audio Panel
+
+The local test disks have both updates installed. From the Xiri checkout,
+start the Indy for the release you want to test.
+
+| IRIX desktop | Machine | Command |
+| --- | --- | --- |
+| 6.5.22f | Indy R4400 | `.work/prismatic-indy-v6/6.5.22f/run-prismatic.sh` |
+| 6.5.30f | Indy R5000 | `.work/prismatic-indy-v6/6.5.30f/run-prismatic.sh` |
+
+Press **Ctrl+P** to boot, click the display to capture input, and log in at
+xdm with username and password `xiritest`. In **Icon Catalog → ControlPanels**,
+open **Screen Saver**, enable it, select **Qix**, and click **Demo**. Press
+**Space** to return. In **Audio Panel**, middle-click the volume track at two
+different heights and run `mixerctl outputs.master` in winterm after each click.
+IRIX PCM playback remains open. [Screen Saver checks](results/2026-11-26-sgi-screen-saver.md)
+and [audio checks](results/2026-11-26-indy-hdsp.md).
+
+Each launcher uses a private v6 disk overlay and NVRAM. Keep both in their
+release directory to preserve your changes. The HDSP CD is attached at SCSI
+ID 4 (`/dev/cd0a`) and the matching Screen Saver CD at ID 5 (`/dev/cd1a`).
+Both disks cold-booted to a visible xdm greeter in Prismatic `63b6cc86`
+with embedded IRIS `707912dd`. The tests checked the installed kernel and
+Xorg extension against the update CDs and confirmed HAL2 in the guest.
+On 6.5.22f the SDL keyboard login reached 4Dwm. Opening Audio Panel from
+Icon Catalog and moving its linked sliders changed the native mixer from
+`0,0` to `185,185` and then `26,26`. Logging out returned to xdm.
+[Prismatic framebuffer capture](results/2026-11-26-prismatic-indy-hdsp.png).
+
+Rebuilding this frontend against IRIS `89c27ffe` requires a Cargo lockfile update.
+
+**Screen smoothing.** In Prismatic press **F9 → Advanced → Core**, select
+**Bilinear filtering**, press **Enter** to toggle it, then **F9** to save.
+This is the same linear texture filter that Heliacal calls **Smoothing**.
+It applies when Prismatic scales the guest display and takes effect as soon
+as you save. The v6 launchers enable **General → Tinker**, which exposes
+the Advanced tab. [Prismatic settings screenshot](results/2026-11-26-prismatic-filtering.png).
+
+**Powering off.** At a NetBSD root prompt, `shutdown -p now` saves active
+desktop sessions through the shutdown hooks and powers off the Indy.
+Running `poweroff` directly skips those hooks. On a 6.5.22f test copy,
+`poweroff` left the old console visible at six seconds. By twenty seconds
+the Prismatic window said **Machine powered off** and the **RUN** lamp was
+dark. A second test issued the same command from the NetBSD root console
+with 4Dwm, winterm and Icon Catalog open and input captured. It showed the
+same message by twenty seconds. The message is drawn inside the window,
+whose title returns to **Prismatic - Happy Years**. Press **Ctrl+P** to
+boot again or **F12** to quit. [Powered-off Prismatic window](results/2026-11-26-prismatic-poweroff.png).
+
+### Earlier Prismatic bundles
+
 The [Prismatic boot check](results/2026-11-02-prismatic-xiri.md) reaches
 multiuser and observes the installed desktop using the existing release
 binary. The [updated desktop check](results/2026-11-02-desktop-launch.md#replacement-image-and-prismatic-confirmation)
 additionally covers the larger screen and a menu-created native shell,
 with a [Prismatic screenshot](results/images/2026-11-02-prismatic-menu-shell.png).
-Those Prismatic observations used earlier images. The current image is
-qualified with the pinned standalone IRIS build, including actual Newport
-frames and PS/2 console/menu input. Prismatic has not been retested with this
-particular CHD and graphical NVRAM; its configuration still uses the same
-machine and disk settings.
+Those checks used the November 2 images. The standalone qualification of the
+replacement CHD and graphical NVRAM also exercised Newport frames and PS/2
+console and menu input.
 
 One earlier serial cold-boot capture was black and was rejected by the
 qualifier. The fresh retry produced a valid desktop frame before test input;

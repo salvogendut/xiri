@@ -149,7 +149,8 @@ int main(int argc, char **argv)
     char *end;
     /* A kernel-visible marker lets shutdown select desktop supervisors,
      * leaving nested/application guards and unrelated same-user work alone. */
-    if (argc > 1 && !strcmp(argv[1], "--desktop")) { --argc; ++argv; }
+    int desktop = argc > 1 && !strcmp(argv[1], "--desktop");
+    if (desktop) { --argc; ++argv; }
     if (argc < 3 || !*argv[1] || getuid() == 0 || getuid() != geteuid() || getgid() != getegid()) {
         fprintf(stderr, "Usage (as the session user): session-guard [--desktop] milliseconds program [args...]\n");
         return 2;
@@ -253,6 +254,16 @@ int main(int argc, char **argv)
         alive == 0, !failed, total, alive, reason, (unsigned)getuid(), (unsigned)getgid(), now()-start);
     close(kq); free(members); free(save_program);
     if (failed || alive) return 2;
+    if (desktop && !strcmp(reason, "logout")) {
+        const char *session = getenv("XIRI_SESSION_DIR");
+        if (session && chdir(session) == 0 && unlink("poweroff") == 0) {
+            /* The kernel checks this user's operator credentials. Run after
+             * descendant cleanup so logout cannot kill its own shutdown. */
+            execl("/sbin/shutdown", "shutdown", "-p", "now", (char *)NULL);
+            perror("shutdown");
+            return 2;
+        }
+    }
     if (strcmp(reason, "leader-exit")) return 0;
     return WIFEXITED(status) ? WEXITSTATUS(status) : 128 + WTERMSIG(status);
 }

@@ -72,6 +72,15 @@ in `08e53ba7`. [Octane build and qualification](results/2026-11-23-octane-deskto
 
 ## IRIS upstream updates
 
+For the 4Dwm shutdown menu, a fresh fetch found no commits beyond upstream
+`8ca2b96a`, already integrated at `89c27ffe`. The two desktop checks used
+their pinned v6 emulator. [Shutdown menu checks](XIRI-IMAGE.md#power-off-from-toolchest-or-4dwm).
+
+The November 26 Prismatic display and power-off check fetched upstream
+`8ca2b96a` again. IRIS `xiri` at `89c27ffe` already included it. The
+installed Prismatic executable embeds `707912dd` and was used to check
+the frontend the tester actually launched. [Indy v6 manual checks](XIRI-IMAGE.md#indy-v6-with-screen-saver-and-audio-panel).
+
 The November 26 Screen Saver and HDSP cycle integrated 19 upstream commits
 through `8ca2b96a` into IRIS `xiri` at `89c27ffe`. The HAL2 merge keeps the
 fork's bounded AES loopback queue with upstream's per-timer state. The

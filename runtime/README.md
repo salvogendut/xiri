@@ -338,6 +338,15 @@ deadline covers all desktops; a failed save cannot hold up shutdown forever.
 `install.sh --enable-services` (also `--enable-xdm`) enables the hook while
 preserving an existing `/etc/rc.conf.d/xiri_sessions` configuration.
 
+**Shut Down System** in the Toolchest System menu and 4Dwm desktop menu
+asks for confirmation. The desktop supervisor runs `/sbin/shutdown -p now`
+as the logged-in user after saving and reaping its clients. The normal
+shutdown hooks handle other desktops. NetBSD installs `shutdown` as
+`root:operator` with mode `4554`. An administrator can authorize an account
+with `usermod -G operator USER`. The group takes effect at the user's next login. Membership also grants
+the usual NetBSD operator device access. Users without shutdown permission
+see a message and retain their session. [Indy tests and launchers](../docs/XIRI-IMAGE.md#power-off-from-toolchest-or-4dwm).
+
 Use NetBSD `shutdown -r now` to reboot or `shutdown -h now` to halt with an
 active desktop. `shutdown -p now` also runs the shutdown hooks. Direct
 `reboot`, `halt` and `poweroff` commands bypass `/etc/rc.shutdown` and therefore
@@ -360,8 +369,8 @@ already contain:
   fonts, backdrop, filetype rules, desktop resources and catalog links.
 - At least one ordinary native account with its own writable home.
 - Native Xorg/Newport, X11 utilities and fonts under
-  `/usr/local/share/xiri/fonts`, plus the qualified `xorg.conf` and
-  `toolchest.chestrc` under `/usr/local/share/xiri`.
+  `/usr/local/share/xiri/fonts`, plus the qualified `xorg.conf` under
+  `/usr/local/share/xiri`. The runtime installs the Toolchest menu there.
 - The patched native `/usr/local/sbin/famd` and native rpcbind. FAM needs
   `/usr/lib/desktop -> /emul/irix/usr/lib/desktop` to resolve imported rules.
 

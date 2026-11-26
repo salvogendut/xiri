@@ -15,13 +15,14 @@ from xiri_lab.native_package import archive_tree, build, ledger, pins, prerequis
 
 
 class NativePackageTests(unittest.TestCase):
-    def test_clean_indy_supplies_toolchest_menu(self):
-        profile = json.loads((ROOT/'profiles/netbsd-sgimips-indy-11.99.11-v1.json').read_text())
+    def test_native_profiles_support_desktop_power_menu(self):
         menu = '/usr/local/share/xiri/toolchest.chestrc'
-        self.assertIn(menu, (ROOT/'runtime/libexec/desktop-clients.sh').read_text())
-        contents = (ROOT/profile['configuration_sources'][menu]).read_text()
-        self.assertIn('include /usr/lib/X11/system.chestrc', contents)
-        self.assertIn('/usr/local/bin/xiri-logout', contents)
+        for path in (ROOT/'profiles').glob('netbsd-sgimips*.json'):
+            with self.subTest(profile=path.name):
+                profile = json.loads(path.read_text())
+                self.assertIn('/sbin/shutdown', profile['native_programs'])
+                self.assertIn('/usr/X11R7/bin/xmessage', profile['native_programs'])
+                self.assertNotIn(menu, profile['configuration_sources'])
 
     def setUp(self):
         temp=tempfile.TemporaryDirectory()
