@@ -424,6 +424,10 @@ altering it.
 
 ### Clean Indy audio images
 
+The published audio-v7 images predate the XiriBSD login logo. Both accept
+the small logo CD. New builds install the artwork with the runtime.
+[Apply the logo to an existing image](../lab/irix-xdm/logo/README.md).
+
 The two audio images boot to full-screen xdm. From the Xiri checkout run
 one of these commands, then press **Ctrl+P** in Prismatic to start the Indy.
 

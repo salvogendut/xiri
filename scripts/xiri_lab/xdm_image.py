@@ -38,7 +38,8 @@ def runtime_files():
     paths += ['/usr/libexec/xiri-shell','/etc/xiri/session.conf','/etc/xiri/fam.conf',
               '/etc/xiri/Xresources',
               '/etc/xiri/xdm/Xservers','/etc/xiri/xdm/Xresources',
-              '/usr/local/share/xiri/xdm.xsession', '/usr/local/share/xiri/desktop-Xresources',
+              '/usr/local/share/xiri/xdm.xsession', '/usr/local/share/xiri/xdm-logo.xpm',
+              '/usr/local/share/xiri/desktop-Xresources',
               '/usr/people/xiritest/.xsession',
               '/etc/ttys','/etc/motd']
     paths += ['/usr/local/libexec/xiri/stop-sessions']

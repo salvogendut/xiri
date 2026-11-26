@@ -183,8 +183,11 @@ passwd xiritest
 
 This creates `/etc/rc.conf.d/xdm` with `xdm=YES` and
 `xdm_flags="-server /etc/xiri/xdm/Xservers -resources /etc/xiri/xdm/Xresources"`
-if absent. Existing rc.d policy and both display configuration files are
-preserved; compare their `.example` files on upgrades.
+if absent. New installs display the XiriBSD logo beside the xdm login fields.
+Upgrades preserve the active display configuration and refresh the
+`.example` files. To adopt the logo on an existing installation, copy the
+`xlogin*logoFileName` setting into the active greeter resources.
+[Greeter artwork and instructions](../lab/irix-xdm/logo/README.md).
 The installer does not change an account's password,
 home, `.xsession`, native xdm/PAM files or console gettys.
 

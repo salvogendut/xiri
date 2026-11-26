@@ -1,4 +1,5 @@
-! Keep NetBSD's greeter layout, translations and branding.
+! Use the native xdm layout and translations with the XiriBSD logo.
 #include "/etc/X11/xdm/Xresources"
+xlogin*logoFileName: /usr/local/share/xiri/xdm-logo.xpm
 ! Accelerated Newport needs the software-fallback fix in lab/newport-text.
 ! With that driver, use NetBSD's normal Xft/Render selection.

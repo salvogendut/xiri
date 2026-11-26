@@ -72,6 +72,10 @@ in `08e53ba7`. [Octane build and qualification](results/2026-11-23-octane-deskto
 
 ## IRIS upstream updates
 
+The November 26 xdm logo and audio installer checks fetched `upstream/main` at `8ca2b96a`,
+already included in IRIS `xiri` at `7c713c13`. The existing Indy emulator
+rendered the new login artwork for both vendor release images.
+
 The Indy Audio Panel and installer cycle fetched IRIS upstream on November
 26. Fork `xiri` at `7c713c13` already contained `upstream/main` at
 `8ca2b96a`. The HAL2 codec mute bit is implemented in this IRIS core.

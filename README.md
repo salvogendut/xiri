@@ -1,3 +1,7 @@
+<p align="center">
+  <a href="xiri-logo.png"><img src="xiri-logo.png" width="320" alt="XiriBSD logo"></a>
+</p>
+
 # Xiri
 
 Xiri runs original IRIX applications and desktop components on NetBSD and

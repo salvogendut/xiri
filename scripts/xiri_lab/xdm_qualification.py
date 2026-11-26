@@ -106,6 +106,10 @@ def verify_sessions(r):
         assert not extra['exit_stderr']
     if 'terminal_font' in r:
         profile = json.loads((ROOT/'lab/newport-text/font-profile.json').read_text())
+        # Retained images qualified with the NetBSD flag use the original resource.
+        stock_greeter = '21b104d6a6b310a1633cf8e44b6088f170865593cb5b7e235c861ef6545d1919'
+        if r['terminal_font']['greeter_resource_sha256'] == stock_greeter:
+            profile['greeter_resource_sha256'] = stock_greeter
         assert r['terminal_font'] == profile
         for path, digest in [(profile['resource'], profile['resource_sha256']),
                              (profile['greeter_resource'], profile['greeter_resource_sha256']),

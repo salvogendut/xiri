@@ -78,11 +78,17 @@ class RuntimeInstallTests(unittest.TestCase):
         self.assertIn('-server /etc/xiri/xdm/Xservers', xdm.read_text())
         self.assertIn('-resources /etc/xiri/xdm/Xresources', xdm.read_text())
         self.assertIn('-config /usr/local/share/xiri/xorg.conf', servers.read_text())
+        native_include = '#include "/etc/X11/xdm/Xresources"'
+        logo_path = '/usr/local/share/xiri/xdm-logo.xpm'
+        lines = resources.read_text().splitlines()
+        self.assertLess(lines.index(native_include), lines.index('xlogin*logoFileName: ' + logo_path))
+        self.assertEqual((self.stage / logo_path[1:]).read_bytes(), (ROOT/'runtime/etc/xiri-logo.xpm').read_bytes())
         for path in (xdm, servers, resources):
             path.write_text('# administrator configuration\n')
         self.install('--enable-xdm')
         for path in (xdm, servers, resources):
             self.assertEqual(path.read_text(), '# administrator configuration\n')
+        self.assertEqual(resources.with_suffix('.example').read_bytes(), (ROOT/'runtime/etc/xdm-Xresources').read_bytes())
         # Choosing a session and a password belongs to the account, not install.
         for name in ('etc/master.passwd', 'etc/ttys', 'usr/people', 'etc/X11'):
             self.assertFalse((self.stage/name).exists())
