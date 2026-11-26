@@ -1,0 +1,179 @@
+{
+  "native_profile": "netbsd-sgimips-indy-11.99.11-audio-v1",
+  "native_sha256": "46b51c97b70f55edfa17e4ccc06975438db03dfe1087478dac997c807de41c77",
+  "prismatic_sha256": "15b501f37e8a5fab34b00e4f41658812ccb77f43bf799b7562005ddd473cffcb",
+  "releases": {
+    "6.5.22f": {
+      "installer_sha256": "c44f9f48f9c09841633053ebcf5c9c638c85c11da72cd8044e5850fda3d7481a",
+      "chd_sha256": "4b434a4f02dfcdb186f30dfb01e8ea07a7f80f06dd9c891cb7bab416dbf56d1f",
+      "nvram_sha256": "074b0ea4e7c37c93792b689aa36ed15cd99f2a68f8ae80b9aee6ed0f52b7370e",
+      "raw_sha1": "d2c513b8f2e6f3e17b1cb09cf476b4869bb3649e",
+      "donor": [
+        "MUTE_STATES 00000002 00000000 00000000 00000000 00000001",
+        "MUTE_WRITE 00000000 00000001",
+        "MUTE_WRITE 00000001 00000001",
+        "MUTE_EVENT 00000016 00000006 1000001d 00000019 0000001b 43665845 00000001 00000010 00000000 00000001 00000000 00000000 ffffffff 8829bf84 ffffffff ffffb8a0",
+        "AFTER_GAIN VALUE 00000006 1000001d 00000001 00010000 00000001 00000000"
+      ],
+      "gui": {
+        "initial_gain": "64,64",
+        "position": [
+          32,
+          32
+        ],
+        "pid": 721,
+        "playing": {
+          "frames": 55296,
+          "peaks": [
+            4016,
+            8031
+          ],
+          "hz": [
+            440.2,
+            730.3
+          ]
+        },
+        "first_login": {
+          "sfplay_aiff": [
+            4159,
+            4159
+          ],
+          "ssplay_effect": [
+            2990,
+            2990
+          ]
+        },
+        "muted": {
+          "frames": 53248,
+          "peaks": [
+            0,
+            0
+          ],
+          "hz": [
+            0,
+            0
+          ]
+        },
+        "restored": {
+          "frames": 53248,
+          "peaks": [
+            4016,
+            8031
+          ],
+          "hz": [
+            440.0,
+            730.0
+          ]
+        },
+        "shutdown_hooks_completed": true
+      },
+      "clean_install": {
+        "release": "6.5.22f",
+        "receipts": "6.5.22f 46b51c97b70f55edfa17e4ccc06975438db03dfe1087478dac997c807de41c77 b458213b560ea6489afd5c4d850436159220a2b685f76af1c8c5ed6398bcf123",
+        "preserved": [
+          "SHA256 (/etc/passwd) = 98347a3131d039b1575858c5f045546bf46334b9b87678906f3a08a4263350b7",
+          "SHA256 (/etc/master.passwd) = a49fc93ea800ae071d8ad5c16e3eee3915b473787b90532192fe3fe1b8fdeabd",
+          "SHA256 (/etc/group) = 30d91c12c1b0d9517cf1dcb008f97df96ea4cf026eff5986b960072a562d8eb7",
+          "SHA256 (/etc/ttys) = ecd4840652ef37a24427726e51933bc7bc6e52b54ac75e5afff97e45bcf7ede6",
+          "SHA256 (/etc/hosts) = 3b71103eb3dca3fc0c569618dfbc745ea2a94055e16980c96ff00e834c7a0552",
+          "SHA256 (/etc/modules.conf) = 40e82147f94b657426abd62f7ef614185161672d782176c2588868fb34cece28",
+          "SHA256 (/etc/rc.conf) = ee8acc5add3b1cca5c7aeeaf2e308d9cae1dddc5576b58bc1400132938c2e9d1",
+          "SHA256 (/usr/people/xiritest/.Xresources) = 5922cc30b11108c7bc07b9038bcbd4f9b5f389864984c92785cdd0a2600004d5",
+          "SHA256 (/etc/xiri/session.conf) = befefeae4db308c8dbd77f83522a95f0d8d672e800e69426cd6dca718c4db95f",
+          "SHA256 (/usr/people/xiritest/.xsession) = 983ecc9eaa9763d5198b99c9a55b86a1a9dd785e851370144dcd8d9ec98233f3",
+          "SHA256 (/etc/rc.conf.d/xdm) = 7d5dd700ab908e38815502cf00d4cd354ed4a7602abaa174c59a63e6b801a4f5"
+        ],
+        "terminated_mid_install": true,
+        "original_conflict_preserved": true,
+        "resumed": true,
+        "repeated": true
+      }
+    },
+    "6.5.30f": {
+      "installer_sha256": "2fb45a0c354ccfe162c73eb08a8604ed1dfed034a982834bd1c979bb71d567e9",
+      "chd_sha256": "16c4e2cec3fa9090411489ddd39a6755074acbc84bdbf0dd92dbbdfaaaf202b3",
+      "nvram_sha256": "76f683674daa0fd2f7daa875ee253da22a00a09361fdd2a9e24f57eb82049051",
+      "raw_sha1": "28c555fa6d45709df23acd58dcf3e43753ab0e67",
+      "donor": [
+        "MUTE_STATES 00000002 00000000 00000000 00000001 00000000",
+        "MUTE_WRITE 00000000 00000001",
+        "MUTE_WRITE 00000001 00000001",
+        "MUTE_EVENT 00000014 00000006 1000001d 00000019 0000000f 2fa94031 00000001 00000000 00000000 00000001 00000000 00000000 ffffffff 80326124 ffffffff ffffb8a0",
+        "AFTER_GAIN VALUE 00000006 1000001d 00000001 00010000 00000001 00000000"
+      ],
+      "gui": {
+        "initial_gain": "64,64",
+        "position": [
+          32,
+          32
+        ],
+        "pid": 722,
+        "playing": {
+          "frames": 53248,
+          "peaks": [
+            4016,
+            8031
+          ],
+          "hz": [
+            440.0,
+            730.1
+          ]
+        },
+        "first_login": {
+          "sfplay_aiff": [
+            4117,
+            4117
+          ],
+          "ssplay_effect": [
+            2984,
+            2984
+          ]
+        },
+        "muted": {
+          "frames": 53248,
+          "peaks": [
+            0,
+            0
+          ],
+          "hz": [
+            0,
+            0
+          ]
+        },
+        "restored": {
+          "frames": 53248,
+          "peaks": [
+            4016,
+            8031
+          ],
+          "hz": [
+            440.0,
+            730.0
+          ]
+        },
+        "shutdown_hooks_completed": true
+      },
+      "clean_install": {
+        "release": "6.5.30f",
+        "receipts": "6.5.30f 46b51c97b70f55edfa17e4ccc06975438db03dfe1087478dac997c807de41c77 dd0653ff4197a37d13fc91131030b1f9f466f210f2d9bf2407ee45dbbe88dd8a",
+        "preserved": [
+          "SHA256 (/etc/passwd) = 98347a3131d039b1575858c5f045546bf46334b9b87678906f3a08a4263350b7",
+          "SHA256 (/etc/master.passwd) = 081be76eae8eee8f5c292388fb0312952acb56dfea37883fd4a36418f199f413",
+          "SHA256 (/etc/group) = 30d91c12c1b0d9517cf1dcb008f97df96ea4cf026eff5986b960072a562d8eb7",
+          "SHA256 (/etc/ttys) = ecd4840652ef37a24427726e51933bc7bc6e52b54ac75e5afff97e45bcf7ede6",
+          "SHA256 (/etc/hosts) = 3b71103eb3dca3fc0c569618dfbc745ea2a94055e16980c96ff00e834c7a0552",
+          "SHA256 (/etc/modules.conf) = 40e82147f94b657426abd62f7ef614185161672d782176c2588868fb34cece28",
+          "SHA256 (/etc/rc.conf) = ee8acc5add3b1cca5c7aeeaf2e308d9cae1dddc5576b58bc1400132938c2e9d1",
+          "SHA256 (/usr/people/xiritest/.Xresources) = 5922cc30b11108c7bc07b9038bcbd4f9b5f389864984c92785cdd0a2600004d5",
+          "SHA256 (/etc/xiri/session.conf) = befefeae4db308c8dbd77f83522a95f0d8d672e800e69426cd6dca718c4db95f",
+          "SHA256 (/usr/people/xiritest/.xsession) = 983ecc9eaa9763d5198b99c9a55b86a1a9dd785e851370144dcd8d9ec98233f3",
+          "SHA256 (/etc/rc.conf.d/xdm) = 7d5dd700ab908e38815502cf00d4cd354ed4a7602abaa174c59a63e6b801a4f5"
+        ],
+        "terminated_mid_install": true,
+        "original_conflict_preserved": true,
+        "resumed": true,
+        "repeated": true
+      }
+    }
+  }
+}

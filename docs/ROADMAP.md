@@ -300,7 +300,7 @@ work.
 - [x] Exercise the SGI Audio Panel speaker slider against the HAL2 mixer and the Sounds panel's Key Click control against Xorg. Qualify the MIPS software conversion at digital silence. [Release checks](results/2026-11-26-indy-hdsp.md).
 - [x] Play named desktop effects from the original default SoundScheme on the Indy. [Display and sound qualification](results/2026-11-26-indy-display-sound.md).
 - [x] Play WAV and AIFF files through the original IRIX Audio Library on both Indys. Verify master gain to silence and restoration independently of SoundScheme. [Playback measurements](results/2026-11-26-indy-pcm.md).
-- [ ] Exercise the separate Mute button in the SGI Audio Panel during general playback.
+- [x] Operate the original Audio Panel Mute box during a continuous stereo play and qualify first-login audio on clean 6.5.22f and 6.5.30f Indy installs. [Measurements and screenshots](results/2026-11-26-indy-audio-installer.md).
 - [x] Trace XSGIvc on a donor Indy and qualify the original Display panel against the active Newport timing on both releases. [Display and sound qualification](results/2026-11-26-indy-display-sound.md).
 - [ ] Deferred by request. Revisit Newport display-mode changes and recovery from an unusable timing in a later cycle.
 - [x] Support SGI xlock start/end events in Xorg. The original Qix Demo, idle activation, Space wake, disable and logout pass on both Indys. [Update and results](results/2026-11-26-sgi-screen-saver.md).

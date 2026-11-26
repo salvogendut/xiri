@@ -72,6 +72,11 @@ in `08e53ba7`. [Octane build and qualification](results/2026-11-23-octane-deskto
 
 ## IRIS upstream updates
 
+The Indy Audio Panel and installer cycle fetched IRIS upstream on November
+26. Fork `xiri` at `7c713c13` already contained `upstream/main` at
+`8ca2b96a`. The HAL2 codec mute bit is implemented in this IRIS core.
+The NetBSD HAL2 driver and IRIX module expose it to the SGI client.
+
 The general audio playback cycle rechecked upstream on November 26. IRIS
 `xiri` at `7c713c13` already includes upstream `8ca2b96a`. The playback
 checks used the same Prismatic and IRIS build as the desktop sound tests.

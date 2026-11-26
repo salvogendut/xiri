@@ -177,7 +177,7 @@ def source_inputs(profile):
              if p.is_file() and p.relative_to(runtime).parts[0] in names}
     sources.update({p:sha256(ROOT/p) for p in ['scripts/xiri_lab/native_package.py',
                     'packaging/native/preflight.sh','packaging/native/README.md',
-                    *profile['configuration_sources'].values()]})
+                    *profile['configuration_sources'].values(), *profile.get('boot_services', {}).values()]})
     return sources
 
 
@@ -225,7 +225,16 @@ def build(profile_path, inputs_path, compiler, sets, output):
                 absolute(dest)
                 target=stage/dest.lstrip('/');target.parent.mkdir(parents=True,exist_ok=True)
                 shutil.copyfile(ROOT/src,target);target.chmod(0o444)
-            examples=stage/'usr/local/share/xiri/examples';(examples/'rc.conf.d').mkdir(parents=True)
+            for name, src in profile.get('boot_services', {}).items():
+                target = stage / 'etc/rc.d' / name
+                shutil.copyfile(ROOT / src, target)
+                target.chmod(0o555)
+            for dest, link in profile.get('native_links', {}).items():
+                absolute(dest)
+                target = stage / dest.lstrip('/')
+                target.parent.mkdir(parents=True, exist_ok=True)
+                target.symlink_to(link)
+            examples=stage/'usr/local/share/xiri/examples';(examples/'rc.conf.d').mkdir(parents=True, exist_ok=True)
             for name,text in {'rpcbind':'rpcbind=YES\nrpcbind_flags="-h 127.0.0.1"\n',
                               'xiri_devices':'xiri_devices=YES\n',
                               'xiri_famd':'xiri_famd=YES\n#xiri_famd_logfile="/var/log/xiri-fam.log"\n',

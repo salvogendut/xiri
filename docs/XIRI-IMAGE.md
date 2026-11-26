@@ -422,6 +422,25 @@ altering it.
 
 ## Start it in Prismatic
 
+### Clean Indy audio images
+
+The two audio images boot to full-screen xdm. From the Xiri checkout run
+one of these commands, then press **Ctrl+P** in Prismatic to start the Indy.
+
+```sh
+.work/prismatic-indy-audio-v7/6.5.22f/run-prismatic.sh
+.work/prismatic-indy-audio-v7/6.5.30f/run-prismatic.sh
+```
+
+Log in as `xiritest` with password `xiritest`. Open **Icon Catalog →
+ControlPanels → audiopanel** for the two output sliders and the Mute box.
+First-boot sound and a continuous stereo play through both mute transitions
+passed on both images. The matching fresh-install CDs are in
+`.work/installers/indy-11.99.11/audio-v7/`. The previous Prismatic bundles
+remain available for existing desktops with their own installed options.
+[Measurements and screenshots](results/2026-11-26-indy-audio-installer.md) ·
+[Build and install](NATIVE-PACKAGE.md#fresh-indy-installation-with-hal2-audio).
+
 ### General IRIX audio playback on Indy
 
 These profiles include the mapped HDSP playback module, the original SGI

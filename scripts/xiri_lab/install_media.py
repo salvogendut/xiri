@@ -15,11 +15,12 @@ from .native_package import archive_tree
 INDY = 'netbsd-sgimips-indy-11.99.11-v1'
 GLX = 'netbsd-sgimips-indy-11.99.11-glx-v1'
 UTIME = 'netbsd-sgimips-indy-11.99.11-utime-v1'
+AUDIO = 'netbsd-sgimips-indy-11.99.11-audio-v1'
 
 
 def validate_native(native):
     native_manifest = json.loads((native / 'manifest.json').read_text())
-    if native_manifest['profile'] not in (INDY, GLX, UTIME):
+    if native_manifest['profile'] not in (INDY, GLX, UTIME, AUDIO):
         raise ValueError('Expected an Indy native package')
     profile = ROOT / 'profiles' / (native_manifest['profile'] + '.json')
     if (
@@ -143,15 +144,26 @@ def run(args):
         profile = json.loads((native / 'manifest.json').read_text())['profile']
         if bool(args.previous_media) != bool(profile == UTIME and args.upgrade_from):
             raise ValueError('Use --previous-media with a v5 to v6 Indy update')
-        graphics = profile in (GLX, UTIME)
+        graphics = profile in (GLX, UTIME, AUDIO)
         if graphics != bool(args.clock_overlay):
             raise ValueError('The Indy GLX profile and its matching --clock-overlay must be used together')
+        if any(bool(cd) != (profile == AUDIO) for cd in (args.audio_playback, args.audio_effects)):
+            raise ValueError('The Indy audio profile requires both --audio-playback and --audio-effects')
+        if profile == AUDIO and args.upgrade_from:
+            raise ValueError('Use the Indy audio CD for fresh installation')
         fonts = {}
         if graphics:
             fonts = extract_fonts(imported, args.clock_overlay, args.instigator, work)
             inputs['payload.tgz'] = work / 'payload.tgz'
-            augmented_payload(vendor / 'payload.tar.gz', fonts, inputs['payload.tgz'])
-            for dest, path in fonts.items():
+            supplement = dict(fonts)
+            modes = {}
+            if profile == AUDIO:
+                from .indy_audio import audio_files
+                additions = audio_files(release, args.audio_playback, args.audio_effects, work, files)
+                modes = {name: path.stat().st_mode & 0o777 for name, path in additions.items()}
+                supplement.update(additions)
+            augmented_payload(vendor / 'payload.tar.gz', supplement, inputs['payload.tgz'], modes)
+            for dest, path in supplement.items():
                 files[dest] = dict(type='file', sha256=sha256(path), bytes=path.stat().st_size)
             inputs['display-update'] = work / 'display-update'
             inputs['display-update'].write_text('Xorg GLX\n')

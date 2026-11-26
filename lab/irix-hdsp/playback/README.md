@@ -88,3 +88,32 @@ that play as `native48.pcm`. Generate two more WAVs at 48 kHz, one with
 players in the same shell in the background, wait for both, and capture
 their combined output as `overlap.pcm`. Pass `--extra` to the checker to
 test both captures.
+
+## Measure the panel's Mute control during one play
+
+On a disposable Indy, select **ControlPanels → audiopanel** in Icon Catalog.
+Use the normal xdm user and start a continuous stereo WAV with the original
+`sfplay`. The following command generates three minutes of 440 Hz on the
+left and 730 Hz on the right.
+
+```sh
+python3 lab/irix-hdsp/playback/live.py generate tone.wav
+```
+
+Mount the WAV on a test CD. Before launching the player, set the two
+channels to 64,128 with `hdsp-query --set-test-gain`. During playback,
+click **Mute** under the two Analog Out sliders, then click it again.
+Read `mixerctl outputs.master outputs.master.mute` at each step and verify
+the same user's player PID remains alive. Capture a settled interval of
+at least half a second of 48 kHz S16LE stereo SDL output in each state,
+as `playing.pcm`, `muted.pcm` and `restored.pcm`. Check all three with:
+
+```sh
+python3 lab/irix-hdsp/playback/live.py check /path/to/captures
+```
+
+The checker requires digital zero throughout the muted interval, distinct
+frequencies in the expected channels before and after mute, and restoration
+of each channel's level to within five percent. The donor probe's
+`--mute-test` also prints the original choices, reads gain while muted and
+records the parameter-change event.

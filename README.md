@@ -11,7 +11,7 @@ CHD. The separate [6.5.30f donor and import](docs/results/2026-11-14-irix-6.5.30
 are reproducible. The [Indy/R5000 retry](docs/results/2026-11-14-r5000-6.5.30.md)
 now passes native boot and the 6.5.30f core desktop, shell, File Manager and
 login/logout checks with IRIS shadow cache mode. For manual testing, use the
-[clean 6.5.22f and 6.5.30f Indy v6 CHDs](docs/results/2026-11-26-indy-v6.md).
+[fresh 6.5.22f and 6.5.30f Indy audio CHDs](docs/XIRI-IMAGE.md#clean-indy-audio-images).
 Each has a launcher, an IRIX desktop and a native NetBSD login.
 The [Indy ControlPanels results](docs/results/2026-11-26-indy-controlpanels.md)
 cover Screen Saver, Display, Sounds, Audio Panel and the native HAL2 mixer.

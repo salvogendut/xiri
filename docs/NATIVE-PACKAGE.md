@@ -201,6 +201,59 @@ userspace and the release-specific desktop payload before building the
 update. For fresh target preparation, pass `--native-package "$v6"` and
 `--keep-target` to the [stock bootstrap](../lab/native-package/README.md#bootstrapping-a-stock-target).
 
+## Fresh Indy installation with HAL2 audio
+
+Use the `netbsd-sgimips-indy-11.99.11-audio-v1` native package for an
+Indy with Newport and HAL2. The two installer CDs target IRIX **6.5.22f**
+and **6.5.30f** separately. Each contains the original release's
+`sfplay`, format and rate converters, `ssplay` and default SoundScheme.
+The native package supplies the matched NetBSD kernel, PROM boot wrapper,
+IRIX module and boot services for the HDSP event and playback devices.
+
+Prepare the stock NetBSD target with the audio native package using
+`check-clean-bootstrap.py --native-package`, as in the bootstrap procedure
+below. On the booted target, mount its release CD and run the usual installer.
+
+```sh
+mkdir -p /cdrom
+mount -rt cd9660 /dev/cd0a /cdrom
+sh /cdrom/install.sh
+```
+
+Select the user's Xiri session and reboot. The first boot uses speaker
+levels 64,64. NetBSD's `mixerctl` service saves levels and mute on clean
+shutdown and restores them at startup. Existing site mixer settings take
+precedence. In winterm, play the installed SGI sample with:
+
+```sh
+/emul/irix/usr/sbin/sfplay /usr/share/data/sounds/soundscheme/soundfiles/emptyDumpster.aiff
+```
+
+**Build the two private CDs.** Stage the five userspace artifacts from the v6
+native archive and the kernel, boot wrapper and module matching the
+[audio build record](../lab/irix-hdsp/playback/indy-audio-build.json).
+Use the `package-native` command above with the
+[audio profile](../profiles/netbsd-sgimips-indy-11.99.11-audio-v1.json)
+and the corresponding paths JSON. For each release, supply its own
+[PCM](../lab/irix-hdsp/playback/README.md) and
+[SoundScheme](../lab/indy-desktop-sound/README.md) media. The builder
+checks the selected files against release-specific content hashes. As in
+the v6 instructions, `disc` is the matching Overlay 1 ISO.
+
+```sh
+./xiri install-media --native-package "$audio_package" \
+    --vendor-payload ".work/imports/irix-$release-v1" \
+    --clock-overlay "$HOME/Downloads/IRIX media/$disc" \
+    --instigator .work/upstream-qualified/instigator \
+    --audio-playback ".work/installers/indy-11.99.11/pcm-v1/$release.iso" \
+    --audio-effects ".work/installers/indy-11.99.11/desktop-display-sound-v1/$release.iso" \
+    --output "$out/xiri-$release.iso"
+```
+
+The optional Mozilla component takes the same `--mozilla-payload` and
+`--mozilla-network` arguments as v6. Existing v6 installations retain their
+qualified [audio update procedure](../lab/irix-hdsp/playback/README.md).
+
 ## Clean installation on an emulated Indy
 
 The Indy v5 package targets NetBSD 11.0/sgimips userland and X sets with

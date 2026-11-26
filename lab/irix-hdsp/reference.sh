@@ -20,10 +20,12 @@ if test -x /usr/sbin/sfplay && test -r "$sample"; then
     echo 'END sfplay'
 fi
 if test "${1-}" = --query-only; then
+    /tmp/hdsp-query --mute-test || exit 1
     echo 'HDSP reference complete'
     exit 0
 fi
 /tmp/hdsp-query --event-test || exit 1
+/tmp/hdsp-query --mute-test || exit 1
 for program in dtSounds audiopanel; do
     trace=/tmp/xiri-${program}.par
     par -s -i -SS -t 18 /usr/sbin/"$program" > "$trace" 2>&1 &

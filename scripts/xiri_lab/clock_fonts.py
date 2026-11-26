@@ -43,7 +43,7 @@ def extract_fonts(imported, overlay, instigator, work):
     return paths
 
 
-def augmented_payload(base, fonts, output):
+def augmented_payload(base, additions, output, modes=None):
     """Stream the verified base and add only previously vacant regular files."""
     with output.open('xb') as raw, gzip.GzipFile(filename='', fileobj=raw, mode='wb', mtime=0) as gz:
         with tarfile.open(base, 'r|gz') as old, tarfile.open(fileobj=gz, mode='w|', format=tarfile.USTAR_FORMAT) as new:
@@ -54,22 +54,23 @@ def augmented_payload(base, fonts, output):
                 if item.isdir():
                     dirs.add(item.name)
                 new.addfile(item, old.extractfile(item) if item.isreg() else None)
-            for dest, source in sorted(fonts.items()):
+            for dest, source in sorted(additions.items()):
                 relative = Path(dest.lstrip('/'))
                 if str(relative) in names:
-                    raise ValueError('Clock supplement overlaps vendor payload: ' + dest)
+                    raise ValueError('Supplement overlaps vendor payload: ' + dest)
                 for parent in reversed(relative.parents):
                     name = str(parent)
                     if name == '.' or name in dirs:
                         continue
                     if name in names:
-                        raise ValueError('Invalid parent in Clock supplement: ' + name)
+                        raise ValueError('Invalid parent in supplement: ' + name)
                     info = tarfile.TarInfo(name)
                     info.type = tarfile.DIRTYPE
                     info.mode = 0o755
                     new.addfile(info)
                     dirs.add(name)
                 info = tarfile.TarInfo(str(relative))
-                info.mode, info.size = 0o444, source.stat().st_size
+                info.mode = (modes or {}).get(dest, 0o444)
+                info.size = source.stat().st_size
                 with source.open('rb') as stream:
                     new.addfile(info, stream)

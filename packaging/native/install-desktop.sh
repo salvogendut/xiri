@@ -183,7 +183,9 @@ mkfontdir /usr/local/share/xiri/fonts
 remember_missing /usr/bin/nawk
 /usr/local/sbin/xiri-update-filetypes
 mkdir -p /etc/rc.conf.d
-for service in rpcbind xiri_devices xiri_famd xiri_sessions xdm; do
+services="rpcbind xiri_devices xiri_famd xiri_sessions xdm"
+if test -f "/usr/local/share/xiri/examples/rc.conf.d/mixerctl"; then services="$services mixerctl"; fi
+for service in $services; do
     dest=/etc/rc.conf.d/$service
     if test ! -e "$dest" && test ! -L "$dest"; then
         remember_missing "$dest"

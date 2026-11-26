@@ -164,6 +164,8 @@ def parser():
     medium.add_argument('--mozilla-network', type=Path, help='qualified browser networking ISO')
     medium.add_argument('--upgrade-from', type=Path, help='include a reversible update from this installed native package')
     medium.add_argument('--previous-media', type=Path, help='matching v5 Mozilla installer CD for a reversible Indy v6 kernel update')
+    medium.add_argument('--audio-playback', type=Path, help='release-matched SGI PCM update CD for the Indy audio profile')
+    medium.add_argument('--audio-effects', type=Path, help='release-matched SGI desktop sounds CD for the Indy audio profile')
     medium.add_argument('--clock-overlay', type=Path, help='matching SGI Overlay 1 ISO for the Indy GLX profile')
     medium.add_argument('--instigator', default='instigator', help='path to the Instigator media extractor')
     status = sub.add_parser('status', help='show selected artifacts and current source branches')

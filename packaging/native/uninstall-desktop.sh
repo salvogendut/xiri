@@ -112,7 +112,9 @@ if test ! -f "$history/complete"; then
     for alias in /usr/lib/desktop /usr/adobe /usr/freeware; do undo "$alias" symlink 0 "/emul/irix$alias" managed; done
     undo /usr/bin/nawk symlink 0 awk managed
     (cd "$scratch" && pax -rz -f "$media/native.tgz" files.tsv root/usr/local/share/xiri/examples/rc.conf.d)
-    for service in rpcbind xdm xiri_devices xiri_famd xiri_sessions; do
+    services="rpcbind xiri_devices xiri_famd xiri_sessions xdm"
+    if test -f "$scratch/root/usr/local/share/xiri/examples/rc.conf.d/mixerctl"; then services="$services mixerctl"; fi
+    for service in $services; do
         sed '/^#/d' "$scratch/root/usr/local/share/xiri/examples/rc.conf.d/$service" >"$scratch/rc-default"
         hash=$(sha256 -q "$scratch/rc-default")
         undo "/etc/rc.conf.d/$service" file 0644 "$hash" managed

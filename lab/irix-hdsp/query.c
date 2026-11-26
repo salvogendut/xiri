@@ -2,7 +2,7 @@
 typedef unsigned int u32;
 enum { IRIX_WRITE = 1004, IRIX_OPEN = 1005, IRIX_IOCTL = 1054, IRIX_POLL = 1087 };
 enum { SET_PARAMS = 24, GET_PARAMS, QUERY_VALUES, GET_PARAM_INFO };
-enum { RESOURCE = 0x10000001, INTERFACE = 0x10000002, GAIN = 0x10000019 };
+enum { RESOURCE = 0x10000001, INTERFACE = 0x10000002, GAIN = 0x10000019, MUTE = 0x1000001d };
 enum { DEFAULT_OUTPUT = 10, SYSTEM = 11, ANALOG_OUTPUT = 6 };
 
 struct parameter {
@@ -161,6 +161,51 @@ set_gain(int fd, int silent)
     return trap3(IRIX_IOCTL, fd, SET_PARAMS, (unsigned long)batch) == 1 ? 0 : 1;
 }
 
+/* Inspect the original driver's enumerated mute states on a disposable donor. */
+static int
+mute_test(int fd)
+{
+    u32 vals[16][2] __attribute__((aligned(8))) = {{0}};
+    u32 q[14] __attribute__((aligned(8))) = {(u32)vals, 0, 7, ANALOG_OUTPUT, MUTE, 16};
+    struct parameter b[3] __attribute__((aligned(8))) = {
+        { .id = 3 }, { .id = RESOURCE, .value = {ANALOG_OUTPUT} }, { .id = MUTE }
+    };
+    int count = trap3(IRIX_IOCTL, fd, QUERY_VALUES, (unsigned long)q);
+    put("MUTE_STATES "); word(count);
+    for (int i = 0; i < count && i < 16; i++) {
+        word(vals[i][0]); word(vals[i][1]);
+    }
+    put("\n");
+    if (count < 1 || count > 16)
+        return 1;
+    int events = trap3(IRIX_OPEN, (unsigned long)"/dev/hdsp/hdsp0events", 2, 0);
+    u32 sub[4] = {ANALOG_OUTPUT, 0, 0, 1u << 29};
+    if (events < 0 || trap3(IRIX_IOCTL, events, 110, 0) < 0 ||
+        trap3(IRIX_IOCTL, events, 112, (unsigned long)sub) < 0)
+        return 1;
+    for (int i = 0; i <= 1; i++) {
+        b[2].value[0] = i;
+        put("MUTE_WRITE "); word(i);
+        word(trap3(IRIX_IOCTL, fd, SET_PARAMS, (unsigned long)b)); put("\n");
+        value(fd, ANALOG_OUTPUT, MUTE, 0);
+        value(fd, ANALOG_OUTPUT, GAIN, 1);
+        int pending = 0;
+        if (trap3(IRIX_IOCTL, events, 118, (unsigned long)&pending) >= 0 && pending > 0) {
+            u32 event[16] __attribute__((aligned(8))) = {0};
+            if (trap3(IRIX_IOCTL, events, 101, (unsigned long)event) < 0)
+                return 1;
+            put("MUTE_EVENT ");
+            for (int n = 0; n < 16; n++) word(event[n]);
+            put("\n");
+        }
+    }
+    if (set_gain(fd, 0))
+        return 1;
+    put("AFTER_GAIN "); value(fd, ANALOG_OUTPUT, MUTE, 0);
+    b[2].value[0] = 0;
+    return trap3(IRIX_IOCTL, fd, SET_PARAMS, (unsigned long)b) != 1;
+}
+
 static int
 event_test(int master)
 {
@@ -233,6 +278,8 @@ run(int argc, char **argv)
         return set_gain(fd, 0);
     if (argc == 2 && equal(argv[1], "--silence-test-gain"))
         return set_gain(fd, 1);
+    if (argc == 2 && equal(argv[1], "--mute-test"))
+        return mute_test(fd);
     if (argc == 2 && equal(argv[1], "--event-test"))
         return event_test(fd);
     if (argc != 1)
