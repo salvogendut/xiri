@@ -18,6 +18,8 @@ Each user can select the IRIX desktop or keep their native NetBSD session.
 
 The standard way to create a Xiri system is to **install XiriBSD, then run
 `xiriprep` as root on the installed machine**. The Indy is the reference platform.
+The installer ISO contains NetBSD, native Xiri tools and donor profiles.
+All IRIX executables, libraries, fonts and desktop artwork come from your own donor disk.
 
 1. On a fresh Indy, install from the native XiriBSD ISO and boot from disk. If you already installed the earlier native ISO, add the tools CD to your existing system. [Fresh install in Prismatic](docs/INSTALL-INDY-PRISMATIC.md) · [Tools CD for an existing Indy](docs/XIRIPREP.md#use-the-tools-cd-on-an-existing-indy)
 2. Mount the media containing your installed IRIX disk image. The reference

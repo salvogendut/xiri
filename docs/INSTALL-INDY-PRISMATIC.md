@@ -1,8 +1,10 @@
 # Install XiriBSD on an Indy in Prismatic
 
 This installs NetBSD and the Xiri compatibility module on a fresh virtual disk.
-Your first login opens the native NetBSD **ctwm** desktop. The IRIX desktop
-requires a separate donor import. The installer ISO for this build is
+Your first login opens the native NetBSD **ctwm** desktop. You can complete
+the installation with just the ISO and a blank disk. When you later run
+`xiriprep`, it reads the IRIX programs, libraries, fonts and desktop artwork
+from your donor image. The installer ISO for this build is
 `.work/images/xiribsd-indy-donor-profiles-11.99.11.iso` in the Xiri checkout.
 If you already installed an earlier XiriBSD Indy ISO, keep that disk
 and go straight to the [tools CD instructions](XIRIPREP.md#use-the-tools-cd-on-an-existing-indy).
