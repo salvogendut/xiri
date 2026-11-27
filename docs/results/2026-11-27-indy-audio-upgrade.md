@@ -58,10 +58,12 @@ output with the first upgrade.
 Each muted play captured 190,464 stereo frames at 48 kHz. The two
 channels matched for this mono AIFF. The comparison uses the
 [donor waveform checker](../../lab/irix-hdsp/playback/verify.py).
-One interaction remains open. When Audio Panel started muted and the
+On these audio-v7 images, when Audio Panel started muted and the
 native `mixerctl` command cleared mute while the panel was open, its
 next click left the native mixer unmuted. Reopening the panel and using
-its checkbox for both transitions passed on both releases.
+its checkbox for both transitions passed on both releases. The subsequent
+[HAL2 notification fix](2026-11-27-indy-mute-sync.md) qualifies native and
+panel writes in the same open window.
 
 Both rebuilds reproduced all 69 entries in their CD checksum lists.
 The 106 host tests passed. The [per-release records](2026-11-27-indy-audio-upgrade.json)

@@ -72,6 +72,14 @@ in `08e53ba7`. [Octane build and qualification](results/2026-11-23-octane-deskto
 
 ## IRIS upstream updates
 
+On November 27 the native mute cycle merged nine upstream commits through
+`f02e6f45` into IRIS `xiri` at `e7e5f70f`. The upstream device list now
+uses slot paths. Fork commit `f986f374` updates the O2/Octane PROM test to
+clear that list. Both CLI binaries built with `jitv2,gpujit,idle-pause`.
+The selected core tests passed 193 checks, `iris-ci` passed 30 and
+`iris-gui` passed 119. The desktop checks use the qualified audio-v7
+Prismatic binary so a backend change cannot affect the mixer comparison.
+
 The Indy v6 audio-upgrade cycle fetched IRIS `upstream/main` on November 26
 and again on November 27. Both checks found `8ca2b96a` already in fork
 `xiri` at `7c713c13`. The update uses the existing audio-v7 Prismatic

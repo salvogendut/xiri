@@ -446,6 +446,10 @@ remain available for existing desktops with their own installed options.
 [Build and install](NATIVE-PACKAGE.md#fresh-indy-installation-with-hal2-audio) ·
 [Upgrade an existing v6 Indy and roll back](NATIVE-PACKAGE.md#upgrade-an-installed-indy-from-v6-to-audio-v7).
 
+On audio-v7, reopen Audio Panel after changing mute with native `mixerctl`
+to refresh the checkbox. A newer matched kernel and module update it while
+the panel stays open. [Two-release graphical and playback checks](results/2026-11-27-indy-mute-sync.md).
+
 ### General IRIX audio playback on Indy
 
 These profiles include the mapped HDSP playback module, the original SGI

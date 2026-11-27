@@ -117,3 +117,39 @@ frequencies in the expected channels before and after mute, and restoration
 of each channel's level to within five percent. The donor probe's
 `--mute-test` also prints the original choices, reads gain while muted and
 records the parameter-change event.
+
+## Check native mixer changes with Audio Panel open
+
+On a disposable Indy, set `outputs.master=64,128` and
+`outputs.master.mute=on` with `mixerctl -w`. Log in to 4Dwm as
+`xiritest`, open the SGI Audio Panel and start the continuous stereo
+tone described above. Keep that panel and player open for all seven
+observations. Move the pointer away from Mute before capturing the screen.
+
+| Capture name | Action |
+| --- | --- |
+| `initial` | Observe the already-checked box. |
+| `native_off` | Run `mixerctl -w outputs.master.mute=off`. |
+| `panel_on` | Click Mute in Audio Panel. |
+| `native_off_again` | Clear mute with `mixerctl` again. |
+| `native_on` | Set mute with `mixerctl`. |
+| `same_native_on` | Repeat the same native write. |
+| `panel_off` | Click Mute in Audio Panel again. |
+
+For each row, record at least half a second of settled SDL stereo output
+as `NAME.pcm`, finish that capture, then press F4 and save the Prismatic
+framebuffer as `NAME.ppm`. F4 plays a host shutter sound on SDL. Save
+the output of `mixerctl -n outputs.master outputs.master.mute` followed
+by the player's PID in `NAME.txt`. Use `ps -axww -o pid,user,comm,args`
+to identify the process by user and full executable path. The short NetBSD
+process name can appear as `/emul/i`. Pass the Mute checkbox's center in
+guest framebuffer coordinates to the checker. For example, a panel
+with its client area at (32, 32) places the checkbox at (95, 279).
+
+```sh
+python3 lab/irix-hdsp/playback/mute_sync.py /path/to/captures 95 279
+```
+
+The checker reads the red SGI check mark directly from the framebuffer,
+checks both native controls and the player PID, and measures both sound
+channels before and after each change.
