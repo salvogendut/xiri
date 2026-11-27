@@ -31,6 +31,9 @@ The selector uses `/rescue/sh` explicitly. When SGI File Manager launched
 the first version with a `/bin/sh` interpreter, it found the donor's
 Bourne shell, which failed on the script's arithmetic expansion.
 
+The [SGI CD Player follow-up](2026-11-28-indy-cdplayer.md) covers the original
+application on the two Xiri desktops.
+
 ## Comparison with original IRIX
 
 On the original 6.5.22f Indy, `mediad` published `/CDROM/Track01.aiff`,

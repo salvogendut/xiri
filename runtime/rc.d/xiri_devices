@@ -30,10 +30,34 @@ xiri_audio_devices()
         fi
     done
 }
+xiri_cdrom_device()
+{
+    local raw=/dev/rcd0c aliases=/emul/irix/dev/scsi name path
+    [ -d /emul/irix/dev ] || return 0
+    [ ! -L "$aliases" ] || return 1
+    name=
+    if [ -c "$raw" ]; then
+        name=$(scsictl "$raw" identify 2>/dev/null |
+            sed -n 's|^/dev/rcd0c: scsibus\([0-9][0-9]*\) target \([0-9][0-9]*\) lun 0 .*|sc\1d\2l0|p')
+    fi
+    # Drop only our old alias if the drive moved or was removed.
+    for path in "$aliases"/sc[0-9]*d[0-9]*l0; do
+        [ -L "$path" ] && [ "$(readlink "$path")" = "/..$raw" ] || continue
+        [ "$path" = "$aliases/$name" ] || rm "$path" || return 1
+    done
+    [ -n "$name" ] || return 0
+    mkdir -p -m 755 "$aliases" || return 1
+    if [ -L "$aliases/$name" ]; then
+        [ "$(readlink "$aliases/$name")" = "/..$raw" ]
+    else
+        ln -s "/..$raw" "$aliases/$name"
+    fi
+}
 xiri_devices_start()
 {
     /usr/local/sbin/xiri-sync-users || return 1
     xiri_audio_devices || return 1
+    xiri_cdrom_device || warn "Could not prepare the IRIX CD-ROM device alias"
     # Run before login/PTY allocation. A service restart must not remount PTYs.
     test ! -f /var/run/xiri-pty-ready || return 0
     /bin/sh /usr/local/libexec/xiri/setup-pty.sh || return 1

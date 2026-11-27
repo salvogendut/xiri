@@ -111,6 +111,12 @@ The November 27 Sound Editor cycle fetched `upstream/main` again at
 original 6.5.22f Indy and supplied microphone input to both Xiri guests.
 [Sound Editor qualification](results/2026-11-27-indy-soundeditor.md)
 
+The CD Player cycle fetched IRIS upstream on November 27 and again on
+November 28. Both checks found `afaf7a5504377848c413dc6ac33a65b60dfe574b`
+in `xiri` at `65039d90`. That build supplied the original SGI drive trace,
+the removable two-track disc and the HAL2 speaker capture for both Xiri releases.
+[SGI CD Player results](results/2026-11-28-indy-cdplayer.md)
+
 The SuperIRIX test CHD cycle integrated four further upstream commits through
 `dca458bc` into IRIS `xiri` at `854d12c4`. These cover virtio snapshots,
 Timekeeper year handling, shared machine constants and boot CI. The merge

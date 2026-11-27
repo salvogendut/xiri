@@ -1,6 +1,6 @@
 # Xiri execution roadmap
 
-Updated 2026-11-27. The current image runs the original 4Dwm desktop,
+Updated 2026-11-28. The current image runs the original 4Dwm desktop,
 Toolchest, Icon Catalog, File Manager, winterm and xclock on NetBSD/Xorg with
 accelerated Newport. Catalog launching, running-icon feedback, backdrop,
 desktop icons and logout pass bounded checks; the latest xmahjongg texture
@@ -24,11 +24,11 @@ module and runtime update, interrupted recovery and rollback while keeping
 their desktop preferences. [Fresh-install results](results/2026-11-27-xiriprep-desktop.md) ·
 [Update and rollback qualification](results/2026-11-27-xiriprep-system-update.md)
 
-1. Qualify SGI CD Player (`cdman`) on both Indy releases. The desktop music
-   icon already opens a native track selector backed by NetBSD `cdplay`.
-   The SGI player still reports that it cannot find the drive at SCSI ID 6.
-   Compare its device requests with the original IRIX player and verify track
-   selection and playback. Data CDs already automount at `/CDROM`.
+1. Continue qualifying Indy media applications. Both releases play an audio
+   CD from the desktop. The original SGI player also plays digital audio when
+   root grants its open process the lowest NetBSD round-robin priority.
+   Double-clicking the disc opens the NetBSD selector for ordinary playback.
+   [SGI CD Player qualification](results/2026-11-28-indy-cdplayer.md)
 
    SGI Sound Editor records the Indy microphone, saves an AIFF, reopens it
    and plays it through HAL2 on both releases. SGI `sfrecord` and `sfplay`

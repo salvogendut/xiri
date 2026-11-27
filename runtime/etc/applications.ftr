@@ -41,6 +41,7 @@ TYPE XiriCDROMMusic
     LEGEND Music CDROM Drive
     CMD OPEN /usr/local/libexec/xiri/cd-player.sh
     CMD ALTOPEN /usr/local/libexec/xiri/cd-player.sh
+    MENUCMD "SGI CD Player" /usr/sbin/cdman
     MENUCMD "Eject CDROM" /usr/local/libexec/xiri/cdromd --eject || /usr/X11R7/bin/xmessage -center -title CDROM -buttons OK "Could not eject the disc."
     ICON {
         include("/emul/irix/usr/lib/filetype/devices/iconlib/cdrom.loaded.fti");

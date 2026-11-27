@@ -279,8 +279,8 @@ video source and a data CD. Use those results for current device behaviour.
 
 | Entry | Original target | Observed result / next check |
 | --- | --- | --- |
-| `cdman` | `/usr/sbin/cdman` | **Terminates on signal 8.** |
-| `cdplayer` | `/usr/sbin/cdplayer` | **Terminates on signal 8.** |
+| `cdman` | `/usr/sbin/cdman` | **Plays track 2** on both Indy desktops when root grants the open SGI player round-robin priority. [Playback and screenshots](results/2026-11-28-indy-cdplayer.md) |
+| `cdplayer` | `/usr/sbin/cdplayer` | Last independent launch terminated on signal 8. The current playback check uses the `cdman` entry point. |
 | `compview` | `/usr/sbin/compview` | **Cleanup passes in paired replays; functionality unqualified.** The old GIMP and current native-wait images each track and clean up both descendants, confirm absent PIDs and halt cleanly. The first bounded X query still times out; subsequent queries recover. The original absent=0/valid=0 tracking failure remains unexplained. Useful interaction and normal application exit remain untested. [Follow-up](results/2026-11-05-process-tracking.md). |
 | `datman` | `/usr/sbin/datman` | **Exits 0 without a new window.** Can't find color named sgislateblue |
 | `datplayer` | `/usr/sbin/datplayer` | **Terminates on signal 8.** |

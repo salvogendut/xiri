@@ -1,0 +1,200 @@
+{
+  "iris": "65039d90",
+  "iris_upstream": "afaf7a5504377848c413dc6ac33a65b60dfe574b",
+  "netbsd": "51ae5f2886ef1cd3c3089e8aabf6fcce3c4de740",
+  "emulator_sha256": "9a800615984088c1d51e6e716f5bdb5e1599caea0473a971207618f73e08fda7",
+  "two_track_chd_sha256": "10dc542b0283c5f961204c052374492268743e4fc6769bbeb42535476fda0300",
+  "update_iso_sha256": "2df731ea19976e02cf46bef32ee9d31e0786c820ccd75865ddb9a68a8047049a",
+  "update_files_sha256": {
+    "netbsd": "d57eede0a7b3c7ff84ca5a630116653ed60a0410b44a861dc1898b6e10c3e4b8",
+    "netbsd.boot": "3c2b9626629eb5d0ee25009edb2c61a85346b62ba1c8234dbb0ac5d12f76088f",
+    "module": "cbf3d9c482b9ce752445ac0cae80df744c069f1987e5966225e88b911d8597dc",
+    "daemon": "1b101071a186e6dd9dd0ed3a6da2eac78e8ef2c326ecbf604279ac77e7b352aa",
+    "player": "0bec04983bd7f28219e55d417cc305a549d985fce0fcbafb86eaf3c2a415e410",
+    "rules": "f740d9c6a1a636f782e650dece0c404bf38191ddb69f5ddf53e0c55324af7b9a",
+    "devices": "021ef5938aa5cd334f6e3feedbcbce58963a37756a804567dab86d17b6075fc5"
+  },
+  "original_irix_comparison": "2026-11-27-indy-cd-audio.json",
+  "desktops": [
+    {
+      "release": "6.5.22f",
+      "cpu": "r4400",
+      "base_chd_sha256": "53fa1e2006e19dfcbe8950b919de447c043487e84b06710bfc3fea86119f382b",
+      "netbsd_player": {
+        "sample_rate": 48000,
+        "frames": 585755,
+        "channel_peaks_hz": [
+          [
+            880,
+            880,
+            880,
+            880,
+            880,
+            880,
+            880,
+            880,
+            880,
+            880,
+            880,
+            880
+          ],
+          [
+            880,
+            880,
+            880,
+            880,
+            880,
+            880,
+            880,
+            880,
+            880,
+            880,
+            880,
+            880
+          ]
+        ]
+      },
+      "sgi_from_winterm": {
+        "selected_track": 2,
+        "first_sector": 900,
+        "realtime": true,
+        "warning_dialog": false,
+        "dac_bytes": 2976812,
+        "audio": {
+          "sample_rate": 48000,
+          "frames": 626699,
+          "leading_silent_frames": 65526,
+          "trailing_silent_frames": 2059,
+          "channel_peaks_hz": [
+            [
+              880,
+              880,
+              880,
+              880,
+              880,
+              880,
+              880,
+              880,
+              880,
+              880,
+              880
+            ],
+            [
+              880,
+              880,
+              880,
+              880,
+              880,
+              880,
+              880,
+              880,
+              880,
+              880,
+              880
+            ]
+          ]
+        },
+        "closed_with_ctrl_q": true
+      },
+      "sgi_from_desktop_menu": {
+        "selected_track": 2,
+        "first_sector": 900,
+        "realtime": false,
+        "warning_dialog": false,
+        "dac_bytes": 0,
+        "closed_with_ctrl_q": true
+      },
+      "music_eject_and_data_mount": "passed in both sessions"
+    },
+    {
+      "release": "6.5.30f",
+      "cpu": "r5000",
+      "base_chd_sha256": "a2e3272266c362d1db236bb9413f196ca533c03f55213fc6bbfa5274ddd66d26",
+      "netbsd_player": {
+        "sample_rate": 48000,
+        "frames": 589846,
+        "channel_peaks_hz": [
+          [
+            880,
+            880,
+            880,
+            880,
+            880,
+            880,
+            880,
+            880,
+            880,
+            880,
+            880,
+            880
+          ],
+          [
+            880,
+            880,
+            880,
+            880,
+            880,
+            880,
+            880,
+            880,
+            880,
+            880,
+            880,
+            880
+          ]
+        ]
+      },
+      "sgi_from_winterm": {
+        "selected_track": 2,
+        "first_sector": 900,
+        "realtime": true,
+        "warning_dialog": false,
+        "dac_bytes": 2976799,
+        "audio": {
+          "sample_rate": 48000,
+          "frames": 626698,
+          "leading_silent_frames": 65526,
+          "trailing_silent_frames": 2058,
+          "channel_peaks_hz": [
+            [
+              880,
+              880,
+              880,
+              880,
+              880,
+              880,
+              880,
+              880,
+              880,
+              880,
+              880
+            ],
+            [
+              880,
+              880,
+              880,
+              880,
+              880,
+              880,
+              880,
+              880,
+              880,
+              880,
+              880
+            ]
+          ]
+        },
+        "closed_with_ctrl_q": true
+      },
+      "sgi_from_desktop_menu": {
+        "selected_track": 2,
+        "first_sector": 900,
+        "realtime": false,
+        "warning_dialog": false,
+        "dac_bytes": 0,
+        "closed_with_ctrl_q": true
+      },
+      "music_eject_and_data_mount": "passed in both sessions"
+    }
+  ]
+}

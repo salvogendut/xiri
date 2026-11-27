@@ -137,6 +137,14 @@ user's permissions. On the prepared Indys the `operator` group can read
 `cdplay -a /dev/sound -f /dev/rcd0c play 2 2`.
 [Required kernel and emulator changes](../docs/results/2026-11-27-indy-cd-audio.md)
 
+The music icon's **SGI CD Player** menu entry opens the donor's `cdman`.
+You can also run `/emul/irix/usr/sbin/cdman` from winterm. The media service
+publishes the drive address and track timings while an audio CD is present.
+For sound through the SGI player, root assigns the open player's PID
+`SCHED_RR` priority 0 before the user presses **Play**. Double-click
+**CDROM** for ordinary playback through the NetBSD track selector.
+[SGI playback procedure and screenshots](../docs/results/2026-11-28-indy-cdplayer.md)
+
 The candidate PTY setup maps both IRIX `/dev/ptc` and `/dev/ptmx` to native
 ptm minor 2, which grants a new slave to the caller. Its `/emul/irix/dev/pts`
 symlink targets `/../dev/pts`: NetBSD's explicit native-root lookup reaches

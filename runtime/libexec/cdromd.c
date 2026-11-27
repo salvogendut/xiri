@@ -4,6 +4,7 @@
 #include <sys/cdio.h>
 #include <sys/dkio.h>
 #include <sys/mount.h>
+#include <sys/scsiio.h>
 #include <sys/socket.h>
 #include <sys/stat.h>
 #include <sys/statvfs.h>
@@ -105,25 +106,118 @@ publish(const char *state)
         published = state;
 }
 
+/* The last address is the lead-out. All addresses include the MSF lead-in. */
+struct audio_toc {
+    unsigned first, count, start[100];
+    int bus, target;
+};
+static struct audio_toc last_toc;
+
 static int
-audio_disc(int fd)
+audio_disc(int fd, struct audio_toc *toc)
 {
     struct ioc_toc_header header;
-    struct cd_toc_entry tracks[99] = {0};
+    struct cd_toc_entry tracks[100] = {0};
     if (ioctl(fd, CDIOREADTOCHEADER, &header) < 0 || header.starting_track < 1 ||
         header.ending_track > 99 || header.ending_track < header.starting_track)
         return 0;
-    int count = header.ending_track - header.starting_track + 1;
+    toc->first = header.starting_track;
+    toc->count = header.ending_track - header.starting_track + 1;
     struct ioc_read_toc_entry req = {
         .address_format = CD_MSF_FORMAT, .starting_track = header.starting_track,
-        .data_len = count * sizeof(tracks[0]), .data = tracks
+        .data_len = (toc->count + 1) * sizeof(tracks[0]), .data = tracks
     };
     if (ioctl(fd, CDIOREADTOCENTRIES, &req) < 0)
         return 0;
-    for (int i = 0; i < count; i++)
-        if (tracks[i].track != header.starting_track + i || (tracks[i].control & 4))
+    for (unsigned i = 0; i <= toc->count; i++) {
+        if (i == toc->count ? tracks[i].track != 0xaa :
+            (tracks[i].track != toc->first + i || (tracks[i].control & 4)))
             return 0;
+        union msf_lba a = tracks[i].addr;
+        toc->start[i] = (a.msf.minute * 60 + a.msf.second) * 75 + a.msf.frame;
+        if (a.msf.second >= 60 || a.msf.frame >= 75 ||
+            (i && toc->start[i] <= toc->start[i - 1]))
+            return 0;
+    }
     return 1;
+}
+
+#define SGI_DISC "/emul/irix/CDROM"
+#define SGI_MTAB "/emul/irix/etc/mtab"
+#define DISC_VIEW "/.." RUN "/disc"
+
+static int
+same_link(const char *path, const char *target)
+{
+    char buf[PATH_MAX];
+    ssize_t n = readlink(path, buf, sizeof(buf));
+    return n == (ssize_t)strlen(target) && !memcmp(buf, target, n);
+}
+
+static int
+ensure_link(const char *path, const char *target)
+{
+    return symlink(target, path) == 0 || (errno == EEXIST && same_link(path, target));
+}
+
+static void
+clear_music(void)
+{
+    unlink(RUN "/mtab");
+    if (same_link(SGI_DISC, DISC_VIEW))
+        unlink(SGI_DISC);
+    last_toc.count = 0;
+}
+
+static void
+print_time(FILE *f, unsigned frames)
+{
+    fprintf(f, "%02u:%02u:%02u\n", frames / 4500, frames / 75 % 60, frames % 75);
+}
+
+static int
+finish_file(FILE *f, const char *from, const char *to)
+{
+    int ok = !ferror(f);
+    return fclose(f) == 0 && ok && rename(from, to) == 0;
+}
+
+static void
+publish_music(int fd, struct audio_toc *toc)
+{
+    struct scsi_addr addr;
+    if (ioctl(fd, SCIOCIDENTIFY, &addr) < 0 || addr.type != TYPE_SCSI ||
+        addr.addr.scsi.lun != 0)
+        return;
+    toc->bus = addr.addr.scsi.scbus;
+    toc->target = addr.addr.scsi.target;
+    if (!memcmp(toc, &last_toc, sizeof(*toc)))
+        return;
+    clear_music();
+    if (!safe_directory(RUN "/disc") || !ensure_link(SGI_MTAB, "/.." RUN "/mtab"))
+        return;
+    FILE *f = fopen(RUN "/info.next", "w");
+    if (!f)
+        return;
+    fputs("album.duration: ", f);
+    print_time(f, toc->start[toc->count]);
+    fprintf(f, "album.tracks: %u\n", toc->count);
+    for (unsigned i = 0; i < toc->count; i++) {
+        fprintf(f, "track%u.start: ", toc->first + i);
+        print_time(f, toc->start[i]);
+        fprintf(f, "track%u.duration: ", toc->first + i);
+        /* mediad ends the final track one frame before the lead-out. */
+        print_time(f, toc->start[i + 1] - toc->start[i] - (i + 1 == toc->count));
+    }
+    if (!finish_file(f, RUN "/info.next", RUN "/disc/info.disc") ||
+        !ensure_link(SGI_DISC, DISC_VIEW))
+        return;
+    f = fopen(RUN "/mtab.next", "w");
+    if (!f)
+        return;
+    fprintf(f, "/dev/scsi/sc%dd%dl0 /CDROM cdda ro,nosuid 0 0\n", toc->bus, toc->target);
+    if (finish_file(f, RUN "/mtab.next", RUN "/mtab"))
+        last_toc = *toc;
 }
 
 static void
@@ -132,13 +226,19 @@ refresh(void)
     enum mounts current = mounts();
     int fd = open(RAW, O_RDONLY | O_NONBLOCK);
     if (fd < 0) {
+        clear_music();
         unlink(RUN "/CDROM");
         published = NULL;
         return;
     }
     int ready = 0;
     int rc = ioctl(fd, DIOCTUR, &ready);
-    int music = rc == 0 && ready && current == AVAILABLE && audio_disc(fd);
+    struct audio_toc toc = {0};
+    int music = rc == 0 && ready && current == AVAILABLE && audio_disc(fd, &toc);
+    if (music)
+        publish_music(fd, &toc);
+    else
+        clear_music();
     close(fd);
     if (rc < 0)
         return;
@@ -245,6 +345,7 @@ main(int argc, char **argv)
     if (mounts() == OWNED && unmount(DISC, 0) == 0)
         unlink(RUN "/owned");
     unlink(RUN "/CDROM");
+    clear_music();
     unlink(endpoint.sun_path);
     return 0;
 }
