@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Install a blank Indy, import a reference donor on target and check two xdm desktops."""
+"""Install a blank Indy, import a pinned donor on target and check two xdm desktops."""
 import argparse
 import importlib.util
 import json
@@ -28,10 +28,10 @@ native = load('native_iso_check', 'lab/native-iso/check-install.py')
 saver = load('native_saver_check', 'lab/sgi-saver/check.py')
 
 
-def data_cd(release, donor, output):
+def data_cd(release, donor, output, expected_hash=None):
     pin = json.loads((ROOT / 'lab/irix-donor' / (release + '.json')).read_text())
-    if sha256(donor) != pin['chd_sha256']:
-        raise ValueError(f'This regression uses the recorded standalone {release} donor')
+    if sha256(donor) != (expected_hash or pin['chd_sha256']):
+        raise ValueError(f'Donor differs from the expected {release} disk')
     subprocess.run(['genisoimage', '-quiet', '-R', '-V', 'OWNER_DONOR', '-o', output,
                     '-graft-points', 'IRIX donor.chd=' + str(donor)], check=True)
 
@@ -67,9 +67,13 @@ def prepare(guest, release):
     cmd(f"su -f xiritest -c 'echo \"UXTerm*scrollBar: true\" > {prefs}; echo \"exec ctwm\" > ~/.xsession'")
     cmd(f'prefhash=$(sha256 -q {prefs}); prephome=/usr/people/xiritest')
     prep = """/usr/local/sbin/xiriprep --source '/cdrom/IRIX donor.chd' --user xiritest"""
-    cmd(f'{prep} --check && test ! -e /var/db/xiri-install')
+    checked = cmd(f'{prep} --check && test ! -e /var/db/xiri-install')
+    profile = next((line.split(': ', 1)[1] for line in checked.splitlines()
+                    if line.startswith('Desktop profile: ')), release + '.plan')
+    if profile not in (release + '.plan', '6.5.22f-ip28.plan', '6.5.30f-ip30.plan'):
+        raise ValueError(f'Unexpected desktop profile: {profile}')
     # A release fingerprint can match even when a later resource has been damaged.
-    cmd(f'plan=/usr/local/share/xiri/plans/{release}.plan && cp -p "$plan" /tmp/expected.plan && '
+    cmd(f'plan=/usr/local/share/xiri/plans/{profile} && cp -p "$plan" /tmp/expected.plan && '
         f"sed '1s/[^|]*$/{'0' * 64}/'"
         ' /tmp/expected.plan > "$plan" && ! cmp -s "$plan" /tmp/expected.plan')
     cmd(f'! {prep} && test ! -e /emul/irix && test ! -e /usr/local/share/xiri/fonts && '
@@ -115,7 +119,7 @@ def run(args, work):
     cpu = 'r4400' if args.release == '6.5.22f' else 'r5000'
     os.environ.update(IRIS_NO_IDLE='1', IRIS_REX_JIT_PROFILE=str(work / 'profile'))
     cd = work / 'donor.iso'
-    data_cd(args.release, args.donor.resolve(), cd)
+    data_cd(args.release, args.donor.resolve(), cd, args.donor_sha256)
     disk = work / 'blank.raw'
     with disk.open('xb') as stream:
         stream.truncate(6 * 1024**3)
@@ -149,6 +153,7 @@ if __name__ == '__main__':
     for name in ('iso', 'donor', 'emulator', 'serial-prom', 'output'):
         parser.add_argument('--' + name, required=True, type=Path)
     parser.add_argument('--release', choices=['6.5.22f', '6.5.30f'], required=True)
+    parser.add_argument('--donor-sha256', help='expected CHD hash for an independently installed donor')
     args = parser.parse_args()
     args.output.mkdir(parents=True, exist_ok=False)
     signal.signal(signal.SIGTERM, signal.default_int_handler)

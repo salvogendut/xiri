@@ -1,5 +1,5 @@
 #!/bin/sh
-# Install the shared tree once. Both arguments have been identified by xiriprep.
+# Install the shared tree from the donor and plan identified by xiriprep.
 set -eu
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/X11R7/bin
 export PATH
@@ -8,7 +8,12 @@ fail() { echo "xiriprep: $*" >&2; exit 1; }
 image=$1 release=$2
 case $release in 6.5.22f|6.5.30f) ;; *) exit 2 ;; esac
 share=/usr/local/share/xiri
-plan=$share/plans/$release.plan
+profile=${3:-$release.plan}
+case "$release/$profile" in
+    "$release/$release.plan"|6.5.22f/6.5.22f-ip28.plan|6.5.30f/6.5.30f-ip30.plan) ;;
+    *) exit 2 ;;
+esac
+plan=$share/plans/$profile
 native=$share/desktop-runtime.tgz
 state=/var/db/xiri-install
 modstat | grep -q '^compat_irix_o32 ' || fail 'boot the XiriBSD kernel with its matching module'

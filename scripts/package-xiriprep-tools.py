@@ -27,6 +27,9 @@ def package(iso, output):
     with tarfile.open(fileobj=io.BytesIO(data)) as archive:
         files = {}
         for name in XIRIPREP_FILES:
+            # Earlier native ISOs ship just the two reference donor plans.
+            if name.endswith(('-ip28.plan', '-ip30.plan')) and name not in inventory['kernel_set_files']:
+                continue
             entry = archive.getmember('./' + name)
             if not entry.isfile() or entry.uid or entry.gid or entry.mode != (0o555 if name in XIRIPREP_PROGRAMS else 0o444):
                 raise ValueError(f'Unexpected installer entry: {name}')
