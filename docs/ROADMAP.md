@@ -11,12 +11,11 @@ and [historical checkpoints](HISTORY.md).
 
 ## Next deliverables
 
-Both Indy release lines now install the working Screen Saver from their
-full desktop ISO. Prismatic runs both CHDs against the current IRIS fork.
-[Clean installs, fresh-login tests and launchers](results/2026-11-27-indy-saver-install.md).
-
-The workstation now builds a native NetBSD-current Indy CD with the modular
-kernel, Xorg and the full sysinst selection. [Native ISO build and install checks](results/2026-11-27-native-indy-iso.md).
+Qualify each new Xiri installation by installing the native XiriBSD ISO on
+a blank disk, booting from disk and running `xiriprep` as root for the
+intended user. Compare the result with the working desktop for the same
+IRIX release. [Standard installation](XIRI-INSTALLATION.md#standard-installation) ·
+[Reference desktops](results/2026-11-27-indy-saver-install.md)
 
 1. Complete shared desktop installation from the donor on a fresh native system. [xiriprep](XIRIPREP.md) now identifies raw and CHD donors on mounted media, prepares the native account and selects 4Dwm on a matching prepared system. The remaining installer work includes space checks, shared payload installation and native services.
 2. Repeat from the native installation for 6.5.22f and 6.5.30f. Verify a second account keeps ctwm and a repeated import preserves preferences. [Build, import and acceptance plan](XIRI-INSTALLATION.md#planned-workstation-build-and-xiriprep).

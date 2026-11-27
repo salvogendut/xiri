@@ -1,12 +1,22 @@
 # Reproducible Xiri installation
 
-The first import source is an
-**installed IRIX 6.5.22 image built from the user's original installation media**.
-Our existing Prismatic installation now provides a
-[verified donor CHD](results/2026-11-14-irix-donor.md) and a tested recipe;
-the importer reads the local donor. For a clean 6.5.22f or 6.5.30f Indy,
-use the [full Indy installer with Screen Saver](NATIVE-PACKAGE.md#build-a-full-indy-installer-with-screen-saver).
-[Prepared CHDs and qualification](results/2026-11-27-indy-saver-install.md).
+## Standard installation
+
+1. Install the native XiriBSD ISO on a blank disk and boot the installed
+   system. The same native ISO serves both IRIX release lines. [Indy install guide](INSTALL-INDY-PRISMATIC.md)
+2. Mount the media containing your installed IRIX donor image. As root on
+   XiriBSD, run `/usr/local/sbin/xiriprep --source /mnt/donors/irix.chd --user alice`,
+   substituting the actual CHD or raw image path and intended NetBSD login.
+   If the account is missing, the tool offers to create it. [Donor and account instructions](XIRIPREP.md)
+
+On a fresh Indy, donor identification and account preparation have passed for
+both 6.5.22f and 6.5.30f. On systems with the matching shared runtime installed,
+the selected user can log into 4Dwm. Installing that runtime and the shared
+desktop files directly from the donor is the remaining step on a fresh system.
+[Qualification results](results/2026-11-27-xiriprep.md)
+
+The earlier full desktop CDs and prepared CHDs provide working desktops for
+comparison and recovery. [Reference media and test results](results/2026-11-27-indy-saver-install.md)
 
 Both Indy releases use stock NetBSD/sgimips userland with a MIPS64 kernel and
 matching `compat_irix_o32` module built from the `xiri` branch of NetBSD-xiri.
@@ -392,7 +402,10 @@ The initial 1,990-record ledger alone was insufficient. The new profile includes
 later vendor resources available in this donor. The original qualification used a prepared native image. The clean Indy test
 now exercises native installation and both vendor releases on stock userland.
 
-## Acceptance for the first supported workflow
+## Reference desktop installer checks
+
+These checks cover the earlier full desktop media. The standard workflow has
+its own [fresh-install acceptance criteria](#donor-preparation-roadmap).
 
 - Build the same payload twice from the same source/profile and obtain matching
   file inventories and archive hashes. **Passed for the 6.5.22f profile.**

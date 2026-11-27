@@ -65,3 +65,8 @@ boot
 The first boot builds the font cache. When **xdm** appears, log in with the
 account you created. You should see a **1280×1024 ctwm desktop** with a terminal.
 [Screenshot of the installed desktop](results/2026-11-27-native-indy-ctwm.png)
+
+Continue with the second stage of a standard Xiri installation. Run `xiriprep`
+as root on this Indy with your donor image and the login you want to prepare.
+The original ISO used in this guide needs the small xiriprep tools CD for
+this step. [Install the tools and prepare the user](XIRIPREP.md)

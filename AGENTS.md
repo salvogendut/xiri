@@ -24,6 +24,14 @@ Do new development in the fork checkout or a topic worktree, and preserve
 qualified artifacts until the replacement has been tested. See
 [fork development](docs/FORKS.md) for the layout and reproduction instructions.
 
+# Creating a Xiri system
+
+Install the native XiriBSD ISO, boot the installed system, then run `xiriprep` there as
+root with the owner's IRIX donor image and the target login. Use this path
+for new installation work and end-to-end qualification. Existing prepared
+CHDs and full desktop CDs are references for regression testing and recovery.
+[Installation workflow and current coverage](docs/XIRI-INSTALLATION.md)
+
 # Release lines
 
 Always maintain both IRIX 6.5.22 and IRIX 6.5.30 versions. Keep their donor
