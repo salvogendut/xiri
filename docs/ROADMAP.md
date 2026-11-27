@@ -24,26 +24,20 @@ module and runtime update, interrupted recovery and rollback while keeping
 their desktop preferences. [Fresh-install results](results/2026-11-27-xiriprep-desktop.md) ·
 [Update and rollback qualification](results/2026-11-27-xiriprep-system-update.md)
 
-1. Qualify the original IRIX MediaTools applications on both release
-   lines. Start with microphone input in `soundeditor`
-   (record a known tone and play the saved clip), then video/camera input
-   in `videoin` and `mediarecorder` (preview and save changing frames).
-   Check CD-ROM data reads and audio-CD track selection/playback with
-   `cdman` or `cdplayer`. For DAT, try `datman` and `datplayer` with a
-   scratch tape. Record what the emulator exposes, what native NetBSD can
-   do with it, and what the IRIX application can actually capture or play.
-   SGI `sfrecord` supports the default mono microphone and selectable stereo.
-   `sfplay` replays the saved recording on both Indys. SGI Sound Editor now
-   opens its 700×500 editing window on both desktop releases. Trace the
-   “Cannot create record thread” error when Record is pressed.
-   Native capture also passes during simultaneous playback.
-   The desktop microphone icon launches Media Recorder on both Indys.
-   Retest its audio-only launch with the new shared-file support. Its
-   previous launch stopped while creating the shared arena.
-   ISO 9660 data CDs now automount at `/CDROM` and open from the desktop on
-   both Indys. Audio-only CHDs show the SGI music icon. Double-clicking it
-   opens a native track selector backed by NetBSD `cdplay`. SGI CD Player
-   opens a dialog saying it cannot find its requested drive on both releases.
+1. Qualify SGI CD Player (`cdman`) on both Indy releases. The desktop music
+   icon already opens a native track selector backed by NetBSD `cdplay`.
+   The SGI player still reports that it cannot find the drive at SCSI ID 6.
+   Compare its device requests with the original IRIX player and verify track
+   selection and playback. Data CDs already automount at `/CDROM`.
+
+   SGI Sound Editor records the Indy microphone, saves an AIFF, reopens it
+   and plays it through HAL2 on both releases. SGI `sfrecord` and `sfplay`
+   also pass, including selectable stereo input. Native capture passes during
+   simultaneous playback. The desktop microphone launches Media Recorder.
+   Retest its audio-only launch with the shared-file changes. For video,
+   exercise preview and saving changing frames in `videoin` and `mediarecorder`.
+   For DAT, try `datman` and `datplayer` with a scratch tape.
+   [Sound Editor recording and replay](results/2026-11-27-indy-soundeditor.md) ·
    [Shared-file growth and SGI clients](results/2026-11-27-indy-autogrow.md) ·
    [Two-track playback and SGI comparison](results/2026-11-27-indy-cd-audio.md) ·
    [Optical media checks](results/2026-11-27-indy-cdrom.md) ·

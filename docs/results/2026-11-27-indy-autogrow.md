@@ -40,10 +40,10 @@ Both release-matched copies of SGI Sound Editor now open their 700×500
 [6.5.22f screenshot](2026-11-27-soundeditor-xiri-6.5.22f.png) ·
 [6.5.30f screenshot](2026-11-27-soundeditor-xiri-6.5.30f.png)
 
-On both releases, pressing Record displayed “Cannot create record thread.”
+On the shared-file-growth build, pressing Record displayed “Cannot create record thread.”
 The 6.5.30f playback attempt produced zero frames at the emulated DAC.
-The next microphone check is to identify the rejected thread operation. Original IRIX recorded that tone in the same editor, and Xiri's
-command-line `sfrecord` and `sfplay` path already passes on both releases.
+The subsequent Sound Editor check traced this to the recording child's
+`sproc(PR_SALL)` call. [Recording, saving and playback](2026-11-27-indy-soundeditor.md)
 [Record dialog](2026-11-27-soundeditor-record-error.png) ·
 [Original IRIX recording and Xiri command-line tests](2026-11-27-indy-microphone.md)
 

@@ -70,6 +70,9 @@ install -m 555 desktop-clients.sh /usr/local/libexec/xiri/desktop-clients.sh
 
 ## Sound Editor comparison
 
+The subsequent [Sound Editor qualification](2026-11-27-indy-soundeditor.md)
+covers the recording worker, the saved AIFF and playback on both Xiri Indys.
+
 On a private copy of the original-media 6.5.22f Indy, Sound Editor opens
 a 700×500 “SoundEditor: Untitled” window. Its Record and Stop buttons
 captured a four-second clip at 48 kHz and File → Save As produced a

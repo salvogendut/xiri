@@ -95,14 +95,23 @@ pthread or general multi-member implementation. Stack growth, foreign signal
 handlers, parent-death races, resource-exhaustion fork failures, and full-width
 register/FP inheritance remain outside the accepted reference contract.
 
-Active pairs reject ordinary fork, nested creation, LOCAL/fixed mapping changes,
-munmap, mprotect, break, ELFMAP and PR_INIT_THREADS. Unsupported sharing flags,
+Active pairs support an exact unmap of a mapping created and mirrored during
+their current pairing. Both members release the whole range. Partial unmap,
+inherited mappings, LOCAL/fixed mapping changes, ordinary fork, nested
+creation, mprotect, break, ELFMAP and PR_INIT_THREADS remain outside this mode. Unsupported sharing flags,
 ptraced processes and initialized pthread state are also rejected. Procblk
 only releases an existing PR_BLOCK wait; it does not implement the general
 counting semaphore. PRCTL targets are restricted to the caller/current peer.
 Zero entry is explicitly rejected with EFAULT rather than reproducing the
 unexplained original timeout. Automatic stack size is the native stack limit,
 bounded to 64 MiB; sprocsp validates at least the last 8 KiB of a supplied stack.
+
+SGI Sound Editor uses libc's `sproc(PR_SALL)` to start its recording worker.
+The pair shares descriptors, the working directory and umask. Each keeps a
+private PRDA. The personality exposes queries for the inherited credentials
+and file-size limit. The `fullshare.c` control checks the sharing mask, memory,
+descriptor close, working directory, umask and audio-buffer unmap from both
+processes. [Sound Editor checks](../../docs/results/2026-11-27-indy-soundeditor.md)
 
 `native-lifecycle.c` adds native-policy records (magic `0x58475350`). Word 1 is
 kind, word 2 is role, and words 56–59 contain the four identities. Guard-child

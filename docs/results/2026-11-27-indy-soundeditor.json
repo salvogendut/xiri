@@ -1,0 +1,121 @@
+{
+  "emulator_xiri": "65039d90",
+  "irix_upstream": "afaf7a5504377848c413dc6ac33a65b60dfe574b",
+  "source": "IRIS Indy HAL2 input FIFO, 440 Hz left and 880 Hz right, 12000 peak, 48 kHz",
+  "original_irix": {
+    "release": "6.5.22f",
+    "cpu": "r4400",
+    "record_worker_trace": [
+      " 1689mS     soundeditor( 1346): open(\"/dev/hdsp/hdsp0master\", O_RDWR, 02) = 6",
+      " 1689mS     soundeditor( 1346): open(\"/dev/hdsp/hdsp0master\", O_RDWR, 01) = 6",
+      " 1739mS     soundeditor( 1346): sproc(0xfa750a8, PR_SPROC|PR_SFDS|PR_SDIR|PR_SUMASK|PR_SULIMIT|PR_SID|PR_SADDR, 0x100606d0)",
+      " 1739mS     soundeditor( 1346): END-sproc() = 1354",
+      " 1739mS     soundeditor( 1354): END-sproc() = 0",
+      " 1740mS     soundeditor( 1354): open(\"/dev/hdsp/hdsp0master\", O_RDWR, 031502343730) = 8",
+      " 1740mS     soundeditor( 1354): open(\"/dev/hdsp/hdsp0r2\", O_RDWR, 021) = 9",
+      " 4357mS     soundeditor( 1354): open(\"/dev/hdsp/hdsp0master\", O_RDWR, 01) = 8",
+      " 4358mS     soundeditor( 1354): open(\"/dev/hdsp/hdsp0master\", O_RDWR, 01) = 8"
+    ]
+  },
+  "xiri": {
+    "6.5.22f": {
+      "worker_pid": 3027,
+      "aiff": {
+        "frames": 154080,
+        "rate_hz": 48000,
+        "channels": [
+          {
+            "frequency_hz": 440,
+            "amplitude": 12000,
+            "other_tone": 0
+          },
+          {
+            "frequency_hz": 440,
+            "amplitude": 12000,
+            "other_tone": 0
+          }
+        ],
+        "bytes": 616444,
+        "sha256": "29642a7a70af975e47b8efd9a8fea62ac1e2c1618857e9df91e249e89b1f4680"
+      },
+      "speaker": {
+        "frames": 123262,
+        "rate_hz": 48000,
+        "channels": [
+          {
+            "frequency_hz": 440,
+            "amplitude": 12000,
+            "other_tone": 0
+          },
+          {
+            "frequency_hz": 440,
+            "amplitude": 12000,
+            "other_tone": 0
+          }
+        ]
+      },
+      "cpu": "r4400",
+      "base_sha256": "53fa1e2006e19dfcbe8950b919de447c043487e84b06710bfc3fea86119f382b",
+      "module_sha256": "edce3808152cfdbe690e4e61355b97e4c5fabd737ff6492b2ab15cfe28770651",
+      "kernel_sha256": "d57eede0a7b3c7ff84ca5a630116653ed60a0410b44a861dc1898b6e10c3e4b8",
+      "share_probe": true,
+      "record_worker_trace": [
+        "  2933   2933 soundeditor CALL  [129](0,0xfa750a8,0,0x7f,0,0x10066f60)",
+        "  2933   2933 soundeditor RET   [129] 0, 0xbd3",
+        "  3027   3027 soundeditor NAMI  \"/emul/irix/dev/hdsp/hdsp0r2\"",
+        "  3027   3027 soundeditor CALL  [135](0,0x78278000,0,0x5dc18)",
+        "  3027   3027 soundeditor RET   [135] 0"
+      ]
+    },
+    "6.5.30f": {
+      "worker_pid": 323,
+      "aiff": {
+        "frames": 154080,
+        "rate_hz": 48000,
+        "channels": [
+          {
+            "frequency_hz": 440,
+            "amplitude": 12000,
+            "other_tone": 0
+          },
+          {
+            "frequency_hz": 440,
+            "amplitude": 12000,
+            "other_tone": 0
+          }
+        ],
+        "bytes": 616444,
+        "sha256": "29642a7a70af975e47b8efd9a8fea62ac1e2c1618857e9df91e249e89b1f4680"
+      },
+      "speaker": {
+        "frames": 124258,
+        "rate_hz": 48000,
+        "channels": [
+          {
+            "frequency_hz": 440,
+            "amplitude": 12000,
+            "other_tone": 0
+          },
+          {
+            "frequency_hz": 440,
+            "amplitude": 12000,
+            "other_tone": 0
+          }
+        ]
+      },
+      "cpu": "r5000",
+      "base_sha256": "a2e3272266c362d1db236bb9413f196ca533c03f55213fc6bbfa5274ddd66d26",
+      "module_sha256": "edce3808152cfdbe690e4e61355b97e4c5fabd737ff6492b2ab15cfe28770651",
+      "kernel_sha256": "d57eede0a7b3c7ff84ca5a630116653ed60a0410b44a861dc1898b6e10c3e4b8",
+      "share_probe": true,
+      "record_worker_trace": [
+        "   247    247 soundeditor CALL  [129](0,0xfa68790,0,0x7f,0,0x10066f90)",
+        "   247    247 soundeditor RET   [129] 0, 0x143",
+        "   323    323 soundeditor NAMI  \"/emul/irix/dev/hdsp/hdsp0r2\"",
+        "   323    323 soundeditor CALL  [135](0,0x78278000,0,0x5dc18)",
+        "   323    323 soundeditor RET   [135] 0"
+      ]
+    }
+  },
+  "netbsd_xiri": "ebc133801e2"
+}

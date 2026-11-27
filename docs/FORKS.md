@@ -105,6 +105,12 @@ It was already in IRIS `xiri` at `65039d90`. That emulator booted the two
 original IRIX references and the two NetBSD Indy guests.
 [Shared mapping checks](results/2026-11-27-indy-autogrow.md)
 
+The November 27 Sound Editor cycle fetched `upstream/main` again at
+`afaf7a5504377848c413dc6ac33a65b60dfe574b`, already integrated in IRIS
+`xiri` at `65039d90`. The same emulator traced the recording process on the
+original 6.5.22f Indy and supplied microphone input to both Xiri guests.
+[Sound Editor qualification](results/2026-11-27-indy-soundeditor.md)
+
 The SuperIRIX test CHD cycle integrated four further upstream commits through
 `dca458bc` into IRIS `xiri` at `854d12c4`. These cover virtio snapshots,
 Timekeeper year handling, shared machine constants and boot CI. The merge

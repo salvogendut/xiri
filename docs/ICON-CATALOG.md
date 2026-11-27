@@ -295,7 +295,7 @@ video source and a data CD. Use those results for current device behaviour.
 | `mediarecorder` | `/usr/sbin/mediarecorder` | **Terminates on signal 6.** libmovierecord failed to create shared arena at /var/tmp/.mvrlBAAa000Fv: out of disk space?  swap space? Assertion failed: queue, file events.c, line 580 |
 | `moviemaker` | `/usr/sbin/moviemaker` | **X observation interrupted.** The bounded X query failed; process cleanup and the guest halt are recorded. Repeat interactively before classifying the application. |
 | `musicplayer` | `/usr/sbin/musicplayer` | **Exits 1 without a window.** Error Loading Skin.. sh: /sbin/tar:  not found sh: /usr/sbin/gzip:  not found |
-| `soundeditor` | `/usr/sbin/soundeditor` | **Exits before opening its window on both updated Indys.** The input rate and scratch-file allocation now succeed. Mapping the shared scratch file with `MAP_AUTOGROW` fails. [Original IRIX comparison and microphone checks](results/2026-11-27-indy-microphone.md#sound-editor-comparison) |
+| `soundeditor` | `/usr/sbin/soundeditor` | Records the Indy microphone, saves a stereo AIFF and reopens the clip. [Recording and speaker measurements](results/2026-11-27-indy-soundeditor.md) |
 | `soundplayer` | `/usr/sbin/soundplayer` | **Exits 1 without a window.** soundplayer: no audio output devices found |
 | `soundtrack` | `/usr/sbin/soundtrack` | **Terminates on signal 8.** |
 | `videoin` | `/usr/sbin/videoin` | **Exits 0 without a new window.** videoin: error opening video: VL: Failed allocation of resource or memory |
