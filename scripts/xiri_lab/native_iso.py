@@ -16,7 +16,6 @@ from .native_sources import ROOT
 # Keep this list in sync with the menu in lab/native-iso/indy-sysinst.patch.
 SYSTEM_SETS = ('base', 'etc', 'comp', 'rescue', 'games', 'man', 'misc', 'text',
                'xbase', 'xetc', 'xfont', 'xserver', 'xcomp')
-SGI_HEADER_SECTORS = 4096
 
 
 def digest(path, algorithm):
@@ -91,32 +90,42 @@ def assemble(work, output, source_lock):
             (sets / label).write_text(''.join(
                 f'{label} ({a.name}) = {digest(a, algorithm)}\n' for a in archives))
         shutil.copyfile(release / 'kernel/netbsd-INSTALL32_IP2x.gz', cd / 'ip2x')
+        loaders = ('ip2xboot', 'aoutboot')
+        for loader in loaders:
+            shutil.copyfile(dest / 'usr/mdec' / loader, cd / loader)
         inventory = dict(sources=source_lock, kernel_release=version,
                          kernel_set_files=sorted(resources), module_set_files=[modpath, 'etc/modules.conf'],
                          sha256={str(p.relative_to(cd)): digest(p, 'sha256')
                                  for p in sorted(cd.rglob('*')) if p.is_file()})
         (cd / 'native-media.json').write_text(json.dumps(inventory, sort_keys=True, indent=2) + '\n')
-        payload = temp / 'filesystem.iso'
-        subprocess.run([tools / 'nbmakefs', '-t', 'cd9660', '-T', str(stamp), '-o',
-                        'rockridge,label=XIRIBSD_INDY', payload, cd], check=True)
+        # Put the volume directory in the ISO system area. A prepended volume
+        # header boots in the PROM but hides sector 16 from NetBSD's cd driver.
         image = temp / 'indy.iso'
-        # Mirror NetBSD distrib/sgimips/cdroms/installcd. CD partition 8 holds
-        # the bootstrap and partition 0 starts at the ISO9660 filesystem.
-        with image.open('wb') as out, payload.open('rb') as inp:
-            out.seek(SGI_HEADER_SECTORS * 512)
-            shutil.copyfileobj(inp, out)
+        subprocess.run(['genisoimage', '-quiet', '-R', '-V', 'XIRIBSD_INDY', '-mips-boot',
+                        'ip2xboot', '-mips-boot', 'aoutboot', '-o', image, cd], check=True)
         sgivol = tools / 'nbsgivol'
-        subprocess.run([sgivol, '-f', '-i', '-h', str(SGI_HEADER_SECTORS), image], check=True)
-        for loader in ('aoutboot', 'ip2xboot'):
-            original = dest / 'usr/mdec' / loader
-            subprocess.run([sgivol, '-f', '-w', loader, original, image], check=True)
+        sectors = image.stat().st_size // 512
+        subprocess.run([sgivol, '-f', '-p', '0', '0', str(sectors), '4', image], check=True)
+        for loader in loaders:
             readback = temp / loader
             subprocess.run([sgivol, '-r', loader, readback, image], check=True)
-            if digest(readback, 'sha256') != digest(original, 'sha256'):
+            # The SGI volume entry may include padding to an optical block.
+            original = (cd / loader).read_bytes()
+            data = readback.read_bytes()
+            if not data.startswith(original) or len(data) - len(original) >= 2048 or any(data[len(original):]):
                 raise ValueError(f'SGI bootstrap readback failed: {loader}')
-        with image.open('rb') as out:
-            out.seek(SGI_HEADER_SECTORS * 512)
-            if hashlib.file_digest(out, 'sha256').hexdigest() != digest(payload, 'sha256'):
-                raise ValueError('ISO data partition readback failed')
+        expected = {p.relative_to(cd).as_posix() for p in cd.rglob('*')}
+        listing = subprocess.check_output(['isoinfo', '-R', '-i', image, '-f'], text=True)
+        if {p.removeprefix('/') for p in listing.splitlines()} != expected:
+            raise ValueError('ISO directory differs from the native inventory')
+        for p in sorted(cd.rglob('*')):
+            if not p.is_file():
+                continue
+            member = '/' + p.relative_to(cd).as_posix()
+            with subprocess.Popen(['isoinfo', '-R', '-i', image, '-x', member],
+                                  stdout=subprocess.PIPE) as reader:
+                actual = hashlib.file_digest(reader.stdout, 'sha256').hexdigest()
+                if reader.wait() or actual != digest(p, 'sha256'):
+                    raise ValueError(f'ISO readback failed: {member}')
         os.link(image, output)
     print(f'{digest(output, "sha256")}  {output}', flush=True)

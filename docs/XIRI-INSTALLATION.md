@@ -20,10 +20,10 @@ The optional [Indy Screen Saver update and rollback](results/2026-11-26-sgi-scre
 
 ### Build the native Indy ISO
 
-Use a Linux workstation with Python 3.11 or later, Git 2.38 or later, a C
-and C++ compiler, and the NetBSD cross-build prerequisites. On our Fedora
+Use a Linux workstation with Python 3.11 or later, Git 2.38 or later,
+`genisoimage`, `isoinfo`, C and C++ compilers, and the NetBSD cross-build prerequisites. On our Fedora
 workstation the existing `xiri-iris` Toolbox supplies the build environment.
-From the Xiri checkout run:
+Run the build from the Xiri checkout.
 
 ```sh
 scripts/build-xiribsd-iso.py --work .work/native-indy \
@@ -48,8 +48,8 @@ trees, installed Xiri files, and SHA256 of every set and the installer kernel.
 Archive `sources.json` with the ISO. The build directory can be removed once
 the image has been tested.
 
-Attach the ISO as CD-ROM at SCSI ID 4 and the installation disk at ID 1. At
-the Indy Command Monitor enter:
+Attach the ISO as CD-ROM at SCSI ID 4 and the installation disk at ID 1. Use
+the following command at the Indy Command Monitor.
 
 ```text
 boot -f scsi(0)cdrom(4)rdisk(0)partition(8)ip2xboot
