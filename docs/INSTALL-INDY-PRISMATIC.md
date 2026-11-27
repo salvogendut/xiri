@@ -4,6 +4,8 @@ This installs NetBSD and the Xiri compatibility module on a fresh virtual disk.
 Your first login opens the native NetBSD **ctwm** desktop. The IRIX desktop
 requires a separate donor import. The installer ISO for this build is
 `.work/images/xiribsd-indy-xiriprep-11.99.11.iso` in the Xiri checkout.
+If you already installed `xiribsd-indy-native-11.99.11.iso`, keep that disk
+and go straight to the [tools CD instructions](XIRIPREP.md#use-the-tools-cd-on-an-existing-indy).
 
 ## 1. Attach the disk and CD
 
@@ -66,8 +68,6 @@ The first boot builds the font cache. When **xdm** appears, log in with the
 account you created. You should see a **1280×1024 ctwm desktop** with a terminal.
 [Screenshot of the installed desktop](results/2026-11-27-native-indy-ctwm.png)
 
-Continue with the second stage of a standard Xiri installation. Run `xiriprep`
-as root on this Indy with your donor image and the login you want to prepare.
-The ISO above includes the command. If you installed the earlier
-`xiribsd-indy-native-11.99.11.iso`, add the tools CD to that installation.
-[Import the donor and select the user](XIRIPREP.md)
+The installed system includes `xiriprep`. Run it as root with your donor
+image and the login you want to use for 4Dwm.
+[Import a CHD from CD or a raw image from disk](XIRIPREP.md#read-a-donor-from-external-media)
