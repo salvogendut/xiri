@@ -57,6 +57,27 @@ the equivalent CHD, within its memory and disk budget. Test an independently
 installed donor with a different disk hash against the release's required
 files. Keep the known donor hashes for reproducing the reference runs.
 
+The fork already supplies a read-only PUFFS `mount_xfs` with IRIX journal
+support. It accepts an extracted XFS partition in a regular file and requires
+a clean unmount record. Start by locating the root XFS partition in the SGI
+volume header and measuring the space needed to expose it on the Indy.
+CHD decoding and whole-disk partition selection belong in the donor import
+work. [Fork mount_xfs manual](https://github.com/salvogendut/NetBSD-xiri/blob/xiri/external/gpl2/xfs/puffs/mount_xfs.8).
+
+Reading the SGI label and XFS superblock on the workstation gave these
+sizes for the two reference CHDs. Both labels passed their checksums and
+identified partition 0 as root. Its first sector is 266,240 on both disks.
+Both filesystems use XFS v4 and 4,096-byte blocks.
+
+| Donor | Root partition length (512-byte sectors) | Bytes to stage as an extracted partition |
+| --- | ---: | ---: |
+| 6.5.22f | 8,122,368 | 4,158,652,416 |
+| 6.5.30f | 16,510,976 | 8,453,619,712 |
+
+These sizes make a reader that can address a partition within a donor
+particularly valuable on an Indy. Discover the partition from each donor's
+label. The shared starting sector is specific to these two installations.
+
 **Acceptance.** Boot the ISO on an emulated Indy with a blank disk and no
 donor attached. Install, eject the ISO, reboot and log in to native ctwm.
 Repeat from that base separately for each donor release. Run `xiriprep`

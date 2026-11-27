@@ -72,6 +72,13 @@ in `08e53ba7`. [Octane build and qualification](results/2026-11-23-octane-deskto
 
 ## IRIS upstream updates
 
+The next November 27 cycle merged seven upstream commits through `d8cf7e91`
+into IRIS `xiri` at `46c116ee`. They update device timers and NVRAM writes.
+The IRIS device tests passed 3,575 checks. Prismatic `910997e` supports
+the slot and renderer APIs. Both Indy release lines passed xdm, 4Dwm, stereo
+playback, animated Qix, wake and Toolchest power-off with the rebuilt frontend.
+[Frontend and installer qualification](results/2026-11-27-indy-saver-install.md).
+
 The November 27 Screen Saver cycle integrated three upstream commits through
 `cfeeb304` into IRIS `xiri` at `ff352e49`. The merge reconciles slot-addressed
 devices and snapshot paths with the fork's frontend and storage support.

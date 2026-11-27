@@ -19,13 +19,16 @@ def load_desktop():
     return desktop
 
 
-def run_indy_addon(check, description, *, check_audio_v8=None):
+def run_indy_addon(check, description, *, check_audio_v8=None, check_installed=None):
     parser = argparse.ArgumentParser(description=description)
     parser.add_argument('--release', required=True, choices=('6.5.22f', '6.5.30f'))
     for name in ('bundle', 'media', 'kernel', 'emulator', 'output'):
         parser.add_argument('--' + name, required=True, type=Path)
+    source = parser.add_mutually_exclusive_group()
     if check_audio_v8 is not None:
-        parser.add_argument('--audio-v8', action='store_true', help='start from a clean audio-v8 Prismatic base CHD')
+        source.add_argument('--audio-v8', action='store_true', help='start from a clean audio-v8 Prismatic base CHD')
+    if check_installed is not None:
+        source.add_argument('--installed', action='store_true', help='test the desktop installed by the supplied full ISO')
     args = parser.parse_args()
     if check_audio_v8 is not None and args.audio_v8:
         check = check_audio_v8
@@ -40,7 +43,15 @@ def run_indy_addon(check, description, *, check_audio_v8=None):
         config = ('banks = [128,128,0,0]\nscsi_deferred_int = true\n[machine]\nprofile = "indy_ip24"\n'
                   f'cpu = "{cpu}"\n{cache}[graphics]\nboard = "newport"\n[scsi.1]\noverlay = true\npath = "disk.chd"\n')
     else:
-        pins = json.loads((ROOT / f'docs/results/2026-11-26-controlpanels-{args.release}.json').read_text())
+        if check_installed is not None and args.installed:
+            pins = json.loads((args.bundle / 'manifest.json').read_text())
+            if pins['release'] != args.release or sha256(args.media) != pins['iso_sha256']:
+                parser.error('expected the full install ISO that produced this release bundle')
+            native = json.loads((ROOT / 'profiles/netbsd-sgimips-indy-11.99.11-saver-v1.json').read_text())
+            pins['kernel_sha256'] = native['artifacts']['kernel']['sha256']
+            check = check_installed
+        else:
+            pins = json.loads((ROOT / f'docs/results/2026-11-26-controlpanels-{args.release}.json').read_text())
         disk = args.bundle / 'netbsd-xiri.chd'
         nvram = args.bundle / 'nvram.bin'
         config = (args.bundle / 'iris.toml').read_text().replace('"netbsd-xiri.chd"', '"disk.chd"')

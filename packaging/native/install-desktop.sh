@@ -79,7 +79,7 @@ mkdir "$scratch/native"
 modstat | grep -Eq '^compat_irix_o32[[:space:]]+exec[[:space:]]+filesys' || fail 'load the matching module at boot'
 if test -f "$media/display-update"; then
     while IFS='|' read -r path kind mode value policy; do
-        case "$path" in root/usr/X11R7/bin/Xorg|root/usr/X11R7/lib/modules/extensions/libglx.so.0)
+        case "$path" in root/usr/X11R7/bin/Xorg|root/usr/X11R7/lib/modules/extensions/libglx.so.0|root/usr/X11R7/lib/modules/extensions/libextmod.so.0)
             dest=/${path#root/}
             test -f "$dest" && test ! -L "$dest" || fail "unexpected display server file $dest"
             if test "$(sha256 -q "$dest")" = "$value" && test "$(stat -f '%u:%g:%Mp%03Lp' "$dest")" = "0:0:$mode"; then continue; fi

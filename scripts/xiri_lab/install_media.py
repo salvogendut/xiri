@@ -17,11 +17,12 @@ GLX = 'netbsd-sgimips-indy-11.99.11-glx-v1'
 UTIME = 'netbsd-sgimips-indy-11.99.11-utime-v1'
 AUDIO = 'netbsd-sgimips-indy-11.99.11-audio-v1'
 AUDIO_SYNC = 'netbsd-sgimips-indy-11.99.11-audio-v2'
+SAVER = 'netbsd-sgimips-indy-11.99.11-saver-v1'
 
 
 def validate_native(native):
     native_manifest = json.loads((native / 'manifest.json').read_text())
-    if native_manifest['profile'] not in (INDY, GLX, UTIME, AUDIO, AUDIO_SYNC):
+    if native_manifest['profile'] not in (INDY, GLX, UTIME, AUDIO, AUDIO_SYNC, SAVER):
         raise ValueError('Expected an Indy native package')
     profile = ROOT / 'profiles' / (native_manifest['profile'] + '.json')
     if (
@@ -115,6 +116,25 @@ def upgrade_delta(before, after, work, fonts=None, previous_vendor=None):
     return path
 
 
+def saver_files(release, iso, work):
+    def read(member):
+        return subprocess.check_output(['isoinfo', '-R', '-i', str(iso), '-x', member])
+
+    if read('/release') != (release + '\n').encode():
+        raise ValueError('Expected the Screen Saver CD for IRIX ' + release)
+    profile = ROOT / 'profiles' / f'irix-{release}-xlock-savers-v1.json'
+    additions = {}
+    for name, entry in json.loads(profile.read_text())['paths'].items():
+        path = work / 'savers' / name.lstrip('/')
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_bytes(read('/files' + name))
+        if sha256(path) != entry['sha256']:
+            raise ValueError('Incorrect Screen Saver resource: ' + name)
+        path.chmod(0o444 if name.startswith('/usr/lib/X11/savers/defaults/') else 0o555)
+        additions['/emul/irix' + name] = path
+    return additions
+
+
 def run(args):
     native = args.native_package.resolve()
     vendor = args.vendor_payload.resolve()
@@ -145,7 +165,9 @@ def run(args):
         profile = json.loads((native / 'manifest.json').read_text())['profile']
         if bool(args.previous_media) != bool(profile == UTIME and args.upgrade_from):
             raise ValueError('Use --previous-media with a v5 to v6 Indy update')
-        audio = profile in (AUDIO, AUDIO_SYNC)
+        audio = profile in (AUDIO, AUDIO_SYNC, SAVER)
+        if bool(args.savers) != (profile == SAVER):
+            raise ValueError('Use --savers with the Indy Screen Saver native package')
         graphics = audio or profile in (GLX, UTIME)
         if graphics != bool(args.clock_overlay):
             raise ValueError('The Indy GLX profile and its matching --clock-overlay must be used together')
@@ -162,6 +184,8 @@ def run(args):
             if audio:
                 from .indy_audio import audio_files
                 additions = audio_files(release, args.audio_playback, args.audio_effects, work, files)
+                if args.savers:
+                    additions.update(saver_files(release, args.savers, work))
                 modes = {name: path.stat().st_mode & 0o777 for name, path in additions.items()}
                 supplement.update(additions)
             augmented_payload(vendor / 'payload.tar.gz', supplement, inputs['payload.tgz'], modes)

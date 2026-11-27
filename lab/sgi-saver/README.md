@@ -59,3 +59,21 @@ python3 lab/sgi-saver/check.py --audio-v8 --release "$release" \
 
 [Manual installation](../../docs/NATIVE-PACKAGE.md#add-screen-saver-to-an-audio-v8-indy) ·
 [Image hashes, measurements and screenshots](../../docs/results/2026-11-27-indy-saver-repair.md).
+
+## Check the saver from a full installer
+
+After installing a single release on a clean Indy and packaging the halted
+disk with `lab/native-package/package-clean-desktop.py`, run the panel on
+a disposable copy of that disk. Supply the same full ISO and the emulator
+used to package the image.
+
+```sh
+python3 lab/sgi-saver/check.py --installed --release "$release" \
+    --bundle "$bundle" --media "$media/xiri-$release.iso" \
+    --kernel "$matching_kernel" --emulator "$emulator" --output "$run"
+```
+
+The check starts with the installed desktop. It selects Qix in Icon Catalog,
+verifies Demo and inactivity, logs out and back in, checks the saved settings
+and animation, and disables the saver. The release bundle stays available
+for manual testing.

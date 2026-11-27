@@ -126,7 +126,8 @@ def check_session(guest, check_next_login=False):
 
 
 def main():
-    run_indy_addon(check, __doc__, check_audio_v8=partial(check, session_update=True))
+    run_indy_addon(check, __doc__, check_audio_v8=partial(check, session_update=True),
+                   check_installed=partial(check_session, check_next_login=True))
 
 
 if __name__ == '__main__':

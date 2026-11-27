@@ -263,6 +263,31 @@ The audio kernel and IRIX module belong to the base system. The
 [audio component checks](results/2026-11-26-indy-audio-installer.md#playback-across-mozilla-installation-and-removal)
 exercise the SGI player across both operations.
 
+## Build a full Indy installer with Screen Saver
+
+Use the [Screen Saver native profile](../profiles/netbsd-sgimips-indy-11.99.11-saver-v1.json)
+with `./xiri package-native`. Its kernel, boot wrapper, module, services and
+Newport/GLX artifacts match audio-v8. Add the patched NetBSD Xorg module
+to the artifacts JSON under `extmod`. The package builder verifies that
+module and bundles its stock counterpart from the NetBSD distribution set.
+The native runtime supplies the session script that replays the user's
+saved saver settings on login. [Xorg module build](../lab/sgi-saver/README.md).
+
+Use the audio-v8 `./xiri install-media` command above with the new native
+package. Supply the saver CD for the selected release as well.
+
+```sh
+--savers ".work/installers/indy-11.99.11/audio-v8-savers/$release.iso"
+```
+
+Write the resulting ISO to a new directory. The builder checks the 16 SGI
+files against the selected release's xlock profile and puts them in the
+desktop payload. The guest installs the desktop and saver together with
+`sh /cdrom/install.sh`, or `sh /cdrom/install.sh --mozilla` to include
+the browser. Use the clean NetBSD bootstrap described above. On removal,
+the install ledger restores the original Xorg module. Existing audio-v8
+machines can use the smaller repair CD described below.
+
 ## Add Screen Saver to an audio-v8 Indy
 
 Use this update to keep your current Prismatic machine, accounts and desktop

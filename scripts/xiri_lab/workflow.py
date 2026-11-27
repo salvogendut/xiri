@@ -166,6 +166,7 @@ def parser():
     medium.add_argument('--previous-media', type=Path, help='matching v5 Mozilla installer CD for a reversible Indy v6 kernel update')
     medium.add_argument('--audio-playback', type=Path, help='release-matched SGI PCM update CD for the Indy audio profile')
     medium.add_argument('--audio-effects', type=Path, help='release-matched SGI desktop sounds CD for the Indy audio profile')
+    medium.add_argument('--savers', type=Path, help='release-matched xlock and presets CD for the Indy Screen Saver profile')
     medium.add_argument('--clock-overlay', type=Path, help='matching SGI Overlay 1 ISO for the Indy GLX profile')
     medium.add_argument('--instigator', default='instigator', help='path to the Instigator media extractor')
     audio = sub.add_parser('indy-audio-update', help='build a reversible update between consecutive Indy audio generations')
