@@ -4,13 +4,14 @@ set -eu
 PATH=/bin:/sbin:/usr/bin:/usr/sbin
 export PATH
 fail() { printf 'xiriprep: %s\n' "$*" >&2; exit 1; }
-usage() { echo 'usage: xiriprep [--check] --source disk-image --user login'; }
+usage() { echo 'usage: xiriprep [--check] [--allow-shutdown] --source disk-image --user login'; }
 
-source_image= login= check=no
+source_image= login= check=no allow_shutdown=no
 while [ "$#" -gt 0 ]; do
     case $1 in
     --help) usage; exit 0 ;;
     --check) check=yes; shift ;;
+    --allow-shutdown) allow_shutdown=yes; shift ;;
     --source) [ "$#" -ge 2 ] && [ -z "$source_image" ] || fail "$(usage)"
         source_image=$2; shift 2 ;;
     --user) [ "$#" -ge 2 ] && [ -z "$login" ] || fail "$(usage)"
@@ -69,6 +70,7 @@ if [ -f "$receipt" ]; then
     desktop_ready=yes
 fi
 
+create=no
 if entry=$(getent passwd "$login"); then
     [ "$(printf '%s\n' "$entry" | cut -d: -f1)" = "$login" ] || fail 'account lookup differs from requested login'
     [ "$(id -u "$login")" -ne 0 ] || fail 'select an ordinary desktop user'
@@ -77,24 +79,39 @@ if entry=$(getent passwd "$login"); then
 else
     case $login in ''|*[!a-z0-9_-]*|[0-9-]*) fail 'invalid new account name' ;; esac
     if [ "$check" = yes ]; then
-        printf 'Account %s does not exist. Preparation will offer to create it.\n' "$login"
+        printf 'Account %s does not exist. Preparation will offer to create it in the operator group for desktop shutdown.\n' "$login"
         exit 0
     fi
     [ -t 0 ] || fail "account $login is missing; run interactively or create it first"
-    printf 'Create NetBSD account %s with home /usr/people/%s? [y/N] ' "$login" "$login"
+    printf 'Create NetBSD account %s with home /usr/people/%s and operator access (shutdown and raw devices)? [y/N] ' "$login" "$login"
     IFS= read -r answer || fail 'account creation cancelled'
     case $answer in y|Y|yes|YES) ;; *) fail 'account creation declined' ;; esac
-    account=$(/usr/local/libexec/xiri/setup-xiri-user.sh "$login")
-    printf '%s\n' "$account"
-    case $account in
-        "XIRI_USER created "*) passwd "$login" || fail "account $login exists; set its password with passwd before graphical login" ;;
-    esac
+    create=yes
 fi
 [ "$check" = no ] || exit 0
 if [ "$desktop_ready" = no ]; then
     /bin/sh /usr/local/libexec/xiri/install-shared.sh "$source_image" "$release" "$profile"
 fi
 check_desktop
+if [ "$create" = yes ]; then
+    account=$(/usr/local/libexec/xiri/setup-xiri-user.sh "$login")
+    printf '%s\n' "$account"
+    case $account in
+        "XIRI_USER created "*) allow_shutdown=yes ;;
+        *) fail "account $login already exists; rerun to prepare the existing account" ;;
+    esac
+fi
+if [ "$allow_shutdown" = yes ]; then
+    # NetBSD usermod -G appends to the user's supplementary groups.
+    if ! id -Gn "$login" | tr ' ' '\n' | grep -qx operator; then
+        usermod -G operator "$login" || fail "could not add $login to operator"
+    fi
+    su -f "$login" -c 'test -x /sbin/shutdown' || fail "$login cannot execute /sbin/shutdown"
+    printf 'Desktop shutdown enabled for %s at the next login.\n' "$login"
+fi
+if [ "$create" = yes ]; then
+    passwd "$login" || fail "account $login exists; set its password with passwd before graphical login"
+fi
 /usr/local/sbin/xiri-sync-users
 su -f "$login" -c 'exec /bin/sh /usr/local/libexec/xiri/select-desktop.sh'
 printf 'IRIX %s desktop selected for %s at the next xdm login.\n' "$release" "$login"

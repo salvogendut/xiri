@@ -75,8 +75,9 @@ def prepare(guest, release, filesystem):
     prefs = '/usr/people/xiritest/.Xresources'
     cmd(f"su -f xiritest -c 'echo \"UXTerm*scrollBar: true\" > {prefs}; echo \"exec ctwm\" > ~/.xsession'")
     cmd(f'prefhash=$(sha256 -q {prefs}); prephome=/usr/people/xiritest')
-    prep = """/usr/local/sbin/xiriprep --source '/cdrom/IRIX donor.chd' --user xiritest"""
-    checked = cmd(f'{prep} --check && test ! -e /var/db/xiri-install')
+    prep = """/usr/local/sbin/xiriprep --source '/cdrom/IRIX donor.chd' --user xiritest --allow-shutdown"""
+    denied = """su -f xiritest -c 'test ! -x /sbin/shutdown'"""
+    checked = cmd(f'{prep} --check && test ! -e /var/db/xiri-install && {denied}')
     profile = next((line.split(': ', 1)[1] for line in checked.splitlines()
                     if line.startswith('Desktop profile: ')), release + '.plan')
     if (f'Identified IRIX {release} from ' not in checked or
@@ -86,11 +87,14 @@ def prepare(guest, release, filesystem):
     cmd(f'plan=/usr/local/share/xiri/plans/{profile} && cp -p "$plan" /tmp/expected.plan && '
         f"sed '1s/[^|]*$/{'0' * 64}/'"
         ' /tmp/expected.plan > "$plan" && ! cmp -s "$plan" /tmp/expected.plan')
-    cmd(f'! {prep} && test ! -e /emul/irix && test ! -e /usr/local/share/xiri/fonts && '
+    cmd(f'! {prep} && {denied} && test ! -e /emul/irix && test ! -e /usr/local/share/xiri/fonts && '
         'test ! -e /var/db/xiri-install/installed && grep -qx "exec ctwm" "$prephome/.xsession"')
     cmd('mv /tmp/expected.plan "$plan"')
     cmd(prep, 1800)
+    cmd('groupsum=$(sha256 -q /etc/group)')
     cmd(prep, 240)
+    cmd("""test "$groupsum" = "$(sha256 -q /etc/group)" && su -f xiritest -c 'test -x /sbin/shutdown' && """
+        """su -f native -c 'test ! -x /sbin/shutdown'""")
     cmd(f'test "$prefhash" = "$(sha256 -q {prefs})" && grep -qx "exec ctwm" "$prephome/.xsession.before-xiriprep" && '
         'test -x "$prephome/.xsession" && test ! -e /home/native/.xsession && '
         'cmp -s /var/db/xiri-install/installed /emul/irix/.xiri-install-inputs && '
