@@ -129,6 +129,14 @@ on the disc first. To manage the first optical drive manually, stop
 `/etc/rc.d/xiri_cdrom` and set `xiri_cdrom=NO` in its rc.conf.d file.
 [Indy comparison and screenshots](../docs/results/2026-11-27-indy-cdrom.md)
 
+An audio CD shows a music badge. Double-click **CDROM**, then choose a track.
+**Stop** and **Close** both end playback. The track selector uses NetBSD
+`cdplay` and sends digital audio to `/dev/sound`. It runs with the desktop
+user's permissions. On the prepared Indys the `operator` group can read
+`/dev/rcd0c`. The shell equivalent for track two is
+`cdplay -a /dev/sound -f /dev/rcd0c play 2 2`.
+[Required kernel and emulator changes](../docs/results/2026-11-27-indy-cd-audio.md)
+
 The candidate PTY setup maps both IRIX `/dev/ptc` and `/dev/ptmx` to native
 ptm minor 2, which grants a new slave to the caller. Its `/emul/irix/dev/pts`
 symlink targets `/../dev/pts`: NetBSD's explicit native-root lookup reaches

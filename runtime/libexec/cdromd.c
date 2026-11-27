@@ -1,6 +1,7 @@
 /* Xiri desktop media service for the first sgimips optical drive. */
 #include <sys/types.h>
 #include <sys/ioctl.h>
+#include <sys/cdio.h>
 #include <sys/dkio.h>
 #include <sys/mount.h>
 #include <sys/socket.h>
@@ -104,6 +105,27 @@ publish(const char *state)
         published = state;
 }
 
+static int
+audio_disc(int fd)
+{
+    struct ioc_toc_header header;
+    struct cd_toc_entry tracks[99] = {0};
+    if (ioctl(fd, CDIOREADTOCHEADER, &header) < 0 || header.starting_track < 1 ||
+        header.ending_track > 99 || header.ending_track < header.starting_track)
+        return 0;
+    int count = header.ending_track - header.starting_track + 1;
+    struct ioc_read_toc_entry req = {
+        .address_format = CD_MSF_FORMAT, .starting_track = header.starting_track,
+        .data_len = count * sizeof(tracks[0]), .data = tracks
+    };
+    if (ioctl(fd, CDIOREADTOCENTRIES, &req) < 0)
+        return 0;
+    for (int i = 0; i < count; i++)
+        if (tracks[i].track != header.starting_track + i || (tracks[i].control & 4))
+            return 0;
+    return 1;
+}
+
 static void
 refresh(void)
 {
@@ -116,6 +138,7 @@ refresh(void)
     }
     int ready = 0;
     int rc = ioctl(fd, DIOCTUR, &ready);
+    int music = rc == 0 && ready && current == AVAILABLE && audio_disc(fd);
     close(fd);
     if (rc < 0)
         return;
@@ -131,6 +154,11 @@ refresh(void)
     if (!ready) {
         publish("empty");
         retry_at = 0;
+        return;
+    }
+    if (music) {
+        retry_at = 0;
+        publish("music");
         return;
     }
     if (current == AVAILABLE && time(NULL) >= retry_at) {

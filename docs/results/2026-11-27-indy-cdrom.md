@@ -36,8 +36,9 @@ empty icon matched its original pixels. A pre-existing manual mount kept
 its mount point and its owner. A nonempty `/CDROM` directory is also preserved. [Xiri desktop eject menu](2026-11-27-cdrom-eject.png)
 
 This check covers one optical drive and ISO 9660 data, including Rock Ridge.
-Audio tracks, SGI EFS-format distribution discs and additional drives remain
-open. SGI's original desktop can identify audio media and launch CD Player.
+The [audio-CD follow-up](2026-11-27-indy-cd-audio.md) covers the music icon
+and digital playback. SGI EFS-format distribution discs and additional
+drives remain open. SGI's original desktop can identify audio media and launch CD Player.
 [SGI peripheral icons](https://techpubs.jurassic.nl/library/manuals/4000/007-4480-001/sgi_html/ch02.html)
 
 [Per-release measurements and artifact hashes](2026-11-27-indy-cdrom.json)

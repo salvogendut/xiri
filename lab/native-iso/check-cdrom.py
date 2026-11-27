@@ -61,6 +61,7 @@ def run(args):
         subprocess.run(['genisoimage', '-quiet', '-R', '-V', 'XIRI_DISC', '-o', disc, fixture], check=True)
         install = work / 'install.iso'
         files = {'daemon': args.daemon.resolve(), 'service': runtime / 'rc.d/xiri_cdrom',
+                 'player': runtime / 'libexec/cd-player.sh',
                  'clients': runtime / 'libexec/desktop-clients.sh', 'rules': runtime / 'etc/applications.ftr'}
         digests = {name: desktop.sha256(path) for name, path in files.items()}
         subprocess.run(['genisoimage', '-quiet', '-R', '-o', install, '-graft-points',
@@ -74,6 +75,7 @@ def run(args):
             # The base may already have automounted the helper CD.
             cmd('if test -x /etc/rc.d/xiri_cdrom; then /etc/rc.d/xiri_cdrom onestop || :; fi')
             cmd('mount -rt cd9660 /dev/cd0a /mnt && '
+                'install -m 555 /mnt/player /usr/local/libexec/xiri/cd-player.sh && '
                 'install -m 555 /mnt/daemon /usr/local/libexec/xiri/cdromd && '
                 'install -m 555 /mnt/service /etc/rc.d/xiri_cdrom && '
                 'install -m 555 /mnt/clients /usr/local/libexec/xiri/desktop-clients.sh && '

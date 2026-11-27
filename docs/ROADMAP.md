@@ -39,7 +39,10 @@ their desktop preferences. [Fresh-install results](results/2026-11-27-xiriprep-d
    The desktop microphone icon launches Media Recorder on both Indys.
    Its audio-only launch still fails during shared-arena creation.
    ISO 9660 data CDs now automount at `/CDROM` and open from the desktop on
-   both Indys. Audio-CD identification and playback remain open.
+   both Indys. Audio-only CHDs show the SGI music icon. Double-clicking it
+   opens a native track selector backed by NetBSD `cdplay`. SGI CD Player
+   reaches the same shared-arena mapping requirement as Sound Editor.
+   [Two-track playback and SGI comparison](results/2026-11-27-indy-cd-audio.md) ·
    [Optical media checks](results/2026-11-27-indy-cdrom.md) ·
    [Microphone measurements](results/2026-11-27-indy-microphone.md) · [Indy device checks](results/2026-11-27-indy-media-devices.md) · [MediaTools inventory](ICON-CATALOG.md#mediatools-22)
 2. Keep a third-party donor in installer acceptance alongside the project's

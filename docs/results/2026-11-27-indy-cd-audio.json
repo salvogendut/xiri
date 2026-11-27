@@ -1,0 +1,167 @@
+{
+  "iris": "65039d90",
+  "netbsd": "375916d7bba",
+  "iris_upstream": "afaf7a5504377848c413dc6ac33a65b60dfe574b",
+  "scsi_tests": 47,
+  "update_iso_sha256": "d690b81f66e1c4d22a84a92a90a46bae99ecfe847527904a4f709b6ca5ce10e8",
+  "original_irix": {
+    "release": "6.5.22f",
+    "chd": "b4fff76ffa0ca00c0a90da1c94a3eb41f5f6ba4cb13c0af258b4acca4ad95c41",
+    "emulator": "9a800615984088c1d51e6e716f5bdb5e1599caea0473a971207618f73e08fda7",
+    "clean_shutdown": true,
+    "application": "SGI CD Player",
+    "selected_track": 2,
+    "sample_rate": 44100,
+    "channel_peaks_hz": [
+      [
+        880,
+        880,
+        880,
+        880,
+        880,
+        880,
+        880,
+        880,
+        880,
+        880
+      ],
+      [
+        880,
+        880,
+        880,
+        880,
+        880,
+        880,
+        880,
+        880,
+        880,
+        880
+      ]
+    ],
+    "screenshot": "2026-11-27-cd-audio-irix.png"
+  },
+  "xiribsd": [
+    {
+      "release": "6.5.22f",
+      "cpu": "r4400",
+      "base": "53fa1e2006e19dfcbe8950b919de447c043487e84b06710bfc3fea86119f382b",
+      "emulator": "9a800615984088c1d51e6e716f5bdb5e1599caea0473a971207618f73e08fda7",
+      "fixture": "10dc542b0283c5f961204c052374492268743e4fc6769bbeb42535476fda0300",
+      "payload": {
+        "netbsd": "d4a2bb5099455520993400406e5333836614f69f637cebb1036ffdb8935d6063",
+        "netbsd.boot": "c4f4b95220769b63e43fea580938878c2317a10b1654b64d5b4ee38b6d070c07",
+        "module": "34054590af5d6513f98368d7a410366096fb8d816c0b6b1cb6e100d98bba9aab",
+        "daemon": "e3f4748bf84f26c823cd65f4f96fa9fc86337d378c6ebf2f557c781dbedcce15",
+        "player": "0bec04983bd7f28219e55d417cc305a549d985fce0fcbafb86eaf3c2a415e410",
+        "rules": "e54c315aeec785bf58d919d7afc99f8d8594a16bf0755dbadfc0f28253c75777"
+      },
+      "audio": {
+        "sample_rate": 48000,
+        "frames": 583738,
+        "channel_peaks_hz": [
+          [
+            880,
+            880,
+            880,
+            880,
+            880,
+            880,
+            880,
+            880,
+            880,
+            880,
+            880,
+            880
+          ],
+          [
+            880,
+            880,
+            880,
+            880,
+            880,
+            880,
+            880,
+            880,
+            880,
+            880,
+            880,
+            880
+          ]
+        ]
+      },
+      "screenshot": "2026-11-27-cd-audio-6.5.22f.png",
+      "toc": [
+        "track     start  duration   block  length     type",
+        "--------------------------------------------------",
+        "    1   0:02.00   0:12.00       0     900    audio",
+        "    2   0:14.00   0:12.00     900     900    audio",
+        "    -   0:26.00         -    1800       - lead-out"
+      ],
+      "stop": true,
+      "close": true,
+      "eject": true,
+      "data_disc_after_eject": true
+    },
+    {
+      "release": "6.5.30f",
+      "cpu": "r5000",
+      "base": "a2e3272266c362d1db236bb9413f196ca533c03f55213fc6bbfa5274ddd66d26",
+      "emulator": "9a800615984088c1d51e6e716f5bdb5e1599caea0473a971207618f73e08fda7",
+      "fixture": "10dc542b0283c5f961204c052374492268743e4fc6769bbeb42535476fda0300",
+      "payload": {
+        "netbsd": "d4a2bb5099455520993400406e5333836614f69f637cebb1036ffdb8935d6063",
+        "netbsd.boot": "c4f4b95220769b63e43fea580938878c2317a10b1654b64d5b4ee38b6d070c07",
+        "module": "34054590af5d6513f98368d7a410366096fb8d816c0b6b1cb6e100d98bba9aab",
+        "daemon": "e3f4748bf84f26c823cd65f4f96fa9fc86337d378c6ebf2f557c781dbedcce15",
+        "player": "0bec04983bd7f28219e55d417cc305a549d985fce0fcbafb86eaf3c2a415e410",
+        "rules": "e54c315aeec785bf58d919d7afc99f8d8594a16bf0755dbadfc0f28253c75777"
+      },
+      "audio": {
+        "sample_rate": 48000,
+        "frames": 585732,
+        "channel_peaks_hz": [
+          [
+            881,
+            880,
+            880,
+            880,
+            880,
+            880,
+            880,
+            880,
+            880,
+            880,
+            880,
+            880
+          ],
+          [
+            881,
+            880,
+            880,
+            880,
+            880,
+            880,
+            880,
+            880,
+            880,
+            880,
+            880,
+            880
+          ]
+        ]
+      },
+      "screenshot": "2026-11-27-cd-audio-6.5.30f.png",
+      "toc": [
+        "track     start  duration   block  length     type",
+        "--------------------------------------------------",
+        "    1   0:02.00   0:12.00       0     900    audio",
+        "    2   0:14.00   0:12.00     900     900    audio",
+        "    -   0:26.00         -    1800       - lead-out"
+      ],
+      "stop": true,
+      "close": true,
+      "eject": true,
+      "data_disc_after_eject": true
+    }
+  ]
+}

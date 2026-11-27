@@ -33,7 +33,7 @@ done
 for name in xiri-desktop xiri-session xiri-launch xiri-logout xiri-poweroff; do install -m 555 "bin/$name" "$stage/usr/local/bin/$name"; done
 for name in session-guard x11-check save-session stop-sessions drop-bridge desktop-sound cdromd; do install -m 555 "$build/$name" "$stage/usr/local/libexec/xiri/$name"; done
 install -m 555 "$build/shell-handoff" "$stage/usr/libexec/xiri-shell"
-for name in desktop-clients.sh setup-pty.sh; do install -m 555 "libexec/$name" "$stage/usr/local/libexec/xiri/$name"; done
+for name in desktop-clients.sh setup-pty.sh cd-player.sh; do install -m 555 "libexec/$name" "$stage/usr/local/libexec/xiri/$name"; done
 ln -snf /bin/sh "$stage/usr/local/libexec/xiri/command-shell"
 # IRIX scripts can execute native utilities. Those utilities do not apply the
 # emulation-root lookup to their pathname arguments (GIMP's user_install uses

@@ -58,6 +58,7 @@ class RuntimeInstallTests(unittest.TestCase):
         self.assertEqual(cdrom.read_text(), 'xiri_cdrom=YES\n')
         self.assertTrue(os.access(self.stage/'etc/rc.d/xiri_cdrom', os.X_OK))
         self.assertTrue(os.access(self.stage/'usr/local/libexec/xiri/cdromd', os.X_OK))
+        self.assertTrue(os.access(self.stage/'usr/local/libexec/xiri/cd-player.sh', os.X_OK))
         self.assertEqual((self.stage/'etc/rc.conf.d/xiri_sessions').read_text(), 'xiri_sessions=YES\n')
         files = [rpc, cdrom, self.stage/'etc/rc.conf.d/xiri_famd', self.stage/'etc/rc.conf.d/xiri_sessions', self.stage/'etc/xiri/fam.conf',
                  self.stage/'etc/xiri/session.conf', self.stage/'etc/xiri/Xresources']

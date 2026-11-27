@@ -94,6 +94,12 @@ Prismatic image build rechecked the same upstream revision. Prismatic
 `910997e` booted both standalone disks and opened the bundled data CD.
 [Optical media checks](results/2026-11-27-indy-cdrom.md)
 
+The audio-CD cycle fetched IRIS upstream `afaf7a55` on November 27.
+The fork already contained it. IRIS `xiri` at `65039d90` passed the 47
+SCSI regressions and played track two in the original SGI CD Player.
+NetBSD `xiri` at `375916d7bba` carries the 32-bit optical and SCSI ioctl
+translations used by native `cdplay`. [Audio-CD qualification](results/2026-11-27-indy-cd-audio.md)
+
 The SuperIRIX test CHD cycle integrated four further upstream commits through
 `dca458bc` into IRIS `xiri` at `854d12c4`. These cover virtio snapshots,
 Timekeeper year handling, shared machine constants and boot CI. The merge

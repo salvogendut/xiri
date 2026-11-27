@@ -64,9 +64,9 @@ A subsequent [desktop CD-ROM check](2026-11-27-indy-cdrom.md) covers insertion, 
   capture driver. The pattern gives us a repeatable source for developing
   the native capture path and checking the vendor Video Library.
   [IRIS video sources](https://github.com/salvogendut/iris/blob/854d12c4d3900a9f99f8062fd40d4d444ff14d11/src/video_source.rs) · [NetBSD sgimips](https://github.com/salvogendut/NetBSD-xiri/tree/058c861ad699d2380b735911e87fd5114fe6e9df/sys/arch/sgimips)
-* **CD audio and DAT.** IRIS builds its CD table of contents with one data
-  track and a lead-out. A mixed-mode or audio-only fixture therefore needs
-  emulator work before its track list can be qualified. The same SCSI
+* **CD audio and DAT.** The surveyed IRIS build reported one data track
+  and a lead-out. The [two-track audio-CD check](2026-11-27-indy-cd-audio.md)
+  covers the subsequent emulator and NetBSD updates. The same SCSI
   implementation models disk and CD-ROM targets. A tape target and a
   scratch tape image are prerequisites for the DAT transport checks.
   [CD table of contents](https://github.com/salvogendut/iris/blob/854d12c4d3900a9f99f8062fd40d4d444ff14d11/src/scsi.rs#L1083) · [SCSI targets](https://github.com/salvogendut/iris/blob/854d12c4d3900a9f99f8062fd40d4d444ff14d11/src/scsi.rs#L124)
