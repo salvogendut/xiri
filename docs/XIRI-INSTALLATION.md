@@ -16,6 +16,55 @@ The installer saves the stock kernel for native NetBSD recovery.
 
 The optional [Indy Screen Saver update and rollback](results/2026-11-26-sgi-screen-saver.md#update-an-existing-v6-disk) adds the original Qix Demo to an installed v6 desktop. The separate [Indy HDSP update and rollback](results/2026-11-26-indy-hdsp.md#manual-test-on-either-indy-v6-disk) installs the Indy kernel, its PROM image, the HDSP compatibility module and its device links. Both updates work with the existing v6 disks.
 
+## Planned workstation build and `xiriprep`
+
+The first target is an Indy. One native XiriBSD ISO should support two
+separately tested installations, one using a 6.5.22f donor and one using
+a 6.5.30f donor. An owner should be able to build the ISO before obtaining
+or attaching a donor. The existing private desktop CDs and CHDs include
+imported SGI files. They serve as references for the finished desktop.
+
+**On the workstation**, one build script should fetch NetBSD-current
+`src` and `xsrc` into a clean workspace. Resolve “latest” to specific
+commits at the start and record both, the NetBSD-xiri `xiri` fork revision
+that supplies the patches, and the Xiri repository revision. Allow a later
+build to reuse that record. Apply the fork's changes to `src` and Xiri's
+Xorg/Newport patches to the matching `xsrc`. Report a conflicting patch
+before producing an image. NetBSD's `build.sh` and sgimips CD machinery
+provide the cross-build and SGI PROM boot paths. Build the system sets, X
+sets, matching kernel and module, native desktop services and `xiriprep`.
+Audit the ISO and its install sets against a native file inventory so SGI
+binaries, libraries, fonts, artwork and firmware stay off the media.
+[NetBSD and Xorg source changes](NETBSD-UPSTREAM.md#display-xfs-and-session-work-have-separate-destinations).
+
+**On the installed XiriBSD machine**, the proposed command is
+`xiriprep --source /path/to/irix.chd --user alice`. It should also accept
+a raw installed disk image. Read the donor locally and read-only, identify
+its release, check the required files and available space, and report
+missing components before installation. Reuse the release-specific import
+profiles, destination paths and installation receipts. The administrator
+installs the shared runtime and resources once. Enable the xdm session
+only for the named native account, preserve its existing home, and save
+its previous session choice so the owner can switch back. Additional users
+should be able to opt in without another donor import.
+[Current importer](../scripts/xiri_lab/irix_import.py) ·
+[Existing per-user session](IRIX-SOFTWARE.md#selecting-the-irix-desktop-for-a-user).
+
+**First implementation check.** The workstation importer currently uses
+`chdman` and `guestfish` and pins a whole-disk hash. Prove that the
+installed Indy can read a raw donor's SGI partitions and XFS files, then
+the equivalent CHD, within its memory and disk budget. Test an independently
+installed donor with a different disk hash against the release's required
+files. Keep the known donor hashes for reproducing the reference runs.
+
+**Acceptance.** Boot the ISO on an emulated Indy with a blank disk and no
+donor attached. Install, eject the ISO, reboot and log in to native ctwm.
+Repeat from that base separately for each donor release. Run `xiriprep`
+for an ordinary account, log in to full-screen 4Dwm, and exercise winterm,
+Icon Catalog and the saved Screen Saver. Confirm a second account still
+gets ctwm and a repeat import preserves the first user's preferences. Keep
+each release's test CHD and results separate.
+
 ## Our original-media installation
 
 The November 14 audit found a completed installation in

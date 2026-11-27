@@ -44,7 +44,7 @@ ctwm with the 6.5.22 and 6.5.30 disk images. Physical testing is still ahead.
 ## Roadmap
 
 - **Desktop compatibility.** Complete everyday workflows in the original desktop and applications, including file operations, saved sessions and multimedia.
-- **Installation and updates.** Keep both IRIX releases reproducible and make system and SGI software upgrades recoverable.
+- **Installation and updates.** Build a native-only XiriBSD install ISO from NetBSD sources. The planned `xiriprep` tool will import the desktop from your own IRIX disk image and enable it for your account. [Installation plan](docs/XIRI-INSTALLATION.md#planned-workstation-build-and-xiriprep)
 - **Physical workstations.** Qualify the Indy on real hardware, then extend testing to the Indigo2, Octane and O2.
 
 [Full roadmap](docs/ROADMAP.md) · [Development history and test results](docs/HISTORY.md)

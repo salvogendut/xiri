@@ -1,6 +1,6 @@
 # Xiri execution roadmap
 
-Updated 2026-11-26. The current image runs the original 4Dwm desktop,
+Updated 2026-11-27. The current image runs the original 4Dwm desktop,
 Toolchest, Icon Catalog, File Manager, winterm and xclock on NetBSD/Xorg with
 accelerated Newport. Catalog launching, running-icon feedback, backdrop,
 desktop icons and logout pass bounded checks; the latest xmahjongg texture
@@ -8,6 +8,14 @@ repair passes native pixel comparisons and desktop interaction checks.
 Compatibility and desktop behavior remain incomplete. See the
 [current overview](../README.md), [rendering evidence](results/2026-11-03-newport-xmahjongg.md)
 and [historical checkpoints](HISTORY.md).
+
+## Next three deliverables
+
+1. Rebuild Prismatic against the IRIS `xiri` branch. On copies of both Indy images, check xdm login, 4Dwm, audio playback, Screen Saver activation and wake, and power-off from Toolchest. [Frontend integration status](FORKS.md#iris-upstream-updates).
+2. Include the Screen Saver repair in both full Indy installers. Install each on a clean target from a single ISO and verify that the chosen saver still runs after a new xdm login. [Existing repair and checks](results/2026-11-27-indy-saver-repair.md).
+3. Deliver a workstation script that builds a bootable XiriBSD install ISO from current NetBSD sources and the Xiri patches. Ship native components and `xiriprep` on that ISO. On the installed system, import SGI files from the owner's donor image and enable 4Dwm for the selected user. Qualify separate 6.5.22f and 6.5.30f installations. [Build, import and acceptance plan](XIRI-INSTALLATION.md#planned-workstation-build-and-xiriprep).
+
+## Desktop qualification
 
 Both Indy installers can add the release-matched SGI Mozilla browser. The clean
 CHDs open public HTTP pages by hostname from Icon Catalog on the first login.
@@ -697,8 +705,8 @@ Acceptance: an original desktop session executing inside the emulated Indy on Ne
 - [x] Deliver a reusable [module-based manual CHD](results/2026-11-03-irix-module-image.md), with matching kernel/module hashes, boot configuration, graphical login/logout and direct-CHD desktop qualification.
 - [ ] Boot the qualified build on the physical Indy and repeat ABI and desktop acceptance there.
 - [ ] Validate real storage, networking, cache/DMA behavior, input and local display; record differences from emulation.
-- [ ] Package a reproducible installation for the first supported configuration.
-- [ ] Provide an import workflow for the selected original runtime and desktop files.
+- [ ] Build the native-only Indy install ISO from recorded NetBSD and Xiri source revisions and install it on an empty disk. [Workstation build plan](XIRI-INSTALLATION.md#planned-workstation-build-and-xiriprep).
+- [ ] Ship `xiriprep` on that ISO and qualify on-target donor import and per-user desktop selection for both IRIX releases.
 - [ ] Deliver the original IRIX installers with qualified dependency/conflict reporting, installation history, catalog hooks and repeatable upgrade/removal. Keep the runtime-bootstrap import distinct from ongoing installation through inst/Software Manager.
 - [ ] Build a small maintained native software set, starting with networking and development tools.
 - [ ] Qualify the selected legacy applications using representative work, not just startup.
