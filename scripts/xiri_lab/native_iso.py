@@ -17,6 +17,15 @@ from .native_sources import ROOT
 SYSTEM_SETS = ('base', 'etc', 'comp', 'rescue', 'games', 'man', 'misc', 'text',
                'xbase', 'xetc', 'xfont', 'xserver', 'xcomp')
 
+XIRIPREP_PROGRAMS = (
+    'usr/local/sbin/xiriprep', 'usr/local/libexec/xiri/xiri-donor-read',
+    'usr/local/libexec/xiri/install-shared.sh', 'usr/local/libexec/xiri/setup-xiri-user.sh',
+    'usr/local/libexec/xiri/select-desktop.sh',
+)
+XIRIPREP_FILES = (*XIRIPREP_PROGRAMS, 'usr/local/share/xiri/donor-signatures',
+                  'usr/local/share/xiri/plans/6.5.22f.plan', 'usr/local/share/xiri/plans/6.5.30f.plan',
+                  'usr/local/share/xiri/desktop-runtime.tgz', 'usr/local/share/xiri/xiriprep-source.tgz')
+
 
 def digest(path, algorithm):
     with path.open('rb') as stream:
@@ -81,12 +90,9 @@ def assemble(work, output, source_lock):
         }
         # Keep the resettable machine-specific kernel selection sysinst already
         # uses. The 32-bit bootstrap loads netbsd.boot; /netbsd retains symbols.
-        programs = ('usr/local/sbin/xiriprep', 'usr/local/libexec/xiri/xiri-donor-read',
-                    'usr/local/libexec/xiri/setup-xiri-user.sh', 'usr/local/libexec/xiri/select-desktop.sh')
-        for name in (*programs, 'usr/local/share/xiri/donor-signatures',
-                     'usr/local/share/xiri/xiriprep-source.tgz'):
+        for name in XIRIPREP_FILES:
             resources[name] = work / 'xiriprep-stage' / name
-        write_set(sets / ('kern-GENERIC32_IP2x' + suffix), resources, stamp, executables=programs)
+        write_set(sets / ('kern-GENERIC32_IP2x' + suffix), resources, stamp, executables=XIRIPREP_PROGRAMS)
         modpath = f'stand/sgimips/{version}/modules/compat_irix_o32/{module.name}'
         write_set(sets / ('modules' + suffix), {modpath: module,
                   'etc/modules.conf': b'compat_irix_o32\n'}, stamp)

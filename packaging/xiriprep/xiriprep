@@ -76,10 +76,10 @@ else
     esac
 fi
 [ "$check" = no ] || exit 0
-if [ "$desktop_ready" = yes ]; then
-    check_desktop
-    su -f "$login" -c 'exec /bin/sh /usr/local/libexec/xiri/select-desktop.sh'
-    printf 'IRIX %s desktop selected for %s at the next xdm login.\n' "$release" "$login"
-else
-    echo 'Donor and account preparation complete. The shared IRIX desktop still needs to be installed.'
+if [ "$desktop_ready" = no ]; then
+    /bin/sh /usr/local/libexec/xiri/install-shared.sh "$source_image" "$release"
 fi
+check_desktop
+/usr/local/sbin/xiri-sync-users
+su -f "$login" -c 'exec /bin/sh /usr/local/libexec/xiri/select-desktop.sh'
+printf 'IRIX %s desktop selected for %s at the next xdm login.\n' "$release" "$login"

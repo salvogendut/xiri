@@ -24,6 +24,11 @@ RECIPE = ('scripts/build-xiribsd-iso.py', 'scripts/xiri_lab/native_sources.py',
           'runtime/etc/xdm-Xresources', 'runtime/etc/xiri-logo.xpm',
           'packaging/xiriprep/CMakeLists.txt', 'packaging/xiriprep/donor-read.c',
           'packaging/xiriprep/xiriprep', 'packaging/xiriprep/select-desktop.sh', 'scripts/setup-xiri-user.sh',
+          'packaging/xiriprep/install-shared.sh', 'packaging/xiriprep/build-runtime.py',
+          'packaging/xiriprep/plans/6.5.22f.plan', 'packaging/xiriprep/plans/6.5.30f.plan',
+          'scripts/build-native-fam.py', 'scripts/xiri_lab/native_package.py', 'lab/native-fam/source.json', 'runtime/install.sh', 'runtime/Makefile',
+          *(str(p.relative_to(ROOT)) for d in ('bin', 'sbin', 'rc.d', 'etc', 'libexec')
+            for p in sorted((ROOT / 'runtime' / d).glob('*')) if p.is_file()),
           'profiles/irix-6.5.22f-v1.json', 'profiles/irix-6.5.30f-v1.json')
 
 

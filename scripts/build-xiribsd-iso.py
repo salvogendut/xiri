@@ -82,7 +82,10 @@ def run_build(args, work, output):
              '-DCMAKE_SYSTEM_PROCESSOR=mips', f'-DCMAKE_SYSROOT={work / "dest32"}',
              f'-DCMAKE_C_COMPILER={work / "tools32/bin/mipseb--netbsd-gcc"}'],
             ['cmake', '--build', reader, '--target', 'xiri-donor-read', '-j', str(args.j)],
-            ['cmake', '--install', reader, '--prefix', work / 'xiriprep-stage/usr/local']):
+            ['cmake', '--install', reader, '--prefix', work / 'xiriprep-stage/usr/local'],
+            ['python3', ROOT / 'packaging/xiriprep/build-runtime.py', '--work', work / 'desktop-build',
+             '--tools', work / 'tools32', '--sysroot', work / 'dest32',
+             '--output', work / 'xiriprep-stage/usr/local/share/xiri/desktop-runtime.tgz']):
         subprocess.run(prefix + cmd, env=env, check=True)
     assemble(work, output, pins)
 

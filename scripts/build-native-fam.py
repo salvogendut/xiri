@@ -23,6 +23,53 @@ def run(*args, **kw):
     return subprocess.run([str(a) for a in args], check=True, **kw)
 
 
+def prepare_source(work):
+    spec = json.loads((ROOT/'lab/native-fam/source.json').read_text())
+    work.mkdir(parents=True, exist_ok=True)
+    cache = work/'inputs'; cache.mkdir(exist_ok=True)
+    inputs = dict(spec['files'])
+    inputs['fam-2.7.0.tar.gz'] = spec['archive']
+    for name, pin in inputs.items():
+        path = cache/name; path.parent.mkdir(parents=True, exist_ok=True)
+        algorithm = 'sha512' if 'sha512' in pin else 'sha256'
+        if not path.exists():
+            with urllib.request.urlopen(pin['url'], timeout=60) as response:
+                data = response.read()
+            assert hashlib.new(algorithm, data).hexdigest() == pin[algorithm], name
+            path.write_bytes(data)
+        assert digest(path, algorithm) == pin[algorithm], name
+    for name, expected in spec.get('local_patches', {}).items():
+        assert digest(ROOT/name) == expected, name
+    for name, expected in spec.get('local_support', {}).items():
+        assert digest(ROOT/name) == expected, name
+    source = work/'fam-2.7.0'
+    if not source.exists():
+        with tempfile.TemporaryDirectory(dir=work) as tmp:
+            source = Path(tmp) / 'fam-2.7.0'
+            def apply_patch(patch):
+                run('git', 'apply', '--whitespace=nowarn', '-p0', patch, cwd=source,
+                    env=dict(os.environ, GIT_CEILING_DIRECTORIES=tmp))
+
+            with tarfile.open(cache/'fam-2.7.0.tar.gz') as archive:
+                for member in archive.getmembers():
+                    assert (member.name == 'fam-2.7.0' or member.name.startswith('fam-2.7.0/')) \
+                        and '..' not in Path(member.name).parts
+                archive.extractall(tmp, filter='data')
+            for patch in sorted((cache/'patches').iterdir()):
+                apply_patch(patch)
+            for name in spec.get('local_patches', {}):
+                apply_patch(ROOT/name)
+            for name in ['imon-compat.h', 'IMonKQueue.c++']:
+                shutil.copyfile(cache/'files'/name, source/'src'/name)
+            for name in spec.get('local_support', {}):
+                shutil.copyfile(ROOT/name, source/'src'/Path(name).name)
+            source.rename(work/'fam-2.7.0')
+            (work/'source-ready.json').write_text(json.dumps(spec, indent=2)+'\n')
+        source = work / 'fam-2.7.0'
+    assert json.loads((work/'source-ready.json').read_text()) == spec
+    return source
+
+
 def main():
     if os.environ.get('XIRI_FAM_BUILD_TOOLBOX') == '1':
         work = WORK
@@ -49,44 +96,8 @@ def main():
         run(str(prefix)+'g++', '--sysroot='+str(work/'sysroot'), '-O2', '-std=gnu++98',
             '-Wall', '-Wextra', '-Werror', path_test, '-o', work/'emul-path-native')
         return
-    spec = json.loads((ROOT/'lab/native-fam/source.json').read_text())
     work = WORK
-    work.mkdir(parents=True, exist_ok=True)
-    cache = work/'inputs'; cache.mkdir(exist_ok=True)
-    inputs = dict(spec['files'])
-    inputs['fam-2.7.0.tar.gz'] = spec['archive']
-    for name, pin in inputs.items():
-        path = cache/name; path.parent.mkdir(parents=True, exist_ok=True)
-        algorithm = 'sha512' if 'sha512' in pin else 'sha256'
-        if not path.exists():
-            with urllib.request.urlopen(pin['url'], timeout=60) as response:
-                data = response.read()
-            assert hashlib.new(algorithm, data).hexdigest() == pin[algorithm], name
-            path.write_bytes(data)
-        assert digest(path, algorithm) == pin[algorithm], name
-    for name, expected in spec.get('local_patches', {}).items():
-        assert digest(ROOT/name) == expected, name
-    for name, expected in spec.get('local_support', {}).items():
-        assert digest(ROOT/name) == expected, name
-    source = work/'fam-2.7.0'
-    if not source.exists():
-        with tarfile.open(cache/'fam-2.7.0.tar.gz') as archive:
-            for member in archive.getmembers():
-                assert (member.name == 'fam-2.7.0' or member.name.startswith('fam-2.7.0/')) \
-                    and '..' not in Path(member.name).parts
-            archive.extractall(work, filter='data')
-        for patch in sorted((cache/'patches').iterdir()):
-            run('git', 'apply', '--whitespace=nowarn', '-p0',
-                '--directory='+str(source.relative_to(ROOT)), patch, cwd=ROOT)
-        for name in spec.get('local_patches', {}):
-            run('git', 'apply', '--whitespace=nowarn', '-p0',
-                '--directory='+str(source.relative_to(ROOT)), ROOT/name, cwd=ROOT)
-        for name in ['imon-compat.h', 'IMonKQueue.c++']:
-            shutil.copyfile(cache/'files'/name, source/'src'/name)
-        for name in spec.get('local_support', {}):
-            shutil.copyfile(ROOT/name, source/'src'/Path(name).name)
-        (work/'source-ready.json').write_text(json.dumps(spec, indent=2)+'\n')
-    assert json.loads((work/'source-ready.json').read_text()) == spec
+    source = prepare_source(work)
     sysroot = work/'sysroot'
     sets = ROOT/'.work/netbsd-11.0/sgimips/binary/sets'
     checksums = (ROOT/'lab/netbsd-11.0/SHA512SUMS').read_text().splitlines()
