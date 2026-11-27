@@ -25,6 +25,7 @@ XIRIPREP_PROGRAMS = (
 XIRIPREP_FILES = (*XIRIPREP_PROGRAMS, 'usr/local/share/xiri/donor-signatures',
                   'usr/local/share/xiri/plans/6.5.22f.plan', 'usr/local/share/xiri/plans/6.5.30f.plan',
                   'usr/local/share/xiri/plans/6.5.22f-ip28.plan', 'usr/local/share/xiri/plans/6.5.30f-ip30.plan',
+                  'usr/local/share/xiri/plans/6.5.22m.plan',
                   'usr/local/share/xiri/desktop-runtime.tgz', 'usr/local/share/xiri/xiriprep-source.tgz')
 
 

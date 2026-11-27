@@ -31,21 +31,25 @@ for suffix in .overlay .overlay.dirty .diff .diff.chd .diff.chd.overlay .diff.ch
 done
 
 reader=/usr/local/libexec/xiri/xiri-donor-read
-profiles=/usr/local/share/xiri/donor-signatures
 shell_hash=$("$reader" --sha256 "$source_image" /sbin/sh) || fail 'could not read the IRIX shell'
 wm_hash=$("$reader" --sha256 "$source_image" /usr/bin/X11/4Dwm) || fail 'could not read IRIX 4Dwm'
-release=$(awk -v sh="$shell_hash" -v wm="$wm_hash" '$2 == sh && $3 == wm {print $1}' "$profiles")
-case $release in 6.5.22f|6.5.30f) ;; *) fail 'donor shell and 4Dwm do not match a supported release profile' ;; esac
 toolchest_hash=$("$reader" --sha256 "$source_image" /usr/bin/X11/toolchest) || fail 'could not read Toolchest'
 profile=
-for plan in /usr/local/share/xiri/plans/"$release".plan /usr/local/share/xiri/plans/"$release"-*.plan; do
+for plan in /usr/local/share/xiri/plans/*.plan; do
     [ -f "$plan" ] || continue
-    if grep -Fqx "f|0555|/usr/bin/X11/toolchest||$toolchest_hash" "$plan"; then
+    if awk -F '|' -v sh="$shell_hash" -v wm="$wm_hash" -v chest="$toolchest_hash" '
+        $1 == "f" && $3 == "/sbin/sh" && $5 == sh { shell = 1 }
+        $1 == "f" && $3 == "/usr/bin/X11/4Dwm" && $5 == wm { manager = 1 }
+        $1 == "f" && $3 == "/usr/bin/X11/toolchest" && $5 == chest { menu = 1 }
+        END { exit !(shell && manager && menu) }' "$plan"; then
         [ -z "$profile" ] || fail 'multiple desktop import plans match this donor'
         profile=${plan##*/}
     fi
 done
-[ -n "$profile" ] || fail 'unrecognized donor installation: shell and 4Dwm match, but Toolchest differs from every qualified desktop profile'
+[ -n "$profile" ] || fail 'unrecognized donor installation: shell, 4Dwm and Toolchest do not match a qualified desktop profile'
+release=${profile%.plan}
+release=${release%%-*}
+case $release in 6.5.22f|6.5.22m|6.5.30f) ;; *) fail "unsupported desktop profile: $profile" ;; esac
 printf 'Identified IRIX %s from %s\n' "$release" "$source_image"
 printf 'Desktop profile: %s\n' "$profile"
 

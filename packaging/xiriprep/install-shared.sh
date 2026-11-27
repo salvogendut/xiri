@@ -6,7 +6,7 @@ export PATH
 umask 022
 fail() { echo "xiriprep: $*" >&2; exit 1; }
 image=$1 release=$2
-case $release in 6.5.22f|6.5.30f) ;; *) exit 2 ;; esac
+case $release in 6.5.22f|6.5.22m|6.5.30f) ;; *) exit 2 ;; esac
 share=/usr/local/share/xiri
 profile=${3:-$release.plan}
 case "$release/$profile" in

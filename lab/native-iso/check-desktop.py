@@ -6,6 +6,7 @@ import json
 import os
 from pathlib import Path
 import secrets
+import shutil
 import signal
 import subprocess
 import sys
@@ -28,12 +29,19 @@ native = load('native_iso_check', 'lab/native-iso/check-install.py')
 saver = load('native_saver_check', 'lab/sgi-saver/check.py')
 
 
-def data_cd(release, donor, output, expected_hash=None):
-    pin = json.loads((ROOT / 'lab/irix-donor' / (release + '.json')).read_text())
-    if sha256(donor) != (expected_hash or pin['chd_sha256']):
-        raise ValueError(f'Donor differs from the expected {release} disk')
+def donor_medium(donor, work, makefs):
+    if makefs:
+        directory = work / 'donors'
+        directory.mkdir()
+        shutil.copyfile(donor, directory / 'IRIX donor.chd')
+        output = work / 'donors.ffs'
+        subprocess.run([makefs, '-t', 'ffs', '-B', 'be', '-o', 'version=2',
+                        output, directory], check=True)
+        return output
+    output = work / 'donor.iso'
     subprocess.run(['genisoimage', '-quiet', '-R', '-V', 'OWNER_DONOR', '-o', output,
                     '-graft-points', 'IRIX donor.chd=' + str(donor)], check=True)
+    return output
 
 
 def cold_root(lab):
@@ -58,9 +66,10 @@ def poweroff(lab):
     raise RuntimeError('IRIS did not observe the guest powering off')
 
 
-def prepare(guest, release):
+def prepare(guest, release, filesystem):
     cmd = guest.command
-    cmd('mkdir -p /cdrom && mount -r -t cd9660 /dev/cd0a /cdrom')
+    mount = 'ffs /dev/sd1c' if filesystem else 'cd9660 /dev/cd0a'
+    cmd(f'mkdir -p /cdrom && mount -r -t {mount} /cdrom')
     cmd('test -x /usr/local/sbin/xiriprep && test ! -e /emul/irix && test ! -e /home/native/.xsession')
     cmd("/usr/local/libexec/xiri/setup-xiri-user.sh xiritest && usermod -p \"$(pwhash -b 5 xiritest)\" xiritest")
     prefs = '/usr/people/xiritest/.Xresources'
@@ -112,14 +121,51 @@ def desktop(guest, output, password):
     return dict(windows=windows, dimensions=dimensions, winterm=handoff, saver=animation, native_ctwm=True)
 
 
+def check_game(guest, output):
+    from freeware_lifecycle import freeware_tab, game_window, history, logout, transaction
+    q = saver.desktop
+    q.greeter(guest)
+    cmd = guest.command
+    cmd('mkdir -p /cdrom /mnt/freeware && mount -rt cd9660 /dev/cd0a /cdrom && '
+        'mount -rt cd9660 /dev/cd1a /mnt/freeware')
+    cmd('sha256 /usr/people/xiritest/.Xresources /usr/people/xiritest/.xsession '
+        '/var/db/xiri-install/installed >/root/before-game.sha')
+    transaction(guest, 'sh /cdrom/prepare-live-base.sh /cdrom', 'bootstrap')
+    cmd('sha256 /emul/irix/usr/lib/filetype/desktop.otr >>/root/before-game.sha')
+    transaction(guest, 'sh /cdrom/xmahjongg.sh install /mnt/freeware', 'install-game')
+    installed = history(guest)
+    if 'fw_xmahjongg.sw.xmahjongg' not in installed:
+        raise RuntimeError('SGI inst did not record xmahjongg')
+    saver.login_catalog(guest, q.greeter, q.login)
+    x, y = freeware_tab(guest)
+    guest.monitor(f'ptr click {x + 215} {y + 80} left 2')
+    guest.wait_for('xwininfo -root -tree | grep -q XMahjongg', 120)
+    window = game_window(guest, output)
+    logout(guest)
+    q.greeter(guest)
+    transaction(guest, 'sh /cdrom/xmahjongg.sh remove /mnt/freeware', 'remove-game')
+    remaining = history(guest)
+    if 'fw_xmahjongg.sw.xmahjongg' in remaining:
+        raise RuntimeError('SGI inst still lists the removed game')
+    cmd('test ! -e /emul/irix/usr/freeware/bin/xmahjongg && '
+        'test ! -L /emul/irix/usr/lib/desktop/iconcatalog/pages/C/Freeware/xmahjongg && '
+        'sha256 -c /root/before-game.sha')
+    return dict(window=window, installed=installed, after_removal=remaining)
+
+
 def run(args, work):
     probe = load_probe()
     probe.TOOLBOX = []
     probe.IRIS, probe.CI = (args.emulator.resolve() / name for name in ('iris', 'iris-ci'))
-    cpu = 'r4400' if args.release == '6.5.22f' else 'r5000'
+    cpu = 'r5000' if args.release == '6.5.30f' else 'r4400'
     os.environ.update(IRIS_NO_IDLE='1', IRIS_REX_JIT_PROFILE=str(work / 'profile'))
-    cd = work / 'donor.iso'
-    data_cd(args.release, args.donor.resolve(), cd, args.donor_sha256)
+    expected_hash = args.donor_sha256
+    if not expected_hash:
+        pin = json.loads((ROOT / 'lab/irix-donor' / (args.release + '.json')).read_text())
+        expected_hash = pin['chd_sha256']
+    if sha256(args.donor) != expected_hash:
+        raise ValueError(f'Donor differs from the expected {args.release} disk')
+    medium = donor_medium(args.donor.resolve(), work, args.makefs)
     disk = work / 'blank.raw'
     with disk.open('xb') as stream:
         stream.truncate(6 * 1024**3)
@@ -130,10 +176,11 @@ def run(args, work):
     finally:
         install.close()
     prom = install.directory / 'nvram.bin'
-    prep = native.open_lab(probe, work / 'prepare', cpu, disk, prom, cd)
-    prep.config_text = prep.config_text.replace('[scsi.4]', '[scsi.6]')
+    prep = native.open_lab(probe, work / 'prepare', cpu, disk, prom)
+    slot = '[scsi.2]\noverlay = true' if args.makefs else '[scsi.6]\ncdrom = true'
+    prep.config_text += f'{slot}\npath = {json.dumps(str(medium))}\n'
     try:
-        receipt = prepare(cold_root(prep), args.release)
+        receipt = prepare(cold_root(prep), args.release, args.makefs)
         poweroff(prep)
     finally:
         prep.close()
@@ -143,6 +190,14 @@ def run(args, work):
         poweroff(boot)
     finally:
         boot.close()
+    if args.software_cd:
+        games = native.open_lab(probe, work / 'software', cpu, disk, prom, args.software_cd.resolve())
+        games.config_text += f'[scsi.5]\ncdrom = true\npath = {json.dumps(str(args.freeware_cd.resolve()))}\n'
+        try:
+            result['freeware'] = check_game(cold_root(games), args.output.resolve())
+            poweroff(games)
+        finally:
+            games.close()
     result.update(release=args.release, cpu=cpu, receipt=receipt, installer_sha256=sha256(args.iso),
                   donor_sha256=sha256(args.donor), iris_sha256=sha256(probe.IRIS))
     (args.output / 'result.json').write_text(json.dumps(result, indent=2) + '\n')
@@ -152,9 +207,16 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     for name in ('iso', 'donor', 'emulator', 'serial-prom', 'output'):
         parser.add_argument('--' + name, required=True, type=Path)
-    parser.add_argument('--release', choices=['6.5.22f', '6.5.30f'], required=True)
+    parser.add_argument('--release', choices=['6.5.22f', '6.5.22m', '6.5.30f'], required=True)
+    parser.add_argument('--makefs', type=Path, help='NetBSD nbmakefs for donors on a second FFS disk')
     parser.add_argument('--donor-sha256', help='expected CHD hash for an independently installed donor')
+    parser.add_argument('--software-cd', type=Path, help='release-specific installer supplement')
+    parser.add_argument('--freeware-cd', type=Path, help='May 2004 Freeware disc 4')
     args = parser.parse_args()
+    if args.release == '6.5.22m' and not args.donor_sha256:
+        parser.error('supply the SHA256 of the independently sourced maintenance donor')
+    if bool(args.software_cd) != bool(args.freeware_cd):
+        parser.error('supply the installer supplement and Freeware disc together')
     args.output.mkdir(parents=True, exist_ok=False)
     signal.signal(signal.SIGTERM, signal.default_int_handler)
     with tempfile.TemporaryDirectory(dir=args.output) as tmp:

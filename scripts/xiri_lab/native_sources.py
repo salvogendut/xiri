@@ -27,6 +27,7 @@ RECIPE = ('scripts/build-xiribsd-iso.py', 'scripts/xiri_lab/native_sources.py',
           'packaging/xiriprep/install-shared.sh', 'packaging/xiriprep/build-runtime.py',
           'packaging/xiriprep/plans/6.5.22f.plan', 'packaging/xiriprep/plans/6.5.30f.plan',
           'packaging/xiriprep/plans/6.5.22f-ip28.patch', 'packaging/xiriprep/plans/6.5.30f-ip30.patch',
+          'packaging/xiriprep/plans/6.5.22m.patch',
           'scripts/build-native-fam.py', 'scripts/xiri_lab/native_package.py', 'lab/native-fam/source.json', 'runtime/install.sh', 'runtime/Makefile',
           *(str(p.relative_to(ROOT)) for d in ('bin', 'sbin', 'rc.d', 'etc', 'libexec')
             for p in sorted((ROOT / 'runtime' / d).glob('*')) if p.is_file()),
