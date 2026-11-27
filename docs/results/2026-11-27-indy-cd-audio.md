@@ -40,12 +40,15 @@ at the HAL2 output, sampled at 44.1 kHz. Opening the exported AIFF with
 `sfplay` still gave a read error in this emulator configuration.
 [Original SGI CD Player](2026-11-27-cd-audio-irix.png)
 
-On Xiri, tracing SGI `cdman` found its first blocking operation before
+On the audio-CD build, tracing SGI `cdman` found its first blocking operation before
 the drive was opened. Its allocator requests a writable 64 KiB shared,
-file-backed `MAP_AUTOGROW` mapping. The module returns `EINVAL`, then
+file-backed `MAP_AUTOGROW` mapping. That module returned `EINVAL`, then
 SGI libc raises `SIGFPE` while initializing the arena. Sound Editor
-also needs file-backed growth. Both remain on the compatibility roadmap.
+also requested file-backed growth.
 [Sound Editor comparison](2026-11-27-indy-microphone.md)
+
+The subsequent [shared-file mapping check](2026-11-27-indy-autogrow.md)
+records the new kernel behavior and the SGI application results.
 
 ## Reproduce the desktop check
 

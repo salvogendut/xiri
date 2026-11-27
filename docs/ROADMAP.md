@@ -33,15 +33,18 @@ their desktop preferences. [Fresh-install results](results/2026-11-27-xiriprep-d
    scratch tape. Record what the emulator exposes, what native NetBSD can
    do with it, and what the IRIX application can actually capture or play.
    SGI `sfrecord` supports the default mono microphone and selectable stereo.
-   `sfplay` replays the saved recording on both Indys. Sound Editor reaches scratch-file creation and then needs
-   file-backed `MAP_AUTOGROW`, which succeeds on the original IRIX Indy.
+   `sfplay` replays the saved recording on both Indys. SGI Sound Editor now
+   opens its 700×500 editing window on both desktop releases. Trace the
+   “Cannot create record thread” error when Record is pressed.
    Native capture also passes during simultaneous playback.
    The desktop microphone icon launches Media Recorder on both Indys.
-   Its audio-only launch still fails during shared-arena creation.
+   Retest its audio-only launch with the new shared-file support. Its
+   previous launch stopped while creating the shared arena.
    ISO 9660 data CDs now automount at `/CDROM` and open from the desktop on
    both Indys. Audio-only CHDs show the SGI music icon. Double-clicking it
    opens a native track selector backed by NetBSD `cdplay`. SGI CD Player
-   reaches the same shared-arena mapping requirement as Sound Editor.
+   opens a dialog saying it cannot find its requested drive on both releases.
+   [Shared-file growth and SGI clients](results/2026-11-27-indy-autogrow.md) ·
    [Two-track playback and SGI comparison](results/2026-11-27-indy-cd-audio.md) ·
    [Optical media checks](results/2026-11-27-indy-cdrom.md) ·
    [Microphone measurements](results/2026-11-27-indy-microphone.md) · [Indy device checks](results/2026-11-27-indy-media-devices.md) · [MediaTools inventory](ICON-CATALOG.md#mediatools-22)
@@ -657,7 +660,7 @@ dependency candidates; a visible window alone does not complete these checks.
 - [x] Power off the Indy from Toolchest or the 4Dwm desktop as an authorized user. Both IRIX releases use NetBSD's `operator` group and offer a confirmation before closing the session. [Menu, test disks and update CD](XIRI-IMAGE.md#power-off-from-toolchest-or-4dwm).
 - [x] Inventory the supplied [May 2004 freeware sets](results/2026-11-01-irix-freeware.md): four CDs, 489 distinct packages; record zero-filled ncurses/nedit metadata separately.
 - [x] Establish [native /usr/people account creation and shared-file access](results/2026-11-01-irix-installer.md), including cold-boot persistence.
-- [x] Measure and implement the installer's [shared zero-device mapping](results/2026-11-01-irix-mmap-shared.md): 472 original records, 1,180 native records/backing files and 44 controls. Regular-file AUTOGROW remains separate.
+- [x] Measure and implement the installer's [shared zero-device mapping](results/2026-11-01-irix-mmap-shared.md): 472 original records, 1,180 native records/backing files and 44 controls. The later [shared regular-file implementation](results/2026-11-27-indy-autogrow.md) covers user page faults on both release lines.
 - [x] Measure the specific `sproc(PR_SADDR|PR_BLOCK|PR_NOLIBC)` child lifecycle reached by [original inst](results/2026-11-01-irix-installer-shared.md): [112 executions / 200 original records](results/2026-11-01-irix-sproc-reference.md) establish entry, shared data/new mappings, private PRDA/LOCAL pages, descriptor ownership and parent release.
 - [x] Implement and qualify the [bounded two-member sproc lifecycle](results/2026-11-01-irix-sproc.md): 340 executions / 600 records and 44 controls, including group-aware guards, repeated creation, LOCAL replacement and exec/exit cleanup. Parent-death races, general multi-member updates and exhaustion failure injection remain separate.
 - [x] Retry [original inst with sproc](results/2026-11-01-irix-installer-sproc.md): child creation, armed parent release and native shell exec now succeed. F_DUPFD fails during stdout/stderr pipe setup; the dry run later reaches its watchdog.

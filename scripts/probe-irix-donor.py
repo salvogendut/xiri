@@ -42,6 +42,8 @@ def main():
                         help='select Start System after this many seconds for a seed that stops at PROM')
     parser.add_argument('--hdsp-query', type=Path,
                         help='run the n32 HDSP query and trace the two audio panels on the donor copy')
+    parser.add_argument('--mmap-fixtures', type=Path,
+                        help='run the shared file-growth fixture tar on a private donor')
     args = parser.parse_args()
     if not args.serial_only and not args.login_golden:
         parser.error('--login-golden is required unless --serial-only is selected')
@@ -93,7 +95,7 @@ overlay = true
 mode = "nat"
 mac = "08:00:69:12:34:56"
 '''
-    if args.hdsp_query:
+    if args.hdsp_query or args.mmap_fixtures:
         config += f'\n[scsi.2]\npath = {json.dumps(str(out/"scratch.raw"))}\nscratch = true\nsize_mb = 8\n'
     (out/'iris.toml').write_text(config)
     result['config_sha256'] = sha256(out/'iris.toml')
@@ -212,6 +214,14 @@ mac = "08:00:69:12:34:56"
                     or not report.endswith('HDSP reference complete\n')):
                 raise RuntimeError('incomplete HDSP report at ' + str(reference))
             result['hdsp_reference_sha256'] = sha256(reference)
+        if args.mmap_fixtures:
+            ci('put', str(args.mmap_fixtures.resolve()), '--to', '/tmp/ag.tar', timeout=150)
+            ci('run', 'mkdir /tmp/ag && cd /tmp/ag && tar xf /tmp/ag.tar && '
+               '/bin/sh cases.sh /tmp/ag && tar cf /tmp/records.tar records',
+               '--timeout', '240', timeout=260)
+            ci('scratch', 'clear')
+            ci('run', 'dd if=/tmp/records.tar of=/dev/rdsk/dks0d2s0 bs=512 conv=sync,notrunc')
+            ci('scratch', 'read', str(out / 'records.tar'), '--length', '1048576')
         ci('serial-send', 'sync; shutdown -p -g0 -y')
         for _ in range(24):
             text = (out/'serial.log').read_text(errors='replace')

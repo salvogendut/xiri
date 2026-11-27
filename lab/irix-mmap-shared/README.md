@@ -1,4 +1,9 @@
-# Shared mappings and zero-device AUTOGROW
+# Shared mappings and AUTOGROW
+
+For the current shared regular-file implementation, the paired vendor
+measurements and the desktop clients, see the [Indy file-growth check](../../docs/results/2026-11-27-indy-autogrow.md).
+
+## Original installer checkpoint
 
 Original `inst` requests a 1 MiB READ|WRITE mapping of an O_RDWR `/dev/zero`
 descriptor with flags `0x141`: SHARED|AUTOGROW|AUTORESRV. Its startup previously
@@ -12,7 +17,7 @@ device check and mapping. Native mmap converts the zero device to anonymous
 memory and supplies sharing across fork and lifetime beyond descriptor close.
 No core-kernel hook is added.
 
-Regular-file AUTOGROW remains EINVAL. It requires different behavior: the
+At this checkpoint regular-file AUTOGROW returned EINVAL. It requires different behavior: the
 [original mmap manual](https://techpubs.jurassic.nl/manpages_0530/cat2/standard/mmap.html)
 describes extending shared files when a process stores beyond EOF, and private
 pages without extending the backing file for private mappings. Extending a

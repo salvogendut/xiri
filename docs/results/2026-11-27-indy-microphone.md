@@ -92,12 +92,12 @@ Audio Panel preference dialog still needs an interactive check.
 [NetBSD microphone modes](https://github.com/salvogendut/NetBSD-xiri/commit/0ff9181c3d7) ·
 [SGI Audio Panel guide](https://techpubs.jurassic.nl/library/manuals/2000/007-2275-008/sgi_html/apb.html)
 
-On XiriBSD, both vendor releases now pass the input-rate query and the
-`F_ALLOCSP` scratch-file operation. Both next request a writable 64 KiB
-shared mapping with `MAP_AUTOGROW`. The module returns `EINVAL`, the editor
-removes its scratch file and exits before it opens a window. A private
+On the microphone build, both vendor releases passed the input-rate query and the
+`F_ALLOCSP` scratch-file operation. Both then requested a writable 64 KiB
+shared mapping with `MAP_AUTOGROW`. That module returned `EINVAL`, and the editor
+removed its scratch file and exited before opening a window. A private
 experiment allowing mappings within an already allocated file also failed
-at this call. Implementing file growth on page access is the next GUI step.
+at this call.
 The original IRIX reference previously showed that even a *read* past EOF
 can grow the file, while creating the mapping leaves its length alone.
 [File-mapping reference checks](../../lab/irix-mmap-shared/README.md) ·
@@ -110,6 +110,9 @@ check that a read-only descriptor rejects resizing. The same n32 and o32
 probes passed on original IRIX 6.5.22f on the Indy and 6.5.30f on the O2,
 and on both XiriBSD Indys. Use a fresh filename
 when running either probe. [NetBSD scratch-file operations](https://github.com/salvogendut/NetBSD-xiri/commit/176ffc8ff5d) · [SGI fcntl(2)](https://help.graphica.com.au/irix-6.5.30/man/2/fcntl)
+
+The subsequent [shared-file mapping check](2026-11-27-indy-autogrow.md)
+records the new kernel behavior and the SGI application results.
 
 ## Reproduce on the lab Indys
 

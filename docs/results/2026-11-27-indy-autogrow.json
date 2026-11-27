@@ -1,0 +1,663 @@
+{
+  "netbsd": "2223c5f0b4bf43a0bd68946e378f2f49907ee7e8",
+  "iris": "65039d9066a380233f927bf5208fbd6d63992552",
+  "upstream": "afaf7a5504377848c413dc6ac33a65b60dfe574b",
+  "kernel_sha256": "d57eede0a7b3c7ff84ca5a630116653ed60a0410b44a861dc1898b6e10c3e4b8",
+  "boot_kernel_sha256": "3c2b9626629eb5d0ee25009edb2c61a85346b62ba1c8234dbb0ac5d12f76088f",
+  "module_sha256": "fd58fc1dffbba2fc2167dd32fdd63c21ab35c6c8787d846de546b77d28b62149",
+  "releases": {
+    "6.5.22f": {
+      "reference_machine": "indy_ip24",
+      "reference_chd_sha256": "b4fff76ffa0ca00c0a90da1c94a3eb41f5f6ba4cb13c0af258b4acca4ad95c41",
+      "reference_clean_shutdown": true,
+      "xiri_cpu": "r4400",
+      "xiri_chd_sha256": "53fa1e2006e19dfcbe8950b919de447c043487e84b06710bfc3fea86119f382b",
+      "abis": [
+        "o32",
+        "n32"
+      ],
+      "cases_per_system": 24,
+      "native_control": "zero=1 shared=1 private=1 close=1 file=1 eof=1",
+      "results": {
+        "irix": {
+          "installer-close-fork": {
+            "page": 4096,
+            "mmap_errno": 0,
+            "initial_bytes": 32768,
+            "mapped_bytes": 0,
+            "child_code": 1,
+            "child_status": 37,
+            "final_bytes": 32768,
+            "byte_at_target": 60,
+            "uid": 0,
+            "backing_sha256": "8c0abddbd39cb134d0087c4a9714d6dfcb89d42bd6e4d6b1b27c0b6050985709"
+          },
+          "private-past-eof-store": {
+            "page": 4096,
+            "mmap_errno": 0,
+            "initial_bytes": 17,
+            "mapped_bytes": 17,
+            "child_code": 1,
+            "child_status": 37,
+            "final_bytes": 17,
+            "byte_at_target": null,
+            "uid": 0,
+            "backing_sha256": "25cdb013c422dbc4ec8b445611d86e4205e6b953ec782566e381e055411e5cba"
+          },
+          "shared-file-fork": {
+            "page": 4096,
+            "mmap_errno": 0,
+            "initial_bytes": 32768,
+            "mapped_bytes": 32768,
+            "child_code": 1,
+            "child_status": 37,
+            "final_bytes": 32768,
+            "byte_at_target": 60,
+            "uid": 0,
+            "backing_sha256": "d32322d58d3b1d6478ca8830e90c63829d405b6d6f27c40d6134b5dccbd4f4eb"
+          },
+          "shared-file-second-map": {
+            "page": 4096,
+            "mmap_errno": 0,
+            "initial_bytes": 32768,
+            "mapped_bytes": 32768,
+            "child_code": 0,
+            "child_status": 0,
+            "final_bytes": 32768,
+            "byte_at_target": 60,
+            "uid": 0,
+            "backing_sha256": "e0fcf1bdcfc0cc744bdb35d123982085aa1760227ecd1eb7e780f5422947f2ad"
+          },
+          "shared-grow-empty-store": {
+            "page": 4096,
+            "mmap_errno": 0,
+            "initial_bytes": 0,
+            "mapped_bytes": 0,
+            "child_code": 1,
+            "child_status": 37,
+            "final_bytes": 12288,
+            "byte_at_target": 115,
+            "uid": 0,
+            "backing_sha256": "eff49833348e23012d772173d82ceef137f8621eb2a6501a2c32a75b44f79a3c"
+          },
+          "shared-grow-file-readonly": {
+            "page": 4096,
+            "mmap_errno": 13,
+            "initial_bytes": 32768,
+            "mapped_bytes": 32768,
+            "child_code": 0,
+            "child_status": 0,
+            "final_bytes": 32768,
+            "byte_at_target": 60,
+            "uid": 0,
+            "backing_sha256": "8c0abddbd39cb134d0087c4a9714d6dfcb89d42bd6e4d6b1b27c0b6050985709"
+          },
+          "shared-grow-within-file": {
+            "page": 4096,
+            "mmap_errno": 0,
+            "initial_bytes": 32768,
+            "mapped_bytes": 32768,
+            "child_code": 0,
+            "child_status": 0,
+            "final_bytes": 32768,
+            "byte_at_target": 60,
+            "uid": 0,
+            "backing_sha256": "52b15d4b7977986fc97fdfa386f0a73c0ad9e8a26b5416bae8110f272719d55c"
+          },
+          "shared-no-grow-past-eof-read": {
+            "page": 4096,
+            "mmap_errno": 0,
+            "initial_bytes": 17,
+            "mapped_bytes": 17,
+            "child_code": 2,
+            "child_status": 10,
+            "final_bytes": 17,
+            "byte_at_target": null,
+            "uid": 0,
+            "backing_sha256": "25cdb013c422dbc4ec8b445611d86e4205e6b953ec782566e381e055411e5cba"
+          },
+          "shared-no-grow-past-eof-store": {
+            "page": 4096,
+            "mmap_errno": 0,
+            "initial_bytes": 17,
+            "mapped_bytes": 17,
+            "child_code": 2,
+            "child_status": 10,
+            "final_bytes": 17,
+            "byte_at_target": null,
+            "uid": 0,
+            "backing_sha256": "25cdb013c422dbc4ec8b445611d86e4205e6b953ec782566e381e055411e5cba"
+          },
+          "shared-past-eof-read": {
+            "page": 4096,
+            "mmap_errno": 0,
+            "initial_bytes": 17,
+            "mapped_bytes": 17,
+            "child_code": 1,
+            "child_status": 37,
+            "final_bytes": 12288,
+            "byte_at_target": 0,
+            "uid": 0,
+            "backing_sha256": "69072d3b56757843ee00a4bc2dc5c3979b24f4bde66c05528e569c4b4113d0d3"
+          },
+          "shared-past-eof-store": {
+            "page": 4096,
+            "mmap_errno": 0,
+            "initial_bytes": 17,
+            "mapped_bytes": 17,
+            "child_code": 1,
+            "child_status": 37,
+            "final_bytes": 12288,
+            "byte_at_target": 115,
+            "uid": 0,
+            "backing_sha256": "8b31e41e1c36dd7671efedc71e16c5c64a425563a8b5ab890ceeeefa589d8029"
+          },
+          "shared-readonly-store": {
+            "page": 4096,
+            "mmap_errno": 0,
+            "initial_bytes": 32768,
+            "mapped_bytes": 0,
+            "child_code": 2,
+            "child_status": 11,
+            "final_bytes": 32768,
+            "byte_at_target": 60,
+            "uid": 0,
+            "backing_sha256": "8c0abddbd39cb134d0087c4a9714d6dfcb89d42bd6e4d6b1b27c0b6050985709"
+          }
+        },
+        "xiri": {
+          "installer-close-fork": {
+            "page": 8192,
+            "mmap_errno": 0,
+            "initial_bytes": 32768,
+            "mapped_bytes": 0,
+            "child_code": 1,
+            "child_status": 37,
+            "final_bytes": 32768,
+            "byte_at_target": 60,
+            "uid": 1001,
+            "backing_sha256": "8c0abddbd39cb134d0087c4a9714d6dfcb89d42bd6e4d6b1b27c0b6050985709"
+          },
+          "shared-file-fork": {
+            "page": 8192,
+            "mmap_errno": 0,
+            "initial_bytes": 32768,
+            "mapped_bytes": 32768,
+            "child_code": 1,
+            "child_status": 37,
+            "final_bytes": 32768,
+            "byte_at_target": 60,
+            "uid": 1001,
+            "backing_sha256": "d32322d58d3b1d6478ca8830e90c63829d405b6d6f27c40d6134b5dccbd4f4eb"
+          },
+          "shared-file-second-map": {
+            "page": 8192,
+            "mmap_errno": 0,
+            "initial_bytes": 32768,
+            "mapped_bytes": 32768,
+            "child_code": 0,
+            "child_status": 0,
+            "final_bytes": 32768,
+            "byte_at_target": 60,
+            "uid": 1001,
+            "backing_sha256": "e0fcf1bdcfc0cc744bdb35d123982085aa1760227ecd1eb7e780f5422947f2ad"
+          },
+          "shared-past-eof-store": {
+            "page": 8192,
+            "mmap_errno": 0,
+            "initial_bytes": 17,
+            "mapped_bytes": 17,
+            "child_code": 1,
+            "child_status": 37,
+            "final_bytes": 16384,
+            "byte_at_target": 115,
+            "uid": 1001,
+            "backing_sha256": "3d26fbb8f24e040c7538336d984eef9d6f6a2ac0471a2021bdc22474d7ca3a7c"
+          },
+          "shared-past-eof-read": {
+            "page": 8192,
+            "mmap_errno": 0,
+            "initial_bytes": 17,
+            "mapped_bytes": 17,
+            "child_code": 1,
+            "child_status": 37,
+            "final_bytes": 16384,
+            "byte_at_target": 0,
+            "uid": 1001,
+            "backing_sha256": "9f811e3f30eda9951d142a9ab48d901b70646dbfdd4dbe9024e9d950975abc11"
+          },
+          "private-past-eof-store": {
+            "page": 8192,
+            "mmap_errno": 22,
+            "initial_bytes": 17,
+            "mapped_bytes": 17,
+            "child_code": 0,
+            "child_status": 0,
+            "final_bytes": 17,
+            "byte_at_target": null,
+            "uid": 1001,
+            "backing_sha256": "25cdb013c422dbc4ec8b445611d86e4205e6b953ec782566e381e055411e5cba"
+          },
+          "shared-no-grow-past-eof-store": {
+            "page": 8192,
+            "mmap_errno": 0,
+            "initial_bytes": 17,
+            "mapped_bytes": 17,
+            "child_code": 2,
+            "child_status": 10,
+            "final_bytes": 17,
+            "byte_at_target": null,
+            "uid": 1001,
+            "backing_sha256": "25cdb013c422dbc4ec8b445611d86e4205e6b953ec782566e381e055411e5cba"
+          },
+          "shared-no-grow-past-eof-read": {
+            "page": 8192,
+            "mmap_errno": 0,
+            "initial_bytes": 17,
+            "mapped_bytes": 17,
+            "child_code": 2,
+            "child_status": 10,
+            "final_bytes": 17,
+            "byte_at_target": null,
+            "uid": 1001,
+            "backing_sha256": "25cdb013c422dbc4ec8b445611d86e4205e6b953ec782566e381e055411e5cba"
+          },
+          "shared-grow-empty-store": {
+            "page": 8192,
+            "mmap_errno": 0,
+            "initial_bytes": 0,
+            "mapped_bytes": 0,
+            "child_code": 1,
+            "child_status": 37,
+            "final_bytes": 16384,
+            "byte_at_target": 115,
+            "uid": 1001,
+            "backing_sha256": "c5a71601ed02056492c6c0d20366c51ae04923e3d84325fdce8f3eaa1307d6a1"
+          },
+          "shared-grow-within-file": {
+            "page": 8192,
+            "mmap_errno": 0,
+            "initial_bytes": 32768,
+            "mapped_bytes": 32768,
+            "child_code": 0,
+            "child_status": 0,
+            "final_bytes": 32768,
+            "byte_at_target": 60,
+            "uid": 1001,
+            "backing_sha256": "52b15d4b7977986fc97fdfa386f0a73c0ad9e8a26b5416bae8110f272719d55c"
+          },
+          "shared-grow-file-readonly": {
+            "page": 8192,
+            "mmap_errno": 13,
+            "initial_bytes": 32768,
+            "mapped_bytes": 32768,
+            "child_code": 0,
+            "child_status": 0,
+            "final_bytes": 32768,
+            "byte_at_target": 60,
+            "uid": 1001,
+            "backing_sha256": "8c0abddbd39cb134d0087c4a9714d6dfcb89d42bd6e4d6b1b27c0b6050985709"
+          },
+          "shared-readonly-store": {
+            "page": 8192,
+            "mmap_errno": 0,
+            "initial_bytes": 32768,
+            "mapped_bytes": 0,
+            "child_code": 2,
+            "child_status": 11,
+            "final_bytes": 32768,
+            "byte_at_target": 60,
+            "uid": 1001,
+            "backing_sha256": "8c0abddbd39cb134d0087c4a9714d6dfcb89d42bd6e4d6b1b27c0b6050985709"
+          }
+        }
+      },
+      "xiri_clean_shutdown": true,
+      "apps": {
+        "cdman": {
+          "windows": [
+            "0x1800011 \"cdman\": (\"errorDialog_popup\" \"CdPlayer\")  379x118+0+0  +451+454"
+          ],
+          "log": "250 ttyp1  S+   0:00.02 sh /tmp/ag/launch-cdman \n 252 ttyp1  S+   0:00.32 /emul/irix/usr/sbin/cdman"
+        },
+        "soundeditor": {
+          "windows": [
+            "0x1a0003d \"SoundEditor: Untitled\": (\"soundeditor\" \"SoundEditor\")  700x500+0+0  +32+32"
+          ],
+          "log": "0\n 250 ttyp1  I+   0:00.02 sh /tmp/ag/launch-cdman \n 252 ttyp1  S+   0:00.32 /emul/irix/usr/sbin/cdman \n2356 ttyp1  S+   0:00.49 /emul/irix/usr/sbin/soundeditor",
+          "record_and_play": {
+            "observation": "Record opened a Sound Editor error dialog"
+          }
+        }
+      }
+    },
+    "6.5.30f": {
+      "reference_machine": "o2_ip32",
+      "reference_chd_sha256": "339f74457dfbb06813681ab5db2ccfdd29d394e8a02dfcdcd6c6ac7c22a836db",
+      "reference_clean_shutdown": true,
+      "xiri_cpu": "r5000",
+      "xiri_chd_sha256": "a2e3272266c362d1db236bb9413f196ca533c03f55213fc6bbfa5274ddd66d26",
+      "abis": [
+        "o32",
+        "n32"
+      ],
+      "cases_per_system": 24,
+      "native_control": "zero=1 shared=1 private=1 close=1 file=1 eof=1",
+      "results": {
+        "irix": {
+          "installer-close-fork": {
+            "page": 4096,
+            "mmap_errno": 0,
+            "initial_bytes": 32768,
+            "mapped_bytes": 0,
+            "child_code": 1,
+            "child_status": 37,
+            "final_bytes": 32768,
+            "byte_at_target": 60,
+            "uid": 0,
+            "backing_sha256": "8c0abddbd39cb134d0087c4a9714d6dfcb89d42bd6e4d6b1b27c0b6050985709"
+          },
+          "private-past-eof-store": {
+            "page": 4096,
+            "mmap_errno": 0,
+            "initial_bytes": 17,
+            "mapped_bytes": 17,
+            "child_code": 1,
+            "child_status": 37,
+            "final_bytes": 17,
+            "byte_at_target": null,
+            "uid": 0,
+            "backing_sha256": "25cdb013c422dbc4ec8b445611d86e4205e6b953ec782566e381e055411e5cba"
+          },
+          "shared-file-fork": {
+            "page": 4096,
+            "mmap_errno": 0,
+            "initial_bytes": 32768,
+            "mapped_bytes": 32768,
+            "child_code": 1,
+            "child_status": 37,
+            "final_bytes": 32768,
+            "byte_at_target": 60,
+            "uid": 0,
+            "backing_sha256": "d32322d58d3b1d6478ca8830e90c63829d405b6d6f27c40d6134b5dccbd4f4eb"
+          },
+          "shared-file-second-map": {
+            "page": 4096,
+            "mmap_errno": 0,
+            "initial_bytes": 32768,
+            "mapped_bytes": 32768,
+            "child_code": 0,
+            "child_status": 0,
+            "final_bytes": 32768,
+            "byte_at_target": 60,
+            "uid": 0,
+            "backing_sha256": "e0fcf1bdcfc0cc744bdb35d123982085aa1760227ecd1eb7e780f5422947f2ad"
+          },
+          "shared-grow-empty-store": {
+            "page": 4096,
+            "mmap_errno": 0,
+            "initial_bytes": 0,
+            "mapped_bytes": 0,
+            "child_code": 1,
+            "child_status": 37,
+            "final_bytes": 12288,
+            "byte_at_target": 115,
+            "uid": 0,
+            "backing_sha256": "eff49833348e23012d772173d82ceef137f8621eb2a6501a2c32a75b44f79a3c"
+          },
+          "shared-grow-file-readonly": {
+            "page": 4096,
+            "mmap_errno": 13,
+            "initial_bytes": 32768,
+            "mapped_bytes": 32768,
+            "child_code": 0,
+            "child_status": 0,
+            "final_bytes": 32768,
+            "byte_at_target": 60,
+            "uid": 0,
+            "backing_sha256": "8c0abddbd39cb134d0087c4a9714d6dfcb89d42bd6e4d6b1b27c0b6050985709"
+          },
+          "shared-grow-within-file": {
+            "page": 4096,
+            "mmap_errno": 0,
+            "initial_bytes": 32768,
+            "mapped_bytes": 32768,
+            "child_code": 0,
+            "child_status": 0,
+            "final_bytes": 32768,
+            "byte_at_target": 60,
+            "uid": 0,
+            "backing_sha256": "52b15d4b7977986fc97fdfa386f0a73c0ad9e8a26b5416bae8110f272719d55c"
+          },
+          "shared-no-grow-past-eof-read": {
+            "page": 4096,
+            "mmap_errno": 0,
+            "initial_bytes": 17,
+            "mapped_bytes": 17,
+            "child_code": 2,
+            "child_status": 10,
+            "final_bytes": 17,
+            "byte_at_target": null,
+            "uid": 0,
+            "backing_sha256": "25cdb013c422dbc4ec8b445611d86e4205e6b953ec782566e381e055411e5cba"
+          },
+          "shared-no-grow-past-eof-store": {
+            "page": 4096,
+            "mmap_errno": 0,
+            "initial_bytes": 17,
+            "mapped_bytes": 17,
+            "child_code": 2,
+            "child_status": 10,
+            "final_bytes": 17,
+            "byte_at_target": null,
+            "uid": 0,
+            "backing_sha256": "25cdb013c422dbc4ec8b445611d86e4205e6b953ec782566e381e055411e5cba"
+          },
+          "shared-past-eof-read": {
+            "page": 4096,
+            "mmap_errno": 0,
+            "initial_bytes": 17,
+            "mapped_bytes": 17,
+            "child_code": 1,
+            "child_status": 37,
+            "final_bytes": 12288,
+            "byte_at_target": 0,
+            "uid": 0,
+            "backing_sha256": "69072d3b56757843ee00a4bc2dc5c3979b24f4bde66c05528e569c4b4113d0d3"
+          },
+          "shared-past-eof-store": {
+            "page": 4096,
+            "mmap_errno": 0,
+            "initial_bytes": 17,
+            "mapped_bytes": 17,
+            "child_code": 1,
+            "child_status": 37,
+            "final_bytes": 12288,
+            "byte_at_target": 115,
+            "uid": 0,
+            "backing_sha256": "8b31e41e1c36dd7671efedc71e16c5c64a425563a8b5ab890ceeeefa589d8029"
+          },
+          "shared-readonly-store": {
+            "page": 4096,
+            "mmap_errno": 0,
+            "initial_bytes": 32768,
+            "mapped_bytes": 0,
+            "child_code": 2,
+            "child_status": 11,
+            "final_bytes": 32768,
+            "byte_at_target": 60,
+            "uid": 0,
+            "backing_sha256": "8c0abddbd39cb134d0087c4a9714d6dfcb89d42bd6e4d6b1b27c0b6050985709"
+          }
+        },
+        "xiri": {
+          "installer-close-fork": {
+            "page": 8192,
+            "mmap_errno": 0,
+            "initial_bytes": 32768,
+            "mapped_bytes": 0,
+            "child_code": 1,
+            "child_status": 37,
+            "final_bytes": 32768,
+            "byte_at_target": 60,
+            "uid": 1001,
+            "backing_sha256": "8c0abddbd39cb134d0087c4a9714d6dfcb89d42bd6e4d6b1b27c0b6050985709"
+          },
+          "shared-file-fork": {
+            "page": 8192,
+            "mmap_errno": 0,
+            "initial_bytes": 32768,
+            "mapped_bytes": 32768,
+            "child_code": 1,
+            "child_status": 37,
+            "final_bytes": 32768,
+            "byte_at_target": 60,
+            "uid": 1001,
+            "backing_sha256": "d32322d58d3b1d6478ca8830e90c63829d405b6d6f27c40d6134b5dccbd4f4eb"
+          },
+          "shared-file-second-map": {
+            "page": 8192,
+            "mmap_errno": 0,
+            "initial_bytes": 32768,
+            "mapped_bytes": 32768,
+            "child_code": 0,
+            "child_status": 0,
+            "final_bytes": 32768,
+            "byte_at_target": 60,
+            "uid": 1001,
+            "backing_sha256": "e0fcf1bdcfc0cc744bdb35d123982085aa1760227ecd1eb7e780f5422947f2ad"
+          },
+          "shared-past-eof-store": {
+            "page": 8192,
+            "mmap_errno": 0,
+            "initial_bytes": 17,
+            "mapped_bytes": 17,
+            "child_code": 1,
+            "child_status": 37,
+            "final_bytes": 16384,
+            "byte_at_target": 115,
+            "uid": 1001,
+            "backing_sha256": "3d26fbb8f24e040c7538336d984eef9d6f6a2ac0471a2021bdc22474d7ca3a7c"
+          },
+          "shared-past-eof-read": {
+            "page": 8192,
+            "mmap_errno": 0,
+            "initial_bytes": 17,
+            "mapped_bytes": 17,
+            "child_code": 1,
+            "child_status": 37,
+            "final_bytes": 16384,
+            "byte_at_target": 0,
+            "uid": 1001,
+            "backing_sha256": "9f811e3f30eda9951d142a9ab48d901b70646dbfdd4dbe9024e9d950975abc11"
+          },
+          "private-past-eof-store": {
+            "page": 8192,
+            "mmap_errno": 22,
+            "initial_bytes": 17,
+            "mapped_bytes": 17,
+            "child_code": 0,
+            "child_status": 0,
+            "final_bytes": 17,
+            "byte_at_target": null,
+            "uid": 1001,
+            "backing_sha256": "25cdb013c422dbc4ec8b445611d86e4205e6b953ec782566e381e055411e5cba"
+          },
+          "shared-no-grow-past-eof-store": {
+            "page": 8192,
+            "mmap_errno": 0,
+            "initial_bytes": 17,
+            "mapped_bytes": 17,
+            "child_code": 2,
+            "child_status": 10,
+            "final_bytes": 17,
+            "byte_at_target": null,
+            "uid": 1001,
+            "backing_sha256": "25cdb013c422dbc4ec8b445611d86e4205e6b953ec782566e381e055411e5cba"
+          },
+          "shared-no-grow-past-eof-read": {
+            "page": 8192,
+            "mmap_errno": 0,
+            "initial_bytes": 17,
+            "mapped_bytes": 17,
+            "child_code": 2,
+            "child_status": 10,
+            "final_bytes": 17,
+            "byte_at_target": null,
+            "uid": 1001,
+            "backing_sha256": "25cdb013c422dbc4ec8b445611d86e4205e6b953ec782566e381e055411e5cba"
+          },
+          "shared-grow-empty-store": {
+            "page": 8192,
+            "mmap_errno": 0,
+            "initial_bytes": 0,
+            "mapped_bytes": 0,
+            "child_code": 1,
+            "child_status": 37,
+            "final_bytes": 16384,
+            "byte_at_target": 115,
+            "uid": 1001,
+            "backing_sha256": "c5a71601ed02056492c6c0d20366c51ae04923e3d84325fdce8f3eaa1307d6a1"
+          },
+          "shared-grow-within-file": {
+            "page": 8192,
+            "mmap_errno": 0,
+            "initial_bytes": 32768,
+            "mapped_bytes": 32768,
+            "child_code": 0,
+            "child_status": 0,
+            "final_bytes": 32768,
+            "byte_at_target": 60,
+            "uid": 1001,
+            "backing_sha256": "52b15d4b7977986fc97fdfa386f0a73c0ad9e8a26b5416bae8110f272719d55c"
+          },
+          "shared-grow-file-readonly": {
+            "page": 8192,
+            "mmap_errno": 13,
+            "initial_bytes": 32768,
+            "mapped_bytes": 32768,
+            "child_code": 0,
+            "child_status": 0,
+            "final_bytes": 32768,
+            "byte_at_target": 60,
+            "uid": 1001,
+            "backing_sha256": "8c0abddbd39cb134d0087c4a9714d6dfcb89d42bd6e4d6b1b27c0b6050985709"
+          },
+          "shared-readonly-store": {
+            "page": 8192,
+            "mmap_errno": 0,
+            "initial_bytes": 32768,
+            "mapped_bytes": 0,
+            "child_code": 2,
+            "child_status": 11,
+            "final_bytes": 32768,
+            "byte_at_target": 60,
+            "uid": 1001,
+            "backing_sha256": "8c0abddbd39cb134d0087c4a9714d6dfcb89d42bd6e4d6b1b27c0b6050985709"
+          }
+        }
+      },
+      "xiri_clean_shutdown": true,
+      "apps": {
+        "cdman": {
+          "windows": [
+            "0x1800011 \"cdman\": (\"errorDialog_popup\" \"CdPlayer\")  379x118+0+0  +451+454"
+          ],
+          "log": "250 ttyp1  S+   0:00.02 sh /tmp/ag/launch-cdman \n 252 ttyp1  S+   0:00.34 /emul/irix/usr/sbin/cdman"
+        },
+        "soundeditor": {
+          "windows": [
+            "0x1a0003d \"SoundEditor: Untitled\": (\"soundeditor\" \"SoundEditor\")  700x500+0+0  +32+32"
+          ],
+          "log": "0\n 250 ttyp1  I+   0:00.02 sh /tmp/ag/launch-cdman \n 252 ttyp1  S+   0:00.34 /emul/irix/usr/sbin/cdman \n3693 ttyp1  S+   0:00.46 /emul/irix/usr/sbin/soundeditor",
+          "record_and_play": {
+            "observation": "Short recording: 0 frames"
+          }
+        }
+      }
+    }
+  },
+  "audio_cd_sha256": "10dc542b0283c5f961204c052374492268743e4fc6769bbeb42535476fda0300",
+  "iris_binary_sha256": "9a800615984088c1d51e6e716f5bdb5e1599caea0473a971207618f73e08fda7",
+  "fixtures_manifest_sha256": "4fa1c10ce004e4b1d1919b66118c3721ba705b2104bdaa6e4201dc1263a19bae"
+}

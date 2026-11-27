@@ -100,6 +100,11 @@ SCSI regressions and played track two in the original SGI CD Player.
 NetBSD `xiri` at `375916d7bba` carries the 32-bit optical and SCSI ioctl
 translations used by native `cdplay`. [Audio-CD qualification](results/2026-11-27-indy-cd-audio.md)
 
+The shared-file mapping cycle rechecked upstream `afaf7a55` on November 27.
+It was already in IRIS `xiri` at `65039d90`. That emulator booted the two
+original IRIX references and the two NetBSD Indy guests.
+[Shared mapping checks](results/2026-11-27-indy-autogrow.md)
+
 The SuperIRIX test CHD cycle integrated four further upstream commits through
 `dca458bc` into IRIS `xiri` at `854d12c4`. These cover virtio snapshots,
 Timekeeper year handling, shared machine constants and boot CI. The merge
