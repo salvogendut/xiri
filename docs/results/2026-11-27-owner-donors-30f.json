@@ -1,0 +1,92 @@
+{
+  "donor": "project-installed Octane IP30",
+  "profile": "6.5.30f-ip30.plan",
+  "entries": 1600,
+  "disk_medium": "data CD at SCSI ID 6",
+  "reference_plan_comparison": {
+    "unchanged": 1434,
+    "changed": 159,
+    "absent": 13
+  },
+  "fresh_install": {
+    "windows": [
+      "Icon Catalog:",
+      "Toolchest",
+      "winterm",
+      "xclock"
+    ],
+    "dimensions": "1280x1024",
+    "winterm": "NATIVE_HANDOFF pid=3057 sid=3057 pgid=3057 tpgid=3057 uid=1001 euid=1001 gid=100 egid=100 groups=1 tty=/dev/pts/1 rows=24 cols=80",
+    "saver": {
+      "demo_changed_pixels": [
+        17221,
+        21104
+      ],
+      "idle_changed_pixels": [
+        16036,
+        11636
+      ],
+      "idle_timeout_seconds": 8,
+      "key_wake": "Space (Demo and idle)",
+      "original_timeout_seconds": 600,
+      "disabled_timeout_seconds": 0,
+      "logout_to_xdm": true,
+      "next_login_idle_changed_pixels": [
+        51260,
+        67768
+      ]
+    },
+    "native_ctwm": true,
+    "freeware": {
+      "window": {
+        "window": "0x1800004 \"xmahjongg\": (\"xmahjongg\" \"XMahjongg\")  1006x614+0+0  +32+32",
+        "process": "1001 2156 /usr/lib/desktop/iconcatalog/pages/C/Freeware/xmahjongg"
+      },
+      "installed": [
+        "fw_common",
+        "fw_common.sw",
+        "fw_common.sw.index",
+        "fw_xmahjongg",
+        "fw_xmahjongg.sw",
+        "fw_xmahjongg.sw.xmahjongg"
+      ],
+      "after_removal": [
+        "fw_common",
+        "fw_common.sw",
+        "fw_common.sw.index"
+      ]
+    },
+    "release": "6.5.30f",
+    "cpu": "r5000",
+    "receipt": "6.5.30f 6b4af62fd7035b8fc3309ee49482f3529e5c710fafa3608ea9e48811e90e186e 108da12f14bf458cb738b0b6c91a3cfff9da5deea42efafaf80ebee2ddf2aa93",
+    "installer_sha256": "a2b6fc5f479e81bd4befa39fbf2aad54cd7442e3f2ef142ecac63dde2723ab06",
+    "donor_sha256": "9e0c6346c43eb65d077309d9878f2528c50e5a907ae507f52cc2bfacfafbbef0",
+    "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7"
+  },
+  "tools_update_on_reference_install": {
+    "release": "6.5.30f",
+    "update_iso": "4aee73a3aea378207b2d6bd39654d5d566af0afffac74ec7c552d16c8b4d0296",
+    "rollback_iso": "d3cf59f0474b6030de5903b9f28369faaf035a6af183aec329d76faadbffd0e8",
+    "previous_files_verified": 10,
+    "extra_plans_removed": 3,
+    "applied_and_restored_xresources": true,
+    "wrong_release_rejected": true,
+    "maintenance_stream_relabel_prevented": null,
+    "restored_files": [
+      "./usr/local/libexec/xiri/install-shared.sh",
+      "./usr/local/libexec/xiri/select-desktop.sh",
+      "./usr/local/libexec/xiri/setup-xiri-user.sh",
+      "./usr/local/libexec/xiri/xiri-donor-read",
+      "./usr/local/sbin/xiriprep",
+      "./usr/local/share/xiri/desktop-runtime.tgz",
+      "./usr/local/share/xiri/donor-signatures",
+      "./usr/local/share/xiri/plans/6.5.22f.plan",
+      "./usr/local/share/xiri/plans/6.5.30f.plan",
+      "./usr/local/share/xiri/xiriprep-source.tgz"
+    ]
+  },
+  "screenshots": {
+    "2026-11-27-owner-donors-30f-desktop.png": "83d4dce5fc99ebc00c48b23755f6bf6c1e6a8530c0776a9aa1a4ebe3ddcc20bb",
+    "2026-11-27-owner-donors-30f-game.png": "a5355590c5a50f8ae4ba2595d46f5e0e76364e28d9c4fd2846ef35f2fdd0e110"
+  }
+}

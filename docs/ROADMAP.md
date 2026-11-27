@@ -21,8 +21,13 @@ The native Indy installer now includes `xiriprep`. Blank-disk installs imported
 both reference donors, restored 4Dwm preferences across login and kept ctwm
 for a second account. [Fresh-install results](results/2026-11-27-xiriprep-desktop.md)
 
-1. Test independently installed donors for each release. Record which differing files or optional components need an additional import profile.
-2. Qualify native updates and optional software installation on the new `xiriprep` systems, including preservation of user preferences and a tested recovery path.
+1. Keep a third-party donor in installer acceptance alongside the project's
+   two original-media installations. The first external case is the SuperIRIX
+   6.5.22m Indy. Seek a separately sourced 6.5.30f disk for the same check.
+   [Donor inputs and results](results/2026-11-27-owner-donors.md)
+2. Extend the native tools update and rollback test to a kernel, matching
+   module and desktop runtime upgrade on systems created with `xiriprep`.
+   Include an interrupted update and recovery with existing user preferences.
 
 ## Desktop qualification
 

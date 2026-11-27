@@ -72,6 +72,13 @@ in `08e53ba7`. [Octane build and qualification](results/2026-11-23-octane-deskto
 
 ## IRIS upstream updates
 
+The November 27 owner-donor cycle merged upstream `0f064cfc` (11 new commits)
+into the fork at `727f8770` and pushed `xiri`. The snapshot merge keeps the
+fork’s selectable snapshot root and upstream’s current save/load format.
+The affected core tests passed (274 passed, four ignored), as did all 30
+iris-ci tests, 124 iris-gui tests and six machine snapshot integration tests.
+The Indy donor comparisons used the existing accelerated binary at `0bc52567`.
+
 The November 27 native installer and subsequent `xiriprep` cycles fetched `upstream/main` at
 `d8cf7e91` and verified it is an ancestor of IRIS `xiri` at `46c116ee`.
 The fetch for the on-target shared desktop import returned the same revision.

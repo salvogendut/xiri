@@ -12,7 +12,8 @@
 The first import installs the shared desktop and fonts, prepares the native
 services and selects the named account. Reboot before that account’s first
 4Dwm login. The donor can be removed after the import.
-[Fresh Indy qualification](results/2026-11-27-xiriprep-desktop.md)
+[Reference donor checks](results/2026-11-27-xiriprep-desktop.md) ·
+[Independently installed donors and tools update](results/2026-11-27-owner-donors.md)
 
 The earlier full desktop CDs and prepared CHDs provide working desktops for
 comparison and recovery. [Reference media and test results](results/2026-11-27-indy-saver-install.md)
@@ -52,9 +53,11 @@ while the build directory is in use. `-j` selects the number of build jobs.
 The default builds both toolchains. Developers can pass `--tools64` to reuse
 an existing NetBSD mips64eb toolchain for the kernel and module.
 
-To rebuild the Indy installer with on-target desktop import, use the
-[desktop installer lock](../lab/native-iso/indy-xiriprep-20261127.json) with
-the Xiri recipe revision in its `xiri` field and pass that file to `--lock`.
+To rebuild the current Indy installer, use the
+[five-profile installer lock](../lab/native-iso/indy-owner-donors-20261127.json)
+with the Xiri recipe revision in its `xiri` field and pass that file to
+`--lock`. The [earlier desktop installer lock](../lab/native-iso/indy-xiriprep-20261127.json)
+reproduces the version with the two original profiles.
 
 To reproduce the original November 27 ISO, use Xiri revision `ebdce50`
 (which includes its source lock and original recipe) and add
@@ -77,7 +80,9 @@ The stock 32-bit recovery kernel is `netbsd.stock`.
 
 The first target is an Indy. One native XiriBSD ISO should support two
 separately tested installations, one using a 6.5.22f donor and one using
-a 6.5.30f donor. An owner should be able to build the ISO before obtaining
+a 6.5.30f donor. Build both project donors from original media. Also test
+the same ISO with an installed disk from outside the project, retaining
+that disk's stream and provenance. An owner can build the ISO before obtaining
 or attaching a donor. The existing private desktop CDs and CHDs include
 imported SGI files. They serve as references for the finished desktop.
 
@@ -97,8 +102,12 @@ records the release, runtime and import plan in `/var/db/xiri-install`.
 
 The workstation importer uses `chdman` and `guestfish` and pins a whole-disk
 hash. The on-target reader identifies the SGI root partition and matches
-the IRIX shell and 4Dwm to per-file hashes from one release profile.
-Qualifying another independently installed donor remains open.
+the shell, 4Dwm and Toolchest together to a release and desktop import plan.
+The plans cover the original two donors, an additional Indigo2 6.5.22f
+and Octane 6.5.30f installation, and the independently distributed
+SuperIRIX Indy 6.5.22m. A newly encountered combination of libraries
+or optional components needs its own audit. The full import verifies each
+file in the selected plan. [Donor comparison](results/2026-11-27-owner-donors.md)
 
 The fork already supplies a read-only PUFFS `mount_xfs` with IRIX journal
 support. It accepts an extracted XFS partition in a regular file and requires
@@ -341,8 +350,8 @@ Our existing donor is separately identified in
 [the reference manifest](../lab/irix-reference/manifest.json): IRIX 6.5.22m,
 `irix65.chd`, SHA256
 `f0615ce71308026c1366c289be8de8a640a0ca83ca7b808139acb71f3482a659`.
-It came from the supplied RAR archive. Do not assume it is byte-identical to the
-linked TAR archive or that another installation includes the same freeware.
+The local RAR matches the uploader’s manifest. The TAR archive above remains
+unverified. [RAR archive provenance](IRIX-RESOURCES.md#provenance-of-the-downloads-images)
 
 The two disks have distinct roles: the IRIX image supplies original programs,
 libraries and resources; the target runs NetBSD, the compatibility module and

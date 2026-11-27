@@ -32,6 +32,11 @@ for new installation work and end-to-end qualification. Existing prepared
 CHDs and full desktop CDs are references for regression testing and recovery.
 [Installation workflow and current coverage](docs/XIRI-INSTALLATION.md)
 
+Build the project's two reference IRIX installations from original media.
+Also exercise `xiriprep` with an independently supplied installed IRIX disk.
+Record the provenance, detected release and first desktop login separately
+from the original-media tests.
+
 # Release lines
 
 Always maintain both IRIX 6.5.22 and IRIX 6.5.30 versions. Keep their donor

@@ -67,9 +67,17 @@ def open_panel(guest):
     x, y = raise_catalog(guest)
     guest.monitor(f'ptr click {x+315} {y+461} left')
     guest.wait_for('xwininfo -root -tree | grep -q "Icon Catalog: ControlPanels"', 60)
+    # The catalog can update its title before it finishes laying out the icons.
+    guest.monitor(f'ptr move {x+638} {y+148}')
+    time.sleep(1)
     guest.monitor(f'ptr click {x+638} {y+148} left 2')
     panel = '"ScreenSaver"[)] +300x420'
-    guest.wait_for("xwininfo -root -tree | grep -Eq '" + panel + "'", 90)
+    visible = "xwininfo -root -tree | grep -Eq '" + panel + "'"
+    try:
+        guest.wait_for(visible, 30)
+    except RuntimeError:
+        guest.monitor(f'ptr click {x+638} {y+176} left 2')
+        guest.wait_for(visible, 60)
     return position(guest, panel)
 
 

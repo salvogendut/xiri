@@ -57,7 +57,11 @@ paths, hashes, modes and link targets. Regenerate one after auditing a new
 workstation import ledger, for example with
 `python3 packaging/xiriprep/make-plan.py .work/imports/irix-6.5.22f-v1/manifest.json`.
 Review the result against the corresponding `.plan` file. The native importer
-checks each resource as it reads the mounted donor file.
+checks each resource as it reads the mounted donor file. Three reviewed
+patches generate alternate plans for the 6.5.22f Indigo2, 6.5.30f Octane
+and independently distributed 6.5.22m Indy. The Indy R4400 selects the
+Indigo2 donor’s MIPS III libraries. Toolchest distinguishes these plans
+from the two reference plans. [Donor checks and media](../docs/results/2026-11-27-owner-donors.md)
 [Native plans](../packaging/xiriprep/plans) · [Using xiriprep](../docs/XIRIPREP.md)
 
 The workstation importer pins **our qualified original-media 6.5.22f donor**, by CHD

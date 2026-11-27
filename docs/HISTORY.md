@@ -6,6 +6,10 @@ holds measurements and screenshots for individual builds.
 
 ## November 27, 2026
 
+The Indy installer gained plans for the project’s Indigo2 and Octane donors
+and the community SuperIRIX Indy. The latter has its own 6.5.22m receipt.
+[Donor qualification and tools update](results/2026-11-27-owner-donors.md)
+
 The Indy audio-v8 images bring the XiriBSD xdm logo and live Audio Panel
 mute updates to both IRIX releases. Existing audio-v7 desktops can upgrade
 in place and roll back using the same release's update CD.

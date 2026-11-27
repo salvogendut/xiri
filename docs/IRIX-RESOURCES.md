@@ -28,6 +28,28 @@ The working reference release is **IRIX 6.5.22**, confirmed by the user on
 identifies the maintenance release as **6.5.22m**. Resource and behavior
 findings below refer to that installation unless explicitly stated otherwise.
 
+### Provenance of the Downloads images
+
+SuperIRIX published this installed MAME Indy in 2023. The post describes
+installing GIMP 1.2.5, xosview and additional applications, and adding custom
+Icon Catalog entries. It also mentions scripts in `/usr/people/oracle` for
+adding and removing entries. The post calls the OS 6.5.2; the running guest
+reported **6.5.22m** with `uname -R`.
+[Author’s installation notes](https://forums.irixnet.org/thread-4081.html) ·
+[Shared folder and checksum manifest](https://drive.google.com/drive/folders/13iCS-C4rvPxkRDFj0XIWbPCmwuowfYDG)
+
+| Local archive | MD5 matched against the uploader’s `MD5SUM.txt` | Use in Xiri |
+| --- | --- | --- |
+| `irix65_chd.rar` | `2fdb6e7a0654ff5e875935285ebc8177` | Installed 6.5.22m desktop for comparing applications, resources and catalog layout. Independent donor for the on-target installer. |
+| `irix-sgi-freeware-cdroms-chd.rar` | `0a69fbb5f4f3ed4502bb92627fa21c09` | Four SGI Freeware distributions on one hard disk. Disc 4 supplies xmahjongg. [Local inventory of 489 packages](results/2026-11-01-irix-freeware.md) |
+
+The local disk has 21 links on the Freeware page. Its GIMP link resolves to
+`/usr/freeware/bin/gimp-1.2`, and `/usr/freeware/bin/xosview` exists. The
+two catalog scripts mentioned in the changelog were absent from the stated
+home directory in the inspected copy. The shared folder lists one installed
+system disk. The two original-media feature-stream donors remain the project’s
+reproducible baselines. [On-target donor tests](results/2026-11-27-owner-donors.md)
+
 The current reusable baseline and manual IRIS procedure are in
 [XIRI-IMAGE.md](XIRI-IMAGE.md). [IRIX-IMPORT.md](IRIX-IMPORT.md) records exact
 source/destination mappings, permission adjustments and the SGI catalog

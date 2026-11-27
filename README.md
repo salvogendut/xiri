@@ -20,7 +20,9 @@ The standard way to create a Xiri system is to **install XiriBSD, then run
 `xiriprep` as root on the installed machine**. The Indy is the reference platform.
 
 1. On a fresh Indy, install from the native XiriBSD ISO and boot from disk. If you already installed the earlier native ISO, add the tools CD to your existing system. [Fresh install in Prismatic](docs/INSTALL-INDY-PRISMATIC.md) · [Tools CD for an existing Indy](docs/XIRIPREP.md#use-the-tools-cd-on-an-existing-indy)
-2. Mount the media containing your installed IRIX 6.5.22f or 6.5.30f disk image.
+2. Mount the media containing your installed IRIX disk image. The reference
+   releases are 6.5.22f and 6.5.30f. The installer also recognizes the
+   independently distributed SuperIRIX Indy 6.5.22m.
    Give `xiriprep` the path to the CHD or raw file and the NetBSD login to prepare. [Using xiriprep](docs/XIRIPREP.md)
 
 On the first import, `xiriprep` installs the shared 4Dwm desktop, fonts and
@@ -48,7 +50,7 @@ ctwm with the 6.5.22 and 6.5.30 disk images. Physical testing is still ahead.
 ## Roadmap
 
 - **Desktop compatibility.** Complete everyday workflows in the original desktop and applications, including file operations, saved sessions and multimedia.
-- **Installation and updates.** Test additional owner-installed donors and upgrades of systems prepared with `xiriprep` on both IRIX release lines. [Installation plan](docs/XIRI-INSTALLATION.md#donor-preparation-roadmap)
+- **Installation and updates.** Keep reproducible original-media installs for both releases and test independently supplied disks. Extend update and recovery coverage on installed desktops. [Installation plan](docs/XIRI-INSTALLATION.md#donor-preparation-roadmap)
 - **Physical workstations.** Qualify the Indy on real hardware, then extend testing to the Indigo2, Octane and O2.
 
 [Full roadmap](docs/ROADMAP.md) · [Development history and test results](docs/HISTORY.md)

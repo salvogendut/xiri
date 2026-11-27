@@ -79,7 +79,8 @@ def prepare(guest, release, filesystem):
     checked = cmd(f'{prep} --check && test ! -e /var/db/xiri-install')
     profile = next((line.split(': ', 1)[1] for line in checked.splitlines()
                     if line.startswith('Desktop profile: ')), release + '.plan')
-    if profile not in (release + '.plan', '6.5.22f-ip28.plan', '6.5.30f-ip30.plan'):
+    if (f'Identified IRIX {release} from ' not in checked or
+            profile.split('-', 1)[0].removesuffix('.plan') != release):
         raise ValueError(f'Unexpected desktop profile: {profile}')
     # A release fingerprint can match even when a later resource has been damaged.
     cmd(f'plan=/usr/local/share/xiri/plans/{profile} && cp -p "$plan" /tmp/expected.plan && '
@@ -95,7 +96,10 @@ def prepare(guest, release, filesystem):
         'cmp -s /var/db/xiri-install/installed /emul/irix/.xiri-install-inputs && '
         'cmp -s /var/db/xiri-install/installed /usr/local/share/xiri/fonts/.xiri-install-inputs && '
         'test -x /emul/irix/usr/bin/X11/xlock && umount /cdrom')
-    return guest.read_text('cat /var/db/xiri-install/installed').strip()
+    receipt = guest.read_text('cat /var/db/xiri-install/installed').strip()
+    if receipt.split()[0] != release or receipt.split()[-1] != guest.read_text('sha256 -q "$plan"').strip():
+        raise ValueError(f'Installed receipt does not match {profile}: {receipt}')
+    return receipt
 
 
 def desktop(guest, output, password):
