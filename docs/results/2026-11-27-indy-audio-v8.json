@@ -1,0 +1,478 @@
+{
+  "native_profile": "netbsd-sgimips-indy-11.99.11-audio-v2",
+  "native_sha256": "83550ec73acfe5619e14563d0184023e20229a55a9b995786023ccecbe47d1ab",
+  "netbsd_revision": "888d4c1fb86aa27f49c71d4d9059faef855e7f85",
+  "prismatic_sha256": "15b501f37e8a5fab34b00e4f41658812ccb77f43bf799b7562005ddd473cffcb",
+  "stock_bootstrap": {
+    "stock": {
+      "disk.raw": "8f896ab101a1cb27e29bfe87cc4048cc61c17f2a148f58d24bba0fb1d0c21926",
+      "nvram.bin": "602d954b2e8f076887c54ed301dff7dbd9cc0c6be138e537e5bc732c948d344e"
+    },
+    "xsets": [
+      "xbase.tgz",
+      "xetc.tgz",
+      "xfont.tgz",
+      "xserver.tgz"
+    ],
+    "boots": [
+      {
+        "phase": "stock",
+        "halted": true,
+        "stopped": true
+      },
+      {
+        "phase": "modular",
+        "halted": true,
+        "stopped": true
+      }
+    ],
+    "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+    "native_sha256": {
+      "netbsd": "4bfb78c07a5fd5c47cf972b81e148ecf06cf954255afead63291dadfcdbd2726",
+      "netbsd.boot": "d31564ef9a0f15496946e2f23138bffc417b05802c6fd018c65ca8c7caf16556",
+      "compat_irix_o32.kmod": "44455fd6b141bf6c211fb8ba15f64b785f644d8342c02465491dc9c8fb175047"
+    },
+    "stock_kernel": "NetBSD 11.0 (GENERIC32_IP2x) #0: Thu Jul 30 15:23:12 UTC 2026  mkrepro@mkrepro.NetBSD.org:/usr/src/sys/arch/sgimips/compile/GENERIC32_IP2x",
+    "modular_kernel": "NetBSD 11.99.11 (XIRI_IRIX_MODULE_20261103) #0: Fri Nov 27 06:02:51 UTC 2026  salvogendut@minisforum.golgota.lan:/var/home/salvogendut/Dev/xiri/.work/indy-mute-sync/build/kernel",
+    "module": "compat_irix_o32            exec     filesys  -        0       - exec_elf32,compat_netbsd32",
+    "securelevel": 1,
+    "originals_unchanged": true,
+    "passed": true
+  },
+  "releases": {
+    "6.5.22f": {
+      "chd_sha256": "746f613d574a7245f503ad15a5cb338455f98eeddf0c64c25a99e95ac01978e9",
+      "raw_sha1": "188299093211b75cdbfe06a73087b3f9c7f42741",
+      "installer_sha256": "12c3cc0adb4e49ac226f0a25f9640d16d6a3a64956fa0efd79fce372d541f349",
+      "update_sha256": "855ce8b90ff1f422996d6788b5eb47dd231b5c87806733febe305ff5c140c6a6",
+      "nvram_sha256": "074b0ea4e7c37c93792b689aa36ed15cd99f2a68f8ae80b9aee6ed0f52b7370e",
+      "rex_profile_sha256": "ef9acfabc88b6467d40953bcf4d35a9413049bc856055ead0244d0b284dfa3b1",
+      "changed_paths": [
+        "/etc/xiri/xdm/Xresources",
+        "/etc/xiri/xdm/Xresources.example",
+        "/stand/sgimips/11.99.11/modules/compat_irix_o32/compat_irix_o32.kmod",
+        "/usr/local/share/xiri/xdm-logo.xpm",
+        "/netbsd",
+        "/netbsd.boot"
+      ],
+      "clean_install": {
+        "release": "6.5.22f",
+        "cpu": "r4400",
+        "iso_sha256": "12c3cc0adb4e49ac226f0a25f9640d16d6a3a64956fa0efd79fce372d541f349",
+        "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+        "checks": {
+          "release": "6.5.22f",
+          "receipts": "6.5.22f 83550ec73acfe5619e14563d0184023e20229a55a9b995786023ccecbe47d1ab b458213b560ea6489afd5c4d850436159220a2b685f76af1c8c5ed6398bcf123",
+          "mozilla": "6.5.22f 83550ec73acfe5619e14563d0184023e20229a55a9b995786023ccecbe47d1ab b458213b560ea6489afd5c4d850436159220a2b685f76af1c8c5ed6398bcf123 42d676e2358f63e5776b96d807fd49ee552594889bbeddc039a7f18fa608b7dc",
+          "repeated": true
+        },
+        "halted": true,
+        "stopped": true
+      },
+      "prismatic": {
+        "release": "6.5.22f",
+        "greeter_xy": [
+          295,
+          240
+        ],
+        "greeter_size": [
+          690,
+          304
+        ],
+        "logo": "897bae4c249c48e08d93dd8d9d79c5385984657b9f87d342141942857aba7743",
+        "greeter_png_sha256": "a37c2b1e53a064d93ad6100d55e46fc6e77d8d113aaf689dba3f674b9a34945a",
+        "audio": {
+          "player_pid": 3478,
+          "gain": [
+            64,
+            128
+          ],
+          "checkbox_center": [
+            95,
+            279
+          ],
+          "states": {
+            "initial": {
+              "mute": "on",
+              "red_pixels": 38,
+              "crop_sha256": "1d75d4b369181458cad1bd6b227aa200230deed4e3fe977354c824eb56761e7e",
+              "frames": 71680,
+              "peaks": [
+                0,
+                0
+              ],
+              "hz": [
+                0,
+                0
+              ]
+            },
+            "native_off": {
+              "mute": "off",
+              "red_pixels": 0,
+              "crop_sha256": "74556dfe4a29698f2a4659ac8c9e695f3f35c6b0247c395ad62b6d22e6a3d35e",
+              "frames": 73728,
+              "peaks": [
+                4016,
+                8031
+              ],
+              "hz": [
+                440.0,
+                729.8
+              ]
+            },
+            "panel_on": {
+              "mute": "on",
+              "red_pixels": 38,
+              "crop_sha256": "1d75d4b369181458cad1bd6b227aa200230deed4e3fe977354c824eb56761e7e",
+              "frames": 73728,
+              "peaks": [
+                0,
+                0
+              ],
+              "hz": [
+                0,
+                0
+              ]
+            },
+            "native_off_again": {
+              "mute": "off",
+              "red_pixels": 0,
+              "crop_sha256": "74556dfe4a29698f2a4659ac8c9e695f3f35c6b0247c395ad62b6d22e6a3d35e",
+              "frames": 71680,
+              "peaks": [
+                4016,
+                8031
+              ],
+              "hz": [
+                440.0,
+                730.0
+              ]
+            },
+            "native_on": {
+              "mute": "on",
+              "red_pixels": 38,
+              "crop_sha256": "1d75d4b369181458cad1bd6b227aa200230deed4e3fe977354c824eb56761e7e",
+              "frames": 73728,
+              "peaks": [
+                0,
+                0
+              ],
+              "hz": [
+                0,
+                0
+              ]
+            },
+            "same_native_on": {
+              "mute": "on",
+              "red_pixels": 38,
+              "crop_sha256": "1d75d4b369181458cad1bd6b227aa200230deed4e3fe977354c824eb56761e7e",
+              "frames": 71680,
+              "peaks": [
+                0,
+                0
+              ],
+              "hz": [
+                0,
+                0
+              ]
+            },
+            "panel_off": {
+              "mute": "off",
+              "red_pixels": 0,
+              "crop_sha256": "74556dfe4a29698f2a4659ac8c9e695f3f35c6b0247c395ad62b6d22e6a3d35e",
+              "frames": 73728,
+              "peaks": [
+                4016,
+                8031
+              ],
+              "hz": [
+                440.0,
+                730.0
+              ]
+            }
+          }
+        },
+        "desktop": {
+          "identity": "SESSION user=xiritest uid=1234 groups=1234 5 home=/usr/people/xiritest cwd=/usr/people/xiritest display=127.0.0.1:0 authority=/tmp/.XauthCKEQjD",
+          "winterm_handoff": "NATIVE_HANDOFF pid=836 sid=836 pgid=836 tpgid=836 uid=1234 euid=1234 gid=1234 egid=1234 groups=2 tty=/dev/pts/1 rows=24 cols=80",
+          "dimensions": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+          "newport_log": "[    37.175] (**) NEWPORT(0): Option \"NoAccel\" \"false\"\n[    37.329] (II) NEWPORT(0): Using XFree86 Acceleration Architecture (XAA)",
+          "windows": [
+            "Toolchest",
+            "Icon Catalog",
+            "winterm",
+            "xclock"
+          ],
+          "original_shell": true,
+          "native_session": "ctwm + xterm",
+          "native_processes": "UID  PID COMMAND\n 1236  852 /usr/X11R7/bin/xclock \n 1236  891 /usr/X11R7/bin/xterm \n 1236 1229 /usr/X11R7/bin/ctwm \n 1236 1355 sh",
+          "both_logouts": true,
+          "desktop_png_sha256": "013e0306d8766dda2c3480d9d9d5a3ed5999c931438440a7d0ddba2038a09d72",
+          "ctwm_png_sha256": "217c28fc3c4c793e72efc668409d8385c6174b6e47af035468251212d73bbd0f"
+        },
+        "soft_poweroff": true
+      },
+      "greeter_logo": {
+        "rectangle": [
+          813,
+          321,
+          134,
+          146
+        ],
+        "rgb_sha256": "c2b11f0ce24ff12bc474bddacde8eeb5f335620c0556ba987bcdf0ce1cf72b6a",
+        "matches_reference": true
+      },
+      "screenshot_sha256": "6940844a8b4037f6c72bc36d9c197593c14bfad28b826939e5e750e6d81e8bf0",
+      "upgrade": {
+        "release": "6.5.22f",
+        "mozilla": "absent",
+        "v7_receipt": "6.5.22f 46b51c97b70f55edfa17e4ccc06975438db03dfe1087478dac997c807de41c77 b458213b560ea6489afd5c4d850436159220a2b685f76af1c8c5ed6398bcf123",
+        "preference_color": "#7d9ec0",
+        "levels": "80,96",
+        "site_logo_before_upgrade": false,
+        "v8_boot": "NetBSD 11.99.11 (XIRI_IRIX_MODULE_20261103) #0: Fri Nov 27 06:02:51 UTC 2026\n\tsalvogendut@minisforum.golgota.lan:/var/home/salvogendut/Dev/xiri/.work/indy-mute-sync/build/kernel",
+        "v8_receipt": "6.5.22f 83550ec73acfe5619e14563d0184023e20229a55a9b995786023ccecbe47d1ab b458213b560ea6489afd5c4d850436159220a2b685f76af1c8c5ed6398bcf123",
+        "v7_boot": "NetBSD 11.99.11 (XIRI_IRIX_MODULE_20261103) #1: Thu Nov 26 21:44:42 UTC 2026\n\tsalvogendut@minisforum.golgota.lan:/var/home/salvogendut/Dev/xiri/.work/indy-audio-v7/build/kernel",
+        "saved_files": [
+          "SHA256 (/usr/people/xiritest/.Sgiresources) = 0cc8374547f490af4459f9b8e5583548ff25309c38b6dda6ccc9ad21b7f80995",
+          "SHA256 (/usr/people/xiritest/audio-update-document) = 2f0bc36d997d0234300e13257d8aaa4444ff4b6b24b4b56293da3bcdd5d9eb63",
+          "SHA256 (/usr/people/xiritest/.xsession) = 983ecc9eaa9763d5198b99c9a55b86a1a9dd785e851370144dcd8d9ec98233f3",
+          "SHA256 (/etc/master.passwd) = a49fc93ea800ae071d8ad5c16e3eee3915b473787b90532192fe3fe1b8fdeabd",
+          "SHA256 (/etc/group) = 30d91c12c1b0d9517cf1dcb008f97df96ea4cf026eff5986b960072a562d8eb7",
+          "SHA256 (/var/db/mixer0.conf) = e352206850815b269a1c4b6dc27a1e615e25ce29aed4f5a18189d8ba0d187f71"
+        ],
+        "repeated_both_directions": true,
+        "rollback_matches_original": true,
+        "soft_poweroff": true
+      },
+      "upgrade_with_mozilla": {
+        "release": "6.5.22f",
+        "v8_browser_receipt": "6.5.22f 83550ec73acfe5619e14563d0184023e20229a55a9b995786023ccecbe47d1ab b458213b560ea6489afd5c4d850436159220a2b685f76af1c8c5ed6398bcf123 42d676e2358f63e5776b96d807fd49ee552594889bbeddc039a7f18fa608b7dc",
+        "v7_browser_receipt": "6.5.22f 46b51c97b70f55edfa17e4ccc06975438db03dfe1087478dac997c807de41c77 b458213b560ea6489afd5c4d850436159220a2b685f76af1c8c5ed6398bcf123 42d676e2358f63e5776b96d807fd49ee552594889bbeddc039a7f18fa608b7dc",
+        "preserved": [
+          "SHA256 (/usr/people/xiritest/.mozilla/audio-test-bookmark) = 3da1205b293b86cf7abeeb46d6766b2c8dd27189597405ef6cd07ddf46ac07f1",
+          "SHA256 (/emul/irix/var/netscape/mozilla/mozilla-bin) = 2eead69828d3b15c43bc643890a3abb7fd555fb2d21814217b63e743970f179a"
+        ],
+        "soft_poweroff": true
+      }
+    },
+    "6.5.30f": {
+      "chd_sha256": "69727d570e8579ac155d320b247c6a2d3d01d7b16d35bfd8623b7f574189679c",
+      "raw_sha1": "8535953f260e2a61081394bb16404060cec9cc05",
+      "installer_sha256": "4ae2c0b5f0c27f5fae0a6e4c0ddc5583d5b7f012c74555e5ae247ccfab050723",
+      "update_sha256": "dc925ae27cc674a9d09b7c5d1c578fadb68cdac9a127ae89679a52951e1dcc50",
+      "nvram_sha256": "76f683674daa0fd2f7daa875ee253da22a00a09361fdd2a9e24f57eb82049051",
+      "rex_profile_sha256": "ef9acfabc88b6467d40953bcf4d35a9413049bc856055ead0244d0b284dfa3b1",
+      "changed_paths": [
+        "/etc/xiri/xdm/Xresources",
+        "/etc/xiri/xdm/Xresources.example",
+        "/stand/sgimips/11.99.11/modules/compat_irix_o32/compat_irix_o32.kmod",
+        "/usr/local/share/xiri/xdm-logo.xpm",
+        "/netbsd",
+        "/netbsd.boot"
+      ],
+      "clean_install": {
+        "release": "6.5.30f",
+        "cpu": "r5000",
+        "iso_sha256": "4ae2c0b5f0c27f5fae0a6e4c0ddc5583d5b7f012c74555e5ae247ccfab050723",
+        "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+        "checks": {
+          "release": "6.5.30f",
+          "receipts": "6.5.30f 83550ec73acfe5619e14563d0184023e20229a55a9b995786023ccecbe47d1ab dd0653ff4197a37d13fc91131030b1f9f466f210f2d9bf2407ee45dbbe88dd8a",
+          "mozilla": "6.5.30f 83550ec73acfe5619e14563d0184023e20229a55a9b995786023ccecbe47d1ab dd0653ff4197a37d13fc91131030b1f9f466f210f2d9bf2407ee45dbbe88dd8a e3e804ebde5c56b4084e2698ad7239315d620921545ccc215f29e77778056803",
+          "repeated": true
+        },
+        "halted": true,
+        "stopped": true
+      },
+      "prismatic": {
+        "release": "6.5.30f",
+        "greeter_xy": [
+          295,
+          240
+        ],
+        "greeter_size": [
+          690,
+          304
+        ],
+        "logo": "897bae4c249c48e08d93dd8d9d79c5385984657b9f87d342141942857aba7743",
+        "greeter_png_sha256": "d536ee9feb512c9bf4acaca8a5853596e22cac5aa41194f52e5f51cb8f55cb5a",
+        "audio": {
+          "player_pid": 3357,
+          "gain": [
+            64,
+            128
+          ],
+          "checkbox_center": [
+            95,
+            279
+          ],
+          "states": {
+            "initial": {
+              "mute": "on",
+              "red_pixels": 38,
+              "crop_sha256": "1d75d4b369181458cad1bd6b227aa200230deed4e3fe977354c824eb56761e7e",
+              "frames": 73728,
+              "peaks": [
+                0,
+                0
+              ],
+              "hz": [
+                0,
+                0
+              ]
+            },
+            "native_off": {
+              "mute": "off",
+              "red_pixels": 0,
+              "crop_sha256": "74556dfe4a29698f2a4659ac8c9e695f3f35c6b0247c395ad62b6d22e6a3d35e",
+              "frames": 73728,
+              "peaks": [
+                4016,
+                8031
+              ],
+              "hz": [
+                440.0,
+                730.0
+              ]
+            },
+            "panel_on": {
+              "mute": "on",
+              "red_pixels": 38,
+              "crop_sha256": "1d75d4b369181458cad1bd6b227aa200230deed4e3fe977354c824eb56761e7e",
+              "frames": 73728,
+              "peaks": [
+                0,
+                0
+              ],
+              "hz": [
+                0,
+                0
+              ]
+            },
+            "native_off_again": {
+              "mute": "off",
+              "red_pixels": 0,
+              "crop_sha256": "74556dfe4a29698f2a4659ac8c9e695f3f35c6b0247c395ad62b6d22e6a3d35e",
+              "frames": 71680,
+              "peaks": [
+                4016,
+                8031
+              ],
+              "hz": [
+                440.0,
+                730.0
+              ]
+            },
+            "native_on": {
+              "mute": "on",
+              "red_pixels": 38,
+              "crop_sha256": "1d75d4b369181458cad1bd6b227aa200230deed4e3fe977354c824eb56761e7e",
+              "frames": 73728,
+              "peaks": [
+                0,
+                0
+              ],
+              "hz": [
+                0,
+                0
+              ]
+            },
+            "same_native_on": {
+              "mute": "on",
+              "red_pixels": 38,
+              "crop_sha256": "1d75d4b369181458cad1bd6b227aa200230deed4e3fe977354c824eb56761e7e",
+              "frames": 71680,
+              "peaks": [
+                0,
+                0
+              ],
+              "hz": [
+                0,
+                0
+              ]
+            },
+            "panel_off": {
+              "mute": "off",
+              "red_pixels": 0,
+              "crop_sha256": "74556dfe4a29698f2a4659ac8c9e695f3f35c6b0247c395ad62b6d22e6a3d35e",
+              "frames": 71680,
+              "peaks": [
+                4016,
+                8031
+              ],
+              "hz": [
+                440.0,
+                730.0
+              ]
+            }
+          }
+        },
+        "desktop": {
+          "identity": "SESSION user=xiritest uid=1234 groups=1234 5 home=/usr/people/xiritest cwd=/usr/people/xiritest display=127.0.0.1:0 authority=/tmp/.Xauth3NFhrv",
+          "winterm_handoff": "NATIVE_HANDOFF pid=846 sid=846 pgid=846 tpgid=846 uid=1234 euid=1234 gid=1234 egid=1234 groups=2 tty=/dev/pts/1 rows=24 cols=80",
+          "dimensions": "dimensions:    1280x1024 pixels (339x271 millimeters)",
+          "newport_log": "[    36.985] (**) NEWPORT(0): Option \"NoAccel\" \"false\"\n[    37.469] (II) NEWPORT(0): Using XFree86 Acceleration Architecture (XAA)",
+          "windows": [
+            "Toolchest",
+            "Icon Catalog",
+            "winterm",
+            "xclock"
+          ],
+          "original_shell": true,
+          "native_session": "ctwm + xterm",
+          "native_processes": "UID  PID COMMAND\n 1236  887 /usr/X11R7/bin/xterm \n 1236  963 /usr/X11R7/bin/xclock \n 1236 4380 /usr/X11R7/bin/ctwm \n 1236 1348 sh",
+          "both_logouts": true,
+          "desktop_png_sha256": "e18cd84fb78eab2c1c7b82012cb61e837fd17ad6e99df22c7140d7b9fb6ed7e1",
+          "ctwm_png_sha256": "217c28fc3c4c793e72efc668409d8385c6174b6e47af035468251212d73bbd0f"
+        },
+        "soft_poweroff": true
+      },
+      "greeter_logo": {
+        "rectangle": [
+          813,
+          321,
+          134,
+          146
+        ],
+        "rgb_sha256": "c2b11f0ce24ff12bc474bddacde8eeb5f335620c0556ba987bcdf0ce1cf72b6a",
+        "matches_reference": true
+      },
+      "screenshot_sha256": "7c61220d1cd7acda564e5f5e83dc55d722d8a540e9cb8168407728f0b7f02d41",
+      "upgrade": {
+        "release": "6.5.30f",
+        "mozilla": "absent",
+        "v7_receipt": "6.5.30f 46b51c97b70f55edfa17e4ccc06975438db03dfe1087478dac997c807de41c77 dd0653ff4197a37d13fc91131030b1f9f466f210f2d9bf2407ee45dbbe88dd8a",
+        "preference_color": "#9ddb9d",
+        "levels": "96,112",
+        "site_logo_before_upgrade": true,
+        "v8_boot": "NetBSD 11.99.11 (XIRI_IRIX_MODULE_20261103) #0: Fri Nov 27 06:02:51 UTC 2026\n\tsalvogendut@minisforum.golgota.lan:/var/home/salvogendut/Dev/xiri/.work/indy-mute-sync/build/kernel",
+        "v8_receipt": "6.5.30f 83550ec73acfe5619e14563d0184023e20229a55a9b995786023ccecbe47d1ab dd0653ff4197a37d13fc91131030b1f9f466f210f2d9bf2407ee45dbbe88dd8a",
+        "v7_boot": "NetBSD 11.99.11 (XIRI_IRIX_MODULE_20261103) #1: Thu Nov 26 21:44:42 UTC 2026\n\tsalvogendut@minisforum.golgota.lan:/var/home/salvogendut/Dev/xiri/.work/indy-audio-v7/build/kernel",
+        "saved_files": [
+          "SHA256 (/usr/people/xiritest/.Sgiresources) = fcaf35ea67ed837457dd222d6a7c5c977b6b0a89ae4b85de4e37adb7aadb15fe",
+          "SHA256 (/usr/people/xiritest/audio-update-document) = 2f0bc36d997d0234300e13257d8aaa4444ff4b6b24b4b56293da3bcdd5d9eb63",
+          "SHA256 (/usr/people/xiritest/.xsession) = 983ecc9eaa9763d5198b99c9a55b86a1a9dd785e851370144dcd8d9ec98233f3",
+          "SHA256 (/etc/master.passwd) = 081be76eae8eee8f5c292388fb0312952acb56dfea37883fd4a36418f199f413",
+          "SHA256 (/etc/group) = 30d91c12c1b0d9517cf1dcb008f97df96ea4cf026eff5986b960072a562d8eb7",
+          "SHA256 (/var/db/mixer0.conf) = 5b1cb48c676d797af8be8e10eedd9594bb29a11c0d0dbfbe2593aa370a2eccbc",
+          "SHA256 (/etc/xiri/xdm/Xresources) = 247503bb8e689bf8829bd0a34e9e82bc648b14de40bcbe8b408f3eba75df2f5b",
+          "SHA256 (/usr/local/share/xiri/xdm-logo.xpm) = 897bae4c249c48e08d93dd8d9d79c5385984657b9f87d342141942857aba7743"
+        ],
+        "repeated_both_directions": true,
+        "rollback_matches_original": true,
+        "soft_poweroff": true
+      },
+      "upgrade_with_mozilla": {
+        "release": "6.5.30f",
+        "v8_browser_receipt": "6.5.30f 83550ec73acfe5619e14563d0184023e20229a55a9b995786023ccecbe47d1ab dd0653ff4197a37d13fc91131030b1f9f466f210f2d9bf2407ee45dbbe88dd8a e3e804ebde5c56b4084e2698ad7239315d620921545ccc215f29e77778056803",
+        "v7_browser_receipt": "6.5.30f 46b51c97b70f55edfa17e4ccc06975438db03dfe1087478dac997c807de41c77 dd0653ff4197a37d13fc91131030b1f9f466f210f2d9bf2407ee45dbbe88dd8a e3e804ebde5c56b4084e2698ad7239315d620921545ccc215f29e77778056803",
+        "preserved": [
+          "SHA256 (/usr/people/xiritest/.mozilla/audio-test-bookmark) = 3da1205b293b86cf7abeeb46d6766b2c8dd27189597405ef6cd07ddf46ac07f1",
+          "SHA256 (/emul/irix/var/netscape/mozilla/mozilla-bin) = 2530f37214ee31abbd5a346df134b48f4495a9470b2c22a58d849416b976adec"
+        ],
+        "soft_poweroff": true
+      }
+    }
+  }
+}

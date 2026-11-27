@@ -203,7 +203,7 @@ update. For fresh target preparation, pass `--native-package "$v6"` and
 
 ## Fresh Indy installation with HAL2 audio
 
-Use the `netbsd-sgimips-indy-11.99.11-audio-v1` native package for an
+Use the `netbsd-sgimips-indy-11.99.11-audio-v2` native profile (audio-v8) for an
 Indy with Newport and HAL2. The two installer CDs target IRIX **6.5.22f**
 and **6.5.30f** separately. Each contains the original release's
 `sfplay`, format and rate converters, `ssplay` and default SoundScheme.
@@ -229,11 +229,12 @@ precedence. In winterm, play the installed SGI sample with:
 /emul/irix/usr/sbin/sfplay /usr/share/data/sounds/soundscheme/soundfiles/emptyDumpster.aiff
 ```
 
-**Build the two private CDs.** Stage the five userspace artifacts from the v6
-native archive and the kernel, boot wrapper and module matching the
-[audio build record](../lab/irix-hdsp/playback/indy-audio-build.json).
-Use the `package-native` command above with the
-[audio profile](../profiles/netbsd-sgimips-indy-11.99.11-audio-v1.json)
+**Build the two private CDs.** The five userspace artifacts are shared with
+audio-v7. Stage them from its native archive using the destinations in the
+profile. The remaining inputs are the matched kernel, PROM boot wrapper and
+module from `.work/builds/indy-mute-sync-20261127/boot.iso`. Verify their
+SHA-256 values before running `package-native` with the
+[audio-v8 profile](../profiles/netbsd-sgimips-indy-11.99.11-audio-v2.json)
 and the corresponding paths JSON. For each release, supply its own
 [PCM](../lab/irix-hdsp/playback/README.md) and
 [SoundScheme](../lab/indy-desktop-sound/README.md) media. The builder
@@ -247,17 +248,60 @@ the v6 instructions, `disc` is the matching Overlay 1 ISO.
     --instigator .work/upstream-qualified/instigator \
     --audio-playback ".work/installers/indy-11.99.11/pcm-v1/$release.iso" \
     --audio-effects ".work/installers/indy-11.99.11/desktop-display-sound-v1/$release.iso" \
+    --mozilla-payload ".work/imports/irix-$release-mozilla-v1" \
+    --mozilla-network .work/modules/irix-browser-network-20261125/browser-network.iso \
     --output "$out/xiri-$release.iso"
 ```
 
-The optional Mozilla component takes the same `--mozilla-payload` and
-`--mozilla-network` arguments as v6. On an installed audio-v7 desktop, use
-the same release's audio installer CD. From the root console, run
+The two Mozilla arguments include the optional component on the CD.
+Both audio-v8 test CHDs were installed with `sh /cdrom/install.sh --mozilla`.
+For later component changes, use the full installer CD for the desktop’s
+IRIX release and native package generation. From the root console, run
 `sh /cdrom/install.sh --mozilla` to add the browser or
 `sh /cdrom/install.sh --remove-mozilla` to remove it, then reboot.
 The audio kernel and IRIX module belong to the base system. The
 [audio component checks](results/2026-11-26-indy-audio-installer.md#playback-across-mozilla-installation-and-removal)
 exercise the SGI player across both operations.
+
+## Upgrade an installed Indy from audio-v7 to audio-v8
+
+Attach the update ISO for the release in `/var/db/xiri-install/installed`
+at SCSI ID 4. The two local CDs are in
+`.work/installers/indy-11.99.11/v7-to-audio-v8/`. Log out to xdm.
+From the NetBSD root console run
+
+```sh
+mkdir -p /cdrom
+mount -rt cd9660 /dev/cd0a /cdrom
+sh /cdrom/upgrade.sh
+shutdown -r now
+```
+
+The update replaces the matched kernel, PROM boot wrapper and IRIX module.
+It installs the logo pixmap and greeter example. An unmodified active xdm
+resource file adopts the logo automatically. Sites with local settings can
+merge the logo line from `/etc/xiri/xdm/Xresources.example`. The home
+directories, session selection, vendor applications and saved mixer settings
+stay on the existing disk.
+
+To roll an upgraded machine back, log out, remount the same update CD, run
+`sh /cdrom/upgrade.sh --rollback` and reboot. The stock greeter returns to
+its previous configuration. Site-managed resources and pre-existing artwork
+stay in place. If interrupted, repeat the command with the same arguments
+and CD before rebooting. Use the matching generation's full installer CD
+for subsequent Mozilla operations. [Qualification](results/2026-11-27-indy-audio-v8.md).
+
+Rebuild the private update CDs with
+
+```sh
+media=.work/installers/indy-11.99.11
+for release in 6.5.22f 6.5.30f; do
+    ./xiri indy-audio-update --from-generation v7 --release "$release" \
+        --previous-media "$media/audio-v7/xiri-$release.iso" \
+        --audio-media "$media/audio-v8/xiri-$release.iso" \
+        --output "$media/rebuilt-v7-to-v8/xiri-$release.iso"
+done
+```
 
 ## Upgrade an installed Indy from v6 to audio-v7
 

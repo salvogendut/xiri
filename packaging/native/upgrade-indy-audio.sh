@@ -1,11 +1,11 @@
 #!/bin/sh
-# Switch one installed Indy between the published v6 and audio-v7 generations.
+# Switch one installed Indy between two consecutive audio generations.
 set -eu
 PATH=/bin:/sbin:/usr/bin:/usr/sbin
 export PATH
 umask 077
 fail() { echo "Xiri audio upgrade: $*" >&2; exit 1; }
-case "$#:$*" in 0:) side=v7;; 1:--rollback) side=v6;; *) fail 'usage: sh upgrade.sh [--rollback]';; esac
+case "$#:$*" in 0:) forward=yes;; 1:--rollback) forward=no;; *) fail 'usage: sh upgrade.sh [--rollback]';; esac
 test "$(id -u):$(uname -smr)" = '0:NetBSD 11.99.11 sgimips' || fail 'requires root on the 11.99.11 Indy'
 test "$(sysctl -n hw.model)" = 'SGI-IP22' || test "$(sysctl -n hw.model)" = 'SGI-IP24' || fail 'requires an Indy'
 cd "$(dirname "$0")"
@@ -30,11 +30,20 @@ done
 scratch=$(mktemp -d "$state/audio-work.XXXXXX")
 pending=$state/upgrading
 created=$state/created
-origin=$created/.indy-audio-from-v6
+from=v6 to=v7
+if test -f v8; then from=v7 to=v8; fi
+side=$to
+if test "$forward" = no; then side=$from; fi
+origin=$created/.indy-audio-from-$from
+greeter=/etc/xiri/xdm/Xresources
+logo=/usr/local/share/xiri/xdm-logo.xpm
+dir_marker=.audio-directory
+if test "$to" = v8; then dir_marker=.audio-v8-directory; fi
 mixer=/etc/rc.conf.d/mixerctl
-firstboot=$(cat mixer-firstboot)
-old=$(cat v6)
-new=$(cat v7)
+firstboot=
+if test "$from" = v6; then firstboot=$(cat mixer-firstboot); fi
+old=$(cat "$from")
+new=$(cat "$to")
 target=$(cat "$side")
 browser=no
 if test -d "$state/mozilla"; then
@@ -61,9 +70,9 @@ if test "$browser" = yes; then
     test "$id" = "$old $component" || test "$id" = "$new $component" || fail 'unexpected browser receipt'
     test "$resume" = yes || test "$id" = "$current $component" || fail 'inconsistent browser receipt'
 fi
-if test "$resume" = no && test "$side" = v6 && test "$current" = "$new"; then
+if test "$resume" = no && test "$forward" = no && test "$current" = "$new"; then
     test -f "$origin" && test "$(cat "$origin")" = "$old" ||
-        fail 'rollback requires an Indy previously upgraded from v6 with this CD'
+        fail "rollback requires an Indy previously upgraded from $from with this CD"
 fi
 if test "$resume" = no && test "$current" = "$target"; then
     echo "The $side generation is already installed."
@@ -83,18 +92,31 @@ matches() {
 # A durable plan also distinguishes our additions from identical site files.
 echo "$transaction" > "$scratch/plan"
 while read -r dir; do
-    marker="$created$dir/.audio-directory"
+    marker="$created$dir/$dir_marker"
     if exists "$dir"; then
         test -d "$dir" && test ! -L "$dir" || fail "unexpected directory entry $dir"
-    elif test "$side" = v7; then
+    elif test "$forward" = yes; then
         echo "mkdir|$dir" >> "$scratch/plan"
     fi
-    if test "$side" = v6 && test -d "$marker"; then echo "rmdir|$dir" >> "$scratch/plan"; fi
+    if test "$forward" = no && test -d "$marker"; then echo "rmdir|$dir" >> "$scratch/plan"; fi
 done <parents
 if test "$resume" = no; then
+    restore_greeter=no
+    if test "$to" = v8 && test "$forward" = no && test -f "$origin-greeter"; then
+        hash=$(awk -F '|' -v path="$greeter" '$1==path {print $5}' changes)
+        if matches "$greeter" 0644 "$hash"; then restore_greeter=yes; fi
+    fi
     while IFS='|' read -r path a av b bv; do
         action=write
-        if test "$side" = v7; then
+        if test "$to" = v8 && test "$path" = "$greeter"; then
+            if test "$forward" = yes; then
+                matches "$path" "$a" "$av" || continue
+                action=greeter
+            else
+                test "$restore_greeter" = yes || continue
+            fi
+        fi
+        if test "$forward" = yes; then
             if test "$a" = - && exists "$path"; then
                 if test "$path" = /etc/rc.conf.d/mixerctl && test -f "$path" && test ! -L "$path"; then continue; fi
                 matches "$path" "$b" "$bv" || fail "occupied path $path"
@@ -105,6 +127,8 @@ if test "$resume" = no; then
         else
             if test "$a" = - && test ! -d "$created$path"; then continue; fi
             if test "$a" = -; then action=remove; fi
+            if test "$to" = v8 && test "$path" = "$logo" && test "$restore_greeter" = no &&
+                grep -Fq "$logo" "$greeter" 2>/dev/null; then action=keep; fi
             if ! matches "$path" "$b" "$bv"; then
                 if test "$path" = /etc/rc.conf.d/mixerctl; then action=keep; else fail "local change at $path"; fi
             fi
@@ -132,13 +156,13 @@ while IFS='|' read -r action path a av b bv; do
     case "$action" in
     mkdir)
         test -d "$path" || mkdir -m 755 "$path"
-        mkdir -p "$created$path/.audio-directory"
+        mkdir -p "$created$path/$dir_marker"
         continue;;
     rmdir) continue;;
     keep) if test -d "$created$path"; then rmdir "$created$path"; fi; continue;;
     esac
     mode=$b value=$bv
-    if test "$side" = v6; then mode=$a value=$av; fi
+    if test "$forward" = no; then mode=$a value=$av; fi
     if ! matches "$path" "$mode" "$value"; then
         if test "$mode" = -; then
             rm "$path"
@@ -157,6 +181,7 @@ while IFS='|' read -r action path a av b bv; do
             staging=
         fi
     fi
+    if test "$action" = greeter; then touch "$origin-greeter"; fi
     if test "$action" = add; then mkdir -p "$created$path"; fi
     if test "$action" = remove && test -d "$created$path"; then rmdir "$created$path"; fi
 done < "$scratch/steps"
@@ -165,15 +190,18 @@ done < "$scratch/steps"
 awk -F '|' '$1=="rmdir" {dirs[++n]=$2} END {while(n) print dirs[n--]}' "$scratch/steps" > "$scratch/dirs"
 while read -r dir; do
     if test -d "$dir" && test -z "$(ls -A "$dir")"; then rmdir "$dir"; fi
-    if test -d "$created$dir/.audio-directory"; then rmdir "$created$dir/.audio-directory"; fi
+    if test -d "$created$dir/$dir_marker"; then rmdir "$created$dir/$dir_marker"; fi
 done < "$scratch/dirs"
-if test "$side" = v7; then
+if test "$forward" = yes; then
     printf '%s\n' "$old" >"$scratch/origin"
     mv "$scratch/origin" "$origin"
 fi
 if test "$browser" = yes; then publish_receipt "$state/mozilla/identity" "$target $component"; fi
 for receipt in $receipts; do publish_receipt "$receipt" "$target"; done
-if test "$side" = v6; then rm -f "$origin" "$created/.indy-audio-mixer"; fi
+if test "$forward" = no; then
+    rm -f "$origin" "$origin-greeter"
+    if test "$from" = v6; then rm -f "$created/.indy-audio-mixer"; fi
+fi
 sync
 rm "$pending"
 echo "Installed $side. Reboot the Indy to activate its kernel and audio services."

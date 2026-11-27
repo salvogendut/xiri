@@ -4,6 +4,13 @@ For the current installation and launch commands, see the [image guide](XIRI-IMA
 The [roadmap](ROADMAP.md) tracks outstanding work and the [results directory](results/)
 holds measurements and screenshots for individual builds.
 
+## November 27, 2026
+
+The Indy audio-v8 images bring the XiriBSD xdm logo and live Audio Panel
+mute updates to both IRIX releases. Existing audio-v7 desktops can upgrade
+in place and roll back using the same release's update CD.
+[Images and qualification](results/2026-11-27-indy-audio-v8.md).
+
 ## November 15–26, 2026
 
 - **SGI machines.** Native boot, graphics and xdm on emulated Indigo2, Octane and O2 led to release-specific desktop images. The platform guide lists their launchers, kernel updates and rollback procedures. [Indigo2 graphics](results/2026-11-22-ip28-impact.md) · [Octane graphics](results/2026-11-23-octane-xdm.md) · [O2 graphics](results/2026-11-23-o2-greeter.md) · [Platform images](results/2026-11-26-platform-v6.md)

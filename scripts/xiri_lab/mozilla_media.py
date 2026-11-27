@@ -36,8 +36,8 @@ def browser_archive(directory, base):
 
 
 def add_mozilla(args, base, native, work, inputs):
-    from .install_media import AUDIO, UTIME
-    native_owns_kernel = native['profile'] in (UTIME, AUDIO)
+    from .install_media import AUDIO, AUDIO_SYNC, UTIME
+    native_owns_kernel = native['profile'] in (UTIME, AUDIO, AUDIO_SYNC)
     archive, pins = browser_archive(args.mozilla_payload, base)
     package = work / 'mozilla'
     tree = package / 'root'

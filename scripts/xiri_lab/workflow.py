@@ -168,7 +168,8 @@ def parser():
     medium.add_argument('--audio-effects', type=Path, help='release-matched SGI desktop sounds CD for the Indy audio profile')
     medium.add_argument('--clock-overlay', type=Path, help='matching SGI Overlay 1 ISO for the Indy GLX profile')
     medium.add_argument('--instigator', default='instigator', help='path to the Instigator media extractor')
-    audio = sub.add_parser('indy-audio-update', help='build a reversible update from the v6 and audio-v7 Indy CDs')
+    audio = sub.add_parser('indy-audio-update', help='build a reversible update between consecutive Indy audio generations')
+    audio.add_argument('--from-generation', choices=('v6', 'v7'), default='v6', help='v6 to audio-v7 (default), or audio-v7 to audio-v8')
     audio.add_argument('--release', required=True, choices=('6.5.22f', '6.5.30f'))
     for name in ('previous-media', 'audio-media', 'output'):
         audio.add_argument('--'+name, required=True, type=Path)

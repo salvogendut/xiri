@@ -424,31 +424,28 @@ altering it.
 
 ### Clean Indy audio images
 
-The published audio-v7 images predate the XiriBSD login logo. Both accept
-the small logo CD. New builds install the artwork with the runtime.
-[Apply the logo to an existing image](../lab/irix-xdm/logo/README.md).
-
-The two audio images boot to full-screen xdm. From the Xiri checkout run
-one of these commands, then press **Ctrl+P** in Prismatic to start the Indy.
+From the checkout, run the launcher for the release you want, then press
+**Ctrl+P** in Prismatic to start the Indy. Each audio-v8 image boots to
+a 1280×1024 xdm login with the XiriBSD logo.
 
 ```sh
-.work/prismatic-indy-audio-v7/6.5.22f/run-prismatic.sh
-.work/prismatic-indy-audio-v7/6.5.30f/run-prismatic.sh
+.work/prismatic-indy-audio-v8/6.5.22f/run-prismatic.sh
+.work/prismatic-indy-audio-v8/6.5.30f/run-prismatic.sh
 ```
 
-Log in as `xiritest` with password `xiritest`. Open **Icon Catalog →
-ControlPanels → audiopanel** for the two output sliders and the Mute box.
-First-boot sound and a continuous stereo play through both mute transitions
-passed on both images. The matching fresh-install CDs are in
-`.work/installers/indy-11.99.11/audio-v7/`. The previous Prismatic bundles
-remain available for existing desktops with their own installed options.
-[Measurements and screenshots](results/2026-11-26-indy-audio-installer.md) ·
-[Build and install](NATIVE-PACKAGE.md#fresh-indy-installation-with-hal2-audio) ·
-[Upgrade an existing v6 Indy and roll back](NATIVE-PACKAGE.md#upgrade-an-installed-indy-from-v6-to-audio-v7).
+Log in as `xiritest` (password `xiritest`) for 4Dwm, or `netbsdtest`
+(password `netbsdtest`) for native ctwm. To try the audio change, open
+**Icon Catalog → ControlPanels → audiopanel**. From a root console, run
+`mixerctl -w outputs.master.mute=on`, then repeat with `off`. The open
+panel follows both changes. Clicking its Mute box controls the same output.
 
-On audio-v7, reopen Audio Panel after changing mute with native `mixerctl`
-to refresh the checkbox. A newer matched kernel and module update it while
-the panel stays open. [Two-release graphical and playback checks](results/2026-11-27-indy-mute-sync.md).
+The matching full installer CDs are under
+`.work/installers/indy-11.99.11/audio-v8/`. Existing audio-v7 machines
+can keep their overlays and use the release-specific update CD. The v7
+launchers remain under `.work/prismatic-indy-audio-v7/`.
+[Image checksums and screenshots](results/2026-11-27-indy-audio-v8.md) ·
+[Fresh installation](NATIVE-PACKAGE.md#fresh-indy-installation-with-hal2-audio) ·
+[Update or roll back](NATIVE-PACKAGE.md#upgrade-an-installed-indy-from-audio-v7-to-audio-v8).
 
 ### General IRIX audio playback on Indy
 

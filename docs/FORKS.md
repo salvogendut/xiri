@@ -72,6 +72,11 @@ in `08e53ba7`. [Octane build and qualification](results/2026-11-23-octane-deskto
 
 ## IRIS upstream updates
 
+The November 27 Indy audio-v8 packaging cycle fetched IRIS `upstream/main`
+at `f02e6f45`, already integrated in fork `xiri` at `f986f374`. The
+installer and image checks used the same IRIS and Prismatic executables
+as audio-v7. [Both Indy releases](results/2026-11-27-indy-audio-v8.md).
+
 On November 27 the native mute cycle merged nine upstream commits through
 `f02e6f45` into IRIS `xiri` at `e7e5f70f`. The upstream device list now
 uses slot paths. Fork commit `f986f374` updates the O2/Octane PROM test to

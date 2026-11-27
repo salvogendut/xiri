@@ -303,6 +303,7 @@ work.
 - [x] Operate the original Audio Panel Mute box during a continuous stereo play and qualify first-login audio on clean 6.5.22f and 6.5.30f Indy installs. [Measurements and screenshots](results/2026-11-26-indy-audio-installer.md).
 - [x] Upgrade existing v6 Indy desktops to audio-v7, roll back and reapply with saved user data, installed Mozilla and persistent speaker settings. [Both releases](results/2026-11-27-indy-audio-upgrade.md).
 - [x] Refresh the open Audio Panel's Mute checkbox after a change made through native `mixerctl`. Both Indy releases pass graphical and stereo playback checks. [Measurements](results/2026-11-27-indy-mute-sync.md).
+- [x] Package the matched Indy kernel and module with the XiriBSD xdm logo for both release lines and qualify the v7 update and rollback. [Installer and CHD checks](results/2026-11-27-indy-audio-v8.md).
 - [x] Trace XSGIvc on a donor Indy and qualify the original Display panel against the active Newport timing on both releases. [Display and sound qualification](results/2026-11-26-indy-display-sound.md).
 - [ ] Deferred by request. Revisit Newport display-mode changes and recovery from an unusable timing in a later cycle.
 - [x] Support SGI xlock start/end events in Xorg. The original Qix Demo, idle activation, Space wake, disable and logout pass on both Indys. [Update and results](results/2026-11-26-sgi-screen-saver.md).

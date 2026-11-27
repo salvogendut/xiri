@@ -16,11 +16,12 @@ INDY = 'netbsd-sgimips-indy-11.99.11-v1'
 GLX = 'netbsd-sgimips-indy-11.99.11-glx-v1'
 UTIME = 'netbsd-sgimips-indy-11.99.11-utime-v1'
 AUDIO = 'netbsd-sgimips-indy-11.99.11-audio-v1'
+AUDIO_SYNC = 'netbsd-sgimips-indy-11.99.11-audio-v2'
 
 
 def validate_native(native):
     native_manifest = json.loads((native / 'manifest.json').read_text())
-    if native_manifest['profile'] not in (INDY, GLX, UTIME, AUDIO):
+    if native_manifest['profile'] not in (INDY, GLX, UTIME, AUDIO, AUDIO_SYNC):
         raise ValueError('Expected an Indy native package')
     profile = ROOT / 'profiles' / (native_manifest['profile'] + '.json')
     if (
@@ -144,20 +145,21 @@ def run(args):
         profile = json.loads((native / 'manifest.json').read_text())['profile']
         if bool(args.previous_media) != bool(profile == UTIME and args.upgrade_from):
             raise ValueError('Use --previous-media with a v5 to v6 Indy update')
-        graphics = profile in (GLX, UTIME, AUDIO)
+        audio = profile in (AUDIO, AUDIO_SYNC)
+        graphics = audio or profile in (GLX, UTIME)
         if graphics != bool(args.clock_overlay):
             raise ValueError('The Indy GLX profile and its matching --clock-overlay must be used together')
-        if any(bool(cd) != (profile == AUDIO) for cd in (args.audio_playback, args.audio_effects)):
+        if any(bool(cd) != audio for cd in (args.audio_playback, args.audio_effects)):
             raise ValueError('The Indy audio profile requires both --audio-playback and --audio-effects')
-        if profile == AUDIO and args.upgrade_from:
-            raise ValueError('Use indy-audio-update with the published v6 and audio-v7 CDs for an in-place upgrade')
+        if audio and args.upgrade_from:
+            raise ValueError('Use indy-audio-update with the matching source and destination CDs for an in-place upgrade')
         fonts = {}
         if graphics:
             fonts = extract_fonts(imported, args.clock_overlay, args.instigator, work)
             inputs['payload.tgz'] = work / 'payload.tgz'
             supplement = dict(fonts)
             modes = {}
-            if profile == AUDIO:
+            if audio:
                 from .indy_audio import audio_files
                 additions = audio_files(release, args.audio_playback, args.audio_effects, work, files)
                 modes = {name: path.stat().st_mode & 0o777 for name, path in additions.items()}

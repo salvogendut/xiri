@@ -45,4 +45,4 @@ The tests booted the matched kernel, PROM boot file and module from
 private copies of the audio-v7 base images. The retained local test CD is
 `.work/builds/indy-mute-sync-20261127/boot.iso`. It contains the three
 native boot files. The published audio-v7 installers and CHDs still have
-the earlier driver. Packaging the tested boot set is a separate release step.
+the earlier driver. The [audio-v8 installers, updates and CHDs](2026-11-27-indy-audio-v8.md) include the tested boot set.
