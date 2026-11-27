@@ -99,7 +99,8 @@ case $profile in
         # donor of the same release. Match its installed profile first.
         if [ "$(sha256 -q /emul/irix/usr/bin/X11/toolchest)" = "$toolchest_hash" ]; then
             /bin/sh /usr/local/libexec/xiri/install-audio.sh "$source_image" \
-                "/usr/local/share/xiri/plans/$release.audio"
+                "/usr/local/share/xiri/plans/$release.audio" ||
+                printf '%s\n' 'xiriprep: optional audio clients incomplete; continuing desktop setup' >&2
         fi ;;
 esac
 if [ "$create" = yes ]; then

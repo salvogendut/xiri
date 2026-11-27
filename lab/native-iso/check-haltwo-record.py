@@ -27,17 +27,19 @@ def fixture():
                                          for hz in FREQUENCIES)) for i in range(RATE))
 
 
-def measure(wav):
+def measure(wav, mono=False):
     with wave.open(io.BytesIO(wav)) as w:
         if (w.getframerate(), w.getnchannels(), w.getsampwidth()) != (RATE, 2, 2):
             raise ValueError(f'Unexpected WAV format: {w.getparams()}')
-        return measure_pcm(w.readframes(w.getnframes()))
+        return measure_pcm(w.readframes(w.getnframes()), mono)
 
 
-def measure_pcm(pcm):
+def measure_pcm(pcm, mono=False):
     frames = list(struct.iter_unpack('<hh', pcm))
     if len(frames) < RATE // 2:
         raise ValueError(f'Short recording: {len(frames)} frames')
+    if mono and any(left != right for left, right in frames):
+        raise ValueError('Mono microphone channels differ')
     # A middle 100 ms window contains an integer number of cycles of each tone.
     window = frames[len(frames)//2:len(frames)//2 + RATE//10]
     levels = []
@@ -47,14 +49,15 @@ def measure_pcm(pcm):
             re = sum(frame[ch] * math.cos(i * angle) for i, frame in enumerate(window))
             im = sum(frame[ch] * math.sin(i * angle) for i, frame in enumerate(window))
             return round(2 * math.hypot(re, im) / len(window))
-        signal, other = amplitude(FREQUENCIES[ch]), amplitude(FREQUENCIES[1-ch])
+        source = 0 if mono else ch
+        signal, other = amplitude(FREQUENCIES[source]), amplitude(FREQUENCIES[1-source])
         if signal < 1000 or signal < 8 * other:
             raise ValueError(f'Channel {ch}: wanted tone {signal}, other tone {other}')
-        levels.append(dict(frequency_hz=FREQUENCIES[ch], amplitude=signal, other_tone=other))
+        levels.append(dict(frequency_hz=FREQUENCIES[source], amplitude=signal, other_tone=other))
     return dict(frames=len(frames), rate_hz=RATE, channels=levels)
 
 
-def measure_speaker(path, start):
+def measure_speaker(path, start, mono=False):
     # IRIS dumps one DAC burst per record, before host resampling.
     pcm = bytearray()
     with path.open('rb') as f:
@@ -65,7 +68,7 @@ def measure_speaker(path, start):
             if output != 0 or rate != RATE or len(chunk) != 4 * count:
                 raise ValueError(f'Unexpected HAL2 output: {output}, {rate} Hz, {count} frames')
             pcm.extend(chunk)
-    return measure_pcm(pcm)
+    return measure_pcm(pcm, mono)
 
 
 @contextmanager
@@ -111,6 +114,10 @@ def run(args):
         source = args.build.resolve()
         files = {'netbsd': source/'kernel/netbsd', 'netbsd.boot': source/'kernel/netbsd.elf32',
                  'compat_irix_o32.kmod': source/'module/compat_irix_o32.kmod'}
+        if args.probes:
+            files['hdsp-query'] = args.probes.resolve()/'hdsp-query'
+            for abi in ('n32', 'o32'):
+                files['arena-'+abi] = args.probes.resolve()/('arena-'+abi)
         if args.donor:
             if desktop.sha256(args.donor) != record['donor_sha256']:
                 raise ValueError('Wrong donor for this release')
@@ -150,6 +157,10 @@ def run(args):
                     guest.command('test "$(sha256 -q /netbsd.boot)" = '+result['kernel_sha256'])
                     result['emulator_sha256'] = desktop.sha256(probe.IRIS)
                     result['devices'] = guest.read_text('audiocfg list').strip()
+                    if args.probes:
+                        for abi in ('n32', 'o32'):
+                            guest.command(f"su -f xiritest -c '/cdrom/arena-{abi} /tmp/arena-{abi}'")
+                        result['scratch_file_probes'] = ['n32', 'o32']
                     with feed(fixture_path, tone):
                         guest.command("su -f xiritest -c 'audioplay /cdrom/play.wav & player=$!; "
                                       "audiorecord -e slinear_le -P 16 -s 48000 -c 2 -t 1 /tmp/record.wav "
@@ -158,14 +169,22 @@ def run(args):
                     result['playback_during_capture'] = True
                     result.update(measure(guest.read('cat /tmp/record.wav')))
                     if args.donor:
-                        with feed(fixture_path, tone):
-                            guest.command("su -f xiritest -c '/emul/irix/usr/sbin/sfrecord -channels 2 "
-                                          "-width 16 -rate 48000 -time 1 -fileformat wave /tmp/sgi-mic.wav'", 60)
-                        result['sfrecord'] = measure(guest.read('cat /tmp/sgi-mic.wav'))
+                        def sgi_record():
+                            with feed(fixture_path, tone):
+                                guest.command("su -f xiritest -c '/emul/irix/usr/sbin/sfrecord -channels 2 "
+                                              "-width 16 -rate 48000 -time 1 -fileformat wave /tmp/sgi-mic.wav'", 60)
+                            return guest.read('cat /tmp/sgi-mic.wav')
+
+                        result['sfrecord'] = measure(sgi_record(), mono=True)
+                        if args.probes:
+                            guest.command("su -f xiritest -c '/cdrom/hdsp-query --mic-stereo'")
+                            guest.command('rm /tmp/sgi-mic.wav')
+                            result['sfrecord_stereo'] = measure(sgi_record())
+                            guest.command("su -f xiritest -c '/cdrom/hdsp-query --mic-mono'")
                         start = speaker.stat().st_size
                         guest.command("su -f xiritest -c '/emul/irix/usr/sbin/sfplay /tmp/sgi-mic.wav'", 60)
                         result['sfplay_exit'] = 0
-                        result['sfplay_output'] = measure_speaker(speaker, start)
+                        result['sfplay_output'] = measure_speaker(speaker, start, mono=not args.probes)
                 desktop.poweroff(lab)
             except Exception:
                 print(lab.serial_text()[-2200:], flush=True)
@@ -183,4 +202,5 @@ if __name__ == '__main__':
     for key in ('bundle', 'bootstrap', 'emulator', 'build', 'output'):
         parser.add_argument('--'+key, type=Path, required=True)
     parser.add_argument('--donor', type=Path, help='also import and test the two SGI audio clients')
+    parser.add_argument('--probes', type=Path, help='directory from lab/irix-hdsp/build.sh for microphone controls and scratch-file checks')
     run(parser.parse_args())

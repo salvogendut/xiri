@@ -3,7 +3,8 @@ typedef unsigned int u32;
 enum { IRIX_WRITE = 1004, IRIX_OPEN = 1005, IRIX_IOCTL = 1054, IRIX_POLL = 1087 };
 enum { SET_PARAMS = 24, GET_PARAMS, QUERY_VALUES, GET_PARAM_INFO };
 enum { RESOURCE = 0x10000001, INTERFACE = 0x10000002, GAIN = 0x10000019, MUTE = 0x1000001d };
-enum { DEFAULT_OUTPUT = 10, SYSTEM = 11, ANALOG_OUTPUT = 6 };
+enum { DEFAULT_OUTPUT = 10, SYSTEM = 11, ANALOG_OUTPUT = 6, MICROPHONE = 19 };
+enum { CHANNELS = 0x10000004 };
 
 struct parameter {
     u32 id, pad;
@@ -146,6 +147,22 @@ lookup(int fd, u32 scope, const char *name)
 }
 
 static int
+microphone_channels(int fd, u32 channels)
+{
+    struct parameter batch[3] __attribute__((aligned(8))) = {
+        { .id = 3 }, { .id = RESOURCE, .value = {MICROPHONE} },
+        { .id = CHANNELS, .value = {channels} }
+    };
+    if (channels && trap3(IRIX_IOCTL, fd, SET_PARAMS, (unsigned long)batch) != 1)
+        return 1;
+    batch[2].value[0] = 0;
+    if (trap3(IRIX_IOCTL, fd, GET_PARAMS, (unsigned long)batch) != 1)
+        return 2;
+    put("MIC_CHANNELS "); word(batch[2].value[0]); put("\n");
+    return channels && batch[2].value[0] != channels;
+}
+
+static int
 set_gain(int fd, int silent)
 {
     /* A2's stereo dB equivalents of native mixer levels 64 and 128. */
@@ -274,6 +291,12 @@ run(int argc, char **argv)
     put("OPEN "); word(fd); put("\n");
     if (fd < 0)
         return 1;
+    if (argc == 2 && equal(argv[1], "--mic-mono"))
+        return microphone_channels(fd, 1);
+    if (argc == 2 && equal(argv[1], "--mic-stereo"))
+        return microphone_channels(fd, 2);
+    if (argc == 2 && equal(argv[1], "--mic-status"))
+        return microphone_channels(fd, 0);
     if (argc == 2 && equal(argv[1], "--set-test-gain"))
         return set_gain(fd, 0);
     if (argc == 2 && equal(argv[1], "--silence-test-gain"))

@@ -78,7 +78,9 @@ host TTY and MIDI support. The serial regression suite passed 81 tests
 with three ignored. IRIS `befb3a66` and NetBSD `59ed2e1d479` then
 passed concurrent Indy playback and microphone capture on both desktop
 releases. NetBSD `8e78bdf18a2` adds verified SGI Audio Library capture on
-both. [Recording checks](results/2026-11-27-indy-microphone.md)
+both. IRIS `1a4844c6` also preserves capture precision with the original
+IRIX driver's word-strided DMA. All 18 HAL2 regressions passed, including
+the three PROM chimes. [Recording checks](results/2026-11-27-indy-microphone.md)
 
 The SuperIRIX test CHD cycle integrated four further upstream commits through
 `dca458bc` into IRIS `xiri` at `854d12c4`. These cover virtio snapshots,

@@ -52,3 +52,11 @@ python3 lab/irix-hdsp/check.py --release "$release" \
   --emulator .work/emulators/iris-xiri-20261122/accelerated \
   --kernel ./netbsd --media ./indy-hdsp.iso --output "./hdsp-$release"
 ```
+
+For recording, use [the Indy microphone check](../../docs/results/2026-11-27-indy-microphone.md).
+Run `hdsp-query --mic-status` to read the channel count of `A2.Microphone`.
+The flags `--mic-stereo` and `--mic-mono` set it and read it back.
+The build also produces `arena-o32` and `arena-n32`. On a private original
+IRIX guest, invoke each with a fresh scratch pathname, for example
+`./arena-n32 /tmp/sound-check-n32`. A successful run exits zero and leaves
+a one-byte file. Use the same binaries on XiriBSD to compare file sizing.

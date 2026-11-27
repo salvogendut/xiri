@@ -167,7 +167,9 @@ On the reference 6.5.22f and 6.5.30f Indy profiles the updated importer also
 copies SGI’s `/usr/sbin/sfrecord`, `/usr/sbin/sfplay` and their two converters
 from `/usr/lib32/dmedia/audioconverters` into the same paths under `/emul/irix`.
 Rerunning it with the matching donor adds missing audio files to an existing
-desktop. Recording requires the capture-capable Indy kernel, module and IRIS
+desktop. If an independently installed donor omits these optional files,
+the installer reports that and continues preparing the desktop. Recording
+requires the capture-capable Indy kernel, module and IRIS
 binary. [Record and play a sample](results/2026-11-27-indy-microphone.md)
 
 The optional browser, freeware and additional audio applications have
