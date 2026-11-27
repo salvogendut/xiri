@@ -31,8 +31,9 @@ On the first import, `xiriprep` installs the shared 4Dwm desktop, fonts and
 native services. Reboot and log in through xdm as the selected user. Other
 users keep their own desktop. [Build the native Indy ISO](docs/XIRI-INSTALLATION.md#build-the-native-indy-iso) · [Try a tested desktop image](docs/XIRI-IMAGE.md#indy-images-created-with-xiriprep)
 
-When the XiriBSD ISO and CHD images are ready, you can download them from
-[www.xiribds.org](https://www.xiribds.org/).
+The [XiriBSD project website](https://xiribsd.org/) supports development and
+distribution of XiriBSD. ISO and CHD images will be available there when they
+are ready.
 
 ## Platform status
 
