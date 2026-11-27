@@ -24,7 +24,7 @@ and 6.5.30 installations and tests them in IRIS. Start with the Prismatic
 launcher for your release if you have a prepared image. To build your own,
 import the SGI binaries, fonts and desktop resources from an installed copy
 of IRIX made with your own media.
-[Run an Indy image](docs/XIRI-IMAGE.md#clean-indy-audio-images) · [Prepare a donor](docs/XIRI-INSTALLATION.md) · [Install or update Xiri](docs/NATIVE-PACKAGE.md)
+[Build the native Indy ISO](docs/XIRI-INSTALLATION.md#build-the-native-indy-iso) · [Run an Indy desktop image](docs/XIRI-IMAGE.md#clean-indy-audio-images) · [Prepare a donor](docs/XIRI-INSTALLATION.md) · [Install or update Xiri](docs/NATIVE-PACKAGE.md)
 
 ## Platform status
 
@@ -44,7 +44,7 @@ ctwm with the 6.5.22 and 6.5.30 disk images. Physical testing is still ahead.
 ## Roadmap
 
 - **Desktop compatibility.** Complete everyday workflows in the original desktop and applications, including file operations, saved sessions and multimedia.
-- **Installation and updates.** Build a native-only XiriBSD install ISO from NetBSD sources. The planned `xiriprep` tool will import the desktop from your own IRIX disk image and enable it for your account. [Installation plan](docs/XIRI-INSTALLATION.md#planned-workstation-build-and-xiriprep)
+- **Installation and updates.** The workstation build produces a native Indy install CD. Next, `xiriprep` will import the desktop from your own IRIX disk image and enable it for your account. [Installation plan](docs/XIRI-INSTALLATION.md#donor-preparation-roadmap)
 - **Physical workstations.** Qualify the Indy on real hardware, then extend testing to the Indigo2, Octane and O2.
 
 [Full roadmap](docs/ROADMAP.md) · [Development history and test results](docs/HISTORY.md)

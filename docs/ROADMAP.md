@@ -15,9 +15,11 @@ Both Indy release lines now install the working Screen Saver from their
 full desktop ISO. Prismatic runs both CHDs against the current IRIS fork.
 [Clean installs, fresh-login tests and launchers](results/2026-11-27-indy-saver-install.md).
 
-1. Build a native-only XiriBSD install ISO on the workstation. Resolve NetBSD `src` and `xsrc` to recorded revisions, apply the Xiri changes, then prove an empty Indy disk boots to native NetBSD after installation.
-2. Ship `xiriprep` on the ISO. Read the owner's local raw or CHD donor, install the shared runtime and enable 4Dwm for a named account. The two reference XFS partitions are about 3.9 and 7.9 GiB. Check space and read-only access on the target before importing a desktop.
-3. Repeat from the native installation for 6.5.22f and 6.5.30f. Verify a second account keeps ctwm and a repeated import preserves preferences. [Build, import and acceptance plan](XIRI-INSTALLATION.md#planned-workstation-build-and-xiriprep).
+The workstation now builds a native NetBSD-current Indy CD with the modular
+kernel, Xorg and the full sysinst selection. [Native ISO build and install checks](results/2026-11-27-native-indy-iso.md).
+
+1. Ship `xiriprep` on the ISO. Read the owner's local raw or CHD donor, install the shared runtime and enable 4Dwm for a named account. The two reference XFS partitions are about 3.9 and 7.9 GiB. Check space and read-only access on the target before importing a desktop.
+2. Repeat from the native installation for 6.5.22f and 6.5.30f. Verify a second account keeps ctwm and a repeated import preserves preferences. [Build, import and acceptance plan](XIRI-INSTALLATION.md#planned-workstation-build-and-xiriprep).
 
 ## Desktop qualification
 

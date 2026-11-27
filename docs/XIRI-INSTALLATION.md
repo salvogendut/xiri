@@ -42,6 +42,10 @@ while the build directory is in use. `-j` selects the number of build jobs.
 The default builds both toolchains. Developers can pass `--tools64` to reuse
 an existing NetBSD mips64eb toolchain for the kernel and module.
 
+To reproduce the November 27 build, add
+`--lock lab/native-iso/indy-20261127.json` to the command above.
+[Recorded sources and build inputs](../lab/native-iso/indy-20261127.json).
+
 The Indy uses a 32-bit native userland and Xorg, a 64-bit kernel, and an
 ELF32 copy of that kernel for the PROM loader. The CD contains NetBSD install
 sets and native Xiri components. Its `native-media.json` identifies the source
@@ -56,8 +60,8 @@ the following command at the Indy Command Monitor.
 boot -f scsi(0)cdrom(4)rdisk(0)partition(8)ip2xboot
 ```
 
-In sysinst select the Indy/IP2x kernel, modules, and the X11 sets. The
-set directory on the CD is `sgimips/binary/sets`. Create an ordinary
+Choose **Full installation** in sysinst to install the Indy/IP2x kernel,
+modules and X11 sets. The set directory on the CD is `sgimips/binary/sets`. Create an ordinary
 native account and enable xdm to use NetBSD's ctwm session. For disk boot,
 use `setenv OSLoader boot`, `setenv OSLoadFilename netbsd.boot`,
 `setenv OSLoadOptions auto`, then `boot`. The stock 32-bit recovery kernel
@@ -71,17 +75,9 @@ a 6.5.30f donor. An owner should be able to build the ISO before obtaining
 or attaching a donor. The existing private desktop CDs and CHDs include
 imported SGI files. They serve as references for the finished desktop.
 
-**On the workstation**, one build script should fetch NetBSD-current
-`src` and `xsrc` into a clean workspace. Resolve “latest” to specific
-commits at the start and record both, the NetBSD-xiri `xiri` fork revision
-that supplies the patches, and the Xiri repository revision. Allow a later
-build to reuse that record. Apply the fork's changes to `src` and Xiri's
-Xorg/Newport patches to the matching `xsrc`. Report a conflicting patch
-before producing an image. NetBSD's `build.sh` and sgimips CD machinery
-provide the cross-build and SGI PROM boot paths. Build the system sets, X
-sets, matching kernel and module, native desktop services and `xiriprep`.
-Audit the ISO and its install sets against a native file inventory so SGI
-binaries, libraries, fonts, artwork and firmware stay off the media.
+The workstation builder already supplies the kernel, module, userland,
+patched Xorg and native xdm session. The next ISO revision needs the
+donor reader, native desktop services and `xiriprep`.
 [NetBSD and Xorg source changes](NETBSD-UPSTREAM.md#display-xfs-and-session-work-have-separate-destinations).
 
 **On the installed XiriBSD machine**, the proposed command is
