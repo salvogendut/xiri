@@ -425,21 +425,32 @@ altering it.
 ### Clean Indy audio images
 
 From the checkout, run the launcher for the release you want, then press
-**Ctrl+P** in Prismatic to start the Indy. Each audio-v8 image boots to
+**Ctrl+P** in Prismatic to start the Indy. Each image boots to
 a 1280×1024 xdm login with the XiriBSD logo.
 
 ```sh
-.work/prismatic-indy-audio-v8/6.5.22f/run-prismatic.sh
-.work/prismatic-indy-audio-v8/6.5.30f/run-prismatic.sh
+.work/prismatic-indy-saver-v8/6.5.22f/run-prismatic.sh
+.work/prismatic-indy-saver-v8/6.5.30f/run-prismatic.sh
 ```
 
 Log in as `xiritest` (password `xiritest`) for 4Dwm, or `netbsdtest`
-(password `netbsdtest`) for native ctwm. To try the audio change, open
+(password `netbsdtest`) for native ctwm. In 4Dwm, open **Icon Catalog →
+ControlPanels → screensaver**, check **Screen Saver On**, leave **Lock Screen** off, select
+**Qix** and click **Demo**. Press **Space** to wake. Close the panel to keep
+the selection. The default inactivity interval is ten minutes.
+[Screen Saver screenshots and tests](results/2026-11-27-indy-saver-repair.md).
+
+To try the audio change, open
 **Icon Catalog → ControlPanels → audiopanel**. From a root console, run
 `mixerctl -w outputs.master.mute=on`, then repeat with `off`. The open
 panel follows both changes. Clicking its Mute box controls the same output.
 
-The matching full installer CDs are under
+These CHDs include the audio-v8 desktop and the Screen Saver repair.
+For a fresh install from the original audio-v8 CDs, or to keep the settings
+in an existing audio-v8 Prismatic machine, apply the matching
+[Screen Saver repair CD](NATIVE-PACKAGE.md#add-screen-saver-to-an-audio-v8-indy)
+to that installation. The original audio-v8 machines are under
+`.work/prismatic-indy-audio-v8/` and the original installer CDs are under
 `.work/installers/indy-11.99.11/audio-v8/`. Existing audio-v7 machines
 can keep their overlays and use the release-specific update CD. The v7
 launchers remain under `.work/prismatic-indy-audio-v7/`.

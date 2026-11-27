@@ -72,6 +72,15 @@ in `08e53ba7`. [Octane build and qualification](results/2026-11-23-octane-deskto
 
 ## IRIS upstream updates
 
+The November 27 Screen Saver cycle integrated three upstream commits through
+`cfeeb304` into IRIS `xiri` at `ff352e49`. The merge reconciles slot-addressed
+devices and snapshot paths with the fork's frontend and storage support.
+413 selected core tests, 30 iris-ci tests, 120 GUI tests and six
+Indy/O2/Octane snapshot tests passed. Five selected core tests were ignored.
+Prismatic source at `63b6cc8` still needs changes for the current renderer and
+slot-addressed storage APIs. The [Screen Saver images](results/2026-11-27-indy-saver-repair.md)
+use the previously qualified Prismatic executable.
+
 The November 27 Indy audio-v8 packaging cycle fetched IRIS `upstream/main`
 at `f02e6f45`, already integrated in fork `xiri` at `f986f374`. The
 installer and image checks used the same IRIS and Prismatic executables

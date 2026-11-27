@@ -11,6 +11,7 @@ if test -r "$panels"; then
     # report zero. Xorg has no -art/-ari options; retain its native timing.
     sed -e 's|^/usr/bin/X11/xset -art[[:space:]].*|# Xiri: SGI repeat timing requires XSGI-Misc.|' \
         -e 's|^/usr/bin/X11/xset\([[:space:]]\)|/usr/X11R7/bin/xset\1|' \
+        -e 's|^/usr/bin/X11/xlock\([[:space:]]\)|/emul/irix/usr/bin/X11/xlock\1|' \
         -e 's|^/usr/bin/X11/xmodmap\([[:space:]]\)|/usr/X11R7/bin/xmodmap\1|' \
         "$panels" >"$job/panelsession"
     if . "$job/panelsession" >"$job/panelsession.out" 2>"$job/panelsession.err"; then

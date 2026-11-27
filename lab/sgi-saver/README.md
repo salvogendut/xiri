@@ -28,3 +28,34 @@ entry, shortens the idle interval for the test and captures successive frames.
 python3 lab/sgi-saver/check.py --release "$release" --bundle "$BUNDLE" \
   --kernel "$KERNEL" --emulator "$EMULATOR" --media "$ISO" --output "$RESULT"
 ```
+
+## Audio-v8 Indy repair
+
+For each release, build a private repair ISO using its savers-v2 CD.
+The builder checks the contents of the input files, so a CD rebuilt
+from the same files may have different ISO timestamps. The extra installer
+updates the desktop session to restart the chosen IRIX saver on login.
+
+```sh
+release=6.5.22f  # repeat with 6.5.30f
+media=.work/installers/indy-11.99.11
+python3 lab/sgi-saver/package-audio-v8.py --release "$release" \
+  --saver-cd "$media/savers-v2/$release.iso" --output "./repair-$release.iso"
+```
+
+Use the original, clean audio-v8 base CHD for the regression. The runner
+creates a separate disk and overlay. It checks Demo, activation by ordinary
+inactivity, wake with Space, saved settings and animation after a second
+xdm login, disabling the saver and clean shutdown.
+
+```sh
+scratch=$(mktemp -d)
+isoinfo -R -i .work/builds/indy-mute-sync-20261127/boot.iso -x /netbsd > "$scratch/netbsd"
+python3 lab/sgi-saver/check.py --audio-v8 --release "$release" \
+  --bundle ".work/prismatic-indy-audio-v8/$release" --media "./repair-$release.iso" \
+  --kernel "$scratch/netbsd" --emulator .work/emulators/iris-xiri-20261122/accelerated \
+  --output "$scratch/test"
+```
+
+[Manual installation](../../docs/NATIVE-PACKAGE.md#add-screen-saver-to-an-audio-v8-indy) ·
+[Image hashes, measurements and screenshots](../../docs/results/2026-11-27-indy-saver-repair.md).

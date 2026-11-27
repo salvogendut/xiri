@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-"""Install the saver CD on a temporary copy of an Indy v6 desktop and exercise Qix."""
+"""Install the saver CD on a temporary copy of an Indy desktop and exercise Qix."""
 from pathlib import Path
+from functools import partial
 import sys
 import time
 
@@ -51,22 +52,31 @@ def animation(guest, name):
     raise RuntimeError(name + ' did not return to Icon Catalog')
 
 
-def check(guest):
+def check(guest, *, session_update=False):
     guest.command('mkdir -p /cdrom && mount -rt cd9660 /dev/cd0a /cdrom')
     guest.command('/etc/rc.d/xdm stop')
     guest.wait_for('! pgrep -x Xorg >/dev/null', 60)
-    for action in ('', ' --restore-xorg', '', ''):
+    restore = [' --restore-session'] if session_update else []
+    for action in ['', *restore, ' --restore-xorg', '', '']:
         guest.command('sh /cdrom/install.sh' + action)
     guest.command('/etc/rc.d/xdm start')
-    login_catalog(guest, desktop.greeter, desktop.login)
-    guest.command("xdpyinfo | grep -qx '    SCREEN-SAVER' && xdpyinfo | grep -qx '    MIT-SCREEN-SAVER'")
+    return check_session(guest, check_next_login=session_update)
+
+
+def open_panel(guest):
     x, y = raise_catalog(guest)
     guest.monitor(f'ptr click {x+315} {y+461} left')
     guest.wait_for('xwininfo -root -tree | grep -q "Icon Catalog: ControlPanels"', 60)
     guest.monitor(f'ptr click {x+638} {y+148} left 2')
     panel = '"ScreenSaver"[)] +300x420'
     guest.wait_for("xwininfo -root -tree | grep -Eq '" + panel + "'", 90)
-    x, y = position(guest, panel)
+    return position(guest, panel)
+
+
+def check_session(guest, check_next_login=False):
+    login_catalog(guest, desktop.greeter, desktop.login)
+    guest.command("xdpyinfo | grep -qx '    SCREEN-SAVER' && xdpyinfo | grep -qx '    MIT-SCREEN-SAVER'")
+    x, y = open_panel(guest)
     click(guest, x+15, y+116)
     guest.wait_for("xset q | grep -Eq 'timeout: +600 '", 45)
     for _ in range(4):
@@ -84,19 +94,39 @@ def check(guest):
     time.sleep(16)
     idle = animation(guest, 'idle')
     guest.command('xset s 600 600')
+    if check_next_login:
+        click(guest, x+96, y+378)
+        guest.wait_for("""! xwininfo -root -tree | grep -Eq '"ScreenSaver"[)] +300x420'""", 45)
+        saved = guest.read_text('cat /usr/people/xiritest/.desktop-$(hostname)/panelsession')
+        if '/usr/bin/X11/xlock -mode qix -besaver -nolock' not in saved:
+            raise RuntimeError('The panel did not save the selected Qix command')
+        logout(guest)
+        login_catalog(guest, desktop.greeter, desktop.login)
+        guest.command("xset q | grep -Eq 'timeout: +600 '")
+        guest.command("grep -q '^/emul/irix/usr/bin/X11/xlock ' \"$job/panelsession\"")
+        if guest.read_text('cat /usr/people/xiritest/.desktop-$(hostname)/panelsession') != saved:
+            raise RuntimeError('Session replay changed the saved Screen Saver settings')
+        guest.command('xset s 8 600')
+        time.sleep(16)
+        next_idle = animation(guest, 'next-login')
+        guest.command('xset s 600 600')
+        x, y = open_panel(guest)
     click(guest, x+15, y+116)
     guest.wait_for("xset q | grep -Eq 'timeout: +0 '", 40)
     click(guest, x+96, y+378)
     logout(guest)
     desktop.greeter(guest)
-    guest.command("! ps -axww -o args | grep -Eq '(^|[ (])[/]usr/bin/X11/xlock([ )]|$)'")
-    return dict(demo_changed_pixels=demo, idle_changed_pixels=idle, idle_timeout_seconds=8,
+    guest.command("! ps -axww -o args | grep -Eq '(^|[ (])(/emul/irix)?[/]usr/bin/X11/xlock([ )]|$)'")
+    result = dict(demo_changed_pixels=demo, idle_changed_pixels=idle, idle_timeout_seconds=8,
                 key_wake='Space (Demo and idle)', original_timeout_seconds=600,
                 disabled_timeout_seconds=0, logout_to_xdm=True)
+    if check_next_login:
+        result['next_login_idle_changed_pixels'] = next_idle
+    return result
 
 
 def main():
-    run_indy_addon(check, __doc__)
+    run_indy_addon(check, __doc__, check_audio_v8=partial(check, session_update=True))
 
 
 if __name__ == '__main__':

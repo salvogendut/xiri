@@ -331,7 +331,7 @@ saves its default layout, including **Hidden Files**, in
 and keyboard repeat are X server settings. Their panels save commands in
 `~/.desktop-<hostname>/panelsession`. Xiri replays those commands as the
 desktop user after applying the session's initial X defaults. It translates
-the original `xset` and `xmodmap` paths in a private session copy and leaves
+the original `xset`, `xmodmap` and SGI `xlock` paths in a private session copy and leaves
 the user's original file intact. Include `panelsession` and `layouts` in
 profile backups.
 
@@ -341,8 +341,10 @@ Xorg does not provide the SGI `XSGI-Misc` extension. Xiri omits the unsupported
 Xorg's native repeat timing. The [two-user visual check](results/2026-11-14-desktop-controls-iconviews.json)
 confirms different hidden-file visibility in new File Manager windows after
 login, with the matching checkbox retained in the reopened panel.
-Screen Saver currently covers standard X screen
-blanking; its animated saver list and DPMS support are separate work.
+On the updated audio-v8 Indy desktops, Screen Saver lists eleven vendor
+presets. Qix runs in **Demo**, on inactivity and again after a new xdm
+login. Space wakes the desktop. Password locking, DPMS and the other ten
+effects await qualification. [Images and screenshots](results/2026-11-27-indy-saver-repair.md).
 
 ## Saved desktop sessions
 

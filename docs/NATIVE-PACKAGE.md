@@ -263,6 +263,43 @@ The audio kernel and IRIX module belong to the base system. The
 [audio component checks](results/2026-11-26-indy-audio-installer.md#playback-across-mozilla-installation-and-removal)
 exercise the SGI player across both operations.
 
+## Add Screen Saver to an audio-v8 Indy
+
+Use this update to keep your current Prismatic machine, accounts and desktop
+settings. The [latest test CHDs](XIRI-IMAGE.md#clean-indy-audio-images)
+already include it. A fresh install from the original audio-v8 ISO needs
+this step for animated savers.
+
+Shut down the guest. In the same Prismatic profile, open **F9 → Media → SCSI
+4 → CD-ROM** and choose `.work/installers/indy-11.99.11/audio-v8-savers/6.5.22f.iso`
+or `6.5.30f.iso` to match the installed release. Save with **F9** and boot
+to the greeter. Log in as root on the NetBSD serial console. Stopping xdm
+ends any graphical session, including winterm.
+
+```sh
+mkdir -p /cdrom
+mount -rt cd9660 /dev/cd0a /cdrom
+/etc/rc.d/xdm stop
+sh /cdrom/install.sh && /etc/rc.d/xdm start
+umount /cdrom
+```
+
+Log in to 4Dwm, open **ControlPanels → screensaver**, enable the saver,
+select **Qix**, leave locking off and click **Demo**. **Space** wakes the
+desktop. After an ordinary logout and login the user's choice applies again.
+
+The CD checks the release, audio-v8 installation receipt and file hashes.
+It installs the vendor's saver files, the SGI extension for NetBSD Xorg and
+the session launcher correction. If you maintain a locally edited
+`/usr/local/libexec/xiri/desktop-clients.sh`, review the CD copy and merge
+its `/usr/bin/X11/xlock` path translation into your own session script.
+Use `sh /cdrom/install-savers.sh` for the vendor files and Xorg in that case.
+For a stock installation, `sh /cdrom/install.sh --restore-session` restores
+the original launcher and `sh /cdrom/install.sh --restore-xorg` restores
+the original Xorg module. Perform either from the serial console with xdm
+stopped and restart xdm afterwards. The presets remain available on disk.
+[Qualification on both Indy releases](results/2026-11-27-indy-saver-repair.md).
+
 ## Upgrade an installed Indy from audio-v7 to audio-v8
 
 Attach the update ISO for the release in `/var/db/xiri-install/installed`

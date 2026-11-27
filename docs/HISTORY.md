@@ -11,6 +11,10 @@ mute updates to both IRIX releases. Existing audio-v7 desktops can upgrade
 in place and roll back using the same release's update CD.
 [Images and qualification](results/2026-11-27-indy-audio-v8.md).
 
+The updated Indy CHDs include the SGI Screen Saver components and replay
+the user's animation choice on login. The matching repair CDs can update
+existing audio-v8 installations. [Screen Saver results](results/2026-11-27-indy-saver-repair.md).
+
 ## November 15–26, 2026
 
 - **SGI machines.** Native boot, graphics and xdm on emulated Indigo2, Octane and O2 led to release-specific desktop images. The platform guide lists their launchers, kernel updates and rollback procedures. [Indigo2 graphics](results/2026-11-22-ip28-impact.md) · [Octane graphics](results/2026-11-23-octane-xdm.md) · [O2 graphics](results/2026-11-23-o2-greeter.md) · [Platform images](results/2026-11-26-platform-v6.md)

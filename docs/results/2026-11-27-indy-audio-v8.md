@@ -16,6 +16,9 @@ launch, while the graphical PROM state still has its delivered contents.
 
 ## Fresh installations
 
+The [Screen Saver follow-up](2026-11-27-indy-saver-repair.md) supplies
+updated images and a repair CD for installations made from these ISOs.
+
 The bootstrap started with NetBSD 11.0/sgimips and its X sets. It booted
 the matched 11.99.11 kernel and loaded `compat_irix_o32` at securelevel 1.
 Each release was installed twice with `install.sh --mozilla` on its own
