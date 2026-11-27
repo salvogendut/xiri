@@ -75,6 +75,15 @@ def run_build(args, work, output):
     subprocess.run(prefix + ['sh', ROOT / 'lab/ip28-kernel/build-module.sh', src, tools64, work / 'module64'],
                    env=env, check=True)
     build(32, 'release')
+    reader = work / 'xiriprep-build'
+    for cmd in (
+            ['cmake', '-S', ROOT / 'packaging/xiriprep', '-B', reader,
+             f'-DNETBSD_SRC={src}', '-DCMAKE_BUILD_TYPE=Release', '-DCMAKE_SYSTEM_NAME=NetBSD',
+             '-DCMAKE_SYSTEM_PROCESSOR=mips', f'-DCMAKE_SYSROOT={work / "dest32"}',
+             f'-DCMAKE_C_COMPILER={work / "tools32/bin/mipseb--netbsd-gcc"}'],
+            ['cmake', '--build', reader, '--target', 'xiri-donor-read', '-j', str(args.j)],
+            ['cmake', '--install', reader, '--prefix', work / 'xiriprep-stage/usr/local']):
+        subprocess.run(prefix + cmd, env=env, check=True)
     assemble(work, output, pins)
 
 

@@ -1,0 +1,52 @@
+cmake_minimum_required(VERSION 3.19)
+project(xiri_donor C)
+
+set(NETBSD_SRC "" CACHE PATH "NetBSD-xiri source checkout")
+set(xfs "${NETBSD_SRC}/external/gpl2/xfs")
+include(FetchContent)
+set(BUILD_SHARED_LIBS OFF CACHE BOOL "" FORCE)
+FetchContent_Declare(libchdr GIT_REPOSITORY https://github.com/rtissera/libchdr.git
+  GIT_TAG 93d8c239ff0d4e8d7722985992649fce12d2463b)
+FetchContent_MakeAvailable(libchdr)
+
+add_executable(xiri-donor-read donor-read.c)
+target_compile_features(xiri-donor-read PRIVATE c_std_11)
+target_include_directories(xiri-donor-read PRIVATE "${xfs}/include")
+target_include_directories(xiri-donor-read SYSTEM PRIVATE "${xfs}/dist")
+foreach(unit xfs_sb xfs_probe xfs_cksum xfs_io xfs_ag xfs_read_log xfs_read_btree
+    xfs_read_inode xfs_read_file xfs_read_symlink xfs_read_directory
+    xfs_read_dir_index xfs_lookup_path)
+  target_sources(xiri-donor-read PRIVATE "${xfs}/netbsd/${unit}.c")
+endforeach()
+target_link_libraries(xiri-donor-read PRIVATE chdr-static)
+
+set(signatures "")
+foreach(release 6.5.22f 6.5.30f)
+  set(profile "${CMAKE_CURRENT_SOURCE_DIR}/../../profiles/irix-${release}-v1.json")
+  set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS "${profile}")
+  file(READ "${profile}" contents)
+  string(JSON sh GET "${contents}" paths "/sbin/sh" sha256)
+  string(JSON wm GET "${contents}" paths "/usr/bin/X11/4Dwm" sha256)
+  string(APPEND signatures "${release} ${sh} ${wm}\n")
+endforeach()
+file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/donor-signatures" "${signatures}")
+install(TARGETS xiri-donor-read RUNTIME DESTINATION libexec/xiri)
+install(PROGRAMS xiriprep DESTINATION sbin)
+install(PROGRAMS select-desktop.sh ../../scripts/setup-xiri-user.sh DESTINATION libexec/xiri)
+install(FILES "${CMAKE_CURRENT_BINARY_DIR}/donor-signatures" DESTINATION share/xiri)
+
+# Carry the reader's corresponding source and the codec notices with the binary.
+set(bundle "${CMAKE_CURRENT_BINARY_DIR}/sources")
+file(MAKE_DIRECTORY "${bundle}/xiri/packaging/xiriprep" "${bundle}/xiri/profiles")
+file(COPY "${xfs}" DESTINATION "${bundle}/NetBSD-xiri/external/gpl2")
+file(COPY "${libchdr_SOURCE_DIR}/" DESTINATION "${bundle}/libchdr" PATTERN ".git" EXCLUDE)
+file(COPY CMakeLists.txt donor-read.c xiriprep select-desktop.sh DESTINATION "${bundle}/xiri/packaging/xiriprep")
+set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS
+  donor-read.c xiriprep select-desktop.sh ../../scripts/setup-xiri-user.sh)
+file(COPY ../../scripts/setup-xiri-user.sh DESTINATION "${bundle}/xiri/scripts")
+foreach(release 6.5.22f 6.5.30f)
+  file(COPY "../../profiles/irix-${release}-v1.json" DESTINATION "${bundle}/xiri/profiles")
+endforeach()
+execute_process(COMMAND "${CMAKE_COMMAND}" -E tar czf xiriprep-source.tgz -- sources
+  WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}" COMMAND_ERROR_IS_FATAL ANY)
+install(FILES "${CMAKE_CURRENT_BINARY_DIR}/xiriprep-source.tgz" DESTINATION share/xiri)

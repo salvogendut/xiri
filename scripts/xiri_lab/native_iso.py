@@ -23,7 +23,7 @@ def digest(path, algorithm):
         return hashlib.file_digest(stream, algorithm).hexdigest()
 
 
-def write_set(path, files, timestamp):
+def write_set(path, files, timestamp, *, executables=()):
     with path.open('wb') as raw:
         compressed = (gzip.GzipFile(fileobj=raw, filename='', mode='wb', mtime=timestamp)
                       if path.name.endswith('.tgz') else lzma.LZMAFile(raw, 'wb'))
@@ -32,7 +32,8 @@ def write_set(path, files, timestamp):
             for name, source in sorted(files.items()):
                 data = source if isinstance(source, bytes) else source.read_bytes()
                 entry = tarfile.TarInfo('./' + name)
-                entry.size, entry.mode, entry.mtime = len(data), 0o444, timestamp
+                entry.size, entry.mtime = len(data), timestamp
+                entry.mode = 0o555 if name in executables else 0o444
                 entry.uname, entry.gname = 'root', 'wheel'
                 archive.addfile(entry, io.BytesIO(data))
 
@@ -80,7 +81,12 @@ def assemble(work, output, source_lock):
         }
         # Keep the resettable machine-specific kernel selection sysinst already
         # uses. The 32-bit bootstrap loads netbsd.boot; /netbsd retains symbols.
-        write_set(sets / ('kern-GENERIC32_IP2x' + suffix), resources, stamp)
+        programs = ('usr/local/sbin/xiriprep', 'usr/local/libexec/xiri/xiri-donor-read',
+                    'usr/local/libexec/xiri/setup-xiri-user.sh', 'usr/local/libexec/xiri/select-desktop.sh')
+        for name in (*programs, 'usr/local/share/xiri/donor-signatures',
+                     'usr/local/share/xiri/xiriprep-source.tgz'):
+            resources[name] = work / 'xiriprep-stage' / name
+        write_set(sets / ('kern-GENERIC32_IP2x' + suffix), resources, stamp, executables=programs)
         modpath = f'stand/sgimips/{version}/modules/compat_irix_o32/{module.name}'
         write_set(sets / ('modules' + suffix), {modpath: module,
                   'etc/modules.conf': b'compat_irix_o32\n'}, stamp)
