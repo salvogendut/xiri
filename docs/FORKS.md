@@ -72,6 +72,10 @@ in `08e53ba7`. [Octane build and qualification](results/2026-11-23-octane-deskto
 
 ## IRIS upstream updates
 
+The November 27 native installer cycle fetched `upstream/main` at
+`d8cf7e91` and verified it is an ancestor of IRIS `xiri` at `46c116ee`.
+The fork was already current.
+
 The next November 27 cycle merged seven upstream commits through `d8cf7e91`
 into IRIS `xiri` at `46c116ee`. They update device timers and NVRAM writes.
 The IRIS device tests passed 3,575 checks. Prismatic `910997e` supports

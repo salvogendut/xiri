@@ -1,0 +1,192 @@
+diff --git a/external/mit/xf86-video-newport/dist/src/newport_accel.c b/external/mit/xf86-video-newport/dist/src/newport_accel.c
+index 29b0d889..201baeff 100644
+--- a/external/mit/xf86-video-newport/dist/src/newport_accel.c
++++ b/external/mit/xf86-video-newport/dist/src/newport_accel.c
+@@ -16,6 +16,7 @@
+ #ifdef NEWPORT_ACCEL
+ 
+ #include "mi.h"
++#include "shadowfb.h"
+ #include "mizerarc.h"
+ 
+ #define BARF(a) xf86DrvMsg(0, X_INFO, (a))
+@@ -1480,9 +1481,10 @@ NewportXAASetupForCPUToScreenAlphaTexture(
+ 	free(pNewport->pTexture);
+ 	pNewport->pTexture = xnfalloc(pNewport->uTextureSize = width * height * sizeof(unsigned int));
+     }
+-    col = (((unsigned int)red & 0xFF00) << 8)
++    /* HOSTRW uses BGR byte order, like SetupForCPUToScreenTexture. */
++    col = (((unsigned int)blue & 0xFF00) << 8)
+         | ((unsigned int)green & 0xFF00)
+-	| ((unsigned int)blue >> 8);
++	| ((unsigned int)red >> 8);
+ 	
+     pNewport->uTextureWidth = width;
+     pNewport->uTextureHeight = height;
+@@ -1622,7 +1624,8 @@ NewportRenderTexture1to1(NewportPtr pNewport, int srcx, int srcy, int w, int h)
+     pNewportRegs = pNewport->pNewportRegs;
+     
+     p = pNewport->pTexture + srcx + (srcy * pNewport->uTextureWidth);
+-    add = pNewport->uTextureWidth - w + srcx;
++    /* srcx is already included in p; advance exactly one source row. */
++    add = pNewport->uTextureWidth - w;
+ 
+     while (h--) 
+     {
+@@ -1638,46 +1641,6 @@ NewportRenderTexture1to1(NewportPtr pNewport, int srcx, int srcy, int w, int h)
+ 
+ /*******************************************************************************
+ 
+-*******************************************************************************/
+-static void
+-NewportRenderTextureScale(NewportPtr pNewport, int srcx, int srcy, int w, int h)
+-{
+-    int d;
+-    int dx, dy;
+-    int curx, cury;
+-    unsigned int *pLine;
+-    int l, p;
+-    NewportRegsPtr pNewportRegs;
+-    pNewportRegs = pNewport->pNewportRegs;
+-    
+-    dx = ((pNewport->uTextureWidth - srcx) << 16) / w;
+-    dy = ((pNewport->uTextureHeight - srcy) << 16) / h;
+-    
+-    cury = srcy << 16;    
+-    while (h--)
+-    {	
+-	l = (cury + 0x7FFF) >> 16;
+-	if (l >= pNewport->uTextureHeight)
+-	    l = pNewport->uTextureHeight-1;
+-	pLine = pNewport->pTexture + l * pNewport->uTextureWidth;
+-
+-	curx = srcx << 16;
+-	for (d = w; d; d--)
+-	{
+-	    p = (curx + 0x7FFF) >> 16;
+-	    if (p >= pNewport->uTextureWidth)
+-		p = pNewport->uTextureWidth-1;
+-	    /* TODO: does this need a FIFO check? */
+-	    NewportWaitGFIFO(pNewport, 1);
+-	    pNewportRegs->go.hostrw0 = pLine[p];		
+-	    curx += dx;
+-	}
+-        cury += dy;
+-    }
+-}
+-
+-/*******************************************************************************
+-
+ *******************************************************************************/
+ static void
+ NewportRenderTextureRepeat(NewportPtr pNewport, int srcx, int srcy, int w, int h)
+@@ -1687,20 +1650,23 @@ NewportRenderTextureRepeat(NewportPtr pNewport, int srcx, int srcy, int w, int h
+     NewportRegsPtr pNewportRegs;
+     pNewportRegs = pNewport->pNewportRegs;
+     
+-    srcx %= pNewport->uTextureWidth;
+-    srcy %= pNewport->uTextureHeight;
++    /* Render permits negative source origins for repeated pictures. */
++    srcx %= (int)pNewport->uTextureWidth;
++    srcy %= (int)pNewport->uTextureHeight;
++    if (srcx < 0) srcx += pNewport->uTextureWidth;
++    if (srcy < 0) srcy += pNewport->uTextureHeight;
+     
+-
+     while (h--)
+-    {	
++    {
++        int tx = srcx; /* Each row starts at the same tile column. */
+ 	pLine = pNewport->pTexture + pNewport->uTextureWidth * srcy;
+ 	for (d = w; d; d--)
+ 	{
+ 	    NewportWaitGFIFO(pNewport, 1);
+-	    pNewportRegs->go.hostrw0 = pLine[srcx];
+-	    srcx++;
+-	    if (srcx >= pNewport->uTextureWidth)
+-		srcx = 0;
++	    pNewportRegs->go.hostrw0 = pLine[tx];
++	    tx++;
++	    if (tx >= pNewport->uTextureWidth)
++		tx = 0;
+ 	}
+         srcy++;
+ 	if (srcy >= pNewport->uTextureHeight)
+@@ -1741,14 +1707,12 @@ NewportXAASubsequentCPUToScreenTexture(
+ 
+     NewportWaitIdle(pNewport, NEWPORT_GFIFO_ENTRIES);
+     
+-    if (srcx + w == pNewport->uTextureWidth
+-        && srcy + h == pNewport->uTextureHeight)
+-	NewportRenderTexture1to1(pNewport, srcx, srcy, w, h);
+-    else
++    /* XAA rejects transforms and calls this once per clipped rectangle.
++     * w/h are copy extents, not a requested scaled texture size. */
+     if (pNewport->uTextureFlags & XAA_RENDER_REPEAT)
+-	NewportRenderTextureRepeat(pNewport,  srcx, srcy, w, h);
++	NewportRenderTextureRepeat(pNewport, srcx, srcy, w, h);
+     else
+-	NewportRenderTextureScale(pNewport, srcx, srcy, w, h);
++	NewportRenderTexture1to1(pNewport, srcx, srcy, w, h);
+ 
+     NewportWaitIdle(pNewport, NEWPORT_GFIFO_ENTRIES);        
+ 
+@@ -1764,6 +1728,48 @@ CARD32 NewportDstFormats[7] = {PICT_a8r8g8b8, PICT_a8b8g8r8, PICT_x8r8g8b8, PICT
+ /*******************************************************************************
+ 
+ *******************************************************************************/
++/* XAA's software fallbacks operate on ShadowPtr.  Newport has no linear
++ * framebuffer: synchronize only the affected rectangle before/after fb.
++ * Install this layer below XAA so accelerated operations bypass it. */
++static void
++NewportFallbackRead(ScrnInfoPtr pScrn, int count, BoxPtr boxes)
++{
++    NewportPtr pNewport = NEWPORTPTR(pScrn);
++    int sx = pNewport->clipsx, sy = pNewport->clipsy;
++    int ex = pNewport->clipex, ey = pNewport->clipey;
++    NewportXAADisableClipping(pScrn);
++    while (count--) {
++        int w = boxes->x2 - boxes->x1, h = boxes->y2 - boxes->y1;
++        unsigned char *dst = (unsigned char *)pNewport->ShadowPtr
++            + boxes->y1 * pNewport->ShadowPitch + boxes->x1 * pNewport->Bpp;
++        if (w > 0 && h > 0)
++            NewportXAAReadPixmap(pScrn, boxes->x1, boxes->y1, w, h,
++                dst, pNewport->ShadowPitch, pScrn->bitsPerPixel, pScrn->depth);
++        boxes++;
++    }
++    NewportXAASetClippingRectangle(pScrn, sx, sy, ex, ey);
++}
++
++static void
++NewportFallbackWrite(ScrnInfoPtr pScrn, int count, BoxPtr boxes)
++{
++    NewportPtr pNewport = NEWPORTPTR(pScrn);
++    int sx = pNewport->clipsx, sy = pNewport->clipsy;
++    int ex = pNewport->clipex, ey = pNewport->clipey;
++    NewportXAADisableClipping(pScrn);
++    while (count--) {
++        int w = boxes->x2 - boxes->x1, h = boxes->y2 - boxes->y1;
++        unsigned char *src = (unsigned char *)pNewport->ShadowPtr
++            + boxes->y1 * pNewport->ShadowPitch + boxes->x1 * pNewport->Bpp;
++        if (w > 0 && h > 0)
++            pNewport->pXAAInfoRec->WritePixmap(pScrn, boxes->x1, boxes->y1, w, h,
++                src, pNewport->ShadowPitch, GXcopy, ~0U, -1,
++                pScrn->bitsPerPixel, pScrn->depth);
++        boxes++;
++    }
++    NewportXAASetClippingRectangle(pScrn, sx, sy, ex, ey);
++}
++
+ Bool
+ NewportXAAScreenInit(ScreenPtr pScreen)
+ {
+@@ -1954,6 +1960,9 @@ NewportXAAScreenInit(ScreenPtr pScreen)
+ 	    pNewport->Color2Planes = NewportColor2Planes8CI;
+ 	}
+ 
++	if (!ShadowFBInit2(pScreen, NewportFallbackRead, NewportFallbackWrite))
++	    return FALSE;
++
+ 	if (!XAAInit(pScreen, pXAAInfoRec))
+ 	{
+ 	    xf86DrvMsg(pScrn->scrnIndex, X_ERROR, "XAAInit Failed!\n"); 

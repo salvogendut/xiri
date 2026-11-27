@@ -1,0 +1,16 @@
+diff --git a/usr.sbin/sysinst/arch/sgimips/md.h b/usr.sbin/sysinst/arch/sgimips/md.h
+index a8932b879d8..6619f469100 100644
+--- a/usr.sbin/sysinst/arch/sgimips/md.h
++++ b/usr.sbin/sysinst/arch/sgimips/md.h
+@@ -71,4 +71,10 @@
+ #define SET_KERNEL_1_NAME	"kern-GENERIC32_IP2x"
+ #define SET_KERNEL_2_NAME	"kern-GENERIC32_IP3x"
+ #define SET_KERNEL_3_NAME	"kern-GENERIC32_IP12"
+-#define MD_SETS_SELECTED SET_KERNEL_1, SET_SYSTEM
++/* Sets shipped on the native Indy CD. The module matches the N64 kernel. */
++#define INDY_NATIVE_SYSTEM SET_KERNEL_1, SET_MODULES, SET_BASE, SET_ETC, \
++    SET_COMPILER, SET_GAMES, SET_MAN_PAGES, SET_MISC, SET_RESCUE, SET_TEXT_TOOLS
++#define MD_SETS_VALID            INDY_NATIVE_SYSTEM, SET_X11
++#define MD_SETS_SELECTED         INDY_NATIVE_SYSTEM, SET_X11
++#define MD_SETS_SELECTED_NOX     INDY_NATIVE_SYSTEM
++#define MD_SETS_SELECTED_MINIMAL SET_KERNEL_1, SET_MODULES, SET_BASE, SET_ETC

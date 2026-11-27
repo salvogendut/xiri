@@ -18,6 +18,52 @@ The optional [Indy Screen Saver update and rollback](results/2026-11-26-sgi-scre
 
 ## Planned workstation build and `xiriprep`
 
+### Build the native Indy ISO
+
+Use a Linux workstation with Python 3.11 or later, Git 2.38 or later, a C
+and C++ compiler, and the NetBSD cross-build prerequisites. On our Fedora
+workstation the existing `xiri-iris` Toolbox supplies the build environment.
+From the Xiri checkout run:
+
+```sh
+scripts/build-xiribsd-iso.py --work .work/native-indy \
+    --output .work/images/xiribsd-indy-native.iso
+```
+
+The builder resolves the three remote branches once, writes their commit IDs,
+the two prepared Git tree IDs and the recipe hashes to
+`.work/native-indy/sources.json`, and reuses that lock on retry. Use
+`--prepare-only` to stop after checking the sources. For another build, use a
+new work directory and pass `--lock /path/to/sources.json` from the recorded
+Xiri revision. A complete local fork checkout supplied with
+`--src-reference ../NetBSD-xiri` saves a download. Keep the reference checkout
+while the build directory is in use. `-j` selects the number of build jobs.
+The default builds both toolchains. Developers can pass `--tools64` to reuse
+an existing NetBSD mips64eb toolchain for the kernel and module.
+
+The Indy uses a 32-bit native userland and Xorg, a 64-bit kernel, and an
+ELF32 copy of that kernel for the PROM loader. The CD contains NetBSD install
+sets and native Xiri components. Its `native-media.json` identifies the source
+trees, installed Xiri files, and SHA256 of every set and the installer kernel.
+Archive `sources.json` with the ISO. The build directory can be removed once
+the image has been tested.
+
+Attach the ISO as CD-ROM at SCSI ID 4 and the installation disk at ID 1. At
+the Indy Command Monitor enter:
+
+```text
+boot -f scsi(0)cdrom(4)rdisk(0)partition(8)ip2xboot
+```
+
+In sysinst select the Indy/IP2x kernel, modules, and the X11 sets. The
+set directory on the CD is `sgimips/binary/sets`. Create an ordinary
+native account and enable xdm to use NetBSD's ctwm session. For disk boot,
+use `setenv OSLoader boot`, `setenv OSLoadFilename netbsd.boot`,
+`setenv OSLoadOptions auto`, then `boot`. The stock 32-bit recovery kernel
+is `netbsd.stock`.
+
+### Donor preparation roadmap
+
 The first target is an Indy. One native XiriBSD ISO should support two
 separately tested installations, one using a 6.5.22f donor and one using
 a 6.5.30f donor. An owner should be able to build the ISO before obtaining
