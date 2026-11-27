@@ -4,6 +4,7 @@ import argparse
 import fcntl
 import os
 from pathlib import Path
+import shutil
 import subprocess
 
 from xiri_lab.native_iso import assemble
@@ -19,6 +20,7 @@ def main():
     parser.add_argument('--xsrc-reference', type=Path, help='local NetBSD xsrc object cache')
     parser.add_argument('--prepare-only', action='store_true', help='resolve, merge and record the sources')
     parser.add_argument('--tools64', type=Path, help='reuse an existing NetBSD mips64eb TOOLDIR')
+    parser.add_argument('--toolbox', metavar='NAME', help='run NetBSD compilation in this Fedora Toolbox')
     parser.add_argument('-j', type=int, default=min(os.cpu_count() or 1, 12), metavar='JOBS')
     args = parser.parse_args()
     if args.j < 1 or (not args.prepare_only and not args.output):
@@ -37,6 +39,10 @@ def main():
 
 
 def run_build(args, work, output):
+    if not args.prepare_only:
+        for tool in ['genisoimage', 'isoinfo'] + (['toolbox'] if args.toolbox else []):
+            if shutil.which(tool) is None:
+                raise ValueError(f'Install {tool} on the workstation before building the CD.')
     pins = prepare(work, args.lock, args.src_reference, args.xsrc_reference)
     print(f'Native source lock: {work / "sources.json"}', flush=True)
     if args.prepare_only:
@@ -44,7 +50,10 @@ def run_build(args, work, output):
 
     tmp = work / 'tmp'
     tmp.mkdir(exist_ok=True)
-    env = dict(os.environ, TMPDIR=str(tmp), MAKECONF='/dev/null', LC_ALL='C', TZ='UTC')
+    settings = dict(TMPDIR=str(tmp), MAKECONF='/dev/null', LC_ALL='C', TZ='UTC')
+    env = dict(os.environ, **settings)
+    prefix = (['toolbox', 'run', '-c', args.toolbox, 'env']
+              + [f'{key}={value}' for key, value in settings.items()] if args.toolbox else [])
     src = work / 'src'
 
     def build(bits, operation):
@@ -56,14 +65,14 @@ def run_build(args, work, output):
             cmd.extend(['-x', '-X', work / 'xsrc'])
         for option in ('MKDEBUG', 'MKDEBUGLIB', 'MKDEBUGKERNEL', 'MKCTF', 'MKTESTS', 'MKGDB', 'MKLLVM'):
             cmd.extend(['-V', option + '=no'])
-        subprocess.run(cmd + [operation], cwd=src, env=env, check=True)
+        subprocess.run(prefix + cmd + [operation], cwd=src, env=env, check=True)
 
     tools64 = args.tools64.resolve() if args.tools64 else work / 'tools64'
     if not args.tools64:
         build(64, 'tools')
-    subprocess.run(['sh', ROOT / 'lab/ip28-kernel/build.sh', src, tools64, work / 'kernel64',
+    subprocess.run(prefix + ['sh', ROOT / 'lab/ip28-kernel/build.sh', src, tools64, work / 'kernel64',
                     ROOT / 'lab/irix-module/XIRI_IRIX_MODULE'], env=env, check=True)
-    subprocess.run(['sh', ROOT / 'lab/ip28-kernel/build-module.sh', src, tools64, work / 'module64'],
+    subprocess.run(prefix + ['sh', ROOT / 'lab/ip28-kernel/build-module.sh', src, tools64, work / 'module64'],
                    env=env, check=True)
     build(32, 'release')
     assemble(work, output, pins)

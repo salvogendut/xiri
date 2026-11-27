@@ -21,8 +21,9 @@ The optional [Indy Screen Saver update and rollback](results/2026-11-26-sgi-scre
 ### Build the native Indy ISO
 
 Use a Linux workstation with Python 3.11 or later, Git 2.38 or later,
-`genisoimage`, `isoinfo`, C and C++ compilers, and the NetBSD cross-build prerequisites. On our Fedora
-workstation the existing `xiri-iris` Toolbox supplies the build environment.
+`genisoimage`, `isoinfo`, C and C++ compilers, and the NetBSD cross-build
+prerequisites. On Fedora add `--toolbox xiri-iris` to compile in the
+existing Toolbox while the workstation assembles and reads back the media.
 Run the build from the Xiri checkout.
 
 ```sh
