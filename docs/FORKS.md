@@ -87,6 +87,13 @@ included in IRIS `xiri` at `1a4844c6`. That build supplied the original
 Indy reference and both Xiri desktop runs.
 [Desktop icon checks](results/2026-11-27-indy-microphone.md#microphone-on-the-4dwm-desktop)
 
+The desktop CD-ROM check fetched upstream `afaf7a55` again. It is an
+ancestor of `xiri` at `1a4844c6`. That emulator ran the original IRIX
+Indy and both Xiri releases with a removable CD-ROM at SCSI ID 6. The
+Prismatic image build rechecked the same upstream revision. Prismatic
+`910997e` booted both standalone disks and opened the bundled data CD.
+[Optical media checks](results/2026-11-27-indy-cdrom.md)
+
 The SuperIRIX test CHD cycle integrated four further upstream commits through
 `dca458bc` into IRIS `xiri` at `854d12c4`. These cover virtio snapshots,
 Timekeeper year handling, shared machine constants and boot CI. The merge

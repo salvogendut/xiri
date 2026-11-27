@@ -24,6 +24,7 @@ selectors are handled when returning to native NetBSD.
 | Native `rpcbind` rc.d service | System portmapper; survives desktop logout |
 | `xiri_devices` rc.d service | Refreshes IRIX account lookup tables and prepares native/IRIX PTY aliases before LOGIN |
 | `xiri_famd` rc.d service | Owns one native FAM v1 daemon and its PID file; survives logout |
+| `xiri_cdrom` rc.d service | Mounts ISO 9660 data CDs read-only at `/CDROM` and publishes the tray state for each desktop |
 | Native `xdm` rc.d service (opt-in) | Starts Xorg, authenticates the native account, supplies X authority and resets the display after logout |
 | `xiri-session` | Runs clients as the current native user on an existing authenticated X display; leaves X and system services running |
 | `xiri-desktop` | Root convenience wrapper: ensures services are available, starts an authenticated X server, uses `su -l` for the configured user, and stops its own X server after logout |
@@ -98,6 +99,8 @@ The opt-in service settings are:
 # /etc/rc.conf.d/rpcbind
 rpcbind=YES
 rpcbind_flags="-h 127.0.0.1"
+# /etc/rc.conf.d/xiri_cdrom
+xiri_cdrom=YES
 # /etc/rc.conf.d/xiri_devices
 xiri_devices=YES
 # /etc/rc.conf.d/xiri_famd
@@ -116,6 +119,15 @@ The service PID is in `/var/run/xiri_famd.pid`. Stopping the owned FAM daemon al
 `/etc/rc.d/xiri_famd restart` can register a new listener. Startup refuses a
 daemon outside its PID file. Native rpcbind retains its own standard PID
 file and rc.d lifecycle.
+
+With a CD-ROM drive attached at boot, the original SGI File Manager shows
+a `CDROM` icon. Inserting an ISO 9660 data disc adds the disc artwork.
+Double-click to browse `/CDROM`. To eject, select the icon, hold the right
+mouse button and choose **Eject CDROM**. The shell equivalent is
+`/usr/local/libexec/xiri/cdromd --eject`. Close files and leave directories
+on the disc first. To manage the first optical drive manually, stop
+`/etc/rc.d/xiri_cdrom` and set `xiri_cdrom=NO` in its rc.conf.d file.
+[Indy comparison and screenshots](../docs/results/2026-11-27-indy-cdrom.md)
 
 The candidate PTY setup maps both IRIX `/dev/ptc` and `/dev/ptmx` to native
 ptm minor 2, which grants a new slave to the caller. Its `/emul/irix/dev/pts`

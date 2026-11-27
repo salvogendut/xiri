@@ -15,7 +15,7 @@ class RuntimeInstallTests(unittest.TestCase):
         self.root = Path(self.temporary.name)
         self.build = self.root/'build'
         self.build.mkdir()
-        for name in ['session-guard', 'x11-check', 'shell-handoff', 'save-session', 'stop-sessions', 'drop-bridge', 'desktop-sound']:
+        for name in ['session-guard', 'x11-check', 'shell-handoff', 'save-session', 'stop-sessions', 'drop-bridge', 'desktop-sound', 'cdromd']:
             (self.build/name).write_bytes(b'fixture executable\n')
         self.stage = self.root/'stage'
 
@@ -54,8 +54,12 @@ class RuntimeInstallTests(unittest.TestCase):
         self.assertEqual((self.stage/'etc/rc.conf.d/xiri_famd').read_text(), 'xiri_famd=YES\n')
         rpc = self.stage/'etc/rc.conf.d/rpcbind'
         self.assertIn('rpcbind_flags="-h 127.0.0.1"', rpc.read_text())
+        cdrom = self.stage/'etc/rc.conf.d/xiri_cdrom'
+        self.assertEqual(cdrom.read_text(), 'xiri_cdrom=YES\n')
+        self.assertTrue(os.access(self.stage/'etc/rc.d/xiri_cdrom', os.X_OK))
+        self.assertTrue(os.access(self.stage/'usr/local/libexec/xiri/cdromd', os.X_OK))
         self.assertEqual((self.stage/'etc/rc.conf.d/xiri_sessions').read_text(), 'xiri_sessions=YES\n')
-        files = [rpc, self.stage/'etc/rc.conf.d/xiri_famd', self.stage/'etc/rc.conf.d/xiri_sessions', self.stage/'etc/xiri/fam.conf',
+        files = [rpc, cdrom, self.stage/'etc/rc.conf.d/xiri_famd', self.stage/'etc/rc.conf.d/xiri_sessions', self.stage/'etc/xiri/fam.conf',
                  self.stage/'etc/xiri/session.conf', self.stage/'etc/xiri/Xresources']
         for path in files:
             path.write_text('# local policy\n')

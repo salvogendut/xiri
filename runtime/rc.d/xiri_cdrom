@@ -1,0 +1,12 @@
+#!/bin/sh
+# PROVIDE: xiri_cdrom
+# REQUIRE: mountall
+# BEFORE: xdm
+# KEYWORD: shutdown
+. /etc/rc.subr
+name=xiri_cdrom
+rcvar=$name
+command=/usr/local/libexec/xiri/cdromd
+pidfile=/var/run/xiri_cdrom.pid
+load_rc_config "$name"
+run_rc_command "$1"

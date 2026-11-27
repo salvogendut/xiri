@@ -1,0 +1,76 @@
+{
+  "original_irix": {
+    "expected_release": "6.5.22f",
+    "chd_sha256": "b4fff76ffa0ca00c0a90da1c94a3eb41f5f6ba4cb13c0af258b4acca4ad95c41",
+    "iris_sha256": "85ebdb7f6e8ff99b7758a597ad59ac697d1d8c54489000c5332e0177728cb658",
+    "clean_shutdown": true,
+    "source_chd_unchanged": true
+  },
+  "xiri": [
+    {
+      "release": "6.5.22f",
+      "cpu": "r4400",
+      "base": "6bb36f074e9548c40a3891215b423b0e459ea1a8756e206121c4287210fb922b",
+      "emulator": "85ebdb7f6e8ff99b7758a597ad59ac697d1d8c54489000c5332e0177728cb658",
+      "files": {
+        "daemon": "1da602db5bcd42d3eec8429b5442ed1c572493fd6a657ab845555a92be2f70e4",
+        "service": "00c2af6146b16e3b22e7ad558b1c14ee80bb8e95a11a49ffd7caa3df864f34ef",
+        "clients": "9e4c87beb5da38112cbd71ba5c901789bfbe4751aad8407ac7ab5b7a3a84767a",
+        "rules": "0f1c9312502699d66f00489653561ff011a72b543d9622dab517b75425367a19"
+      },
+      "icon_click": [
+        1213,
+        259
+      ],
+      "changed_pixels_on_insert": 860,
+      "changed_pixels_after_eject": 0,
+      "window": "0xc0008a \":/CDROM\": (\"FileManager\" \"FileManager\")  575x600+0+0  +32+32"
+    },
+    {
+      "release": "6.5.30f",
+      "cpu": "r5000",
+      "base": "0fb59a29c3f2c381e0c89a46541e633e2d14c36b64d3e7de3e22248b707c7714",
+      "emulator": "85ebdb7f6e8ff99b7758a597ad59ac697d1d8c54489000c5332e0177728cb658",
+      "files": {
+        "daemon": "1da602db5bcd42d3eec8429b5442ed1c572493fd6a657ab845555a92be2f70e4",
+        "service": "00c2af6146b16e3b22e7ad558b1c14ee80bb8e95a11a49ffd7caa3df864f34ef",
+        "clients": "9e4c87beb5da38112cbd71ba5c901789bfbe4751aad8407ac7ab5b7a3a84767a",
+        "rules": "0f1c9312502699d66f00489653561ff011a72b543d9622dab517b75425367a19"
+      },
+      "icon_click": [
+        1213,
+        259
+      ],
+      "changed_pixels_on_insert": 860,
+      "changed_pixels_after_eject": 0,
+      "window": "0xe0008b \":/CDROM\": (\"FileManager\" \"FileManager\")  575x600+0+0  +32+32"
+    }
+  ],
+  "prismatic": {
+    "version": "0.1.4",
+    "revision": "910997e",
+    "binary_sha256": "09eff186d6225a1479aecf37fa7100f2187a372bc7c3020ab6b9490cc2ceedb2",
+    "sample_iso_sha256": "2ef7b4aafeafe0b3ee33eece3d566175c1e2167b19e5b07e1a3be566c9115050",
+    "optical_target": 6,
+    "disks": {
+      "6.5.22f": {
+        "chd_sha256": "53fa1e2006e19dfcbe8950b919de447c043487e84b06710bfc3fea86119f382b",
+        "standalone_chd_verified": true,
+        "xdm_login": "xiritest",
+        "file_manager": "/CDROM",
+        "sample_file": "README.txt",
+        "ejected_after_window_close": true,
+        "guest_poweroff": true
+      },
+      "6.5.30f": {
+        "chd_sha256": "a2e3272266c362d1db236bb9413f196ca533c03f55213fc6bbfa5274ddd66d26",
+        "standalone_chd_verified": true,
+        "xdm_login": "xiritest",
+        "file_manager": "/CDROM",
+        "sample_file": "README.txt",
+        "ejected_after_window_close": true,
+        "guest_poweroff": true
+      }
+    }
+  }
+}

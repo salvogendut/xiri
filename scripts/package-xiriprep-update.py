@@ -57,7 +57,9 @@ def installed_runtime(data, work):
             raise ValueError('Unexpected file type in the native runtime')
         archive.extractall(source, filter='data')
     script = source / 'install.sh'
-    if script.read_bytes() != (ROOT / 'runtime/install.sh').read_bytes():
+    # Qualified November images use the layout before the optical service.
+    old_layout = '8059dba97ee5d00a07fa44c550f4130cdbc2835e5bb8fb762c190f2cb298185f'
+    if sha(script.read_bytes()) not in (old_layout, sha((ROOT / 'runtime/install.sh').read_bytes())):
         raise ValueError('Runtime installation layout differs. Review its file mapping before updating.')
     subprocess.run(['sh', script], env=dict(os.environ, DESTDIR=str(dest), BUILDDIR='build'), check=True)
     # install-shared installs famd separately. Live configuration and the

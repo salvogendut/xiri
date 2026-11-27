@@ -113,6 +113,12 @@ if test ! -f "$history/complete"; then
     undo /usr/bin/nawk symlink 0 awk managed
     (cd "$scratch" && pax -rz -f "$media/native.tgz" files.tsv root/usr/local/share/xiri/examples/rc.conf.d)
     services="rpcbind xiri_devices xiri_famd xiri_sessions xdm"
+    if test -f "$scratch/root/usr/local/share/xiri/examples/rc.conf.d/xiri_cdrom"; then
+        services="$services xiri_cdrom"
+        if test -x /etc/rc.d/xiri_cdrom && /etc/rc.d/xiri_cdrom onestatus >/dev/null; then
+            /etc/rc.d/xiri_cdrom onestop || fail 'could not stop CD-ROM automounting'
+        fi
+    fi
     if test -f "$scratch/root/usr/local/share/xiri/examples/rc.conf.d/mixerctl"; then services="$services mixerctl"; fi
     for service in $services; do
         sed '/^#/d' "$scratch/root/usr/local/share/xiri/examples/rc.conf.d/$service" >"$scratch/rc-default"

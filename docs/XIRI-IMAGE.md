@@ -2,6 +2,10 @@
 
 ## Indy images created with xiriprep
 
+For CD-ROM desktop testing in Prismatic, both release lines have bootable
+disks with a sample ISO already in the drive. Run the launcher for your
+release and press **Ctrl+P**. [Prismatic launchers and CD test](results/2026-11-27-indy-cdrom.md#ready-to-boot-prismatic-systems)
+
 The local test images were installed from the native XiriBSD ISO on
 blank disks. Each imported its own IRIX donor. To run one in the graphical
 IRIS emulator, use the launcher from the Xiri checkout.

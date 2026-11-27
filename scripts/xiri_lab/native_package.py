@@ -239,6 +239,7 @@ def build(profile_path, inputs_path, compiler, sets, output):
                               'xiri_devices':'xiri_devices=YES\n',
                               'xiri_famd':'xiri_famd=YES\n#xiri_famd_logfile="/var/log/xiri-fam.log"\n',
                               'xiri_sessions':'xiri_sessions=YES\n',
+                              'xiri_cdrom':'xiri_cdrom=YES\n',
                               'xdm':'xdm=YES\nxdm_flags="-server /etc/xiri/xdm/Xservers -resources /etc/xiri/xdm/Xresources"\n'}.items():
                 (examples/'rc.conf.d'/name).write_text(text);(examples/'rc.conf.d'/name).chmod(0o444)
             (examples/'modules.conf').write_text('compat_irix_o32\n');(examples/'modules.conf').chmod(0o444)

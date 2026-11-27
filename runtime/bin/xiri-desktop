@@ -18,6 +18,10 @@ test ! -f "/tmp/.X$number-lock" || { echo "Display $number is already occupied."
 /etc/rc.d/xiri_devices onestart
 /etc/rc.d/rpcbind onestatus >/dev/null 2>&1 || /etc/rc.d/rpcbind onestart
 /etc/rc.d/xiri_famd onestatus >/dev/null 2>&1 || /etc/rc.d/xiri_famd onestart
+# Optical automounting follows the workstation's rc.conf policy.
+if (set +u; . /etc/rc.subr; load_rc_config xiri_cdrom; checkyesno xiri_cdrom); then
+    /etc/rc.d/xiri_cdrom status >/dev/null 2>&1 || /etc/rc.d/xiri_cdrom start
+fi
 mkdir -p /var/tmp/xiri-desktop
 job=$(mktemp -d /var/tmp/xiri-desktop/session.XXXXXX)
 chown "$uid:$gid" "$job"; chmod 700 "$job"

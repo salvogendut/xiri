@@ -30,10 +30,19 @@ if test ! -d "$HOME/Desktop"; then
     ln -s ../dumpster "$HOME/Desktop/dumpster"
 fi
 /emul/irix/usr/sbin/bgicons -overlay >"$job/bgicons.out" 2>"$job/bgicons.err"
+hosticons="$HOME/.desktophost/$(hostname)"
+# The system service updates this file atomically as the optical tray changes.
+cdicon="$hosticons/Icons/CDROM"
+if test -f /var/run/xiri-cdrom/CDROM; then
+    if test ! -e "$cdicon" && test ! -L "$cdicon"; then
+        ln -s /var/run/xiri-cdrom/CDROM "$cdicon"
+    fi
+elif test -L "$cdicon" && test "$(readlink "$cdicon")" = /var/run/xiri-cdrom/CDROM; then
+    rm "$cdicon"
+fi
 # SGI's genDeviceIcons emits this device description for the Indy HAL2.
 # Use the native audio inventory until SGI_INVENT includes audio devices.
 # Give bgicons a separate database so it only reconciles our microphone.
-hosticons="$HOME/.desktophost/$(hostname)"
 if audiocfg list >"$job/audio-inventory" 2>"$job/device-icons.err"; then
     awk '
         /^[0-9]+:/ { hal2 = / @ haltwo[0-9]+: HAL2([[:space:]]|$)/ }

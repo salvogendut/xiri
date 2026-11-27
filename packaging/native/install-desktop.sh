@@ -184,6 +184,7 @@ remember_missing /usr/bin/nawk
 /usr/local/sbin/xiri-update-filetypes
 mkdir -p /etc/rc.conf.d
 services="rpcbind xiri_devices xiri_famd xiri_sessions xdm"
+if test -f "/usr/local/share/xiri/examples/rc.conf.d/xiri_cdrom"; then services="$services xiri_cdrom"; fi
 if test -f "/usr/local/share/xiri/examples/rc.conf.d/mixerctl"; then services="$services mixerctl"; fi
 for service in $services; do
     dest=/etc/rc.conf.d/$service
