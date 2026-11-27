@@ -74,7 +74,9 @@ in `08e53ba7`. [Octane build and qualification](results/2026-11-23-octane-deskto
 
 The November 27 native installer and subsequent `xiriprep` cycles fetched `upstream/main` at
 `d8cf7e91` and verified it is an ancestor of IRIS `xiri` at `46c116ee`.
-The fork was already current.
+The fetch for the on-target shared desktop import returned the same revision.
+Both donor lines ran on the pinned IRIS test binary built from `0bc52567`.
+[Fresh-install checks](results/2026-11-27-xiriprep-desktop.md).
 
 The next November 27 cycle merged seven upstream commits through `d8cf7e91`
 into IRIS `xiri` at `46c116ee`. They update device timers and NVRAM writes.

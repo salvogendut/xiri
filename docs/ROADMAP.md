@@ -17,8 +17,12 @@ intended user. Compare the result with the working desktop for the same
 IRIX release. [Standard installation](XIRI-INSTALLATION.md#standard-installation) ·
 [Reference desktops](results/2026-11-27-indy-saver-install.md)
 
-1. Complete shared desktop installation from the donor on a fresh native system. [xiriprep](XIRIPREP.md) now identifies raw and CHD donors on mounted media, prepares the native account and selects 4Dwm on a matching prepared system. The remaining installer work includes space checks, shared payload installation and native services.
-2. Repeat from the native installation for 6.5.22f and 6.5.30f. Verify a second account keeps ctwm and a repeated import preserves preferences. [Build, import and acceptance plan](XIRI-INSTALLATION.md#planned-workstation-build-and-xiriprep).
+The native Indy installer now includes `xiriprep`. Blank-disk installs imported
+both reference donors, restored 4Dwm preferences across login and kept ctwm
+for a second account. [Fresh-install results](results/2026-11-27-xiriprep-desktop.md)
+
+1. Test independently installed donors for each release. Record which differing files or optional components need an additional import profile.
+2. Qualify native updates and optional software installation on the new `xiriprep` systems, including preservation of user preferences and a tested recovery path.
 
 ## Desktop qualification
 
@@ -711,7 +715,7 @@ Acceptance: an original desktop session executing inside the emulated Indy on Ne
 - [ ] Boot the qualified build on the physical Indy and repeat ABI and desktop acceptance there.
 - [ ] Validate real storage, networking, cache/DMA behavior, input and local display; record differences from emulation.
 - [x] Build the native-only Indy install ISO from recorded NetBSD and Xiri source revisions and install it on an empty disk. [Blank-disk qualification](results/2026-11-27-native-indy-iso.md).
-- [ ] Ship `xiriprep` on that ISO and qualify on-target donor import and per-user desktop selection for both IRIX releases.
+- [x] Ship `xiriprep` on the native Indy ISO and qualify on-target donor import and per-user desktop selection for both IRIX releases. [Two-release qualification](results/2026-11-27-xiriprep-desktop.md).
 - [ ] Deliver the original IRIX installers with qualified dependency/conflict reporting, installation history, catalog hooks and repeatable upgrade/removal. Keep the runtime-bootstrap import distinct from ongoing installation through inst/Software Manager.
 - [ ] Build a small maintained native software set, starting with networking and development tools.
 - [ ] Qualify the selected legacy applications using representative work, not just startup.

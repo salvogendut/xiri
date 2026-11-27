@@ -1,5 +1,26 @@
 # Reusable Xiri development image
 
+## Indy images created with xiriprep
+
+The two local test images were installed from the native XiriBSD ISO on
+blank disks. Each imported its own IRIX donor. To run one in the graphical
+IRIS emulator, use the launcher from the Xiri checkout.
+
+```sh
+.work/images/xiribsd-indy-6.5.22f-xiriprep-20261127/run-iris.sh
+```
+
+For 6.5.30f, use `.work/images/xiribsd-indy-6.5.30f-xiriprep-20261127/run-iris.sh`.
+Each directory contains `netbsd-xiri.chd` and its own `nvram.bin`. The
+launchers use an overlay for manual changes. In Prismatic, select Indy
+with Newport and 256 MiB, choose the R4400 for 6.5.22f or R5000 for 6.5.30f,
+attach the CHD at SCSI ID 1 and select NetBSD PROM boot. The test desktop
+login and password are both `xiritest`. The local `local-logins.txt` also
+contains the native ctwm test account's password. These disks contain the
+owner's imported IRIX files. [Results and checksums](results/2026-11-27-xiriprep-desktop.md)
+
+## Earlier development images
+
 For routine work, use `./xiri status`, `./xiri doctor`, `./xiri run` and
 `./xiri check` from the repository. The [development guide](DEVELOPMENT.md)
 explains seed reuse, isolated builds and packaging. These commands read the

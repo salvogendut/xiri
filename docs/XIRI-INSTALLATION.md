@@ -9,11 +9,10 @@
    substituting the actual CHD or raw image path and intended NetBSD login.
    If the account is missing, the tool offers to create it. [Donor and account instructions](XIRIPREP.md)
 
-On a fresh Indy, donor identification and account preparation have passed for
-both 6.5.22f and 6.5.30f. On systems with the matching shared runtime installed,
-the selected user can log into 4Dwm. Installing that runtime and the shared
-desktop files directly from the donor is the remaining step on a fresh system.
-[Qualification results](results/2026-11-27-xiriprep.md)
+The first import installs the shared desktop and fonts, prepares the native
+services and selects the named account. Reboot before that account’s first
+4Dwm login. The donor can be removed after the import.
+[Fresh Indy qualification](results/2026-11-27-xiriprep-desktop.md)
 
 The earlier full desktop CDs and prepared CHDs provide working desktops for
 comparison and recovery. [Reference media and test results](results/2026-11-27-indy-saver-install.md)
@@ -33,7 +32,7 @@ The optional [Indy Screen Saver update and rollback](results/2026-11-26-sgi-scre
 Use a Linux workstation with Python 3.11 or later, Git 2.38 or later,
 `genisoimage`, `isoinfo`, C and C++ compilers, and the NetBSD cross-build
 prerequisites. The build environment also needs CMake 3.19 or later for
-the native donor reader and Git access to its pinned libchdr source. On Fedora add `--toolbox xiri-iris` to compile in the
+the native donor reader and access to the pinned libchdr, FAM and pkgsrc sources. On Fedora add `--toolbox xiri-iris` to compile in the
 existing Toolbox while the workstation assembles and reads back the media.
 Run the build from the Xiri checkout.
 
@@ -52,6 +51,10 @@ Xiri revision. A complete local fork checkout supplied with
 while the build directory is in use. `-j` selects the number of build jobs.
 The default builds both toolchains. Developers can pass `--tools64` to reuse
 an existing NetBSD mips64eb toolchain for the kernel and module.
+
+To rebuild the Indy installer with on-target desktop import, use the
+[desktop installer lock](../lab/native-iso/indy-xiriprep-20261127.json) with
+the Xiri recipe revision in its `xiri` field and pass that file to `--lock`.
 
 To reproduce the original November 27 ISO, use Xiri revision `ebdce50`
 (which includes its source lock and original recipe) and add
@@ -79,18 +82,16 @@ or attaching a donor. The existing private desktop CDs and CHDs include
 imported SGI files. They serve as references for the finished desktop.
 
 The workstation builder supplies the kernel, module, userland, patched Xorg,
-native xdm and the donor/account preparation command. The original November 27
+native xdm, desktop services and the on-target donor installer. The original November 27
 ISO predates that command. An installed Indy can add it from the tools CD.
 [Run xiriprep on the Indy](XIRIPREP.md).
 [NetBSD and Xorg source changes](NETBSD-UPSTREAM.md#display-xfs-and-session-work-have-separate-destinations).
 
 Root runs `xiriprep --source /path/to/irix.chd --user alice` on XiriBSD.
 It opens a CHD or raw image on any mounted filesystem, identifies the
-release, uses the existing account or offers to create it, and selects
-the session when the matching shared desktop is already installed.
-The next step is to install those shared files directly from the donor
-on a fresh native system. Reuse the release-specific import profiles,
-space checks, destination paths and installation receipts.
+release, uses the existing account or offers to create it, verifies and imports
+the release’s base desktop and fonts, and selects the session. The first run
+records the release, runtime and import plan in `/var/db/xiri-install`.
 [Current importer](../scripts/xiri_lab/irix_import.py) ·
 [Existing per-user session](IRIX-SOFTWARE.md#selecting-the-irix-desktop-for-a-user).
 

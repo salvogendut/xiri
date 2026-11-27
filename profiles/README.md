@@ -51,7 +51,16 @@ without opening media. Desktop and fonts are selected by default; Acrobat is
 optional. This donor has no GIMP, GNOME or xmahjongg: requesting those components
 fails before extraction and explains the missing source. Nothing is downloaded.
 
-The first profile pins **our qualified original-media 6.5.22f donor**, by CHD
+The native ISO ships release-specific plans for the base desktop, its library
+and interpreter dependencies, fonts and Screen Saver. Each plan contains only
+paths, hashes, modes and link targets. Regenerate one after auditing a new
+workstation import ledger, for example with
+`python3 packaging/xiriprep/make-plan.py .work/imports/irix-6.5.22f-v1/manifest.json`.
+Review the result against the corresponding `.plan` file. The native importer
+checks each resource as it reads the mounted donor file.
+[Native plans](../packaging/xiriprep/plans) · [Using xiriprep](../docs/XIRIPREP.md)
+
+The workstation importer pins **our qualified original-media 6.5.22f donor**, by CHD
 and raw SHA256. Another independently installed 6.5.22f disk has different
 filesystem bytes and needs its own audited profile. A standalone raw export
 with the pinned raw hash also works. Export overlay-backed installations using

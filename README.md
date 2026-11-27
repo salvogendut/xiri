@@ -23,9 +23,9 @@ The standard way to create a Xiri system is to **install XiriBSD, then run
 2. Mount the media containing your installed IRIX 6.5.22f or 6.5.30f disk image.
    Give `xiriprep` the path to the CHD or raw file and the NetBSD login to prepare. [Using xiriprep](docs/XIRIPREP.md)
 
-On a fresh install, `xiriprep` identifies the donor and prepares the account.
-Installing the shared IRIX desktop directly from the donor is still in development.
-Prepared CHDs let you try the working desktop today. [Run a reference image](docs/XIRI-IMAGE.md#clean-indy-audio-images) · [Build the native Indy ISO](docs/XIRI-INSTALLATION.md#build-the-native-indy-iso)
+On the first import, `xiriprep` installs the shared 4Dwm desktop, fonts and
+native services. Reboot and log in through xdm as the selected user. Other
+users keep their own desktop. [Build the native Indy ISO](docs/XIRI-INSTALLATION.md#build-the-native-indy-iso) · [Try a tested desktop image](docs/XIRI-IMAGE.md#indy-images-created-with-xiriprep)
 
 When the XiriBSD ISO and CHD images are ready, you can download them from
 [www.xiribds.org](https://www.xiribds.org/).
@@ -48,7 +48,7 @@ ctwm with the 6.5.22 and 6.5.30 disk images. Physical testing is still ahead.
 ## Roadmap
 
 - **Desktop compatibility.** Complete everyday workflows in the original desktop and applications, including file operations, saved sessions and multimedia.
-- **Installation and updates.** Qualify the full donor import from a fresh XiriBSD installation for each IRIX release, including repeat runs that preserve user preferences. [Installation plan](docs/XIRI-INSTALLATION.md#donor-preparation-roadmap)
+- **Installation and updates.** Test additional owner-installed donors and upgrades of systems prepared with `xiriprep` on both IRIX release lines. [Installation plan](docs/XIRI-INSTALLATION.md#donor-preparation-roadmap)
 - **Physical workstations.** Qualify the Indy on real hardware, then extend testing to the Indigo2, Octane and O2.
 
 [Full roadmap](docs/ROADMAP.md) · [Development history and test results](docs/HISTORY.md)

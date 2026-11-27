@@ -3,7 +3,7 @@
 This installs NetBSD and the Xiri compatibility module on a fresh virtual disk.
 Your first login opens the native NetBSD **ctwm** desktop. The IRIX desktop
 requires a separate donor import. The installer ISO for this build is
-`.work/images/xiribsd-indy-native-11.99.11.iso` in the Xiri checkout.
+`.work/images/xiribsd-indy-xiriprep-11.99.11.iso` in the Xiri checkout.
 
 ## 1. Attach the disk and CD
 
@@ -15,7 +15,7 @@ follow the installation in the Prismatic window.
 | In **F9 → Media** | What to attach |
 | --- | --- |
 | **SCSI ID 1 → New disk…** | Choose **Raw**, enter **6144 MiB**, give it a new filename such as `xiribsd-indy.raw`, then select **Create disk and attach to draft**. The installer will format this disk. |
-| **SCSI ID 6 → CD-ROM** | Select `xiribsd-indy-native-11.99.11.iso`. |
+| **SCSI ID 6 → CD-ROM** | Select `xiribsd-indy-xiriprep-11.99.11.iso`. |
 
 ## 2. Boot the CD
 
@@ -68,5 +68,6 @@ account you created. You should see a **1280×1024 ctwm desktop** with a termina
 
 Continue with the second stage of a standard Xiri installation. Run `xiriprep`
 as root on this Indy with your donor image and the login you want to prepare.
-The original ISO used in this guide needs the small xiriprep tools CD for
-this step. [Install the tools and prepare the user](XIRIPREP.md)
+The ISO above includes the command. If you installed the earlier
+`xiribsd-indy-native-11.99.11.iso`, add the tools CD to that installation.
+[Import the donor and select the user](XIRIPREP.md)

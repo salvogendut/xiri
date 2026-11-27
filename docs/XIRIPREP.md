@@ -1,10 +1,9 @@
 # Prepare an IRIX desktop account on XiriBSD
 
-Run `/usr/local/sbin/xiriprep` **as root inside XiriBSD**. It identifies an
-installed IRIX 6.5.22f or 6.5.30f donor and prepares the named NetBSD account.
-On a machine with a matching shared IRIX desktop, it also selects 4Dwm for
-that account’s next xdm login. On a fresh native install, installing the
-shared desktop payload from the donor is still under development.
+Run `/usr/local/sbin/xiriprep` **as root inside XiriBSD**. The first run installs the shared
+desktop from your own installed IRIX 6.5.22f or 6.5.30f disk image. The
+machine uses one donor release. You can select additional NetBSD users
+independently by running the same command with a different login.
 
 ## Read a donor from external media
 
@@ -16,6 +15,16 @@ With one CD drive, run these commands in the native root shell.
 mkdir -p /cdrom
 mount -r -t cd9660 /dev/cd0a /cdrom
 /usr/local/sbin/xiriprep --check --source '/cdrom/IRIX donor.chd' --user alice
+```
+
+To install after checking, run the command without `--check`. When it reports
+that the desktop is selected, eject the donor CD and reboot. Choose the
+named user at xdm. The installed desktop runs from the system disk.
+
+```sh
+/usr/local/sbin/xiriprep --source '/cdrom/IRIX donor.chd' --user alice
+umount /cdrom
+shutdown -r now
 ```
 
 For a raw image on a second disk already mounted at `/mnt/donors`, use
@@ -30,7 +39,28 @@ contents and also accepts a standalone raw SGI whole-disk image. It reads
 the volume label, locates root XFS and verifies the shell and 4Dwm against
 the release profiles. Reads go directly to the mounted file. A CHD needs
 no expanded copy on the system disk. If the emulator has pending overlay
-writes, export the merged disk before using it as a donor.
+writes, export the merged disk before using it as a donor. A raw base file
+can be several GiB yet have an empty SGI volume header when the installation
+lives in its overlay. Copy the standalone export onto the external media.
+[Exporting a donor](../profiles/README.md)
+
+## What gets installed
+
+The reader verifies the selected release’s executables, shared libraries, fonts,
+desktop resources and original catalog links inside private staging directories.
+The published trees are `/emul/irix` and `/usr/local/share/xiri/fonts`. Allow
+192 MiB free on the filesystem containing `/var/db`, 184 MiB on the destination
+filesystem for `/emul`, and 8 MiB under `/usr/local/share/xiri`. On a typical
+single-filesystem Indy install, the staging tree is renamed into place.
+
+XiriBSD supplies the session launcher, native FAM daemon and service scripts.
+The first import builds the font index and filetypes, synchronizes account
+lookups and sets up rpcbind, desktop devices, session shutdown and xdm for
+the next boot. If verification fails, correct the donor or free the requested
+space and rerun. A matching installation is reused for later logins. Use a
+separate system disk for the other IRIX release. Optional browser, freeware
+and audio packages have separate installation procedures.
+[Desktop software](IRIX-SOFTWARE.md)
 
 ## Account and session behavior
 
@@ -50,8 +80,8 @@ writes, export the merged disk before using it as a donor.
 ## Add the command to the original native Indy ISO installation
 
 The original `xiribsd-indy-native-11.99.11.iso` predates xiriprep. Attach
-the separate `xiriprep-indy-tools.iso`, mount it as above, then install the
-native tools from the guest root shell.
+the separate `.work/images/xiriprep-indy-desktop-tools.iso`, mount it as
+above, then install the native tools from the guest root shell.
 
 ```sh
 (cd / && tar -xzpf /cdrom/xiriprep.tgz)
@@ -61,4 +91,8 @@ umount /cdrom
 You can now insert the donor data CD. The tools CD includes the reader’s
 source archive at `/usr/local/share/xiri/xiriprep-source.tgz` after
 installation. [Native installation guide](INSTALL-INDY-PRISMATIC.md) ·
-[Test results and screenshots](results/2026-11-27-xiriprep.md)
+[Fresh-install results and screenshots](results/2026-11-27-xiriprep-desktop.md)
+
+To make the tools CD again from a current installer on the workstation, run
+`python3 scripts/package-xiriprep-tools.py installer.iso tools.iso`. Both
+images contain only native components and the release inventories.
