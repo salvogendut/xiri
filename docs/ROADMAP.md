@@ -32,7 +32,8 @@ their desktop preferences. [Fresh-install results](results/2026-11-27-xiriprep-d
    `cdman` or `cdplayer`. For DAT, try `datman` and `datplayer` with a
    scratch tape. Record what the emulator exposes, what native NetBSD can
    do with it, and what the IRIX application can actually capture or play.
-   [Indy device checks](results/2026-11-27-indy-media-devices.md) · [MediaTools inventory](ICON-CATALOG.md#mediatools-22)
+   Native microphone capture and concurrent playback pass on both Indys.
+   [Microphone measurements](results/2026-11-27-indy-microphone.md) · [Indy device checks](results/2026-11-27-indy-media-devices.md) · [MediaTools inventory](ICON-CATALOG.md#mediatools-22)
 2. Keep a third-party donor in installer acceptance alongside the project's
    two original-media installations. The first external case is the SuperIRIX
    6.5.22m Indy. Seek a separately sourced 6.5.30f disk for the same check.

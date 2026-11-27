@@ -72,6 +72,13 @@ in `08e53ba7`. [Octane build and qualification](results/2026-11-23-octane-deskto
 
 ## IRIS upstream updates
 
+On November 27, IRIS `xiri` merged upstream `afaf7a55` at `63472cf3`.
+The merge keeps the frontend's serial backend override alongside upstream
+host TTY and MIDI support. The serial regression suite passed 81 tests
+with three ignored. IRIS `befb3a66` and NetBSD `59ed2e1d479` then
+passed concurrent Indy playback and microphone capture on both desktop
+releases. [Recording checks](results/2026-11-27-indy-microphone.md)
+
 The SuperIRIX test CHD cycle integrated four further upstream commits through
 `dca458bc` into IRIS `xiri` at `854d12c4`. These cover virtio snapshots,
 Timekeeper year handling, shared machine constants and boot CI. The merge
