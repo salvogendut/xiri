@@ -38,9 +38,17 @@ existing Toolbox while the workstation assembles and reads back the media.
 Run the build from the Xiri checkout.
 
 ```sh
-scripts/build-xiribsd-iso.py --work .work/native-indy \
-    --output .work/images/xiribsd-indy-native.iso
+scripts/build-xiribsd-iso.py --work .work/native-indy --xiri-version 01
 ```
+
+The builder writes `.work/images/xiribsd-OO.RR.rr-vv-YYYY-MM-DD.iso`.
+It reads the major, minor and patch numbers from the prepared NetBSD source
+tree, using two digits per component and `00` for an omitted patch level.
+`vv` is the project's own installer revision, starting at `01`. Set it with
+`--xiri-version` when issuing a new revision. The date comes from the
+workstation's local calendar. For example, revision `01` built from NetBSD
+11.99.11 on November 27, 2026 produces `xiribsd-11.99.11-01-2026-11-27.iso`.
+Use `--output-dir` to choose another destination.
 
 The builder resolves the three remote branches once, writes their commit IDs,
 the two prepared Git tree IDs and the recipe hashes to
@@ -53,15 +61,16 @@ while the build directory is in use. `-j` selects the number of build jobs.
 The default builds both toolchains. Developers can pass `--tools64` to reuse
 an existing NetBSD mips64eb toolchain for the kernel and module.
 
-To rebuild the current Indy installer, use the
+To reproduce the earlier donor-profiles Indy installer, use the
 [five-profile installer lock](../lab/native-iso/indy-owner-donors-20261127.json)
 with the Xiri recipe revision in its `xiri` field and pass that file to
-`--lock`. The [earlier desktop installer lock](../lab/native-iso/indy-xiriprep-20261127.json)
+`--lock`. These historical builders take an explicit `--output /path/to/image.iso`.
+The [earlier desktop installer lock](../lab/native-iso/indy-xiriprep-20261127.json)
 reproduces the version with the two original profiles.
 
 To reproduce the original November 27 ISO, use Xiri revision `ebdce50`
-(which includes its source lock and original recipe) and add
-`--lock lab/native-iso/indy-20261127.json` to the command above.
+(which includes its source lock and original recipe) with
+`--work .work/native-indy --output .work/images/xiribsd-indy-native-11.99.11.iso --lock lab/native-iso/indy-20261127.json`.
 [Recorded sources and build inputs](../lab/native-iso/indy-20261127.json).
 
 The Indy uses a 32-bit native userland and Xorg, a 64-bit kernel, and an

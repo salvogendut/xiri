@@ -39,6 +39,11 @@ from the original-media tests.
 
 # Release lines
 
+Name every new XiriBSD installer ISO `xiribsd-OO.RR.rr-vv-YYYY-MM-DD.iso`.
+Use the numeric NetBSD major, minor and patch release from the build sources,
+the two-digit XiriBSD installer revision, and the build date. Use the
+[workstation builder](docs/XIRI-INSTALLATION.md#build-the-native-indy-iso) to generate the name.
+
 Always maintain both IRIX 6.5.22 and IRIX 6.5.30 versions. Keep their donor
 images, import profiles, qualification records and test CHDs separate. Shared
 native components require validation with both vendor releases. Never replace

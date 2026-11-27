@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 """Build a native XiriBSD Indy installation CD from pinned NetBSD sources."""
 import argparse
+from datetime import date
 import fcntl
 import os
 from pathlib import Path
+import re
 import shutil
 import subprocess
 
@@ -11,10 +13,24 @@ from xiri_lab.native_iso import assemble
 from xiri_lab.native_sources import ROOT, prepare
 
 
+def installer_filename(src, xiri_version, build_date):
+    release = subprocess.check_output(['sh', src / 'sys/conf/osrelease.sh'], text=True).strip()
+    parts = re.fullmatch(r'([0-9]+)\.([0-9]+)(?:\.([0-9]+))?(?:_[A-Za-z0-9_]+)?', release)
+    if not parts:
+        raise ValueError(f'Cannot determine the numeric NetBSD release from {release!r}')
+    version = '.'.join(f'{int(part):02d}' for part in parts.groups(default='0'))
+    return f'xiribsd-{version}-{xiri_version:02d}-{build_date.isoformat()}.iso'
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--work', type=Path, required=True, help='dedicated build directory')
-    parser.add_argument('--output', type=Path, help='new .iso path')
+    dest = parser.add_mutually_exclusive_group()
+    dest.add_argument('--output-dir', type=Path, default=ROOT / '.work/images',
+                      help='directory for the versioned ISO (default: .work/images)')
+    dest.add_argument('--output', type=Path, help='explicit path matching the versioned installer filename')
+    parser.add_argument('--xiri-version', type=int, default=1,
+                        help='XiriBSD installer revision, 00–99 (default: 01)')
     parser.add_argument('--lock', type=Path, help='replay a previous sources.json')
     parser.add_argument('--src-reference', type=Path, help='local NetBSD fork object cache')
     parser.add_argument('--xsrc-reference', type=Path, help='local NetBSD xsrc object cache')
@@ -23,22 +39,21 @@ def main():
     parser.add_argument('--toolbox', metavar='NAME', help='run NetBSD compilation in this Fedora Toolbox')
     parser.add_argument('-j', type=int, default=min(os.cpu_count() or 1, 12), metavar='JOBS')
     args = parser.parse_args()
-    if args.j < 1 or (not args.prepare_only and not args.output):
-        parser.error('use a positive job count and specify --output for an ISO build')
+    if args.j < 1:
+        parser.error('use a positive job count')
+    if not 0 <= args.xiri_version <= 99:
+        parser.error('--xiri-version must be between 00 and 99')
     work = args.work.resolve()
-    output = args.output.absolute() if args.output else None
-    if output and (output.exists() or output.is_symlink()):
-        parser.error('choose a new output filename')
     work.mkdir(parents=True, exist_ok=True)
     with (work / '.build.lock').open('a') as lock:
         try:
             fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
         except BlockingIOError:
             parser.error(f'another build is using {work}')
-        run_build(args, work, output)
+        run_build(args, work)
 
 
-def run_build(args, work, output):
+def run_build(args, work):
     if not args.prepare_only:
         for tool in ['genisoimage', 'isoinfo'] + (['toolbox'] if args.toolbox else []):
             if shutil.which(tool) is None:
@@ -48,13 +63,20 @@ def run_build(args, work, output):
     if args.prepare_only:
         return
 
+    src = work / 'src'
+    name = installer_filename(src, args.xiri_version, date.today())
+    output = args.output.absolute() if args.output else args.output_dir.absolute() / name
+    if output.name != name:
+        raise ValueError(f'Expected installer filename {name}. Use --output-dir to select its directory.')
+    if output.exists() or output.is_symlink():
+        raise ValueError(f'Output exists: {output}')
+
     tmp = work / 'tmp'
     tmp.mkdir(exist_ok=True)
     settings = dict(TMPDIR=str(tmp), MAKECONF='/dev/null', LC_ALL='C', TZ='UTC')
     env = dict(os.environ, **settings)
     prefix = (['toolbox', 'run', '-c', args.toolbox, 'env']
               + [f'{key}={value}' for key, value in settings.items()] if args.toolbox else [])
-    src = work / 'src'
 
     def build(bits, operation):
         target = 'mipseb' if bits == 32 else 'mips64eb'
