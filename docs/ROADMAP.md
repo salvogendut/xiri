@@ -18,7 +18,7 @@ full desktop ISO. Prismatic runs both CHDs against the current IRIS fork.
 The workstation now builds a native NetBSD-current Indy CD with the modular
 kernel, Xorg and the full sysinst selection. [Native ISO build and install checks](results/2026-11-27-native-indy-iso.md).
 
-1. Ship `xiriprep` on the ISO. Read the owner's local raw or CHD donor, install the shared runtime and enable 4Dwm for a named account. The two reference XFS partitions are about 3.9 and 7.9 GiB. Check space and read-only access on the target before importing a desktop.
+1. Complete shared desktop installation from the donor on a fresh native system. [xiriprep](XIRIPREP.md) now identifies raw and CHD donors on mounted media, prepares the native account and selects 4Dwm on a matching prepared system. The remaining installer work includes space checks, shared payload installation and native services.
 2. Repeat from the native installation for 6.5.22f and 6.5.30f. Verify a second account keeps ctwm and a repeated import preserves preferences. [Build, import and acceptance plan](XIRI-INSTALLATION.md#planned-workstation-build-and-xiriprep).
 
 ## Desktop qualification
@@ -711,7 +711,7 @@ Acceptance: an original desktop session executing inside the emulated Indy on Ne
 - [x] Deliver a reusable [module-based manual CHD](results/2026-11-03-irix-module-image.md), with matching kernel/module hashes, boot configuration, graphical login/logout and direct-CHD desktop qualification.
 - [ ] Boot the qualified build on the physical Indy and repeat ABI and desktop acceptance there.
 - [ ] Validate real storage, networking, cache/DMA behavior, input and local display; record differences from emulation.
-- [ ] Build the native-only Indy install ISO from recorded NetBSD and Xiri source revisions and install it on an empty disk. [Workstation build plan](XIRI-INSTALLATION.md#planned-workstation-build-and-xiriprep).
+- [x] Build the native-only Indy install ISO from recorded NetBSD and Xiri source revisions and install it on an empty disk. [Blank-disk qualification](results/2026-11-27-native-indy-iso.md).
 - [ ] Ship `xiriprep` on that ISO and qualify on-target donor import and per-user desktop selection for both IRIX releases.
 - [ ] Deliver the original IRIX installers with qualified dependency/conflict reporting, installation history, catalog hooks and repeatable upgrade/removal. Keep the runtime-bootstrap import distinct from ongoing installation through inst/Software Manager.
 - [ ] Build a small maintained native software set, starting with networking and development tools.

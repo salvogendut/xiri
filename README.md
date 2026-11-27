@@ -19,6 +19,9 @@ Each user can select the IRIX desktop or keep their native NetBSD session.
 When the XiriBSD ISO and CHD images are ready, you can download them from
 [www.xiribds.org](https://www.xiribds.org/).
 
+To install NetBSD from the native Indy CD, follow the
+[short Prismatic install guide](docs/INSTALL-INDY-PRISMATIC.md).
+
 The SGI Indy is the reference machine. Xiri maintains separate IRIX 6.5.22
 and 6.5.30 installations and tests them in IRIS. Start with the Prismatic
 launcher for your release if you have a prepared image. To build your own,
@@ -44,7 +47,7 @@ ctwm with the 6.5.22 and 6.5.30 disk images. Physical testing is still ahead.
 ## Roadmap
 
 - **Desktop compatibility.** Complete everyday workflows in the original desktop and applications, including file operations, saved sessions and multimedia.
-- **Installation and updates.** The workstation build produces a native Indy install CD. Next, `xiriprep` will import the desktop from your own IRIX disk image and enable it for your account. [Installation plan](docs/XIRI-INSTALLATION.md#donor-preparation-roadmap)
+- **Installation and updates.** The workstation build produces a native Indy install CD. `xiriprep` reads your donor image and prepares your account. Installing the shared IRIX desktop directly from that donor is next. [Using xiriprep](docs/XIRIPREP.md) · [Installation plan](docs/XIRI-INSTALLATION.md#donor-preparation-roadmap)
 - **Physical workstations.** Qualify the Indy on real hardware, then extend testing to the Indigo2, Octane and O2.
 
 [Full roadmap](docs/ROADMAP.md) · [Development history and test results](docs/HISTORY.md)

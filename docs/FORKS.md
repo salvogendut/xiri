@@ -72,7 +72,7 @@ in `08e53ba7`. [Octane build and qualification](results/2026-11-23-octane-deskto
 
 ## IRIS upstream updates
 
-The November 27 native installer cycle fetched `upstream/main` at
+The November 27 native installer and subsequent `xiriprep` cycles fetched `upstream/main` at
 `d8cf7e91` and verified it is an ancestor of IRIS `xiri` at `46c116ee`.
 The fork was already current.
 

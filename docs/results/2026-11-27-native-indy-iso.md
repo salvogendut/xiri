@@ -57,6 +57,9 @@ of the R5000 disk confirmed that a terminal window was visible under ctwm.
 The first boot builds the fontconfig cache before the login screen appears.
 Hardware testing is still open.
 
+The maintainer also completed a manual installation from this ISO in Prismatic
+and reported that it went smoothly. [Prismatic install guide](../INSTALL-INDY-PRISMATIC.md)
+
 ![Native ctwm session with a terminal on the emulated Indy R5000](2026-11-27-native-indy-ctwm.png)
 
 ## Repeating the install check

@@ -22,7 +22,8 @@ The optional [Indy Screen Saver update and rollback](results/2026-11-26-sgi-scre
 
 Use a Linux workstation with Python 3.11 or later, Git 2.38 or later,
 `genisoimage`, `isoinfo`, C and C++ compilers, and the NetBSD cross-build
-prerequisites. On Fedora add `--toolbox xiri-iris` to compile in the
+prerequisites. The build environment also needs CMake 3.19 or later for
+the native donor reader and Git access to its pinned libchdr source. On Fedora add `--toolbox xiri-iris` to compile in the
 existing Toolbox while the workstation assembles and reads back the media.
 Run the build from the Xiri checkout.
 
@@ -42,7 +43,8 @@ while the build directory is in use. `-j` selects the number of build jobs.
 The default builds both toolchains. Developers can pass `--tools64` to reuse
 an existing NetBSD mips64eb toolchain for the kernel and module.
 
-To reproduce the November 27 build, add
+To reproduce the original November 27 ISO, use Xiri revision `ebdce50`
+(which includes its source lock and original recipe) and add
 `--lock lab/native-iso/indy-20261127.json` to the command above.
 [Recorded sources and build inputs](../lab/native-iso/indy-20261127.json).
 
@@ -53,19 +55,10 @@ trees, installed Xiri files, and SHA256 of every set and the installer kernel.
 Archive `sources.json` with the ISO. The build directory can be removed once
 the image has been tested.
 
-Attach the ISO as CD-ROM at SCSI ID 4 and the installation disk at ID 1. Use
-the following command at the Indy Command Monitor.
-
-```text
-boot -f scsi(0)cdrom(4)rdisk(0)partition(8)ip2xboot
-```
-
-Choose **Full installation** in sysinst to install the Indy/IP2x kernel,
-modules and X11 sets. The set directory on the CD is `sgimips/binary/sets`. Create an ordinary
-native account and enable xdm to use NetBSD's ctwm session. For disk boot,
-use `setenv OSLoader boot`, `setenv OSLoadFilename netbsd.boot`,
-`setenv OSLoadOptions auto`, then `boot`. The stock 32-bit recovery kernel
-is `netbsd.stock`.
+To boot the CD, install all 15 sets and reach the graphical login, follow
+the [Prismatic Indy install guide](INSTALL-INDY-PRISMATIC.md). It uses
+Prismatic's usual CD-ROM slot at SCSI ID 6 and a blank disk at ID 1.
+The stock 32-bit recovery kernel is `netbsd.stock`.
 
 ### Donor preparation roadmap
 
@@ -75,37 +68,31 @@ a 6.5.30f donor. An owner should be able to build the ISO before obtaining
 or attaching a donor. The existing private desktop CDs and CHDs include
 imported SGI files. They serve as references for the finished desktop.
 
-The workstation builder already supplies the kernel, module, userland,
-patched Xorg and native xdm session. The next ISO revision needs the
-donor reader, native desktop services and `xiriprep`.
+The workstation builder supplies the kernel, module, userland, patched Xorg,
+native xdm and the donor/account preparation command. The original November 27
+ISO predates that command. An installed Indy can add it from the tools CD.
+[Run xiriprep on the Indy](XIRIPREP.md).
 [NetBSD and Xorg source changes](NETBSD-UPSTREAM.md#display-xfs-and-session-work-have-separate-destinations).
 
-**On the installed XiriBSD machine**, the proposed command is
-`xiriprep --source /path/to/irix.chd --user alice`. It should also accept
-a raw installed disk image. Read the donor locally and read-only, identify
-its release, check the required files and available space, and report
-missing components before installation. Reuse the release-specific import
-profiles, destination paths and installation receipts. The administrator
-installs the shared runtime and resources once. Enable the xdm session
-only for the named native account, preserve its existing home, and save
-its previous session choice so the owner can switch back. Additional users
-should be able to opt in without another donor import.
+Root runs `xiriprep --source /path/to/irix.chd --user alice` on XiriBSD.
+It opens a CHD or raw image on any mounted filesystem, identifies the
+release, uses the existing account or offers to create it, and selects
+the session when the matching shared desktop is already installed.
+The next step is to install those shared files directly from the donor
+on a fresh native system. Reuse the release-specific import profiles,
+space checks, destination paths and installation receipts.
 [Current importer](../scripts/xiri_lab/irix_import.py) ·
 [Existing per-user session](IRIX-SOFTWARE.md#selecting-the-irix-desktop-for-a-user).
 
-**First implementation check.** The workstation importer currently uses
-`chdman` and `guestfish` and pins a whole-disk hash. Prove that the
-installed Indy can read a raw donor's SGI partitions and XFS files, then
-the equivalent CHD, within its memory and disk budget. Test an independently
-installed donor with a different disk hash against the release's required
-files. Keep the known donor hashes for reproducing the reference runs.
+The workstation importer uses `chdman` and `guestfish` and pins a whole-disk
+hash. The on-target reader identifies the SGI root partition and matches
+the IRIX shell and 4Dwm to per-file hashes from one release profile.
+Qualifying another independently installed donor remains open.
 
 The fork already supplies a read-only PUFFS `mount_xfs` with IRIX journal
 support. It accepts an extracted XFS partition in a regular file and requires
-a clean unmount record. Start by locating the root XFS partition in the SGI
-volume header and measuring the space needed to expose it on the Indy.
-CHD decoding and whole-disk partition selection belong in the donor import
-work. [Fork mount_xfs manual](https://github.com/salvogendut/NetBSD-xiri/blob/xiri/external/gpl2/xfs/puffs/mount_xfs.8).
+a clean unmount record. The donor reader reuses its XFS routines and reads
+the partition directly inside the raw file or CHD. [Fork mount_xfs manual](https://github.com/salvogendut/NetBSD-xiri/blob/xiri/external/gpl2/xfs/puffs/mount_xfs.8).
 
 Reading the SGI label and XFS superblock on the workstation gave these
 sizes for the two reference CHDs. Both labels passed their checksums and
