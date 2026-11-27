@@ -79,7 +79,7 @@ keeps the fork's paused-snapshot API and frontend storage checks. The affected
 core suite passed 464 tests with five ignored. All six Indy, O2 and Octane
 snapshot fixtures passed sequentially using a short temporary socket path.
 The manual Indy CHD uses the same pinned emulator as the other Indy images.
-The subsequent desktop shutdown and installer naming checks each fetched
+The subsequent desktop shutdown, installer naming and offline Indy update checks each fetched
 `upstream/main` and confirmed `dca458bc` was already integrated.
 
 The November 27 owner-donor cycle merged upstream `0f064cfc` (11 new commits)

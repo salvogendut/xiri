@@ -1,0 +1,83 @@
+{
+  "update_manifest_sha256": "f37cb6ff34bb9aabdac74cbcbda1592bb1edc7275e0ccd371a6502fca883a200",
+  "native_files": [
+    "/netbsd|444|55e77aaacba068356984de04a20934d482eb05749e9175f3fe8bf0ba70ed9ccd|d650c7107a30a05bf94507791ff66915f97c65d832e53757e73d4496f45f6172",
+    "/netbsd.boot|444|95cca60334ff62c195276fe70d3b4ddf093689bf3ac0fa46d6717082b876e888|3ebca6498070b2f88c34bf60a9dafd9bc3cf265f39ebfe6d66f139ffaa8193f5",
+    "/stand/sgimips/11.99.11/modules/compat_irix_o32/compat_irix_o32.kmod|444|55c4f2eefd74b560250573d72480272878c43bf1f7df8b5b95cdd3f6f836bb51|6750998ce562cc30a2a79d43ef1256bf68caa20e686bca3e36ec2ec0af8ba3e6",
+    "/usr/libexec/xiri-shell|555|0c023e67d3540d4f25611dca8e67a4a6f090906fb8050fddaac64109bd5df6bc|1bd5cb5d43de80fff1f76e5a1ffdee328ea31595efc1ecdcadb4ae3cb5dc6a1d",
+    "/usr/local/libexec/xiri/desktop-clients.sh|555|ed85110089b07f19c32f265b181458e77088fc35c42e9dd98a998568981de2dd|7bef91305632a29a35c92184f05d7bed50580a5f2ba5b458f6d76559ee2a9fda",
+    "/usr/local/libexec/xiri/desktop-sound|555|217450d2206035b06a24fc82808c79424c4a4ce1ba147eb918f06fcabbcddb31|9fcd80fac918e29f78538287cc2767ee7f4095af78f493f0fef1a60fc583188c",
+    "/usr/local/libexec/xiri/drop-bridge|555|1567968c8df073a64204a2f0728ef4b522e3c3d979ece2399b909330da03cba3|a652834d2cda0d3237a5d64ac06cd1bc668d8df699440e3b194c68c0094a3799",
+    "/usr/local/libexec/xiri/save-session|555|b69fdc3afb26a07a90cf8e598a283394f70275bda9d3b801e1be69c25d530ab2|11a9202aa58a073ec666fd83f16a7638ac0dfb63fc50899ce2d1f3c73e3311ff",
+    "/usr/local/libexec/xiri/session-guard|555|733dfa2639317c054fa132723c949fb26bcb6fd059affde321ba10a145862332|a6296be308b199344a08a38daa0cc7118e4adfbc01d875de9e423a5b1dcd79a6",
+    "/usr/local/libexec/xiri/stop-sessions|555|856b613972c0af4e3fb7b705fb83eef71b1da19430220e4e9ff75ae8fda703e9|bef919402d3d3840f373668ce00c45aa3fe5bdd049926bff1093e4dcd2f834be",
+    "/usr/local/libexec/xiri/x11-check|555|d282676b91c1ca4ba9dc68b853c57566167573f3ccd17d3dbd66228b6dd9049e|c3cc3b357ba7b34811857b2e1184275446b267c15869c2a91c0a99658f926423",
+    "/usr/local/sbin/famd|555|c3e6ebe5e8db7feecce6267a487174a5a3baa7eb6fb9cf1cb93ace44bf234889|84523e25407fa449e1c14a9f7818d98fd7b7dbe46f36b1e258ea3ae7e47fda20",
+    "/usr/local/share/xiri/desktop-runtime.tgz|444|8b9c50189ef309e56ecc8c35264509027d8c2f0dcadc4365b019d022ef4146f7|6b4af62fd7035b8fc3309ee49482f3529e5c710fafa3608ea9e48811e90e186e"
+  ],
+  "iris_revision": "0bc52567a87349a5f521c702f9d8dec1dc0f79c6",
+  "releases": {
+    "6.5.22f": {
+      "release": "6.5.22f",
+      "cpu": "r4400",
+      "chd_sha256": "6bb36f074e9548c40a3891215b423b0e459ea1a8756e206121c4287210fb922b",
+      "update_sha256": "c08603f625faa9c39ff6ef8ed2520ebc0a4b1f4db346d191c5f52c54702669c5",
+      "previous": {
+        "kernel": "NetBSD 11.99.11 (XIRI_IRIX_MODULE_20261103) #1: Thu Nov 26 21:44:42 UTC 2026\n\tsalvogendut@minisforum.golgota.lan:/var/home/salvogendut/Dev/xiri/.work/indy-audio-v7/build/kernel",
+        "module": "55c4f2eefd74b560250573d72480272878c43bf1f7df8b5b95cdd3f6f836bb51",
+        "receipt": "6.5.22f 8b9c50189ef309e56ecc8c35264509027d8c2f0dcadc4365b019d022ef4146f7 5eb259e3059932c4710e4fabd24fd3a02d1a481c5a6d1a9942f72b6d8650a960",
+        "backdrop": "_SGI_DESKS_BACKGROUND_DESCRIPTION(STRING) = \"-solid #7d9ec0\"",
+        "winterm": "NATIVE_HANDOFF pid=2332 sid=2332 pgid=2332 tpgid=2332 uid=1001 euid=1001 gid=100 egid=100 groups=2 tty=/dev/pts/1 rows=24 cols=80",
+        "native_ctwm": true
+      },
+      "updated": {
+        "kernel": "NetBSD 11.99.11 (XIRI_IRIX_MODULE_20261103) #0: Fri Nov 27 10:29:02 UTC 2026\n\tsalvogendut@toolbx:/var/home/salvogendut/Dev/xiri/.work/native-iso-indy/kernel64/kernel",
+        "module": "6750998ce562cc30a2a79d43ef1256bf68caa20e686bca3e36ec2ec0af8ba3e6",
+        "receipt": "6.5.22f 6b4af62fd7035b8fc3309ee49482f3529e5c710fafa3608ea9e48811e90e186e 5eb259e3059932c4710e4fabd24fd3a02d1a481c5a6d1a9942f72b6d8650a960",
+        "backdrop": "_SGI_DESKS_BACKGROUND_DESCRIPTION(STRING) = \"-solid #7d9ec0\"",
+        "winterm": "NATIVE_HANDOFF pid=2524 sid=2524 pgid=2524 tpgid=2524 uid=1001 euid=1001 gid=100 egid=100 groups=2 tty=/dev/pts/1 rows=24 cols=80",
+        "native_ctwm": true
+      },
+      "restored": {
+        "kernel": "NetBSD 11.99.11 (XIRI_IRIX_MODULE_20261103) #1: Thu Nov 26 21:44:42 UTC 2026\n\tsalvogendut@minisforum.golgota.lan:/var/home/salvogendut/Dev/xiri/.work/indy-audio-v7/build/kernel",
+        "module": "55c4f2eefd74b560250573d72480272878c43bf1f7df8b5b95cdd3f6f836bb51",
+        "receipt": "6.5.22f 8b9c50189ef309e56ecc8c35264509027d8c2f0dcadc4365b019d022ef4146f7 5eb259e3059932c4710e4fabd24fd3a02d1a481c5a6d1a9942f72b6d8650a960",
+        "backdrop": "_SGI_DESKS_BACKGROUND_DESCRIPTION(STRING) = \"-solid #7d9ec0\"",
+        "winterm": "NATIVE_HANDOFF pid=205 sid=205 pgid=205 tpgid=205 uid=1001 euid=1001 gid=100 egid=100 groups=2 tty=/dev/pts/1 rows=24 cols=80",
+        "native_ctwm": true
+      },
+      "screenshot": "2026-11-27-xiriprep-system-update-6.5.22f.png"
+    },
+    "6.5.30f": {
+      "release": "6.5.30f",
+      "cpu": "r5000",
+      "chd_sha256": "0fb59a29c3f2c381e0c89a46541e633e2d14c36b64d3e7de3e22248b707c7714",
+      "update_sha256": "c08603f625faa9c39ff6ef8ed2520ebc0a4b1f4db346d191c5f52c54702669c5",
+      "previous": {
+        "kernel": "NetBSD 11.99.11 (XIRI_IRIX_MODULE_20261103) #1: Thu Nov 26 21:44:42 UTC 2026\n\tsalvogendut@minisforum.golgota.lan:/var/home/salvogendut/Dev/xiri/.work/indy-audio-v7/build/kernel",
+        "module": "55c4f2eefd74b560250573d72480272878c43bf1f7df8b5b95cdd3f6f836bb51",
+        "receipt": "6.5.30f 8b9c50189ef309e56ecc8c35264509027d8c2f0dcadc4365b019d022ef4146f7 1c85f4668fbbf5743fa5b98ea911e601a73645de848eeff88577a871acb38f1f",
+        "backdrop": "_SGI_DESKS_BACKGROUND_DESCRIPTION(STRING) = \"-solid #9ddb9d\"",
+        "winterm": "NATIVE_HANDOFF pid=212 sid=212 pgid=212 tpgid=212 uid=1001 euid=1001 gid=100 egid=100 groups=2 tty=/dev/pts/1 rows=24 cols=80",
+        "native_ctwm": true
+      },
+      "updated": {
+        "kernel": "NetBSD 11.99.11 (XIRI_IRIX_MODULE_20261103) #0: Fri Nov 27 10:29:02 UTC 2026\n\tsalvogendut@toolbx:/var/home/salvogendut/Dev/xiri/.work/native-iso-indy/kernel64/kernel",
+        "module": "6750998ce562cc30a2a79d43ef1256bf68caa20e686bca3e36ec2ec0af8ba3e6",
+        "receipt": "6.5.30f 6b4af62fd7035b8fc3309ee49482f3529e5c710fafa3608ea9e48811e90e186e 1c85f4668fbbf5743fa5b98ea911e601a73645de848eeff88577a871acb38f1f",
+        "backdrop": "_SGI_DESKS_BACKGROUND_DESCRIPTION(STRING) = \"-solid #9ddb9d\"",
+        "winterm": "NATIVE_HANDOFF pid=209 sid=209 pgid=209 tpgid=209 uid=1001 euid=1001 gid=100 egid=100 groups=2 tty=/dev/pts/1 rows=24 cols=80",
+        "native_ctwm": true
+      },
+      "restored": {
+        "kernel": "NetBSD 11.99.11 (XIRI_IRIX_MODULE_20261103) #1: Thu Nov 26 21:44:42 UTC 2026\n\tsalvogendut@minisforum.golgota.lan:/var/home/salvogendut/Dev/xiri/.work/indy-audio-v7/build/kernel",
+        "module": "55c4f2eefd74b560250573d72480272878c43bf1f7df8b5b95cdd3f6f836bb51",
+        "receipt": "6.5.30f 8b9c50189ef309e56ecc8c35264509027d8c2f0dcadc4365b019d022ef4146f7 1c85f4668fbbf5743fa5b98ea911e601a73645de848eeff88577a871acb38f1f",
+        "backdrop": "_SGI_DESKS_BACKGROUND_DESCRIPTION(STRING) = \"-solid #9ddb9d\"",
+        "winterm": "NATIVE_HANDOFF pid=2589 sid=2589 pgid=2589 tpgid=2589 uid=1001 euid=1001 gid=100 egid=100 groups=2 tty=/dev/pts/1 rows=24 cols=80",
+        "native_ctwm": true
+      },
+      "screenshot": "2026-11-27-xiriprep-system-update-6.5.30f.png"
+    }
+  }
+}

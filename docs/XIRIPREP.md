@@ -212,3 +212,49 @@ To make the tools CD again from a current installer on the workstation, run
 `python3 scripts/package-xiriprep-tools.py installer.iso tools.iso`. Both
 images contain only native components and the release inventories. The installed
 reader’s source archive is at `/usr/local/share/xiri/xiriprep-source.tgz`.
+
+## Upgrade or roll back the Indy kernel, module and desktop runtime
+
+Use this procedure for the native components on a disk already prepared
+with `xiriprep`. The disk can keep its installed IRIX release and user homes.
+Use a matched update CD for the two system generations. The workstation
+packager requires two distinct desktop runtimes with the same installed
+file layout, NetBSD kernel release and module path. Other NetBSD
+distribution sets have their own upgrade procedure.
+
+1. Shut down the target Indy cleanly. Keep a backup of its **complete**
+   stopped disk, including emulator writes. Boot a separate NetBSD/sgimips
+   maintenance disk at SCSI ID 1. Attach the inactive target read/write at
+   ID 2 and the update CD at ID 6. Use the same writable target disk and
+   overlay throughout recovery and subsequent boots.
+2. From a native root shell on the maintenance system, identify the disks
+   with `sysctl hw.disknames` and `disklabel sd1`. For the tested single-FFS
+   layout, mount the target and the CD as follows. Confirm that the receipt
+   names the IRIX desktop you intend to update.
+
+   ```sh
+   mkdir -p /mnt/target /cdrom
+   mount /dev/sd1a /mnt/target
+   mount -rt cd9660 /dev/cd0a /cdrom
+   cat /mnt/target/var/db/xiri-install/installed
+   sh /cdrom/update-system.sh /mnt/target
+   ```
+
+3. After the completion message, run `umount /mnt/target`, then
+   `shutdown -p now`. Return the target to ID 1, detach the maintenance
+   disk and update CD, and boot normally. Check `modstat` for
+   `compat_irix_o32` and log in at xdm.
+4. If interrupted, boot the **maintenance disk** again. After an unclean
+   power loss, check the inactive target filesystem with NetBSD's normal
+   `fsck` procedure before mounting it. Repeat the same command with the
+   same CD and direction. The updater verifies each file before resuming.
+   An interrupted target can contain a mixture of the two boot sets.
+5. To roll back a **completed** update, use the same maintenance disk,
+   target and CD. Run `sh /cdrom/update-system.sh --rollback /mnt/target`,
+   unmount and boot as in step 3. This restores native files in place and
+   keeps changes made to user documents since the upgrade.
+
+To build an update CD on the workstation from two trusted native installer
+ISOs, use `python3 scripts/package-xiriprep-update.py previous.iso current.iso update.iso`.
+The CD carries both generations of the changed native files, the boot set,
+and checksums. Each imported tree keeps its release and donor plan identity.

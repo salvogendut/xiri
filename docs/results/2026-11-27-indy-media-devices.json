@@ -1,0 +1,92 @@
+{
+  "iris_revision": "0bc52567a87349a5f521c702f9d8dec1dc0f79c6",
+  "audio": "HAL2 attached, null host output",
+  "vino_source": "test_pattern",
+  "cd_contents_sha256": "16f09d75c84652d04476d9a4434b28935fb6b7935d72823416d65a942ba2e053",
+  "releases": {
+    "6.5.22f": {
+      "release": "6.5.22f",
+      "cpu": "r4400",
+      "chd_sha256": "6bb36f074e9548c40a3891215b423b0e459ea1a8756e206121c4287210fb922b",
+      "emulator_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+      "apps": {
+        "soundeditor": {
+          "log": "OWN pid=3234 parent=327\nOWN pid=329 parent=3234\nlauncher_status=0\nOWN pid=332 parent=329\nCould not get input sample rate.\nGUARD pid=3234 exit=0 signal=0 stopped=0 absent=1 valid=1 tracked=3 remaining=0 reason=leader-exit uid=1001 gid=100 elapsed=14451",
+          "windows": ""
+        },
+        "videoin": {
+          "log": "OWN pid=2353 parent=3182\nOWN pid=2480 parent=2353\nlauncher_status=0\nOWN pid=2290 parent=2480\nvideoin: error opening video: VL: Failed allocation of resource or memory\nGUARD pid=2353 exit=0 signal=0 stopped=0 absent=1 valid=1 tracked=3 remaining=0 reason=leader-exit uid=1001 gid=100 elapsed=14243",
+          "windows": ""
+        },
+        "videopanel": {
+          "log": "OWN pid=457 parent=458\nOWN pid=460 parent=457\nlauncher_status=0\nOWN pid=459 parent=460\nGUARD pid=457 exit=0 signal=0 stopped=1 absent=1 valid=1 tracked=3 remaining=0 reason=leader-exit uid=1001 gid=100 elapsed=14332",
+          "windows": "0x1800006 \"vcp\": (\"vcp\" \"Vcp\")  1x1+640+512  +640+512\n     0x1800001 \"vcp\": (\"vcp\" \"Vcp\")  1x1+0+0  +0+0"
+        },
+        "mediarecorder": {
+          "log": "OWN pid=3565 parent=1007\nOWN pid=2608 parent=3565\nlibmovierecord failed to create shared arena at /var/tmp/.mvrlBAAa000ck: out of disk space?  swap space?\nAssertion failed: queue, file events.c, line 580\n[1]   Abort trap              \"${1}\"\nlauncher_status=134\nGUARD pid=3565 exit=0 signal=0 stopped=0 absent=1 valid=1 tracked=2 remaining=0 reason=leader-exit uid=1001 gid=100 elapsed=14718",
+          "windows": ""
+        },
+        "cdman": {
+          "log": "OWN pid=582 parent=943\nOWN pid=588 parent=582\n[1]   Floating point exception \"${1}\"\nlauncher_status=136\nGUARD pid=582 exit=0 signal=0 stopped=0 absent=1 valid=1 tracked=2 remaining=0 reason=leader-exit uid=1001 gid=100 elapsed=14336",
+          "windows": ""
+        },
+        "cdplayer": {
+          "log": "OWN pid=3559 parent=547\nOWN pid=811 parent=3559\n[1]   Floating point exception \"${1}\"\nlauncher_status=136\nGUARD pid=3559 exit=0 signal=0 stopped=0 absent=1 valid=1 tracked=2 remaining=0 reason=leader-exit uid=1001 gid=100 elapsed=14300",
+          "windows": ""
+        },
+        "datman": {
+          "log": "OWN pid=3316 parent=631\nOWN pid=630 parent=3316\nlauncher_status=0\nOWN pid=716 parent=630\nOWN pid=719 parent=716\nGUARD pid=3316 exit=0 signal=0 stopped=0 absent=1 valid=1 tracked=4 remaining=0 reason=leader-exit uid=1001 gid=100 elapsed=14294",
+          "windows": ""
+        },
+        "datplayer": {
+          "log": "OWN pid=939 parent=3432\nOWN pid=2995 parent=939\n[1]   Floating point exception \"${1}\"\nlauncher_status=136\nGUARD pid=939 exit=0 signal=0 stopped=0 absent=1 valid=1 tracked=2 remaining=0 reason=leader-exit uid=1001 gid=100 elapsed=14333",
+          "windows": ""
+        }
+      },
+      "cd9660_data_read": true,
+      "native": "0: [*] audio0 @ haltwo0: HAL2\n       playback: 16, 2ch, 48000Hz\n       record:   unavailable\nuid=1001(xiritest) gid=100(users) groups=100(users),5(operator)\naudiorecord: failed to open /dev/sound0: Device not configured\naudiorecord_rc=1\ncdplay: ioctl(CDIOREADTOCENTRYS): Bad file descriptor\ncdplay_rc=255\nmt: /dev/nrst0: Device not configured\nmt_rc=2\ncdplay: ioctl(CDIOREADTOCENTRYS): Bad file descriptor\nroot_cdplay_rc=255\n[     1.000000] haltwo0 at hpc0 offset 0x58000: HAL2 revision 4.1.0\n[     1.000000] audio0 at haltwo0: playback\n[     3.141612] cd0 at scsibus0 target 4 lun 0: <Sony, CDU-76S, 1.0> cdrom removable"
+    },
+    "6.5.30f": {
+      "release": "6.5.30f",
+      "cpu": "r5000",
+      "chd_sha256": "0fb59a29c3f2c381e0c89a46541e633e2d14c36b64d3e7de3e22248b707c7714",
+      "emulator_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+      "apps": {
+        "soundeditor": {
+          "log": "OWN pid=321 parent=323\nOWN pid=324 parent=321\nlauncher_status=0\nOWN pid=326 parent=324\nCould not get input sample rate.\nGUARD pid=321 exit=0 signal=0 stopped=0 absent=1 valid=1 tracked=3 remaining=0 reason=leader-exit uid=1001 gid=100 elapsed=14457",
+          "windows": ""
+        },
+        "videoin": {
+          "log": "OWN pid=3433 parent=682\nlauncher_status=0\nOWN pid=2668 parent=3433\nOWN pid=747 parent=2668\nvideoin: error opening video: InternAtom\nGUARD pid=3433 exit=0 signal=0 stopped=0 absent=1 valid=1 tracked=3 remaining=0 reason=leader-exit uid=1001 gid=100 elapsed=14213",
+          "windows": ""
+        },
+        "videopanel": {
+          "log": "OWN pid=2943 parent=450\nOWN pid=452 parent=2943\nlauncher_status=0\nOWN pid=454 parent=452\nGUARD pid=2943 exit=0 signal=0 stopped=1 absent=1 valid=1 tracked=3 remaining=0 reason=leader-exit uid=1001 gid=100 elapsed=14254",
+          "windows": "0x1800011 \"vcp\": (\"infoDialog_popup\" \"Vcp\")  317x109+0+0  +482+458\n     0x1800006 \"vcp\": (\"vcp\" \"Vcp\")  1x1+640+512  +640+512\n     0x1800001 \"vcp\": (\"vcp\" \"Vcp\")  1x1+0+0  +0+0"
+        },
+        "mediarecorder": {
+          "log": "OWN pid=2796 parent=2728\nOWN pid=421 parent=2796\nlibmovierecord failed to create shared arena at /var/tmp/.mvrlBAAa0006-: out of disk space?  swap space?\nAssertion failed: queue, file events.c, line 580\n[1]   Abort trap              \"${1}\"\nlauncher_status=134\nGUARD pid=2796 exit=0 signal=0 stopped=0 absent=1 valid=1 tracked=2 remaining=0 reason=leader-exit uid=1001 gid=100 elapsed=14614",
+          "windows": ""
+        },
+        "cdman": {
+          "log": "OWN pid=576 parent=3007\nOWN pid=580 parent=576\n[1]   Floating point exception \"${1}\"\nlauncher_status=136\nGUARD pid=576 exit=0 signal=0 stopped=0 absent=1 valid=1 tracked=2 remaining=0 reason=leader-exit uid=1001 gid=100 elapsed=14364",
+          "windows": ""
+        },
+        "cdplayer": {
+          "log": "OWN pid=544 parent=606\nOWN pid=3175 parent=544\n[1]   Floating point exception \"${1}\"\nlauncher_status=136\nGUARD pid=544 exit=0 signal=0 stopped=0 absent=1 valid=1 tracked=2 remaining=0 reason=leader-exit uid=1001 gid=100 elapsed=14297",
+          "windows": ""
+        },
+        "datman": {
+          "log": "OWN pid=2737 parent=636\nOWN pid=3187 parent=2737\nlauncher_status=0\nOWN pid=708 parent=3187\nOWN pid=3607 parent=708\nGUARD pid=2737 exit=0 signal=0 stopped=0 absent=1 valid=1 tracked=4 remaining=0 reason=leader-exit uid=1001 gid=100 elapsed=14216",
+          "windows": ""
+        },
+        "datplayer": {
+          "log": "OWN pid=3303 parent=675\nOWN pid=1131 parent=3303\n[1]   Floating point exception \"${1}\"\nlauncher_status=136\nGUARD pid=3303 exit=0 signal=0 stopped=0 absent=1 valid=1 tracked=2 remaining=0 reason=leader-exit uid=1001 gid=100 elapsed=14343",
+          "windows": ""
+        }
+      },
+      "cd9660_data_read": true,
+      "native": "0: [*] audio0 @ haltwo0: HAL2\n       playback: 16, 2ch, 48000Hz\n       record:   unavailable\nuid=1001(xiritest) gid=100(users) groups=100(users),5(operator)\naudiorecord: failed to open /dev/sound0: Device not configured\naudiorecord_rc=1\ncdplay: ioctl(CDIOREADTOCENTRYS): Bad file descriptor\ncdplay_rc=255\nmt: /dev/nrst0: Device not configured\nmt_rc=2\ncdplay: ioctl(CDIOREADTOCENTRYS): Bad file descriptor\nroot_cdplay_rc=255\n[     1.000000] haltwo0 at hpc0 offset 0x58000: HAL2 revision 4.1.0\n[     1.000000] audio0 at haltwo0: playback\n[     3.139418] cd0 at scsibus0 target 4 lun 0: <Sony, CDU-76S, 1.0> cdrom removable"
+    }
+  }
+}

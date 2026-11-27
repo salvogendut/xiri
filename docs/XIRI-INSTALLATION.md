@@ -15,6 +15,11 @@ services and selects the named account. Reboot before that account’s first
 [Reference donor checks](results/2026-11-27-xiriprep-desktop.md) ·
 [Independently installed donors and tools update](results/2026-11-27-owner-donors.md)
 
+For an existing prepared Indy, use a separate maintenance disk to update
+the native kernel, its matching compatibility module and the desktop runtime
+together. The same update CD also restores the previous version.
+[Offline update and rollback](XIRIPREP.md#upgrade-or-roll-back-the-indy-kernel-module-and-desktop-runtime)
+
 The earlier full desktop CDs and prepared CHDs provide working desktops for
 comparison and recovery. [Reference media and test results](results/2026-11-27-indy-saver-install.md)
 

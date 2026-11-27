@@ -19,15 +19,24 @@ IRIX release. [Standard installation](XIRI-INSTALLATION.md#standard-installation
 
 The native Indy installer now includes `xiriprep`. Blank-disk installs imported
 both reference donors, restored 4Dwm preferences across login and kept ctwm
-for a second account. [Fresh-install results](results/2026-11-27-xiriprep-desktop.md)
+for a second account. Both prepared Indys also passed a native kernel,
+module and runtime update, interrupted recovery and rollback while keeping
+their desktop preferences. [Fresh-install results](results/2026-11-27-xiriprep-desktop.md) ·
+[Update and rollback qualification](results/2026-11-27-xiriprep-system-update.md)
 
-1. Keep a third-party donor in installer acceptance alongside the project's
+1. Qualify the original IRIX MediaTools applications on both release
+   lines. Start with microphone input in `soundeditor`
+   (record a known tone and play the saved clip), then video/camera input
+   in `videoin` and `mediarecorder` (preview and save changing frames).
+   Check CD-ROM data reads and audio-CD track selection/playback with
+   `cdman` or `cdplayer`. For DAT, try `datman` and `datplayer` with a
+   scratch tape. Record what the emulator exposes, what native NetBSD can
+   do with it, and what the IRIX application can actually capture or play.
+   [Indy device checks](results/2026-11-27-indy-media-devices.md) · [MediaTools inventory](ICON-CATALOG.md#mediatools-22)
+2. Keep a third-party donor in installer acceptance alongside the project's
    two original-media installations. The first external case is the SuperIRIX
    6.5.22m Indy. Seek a separately sourced 6.5.30f disk for the same check.
    [Donor inputs and results](results/2026-11-27-owner-donors.md)
-2. Extend the native tools update and rollback test to a kernel, matching
-   module and desktop runtime upgrade on systems created with `xiriprep`.
-   Include an interrupted update and recovery with existing user preferences.
 
 ## Desktop qualification
 

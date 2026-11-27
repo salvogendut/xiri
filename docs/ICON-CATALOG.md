@@ -273,6 +273,10 @@ winterm launches for Display, Audio Panel, Sounds and Screen Saver on both relea
 
 ## MediaTools (22)
 
+The [November 27 Indy device checks](results/2026-11-27-indy-media-devices.md)
+repeat eight entries on the two `xiriprep` releases with HAL2, a synthetic
+video source and a data CD. Use those results for current device behaviour.
+
 | Entry | Original target | Observed result / next check |
 | --- | --- | --- |
 | `cdman` | `/usr/sbin/cdman` | **Terminates on signal 8.** |
