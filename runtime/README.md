@@ -354,8 +354,10 @@ preserving an existing `/etc/rc.conf.d/xiri_sessions` configuration.
 asks for confirmation. The desktop supervisor runs `/sbin/shutdown -p now`
 as the logged-in user after saving and reaping its clients. The normal
 shutdown hooks handle other desktops. NetBSD installs `shutdown` as
-`root:operator` with mode `4554`. An administrator can authorize an account
-with `usermod -G operator USER`. The group takes effect at the user's next login. Membership also grants
+`root:operator` with mode `4554`. Updated versions of `xiriprep` add new users
+to `operator`. For existing users, see the [account preparation and shutdown
+instructions](../docs/XIRIPREP.md#allow-desktop-shutdown-for-an-existing-account).
+The group takes effect at the user's next login. Membership also grants
 the usual NetBSD operator device access. Users without shutdown permission
 see a message and retain their session. [Indy tests and launchers](../docs/XIRI-IMAGE.md#power-off-from-toolchest-or-4dwm).
 

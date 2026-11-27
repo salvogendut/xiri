@@ -86,6 +86,9 @@ With the donor detached, the CHD booted in IRIS to 1280×1024 4Dwm for
 `xiritest` and ctwm for `native`. The graphical Prismatic launcher reached
 the XiriBSD xdm greeter from a separate overlay. The local bundle includes
 the desktop and greeter screenshots and the per-image test record.
+The shutdown check on that build ran from the root console. The published
+CHD's `xiritest` account needs to be added to `operator` for menu shutdown.
+[Repair the account on this disk](../XIRIPREP.md#allow-desktop-shutdown-for-an-existing-account) ·
 [Launch the SuperIRIX test disk](../XIRI-IMAGE.md#superirix-indy-6522m)
 
 The two feature-stream tests used the same native ISO with separate blank
@@ -109,6 +112,34 @@ feature-stream releases.
 
 ## Updating existing installations
 
+### Shutdown permissions
+
+Private overlays of the published 6.5.22f, SuperIRIX 6.5.22m and 6.5.30f
+Indys reproduced the missing shutdown permission for `xiritest`. On each,
+the updated tools created a new desktop account interactively and added it
+to NetBSD's `operator` group. Preparing the existing `xiritest` first kept
+its permissions, then `--allow-shutdown` granted access. A repeat run kept
+the same group-file checksum. A separate supplementary group survived,
+the IRIX group map included both operators and the native ctwm user still
+lacked shutdown permission. The `--check` path left the group file intact.
+
+After a fresh xdm login as `xiritest`, the 4Dwm desktop menu opened its
+confirmation dialog. Clicking **Shut Down** produced IRIS's
+`Machine: soft power-off` and exit status zero on all three releases.
+The graphical shutdown did not print the root console's shutdown-hook
+message on the test serial port.
+
+The new native ISO booted to sysinst on a blank R4400 Indy. Its kernel
+set contains the same preparation tools archive contents used in the
+three guest tests. The workstation suite passed all 106 tests.
+
+| Local file under `.work/images/` | SHA256 |
+| --- | --- |
+| `xiribsd-indy-operator-11.99.11.iso` | `3d889b2b8d58f1b95936b063ca162264ebc998961eddcfc268ffde5330c0e990` |
+| `xiriprep-indy-operator-tools.iso` | `b1d3474903bf0de9fdd1fddab5e3f49509ca00f28cad6d55a8b537b4db009f92` |
+
+### Donor profile update
+
 On private copies of the two previously published reference Indy CHDs, the
 new tools CD recognized the matching donor and refused to prepare a different
 release over the existing desktop. On the 6.5.22f system it correctly
@@ -126,11 +157,12 @@ recovery procedures. [Tools update and rollback](../XIRIPREP.md#revert-the-tools
 
 Supply a standalone copy of the original CHD. The test builds a temporary
 FFS disk containing that CHD and installs XiriBSD onto a separate blank disk.
-Run this command from the checkout with the local NetBSD tools and installer ISO.
+The current test uses the installer with operator support. To reproduce the
+original run with the donor-profiles ISO, use the test at Xiri commit `cbf6b91`.
 
 ```sh
 python3 lab/native-iso/check-desktop.py \
-  --iso .work/images/xiribsd-indy-donor-profiles-11.99.11.iso \
+  --iso .work/images/xiribsd-indy-operator-11.99.11.iso \
   --release 6.5.22m --donor "$HOME/Downloads/irix65_chd/irix65.chd" \
   --donor-sha256 f0615ce71308026c1366c289be8de8a640a0ca83ca7b808139acb71f3482a659 \
   --makefs .work/netbsd-irix-build/tools/bin/nbmakefs \

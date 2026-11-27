@@ -7,14 +7,14 @@ SuperIRIX Indy 6.5.22m. The
 machine uses one donor release. The examples select `xiritest`. Substitute
 your ordinary NetBSD login, or repeat the command to prepare another user.
 
-The current `xiribsd-indy-donor-profiles-11.99.11.iso` includes the tool and
-all five desktop profiles. [Continue to the donor import](#read-a-donor-from-external-media)
+The `xiribsd-indy-operator-11.99.11.iso` installer includes the account
+shutdown update and all five desktop profiles. [Continue to the donor import](#read-a-donor-from-external-media)
 
 ## Use the tools CD on an existing Indy
 
 If you installed the earlier native or xiriprep ISO, boot your existing
 system disk at SCSI ID 1. In Prismatic, attach
-`.work/images/xiriprep-indy-donor-profiles-tools.iso` at **F9 → Media → SCSI ID 6 → CD-ROM**.
+`.work/images/xiriprep-indy-operator-tools.iso` at **F9 → Media → SCSI ID 6 → CD-ROM**.
 In a root shell on the guest, mount the CD, install the tools and unmount it.
 
 ```sh
@@ -27,6 +27,11 @@ umount /cdrom
 Eject the tools CD. You can now attach your donor media to the same Indy.
 
 ### Revert the tools update
+
+To return to the donor-profiles tools, reinstall
+`xiriprep-indy-donor-profiles-tools.iso` using the same commands.
+Account group memberships are stored in NetBSD's `/etc/group` separately
+from the installer tools.
 
 On an Indy that previously used `xiriprep-indy-desktop-tools.iso`, reattach
 that previous CD and repeat the mount and extraction above. If you customized
@@ -172,8 +177,34 @@ and audio packages have separate installation procedures.
   Other logins retain their current desktops.
 - **Missing account.** After the donor is identified, xiriprep asks whether
   to create the user. Enter accepts the default **No**. If you answer **Yes**,
-  NetBSD creates an ordinary user with home `/usr/people/<login>` and
-  prompts for a password. In a non-interactive run, create the account first.
+  xiriprep verifies the shared desktop, creates the user with home
+  `/usr/people/<login>`, adds them to NetBSD's `operator` group, and prompts
+  for a password. At the next xdm login the user can choose **Toolchest →
+  System → Shut Down System**. Operator membership also permits reading raw
+  disk devices. In a non-interactive run, create the account first.
+
+### Allow desktop shutdown for an existing account
+
+With the updated tools, add `--allow-shutdown` when preparing an existing
+login that should be able to power off the workstation. Existing users keep
+their current permissions by default. NetBSD appends the operator group
+and preserves the user's other memberships.
+
+```sh
+/usr/local/sbin/xiriprep --allow-shutdown --source '/cdrom/IRIX donor.chd' --user xiritest
+```
+
+For an already prepared desktop, including the November 27 SuperIRIX CHD,
+run these commands in a **NetBSD root shell inside the guest**. This repair
+works with the original tools and the donor detached.
+
+```sh
+usermod -G operator xiritest
+/usr/local/sbin/xiri-sync-users
+```
+
+Log out of 4Dwm and back in at xdm. Open **Toolchest → System → Shut Down
+System** and choose **Shut Down** to confirm.
 
 ## Rebuild the tools CD
 

@@ -40,6 +40,10 @@ CHD at **SCSI ID 1** and select **NetBSD** PROM boot. The installed system
 boots with the donor and installer detached.
 [SuperIRIX donor and desktop checks](results/2026-11-27-owner-donors.md)
 
+On this image, give `xiritest` operator membership to enable the 4Dwm
+shutdown menu. The change takes effect at the next login.
+[Two-command repair inside the guest](XIRIPREP.md#allow-desktop-shutdown-for-an-existing-account)
+
 ## Earlier development images
 
 For routine work, use `./xiri status`, `./xiri doctor`, `./xiri run` and

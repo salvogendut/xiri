@@ -79,6 +79,8 @@ keeps the fork's paused-snapshot API and frontend storage checks. The affected
 core suite passed 464 tests with five ignored. All six Indy, O2 and Octane
 snapshot fixtures passed sequentially using a short temporary socket path.
 The manual Indy CHD uses the same pinned emulator as the other Indy images.
+The subsequent desktop shutdown check fetched `upstream/main` again and
+confirmed `dca458bc` was already integrated.
 
 The November 27 owner-donor cycle merged upstream `0f064cfc` (11 new commits)
 into the fork at `727f8770` and pushed `xiri`. The snapshot merge keeps the

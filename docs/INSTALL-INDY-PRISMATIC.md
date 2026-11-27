@@ -5,7 +5,7 @@ Your first login opens the native NetBSD **ctwm** desktop. You can complete
 the installation with just the ISO and a blank disk. When you later run
 `xiriprep`, it reads the IRIX programs, libraries, fonts and desktop artwork
 from your donor image. The installer ISO for this build is
-`.work/images/xiribsd-indy-donor-profiles-11.99.11.iso` in the Xiri checkout.
+`.work/images/xiribsd-indy-operator-11.99.11.iso` in the Xiri checkout.
 If you already installed an earlier XiriBSD Indy ISO, keep that disk
 and go straight to the [tools CD instructions](XIRIPREP.md#use-the-tools-cd-on-an-existing-indy).
 
@@ -19,7 +19,7 @@ follow the installation in the Prismatic window.
 | In **F9 → Media** | What to attach |
 | --- | --- |
 | **SCSI ID 1 → New disk…** | Choose **Raw**, enter **6144 MiB**, give it a new filename such as `xiribsd-indy.raw`, then select **Create disk and attach to draft**. The installer will format this disk. |
-| **SCSI ID 6 → CD-ROM** | Select `xiribsd-indy-donor-profiles-11.99.11.iso`. |
+| **SCSI ID 6 → CD-ROM** | Select `xiribsd-indy-operator-11.99.11.iso`. |
 
 ## 2. Boot the CD
 
