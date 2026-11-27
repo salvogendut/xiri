@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Record a known stereo input with a candidate kernel on a private Indy."""
 import argparse
+from contextlib import contextmanager
 import importlib.util
 import io
 import json
@@ -30,7 +31,11 @@ def measure(wav):
     with wave.open(io.BytesIO(wav)) as w:
         if (w.getframerate(), w.getnchannels(), w.getsampwidth()) != (RATE, 2, 2):
             raise ValueError(f'Unexpected WAV format: {w.getparams()}')
-        frames = list(struct.iter_unpack('<hh', w.readframes(w.getnframes())))
+        return measure_pcm(w.readframes(w.getnframes()))
+
+
+def measure_pcm(pcm):
+    frames = list(struct.iter_unpack('<hh', pcm))
     if len(frames) < RATE // 2:
         raise ValueError(f'Short recording: {len(frames)} frames')
     # A middle 100 ms window contains an integer number of cycles of each tone.
@@ -49,6 +54,34 @@ def measure(wav):
     return dict(frames=len(frames), rate_hz=RATE, channels=levels)
 
 
+def measure_speaker(path, start):
+    # IRIS dumps one DAC burst per record, before host resampling.
+    pcm = bytearray()
+    with path.open('rb') as f:
+        f.seek(start)
+        while header := f.read(9):
+            output, rate, count = struct.unpack('<BII', header)
+            chunk = f.read(4 * count)
+            if output != 0 or rate != RATE or len(chunk) != 4 * count:
+                raise ValueError(f'Unexpected HAL2 output: {output}, {rate} Hz, {count} frames')
+            pcm.extend(chunk)
+    return measure_pcm(pcm)
+
+
+@contextmanager
+def feed(source, fifo):
+    # Opening a FIFO for writing may wait for the guest to arm its ADC.
+    writer = subprocess.Popen([sys.executable, '-c',
+        'import shutil, sys; '
+        'shutil.copyfileobj(open(sys.argv[1], "rb"), open(sys.argv[2], "wb", buffering=0))',
+        source, fifo], stderr=subprocess.DEVNULL)
+    try:
+        yield
+    finally:
+        writer.terminate()
+        writer.wait()
+
+
 def run(args):
     bundle = args.bundle.resolve()
     record = json.loads((bundle / 'qualification.json').read_text())
@@ -64,6 +97,7 @@ def run(args):
         os.environ.update(IRIS_NO_IDLE='1', IRIS_REX_JIT_PROFILE=str(work / 'profile'))
         disk = work / 'disk.chd'
         subprocess.run(['cp', '--reflink=auto', base, disk], check=True)
+        speaker = work / 'speaker.pcm'
         tone = work / 'tone.pcm'
         os.mkfifo(tone)
         fixture_path = work / 'source.pcm'
@@ -77,10 +111,18 @@ def run(args):
         source = args.build.resolve()
         files = {'netbsd': source/'kernel/netbsd', 'netbsd.boot': source/'kernel/netbsd.elf32',
                  'compat_irix_o32.kmod': source/'module/compat_irix_o32.kmod'}
+        if args.donor:
+            if desktop.sha256(args.donor) != record['donor_sha256']:
+                raise ValueError('Wrong donor for this release')
+            pkg = desktop.ROOT / 'packaging/xiriprep'
+            files.update({'donor.chd': args.donor.resolve(), 'install-audio.sh': pkg/'install-audio.sh',
+                          'release.audio': pkg/'plans'/(record['release']+'.audio'),
+                          'xiri_devices': desktop.ROOT/'runtime/rc.d/xiri_devices'})
         subprocess.run(['genisoimage', '-quiet', '-R', '-o', cd, '-graft-points',
                         *(f'{name}={f}' for name, f in files.items()), 'play.wav='+str(play)], check=True)
         result = dict(release=record['release'], cpu=record['cpu'], base_sha256=record['chd_sha256'],
-                      kernel_sha256=desktop.sha256(files['netbsd.boot']))
+                      kernel_sha256=desktop.sha256(files['netbsd.boot']),
+                      module_sha256=desktop.sha256(files['compat_irix_o32.kmod']))
         for phase, binaries in [('install', args.bootstrap), ('record', args.emulator)]:
             probe.IRIS, probe.CI = (binaries.resolve()/name for name in ('iris', 'iris-ci'))
             lab = desktop.native.open_lab(probe, work/phase, record['cpu'], disk, bundle/'nvram.bin', cd)
@@ -88,13 +130,18 @@ def run(args):
             lab.config_text = lab.config_text.replace('no_audio = true', 'no_audio = false')
             lab.config_text += '[audio]\nhost = "null"\n'
             if phase == 'record':
+                os.environ['IRIS_AUDIO_DUMP'] = str(speaker)
                 lab.config_text += 'input_file = ' + json.dumps(str(tone)) + '\n'
             try:
                 print(record['release'], phase, flush=True)
                 guest = desktop.cold_root(lab)
+                guest.command('mkdir -p /cdrom && mount -rt cd9660 /dev/cd0a /cdrom')
                 if phase == 'install':
-                    guest.command('mkdir -p /cdrom && mount -rt cd9660 /dev/cd0a /cdrom && '
-                                  'install -r -m 444 /cdrom/netbsd.boot /netbsd.boot && '
+                    if args.donor:
+                        guest.command('install -m 555 /cdrom/xiri_devices /etc/rc.d/xiri_devices && '
+                                      'sh /cdrom/install-audio.sh /cdrom/donor.chd /cdrom/release.audio && '
+                                      'sh /cdrom/install-audio.sh /cdrom/donor.chd /cdrom/release.audio')
+                    guest.command('install -r -m 444 /cdrom/netbsd.boot /netbsd.boot && '
                                   'install -r -m 444 /cdrom/netbsd /netbsd && '
                                   'install -r -m 444 /cdrom/compat_irix_o32.kmod '
                                   '$(sysctl -n kern.module.path)/compat_irix_o32/compat_irix_o32.kmod && '
@@ -103,23 +150,22 @@ def run(args):
                     guest.command('test "$(sha256 -q /netbsd.boot)" = '+result['kernel_sha256'])
                     result['emulator_sha256'] = desktop.sha256(probe.IRIS)
                     result['devices'] = guest.read_text('audiocfg list').strip()
-                    guest.command('mkdir -p /cdrom && mount -rt cd9660 /dev/cd0a /cdrom')
-                    # The helper can wait for the guest to open the FIFO while the
-                    # test driver continues sending commands. Always reap it.
-                    writer = subprocess.Popen([sys.executable, '-c',
-                        'import shutil, sys; '
-                        'shutil.copyfileobj(open(sys.argv[1], "rb"), open(sys.argv[2], "wb", buffering=0))',
-                        fixture_path, tone], stderr=subprocess.DEVNULL)
-                    try:
+                    with feed(fixture_path, tone):
                         guest.command("su -f xiritest -c 'audioplay /cdrom/play.wav & player=$!; "
                                       "audiorecord -e slinear_le -P 16 -s 48000 -c 2 -t 1 /tmp/record.wav "
                                       "&& wait $player'", 60)
-                    finally:
-                        writer.terminate()
-                        writer.wait()
                     result['input'] = 'raw stereo PCM via FIFO'
                     result['playback_during_capture'] = True
                     result.update(measure(guest.read('cat /tmp/record.wav')))
+                    if args.donor:
+                        with feed(fixture_path, tone):
+                            guest.command("su -f xiritest -c '/emul/irix/usr/sbin/sfrecord -channels 2 "
+                                          "-width 16 -rate 48000 -time 1 -fileformat wave /tmp/sgi-mic.wav'", 60)
+                        result['sfrecord'] = measure(guest.read('cat /tmp/sgi-mic.wav'))
+                        start = speaker.stat().st_size
+                        guest.command("su -f xiritest -c '/emul/irix/usr/sbin/sfplay /tmp/sgi-mic.wav'", 60)
+                        result['sfplay_exit'] = 0
+                        result['sfplay_output'] = measure_speaker(speaker, start)
                 desktop.poweroff(lab)
             except Exception:
                 print(lab.serial_text()[-2200:], flush=True)
@@ -136,4 +182,5 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     for key in ('bundle', 'bootstrap', 'emulator', 'build', 'output'):
         parser.add_argument('--'+key, type=Path, required=True)
+    parser.add_argument('--donor', type=Path, help='also import and test the two SGI audio clients')
     run(parser.parse_args())

@@ -93,6 +93,15 @@ if [ "$desktop_ready" = no ]; then
     /bin/sh /usr/local/libexec/xiri/install-shared.sh "$source_image" "$release" "$profile"
 fi
 check_desktop
+case $profile in
+    6.5.22f.plan|6.5.30f.plan)
+        # A previously prepared desktop can be presented with a different
+        # donor of the same release. Match its installed profile first.
+        if [ "$(sha256 -q /emul/irix/usr/bin/X11/toolchest)" = "$toolchest_hash" ]; then
+            /bin/sh /usr/local/libexec/xiri/install-audio.sh "$source_image" \
+                "/usr/local/share/xiri/plans/$release.audio"
+        fi ;;
+esac
 if [ "$create" = yes ]; then
     account=$(/usr/local/libexec/xiri/setup-xiri-user.sh "$login")
     printf '%s\n' "$account"

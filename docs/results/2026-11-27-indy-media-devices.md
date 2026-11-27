@@ -46,6 +46,9 @@ Repeat a run with `python3 lab/native-iso/check-media-devices.py --bundle BUNDLE
 The checker deletes its private disk, overlay and CD after power-off and
 keeps the results in `NEW_DIRECTORY/result.json`.
 
+The subsequent [Indy microphone check](2026-11-27-indy-microphone.md) covers
+native and SGI microphone recording on an updated kernel and emulator.
+
 ## Where the device paths stop
 
 * **Audio capture.** The native Indy HAL2 driver advertises playback.

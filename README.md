@@ -43,7 +43,7 @@ ctwm with the 6.5.22 and 6.5.30 disk images. Physical testing is still ahead.
 
 | SGI workstation | Tested configuration | What works in emulation |
 | --- | --- | --- |
-| Indy | R4400 (6.5.22f) or R5000 (6.5.30f), Newport | Reference desktop with accelerated 2D graphics, SGI file playback and Audio Panel controls. [Indy images and audio](docs/XIRI-IMAGE.md#clean-indy-audio-images) |
+| Indy | R4400 (6.5.22f) or R5000 (6.5.30f), Newport | Reference desktop with accelerated 2D graphics, SGI file playback and Audio Panel controls. The updated Indy driver also records with SGI’s `sfrecord` on both releases. [Microphone checks](docs/results/2026-11-27-indy-microphone.md) · [Indy images and audio](docs/XIRI-IMAGE.md#clean-indy-audio-images) |
 | Indigo2 | R10000, High IMPACT | Graphical boot console and Xorg desktop with accelerated rectangle fills. [Graphics checks](docs/results/2026-11-22-ip28-2d.md) |
 | O2 | R10000, CRIME graphics | Accelerated Xorg desktop, graphical boot console, persistent SCSI storage and MEC Ethernet. [Display](docs/results/2026-11-23-o2-frame.md) · [Disk and networking](docs/results/2026-11-23-o2-io.md) |
 | Octane | R10000, Solid IMPACT (6.5.22) or High IMPACT (6.5.30) | Boots from SCSI with a graphical console and full-screen Xorg. Desktop services use loopback. IOC3 Ethernet is still open. [Octane desktop](docs/results/2026-11-23-octane-xdm.md) |

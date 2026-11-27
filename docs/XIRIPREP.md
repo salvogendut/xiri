@@ -161,8 +161,17 @@ The first import builds the font index and filetypes, synchronizes account
 lookups and sets up rpcbind, desktop devices, session shutdown and xdm for
 the next boot. If verification fails, correct the donor or free the requested
 space and rerun. A matching installation is reused for later logins. Use a
-separate system disk for the other IRIX release. Optional browser, freeware
-and audio packages have separate installation procedures.
+separate system disk for the other IRIX release.
+
+On the reference 6.5.22f and 6.5.30f Indy profiles the updated importer also
+copies SGI’s `/usr/sbin/sfrecord`, `/usr/sbin/sfplay` and their two converters
+from `/usr/lib32/dmedia/audioconverters` into the same paths under `/emul/irix`.
+Rerunning it with the matching donor adds missing audio files to an existing
+desktop. Recording requires the capture-capable Indy kernel, module and IRIS
+binary. [Record and play a sample](results/2026-11-27-indy-microphone.md)
+
+The optional browser, freeware and additional audio applications have
+separate installation procedures.
 [Desktop software](IRIX-SOFTWARE.md)
 
 ## Account and session behavior

@@ -324,6 +324,16 @@ run(int argc, char **argv)
     for (i = 0; i < count && i < 24; i++)
         word(ids[i][0]);
     put("\n");
+    /* Sound Editor reads these two values together on the default input. */
+    info(fd, 9, 0x10000028);
+    value(fd, 9, 0x1000000d, 0);
+    value(fd, 9, 0x10000028, 0);
+    query[3] = 5; /* A2.AnalogIn */
+    query[4] = INTERFACE;
+    count = trap3(IRIX_IOCTL, fd, QUERY_VALUES, (unsigned long)query);
+    put("INPUT_INTERFACES "); word(count); put("\n");
+    for (i = 0; i < count && i < 24; i++)
+        device(fd, ids[i][0]);
     query[3] = ANALOG_OUTPUT;
     query[4] = INTERFACE;
     count = trap3(IRIX_IOCTL, fd, QUERY_VALUES, (unsigned long)query);
