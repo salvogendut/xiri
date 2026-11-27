@@ -9,11 +9,15 @@ Compatibility and desktop behavior remain incomplete. See the
 [current overview](../README.md), [rendering evidence](results/2026-11-03-newport-xmahjongg.md)
 and [historical checkpoints](HISTORY.md).
 
-## Next three deliverables
+## Next deliverables
 
-1. Rebuild Prismatic against the IRIS `xiri` branch. On copies of both Indy images, check xdm login, 4Dwm, audio playback, Screen Saver activation and wake, and power-off from Toolchest. [Frontend integration status](FORKS.md#iris-upstream-updates).
-2. Include the Screen Saver repair in both full Indy installers. Install each on a clean target from a single ISO and verify that the chosen saver still runs after a new xdm login. [Existing repair and checks](results/2026-11-27-indy-saver-repair.md).
-3. Deliver a workstation script that builds a bootable XiriBSD install ISO from current NetBSD sources and the Xiri patches. Ship native components and `xiriprep` on that ISO. On the installed system, import SGI files from the owner's donor image and enable 4Dwm for the selected user. Qualify separate 6.5.22f and 6.5.30f installations. [Build, import and acceptance plan](XIRI-INSTALLATION.md#planned-workstation-build-and-xiriprep).
+Both Indy release lines now install the working Screen Saver from their
+full desktop ISO. Prismatic runs both CHDs against the current IRIS fork.
+[Clean installs, fresh-login tests and launchers](results/2026-11-27-indy-saver-install.md).
+
+1. Build a native-only XiriBSD install ISO on the workstation. Resolve NetBSD `src` and `xsrc` to recorded revisions, apply the Xiri changes, then prove an empty Indy disk boots to native NetBSD after installation.
+2. Ship `xiriprep` on the ISO. Read the owner's local raw or CHD donor, install the shared runtime and enable 4Dwm for a named account. The two reference XFS partitions are about 3.9 and 7.9 GiB. Check space and read-only access on the target before importing a desktop.
+3. Repeat from the native installation for 6.5.22f and 6.5.30f. Verify a second account keeps ctwm and a repeated import preserves preferences. [Build, import and acceptance plan](XIRI-INSTALLATION.md#planned-workstation-build-and-xiriprep).
 
 ## Desktop qualification
 

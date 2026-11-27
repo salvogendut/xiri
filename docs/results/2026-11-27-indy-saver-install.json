@@ -1,0 +1,304 @@
+{
+  "iris": "46c116ee",
+  "upstream": "d8cf7e91",
+  "prismatic": "910997e",
+  "instigator": "4acffdef6802",
+  "prismatic_sha256": "09eff186d6225a1479aecf37fa7100f2187a372bc7c3020ab6b9490cc2ceedb2",
+  "instigator_sha256": "ac1eac1c6fa57b63af1611fb179c729a24537ba7834e6347fe11b2103f04049e",
+  "bootstrap": {
+    "stock": {
+      "disk.raw": "8f896ab101a1cb27e29bfe87cc4048cc61c17f2a148f58d24bba0fb1d0c21926",
+      "nvram.bin": "602d954b2e8f076887c54ed301dff7dbd9cc0c6be138e537e5bc732c948d344e"
+    },
+    "xsets": [
+      "xbase.tgz",
+      "xetc.tgz",
+      "xfont.tgz",
+      "xserver.tgz"
+    ],
+    "boots": [
+      {
+        "phase": "stock",
+        "halted": true,
+        "stopped": true
+      },
+      {
+        "phase": "modular",
+        "halted": true,
+        "stopped": true
+      }
+    ],
+    "iris_sha256": "fdfa909b39c33009a4a4b1669caa4160b5d6bcef317f088c650fa61ccdab9cc9",
+    "native_sha256": {
+      "netbsd": "4bfb78c07a5fd5c47cf972b81e148ecf06cf954255afead63291dadfcdbd2726",
+      "netbsd.boot": "d31564ef9a0f15496946e2f23138bffc417b05802c6fd018c65ca8c7caf16556",
+      "compat_irix_o32.kmod": "44455fd6b141bf6c211fb8ba15f64b785f644d8342c02465491dc9c8fb175047"
+    },
+    "stock_kernel": "NetBSD 11.0 (GENERIC32_IP2x) #0: Thu Jul 30 15:23:12 UTC 2026  mkrepro@mkrepro.NetBSD.org:/usr/src/sys/arch/sgimips/compile/GENERIC32_IP2x",
+    "modular_kernel": "NetBSD 11.99.11 (XIRI_IRIX_MODULE_20261103) #0: Fri Nov 27 06:02:51 UTC 2026  salvogendut@minisforum.golgota.lan:/var/home/salvogendut/Dev/xiri/.work/indy-mute-sync/build/kernel",
+    "module": "compat_irix_o32            exec     filesys  -        0       - exec_elf32,compat_netbsd32",
+    "securelevel": 1,
+    "originals_unchanged": true,
+    "passed": true
+  },
+  "releases": {
+    "6.5.22f": {
+      "release": "6.5.22f",
+      "iso_sha256": "ca1612b5efe3641f14195cedbcf3d36c600309823d6726fc09cde5a683a13960",
+      "native_sha256": "de5b336a5d643f820d8e7c0ffe6b96abfb108860215c4b29dfa879a7dc842d10",
+      "vendor_sha256": "c3a5334729ee8b97549be4218b9c5147f3824579f7f43e17f59f5dc173c78371",
+      "installed_native_changes": [
+        "root/usr/X11R7/lib/modules/extensions/libextmod.so.0",
+        "root/usr/local/libexec/xiri/desktop-clients.sh"
+      ],
+      "saver_files": 16,
+      "chd_sha256": "53566ebcb16a2e67f4cb3176615c00a931bf24fcec1432dc31c086b9253eec95",
+      "logical_sha1": "a5e8402daaad0188be84c416554f0629c8d0840e",
+      "clean_install": {
+        "release": "6.5.22f",
+        "cpu": "r4400",
+        "iso_sha256": "ca1612b5efe3641f14195cedbcf3d36c600309823d6726fc09cde5a683a13960",
+        "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+        "checks": {
+          "release": "6.5.22f",
+          "receipts": "6.5.22f de5b336a5d643f820d8e7c0ffe6b96abfb108860215c4b29dfa879a7dc842d10 c3a5334729ee8b97549be4218b9c5147f3824579f7f43e17f59f5dc173c78371",
+          "mozilla": "6.5.22f de5b336a5d643f820d8e7c0ffe6b96abfb108860215c4b29dfa879a7dc842d10 c3a5334729ee8b97549be4218b9c5147f3824579f7f43e17f59f5dc173c78371 42d676e2358f63e5776b96d807fd49ee552594889bbeddc039a7f18fa608b7dc",
+          "repeated": true
+        },
+        "halted": true,
+        "stopped": true
+      },
+      "full_saver_panel": {
+        "demo_changed_pixels": [
+          27436,
+          46530
+        ],
+        "idle_changed_pixels": [
+          41465,
+          21546
+        ],
+        "idle_timeout_seconds": 8,
+        "key_wake": "Space (Demo and idle)",
+        "original_timeout_seconds": 600,
+        "disabled_timeout_seconds": 0,
+        "logout_to_xdm": true,
+        "next_login_idle_changed_pixels": [
+          54355,
+          60990
+        ],
+        "release": "6.5.22f",
+        "clean_halt": true,
+        "iso_sha256": "ca1612b5efe3641f14195cedbcf3d36c600309823d6726fc09cde5a683a13960",
+        "chd_sha256": "53566ebcb16a2e67f4cb3176615c00a931bf24fcec1432dc31c086b9253eec95",
+        "kernel_sha256": "4bfb78c07a5fd5c47cf972b81e148ecf06cf954255afead63291dadfcdbd2726",
+        "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+        "nvram_input_sha256": "d203e4dc9ef5d9ade72bbfef6f4dbd44dd41a4ce1587eef3824d7e7bafa5f0f8"
+      },
+      "prismatic": {
+        "release": "6.5.22f",
+        "xdm": true,
+        "extensions": [
+          "SCREEN-SAVER",
+          "MIT-SCREEN-SAVER"
+        ],
+        "presets": [
+          "blank",
+          "flame",
+          "hop",
+          "image",
+          "life",
+          "pop",
+          "pyro",
+          "qix",
+          "random",
+          "rotor",
+          "swarm"
+        ],
+        "sfplay": {
+          "frames": 380928,
+          "peaks": [
+            8031,
+            8031
+          ],
+          "hz": [
+            439.8,
+            729.8
+          ]
+        },
+        "saved_timeout": 600,
+        "temporary_inactivity_seconds": 60,
+        "changed_pixels": 37341,
+        "wake_key": "Space",
+        "poweroff_via": "Toolchest > System > Shut Down System > Shut Down",
+        "soft_poweroff": true
+      },
+      "prior_image": {
+        "release": "6.5.22f",
+        "xdm": true,
+        "extensions": [
+          "SCREEN-SAVER",
+          "MIT-SCREEN-SAVER"
+        ],
+        "presets": [
+          "blank",
+          "flame",
+          "hop",
+          "image",
+          "life",
+          "pop",
+          "pyro",
+          "qix",
+          "random",
+          "rotor",
+          "swarm"
+        ],
+        "sfplay": {
+          "frames": 372736,
+          "peaks": [
+            8031,
+            8031
+          ],
+          "hz": [
+            440.2,
+            730.1
+          ]
+        },
+        "saved_timeout": 600,
+        "temporary_inactivity_seconds": 60,
+        "changed_pixels": 40626,
+        "wake_key": "Space",
+        "poweroff_via": "Toolchest > System > Shut Down System > Shut Down",
+        "soft_poweroff": true
+      }
+    },
+    "6.5.30f": {
+      "release": "6.5.30f",
+      "iso_sha256": "5411f54f809109fc2737d2325c95a7ef9de7023bf3e3000cf1e023b4366f0cd7",
+      "native_sha256": "de5b336a5d643f820d8e7c0ffe6b96abfb108860215c4b29dfa879a7dc842d10",
+      "vendor_sha256": "31bfea32bd2b2db8c792609db7658490bbe84af23440d8cb2fde0fc7c13bd0f4",
+      "installed_native_changes": [
+        "root/usr/X11R7/lib/modules/extensions/libextmod.so.0",
+        "root/usr/local/libexec/xiri/desktop-clients.sh"
+      ],
+      "saver_files": 16,
+      "chd_sha256": "248a839e4c77e2273775000e949ff2bac47f830cfecabdedfd0a93bb043c95be",
+      "logical_sha1": "be24e702e47aab0ed89e960da384b708b348c863",
+      "clean_install": {
+        "release": "6.5.30f",
+        "cpu": "r5000",
+        "iso_sha256": "5411f54f809109fc2737d2325c95a7ef9de7023bf3e3000cf1e023b4366f0cd7",
+        "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+        "checks": {
+          "release": "6.5.30f",
+          "receipts": "6.5.30f de5b336a5d643f820d8e7c0ffe6b96abfb108860215c4b29dfa879a7dc842d10 31bfea32bd2b2db8c792609db7658490bbe84af23440d8cb2fde0fc7c13bd0f4",
+          "mozilla": "6.5.30f de5b336a5d643f820d8e7c0ffe6b96abfb108860215c4b29dfa879a7dc842d10 31bfea32bd2b2db8c792609db7658490bbe84af23440d8cb2fde0fc7c13bd0f4 e3e804ebde5c56b4084e2698ad7239315d620921545ccc215f29e77778056803",
+          "repeated": true
+        },
+        "halted": true,
+        "stopped": true
+      },
+      "full_saver_panel": {
+        "demo_changed_pixels": [
+          21861,
+          46276
+        ],
+        "idle_changed_pixels": [
+          44969,
+          44774
+        ],
+        "idle_timeout_seconds": 8,
+        "key_wake": "Space (Demo and idle)",
+        "original_timeout_seconds": 600,
+        "disabled_timeout_seconds": 0,
+        "logout_to_xdm": true,
+        "next_login_idle_changed_pixels": [
+          63794,
+          34221
+        ],
+        "release": "6.5.30f",
+        "clean_halt": true,
+        "iso_sha256": "5411f54f809109fc2737d2325c95a7ef9de7023bf3e3000cf1e023b4366f0cd7",
+        "chd_sha256": "248a839e4c77e2273775000e949ff2bac47f830cfecabdedfd0a93bb043c95be",
+        "kernel_sha256": "4bfb78c07a5fd5c47cf972b81e148ecf06cf954255afead63291dadfcdbd2726",
+        "iris_sha256": "6359dc8381fe77f17fd329cf2be38967a1486ba56e4d14e6648c7d0a0297eec7",
+        "nvram_input_sha256": "c6f9e21c8173ff7a2781111302d67edb93452c8341a77b7d0783c5bd6aa11307"
+      },
+      "prismatic": {
+        "release": "6.5.30f",
+        "xdm": true,
+        "extensions": [
+          "SCREEN-SAVER",
+          "MIT-SCREEN-SAVER"
+        ],
+        "presets": [
+          "blank",
+          "flame",
+          "hop",
+          "image",
+          "life",
+          "pop",
+          "pyro",
+          "qix",
+          "random",
+          "rotor",
+          "swarm"
+        ],
+        "sfplay": {
+          "frames": 380928,
+          "peaks": [
+            8031,
+            8031
+          ],
+          "hz": [
+            440.0,
+            730.1
+          ]
+        },
+        "saved_timeout": 600,
+        "temporary_inactivity_seconds": 60,
+        "changed_pixels": 55547,
+        "wake_key": "Space",
+        "poweroff_via": "Toolchest > System > Shut Down System > Shut Down",
+        "soft_poweroff": true
+      },
+      "prior_image": {
+        "release": "6.5.30f",
+        "xdm": true,
+        "extensions": [
+          "SCREEN-SAVER",
+          "MIT-SCREEN-SAVER"
+        ],
+        "presets": [
+          "blank",
+          "flame",
+          "hop",
+          "image",
+          "life",
+          "pop",
+          "pyro",
+          "qix",
+          "random",
+          "rotor",
+          "swarm"
+        ],
+        "sfplay": {
+          "frames": 372736,
+          "peaks": [
+            8031,
+            8031
+          ],
+          "hz": [
+            440.2,
+            730.1
+          ]
+        },
+        "saved_timeout": 600,
+        "temporary_inactivity_seconds": 60,
+        "changed_pixels": 37842,
+        "wake_key": "Space",
+        "poweroff_via": "Toolchest > System > Shut Down System > Shut Down",
+        "soft_poweroff": true
+      }
+    }
+  }
+}

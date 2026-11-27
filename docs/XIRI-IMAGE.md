@@ -429,8 +429,8 @@ From the checkout, run the launcher for the release you want, then press
 a 1280×1024 xdm login with the XiriBSD logo.
 
 ```sh
-.work/prismatic-indy-saver-v8/6.5.22f/run-prismatic.sh
-.work/prismatic-indy-saver-v8/6.5.30f/run-prismatic.sh
+.work/prismatic-indy-saver-v9/6.5.22f/run-prismatic.sh
+.work/prismatic-indy-saver-v9/6.5.30f/run-prismatic.sh
 ```
 
 Log in as `xiritest` (password `xiritest`) for 4Dwm, or `netbsdtest`
@@ -445,9 +445,13 @@ To try the audio change, open
 `mixerctl -w outputs.master.mute=on`, then repeat with `off`. The open
 panel follows both changes. Clicking its Mute box controls the same output.
 
-These CHDs include the audio-v8 desktop and the Screen Saver repair.
-For a fresh install from the original audio-v8 CDs, or to keep the settings
-in an existing audio-v8 Prismatic machine, apply the matching
+These CHDs were installed from the full saver-v9 ISO for each release.
+The original xlock, presets and Xorg extension are installed together.
+[Full installer and frontend checks](results/2026-11-27-indy-saver-install.md) ·
+[Build the full installer](NATIVE-PACKAGE.md#build-a-full-indy-installer-with-screen-saver).
+
+The earlier repaired disks remain under `.work/prismatic-indy-saver-v8/`.
+To keep the settings in an existing audio-v8 Prismatic machine, apply the matching
 [Screen Saver repair CD](NATIVE-PACKAGE.md#add-screen-saver-to-an-audio-v8-indy)
 to that installation. The original audio-v8 machines are under
 `.work/prismatic-indy-audio-v8/` and the original installer CDs are under

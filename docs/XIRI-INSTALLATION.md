@@ -5,8 +5,8 @@ The first import source is an
 Our existing Prismatic installation now provides a
 [verified donor CHD](results/2026-11-14-irix-donor.md) and a tested recipe;
 the importer reads the local donor. For a clean 6.5.22f or 6.5.30f Indy,
-use the [v6 installer, update and rollback procedure](NATIVE-PACKAGE.md#install-or-update-an-indy-to-v6).
-[Bootable images and qualification](results/2026-11-26-indy-v6.md).
+use the [full Indy installer with Screen Saver](NATIVE-PACKAGE.md#build-a-full-indy-installer-with-screen-saver).
+[Prepared CHDs and qualification](results/2026-11-27-indy-saver-install.md).
 
 Both Indy releases use stock NetBSD/sgimips userland with a MIPS64 kernel and
 matching `compat_irix_o32` module built from the `xiri` branch of NetBSD-xiri.
