@@ -30,6 +30,44 @@ libraries and command-line clients come from the installed IRIX disk. The test
 installed them twice and checked the device aliases after a cold boot.
 [NetBSD IRIX audio input](https://github.com/salvogendut/NetBSD-xiri/commit/8e78bdf18a2)
 
+## Microphone on the 4Dwm desktop
+
+On the original 6.5.22f Indy, the login script runs `genDeviceIcons` against
+`/var/X11/xdm/DefaultDeviceList` and passes its output to `bgicons`. The
+Indy's HAL2 revision 4.1.0 produces the following microphone record.
+
+```text
+1:ImdDeviceModel:C%3a10 T%3a3 S%3a16400 ftr%3amicrophone!o=
+```
+
+Xiri's IRIX hardware inventory currently reports memory only. At login, the
+Xiri desktop reads NetBSD's `audiocfg list` and supplies this record to SGI's
+`bgicons` when a HAL2 device reports a recording format. Each user's host
+icon directory has its own `XiriMicrophoneDB`. A failed inventory query
+leaves the last successful result in place.
+[Desktop session script](../../runtime/libexec/desktop-clients.sh)
+
+On both emulated Indys, `xiritest` saw the SGI microphone below the
+Dumpster after xdm login. A second login kept one icon. Feeding the
+installed login code a playback-only HAL2 inventory plus a different
+recording device removed the microphone. Restoring the real inventory brought
+it back. [6.5.22f screenshot](2026-11-27-indy-microphone-icon-6.5.22f.png)
+· [6.5.30f screenshot](2026-11-27-indy-microphone-icon-6.5.30f.png)
+
+Tracing a double-click on each release confirmed that the SGI icon started
+`mediarecorder`. Running the same `-media audio -jack Microphone` action
+from a shell showed that `libmovierecord` failed to create a shared
+arena, asserted in `events.c` at line 580, and exited with status 134 before
+opening a recorder window. The command-line recording results above apply
+independently. [MediaTools results](2026-11-27-indy-media-devices.md)
+
+To apply just this desktop change to a guest already running the recording
+kernel, install the updated script as root and log back in as the desktop user.
+
+```sh
+install -m 555 desktop-clients.sh /usr/local/libexec/xiri/desktop-clients.sh
+```
+
 ## Sound Editor comparison
 
 On a private copy of the original-media 6.5.22f Indy, Sound Editor opens

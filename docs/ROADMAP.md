@@ -36,6 +36,8 @@ their desktop preferences. [Fresh-install results](results/2026-11-27-xiriprep-d
    `sfplay` replays the saved recording on both Indys. Sound Editor reaches scratch-file creation and then needs
    file-backed `MAP_AUTOGROW`, which succeeds on the original IRIX Indy.
    Native capture also passes during simultaneous playback.
+   The desktop microphone icon launches Media Recorder on both Indys.
+   Its audio-only launch still fails during shared-arena creation.
    [Microphone measurements](results/2026-11-27-indy-microphone.md) · [Indy device checks](results/2026-11-27-indy-media-devices.md) · [MediaTools inventory](ICON-CATALOG.md#mediatools-22)
 2. Keep a third-party donor in installer acceptance alongside the project's
    two original-media installations. The first external case is the SuperIRIX

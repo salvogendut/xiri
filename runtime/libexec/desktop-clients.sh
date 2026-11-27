@@ -30,6 +30,25 @@ if test ! -d "$HOME/Desktop"; then
     ln -s ../dumpster "$HOME/Desktop/dumpster"
 fi
 /emul/irix/usr/sbin/bgicons -overlay >"$job/bgicons.out" 2>"$job/bgicons.err"
+# SGI's genDeviceIcons emits this device description for the Indy HAL2.
+# Use the native audio inventory until SGI_INVENT includes audio devices.
+# Give bgicons a separate database so it only reconciles our microphone.
+hosticons="$HOME/.desktophost/$(hostname)"
+if audiocfg list >"$job/audio-inventory" 2>"$job/device-icons.err"; then
+    awk '
+        /^[0-9]+:/ { hal2 = / @ haltwo[0-9]+: HAL2([[:space:]]|$)/ }
+        hal2 && $1 == "record:" && $2 ~ /^[0-9]+,/ {
+            print "1:ImdDeviceModel:C%3a10 T%3a3 S%3a16400 ftr%3amicrophone!o="
+            exit
+        }
+    ' "$job/audio-inventory" >"$job/device-icons"
+    if test -s "$job/device-icons" || test -f "$hosticons/XiriMicrophoneDB"; then
+        /emul/irix/usr/sbin/bgicons -icondir "$hosticons/Icons" \
+            -icondb "$hosticons/XiriMicrophoneDB" <"$job/device-icons" \
+            >>"$job/bgicons.out" 2>>"$job/device-icons.err" ||
+            echo 'Could not update the microphone desktop icon.' >&2
+    fi
+fi
 # Keep each vendor logout entry and place the workstation action alongside it.
 sed '/f\.exec.*\/usr\/bin\/X11\/endsession/ {
     s|/usr/bin/X11/endsession|/usr/local/bin/xiri-logout|

@@ -82,6 +82,11 @@ both. IRIS `1a4844c6` also preserves capture precision with the original
 IRIX driver's word-strided DMA. All 18 HAL2 regressions passed, including
 the three PROM chimes. [Recording checks](results/2026-11-27-indy-microphone.md)
 
+The desktop microphone check fetched upstream again at `afaf7a55`, already
+included in IRIS `xiri` at `1a4844c6`. That build supplied the original
+Indy reference and both Xiri desktop runs.
+[Desktop icon checks](results/2026-11-27-indy-microphone.md#microphone-on-the-4dwm-desktop)
+
 The SuperIRIX test CHD cycle integrated four further upstream commits through
 `dca458bc` into IRIS `xiri` at `854d12c4`. These cover virtio snapshots,
 Timekeeper year handling, shared machine constants and boot CI. The merge
