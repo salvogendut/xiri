@@ -16,6 +16,9 @@ Each user can select the IRIX desktop or keep their native NetBSD session.
 
 ## Try the desktop
 
+When the XiriBSD ISO and CHD images are ready, you can download them from
+[www.xiribds.org](https://www.xiribds.org/).
+
 The SGI Indy is the reference machine. Xiri maintains separate IRIX 6.5.22
 and 6.5.30 installations and tests them in IRIS. Start with the Prismatic
 launcher for your release if you have a prepared image. To build your own,
