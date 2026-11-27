@@ -77,6 +77,17 @@ survived logout and login. A separate unselected account logged into native
 ctwm. The guest powered off. [Community Indy screenshot](2026-11-27-owner-donors-22m-desktop.png) ·
 [Community Indy test record](2026-11-27-owner-donors-22m.json)
 
+The manual SuperIRIX test CHD was built from another blank 6 GiB Indy disk
+with the same native ISO and donor. The imported desktop receipt matched the
+first installation. After shutdown, `chdman verify` passed and the CHD data
+SHA1 matched the raw disk. The compressed disk is 469,655,698 bytes and its
+SHA256 is `8edb03450e1cea12bc0538a57ed62494e56aaf49245c46d81411f4e68e499549`.
+With the donor detached, the CHD booted in IRIS to 1280×1024 4Dwm for
+`xiritest` and ctwm for `native`. The graphical Prismatic launcher reached
+the XiriBSD xdm greeter from a separate overlay. The local bundle includes
+the desktop and greeter screenshots and the per-image test record.
+[Launch the SuperIRIX test disk](../XIRI-IMAGE.md#superirix-indy-6522m)
+
 The two feature-stream tests used the same native ISO with separate blank
 disks. Each donor was read from a data CD at SCSI ID 6. Both installed
 desktops passed the 4Dwm, winterm, saved Qix and native ctwm checks.

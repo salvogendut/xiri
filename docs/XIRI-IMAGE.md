@@ -2,7 +2,7 @@
 
 ## Indy images created with xiriprep
 
-The two local test images were installed from the native XiriBSD ISO on
+The local test images were installed from the native XiriBSD ISO on
 blank disks. Each imported its own IRIX donor. To run one in the graphical
 IRIS emulator, use the launcher from the Xiri checkout.
 
@@ -18,6 +18,27 @@ attach the CHD at SCSI ID 1 and select NetBSD PROM boot. The test desktop
 login and password are both `xiritest`. The local `local-logins.txt` also
 contains the native ctwm test account's password. These disks contain the
 owner's imported IRIX files. [Results and checksums](results/2026-11-27-xiriprep-desktop.md)
+
+### SuperIRIX Indy 6.5.22m
+
+The private test disk is
+`.work/images/xiribsd-indy-6.5.22m-superirix-20261127/netbsd-xiri.chd`.
+It boots XiriBSD with the base 4Dwm desktop, libraries, fonts and artwork
+imported from the SuperIRIX Indy. The donor’s additional applications,
+including GIMP, are outside this desktop profile.
+
+From the Xiri checkout, start Prismatic with the command below and press
+**Ctrl+P**. At xdm, use `xiritest` for both the login and password.
+
+```sh
+.work/images/xiribsd-indy-6.5.22m-superirix-20261127/run-prismatic.sh
+```
+
+`run-iris.sh` in the same directory opens the disk directly in IRIS. For
+manual Prismatic setup, select **Indy, R4400, Newport, 256 MiB**, attach the
+CHD at **SCSI ID 1** and select **NetBSD** PROM boot. The installed system
+boots with the donor and installer detached.
+[SuperIRIX donor and desktop checks](results/2026-11-27-owner-donors.md)
 
 ## Earlier development images
 

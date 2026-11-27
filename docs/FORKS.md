@@ -72,6 +72,14 @@ in `08e53ba7`. [Octane build and qualification](results/2026-11-23-octane-deskto
 
 ## IRIS upstream updates
 
+The SuperIRIX test CHD cycle integrated four further upstream commits through
+`dca458bc` into IRIS `xiri` at `854d12c4`. These cover virtio snapshots,
+Timekeeper year handling, shared machine constants and boot CI. The merge
+keeps the fork's paused-snapshot API and frontend storage checks. The affected
+core suite passed 464 tests with five ignored. All six Indy, O2 and Octane
+snapshot fixtures passed sequentially using a short temporary socket path.
+The manual Indy CHD uses the same pinned emulator as the other Indy images.
+
 The November 27 owner-donor cycle merged upstream `0f064cfc` (11 new commits)
 into the fork at `727f8770` and pushed `xiri`. The snapshot merge keeps the
 fork’s selectable snapshot root and upstream’s current save/load format.
