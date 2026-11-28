@@ -133,6 +133,12 @@ test filters passed (90, 5 and 5 respectively, with four snapshot tests
 ignored). All six snapshot schema tests passed.
 [IRIS merge](https://github.com/salvogendut/iris/commit/01c50a40)
 
+The November 28 dated installer cycle merged upstream `82fc2616` into
+IRIS `xiri` at `0c0e77bb`. All 23 HPC3 tests passed, including the new
+SCSI controller reset test. Installer qualification uses the pinned
+`65039d90` Indy binary. [Upstream integration](https://github.com/salvogendut/iris/commit/0c0e77bb) ·
+[Installer contents and verification](results/2026-11-28-indy-installer.md)
+
 The CD Player cycle fetched IRIS upstream on November 27 and again on
 November 28. Both checks found `afaf7a5504377848c413dc6ac33a65b60dfe574b`
 in `xiri` at `65039d90`. That build supplied the original SGI drive trace,

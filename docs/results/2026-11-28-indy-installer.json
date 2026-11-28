@@ -1,0 +1,154 @@
+{
+  "iso": "xiribsd-11.99.11-01-2026-11-28.iso",
+  "size_bytes": 357124096,
+  "sha256": "1cf1601db1c2da46a3c5b5195e0ebc98d397f236ed9fb34fd7c0cfe9ed27f07f",
+  "native_runtime_sha256": "0490ae2e55c887e8952910071dba043e7d39b047c722f28635079afe6e5b5ac8",
+  "source_inputs": {
+    "base_installer": {
+      "name": "xiribsd-indy-operator-11.99.11.iso",
+      "sha256": "3d889b2b8d58f1b95936b063ca162264ebc998961eddcfc268ffde5330c0e990"
+    },
+    "build_date": "2026-11-28",
+    "installer_revision": 1,
+    "kernel_revision": "2223c5f0b4bf43a0bd68946e378f2f49907ee7e8",
+    "microphone_update": {
+      "files": {
+        "applications.ftr": "9dccbf1cb577adfe0c792f8a9ec4d116df899d73c835c99432dfaf70930f9bbc",
+        "desktop-clients.sh": "3695e667797d209ab1cc52ac8b3c01942e574aeeb7833ae1715d3464f7685ee2",
+        "devices": "1b5017284eaae4b4160f03bdb18be37af068fea7815b5702b79a95a711d46113",
+        "microphone": "fb87c881334adbc0fbf593c7db16112347b0bb69f4bad383ebcb30e330600236",
+        "module": "6470fb250ac1cc9d90006629f0ff8a305e4d036fd722c032287dc29887c0ef8f",
+        "netbsd": "d57eede0a7b3c7ff84ca5a630116653ed60a0410b44a861dc1898b6e10c3e4b8",
+        "netbsd.boot": "3c2b9626629eb5d0ee25009edb2c61a85346b62ba1c8234dbb0ac5d12f76088f",
+        "recorder-audio.so": "f261a0152f5ee1a98af464a39615999271baab10256ab57b0bac28944f101244",
+        "recorder-microphone": "1ae082bac476d25cc41301f8fd3197bc4ac9593ff73aebbf3f53d77b7df5b761"
+      },
+      "name": "xiri-indy-microphone-update.iso",
+      "sha256": "64a4336a66527c98e86494835ecfd53d69ee52dc2dd4d3f779bbf43494f14ba4"
+    },
+    "module_revision": "b187ffa60fd6a35798b2f1bcf1f2fc136526e678",
+    "optical_update": {
+      "daemon_sha256": "1b101071a186e6dd9dd0ed3a6da2eac78e8ef2c326ecbf604279ac77e7b352aa",
+      "sha256": "2df731ea19976e02cf46bef32ee9d31e0786c820ccd75865ddb9a68a8047049a"
+    },
+    "xiri_runtime_revision": "a79a502e051e2ce4a33530eb19f18de37f0fa919"
+  },
+  "stock_sets": [
+    "base",
+    "etc",
+    "comp",
+    "rescue",
+    "games",
+    "man",
+    "misc",
+    "text",
+    "xbase",
+    "xetc",
+    "xfont",
+    "xserver",
+    "xcomp"
+  ],
+  "installer_files_sha256": {
+    "aoutboot": "f1e3dbe6406dd0e905681c54f1d50e98fceed972c31cc0ffb169ca27a8c603db",
+    "ip2x": "4cfee64a8fb157066c4e13ab5dc47d284eec6e410f64db0828c68ac76259221f",
+    "ip2xboot": "319a6275be19be665ddbe4666f41148bd0d1c01ba0fdd92ab0794352442521dd",
+    "sgimips/binary/sets/MD5": "354c17434d0d3cf89162553327bf0a815758e77280cce271497af1bd87b8d917",
+    "sgimips/binary/sets/SHA512": "e2129b14f5046c20e8c76e662c514077dfffb12ae070b9dee6d5c0d3b5d8ed53",
+    "sgimips/binary/sets/base.tgz": "017e804f86c4a19cdb7550e92acac23f790d5a13e19d0ae7431f1d0f80bfe03d",
+    "sgimips/binary/sets/comp.tgz": "c6e54c18a3a873dc91e930962a372964a31362b5e3a322dae491b9457168899a",
+    "sgimips/binary/sets/etc.tgz": "ec04a2469863e1bfc6dd459627cd7a2b69e1d1efdae07ff3d35fa9b2564481bc",
+    "sgimips/binary/sets/games.tgz": "353807200666180070b5d75d12ba08654def7e7f04e25579fccee8f817e13c1a",
+    "sgimips/binary/sets/kern-GENERIC32_IP2x.tgz": "479e984e2cfb3b85c233a7b24cf9e7edfdb1ae99a8ea2fa3e0a03cab7eaf0d6e",
+    "sgimips/binary/sets/man.tgz": "84f6d80d420ec037c6a23f1630e159a6ea549acababc06c93001a016a6415b04",
+    "sgimips/binary/sets/misc.tgz": "00d400bd53b3c77bda32a3c99a02e5d9d787e755c52992e2d5a3d2cdfb322ecd",
+    "sgimips/binary/sets/modules.tgz": "7fb00588fa881df4b0a48201b0ae8c68697a982ac717fab4ed18c7793e39183b",
+    "sgimips/binary/sets/rescue.tgz": "8e8acf5312c1c2a5f758ddc053d92c3865301f5764d30499e493385e0e0bf49b",
+    "sgimips/binary/sets/text.tgz": "8c80e32550edbb97ea3841a0fff96bf5a28ef28e9485c0560cd5d16bc56bc485",
+    "sgimips/binary/sets/xbase.tgz": "0027e78e71acc84e9a2659f34c3f9b75cf50dcd68efbedae97474fb619f51536",
+    "sgimips/binary/sets/xcomp.tgz": "b21cb96055f22c07ba6fb636a8fad4aaf07bb6c836fadc8dd5d03e17f9064075",
+    "sgimips/binary/sets/xetc.tgz": "824464a6ec22b033ffaa6ab25a12b05fe42d3b5d8fc2eaa6fe8b63cc5e964870",
+    "sgimips/binary/sets/xfont.tgz": "1d145a7eb9744592ea4633d87768340c88e7453278c988b250816f37f5abcc4b",
+    "sgimips/binary/sets/xserver.tgz": "4081ffd6bf8e721a80f50e6bb0f110a97273766684c1e647e17562caf9107cdf"
+  },
+  "emulator_revision": "65039d9066a380233f927bf5208fbd6d63992552",
+  "installer_scsi_id": 6,
+  "system_disk_scsi_id": 1,
+  "blank_disk_bytes": 6442450944,
+  "host_tests_passed": 106,
+  "guests": {
+    "6.5.22f": {
+      "windows": [
+        "Icon Catalog:",
+        "Toolchest",
+        "winterm",
+        "xclock"
+      ],
+      "dimensions": "1280x1024",
+      "winterm": "NATIVE_HANDOFF pid=2476 sid=2476 pgid=2476 tpgid=2476 uid=1001 euid=1001 gid=100 egid=100 groups=2 tty=/dev/pts/1 rows=24 cols=80",
+      "saver": {
+        "demo_changed_pixels": [
+          50258,
+          58265
+        ],
+        "idle_changed_pixels": [
+          63247,
+          69662
+        ],
+        "idle_timeout_seconds": 8,
+        "key_wake": "Space (Demo and idle)",
+        "original_timeout_seconds": 600,
+        "disabled_timeout_seconds": 0,
+        "logout_to_xdm": true,
+        "next_login_idle_changed_pixels": [
+          45554,
+          47881
+        ]
+      },
+      "native_ctwm": true,
+      "release": "6.5.22f",
+      "cpu": "r4400",
+      "receipt": "6.5.22f 0490ae2e55c887e8952910071dba043e7d39b047c722f28635079afe6e5b5ac8 5eb259e3059932c4710e4fabd24fd3a02d1a481c5a6d1a9942f72b6d8650a960",
+      "installer_sha256": "1cf1601db1c2da46a3c5b5195e0ebc98d397f236ed9fb34fd7c0cfe9ed27f07f",
+      "donor_sha256": "b4fff76ffa0ca00c0a90da1c94a3eb41f5f6ba4cb13c0af258b4acca4ad95c41",
+      "iris_sha256": "9a800615984088c1d51e6e716f5bdb5e1599caea0473a971207618f73e08fda7",
+      "clean_poweroff": true
+    },
+    "6.5.30f": {
+      "windows": [
+        "Icon Catalog:",
+        "Toolchest",
+        "winterm",
+        "xclock"
+      ],
+      "dimensions": "1280x1024",
+      "winterm": "NATIVE_HANDOFF pid=1130 sid=1130 pgid=1130 tpgid=1130 uid=1001 euid=1001 gid=100 egid=100 groups=2 tty=/dev/pts/1 rows=24 cols=80",
+      "saver": {
+        "demo_changed_pixels": [
+          27559,
+          49046
+        ],
+        "idle_changed_pixels": [
+          30707,
+          45307
+        ],
+        "idle_timeout_seconds": 8,
+        "key_wake": "Space (Demo and idle)",
+        "original_timeout_seconds": 600,
+        "disabled_timeout_seconds": 0,
+        "logout_to_xdm": true,
+        "next_login_idle_changed_pixels": [
+          7532,
+          5219
+        ]
+      },
+      "native_ctwm": true,
+      "release": "6.5.30f",
+      "cpu": "r5000",
+      "receipt": "6.5.30f 0490ae2e55c887e8952910071dba043e7d39b047c722f28635079afe6e5b5ac8 1c85f4668fbbf5743fa5b98ea911e601a73645de848eeff88577a871acb38f1f",
+      "installer_sha256": "1cf1601db1c2da46a3c5b5195e0ebc98d397f236ed9fb34fd7c0cfe9ed27f07f",
+      "donor_sha256": "339f74457dfbb06813681ab5db2ccfdd29d394e8a02dfcdcd6c6ac7c22a836db",
+      "iris_sha256": "9a800615984088c1d51e6e716f5bdb5e1599caea0473a971207618f73e08fda7",
+      "clean_poweroff": true
+    }
+  }
+}

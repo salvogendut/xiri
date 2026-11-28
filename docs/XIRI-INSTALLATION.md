@@ -2,6 +2,11 @@
 
 ## Standard installation
 
+The current Indy installer is `.work/images/xiribsd-11.99.11-01-2026-11-28.iso`
+(NetBSD 11.99.11, XiriBSD revision 01). It includes the native kernel, module,
+desktop runtime and `xiriprep`. Supply your IRIX disk after installation.
+[Installer contents and checks](results/2026-11-28-indy-installer.md)
+
 1. Install the native XiriBSD ISO on a blank disk and boot the installed
    system. The same native ISO serves both IRIX release lines. [Indy install guide](INSTALL-INDY-PRISMATIC.md)
 2. Mount the media containing your installed IRIX donor image. As root on

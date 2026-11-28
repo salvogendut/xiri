@@ -7,8 +7,9 @@ SuperIRIX Indy 6.5.22m. The
 machine uses one donor release. The examples select `xiritest`. Substitute
 your ordinary NetBSD login, or repeat the command to prepare another user.
 
-The `xiribsd-indy-operator-11.99.11.iso` installer includes the account
-shutdown update and all five desktop profiles. [Continue to the donor import](#read-a-donor-from-external-media)
+The November 28 Indy installer includes all five desktop profiles, the
+account shutdown update, optical media support and the desktop microphone
+action. [Install the current ISO](INSTALL-INDY-PRISMATIC.md) · [Continue to the donor import](#read-a-donor-from-external-media)
 
 ## Use the tools CD on an existing Indy
 
