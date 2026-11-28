@@ -95,3 +95,8 @@ include the complete matrix and retained harness diagnostics. The independent
 `qualify-irix-mmap-shared.py` checks every record word and backing byte; it
 requires LP64 CI/ordinary and o32 CI runs. Original `inst` then reaches the
 [new sproc boundary](../../docs/results/2026-11-01-irix-installer-shared.md).
+
+`build-recorder-arena.sh` builds the n32 probe for the SGI recorder. With a
+5,232-byte file argument it measures signal-mask writes to shared mappings,
+file growth and `msync`. Run it without arguments to exercise the recorder's
+pollable semaphore across a fork. [Commands and results for both Indys](../../docs/results/2026-11-28-indy-mediarecorder.md#repeat-the-comparison)

@@ -58,9 +58,9 @@ Tracing a double-click on each release confirmed that the SGI icon started
 `mediarecorder`. Running the same `-media audio -jack Microphone` action
 from a shell showed that `libmovierecord` failed to create a shared
 arena, asserted in `events.c` at line 580, and exited with status 134 before
-opening a recorder window. The [later Media Recorder test](2026-11-28-indy-mediarecorder.md)
-traces this failure on the updated kernel. The command-line recording results above apply
-independently. [MediaTools results](2026-11-27-indy-media-devices.md)
+opening a recorder window. The updated module fixes that abort. The follow-up
+records a saved take on 6.5.22f and a graphics requirement on 6.5.30f.
+[Media Recorder retest](2026-11-28-indy-mediarecorder.md#desktop-retest)
 
 To apply just this desktop change to a guest already running the recording
 kernel, install the updated script as root and log back in as the desktop user.

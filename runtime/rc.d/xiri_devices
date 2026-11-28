@@ -7,6 +7,16 @@ name=xiri_devices
 rcvar=$name
 start_cmd=xiri_devices_start
 stop_cmd=:
+xiri_semaphore_device()
+{
+    local dir=/emul/irix/dev node=/emul/irix/dev/usemaclone
+    [ -d "$dir" ] || return 0
+    sysctl -n kern.drivers | grep -q ' xiriusema]' || return 0
+    [ ! -L "$dir" ] && [ ! -L "$node" ] || return 1
+    [ ! -e "$node" ] || [ -c "$node" ] || return 1
+    mknod -r -m 666 "$node" c xiriusema 0
+}
+
 xiri_audio_devices()
 {
     [ -c /dev/audioctl0 ] && [ "$(audioctl -d /dev/audioctl0 -n name)" = HAL2 ] || return 0
@@ -56,6 +66,7 @@ xiri_cdrom_device()
 xiri_devices_start()
 {
     /usr/local/sbin/xiri-sync-users || return 1
+    xiri_semaphore_device || return 1
     xiri_audio_devices || return 1
     xiri_cdrom_device || warn "Could not prepare the IRIX CD-ROM device alias"
     # Run before login/PTY allocation. A service restart must not remount PTYs.

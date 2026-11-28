@@ -22,7 +22,7 @@ selectors are handled when returning to native NetBSD.
 | Entry point | Owner and lifetime |
 | --- | --- |
 | Native `rpcbind` rc.d service | System portmapper; survives desktop logout |
-| `xiri_devices` rc.d service | Refreshes IRIX account lookup tables and prepares native/IRIX PTY aliases before LOGIN |
+| `xiri_devices` rc.d service | Refreshes IRIX account tables and prepares PTYs, audio and optical aliases, and the IRIX semaphore device before LOGIN |
 | `xiri_famd` rc.d service | Owns one native FAM v1 daemon and its PID file; survives logout |
 | `xiri_cdrom` rc.d service | Mounts ISO 9660 data CDs read-only at `/CDROM` and publishes the tray state for each desktop |
 | Native `xdm` rc.d service (opt-in) | Starts Xorg, authenticates the native account, supplies X authority and resets the display after logout |
@@ -112,6 +112,10 @@ xiri_famd=YES
 Reboot after initial deployment so PTY setup precedes login/PTY allocation.
 `xiri_devices` uses `/var/run/xiri-pty-ready` to prevent repeated remounts in
 the same boot. Re-running it refreshes account names without remounting PTYs.
+When the loaded module registers `xiriusema`, the service creates
+`/emul/irix/dev/usemaclone` using the driver's assigned character major.
+Each open creates a separate pollable queue, including for an ordinary
+desktop user. [Media Recorder and the semaphore check](../docs/results/2026-11-28-indy-mediarecorder.md#desktop-retest)
 FAM appends to `/var/log/xiri-fam.log` by default. Set `xiri_famd_logfile`
 in `/etc/rc.conf.d/xiri_famd` to use another file at the next service start.
 Its parent directory must exist and be writable by the service launcher.

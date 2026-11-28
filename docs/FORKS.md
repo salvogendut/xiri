@@ -119,6 +119,12 @@ build passed 175 GUI-core tests (one ignored), 29 GUI frontend tests, and
 boundary check also passed. The paired recorder comparisons used the prior
 qualified Indy binary at `65039d90`. [Recorder measurements](results/2026-11-28-indy-mediarecorder.md)
 
+The November 28 recorder fix rechecked IRIS upstream at `8f07a533`.
+IRIS `xiri` at `32fe08d5` already contains it. The original-IRIX comparisons
+and paired Xiri desktop tests used the same `65039d90` emulator. The changes
+are in the NetBSD personality and the Xiri device startup service.
+[Arena, pollable semaphore and desktop results](results/2026-11-28-indy-mediarecorder.md#desktop-retest)
+
 The CD Player cycle fetched IRIS upstream on November 27 and again on
 November 28. Both checks found `afaf7a5504377848c413dc6ac33a65b60dfe574b`
 in `xiri` at `65039d90`. That build supplied the original SGI drive trace,

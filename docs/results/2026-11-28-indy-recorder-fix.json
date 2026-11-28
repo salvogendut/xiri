@@ -1,0 +1,314 @@
+{
+  "netbsd": "b187ffa60fd6a35798b2f1bcf1f2fc136526e678",
+  "netbsd_base": "51ae5f2886ef1cd3c3089e8aabf6fcce3c4de740",
+  "module_sha256": "6470fb250ac1cc9d90006629f0ff8a305e4d036fd722c032287dc29887c0ef8f",
+  "fixture_sha256": "367f20c8dbc9c787de1a71aee179ab67952e8c9fc82f1cfd6725e7738f88dce6",
+  "emulator": "65039d90",
+  "emulator_sha256": "9a800615984088c1d51e6e716f5bdb5e1599caea0473a971207618f73e08fda7",
+  "kernel_sha256": "d57eede0a7b3c7ff84ca5a630116653ed60a0410b44a861dc1898b6e10c3e4b8",
+  "original_irix": {
+    "6.5.22f": {
+      "machine": "Indy R4400",
+      "disk": "b4fff76ffa0ca00c0a90da1c94a3eb41f5f6ba4cb13c0af258b4acca4ad95c41",
+      "arena": {
+        "signature": 1297237315,
+        "stack": 0,
+        "in_file": 0,
+        "size_before": 5232,
+        "first_write": 0,
+        "size_after": 12288,
+        "after_store": 0,
+        "size_after_store": 12288,
+        "clone_fd": 4,
+        "ms_invalidate": 0,
+        "ms_flag_8": 0,
+        "cross_page": 0,
+        "size_cross": 28672,
+        "ordinary_eof": -14,
+        "size_ordinary": 28672,
+        "bad_address": -14
+      },
+      "fork_exit": 0
+    },
+    "6.5.30f": {
+      "machine": "O2 R5000",
+      "disk": "339f74457dfbb06813681ab5db2ccfdd29d394e8a02dfcdcd6c6ac7c22a836db",
+      "arena": {
+        "signature": 1297237315,
+        "stack": 0,
+        "in_file": 0,
+        "size_before": 5232,
+        "first_write": 0,
+        "size_after": 12288,
+        "after_store": 0,
+        "size_after_store": 12288,
+        "clone_fd": 4,
+        "ms_invalidate": 0,
+        "ms_flag_8": 0,
+        "cross_page": 0,
+        "size_cross": 28672,
+        "ordinary_eof": -14,
+        "size_ordinary": 28672,
+        "bad_address": -14
+      },
+      "fork_exit": 0
+    }
+  },
+  "releases": {
+    "6.5.22f": {
+      "cpu": "R4400",
+      "desktop_user": "xiritest",
+      "base_sha256": "53fa1e2006e19dfcbe8950b919de447c043487e84b06710bfc3fea86119f382b",
+      "arena": {
+        "signature": 1297237315,
+        "stack": 0,
+        "in_file": 0,
+        "size_before": 5232,
+        "first_write": 0,
+        "size_after": 16384,
+        "after_store": 0,
+        "size_after_store": 16384,
+        "clone_fd": 4,
+        "ms_invalidate": 0,
+        "ms_flag_8": -22,
+        "cross_page": 0,
+        "size_cross": 32768,
+        "ordinary_eof": -22,
+        "size_ordinary": 32768,
+        "bad_address": -14
+      },
+      "fork_exit": 0,
+      "xorg": [
+        "SERVER_OVERLAY_VISUALS:  not found.",
+        "  depth of root window:    24 planes",
+        "  number of visuals:    241"
+      ],
+      "desktop_windows": [
+        "0x18000d8 \"Media Recorder\": (\"mediarecorder\" \"Mediarecorder\")  576x360+0+0  +32+32",
+        "     0x1800006 \"mediarecorder\": (\"mediarecorder\" \"Mediarecorder\")  1x1+640+512  +640+512",
+        "     0x1800001 \"mediarecorder\": (\"mediarecorder\" \"Mediarecorder\")  1x1+0+0  +0+0"
+      ],
+      "early_wake_counts": [
+        1,
+        2,
+        1,
+        0,
+        -1
+      ],
+      "early_wake_results": [
+        -11,
+        -11,
+        -11,
+        -11,
+        0
+      ],
+      "raw_extra_wake_errno": -11,
+      "sound_editor": {
+        "worker_pid": 3069,
+        "aiff": {
+          "frames": 157920,
+          "rate_hz": 48000,
+          "channels": [
+            {
+              "frequency_hz": 440,
+              "amplitude": 12000,
+              "other_tone": 0
+            },
+            {
+              "frequency_hz": 440,
+              "amplitude": 12000,
+              "other_tone": 0
+            }
+          ],
+          "bytes": 631804,
+          "sha256": "4909899d4efcd81fb077447235735fd260140e8ea5c2822999e64b2bba6e473c"
+        },
+        "speaker": {
+          "frames": 122160,
+          "rate_hz": 48000,
+          "channels": [
+            {
+              "frequency_hz": 440,
+              "amplitude": 12000,
+              "other_tone": 0
+            },
+            {
+              "frequency_hz": 440,
+              "amplitude": 12000,
+              "other_tone": 0
+            }
+          ]
+        },
+        "cpu": "r4400",
+        "base_sha256": "53fa1e2006e19dfcbe8950b919de447c043487e84b06710bfc3fea86119f382b",
+        "module_sha256": "6470fb250ac1cc9d90006629f0ff8a305e4d036fd722c032287dc29887c0ef8f",
+        "kernel_sha256": "d57eede0a7b3c7ff84ca5a630116653ed60a0410b44a861dc1898b6e10c3e4b8",
+        "share_probe": false
+      },
+      "after_stop": [
+        "-rw-------  1 xiritest  users  655064 Nov 28 08:15 /usr/people/xiritest/audio1.aiff",
+        "           0x18000d8 \"Media Recorder\": (\"mediarecorder\" \"Mediarecorder\")  576x360+0+0  +32+32",
+        "     0x1800006 \"mediarecorder\": (\"mediarecorder\" \"Mediarecorder\")  1x1+640+512  +640+512",
+        "     0x1800001 \"mediarecorder\": (\"mediarecorder\" \"Mediarecorder\")  1x1+0+0  +0+0"
+      ],
+      "media_recorder": {
+        "saved": {
+          "channels": 2,
+          "frames": 163735,
+          "rate_hz": 44100,
+          "channel_metrics": [
+            {
+              "rising_crossing_hz": 441.1,
+              "amplitude_440_middle_100ms": 11995,
+              "amplitude_880_middle_100ms": 4,
+              "peak": 12000
+            },
+            {
+              "rising_crossing_hz": 441.1,
+              "amplitude_440_middle_100ms": 11995,
+              "amplitude_880_middle_100ms": 4,
+              "peak": 12000
+            }
+          ],
+          "identical_channels": true,
+          "bytes": 655064,
+          "sha256": "55021730e13d19f8007c58343ae063c6998e4a9164e2653909ca5a91fbd1d7c0"
+        },
+        "speaker": [
+          {
+            "channels": 2,
+            "frames": 186368,
+            "rate_hz": 48000,
+            "channel_metrics": [
+              {
+                "rising_crossing_hz": 441.2,
+                "amplitude_440_middle_100ms": 11991,
+                "amplitude_880_middle_100ms": 4,
+                "peak": 12000
+              },
+              {
+                "rising_crossing_hz": 441.2,
+                "amplitude_440_middle_100ms": 11991,
+                "amplitude_880_middle_100ms": 4,
+                "peak": 12000
+              }
+            ],
+            "identical_channels": true
+          }
+        ],
+        "input_rate_hz": 48000,
+        "input_left_right_hz": [
+          440,
+          880
+        ],
+        "input_amplitude": 12000,
+        "sfplay_status": 0,
+        "control_with_44100_hz_input": {
+          "saved_sha256": "390f153e8c0c3bfb9771c3f2f4d832da852386db8bedb1fdba30d218e6232cbe",
+          "measured_left_hz": 482.3
+        }
+      }
+    },
+    "6.5.30f": {
+      "cpu": "R5000",
+      "desktop_user": "xiritest",
+      "base_sha256": "a2e3272266c362d1db236bb9413f196ca533c03f55213fc6bbfa5274ddd66d26",
+      "arena": {
+        "signature": 1297237315,
+        "stack": 0,
+        "in_file": 0,
+        "size_before": 5232,
+        "first_write": 0,
+        "size_after": 16384,
+        "after_store": 0,
+        "size_after_store": 16384,
+        "clone_fd": 4,
+        "ms_invalidate": 0,
+        "ms_flag_8": -22,
+        "cross_page": 0,
+        "size_cross": 32768,
+        "ordinary_eof": -22,
+        "size_ordinary": 32768,
+        "bad_address": -14
+      },
+      "fork_exit": 0,
+      "xorg": [
+        "SERVER_OVERLAY_VISUALS:  not found.",
+        "  depth of root window:    24 planes",
+        "  number of visuals:    241"
+      ],
+      "desktop_windows": [
+        "0x1800011 \"mediarecorder\": (\"fatalErrorDialog_popup\" \"Mediarecorder\")  508x154+0+0  +387+436",
+        "     0x1800006 \"mediarecorder\": (\"mediarecorder\" \"Mediarecorder\")  1x1+640+512  +640+512",
+        "     0x1800001 \"mediarecorder\": (\"mediarecorder\" \"Mediarecorder\")  1x1+0+0  +0+0"
+      ],
+      "early_wake_counts": [
+        1,
+        2,
+        1,
+        0,
+        -1
+      ],
+      "early_wake_results": [
+        -11,
+        -11,
+        -11,
+        -11,
+        0
+      ],
+      "raw_extra_wake_errno": -11,
+      "sound_editor": {
+        "worker_pid": 325,
+        "aiff": {
+          "frames": 156000,
+          "rate_hz": 48000,
+          "channels": [
+            {
+              "frequency_hz": 440,
+              "amplitude": 12000,
+              "other_tone": 0
+            },
+            {
+              "frequency_hz": 440,
+              "amplitude": 12000,
+              "other_tone": 0
+            }
+          ],
+          "bytes": 624124,
+          "sha256": "f7d3a4319a13d713ac5e13596eb527a82e2d8939fdfd73f85396ba55eb850382"
+        },
+        "speaker": {
+          "frames": 122724,
+          "rate_hz": 48000,
+          "channels": [
+            {
+              "frequency_hz": 440,
+              "amplitude": 12000,
+              "other_tone": 0
+            },
+            {
+              "frequency_hz": 440,
+              "amplitude": 12000,
+              "other_tone": 0
+            }
+          ]
+        },
+        "cpu": "r5000",
+        "base_sha256": "a2e3272266c362d1db236bb9413f196ca533c03f55213fc6bbfa5274ddd66d26",
+        "module_sha256": "6470fb250ac1cc9d90006629f0ff8a305e4d036fd722c032287dc29887c0ef8f",
+        "kernel_sha256": "d57eede0a7b3c7ff84ca5a630116653ed60a0410b44a861dc1898b6e10c3e4b8",
+        "share_probe": false
+      },
+      "audio_only_windows": [
+        "0x1800011 \"mediarecorder\": (\"fatalErrorDialog_popup\" \"Mediarecorder\")  508x154+0+0  +387+436",
+        "     0x1800006 \"mediarecorder\": (\"mediarecorder\" \"Mediarecorder\")  1x1+640+512  +640+512",
+        "     0x1800001 \"mediarecorder\": (\"mediarecorder\" \"Mediarecorder\")  1x1+0+0  +0+0"
+      ],
+      "media_recorder": {
+        "desktop_microphone": "fatal overlay-plane dialog",
+        "allowmenu_audio": "same dialog"
+      }
+    }
+  },
+  "update_disc_sha256": "1aa9d763c5c059fdde6b3a2e3393930d60ab6ca44bd62caf6173695af4310af5"
+}
