@@ -43,7 +43,8 @@ def runtime_files():
               '/usr/people/xiritest/.xsession',
               '/etc/ttys','/etc/motd']
     paths += ['/usr/local/libexec/xiri/stop-sessions', '/usr/local/libexec/xiri/cdromd',
-              '/usr/local/libexec/xiri/cd-player.sh']
+              '/usr/local/libexec/xiri/cd-player.sh', '/usr/local/libexec/xiri/recorder-microphone',
+              '/usr/local/libexec/xiri/recorder-audio.so', '/usr/local/share/xiri/microphone']
     paths += ['/etc/rc.d/'+s for s in ('xiri_devices','xiri_famd','xiri_sessions','xiri_cdrom')]
     paths += ['/etc/rc.conf.d/'+s for s in ('xiri_devices','xiri_famd','xiri_sessions','xiri_cdrom','rpcbind','xdm')]
     return paths

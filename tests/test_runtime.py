@@ -15,7 +15,7 @@ class RuntimeInstallTests(unittest.TestCase):
         self.root = Path(self.temporary.name)
         self.build = self.root/'build'
         self.build.mkdir()
-        for name in ['session-guard', 'x11-check', 'shell-handoff', 'save-session', 'stop-sessions', 'drop-bridge', 'desktop-sound', 'cdromd']:
+        for name in ['session-guard', 'x11-check', 'shell-handoff', 'save-session', 'stop-sessions', 'drop-bridge', 'desktop-sound', 'cdromd', 'recorder-audio.so']:
             (self.build/name).write_bytes(b'fixture executable\n')
         self.stage = self.root/'stage'
 
@@ -58,6 +58,9 @@ class RuntimeInstallTests(unittest.TestCase):
         self.assertEqual(cdrom.read_text(), 'xiri_cdrom=YES\n')
         self.assertTrue(os.access(self.stage/'etc/rc.d/xiri_cdrom', os.X_OK))
         self.assertTrue(os.access(self.stage/'usr/local/libexec/xiri/cdromd', os.X_OK))
+        self.assertTrue(os.access(self.stage/'usr/local/libexec/xiri/recorder-microphone', os.X_OK))
+        self.assertEqual((self.stage/'usr/local/libexec/xiri/recorder-audio.so').stat().st_mode & 0o777, 0o555)
+        self.assertEqual((self.stage/'usr/local/share/xiri/microphone').read_text().strip(), 'XiriMicrophone')
         self.assertTrue(os.access(self.stage/'usr/local/libexec/xiri/cd-player.sh', os.X_OK))
         self.assertEqual((self.stage/'etc/rc.conf.d/xiri_sessions').read_text(), 'xiri_sessions=YES\n')
         files = [rpc, cdrom, self.stage/'etc/rc.conf.d/xiri_famd', self.stage/'etc/rc.conf.d/xiri_sessions', self.stage/'etc/xiri/fam.conf',

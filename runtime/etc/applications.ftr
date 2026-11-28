@@ -16,6 +16,16 @@ TYPE XiriGEditExecutable
         }
     }
 
+# Keep the vendor's device name, artwork and localized label.
+TYPE XiriAudioMicrophone
+    MATCH glob("microphone") && string(0,14) == "XiriMicrophone";
+    LEGEND :756:microphone
+    CMD OPEN /usr/local/libexec/xiri/recorder-microphone
+    CMD ALTOPEN /usr/local/libexec/xiri/recorder-microphone
+    ICON {
+        include("/emul/irix/usr/lib/filetype/devices/iconlib/microphone.fti");
+    }
+
 # The native optical service publishes one of these markers for cd0.
 TYPE XiriCDROMEmpty
     MATCH glob("CDROM") && string(0,12) == "XiriCD-empty";

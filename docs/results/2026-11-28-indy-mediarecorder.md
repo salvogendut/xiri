@@ -1,9 +1,11 @@
 # SGI Media Recorder and the Indy desktop microphone
 
-On the Xiri Indy with 6.5.22f, double-clicking the microphone opens SGI
+With the kernel and module update alone on the Xiri Indy with 6.5.22f, double-clicking the microphone opens SGI
 Media Recorder and the user can save a take. On 6.5.30f, the same action
 opens a dialog asking for graphics overlay planes. Both releases pass the
-shared-file operation that previously aborted the program. [Desktop retest](#desktop-retest)
+shared-file operation that previously aborted the program. The subsequent
+desktop update enables the 6.5.30f microphone action as well.
+[Desktop retest](#desktop-retest) · [Audio-only fix and paired recordings](2026-11-28-indy-recorder-overlays.md)
 
 ## Original comparison and failure
 

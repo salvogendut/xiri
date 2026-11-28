@@ -59,7 +59,8 @@ def installed_runtime(data, work):
     script = source / 'install.sh'
     # Qualified November images use the layout before the optical service.
     old_layout = '8059dba97ee5d00a07fa44c550f4130cdbc2835e5bb8fb762c190f2cb298185f'
-    if sha(script.read_bytes()) not in (old_layout, sha((ROOT / 'runtime/install.sh').read_bytes())):
+    optical_layout = '14581edc041a27bf24efa4690c4ee8daacc8d880ccb6f80cbf4be080ac19e486'
+    if sha(script.read_bytes()) not in (old_layout, optical_layout, sha((ROOT / 'runtime/install.sh').read_bytes())):
         raise ValueError('Runtime installation layout differs. Review its file mapping before updating.')
     subprocess.run(['sh', script], env=dict(os.environ, DESTDIR=str(dest), BUILDDIR='build'), check=True)
     # install-shared installs famd separately. Live configuration and the

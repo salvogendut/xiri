@@ -51,11 +51,26 @@ if audiocfg list >"$job/audio-inventory" 2>"$job/device-icons.err"; then
             exit
         }
     ' "$job/audio-inventory" >"$job/device-icons"
+    # SGI's device model handles double-click internally. Use a filetype
+    # action for the 6.5.30f recorder on displays without overlay planes.
+    mic="$hosticons/Icons/microphone"
+    marker=/usr/local/share/xiri/microphone
+    audio_action=no
+    if test -s "$job/device-icons" && test -r "$marker" &&
+        /usr/local/libexec/xiri/recorder-microphone --needs-audio-action; then
+        audio_action=yes
+        : >"$job/device-icons"
+    elif test -L "$mic" && test "$(readlink "$mic")" = "$marker"; then
+        rm "$mic"
+    fi
     if test -s "$job/device-icons" || test -f "$hosticons/XiriMicrophoneDB"; then
         /emul/irix/usr/sbin/bgicons -icondir "$hosticons/Icons" \
             -icondb "$hosticons/XiriMicrophoneDB" <"$job/device-icons" \
             >>"$job/bgicons.out" 2>>"$job/device-icons.err" ||
             echo 'Could not update the microphone desktop icon.' >&2
+    fi
+    if test "$audio_action" = yes && test ! -e "$mic" && test ! -L "$mic"; then
+        ln -s "$marker" "$mic"
     fi
 fi
 # Keep each vendor logout entry and place the workstation action alongside it.

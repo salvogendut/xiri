@@ -1,0 +1,121 @@
+{
+  "emulator": {
+    "revision": "65039d90",
+    "sha256": "9a800615984088c1d51e6e716f5bdb5e1599caea0473a971207618f73e08fda7"
+  },
+  "original": {
+    "release": "6.5.30f",
+    "machine": "O2 IP32",
+    "chd_sha256": "339f74457dfbb06813681ab5db2ccfdd29d394e8a02dfcdcd6c6ac7c22a836db",
+    "server": "Xsgi",
+    "SERVER_OVERLAY_VISUALS": [
+      37,
+      1,
+      0,
+      1
+    ],
+    "audio_aiff_bytes": 414220,
+    "audio": {
+      "requests": 5216,
+      "overlay_property_reads": 2,
+      "created_window_visuals": {
+        "CopyFromParent": 83,
+        "VIS 00000020": 8
+      },
+      "overlay_colormaps": 0,
+      "overlay_window_requests": {}
+    },
+    "adjustable_screen_selection": {
+      "requests": 2706,
+      "overlay_property_reads": 2,
+      "created_window_visuals": {
+        "CopyFromParent": 111,
+        "VIS 00000020": 10,
+        "VIS 00000035": 1,
+        "VIS 00000025": 1
+      },
+      "overlay_colormaps": 1,
+      "overlay_window_requests": {
+        "MapSubwindows": 1,
+        "MapWindow": 1,
+        "ConfigureWindow": 2
+      }
+    }
+  },
+  "xiri": {
+    "6.5.22f": {
+      "machine": "Indy R4400",
+      "base_chd_sha256": "53fa1e2006e19dfcbe8950b919de447c043487e84b06710bfc3fea86119f382b",
+      "mediarecorder_sha256": "e9538469f9384cde228911d7cd0583430c3b0d66acac104642ea3bdf8909efa9",
+      "SERVER_OVERLAY_VISUALS": null,
+      "user": "xiritest",
+      "launch": "desktop microphone double-click",
+      "action": "vendor-device",
+      "aiff_bytes": 579784,
+      "take": {
+        "file": {
+          "frames": 144915,
+          "rate_hz": 44100,
+          "channels": 2,
+          "identical": true,
+          "amplitude_440_hz": 9965,
+          "amplitude_880_hz": 110
+        },
+        "speaker": {
+          "frames": 165888,
+          "rate_hz": 48000,
+          "channels": 2,
+          "identical": true,
+          "amplitude_440_hz": 9963,
+          "amplitude_880_hz": 111
+        },
+        "sha256": "e59e44d9443082a1f2936e0d30783f8ef182c90e578b8180d7b4ae879e2c681f"
+      }
+    },
+    "6.5.30f": {
+      "machine": "Indy R5000",
+      "base_chd_sha256": "a2e3272266c362d1db236bb9413f196ca533c03f55213fc6bbfa5274ddd66d26",
+      "mediarecorder_sha256": "4be1a050ff4f665b324d41ac1bb5412f09adccaea03c50d4fc97496a97f8bcfa",
+      "SERVER_OVERLAY_VISUALS": null,
+      "user": "xiritest",
+      "launch": "desktop microphone double-click",
+      "action": "audio-only",
+      "aiff_bytes": 707756,
+      "take": {
+        "file": {
+          "frames": 176908,
+          "rate_hz": 44100,
+          "channels": 2,
+          "identical": true,
+          "amplitude_440_hz": 11995,
+          "amplitude_880_hz": 6
+        },
+        "speaker": {
+          "frames": 198696,
+          "rate_hz": 48000,
+          "channels": 2,
+          "identical": true,
+          "amplitude_440_hz": 10035,
+          "amplitude_880_hz": 95
+        },
+        "sha256": "0d99fceb04c47c05dac9591ffca657310c8608b8548332c8d2418c9f547ec942"
+      },
+      "unrestricted_launch": "SGI overlay-plane dialog"
+    }
+  },
+  "update_disc": {
+    "name": "xiri-indy-microphone-update.iso",
+    "sha256": "64a4336a66527c98e86494835ecfd53d69ee52dc2dd4d3f779bbf43494f14ba4",
+    "files": {
+      "applications.ftr": "9dccbf1cb577adfe0c792f8a9ec4d116df899d73c835c99432dfaf70930f9bbc",
+      "desktop-clients.sh": "3695e667797d209ab1cc52ac8b3c01942e574aeeb7833ae1715d3464f7685ee2",
+      "devices": "1b5017284eaae4b4160f03bdb18be37af068fea7815b5702b79a95a711d46113",
+      "microphone": "fb87c881334adbc0fbf593c7db16112347b0bb69f4bad383ebcb30e330600236",
+      "module": "6470fb250ac1cc9d90006629f0ff8a305e4d036fd722c032287dc29887c0ef8f",
+      "netbsd": "d57eede0a7b3c7ff84ca5a630116653ed60a0410b44a861dc1898b6e10c3e4b8",
+      "netbsd.boot": "3c2b9626629eb5d0ee25009edb2c61a85346b62ba1c8234dbb0ac5d12f76088f",
+      "recorder-audio.so": "f261a0152f5ee1a98af464a39615999271baab10256ab57b0bac28944f101244",
+      "recorder-microphone": "1ae082bac476d25cc41301f8fd3197bc4ac9593ff73aebbf3f53d77b7df5b761"
+    }
+  }
+}

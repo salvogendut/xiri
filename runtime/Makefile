@@ -5,7 +5,7 @@ WARN=-Wall -Wextra -Werror
 X11_CPPFLAGS?=-I/usr/X11R7/include
 X11_LDFLAGS?=-L/usr/X11R7/lib -Wl,-rpath,/usr/X11R7/lib
 BUILDDIR?=build
-PROGRAMS=$(BUILDDIR)/session-guard $(BUILDDIR)/x11-check $(BUILDDIR)/shell-handoff $(BUILDDIR)/save-session $(BUILDDIR)/stop-sessions $(BUILDDIR)/drop-bridge $(BUILDDIR)/desktop-sound $(BUILDDIR)/cdromd
+PROGRAMS=$(BUILDDIR)/session-guard $(BUILDDIR)/x11-check $(BUILDDIR)/shell-handoff $(BUILDDIR)/save-session $(BUILDDIR)/stop-sessions $(BUILDDIR)/drop-bridge $(BUILDDIR)/desktop-sound $(BUILDDIR)/cdromd $(BUILDDIR)/recorder-audio.so
 all: $(PROGRAMS)
 $(BUILDDIR):
 	mkdir -p $(BUILDDIR)
@@ -33,6 +33,11 @@ $(BUILDDIR)/desktop-sound: libexec/desktop-sound.c
 $(BUILDDIR)/cdromd: libexec/cdromd.c
 	mkdir -p $(BUILDDIR)
 	$(CC) $(CFLAGS) $(WARN) libexec/cdromd.c -o $@ -lutil
+$(BUILDDIR)/recorder-audio.so: libexec/recorder-audio.c libexec/recorder-audio.ld
+	mkdir -p $(BUILDDIR)
+	$(CC) $(CFLAGS) $(WARN) -EB -mabi=n32 -march=mips3 -mabicalls -G0 -fPIC \
+	    -ffreestanding -fno-stack-protector -shared -nostdlib -Wl,-m,elf32btsmip,--oformat,elf32-ntradbigmips \
+	    -Wl,--build-id=none,-T,libexec/recorder-audio.ld,-soname,recorder-audio.so libexec/recorder-audio.c -o $@
 install: all
 	BUILDDIR=$(BUILDDIR) sh ./install.sh
 clean:

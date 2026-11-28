@@ -116,6 +116,14 @@ When the loaded module registers `xiriusema`, the service creates
 `/emul/irix/dev/usemaclone` using the driver's assigned character major.
 Each open creates a separate pollable queue, including for an ordinary
 desktop user. [Media Recorder and the semaphore check](../docs/results/2026-11-28-indy-mediarecorder.md#desktop-retest)
+
+On Indy, double-click the desktop microphone and use Record and Stop to save
+a take in the user's home directory. For the 6.5.30f recorder on Newport/Xorg,
+the desktop selects SGI's Audio menu and loads `recorder-audio.so` for that
+launch. Install the library executable (mode 555) so the NetBSD IRIX module
+can map it. The filetype action uses NetBSD's `/rescue/sh` when invoked by
+SGI File Manager. [Setup, screenshots and replay checks](../docs/results/2026-11-28-indy-recorder-overlays.md)
+
 FAM appends to `/var/log/xiri-fam.log` by default. Set `xiri_famd_logfile`
 in `/etc/rc.conf.d/xiri_famd` to use another file at the next service start.
 Its parent directory must exist and be writable by the service launcher.

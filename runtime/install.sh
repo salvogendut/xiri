@@ -14,6 +14,7 @@ install -m 444 etc/xiri-logo.xpm "$stage/usr/local/share/xiri/xdm-logo.xpm"
 install -m 444 etc/desktop-Xresources "$stage/usr/local/share/xiri/desktop-Xresources"
 install -m 444 etc/netbsd.ftr "$stage/usr/local/share/xiri/netbsd.ftr"
 install -m 444 etc/applications.ftr "$stage/usr/local/share/xiri/applications.ftr"
+install -m 444 etc/microphone "$stage/usr/local/share/xiri/microphone"
 menu="$stage/usr/local/share/xiri/toolchest.chestrc"
 # The original v6 template has POSIX cksum 1301449515 and is 517 bytes.
 if test ! -L "$menu" && { test ! -e "$menu" ||
@@ -33,7 +34,8 @@ done
 for name in xiri-desktop xiri-session xiri-launch xiri-logout xiri-poweroff; do install -m 555 "bin/$name" "$stage/usr/local/bin/$name"; done
 for name in session-guard x11-check save-session stop-sessions drop-bridge desktop-sound cdromd; do install -m 555 "$build/$name" "$stage/usr/local/libexec/xiri/$name"; done
 install -m 555 "$build/shell-handoff" "$stage/usr/libexec/xiri-shell"
-for name in desktop-clients.sh setup-pty.sh cd-player.sh; do install -m 555 "libexec/$name" "$stage/usr/local/libexec/xiri/$name"; done
+install -m 555 "$build/recorder-audio.so" "$stage/usr/local/libexec/xiri/recorder-audio.so"
+for name in desktop-clients.sh setup-pty.sh cd-player.sh recorder-microphone; do install -m 555 "libexec/$name" "$stage/usr/local/libexec/xiri/$name"; done
 ln -snf /bin/sh "$stage/usr/local/libexec/xiri/command-shell"
 # IRIX scripts can execute native utilities. Those utilities do not apply the
 # emulation-root lookup to their pathname arguments (GIMP's user_install uses

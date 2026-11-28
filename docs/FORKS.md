@@ -125,6 +125,14 @@ and paired Xiri desktop tests used the same `65039d90` emulator. The changes
 are in the NetBSD personality and the Xiri device startup service.
 [Arena, pollable semaphore and desktop results](results/2026-11-28-indy-mediarecorder.md#desktop-retest)
 
+The microphone overlay comparison used the same emulator pin. During that
+cycle the IRIS fork merged upstream `3171ee07` at `01c50a40`. The frontend
+uses the shared snapshot implementation and retains its configured storage
+roots and paused operations. The snapshot, checkpoint and rollback library
+test filters passed (90, 5 and 5 respectively, with four snapshot tests
+ignored). All six snapshot schema tests passed.
+[IRIS merge](https://github.com/salvogendut/iris/commit/01c50a40)
+
 The CD Player cycle fetched IRIS upstream on November 27 and again on
 November 28. Both checks found `afaf7a5504377848c413dc6ac33a65b60dfe574b`
 in `xiri` at `65039d90`. That build supplied the original SGI drive trace,

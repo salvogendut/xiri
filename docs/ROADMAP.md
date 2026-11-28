@@ -33,15 +33,14 @@ their desktop preferences. [Fresh-install results](results/2026-11-27-xiriprep-d
    SGI Sound Editor records the Indy microphone, saves an AIFF, reopens it
    and plays it through HAL2 on both releases. SGI `sfrecord` and `sfplay`
    also pass, including selectable stereo input. Native capture passes during
-   simultaneous playback. Double-clicking the desktop microphone on 6.5.22f
-   opens Media Recorder. Record and Stop save an AIFF in the user's home,
-   and SGI `sfplay` reproduces the recorded tone at the Indy speaker output.
-   On 6.5.30f the recorder now reaches its graphics check and asks for overlay
-   planes even in audio-only mode. Compare the overlay visuals advertised by
-   original IRIX with those provided by Xorg on Newport. For video,
-   exercise preview and saving changing frames in `videoin` and `mediarecorder`.
+   simultaneous playback. On both releases the desktop microphone opens
+   SGI Media Recorder, saves an AIFF in the user's home and replays the
+   measured tone through SGI `sfplay`. The 6.5.30f microphone action uses
+   the recorder's audio-only menu. For video, compare live camera preview and
+   saved frames in `videoin` with original IRIX. Media Recorder's adjustable
+   screen selector also needs real overlay drawing on Newport/Xorg.
    For DAT, try `datman` and `datplayer` with a scratch tape.
-   [Media Recorder comparison](results/2026-11-28-indy-mediarecorder.md) ·
+   [Desktop microphone, screenshots and update disc](results/2026-11-28-indy-recorder-overlays.md) ·
    [Sound Editor recording and replay](results/2026-11-27-indy-soundeditor.md) ·
    [Shared-file growth and SGI clients](results/2026-11-27-indy-autogrow.md) ·
    [Two-track playback and SGI comparison](results/2026-11-27-indy-cd-audio.md) ·

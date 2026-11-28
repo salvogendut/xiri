@@ -1,0 +1,32 @@
+#!/rescue/sh
+# Desktop OPEN and ALTOPEN for SGI's microphone device.
+set -eu
+app=/emul/irix/usr/sbin/mediarecorder
+lib=/usr/local/libexec/xiri/recorder-audio.so
+needs_audio_action()
+{
+    test -x "$app" && test -x "$lib" || return 1
+    test "$(/usr/bin/sha256 -q "$app")" = 4be1a050ff4f665b324d41ac1bb5412f09adccaea03c50d4fc97496a97f8bcfa || return 1
+    property=$(LC_ALL=C /usr/X11R7/bin/xprop -root SERVER_OVERLAY_VISUALS) || return 1
+    case "$property" in
+        *'not found'*|*'no such atom'*) return 0 ;;
+        *) return 1 ;;
+    esac
+}
+case "$#:${1:-}" in
+    1:--needs-audio-action) needs_audio_action; exit $? ;;
+    0:) ;;
+    *) echo 'Usage: recorder-microphone [--needs-audio-action]' >&2; exit 2 ;;
+esac
+if ! test -x "$app"; then
+    exec /usr/X11R7/bin/xmessage -center -title Microphone 'SGI Media Recorder is not installed.'
+fi
+set -- -media audio -jack Microphone
+# The 6.5.30f recorder checks VkScreenSelector even when its only menu is Audio.
+if needs_audio_action; then
+    list=${_RLDN32_LIST:-DEFAULT}
+    export XIRI_RECORDER_RESTORE="_RLDN32_LIST=$list"
+    export _RLDN32_LIST="$lib:$list"
+    exec "$app" "$@" -allowmenu audio
+fi
+exec "$app" "$@"
