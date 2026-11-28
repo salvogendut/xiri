@@ -40,7 +40,7 @@ Indy's HAL2 revision 4.1.0 produces the following microphone record.
 1:ImdDeviceModel:C%3a10 T%3a3 S%3a16400 ftr%3amicrophone!o=
 ```
 
-Xiri's IRIX hardware inventory currently reports memory only. At login, the
+The IRIX hardware inventory on the microphone test build reported memory only. At login, the
 Xiri desktop reads NetBSD's `audiocfg list` and supplies this record to SGI's
 `bgicons` when a HAL2 device reports a recording format. Each user's host
 icon directory has its own `XiriMicrophoneDB`. A failed inventory query
@@ -58,7 +58,8 @@ Tracing a double-click on each release confirmed that the SGI icon started
 `mediarecorder`. Running the same `-media audio -jack Microphone` action
 from a shell showed that `libmovierecord` failed to create a shared
 arena, asserted in `events.c` at line 580, and exited with status 134 before
-opening a recorder window. The command-line recording results above apply
+opening a recorder window. The [later Media Recorder test](2026-11-28-indy-mediarecorder.md)
+traces this failure on the updated kernel. The command-line recording results above apply
 independently. [MediaTools results](2026-11-27-indy-media-devices.md)
 
 To apply just this desktop change to a guest already running the recording

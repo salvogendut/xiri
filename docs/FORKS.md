@@ -111,6 +111,14 @@ The November 27 Sound Editor cycle fetched `upstream/main` again at
 original 6.5.22f Indy and supplied microphone input to both Xiri guests.
 [Sound Editor qualification](results/2026-11-27-indy-soundeditor.md)
 
+On November 28 the Media Recorder cycle merged upstream `8f07a533` into
+IRIS `xiri` at `32fe08d5`. Upstream split the GUI into a shared core and
+platform frontends and changed CHD reads and shutdown persistence. The Linux
+build passed 175 GUI-core tests (one ignored), 29 GUI frontend tests, and
+199 selected emulator tests covering timers, storage and audio. The GUI
+boundary check also passed. The paired recorder comparisons used the prior
+qualified Indy binary at `65039d90`. [Recorder measurements](results/2026-11-28-indy-mediarecorder.md)
+
 The CD Player cycle fetched IRIS upstream on November 27 and again on
 November 28. Both checks found `afaf7a5504377848c413dc6ac33a65b60dfe574b`
 in `xiri` at `65039d90`. That build supplied the original SGI drive trace,

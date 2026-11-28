@@ -34,9 +34,12 @@ their desktop preferences. [Fresh-install results](results/2026-11-27-xiriprep-d
    and plays it through HAL2 on both releases. SGI `sfrecord` and `sfplay`
    also pass, including selectable stereo input. Native capture passes during
    simultaneous playback. The desktop microphone launches Media Recorder.
-   Retest its audio-only launch with the shared-file changes. For video,
+   Both releases now create its shared file, but fail when the kernel first
+   writes the signal mask into a mapped page beyond EOF. Qualify that copy
+   against original IRIX before retrying recording, saving and replay. For video,
    exercise preview and saving changing frames in `videoin` and `mediarecorder`.
    For DAT, try `datman` and `datplayer` with a scratch tape.
+   [Media Recorder comparison](results/2026-11-28-indy-mediarecorder.md) ·
    [Sound Editor recording and replay](results/2026-11-27-indy-soundeditor.md) ·
    [Shared-file growth and SGI clients](results/2026-11-27-indy-autogrow.md) ·
    [Two-track playback and SGI comparison](results/2026-11-27-indy-cd-audio.md) ·

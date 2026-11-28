@@ -292,7 +292,7 @@ video source and a data CD. Use those results for current device behaviour.
 | `macromedia` | `/usr/sbin/macromedia` | Unresolved target in the original source inventory; no launch attempted. |
 | `mediaconvert` | `/usr/sbin/mediaconvert` | **Window observed.** MediaConvert. Use and normal exit remain untested. |
 | `mediaplayer` | `/usr/sbin/mediaplayer` | **Window observed.** MediaPlayer. Use and normal exit remain untested. |
-| `mediarecorder` | `/usr/sbin/mediarecorder` | **Terminates on signal 6.** libmovierecord failed to create shared arena at /var/tmp/.mvrlBAAa000Fv: out of disk space?  swap space? Assertion failed: queue, file events.c, line 580 |
+| `mediarecorder` | `/usr/sbin/mediarecorder` | **Audio launch aborts before opening a window** on both Indys. The shared map succeeds, then copying the signal mask to a page past EOF fails. [Microphone-icon test](results/2026-11-28-indy-mediarecorder.md) |
 | `moviemaker` | `/usr/sbin/moviemaker` | **X observation interrupted.** The bounded X query failed; process cleanup and the guest halt are recorded. Repeat interactively before classifying the application. |
 | `musicplayer` | `/usr/sbin/musicplayer` | **Exits 1 without a window.** Error Loading Skin.. sh: /sbin/tar:  not found sh: /usr/sbin/gzip:  not found |
 | `soundeditor` | `/usr/sbin/soundeditor` | Records the Indy microphone, saves a stereo AIFF and reopens the clip. [Recording and speaker measurements](results/2026-11-27-indy-soundeditor.md) |

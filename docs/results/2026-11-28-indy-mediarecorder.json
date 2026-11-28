@@ -1,0 +1,110 @@
+{
+  "emulator": "65039d90",
+  "emulator_sha256": "9a800615984088c1d51e6e716f5bdb5e1599caea0473a971207618f73e08fda7",
+  "netbsd": "51ae5f2886ef1cd3c3089e8aabf6fcce3c4de740",
+  "module_sha256": "cbf3d9c482b9ce752445ac0cae80df744c069f1987e5966225e88b911d8597dc",
+  "original_gui": {
+    "release": "6.5.22f",
+    "machine": "Indy R4400",
+    "user": "root",
+    "action": "double-click desktop microphone, Record, Stop, replay with sfplay",
+    "input_hz": [
+      440,
+      880
+    ],
+    "input_sample_rate_hz": 44100,
+    "saved": {
+      "sample_rate_hz": 44100,
+      "frames": 184534,
+      "channel_peaks_hz": [
+        440,
+        440
+      ],
+      "file": "audio1.aiff",
+      "bytes": 738260,
+      "sha256": "f294750e63db6367762607a0674a7d385a029d4e90f2f2001ffc5d1a542ea0e8"
+    },
+    "sfplay_speaker": {
+      "sample_rate_hz": 44100,
+      "frames": 193520,
+      "channel_peaks_hz": [
+        440,
+        440
+      ]
+    }
+  },
+  "releases": {
+    "6.5.22f": {
+      "xiri_cpu": "R4400",
+      "xiri_user": "xiritest",
+      "gui": "microphone double-click, no recorder window, core in home",
+      "terminal_status": 134,
+      "terminal_stderr": [
+        "libmovierecord failed to create shared arena at /var/tmp/.mvrlBAAa000py: out of disk space?  swap space?",
+        "Assertion failed: queue, file events.c, line 580"
+      ],
+      "arena_file_size_at_open": 5232,
+      "mapping_bytes": 66672,
+      "mask_offset": 9536,
+      "xiri_base_sha256": "53fa1e2006e19dfcbe8950b919de447c043487e84b06710bfc3fea86119f382b",
+      "xiri_control": {
+        "stack_query": 0,
+        "in_file_query": 0,
+        "size_before": 5232,
+        "past_eof_query": -22,
+        "size_after_query": 5232,
+        "query_after_user_store": 0,
+        "size_after_store": 16384,
+        "usemaclone_open_fd_or_negative_errno": -2
+      },
+      "original_control": {
+        "stack_query": 0,
+        "in_file_query": 0,
+        "size_before": 5232,
+        "past_eof_query": 0,
+        "size_after_query": 12288,
+        "query_after_user_store": 0,
+        "size_after_store": 12288,
+        "usemaclone_open_fd_or_negative_errno": 4
+      },
+      "original_control_machine": "indy_ip24",
+      "original_disk_sha256": "b4fff76ffa0ca00c0a90da1c94a3eb41f5f6ba4cb13c0af258b4acca4ad95c41"
+    },
+    "6.5.30f": {
+      "xiri_cpu": "R5000",
+      "xiri_user": "xiritest",
+      "gui": "microphone double-click, no recorder window, core in home",
+      "terminal_status": 134,
+      "terminal_stderr": [
+        "libmovierecord failed to create shared arena at /var/tmp/.mvrlBAAa0003w: out of disk space?  swap space?",
+        "Assertion failed: queue, file events.c, line 580"
+      ],
+      "arena_file_size_at_open": 5232,
+      "mapping_bytes": 66672,
+      "mask_offset": 9536,
+      "xiri_base_sha256": "a2e3272266c362d1db236bb9413f196ca533c03f55213fc6bbfa5274ddd66d26",
+      "xiri_control": {
+        "stack_query": 0,
+        "in_file_query": 0,
+        "size_before": 5232,
+        "past_eof_query": -22,
+        "size_after_query": 5232,
+        "query_after_user_store": 0,
+        "size_after_store": 16384,
+        "usemaclone_open_fd_or_negative_errno": -2
+      },
+      "original_control": {
+        "stack_query": 0,
+        "in_file_query": 0,
+        "size_before": 5232,
+        "past_eof_query": 0,
+        "size_after_query": 12288,
+        "query_after_user_store": 0,
+        "size_after_store": 12288,
+        "usemaclone_open_fd_or_negative_errno": 4
+      },
+      "original_control_machine": "o2_ip32",
+      "original_disk_sha256": "339f74457dfbb06813681ab5db2ccfdd29d394e8a02dfcdcd6c6ac7c22a836db"
+    }
+  }
+}
